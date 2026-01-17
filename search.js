@@ -63,6 +63,11 @@
             items.push(...window.SEARCH_RULES);
         }
 
+        // Guide content from guide-data.js
+        if (window.SEARCH_GUIDE) {
+            items.push(...window.SEARCH_GUIDE);
+        }
+
         return items;
     }
 
@@ -128,7 +133,7 @@
         const results = miniSearch.search(query);
 
         // Group by type and limit
-        const grouped = { template: [], faq: [], rule: [] };
+        const grouped = { guide: [], template: [], faq: [], rule: [] };
         results.forEach(r => {
             const type = r.type || 'template';
             if (grouped[type] && grouped[type].length < 5) {
@@ -136,8 +141,9 @@
             }
         });
 
-        // Flatten in order: templates, faq, rules
+        // Flatten in order: guide, templates, faq, rules
         return [
+            ...grouped.guide,
             ...grouped.template,
             ...grouped.faq,
             ...grouped.rule
@@ -159,6 +165,7 @@
         }
 
         const typeLabels = {
+            guide: '📖 Guide',
             template: '📄 Template',
             faq: '❓ FAQ',
             rule: '📋 Rule'

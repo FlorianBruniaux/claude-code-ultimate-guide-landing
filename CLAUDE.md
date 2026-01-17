@@ -53,7 +53,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | Version | `3.8.2` | VERSION file |
-| Templates | `53` | Count of examples/ files |
+| Templates | `56` | Count of examples/ files |
 | Quiz questions | `159` | questions.json |
 | Guide lines | `9,800+` | ultimate-guide.md |
 
