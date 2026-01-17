@@ -47,13 +47,14 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Guide lines | `wc -l guide/ultimate-guide.md` | index.html badges |
 | Golden Rules | README.md | index.html section |
 | FAQ | README.md | index.html (schema + HTML) |
+| **Guide search index** | `guide/*.md` headings | `guide-data.js` (40 entrées) |
 
 ## Valeurs actuelles (à maintenir synchronisées)
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | Version | `3.8.2` | VERSION file |
-| Templates | `57` | Count of examples/ files |
+| Templates | `56` | Count of examples/ files |
 | Quiz questions | `159` | questions.json |
 | Guide lines | `9,800+` | ultimate-guide.md |
 
@@ -71,13 +72,50 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 ./scripts/check-landing-sync.sh
 ```
 
+## Synchronisation guide-data.js (recherche globale)
+
+Le fichier `guide-data.js` indexe les sections du guide pour la recherche Cmd+K.
+
+**Quand mettre à jour :**
+- Nouvelle section majeure ajoutée au guide
+- Fichier .md renommé ou supprimé
+- Ancre (#section) modifiée
+
+**Ce qui n'impacte PAS :**
+- Corrections de typos
+- Ajouts de contenu dans sections existantes
+
+**Workflow de mise à jour :**
+```bash
+# 1. Vérifier les changements dans le guide
+./scripts/sync-guide-data.sh
+
+# 2. Éditer guide-data.js manuellement pour ajouter/modifier les entrées
+# Format: { id, type: 'guide', title, content (keywords), url }
+
+# 3. Tester localement
+python3 -m http.server 8080
+# Cmd+K → vérifier les nouveaux résultats
+```
+
+**Structure d'une entrée guide-data.js :**
+```javascript
+{
+    id: 'guide-unique-id',
+    type: 'guide',
+    title: 'Titre affiché dans les résultats',
+    content: 'mots-clés séparés par espaces pour le fuzzy search',
+    url: GUIDE_BASE + 'fichier.md#ancre'
+}
+```
+
 ## Emplacements des stats dans index.html
 
 ### Version (3.8.1)
 - Ligne ~837: FAQ text "Current version: X.X.X"
 - Ligne ~892: Footer `<p class="version">vX.X.X</p>`
 
-### Templates count (57)
+### Templates count (53)
 - Ligne ~6: `<title>` tag
 - Ligne ~9: meta description
 - Ligne ~18-19: og:title, og:description
