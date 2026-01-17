@@ -1,0 +1,9 @@
+# Claude Code Ultimate Guide - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/sitemap.xml
+
+# Crawl-delay (optional, be polite)
+Crawl-delay: 1

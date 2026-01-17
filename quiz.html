@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Quiz: 159 Questions | Test Free</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free Claude Code quiz with 159 questions across 10 categories. Test your knowledge from beginner to power user. Track progress and share your score.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Claude Code Quiz - 159 Questions">
+    <meta property="og:description" content="Free 159-question quiz to test your Claude Code skills. 10 categories from basics to advanced. Track progress and share your score!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html">
+    <meta property="og:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Claude Code Ultimate Guide">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code Quiz - 159 Questions">
+    <meta name="twitter:description" content="Free 159-question quiz to test your Claude Code skills. 10 categories from basics to advanced. Track progress and share your score!">
+    <meta name="twitter:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Quiz",
+        "name": "Claude Code Knowledge Quiz",
+        "description": "159 questions to test your Claude Code expertise across 10 categories",
+        "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+        "educationalLevel": "beginner to advanced",
+        "numberOfQuestions": 159,
+        "inLanguage": "en"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Quiz-specific styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Setup Screen */
+        .quiz-setup {
+            text-align: center;
+            padding: var(--space-2xl) 0;
+        }
+
+        .quiz-setup h1 {
+            margin-bottom: var(--space-md);
+        }
+
+        .quiz-setup p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+            text-align: left;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .category-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item.selected {
+            border-color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .category-item input {
+            accent-color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        .category-item label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .category-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .difficulty-select {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-bottom: var(--space-2xl);
+            flex-wrap: wrap;
+        }
+
+        .difficulty-btn {
+            padding: var(--space-md) var(--space-xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .difficulty-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .difficulty-btn.selected {
+            border-color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .start-btn {
+            padding: var(--space-md) var(--space-2xl);
+            font-size: 1.1rem;
+        }
+
+        .selected-count {
+            margin-bottom: var(--space-lg);
+            color: var(--text-secondary);
+        }
+
+        /* Question Screen */
+        .quiz-question {
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
+            margin-bottom: var(--space-xl);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, #a855f7 100%);
+            transition: width 0.3s ease;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .question-number {
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .question-category {
+            font-size: 0.85rem;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .question-difficulty {
+            font-size: 0.8rem;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 4px;
+        }
+
+        .difficulty-junior { background: #22c55e20; color: #22c55e; }
+        .difficulty-senior { background: #f59e0b20; color: #f59e0b; }
+        .difficulty-power { background: #ef444420; color: #ef4444; }
+
+        .question-text {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+            line-height: 1.5;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .option-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--border-radius);
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+        }
+
+        .option-btn.selected {
+            border-color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .option-btn.correct {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .option-btn.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .option-btn.disabled {
+            cursor: default;
+        }
+
+        .option-key {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .explanation-box {
+            display: none;
+            padding: var(--space-lg);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--accent);
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        .explanation-box h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .explanation-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .explanation-box .doc-link {
+            display: inline-block;
+            margin-top: var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        .question-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--space-md);
+        }
+
+        .nav-btn {
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Screen */
+        .quiz-results {
+            display: none;
+            text-align: center;
+            padding: var(--space-2xl) 0;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .results-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            transition: all var(--transition-normal);
+        }
+
+        .results-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
+        }
+
+        .results-card h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .score-display {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+        }
+
+        .badge-novice { background: #64748b20; color: #64748b; }
+        .badge-apprentice { background: #22c55e20; color: #22c55e; }
+        .badge-practitioner { background: #3b82f620; color: #3b82f6; }
+        .badge-expert { background: #a855f720; color: #a855f7; }
+        .badge-master { background: #f59e0b20; color: #f59e0b; }
+
+        .category-scores {
+            text-align: left;
+            margin-bottom: var(--space-xl);
+        }
+
+        .category-score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-score-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-score-bar {
+            width: 100px;
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .category-score-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .results-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-xl);
+            padding: var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .results-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            padding: var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            text-align: left;
+            margin-bottom: var(--space-lg);
+            word-break: break-word;
+        }
+
+        /* Screenshot-friendly badge */
+        .screenshot-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border: 2px solid var(--accent);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .screenshot-badge img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .screenshot-badge-text {
+            text-align: left;
+        }
+
+        .screenshot-badge-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .screenshot-badge-url {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .quiz-container {
+                padding: var(--space-md);
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .score-display {
+                font-size: 3rem;
+            }
+
+            .question-actions {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">&gt;_</span>
+                <span class="logo-text">Claude Code Guide</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+                <a href="cheatsheet.html">Cheat Sheet</a>
+                <a href="examples.html">Examples</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="quiz-container">
+        <!-- Setup Screen -->
+        <div id="quiz-setup" class="quiz-setup">
+            <img src="claude-code-logo.webp" alt="Claude Code AI coding assistant quiz logo" style="width: 80px; margin-bottom: var(--space-lg);">
+            <h1>Claude Code Knowledge Quiz</h1>
+            <p>159 questions across 10 categories. Test your knowledge and share your score.</p>
+
+            <h3 style="margin-bottom: var(--space-md);">Select Categories</h3>
+            <div class="category-grid" id="category-grid">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="selected-count" id="selected-count">0 questions selected</div>
+
+            <h3 style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h3>
+            <div class="difficulty-select">
+                <button class="difficulty-btn selected" data-difficulty="all">All Levels</button>
+                <button class="difficulty-btn" data-difficulty="junior">Junior</button>
+                <button class="difficulty-btn" data-difficulty="senior">Senior</button>
+                <button class="difficulty-btn" data-difficulty="power">Power User</button>
+            </div>
+
+            <button class="btn btn-primary start-btn" id="start-btn" disabled>Start Quiz</button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="quiz-question" class="quiz-question">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="question-header">
+                <span class="question-number" id="question-number">1 / 10</span>
+                <span class="question-category" id="question-category">Category</span>
+                <span class="question-difficulty" id="question-difficulty">junior</span>
+            </div>
+
+            <p class="question-text" id="question-text">Question text here?</p>
+
+            <div class="options-list" id="options-list">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="explanation-box" id="explanation-box">
+                <h4>Explanation</h4>
+                <p id="explanation-text"></p>
+                <a id="doc-link" class="doc-link" href="#" target="_blank" rel="noopener">View in documentation &rarr;</a>
+            </div>
+
+            <div class="question-actions">
+                <button class="btn btn-secondary nav-btn" id="prev-btn" disabled>Previous</button>
+                <button class="btn btn-primary nav-btn" id="next-btn">Next</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="quiz-results" class="quiz-results">
+            <div class="results-card" id="results-card">
+                <div class="screenshot-badge">
+                    <img src="claude-code-logo.webp" alt="Claude Code AI assistant certification badge">
+                    <div class="screenshot-badge-text">
+                        <div class="screenshot-badge-title">Claude Code Quiz</div>
+                        <div class="screenshot-badge-url">florianbruniaux.github.io/claude-code-ultimate-guide-landing</div>
+                    </div>
+                </div>
+
+                <h2>Quiz Complete!</h2>
+                <div class="score-display" id="score-display">85%</div>
+                <div class="score-label" id="score-label">42 / 50 correct answers</div>
+                <div class="score-badge" id="score-badge">Expert</div>
+
+                <div class="results-meta">
+                    <div class="meta-item">
+                        <div class="meta-value" id="meta-questions">50</div>
+                        <div class="meta-label">Questions</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-value" id="meta-correct">42</div>
+                        <div class="meta-label">Correct</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-value" id="meta-time">12:34</div>
+                        <div class="meta-label">Time</div>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: var(--space-md); text-align: left;">Score by Category</h4>
+                <div class="category-scores" id="category-scores">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="share-text" id="share-text">
+                Claude Code Quiz: 85% (42/50) - Expert level! 🎯
+                Test yours: florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html
+            </div>
+
+            <div class="results-actions">
+                <button class="btn btn-secondary" id="copy-result-btn">Copy Result</button>
+                <button class="btn btn-primary" id="retry-btn">Try Again</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></li>
+                        <li><a href="cheatsheet.html">Cheat Sheet</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md" target="_blank" rel="noopener">Architecture</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">Data Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="examples.html">Examples (49)</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml" target="_blank" rel="noopener">LLM Reference</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.devw.ai/" target="_blank" rel="noopener">Dev With AI (FR)</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues" target="_blank" rel="noopener">Report Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &bull;
+                    Made with dedication by <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>
+                </p>
+                <p class="version">v3.8.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz State
+        let quizData = null;
+        let selectedCategories = new Set();
+        let selectedDifficulty = 'all';
+        let filteredQuestions = [];
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let startTime = null;
+
+        // DOM Elements
+        const setupScreen = document.getElementById('quiz-setup');
+        const questionScreen = document.getElementById('quiz-question');
+        const resultsScreen = document.getElementById('quiz-results');
+        const categoryGrid = document.getElementById('category-grid');
+        const selectedCountEl = document.getElementById('selected-count');
+        const startBtn = document.getElementById('start-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Load questions
+        async function loadQuestions() {
+            const response = await fetch('questions.json');
+            quizData = await response.json();
+            renderCategoryGrid();
+        }
+
+        // Render category selection
+        function renderCategoryGrid() {
+            const categoryCounts = {};
+            quizData.questions.forEach(q => {
+                categoryCounts[q.category_id] = (categoryCounts[q.category_id] || 0) + 1;
+            });
+
+            categoryGrid.innerHTML = quizData.categories.map(cat => `
+                <div class="category-item" data-id="${cat.id}">
+                    <input type="checkbox" id="cat-${cat.id}" checked>
+                    <label for="cat-${cat.id}">${cat.name}</label>
+                    <span class="category-count">${categoryCounts[cat.id] || 0}</span>
+                </div>
+            `).join('');
+
+            // Select all by default
+            quizData.categories.forEach(cat => selectedCategories.add(cat.id));
+            updateSelectedCount();
+
+            // Event listeners
+            categoryGrid.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'INPUT') return;
+                    const checkbox = item.querySelector('input');
+                    checkbox.checked = !checkbox.checked;
+                    toggleCategory(parseInt(item.dataset.id), checkbox.checked);
+                });
+
+                item.querySelector('input').addEventListener('change', (e) => {
+                    toggleCategory(parseInt(item.dataset.id), e.target.checked);
+                });
+            });
+
+            // Difficulty buttons
+            document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedDifficulty = btn.dataset.difficulty;
+                    updateSelectedCount();
+                });
+            });
+        }
+
+        function toggleCategory(id, checked) {
+            const item = categoryGrid.querySelector(`[data-id="${id}"]`);
+            if (checked) {
+                selectedCategories.add(id);
+                item.classList.add('selected');
+            } else {
+                selectedCategories.delete(id);
+                item.classList.remove('selected');
+            }
+            updateSelectedCount();
+        }
+
+        function updateSelectedCount() {
+            filteredQuestions = quizData.questions.filter(q => {
+                const categoryMatch = selectedCategories.has(q.category_id);
+                const difficultyMatch = selectedDifficulty === 'all' || q.difficulty === selectedDifficulty;
+                return categoryMatch && difficultyMatch;
+            });
+
+            selectedCountEl.textContent = `${filteredQuestions.length} questions selected`;
+            startBtn.disabled = filteredQuestions.length === 0;
+        }
+
+        // Start quiz
+        startBtn.addEventListener('click', () => {
+            if (filteredQuestions.length === 0) return;
+
+            // Shuffle questions
+            filteredQuestions = filteredQuestions.sort(() => Math.random() - 0.5);
+
+            currentQuestionIndex = 0;
+            answers = {};
+            startTime = Date.now();
+
+            setupScreen.style.display = 'none';
+            questionScreen.classList.add('active');
+            renderQuestion();
+        });
+
+        // Render question
+        function renderQuestion() {
+            const q = filteredQuestions[currentQuestionIndex];
+            const total = filteredQuestions.length;
+
+            // Progress
+            document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+            document.getElementById('question-number').textContent = `${currentQuestionIndex + 1} / ${total}`;
+            document.getElementById('question-category').textContent = q.category;
+
+            const diffEl = document.getElementById('question-difficulty');
+            diffEl.textContent = q.difficulty;
+            diffEl.className = `question-difficulty difficulty-${q.difficulty}`;
+
+            document.getElementById('question-text').textContent = q.question;
+
+            // Options
+            const optionsList = document.getElementById('options-list');
+            const keys = ['a', 'b', 'c', 'd'];
+            optionsList.innerHTML = keys.map(key => {
+                if (!q.options[key]) return '';
+                const isAnswered = answers[q.id] !== undefined;
+                const isSelected = answers[q.id] === key;
+                const isCorrect = key === q.correct;
+
+                let classes = 'option-btn';
+                if (isAnswered) {
+                    classes += ' disabled';
+                    if (isCorrect) classes += ' correct';
+                    else if (isSelected) classes += ' incorrect';
+                } else if (isSelected) {
+                    classes += ' selected';
+                }
+
+                return `
+                    <button class="${classes}" data-key="${key}" ${isAnswered ? 'disabled' : ''}>
+                        <span class="option-key">${key.toUpperCase()}</span>
+                        <span>${q.options[key]}</span>
+                    </button>
+                `;
+            }).join('');
+
+            // Option click handlers
+            if (!answers[q.id]) {
+                optionsList.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.addEventListener('click', () => selectAnswer(btn.dataset.key));
+                });
+            }
+
+            // Explanation
+            const explanationBox = document.getElementById('explanation-box');
+            if (answers[q.id]) {
+                explanationBox.classList.add('show');
+                document.getElementById('explanation-text').textContent = q.explanation;
+                const docLink = document.getElementById('doc-link');
+                if (q.doc_reference) {
+                    docLink.href = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${q.doc_reference.file}${q.doc_reference.anchor || ''}`;
+                    docLink.style.display = 'inline-block';
+                } else {
+                    docLink.style.display = 'none';
+                }
+            } else {
+                explanationBox.classList.remove('show');
+            }
+
+            // Navigation
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === total - 1 ? 'Finish' : 'Next';
+        }
+
+        function selectAnswer(key) {
+            const q = filteredQuestions[currentQuestionIndex];
+            answers[q.id] = key;
+            renderQuestion();
+        }
+
+        // Navigation
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const q = filteredQuestions[currentQuestionIndex];
+
+            // Must answer to proceed
+            if (!answers[q.id]) {
+                alert('Please select an answer before continuing.');
+                return;
+            }
+
+            if (currentQuestionIndex < filteredQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        // Show results
+        function showResults() {
+            questionScreen.classList.remove('active');
+            resultsScreen.classList.add('active');
+
+            const total = filteredQuestions.length;
+            let correct = 0;
+            const categoryScores = {};
+
+            filteredQuestions.forEach(q => {
+                if (!categoryScores[q.category]) {
+                    categoryScores[q.category] = { correct: 0, total: 0 };
+                }
+                categoryScores[q.category].total++;
+
+                if (answers[q.id] === q.correct) {
+                    correct++;
+                    categoryScores[q.category].correct++;
+                }
+            });
+
+            const percentage = Math.round((correct / total) * 100);
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Badge
+            let badge, badgeClass;
+            if (percentage >= 95) { badge = 'Master'; badgeClass = 'badge-master'; }
+            else if (percentage >= 80) { badge = 'Expert'; badgeClass = 'badge-expert'; }
+            else if (percentage >= 65) { badge = 'Practitioner'; badgeClass = 'badge-practitioner'; }
+            else if (percentage >= 50) { badge = 'Apprentice'; badgeClass = 'badge-apprentice'; }
+            else { badge = 'Novice'; badgeClass = 'badge-novice'; }
+
+            document.getElementById('score-display').textContent = `${percentage}%`;
+            document.getElementById('score-label').textContent = `${correct} / ${total} correct answers`;
+
+            const badgeEl = document.getElementById('score-badge');
+            badgeEl.textContent = badge;
+            badgeEl.className = `score-badge ${badgeClass}`;
+
+            document.getElementById('meta-questions').textContent = total;
+            document.getElementById('meta-correct').textContent = correct;
+            document.getElementById('meta-time').textContent = timeStr;
+
+            // Category scores
+            const categoryScoresEl = document.getElementById('category-scores');
+            categoryScoresEl.innerHTML = Object.entries(categoryScores).map(([cat, score]) => {
+                const catPct = Math.round((score.correct / score.total) * 100);
+                return `
+                    <div class="category-score-item">
+                        <span>${cat}</span>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span style="font-family: var(--font-mono); font-size: 0.9rem;">${score.correct}/${score.total}</span>
+                            <div class="category-score-bar">
+                                <div class="category-score-fill" style="width: ${catPct}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Share text
+            document.getElementById('share-text').textContent =
+                `Claude Code Quiz: ${percentage}% (${correct}/${total}) - ${badge} level! 🎯\nTest yours: florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html`;
+        }
+
+        // Copy result
+        document.getElementById('copy-result-btn').addEventListener('click', () => {
+            const text = document.getElementById('share-text').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-result-btn');
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                btn.style.backgroundColor = 'var(--accent-secondary)';
+                btn.style.borderColor = 'var(--accent-secondary)';
+                btn.style.color = '#fff';
+                setTimeout(() => {
+                    btn.textContent = 'Copy Result';
+                    btn.classList.remove('copied');
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        });
+
+        // Retry
+        document.getElementById('retry-btn').addEventListener('click', () => {
+            resultsScreen.classList.remove('active');
+            setupScreen.style.display = 'block';
+            currentQuestionIndex = 0;
+            answers = {};
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!questionScreen.classList.contains('active')) return;
+
+            const q = filteredQuestions[currentQuestionIndex];
+            if (!answers[q.id]) {
+                if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
+                    selectAnswer(e.key.toLowerCase());
+                }
+            }
+
+            if (e.key === 'Enter' || e.key === 'ArrowRight') {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            }
+        });
+
+        // Initialize
+        loadQuestions();
+    </script>
+</body>
+</html>

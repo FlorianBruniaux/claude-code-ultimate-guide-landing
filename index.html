@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Guide: 49 Templates & 159 Quiz Free</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Master Claude Code with 49 ready-to-use templates and 159 quiz questions. Free AI coding assistant tutorial for CLAUDE.md, agents, and MCP servers.">
+    <meta name="keywords" content="Claude Code, Anthropic, AI coding assistant, Claude CLI, AI development, programming assistant, free guide, open source, CLAUDE.md, Model Context Protocol, MCP servers, AI pair programming">
+    <meta name="author" content="Florian BRUNIAUX">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Claude Code Guide: 9,600+ Lines, 49 Templates - Free">
+    <meta property="og:description" content="Free, open-source guide for Claude Code. 9,600+ lines, 49 templates, 159 quiz questions. Master AI-assisted development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing">
+    <meta property="og:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Code Guide: Free & Open Source">
+    <meta name="twitter:description" content="Free guide for Claude Code. 9,600+ lines, 49 templates, 159 quiz questions. Master AI-assisted development.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Claude Code Ultimate Guide",
+        "url": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/",
+        "description": "Free, open-source guide for Claude Code (Anthropic CLI)",
+        "author": {
+            "@type": "Person",
+            "name": "Florian BRUNIAUX",
+            "url": "https://github.com/FlorianBruniaux"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Méthode Aristote",
+            "url": "https://methode-aristote.fr"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Claude Code Mastery",
+        "description": "Free comprehensive guide to Claude Code - Anthropic's AI coding assistant CLI",
+        "provider": {
+            "@type": "Person",
+            "name": "Florian BRUNIAUX",
+            "url": "https://github.com/FlorianBruniaux"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT3H"
+        },
+        "teaches": ["Claude Code CLI", "AI coding assistant", "CLAUDE.md configuration", "MCP servers", "Custom agents"],
+        "numberOfCredits": 0,
+        "isAccessibleForFree": true
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Claude Code and how does it work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude Code is Anthropic's official CLI that brings Claude AI directly into your terminal. It acts as an AI coding assistant that can read your codebase, write code, run commands, and make multi-file changes autonomously. Think of it as AI pair programming in your terminal."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I install Claude Code?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Install globally via npm: npm install -g @anthropic-ai/claude-code. Requires Node.js 18+. Then run claude in any project directory to start."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Claude Code free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude Code requires an Anthropic API key with a paid plan. The tool itself is free, but you pay for API usage. Sonnet is the default model (cost-effective for most tasks). Opus is available for complex architecture work at higher cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Claude Code better than GitHub Copilot?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both tools now have agentic capabilities. Claude Code excels at terminal-based workflows with native MCP support, CLAUDE.md project memory, custom agents via SDK, and event-driven hooks. Copilot integrates better with VS Code via Agent Mode. Many developers use both for different tasks."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a CLAUDE.md file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CLAUDE.md is a project memory file that gives Claude persistent context about your project. Place it in your project root with your tech stack, coding conventions, and commands. Claude reads it automatically at session start."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are MCP servers in Claude Code?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting it to external tools and data sources. Examples include database access, browser automation, and documentation lookup."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What programming languages does Claude Code support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude Code works with any programming language. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. It can read, write, and refactor code in any language you use."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my code sent to Anthropic?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Claude Code sends prompts and file contents to Anthropic servers. Default retention is 5 years (training enabled). You can opt-out to 30 days or use Enterprise for 0 retention."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is behind this guide?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Florian BRUNIAUX, a tech professional with 11+ years of experience as CTO, VP Engineering, and Engineering Manager. He created this guide as an open-source contribution to help the community master Claude Code."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <span class="logo-icon">&gt;_</span>
+                <span class="logo-text">Claude Code Guide</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+                <a href="cheatsheet.html" target="_blank" rel="noopener">Cheat Sheet</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="examples.html">Examples</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="claude-code-logo.webp" alt="Claude Code CLI logo - Anthropic's AI coding assistant" class="hero-logo">
+                    <h1 class="hero-title">Master Claude Code</h1>
+                    <p class="hero-tagline">The only comprehensive AI coding assistant guide you need</p>
+                    <p class="hero-stats">9,600+ lines &bull; 49 templates &bull; 159 quiz questions</p>
+
+                    <div class="hero-ctas">
+                        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" class="btn btn-primary" target="_blank" rel="noopener">
+                            Read the Guide
+                        </a>
+                        <a href="cheatsheet.html" class="btn btn-secondary" target="_blank" rel="noopener">
+                            Cheat Sheet (5 min)
+                        </a>
+                    </div>
+
+                    <div class="hero-badges">
+                        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/stargazers" target="_blank" rel="noopener">
+                            <img src="https://img.shields.io/github/stars/FlorianBruniaux/claude-code-ultimate-guide?style=for-the-badge" alt="GitHub Stars">
+                        </a>
+                        <img src="https://img.shields.io/badge/Lines-9,600+-blueviolet?style=for-the-badge" alt="Lines">
+                        <img src="https://img.shields.io/badge/Templates-49-green?style=for-the-badge" alt="Templates">
+                        <img src="https://img.shields.io/badge/Quiz-159_questions-orange?style=for-the-badge" alt="Quiz">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Onboarding Section -->
+        <section class="section onboarding-hero">
+            <div class="container">
+                <div class="onboarding-badge">Personalized Learning</div>
+                <h2 class="section-title">Start With Interactive Onboarding</h2>
+                <p class="section-subtitle">Claude asks 2-4 questions about your profile, then guides you through personalized content</p>
+
+                <div class="onboarding-command">
+                    <div class="code-block featured">
+                        <div class="code-header">
+                            <span class="code-filename">Paste in your terminal</span>
+                            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">
+                                <span class="copy-icon">Copy</span>
+                            </button>
+                        </div>
+                        <pre><code>claude "Fetch and follow the onboarding instructions from: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/tools/onboarding-prompt.md"</code></pre>
+                    </div>
+                </div>
+
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <span class="feature-num">1</span>
+                        <p><strong>Choose your language</strong><br>English or French</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <span class="feature-num">2</span>
+                        <p><strong>Select your goal</strong><br>Learn, audit setup, or explore</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <span class="feature-num">3</span>
+                        <p><strong>Pick your level</strong><br>Junior, Senior, or Power User</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <span class="feature-num">4</span>
+                        <p><strong>Get personalized path</strong><br>Curated content for you</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Reference Section -->
+        <section class="section tldr">
+            <div class="container">
+                <h2 class="section-title">Quick Reference</h2>
+                <p class="section-subtitle">Already know what you need?</p>
+
+                <div class="tldr-table-wrapper">
+                    <table class="tldr-table">
+                        <thead>
+                            <tr>
+                                <th>I need...</th>
+                                <th>Go here</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Quick reference</strong></td>
+                                <td><a href="cheatsheet.html" target="_blank" rel="noopener">Cheat Sheet</a></td>
+                                <td>2 min</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Key principles</strong></td>
+                                <td><a href="#golden-rules">6 Golden Rules</a></td>
+                                <td>1 min</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Full documentation</strong></td>
+                                <td><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></td>
+                                <td>~3h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <details class="claude-md-details">
+                    <summary>Starter CLAUDE.md Template (30 sec)</summary>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-filename">CLAUDE.md</span>
+                            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">
+                                <span class="copy-icon">Copy</span>
+                            </button>
+                        </div>
+                        <pre><code># Project: [NAME]
+
+## Tech Stack
+- Language: [e.g., TypeScript]
+- Framework: [e.g., Next.js 14]
+- Testing: [e.g., Vitest]
+
+## Commands
+- Build: `npm run build`
+- Test: `npm test`
+- Lint: `npm run lint`
+
+## Rules
+- Run tests before marking tasks complete
+- Follow existing code patterns
+- Keep commits atomic and conventional</code></pre>
+                    </div>
+                    <p class="code-hint">Save as <code>CLAUDE.md</code> in your project root. Claude reads it automatically.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Why This Guide Section -->
+        <section class="section why-guide">
+            <div class="container">
+                <h2 class="section-title">Why This Guide?</h2>
+                <p class="section-subtitle">Claude Code transforms your terminal into an AI pair programming environment. Stop wasting time on trial and error.</p>
+
+                <div class="comparison-cards">
+                    <div class="comparison-card comparison-without">
+                        <div class="comparison-header">
+                            <span class="comparison-icon">&#128683;</span>
+                            <h3>Without the Guide</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li><span class="status-icon bad">&#10007;</span> Generic prompts that miss context</li>
+                            <li><span class="status-icon bad">&#10007;</span> Default config leaving performance on the table</li>
+                            <li><span class="status-icon bad">&#10007;</span> Debugging by trial and error</li>
+                            <li><span class="status-icon bad">&#10007;</span> Scattered tutorials, outdated in weeks</li>
+                            <li><span class="status-icon bad">&#10007;</span> No clear learning progression</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card comparison-with">
+                        <div class="comparison-header">
+                            <span class="comparison-icon">&#9989;</span>
+                            <h3>With the Guide</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li><span class="status-icon good">&#10003;</span> Battle-tested prompt patterns</li>
+                            <li><span class="status-icon good">&#10003;</span> Optimized CLAUDE.md configurations</li>
+                            <li><span class="status-icon good">&#10003;</span> Proven methodologies (TDD, SDD, BDD)</li>
+                            <li><span class="status-icon good">&#10003;</span> 9,600+ lines of curated, maintained content</li>
+                            <li><span class="status-icon good">&#10003;</span> Clear path from beginner to power user</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tools Comparison Section -->
+        <section class="section comparison-table" id="comparison">
+            <div class="container">
+                <h2 class="section-title">Claude Code vs GitHub Copilot vs Cursor</h2>
+                <p class="section-subtitle">How does this AI coding assistant compare to alternatives?</p>
+
+                <div class="table-wrapper">
+                    <table class="comparison-feature-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Claude Code</th>
+                                <th>GitHub Copilot</th>
+                                <th>Cursor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Interface</td>
+                                <td>Terminal CLI</td>
+                                <td>IDE Extension</td>
+                                <td>Full IDE (VS Code fork)</td>
+                            </tr>
+                            <tr>
+                                <td>Agentic Mode</td>
+                                <td><span class="feature-yes">&#10003;</span> Multi-file, autonomous</td>
+                                <td><span class="feature-yes">&#10003;</span> Agent Mode (VS Code)</td>
+                                <td><span class="feature-yes">&#10003;</span> Composer mode</td>
+                            </tr>
+                            <tr>
+                                <td>Context Window</td>
+                                <td>200K tokens (up to 1M)</td>
+                                <td>64K-128K tokens</td>
+                                <td>32K-200K tokens</td>
+                            </tr>
+                            <tr>
+                                <td>Project Memory</td>
+                                <td><span class="feature-yes">&#10003;</span> CLAUDE.md files</td>
+                                <td><span class="feature-partial">~</span> Repo embeddings</td>
+                                <td><span class="feature-yes">&#10003;</span> .cursorrules</td>
+                            </tr>
+                            <tr>
+                                <td>Custom Agents</td>
+                                <td><span class="feature-yes">&#10003;</span> Agent SDK + Skills</td>
+                                <td><span class="feature-partial">~</span> MCP configs</td>
+                                <td><span class="feature-partial">~</span> MCP integrations</td>
+                            </tr>
+                            <tr>
+                                <td>MCP Integration</td>
+                                <td><span class="feature-yes">&#10003;</span> Native client/server</td>
+                                <td><span class="feature-yes">&#10003;</span> Via Agent Mode</td>
+                                <td><span class="feature-yes">&#10003;</span> Docs integration</td>
+                            </tr>
+                            <tr>
+                                <td>Shell Execution</td>
+                                <td><span class="feature-yes">&#10003;</span> Native terminal</td>
+                                <td><span class="feature-yes">&#10003;</span> Agent Mode</td>
+                                <td><span class="feature-yes">&#10003;</span> Integrated</td>
+                            </tr>
+                            <tr>
+                                <td>Hooks System</td>
+                                <td><span class="feature-yes">&#10003;</span> Event-driven hooks</td>
+                                <td><span class="feature-no">&#10007;</span></td>
+                                <td><span class="feature-no">&#10007;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td>Terminal power users, automation</td>
+                                <td>IDE-integrated coding</td>
+                                <td>Visual IDE users</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="comparison-note">Each tool has its strengths. Claude Code excels at autonomous multi-file operations and deep code generation from the terminal. This guide helps you master its unique capabilities.</p>
+            </div>
+        </section>
+
+        <!-- What's Inside Section -->
+        <section class="section features">
+            <div class="container">
+                <h2 class="section-title">What's Inside</h2>
+                <p class="section-subtitle">Everything you need to become proficient</p>
+
+                <div class="features-grid">
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" class="feature-card feature-card-link" target="_blank" rel="noopener">
+                        <span class="feature-icon">&#128218;</span>
+                        <h3>Ultimate Guide</h3>
+                        <p>Comprehensive reference covering every aspect of Claude Code</p>
+                        <span class="feature-meta">~3h reading &rarr;</span>
+                    </a>
+                    <a href="cheatsheet.html" class="feature-card feature-card-link" target="_blank" rel="noopener">
+                        <span class="feature-icon">&#128196;</span>
+                        <h3>Cheat Sheet</h3>
+                        <p>One-page printable reference for daily use</p>
+                        <span class="feature-meta">5 min read &rarr;</span>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples" class="feature-card feature-card-link" target="_blank" rel="noopener">
+                        <span class="feature-icon">&#128230;</span>
+                        <h3>49 Templates</h3>
+                        <p>Production-ready agents, commands, hooks, and skills</p>
+                        <span class="feature-meta">Copy & adapt &rarr;</span>
+                    </a>
+                    <a href="quiz.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#127919;</span>
+                        <h3>159-Question Quiz</h3>
+                        <p>Test your knowledge across all skill levels</p>
+                        <span class="feature-meta">Take the quiz &rarr;</span>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" class="feature-card feature-card-link" target="_blank" rel="noopener">
+                        <span class="feature-icon">&#128274;</span>
+                        <h3>Security & Privacy</h3>
+                        <p>Data handling, hardening guides, and best practices</p>
+                        <span class="feature-meta">Stay safe &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Catalog Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">49 Production Templates</h2>
+                <p class="section-subtitle">Browse, preview, and copy with one click</p>
+
+                <div class="features-grid">
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#129302;</span>
+                        <h3>Agents</h3>
+                        <p>Custom AI personas for code review, testing, security audits</p>
+                        <span class="feature-meta">5 templates &rarr;</span>
+                    </a>
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#9889;</span>
+                        <h3>Commands</h3>
+                        <p>Slash commands for commits, PRs, tests, diagnostics</p>
+                        <span class="feature-meta">9 templates &rarr;</span>
+                    </a>
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#128274;</span>
+                        <h3>Hooks</h3>
+                        <p>Security checks, auto-formatting, injection detection</p>
+                        <span class="feature-meta">16 templates &rarr;</span>
+                    </a>
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#128640;</span>
+                        <h3>CI/CD</h3>
+                        <p>GitHub Actions for auto-review, security scan, triage</p>
+                        <span class="feature-meta">3 templates &rarr;</span>
+                    </a>
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#9881;</span>
+                        <h3>Config</h3>
+                        <p>Settings, Model Context Protocol (MCP) servers, gitignore patterns</p>
+                        <span class="feature-meta">3 templates &rarr;</span>
+                    </a>
+                    <a href="examples.html" class="feature-card feature-card-link">
+                        <span class="feature-icon">&#128736;</span>
+                        <h3>Scripts</h3>
+                        <p>Audit, diagnostics, session search, health checks</p>
+                        <span class="feature-meta">7 templates &rarr;</span>
+                    </a>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="examples.html" class="btn btn-primary">Browse All 49 Examples &rarr;</a>
+                    <a href="quiz.html" class="btn btn-secondary" style="margin-left: var(--space-md);">Test Your Knowledge &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Choose Your Path Section -->
+        <section class="section paths">
+            <div class="container">
+                <h2 class="section-title">Choose Your Path</h2>
+                <p class="section-subtitle">Learning tracks adapted to your experience</p>
+
+                <div class="paths-grid">
+                    <div class="path-card">
+                        <div class="path-header">
+                            <span class="path-icon">&#127793;</span>
+                            <h3>Junior Developer</h3>
+                        </div>
+                        <p class="path-description">Foundation path for newcomers</p>
+                        <ol class="path-steps">
+                            <li>Read the <a href="cheatsheet.html" target="_blank" rel="noopener">Cheat Sheet</a></li>
+                            <li>Create your first <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#claudemd-project-instructions" target="_blank" rel="noopener">CLAUDE.md</a></li>
+                            <li>Practice with simple tasks</li>
+                            <li>Learn <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#diff-review-workflow" target="_blank" rel="noopener">diff review workflow</a></li>
+                            <li>Explore <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#slash-commands" target="_blank" rel="noopener">slash commands</a></li>
+                            <li>Take the <a href="quiz.html">beginner quiz</a></li>
+                        </ol>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-header">
+                            <span class="path-icon">&#128187;</span>
+                            <h3>Senior Developer</h3>
+                        </div>
+                        <p class="path-description">Intermediate efficiency boost</p>
+                        <ol class="path-steps">
+                            <li>Skim <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#quick-start" target="_blank" rel="noopener">Quick Start</a></li>
+                            <li>Set up <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/hooks" target="_blank" rel="noopener">custom hooks</a></li>
+                            <li>Configure <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-servers" target="_blank" rel="noopener">MCP servers</a></li>
+                            <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/agents" target="_blank" rel="noopener">project-specific agents</a></li>
+                            <li>Master <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#plan-mode" target="_blank" rel="noopener">Plan Mode</a></li>
+                            <li>Build <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/" target="_blank" rel="noopener">automation workflows</a></li>
+                        </ol>
+                    </div>
+                    <div class="path-card featured">
+                        <div class="path-header">
+                            <span class="path-icon">&#9889;</span>
+                            <h3>Power User</h3>
+                        </div>
+                        <p class="path-description">Comprehensive mastery path</p>
+                        <ol class="path-steps">
+                            <li>Read the full <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></li>
+                            <li>Build <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills" target="_blank" rel="noopener">custom skills</a></li>
+                            <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-agent-orchestration" target="_blank" rel="noopener">multi-agent systems</a></li>
+                            <li>Implement <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" rel="noopener">security hooks</a></li>
+                            <li>Design <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/" target="_blank" rel="noopener">team workflows</a></li>
+                            <li>Contribute <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">templates back</a></li>
+                            <li>Pass all <a href="quiz.html">quiz levels</a></li>
+                        </ol>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-header">
+                            <span class="path-icon">&#128188;</span>
+                            <h3>Product Manager</h3>
+                        </div>
+                        <p class="path-description">Overview for non-technical roles</p>
+                        <ol class="path-steps">
+                            <li>Read <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md" target="_blank" rel="noopener">Architecture overview</a></li>
+                            <li>Understand <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#capabilities" target="_blank" rel="noopener">capabilities</a></li>
+                            <li>Review <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">privacy guide</a></li>
+                            <li>Learn <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#team-settings" target="_blank" rel="noopener">team integration</a></li>
+                            <li>Explore use cases</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6 Golden Rules Section -->
+        <section class="section golden-rules" id="golden-rules">
+            <div class="container">
+                <h2 class="section-title">6 Golden Rules</h2>
+                <p class="section-subtitle">Memorize these for immediate improvement</p>
+
+                <div class="rules-list">
+                    <div class="rule">
+                        <span class="rule-number">1</span>
+                        <div class="rule-content">
+                            <h3>Review diffs before accepting</h3>
+                            <p>Always check what Claude changes. Trust, but verify.</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <span class="rule-number">2</span>
+                        <div class="rule-content">
+                            <h3>/compact at 70% context</h3>
+                            <p>Check with <code>/status</code>. Summarize before you hit the limit.</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <span class="rule-number">3</span>
+                        <div class="rule-content">
+                            <h3>Be specific: WHAT + WHERE + HOW + VERIFY</h3>
+                            <p>Clear prompts get better results. Include success criteria.</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <span class="rule-number">4</span>
+                        <div class="rule-content">
+                            <h3>Plan Mode first for complex tasks</h3>
+                            <p>Use <kbd>Shift+Tab</kbd> twice for risky or multi-step work.</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <span class="rule-number">5</span>
+                        <div class="rule-content">
+                            <h3>Create CLAUDE.md for every project</h3>
+                            <p>Project context makes Claude significantly more effective.</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <span class="rule-number">6</span>
+                        <div class="rule-content">
+                            <h3>Commit frequently after each task</h3>
+                            <p>Small atomic commits let you safely revert if something goes wrong.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prompt Formula Section -->
+        <section class="section prompt-formula" id="prompt-formula">
+            <div class="container">
+                <h2 class="section-title">The Prompt Formula</h2>
+                <p class="section-subtitle">Structure your prompts for better results</p>
+
+                <div class="formula-box">
+                    <div class="formula-grid">
+                        <div class="formula-item">
+                            <span class="formula-label">WHAT</span>
+                            <span class="formula-desc">Concrete deliverable</span>
+                        </div>
+                        <div class="formula-item">
+                            <span class="formula-label">WHERE</span>
+                            <span class="formula-desc">File paths</span>
+                        </div>
+                        <div class="formula-item">
+                            <span class="formula-label">HOW</span>
+                            <span class="formula-desc">Constraints, approach</span>
+                        </div>
+                        <div class="formula-item">
+                            <span class="formula-label">VERIFY</span>
+                            <span class="formula-desc">Success criteria</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-example">
+                        <h4>Example</h4>
+                        <pre><code>Add input validation to the login form.
+WHERE: src/components/LoginForm.tsx
+HOW: Use Zod schema, show inline errors
+VERIFY: Empty email shows error message</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Level Up Section -->
+        <section class="section level-up" id="level-up">
+            <div class="container">
+                <h2 class="section-title">Level Up</h2>
+                <p class="section-subtitle">Stop repeating yourself. Automate your patterns.</p>
+
+                <div class="levelup-grid">
+                    <a href="examples.html#agents" class="levelup-card">
+                        <div class="levelup-icon">🤖</div>
+                        <div class="levelup-content">
+                            <h3>Automate repetition → Agents & Commands</h3>
+                            <p>Same review prompt 10x? Create an agent once, reuse forever. <code>/commit</code>, <code>/pr</code>, <code>/review</code> — your workflow, automated.</p>
+                        </div>
+                        <span class="levelup-arrow">&rarr;</span>
+                    </a>
+                    <a href="examples.html#skills" class="levelup-card">
+                        <div class="levelup-icon">📚</div>
+                        <div class="levelup-content">
+                            <h3>Extend knowledge → Skills</h3>
+                            <p>Teach Claude your stack conventions, TDD workflow, or security checklist. Reusable knowledge modules that persist across sessions.</p>
+                        </div>
+                        <span class="levelup-arrow">&rarr;</span>
+                    </a>
+                    <a href="examples.html#hooks-bash" class="levelup-card">
+                        <div class="levelup-icon">🛡️</div>
+                        <div class="levelup-content">
+                            <h3>Secure operations → Hooks</h3>
+                            <p>Block dangerous commands, scan for secrets, auto-format code. Event-driven scripts that run before/after Claude actions.</p>
+                        </div>
+                        <span class="levelup-arrow">&rarr;</span>
+                    </a>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--space-lg);">
+                    <a href="examples.html" class="btn btn-secondary">Browse 49 Templates &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section class="section community">
+            <div class="container">
+                <h2 class="section-title">Community & Resources</h2>
+
+                <!-- French Community Callout -->
+                <div class="fr-callout">
+                    <span class="fr-flag">&#127467;&#127479;</span>
+                    <div class="fr-content">
+                        <p><strong>Communaute francophone</strong> | Tu veux parler de dev et d'IA ? Challenger des idees ? Presenter des outils ? En decouvrir ?</p>
+                        <p><a href="https://www.devw.ai/" target="_blank" rel="noopener"><strong>Dev With AI</strong></a> rassemble pres de 1500 devs sur Slack, tous niveaux et toutes technos confondus — enthousiastes comme sceptiques. Meetups a Paris, Bordeaux et Lyon.</p>
+                    </div>
+                </div>
+
+                <div class="community-grid">
+                    <div class="community-card">
+                        <span class="community-icon">&#128221;</span>
+                        <h3>Contributing</h3>
+                        <p>Found an error? Have a better template? Contributions welcome.</p>
+                        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" class="link" target="_blank" rel="noopener">Contributing Guide &rarr;</a>
+                    </div>
+                    <div class="community-card">
+                        <span class="community-icon">&#11088;</span>
+                        <h3>Star on GitHub</h3>
+                        <p>If this guide saved you time, show your support.</p>
+                        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" class="link" target="_blank" rel="noopener">GitHub Repository &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="author-card author-card-expanded">
+                    <img src="author.jpeg" alt="Florian BRUNIAUX - Claude Code Guide author, Founding Engineer at Méthode Aristote" class="author-photo">
+                    <div class="author-details">
+                        <div class="author-info">
+                            <p><strong>By Florian BRUNIAUX</strong></p>
+                            <p>Founding Engineer @ <a href="https://methode-aristote.fr" target="_blank" rel="noopener">Methode Aristote</a></p>
+                        </div>
+                        <p class="author-bio">
+                            11+ years in tech as CTO, VP Engineering & Founding Engineer. Fullstack developer (TypeScript, Ruby, Python) with a passion for solving problems through technology. Leadership driven by transparency, building teams with loyalty, ambition & benevolence.
+                        </p>
+                        <div class="author-links">
+                            <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener" aria-label="GitHub">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/florian-bruniaux-43408b83/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's New Section -->
+        <section class="section whats-new" id="whats-new">
+            <div class="container">
+                <h2 class="section-title">What's New</h2>
+                <p class="section-subtitle">Latest updates from the changelog</p>
+
+                <div class="changelog-container" id="changelog-container">
+                    <div class="changelog-loading">Loading changelog...</div>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--space-xl);">
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" class="btn btn-secondary" target="_blank" rel="noopener">
+                        View Full Changelog &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>What is Claude Code and how does it work?</summary>
+                        <p>Claude Code is Anthropic's official CLI (command-line interface) that brings Claude AI directly into your terminal. It acts as an AI coding assistant that can read your codebase, write code, run commands, and make multi-file changes autonomously. Think of it as AI pair programming in your terminal.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I install Claude Code?</summary>
+                        <p>Install globally via npm: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+. Then run <code>claude</code> in any project directory to start. See the <a href="cheatsheet.html" target="_blank" rel="noopener">cheatsheet</a> for a quick reference.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is Claude Code free to use?</summary>
+                        <p>Claude Code requires an Anthropic API key with a paid plan. The tool itself is free, but you pay for API usage. Sonnet is the default model (cost-effective for most tasks). Opus is available for complex architecture work at higher cost.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is Claude Code better than GitHub Copilot?</summary>
+                        <p>Both now have agentic capabilities. Claude Code excels at terminal workflows with native MCP, CLAUDE.md memory, Agent SDK, and hooks. Copilot integrates well with VS Code via Agent Mode. Many developers use both. See our <a href="#comparison">comparison table</a> for details.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What is a CLAUDE.md file?</summary>
+                        <p>CLAUDE.md is a project memory file that gives Claude persistent context about your project. Place it in your project root with your tech stack, coding conventions, and commands. Claude reads it automatically at session start. See our <a href="examples.html">templates</a>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What are MCP servers in Claude Code?</summary>
+                        <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting it to external tools and data sources. Examples include database access, browser automation, and documentation lookup. Configure them in <code>~/.claude/mcp.json</code>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What programming languages does Claude Code support?</summary>
+                        <p>Claude Code works with any programming language. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. It can read, write, and refactor code in any language you use.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is this guide official?</summary>
+                        <p>No, this is a community resource. It reflects personal experience after months of daily Claude Code usage, not official Anthropic documentation.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What version of Claude Code is covered?</summary>
+                        <p>The guide is continuously updated. Current version: 3.8.2. Check the CHANGELOG for recent updates.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is my code sent to Anthropic?</summary>
+                        <p>Yes, Claude Code sends prompts and file contents to Anthropic servers. Default retention is 5 years (training enabled). You can opt-out to 30 days or use Enterprise for 0 retention. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">privacy guide</a>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Who is behind this guide?</summary>
+                        <p>I'm <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>, a tech professional with 11+ years of experience across roles including CTO, VP Engineering, Engineering Manager, and Founding Engineer. I've built and scaled teams from scratch (up to 30 people), worked on B2B/B2C SaaS products, and I'm deeply passionate about AI-assisted development. I created this guide as an open-source contribution to help the community master Claude Code—the same way books like <em>Clean Architecture</em>, <em>The Phoenix Project</em>, and <em>The Manager's Path</em> helped me grow. Learning in public and giving back is what drives me.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I contribute?</summary>
+                        <p>Yes! Found an error? Have a better template? Check the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">contributing guide</a>.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></li>
+                        <li><a href="cheatsheet.html" target="_blank" rel="noopener">Cheat Sheet</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md" target="_blank" rel="noopener">Architecture</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">Data Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="examples.html">Examples (49)</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml" target="_blank" rel="noopener">LLM Reference</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.devw.ai/" target="_blank" rel="noopener">Dev With AI (FR)</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues" target="_blank" rel="noopener">Report Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &bull;
+                    Made with dedication by <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>
+                </p>
+                <p class="version" id="version-display">v3.8.2</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copy button functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.querySelector('.copy-icon').textContent;
+                button.querySelector('.copy-icon').textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.querySelector('.copy-icon').textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Intersection Observer for fade-in sections
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            fadeInObserver.observe(section);
+        });
+
+        // GitHub raw content base URL
+        const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main';
+
+        // Fetch and display version dynamically
+        async function loadVersion() {
+            try {
+                const response = await fetch(`${GITHUB_RAW_BASE}/VERSION`);
+                if (response.ok) {
+                    const version = (await response.text()).trim();
+                    const versionEl = document.getElementById('version-display');
+                    if (versionEl) {
+                        versionEl.textContent = `v${version}`;
+                    }
+                }
+            } catch (error) {
+                console.log('Using fallback version');
+            }
+        }
+
+        // Parse changelog markdown into structured data
+        function parseChangelog(markdown) {
+            const releases = [];
+            const lines = markdown.split('\n');
+            let currentRelease = null;
+            let currentSection = null;
+            let buffer = [];
+
+            for (const line of lines) {
+                // Match release header: ## [3.8.0] - 2026-01-16
+                const releaseMatch = line.match(/^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})/);
+                if (releaseMatch) {
+                    if (currentRelease) {
+                        if (currentSection && buffer.length) {
+                            currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+                        }
+                        releases.push(currentRelease);
+                    }
+                    currentRelease = {
+                        version: releaseMatch[1],
+                        date: releaseMatch[2],
+                        sections: []
+                    };
+                    currentSection = null;
+                    buffer = [];
+                    continue;
+                }
+
+                // Skip [Unreleased] section
+                if (line.match(/^## \[Unreleased\]/)) {
+                    currentRelease = null;
+                    continue;
+                }
+
+                if (!currentRelease) continue;
+
+                // Match section header: ### Added, ### Changed, etc.
+                const sectionMatch = line.match(/^### (.+)/);
+                if (sectionMatch) {
+                    if (currentSection && buffer.length) {
+                        currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+                    }
+                    currentSection = sectionMatch[1];
+                    buffer = [];
+                    continue;
+                }
+
+                // Match list items
+                const itemMatch = line.match(/^- \*\*(.+?)\*\*(.*)$/);
+                if (itemMatch && currentSection) {
+                    buffer.push({
+                        title: itemMatch[1],
+                        description: itemMatch[2].replace(/^\s*[-–]\s*/, '').trim()
+                    });
+                }
+            }
+
+            // Don't forget the last release
+            if (currentRelease) {
+                if (currentSection && buffer.length) {
+                    currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+                }
+                releases.push(currentRelease);
+            }
+
+            return releases;
+        }
+
+        // Render changelog entries
+        function renderChangelog(releases, maxReleases = 3) {
+            const container = document.getElementById('changelog-container');
+            if (!container) return;
+
+            const displayReleases = releases.slice(0, maxReleases);
+
+            if (displayReleases.length === 0) {
+                container.innerHTML = '<p class="changelog-error">No changelog entries found.</p>';
+                return;
+            }
+
+            const html = displayReleases.map(release => `
+                <div class="changelog-release">
+                    <div class="changelog-header">
+                        <span class="changelog-version">v${release.version}</span>
+                        <span class="changelog-date">${formatDate(release.date)}</span>
+                    </div>
+                    <div class="changelog-content">
+                        ${release.sections.map(section => `
+                            <div class="changelog-section">
+                                <span class="changelog-section-title">${getSectionIcon(section.title)} ${section.title}</span>
+                                <ul class="changelog-items">
+                                    ${section.items.slice(0, 4).map(item => `
+                                        <li>
+                                            <strong>${item.title}</strong>
+                                            ${item.description ? `<span class="item-desc">${item.description}</span>` : ''}
+                                        </li>
+                                    `).join('')}
+                                    ${section.items.length > 4 ? `<li class="more-items">+${section.items.length - 4} more...</li>` : ''}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        // Format date for display
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        // Get icon for section type
+        function getSectionIcon(title) {
+            const icons = {
+                'Added': '✨',
+                'Changed': '🔄',
+                'Fixed': '🐛',
+                'Removed': '🗑️',
+                'Security': '🔒',
+                'Deprecated': '⚠️',
+                'Internal': '🔧'
+            };
+            // Check if title starts with any of the keys
+            for (const [key, icon] of Object.entries(icons)) {
+                if (title.startsWith(key)) return icon;
+            }
+            return '📝';
+        }
+
+        // Fetch and display changelog
+        async function loadChangelog() {
+            const container = document.getElementById('changelog-container');
+            try {
+                const response = await fetch(`${GITHUB_RAW_BASE}/CHANGELOG.md`);
+                if (response.ok) {
+                    const markdown = await response.text();
+                    const releases = parseChangelog(markdown);
+                    renderChangelog(releases, 3);
+                } else {
+                    throw new Error('Failed to fetch');
+                }
+            } catch (error) {
+                if (container) {
+                    container.innerHTML = `
+                        <p class="changelog-error">
+                            Unable to load changelog.
+                            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">
+                                View on GitHub &rarr;
+                            </a>
+                        </p>
+                    `;
+                }
+            }
+        }
+
+        // Load dynamic content
+        loadVersion();
+        loadChangelog();
+    </script>
+</body>
+</html>
