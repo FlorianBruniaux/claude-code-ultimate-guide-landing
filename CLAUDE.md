@@ -5,7 +5,26 @@
 | Environnement | URL |
 |---------------|-----|
 | **Production** | https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/ |
+| **Custom Domain** | https://claudecode.bruniaux.com (à configurer) |
 | **GitHub Repo** | https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing |
+
+## Configuration Custom Domain
+
+**Domaine cible**: `claudecode.bruniaux.com`
+
+### Étapes de configuration
+
+1. **Créer fichier CNAME** (à la racine du repo):
+   ```
+   claudecode.bruniaux.com
+   ```
+
+2. **Configurer DNS** (chez le registrar de bruniaux.com):
+   - Type: `CNAME`
+   - Host: `claudecode`
+   - Value: `florianbruniaux.github.io`
+
+3. **Activer HTTPS** dans GitHub Pages settings (après propagation DNS)
 
 ## Source de vérité
 
