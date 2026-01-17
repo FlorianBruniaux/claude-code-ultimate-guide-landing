@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning to Code with AI: Junior Developer Guide | Free</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free guide for junior developers on using AI responsibly while learning to code. UVAL Protocol, 30-day plan, Claude Code configuration for learning mode.">
+    <meta name="keywords" content="AI learning, junior developer, Claude Code, coding with AI, UVAL protocol, AI dependency, learn programming, AI assistant education">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/learning/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Learning to Code with AI - Junior Developer Guide">
+    <meta property="og:description" content="Free guide: Use AI to accelerate learning without becoming dependent. UVAL Protocol, 30-day plan, Claude Code templates.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/learning/">
+    <meta property="og:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Claude Code Ultimate Guide">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learning to Code with AI - Junior Developer Guide">
+    <meta name="twitter:description" content="Free guide: Use AI to accelerate learning without becoming dependent. UVAL Protocol, 30-day plan, Claude Code templates.">
+    <meta name="twitter:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Learning to Code with AI: The Conscious Developer's Guide",
+        "description": "Guide for junior developers on using AI responsibly while learning to code",
+        "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+        "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+        "datePublished": "2026-01-17",
+        "inLanguage": "en",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Junior developers, CS students, bootcamp graduates, career changers"
+        }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Learning page specific styles */
+        .learning-hero {
+            text-align: center;
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .learning-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--space-md);
+        }
+
+        .learning-hero .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Self-check section */
+        .self-check {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .self-check h3 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .check-item:hover {
+            transform: translateX(4px);
+            border-left: 3px solid var(--accent);
+        }
+
+        .check-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .check-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .score-result {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            text-align: center;
+            display: none;
+        }
+
+        .score-result.show {
+            display: block;
+        }
+
+        .score-result .score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .score-result .recommendation {
+            margin-top: var(--space-md);
+            color: var(--text-secondary);
+        }
+
+        /* Patterns grid */
+        .patterns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .pattern-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-fast);
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .pattern-card.dependent {
+            border-top: 4px solid #ef4444;
+        }
+
+        .pattern-card.avoidant {
+            border-top: 4px solid #f59e0b;
+        }
+
+        .pattern-card.augmented {
+            border-top: 4px solid #22c55e;
+        }
+
+        .pattern-card h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .pattern-card .signs {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .pattern-card .action {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* UVAL Protocol */
+        .uval-steps {
+            display: grid;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .uval-step {
+            display: flex;
+            gap: var(--space-lg);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .uval-step .letter {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .uval-step .content h4 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .uval-step .content p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .uval-step .implementation {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        /* 30-day plan */
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .plan-table th,
+        .plan-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        .plan-table .ai-ratio {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .plan-table .ai-ratio.low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .plan-table .ai-ratio.medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .plan-table .ai-ratio.high {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        /* Templates section */
+        .templates-list {
+            display: grid;
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .template-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            transition: all var(--transition-fast);
+        }
+
+        .template-item:hover {
+            border-color: var(--accent);
+        }
+
+        .template-item .info h4 {
+            margin-bottom: var(--space-xs);
+        }
+
+        .template-item .info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .template-item .btn {
+            flex-shrink: 0;
+        }
+
+        /* CTA section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(88, 166, 255, 0.05) 100%);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-3xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .uval-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .template-item {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <img src="../claude-code-logo.webp" alt="Claude Code" width="32" height="32">
+                <span>Claude Code Guide</span>
+            </a>
+            <div class="nav-links">
+                <a href="../#guide">Guide</a>
+                <a href="../examples/">Examples</a>
+                <a href="../quiz/">Quiz</a>
+                <a href="./" class="active">Learning</a>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="learning-hero">
+        <h1>Learning to Code with AI</h1>
+        <p class="tagline">The guide for junior developers who want to use AI to accelerate their learning—without becoming dependent on it.</p>
+
+        <div class="warning-box">
+            <p><strong>The hard truth:</strong> AI can make you 3x more productive <em>or</em> unemployable in 3 years. The difference? How you use it.</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" class="btn btn-primary">Read Full Guide &rarr;</a>
+            <a href="#self-check" class="btn btn-secondary">Take Self-Check</a>
+        </div>
+    </header>
+
+    <!-- Quick Self-Check -->
+    <section class="content-section" id="self-check">
+        <h2>Quick Self-Check</h2>
+        <p>Answer honestly. 5 questions to know where you stand.</p>
+
+        <div class="self-check">
+            <div class="check-item" onclick="this.querySelector('input').click()">
+                <input type="checkbox" id="q1" onchange="updateScore()">
+                <label for="q1">Can you explain the last piece of code AI generated for you?</label>
+            </div>
+            <div class="check-item" onclick="this.querySelector('input').click()">
+                <input type="checkbox" id="q2" onchange="updateScore()">
+                <label for="q2">Have you debugged code without AI this week?</label>
+            </div>
+            <div class="check-item" onclick="this.querySelector('input').click()">
+                <input type="checkbox" id="q3" onchange="updateScore()">
+                <label for="q3">Do you know WHY the solution works (not just THAT it works)?</label>
+            </div>
+            <div class="check-item" onclick="this.querySelector('input').click()">
+                <input type="checkbox" id="q4" onchange="updateScore()">
+                <label for="q4">Could you write the same function without AI assistance?</label>
+            </div>
+            <div class="check-item" onclick="this.querySelector('input').click()">
+                <input type="checkbox" id="q5" onchange="updateScore()">
+                <label for="q5">Do you know the limitations of AI for this type of problem?</label>
+            </div>
+
+            <div class="score-result" id="score-result">
+                <div class="score" id="score-value">0/5</div>
+                <div class="recommendation" id="recommendation"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Patterns -->
+    <section class="content-section">
+        <h2>The Three Developer Patterns</h2>
+        <p>Which one are you? Be honest.</p>
+
+        <div class="patterns-grid">
+            <div class="pattern-card dependent">
+                <h3>🔴 Dependent</h3>
+                <p class="signs"><strong>Signs:</strong> Copy-paste without understanding, can't debug AI code, anxiety without AI</p>
+                <p class="action">→ Jump to "Breaking Dependency" section</p>
+            </div>
+
+            <div class="pattern-card avoidant">
+                <h3>🟡 Avoidant</h3>
+                <p class="signs"><strong>Signs:</strong> Refuses AI "on principle", slower than peers, missing out on productivity gains</p>
+                <p class="action">→ Jump to "Embracing AI Critically" section</p>
+            </div>
+
+            <div class="pattern-card augmented">
+                <h3>🟢 Augmented</h3>
+                <p class="signs"><strong>Signs:</strong> Uses AI critically, understands everything, can work with or without AI</p>
+                <p class="action">→ Jump to "Advanced Optimization" section</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- UVAL Protocol -->
+    <section class="content-section">
+        <h2>The UVAL Protocol</h2>
+        <p>Your framework for learning with AI without losing skills.</p>
+
+        <div class="uval-steps">
+            <div class="uval-step">
+                <div class="letter">U</div>
+                <div class="content">
+                    <h4>Understand First (15-min Rule)</h4>
+                    <p>Before asking AI: State the problem in ONE sentence. List 3 possible approaches. Identify what you DON'T know. Then ask AI with context.</p>
+                    <div class="implementation">
+                        # In your CLAUDE.md<br>
+                        Before generating code, ask me:<br>
+                        1. What approaches have I considered?<br>
+                        2. What specifically am I stuck on?
+                    </div>
+                </div>
+            </div>
+
+            <div class="uval-step">
+                <div class="letter">V</div>
+                <div class="content">
+                    <h4>Verify (Explain It Back)</h4>
+                    <p>If you can't explain the code to a colleague, you don't understand it. Period.</p>
+                    <div class="implementation">
+                        # Use /quiz command after code generation<br>
+                        Claude asks YOU to explain what the code does
+                    </div>
+                </div>
+            </div>
+
+            <div class="uval-step">
+                <div class="letter">A</div>
+                <div class="content">
+                    <h4>Apply (Transform, Don't Copy)</h4>
+                    <p>Never copy-paste raw. Modify at least ONE element: variable name, structure, edge case. Modification forces understanding.</p>
+                    <div class="implementation">
+                        Forbidden: Copy-paste verbatim<br>
+                        Required: Adapt to your context
+                    </div>
+                </div>
+            </div>
+
+            <div class="uval-step">
+                <div class="letter">L</div>
+                <div class="content">
+                    <h4>Learn (Capture the Insight)</h4>
+                    <p>End each session by noting ONE thing you learned. Not a journal—just one insight.</p>
+                    <div class="implementation">
+                        # Session-end hook automatically asks:<br>
+                        "What's ONE thing you learned today?"<br>
+                        → Logs to ~/claude-learnings.md
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30-Day Plan -->
+    <section class="content-section">
+        <h2>30-Day Progression Plan</h2>
+        <p>Week-by-week guide to mastering AI-assisted development.</p>
+
+        <table class="plan-table">
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Focus</th>
+                    <th>AI Ratio</th>
+                    <th>Exercise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Week 1</strong></td>
+                    <td>Foundations</td>
+                    <td><span class="ai-ratio low">20% AI</span></td>
+                    <td>Build feature WITHOUT AI, then compare</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 2</strong></td>
+                    <td>Understanding</td>
+                    <td><span class="ai-ratio medium">40% AI</span></td>
+                    <td>Use AI, but explain every line</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 3</strong></td>
+                    <td>Critical Use</td>
+                    <td><span class="ai-ratio medium">60% AI</span></td>
+                    <td>Challenge AI suggestions, find bugs</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 4</strong></td>
+                    <td>Augmented</td>
+                    <td><span class="ai-ratio high">70% AI</span></td>
+                    <td>Full productivity with verification</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Templates -->
+    <section class="content-section">
+        <h2>Ready-to-Use Templates</h2>
+        <p>Configure Claude Code for learning, not just producing.</p>
+
+        <div class="templates-list">
+            <div class="template-item">
+                <div class="info">
+                    <h4>Learning Mode CLAUDE.md</h4>
+                    <p>Configuration that makes Claude explain WHY, not just WHAT. Includes challenge mode and interview prep.</p>
+                </div>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
+            </div>
+
+            <div class="template-item">
+                <div class="info">
+                    <h4>/quiz Slash Command</h4>
+                    <p>Auto-quiz after code generation. 5 difficulty levels: Recall → Understanding → Application → Analysis → Synthesis.</p>
+                </div>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/quiz.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
+            </div>
+
+            <div class="template-item">
+                <div class="info">
+                    <h4>Learning Capture Hook</h4>
+                    <p>Session-end hook that prompts for ONE learning insight. Builds a learning journal with zero friction.</p>
+                </div>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/learning-capture.sh" target="_blank" class="btn btn-secondary">View &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="content-section">
+        <div class="cta-section">
+            <h2>Ready to Learn the Right Way?</h2>
+            <p>The full guide includes: Red flags checklist, breaking dependency strategies, case studies, and more.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" class="btn btn-primary">Read Full Guide (~15 min)</a>
+                <a href="../" class="btn btn-secondary">Back to Main Guide</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Guide</h4>
+                    <ul>
+                        <li><a href="../#guide">Full Guide</a></li>
+                        <li><a href="../#cheatsheet">Cheat Sheet</a></li>
+                        <li><a href="../examples/">Examples (56)</a></li>
+                        <li><a href="../quiz/">Quiz (159)</a></li>
+                        <li><a href="./">Learning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener">GitHub Repository</a></li>
+                        <li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" rel="noopener">Official Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Author</h4>
+                    <ul>
+                        <li><a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">@FlorianBruniaux</a></li>
+                        <li><a href="https://methode-aristote.fr" target="_blank" rel="noopener">Methode Aristote</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Claude Code Ultimate Guide. Open source under CC BY-SA 4.0.</p>
+                <p class="version">v3.8.2</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateScore() {
+            const checkboxes = document.querySelectorAll('.self-check input[type="checkbox"]');
+            let score = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) score++;
+            });
+
+            const scoreResult = document.getElementById('score-result');
+            const scoreValue = document.getElementById('score-value');
+            const recommendation = document.getElementById('recommendation');
+
+            scoreValue.textContent = `${score}/5`;
+            scoreResult.classList.add('show');
+
+            if (score <= 2) {
+                recommendation.innerHTML = '<strong style="color: #ef4444;">High risk of dependency.</strong><br>Read the "Breaking Dependency" section in the full guide.';
+            } else if (score <= 4) {
+                recommendation.innerHTML = '<strong style="color: #f59e0b;">Room for improvement.</strong><br>Focus on the UVAL Protocol to strengthen your learning habits.';
+            } else {
+                recommendation.innerHTML = '<strong style="color: #22c55e;">You\'re on the right track!</strong><br>Check the Advanced Optimization section for power-user tips.';
+            }
+        }
+    </script>
+</body>
+</html>
