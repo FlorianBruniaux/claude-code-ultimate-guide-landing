@@ -1,64 +1,79 @@
-# Claude Code Guide - Landing Page
+# Claude Code Guide - Landing Site
 
-Landing page for the [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide).
+Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide).
 
 ## Live Site
 
 **URL**: [florianbruniaux.github.io/claude-code-ultimate-guide-landing](https://florianbruniaux.github.io/claude-code-ultimate-guide-landing)
 
-## Setup GitHub Pages
+## Features
 
-1. Go to repository **Settings**
-2. Navigate to **Pages** (left sidebar)
-3. Under **Source**, select `Deploy from a branch`
-4. Select `main` branch and `/ (root)` folder
-5. Click **Save**
-
-The site will be live at `https://florianbruniaux.github.io/claude-code-ultimate-guide-landing` within a few minutes.
-
-## Custom Domain (Optional)
-
-To use a custom domain:
-
-1. Add a `CNAME` file with your domain:
-   ```
-   yourdomain.com
-   ```
-2. Configure DNS at your registrar:
-   - For apex domain: A records pointing to GitHub Pages IPs
-   - For subdomain: CNAME record pointing to `florianbruniaux.github.io`
-
-See [GitHub Pages custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+- **Global Search** (Cmd+K / Ctrl+K) - Fuzzy search across templates, FAQ, rules, and guide sections
+- **Interactive Quiz** - 217 questions across 14 categories with progress tracking
+- **Template Browser** - 52 production-ready templates with copy functionality
+- **Cheat Sheet** - Quick reference PDF download
+- **Learning Path** - Personalized onboarding flow
+- **Mobile Responsive** - Hamburger menu for tablet/mobile (< 768px)
 
 ## Structure
 
 ```
 claude-code-ultimate-guide-landing/
-├── index.html    # Single-page site
-├── styles.css    # Dark mode styles
-├── favicon.svg   # Terminal icon
-└── README.md     # This file
+├── index.html           # Main landing page
+├── quiz/index.html      # Interactive quiz
+├── examples/index.html  # Template browser
+├── cheatsheet/index.html # Quick reference
+├── learning/index.html  # Learning path
+├── styles.css           # Shared styles
+├── search.js            # Search engine (MiniSearch)
+├── search-data.js       # FAQ + Golden Rules data
+├── guide-data.js        # Guide sections index
+├── examples-data.js     # Templates data
+└── scripts/
+    └── sync-guide-data.sh  # Sync verification script
 ```
 
-## Content Updates
+## Data Synchronization
 
-The landing page pulls stats and links from the main repository. When updating:
+This site is **secondary** to the main guide. Stats must be synced manually.
 
-1. **Version**: Update in `index.html` footer (currently v3.8.0)
-2. **Stats**: Update badge numbers if main repo changes significantly
-3. **Links**: All links point to the main `claude-code-ultimate-guide` repository
+### Current Values (from main guide)
+
+| Metric | Value | Source |
+|--------|-------|--------|
+| Version | 3.8.2 | VERSION file |
+| Templates | 52 | examples/ directory |
+| Quiz Questions | 217 | quiz/questions/*.yaml |
+| Guide Lines | 9,800+ | guide/ultimate-guide.md |
+
+### Sync Verification
+
+```bash
+./scripts/sync-guide-data.sh
+```
+
+### Files to Update on Sync
+
+1. **index.html** - Version, template count, quiz count in meta tags and badges
+2. **examples-data.js** - Template definitions
+3. **guide-data.js** - Guide section index
+4. **search-data.js** - FAQ and Golden Rules
 
 ## Development
 
-No build step required. Open `index.html` in a browser or use a local server:
-
 ```bash
 # Python
-python -m http.server 8000
+python -m http.server 8080
 
-# Node (npx)
+# Node
 npx serve
 ```
+
+## Search Architecture
+
+- **Library**: MiniSearch (CDN, lazy-loaded on first Cmd+K)
+- **Index**: ~110 items (52 templates + 12 FAQ + 6 rules + 47 guide sections)
+- **Features**: Fuzzy matching, prefix search, category filtering
 
 ## License
 
