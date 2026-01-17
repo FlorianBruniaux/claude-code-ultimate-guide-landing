@@ -53,9 +53,9 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | Version | `3.8.2` | VERSION file |
-| Templates | `49` | Count of examples/ files |
+| Templates | `57` | Count of examples/ files |
 | Quiz questions | `159` | questions.json |
-| Guide lines | `9,600+` | ultimate-guide.md |
+| Guide lines | `9,800+` | ultimate-guide.md |
 
 ## Fichiers critiques
 
@@ -77,7 +77,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 - Ligne ~837: FAQ text "Current version: X.X.X"
 - Ligne ~892: Footer `<p class="version">vX.X.X</p>`
 
-### Templates count (49)
+### Templates count (57)
 - Ligne ~6: `<title>` tag
 - Ligne ~9: meta description
 - Ligne ~18-19: og:title, og:description
