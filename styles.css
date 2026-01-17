@@ -41,6 +41,7 @@
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-normal: 250ms ease;
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Reset & Base */
@@ -129,23 +130,35 @@ kbd {
 .btn-primary {
     background-color: var(--accent-secondary);
     color: #ffffff;
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border: none;
+    filter: drop-shadow(0 4px 12px rgba(35, 134, 54, 0.3));
+    transition: transform 0.2s var(--ease-out-back),
+                filter 0.2s ease;
 }
 
 .btn-primary:hover {
     background-color: var(--accent-secondary-hover);
     color: #ffffff;
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 6px 20px rgba(35, 134, 54, 0.4));
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(1);
 }
 
 .btn-secondary {
-    background-color: var(--bg-tertiary);
+    background: transparent;
     color: var(--text-primary);
     border: 1px solid var(--border);
+    transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .btn-secondary:hover {
-    background-color: var(--bg-secondary);
-    border-color: var(--text-secondary);
-    color: var(--text-primary);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .btn-outline {
@@ -167,6 +180,7 @@ kbd {
     top: 0;
     z-index: 100;
     background-color: rgba(13, 17, 23, 0.95);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
 }
@@ -241,8 +255,10 @@ kbd {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.75rem, 6vw + 0.5rem, 4.5rem);
     font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-md);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
@@ -280,6 +296,20 @@ kbd {
 
 .hero-badges img {
     height: 28px;
+}
+
+/* Stats styling */
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* ============================================
@@ -396,6 +426,8 @@ kbd {
 
 .section-title {
     font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     text-align: center;
     margin-bottom: var(--space-sm);
 }
@@ -670,13 +702,35 @@ kbd {
     border: 1px solid var(--border);
     border-radius: var(--border-radius-lg);
     padding: var(--space-xl);
-    transition: all var(--transition-normal);
+    transition: transform 0.25s var(--ease-out-back),
+                box-shadow 0.25s ease,
+                border-color var(--transition-normal);
+    position: relative;
 }
 
 .feature-card:hover {
     border-color: var(--text-secondary);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Featured card */
+.feature-card.featured {
+    border-color: var(--accent);
+}
+
+.card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-secondary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .feature-card-link {
@@ -1436,13 +1490,20 @@ details[open] > *:not(summary) {
 }
 
 /* Fade-in animation for sections */
+/* Fallback si JS échoue - sections visibles par défaut */
 .section {
+    opacity: 1;
+    transform: none;
+}
+
+/* JS loaded - réactiver animations */
+.js-loaded .section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.section.visible {
+.js-loaded .section.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1474,12 +1535,19 @@ details[open] > *:not(summary) {
 }
 
 /* Focus states for accessibility */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible,
-details:focus-visible {
+:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Links hover enhancement */
+a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):hover {
+    color: var(--accent);
 }
 
 /* ============================================
@@ -1856,5 +1924,10 @@ details:focus-visible {
 
     html {
         scroll-behavior: auto;
+    }
+
+    .section {
+        opacity: 1;
+        transform: none;
     }
 }
