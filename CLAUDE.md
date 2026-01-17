@@ -1,5 +1,12 @@
 # Landing Site - Claude Code Ultimate Guide
 
+## URLs
+
+| Environnement | URL |
+|---------------|-----|
+| **Production** | https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/ |
+| **GitHub Repo** | https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing |
+
 ## Source de vérité
 
 **Ce site est SECONDAIRE**. La source de vérité est le guide principal:
