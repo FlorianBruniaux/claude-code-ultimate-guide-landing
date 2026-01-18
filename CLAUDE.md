@@ -115,7 +115,7 @@ python3 -m http.server 8080
 - Ligne ~837: FAQ text "Current version: X.X.X"
 - Ligne ~892: Footer `<p class="version">vX.X.X</p>`
 
-### Templates count (53)
+### Templates count (52)
 - Ligne ~6: `<title>` tag
 - Ligne ~9: meta description
 - Ligne ~18-19: og:title, og:description
