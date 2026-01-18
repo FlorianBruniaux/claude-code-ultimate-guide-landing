@@ -55,7 +55,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | Version | `3.8.2` | VERSION file |
-| Templates | `56` | Count of examples/ files |
+| Templates | `55` | Count of examples/ files |
 | Quiz questions | `217` | quiz/questions/*.yaml |
 | Guide lines | `9,800+` | ultimate-guide.md |
 
@@ -171,7 +171,7 @@ python3 -m http.server 8080
 - Ligne ~837: FAQ text "Current version: X.X.X"
 - Ligne ~892: Footer `<p class="version">vX.X.X</p>`
 
-### Templates count (52)
+### Templates count (55)
 - Ligne ~6: `<title>` tag
 - Ligne ~9: meta description
 - Ligne ~18-19: og:title, og:description
