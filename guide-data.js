@@ -122,7 +122,7 @@ window.SEARCH_GUIDE = [
         id: 'guide-plan-mode',
         type: 'guide',
         title: 'Plan Mode & Thinking',
-        content: 'plan mode /plan thinking depth ultrathink think-hard architecture design',
+        content: 'plan mode /plan thinking extended-thinking Alt+T toggle architecture design',
         url: GUIDE_BASE + 'ultimate-guide.md#plan-mode--thinking-depth'
     },
     {

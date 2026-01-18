@@ -1612,7 +1612,7 @@
         "d": "Assigning agents to different team members"
       },
       "correct": "b",
-      "explanation": "Split Role Sub-Agents provide multi-perspective analysis in parallel. Process: 1) Activate Plan Mode + ultrathink, 2) Ask \"What expert roles would analyze this?\", 3) Select roles (e.g., Security Expert, Senior Dev, Code Reviewer), 4) Run parallel analysis from each perspective, 5) Consolidate reports into recommendations. Great for comprehensive code and UX reviews.",
+      "explanation": "Split Role Sub-Agents provide multi-perspective analysis in parallel. Process: 1) Activate Plan Mode (thinking enabled by default in Opus 4.5), 2) Ask \"What expert roles would analyze this?\", 3) Select roles (e.g., Security Expert, Senior Dev, Code Reviewer), 4) Run parallel analysis from each perspective, 5) Consolidate reports into recommendations. Great for comprehensive code and UX reviews.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -3111,12 +3111,12 @@
       "question": "What are the three components of 'The Trinity' pattern?",
       "options": {
         "a": "Git, VSCode, Terminal",
-        "b": "Plan Mode, Ultrathink, Sequential Thinking",
+        "b": "Plan Mode, Extended Thinking, Sequential Thinking",
         "c": "Serena, Context7, Playwright",
         "d": "Agent, Skill, Command"
       },
       "correct": "b",
-      "explanation": "The Trinity is the most powerful Claude Code pattern combining:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Ultrathink** - Deep analysis with extended thinking\n3. **Sequential Thinking (MCP)** - Structured multi-step reasoning\n\nCombined, these provide maximum understanding before taking action.\nUse for architecture decisions, complex debugging, and legacy modernization.",
+      "explanation": "The Trinity is the most powerful Claude Code pattern combining:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep analysis (enabled by default with Opus 4.5)\n3. **Sequential Thinking (MCP)** - Structured multi-step reasoning\n\nCombined, these provide maximum understanding before taking action.\nUse for architecture decisions, complex debugging, and legacy modernization.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.1 The Trinity",
@@ -3130,19 +3130,19 @@
         "power"
       ],
       "category_id": 9,
-      "question": "What is the approximate token usage for --ultrathink?",
+      "question": "How do you toggle thinking mode on/off in Claude Code (v2.0.67+)?",
       "options": {
-        "a": "~1K tokens",
-        "b": "~4K tokens",
-        "c": "~10K tokens",
-        "d": "~32K tokens"
+        "a": "Use --think or --ultrathink flags",
+        "b": "Alt+T (session) or /config (permanent)",
+        "c": "Edit settings.json manually",
+        "d": "Use /model opus"
       },
-      "correct": "d",
-      "explanation": "Ultrathink levels and token usage:\n\n| Flag | Thinking Depth | Token Usage | Best For |\n|------|----------------|-------------|----------|\n| `--think` | Standard | ~4K | Multi-component analysis |\n| `--think-hard` | Deep | ~10K | Architectural decisions |\n| `--ultrathink` | Maximum | ~32K | Critical redesign |\n\nHigher levels increase latency and cost - use the smallest level that works.",
+      "correct": "b",
+      "explanation": "Since v2.0.67, thinking is enabled by default at maximum budget with Opus 4.5. The keywords 'think', 'think hard', 'ultrathink' are now cosmetic only.\n\n**Control methods:**\n- **Alt+T** (Option+T on macOS): Toggle thinking on/off for current session\n- **/config** → Thinking mode: Enable/disable globally\n\nThinking is only available with Opus 4.5 - Sonnet and Haiku do not support extended thinking.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.1 The Trinity",
-        "anchor": "#ultrathink-levels"
+        "anchor": "#extended-thinking-opus-45"
       }
     },
     {

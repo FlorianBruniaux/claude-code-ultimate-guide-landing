@@ -48,13 +48,14 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Golden Rules | README.md | index.html section |
 | FAQ | README.md | index.html (schema + HTML) |
 | **Guide search index** | `guide/*.md` headings | `guide-data.js` (40 entrées) |
+| **Claude Code Releases** | `machine-readable/claude-code-releases.yaml` | index.html (banner + #releases section) |
 
 ## Valeurs actuelles (à maintenir synchronisées)
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | Version | `3.8.2` | VERSION file |
-| Templates | `52` | Count of examples/ files |
+| Templates | `56` | Count of examples/ files |
 | Quiz questions | `217` | quiz/questions/*.yaml |
 | Guide lines | `9,800+` | ultimate-guide.md |
 
@@ -107,6 +108,61 @@ python3 -m http.server 8080
     content: 'mots-clés séparés par espaces pour le fuzzy search',
     url: GUIDE_BASE + 'fichier.md#ancre'
 }
+```
+
+## Synchronisation Claude Code Releases
+
+Les releases Claude Code sont affichées dans deux endroits:
+1. **Version banner** (après le header) - version actuelle avec lien "What's new →"
+2. **Section #releases** - timeline des 5 dernières versions + breaking changes
+
+**Source de vérité:** `machine-readable/claude-code-releases.yaml` dans le guide principal
+
+**Quand mettre à jour :**
+- Nouvelle version majeure de Claude Code publiée
+- Breaking change annoncé par Anthropic
+- Correction d'une date ou feature incorrecte
+
+**Éléments à synchroniser :**
+
+| Élément | Emplacement index.html |
+|---------|------------------------|
+| Version actuelle | `.cc-version-badge` (ligne ~197) |
+| 5 dernières releases | `.releases-timeline` cards |
+| Breaking changes | `.breaking-changes` liste |
+
+**Workflow de mise à jour :**
+```bash
+# 1. Mettre à jour le YAML source dans le guide principal
+vim /path/to/guide/machine-readable/claude-code-releases.yaml
+
+# 2. Reporter les changements dans index.html
+# - Mettre à jour le badge version si nouvelle release
+# - Ajouter/modifier les release cards (garder les 5 plus récentes)
+# - Mettre à jour les breaking changes si nouveaux
+
+# 3. Tester localement
+python3 -m http.server 8080
+# Vérifier le banner et la section #releases
+```
+
+**Structure d'une release card :**
+```html
+<div class="release-card"><!-- ajouter "release-latest" pour la plus récente -->
+    <div class="release-header">
+        <span class="release-version">vX.Y.Z</span>
+        <span class="release-date">Mon D, YYYY</span>
+    </div>
+    <ul class="release-highlights">
+        <li>Feature 1</li>
+        <li>Feature 2 avec <code>code</code></li>
+    </ul>
+</div>
+```
+
+**Structure d'un breaking change :**
+```html
+<li><span class="breaking-badge">Type</span> Description avec <code>code</code></li>
 ```
 
 ## Emplacements des stats dans index.html

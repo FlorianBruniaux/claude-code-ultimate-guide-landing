@@ -42,7 +42,7 @@ This site is **secondary** to the main guide. Stats must be synced manually.
 | Metric | Value | Source |
 |--------|-------|--------|
 | Version | 3.8.2 | VERSION file |
-| Templates | 52 | examples/ directory |
+| Templates | 56 | examples/ directory |
 | Quiz Questions | 217 | quiz/questions/*.yaml |
 | Guide Lines | 9,800+ | guide/ultimate-guide.md |
 
@@ -72,7 +72,7 @@ npx serve
 ## Search Architecture
 
 - **Library**: MiniSearch (CDN, lazy-loaded on first Cmd+K)
-- **Index**: ~110 items (52 templates + 12 FAQ + 6 rules + 47 guide sections)
+- **Index**: ~110 items (56 templates + 12 FAQ + 6 rules + 47 guide sections)
 - **Features**: Fuzzy matching, prefix search, category filtering
 
 ## License
