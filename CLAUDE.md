@@ -54,10 +54,10 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.9.0` | VERSION file |
-| Templates | `63` | Count of examples/ files |
-| Quiz questions | `227` | quiz/questions/*.yaml |
-| Guide lines | `10,300+` | ultimate-guide.md |
+| Version | `3.9.5` | VERSION file |
+| Templates | `61` | Count of examples/ files (excl. README/index) |
+| Quiz questions | `227` | questions.json |
+| Guide lines | `11,100+` | ultimate-guide.md |
 
 ## Fichiers critiques
 
@@ -164,6 +164,30 @@ python3 -m http.server 8080
 ```html
 <li><span class="breaking-badge">Type</span> Description avec <code>code</code></li>
 ```
+
+## Claude Code Releases Sync Policy
+
+**Source de vérité:** `machine-readable/claude-code-releases.yaml` dans le guide principal
+
+**Règle de sélection (5 releases notables):**
+Inclure si AU MOINS UN critère :
+1. Feature marquée ⭐ dans le YAML
+2. Breaking change présent
+3. ≥3 highlights dans le YAML
+
+Exclure si :
+- Bugfix-only (1 highlight sans ⭐)
+- Fix/patch sans impact utilisateur visible
+
+**Banner version:** Toujours la version actuelle (même bugfix-only)
+
+**Breaking changes priorité:**
+1. Security fixes (toujours afficher)
+2. OAuth/URL changes (user-facing)
+3. Behavior changes
+4. Deprecations (peut différer)
+
+**Fréquence sync:** Vérifier YAML hebdomadairement ou lors de nouvelle série (2.2.x, etc.)
 
 ## Emplacements des stats dans index.html
 
