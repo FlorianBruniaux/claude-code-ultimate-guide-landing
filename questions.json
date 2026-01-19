@@ -55,6 +55,10 @@
     {
       "id": 14,
       "name": "Privacy & Observability"
+    },
+    {
+      "id": 15,
+      "name": "AI Ecosystem"
     }
   ],
   "questions": [
@@ -5109,6 +5113,206 @@
         "file": "guide/observability.md",
         "section": "Native Commands",
         "anchor": "#native-commands"
+      }
+    },
+    {
+      "id": "15-001",
+      "difficulty": "junior",
+      "profiles": ["junior", "senior", "power"],
+      "category_id": 15,
+      "question": "What is the main philosophy behind using complementary AI tools with Claude Code?",
+      "options": {
+        "a": "Replace Claude Code with better tools",
+        "b": "Augmentation, not replacement - chain the right tool for each step",
+        "c": "Use as many tools as possible simultaneously",
+        "d": "Avoid using Claude Code for coding tasks"
+      },
+      "correct": "b",
+      "explanation": "The philosophy is 'augmentation, not replacement.' Claude Code excels at contextual reasoning and implementation, but has gaps: no real-time web search with source verification, no image generation, no PowerPoint/slide generation, no audio synthesis. The goal is to chain the right tool for each step of your workflow.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "Introduction",
+        "anchor": "#introduction"
+      }
+    },
+    {
+      "id": "15-002",
+      "difficulty": "junior",
+      "profiles": ["junior", "senior", "power"],
+      "category_id": 15,
+      "question": "When should you use Perplexity instead of Claude Code?",
+      "options": {
+        "a": "When implementing features in your codebase",
+        "b": "When you need deep research with 100+ verified sources",
+        "c": "When editing multiple files",
+        "d": "When running tests"
+      },
+      "correct": "b",
+      "explanation": "Perplexity excels at research with verified sources. Use Perplexity for: 'What's the latest API for X?' (real-time info), 'Compare 5 libraries for auth' (sourced comparisons), Deep Research mode synthesizes 100+ sources. Use Claude Code for: Implementation in your codebase, contextual code explanation, multi-file editing.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "1. Perplexity AI",
+        "anchor": "#1-perplexity-ai-research--sourcing"
+      }
+    },
+    {
+      "id": "15-003",
+      "difficulty": "senior",
+      "profiles": ["senior", "power"],
+      "category_id": 15,
+      "question": "What is the recommended Research-to-Code pipeline?",
+      "options": {
+        "a": "Claude Code -> Perplexity -> Implementation",
+        "b": "Perplexity Deep Research -> Export spec.md -> Claude Code implements",
+        "c": "Google Search -> Copy code -> Paste in project",
+        "d": "Ask Claude Code to search the web first"
+      },
+      "correct": "b",
+      "explanation": "The Research-to-Code pipeline: 1) PERPLEXITY (Deep Research) - Research best practices with sources, output: 2000-word spec with citations. 2) Export as spec.md. 3) CLAUDE CODE - 'Implement following spec.md', output: Working implementation with tests. This ensures implementation is based on verified, current information.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "Integration Workflow",
+        "anchor": "#integration-workflow"
+      }
+    },
+    {
+      "id": "15-004",
+      "difficulty": "senior",
+      "profiles": ["senior", "power"],
+      "category_id": 15,
+      "question": "Which tool is best for converting a UI screenshot to React code?",
+      "options": {
+        "a": "Perplexity",
+        "b": "Claude Code directly",
+        "c": "Gemini 2.5 Pro -> then Claude Code for refinement",
+        "d": "NotebookLM"
+      },
+      "correct": "c",
+      "explanation": "Gemini 2.5 Pro excels at visual understanding. Visual-to-Code Pipeline: 1) GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity). 2) CLAUDE CODE: Refine for your project - add TypeScript types, connect to your components, integrate with your state management. Claude Code alone has limited image understanding compared to Gemini.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "2. Google Gemini",
+        "anchor": "#2-google-gemini-visual-understanding"
+      }
+    },
+    {
+      "id": "15-005",
+      "difficulty": "junior",
+      "profiles": ["junior", "senior", "power"],
+      "category_id": 15,
+      "question": "Which tool should you use to create PowerPoint presentations from code documentation?",
+      "options": {
+        "a": "Claude Code",
+        "b": "Perplexity",
+        "c": "Kimi (Moonshot AI)",
+        "d": "Gemini"
+      },
+      "correct": "c",
+      "explanation": "Kimi (kimi.ai) from Moonshot AI specializes in PPTX generation: native PPTX export (actual slides, not markdown), 128K+ token context (entire codebases), code-aware layouts with syntax highlighting, excellent for stakeholder decks from technical content. Workflow: Claude Code generates summary -> Kimi creates presentation.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "3. Kimi",
+        "anchor": "#3-kimi-pptx--long-document-generation"
+      }
+    },
+    {
+      "id": "15-006",
+      "difficulty": "senior",
+      "profiles": ["senior", "power"],
+      "category_id": 15,
+      "question": "What is NotebookLM's unique feature for developer onboarding?",
+      "options": {
+        "a": "Code execution",
+        "b": "Audio Overview - generates podcast-style explanations from docs",
+        "c": "Real-time collaboration",
+        "d": "Git integration"
+      },
+      "correct": "b",
+      "explanation": "NotebookLM's Audio Overview feature: upload 50+ documentation files, generates 10-15 minute 'podcast', two AI hosts discuss your codebase, perfect for onboarding or reviewing large systems. Workflow: Export docs to combined-docs.md, upload to NotebookLM, generate Audio Overview, listen during commute, return to Claude Code with deeper understanding.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "4. NotebookLM",
+        "anchor": "#4-notebooklm-synthesis--audio"
+      }
+    },
+    {
+      "id": "15-007",
+      "difficulty": "power",
+      "profiles": ["power"],
+      "category_id": 15,
+      "question": "In the complete workflow pipeline, what is the correct order of phases?",
+      "options": {
+        "a": "Implementation -> Planning -> Delivery",
+        "b": "Planning (Perplexity/Gemini/NotebookLM) -> Implementation (Claude Code) -> Delivery (Kimi)",
+        "c": "Delivery -> Planning -> Implementation",
+        "d": "All tools simultaneously"
+      },
+      "correct": "b",
+      "explanation": "The complete pipeline has 3 phases: PLANNING PHASE - Perplexity: Deep Research -> spec.md, Gemini: Diagram Analysis -> mermaid + plan, NotebookLM: Doc Synthesis -> audio overview. IMPLEMENTATION PHASE - Claude Code: Multi-file implementation, IDE + Copilot: Inline autocomplete. DELIVERY PHASE - Claude Code: PR description, release notes, Kimi: Stakeholder deck (presentation.pptx).",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "7. Workflow Orchestration",
+        "anchor": "#7-workflow-orchestration"
+      }
+    },
+    {
+      "id": "15-008",
+      "difficulty": "junior",
+      "profiles": ["junior", "senior", "power"],
+      "category_id": 15,
+      "question": "What is v0.dev best used for in the AI ecosystem?",
+      "options": {
+        "a": "Backend API development",
+        "b": "Database queries",
+        "c": "Rapid UI prototyping with Shadcn/Tailwind",
+        "d": "Security auditing"
+      },
+      "correct": "c",
+      "explanation": "v0.dev excels at rapid UI prototyping: generates React + Shadcn + Tailwind components, live preview in browser, quick iteration on UI designs. Workflow: v0: Prompt -> Get component preview, Export code, Claude Code: Adapt for your project - add TypeScript types, connect to your APIs, integrate with your design system.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "6. UI Prototypers",
+        "anchor": "#6-ui-prototypers-v0-bolt-lovable"
+      }
+    },
+    {
+      "id": "15-009",
+      "difficulty": "senior",
+      "profiles": ["senior", "power"],
+      "category_id": 15,
+      "question": "How does Claude WebSearch compare to Perplexity Pro for research?",
+      "options": {
+        "a": "Claude WebSearch has more sources (100+)",
+        "b": "They are identical in functionality",
+        "c": "Claude WebSearch: 5-10 sources, quick lookups. Perplexity Pro: 100+ sources, comprehensive research",
+        "d": "Perplexity cannot access real-time data"
+      },
+      "correct": "c",
+      "explanation": "Comparison: Claude WebSearch - ~5-10 sources, basic source verification, best for quick lookups. Perplexity Pro - 100+ sources (Deep Research), full citations, best for comprehensive research, costs $20/month. Recommendation: Use Claude WebSearch for quick factual checks, use Perplexity Deep Research before significant implementations.",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "Comparison",
+        "anchor": "#comparison-claude-websearch-vs-perplexity"
+      }
+    },
+    {
+      "id": "15-010",
+      "difficulty": "power",
+      "profiles": ["power"],
+      "category_id": 15,
+      "question": "What is the 'Minimal Stack' monthly cost recommendation for AI tools?",
+      "options": {
+        "a": "$200+/month - all Pro subscriptions",
+        "b": "$40-70/month - Claude Code + Perplexity Pro, free tiers for rest",
+        "c": "$0 - only free tiers",
+        "d": "$500+/month - enterprise plans"
+      },
+      "correct": "b",
+      "explanation": "Recommended subscription stacks: Minimal Stack ($40-70/month) - Claude Code (pay-per-use): $20-50, Perplexity Pro: $20, Everything else: Free tiers (NotebookLM, Kimi, Gemini free). Balanced Stack ($80-110/month) adds Gemini Advanced ($20) and Cursor Pro ($20). Cost optimization tips: Use Haiku for simple tasks, batch research sessions in Perplexity, check context usage regularly (/status).",
+      "doc_reference": {
+        "file": "guide/ai-ecosystem.md",
+        "section": "8. Cost & Subscription Strategy",
+        "anchor": "#8-cost--subscription-strategy"
       }
     }
   ]
