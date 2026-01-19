@@ -9,7 +9,7 @@ Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBrun
 ## Features
 
 - **Global Search** (Cmd+K / Ctrl+K) - Fuzzy search across templates, FAQ, rules, and guide sections
-- **Interactive Quiz** - 217 questions across 14 categories with progress tracking
+- **Interactive Quiz** - 227 questions across 14 categories with progress tracking
 - **Template Browser** - 55 production-ready templates with copy functionality
 - **Cheat Sheet** - Quick reference PDF download
 - **Learning Path** - Personalized onboarding flow
@@ -43,7 +43,7 @@ This site is **secondary** to the main guide. Stats must be synced manually.
 |--------|-------|--------|
 | Version | 3.8.2 | VERSION file |
 | Templates | 55 | examples/ directory |
-| Quiz Questions | 217 | quiz/questions/*.yaml |
+| Quiz Questions | 227 | quiz/questions/*.yaml |
 | Guide Lines | 9,800+ | guide/ultimate-guide.md |
 
 ### Sync Verification
