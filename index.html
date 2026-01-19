@@ -1138,6 +1138,14 @@ VERIFY: Empty email shows error message</code></pre>
             return releases;
         }
 
+        // Generate GitHub anchor for changelog version
+        function getChangelogAnchor(version, date) {
+            // GitHub heading anchors: lowercase, remove special chars, spaces → dashes
+            // ## [3.9.0] - 2026-01-19 → #390---2026-01-19
+            const anchor = `${version}---${date}`.replace(/\./g, '');
+            return `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#${anchor}`;
+        }
+
         // Render changelog entries
         function renderChangelog(releases, maxReleases = 3) {
             const container = document.getElementById('changelog-container');
@@ -1153,7 +1161,12 @@ VERIFY: Empty email shows error message</code></pre>
             const html = displayReleases.map(release => `
                 <div class="changelog-release">
                     <div class="changelog-header">
-                        <span class="changelog-version">v${release.version}</span>
+                        <a href="${getChangelogAnchor(release.version, release.date)}" target="_blank" rel="noopener" class="changelog-version-link">
+                            <span class="changelog-version">v${release.version}</span>
+                            <svg class="external-link-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                            </svg>
+                        </a>
                         <span class="changelog-date">${formatDate(release.date)}</span>
                     </div>
                     <div class="changelog-content">

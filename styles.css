@@ -1666,6 +1666,32 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     font-size: 1.1rem;
 }
 
+.changelog-version-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.changelog-version-link:hover {
+    opacity: 0.8;
+}
+
+.changelog-version-link:hover .changelog-version {
+    text-decoration: underline;
+}
+
+.changelog-version-link .external-link-icon {
+    color: var(--text-muted);
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.changelog-version-link:hover .external-link-icon {
+    opacity: 1;
+}
+
 .changelog-date {
     font-size: 0.9rem;
     color: var(--text-muted);
