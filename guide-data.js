@@ -428,5 +428,177 @@ window.SEARCH_GUIDE = [
         title: 'Cowork (Desktop App for Non-Devs)',
         content: 'cowork desktop app knowledge workers excel word pdf pm analyst writer non-developer claude desktop',
         url: GUIDE_BASE + 'cowork.md'
+    },
+
+    // === IMAGES & DESIGN ===
+    {
+        id: 'guide-wireframing',
+        type: 'guide',
+        title: 'Wireframing Tools Integration',
+        content: 'wireframe mockup excalidraw tldraw draw.io diagram sketch ui design',
+        url: GUIDE_BASE + 'ultimate-guide.md#wireframing-tools'
+    },
+    {
+        id: 'guide-figma-mcp',
+        type: 'guide',
+        title: 'Figma MCP Integration',
+        content: 'figma mcp design tokens components styles official plugin',
+        url: GUIDE_BASE + 'ultimate-guide.md#figma-mcp'
+    },
+    {
+        id: 'guide-image-optimization',
+        type: 'guide',
+        title: 'Image Optimization',
+        content: 'image optimization compression resize webp png jpg screenshot',
+        url: GUIDE_BASE + 'ultimate-guide.md#image-optimization'
+    },
+
+    // === CONTEXT ADVANCED ===
+    {
+        id: 'guide-context-triage',
+        type: 'guide',
+        title: 'Context Triage Strategies',
+        content: 'context triage priority what to include exclude optimize tokens',
+        url: GUIDE_BASE + 'ultimate-guide.md#context-triage'
+    },
+    {
+        id: 'guide-fresh-context',
+        type: 'guide',
+        title: 'Fresh Context Pattern',
+        content: 'fresh context pattern reset autonomous long sessions clean slate',
+        url: GUIDE_BASE + 'ultimate-guide.md#fresh-context-pattern'
+    },
+    {
+        id: 'guide-session-memory',
+        type: 'guide',
+        title: 'Session vs Memory (When to Use)',
+        content: 'session memory difference when persist ephemeral context',
+        url: GUIDE_BASE + 'ultimate-guide.md#session-vs-memory'
+    },
+
+    // === ADVANCED FEATURES ===
+    {
+        id: 'guide-rewind',
+        type: 'guide',
+        title: 'Rewind & Undo Changes',
+        content: 'rewind undo rollback esc escape restore previous state',
+        url: GUIDE_BASE + 'ultimate-guide.md#rewind'
+    },
+    {
+        id: 'guide-xml-prompting',
+        type: 'guide',
+        title: 'XML Prompting Techniques',
+        content: 'xml prompting tags structure format anthropic best practices',
+        url: GUIDE_BASE + 'ultimate-guide.md#xml-prompting'
+    },
+    {
+        id: 'guide-semantic-anchors',
+        type: 'guide',
+        title: 'Semantic Anchors',
+        content: 'semantic anchors navigation code markers landmarks structure',
+        url: GUIDE_BASE + 'ultimate-guide.md#semantic-anchors'
+    },
+
+    // === CONFIGURATION ===
+    {
+        id: 'guide-settings',
+        type: 'guide',
+        title: 'Settings.json Configuration',
+        content: 'settings.json configuration options preferences local global',
+        url: GUIDE_BASE + 'ultimate-guide.md#settings'
+    },
+    {
+        id: 'guide-precedence',
+        type: 'guide',
+        title: 'Precedence Rules (Config Priority)',
+        content: 'precedence priority order config override global project local',
+        url: GUIDE_BASE + 'ultimate-guide.md#precedence-rules'
+    },
+
+    // === WORKFLOWS ===
+    {
+        id: 'guide-cicd',
+        type: 'guide',
+        title: 'CI/CD Integration',
+        content: 'cicd ci cd github actions pipeline automation deploy continuous integration',
+        url: GUIDE_BASE + 'ultimate-guide.md#cicd'
+    },
+    {
+        id: 'guide-batch-operations',
+        type: 'guide',
+        title: 'Batch Operations',
+        content: 'batch operations bulk multi-file parallel processing efficiency',
+        url: GUIDE_BASE + 'ultimate-guide.md#batch-operations'
+    },
+    {
+        id: 'guide-git',
+        type: 'guide',
+        title: 'Git Best Practices',
+        content: 'git best practices commit branch workflow version control',
+        url: GUIDE_BASE + 'ultimate-guide.md#git-best-practices'
+    },
+    {
+        id: 'guide-daily-workflow',
+        type: 'guide',
+        title: 'Daily Workflow Routine',
+        content: 'daily workflow routine morning session productivity habits',
+        url: GUIDE_BASE + 'ultimate-guide.md#daily-workflow'
+    },
+
+    // === COSTS & LIMITS ===
+    {
+        id: 'guide-subscription',
+        type: 'guide',
+        title: 'Subscription Limits & Tiers',
+        content: 'subscription limits tiers pro max team enterprise pricing quota',
+        url: GUIDE_BASE + 'ultimate-guide.md#subscription-limits'
+    },
+
+    // === DEBUG & TROUBLESHOOTING ===
+    {
+        id: 'guide-troubleshooting',
+        type: 'guide',
+        title: 'Troubleshooting Common Issues',
+        content: 'troubleshooting fix error problem issue debug solve',
+        url: GUIDE_BASE + 'ultimate-guide.md#troubleshooting'
+    },
+    {
+        id: 'guide-debug-commands',
+        type: 'guide',
+        title: 'Debug Commands Reference',
+        content: 'debug commands --debug --mcp-debug verbose doctor diagnostic',
+        url: GUIDE_BASE + 'cheatsheet.md#debug-commands'
+    },
+
+    // === ONBOARDING & PDF ===
+    {
+        id: 'guide-onboarding',
+        type: 'guide',
+        title: 'Interactive Onboarding',
+        content: 'onboarding getting started beginner interactive prompt personalized',
+        url: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/onboarding-prompt.md'
+    },
+    {
+        id: 'guide-pdf-generation',
+        type: 'guide',
+        title: 'PDF Generation Workflow',
+        content: 'pdf generation quarto typst document report whitepaper export',
+        url: GUIDE_BASE + 'workflows/pdf-generation.md'
+    },
+
+    // === RELEASES & SESSION ===
+    {
+        id: 'guide-releases',
+        type: 'guide',
+        title: 'Claude Code Release Notes',
+        content: 'releases changelog versions updates breaking changes anthropic',
+        url: GUIDE_BASE + 'claude-code-releases.md'
+    },
+    {
+        id: 'guide-session-search',
+        type: 'guide',
+        title: 'Session Search Script',
+        content: 'session search find history grep logs past conversations',
+        url: GUIDE_BASE + 'observability.md#session-search'
     }
 ];

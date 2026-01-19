@@ -2,6 +2,14 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.1.0] - 2025-01-19
+
+### Added
+- **Guide Search Index enrichment** (`guide-data.js`)
+  - 22 new entries from reference.yaml analysis
+  - Now 78 total searchable guide sections (was 56)
+  - New categories: Images & Design, Context Advanced, Workflows, Debug & Troubleshooting
+
 ## [2.0.0] - 2025-01-17
 
 ### Added
@@ -14,7 +22,7 @@ All notable changes to the Claude Code Guide Landing Site.
   - Personalized onboarding flow
   - Profile-based content recommendations
 - **Guide Search Index** (`guide-data.js`)
-  - 47 major guide sections indexed
+  - 56 major guide sections indexed
   - Sync script for verification (`scripts/sync-guide-data.sh`)
 - **Mobile Hamburger Menu**
   - Responsive navigation for screens < 768px
