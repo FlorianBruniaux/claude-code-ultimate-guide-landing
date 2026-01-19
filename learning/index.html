@@ -134,7 +134,7 @@
             cursor: pointer;
         }
 
-        .check-item label {
+        .check-item span {
             cursor: pointer;
             flex: 1;
         }
@@ -427,26 +427,26 @@
         <p>Answer honestly. 5 questions to know where you stand.</p>
 
         <div class="self-check">
-            <div class="check-item" onclick="this.querySelector('input').click()">
+            <label class="check-item">
                 <input type="checkbox" id="q1" onchange="updateScore()">
-                <label for="q1">Can you explain the last piece of code AI generated for you?</label>
-            </div>
-            <div class="check-item" onclick="this.querySelector('input').click()">
+                <span>Can you explain the last piece of code AI generated for you?</span>
+            </label>
+            <label class="check-item">
                 <input type="checkbox" id="q2" onchange="updateScore()">
-                <label for="q2">Have you debugged code without AI this week?</label>
-            </div>
-            <div class="check-item" onclick="this.querySelector('input').click()">
+                <span>Have you debugged code without AI this week?</span>
+            </label>
+            <label class="check-item">
                 <input type="checkbox" id="q3" onchange="updateScore()">
-                <label for="q3">Do you know WHY the solution works (not just THAT it works)?</label>
-            </div>
-            <div class="check-item" onclick="this.querySelector('input').click()">
+                <span>Do you know WHY the solution works (not just THAT it works)?</span>
+            </label>
+            <label class="check-item">
                 <input type="checkbox" id="q4" onchange="updateScore()">
-                <label for="q4">Could you write the same function without AI assistance?</label>
-            </div>
-            <div class="check-item" onclick="this.querySelector('input').click()">
+                <span>Could you write the same function without AI assistance?</span>
+            </label>
+            <label class="check-item">
                 <input type="checkbox" id="q5" onchange="updateScore()">
-                <label for="q5">Do you know the limitations of AI for this type of problem?</label>
-            </div>
+                <span>Do you know the limitations of AI for this type of problem?</span>
+            </label>
 
             <div class="score-result" id="score-result" style="display: none;">
                 <div class="score" id="score-value">0/5</div>
