@@ -382,25 +382,29 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="../" class="nav-logo">
-                <img src="../claude-code-logo.webp" alt="Claude Code" width="32" height="32">
-                <span>Claude Code Guide</span>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="../" class="logo">
+                <span class="logo-icon">&gt;_</span>
+                <span class="logo-text">Claude Code Guide</span>
             </a>
             <div class="nav-links">
-                <a href="../#guide">Guide</a>
-                <a href="../examples/">Examples</a>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+                <a href="../cheatsheet/">Cheat Sheet</a>
                 <a href="../quiz/">Quiz</a>
                 <a href="./" class="active">Learning</a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                    GitHub
-                </a>
+                <a href="../examples/">Examples</a>
             </div>
-        </div>
-    </nav>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
     <!-- Hero -->
     <header class="learning-hero">
@@ -444,7 +448,7 @@
                 <label for="q5">Do you know the limitations of AI for this type of problem?</label>
             </div>
 
-            <div class="score-result" id="score-result">
+            <div class="score-result" id="score-result" style="display: none;">
                 <div class="score" id="score-value">0/5</div>
                 <div class="recommendation" id="recommendation"></div>
             </div>
@@ -625,23 +629,23 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Guide</h4>
+                    <h4>Documentation</h4>
                     <ul>
-                        <li><a href="../#guide">Full Guide</a></li>
-                        <li><a href="../#cheatsheet">Cheat Sheet</a></li>
-                        <li><a href="../examples/">Examples (55)</a></li>
-                        <li><a href="../quiz/">Quiz (159)</a></li>
-                        <li><a href="./">Learning</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></li>
+                        <li><a href="../cheatsheet/" target="_blank" rel="noopener">Cheat Sheet</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" rel="noopener">Learning with AI</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener">GitHub Repository</a></li>
-                        <li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" rel="noopener">Official Docs</a></li>
+                        <li><a href="../quiz/">Quiz (217)</a></li>
+                        <li><a href="./" class="active">Learning</a></li>
+                        <li><a href="../examples/">Examples (63)</a></li>
+                        <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener">GitHub Repo</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -653,8 +657,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Claude Code Ultimate Guide. Open source under CC BY-SA 4.0.</p>
-                <p class="version">v3.8.2</p>
+                <p>
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &bull;
+                    Made with dedication by <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>
+                </p>
+                <p class="version">v3.9.0</p>
             </div>
         </div>
     </footer>
@@ -672,6 +679,7 @@
             const recommendation = document.getElementById('recommendation');
 
             scoreValue.textContent = `${score}/5`;
+            scoreResult.style.display = 'block';
             scoreResult.classList.add('show');
 
             if (score <= 2) {
@@ -681,6 +689,18 @@
             } else {
                 recommendation.innerHTML = '<strong style="color: #22c55e;">You\'re on the right track!</strong><br>Check the Advanced Optimization section for power-user tips.';
             }
+        }
+
+        // Hamburger menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+            });
         }
     </script>
 </body>
