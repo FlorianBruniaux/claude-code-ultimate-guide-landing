@@ -361,5 +361,72 @@ window.SEARCH_GUIDE = [
         title: 'JetBrains Integration',
         content: 'JetBrains IntelliJ WebStorm PyCharm IDE integration terminal',
         url: GUIDE_BASE + 'ultimate-guide.md#ide-integration'
+    },
+
+    // === AI ECOSYSTEM ===
+    {
+        id: 'ecosystem-overview',
+        type: 'guide',
+        title: 'AI Ecosystem Overview',
+        content: 'complementary tools workflow perplexity gemini notebooklm kimi chain combine',
+        url: GUIDE_BASE + 'ai-ecosystem.md'
+    },
+    {
+        id: 'ecosystem-perplexity',
+        type: 'guide',
+        title: 'Perplexity Integration',
+        content: 'research deep research sources spec.md websearch perplexity ai',
+        url: GUIDE_BASE + 'ai-ecosystem.md#1-perplexity-ai-research--sourcing'
+    },
+    {
+        id: 'ecosystem-gemini',
+        type: 'guide',
+        title: 'Gemini for Visual Understanding',
+        content: 'gemini visual image screenshot design figma code google',
+        url: GUIDE_BASE + 'ai-ecosystem.md#2-google-gemini-visual-understanding'
+    },
+    {
+        id: 'ecosystem-notebooklm',
+        type: 'guide',
+        title: 'NotebookLM for Audio & Synthesis',
+        content: 'notebooklm audio podcast documentation synthesis onboarding google',
+        url: GUIDE_BASE + 'ai-ecosystem.md#4-notebooklm-synthesis--audio'
+    },
+    {
+        id: 'ecosystem-kimi',
+        type: 'guide',
+        title: 'Kimi for Presentations',
+        content: 'kimi pptx slides presentation stakeholder powerpoint',
+        url: GUIDE_BASE + 'ai-ecosystem.md#3-kimi-pptx--long-document-generation'
+    },
+    {
+        id: 'ecosystem-ide',
+        type: 'guide',
+        title: 'IDE Tools (Cursor, Windsurf, Cline)',
+        content: 'cursor windsurf cline copilot ide autocomplete inline typing',
+        url: GUIDE_BASE + 'ai-ecosystem.md#5-ide-based-tools-cursor-windsurf-cline'
+    },
+    {
+        id: 'ecosystem-prototypers',
+        type: 'guide',
+        title: 'UI Prototypers (v0, Bolt, Lovable)',
+        content: 'v0 bolt lovable ui prototype rapid preview vercel frontend',
+        url: GUIDE_BASE + 'ai-ecosystem.md#6-ui-prototypers-v0-bolt-lovable'
+    },
+    {
+        id: 'ecosystem-cost',
+        type: 'guide',
+        title: 'AI Subscription Strategy',
+        content: 'cost subscription pricing budget minimal balanced power stack money',
+        url: GUIDE_BASE + 'ai-ecosystem.md#8-cost--subscription-strategy'
+    },
+
+    // === COWORK ===
+    {
+        id: 'guide-cowork',
+        type: 'guide',
+        title: 'Cowork (Desktop App for Non-Devs)',
+        content: 'cowork desktop app knowledge workers excel word pdf pm analyst writer non-developer claude desktop',
+        url: GUIDE_BASE + 'cowork.md'
     }
 ];

@@ -114,6 +114,14 @@
             },
             {
                 "@type": "Question",
+                "name": "What's the difference between Claude Code and Cowork?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Claude Code is a terminal-based CLI for developers (code, scripts, git). Cowork is a Desktop app for knowledge workers (Excel, Word, PDF). This guide covers Claude Code. Both use Claude AI but target different audiences."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "What are MCP servers in Claude Code?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -451,6 +459,79 @@
                 </div>
 
                 <p class="comparison-note">Each tool has its strengths. Claude Code excels at autonomous multi-file operations and deep code generation from the terminal. This guide helps you master its unique capabilities.</p>
+
+                <!-- AI Ecosystem - Complementary Tools -->
+                <div class="ecosystem-intro" id="ecosystem">
+                    <h3>Complementary AI Ecosystem</h3>
+                    <p>Claude Code excels at implementation. Chain it with the right tools for a complete workflow.</p>
+                </div>
+
+                <!-- Workflow Diagram -->
+                <div class="ecosystem-workflow">
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">&#128269;</span>
+                        <div class="workflow-step-label">Research</div>
+                        <div class="workflow-step-tool">Perplexity</div>
+                        <div class="workflow-step-output">spec.md</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">&#128187;</span>
+                        <div class="workflow-step-label">Implement</div>
+                        <div class="workflow-step-tool">Claude Code</div>
+                        <div class="workflow-step-output">working code</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">&#128200;</span>
+                        <div class="workflow-step-label">Deliver</div>
+                        <div class="workflow-step-tool">Kimi / Slides</div>
+                        <div class="workflow-step-output">presentation.pptx</div>
+                    </div>
+                </div>
+
+                <div class="ecosystem-grid">
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#1-perplexity-ai-research--sourcing" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#128269;</span>
+                        <div class="ecosystem-card-title">Perplexity</div>
+                        <div class="ecosystem-card-desc">Deep research with verified sources</div>
+                        <div class="ecosystem-card-usecase">Before implementation: specs, best practices</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#2-google-gemini-visual-understanding" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#128065;</span>
+                        <div class="ecosystem-card-title">Gemini</div>
+                        <div class="ecosystem-card-desc">Visual understanding &amp; analysis</div>
+                        <div class="ecosystem-card-usecase">Design &rarr; Code conversion</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#4-notebooklm-synthesis--audio" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#127911;</span>
+                        <div class="ecosystem-card-title">NotebookLM</div>
+                        <div class="ecosystem-card-desc">Audio synthesis &amp; podcasts</div>
+                        <div class="ecosystem-card-usecase">Onboarding, doc review</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#3-kimi-pptx--long-document-generation" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#128200;</span>
+                        <div class="ecosystem-card-title">Kimi</div>
+                        <div class="ecosystem-card-desc">PPTX &amp; document generation</div>
+                        <div class="ecosystem-card-usecase">Code &rarr; Stakeholder deck</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#6-ui-prototypers-v0-bolt-lovable" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#9889;</span>
+                        <div class="ecosystem-card-title">v0 / Bolt / Lovable</div>
+                        <div class="ecosystem-card-desc">Rapid UI prototyping</div>
+                        <div class="ecosystem-card-usecase">Quick component preview</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#5-ide-based-tools-cursor-windsurf-cline" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#128187;</span>
+                        <div class="ecosystem-card-title">Cursor / Copilot</div>
+                        <div class="ecosystem-card-desc">Inline IDE autocomplete</div>
+                        <div class="ecosystem-card-usecase">Fast typing, small edits</div>
+                    </a>
+                </div>
+
+                <div class="ecosystem-cta">
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" class="btn btn-secondary" target="_blank" rel="noopener">Full Ecosystem Guide &rarr;</a>
+                </div>
             </div>
         </section>
 
@@ -741,6 +822,14 @@ VERIFY: Empty email shows error message</code></pre>
                         </div>
                         <span class="levelup-arrow">&rarr;</span>
                     </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" class="levelup-card" target="_blank" rel="noopener">
+                        <div class="levelup-icon">🔗</div>
+                        <div class="levelup-content">
+                            <h3>Combine tools → Ecosystem</h3>
+                            <p>Chain Claude Code with Perplexity, Gemini, NotebookLM for complete research-to-delivery workflows.</p>
+                        </div>
+                        <span class="levelup-arrow">&rarr;</span>
+                    </a>
                 </div>
 
                 <div style="text-align: center; margin-top: var(--space-lg);">
@@ -929,6 +1018,10 @@ VERIFY: Empty email shows error message</code></pre>
                         <p>CLAUDE.md is a project memory file that gives Claude persistent context about your project. Place it in your project root with your tech stack, coding conventions, and commands. Claude reads it automatically at session start. See our <a href="examples/">templates</a>.</p>
                     </details>
                     <details class="faq-item">
+                        <summary>What's the difference between Claude Code and Cowork?</summary>
+                        <p>Claude Code is a terminal-based CLI for <strong>developers</strong> (code, scripts, git). Cowork is a Desktop app for <strong>knowledge workers</strong> (Excel, Word, PDF). This guide covers Claude Code. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cowork.md" target="_blank" rel="noopener">Cowork section</a> in the guide for details.</p>
+                    </details>
+                    <details class="faq-item">
                         <summary>What are MCP servers in Claude Code?</summary>
                         <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting it to external tools and data sources. Examples include database access, browser automation, and documentation lookup. Configure them in <code>~/.claude/mcp.json</code>.</p>
                     </details>
@@ -951,6 +1044,10 @@ VERIFY: Empty email shows error message</code></pre>
                     <details class="faq-item">
                         <summary>Who is behind this guide?</summary>
                         <p>I'm <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>, a tech professional with 11+ years of experience across roles including CTO, VP Engineering, Engineering Manager, and Founding Engineer. I've built and scaled teams from scratch (up to 30 people), worked on B2B/B2C SaaS products, and I'm deeply passionate about AI-assisted development. I created this guide as an open-source contribution to help the community master Claude Code—the same way books like <em>Clean Architecture</em>, <em>The Phoenix Project</em>, and <em>The Manager's Path</em> helped me grow. Learning in public and giving back is what drives me.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Which AI tools complement Claude Code?</summary>
+                        <p>Claude Code excels at implementation but works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for audio synthesis and doc review, <strong>v0/Bolt</strong> for rapid UI prototyping, and <strong>Cursor/Copilot</strong> for inline autocomplete. Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver (Kimi for slides). See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" target="_blank" rel="noopener">full ecosystem guide</a>.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Can I contribute to the guide?</summary>
