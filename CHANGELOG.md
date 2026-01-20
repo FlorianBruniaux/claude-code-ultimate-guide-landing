@@ -2,6 +2,27 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.3.0] - 2026-01-20
+
+### Added
+- **Cowork Workflows Integration**
+  - 25 professional workflows now searchable via Cmd+K
+  - New `cowork-data.js` index file with bilingual workflow entries
+  - Categories: Administrative (6), Commercial (5), Production (5), Communication (5), Organization (4)
+  - Target professions: Contractors, Merchants, Small business owners, Freelancers
+- **Workflow Search Index**
+  - 21 new English workflow translations (.en.md files)
+  - `workflows/README.en.md` comprehensive English documentation
+  - All workflows include: invoice generation, project planning, social media, customer reviews, knowledge transfer
+- **Enhanced Global Search**
+  - Cowork workflows integrated into existing Cmd+K search
+  - Search now covers: Templates (52) + FAQ (14) + Rules (6) + Guide (78) + Workflows (25) = 175+ entries
+
+### Changed
+- Updated `workflows/README.md` with bilingual links (French ↔ English)
+- Enhanced `search.js` to include `SEARCH_COWORK` data source
+- Improved search coverage for small business automation use cases
+
 ## [2.2.0] - 2026-01-20
 
 ### Changed

@@ -68,6 +68,11 @@
             items.push(...window.SEARCH_GUIDE);
         }
 
+        // Cowork workflows from cowork-data.js
+        if (window.SEARCH_COWORK) {
+            items.push(...window.SEARCH_COWORK);
+        }
+
         return items;
     }
 
