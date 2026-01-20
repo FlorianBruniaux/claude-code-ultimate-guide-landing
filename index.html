@@ -14,6 +14,11 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/">
 
+    <!-- Preconnect for external resources -->
+    <link rel="preconnect" href="https://img.shields.io" crossorigin>
+    <link rel="preconnect" href="https://github.com" crossorigin>
+    <link rel="dns-prefetch" href="https://img.shields.io">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Claude Code Guide: 11,100+ Lines, 63 Templates - Free">
     <meta property="og:description" content="Free, open-source guide for Claude Code. 11,100+ lines, 63 templates, 227 quiz questions. Master AI-assisted development.">
@@ -294,9 +299,9 @@
                     <table class="tldr-table">
                         <thead>
                             <tr>
-                                <th>I need...</th>
-                                <th>Go here</th>
-                                <th>Time</th>
+                                <th scope="col">I need...</th>
+                                <th scope="col">Go here</th>
+                                <th scope="col">Time</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -398,10 +403,10 @@
                     <table class="comparison-feature-table">
                         <thead>
                             <tr>
-                                <th>Feature</th>
-                                <th>Claude Code</th>
-                                <th>GitHub Copilot</th>
-                                <th>Cursor</th>
+                                <th scope="col">Feature</th>
+                                <th scope="col">Claude Code</th>
+                                <th scope="col">GitHub Copilot</th>
+                                <th scope="col">Cursor</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -472,11 +477,11 @@
                 </div>
 
                 <!-- Workflow Tabs -->
-                <div class="workflow-tabs">
-                    <button class="workflow-tab active" data-workflow="standard">📋 Standard</button>
-                    <button class="workflow-tab" data-workflow="design">🎨 Design-first</button>
-                    <button class="workflow-tab" data-workflow="data">📊 Data-driven</button>
-                    <button class="workflow-tab" data-workflow="docs">📚 Documentation</button>
+                <div class="workflow-tabs" role="tablist" aria-label="Workflow types">
+                    <button class="workflow-tab active" data-workflow="standard" role="tab" aria-selected="true" aria-controls="workflow-standard">📋 Standard</button>
+                    <button class="workflow-tab" data-workflow="design" role="tab" aria-selected="false" aria-controls="workflow-design">🎨 Design-first</button>
+                    <button class="workflow-tab" data-workflow="data" role="tab" aria-selected="false" aria-controls="workflow-data">📊 Data-driven</button>
+                    <button class="workflow-tab" data-workflow="docs" role="tab" aria-selected="false" aria-controls="workflow-docs">📚 Documentation</button>
                 </div>
 
                 <!-- Workflow: Standard (default) -->
@@ -973,7 +978,7 @@ VERIFY: Empty email shows error message</code></pre>
                 </div>
 
                 <div class="author-card author-card-expanded">
-                    <img src="author.jpeg" alt="Florian BRUNIAUX - Claude Code Guide author, Founding Engineer at Méthode Aristote" class="author-photo">
+                    <img src="author.jpeg" alt="Florian BRUNIAUX - Claude Code Guide author, Founding Engineer at Méthode Aristote" class="author-photo" loading="lazy" decoding="async">
                     <div class="author-details">
                         <div class="author-info">
                             <p><strong>By Florian BRUNIAUX</strong></p>
@@ -1200,6 +1205,13 @@ VERIFY: Empty email shows error message</code></pre>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Footer CTA -->
+            <div class="footer-cta">
+                <h3>Ready to master Claude Code?</h3>
+                <p>Start with the guide that 500+ developers use daily.</p>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" class="btn btn-primary" target="_blank" rel="noopener">Read the Guide →</a>
+            </div>
+
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>Documentation</h4>
