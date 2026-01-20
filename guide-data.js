@@ -600,5 +600,42 @@ window.SEARCH_GUIDE = [
         title: 'Session Search Script',
         content: 'session search find history grep logs past conversations',
         url: GUIDE_BASE + 'observability.md#session-search'
+    },
+
+    // === NEW v3.9.x ENTRIES ===
+    {
+        id: 'guide-voice-to-text',
+        type: 'guide',
+        title: 'Voice-to-Text Integration',
+        content: 'wispr flow superwhisper voice dictate speech 4x faster macwhisper vibe coding hands-free',
+        url: GUIDE_BASE + 'ai-ecosystem.md#7-voice-to-text-wispr-flow'
+    },
+    {
+        id: 'guide-trust-calibration',
+        type: 'guide',
+        title: 'Trust Calibration: When to Verify AI Code',
+        content: 'trust verification review security critical boilerplate risk acm research addy osmani when to check',
+        url: GUIDE_BASE + 'ultimate-guide.md#trust-calibration'
+    },
+    {
+        id: 'guide-session-teleportation',
+        type: 'guide',
+        title: 'Session Teleportation',
+        content: 'teleport session transfer device continue web cli vscode cursor cross-device',
+        url: GUIDE_BASE + 'ultimate-guide.md#session-teleportation'
+    },
+    {
+        id: 'guide-semantic-anchors-prompting',
+        type: 'guide',
+        title: 'Semantic Anchors for Better Prompts',
+        content: 'semantic anchors vocabulary precise prompting llm patterns better instructions',
+        url: GUIDE_BASE + 'ultimate-guide.md#semantic-anchors'
+    },
+    {
+        id: 'guide-vibe-coding-trap',
+        type: 'guide',
+        title: 'The Vibe Coding Trap',
+        content: 'vibe coding trap anti-pattern karpathy dependency accept without understanding learning danger',
+        url: GUIDE_BASE + 'learning-with-ai.md#the-vibe-coding-trap'
     }
 ];

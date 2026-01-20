@@ -47,15 +47,17 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Guide lines | `wc -l guide/ultimate-guide.md` | index.html badges |
 | Golden Rules | README.md | index.html section |
 | FAQ | README.md | index.html (schema + HTML) |
-| **Guide search index** | `guide/*.md` headings | `guide-data.js` (40 entrées) |
+| **Guide search index** | `guide/*.md` headings | `guide-data.js` (45+ entrées) |
 | **Claude Code Releases** | `machine-readable/claude-code-releases.yaml` | index.html (banner + #releases section) |
+| **AI Ecosystem tools** | `guide/ai-ecosystem.md` | index.html (#ecosystem section) |
+| **Voice-to-Text** | `guide/ai-ecosystem.md#7-voice-to-text-wispr-flow` | index.html (#ecosystem card) |
 
 ## Valeurs actuelles (à maintenir synchronisées)
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.9.6` | VERSION file |
-| Templates | `63` | Count of examples/ files (excl. README/index) |
+| Version | `3.9.7` | VERSION file |
+| Templates | `66` | Count of examples/ files (excl. README/index) |
 | Quiz questions | `227` | questions.json |
 | Guide lines | `11,100+` | ultimate-guide.md |
 

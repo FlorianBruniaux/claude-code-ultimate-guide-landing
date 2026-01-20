@@ -2509,6 +2509,31 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     font-weight: 500;
 }
 
+.ecosystem-card-highlight {
+    position: relative;
+    border: 2px solid #6366f1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
+}
+
+.ecosystem-card-highlight:hover {
+    border-color: #818cf8;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.ecosystem-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* Ecosystem workflow diagram */
 .ecosystem-workflow {
     display: flex;
@@ -2610,5 +2635,117 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
 
     .ecosystem-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Cross-Link Section (Code <-> Cowork)
+   ============================================ */
+.hero-crosslink {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-lg);
+}
+
+.hero-crosslink a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.hero-crosslink a:hover {
+    color: var(--accent-hover);
+}
+
+.crosslink-section {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.crosslink-section .container {
+    text-align: center;
+}
+
+.crosslink-signals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 var(--space-xl);
+}
+
+.crosslink-signals span {
+    background: var(--bg-tertiary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.crosslink-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.crosslink-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(88, 166, 255, 0.15);
+    text-decoration: none;
+}
+
+.crosslink-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.crosslink-content {
+    flex: 1;
+    text-align: left;
+}
+
+.crosslink-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.crosslink-stats {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.crosslink-cta {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .crosslink-signals {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .crosslink-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .crosslink-content {
+        text-align: center;
     }
 }

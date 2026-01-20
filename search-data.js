@@ -87,6 +87,20 @@ window.SEARCH_FAQ = [
         title: 'Can I contribute to the guide?',
         content: 'contribute open-source GitHub pull request template error contribution',
         url: '/#faq'
+    },
+    {
+        id: 'faq-13',
+        type: 'faq',
+        title: 'How do I use voice-to-text with Claude Code?',
+        content: 'voice-to-text Wispr Flow Superwhisper dictate speech 4x faster 150 WPM transcribe hands-free',
+        url: '/#faq'
+    },
+    {
+        id: 'faq-14',
+        type: 'faq',
+        title: 'How much should I trust AI-generated code?',
+        content: 'trust verification review security boilerplate risk calibration auto-accept research ACM verify',
+        url: '/#faq'
     }
 ];
 
