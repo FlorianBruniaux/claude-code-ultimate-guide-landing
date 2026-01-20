@@ -466,27 +466,114 @@
                     <p>Claude Code excels at implementation. Chain it with the right tools for a complete workflow.</p>
                 </div>
 
-                <!-- Workflow Diagram -->
-                <div class="ecosystem-workflow">
+                <!-- Workflow Tabs -->
+                <div class="workflow-tabs">
+                    <button class="workflow-tab active" data-workflow="standard">📋 Standard</button>
+                    <button class="workflow-tab" data-workflow="design">🎨 Design-first</button>
+                    <button class="workflow-tab" data-workflow="data">📊 Data-driven</button>
+                    <button class="workflow-tab" data-workflow="docs">📚 Documentation</button>
+                </div>
+
+                <!-- Workflow: Standard (default) -->
+                <div class="ecosystem-workflow" data-workflow="standard">
                     <div class="workflow-step">
-                        <span class="workflow-step-icon">&#128269;</span>
+                        <span class="workflow-step-icon">✍️</span>
+                        <div class="workflow-step-label">Clarify</div>
+                        <div class="workflow-step-tool">Claude</div>
+                        <div class="workflow-step-output">structured request</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">🔍</span>
                         <div class="workflow-step-label">Research</div>
                         <div class="workflow-step-tool">Perplexity</div>
                         <div class="workflow-step-output">spec.md</div>
                     </div>
                     <span class="workflow-arrow">&rarr;</span>
                     <div class="workflow-step">
-                        <span class="workflow-step-icon">&#128187;</span>
+                        <span class="workflow-step-icon">💻</span>
                         <div class="workflow-step-label">Implement</div>
                         <div class="workflow-step-tool">Claude Code</div>
                         <div class="workflow-step-output">working code</div>
                     </div>
                     <span class="workflow-arrow">&rarr;</span>
                     <div class="workflow-step">
-                        <span class="workflow-step-icon">&#128200;</span>
+                        <span class="workflow-step-icon">📊</span>
                         <div class="workflow-step-label">Deliver</div>
-                        <div class="workflow-step-tool">Kimi / Slides</div>
+                        <div class="workflow-step-tool">Kimi</div>
                         <div class="workflow-step-output">presentation.pptx</div>
+                    </div>
+                </div>
+
+                <!-- Workflow: Design-first -->
+                <div class="ecosystem-workflow hidden" data-workflow="design">
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">🎨</span>
+                        <div class="workflow-step-label">Design</div>
+                        <div class="workflow-step-tool">Figma / Gemini</div>
+                        <div class="workflow-step-output">mockup.png</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">💻</span>
+                        <div class="workflow-step-label">Implement</div>
+                        <div class="workflow-step-tool">Claude Code</div>
+                        <div class="workflow-step-output">working code</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">🚀</span>
+                        <div class="workflow-step-label">Deploy</div>
+                        <div class="workflow-step-tool">Vercel / AWS</div>
+                        <div class="workflow-step-output">live site</div>
+                    </div>
+                </div>
+
+                <!-- Workflow: Data-driven -->
+                <div class="ecosystem-workflow hidden" data-workflow="data">
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">🗄️</span>
+                        <div class="workflow-step-label">Explore Data</div>
+                        <div class="workflow-step-tool">DB / API</div>
+                        <div class="workflow-step-output">raw data</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">💻</span>
+                        <div class="workflow-step-label">Analyze</div>
+                        <div class="workflow-step-tool">Claude Code</div>
+                        <div class="workflow-step-output">insights</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">📈</span>
+                        <div class="workflow-step-label">Visualize</div>
+                        <div class="workflow-step-tool">Dashboard</div>
+                        <div class="workflow-step-output">report.html</div>
+                    </div>
+                </div>
+
+                <!-- Workflow: Documentation -->
+                <div class="ecosystem-workflow hidden" data-workflow="docs">
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">📚</span>
+                        <div class="workflow-step-label">Gather</div>
+                        <div class="workflow-step-tool">Sources</div>
+                        <div class="workflow-step-output">docs, code</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">💻</span>
+                        <div class="workflow-step-label">Write</div>
+                        <div class="workflow-step-tool">Claude Code</div>
+                        <div class="workflow-step-output">documentation</div>
+                    </div>
+                    <span class="workflow-arrow">&rarr;</span>
+                    <div class="workflow-step">
+                        <span class="workflow-step-icon">🎧</span>
+                        <div class="workflow-step-label">Distribute</div>
+                        <div class="workflow-step-tool">NotebookLM</div>
+                        <div class="workflow-step-output">audio podcast</div>
                     </div>
                 </div>
 
@@ -526,6 +613,12 @@
                         <div class="ecosystem-card-title">Cursor / Copilot</div>
                         <div class="ecosystem-card-desc">Inline IDE autocomplete</div>
                         <div class="ecosystem-card-usecase">Fast typing, small edits</div>
+                    </a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" class="ecosystem-card" target="_blank" rel="noopener">
+                        <span class="ecosystem-card-icon">&#127908;</span>
+                        <div class="ecosystem-card-title">Wispr Flow</div>
+                        <div class="ecosystem-card-desc">Voice-to-Text (4x faster)</div>
+                        <div class="ecosystem-card-usecase">Dictate prompts, hands-free coding</div>
                     </a>
                 </div>
 
@@ -1038,7 +1131,7 @@ VERIFY: Empty email shows error message</code></pre>
                     </details>
                     <details class="faq-item">
                         <summary>What version of Claude Code is covered?</summary>
-                        <p>The guide is continuously updated. Current version: 3.9.5. Check the CHANGELOG for recent updates.</p>
+                        <p>The guide is continuously updated. Current version: 3.9.6. Check the CHANGELOG for recent updates.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Is my code sent to Anthropic?</summary>
@@ -1050,7 +1143,15 @@ VERIFY: Empty email shows error message</code></pre>
                     </details>
                     <details class="faq-item">
                         <summary>Which AI tools complement Claude Code?</summary>
-                        <p>Claude Code excels at implementation but works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for audio synthesis and doc review, <strong>v0/Bolt</strong> for rapid UI prototyping, and <strong>Cursor/Copilot</strong> for inline autocomplete. Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver (Kimi for slides). See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" target="_blank" rel="noopener">full ecosystem guide</a>.</p>
+                        <p>Claude Code excels at implementation but works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for audio synthesis and doc review, <strong>v0/Bolt</strong> for rapid UI prototyping, <strong>Cursor/Copilot</strong> for inline autocomplete, and <strong>Wispr Flow</strong> for voice-to-text (4x faster than typing). Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver (Kimi for slides). See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" target="_blank" rel="noopener">full ecosystem guide</a>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I use voice-to-text with Claude Code?</summary>
+                        <p>Use tools like <strong>Wispr Flow</strong> or Superwhisper to dictate prompts ~4x faster than typing (150 WPM vs 40 WPM). These tools transcribe your speech directly into the terminal. The <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" target="_blank" rel="noopener">AI Ecosystem guide</a> covers setup and integration patterns.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How much should I trust AI-generated code?</summary>
+                        <p>Trust varies by risk level: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Research shows even experienced developers miss bugs in AI code. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#trust-calibration" target="_blank" rel="noopener">Trust Calibration guide</a> for research-backed verification strategies.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Can I contribute to the guide?</summary>
@@ -1388,6 +1489,22 @@ VERIFY: Empty email shows error message</code></pre>
             });
         }
     })();
+    </script>
+    <script>
+    // Workflow tabs switching
+    document.querySelectorAll('.workflow-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update tabs
+            document.querySelectorAll('.workflow-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update workflows
+            const workflow = tab.dataset.workflow;
+            document.querySelectorAll('.ecosystem-workflow').forEach(w => {
+                w.classList.toggle('hidden', w.dataset.workflow !== workflow);
+            });
+        });
+    });
     </script>
 </body>
 </html>

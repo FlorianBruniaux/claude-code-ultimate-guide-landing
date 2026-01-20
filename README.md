@@ -10,7 +10,8 @@ Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBrun
 
 - **Global Search** (Cmd+K / Ctrl+K) - Fuzzy search across templates, FAQ, rules, and guide sections
 - **Interactive Quiz** - 227 questions across 14 categories with progress tracking
-- **Template Browser** - 55 production-ready templates with copy functionality
+- **Template Browser** - 63 production-ready templates with copy functionality
+- **AI Ecosystem Workflows** - 4 workflow variants (Standard, Design-first, Data-driven, Documentation)
 - **Cheat Sheet** - Quick reference PDF download
 - **Learning Path** - Personalized onboarding flow
 - **Mobile Responsive** - Hamburger menu for tablet/mobile (< 768px)
@@ -41,10 +42,10 @@ This site is **secondary** to the main guide. Stats must be synced manually.
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| Version | 3.8.2 | VERSION file |
-| Templates | 55 | examples/ directory |
+| Version | 3.9.6 | VERSION file |
+| Templates | 63 | examples/ directory |
 | Quiz Questions | 227 | quiz/questions/*.yaml |
-| Guide Lines | 9,800+ | guide/ultimate-guide.md |
+| Guide Lines | 11,100+ | guide/ultimate-guide.md |
 
 ### Sync Verification
 
@@ -72,7 +73,7 @@ npx serve
 ## Search Architecture
 
 - **Library**: MiniSearch (CDN, lazy-loaded on first Cmd+K)
-- **Index**: ~110 items (55 templates + 12 FAQ + 6 rules + 47 guide sections)
+- **Index**: ~130 items (63 templates + 12 FAQ + 6 rules + 47 guide sections)
 - **Features**: Fuzzy matching, prefix search, category filtering
 
 ## License

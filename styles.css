@@ -2558,6 +2558,41 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     font-weight: 700;
 }
 
+/* Workflow tabs */
+.workflow-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.workflow-tab {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.workflow-tab:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.workflow-tab.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.ecosystem-workflow.hidden {
+    display: none;
+}
+
 .ecosystem-cta {
     text-align: center;
     margin-top: var(--space-xl);
