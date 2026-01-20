@@ -227,6 +227,23 @@ kbd {
     text-decoration: none;
 }
 
+/* Cross-link to sibling guide */
+.nav-crosslink {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    margin-left: 0.5rem;
+}
+.nav-crosslink:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+.nav-crosslink-label {
+    opacity: 0.7;
+}
+
 /* Mobile Menu Button */
 .menu-toggle {
     display: none;
@@ -1451,6 +1468,12 @@ details[open] > *:not(summary) {
         order: -1;
         width: auto;
         padding: var(--space-sm) var(--space-lg);
+    }
+
+    .nav-links .nav-crosslink {
+        display: block;
+        padding: var(--space-sm) var(--space-lg);
+        margin-left: 0;
     }
 
     .features-grid,
