@@ -2,6 +2,28 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.4.0] - 2026-01-20
+
+### Added
+- **DevOps/SRE Integration**
+  - New DevOps/SRE learning path card in "Choose Your Path" section
+  - 5 new guide-data.js entries for DevOps content search (FIRE Framework, K8s Troubleshooting, Incident Response, IaC, Security Guardrails)
+  - DevOps persona now searchable via Cmd+K with keywords: devops, sre, kubernetes, terraform, incident, fire
+
+### Changed
+- **Stats Synchronization from Main Guide**
+  - Template count corrected: 63/66 → **61** (aligned with actual count in main repo)
+  - Guide lines updated: 11,100+ → **17,600+** (reflects guide growth including devops-sre.md)
+  - Agents category: 5 → 6 templates (added DevOps/SRE agent)
+  - Scripts category: 7 → 8 templates
+  - Search index total: 175 → 184 items (61 templates + 14 FAQ + 6 rules + 78 guide + 25 workflows)
+
+### Fixed
+- **Consistency Issues in examples/index.html**
+  - Removed stale template counts (49, obsolete value)
+  - Unified all template references to 61 across meta tags, schema.org, and body content
+  - Schema.org `numberOfItems` now accurate
+
 ## [2.3.0] - 2026-01-20
 
 ### Added

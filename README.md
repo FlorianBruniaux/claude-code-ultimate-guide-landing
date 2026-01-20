@@ -11,7 +11,7 @@ Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBrun
 - **Global Search** (Cmd+K / Ctrl+K) - Fuzzy search across templates, FAQ, rules, guide sections, and Cowork workflows
 - **Cowork Workflows** - 25 professional automation workflows for small businesses (bilingual FR/EN)
 - **Interactive Quiz** - 227 questions across 14 categories with progress tracking
-- **Template Browser** - 66 production-ready templates with copy functionality
+- **Template Browser** - 61 production-ready templates with copy functionality
 - **AI Ecosystem Workflows** - 4 workflow variants (Standard, Design-first, Data-driven, Documentation)
 - **Cheat Sheet** - Quick reference PDF download
 - **Learning Path** - Personalized onboarding flow
@@ -45,9 +45,9 @@ This site is **secondary** to the main guide. Stats must be synced manually.
 | Metric | Value | Source |
 |--------|-------|--------|
 | Version | 3.9.7 | VERSION file |
-| Templates | 66 | examples/ directory |
+| Templates | 61 | examples/ directory |
 | Quiz Questions | 227 | quiz/questions/*.yaml |
-| Guide Lines | 11,100+ | guide/ultimate-guide.md |
+| Guide Lines | 17,600+ | guide/*.md (all guide files) |
 
 ### Sync Verification
 
@@ -75,7 +75,7 @@ npx serve
 ## Search Architecture
 
 - **Library**: MiniSearch (CDN, lazy-loaded on first Cmd+K)
-- **Index**: ~175 items (66 templates + 14 FAQ + 6 rules + 78 guide sections + 25 workflows)
+- **Index**: ~184 items (61 templates + 14 FAQ + 6 rules + 78 guide sections + 25 workflows)
 - **Sources**: `examples-data.js`, `search-data.js`, `guide-data.js`, `cowork-data.js`
 - **Features**: Fuzzy matching, prefix search, category filtering
 

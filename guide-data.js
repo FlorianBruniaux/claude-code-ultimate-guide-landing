@@ -421,6 +421,43 @@ window.SEARCH_GUIDE = [
         url: GUIDE_BASE + 'ai-ecosystem.md#8-cost--subscription-strategy'
     },
 
+    // === DEVOPS/SRE GUIDE ===
+    {
+        id: 'guide-devops-fire',
+        type: 'guide',
+        title: 'DevOps FIRE Framework',
+        content: 'devops sre fire framework first response investigate remediate evaluate incident kubernetes k8s',
+        url: GUIDE_BASE + 'devops-sre.md#the-fire-framework'
+    },
+    {
+        id: 'guide-devops-k8s',
+        type: 'guide',
+        title: 'Kubernetes Troubleshooting with Claude',
+        content: 'kubernetes k8s crashloopbackoff oomkilled imagepullbackoff pending pod troubleshooting mcp',
+        url: GUIDE_BASE + 'devops-sre.md#kubernetes-troubleshooting'
+    },
+    {
+        id: 'guide-devops-incident',
+        type: 'guide',
+        title: 'Incident Response Patterns',
+        content: 'incident response mttr solo workflow 3am production outage postmortem communication',
+        url: GUIDE_BASE + 'devops-sre.md#solo-incident-workflow'
+    },
+    {
+        id: 'guide-devops-iac',
+        type: 'guide',
+        title: 'Infrastructure as Code with Claude',
+        content: 'terraform ansible gitops argocd iac infrastructure code security review automation',
+        url: GUIDE_BASE + 'devops-sre.md#terraform-with-claude'
+    },
+    {
+        id: 'guide-devops-guardrails',
+        type: 'guide',
+        title: 'DevOps Security Guardrails',
+        content: 'security guardrails secrets tokens cost awareness team adoption rollout boundaries',
+        url: GUIDE_BASE + 'devops-sre.md#security-boundaries'
+    },
+
     // === COWORK ===
     {
         id: 'guide-cowork',
