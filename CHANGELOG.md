@@ -2,6 +2,19 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.2.0] - 2026-01-20
+
+### Changed
+- **Navigation redesign**
+  - Reordered navigation links (Cheat Sheet, Quiz, Examples, Learning, FAQ)
+  - Added prominent "Read Guide" CTA button in navigation
+  - Improved visual separation with `.nav-actions` section
+  - Updated search keyboard shortcut display from "⌘K" to "Cmd+K"
+- **Color palette update**
+  - Primary button colors changed from green to indigo theme
+  - Updated accent-secondary from #238636 to #4f46e5
+  - Adjusted button drop-shadows to match new color scheme
+
 ## [2.1.0] - 2025-01-19
 
 ### Added

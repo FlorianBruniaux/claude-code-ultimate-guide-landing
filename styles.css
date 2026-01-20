@@ -14,8 +14,8 @@
     --text-muted: #9ca3af;
     --accent: #58a6ff;
     --accent-hover: #79b8ff;
-    --accent-secondary: #238636;
-    --accent-secondary-hover: #2ea043;
+    --accent-secondary: #4f46e5;
+    --accent-secondary-hover: #6366f1;
     --border: #30363d;
     --border-light: #21262d;
 
@@ -133,7 +133,7 @@ kbd {
     font-weight: 600;
     padding: 0.875rem 1.75rem;
     border: none;
-    filter: drop-shadow(0 4px 12px rgba(35, 134, 54, 0.3));
+    filter: drop-shadow(0 4px 12px rgba(79, 70, 229, 0.3));
     transition: transform 0.2s var(--ease-out-back),
                 filter 0.2s ease;
 }
@@ -142,7 +142,7 @@ kbd {
     background-color: var(--accent-secondary-hover);
     color: #ffffff;
     transform: translateY(-2px) scale(1.02);
-    filter: drop-shadow(0 6px 20px rgba(35, 134, 54, 0.4));
+    filter: drop-shadow(0 6px 20px rgba(79, 70, 229, 0.4));
 }
 
 .btn-primary:active {
@@ -225,6 +225,15 @@ kbd {
 .nav-links a:hover {
     color: var(--text-primary);
     text-decoration: none;
+}
+
+/* Nav actions separator */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Cross-link to sibling guide */
