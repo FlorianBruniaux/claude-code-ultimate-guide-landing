@@ -2,6 +2,16 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.4.1] - 2026-01-21
+
+### Changed
+- **Enhanced Cowork CTA in Hero Section**
+  - Replaced simple text crosslink with styled box component
+  - Added visual prerequisites: "macOS only" and "Pro $20/mo" tags
+  - Added "Get Started with Cowork →" button linking to getting-started guide
+  - Gradient purple/pink design matching Cowork branding
+  - Responsive layout: horizontal tags on desktop, vertical on mobile (<480px)
+
 ## [2.4.0] - 2026-01-20
 
 ### Added
