@@ -2804,3 +2804,6 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
         text-align: center;
     }
 }
+
+/* Release cards toggle */
+.release-card-hidden { display: none; }

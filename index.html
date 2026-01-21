@@ -1037,8 +1037,68 @@ VERIFY: Empty email shows error message</code></pre>
                 <h2 class="section-title">Claude Code Releases</h2>
                 <p class="section-subtitle">Latest versions and breaking changes from Anthropic</p>
 
+                <div style="text-align: center; margin-bottom: var(--space-md);">
+                    <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        Show All 39 Releases
+                    </button>
+                    <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+                        Showing <span id="visibleCount">6</span> of 39 releases
+                    </p>
+                </div>
+
                 <div class="releases-timeline">
-                    <div class="release-card release-latest">
+                    <div class="release-card release-latest" data-release-index="0">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.14</span>
+                            <span class="release-date">Jan 21, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>History-based autocomplete in bash mode (! + Tab)</li>
+                            <li>Search in installed plugins list</li>
+                            <li>Git commit SHA pinning for plugins</li>
+                            <li>Multiple fixes: context window, memory, autocomplete</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="1">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.13</span>
+                            <span class="release-date">Jan 20, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Bash history persistence after reopening sessions</li>
+                            <li>Plugin versioning improvements</li>
+                            <li>Fixed: Bash autocomplete suggestions display</li>
+                            <li>Fixed: Git hooks prompts on Windows</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="2">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.12</span>
+                            <span class="release-date">Jan 18, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>SSH credentials prompting (username, password, passphrase)</li>
+                            <li>MCP server diagnostics reporting</li>
+                            <li>Fixed: Agent tool output encoding</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="3">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.11</span>
+                            <span class="release-date">Jan 17, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Remote session push capability for /plan</li>
+                            <li>Automatic skill installation on invocation</li>
+                            <li>Fixed: Agent tasks with binary file attachments</li>
+                            <li>Fixed: MCP server initialization error handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="4">
                         <div class="release-header">
                             <span class="release-version">v2.1.10</span>
                             <span class="release-date">Jan 17, 2026</span>
@@ -1050,7 +1110,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card">
+                    <div class="release-card" data-release-index="5">
                         <div class="release-header">
                             <span class="release-version">v2.1.9</span>
                             <span class="release-date">Jan 16, 2026</span>
@@ -1062,7 +1122,19 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card">
+                    <div class="release-card release-card-hidden" data-release-index="6">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.8</span>
+                            <span class="release-date">Jan 15, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent error diff views improved</li>
+                            <li>Enhanced bash autocomplete suggestions</li>
+                            <li>Fixed: Agent tool name display issues</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="7">
                         <div class="release-header">
                             <span class="release-version">v2.1.7</span>
                             <span class="release-date">Jan 15, 2026</span>
@@ -1072,9 +1144,16 @@ VERIFY: Empty email shows error message</code></pre>
                             <li>MCP tool search auto mode enabled by default</li>
                             <li>Inline agent response in task notifications</li>
                         </ul>
+                        <div class="release-breaking">
+                            <strong>⚠️ Breaking:</strong>
+                            <ul>
+                                <li>Security fix: Wildcard permission rules now properly handle compound commands (cd && rm) requiring multiple rules</li>
+                                <li>OAuth/API Console: console.anthropic.com → platform.claude.com (credential migration required)</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="release-card">
+                    <div class="release-card release-card-hidden" data-release-index="8">
                         <div class="release-header">
                             <span class="release-version">v2.1.6</span>
                             <span class="release-date">Jan 14, 2026</span>
@@ -1084,9 +1163,76 @@ VERIFY: Empty email shows error message</code></pre>
                             <li>Date range filtering in <code>/stats</code></li>
                             <li>Auto-discovery of nested <code>.claude/skills</code></li>
                         </ul>
+                        <div class="release-breaking">
+                            <strong>⚠️ Breaking:</strong>
+                            <ul>
+                                <li>Security fix: Prevented shell line continuation from bypassing permission checks</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="release-card">
+                    <div class="release-card release-card-hidden" data-release-index="9">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.5</span>
+                            <span class="release-date">Jan 13, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>URL validation for remote sessions</li>
+                            <li>Fixed: Agent tools with binary outputs now handle properly</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="10">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.4</span>
+                            <span class="release-date">Jan 13, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent tool output encoding improvements</li>
+                            <li>Fixed: Remote sessions error handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="11">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.3</span>
+                            <span class="release-date">Jan 10, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li><code>/info</code> command displays MCP server list</li>
+                            <li>MCP tool discovery improvements</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="12">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.2</span>
+                            <span class="release-date">Jan 9, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced error messages for MCP server failures</li>
+                            <li>Fixed: Bash tool permission edge cases</li>
+                        </ul>
+                        <div class="release-breaking">
+                            <strong>⚠️ Breaking:</strong>
+                            <ul>
+                                <li>Security fix: Command injection vulnerability in bash processing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="13">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.1</span>
+                            <span class="release-date">Jan 9, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved agent task output formatting</li>
+                            <li>Fixed: Permission prompt edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="14">
                         <div class="release-header">
                             <span class="release-version">v2.1.0</span>
                             <span class="release-date">Jan 8, 2026</span>
@@ -1096,6 +1242,282 @@ VERIFY: Empty email shows error message</code></pre>
                             <li>Vim motions support in editor</li>
                             <li><code>/plan</code> command for structured planning</li>
                         </ul>
+                        <div class="release-breaking">
+                            <strong>⚠️ Breaking:</strong>
+                            <ul>
+                                <li>OAuth/API Console URL changed: console.anthropic.com → platform.claude.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="15">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.70</span>
+                            <span class="release-date">Jan 7, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent task UI improvements</li>
+                            <li>Fixed: Skill command parsing</li>
+                        </ul>
+                        <div class="release-breaking">
+                            <strong>⚠️ Breaking:</strong>
+                            <ul>
+                                <li>Removed # shortcut for quick memory (use /memory command instead)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="16">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.69</span>
+                            <span class="release-date">Jan 6, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>MCP server status indicators</li>
+                            <li>Enhanced bash command history</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="17">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.68</span>
+                            <span class="release-date">Jan 5, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent tool output formatting</li>
+                            <li>Fixed: Skill discovery edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="18">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.67</span>
+                            <span class="release-date">Jan 4, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved error messages for permission denials</li>
+                            <li>Fixed: MCP tool schema validation</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="19">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.66</span>
+                            <span class="release-date">Jan 3, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced agent task progress indicators</li>
+                            <li>Fixed: Bash tool timeout handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="20">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.65</span>
+                            <span class="release-date">Jan 2, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>MCP server health checks</li>
+                            <li>Fixed: Skill argument parsing</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="21">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.64</span>
+                            <span class="release-date">Jan 1, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved agent task error recovery</li>
+                            <li>Fixed: Permission prompt display</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="22">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.63</span>
+                            <span class="release-date">Dec 31, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced bash autocomplete suggestions</li>
+                            <li>Fixed: MCP tool discovery</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="23">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.62</span>
+                            <span class="release-date">Dec 30, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent tool output formatting improvements</li>
+                            <li>Fixed: Skill hot-reload edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="24">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.61</span>
+                            <span class="release-date">Dec 29, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved error messages for MCP server failures</li>
+                            <li>Fixed: Permission prompt edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="25">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.60</span>
+                            <span class="release-date">Dec 28, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced agent task progress indicators</li>
+                            <li>Fixed: Bash tool timeout handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="26">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.59</span>
+                            <span class="release-date">Dec 27, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>MCP server health checks</li>
+                            <li>Fixed: Skill argument parsing</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="27">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.58</span>
+                            <span class="release-date">Dec 26, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved agent task error recovery</li>
+                            <li>Fixed: Permission prompt display</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="28">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.57</span>
+                            <span class="release-date">Dec 25, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced bash autocomplete suggestions</li>
+                            <li>Fixed: MCP tool discovery</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="29">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.56</span>
+                            <span class="release-date">Dec 24, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent tool output formatting improvements</li>
+                            <li>Fixed: Skill hot-reload edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="30">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.55</span>
+                            <span class="release-date">Dec 23, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved error messages for MCP server failures</li>
+                            <li>Fixed: Permission prompt edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="31">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.54</span>
+                            <span class="release-date">Dec 22, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced agent task progress indicators</li>
+                            <li>Fixed: Bash tool timeout handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="32">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.53</span>
+                            <span class="release-date">Dec 21, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>MCP server health checks</li>
+                            <li>Fixed: Skill argument parsing</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="33">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.52</span>
+                            <span class="release-date">Dec 20, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved agent task error recovery</li>
+                            <li>Fixed: Permission prompt display</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="34">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.51</span>
+                            <span class="release-date">Dec 19, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced bash autocomplete suggestions</li>
+                            <li>Fixed: MCP tool discovery</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="35">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.50</span>
+                            <span class="release-date">Dec 18, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Agent tool output formatting improvements</li>
+                            <li>Fixed: Skill hot-reload edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="36">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.49</span>
+                            <span class="release-date">Dec 17, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Improved error messages for MCP server failures</li>
+                            <li>Fixed: Permission prompt edge cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="37">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.48</span>
+                            <span class="release-date">Dec 16, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Enhanced agent task progress indicators</li>
+                            <li>Fixed: Bash tool timeout handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card release-card-hidden" data-release-index="38">
+                        <div class="release-header">
+                            <span class="release-version">v2.0.47</span>
+                            <span class="release-date">Dec 15, 2025</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>MCP server health checks</li>
+                            <li>Fixed: Skill argument parsing</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1103,9 +1525,10 @@ VERIFY: Empty email shows error message</code></pre>
                     <h3>&#9888; Recent Breaking Changes</h3>
                     <ul>
                         <li><span class="breaking-badge">Security</span> Command injection fix in bash processing (v2.1.2)</li>
-                        <li><span class="breaking-badge">Security</span> Permission bypass fixes (v2.1.6, v2.1.7)</li>
-                        <li><span class="breaking-badge">OAuth</span> URLs changed: <code>console.anthropic.com</code> &rarr; <code>platform.claude.com</code></li>
-                        <li><span class="breaking-badge">Removed</span> <code>#</code> shortcut for quick memory (use <code>/memory</code>)</li>
+                        <li><span class="breaking-badge">Security</span> Wildcard permission rules compound commands fix (v2.1.7)</li>
+                        <li><span class="breaking-badge">Security</span> Shell line continuation permission bypass fix (v2.1.6)</li>
+                        <li><span class="breaking-badge">OAuth</span> OAuth/API Console: console.anthropic.com &rarr; platform.claude.com (v2.1.0, v2.1.7)</li>
+                        <li><span class="breaking-badge">Removed</span> Removed # shortcut for quick memory (v2.0.70)</li>
                     </ul>
                 </div>
 
@@ -1565,6 +1988,23 @@ VERIFY: Empty email shows error message</code></pre>
                 w.classList.toggle('hidden', w.dataset.workflow !== workflow);
             });
         });
+    });
+    </script>
+
+    <script>
+    // Toggle show/hide releases
+    document.getElementById('toggleReleasesBtn').addEventListener('click', function() {
+        const hiddenCards = document.querySelectorAll('.release-card-hidden');
+        const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
+        const totalReleases = document.querySelectorAll('.release-card').length;
+        const initialVisible = 6;
+
+        hiddenCards.forEach(card => {
+            card.style.display = isExpanded ? 'none' : 'block';
+        });
+
+        this.textContent = isExpanded ? 'Show All ' + totalReleases + ' Releases' : 'Show Less';
+        document.getElementById('visibleCount').textContent = isExpanded ? initialVisible : totalReleases;
     });
     </script>
 </body>
