@@ -161,6 +161,72 @@ kbd {
     color: var(--accent);
 }
 
+.btn-github-star {
+    background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-github-star::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-github-star:hover::before {
+    left: 100%;
+}
+
+.btn-github-star:hover {
+    background: linear-gradient(135deg, #2f363d 0%, #24292e 100%);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2),
+                0 4px 12px rgba(36, 41, 46, 0.4);
+}
+
+.btn-github-star:hover svg {
+    color: #ffd700;
+    transform: scale(1.2) rotate(72deg);
+}
+
+.btn-github-star:active {
+    transform: translateY(0) scale(1);
+}
+
+.btn-github-star svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.btn-github-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .btn-github-text {
+        display: none;
+    }
+
+    .btn-github-star {
+        padding: 0.5rem;
+    }
+}
+
 .btn-outline {
     background-color: transparent;
     color: var(--accent);
