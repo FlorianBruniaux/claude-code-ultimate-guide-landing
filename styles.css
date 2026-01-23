@@ -394,6 +394,22 @@ kbd {
     margin-bottom: var(--space-xl);
 }
 
+/* Hero CTA Enhancement - Pulse animation for conversion */
+.hero .btn-primary {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+    }
+}
+
 .hero-badges {
     display: flex;
     gap: var(--space-sm);
@@ -403,6 +419,72 @@ kbd {
 
 .hero-badges img {
     height: 28px;
+}
+
+/* CSS Badges - Replace shields.io external images */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.badge:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.badge-label,
+.badge-value {
+    padding: 0 7px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.badge-label {
+    background-color: #555;
+    color: #fff;
+}
+
+.badge-value {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Badge variants */
+.badge-stars .badge-label {
+    background-color: #555;
+}
+.badge-stars .badge-value {
+    background-color: #4c1;
+}
+
+.badge-lines .badge-label {
+    background-color: #555;
+}
+.badge-lines .badge-value {
+    background-color: #8b5cf6;
+}
+
+.badge-templates .badge-label {
+    background-color: #555;
+}
+.badge-templates .badge-value {
+    background-color: #4c1;
+}
+
+.badge-quiz .badge-label {
+    background-color: #555;
+}
+.badge-quiz .badge-value {
+    background-color: #fe7d37;
 }
 
 /* Hero share buttons */
@@ -458,9 +540,11 @@ kbd {
    ============================================ */
 .section {
     padding: var(--space-4xl) 0;
+    background-color: var(--bg-primary);
 }
 
-.section:nth-child(even) {
+/* Explicit alternating sections */
+.section--alt {
     background-color: var(--bg-secondary);
 }
 
@@ -1084,7 +1168,7 @@ kbd {
    Golden Rules Section
    ============================================ */
 .golden-rules {
-    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    /* Background controlled by section--alt */
 }
 
 .rules-list {
@@ -1134,7 +1218,7 @@ kbd {
    Level Up Section
    ============================================ */
 .level-up {
-    background-color: var(--bg-secondary);
+    /* Background controlled by section--alt */
 }
 
 .levelup-grid {
@@ -2405,7 +2489,7 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
    Claude Code Releases Section
    ============================================ */
 .cc-releases {
-    background: var(--bg-primary);
+    /* Background controlled by section--alt or default */
 }
 
 .releases-timeline {
@@ -2882,6 +2966,9 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
+
+/* DEPRECATED: Use .section--alt instead */
+/* .section-alternate - removed, use section--alt */
 
 .crosslink-section .container {
     text-align: center;
