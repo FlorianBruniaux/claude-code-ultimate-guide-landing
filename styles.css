@@ -34,6 +34,7 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
     --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.06);  /* subtle header shadow */
 
     /* Header backdrop */
     --header-bg: rgba(255, 255, 255, 0.95);
@@ -82,6 +83,7 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
     --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.5);  /* header shadow for dark mode */
 
     --header-bg: rgba(13, 17, 23, 0.95);
 }
@@ -291,7 +293,7 @@ kbd {
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-header);
 }
 
 .nav {
