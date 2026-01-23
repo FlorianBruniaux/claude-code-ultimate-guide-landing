@@ -225,7 +225,7 @@
     <!-- Claude Code Version Banner -->
     <div class="cc-version-banner">
         <div class="container">
-            <span class="cc-version-badge">Claude Code v2.1.14</span>
+            <span class="cc-version-badge">Claude Code v2.1.17</span>
             <a href="#releases" class="cc-version-link">What's new →</a>
         </div>
     </div>
@@ -1089,15 +1089,50 @@ VERIFY: Empty email shows error message</code></pre>
 
                 <div style="text-align: center; margin-bottom: var(--space-md);">
                     <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
-                        Show All 39 Releases
+                        Show All 42 Releases
                     </button>
                     <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
-                        Showing <span id="visibleCount">6</span> of 39 releases
+                        Showing <span id="visibleCount">6</span> of 42 releases
                     </p>
                 </div>
 
                 <div class="releases-timeline">
                     <div class="release-card release-latest" data-release-index="0">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.17</span>
+                            <span class="release-date">Jan 23, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Fix: Crashes on processors without AVX instruction support</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="1">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.16</span>
+                            <span class="release-date">Jan 22, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>⭐ New task management system with dependency tracking</li>
+                            <li>[VSCode] Native plugin management support</li>
+                            <li>[VSCode] OAuth users can browse/resume remote sessions</li>
+                            <li>Fixed: OOM crashes with heavy subagent usage</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="2">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.15</span>
+                            <span class="release-date">Jan 22, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>⚠️ Deprecation notice for npm installations</li>
+                            <li>UI rendering performance improved with React Compiler</li>
+                            <li>Fixed: MCP stdio server timeout causing UI freezes</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="3">
                         <div class="release-header">
                             <span class="release-version">v2.1.14</span>
                             <span class="release-date">Jan 21, 2026</span>
@@ -1110,45 +1145,27 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="1">
-                        <div class="release-header">
-                            <span class="release-version">v2.1.13</span>
-                            <span class="release-date">Jan 20, 2026</span>
-                        </div>
-                        <ul class="release-highlights">
-                            <li>Bash history persistence after reopening sessions</li>
-                            <li>Plugin versioning improvements</li>
-                            <li>Fixed: Bash autocomplete suggestions display</li>
-                            <li>Fixed: Git hooks prompts on Windows</li>
-                        </ul>
-                    </div>
-
-                    <div class="release-card" data-release-index="2">
+                    <div class="release-card" data-release-index="4">
                         <div class="release-header">
                             <span class="release-version">v2.1.12</span>
                             <span class="release-date">Jan 18, 2026</span>
                         </div>
                         <ul class="release-highlights">
-                            <li>SSH credentials prompting (username, password, passphrase)</li>
-                            <li>MCP server diagnostics reporting</li>
-                            <li>Fixed: Agent tool output encoding</li>
+                            <li>Bug fix: Message rendering</li>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="3">
+                    <div class="release-card" data-release-index="5">
                         <div class="release-header">
                             <span class="release-version">v2.1.11</span>
                             <span class="release-date">Jan 17, 2026</span>
                         </div>
                         <ul class="release-highlights">
-                            <li>Remote session push capability for /plan</li>
-                            <li>Automatic skill installation on invocation</li>
-                            <li>Fixed: Agent tasks with binary file attachments</li>
-                            <li>Fixed: MCP server initialization error handling</li>
+                            <li>Fix: Excessive MCP connection requests for HTTP/SSE transports</li>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="4">
+                    <div class="release-card release-card-hidden" data-release-index="6">
                         <div class="release-header">
                             <span class="release-version">v2.1.10</span>
                             <span class="release-date">Jan 17, 2026</span>
@@ -1160,7 +1177,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="5">
+                    <div class="release-card release-card-hidden" data-release-index="7">
                         <div class="release-header">
                             <span class="release-version">v2.1.9</span>
                             <span class="release-date">Jan 16, 2026</span>
@@ -1172,19 +1189,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card release-card-hidden" data-release-index="6">
-                        <div class="release-header">
-                            <span class="release-version">v2.1.8</span>
-                            <span class="release-date">Jan 15, 2026</span>
-                        </div>
-                        <ul class="release-highlights">
-                            <li>Agent error diff views improved</li>
-                            <li>Enhanced bash autocomplete suggestions</li>
-                            <li>Fixed: Agent tool name display issues</li>
-                        </ul>
-                    </div>
-
-                    <div class="release-card release-card-hidden" data-release-index="7">
+                    <div class="release-card release-card-hidden" data-release-index="8">
                         <div class="release-header">
                             <span class="release-version">v2.1.7</span>
                             <span class="release-date">Jan 15, 2026</span>
@@ -1574,6 +1579,7 @@ VERIFY: Empty email shows error message</code></pre>
                 <div class="breaking-changes">
                     <h3>&#9888; Recent Breaking Changes</h3>
                     <ul>
+                        <li><span class="breaking-badge">Install</span> npm installations deprecated - use native installer (v2.1.15)</li>
                         <li><span class="breaking-badge">Security</span> Command injection fix in bash processing (v2.1.2)</li>
                         <li><span class="breaking-badge">Security</span> Wildcard permission rules compound commands fix (v2.1.7)</li>
                         <li><span class="breaking-badge">Security</span> Shell line continuation permission bypass fix (v2.1.6)</li>
