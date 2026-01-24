@@ -918,6 +918,42 @@ kbd {
 /* ============================================
    Why This Guide Section - Before/After Comparison
    ============================================ */
+
+/* Architecture Visual */
+.architecture-visual {
+    margin: var(--space-xl) auto var(--space-2xl);
+    max-width: 700px;
+    text-align: center;
+}
+
+.architecture-visual figure {
+    margin: 0;
+}
+
+.architecture-visual img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+.architecture-visual figcaption {
+    margin-top: var(--space-md);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+}
+
+.architecture-visual figcaption strong {
+    color: var(--text);
+}
+
+.architecture-visual figcaption a {
+    color: var(--primary);
+}
+
 .comparison-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
