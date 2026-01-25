@@ -251,7 +251,7 @@
     <!-- Claude Code Version Banner -->
     <div class="cc-version-banner">
         <div class="container">
-            <span class="cc-version-badge">Claude Code v2.1.17</span>
+            <span class="cc-version-badge">Claude Code v2.1.19</span>
             <a href="#releases" class="cc-version-link">What's new →</a>
         </div>
     </div>
@@ -1149,6 +1149,30 @@ VERIFY: Empty email shows error message</code></pre>
                 <div class="releases-timeline">
                     <div class="release-card release-latest" data-release-index="0">
                         <div class="release-header">
+                            <span class="release-version">v2.1.19</span>
+                            <span class="release-date">Jan 25, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>New: CLAUDE_CODE_ENABLE_TASKS env var (toggle task systems)</li>
+                            <li>New: Argument shorthand $0, $1 in custom commands</li>
+                            <li>[VSCode] Session forking/rewind for all users</li>
+                            <li>Fixed: Multiple session resuming issues with git worktrees</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="1">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.18</span>
+                            <span class="release-date">Jan 24, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>⭐ Customizable keyboard shortcuts with /keybindings</li>
+                            <li>Per-context keybindings, chord sequences</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="2">
+                        <div class="release-header">
                             <span class="release-version">v2.1.17</span>
                             <span class="release-date">Jan 23, 2026</span>
                         </div>
@@ -1157,7 +1181,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="1">
+                    <div class="release-card" data-release-index="3">
                         <div class="release-header">
                             <span class="release-version">v2.1.16</span>
                             <span class="release-date">Jan 22, 2026</span>
@@ -1629,6 +1653,7 @@ VERIFY: Empty email shows error message</code></pre>
                 <div class="breaking-changes">
                     <h3>&#9888; Recent Breaking Changes</h3>
                     <ul>
+                        <li><span class="breaking-badge">Syntax</span> Indexed argument syntax changed: $ARGUMENTS.0 &rarr; $ARGUMENTS[0] (v2.1.19)</li>
                         <li><span class="breaking-badge">Install</span> npm installations deprecated - use native installer (v2.1.15)</li>
                         <li><span class="breaking-badge">Security</span> Command injection fix in bash processing (v2.1.2)</li>
                         <li><span class="breaking-badge">Security</span> Wildcard permission rules compound commands fix (v2.1.7)</li>
