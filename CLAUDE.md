@@ -56,10 +56,10 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.13.0` | VERSION file |
-| Templates | `86` | Count of examples/ files (excl. README/index) |
+| Version | `3.15.0` | VERSION file |
+| Templates | `88` | Count of examples/ files (excl. README/index) |
 | Quiz questions | `227` | questions.json |
-| Guide lines | `14,900+` | ultimate-guide.md |
+| Guide lines | `15,200+` | ultimate-guide.md |
 
 ## Fichiers critiques
 
