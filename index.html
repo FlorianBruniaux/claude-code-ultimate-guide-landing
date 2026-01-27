@@ -251,7 +251,7 @@
     <!-- Claude Code Version Banner -->
     <div class="cc-version-banner">
         <div class="container">
-            <span class="cc-version-badge">Claude Code v2.1.19</span>
+            <span class="cc-version-badge">Claude Code v2.1.20</span>
             <a href="#releases" class="cc-version-link">What's new →</a>
         </div>
     </div>
@@ -1139,15 +1139,26 @@ VERIFY: Empty email shows error message</code></pre>
 
                 <div style="text-align: center; margin-bottom: var(--space-md);">
                     <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
-                        Show All 42 Releases
+                        Show All 43 Releases
                     </button>
                     <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
-                        Showing <span id="visibleCount">6</span> of 42 releases
+                        Showing <span id="visibleCount">6</span> of 43 releases
                     </p>
                 </div>
 
                 <div class="releases-timeline">
                     <div class="release-card release-latest" data-release-index="0">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.20</span>
+                            <span class="release-date">Jan 27, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>TaskUpdate: <code>status='deleted'</code> for task removal</li>
+                            <li>PR review status indicator (colored dot + link)</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="1">
                         <div class="release-header">
                             <span class="release-version">v2.1.19</span>
                             <span class="release-date">Jan 25, 2026</span>
@@ -1160,7 +1171,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="1">
+                    <div class="release-card" data-release-index="2">
                         <div class="release-header">
                             <span class="release-version">v2.1.18</span>
                             <span class="release-date">Jan 24, 2026</span>
