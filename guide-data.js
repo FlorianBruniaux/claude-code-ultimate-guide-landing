@@ -674,5 +674,51 @@ window.SEARCH_GUIDE = [
         title: 'The Vibe Coding Trap',
         content: 'vibe coding trap anti-pattern karpathy dependency accept without understanding learning danger',
         url: GUIDE_BASE + 'learning-with-ai.md#the-vibe-coding-trap'
+    },
+
+    // === EXPERIMENTAL FEATURES ===
+    {
+        id: 'guide-teammatetool',
+        type: 'guide',
+        title: 'TeammateTool (Experimental Multi-Agent)',
+        content: 'teammatetool multi-agent coordination parallel swarm experimental team messaging feature flag unstable',
+        url: GUIDE_BASE + 'ultimate-guide.md#teammatetool-experimental'
+    },
+
+    // === APPENDIX D: MYTHS VS REALITY ===
+    {
+        id: 'guide-myths-hidden-features',
+        type: 'guide',
+        title: 'Myth: Hidden Features with Secret Flags',
+        content: 'myths hidden features secret flags misinformation FOMO reality documented changelog progressive rollout',
+        url: GUIDE_BASE + 'ultimate-guide.md#myth-claude-code-has-hidden-features'
+    },
+    {
+        id: 'guide-myths-autonomous-agents',
+        type: 'guide',
+        title: 'Myth: Tasks API = Autonomous Agents',
+        content: 'myths tasks api autonomous agents reality coordination parallel sub-agents human approval',
+        url: GUIDE_BASE + 'ultimate-guide.md#myth-tasks-api-allows-fully-autonomous-parallel-agents'
+    },
+    {
+        id: 'guide-myths-100x-faster',
+        type: 'guide',
+        title: 'Myth: 100x Faster Than Competitors',
+        content: 'myths performance 100x faster marketing hyperbole reality honest comparison context window',
+        url: GUIDE_BASE + 'ultimate-guide.md#myth-claude-code-is-100x-faster'
+    },
+    {
+        id: 'guide-reality-strengths',
+        type: 'guide',
+        title: 'Reality: What Makes Claude Code Special',
+        content: 'reality documented strengths context window sub-agents mcp ecosystem permission system transparent pricing',
+        url: GUIDE_BASE + 'ultimate-guide.md#reality-what-makes-claude-code-actually-special'
+    },
+    {
+        id: 'guide-spot-misinformation',
+        type: 'guide',
+        title: 'How to Spot Reliable Information',
+        content: 'reliable sources misinformation fact-check official docs changelog trust red flags FOMO hyperbole',
+        url: GUIDE_BASE + 'ultimate-guide.md#how-to-spot-reliable-information'
     }
 ];
