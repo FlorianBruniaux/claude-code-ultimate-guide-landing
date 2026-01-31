@@ -58,7 +58,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 |----------|--------|--------|
 | Version | `3.15.0` | VERSION file |
 | Templates | `88` | Count of examples/ files (excl. README/index) |
-| Quiz questions | `227` | questions.json |
+| Quiz questions | `257` | questions.json |
 | Guide lines | `15,200+` | ultimate-guide.md |
 
 ## Fichiers critiques

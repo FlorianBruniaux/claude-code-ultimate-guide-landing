@@ -1300,6 +1300,53 @@
       }
     },
     {
+      "id": "03-018",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 3,
+      "question": "How many verification domains does the guide recommend for comprehensive quality checks?",
+      "options": {
+        "a": "3 domains (lint, test, build)",
+        "b": "8 domains: frontend, backend, types, style, performance, accessibility, security, UX",
+        "c": "5 domains: syntax, logic, performance, security, style",
+        "d": "12 domains covering every possible check"
+      },
+      "correct": "b",
+      "explanation": "Boris Cherny's verification loops recommend 8 domains for comprehensive quality:\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\nCLAUDE.md should define which domains to check for each type of change.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Verification Loops",
+        "anchor": "#verification-loops"
+      }
+    },
+    {
+      "id": "03-019",
+      "difficulty": "intermediate",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 3,
+      "question": "What is the 'Fresh Context Pattern' and when should you use it?",
+      "options": {
+        "a": "Clearing browser cache before testing",
+        "b": "Starting a new session with clean context after implementation phase to avoid accumulated noise",
+        "c": "Resetting git to a clean state",
+        "d": "Deleting the .claude folder to start fresh"
+      },
+      "correct": "b",
+      "explanation": "The Fresh Context Pattern means starting a new Claude Code session between exploration and implementation phases. During exploration, context accumulates noise (dead ends, rejected approaches, debugging output). A fresh session gives Claude clean context focused purely on implementation, improving output quality.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Fresh Context Pattern",
+        "anchor": "#fresh-context-pattern"
+      }
+    },
+    {
       "id": "04-001",
       "difficulty": "junior",
       "profiles": [
@@ -1691,6 +1738,28 @@
         "file": "guide/ultimate-guide.md",
         "section": "4.4 Best Practices",
         "anchor": "#explicit-activation-triggers"
+      }
+    },
+    {
+      "id": "04-018",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 4,
+      "question": "What is the invocation reliability difference between AGENTS.md (eager context) and Skills (lazy invocation)?",
+      "options": {
+        "a": "Skills are more reliable than AGENTS.md",
+        "b": "Both have 100% reliability",
+        "c": "AGENTS.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked",
+        "d": "AGENTS.md is deprecated in favor of Skills"
+      },
+      "correct": "c",
+      "explanation": "AGENTS.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: AGENTS.md costs context tokens on every session, Skills save tokens but may miss activations. Use AGENTS.md for critical behaviors, Skills for optional capabilities.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "AGENTS.md vs Skills Evaluation",
+        "anchor": "#agentsmd-vs-skills-evaluation"
       }
     },
     {
@@ -2714,6 +2783,51 @@
       }
     },
     {
+      "id": "07-015",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 7,
+      "question": "What configuration parameter makes a hook run asynchronously (v2.1.0+)?",
+      "options": {
+        "a": "background: true",
+        "b": "async: true",
+        "c": "nonblocking: true",
+        "d": "mode: async"
+      },
+      "correct": "b",
+      "explanation": "Since Claude Code v2.1.0, hooks support `async: true` in their configuration. This makes the hook fire without blocking Claude's execution. Useful for logging, notifications, or analytics hooks where you don't need to wait for the result before continuing.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Hook Execution Model",
+        "anchor": "#hook-execution-model"
+      }
+    },
+    {
+      "id": "07-016",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 7,
+      "question": "What are the 3 limitations of async hooks compared to sync hooks?",
+      "options": {
+        "a": "Can't access stdin, can't write files, can't read environment variables",
+        "b": "No exit code feedback (can't block), no additionalContext returned, no blocking capability",
+        "c": "Can't use network, can't spawn processes, can't read files",
+        "d": "Limited to 1s timeout, no stderr capture, no argument passing"
+      },
+      "correct": "b",
+      "explanation": "Async hooks trade control for speed:\n\n1. **No exit code feedback** - Can't block Claude based on success/failure\n2. **No additionalContext** - Can't inject context back into the conversation\n3. **No blocking capability** - Fire-and-forget only\n\nUse async for non-critical operations (logging, telemetry). Use sync for security gates, formatting, and validation.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Hook Execution Model",
+        "anchor": "#hook-execution-model"
+      }
+    },
+    {
       "id": "08-001",
       "difficulty": "junior",
       "profiles": [
@@ -3105,6 +3219,76 @@
       }
     },
     {
+      "id": "08-018",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 8,
+      "question": "What are the 2 core primitives of MCP Apps architecture?",
+      "options": {
+        "a": "Functions and Routes",
+        "b": "Commands and Events",
+        "c": "Tools with UI metadata and UI resources (ui:// scheme)",
+        "d": "Plugins and Themes"
+      },
+      "correct": "c",
+      "explanation": "MCP Apps (SEP-1865) introduce 2 core primitives:\n\n1. **Tools with UI metadata** - Standard MCP tools annotated with rendering hints (input forms, output displays)\n2. **UI resources (ui:// scheme)** - Resources that return UI components instead of data\n\nTogether, these allow MCP servers to provide both functionality and user interface, enabling richer agent-to-user interactions.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "MCP Apps",
+        "anchor": "#mcp-apps"
+      }
+    },
+    {
+      "id": "08-019",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 8,
+      "question": "What does the 'auto:N' threshold control in MCP tool configuration?",
+      "options": {
+        "a": "Maximum concurrent MCP connections",
+        "b": "Cache size for tool results",
+        "c": "Lazy loading - tools loaded only when description matches user intent, N = max tools to auto-load",
+        "d": "Retry count for failed tool calls"
+      },
+      "correct": "c",
+      "explanation": "The `auto:N` threshold enables lazy loading for MCP tools. Instead of loading all tools at session start (which wastes context), tools are only loaded when their description matches the user's intent. N controls the maximum number of tools to auto-load per intent match. This reduces context usage for MCP servers with many tools.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "MCP Configuration",
+        "anchor": "#mcp-configuration"
+      }
+    },
+    {
+      "id": "08-020",
+      "difficulty": "intermediate",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 8,
+      "question": "Which MCP server scored highest (9.0/10) in the production ecosystem evaluation?",
+      "options": {
+        "a": "Playwright MCP (8.8/10)",
+        "b": "Context7 MCP (8.5/10)",
+        "c": "Semgrep MCP - SAST, secrets, and supply chain analysis",
+        "d": "Kubernetes MCP (8.4/10)"
+      },
+      "correct": "c",
+      "explanation": "Semgrep MCP scored 9.0/10 in the production MCP ecosystem evaluation. It provides static application security testing (SAST), secrets detection, and supply chain analysis. Top scores: Semgrep (9.0), Playwright (8.8), Context7 (8.5), Kubernetes (8.4). Evaluation criteria: reliability, token efficiency, production readiness.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "MCP Servers Ecosystem",
+        "anchor": "#mcp-servers-ecosystem"
+      }
+    },
+    {
       "id": "09-001",
       "difficulty": "senior",
       "profiles": [
@@ -3120,7 +3304,7 @@
         "d": "Agent, Skill, Command"
       },
       "correct": "b",
-      "explanation": "The Trinity is the most powerful Claude Code pattern combining:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep analysis (enabled by default with Opus 4.5)\n3. **Sequential Thinking (MCP)** - Structured multi-step reasoning\n\nCombined, these provide maximum understanding before taking action.\nUse for architecture decisions, complex debugging, and legacy modernization.",
+      "explanation": "The Trinity is the most powerful Claude Code pattern combining:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep analysis (enabled by default in Opus 4.5)\n3. **Sequential Thinking (MCP)** - Structured multi-step reasoning\n\nCombined, these provide maximum understanding before taking action.\nUse for architecture decisions, complex debugging, and legacy modernization.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.1 The Trinity",
@@ -3134,18 +3318,18 @@
         "power"
       ],
       "category_id": 9,
-      "question": "How do you toggle thinking mode on/off in Claude Code (v2.0.67+)?",
+      "question": "How do you toggle thinking mode in Claude Code (Opus 4.5+)?",
       "options": {
-        "a": "Use --think or --ultrathink flags",
-        "b": "Alt+T (session) or /config (permanent)",
-        "c": "Edit settings.json manually",
-        "d": "Use /model opus"
+        "a": "Use 'ultrathink' keyword in your prompt",
+        "b": "Alt+T (or Option+T on macOS)",
+        "c": "--think CLI flag",
+        "d": "/thinking command"
       },
       "correct": "b",
-      "explanation": "Since v2.0.67, thinking is enabled by default at maximum budget with Opus 4.5. The keywords 'think', 'think hard', 'ultrathink' are now cosmetic only.\n\n**Control methods:**\n- **Alt+T** (Option+T on macOS): Toggle thinking on/off for current session\n- **/config** → Thinking mode: Enable/disable globally\n\nThinking is only available with Opus 4.5 - Sonnet and Haiku do not support extended thinking.",
+      "explanation": "With Opus 4.5 (v2.0.67+), thinking mode is enabled by default at maximum budget.\n\n**Controlling Thinking Mode:**\n| Method | Action | Persistence |\n|--------|--------|-------------|\n| **Alt+T** | Toggle on/off | Session |\n| **/config** | Enable/disable globally | Permanent |\n\n**Note**: Keywords like \"ultrathink\" are now cosmetic only - they no longer control thinking behavior.\n\nUse Alt+T to disable thinking for simple tasks (faster, cheaper).",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "9.1 The Trinity",
+        "section": "9.1 Extended Thinking",
         "anchor": "#extended-thinking-opus-45"
       }
     },
@@ -3587,6 +3771,187 @@
       }
     },
     {
+      "id": "09-022",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What are the 5 layers of 'Mechanic Stacking'?",
+      "options": {
+        "a": "Plan Mode, Extended Thinking, Rev the Engine, Split-Role, Permutation",
+        "b": "Plan Mode, Sequential Thinking, Context7, Serena, Playwright",
+        "c": "CLAUDE.md, Plan Mode, Extended Thinking, MCP Servers, Hooks",
+        "d": "Plan Mode, Extended Thinking, Rev the Engine, Multi-Agent, Hooks"
+      },
+      "correct": "a",
+      "explanation": "Mechanic Stacking layers 5 techniques for maximum Claude Code power:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep internal reasoning\n3. **Rev the Engine** - Progressive warm-up prompts\n4. **Split-Role** - Separate architect/implementer/reviewer\n5. **Permutation** - Systematic variation testing\n\nEach layer compounds the previous one's effectiveness.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Mechanic Stacking",
+        "anchor": "#mechanic-stacking"
+      }
+    },
+    {
+      "id": "09-023",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What is a 'Permutation Framework' in Claude Code?",
+      "options": {
+        "a": "A/B testing of UI variants",
+        "b": "CLAUDE.md-driven systematic variation testing: define dimensions, generate variants, implement, evaluate",
+        "c": "Random code generation for benchmarks",
+        "d": "Automated regression test suite"
+      },
+      "correct": "b",
+      "explanation": "A Permutation Framework uses CLAUDE.md to drive systematic variation testing. The workflow: define variation dimensions (e.g., algorithm choice, data structure, caching strategy), generate all combinations, implement each variant, evaluate with metrics. This ensures you explore the solution space methodically rather than picking the first approach.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Permutation Frameworks",
+        "anchor": "#permutation-frameworks"
+      }
+    },
+    {
+      "id": "09-024",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What mental model describes the developer as an orchestrator of Claude instances?",
+      "options": {
+        "a": "Pipeline Manager",
+        "b": "Agent Supervisor",
+        "c": "You Are the Main Thread - CPU scheduler analogy where developer dispatches tasks to agents",
+        "d": "Task Router"
+      },
+      "correct": "c",
+      "explanation": "\"You Are the Main Thread\" uses the CPU scheduler analogy: the developer is the main thread dispatching work to Claude instances (worker threads). You manage priorities, context switches, and synchronization. Key insight: you don't write code - you manage the agents that write code. This shifts the skill from coding to orchestration.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "You Are the Main Thread",
+        "anchor": "#you-are-the-main-thread"
+      }
+    },
+    {
+      "id": "09-025",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 9,
+      "question": "When task list items consistently diverge from actual work done, what does the guide recommend?",
+      "options": {
+        "a": "Delete the task list and start over",
+        "b": "Add more granular detail to each task",
+        "c": "Use divergence patterns as diagnostic: too broad = break down, too narrow = step back, wrong priorities = re-align with goals",
+        "d": "Ignore the divergence and continue"
+      },
+      "correct": "c",
+      "explanation": "Task list divergence is diagnostic, not failure. Patterns reveal issues:\n\n- **Too broad** tasks → break down into smaller pieces\n- **Too narrow** tasks → step back and think bigger\n- **Wrong priorities** → re-align tasks with actual goals\n- **Consistent drift** → your mental model of the problem is wrong\n\nUse divergence as signal, not noise.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Task Management Patterns",
+        "anchor": "#task-management-patterns"
+      }
+    },
+    {
+      "id": "09-026",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What is the 'occurrence rule' for claiming established patterns in code reviews?",
+      "options": {
+        "a": ">5 occurrences = established, 2-5 = emerging, <2 = not established",
+        "b": ">10 occurrences = established, 3-10 = emerging, <3 = not established",
+        "c": "Based on file count, not occurrences",
+        "d": ">20 occurrences = established, 5-20 = emerging, <5 = not established"
+      },
+      "correct": "b",
+      "explanation": "Anti-hallucination safeguards for code reviews define the occurrence rule:\n\n- **>10 occurrences** = established pattern (safe to reference)\n- **3-10 occurrences** = emerging pattern (mention cautiously)\n- **<3 occurrences** = NOT an established pattern (don't claim it is)\n\nThis prevents Claude from hallucinating \"established conventions\" from a few examples.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Anti-Hallucination Safeguards",
+        "anchor": "#anti-hallucination-safeguards"
+      }
+    },
+    {
+      "id": "09-027",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What are the 3 specialized agents in multi-agent code review?",
+      "options": {
+        "a": "Security Reviewer, Performance Analyst, UX Reviewer",
+        "b": "Linter, Type Checker, Test Runner",
+        "c": "Consistency Auditor, SOLID Analyst, Defensive Code Auditor",
+        "d": "Junior Reviewer, Senior Reviewer, Architect Reviewer"
+      },
+      "correct": "c",
+      "explanation": "Multi-agent PR review uses 3 specialized agents:\n\n1. **Consistency Auditor** - Checks naming conventions, import patterns, code style adherence\n2. **SOLID Analyst** - Reviews architectural principles, dependency injection, single responsibility\n3. **Defensive Code Auditor** - Validates error handling, input validation, edge cases\n\nEach agent has anti-hallucination safeguards (occurrence rule, file-scoped claims).",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Multi-Agent PR Review",
+        "anchor": "#multi-agent-pr-review"
+      }
+    },
+    {
+      "id": "09-028",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What is 'comprehension debt' according to Addy Osmani's '80% Problem'?",
+      "options": {
+        "a": "Documentation debt - missing docs",
+        "b": "Code you shipped but don't fully understand - distinct from technical debt",
+        "c": "Review debt - unreviewed PRs",
+        "d": "Design debt - skipped design phase"
+      },
+      "correct": "b",
+      "explanation": "Comprehension debt is code you shipped but don't fully understand. It's distinct from technical debt (code you understand but know is suboptimal). With AI-generated code, comprehension debt grows silently: you accept suggestions without deep understanding. The fix: always be able to explain WHY, not just WHAT.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Practitioner Insights",
+        "anchor": "#practitioner-insights"
+      }
+    },
+    {
+      "id": "09-029",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 9,
+      "question": "What is the '4-step cycle' for CLAUDE.md as compounding memory (Boris Cherny)?",
+      "options": {
+        "a": "Write, Test, Deploy, Monitor",
+        "b": "Plan, Execute, Review, Commit",
+        "c": "Error, Rule, Read, Never repeated",
+        "d": "Ask, Implement, Validate, Ship"
+      },
+      "correct": "c",
+      "explanation": "Boris Cherny's mental model for CLAUDE.md as compounding memory:\n\n1. **Error** - Claude makes a mistake\n2. **Rule** - You add a rule to CLAUDE.md preventing it\n3. **Read** - Claude reads CLAUDE.md on every session start\n4. **Never repeated** - The mistake never happens again\n\nGoal: never correct Claude twice for the same mistake. CLAUDE.md compounds over time.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Boris Cherny Mental Models",
+        "anchor": "#boris-cherny-mental-models"
+      }
+    },
+    {
       "id": "10-001",
       "difficulty": "junior",
       "profiles": [
@@ -4007,6 +4372,78 @@
       }
     },
     {
+      "id": "10-019",
+      "difficulty": "junior",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 10,
+      "question": "What does the '--from-pr' flag do in Claude Code v2.1.27?",
+      "options": {
+        "a": "Creates a new pull request",
+        "b": "Resumes sessions linked to a GitHub PR number or URL",
+        "c": "Fetches all PR comments into context",
+        "d": "Closes a pull request"
+      },
+      "correct": "b",
+      "explanation": "The `--from-pr` flag (v2.1.27) lets you resume Claude Code sessions linked to a specific GitHub PR. Usage: `claude --from-pr 123` or `claude --from-pr https://github.com/org/repo/pull/123`. This loads the PR context (diff, comments, checks) directly into the session.",
+      "doc_reference": {
+        "file": "guide/claude-code-releases.md",
+        "section": "v2.1.27",
+        "anchor": "#v2127"
+      }
+    },
+    {
+      "id": "10-020",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 10,
+      "question": "What breaking change was introduced in Claude Code v2.1.19 for hook/command arguments?",
+      "options": {
+        "a": "Arguments removed entirely",
+        "b": "Migration from $ARGUMENTS.0 (dot syntax) to $ARGUMENTS[0] (bracket syntax)",
+        "c": "New $PARAMS variable replaced $ARGUMENTS",
+        "d": "Arguments now require JSON format"
+      },
+      "correct": "b",
+      "explanation": "Claude Code v2.1.19 changed argument access syntax from dot notation (`$ARGUMENTS.0`) to bracket notation (`$ARGUMENTS[0]`). This breaking change affects all custom commands and hooks that reference arguments. Update your scripts to use the new bracket syntax.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Breaking Changes",
+        "anchor": "#breaking-changes"
+      }
+    },
+    {
+      "id": "10-021",
+      "difficulty": "junior",
+      "profiles": [
+        "junior",
+        "senior",
+        "power",
+        "pm"
+      ],
+      "category_id": 10,
+      "question": "According to the guide's 'Myths vs Reality' section, what is the truth about 'hidden Claude Code features'?",
+      "options": {
+        "a": "Secret flags exist for power users",
+        "b": "Hidden features require an enterprise plan",
+        "c": "There are no hidden features - Anthropic uses progressive rollout, not secret flags",
+        "d": "Beta flags are stored in .claude/config"
+      },
+      "correct": "c",
+      "explanation": "The Myths vs Reality section debunks the \"hidden features\" myth. Anthropic uses progressive rollout (features gradually enabled for users) rather than secret flags or hidden configurations. All features are documented in release notes. There is no secret power-user mode.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Myths vs Reality",
+        "anchor": "#myths-vs-reality"
+      }
+    },
+    {
       "id": "11-001",
       "difficulty": "junior",
       "profiles": [
@@ -4369,6 +4806,53 @@
       }
     },
     {
+      "id": "11-016",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 11,
+      "question": "What are the 3 failure modes identified in Addy Osmani's '80% Problem' of agentic coding?",
+      "options": {
+        "a": "Context loss, token overflow, hallucination",
+        "b": "Overengineering, assumption propagation, sycophantic agreement",
+        "c": "Slow responses, wrong language, missed tests",
+        "d": "Memory leaks, race conditions, deadlocks"
+      },
+      "correct": "b",
+      "explanation": "Addy Osmani's \"80% Problem\" identifies 3 failure modes:\n\n1. **Overengineering** - AI adds unnecessary complexity (abstraction layers, premature optimization)\n2. **Assumption propagation** - One wrong assumption cascades through the codebase\n3. **Sycophantic agreement** - AI agrees with bad ideas instead of pushing back\n\nThe 80% refers to AI getting you 80% of the way, with the last 20% requiring deep human understanding.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Practitioner Insights",
+        "anchor": "#practitioner-insights"
+      }
+    },
+    {
+      "id": "11-017",
+      "difficulty": "intermediate",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 11,
+      "question": "What are the 3 symptoms of vibe coding 'context overload'?",
+      "options": {
+        "a": "Memory leaks, slow startup, API rate limits",
+        "b": "Big-bang context dumps, 5K+ line prompts, performance degradation",
+        "c": "Lost files, broken imports, missing tests",
+        "d": "Excessive commits, merge conflicts, branch proliferation"
+      },
+      "correct": "b",
+      "explanation": "Context overload symptoms in vibe coding:\n\n1. **Big-bang context dumps** - Pasting entire codebases into prompts\n2. **5K+ line prompts** - Exceeding effective context window usage\n3. **Performance degradation** - Claude's quality drops as context grows\n\nThe fix: progressive disclosure (feed context incrementally), use CLAUDE.md for persistent context, and start fresh sessions between phases.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Vibe Coding Anti-Patterns",
+        "anchor": "#vibe-coding-anti-patterns"
+      }
+    },
+    {
       "id": "12-001",
       "difficulty": "intermediate",
       "profiles": [
@@ -4646,6 +5130,74 @@
       }
     },
     {
+      "id": "12-013",
+      "difficulty": "junior",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 12,
+      "question": "What tool replaced TodoWrite for task management in Claude Code v2.1.16+?",
+      "options": {
+        "a": "ProjectManager API",
+        "b": "Kanban tool",
+        "c": "Tasks API (TaskCreate, TaskGet, TaskList, TaskUpdate)",
+        "d": "AgendaWrite tool"
+      },
+      "correct": "c",
+      "explanation": "The Tasks API (v2.1.16+) replaced TodoWrite with 4 tools: TaskCreate (create tasks with descriptions), TaskGet (fetch full task details), TaskList (list all tasks with status), TaskUpdate (update status, dependencies, metadata). Key improvement: task dependencies via blockedBy/blocks fields.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Tasks API",
+        "anchor": "#tasks-api"
+      }
+    },
+    {
+      "id": "12-014",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 12,
+      "question": "What is the API cost overhead of fetching full details for 50 tasks via Tasks API?",
+      "options": {
+        "a": "10x overhead (10 API calls)",
+        "b": "25x overhead (25 API calls)",
+        "c": "51x overhead (1 TaskList + 50 TaskGet calls required)",
+        "d": "100x overhead (100 API calls)"
+      },
+      "correct": "c",
+      "explanation": "Tasks API limitation: TaskList returns only summary fields (id, subject, status, owner, blockedBy). To get full details (description, metadata), you need individual TaskGet calls. For 50 tasks: 1 TaskList + 50 TaskGet = 51 API calls. This N+1 pattern is a known limitation compared to TodoWrite which returned everything in one call.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Tasks API Limitations",
+        "anchor": "#tasks-api-limitations"
+      }
+    },
+    {
+      "id": "12-015",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 12,
+      "question": "What is TeammateTool and what is its status?",
+      "options": {
+        "a": "Production-ready multi-agent framework",
+        "b": "Experimental multi-agent coordination (spawnTeam, discoverTeams, requestJoin, approveJoin) - unstable, no official support",
+        "c": "Official Anthropic tool for team collaboration",
+        "d": "Deprecated feature replaced by Tasks API"
+      },
+      "correct": "b",
+      "explanation": "TeammateTool is an experimental multi-agent coordination tool with 4 operations: spawnTeam, discoverTeams, requestJoin, approveJoin. Status: unstable, not officially supported by Anthropic. It allows Claude instances to form teams and coordinate, but the API is subject to change without notice. Not recommended for production use.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "TeammateTool",
+        "anchor": "#teammatetool"
+      }
+    },
+    {
       "id": "13-001",
       "difficulty": "intermediate",
       "profiles": [
@@ -4877,6 +5429,54 @@
         "file": "guide/security-hardening.md",
         "section": "Security Posture Levels",
         "anchor": "#security-posture-levels"
+      }
+    },
+    {
+      "id": "13-011",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 13,
+      "question": "Which sandbox isolation approach combines microVM isolation with network policies for agent autonomy?",
+      "options": {
+        "a": "E2B (hosted cloud sandboxes)",
+        "b": "Fly.io Sprites (edge compute)",
+        "c": "Docker Sandboxes (with custom templates and network policies)",
+        "d": "Cloudflare Sandbox SDK"
+      },
+      "correct": "c",
+      "explanation": "Docker Sandboxes provide microVM-level isolation with customizable network policies. Key features: custom Dockerfile templates for reproducible environments, network policies to control egress/ingress, volume mounts for persistent storage, and CPU/memory limits. This approach suits teams wanting full control over sandbox configuration while maintaining strong isolation.",
+      "doc_reference": {
+        "file": "guide/sandbox-isolation.md",
+        "section": "Docker Sandboxes",
+        "anchor": "#docker-sandboxes"
+      }
+    },
+    {
+      "id": "13-012",
+      "difficulty": "junior",
+      "profiles": [
+        "junior",
+        "senior",
+        "power",
+        "pm"
+      ],
+      "category_id": 13,
+      "question": "What is the GitHub Issue Auto-Creation Bug (#13797) and why is it dangerous?",
+      "options": {
+        "a": "Issues get automatically deleted",
+        "b": "Claude Code accidentally creates public GitHub issues containing private project details",
+        "c": "Issues are created but remain private",
+        "d": "Only affects paid enterprise accounts"
+      },
+      "correct": "b",
+      "explanation": "The GitHub Issue Auto-Creation Bug (#13797) causes Claude Code to accidentally create public GitHub issues containing private project details. Over 17 accidental disclosures documented, affecting v2.0.65+. The danger: internal code, architecture decisions, and private context leak publicly. Mitigation: disable the gh CLI tool or restrict GitHub permissions.",
+      "doc_reference": {
+        "file": "guide/known-issues.md",
+        "section": "GitHub Issue Auto-Creation Bug",
+        "anchor": "#github-issue-auto-creation-bug"
       }
     },
     {
@@ -5116,9 +5716,37 @@
       }
     },
     {
+      "id": "14-011",
+      "difficulty": "intermediate",
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
+      "category_id": 14,
+      "question": "When should you use 'Co-Authored-By' vs 'Assisted-By' in git commits?",
+      "options": {
+        "a": "Always use Co-Authored-By for any AI involvement",
+        "b": "Co-Authored-By when AI generated significant code, Assisted-By when AI only advised or reviewed",
+        "c": "Never attribute AI in commits",
+        "d": "Use both on every commit"
+      },
+      "correct": "b",
+      "explanation": "AI traceability in git commits:\n\n- **Co-Authored-By**: When AI generated significant portions of code (implementation, refactoring)\n- **Assisted-By**: When AI only advised, reviewed, or suggested minor changes\n\nThis distinction matters for code ownership, audit trails, and understanding who (or what) actually wrote the code. Some teams add this to CLAUDE.md as a mandatory commit convention.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "AI Traceability",
+        "anchor": "#ai-traceability"
+      }
+    },
+    {
       "id": "15-001",
       "difficulty": "junior",
-      "profiles": ["junior", "senior", "power"],
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "What is the main philosophy behind using complementary AI tools with Claude Code?",
       "options": {
@@ -5128,7 +5756,7 @@
         "d": "Avoid using Claude Code for coding tasks"
       },
       "correct": "b",
-      "explanation": "The philosophy is 'augmentation, not replacement.' Claude Code excels at contextual reasoning and implementation, but has gaps: no real-time web search with source verification, no image generation, no PowerPoint/slide generation, no audio synthesis. The goal is to chain the right tool for each step of your workflow.",
+      "explanation": "The philosophy is \"augmentation, not replacement.\"\n\nClaude Code excels at contextual reasoning and implementation, but has gaps:\n- No real-time web search with source verification\n- No image generation\n- No PowerPoint/slide generation\n- No audio synthesis\n\nThe goal is to chain the right tool for each step of your workflow.",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Introduction",
@@ -5138,7 +5766,11 @@
     {
       "id": "15-002",
       "difficulty": "junior",
-      "profiles": ["junior", "senior", "power"],
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "When should you use Perplexity instead of Claude Code?",
       "options": {
@@ -5148,7 +5780,7 @@
         "d": "When running tests"
       },
       "correct": "b",
-      "explanation": "Perplexity excels at research with verified sources. Use Perplexity for: 'What's the latest API for X?' (real-time info), 'Compare 5 libraries for auth' (sourced comparisons), Deep Research mode synthesizes 100+ sources. Use Claude Code for: Implementation in your codebase, contextual code explanation, multi-file editing.",
+      "explanation": "Perplexity excels at research with verified sources.\n\nUse Perplexity for:\n- \"What's the latest API for X?\" (real-time info)\n- \"Compare 5 libraries for auth\" (sourced comparisons)\n- Deep Research mode synthesizes 100+ sources\n\nUse Claude Code for:\n- Implementation in your codebase\n- Contextual code explanation\n- Multi-file editing",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "1. Perplexity AI",
@@ -5158,7 +5790,10 @@
     {
       "id": "15-003",
       "difficulty": "senior",
-      "profiles": ["senior", "power"],
+      "profiles": [
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "What is the recommended Research-to-Code pipeline?",
       "options": {
@@ -5168,7 +5803,7 @@
         "d": "Ask Claude Code to search the web first"
       },
       "correct": "b",
-      "explanation": "The Research-to-Code pipeline: 1) PERPLEXITY (Deep Research) - Research best practices with sources, output: 2000-word spec with citations. 2) Export as spec.md. 3) CLAUDE CODE - 'Implement following spec.md', output: Working implementation with tests. This ensures implementation is based on verified, current information.",
+      "explanation": "The Research-to-Code pipeline:\n\n1. PERPLEXITY (Deep Research)\n   - Research best practices with sources\n   - Output: 2000-word spec with citations\n\n2. Export as spec.md\n\n3. CLAUDE CODE\n   - \"Implement following spec.md\"\n   - Output: Working implementation with tests\n\nThis ensures implementation is based on verified, current information.",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Integration Workflow",
@@ -5178,7 +5813,10 @@
     {
       "id": "15-004",
       "difficulty": "senior",
-      "profiles": ["senior", "power"],
+      "profiles": [
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "Which tool is best for converting a UI screenshot to React code?",
       "options": {
@@ -5188,7 +5826,7 @@
         "d": "NotebookLM"
       },
       "correct": "c",
-      "explanation": "Gemini 2.5 Pro excels at visual understanding. Visual-to-Code Pipeline: 1) GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity). 2) CLAUDE CODE: Refine for your project - add TypeScript types, connect to your components, integrate with your state management. Claude Code alone has limited image understanding compared to Gemini.",
+      "explanation": "Gemini 2.5 Pro excels at visual understanding:\n\nVisual-to-Code Pipeline:\n1. GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity)\n2. CLAUDE CODE: Refine for your project\n   - Add TypeScript types\n   - Connect to your components\n   - Integrate with your state management\n\nClaude Code alone has limited image understanding compared to Gemini.",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "2. Google Gemini",
@@ -5198,7 +5836,11 @@
     {
       "id": "15-005",
       "difficulty": "junior",
-      "profiles": ["junior", "senior", "power"],
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "Which tool should you use to create PowerPoint presentations from code documentation?",
       "options": {
@@ -5208,7 +5850,7 @@
         "d": "Gemini"
       },
       "correct": "c",
-      "explanation": "Kimi (kimi.ai) from Moonshot AI specializes in PPTX generation: native PPTX export (actual slides, not markdown), 128K+ token context (entire codebases), code-aware layouts with syntax highlighting, excellent for stakeholder decks from technical content. Workflow: Claude Code generates summary -> Kimi creates presentation.",
+      "explanation": "Kimi (kimi.ai) from Moonshot AI specializes in PPTX generation:\n\nFeatures:\n- Native PPTX export (actual slides, not markdown)\n- 128K+ token context (entire codebases)\n- Code-aware layouts with syntax highlighting\n- Excellent for stakeholder decks from technical content\n\nWorkflow: Claude Code generates summary -> Kimi creates presentation",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "3. Kimi",
@@ -5218,7 +5860,10 @@
     {
       "id": "15-006",
       "difficulty": "senior",
-      "profiles": ["senior", "power"],
+      "profiles": [
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "What is NotebookLM's unique feature for developer onboarding?",
       "options": {
@@ -5228,7 +5873,7 @@
         "d": "Git integration"
       },
       "correct": "b",
-      "explanation": "NotebookLM's Audio Overview feature: upload 50+ documentation files, generates 10-15 minute 'podcast', two AI hosts discuss your codebase, perfect for onboarding or reviewing large systems. Workflow: Export docs to combined-docs.md, upload to NotebookLM, generate Audio Overview, listen during commute, return to Claude Code with deeper understanding.",
+      "explanation": "NotebookLM's Audio Overview feature:\n\n- Upload 50+ documentation files\n- Generates 10-15 minute \"podcast\"\n- Two AI hosts discuss your codebase\n- Perfect for onboarding or reviewing large systems\n\nWorkflow:\n1. Export docs to combined-docs.md\n2. Upload to NotebookLM\n3. Generate Audio Overview\n4. Listen during commute\n5. Return to Claude Code with deeper understanding",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "4. NotebookLM",
@@ -5238,7 +5883,9 @@
     {
       "id": "15-007",
       "difficulty": "power",
-      "profiles": ["power"],
+      "profiles": [
+        "power"
+      ],
       "category_id": 15,
       "question": "In the complete workflow pipeline, what is the correct order of phases?",
       "options": {
@@ -5248,7 +5895,7 @@
         "d": "All tools simultaneously"
       },
       "correct": "b",
-      "explanation": "The complete pipeline has 3 phases: PLANNING PHASE - Perplexity: Deep Research -> spec.md, Gemini: Diagram Analysis -> mermaid + plan, NotebookLM: Doc Synthesis -> audio overview. IMPLEMENTATION PHASE - Claude Code: Multi-file implementation, IDE + Copilot: Inline autocomplete. DELIVERY PHASE - Claude Code: PR description, release notes, Kimi: Stakeholder deck (presentation.pptx).",
+      "explanation": "The complete pipeline has 3 phases:\n\nPLANNING PHASE:\n- Perplexity: Deep Research -> spec.md\n- Gemini: Diagram Analysis -> mermaid + plan\n- NotebookLM: Doc Synthesis -> audio overview\n\nIMPLEMENTATION PHASE:\n- Claude Code: Multi-file implementation\n- IDE + Copilot: Inline autocomplete\n\nDELIVERY PHASE:\n- Claude Code: PR description, release notes\n- Kimi: Stakeholder deck (presentation.pptx)",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "7. Workflow Orchestration",
@@ -5258,7 +5905,11 @@
     {
       "id": "15-008",
       "difficulty": "junior",
-      "profiles": ["junior", "senior", "power"],
+      "profiles": [
+        "junior",
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "What is v0.dev best used for in the AI ecosystem?",
       "options": {
@@ -5268,7 +5919,7 @@
         "d": "Security auditing"
       },
       "correct": "c",
-      "explanation": "v0.dev excels at rapid UI prototyping: generates React + Shadcn + Tailwind components, live preview in browser, quick iteration on UI designs. Workflow: v0: Prompt -> Get component preview, Export code, Claude Code: Adapt for your project - add TypeScript types, connect to your APIs, integrate with your design system.",
+      "explanation": "v0.dev excels at rapid UI prototyping:\n\n- Generates React + Shadcn + Tailwind components\n- Live preview in browser\n- Quick iteration on UI designs\n\nWorkflow:\n1. v0: Prompt -> Get component preview\n2. Export code\n3. Claude Code: Adapt for your project\n   - Add TypeScript types\n   - Connect to your APIs\n   - Integrate with your design system",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "6. UI Prototypers",
@@ -5278,7 +5929,10 @@
     {
       "id": "15-009",
       "difficulty": "senior",
-      "profiles": ["senior", "power"],
+      "profiles": [
+        "senior",
+        "power"
+      ],
       "category_id": 15,
       "question": "How does Claude WebSearch compare to Perplexity Pro for research?",
       "options": {
@@ -5288,7 +5942,7 @@
         "d": "Perplexity cannot access real-time data"
       },
       "correct": "c",
-      "explanation": "Comparison: Claude WebSearch - ~5-10 sources, basic source verification, best for quick lookups. Perplexity Pro - 100+ sources (Deep Research), full citations, best for comprehensive research, costs $20/month. Recommendation: Use Claude WebSearch for quick factual checks, use Perplexity Deep Research before significant implementations.",
+      "explanation": "Comparison:\n\n| Feature | Claude WebSearch | Perplexity Pro |\n|---------|-----------------|----------------|\n| Source count | ~5-10 | 100+ (Deep Research) |\n| Source verification | Basic | Full citations |\n| Best for | Quick lookups | Comprehensive research |\n| Cost | Included | $20/month |\n\nRecommendation: Use Claude WebSearch for quick factual checks.\nUse Perplexity Deep Research before significant implementations.",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Comparison",
@@ -5298,7 +5952,9 @@
     {
       "id": "15-010",
       "difficulty": "power",
-      "profiles": ["power"],
+      "profiles": [
+        "power"
+      ],
       "category_id": 15,
       "question": "What is the 'Minimal Stack' monthly cost recommendation for AI tools?",
       "options": {
@@ -5308,11 +5964,79 @@
         "d": "$500+/month - enterprise plans"
       },
       "correct": "b",
-      "explanation": "Recommended subscription stacks: Minimal Stack ($40-70/month) - Claude Code (pay-per-use): $20-50, Perplexity Pro: $20, Everything else: Free tiers (NotebookLM, Kimi, Gemini free). Balanced Stack ($80-110/month) adds Gemini Advanced ($20) and Cursor Pro ($20). Cost optimization tips: Use Haiku for simple tasks, batch research sessions in Perplexity, check context usage regularly (/status).",
+      "explanation": "Recommended subscription stacks:\n\nMinimal Stack ($40-70/month):\n- Claude Code (pay-per-use): $20-50\n- Perplexity Pro: $20\n- Everything else: Free tiers (NotebookLM, Kimi, Gemini free)\n\nBalanced Stack ($80-110/month):\n- Add Gemini Advanced ($20) and Cursor Pro ($20)\n\nCost optimization tips:\n- Use Haiku for simple tasks\n- Batch research sessions in Perplexity\n- Check context usage regularly (/status)",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "8. Cost & Subscription Strategy",
         "anchor": "#8-cost--subscription-strategy"
+      }
+    },
+    {
+      "id": "15-011",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 15,
+      "question": "What cost savings does the Claude Code to LM Studio bridge provide?",
+      "options": {
+        "a": "20-30% savings on API costs",
+        "b": "50% savings but slower execution",
+        "c": "80-90% savings by planning with Opus then executing free with local LLM",
+        "d": "No savings but better privacy"
+      },
+      "correct": "c",
+      "explanation": "The Claude Code to LM Studio bridge provides 80-90% cost savings. Strategy: use Opus for planning phase (~$0.50-2 per session) then execute implementation with a free local LLM via LM Studio. The bridge script translates Claude's plan into local LLM instructions. Trade-off: local LLMs are less capable but free.",
+      "doc_reference": {
+        "file": "examples/scripts/bridge.py",
+        "section": "LM Studio Bridge",
+        "anchor": "#lm-studio-bridge"
+      }
+    },
+    {
+      "id": "15-012",
+      "difficulty": "power",
+      "profiles": [
+        "power"
+      ],
+      "category_id": 15,
+      "question": "What are the 3 documented external orchestration systems for multi-agent Claude Code?",
+      "options": {
+        "a": "LangChain, AutoGPT, CrewAI",
+        "b": "Vercel AI SDK, Fly.io Machines, Railway",
+        "c": "Gas Town (Steve Yegge), multiclaude (dlorenc), agent-chat (Justin Abrahms)",
+        "d": "Kubernetes, Docker Compose, Terraform"
+      },
+      "correct": "c",
+      "explanation": "Three documented external orchestration systems:\n\n1. **Gas Town** (Steve Yegge) - Multi-agent coordination with shared context\n2. **multiclaude** (dlorenc) - Parallel Claude Code instances with task distribution\n3. **agent-chat** (Justin Abrahms) - Inter-agent communication protocol\n\nThese are community-built tools, not official Anthropic products. Each solves multi-agent coordination differently.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "External Orchestration",
+        "anchor": "#external-orchestration"
+      }
+    },
+    {
+      "id": "15-013",
+      "difficulty": "senior",
+      "profiles": [
+        "senior",
+        "power"
+      ],
+      "category_id": 15,
+      "question": "What 3 areas should sub-agents audit when evaluating a skeleton project before forking?",
+      "options": {
+        "a": "Performance, Cost, Scalability",
+        "b": "UI, API, Database",
+        "c": "Security, Architecture, Developer Experience (DX)",
+        "d": "Tests, Documentation, CI/CD"
+      },
+      "correct": "c",
+      "explanation": "Skeleton project evaluation uses 3 specialized sub-agents:\n\n1. **Security** - Audit dependencies, secrets management, auth patterns, known vulnerabilities\n2. **Architecture** - Evaluate code organization, patterns, scalability, maintainability\n3. **Developer Experience (DX)** - Check setup complexity, documentation quality, tooling, onboarding friction\n\nEach agent produces a score and recommendations before the fork decision.",
+      "doc_reference": {
+        "file": "guide/ultimate-guide.md",
+        "section": "Skeleton Projects Workflow",
+        "anchor": "#skeleton-projects-workflow"
       }
     }
   ]
