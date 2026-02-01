@@ -720,5 +720,42 @@ window.SEARCH_GUIDE = [
         title: 'How to Spot Reliable Information',
         content: 'reliable sources misinformation fact-check official docs changelog trust red flags FOMO hyperbole',
         url: GUIDE_BASE + 'ultimate-guide.md#how-to-spot-reliable-information'
+    },
+
+    // === TOKEN OPTIMIZATION & THIRD-PARTY TOOLS ===
+    {
+        id: 'guide-rtk',
+        type: 'guide',
+        title: 'RTK (Rust Token Killer) - Command Output Optimization',
+        content: 'rtk rust token killer optimization 70% 90% reduction git pnpm npm cargo github cli preprocessing filter bash command output savings analytics gain discover',
+        url: GUIDE_BASE + 'ultimate-guide.md#command-output-optimization-with-rtk'
+    },
+    {
+        id: 'guide-third-party-rtk',
+        type: 'guide',
+        title: 'RTK Tool - Third-Party Tools',
+        content: 'rtk token optimization preprocessing command filter upstream fork pszymkowiak FlorianBruniaux vitest prisma analytics',
+        url: GUIDE_BASE + 'third-party-tools.md#rtk-rust-token-killer'
+    },
+    {
+        id: 'guide-third-party-tools',
+        type: 'guide',
+        title: 'Third-Party Tools & Community Integrations',
+        content: 'community tools GUI TUI dashboard ccusage ccburn claude-code-viewer cost tracking session management config alternative UI',
+        url: GUIDE_BASE + 'third-party-tools.md'
+    },
+    {
+        id: 'guide-cost-tracking-tools',
+        type: 'guide',
+        title: 'Cost Tracking Tools (ccusage, ccburn)',
+        content: 'cost tracking ccusage ccburn token consumption monitoring analytics burn rate visualization',
+        url: GUIDE_BASE + 'third-party-tools.md#cost-tracking'
+    },
+    {
+        id: 'guide-session-viewer',
+        type: 'guide',
+        title: 'Session Viewer (claude-code-viewer)',
+        content: 'session viewer claude-code-viewer history browse JSONL conversation web UI',
+        url: GUIDE_BASE + 'third-party-tools.md#session-management'
     }
 ];
