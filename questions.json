@@ -79,13 +79,14 @@
         "c": "pip install claude-code",
         "d": "curl -fsSL https://claude.ai/install.sh | sh"
       },
-      "correct": "b",
-      "explanation": "The universal installation method that works across all platforms (Windows, macOS, Linux) is `npm install -g @anthropic-ai/claude-code`. While shell scripts and Homebrew are available for specific platforms, npm is the recommended cross-platform approach. This ensures consistent installation regardless of your operating system.\n",
+      "correct": "d",
+      "explanation": "The recommended installation method is `curl -fsSL https://claude.ai/install.sh | sh` which works across all platforms. npm is deprecated - use `claude install` to migrate if you installed via npm. While Homebrew is available for macOS, the shell script is the universal method recommended in official docs.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.1 Installation",
         "anchor": "#11-installation"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/setup"
     },
     {
       "id": "01-002",
@@ -109,7 +110,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "1.2 First Workflow",
         "anchor": "#12-first-workflow"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/interactive-mode"
     },
     {
       "id": "01-003",
@@ -134,7 +136,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
         "anchor": "#13-essential-commands"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "01-004",
@@ -158,7 +161,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
         "anchor": "#shell-commands-with-"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/interactive-mode"
     },
     {
       "id": "01-005",
@@ -300,7 +304,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
         "anchor": "#quick-actions--shortcuts"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/interactive-mode"
     },
     {
       "id": "01-011",
@@ -382,17 +387,18 @@
       "question": "When resuming a Claude Code session, what context is preserved?",
       "options": {
         "a": "Only the conversation history",
-        "b": "Full conversation history, files read/edited, CLAUDE.md settings, and MCP server state",
+        "b": "Full conversation history, files read/edited, CLAUDE.md settings",
         "c": "Just the last 10 messages",
         "d": "Only files that were modified"
       },
       "correct": "b",
-      "explanation": "When you resume a session, Claude retains: full conversation history, files previously read/edited, CLAUDE.md and project settings, MCP server state (if Serena is used), and uncommitted code changes awareness. This comprehensive context preservation allows seamless continuation of complex, multi-day tasks.\n",
+      "explanation": "When you resume a session, Claude retains: full conversation history, files previously read/edited, CLAUDE.md and project settings, and uncommitted code changes awareness. MCP servers restart on each session - their state is NOT preserved. Session-scoped permissions also don't carry over.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
         "anchor": "#context-preservation"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/how-claude-code-works"
     },
     {
       "id": "01-015",
@@ -927,7 +933,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "3.4 Precedence Rules",
         "anchor": "#claudemd-precedence"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "03-002",
@@ -951,7 +958,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
         "anchor": "#level-2-project-projectclaudemd"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "03-003",
@@ -974,7 +982,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
         "anchor": "#settingslocaljson-personal-permissions"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "03-004",
@@ -1067,7 +1076,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
         "anchor": "#level-2-project-projectclaudemd"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "03-008",
@@ -1085,12 +1095,13 @@
         "d": "Git commands with glob patterns"
       },
       "correct": "b",
-      "explanation": "The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. You can also use specific patterns like 'Bash(git status:*)' to match only git status.\n",
+      "explanation": "The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. The space-based syntax is current - colon syntax like 'Bash(git status:*)' is deprecated.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
         "anchor": "#permission-patterns"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/permissions"
     },
     {
       "id": "03-009",
@@ -1112,7 +1123,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
         "anchor": "#dynamic-memory-profile-switching"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/permissions"
     },
     {
       "id": "03-010",
@@ -1150,16 +1162,17 @@
       "options": {
         "a": "/project/CLAUDE.md",
         "b": ".claude/agents/",
-        "c": ".claude/settings.local.json and .claude/CLAUDE.md",
+        "c": ".claude/settings.local.json and CLAUDE.local.md",
         "d": ".claude/hooks/"
       },
       "correct": "c",
-      "explanation": "Files that should be gitignored are: .claude/CLAUDE.md (local personal instructions) and .claude/settings.local.json (personal permissions). Files that should be committed include: agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.\n",
+      "explanation": "Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). The .claude/CLAUDE.md file is project memory and should be committed. Files to commit include: agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.2 The .claude/ Folder Structure",
         "anchor": "#what-goes-where"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "03-012",
@@ -1171,17 +1184,18 @@
       "question": "What does 'allowedTools' configuration do differently from permission categories?",
       "options": {
         "a": "Nothing, they are the same",
-        "b": "Provides granular control with tool-specific patterns in ~/.claude.json",
+        "b": "Provides granular control with tool-specific patterns in .claude/settings.json",
         "c": "Only works for MCP tools",
         "d": "Requires admin privileges"
       },
       "correct": "b",
-      "explanation": "The allowedTools configuration in ~/.claude.json provides granular control with specific patterns. For example: 'Read(*)' allows all reads, 'Bash(git status:*)' allows only git status, 'Bash(pnpm *:*)' allows pnpm commands. You can set progressive permission levels from beginner (very restrictive) to advanced. Never use --dangerously-skip-permissions.\n",
+      "explanation": "The allowedTools configuration in .claude/settings.json or .claude/settings.local.json provides granular control with specific patterns. For example: 'Read(*)' allows all reads, 'Bash(git status *)' allows git status commands, 'Bash(pnpm *)' allows pnpm commands. You can set progressive permission levels from beginner (very restrictive) to advanced. Never use --dangerously-skip-permissions.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
         "anchor": "#allowedtools-configuration-alternative"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/permissions"
     },
     {
       "id": "03-013",
@@ -1369,7 +1383,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "4.1 What Are Agents",
         "anchor": "#41-what-are-agents"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/agents"
     },
     {
       "id": "04-002",
@@ -1393,7 +1408,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
         "anchor": "#42-creating-custom-agents"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/agents"
     },
     {
       "id": "04-003",
@@ -1416,7 +1432,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
         "anchor": "#frontmatter-fields"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/agents"
     },
     {
       "id": "04-004",
@@ -1785,7 +1802,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "5.1 Understanding Skills",
         "anchor": "#51-understanding-skills"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/skills"
     },
     {
       "id": "05-002",
@@ -1809,7 +1827,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
         "anchor": "#52-creating-skills"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/skills"
     },
     {
       "id": "05-003",
@@ -2202,7 +2221,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
         "anchor": "#62-creating-custom-commands"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-002",
@@ -2226,7 +2246,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
         "anchor": "#command-naming"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-003",
@@ -2249,7 +2270,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
         "anchor": "#variable-interpolation"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-004",
@@ -2273,7 +2295,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.1 Slash Commands",
         "anchor": "#61-slash-commands"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-005",
@@ -2296,7 +2319,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.3 Command Template",
         "anchor": "#63-command-template"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-006",
@@ -2320,7 +2344,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "6.1 Slash Commands",
         "anchor": "#built-in-commands"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/slash-commands"
     },
     {
       "id": "06-007",
@@ -2482,7 +2507,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
         "anchor": "#exit-codes"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/hooks"
     },
     {
       "id": "07-002",
@@ -2506,7 +2532,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "7.1 The Event System",
         "anchor": "#event-types"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/hooks"
     },
     {
       "id": "07-003",
@@ -2529,7 +2556,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
         "anchor": "#hook-input-stdin-json"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/hooks"
     },
     {
       "id": "07-004",
@@ -2849,7 +2877,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "8.1 What is MCP",
         "anchor": "#81-what-is-mcp"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/mcp-servers"
     },
     {
       "id": "08-002",
@@ -2872,7 +2901,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
         "anchor": "#serena-semantic-code-analysis"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/mcp-servers"
     },
     {
       "id": "08-003",
@@ -2895,7 +2925,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "8.4 Server Selection Guide",
         "anchor": "#server-comparison"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/mcp-servers"
     },
     {
       "id": "08-004",
@@ -4047,30 +4078,6 @@
       }
     },
     {
-      "id": "10-005",
-      "difficulty": "junior",
-      "profiles": [
-        "junior",
-        "senior",
-        "power"
-      ],
-      "category_id": 10,
-      "question": "What keyboard shortcut cancels the current operation?",
-      "options": {
-        "a": "Esc",
-        "b": "Ctrl+C",
-        "c": "Ctrl+Z",
-        "d": "Alt+C"
-      },
-      "correct": "b",
-      "explanation": "`Ctrl+C` cancels the current operation.\n\nImportant shortcuts:\n- `Ctrl+C`: Cancel operation\n- `Ctrl+D`: Exit Claude Code\n- `Ctrl+R`: Retry last operation\n- `Ctrl+L`: Clear screen (keeps context)\n- `Esc`: Dismiss current suggestion\n",
-      "doc_reference": {
-        "file": "guide/ultimate-guide.md",
-        "section": "10.2 Keyboard Shortcuts",
-        "anchor": "#session-control"
-      }
-    },
-    {
       "id": "10-006",
       "difficulty": "senior",
       "profiles": [
@@ -4254,7 +4261,8 @@
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
         "anchor": "#cli-flags-reference"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/setup"
     },
     {
       "id": "10-014",
@@ -4266,17 +4274,18 @@
       "question": "What is the recommended .gitignore pattern for Claude Code files?",
       "options": {
         "a": "Ignore all .claude/ contents",
-        "b": "Ignore settings.local.json and .claude/CLAUDE.md, keep agents/commands/hooks",
+        "b": "Ignore settings.local.json and CLAUDE.local.md, keep agents/commands/hooks",
         "c": "Don't ignore anything",
         "d": "Ignore only agents/"
       },
       "correct": "b",
-      "explanation": "Recommended .gitignore:\n\n```gitignore\n# Claude Code - Personal (ignore)\n.claude/settings.local.json\n.claude/CLAUDE.md\n.claude/.serena/\n\n# Claude Code - Team (keep/commit)\n# .claude/agents/\n# .claude/commands/\n# .claude/hooks/\n# .claude/settings.json\n```\n\nThis keeps team workflows shared while personal settings stay private.\n",
+      "explanation": "Recommended .gitignore:\n\n```gitignore\n# Claude Code - Personal (ignore)\n.claude/settings.local.json\nCLAUDE.local.md\n.claude/.serena/\n\n# Claude Code - Team (keep/commit)\n# .claude/CLAUDE.md (project memory)\n# .claude/agents/\n# .claude/commands/\n# .claude/hooks/\n# .claude/settings.json\n```\n\nThis keeps team workflows shared while personal settings stay private.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.11 Common Pitfalls & Best Practices",
         "anchor": "#recommended-gitignore"
-      }
+      },
+      "official_doc": "https://code.claude.com/docs/en/memory"
     },
     {
       "id": "10-015",

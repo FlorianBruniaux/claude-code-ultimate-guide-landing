@@ -360,10 +360,94 @@
             line-height: 1.6;
         }
 
+        .success-rate {
+            margin-top: var(--space-sm);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .explanation-box .doc-links {
+            margin-top: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
         .explanation-box .doc-link {
             display: inline-block;
-            margin-top: var(--space-md);
             font-size: 0.9rem;
+        }
+
+        .explanation-box .official-doc-link {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Report error section */
+        .report-error-section {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-report-error {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-report-error:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-report-error.flagged {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        .report-comment-box {
+            display: none;
+            margin-top: var(--space-md);
+            animation: slideDown 0.2s ease-out;
+        }
+
+        .report-comment-box.show {
+            display: block;
+        }
+
+        .report-comment-box textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: vertical;
+            margin-bottom: var(--space-sm);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .question-actions {
@@ -543,6 +627,114 @@
         .meta-label {
             font-size: 0.8rem;
             color: var(--text-muted);
+        }
+
+        /* Most missed questions section */
+        .most-missed-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+            text-align: left;
+        }
+
+        .most-missed-section h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        #most-missed-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .missed-question-item {
+            padding: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--warning);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .missed-question-item .question-info {
+            flex: 1;
+        }
+
+        .missed-question-item .question-id {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .missed-question-item .question-preview {
+            color: var(--text-secondary);
+            margin-top: var(--space-xs);
+        }
+
+        .missed-question-item .success-rate {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--warning);
+            font-size: 1.1rem;
+            margin-left: var(--space-md);
+        }
+
+        /* Flagged questions section */
+        .flagged-questions-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+            text-align: left;
+        }
+
+        .flagged-questions-section h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        #flagged-questions-list {
+            margin-bottom: var(--space-md);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .flagged-question-item {
+            padding: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--danger);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        .flagged-question-item .question-id {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .flagged-question-item .question-preview {
+            color: var(--text-secondary);
+            margin: var(--space-xs) 0;
+        }
+
+        .flagged-question-item .flag-comment {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
+        .flagged-actions {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
         }
 
         .results-actions {
@@ -841,7 +1033,18 @@
             <div class="explanation-box" id="explanation-box">
                 <h4>Explanation</h4>
                 <p id="explanation-text"></p>
-                <a id="doc-link" class="doc-link" href="#" target="_blank" rel="noopener">View in documentation &rarr;</a>
+                <div class="success-rate" id="success-rate"></div>
+                <div class="doc-links">
+                    <a id="doc-link" class="doc-link" href="#" target="_blank" rel="noopener">View in documentation &rarr;</a>
+                    <a id="official-doc-link" class="doc-link official-doc-link" href="#" target="_blank" rel="noopener">Official docs &rarr;</a>
+                </div>
+                <div class="report-error-section">
+                    <button class="btn-report-error" id="btn-report-error">🚩 Report error</button>
+                    <div class="report-comment-box" id="report-comment-box">
+                        <textarea id="report-comment" placeholder="Optional: describe the issue (ambiguous, misleading, outdated...)" rows="3"></textarea>
+                        <button class="btn btn-secondary" id="btn-cancel-report">Cancel</button>
+                    </div>
+                </div>
             </div>
 
             <div class="question-actions">
@@ -894,6 +1097,26 @@
                     <!-- Populated by JS -->
                 </div>
                 <a class="clear-history" id="clear-history">Clear History</a>
+            </div>
+
+            <div class="most-missed-section" id="most-missed-section" style="display: none;">
+                <h4>📉 Most Missed Questions</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md);">
+                    These questions have the lowest success rates overall.
+                </p>
+                <div id="most-missed-list"></div>
+            </div>
+
+            <div class="flagged-questions-section" id="flagged-questions-section" style="display: none;">
+                <h4>🚩 Flagged Questions</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md);">
+                    You reported <span id="flagged-count">0</span> question(s) during this quiz.
+                </p>
+                <div id="flagged-questions-list"></div>
+                <div class="flagged-actions">
+                    <button class="btn btn-secondary" id="copy-report-btn">📋 Copy Report</button>
+                    <button class="btn btn-secondary" id="github-issue-btn">🐛 Open GitHub Issue</button>
+                </div>
             </div>
 
             <div class="share-text" id="share-text">
@@ -1023,6 +1246,111 @@
             return matching[matching.length - 1];
         }
 
+        // Question stats system
+        function getQuestionStats() {
+            try {
+                const stored = localStorage.getItem('ccquiz_question_stats');
+                return stored ? JSON.parse(stored) : {};
+            } catch (e) {
+                console.error('Failed to parse question stats:', e);
+                return {};
+            }
+        }
+
+        function saveQuestionStats(stats) {
+            try {
+                localStorage.setItem('ccquiz_question_stats', JSON.stringify(stats));
+            } catch (e) {
+                console.error('Failed to save question stats:', e);
+            }
+        }
+
+        function updateQuestionStats(questionId, isCorrect) {
+            const stats = getQuestionStats();
+            if (!stats[questionId]) {
+                stats[questionId] = { attempts: 0, correct: 0 };
+            }
+            stats[questionId].attempts++;
+            if (isCorrect) {
+                stats[questionId].correct++;
+            }
+            saveQuestionStats(stats);
+            return stats[questionId];
+        }
+
+        function getSuccessRate(questionId) {
+            const stats = getQuestionStats();
+            const qStats = stats[questionId];
+            if (!qStats || qStats.attempts === 0) return null;
+            return Math.round((qStats.correct / qStats.attempts) * 100);
+        }
+
+        // Report error system
+        let flaggedQuestions = {}; // { questionId: { flagged: true, comment: string } }
+
+        function getFlaggedQuestions() {
+            try {
+                const stored = localStorage.getItem('ccquiz_flagged');
+                return stored ? JSON.parse(stored) : {};
+            } catch (e) {
+                console.error('Failed to parse flagged questions:', e);
+                return {};
+            }
+        }
+
+        function saveFlaggedQuestions() {
+            try {
+                localStorage.setItem('ccquiz_flagged', JSON.stringify(flaggedQuestions));
+            } catch (e) {
+                console.error('Failed to save flagged questions:', e);
+            }
+        }
+
+        function toggleQuestionFlag(questionId, comment = '') {
+            if (flaggedQuestions[questionId]) {
+                delete flaggedQuestions[questionId];
+            } else {
+                flaggedQuestions[questionId] = { flagged: true, comment };
+            }
+            saveFlaggedQuestions();
+        }
+
+        function generateReportText() {
+            const flaggedList = Object.entries(flaggedQuestions).map(([qid, data]) => {
+                const q = quizData.questions.find(q => q.id === qid);
+                if (!q) return null;
+                return `## Question ${qid}\n` +
+                       `**Category**: ${getCategoryName(q.category_id)}\n` +
+                       `**Difficulty**: ${q.difficulty}\n` +
+                       `**Question**: ${q.question}\n` +
+                       `**Correct Answer**: ${q.correct}) ${q.options[q.correct]}\n` +
+                       (data.comment ? `**Comment**: ${data.comment}\n` : '') +
+                       `\n`;
+            }).filter(Boolean).join('\n');
+
+            return `# Quiz Error Report\n\n` +
+                   `Flagged ${Object.keys(flaggedQuestions).length} question(s)\n\n` +
+                   flaggedList;
+        }
+
+        function copyReportToClipboard() {
+            const report = generateReportText();
+            navigator.clipboard.writeText(report).then(() => {
+                alert('Report copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy report. Please try again.');
+            });
+        }
+
+        function openGitHubIssue() {
+            const report = generateReportText();
+            const title = `Quiz Error Report: ${Object.keys(flaggedQuestions).length} question(s)`;
+            const body = encodeURIComponent(report);
+            const url = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/issues/new?title=${encodeURIComponent(title)}&body=${body}`;
+            window.open(url, '_blank');
+        }
+
         // DOM Elements
         const setupScreen = document.getElementById('quiz-setup');
         const questionScreen = document.getElementById('quiz-question');
@@ -1037,6 +1365,8 @@
         async function loadQuestions() {
             const response = await fetch('../questions.json');
             quizData = await response.json();
+            // Load flagged questions from localStorage
+            flaggedQuestions = getFlaggedQuestions();
             renderCategoryGrid();
         }
 
@@ -1222,6 +1552,18 @@
             if (answers[q.id]) {
                 explanationBox.classList.add('show');
                 document.getElementById('explanation-text').textContent = q.explanation;
+
+                // Success rate
+                const successRateEl = document.getElementById('success-rate');
+                const successRate = getSuccessRate(q.id);
+                if (successRate !== null) {
+                    successRateEl.textContent = `📊 ${successRate}% get this right`;
+                    successRateEl.style.display = 'block';
+                } else {
+                    successRateEl.style.display = 'none';
+                }
+
+                // Guide documentation link
                 const docLink = document.getElementById('doc-link');
                 if (q.doc_reference) {
                     docLink.href = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${q.doc_reference.file}${q.doc_reference.anchor || ''}`;
@@ -1229,6 +1571,73 @@
                 } else {
                     docLink.style.display = 'none';
                 }
+
+                // Official documentation link
+                const officialDocLink = document.getElementById('official-doc-link');
+                if (q.official_doc) {
+                    officialDocLink.href = q.official_doc;
+                    officialDocLink.style.display = 'inline-block';
+                } else {
+                    officialDocLink.style.display = 'none';
+                }
+
+                // Report error button
+                const btnReportError = document.getElementById('btn-report-error');
+                const reportCommentBox = document.getElementById('report-comment-box');
+                const reportComment = document.getElementById('report-comment');
+                const btnCancelReport = document.getElementById('btn-cancel-report');
+
+                // Update button state
+                if (flaggedQuestions[q.id]) {
+                    btnReportError.classList.add('flagged');
+                    btnReportError.textContent = '🚩 Reported';
+                } else {
+                    btnReportError.classList.remove('flagged');
+                    btnReportError.textContent = '🚩 Report error';
+                }
+
+                // Remove old event listeners by cloning
+                const newBtnReport = btnReportError.cloneNode(true);
+                btnReportError.parentNode.replaceChild(newBtnReport, btnReportError);
+
+                const newBtnCancel = btnCancelReport.cloneNode(true);
+                btnCancelReport.parentNode.replaceChild(newBtnCancel, btnCancelReport);
+
+                // Add new event listeners
+                document.getElementById('btn-report-error').addEventListener('click', () => {
+                    if (flaggedQuestions[q.id]) {
+                        // Unflag
+                        delete flaggedQuestions[q.id];
+                        saveFlaggedQuestions();
+                        renderQuestion();
+                    } else {
+                        // Show comment box
+                        reportCommentBox.classList.add('show');
+                        reportComment.value = flaggedQuestions[q.id]?.comment || '';
+                        reportComment.focus();
+                    }
+                });
+
+                document.getElementById('btn-cancel-report').addEventListener('click', () => {
+                    reportCommentBox.classList.remove('show');
+                });
+
+                // Save flag on blur or Enter
+                reportComment.addEventListener('blur', () => {
+                    if (reportCommentBox.classList.contains('show')) {
+                        toggleQuestionFlag(q.id, reportComment.value.trim());
+                        reportCommentBox.classList.remove('show');
+                        renderQuestion();
+                    }
+                });
+
+                reportComment.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && e.ctrlKey) {
+                        toggleQuestionFlag(q.id, reportComment.value.trim());
+                        reportCommentBox.classList.remove('show');
+                        renderQuestion();
+                    }
+                });
             } else {
                 explanationBox.classList.remove('show');
             }
@@ -1241,6 +1650,9 @@
         function selectAnswer(key) {
             const q = filteredQuestions[currentQuestionIndex];
             answers[q.id] = key;
+            // Update stats
+            const isCorrect = key === q.correct;
+            updateQuestionStats(q.id, isCorrect);
             renderQuestion();
         }
 
@@ -1415,8 +1827,92 @@
             document.getElementById('share-text').textContent =
                 `Claude Code Quiz: ${percentage}% (${correct}/${total}) - ${badge} level! 🎯\nTest yours: florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html`;
 
+            // Display most missed questions
+            renderMostMissedQuestions();
+
+            // Display flagged questions
+            renderFlaggedQuestions();
+
             // Display history
             renderHistory();
+        }
+
+        function renderMostMissedQuestions() {
+            const mostMissedSection = document.getElementById('most-missed-section');
+            const stats = getQuestionStats();
+
+            // Calculate success rates for all questions with attempts
+            const questionsWithStats = Object.entries(stats)
+                .filter(([qid, data]) => data.attempts >= 3) // Only show if 3+ attempts
+                .map(([qid, data]) => ({
+                    qid,
+                    rate: Math.round((data.correct / data.attempts) * 100),
+                    attempts: data.attempts
+                }))
+                .sort((a, b) => a.rate - b.rate) // Lowest success rate first
+                .slice(0, 5); // Top 5
+
+            if (questionsWithStats.length === 0) {
+                mostMissedSection.style.display = 'none';
+                return;
+            }
+
+            mostMissedSection.style.display = 'block';
+
+            const mostMissedList = document.getElementById('most-missed-list');
+            mostMissedList.innerHTML = questionsWithStats.map(item => {
+                const q = quizData.questions.find(q => q.id === item.qid);
+                if (!q) return '';
+
+                const questionPreview = q.question.length > 80
+                    ? q.question.substring(0, 80) + '...'
+                    : q.question;
+
+                return `
+                    <div class="missed-question-item">
+                        <div class="question-info">
+                            <div class="question-id">${item.qid}</div>
+                            <div class="question-preview">${questionPreview}</div>
+                        </div>
+                        <div class="success-rate">${item.rate}%</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderFlaggedQuestions() {
+            const flaggedSection = document.getElementById('flagged-questions-section');
+            const flaggedCount = Object.keys(flaggedQuestions).length;
+
+            if (flaggedCount === 0) {
+                flaggedSection.style.display = 'none';
+                return;
+            }
+
+            flaggedSection.style.display = 'block';
+            document.getElementById('flagged-count').textContent = flaggedCount;
+
+            const flaggedList = document.getElementById('flagged-questions-list');
+            flaggedList.innerHTML = Object.entries(flaggedQuestions).map(([qid, data]) => {
+                const q = quizData.questions.find(q => q.id === qid);
+                if (!q) return '';
+
+                const questionPreview = q.question.length > 100
+                    ? q.question.substring(0, 100) + '...'
+                    : q.question;
+
+                return `
+                    <div class="flagged-question-item">
+                        <div class="question-id">${qid}</div>
+                        <div class="question-preview">${questionPreview}</div>
+                        ${data.comment ? `<div class="flag-comment">Comment: ${data.comment}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            // Connect buttons
+            document.getElementById('copy-report-btn').onclick = copyReportToClipboard;
+            document.getElementById('github-issue-btn').onclick = openGitHubIssue;
         }
 
         function renderHistory() {
