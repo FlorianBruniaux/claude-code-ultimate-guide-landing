@@ -166,6 +166,20 @@
             color: var(--text-secondary);
         }
 
+        .previous-best {
+            margin-bottom: var(--space-lg);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .previous-best.has-data {
+            color: var(--accent);
+        }
+
         /* Question Screen */
         .quiz-question {
             display: none;
@@ -377,6 +391,54 @@
             margin-bottom: var(--space-xl);
         }
 
+        .score-delta {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--border-radius);
+        }
+
+        .score-delta.positive {
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .score-delta.negative {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .score-delta.neutral {
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+        }
+
+        .score-delta.first {
+            color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .category-delta {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: var(--space-xs);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .category-delta.positive {
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        .category-delta.negative {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+        }
+
         .score-badge {
             display: inline-block;
             padding: var(--space-sm) var(--space-lg);
@@ -498,6 +560,96 @@
             font-family: var(--font-mono);
         }
 
+        /* History Section */
+        .history-section {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+            transition: all var(--transition-normal);
+        }
+
+        .history-section:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
+        }
+
+        .history-section h4 {
+            margin-bottom: var(--space-md);
+            text-align: left;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .history-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .history-item.best {
+            border-left-color: var(--accent);
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .history-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .history-score {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .history-badge {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .history-meta {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .clear-history {
+            display: inline-block;
+            margin-top: var(--space-md);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .clear-history:hover {
+            color: var(--accent);
+        }
+
+        .empty-history {
+            text-align: center;
+            color: var(--text-muted);
+            padding: var(--space-lg);
+            font-style: italic;
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
             .quiz-container {
@@ -518,6 +670,24 @@
 
             .nav-btn {
                 width: 100%;
+            }
+
+            .score-delta {
+                font-size: 0.9rem;
+            }
+
+            .history-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .history-meta {
+                font-size: 0.75rem;
+            }
+
+            .category-delta {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -583,6 +753,7 @@
             </div>
 
             <div class="selected-count" id="selected-count">0 questions selected</div>
+            <div class="previous-best" id="previous-best"></div>
 
             <h3 style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h3>
             <div class="difficulty-select">
@@ -639,6 +810,7 @@
                 <h2>Quiz Complete!</h2>
                 <div class="score-display" id="score-display">85%</div>
                 <div class="score-label" id="score-label">42 / 50 correct answers</div>
+                <div class="score-delta" id="score-delta"></div>
                 <div class="score-badge" id="score-badge">Expert</div>
 
                 <div class="results-meta">
@@ -660,6 +832,14 @@
                 <div class="category-scores" id="category-scores">
                     <!-- Populated by JS -->
                 </div>
+            </div>
+
+            <div class="history-section" id="history-section">
+                <h4>Your History <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted); font-style: italic;">· idea by <a href="https://www.linkedin.com/in/jeff-ladiray-79203657/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Jeff Ladiray</a></span></h4>
+                <div class="history-list" id="history-list">
+                    <!-- Populated by JS -->
+                </div>
+                <a class="clear-history" id="clear-history">Clear History</a>
             </div>
 
             <div class="share-text" id="share-text">
@@ -726,6 +906,68 @@
         let currentQuestionIndex = 0;
         let answers = {};
         let startTime = null;
+
+        // Helper: Get category name from category_id
+        function getCategoryName(categoryId) {
+            const category = quizData.categories.find(c => c.id === categoryId);
+            return category ? category.name : 'Unknown';
+        }
+
+        // localStorage helpers for quiz history
+        // Feature idea: Jeff Ladiray (https://www.linkedin.com/in/jeff-ladiray-79203657/)
+        // Score history & progression tracking
+        function getQuizHistory() {
+            try {
+                const stored = localStorage.getItem('ccquiz_history');
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                console.error('Failed to parse quiz history:', e);
+                return [];
+            }
+        }
+
+        function saveQuizAttempt(attempt) {
+            try {
+                let history = getQuizHistory();
+                history.push(attempt);
+                // Keep only last 20 attempts (FIFO)
+                if (history.length > 20) {
+                    history = history.slice(-20);
+                }
+                localStorage.setItem('ccquiz_history', JSON.stringify(history));
+            } catch (e) {
+                console.error('Failed to save quiz attempt:', e);
+            }
+        }
+
+        function getConfigKey(difficulty, categoryIds) {
+            // Fingerprint: difficulty + sorted category IDs joined
+            const sortedIds = [...categoryIds].sort((a, b) => a - b);
+            return `${difficulty}_${sortedIds.join(',')}`;
+        }
+
+        function getBestForConfig(configKey) {
+            const history = getQuizHistory();
+            const matching = history.filter(a => {
+                const attemptKey = getConfigKey(a.difficulty, a.categoryIds);
+                return attemptKey === configKey;
+            });
+            if (matching.length === 0) return null;
+            return matching.reduce((best, current) =>
+                current.score > best.score ? current : best
+            );
+        }
+
+        function getPreviousForConfig(configKey) {
+            const history = getQuizHistory();
+            const matching = history.filter(a => {
+                const attemptKey = getConfigKey(a.difficulty, a.categoryIds);
+                return attemptKey === configKey;
+            });
+            if (matching.length === 0) return null;
+            // Return the last attempt for this config
+            return matching[matching.length - 1];
+        }
 
         // DOM Elements
         const setupScreen = document.getElementById('quiz-setup');
@@ -809,6 +1051,30 @@
 
             selectedCountEl.textContent = `${filteredQuestions.length} questions selected`;
             startBtn.disabled = filteredQuestions.length === 0;
+
+            // Update previous best indicator
+            updatePreviousBest();
+        }
+
+        function updatePreviousBest() {
+            const previousBestEl = document.getElementById('previous-best');
+            if (selectedCategories.size === 0) {
+                previousBestEl.textContent = '';
+                previousBestEl.className = 'previous-best';
+                return;
+            }
+
+            const currentCategoryIds = Array.from(selectedCategories);
+            const configKey = getConfigKey(selectedDifficulty, currentCategoryIds);
+            const best = getBestForConfig(configKey);
+
+            if (best) {
+                previousBestEl.textContent = `Previous best: ${best.score}% (${best.badge})`;
+                previousBestEl.className = 'previous-best has-data';
+            } else {
+                previousBestEl.textContent = 'No previous attempt with this setup';
+                previousBestEl.className = 'previous-best';
+            }
         }
 
         // Start quiz
@@ -835,7 +1101,7 @@
             // Progress
             document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
             document.getElementById('question-number').textContent = `${currentQuestionIndex + 1} / ${total}`;
-            document.getElementById('question-category').textContent = q.category;
+            document.getElementById('question-category').textContent = getCategoryName(q.category_id);
 
             const diffEl = document.getElementById('question-difficulty');
             diffEl.textContent = q.difficulty;
@@ -938,14 +1204,15 @@
             const categoryScores = {};
 
             filteredQuestions.forEach(q => {
-                if (!categoryScores[q.category]) {
-                    categoryScores[q.category] = { correct: 0, total: 0 };
+                const catName = getCategoryName(q.category_id);
+                if (!categoryScores[catName]) {
+                    categoryScores[catName] = { correct: 0, total: 0 };
                 }
-                categoryScores[q.category].total++;
+                categoryScores[catName].total++;
 
                 if (answers[q.id] === q.correct) {
                     correct++;
-                    categoryScores[q.category].correct++;
+                    categoryScores[catName].correct++;
                 }
             });
 
@@ -963,8 +1230,79 @@
             else if (percentage >= 50) { badge = 'Apprentice'; badgeClass = 'badge-apprentice'; }
             else { badge = 'Novice'; badgeClass = 'badge-novice'; }
 
+            // Get config key for this attempt
+            const currentCategoryIds = Array.from(selectedCategories);
+            const configKey = getConfigKey(selectedDifficulty, currentCategoryIds);
+
+            // Get previous attempts for comparison (before saving current)
+            const previousBest = getBestForConfig(configKey);
+            const previousAttempt = getPreviousForConfig(configKey);
+
+            // Calculate deltas
+            let scoreDelta = null;
+            let scoreDeltaType = 'first'; // first | positive | negative | neutral
+            if (previousBest) {
+                scoreDelta = percentage - previousBest.score;
+                if (scoreDelta > 0) scoreDeltaType = 'positive';
+                else if (scoreDelta < 0) scoreDeltaType = 'negative';
+                else scoreDeltaType = 'neutral';
+            }
+
+            // Calculate category deltas vs previous attempt
+            const categoryDeltas = {};
+            if (previousAttempt && previousAttempt.categoryScores) {
+                Object.keys(categoryScores).forEach(catName => {
+                    const current = categoryScores[catName];
+                    const prev = previousAttempt.categoryScores[catName];
+                    if (prev) {
+                        const currentRatio = current.correct / current.total;
+                        const prevRatio = prev.correct / prev.total;
+                        const delta = current.correct - prev.correct;
+                        // Only show delta if there's actual change
+                        if (delta !== 0) {
+                            categoryDeltas[catName] = delta;
+                        }
+                    }
+                });
+            }
+
+            // Save current attempt
+            const attempt = {
+                date: new Date().toISOString(),
+                score: percentage,
+                correct: correct,
+                total: total,
+                badge: badge,
+                timeElapsed: elapsed,
+                difficulty: selectedDifficulty,
+                categoryIds: currentCategoryIds,
+                categoryScores: categoryScores
+            };
+            saveQuizAttempt(attempt);
+
             document.getElementById('score-display').textContent = `${percentage}%`;
             document.getElementById('score-label').textContent = `${correct} / ${total} correct answers`;
+
+            // Display score delta
+            const scoreDeltaEl = document.getElementById('score-delta');
+            if (scoreDeltaType === 'first') {
+                scoreDeltaEl.textContent = '🎯 First attempt with this setup';
+                scoreDeltaEl.className = 'score-delta first';
+            } else if (scoreDeltaType === 'positive') {
+                if (scoreDelta === percentage) {
+                    scoreDeltaEl.textContent = '🎉 New personal best!';
+                    scoreDeltaEl.className = 'score-delta first';
+                } else {
+                    scoreDeltaEl.textContent = `↗ +${scoreDelta} pts vs previous best`;
+                    scoreDeltaEl.className = 'score-delta positive';
+                }
+            } else if (scoreDeltaType === 'negative') {
+                scoreDeltaEl.textContent = `↘ ${scoreDelta} pts vs previous best`;
+                scoreDeltaEl.className = 'score-delta negative';
+            } else {
+                scoreDeltaEl.textContent = '→ Same as your best';
+                scoreDeltaEl.className = 'score-delta neutral';
+            }
 
             const badgeEl = document.getElementById('score-badge');
             badgeEl.textContent = badge;
@@ -978,11 +1316,18 @@
             const categoryScoresEl = document.getElementById('category-scores');
             categoryScoresEl.innerHTML = Object.entries(categoryScores).map(([cat, score]) => {
                 const catPct = Math.round((score.correct / score.total) * 100);
+                const delta = categoryDeltas[cat];
+                let deltaHTML = '';
+                if (delta !== undefined) {
+                    const deltaClass = delta > 0 ? 'positive' : 'negative';
+                    const deltaSign = delta > 0 ? '+' : '';
+                    deltaHTML = `<span class="category-delta ${deltaClass}">${deltaSign}${delta}</span>`;
+                }
                 return `
                     <div class="category-score-item">
                         <span>${cat}</span>
                         <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                            <span style="font-family: var(--font-mono); font-size: 0.9rem;">${score.correct}/${score.total}</span>
+                            <span style="font-family: var(--font-mono); font-size: 0.9rem;">${score.correct}/${score.total}${deltaHTML}</span>
                             <div class="category-score-bar">
                                 <div class="category-score-fill" style="width: ${catPct}%"></div>
                             </div>
@@ -994,6 +1339,73 @@
             // Share text
             document.getElementById('share-text').textContent =
                 `Claude Code Quiz: ${percentage}% (${correct}/${total}) - ${badge} level! 🎯\nTest yours: florianbruniaux.github.io/claude-code-ultimate-guide-landing/quiz.html`;
+
+            // Display history
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const historyList = document.getElementById('history-list');
+            const history = getQuizHistory();
+
+            if (history.length === 0) {
+                historyList.innerHTML = '<div class="empty-history">No previous attempts yet</div>';
+                return;
+            }
+
+            // Show last 5 attempts
+            const recent = history.slice(-5).reverse();
+
+            // Find best score globally
+            const bestScore = Math.max(...history.map(a => a.score));
+
+            historyList.innerHTML = recent.map(attempt => {
+                const date = new Date(attempt.date);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+                const diffDays = Math.floor(diffMs / 86400000);
+
+                let relativeTime;
+                if (diffMins < 1) relativeTime = 'Just now';
+                else if (diffMins < 60) relativeTime = `${diffMins}m ago`;
+                else if (diffHours < 24) relativeTime = `${diffHours}h ago`;
+                else if (diffDays < 7) relativeTime = `${diffDays}d ago`;
+                else relativeTime = date.toLocaleDateString();
+
+                const minutes = Math.floor(attempt.timeElapsed / 60);
+                const seconds = attempt.timeElapsed % 60;
+                const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                const categoryCount = attempt.categoryIds ? attempt.categoryIds.length : 0;
+
+                const isBest = attempt.score === bestScore;
+                const itemClass = isBest ? 'history-item best' : 'history-item';
+
+                // Badge class mapping
+                const badgeClassMap = {
+                    'Master': 'badge-master',
+                    'Expert': 'badge-expert',
+                    'Practitioner': 'badge-practitioner',
+                    'Apprentice': 'badge-apprentice',
+                    'Novice': 'badge-novice'
+                };
+                const badgeClass = badgeClassMap[attempt.badge] || '';
+
+                return `
+                    <div class="${itemClass}">
+                        <div style="display: flex; align-items: center; gap: var(--space-md);">
+                            <span class="history-date">${relativeTime}</span>
+                            <span class="history-score">${attempt.score}%</span>
+                            <span class="history-badge score-badge ${badgeClass}">${attempt.badge}</span>
+                        </div>
+                        <div class="history-meta">
+                            ${timeStr} · ${categoryCount} categories
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         // Copy result
@@ -1022,6 +1434,14 @@
             setupScreen.style.display = 'block';
             currentQuestionIndex = 0;
             answers = {};
+        });
+
+        // Clear history
+        document.getElementById('clear-history').addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear your quiz history? This cannot be undone.')) {
+                localStorage.removeItem('ccquiz_history');
+                renderHistory();
+            }
         });
 
         // Keyboard navigation
