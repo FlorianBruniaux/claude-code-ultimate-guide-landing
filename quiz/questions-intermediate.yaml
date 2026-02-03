@@ -1,0 +1,815 @@
+# ═══════════════════════════════════════════════════════════════
+# Claude Code Quiz - INTERMEDIATE Level
+# ═══════════════════════════════════════════════════════════════
+
+Total Questions: 35
+Difficulty: intermediate
+Categories: 8
+
+## Table of Contents
+
+  Advanced Patterns: 2 questions
+  Architecture Internals: 6 questions
+  Learning with AI: 9 questions
+  MCP Servers: 3 questions
+  Memory & Settings: 1 questions
+  Privacy & Observability: 7 questions
+  Quick Start: 2 questions
+  Security Hardening: 5 questions
+
+══════════════════════════════════════════════════════════════════════
+
+
+######################################################################
+# CATEGORY: ADVANCED PATTERNS
+# 2 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-017          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is SDD (Spec-Driven Development) and its key claim?
+
+OPTIONS:
+  [A] Speed-based Development - fastest approach
+  [B] Spec-Driven Development - one well-structured iteration equals 8 unstructured ones ← ✓ CORRECT
+  [C] Standard Driven Development - follows industry standards
+  [D] Sequential Driven Development - linear workflow
+
+ANSWER: B
+
+EXPLANATION:
+  SDD (Spec-Driven Development) means specifications BEFORE code. The key claim: one well-structured iteration equals 8 unstructured ones. CLAUDE.md IS your spec file. Best for APIs and contracts. High Claude fit (⭐⭐⭐).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-018          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What format does BDD (Behavior-Driven Development) use for test scenarios?
+
+OPTIONS:
+  [A] Arrange-Act-Assert
+  [B] Given-When-Then (Gherkin) ← ✓ CORRECT
+  [C] Setup-Execute-Verify
+  [D] Input-Process-Output
+
+ANSWER: B
+
+EXPLANATION:
+  BDD uses Given-When-Then format (Gherkin). BDD is beyond testing - it's a collaboration process: (1) Discovery with devs/business, (2) Formulation with examples, (3) Automation via Cucumber. Example: Given product with 0 stock → When customer attempts purchase → Then system refuses.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: ARCHITECTURE INTERNALS
+# 6 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-001          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the core architecture pattern of Claude Code?
+
+OPTIONS:
+  [A] A DAG orchestrator with task planning
+  [B] A simple while(tool_call) loop with no classifier ← ✓ CORRECT
+  [C] A RAG pipeline with embeddings
+  [D] A multi-agent system with intent router
+
+ANSWER: B
+
+EXPLANATION:
+  Claude Code runs a remarkably simple `while(tool_call)` loop. There is NO intent classifier, task router, RAG/embedding pipeline, DAG orchestrator, or planner/executor split. The model itself decides when to call tools, which tools to call, and when it's done. This is the "agentic loop" pattern.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-003          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which tool is described as Claude's 'swiss-army knife' and 'universal adapter'?
+
+OPTIONS:
+  [A] Read
+  [B] Grep
+  [C] Bash ← ✓ CORRECT
+  [D] Task
+
+ANSWER: C
+
+EXPLANATION:
+  Bash is Claude's swiss-army knife. It can run any CLI tool (git, npm, docker, curl...), execute scripts, chain commands with pipes, and access system state. The model has been trained on massive amounts of shell data, making it highly effective as a universal adapter.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-004          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the approximate context budget for Claude Code with Claude 3.5 Sonnet?
+
+OPTIONS:
+  [A] ~32K tokens
+  [B] ~100K tokens
+  [C] ~200K tokens ← ✓ CORRECT
+  [D] ~500K tokens
+
+ANSWER: C
+
+EXPLANATION:
+  Claude Code operates within a ~200K token context window. This is shared between: system prompt (~5-15K), CLAUDE.md files (~1-10K), conversation history (variable), tool results (variable), and reserved response buffer (~40-45K). Usable space is approximately 140-150K tokens.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-006          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the maximum depth for sub-agents spawned via the Task tool?
+
+OPTIONS:
+  [A] Unlimited depth
+  [B] Depth = 3
+  [C] Depth = 1 (cannot spawn sub-sub-agents) ← ✓ CORRECT
+  [D] Depth = 2
+
+ANSWER: C
+
+EXPLANATION:
+  Sub-agents have a depth=1 limit. They CANNOT spawn sub-sub-agents. This prevents: recursive explosion (infinite resources), context pollution (accumulated context), debugging nightmares (multi-level chains), and unpredictable costs (nested token usage).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-008          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the 4 permission layers in Claude Code's security model?
+
+OPTIONS:
+  [A] User, Admin, System, Root
+  [B] Interactive prompts, Allow/Deny rules, Hooks, Sandbox ← ✓ CORRECT
+  [C] Read, Write, Execute, Delete
+  [D] Local, Project, Global, Enterprise
+
+ANSWER: B
+
+EXPLANATION:
+  Claude Code has 4 layered security: (1) Interactive prompts (allow once/always/deny), (2) Allow/Deny rules in settings.json, (3) Hooks (Pre/Post execution scripts), (4) Sandbox mode (filesystem + network isolation). Each layer adds protection.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-010          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What protocol does MCP (Model Context Protocol) use for communication?
+
+OPTIONS:
+  [A] REST API over HTTPS
+  [B] GraphQL
+  [C] JSON-RPC 2.0 over stdio or HTTP ← ✓ CORRECT
+  [D] gRPC with Protocol Buffers
+
+ANSWER: C
+
+EXPLANATION:
+  MCP uses JSON-RPC 2.0 over stdio or HTTP transport. MCP tools follow the naming convention `mcp__<server>__<tool>`. Servers start on first use and stay alive during the session. They have the same permission system as native tools.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: LEARNING WITH AI
+# 9 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-004          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the '15-Minute Rule' in the UVAL protocol's 'Understand First' step?
+
+OPTIONS:
+  [A] Limit AI usage to 15 minutes per day
+  [B] A 4-step protocol: State problem, Brainstorm approaches, Identify gaps, THEN ask AI ← ✓ CORRECT
+  [C] Wait 15 minutes after getting AI response before using it
+  [D] Spend 15 minutes explaining AI code to a colleague
+
+ANSWER: B
+
+EXPLANATION:
+  The 15-minute rule is a specific protocol: (1) State the problem in ONE sentence (2 min), (2) Brainstorm 3 possible approaches (5 min), (3) Identify your knowledge gaps (3 min), (4) THEN ask AI with a much better question (5 min). This forces you to think before asking, resulting in better questions and faster learning.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-005          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the 'Explain It Back' technique in the UVAL protocol's Verify step?
+
+OPTIONS:
+  [A] Ask AI to explain its own code
+  [B] Write documentation for the code
+  [C] If you can't explain the code to a colleague, you haven't learned it ← ✓ CORRECT
+  [D] Record yourself explaining and review later
+
+ANSWER: C
+
+EXPLANATION:
+  The rule is simple: if you can't explain the code to a colleague, you don't understand it. This is the verification step - you must be able to articulate WHY the solution works, not just THAT it works. The guide recommends using a /explain-back slash command that asks YOU to explain AI-generated code.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-006          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  In the 30-Day Progression Plan, what is the AI usage ratio for Week 1?
+
+OPTIONS:
+  [A] 0-20% AI usage ← ✓ CORRECT
+  [B] 40-50% AI usage
+  [C] 60-70% AI usage
+  [D] 70-80% AI usage
+
+ANSWER: A
+
+EXPLANATION:
+  Week 1 focuses on foundations with 0-20% AI usage: Days 1-2 build feature WITHOUT AI (0%), Days 4-5 refactor with AI review only (20%), Day 6 debug without AI (0%). The goal is to build (or rebuild) core skills without heavy AI reliance. Success criteria: can explain every line you wrote.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-007          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What AI usage ratio does the 30-Day Plan recommend for Week 4 (Augmented stage)?
+
+OPTIONS:
+  [A] 30-40%
+  [B] 50-60%
+  [C] 70% ← ✓ CORRECT
+  [D] 90-100%
+
+ANSWER: C
+
+EXPLANATION:
+  Week 4 (Augmented stage) recommends 70% AI usage with the UVAL protocol. The progression is: Week 1 (0-20%), Week 2 (30-40%), Week 3 (50-60%), Week 4 (70%). Success criteria for Week 4: you're fast AND you understand everything. The cap at 70% ensures you maintain skills.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-009          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is a 'Red Flag' sign of AI dependency according to the checklist?
+
+OPTIONS:
+  [A] Using AI for complex algorithms
+  [B] Can't start coding without AI ← ✓ CORRECT
+  [C] Using AI for code reviews
+  [D] Asking AI to explain concepts
+
+ANSWER: B
+
+EXPLANATION:
+  "Can't start without AI" is a red flag indicating you've outsourced problem decomposition. Other red flags: don't understand AI's code, can't debug AI errors, anxiety without AI, rejected in interviews, always ask "how" never "why", every solution looks the same. Immediate action: code 30 min daily without AI.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-010          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the 'Apply' step's core principle in the UVAL protocol?
+
+OPTIONS:
+  [A] Apply the code directly to production
+  [B] Transform knowledge into skill through MODIFICATION, not copying ← ✓ CORRECT
+  [C] Apply code reviews to all AI-generated code
+  [D] Apply unit tests to verify correctness
+
+ANSWER: B
+
+EXPLANATION:
+  The Apply step requires modification, not copy-paste. You must change at least one element (variable name, structure, edge case handling). Why? Modification forces understanding. Copying is passive; modifying requires you to engage with the code and understand how it works.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-014          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the Weekly Self-Audit question that detects dependency?
+
+OPTIONS:
+  [A] How many lines of code did I write?
+  [B] Am I faster than last month? Am I smarter? ← ✓ CORRECT
+  [C] How much did I use AI this week?
+  [D] Did I meet all my deadlines?
+
+ANSWER: B
+
+EXPLANATION:
+  The key question is: "Am I faster than last month? Am I smarter?" If you're faster but NOT smarter, you're building dependency. Other weekly questions: What did I learn that I didn't know before? Could I have done this without AI? Did I understand everything I shipped?
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-015          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended approach for 'Avoidant' developers (Pattern 2)?
+
+OPTIONS:
+  [A] Continue avoiding AI to maintain purity
+  [B] Start with AI review of YOUR code, not AI-generated code ← ✓ CORRECT
+  [C] Immediately switch to 100% AI usage
+  [D] Wait until AI tools are more mature
+
+ANSWER: B
+
+EXPLANATION:
+  For Avoidant developers, the guide recommends gradual adoption: start with AI reviewing YOUR code (you stay in control), then move to AI explaining concepts you implement, then AI-assisted work. This respects your instinct for understanding while gaining AI benefits. Pure avoidance means being slower without being smarter.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-017          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the 3 symptoms of vibe coding 'context overload'?
+
+OPTIONS:
+  [A] Memory leaks, slow startup, API rate limits
+  [B] Big-bang context dumps, 5K+ line prompts, performance degradation ← ✓ CORRECT
+  [C] Lost files, broken imports, missing tests
+  [D] Excessive commits, merge conflicts, branch proliferation
+
+ANSWER: B
+
+EXPLANATION:
+  Context overload symptoms in vibe coding:
+  
+  1. **Big-bang context dumps** - Pasting entire codebases into prompts
+  2. **5K+ line prompts** - Exceeding effective context window usage
+  3. **Performance degradation** - Claude's quality drops as context grows
+  
+  The fix: progressive disclosure (feed context incrementally), use CLAUDE.md for persistent context, and start fresh sessions between phases.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: MCP SERVERS
+# 3 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-015          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the main advantage of using Figma MCP over screenshots?
+
+OPTIONS:
+  [A] Higher image quality
+  [B] 3-10x fewer tokens: structured data vs. image analysis ← ✓ CORRECT
+  [C] Faster download speed
+  [D] Works offline
+
+ANSWER: B
+
+EXPLANATION:
+  Figma MCP provides 3-10x fewer tokens than screenshots because it returns structured data (React+Tailwind structure, design tokens) instead of requiring image analysis. Other benefits: direct token access, component mapping via Code Connect, iterative workflow without new screenshots.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-017          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What command adds the Figma MCP server for remote access?
+
+OPTIONS:
+  [A] claude mcp install figma
+  [B] claude mcp add --transport http figma https://mcp.figma.com/mcp ← ✓ CORRECT
+  [C] claude figma connect
+  [D] npm install @figma/mcp
+
+ANSWER: B
+
+EXPLANATION:
+  For remote MCP (all Figma plans, any machine): `claude mcp add --transport http figma https://mcp.figma.com/mcp`. For desktop MCP (requires Figma desktop app with Dev Mode): `claude mcp add --transport http figma-desktop http://127.0.0.1:3845/mcp`. Official Figma MCP was announced in 2025.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-020          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which MCP server scored highest (9.0/10) in the production ecosystem evaluation?
+
+OPTIONS:
+  [A] Playwright MCP (8.8/10)
+  [B] Context7 MCP (8.5/10)
+  [C] Semgrep MCP - SAST, secrets, and supply chain analysis ← ✓ CORRECT
+  [D] Kubernetes MCP (8.4/10)
+
+ANSWER: C
+
+EXPLANATION:
+  Semgrep MCP scored 9.0/10 in the production MCP ecosystem evaluation. It provides static application security testing (SAST), secrets detection, and supply chain analysis. Top scores: Semgrep (9.0), Playwright (8.8), Context7 (8.5), Kubernetes (8.4). Evaluation criteria: reliability, token efficiency, production readiness.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: MEMORY & SETTINGS
+# 1 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-019          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the 'Fresh Context Pattern' and when should you use it?
+
+OPTIONS:
+  [A] Clearing browser cache before testing
+  [B] Starting a new session with clean context after implementation phase to avoid accumulated noise ← ✓ CORRECT
+  [C] Resetting git to a clean state
+  [D] Deleting the .claude folder to start fresh
+
+ANSWER: B
+
+EXPLANATION:
+  The Fresh Context Pattern means starting a new Claude Code session between exploration and implementation phases. During exploration, context accumulates noise (dead ends, rejected approaches, debugging output). A fresh session gives Claude clean context focused purely on implementation, improving output quality.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: PRIVACY & OBSERVABILITY
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-002          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What data is sent to Anthropic when using Claude Code?
+
+OPTIONS:
+  [A] Only your prompts
+  [B] Prompts, files Claude reads, MCP results, Bash outputs, error messages ← ✓ CORRECT
+  [C] Only code snippets you copy-paste
+  [D] Hashed metadata only
+
+ANSWER: B
+
+EXPLANATION:
+  Everything Claude sees is sent: your prompts, files Claude reads (including .env if not excluded!), MCP server results (SQL queries, API responses), Bash command outputs, and error messages with stack traces. Use permissions.deny to block sensitive files.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-003          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the risk when connecting a database via MCP?
+
+OPTIONS:
+  [A] Database might slow down
+  [B] Query results (including PII) are sent to Anthropic and stored per retention policy ← ✓ CORRECT
+  [C] Claude might drop tables
+  [D] MCP uses too many tokens
+
+ANSWER: B
+
+EXPLANATION:
+  When MCP executes a database query, ALL results are sent to Anthropic: "SELECT * FROM orders" → 100 rows with customer names, emails, addresses → stored according to your retention tier. NEVER connect production databases. Use dev/staging with anonymized data.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-005          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the Enterprise API (ZDR) data retention policy?
+
+OPTIONS:
+  [A] 30 days retention
+  [B] 1 year retention
+  [C] 0 days (real-time processing only, data not stored) ← ✓ CORRECT
+  [D] 5 years like default
+
+ANSWER: C
+
+EXPLANATION:
+  Enterprise API (Zero Data Retention) has 0-day retention - data is processed in real-time and not stored. Required for HIPAA, GDPR, PCI-DSS compliance and government contracts. Requires enterprise contract with Anthropic.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-007          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What hook event is used for session logging?
+
+OPTIONS:
+  [A] PreToolUse
+  [B] PostToolUse ← ✓ CORRECT
+  [C] SessionStart
+  [D] Notification
+
+ANSWER: B
+
+EXPLANATION:
+  Session logging uses PostToolUse hook - it runs after each tool completes, capturing tool name, file path, project, and token estimates. Configure in settings.json with the session-logger.sh script. Logs are stored as JSONL files in ~/.claude/logs/.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-008          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the token estimation method used by the session logger?
+
+OPTIONS:
+  [A] API-provided exact counts
+  [B] ~4 characters per token (heuristic, slightly overestimates) ← ✓ CORRECT
+  [C] 1 word = 1 token
+  [D] Based on file size only
+
+ANSWER: B
+
+EXPLANATION:
+  The logger estimates tokens using ~4 characters per token heuristic. This is approximate and tends to slightly overestimate. Claude Code CLI doesn't expose actual API token metrics, so estimates have ~15-25% variance from actual billing.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-009          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What CANNOT the session monitoring do?
+
+OPTIONS:
+  [A] Track tool usage counts
+  [B] Identify file access patterns
+  [C] Provide exact token counts and actual API costs ← ✓ CORRECT
+  [D] Record operation timestamps
+
+ANSWER: C
+
+EXPLANATION:
+  Monitoring CANNOT provide: exact token counts (CLI doesn't expose API metrics), actual API costs (estimates only), TTFT timing, real-time streaming metrics, or context window usage. It CAN track: tool usage counts, file access patterns, relative comparisons, operation timing.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 14-011          Category: Privacy & Observability   │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When should you use 'Co-Authored-By' vs 'Assisted-By' in git commits?
+
+OPTIONS:
+  [A] Always use Co-Authored-By for any AI involvement
+  [B] Co-Authored-By when AI generated significant code, Assisted-By when AI only advised or reviewed ← ✓ CORRECT
+  [C] Never attribute AI in commits
+  [D] Use both on every commit
+
+ANSWER: B
+
+EXPLANATION:
+  AI traceability in git commits:
+  
+  - **Co-Authored-By**: When AI generated significant portions of code (implementation, refactoring)
+  - **Assisted-By**: When AI only advised, reviewed, or suggested minor changes
+  
+  This distinction matters for code ownership, audit trails, and understanding who (or what) actually wrote the code. Some teams add this to CLAUDE.md as a mandatory commit convention.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: QUICK START
+# 2 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-016          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the optimal image resolution range for Claude Code visual analysis?
+
+OPTIONS:
+  [A] 50-200px (smallest possible)
+  [B] 200-1568px (sweet spot for quality/token balance) ← ✓ CORRECT
+  [C] 2000-4000px (maximum detail)
+  [D] 8000px+ (highest resolution)
+
+ANSWER: B
+
+EXPLANATION:
+  The optimal range is 200-1568px. Below 200px lacks detail, 200-1000px is the sweet spot for wireframes, 1000-1568px provides optimal quality/token balance, images above 1568px are auto-downscaled (wasting upload time), and images over 8000px are rejected by the API.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-018          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which image format is recommended for wireframes and diagrams in Claude Code?
+
+OPTIONS:
+  [A] JPEG (best compression)
+  [B] PNG (sharp lines and text) ← ✓ CORRECT
+  [C] GIF (universal support)
+  [D] BMP (lossless)
+
+ANSWER: B
+
+EXPLANATION:
+  PNG is recommended for wireframes, diagrams, and text because it preserves sharp lines. WebP is good for general screenshots with compression. JPEG is for photos only—compression artifacts harm line detection. GIF should be avoided (static only, poor quality). Always crop to relevant area and resize to 1000-1200px if larger.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: SECURITY HARDENING
+# 5 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-001          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is an 'MCP Rug Pull' attack?
+
+OPTIONS:
+  [A] An MCP server that crashes unexpectedly
+  [B] A benign MCP that turns malicious after gaining trust (no re-approval needed) ← ✓ CORRECT
+  [C] An MCP that uses too many tokens
+  [D] An attack on the MCP protocol itself
+
+ANSWER: B
+
+EXPLANATION:
+  An MCP Rug Pull exploits the one-time approval model: attacker publishes benign MCP → user approves once → MCP works normally (builds trust) → attacker pushes malicious update → MCP exfiltrates credentials WITHOUT re-approval. Mitigation: version pinning + hash verification.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-003          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is a known limitation of permissions.deny in .claude/settings.json?
+
+OPTIONS:
+  [A] It only works on macOS
+  [B] System reminders may expose file contents before tool permission checks ← ✓ CORRECT
+  [C] It cannot block Bash commands
+  [D] It requires admin privileges
+
+ANSWER: B
+
+EXPLANATION:
+  permissions.deny has architectural limitations: background indexing may expose file contents via internal "system reminder" mechanism BEFORE tool permission checks are applied. This is documented in GitHub #4160. Defense-in-depth: store secrets outside project directories.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-004          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended defense-in-depth strategy for secrets protection?
+
+OPTIONS:
+  [A] Only use permissions.deny
+  [B] Store secrets outside project + external vault + PreToolUse hooks + never commit ← ✓ CORRECT
+  [C] Encrypt all files in the project
+  [D] Use a VPN when running Claude Code
+
+ANSWER: B
+
+EXPLANATION:
+  Defense-in-depth: (1) Store secrets outside project directories (~/.secrets/ or vault), (2) Use external secrets management (AWS Secrets Manager, 1Password), (3) Add PreToolUse hooks as secondary blocking, (4) Never commit secrets, (5) Manually review bash commands.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-006          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which secret detection tool has the highest recall (88%) but lower precision (46%)?
+
+OPTIONS:
+  [A] TruffleHog
+  [B] GitGuardian
+  [C] Gitleaks ← ✓ CORRECT
+  [D] detect-secrets
+
+ANSWER: C
+
+EXPLANATION:
+  Gitleaks: 88% recall, 46% precision, fast (~2 min/100K commits) - best for pre-commit hooks. TruffleHog: 52% recall, 85% precision, slow - best for CI verification. GitGuardian: 80% recall, 95% precision - enterprise monitoring. detect-secrets: 60% recall, 98% precision - baseline approach.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-007          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended hook stack for security in settings.json?
+
+OPTIONS:
+  [A] Only PostToolUse hooks for logging
+  [B] PreToolUse (dangerous blocker, injection detector) + PostToolUse (output scanner) + SessionStart (MCP integrity) ← ✓ CORRECT
+  [C] No hooks - rely only on permissions.deny
+  [D] Only UserPromptSubmit hooks
+
+ANSWER: B
+
+EXPLANATION:
+  Recommended security hook stack: PreToolUse → dangerous-actions-blocker.sh (Bash), prompt-injection-detector.sh + unicode-injection-scanner.sh (Edit/Write). PostToolUse → output-secrets-scanner.sh (Bash). SessionStart → mcp-config-integrity.sh. Multiple layers for defense-in-depth.
+  
+
+─────────────────────────────────────────────────────────────────
+

@@ -1,0 +1,2369 @@
+# ═══════════════════════════════════════════════════════════════
+# Claude Code Quiz - SENIOR Level
+# ═══════════════════════════════════════════════════════════════
+
+Total Questions: 90
+Difficulty: senior
+Categories: 14
+
+## Table of Contents
+
+  AI Ecosystem: 6 questions
+  Advanced Patterns: 13 questions
+  Agents: 7 questions
+  Architecture Internals: 5 questions
+  Commands: 4 questions
+  Core Concepts: 7 questions
+  Hooks: 7 questions
+  Learning with AI: 3 questions
+  MCP Servers: 9 questions
+  Memory & Settings: 7 questions
+  Quick Start: 5 questions
+  Reference: 7 questions
+  Security Hardening: 3 questions
+  Skills: 7 questions
+
+══════════════════════════════════════════════════════════════════════
+
+
+######################################################################
+# CATEGORY: AI ECOSYSTEM
+# 6 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-003          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended Research-to-Code pipeline?
+
+OPTIONS:
+  [A] Claude Code -> Perplexity -> Implementation
+  [B] Perplexity Deep Research -> Export spec.md -> Claude Code implements ← ✓ CORRECT
+  [C] Google Search -> Copy code -> Paste in project
+  [D] Ask Claude Code to search the web first
+
+ANSWER: B
+
+EXPLANATION:
+  The Research-to-Code pipeline:
+  
+  1. PERPLEXITY (Deep Research)
+     - Research best practices with sources
+     - Output: 2000-word spec with citations
+  
+  2. Export as spec.md
+  
+  3. CLAUDE CODE
+     - "Implement following spec.md"
+     - Output: Working implementation with tests
+  
+  This ensures implementation is based on verified, current information.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-004          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which tool is best for converting a UI screenshot to React code?
+
+OPTIONS:
+  [A] Perplexity
+  [B] Claude Code directly
+  [C] Gemini 2.5 Pro -> then Claude Code for refinement ← ✓ CORRECT
+  [D] NotebookLM
+
+ANSWER: C
+
+EXPLANATION:
+  Gemini 2.5 Pro excels at visual understanding:
+  
+  Visual-to-Code Pipeline:
+  1. GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity)
+  2. CLAUDE CODE: Refine for your project
+     - Add TypeScript types
+     - Connect to your components
+     - Integrate with your state management
+  
+  Claude Code alone has limited image understanding compared to Gemini.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-006          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is NotebookLM's unique feature for developer onboarding?
+
+OPTIONS:
+  [A] Code execution
+  [B] Audio Overview - generates podcast-style explanations from docs ← ✓ CORRECT
+  [C] Real-time collaboration
+  [D] Git integration
+
+ANSWER: B
+
+EXPLANATION:
+  NotebookLM's Audio Overview feature:
+  
+  - Upload 50+ documentation files
+  - Generates 10-15 minute "podcast"
+  - Two AI hosts discuss your codebase
+  - Perfect for onboarding or reviewing large systems
+  
+  Workflow:
+  1. Export docs to combined-docs.md
+  2. Upload to NotebookLM
+  3. Generate Audio Overview
+  4. Listen during commute
+  5. Return to Claude Code with deeper understanding
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-009          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How does Claude WebSearch compare to Perplexity Pro for research?
+
+OPTIONS:
+  [A] Claude WebSearch has more sources (100+)
+  [B] They are identical in functionality
+  [C] Claude WebSearch: 5-10 sources, quick lookups. Perplexity Pro: 100+ sources, comprehensive research ← ✓ CORRECT
+  [D] Perplexity cannot access real-time data
+
+ANSWER: C
+
+EXPLANATION:
+  Comparison:
+  
+  | Feature | Claude WebSearch | Perplexity Pro |
+  |---------|-----------------|----------------|
+  | Source count | ~5-10 | 100+ (Deep Research) |
+  | Source verification | Basic | Full citations |
+  | Best for | Quick lookups | Comprehensive research |
+  | Cost | Included | $20/month |
+  
+  Recommendation: Use Claude WebSearch for quick factual checks.
+  Use Perplexity Deep Research before significant implementations.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-011          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What cost savings does the Claude Code to LM Studio bridge provide?
+
+OPTIONS:
+  [A] 20-30% savings on API costs
+  [B] 50% savings but slower execution
+  [C] 80-90% savings by planning with Opus then executing free with local LLM ← ✓ CORRECT
+  [D] No savings but better privacy
+
+ANSWER: C
+
+EXPLANATION:
+  The Claude Code to LM Studio bridge provides 80-90% cost savings. Strategy: use Opus for planning phase (~$0.50-2 per session) then execute implementation with a free local LLM via LM Studio. The bridge script translates Claude's plan into local LLM instructions. Trade-off: local LLMs are less capable but free.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 15-013          Category: AI Ecosystem              │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What 3 areas should sub-agents audit when evaluating a skeleton project before forking?
+
+OPTIONS:
+  [A] Performance, Cost, Scalability
+  [B] UI, API, Database
+  [C] Security, Architecture, Developer Experience (DX) ← ✓ CORRECT
+  [D] Tests, Documentation, CI/CD
+
+ANSWER: C
+
+EXPLANATION:
+  Skeleton project evaluation uses 3 specialized sub-agents:
+  
+  1. **Security** - Audit dependencies, secrets management, auth patterns, known vulnerabilities
+  2. **Architecture** - Evaluate code organization, patterns, scalability, maintainability
+  3. **Developer Experience (DX)** - Check setup complexity, documentation quality, tooling, onboarding friction
+  
+  Each agent produces a score and recommendations before the fork decision.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: ADVANCED PATTERNS
+# 13 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-001          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the three components of 'The Trinity' pattern?
+
+OPTIONS:
+  [A] Git, VSCode, Terminal
+  [B] Plan Mode, Extended Thinking, Sequential Thinking ← ✓ CORRECT
+  [C] Serena, Context7, Playwright
+  [D] Agent, Skill, Command
+
+ANSWER: B
+
+EXPLANATION:
+  The Trinity is the most powerful Claude Code pattern combining:
+  
+  1. **Plan Mode** - Safe exploration without changes
+  2. **Extended Thinking** - Deep analysis (enabled by default in Opus 4.5)
+  3. **Sequential Thinking (MCP)** - Structured multi-step reasoning
+  
+  Combined, these provide maximum understanding before taking action.
+  Use for architecture decisions, complex debugging, and legacy modernization.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-003          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What CLI flag runs Claude Code without interactive prompts for CI/CD?
+
+OPTIONS:
+  [A] --ci
+  [B] --headless ← ✓ CORRECT
+  [C] --batch
+  [D] --automated
+
+ANSWER: B
+
+EXPLANATION:
+  The `--headless` flag runs Claude Code without interactive prompts:
+  
+  ```bash
+  # Basic headless execution
+  claude --headless "Run the tests and report results"
+  
+  # With timeout
+  claude --headless --timeout 300 "Build the project"
+  ```
+  
+  Essential for CI/CD integration, automated pipelines, and scripted workflows.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-006          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What output format flag gets structured JSON from Claude for scripting?
+
+OPTIONS:
+  [A] --format json
+  [B] --output-format json ← ✓ CORRECT
+  [C] --json
+  [D] --structured
+
+ANSWER: B
+
+EXPLANATION:
+  Use `--output-format` to control response format:
+  
+  | Format | Use Case |
+  |--------|----------|
+  | `text` | Human-readable output (default) |
+  | `json` | Machine-parseable structured data |
+  | `stream-json` | Real-time streaming for large outputs |
+  
+  Example:
+  ```bash
+  git log --oneline -10 | claude -p 'Categorize commits' --output-format json
+  ```
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-009          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the key insight of 'Todo as Instruction Mirrors'?
+
+OPTIONS:
+  [A] Todos are just for tracking
+  [B] What you write as a todo becomes Claude's instruction ← ✓ CORRECT
+  [C] Todos should be vague for flexibility
+  [D] Always use bullet points
+
+ANSWER: B
+
+EXPLANATION:
+  The Mirror Principle: What you write as a todo becomes Claude's instruction.
+  
+  Bad (vague todo -> vague execution):
+  "Fix the bug"
+  
+  Good (specific todo -> precise execution):
+  "Fix null pointer in getUserById when user not found - return null instead of throwing"
+  
+  Well-crafted todos guide Claude's execution with precision.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-012          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is OpusPlan mode?
+
+OPTIONS:
+  [A] Using only Opus for everything
+  [B] Opus for planning, Sonnet for execution ← ✓ CORRECT
+  [C] A special debugging mode
+  [D] Planning without AI
+
+ANSWER: B
+
+EXPLANATION:
+  OpusPlan mode combines model strengths:
+  - **Planning**: Opus for high-level thinking
+  - **Execution**: Sonnet for implementation
+  
+  This provides strategic thinking + cost-effective execution.
+  
+  ```bash
+  /model opusplan
+  Shift+Tab x 2  # Enter Plan Mode (Opus)
+  # Design architecture...
+  Shift+Tab      # Exit Plan Mode (Sonnet)
+  # Implement the plan...
+  ```
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-014          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What prompt format does the guide recommend for effective requests?
+
+OPTIONS:
+  [A] Simple natural language
+  [B] WHAT, WHERE, HOW, VERIFY ← ✓ CORRECT
+  [C] Subject, Body, Footer
+  [D] Title, Description, Acceptance Criteria
+
+ANSWER: B
+
+EXPLANATION:
+  The recommended prompt format:
+  
+  - **WHAT**: Concrete deliverable
+  - **WHERE**: File paths/locations
+  - **HOW**: Constraints/approach
+  - **VERIFY**: Success criteria
+  
+  Example:
+  ```
+  WHAT: Add input validation to the login form
+  WHERE: src/components/LoginForm.tsx, src/schemas/auth.ts
+  HOW: Use Zod schema validation, display errors inline
+  VERIFY: Empty email shows error, invalid format shows error
+  ```
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-020          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How many development methodologies are documented in the methodologies reference?
+
+OPTIONS:
+  [A] 5 methodologies
+  [B] 10 methodologies
+  [C] 15 methodologies ← ✓ CORRECT
+  [D] 20 methodologies
+
+ANSWER: C
+
+EXPLANATION:
+  15 methodologies organized in a 6-tier pyramid: Tier 1 (Strategic - BMAD), Tier 2 (Specification - SDD, Doc-Driven, Req-Driven, DDD), Tier 3 (Behavior - BDD, ATDD, CDD), Tier 4 (Feature - FDD, Context Engineering), Tier 5 (Implementation - TDD, Eval-Driven, Multi-Agent), Tier 6 (Optimization).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-021          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is 'Context Engineering' as a methodology?
+
+OPTIONS:
+  [A] Engineering team context
+  [B] Treating context as first-class design element: progressive disclosure, memory management, dynamic refresh ← ✓ CORRECT
+  [C] Building context menus
+  [D] Managing environment variables
+
+ANSWER: B
+
+EXPLANATION:
+  Context Engineering treats context as a design element. Key concepts: Progressive Disclosure (let agent discover incrementally), Memory Management (conversation vs persistent memory), Dynamic Refresh (rewrite TODO list before response). High Claude fit (⭐⭐⭐) for long sessions.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-024          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What mental model describes the developer as an orchestrator of Claude instances?
+
+OPTIONS:
+  [A] Pipeline Manager
+  [B] Agent Supervisor
+  [C] You Are the Main Thread - CPU scheduler analogy where developer dispatches tasks to agents ← ✓ CORRECT
+  [D] Task Router
+
+ANSWER: C
+
+EXPLANATION:
+  "You Are the Main Thread" uses the CPU scheduler analogy: the developer is the main thread dispatching work to Claude instances (worker threads). You manage priorities, context switches, and synchronization. Key insight: you don't write code - you manage the agents that write code. This shifts the skill from coding to orchestration.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-025          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When task list items consistently diverge from actual work done, what does the guide recommend?
+
+OPTIONS:
+  [A] Delete the task list and start over
+  [B] Add more granular detail to each task
+  [C] Use divergence patterns as diagnostic: too broad = break down, too narrow = step back, wrong priorities = re-align with goals ← ✓ CORRECT
+  [D] Ignore the divergence and continue
+
+ANSWER: C
+
+EXPLANATION:
+  Task list divergence is diagnostic, not failure. Patterns reveal issues:
+  
+  - **Too broad** tasks → break down into smaller pieces
+  - **Too narrow** tasks → step back and think bigger
+  - **Wrong priorities** → re-align tasks with actual goals
+  - **Consistent drift** → your mental model of the problem is wrong
+  
+  Use divergence as signal, not noise.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-026          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the 'occurrence rule' for claiming established patterns in code reviews?
+
+OPTIONS:
+  [A] >5 occurrences = established, 2-5 = emerging, <2 = not established
+  [B] >10 occurrences = established, 3-10 = emerging, <3 = not established ← ✓ CORRECT
+  [C] Based on file count, not occurrences
+  [D] >20 occurrences = established, 5-20 = emerging, <5 = not established
+
+ANSWER: B
+
+EXPLANATION:
+  Anti-hallucination safeguards for code reviews define the occurrence rule:
+  
+  - **>10 occurrences** = established pattern (safe to reference)
+  - **3-10 occurrences** = emerging pattern (mention cautiously)
+  - **<3 occurrences** = NOT an established pattern (don't claim it is)
+  
+  This prevents Claude from hallucinating "established conventions" from a few examples.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-028          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is 'comprehension debt' according to Addy Osmani's '80% Problem'?
+
+OPTIONS:
+  [A] Documentation debt - missing docs
+  [B] Code you shipped but don't fully understand - distinct from technical debt ← ✓ CORRECT
+  [C] Review debt - unreviewed PRs
+  [D] Design debt - skipped design phase
+
+ANSWER: B
+
+EXPLANATION:
+  Comprehension debt is code you shipped but don't fully understand. It's distinct from technical debt (code you understand but know is suboptimal). With AI-generated code, comprehension debt grows silently: you accept suggestions without deep understanding. The fix: always be able to explain WHY, not just WHAT.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 09-029          Category: Advanced Patterns         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the '4-step cycle' for CLAUDE.md as compounding memory (Boris Cherny)?
+
+OPTIONS:
+  [A] Write, Test, Deploy, Monitor
+  [B] Plan, Execute, Review, Commit
+  [C] Error, Rule, Read, Never repeated ← ✓ CORRECT
+  [D] Ask, Implement, Validate, Ship
+
+ANSWER: C
+
+EXPLANATION:
+  Boris Cherny's mental model for CLAUDE.md as compounding memory:
+  
+  1. **Error** - Claude makes a mistake
+  2. **Rule** - You add a rule to CLAUDE.md preventing it
+  3. **Read** - Claude reads CLAUDE.md on every session start
+  4. **Never repeated** - The mistake never happens again
+  
+  Goal: never correct Claude twice for the same mistake. CLAUDE.md compounds over time.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: AGENTS
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-003          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What fields are REQUIRED in an agent's YAML frontmatter?
+
+OPTIONS:
+  [A] name, model, tools
+  [B] name, description ← ✓ CORRECT
+  [C] name, description, model, tools
+  [D] name, role, skills
+
+ANSWER: B
+
+EXPLANATION:
+  Only `name` and `description` are required in agent frontmatter. Optional fields include: model (sonnet default, opus, or haiku), tools (comma-separated list), skills (to inherit), and disallowedTools. The description is crucial - it determines when Claude auto-activates the agent, so make it clear and specific.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/agents
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-005          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which model should you use for agents performing complex architectural analysis?
+
+OPTIONS:
+  [A] haiku - for speed
+  [B] sonnet - for balance
+  [C] opus - for maximum reasoning ← ✓ CORRECT
+  [D] Any model works equally well
+
+ANSWER: C
+
+EXPLANATION:
+  Use opus for complex reasoning and architecture tasks. Model selection guidelines: haiku (fast, low cost) for quick tasks and simple changes; sonnet (balanced, default) for most tasks; opus (slow, high cost) for complex reasoning, architecture decisions, and critical security reviews. Match the model to the task's complexity.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-008          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How can agents inherit knowledge from skills?
+
+OPTIONS:
+  [A] By copying skill content into the agent
+  [B] Using the 'skills' field in the frontmatter ← ✓ CORRECT
+  [C] Skills and agents cannot be combined
+  [D] By importing skill files
+
+ANSWER: B
+
+EXPLANATION:
+  Agents inherit skills using the `skills` field in frontmatter. For example: `skills: [security-guardian]`. This composes expertise without duplication - instead of copying OWASP knowledge into every security-related agent, they all inherit from the security-guardian skill. This follows DRY principles for knowledge organization.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-010          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended agent weight for frequently-used tasks?
+
+OPTIONS:
+  [A] Heavy (25K+ tokens) for thoroughness
+  [B] Medium (10-15K tokens) for balance
+  [C] Lightweight (<3K tokens) for speed ← ✓ CORRECT
+  [D] Weight doesn't matter
+
+ANSWER: C
+
+EXPLANATION:
+  Use lightweight agents (<3K tokens, <1s init time) for frequent tasks and workers. Golden Rule: "A lightweight agent used 100x > A heavy agent used 10x." Agent weight categories: Lightweight (<3K tokens) for frequent tasks, Medium (10-15K) for analysis/reviews, Heavy (25K+) for architecture/full audits. Match weight to task frequency.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-012          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What should an agent's output format section include?
+
+OPTIONS:
+  [A] Only code examples
+  [B] Structured deliverables like reports with sections, severity levels, and recommendations ← ✓ CORRECT
+  [C] Raw text output
+  [D] JSON only
+
+ANSWER: B
+
+EXPLANATION:
+  An agent's output format should specify structured deliverables. For example, a code reviewer agent outputs: Summary, Critical Issues (Must Fix) with file:line references, Warnings (Should Fix), Suggestions (Nice to Have), and Positive Notes. Clear output format ensures consistent, actionable results across all invocations.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-015          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When should parallel execution of agents be avoided?
+
+OPTIONS:
+  [A] When tasks are read-only
+  [B] When tasks are destructive (write operations) and dependent on each other ← ✓ CORRECT
+  [C] When using haiku model
+  [D] When more than 3 agents are involved
+
+ANSWER: B
+
+EXPLANATION:
+  Avoid parallel execution for destructive (write) operations that are dependent on each other. The decision matrix: Independent + Non-destructive = Parallel (max efficiency); Independent + Destructive = Sequential with Plan Mode first; Dependent operations = Sequential (order matters). Parallel writes risk conflicts if files share imports/exports.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 04-017          Category: Agents                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is an example of a BAD agent description?
+
+OPTIONS:
+  [A] 'Use when designing APIs, reviewing database schemas, or optimizing backend performance'
+  [B] 'Backend stuff' ← ✓ CORRECT
+  [C] 'Security code reviewer - use PROACTIVELY when reviewing auth code'
+  [D] 'Use when encountering errors, test failures, or unexpected behavior'
+
+ANSWER: B
+
+EXPLANATION:
+  "Backend stuff" is a bad description - it's too vague to help Claude know when to activate the agent. Good descriptions are specific: "Use when designing APIs, reviewing database schemas, or optimizing backend performance" or "Security code reviewer - use PROACTIVELY when reviewing auth code." Clear activation triggers improve agent utilization.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: ARCHITECTURE INTERNALS
+# 5 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-005          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the reported auto-compaction thresholds for Claude Code?
+
+OPTIONS:
+  [A] 50-60%
+  [B] 75-92% (conflicting reports) ← ✓ CORRECT
+  [C] 95-99%
+  [D] No auto-compaction exists
+
+ANSWER: B
+
+EXPLANATION:
+  Auto-compaction thresholds vary by source: PromptLayer analysis reports 92%, community observations report 75-80%. When triggered, older conversation turns are summarized, tool results condensed, and recent context preserved. Use /compact to manually trigger summarization.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-007          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does a sub-agent receive when spawned by the Task tool?
+
+OPTIONS:
+  [A] Full conversation history + all file reads
+  [B] Task description only (isolated fresh context) ← ✓ CORRECT
+  [C] Last 10 messages of conversation
+  [D] System prompt + CLAUDE.md files
+
+ANSWER: B
+
+EXPLANATION:
+  Sub-agents have ISOLATED context. They receive only the task description, have their own fresh context window, access the same tools (except Task), and return only a summary text. This isolation keeps the main context clean and prevents context pollution.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-009          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What algorithm does the Edit tool use when exact match fails?
+
+OPTIONS:
+  [A] Returns error immediately
+  [B] Fuzzy match (whitespace normalization, line ending normalization, context expansion) ← ✓ CORRECT
+  [C] Regex pattern matching
+  [D] Semantic similarity search
+
+ANSWER: B
+
+EXPLANATION:
+  When exact match fails, Edit attempts fuzzy matching: (1) Whitespace normalization (trailing spaces, indentation), (2) Line ending normalization (CRLF vs LF), (3) Context expansion (surrounding lines). Only if fuzzy match also fails does it return an error.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-011          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is Claude Code's design philosophy, as stated by Anthropic?
+
+OPTIONS:
+  [A] More scaffolding, less model - build complex orchestration
+  [B] Less scaffolding, more model - trust Claude's reasoning ← ✓ CORRECT
+  [C] Maximum control - explicit rules for every case
+  [D] Hybrid approach - RAG + classifier + model
+
+ANSWER: B
+
+EXPLANATION:
+  Claude Code's philosophy is "Less scaffolding, more model" - trust Claude's reasoning instead of building complex orchestration systems. This means: single model decides (no classifier/router), Grep+Glob (no RAG), simple while loop (no DAG), conversation as state (no state machines).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 12-012          Category: Architecture Internals    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the 4 specialized sub-agent types available in Claude Code?
+
+OPTIONS:
+  [A] Reader, Writer, Searcher, Executor
+  [B] Explore, Plan, Bash, general-purpose ← ✓ CORRECT
+  [C] Junior, Senior, Expert, Architect
+  [D] Fast, Balanced, Thorough, Complete
+
+ANSWER: B
+
+EXPLANATION:
+  Claude Code offers 4 sub-agent types: Explore (codebase exploration, read-only tools), Plan (architecture planning, no Edit/Write), Bash (command execution, Bash only), and general-purpose (complex multi-step tasks, all tools). Each has different tool access.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: COMMANDS
+# 4 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 06-003          Category: Commands                  │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What variable is used in command files to access arguments passed to the command?
+
+OPTIONS:
+  [A] $ARGS
+  [B] $INPUT
+  [C] $ARGUMENTS ← ✓ CORRECT
+  [D] $PARAMS
+
+ANSWER: C
+
+EXPLANATION:
+  The `$ARGUMENTS` variable contains any text passed after the command invocation.
+  
+  For example, when you run `/tech:deploy production`, the variable `$ARGUMENTS`
+  will contain `production`.
+  
+  This enables dynamic commands that can adapt based on user input.
+  Commands should document how they handle arguments and what happens if none are provided.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/slash-commands
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 06-005          Category: Commands                  │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What sections should a well-structured command template include according to best practices?
+
+OPTIONS:
+  [A] Purpose, Steps, Output
+  [B] Purpose, Process, Arguments, Output Format, Examples, Error Handling ← ✓ CORRECT
+  [C] Name, Description, Code
+  [D] Title, Body, Footer
+
+ANSWER: B
+
+EXPLANATION:
+  A complete command template should include:
+  
+  1. **Purpose** - Brief description of what the command does
+  2. **Process** - Step-by-step instructions Claude should follow
+  3. **Arguments** - How to handle $ARGUMENTS (if provided/not provided)
+  4. **Output Format** - Expected structure of the output
+  5. **Examples** - Concrete usage examples
+  6. **Error Handling** - How to handle edge cases and failures
+  
+  This comprehensive structure ensures consistent, reliable command execution.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/slash-commands
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 06-007          Category: Commands                  │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  In the commit command example, what is the recommended commit message format?
+
+OPTIONS:
+  [A] Simple description
+  [B] Conventional Commits: type(scope): description ← ✓ CORRECT
+  [C] Date - Author - Message
+  [D] JIRA-123: Message
+
+ANSWER: B
+
+EXPLANATION:
+  The guide recommends Conventional Commits format: `type(scope): description`
+  
+  Common types:
+  - `feat`: New feature
+  - `fix`: Bug fix
+  - `refactor`: Code restructuring
+  - `docs`: Documentation
+  - `test`: Test changes
+  - `chore`: Maintenance
+  
+  This provides consistent, parseable commit history useful for changelogs and releases.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 06-010          Category: Commands                  │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What should a PR command's error handling do if the user is NOT on a feature branch?
+
+OPTIONS:
+  [A] Automatically create a feature branch
+  [B] Proceed anyway with warnings
+  [C] WARN: Create a feature branch first ← ✓ CORRECT
+  [D] Exit silently
+
+ANSWER: C
+
+EXPLANATION:
+  According to the PR command example, if the user is not on a feature branch,
+  the command should WARN: "Create a feature branch first".
+  
+  Similarly, if the working directory is dirty, it should ASK: "Commit changes first?"
+  
+  Good command design includes clear error handling that:
+  - Warns users about prerequisites
+  - Suggests corrective actions
+  - Prevents accidental mistakes
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: CORE CONCEPTS
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-003          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does the statusline 'Ctx(u): 45%' indicate?
+
+OPTIONS:
+  [A] 45% of your budget is remaining
+  [B] You've used 45% of your context ← ✓ CORRECT
+  [C] 45% of files are loaded
+  [D] Claude is 45% confident
+
+ANSWER: B
+
+EXPLANATION:
+  The statusline metric 'Ctx(u): 45%' shows you've used 45% of your context window. The full statusline format is: `Claude Code | Ctx(u): 45% | Cost: $0.23 | Session: 1h 23m`. Monitoring this helps you know when to use /compact or /clear before context-related issues occur.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-005          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which action consumes the MOST context tokens?
+
+OPTIONS:
+  [A] Reading a small file (~500 tokens)
+  [B] Running a simple command (~1K tokens)
+  [C] Reading a large file or multi-file search (~5K+ tokens) ← ✓ CORRECT
+  [D] Sending a short message
+
+ANSWER: C
+
+EXPLANATION:
+  Reading large files (5K+ tokens) and multi-file searches (3K+ tokens) consume the most context. A small file costs ~500 tokens, running commands ~1K tokens. Long conversations accumulate over time. To optimize, be specific in queries, use symbol references like "read the calculateTotal function" instead of entire files.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-007          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is 'context poisoning' (also called context bleeding)?
+
+OPTIONS:
+  [A] When context usage reaches 100%
+  [B] When information from one task contaminates another ← ✓ CORRECT
+  [C] When Claude forgets your instructions
+  [D] When files get corrupted
+
+ANSWER: B
+
+EXPLANATION:
+  Context poisoning occurs when information from one task contaminates another. Examples include: style bleeding (blue button style applies to unrelated forms), instruction contamination (conflicting rules cause confusion), and temporal confusion (Claude uses outdated file names). Use explicit task boundaries and clarify priorities to prevent it.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-011          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are symptoms of context depletion?
+
+OPTIONS:
+  [A] Claude types slower
+  [B] Shorter responses, forgetting CLAUDE.md instructions, inconsistencies with earlier conversation ← ✓ CORRECT
+  [C] Error messages appear
+  [D] Cost increases dramatically
+
+ANSWER: B
+
+EXPLANATION:
+  Context depletion symptoms include: shorter responses than usual (warning), forgetting CLAUDE.md instructions (serious), inconsistencies with earlier conversation (critical), errors on code already discussed (critical), and "I can't access that file" for files already read (critical). When critical symptoms appear, start a new session immediately.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-013          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does Claude NOT have access to regarding your project?
+
+OPTIONS:
+  [A] File structure and code content
+  [B] Git state and branches
+  [C] Runtime state, external services, and hidden files ← ✓ CORRECT
+  [D] Project rules in CLAUDE.md
+
+ANSWER: C
+
+EXPLANATION:
+  Claude knows: file structure, code content, git state, and project rules (CLAUDE.md). Claude does NOT know: runtime state (can't see running processes), external services (can't access databases directly), your intent (needs clear instructions), and hidden files (respects .gitignore by default). Understanding this mental model helps you communicate effectively.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-015          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When should you use XML-structured prompts?
+
+OPTIONS:
+  [A] For all prompts regardless of complexity
+  [B] For multi-step features, bug investigations with context, and code reviews with specific criteria ← ✓ CORRECT
+  [C] Only for simple one-liner requests
+  [D] Only when working with APIs
+
+ANSWER: B
+
+EXPLANATION:
+  Use XML-structured prompts when requests have 3+ distinct aspects (instruction + context + constraints), when ambiguity causes misunderstanding, when creating reusable templates, or for complex hierarchy. Don't use them for simple one-liner requests or quick typo fixes - the overhead outweighs the benefit. Tags like <instruction>, <context>, <constraints> help Claude understand different aspects.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 02-017          Category: Core Concepts             │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the typical cost of a 1-hour Claude Code session?
+
+OPTIONS:
+  [A] $0.01 - $0.05
+  [B] $0.10 - $0.50 ← ✓ CORRECT
+  [C] $1.00 - $5.00
+  [D] $10.00 - $20.00
+
+ANSWER: B
+
+EXPLANATION:
+  A typical 1-hour session costs $0.10 - $0.50 depending on usage patterns. The guide provides cost budgets: quick task (5-10 min) $0.05-$0.10, feature work (1-2 hours) $0.20-$0.50, deep refactor (half day) $1.00-$2.00. Spending $0.50 to save 30 minutes provides 60x ROI if your time is worth $30/hour - don't over-optimize!
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: HOOKS
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-003          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How do hooks receive input data from Claude Code?
+
+OPTIONS:
+  [A] As command-line arguments
+  [B] As JSON on stdin ← ✓ CORRECT
+  [C] As environment variables
+  [D] From a temporary file
+
+ANSWER: B
+
+EXPLANATION:
+  Hooks receive JSON data on stdin with information about the event.
+  
+  Example input structure:
+  ```json
+  {
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git status"
+    },
+    "session_id": "abc123",
+    "cwd": "/project"
+  }
+  ```
+  
+  Hooks typically parse this with: `INPUT=$(cat)` followed by `jq` for JSON extraction.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/hooks
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-004          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  In the hook registration (settings.json), what does the `matcher` field specify?
+
+OPTIONS:
+  [A] File extensions to watch
+  [B] Regex pattern for which tools trigger the hook ← ✓ CORRECT
+  [C] User permission levels
+  [D] Output format requirements
+
+ANSWER: B
+
+EXPLANATION:
+  The `matcher` field is a regex pattern that determines which tools trigger the hook.
+  
+  Example configuration:
+  ```json
+  {
+    "matcher": "Bash|Edit|Write",
+    "hooks": [{"type": "command", "command": "./hooks/security-check.sh"}]
+  }
+  ```
+  
+  This hook would trigger for Bash, Edit, or Write tools.
+  You can match specific tools or use `.*` to match all tools.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-007          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which commands should a security hook typically block?
+
+OPTIONS:
+  [A] git status, npm test
+  [B] rm -rf /, sudo rm, git push --force origin main ← ✓ CORRECT
+  [C] cd, ls, pwd
+  [D] npm install, pip install
+
+ANSWER: B
+
+EXPLANATION:
+  Security hooks should block dangerous operations like:
+  
+  - `rm -rf /` or `rm -rf ~` - Filesystem destruction
+  - `sudo rm` - Privileged deletion
+  - `git push --force origin main` - Force push to protected branches
+  - `npm publish` - Accidental package publishing
+  - `> /dev/sda` or `dd if=` - Direct disk operations
+  
+  Safe commands like `git status`, `npm test`, `ls` should be allowed.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-009          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended approach for tasks that need 'understanding' vs pattern-based tasks?
+
+OPTIONS:
+  [A] Both should use bash scripts
+  [B] Both should use AI agents
+  [C] Pattern-based use bash scripts; understanding-needed use AI agents ← ✓ CORRECT
+  [D] Pattern-based use AI agents; understanding-needed use bash scripts
+
+ANSWER: C
+
+EXPLANATION:
+  The guide recommends choosing the right tool:
+  
+  **Use Bash scripts when:**
+  - Tasks are deterministic (create branch, push)
+  - Pattern-based (check for secrets with regex)
+  - Fast, predictable, no token cost
+  
+  **Use AI Agents when:**
+  - Interpretation is needed (code review quality)
+  - Context-dependent decisions
+  - Understanding and judgment required
+  
+  Rule: "If you can write a regex for it, use a bash script."
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-012          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  In Windows, how should hooks be invoked to avoid execution policy restrictions?
+
+OPTIONS:
+  [A] Run as Administrator
+  [B] Use powershell -ExecutionPolicy Bypass -File script.ps1 ← ✓ CORRECT
+  [C] Disable all security settings
+  [D] Convert to batch files only
+
+ANSWER: B
+
+EXPLANATION:
+  Windows hooks should use the full PowerShell invocation:
+  
+  ```json
+  {
+    "type": "command",
+    "command": "powershell -ExecutionPolicy Bypass -File .claude/hooks/security-check.ps1"
+  }
+  ```
+  
+  This bypasses the default execution policy that might block script execution.
+  Batch files (.cmd) can also be used as an alternative for simpler hooks.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-014          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the default timeout for hooks in the configuration?
+
+OPTIONS:
+  [A] 1000ms (1 second)
+  [B] 5000ms (5 seconds) ← ✓ CORRECT
+  [C] 30000ms (30 seconds)
+  [D] No timeout by default
+
+ANSWER: B
+
+EXPLANATION:
+  The example hook configuration shows a timeout of 5000ms (5 seconds).
+  
+  ```json
+  {
+    "type": "command",
+    "command": ".claude/hooks/security-check.sh",
+    "timeout": 5000
+  }
+  ```
+  
+  This prevents hooks from blocking Claude Code indefinitely.
+  For longer operations like formatting, you might increase this to 10000ms.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 07-015          Category: Hooks                     │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What configuration parameter makes a hook run asynchronously (v2.1.0+)?
+
+OPTIONS:
+  [A] background: true
+  [B] async: true ← ✓ CORRECT
+  [C] nonblocking: true
+  [D] mode: async
+
+ANSWER: B
+
+EXPLANATION:
+  Since Claude Code v2.1.0, hooks support `async: true` in their configuration. This makes the hook fire without blocking Claude's execution. Useful for logging, notifications, or analytics hooks where you don't need to wait for the result before continuing.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: LEARNING WITH AI
+# 3 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-011          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What CLAUDE.md configuration enables 'Learning Mode' with Claude Code?
+
+OPTIONS:
+  [A] ## Learning Mode - Ask me questions before generating code ← ✓ CORRECT
+  [B] ## Strict Mode - Never generate code directly
+  [C] ## Teaching Mode - Always explain before showing
+  [D] ## Quiz Mode - Test before implementing
+
+ANSWER: A
+
+EXPLANATION:
+  Learning Mode in CLAUDE.md prompts Claude to ask questions before generating: "What approaches have I considered?", "What specifically am I stuck on?", "What do I expect the solution to look like?". This implements the UVAL protocol's Understand step directly in your workflow.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-012          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What hook event is recommended for capturing daily learning?
+
+OPTIONS:
+  [A] PreToolUse - before each command
+  [B] PostToolUse - after each edit
+  [C] Stop - when session ends ← ✓ CORRECT
+  [D] Notification - on alerts
+
+ANSWER: C
+
+EXPLANATION:
+  The learning-capture.sh hook uses the Stop event (session end) to prompt: "What's ONE thing you learned today?" This logs to ~/claude-learnings.md automatically. It's lightweight (asks one question) so you'll actually use it, unlike verbose learning journals.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 11-016          Category: Learning with AI          │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the 3 failure modes identified in Addy Osmani's '80% Problem' of agentic coding?
+
+OPTIONS:
+  [A] Context loss, token overflow, hallucination
+  [B] Overengineering, assumption propagation, sycophantic agreement ← ✓ CORRECT
+  [C] Slow responses, wrong language, missed tests
+  [D] Memory leaks, race conditions, deadlocks
+
+ANSWER: B
+
+EXPLANATION:
+  Addy Osmani's "80% Problem" identifies 3 failure modes:
+  
+  1. **Overengineering** - AI adds unnecessary complexity (abstraction layers, premature optimization)
+  2. **Assumption propagation** - One wrong assumption cascades through the codebase
+  3. **Sycophantic agreement** - AI agrees with bad ideas instead of pushing back
+  
+  The 80% refers to AI getting you 80% of the way, with the last 20% requiring deep human understanding.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: MCP SERVERS
+# 9 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-002          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which MCP server should you use to find all usages of a function across your codebase?
+
+OPTIONS:
+  [A] Context7
+  [B] Sequential Thinking
+  [C] Serena ← ✓ CORRECT
+  [D] Postgres
+
+ANSWER: C
+
+EXPLANATION:
+  Serena provides semantic code analysis with tools like `find_referencing_symbols`.
+  
+  Serena tools include:
+  - `find_symbol` - Find functions, classes, methods by name
+  - `get_symbols_overview` - Get file structure overview
+  - `find_referencing_symbols` - Find all usages of a symbol
+  - `search_for_pattern` - Regex search across codebase
+  
+  Use Serena for deep code understanding and symbol-level analysis.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/mcp-servers
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-003          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which MCP server is best for looking up official library documentation?
+
+OPTIONS:
+  [A] Serena
+  [B] Context7 ← ✓ CORRECT
+  [C] Sequential Thinking
+  [D] mgrep
+
+ANSWER: B
+
+EXPLANATION:
+  Context7 is designed for accessing official library documentation.
+  
+  Use Context7 when:
+  - Learning new libraries
+  - Finding correct API usage
+  - Checking official patterns
+  
+  For example, "How does React useEffect work?" should use Context7
+  to get the official documentation rather than generic knowledge.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/mcp-servers
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-006          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended MCP server for complex debugging scenarios?
+
+OPTIONS:
+  [A] Context7
+  [B] Serena
+  [C] Sequential Thinking ← ✓ CORRECT
+  [D] Postgres
+
+ANSWER: C
+
+EXPLANATION:
+  Sequential Thinking is designed for multi-step analysis with explicit reasoning.
+  
+  Use Sequential Thinking for:
+  - Complex debugging scenarios
+  - Architectural analysis
+  - System design decisions
+  
+  The `sequentialthinking` tool provides step-by-step reasoning that is
+  ideal for problems requiring systematic investigation.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-009          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the key advantage of Serena over Claude Code's built-in tools?
+
+OPTIONS:
+  [A] It's faster
+  [B] It provides indexation that Claude Code lacks ← ✓ CORRECT
+  [C] It uses less memory
+  [D] It works offline
+
+ANSWER: B
+
+EXPLANATION:
+  Serena fills a critical gap: Claude Code has no built-in indexation (unlike Cursor).
+  
+  Serena provides:
+  - **Indexation**: Pre-indexes your codebase for efficient symbol lookup
+  - **Project Memory**: Stores context between sessions
+  - **Onboarding**: Auto-analyzes project structure on first run
+  
+  For large codebases (>10k lines), Serena's indexation dramatically improves performance.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-012          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How do you add an MCP server with environment variables via CLI?
+
+OPTIONS:
+  [A] claude mcp add --env API_KEY=key server
+  [B] claude mcp add -e API_KEY=key my-server -- npx @org/server ← ✓ CORRECT
+  [C] claude mcp install server --api-key key
+  [D] claude add mcp server -k key
+
+ANSWER: B
+
+EXPLANATION:
+  Use the `-e` flag to pass environment variables:
+  
+  ```bash
+  claude mcp add -e API_KEY=your-key my-server -- npx @org/server
+  ```
+  
+  For multiple environment variables:
+  ```bash
+  claude mcp add -e DATABASE_URL=postgres://... -e DEBUG=true postgres -- npx @prisma/postgres
+  ```
+  
+  This is quicker than manually editing mcp.json.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-014          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What command lists all installed plugins in Claude Code?
+
+OPTIONS:
+  [A] claude plugins list
+  [B] claude plugin ← ✓ CORRECT
+  [C] /plugins
+  [D] claude list plugins
+
+ANSWER: B
+
+EXPLANATION:
+  Running `claude plugin` (without subcommand) lists all installed plugins with status.
+  
+  Plugin commands:
+  - `claude plugin` - List installed plugins
+  - `claude plugin install <name>` - Install plugin
+  - `claude plugin enable <name>` - Enable plugin
+  - `claude plugin disable <name>` - Disable plugin
+  - `claude plugin uninstall <name>` - Remove plugin
+  - `claude plugin validate <path>` - Validate plugin manifest
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-016          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which Figma MCP tool retrieves design tokens (colors, spacing, typography)?
+
+OPTIONS:
+  [A] get_design_context
+  [B] get_variable_defs ← ✓ CORRECT
+  [C] get_metadata
+  [D] get_screenshot
+
+ANSWER: B
+
+EXPLANATION:
+  `get_variable_defs` retrieves design tokens like colors (--color-primary: #3B82F6), spacing (--spacing-md: 16px), and typography. Recommended workflow: get_metadata → get_design_context → get_variable_defs (once per project) → get_screenshot (only when visual reference needed).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-018          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the 2 core primitives of MCP Apps architecture?
+
+OPTIONS:
+  [A] Functions and Routes
+  [B] Commands and Events
+  [C] Tools with UI metadata and UI resources (ui:// scheme) ← ✓ CORRECT
+  [D] Plugins and Themes
+
+ANSWER: C
+
+EXPLANATION:
+  MCP Apps (SEP-1865) introduce 2 core primitives:
+  
+  1. **Tools with UI metadata** - Standard MCP tools annotated with rendering hints (input forms, output displays)
+  2. **UI resources (ui:// scheme)** - Resources that return UI components instead of data
+  
+  Together, these allow MCP servers to provide both functionality and user interface, enabling richer agent-to-user interactions.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 08-019          Category: MCP Servers               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does the 'auto:N' threshold control in MCP tool configuration?
+
+OPTIONS:
+  [A] Maximum concurrent MCP connections
+  [B] Cache size for tool results
+  [C] Lazy loading - tools loaded only when description matches user intent, N = max tools to auto-load ← ✓ CORRECT
+  [D] Retry count for failed tool calls
+
+ANSWER: C
+
+EXPLANATION:
+  The `auto:N` threshold enables lazy loading for MCP tools. Instead of loading all tools at session start (which wastes context), tools are only loaded when their description matches the user's intent. N controls the maximum number of tools to auto-load per intent match. This reduces context usage for MCP servers with many tools.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: MEMORY & SETTINGS
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-003          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the purpose of settings.local.json?
+
+OPTIONS:
+  [A] Store team hook configurations
+  [B] Define project-wide settings
+  [C] Personal permission overrides (gitignored) ← ✓ CORRECT
+  [D] Configure MCP servers for the team
+
+ANSWER: C
+
+EXPLANATION:
+  settings.local.json stores personal permission overrides and is gitignored. It allows you to customize which tools are auto-allowed, denied, or require asking for your personal workflow without affecting team settings. For example, you might allow all git commands while the team requires confirmation for certain operations.
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/memory
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-005          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the permission behavior for tools listed in the 'deny' category?
+
+OPTIONS:
+  [A] Ask for confirmation each time
+  [B] Auto-approve without asking
+  [C] Block completely ← ✓ CORRECT
+  [D] Log but allow
+
+ANSWER: C
+
+EXPLANATION:
+  Tools in the 'deny' category are blocked completely - Claude cannot use them at all. The three permission behaviors are: 'allow' (auto-approve without asking), 'deny' (block completely), and 'ask' (prompt for confirmation). For example, denying "Bash(rm -rf *)" prevents accidental destructive operations.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-008          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does the permission pattern 'Bash(git *)' match?
+
+OPTIONS:
+  [A] Only the exact command 'git'
+  [B] Any git command ← ✓ CORRECT
+  [C] Git commands that start with asterisk
+  [D] Git commands with glob patterns
+
+ANSWER: B
+
+EXPLANATION:
+  The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. The space-based syntax is current - colon syntax like 'Bash(git status:*)' is deprecated.
+
+OFFICIAL DOC: https://code.claude.com/docs/en/permissions
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-010          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What happens to files in the .claude/rules/ directory?
+
+OPTIONS:
+  [A] They must be manually imported
+  [B] They are automatically loaded and combined ← ✓ CORRECT
+  [C] They override CLAUDE.md
+  [D] They are ignored unless referenced
+
+ANSWER: B
+
+EXPLANATION:
+  Files in `.claude/rules/` are automatically loaded and combined. You can create multiple files like code-conventions.md, git-workflow.md, and architecture.md - all are loaded automatically without manual imports. This allows modular organization of project conventions that Claude will follow.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-014          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What are the three levels of progressive permission in allowedTools?
+
+OPTIONS:
+  [A] Admin, User, Guest
+  [B] Beginner (very restrictive), Intermediate, Advanced ← ✓ CORRECT
+  [C] Read, Write, Execute
+  [D] Low, Medium, High
+
+ANSWER: B
+
+EXPLANATION:
+  The three progressive permission levels are: Beginner (very restrictive - only Read, Grep, Glob), Intermediate (adds Bash git/pnpm, TodoRead/Write), and Advanced (adds Edit, Write, WebFetch, Task). Start restrictive and expand as you gain confidence. This prevents accidents while learning.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-017          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is stored in settings.json (not settings.local.json)?
+
+OPTIONS:
+  [A] Personal permissions
+  [B] Hook configurations that are committed to the repo ← ✓ CORRECT
+  [C] API keys
+  [D] Cost tracking data
+
+ANSWER: B
+
+EXPLANATION:
+  settings.json stores hook configurations and is committed to the repo for team sharing. It defines hooks for PreToolUse, PostToolUse, UserPromptSubmit events - specifying matchers and hook scripts. Personal permission overrides go in settings.local.json (gitignored). This separation allows team automation while respecting personal preferences.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 03-018          Category: Memory & Settings         │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How many verification domains does the guide recommend for comprehensive quality checks?
+
+OPTIONS:
+  [A] 3 domains (lint, test, build)
+  [B] 8 domains: frontend, backend, types, style, performance, accessibility, security, UX ← ✓ CORRECT
+  [C] 5 domains: syntax, logic, performance, security, style
+  [D] 12 domains covering every possible check
+
+ANSWER: B
+
+EXPLANATION:
+  Boris Cherny's verification loops recommend 8 domains for comprehensive quality:
+  
+  1. Frontend (UI renders correctly)
+  2. Backend (API responds correctly)
+  3. Types (TypeScript/type checks pass)
+  4. Style (linting passes)
+  5. Performance (no regressions)
+  6. Accessibility (WCAG compliance)
+  7. Security (no vulnerabilities)
+  8. UX (user flows work end-to-end)
+  
+  CLAUDE.md should define which domains to check for each type of change.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: QUICK START
+# 5 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-006          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the recommended approach when migrating from GitHub Copilot to Claude Code?
+
+OPTIONS:
+  [A] Completely stop using Copilot immediately
+  [B] Use a hybrid approach: Copilot for autocomplete, Claude Code for complex tasks ← ✓ CORRECT
+  [C] Only use Claude Code for simple tasks
+  [D] Export all Copilot settings to Claude Code
+
+ANSWER: B
+
+EXPLANATION:
+  The guide recommends a hybrid approach: use Copilot for quick autocomplete and boilerplate while using Claude Code for feature implementation, debugging, code reviews, and understanding unfamiliar codebases. This leverages the strengths of both tools - Copilot excels at inline suggestions while Claude Code handles multi-file operations and complex reasoning.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-008          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What flag allows you to continue your most recent Claude Code conversation?
+
+OPTIONS:
+  [A] --last
+  [B] --continue or -c ← ✓ CORRECT
+  [C] --resume-last
+  [D] --restore
+
+ANSWER: B
+
+EXPLANATION:
+  Use `claude --continue` or `claude -c` to automatically resume your most recent conversation. This maintains full context and conversation history across terminal sessions. For resuming a specific session by ID, use `claude --resume <id>` or `claude -r <id>`. This is particularly useful for multi-day features or when interrupted.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-011          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When should you use auto-accept mode in Claude Code?
+
+OPTIONS:
+  [A] For all operations to save time
+  [B] Only for well-defined, reversible operations you trust ← ✓ CORRECT
+  [C] When working on production code
+  [D] For complex refactoring tasks
+
+ANSWER: B
+
+EXPLANATION:
+  Auto-accept mode should only be used for well-defined, reversible operations. The guide warns: "Only use auto-accept for well-defined, reversible operations." It's dangerous for complex or risky changes. Default mode (asking permission) is safest, especially for learning and production work.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-014          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  When resuming a Claude Code session, what context is preserved?
+
+OPTIONS:
+  [A] Only the conversation history
+  [B] Full conversation history, files read/edited, CLAUDE.md settings ← ✓ CORRECT
+  [C] Just the last 10 messages
+  [D] Only files that were modified
+
+ANSWER: B
+
+EXPLANATION:
+  When you resume a session, Claude retains: full conversation history, files previously read/edited, CLAUDE.md and project settings, and uncommitted code changes awareness. MCP servers restart on each session - their state is NOT preserved. Session-scoped permissions also don't carry over.
+
+OFFICIAL DOC: https://code.claude.com/docs/en/how-claude-code-works
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 01-017          Category: Quick Start               │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How are image tokens calculated in Claude Code?
+
+OPTIONS:
+  [A] file_size_bytes / 1000
+  [B] (width × height) / 750 ← ✓ CORRECT
+  [C] pixels / 1000
+  [D] Fixed 500 tokens per image
+
+ANSWER: B
+
+EXPLANATION:
+  Token calculation formula: (width × height) / 750 ≈ tokens consumed. Examples: 200×200 = ~54 tokens, 500×500 = ~334 tokens, 1000×1000 = ~1334 tokens. This helps estimate context impact before pasting images. Use /status after pasting to monitor actual context usage.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: REFERENCE
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-004          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  At what context percentage should you run /compact according to best practices?
+
+OPTIONS:
+  [A] 50%
+  [B] 70-90% ← ✓ CORRECT
+  [C] 95%+
+  [D] Only when errors occur
+
+ANSWER: B
+
+EXPLANATION:
+  Context management guidelines:
+  
+  | Context Level | Action |
+  |--------------|--------|
+  | 0-50% | Work freely |
+  | 50-75% | Be selective |
+  | **75-90%** | **Use `/compact`** |
+  | 90%+ | Use `/clear` |
+  
+  Proactive compaction at 70% prevents context degradation and maintains performance.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-006          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the correct permission pattern to allow ALL git commands?
+
+OPTIONS:
+  [A] Bash(git)
+  [B] Bash(git *) ← ✓ CORRECT
+  [C] git:*
+  [D] Bash(*git*)
+
+ANSWER: B
+
+EXPLANATION:
+  The pattern `Bash(git *)` allows any git command.
+  
+  Permission pattern examples:
+  - `Bash(git *)` - Any git command
+  - `Bash(npm test)` - Exactly "npm test"
+  - `Edit` - All file edits
+  - `mcp__serena__*` - All Serena tools
+  
+  Wildcards (*) enable flexible permission matching.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-008          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does the --mcp-debug flag do?
+
+OPTIONS:
+  [A] Disables MCP servers
+  [B] Debugs MCP server connections with verbose output ← ✓ CORRECT
+  [C] Tests MCP configurations
+  [D] Enables MCP auto-discovery
+
+ANSWER: B
+
+EXPLANATION:
+  The `--mcp-debug` flag enables debug mode for MCP server connections.
+  
+  MCP debugging techniques:
+  ```bash
+  claude --mcp-debug  # Debug all MCP connections
+  /mcp               # View MCP status inside Claude Code
+  ```
+  
+  Use when MCP servers aren't connecting or tools aren't appearing.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-011          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What flag limits maximum API spend in headless mode?
+
+OPTIONS:
+  [A] --cost-limit
+  [B] --max-budget-usd ← ✓ CORRECT
+  [C] --spending-cap
+  [D] --budget
+
+ANSWER: B
+
+EXPLANATION:
+  The `--max-budget-usd` flag sets maximum API spend (only with `--print`):
+  
+  ```bash
+  claude -p "analyze" --max-budget-usd 5.00
+  ```
+  
+  This prevents runaway costs in automated pipelines.
+  The operation stops if the budget is exceeded.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-013          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the correct way to resume a specific session by ID?
+
+OPTIONS:
+  [A] claude --session abc123
+  [B] claude -r abc123 ← ✓ CORRECT
+  [C] claude --load abc123
+  [D] claude -s abc123
+
+ANSWER: B
+
+EXPLANATION:
+  Use `-r` or `--resume` to resume a specific session:
+  
+  ```bash
+  claude -r abc123           # Resume session abc123
+  claude --resume abc123     # Same as above
+  claude -c                  # Resume last session (short)
+  claude --continue          # Resume last session (long)
+  ```
+  
+  Combine with `-p` for scripting: `claude -r abc123 -p "check status"`
+  
+
+OFFICIAL DOC: https://code.claude.com/docs/en/setup
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-016          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What flag allows Claude's tools to access directories outside the current working directory?
+
+OPTIONS:
+  [A] --include-dir
+  [B] --add-dir ← ✓ CORRECT
+  [C] --context-dir
+  [D] --load-dir
+
+ANSWER: B
+
+EXPLANATION:
+  Use `--add-dir` to allow tool access to additional directories:
+  
+  ```bash
+  claude --add-dir ../shared ../utils
+  claude --add-dir packages/api
+  ```
+  
+  By default, Claude can only access files in the current working directory.
+  Use --add-dir to extend permissions to other directories (e.g., shared libraries in a monorepo).
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 10-020          Category: Reference                 │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What breaking change was introduced in Claude Code v2.1.19 for hook/command arguments?
+
+OPTIONS:
+  [A] Arguments removed entirely
+  [B] Migration from $ARGUMENTS.0 (dot syntax) to $ARGUMENTS[0] (bracket syntax) ← ✓ CORRECT
+  [C] New $PARAMS variable replaced $ARGUMENTS
+  [D] Arguments now require JSON format
+
+ANSWER: B
+
+EXPLANATION:
+  Claude Code v2.1.19 changed argument access syntax from dot notation (`$ARGUMENTS.0`) to bracket notation (`$ARGUMENTS[0]`). This breaking change affects all custom commands and hooks that reference arguments. Update your scripts to use the new bracket syntax.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: SECURITY HARDENING
+# 3 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-002          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does CVE-2025-53109/53110 (EscapeRoute) exploit?
+
+OPTIONS:
+  [A] Prompt injection in Claude's system prompt
+  [B] Filesystem MCP sandbox escape via prefix bypass + symlinks ← ✓ CORRECT
+  [C] Memory corruption in the Bash tool
+  [D] API key leakage in network requests
+
+ANSWER: B
+
+EXPLANATION:
+  CVE-2025-53109/53110 (EscapeRoute) allows sandbox escape in Filesystem MCP via prefix bypass combined with symlinks. Severity: High. Mitigation: avoid Filesystem MCP with unrestricted access or apply the official patch. Source: Cymulate security research.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-005          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which prompt injection evasion technique uses U+200B, U+200C, U+200D?
+
+OPTIONS:
+  [A] Base64 encoding
+  [B] RTL override
+  [C] Zero-width characters (invisible to humans) ← ✓ CORRECT
+  [D] Homoglyphs
+
+ANSWER: C
+
+EXPLANATION:
+  Zero-width characters (U+200B, U+200C, U+200D) make instructions invisible to humans while still being interpreted. Detection: Unicode regex pattern [\x{200B}-\x{200D}\x{FEFF}\x{202A}-\x{202E}]. Added to prompt-injection-detector.sh in v3.6.0.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 13-011          Category: Security Hardening        │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  Which sandbox isolation approach combines microVM isolation with network policies for agent autonomy?
+
+OPTIONS:
+  [A] E2B (hosted cloud sandboxes)
+  [B] Fly.io Sprites (edge compute)
+  [C] Docker Sandboxes (with custom templates and network policies) ← ✓ CORRECT
+  [D] Cloudflare Sandbox SDK
+
+ANSWER: C
+
+EXPLANATION:
+  Docker Sandboxes provide microVM-level isolation with customizable network policies. Key features: custom Dockerfile templates for reproducible environments, network policies to control egress/ingress, volume mounts for persistent storage, and CPU/memory limits. This approach suits teams wanting full control over sandbox configuration while maintaining strong isolation.
+  
+
+─────────────────────────────────────────────────────────────────
+
+
+######################################################################
+# CATEGORY: SKILLS
+# 7 questions
+######################################################################
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-003          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the REQUIRED file in a skill folder?
+
+OPTIONS:
+  [A] README.md
+  [B] skill.yaml
+  [C] SKILL.md ← ✓ CORRECT
+  [D] index.md
+
+ANSWER: C
+
+EXPLANATION:
+  SKILL.md is the required main file in every skill folder. Optional files include: reference.md (detailed documentation), checklists/ (verification lists), examples/ (code patterns with good/bad examples), and scripts/ (helper scripts). SKILL.md contains the frontmatter and core instructions for the skill.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-005          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What does the 'context' field in SKILL.md frontmatter control?
+
+OPTIONS:
+  [A] The context window size
+  [B] Whether the skill runs in isolated (fork) or shared (inherit) context ← ✓ CORRECT
+  [C] The file context to load
+  [D] Database connection context
+
+ANSWER: B
+
+EXPLANATION:
+  The `context` field controls execution context: 'fork' means isolated context (the skill runs independently), 'inherit' means shared context (the skill shares context with the calling agent). Use fork for skills that need clean state, inherit for skills that need access to conversation history and loaded files.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-007          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What makes a GOOD skill versus a BAD skill?
+
+OPTIONS:
+  [A] Good skills are longer, bad skills are shorter
+  [B] Good skills are reusable, domain-focused, and include reference material; bad skills are single-agent specific and too broad ← ✓ CORRECT
+  [C] Good skills use opus, bad skills use haiku
+  [D] Good skills have more files
+
+ANSWER: B
+
+EXPLANATION:
+  Good skills are: reusable across multiple agents, domain-focused (not too broad), contain reference material and checklists, and include verification steps. Bad skills are: specific to only one agent, too broad in scope, just instructions without reference material, and missing verification checklists.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-009          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What should a Security Guardian skill include for OWASP coverage?
+
+OPTIONS:
+  [A] Just a list of vulnerabilities
+  [B] Checklists for each OWASP Top 10 category with specific verification items ← ✓ CORRECT
+  [C] Links to external security tools
+  [D] Password examples
+
+ANSWER: B
+
+EXPLANATION:
+  A Security Guardian skill should include detailed checklists for each OWASP Top 10 category: A01 Broken Access Control (check authorization, IDOR, privilege escalation), A02 Cryptographic Failures (hardcoded secrets, TLS, password hashing), A03 Injection (SQL, NoSQL, XSS), etc. Each category should have specific verification items with checkboxes.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-012          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What optional folders can a skill directory contain?
+
+OPTIONS:
+  [A] Only SKILL.md is allowed
+  [B] reference.md, checklists/, examples/, and scripts/ ← ✓ CORRECT
+  [C] src/, dist/, and node_modules/
+  [D] tests/, docs/, and config/
+
+ANSWER: B
+
+EXPLANATION:
+  A skill directory can contain: SKILL.md (required), reference.md (detailed documentation), checklists/ (verification lists like security.md, performance.md), examples/ (code patterns like good-example.ts, bad-example.ts), and scripts/ (helper scripts like audit.sh). This rich structure supports comprehensive domain knowledge.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-014          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  What is the AAA pattern in TDD testing?
+
+OPTIONS:
+  [A] Ask, Answer, Assert
+  [B] Arrange, Act, Assert ← ✓ CORRECT
+  [C] Analyze, Apply, Approve
+  [D] Accept, Adjust, Acknowledge
+
+ANSWER: B
+
+EXPLANATION:
+  AAA stands for Arrange, Act, Assert: 1) Arrange - set up test data and preconditions, 2) Act - execute the code being tested, 3) Assert - verify the result matches expectations. Example: Arrange items array, Act by calling calculateTotal(items), Assert that total equals expected value. This structure makes tests readable and maintainable.
+  
+
+─────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────────┐
+│ ID: 05-017          Category: Skills                    │
+└─────────────────────────────────────────────────────────────┘
+
+QUESTION:
+  How do you reference a skill in an agent's frontmatter?
+
+OPTIONS:
+  [A] import: skill-name
+  [B] skills: [skill-name] ← ✓ CORRECT
+  [C] use: skill-name
+  [D] require: skill-name
+
+ANSWER: B
+
+EXPLANATION:
+  Reference skills in an agent's frontmatter using the `skills` array: `skills: [security-guardian, tdd]`. This makes the agent inherit all knowledge from those skills. You can reference multiple skills, and the agent combines their expertise. The skill name matches the folder name in `.claude/skills/`.
+  
+
+─────────────────────────────────────────────────────────────────
+
