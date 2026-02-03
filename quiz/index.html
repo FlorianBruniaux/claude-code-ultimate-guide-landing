@@ -180,6 +180,41 @@
             color: var(--accent);
         }
 
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .category-header h3 {
+            margin: 0;
+        }
+
+        .category-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .category-action-btn {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.85rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .category-action-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(88, 166, 255, 0.1);
+        }
+
         /* Question Screen */
         .quiz-question {
             display: none;
@@ -689,6 +724,19 @@
             .category-delta {
                 font-size: 0.7rem;
             }
+
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .category-actions {
+                width: 100%;
+            }
+
+            .category-action-btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -747,7 +795,13 @@
             <h1>Claude Code Knowledge Quiz</h1>
             <p>257 questions across 15 categories. Test your knowledge and share your score.</p>
 
-            <h3 style="margin-bottom: var(--space-md);">Select Categories</h3>
+            <div class="category-header">
+                <h3>Select Categories</h3>
+                <div class="category-actions">
+                    <button class="category-action-btn" id="select-all-btn">Select All</button>
+                    <button class="category-action-btn" id="deselect-all-btn">Deselect All</button>
+                </div>
+            </div>
             <div class="category-grid" id="category-grid">
                 <!-- Populated by JS -->
             </div>
@@ -1026,6 +1080,27 @@
                     btn.classList.add('selected');
                     selectedDifficulty = btn.dataset.difficulty;
                     updateSelectedCount();
+                });
+            });
+
+            // Select All / Deselect All buttons
+            document.getElementById('select-all-btn').addEventListener('click', () => {
+                quizData.categories.forEach(cat => {
+                    const checkbox = document.getElementById(`cat-${cat.id}`);
+                    if (!checkbox.checked) {
+                        checkbox.checked = true;
+                        toggleCategory(cat.id, true);
+                    }
+                });
+            });
+
+            document.getElementById('deselect-all-btn').addEventListener('click', () => {
+                quizData.categories.forEach(cat => {
+                    const checkbox = document.getElementById(`cat-${cat.id}`);
+                    if (checkbox.checked) {
+                        checkbox.checked = false;
+                        toggleCategory(cat.id, false);
+                    }
                 });
             });
         }
