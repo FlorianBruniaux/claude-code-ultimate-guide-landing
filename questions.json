@@ -1412,7 +1412,7 @@
         "d": "12 domains covering every possible check"
       },
       "correct": "b",
-      "explanation": "The Claude Code guide extends verification loops to 8 comprehensive domains for quality checks:\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\nNote: Boris Cherny (Claude Code creator) emphasizes verification loops with 4 core methods: CLI tools (bash), Backend (tests), Frontend (browser), Mobile (simulator). The 8-domain taxonomy is the guide's expanded framework (v3.13.0).\n\nCLAUDE.md should define which domains to check for each type of change.",
+      "explanation": "**The guide's 8 verification domains** (WHAT to check):\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\n**Separate concept - Boris Cherny's 4 verification methods** (HOW to check):\n1. CLI tools (bash scripts)\n2. Backend (automated tests)\n3. Frontend (browser verification)\n4. Mobile (simulator testing)\n\n**Key distinction**: The guide's **8 domains** define comprehensive quality dimensions to verify. Boris's **4 methods** describe the technical approaches to perform verification. CLAUDE.md should define which domains apply to each change type.",
       "source_file": "questions/03-memory-settings/018-how-many-verification-domains-does-the-guide.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -2388,7 +2388,7 @@
         "d": "$PARAMS"
       },
       "correct": "c",
-      "explanation": "The `$ARGUMENTS` variable contains any text passed after the command invocation.\n\nFor example, when you run `/tech:deploy production`, the variable `$ARGUMENTS`\nwill contain `production`.\n\nThis enables dynamic commands that can adapt based on user input.\nCommands should document how they handle arguments and what happens if none are provided.",
+      "explanation": "The `$ARGUMENTS` variable contains text passed after the command invocation.\n\n**Syntax options**:\n- `$ARGUMENTS` → Full argument string\n- `$ARGUMENTS[0]` → First argument\n- `$ARGUMENTS[1]` → Second argument\n- **Shorthand**: `$0`, `$1`, `$2` → Equivalent to `$ARGUMENTS[0]`, `$ARGUMENTS[1]`, `$ARGUMENTS[2]`\n\n**Example**: `/tech:deploy production staging`\n- `$ARGUMENTS` = `\"production staging\"`\n- `$0` or `$ARGUMENTS[0]` = `\"production\"`\n- `$1` or `$ARGUMENTS[1]` = `\"staging\"`\n\nCommands should document expected arguments and handle missing values gracefully.",
       "source_file": "questions/06-commands/003-what-variable-is-used-in-command-files-to-access.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",

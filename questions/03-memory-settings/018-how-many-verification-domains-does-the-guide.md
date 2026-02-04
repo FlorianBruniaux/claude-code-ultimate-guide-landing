@@ -22,7 +22,7 @@ How many verification domains does the guide recommend for comprehensive quality
 
 ---
 
-The Claude Code guide extends verification loops to 8 comprehensive domains for quality checks:
+**The guide's 8 verification domains** (WHAT to check):
 
 1. Frontend (UI renders correctly)
 2. Backend (API responds correctly)
@@ -33,6 +33,10 @@ The Claude Code guide extends verification loops to 8 comprehensive domains for 
 7. Security (no vulnerabilities)
 8. UX (user flows work end-to-end)
 
-Note: Boris Cherny (Claude Code creator) emphasizes verification loops with 4 core methods: CLI tools (bash), Backend (tests), Frontend (browser), Mobile (simulator). The 8-domain taxonomy is the guide's expanded framework (v3.13.0).
+**Separate concept - Boris Cherny's 4 verification methods** (HOW to check):
+1. CLI tools (bash scripts)
+2. Backend (automated tests)
+3. Frontend (browser verification)
+4. Mobile (simulator testing)
 
-CLAUDE.md should define which domains to check for each type of change.
+**Key distinction**: The guide's **8 domains** define comprehensive quality dimensions to verify. Boris's **4 methods** describe the technical approaches to perform verification. CLAUDE.md should define which domains apply to each change type.

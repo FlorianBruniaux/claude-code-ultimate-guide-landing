@@ -22,10 +22,17 @@ What variable is used in command files to access arguments passed to the command
 
 ---
 
-The `$ARGUMENTS` variable contains any text passed after the command invocation.
+The `$ARGUMENTS` variable contains text passed after the command invocation.
 
-For example, when you run `/tech:deploy production`, the variable `$ARGUMENTS`
-will contain `production`.
+**Syntax options**:
+- `$ARGUMENTS` → Full argument string
+- `$ARGUMENTS[0]` → First argument
+- `$ARGUMENTS[1]` → Second argument
+- **Shorthand**: `$0`, `$1`, `$2` → Equivalent to `$ARGUMENTS[0]`, `$ARGUMENTS[1]`, `$ARGUMENTS[2]`
 
-This enables dynamic commands that can adapt based on user input.
-Commands should document how they handle arguments and what happens if none are provided.
+**Example**: `/tech:deploy production staging`
+- `$ARGUMENTS` = `"production staging"`
+- `$0` or `$ARGUMENTS[0]` = `"production"`
+- `$1` or `$ARGUMENTS[1]` = `"staging"`
+
+Commands should document expected arguments and handle missing values gracefully.
