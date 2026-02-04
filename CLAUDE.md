@@ -75,6 +75,119 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 ./scripts/check-landing-sync.sh
 ```
 
+## Quiz Workflow (Markdown + Frontmatter)
+
+**Source de vérité**: 256 fichiers Markdown dans `questions/`
+
+### Architecture
+
+```
+questions/
+├── _categories.yaml           # 15 catégories
+├── {XX-slug}/
+│   └── YYY-question-slug.md  # Frontmatter + question + explanation
+scripts/
+├── migrate-to-markdown.py     # One-time migration (historique)
+└── build-questions.py         # Build: 256 MD → questions.json
+questions.json                 # GÉNÉRÉ (ne jamais éditer directement)
+```
+
+### Format d'une question
+
+**Fichier**: `questions/01-quick-start/001-recommended-install-method.md`
+
+```markdown
+---
+id: "01-001"
+category_id: 1
+difficulty: junior
+profiles: [junior, senior, power, pm]
+correct: d
+options:
+  a: "Option A"
+  b: "Option B"
+  c: "Option C"
+  d: "Option D (correct)"
+doc_reference:
+  file: "guide/ultimate-guide.md"
+  section: "1.1 Installation"
+  anchor: "#11-installation"
+official_doc: "https://code.claude.com/docs/en/setup"
+---
+
+Question text here
+
+---
+
+Explanation text here
+```
+
+### Workflow de modification
+
+**Option 1: Éditer une question existante**
+
+1. Modifier le fichier `.md` correspondant
+2. Rebuild: `python3 scripts/build-questions.py`
+3. Commit: `git add questions/ questions.json`
+
+**Option 2: Ajouter une question**
+
+1. Créer fichier dans `questions/{XX-slug}/YYY-new-slug.md`
+2. Respecter format frontmatter + body
+3. Rebuild: `python3 scripts/build-questions.py`
+4. Commit
+
+**Option 3: Modifier catégories**
+
+1. Éditer `questions/_categories.yaml`
+2. Rebuild: `python3 scripts/build-questions.py`
+3. Commit
+
+### Build validations
+
+Le script `build-questions.py` valide automatiquement:
+
+| Règle | Type |
+|-------|------|
+| Champs requis présents | Erreur |
+| Options = exactement {a, b, c, d} | Erreur |
+| `correct` ∈ options | Erreur |
+| `difficulty` ∈ {junior, intermediate, senior, power} | Erreur |
+| `profiles` ⊂ {junior, senior, power, pm} | Erreur |
+| `category_id` cohérent avec répertoire | Erreur |
+| ID unique + format `XX-YYY` | Erreur |
+| Question et explanation non vides | Erreur |
+| Gaps dans IDs séquentiels | Warning |
+
+**Exit code 1** si erreur → CI/CD fail
+
+### CI/CD Pipeline (GitHub Actions)
+
+`.github/workflows/static.yml` exécute:
+
+```yaml
+- name: Build questions.json
+  run: python3 scripts/build-questions.py
+```
+
+**Comportement**:
+- Push vers `main` → Build automatique → Deploy
+- Build fail → Deploy bloqué
+- `questions.json` généré à chaque déploiement
+
+### Avantages du nouveau système
+
+| Aspect | Avant (JSON) | Après (Markdown) |
+|--------|--------------|------------------|
+| **Lisibilité** | JSON compact, difficile à lire | Markdown + frontmatter, naturel |
+| **Édition** | Risque de casser le JSON | Format guidé, validations strictes |
+| **Git diffs** | 1 ligne par question | Diff clair par question |
+| **Contribution** | Requiert connaissances JSON | Format universel (Markdown) |
+| **Structure** | Monolithique (260KB, 6051 lignes) | Modulaire (256 fichiers, organisés par catégorie) |
+| **Validation** | Manuelle ou scripts externes | Build-time automatique avec exit codes |
+
+**Note importante**: Ne plus éditer `questions.json` directement. Toujours passer par les fichiers `.md` + rebuild.
+
 ## Synchronisation guide-data.js (recherche globale)
 
 Le fichier `guide-data.js` indexe les sections du guide pour la recherche Cmd+K.
