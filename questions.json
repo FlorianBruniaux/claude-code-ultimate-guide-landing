@@ -111,6 +111,7 @@
       },
       "correct": "d",
       "explanation": "The recommended installation method is `curl -fsSL https://claude.ai/install.sh | sh` which works across all platforms. npm is deprecated - use `claude install` to migrate if you installed via npm. While Homebrew is available for macOS, the shell script is the universal method recommended in official docs.",
+      "source_file": "questions/01-quick-start/001-what-is-the-recommended-universal-method-to.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.1 Installation",
@@ -136,6 +137,7 @@
       },
       "correct": "b",
       "explanation": "When Claude proposes a change, you have three options: press 'y' to accept the change, 'n' to reject and ask for alternatives, or 'e' to edit the change manually. This gives you full control over what gets applied to your codebase. Always review diffs before accepting - this is your safety net.",
+      "source_file": "questions/01-quick-start/002-after-claude-proposes-a-code-change-what-options.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.2 First Workflow",
@@ -162,6 +164,7 @@
       },
       "correct": "c",
       "explanation": "The `/help` command displays all available Claude Code commands. This is the go-to command when you're lost or want to discover available functionality. It's one of the 7 essential commands that cover 90% of daily usage.",
+      "source_file": "questions/01-quick-start/003-which-command-shows-all-available-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -187,6 +190,7 @@
       },
       "correct": "b",
       "explanation": "The `!` prefix executes shell commands immediately without asking Claude to do it. For example, `!git status` runs the command directly. Use this for quick status checks, view commands, and already-known commands. It's faster than asking Claude when you know exactly what command you need.",
+      "source_file": "questions/01-quick-start/004-what-does-the-prefix-do-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -212,6 +216,7 @@
       },
       "correct": "b",
       "explanation": "The `@` symbol references specific files in your prompts for targeted operations. For example, `Review @src/auth/login.tsx for security issues` signals Claude to read that file. This provides precision (target exact files), speed (skip file discovery), and clarity (makes your intent explicit). Claude reads the file on-demand via tools.",
+      "source_file": "questions/01-quick-start/005-what-does-the-symbol-do-when-used-in-a-prompt.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -235,6 +240,7 @@
       },
       "correct": "b",
       "explanation": "The guide recommends a hybrid approach: use Copilot for quick autocomplete and boilerplate while using Claude Code for feature implementation, debugging, code reviews, and understanding unfamiliar codebases. This leverages the strengths of both tools - Copilot excels at inline suggestions while Claude Code handles multi-file operations and complex reasoning.",
+      "source_file": "questions/01-quick-start/006-what-is-the-recommended-approach-when-migrating.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.6 Migrating from Other AI Coding Tools",
@@ -259,6 +265,7 @@
       },
       "correct": "b",
       "explanation": "Plan Mode is Claude Code's \"look but don't touch\" mode. It allows reading files, searching the codebase, analyzing architecture, and proposing approaches. It prevents editing files, running state-modifying commands, creating new files, and making commits. Perfect for safe exploration before making changes.",
+      "source_file": "questions/01-quick-start/007-in-plan-mode-what-is-claude-allowed-to-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.4 Permission Modes",
@@ -282,6 +289,7 @@
       },
       "correct": "b",
       "explanation": "Use `claude --continue` or `claude -c` to automatically resume your most recent conversation. This maintains full context and conversation history across terminal sessions. For resuming a specific session by ID, use `claude --resume <id>` or `claude -r <id>`. This is particularly useful for multi-day features or when interrupted.",
+      "source_file": "questions/01-quick-start/008-what-flag-allows-you-to-continue-your-most-recent.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -306,6 +314,7 @@
       },
       "correct": "c",
       "explanation": "Always read the diff before accepting changes - this is your safety net. The guide emphasizes this as critical: \"Always review diffs before accepting changes.\" While running tests is good practice, reviewing the diff is the immediate required step before any acceptance. You need to understand what changes are being proposed.",
+      "source_file": "questions/01-quick-start/009-what-should-you-always-do-before-accepting-a-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.2 First Workflow",
@@ -330,6 +339,7 @@
       },
       "correct": "b",
       "explanation": "Ctrl+C cancels the current operation in Claude Code. This is useful for stopping long-running analysis or when Claude is taking an approach you don't want. Esc dismisses the current suggestion, while Ctrl+R retries the last operation. Knowing these shortcuts helps maintain control during your workflow.",
+      "source_file": "questions/01-quick-start/010-which-keyboard-shortcut-cancels-the-current.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -354,6 +364,7 @@
       },
       "correct": "b",
       "explanation": "Auto-accept mode should only be used for well-defined, reversible operations. The guide warns: \"Only use auto-accept for well-defined, reversible operations.\" It's dangerous for complex or risky changes. Default mode (asking permission) is safest, especially for learning and production work.",
+      "source_file": "questions/01-quick-start/011-when-should-you-use-auto-accept-mode-in-claude.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.4 Permission Modes",
@@ -376,6 +387,7 @@
       },
       "correct": "b",
       "explanation": "The guide provides clear guidance: less than 5 lines of code - use Copilot/autocomplete; 5-50 lines in a single file - either tool works; more than 50 lines or multi-file changes - use Claude Code. This helps you choose the right tool for the task's complexity level.",
+      "source_file": "questions/01-quick-start/012-what-is-the-recommended-rule-of-thumb-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.6 Migrating from Other AI Coding Tools",
@@ -400,6 +412,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code supports PNG, JPG, JPEG, WebP, and static GIF formats. You can paste images directly in the terminal (Cmd+V/Ctrl+V), drag and drop, or reference by path. This is useful for implementing UI from mockups, debugging visual issues, analyzing diagrams, and accessibility audits. Note that images consume significant context tokens (1000-2000 words equivalent).",
+      "source_file": "questions/01-quick-start/013-what-image-formats-does-claude-code-support-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -423,6 +436,7 @@
       },
       "correct": "b",
       "explanation": "When you resume a session, Claude retains: full conversation history, files previously read/edited, CLAUDE.md and project settings, and uncommitted code changes awareness. MCP servers restart on each session - their state is NOT preserved. Session-scoped permissions also don't carry over.",
+      "source_file": "questions/01-quick-start/014-when-resuming-a-claude-code-session-what-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -449,6 +463,7 @@
       },
       "correct": "c",
       "explanation": "Use `claude --version` to verify your installation and display the current version. This is also useful before reporting bugs. After installation, you can also use `claude doctor` to verify auto-updater health and `claude update` to check for available updates.",
+      "source_file": "questions/01-quick-start/015-what-command-should-you-use-to-verify-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.1 Installation",
@@ -472,6 +487,7 @@
       },
       "correct": "b",
       "explanation": "The optimal range is 200-1568px. Below 200px lacks detail, 200-1000px is the sweet spot for wireframes, 1000-1568px provides optimal quality/token balance, images above 1568px are auto-downscaled (wasting upload time), and images over 8000px are rejected by the API.",
+      "source_file": "questions/01-quick-start/016-what-is-the-optimal-image-resolution-range-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -495,6 +511,7 @@
       },
       "correct": "b",
       "explanation": "Token calculation formula: (width × height) / 750 ≈ tokens consumed. Examples: 200×200 = ~54 tokens, 500×500 = ~334 tokens, 1000×1000 = ~1334 tokens. This helps estimate context impact before pasting images. Use /status after pasting to monitor actual context usage.",
+      "source_file": "questions/01-quick-start/017-how-are-image-tokens-calculated-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -518,6 +535,7 @@
       },
       "correct": "b",
       "explanation": "PNG is recommended for wireframes, diagrams, and text because it preserves sharp lines. WebP is good for general screenshots with compression. JPEG is for photos only—compression artifacts harm line detection. GIF should be avoided (static only, poor quality). Always crop to relevant area and resize to 1000-1200px if larger.",
+      "source_file": "questions/01-quick-start/018-which-image-format-is-recommended-for-wireframes.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.3 Essential Commands",
@@ -543,6 +561,7 @@
       },
       "correct": "c",
       "explanation": "Use /compact when context reaches 70-90% (the red zone). The context zones are: Green (0-50%) - work freely; Yellow (50-75%) - start being selective; Red (75-90%) - use /compact; Critical (90%+) - must /clear or risk errors. Using /compact at 70% reduces usage by approximately 50% while preserving key context.",
+      "source_file": "questions/02-core-concepts/001-at-what-context-percentage-should-you-use-compact.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -567,6 +586,7 @@
       },
       "correct": "c",
       "explanation": "Claude has a 200,000 token context window. Think of it like RAM - when it fills up, things slow down or fail. This context includes all messages, files read, command outputs, and tool results. Effective context management is described as \"the most important concept in Claude Code.\"",
+      "source_file": "questions/02-core-concepts/002-what-is-claudes-context-window-size.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -590,6 +610,7 @@
       },
       "correct": "b",
       "explanation": "The statusline metric 'Ctx(u): 45%' shows you've used 45% of your context window. The full statusline format is: `Claude Code | Ctx(u): 45% | Cost: $0.23 | Session: 1h 23m`. Monitoring this helps you know when to use /compact or /clear before context-related issues occur.",
+      "source_file": "questions/02-core-concepts/003-what-does-the-statusline-ctxu-45-indicate.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -614,6 +635,7 @@
       },
       "correct": "b",
       "explanation": "/compact summarizes the conversation, preserving key context while reducing usage by approximately 50%. Use it when running low on context. /clear starts completely fresh, losing all context - use it when changing topics or context is severely bloated. Choose based on whether you need to maintain continuity.",
+      "source_file": "questions/02-core-concepts/004-what-is-the-difference-between-compact-and-clear.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -637,6 +659,7 @@
       },
       "correct": "c",
       "explanation": "Reading large files (5K+ tokens) and multi-file searches (3K+ tokens) consume the most context. A small file costs ~500 tokens, running commands ~1K tokens. Long conversations accumulate over time. To optimize, be specific in queries, use symbol references like \"read the calculateTotal function\" instead of entire files.",
+      "source_file": "questions/02-core-concepts/005-which-action-consumes-the-most-context-tokens.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -659,6 +682,7 @@
       },
       "correct": "b",
       "explanation": "The Last 20% Rule recommends reserving approximately 20% of your context for: multi-file operations at end of session, last-minute corrections, and generating summary/checkpoint documents. This buffer ensures you can complete your work properly even as context fills up.",
+      "source_file": "questions/02-core-concepts/006-what-is-the-last-20-rule-in-context-management.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -682,6 +706,7 @@
       },
       "correct": "b",
       "explanation": "Context poisoning occurs when information from one task contaminates another. Examples include: style bleeding (blue button style applies to unrelated forms), instruction contamination (conflicting rules cause confusion), and temporal confusion (Claude uses outdated file names). Use explicit task boundaries and clarify priorities to prevent it.",
+      "source_file": "questions/02-core-concepts/007-what-is-context-poisoning-also-called-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -706,6 +731,7 @@
       },
       "correct": "b",
       "explanation": "The interaction loop is: 1) DESCRIBE - explain what you need, 2) ANALYZE - Claude explores the codebase, 3) PROPOSE - Claude suggests changes (diff), 4) REVIEW - you read and evaluate, 5) DECIDE - Accept/Reject/Modify, 6) VERIFY - run tests, check behavior, 7) COMMIT - save changes (optional). The key insight: you remain in control throughout.",
+      "source_file": "questions/02-core-concepts/008-what-is-the-7-step-interaction-loop-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.1 The Interaction Loop",
@@ -730,6 +756,7 @@
       },
       "correct": "b",
       "explanation": "Use /execute to exit Plan Mode and begin implementing changes. While in Plan Mode, Claude can only read and analyze - no modifications are allowed. You can also respond to Claude's prompt \"Ready to implement this plan?\" to transition. This staged approach ensures you understand the plan before execution.",
+      "source_file": "questions/02-core-concepts/009-how-do-you-exit-plan-mode-to-start-making-changes.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.3 Plan Mode",
@@ -752,6 +779,7 @@
       },
       "correct": "b",
       "explanation": "OpusPlan uses Opus for planning (with superior reasoning capabilities) and automatically switches to Sonnet for implementation (more cost-efficient). Enable with `/model opusplan`. This provides Opus-quality planning while preserving tokens through Sonnet-speed execution. Particularly valuable for Pro subscribers with limited Opus tokens.",
+      "source_file": "questions/02-core-concepts/010-what-is-opusplan-mode.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.3 Plan Mode",
@@ -775,6 +803,7 @@
       },
       "correct": "b",
       "explanation": "Context depletion symptoms include: shorter responses than usual (warning), forgetting CLAUDE.md instructions (serious), inconsistencies with earlier conversation (critical), errors on code already discussed (critical), and \"I can't access that file\" for files already read (critical). When critical symptoms appear, start a new session immediately.",
+      "source_file": "questions/02-core-concepts/011-what-are-symptoms-of-context-depletion.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -799,6 +828,7 @@
       },
       "correct": "b",
       "explanation": "/rewind reverts file changes made by Claude. It works across multiple files but only on Claude's changes (not manual edits), only within the current session, and does NOT automatically revert git commits. For risky operations, create a git checkpoint first: \"Let's commit what we have before trying this experimental approach.\"",
+      "source_file": "questions/02-core-concepts/012-what-can-rewind-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.4 Rewind",
@@ -822,6 +852,7 @@
       },
       "correct": "c",
       "explanation": "Claude knows: file structure, code content, git state, and project rules (CLAUDE.md). Claude does NOT know: runtime state (can't see running processes), external services (can't access databases directly), your intent (needs clear instructions), and hidden files (respects .gitignore by default). Understanding this mental model helps you communicate effectively.",
+      "source_file": "questions/02-core-concepts/013-what-does-claude-not-have-access-to-regarding.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.5 Mental Model",
@@ -844,6 +875,7 @@
       },
       "correct": "b",
       "explanation": "The Sanity Check Technique verifies Claude loaded your configuration. Add identifiable info to CLAUDE.md (like your name, project name, tech stack), then ask Claude \"What is my name? What project am I working on?\" Correct answers confirm configuration is loaded. For advanced checking, add multiple checkpoints throughout long CLAUDE.md files.",
+      "source_file": "questions/02-core-concepts/014-what-is-the-purpose-of-the-sanity-check-technique.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -867,6 +899,7 @@
       },
       "correct": "b",
       "explanation": "Use XML-structured prompts when requests have 3+ distinct aspects (instruction + context + constraints), when ambiguity causes misunderstanding, when creating reusable templates, or for complex hierarchy. Don't use them for simple one-liner requests or quick typo fixes - the overhead outweighs the benefit. Tags like <instruction>, <context>, <constraints> help Claude understand different aspects.",
+      "source_file": "questions/02-core-concepts/015-when-should-you-use-xml-structured-prompts.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.6 Structured Prompting with XML Tags",
@@ -889,6 +922,7 @@
       },
       "correct": "b",
       "explanation": "The Session Handoff Pattern creates a document to bridge gaps between sessions. It includes: what was accomplished, current state, decisions made, next steps, and context for the next session. Create handoffs at end of work day, before context limit, when switching focus areas, or during interruptions. Store in `claudedocs/handoffs/handoff-YYYY-MM-DD.md`.",
+      "source_file": "questions/02-core-concepts/016-what-is-a-session-handoff-pattern-used-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -912,6 +946,7 @@
       },
       "correct": "b",
       "explanation": "A typical 1-hour session costs $0.10 - $0.50 depending on usage patterns. The guide provides cost budgets: quick task (5-10 min) $0.05-$0.10, feature work (1-2 hours) $0.20-$0.50, deep refactor (half day) $1.00-$2.00. Spending $0.50 to save 30 minutes provides 60x ROI if your time is worth $30/hour - don't over-optimize!",
+      "source_file": "questions/02-core-concepts/017-what-is-the-typical-cost-of-a-1-hour-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.2 Context Management",
@@ -934,6 +969,7 @@
       },
       "correct": "b",
       "explanation": "Auto Plan Mode makes Claude present a plan and wait for explicit user approval before executing ANY tool. Configure via `~/.claude/auto-plan-mode.txt` and launch with `claude --append-system-prompt \"$(cat ~/.claude/auto-plan-mode.txt)\"`. Results in 76% fewer tokens with better results because plans are validated before execution.",
+      "source_file": "questions/02-core-concepts/018-what-is-auto-plan-mode-and-how-do-you-enable-it.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "2.3 Plan Mode",
@@ -959,6 +995,7 @@
       },
       "correct": "b",
       "explanation": "The precedence is: Local (.claude/CLAUDE.md) > Project (/project/CLAUDE.md) > Global (~/.claude/CLAUDE.md). More specific beats more general. Local overrides are personal (gitignored), project settings are shared (committed), and global settings apply to all projects. This hierarchy allows personal preferences to override team conventions when needed.",
+      "source_file": "questions/03-memory-settings/001-what-is-the-correct-precedence-order-for-claudemd.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.4 Precedence Rules",
@@ -984,6 +1021,7 @@
       },
       "correct": "c",
       "explanation": "Team conventions should be stored in `/project/CLAUDE.md` (the project root). This file is committed to git and shared with the team. Local overrides go in `/project/.claude/CLAUDE.md` (gitignored), and personal global preferences go in `~/.claude/CLAUDE.md`. This separation ensures team standards are enforced while allowing personal customization.",
+      "source_file": "questions/03-memory-settings/002-where-should-team-conventions-be-stored-to-be.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
@@ -1008,6 +1046,7 @@
       },
       "correct": "c",
       "explanation": "settings.local.json stores personal permission overrides and is gitignored. It allows you to customize which tools are auto-allowed, denied, or require asking for your personal workflow without affecting team settings. For example, you might allow all git commands while the team requires confirmation for certain operations.",
+      "source_file": "questions/03-memory-settings/003-what-is-the-purpose-of-settingslocaljson.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1033,6 +1072,7 @@
       },
       "correct": "c",
       "explanation": "The `.claude/` folder in your project contains: agents/ (custom agent definitions), commands/ (custom slash commands), hooks/ (event-driven scripts), skills/ (knowledge modules), rules/ (auto-loaded conventions), and settings files. This is your project's Claude Code configuration directory for all extensions.",
+      "source_file": "questions/03-memory-settings/004-which-folder-contains-custom-agents-commands.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.2 The .claude/ Folder Structure",
@@ -1056,6 +1096,7 @@
       },
       "correct": "c",
       "explanation": "Tools in the 'deny' category are blocked completely - Claude cannot use them at all. The three permission behaviors are: 'allow' (auto-approve without asking), 'deny' (block completely), and 'ask' (prompt for confirmation). For example, denying \"Bash(rm -rf *)\" prevents accidental destructive operations.",
+      "source_file": "questions/03-memory-settings/005-what-is-the-permission-behavior-for-tools-listed.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1078,6 +1119,7 @@
       },
       "correct": "b",
       "explanation": "The Single Source of Truth Pattern stores conventions in `/docs/conventions/` (coding-standards.md, architecture.md, testing.md, etc.) and references them from CLAUDE.md, CodeRabbit, and other tools. This prevents conflicts where one tool approves code that another flags. All tools enforce the same standards from one source.",
+      "source_file": "questions/03-memory-settings/006-what-is-the-single-source-of-truth-pattern-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
@@ -1102,6 +1144,7 @@
       },
       "correct": "b",
       "explanation": "Project CLAUDE.md should include: tech stack (frameworks, versions), code conventions (naming, patterns), architecture (folder structure, layers), and common commands (dev, test, lint). This gives Claude project context. Never include API keys or secrets. Keep it concise with examples, and update when conventions change.",
+      "source_file": "questions/03-memory-settings/007-what-should-be-included-in-a-project-level.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
@@ -1126,6 +1169,7 @@
       },
       "correct": "b",
       "explanation": "The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. The space-based syntax is current - colon syntax like 'Bash(git status:*)' is deprecated.",
+      "source_file": "questions/03-memory-settings/008-what-does-the-permission-pattern-bashgit-match.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1149,6 +1193,7 @@
       },
       "correct": "b",
       "explanation": "Dynamic Memory means temporarily modifying CLAUDE.md for specific tasks then restoring it. Techniques include: git stash (stash original, modify, restore), profile library (keep profiles like security-audit.md, debugging.md in ~/.claude/profiles/), or parallel instances (different CLAUDE.md in different worktrees). Switch profiles with a script: `claude-profile security-audit`.",
+      "source_file": "questions/03-memory-settings/009-what-is-dynamic-memory-profile-switching.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1173,6 +1218,7 @@
       },
       "correct": "b",
       "explanation": "Files in `.claude/rules/` are automatically loaded and combined. You can create multiple files like code-conventions.md, git-workflow.md, and architecture.md - all are loaded automatically without manual imports. This allows modular organization of project conventions that Claude will follow.",
+      "source_file": "questions/03-memory-settings/010-what-happens-to-files-in-the-clauderules-directory.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.4 Precedence Rules",
@@ -1197,6 +1243,7 @@
       },
       "correct": "c",
       "explanation": "Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). The .claude/CLAUDE.md file is project memory and should be committed. Files to commit include: agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.",
+      "source_file": "questions/03-memory-settings/011-which-of-these-should-be-gitignored.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.2 The .claude/ Folder Structure",
@@ -1220,6 +1267,7 @@
       },
       "correct": "b",
       "explanation": "The allowedTools configuration in .claude/settings.json or .claude/settings.local.json provides granular control with specific patterns. For example: 'Read(*)' allows all reads, 'Bash(git status *)' allows git status commands, 'Bash(pnpm *)' allows pnpm commands. You can set progressive permission levels from beginner (very restrictive) to advanced. Never use --dangerously-skip-permissions.",
+      "source_file": "questions/03-memory-settings/012-what-does-allowedtools-configuration-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1245,6 +1293,7 @@
       },
       "correct": "b",
       "explanation": "On macOS/Linux, the global config path is ~/.claude/. On Windows, it's %USERPROFILE%\\.claude\\ or C:\\Users\\YourName\\.claude\\. This directory contains your global CLAUDE.md, settings, and can include a profiles/ subdirectory for dynamic memory switching.",
+      "source_file": "questions/03-memory-settings/013-what-is-the-global-config-path-on-macoslinux.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "1.1 Installation",
@@ -1268,6 +1317,7 @@
       },
       "correct": "b",
       "explanation": "The three progressive permission levels are: Beginner (very restrictive - only Read, Grep, Glob), Intermediate (adds Bash git/pnpm, TodoRead/Write), and Advanced (adds Edit, Write, WebFetch, Task). Start restrictive and expand as you gain confidence. This prevents accidents while learning.",
+      "source_file": "questions/03-memory-settings/014-what-are-the-three-levels-of-progressive.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1290,6 +1340,7 @@
       },
       "correct": "b",
       "explanation": "Never use --dangerously-skip-permissions because it can lead to destructive operations. Horror stories include: `rm -rf node_modules` followed by `rm -rf .` (path error), `git push --force` to main unintentionally, `DROP TABLE users` in poorly generated migrations, and deletion of .env files with credentials. Always prefer granular allowedTools instead.",
+      "source_file": "questions/03-memory-settings/015-why-should-you-never-use-dangerously-skip.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1314,6 +1365,7 @@
       },
       "correct": "b",
       "explanation": "Global CLAUDE.md (~/.claude/CLAUDE.md) should contain personal preferences that apply to all your projects: communication style (be concise, use code examples), preferred tools (TypeScript over JavaScript, pnpm over npm), and safety rules (always run tests, never force push). Project-specific settings go in project CLAUDE.md.",
+      "source_file": "questions/03-memory-settings/016-what-should-a-global-claudemd-contain.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.1 Memory Files (CLAUDE.md)",
@@ -1337,6 +1389,7 @@
       },
       "correct": "b",
       "explanation": "settings.json stores hook configurations and is committed to the repo for team sharing. It defines hooks for PreToolUse, PostToolUse, UserPromptSubmit events - specifying matchers and hook scripts. Personal permission overrides go in settings.local.json (gitignored). This separation allows team automation while respecting personal preferences.",
+      "source_file": "questions/03-memory-settings/017-what-is-stored-in-settingsjson-not.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "3.3 Settings & Permissions",
@@ -1360,6 +1413,7 @@
       },
       "correct": "b",
       "explanation": "The Claude Code guide extends verification loops to 8 comprehensive domains for quality checks:\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\nNote: Boris Cherny (Claude Code creator) emphasizes verification loops with 4 core methods: CLI tools (bash), Backend (tests), Frontend (browser), Mobile (simulator). The 8-domain taxonomy is the guide's expanded framework (v3.13.0).\n\nCLAUDE.md should define which domains to check for each type of change.",
+      "source_file": "questions/03-memory-settings/018-how-many-verification-domains-does-the-guide.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Verification Loops",
@@ -1384,6 +1438,7 @@
       },
       "correct": "b",
       "explanation": "The Fresh Context Pattern means starting a new Claude Code session between exploration and implementation phases. During exploration, context accumulates noise (dead ends, rejected approaches, debugging output). A fresh session gives Claude clean context focused purely on implementation, improving output quality.",
+      "source_file": "questions/03-memory-settings/019-what-is-the-fresh-context-pattern-and-when-should.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Fresh Context Pattern",
@@ -1409,6 +1464,7 @@
       },
       "correct": "b",
       "explanation": "Agents are specialized sub-processes (AI personas) that Claude can delegate tasks to. They encapsulate domain expertise, like a security reviewer knowing OWASP Top 10 or a backend architect understanding API design. Think of them as \"expert consultants\" - instead of explaining everything in your prompt, you invoke an agent that already has that expertise.",
+      "source_file": "questions/04-agents/001-what-are-agents-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.1 What Are Agents",
@@ -1434,6 +1490,7 @@
       },
       "correct": "b",
       "explanation": "Custom agent files should be stored in `.claude/agents/` within your project directory. They are markdown files with YAML frontmatter. For example: `.claude/agents/backend-architect.md`, `.claude/agents/code-reviewer.md`. These can be committed to version control to share with your team.",
+      "source_file": "questions/04-agents/002-where-should-custom-agent-files-be-stored.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
@@ -1458,6 +1515,7 @@
       },
       "correct": "b",
       "explanation": "Only `name` and `description` are required in agent frontmatter. Optional fields include: model (sonnet default, opus, or haiku), tools (comma-separated list), skills (to inherit), and disallowedTools. The description is crucial - it determines when Claude auto-activates the agent, so make it clear and specific.",
+      "source_file": "questions/04-agents/003-what-fields-are-required-in-an-agents-yaml.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
@@ -1483,6 +1541,7 @@
       },
       "correct": "b",
       "explanation": "Agents encapsulate expertise. Without agents, you'd write: \"Review this code for security issues, focusing on OWASP Top 10, checking for SQL injection, XSS, CSRF...\" With agents: \"Use the security-reviewer agent to audit this code.\" The agent already has that expertise, making your prompts shorter and more consistent.",
+      "source_file": "questions/04-agents/004-what-is-the-advantage-of-using-agents-over-direct.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.1 What Are Agents",
@@ -1506,6 +1565,7 @@
       },
       "correct": "c",
       "explanation": "Use opus for complex reasoning and architecture tasks. Model selection guidelines: haiku (fast, low cost) for quick tasks and simple changes; sonnet (balanced, default) for most tasks; opus (slow, high cost) for complex reasoning, architecture decisions, and critical security reviews. Match the model to the task's complexity.",
+      "source_file": "questions/04-agents/005-which-model-should-you-use-for-agents-performing.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
@@ -1528,6 +1588,7 @@
       },
       "correct": "b",
       "explanation": "Tool SEO optimizes the agent's description field to improve auto-activation. Techniques include: using \"use PROACTIVELY\" to encourage automatic activation, listing explicit trigger keywords, describing specific contexts, and adding short nicknames. A good description: \"Security code reviewer - use PROACTIVELY when: reviewing auth code, analyzing API endpoints... Triggers: security, auth, vulnerability, OWASP\"",
+      "source_file": "questions/04-agents/006-what-is-tool-seo-in-agent-design.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1552,6 +1613,7 @@
       },
       "correct": "b",
       "explanation": "Always prefer specialization over generalization. Good: separate agents for backend-architect (API, database, performance), security-reviewer (OWASP, auth, encryption), test-engineer (test strategy, coverage, TDD). Bad: one full-stack-expert that \"does everything (poorly)\". Specialized agents have focused context and domain-specific expertise.",
+      "source_file": "questions/04-agents/007-what-is-the-best-practice-for-agent-design.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.4 Best Practices",
@@ -1575,6 +1637,7 @@
       },
       "correct": "b",
       "explanation": "Agents inherit skills using the `skills` field in frontmatter. For example: `skills: [security-guardian]`. This composes expertise without duplication - instead of copying OWASP knowledge into every security-related agent, they all inherit from the security-guardian skill. This follows DRY principles for knowledge organization.",
+      "source_file": "questions/04-agents/008-how-can-agents-inherit-knowledge-from-skills.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.4 Best Practices",
@@ -1597,6 +1660,7 @@
       },
       "correct": "b",
       "explanation": "The 7-Parallel-Task Method launches 7 specialized sub-agents in parallel: 1) Components, 2) Styles, 3) Tests, 4) Types, 5) Hooks, 6) Integration, 7) Config. All run in parallel, then results are consolidated. This dramatically speeds up feature implementation by parallelizing independent work streams.",
+      "source_file": "questions/04-agents/009-what-is-the-7-parallel-task-method.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1620,6 +1684,7 @@
       },
       "correct": "c",
       "explanation": "Use lightweight agents (<3K tokens, <1s init time) for frequent tasks and workers. Golden Rule: \"A lightweight agent used 100x > A heavy agent used 10x.\" Agent weight categories: Lightweight (<3K tokens) for frequent tasks, Medium (10-15K) for analysis/reviews, Heavy (25K+) for architecture/full audits. Match weight to task frequency.",
+      "source_file": "questions/04-agents/010-what-is-the-recommended-agent-weight-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1642,6 +1707,7 @@
       },
       "correct": "c",
       "explanation": "The recommended pattern is: Sonnet as orchestrator (coordinates), Haiku workers (parallel execution), Sonnet validator (final check). This is 2-2.5x cheaper than using Opus everywhere with equivalent quality for 90% of tasks. For example, refactoring 100 files: Sonnet analyzes and plans, Haiku does parallel edits, Sonnet validates - saving 80-90% cost.",
+      "source_file": "questions/04-agents/011-in-multi-agent-orchestration-what-model.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1665,6 +1731,7 @@
       },
       "correct": "b",
       "explanation": "An agent's output format should specify structured deliverables. For example, a code reviewer agent outputs: Summary, Critical Issues (Must Fix) with file:line references, Warnings (Should Fix), Suggestions (Nice to Have), and Positive Notes. Clear output format ensures consistent, actionable results across all invocations.",
+      "source_file": "questions/04-agents/012-what-should-an-agents-output-format-section.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.5 Agent Examples",
@@ -1689,6 +1756,7 @@
       },
       "correct": "b",
       "explanation": "The disallowedTools field blocks specific tools from being used by the agent. For example, a code reviewer agent might have `disallowedTools: [WebSearch]` to ensure it focuses on the actual code rather than searching the web. This provides security boundaries and focuses the agent on its core purpose.",
+      "source_file": "questions/04-agents/013-what-is-the-purpose-of-the-disallowedtools-field.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.2 Creating Custom Agents",
@@ -1711,6 +1779,7 @@
       },
       "correct": "b",
       "explanation": "Split Role Sub-Agents provide multi-perspective analysis in parallel. Process: 1) Activate Plan Mode (thinking enabled by default in Opus 4.5), 2) Ask \"What expert roles would analyze this?\", 3) Select roles (e.g., Security Expert, Senior Dev, Code Reviewer), 4) Run parallel analysis from each perspective, 5) Consolidate reports into recommendations. Great for comprehensive code and UX reviews.",
+      "source_file": "questions/04-agents/014-what-is-the-split-role-sub-agents-pattern.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1734,6 +1803,7 @@
       },
       "correct": "b",
       "explanation": "Avoid parallel execution for destructive (write) operations that are dependent on each other. The decision matrix: Independent + Non-destructive = Parallel (max efficiency); Independent + Destructive = Sequential with Plan Mode first; Dependent operations = Sequential (order matters). Parallel writes risk conflicts if files share imports/exports.",
+      "source_file": "questions/04-agents/015-when-should-parallel-execution-of-agents-be.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.6 Advanced Agent Patterns",
@@ -1758,6 +1828,7 @@
       },
       "correct": "b",
       "explanation": "A systematic Debugger agent follows: 1) Reproduce - confirm the issue exists, 2) Isolate - narrow down to smallest reproducible case, 3) Analyze - read code, check logs, trace execution, 4) Hypothesize - form theories about cause, 5) Test - verify hypothesis with minimal changes, 6) Fix - implement solution, 7) Verify - confirm fix works without breaking other things. Never guess - always verify.",
+      "source_file": "questions/04-agents/016-what-does-a-debugger-agents-methodology-typically.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.5 Agent Examples",
@@ -1781,6 +1852,7 @@
       },
       "correct": "b",
       "explanation": "\"Backend stuff\" is a bad description - it's too vague to help Claude know when to activate the agent. Good descriptions are specific: \"Use when designing APIs, reviewing database schemas, or optimizing backend performance\" or \"Security code reviewer - use PROACTIVELY when reviewing auth code.\" Clear activation triggers improve agent utilization.",
+      "source_file": "questions/04-agents/017-what-is-an-example-of-a-bad-agent-description.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.4 Best Practices",
@@ -1803,6 +1875,7 @@
       },
       "correct": "c",
       "explanation": "CLAUDE.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: CLAUDE.md costs context tokens on every session, Skills save tokens but may miss activations. Use CLAUDE.md for critical behaviors, Skills for optional capabilities.",
+      "source_file": "questions/04-agents/018-what-is-the-invocation-reliability-difference.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "AGENTS.md vs Skills Evaluation",
@@ -1828,6 +1901,7 @@
       },
       "correct": "b",
       "explanation": "Skills are knowledge packages that agents can inherit. While agents are specialized roles (task-focused), skills are reusable knowledge modules (domain-focused). Multiple agents can inherit the same skill, avoiding duplication. For example, both a code-reviewer and security-auditor agent can inherit the security-guardian skill.",
+      "source_file": "questions/05-skills/001-what-is-the-relationship-between-skills-and-agents.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.1 Understanding Skills",
@@ -1853,6 +1927,7 @@
       },
       "correct": "b",
       "explanation": "Skills live in `.claude/skills/{skill-name}/` directories within your project. Each skill has its own folder containing at minimum a SKILL.md file, with optional reference.md, checklists/, examples/, and scripts/ subdirectories. This organization keeps knowledge modular and reusable.",
+      "source_file": "questions/05-skills/002-where-should-skill-files-be-stored.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -1877,6 +1952,7 @@
       },
       "correct": "c",
       "explanation": "SKILL.md is the required main file in every skill folder. Optional files include: reference.md (detailed documentation), checklists/ (verification lists), examples/ (code patterns with good/bad examples), and scripts/ (helper scripts). SKILL.md contains the frontmatter and core instructions for the skill.",
+      "source_file": "questions/05-skills/003-what-is-the-required-file-in-a-skill-folder.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -1901,6 +1977,7 @@
       },
       "correct": "b",
       "explanation": "The three concepts have distinct purposes: Skills are knowledge modules inherited by agents (like OWASP security knowledge), Agents are specialized roles that Claude delegates tasks to (like a security reviewer), and Commands are process workflows invoked with slash commands (like /tech:commit). They can be combined: agents inherit skills and execute commands.",
+      "source_file": "questions/05-skills/004-what-is-the-key-difference-between-skills-agents.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.1 Understanding Skills",
@@ -1924,6 +2001,7 @@
       },
       "correct": "b",
       "explanation": "The `context` field controls execution context: 'fork' means isolated context (the skill runs independently), 'inherit' means shared context (the skill shares context with the calling agent). Use fork for skills that need clean state, inherit for skills that need access to conversation history and loaded files.",
+      "source_file": "questions/05-skills/005-what-does-the-context-field-in-skillmd.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -1948,6 +2026,7 @@
       },
       "correct": "b",
       "explanation": "Skills follow DRY (Don't Repeat Yourself) principles. Without skills, you'd duplicate security knowledge in Agent A, B, and C. With skills, the security-guardian skill is the single source - all agents inherit it, and updates propagate everywhere. This ensures consistency and simplifies maintenance.",
+      "source_file": "questions/05-skills/006-why-use-skills-instead-of-duplicating-knowledge.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.1 Understanding Skills",
@@ -1971,6 +2050,7 @@
       },
       "correct": "b",
       "explanation": "Good skills are: reusable across multiple agents, domain-focused (not too broad), contain reference material and checklists, and include verification steps. Bad skills are: specific to only one agent, too broad in scope, just instructions without reference material, and missing verification checklists.",
+      "source_file": "questions/05-skills/007-what-makes-a-good-skill-versus-a-bad-skill.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.1 Understanding Skills",
@@ -1993,6 +2073,7 @@
       },
       "correct": "b",
       "explanation": "The TDD skill follows: 1) RED - write a failing test for desired behavior BEFORE code, 2) GREEN - write MINIMUM code to make the test pass, 3) REFACTOR - improve implementation while keeping tests green, then repeat. This cycle ensures tests actually verify behavior by requiring failure first, then incremental improvement.",
+      "source_file": "questions/05-skills/008-what-is-the-tdd-test-driven-development-skills.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.4 Skill Examples",
@@ -2016,6 +2097,7 @@
       },
       "correct": "b",
       "explanation": "A Security Guardian skill should include detailed checklists for each OWASP Top 10 category: A01 Broken Access Control (check authorization, IDOR, privilege escalation), A02 Cryptographic Failures (hardcoded secrets, TLS, password hashing), A03 Injection (SQL, NoSQL, XSS), etc. Each category should have specific verification items with checkboxes.",
+      "source_file": "questions/05-skills/009-what-should-a-security-guardian-skill-include-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.4 Skill Examples",
@@ -2040,6 +2122,7 @@
       },
       "correct": "b",
       "explanation": "The `agent` field indicates whether the skill is 'specialist' (domain-focused, deep expertise in one area) or 'general' (broad, applicable across domains). Specialist skills like security-guardian provide deep domain knowledge, while general skills might provide widely-applicable patterns or utilities.",
+      "source_file": "questions/05-skills/010-what-is-the-agent-field-in-skillmd-frontmatter.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -2062,6 +2145,7 @@
       },
       "correct": "b",
       "explanation": "The `allowed-tools` field specifies which tools the skill can use when activated. For example, a security-guardian skill might have `allowed-tools: Read, Grep, Bash` - allowing it to read files, search for patterns, and run security scanning commands, but not modify files. This provides security boundaries for each skill.",
+      "source_file": "questions/05-skills/011-what-does-the-allowed-tools-field-in-skill.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -2085,6 +2169,7 @@
       },
       "correct": "b",
       "explanation": "A skill directory can contain: SKILL.md (required), reference.md (detailed documentation), checklists/ (verification lists like security.md, performance.md), examples/ (code patterns like good-example.ts, bad-example.ts), and scripts/ (helper scripts like audit.sh). This rich structure supports comprehensive domain knowledge.",
+      "source_file": "questions/05-skills/012-what-optional-folders-can-a-skill-directory.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.2 Creating Skills",
@@ -2109,6 +2194,7 @@
       },
       "correct": "c",
       "explanation": "The Security Guardian skill shows argon2 or bcrypt as secure password hashing. BAD examples explicitly listed: md5(password) and sha1(password) - these are cryptographically broken for password storage. Good pattern: `const hashedPassword = await hash(password)` using argon2 library. Always verify password with `await verify(hashedPassword, inputPassword)`.",
+      "source_file": "questions/05-skills/013-in-the-security-guardian-skill-what-is-an-example.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.4 Skill Examples",
@@ -2132,6 +2218,7 @@
       },
       "correct": "b",
       "explanation": "AAA stands for Arrange, Act, Assert: 1) Arrange - set up test data and preconditions, 2) Act - execute the code being tested, 3) Assert - verify the result matches expectations. Example: Arrange items array, Act by calling calculateTotal(items), Assert that total equals expected value. This structure makes tests readable and maintainable.",
+      "source_file": "questions/05-skills/014-what-is-the-aaa-pattern-in-tdd-testing.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.4 Skill Examples",
@@ -2154,6 +2241,7 @@
       },
       "correct": "c",
       "explanation": "The zebbern/claude-code-guide repository contains 29 cybersecurity-focused skills covering: penetration testing (SQL injection, XSS, IDOR), security tools (Metasploit, Burp Suite, SQLMap), infrastructure security (AWS, Cloud, Network), and methodologies (ethical hacking, pentest checklists). Important: these should be tested thoroughly and used only with proper authorization.",
+      "source_file": "questions/05-skills/015-what-community-skill-repository-focuses-on.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.5 Community Skill Repositories",
@@ -2178,6 +2266,7 @@
       },
       "correct": "b",
       "explanation": "Useful skills include: methodology steps (clear process to follow), checklists (verification items with checkboxes), good/bad code examples (showing correct patterns and anti-patterns), and reference material. This combination provides both theoretical knowledge and practical guidance that agents can apply directly to tasks.",
+      "source_file": "questions/05-skills/016-what-should-skills-include-to-be-most-useful.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.3 Skill Template",
@@ -2201,6 +2290,7 @@
       },
       "correct": "b",
       "explanation": "Reference skills in an agent's frontmatter using the `skills` array: `skills: [security-guardian, tdd]`. This makes the agent inherit all knowledge from those skills. You can reference multiple skills, and the agent combines their expertise. The skill name matches the folder name in `.claude/skills/`.",
+      "source_file": "questions/05-skills/017-how-do-you-reference-a-skill-in-an-agents.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.4 Best Practices",
@@ -2223,6 +2313,7 @@
       },
       "correct": "b",
       "explanation": "Community cybersecurity skills come with important disclaimers: test thoroughly before using in production assessments, ensure you have proper authorization before penetration testing, review and validate against your organization's security policies, use only in legal contexts with written permission from system owners, and contribute back if you find issues. Verification is essential for any security tooling.",
+      "source_file": "questions/05-skills/018-what-disclaimer-applies-to-community.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "5.5 Community Skill Repositories",
@@ -2247,6 +2338,7 @@
       },
       "correct": "b",
       "explanation": "Custom commands are placed in `.claude/commands/` within your project directory.\n\nThis allows project-specific commands that can be committed with your codebase.\nThe global directory `~/.claude/` is for personal settings, not project commands.\n\nCommands are organized in subdirectories:\n- `.claude/commands/tech/` for development workflows\n- `.claude/commands/product/` for product workflows",
+      "source_file": "questions/06-commands/001-where-should-custom-commands-be-placed-to-make.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
@@ -2272,6 +2364,7 @@
       },
       "correct": "c",
       "explanation": "Custom commands use the format `/folder:filename` (without the .md extension).\n\nSo `.claude/commands/tech/commit.md` becomes `/tech:commit`.\nThis naming convention allows organizing commands by domain while keeping invocation intuitive.\n\nExamples:\n- `.claude/commands/tech/pr.md` -> `/tech:pr`\n- `.claude/commands/product/scope.md` -> `/product:scope`",
+      "source_file": "questions/06-commands/002-how-do-you-invoke-a-custom-command-named-commitmd.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
@@ -2296,6 +2389,7 @@
       },
       "correct": "c",
       "explanation": "The `$ARGUMENTS` variable contains any text passed after the command invocation.\n\nFor example, when you run `/tech:deploy production`, the variable `$ARGUMENTS`\nwill contain `production`.\n\nThis enables dynamic commands that can adapt based on user input.\nCommands should document how they handle arguments and what happens if none are provided.",
+      "source_file": "questions/06-commands/003-what-variable-is-used-in-command-files-to-access.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.2 Creating Custom Commands",
@@ -2321,6 +2415,7 @@
       },
       "correct": "c",
       "explanation": "The `/help` command displays all available commands, both built-in and custom.\n\nBuilt-in commands include:\n- `/clear` - Clear conversation\n- `/compact` - Summarize context\n- `/status` - Show session info\n- `/plan` - Enter Plan Mode\n- `/rewind` - Undo changes\n\nCustom commands from `.claude/commands/` are also listed here.",
+      "source_file": "questions/06-commands/004-which-built-in-command-shows-all-available.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.1 Slash Commands",
@@ -2345,6 +2440,7 @@
       },
       "correct": "b",
       "explanation": "A complete command template should include:\n\n1. **Purpose** - Brief description of what the command does\n2. **Process** - Step-by-step instructions Claude should follow\n3. **Arguments** - How to handle $ARGUMENTS (if provided/not provided)\n4. **Output Format** - Expected structure of the output\n5. **Examples** - Concrete usage examples\n6. **Error Handling** - How to handle edge cases and failures\n\nThis comprehensive structure ensures consistent, reliable command execution.",
+      "source_file": "questions/06-commands/005-what-sections-should-a-well-structured-command.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.3 Command Template",
@@ -2370,6 +2466,7 @@
       },
       "correct": "c",
       "explanation": "The `/plan` command enters Plan Mode, where Claude can analyze and explore\nthe codebase without making any changes.\n\nThis is ideal for:\n- Understanding unfamiliar codebases\n- Architectural analysis before changes\n- Safe exploration of risky operations\n\nUse `/execute` to exit Plan Mode when ready to make changes.",
+      "source_file": "questions/06-commands/006-which-command-enters-plan-mode-for-safe-read-only.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.1 Slash Commands",
@@ -2394,6 +2491,7 @@
       },
       "correct": "b",
       "explanation": "The guide recommends Conventional Commits format: `type(scope): description`\n\nCommon types:\n- `feat`: New feature\n- `fix`: Bug fix\n- `refactor`: Code restructuring\n- `docs`: Documentation\n- `test`: Test changes\n- `chore`: Maintenance\n\nThis provides consistent, parseable commit history useful for changelogs and releases.",
+      "source_file": "questions/06-commands/007-in-the-commit-command-example-what-is-the.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.4 Command Examples",
@@ -2416,6 +2514,7 @@
       },
       "correct": "b",
       "explanation": "The Problem Framer command uses the \"5 Whys Analysis\" technique.\n\nThis involves asking \"Why?\" five times to drill down to the root cause:\n- Why 1: First answer\n- Why 2: Deeper answer\n- Why 3: Even deeper\n- Why 4: Getting to root\n- Why 5: Root cause\n\nThe command then reframes the problem as: \"How might we [action] for [user] so that [outcome]?\"",
+      "source_file": "questions/06-commands/008-what-technique-does-the-problem-framer-command.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.4 Command Examples",
@@ -2440,6 +2539,7 @@
       },
       "correct": "b",
       "explanation": "The `/rewind` command undoes Claude's recent changes in the current session.\n\nKey points:\n- Works only for uncommitted changes made by Claude\n- Does NOT create git commits\n- Use when Claude made a mistake and you want to try a different approach\n\nFor committed changes, use `git revert` instead.\nThe keyboard shortcut `Esc×2` (double-tap Escape) also triggers rewind.",
+      "source_file": "questions/06-commands/009-what-does-the-rewind-command-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.1 Slash Commands",
@@ -2463,6 +2563,7 @@
       },
       "correct": "c",
       "explanation": "According to the PR command example, if the user is not on a feature branch,\nthe command should WARN: \"Create a feature branch first\".\n\nSimilarly, if the working directory is dirty, it should ASK: \"Commit changes first?\"\n\nGood command design includes clear error handling that:\n- Warns users about prerequisites\n- Suggests corrective actions\n- Prevents accidental mistakes",
+      "source_file": "questions/06-commands/010-what-should-a-pr-commands-error-handling-do-if.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.4 Command Examples",
@@ -2485,6 +2586,7 @@
       },
       "correct": "b",
       "explanation": "The recommended PR workflow order is:\n\n1. `git status` - Verify clean working directory\n2. `git branch` - Confirm on feature branch\n3. `git log main..HEAD` - Review all commits\n4. `git diff main...HEAD` - See all changes vs main\n5. `git push -u origin [branch]` - Push if not already pushed\n6. `gh pr create` - Create the PR\n\nThis thorough process ensures quality PRs with proper context.",
+      "source_file": "questions/06-commands/011-what-is-the-recommended-order-of-git-commands-in.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "6.4 Command Examples",
@@ -2509,6 +2611,7 @@
       },
       "correct": "b",
       "explanation": "The `@filename` syntax references a file in your conversation with Claude.\n\nQuick actions:\n- `@file` - Reference a file\n- `!command` - Run a shell command\n- `Ctrl+C` - Cancel operation\n- `Ctrl+R` - Retry last\n\nThis allows you to easily bring specific files into context for Claude to analyze.",
+      "source_file": "questions/06-commands/012-how-do-you-reference-a-file-when-talking-to.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.1 Commands Table",
@@ -2533,6 +2636,7 @@
       },
       "correct": "c",
       "explanation": "Hook exit codes have specific meanings:\n\n- **Exit code 0**: Success - Allow the operation to proceed\n- **Exit code 2**: Block - Prevent the operation from executing\n- **Other codes**: Error - Log the error and continue\n\nThis is critical for security hooks that need to prevent dangerous commands.\nFor example, a hook that detects `rm -rf /` should `exit 2` to block execution.",
+      "source_file": "questions/07-hooks/001-what-exit-code-should-a-hook-return-to-block-an.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2558,6 +2662,7 @@
       },
       "correct": "b",
       "explanation": "The `PreToolUse` event fires before any tool runs.\n\nCommon event types:\n- **PreToolUse**: Before tool execution (ideal for security validation)\n- **PostToolUse**: After tool execution (for formatting, logging)\n- **UserPromptSubmit**: When user sends a message (context enrichment)\n- **Notification**: When Claude sends a notification\n- **SessionStart/SessionEnd**: Session lifecycle events\n- **Stop**: When user interrupts",
+      "source_file": "questions/07-hooks/002-which-hook-event-fires-before-a-tool-is-executed.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.1 The Event System",
@@ -2582,6 +2687,7 @@
       },
       "correct": "b",
       "explanation": "Hooks receive JSON data on stdin with information about the event.\n\nExample input structure:\n```json\n{\n  \"tool_name\": \"Bash\",\n  \"tool_input\": {\n    \"command\": \"git status\"\n  },\n  \"session_id\": \"abc123\",\n  \"cwd\": \"/project\"\n}\n```\n\nHooks typically parse this with: `INPUT=$(cat)` followed by `jq` for JSON extraction.",
+      "source_file": "questions/07-hooks/003-how-do-hooks-receive-input-data-from-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2606,6 +2712,7 @@
       },
       "correct": "b",
       "explanation": "The `matcher` field is a regex pattern that determines which tools trigger the hook.\n\nExample configuration:\n```json\n{\n  \"matcher\": \"Bash|Edit|Write\",\n  \"hooks\": [{\"type\": \"command\", \"command\": \"./hooks/security-check.sh\"}]\n}\n```\n\nThis hook would trigger for Bash, Edit, or Write tools.\nYou can match specific tools or use `.*` to match all tools.",
+      "source_file": "questions/07-hooks/004-in-the-hook-registration-settingsjson-what-does.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2628,6 +2735,7 @@
       },
       "correct": "c",
       "explanation": "The `UserPromptSubmit` event is ideal for context enrichment.\n\nUse cases:\n- **UserPromptSubmit**: Add context (git status, current branch, staged files)\n- **PreToolUse**: Security validation (block dangerous commands)\n- **PostToolUse**: Formatting, logging, quality checks\n- **Notification**: Sound alerts, desktop notifications\n\nThe context enricher example adds git branch, last commit, and staged/unstaged info.",
+      "source_file": "questions/07-hooks/005-what-is-the-best-use-case-for-the.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.3 Hook Templates",
@@ -2652,6 +2760,7 @@
       },
       "correct": "b",
       "explanation": "Exit code 0 means success and allows the operation to proceed.\n\nThe exit code system:\n- **0**: Success - Allow operation\n- **2**: Block - Prevent operation\n- **Other**: Error - Log and continue\n\nAlways end your hooks with `exit 0` if you want to allow the operation,\nor `exit 2` to block it.",
+      "source_file": "questions/07-hooks/006-what-exit-code-allows-an-operation-to-proceed.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2675,6 +2784,7 @@
       },
       "correct": "b",
       "explanation": "Security hooks should block dangerous operations like:\n\n- `rm -rf /` or `rm -rf ~` - Filesystem destruction\n- `sudo rm` - Privileged deletion\n- `git push --force origin main` - Force push to protected branches\n- `npm publish` - Accidental package publishing\n- `> /dev/sda` or `dd if=` - Direct disk operations\n\nSafe commands like `git status`, `npm test`, `ls` should be allowed.",
+      "source_file": "questions/07-hooks/007-which-commands-should-a-security-hook-typically.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.4 Security Hooks",
@@ -2697,6 +2807,7 @@
       },
       "correct": "b",
       "explanation": "Hooks return JSON on stdout with specific fields:\n\n```json\n{\n  \"systemMessage\": \"Message shown to Claude\",\n  \"hookSpecificOutput\": {\n    \"additionalContext\": \"Extra information\"\n  }\n}\n```\n\n- `systemMessage`: Displayed to Claude as context\n- `hookSpecificOutput`: Additional structured data\n\nThis allows hooks to provide context that Claude can use in its responses.",
+      "source_file": "questions/07-hooks/008-what-json-structure-should-a-hook-return-to-send.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2720,6 +2831,7 @@
       },
       "correct": "c",
       "explanation": "The guide recommends choosing the right tool:\n\n**Use Bash scripts when:**\n- Tasks are deterministic (create branch, push)\n- Pattern-based (check for secrets with regex)\n- Fast, predictable, no token cost\n\n**Use AI Agents when:**\n- Interpretation is needed (code review quality)\n- Context-dependent decisions\n- Understanding and judgment required\n\nRule: \"If you can write a regex for it, use a bash script.\"",
+      "source_file": "questions/07-hooks/009-what-is-the-recommended-approach-for-tasks-that.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.1 The Event System",
@@ -2744,6 +2856,7 @@
       },
       "correct": "b",
       "explanation": "The `PostToolUse` event fires after any tool completes execution.\n\nCommon use cases for PostToolUse:\n- Auto-formatting code after edits\n- Running linters after file changes\n- Logging tool usage for auditing\n- Triggering tests after code changes\n\nThe Auto-Formatter template uses PostToolUse to run Prettier after Edit/Write operations.",
+      "source_file": "questions/07-hooks/010-which-hook-event-fires-after-a-tool-has-finished.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.1 The Event System",
@@ -2766,6 +2879,7 @@
       },
       "correct": "b",
       "explanation": "Test hooks by piping JSON input and checking the exit code:\n\n```bash\n# Test with a blocked command\necho '{\"tool_name\":\"Bash\",\"tool_input\":{\"command\":\"rm -rf /\"}}' | ./hooks/security-blocker.sh\necho \"Exit code: $?\"  # Should be 2\n\n# Test with a safe command\necho '{\"tool_name\":\"Bash\",\"tool_input\":{\"command\":\"git status\"}}' | ./hooks/security-blocker.sh\necho \"Exit code: $?\"  # Should be 0\n```\n\nThis ensures your hook correctly blocks dangerous commands before deployment.",
+      "source_file": "questions/07-hooks/011-how-do-you-test-a-security-hook-before-deploying.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.4 Security Hooks",
@@ -2789,6 +2903,7 @@
       },
       "correct": "b",
       "explanation": "Windows hooks should use the full PowerShell invocation:\n\n```json\n{\n  \"type\": \"command\",\n  \"command\": \"powershell -ExecutionPolicy Bypass -File .claude/hooks/security-check.ps1\"\n}\n```\n\nThis bypasses the default execution policy that might block script execution.\nBatch files (.cmd) can also be used as an alternative for simpler hooks.",
+      "source_file": "questions/07-hooks/012-in-windows-how-should-hooks-be-invoked-to-avoid.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.3 Hook Templates",
@@ -2811,6 +2926,7 @@
       },
       "correct": "c",
       "explanation": "The activity logger hook stores logs in JSONL format (JSON Lines).\n\nKey features:\n- Logs to `~/.claude/logs/activity-YYYY-MM-DD.jsonl`\n- Each entry contains timestamp, tool name, and session ID\n- Auto-cleanup of logs older than 7 days\n- Uses `jq` for JSON construction\n\nJSONL is ideal for log files as each line is a valid JSON object,\nmaking it easy to append and parse.",
+      "source_file": "questions/07-hooks/013-what-does-the-activity-logger-hook-example-use-to.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.5 Hook Examples",
@@ -2834,6 +2950,7 @@
       },
       "correct": "b",
       "explanation": "The example hook configuration shows a timeout of 5000ms (5 seconds).\n\n```json\n{\n  \"type\": \"command\",\n  \"command\": \".claude/hooks/security-check.sh\",\n  \"timeout\": 5000\n}\n```\n\nThis prevents hooks from blocking Claude Code indefinitely.\nFor longer operations like formatting, you might increase this to 10000ms.",
+      "source_file": "questions/07-hooks/014-what-is-the-default-timeout-for-hooks-in-the.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "7.2 Creating Hooks",
@@ -2857,6 +2974,7 @@
       },
       "correct": "b",
       "explanation": "Since Claude Code v2.1.0, hooks support `async: true` in their configuration. This makes the hook fire without blocking Claude's execution. Useful for logging, notifications, or analytics hooks where you don't need to wait for the result before continuing.",
+      "source_file": "questions/07-hooks/015-what-configuration-parameter-makes-a-hook-run.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Hook Execution Model",
@@ -2879,6 +2997,7 @@
       },
       "correct": "b",
       "explanation": "Async hooks trade control for speed:\n\n1. **No exit code feedback** - Can't block Claude based on success/failure\n2. **No additionalContext** - Can't inject context back into the conversation\n3. **No blocking capability** - Fire-and-forget only\n\nUse async for non-critical operations (logging, telemetry). Use sync for security gates, formatting, and validation.",
+      "source_file": "questions/07-hooks/016-what-are-the-3-limitations-of-async-hooks.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Hook Execution Model",
@@ -2903,6 +3022,7 @@
       },
       "correct": "b",
       "explanation": "MCP stands for Model Context Protocol.\n\nIt is a standard for connecting AI models to external tools and data sources.\nMCP enables Claude Code to extend beyond built-in tools by connecting to:\n- Semantic code analysis (Serena)\n- Documentation lookup (Context7)\n- Database queries (Postgres)\n- Browser automation (Playwright)",
+      "source_file": "questions/08-mcp-servers/001-what-does-mcp-stand-for-in-the-context-of-claude.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.1 What is MCP",
@@ -2927,6 +3047,7 @@
       },
       "correct": "c",
       "explanation": "Serena provides semantic code analysis with tools like `find_referencing_symbols`.\n\nSerena tools include:\n- `find_symbol` - Find functions, classes, methods by name\n- `get_symbols_overview` - Get file structure overview\n- `find_referencing_symbols` - Find all usages of a symbol\n- `search_for_pattern` - Regex search across codebase\n\nUse Serena for deep code understanding and symbol-level analysis.",
+      "source_file": "questions/08-mcp-servers/002-which-mcp-server-should-you-use-to-find-all.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
@@ -2951,6 +3072,7 @@
       },
       "correct": "b",
       "explanation": "Context7 is designed for accessing official library documentation.\n\nUse Context7 when:\n- Learning new libraries\n- Finding correct API usage\n- Checking official patterns\n\nFor example, \"How does React useEffect work?\" should use Context7\nto get the official documentation rather than generic knowledge.",
+      "source_file": "questions/08-mcp-servers/003-which-mcp-server-is-best-for-looking-up-official.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.4 Server Selection Guide",
@@ -2974,6 +3096,7 @@
       },
       "correct": "c",
       "explanation": "Serena provides session memory that persists across conversations.\n\nSerena memory tools:\n- `write_memory` - Save context for future sessions\n- `read_memory` - Retrieve saved context\n- `list_memories` - List all stored memories\n\nMemory is stored in `.serena/memories/` and survives between Claude Code sessions.\nThis is crucial for maintaining context on long-running projects.",
+      "source_file": "questions/08-mcp-servers/004-which-mcp-server-provides-persistent-memory.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
@@ -2998,6 +3121,7 @@
       },
       "correct": "b",
       "explanation": "The global MCP configuration is at `~/.claude/mcp.json`.\n\nConfiguration locations:\n- `~/.claude/mcp.json` - Global (applies to all projects)\n- `/project/.claude/mcp.json` - Project-specific (overrides global)\n\nThe configuration specifies which servers to run and their settings.",
+      "source_file": "questions/08-mcp-servers/005-where-is-the-global-mcp-configuration-file-located.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.3 Configuration",
@@ -3021,6 +3145,7 @@
       },
       "correct": "c",
       "explanation": "Sequential Thinking is designed for multi-step analysis with explicit reasoning.\n\nUse Sequential Thinking for:\n- Complex debugging scenarios\n- Architectural analysis\n- System design decisions\n\nThe `sequentialthinking` tool provides step-by-step reasoning that is\nideal for problems requiring systematic investigation.",
+      "source_file": "questions/08-mcp-servers/006-what-is-the-recommended-mcp-server-for-complex.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.4 Server Selection Guide",
@@ -3043,6 +3168,7 @@
       },
       "correct": "b",
       "explanation": "MCP servers can be combined for powerful workflows:\n\n1. **Context7** - Get official pattern for auth\n2. **Serena** - Find existing auth code in codebase\n3. **Sequential** - Analyze how to integrate\n4. **Playwright** - Test the implementation\n\nThis combination leverages each server's strengths for comprehensive development.",
+      "source_file": "questions/08-mcp-servers/007-how-can-mcp-servers-work-together-effectively.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.4 Server Selection Guide",
@@ -3067,6 +3193,7 @@
       },
       "correct": "b",
       "explanation": "The `${workspaceFolder}` variable expands to the current project path.\n\nVariable substitution in mcp.json:\n- `${workspaceFolder}` - Current project path\n- `${env:VAR_NAME}` - Environment variable\n\nExample:\n```json\n\"env\": {\n  \"PROJECT_PATH\": \"${workspaceFolder}\"\n}\n```",
+      "source_file": "questions/08-mcp-servers/008-what-variable-can-you-use-in-mcpjson-to-reference.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.3 Configuration",
@@ -3090,6 +3217,7 @@
       },
       "correct": "b",
       "explanation": "Serena fills a critical gap: Claude Code has no built-in indexation (unlike Cursor).\n\nSerena provides:\n- **Indexation**: Pre-indexes your codebase for efficient symbol lookup\n- **Project Memory**: Stores context between sessions\n- **Onboarding**: Auto-analyzes project structure on first run\n\nFor large codebases (>10k lines), Serena's indexation dramatically improves performance.",
+      "source_file": "questions/08-mcp-servers/009-what-is-the-key-advantage-of-serena-over-claude.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
@@ -3112,6 +3240,7 @@
       },
       "correct": "b",
       "explanation": "The rule of thumb:\n- **Plugin** = \"How Claude thinks\" (new workflows, specialized agents)\n- **MCP Server** = \"What Claude can do\" (new tools, external systems)\n\nPlugins bundle agents, skills, and configuration into installable modules.\nMCP servers add external capabilities like database access or browser automation.\n\nInstallation differs too:\n- Plugins: `claude plugin install`\n- MCP: Add to `settings.json` MCP config",
+      "source_file": "questions/08-mcp-servers/010-what-distinguishes-a-plugin-from-an-mcp-server-in.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.5 Plugin System",
@@ -3136,6 +3265,7 @@
       },
       "correct": "c",
       "explanation": "Playwright MCP provides browser automation capabilities.\n\nPlaywright tools include:\n- `navigate` - Go to URL\n- `click` - Click element\n- `fill` - Fill form field\n- `screenshot` - Capture screenshot\n\nUse Playwright for:\n- E2E testing\n- Visual validation\n- Browser debugging",
+      "source_file": "questions/08-mcp-servers/011-which-mcp-server-is-used-for-browser-automation.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
@@ -3159,6 +3289,7 @@
       },
       "correct": "b",
       "explanation": "Use the `-e` flag to pass environment variables:\n\n```bash\nclaude mcp add -e API_KEY=your-key my-server -- npx @org/server\n```\n\nFor multiple environment variables:\n```bash\nclaude mcp add -e DATABASE_URL=postgres://... -e DEBUG=true postgres -- npx @prisma/postgres\n```\n\nThis is quicker than manually editing mcp.json.",
+      "source_file": "questions/08-mcp-servers/012-how-do-you-add-an-mcp-server-with-environment.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.3 Configuration",
@@ -3181,6 +3312,7 @@
       },
       "correct": "b",
       "explanation": "grepai excels at intent-based search using natural language, plus offers\ncall graph analysis to trace function dependencies:\n\n```bash\n# Semantic search (finds code by meaning, not exact text)\ngrepai search \"user authentication flow\"\n\n# Who calls this function?\ngrepai trace callers \"createSession\"\n```\n\nWhile Serena focuses on symbol-level analysis, grepai finds code by\ndescribing what it does and traces caller/callee relationships.\n\nUse grepai for exploring unfamiliar codebases or understanding dependencies.",
+      "source_file": "questions/08-mcp-servers/013-what-is-grepais-key-differentiator-compared-to.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.2 Available Servers",
@@ -3204,6 +3336,7 @@
       },
       "correct": "b",
       "explanation": "Running `claude plugin` (without subcommand) lists all installed plugins with status.\n\nPlugin commands:\n- `claude plugin` - List installed plugins\n- `claude plugin install <name>` - Install plugin\n- `claude plugin enable <name>` - Enable plugin\n- `claude plugin disable <name>` - Disable plugin\n- `claude plugin uninstall <name>` - Remove plugin\n- `claude plugin validate <path>` - Validate plugin manifest",
+      "source_file": "questions/08-mcp-servers/014-what-command-lists-all-installed-plugins-in.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "8.5 Plugin System",
@@ -3227,6 +3360,7 @@
       },
       "correct": "b",
       "explanation": "Figma MCP provides 3-10x fewer tokens than screenshots because it returns structured data (React+Tailwind structure, design tokens) instead of requiring image analysis. Other benefits: direct token access, component mapping via Code Connect, iterative workflow without new screenshots.",
+      "source_file": "questions/08-mcp-servers/015-what-is-the-main-advantage-of-using-figma-mcp.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.3 Figma MCP Integration",
@@ -3250,6 +3384,7 @@
       },
       "correct": "b",
       "explanation": "`get_variable_defs` retrieves design tokens like colors (--color-primary: #3B82F6), spacing (--spacing-md: 16px), and typography. Recommended workflow: get_metadata → get_design_context → get_variable_defs (once per project) → get_screenshot (only when visual reference needed).",
+      "source_file": "questions/08-mcp-servers/016-which-figma-mcp-tool-retrieves-design-tokens.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.3 Figma MCP Integration",
@@ -3273,6 +3408,7 @@
       },
       "correct": "b",
       "explanation": "For remote MCP (all Figma plans, any machine): `claude mcp add --transport http figma https://mcp.figma.com/mcp`. For desktop MCP (requires Figma desktop app with Dev Mode): `claude mcp add --transport http figma-desktop http://127.0.0.1:3845/mcp`. Official Figma MCP was announced in 2025.",
+      "source_file": "questions/08-mcp-servers/017-what-command-adds-the-figma-mcp-server-for-remote.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "4.3 Figma MCP Integration",
@@ -3296,6 +3432,7 @@
       },
       "correct": "c",
       "explanation": "MCP Apps (SEP-1865) introduce 2 core primitives:\n\n1. **Tools with UI metadata** - Standard MCP tools annotated with rendering hints (input forms, output displays)\n2. **UI resources (ui:// scheme)** - Resources that return UI components instead of data\n\nTogether, these allow MCP servers to provide both functionality and user interface, enabling richer agent-to-user interactions.",
+      "source_file": "questions/08-mcp-servers/018-what-are-the-2-core-primitives-of-mcp-apps.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "MCP Apps",
@@ -3319,6 +3456,7 @@
       },
       "correct": "c",
       "explanation": "When MCP tool definitions exceed 10,000 tokens, Claude Code automatically activates lazy loading. Instead of loading all tool definitions upfront, it marks them with 'defer_loading: true' and provides a Tool Search tool for on-demand discovery.\n\nWhen Claude needs a specific tool, it searches using keywords and selectively loads approximately 3-5 relevant tools (~3K tokens) per query. This dramatically reduces baseline context usage:\n\n**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading configured for only 4 specific tools, it uses 1,500 tokens—a 91% reduction.\n\n**Important**: There is no configurable 'auto:N' parameter where N = max tools to load. The 10K token threshold triggers lazy loading automatically. Claude Code detects when tool descriptions surpass this threshold and switches to the Tool Search mechanism without manual configuration.\n\nThis feature was introduced to address context pollution from MCP servers with many tools, most of which aren't frequently used.",
+      "source_file": "questions/08-mcp-servers/019-what-does-the-auton-threshold-control-in-mcp-tool.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "MCP Configuration",
@@ -3343,6 +3481,7 @@
       },
       "correct": "c",
       "explanation": "Semgrep MCP scored 9.0/10 in the production MCP ecosystem evaluation. It provides static application security testing (SAST), secrets detection, and supply chain analysis. Top scores: Semgrep (9.0), Playwright (8.8), Context7 (8.5), Kubernetes (8.4). Evaluation criteria: reliability, token efficiency, production readiness.",
+      "source_file": "questions/08-mcp-servers/020-which-mcp-server-scored-highest-9010-in-the.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "MCP Servers Ecosystem",
@@ -3366,6 +3505,7 @@
       },
       "correct": "b",
       "explanation": "The Trinity is the most powerful Claude Code pattern combining:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep analysis (enabled by default in Opus 4.5)\n3. **Sequential Thinking (MCP)** - Structured multi-step reasoning\n\nCombined, these provide maximum understanding before taking action.\nUse for architecture decisions, complex debugging, and legacy modernization.",
+      "source_file": "questions/09-advanced-patterns/001-what-are-the-three-components-of-the-trinity.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.1 The Trinity",
@@ -3388,6 +3528,7 @@
       },
       "correct": "b",
       "explanation": "With Opus 4.5 (v2.0.67+), thinking mode is enabled by default at maximum budget.\n\n**Controlling Thinking Mode:**\n| Method | Action | Persistence |\n|--------|--------|-------------|\n| **Alt+T** | Toggle on/off | Session |\n| **/config** | Enable/disable globally | Permanent |\n\n**Note**: Keywords like \"ultrathink\" are now cosmetic only - they no longer control thinking behavior.\n\nUse Alt+T to disable thinking for simple tasks (faster, cheaper).",
+      "source_file": "questions/09-advanced-patterns/002-how-do-you-toggle-thinking-mode-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.1 Extended Thinking",
@@ -3411,6 +3552,7 @@
       },
       "correct": "b",
       "explanation": "The `--headless` flag runs Claude Code without interactive prompts:\n\n```bash\n# Basic headless execution\nclaude --headless \"Run the tests and report results\"\n\n# With timeout\nclaude --headless --timeout 300 \"Build the project\"\n```\n\nEssential for CI/CD integration, automated pipelines, and scripted workflows.",
+      "source_file": "questions/09-advanced-patterns/003-what-cli-flag-runs-claude-code-without.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.3 CI/CD Integration",
@@ -3435,6 +3577,7 @@
       },
       "correct": "b",
       "explanation": "Use standard Unix piping with the `-p` flag:\n\n```bash\ncat file.txt | claude -p 'analyze this code'\ngit diff | claude -p 'explain these changes'\nnpm test 2>&1 | claude -p 'summarize test failures'\n```\n\nThis enables powerful shell integration for automated code analysis.",
+      "source_file": "questions/09-advanced-patterns/004-how-do-you-pipe-content-to-claude-code-with-a.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.3 CI/CD Integration",
@@ -3457,6 +3600,7 @@
       },
       "correct": "b",
       "explanation": "The \"Rev the Engine\" pattern uses multiple rounds of critique for quality:\n\n```\nRound 1: [Initial implementation]\nCritique: [What's wrong]\nImprovement: [Better version]\n\nRound 2: [Improved implementation]\nCritique: [What's still wrong]\nImprovement: [Even better version]\n\nRound 3: [Final implementation]\nFinal check: [Verification]\n```\n\nTypically 3 rounds are recommended for quality work.",
+      "source_file": "questions/09-advanced-patterns/005-what-is-the-rev-the-engine-pattern.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.2 Composition Patterns",
@@ -3480,6 +3624,7 @@
       },
       "correct": "b",
       "explanation": "Use `--output-format` to control response format:\n\n| Format | Use Case |\n|--------|----------|\n| `text` | Human-readable output (default) |\n| `json` | Machine-parseable structured data |\n| `stream-json` | Real-time streaming for large outputs |\n\nExample:\n```bash\ngit log --oneline -10 | claude -p 'Categorize commits' --output-format json\n```",
+      "source_file": "questions/09-advanced-patterns/006-what-output-format-flag-gets-structured-json-from.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.3 CI/CD Integration",
@@ -3504,6 +3649,7 @@
       },
       "correct": "b",
       "explanation": "Vibe Coding is rapid prototyping through natural conversation.\n\nWhen to vibe code:\n- Early exploration: Testing if an approach works\n- Proof of concept: Quick validation before full implementation\n- Learning: Understanding a new library or pattern\n\nRules:\n- No production code - exploration only\n- Throw away freely\n- Focus on learning\n- Signal clearly: \"This is vibe code, not for production\"",
+      "source_file": "questions/09-advanced-patterns/007-what-is-vibe-coding-according-to-the-guide.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.8 Vibe Coding & Skeleton Projects",
@@ -3526,6 +3672,7 @@
       },
       "correct": "b",
       "explanation": "The Verify Gate Pattern ensures all checks pass before PR creation:\n\n```\nBuild -> Lint -> Test -> Type-check -> THEN create PR\n```\n\nIf ANY step fails:\n- Stop immediately\n- Report what failed and why\n- Suggest fixes\n- Do NOT proceed to PR creation\n\nThis prevents wasted CI cycles and review time.",
+      "source_file": "questions/09-advanced-patterns/008-what-is-the-verify-gate-pattern-before-creating-a.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.3 CI/CD Integration",
@@ -3549,6 +3696,7 @@
       },
       "correct": "b",
       "explanation": "The Mirror Principle: What you write as a todo becomes Claude's instruction.\n\nBad (vague todo -> vague execution):\n\"Fix the bug\"\n\nGood (specific todo -> precise execution):\n\"Fix null pointer in getUserById when user not found - return null instead of throwing\"\n\nWell-crafted todos guide Claude's execution with precision.",
+      "source_file": "questions/09-advanced-patterns/009-what-is-the-key-insight-of-todo-as-instruction.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.6 Todo as Instruction Mirrors",
@@ -3571,6 +3719,7 @@
       },
       "correct": "b",
       "explanation": "After every manual intervention, ask:\n\"How can I improve the process so this error or manual fix can be avoided next time?\"\n\nThe improvement pipeline:\n1. Can a linting rule catch it? -> Add lint rule\n2. Can it go in conventions/docs? -> Add to CLAUDE.md or ADRs\n3. Neither? -> Accept as edge case\n\nThe meta-skill: instead of fixing code, fix the system that produces the code.",
+      "source_file": "questions/09-advanced-patterns/010-according-to-continuous-improvement-mindset-what.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.10 Continuous Improvement Mindset",
@@ -3595,6 +3744,7 @@
       },
       "correct": "b",
       "explanation": "A skeleton project is a minimal, working template that establishes patterns.\n\nSkeleton principles:\n1. **It must run**: `pnpm dev` works from day 1\n2. **One complete vertical**: Full stack for one feature\n3. **Patterns, not features**: Shows HOW, not WHAT\n4. **Minimal dependencies**: Only what's needed\n\nProgression: Skeleton (Day 1) -> MVP (Week 1) -> Full (Month 1)",
+      "source_file": "questions/09-advanced-patterns/011-what-is-a-skeleton-project.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.8 Vibe Coding & Skeleton Projects",
@@ -3618,6 +3768,7 @@
       },
       "correct": "b",
       "explanation": "OpusPlan mode combines model strengths:\n- **Planning**: Opus for high-level thinking\n- **Execution**: Sonnet for implementation\n\nThis provides strategic thinking + cost-effective execution.\n\n```bash\n/model opusplan\nShift+Tab x 2  # Enter Plan Mode (Opus)\n# Design architecture...\nShift+Tab      # Exit Plan Mode (Sonnet)\n# Implement the plan...\n```",
+      "source_file": "questions/09-advanced-patterns/012-what-is-opusplan-mode.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.13 Cost Optimization Strategies",
@@ -3640,6 +3791,7 @@
       },
       "correct": "b",
       "explanation": "Never use `--dangerously-skip-permissions` on production systems or sensitive codebases.\n\nSafe usage:\n- CI/CD pipelines with isolated environments\n- Automated testing with limited scope\n- Development containers\n\nUnsafe usage:\n- Production systems\n- Codebases with secrets\n- Environments with sensitive data\n\nThe flag bypasses all permission prompts, creating security risks.",
+      "source_file": "questions/09-advanced-patterns/013-when-should-you-not-use-dangerously-skip.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.11 Common Pitfalls & Best Practices",
@@ -3663,6 +3815,7 @@
       },
       "correct": "b",
       "explanation": "The recommended prompt format:\n\n- **WHAT**: Concrete deliverable\n- **WHERE**: File paths/locations\n- **HOW**: Constraints/approach\n- **VERIFY**: Success criteria\n\nExample:\n```\nWHAT: Add input validation to the login form\nWHERE: src/components/LoginForm.tsx, src/schemas/auth.ts\nHOW: Use Zod schema validation, display errors inline\nVERIFY: Empty email shows error, invalid format shows error\n```",
+      "source_file": "questions/09-advanced-patterns/014-what-prompt-format-does-the-guide-recommend-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.11 Common Pitfalls & Best Practices",
@@ -3687,6 +3840,7 @@
       },
       "correct": "c",
       "explanation": "The guide recommends progressive learning:\n\n1. **Week 1**: Basic commands, context management\n2. **Week 2**: CLAUDE.md, permissions\n3. **Week 3**: Agents and commands\n4. **Month 2+**: MCP servers, advanced patterns\n\nStart with simple, low-risk tasks and build up complexity gradually.\nThis avoids overwhelm and builds solid fundamentals.",
+      "source_file": "questions/09-advanced-patterns/015-what-is-the-recommended-learning-progression-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.11 Common Pitfalls & Best Practices",
@@ -3709,6 +3863,7 @@
       },
       "correct": "b",
       "explanation": "Git worktrees create multiple working directories from the same repository.\n\nBenefits:\n- Work on multiple features simultaneously\n- Each worktree has independent Claude Code context\n- No need for stash/switch operations\n- Parallel testing while developing\n\n```bash\ngit worktree add ../myproject-hotfix hotfix\ngit worktree add ../myproject-feature-a feature-a\n```",
+      "source_file": "questions/09-advanced-patterns/016-what-git-workflow-enables-working-on-multiple.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.12 Git Best Practices & Workflows",
@@ -3732,6 +3887,7 @@
       },
       "correct": "b",
       "explanation": "SDD (Spec-Driven Development) means specifications BEFORE code. The key claim: one well-structured iteration equals 8 unstructured ones. CLAUDE.md IS your spec file. Best for APIs and contracts. High Claude fit (⭐⭐⭐).",
+      "source_file": "questions/09-advanced-patterns/017-what-is-sdd-spec-driven-development-and-its-key.md",
       "doc_reference": {
         "file": "guide/methodologies.md",
         "section": "Tier 2: Specification & Architecture",
@@ -3755,6 +3911,7 @@
       },
       "correct": "b",
       "explanation": "BDD uses Given-When-Then format (Gherkin). BDD is beyond testing - it's a collaboration process: (1) Discovery with devs/business, (2) Formulation with examples, (3) Automation via Cucumber. Example: Given product with 0 stock → When customer attempts purchase → Then system refuses.",
+      "source_file": "questions/09-advanced-patterns/018-what-format-does-bdd-behavior-driven-development.md",
       "doc_reference": {
         "file": "guide/methodologies.md",
         "section": "Tier 3: Behavior & Acceptance",
@@ -3779,6 +3936,7 @@
       },
       "correct": "b",
       "explanation": "The classic TDD cycle: (1) Red - write failing test, (2) Green - minimal code to pass, (3) Refactor - clean up while tests stay green. With Claude: be explicit \"Write FAILING tests that don't exist yet.\" TDD is a core workflow (⭐⭐⭐).",
+      "source_file": "questions/09-advanced-patterns/019-what-are-the-three-steps-of-the-tdd-cycle.md",
       "doc_reference": {
         "file": "guide/methodologies.md",
         "section": "Tier 5: Implementation",
@@ -3802,6 +3960,7 @@
       },
       "correct": "c",
       "explanation": "15 methodologies organized in a 6-tier pyramid: Tier 1 (Strategic - BMAD), Tier 2 (Specification - SDD, Doc-Driven, Req-Driven, DDD), Tier 3 (Behavior - BDD, ATDD, CDD), Tier 4 (Feature - FDD, Context Engineering), Tier 5 (Implementation - TDD, Eval-Driven, Multi-Agent), Tier 6 (Optimization).",
+      "source_file": "questions/09-advanced-patterns/020-how-many-development-methodologies-are-documented.md",
       "doc_reference": {
         "file": "guide/methodologies.md",
         "section": "The 15 Methodologies",
@@ -3825,6 +3984,7 @@
       },
       "correct": "b",
       "explanation": "Context Engineering treats context as a design element. Key concepts: Progressive Disclosure (let agent discover incrementally), Memory Management (conversation vs persistent memory), Dynamic Refresh (rewrite TODO list before response). High Claude fit (⭐⭐⭐) for long sessions.",
+      "source_file": "questions/09-advanced-patterns/021-what-is-context-engineering-as-a-methodology.md",
       "doc_reference": {
         "file": "guide/methodologies.md",
         "section": "Tier 4: Feature Delivery",
@@ -3847,6 +4007,7 @@
       },
       "correct": "a",
       "explanation": "Mechanic Stacking layers 5 techniques for maximum Claude Code power:\n\n1. **Plan Mode** - Safe exploration without changes\n2. **Extended Thinking** - Deep internal reasoning\n3. **Rev the Engine** - Progressive warm-up prompts\n4. **Split-Role** - Separate architect/implementer/reviewer\n5. **Permutation** - Systematic variation testing\n\nEach layer compounds the previous one's effectiveness.",
+      "source_file": "questions/09-advanced-patterns/022-what-are-the-5-layers-of-mechanic-stacking.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Mechanic Stacking",
@@ -3869,6 +4030,7 @@
       },
       "correct": "b",
       "explanation": "A Permutation Framework uses CLAUDE.md to drive systematic variation testing. The workflow: define variation dimensions (e.g., algorithm choice, data structure, caching strategy), generate all combinations, implement each variant, evaluate with metrics. This ensures you explore the solution space methodically rather than picking the first approach.",
+      "source_file": "questions/09-advanced-patterns/023-what-is-a-permutation-framework-in-claude-code.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Permutation Frameworks",
@@ -3892,6 +4054,7 @@
       },
       "correct": "c",
       "explanation": "\"You Are the Main Thread\" uses the CPU scheduler analogy: the developer is the main thread dispatching work to Claude instances (worker threads). You manage priorities, context switches, and synchronization. Key insight: you don't write code - you manage the agents that write code. This shifts the skill from coding to orchestration.",
+      "source_file": "questions/09-advanced-patterns/024-what-mental-model-describes-the-developer-as-an.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "You Are the Main Thread",
@@ -3915,6 +4078,7 @@
       },
       "correct": "c",
       "explanation": "Task list divergence is diagnostic, not failure. Patterns reveal issues:\n\n- **Too broad** tasks → break down into smaller pieces\n- **Too narrow** tasks → step back and think bigger\n- **Wrong priorities** → re-align tasks with actual goals\n- **Consistent drift** → your mental model of the problem is wrong\n\nUse divergence as signal, not noise.",
+      "source_file": "questions/09-advanced-patterns/025-when-task-list-items-consistently-diverge-from.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Task Management Patterns",
@@ -3938,6 +4102,7 @@
       },
       "correct": "b",
       "explanation": "Anti-hallucination safeguards for code reviews define the occurrence rule:\n\n- **>10 occurrences** = established pattern (safe to reference)\n- **3-10 occurrences** = emerging pattern (mention cautiously)\n- **<3 occurrences** = NOT an established pattern (don't claim it is)\n\nThis prevents Claude from hallucinating \"established conventions\" from a few examples.",
+      "source_file": "questions/09-advanced-patterns/026-what-is-the-occurrence-rule-for-claiming.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Anti-Hallucination Safeguards",
@@ -3960,6 +4125,7 @@
       },
       "correct": "c",
       "explanation": "Multi-agent PR review uses 3 specialized agents:\n\n1. **Consistency Agent** - Checks naming conventions, import patterns, code style adherence\n2. **SOLID Agent** - Reviews architectural principles, dependency injection, single responsibility\n3. **Defensive Code Auditor** - Validates error handling, input validation, edge cases\n\nEach agent has anti-hallucination safeguards (occurrence rule, file-scoped claims).",
+      "source_file": "questions/09-advanced-patterns/027-what-are-the-3-specialized-agents-in-multi-agent.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Multi-Agent PR Review",
@@ -3983,6 +4149,7 @@
       },
       "correct": "b",
       "explanation": "Comprehension debt is code you shipped but don't fully understand. It's distinct from technical debt (code you understand but know is suboptimal). With AI-generated code, comprehension debt grows silently: you accept suggestions without deep understanding. The fix: always be able to explain WHY, not just WHAT.",
+      "source_file": "questions/09-advanced-patterns/028-what-is-comprehension-debt-according-to-addy.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Practitioner Insights",
@@ -4006,6 +4173,7 @@
       },
       "correct": "c",
       "explanation": "Boris Cherny's mental model for CLAUDE.md as compounding memory:\n\n1. **Error** - Claude makes a mistake\n2. **Rule** - You add a rule to CLAUDE.md preventing it\n3. **Read** - Claude reads CLAUDE.md on every session start\n4. **Never repeated** - The mistake never happens again\n\nGoal: never correct Claude twice for the same mistake. CLAUDE.md compounds over time.",
+      "source_file": "questions/09-advanced-patterns/029-what-is-the-4-step-cycle-for-claudemd-as.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Boris Cherny Mental Models",
@@ -4030,6 +4198,7 @@
       },
       "correct": "b",
       "explanation": "`Shift+Tab` toggles between Plan Mode and Execute Mode.\n\nPlan Mode navigation:\n- `Shift+Tab` once: Toggle plan/execute\n- `Shift+Tab` twice: Enter deep Plan Mode (with Opus in OpusPlan)\n\nPlan Mode allows safe, read-only exploration before making changes.",
+      "source_file": "questions/10-reference/001-what-keyboard-shortcut-enters-plan-mode-toggles.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.2 Keyboard Shortcuts",
@@ -4054,6 +4223,7 @@
       },
       "correct": "b",
       "explanation": "Double-tap `Esc` (Esc×2) rewinds to the previous checkpoint.\n\nThis is equivalent to the `/rewind` command.\nIt undoes Claude's recent changes in the current session without creating git commits.\n\nUse when Claude made a mistake and you want to try a different approach.",
+      "source_file": "questions/10-reference/002-what-keyboard-shortcut-rewinds-to-a-previous.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.2 Keyboard Shortcuts",
@@ -4078,6 +4248,7 @@
       },
       "correct": "b",
       "explanation": "`/compact` summarizes and compresses the conversation context.\n\nUse `/compact` when:\n- Context usage reaches 70-90%\n- Responses become slow\n- Claude starts forgetting earlier context\n\nThis frees up context space while preserving important information.\nCheck context usage with `/status`.",
+      "source_file": "questions/10-reference/003-what-does-compact-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.1 Commands Table",
@@ -4101,6 +4272,7 @@
       },
       "correct": "b",
       "explanation": "Context management guidelines:\n\n| Context Level | Action |\n|--------------|--------|\n| 0-50% | Work freely |\n| 50-75% | Be selective |\n| **75-90%** | **Use `/compact`** |\n| 90%+ | Use `/clear` |\n\nProactive compaction at 70% prevents context degradation and maintains performance.",
+      "source_file": "questions/10-reference/004-at-what-context-percentage-should-you-run-compact.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.4 Troubleshooting",
@@ -4124,6 +4296,7 @@
       },
       "correct": "b",
       "explanation": "The pattern `Bash(git *)` allows any git command.\n\nPermission pattern examples:\n- `Bash(git *)` - Any git command\n- `Bash(npm test)` - Exactly \"npm test\"\n- `Edit` - All file edits\n- `mcp__serena__*` - All Serena tools\n\nWildcards (*) enable flexible permission matching.",
+      "source_file": "questions/10-reference/006-what-is-the-correct-permission-pattern-to-allow.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
@@ -4148,6 +4321,7 @@
       },
       "correct": "c",
       "explanation": "CLAUDE.md locations:\n\n| Location | Scope | Committed |\n|----------|-------|-----------|\n| `~/.claude/CLAUDE.md` | All projects | N/A (global) |\n| `/project/CLAUDE.md` | This project | **Yes** |\n| `/project/.claude/CLAUDE.md` | Personal | No |\n\nThe root `CLAUDE.md` is committed and shared with the team.\nThe `.claude/CLAUDE.md` is personal and should be in `.gitignore`.",
+      "source_file": "questions/10-reference/007-where-should-project-specific-claudemd-be-placed.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
@@ -4171,6 +4345,7 @@
       },
       "correct": "b",
       "explanation": "The `--mcp-debug` flag enables debug mode for MCP server connections.\n\nMCP debugging techniques:\n```bash\nclaude --mcp-debug  # Debug all MCP connections\n/mcp               # View MCP status inside Claude Code\n```\n\nUse when MCP servers aren't connecting or tools aren't appearing.",
+      "source_file": "questions/10-reference/008-what-does-the-mcp-debug-flag-do.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.4 Troubleshooting",
@@ -4193,6 +4368,7 @@
       },
       "correct": "b",
       "explanation": "MCP server names must match: `^[a-zA-Z0-9_-]{1,64}`\n\nAllowed:\n- Letters (a-z, A-Z)\n- Numbers (0-9)\n- Underscores (_)\n- Hyphens (-)\n- Maximum 64 characters\n\nNot allowed:\n- Spaces\n- Special characters (@, #, etc.)\n- More than 64 characters",
+      "source_file": "questions/10-reference/009-if-an-mcp-server-name-validation-fails-with.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.4 Troubleshooting",
@@ -4217,6 +4393,7 @@
       },
       "correct": "b",
       "explanation": "The `/status` command shows session information.\n\nOutput includes:\n- Model being used\n- Context usage percentage\n- Session cost\n- Token counts\n\nExample output:\n`Model: Sonnet | Ctx: 45.2k | Cost: $1.23 | Ctx(u): 42.0%`\n\nUse `/stats` for usage statistics with activity graphs.",
+      "source_file": "questions/10-reference/010-what-command-shows-session-info-including-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.1 Commands Table",
@@ -4240,6 +4417,7 @@
       },
       "correct": "b",
       "explanation": "The `--max-budget-usd` flag sets maximum API spend (only with `--print`):\n\n```bash\nclaude -p \"analyze\" --max-budget-usd 5.00\n```\n\nThis prevents runaway costs in automated pipelines.\nThe operation stops if the budget is exceeded.",
+      "source_file": "questions/10-reference/011-what-flag-limits-maximum-api-spend-in-headless.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
@@ -4264,6 +4442,7 @@
       },
       "correct": "b",
       "explanation": "The `!command` prefix runs a shell command directly.\n\nQuick actions:\n- `!command` - Run shell command\n- `@filename` - Reference file\n- `Ctrl+C` - Cancel operation\n- `Ctrl+R` - Retry last\n\nExample: `!git status` runs git status without Claude interpreting it.",
+      "source_file": "questions/10-reference/012-how-do-you-run-a-shell-command-directly-from.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.1 Commands Table",
@@ -4287,6 +4466,7 @@
       },
       "correct": "b",
       "explanation": "Use `-r` or `--resume` to resume a specific session:\n\n```bash\nclaude -r abc123           # Resume session abc123\nclaude --resume abc123     # Same as above\nclaude -c                  # Resume last session (short)\nclaude --continue          # Resume last session (long)\n```\n\nCombine with `-p` for scripting: `claude -r abc123 -p \"check status\"`",
+      "source_file": "questions/10-reference/013-what-is-the-correct-way-to-resume-a-specific.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
@@ -4310,6 +4490,7 @@
       },
       "correct": "b",
       "explanation": "Recommended .gitignore:\n\n```gitignore\n# Claude Code - Personal (ignore)\n.claude/settings.local.json\nCLAUDE.local.md\n.claude/.serena/\n\n# Claude Code - Team (keep/commit)\n# .claude/CLAUDE.md (project memory)\n# .claude/agents/\n# .claude/commands/\n# .claude/hooks/\n# .claude/settings.json\n```\n\nThis keeps team workflows shared while personal settings stay private.",
+      "source_file": "questions/10-reference/014-what-is-the-recommended-gitignore-pattern-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "9.11 Common Pitfalls & Best Practices",
@@ -4335,6 +4516,7 @@
       },
       "correct": "b",
       "explanation": "Morning setup workflow:\n\n1. Git pull latest changes\n2. Review context with `/status`\n3. Load project memory (`/sc:load` if using Serena)\n4. Review yesterday's progress\n\nThis ensures you start with fresh code and full context awareness.",
+      "source_file": "questions/10-reference/015-what-is-the-daily-workflow-morning-setup.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.6 Daily Workflow & Checklists",
@@ -4358,6 +4540,7 @@
       },
       "correct": "b",
       "explanation": "Use `--add-dir` to allow tool access to additional directories:\n\n```bash\nclaude --add-dir ../shared ../utils\nclaude --add-dir packages/api\n```\n\nBy default, Claude can only access files in the current working directory.\nUse --add-dir to extend permissions to other directories (e.g., shared libraries in a monorepo).",
+      "source_file": "questions/10-reference/016-what-flag-allows-claudes-tools-to-access.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.3 Configuration Reference",
@@ -4380,6 +4563,7 @@
       },
       "correct": "b",
       "explanation": "Sequential Thinking uses significant compute - expect 10-30 second responses.\n\nThis is not an error, just be patient.\n\nTips for Sequential:\n- Works best with specific, well-defined problems\n- Good: \"Debug why user authentication fails on mobile\"\n- Bad: \"Make the app better\"\n\nThe longer response time reflects deeper analysis.",
+      "source_file": "questions/10-reference/017-when-sequential-thinking-mcp-seems-slow-or.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.4 Troubleshooting",
@@ -4404,6 +4588,7 @@
       },
       "correct": "b",
       "explanation": "`Ctrl+G` opens an external editor for composing long text.\n\nUseful input shortcuts:\n- `Ctrl+A`: Jump to beginning of line\n- `Ctrl+E`: Jump to end of line\n- `Ctrl+W`: Delete previous word\n- `Ctrl+G`: Open external editor\n- `Tab`: Autocomplete file paths\n\nThe external editor allows comfortable editing of complex prompts.",
+      "source_file": "questions/10-reference/018-what-shortcut-opens-an-external-editor-for.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "10.2 Keyboard Shortcuts",
@@ -4428,6 +4613,7 @@
       },
       "correct": "b",
       "explanation": "The `--from-pr` flag (v2.1.27) lets you resume Claude Code sessions linked to a specific GitHub PR. Usage: `claude --from-pr 123` or `claude --from-pr https://github.com/org/repo/pull/123`. This loads the PR context (diff, comments, checks) directly into the session.",
+      "source_file": "questions/10-reference/019-what-does-the-from-pr-flag-do-in-claude-code-v2127.md",
       "doc_reference": {
         "file": "guide/claude-code-releases.md",
         "section": "v2.1.27",
@@ -4451,6 +4637,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code v2.1.19 changed argument access syntax from dot notation (`$ARGUMENTS.0`) to bracket notation (`$ARGUMENTS[0]`). This breaking change affects all custom commands and hooks that reference arguments. Update your scripts to use the new bracket syntax.",
+      "source_file": "questions/10-reference/020-what-breaking-change-was-introduced-in-claude.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Breaking Changes",
@@ -4476,6 +4663,7 @@
       },
       "correct": "c",
       "explanation": "The Myths vs Reality section debunks the \"hidden features\" myth. Anthropic uses progressive rollout (features gradually enabled for users) rather than secret flags or hidden configurations. All features are documented in release notes. There is no secret power-user mode.",
+      "source_file": "questions/10-reference/021-according-to-the-guides-myths-vs-reality-section.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Myths vs Reality",
@@ -4501,6 +4689,7 @@
       },
       "correct": "b",
       "explanation": "The three patterns are: Dependent (copy-paste without understanding, can't debug AI code), Avoidant (refuses AI on principle, slower than peers), and Augmented (uses AI critically, understands everything). The goal is to become Augmented - using AI for leverage while maintaining deep understanding.",
+      "source_file": "questions/11-learning-with-ai/001-what-are-the-three-developer-patterns-when-using.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "The Three Patterns",
@@ -4525,6 +4714,7 @@
       },
       "correct": "b",
       "explanation": "UVAL stands for: Understand First (the 15-minute rule), Verify (ensure you actually learned), Apply (transform knowledge into skill through modification), Learn (capture insights for long-term retention). This protocol ensures you're learning, not just copying.",
+      "source_file": "questions/11-learning-with-ai/002-what-does-uval-stand-for-in-the-ai-learning.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "The UVAL Protocol",
@@ -4548,6 +4738,7 @@
       },
       "correct": "c",
       "explanation": "A score of 0-2 yes answers indicates dependency risk - you're outsourcing your thinking to AI. The 5 questions test: can you explain AI-generated code, have you debugged without AI, do you know WHY solutions work, could you write the code yourself, do you know AI's limitations. Low scores mean you should read the \"Breaking Dependency\" section.",
+      "source_file": "questions/11-learning-with-ai/003-in-the-quick-self-check-if-you-score-0-2-yes.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Quick Self-Check",
@@ -4572,6 +4763,7 @@
       },
       "correct": "b",
       "explanation": "The 15-minute rule is a specific protocol: (1) State the problem in ONE sentence (2 min), (2) Brainstorm 3 possible approaches (5 min), (3) Identify your knowledge gaps (3 min), (4) THEN ask AI with a much better question (5 min). This forces you to think before asking, resulting in better questions and faster learning.",
+      "source_file": "questions/11-learning-with-ai/004-what-is-the-15-minute-rule-in-the-uval-protocols.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "U — Understand First",
@@ -4596,6 +4788,7 @@
       },
       "correct": "c",
       "explanation": "The rule is simple: if you can't explain the code to a colleague, you don't understand it. This is the verification step - you must be able to articulate WHY the solution works, not just THAT it works. The guide recommends using a /explain-back slash command that asks YOU to explain AI-generated code.",
+      "source_file": "questions/11-learning-with-ai/005-what-is-the-explain-it-back-technique-in-the-uval.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "V — Verify",
@@ -4620,6 +4813,7 @@
       },
       "correct": "a",
       "explanation": "Week 1 focuses on foundations with 0-20% AI usage: Days 1-2 build feature WITHOUT AI (0%), Days 4-5 refactor with AI review only (20%), Day 6 debug without AI (0%). The goal is to build (or rebuild) core skills without heavy AI reliance. Success criteria: can explain every line you wrote.",
+      "source_file": "questions/11-learning-with-ai/006-in-the-30-day-progression-plan-what-is-the-ai.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "30-Day Progression Plan",
@@ -4644,6 +4838,7 @@
       },
       "correct": "c",
       "explanation": "Week 4 (Augmented stage) recommends 70% AI usage with the UVAL protocol. The progression is: Week 1 (0-20%), Week 2 (30-40%), Week 3 (50-60%), Week 4 (70%). Success criteria for Week 4: you're fast AND you understand everything. The cap at 70% ensures you maintain skills.",
+      "source_file": "questions/11-learning-with-ai/007-what-ai-usage-ratio-does-the-30-day-plan.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "30-Day Progression Plan",
@@ -4669,6 +4864,7 @@
       },
       "correct": "b",
       "explanation": "AI is compared to GPS: great for getting somewhere fast, dangerous if you lose the ability to navigate without it, truly useful when you understand the map AND use the GPS. A developer who only copy-pastes AI output is like a driver who can't read a map - fine until the GPS fails or someone asks for directions.",
+      "source_file": "questions/11-learning-with-ai/008-according-to-the-guide-what-is-the-metaphor-for.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "The Problem in 60 Seconds",
@@ -4693,6 +4889,7 @@
       },
       "correct": "b",
       "explanation": "\"Can't start without AI\" is a red flag indicating you've outsourced problem decomposition. Other red flags: don't understand AI's code, can't debug AI errors, anxiety without AI, rejected in interviews, always ask \"how\" never \"why\", every solution looks the same. Immediate action: code 30 min daily without AI.",
+      "source_file": "questions/11-learning-with-ai/009-what-is-a-red-flag-sign-of-ai-dependency.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Red Flags Checklist",
@@ -4717,6 +4914,7 @@
       },
       "correct": "b",
       "explanation": "The Apply step requires modification, not copy-paste. You must change at least one element (variable name, structure, edge case handling). Why? Modification forces understanding. Copying is passive; modifying requires you to engage with the code and understand how it works.",
+      "source_file": "questions/11-learning-with-ai/010-what-is-the-apply-steps-core-principle-in-the.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "A — Apply",
@@ -4741,6 +4939,7 @@
       },
       "correct": "a",
       "explanation": "Learning Mode in CLAUDE.md prompts Claude to ask questions before generating: \"What approaches have I considered?\", \"What specifically am I stuck on?\", \"What do I expect the solution to look like?\". This implements the UVAL protocol's Understand step directly in your workflow.",
+      "source_file": "questions/11-learning-with-ai/011-what-claudemd-configuration-enables-learning-mode.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Claude Code for Learning",
@@ -4765,6 +4964,7 @@
       },
       "correct": "c",
       "explanation": "The learning-capture.sh hook uses the Stop event (session end) to prompt: \"What's ONE thing you learned today?\" This logs to ~/claude-learnings.md automatically. It's lightweight (asks one question) so you'll actually use it, unlike verbose learning journals.",
+      "source_file": "questions/11-learning-with-ai/012-what-hook-event-is-recommended-for-capturing.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Hooks That Build Habits",
@@ -4790,6 +4990,7 @@
       },
       "correct": "b",
       "explanation": "The Dependent pattern's risk is becoming unemployable. Signs: copy-paste without understanding, can't debug AI code, anxiety without AI. In interviews: can't whiteboard basics, struggles with \"why this approach?\", asks to look up fundamentals. You ship code you can't explain - when it breaks, you're stuck.",
+      "source_file": "questions/11-learning-with-ai/013-what-is-the-dependent-patterns-main-risk.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Pattern 1: Dependent",
@@ -4814,6 +5015,7 @@
       },
       "correct": "b",
       "explanation": "The key question is: \"Am I faster than last month? Am I smarter?\" If you're faster but NOT smarter, you're building dependency. Other weekly questions: What did I learn that I didn't know before? Could I have done this without AI? Did I understand everything I shipped?",
+      "source_file": "questions/11-learning-with-ai/014-what-is-the-weekly-self-audit-question-that.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Weekly Self-Audit",
@@ -4838,6 +5040,7 @@
       },
       "correct": "b",
       "explanation": "For Avoidant developers, the guide recommends gradual adoption: start with AI reviewing YOUR code (you stay in control), then move to AI explaining concepts you implement, then AI-assisted work. This respects your instinct for understanding while gaining AI benefits. Pure avoidance means being slower without being smarter.",
+      "source_file": "questions/11-learning-with-ai/015-what-is-the-recommended-approach-for-avoidant.md",
       "doc_reference": {
         "file": "guide/learning-with-ai.md",
         "section": "Embracing AI Tools",
@@ -4861,6 +5064,7 @@
       },
       "correct": "b",
       "explanation": "Addy Osmani's \"80% Problem\" identifies 3 failure modes:\n\n1. **Overengineering** - AI adds unnecessary complexity (abstraction layers, premature optimization)\n2. **Assumption propagation** - One wrong assumption cascades through the codebase\n3. **Sycophantic agreement** - AI agrees with bad ideas instead of pushing back\n\nThe 80% refers to AI getting you 80% of the way, with the last 20% requiring deep human understanding.",
+      "source_file": "questions/11-learning-with-ai/016-what-are-the-3-failure-modes-identified-in-addy.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Practitioner Insights",
@@ -4885,6 +5089,7 @@
       },
       "correct": "b",
       "explanation": "Context overload symptoms in vibe coding:\n\n1. **Big-bang context dumps** - Pasting entire codebases into prompts\n2. **5K+ line prompts** - Exceeding effective context window usage\n3. **Performance degradation** - Claude's quality drops as context grows\n\nThe fix: progressive disclosure (feed context incrementally), use CLAUDE.md for persistent context, and start fresh sessions between phases.",
+      "source_file": "questions/11-learning-with-ai/017-what-are-the-3-symptoms-of-vibe-coding-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Vibe Coding Anti-Patterns",
@@ -4908,6 +5113,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code runs a remarkably simple `while(tool_call)` loop. There is NO intent classifier, task router, RAG/embedding pipeline, DAG orchestrator, or planner/executor split. The model itself decides when to call tools, which tools to call, and when it's done. This is the \"agentic loop\" pattern.",
+      "source_file": "questions/12-architecture-internals/001-what-is-the-core-architecture-pattern-of-claude.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "The Master Loop",
@@ -4932,6 +5138,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code has exactly 8 core tools: Bash (universal adapter), Read (file contents), Edit (modify files), Write (create/overwrite), Grep (search contents), Glob (find files), Task (sub-agents), and TodoWrite (progress tracking). That's the entire arsenal.",
+      "source_file": "questions/12-architecture-internals/002-how-many-core-tools-does-claude-code-have.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "The Tool Arsenal",
@@ -4955,6 +5162,7 @@
       },
       "correct": "c",
       "explanation": "Bash is Claude's swiss-army knife. It can run any CLI tool (git, npm, docker, curl...), execute scripts, chain commands with pipes, and access system state. The model has been trained on massive amounts of shell data, making it highly effective as a universal adapter.",
+      "source_file": "questions/12-architecture-internals/003-which-tool-is-described-as-claudes-swiss-army.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "The Bash Universal Adapter",
@@ -4978,6 +5186,7 @@
       },
       "correct": "c",
       "explanation": "Claude Code operates within a ~200K token context window. This is shared between: system prompt (~5-15K), CLAUDE.md files (~1-10K), conversation history (variable), tool results (variable), and reserved response buffer (~40-45K). Usable space is approximately 140-150K tokens.",
+      "source_file": "questions/12-architecture-internals/004-what-is-the-approximate-context-budget-for-claude.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Context Budget Breakdown",
@@ -5001,6 +5210,7 @@
       },
       "correct": "b",
       "explanation": "Auto-compaction thresholds vary by source: PromptLayer analysis reports 92%, community observations report 75-80%. When triggered, older conversation turns are summarized, tool results condensed, and recent context preserved. Use /compact to manually trigger summarization.",
+      "source_file": "questions/12-architecture-internals/005-what-are-the-reported-auto-compaction-thresholds.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Auto-Compaction",
@@ -5025,6 +5235,7 @@
       },
       "correct": "c",
       "explanation": "Sub-agents have a depth=1 limit. They CANNOT spawn sub-sub-agents. This prevents: recursive explosion (infinite resources), context pollution (accumulated context), debugging nightmares (multi-level chains), and unpredictable costs (nested token usage).",
+      "source_file": "questions/12-architecture-internals/006-what-is-the-maximum-depth-for-sub-agents-spawned.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Why Depth = 1?",
@@ -5048,6 +5259,7 @@
       },
       "correct": "b",
       "explanation": "Sub-agents have ISOLATED context. They receive only the task description, have their own fresh context window, access the same tools (except Task), and return only a summary text. This isolation keeps the main context clean and prevents context pollution.",
+      "source_file": "questions/12-architecture-internals/007-what-does-a-sub-agent-receive-when-spawned-by-the.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Isolation Model",
@@ -5071,6 +5283,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code has 4 layered security: (1) Interactive prompts (allow once/always/deny), (2) Allow/Deny rules in settings.json, (3) Hooks (Pre/Post execution scripts), (4) Sandbox mode (filesystem + network isolation). Each layer adds protection.",
+      "source_file": "questions/12-architecture-internals/008-what-are-the-4-permission-layers-in-claude-codes.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Permission & Security Model",
@@ -5094,6 +5307,7 @@
       },
       "correct": "b",
       "explanation": "When exact match fails, Edit attempts fuzzy matching: (1) Whitespace normalization (trailing spaces, indentation), (2) Line ending normalization (CRLF vs LF), (3) Context expansion (surrounding lines). Only if fuzzy match also fails does it return an error.",
+      "source_file": "questions/12-architecture-internals/009-what-algorithm-does-the-edit-tool-use-when-exact.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Fuzzy Matching Details",
@@ -5117,6 +5331,7 @@
       },
       "correct": "c",
       "explanation": "MCP uses JSON-RPC 2.0 over stdio or HTTP transport. MCP tools follow the naming convention `mcp__<server>__<tool>`. Servers start on first use and stay alive during the session. They have the same permission system as native tools.",
+      "source_file": "questions/12-architecture-internals/010-what-protocol-does-mcp-model-context-protocol-use.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "MCP Integration",
@@ -5139,6 +5354,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code's philosophy is \"Less scaffolding, more model\" - trust Claude's reasoning instead of building complex orchestration systems. This means: single model decides (no classifier/router), Grep+Glob (no RAG), simple while loop (no DAG), conversation as state (no state machines).",
+      "source_file": "questions/12-architecture-internals/011-what-is-claude-codes-design-philosophy-as-stated.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Philosophy: Less Scaffolding, More Model",
@@ -5162,6 +5378,7 @@
       },
       "correct": "b",
       "explanation": "Claude Code offers 3 built-in sub-agent types via the Task tool's subagent_type parameter:\n\n1. **Explore** (Haiku): Codebase exploration with read-only tools. Optimized for file discovery and code search with thoroughness levels (quick/medium/very thorough).\n\n2. **Plan** (Inherit): Architecture planning and research during plan mode. Read-only tools prevent infinite nesting.\n\n3. **general-purpose** (Inherit): Complex multi-step tasks with all tools available (Read, Edit, Write, Bash, Grep, Glob).\n\n**Important**: Bash is a TOOL (command execution utility), not a sub-agent type. Sub-agents can USE the Bash tool, but there is no \"Bash\" sub-agent type.\n\nSource: Official documentation code.claude.com/docs/en/sub-agents (verified 2026-02-03)",
+      "source_file": "questions/12-architecture-internals/012-what-are-the-4-specialized-sub-agent-types.md",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Sub-Agent Types",
@@ -5186,6 +5403,7 @@
       },
       "correct": "c",
       "explanation": "The Tasks API (v2.1.16+) replaced TodoWrite with 4 tools: TaskCreate (create tasks with descriptions), TaskGet (fetch full task details), TaskList (list all tasks with status), TaskUpdate (update status, dependencies, metadata). Key improvement: task dependencies via blockedBy/blocks fields.",
+      "source_file": "questions/12-architecture-internals/013-what-tool-replaced-todowrite-for-task-management.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Tasks API",
@@ -5208,6 +5426,7 @@
       },
       "correct": "c",
       "explanation": "Tasks API limitation: TaskList returns only summary fields (id, subject, status, owner, blockedBy). To get full details (description, metadata), you need individual TaskGet calls. For 50 tasks: 1 TaskList + 50 TaskGet = 51 API calls. This N+1 pattern is a known limitation compared to TodoWrite which returned everything in one call.",
+      "source_file": "questions/12-architecture-internals/014-what-is-the-api-cost-overhead-of-fetching-full.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Tasks API Limitations",
@@ -5230,6 +5449,7 @@
       },
       "correct": "b",
       "explanation": "TeammateTool is an experimental multi-agent coordination tool with 4 operations: spawnTeam, discoverTeams, requestJoin, approveJoin. Status: unstable, not officially supported by Anthropic. It allows Claude instances to form teams and coordinate, but the API is subject to change without notice. Not recommended for production use.",
+      "source_file": "questions/12-architecture-internals/015-what-is-teammatetool-and-what-is-its-status.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "TeammateTool",
@@ -5253,6 +5473,7 @@
       },
       "correct": "b",
       "explanation": "An MCP Rug Pull exploits the one-time approval model: attacker publishes benign MCP → user approves once → MCP works normally (builds trust) → attacker pushes malicious update → MCP exfiltrates credentials WITHOUT re-approval. Mitigation: version pinning + hash verification.",
+      "source_file": "questions/13-security-hardening/001-what-is-an-mcp-rug-pull-attack.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Attack: MCP Rug Pull",
@@ -5276,6 +5497,7 @@
       },
       "correct": "b",
       "explanation": "CVE-2025-53109/53110 (EscapeRoute) allows sandbox escape in Filesystem MCP via prefix bypass combined with symlinks. Severity: High. Mitigation: avoid Filesystem MCP with unrestricted access or apply the official patch. Source: Cymulate security research.",
+      "source_file": "questions/13-security-hardening/002-what-does-cve-2025-5310953110-escaperoute-exploit.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "CVE Summary (2025)",
@@ -5299,6 +5521,7 @@
       },
       "correct": "b",
       "explanation": "permissions.deny has architectural limitations: background indexing may expose file contents via internal \"system reminder\" mechanism BEFORE tool permission checks are applied. This is documented in GitHub #4160. Defense-in-depth: store secrets outside project directories.",
+      "source_file": "questions/13-security-hardening/003-what-is-a-known-limitation-of-permissionsdeny-in.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Known Security Gaps",
@@ -5322,6 +5545,7 @@
       },
       "correct": "b",
       "explanation": "Defense-in-depth: (1) Store secrets outside project directories (~/.secrets/ or vault), (2) Use external secrets management (AWS Secrets Manager, 1Password), (3) Add PreToolUse hooks as secondary blocking, (4) Never commit secrets, (5) Manually review bash commands.",
+      "source_file": "questions/13-security-hardening/004-what-is-the-recommended-defense-in-depth-strategy.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Defense-in-Depth Strategy",
@@ -5345,6 +5569,7 @@
       },
       "correct": "c",
       "explanation": "Zero-width characters (U+200B, U+200C, U+200D) make instructions invisible to humans while still being interpreted. Detection: Unicode regex pattern [\\x{200B}-\\x{200D}\\x{FEFF}\\x{202A}-\\x{202E}]. Added to prompt-injection-detector.sh in v3.6.0.",
+      "source_file": "questions/13-security-hardening/005-which-prompt-injection-evasion-technique-uses.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Evasion Techniques",
@@ -5368,6 +5593,7 @@
       },
       "correct": "c",
       "explanation": "Gitleaks: 88% recall, 46% precision, fast (~2 min/100K commits) - best for pre-commit hooks. TruffleHog: 52% recall, 85% precision, slow - best for CI verification. GitGuardian: 80% recall, 95% precision - enterprise monitoring. detect-secrets: 60% recall, 98% precision - baseline approach.",
+      "source_file": "questions/13-security-hardening/006-which-secret-detection-tool-has-the-highest.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Tool Comparison",
@@ -5391,6 +5617,7 @@
       },
       "correct": "b",
       "explanation": "Recommended security hook stack: PreToolUse → dangerous-actions-blocker.sh (Bash), prompt-injection-detector.sh + unicode-injection-scanner.sh (Edit/Write). PostToolUse → output-secrets-scanner.sh (Bash). SessionStart → mcp-config-integrity.sh. Multiple layers for defense-in-depth.",
+      "source_file": "questions/13-security-hardening/007-what-is-the-recommended-hook-stack-for-security.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Hook Stack Setup",
@@ -5415,6 +5642,7 @@
       },
       "correct": "b",
       "explanation": "MCP Safe List: @anthropic/mcp-server-* (official), context7 (read-only docs), sequential-thinking (no external access, local), memory (local file-based). Risk: filesystem unrestricted (CVE-2025-53109), database prod (exfiltration). Unsafe: browser full access.",
+      "source_file": "questions/13-security-hardening/008-which-mcp-servers-are-marked-as-safe-in-the.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "MCP Safe List (Community Vetted)",
@@ -5439,6 +5667,7 @@
       },
       "correct": "b",
       "explanation": "First 15 minutes (stop the bleeding): (1) Revoke immediately - AWS delete-access-key, GitHub revoke token, Stripe roll key. (2) Confirm exposure scope. Then: audit git history, scan dependencies, check CI/CD logs. First 24 hours: rotate ALL related credentials, notify compliance, document timeline.",
+      "source_file": "questions/13-security-hardening/009-what-is-the-first-action-when-a-secret-is-exposed.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Secret Exposed",
@@ -5464,6 +5693,7 @@
       },
       "correct": "b",
       "explanation": "Security posture levels: Basic (5 min) = output scanner + dangerous blocker - for solo dev/experiments. Standard (30 min) = + injection hooks + MCP vetting - for teams/sensitive code. Hardened (2 hours) = + integrity verification + ZDR - for enterprise/production.",
+      "source_file": "questions/13-security-hardening/010-what-are-the-three-security-posture-levels-in-the.md",
       "doc_reference": {
         "file": "guide/security-hardening.md",
         "section": "Security Posture Levels",
@@ -5487,6 +5717,7 @@
       },
       "correct": "c",
       "explanation": "Docker Sandboxes provide microVM-level isolation with customizable network policies. Key features: custom Dockerfile templates for reproducible environments, network policies to control egress/ingress, volume mounts for persistent storage, and CPU/memory limits. This approach suits teams wanting full control over sandbox configuration while maintaining strong isolation.",
+      "source_file": "questions/13-security-hardening/011-which-sandbox-isolation-approach-combines-microvm.md",
       "doc_reference": {
         "file": "guide/sandbox-isolation.md",
         "section": "Docker Sandboxes",
@@ -5512,6 +5743,7 @@
       },
       "correct": "b",
       "explanation": "The GitHub Issue Auto-Creation Bug (#13797) causes Claude Code to accidentally create public GitHub issues containing private project details. Over 17 accidental disclosures documented, affecting v2.0.65+. The danger: internal code, architecture decisions, and private context leak publicly. Mitigation: disable the gh CLI tool or restrict GitHub permissions.",
+      "source_file": "questions/13-security-hardening/012-what-is-the-github-issue-auto-creation-bug-13797.md",
       "doc_reference": {
         "file": "guide/known-issues.md",
         "section": "GitHub Issue Auto-Creation Bug",
@@ -5537,6 +5769,7 @@
       },
       "correct": "c",
       "explanation": "Default retention is 5 years with data used for model training. By opting out of training at claude.ai/settings/data-privacy-controls, retention reduces to 30 days (safety monitoring only). Enterprise API (ZDR) has 0-day retention.",
+      "source_file": "questions/14-privacy-observability/001-what-is-the-default-data-retention-period-for.md",
       "doc_reference": {
         "file": "guide/data-privacy.md",
         "section": "TL;DR - Retention Summary",
@@ -5561,6 +5794,7 @@
       },
       "correct": "b",
       "explanation": "Everything Claude sees is sent: your prompts, files Claude reads (including .env if not excluded!), MCP server results (SQL queries, API responses), Bash command outputs, and error messages with stack traces. Use permissions.deny to block sensitive files.",
+      "source_file": "questions/14-privacy-observability/002-what-data-is-sent-to-anthropic-when-using-claude.md",
       "doc_reference": {
         "file": "guide/data-privacy.md",
         "section": "What Leaves Your Machine",
@@ -5584,6 +5818,7 @@
       },
       "correct": "b",
       "explanation": "When MCP executes a database query, ALL results are sent to Anthropic: \"SELECT * FROM orders\" → 100 rows with customer names, emails, addresses → stored according to your retention tier. NEVER connect production databases. Use dev/staging with anonymized data.",
+      "source_file": "questions/14-privacy-observability/003-what-is-the-risk-when-connecting-a-database-via.md",
       "doc_reference": {
         "file": "guide/data-privacy.md",
         "section": "Risk 2: MCP Database Access",
@@ -5608,6 +5843,7 @@
       },
       "correct": "b",
       "explanation": "Visit claude.ai/settings/data-privacy-controls and toggle OFF \"Allow model training\". This immediately reduces retention from 5 years to 30 days (safety monitoring only). Enterprise API (ZDR) provides 0-day retention for HIPAA/GDPR compliance.",
+      "source_file": "questions/14-privacy-observability/004-how-can-you-reduce-claude-code-data-retention.md",
       "doc_reference": {
         "file": "guide/data-privacy.md",
         "section": "Opt-Out of Training",
@@ -5631,6 +5867,7 @@
       },
       "correct": "c",
       "explanation": "Enterprise API (Zero Data Retention) has 0-day retention - data is processed in real-time and not stored. Required for HIPAA, GDPR, PCI-DSS compliance and government contracts. Requires enterprise contract with Anthropic.",
+      "source_file": "questions/14-privacy-observability/005-what-is-the-enterprise-api-zdr-data-retention.md",
       "doc_reference": {
         "file": "guide/data-privacy.md",
         "section": "Tier 3: Enterprise API (Zero Data Retention)",
@@ -5655,6 +5892,7 @@
       },
       "correct": "b",
       "explanation": "session-search.sh is the recommended tool: zero dependencies (bash only), fast (~10ms list, ~400ms search), displays ready-to-use 'claude --resume' commands. Install with alias 'cs' for quick access. Alternative Python tools exist but are slower.",
+      "source_file": "questions/14-privacy-observability/006-what-is-the-recommended-session-search-tool-from.md",
       "doc_reference": {
         "file": "guide/observability.md",
         "section": "Recommended: session-search.sh",
@@ -5678,6 +5916,7 @@
       },
       "correct": "b",
       "explanation": "Session logging uses PostToolUse hook - it runs after each tool completes, capturing tool name, file path, project, and token estimates. Configure in settings.json with the session-logger.sh script. Logs are stored as JSONL files in ~/.claude/logs/.",
+      "source_file": "questions/14-privacy-observability/007-what-hook-event-is-used-for-session-logging.md",
       "doc_reference": {
         "file": "guide/observability.md",
         "section": "Register in Settings",
@@ -5701,6 +5940,7 @@
       },
       "correct": "b",
       "explanation": "The logger estimates tokens using ~4 characters per token heuristic. This is approximate and tends to slightly overestimate. Claude Code CLI doesn't expose actual API token metrics, so estimates have ~15-25% variance from actual billing.",
+      "source_file": "questions/14-privacy-observability/008-what-is-the-token-estimation-method-used-by-the.md",
       "doc_reference": {
         "file": "guide/observability.md",
         "section": "Token Estimation Method",
@@ -5724,6 +5964,7 @@
       },
       "correct": "c",
       "explanation": "Monitoring CANNOT provide: exact token counts (CLI doesn't expose API metrics), actual API costs (estimates only), TTFT timing, real-time streaming metrics, or context window usage. It CAN track: tool usage counts, file access patterns, relative comparisons, operation timing.",
+      "source_file": "questions/14-privacy-observability/009-what-cannot-the-session-monitoring-do.md",
       "doc_reference": {
         "file": "guide/observability.md",
         "section": "What This Monitoring CANNOT Do",
@@ -5748,6 +5989,7 @@
       },
       "correct": "b",
       "explanation": "Sessions are stored locally at ~/.claude/projects/<project>/ as JSONL files. This enables session resume with 'claude --resume <id>' or 'claude -c' for most recent. Custom logs from session-logger.sh go to ~/.claude/logs/ (configurable via CLAUDE_LOG_DIR).",
+      "source_file": "questions/14-privacy-observability/010-where-are-claude-code-session-logs-stored-locally.md",
       "doc_reference": {
         "file": "guide/observability.md",
         "section": "Native Commands",
@@ -5772,6 +6014,7 @@
       },
       "correct": "b",
       "explanation": "AI traceability in git commits:\n\n- **Co-Authored-By**: When AI generated significant portions of code (implementation, refactoring)\n- **Assisted-By**: When AI only advised, reviewed, or suggested minor changes\n\nThis distinction matters for code ownership, audit trails, and understanding who (or what) actually wrote the code. Some teams add this to CLAUDE.md as a mandatory commit convention.",
+      "source_file": "questions/14-privacy-observability/011-when-should-you-use-co-authored-by-vs-assisted-by.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "AI Traceability",
@@ -5796,6 +6039,7 @@
       },
       "correct": "b",
       "explanation": "The philosophy is \"augmentation, not replacement.\"\n\nClaude Code excels at contextual reasoning and implementation, but has gaps:\n- No real-time web search with source verification\n- No image generation\n- No PowerPoint/slide generation\n- No audio synthesis\n\nThe goal is to chain the right tool for each step of your workflow.",
+      "source_file": "questions/15-ai-ecosystem/001-what-is-the-main-philosophy-behind-using.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Introduction",
@@ -5820,6 +6064,7 @@
       },
       "correct": "b",
       "explanation": "Perplexity excels at research with verified sources.\n\nUse Perplexity for:\n- \"What's the latest API for X?\" (real-time info)\n- \"Compare 5 libraries for auth\" (sourced comparisons)\n- Deep Research mode synthesizes 100+ sources\n\nUse Claude Code for:\n- Implementation in your codebase\n- Contextual code explanation\n- Multi-file editing",
+      "source_file": "questions/15-ai-ecosystem/002-when-should-you-use-perplexity-instead-of-claude.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "1. Perplexity AI",
@@ -5843,6 +6088,7 @@
       },
       "correct": "b",
       "explanation": "The Research-to-Code pipeline:\n\n1. PERPLEXITY (Deep Research)\n   - Research best practices with sources\n   - Output: 2000-word spec with citations\n\n2. Export as spec.md\n\n3. CLAUDE CODE\n   - \"Implement following spec.md\"\n   - Output: Working implementation with tests\n\nThis ensures implementation is based on verified, current information.",
+      "source_file": "questions/15-ai-ecosystem/003-what-is-the-recommended-research-to-code-pipeline.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Integration Workflow",
@@ -5866,6 +6112,7 @@
       },
       "correct": "c",
       "explanation": "Gemini 2.5 Pro excels at visual understanding:\n\nVisual-to-Code Pipeline:\n1. GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity)\n2. CLAUDE CODE: Refine for your project\n   - Add TypeScript types\n   - Connect to your components\n   - Integrate with your state management\n\nClaude Code alone has limited image understanding compared to Gemini.",
+      "source_file": "questions/15-ai-ecosystem/004-which-tool-is-best-for-converting-a-ui-screenshot.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "2. Google Gemini",
@@ -5890,6 +6137,7 @@
       },
       "correct": "c",
       "explanation": "Kimi (kimi.ai) from Moonshot AI specializes in PPTX generation:\n\nFeatures:\n- Native PPTX export (actual slides, not markdown)\n- 128K+ token context (entire codebases)\n- Code-aware layouts with syntax highlighting\n- Excellent for stakeholder decks from technical content\n\nWorkflow: Claude Code generates summary -> Kimi creates presentation",
+      "source_file": "questions/15-ai-ecosystem/005-which-tool-should-you-use-to-create-powerpoint.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "3. Kimi",
@@ -5913,6 +6161,7 @@
       },
       "correct": "b",
       "explanation": "NotebookLM's Audio Overview feature:\n\n- Upload 50+ documentation files\n- Generates 10-15 minute \"podcast\"\n- Two AI hosts discuss your codebase\n- Perfect for onboarding or reviewing large systems\n\nWorkflow:\n1. Export docs to combined-docs.md\n2. Upload to NotebookLM\n3. Generate Audio Overview\n4. Listen during commute\n5. Return to Claude Code with deeper understanding",
+      "source_file": "questions/15-ai-ecosystem/006-what-is-notebooklms-unique-feature-for-developer.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "4. NotebookLM",
@@ -5935,6 +6184,7 @@
       },
       "correct": "b",
       "explanation": "The complete pipeline has 3 phases:\n\nPLANNING PHASE:\n- Perplexity: Deep Research -> spec.md\n- Gemini: Diagram Analysis -> mermaid + plan\n- NotebookLM: Doc Synthesis -> audio overview\n\nIMPLEMENTATION PHASE:\n- Claude Code: Multi-file implementation\n- IDE + Copilot: Inline autocomplete\n\nDELIVERY PHASE:\n- Claude Code: PR description, release notes\n- Kimi: Stakeholder deck (presentation.pptx)",
+      "source_file": "questions/15-ai-ecosystem/007-in-the-complete-workflow-pipeline-what-is-the.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "7. Workflow Orchestration",
@@ -5959,6 +6209,7 @@
       },
       "correct": "c",
       "explanation": "v0.dev excels at rapid UI prototyping:\n\n- Generates React + Shadcn + Tailwind components\n- Live preview in browser\n- Quick iteration on UI designs\n\nWorkflow:\n1. v0: Prompt -> Get component preview\n2. Export code\n3. Claude Code: Adapt for your project\n   - Add TypeScript types\n   - Connect to your APIs\n   - Integrate with your design system",
+      "source_file": "questions/15-ai-ecosystem/008-what-is-v0dev-best-used-for-in-the-ai-ecosystem.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "6. UI Prototypers",
@@ -5982,6 +6233,7 @@
       },
       "correct": "c",
       "explanation": "Comparison:\n\n| Feature | Claude WebSearch | Perplexity Pro |\n|---------|-----------------|----------------|\n| Source count | ~5-10 | 100+ (Deep Research) |\n| Source verification | Basic | Full citations |\n| Best for | Quick lookups | Comprehensive research |\n| Cost | Included | $20/month |\n\nRecommendation: Use Claude WebSearch for quick factual checks.\nUse Perplexity Deep Research before significant implementations.",
+      "source_file": "questions/15-ai-ecosystem/009-how-does-claude-websearch-compare-to-perplexity.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "Comparison",
@@ -6004,6 +6256,7 @@
       },
       "correct": "b",
       "explanation": "Recommended subscription stacks:\n\nMinimal Stack ($40-70/month):\n- Claude Code (pay-per-use): $20-50\n- Perplexity Pro: $20\n- Everything else: Free tiers (NotebookLM, Kimi, Gemini free)\n\nBalanced Stack ($80-110/month):\n- Add Gemini Advanced ($20) and Cursor Pro ($20)\n\nCost optimization tips:\n- Use Haiku for simple tasks\n- Batch research sessions in Perplexity\n- Check context usage regularly (/status)",
+      "source_file": "questions/15-ai-ecosystem/010-what-is-the-minimal-stack-monthly-cost.md",
       "doc_reference": {
         "file": "guide/ai-ecosystem.md",
         "section": "8. Cost & Subscription Strategy",
@@ -6027,6 +6280,7 @@
       },
       "correct": "c",
       "explanation": "The Claude Code to LM Studio bridge provides 80-90% cost savings. Strategy: use Opus for planning phase (~$0.50-2 per session) then execute implementation with a free local LLM via LM Studio. The bridge script translates Claude's plan into local LLM instructions. Trade-off: local LLMs are less capable but free.",
+      "source_file": "questions/15-ai-ecosystem/011-what-cost-savings-does-the-claude-code-to-lm.md",
       "doc_reference": {
         "file": "examples/scripts/bridge.py",
         "section": "LM Studio Bridge",
@@ -6049,6 +6303,7 @@
       },
       "correct": "c",
       "explanation": "Three documented external orchestration systems:\n\n1. **Gas Town** (Steve Yegge) - Multi-agent coordination with shared context\n2. **multiclaude** (dlorenc) - Parallel Claude Code instances with task distribution\n3. **agent-chat** (Justin Abrahms) - Inter-agent communication protocol\n\nThese are community-built tools, not official Anthropic products. Each solves multi-agent coordination differently.",
+      "source_file": "questions/15-ai-ecosystem/012-what-are-the-3-documented-external-orchestration.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "External Orchestration",
@@ -6072,6 +6327,7 @@
       },
       "correct": "c",
       "explanation": "Skeleton project evaluation uses 3 specialized sub-agents:\n\n1. **Security** - Audit dependencies, secrets management, auth patterns, known vulnerabilities\n2. **Architecture** - Evaluate code organization, patterns, scalability, maintainability\n3. **Developer Experience (DX)** - Check setup complexity, documentation quality, tooling, onboarding friction\n\nEach agent produces a score and recommendations before the fork decision.",
+      "source_file": "questions/15-ai-ecosystem/013-what-3-areas-should-sub-agents-audit-when.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Skeleton Projects Workflow",

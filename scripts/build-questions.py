@@ -258,7 +258,8 @@ def build_questions(questions_dir: Path) -> Dict:
                 'question': question_text,
                 'options': frontmatter['options'],
                 'correct': frontmatter['correct'],
-                'explanation': explanation_text
+                'explanation': explanation_text,
+                'source_file': str(filepath.relative_to(questions_dir.parent))
             }
 
             # Optional fields (must be added in order)

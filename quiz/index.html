@@ -1417,7 +1417,7 @@
             // Event listeners
             categoryGrid.querySelectorAll('.category-item').forEach(item => {
                 item.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'INPUT') return;
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
                     const checkbox = item.querySelector('input');
                     checkbox.checked = !checkbox.checked;
                     toggleCategory(parseInt(item.dataset.id), checkbox.checked);
@@ -1555,7 +1555,7 @@
 
             // Progress
             document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
-            document.getElementById('question-number').innerHTML = `${currentQuestionIndex + 1} / ${total}  ·  <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/blob/main/questions.json#:~:text=${encodeURIComponent('"id": "' + q.id + '"')}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-style: dotted;">${q.id}</a>`;
+            document.getElementById('question-number').innerHTML = `${currentQuestionIndex + 1} / ${total}  ·  <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/blob/main/${q.source_file}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-style: dotted;">${q.id}</a>`;
             document.getElementById('question-category').textContent = getCategoryName(q.category_id);
 
             const diffEl = document.getElementById('question-difficulty');
