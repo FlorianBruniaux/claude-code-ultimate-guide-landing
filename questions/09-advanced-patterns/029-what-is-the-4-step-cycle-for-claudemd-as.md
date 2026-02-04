@@ -17,15 +17,15 @@ doc_reference:
   anchor: '#boris-cherny-mental-models'
 ---
 
-What is the '4-step cycle' for CLAUDE.md as compounding memory (Boris Cherny)?
+What is the '4-step cycle' for CLAUDE.md as compounding memory?
 
 ---
 
-Boris Cherny's mental model for CLAUDE.md as compounding memory:
+The guide interprets Boris Cherny's concept of CLAUDE.md as "compounding memory" into a 4-step cycle:
 
 1. **Error** - Claude makes a mistake
 2. **Rule** - You add a rule to CLAUDE.md preventing it
 3. **Read** - Claude reads CLAUDE.md on every session start
 4. **Never repeated** - The mistake never happens again
 
-Goal: never correct Claude twice for the same mistake. CLAUDE.md compounds over time.
+Boris Cherny states: "I treat Claude.md as compounding memory: every mistake becomes a durable rule for the team." The 4-step framework is the guide's interpretation of this principle, not an explicit quote from Boris.

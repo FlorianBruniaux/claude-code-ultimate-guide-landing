@@ -17,7 +17,7 @@ doc_reference:
   anchor: '#sub-agent-types'
 ---
 
-What are the 4 specialized sub-agent types available in Claude Code?
+What are the specialized sub-agent types available in Claude Code?
 
 ---
 

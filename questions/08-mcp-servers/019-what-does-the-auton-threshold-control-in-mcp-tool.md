@@ -9,25 +9,24 @@ correct: c
 options:
   a: Maximum concurrent MCP connections
   b: Cache size for tool results
-  c: Automatic lazy loading when tool definitions exceed 10,000 tokens - tools discovered
-    via Tool Search instead of loaded upfront
-  d: Retry count for failed tool calls
+  c: Context percentage threshold that triggers automatic lazy loading (5%, 10%, or 20%)
+  d: Maximum number of tools to load per MCP server
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: MCP Configuration
-  anchor: '#mcp-configuration'
+  file: guide/architecture.md
+  section: Tool Search & Lazy Loading
+  anchor: '#tool-search-lazy-loading'
 ---
 
 What does the 'auto:N' threshold control in MCP tool configuration?
 
 ---
 
-When MCP tool definitions exceed 10,000 tokens, Claude Code automatically activates lazy loading. Instead of loading all tool definitions upfront, it marks them with 'defer_loading: true' and provides a Tool Search tool for on-demand discovery.
+The `ENABLE_TOOL_SEARCH=auto:N` setting controls the **context percentage threshold** that triggers lazy loading. Available values:
 
-When Claude needs a specific tool, it searches using keywords and selectively loads approximately 3-5 relevant tools (~3K tokens) per query. This dramatically reduces baseline context usage:
+- `auto:5` → Aggressive (5% context threshold) - for power users with 100+ tools
+- `auto:10` → Default (10% context threshold) - balanced for 20-50 tools
+- `auto:20` → Conservative (20% context threshold) - for lightweight setups with 5-10 tools
 
-**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading configured for only 4 specific tools, it uses 1,500 tokens—a 91% reduction.
+When tool definitions exceed this percentage of total context, Claude Code automatically activates lazy loading. Instead of loading all tools upfront, it provides a Tool Search tool for on-demand discovery, dramatically reducing baseline context usage.
 
-**Important**: There is no configurable 'auto:N' parameter where N = max tools to load. The 10K token threshold triggers lazy loading automatically. Claude Code detects when tool descriptions surpass this threshold and switches to the Tool Search mechanism without manual configuration.
-
-This feature was introduced to address context pollution from MCP servers with many tools, most of which aren't frequently used.
+**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading, Claude only loads 3-5 relevant tools per query (~3K tokens)—a 91% reduction.

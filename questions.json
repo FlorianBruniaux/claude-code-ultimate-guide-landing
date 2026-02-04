@@ -109,8 +109,8 @@
         "c": "pip install claude-code",
         "d": "curl -fsSL https://claude.ai/install.sh | sh"
       },
-      "correct": "d",
-      "explanation": "The recommended installation method is `curl -fsSL https://claude.ai/install.sh | sh` which works across all platforms. npm is deprecated - use `claude install` to migrate if you installed via npm. While Homebrew is available for macOS, the shell script is the universal method recommended in official docs.",
+      "correct": "b",
+      "explanation": "The universal method is `npm install -g @anthropic-ai/claude-code` which works across all platforms (Windows, macOS, Linux). While shell scripts (curl/PowerShell) and Homebrew are available alternatives, npm is explicitly labeled as the \"Universal Method\" in the official guide.",
       "source_file": "questions/01-quick-start/001-what-is-the-recommended-universal-method-to.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -1242,7 +1242,7 @@
         "d": ".claude/hooks/"
       },
       "correct": "c",
-      "explanation": "Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). The .claude/CLAUDE.md file is project memory and should be committed. Files to commit include: agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.",
+      "explanation": "Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). Note: /project/CLAUDE.md (at project root) is project memory and should be committed, NOT gitignored. Other files to commit include: .claude/agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.",
       "source_file": "questions/03-memory-settings/011-which-of-these-should-be-gitignored.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -3451,16 +3451,16 @@
       "options": {
         "a": "Maximum concurrent MCP connections",
         "b": "Cache size for tool results",
-        "c": "Automatic lazy loading when tool definitions exceed 10,000 tokens - tools discovered via Tool Search instead of loaded upfront",
-        "d": "Retry count for failed tool calls"
+        "c": "Context percentage threshold that triggers automatic lazy loading (5%, 10%, or 20%)",
+        "d": "Maximum number of tools to load per MCP server"
       },
       "correct": "c",
-      "explanation": "When MCP tool definitions exceed 10,000 tokens, Claude Code automatically activates lazy loading. Instead of loading all tool definitions upfront, it marks them with 'defer_loading: true' and provides a Tool Search tool for on-demand discovery.\n\nWhen Claude needs a specific tool, it searches using keywords and selectively loads approximately 3-5 relevant tools (~3K tokens) per query. This dramatically reduces baseline context usage:\n\n**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading configured for only 4 specific tools, it uses 1,500 tokens—a 91% reduction.\n\n**Important**: There is no configurable 'auto:N' parameter where N = max tools to load. The 10K token threshold triggers lazy loading automatically. Claude Code detects when tool descriptions surpass this threshold and switches to the Tool Search mechanism without manual configuration.\n\nThis feature was introduced to address context pollution from MCP servers with many tools, most of which aren't frequently used.",
+      "explanation": "The `ENABLE_TOOL_SEARCH=auto:N` setting controls the **context percentage threshold** that triggers lazy loading. Available values:\n\n- `auto:5` → Aggressive (5% context threshold) - for power users with 100+ tools\n- `auto:10` → Default (10% context threshold) - balanced for 20-50 tools\n- `auto:20` → Conservative (20% context threshold) - for lightweight setups with 5-10 tools\n\nWhen tool definitions exceed this percentage of total context, Claude Code automatically activates lazy loading. Instead of loading all tools upfront, it provides a Tool Search tool for on-demand discovery, dramatically reducing baseline context usage.\n\n**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading, Claude only loads 3-5 relevant tools per query (~3K tokens)—a 91% reduction.",
       "source_file": "questions/08-mcp-servers/019-what-does-the-auton-threshold-control-in-mcp-tool.md",
       "doc_reference": {
-        "file": "guide/ultimate-guide.md",
-        "section": "MCP Configuration",
-        "anchor": "#mcp-configuration"
+        "file": "guide/architecture.md",
+        "section": "Tool Search & Lazy Loading",
+        "anchor": "#tool-search-lazy-loading"
       }
     },
     {
@@ -3545,13 +3545,13 @@
       "category_id": 9,
       "question": "What CLI flag runs Claude Code without interactive prompts for CI/CD?",
       "options": {
-        "a": "--ci",
+        "a": "-p (prompt flag for non-interactive execution)",
         "b": "--headless",
         "c": "--batch",
         "d": "--automated"
       },
-      "correct": "b",
-      "explanation": "The `--headless` flag runs Claude Code without interactive prompts:\n\n```bash\n# Basic headless execution\nclaude --headless \"Run the tests and report results\"\n\n# With timeout\nclaude --headless --timeout 300 \"Build the project\"\n```\n\nEssential for CI/CD integration, automated pipelines, and scripted workflows.",
+      "correct": "a",
+      "explanation": "The `-p` flag provides a prompt directly on the command line, running Claude Code without interactive prompts:\n\n```bash\n# Basic headless execution\nclaude -p \"Run the tests and report results\"\n\n# With timeout\nclaude -p --timeout 300 \"Build the project\"\n\n# With specific model\nclaude -p --model sonnet \"Analyze code quality\"\n```\n\nNote: There is no `--headless` flag. The `-p` flag inherently makes execution non-interactive by accepting the prompt as a CLI argument. Essential for CI/CD integration, automated pipelines, and scripted workflows.",
       "source_file": "questions/09-advanced-patterns/003-what-cli-flag-runs-claude-code-without.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -4164,7 +4164,7 @@
         "power"
       ],
       "category_id": 9,
-      "question": "What is the '4-step cycle' for CLAUDE.md as compounding memory (Boris Cherny)?",
+      "question": "What is the '4-step cycle' for CLAUDE.md as compounding memory?",
       "options": {
         "a": "Write, Test, Deploy, Monitor",
         "b": "Plan, Execute, Review, Commit",
@@ -4172,7 +4172,7 @@
         "d": "Ask, Implement, Validate, Ship"
       },
       "correct": "c",
-      "explanation": "Boris Cherny's mental model for CLAUDE.md as compounding memory:\n\n1. **Error** - Claude makes a mistake\n2. **Rule** - You add a rule to CLAUDE.md preventing it\n3. **Read** - Claude reads CLAUDE.md on every session start\n4. **Never repeated** - The mistake never happens again\n\nGoal: never correct Claude twice for the same mistake. CLAUDE.md compounds over time.",
+      "explanation": "The guide interprets Boris Cherny's concept of CLAUDE.md as \"compounding memory\" into a 4-step cycle:\n\n1. **Error** - Claude makes a mistake\n2. **Rule** - You add a rule to CLAUDE.md preventing it\n3. **Read** - Claude reads CLAUDE.md on every session start\n4. **Never repeated** - The mistake never happens again\n\nBoris Cherny states: \"I treat Claude.md as compounding memory: every mistake becomes a durable rule for the team.\" The 4-step framework is the guide's interpretation of this principle, not an explicit quote from Boris.",
       "source_file": "questions/09-advanced-patterns/029-what-is-the-4-step-cycle-for-claudemd-as.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -5369,7 +5369,7 @@
         "power"
       ],
       "category_id": 12,
-      "question": "What are the 4 specialized sub-agent types available in Claude Code?",
+      "question": "What are the specialized sub-agent types available in Claude Code?",
       "options": {
         "a": "Reader, Writer, Searcher, Executor",
         "b": "Explore, Plan, general-purpose (3 types)",

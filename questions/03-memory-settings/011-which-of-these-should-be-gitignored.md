@@ -23,4 +23,4 @@ Which of these should be gitignored?
 
 ---
 
-Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). The .claude/CLAUDE.md file is project memory and should be committed. Files to commit include: agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.
+Files that should be gitignored are: CLAUDE.local.md (local personal instructions) and .claude/settings.local.json (personal permissions). Note: /project/CLAUDE.md (at project root) is project memory and should be committed, NOT gitignored. Other files to commit include: .claude/agents/, commands/, hooks/, skills/, rules/, and settings.json. This separation allows personal customization while sharing team configurations.

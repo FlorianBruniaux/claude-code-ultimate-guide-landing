@@ -7,7 +7,7 @@ profiles:
 - senior
 - power
 - pm
-correct: d
+correct: b
 options:
   a: brew install claude-code
   b: npm install -g @anthropic-ai/claude-code
@@ -24,4 +24,4 @@ What is the recommended universal method to install Claude Code?
 
 ---
 
-The recommended installation method is `curl -fsSL https://claude.ai/install.sh | sh` which works across all platforms. npm is deprecated - use `claude install` to migrate if you installed via npm. While Homebrew is available for macOS, the shell script is the universal method recommended in official docs.
+The universal method is `npm install -g @anthropic-ai/claude-code` which works across all platforms (Windows, macOS, Linux). While shell scripts (curl/PowerShell) and Homebrew are available alternatives, npm is explicitly labeled as the "Universal Method" in the official guide.

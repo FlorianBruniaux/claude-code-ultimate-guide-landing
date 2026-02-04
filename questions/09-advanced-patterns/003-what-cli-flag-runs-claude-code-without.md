@@ -5,9 +5,9 @@ difficulty: senior
 profiles:
 - senior
 - power
-correct: b
+correct: a
 options:
-  a: --ci
+  a: -p (prompt flag for non-interactive execution)
   b: --headless
   c: --batch
   d: --automated
@@ -21,14 +21,17 @@ What CLI flag runs Claude Code without interactive prompts for CI/CD?
 
 ---
 
-The `--headless` flag runs Claude Code without interactive prompts:
+The `-p` flag provides a prompt directly on the command line, running Claude Code without interactive prompts:
 
 ```bash
 # Basic headless execution
-claude --headless "Run the tests and report results"
+claude -p "Run the tests and report results"
 
 # With timeout
-claude --headless --timeout 300 "Build the project"
+claude -p --timeout 300 "Build the project"
+
+# With specific model
+claude -p --model sonnet "Analyze code quality"
 ```
 
-Essential for CI/CD integration, automated pipelines, and scripted workflows.
+Note: There is no `--headless` flag. The `-p` flag inherently makes execution non-interactive by accepting the prompt as a CLI argument. Essential for CI/CD integration, automated pipelines, and scripted workflows.
