@@ -445,12 +445,14 @@
         }
 
         .btn-report-error {
+            display: inline-block;
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text-secondary);
             padding: var(--space-xs) var(--space-md);
             border-radius: var(--border-radius);
             font-size: 0.85rem;
+            text-decoration: none;
             cursor: pointer;
             transition: all var(--transition-fast);
         }
@@ -460,34 +462,6 @@
             color: var(--text-primary);
         }
 
-        .btn-report-error.flagged {
-            background: var(--danger);
-            color: white;
-            border-color: var(--danger);
-        }
-
-        .report-comment-box {
-            display: none;
-            margin-top: var(--space-md);
-            animation: slideDown 0.2s ease-out;
-        }
-
-        .report-comment-box.show {
-            display: block;
-        }
-
-        .report-comment-box textarea {
-            width: 100%;
-            padding: var(--space-sm);
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.9rem;
-            resize: vertical;
-            margin-bottom: var(--space-sm);
-        }
 
         @keyframes slideDown {
             from {
@@ -732,59 +706,6 @@
             color: var(--warning);
             font-size: 1.1rem;
             margin-left: var(--space-md);
-        }
-
-        /* Flagged questions section */
-        .flagged-questions-section {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-2xl);
-            text-align: left;
-        }
-
-        .flagged-questions-section h4 {
-            margin-bottom: var(--space-sm);
-            color: var(--text-primary);
-        }
-
-        #flagged-questions-list {
-            margin-bottom: var(--space-md);
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .flagged-question-item {
-            padding: var(--space-sm);
-            margin-bottom: var(--space-sm);
-            background: var(--bg-tertiary);
-            border-left: 3px solid var(--danger);
-            border-radius: var(--border-radius);
-            font-size: 0.9rem;
-        }
-
-        .flagged-question-item .question-id {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-family: var(--font-mono);
-        }
-
-        .flagged-question-item .question-preview {
-            color: var(--text-secondary);
-            margin: var(--space-xs) 0;
-        }
-
-        .flagged-question-item .flag-comment {
-            color: var(--text-muted);
-            font-style: italic;
-            font-size: 0.85rem;
-        }
-
-        .flagged-actions {
-            display: flex;
-            gap: var(--space-sm);
-            flex-wrap: wrap;
         }
 
         .results-actions {
@@ -1089,11 +1010,7 @@
                     <a id="official-doc-link" class="doc-link official-doc-link" href="#" target="_blank" rel="noopener">Official docs &rarr;</a>
                 </div>
                 <div class="report-error-section">
-                    <button class="btn-report-error" id="btn-report-error">🚩 Report error</button>
-                    <div class="report-comment-box" id="report-comment-box">
-                        <textarea id="report-comment" placeholder="Optional: describe the issue (ambiguous, misleading, outdated...)" rows="3"></textarea>
-                        <button class="btn btn-secondary" id="btn-cancel-report">Cancel</button>
-                    </div>
+                    <a href="#" class="btn-report-error" id="btn-report-error" target="_blank" rel="noopener noreferrer">🚩 Report error on GitHub</a>
                 </div>
             </div>
 
@@ -1155,18 +1072,6 @@
                     These questions have the lowest success rates overall.
                 </p>
                 <div id="most-missed-list"></div>
-            </div>
-
-            <div class="flagged-questions-section" id="flagged-questions-section" style="display: none;">
-                <h4>🚩 Flagged Questions</h4>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md);">
-                    You reported <span id="flagged-count">0</span> question(s) during this quiz.
-                </p>
-                <div id="flagged-questions-list"></div>
-                <div class="flagged-actions">
-                    <button class="btn btn-secondary" id="copy-report-btn">📋 Copy Report</button>
-                    <button class="btn btn-secondary" id="github-issue-btn">🐛 Open GitHub Issue</button>
-                </div>
             </div>
 
             <div class="share-text" id="share-text">
@@ -1335,71 +1240,7 @@
             return Math.round((qStats.correct / qStats.attempts) * 100);
         }
 
-        // Report error system
-        let flaggedQuestions = {}; // { questionId: { flagged: true, comment: string } }
-
-        function getFlaggedQuestions() {
-            try {
-                const stored = localStorage.getItem('ccquiz_flagged');
-                return stored ? JSON.parse(stored) : {};
-            } catch (e) {
-                console.error('Failed to parse flagged questions:', e);
-                return {};
-            }
-        }
-
-        function saveFlaggedQuestions() {
-            try {
-                localStorage.setItem('ccquiz_flagged', JSON.stringify(flaggedQuestions));
-            } catch (e) {
-                console.error('Failed to save flagged questions:', e);
-            }
-        }
-
-        function toggleQuestionFlag(questionId, comment = '') {
-            if (flaggedQuestions[questionId]) {
-                delete flaggedQuestions[questionId];
-            } else {
-                flaggedQuestions[questionId] = { flagged: true, comment };
-            }
-            saveFlaggedQuestions();
-        }
-
-        function generateReportText() {
-            const flaggedList = Object.entries(flaggedQuestions).map(([qid, data]) => {
-                const q = quizData.questions.find(q => q.id === qid);
-                if (!q) return null;
-                return `## Question ${qid}\n` +
-                       `**Category**: ${getCategoryName(q.category_id)}\n` +
-                       `**Difficulty**: ${q.difficulty}\n` +
-                       `**Question**: ${q.question}\n` +
-                       `**Correct Answer**: ${q.correct}) ${q.options[q.correct]}\n` +
-                       (data.comment ? `**Comment**: ${data.comment}\n` : '') +
-                       `\n`;
-            }).filter(Boolean).join('\n');
-
-            return `# Quiz Error Report\n\n` +
-                   `Flagged ${Object.keys(flaggedQuestions).length} question(s)\n\n` +
-                   flaggedList;
-        }
-
-        function copyReportToClipboard() {
-            const report = generateReportText();
-            navigator.clipboard.writeText(report).then(() => {
-                alert('Report copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy report. Please try again.');
-            });
-        }
-
-        function openGitHubIssue() {
-            const report = generateReportText();
-            const title = `Quiz Error Report: ${Object.keys(flaggedQuestions).length} question(s)`;
-            const body = encodeURIComponent(report);
-            const url = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/issues/new?title=${encodeURIComponent(title)}&body=${body}`;
-            window.open(url, '_blank');
-        }
+        // Report error system removed - now using direct GitHub Issues links per question
 
         // DOM Elements
         const setupScreen = document.getElementById('quiz-setup');
@@ -1415,8 +1256,6 @@
         async function loadQuestions() {
             const response = await fetch('../questions.json');
             quizData = await response.json();
-            // Load flagged questions from localStorage
-            flaggedQuestions = getFlaggedQuestions();
             renderCategoryGrid();
         }
 
@@ -1656,63 +1495,32 @@
                     officialDocLink.style.display = 'none';
                 }
 
-                // Report error button
+                // Report error button → GitHub Issue link
                 const btnReportError = document.getElementById('btn-report-error');
-                const reportCommentBox = document.getElementById('report-comment-box');
-                const reportComment = document.getElementById('report-comment');
-                const btnCancelReport = document.getElementById('btn-cancel-report');
 
-                // Update button state
-                if (flaggedQuestions[q.id]) {
-                    btnReportError.classList.add('flagged');
-                    btnReportError.textContent = '🚩 Reported';
-                } else {
-                    btnReportError.classList.remove('flagged');
-                    btnReportError.textContent = '🚩 Report error';
-                }
+                // Build GitHub Issue URL with pre-filled data
+                const issueTitle = `Question ${q.id}: Error report`;
+                const issueBody = `**Question ID:** ${q.id}
+**Category:** ${getCategoryName(q.category_id)}
+**Difficulty:** ${q.difficulty}
 
-                // Remove old event listeners by cloning
-                const newBtnReport = btnReportError.cloneNode(true);
-                btnReportError.parentNode.replaceChild(newBtnReport, btnReportError);
+**Question text:**
+${q.question}
 
-                const newBtnCancel = btnCancelReport.cloneNode(true);
-                btnCancelReport.parentNode.replaceChild(newBtnCancel, btnCancelReport);
+**Source file:** [View on GitHub](https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/blob/main/${q.source_file})
 
-                // Add new event listeners
-                document.getElementById('btn-report-error').addEventListener('click', () => {
-                    if (flaggedQuestions[q.id]) {
-                        // Unflag
-                        delete flaggedQuestions[q.id];
-                        saveFlaggedQuestions();
-                        renderQuestion();
-                    } else {
-                        // Show comment box
-                        reportCommentBox.classList.add('show');
-                        reportComment.value = flaggedQuestions[q.id]?.comment || '';
-                        reportComment.focus();
-                    }
-                });
+---
 
-                document.getElementById('btn-cancel-report').addEventListener('click', () => {
-                    reportCommentBox.classList.remove('show');
-                });
+**Describe the issue:**
+<!-- Examples: ambiguous wording, outdated information, wrong answer, typo, etc. -->
 
-                // Save flag on blur or Enter
-                reportComment.addEventListener('blur', () => {
-                    if (reportCommentBox.classList.contains('show')) {
-                        toggleQuestionFlag(q.id, reportComment.value.trim());
-                        reportCommentBox.classList.remove('show');
-                        renderQuestion();
-                    }
-                });
+`;
 
-                reportComment.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && e.ctrlKey) {
-                        toggleQuestionFlag(q.id, reportComment.value.trim());
-                        reportCommentBox.classList.remove('show');
-                        renderQuestion();
-                    }
-                });
+                const githubIssueUrl = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=quiz,question-error`;
+
+                btnReportError.href = githubIssueUrl;
+                btnReportError.target = '_blank';
+                btnReportError.rel = 'noopener noreferrer';
             } else {
                 explanationBox.classList.remove('show');
             }
@@ -1905,9 +1713,6 @@
             // Display most missed questions
             renderMostMissedQuestions();
 
-            // Display flagged questions
-            renderFlaggedQuestions();
-
             // Display history
             renderHistory();
         }
@@ -1953,41 +1758,6 @@
                     </div>
                 `;
             }).join('');
-        }
-
-        function renderFlaggedQuestions() {
-            const flaggedSection = document.getElementById('flagged-questions-section');
-            const flaggedCount = Object.keys(flaggedQuestions).length;
-
-            if (flaggedCount === 0) {
-                flaggedSection.style.display = 'none';
-                return;
-            }
-
-            flaggedSection.style.display = 'block';
-            document.getElementById('flagged-count').textContent = flaggedCount;
-
-            const flaggedList = document.getElementById('flagged-questions-list');
-            flaggedList.innerHTML = Object.entries(flaggedQuestions).map(([qid, data]) => {
-                const q = quizData.questions.find(q => q.id === qid);
-                if (!q) return '';
-
-                const questionPreview = q.question.length > 100
-                    ? q.question.substring(0, 100) + '...'
-                    : q.question;
-
-                return `
-                    <div class="flagged-question-item">
-                        <div class="question-id">${qid}</div>
-                        <div class="question-preview">${questionPreview}</div>
-                        ${data.comment ? `<div class="flag-comment">Comment: ${data.comment}</div>` : ''}
-                    </div>
-                `;
-            }).join('');
-
-            // Connect buttons
-            document.getElementById('copy-report-btn').onclick = copyReportToClipboard;
-            document.getElementById('github-issue-btn').onclick = openGitHubIssue;
         }
 
         function renderHistory() {
