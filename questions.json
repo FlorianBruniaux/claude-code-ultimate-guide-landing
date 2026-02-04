@@ -435,12 +435,12 @@
         "d": "Only files that were modified"
       },
       "correct": "b",
-      "explanation": "When you resume a session, Claude retains: full conversation history, files previously read/edited, CLAUDE.md and project settings, and uncommitted code changes awareness. MCP servers restart on each session - their state is NOT preserved. Session-scoped permissions also don't carry over.",
+      "explanation": "When you resume a session (via `claude -c` or `claude -r <id>`), Claude retains:\n- ✅ Full conversation history\n- ✅ Files previously read/edited\n- ✅ CLAUDE.md and project settings\n- ✅ Uncommitted code changes awareness\n- ✅ MCP server state (if Serena is used)\n\n**Not preserved**:\n- ❌ Session-scoped permissions (must re-approve)\n- ❌ Standard MCP server state (Serena exception)",
       "source_file": "questions/01-quick-start/014-when-resuming-a-claude-code-session-what-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "1.3 Essential Commands",
-        "anchor": "#context-preservation"
+        "section": "1.2 Session Continuation and Resume",
+        "line": "753-761"
       },
       "official_doc": "https://code.claude.com/docs/en/how-claude-code-works"
     },
@@ -709,8 +709,8 @@
       "source_file": "questions/02-core-concepts/007-what-is-context-poisoning-also-called-context.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "2.2 Context Management",
-        "anchor": "#context-poisoning-bleeding"
+        "section": "2.2 Context Poisoning (Bleeding)",
+        "line": "2015-2044"
       }
     },
     {
@@ -902,8 +902,8 @@
       "source_file": "questions/02-core-concepts/015-when-should-you-use-xml-structured-prompts.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "2.6 Structured Prompting with XML Tags",
-        "anchor": "#when-to-use-xml-structured-prompts"
+        "section": "2.6 When to Use XML-Structured Prompts",
+        "line": "2927-2951"
       }
     },
     {
@@ -1710,8 +1710,8 @@
       "source_file": "questions/04-agents/011-in-multi-agent-orchestration-what-model.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "4.6 Advanced Agent Patterns",
-        "anchor": "#multi-agent-orchestration-pattern"
+        "section": "4.6 Multi-Agent Orchestration Pattern",
+        "line": "5280-5310"
       }
     },
     {
@@ -3627,8 +3627,8 @@
       "source_file": "questions/09-advanced-patterns/006-what-output-format-flag-gets-structured-json-from.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "9.3 CI/CD Integration",
-        "anchor": "#output-format-control"
+        "section": "9.3 Output Format Control",
+        "line": "9894-9902"
       }
     },
     {

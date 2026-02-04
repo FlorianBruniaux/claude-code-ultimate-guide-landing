@@ -12,8 +12,8 @@ options:
   d: Use the same model for all agents
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 4.6 Advanced Agent Patterns
-  anchor: '#multi-agent-orchestration-pattern'
+  section: 4.6 Multi-Agent Orchestration Pattern
+  line: 5280-5310
 ---
 
 In multi-agent orchestration, what model combination is recommended?

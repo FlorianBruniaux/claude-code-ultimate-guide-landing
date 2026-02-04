@@ -13,8 +13,8 @@ options:
   d: When files get corrupted
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 2.2 Context Management
-  anchor: '#context-poisoning-bleeding'
+  section: 2.2 Context Poisoning (Bleeding)
+  line: 2015-2044
 ---
 
 What is 'context poisoning' (also called context bleeding)?

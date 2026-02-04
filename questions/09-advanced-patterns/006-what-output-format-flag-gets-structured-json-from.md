@@ -13,8 +13,8 @@ options:
   d: --structured
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 9.3 CI/CD Integration
-  anchor: '#output-format-control'
+  section: 9.3 Output Format Control
+  line: 9894-9902
 ---
 
 What output format flag gets structured JSON from Claude for scripting?

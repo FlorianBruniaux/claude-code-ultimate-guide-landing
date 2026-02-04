@@ -14,8 +14,8 @@ options:
   d: Only when working with APIs
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 2.6 Structured Prompting with XML Tags
-  anchor: '#when-to-use-xml-structured-prompts'
+  section: 2.6 When to Use XML-Structured Prompts
+  line: 2927-2951
 ---
 
 When should you use XML-structured prompts?
