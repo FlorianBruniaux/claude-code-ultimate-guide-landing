@@ -8,7 +8,7 @@ profiles:
 correct: b
 options:
   a: 50%
-  b: 70-90%
+  b: 75-90%
   c: 95%+
   d: Only when errors occur
 doc_reference:
@@ -30,4 +30,4 @@ Context management guidelines:
 | **75-90%** | **Use `/compact`** |
 | 90%+ | Use `/clear` |
 
-Proactive compaction at 70% prevents context degradation and maintains performance.
+Proactive compaction at 75% prevents context degradation and maintains performance. The Red Zone (75-90%) is when you should run /compact or /clear to recover context.

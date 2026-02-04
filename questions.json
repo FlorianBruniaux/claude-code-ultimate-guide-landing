@@ -1870,11 +1870,11 @@
       "options": {
         "a": "Skills are more reliable than CLAUDE.md",
         "b": "Both have 100% reliability",
-        "c": "CLAUDE.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked",
+        "c": "CLAUDE.md: 100% reliable (always loaded) vs Skills: ~56% auto-invoked",
         "d": "CLAUDE.md is deprecated in favor of Skills"
       },
       "correct": "c",
-      "explanation": "CLAUDE.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: CLAUDE.md costs context tokens on every session, Skills save tokens but may miss activations. Use CLAUDE.md for critical behaviors, Skills for optional capabilities.",
+      "explanation": "CLAUDE.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving ~56% auto-invocation rate according to Gao (2026). Trade-off: CLAUDE.md costs context tokens on every session, Skills save tokens but may miss activations. Use CLAUDE.md for critical behaviors, Skills for optional capabilities.",
       "source_file": "questions/04-agents/018-what-is-the-invocation-reliability-difference.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -4096,12 +4096,12 @@
       "question": "What is the 'occurrence rule' for claiming established patterns in code reviews?",
       "options": {
         "a": ">5 occurrences = established, 2-5 = emerging, <2 = not established",
-        "b": ">10 occurrences = established, 3-10 = emerging, <3 = not established",
+        "b": "10+ occurrences = established, 3-10 = emerging, <3 = not established",
         "c": "Based on file count, not occurrences",
         "d": ">20 occurrences = established, 5-20 = emerging, <5 = not established"
       },
       "correct": "b",
-      "explanation": "Anti-hallucination safeguards for code reviews define the occurrence rule:\n\n- **>10 occurrences** = established pattern (safe to reference)\n- **3-10 occurrences** = emerging pattern (mention cautiously)\n- **<3 occurrences** = NOT an established pattern (don't claim it is)\n\nThis prevents Claude from hallucinating \"established conventions\" from a few examples.",
+      "explanation": "Anti-hallucination safeguards for code reviews define the occurrence rule:\n\n- **10+ occurrences** = established pattern (safe to reference)\n- **3-10 occurrences** = emerging pattern (mention cautiously)\n- **<3 occurrences** = NOT an established pattern (don't claim it is)\n\nThis prevents Claude from hallucinating \"established conventions\" from a few examples.",
       "source_file": "questions/09-advanced-patterns/026-what-is-the-occurrence-rule-for-claiming.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
@@ -4266,12 +4266,12 @@
       "question": "At what context percentage should you run /compact according to best practices?",
       "options": {
         "a": "50%",
-        "b": "70-90%",
+        "b": "75-90%",
         "c": "95%+",
         "d": "Only when errors occur"
       },
       "correct": "b",
-      "explanation": "Context management guidelines:\n\n| Context Level | Action |\n|--------------|--------|\n| 0-50% | Work freely |\n| 50-75% | Be selective |\n| **75-90%** | **Use `/compact`** |\n| 90%+ | Use `/clear` |\n\nProactive compaction at 70% prevents context degradation and maintains performance.",
+      "explanation": "Context management guidelines:\n\n| Context Level | Action |\n|--------------|--------|\n| 0-50% | Work freely |\n| 50-75% | Be selective |\n| **75-90%** | **Use `/compact`** |\n| 90%+ | Use `/clear` |\n\nProactive compaction at 75% prevents context degradation and maintains performance. The Red Zone (75-90%) is when you should run /compact or /clear to recover context.",
       "source_file": "questions/10-reference/004-at-what-context-percentage-should-you-run-compact.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
