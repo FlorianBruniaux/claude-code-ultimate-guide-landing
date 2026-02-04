@@ -1505,7 +1505,7 @@
 
             // Progress
             document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
-            document.getElementById('question-number').textContent = `${currentQuestionIndex + 1} / ${total}`;
+            document.getElementById('question-number').textContent = `${currentQuestionIndex + 1} / ${total}  ·  ${q.id}`;
             document.getElementById('question-category').textContent = getCategoryName(q.category_id);
 
             const diffEl = document.getElementById('question-difficulty');
