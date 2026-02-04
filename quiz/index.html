@@ -360,6 +360,31 @@
             line-height: 1.6;
         }
 
+        .explanation-box code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            padding: 2px 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            color: #e6db74;
+        }
+
+        .explanation-box pre {
+            margin: var(--space-sm) 0;
+            padding: var(--space-sm);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        .explanation-box pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            display: block;
+        }
+
         .success-rate {
             margin-top: var(--space-sm);
             padding: var(--space-xs) var(--space-sm);
@@ -1498,6 +1523,31 @@
             renderQuestion();
         });
 
+        // Format explanation text with code highlighting
+        function formatExplanation(text) {
+            if (!text) return '';
+
+            // Escape HTML first
+            const escapeHtml = (str) => str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+
+            // Handle code blocks (triple backticks)
+            text = text.replace(/```([\s\S]*?)```/g, (match, code) => {
+                return `<pre><code>${escapeHtml(code.trim())}</code></pre>`;
+            });
+
+            // Handle inline code (single backticks)
+            text = text.replace(/`([^`]+)`/g, (match, code) => {
+                return `<code>${escapeHtml(code)}</code>`;
+            });
+
+            return text;
+        }
+
         // Render question
         function renderQuestion() {
             const q = filteredQuestions[currentQuestionIndex];
@@ -1505,7 +1555,7 @@
 
             // Progress
             document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
-            document.getElementById('question-number').textContent = `${currentQuestionIndex + 1} / ${total}  ·  ${q.id}`;
+            document.getElementById('question-number').innerHTML = `${currentQuestionIndex + 1} / ${total}  ·  <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/blob/main/questions.json#:~:text=${encodeURIComponent('"id": "' + q.id + '"')}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-style: dotted;">${q.id}</a>`;
             document.getElementById('question-category').textContent = getCategoryName(q.category_id);
 
             const diffEl = document.getElementById('question-difficulty');
@@ -1551,7 +1601,7 @@
             const explanationBox = document.getElementById('explanation-box');
             if (answers[q.id]) {
                 explanationBox.classList.add('show');
-                document.getElementById('explanation-text').textContent = q.explanation;
+                document.getElementById('explanation-text').innerHTML = formatExplanation(q.explanation);
 
                 // Success rate
                 const successRateEl = document.getElementById('success-rate');
