@@ -276,6 +276,31 @@
             line-height: 1.5;
         }
 
+        .question-text code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            padding: 2px 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            color: #e6db74;
+        }
+
+        .question-text pre {
+            margin: var(--space-sm) 0;
+            padding: var(--space-sm);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        .question-text pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            display: block;
+        }
+
         .options-list {
             display: flex;
             flex-direction: column;
@@ -1562,7 +1587,7 @@
             diffEl.textContent = q.difficulty;
             diffEl.className = `question-difficulty difficulty-${q.difficulty}`;
 
-            document.getElementById('question-text').textContent = q.question;
+            document.getElementById('question-text').innerHTML = formatExplanation(q.question);
 
             // Options
             const optionsList = document.getElementById('options-list');
