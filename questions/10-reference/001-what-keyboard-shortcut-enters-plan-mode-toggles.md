@@ -9,23 +9,24 @@ profiles:
 correct: b
 options:
   a: Ctrl+P
-  b: Shift+Tab
+  b: Shift+Tab (with OpusPlan enabled)
   c: Alt+P
-  d: Ctrl+Shift+P
+  d: /plan command
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 10.2 Keyboard Shortcuts
-  anchor: '#session-control'
+  section: 2.3 OpusPlan Mode
+  line: 2295-2309
 ---
 
-What keyboard shortcut enters Plan Mode (toggles plan/execute)?
+What keyboard shortcut enters Plan Mode when using OpusPlan?
 
 ---
 
-`Shift+Tab` toggles between Plan Mode and Execute Mode.
+With OpusPlan enabled (`/model opusplan`), use `Shift+Tab` to enter/exit Plan Mode:
 
-Plan Mode navigation:
-- `Shift+Tab` once: Toggle plan/execute
-- `Shift+Tab` twice: Enter deep Plan Mode (with Opus in OpusPlan)
+- `Shift+Tab × 2` → Enter Plan Mode (Opus for planning)
+- `Shift+Tab` (once) → Exit to Act Mode (Sonnet for execution)
 
-Plan Mode allows safe, read-only exploration before making changes.
+**Alternative**: Use `/plan` command to explicitly enter Plan Mode without OpusPlan.
+
+**Note**: Shift+Tab shortcuts only work when OpusPlan is enabled. Without OpusPlan, use `/plan` command instead.

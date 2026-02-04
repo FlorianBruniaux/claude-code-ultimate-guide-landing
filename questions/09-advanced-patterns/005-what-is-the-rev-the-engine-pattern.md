@@ -4,35 +4,32 @@ category_id: 9
 difficulty: power
 profiles:
 - power
-correct: b
+correct: c
 options:
   a: Running tests in parallel
   b: Multiple rounds of write-critique-improve cycles
-  c: Restarting Claude Code between tasks
+  c: Multiple rounds of planning and deep thinking before executing
   d: Using higher compute models
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 9.2 Composition Patterns
-  anchor: '#the-rev-the-engine-pattern'
+  section: 2.3 Rev the Engine
+  line: 2337-2375
 ---
 
 What is the 'Rev the Engine' pattern?
 
 ---
 
-The "Rev the Engine" pattern uses multiple rounds of critique for quality:
+The "Rev the Engine" pattern runs multiple rounds of **planning and deep thinking** before executing, like warming up an engine before driving.
 
-```
-Round 1: [Initial implementation]
-Critique: [What's wrong]
-Improvement: [Better version]
+**Standard workflow**: think → plan → execute
+**Rev the Engine**: think → plan → think harder → refine plan → think hardest → finalize → execute
 
-Round 2: [Improved implementation]
-Critique: [What's still wrong]
-Improvement: [Even better version]
+**When to use**:
+- Critical architectural decisions (irreversible, high-impact)
+- Complex migrations affecting 10+ files
+- Unfamiliar domains where first instincts are often wrong
 
-Round 3: [Final implementation]
-Final check: [Verification]
-```
+**Why it works**: Each round forces Claude to reconsider assumptions. Round 2 typically catches 30-40% of issues that round 1 missed.
 
-Typically 3 rounds are recommended for quality work.
+**Note**: The guide also describes a variant pattern using write-critique-improve cycles (line 9761), but the primary definition focuses on planning iterations.

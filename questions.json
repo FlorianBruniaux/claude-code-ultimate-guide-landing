@@ -3595,16 +3595,16 @@
       "options": {
         "a": "Running tests in parallel",
         "b": "Multiple rounds of write-critique-improve cycles",
-        "c": "Restarting Claude Code between tasks",
+        "c": "Multiple rounds of planning and deep thinking before executing",
         "d": "Using higher compute models"
       },
-      "correct": "b",
-      "explanation": "The \"Rev the Engine\" pattern uses multiple rounds of critique for quality:\n\n```\nRound 1: [Initial implementation]\nCritique: [What's wrong]\nImprovement: [Better version]\n\nRound 2: [Improved implementation]\nCritique: [What's still wrong]\nImprovement: [Even better version]\n\nRound 3: [Final implementation]\nFinal check: [Verification]\n```\n\nTypically 3 rounds are recommended for quality work.",
+      "correct": "c",
+      "explanation": "The \"Rev the Engine\" pattern runs multiple rounds of **planning and deep thinking** before executing, like warming up an engine before driving.\n\n**Standard workflow**: think → plan → execute\n**Rev the Engine**: think → plan → think harder → refine plan → think hardest → finalize → execute\n\n**When to use**:\n- Critical architectural decisions (irreversible, high-impact)\n- Complex migrations affecting 10+ files\n- Unfamiliar domains where first instincts are often wrong\n\n**Why it works**: Each round forces Claude to reconsider assumptions. Round 2 typically catches 30-40% of issues that round 1 missed.\n\n**Note**: The guide also describes a variant pattern using write-critique-improve cycles (line 9761), but the primary definition focuses on planning iterations.",
       "source_file": "questions/09-advanced-patterns/005-what-is-the-rev-the-engine-pattern.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "9.2 Composition Patterns",
-        "anchor": "#the-rev-the-engine-pattern"
+        "section": "2.3 Rev the Engine",
+        "line": "2337-2375"
       }
     },
     {
@@ -4189,20 +4189,20 @@
         "power"
       ],
       "category_id": 10,
-      "question": "What keyboard shortcut enters Plan Mode (toggles plan/execute)?",
+      "question": "What keyboard shortcut enters Plan Mode when using OpusPlan?",
       "options": {
         "a": "Ctrl+P",
-        "b": "Shift+Tab",
+        "b": "Shift+Tab (with OpusPlan enabled)",
         "c": "Alt+P",
-        "d": "Ctrl+Shift+P"
+        "d": "/plan command"
       },
       "correct": "b",
-      "explanation": "`Shift+Tab` toggles between Plan Mode and Execute Mode.\n\nPlan Mode navigation:\n- `Shift+Tab` once: Toggle plan/execute\n- `Shift+Tab` twice: Enter deep Plan Mode (with Opus in OpusPlan)\n\nPlan Mode allows safe, read-only exploration before making changes.",
+      "explanation": "With OpusPlan enabled (`/model opusplan`), use `Shift+Tab` to enter/exit Plan Mode:\n\n- `Shift+Tab × 2` → Enter Plan Mode (Opus for planning)\n- `Shift+Tab` (once) → Exit to Act Mode (Sonnet for execution)\n\n**Alternative**: Use `/plan` command to explicitly enter Plan Mode without OpusPlan.\n\n**Note**: Shift+Tab shortcuts only work when OpusPlan is enabled. Without OpusPlan, use `/plan` command instead.",
       "source_file": "questions/10-reference/001-what-keyboard-shortcut-enters-plan-mode-toggles.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
-        "section": "10.2 Keyboard Shortcuts",
-        "anchor": "#session-control"
+        "section": "2.3 OpusPlan Mode",
+        "line": "2295-2309"
       }
     },
     {
@@ -6013,7 +6013,7 @@
         "d": "Use both on every commit"
       },
       "correct": "b",
-      "explanation": "AI traceability in git commits:\n\n- **Co-Authored-By**: When AI generated significant portions of code (implementation, refactoring)\n- **Assisted-By**: When AI only advised, reviewed, or suggested minor changes\n\nThis distinction matters for code ownership, audit trails, and understanding who (or what) actually wrote the code. Some teams add this to CLAUDE.md as a mandatory commit convention.",
+      "explanation": "AI traceability in git commits follows different standards based on **ownership and accountability**:\n\n| Aspect | Co-Authored-By | Assisted-by |\n|--------|---------------|-------------|\n| **Implication** | AI as co-author | Human author, AI assisted |\n| **Credit** | Shared authorship | Human primary author |\n| **Responsibility** | Ambiguous | Human accountable |\n\n**When to use:**\n- **Co-Authored-By**: Claude's default. When AI generated significant code (implementation, refactoring). Shared authorship model.\n- **Assisted-by**: LLVM standard (Jan 2026). When you're the primary author and AI helped. Clear human ownership and accountability.\n\nThis distinction matters for OSS contributions, compliance contexts, and understanding code authorship/accountability.",
       "source_file": "questions/14-privacy-observability/011-when-should-you-use-co-authored-by-vs-assisted-by.md",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
