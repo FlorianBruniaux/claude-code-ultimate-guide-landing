@@ -1170,7 +1170,7 @@ QUESTION:
 OPTIONS:
   [A] Security Reviewer, Performance Analyst, UX Reviewer
   [B] Linter, Type Checker, Test Runner
-  [C] Consistency Auditor, SOLID Analyst, Defensive Code Auditor ← ✓ CORRECT
+  [C] Consistency Agent, SOLID Agent, Defensive Code Auditor ← ✓ CORRECT
   [D] Junior Reviewer, Senior Reviewer, Architect Reviewer
 
 ANSWER: C
@@ -1178,8 +1178,8 @@ ANSWER: C
 EXPLANATION:
   Multi-agent PR review uses 3 specialized agents:
   
-  1. **Consistency Auditor** - Checks naming conventions, import patterns, code style adherence
-  2. **SOLID Analyst** - Reviews architectural principles, dependency injection, single responsibility
+  1. **Consistency Agent** - Checks naming conventions, import patterns, code style adherence
+  2. **SOLID Agent** - Reviews architectural principles, dependency injection, single responsibility
   3. **Defensive Code Auditor** - Validates error handling, input validation, edge cases
   
   Each agent has anti-hallucination safeguards (occurrence rule, file-scoped claims).
@@ -1610,18 +1610,18 @@ EXPLANATION:
 └─────────────────────────────────────────────────────────────┘
 
 QUESTION:
-  What is the invocation reliability difference between AGENTS.md (eager context) and Skills (lazy invocation)?
+  What is the invocation reliability difference between CLAUDE.md (eager context) and Skills (lazy invocation)?
 
 OPTIONS:
-  [A] Skills are more reliable than AGENTS.md
+  [A] Skills are more reliable than CLAUDE.md
   [B] Both have 100% reliability
-  [C] AGENTS.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked ← ✓ CORRECT
-  [D] AGENTS.md is deprecated in favor of Skills
+  [C] CLAUDE.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked ← ✓ CORRECT
+  [D] CLAUDE.md is deprecated in favor of Skills
 
 ANSWER: C
 
 EXPLANATION:
-  AGENTS.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: AGENTS.md costs context tokens on every session, Skills save tokens but may miss activations. Use AGENTS.md for critical behaviors, Skills for optional capabilities.
+  CLAUDE.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: CLAUDE.md costs context tokens on every session, Skills save tokens but may miss activations. Use CLAUDE.md for critical behaviors, Skills for optional capabilities.
   
 
 ─────────────────────────────────────────────────────────────────
@@ -1872,15 +1872,24 @@ QUESTION:
 
 OPTIONS:
   [A] Reader, Writer, Searcher, Executor
-  [B] Explore, Plan, Bash, general-purpose ← ✓ CORRECT
+  [B] Explore, Plan, general-purpose (3 types) ← ✓ CORRECT
   [C] Junior, Senior, Expert, Architect
   [D] Fast, Balanced, Thorough, Complete
 
 ANSWER: B
 
 EXPLANATION:
-  Claude Code offers 4 sub-agent types: Explore (codebase exploration, read-only tools), Plan (architecture planning, no Edit/Write), Bash (command execution, Bash only), and general-purpose (complex multi-step tasks, all tools). Each has different tool access.
+  Claude Code offers 3 built-in sub-agent types via the Task tool's subagent_type parameter:
   
+  1. **Explore** (Haiku): Codebase exploration with read-only tools. Optimized for file discovery and code search with thoroughness levels (quick/medium/very thorough).
+  
+  2. **Plan** (Inherit): Architecture planning and research during plan mode. Read-only tools prevent infinite nesting.
+  
+  3. **general-purpose** (Inherit): Complex multi-step tasks with all tools available (Read, Edit, Write, Bash, Grep, Glob).
+  
+  **Important**: Bash is a TOOL (command execution utility), not a sub-agent type. Sub-agents can USE the Bash tool, but there is no "Bash" sub-agent type.
+  
+  Source: Official documentation code.claude.com/docs/en/sub-agents (verified 2026-02-03)
 
 ─────────────────────────────────────────────────────────────────
 
@@ -4096,14 +4105,21 @@ QUESTION:
 OPTIONS:
   [A] Maximum concurrent MCP connections
   [B] Cache size for tool results
-  [C] Lazy loading - tools loaded only when description matches user intent, N = max tools to auto-load ← ✓ CORRECT
+  [C] Automatic lazy loading when tool definitions exceed 10,000 tokens - tools discovered via Tool Search instead of loaded upfront ← ✓ CORRECT
   [D] Retry count for failed tool calls
 
 ANSWER: C
 
 EXPLANATION:
-  The `auto:N` threshold enables lazy loading for MCP tools. Instead of loading all tools at session start (which wastes context), tools are only loaded when their description matches the user's intent. N controls the maximum number of tools to auto-load per intent match. This reduces context usage for MCP servers with many tools.
+  When MCP tool definitions exceed 10,000 tokens, Claude Code automatically activates lazy loading. Instead of loading all tool definitions upfront, it marks them with 'defer_loading: true' and provides a Tool Search tool for on-demand discovery.
   
+  When Claude needs a specific tool, it searches using keywords and selectively loads approximately 3-5 relevant tools (~3K tokens) per query. This dramatically reduces baseline context usage:
+  
+  **Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading configured for only 4 specific tools, it uses 1,500 tokens—a 91% reduction.
+  
+  **Important**: There is no configurable 'auto:N' parameter where N = max tools to load. The 10K token threshold triggers lazy loading automatically. Claude Code detects when tool descriptions surpass this threshold and switches to the Tool Search mechanism without manual configuration.
+  
+  This feature was introduced to address context pollution from MCP servers with many tools, most of which aren't frequently used.
 
 ─────────────────────────────────────────────────────────────────
 
@@ -4520,7 +4536,7 @@ OPTIONS:
 ANSWER: B
 
 EXPLANATION:
-  Boris Cherny's verification loops recommend 8 domains for comprehensive quality:
+  The Claude Code guide extends verification loops to 8 comprehensive domains for quality checks:
   
   1. Frontend (UI renders correctly)
   2. Backend (API responds correctly)
@@ -4531,8 +4547,9 @@ EXPLANATION:
   7. Security (no vulnerabilities)
   8. UX (user flows work end-to-end)
   
-  CLAUDE.md should define which domains to check for each type of change.
+  Note: Boris Cherny (Claude Code creator) emphasizes verification loops with 4 core methods: CLI tools (bash), Backend (tests), Frontend (browser), Mobile (simulator). The 8-domain taxonomy is the guide's expanded framework (v3.13.0).
   
+  CLAUDE.md should define which domains to check for each type of change.
 
 ─────────────────────────────────────────────────────────────────
 

@@ -1329,7 +1329,7 @@
         "d": "12 domains covering every possible check"
       },
       "correct": "b",
-      "explanation": "Boris Cherny's verification loops recommend 8 domains for comprehensive quality:\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\nCLAUDE.md should define which domains to check for each type of change.\n",
+      "explanation": "The Claude Code guide extends verification loops to 8 comprehensive domains for quality checks:\n\n1. Frontend (UI renders correctly)\n2. Backend (API responds correctly)\n3. Types (TypeScript/type checks pass)\n4. Style (linting passes)\n5. Performance (no regressions)\n6. Accessibility (WCAG compliance)\n7. Security (no vulnerabilities)\n8. UX (user flows work end-to-end)\n\nNote: Boris Cherny (Claude Code creator) emphasizes verification loops with 4 core methods: CLI tools (bash), Backend (tests), Frontend (browser), Mobile (simulator). The 8-domain taxonomy is the guide's expanded framework (v3.13.0).\n\nCLAUDE.md should define which domains to check for each type of change.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Verification Loops",
@@ -1764,15 +1764,15 @@
         "power"
       ],
       "category_id": 4,
-      "question": "What is the invocation reliability difference between AGENTS.md (eager context) and Skills (lazy invocation)?",
+      "question": "What is the invocation reliability difference between CLAUDE.md (eager context) and Skills (lazy invocation)?",
       "options": {
-        "a": "Skills are more reliable than AGENTS.md",
+        "a": "Skills are more reliable than CLAUDE.md",
         "b": "Both have 100% reliability",
-        "c": "AGENTS.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked",
-        "d": "AGENTS.md is deprecated in favor of Skills"
+        "c": "CLAUDE.md: 100% reliable (always loaded) vs Skills: 53-79% auto-invoked",
+        "d": "CLAUDE.md is deprecated in favor of Skills"
       },
       "correct": "c",
-      "explanation": "AGENTS.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: AGENTS.md costs context tokens on every session, Skills save tokens but may miss activations. Use AGENTS.md for critical behaviors, Skills for optional capabilities.\n",
+      "explanation": "CLAUDE.md uses eager context loading - always present in Claude's context, so 100% reliable activation. Skills use lazy invocation - auto-detected and invoked only when Claude recognizes the need, achieving 53-79% auto-invocation rate. Trade-off: CLAUDE.md costs context tokens on every session, Skills save tokens but may miss activations. Use CLAUDE.md for critical behaviors, Skills for optional capabilities.\n",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "AGENTS.md vs Skills Evaluation",
@@ -3284,11 +3284,11 @@
       "options": {
         "a": "Maximum concurrent MCP connections",
         "b": "Cache size for tool results",
-        "c": "Lazy loading - tools loaded only when description matches user intent, N = max tools to auto-load",
+        "c": "Automatic lazy loading when tool definitions exceed 10,000 tokens - tools discovered via Tool Search instead of loaded upfront",
         "d": "Retry count for failed tool calls"
       },
       "correct": "c",
-      "explanation": "The `auto:N` threshold enables lazy loading for MCP tools. Instead of loading all tools at session start (which wastes context), tools are only loaded when their description matches the user's intent. N controls the maximum number of tools to auto-load per intent match. This reduces context usage for MCP servers with many tools.\n",
+      "explanation": "When MCP tool definitions exceed 10,000 tokens, Claude Code automatically activates lazy loading. Instead of loading all tool definitions upfront, it marks them with 'defer_loading: true' and provides a Tool Search tool for on-demand discovery.\n\nWhen Claude needs a specific tool, it searches using keywords and selectively loads approximately 3-5 relevant tools (~3K tokens) per query. This dramatically reduces baseline context usage:\n\n**Example**: chrome-devtools MCP provides 26 tools consuming 17,000 tokens. With lazy loading configured for only 4 specific tools, it uses 1,500 tokens—a 91% reduction.\n\n**Important**: There is no configurable 'auto:N' parameter where N = max tools to load. The 10K token threshold triggers lazy loading automatically. Claude Code detects when tool descriptions surpass this threshold and switches to the Tool Search mechanism without manual configuration.\n\nThis feature was introduced to address context pollution from MCP servers with many tools, most of which aren't frequently used.",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "MCP Configuration",
@@ -3925,11 +3925,11 @@
       "options": {
         "a": "Security Reviewer, Performance Analyst, UX Reviewer",
         "b": "Linter, Type Checker, Test Runner",
-        "c": "Consistency Auditor, SOLID Analyst, Defensive Code Auditor",
+        "c": "Consistency Agent, SOLID Agent, Defensive Code Auditor",
         "d": "Junior Reviewer, Senior Reviewer, Architect Reviewer"
       },
       "correct": "c",
-      "explanation": "Multi-agent PR review uses 3 specialized agents:\n\n1. **Consistency Auditor** - Checks naming conventions, import patterns, code style adherence\n2. **SOLID Analyst** - Reviews architectural principles, dependency injection, single responsibility\n3. **Defensive Code Auditor** - Validates error handling, input validation, edge cases\n\nEach agent has anti-hallucination safeguards (occurrence rule, file-scoped claims).\n",
+      "explanation": "Multi-agent PR review uses 3 specialized agents:\n\n1. **Consistency Agent** - Checks naming conventions, import patterns, code style adherence\n2. **SOLID Agent** - Reviews architectural principles, dependency injection, single responsibility\n3. **Defensive Code Auditor** - Validates error handling, input validation, edge cases\n\nEach agent has anti-hallucination safeguards (occurrence rule, file-scoped claims).\n",
       "doc_reference": {
         "file": "guide/ultimate-guide.md",
         "section": "Multi-Agent PR Review",
@@ -5126,12 +5126,12 @@
       "question": "What are the 4 specialized sub-agent types available in Claude Code?",
       "options": {
         "a": "Reader, Writer, Searcher, Executor",
-        "b": "Explore, Plan, Bash, general-purpose",
+        "b": "Explore, Plan, general-purpose (3 types)",
         "c": "Junior, Senior, Expert, Architect",
         "d": "Fast, Balanced, Thorough, Complete"
       },
       "correct": "b",
-      "explanation": "Claude Code offers 4 sub-agent types: Explore (codebase exploration, read-only tools), Plan (architecture planning, no Edit/Write), Bash (command execution, Bash only), and general-purpose (complex multi-step tasks, all tools). Each has different tool access.\n",
+      "explanation": "Claude Code offers 3 built-in sub-agent types via the Task tool's subagent_type parameter:\n\n1. **Explore** (Haiku): Codebase exploration with read-only tools. Optimized for file discovery and code search with thoroughness levels (quick/medium/very thorough).\n\n2. **Plan** (Inherit): Architecture planning and research during plan mode. Read-only tools prevent infinite nesting.\n\n3. **general-purpose** (Inherit): Complex multi-step tasks with all tools available (Read, Edit, Write, Bash, Grep, Glob).\n\n**Important**: Bash is a TOOL (command execution utility), not a sub-agent type. Sub-agents can USE the Bash tool, but there is no \"Bash\" sub-agent type.\n\nSource: Official documentation code.claude.com/docs/en/sub-agents (verified 2026-02-03)",
       "doc_reference": {
         "file": "guide/architecture.md",
         "section": "Sub-Agent Types",
