@@ -2093,6 +2093,23 @@ VERIFY: Empty email shows error message</code></pre>
             }
         }
 
+        // Fetch and display stars count dynamically
+        async function loadStars() {
+            try {
+                const response = await fetch('https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide');
+                if (response.ok) {
+                    const data = await response.json();
+                    const stars = data.stargazers_count;
+                    const starsEl = document.querySelector('.badge-stars .badge-value');
+                    if (starsEl && stars) {
+                        starsEl.textContent = stars;
+                    }
+                }
+            } catch (error) {
+                console.log('Using fallback stars count');
+            }
+        }
+
         // Parse changelog markdown into structured data
         function parseChangelog(markdown) {
             const releases = [];
@@ -2266,6 +2283,7 @@ VERIFY: Empty email shows error message</code></pre>
 
         // Load dynamic content
         loadVersion();
+        loadStars();
         loadChangelog();
     </script>
 
