@@ -561,6 +561,13 @@ kbd {
     background-color: #4c1;
 }
 
+.badge-updated .badge-label {
+    background-color: #555;
+}
+.badge-updated .badge-value {
+    background-color: #4c1;
+}
+
 .badge-lines .badge-label {
     background-color: #555;
 }
