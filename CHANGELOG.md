@@ -2,6 +2,15 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [2.4.2] - 2026-02-10
+
+### Fixed
+- **Quiz accuracy stat misleading display**
+  - Renamed "📊 X% get this right" → "📊 Your accuracy: X%"
+  - Hidden accuracy stat until user has 3+ attempts on a question
+  - Prevents misleading 0% or 100% display on first attempt
+  - Clarifies that stats are personal, not community-wide
+
 ## [2.4.1] - 2026-01-21
 
 ### Changed
