@@ -31,17 +31,30 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "AI Agent Security: Threat Intelligence & Defense",
-        "description": "Comprehensive threat intelligence for the AI coding tool ecosystem including CVE database, attack techniques, and defense tools",
-        "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
-        "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
-        "datePublished": "2026-02-11",
-        "inLanguage": "en",
-        "audience": {
-            "@type": "Audience",
-            "audienceType": "Developers using AI coding tools, security engineers, DevSecOps"
-        }
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": "AI Agent Security: Threat Intelligence & Defense",
+                "description": "Comprehensive threat intelligence for the AI coding tool ecosystem including CVE database, attack techniques, and defense tools",
+                "url": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/security/",
+                "mainEntityOfPage": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/security/",
+                "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+                "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+                "datePublished": "2026-02-11",
+                "inLanguage": "en",
+                "audience": {
+                    "@type": "Audience",
+                    "audienceType": "Developers using AI coding tools, security engineers, DevSecOps"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/"},
+                    {"@type": "ListItem", "position": 2, "name": "Security", "item": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/security/"}
+                ]
+            }
+        ]
     }
     </script>
 
@@ -1716,7 +1729,7 @@
                 <div class="footer-section">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="../quiz/">Quiz (257)</a></li>
+                        <li><a href="../quiz/">Quiz (274)</a></li>
                         <li><a href="./" class="active">Security</a></li>
                         <li><a href="../learning/">Learning</a></li>
                         <li><a href="../examples/">Examples (63)</a></li>
@@ -1736,7 +1749,7 @@
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &bull;
                     Made with dedication by <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>
                 </p>
-                <p class="version">v3.9.9</p>
+                <p class="version">v3.24.0</p>
             </div>
         </div>
     </footer>
