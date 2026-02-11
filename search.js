@@ -73,6 +73,11 @@
             items.push(...window.SEARCH_COWORK);
         }
 
+        // Security entries from search-data.js
+        if (window.SEARCH_SECURITY) {
+            items.push(...window.SEARCH_SECURITY);
+        }
+
         return items;
     }
 
@@ -138,7 +143,7 @@
         const results = miniSearch.search(query);
 
         // Group by type and limit
-        const grouped = { guide: [], template: [], faq: [], rule: [] };
+        const grouped = { guide: [], template: [], security: [], faq: [], rule: [] };
         results.forEach(r => {
             const type = r.type || 'template';
             if (grouped[type] && grouped[type].length < 5) {
@@ -150,6 +155,7 @@
         return [
             ...grouped.guide,
             ...grouped.template,
+            ...grouped.security,
             ...grouped.faq,
             ...grouped.rule
         ];
@@ -172,6 +178,7 @@
         const typeLabels = {
             guide: '📖 Guide',
             template: '📄 Template',
+            security: '🛡️ Security',
             faq: '❓ FAQ',
             rule: '📋 Rule'
         };

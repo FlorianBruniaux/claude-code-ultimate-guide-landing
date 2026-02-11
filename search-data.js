@@ -104,6 +104,58 @@ window.SEARCH_FAQ = [
     }
 ];
 
+window.SEARCH_SECURITY = [
+    {
+        id: 'sec-1',
+        type: 'security',
+        title: 'CVE Database — MCP Server Vulnerabilities',
+        content: 'CVE vulnerability MCP server Filesystem Git Inspector Python SDK Gateway TypeScript Cursor Claude Code security patch',
+        url: '/security/#cve-database'
+    },
+    {
+        id: 'sec-2',
+        type: 'security',
+        title: 'Threat Database Browser — Malicious Skills',
+        content: 'malicious skills threat database ClawHavoc ToxicSkills typosquatting malware backdoor credential theft supply chain',
+        url: '/security/#threat-browser'
+    },
+    {
+        id: 'sec-3',
+        type: 'security',
+        title: 'Attack Techniques — Tool Poisoning, Memory Poisoning',
+        content: 'attack technique tool poisoning memory poisoning rug pull confused deputy DNS rebinding supply chain hook exfiltration credential theft',
+        url: '/security/#attack-techniques'
+    },
+    {
+        id: 'sec-4',
+        type: 'security',
+        title: '5-Minute Security Checklist',
+        content: 'security checklist audit pin MCP versions scan hooks permissions CLAUDE.md injection review',
+        url: '/security/#checklist'
+    },
+    {
+        id: 'sec-5',
+        type: 'security',
+        title: 'Security Commands — /security-check & /security-audit',
+        content: 'security check audit command scan config threat database score posture quick full',
+        url: '/security/#security-commands'
+    },
+    {
+        id: 'sec-6',
+        type: 'security',
+        title: 'Defense Tools — mcp-scan, Garak, MCP Fortress',
+        content: 'defense tools mcp-scan Garak MCP Fortress SafeDep Koi Clawdex scanning vulnerability detection',
+        url: '/security/#defense-tools'
+    },
+    {
+        id: 'sec-7',
+        type: 'security',
+        title: 'Active Campaigns — ClawHavoc, ToxicSkills',
+        content: 'campaign ClawHavoc ToxicSkills PyPI reverse shell Postmark npm squatter AMOS Atomic Stealer malware Snyk Koi',
+        url: '/security/#campaigns'
+    }
+];
+
 window.SEARCH_RULES = [
     {
         id: 'rule-1',

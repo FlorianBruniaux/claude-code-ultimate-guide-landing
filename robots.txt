@@ -1,5 +1,32 @@
 # Claude Code Ultimate Guide - robots.txt
+
+# All crawlers
 User-agent: *
+Allow: /
+
+# AI Search Engine Bots (GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Brave
+Allow: /
+
+User-agent: GoogleOther
 Allow: /
 
 # Sitemap

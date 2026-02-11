@@ -6,13 +6,13 @@
     <title>Claude Code Cheatsheet: Commands & Shortcuts | PDF</title>
     <meta name="description" content="Free 1-page printable Claude Code cheatsheet. Essential commands, keyboard shortcuts, permission modes, context management, and workflows. Download PDF.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet.html">
+    <link rel="canonical" href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Claude Code Cheatsheet - Free PDF Reference">
     <meta property="og:description" content="Free 1-page printable Claude Code cheatsheet. Essential commands, keyboard shortcuts, and workflows.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet.html">
+    <meta property="og:url" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet/">
     <meta property="og:image" content="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,12 +28,27 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "name": "Claude Code Cheatsheet",
-        "description": "Complete command reference for Claude Code CLI",
-        "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
-        "dateModified": "2026-01-16",
-        "inLanguage": "en"
+        "@graph": [
+            {
+                "@type": "TechArticle",
+                "name": "Claude Code Cheatsheet",
+                "description": "Complete command reference for Claude Code CLI",
+                "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+                "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+                "datePublished": "2026-01-17",
+                "dateModified": "2026-02-11",
+                "url": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet/",
+                "mainEntityOfPage": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet/",
+                "inLanguage": "en"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/"},
+                    {"@type": "ListItem", "position": 2, "name": "Cheatsheet", "item": "https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/cheatsheet/"}
+                ]
+            }
+        ]
     }
     </script>
 
@@ -522,8 +537,9 @@
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
                 <a href="./" class="active">Cheat Sheet</a>
                 <a href="../quiz/">Quiz</a>
-                <a href="../learning/">Learning</a>
                 <a href="../examples/">Examples</a>
+                <a href="../security/">Security</a>
+                <a href="../learning/">Learning</a>
             </div>
             <button class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" aria-label="Dark mode">
                 <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -557,8 +573,8 @@
             <p>1 printable page - Daily essentials for maximum productivity</p>
             <div class="meta-info">
                 <span>By <a href="https://methode-aristote.fr" target="_blank">Florian BRUNIAUX</a></span>
-                <span>Version 3.16.0</span>
-                <span>January 2026</span>
+                <span>Version 3.26.0</span>
+                <span>February 2026</span>
             </div>
             <div style="margin-top: var(--space-lg); display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cheatsheet.md" target="_blank" class="btn btn-secondary">View .md</a>
@@ -594,6 +610,12 @@
                     <tr><td>/plan</td><td>Enter Plan Mode (no changes)</td></tr>
                     <tr><td>/execute</td><td>Exit Plan Mode (apply changes)</td></tr>
                     <tr><td>/model</td><td>Switch model (sonnet/opus/opusplan)</td></tr>
+                    <tr><td>/insights</td><td>Usage analytics + optimization</td></tr>
+                    <tr><td>/teleport</td><td>Teleport session from web</td></tr>
+                    <tr><td>/tasks</td><td>Monitor background tasks</td></tr>
+                    <tr><td>/fast</td><td>Toggle fast mode (2.5x speed)</td></tr>
+                    <tr><td>/debug</td><td>Systematic troubleshooting</td></tr>
+                    <tr><td>/remote-env</td><td>Configure cloud environment</td></tr>
                     <tr><td>/exit</td><td>Quit (or Ctrl+D)</td></tr>
                 </table>
             </div>
@@ -605,8 +627,10 @@
                     <tr><td>Shift+Tab</td><td>Cycle permission modes</td></tr>
                     <tr><td>Esc × 2</td><td>Rewind (undo)</td></tr>
                     <tr><td>Ctrl+C</td><td>Interrupt</td></tr>
-                    <tr><td>Ctrl+R</td><td>Retry last operation</td></tr>
+                    <tr><td>Ctrl+R</td><td>Search command history</td></tr>
                     <tr><td>Ctrl+L</td><td>Clear screen (keeps context)</td></tr>
+                    <tr><td>Ctrl+B</td><td>Background tasks</td></tr>
+                    <tr><td>Alt+T</td><td>Toggle thinking on/off</td></tr>
                     <tr><td>Tab</td><td>Autocomplete</td></tr>
                     <tr><td>Shift+Enter</td><td>New line</td></tr>
                     <tr><td>Ctrl+D</td><td>Exit</td></tr>
@@ -634,7 +658,8 @@
                     <thead><tr><th>Feature</th><th>Since</th><th>What It Does</th></tr></thead>
                     <tr><td><strong>Tasks API</strong></td><td>v2.1.16</td><td>Persistent task lists with dependencies</td></tr>
                     <tr><td><strong>Background Agents</strong></td><td>v2.0.60</td><td>Sub-agents work while you code</td></tr>
-                    <tr><td><strong>TeammateTool</strong></td><td>Experimental</td><td>Multi-agent coordination (unstable)</td></tr>
+                    <tr><td><strong>Agent Teams</strong></td><td>v2.1.32</td><td>Multi-agent coordination (TeamCreate/SendMessage)</td></tr>
+                    <tr><td><strong>Auto-Memories</strong></td><td>v2.1.32</td><td>Automatic cross-session context capture</td></tr>
                     <tr><td><strong>Session Forking</strong></td><td>v2.1.19</td><td>Rewind + create parallel timeline</td></tr>
                     <tr><td><strong>LSP Tool</strong></td><td>v2.0.74</td><td>Code intelligence (go-to-def, refs)</td></tr>
                 </table>
@@ -669,6 +694,8 @@
 ├── settings.local.json # Permissions
 ├── agents/             # Custom agents
 ├── commands/           # Slash commands
+├── hooks/              # Event scripts
+├── rules/              # Auto-loaded rules
 └── skills/             # Knowledge modules</code></pre>
             </div>
 
@@ -712,11 +739,12 @@
                     <tr><td>/model opusplan</td><td>Opus planning, Sonnet execution</td></tr>
                 </table>
 
-                <h3>Thinking Mode (Opus 4.5+)</h3>
+                <h3>Thinking Mode (Opus 4.6)</h3>
                 <table>
-                    <tr><td>Default</td><td>Thinking ON at max budget (v2.0.67+)</td></tr>
+                    <tr><td>Default</td><td>Thinking ON at max budget — keywords are cosmetic only</td></tr>
                     <tr><td>Alt+T</td><td>Toggle thinking on/off (session)</td></tr>
                     <tr><td>/config</td><td>Configure thinking (permanent)</td></tr>
+                    <tr><td>effort</td><td>API only: low|medium|high|max</td></tr>
                 </table>
             </div>
 
@@ -755,10 +783,12 @@ VERIFY: Empty email shows error</code></pre>
                 <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: var(--space-sm);">MCP extends Claude Code with external tools and data sources</p>
                 <table>
                     <tr><td>Serena</td><td>Indexation + session memory</td></tr>
+                    <tr><td>grepai</td><td>Semantic search + call graph</td></tr>
                     <tr><td>Context7</td><td>Library documentation</td></tr>
                     <tr><td>Sequential</td><td>Structured reasoning</td></tr>
                     <tr><td>Playwright</td><td>Browser automation</td></tr>
                     <tr><td>Postgres</td><td>Database queries</td></tr>
+                    <tr><td>doobidoo</td><td>Semantic memory + Knowledge Graph</td></tr>
                 </table>
                 <div class="tip">Check status: <code>/mcp</code></div>
             </div>
@@ -771,8 +801,11 @@ VERIFY: Empty email shows error</code></pre>
                     <tr><td>-c</td><td>Continue last session</td></tr>
                     <tr><td>-r &lt;id&gt;</td><td>Resume specific session</td></tr>
                     <tr><td>--model sonnet</td><td>Change model</td></tr>
+                    <tr><td>--teleport</td><td>Teleport session from web</td></tr>
                     <tr><td>--add-dir ../lib</td><td>Allow outside CWD</td></tr>
+                    <tr><td>--allowedTools</td><td>Whitelist tools</td></tr>
                     <tr><td>--debug</td><td>Debug output</td></tr>
+                    <tr><td>--mcp-debug</td><td>Debug MCP servers</td></tr>
                 </table>
             </div>
 
@@ -807,7 +840,7 @@ VERIFY: Empty email shows error</code></pre>
             <div class="section">
                 <h2>Quick Decision Tree</h2>
                 <pre><code>Simple task       → Just ask Claude
-Complex task      → TodoWrite first
+Complex task      → Tasks API to plan first
 Risky change      → Plan Mode first
 Repeating task    → Create agent/command
 Context full      → /compact or /clear
@@ -864,7 +897,7 @@ Deep analysis     → Use Opus (thinking on by default)</code></pre>
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="../quiz/">Quiz</a></li>
-                        <li><a href="../examples/">Examples (49)</a></li>
+                        <li><a href="../examples/">Examples (134)</a></li>
                         <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml" target="_blank" rel="noopener">LLM Reference</a></li>
                         <li><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
                     </ul>
@@ -884,7 +917,7 @@ Deep analysis     → Use Opus (thinking on by default)</code></pre>
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> &bull;
                     Made with dedication by <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>
                 </p>
-                <p class="version">v3.8.0</p>
+                <p class="version">v3.26.0</p>
             </div>
         </div>
     </footer>
