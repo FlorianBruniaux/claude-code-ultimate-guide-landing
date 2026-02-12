@@ -88,7 +88,7 @@
 ## Notes
 
 - Version actuelle: 3.8.0
-- URL: https://florianbruniaux.github.io/claude-code-ultimate-guide-landing
+- URL: https://cc.bruniaux.com
 - Repo: https://github.com/FlorianBruniaux/claude-code-ultimate-guide
 
 *Dernière mise à jour: 16 janvier 2026*

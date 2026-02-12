@@ -4,7 +4,7 @@
 
 | Environnement | URL |
 |---------------|-----|
-| **Production** | https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/ |
+| **Production** | https://cc.bruniaux.com/ |
 | **Custom Domain** | https://claudecode.bruniaux.com (à configurer) |
 | **GitHub Repo** | https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing |
 

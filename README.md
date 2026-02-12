@@ -4,7 +4,7 @@ Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBrun
 
 ## Live Site
 
-**URL**: [florianbruniaux.github.io/claude-code-ultimate-guide-landing](https://florianbruniaux.github.io/claude-code-ultimate-guide-landing)
+**URL**: [cc.bruniaux.com](https://cc.bruniaux.com)
 
 ## Features
 
