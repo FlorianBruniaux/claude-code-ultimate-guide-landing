@@ -589,6 +589,13 @@ kbd {
     background-color: #fe7d37;
 }
 
+.badge-awesome .badge-label {
+    background-color: #555;
+}
+.badge-awesome .badge-value {
+    background-color: #fc60a8;
+}
+
 /* Hero share buttons */
 .hero-share {
     display: flex;
@@ -756,7 +763,7 @@ kbd {
     font-weight: 700;
     letter-spacing: -0.01em;
     text-align: center;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 
 .section-subtitle {
@@ -3121,7 +3128,6 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
 }
 
 .crosslink-section {
-    background: var(--bg-secondary);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
