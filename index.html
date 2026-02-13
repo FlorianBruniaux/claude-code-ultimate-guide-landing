@@ -282,7 +282,7 @@
     <!-- Claude Code Version Banner -->
     <div class="cc-version-banner">
         <div class="container">
-            <span class="cc-version-badge">Claude Code v2.1.38</span>
+            <span class="cc-version-badge">Claude Code v2.1.41</span>
             <a href="#releases" class="cc-version-link">What's new →</a>
         </div>
     </div>
@@ -1271,15 +1271,63 @@ VERIFY: Empty email shows error message</code></pre>
 
                 <div style="text-align: center; margin-bottom: var(--space-md);">
                     <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
-                        Show All 46 Releases
+                        Show All 50 Releases
                     </button>
                     <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
-                        Showing <span id="visibleCount">6</span> of 46 releases
+                        Showing <span id="visibleCount">6</span> of 50 releases
                     </p>
                 </div>
 
                 <div class="releases-timeline">
                     <div class="release-card release-latest" data-release-index="0">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.41</span>
+                            <span class="release-date">Feb 13, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li><code>claude auth login/status/logout</code> CLI subcommands</li>
+                            <li>Windows ARM64 native binary support</li>
+                            <li><code>/rename</code> auto-generates session name from context</li>
+                            <li>Multiple stability fixes (FIFOs, background tasks, permissions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="1">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.39</span>
+                            <span class="release-date">Feb 11, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Guard against recursive Claude Code launches</li>
+                            <li>Fixed Agent Teams model for Bedrock/Vertex/Foundry</li>
+                            <li>OTel <code>speed</code> attribute for fast mode</li>
+                            <li>Stability fixes (rendering, session close, fatal errors)</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="2">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.38</span>
+                            <span class="release-date">Feb 10, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Fixed Tab key queueing slash commands</li>
+                            <li>Security: Heredoc delimiter command smuggling fix</li>
+                            <li>Security: Blocked writes to <code>.claude/skills</code> in sandbox</li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="3">
+                        <div class="release-header">
+                            <span class="release-version">v2.1.37</span>
+                            <span class="release-date">Feb 8, 2026</span>
+                        </div>
+                        <ul class="release-highlights">
+                            <li>Fixed <code>/fast</code> not available after enabling <code>/extra-usage</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="release-card" data-release-index="4">
                         <div class="release-header">
                             <span class="release-version">v2.1.36</span>
                             <span class="release-date">Feb 8, 2026</span>
@@ -1289,7 +1337,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="1">
+                    <div class="release-card" data-release-index="5">
                         <div class="release-header">
                             <span class="release-version">v2.1.34</span>
                             <span class="release-date">Feb 7, 2026</span>
@@ -1300,7 +1348,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="2">
+                    <div class="release-card release-card-hidden" data-release-index="6">
                         <div class="release-header">
                             <span class="release-version">v2.1.33</span>
                             <span class="release-date">Feb 6, 2026</span>
@@ -1313,7 +1361,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="1">
+                    <div class="release-card release-card-hidden" data-release-index="7">
                         <div class="release-header">
                             <span class="release-version">v2.1.32</span>
                             <span class="release-date">Feb 5, 2026</span>
@@ -1325,7 +1373,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="2">
+                    <div class="release-card release-card-hidden" data-release-index="8">
                         <div class="release-header">
                             <span class="release-version">v2.1.30</span>
                             <span class="release-date">Feb 2, 2026</span>
@@ -1338,7 +1386,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="2">
+                    <div class="release-card release-card-hidden" data-release-index="9">
                         <div class="release-header">
                             <span class="release-version">v2.1.29</span>
                             <span class="release-date">Jan 31, 2026</span>
@@ -1349,7 +1397,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="3">
+                    <div class="release-card release-card-hidden" data-release-index="10">
                         <div class="release-header">
                             <span class="release-version">v2.1.27</span>
                             <span class="release-date">Jan 29, 2026</span>
@@ -1361,7 +1409,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="4">
+                    <div class="release-card release-card-hidden" data-release-index="11">
                         <div class="release-header">
                             <span class="release-version">v2.1.21</span>
                             <span class="release-date">Jan 28, 2026</span>
@@ -1374,7 +1422,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="6">
+                    <div class="release-card release-card-hidden" data-release-index="12">
                         <div class="release-header">
                             <span class="release-version">v2.1.20</span>
                             <span class="release-date">Jan 27, 2026</span>
@@ -1385,7 +1433,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="7">
+                    <div class="release-card release-card-hidden" data-release-index="13">
                         <div class="release-header">
                             <span class="release-version">v2.1.19</span>
                             <span class="release-date">Jan 25, 2026</span>
@@ -1398,7 +1446,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="8">
+                    <div class="release-card release-card-hidden" data-release-index="14">
                         <div class="release-header">
                             <span class="release-version">v2.1.18</span>
                             <span class="release-date">Jan 24, 2026</span>
@@ -1409,7 +1457,7 @@ VERIFY: Empty email shows error message</code></pre>
                         </ul>
                     </div>
 
-                    <div class="release-card" data-release-index="9">
+                    <div class="release-card release-card-hidden" data-release-index="15">
                         <div class="release-header">
                             <span class="release-version">v2.1.17</span>
                             <span class="release-date">Jan 23, 2026</span>
@@ -1896,6 +1944,7 @@ VERIFY: Empty email shows error message</code></pre>
                         <li><span class="breaking-badge">Security</span> Command injection fix in bash processing (v2.1.2)</li>
                         <li><span class="breaking-badge">Security</span> Wildcard permission rules compound commands fix (v2.1.7)</li>
                         <li><span class="breaking-badge">Security</span> Shell line continuation permission bypass fix (v2.1.6)</li>
+                        <li><span class="breaking-badge">Security</span> Heredoc delimiter command smuggling prevention (v2.1.38)</li>
                         <li><span class="breaking-badge">OAuth</span> OAuth/API Console: console.anthropic.com &rarr; platform.claude.com (v2.1.0, v2.1.7)</li>
                         <li><span class="breaking-badge">Removed</span> Removed # shortcut for quick memory (v2.0.70)</li>
                     </ul>
