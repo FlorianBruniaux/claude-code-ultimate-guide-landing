@@ -734,7 +734,7 @@ window.SEARCH_GUIDE = [
         id: 'guide-third-party-rtk',
         type: 'guide',
         title: 'RTK Tool - Third-Party Tools',
-        content: 'rtk token optimization preprocessing command filter upstream fork pszymkowiak FlorianBruniaux vitest prisma analytics',
+        content: 'rtk token optimization preprocessing command filter rtk-ai vitest prisma python go cargo homebrew analytics',
         url: GUIDE_BASE + 'third-party-tools.md#rtk-rust-token-killer'
     },
     {
