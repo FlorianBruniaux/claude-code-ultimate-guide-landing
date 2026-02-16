@@ -43,3 +43,52 @@
         </a>
     </div>
 </section>
+
+<style>
+.crosslink-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.crosslink-section .container { text-align: center; }
+.crosslink-signals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 var(--space-xl);
+}
+.crosslink-signals span {
+    background: var(--bg-tertiary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.crosslink-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    background: var(--surface-elevated);
+    border: 2px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+.crosslink-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    text-decoration: none;
+}
+.crosslink-icon { font-size: 2.5rem; flex-shrink: 0; }
+.crosslink-content { flex: 1; text-align: left; }
+.crosslink-title { font-weight: 600; font-size: 1.1rem; color: var(--text-primary); margin-bottom: var(--space-xs); }
+.crosslink-stats { font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); }
+.crosslink-cta { color: var(--accent); font-weight: 500; font-size: 0.9rem; white-space: nowrap; }
+@media (max-width: 640px) {
+    .crosslink-signals { flex-direction: column; align-items: center; }
+    .crosslink-card { flex-direction: column; text-align: center; }
+    .crosslink-content { text-align: center; }
+}
+</style>

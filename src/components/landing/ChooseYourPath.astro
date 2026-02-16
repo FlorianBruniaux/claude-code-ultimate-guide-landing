@@ -95,3 +95,44 @@
         </div>
     </div>
 </section>
+
+<style>
+.paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+.path-card {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+.path-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+.path-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+}
+.path-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+.path-icon { font-size: 1.5rem; }
+.path-header h3 { font-size: 1.2rem; }
+.path-description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: var(--space-lg); }
+.path-steps { padding-left: var(--space-lg); color: var(--text-secondary); }
+.path-steps li { margin-bottom: var(--space-sm); font-size: 0.95rem; }
+.path-steps li::marker { color: var(--text-muted); }
+@media (max-width: 768px) {
+    .paths-grid { grid-template-columns: 1fr; }
+    .path-card.featured { order: -1; }
+}
+</style>

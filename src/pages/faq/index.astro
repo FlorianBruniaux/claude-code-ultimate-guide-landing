@@ -251,7 +251,7 @@ const jsonLd = [
     </section>
   </div>
 
-  <style is:global>
+  <style>
     .faq-page {
       max-width: 800px;
       margin: 0 auto;
@@ -286,6 +286,39 @@ const jsonLd = [
       padding-bottom: var(--space-sm);
       border-bottom: 2px solid var(--border);
     }
+
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      margin-bottom: var(--space-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-item[open] {
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+    .faq-item summary {
+      padding: var(--space-lg);
+      cursor: pointer;
+      font-weight: 500;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      transition: transform var(--transition-fast);
+    }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+    .faq-item p { padding: var(--space-lg); color: var(--text-secondary); margin: 0; }
 
     @media (max-width: 640px) {
       .faq-header h1 {

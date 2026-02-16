@@ -44,3 +44,57 @@
         </div>
     </div>
 </section>
+
+<style>
+.levelup-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 800px;
+    margin: 0 auto;
+}
+.levelup-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+.levelup-card:hover {
+    border-color: var(--accent-secondary);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+.levelup-icon { font-size: 2rem; flex-shrink: 0; }
+.levelup-content { flex: 1; }
+.levelup-content h3 { font-size: 1rem; margin-bottom: var(--space-xs); color: var(--text-primary); }
+.levelup-content p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+.levelup-content code {
+    background-color: var(--bg-tertiary);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+.levelup-arrow {
+    font-size: 1.25rem;
+    color: var(--accent-secondary);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all var(--transition-fast);
+}
+.levelup-card:hover .levelup-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+@media (max-width: 640px) {
+    .levelup-card { flex-direction: column; text-align: center; gap: var(--space-md); }
+    .levelup-card:hover { transform: translateY(-4px); }
+    .levelup-arrow { display: none; }
+}
+</style>

@@ -83,3 +83,11 @@
         btn.addEventListener('click', () => copyCode(btn));
     });
 </script>
+
+<style>
+.tldr-table-wrapper { overflow-x: auto; margin-bottom: var(--space-xl); }
+.tldr-table { width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; }
+.tldr-table th, .tldr-table td { padding: var(--space-md); text-align: left; border-bottom: 1px solid var(--border); }
+.tldr-table th { font-weight: 600; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.tldr-table td:last-child { text-align: right; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); }
+</style>

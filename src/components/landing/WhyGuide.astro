@@ -50,3 +50,80 @@
         </div>
     </div>
 </section>
+
+<style>
+.architecture-visual {
+    margin: var(--space-xl) auto var(--space-2xl);
+    max-width: 700px;
+    text-align: center;
+}
+.architecture-visual figure { margin: 0; }
+.architecture-visual img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+.architecture-visual figcaption {
+    margin-top: var(--space-md);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+.architecture-visual figcaption strong { color: var(--text-primary); }
+.architecture-visual figcaption a { color: var(--accent); }
+.comparison-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+.comparison-card {
+    background-color: var(--surface-elevated);
+    border: 2px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.comparison-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.comparison-without { border-left: 4px solid #f87171; }
+.comparison-with {
+    border-left: 4px solid #34d399;
+    box-shadow: var(--shadow-md);
+}
+.comparison-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+}
+.comparison-icon { font-size: 1.5rem; }
+.comparison-header h3 { margin: 0; font-size: 1.1rem; font-weight: 600; }
+.comparison-without .comparison-header h3 { color: #f85149; }
+.comparison-with .comparison-header h3 { color: #238636; }
+.comparison-list { list-style: none; padding: 0; margin: 0; }
+.comparison-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.status-icon { flex-shrink: 0; font-weight: 700; font-size: 0.9rem; }
+.status-icon.bad { color: #f85149; }
+.status-icon.good { color: #238636; }
+@media (max-width: 768px) {
+    .comparison-cards { grid-template-columns: 1fr; }
+}
+</style>

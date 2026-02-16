@@ -30,3 +30,28 @@
         </div>
     </div>
 </section>
+
+<style>
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+}
+.related-card {
+    display: block;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+.related-icon { font-size: 2rem; margin-bottom: var(--space-md); }
+.related-card h3 { font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.related-card p { color: var(--text-secondary); font-size: 0.95rem; }
+</style>

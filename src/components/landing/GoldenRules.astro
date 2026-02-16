@@ -50,3 +50,40 @@
         </div>
     </div>
 </section>
+
+<style>
+.rules-list { max-width: 800px; margin: 0 auto; }
+.rule {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+.rule:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+.rule-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 48px;
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 50%;
+}
+.rule-content h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
+.rule-content p { color: var(--text-secondary); font-size: 0.95rem; }
+@media (max-width: 768px) {
+    .rule { flex-direction: column; text-align: center; }
+    .rule-number { margin: 0 auto; }
+}
+</style>
