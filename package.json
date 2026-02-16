@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
-    "astro": "^5.17.1"
+    "astro": "^5.17.1",
+    "highlight.js": "^11.11.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.13",

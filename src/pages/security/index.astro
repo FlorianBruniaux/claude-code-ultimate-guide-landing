@@ -617,10 +617,9 @@ const jsonLd = [
 
 </Layout>
 
-<!-- External data -->
-<script is:inline src="/security-data.js"></script>
+<script>
+    import { SECURITY_DATA } from '../../data/security-data';
 
-<script is:inline>
     // ═══════════════════════════════════════════════════════
     // Count-up animation for stats
     // ═══════════════════════════════════════════════════════
@@ -727,7 +726,7 @@ const jsonLd = [
     // ═══════════════════════════════════════════════════════
     // Threat DB search
     // ═══════════════════════════════════════════════════════
-    var threatData = (typeof SECURITY_DATA !== 'undefined' && SECURITY_DATA.malicious_skills) ? SECURITY_DATA.malicious_skills : [];
+    var threatData = SECURITY_DATA.malicious_skills || [];
     var threatSearch = document.getElementById('threat-search');
     var threatResults = document.getElementById('threat-results');
     var threatCount = document.getElementById('threat-count');

@@ -852,9 +852,15 @@ const jsonLd = [
       .category-actions { width: 100%; }
       .category-action-btn { flex: 1; }
     }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+    .shake { animation: shake 0.3s ease; }
   </style>
 
-  <script is:inline>
+  <script>
     // Quiz State
     let quizData = null;
     let selectedCategories = new Set();
@@ -1107,7 +1113,14 @@ const jsonLd = [
 
     nextBtn.addEventListener('click', () => {
       const q = filteredQuestions[currentQuestionIndex];
-      if (!answers[q.id]) { alert('Please select an answer before continuing.'); return; }
+      if (!answers[q.id]) {
+        const optionsList = document.querySelector('.options-list');
+        if (optionsList) {
+          optionsList.classList.add('shake');
+          setTimeout(() => optionsList.classList.remove('shake'), 300);
+        }
+        return;
+      }
       if (currentQuestionIndex < filteredQuestions.length - 1) { currentQuestionIndex++; renderQuestion(); }
       else { showResults(); }
     });

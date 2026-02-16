@@ -48,36 +48,36 @@ const jsonLd = [
       <div class="check-item">
         <span class="question">Can you explain the last piece of code AI generated for you?</span>
         <div class="toggle-group" data-question="1">
-          <button class="toggle-btn yes" onclick="setAnswer(1, true)">YES</button>
-          <button class="toggle-btn no" onclick="setAnswer(1, false)">NO</button>
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
         </div>
       </div>
       <div class="check-item">
         <span class="question">Have you debugged code without AI this week?</span>
         <div class="toggle-group" data-question="2">
-          <button class="toggle-btn yes" onclick="setAnswer(2, true)">YES</button>
-          <button class="toggle-btn no" onclick="setAnswer(2, false)">NO</button>
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
         </div>
       </div>
       <div class="check-item">
         <span class="question">Do you know WHY the solution works, not just THAT it works?</span>
         <div class="toggle-group" data-question="3">
-          <button class="toggle-btn yes" onclick="setAnswer(3, true)">YES</button>
-          <button class="toggle-btn no" onclick="setAnswer(3, false)">NO</button>
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
         </div>
       </div>
       <div class="check-item">
         <span class="question">Could you write the same function without AI assistance?</span>
         <div class="toggle-group" data-question="4">
-          <button class="toggle-btn yes" onclick="setAnswer(4, true)">YES</button>
-          <button class="toggle-btn no" onclick="setAnswer(4, false)">NO</button>
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
         </div>
       </div>
       <div class="check-item">
         <span class="question">Do you know the limitations of AI for this type of problem?</span>
         <div class="toggle-group" data-question="5">
-          <button class="toggle-btn yes" onclick="setAnswer(5, true)">YES</button>
-          <button class="toggle-btn no" onclick="setAnswer(5, false)">NO</button>
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
         </div>
       </div>
 
@@ -519,26 +519,28 @@ If I skip these, remind me to think first.
     }
   </style>
 
-  <script is:inline>
-    const answers = {};
+  <script>
+    const answers: Record<number, boolean> = {};
 
-    function setAnswer(questionNum, isYes) {
+    function setAnswer(questionNum: number, isYes: boolean) {
       answers[questionNum] = isYes;
       const group = document.querySelector(`[data-question="${questionNum}"]`);
+      if (!group) return;
       const yesBtn = group.querySelector('.yes');
       const noBtn = group.querySelector('.no');
-      yesBtn.classList.remove('active');
-      noBtn.classList.remove('active');
-      if (isYes) yesBtn.classList.add('active');
-      else noBtn.classList.add('active');
+      yesBtn?.classList.remove('active');
+      noBtn?.classList.remove('active');
+      if (isYes) yesBtn?.classList.add('active');
+      else noBtn?.classList.add('active');
       if (Object.keys(answers).length === 5) updateScore();
     }
 
     function updateScore() {
-      let score = Object.values(answers).filter(v => v === true).length;
+      const score = Object.values(answers).filter(v => v === true).length;
       const scoreResult = document.getElementById('score-result');
       const scoreValue = document.getElementById('score-value');
       const recommendation = document.getElementById('recommendation');
+      if (!scoreResult || !scoreValue || !recommendation) return;
       scoreValue.textContent = `${score}/5`;
       scoreResult.style.display = 'block';
       scoreResult.classList.add('show');
@@ -550,5 +552,16 @@ If I skip these, remind me to think first.
         recommendation.innerHTML = '<strong style="color: #22c55e;">You\'re on the right track!</strong><br><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#optimizing-your-flow" target="_blank" style="color: var(--accent);">Check "Optimizing Your Flow" &rarr;</a>';
       }
     }
+
+    // Wire up click handlers (replacing inline onclick)
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.closest('.toggle-group') as HTMLElement;
+        if (!group) return;
+        const questionNum = parseInt(group.dataset.question || '0');
+        const isYes = btn.classList.contains('yes');
+        setAnswer(questionNum, isYes);
+      });
+    });
   </script>
 </Layout>
