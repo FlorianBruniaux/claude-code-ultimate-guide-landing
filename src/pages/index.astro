@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro'
+import HeroBanner from '../components/landing/HeroBanner.astro'
+import Onboarding from '../components/landing/Onboarding.astro'
+import QuickRef from '../components/landing/QuickRef.astro'
+import WhyGuide from '../components/landing/WhyGuide.astro'
+import ComparisonTable from '../components/landing/ComparisonTable.astro'
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro'
+import ExamplesCatalog from '../components/landing/ExamplesCatalog.astro'
+import ChooseYourPath from '../components/landing/ChooseYourPath.astro'
+import GoldenRules from '../components/landing/GoldenRules.astro'
+import PromptFormula from '../components/landing/PromptFormula.astro'
+import LevelUp from '../components/landing/LevelUp.astro'
+import SecurityTeaser from '../components/landing/SecurityTeaser.astro'
+import TokenOptimization from '../components/landing/TokenOptimization.astro'
+import Community from '../components/landing/Community.astro'
+import Releases from '../components/landing/Releases.astro'
+import CrossLinks from '../components/landing/CrossLinks.astro'
+import RelatedProjects from '../components/landing/RelatedProjects.astro'
+
+const title = 'Claude Code Guide: Beginner to Power User - Free & Open Source'
+const description = 'Claude Code from beginner to power user. Exhaustive documentation, production-ready templates, agentic workflow guides, quiz, and cheatsheet for daily use.'
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Claude Code Ultimate Guide",
+    "description": "Free, open-source guide for Claude Code (Anthropic CLI): documentation, 113 templates, quiz (274 questions), cheatsheet, and security guide.",
+    "url": "https://cc.bruniaux.com/",
+    "provider": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "isAccessibleForFree": true,
+    "educationalLevel": "Beginner to Advanced",
+    "inLanguage": "en",
+    "numberOfCredits": 0,
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "courseWorkload": "PT10H"
+    }
+  }
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <HeroBanner />
+  <Onboarding />
+  <QuickRef />
+  <WhyGuide />
+  <ComparisonTable />
+  <FeaturesGrid />
+  <ExamplesCatalog />
+  <ChooseYourPath />
+  <GoldenRules />
+  <PromptFormula />
+  <LevelUp />
+  <SecurityTeaser />
+  <TokenOptimization />
+  <Community />
+  <Releases />
+  <CrossLinks />
+  <RelatedProjects />
+</Layout>
