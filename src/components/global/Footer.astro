@@ -1,0 +1,96 @@
+---
+const currentYear = new Date().getFullYear()
+
+const footerLinks = {
+  documentation: [
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md', label: 'Ultimate Guide', external: true },
+    { href: '/cheatsheet/', label: 'Cheat Sheet' },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md', label: 'Architecture', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md', label: 'Data Privacy', external: true },
+  ],
+  resources: [
+    { href: '/quiz/', label: 'Quiz' },
+    { href: '/learning/', label: 'Learning' },
+    { href: '/security/', label: 'Security' },
+    { href: '/examples/', label: 'Examples' },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml', label: 'LLM Reference', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md', label: 'Changelog', external: true },
+  ],
+  community: [
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide', label: 'GitHub Repo', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md', label: 'Contribute', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues', label: 'Report Issues', external: true },
+    { href: 'https://www.devw.ai/', label: 'Dev With AI (FR)', external: true },
+  ],
+  share: [
+    { href: 'https://twitter.com/intent/tweet?url=https://cc.bruniaux.com/&text=Claude%20Code%20Guide%20-%20Master%20AI-powered%20coding', label: 'Share on X', external: true },
+    { href: 'https://www.linkedin.com/sharing/share-offsite/?url=https://cc.bruniaux.com/', label: 'Share on LinkedIn', external: true },
+  ],
+}
+---
+
+<footer class="border-t border-border mt-24 bg-background-secondary">
+  <div class="mx-auto max-w-content px-4 py-12">
+    <!-- Footer CTA -->
+    <div class="text-center mb-10 pb-10 border-b border-border">
+      <h3 class="text-xl font-bold text-text-primary mb-2">Ready to master Claude Code?</h3>
+      <p class="text-text-secondary mb-4">Start with the guide that 500+ developers use daily.</p>
+      <a
+        href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-5 py-2.5 rounded-lg bg-accent text-white font-medium hover:bg-accent-hover transition-colors"
+      >
+        Read the Guide &rarr;
+      </a>
+    </div>
+
+    <!-- Footer Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="flex items-center gap-1.5 text-accent font-bold text-lg mb-3">
+          <span class="font-mono text-text-muted">&gt;_</span>
+          <span>CC Guide</span>
+        </a>
+        <p class="text-text-muted text-sm leading-relaxed">
+          Claude Code from beginner to power user.
+        </p>
+      </div>
+
+      {Object.entries(footerLinks).map(([section, links]) => (
+        <div>
+          <h3 class="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">
+            {section.charAt(0).toUpperCase() + section.slice(1)}
+          </h3>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-text-muted hover:text-accent transition-colors"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-border pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-text-muted">
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">CC BY-SA 4.0</a> &bull;
+        Made by <a href="https://florian.bruniaux.com/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">Florian BRUNIAUX</a>
+      </p>
+      <p class="text-xs text-text-muted">
+        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">Astro</a> &middot;
+        Deployed on <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">GitHub Pages</a>
+      </p>
+    </div>
+  </div>
+</footer>

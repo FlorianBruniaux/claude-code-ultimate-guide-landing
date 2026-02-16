@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ===== LIGHT MODE (default) ===== */
+  :root {
+    --bg-primary: #fafbfc;
+    --bg-secondary: #f4f6f9;
+    --bg-tertiary: #e8ecf0;
+    --surface-elevated: #ffffff;
+    --border: #d1d9e0;
+    --border-light: #e3e8ef;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --accent: #58a6ff;
+    --accent-hover: #79b8ff;
+    --accent-secondary: #4f46e5;
+    --accent-secondary-hover: #6366f1;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+    /* Header */
+    --header-bg: rgba(255, 255, 255, 0.95);
+
+    /* Typography */
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    /* Layout */
+    --max-width: 1200px;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+
+    /* Button Colors */
+    --btn-primary-color: #ffffff;
+    --github-btn-bg: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    --github-btn-bg-hover: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    --github-btn-border: rgba(0, 0, 0, 0.1);
+    --github-btn-color: #1e293b;
+    --accent-highlight-bg: rgba(88, 166, 255, 0.1);
+    --modal-backdrop: rgba(0, 0, 0, 0.5);
+  }
+
+  /* ===== DARK MODE ===== */
+  [data-theme="dark"] {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --surface-elevated: #161b22;
+    --text-primary: #c9d1d9;
+    --text-secondary: #9ca3af;
+    --text-muted: #9ca3af;
+    --border: #30363d;
+    --border-light: #21262d;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+    --header-bg: rgba(13, 17, 23, 0.95);
+    --modal-backdrop: rgba(0, 0, 0, 0.7);
+    --accent-highlight-bg: rgba(88, 166, 255, 0.1);
+
+    --github-btn-bg: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+    --github-btn-bg-hover: linear-gradient(135deg, #2f363d 0%, #24292e 100%);
+    --github-btn-border: rgba(255, 255, 255, 0.1);
+    --github-btn-color: #ffffff;
+  }
+
+  [data-theme="dark"] body {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /* Disable transitions during theme switch */
+  .disable-transitions,
+  .disable-transitions * {
+    transition: none !important;
+  }
+
+  /* Skip-to-content link for accessibility */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    font-weight: 600;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+  }
+
+  /* Focus-visible styles */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling (respect reduced motion) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(88, 166, 255, 0.3);
+    color: var(--text-primary);
+  }
+}

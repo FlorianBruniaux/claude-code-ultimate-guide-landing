@@ -1,0 +1,59 @@
+<!-- Interactive Onboarding Section -->
+<section class="section onboarding-hero">
+    <div class="container">
+        <div class="onboarding-badge">Personalized Learning</div>
+        <h2 class="section-title">Start With Interactive Onboarding</h2>
+        <p class="section-subtitle">Claude asks 2-4 questions about your profile, then guides you through personalized content</p>
+
+        <div class="onboarding-command">
+            <div class="code-block featured">
+                <div class="code-header">
+                    <span class="code-filename">Paste in your terminal</span>
+                    <button class="copy-btn" data-copy aria-label="Copy command">
+                        <span class="copy-icon">Copy</span>
+                    </button>
+                </div>
+                <pre><code>claude "Fetch and follow the onboarding instructions from: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/tools/onboarding-prompt.md"</code></pre>
+            </div>
+        </div>
+
+        <div class="onboarding-features">
+            <div class="onboarding-feature">
+                <span class="feature-num">1</span>
+                <p><strong>Choose your language</strong><br>English or French</p>
+            </div>
+            <div class="onboarding-feature">
+                <span class="feature-num">2</span>
+                <p><strong>Select your goal</strong><br>Learn, audit setup, or explore</p>
+            </div>
+            <div class="onboarding-feature">
+                <span class="feature-num">3</span>
+                <p><strong>Pick your level</strong><br>Junior, Senior, or Power User</p>
+            </div>
+            <div class="onboarding-feature">
+                <span class="feature-num">4</span>
+                <p><strong>Get personalized path</strong><br>Curated content for you</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function copyCode(button) {
+        const codeBlock = button.closest('.code-block');
+        const code = codeBlock.querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            const icon = button.querySelector('.copy-icon');
+            const originalText = icon.textContent;
+            icon.textContent = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+                icon.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    document.querySelectorAll('.onboarding-hero [data-copy]').forEach(btn => {
+        btn.addEventListener('click', () => copyCode(btn));
+    });
+</script>

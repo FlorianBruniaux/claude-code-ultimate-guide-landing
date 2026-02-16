@@ -1,0 +1,1846 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'AI Agent Security: Threat Intelligence & Defense | Claude Code Guide'
+const description = 'AI agent security threat intelligence. 3,984 skills scanned, 36.82% have flaws. CVE database, attack techniques, defense tools, and security checklist for Claude Code and MCP ecosystem.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "AI Agent Security: Threat Intelligence & Defense",
+    "description": "Comprehensive threat intelligence for the AI coding tool ecosystem including CVE database, attack techniques, and defense tools",
+    "url": "https://cc.bruniaux.com/security/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/security/",
+    "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+    "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+    "datePublished": "2026-02-11",
+    "inLanguage": "en",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Developers using AI coding tools, security engineers, DevSecOps"
+    }
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+    <!-- Hero -->
+    <header class="security-hero">
+        <h1>AI Agent Security</h1>
+        <p class="tagline">Threat intelligence for the AI coding tool ecosystem. 3,984 skills scanned. Here's what we found.</p>
+        <div class="hero-badge">Threat DB v2.0.0 &mdash; Updated Feb 2026</div>
+        <div class="cta-buttons">
+            <a href="#threat-browser" class="btn btn-primary">Explore Threats</a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" class="btn btn-secondary">Read Hardening Guide &rarr;</a>
+        </div>
+    </header>
+
+    <!-- By the Numbers -->
+    <section class="content-section">
+        <h2>By the Numbers</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-target="3984">0</div>
+                <div class="stat-label">Skills Scanned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="36.82" data-suffix="%" data-decimals="2">0</div>
+                <div class="stat-label">Have Flaws</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="534">0</div>
+                <div class="stat-label">Critical-Risk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="76">0</div>
+                <div class="stat-label">Malicious Payloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="19">0</div>
+                <div class="stat-label">CVEs Tracked</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="1000" data-prefix="~">0</div>
+                <div class="stat-label">Exposed Servers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attack Techniques -->
+    <section class="content-section">
+        <h2>Attack Techniques</h2>
+        <div class="techniques-grid">
+            <div class="technique-card">
+                <span class="technique-id">T001</span>
+                <h3>Tool Poisoning via SKILL.md</h3>
+                <p>Hidden instructions in SKILL.md that instruct the agent to run malicious commands.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">ClawHavoc</span>
+                    <span class="campaign-tag">ToxicSkills</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>curl | bash from glot.io scripts</li>
+                            <li>Password-protected ZIP with embedded malware</li>
+                            <li>Base64-decoded eval commands</li>
+                        </ul>
+                        <div class="mitigation">Scan SKILL.md for shell commands; never auto-execute prerequisites.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T002</span>
+                <h3>Memory Poisoning</h3>
+                <p>Injection of persistent instructions into SOUL.md, MEMORY.md, CLAUDE.md, AGENTS.md.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">ToxicSkills</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>Skills targeting SOUL.md/MEMORY.md to inject persistent backdoor instructions</li>
+                            <li>Cognitive worms that replicate across agent memory files</li>
+                        </ul>
+                        <div class="mitigation">Treat memory files as config; require code review for changes; monitor diffs.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T003</span>
+                <h3>Rug Pull / Post-Approval Mutation</h3>
+                <p>Benign config approved once, then mutated to malicious version that auto-executes.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">CVE-2025-54136</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>MCPoison: .cursor/rules/mcp.json approved, then updated with reverse shell</li>
+                            <li>ClawHub skills updated without changelog to swap in AMOS installer</li>
+                        </ul>
+                        <div class="mitigation">Hash verification on configs; re-approval on any change.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T004</span>
+                <h3>Confused Deputy via MCP</h3>
+                <p>Attacker manipulates MCP session/output; client trusts poisoned response.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">CVE-2025-6515</span>
+                    <span class="campaign-tag">CVE-2025-68143</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>oatpp-mcp session ID reuse (CVE-2025-6515)</li>
+                            <li>Git MCP + Filesystem MCP chain via poisoned README</li>
+                        </ul>
+                        <div class="mitigation">Cryptographic session IDs; input validation; least-privilege for MCP tools.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T005</span>
+                <h3>DNS Rebinding on Local MCP</h3>
+                <p>Malicious website rebinds domain to 127.0.0.1 to access local MCP servers.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">CVE-2025-66416</span>
+                    <span class="campaign-tag">CVE-2025-9611</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>MCP Python SDK HTTP/SSE servers (CVE-2025-66416)</li>
+                            <li>MCP Gateway SSE (CVE-2025-64443)</li>
+                            <li>Playwright MCP (CVE-2025-9611)</li>
+                        </ul>
+                        <div class="mitigation">Use stdio transport; enable DNS rebinding protection; authenticate local servers.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T006</span>
+                <h3>Supply Chain Package Attack</h3>
+                <p>Malicious packages published to registries mimicking legitimate MCP servers.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">PyPI MCP</span>
+                    <span class="campaign-tag">Postmark npm</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>PyPI: mcp-runcmd-server, mcp-runcommand-server (JFrog)</li>
+                            <li>npm: postmark-mcp squatter</li>
+                        </ul>
+                        <div class="mitigation">Verify package author; check download counts; use SafeDep vet.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T007</span>
+                <h3>Hook-Based Exfiltration</h3>
+                <p>Malicious .claude/hooks/ scripts run on agent events with full user privileges.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">Claude Code</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>SessionStart hook that POSTs environment variables</li>
+                            <li>PostToolUse hook that exfiltrates file paths and content</li>
+                        </ul>
+                        <div class="mitigation">Review all hooks; forbid auto-running hooks from untrusted repos; maintain hook allowlist.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">T008</span>
+                <h3>Credential Theft via Agent</h3>
+                <p>Agent instructed to read credential files and send to attacker.</p>
+                <div class="campaign-tags">
+                    <span class="campaign-tag">ClawHavoc</span>
+                    <span class="campaign-tag">ToxicSkills</span>
+                </div>
+                <details>
+                    <summary>Examples & mitigation</summary>
+                    <div class="technique-details">
+                        <h4>Examples</h4>
+                        <ul>
+                            <li>rankaj skill: reads ~/.clawdbot/.env, POSTs to webhook.site</li>
+                            <li>Base64-encoded curl to send ~/.aws/credentials</li>
+                        </ul>
+                        <div class="mitigation">Block agent access to .env, .aws, .ssh directories; use pre-execution hooks.</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CVE Database -->
+    <section class="content-section" id="cve-database">
+        <h2>CVE Database</h2>
+        <div class="cve-controls">
+            <label for="severity-filter">Filter by severity:</label>
+            <select id="severity-filter">
+                <option value="all">All</option>
+                <option value="critical">Critical</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+            </select>
+        </div>
+        <div class="cve-table-wrapper">
+            <table class="cve-table" id="cve-table">
+                <thead>
+                    <tr>
+                        <th data-sort="id">CVE ID <span class="sort-arrow">&#9650;</span></th>
+                        <th data-sort="component">Component <span class="sort-arrow">&#9650;</span></th>
+                        <th data-sort="severity">Severity <span class="sort-arrow">&#9650;</span></th>
+                        <th data-sort="fixed">Fixed In <span class="sort-arrow">&#9650;</span></th>
+                    </tr>
+                </thead>
+                <tbody id="cve-tbody">
+                    <tr data-severity="high"><td>CVE-2025-53109</td><td>Filesystem MCP Server</td><td><span class="severity-badge severity-high">High</span></td><td>0.6.3</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-53110</td><td>Filesystem MCP Server</td><td><span class="severity-badge severity-high">High</span></td><td>0.6.3</td></tr>
+                    <tr data-severity="critical"><td>CVE-2025-49596</td><td>MCP Inspector</td><td><span class="severity-badge severity-critical">Critical</span></td><td>0.14.1</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-68143</td><td>MCP Git Server</td><td><span class="severity-badge severity-high">High</span></td><td>2025.9.25</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-68144</td><td>MCP Git Server</td><td><span class="severity-badge severity-high">High</span></td><td>2025.12.18</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-68145</td><td>MCP Git Server</td><td><span class="severity-badge severity-high">High</span></td><td>2025.12.18</td></tr>
+                    <tr data-severity="medium"><td>CVE-2025-66416</td><td>MCP Python SDK</td><td><span class="severity-badge severity-medium">Medium</span></td><td>1.23.0</td></tr>
+                    <tr data-severity="medium"><td>CVE-2025-64443</td><td>MCP Gateway</td><td><span class="severity-badge severity-medium">Medium</span></td><td>0.28.0</td></tr>
+                    <tr data-severity="high"><td>CVE-2026-25536</td><td>MCP TypeScript SDK</td><td><span class="severity-badge severity-high">High</span></td><td>1.26.0</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-54135</td><td>Cursor IDE</td><td><span class="severity-badge severity-high">High</span></td><td>1.3.9</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-54136</td><td>Cursor IDE</td><td><span class="severity-badge severity-high">High</span></td><td>1.3.9</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-66032</td><td>Claude Code</td><td><span class="severity-badge severity-high">High</span></td><td>1.0.93</td></tr>
+                    <tr data-severity="high"><td>CVE-2026-24052</td><td>Claude Code WebFetch</td><td><span class="severity-badge severity-high">High</span></td><td>1.0.111</td></tr>
+                    <tr data-severity="high"><td>ADVISORY-CC-2026-001</td><td>Claude Code (Sandbox Bypass)</td><td><span class="severity-badge severity-high">High</span></td><td>2.1.34</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-53967</td><td>Figma MCP Server</td><td><span class="severity-badge severity-high">High</span></td><td>0.6.3</td></tr>
+                    <tr data-severity="medium"><td>CVE-2025-9611</td><td>Playwright MCP</td><td><span class="severity-badge severity-medium">Medium</span></td><td>0.0.40</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-6515</td><td>MCP SSE Transport</td><td><span class="severity-badge severity-high">High</span></td><td>--</td></tr>
+                    <tr data-severity="high"><td>CVE-2026-25546</td><td>Godot MCP Server</td><td><span class="severity-badge severity-high">High</span></td><td>0.1.1</td></tr>
+                    <tr data-severity="high"><td>CVE-2025-54073</td><td>mcp-package-docs</td><td><span class="severity-badge severity-high">High</span></td><td>0.1.28</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Active Campaigns -->
+    <section class="content-section">
+        <h2>Active Campaigns</h2>
+        <div class="campaigns-list">
+            <details class="campaign-accordion">
+                <summary>
+                    ClawHavoc
+                    <span class="campaign-meta">341 skills &bull; Koi Security &bull; Feb 2026</span>
+                </summary>
+                <div class="campaign-body">
+                    <p>Largest known malicious AI agent skill campaign. 335 skills deploy Atomic Stealer (AMOS) macOS malware via fake prerequisites in SKILL.md. 6 outlier skills use alternate payloads (reverse shells, credential theft).</p>
+                    <h4>Delivery Methods</h4>
+                    <ul>
+                        <li>Fake prerequisites in SKILL.md (e.g., "install this CLI tool first")</li>
+                        <li>Base64-encoded shell snippets hosted on glot.io</li>
+                        <li>Password-protected ZIPs (password: 'openclaw')</li>
+                        <li>Second-stage dropper from raw IP addresses</li>
+                    </ul>
+                    <h4>Categories</h4>
+                    <ul>
+                        <li>Crypto wallets: 111 skills (Solana, Phantom, wallet-tracker, insider-wallets-finder)</li>
+                        <li>Finance & social: 76 skills (Yahoo Finance, X Trends)</li>
+                        <li>YouTube utilities: 57 skills (summarizers, thumbnails, downloaders)</li>
+                        <li>Polymarket bots: 34 skills</li>
+                        <li>Auto-updaters: 30 skills</li>
+                        <li>ClawHub typosquats: 29 skills</li>
+                        <li>Google Workspace: 17 skills</li>
+                    </ul>
+                    <h4>Targets</h4>
+                    <ul>
+                        <li>60+ cryptocurrency wallets (Exodus, Binance, Electrum, Atomic, Ledger)</li>
+                        <li>Browser data (Chrome, Safari, Firefox, Brave, Edge)</li>
+                        <li>SSH keys and shell history</li>
+                        <li>Telegram sessions, Keychain passwords (macOS)</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="campaign-accordion">
+                <summary>
+                    ToxicSkills
+                    <span class="campaign-meta">3,984 scanned &bull; Snyk &bull; Feb 2026</span>
+                </summary>
+                <div class="campaign-body">
+                    <p>Comprehensive audit of ClawHub and skills.sh ecosystems. Found 36.82% of all scanned skills have security flaws. 13.4% are critical-risk. 76 contain confirmed malicious payloads.</p>
+                    <h4>Key Findings</h4>
+                    <ul>
+                        <li>1,467 flawed skills (36.82% of total)</li>
+                        <li>534 critical-risk skills (13.4%)</li>
+                        <li>76 malicious payloads (8 still live at scan time)</li>
+                        <li>10.9% contain hardcoded secrets</li>
+                        <li>17.7% fetch remote content</li>
+                        <li>2.9% execute remote prompts</li>
+                    </ul>
+                    <h4>Known Malicious Authors</h4>
+                    <ul>
+                        <li><strong>zaycv</strong> &mdash; 40+ malicious skills, programmatic campaign</li>
+                        <li><strong>Aslaep123</strong> &mdash; Malicious crypto/trading skills</li>
+                        <li><strong>pepe276</strong> &mdash; Unicode-obfuscated DAN-style jailbreaking</li>
+                        <li><strong>moonshine-100rze</strong> &mdash; Mixed prompt-injection + exfil</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="campaign-accordion">
+                <summary>
+                    PyPI MCP Reverse Shell
+                    <span class="campaign-meta">3 packages &bull; JFrog &bull; Dec 2025</span>
+                </summary>
+                <div class="campaign-body">
+                    <p>Three malicious Python packages on PyPI masquerading as MCP server implementations. Each spawns a reverse shell to 45.115.38.27:4433 before starting the legitimate MCP server functionality.</p>
+                    <h4>Malicious Packages</h4>
+                    <ul>
+                        <li><code>mcp-runcmd-server</code></li>
+                        <li><code>mcp-runcommand-server</code></li>
+                        <li><code>mcp-runcommand-server2</code></li>
+                    </ul>
+                    <h4>Technique</h4>
+                    <ul>
+                        <li>Spawns <code>/bin/sh -i</code> reverse shell before starting MCP server</li>
+                        <li>C2 IP: 45.115.38.27, port 4433</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="campaign-accordion">
+                <summary>
+                    Postmark MCP Squatter
+                    <span class="campaign-meta">npm &bull; Defender's Initiative &bull; Nov 2025</span>
+                </summary>
+                <div class="campaign-body">
+                    <p>A malicious npm package named <code>postmark-mcp</code> that copies the official Postmark MCP server with a hidden backdoor injected into the codebase.</p>
+                    <h4>Details</h4>
+                    <ul>
+                        <li>Published on npm registry as a squatter of the official Postmark MCP integration</li>
+                        <li>Copies legitimate functionality to appear trustworthy</li>
+                        <li>Hidden backdoor enables remote access</li>
+                    </ul>
+                    <h4>Detection</h4>
+                    <ul>
+                        <li>Verify package author matches official Postmark organization</li>
+                        <li>Check package publish date and download count</li>
+                        <li>Use <code>npx mcp-scan</code> to detect known squatters</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Threat DB Browser -->
+    <section class="content-section" id="threat-browser">
+        <h2>Threat Database Browser</h2>
+        <input type="text" class="threat-search" id="threat-search" placeholder="Search skills by name, type, or source...">
+        <div class="threat-count" id="threat-count">Showing 0 of 0 skills</div>
+        <div class="threat-results" id="threat-results"></div>
+    </section>
+
+    <!-- Defense Tools -->
+    <section class="content-section">
+        <h2>Defense Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <h3>mcp-scan</h3>
+                <div class="vendor">Invariant / Snyk</div>
+                <p>Scans MCP server configurations for vulnerabilities. Detects known vulnerable servers and versions.</p>
+                <a href="https://github.com/invariantlabs-ai/mcp-scan" target="_blank" rel="noopener">github.com/invariantlabs-ai/mcp-scan</a>
+            </div>
+
+            <div class="tool-card">
+                <h3>skills-ref validate</h3>
+                <div class="vendor">agentskills.io</div>
+                <p>Validates skill spec compliance (SKILL.md structure, frontmatter, naming conventions).</p>
+                <a href="https://docs.rs/skills-ref-rs/latest/skills_ref/" target="_blank" rel="noopener">docs.rs/skills-ref-rs</a>
+            </div>
+
+            <div class="tool-card">
+                <h3>Garak</h3>
+                <div class="vendor">NVIDIA</div>
+                <p>37+ probe modules for LLM vulnerabilities. Prompt injection detection and jailbreak testing.</p>
+                <a href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener">github.com/NVIDIA/garak</a>
+            </div>
+
+            <div class="tool-card">
+                <h3>MCP Fortress</h3>
+                <div class="vendor">mcp-fortress</div>
+                <p>Scans npm/PyPI dependencies of MCP servers. Queries CVE databases for risk scores.</p>
+                <a href="https://github.com/mcp-fortress/mcp-fortress" target="_blank" rel="noopener">github.com/mcp-fortress/mcp-fortress</a>
+            </div>
+
+            <div class="tool-card">
+                <h3>SafeDep vet MCP</h3>
+                <div class="vendor">SafeDep</div>
+                <p>Software composition analysis integrated with agents. Detects slopsquatting and malicious packages.</p>
+                <a href="https://safedep.io/introducing-vet-mcp-server/" target="_blank" rel="noopener">safedep.io/introducing-vet-mcp-server</a>
+            </div>
+
+            <div class="tool-card">
+                <h3>Koi Clawdex</h3>
+                <div class="vendor">Koi Security</div>
+                <p>ClawHub security addon. Checks skills against Koi malicious skill database pre-install and retroactively.</p>
+                <a href="https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting" target="_blank" rel="noopener">koi.ai/blog/clawhavoc</a>
+            </div>
+        </div>
+
+        <div class="callout-box">
+            <h3>Built-in Claude Code Security Commands</h3>
+            <p>This guide includes two slash commands for security auditing your configuration: <code>/security-check</code> for a quick 30-second scan, and <code>/security-audit</code> for a full 6-phase audit with a score out of 100. See the next section for details.</p>
+        </div>
+    </section>
+
+    <!-- Security Commands -->
+    <section class="content-section">
+        <h2>Built-in Security Commands</h2>
+        <div class="commands-comparison">
+            <div class="command-panel">
+                <h3>/security-check</h3>
+                <div class="meta">Quick scan &bull; ~30 seconds &bull; Config vs known threats</div>
+                <div class="terminal-mockup">
+                    <span class="prompt">$</span> /security-check<br>
+                    <br>
+                    <span class="comment"># Checks your config against threat-db.yaml</span><br>
+                    <span class="output">[1/4] Scanning .claude/settings.json...</span><br>
+                    <span class="output">[2/4] Checking MCP server versions...</span><br>
+                    <span class="output">[3/4] Scanning hooks for suspicious patterns...</span><br>
+                    <span class="output">[4/4] Matching against known malicious skills...</span><br>
+                    <br>
+                    <span class="output">Result: 0 critical, 1 warning</span><br>
+                    <span class="output">Warning: @playwright/mcp unpinned (@latest)</span>
+                </div>
+            </div>
+
+            <div class="command-panel">
+                <h3>/security-audit</h3>
+                <div class="meta">Full audit &bull; 2-5 minutes &bull; 6 phases with score /100</div>
+                <div class="terminal-mockup">
+                    <span class="prompt">$</span> /security-audit<br>
+                    <br>
+                    <span class="comment"># Full 6-phase security assessment</span><br>
+                    <span class="output">[Phase 1] Permission model analysis...</span><br>
+                    <span class="output">[Phase 2] MCP server inventory & CVE check...</span><br>
+                    <span class="output">[Phase 3] Hook security review...</span><br>
+                    <span class="output">[Phase 4] CLAUDE.md injection scan...</span><br>
+                    <span class="output">[Phase 5] Secrets detection...</span><br>
+                    <span class="output">[Phase 6] Supply chain assessment...</span><br>
+                    <br>
+                    <span class="output">Security Posture Score: 82/100</span><br>
+                    <span class="output">3 recommendations generated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-Min Security Checklist -->
+    <section class="content-section" id="checklist">
+        <h2>5-Minute Security Checklist</h2>
+        <div class="checklist-container">
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-1">
+                <label for="check-1">Pin MCP server versions (no @latest)</label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-2">
+                <label for="check-2">Review .claude/hooks/ for suspicious commands</label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-3">
+                <label for="check-3">Scan with <code>npx mcp-scan</code></label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-4">
+                <label for="check-4">Check minimum safe versions for installed MCP servers</label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-5">
+                <label for="check-5">Block credential file access (.env, .aws, .ssh)</label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-6">
+                <label for="check-6">Enable permission prompts (no dangerouslySkipPermissions)</label>
+            </div>
+            <div class="checklist-item" data-checklist-item>
+                <input type="checkbox" id="check-7">
+                <label for="check-7">Review CLAUDE.md for injection patterns</label>
+            </div>
+            <div class="checklist-score">
+                <div class="score" id="checklist-score-value">0/7</div>
+                <div class="score-label">Complete</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources -->
+    <section class="content-section">
+        <h2>Sources & References</h2>
+        <div class="sources-grid">
+            <div class="source-card">
+                <h4>Snyk ToxicSkills</h4>
+                <div class="source-date">Feb 2026</div>
+                <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/" target="_blank" rel="noopener">snyk.io &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Koi Security ClawHavoc</h4>
+                <div class="source-date">Feb 2026</div>
+                <a href="https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting" target="_blank" rel="noopener">koi.ai &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>SafeDep Threat Model</h4>
+                <div class="source-date">Jan 2026</div>
+                <a href="https://safedep.io/agent-skills-threat-model" target="_blank" rel="noopener">safedep.io &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Cymulate EscapeRoute</h4>
+                <div class="source-date">Sep 2025</div>
+                <a href="https://cymulate.com/blog/cve-2025-53109-53110-escaperoute-anthropic/" target="_blank" rel="noopener">cymulate.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Checkpoint MCPoison</h4>
+                <div class="source-date">Oct 2025</div>
+                <a href="https://research.checkpoint.com/2025/cursor-vulnerability-mcpoison/" target="_blank" rel="noopener">checkpoint.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>JFrog Prompt Hijacking</h4>
+                <div class="source-date">Oct 2025</div>
+                <a href="https://jfrog.com/blog/mcp-prompt-hijacking-vulnerability/" target="_blank" rel="noopener">jfrog.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>JFrog PyPI MCP Reverse Shell</h4>
+                <div class="source-date">Dec 2025</div>
+                <a href="https://research.jfrog.com/post/3-malicious-mcps-pypi-reverse-shell/" target="_blank" rel="noopener">research.jfrog.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Recorded Future MCP Inspector</h4>
+                <div class="source-date">Jul 2025</div>
+                <a href="https://www.recordedfuture.com/blog/anthropic-mcp-inspector-cve-2025-49596" target="_blank" rel="noopener">recordedfuture.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Flatt Security - 8 ways to pwn Claude</h4>
+                <div class="source-date">Aug 2025</div>
+                <a href="https://flatt.tech/research/posts/" target="_blank" rel="noopener">flatt.tech &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>SentinelOne WebFetch SSRF</h4>
+                <div class="source-date">Jan 2026</div>
+                <a href="https://sentinelone.com/vulnerability-database/" target="_blank" rel="noopener">sentinelone.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Hacker News - MCP Git Server Flaws</h4>
+                <div class="source-date">Jan 2026</div>
+                <a href="https://thehackernews.com/2026/01/three-flaws-in-anthropic-mcp-git-server.html" target="_blank" rel="noopener">thehackernews.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Bitsight TRACE - Exposed MCP Servers</h4>
+                <div class="source-date">Jan 2026</div>
+                <a href="https://www.bitsight.com/blog/exposed-mcp-servers-reveal-new-ai-vulnerabilities" target="_blank" rel="noopener">bitsight.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>Defender's Initiative - Postmark MCP</h4>
+                <div class="source-date">Nov 2025</div>
+                <a href="https://defendersinitiative.substack.com/p/npm-not-another-package-malicious" target="_blank" rel="noopener">defendersinitiative.substack.com &rarr;</a>
+            </div>
+            <div class="source-card">
+                <h4>SAFE-MCP Framework</h4>
+                <div class="source-date">Jan 2026</div>
+                <a href="https://www.safemcp.org" target="_blank" rel="noopener">safemcp.org &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+</Layout>
+
+<!-- External data -->
+<script is:inline src="/security-data.js"></script>
+
+<script is:inline>
+    // ═══════════════════════════════════════════════════════
+    // Count-up animation for stats
+    // ═══════════════════════════════════════════════════════
+    function animateCountUp(el) {
+        var target = parseFloat(el.dataset.target);
+        var decimals = parseInt(el.dataset.decimals) || 0;
+        var prefix = el.dataset.prefix || '';
+        var suffix = el.dataset.suffix || '';
+        var duration = 1500;
+        var start = performance.now();
+
+        function update(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = eased * target;
+
+            el.textContent = prefix + (decimals > 0 ? current.toFixed(decimals) : Math.round(current).toLocaleString()) + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCountUp(entry.target);
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(function(el) {
+        statsObserver.observe(el);
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // CVE table sort and filter
+    // ═══════════════════════════════════════════════════════
+    var severityOrder = { critical: 0, high: 1, medium: 2 };
+    var currentSort = { column: null, asc: true };
+
+    document.getElementById('severity-filter').addEventListener('change', function() {
+        filterCVETable(this.value);
+    });
+
+    function filterCVETable(severity) {
+        var rows = document.querySelectorAll('#cve-tbody tr');
+        rows.forEach(function(row) {
+            if (severity === 'all' || row.dataset.severity === severity) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    document.querySelectorAll('.cve-table th[data-sort]').forEach(function(th) {
+        th.addEventListener('click', function() {
+            var column = this.dataset.sort;
+            var asc = currentSort.column === column ? !currentSort.asc : true;
+            currentSort = { column: column, asc: asc };
+
+            var tbody = document.getElementById('cve-tbody');
+            var rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.sort(function(a, b) {
+                var aVal, bVal;
+                if (column === 'id') {
+                    aVal = a.cells[0].textContent;
+                    bVal = b.cells[0].textContent;
+                } else if (column === 'component') {
+                    aVal = a.cells[1].textContent;
+                    bVal = b.cells[1].textContent;
+                } else if (column === 'severity') {
+                    aVal = severityOrder[a.dataset.severity] || 99;
+                    bVal = severityOrder[b.dataset.severity] || 99;
+                    return asc ? aVal - bVal : bVal - aVal;
+                } else if (column === 'fixed') {
+                    aVal = a.cells[3].textContent;
+                    bVal = b.cells[3].textContent;
+                }
+                if (aVal < bVal) return asc ? -1 : 1;
+                if (aVal > bVal) return asc ? 1 : -1;
+                return 0;
+            });
+
+            rows.forEach(function(row) { tbody.appendChild(row); });
+
+            document.querySelectorAll('.cve-table th .sort-arrow').forEach(function(arrow) {
+                arrow.classList.remove('active');
+                arrow.innerHTML = '&#9650;';
+            });
+            var arrow = this.querySelector('.sort-arrow');
+            arrow.classList.add('active');
+            arrow.innerHTML = asc ? '&#9650;' : '&#9660;';
+        });
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // Threat DB search
+    // ═══════════════════════════════════════════════════════
+    var threatData = (typeof SECURITY_DATA !== 'undefined' && SECURITY_DATA.malicious_skills) ? SECURITY_DATA.malicious_skills : [];
+    var threatSearch = document.getElementById('threat-search');
+    var threatResults = document.getElementById('threat-results');
+    var threatCount = document.getElementById('threat-count');
+
+    function renderThreats(filter) {
+        var query = (filter || '').toLowerCase();
+        var filtered = threatData.filter(function(skill) {
+            if (!query) return true;
+            return (skill.name && skill.name.toLowerCase().includes(query)) ||
+                   (skill.type && skill.type.toLowerCase().includes(query)) ||
+                   (skill.source && skill.source.toLowerCase().includes(query));
+        });
+
+        var maxShow = 50;
+        var shown = filtered.slice(0, maxShow);
+
+        threatCount.textContent = 'Showing ' + Math.min(shown.length, filtered.length) + ' of ' + threatData.length + ' skills' + (filtered.length > maxShow ? ' (first ' + maxShow + ' matches)' : '');
+
+        threatResults.innerHTML = shown.map(function(skill) {
+            var typeClass = 'type-' + (skill.type || '').replace(/[^a-z]/g, '-');
+            return '<div class="threat-item">' +
+                '<span class="threat-name">' + escapeHtml(skill.name) + '</span>' +
+                '<span class="type-badge ' + typeClass + '">' + escapeHtml(skill.type || 'unknown') + '</span>' +
+                '<span class="source-label">' + escapeHtml(skill.source || '') + '</span>' +
+                '<span class="risk-badge risk-' + (skill.risk || 'critical') + '">' + escapeHtml(skill.risk || 'critical') + '</span>' +
+                '</div>';
+        }).join('');
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    if (threatSearch) {
+        threatSearch.addEventListener('input', function() {
+            renderThreats(this.value);
+        });
+    }
+
+    // Initial render
+    renderThreats('');
+
+    // ═══════════════════════════════════════════════════════
+    // Checklist with score (localStorage)
+    // ═══════════════════════════════════════════════════════
+    var checklistKey = 'security-checklist-state';
+
+    function loadChecklist() {
+        var saved = localStorage.getItem(checklistKey);
+        if (saved) {
+            try {
+                var state = JSON.parse(saved);
+                state.forEach(function(checked, i) {
+                    var checkbox = document.getElementById('check-' + (i + 1));
+                    if (checkbox) {
+                        checkbox.checked = checked;
+                        if (checked) {
+                            checkbox.closest('.checklist-item').classList.add('checked');
+                        }
+                    }
+                });
+            } catch (e) {}
+        }
+        updateChecklistScore();
+    }
+
+    function saveChecklist() {
+        var state = [];
+        for (var i = 1; i <= 7; i++) {
+            var checkbox = document.getElementById('check-' + i);
+            state.push(checkbox ? checkbox.checked : false);
+        }
+        localStorage.setItem(checklistKey, JSON.stringify(state));
+    }
+
+    function toggleCheck(item) {
+        var checkbox = item.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+        item.classList.toggle('checked', checkbox.checked);
+        updateChecklistScore();
+        saveChecklist();
+    }
+
+    function updateChecklistScore() {
+        var total = 0;
+        for (var i = 1; i <= 7; i++) {
+            var checkbox = document.getElementById('check-' + i);
+            if (checkbox && checkbox.checked) total++;
+        }
+        var scoreEl = document.getElementById('checklist-score-value');
+        if (scoreEl) scoreEl.textContent = total + '/7';
+    }
+
+    loadChecklist();
+
+    // ═══════════════════════════════════════════════════════
+    // Checklist click handlers
+    // ═══════════════════════════════════════════════════════
+    document.querySelectorAll('[data-checklist-item]').forEach(function(item) {
+        item.addEventListener('click', function() {
+            toggleCheck(this);
+        });
+    });
+</script>
+
+<style>
+    /* Security page specific styles */
+    .security-hero {
+        text-align: center;
+        padding: var(--space-4xl) var(--space-lg);
+        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        border-bottom: 1px solid var(--border);
+        position: relative;
+    }
+
+    .security-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .security-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--space-md);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .security-hero .tagline {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto var(--space-xl);
+        line-height: 1.6;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: var(--space-sm) var(--space-lg);
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: var(--border-radius-lg);
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: var(--space-xl);
+        backdrop-filter: blur(8px);
+    }
+
+    .content-section {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: var(--space-3xl) var(--space-lg);
+    }
+
+    .content-section:nth-child(even) {
+        background: var(--bg-secondary);
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: var(--space-xl);
+        padding-bottom: var(--space-md);
+        border-bottom: 3px solid var(--accent);
+        position: relative;
+        letter-spacing: -0.01em;
+    }
+
+    .content-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: var(--space-md);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .stat-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-xl);
+        text-align: center;
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.1;
+        margin-bottom: var(--space-sm);
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Attack technique cards */
+    .techniques-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--space-xl);
+    }
+
+    .technique-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-xl);
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .technique-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--accent) 0%, var(--accent-secondary) 100%);
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+    }
+
+    .technique-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card-hover);
+        border-color: transparent;
+    }
+
+    .technique-card:hover::before {
+        opacity: 1;
+    }
+
+    .technique-id {
+        display: inline-block;
+        padding: 4px 12px;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+        color: white;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: var(--font-mono);
+        margin-bottom: var(--space-md);
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3);
+    }
+
+    .technique-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        line-height: 1.4;
+    }
+
+    .technique-card > p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: var(--space-md);
+        line-height: 1.6;
+    }
+
+    .campaign-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+    }
+
+    .campaign-tag {
+        display: inline-block;
+        padding: 4px 10px;
+        background: rgba(88, 166, 255, 0.1);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--accent);
+        transition: all var(--transition-fast);
+    }
+
+    .campaign-tag:hover {
+        background: rgba(88, 166, 255, 0.15);
+        border-color: var(--accent);
+    }
+
+    .technique-card details {
+        margin-top: var(--space-md);
+    }
+
+    .technique-card summary {
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 600;
+        padding: var(--space-sm);
+        border-radius: var(--border-radius);
+        transition: all var(--transition-fast);
+    }
+
+    .technique-card summary:hover {
+        background: rgba(88, 166, 255, 0.05);
+        text-decoration: none;
+    }
+
+    .technique-details {
+        margin-top: var(--space-md);
+        padding: var(--space-lg);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        font-size: 0.9rem;
+    }
+
+    .technique-details h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: var(--text-primary);
+    }
+
+    .technique-details ul {
+        margin: 0 0 var(--space-md) 0;
+        padding-left: var(--space-lg);
+        color: var(--text-secondary);
+    }
+
+    .technique-details ul li {
+        margin-bottom: var(--space-sm);
+        line-height: 1.5;
+    }
+
+    .technique-details .mitigation {
+        padding: var(--space-md) var(--space-lg);
+        background: rgba(34, 197, 94, 0.1);
+        border-left: 4px solid #22c55e;
+        border-radius: var(--border-radius);
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    /* CVE table */
+    .cve-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-xl);
+    }
+
+    .cve-controls label {
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+
+    .cve-controls select {
+        padding: var(--space-sm) var(--space-lg);
+        background: var(--surface-elevated);
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+
+    .cve-controls select:hover {
+        border-color: var(--accent);
+    }
+
+    .cve-controls select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+    }
+
+    .cve-table-wrapper {
+        overflow-x: auto;
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .cve-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .cve-table th,
+    .cve-table td {
+        padding: var(--space-md) var(--space-lg);
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.95rem;
+    }
+
+    .cve-table th {
+        background: var(--bg-secondary);
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+        transition: all var(--transition-fast);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .cve-table th:hover {
+        color: var(--accent);
+        background: var(--bg-tertiary);
+    }
+
+    .cve-table th .sort-arrow {
+        margin-left: 6px;
+        opacity: 0.3;
+        transition: opacity var(--transition-fast);
+    }
+
+    .cve-table th .sort-arrow.active {
+        opacity: 1;
+        color: var(--accent);
+    }
+
+    .cve-table tbody tr {
+        transition: background var(--transition-fast);
+    }
+
+    .cve-table tbody tr:hover {
+        background: var(--bg-secondary);
+    }
+
+    .cve-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .cve-table td:first-child {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
+        color: var(--accent);
+    }
+
+    .severity-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .severity-critical {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .severity-high {
+        background: rgba(245, 158, 11, 0.15);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .severity-medium {
+        background: rgba(59, 130, 246, 0.15);
+        color: #3b82f6;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    /* Campaign accordions */
+    .campaigns-list {
+        display: grid;
+        gap: var(--space-lg);
+    }
+
+    .campaign-accordion {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-fast);
+    }
+
+    .campaign-accordion:hover {
+        box-shadow: var(--shadow-md);
+    }
+
+    .campaign-accordion[open] {
+        border-color: var(--accent);
+    }
+
+    .campaign-accordion summary {
+        padding: var(--space-xl);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all var(--transition-fast);
+        background: var(--bg-secondary);
+    }
+
+    .campaign-accordion summary:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .campaign-accordion[open] summary {
+        background: var(--bg-tertiary);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .campaign-accordion .campaign-meta {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+    }
+
+    .campaign-body {
+        padding: var(--space-xl);
+    }
+
+    .campaign-body p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: var(--space-lg);
+        line-height: 1.6;
+    }
+
+    .campaign-body h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-md);
+        color: var(--text-primary);
+    }
+
+    .campaign-body ul {
+        padding-left: var(--space-xl);
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: var(--space-lg);
+    }
+
+    .campaign-body ul li {
+        margin-bottom: var(--space-sm);
+        line-height: 1.5;
+    }
+
+    .campaign-body strong {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .campaign-body code {
+        font-size: 0.9em;
+    }
+
+    /* Threat browser */
+    .threat-search {
+        width: 100%;
+        padding: var(--space-md) var(--space-xl);
+        background: var(--surface-elevated);
+        color: var(--text-primary);
+        border: 2px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .threat-search:hover {
+        border-color: var(--accent);
+    }
+
+    .threat-search:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.1);
+    }
+
+    .threat-search::placeholder {
+        color: var(--text-muted);
+    }
+
+    .threat-count {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        margin-bottom: var(--space-lg);
+    }
+
+    .threat-results {
+        display: grid;
+        gap: var(--space-sm);
+        max-height: 500px;
+        overflow-y: auto;
+        padding-right: var(--space-sm);
+    }
+
+    .threat-results::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .threat-results::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 4px;
+    }
+
+    .threat-results::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+    }
+
+    .threat-results::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+    }
+
+    .threat-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-lg);
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-left: 3px solid transparent;
+        border-radius: var(--border-radius);
+        font-size: 0.9rem;
+        transition: all var(--transition-fast);
+    }
+
+    .threat-item:hover {
+        border-left-color: var(--accent);
+        background: var(--bg-secondary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .threat-item .threat-name {
+        font-weight: 600;
+        font-family: var(--font-mono);
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text-primary);
+    }
+
+    .type-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+    }
+
+    .type-typosquatting {
+        background: rgba(245, 158, 11, 0.15);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .type-malware {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .type-backdoor {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .type-supply-chain {
+        background: rgba(168, 85, 247, 0.15);
+        color: #a855f7;
+        border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .type-credential-theft {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .risk-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+    }
+
+    .risk-critical {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .source-label {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* Defense tools grid */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--space-xl);
+        margin-bottom: var(--space-2xl);
+    }
+
+    .tool-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--accent);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-xl);
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .tool-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-card-hover);
+        border-top-color: var(--accent-secondary);
+    }
+
+    .tool-card h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: var(--space-xs);
+        color: var(--text-primary);
+    }
+
+    .tool-card .vendor {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-bottom: var(--space-md);
+    }
+
+    .tool-card p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: var(--space-lg);
+        line-height: 1.6;
+    }
+
+    .tool-card a {
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all var(--transition-fast);
+    }
+
+    .tool-card a:hover {
+        color: var(--accent-hover);
+        text-decoration: none;
+    }
+
+    .tool-card a::after {
+        content: ' \2192';
+        display: inline-block;
+        transition: transform var(--transition-fast);
+    }
+
+    .tool-card a:hover::after {
+        transform: translateX(4px);
+    }
+
+    .callout-box {
+        background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-2xl);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .callout-box h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-md);
+        color: var(--text-primary);
+    }
+
+    .callout-box p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .callout-box code {
+        background: var(--bg-secondary);
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    /* Security commands */
+    .commands-comparison {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--space-xl);
+    }
+
+    .command-panel {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-fast);
+    }
+
+    .command-panel:hover {
+        box-shadow: var(--shadow-md);
+    }
+
+    .command-panel h3 {
+        padding: var(--space-xl);
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 600;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .command-panel .meta {
+        padding: var(--space-md) var(--space-xl);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-mockup {
+        background: #0d1117;
+        padding: var(--space-xl);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        line-height: 1.8;
+        color: #7ee787;
+        overflow-x: auto;
+        min-height: 200px;
+    }
+
+    .terminal-mockup::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .terminal-mockup::-webkit-scrollbar-track {
+        background: #161b22;
+    }
+
+    .terminal-mockup::-webkit-scrollbar-thumb {
+        background: #30363d;
+        border-radius: 4px;
+    }
+
+    .terminal-mockup .prompt {
+        color: #79c0ff;
+        font-weight: 600;
+    }
+
+    .terminal-mockup .comment {
+        color: #8b949e;
+        font-style: italic;
+    }
+
+    .terminal-mockup .output {
+        color: #c9d1d9;
+    }
+
+    /* Checklist */
+    .checklist-container {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-2xl);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-lg);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        margin-bottom: var(--space-md);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+
+    .checklist-item:hover {
+        border-color: var(--accent);
+        background: var(--bg-tertiary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-item:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--accent);
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    .checklist-item label {
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 500;
+        flex: 1;
+        line-height: 1.5;
+    }
+
+    .checklist-item.checked {
+        opacity: 0.6;
+    }
+
+    .checklist-item.checked label {
+        text-decoration: line-through;
+        color: var(--text-secondary);
+    }
+
+    .checklist-score {
+        margin-top: var(--space-2xl);
+        padding: var(--space-xl);
+        background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+        border-radius: var(--border-radius-lg);
+        text-align: center;
+    }
+
+    .checklist-score .score {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: var(--space-sm);
+    }
+
+    .checklist-score .score-label {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* Sources grid */
+    .sources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .source-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-left: 3px solid transparent;
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-lg);
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .source-card:hover {
+        border-left-color: var(--accent);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
+
+    .source-card h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: var(--space-xs);
+        color: var(--text-primary);
+    }
+
+    .source-card .source-date {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-bottom: var(--space-md);
+    }
+
+    .source-card a {
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all var(--transition-fast);
+    }
+
+    .source-card a:hover {
+        color: var(--accent-hover);
+        text-decoration: none;
+    }
+
+    .source-card a::after {
+        content: ' \2192';
+        display: inline-block;
+        transition: transform var(--transition-fast);
+    }
+
+    .source-card a:hover::after {
+        transform: translateX(3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .security-hero {
+            padding: var(--space-3xl) var(--space-lg);
+        }
+
+        .content-section {
+            padding: var(--space-2xl) var(--space-lg);
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem;
+        }
+
+        .threat-item {
+            flex-wrap: wrap;
+        }
+
+        .commands-comparison {
+            grid-template-columns: 1fr;
+        }
+
+        .techniques-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+        }
+    }
+</style>

@@ -1,5 +1,31 @@
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# IDE
 .idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
 .DS_Store
-*.log
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Debug
+npm-debug.log*
+pnpm-debug.log*
+
+# Claude
 .claudedocs/
+
+# Legacy
 questions.json.original

@@ -1,0 +1,867 @@
+<!-- What's New Section -->
+<section class="section whats-new section--alt" id="whats-new">
+    <div class="container">
+        <h2 class="section-title">What's New</h2>
+        <p class="section-subtitle">Latest updates from the changelog</p>
+
+        <div class="changelog-container" id="changelog-container">
+            <div class="changelog-loading">Loading changelog...</div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-xl);">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" class="btn btn-secondary" target="_blank" rel="noopener">
+                View Full Changelog &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Claude Code Releases Section -->
+<section class="section cc-releases" id="releases">
+    <div class="container">
+        <h2 class="section-title">Claude Code Releases</h2>
+        <p class="section-subtitle">Latest versions and breaking changes from Anthropic</p>
+
+        <div style="text-align: center; margin-bottom: var(--space-md);">
+            <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                Show All 50 Releases
+            </button>
+            <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+                Showing <span id="visibleCount">6</span> of 50 releases
+            </p>
+        </div>
+
+        <div class="releases-timeline">
+            <div class="release-card release-latest" data-release-index="0">
+                <div class="release-header">
+                    <span class="release-version">v2.1.41</span>
+                    <span class="release-date">Feb 13, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li><code>claude auth login/status/logout</code> CLI subcommands</li>
+                    <li>Windows ARM64 native binary support</li>
+                    <li><code>/rename</code> auto-generates session name from context</li>
+                    <li>Multiple stability fixes (FIFOs, background tasks, permissions)</li>
+                </ul>
+            </div>
+
+            <div class="release-card" data-release-index="1">
+                <div class="release-header">
+                    <span class="release-version">v2.1.39</span>
+                    <span class="release-date">Feb 11, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Guard against recursive Claude Code launches</li>
+                    <li>Fixed Agent Teams model for Bedrock/Vertex/Foundry</li>
+                    <li>OTel <code>speed</code> attribute for fast mode</li>
+                    <li>Stability fixes (rendering, session close, fatal errors)</li>
+                </ul>
+            </div>
+
+            <div class="release-card" data-release-index="2">
+                <div class="release-header">
+                    <span class="release-version">v2.1.38</span>
+                    <span class="release-date">Feb 10, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fixed Tab key queueing slash commands</li>
+                    <li>Security: Heredoc delimiter command smuggling fix</li>
+                    <li>Security: Blocked writes to <code>.claude/skills</code> in sandbox</li>
+                </ul>
+            </div>
+
+            <div class="release-card" data-release-index="3">
+                <div class="release-header">
+                    <span class="release-version">v2.1.37</span>
+                    <span class="release-date">Feb 8, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fixed <code>/fast</code> not available after enabling <code>/extra-usage</code></li>
+                </ul>
+            </div>
+
+            <div class="release-card" data-release-index="4">
+                <div class="release-header">
+                    <span class="release-version">v2.1.36</span>
+                    <span class="release-date">Feb 8, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#11088; Fast mode now available for Opus 4.6</li>
+                </ul>
+            </div>
+
+            <div class="release-card" data-release-index="5">
+                <div class="release-header">
+                    <span class="release-version">v2.1.34</span>
+                    <span class="release-date">Feb 7, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fixed crash with agent teams setting changes</li>
+                    <li>Security fix: sandbox-excluded commands bypass</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="6">
+                <div class="release-header">
+                    <span class="release-version">v2.1.33</span>
+                    <span class="release-date">Feb 6, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent teams fixes (tmux sessions, availability warnings)</li>
+                    <li><code>TeammateIdle</code> and <code>TaskCompleted</code> hook events</li>
+                    <li>Agent frontmatter: <code>memory</code> field, <code>Task(agent_type)</code> syntax</li>
+                    <li>VSCode: Remote sessions, branch/message count in picker</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="7">
+                <div class="release-header">
+                    <span class="release-version">v2.1.32</span>
+                    <span class="release-date">Feb 5, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#11088; Opus 4.6 available</li>
+                    <li>Agent teams preview (experimental)</li>
+                    <li>Automatic memory recording</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="8">
+                <div class="release-header">
+                    <span class="release-version">v2.1.30</span>
+                    <span class="release-date">Feb 2, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#11088; PDF page range support (<code>pages: "1-5"</code>)</li>
+                    <li>&#11088; Pre-configured OAuth for MCP servers (Slack)</li>
+                    <li>&#11088; New <code>/debug</code> command for troubleshooting</li>
+                    <li>Task tool metrics (tokens, duration, tool uses)</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="9">
+                <div class="release-header">
+                    <span class="release-version">v2.1.29</span>
+                    <span class="release-date">Jan 31, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fixed startup performance with saved hook context</li>
+                    <li>Improved session recovery speed for long-duration sessions</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="10">
+                <div class="release-header">
+                    <span class="release-version">v2.1.27</span>
+                    <span class="release-date">Jan 29, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li><code>--from-pr</code> flag to resume sessions linked to GitHub PRs</li>
+                    <li>Sessions auto-linked to PRs via <code>gh pr create</code></li>
+                    <li>Windows/VSCode stability fixes</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="11">
+                <div class="release-header">
+                    <span class="release-version">v2.1.21</span>
+                    <span class="release-date">Jan 28, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Skills/commands can specify required/recommended Claude Code version</li>
+                    <li>New TaskCreate fields: category, checklist, parentId</li>
+                    <li>Automatic Claude Code update checking at session start</li>
+                    <li>Tasks appear in /context with 'Disable tasks' shortcut</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="12">
+                <div class="release-header">
+                    <span class="release-version">v2.1.20</span>
+                    <span class="release-date">Jan 27, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>TaskUpdate: <code>status='deleted'</code> for task removal</li>
+                    <li>PR review status indicator (colored dot + link)</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="13">
+                <div class="release-header">
+                    <span class="release-version">v2.1.19</span>
+                    <span class="release-date">Jan 25, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>New: CLAUDE_CODE_ENABLE_TASKS env var (toggle task systems)</li>
+                    <li>New: Argument shorthand $0, $1 in custom commands</li>
+                    <li>[VSCode] Session forking/rewind for all users</li>
+                    <li>Fixed: Multiple session resuming issues with git worktrees</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="14">
+                <div class="release-header">
+                    <span class="release-version">v2.1.18</span>
+                    <span class="release-date">Jan 24, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#11088; Customizable keyboard shortcuts with /keybindings</li>
+                    <li>Per-context keybindings, chord sequences</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="15">
+                <div class="release-header">
+                    <span class="release-version">v2.1.17</span>
+                    <span class="release-date">Jan 23, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fix: Crashes on processors without AVX instruction support</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="16">
+                <div class="release-header">
+                    <span class="release-version">v2.1.16</span>
+                    <span class="release-date">Jan 22, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#11088; New task management system with dependency tracking</li>
+                    <li>[VSCode] Native plugin management support</li>
+                    <li>[VSCode] OAuth users can browse/resume remote sessions</li>
+                    <li>Fixed: OOM crashes with heavy subagent usage</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="17">
+                <div class="release-header">
+                    <span class="release-version">v2.1.15</span>
+                    <span class="release-date">Jan 22, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>&#9888;&#65039; Deprecation notice for npm installations</li>
+                    <li>UI rendering performance improved with React Compiler</li>
+                    <li>Fixed: MCP stdio server timeout causing UI freezes</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="18">
+                <div class="release-header">
+                    <span class="release-version">v2.1.14</span>
+                    <span class="release-date">Jan 21, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>History-based autocomplete in bash mode (! + Tab)</li>
+                    <li>Search in installed plugins list</li>
+                    <li>Git commit SHA pinning for plugins</li>
+                    <li>Multiple fixes: context window, memory, autocomplete</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="19">
+                <div class="release-header">
+                    <span class="release-version">v2.1.12</span>
+                    <span class="release-date">Jan 18, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Bug fix: Message rendering</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="20">
+                <div class="release-header">
+                    <span class="release-version">v2.1.11</span>
+                    <span class="release-date">Jan 17, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Fix: Excessive MCP connection requests for HTTP/SSE transports</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="21">
+                <div class="release-header">
+                    <span class="release-version">v2.1.10</span>
+                    <span class="release-date">Jan 17, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>New <code>Setup</code> hook event (--init, --maintenance flags)</li>
+                    <li>Keyboard shortcut 'c' to copy OAuth URL</li>
+                    <li>File suggestions show as removable attachments</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="22">
+                <div class="release-header">
+                    <span class="release-version">v2.1.9</span>
+                    <span class="release-date">Jan 16, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li><code>auto:N</code> syntax for MCP tool search threshold</li>
+                    <li><code>plansDirectory</code> setting for custom plan locations</li>
+                    <li>Session URL attribution to commits/PRs</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="23">
+                <div class="release-header">
+                    <span class="release-version">v2.1.7</span>
+                    <span class="release-date">Jan 15, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li><code>showTurnDuration</code> setting</li>
+                    <li>MCP tool search auto mode enabled by default</li>
+                    <li>Inline agent response in task notifications</li>
+                </ul>
+                <div class="release-breaking">
+                    <strong>&#9888;&#65039; Breaking:</strong>
+                    <ul>
+                        <li>Security fix: Wildcard permission rules now properly handle compound commands (cd && rm) requiring multiple rules</li>
+                        <li>OAuth/API Console: console.anthropic.com &rarr; platform.claude.com (credential migration required)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="24">
+                <div class="release-header">
+                    <span class="release-version">v2.1.6</span>
+                    <span class="release-date">Jan 14, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Search in <code>/config</code> command</li>
+                    <li>Date range filtering in <code>/stats</code></li>
+                    <li>Auto-discovery of nested <code>.claude/skills</code></li>
+                </ul>
+                <div class="release-breaking">
+                    <strong>&#9888;&#65039; Breaking:</strong>
+                    <ul>
+                        <li>Security fix: Prevented shell line continuation from bypassing permission checks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="25">
+                <div class="release-header">
+                    <span class="release-version">v2.1.5</span>
+                    <span class="release-date">Jan 13, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>URL validation for remote sessions</li>
+                    <li>Fixed: Agent tools with binary outputs now handle properly</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="26">
+                <div class="release-header">
+                    <span class="release-version">v2.1.4</span>
+                    <span class="release-date">Jan 13, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent tool output encoding improvements</li>
+                    <li>Fixed: Remote sessions error handling</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="27">
+                <div class="release-header">
+                    <span class="release-version">v2.1.3</span>
+                    <span class="release-date">Jan 10, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li><code>/info</code> command displays MCP server list</li>
+                    <li>MCP tool discovery improvements</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="28">
+                <div class="release-header">
+                    <span class="release-version">v2.1.2</span>
+                    <span class="release-date">Jan 9, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced error messages for MCP server failures</li>
+                    <li>Fixed: Bash tool permission edge cases</li>
+                </ul>
+                <div class="release-breaking">
+                    <strong>&#9888;&#65039; Breaking:</strong>
+                    <ul>
+                        <li>Security fix: Command injection vulnerability in bash processing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="29">
+                <div class="release-header">
+                    <span class="release-version">v2.1.1</span>
+                    <span class="release-date">Jan 9, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved agent task output formatting</li>
+                    <li>Fixed: Permission prompt edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="30">
+                <div class="release-header">
+                    <span class="release-version">v2.1.0</span>
+                    <span class="release-date">Jan 8, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Skill hot-reload without restart</li>
+                    <li>Vim motions support in editor</li>
+                    <li><code>/plan</code> command for structured planning</li>
+                </ul>
+                <div class="release-breaking">
+                    <strong>&#9888;&#65039; Breaking:</strong>
+                    <ul>
+                        <li>OAuth/API Console URL changed: console.anthropic.com &rarr; platform.claude.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="31">
+                <div class="release-header">
+                    <span class="release-version">v2.0.70</span>
+                    <span class="release-date">Jan 7, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent task UI improvements</li>
+                    <li>Fixed: Skill command parsing</li>
+                </ul>
+                <div class="release-breaking">
+                    <strong>&#9888;&#65039; Breaking:</strong>
+                    <ul>
+                        <li>Removed # shortcut for quick memory (use /memory command instead)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="32">
+                <div class="release-header">
+                    <span class="release-version">v2.0.69</span>
+                    <span class="release-date">Jan 6, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>MCP server status indicators</li>
+                    <li>Enhanced bash command history</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="33">
+                <div class="release-header">
+                    <span class="release-version">v2.0.68</span>
+                    <span class="release-date">Jan 5, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent tool output formatting</li>
+                    <li>Fixed: Skill discovery edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="34">
+                <div class="release-header">
+                    <span class="release-version">v2.0.67</span>
+                    <span class="release-date">Jan 4, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved error messages for permission denials</li>
+                    <li>Fixed: MCP tool schema validation</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="35">
+                <div class="release-header">
+                    <span class="release-version">v2.0.66</span>
+                    <span class="release-date">Jan 3, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced agent task progress indicators</li>
+                    <li>Fixed: Bash tool timeout handling</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="36">
+                <div class="release-header">
+                    <span class="release-version">v2.0.65</span>
+                    <span class="release-date">Jan 2, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>MCP server health checks</li>
+                    <li>Fixed: Skill argument parsing</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="37">
+                <div class="release-header">
+                    <span class="release-version">v2.0.64</span>
+                    <span class="release-date">Jan 1, 2026</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved agent task error recovery</li>
+                    <li>Fixed: Permission prompt display</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="38">
+                <div class="release-header">
+                    <span class="release-version">v2.0.63</span>
+                    <span class="release-date">Dec 31, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced bash autocomplete suggestions</li>
+                    <li>Fixed: MCP tool discovery</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="39">
+                <div class="release-header">
+                    <span class="release-version">v2.0.62</span>
+                    <span class="release-date">Dec 30, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent tool output formatting improvements</li>
+                    <li>Fixed: Skill hot-reload edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="40">
+                <div class="release-header">
+                    <span class="release-version">v2.0.61</span>
+                    <span class="release-date">Dec 29, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved error messages for MCP server failures</li>
+                    <li>Fixed: Permission prompt edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="41">
+                <div class="release-header">
+                    <span class="release-version">v2.0.60</span>
+                    <span class="release-date">Dec 28, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced agent task progress indicators</li>
+                    <li>Fixed: Bash tool timeout handling</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="42">
+                <div class="release-header">
+                    <span class="release-version">v2.0.59</span>
+                    <span class="release-date">Dec 27, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>MCP server health checks</li>
+                    <li>Fixed: Skill argument parsing</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="43">
+                <div class="release-header">
+                    <span class="release-version">v2.0.58</span>
+                    <span class="release-date">Dec 26, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved agent task error recovery</li>
+                    <li>Fixed: Permission prompt display</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="44">
+                <div class="release-header">
+                    <span class="release-version">v2.0.57</span>
+                    <span class="release-date">Dec 25, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced bash autocomplete suggestions</li>
+                    <li>Fixed: MCP tool discovery</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="45">
+                <div class="release-header">
+                    <span class="release-version">v2.0.56</span>
+                    <span class="release-date">Dec 24, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent tool output formatting improvements</li>
+                    <li>Fixed: Skill hot-reload edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="46">
+                <div class="release-header">
+                    <span class="release-version">v2.0.55</span>
+                    <span class="release-date">Dec 23, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved error messages for MCP server failures</li>
+                    <li>Fixed: Permission prompt edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="47">
+                <div class="release-header">
+                    <span class="release-version">v2.0.54</span>
+                    <span class="release-date">Dec 22, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced agent task progress indicators</li>
+                    <li>Fixed: Bash tool timeout handling</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="48">
+                <div class="release-header">
+                    <span class="release-version">v2.0.53</span>
+                    <span class="release-date">Dec 21, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>MCP server health checks</li>
+                    <li>Fixed: Skill argument parsing</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="49">
+                <div class="release-header">
+                    <span class="release-version">v2.0.52</span>
+                    <span class="release-date">Dec 20, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved agent task error recovery</li>
+                    <li>Fixed: Permission prompt display</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="50">
+                <div class="release-header">
+                    <span class="release-version">v2.0.51</span>
+                    <span class="release-date">Dec 19, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced bash autocomplete suggestions</li>
+                    <li>Fixed: MCP tool discovery</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="51">
+                <div class="release-header">
+                    <span class="release-version">v2.0.50</span>
+                    <span class="release-date">Dec 18, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Agent tool output formatting improvements</li>
+                    <li>Fixed: Skill hot-reload edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="52">
+                <div class="release-header">
+                    <span class="release-version">v2.0.49</span>
+                    <span class="release-date">Dec 17, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Improved error messages for MCP server failures</li>
+                    <li>Fixed: Permission prompt edge cases</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="53">
+                <div class="release-header">
+                    <span class="release-version">v2.0.48</span>
+                    <span class="release-date">Dec 16, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>Enhanced agent task progress indicators</li>
+                    <li>Fixed: Bash tool timeout handling</li>
+                </ul>
+            </div>
+
+            <div class="release-card release-card-hidden" data-release-index="54">
+                <div class="release-header">
+                    <span class="release-version">v2.0.47</span>
+                    <span class="release-date">Dec 15, 2025</span>
+                </div>
+                <ul class="release-highlights">
+                    <li>MCP server health checks</li>
+                    <li>Fixed: Skill argument parsing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="breaking-changes">
+            <h3>&#9888; Recent Breaking Changes</h3>
+            <ul>
+                <li><span class="breaking-badge">Syntax</span> Indexed argument syntax changed: $ARGUMENTS.0 &rarr; $ARGUMENTS[0] (v2.1.19)</li>
+                <li><span class="breaking-badge">Install</span> npm installations deprecated - use native installer (v2.1.15)</li>
+                <li><span class="breaking-badge">Security</span> Command injection fix in bash processing (v2.1.2)</li>
+                <li><span class="breaking-badge">Security</span> Wildcard permission rules compound commands fix (v2.1.7)</li>
+                <li><span class="breaking-badge">Security</span> Shell line continuation permission bypass fix (v2.1.6)</li>
+                <li><span class="breaking-badge">Security</span> Heredoc delimiter command smuggling prevention (v2.1.38)</li>
+                <li><span class="breaking-badge">OAuth</span> OAuth/API Console: console.anthropic.com &rarr; platform.claude.com (v2.1.0, v2.1.7)</li>
+                <li><span class="breaking-badge">Removed</span> Removed # shortcut for quick memory (v2.0.70)</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-xl);">
+            <a href="https://github.com/anthropics/claude-code/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+                View All Releases on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Toggle show/hide releases
+    document.getElementById('toggleReleasesBtn')?.addEventListener('click', function() {
+        const hiddenCards = document.querySelectorAll('.release-card-hidden');
+        const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
+        const totalReleases = document.querySelectorAll('.release-card').length;
+        const initialVisible = 6;
+
+        hiddenCards.forEach(card => {
+            card.style.display = isExpanded ? 'none' : 'block';
+        });
+
+        this.textContent = isExpanded ? 'Show All ' + totalReleases + ' Releases' : 'Show Less';
+        const countEl = document.getElementById('visibleCount');
+        if (countEl) countEl.textContent = isExpanded ? String(initialVisible) : String(totalReleases);
+    });
+
+    // Changelog loading
+    const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main';
+
+    function parseChangelog(markdown) {
+        const releases = [];
+        const lines = markdown.split('\n');
+        let currentRelease = null;
+        let currentSection = null;
+        let buffer = [];
+
+        for (const line of lines) {
+            const releaseMatch = line.match(/^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})/);
+            if (releaseMatch) {
+                if (currentRelease) {
+                    if (currentSection && buffer.length) {
+                        currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+                    }
+                    releases.push(currentRelease);
+                }
+                currentRelease = { version: releaseMatch[1], date: releaseMatch[2], sections: [] };
+                currentSection = null;
+                buffer = [];
+                continue;
+            }
+            if (line.match(/^## \[Unreleased\]/)) { currentRelease = null; continue; }
+            if (!currentRelease) continue;
+            const sectionMatch = line.match(/^### (.+)/);
+            if (sectionMatch) {
+                if (currentSection && buffer.length) {
+                    currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+                }
+                currentSection = sectionMatch[1];
+                buffer = [];
+                continue;
+            }
+            const itemMatch = line.match(/^- \*\*(.+?)\*\*(.*)$/);
+            if (itemMatch && currentSection) {
+                buffer.push({ title: itemMatch[1], description: itemMatch[2].replace(/^\s*[-\u2013]\s*/, '').trim() });
+            }
+        }
+        if (currentRelease) {
+            if (currentSection && buffer.length) {
+                currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+            }
+            releases.push(currentRelease);
+        }
+        return releases;
+    }
+
+    function getChangelogAnchor(version, date) {
+        const anchor = `${version}---${date}`.replace(/\./g, '');
+        return `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#${anchor}`;
+    }
+
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function getSectionIcon(title) {
+        const icons = { 'Added': '\u2728', 'Changed': '\uD83D\uDD04', 'Fixed': '\uD83D\uDC1B', 'Removed': '\uD83D\uDDD1\uFE0F', 'Security': '\uD83D\uDD12', 'Deprecated': '\u26A0\uFE0F', 'Internal': '\uD83D\uDD27' };
+        for (const [key, icon] of Object.entries(icons)) {
+            if (title.startsWith(key)) return icon;
+        }
+        return '\uD83D\uDCDD';
+    }
+
+    function renderChangelog(releases, maxReleases = 3) {
+        const container = document.getElementById('changelog-container');
+        if (!container) return;
+        const displayReleases = releases.slice(0, maxReleases);
+        if (displayReleases.length === 0) {
+            container.innerHTML = '<p class="changelog-error">No changelog entries found.</p>';
+            return;
+        }
+        const html = displayReleases.map(release => `
+            <div class="changelog-release">
+                <div class="changelog-header">
+                    <a href="${getChangelogAnchor(release.version, release.date)}" target="_blank" rel="noopener" class="changelog-version-link">
+                        <span class="changelog-version">v${release.version}</span>
+                        <svg class="external-link-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                    </a>
+                    <span class="changelog-date">${formatDate(release.date)}</span>
+                </div>
+                <div class="changelog-content">
+                    ${release.sections.map(section => `
+                        <div class="changelog-section">
+                            <span class="changelog-section-title">${getSectionIcon(section.title)} ${section.title}</span>
+                            <ul class="changelog-items">
+                                ${section.items.slice(0, 4).map(item => `
+                                    <li><strong>${item.title}</strong>${item.description ? `<span class="item-desc">${item.description}</span>` : ''}</li>
+                                `).join('')}
+                                ${section.items.length > 4 ? `<li class="more-items">+${section.items.length - 4} more...</li>` : ''}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+        container.innerHTML = html;
+    }
+
+    async function loadChangelog() {
+        const container = document.getElementById('changelog-container');
+        try {
+            const response = await fetch(`${GITHUB_RAW_BASE}/CHANGELOG.md`);
+            if (response.ok) {
+                const markdown = await response.text();
+                const releases = parseChangelog(markdown);
+                renderChangelog(releases, 3);
+            } else {
+                throw new Error('Failed to fetch');
+            }
+        } catch (error) {
+            if (container) {
+                container.innerHTML = `<p class="changelog-error">Unable to load changelog. <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>`;
+            }
+        }
+    }
+
+    // Fetch and display version dynamically
+    async function loadVersion() {
+        try {
+            const response = await fetch(`${GITHUB_RAW_BASE}/VERSION`);
+            if (response.ok) {
+                const version = (await response.text()).trim();
+                const versionEl = document.getElementById('version-display');
+                if (versionEl) versionEl.textContent = `v${version}`;
+            }
+        } catch (error) {
+            console.log('Using fallback version');
+        }
+    }
+
+    loadVersion();
+    loadChangelog();
+</script>

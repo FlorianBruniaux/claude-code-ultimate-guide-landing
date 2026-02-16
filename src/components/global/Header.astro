@@ -1,0 +1,195 @@
+---
+import ThemeToggle from './ThemeToggle.astro'
+
+const navLinks = [
+  { href: '/cheatsheet/', label: 'Cheat Sheet' },
+  { href: '/quiz/', label: 'Quiz' },
+  { href: '/examples/', label: 'Examples' },
+  { href: '/security/', label: 'Security' },
+  { href: '/learning/', label: 'Learning' },
+  { href: '/faq/', label: 'FAQ' },
+]
+
+const currentPath = Astro.url.pathname
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-border shadow-header" style="background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+  <div class="mx-auto max-w-content px-4">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors font-bold text-lg">
+        <span class="font-mono text-text-muted">&gt;_</span>
+        <span>Claude Code Guide</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
+        {navLinks.map((link) => {
+          const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+          return (
+            <a
+              href={link.href}
+              aria-current={isActive ? 'page' : undefined}
+              class:list={[
+                'text-sm font-medium transition-colors relative',
+                'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+                isActive
+                  ? 'text-text-primary after:w-full'
+                  : 'text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full',
+              ]}
+            >
+              {link.label}
+            </a>
+          )
+        })}
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
+
+        <!-- Search trigger -->
+        <button
+          id="search-trigger"
+          aria-label="Search (Cmd+K)"
+          class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border text-text-muted text-sm hover:border-accent hover:text-text-secondary transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <span>Search</span>
+          <kbd class="text-xs bg-background-tertiary px-1.5 py-0.5 rounded border border-border">⌘K</kbd>
+        </button>
+
+        <!-- GitHub star button -->
+        <a
+          href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm font-medium transition-colors"
+          style="background: var(--github-btn-bg); border-color: var(--github-btn-border); color: var(--github-btn-color);"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+          </svg>
+          <span>Star</span>
+        </a>
+
+        <!-- Read Guide CTA -->
+        <a
+          href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover transition-colors"
+        >
+          Read Guide
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-toggle"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="lg:hidden rounded-lg p-2.5 hover:bg-background-tertiary transition-colors"
+        >
+          <svg id="menu-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden lg:hidden pb-4">
+      {navLinks.map((link) => {
+        const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+        return (
+          <a
+            href={link.href}
+            aria-current={isActive ? 'page' : undefined}
+            class:list={[
+              'block py-2 text-base font-medium transition-colors',
+              isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
+            ]}
+          >
+            {link.label}
+          </a>
+        )
+      })}
+      <div class="flex items-center gap-3 pt-3 border-t border-border mt-2">
+        <a
+          href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-text-secondary hover:text-accent transition-colors text-sm font-medium"
+        >
+          GitHub
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-menu-toggle')
+    const menu = document.getElementById('mobile-menu')
+    const menuIcon = document.getElementById('menu-icon')
+    const closeIcon = document.getElementById('close-icon')
+
+    if (!toggle || !menu || !menuIcon || !closeIcon) return
+
+    function closeMenu() {
+      menu.classList.add('hidden')
+      menuIcon.classList.remove('hidden')
+      closeIcon.classList.add('hidden')
+      toggle.setAttribute('aria-expanded', 'false')
+      toggle.focus()
+    }
+
+    function openMenu() {
+      menu.classList.remove('hidden')
+      menuIcon.classList.add('hidden')
+      closeIcon.classList.remove('hidden')
+      toggle.setAttribute('aria-expanded', 'true')
+      const firstLink = menu.querySelector('a[href]')
+      if (firstLink) firstLink.focus()
+    }
+
+    toggle.addEventListener('click', () => {
+      menu.classList.contains('hidden') ? openMenu() : closeMenu()
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu()
+    })
+
+    menu.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return
+      const focusable = Array.from(menu.querySelectorAll('a[href]'))
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        toggle.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        toggle.focus()
+      }
+    })
+
+    document.addEventListener('click', (e) => {
+      if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+        closeMenu()
+      }
+    })
+  }
+
+  initMobileMenu()
+</script>

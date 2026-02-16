@@ -1,0 +1,85 @@
+<!-- Quick Reference Section -->
+<section class="section tldr section--alt">
+    <div class="container">
+        <h2 class="section-title">Quick Reference</h2>
+        <p class="section-subtitle">Already know what you need?</p>
+
+        <div class="tldr-table-wrapper">
+            <table class="tldr-table">
+                <thead>
+                    <tr>
+                        <th scope="col">I need...</th>
+                        <th scope="col">Go here</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Quick reference</strong></td>
+                        <td><a href="/cheatsheet/" target="_blank" rel="noopener">Cheat Sheet</a></td>
+                        <td>2 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Key principles</strong></td>
+                        <td><a href="#golden-rules">6 Golden Rules</a></td>
+                        <td>1 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Full documentation</strong></td>
+                        <td><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></td>
+                        <td>~15h</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <details class="claude-md-details">
+            <summary>Starter CLAUDE.md Template (30 sec)</summary>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-filename">CLAUDE.md</span>
+                    <button class="copy-btn" data-copy-quickref aria-label="Copy code">
+                        <span class="copy-icon">Copy</span>
+                    </button>
+                </div>
+                <pre><code># Project: [NAME]
+
+## Tech Stack
+- Language: [e.g., TypeScript]
+- Framework: [e.g., Next.js 14]
+- Testing: [e.g., Vitest]
+
+## Commands
+- Build: `npm run build`
+- Test: `npm test`
+- Lint: `npm run lint`
+
+## Rules
+- Run tests before marking tasks complete
+- Follow existing code patterns
+- Keep commits atomic and conventional</code></pre>
+            </div>
+            <p class="code-hint">Save as <code>CLAUDE.md</code> in your project root. Claude reads it automatically.</p>
+        </details>
+    </div>
+</section>
+
+<script>
+    function copyCode(button) {
+        const codeBlock = button.closest('.code-block');
+        const code = codeBlock.querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            const icon = button.querySelector('.copy-icon');
+            const originalText = icon.textContent;
+            icon.textContent = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+                icon.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    document.querySelectorAll('[data-copy-quickref]').forEach(btn => {
+        btn.addEventListener('click', () => copyCode(btn));
+    });
+</script>

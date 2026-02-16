@@ -1,0 +1,270 @@
+<!-- AI Tools Comparison Section -->
+<section class="section comparison-table section--alt" id="comparison">
+    <div class="container">
+        <h2 class="section-title">Claude Code vs GitHub Copilot vs Cursor</h2>
+        <p class="section-subtitle">How does this AI coding assistant compare to alternatives?</p>
+
+        <div class="table-wrapper">
+            <table class="comparison-feature-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Feature</th>
+                        <th scope="col">Claude Code</th>
+                        <th scope="col">GitHub Copilot</th>
+                        <th scope="col">Cursor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Interface</td>
+                        <td>Terminal CLI</td>
+                        <td>IDE Extension</td>
+                        <td>Full IDE (VS Code fork)</td>
+                    </tr>
+                    <tr>
+                        <td>Agentic Mode</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Multi-file, autonomous</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Agent Mode (VS Code)</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Composer mode</td>
+                    </tr>
+                    <tr>
+                        <td>Context Window</td>
+                        <td>200K tokens (up to 1M)</td>
+                        <td>64K-128K tokens</td>
+                        <td>32K-200K tokens</td>
+                    </tr>
+                    <tr>
+                        <td>Project Memory</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> CLAUDE.md files</td>
+                        <td><span class="feature-partial">~</span> Repo embeddings</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> .cursorrules</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Agents</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Agent SDK + Skills</td>
+                        <td><span class="feature-partial">~</span> MCP configs</td>
+                        <td><span class="feature-partial">~</span> MCP integrations</td>
+                    </tr>
+                    <tr>
+                        <td>MCP Integration</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Native client/server</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Via Agent Mode</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Docs integration</td>
+                    </tr>
+                    <tr>
+                        <td>Shell Execution</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Native terminal</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Agent Mode</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Integrated</td>
+                    </tr>
+                    <tr>
+                        <td>Hooks System</td>
+                        <td><span class="feature-yes" aria-hidden="true">&#10003;</span> Event-driven hooks</td>
+                        <td><span class="feature-no" aria-hidden="true">&#10007;</span></td>
+                        <td><span class="feature-no" aria-hidden="true">&#10007;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>Terminal power users, automation</td>
+                        <td>IDE-integrated coding</td>
+                        <td>Visual IDE users</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="comparison-note">Each tool has its strengths. Claude Code excels at autonomous multi-file operations and deep code generation from the terminal. This guide helps you master its unique capabilities.</p>
+
+        <!-- AI Ecosystem - Complementary Tools -->
+        <div class="ecosystem-intro" id="ecosystem">
+            <h3>Complementary AI Ecosystem</h3>
+            <p>Claude Code excels at implementation. Chain it with the right tools for a complete workflow.</p>
+        </div>
+
+        <!-- Workflow Tabs -->
+        <div class="workflow-tabs" role="tablist" aria-label="Workflow types">
+            <button class="workflow-tab active" data-workflow="standard" role="tab" aria-selected="true" aria-controls="workflow-standard">&#128203; Standard</button>
+            <button class="workflow-tab" data-workflow="design" role="tab" aria-selected="false" aria-controls="workflow-design">&#127912; Design-first</button>
+            <button class="workflow-tab" data-workflow="data" role="tab" aria-selected="false" aria-controls="workflow-data">&#128202; Data-driven</button>
+            <button class="workflow-tab" data-workflow="docs" role="tab" aria-selected="false" aria-controls="workflow-docs">&#128218; Documentation</button>
+        </div>
+
+        <!-- Workflow: Standard (default) -->
+        <div class="ecosystem-workflow" data-workflow="standard">
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#9997;&#65039;</span>
+                <div class="workflow-step-label">Clarify</div>
+                <div class="workflow-step-tool">Claude</div>
+                <div class="workflow-step-output">structured request</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128269;</span>
+                <div class="workflow-step-label">Research</div>
+                <div class="workflow-step-tool">Perplexity</div>
+                <div class="workflow-step-output">spec.md</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128187;</span>
+                <div class="workflow-step-label">Implement</div>
+                <div class="workflow-step-tool">Claude Code</div>
+                <div class="workflow-step-output">working code</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128200;</span>
+                <div class="workflow-step-label">Deliver</div>
+                <div class="workflow-step-tool">Kimi</div>
+                <div class="workflow-step-output">presentation.pptx</div>
+            </div>
+        </div>
+
+        <!-- Workflow: Design-first -->
+        <div class="ecosystem-workflow hidden" data-workflow="design">
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#127912;</span>
+                <div class="workflow-step-label">Design</div>
+                <div class="workflow-step-tool">Figma / Gemini</div>
+                <div class="workflow-step-output">mockup.png</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128187;</span>
+                <div class="workflow-step-label">Implement</div>
+                <div class="workflow-step-tool">Claude Code</div>
+                <div class="workflow-step-output">working code</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128640;</span>
+                <div class="workflow-step-label">Deploy</div>
+                <div class="workflow-step-tool">Vercel / AWS</div>
+                <div class="workflow-step-output">live site</div>
+            </div>
+        </div>
+
+        <!-- Workflow: Data-driven -->
+        <div class="ecosystem-workflow hidden" data-workflow="data">
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128451;&#65039;</span>
+                <div class="workflow-step-label">Explore Data</div>
+                <div class="workflow-step-tool">DB / API</div>
+                <div class="workflow-step-output">raw data</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128187;</span>
+                <div class="workflow-step-label">Analyze</div>
+                <div class="workflow-step-tool">Claude Code</div>
+                <div class="workflow-step-output">insights</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128200;</span>
+                <div class="workflow-step-label">Visualize</div>
+                <div class="workflow-step-tool">Dashboard</div>
+                <div class="workflow-step-output">report.html</div>
+            </div>
+        </div>
+
+        <!-- Workflow: Documentation -->
+        <div class="ecosystem-workflow hidden" data-workflow="docs">
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128218;</span>
+                <div class="workflow-step-label">Gather</div>
+                <div class="workflow-step-tool">Sources</div>
+                <div class="workflow-step-output">docs, code</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#128187;</span>
+                <div class="workflow-step-label">Write</div>
+                <div class="workflow-step-tool">Claude Code</div>
+                <div class="workflow-step-output">documentation</div>
+            </div>
+            <span class="workflow-arrow">&rarr;</span>
+            <div class="workflow-step">
+                <span class="workflow-step-icon">&#127911;</span>
+                <div class="workflow-step-label">Distribute</div>
+                <div class="workflow-step-tool">NotebookLM</div>
+                <div class="workflow-step-output">audio podcast</div>
+            </div>
+        </div>
+
+        <div class="ecosystem-grid">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#1-perplexity-ai-research--sourcing" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#128269;</span>
+                <div class="ecosystem-card-title">Perplexity</div>
+                <div class="ecosystem-card-desc">Deep research with verified sources</div>
+                <div class="ecosystem-card-usecase">Before implementation: specs, best practices</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#2-google-gemini-visual-understanding" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#128065;</span>
+                <div class="ecosystem-card-title">Gemini</div>
+                <div class="ecosystem-card-desc">Visual understanding &amp; analysis</div>
+                <div class="ecosystem-card-usecase">Design &rarr; Code conversion</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#4-notebooklm-synthesis--audio" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#127911;</span>
+                <div class="ecosystem-card-title">NotebookLM</div>
+                <div class="ecosystem-card-desc">Audio synthesis &amp; podcasts</div>
+                <div class="ecosystem-card-usecase">Onboarding, doc review</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#3-kimi-pptx--long-document-generation" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#128200;</span>
+                <div class="ecosystem-card-title">Kimi</div>
+                <div class="ecosystem-card-desc">PPTX &amp; document generation</div>
+                <div class="ecosystem-card-usecase">Code &rarr; Stakeholder deck</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#6-ui-prototypers-v0-bolt-lovable" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#9889;</span>
+                <div class="ecosystem-card-title">v0 / Bolt / Lovable</div>
+                <div class="ecosystem-card-desc">Rapid UI prototyping</div>
+                <div class="ecosystem-card-usecase">Quick component preview</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#5-ide-based-tools-cursor-windsurf-cline" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#128187;</span>
+                <div class="ecosystem-card-title">Cursor / Copilot</div>
+                <div class="ecosystem-card-desc">Inline IDE autocomplete</div>
+                <div class="ecosystem-card-usecase">Fast typing, small edits</div>
+            </a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" class="ecosystem-card" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#127908;</span>
+                <div class="ecosystem-card-title">Wispr Flow</div>
+                <div class="ecosystem-card-desc">Voice-to-Text (4x faster)</div>
+                <div class="ecosystem-card-usecase">Dictate prompts, hands-free coding</div>
+            </a>
+            <a href="https://cowork.bruniaux.com/" class="ecosystem-card ecosystem-card-highlight" target="_blank" rel="noopener">
+                <span class="ecosystem-card-icon" aria-hidden="true">&#128188;</span>
+                <div class="ecosystem-card-title">Claude Cowork</div>
+                <div class="ecosystem-card-desc">Desktop AI for knowledge workers</div>
+                <div class="ecosystem-card-usecase">File automation, document creation</div>
+                <span class="ecosystem-badge">New Guide</span>
+            </a>
+        </div>
+
+        <div class="ecosystem-cta">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" class="btn btn-secondary" target="_blank" rel="noopener">Full Ecosystem Guide &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Workflow tabs switching
+    document.querySelectorAll('.workflow-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.workflow-tab').forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+
+            const workflow = tab.dataset.workflow;
+            document.querySelectorAll('.ecosystem-workflow').forEach(w => {
+                w.classList.toggle('hidden', w.dataset.workflow !== workflow);
+            });
+        });
+    });
+</script>
