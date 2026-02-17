@@ -14,6 +14,38 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.45',
+    date: 'Feb 17, 2026',
+    highlights: [
+      'Claude Sonnet 4.6 model support',
+      '<code>spinnerTipsOverride</code> setting for customizable spinner tips',
+      'SDK: <code>SDKRateLimitInfo</code> / <code>SDKRateLimitEvent</code> for rate limit tracking',
+      'Fixed Agent Teams on Bedrock/Vertex/Foundry; memory improvements',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.44',
+    date: 'Feb 17, 2026',
+    highlights: [
+      'Fixed auth refresh errors',
+      'Fixed AWS auth refresh hanging (3-minute timeout)',
+      'Fixed structured-outputs beta header on Vertex/Bedrock',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.42',
+    date: 'Feb 14, 2026',
+    highlights: [
+      'Startup performance: deferred Zod schema construction',
+      'Improved prompt cache hit rates (date moved out of system prompt)',
+      'Opus 4.6 effort callout for eligible users',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.41',
     date: 'Feb 13, 2026',
     highlights: [
@@ -22,7 +54,6 @@ export const releases: Release[] = [
       '<code>/rename</code> auto-generates session name from context',
       'Multiple stability fixes (FIFOs, background tasks, permissions)',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
