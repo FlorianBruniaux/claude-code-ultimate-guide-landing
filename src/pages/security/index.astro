@@ -8,12 +8,13 @@ const jsonLd = [
   {
     "@type": "Article",
     "headline": "AI Agent Security: Threat Intelligence & Defense",
-    "description": "Comprehensive threat intelligence for the AI coding tool ecosystem including CVE database, attack techniques, and defense tools",
+    "description": "Full threat intelligence for the AI coding tool ecosystem including CVE database, attack techniques, and defense tools",
     "url": "https://cc.bruniaux.com/security/",
     "mainEntityOfPage": "https://cc.bruniaux.com/security/",
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-02-11",
+    "dateModified": "2026-02-17",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
@@ -25,14 +26,15 @@ const jsonLd = [
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
 
-    <!-- Hero -->
-    <header class="security-hero">
-        <h1>AI Agent Security</h1>
-        <p class="tagline">Threat intelligence for the AI coding tool ecosystem. 3,984 skills scanned. Here's what we found.</p>
-        <div class="hero-badge">Threat DB v2.0.0 &mdash; Updated Feb 2026</div>
-        <div class="cta-buttons">
-            <a href="#threat-browser" class="btn btn-primary">Explore Threats</a>
-            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" class="btn btn-secondary">Read Hardening Guide &rarr;</a>
+    <header class="page-hero">
+        <div class="container">
+            <h1>AI Agent Security</h1>
+            <p class="tagline">Threat intelligence for the AI coding tool ecosystem. 3,984 skills scanned. Here's what we found.</p>
+            <div class="hero-badge">Threat DB v2.0.0 &mdash; Updated Feb 2026</div>
+            <div class="cta-buttons">
+                <a href="#threat-browser" class="btn btn-primary">Explore Threats</a>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" class="btn btn-secondary">Read Hardening Guide &rarr;</a>
+            </div>
         </div>
     </header>
 
@@ -68,7 +70,7 @@ const jsonLd = [
     </section>
 
     <!-- Attack Techniques -->
-    <section class="content-section">
+    <section class="content-section content-section--alt">
         <h2>Attack Techniques</h2>
         <div class="techniques-grid">
             <div class="technique-card">
@@ -288,7 +290,7 @@ const jsonLd = [
     </section>
 
     <!-- Active Campaigns -->
-    <section class="content-section">
+    <section class="content-section content-section--alt">
         <h2>Active Campaigns</h2>
         <div class="campaigns-list">
             <details class="campaign-accordion">
@@ -331,7 +333,7 @@ const jsonLd = [
                     <span class="campaign-meta">3,984 scanned &bull; Snyk &bull; Feb 2026</span>
                 </summary>
                 <div class="campaign-body">
-                    <p>Comprehensive audit of ClawHub and skills.sh ecosystems. Found 36.82% of all scanned skills have security flaws. 13.4% are critical-risk. 76 contain confirmed malicious payloads.</p>
+                    <p>Full audit of ClawHub and skills.sh ecosystems. Found 36.82% of all scanned skills have security flaws. 13.4% are critical-risk. 76 contain confirmed malicious payloads.</p>
                     <h4>Key Findings</h4>
                     <ul>
                         <li>1,467 flawed skills (36.82% of total)</li>
@@ -405,7 +407,7 @@ const jsonLd = [
     </section>
 
     <!-- Defense Tools -->
-    <section class="content-section">
+    <section class="content-section content-section--alt">
         <h2>Defense Tools</h2>
         <div class="tools-grid">
             <div class="tool-card">
@@ -500,7 +502,7 @@ const jsonLd = [
     </section>
 
     <!-- 5-Min Security Checklist -->
-    <section class="content-section" id="checklist">
+    <section class="content-section content-section--alt" id="checklist">
         <h2>5-Minute Security Checklist</h2>
         <div class="checklist-container">
             <div class="checklist-item" data-checklist-item>
@@ -836,61 +838,25 @@ const jsonLd = [
 
 <style>
     /* Security page specific styles */
-    .security-hero {
-        text-align: center;
-        padding: var(--space-4xl) var(--space-lg);
-        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-        border-bottom: 1px solid var(--border);
-        position: relative;
-    }
-
-    .security-hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.05) 0%, transparent 60%);
-        pointer-events: none;
-    }
-
-    .security-hero h1 {
-        font-size: clamp(2.5rem, 6vw, 3.5rem);
-        font-weight: 700;
-        margin-bottom: var(--space-md);
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-    }
-
-    .security-hero .tagline {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        max-width: 700px;
-        margin: 0 auto var(--space-xl);
-        line-height: 1.6;
-    }
-
     .hero-badge {
         display: inline-block;
         padding: var(--space-sm) var(--space-lg);
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
-        border: 1px solid rgba(239, 68, 68, 0.2);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
         border-radius: var(--border-radius-lg);
         font-size: 0.9rem;
         font-weight: 500;
         color: var(--text-primary);
         margin-bottom: var(--space-xl);
-        backdrop-filter: blur(8px);
     }
 
     .content-section {
-        max-width: 1000px;
+        max-width: var(--max-width);
         margin: 0 auto;
         padding: var(--space-3xl) var(--space-lg);
     }
 
-    .content-section:nth-child(even) {
+    .content-section--alt {
         background: var(--bg-secondary);
     }
 
@@ -905,19 +871,13 @@ const jsonLd = [
     }
 
     .content-section h2::after {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+        content: none;
     }
 
     .cta-buttons {
         display: flex;
         gap: var(--space-md);
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -959,10 +919,7 @@ const jsonLd = [
     .stat-number {
         font-size: 3rem;
         font-weight: 800;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--accent);
         font-variant-numeric: tabular-nums;
         line-height: 1.1;
         margin-bottom: var(--space-sm);
@@ -993,32 +950,16 @@ const jsonLd = [
         overflow: hidden;
     }
 
-    .technique-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, var(--accent) 0%, var(--accent-secondary) 100%);
-        opacity: 0;
-        transition: opacity var(--transition-fast);
-    }
-
     .technique-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-card-hover);
-        border-color: transparent;
-    }
-
-    .technique-card:hover::before {
-        opacity: 1;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
     }
 
     .technique-id {
         display: inline-block;
         padding: 4px 12px;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+        background: var(--accent);
         color: white;
         border-radius: 6px;
         font-size: 0.75rem;
@@ -1026,7 +967,6 @@ const jsonLd = [
         font-family: var(--font-mono);
         margin-bottom: var(--space-md);
         letter-spacing: 0.5px;
-        box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3);
     }
 
     .technique-card h3 {
@@ -1053,8 +993,8 @@ const jsonLd = [
     .campaign-tag {
         display: inline-block;
         padding: 4px 10px;
-        background: rgba(88, 166, 255, 0.1);
-        border: 1px solid rgba(88, 166, 255, 0.3);
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
         border-radius: 6px;
         font-size: 0.75rem;
         font-weight: 500;
@@ -1063,7 +1003,7 @@ const jsonLd = [
     }
 
     .campaign-tag:hover {
-        background: rgba(88, 166, 255, 0.15);
+        background: var(--bg-tertiary);
         border-color: var(--accent);
     }
 
@@ -1082,7 +1022,7 @@ const jsonLd = [
     }
 
     .technique-card summary:hover {
-        background: rgba(88, 166, 255, 0.05);
+        background: var(--bg-tertiary);
         text-decoration: none;
     }
 
@@ -1115,8 +1055,8 @@ const jsonLd = [
 
     .technique-details .mitigation {
         padding: var(--space-md) var(--space-lg);
-        background: rgba(34, 197, 94, 0.1);
-        border-left: 4px solid #22c55e;
+        background: var(--bg-tertiary);
+        border-left: 4px solid var(--accent-tertiary);
         border-radius: var(--border-radius);
         color: var(--text-primary);
         font-weight: 500;
@@ -1151,9 +1091,9 @@ const jsonLd = [
     }
 
     .cve-controls select:focus {
-        outline: none;
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
     }
 
     .cve-table-wrapper {
@@ -1236,19 +1176,19 @@ const jsonLd = [
     }
 
     .severity-critical {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.3);
+        background: var(--bg-tertiary);
+        color: var(--status-danger);
+        border: 1px solid var(--status-danger);
     }
     .severity-high {
-        background: rgba(245, 158, 11, 0.15);
-        color: #f59e0b;
-        border: 1px solid rgba(245, 158, 11, 0.3);
+        background: var(--bg-tertiary);
+        color: var(--status-warning);
+        border: 1px solid var(--status-warning);
     }
     .severity-medium {
-        background: rgba(59, 130, 246, 0.15);
-        color: #3b82f6;
-        border: 1px solid rgba(59, 130, 246, 0.3);
+        background: var(--bg-tertiary);
+        color: var(--accent-tertiary);
+        border: 1px solid var(--accent-tertiary);
     }
 
     /* Campaign accordions */
@@ -1360,9 +1300,9 @@ const jsonLd = [
     }
 
     .threat-search:focus {
-        outline: none;
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
         border-color: var(--accent);
-        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.1);
     }
 
     .threat-search::placeholder {
@@ -1402,7 +1342,8 @@ const jsonLd = [
         background: var(--accent);
     }
 
-    .threat-item {
+    /* Threat items are injected via innerHTML → need :global() to bypass Astro CSS scoping */
+    :global(.threat-item) {
         display: flex;
         align-items: center;
         gap: var(--space-md);
@@ -1415,13 +1356,13 @@ const jsonLd = [
         transition: all var(--transition-fast);
     }
 
-    .threat-item:hover {
+    :global(.threat-item:hover) {
         border-left-color: var(--accent);
         background: var(--bg-secondary);
         box-shadow: var(--shadow-sm);
     }
 
-    .threat-item .threat-name {
+    :global(.threat-item .threat-name) {
         font-weight: 600;
         font-family: var(--font-mono);
         flex: 1;
@@ -1432,7 +1373,7 @@ const jsonLd = [
         color: var(--text-primary);
     }
 
-    .type-badge {
+    :global(.type-badge) {
         display: inline-block;
         padding: 4px 10px;
         border-radius: 6px;
@@ -1443,33 +1384,33 @@ const jsonLd = [
         letter-spacing: 0.5px;
     }
 
-    .type-typosquatting {
-        background: rgba(245, 158, 11, 0.15);
-        color: #f59e0b;
-        border: 1px solid rgba(245, 158, 11, 0.3);
+    :global(.type-typosquatting) {
+        background: var(--bg-tertiary);
+        color: var(--status-warning);
+        border: 1px solid var(--status-warning);
     }
-    .type-malware {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.3);
+    :global(.type-malware) {
+        background: var(--bg-tertiary);
+        color: var(--status-danger);
+        border: 1px solid var(--status-danger);
     }
-    .type-backdoor {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.3);
+    :global(.type-backdoor) {
+        background: var(--bg-tertiary);
+        color: var(--status-danger);
+        border: 1px solid var(--status-danger);
     }
-    .type-supply-chain {
-        background: rgba(168, 85, 247, 0.15);
-        color: #a855f7;
-        border: 1px solid rgba(168, 85, 247, 0.3);
+    :global(.type-supply-chain) {
+        background: var(--bg-tertiary);
+        color: var(--accent-tertiary);
+        border: 1px solid var(--accent-tertiary);
     }
-    .type-credential-theft {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.3);
+    :global(.type-credential-theft) {
+        background: var(--bg-tertiary);
+        color: var(--status-danger);
+        border: 1px solid var(--status-danger);
     }
 
-    .risk-badge {
+    :global(.risk-badge) {
         display: inline-block;
         padding: 4px 10px;
         border-radius: 6px;
@@ -1480,13 +1421,13 @@ const jsonLd = [
         letter-spacing: 0.5px;
     }
 
-    .risk-critical {
-        background: rgba(239, 68, 68, 0.15);
-        color: #ef4444;
-        border: 1px solid rgba(239, 68, 68, 0.3);
+    :global(.risk-critical) {
+        background: var(--bg-tertiary);
+        color: var(--status-danger);
+        border: 1px solid var(--status-danger);
     }
 
-    .source-label {
+    :global(.source-label) {
         color: var(--text-muted);
         font-size: 0.8rem;
         font-weight: 500;
@@ -1514,7 +1455,7 @@ const jsonLd = [
     .tool-card:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow-card-hover);
-        border-top-color: var(--accent-secondary);
+        border-top-color: var(--accent-tertiary);
     }
 
     .tool-card h3 {
@@ -1562,11 +1503,11 @@ const jsonLd = [
     }
 
     .callout-box {
-        background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
-        border: 1px solid rgba(88, 166, 255, 0.3);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
         border-radius: var(--border-radius-lg);
         padding: var(--space-2xl);
-        box-shadow: var(--shadow-sm);
     }
 
     .callout-box h3 {
@@ -1629,7 +1570,7 @@ const jsonLd = [
     }
 
     .terminal-mockup {
-        background: #0d1117;
+        background: #0a0a0a;
         padding: var(--space-xl);
         font-family: var(--font-mono);
         font-size: 0.85rem;
@@ -1644,11 +1585,11 @@ const jsonLd = [
     }
 
     .terminal-mockup::-webkit-scrollbar-track {
-        background: #161b22;
+        background: #141414;
     }
 
     .terminal-mockup::-webkit-scrollbar-thumb {
-        background: #30363d;
+        background: #2a2a2a;
         border-radius: 4px;
     }
 
@@ -1726,8 +1667,8 @@ const jsonLd = [
     .checklist-score {
         margin-top: var(--space-2xl);
         padding: var(--space-xl);
-        background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
-        border: 1px solid rgba(88, 166, 255, 0.3);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
         border-radius: var(--border-radius-lg);
         text-align: center;
     }
@@ -1735,10 +1676,7 @@ const jsonLd = [
     .checklist-score .score {
         font-size: 2.5rem;
         font-weight: 800;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--accent);
         margin-bottom: var(--space-sm);
     }
 
@@ -1810,10 +1748,6 @@ const jsonLd = [
 
     /* Responsive */
     @media (max-width: 768px) {
-        .security-hero {
-            padding: var(--space-3xl) var(--space-lg);
-        }
-
         .content-section {
             padding: var(--space-2xl) var(--space-lg);
         }
@@ -1822,7 +1756,7 @@ const jsonLd = [
             font-size: 1.75rem;
         }
 
-        .threat-item {
+        :global(.threat-item) {
             flex-wrap: wrap;
         }
 

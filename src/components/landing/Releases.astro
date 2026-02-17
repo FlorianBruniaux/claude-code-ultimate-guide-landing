@@ -12,7 +12,7 @@ import { releases, breakingChanges } from '../../data/releases'
             <div class="changelog-loading">Loading changelog...</div>
         </div>
 
-        <div style="text-align: center; margin-top: var(--space-xl);">
+        <div style="text-align: left; margin-top: var(--space-xl);">
             <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" class="btn btn-secondary" target="_blank" rel="noopener">
                 View Full Changelog &rarr;
             </a>
@@ -26,7 +26,7 @@ import { releases, breakingChanges } from '../../data/releases'
         <h2 class="section-title">Claude Code Releases</h2>
         <p class="section-subtitle">Latest versions and breaking changes from Anthropic</p>
 
-        <div style="text-align: center; margin-bottom: var(--space-md);">
+        <div style="text-align: left; margin-bottom: var(--space-md);">
             <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
                 Show All {releases.length} Releases
             </button>
@@ -66,7 +66,7 @@ import { releases, breakingChanges } from '../../data/releases'
             </ul>
         </div>
 
-        <div style="text-align: center; margin-top: var(--space-xl);">
+        <div style="text-align: left; margin-top: var(--space-xl);">
             <a href="https://github.com/anthropics/claude-code/releases" class="btn btn-secondary" target="_blank" rel="noopener">
                 View All Releases on GitHub &rarr;
             </a>
@@ -229,7 +229,7 @@ import { releases, breakingChanges } from '../../data/releases'
     loadChangelog();
 </script>
 
-<style>
+<style is:global>
 .releases-timeline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -250,13 +250,13 @@ import { releases, breakingChanges } from '../../data/releases'
     box-shadow: var(--shadow-md);
 }
 .release-latest {
-    border-color: var(--accent-secondary);
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(35, 134, 54, 0.1) 100%);
+    border-color: var(--accent);
+    background: var(--surface-elevated);
 }
 .release-latest::before {
     content: "Latest";
     display: inline-block;
-    background: var(--accent-secondary);
+    background: var(--accent);
     color: #fff;
     font-size: 0.7rem;
     font-weight: 600;
@@ -306,14 +306,15 @@ import { releases, breakingChanges } from '../../data/releases'
     font-size: 0.85em;
 }
 .breaking-changes {
-    background: rgba(248, 81, 73, 0.1);
-    border: 1px solid rgba(248, 81, 73, 0.3);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--status-danger);
     border-radius: var(--border-radius-lg);
     padding: var(--space-lg);
     margin-bottom: var(--space-xl);
 }
 .breaking-changes h3 {
-    color: #f85149;
+    color: var(--status-danger);
     font-size: 1.1rem;
     margin-bottom: var(--space-md);
     display: flex;
@@ -323,7 +324,7 @@ import { releases, breakingChanges } from '../../data/releases'
 .breaking-changes ul { list-style: none; padding: 0; margin: 0; }
 .breaking-changes li {
     padding: var(--space-sm) 0;
-    border-bottom: 1px solid rgba(248, 81, 73, 0.2);
+    border-bottom: 1px solid var(--border);
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
@@ -339,7 +340,7 @@ import { releases, breakingChanges } from '../../data/releases'
 }
 .breaking-badge {
     display: inline-block;
-    background: #f85149;
+    background: var(--status-danger);
     color: #fff;
     font-size: 0.7rem;
     font-weight: 600;
@@ -349,10 +350,10 @@ import { releases, breakingChanges } from '../../data/releases'
     border-radius: 4px;
     margin-right: var(--space-sm);
 }
-.releases-link { display: flex; justify-content: center; }
+.releases-link { display: flex; justify-content: flex-start; }
 .releases-link .btn { display: inline-flex; align-items: center; gap: var(--space-sm); }
 .release-card-hidden { display: none; }
-.changelog-container { max-width: 800px; margin: 0 auto; }
+.changelog-container { }
 .changelog-loading { text-align: center; color: var(--text-muted); padding: var(--space-xl); }
 .changelog-error { text-align: center; color: var(--text-secondary); padding: var(--space-lg); }
 .changelog-release {

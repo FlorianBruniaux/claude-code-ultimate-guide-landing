@@ -1,42 +1,99 @@
-<!-- Security Section -->
-<section class="section security-teaser" id="security">
+<!-- Security Section - Compact Banner -->
+<section class="section section--alt section--compact security-teaser" id="security">
     <div class="container">
         <h2 class="section-title">Secure Your Setup</h2>
-        <p class="section-subtitle">36.82% of AI agent skills have security flaws. Know the threats before they find you.</p>
+        <p class="section-subtitle">36.82% of AI agent skills have measurable security flaws. Understand the threat landscape before it becomes your problem.</p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-2xl);">
-            <div style="text-align: center; padding: var(--space-xl); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; font-weight: 800; color: #ef4444; font-variant-numeric: tabular-nums;">534</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Critical-Risk Skills</div>
+        <div class="security-stats">
+            <div class="security-stat">
+                <div class="security-stat-value stat-danger">534</div>
+                <div class="security-stat-label">Critical-Risk Skills</div>
             </div>
-            <div style="text-align: center; padding: var(--space-xl); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; font-weight: 800; color: #f59e0b; font-variant-numeric: tabular-nums;">18</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">CVEs Tracked</div>
+            <div class="security-stat">
+                <div class="security-stat-value stat-warning">18</div>
+                <div class="security-stat-label">CVEs Tracked</div>
             </div>
-            <div style="text-align: center; padding: var(--space-xl); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums;">400+</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Malicious Skills</div>
+            <div class="security-stat">
+                <div class="security-stat-value stat-accent">400+</div>
+                <div class="security-stat-label">Malicious Skills</div>
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-2xl);">
-            <div style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border-left: 3px solid #ef4444;">
-                <div style="font-weight: 600; margin-bottom: var(--space-xs);">Supply Chain Attacks</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Malicious MCP servers on PyPI & npm with embedded reverse shells</div>
+        <div class="security-threats">
+            <div class="security-threat threat-danger">
+                <div class="security-threat-title">Supply Chain Attacks</div>
+                <div class="security-threat-desc">Malicious MCP servers on PyPI & npm with embedded reverse shells</div>
             </div>
-            <div style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border-left: 3px solid #f59e0b;">
-                <div style="font-weight: 600; margin-bottom: var(--space-xs);">Credential Theft</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Skills that read .env files and POST secrets to attacker webhooks</div>
+            <div class="security-threat threat-warning">
+                <div class="security-threat-title">Credential Theft</div>
+                <div class="security-threat-desc">Skills that read .env files and POST secrets to attacker webhooks</div>
             </div>
-            <div style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--border-radius-lg); border-left: 3px solid #3b82f6;">
-                <div style="font-weight: 600; margin-bottom: var(--space-xs);">Prompt Injection</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Hidden instructions in SKILL.md that hijack agent behavior</div>
+            <div class="security-threat threat-info">
+                <div class="security-threat-title">Prompt Injection</div>
+                <div class="security-threat-desc">Hidden instructions in SKILL.md that hijack agent behavior</div>
             </div>
         </div>
 
-        <div style="text-align: center; display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+        <div class="security-ctas">
             <a href="/security/" class="btn btn-primary">Explore Threat Landscape &rarr;</a>
             <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" rel="noopener" class="btn btn-secondary">Read Hardening Guide</a>
         </div>
     </div>
 </section>
+
+<style>
+.security-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+.security-stat {
+    text-align: left;
+    padding: var(--space-xl);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+}
+.security-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+.stat-danger { color: var(--status-danger); }
+.stat-warning { color: var(--status-warning); }
+.stat-accent { color: var(--accent); }
+.security-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.security-threats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+}
+.security-threat {
+    padding: var(--space-lg);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+}
+.threat-danger { border-left: 3px solid var(--status-danger); }
+.threat-warning { border-left: 3px solid var(--status-warning); }
+.threat-info { border-left: 3px solid var(--status-info); }
+.security-threat-title {
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+.security-threat-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.security-ctas {
+    text-align: left;
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+</style>

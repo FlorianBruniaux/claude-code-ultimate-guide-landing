@@ -2,14 +2,14 @@
 <section class="section level-up section--alt" id="level-up">
     <div class="container">
         <h2 class="section-title">Level Up</h2>
-        <p class="section-subtitle">Stop repeating yourself. Automate your patterns.</p>
+        <p class="section-subtitle">Automate your patterns and stop the repetition.</p>
 
         <div class="levelup-grid">
             <a href="/examples/#agents" class="levelup-card">
                 <div class="levelup-icon">&#129302;</div>
                 <div class="levelup-content">
                     <h3>Automate repetition &rarr; Agents & Commands</h3>
-                    <p>Same review prompt 10x? Create an agent once, reuse forever. <code>/commit</code>, <code>/pr</code>, <code>/review</code> — your workflow, automated.</p>
+                    <p>Same review prompt 10x? Create an agent once, reuse forever. <code>/commit</code>, <code>/pr</code>, <code>/review</code>: your workflow, automated.</p>
                 </div>
                 <span class="levelup-arrow">&rarr;</span>
             </a>
@@ -39,7 +39,7 @@
             </a>
         </div>
 
-        <div style="text-align: center; margin-top: var(--space-lg);">
+        <div style="text-align: left; margin-top: var(--space-lg);">
             <a href="/examples/" class="btn btn-secondary">Browse 113 Templates &rarr;</a>
         </div>
     </div>
@@ -50,8 +50,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    max-width: 800px;
-    margin: 0 auto;
 }
 .levelup-card {
     display: flex;
@@ -66,7 +64,7 @@
     transition: all var(--transition-normal);
 }
 .levelup-card:hover {
-    border-color: var(--accent-secondary);
+    border-color: var(--accent-tertiary);
     transform: translateX(8px);
     box-shadow: var(--shadow-md);
 }
@@ -82,7 +80,7 @@
 }
 .levelup-arrow {
     font-size: 1.25rem;
-    color: var(--accent-secondary);
+    color: var(--accent-tertiary);
     flex-shrink: 0;
     opacity: 0;
     transform: translateX(-8px);
@@ -93,7 +91,7 @@
     transform: translateX(0);
 }
 @media (max-width: 640px) {
-    .levelup-card { flex-direction: column; text-align: center; gap: var(--space-md); }
+    .levelup-card { flex-direction: column; text-align: left; gap: var(--space-md); }
     .levelup-card:hover { transform: translateY(-4px); }
     .levelup-arrow { display: none; }
 }

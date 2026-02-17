@@ -46,11 +46,11 @@
 
 <style>
 .crosslink-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.crosslink-section .container { text-align: center; }
+.crosslink-section .container { text-align: left; }
 .crosslink-signals {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: var(--space-sm);
     margin: var(--space-lg) 0 var(--space-xl);
 }
@@ -66,7 +66,6 @@
     align-items: center;
     gap: var(--space-lg);
     max-width: 500px;
-    margin: 0 auto;
     padding: var(--space-lg);
     background: var(--surface-elevated);
     border: 2px solid var(--border);
@@ -87,8 +86,8 @@
 .crosslink-stats { font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); }
 .crosslink-cta { color: var(--accent); font-weight: 500; font-size: 0.9rem; white-space: nowrap; }
 @media (max-width: 640px) {
-    .crosslink-signals { flex-direction: column; align-items: center; }
-    .crosslink-card { flex-direction: column; text-align: center; }
-    .crosslink-content { text-align: center; }
+    .crosslink-signals { flex-direction: column; align-items: flex-start; }
+    .crosslink-card { flex-direction: column; text-align: left; }
+    .crosslink-content { text-align: left; }
 }
 </style>

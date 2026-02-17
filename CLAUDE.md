@@ -61,18 +61,35 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | Quiz questions | `274` | questions.json |
 | Guide lines | `15,200+` | ultimate-guide.md |
 
+## Stack technique (post-migration Astro 5)
+
+Le site a migré de HTML statique vers Astro 5. Les références à `index.html`, `examples.html`, `styles.css` ci-dessous sont **obsolètes** — voir les fichiers Astro dans `src/`.
+
+| Ancien (statique) | Nouveau (Astro) |
+|-------------------|-----------------|
+| `index.html` | `src/pages/index.astro` + composants landing |
+| `examples.html` | `src/pages/examples/index.astro` |
+| `quiz.html` | `src/pages/quiz/index.astro` |
+| `styles.css` | `src/styles/global.css` + `src/styles/components.css` |
+| `search.js` + `guide-data.js` | `src/scripts/search.ts` + `src/data/search-index.ts` |
+
 ## Fichiers critiques
 
-- **index.html**: Hero, badges, meta tags, FAQ, Golden Rules, footer version
-- **examples.html**: Template count et liste
-- **quiz.html**: Question count
-- **styles.css**: Partagé (ne pas modifier sans raison)
+- **`src/data/examples-data.ts`**: 88 templates (source of truth pour examples + search)
+- **`src/data/releases.ts`**: Changelog Claude Code
+- **`src/data/security-data.ts`**: CVEs, campaigns, threats
+- **`src/data/search-index.ts`**: Index de recherche (landing entries) — éditer ici pour ajouter des entrées
+- **`src/data/guide-search-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement
+- **`src/components/global/SearchModal.astro`**: Modal Cmd+K
 
 ## Vérification avant modification
 
 ```bash
-# Depuis le guide principal
-./scripts/check-landing-sync.sh
+# Build complet (inclut rebuild search index)
+pnpm build
+
+# Dev local
+pnpm dev
 ```
 
 ## Quiz Workflow (Markdown + Frontmatter)
@@ -324,3 +341,76 @@ Exclure si :
 ### Dans examples.html
 - Ligne ~6: `<title>` tag
 - Ligne ~29: section title
+
+## Search Index Cmd+K — Workflow de mise à jour
+
+### Architecture
+
+```
+reference.yaml (guide repo)
+        ↓ scripts/build-guide-index.mjs
+src/data/guide-search-entries.ts  ← GÉNÉRÉ (130 entrées guide)
+        +
+src/data/search-index.ts          ← EDITABLE (99 entrées landing)
+        ↓ sérialisé au build time
+SearchModal.astro → <script id="search-data" type="application/json">
+        ↓ chargé côté client
+src/scripts/search.ts             ← moteur fuzzy, keyboard nav
+```
+
+### Quand rebuilder l'index guide
+
+- Après `git pull` du repo guide (si `reference.yaml` a changé)
+- Quand de nouvelles sections/fichiers sont ajoutés au guide
+- Jamais nécessaire pour les changements de contenu dans des fichiers existants
+
+### Comment rebuilder
+
+```bash
+# Via script npm (recommandé)
+pnpm build:search
+
+# Via slash command Claude Code
+/sync-search
+
+# Via build complet (inclus automatiquement)
+pnpm build
+```
+
+### Ajouter des entrées landing manuellement
+
+Editer `src/data/search-index.ts`. Format :
+
+```typescript
+{
+  id: 'unique-kebab-id',
+  title: 'Titre affiché dans les résultats',
+  keywords: 'mots clés lowercase séparés par espaces pour le fuzzy match',
+  category: 'Section > Sous-section',
+  url: '/page/#anchor',
+  source: 'landing',
+}
+```
+
+Sections déjà indexées : pages (9), cheatsheet (18 sections), examples (88 templates), homepage, releases (top 10), security (5).
+
+### Scoring de pertinence
+
+| Score | Condition |
+|-------|-----------|
+| 100 | Titre exact |
+| 90 | Titre commence par la query |
+| 80 | Word boundary dans le titre |
+| 70 | Titre contient la query |
+| 65 | Tous les mots de la query dans le titre |
+| 55 | Tous les mots dans les keywords |
+| 50 | Query dans les keywords |
+| 30/20 | Un mot dans titre/keywords |
+
+Max 15 résultats retournés. Debounce 50ms.
+
+### Slash command disponible
+
+`.claude/commands/sync-search.md` → `/sync-search` dans Claude Code
+
+Exécute le build script, vérifie le résultat, lance un build de validation.

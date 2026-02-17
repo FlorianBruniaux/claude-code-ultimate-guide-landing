@@ -1,0 +1,491 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { releases, breakingChanges } from '../../data/releases'
+
+const title = 'Claude Code Releases & Changelog | Version History'
+const description = 'Complete version history, changelog, and breaking changes for Claude Code. Track every release from Anthropic with highlights and migration notes.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "Claude Code Releases & Changelog",
+    "description": "Complete version history and breaking changes for Claude Code",
+    "url": "https://cc.bruniaux.com/releases/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/releases/",
+    "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+    "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+    "datePublished": "2026-01-17",
+    "dateModified": "2026-02-17",
+    "inLanguage": "en"
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+  <header class="page-hero">
+    <div class="container">
+      <h1>Claude Code Releases</h1>
+      <p class="tagline">Version history, changelog, and breaking changes</p>
+      <a href="/" class="btn btn-secondary">&larr; Back to Guide</a>
+    </div>
+  </header>
+
+  <!-- What's New Section -->
+  <section class="content-section" id="whats-new">
+    <h2>What's New</h2>
+    <p>Latest updates from the changelog</p>
+
+    <div class="changelog-container" id="changelog-container">
+      <div class="changelog-loading">Loading changelog...</div>
+    </div>
+
+    <div style="text-align: left; margin-top: var(--space-xl);">
+      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" class="btn btn-secondary" target="_blank" rel="noopener">
+        View Full Changelog &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Claude Code Releases Section -->
+  <section class="content-section" id="releases">
+    <h2>Claude Code Releases</h2>
+    <p>Latest versions and breaking changes from Anthropic</p>
+
+    <div style="text-align: left; margin-bottom: var(--space-md);">
+      <button id="toggleReleasesBtn" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        Show All {releases.length} Releases
+      </button>
+      <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+        Showing <span id="visibleCount">{releases.filter(r => r.initiallyVisible).length}</span> of {releases.length} releases
+      </p>
+    </div>
+
+    <div class="releases-timeline">
+      {releases.map((release, index) => (
+        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index}>
+          <div class="release-header">
+            <span class="release-version">{release.version}</span>
+            <span class="release-date">{release.date}</span>
+          </div>
+          <ul class="release-highlights">
+            {release.highlights.map(h => <li set:html={h} />)}
+          </ul>
+          {release.breaking && (
+            <div class="release-breaking">
+              <strong>&#9888;&#65039; Breaking:</strong>
+              <ul>
+                {release.breaking.map(b => <li set:html={b} />)}
+              </ul>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div class="breaking-changes">
+      <h3>&#9888; Recent Breaking Changes</h3>
+      <ul>
+        {breakingChanges.map(bc => (
+          <li><span class="breaking-badge">{bc.badge}</span> <Fragment set:html={bc.description} /></li>
+        ))}
+      </ul>
+    </div>
+
+    <div style="text-align: left; margin-top: var(--space-xl);">
+      <a href="https://github.com/anthropics/claude-code/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+        View All Releases on GitHub &rarr;
+      </a>
+    </div>
+  </section>
+
+  <style is:global>
+    /* Hero */
+    /* Content sections */
+    .content-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .content-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* Releases timeline */
+    .releases-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+    .release-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .release-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .release-latest {
+      border-color: var(--accent);
+      background: var(--surface-elevated);
+    }
+    .release-latest::before {
+      content: "Latest";
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: var(--space-sm);
+    }
+    .release-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--border);
+    }
+    .release-version {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .release-date { font-size: 0.8rem; color: var(--text-muted); }
+    .release-highlights { list-style: none; padding: 0; margin: 0; }
+    .release-highlights li {
+      position: relative;
+      padding-left: var(--space-lg);
+      margin-bottom: var(--space-sm);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .release-highlights li::before {
+      content: "\2192";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .release-highlights li:last-child { margin-bottom: 0; }
+    .release-highlights code {
+      background: var(--bg-tertiary);
+      color: var(--accent);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+
+    /* Breaking changes */
+    .breaking-changes {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--status-danger);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+    .breaking-changes h3 {
+      color: var(--status-danger);
+      font-size: 1.1rem;
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .breaking-changes ul { list-style: none; padding: 0; margin: 0; }
+    .breaking-changes li {
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .breaking-changes li:last-child { border-bottom: none; padding-bottom: 0; }
+    .breaking-changes code {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+    }
+    .breaking-badge {
+      display: inline-block;
+      background: #f85149;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      margin-right: var(--space-sm);
+    }
+    .release-card-hidden { display: none; }
+
+    /* Changelog */
+    .changelog-container { }
+    .changelog-loading { text-align: center; color: var(--text-muted); padding: var(--space-xl); }
+    .changelog-error { text-align: center; color: var(--text-secondary); padding: var(--space-lg); }
+    .changelog-release {
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      margin-bottom: var(--space-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+    }
+    .changelog-release:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+    .changelog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md) var(--space-lg);
+      background-color: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+    .changelog-version { font-family: var(--font-mono); font-weight: 600; color: var(--accent); font-size: 1.1rem; }
+    .changelog-version-link { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; transition: opacity 0.2s ease; }
+    .changelog-version-link:hover { opacity: 0.8; }
+    .changelog-version-link:hover .changelog-version { text-decoration: underline; }
+    .changelog-version-link .external-link-icon { color: var(--text-muted); opacity: 0.6; transition: opacity 0.2s ease; }
+    .changelog-version-link:hover .external-link-icon { opacity: 1; }
+    .changelog-date { font-size: 0.9rem; color: var(--text-muted); }
+    .changelog-content { padding: var(--space-lg); }
+    .changelog-section { margin-bottom: var(--space-md); }
+    .changelog-section:last-child { margin-bottom: 0; }
+    .changelog-section-title {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+    .changelog-items { list-style: none; padding: 0; margin: 0; }
+    .changelog-items li {
+      padding: var(--space-xs) 0;
+      padding-left: var(--space-md);
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .changelog-items li::before { content: '\2192'; position: absolute; left: 0; color: var(--text-muted); }
+    .changelog-items li strong { color: var(--text-primary); }
+    .changelog-items .item-desc { color: var(--text-secondary); font-size: 0.9rem; }
+    .changelog-items .item-desc::before { content: ' \2014 '; color: var(--text-muted); }
+    .changelog-items .more-items { color: var(--text-muted); font-style: italic; font-size: 0.85rem; }
+    .changelog-items .more-items::before { content: ''; }
+
+    /* Release breaking inline */
+    .release-breaking {
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--status-danger);
+    }
+    .release-breaking ul { list-style: none; padding: 0; margin: var(--space-xs) 0 0; }
+    .release-breaking li { color: var(--text-secondary); font-size: 0.85rem; padding-left: var(--space-md); position: relative; }
+    .release-breaking li::before { content: '\2022'; position: absolute; left: 0; color: var(--status-danger); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .releases-timeline { grid-template-columns: 1fr; }
+      .release-header { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+    }
+    @media (max-width: 480px) {
+      .changelog-header { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+      .changelog-content { padding: var(--space-md); }
+    }
+  </style>
+
+  <script>
+    // Toggle show/hide releases
+    document.getElementById('toggleReleasesBtn')?.addEventListener('click', function() {
+      const hiddenCards = document.querySelectorAll('.release-card-hidden');
+      const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
+      const totalReleases = document.querySelectorAll('.release-card').length;
+      const initialVisible = 6;
+
+      hiddenCards.forEach(card => {
+        (card as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+      });
+
+      this.textContent = isExpanded ? 'Show All ' + totalReleases + ' Releases' : 'Show Less';
+      const countEl = document.getElementById('visibleCount');
+      if (countEl) countEl.textContent = isExpanded ? String(initialVisible) : String(totalReleases);
+    });
+
+    // Changelog loading
+    const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main';
+
+    interface ChangelogItem {
+      title: string;
+      description: string;
+    }
+
+    interface ChangelogSection {
+      title: string;
+      items: ChangelogItem[];
+    }
+
+    interface ChangelogRelease {
+      version: string;
+      date: string;
+      sections: ChangelogSection[];
+    }
+
+    function parseChangelog(markdown: string): ChangelogRelease[] {
+      const releases: ChangelogRelease[] = [];
+      const lines = markdown.split('\n');
+      let currentRelease: ChangelogRelease | null = null;
+      let currentSection: string | null = null;
+      let buffer: ChangelogItem[] = [];
+
+      for (const line of lines) {
+        const releaseMatch = line.match(/^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})/);
+        if (releaseMatch) {
+          if (currentRelease) {
+            if (currentSection && buffer.length) {
+              currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+            }
+            releases.push(currentRelease);
+          }
+          currentRelease = { version: releaseMatch[1], date: releaseMatch[2], sections: [] };
+          currentSection = null;
+          buffer = [];
+          continue;
+        }
+        if (line.match(/^## \[Unreleased\]/)) { currentRelease = null; continue; }
+        if (!currentRelease) continue;
+        const sectionMatch = line.match(/^### (.+)/);
+        if (sectionMatch) {
+          if (currentSection && buffer.length) {
+            currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+          }
+          currentSection = sectionMatch[1];
+          buffer = [];
+          continue;
+        }
+        const itemMatch = line.match(/^- \*\*(.+?)\*\*(.*)$/);
+        if (itemMatch && currentSection) {
+          buffer.push({ title: itemMatch[1], description: itemMatch[2].replace(/^\s*[-\u2013]\s*/, '').trim() });
+        }
+      }
+      if (currentRelease) {
+        if (currentSection && buffer.length) {
+          currentRelease.sections.push({ title: currentSection, items: [...buffer] });
+        }
+        releases.push(currentRelease);
+      }
+      return releases;
+    }
+
+    function getChangelogAnchor(version: string, date: string): string {
+      const anchor = `${version}---${date}`.replace(/\./g, '');
+      return `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#${anchor}`;
+    }
+
+    function formatDate(dateStr: string): string {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function getSectionIcon(title: string): string {
+      const icons: Record<string, string> = { 'Added': '\u2728', 'Changed': '\uD83D\uDD04', 'Fixed': '\uD83D\uDC1B', 'Removed': '\uD83D\uDDD1\uFE0F', 'Security': '\uD83D\uDD12', 'Deprecated': '\u26A0\uFE0F', 'Internal': '\uD83D\uDD27' };
+      for (const [key, icon] of Object.entries(icons)) {
+        if (title.startsWith(key)) return icon;
+      }
+      return '\uD83D\uDCDD';
+    }
+
+    function renderChangelog(releases: ChangelogRelease[], maxReleases = 3): void {
+      const container = document.getElementById('changelog-container');
+      if (!container) return;
+      const displayReleases = releases.slice(0, maxReleases);
+      if (displayReleases.length === 0) {
+        container.innerHTML = '<p class="changelog-error">No changelog entries found.</p>';
+        return;
+      }
+      const html = displayReleases.map(release => `
+        <div class="changelog-release">
+          <div class="changelog-header">
+            <a href="${getChangelogAnchor(release.version, release.date)}" target="_blank" rel="noopener" class="changelog-version-link">
+              <span class="changelog-version">v${release.version}</span>
+              <svg class="external-link-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+            <span class="changelog-date">${formatDate(release.date)}</span>
+          </div>
+          <div class="changelog-content">
+            ${release.sections.map(section => `
+              <div class="changelog-section">
+                <span class="changelog-section-title">${getSectionIcon(section.title)} ${section.title}</span>
+                <ul class="changelog-items">
+                  ${section.items.slice(0, 4).map(item => `
+                    <li><strong>${item.title}</strong>${item.description ? `<span class="item-desc">${item.description}</span>` : ''}</li>
+                  `).join('')}
+                  ${section.items.length > 4 ? `<li class="more-items">+${section.items.length - 4} more...</li>` : ''}
+                </ul>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+      container.innerHTML = html;
+    }
+
+    async function loadChangelog(): Promise<void> {
+      const container = document.getElementById('changelog-container');
+      try {
+        const response = await fetch(`${GITHUB_RAW_BASE}/CHANGELOG.md`);
+        if (response.ok) {
+          const markdown = await response.text();
+          const releases = parseChangelog(markdown);
+          renderChangelog(releases, 3);
+        } else {
+          throw new Error('Failed to fetch');
+        }
+      } catch (error) {
+        if (container) {
+          container.innerHTML = `<p class="changelog-error">Unable to load changelog. <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>`;
+        }
+      }
+    }
+
+    // Fetch and display version dynamically
+    async function loadVersion(): Promise<void> {
+      try {
+        const response = await fetch(`${GITHUB_RAW_BASE}/VERSION`);
+        if (response.ok) {
+          const version = (await response.text()).trim();
+          const versionEl = document.getElementById('version-display');
+          if (versionEl) versionEl.textContent = `v${version}`;
+        }
+      } catch (error) {
+        console.log('Using fallback version');
+      }
+    }
+
+    loadVersion();
+    loadChangelog();
+  </script>
+</Layout>

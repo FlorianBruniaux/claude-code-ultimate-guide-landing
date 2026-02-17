@@ -4,35 +4,48 @@ import HeroBanner from '../components/landing/HeroBanner.astro'
 import Onboarding from '../components/landing/Onboarding.astro'
 import QuickRef from '../components/landing/QuickRef.astro'
 import WhyGuide from '../components/landing/WhyGuide.astro'
+import GuideComparison from '../components/landing/GuideComparison.astro'
 import ComparisonTable from '../components/landing/ComparisonTable.astro'
 import FeaturesGrid from '../components/landing/FeaturesGrid.astro'
-import ExamplesCatalog from '../components/landing/ExamplesCatalog.astro'
-import ChooseYourPath from '../components/landing/ChooseYourPath.astro'
+import Methodologies from '../components/landing/Methodologies.astro'
 import GoldenRules from '../components/landing/GoldenRules.astro'
-import PromptFormula from '../components/landing/PromptFormula.astro'
-import LevelUp from '../components/landing/LevelUp.astro'
 import SecurityTeaser from '../components/landing/SecurityTeaser.astro'
-import TokenOptimization from '../components/landing/TokenOptimization.astro'
 import Community from '../components/landing/Community.astro'
-import Releases from '../components/landing/Releases.astro'
 import CrossLinks from '../components/landing/CrossLinks.astro'
 import RelatedProjects from '../components/landing/RelatedProjects.astro'
 
-const title = 'Claude Code Guide: Beginner to Power User - Free & Open Source'
-const description = 'Claude Code from beginner to power user. Exhaustive documentation, production-ready templates, agentic workflow guides, quiz, and cheatsheet for daily use.'
+const title = 'Claude Code Guide: Templates, Security, Workflows | Anthropic CLI'
+const description = 'Master Claude Code (Anthropic CLI) with 19K lines of documentation, 113 templates, 274-question quiz, security threat database (18 CVEs), and TDD/SDD/BDD workflows. Free & open-source.'
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Claude Code Ultimate Guide",
-    "description": "Free, open-source guide for Claude Code (Anthropic CLI): documentation, 113 templates, quiz (274 questions), cheatsheet, and security guide.",
+    "description": "Free, open-source guide for Claude Code (Anthropic CLI): 19K lines of documentation, 113 templates, 274-question quiz, security threat database, and methodology workflows.",
     "url": "https://cc.bruniaux.com/",
     "provider": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
-    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "author": {
+      "@type": "Person",
+      "name": "Florian BRUNIAUX",
+      "url": "https://github.com/FlorianBruniaux",
+      "jobTitle": "Founding Engineer"
+    },
     "isAccessibleForFree": true,
     "educationalLevel": "Beginner to Advanced",
     "inLanguage": "en",
+    "datePublished": "2025-06-01",
+    "dateModified": "2026-02-17",
+    "teaches": [
+      "Claude Code CLI installation and configuration",
+      "CLAUDE.md project memory files",
+      "MCP server integration and security vetting",
+      "Custom agents, skills, and slash commands",
+      "Event hooks for automation",
+      "TDD, SDD, BDD methodologies with AI",
+      "Context window management",
+      "Production security hardening"
+    ],
     "numberOfCredits": 0,
     "hasCourseInstance": {
       "@type": "CourseInstance",
@@ -48,17 +61,13 @@ const jsonLd = [
   <Onboarding />
   <QuickRef />
   <WhyGuide />
+  <GuideComparison />
   <ComparisonTable />
   <FeaturesGrid />
-  <ExamplesCatalog />
-  <ChooseYourPath />
+  <Methodologies />
   <GoldenRules />
-  <PromptFormula />
-  <LevelUp />
   <SecurityTeaser />
-  <TokenOptimization />
   <Community />
-  <Releases />
   <CrossLinks />
   <RelatedProjects />
 </Layout>

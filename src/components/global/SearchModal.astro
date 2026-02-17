@@ -1,0 +1,103 @@
+---
+import { SEARCH_INDEX } from '../../data/search-index.ts'
+
+// Serialize the search index at build time
+const searchData = JSON.stringify(SEARCH_INDEX)
+---
+
+<!-- Search Modal -->
+<div
+  id="search-modal"
+  class="search-modal"
+  role="dialog"
+  aria-label="Site search"
+  aria-modal="true"
+  aria-hidden="true"
+  hidden
+>
+  <!-- Backdrop -->
+  <div id="search-backdrop" class="search-modal-backdrop" aria-hidden="true"></div>
+
+  <!-- Modal content -->
+  <div class="search-modal-content" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="search-results">
+    <!-- Input row -->
+    <div class="search-input-wrapper">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+      </svg>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search pages, examples, commands, guide…"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        role="searchbox"
+        aria-label="Search"
+        aria-autocomplete="list"
+        aria-controls="search-results"
+      />
+      <kbd class="search-kbd" aria-label="Press Escape to close">Esc</kbd>
+    </div>
+
+    <!-- Results list -->
+    <ul
+      id="search-results"
+      class="search-results"
+      role="listbox"
+      aria-label="Search results"
+      aria-live="polite"
+    >
+      <li class="search-no-results">Start typing to search…</li>
+    </ul>
+
+    <!-- Footer hint -->
+    <div class="search-footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- Search data (serialized at build time) -->
+<script id="search-data" type="application/json" set:html={searchData} />
+
+<!-- Client bootstrap -->
+<script>
+  import { initSearch } from '../../scripts/search.ts'
+  import type { SearchEntry } from '../../scripts/search.ts'
+
+  const dataEl = document.getElementById('search-data')
+  if (dataEl) {
+    try {
+      const entries = JSON.parse(dataEl.textContent || '[]') as SearchEntry[]
+      initSearch(entries)
+    } catch (e) {
+      console.error('[search] Failed to parse search data:', e)
+    }
+  }
+</script>
+
+<style>
+  .search-footer {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .search-footer kbd {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin-right: 2px;
+    font-family: inherit;
+  }
+</style>

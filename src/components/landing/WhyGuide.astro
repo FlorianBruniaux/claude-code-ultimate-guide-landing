@@ -1,5 +1,5 @@
 <!-- Why This Guide Section -->
-<section class="section why-guide">
+<section class="section section--alt why-guide">
     <div class="container">
         <h2 class="section-title">Why This Guide?</h2>
         <p class="section-subtitle">Claude Code transforms your terminal into an AI pair programming environment. Stop wasting time on trial and error.</p>
@@ -12,7 +12,7 @@
                      loading="lazy"
                      width="800">
                 <figcaption>
-                    <strong>Key insight:</strong> Claude Code is NOT a new AI model — it's an orchestration layer connecting Claude to your dev environment.
+                    <strong>Key insight:</strong> Claude Code is NOT a new AI model: it's an orchestration layer connecting Claude to your dev environment.
                     <br><small>Diagram by <a href="https://www.linkedin.com/posts/mohamed-ali-ben-salem-2b777b9a_en-ce-moment-je-vois-passer-des-posts-du-activity-7420592149110362112-eY5a" target="_blank" rel="noopener">Mohamed Ali Ben Salem</a></small>
                 </figcaption>
             </figure>
@@ -53,14 +53,12 @@
 
 <style>
 .architecture-visual {
-    margin: var(--space-xl) auto var(--space-2xl);
-    max-width: 700px;
-    text-align: center;
+    margin: var(--space-xl) 0 var(--space-2xl);
+    text-align: left;
 }
 .architecture-visual figure { margin: 0; }
 .architecture-visual img {
     width: 100%;
-    max-width: 700px;
     height: auto;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
@@ -78,8 +76,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
-    max-width: 900px;
-    margin: 0 auto;
 }
 .comparison-card {
     background-color: var(--surface-elevated);
@@ -93,9 +89,9 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
 }
-.comparison-without { border-left: 4px solid #f87171; }
+.comparison-without { border-left: 4px solid var(--status-danger); }
 .comparison-with {
-    border-left: 4px solid #34d399;
+    border-left: 4px solid var(--status-success);
     box-shadow: var(--shadow-md);
 }
 .comparison-header {
@@ -108,8 +104,8 @@
 }
 .comparison-icon { font-size: 1.5rem; }
 .comparison-header h3 { margin: 0; font-size: 1.1rem; font-weight: 600; }
-.comparison-without .comparison-header h3 { color: #f85149; }
-.comparison-with .comparison-header h3 { color: #238636; }
+.comparison-without .comparison-header h3 { color: var(--status-danger); }
+.comparison-with .comparison-header h3 { color: var(--status-success); }
 .comparison-list { list-style: none; padding: 0; margin: 0; }
 .comparison-list li {
     display: flex;
@@ -121,8 +117,8 @@
     line-height: 1.5;
 }
 .status-icon { flex-shrink: 0; font-weight: 700; font-size: 0.9rem; }
-.status-icon.bad { color: #f85149; }
-.status-icon.good { color: #238636; }
+.status-icon.bad { color: var(--status-danger); }
+.status-icon.good { color: var(--status-success); }
 @media (max-width: 768px) {
     .comparison-cards { grid-template-columns: 1fr; }
 }

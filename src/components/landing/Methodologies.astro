@@ -1,0 +1,126 @@
+<!-- Methodologies Section -->
+<section class="section section--alt methodologies" id="methodologies">
+    <div class="container">
+        <h2 class="section-title">Choose Your Methodology</h2>
+        <p class="section-subtitle">AI amplifies both good and bad code, so structuring your workflow matters.</p>
+
+        <div class="methodologies-grid">
+            <div class="methodology-card">
+                <div class="methodology-header">
+                    <span class="methodology-icon" aria-hidden="true">&#128308;</span>
+                    <h3>TDD</h3>
+                </div>
+                <p class="methodology-when">Critical business logic</p>
+                <p class="methodology-desc">Red-Green-Refactor with AI. Write the test first, let Claude implement the minimum code to pass. Catches regressions before they ship.</p>
+                <span class="methodology-tag">Test-Driven</span>
+            </div>
+
+            <div class="methodology-card">
+                <div class="methodology-header">
+                    <span class="methodology-icon" aria-hidden="true">&#128208;</span>
+                    <h3>SDD</h3>
+                </div>
+                <p class="methodology-when">Architecture upfront</p>
+                <p class="methodology-desc">Design before code. Spec the interfaces, validate with Plan Mode, then generate implementation. Best for complex systems.</p>
+                <span class="methodology-tag">Spec-Driven</span>
+            </div>
+
+            <div class="methodology-card">
+                <div class="methodology-header">
+                    <span class="methodology-icon" aria-hidden="true">&#129309;</span>
+                    <h3>BDD</h3>
+                </div>
+                <p class="methodology-when">PM/dev collaboration</p>
+                <p class="methodology-desc">User stories become tests. Given/When/Then scenarios that both PMs and developers understand. Bridge the communication gap.</p>
+                <span class="methodology-tag">Behavior-Driven</span>
+            </div>
+
+            <div class="methodology-card">
+                <div class="methodology-header">
+                    <span class="methodology-icon" aria-hidden="true">&#9889;</span>
+                    <h3>GSD</h3>
+                </div>
+                <p class="methodology-when">Throwaway prototypes</p>
+                <p class="methodology-desc">Ship fast and verify later, for situations where speed beats perfection. Refactor or delete once you've validated the concept.</p>
+                <span class="methodology-tag">Get-Stuff-Done</span>
+            </div>
+        </div>
+
+        <div class="methodologies-cta">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/methodologies.md" class="btn btn-secondary" target="_blank" rel="noopener">
+                Read the full methodology guide &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.methodologies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0 0;
+}
+.methodology-card {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.methodology-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+.methodology-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+.methodology-icon {
+    font-size: 1.5rem;
+}
+.methodology-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+.methodology-when {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-tertiary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+}
+.methodology-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+.methodology-tag {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    font-family: var(--font-mono);
+}
+.methodologies-cta {
+    text-align: left;
+    margin-top: var(--space-xl);
+}
+@media (max-width: 768px) {
+    .methodologies-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

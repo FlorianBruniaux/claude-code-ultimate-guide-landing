@@ -1,30 +1,37 @@
 ---
 import ThemeToggle from './ThemeToggle.astro'
 
-const navLinks = [
+const mainLinks = [
   { href: '/cheatsheet/', label: 'Cheat Sheet' },
-  { href: '/quiz/', label: 'Quiz' },
   { href: '/examples/', label: 'Examples' },
+  { href: '/quiz/', label: 'Quiz' },
+  { href: '/compare/', label: 'Compare' },
   { href: '/security/', label: 'Security' },
+]
+
+const moreLinks = [
+  { href: '/releases/', label: 'Releases' },
   { href: '/learning/', label: 'Learning' },
   { href: '/faq/', label: 'FAQ' },
 ]
 
 const currentPath = Astro.url.pathname
+const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-border shadow-header" style="background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background: var(--bg-primary);">
   <div class="mx-auto max-w-content px-4">
     <div class="flex items-center justify-between h-14">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors font-bold text-lg">
-        <span class="font-mono text-text-muted">&gt;_</span>
-        <span>Claude Code Guide</span>
+      <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <svg height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z" fill="#D97757" fill-rule="nonzero"/></svg>
+        <svg class="text-text-primary" height="14" viewBox="0 0 97 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="nonzero" aria-hidden="true"><path d="M13.623 20.222c-3.417 0-5.753-1.901-6.855-4.827a12.992 12.992 0 01-.838-4.772c0-4.907 2.206-8.315 7.08-8.315 3.275 0 5.297 1.425 6.448 4.826h1.402l-.19-4.69C18.709 1.18 16.258.543 13.276.543c-4.2 0-7.775 1.874-9.763 5.254a11.357 11.357 0 00-1.511 5.872c0 3.753 1.777 7.08 5.113 8.926a11.95 11.95 0 005.943 1.398c3.254 0 5.835-.617 8.122-1.697l.593-5.172h-1.43c-.858 2.362-1.88 3.78-3.574 4.534-.831.373-1.88.564-3.146.564zm14.74-17.914L28.499 0h-.967L23.23 1.29v.699l1.907.882v16.142c0 1.1-.565 1.344-2.043 1.528v1.18h7.319v-1.18c-1.484-.184-2.042-.428-2.042-1.528V2.315l-.007-.007zm29.104 19.685h.565l4.95-.937v-1.208l-.695-.054c-1.157-.109-1.457-.346-1.457-1.29V9.897l.137-2.763h-.783l-4.678.672v1.181l.457.082c1.266.183 1.64.536 1.64 1.419v7.67c-1.212.937-2.369 1.527-3.744 1.527-1.525 0-2.471-.774-2.471-2.58V9.905l.136-2.763h-.804l-4.684.672v1.181l.484.082c1.266.183 1.64.536 1.64 1.418v7.08c0 3 1.703 4.426 4.412 4.426 2.07 0 3.765-1.1 5.038-2.627L57.474 22l-.007-.007zm-13.602-9.55c0-3.836-2.043-5.309-5.733-5.309-3.254 0-5.616 1.344-5.616 3.57 0 .666.238 1.175.721 1.528l2.478-.326c-.109-.746-.163-1.201-.163-1.391 0-1.263.674-1.901 2.042-1.901 2.022 0 3.044 1.419 3.044 3.7v.746l-5.106 1.527c-1.702.462-2.67.863-3.316 1.8a3.386 3.386 0 00-.476 1.9c0 2.172 1.497 3.706 4.057 3.706 1.852 0 3.493-.835 4.922-2.416.51 1.581 1.294 2.416 2.69 2.416 1.13 0 2.15-.455 3.063-1.344l-.272-.937a4.363 4.363 0 01-1.178.163c-.783 0-1.157-.617-1.157-1.826v-5.607zm-6.536 7.378c-1.396 0-2.26-.808-2.26-2.226 0-.964.456-1.528 1.43-1.854l4.139-1.31v3.965c-1.321.997-2.097 1.425-3.31 1.425zm43.095 1.235v-1.208l-.701-.054c-1.158-.109-1.45-.346-1.45-1.29V2.308L78.409 0h-.974l-4.302 1.29v.699l1.906.882V8.18a6.024 6.024 0 00-3.656-1.046c-4.276 0-7.612 3.245-7.612 8.098 0 3.998 2.397 6.761 6.346 6.761 2.042 0 3.819-.99 4.922-2.525l-.136 2.525h.571l4.95-.937zm-8.96-12.313c2.043 0 3.575 1.181 3.575 3.353v6.11a4.91 4.91 0 01-3.547 1.425c-2.928 0-4.412-2.308-4.412-5.39 0-3.462 1.695-5.498 4.385-5.498zm19.424 3.055c-.381-1.792-1.484-2.81-3.016-2.81-2.288 0-3.874 1.717-3.874 4.18 0 3.646 1.934 6.008 5.059 6.008a5.858 5.858 0 005.03-2.953l.913.245c-.408 3.163-3.281 5.525-6.808 5.525-4.14 0-6.992-3.054-6.992-7.399 0-4.378 3.098-7.46 7.237-7.46 3.09 0 5.27 1.853 5.97 5.07l-10.783 3.3V14.05l7.264-2.247v-.006z"/></svg>
+        <span class="text-text-primary font-semibold text-sm tracking-wide">Code Guide</span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
-        {navLinks.map((link) => {
+        {mainLinks.map((link) => {
           const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
           return (
             <a
@@ -42,6 +49,54 @@ const currentPath = Astro.url.pathname
             </a>
           )
         })}
+
+        <!-- More dropdown -->
+        <div class="relative" id="more-dropdown">
+          <button
+            id="more-dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class:list={[
+              'text-sm font-medium transition-colors relative flex items-center gap-1',
+              'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
+              isMoreActive
+                ? 'text-text-primary after:w-full'
+                : 'text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full',
+            ]}
+          >
+            More
+            <svg class="w-3.5 h-3.5 transition-transform duration-200" id="more-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div
+            id="more-dropdown-panel"
+            role="menu"
+            class="hidden absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border py-1 shadow-lg"
+            style="background: var(--bg-primary);"
+          >
+            {moreLinks.map((link) => {
+              const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+              return (
+                <a
+                  href={link.href}
+                  role="menuitem"
+                  aria-current={isActive ? 'page' : undefined}
+                  class:list={[
+                    'block px-4 py-2 text-sm font-medium transition-colors',
+                    isActive
+                      ? 'text-accent'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-background-tertiary',
+                  ]}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
+          </div>
+        </div>
       </nav>
 
       <!-- Actions -->
@@ -106,7 +161,7 @@ const currentPath = Astro.url.pathname
 
     <!-- Mobile Navigation -->
     <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden lg:hidden pb-4">
-      {navLinks.map((link) => {
+      {mainLinks.map((link) => {
         const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
         return (
           <a
@@ -121,6 +176,23 @@ const currentPath = Astro.url.pathname
           </a>
         )
       })}
+      <div class="border-t border-border my-2 pt-2">
+        {moreLinks.map((link) => {
+          const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+          return (
+            <a
+              href={link.href}
+              aria-current={isActive ? 'page' : undefined}
+              class:list={[
+                'block py-2 text-base font-medium transition-colors',
+                isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
+              ]}
+            >
+              {link.label}
+            </a>
+          )
+        })}
+      </div>
       <div class="flex items-center gap-3 pt-3 border-t border-border mt-2">
         <a
           href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
@@ -191,5 +263,65 @@ const currentPath = Astro.url.pathname
     })
   }
 
+  function initMoreDropdown() {
+    const container = document.getElementById('more-dropdown')
+    const toggleBtn = document.getElementById('more-dropdown-toggle')
+    const panel = document.getElementById('more-dropdown-panel')
+    const chevron = document.getElementById('more-chevron')
+
+    if (!container || !toggleBtn || !panel || !chevron) return
+
+    function open() {
+      panel.classList.remove('hidden')
+      toggleBtn.setAttribute('aria-expanded', 'true')
+      chevron.style.transform = 'rotate(180deg)'
+      const firstItem = panel.querySelector('a[role="menuitem"]')
+      if (firstItem) firstItem.focus()
+    }
+
+    function close() {
+      panel.classList.add('hidden')
+      toggleBtn.setAttribute('aria-expanded', 'false')
+      chevron.style.transform = ''
+    }
+
+    function isOpen() {
+      return !panel.classList.contains('hidden')
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      isOpen() ? close() : open()
+    })
+
+    document.addEventListener('click', (e) => {
+      if (isOpen() && !container.contains(e.target)) close()
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) {
+        close()
+        toggleBtn.focus()
+      }
+    })
+
+    panel.addEventListener('keydown', (e) => {
+      const items = Array.from(panel.querySelectorAll('a[role="menuitem"]'))
+      const currentIndex = items.indexOf(document.activeElement)
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        const next = items[currentIndex + 1] || items[0]
+        next.focus()
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        const prev = items[currentIndex - 1] || items[items.length - 1]
+        prev.focus()
+      } else if (e.key === 'Tab') {
+        close()
+      }
+    })
+  }
+
   initMobileMenu()
+  initMoreDropdown()
 </script>

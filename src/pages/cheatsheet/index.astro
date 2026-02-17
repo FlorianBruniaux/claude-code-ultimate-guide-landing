@@ -25,21 +25,21 @@ const jsonLd = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <section class="hero">
+  <header class="page-hero">
     <div class="container">
-      <h1>Claude Code <span>Cheatsheet</span></h1>
-      <p>1 printable page - Daily essentials for maximum productivity</p>
+      <h1>Claude Code <span class="accent">Cheatsheet</span></h1>
+      <p class="tagline">1 printable page: daily essentials for maximum productivity</p>
       <div class="meta-info">
         <span>By <a href="https://methode-aristote.fr" target="_blank">Florian BRUNIAUX</a></span>
         <span>Version 3.26.0</span>
         <span>February 2026</span>
       </div>
-      <div style="margin-top: var(--space-lg); display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+      <div class="cta-buttons" style="margin-top: var(--space-lg);">
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cheatsheet.md" target="_blank" class="btn btn-secondary">View .md</a>
         <a href="/cheatsheet/cheatsheet.pdf" download class="btn btn-primary">Download PDF</a>
       </div>
     </div>
-  </section>
+  </header>
 
   <div class="cheatsheet-main container">
     <div class="content">
@@ -335,29 +335,11 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       font-size: 14px;
     }
 
-    .hero {
-      text-align: center;
-      padding: var(--space-xl) 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: var(--space-sm);
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p { color: var(--text-secondary); margin-bottom: var(--space-md); }
+    .accent { color: var(--accent); }
 
     .meta-info {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: var(--space-lg);
       flex-wrap: wrap;
       font-size: 0.85rem;
@@ -429,7 +411,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     .section li { margin: var(--space-xs) 0; font-size: 0.9rem; }
 
     .tip {
-      background: rgba(88, 166, 255, 0.1);
+      background: var(--bg-tertiary);
       border-left: 3px solid var(--accent);
       padding: var(--space-sm) var(--space-md);
       margin: var(--space-md) 0;
@@ -438,8 +420,8 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     }
 
     .warning {
-      background: rgba(248, 81, 73, 0.1);
-      border-left: 3px solid #f85149;
+      background: var(--bg-tertiary);
+      border-left: 3px solid var(--status-danger);
       padding: var(--space-sm) var(--space-md);
       margin: var(--space-md) 0;
       font-size: 0.85rem;
@@ -448,10 +430,10 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); font-size: 0.85rem; }
     .dont { color: #f85149; }
-    .do { color: var(--accent-secondary); }
+    .do { color: var(--accent-tertiary); }
 
     .golden-rules {
-      background: linear-gradient(135deg, rgba(88, 166, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+      background: var(--bg-secondary);
       border: 2px solid var(--accent);
     }
 
@@ -475,8 +457,8 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     .legend-dot.red { background-color: #ef4444; }
 
     @media print {
-      .hero .btn, .header-actions { display: none !important; }
-      .hero { padding: var(--space-md) 0; }
+      .page-hero .btn, .header-actions { display: none !important; }
+      .page-hero { padding: var(--space-md) 0; }
       .content { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
       .section { break-inside: avoid; padding: var(--space-md); }
       pre, code { font-size: 8px; }

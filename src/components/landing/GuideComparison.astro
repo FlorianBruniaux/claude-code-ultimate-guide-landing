@@ -1,0 +1,475 @@
+<!-- Guide Comparison Section -->
+<section class="section guide-comparison" id="guide-comparison">
+    <div class="container">
+        <h2 class="section-title">This Guide vs Other Resources</h2>
+        <p class="section-subtitle">Different resources serve different needs. Here's where this guide fits.</p>
+
+        <!-- 1. COMPARISON TABLE -->
+        <div class="guide-table-wrapper">
+            <table class="guide-comparison-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Your Goal</th>
+                        <th scope="col">This Guide</th>
+                        <th scope="col">everything-claude-code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Understand WHY patterns work</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Deep explanations + architecture</td>
+                        <td><span class="gc-partial">~</span> Config-focused</td>
+                    </tr>
+                    <tr>
+                        <td>Quick setup for projects</td>
+                        <td><span class="gc-partial">~</span> Available but not the priority</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Battle-tested production configs</td>
+                    </tr>
+                    <tr>
+                        <td>Learn trade-offs</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Decision frameworks + comparisons</td>
+                        <td><span class="gc-partial">~</span> Lists patterns, no trade-off analysis</td>
+                    </tr>
+                    <tr>
+                        <td>Security hardening</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database (18 CVEs, 400+ malicious MCPs)</td>
+                        <td><span class="gc-partial">~</span> Basic patterns only</td>
+                    </tr>
+                    <tr>
+                        <td>Test understanding</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 274-question quiz</td>
+                        <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not available</td>
+                    </tr>
+                    <tr>
+                        <td>Methodologies (TDD/SDD/BDD)</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Full workflow guides</td>
+                        <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not covered</td>
+                    </tr>
+                    <tr>
+                        <td>Copy-paste ready templates</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 116 templates</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 200+ templates</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. ECOSYSTEM POSITIONING -->
+        <div class="gc-ecosystem">
+            <h3 class="gc-subheading">Ecosystem Positioning</h3>
+            <p class="gc-subtext">Where this guide sits relative to other Claude Code resources</p>
+            <div class="gc-quadrant-grid">
+                <div class="gc-quadrant-label gc-label-y">Educational Depth</div>
+                <div class="gc-quadrant-label gc-label-x">Ready-to-Use</div>
+
+                <div class="gc-quadrant gc-quadrant--highlighted">
+                    <span class="gc-quadrant-tag">High depth · Low plug-and-play</span>
+                    <strong>This Guide</strong>
+                    <p>Deep learning, theory, security, methodology</p>
+                </div>
+                <div class="gc-quadrant">
+                    <span class="gc-quadrant-tag">High depth · High plug-and-play</span>
+                    <strong>everything-claude-code</strong>
+                    <p>Production configs, ready-to-copy setups</p>
+                </div>
+                <div class="gc-quadrant">
+                    <span class="gc-quadrant-tag">Low depth · Low plug-and-play</span>
+                    <strong>awesome-claude-code</strong>
+                    <p>Curated links, community resources list</p>
+                </div>
+                <div class="gc-quadrant">
+                    <span class="gc-quadrant-tag">Low depth · High plug-and-play</span>
+                    <strong>claude-code-studio</strong>
+                    <p>Visual GUI, quick workflow builder</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 4 UNIQUE GAPS -->
+        <div class="gc-gaps">
+            <h3 class="gc-subheading">4 Gaps Only This Guide Fills</h3>
+            <p class="gc-subtext">What you won't find in comparable resources</p>
+            <div class="gc-gaps-grid">
+                <div class="gc-gap-card">
+                    <div class="gc-gap-header">
+                        <span class="gc-gap-icon" aria-hidden="true">&#128737;</span>
+                        <h4>Security-First</h4>
+                    </div>
+                    <p>The only resource with a structured threat database. Protect your workflow before it's compromised.</p>
+                    <div class="gc-gap-metrics">
+                        <span class="gc-metric">18 CVEs documented</span>
+                        <span class="gc-metric">400+ malicious MCPs</span>
+                        <span class="gc-metric">341 security skills</span>
+                    </div>
+                </div>
+
+                <div class="gc-gap-card">
+                    <div class="gc-gap-header">
+                        <span class="gc-gap-icon" aria-hidden="true">&#9881;</span>
+                        <h4>Methodology Workflows</h4>
+                    </div>
+                    <p>Full TDD, SDD, and BDD workflows adapted for AI-assisted development. Complete playbooks that go beyond pattern lists.</p>
+                    <div class="gc-gap-metrics">
+                        <span class="gc-metric">TDD with Claude</span>
+                        <span class="gc-metric">SDD / BDD guides</span>
+                        <span class="gc-metric">Decision frameworks</span>
+                    </div>
+                </div>
+
+                <div class="gc-gap-card">
+                    <div class="gc-gap-header">
+                        <span class="gc-gap-icon" aria-hidden="true">&#128218;</span>
+                        <h4>Complete Reference</h4>
+                    </div>
+                    <p>The most complete Claude Code reference available. 16 specialized guides covering every aspect of the tool.</p>
+                    <div class="gc-gap-metrics">
+                        <span class="gc-metric">19K+ lines</span>
+                        <span class="gc-metric">16 guides</span>
+                        <span class="gc-metric">116 templates</span>
+                    </div>
+                </div>
+
+                <div class="gc-gap-card">
+                    <div class="gc-gap-header">
+                        <span class="gc-gap-icon" aria-hidden="true">&#127891;</span>
+                        <h4>Educational Progression</h4>
+                    </div>
+                    <p>Structured learning path with self-assessment. Go from zero to power user with measurable milestones.</p>
+                    <div class="gc-gap-metrics">
+                        <span class="gc-metric">274 quiz questions</span>
+                        <span class="gc-metric">4 skill levels</span>
+                        <span class="gc-metric">Interactive onboarding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. RECOMMENDED WORKFLOW -->
+        <div class="gc-workflow">
+            <h3 class="gc-subheading">Recommended Workflow</h3>
+            <p class="gc-subtext">Use complementary resources at the right moment</p>
+            <div class="gc-workflow-steps">
+                <div class="gc-workflow-step">
+                    <div class="gc-step-num">1</div>
+                    <div class="gc-step-content">
+                        <strong>Learn Here</strong>
+                        <p>Understand the why, the trade-offs, and build a solid mental model</p>
+                        <span class="gc-step-tag">This Guide</span>
+                    </div>
+                </div>
+                <div class="gc-workflow-arrow" aria-hidden="true">&rarr;</div>
+                <div class="gc-workflow-step">
+                    <div class="gc-step-num">2</div>
+                    <div class="gc-step-content">
+                        <strong>Build There</strong>
+                        <p>Grab production-ready configs and templates from everything-cc</p>
+                        <span class="gc-step-tag">everything-claude-code</span>
+                    </div>
+                </div>
+                <div class="gc-workflow-arrow" aria-hidden="true">&rarr;</div>
+                <div class="gc-workflow-step">
+                    <div class="gc-step-num">3</div>
+                    <div class="gc-step-content">
+                        <strong>Deep Dive Here</strong>
+                        <p>Security audit, methodology selection, skill assessment: come back when it matters</p>
+                        <span class="gc-step-tag">This Guide</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. NOTE -->
+        <p class="guide-comparison-note">Both resources are complementary, not competitive. Use what fits your current need.</p>
+    </div>
+</section>
+
+<style>
+/* ── TABLE ── */
+.guide-comparison .guide-table-wrapper {
+    overflow-x: auto;
+    margin: var(--space-xl) 0;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+}
+.guide-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: var(--bg-secondary);
+}
+.guide-comparison-table th,
+.guide-comparison-table td {
+    padding: var(--space-md) var(--space-lg);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+.guide-comparison-table th {
+    background-color: var(--bg-tertiary);
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+.guide-comparison-table th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: var(--bg-tertiary);
+}
+.guide-comparison-table td:first-child {
+    background-color: var(--bg-secondary);
+    font-weight: 500;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+.guide-comparison-table tbody tr:hover { background-color: var(--bg-tertiary); }
+.guide-comparison-table tbody tr:last-child td { border-bottom: none; }
+.gc-yes { color: var(--status-success); font-weight: 600; }
+.gc-no { color: #8b949e; }
+.gc-partial { color: var(--status-warning); font-weight: 500; }
+
+/* ── SHARED SUBHEADINGS ── */
+.gc-subheading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xs);
+}
+.gc-subtext {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0 0 var(--space-xl);
+}
+
+/* ── ECOSYSTEM POSITIONING ── */
+.gc-ecosystem {
+    margin: var(--space-2xl) 0;
+}
+.gc-quadrant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    position: relative;
+}
+.gc-quadrant-label {
+    display: none; /* decorative labels — shown on larger screens */
+}
+.gc-quadrant {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gc-quadrant:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+.gc-quadrant--highlighted {
+    border-color: var(--accent);
+    background-color: var(--bg-secondary);
+}
+.gc-quadrant--highlighted::before {
+    content: "★ You are here";
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-mono);
+}
+.gc-quadrant-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    background-color: var(--bg-tertiary);
+    padding: 2px var(--space-xs);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--space-sm);
+}
+.gc-quadrant strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+}
+.gc-quadrant p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── 4 UNIQUE GAPS ── */
+.gc-gaps {
+    margin: var(--space-2xl) 0;
+}
+.gc-gaps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+.gc-gap-card {
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gc-gap-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+.gc-gap-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+.gc-gap-icon {
+    font-size: 1.4rem;
+}
+.gc-gap-header h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+.gc-gap-card > p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+.gc-gap-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+.gc-metric {
+    display: inline-block;
+    padding: 3px var(--space-sm);
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    font-family: var(--font-mono);
+}
+
+/* ── RECOMMENDED WORKFLOW ── */
+.gc-workflow {
+    margin: var(--space-2xl) 0 var(--space-xl);
+}
+.gc-workflow-steps {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-md);
+}
+.gc-workflow-step {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+    box-shadow: var(--shadow-sm);
+}
+.gc-step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    background-color: var(--accent-tertiary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.gc-step-content {
+    flex: 1;
+}
+.gc-step-content strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+.gc-step-content p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0 0 var(--space-sm);
+}
+.gc-step-tag {
+    display: inline-block;
+    padding: 3px var(--space-sm);
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    font-family: var(--font-mono);
+}
+.gc-workflow-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    padding-top: var(--space-lg);
+}
+
+/* ── NOTE ── */
+.guide-comparison-note {
+    text-align: left;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: var(--space-lg) 0 0;
+    padding: var(--space-md);
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--accent);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .guide-comparison-table th,
+    .guide-comparison-table td {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+    }
+    .gc-quadrant-grid {
+        grid-template-columns: 1fr;
+    }
+    .gc-gaps-grid {
+        grid-template-columns: 1fr;
+    }
+    .gc-workflow-steps {
+        flex-direction: column;
+    }
+    .gc-workflow-arrow {
+        transform: rotate(90deg);
+        padding-top: 0;
+        justify-content: center;
+    }
+}
+@media (max-width: 480px) {
+    .gc-gap-metrics {
+        flex-direction: column;
+    }
+}
+</style>

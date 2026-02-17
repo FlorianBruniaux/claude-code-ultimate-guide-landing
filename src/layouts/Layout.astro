@@ -3,6 +3,7 @@ import '../styles/global.css'
 import '../styles/components.css'
 import Header from '../components/global/Header.astro'
 import Footer from '../components/global/Footer.astro'
+import SearchModal from '../components/global/SearchModal.astro'
 
 interface Props {
   title: string
@@ -44,7 +45,6 @@ const gaId = 'G-WH1C8CM79E'
     <meta name="description" content={description} />
     <meta name="author" content="Florian BRUNIAUX" />
     <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
-    <meta name="keywords" content="Claude Code, Anthropic, AI coding assistant, Claude CLI, AI development, programming assistant, free guide, open source, CLAUDE.md, Model Context Protocol, MCP servers, AI pair programming" />
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
@@ -162,5 +162,6 @@ const gaId = 'G-WH1C8CM79E'
       <slot />
     </main>
     <Footer />
+    <SearchModal />
   </body>
 </html>

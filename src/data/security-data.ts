@@ -233,19 +233,19 @@ export const SECURITY_DATA = {
         { id: "CVE-2025-53109", component: "Filesystem MCP Server", severity: "high", description: "Symlink escape to arbitrary filesystem access / potential LPE", source: "Cymulate EscapeRoute", fixed_in: "0.6.3 / 2025.7.1", mitigation: "Update to >= 0.6.3; avoid Filesystem MCP in sensitive environments" },
         { id: "CVE-2025-53110", component: "Filesystem MCP Server", severity: "high", description: "Naive prefix-match directory bypass (startsWith on paths)", source: "Cymulate EscapeRoute", fixed_in: "0.6.3 / 2025.7.1", mitigation: "Update to >= 0.6.3" },
         { id: "CVE-2025-49596", component: "MCP Inspector", severity: "critical", cvss: 9.4, description: "RCE via unauthenticated proxy on 0.0.0.0; drive-by RCE from malicious web page", source: "Recorded Future / SocRadar", fixed_in: "0.14.1", mitigation: "Update to >= 0.14.1; restrict to localhost" },
-        { id: "CVE-2025-68143", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "git_init path traversal — arbitrary filesystem path for repo creation", source: "The Hacker News / PointGuard AI", fixed_in: "2025.9.25", mitigation: "Update; restrict Git MCP to trusted repos" },
-        { id: "CVE-2025-68144", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "Argument injection in git_diff/git_checkout — shell metacharacters via user-controlled args", source: "The Hacker News / PointGuard AI", fixed_in: "2025.12.18", mitigation: "Update; sanitize all user inputs to git CLI" },
-        { id: "CVE-2025-68145", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "--repository path validation bypass — access beyond allowlist", source: "The Hacker News / PointGuard AI", fixed_in: "2025.12.18", mitigation: "Update; enforce strict path validation" },
+        { id: "CVE-2025-68143", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "git_init path traversal: arbitrary filesystem path for repo creation", source: "The Hacker News / PointGuard AI", fixed_in: "2025.9.25", mitigation: "Update; restrict Git MCP to trusted repos" },
+        { id: "CVE-2025-68144", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "Argument injection in git_diff/git_checkout: shell metacharacters via user-controlled args", source: "The Hacker News / PointGuard AI", fixed_in: "2025.12.18", mitigation: "Update; sanitize all user inputs to git CLI" },
+        { id: "CVE-2025-68145", component: "MCP Git Server (mcp-server-git)", severity: "high", description: "--repository path validation bypass: access beyond allowlist", source: "The Hacker News / PointGuard AI", fixed_in: "2025.12.18", mitigation: "Update; enforce strict path validation" },
         { id: "CVE-2025-66416", component: "MCP Python SDK (mcp on PyPI)", severity: "medium", description: "DNS rebinding to local HTTP MCP servers when using FastMCP HTTP/SSE with no auth", source: "Debian Security Tracker", fixed_in: "1.23.0", mitigation: "Update to >= 1.23.0; enable TransportSecuritySettings explicitly" },
-        { id: "CVE-2025-64443", component: "MCP Gateway", severity: "medium", description: "DNS rebinding against SSE/streaming listeners — indirect access to MCP servers behind gateway", source: "Blog Gowrishankar", fixed_in: "0.28.0", mitigation: "Update to > 0.27.0" },
+        { id: "CVE-2025-64443", component: "MCP Gateway", severity: "medium", description: "DNS rebinding against SSE/streaming listeners: indirect access to MCP servers behind gateway", source: "Blog Gowrishankar", fixed_in: "0.28.0", mitigation: "Update to > 0.27.0" },
         { id: "CVE-2026-25536", component: "MCP TypeScript SDK", severity: "high", description: "Cross-client response data leak when reusing single server+transport across multiple SSE clients", source: "Feedly CVE", fixed_in: "1.26.0", mitigation: "Update to >= 1.26.0; isolate transport instances per client" },
-        { id: "CVE-2025-54135", component: "Cursor IDE", severity: "high", cvss: 8.6, description: "CurXecute — RCE via prompt injection writing .cursor/mcp.json", source: "Checkpoint / PropelCode", fixed_in: "1.3.9", mitigation: "Update to Cursor >= 1.3.9; file integrity monitoring on mcp.json" },
-        { id: "CVE-2025-54136", component: "Cursor IDE", severity: "high", description: "MCPoison — persistent RCE via trusted config mutation; post-approval changes auto-execute", source: "Checkpoint", fixed_in: "1.3.9", mitigation: "Update to >= 1.3.9; Git hooks + hash verification on mcp.json" },
+        { id: "CVE-2025-54135", component: "Cursor IDE", severity: "high", cvss: 8.6, description: "CurXecute: RCE via prompt injection writing .cursor/mcp.json", source: "Checkpoint / PropelCode", fixed_in: "1.3.9", mitigation: "Update to Cursor >= 1.3.9; file integrity monitoring on mcp.json" },
+        { id: "CVE-2025-54136", component: "Cursor IDE", severity: "high", description: "MCPoison: persistent RCE via trusted config mutation; post-approval changes auto-execute", source: "Checkpoint", fixed_in: "1.3.9", mitigation: "Update to >= 1.3.9; Git hooks + hash verification on mcp.json" },
         { id: "CVE-2025-66032", component: "Claude Code", severity: "high", description: "8 command execution bypasses via blocklist flaws (man --html, sed e modifier, git arg ambiguity, bash variable expansion)", source: "Flatt Security", fixed_in: "1.0.93", mitigation: "Update to Claude Code >= 1.0.93" },
         { id: "CVE-2026-24052", component: "Claude Code WebFetch", severity: "high", description: "SSRF via startsWith() domain validation bypass in WebFetch (trusted-domain prefix attack)", source: "SentinelOne", fixed_in: "1.0.111", mitigation: "Update to Claude Code >= 1.0.111" },
-        { id: "ADVISORY-CC-2026-001", component: "Claude Code", severity: "high", description: "Sandbox bypass — commands excluded from sandboxing could bypass Bash permission enforcement (details undisclosed)", source: "Claude Code CHANGELOG v2.1.34", fixed_in: "2.1.34", mitigation: "Update to Claude Code >= 2.1.34" },
+        { id: "ADVISORY-CC-2026-001", component: "Claude Code", severity: "high", description: "Sandbox bypass: commands excluded from sandboxing could bypass Bash permission enforcement (details undisclosed)", source: "Claude Code CHANGELOG v2.1.34", fixed_in: "2.1.34", mitigation: "Update to Claude Code >= 2.1.34" },
         { id: "CVE-2025-53967", component: "Framelink Figma MCP Server (figma-developer-mcp)", severity: "high", cvss: 7.5, description: "Command injection via unsanitized input in fetchWithRetry curl command", source: "Geordie AI / EndorLabs", fixed_in: "0.6.3", mitigation: "Update to >= 0.6.3" },
-        { id: "CVE-2025-9611", component: "Microsoft Playwright MCP Server (@playwright/mcp)", severity: "medium", description: "DNS rebinding / Origin-less CSRF — missing Origin validation on local instance", source: "Mondoo / NVD", fixed_in: "0.0.40", mitigation: "Update to >= 0.0.40" },
+        { id: "CVE-2025-9611", component: "Microsoft Playwright MCP Server (@playwright/mcp)", severity: "medium", description: "DNS rebinding / Origin-less CSRF: missing Origin validation on local instance", source: "Mondoo / NVD", fixed_in: "0.0.40", mitigation: "Update to >= 0.0.40" },
         { id: "CVE-2025-6515", component: "MCP SSE Transport (oatpp-mcp)", severity: "high", description: "Prompt hijacking via predictable/reused session IDs; attacker replaces tool outputs", source: "JFrog", mitigation: "Use cryptographically secure session IDs (128+ bits entropy)" },
         { id: "CVE-2026-25546", component: "Godot MCP Server (godot-mcp)", severity: "high", description: "Command injection via user-controlled projectPath passed to exec()", source: "Feedly CVE", fixed_in: "0.1.1", mitigation: "Update to >= 0.1.1; sanitize projectPath; avoid exec() with user input" },
         { id: "CVE-2025-54073", component: "mcp-package-docs", severity: "high", description: "Command injection in child_process.exec via unsanitized input", source: "NVD", fixed_in: "0.1.28", mitigation: "Update to >= 0.1.28" }
@@ -426,7 +426,7 @@ export const SECURITY_DATA = {
                 "Generate agent prompts (skills-ref to-prompt)"
             ],
             limitations: [
-                "Spec compliance only — does NOT detect malware or analyze code",
+                "Spec compliance only: does NOT detect malware or analyze code",
                 "Reduces slopsquatting via naming rules but no security scanning"
             ]
         },
@@ -454,12 +454,12 @@ export const SECURITY_DATA = {
             capabilities: [
                 "Scans npm/PyPI dependencies of MCP servers",
                 "Queries CVE databases for risk scores",
-                "Runtime protection — quarantines suspicious servers",
+                "Runtime protection: quarantines suspicious servers",
                 "Streaming telemetry dashboard",
                 "Can run as MCP server exposing security tools to Claude/Cursor"
             ],
             limitations: [
-                "Newer project — smaller detection database than mcp-scan"
+                "Newer project, smaller detection database than mcp-scan"
             ]
         },
         {
@@ -473,7 +473,7 @@ export const SECURITY_DATA = {
                 "Screens package suggestions before pip/npm install"
             ],
             limitations: [
-                "Package-focused — does not scan SKILL.md or agent configs"
+                "Package-focused: does not scan SKILL.md or agent configs"
             ]
         },
         {

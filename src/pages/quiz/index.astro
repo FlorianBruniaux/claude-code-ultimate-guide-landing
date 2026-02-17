@@ -25,13 +25,17 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <div class="container">
+      <h1>Claude Code Knowledge Quiz</h1>
+      <p class="tagline">274 questions across 15 categories. Test your knowledge and share your score.</p>
+    </div>
+  </header>
+
+  <div class="container">
   <div class="quiz-container">
     <!-- Setup Screen -->
     <div id="quiz-setup" class="quiz-setup">
-      <img src="/claude-code-logo.webp" alt="Claude Code AI coding assistant quiz logo" style="width: 80px; margin-bottom: var(--space-lg);">
-      <h1>Claude Code Knowledge Quiz</h1>
-      <p>274 questions across 15 categories. Test your knowledge and share your score.</p>
-
       <div class="category-header">
         <h3>Select Categories</h3>
         <div class="category-actions">
@@ -98,7 +102,7 @@ const jsonLd = [
     <div id="quiz-results" class="quiz-results">
       <div class="results-card" id="results-card">
         <div class="screenshot-badge">
-          <img src="/claude-code-logo.webp" alt="Claude Code AI assistant certification badge">
+          <img src="/claude-logo-orange.svg" alt="Claude Code AI assistant certification badge">
           <div class="screenshot-badge-text">
             <div class="screenshot-badge-title">Claude Code Quiz</div>
             <div class="screenshot-badge-url">cc.bruniaux.com</div>
@@ -159,28 +163,19 @@ const jsonLd = [
       </div>
     </div>
   </div>
+  </div>
 
-  <style>
+  <style is:global>
     /* Quiz-specific styles */
     .quiz-container {
       max-width: 800px;
-      margin: 0 auto;
       padding: var(--space-lg);
       min-height: calc(100vh - 200px);
     }
 
     .quiz-setup {
-      text-align: center;
+      text-align: left;
       padding: var(--space-2xl) 0;
-    }
-
-    .quiz-setup h1 {
-      margin-bottom: var(--space-md);
-    }
-
-    .quiz-setup p {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-2xl);
     }
 
     .category-grid {
@@ -206,12 +201,11 @@ const jsonLd = [
     .category-item:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .category-item.selected {
       border-color: var(--accent);
-      background: rgba(88, 166, 255, 0.1);
+      background: var(--bg-tertiary);
     }
 
     .category-item input {
@@ -234,7 +228,7 @@ const jsonLd = [
     .difficulty-select {
       display: flex;
       gap: var(--space-md);
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: var(--space-2xl);
       flex-wrap: wrap;
     }
@@ -252,12 +246,11 @@ const jsonLd = [
     .difficulty-btn:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .difficulty-btn.selected {
       border-color: var(--accent);
-      background: rgba(88, 166, 255, 0.1);
+      background: var(--bg-tertiary);
     }
 
     .start-btn {
@@ -316,7 +309,7 @@ const jsonLd = [
     .category-action-btn:hover {
       border-color: var(--accent);
       color: var(--accent);
-      background: rgba(88, 166, 255, 0.1);
+      background: var(--bg-tertiary);
     }
 
     .quiz-question {
@@ -337,7 +330,7 @@ const jsonLd = [
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent) 0%, #a855f7 100%);
+      background: var(--accent);
       transition: width 0.3s ease;
     }
 
@@ -369,9 +362,9 @@ const jsonLd = [
       border-radius: 4px;
     }
 
-    .difficulty-junior { background: #22c55e20; color: #22c55e; }
-    .difficulty-senior { background: #f59e0b20; color: #f59e0b; }
-    .difficulty-power { background: #ef444420; color: #ef4444; }
+    .difficulty-junior { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .difficulty-senior { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
+    .difficulty-power { background: var(--bg-tertiary); color: var(--status-danger); border: 1px solid var(--border); }
 
     .question-text {
       font-size: 1.25rem;
@@ -383,16 +376,16 @@ const jsonLd = [
       font-family: var(--font-mono);
       font-size: 0.9em;
       padding: 2px 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
       border-radius: 4px;
-      color: #e6db74;
+      color: var(--accent);
     }
 
     .question-text pre {
       margin: var(--space-sm) 0;
       padding: var(--space-sm);
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--bg-tertiary);
       border-radius: var(--border-radius);
       overflow-x: auto;
     }
@@ -428,23 +421,22 @@ const jsonLd = [
 
     .option-btn:hover:not(.disabled) {
       border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+      transform: translateY(-1px);
     }
 
     .option-btn.selected {
       border-color: var(--accent);
-      background: rgba(88, 166, 255, 0.1);
+      background: var(--bg-tertiary);
     }
 
     .option-btn.correct {
-      border-color: #22c55e;
-      background: rgba(34, 197, 94, 0.1);
+      border-color: var(--status-success);
+      background: var(--bg-tertiary);
     }
 
     .option-btn.incorrect {
-      border-color: #ef4444;
-      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--status-danger);
+      background: var(--bg-tertiary);
     }
 
     .option-btn.disabled {
@@ -455,16 +447,16 @@ const jsonLd = [
       font-family: var(--font-mono);
       font-size: 0.9em;
       padding: 2px 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
       border-radius: 4px;
-      color: #e6db74;
+      color: var(--accent);
     }
 
     .option-btn pre {
       margin: var(--space-xs) 0;
       padding: var(--space-xs);
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--bg-tertiary);
       border-radius: var(--border-radius);
       overflow-x: auto;
     }
@@ -517,16 +509,16 @@ const jsonLd = [
       font-family: var(--font-mono);
       font-size: 0.9em;
       padding: 2px 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
       border-radius: 4px;
-      color: #e6db74;
+      color: var(--accent);
     }
 
     .explanation-box pre {
       margin: var(--space-sm) 0;
       padding: var(--space-sm);
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--bg-tertiary);
       border-radius: var(--border-radius);
       overflow-x: auto;
     }
@@ -611,7 +603,7 @@ const jsonLd = [
 
     .quiz-results {
       display: none;
-      text-align: center;
+      text-align: left;
       padding: var(--space-2xl) 0;
     }
 
@@ -630,7 +622,6 @@ const jsonLd = [
 
     .results-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
     }
 
     .results-card h2 {
@@ -641,10 +632,7 @@ const jsonLd = [
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: var(--space-md);
-      background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
     }
 
     .score-label {
@@ -654,7 +642,6 @@ const jsonLd = [
     }
 
     .score-delta {
-      text-align: center;
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: var(--space-lg);
@@ -662,10 +649,10 @@ const jsonLd = [
       border-radius: var(--border-radius);
     }
 
-    .score-delta.positive { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
-    .score-delta.negative { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+    .score-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
+    .score-delta.negative { color: var(--status-danger); background: var(--bg-tertiary); }
     .score-delta.neutral { color: var(--text-muted); background: var(--bg-tertiary); }
-    .score-delta.first { color: var(--accent); background: rgba(88, 166, 255, 0.1); }
+    .score-delta.first { color: var(--accent); background: var(--bg-tertiary); }
 
     .category-delta {
       display: inline-block;
@@ -676,8 +663,8 @@ const jsonLd = [
       border-radius: 3px;
     }
 
-    .category-delta.positive { color: #22c55e; background: rgba(34, 197, 94, 0.15); }
-    .category-delta.negative { color: #ef4444; background: rgba(239, 68, 68, 0.15); }
+    .category-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
+    .category-delta.negative { color: var(--status-danger); background: var(--bg-tertiary); }
 
     .score-badge {
       display: inline-block;
@@ -687,11 +674,11 @@ const jsonLd = [
       margin-bottom: var(--space-xl);
     }
 
-    .badge-novice { background: #64748b20; color: #64748b; }
-    .badge-apprentice { background: #22c55e20; color: #22c55e; }
-    .badge-practitioner { background: #3b82f620; color: #3b82f6; }
-    .badge-expert { background: #a855f720; color: #a855f7; }
-    .badge-master { background: #f59e0b20; color: #f59e0b; }
+    .badge-novice { background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border); }
+    .badge-apprentice { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .badge-practitioner { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .badge-expert { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .badge-master { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
 
     .category-scores { text-align: left; margin-bottom: var(--space-xl); }
 
@@ -721,7 +708,7 @@ const jsonLd = [
 
     .results-meta {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: var(--space-xl);
       flex-wrap: wrap;
       margin-bottom: var(--space-xl);
@@ -764,7 +751,7 @@ const jsonLd = [
     .missed-question-item .question-preview { color: var(--text-secondary); margin-top: var(--space-xs); }
     .missed-question-item .success-rate { font-family: var(--font-mono); font-weight: 600; color: var(--warning); font-size: 1.1rem; margin-left: var(--space-md); }
 
-    .results-actions { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .results-actions { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
 
     .share-text {
       font-family: var(--font-mono);
@@ -782,7 +769,7 @@ const jsonLd = [
       align-items: center;
       gap: var(--space-sm);
       padding: var(--space-md) var(--space-lg);
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      background: var(--bg-secondary);
       border: 2px solid var(--accent);
       border-radius: var(--border-radius-lg);
       margin-bottom: var(--space-lg);
@@ -802,7 +789,7 @@ const jsonLd = [
       transition: all var(--transition-normal);
     }
 
-    .history-section:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15); }
+    .history-section:hover { border-color: var(--accent); }
     .history-section h4 { margin-bottom: var(--space-md); text-align: left; }
     .history-list { display: flex; flex-direction: column; gap: var(--space-sm); }
 
@@ -819,7 +806,7 @@ const jsonLd = [
     }
 
     .history-item:hover { background: var(--bg-secondary); }
-    .history-item.best { border-left-color: var(--accent); background: rgba(88, 166, 255, 0.05); }
+    .history-item.best { border-left-color: var(--accent); background: var(--bg-tertiary); }
     .history-date { color: var(--text-muted); font-size: 0.85rem; }
     .history-score { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
     .history-badge { font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; }
@@ -836,7 +823,7 @@ const jsonLd = [
     }
 
     .clear-history:hover { color: var(--accent); }
-    .empty-history { text-align: center; color: var(--text-muted); padding: var(--space-lg); font-style: italic; }
+    .empty-history { color: var(--text-muted); padding: var(--space-lg); font-style: italic; }
 
     @media (max-width: 480px) {
       .quiz-container { padding: var(--space-md); }
@@ -1038,6 +1025,7 @@ const jsonLd = [
       answers = {};
       startTime = Date.now();
       setupScreen.style.display = 'none';
+      document.querySelector('.page-hero').style.display = 'none';
       questionScreen.classList.add('active');
       renderQuestion();
     });
@@ -1223,12 +1211,12 @@ const jsonLd = [
       const text = document.getElementById('share-text').textContent;
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copy-result-btn');
-        btn.textContent = 'Copied!'; btn.style.backgroundColor = 'var(--accent-secondary)'; btn.style.borderColor = 'var(--accent-secondary)'; btn.style.color = '#fff';
+        btn.textContent = 'Copied!'; btn.style.backgroundColor = 'var(--accent-tertiary)'; btn.style.borderColor = 'var(--accent-tertiary)'; btn.style.color = '#fff';
         setTimeout(() => { btn.textContent = 'Copy Result'; btn.style.backgroundColor = ''; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
       });
     });
 
-    document.getElementById('retry-btn').addEventListener('click', () => { resultsScreen.classList.remove('active'); setupScreen.style.display = 'block'; currentQuestionIndex = 0; answers = {}; });
+    document.getElementById('retry-btn').addEventListener('click', () => { resultsScreen.classList.remove('active'); setupScreen.style.display = 'block'; document.querySelector('.page-hero').style.display = ''; currentQuestionIndex = 0; answers = {}; });
 
     document.getElementById('clear-history').addEventListener('click', () => {
       if (confirm('Are you sure you want to clear your quiz history? This cannot be undone.')) { localStorage.removeItem('ccquiz_history'); renderHistory(); }

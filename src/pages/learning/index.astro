@@ -14,6 +14,7 @@ const jsonLd = [
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-01-17",
+    "dateModified": "2026-02-17",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
@@ -24,18 +25,19 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
-  <!-- Hero -->
-  <header class="learning-hero">
-    <h1>Learning to Code with AI</h1>
-    <p class="tagline">The guide for junior developers who want to use AI to accelerate their learning--without becoming dependent on it.</p>
+  <header class="page-hero">
+    <div class="container">
+      <h1>Learning to Code with AI</h1>
+      <p class="tagline">The guide for junior developers who want to use AI to accelerate their learning--without becoming dependent on it.</p>
 
-    <div class="warning-box">
-      <p><strong>The hard truth:</strong> AI can make you 3x more productive <em>or</em> unemployable in 3 years. The difference? How you use it.</p>
-    </div>
+      <div class="warning-box">
+        <p><strong>The hard truth:</strong> AI can make you 3x more productive <em>or</em> unemployable in 3 years. Which path you take depends entirely on how you use it.</p>
+      </div>
 
-    <div class="cta-buttons">
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" class="btn btn-primary">Read Full Guide &rarr;</a>
-      <a href="#self-check" class="btn btn-secondary">Take Self-Check</a>
+      <div class="cta-buttons">
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" class="btn btn-primary">Read Full Guide &rarr;</a>
+        <a href="#self-check" class="btn btn-secondary">Take Self-Check</a>
+      </div>
     </div>
   </header>
 
@@ -60,7 +62,7 @@ const jsonLd = [
         </div>
       </div>
       <div class="check-item">
-        <span class="question">Do you know WHY the solution works, not just THAT it works?</span>
+        <span class="question">Do you understand WHY the solution works, or just that it compiles?</span>
         <div class="toggle-group" data-question="3">
           <button class="toggle-btn yes">YES</button>
           <button class="toggle-btn no">NO</button>
@@ -138,7 +140,7 @@ const jsonLd = [
         <div class="letter">V</div>
         <div class="content">
           <h4>Verify (Explain It Back)</h4>
-          <p>If you can't explain the code to a colleague, you don't understand it. Period.</p>
+          <p>If you can't explain the code to a colleague, you don't really understand it.</p>
           <div class="implementation">
             # Use /learn:quiz command after code generation<br>
             Claude asks YOU to explain what the code does
@@ -150,7 +152,7 @@ const jsonLd = [
         <div class="letter">A</div>
         <div class="content">
           <h4>Apply (Transform, Don't Copy)</h4>
-          <p>Never copy-paste raw. Modify at least ONE element: variable name, structure, edge case. Modification forces understanding.</p>
+          <p>Never copy-paste raw. Modify at least one element (variable name, structure, or edge case) to force genuine understanding.</p>
           <div class="implementation">
             Forbidden: Copy-paste verbatim<br>
             Required: Adapt to your context
@@ -162,7 +164,7 @@ const jsonLd = [
         <div class="letter">L</div>
         <div class="content">
           <h4>Learn (Capture the Insight)</h4>
-          <p>End each session by noting ONE thing you learned. Not a journal--just one insight.</p>
+          <p>End each session by capturing one thing you learned. A single insight, not a full journal.</p>
           <div class="implementation">
             # Session-end hook automatically asks:<br>
             "What's ONE thing you learned today?"<br>
@@ -176,7 +178,7 @@ const jsonLd = [
   <!-- Learning Mode -->
   <section class="content-section">
     <h2>Configure Learning Mode</h2>
-    <p>Claude Code can be configured to support learning, not just producing code.</p>
+    <p>Claude Code can be configured to support your learning, alongside producing code.</p>
 
     <div class="learning-mode-grid">
       <div class="learning-mode-card">
@@ -245,13 +247,13 @@ If I skip these, remind me to think first.
   <!-- Templates -->
   <section class="content-section">
     <h2>Ready-to-Use Templates</h2>
-    <p>Configure Claude Code for learning, not just producing.</p>
+    <p>Configure Claude Code to support both learning and producing.</p>
 
     <div class="templates-list">
       <div class="template-item">
         <div class="info">
           <h4>Learning Mode CLAUDE.md</h4>
-          <p>Configuration that makes Claude explain WHY, not just WHAT. Includes challenge mode and interview prep.</p>
+          <p>Configuration that makes Claude explain the reasoning before generating the code. Includes challenge mode and interview prep.</p>
         </div>
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
       </div>
@@ -274,6 +276,102 @@ If I skip these, remind me to think first.
     </div>
   </section>
 
+  <!-- Choose Your Path -->
+  <section class="content-section" id="choose-path">
+    <h2>Choose Your Path</h2>
+    <p>Learning tracks adapted to your experience level and role.</p>
+
+    <div class="paths-grid">
+      <div class="path-card">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#127793;</span>
+          <h3>Junior Developer</h3>
+        </div>
+        <p class="path-description">Foundation path for newcomers</p>
+        <ol class="path-steps">
+          <li>Read the <a href="/cheatsheet/" target="_blank" rel="noopener">Cheat Sheet</a></li>
+          <li>Create your first <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#claudemd-project-instructions" target="_blank" rel="noopener">CLAUDE.md</a></li>
+          <li>Practice with simple tasks</li>
+          <li>Learn <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#diff-review-workflow" target="_blank" rel="noopener">diff review workflow</a></li>
+          <li>Explore <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#slash-commands" target="_blank" rel="noopener">slash commands</a></li>
+          <li>Take the <a href="/quiz/">beginner quiz</a></li>
+        </ol>
+      </div>
+      <div class="path-card">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#128187;</span>
+          <h3>Senior Developer</h3>
+        </div>
+        <p class="path-description">Intermediate efficiency boost</p>
+        <ol class="path-steps">
+          <li>Skim <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#quick-start" target="_blank" rel="noopener">Quick Start</a></li>
+          <li>Set up <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/hooks" target="_blank" rel="noopener">custom hooks</a></li>
+          <li>Configure <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-servers" target="_blank" rel="noopener">MCP servers</a></li>
+          <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/agents" target="_blank" rel="noopener">project-specific agents</a></li>
+          <li>Master <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#plan-mode" target="_blank" rel="noopener">Plan Mode</a></li>
+          <li>Build <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/" target="_blank" rel="noopener">automation workflows</a></li>
+        </ol>
+      </div>
+      <div class="path-card featured">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#9889;</span>
+          <h3>Power User</h3>
+        </div>
+        <p class="path-description">Full mastery path</p>
+        <ol class="path-steps">
+          <li>Read the full <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" target="_blank" rel="noopener">Ultimate Guide</a></li>
+          <li>Build <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills" target="_blank" rel="noopener">custom skills</a></li>
+          <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-agent-orchestration" target="_blank" rel="noopener">multi-agent systems</a></li>
+          <li>Implement <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md" target="_blank" rel="noopener">security hooks</a></li>
+          <li>Design <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/" target="_blank" rel="noopener">team workflows</a></li>
+          <li>Contribute <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">templates back</a></li>
+          <li>Pass all <a href="/quiz/">quiz levels</a></li>
+        </ol>
+      </div>
+      <div class="path-card">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#128188;</span>
+          <h3>Product Manager</h3>
+        </div>
+        <p class="path-description">Overview for non-technical roles</p>
+        <ol class="path-steps">
+          <li>Read <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md" target="_blank" rel="noopener">Architecture overview</a></li>
+          <li>Understand <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#capabilities" target="_blank" rel="noopener">capabilities</a></li>
+          <li>Review <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">privacy guide</a></li>
+          <li>Learn <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#team-settings" target="_blank" rel="noopener">team integration</a></li>
+          <li>Explore use cases</li>
+        </ol>
+      </div>
+      <div class="path-card">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#128736;</span>
+          <h3>DevOps / SRE</h3>
+        </div>
+        <p class="path-description">Infrastructure and reliability focus</p>
+        <ol class="path-steps">
+          <li>Setup <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/devops-sre.md#quick-self-check" target="_blank" rel="noopener">Claude for infrastructure</a></li>
+          <li>Master the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/devops-sre.md#the-fire-framework" target="_blank" rel="noopener">FIRE debugging framework</a></li>
+          <li>Practice <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/devops-sre.md#kubernetes-troubleshooting" target="_blank" rel="noopener">K8s troubleshooting</a></li>
+          <li>Automate <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/devops-sre.md#solo-incident-workflow" target="_blank" rel="noopener">incident response</a></li>
+        </ol>
+      </div>
+      <div class="path-card">
+        <div class="path-header">
+          <span class="path-icon" aria-hidden="true">&#127912;</span>
+          <h3>Product Designer</h3>
+        </div>
+        <p class="path-description">Design-to-code workflow with Figma MCP</p>
+        <ol class="path-steps">
+          <li>Learn <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#24-working-with-images" target="_blank" rel="noopener">image analysis basics</a></li>
+          <li>Explore <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#wireframing-tools" target="_blank" rel="noopener">wireframing tools</a></li>
+          <li>Setup <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#figma-mcp" target="_blank" rel="noopener">Figma MCP</a></li>
+          <li>Master <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/design-to-code.md" target="_blank" rel="noopener">design-to-code workflow</a> &#11088;</li>
+          <li>Print <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cheatsheet.md" target="_blank" rel="noopener">cheat sheet</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="content-section">
     <div class="cta-section">
@@ -287,29 +385,22 @@ If I skip these, remind me to think first.
   </section>
 
   <style>
-    .learning-hero {
-      text-align: center;
-      padding: var(--space-3xl) var(--space-lg);
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .learning-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-md); }
-    .learning-hero .tagline { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto var(--space-xl); }
+    /* Page-specific hero extensions (warning box) */
 
     .warning-box {
-      background: rgba(255, 193, 7, 0.1);
-      border: 1px solid rgba(255, 193, 7, 0.3);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--status-warning);
       border-radius: var(--border-radius);
       padding: var(--space-lg);
       max-width: 700px;
-      margin: 0 auto var(--space-xl);
+      margin: 0 0 var(--space-xl);
     }
 
     .warning-box p { margin: 0; color: var(--text-primary); }
 
     .content-section {
-      max-width: 900px;
+      max-width: var(--max-width);
       margin: 0 auto;
       padding: var(--space-2xl) var(--space-lg);
     }
@@ -366,7 +457,7 @@ If I skip these, remind me to think first.
 
     .toggle-btn:first-child { border-right: 1px solid var(--border); }
     .toggle-btn:hover:not(.active) { background: var(--bg-tertiary); }
-    .toggle-btn.active.yes { background: #22c55e; color: white; }
+    .toggle-btn.active.yes { background: #3b82f6; color: white; }
     .toggle-btn.active.no { background: #ef4444; color: white; }
 
     .score-result {
@@ -374,7 +465,7 @@ If I skip these, remind me to think first.
       padding: var(--space-lg);
       background: var(--bg-primary);
       border-radius: var(--border-radius);
-      text-align: center;
+      text-align: left;
     }
 
     .score-result.show { display: block; }
@@ -396,10 +487,10 @@ If I skip these, remind me to think first.
       transition: all var(--transition-fast);
     }
 
-    .pattern-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+    .pattern-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent); }
     .pattern-card.dependent { border-top: 4px solid #ef4444; }
     .pattern-card.avoidant { border-top: 4px solid #f59e0b; }
-    .pattern-card.augmented { border-top: 4px solid #22c55e; }
+    .pattern-card.augmented { border-top: 4px solid #3b82f6; }
     .pattern-card h3 { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
     .pattern-card .signs { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md); }
     .pattern-card .action { display: block; font-weight: 600; color: var(--accent); text-decoration: none; transition: all var(--transition-fast); }
@@ -470,7 +561,7 @@ If I skip these, remind me to think first.
     .ratio-bar { display: flex; border-radius: var(--border-radius); overflow: hidden; font-size: 0.75rem; font-weight: 600; }
     .ratio-segment { padding: var(--space-sm) var(--space-md); text-align: center; }
     .ratio-segment.produce { background: var(--accent); color: var(--bg-primary); }
-    .ratio-segment.learn { background: #22c55e; color: white; }
+    .ratio-segment.learn { background: #3b82f6; color: white; }
     .ratio-details { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
     .ratio-details li { margin-bottom: var(--space-xs); color: var(--text-secondary); }
 
@@ -478,9 +569,9 @@ If I skip these, remind me to think first.
     .plan-table th, .plan-table td { padding: var(--space-md); text-align: left; border-bottom: 1px solid var(--border); }
     .plan-table th { background: var(--bg-secondary); font-weight: 600; }
     .plan-table .ai-ratio { display: inline-block; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius); font-size: 0.85rem; font-weight: 600; }
-    .plan-table .ai-ratio.low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-    .plan-table .ai-ratio.medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-    .plan-table .ai-ratio.high { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+    .plan-table .ai-ratio.low { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .plan-table .ai-ratio.medium { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
+    .plan-table .ai-ratio.high { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
 
     .templates-list { display: grid; gap: var(--space-md); margin-bottom: var(--space-2xl); }
 
@@ -501,9 +592,9 @@ If I skip these, remind me to think first.
     .template-item .btn { flex-shrink: 0; }
 
     .cta-section {
-      text-align: center;
-      background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(88, 166, 255, 0.05) 100%);
-      border: 1px solid rgba(88, 166, 255, 0.2);
+      text-align: left;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-3xl);
       margin: var(--space-2xl) 0;
@@ -511,11 +602,48 @@ If I skip these, remind me to think first.
 
     .cta-section h2 { border: none; padding: 0; }
     .cta-section p { color: var(--text-secondary); margin-bottom: var(--space-xl); }
-    .cta-buttons { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; }
+    .cta-buttons { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+    .path-card {
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+    }
+    .path-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .path-card.featured {
+      border-color: var(--accent);
+    }
+    .path-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    .path-icon { font-size: 1.5rem; }
+    .path-header h3 { font-size: 1.2rem; }
+    .path-description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: var(--space-lg); }
+    .path-steps { padding-left: var(--space-lg); color: var(--text-secondary); }
+    .path-steps li { margin-bottom: var(--space-sm); font-size: 0.95rem; }
+    .path-steps li::marker { color: var(--text-muted); }
 
     @media (max-width: 768px) {
-      .uval-step { flex-direction: column; align-items: center; text-align: center; }
-      .template-item { flex-direction: column; gap: var(--space-md); text-align: center; }
+      .uval-step { flex-direction: column; align-items: flex-start; text-align: left; }
+      .template-item { flex-direction: column; gap: var(--space-md); text-align: left; }
+      .paths-grid { grid-template-columns: 1fr; }
+      .path-card.featured { order: -1; }
     }
   </style>
 

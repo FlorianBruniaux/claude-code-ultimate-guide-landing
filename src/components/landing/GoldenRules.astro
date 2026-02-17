@@ -1,50 +1,64 @@
-<!-- 6 Golden Rules Section -->
-<section class="section golden-rules section--alt" id="golden-rules">
+<!-- 5 Golden Rules Section -->
+<section class="section golden-rules" id="golden-rules">
     <div class="container">
-        <h2 class="section-title">6 Golden Rules</h2>
-        <p class="section-subtitle">Memorize these for immediate improvement</p>
+        <h2 class="section-title">5 Golden Rules</h2>
+        <p class="section-subtitle">Data-driven principles for working safely and effectively with AI code generation</p>
 
         <div class="rules-list">
             <div class="rule">
                 <span class="rule-number">1</span>
                 <div class="rule-content">
-                    <h3>Review diffs before accepting</h3>
-                    <p>Always check what Claude changes. Trust, but verify.</p>
+                    <h3>Verify Trust Before Use</h3>
+                    <p>AI-generated code contains <strong>1.75x more logic errors</strong> than human code (ACM 2025). Test everything, peer review AI output like you would a junior dev's PR.</p>
+                    <div class="rule-metric">
+                        <span class="metric-tag">1.75x more logic errors</span>
+                        <span class="metric-tag">ACM 2025</span>
+                    </div>
                 </div>
             </div>
             <div class="rule">
                 <span class="rule-number">2</span>
                 <div class="rule-content">
-                    <h3>/compact at 70% context</h3>
-                    <p>Check with <code>/status</code>. Summarize before you hit the limit.</p>
+                    <h3>Never Approve MCPs from Unknown Sources</h3>
+                    <p><strong>18 CVEs</strong> disclosed, <strong>341 malicious skills</strong> detected, <strong>400+ malicious MCP servers</strong> in the wild. Use the 5-minute audit checklist before installing any MCP server.</p>
+                    <div class="rule-metric">
+                        <span class="metric-tag">18 CVEs</span>
+                        <span class="metric-tag">341 malicious skills</span>
+                        <span class="metric-tag">400+ malicious MCPs</span>
+                    </div>
                 </div>
             </div>
             <div class="rule">
                 <span class="rule-number">3</span>
                 <div class="rule-content">
-                    <h3>Be specific: WHAT + WHERE + HOW + VERIFY</h3>
-                    <p>Clear prompts get better results. Include success criteria.</p>
+                    <h3>Context Pressure Changes Behavior</h3>
+                    <p>At <strong>70% context usage</strong>, Claude starts losing precision. Run <code>/compact</code> at 70%, <code>/clear</code> at 90%. Monitor with <code>/status</code>.</p>
+                    <div class="rule-metric">
+                        <span class="metric-tag">70% = precision loss</span>
+                        <span class="metric-tag">/compact at 70%</span>
+                    </div>
                 </div>
             </div>
             <div class="rule">
                 <span class="rule-number">4</span>
                 <div class="rule-content">
-                    <h3>Plan Mode first for complex tasks</h3>
-                    <p>Use <kbd>Shift+Tab</kbd> twice for risky or multi-step work.</p>
+                    <h3>Start Simple, Scale Smart</h3>
+                    <p>2-week test period before scaling. 4-phase adoption: solo tasks, multi-file work, agents, then CI/CD integration. Work through each phase, don't skip ahead.</p>
+                    <div class="rule-metric">
+                        <span class="metric-tag">2-week test period</span>
+                        <span class="metric-tag">4-phase adoption</span>
+                    </div>
                 </div>
             </div>
             <div class="rule">
                 <span class="rule-number">5</span>
                 <div class="rule-content">
-                    <h3>Create CLAUDE.md for every project</h3>
-                    <p>Project context makes Claude significantly more effective.</p>
-                </div>
-            </div>
-            <div class="rule">
-                <span class="rule-number">6</span>
-                <div class="rule-content">
-                    <h3>Commit frequently after each task</h3>
-                    <p>Small atomic commits let you safely revert if something goes wrong.</p>
+                    <h3>Methodologies Matter More with AI</h3>
+                    <p>AI amplifies good code <strong>AND</strong> bad code. TDD for critical logic, SDD for architecture-first, BDD for PM/dev collaboration. Choose by context, not by habit.</p>
+                    <div class="rule-metric">
+                        <span class="metric-tag">TDD / SDD / BDD</span>
+                        <span class="metric-tag">Choose by context</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,7 +66,7 @@
 </section>
 
 <style>
-.rules-list { max-width: 800px; margin: 0 auto; }
+.rules-list { }
 .rule {
     display: flex;
     gap: var(--space-lg);
@@ -74,16 +88,33 @@
     justify-content: center;
     min-width: 48px;
     height: 48px;
-    background-color: var(--accent);
-    color: var(--bg-primary);
+    background-color: var(--accent-tertiary);
+    color: #ffffff;
     font-weight: 700;
     font-size: 1.25rem;
     border-radius: 50%;
 }
 .rule-content h3 { font-size: 1.1rem; margin-bottom: var(--space-xs); }
 .rule-content p { color: var(--text-secondary); font-size: 0.95rem; }
+.rule-content strong { color: var(--text-primary); }
+.rule-metric {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+    flex-wrap: wrap;
+}
+.metric-tag {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--bg-tertiary);
+    color: var(--accent-tertiary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: var(--border-radius);
+    font-family: var(--font-mono);
+}
 @media (max-width: 768px) {
-    .rule { flex-direction: column; text-align: center; }
-    .rule-number { margin: 0 auto; }
+    .rule { flex-direction: column; text-align: left; }
+    .rule-metric { justify-content: flex-start; }
 }
 </style>

@@ -4,13 +4,17 @@
   "version": "3.15.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build:search": "node scripts/build-guide-index.mjs",
+    "build": "node scripts/build-guide-index.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
@@ -22,6 +26,8 @@
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.1",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.19"
   }

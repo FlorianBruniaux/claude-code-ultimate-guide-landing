@@ -30,15 +30,17 @@ const jsonLd = [
   <!-- Highlight.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 
-  <div class="container">
-    <header class="examples-header">
+  <header class="page-hero">
+    <div class="container">
       <h1>Examples Catalog</h1>
-      <p class="subtitle">113 production-ready templates for Claude Code</p>
-      <p style="color: var(--text-secondary); max-width: 700px; margin: var(--space-md) auto 0; font-size: 0.95rem;">
+      <p class="tagline">113 production-ready templates for Claude Code</p>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: var(--space-md) 0 0; font-size: 0.95rem;">
         Copy and customize these AI coding assistant templates for your projects. Includes custom agents, slash commands, event-driven hooks, and reusable skills for automated code review, test generation, and security audits.
       </p>
-    </header>
+    </div>
+  </header>
 
+  <div class="container">
     <div class="search-bar">
       <input type="text" class="search-input" id="searchInput" placeholder="Search examples... (press / to focus)" autocomplete="off">
     </div>
@@ -55,26 +57,11 @@ const jsonLd = [
 
   <div class="toast" id="toast">Copied to clipboard!</div>
 
-  <style>
-    .examples-header {
-      text-align: center;
-      padding: var(--space-3xl) 0 var(--space-xl);
-    }
-
-    .examples-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: var(--space-sm);
-    }
-
-    .examples-header .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-    }
-
+  <style is:global>
     .search-bar {
       display: flex;
       gap: var(--space-md);
-      margin: var(--space-xl) auto;
+      margin: var(--space-xl) 0;
       max-width: 600px;
     }
 
@@ -90,9 +77,9 @@ const jsonLd = [
     }
 
     .search-input:focus {
-      outline: none;
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
     }
 
     .search-input::placeholder { color: var(--text-muted); }
@@ -100,7 +87,7 @@ const jsonLd = [
     .stats {
       display: flex;
       gap: var(--space-xl);
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: var(--space-xl);
       flex-wrap: wrap;
     }
@@ -187,12 +174,6 @@ const jsonLd = [
       color: #f85149;
       font-size: 0.9rem;
       margin-left: 0.5rem;
-      animation: pulse-heart 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-heart {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
     }
 
     .file-description {
@@ -222,9 +203,9 @@ const jsonLd = [
     .examples-page .btn:hover { background-color: var(--border); }
     .btn-view { background-color: transparent; }
     .btn-view.active { background-color: var(--accent); border-color: var(--accent); color: white; }
-    .btn-copy { background-color: var(--accent-secondary); border-color: var(--accent-secondary); color: white; }
-    .btn-copy:hover { background-color: var(--accent-secondary-hover); }
-    .btn-copy.copied { background-color: #a392f7; border-color: #a392f7; }
+    .btn-copy { background-color: var(--accent-tertiary); border-color: var(--accent-tertiary); color: white; }
+    .btn-copy:hover { background-color: #2563eb; }
+    .btn-copy.copied { background-color: #3b82f6; border-color: #3b82f6; }
     .btn-download { background-color: transparent; color: var(--text-secondary); }
 
     .file-content { display: none; padding: 0; background-color: var(--bg-primary); border-top: 1px solid var(--border-light); }
@@ -245,7 +226,7 @@ const jsonLd = [
       bottom: 2rem;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background-color: var(--accent-secondary);
+      background-color: var(--accent-tertiary);
       color: white;
       padding: 0.75rem 1.5rem;
       border-radius: var(--border-radius);
@@ -261,7 +242,6 @@ const jsonLd = [
     .no-results-icon { font-size: 3rem; margin-bottom: var(--space-md); }
 
     @media (max-width: 640px) {
-      .examples-header h1 { font-size: 1.75rem; }
       .stats { gap: var(--space-md); }
       .file-header { flex-wrap: wrap; }
       .file-actions { width: 100%; justify-content: flex-end; margin-top: var(--space-sm); }
@@ -353,7 +333,7 @@ const jsonLd = [
         hasResults = true;
         const isExpanded = expandedCategories.has(categoryId) || filter !== '';
         const categoryName = category.label || categoryId.replace(/-/g, ' ').replace(/(^|\s)\S/g, t => t.toUpperCase());
-        html += `<div class="category ${isExpanded ? 'expanded' : ''}" data-category="${categoryId}"><div class="category-header" onclick="toggleCategory('${categoryId}')"><div class="category-title"><span class="category-icon">${category.icon}</span><span>${categoryName}</span><span class="category-count">${filteredFiles.length}</span></div><span class="category-toggle">&#9660;</span></div><div class="category-content"><div class="category-description">${category.description}</div><ul class="file-list">${filteredFiles.map(file => `<li class="file-item" data-path="${file.path}"><div class="file-header"><div class="file-info"><a class="file-name" href="${GITHUB_BASE + file.path}" target="_blank" rel="noopener">${file.name}</a>${file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : ''}<div class="file-description">${file.description}</div></div><div class="file-actions"><button class="btn btn-view" onclick="handleView('${file.path}', this)">View</button><button class="btn btn-copy" onclick="handleCopy('${file.path}', this)">Copy</button><button class="btn btn-download" onclick="downloadFile('${file.path}', '${file.name}')" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>`).join('')}</ul></div></div>`;
+        html += `<div class="category ${isExpanded ? 'expanded' : ''}" data-category="${categoryId}"><div class="category-header" data-toggle-category="${categoryId}"><div class="category-title"><span class="category-icon">${category.icon}</span><span>${categoryName}</span><span class="category-count">${filteredFiles.length}</span></div><span class="category-toggle">&#9660;</span></div><div class="category-content"><div class="category-description">${category.description}</div><ul class="file-list">${filteredFiles.map(file => `<li class="file-item" data-path="${file.path}"><div class="file-header"><div class="file-info"><a class="file-name" href="${GITHUB_BASE + file.path}" target="_blank" rel="noopener">${file.name}</a>${file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : ''}<div class="file-description">${file.description}</div></div><div class="file-actions"><button class="btn btn-view" data-action="view" data-path="${file.path}">View</button><button class="btn btn-copy" data-action="copy" data-path="${file.path}">Copy</button><button class="btn btn-download" data-action="download" data-path="${file.path}" data-filename="${file.name}" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>`).join('')}</ul></div></div>`;
       });
       catalogEl.innerHTML = html;
       noResultsEl.style.display = hasResults ? 'none' : 'block';
@@ -392,6 +372,39 @@ const jsonLd = [
         requestAnimationFrame(() => { const categoryEl = document.querySelector(`[data-category="${hash}"]`); if (categoryEl) categoryEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
       }
     }
+
+    // Event delegation — handles all clicks from dynamically rendered HTML
+    catalogEl.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+
+      // Category toggle
+      const categoryHeader = target.closest('[data-toggle-category]') as HTMLElement | null;
+      if (categoryHeader) {
+        toggleCategory(categoryHeader.dataset.toggleCategory!);
+        return;
+      }
+
+      // View button
+      const viewBtn = target.closest('[data-action="view"]') as HTMLButtonElement | null;
+      if (viewBtn) {
+        handleView(viewBtn.dataset.path!, viewBtn);
+        return;
+      }
+
+      // Copy button
+      const copyBtn = target.closest('[data-action="copy"]') as HTMLButtonElement | null;
+      if (copyBtn) {
+        handleCopy(copyBtn.dataset.path!, copyBtn);
+        return;
+      }
+
+      // Download button
+      const dlBtn = target.closest('[data-action="download"]') as HTMLButtonElement | null;
+      if (dlBtn) {
+        downloadFile(dlBtn.dataset.path!, dlBtn.dataset.filename!);
+        return;
+      }
+    });
 
     renderStats(); renderCatalog(); handleHashNavigation();
     window.addEventListener('hashchange', handleHashNavigation);

@@ -1,10 +1,38 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 
-const title = 'Claude Code FAQ: 17 Questions Answered | Free Guide'
-const description = 'Frequently asked questions about Claude Code: installation, pricing, CLAUDE.md, MCP servers, security, and more. Get answers from the community guide.'
+const title = 'Claude Code FAQ: Setup, Pricing, Security, Hooks & More'
+const description = '22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (18 CVEs tracked), context management. From 6 months of daily practice.'
 
 const jsonLd = [
+  {
+    "@type": "WebPage",
+    "name": "Claude Code FAQ: Setup, Pricing, Security, Hooks & More",
+    "description": "22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (18 CVEs tracked), context management.",
+    "url": "https://cc.bruniaux.com/faq/",
+    "datePublished": "2025-06-01",
+    "dateModified": "2026-02-17",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Claude Code Ultimate Guide",
+      "url": "https://cc.bruniaux.com/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Florian Bruniaux",
+      "url": "https://github.com/FlorianBruniaux",
+      "jobTitle": "Founding Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Méthode Aristote"
+      }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".faq-item summary", ".faq-item p"]
+    }
+  },
   {
     "@type": "FAQPage",
     "mainEntity": [
@@ -13,7 +41,7 @@ const jsonLd = [
         "name": "What is Claude Code and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code is Anthropic's official CLI (command-line interface) that brings Claude AI directly into your terminal. It acts as an AI coding assistant that can read your codebase, write code, run commands, and make multi-file changes autonomously. Think of it as AI pair programming in your terminal."
+          "text": "Claude Code is Anthropic's official CLI that brings Claude AI directly into your terminal. It reads your codebase, writes code, runs commands, and makes multi-file changes autonomously. Unlike IDE plugins, it operates at the terminal level with full system access: reads files, runs tests, and manages git workflows in a single session."
         }
       },
       {
@@ -21,7 +49,7 @@ const jsonLd = [
         "name": "How do I install Claude Code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Install globally via npm: npm install -g @anthropic-ai/claude-code. Requires Node.js 18+. Then run claude in any project directory to start."
+          "text": "Install globally via npm: npm install -g @anthropic-ai/claude-code. Requires Node.js 18+. Then run 'claude' in any project directory to start. The CLI connects to Anthropic's API. You need an API key from console.anthropic.com."
         }
       },
       {
@@ -29,7 +57,7 @@ const jsonLd = [
         "name": "Is Claude Code free to use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code requires an Anthropic API key with a paid plan. The tool itself is free, but you pay for API usage. Sonnet is the default model (cost-effective for most tasks). Opus is available for complex architecture work at higher cost."
+          "text": "The CLI is free to install, but you pay per API token. Sonnet (default) costs ~$3/$15 per million input/output tokens. Opus costs ~$15/$75. For comparison: GitHub Copilot is $10/month flat, Cursor Pro is $20/month. Claude Code can cost $5-50/day for heavy usage without optimization."
         }
       },
       {
@@ -37,7 +65,7 @@ const jsonLd = [
         "name": "How can I reduce costs or avoid rate limits?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For heavy usage, cc-copilot-bridge routes Claude Code through GitHub Copilot Pro+ ($10/month flat) instead of per-token billing. This can save 99%+ on costs and bypass Anthropic rate limits."
+          "text": "cc-copilot-bridge routes Claude Code through GitHub Copilot Pro+ ($10/month flat) instead of per-token billing, saving 99%+ on costs. It also supports offline mode via Ollama for air-gapped environments. Other strategies: use /compact to reduce context, prefer Sonnet over Opus for routine tasks, and use subagents to isolate expensive operations."
         }
       },
       {
@@ -45,7 +73,7 @@ const jsonLd = [
         "name": "Is Claude Code better than GitHub Copilot?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Both now have agentic capabilities. Claude Code excels at terminal workflows with native MCP, CLAUDE.md memory, Agent SDK, and hooks. Copilot integrates well with VS Code via Agent Mode. Many developers use both."
+          "text": "Both have agentic capabilities since early 2025. Claude Code excels at terminal-first workflows with native MCP protocol, CLAUDE.md project memory, Agent SDK for custom automation, and event hooks. Copilot integrates tightly with VS Code via Agent Mode. Many developers use both: Copilot for inline autocomplete, Claude Code for complex multi-file tasks."
         }
       },
       {
@@ -53,15 +81,31 @@ const jsonLd = [
         "name": "What is a CLAUDE.md file?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CLAUDE.md is a project memory file that gives Claude persistent context about your project. Place it in your project root with your tech stack, coding conventions, and commands. Claude reads it automatically at session start."
+          "text": "CLAUDE.md is a project memory file that gives Claude persistent context. Place it in your project root with tech stack, coding conventions, and build commands. Claude reads it automatically at session start. There are 3 levels: ~/.claude/CLAUDE.md (global), project root (team-shared), and .claude/CLAUDE.local.md (personal, gitignored)."
         }
       },
       {
         "@type": "Question",
-        "name": "What's the difference between Claude Code and Cowork?",
+        "name": "What are Claude Code hooks?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code is a terminal-based CLI for developers (code, scripts, git). Cowork is a Desktop app for knowledge workers (Excel, Word, PDF). This guide covers Claude Code."
+          "text": "Hooks are shell commands that run automatically in response to Claude Code events: before/after tool calls, on notifications, or on session stop. Use cases: block dangerous commands (rm -rf, force-push), scan for secrets in outputs, enforce coding standards, or auto-format files. Configured in .claude/settings.json with PreToolUse, PostToolUse, Notification, and Stop events."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between agents, skills, and commands in Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Agents are AI personas with specific expertise (code-reviewer, security-auditor) defined in .claude/agents/. Skills are reusable capability modules with bundled resources, invoked via /skill-name. Commands are simple slash-command templates in .claude/commands/ for repetitive tasks. Rule of thumb: use commands for single-step ops, skills for multi-step workflows with context, agents for specialized review or analysis roles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I manage the context window in Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Context management is critical: at 70% usage, Claude loses precision. At 85%, hallucinations increase. At 90%+, responses become erratic. Strategy: 0-50% work freely, 50-70% stay focused, 70-85% use /compact to compress history, 90%+ use /clear to reset. Monitor with /cost command. Use subagents to offload heavy research without polluting main context."
         }
       },
       {
@@ -69,7 +113,7 @@ const jsonLd = [
         "name": "What are MCP servers in Claude Code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting it to external tools and data sources. Examples include database access, browser automation, and documentation lookup."
+          "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library documentation lookup, Sentry for error tracking, PostgreSQL for database queries. Configure in ~/.claude/mcp.json or .mcp.json per project. Always vet MCP servers before use. 18 CVEs have been identified in the ecosystem."
         }
       },
       {
@@ -77,15 +121,23 @@ const jsonLd = [
         "name": "What programming languages does Claude Code support?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code works with any programming language. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby."
+          "text": "Claude Code works with any programming language: it reads and writes files regardless of syntax. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. Community reports show effective use with Scala, Elixir, Swift, and even niche languages like Zig and Haskell."
         }
       },
       {
         "@type": "Question",
-        "name": "Is this guide official?",
+        "name": "What's the difference between Claude Code and Cowork?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, this is a community resource. It reflects personal experience after months of daily Claude Code usage, not official Anthropic documentation."
+          "text": "Claude Code is a terminal-based CLI for developers (code, scripts, git). Claude Cowork is a Desktop app for knowledge workers (Excel, Word, PDF, file organization). Same AI model underneath, different interfaces for different audiences. This guide covers Claude Code specifically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Claude Code secure for production use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Code requires careful hardening for production. This guide tracks 18 CVE-mapped vulnerabilities and 341 malicious skills in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers, enable permission prompts, and never run in production environments without sandboxing."
         }
       },
       {
@@ -93,23 +145,15 @@ const jsonLd = [
         "name": "Is my code sent to Anthropic?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Claude Code sends prompts and file contents to Anthropic servers. Default retention is 5 years (training enabled). You can opt-out to 30 days or use Enterprise for 0 retention."
+          "text": "Yes. Claude Code sends prompts and file contents to Anthropic's API servers. Default data retention is 5 years with training enabled. You can opt out via Settings to reduce retention to 30 days (no training). Enterprise plans offer 0-day retention. See Anthropic's official privacy documentation for details."
         }
       },
       {
         "@type": "Question",
-        "name": "Who is behind this guide?",
+        "name": "Can Claude Code work offline or with local models?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Florian BRUNIAUX, a tech professional with 11+ years of experience across roles including CTO, VP Engineering, Engineering Manager, and Founding Engineer."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which AI tools complement Claude Code?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Claude Code works best in an ecosystem: Perplexity for deep research, Gemini for visual understanding, NotebookLM for audio synthesis, v0/Bolt for rapid UI prototyping, Cursor/Copilot for inline autocomplete, and Wispr Flow for voice-to-text."
+          "text": "Not natively. Claude Code requires Anthropic's API. However, cc-copilot-bridge enables offline mode via Ollama, running 100% locally with open-source models. Trade-off: local models are significantly less capable than Claude Sonnet/Opus for complex coding tasks, but work for basic operations in air-gapped environments."
         }
       },
       {
@@ -117,7 +161,47 @@ const jsonLd = [
         "name": "How much should I trust AI-generated code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Trust varies by risk level: auto-accept boilerplate and repetitive patterns, review business logic and non-trivial changes, manually verify security-critical code."
+          "text": "Research shows AI-assisted code can contain 1.75x more logic errors than human-written code (ACM 2025 study). Trust calibration: auto-accept boilerplate and repetitive patterns, review all business logic and non-trivial changes, manually verify security-critical code. Use TDD (Test-Driven Development) to catch errors early: write tests first, then let Claude implement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI tools complement Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Code works best in an ecosystem: Perplexity for deep research with verified sources, Gemini for visual understanding (design-to-code), NotebookLM for document review and audio synthesis, v0/Bolt for rapid UI prototyping, Cursor/Copilot for inline autocomplete, and Wispr Flow for voice-to-text input (4x faster than typing at 150 WPM)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use voice-to-text with Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tools like Wispr Flow or Superwhisper transcribe speech directly into the terminal at ~150 WPM (vs 40 WPM typing). This is particularly effective for writing detailed prompts and specifications. Setup is simple: install the app, select the terminal as input target, and dictate naturally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this guide official?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is an independent community resource based on 6 months of daily Claude Code usage. It is not affiliated with or endorsed by Anthropic. For official documentation, visit code.claude.com/docs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What version of Claude Code is covered?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The guide is continuously updated to track the latest Claude Code releases. Current coverage includes features up to the latest stable version. Check the CHANGELOG for recent updates and the releases page for version-specific feature tracking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is behind this guide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Florian Bruniaux, Founding Engineer at Méthode Aristote (EdTech + AI). 12 years in tech across Dev, Lead, Engineering Manager, VP Engineering, and CTO roles. Also creator of RTK (CLI token reduction), ccboard (Claude Code dashboard), and cc-copilot-bridge."
         }
       },
       {
@@ -125,7 +209,7 @@ const jsonLd = [
         "name": "Can I contribute to the guide?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! The guide repository is open-source and welcomes contributions. Found an error? Have a better template? Check the contributing guide on GitHub."
+          "text": "Yes. The guide repository is open-source (CC BY-SA 4.0) and welcomes contributions: corrections, new quiz questions, workflow templates, and resource evaluations. Check the contributing guide on GitHub for submission guidelines."
         }
       }
     ]
@@ -134,27 +218,29 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
-  <div class="faq-page">
-    <header class="faq-header">
-      <h1>Frequently Asked Questions</h1>
-      <p class="subtitle">Everything you need to know about Claude Code and this guide.</p>
-    </header>
+  <header class="page-hero">
+    <div class="container">
+      <h1>Claude Code FAQ</h1>
+      <p class="tagline">22 answers from 6 months of daily practice: setup, pricing, security, hooks, agents, and more.</p>
+    </div>
+  </header>
 
+  <div class="container faq-page">
     <!-- Getting Started -->
     <section class="faq-section">
       <h2 class="faq-section-title">Getting Started</h2>
       <div class="faq-list">
         <details class="faq-item">
           <summary>What is Claude Code and how does it work?</summary>
-          <p>Claude Code is Anthropic's official CLI (command-line interface) that brings Claude AI directly into your terminal. It acts as an AI coding assistant that can read your codebase, write code, run commands, and make multi-file changes autonomously. Think of it as AI pair programming in your terminal.</p>
+          <p>Claude Code is Anthropic's official CLI that brings Claude AI directly into your terminal. Unlike IDE plugins, it operates at the terminal level with full system access: reads your codebase, writes code, runs tests, and manages git workflows in a single session. An AI pair programmer that works where you work.</p>
         </details>
         <details class="faq-item">
           <summary>How do I install Claude Code?</summary>
-          <p>Install globally via npm: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+. Then run <code>claude</code> in any project directory to start. See the <a href="/cheatsheet/">cheatsheet</a> for a quick reference.</p>
+          <p>Install globally via npm: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+. Then run <code>claude</code> in any project directory to start. You'll need an API key from <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a>. See the <a href="/cheatsheet/">cheatsheet</a> for a quick reference.</p>
         </details>
         <details class="faq-item">
           <summary>What programming languages does Claude Code support?</summary>
-          <p>Claude Code works with any programming language. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. It can read, write, and refactor code in any language you use.</p>
+          <p>Claude Code works with any programming language: it reads and writes files regardless of syntax. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. Community reports confirm effective use with Scala, Elixir, Swift, and even niche languages like Zig and Haskell.</p>
         </details>
       </div>
     </section>
@@ -165,11 +251,11 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Is Claude Code free to use?</summary>
-          <p>Claude Code requires an Anthropic API key with a paid plan. The tool itself is free, but you pay for API usage. Sonnet is the default model (cost-effective for most tasks). Opus is available for complex architecture work at higher cost.</p>
+          <p>The CLI is free to install, but you pay per API token. Sonnet (default) costs ~$3/$15 per million input/output tokens. Opus costs ~$15/$75. For comparison: GitHub Copilot is $10/month flat, Cursor Pro is $20/month. Claude Code can cost $5-50/day for heavy usage without optimization strategies.</p>
         </details>
         <details class="faq-item">
           <summary>How can I reduce costs or avoid rate limits?</summary>
-          <p>For heavy usage, <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a> routes Claude Code through GitHub Copilot Pro+ ($10/month flat) instead of per-token billing. This can save 99%+ on costs and bypass Anthropic rate limits. It also supports offline mode with Ollama for air-gapped environments.</p>
+          <p><a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a> routes Claude Code through GitHub Copilot Pro+ ($10/month flat) instead of per-token billing, saving 99%+ on costs. It also supports offline mode via Ollama for air-gapped environments. Other strategies: use <code>/compact</code> to reduce context, prefer Sonnet over Opus for routine tasks, and use subagents to isolate expensive operations.</p>
         </details>
       </div>
     </section>
@@ -180,19 +266,31 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>What is a CLAUDE.md file?</summary>
-          <p>CLAUDE.md is a project memory file that gives Claude persistent context about your project. Place it in your project root with your tech stack, coding conventions, and commands. Claude reads it automatically at session start. See our <a href="/examples/">templates</a>.</p>
+          <p>CLAUDE.md is a project memory file that gives Claude persistent context. Place it in your project root with tech stack, coding conventions, and build commands. Claude reads it automatically at session start. There are 3 levels: <code>~/.claude/CLAUDE.md</code> (global), project root (team-shared), and <code>.claude/CLAUDE.local.md</code> (personal, gitignored). See our <a href="/examples/">113 templates</a> for inspiration.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are Claude Code hooks?</summary>
+          <p>Hooks are shell commands that run automatically in response to Claude Code events: before/after tool calls, on notifications, or on session stop. Use cases: block dangerous commands (<code>rm -rf</code>, force-push), scan for secrets in outputs, enforce coding standards, or auto-format files. Configured in <code>.claude/settings.json</code> with PreToolUse, PostToolUse, Notification, and Stop events. The guide includes <a href="/examples/">31 production-ready hook templates</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the difference between agents, skills, and commands?</summary>
+          <p><strong>Agents</strong> are AI personas with specific expertise (code-reviewer, security-auditor) defined in <code>.claude/agents/</code>. <strong>Skills</strong> are reusable capability modules with bundled resources, invoked via <code>/skill-name</code>. <strong>Commands</strong> are simple slash-command templates in <code>.claude/commands/</code> for repetitive tasks. Rule of thumb: commands for single-step ops, skills for multi-step workflows with context, agents for specialized review or analysis roles. See the <a href="/#features">features section</a> for detailed comparison.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I manage the context window in Claude Code?</summary>
+          <p>Context management is the #1 skill to master. At 70% usage, Claude starts losing precision. At 85%, hallucinations increase. At 90%+, responses become erratic. Strategy: 0-50% (work freely), 50-70% (stay focused), 70-85% (<code>/compact</code> to compress history), 90%+ (<code>/clear</code> mandatory). Monitor usage with <code>/cost</code>. Use subagents to offload heavy research without polluting your main context.</p>
         </details>
         <details class="faq-item">
           <summary>What are MCP servers in Claude Code?</summary>
-          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting it to external tools and data sources. Examples include database access, browser automation, and documentation lookup. Configure them in <code>~/.claude/mcp.json</code>.</p>
+          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">18 CVEs have been identified</a> in the ecosystem.</p>
         </details>
         <details class="faq-item">
           <summary>What's the difference between Claude Code and Cowork?</summary>
-          <p>Claude Code is a terminal-based CLI for <strong>developers</strong> (code, scripts, git). Cowork is a Desktop app for <strong>knowledge workers</strong> (Excel, Word, PDF). This guide covers Claude Code. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cowork.md" target="_blank" rel="noopener">Cowork section</a> in the guide for details.</p>
+          <p>Claude Code is a terminal-based CLI for <strong>developers</strong> (code, scripts, git). Claude Cowork is a Desktop app for <strong>knowledge workers</strong> (Excel, Word, PDF, file organization). Same AI model underneath, different interfaces for different audiences. This guide covers Claude Code. See the <a href="https://github.com/FlorianBruniaux/claude-cowork-guide" target="_blank" rel="noopener">Cowork Guide</a> for the non-dev version.</p>
         </details>
         <details class="faq-item">
           <summary>Is Claude Code better than GitHub Copilot?</summary>
-          <p>Both now have agentic capabilities. Claude Code excels at terminal workflows with native MCP, CLAUDE.md memory, Agent SDK, and hooks. Copilot integrates well with VS Code via Agent Mode. Many developers use both. See our <a href="/#comparison">comparison table</a> for details.</p>
+          <p>Both have agentic capabilities since early 2025. Claude Code excels at terminal-first workflows with native MCP protocol, CLAUDE.md project memory, Agent SDK for custom automation, and event hooks. Copilot integrates tightly with VS Code via Agent Mode. Many developers use both: Copilot for inline autocomplete, Claude Code for complex multi-file tasks. See our <a href="/#comparison">comparison table</a> for a detailed breakdown.</p>
         </details>
       </div>
     </section>
@@ -203,11 +301,15 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Which AI tools complement Claude Code?</summary>
-          <p>Claude Code excels at implementation but works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for audio synthesis and doc review, <strong>v0/Bolt</strong> for rapid UI prototyping, <strong>Cursor/Copilot</strong> for inline autocomplete, and <strong>Wispr Flow</strong> for voice-to-text (4x faster than typing). Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver (Kimi for slides). See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" target="_blank" rel="noopener">full ecosystem guide</a>.</p>
+          <p>Claude Code works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for document review and audio synthesis, <strong>v0/Bolt</strong> for rapid UI prototyping, <strong>Cursor/Copilot</strong> for inline autocomplete, and <strong>Wispr Flow</strong> for voice-to-text (4x faster than typing at 150 WPM). Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver.</p>
         </details>
         <details class="faq-item">
           <summary>How do I use voice-to-text with Claude Code?</summary>
-          <p>Use tools like <strong>Wispr Flow</strong> or Superwhisper to dictate prompts ~4x faster than typing (150 WPM vs 40 WPM). These tools transcribe your speech directly into the terminal. The <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" target="_blank" rel="noopener">AI Ecosystem guide</a> covers setup and integration patterns.</p>
+          <p>Tools like <strong>Wispr Flow</strong> or Superwhisper transcribe speech directly into the terminal at ~150 WPM (vs 40 WPM typing). This is particularly effective for writing detailed prompts and specifications. Setup is simple: install the app, select the terminal as input target, and dictate naturally.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can Claude Code work offline or with local models?</summary>
+          <p>Not natively. Claude Code requires Anthropic's API. However, <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a> enables offline mode via Ollama, running 100% locally with open-source models. Trade-off: local models are significantly less capable than Claude Sonnet/Opus for complex coding tasks, but work for basic operations in air-gapped environments.</p>
         </details>
       </div>
     </section>
@@ -217,12 +319,16 @@ const jsonLd = [
       <h2 class="faq-section-title">Trust & Security</h2>
       <div class="faq-list">
         <details class="faq-item">
+          <summary>Is Claude Code secure for production use?</summary>
+          <p>Claude Code requires careful hardening for production. This guide tracks <strong>18 CVE-mapped vulnerabilities</strong> and <strong>341 malicious skills</strong> in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/#security">5-minute audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
+        </details>
+        <details class="faq-item">
           <summary>Is my code sent to Anthropic?</summary>
-          <p>Yes, Claude Code sends prompts and file contents to Anthropic servers. Default retention is 5 years (training enabled). You can opt-out to 30 days or use Enterprise for 0 retention. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/data-privacy.md" target="_blank" rel="noopener">privacy guide</a>.</p>
+          <p>Yes. Claude Code sends prompts and file contents to Anthropic's API servers. Default data retention is 5 years with training enabled. You can opt out via Settings to reduce retention to 30 days (no training). Enterprise plans offer 0-day retention. See Anthropic's <a href="https://docs.anthropic.com/en/docs/about-claude/data-privacy" target="_blank" rel="noopener">official privacy documentation</a> for details.</p>
         </details>
         <details class="faq-item">
           <summary>How much should I trust AI-generated code?</summary>
-          <p>Trust varies by risk level: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Research shows even experienced developers miss bugs in AI code. See the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#trust-calibration" target="_blank" rel="noopener">Trust Calibration guide</a> for research-backed verification strategies.</p>
+          <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD (Test-Driven Development) to catch errors early: write tests first, then let Claude implement.</p>
         </details>
       </div>
     </section>
@@ -233,19 +339,19 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Is this guide official?</summary>
-          <p>No, this is a community resource. It reflects personal experience after months of daily Claude Code usage, not official Anthropic documentation.</p>
+          <p>No. This is an independent community resource based on 6 months of daily Claude Code usage. It is not affiliated with or endorsed by Anthropic. For official documentation, visit <a href="https://code.claude.com/docs" target="_blank" rel="noopener">code.claude.com/docs</a>.</p>
         </details>
         <details class="faq-item">
           <summary>What version of Claude Code is covered?</summary>
-          <p>The guide is continuously updated. Current version: 3.27.1. Check the CHANGELOG for recent updates.</p>
+          <p>The guide is continuously updated to track the latest Claude Code releases. Check the <a href="/changelog/">CHANGELOG</a> for recent updates and the <a href="/#releases">releases section</a> for version-specific feature tracking.</p>
         </details>
         <details class="faq-item">
           <summary>Who is behind this guide?</summary>
-          <p>I'm <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian BRUNIAUX</a>, a tech professional with 11+ years of experience across roles including CTO, VP Engineering, Engineering Manager, and Founding Engineer. I've built and scaled teams from scratch (up to 30 people), worked on B2B/B2C SaaS products, and I'm deeply passionate about AI-assisted development. I created this guide as an open-source contribution to help the community master Claude Code.</p>
+          <p><a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian Bruniaux</a>, Founding Engineer at Méthode Aristote (EdTech + AI). 12 years in tech across Dev, Lead, Engineering Manager, VP Engineering, and CTO roles. Also creator of <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener">RTK</a> (CLI token reduction), <a href="https://github.com/FlorianBruniaux/ccboard" target="_blank" rel="noopener">ccboard</a> (Claude Code dashboard), and <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a>.</p>
         </details>
         <details class="faq-item">
           <summary>Can I contribute to the guide?</summary>
-          <p>Yes! The <strong>guide repository</strong> is open-source and welcomes contributions. Found an error? Have a better template? Check the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">contributing guide on GitHub</a>. Note: this website is maintained separately by the author.</p>
+          <p>Yes! The guide is open-source (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>) and welcomes contributions: corrections, new quiz questions, workflow templates, and resource evaluations. Check the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">contributing guide on GitHub</a> for submission guidelines.</p>
         </details>
       </div>
     </section>
@@ -253,25 +359,7 @@ const jsonLd = [
 
   <style>
     .faq-page {
-      max-width: 800px;
-      margin: 0 auto;
       padding: var(--space-xl) var(--space-lg);
-    }
-
-    .faq-header {
-      text-align: center;
-      padding: var(--space-3xl) 0 var(--space-xl);
-    }
-
-    .faq-header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: var(--space-md);
-    }
-
-    .faq-header .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.15rem;
     }
 
     .faq-section {
@@ -287,7 +375,7 @@ const jsonLd = [
       border-bottom: 2px solid var(--border);
     }
 
-    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-list { }
     .faq-item {
       background-color: var(--surface-elevated);
       border: 1px solid var(--border);
@@ -320,10 +408,5 @@ const jsonLd = [
     .faq-item[open] summary { border-bottom: 1px solid var(--border); }
     .faq-item p { padding: var(--space-lg); color: var(--text-secondary); margin: 0; }
 
-    @media (max-width: 640px) {
-      .faq-header h1 {
-        font-size: 1.75rem;
-      }
-    }
   </style>
 </Layout>

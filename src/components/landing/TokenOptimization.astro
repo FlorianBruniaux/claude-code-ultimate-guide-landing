@@ -2,7 +2,7 @@
 <section class="section token-optimization section--alt" id="token-optimization">
     <div class="container">
         <h2 class="section-title">Save 60-90% on Tokens</h2>
-        <p class="section-subtitle">RTK filters command outputs before they reach Claude's context — 446 stars, 700+ Reddit upvotes</p>
+        <p class="section-subtitle">RTK filters command outputs before they reach Claude's context. 446 stars on GitHub, 700+ Reddit upvotes.</p>
 
         <div class="rtk-demo">
             <!-- Before/After comparison -->
@@ -33,9 +33,9 @@
             <div class="rtk-cta">
                 <code>brew install rtk-ai/tap/rtk</code>
                 <div style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">
-                    Alternative: <code style="background: rgba(255,255,255,0.1); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">cargo install rtk</code> or <code style="background: rgba(255,255,255,0.1); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/main/install.sh | sh</code>
+                    Alternative: <code style="padding: 0.2rem 0.4rem; border-radius: 0.25rem;">cargo install rtk</code> or <code style="padding: 0.2rem 0.4rem; border-radius: 0.25rem;">curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/main/install.sh | sh</code>
                 </div>
-                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+                <div style="display: flex; gap: 1rem; justify-content: flex-start; margin-top: 1rem;">
                     <a href="https://www.rtk-ai.app/" class="btn btn-outline" target="_blank" rel="noopener">Visit RTK &rarr;</a>
                 </div>
             </div>
@@ -44,15 +44,14 @@
 </section>
 
 <style>
-.rtk-demo { max-width: 900px; margin: 0 auto; }
-.rtk-comparison { display: flex; align-items: center; justify-content: center; gap: 2rem; margin: 2rem 0; }
+.rtk-demo { }
+.rtk-comparison { display: flex; align-items: center; justify-content: flex-start; gap: 2rem; margin: 2rem 0; }
 .rtk-before, .rtk-after {
     background: var(--bg-tertiary);
     padding: 1.5rem;
     border-radius: 8px;
-    text-align: center;
+    text-align: left;
     flex: 1;
-    max-width: 300px;
 }
 .rtk-before h4, .rtk-after h4 {
     margin: 0 0 0.75rem 0;
@@ -99,7 +98,7 @@
 .rtk-cmd:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .rtk-cmd code { font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-primary); }
 .rtk-cmd span { color: var(--accent); font-weight: 700; font-size: 0.875rem; }
-.rtk-cta { text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-tertiary); border-radius: 8px; }
+.rtk-cta { text-align: left; margin-top: 3rem; padding: 2rem; background: var(--bg-tertiary); border-radius: 8px; }
 .rtk-cta code {
     display: inline-block;
     background: var(--surface-elevated);
@@ -111,7 +110,6 @@
 @media (max-width: 768px) {
     .rtk-comparison { flex-direction: column; gap: 1rem; }
     .rtk-arrow { transform: rotate(90deg); }
-    .rtk-before, .rtk-after { max-width: 100%; }
     .rtk-commands { grid-template-columns: 1fr; }
 }
 </style>

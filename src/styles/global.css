@@ -5,29 +5,40 @@
 @layer base {
   /* ===== LIGHT MODE (default) ===== */
   :root {
-    --bg-primary: #fafbfc;
-    --bg-secondary: #f4f6f9;
-    --bg-tertiary: #e8ecf0;
+    --bg-primary: #f5f0eb;
+    --bg-secondary: #fef7f0;
+    --bg-tertiary: #f0e8df;
     --surface-elevated: #ffffff;
-    --border: #d1d9e0;
-    --border-light: #e3e8ef;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-muted: #94a3b8;
-    --accent: #58a6ff;
-    --accent-hover: #79b8ff;
-    --accent-secondary: #4f46e5;
-    --accent-secondary-hover: #6366f1;
+    --border: #d4cdc5;
+    --border-light: #e8dfd6;
+    --text-primary: #1a1207;
+    --text-secondary: #4a3f31;
+    --text-muted: #6b6053;
+    --accent: #d4520a;
+    --accent-hover: #ea580c;
+    --accent-secondary: #22c55e;
+    --accent-secondary-hover: #16a34a;
+    --accent-tertiary: #3b82f6;
+
+    /* Status Colors */
+    --status-success: #16a34a;
+    --status-warning: #eab308;
+    --status-danger: #ef4444;
+    --status-info: #3b82f6;
+
+    /* Tinted backgrounds for visual rhythm */
+    --bg-tint-warm: #fef7f0;
+    --bg-tint-cool: #f5f0eb;
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.15);
-    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-sm: 0 1px 3px rgba(26, 18, 7, 0.08);
+    --shadow-md: 0 4px 12px rgba(26, 18, 7, 0.1);
+    --shadow-lg: 0 8px 24px rgba(26, 18, 7, 0.12);
+    --shadow-card-hover: 0 8px 32px rgba(26, 18, 7, 0.15);
+    --shadow-header: 0 1px 3px rgba(26, 18, 7, 0.06);
 
     /* Header */
-    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-bg: rgba(245, 240, 235, 0.95);
 
     /* Typography */
     --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -55,25 +66,40 @@
 
     /* Button Colors */
     --btn-primary-color: #ffffff;
-    --github-btn-bg: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-    --github-btn-bg-hover: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
-    --github-btn-border: rgba(0, 0, 0, 0.1);
-    --github-btn-color: #1e293b;
-    --accent-highlight-bg: rgba(88, 166, 255, 0.1);
+    --github-btn-bg: #f0e8df;
+    --github-btn-bg-hover: #e8dfd6;
+    --github-btn-border: rgba(26, 18, 7, 0.1);
+    --github-btn-color: #1a1207;
+    --accent-highlight-bg: var(--bg-tertiary);
     --modal-backdrop: rgba(0, 0, 0, 0.5);
   }
 
   /* ===== DARK MODE ===== */
   [data-theme="dark"] {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --surface-elevated: #161b22;
-    --text-primary: #c9d1d9;
-    --text-secondary: #9ca3af;
-    --text-muted: #9ca3af;
-    --border: #30363d;
-    --border-light: #21262d;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1e1e1e;
+    --surface-elevated: #141414;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-muted: #8a8a8a;
+    --border: #2a2a2a;
+    --border-light: #1e1e1e;
+    --accent: #f97316;
+    --accent-hover: #fb923c;
+    --accent-secondary: #22c55e;
+    --accent-secondary-hover: #16a34a;
+    --accent-tertiary: #60a5fa;
+
+    /* Status Colors */
+    --status-success: #22c55e;
+    --status-warning: #facc15;
+    --status-danger: #f87171;
+    --status-info: #60a5fa;
+
+    /* Tinted backgrounds for visual rhythm */
+    --bg-tint-warm: #141414;
+    --bg-tint-cool: #0a0a0a;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -81,12 +107,12 @@
     --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
     --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.5);
 
-    --header-bg: rgba(13, 17, 23, 0.95);
+    --header-bg: rgba(10, 10, 10, 0.95);
     --modal-backdrop: rgba(0, 0, 0, 0.7);
-    --accent-highlight-bg: rgba(88, 166, 255, 0.1);
+    --accent-highlight-bg: var(--bg-tertiary);
 
-    --github-btn-bg: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
-    --github-btn-bg-hover: linear-gradient(135deg, #2f363d 0%, #24292e 100%);
+    --github-btn-bg: #1e1e1e;
+    --github-btn-bg-hover: #2a2a2a;
     --github-btn-border: rgba(255, 255, 255, 0.1);
     --github-btn-color: #ffffff;
   }
@@ -140,7 +166,7 @@
 
   /* Selection color */
   ::selection {
-    background-color: rgba(88, 166, 255, 0.3);
+    background-color: rgba(212, 82, 10, 0.3);
     color: var(--text-primary);
   }
 }
