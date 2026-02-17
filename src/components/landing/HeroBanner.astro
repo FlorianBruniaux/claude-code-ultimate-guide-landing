@@ -2,10 +2,12 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <img src="/claude-code-logo.webp" alt="Claude Code CLI logo - Anthropic's AI coding assistant" class="hero-logo">
-            <h1 class="hero-title">Master Claude Code</h1>
+            <div class="hero-heading">
+                <img src="/claude-logo-orange.svg" alt="Claude Code CLI logo - Anthropic's AI coding assistant" class="hero-logo">
+                <h1 class="hero-title">Master Claude Code</h1>
+            </div>
             <p class="hero-tagline">Learn the WHY behind Claude Code, not just the config</p>
-            <p class="hero-stats">Exhaustive docs &bull; Production-ready templates &bull; Agentic workflows &bull; Quiz &bull; Cheatsheet</p>
+            <p class="hero-stats">Security-first (18 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 113 templates &bull; 274-question quiz &bull; Decision frameworks</p>
 
             <div class="hero-ctas">
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" class="btn btn-primary" target="_blank" rel="noopener">
@@ -23,7 +25,7 @@
                 </a>
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener" class="badge badge-updated">
                     <span class="badge-label">updated</span>
-                    <span class="badge-value">Feb 15, 2026 · v3.27.2</span>
+                    <span class="badge-value">Feb 17, 2026 · v3.27.5</span>
                 </a>
                 <span class="badge badge-lines">
                     <span class="badge-label">lines</span>
@@ -57,14 +59,14 @@
 
             <div class="hero-cowork-box">
                 <p class="hero-cowork-lead">Not a developer? <strong>Claude Cowork</strong> automates Excel, Word & PDF for knowledge workers.</p>
-                <div class="hero-cowork-prereq">
+                <div class="hero-cowork-actions">
+                    <a href="https://cowork.bruniaux.com/"
+                       class="btn btn-cowork" target="_blank" rel="noopener">
+                        Get Started &rarr;
+                    </a>
                     <span class="prereq-tag">macOS only</span>
                     <span class="prereq-tag">Pro $20/mo</span>
                 </div>
-                <a href="https://cowork.bruniaux.com/"
-                   class="btn btn-cowork" target="_blank" rel="noopener">
-                    Get Started with Cowork &rarr;
-                </a>
             </div>
         </div>
     </div>
@@ -93,37 +95,42 @@
 <style>
 .hero {
     padding: var(--space-4xl) 0;
-    text-align: center;
-    background: linear-gradient(180deg,
+    text-align: left;
+    background-color: var(--bg-primary);
+    background-image: linear-gradient(
+        160deg,
         var(--bg-secondary) 0%,
-        var(--bg-primary) 100%
+        var(--bg-primary) 60%
     );
+    border-bottom: 1px solid var(--border);
     opacity: 1;
     transform: none;
+    width: 100%;
 }
 
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+}
+
+.hero-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
 }
 
 .hero-logo {
-    width: 120px;
+    width: 48px;
     height: auto;
-    margin-bottom: var(--space-lg);
-    filter: drop-shadow(0 0 20px rgba(88, 166, 255, 0.3));
+    flex-shrink: 0;
 }
 
 .hero-title {
-    font-size: clamp(2.75rem, 6vw + 0.5rem, 4.5rem);
+    font-size: clamp(2rem, 4.5vw + 0.5rem, 3.25rem);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: var(--space-md);
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
+    margin: 0;
 }
 
 .hero-tagline {
@@ -142,7 +149,7 @@
 .hero-ctas {
     display: flex;
     gap: var(--space-md);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: var(--space-xl);
 }
@@ -150,22 +157,12 @@
 .hero .btn-primary {
     font-size: 1.1rem;
     padding: 1rem 2rem;
-    animation: pulse-glow 2s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
-    }
 }
 
 .hero-badges {
     display: flex;
     gap: var(--space-sm);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -209,10 +206,10 @@
     font-weight: 700;
 }
 
-.badge-stars .badge-value { background-color: #4c1; }
-.badge-updated .badge-value { background-color: #4c1; }
+.badge-stars .badge-value { background-color: #3b82f6; }
+.badge-updated .badge-value { background-color: #3b82f6; }
 .badge-lines .badge-value { background-color: #8b5cf6; }
-.badge-templates .badge-value { background-color: #4c1; }
+.badge-templates .badge-value { background-color: #3b82f6; }
 .badge-quiz .badge-value { background-color: #fe7d37; }
 .badge-awesome .badge-value { background-color: #fc60a8; }
 .badge-stars .badge-label,
@@ -227,7 +224,7 @@
     align-items: center;
     gap: 0.75rem;
     margin-top: 1.5rem;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .share-label {
@@ -270,54 +267,56 @@
 
 /* Hero Cowork Box */
 .hero-cowork-box {
-    margin-top: 2rem;
-    padding: 1.25rem 1.5rem;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(236, 72, 153, 0.08));
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    border-radius: 12px;
-    text-align: center;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .hero-cowork-lead {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 0;
 }
 
 .hero-cowork-lead strong {
     color: var(--accent);
 }
 
-.hero-cowork-prereq {
+.hero-cowork-actions {
     display: flex;
-    justify-content: center;
+    align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .prereq-tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    background: rgba(139, 92, 246, 0.15);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+    background: var(--bg-tertiary);
     color: var(--text-muted);
+    border: 1px solid var(--border);
     border-radius: 4px;
 }
 
 .btn-cowork {
     display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    padding: 0.35rem 0.75rem;
+    background: var(--accent);
     color: white;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background-color 0.15s ease;
 }
 
 .btn-cowork:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    background: var(--accent-hover);
     color: white;
 }
 
@@ -328,30 +327,18 @@
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
-    .hero-cowork-box {
-        padding: 1rem 1.25rem;
-    }
-
-    .hero-cowork-lead {
-        font-size: 0.9rem;
-    }
-
-    .btn-cowork {
-        font-size: 0.85rem;
-        padding: 0.55rem 1rem;
-    }
 }
 
 @media (max-width: 480px) {
     .hero-logo {
-        width: 80px;
+        width: 36px;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .hero-tagline {
@@ -368,16 +355,8 @@
 
     .hero-badges {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
-    .hero-cowork-prereq {
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .prereq-tag {
-        display: inline-block;
-    }
 }
 </style>
