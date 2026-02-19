@@ -142,7 +142,7 @@ const gaId = 'G-WH1C8CM79E'
 
     <!-- Additional JSON-LD schemas (page-specific) -->
     {jsonLd?.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", ...schema })} />
     ))}
 
     <!-- Google Analytics 4 via Partytown -->

@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import Onboarding from '../../components/landing/Onboarding.astro'
+import Methodologies from '../../components/landing/Methodologies.astro'
 
 const title = 'Learning to Code with AI: Junior Developer Guide | Free'
 const description = 'Free guide for junior developers on using AI responsibly while learning to code. UVAL Protocol, 30-day plan, Claude Code configuration for learning mode.'
@@ -9,26 +11,31 @@ const jsonLd = [
     "@type": "Article",
     "headline": "Learning to Code with AI: The Conscious Developer's Guide",
     "description": "Guide for junior developers on using AI responsibly while learning to code",
+    "keywords": "learning to code with AI, junior developer AI tools, Claude Code for beginners, AI coding assistant learning, UVAL protocol, avoid AI dependency, 30-day coding plan, responsible AI use",
     "url": "https://cc.bruniaux.com/learning/",
     "mainEntityOfPage": "https://cc.bruniaux.com/learning/",
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-01-17",
-    "dateModified": "2026-02-17",
+    "dateModified": "2026-02-19",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
       "audienceType": "Junior developers, CS students, bootcamp graduates, career changers"
-    }
+    },
+    "educationalLevel": "beginner",
+    "teaches": "How to use AI coding tools responsibly without becoming dependent on them"
   }
 ]
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- 1. Hero -->
   <header class="page-hero">
     <div class="container">
       <h1>Learning to Code with AI</h1>
-      <p class="tagline">The guide for junior developers who want to use AI to accelerate their learning--without becoming dependent on it.</p>
+      <p class="tagline">The guide for developers who want to use AI to accelerate their learning — without becoming dependent on it.</p>
 
       <div class="warning-box">
         <p><strong>The hard truth:</strong> AI can make you 3x more productive <em>or</em> unemployable in 3 years. Which path you take depends entirely on how you use it.</p>
@@ -36,250 +43,15 @@ const jsonLd = [
 
       <div class="cta-buttons">
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md" target="_blank" class="btn btn-primary">Read Full Guide &rarr;</a>
-        <a href="#self-check" class="btn btn-secondary">Take Self-Check</a>
+        <a href="#choose-path" class="btn btn-secondary">Find Your Path</a>
       </div>
     </div>
   </header>
 
-  <!-- Quick Self-Check -->
-  <section class="content-section" id="self-check">
-    <h2>Quick Self-Check</h2>
-    <p>Answer each question honestly. Your score appears after answering all 5.</p>
-
-    <div class="self-check">
-      <div class="check-item">
-        <span class="question">Can you explain the last piece of code AI generated for you?</span>
-        <div class="toggle-group" data-question="1">
-          <button class="toggle-btn yes">YES</button>
-          <button class="toggle-btn no">NO</button>
-        </div>
-      </div>
-      <div class="check-item">
-        <span class="question">Have you debugged code without AI this week?</span>
-        <div class="toggle-group" data-question="2">
-          <button class="toggle-btn yes">YES</button>
-          <button class="toggle-btn no">NO</button>
-        </div>
-      </div>
-      <div class="check-item">
-        <span class="question">Do you understand WHY the solution works, or just that it compiles?</span>
-        <div class="toggle-group" data-question="3">
-          <button class="toggle-btn yes">YES</button>
-          <button class="toggle-btn no">NO</button>
-        </div>
-      </div>
-      <div class="check-item">
-        <span class="question">Could you write the same function without AI assistance?</span>
-        <div class="toggle-group" data-question="4">
-          <button class="toggle-btn yes">YES</button>
-          <button class="toggle-btn no">NO</button>
-        </div>
-      </div>
-      <div class="check-item">
-        <span class="question">Do you know the limitations of AI for this type of problem?</span>
-        <div class="toggle-group" data-question="5">
-          <button class="toggle-btn yes">YES</button>
-          <button class="toggle-btn no">NO</button>
-        </div>
-      </div>
-
-      <div class="score-result" id="score-result" style="display: none;">
-        <div class="score" id="score-value">0/5</div>
-        <div class="recommendation" id="recommendation"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Three Patterns -->
-  <section class="content-section">
-    <h2>The Three Developer Patterns</h2>
-    <p>Which one are you? Be honest.</p>
-
-    <div class="patterns-grid">
-      <div class="pattern-card dependent">
-        <h3>Dependent</h3>
-        <p class="signs"><strong>Signs:</strong> Copy-paste without understanding, can't debug AI code, anxiety without AI</p>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#breaking-dependency" class="action" target="_blank">&rarr; Read "Breaking Dependency" section</a>
-      </div>
-
-      <div class="pattern-card avoidant">
-        <h3>Avoidant</h3>
-        <p class="signs"><strong>Signs:</strong> Refuses AI "on principle", slower than peers, missing out on productivity gains</p>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#embracing-ai-tools" class="action" target="_blank">&rarr; Read "Embracing AI Tools" section</a>
-      </div>
-
-      <div class="pattern-card augmented">
-        <h3>Augmented</h3>
-        <p class="signs"><strong>Signs:</strong> Uses AI critically, understands everything, can work with or without AI</p>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#optimizing-your-flow" class="action" target="_blank">&rarr; Read "Optimizing Your Flow" section</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- UVAL Protocol -->
-  <section class="content-section">
-    <h2>The UVAL Protocol</h2>
-    <p>Your framework for learning with AI without losing skills.</p>
-
-    <div class="uval-steps">
-      <div class="uval-step">
-        <div class="letter">U</div>
-        <div class="content">
-          <h4>Understand First (15-min Rule)</h4>
-          <p>Before asking AI: State the problem in ONE sentence. List 3 possible approaches. Identify what you DON'T know. Then ask AI with context.</p>
-          <div class="implementation">
-            # In your CLAUDE.md<br>
-            Before generating code, ask me:<br>
-            1. What approaches have I considered?<br>
-            2. What specifically am I stuck on?
-          </div>
-        </div>
-      </div>
-
-      <div class="uval-step">
-        <div class="letter">V</div>
-        <div class="content">
-          <h4>Verify (Explain It Back)</h4>
-          <p>If you can't explain the code to a colleague, you don't really understand it.</p>
-          <div class="implementation">
-            # Use /learn:quiz command after code generation<br>
-            Claude asks YOU to explain what the code does
-          </div>
-        </div>
-      </div>
-
-      <div class="uval-step">
-        <div class="letter">A</div>
-        <div class="content">
-          <h4>Apply (Transform, Don't Copy)</h4>
-          <p>Never copy-paste raw. Modify at least one element (variable name, structure, or edge case) to force genuine understanding.</p>
-          <div class="implementation">
-            Forbidden: Copy-paste verbatim<br>
-            Required: Adapt to your context
-          </div>
-        </div>
-      </div>
-
-      <div class="uval-step">
-        <div class="letter">L</div>
-        <div class="content">
-          <h4>Learn (Capture the Insight)</h4>
-          <p>End each session by capturing one thing you learned. A single insight, not a full journal.</p>
-          <div class="implementation">
-            # Session-end hook automatically asks:<br>
-            "What's ONE thing you learned today?"<br>
-            &rarr; Logs to ~/claude-learnings.md
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Learning Mode -->
-  <section class="content-section">
-    <h2>Configure Learning Mode</h2>
-    <p>Claude Code can be configured to support your learning, alongside producing code.</p>
-
-    <div class="learning-mode-grid">
-      <div class="learning-mode-card">
-        <h3>CLAUDE.md Configuration</h3>
-        <p>Add this to your project's CLAUDE.md to make Claude ask questions before generating code:</p>
-        <div class="code-block">
-          <code>
-## Learning Mode<br>
-Before generating code, ask me:<br>
-1. What approaches have I considered?<br>
-2. What am I stuck on specifically?<br>
-3. What do I expect the solution to look like?<br>
-<br>
-If I skip these, remind me to think first.
-          </code>
-        </div>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">Full Template &rarr;</a>
-      </div>
-
-      <div class="learning-mode-card">
-        <h3>Slash Commands for Learning</h3>
-        <table class="commands-table">
-          <tr><td><code>/explain</code></td><td>Explain existing code (built-in)</td></tr>
-          <tr><td><code>/learn:quiz</code></td><td>Test your understanding after implementing</td></tr>
-          <tr><td><code>/learn:teach</code></td><td>Step-by-step explanation of a topic</td></tr>
-          <tr><td><code>/learn:alternatives</code></td><td>Show other approaches & trade-offs</td></tr>
-        </table>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/" target="_blank" class="btn btn-secondary">View /learn: commands &rarr;</a>
-      </div>
-
-      <div class="learning-mode-card">
-        <h3>The 70/30 Rule</h3>
-        <p>Balance producing and learning each week:</p>
-        <div class="ratio-visual">
-          <div class="ratio-bar">
-            <div class="ratio-segment produce" style="width: 70%;">70% Produce</div>
-            <div class="ratio-segment learn" style="width: 30%;">30% Learn</div>
-          </div>
-        </div>
-        <ul class="ratio-details">
-          <li><strong>70% Production:</strong> Use AI freely, focus on output</li>
-          <li><strong>30% Learning:</strong> No AI, or AI as teacher only</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 30-Day Plan -->
-  <section class="content-section">
-    <h2>30-Day Progression Plan</h2>
-    <p>Week-by-week guide to mastering AI-assisted development.</p>
-
-    <table class="plan-table">
-      <thead>
-        <tr><th>Week</th><th>Focus</th><th>AI Ratio</th><th>Exercise</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Week 1</strong></td><td>Foundations</td><td><span class="ai-ratio low">20% AI</span></td><td>Build feature WITHOUT AI, then compare</td></tr>
-        <tr><td><strong>Week 2</strong></td><td>Understanding</td><td><span class="ai-ratio medium">40% AI</span></td><td>Use AI, but explain every line</td></tr>
-        <tr><td><strong>Week 3</strong></td><td>Critical Use</td><td><span class="ai-ratio medium">60% AI</span></td><td>Challenge AI suggestions, find bugs</td></tr>
-        <tr><td><strong>Week 4</strong></td><td>Augmented</td><td><span class="ai-ratio high">70% AI</span></td><td>Full productivity with verification</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- Templates -->
-  <section class="content-section">
-    <h2>Ready-to-Use Templates</h2>
-    <p>Configure Claude Code to support both learning and producing.</p>
-
-    <div class="templates-list">
-      <div class="template-item">
-        <div class="info">
-          <h4>Learning Mode CLAUDE.md</h4>
-          <p>Configuration that makes Claude explain the reasoning before generating the code. Includes challenge mode and interview prep.</p>
-        </div>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
-      </div>
-
-      <div class="template-item">
-        <div class="info">
-          <h4>/learn: Commands</h4>
-          <p>Quiz, teach, and explore alternatives. Namespaced commands for learning workflows.</p>
-        </div>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/" target="_blank" class="btn btn-secondary">View &rarr;</a>
-      </div>
-
-      <div class="template-item">
-        <div class="info">
-          <h4>Learning Capture Hook</h4>
-          <p>Session-end hook that prompts for ONE learning insight. Builds a learning journal with zero friction.</p>
-        </div>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/learning-capture.sh" target="_blank" class="btn btn-secondary">View &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Choose Your Path -->
+  <!-- 2. Choose Your Path (orientation immédiate) -->
   <section class="content-section" id="choose-path">
     <h2>Choose Your Path</h2>
-    <p>Learning tracks adapted to your experience level and role.</p>
+    <p>Learning tracks adapted to your experience level and role. Pick yours before diving in.</p>
 
     <div class="paths-grid">
       <div class="path-card">
@@ -372,7 +144,248 @@ If I skip these, remind me to think first.
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- 3. Quick Self-Check (diagnostic après orientation) -->
+  <section class="content-section" id="self-check">
+    <h2>Quick Self-Check</h2>
+    <p>Answer each question honestly. Your score appears after answering all 5.</p>
+
+    <div class="self-check">
+      <div class="check-item">
+        <span class="question">Can you explain the last piece of code AI generated for you?</span>
+        <div class="toggle-group" data-question="1">
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="question">Have you debugged code without AI this week?</span>
+        <div class="toggle-group" data-question="2">
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="question">Do you understand WHY the solution works, or just that it compiles?</span>
+        <div class="toggle-group" data-question="3">
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="question">Could you write the same function without AI assistance?</span>
+        <div class="toggle-group" data-question="4">
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="question">Do you know the limitations of AI for this type of problem?</span>
+        <div class="toggle-group" data-question="5">
+          <button class="toggle-btn yes">YES</button>
+          <button class="toggle-btn no">NO</button>
+        </div>
+      </div>
+
+      <div class="score-result" id="score-result" style="display: none;">
+        <div class="score" id="score-value">0/5</div>
+        <div class="recommendation" id="recommendation"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Three Developer Patterns -->
+  <section class="content-section">
+    <h2>The Three Developer Patterns</h2>
+    <p>Which one are you? Be honest.</p>
+
+    <div class="patterns-grid">
+      <div class="pattern-card dependent">
+        <h3>Dependent</h3>
+        <p class="signs"><strong>Signs:</strong> Copy-paste without understanding, can't debug AI code, anxiety without AI</p>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#breaking-dependency" class="action" target="_blank">&rarr; Read "Breaking Dependency" section</a>
+      </div>
+
+      <div class="pattern-card avoidant">
+        <h3>Avoidant</h3>
+        <p class="signs"><strong>Signs:</strong> Refuses AI "on principle", slower than peers, missing out on productivity gains</p>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#embracing-ai-tools" class="action" target="_blank">&rarr; Read "Embracing AI Tools" section</a>
+      </div>
+
+      <div class="pattern-card augmented">
+        <h3>Augmented</h3>
+        <p class="signs"><strong>Signs:</strong> Uses AI critically, understands everything, can work with or without AI</p>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md#optimizing-your-flow" class="action" target="_blank">&rarr; Read "Optimizing Your Flow" section</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Configure Learning Mode (setup avant la méthode) -->
+  <section class="content-section">
+    <h2>Configure Learning Mode</h2>
+    <p>Claude Code can be configured to support your learning, alongside producing code.</p>
+
+    <div class="learning-mode-grid">
+      <div class="learning-mode-card">
+        <h3>CLAUDE.md Configuration</h3>
+        <p>Add this to your project's CLAUDE.md to make Claude ask questions before generating code:</p>
+        <div class="code-block">
+          <code>
+## Learning Mode<br>
+Before generating code, ask me:<br>
+1. What approaches have I considered?<br>
+2. What am I stuck on specifically?<br>
+3. What do I expect the solution to look like?<br>
+<br>
+If I skip these, remind me to think first.
+          </code>
+        </div>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">Full Template &rarr;</a>
+      </div>
+
+      <div class="learning-mode-card">
+        <h3>Slash Commands for Learning</h3>
+        <table class="commands-table">
+          <tr><td><code>/explain</code></td><td>Explain existing code (built-in)</td></tr>
+          <tr><td><code>/learn:quiz</code></td><td>Test your understanding after implementing</td></tr>
+          <tr><td><code>/learn:teach</code></td><td>Step-by-step explanation of a topic</td></tr>
+          <tr><td><code>/learn:alternatives</code></td><td>Show other approaches & trade-offs</td></tr>
+        </table>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/" target="_blank" class="btn btn-secondary">View /learn: commands &rarr;</a>
+      </div>
+
+      <div class="learning-mode-card">
+        <h3>The 70/30 Rule</h3>
+        <p>Balance producing and learning each week:</p>
+        <div class="ratio-visual">
+          <div class="ratio-bar">
+            <div class="ratio-segment produce" style="width: 70%;">70% Produce</div>
+            <div class="ratio-segment learn" style="width: 30%;">30% Learn</div>
+          </div>
+        </div>
+        <ul class="ratio-details">
+          <li><strong>70% Production:</strong> Use AI freely, focus on output</li>
+          <li><strong>30% Learning:</strong> No AI, or AI as teacher only</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. UVAL Protocol -->
+  <section class="content-section">
+    <h2>The UVAL Protocol</h2>
+    <p>Your framework for learning with AI without losing skills.</p>
+
+    <div class="uval-steps">
+      <div class="uval-step">
+        <div class="letter">U</div>
+        <div class="content">
+          <h4>Understand First (15-min Rule)</h4>
+          <p>Before asking AI: State the problem in ONE sentence. List 3 possible approaches. Identify what you DON'T know. Then ask AI with context.</p>
+          <div class="implementation">
+            # In your CLAUDE.md<br>
+            Before generating code, ask me:<br>
+            1. What approaches have I considered?<br>
+            2. What specifically am I stuck on?
+          </div>
+        </div>
+      </div>
+
+      <div class="uval-step">
+        <div class="letter">V</div>
+        <div class="content">
+          <h4>Verify (Explain It Back)</h4>
+          <p>If you can't explain the code to a colleague, you don't really understand it.</p>
+          <div class="implementation">
+            # Use /learn:quiz command after code generation<br>
+            Claude asks YOU to explain what the code does
+          </div>
+        </div>
+      </div>
+
+      <div class="uval-step">
+        <div class="letter">A</div>
+        <div class="content">
+          <h4>Apply (Transform, Don't Copy)</h4>
+          <p>Never copy-paste raw. Modify at least one element (variable name, structure, or edge case) to force genuine understanding.</p>
+          <div class="implementation">
+            Forbidden: Copy-paste verbatim<br>
+            Required: Adapt to your context
+          </div>
+        </div>
+      </div>
+
+      <div class="uval-step">
+        <div class="letter">L</div>
+        <div class="content">
+          <h4>Learn (Capture the Insight)</h4>
+          <p>End each session by capturing one thing you learned. A single insight, not a full journal.</p>
+          <div class="implementation">
+            # Session-end hook automatically asks:<br>
+            "What's ONE thing you learned today?"<br>
+            &rarr; Logs to ~/claude-learnings.md
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 30-Day Progression Plan -->
+  <section class="content-section">
+    <h2>30-Day Progression Plan</h2>
+    <p>Week-by-week guide to mastering AI-assisted development.</p>
+
+    <table class="plan-table">
+      <thead>
+        <tr><th>Week</th><th>Focus</th><th>AI Ratio</th><th>Exercise</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Week 1</strong></td><td>Foundations</td><td><span class="ai-ratio low">20% AI</span></td><td>Build feature WITHOUT AI, then compare</td></tr>
+        <tr><td><strong>Week 2</strong></td><td>Understanding</td><td><span class="ai-ratio medium">40% AI</span></td><td>Use AI, but explain every line</td></tr>
+        <tr><td><strong>Week 3</strong></td><td>Critical Use</td><td><span class="ai-ratio medium">60% AI</span></td><td>Challenge AI suggestions, find bugs</td></tr>
+        <tr><td><strong>Week 4</strong></td><td>Augmented</td><td><span class="ai-ratio high">70% AI</span></td><td>Full productivity with verification</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 8. Ready-to-Use Templates -->
+  <section class="content-section">
+    <h2>Ready-to-Use Templates</h2>
+    <p>Configure Claude Code to support both learning and producing.</p>
+
+    <div class="templates-list">
+      <div class="template-item">
+        <div class="info">
+          <h4>Learning Mode CLAUDE.md</h4>
+          <p>Configuration that makes Claude explain the reasoning before generating the code. Includes challenge mode and interview prep.</p>
+        </div>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
+      </div>
+
+      <div class="template-item">
+        <div class="info">
+          <h4>/learn: Commands</h4>
+          <p>Quiz, teach, and explore alternatives. Namespaced commands for learning workflows.</p>
+        </div>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/" target="_blank" class="btn btn-secondary">View &rarr;</a>
+      </div>
+
+      <div class="template-item">
+        <div class="info">
+          <h4>Learning Capture Hook</h4>
+          <p>Session-end hook that prompts for ONE learning insight. Builds a learning journal with zero friction.</p>
+        </div>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/learning-capture.sh" target="_blank" class="btn btn-secondary">View &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Methodologies (section avancée) -->
+  <Methodologies />
+
+  <!-- 10. Onboarding (= action finale après tout le contexte) -->
+  <Onboarding />
+
+  <!-- 11. CTA unique -->
   <section class="content-section">
     <div class="cta-section">
       <h2>Ready to Learn the Right Way?</h2>
@@ -385,8 +398,6 @@ If I skip these, remind me to think first.
   </section>
 
   <style>
-    /* Page-specific hero extensions (warning box) */
-
     .warning-box {
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
@@ -623,15 +634,8 @@ If I skip these, remind me to think first.
       transform: translateY(-4px);
       box-shadow: var(--shadow-card-hover);
     }
-    .path-card.featured {
-      border-color: var(--accent);
-    }
-    .path-header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      margin-bottom: var(--space-sm);
-    }
+    .path-card.featured { border-color: var(--accent); }
+    .path-header { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
     .path-icon { font-size: 1.5rem; }
     .path-header h3 { font-size: 1.2rem; }
     .path-description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: var(--space-lg); }
@@ -681,7 +685,6 @@ If I skip these, remind me to think first.
       }
     }
 
-    // Wire up click handlers (replacing inline onclick)
     document.querySelectorAll('.toggle-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const group = btn.closest('.toggle-group') as HTMLElement;
@@ -692,4 +695,5 @@ If I skip these, remind me to think first.
       });
     });
   </script>
+
 </Layout>

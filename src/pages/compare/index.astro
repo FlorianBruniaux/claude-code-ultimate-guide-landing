@@ -2,322 +2,570 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Claude Code vs Copilot vs Cursor - AI Tools Comparison & Ecosystem'
-const description = 'Compare Claude Code with GitHub Copilot and Cursor. Discover complementary AI tools and workflows for a complete development ecosystem.'
+const description = 'Claude Code vs Copilot vs Cursor: objective comparison with workflows. 161 templates, 274-question quiz, 19 CVE database. Discover which AI tools complement each other.'
 
 const jsonLd = [
   {
     "@type": "Article",
     "headline": "AI Tools Ecosystem: Claude Code vs Copilot vs Cursor",
     "description": "Compare AI coding tools and discover complementary workflows for maximum productivity",
+    "keywords": "Claude Code vs Copilot, Claude Code vs Cursor, AI coding tools comparison, GitHub Copilot alternative, Cursor alternative, AI development tools, MCP servers, Claude Code ecosystem",
     "url": "https://cc.bruniaux.com/compare/",
     "mainEntityOfPage": "https://cc.bruniaux.com/compare/",
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-02-17",
-    "dateModified": "2026-02-17",
-    "inLanguage": "en"
+    "dateModified": "2026-02-19",
+    "inLanguage": "en",
+    "about": [
+      {"@type": "SoftwareApplication", "name": "Claude Code", "applicationCategory": "DeveloperApplication"},
+      {"@type": "SoftwareApplication", "name": "GitHub Copilot", "applicationCategory": "DeveloperApplication"},
+      {"@type": "SoftwareApplication", "name": "Cursor", "applicationCategory": "DeveloperApplication"}
+    ]
   }
 ]
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
-  <header class="page-hero">
+
+  <!-- Hero -->
+  <header class="compare-hero">
     <div class="container">
-      <h1>AI Tools Ecosystem</h1>
-      <p class="tagline">Claude Code excels at implementation. Chain it with the right tools for a complete workflow.</p>
-      <a href="/" class="btn btn-secondary">&larr; Back to Guide</a>
+      <div class="compare-hero-breadcrumb">
+        <a href="/">&larr; Guide</a>
+        <span>/</span>
+        <span>Compare</span>
+      </div>
+      <h1>Compare & Choose</h1>
+      <p class="compare-hero-tagline">Two perspectives: how this guide fits among resources, and how Claude Code fits in the broader AI tool ecosystem.</p>
+      <nav class="compare-hero-nav" aria-label="Page sections">
+        <a href="#guide-vs" class="compare-nav-pill">This Guide vs Others</a>
+        <a href="#ecosystem" class="compare-nav-pill">AI Ecosystem</a>
+        <a href="#workflows" class="compare-nav-pill">Workflow Patterns</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Workflow Tabs -->
-  <section class="content-section">
-    <h2>Workflow Patterns</h2>
-    <p>Select a workflow type to see how AI tools chain together.</p>
+  <!-- Section 1: This Guide vs Other Resources -->
+  <section class="compare-section" id="guide-vs">
+    <div class="container">
+      <div class="compare-section-header">
+        <h2>This Guide vs Other Resources</h2>
+        <p>Different resources serve different needs. Here's where this guide fits.</p>
+      </div>
 
-    <div class="workflow-tabs" role="tablist" aria-label="Workflow types">
-      <button class="workflow-tab active" data-workflow="standard" role="tab" aria-selected="true" aria-controls="workflow-standard">&#128203; Standard</button>
-      <button class="workflow-tab" data-workflow="design" role="tab" aria-selected="false" aria-controls="workflow-design">&#127912; Design-first</button>
-      <button class="workflow-tab" data-workflow="data" role="tab" aria-selected="false" aria-controls="workflow-data">&#128202; Data-driven</button>
-      <button class="workflow-tab" data-workflow="docs" role="tab" aria-selected="false" aria-controls="workflow-docs">&#128218; Documentation</button>
-    </div>
+      <!-- Comparison Table -->
+      <div class="guide-table-wrapper">
+        <table class="guide-comparison-table">
+          <thead>
+            <tr>
+              <th scope="col">Your Goal</th>
+              <th scope="col">This Guide</th>
+              <th scope="col">everything-claude-code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Understand WHY patterns work</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Deep explanations + architecture</td>
+              <td><span class="gc-partial">~</span> Config-focused</td>
+            </tr>
+            <tr>
+              <td>Quick setup for projects</td>
+              <td><span class="gc-partial">~</span> Available but not the priority</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Battle-tested production configs</td>
+            </tr>
+            <tr>
+              <td>Learn trade-offs</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Decision frameworks + comparisons</td>
+              <td><span class="gc-partial">~</span> Lists patterns, no trade-off analysis</td>
+            </tr>
+            <tr>
+              <td>Security hardening</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database (18 CVEs, 400+ malicious MCPs)</td>
+              <td><span class="gc-partial">~</span> Basic patterns only</td>
+            </tr>
+            <tr>
+              <td>Test understanding</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 274-question quiz</td>
+              <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not available</td>
+            </tr>
+            <tr>
+              <td>Methodologies (TDD/SDD/BDD)</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Full workflow guides</td>
+              <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not covered</td>
+            </tr>
+            <tr>
+              <td>Copy-paste ready templates</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 113 templates</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 200+ templates</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Workflow: Standard (default) -->
-    <div class="ecosystem-workflow" data-workflow="standard">
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#9997;&#65039;</span>
-        <div class="workflow-step-label">Clarify</div>
-        <div class="workflow-step-tool">Claude</div>
-        <div class="workflow-step-output">structured request</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128269;</span>
-        <div class="workflow-step-label">Research</div>
-        <div class="workflow-step-tool">Perplexity</div>
-        <div class="workflow-step-output">spec.md</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128187;</span>
-        <div class="workflow-step-label">Implement</div>
-        <div class="workflow-step-tool">Claude Code</div>
-        <div class="workflow-step-output">working code</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128200;</span>
-        <div class="workflow-step-label">Deliver</div>
-        <div class="workflow-step-tool">Kimi</div>
-        <div class="workflow-step-output">presentation.pptx</div>
-      </div>
-    </div>
-
-    <!-- Workflow: Design-first -->
-    <div class="ecosystem-workflow hidden" data-workflow="design">
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#127912;</span>
-        <div class="workflow-step-label">Design</div>
-        <div class="workflow-step-tool">Figma / Gemini</div>
-        <div class="workflow-step-output">mockup.png</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128187;</span>
-        <div class="workflow-step-label">Implement</div>
-        <div class="workflow-step-tool">Claude Code</div>
-        <div class="workflow-step-output">working code</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128640;</span>
-        <div class="workflow-step-label">Deploy</div>
-        <div class="workflow-step-tool">Vercel / AWS</div>
-        <div class="workflow-step-output">live site</div>
-      </div>
-    </div>
-
-    <!-- Workflow: Data-driven -->
-    <div class="ecosystem-workflow hidden" data-workflow="data">
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128451;&#65039;</span>
-        <div class="workflow-step-label">Explore Data</div>
-        <div class="workflow-step-tool">DB / API</div>
-        <div class="workflow-step-output">raw data</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128187;</span>
-        <div class="workflow-step-label">Analyze</div>
-        <div class="workflow-step-tool">Claude Code</div>
-        <div class="workflow-step-output">insights</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128200;</span>
-        <div class="workflow-step-label">Visualize</div>
-        <div class="workflow-step-tool">Dashboard</div>
-        <div class="workflow-step-output">report.html</div>
-      </div>
-    </div>
-
-    <!-- Workflow: Documentation -->
-    <div class="ecosystem-workflow hidden" data-workflow="docs">
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128218;</span>
-        <div class="workflow-step-label">Gather</div>
-        <div class="workflow-step-tool">Sources</div>
-        <div class="workflow-step-output">docs, code</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#128187;</span>
-        <div class="workflow-step-label">Write</div>
-        <div class="workflow-step-tool">Claude Code</div>
-        <div class="workflow-step-output">documentation</div>
-      </div>
-      <span class="workflow-arrow">&rarr;</span>
-      <div class="workflow-step">
-        <span class="workflow-step-icon">&#127911;</span>
-        <div class="workflow-step-label">Distribute</div>
-        <div class="workflow-step-tool">NotebookLM</div>
-        <div class="workflow-step-output">audio podcast</div>
+      <!-- Recommended Workflow -->
+      <div class="recommended-workflow">
+        <h3>Recommended Workflow</h3>
+        <p class="recommended-workflow-sub">These resources are complementary, not competitive. Use both.</p>
+        <div class="workflow-steps-row">
+          <div class="workflow-step-card">
+            <div class="ws-num">1</div>
+            <div class="ws-content">
+              <strong>Learn Here</strong>
+              <p>Understand the why, the trade-offs, and build a solid mental model</p>
+              <span class="ws-tag">This Guide</span>
+            </div>
+          </div>
+          <div class="workflow-arrow-sep" aria-hidden="true">&rarr;</div>
+          <div class="workflow-step-card">
+            <div class="ws-num">2</div>
+            <div class="ws-content">
+              <strong>Build There</strong>
+              <p>Grab production-ready configs and templates from everything-cc</p>
+              <span class="ws-tag">everything-claude-code</span>
+            </div>
+          </div>
+          <div class="workflow-arrow-sep" aria-hidden="true">&rarr;</div>
+          <div class="workflow-step-card">
+            <div class="ws-num">3</div>
+            <div class="ws-content">
+              <strong>Deep Dive Here</strong>
+              <p>Security audit, methodology selection, skill assessment</p>
+              <span class="ws-tag">This Guide</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Ecosystem Grid -->
-  <section class="content-section">
-    <h2>Complementary AI Tools</h2>
-    <p>Each tool covers a different part of the development workflow. Claude Code handles implementation; these tools fill the gaps.</p>
+  <!-- Section 2: AI Tools Ecosystem -->
+  <section class="compare-section compare-section--alt" id="ecosystem">
+    <div class="container">
+      <div class="compare-section-header">
+        <h2>Complementary AI Tools</h2>
+        <p>Claude Code excels at implementation. Chain it with the right tools for a complete workflow. Each tool covers a distinct phase — not competitors, complements.</p>
+      </div>
 
-    <div class="ecosystem-grid">
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#1-perplexity-ai-research--sourcing" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#128269;</span>
-        <div class="ecosystem-card-title">Perplexity</div>
-        <div class="ecosystem-card-desc">Deep research with verified sources</div>
-        <div class="ecosystem-card-usecase">Before implementation: specs, best practices</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#2-google-gemini-visual-understanding" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#128065;</span>
-        <div class="ecosystem-card-title">Gemini</div>
-        <div class="ecosystem-card-desc">Visual understanding &amp; analysis</div>
-        <div class="ecosystem-card-usecase">Design &rarr; Code conversion</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#4-notebooklm-synthesis--audio" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#127911;</span>
-        <div class="ecosystem-card-title">NotebookLM</div>
-        <div class="ecosystem-card-desc">Audio synthesis &amp; podcasts</div>
-        <div class="ecosystem-card-usecase">Onboarding, doc review</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#3-kimi-pptx--long-document-generation" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#128200;</span>
-        <div class="ecosystem-card-title">Kimi</div>
-        <div class="ecosystem-card-desc">PPTX &amp; document generation</div>
-        <div class="ecosystem-card-usecase">Code &rarr; Stakeholder deck</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#6-ui-prototypers-v0-bolt-lovable" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#9889;</span>
-        <div class="ecosystem-card-title">v0 / Bolt / Lovable</div>
-        <div class="ecosystem-card-desc">Rapid UI prototyping</div>
-        <div class="ecosystem-card-usecase">Quick component preview</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#5-ide-based-tools-cursor-windsurf-cline" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#128187;</span>
-        <div class="ecosystem-card-title">Cursor / Copilot</div>
-        <div class="ecosystem-card-desc">Inline IDE autocomplete</div>
-        <div class="ecosystem-card-usecase">Fast typing, small edits</div>
-      </a>
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" class="ecosystem-card" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#127908;</span>
-        <div class="ecosystem-card-title">Wispr Flow</div>
-        <div class="ecosystem-card-desc">Voice-to-Text (4x faster)</div>
-        <div class="ecosystem-card-usecase">Dictate prompts, hands-free coding</div>
-      </a>
-      <a href="https://cowork.bruniaux.com/" class="ecosystem-card ecosystem-card-highlight" target="_blank" rel="noopener">
-        <span class="ecosystem-card-icon" aria-hidden="true">&#128188;</span>
-        <div class="ecosystem-card-title">Claude Cowork</div>
-        <div class="ecosystem-card-desc">Desktop AI for knowledge workers</div>
-        <div class="ecosystem-card-usecase">File automation, document creation</div>
-        <span class="ecosystem-badge">New Guide</span>
-      </a>
+      <div class="ecosystem-grid">
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#1-perplexity-ai-research--sourcing" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#128269;</span>
+          <div class="ecosystem-card-title">Perplexity</div>
+          <div class="ecosystem-card-desc">Deep research with verified sources</div>
+          <div class="ecosystem-card-usecase">Before implementation: specs, best practices</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#2-google-gemini-visual-understanding" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#128065;</span>
+          <div class="ecosystem-card-title">Gemini</div>
+          <div class="ecosystem-card-desc">Visual understanding &amp; analysis</div>
+          <div class="ecosystem-card-usecase">Design &rarr; Code conversion</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#4-notebooklm-synthesis--audio" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#127911;</span>
+          <div class="ecosystem-card-title">NotebookLM</div>
+          <div class="ecosystem-card-desc">Audio synthesis &amp; podcasts</div>
+          <div class="ecosystem-card-usecase">Onboarding, doc review</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#3-kimi-pptx--long-document-generation" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#128200;</span>
+          <div class="ecosystem-card-title">Kimi</div>
+          <div class="ecosystem-card-desc">PPTX &amp; document generation</div>
+          <div class="ecosystem-card-usecase">Code &rarr; Stakeholder deck</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#6-ui-prototypers-v0-bolt-lovable" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#9889;</span>
+          <div class="ecosystem-card-title">v0 / Bolt / Lovable</div>
+          <div class="ecosystem-card-desc">Rapid UI prototyping</div>
+          <div class="ecosystem-card-usecase">Quick component preview</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#5-ide-based-tools-cursor-windsurf-cline" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#128187;</span>
+          <div class="ecosystem-card-title">Cursor / Copilot</div>
+          <div class="ecosystem-card-desc">Inline IDE autocomplete</div>
+          <div class="ecosystem-card-usecase">Fast typing, small edits</div>
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md#7-voice-to-text-wispr-flow" class="ecosystem-card" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#127908;</span>
+          <div class="ecosystem-card-title">Wispr Flow</div>
+          <div class="ecosystem-card-desc">Voice-to-Text (4x faster)</div>
+          <div class="ecosystem-card-usecase">Dictate prompts, hands-free coding</div>
+        </a>
+        <a href="https://cowork.bruniaux.com/" class="ecosystem-card ecosystem-card-highlight" target="_blank" rel="noopener">
+          <span class="ecosystem-card-icon" aria-hidden="true">&#128188;</span>
+          <div class="ecosystem-card-title">Claude Cowork</div>
+          <div class="ecosystem-card-desc">Desktop AI for knowledge workers</div>
+          <div class="ecosystem-card-usecase">File automation, document creation</div>
+          <span class="ecosystem-badge">New Guide</span>
+        </a>
+      </div>
+
+      <div class="ecosystem-footer-cta">
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" class="btn btn-secondary" target="_blank" rel="noopener">Full Ecosystem Guide &rarr;</a>
+      </div>
     </div>
+  </section>
 
-    <div class="ecosystem-cta">
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md" class="btn btn-secondary" target="_blank" rel="noopener">Full Ecosystem Guide &rarr;</a>
+  <!-- Section 3: Workflow Patterns -->
+  <section class="compare-section" id="workflows">
+    <div class="container">
+      <div class="compare-section-header">
+        <h2>Workflow Patterns</h2>
+        <p>Select a workflow type to see how AI tools chain together.</p>
+      </div>
+
+      <div class="workflow-tabs" role="tablist" aria-label="Workflow types">
+        <button class="workflow-tab active" data-workflow="standard" role="tab" aria-selected="true">&#128203; Standard</button>
+        <button class="workflow-tab" data-workflow="design" role="tab" aria-selected="false">&#127912; Design-first</button>
+        <button class="workflow-tab" data-workflow="data" role="tab" aria-selected="false">&#128202; Data-driven</button>
+        <button class="workflow-tab" data-workflow="docs" role="tab" aria-selected="false">&#128218; Documentation</button>
+      </div>
+
+      <div class="ecosystem-workflow" data-workflow="standard">
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#9997;&#65039;</span>
+          <div class="workflow-step-label">Clarify</div>
+          <div class="workflow-step-tool">Claude</div>
+          <div class="workflow-step-output">structured request</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128269;</span>
+          <div class="workflow-step-label">Research</div>
+          <div class="workflow-step-tool">Perplexity</div>
+          <div class="workflow-step-output">spec.md</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128187;</span>
+          <div class="workflow-step-label">Implement</div>
+          <div class="workflow-step-tool">Claude Code</div>
+          <div class="workflow-step-output">working code</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128200;</span>
+          <div class="workflow-step-label">Deliver</div>
+          <div class="workflow-step-tool">Kimi</div>
+          <div class="workflow-step-output">presentation.pptx</div>
+        </div>
+      </div>
+
+      <div class="ecosystem-workflow hidden" data-workflow="design">
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#127912;</span>
+          <div class="workflow-step-label">Design</div>
+          <div class="workflow-step-tool">Figma / Gemini</div>
+          <div class="workflow-step-output">mockup.png</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128187;</span>
+          <div class="workflow-step-label">Implement</div>
+          <div class="workflow-step-tool">Claude Code</div>
+          <div class="workflow-step-output">working code</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128640;</span>
+          <div class="workflow-step-label">Deploy</div>
+          <div class="workflow-step-tool">Vercel / AWS</div>
+          <div class="workflow-step-output">live site</div>
+        </div>
+      </div>
+
+      <div class="ecosystem-workflow hidden" data-workflow="data">
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128451;&#65039;</span>
+          <div class="workflow-step-label">Explore Data</div>
+          <div class="workflow-step-tool">DB / API</div>
+          <div class="workflow-step-output">raw data</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128187;</span>
+          <div class="workflow-step-label">Analyze</div>
+          <div class="workflow-step-tool">Claude Code</div>
+          <div class="workflow-step-output">insights</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128200;</span>
+          <div class="workflow-step-label">Visualize</div>
+          <div class="workflow-step-tool">Dashboard</div>
+          <div class="workflow-step-output">report.html</div>
+        </div>
+      </div>
+
+      <div class="ecosystem-workflow hidden" data-workflow="docs">
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128218;</span>
+          <div class="workflow-step-label">Gather</div>
+          <div class="workflow-step-tool">Sources</div>
+          <div class="workflow-step-output">docs, code</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#128187;</span>
+          <div class="workflow-step-label">Write</div>
+          <div class="workflow-step-tool">Claude Code</div>
+          <div class="workflow-step-output">documentation</div>
+        </div>
+        <span class="workflow-arrow">&rarr;</span>
+        <div class="workflow-step">
+          <span class="workflow-step-icon">&#127911;</span>
+          <div class="workflow-step-label">Distribute</div>
+          <div class="workflow-step-tool">NotebookLM</div>
+          <div class="workflow-step-output">audio podcast</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="content-section">
-    <div class="cta-section">
-      <h2>Master Claude Code</h2>
-      <p>The Ultimate Guide covers everything: setup, CLAUDE.md, agentic workflows, MCP, hooks, and more.</p>
-      <div class="cta-buttons">
-        <a href="/" class="btn btn-primary">Explore the Guide &rarr;</a>
+  <section class="compare-section compare-section--cta">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Ready to master Claude Code?</h2>
+        <p>The Ultimate Guide covers setup, CLAUDE.md, agentic workflows, MCP, hooks, security, and more.</p>
+        <div class="cta-block-btns">
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" class="btn btn-primary" target="_blank" rel="noopener">Read the Guide &rarr;</a>
+          <a href="/" class="btn btn-secondary">Back to Hub</a>
+        </div>
       </div>
     </div>
   </section>
 
   <style>
-    /* Hero */
-    /* Content sections */
-    .content-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-lg);
+    /* ── HERO ─────────────────────────────────────────────────────────────── */
+    .compare-hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      background-color: var(--bg-primary);
+      background-image: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
+      border-bottom: 1px solid var(--border);
     }
 
-    .content-section h2 {
-      font-size: 1.75rem;
+    .compare-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
       margin-bottom: var(--space-lg);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .compare-hero-breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .compare-hero-breadcrumb a:hover { color: var(--accent-hover); }
+
+    .compare-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+
+    .compare-hero-tagline {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: var(--space-xl);
+      line-height: 1.6;
+    }
+
+    .compare-hero-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .compare-nav-pill {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      background: var(--bg-secondary);
+      transition: all 0.15s ease;
+    }
+
+    .compare-nav-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────────────────────── */
+    .compare-section {
+      padding: var(--space-3xl) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-section--alt {
+      background-color: var(--bg-secondary);
+    }
+
+    .compare-section--cta {
+      border-bottom: none;
+    }
+
+    .compare-section-header {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .compare-section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
       padding-bottom: var(--space-sm);
       border-bottom: 2px solid var(--accent);
+      display: inline-block;
     }
 
-    .content-section > p {
+    .compare-section-header p {
       color: var(--text-secondary);
+      margin-top: var(--space-md);
+      max-width: 640px;
+    }
+
+    /* ── GUIDE COMPARISON TABLE ───────────────────────────────────────────── */
+    .guide-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .guide-comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background-color: var(--bg-secondary);
+    }
+
+    .guide-comparison-table th,
+    .guide-comparison-table td {
+      padding: var(--space-md) var(--space-lg);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .guide-comparison-table th {
+      background-color: var(--bg-tertiary);
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .guide-comparison-table th:first-child,
+    .guide-comparison-table td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    .guide-comparison-table th:first-child { background-color: var(--bg-tertiary); }
+    .guide-comparison-table td:first-child { background-color: var(--bg-secondary); font-weight: 500; }
+    .guide-comparison-table tbody tr:hover { background-color: var(--bg-tertiary); }
+    .guide-comparison-table tbody tr:last-child td { border-bottom: none; }
+
+    .gc-yes { color: var(--status-success); font-weight: 600; }
+    .gc-no { color: #8b949e; }
+    .gc-partial { color: var(--status-warning); font-weight: 500; }
+
+    /* ── RECOMMENDED WORKFLOW ─────────────────────────────────────────────── */
+    .recommended-workflow h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+
+    .recommended-workflow-sub {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
       margin-bottom: var(--space-xl);
     }
 
-    /* Workflow tabs */
-    .workflow-tabs {
+    .workflow-steps-row {
       display: flex;
-      justify-content: flex-start;
-      gap: var(--space-xs);
-      margin-bottom: var(--space-md);
-      flex-wrap: wrap;
-    }
-    .workflow-tab {
-      padding: var(--space-xs) var(--space-sm);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
-    }
-    .workflow-tab:hover {
-      border-color: var(--accent);
-      color: var(--text-primary);
-    }
-    .workflow-tab.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+      align-items: stretch;
+      gap: var(--space-md);
     }
 
-    /* Workflow diagram */
-    .ecosystem-workflow {
+    .workflow-step-card {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ws-num {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-md);
-      margin: var(--space-xl) 0;
-      flex-wrap: wrap;
-      padding: var(--space-lg);
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-lg);
-      border: 1px solid var(--border);
-    }
-    .ecosystem-workflow.hidden { display: none; }
-    .workflow-step {
-      text-align: center;
-      padding: var(--space-md);
-    }
-    .workflow-step-icon {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-xs);
-      display: block;
-    }
-    .workflow-step-label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-primary);
-      margin-bottom: var(--space-xs);
-    }
-    .workflow-step-tool {
-      font-size: 0.8rem;
-      color: var(--accent);
-    }
-    .workflow-step-output {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-    .workflow-arrow {
-      color: var(--accent);
-      font-size: 1.5rem;
+      min-width: 32px;
+      height: 32px;
+      background-color: var(--accent-tertiary);
+      color: #fff;
       font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    /* Ecosystem grid */
+    .ws-content strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+
+    .ws-content p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .ws-tag {
+      display: inline-block;
+      padding: 2px var(--space-sm);
+      background-color: var(--bg-tertiary);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      font-family: var(--font-mono);
+    }
+
+    .workflow-arrow-sep {
+      display: flex;
+      align-items: center;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      padding-top: var(--space-md);
+    }
+
+    /* ── ECOSYSTEM GRID ───────────────────────────────────────────────────── */
     .ecosystem-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: var(--space-lg);
-      margin-top: var(--space-xl);
     }
+
     .ecosystem-card {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
@@ -327,43 +575,24 @@ const jsonLd = [
       transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
       text-decoration: none;
       display: block;
+      position: relative;
     }
+
     .ecosystem-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent);
       box-shadow: var(--shadow-card-hover);
       text-decoration: none;
     }
-    .ecosystem-card-icon {
-      font-size: 2rem;
-      margin-bottom: var(--space-sm);
-      display: block;
-    }
-    .ecosystem-card-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: var(--space-xs);
-      color: var(--text-primary);
-    }
-    .ecosystem-card-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: var(--space-sm);
-      line-height: 1.5;
-    }
-    .ecosystem-card-usecase {
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .ecosystem-card-highlight {
-      position: relative;
-      border: 2px solid var(--accent);
-      background: var(--surface-elevated);
-    }
-    .ecosystem-card-highlight:hover {
-      border-color: var(--accent-hover);
-    }
+
+    .ecosystem-card-icon { font-size: 2rem; margin-bottom: var(--space-sm); display: block; }
+    .ecosystem-card-title { font-weight: 600; font-size: 1.05rem; margin-bottom: var(--space-xs); color: var(--text-primary); }
+    .ecosystem-card-desc { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--space-sm); line-height: 1.5; }
+    .ecosystem-card-usecase { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+
+    .ecosystem-card-highlight { border: 2px solid var(--accent); }
+    .ecosystem-card-highlight:hover { border-color: var(--accent-hover); }
+
     .ecosystem-badge {
       position: absolute;
       top: -10px;
@@ -378,39 +607,79 @@ const jsonLd = [
       letter-spacing: 0.5px;
     }
 
-    /* Ecosystem CTA */
-    .ecosystem-cta {
-      text-align: left;
-      margin-top: var(--space-xl);
+    .ecosystem-footer-cta { margin-top: var(--space-xl); }
+
+    /* ── WORKFLOW PATTERNS ────────────────────────────────────────────────── */
+    .workflow-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
     }
 
-    /* CTA section */
-    .cta-section {
-      text-align: left;
+    .workflow-tab {
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .workflow-tab:hover { border-color: var(--accent); color: var(--text-primary); }
+    .workflow-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .ecosystem-workflow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--bg-secondary);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .ecosystem-workflow.hidden { display: none; }
+
+    .workflow-step { text-align: center; padding: var(--space-md); }
+    .workflow-step-icon { font-size: 1.5rem; margin-bottom: var(--space-xs); display: block; }
+    .workflow-step-label { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: var(--space-xs); }
+    .workflow-step-tool { font-size: 0.8rem; color: var(--accent); }
+    .workflow-step-output { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .workflow-arrow { color: var(--accent); font-size: 1.5rem; font-weight: 700; }
+
+    /* ── CTA BLOCK ────────────────────────────────────────────────────────── */
+    .cta-block {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-3xl);
-      margin: var(--space-2xl) 0;
     }
 
-    .cta-section h2 { border: none; padding: 0; }
-    .cta-section p { color: var(--text-secondary); margin-bottom: var(--space-xl); }
-    .cta-buttons { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
+    .cta-block h2 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
+    .cta-block p { color: var(--text-secondary); margin-bottom: var(--space-xl); max-width: 540px; }
+    .cta-block-btns { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
-    /* Responsive */
+    /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .workflow-steps-row { flex-direction: column; }
+      .workflow-arrow-sep { transform: rotate(90deg); justify-content: center; padding: 0; }
+      .guide-comparison-table th, .guide-comparison-table td { padding: var(--space-sm) var(--space-md); font-size: 0.85rem; }
+    }
+
     @media (max-width: 640px) {
-      .ecosystem-workflow {
-        flex-direction: column;
-        gap: var(--space-sm);
-      }
+      .ecosystem-workflow { flex-direction: column; gap: var(--space-sm); }
       .workflow-arrow { transform: rotate(90deg); }
       .ecosystem-grid { grid-template-columns: 1fr; }
+      .compare-hero-nav { gap: var(--space-xs); }
     }
   </style>
 
   <script>
-    // Workflow tabs switching
     document.querySelectorAll('.workflow-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.workflow-tab').forEach(t => {
@@ -427,4 +696,5 @@ const jsonLd = [
       });
     });
   </script>
+
 </Layout>
