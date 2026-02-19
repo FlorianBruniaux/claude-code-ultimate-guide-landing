@@ -2,16 +2,16 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Claude Code FAQ: Setup, Pricing, Security, Hooks & More'
-const description = '22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (18 CVEs tracked), context management. From 6 months of daily practice.'
+const description = '22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (19 CVEs tracked), context management. From 6 months of daily practice.'
 
 const jsonLd = [
   {
     "@type": "WebPage",
     "name": "Claude Code FAQ: Setup, Pricing, Security, Hooks & More",
-    "description": "22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (18 CVEs tracked), context management.",
+    "description": "22 expert answers about Claude Code: installation, pricing, hooks, agents vs skills vs commands, security (19 CVEs tracked), context management.",
     "url": "https://cc.bruniaux.com/faq/",
     "datePublished": "2025-06-01",
-    "dateModified": "2026-02-17",
+    "dateModified": "2026-02-18",
     "inLanguage": "en",
     "isPartOf": {
       "@type": "WebSite",
@@ -113,7 +113,7 @@ const jsonLd = [
         "name": "What are MCP servers in Claude Code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library documentation lookup, Sentry for error tracking, PostgreSQL for database queries. Configure in ~/.claude/mcp.json or .mcp.json per project. Always vet MCP servers before use. 18 CVEs have been identified in the ecosystem."
+          "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library documentation lookup, Sentry for error tracking, PostgreSQL for database queries. Configure in ~/.claude/mcp.json or .mcp.json per project. Always vet MCP servers before use. 19 CVEs have been identified in the ecosystem."
         }
       },
       {
@@ -137,7 +137,7 @@ const jsonLd = [
         "name": "Is Claude Code secure for production use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code requires careful hardening for production. This guide tracks 18 CVE-mapped vulnerabilities and 341 malicious skills in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers, enable permission prompts, and never run in production environments without sandboxing."
+          "text": "Claude Code requires careful hardening for production. This guide tracks 19 CVE-mapped vulnerabilities and 655 malicious skills in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers, enable permission prompts, and never run in production environments without sandboxing."
         }
       },
       {
@@ -161,7 +161,7 @@ const jsonLd = [
         "name": "How much should I trust AI-generated code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Research shows AI-assisted code can contain 1.75x more logic errors than human-written code (ACM 2025 study). Trust calibration: auto-accept boilerplate and repetitive patterns, review all business logic and non-trivial changes, manually verify security-critical code. Use TDD (Test-Driven Development) to catch errors early: write tests first, then let Claude implement."
+          "text": "Research shows AI-assisted code can contain 1.75x more logic errors than human-written code (ACM 2025 study). Nuance: a 2-phase blind RCT (Borg et al., 2025, n=151 professional developers) found no significant difference in downstream maintainability — colleagues who evolve AI-generated code are not measurably slower than with human-written code. The quality risk is real but more narrowly scoped than often claimed. Trust calibration: auto-accept boilerplate and repetitive patterns, review all business logic and non-trivial changes, manually verify security-critical code. Use TDD to catch errors early: write tests first, then let Claude implement."
         }
       },
       {
@@ -282,7 +282,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>What are MCP servers in Claude Code?</summary>
-          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">18 CVEs have been identified</a> in the ecosystem.</p>
+          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">19 CVEs have been identified</a> in the ecosystem.</p>
         </details>
         <details class="faq-item">
           <summary>What's the difference between Claude Code and Cowork?</summary>
@@ -328,7 +328,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>How much should I trust AI-generated code?</summary>
-          <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD (Test-Driven Development) to catch errors early: write tests first, then let Claude implement.</p>
+          <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). <strong>Nuance:</strong> a 2-phase blind RCT (<a href="https://arxiv.org/abs/2507.00788" target="_blank" rel="noopener">Borg et al., 2025, n=151 professional developers</a>) found no significant difference in downstream maintainability — colleagues who evolve AI-generated code are not measurably slower than with human-written code. The quality risk is real but more narrowly scoped than often claimed. Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD to catch errors early: write tests first, then let Claude implement.</p>
         </details>
       </div>
     </section>
