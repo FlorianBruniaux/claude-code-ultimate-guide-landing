@@ -35,6 +35,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Clone guide repo
+        run: git clone --depth 1 https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
+
+      - name: Prepare guide content
+        run: node scripts/prepare-guide-content.mjs
+
       - name: Build Astro site
         run: pnpm build
 

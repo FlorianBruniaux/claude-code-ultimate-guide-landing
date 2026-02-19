@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
+import { docsLoader } from '@astrojs/starlight/loaders'
+import { docsSchema } from '@astrojs/starlight/schema'
 
 const questions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/questions' }),
@@ -25,4 +27,9 @@ const questions = defineCollection({
   }),
 })
 
-export const collections = { questions }
+const docs = defineCollection({
+  loader: docsLoader(),
+  schema: docsSchema(),
+})
+
+export const collections = { questions, docs }

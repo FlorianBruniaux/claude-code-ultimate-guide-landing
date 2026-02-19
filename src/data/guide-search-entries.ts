@@ -16,7 +16,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Exploration Workflow",
     "keywords": "exploration workflow guide workflows exploration workflow",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/exploration-workflow.md",
+    "url": "/guide/workflows/exploration-workflow/",
     "source": "guide"
   },
   {
@@ -24,7 +24,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Script Generation",
     "keywords": "script generation guide workflows iterative refinement",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/iterative-refinement.md",
+    "url": "/guide/workflows/iterative-refinement/",
     "source": "guide"
   },
   {
@@ -40,7 +40,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Session Limits",
     "keywords": "session limits guide architecture",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/architecture.md",
+    "url": "/guide/architecture/",
     "source": "guide"
   },
   {
@@ -48,7 +48,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Scope Success Rates",
     "keywords": "scope success rates guide adoption approaches",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/adoption-approaches.md",
+    "url": "/guide/adoption-approaches/",
     "source": "guide"
   },
   {
@@ -56,7 +56,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Claude Code Releases",
     "keywords": "claude code releases guide claude code releases",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/claude-code-releases.md",
+    "url": "/guide/claude-code-releases/",
     "source": "guide"
   },
   {
@@ -89,6 +89,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "review plan command examples commands review plan",
     "category": "Examples > Commands",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/review-plan.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-code-review-workflow",
+    "title": "Github Actions Code Review Workflow",
+    "keywords": "github actions code review workflow examples github actions claude code review yml",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-code-review-prompt",
+    "title": "Github Actions Code Review Prompt",
+    "keywords": "github actions code review prompt examples github actions prompts code review",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/prompts/code-review.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-code-review-pattern",
+    "title": "Github Actions Code Review Pattern",
+    "keywords": "github actions code review pattern externalized prompt + anti hallucination protocol +  claude review on demand trigger",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/externalized prompt + anti-hallucination protocol + /claude-review on-demand trigger",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-cost-per-review",
+    "title": "Github Actions Cost Per Review",
+    "keywords": "github actions cost per review 0$ with oauth max plan; ~0 15$ with api key (sonnet, ~5k tokens diff)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/0$ with OAuth/Max plan; ~0.05-0.15$ with API key (Sonnet, ~5K tokens diff)",
     "source": "guide"
   },
   {
@@ -136,7 +168,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Known Issues",
     "keywords": "known issues guide known issues",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/known-issues.md",
+    "url": "/guide/known-issues/",
     "source": "guide"
   },
   {
@@ -152,7 +184,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Session Search",
     "keywords": "session search guide observability",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/observability.md",
+    "url": "/guide/observability/",
     "source": "guide"
   },
   {
@@ -161,6 +193,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "session search script examples scripts session search",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/session-search.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cc-sessions-script",
+    "title": "Cc Sessions Script",
+    "keywords": "cc sessions script examples scripts sessions",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/cc-sessions.py",
     "source": "guide"
   },
   {
@@ -200,7 +240,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "RTK Third Party",
     "keywords": "rtk third party guide third party tools",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/third-party-tools.md",
+    "url": "/guide/third-party-tools/",
     "source": "guide"
   },
   {
@@ -248,7 +288,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Antigravity Guide",
     "keywords": "antigravity guide guide ecosystem",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-ecosystem.md",
+    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -264,7 +304,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Pdf Generation",
     "keywords": "pdf generation guide workflows pdf generation",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/pdf-generation.md",
+    "url": "/guide/workflows/pdf-generation/",
     "source": "guide"
   },
   {
@@ -276,11 +316,19 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-whitepapers-example",
-    "title": "Whitepapers Example",
-    "keywords": "whitepapers example whitepapers readme",
+    "id": "guide-whitepapers-fr",
+    "title": "Whitepapers Fr",
+    "keywords": "whitepapers fr whitepapers",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/README.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/fr/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-whitepapers-en",
+    "title": "Whitepapers En",
+    "keywords": "whitepapers en whitepapers",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/en/",
     "source": "guide"
   },
   {
@@ -288,7 +336,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide learning with",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-with-ai.md",
+    "url": "/guide/learning-with-ai/",
     "source": "guide"
   },
   {
@@ -336,7 +384,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Guide",
     "keywords": "ai traceability guide guide traceability",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-traceability.md",
+    "url": "/guide/ai-traceability/",
     "source": "guide"
   },
   {
@@ -392,7 +440,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Tts Workflow",
     "keywords": "tts workflow guide workflows tts setup",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/tts-setup.md",
+    "url": "/guide/workflows/tts-setup/",
     "source": "guide"
   },
   {
@@ -416,7 +464,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Isolation Guide",
     "keywords": "sandbox isolation guide guide sandbox isolation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/sandbox-isolation.md",
+    "url": "/guide/sandbox-isolation/",
     "source": "guide"
   },
   {
@@ -424,7 +472,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Guide",
     "keywords": "sandbox native guide guide sandbox native",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/sandbox-native.md",
+    "url": "/guide/sandbox-native/",
     "source": "guide"
   },
   {
@@ -512,7 +560,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Visual Reference",
     "keywords": "visual reference guide visual reference",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/visual-reference.md",
+    "url": "/guide/visual-reference/",
     "source": "guide"
   },
   {
@@ -536,7 +584,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Workflows Task Management",
     "keywords": "workflows task management guide workflows task management",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/task-management.md",
+    "url": "/guide/workflows/task-management/",
     "source": "guide"
   },
   {
@@ -608,7 +656,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Chain Of Verification",
     "keywords": "chain of verification guide methodologies",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/methodologies.md",
+    "url": "/guide/methodologies/",
     "source": "guide"
   },
   {
@@ -760,7 +808,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Verification Paradox",
     "keywords": "verification paradox guide production safety",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/production-safety.md",
+    "url": "/guide/production-safety/",
     "source": "guide"
   },
   {
@@ -768,7 +816,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Devops Sre Guide",
     "keywords": "devops sre guide guide devops sre",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/devops-sre.md",
+    "url": "/guide/devops-sre/",
     "source": "guide"
   },
   {
@@ -792,7 +840,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Product Designer Workflow",
     "keywords": "product designer workflow guide workflows design code",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/design-to-code.md",
+    "url": "/guide/workflows/design-to-code/",
     "source": "guide"
   },
   {
@@ -808,7 +856,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dual Instance Workflow",
     "keywords": "dual instance workflow guide workflows dual instance planning",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/dual-instance-planning.md",
+    "url": "/guide/workflows/dual-instance-planning/",
     "source": "guide"
   },
   {
@@ -888,7 +936,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams",
     "keywords": "agent teams guide workflows agent teams",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agent-teams.md",
+    "url": "/guide/workflows/agent-teams/",
     "source": "guide"
   },
   {
@@ -896,7 +944,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Quick Start",
     "keywords": "agent teams quick start guide workflows agent teams quick start",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agent-teams-quick-start.md",
+    "url": "/guide/workflows/agent-teams-quick-start/",
     "source": "guide"
   },
   {
@@ -912,7 +960,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Skeleton Projects Workflow",
     "keywords": "skeleton projects workflow guide workflows skeleton projects",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/skeleton-projects.md",
+    "url": "/guide/workflows/skeleton-projects/",
     "source": "guide"
   },
   {
@@ -920,7 +968,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec First Workflow",
     "keywords": "spec first workflow guide workflows spec first",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/spec-first.md",
+    "url": "/guide/workflows/spec-first/",
     "source": "guide"
   },
   {
@@ -952,7 +1000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Cowork Summary",
     "keywords": "cowork summary guide cowork",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cowork.md",
+    "url": "/guide/cowork/",
     "source": "guide"
   },
   {
@@ -1000,7 +1048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security Hardening",
     "keywords": "security hardening guide security hardening",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md",
+    "url": "/guide/security-hardening/",
     "source": "guide"
   },
   {
@@ -1048,7 +1096,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Git MCP Guide",
     "keywords": "git mcp guide guide mcp servers ecosystem",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/mcp-servers-ecosystem.md",
+    "url": "/guide/mcp-servers-ecosystem/",
     "source": "guide"
   }
 ]

@@ -92,6 +92,23 @@ pnpm build
 pnpm dev
 ```
 
+## Workflow obligatoire avant push sur main
+
+Le contenu guide (`src/content/docs/guide/`) est **gitignored** — généré à chaque build depuis le repo guide voisin.
+
+```bash
+# 1. Préparer le contenu guide (lit ../claude-code-ultimate-guide/guide/)
+node scripts/prepare-guide-content.mjs
+
+# 2. Build complet pour valider
+pnpm build
+
+# 3. Si tout passe → push
+git push
+```
+
+**Pourquoi** : le CI clone le repo guide et régénère le contenu à chaque deploy. Vérifier en local évite de casser le build en prod.
+
 ## Quiz Workflow (Markdown + Frontmatter)
 
 **Source de vérité**: 256 fichiers Markdown dans `questions/`

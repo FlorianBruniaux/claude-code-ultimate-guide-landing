@@ -168,7 +168,7 @@ const jsonLd = [
   <style is:global>
     /* Quiz-specific styles */
     .quiz-container {
-      max-width: 800px;
+      max-width: 100%;
       padding: var(--space-lg);
       min-height: calc(100vh - 200px);
     }
@@ -1033,8 +1033,31 @@ const jsonLd = [
     function formatExplanation(text) {
       if (!text) return '';
       const escapeHtml = (str) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-      text = text.replace(/```([\s\S]*?)```/g, (match, code) => `<pre><code>${escapeHtml(code.trim())}</code></pre>`);
-      text = text.replace(/`([^`]+)`/g, (match, code) => `<code>${escapeHtml(code)}</code>`);
+
+      // Protect code blocks first (they may contain special chars)
+      const codeBlocks = [];
+      text = text.replace(/```([\s\S]*?)```/g, (_, code) => {
+        codeBlocks.push(`<pre><code>${escapeHtml(code.trim())}</code></pre>`);
+        return `\x00CB${codeBlocks.length - 1}\x00`;
+      });
+
+      const inlineCodes = [];
+      text = text.replace(/`([^`]+)`/g, (_, code) => {
+        inlineCodes.push(`<code>${escapeHtml(code)}</code>`);
+        return `\x00IC${inlineCodes.length - 1}\x00`;
+      });
+
+      // Bold & italic
+      text = text.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+      text = text.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+
+      // Newlines → <br>
+      text = text.replace(/\n/g, '<br>');
+
+      // Restore protected blocks
+      text = text.replace(/\x00IC(\d+)\x00/g, (_, i) => inlineCodes[+i]);
+      text = text.replace(/\x00CB(\d+)\x00/g, (_, i) => codeBlocks[+i]);
+
       return text;
     }
 

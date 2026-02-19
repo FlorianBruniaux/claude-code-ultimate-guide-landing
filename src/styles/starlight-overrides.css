@@ -1,0 +1,296 @@
+/**
+ * starlight-overrides.css
+ *
+ * Maps Starlight's CSS custom properties to the site's design tokens.
+ * This ensures the guide reader is visually consistent with the landing pages.
+ *
+ * Starlight uses data-theme="dark" / data-theme="light" attributes,
+ * which aligns with our ThemeToggle approach.
+ */
+
+/* ── Light mode (Starlight default) ──────────────────────────────────── */
+:root {
+  /* Accent / brand color */
+  --sl-color-accent-low:  #fef7f0;   /* bg-tint-warm */
+  --sl-color-accent:      #d4520a;   /* our --accent */
+  --sl-color-accent-high: #ea580c;   /* our --accent-hover */
+
+  /* Text */
+  --sl-color-white:   #1a1207;       /* our --text-primary */
+  --sl-color-gray-1:  #4a3f31;       /* --text-secondary */
+  --sl-color-gray-2:  #6b6053;       /* --text-muted */
+  --sl-color-gray-3:  #9a8f83;
+  --sl-color-gray-4:  #d4cdc5;       /* --border */
+  --sl-color-gray-5:  #f0e8df;       /* --bg-tertiary */
+  --sl-color-gray-6:  #fef7f0;       /* --bg-secondary */
+  --sl-color-black:   #f5f0eb;       /* --bg-primary (inverted for sl naming) */
+
+  /* Typography */
+  --sl-font:           system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-mono:      ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --sl-text-base:      1rem;
+  --sl-line-height:    1.7;
+
+  /* Sidebar */
+  --sl-sidebar-width:     16rem;
+  --sl-content-width:     52rem;
+  --sl-content-pad-x:     1.5rem;
+
+  /* Border radius */
+  --sl-border-radius:     8px;
+  --sl-border-radius-lg:  12px;
+}
+
+/* ── Dark mode ────────────────────────────────────────────────────────── */
+:root[data-theme='dark'],
+[data-theme='dark'] {
+  --sl-color-accent-low:  #1e1e1e;   /* bg-tertiary dark */
+  --sl-color-accent:      #f97316;   /* --accent dark */
+  --sl-color-accent-high: #fb923c;   /* --accent-hover dark */
+
+  --sl-color-white:   #e5e5e5;       /* --text-primary dark */
+  --sl-color-gray-1:  #a3a3a3;       /* --text-secondary dark */
+  --sl-color-gray-2:  #8a8a8a;       /* --text-muted dark */
+  --sl-color-gray-3:  #525252;
+  --sl-color-gray-4:  #2a2a2a;       /* --border dark */
+  --sl-color-gray-5:  #1e1e1e;       /* --bg-tertiary dark */
+  --sl-color-gray-6:  #141414;       /* --bg-secondary dark */
+  --sl-color-black:   #0a0a0a;       /* --bg-primary dark */
+}
+
+/* ── Layout adjustments ───────────────────────────────────────────────── */
+
+/* Offset content for our fixed header (56px = h-14) */
+.sl-page {
+  margin-top: 56px !important;
+}
+
+/* Sidebar top offset for fixed header */
+.sidebar-pane {
+  top: 56px !important;
+  height: calc(100vh - 56px) !important;
+}
+
+/* Hide Starlight's built-in header (we provide our own) */
+.page-header {
+  display: none !important;
+}
+
+/* ── Prose typography ─────────────────────────────────────────────────── */
+.sl-markdown-content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.sl-markdown-content h1 { margin-top: 0; font-size: 2rem; }
+.sl-markdown-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.sl-markdown-content h3 { font-size: 1.25rem; margin-top: 2rem; }
+.sl-markdown-content h4 { font-size: 1.1rem; margin-top: 1.5rem; }
+
+.sl-markdown-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 200ms ease;
+}
+.sl-markdown-content a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* Code blocks */
+.sl-markdown-content pre {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.sl-markdown-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.sl-markdown-content :not(pre) > code {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
+/* Tables */
+.sl-markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+.sl-markdown-content th {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.sl-markdown-content td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.8rem;
+}
+
+.sl-markdown-content tr:nth-child(even) td {
+  background: var(--bg-secondary);
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-tint-warm);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  color: var(--text-secondary);
+}
+
+/* Horizontal rules */
+.sl-markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ── Sidebar styling ──────────────────────────────────────────────────── */
+.sidebar-content {
+  background: var(--bg-primary) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Active sidebar link — white text on orange background.
+ * Use #starlight__sidebar to beat Starlight's .sidebar-content specificity. */
+#starlight__sidebar a[aria-current='page'],
+#starlight__sidebar a[aria-current='page'] span {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* ── TOC styling ──────────────────────────────────────────────────────── */
+
+/* Solid background on the right TOC panel.
+ * The footer is moved to <body> level via JS portal. The sticky TOC column
+ * is still rendered inside .page and stays visible in the viewport — it needs
+ * a solid background so it doesn't bleed over the footer below. */
+.right-sidebar,
+.right-sidebar-panel,
+.right-sidebar-container,
+starlight-toc {
+  background: var(--sl-color-black) !important;
+}
+
+starlight-toc a {
+  color: var(--text-secondary);
+  transition: color 150ms ease;
+}
+
+starlight-toc a:hover {
+  color: var(--accent);
+}
+
+/* ── Expressive Code (code blocks with copy button) ──────────────────── */
+.expressive-code {
+  margin: 1.5rem 0;
+}
+
+.expressive-code .copy {
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.expressive-code:hover .copy,
+.expressive-code .copy:hover {
+  opacity: 1;
+}
+
+/* ── Footer (moved to body level via JS portal) ──────────────────────── */
+/*
+ * The footer is moved outside Starlight's flex layout via an inline script
+ * in src/components/starlight/Footer.astro. As a direct <body> child it is
+ * naturally full-width — no breakout tricks needed.
+ */
+
+/* ── Hero splash page ───────────────────────────────────────────────── */
+
+/* Splash page title */
+.hero .hero-html h1,
+.hero > :first-child > h1,
+[data-page-type='splash'] h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sl-color-accent), var(--sl-color-accent-high));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+/* Hero action buttons — fix text visibility */
+.sl-link-button[data-variant='primary'],
+.hero .sl-link-button.primary,
+a.sl-link-button.primary {
+  background: var(--sl-color-accent) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-weight: 600;
+}
+
+.sl-link-button[data-variant='primary']:hover,
+.hero .sl-link-button.primary:hover,
+a.sl-link-button.primary:hover {
+  background: var(--sl-color-accent-high) !important;
+  color: #ffffff !important;
+}
+
+.sl-link-button[data-variant='secondary'],
+.hero .sl-link-button.secondary,
+a.sl-link-button.secondary {
+  color: var(--sl-color-accent) !important;
+  border-color: var(--sl-color-accent) !important;
+  background: transparent !important;
+}
+
+/* Tighten splash hero spacing */
+.hero {
+  padding-block: 2rem !important;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 1.5rem;
+}
+
+/* Remove excessive gap between hero and page content on splash */
+.content-panel + .content-panel {
+  padding-top: 0 !important;
+}
+
+.sl-markdown-content > :first-child {
+  margin-top: 0 !important;
+}

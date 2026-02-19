@@ -4,6 +4,33 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-02-19
+
+### Added
+- **Starlight Guide Reader** — Full in-site guide reader at `/guide/`
+  - `@astrojs/starlight` integration (replaces `@astrojs/mdx`)
+  - `scripts/prepare-guide-content.mjs` — copies guide `.md`, splits `ultimate-guide.md` by chapter, copies images
+  - `plugins/remark-guide-links.mjs` — rewrites relative links (`.md` → `/guide/…`, images → `/guide/images/`)
+  - Custom Starlight `Header.astro` + `Footer.astro` in `src/components/starlight/`
+  - `src/styles/starlight-overrides.css` — matches site design tokens
+  - CI pipeline updated: clones guide repo then runs prepare script before build
+  - Sitemap: `/guide/` pages at priority 0.85, changefreq weekly
+
+### Changed
+- **Navigation**
+  - "Guide" added as first main nav link
+  - "Learning" promoted from secondary to main nav
+  - "Compare" moved to secondary "More" dropdown
+  - "Read Guide" CTA now links to `/guide/` (was GitHub repo)
+- **Compare page** — major redesign: new Workflow Patterns section with tab navigation
+- **Learning page** — section reorder ("Choose Your Path" promoted to top), component extraction (`Onboarding.astro`, `Methodologies.astro`), tagline updated
+- **Community section** — removed French community callout (devw.ai)
+
+### Security
+- New CVE: `CVE-2026-23744` MCPJam — **Critical**, remediation: audit servers
+- New threat campaign: `hightower6eu` Publisher — 314+ malicious skills, credential theft via fake API workflows (Feb 2026)
+- Threat DB bumped to **v2.1.0**
+
 ## [2.5.1] - 2026-02-19
 
 ### Changed

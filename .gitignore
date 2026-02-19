@@ -29,3 +29,8 @@ pnpm-debug.log*
 
 # Legacy
 questions.json.original
+
+# Generated guide content (rebuilt from guide repo at CI time)
+src/content/docs/guide/
+public/guide/images/
+src/data/guide-anchor-map.json

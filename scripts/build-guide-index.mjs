@@ -14,6 +14,34 @@ const GUIDE_REPO = '/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guid
 const YAML_PATH = resolve(GUIDE_REPO, 'machine-readable/reference.yaml')
 const OUT_PATH = resolve(ROOT, 'src/data/guide-search-entries.ts')
 const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/'
+const LOCAL_GUIDE_BASE = '/guide/'
+
+// Guide files that are accessible locally at /guide/SLUG/
+// Files in guide/ directory (not ultimate-guide, not workflows)
+const LOCAL_GUIDE_FILES = new Set([
+  'guide/adoption-approaches.md',
+  'guide/agent-evaluation.md',
+  'guide/ai-ecosystem.md',
+  'guide/ai-traceability.md',
+  'guide/architecture.md',
+  'guide/cheatsheet.md',
+  'guide/claude-code-releases.md',
+  'guide/cowork.md',
+  'guide/data-privacy.md',
+  'guide/devops-sre.md',
+  'guide/known-issues.md',
+  'guide/learning-with-ai.md',
+  'guide/mcp-servers-ecosystem.md',
+  'guide/methodologies.md',
+  'guide/observability.md',
+  'guide/production-safety.md',
+  'guide/sandbox-isolation.md',
+  'guide/sandbox-native.md',
+  'guide/search-tools-cheatsheet.md',
+  'guide/security-hardening.md',
+  'guide/third-party-tools.md',
+  'guide/visual-reference.md',
+])
 
 /**
  * Convert snake_case key to Title Case human label
@@ -121,7 +149,19 @@ function main() {
     const id = `guide-${key.replace(/_/g, '-')}`
     const title = humanize(key)
     const category = getCategory(cleanPath)
-    const url = `${GITHUB_BASE}${cleanPath}`
+
+    // Use local /guide/ URL if the file is served locally, else fall back to GitHub
+    let url
+    if (LOCAL_GUIDE_FILES.has(cleanPath)) {
+      const slug = cleanPath.replace(/^guide\//, '').replace(/\.md$/, '')
+      url = `${LOCAL_GUIDE_BASE}${slug}/`
+    } else if (cleanPath.startsWith('guide/workflows/') && cleanPath.endsWith('.md')) {
+      const slug = cleanPath.replace(/^guide\//, '').replace(/\.md$/, '')
+      url = `${LOCAL_GUIDE_BASE}${slug}/`
+    } else {
+      url = `${GITHUB_BASE}${cleanPath}`
+    }
+
     const keywords = extractKeywords(key, cleanPath)
 
     entries.push({ id, title, keywords, category, url, source: 'guide' })

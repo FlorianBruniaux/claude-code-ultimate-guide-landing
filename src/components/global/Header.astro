@@ -2,16 +2,17 @@
 import ThemeToggle from './ThemeToggle.astro'
 
 const mainLinks = [
+  { href: '/guide/', label: 'Guide' },
   { href: '/cheatsheet/', label: 'Cheat Sheet' },
   { href: '/examples/', label: 'Examples' },
+  { href: '/learning/', label: 'Learning' },
   { href: '/quiz/', label: 'Quiz' },
-  { href: '/compare/', label: 'Compare' },
   { href: '/security/', label: 'Security' },
 ]
 
 const moreLinks = [
+  { href: '/compare/', label: 'Compare' },
   { href: '/releases/', label: 'Releases' },
-  { href: '/learning/', label: 'Learning' },
   { href: '/faq/', label: 'FAQ' },
 ]
 
@@ -133,9 +134,7 @@ const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
 
         <!-- Read Guide CTA -->
         <a
-          href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/guide/"
           class="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover transition-colors"
         >
           Read Guide

@@ -1,0 +1,23 @@
+---
+/**
+ * Starlight Footer override.
+ *
+ * Starlight renders this inside the content column (between left nav and right TOC).
+ * We use an inline script to move it to <body> level so it escapes the flex layout
+ * and spans full viewport width — same as on landing pages.
+ */
+import GlobalFooter from '../global/Footer.astro'
+---
+<div id="sl-footer-portal">
+  <GlobalFooter />
+</div>
+
+<script is:inline>
+  ;(function () {
+    var el = document.getElementById('sl-footer-portal')
+    if (el) {
+      el.removeAttribute('id')
+      document.body.appendChild(el)
+    }
+  })()
+</script>

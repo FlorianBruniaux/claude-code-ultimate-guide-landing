@@ -60,6 +60,8 @@
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
       root.setAttribute('data-theme', newTheme)
       localStorage.setItem('theme', newTheme)
+      // Sync with Starlight's theme key so guide pages respect the preference
+      localStorage.setItem('starlight-theme', newTheme)
 
       requestAnimationFrame(() => {
         root.classList.remove('disable-transitions')
