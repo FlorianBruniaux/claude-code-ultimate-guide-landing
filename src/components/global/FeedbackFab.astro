@@ -1,0 +1,89 @@
+---
+const GUIDE_REPO = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide'
+
+const menuItems = [
+  {
+    icon: '🐛',
+    label: 'Report a bug',
+    template: 'bug_report.yml',
+  },
+  {
+    icon: '💡',
+    label: 'Suggest content',
+    template: 'content_suggestion.yml',
+  },
+  {
+    icon: '❓',
+    label: 'Quiz issue',
+    template: 'quiz_error.yml',
+  },
+  {
+    icon: '💬',
+    label: 'General feedback',
+    template: 'general_feedback.yml',
+  },
+]
+---
+
+<div class="feedback-wrapper" id="feedback-wrapper">
+  <div class="feedback-menu" id="feedback-menu" aria-hidden="true" role="menu">
+    {menuItems.map((item) => (
+      <a
+        href={`${GUIDE_REPO}/issues/new?template=${item.template}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="feedback-menu-item"
+        role="menuitem"
+      >
+        <span class="feedback-menu-icon" aria-hidden="true">{item.icon}</span>
+        <span>{item.label}</span>
+      </a>
+    ))}
+  </div>
+
+  <button
+    class="feedback-fab"
+    id="feedback-fab-btn"
+    aria-label="Send feedback"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls="feedback-menu"
+    type="button"
+  >
+    <span aria-hidden="true">💬</span>
+    <span class="feedback-fab-text">Feedback</span>
+  </button>
+</div>
+
+<script>
+  const btn = document.getElementById('feedback-fab-btn')!
+  const menu = document.getElementById('feedback-menu')!
+  const wrapper = document.getElementById('feedback-wrapper')!
+
+  function openMenu() {
+    menu.classList.add('is-open')
+    menu.setAttribute('aria-hidden', 'false')
+    btn.setAttribute('aria-expanded', 'true')
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open')
+    menu.setAttribute('aria-hidden', 'true')
+    btn.setAttribute('aria-expanded', 'false')
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    menu.classList.contains('is-open') ? closeMenu() : openMenu()
+  })
+
+  document.addEventListener('click', (e) => {
+    if (!wrapper.contains(e.target as Node)) {
+      closeMenu()
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu()
+  })
+</script>

@@ -729,6 +729,72 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
 }
 
 /* ============================================
+   Feedback FAB Wrapper & Menu
+   ============================================ */
+.feedback-wrapper {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.feedback-wrapper .feedback-fab {
+    position: static;
+}
+
+.feedback-menu {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--surface-2, #1e1e2e);
+    border: 1px solid var(--border, rgba(255,255,255,0.1));
+    border-radius: 12px;
+    padding: 0.375rem;
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.feedback-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.feedback-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text, #e4e4e7);
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.feedback-menu-item:hover {
+    background: var(--accent-dim, rgba(139, 92, 246, 0.15));
+    color: var(--accent, #8b5cf6);
+}
+
+.feedback-menu-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* ============================================
    Accordion Animation (shared)
    ============================================ */
 details[open] > *:not(summary) {
