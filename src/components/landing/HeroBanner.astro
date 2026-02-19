@@ -7,7 +7,7 @@
                 <h1 class="hero-title">Master Claude Code</h1>
             </div>
             <p class="hero-tagline">Learn the WHY behind Claude Code, not just the config</p>
-            <p class="hero-stats">Security-first (18 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 113 templates &bull; 274-question quiz &bull; Decision frameworks</p>
+            <p class="hero-stats">Security-first (18 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 161 templates &bull; 274-question quiz &bull; Decision frameworks</p>
 
             <div class="hero-ctas">
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md" class="btn btn-primary" target="_blank" rel="noopener">
@@ -23,14 +23,6 @@
                     <span class="badge-label">stars</span>
                     <span class="badge-value">101</span>
                 </a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" target="_blank" rel="noopener" class="badge badge-updated">
-                    <span class="badge-label">updated</span>
-                    <span class="badge-value">Feb 18, 2026 · v3.27.6</span>
-                </a>
-                <span class="badge badge-lines">
-                    <span class="badge-label">lines</span>
-                    <span class="badge-value">19,000+</span>
-                </span>
                 <span class="badge badge-templates">
                     <span class="badge-label">templates</span>
                     <span class="badge-value">113</span>
@@ -45,29 +37,14 @@
                 </a>
             </div>
 
-            <div class="hero-share">
-                <span class="share-label">Share:</span>
-                <a href="https://twitter.com/intent/tweet?url=https://cc.bruniaux.com/&text=Claude%20Code%20Guide%20-%20Master%20AI-powered%20coding%20in%20your%20terminal"
-                   class="share-btn" target="_blank" rel="noopener" aria-label="Share on X">
-                    𝕏
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://cc.bruniaux.com/"
-                   class="share-btn" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
-                    in
-                </a>
-            </div>
-
-            <div class="hero-cowork-box">
-                <p class="hero-cowork-lead">Not a developer? <strong>Claude Cowork</strong> automates Excel, Word & PDF for knowledge workers.</p>
-                <div class="hero-cowork-actions">
-                    <a href="https://cowork.bruniaux.com/"
-                       class="btn btn-cowork" target="_blank" rel="noopener">
-                        Get Started &rarr;
-                    </a>
-                    <span class="prereq-tag">macOS only</span>
-                    <span class="prereq-tag">Pro $20/mo</span>
-                </div>
-            </div>
+            <nav class="hero-quick-nav" aria-label="Quick navigation">
+                <span class="quick-nav-label">Already know what you need?</span>
+                <a href="/cheatsheet/">Cheat Sheet</a>
+                <span class="quick-nav-sep" aria-hidden="true">|</span>
+                <a href="/examples/">113 Templates</a>
+                <span class="quick-nav-sep" aria-hidden="true">|</span>
+                <a href="/quiz/">Quiz</a>
+            </nav>
         </div>
     </div>
 </section>
@@ -207,49 +184,43 @@
 }
 
 .badge-stars .badge-value { background-color: #3b82f6; }
-.badge-updated .badge-value { background-color: #3b82f6; }
-.badge-lines .badge-value { background-color: #8b5cf6; }
 .badge-templates .badge-value { background-color: #3b82f6; }
 .badge-quiz .badge-value { background-color: #fe7d37; }
 .badge-awesome .badge-value { background-color: #fc60a8; }
 .badge-stars .badge-label,
-.badge-updated .badge-label,
-.badge-lines .badge-label,
 .badge-templates .badge-label,
 .badge-quiz .badge-label,
 .badge-awesome .badge-label { background-color: #555; }
 
-.hero-share {
+/* Quick navigation */
+.hero-quick-nav {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
-.share-label {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
+.quick-nav-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
 
-.share-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: var(--bg-tertiary);
-    color: var(--text-secondary);
+.hero-quick-nav a {
+    font-size: 0.8rem;
+    color: var(--accent);
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    transition: color 0.15s ease;
 }
 
-.share-btn:hover {
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
+.hero-quick-nav a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+.quick-nav-sep {
+    color: var(--text-muted);
+    font-size: 0.75rem;
 }
 
 .stat-value {
@@ -263,61 +234,6 @@
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-}
-
-/* Hero Cowork Box */
-.hero-cowork-box {
-    margin-top: 1.5rem;
-    padding: 0.75rem 1rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.hero-cowork-lead {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    margin: 0;
-}
-
-.hero-cowork-lead strong {
-    color: var(--accent);
-}
-
-.hero-cowork-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.prereq-tag {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.45rem;
-    background: var(--bg-tertiary);
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-}
-
-.btn-cowork {
-    display: inline-block;
-    padding: 0.35rem 0.75rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.75rem;
-    text-decoration: none;
-    transition: background-color 0.15s ease;
-}
-
-.btn-cowork:hover {
-    background: var(--accent-hover);
-    color: white;
 }
 
 /* Responsive */

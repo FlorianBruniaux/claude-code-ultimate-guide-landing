@@ -2,6 +2,42 @@
 
 All notable changes to the Claude Code Guide Landing Site.
 
+## [Unreleased]
+
+## [2.5.1] - 2026-02-19
+
+### Changed
+- Synced guide version badge: 3.27.6 → 3.27.8
+- Updated template counts: 113/116 → 161 across HeroBanner, GuideComparison, index
+- Updated `dateModified` to 2026-02-19 in JSON-LD structured data
+
+## [2.5.0] - 2026-02-19
+
+### Added
+- **Floating Feedback FAB** (`FeedbackFab.astro`)
+  - Fixed bottom-right button accessible on every page
+  - Two GitHub issue templates: bug report & feature request
+  - Smooth open/close animation, keyboard-accessible
+
+### Changed
+- **Quiz — Full Width Layout**
+  - Removed inner `max-width: 800px` constraint on `.quiz-container`
+  - Quiz now spans the full container width (1200px), matching the header
+- **Quiz — Markdown Rendering in Explanations**
+  - `formatExplanation()` now parses `**bold**`, `*italic*`, and newlines (`\n → <br>`)
+  - Code blocks and inline code protected via placeholder pattern before transformation
+  - Fixes raw `**WHAT**` / `**WHERE**` text visible in explanation boxes
+
+### Fixed
+- **Cheatsheet PDF** — Regenerated to fix context-bar height bug on page 7
+- **`robots.txt`** — Corrected sitemap URL to `sitemap-index.xml`
+- **Cheatsheet PDF static serving** — Moved to `public/` for correct Astro static asset serving
+
+### Sync
+- **Claude Code releases** — Updated timeline to v2.1.47
+- **Guide v3.27.6** — Sonnet 4.6 as default model, 200K vs 1M context comparison
+- **Guide v3.27.5** — Content & search index sync
+
 ## [2.4.2] - 2026-02-10
 
 ### Fixed
