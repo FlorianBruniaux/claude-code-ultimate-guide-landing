@@ -14,6 +14,27 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.47',
+    date: 'Feb 19, 2026',
+    highlights: [
+      'VS Code plan preview auto-updates as Claude iterates',
+      '<code>ctrl+f</code> kills all background agents; ESC cancels main thread only',
+      '<code>last_assistant_message</code> field in Stop/SubagentStop hook inputs',
+      '70+ bug fixes: PDF compaction, Unicode quotes, parallel file edits, OSC 8 hyperlinks',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.46',
+    date: 'Feb 19, 2026',
+    highlights: [
+      'Fixed orphaned Claude Code processes after terminal disconnect on macOS',
+      'Support for using claude.ai MCP connectors in Claude Code',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.45',
     date: 'Feb 17, 2026',
     highlights: [
@@ -22,7 +43,6 @@ export const releases: Release[] = [
       'SDK: <code>SDKRateLimitInfo</code> / <code>SDKRateLimitEvent</code> for rate limit tracking',
       'Fixed Agent Teams on Bedrock/Vertex/Foundry; memory improvements',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
