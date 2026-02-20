@@ -14,6 +14,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.49',
+    date: 'Feb 20, 2026',
+    highlights: [
+      '<code>--worktree</code> / <code>-w</code> flag + subagent <code>isolation: "worktree"</code> for isolated git worktrees',
+      'Agent definitions support <code>background: true</code> to always run as background task',
+      '<code>ConfigChange</code> hook event for enterprise security auditing of config changes',
+      'Simple mode includes file edit tool; Sonnet 4.6 now has 1M context on Max plan',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.47',
     date: 'Feb 19, 2026',
     highlights: [
@@ -22,7 +34,6 @@ export const releases: Release[] = [
       '<code>last_assistant_message</code> field in Stop/SubagentStop hook inputs',
       '70+ bug fixes: PDF compaction, Unicode quotes, parallel file edits, OSC 8 hyperlinks',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
