@@ -164,6 +164,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-team-ai-instructions-section",
+    "title": "Team AI Instructions Section",
+    "keywords": "team ai instructions section guide ultimate guide md#35 team configuration scale",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#35-team-configuration-at-scale",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-ai-instructions-workflow",
+    "title": "Team AI Instructions Workflow",
+    "keywords": "team ai instructions workflow guide workflows team instructions",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/team-ai-instructions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-ai-instructions-profile-template",
+    "title": "Team AI Instructions Profile Template",
+    "keywords": "team ai instructions profile template examples team config profile template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/team-config/profile-template.yaml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-ai-instructions-skeleton",
+    "title": "Team AI Instructions Skeleton",
+    "keywords": "team ai instructions skeleton examples team config claude skeleton",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/team-config/claude-skeleton.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-ai-instructions-sync-script",
+    "title": "Team AI Instructions Sync Script",
+    "keywords": "team ai instructions sync script examples team config sync script",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/team-config/sync-script.ts",
+    "source": "guide"
+  },
+  {
     "id": "guide-known-issues",
     "title": "Known Issues",
     "keywords": "known issues guide known issues",
@@ -313,6 +353,94 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "pdf generator skill examples skills pdf generator",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pdf-generator.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-workflow",
+    "title": "Talk Pipeline Workflow",
+    "keywords": "talk pipeline workflow guide workflows talk pipeline",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/talk-pipeline/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-skills",
+    "title": "Talk Pipeline Skills",
+    "keywords": "talk pipeline skills examples skills talk pipeline",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-orchestrator",
+    "title": "Talk Pipeline Orchestrator",
+    "keywords": "talk pipeline orchestrator examples skills talk pipeline orchestrator skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/orchestrator/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage1",
+    "title": "Talk Pipeline Stage1",
+    "keywords": "talk pipeline stage1 examples skills talk pipeline stage extract skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-1-extract/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage2",
+    "title": "Talk Pipeline Stage2",
+    "keywords": "talk pipeline stage2 examples skills talk pipeline stage research skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-2-research/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage3",
+    "title": "Talk Pipeline Stage3",
+    "keywords": "talk pipeline stage3 examples skills talk pipeline stage concepts skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-3-concepts/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage4",
+    "title": "Talk Pipeline Stage4",
+    "keywords": "talk pipeline stage4 examples skills talk pipeline stage position skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-4-position/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage5",
+    "title": "Talk Pipeline Stage5",
+    "keywords": "talk pipeline stage5 examples skills talk pipeline stage script skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-5-script/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-stage6",
+    "title": "Talk Pipeline Stage6",
+    "keywords": "talk pipeline stage6 examples skills talk pipeline stage revision skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-6-revision/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-kimi-template",
+    "title": "Talk Pipeline Kimi Template",
+    "keywords": "talk pipeline kimi template examples skills talk pipeline stage script templates kimi prompt template",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-5-script/templates/kimi-prompt-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-talk-pipeline-feedback-template",
+    "title": "Talk Pipeline Feedback Template",
+    "keywords": "talk pipeline feedback template examples skills talk pipeline stage position templates feedback draft",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-4-position/templates/feedback-draft.md",
     "source": "guide"
   },
   {
