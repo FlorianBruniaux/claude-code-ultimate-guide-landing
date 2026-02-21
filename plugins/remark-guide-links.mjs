@@ -12,8 +12,15 @@
  *   ./images/foo.jpeg                 → /guide/images/foo.jpeg
  *   ../examples/agents/foo.md         → https://github.com/.../examples/agents/foo.md (fallback)
  *   ../CONTRIBUTING.md                → https://github.com/.../CONTRIBUTING.md (fallback)
- *   #section-anchor                   → unchanged (same-page anchor)
+ *   #section-anchor (same chapter)    → unchanged (same-page anchor)
+ *   #section-anchor (cross-chapter)   → /guide/{chapter-slug}/#anchor (via anchor map)
  *   https://...                       → unchanged (external URL)
+ *
+ * NOTE: In Astro 5 with Content Layer API, this plugin is NOT reliably called
+ * for content collection files (they are cached in the .astro data store).
+ * Cross-chapter bare anchor rewriting is therefore handled by
+ * scripts/prepare-guide-content.mjs → rewriteCrossChapterAnchors().
+ * This plugin handles relative .md link rewriting at Vite build time.
  */
 
 import { readFileSync, existsSync } from 'fs'
@@ -103,6 +110,16 @@ function toGitHubUrl(href) {
 }
 
 /**
+ * Extract the slug of the current file relative to the guide content dir.
+ * e.g. "/path/to/content/docs/guide/ultimate-guide/00-introduction.md"
+ *   → "ultimate-guide/00-introduction"
+ */
+function getCurrentSlug(filePath) {
+  const match = filePath.match(/content\/docs\/guide\/(.+?)\.md/)
+  return match ? match[1] : null
+}
+
+/**
  * The remark plugin factory
  */
 export function remarkGuideLinks() {
@@ -118,8 +135,19 @@ export function remarkGuideLinks() {
 
       // Skip: external URLs
       if (originalUrl.startsWith('http://') || originalUrl.startsWith('https://')) return
-      // Skip: same-page anchors
-      if (originalUrl.startsWith('#')) return
+      // Handle: bare anchors (#section)
+      if (originalUrl.startsWith('#')) {
+        const anchor = originalUrl.slice(1)
+        const currentSlug = getCurrentSlug(filePath)
+        const targetSlug = anchorMap[anchor]
+
+        // Cross-chapter anchor → rewrite to the correct chapter URL
+        if (targetSlug && currentSlug && targetSlug !== currentSlug) {
+          node.url = `${GUIDE_BASE}${targetSlug}/#${anchor}`
+        }
+        // Same chapter or unknown anchor → leave as-is (same-page anchor)
+        return
+      }
       // Skip: data: URIs
       if (originalUrl.startsWith('data:')) return
       // Skip: absolute paths

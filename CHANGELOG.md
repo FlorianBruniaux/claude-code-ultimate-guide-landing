@@ -4,6 +4,15 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.6.1] - 2026-02-21
+
+### Fixed
+- **Broken anchor links in guide chapter pages** — Quick jump links and table of contents in `00-introduction.md` now correctly navigate to the target chapter instead of staying on the same page
+  - Root cause: bare anchors (`#11-installation`) were not rewritten because Astro 5 Content Layer API caches rendered content, bypassing the remark plugin entirely
+  - Fix: `scripts/prepare-guide-content.mjs` now rewrites cross-chapter bare anchors at content preparation time (before Astro's cache), using the already-built `anchorMap`
+  - Same-page anchors (`#before-you-start`, `#tldr-the-5-minute-summary`) are preserved unchanged
+  - Applies to all guide files, workflow files, and ultimate-guide chapters
+
 ## [2.6.0] - 2026-02-19
 
 ### Added

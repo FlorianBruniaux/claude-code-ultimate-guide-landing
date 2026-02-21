@@ -155,6 +155,29 @@ function normalizeLangs(content) {
   })
 }
 
+/**
+ * Rewrite bare anchor links that point to a different chapter.
+ *
+ * Replaces `[text](#anchor)` with `[text](/guide/{targetSlug}/#anchor)`
+ * when anchorMap[anchor] exists and differs from currentSlug.
+ *
+ * @param {string} content - Markdown content to process
+ * @param {string|null} currentSlug - e.g. 'ultimate-guide/00-introduction' (null = no same-chapter protection)
+ * @param {object} anchorMap - anchor → chapter slug mapping
+ * @returns {string} - processed content
+ */
+function rewriteCrossChapterAnchors(content, currentSlug, anchorMap) {
+  // Match markdown links with bare anchors: [text](#anchor)
+  // Skip anchors inside code fences by only replacing outside of them.
+  return content.replace(/\[([^\]]*)\]\(#([^)]+)\)/g, (match, text, anchor) => {
+    const targetSlug = anchorMap[anchor]
+    if (targetSlug && targetSlug !== currentSlug) {
+      return `[${text}](/guide/${targetSlug}/#${anchor})`
+    }
+    return match
+  })
+}
+
 // --- Directory helpers ---
 function ensureDir(dir) {
   mkdirSync(dir, { recursive: true })
@@ -189,6 +212,9 @@ const guideFiles = readdirSync(GUIDE_DIR)
   .filter(f => f.endsWith('.md') && !SKIP_FILES.has(f) && !f.endsWith('.bak'))
   .sort()
 
+// Buffer guide file content — anchors will be rewritten after anchorMap is built (step 3)
+const guideFileBuffer = []
+
 for (let i = 0; i < guideFiles.length; i++) {
   const file = guideFiles[i]
   const src = resolve(GUIDE_DIR, file)
@@ -206,7 +232,7 @@ for (let i = 0; i < guideFiles.length; i++) {
   content = addStarlightFm(content, { title, desc, order: 100 + i })
   content = normalizeLangs(content)
 
-  writeFileSync(resolve(OUT_GUIDE, file), content, 'utf-8')
+  guideFileBuffer.push({ file, content })
   stats.files++
 }
 
@@ -224,6 +250,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     .filter(f => f.endsWith('.md') && f !== 'README.md')
     .sort()
 
+  // Buffer workflow content — anchors will be rewritten after anchorMap is built (step 3)
   for (let i = 0; i < workflowFiles.length; i++) {
     const file = workflowFiles[i]
     const src = resolve(WORKFLOWS_DIR, file)
@@ -239,7 +266,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     content = addStarlightFm(content, { title, desc, order: 200 + i })
     content = normalizeLangs(content)
 
-    writeFileSync(resolve(OUT_WORKFLOWS, file), content, 'utf-8')
+    guideFileBuffer.push({ file: `workflows/${file}`, content, isWorkflow: true })
     stats.workflows++
   }
 
@@ -333,10 +360,14 @@ for (const line of lines) {
 ensureDir(OUT_ULTIMATE)
 
 for (const { num, slug, title, desc, order } of CHAPTERS) {
-  const content = chapterLines.get(num)?.join('\n') ?? ''
+  let content = chapterLines.get(num)?.join('\n') ?? ''
   // Skip nearly-empty chapters (fewer than 5 non-blank lines)
   const nonBlank = content.split('\n').filter(l => l.trim()).length
   if (nonBlank < 5) continue
+
+  // Rewrite cross-chapter bare anchors before writing
+  const currentSlug = `ultimate-guide/${slug}`
+  content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
 
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}\n---`
   const output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
@@ -346,6 +377,17 @@ for (const { num, slug, title, desc, order } of CHAPTERS) {
 }
 
 console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
+
+// -----------------------------------------------------------------------
+// 3b. Flush buffered guide/workflow files now that anchorMap is complete
+// -----------------------------------------------------------------------
+for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
+  const rewritten = rewriteCrossChapterAnchors(rawContent, null, anchorMap)
+  const outPath = isWorkflow
+    ? resolve(OUT_WORKFLOWS, file.replace('workflows/', ''))
+    : resolve(OUT_GUIDE, file)
+  writeFileSync(outPath, rewritten, 'utf-8')
+}
 
 // Generate the /guide/ landing index page
 const guideIndexContent = `---
