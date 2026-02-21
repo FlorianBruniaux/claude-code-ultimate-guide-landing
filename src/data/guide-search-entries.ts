@@ -244,6 +244,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ccboard-activity-plan",
+    "title": "Ccboard Activity Plan",
+    "keywords": "ccboard activity plan docs resource evaluations ccboard activity module plan",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/ccboard-activity-module-plan.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-bridge-script",
     "title": "Bridge Script",
     "keywords": "bridge script examples scripts bridge",
@@ -697,6 +705,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "architecture mcp visual guide images mcp architecture diagram svg",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/mcp-architecture-diagram.svg",
+    "source": "guide"
+  },
+  {
+    "id": "guide-planner-agent",
+    "title": "Planner Agent",
+    "keywords": "planner agent examples agents planner",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/planner.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-implementer-agent",
+    "title": "Implementer Agent",
+    "keywords": "implementer agent examples agents implementer",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/implementer.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-reviewer-agent",
+    "title": "Architecture Reviewer Agent",
+    "keywords": "architecture reviewer agent examples agents architecture reviewer",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/architecture-reviewer.md",
     "source": "guide"
   },
   {
