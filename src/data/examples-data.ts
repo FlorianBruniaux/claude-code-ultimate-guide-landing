@@ -28,7 +28,10 @@ export const EXAMPLES = {
             { name: "test-writer.md", path: "agents/test-writer.md", description: "TDD/BDD test generation specialist" },
             { name: "security-auditor.md", path: "agents/security-auditor.md", description: "Security vulnerability detection (OWASP)" },
             { name: "refactoring-specialist.md", path: "agents/refactoring-specialist.md", description: "Clean code refactoring expert" },
-            { name: "output-evaluator.md", path: "agents/output-evaluator.md", description: "LLM-as-a-Judge quality gate" }
+            { name: "output-evaluator.md", path: "agents/output-evaluator.md", description: "LLM-as-a-Judge quality gate" },
+            { name: "planner.md", path: "agents/planner.md", description: "Strategic planning agent — read-only, Opus, use before implementation", favorite: true },
+            { name: "implementer.md", path: "agents/implementer.md", description: "Mechanical execution agent — Haiku, bounded scope" },
+            { name: "architecture-reviewer.md", path: "agents/architecture-reviewer.md", description: "Architecture & design review — read-only, Opus, never modifies code", favorite: true }
         ]
     },
     skills: {
