@@ -492,39 +492,67 @@ const jsonLd = [
   position: relative;
 }
 
-/* Clickable diagrams: hover badge + cursor */
-.diagram-container[data-guide-url] {
+/* Nodes in clickable diagrams: pointer cursor + brightness on hover */
+.diagram-container[data-guide-url] :global(svg .node) {
   cursor: pointer;
-  transition: border-color 0.15s;
 }
 
-.diagram-container[data-guide-url]:hover {
-  border-color: var(--accent);
+.diagram-container[data-guide-url] :global(svg .node rect),
+.diagram-container[data-guide-url] :global(svg .node circle),
+.diagram-container[data-guide-url] :global(svg .node polygon),
+.diagram-container[data-guide-url] :global(svg .node path) {
+  transition: filter 0.15s;
 }
 
-.diagram-container[data-guide-url]::after {
-  content: '📖 View in guide →';
-  position: absolute;
-  top: var(--space-sm);
-  right: var(--space-sm);
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 3px 9px;
-  border-radius: 4px;
-  opacity: 0;
-  transform: translateY(-3px);
-  transition: opacity 0.15s, transform 0.15s;
+.diagram-container[data-guide-url] :global(svg .node:hover rect),
+.diagram-container[data-guide-url] :global(svg .node:hover circle),
+.diagram-container[data-guide-url] :global(svg .node:hover polygon),
+.diagram-container[data-guide-url] :global(svg .node:hover path) {
+  filter: brightness(1.2);
+}
+
+/* ─── Guide tooltip ──────────────────────────────────────────────────────── */
+.diagram-guide-tooltip {
+  position: fixed;
+  z-index: 200;
+  background: var(--bg-secondary, #1e1e1e);
+  border: 1px solid var(--accent, #E87E2F);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.15s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   white-space: nowrap;
-  z-index: 2;
 }
 
-.diagram-container[data-guide-url]:hover::after {
+.diagram-guide-tooltip.is-visible {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
+}
+
+.diagram-guide-tooltip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent, #E87E2F);
+  text-decoration: none;
+  padding: 3px 9px;
+  border: 1px solid var(--accent, #E87E2F);
+  border-radius: 4px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.diagram-guide-tooltip-link:hover {
+  background: var(--accent, #E87E2F);
+  color: #fff;
 }
 
 .diagram-container :global(svg.diagram-svg) {
@@ -663,11 +691,54 @@ const jsonLd = [
 </style>
 
 <script>
-  // ── Diagram click-to-guide ──────────────────────────────────────────────
-  document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]').forEach(el => {
-    el.addEventListener('click', () => {
-      const url = el.dataset.guideUrl
-      if (url) window.open(url, '_blank', 'noopener noreferrer')
+  // ── Per-node tooltip with guide link ────────────────────────────────────
+  const tooltip = document.createElement('div')
+  tooltip.className = 'diagram-guide-tooltip'
+  tooltip.innerHTML = `📖 <a class="diagram-guide-tooltip-link" target="_blank" rel="noopener noreferrer">View in guide →</a>`
+  document.body.appendChild(tooltip)
+
+  const tooltipLink = tooltip.querySelector<HTMLAnchorElement>('.diagram-guide-tooltip-link')!
+  let hideTimer: ReturnType<typeof setTimeout>
+
+  function showTooltip(url: string, anchorEl: Element) {
+    clearTimeout(hideTimer)
+    tooltipLink.href = url
+    tooltip.classList.add('is-visible')
+    positionTooltip(anchorEl)
+  }
+
+  function hideTooltip() {
+    hideTimer = setTimeout(() => tooltip.classList.remove('is-visible'), 200)
+  }
+
+  function positionTooltip(el: Element) {
+    const rect = el.getBoundingClientRect()
+    const tw = tooltip.offsetWidth || 220
+    const th = tooltip.offsetHeight || 44
+    const margin = 8
+    let left = rect.left + rect.width / 2 - tw / 2
+    let top = rect.top - th - margin
+    // flip below if no room above
+    if (top < margin) top = rect.bottom + margin
+    // clamp horizontally
+    left = Math.max(margin, Math.min(left, window.innerWidth - tw - margin))
+    tooltip.style.left = `${left}px`
+    tooltip.style.top = `${top}px`
+  }
+
+  // Keep tooltip open when hovering it
+  tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimer))
+  tooltip.addEventListener('mouseleave', hideTooltip)
+
+  document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]').forEach(container => {
+    const url = container.dataset.guideUrl!
+    container.querySelectorAll<SVGGElement>('svg .node').forEach(node => {
+      node.addEventListener('mouseenter', () => showTooltip(url, node))
+      node.addEventListener('mouseleave', hideTooltip)
+      node.addEventListener('click', (e) => {
+        e.stopPropagation()
+        showTooltip(url, node)
+      })
     })
   })
 
