@@ -112,13 +112,17 @@ const jsonLd = [
   <!-- Theme navigation pills -->
   {DIAGRAM_THEMES.length > 0 && (
     <nav class="diagrams-nav" aria-label="Diagram themes">
-      <div class="diagrams-nav-inner">
-        {DIAGRAM_THEMES.map(t => (
-          <a href={`#${t.id}`} class="diagrams-nav-pill">
-            <span aria-hidden="true">{t.icon}</span>
-            {t.title.replace(' Diagrams', '')}
-          </a>
-        ))}
+      <div class="diagrams-nav-wrapper">
+        <button class="diagrams-nav-arrow diagrams-nav-arrow--left" aria-label="Scroll left" id="nav-arrow-left">‹</button>
+        <div class="diagrams-nav-inner" id="diagrams-nav-inner">
+          {DIAGRAM_THEMES.map(t => (
+            <a href={`#${t.id}`} class="diagrams-nav-pill">
+              <span aria-hidden="true">{t.icon}</span>
+              {t.title.replace(' Diagrams', '')}
+            </a>
+          ))}
+        </div>
+        <button class="diagrams-nav-arrow diagrams-nav-arrow--right" aria-label="Scroll right" id="nav-arrow-right">›</button>
       </div>
     </nav>
   )}
@@ -273,14 +277,54 @@ const jsonLd = [
   padding: var(--space-sm) 0;
 }
 
-.diagrams-nav-inner {
+.diagrams-nav-wrapper {
   max-width: var(--container-width, 1200px);
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.diagrams-nav-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-full, 999px);
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+  line-height: 1;
+  padding: 0;
+  z-index: 1;
+}
+
+.diagrams-nav-arrow:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.diagrams-nav-arrow:disabled,
+.diagrams-nav-arrow[data-hidden="true"] {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.diagrams-nav-inner {
+  flex: 1;
   display: flex;
   gap: var(--space-sm);
   overflow-x: auto;
   scrollbar-width: none;
+  padding: 0 var(--space-xs);
 }
 
 .diagrams-nav-inner::-webkit-scrollbar {
@@ -545,6 +589,14 @@ const jsonLd = [
 }
 
 /* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .diagrams-nav-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 640px) {
   .page-hero {
     padding: var(--space-2xl) 0 var(--space-xl);
@@ -568,3 +620,31 @@ const jsonLd = [
   }
 }
 </style>
+
+<script>
+  const inner = document.getElementById('diagrams-nav-inner')
+  const btnLeft = document.getElementById('nav-arrow-left')
+  const btnRight = document.getElementById('nav-arrow-right')
+
+  if (inner && btnLeft && btnRight) {
+    const SCROLL_AMOUNT = 240
+
+    function updateArrows() {
+      const atStart = inner.scrollLeft <= 4
+      const atEnd = inner.scrollLeft >= inner.scrollWidth - inner.clientWidth - 4
+      btnLeft.dataset.hidden = atStart ? 'true' : 'false'
+      btnRight.dataset.hidden = atEnd ? 'true' : 'false'
+    }
+
+    btnLeft.addEventListener('click', () => {
+      inner.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })
+    })
+
+    btnRight.addEventListener('click', () => {
+      inner.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })
+    })
+
+    inner.addEventListener('scroll', updateArrows, { passive: true })
+    updateArrows()
+  }
+</script>
