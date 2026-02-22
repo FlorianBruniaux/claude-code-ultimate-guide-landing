@@ -107,15 +107,40 @@ pnpm build
 
 ### What the build script does
 
-1. Reads `/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide/machine-readable/reference.yaml`
-2. Parses the `deep_dive` section (key → file path mappings)
-3. Filters: keeps string values with paths (excludes external URLs, numbers, arrays)
+1. Reads `machine-readable/reference.yaml` from the guide repo (hardcoded local path in dev, cloned via CI)
+2. Parses **only the `deep_dive` section** — ignores all other sections (stats, decision tree, etc.)
+3. Filters: keeps string values that are file paths (contains `/` or `.md`/`.yaml`) — excludes external URLs (`https://`), numbers, arrays, objects
 4. Humanizes keys: `mcp_secrets_management` → "MCP Secrets Management"
 5. Derives category from path: `guide/workflows/` → "Guide > Workflows"
-6. Builds GitHub URL: `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/{path}`
+6. Resolves URL: local `/guide/slug/` if file is served on the site, else GitHub link
 7. Writes `src/data/guide-search-entries.ts` (do not edit manually)
 
 If the guide repo is unavailable, the script outputs a warning and generates an empty array (CI/CD safe).
+
+### Important limitations
+
+**This is an explicit index, not a full-text search.**
+
+| What IS indexed | What is NOT indexed |
+|-----------------|---------------------|
+| Entries explicitly listed in `deep_dive` of `reference.yaml` | Content/text inside `.md` files |
+| 160 key → file path mappings | Headings or sections within files |
+| `examples/`, `guide/`, `machine-readable/` paths | The main `ultimate-guide.md` body |
+
+**Keywords are mechanical** — derived from the key name and path segments, not from the actual file content. Example: `security_gate_hook` → keywords `"security gate hook examples hooks bash"`.
+
+**Adding a new guide section does NOT auto-index it.** You must explicitly add an entry to the `deep_dive` section of `reference.yaml` in the guide repo, then run `pnpm build:search`.
+
+### Common pitfall: duplicate YAML keys
+
+If `reference.yaml` has a duplicate key in `deep_dive`, the YAML parser fails silently and generates an **empty index** (0 entries). The build exits with a warning but no error code.
+
+```
+[build-guide-index] ERROR: Failed to parse YAML: duplicated mapping key
+[build-guide-index] Generating empty guide-search-entries.ts  ← CMD+K search broken
+```
+
+**To diagnose**: run `pnpm build:search` and check for `ERROR: Failed to parse YAML` in the output. Fix: rename the duplicate key in `reference.yaml` (e.g. `security_gate_hook` → `security_gate_hook_line` for a line-number reference).
 
 ### Adding landing entries manually
 
