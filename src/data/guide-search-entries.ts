@@ -1028,6 +1028,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-annotation-cycle-pattern",
+    "title": "Annotation Cycle Pattern",
+    "keywords": "annotation cycle pattern guide workflows plan driven md#the annotation cycle",
+    "category": "Guide > Workflows",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/plan-driven.md#the-annotation-cycle",
+    "source": "guide"
+  },
+  {
+    "id": "guide-custom-markdown-plans",
+    "title": "Custom Markdown Plans",
+    "keywords": "custom markdown plans guide workflows plan driven md#why custom plans over plan",
+    "category": "Guide > Workflows",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/plan-driven.md#why-custom-plans-over-plan",
+    "source": "guide"
+  },
+  {
     "id": "guide-team-tips-paddo-source",
     "title": "Team Tips Paddo Source",
     "keywords": "team tips paddo source boris cherny thread (x com bcherny status 2017742741636321619)",
@@ -1249,6 +1265,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "security update threat db examples commands update threat",
     "category": "Examples > Commands",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/update-threat-db.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-patcher-agent",
+    "title": "Security Patcher Agent",
+    "keywords": "security patcher agent examples agents security patcher",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/security-patcher.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-gate-hook",
+    "title": "Security Gate Hook",
+    "keywords": "security gate hook examples hooks bash security gate",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/security-gate.sh",
     "source": "guide"
   },
   {
