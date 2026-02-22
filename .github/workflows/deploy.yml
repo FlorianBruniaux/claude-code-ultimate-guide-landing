@@ -43,6 +43,8 @@ jobs:
 
       - name: Build diagrams data
         run: node scripts/build-diagrams-data.mjs
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Build Astro site
         run: pnpm build
