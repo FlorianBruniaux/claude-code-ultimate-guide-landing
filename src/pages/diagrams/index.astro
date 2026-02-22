@@ -512,7 +512,10 @@ const jsonLd = [
 }
 
 /* ─── Guide tooltip ──────────────────────────────────────────────────────── */
-.diagram-guide-tooltip {
+/* These rules MUST be :global because the tooltip div is created dynamically
+   in JS and appended to <body>. It has no Astro scope attribute, so scoped
+   selectors would never match it. */
+:global(.diagram-guide-tooltip) {
   position: fixed;
   z-index: 200;
   background: var(--bg-secondary, #1e1e1e);
@@ -530,13 +533,13 @@ const jsonLd = [
   white-space: nowrap;
 }
 
-.diagram-guide-tooltip.is-visible {
+:global(.diagram-guide-tooltip.is-visible) {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.diagram-guide-tooltip-link {
+:global(.diagram-guide-tooltip-link) {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -550,7 +553,7 @@ const jsonLd = [
   transition: background 0.12s, color 0.12s;
 }
 
-.diagram-guide-tooltip-link:hover {
+:global(.diagram-guide-tooltip-link:hover) {
   background: var(--accent, #E87E2F);
   color: #fff;
 }
