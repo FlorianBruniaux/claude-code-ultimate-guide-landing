@@ -1,0 +1,118 @@
+---
+const themes = [
+  { id: 'foundations',       icon: '🏗️',  title: 'Foundations',            count: 4 },
+  { id: 'context-sessions',  icon: '🧠',  title: 'Context & Sessions',     count: 4 },
+  { id: 'configuration',     icon: '⚙️',  title: 'Configuration',          count: 4 },
+  { id: 'architecture',      icon: '🔧',  title: 'Architecture',           count: 4 },
+  { id: 'mcp',               icon: '🔌',  title: 'MCP Ecosystem',          count: 4 },
+  { id: 'workflows',         icon: '🔄',  title: 'Dev Workflows',          count: 4 },
+  { id: 'multi-agent',       icon: '🤖',  title: 'Multi-Agent',            count: 5 },
+  { id: 'security',          icon: '🛡️',  title: 'Security & Production',  count: 4 },
+  { id: 'cost',              icon: '💰',  title: 'Cost & Optimization',    count: 4 },
+  { id: 'adoption',          icon: '📚',  title: 'Adoption & Learning',    count: 3 },
+]
+---
+
+<!-- Visual Diagrams Section -->
+<section class="section section--alt section--compact diagrams-teaser" id="diagrams">
+    <div class="container">
+        <h2 class="section-title">40 Interactive Diagrams</h2>
+        <p class="section-subtitle">See how Claude Code works — architecture, workflows, security, multi-agent patterns. Mermaid diagrams with ASCII fallbacks, organized in 10 thematic files.</p>
+
+        <div class="diagrams-stats">
+            <div class="diagrams-stat">
+                <div class="diagrams-stat-value">40</div>
+                <div class="diagrams-stat-label">Diagrams</div>
+            </div>
+            <div class="diagrams-stat">
+                <div class="diagrams-stat-value">10</div>
+                <div class="diagrams-stat-label">Themes</div>
+            </div>
+            <div class="diagrams-stat">
+                <div class="diagrams-stat-value">ASCII</div>
+                <div class="diagrams-stat-label">Fallbacks</div>
+            </div>
+        </div>
+
+        <div class="diagrams-grid">
+            {themes.map(theme => (
+                <a href={`/diagrams/#${theme.id}`} class="diagrams-theme">
+                    <span class="diagrams-theme-icon" aria-hidden="true">{theme.icon}</span>
+                    <span class="diagrams-theme-title">{theme.title}</span>
+                    <span class="diagrams-theme-count">{theme.count} diagrams</span>
+                </a>
+            ))}
+        </div>
+
+        <div class="diagrams-ctas">
+            <a href="/diagrams/" class="btn btn-primary">Browse All Diagrams &rarr;</a>
+            <a href="/guide/visual-reference/" class="btn btn-secondary">Visual Reference</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.diagrams-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+.diagrams-stat {
+    text-align: left;
+    padding: var(--space-xl);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+}
+.diagrams-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+}
+.diagrams-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+.diagrams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+}
+.diagrams-theme {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+}
+.diagrams-theme:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+.diagrams-theme-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.diagrams-theme-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+.diagrams-theme-count {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+.diagrams-ctas {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+</style>

@@ -92,6 +92,14 @@ const pageEntries: SearchEntry[] = [
     url: '/releases/',
     source: 'landing',
   },
+  {
+    id: 'page-diagrams',
+    title: 'Architecture Diagrams',
+    keywords: 'diagrams visual architecture mermaid svg flowchart workflows multi-agent security',
+    category: 'Pages',
+    url: '/diagrams/',
+    source: 'landing',
+  },
 ]
 
 // ─── Cheatsheet Sections ─────────────────────────────────────────────────────
@@ -359,6 +367,90 @@ const securityEntries: SearchEntry[] = [
   },
 ]
 
+// ─── Diagrams ─────────────────────────────────────────────────────────────────
+const diagramEntries: SearchEntry[] = [
+  {
+    id: 'diag-foundations',
+    title: 'Diagrams: Foundations',
+    keywords: 'diagram visual foundations 4-layer model pipeline decision tree permission modes architecture',
+    category: 'Diagrams',
+    url: '/diagrams/#foundations',
+    source: 'landing',
+  },
+  {
+    id: 'diag-context-sessions',
+    title: 'Diagrams: Context & Sessions',
+    keywords: 'diagram visual context zones memory hierarchy session continuity window management',
+    category: 'Diagrams',
+    url: '/diagrams/#context-sessions',
+    source: 'landing',
+  },
+  {
+    id: 'diag-configuration',
+    title: 'Diagrams: Configuration System',
+    keywords: 'diagram visual configuration settings CLAUDE.md project rules hierarchy override',
+    category: 'Diagrams',
+    url: '/diagrams/#configuration',
+    source: 'landing',
+  },
+  {
+    id: 'diag-architecture',
+    title: 'Diagrams: Architecture Internals',
+    keywords: 'diagram visual architecture internals tool execution loop hooks pipeline internal',
+    category: 'Diagrams',
+    url: '/diagrams/#architecture',
+    source: 'landing',
+  },
+  {
+    id: 'diag-mcp',
+    title: 'Diagrams: MCP Ecosystem',
+    keywords: 'diagram visual mcp model context protocol servers tools integration ecosystem',
+    category: 'Diagrams',
+    url: '/diagrams/#mcp',
+    source: 'landing',
+  },
+  {
+    id: 'diag-workflows',
+    title: 'Diagrams: Development Workflows',
+    keywords: 'diagram visual workflows tdd bdd sdd development methodology feature loop',
+    category: 'Diagrams',
+    url: '/diagrams/#workflows',
+    source: 'landing',
+  },
+  {
+    id: 'diag-multi-agent',
+    title: 'Diagrams: Multi-Agent Patterns',
+    keywords: 'diagram visual multi agent patterns orchestration parallel subagent delegation teams',
+    category: 'Diagrams',
+    url: '/diagrams/#multi-agent',
+    source: 'landing',
+  },
+  {
+    id: 'diag-security',
+    title: 'Diagrams: Security & Production',
+    keywords: 'diagram visual security production hardening threat model prompt injection cve',
+    category: 'Diagrams',
+    url: '/diagrams/#security',
+    source: 'landing',
+  },
+  {
+    id: 'diag-cost',
+    title: 'Diagrams: Cost & Optimization',
+    keywords: 'diagram visual cost optimization tokens budget performance caching efficiency',
+    category: 'Diagrams',
+    url: '/diagrams/#cost',
+    source: 'landing',
+  },
+  {
+    id: 'diag-adoption',
+    title: 'Diagrams: Adoption & Learning',
+    keywords: 'diagram visual adoption learning path onboarding team skill progression roadmap',
+    category: 'Diagrams',
+    url: '/diagrams/#adoption',
+    source: 'landing',
+  },
+]
+
 // ─── Assemble full index ──────────────────────────────────────────────────────
 export const SEARCH_INDEX: SearchEntry[] = [
   ...pageEntries,
@@ -367,5 +459,6 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...homepageEntries,
   ...releaseEntries,
   ...securityEntries,
+  ...diagramEntries,
   ...(GUIDE_ENTRIES as SearchEntry[]),
 ]

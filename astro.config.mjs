@@ -79,7 +79,8 @@ export default defineConfig({
         }
         if (
           item.url.includes('/learning/') ||
-          item.url.includes('/security/')
+          item.url.includes('/security/') ||
+          item.url.includes('/diagrams/')
         ) {
           return { ...item, priority: 0.85, changefreq: 'weekly' }
         }

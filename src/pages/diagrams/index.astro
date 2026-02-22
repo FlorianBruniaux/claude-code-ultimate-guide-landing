@@ -1,0 +1,570 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { DIAGRAM_THEMES } from '../../data/diagrams-data'
+
+const title = 'Claude Code Diagrams: 40 Architecture & Workflow Visuals'
+const description = '40 Mermaid diagrams covering Claude Code architecture, MCP ecosystem, multi-agent patterns, security, and workflows. Rendered as SVG at build time.'
+
+const totalDiagrams = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.length, 0)
+const totalWithSVG = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.filter(d => d.svg).length, 0)
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": "https://cc.bruniaux.com/diagrams/",
+    "datePublished": "2026-02-22",
+    "dateModified": "2026-02-22",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://cc.bruniaux.com/#website"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Florian BRUNIAUX",
+      "url": "https://github.com/FlorianBruniaux"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".hero-subtitle", ".diagrams-hero-stats"]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are Claude Code architecture diagrams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Code architecture diagrams are 40 Mermaid flowcharts covering 10 thematic areas: foundations, context management, configuration, architecture internals, MCP ecosystem, development workflows, multi-agent patterns, security, cost optimization, and adoption. Each diagram includes an ASCII text fallback."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What topics do the Claude Code diagrams cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 40 diagrams span 10 themes: Foundations (4-layer model, permission modes), Context & Sessions (memory hierarchy, session continuity), Configuration (precedence system, hooks pipeline), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, security threats), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security & Production (3-layer defense, CI/CD), Cost & Optimization (model selection, token strategies), and Adoption & Learning (onboarding paths, UVAL protocol)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these Claude Code diagrams free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All diagrams are open-source under the CC BY-SA 4.0 license, published in the Claude Code Ultimate Guide repository on GitHub. You can use, adapt, and redistribute them with attribution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are the Claude Code diagrams rendered?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The diagrams are rendered as SVG at build time using mermaid-cli (mmdc). This means zero client-side JavaScript, no layout shift (CLS = 0), and instant display. Each diagram also has a plain-text ASCII fallback for accessibility."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I find the Claude Code diagram source files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Source files are in the guide/diagrams/ directory of the Claude Code Ultimate Guide repository on GitHub: github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams. Each .md file contains Mermaid syntax, an ASCII fallback, and a reference to the relevant guide section."
+        }
+      }
+    ]
+  }
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Diagrams</span>
+      </nav>
+      <h1>Claude Code: 40 Architecture Diagrams</h1>
+      <p class="hero-subtitle">Visual reference for Claude Code internals — architecture, MCP ecosystem, multi-agent patterns, security models, and development workflows. 38 SVGs rendered at build time, zero client JavaScript.</p>
+      <div class="diagrams-hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">{totalDiagrams}</span>
+          <span class="hero-stat-label">Diagrams</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">{DIAGRAM_THEMES.length}</span>
+          <span class="hero-stat-label">Themes</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">SVG</span>
+          <span class="hero-stat-label">Inline rendering</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Theme navigation pills -->
+  {DIAGRAM_THEMES.length > 0 && (
+    <nav class="diagrams-nav" aria-label="Diagram themes">
+      <div class="diagrams-nav-inner">
+        {DIAGRAM_THEMES.map(t => (
+          <a href={`#${t.id}`} class="diagrams-nav-pill">
+            <span aria-hidden="true">{t.icon}</span>
+            {t.title.replace(' Diagrams', '')}
+          </a>
+        ))}
+      </div>
+    </nav>
+  )}
+
+  <!-- Diagram themes -->
+  <div class="container diagrams-content">
+    {DIAGRAM_THEMES.length === 0 ? (
+      <div class="diagrams-empty">
+        <p>Diagrams are generated at build time from the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams" target="_blank" rel="noopener">guide repository</a>.</p>
+        <p>Run <code>node scripts/build-diagrams-data.mjs</code> to generate them locally.</p>
+      </div>
+    ) : (
+      DIAGRAM_THEMES.map((theme, i) => (
+        <details class="diagram-theme-details" id={theme.id} open={i === 0}>
+          <summary class="diagram-theme-summary">
+            <span class="diagram-theme-icon" aria-hidden="true">{theme.icon}</span>
+            <span class="diagram-theme-title">{theme.title.replace(' Diagrams', '')}</span>
+            <span class="diagram-theme-count">{theme.diagrams.length} diagram{theme.diagrams.length !== 1 ? 's' : ''}</span>
+          </summary>
+          <div class="diagram-theme-content">
+            {theme.description && (
+              <p class="diagram-theme-desc">{theme.description}</p>
+            )}
+            {theme.diagrams.map(d => (
+              <article class="diagram-entry">
+                <h3 class="diagram-entry-title">{d.title}</h3>
+                {d.description && (
+                  <p class="diagram-entry-desc">{d.description}</p>
+                )}
+                <div class="diagram-container">
+                  {d.svg ? (
+                    <Fragment set:html={d.svg} />
+                  ) : (
+                    <pre class="diagram-ascii" aria-label={`ASCII diagram: ${d.title}`}>{d.asciiFallback}</pre>
+                  )}
+                </div>
+                {d.sourceRef && (
+                  <p class="diagram-source">{d.sourceRef}</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </details>
+      ))
+    )}
+  </div>
+
+  <!-- FAQ Section (GEO: FAQPage schema) -->
+  <div class="container diagrams-faq">
+    <h2>Frequently Asked Questions</h2>
+    <dl class="faq-list">
+      <div class="faq-item">
+        <dt>What topics do the diagrams cover?</dt>
+        <dd>10 thematic areas: Foundations (4-layer model, permission modes), Context &amp; Sessions (memory hierarchy), Configuration (precedence, hooks), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, rug pull attack chain), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security &amp; Production (3-layer defense, CI/CD pipeline), Cost &amp; Optimization (model selection, token strategies), and Adoption &amp; Learning (onboarding paths, UVAL protocol).</dd>
+      </div>
+      <div class="faq-item">
+        <dt>Are these diagrams free to use?</dt>
+        <dd>Yes — open-source under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Use, adapt, and redistribute with attribution.</dd>
+      </div>
+      <div class="faq-item">
+        <dt>How are the SVGs generated?</dt>
+        <dd>At build time using <code>mermaid-cli</code> (<code>mmdc</code>) with a neutral theme and transparent background. Zero client-side JavaScript — diagrams load instantly with no layout shift.</dd>
+      </div>
+      <div class="faq-item">
+        <dt>Where are the source files?</dt>
+        <dd>In <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams" target="_blank" rel="noopener"><code>guide/diagrams/</code> on GitHub</a>. Each <code>.md</code> file contains Mermaid syntax, an ASCII fallback, and a reference to the relevant guide section.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- Footer CTAs -->
+  <div class="container diagrams-footer">
+    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams" class="btn btn-secondary" target="_blank" rel="noopener">View source on GitHub &rarr;</a>
+    <a href="/" class="btn btn-ghost">&larr; Back to guide</a>
+  </div>
+</Layout>
+
+<style>
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+.page-hero {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.page-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin-bottom: var(--space-2xl);
+}
+
+.diagrams-hero-stats {
+  display: flex;
+  gap: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Navigation pills ───────────────────────────────────────────────────── */
+.diagrams-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-sm) 0;
+}
+
+.diagrams-nav-inner {
+  max-width: var(--container-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.diagrams-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.diagrams-nav-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--border-radius-full, 999px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.diagrams-nav-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-accent-subtle, var(--bg-secondary));
+}
+
+/* ─── Diagrams content ───────────────────────────────────────────────────── */
+.diagrams-content {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.diagrams-empty {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  color: var(--text-secondary);
+}
+
+.diagrams-empty code {
+  background: var(--bg-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ─── Theme details accordion ────────────────────────────────────────────── */
+.diagram-theme-details {
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--space-lg);
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.diagram-theme-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-xl);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.diagram-theme-summary::-webkit-details-marker {
+  display: none;
+}
+
+.diagram-theme-summary:hover {
+  background: var(--bg-tertiary, var(--bg-secondary));
+}
+
+.diagram-theme-details[open] .diagram-theme-summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.diagram-theme-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.diagram-theme-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.diagram-theme-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-tertiary, rgba(0,0,0,0.05));
+  padding: 2px 8px;
+  border-radius: var(--border-radius-full, 999px);
+  border: 1px solid var(--border);
+}
+
+/* Expand/collapse indicator */
+.diagram-theme-summary::after {
+  content: '›';
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  margin-left: auto;
+}
+
+.diagram-theme-details[open] .diagram-theme-summary::after {
+  transform: rotate(90deg);
+}
+
+.diagram-theme-content {
+  padding: 0 var(--space-xl) var(--space-xl);
+}
+
+.diagram-theme-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-xl);
+}
+
+/* ─── Individual diagram entry ───────────────────────────────────────────── */
+.diagram-entry {
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.diagram-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.diagram-entry-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.diagram-entry-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-lg);
+  max-width: 640px;
+}
+
+/* ─── Diagram container (SVG + ASCII) ────────────────────────────────────── */
+.diagram-container {
+  overflow-x: auto;
+  margin: var(--space-lg) 0;
+  padding: var(--space-lg);
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border);
+}
+
+.diagram-container :global(svg.diagram-svg) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Dark mode adjustments for SVG edges/labels */
+[data-theme="dark"] .diagram-container :global(.edgePath path),
+[data-theme="dark"] .diagram-container :global(.edge path) {
+  stroke: #888;
+}
+
+[data-theme="dark"] .diagram-container :global(.edgeLabel) {
+  color: #ccc;
+}
+
+[data-theme="dark"] .diagram-container :global(.cluster rect) {
+  stroke: #555;
+  fill: #1a1a1a;
+}
+
+.diagram-ascii {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: pre;
+  overflow-x: auto;
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.diagram-source {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────────────────── */
+.diagrams-faq {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-2xl);
+}
+
+.diagrams-faq h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xl);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.faq-item dt {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.faq-item dd {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin-left: 0;
+}
+
+.faq-item dd code {
+  background: var(--bg-secondary);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.diagrams-footer {
+  display: flex;
+  gap: var(--space-md);
+  padding-bottom: var(--space-3xl);
+  flex-wrap: wrap;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-hero {
+    padding: var(--space-2xl) 0 var(--space-xl);
+  }
+
+  .diagram-theme-summary {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .diagram-theme-content {
+    padding: 0 var(--space-lg) var(--space-lg);
+  }
+
+  .diagram-container {
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+  }
+
+  .diagrams-footer {
+    flex-direction: column;
+  }
+}
+</style>

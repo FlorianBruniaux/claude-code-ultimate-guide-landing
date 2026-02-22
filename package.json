@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build:search": "node scripts/build-guide-index.mjs",
     "build:guide": "node scripts/prepare-guide-content.mjs",
-    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-guide-index.mjs && astro build",
+    "build:diagrams": "node scripts/build-diagrams-data.mjs",
+    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"
@@ -28,6 +29,7 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
+    "@mermaid-js/mermaid-cli": "^11.12.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/js-yaml": "^4.0.9",
     "js-yaml": "^4.1.1",
