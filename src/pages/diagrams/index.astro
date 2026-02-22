@@ -733,6 +733,23 @@ const jsonLd = [
   tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimer))
   tooltip.addEventListener('mouseleave', hideTooltip)
 
+  // Get per-node URL from SVG <a href> (Mermaid click directives), or fall back to diagram URL
+  function getNodeUrl(node: Element, fallback: string): string {
+    // Mermaid wraps .node <g> in <a href> when click directive is used
+    const outerLink = node.closest('a[href]')
+    if (outerLink) return outerLink.getAttribute('href') ?? fallback
+    // Also check for nested <a href>
+    const innerLink = node.querySelector('a[href]')
+    if (innerLink) return innerLink.getAttribute('href') ?? fallback
+    // xlink:href fallback for older SVG
+    const anyLink = (node.querySelector('a') ?? node.closest('a')) as Element | null
+    if (anyLink) {
+      const xhref = anyLink.getAttributeNS('http://www.w3.org/1999/xlink', 'href')
+      if (xhref) return xhref
+    }
+    return fallback
+  }
+
   document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]').forEach(container => {
     const url = container.dataset.guideUrl!
     const svg = container.querySelector('svg')
@@ -745,7 +762,7 @@ const jsonLd = [
       const node = (e.target as Element).closest('.node')
       if (node && node !== currentNode) {
         currentNode = node
-        showTooltip(url, node)
+        showTooltip(getNodeUrl(node, url), node)
       }
     })
 
@@ -759,7 +776,13 @@ const jsonLd = [
 
     svg.addEventListener('click', (e) => {
       const node = (e.target as Element).closest('.node')
-      if (node) showTooltip(url, node)
+      if (node) {
+        // Prevent native SVG <a> navigation — tooltip handles navigation
+        if (node.closest('a[href]') || node.querySelector('a[href]')) {
+          e.preventDefault()
+        }
+        showTooltip(getNodeUrl(node, url), node)
+      }
     })
   })
 
