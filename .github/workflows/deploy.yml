@@ -48,6 +48,8 @@ jobs:
 
       - name: Build Astro site
         run: pnpm build
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
