@@ -730,9 +730,26 @@ const jsonLd = [
   tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimer))
   tooltip.addEventListener('mouseleave', hideTooltip)
 
-  document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]').forEach(container => {
+  const containers = document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]')
+  console.log('[diagrams] containers with data-guide-url:', containers.length)
+
+  containers.forEach((container, ci) => {
     const url = container.dataset.guideUrl!
-    container.querySelectorAll<SVGGElement>('svg .node').forEach(node => {
+    // Try multiple selectors — Mermaid SVG structure varies by version
+    const nodes = container.querySelectorAll<SVGGElement>('svg .node, svg g[id^="flowchart-"]')
+    console.log(`[diagrams] container #${ci} url=${url} nodes found:`, nodes.length)
+    if (nodes.length === 0) {
+      // Log actual SVG structure for debugging
+      const svg = container.querySelector('svg')
+      if (svg) {
+        const gElements = svg.querySelectorAll('g')
+        console.log(`[diagrams] container #${ci} total <g> elements:`, gElements.length)
+        gElements.forEach((g, i) => {
+          if (i < 10) console.log(`  g[${i}] id="${g.id}" class="${g.className?.baseVal}"`)
+        })
+      }
+    }
+    nodes.forEach(node => {
       node.addEventListener('mouseenter', () => showTooltip(url, node))
       node.addEventListener('mouseleave', hideTooltip)
       node.addEventListener('click', (e) => {
