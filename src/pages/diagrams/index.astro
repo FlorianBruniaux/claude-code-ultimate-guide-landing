@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { DIAGRAM_THEMES } from '../../data/diagrams-data'
+import { DIAGRAM_GUIDE_URLS } from '../../data/diagrams-guide-urls'
 
 const title = 'Claude Code Diagrams: 40 Architecture & Workflow Visuals'
 const description = '40 Mermaid diagrams covering Claude Code architecture, MCP ecosystem, multi-agent patterns, security, and workflows. Rendered as SVG at build time.'
@@ -146,13 +147,17 @@ const jsonLd = [
             {theme.description && (
               <p class="diagram-theme-desc">{theme.description}</p>
             )}
-            {theme.diagrams.map(d => (
+            {theme.diagrams.map((d, i) => (
               <article class="diagram-entry">
                 <h3 class="diagram-entry-title">{d.title}</h3>
                 {d.description && (
                   <p class="diagram-entry-desc">{d.description}</p>
                 )}
-                <div class="diagram-container">
+                <div
+                  class="diagram-container"
+                  data-guide-url={d.svg ? (DIAGRAM_GUIDE_URLS[theme.id]?.[i] ?? undefined) : undefined}
+                  title={d.svg && DIAGRAM_GUIDE_URLS[theme.id]?.[i] ? 'Click to view this section in the guide' : undefined}
+                >
                   {d.svg ? (
                     <Fragment set:html={d.svg} />
                   ) : (
@@ -484,6 +489,42 @@ const jsonLd = [
   background: var(--bg-primary);
   border-radius: var(--border-radius);
   border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Clickable diagrams: hover badge + cursor */
+.diagram-container[data-guide-url] {
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.diagram-container[data-guide-url]:hover {
+  border-color: var(--accent);
+}
+
+.diagram-container[data-guide-url]::after {
+  content: '📖 View in guide →';
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.15s, transform 0.15s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.diagram-container[data-guide-url]:hover::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .diagram-container :global(svg.diagram-svg) {
@@ -622,6 +663,15 @@ const jsonLd = [
 </style>
 
 <script>
+  // ── Diagram click-to-guide ──────────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('.diagram-container[data-guide-url]').forEach(el => {
+    el.addEventListener('click', () => {
+      const url = el.dataset.guideUrl
+      if (url) window.open(url, '_blank', 'noopener noreferrer')
+    })
+  })
+
+  // ── Nav arrows ─────────────────────────────────────────────────────────
   const inner = document.getElementById('diagrams-nav-inner')
   const btnLeft = document.getElementById('nav-arrow-left')
   const btnRight = document.getElementById('nav-arrow-right')
