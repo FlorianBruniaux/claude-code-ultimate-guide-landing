@@ -58,8 +58,8 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 |----------|--------|--------|
 | Version | `3.28.1` | VERSION file |
 | Templates | `175` | Count of examples/ files (excl. README/index) |
-| Quiz questions | `271` | questions.json |
-| Guide lines | `20,072` | ultimate-guide.md |
+| Quiz questions | `274` | questions.json |
+| Guide lines | `20,548` | ultimate-guide.md |
 
 ## Stack technique (post-migration Astro 5)
 
