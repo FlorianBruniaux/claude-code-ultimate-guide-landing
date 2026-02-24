@@ -14,6 +14,26 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.52',
+    date: 'Feb 24, 2026',
+    highlights: [
+      'VSCode: Fixed extension crash on Windows',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.51',
+    date: 'Feb 24, 2026',
+    highlights: [
+      '<code>claude remote-control</code> subcommand for external builds (local environment serving)',
+      'BashTool skips login shell by default when snapshot available — performance improvement',
+      '<code>CLAUDE_CODE_ACCOUNT_UUID</code> / <code>CLAUDE_CODE_USER_EMAIL</code> env vars for SDK account metadata',
+      '<code>/model</code> picker shows human-readable labels; custom npm registries for plugins',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.49',
     date: 'Feb 20, 2026',
     highlights: [
@@ -22,7 +42,6 @@ export const releases: Release[] = [
       '<code>ConfigChange</code> hook event for enterprise security auditing of config changes',
       'Simple mode includes file edit tool; Sonnet 4.6 now has 1M context on Max plan',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
