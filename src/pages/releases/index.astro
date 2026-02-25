@@ -30,6 +30,40 @@ const jsonLd = [
     </div>
   </header>
 
+  <!-- Featured Feature Banner -->
+  <section class="content-section" id="featured">
+    <div class="featured-banner">
+      <div class="featured-banner-label">🔥 New Feature — Research Preview</div>
+      <h2 class="featured-banner-title">Remote Control <span class="featured-version">v2.1.51</span></h2>
+      <p class="featured-banner-desc">
+        Control your local Claude Code session from any phone, tablet, or browser — execution stays 100% on your machine.
+        No ports to open, no SSH tunnels. Just scan a QR code and code from your couch.
+      </p>
+      <div class="featured-banner-meta">
+        <span class="featured-badge">Pro &amp; Max only</span>
+        <span class="featured-badge featured-badge-secondary">HTTPS outbound only</span>
+        <span class="featured-badge featured-badge-secondary">~10 min timeout</span>
+      </div>
+      <div class="featured-banner-commands">
+        <code>/rc</code>
+        <span class="cmd-sep">or</span>
+        <code>claude remote-control</code>
+        <span class="cmd-sep">→ scan QR → control from mobile</span>
+      </div>
+      <div class="featured-banner-note">
+        ⚠️ Known: slash commands (<code>/new</code>, <code>/compact</code>) don't work in the remote UI — use them from your local terminal.
+      </div>
+      <div class="featured-banner-cta">
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#922-remote-control-mobile-access" class="btn btn-primary" target="_blank" rel="noopener">
+          Full Guide (§9.22) &rarr;
+        </a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security-hardening.md#remote-control-security" class="btn btn-secondary" target="_blank" rel="noopener">
+          Security Notes
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- What's New Section -->
   <section class="content-section" id="whats-new">
     <h2>What's New</h2>
@@ -62,7 +96,10 @@ const jsonLd = [
 
     <div class="releases-timeline">
       {releases.map((release, index) => (
-        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index}>
+        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index}>
+          {release.featuredLabel && (
+            <div class="release-featured-label">{release.featuredLabel}</div>
+          )}
           <div class="release-header">
             <span class="release-version">{release.version}</span>
             <span class="release-date">{release.date}</span>
@@ -99,6 +136,134 @@ const jsonLd = [
   </section>
 
   <style is:global>
+    /* Featured banner */
+    .featured-banner {
+      background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--bg-tertiary) 100%);
+      border: 2px solid var(--accent);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl) var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #f97316, var(--accent));
+    }
+    .featured-banner-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: var(--space-sm);
+    }
+    .featured-banner-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--space-md);
+      border: none;
+      padding: 0;
+    }
+    .featured-version {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+    .featured-banner-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+      max-width: 680px;
+    }
+    .featured-banner-meta {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+    }
+    .featured-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .featured-badge-secondary {
+      background: var(--surface-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .featured-banner-commands {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    .featured-banner-commands code {
+      background: var(--bg-tertiary);
+      color: var(--accent);
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .cmd-sep { color: var(--text-muted); font-family: var(--font-sans, sans-serif); font-size: 0.85rem; }
+    .featured-banner-note {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border-left: 3px solid #f97316;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 0 4px 4px 0;
+      margin-bottom: var(--space-lg);
+    }
+    .featured-banner-note code {
+      background: rgba(0,0,0,0.15);
+      padding: 0.1em 0.3em;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+    .featured-banner-cta {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    /* Featured release card */
+    .release-featured {
+      border-color: var(--accent) !important;
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--bg-tertiary) 100%) !important;
+    }
+    .release-featured-label {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: var(--space-sm);
+    }
+    @media (max-width: 640px) {
+      .release-featured { grid-column: span 1; }
+      .featured-banner { padding: var(--space-lg); }
+      .featured-banner-title { font-size: 1.5rem; }
+    }
+
     /* Hero */
     /* Content sections */
     .content-section {

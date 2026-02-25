@@ -375,6 +375,10 @@ kbd {
     letter-spacing: 0.05em;
 }
 
+.card-badge-preview {
+    background: #7c3aed;
+}
+
 .feature-card-link {
     text-decoration: none;
     cursor: pointer;

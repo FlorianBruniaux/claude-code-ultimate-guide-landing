@@ -5,6 +5,8 @@ export interface Release {
   breaking?: string[]
   latest?: boolean
   initiallyVisible?: boolean
+  featured?: boolean
+  featuredLabel?: string
 }
 
 export interface BreakingChange {
@@ -52,12 +54,14 @@ export const releases: Release[] = [
     version: 'v2.1.51',
     date: 'Feb 24, 2026',
     highlights: [
-      '<code>claude remote-control</code> subcommand for external builds (local environment serving)',
+      '&#128241; <strong>Remote Control</strong> — control your local Claude Code session from any phone, tablet, or browser via <code>/rc</code> or <code>claude remote-control</code>. Execution stays 100% local. Pro/Max only (Research Preview)',
       'BashTool skips login shell by default when snapshot available — performance improvement',
       '<code>CLAUDE_CODE_ACCOUNT_UUID</code> / <code>CLAUDE_CODE_USER_EMAIL</code> env vars for SDK account metadata',
       '<code>/model</code> picker shows human-readable labels; custom npm registries for plugins',
     ],
     initiallyVisible: true,
+    featured: true,
+    featuredLabel: '🔥 Major Feature',
   },
   {
     version: 'v2.1.49',
