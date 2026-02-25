@@ -14,13 +14,39 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.56',
+    date: 'Feb 25, 2026',
+    highlights: [
+      'VSCode: Fixed another cause of extension crash on Windows',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.55',
+    date: 'Feb 25, 2026',
+    highlights: [
+      'Fixed BashTool failing on Windows with EINVAL error',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.53',
+    date: 'Feb 25, 2026',
+    highlights: [
+      'Stability fixes: Windows panics/crashes, WebAssembly crashes on Linux x64 & Windows x64/ARM64',
+      'Fixed graceful shutdown leaving stale sessions with Remote Control',
+      'Fixed <code>--worktree</code> flag sometimes ignored on first launch',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.52',
     date: 'Feb 24, 2026',
     highlights: [
       'VSCode: Fixed extension crash on Windows',
     ],
-    latest: true,
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.51',
