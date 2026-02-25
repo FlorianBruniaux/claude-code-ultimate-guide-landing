@@ -1132,6 +1132,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-fluency-evaluation",
+    "title": "AI Fluency Evaluation",
+    "keywords": "ai fluency evaluation docs resource evaluations 2026 anthropic fluency index",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-02-23-anthropic-ai-fluency-index.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-fluency-diagram",
+    "title": "AI Fluency Diagram",
+    "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency--high-vs-low-fluency-paths",
+    "source": "guide"
+  },
+  {
     "id": "guide-skeleton-projects-workflow",
     "title": "Skeleton Projects Workflow",
     "keywords": "skeleton projects workflow guide workflows skeleton projects",
