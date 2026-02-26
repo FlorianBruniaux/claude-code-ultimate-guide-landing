@@ -16,13 +16,35 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.59',
+    date: 'Feb 26, 2026',
+    highlights: [
+      '&#129504; <strong>Auto-memory</strong> — Claude automatically saves useful context to memory. Manage with <code>/memory</code>',
+      '<code>/copy</code> command — interactive picker to select individual code blocks or full response',
+      'Smarter "always allow" prefix suggestions for compound bash commands (per-subcommand prefixes)',
+      'Fixed MCP OAuth token refresh race condition with multiple simultaneous Claude Code instances',
+      'Fixed config file corruption wiping authentication when multiple instances ran simultaneously',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Auto-memory',
+  },
+  {
+    version: 'v2.1.58',
+    date: 'Feb 26, 2026',
+    highlights: [
+      'Remote Control expanded to more users',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.56',
     date: 'Feb 25, 2026',
     highlights: [
       'VSCode: Fixed another cause of extension crash on Windows',
     ],
-    latest: true,
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.55',
