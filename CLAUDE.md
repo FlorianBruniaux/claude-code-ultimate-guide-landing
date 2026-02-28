@@ -56,10 +56,10 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.28.1` | VERSION file |
-| Templates | `175` | Count of examples/ files (excl. README/index) |
+| Version | `3.29.0` | VERSION file |
+| Templates | `199` | Count of examples/ files (excl. README/index) |
 | Quiz questions | `274` | questions.json |
-| Guide lines | `20,548` | ultimate-guide.md |
+| Guide lines | `21,389` | ultimate-guide.md |
 
 ## Stack technique (post-migration Astro 5)
 
@@ -79,7 +79,8 @@ Le site a migré de HTML statique vers Astro 5. Les références à `index.html`
 - **`src/data/releases.ts`**: Changelog Claude Code
 - **`src/data/security-data.ts`**: CVEs, campaigns, threats
 - **`src/data/search-index.ts`**: Index de recherche (landing entries) — éditer ici pour ajouter des entrées
-- **`src/data/guide-search-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement
+- **`src/data/guide-search-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (162 entrées depuis reference.yaml)
+- **`src/data/guide-content-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (848 entrées H2 depuis src/content/docs/guide/)
 - **`src/components/global/SearchModal.astro`**: Modal Cmd+K
 
 ## Vérification avant modification
@@ -366,26 +367,36 @@ Exclure si :
 ```
 reference.yaml (guide repo)
         ↓ scripts/build-guide-index.mjs
-src/data/guide-search-entries.ts  ← GÉNÉRÉ (130 entrées guide)
+src/data/guide-search-entries.ts    ← GÉNÉRÉ (162 entrées depuis reference.yaml)
+
+src/content/docs/guide/**/*.md
+        ↓ scripts/build-guide-content-index.mjs
+src/data/guide-content-entries.ts   ← GÉNÉRÉ (848 entrées H2 headings, full guide)
+
         +
-src/data/search-index.ts          ← EDITABLE (99 entrées landing)
+src/data/search-index.ts            ← EDITABLE (landing entries + importe les 2 ci-dessus)
         ↓ sérialisé au build time
 SearchModal.astro → <script id="search-data" type="application/json">
         ↓ chargé côté client
-src/scripts/search.ts             ← moteur fuzzy, keyboard nav
+src/scripts/search.ts               ← moteur fuzzy, keyboard nav
 ```
+
+Total index: ~1120 entrées (landing + guide topics + guide sections)
 
 ### Quand rebuilder l'index guide
 
-- Après `git pull` du repo guide (si `reference.yaml` a changé)
-- Quand de nouvelles sections/fichiers sont ajoutés au guide
-- Jamais nécessaire pour les changements de contenu dans des fichiers existants
+- Après `git pull` du repo guide (si `reference.yaml` a changé) → `pnpm build:search`
+- Quand de nouvelles sections/fichiers `.md` sont ajoutés dans `src/content/docs/guide/` → `pnpm build:search-content`
+- Quand du contenu existant change (nouveaux H2 headings) → `pnpm build:search-content`
 
 ### Comment rebuilder
 
 ```bash
-# Via script npm (recommandé)
+# Tout rebuilder (reference.yaml + H2 headings)
 pnpm build:search
+
+# Rebuilder uniquement les H2 headings du guide (plus rapide)
+pnpm build:search-content
 
 # Via slash command Claude Code
 /sync-search

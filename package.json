@@ -4,10 +4,11 @@
   "version": "3.15.0",
   "scripts": {
     "dev": "astro dev",
-    "build:search": "node scripts/build-guide-index.mjs",
+    "build:search": "node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs",
+    "build:search-content": "node scripts/build-guide-content-index.mjs",
     "build:guide": "node scripts/prepare-guide-content.mjs",
     "build:diagrams": "node scripts/build-diagrams-data.mjs",
-    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && astro build",
+    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"

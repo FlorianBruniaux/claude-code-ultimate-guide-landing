@@ -6,6 +6,7 @@
 import { EXAMPLES } from './examples-data.ts'
 import { releases } from './releases.ts'
 import { GUIDE_ENTRIES } from './guide-search-entries.ts'
+import { GUIDE_CONTENT_ENTRIES } from './guide-content-entries.ts'
 
 export type SearchSource = 'landing' | 'guide'
 
@@ -461,4 +462,5 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...securityEntries,
   ...diagramEntries,
   ...(GUIDE_ENTRIES as SearchEntry[]),
+  ...(GUIDE_CONTENT_ENTRIES as SearchEntry[]),
 ]

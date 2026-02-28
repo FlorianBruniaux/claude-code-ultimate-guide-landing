@@ -4,6 +4,7 @@ import HeroBanner from '../components/landing/HeroBanner.astro'
 import WhyGuide from '../components/landing/WhyGuide.astro'
 import PromptFormula from '../components/landing/PromptFormula.astro'
 import FeaturesGrid from '../components/landing/FeaturesGrid.astro'
+import McpDemo from '../components/landing/McpDemo.astro'
 import GoldenRules from '../components/landing/GoldenRules.astro'
 import VisualDiagrams from '../components/landing/VisualDiagrams.astro'
 import SecurityTeaser from '../components/landing/SecurityTeaser.astro'
@@ -12,14 +13,14 @@ import Community from '../components/landing/Community.astro'
 import RelatedProjects from '../components/landing/RelatedProjects.astro'
 
 const title = 'Claude Code Guide: Templates, Security, Workflows | Anthropic CLI'
-const description = 'Master Claude Code (Anthropic CLI) with 20K lines of documentation, 175 templates, 274-question quiz, security threat database (24 CVEs), and TDD/SDD/BDD workflows. Free & open-source.'
+const description = 'Master Claude Code (Anthropic CLI) with 21K lines of documentation, 199 templates, 274-question quiz, security threat database (24 CVEs), and TDD/SDD/BDD workflows. Free & open-source.'
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Claude Code Ultimate Guide",
-    "description": "Free, open-source guide for Claude Code (Anthropic CLI): 20K lines of documentation, 175 templates, 274-question quiz, security threat database, and methodology workflows.",
+    "description": "Free, open-source guide for Claude Code (Anthropic CLI): 21K lines of documentation, 199 templates, 274-question quiz, security threat database, and methodology workflows.",
     "url": "https://cc.bruniaux.com/",
     "provider": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
     "author": {
@@ -58,6 +59,7 @@ const jsonLd = [
   <WhyGuide />
   <PromptFormula />
   <FeaturesGrid />
+  <McpDemo />
   <GoldenRules />
   <VisualDiagrams />
   <SecurityTeaser />

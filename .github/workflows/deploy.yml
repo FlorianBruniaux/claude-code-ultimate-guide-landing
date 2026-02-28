@@ -46,8 +46,11 @@ jobs:
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
+      - name: Build search indexes
+        run: node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs
+
       - name: Build Astro site
-        run: pnpm build
+        run: pnpm astro build
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 

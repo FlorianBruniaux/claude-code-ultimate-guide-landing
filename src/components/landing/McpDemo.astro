@@ -1,0 +1,485 @@
+---
+// MCP Server — MCP in Action
+// Tab-based terminal demo showing real command outputs
+
+const commands = [
+  {
+    id: 'digest',
+    label: '/ccguide:digest week',
+    title: 'Weekly Digest',
+    description: 'Guide changes + Claude Code CLI releases for the past 7 days, with GitHub/site links on every resource.',
+    output: `# Digest — 7 derniers jours (22-28 fév 2026)
+
+## Claude Code CLI — Releases
+
+v2.1.59 (26 fév) — Auto-memory natif (/memory), /copy avec picker
+                    interactif, fix race condition MCP OAuth
+v2.1.58 (26 fév) — Remote Control élargi à plus d'utilisateurs
+v2.1.56 (25 fév) — Fix crash VSCode Windows
+v2.1.53 (25 fév) — Stability batch : panics Windows, WebAssembly
+                    crashes, fix Remote Control stale sessions
+v2.1.51 (24 fév) — claude remote-control subcommand, SDK env vars,
+                    /model labels lisibles
+
+Release notes : https://github.com/FlorianBruniaux/claude-code-ultimate-guide
+                /blob/main/guide/claude-code-releases.md
+
+---
+## Guide — Changements majeurs
+
+- Remote Control (§9.22) — workflow QR/URL/app, tmux multi-session,
+  limitations slash commands, architecture sécurité
+- Terminal Personalization (§3.3) — spinnerVerbs, spinnerTipsOverride,
+  113+ tips en 13 catégories
+- MLflow Tracing (observability.md) — CLI zero-Python, LLM-as-judge
+- Threat Database v2.1.0 → v2.2.0 : CVE-2026-0755 (CVSS 9.8, RCE),
+  SNYK mcp-run-python SSRF, technique T010 agent-to-agent injection
+
+---
+## Resources mentionnées
+
+- examples/config/settings-personalization.json
+  https://github.com/FlorianBruniaux/...
+- guide/observability.md
+  https://github.com/FlorianBruniaux/... | https://cc.bruniaux.com/guide/observability
+- examples/hooks/bash/security-gate.sh
+  https://github.com/FlorianBruniaux/...
+- examples/agents/security-patcher.md
+  https://github.com/FlorianBruniaux/...`,
+  },
+  {
+    id: 'examples',
+    label: '/ccguide:examples',
+    title: 'Templates',
+    description: '199 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
+    output: `# Claude Code Ultimate Guide — Templates
+GitHub: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
+
+## Agents (6)
+
+code-reviewer.md         → Review Anti Hallucination
+planner.md               → Planner Agent
+implementer.md           → Implementer Agent
+architecture-reviewer.md → Architecture Reviewer Agent
+devops-sre.md            → Devops Agent
+security-patcher.md      → Security Patcher Agent
+
+## Commands (15)
+
+review-pr.md             → Review PR Advanced
+review-plan.md           → Review Plan Command
+quiz.md                  → Learn Quiz Command
+audit-agents-skills.md   → Audit Agents Skills Command
+git-worktree.md          → Git Worktree Command
+security-check.md        → Security Check Command
+security-audit.md        → Security Audit Command
+update-threat-db.md      → Update Threat DB Command
+... +7 more
+
+## Hooks (6)
+
+rtk-auto-wrapper.sh      → RTK Auto Wrapper
+learning-capture.sh      → Learning Capture Hook
+pre-commit-secrets.sh    → Pre-Commit Secrets Hook
+security-gate.sh         → Security Gate Hook
+tts-selective.sh         → TTS Hook Example
+sandbox-validation.sh    → Sandbox Validation Hook
+
+## Skills (17)
+
+Talk pipeline complet (orchestrateur + 6 stages), pdf-generator,
+rtk-optimizer, audit-agents-skills, voice-refine, design-patterns,
+ast-grep-patterns...
+
+## Scripts (5)
+
+session-search.sh  · cc-sessions.py  · bridge.py
+sync-claude-config.sh  · bridge-plan-schema.json
+
+---
+Pour récupérer un template : /ccguide:example <nom>
+ex: /ccguide:example security-gate`,
+  },
+  {
+    id: 'topics',
+    label: '/ccguide:topics',
+    title: 'Topics',
+    description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
+    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.29.0)
+
+┌────────────┬─────────┬───────────────────────────────────────────────┐
+│ Category   │ Entries │ Examples                                       │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ deep       │     740 │ Mermaid diagrams, exploration workflow,        │
+│            │         │ script generation, anti-anchoring prompts,     │
+│            │         │ session limits                                  │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ mcp        │      61 │ Serena, claude-mem, plugin, repo, guide        │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ onboarding │      33 │ Matrix meta, changelog, get started (5min)     │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ ecosystem  │      27 │ This guide, MCP server npm/install/readme      │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ hooks      │       7 │ Execution model, async, use cases, matrix      │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ agent      │       4 │ Template, official fields, memory scopes       │
+├────────────┼─────────┼───────────────────────────────────────────────┤
+│ context    │       3 │ Zones, fresh context, symptoms                 │
+└────────────┴─────────┴───────────────────────────────────────────────┘
+
+Single-entry categories:
+updated · decide · prompt · workflow · commands · shortcuts · cli
+memory · folder · permissions · architecture · cost · tools · debug
+hook · rules
+
+---
+Usage:
+  /ccguide:search hooks
+  /ccguide:search mcp serena
+  /ccguide:search agent memory`,
+  },
+  {
+    id: 'release',
+    label: '/ccguide:release',
+    title: 'Releases',
+    description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
+    output: `# Claude Code Releases
+Latest: v2.1.59 (updated: 2026-02-26)
+https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
+
+---
+v2.1.59 — 26 fév 2026
+
+- Auto-memory : Claude sauvegarde automatiquement le contexte utile,
+  gérable via /memory
+- /copy : picker interactif pour copier un bloc ou la réponse complète
+- Suggestions "always allow" plus intelligentes pour les commandes
+  bash composées (prefixes par sous-commande)
+- Fix : race condition MCP OAuth token refresh avec plusieurs instances
+- Fix : corruption du fichier config effaçant l'auth multi-instances
+
+v2.1.58 — 26 fév 2026
+- Remote Control élargi à plus d'utilisateurs
+
+v2.1.56 — 25 fév 2026
+- VSCode : fix crash "command claude-vscode.editor.openLast not found"
+
+v2.1.55 — 25 fév 2026
+- Fix BashTool EINVAL sur Windows
+
+v2.1.53 — 25 fév 2026
+- Stability batch : panics Windows, crashes process spawn, WebAssembly
+- Fix Remote Control : sessions stale après graceful shutdown
+- Fix UI flicker, kill agents en masse (ctrl+f)
+
+---
+76 releases trackées au total.
+Pour une version spécifique : /ccguide:release 2.1.51`,
+  },
+  {
+    id: 'slash',
+    label: 'Slash commands',
+    title: 'Slash commands',
+    description: '8 shortcuts /ccguide:* — one keystroke to search, fetch templates, get the digest, or browse the cheatsheet.',
+    output: `# Slash commands /ccguide:*
+
+Copy once to ~/.claude/commands/ccguide/ → available in every project.
+
+┌──────────────────────────┬────────────────────────────────────────────────┐
+│ Command                  │ What it does                                   │
+├──────────────────────────┼────────────────────────────────────────────────┤
+│ /ccguide:search <query>  │ Search 893 indexed entries with scores + links │
+│ /ccguide:digest <period> │ Guide + CC CLI changes (day/week/month)        │
+│ /ccguide:examples        │ List all 199 templates by category             │
+│ /ccguide:example <name>  │ Fetch a template (agent/hook/command/skill)    │
+│ /ccguide:cheatsheet      │ Full cheatsheet or filtered by section         │
+│ /ccguide:release         │ Latest Claude Code CLI release notes           │
+│ /ccguide:changelog       │ Last N CHANGELOG entries from the guide        │
+│ /ccguide:topics          │ Browse 25 topic categories (893 entries)       │
+└──────────────────────────┴────────────────────────────────────────────────┘
+
+Install:
+  cp -r .claude/commands/ccguide ~/.claude/commands/ccguide
+
+Examples:
+  /ccguide:search hooks
+  /ccguide:digest week
+  /ccguide:example code-reviewer
+  /ccguide:cheatsheet memory
+  /ccguide:release 2.1.59
+
+Onboarding one-liner (after install):
+  claude "Use the claude-code-guide MCP. Activate claude-code-expert
+  prompt, ask me 3 questions about my goal and level, build a
+  personalized learning path with search_guide + read_section."`,
+  },
+]
+---
+
+<section id="mcp-demo" class="section mcp-demo-section">
+  <div class="container">
+    <h2 class="section-title">MCP in Action</h2>
+    <p class="section-subtitle">
+      Query the guide directly from Claude Code. Real outputs, live search, source links on every result.
+    </p>
+
+    <div class="install-pill">
+      <span class="install-label">install</span>
+      <code class="install-cmd">npx -y claude-code-ultimate-guide-mcp</code>
+    </div>
+
+    <!-- Command tabs -->
+    <div class="demo-tabs" role="tablist" aria-label="MCP command demos">
+      {commands.map((cmd, i) => (
+        <button
+          class:list={['demo-tab', i === 0 && 'active']}
+          data-tab={cmd.id}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`panel-${cmd.id}`}
+        >
+          {cmd.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Panels -->
+    {commands.map((cmd, i) => (
+      <div
+        class:list={['demo-panel', i === 0 && 'active']}
+        id={`panel-${cmd.id}`}
+        role="tabpanel"
+      >
+        <p class="demo-desc">{cmd.description}</p>
+
+        <div class="terminal-window">
+          <div class="terminal-titlebar">
+            <span class="dot dot-red" aria-hidden="true"></span>
+            <span class="dot dot-yellow" aria-hidden="true"></span>
+            <span class="dot dot-green" aria-hidden="true"></span>
+            <span class="terminal-title">{cmd.label}</span>
+          </div>
+          <div class="terminal-body">
+            <pre class="terminal-output"><code>{cmd.output}</code></pre>
+          </div>
+        </div>
+      </div>
+    ))}
+
+    <div class="demo-footer">
+      <a
+        href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary"
+      >
+        Full documentation →
+      </a>
+      <span class="demo-footer-note">9 tools &bull; 3 resources &bull; 8 slash commands &bull; 1 custom agent</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.demo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const el = tab as HTMLElement
+      const targetId = el.dataset.tab
+
+      document.querySelectorAll('.demo-tab').forEach(t => {
+        t.classList.remove('active')
+        t.setAttribute('aria-selected', 'false')
+      })
+      document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'))
+
+      el.classList.add('active')
+      el.setAttribute('aria-selected', 'true')
+      document.getElementById('panel-' + targetId)?.classList.add('active')
+    })
+  })
+</script>
+
+<style>
+.mcp-demo-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.install-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 1rem 0.4rem 0.5rem;
+  margin-bottom: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.install-label {
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.install-cmd {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+/* Tabs */
+.demo-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
+.demo-tab {
+  padding: 0.375rem 0.875rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-muted);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.demo-tab:hover:not(.active) {
+  border-color: #7c3aed;
+  color: var(--text-secondary);
+}
+
+.demo-tab.active {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
+/* Panels */
+.demo-panel { display: none; }
+.demo-panel.active { display: block; }
+
+.demo-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+/* Terminal */
+.terminal-window {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d2d2d;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  background: #0d1117;
+}
+
+.terminal-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8b949e;
+  margin-left: 0.5rem;
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.terminal-output {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: #e6edf3;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.terminal-output code {
+  color: #e6edf3;
+}
+
+/* Footer */
+.demo-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.demo-footer-note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .demo-tabs { gap: 0.375rem; }
+
+  .demo-tab {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .terminal-body {
+    padding: 1rem;
+    max-height: 360px;
+  }
+
+  .terminal-output { font-size: 0.72rem; }
+
+  .demo-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .install-pill {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+}
+</style>

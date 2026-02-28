@@ -452,6 +452,78 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-remarkable-ai-guide",
+    "title": "Remarkable AI Guide",
+    "keywords": "remarkable ai guide guide remarkable",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-mcp-server",
+    "title": "Remarkable MCP Server",
+    "keywords": "remarkable mcp server guide remarkable md#1 remarkable mcp game changer",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#1-remarkable-mcp--le-game-changer",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-ghostwriter",
+    "title": "Remarkable Ghostwriter",
+    "keywords": "remarkable ghostwriter guide remarkable md#2 ghostwriter interface vision llm",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#2-ghostwriter--interface-vision-llm",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-obsidian-sync",
+    "title": "Remarkable Obsidian Sync",
+    "keywords": "remarkable obsidian sync guide remarkable md#3 sync remarkable obsidian",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#3-sync-remarkable--obsidian",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-ocr-pipeline",
+    "title": "Remarkable Ocr Pipeline",
+    "keywords": "remarkable ocr pipeline guide remarkable md#4 ocr pipeline custom",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#4-ocr--ai-pipeline-custom",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-ssh-tools",
+    "title": "Remarkable Ssh Tools",
+    "keywords": "remarkable ssh tools guide remarkable md#5 accès ssh outils communautaires",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#5-accès-ssh-et-outils-communautaires",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-meeting-workflow",
+    "title": "Remarkable Meeting Workflow",
+    "keywords": "remarkable meeting workflow guide remarkable md#10 meeting notes summary",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#10-meeting-notes--ai-summary",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-workflows-to-build",
+    "title": "Remarkable Workflows To Build",
+    "keywords": "remarkable workflows to build guide remarkable md#14 workflows augmentés construire",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#14-workflows-ai-augmentés-à-construire",
+    "source": "guide"
+  },
+  {
+    "id": "guide-remarkable-getting-started",
+    "title": "Remarkable Getting Started",
+    "keywords": "remarkable getting started guide remarkable md#15 par commencer",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#15-par-où-commencer",
+    "source": "guide"
+  },
+  {
     "id": "guide-whitepapers-fr",
     "title": "Whitepapers Fr",
     "keywords": "whitepapers fr whitepapers",
@@ -785,6 +857,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agentskills evaluation docs resource evaluations agentskills specification",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/agentskills-io-specification.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ccbp-repo-evaluation",
+    "title": "Ccbp Repo Evaluation",
+    "keywords": "ccbp repo evaluation docs resource evaluations 069 claude code best practice repo eval",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/069-claude-code-best-practice-repo-eval.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ccbp-repo-critical-finding",
+    "title": "Ccbp Repo Critical Finding",
+    "keywords": "ccbp repo critical finding bug at guide ultimate guide md:5646 — official agent fields misclassified as community patterns (fixed)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/bug at guide/ultimate-guide.md:5646 — official agent fields misclassified as community patterns (fixed)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ccbp-dotclaude-evaluation",
+    "title": "Ccbp Dotclaude Evaluation",
+    "keywords": "ccbp dotclaude evaluation docs resource evaluations 070 claude code best practice dot claude eval",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/070-claude-code-best-practice-dot-claude-eval.md",
     "source": "guide"
   },
   {
