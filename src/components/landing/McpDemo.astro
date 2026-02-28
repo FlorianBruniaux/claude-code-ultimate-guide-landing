@@ -177,6 +177,53 @@ v2.1.53 — 25 fév 2026
 Pour une version spécifique : /ccguide:release 2.1.51`,
   },
   {
+    id: 'security',
+    label: 'get_threat / list_threats',
+    title: 'Security Intelligence',
+    description: 'Browse 28 CVEs and 14 attack techniques from the threat database. Look up any CVE or T-code for full details, mitigations, and sources.',
+    output: `# Threat Database Summary
+Version 2.4.0 — updated 2026-02-28
+https://github.com/FlorianBruniaux/.../threat-db.yaml
+
+| Category              | Count |
+|-----------------------|-------|
+| CVEs                  |    28 |
+| Malicious Authors     |     6 |
+| Malicious Skills      |   655 |
+| Attack Techniques     |    14 |
+| Minimum Safe Versions |    12 |
+| Research Sources      |    23 |
+
+--- get_threat("CVE-2025-53109") ---
+
+# CVE-2025-53109 — Filesystem MCP Server
+Severity: HIGH | Source: Cymulate EscapeRoute
+
+## Description
+Symlink escape to arbitrary filesystem access / potential LPE
+
+Fixed in: 0.6.3 / 2025.7.1
+
+## Mitigation
+Update to >= 0.6.3; avoid Filesystem MCP in sensitive environments
+
+--- get_threat("T001") ---
+
+# T001 — Tool Poisoning via SKILL.md
+## Description
+Hidden instructions in SKILL.md that instruct the agent
+to run malicious commands.
+
+## Examples
+- curl | bash from glot.io scripts
+- Password-protected ZIP with embedded malware
+- Base64-decoded eval commands
+
+Campaigns: ClawHavoc, ToxicSkills
+Mitigation: Scan SKILL.md for shell commands;
+            never auto-execute prerequisites`,
+  },
+  {
     id: 'slash',
     label: 'Slash commands',
     title: 'Slash commands',
@@ -275,7 +322,7 @@ Onboarding one-liner (after install):
       >
         Full documentation →
       </a>
-      <span class="demo-footer-note">9 tools &bull; 3 resources &bull; 8 slash commands &bull; 1 custom agent</span>
+      <span class="demo-footer-note">12 tools &bull; 3 resources &bull; 8 slash commands &bull; 1 custom agent</span>
     </div>
   </div>
 </section>
