@@ -56,7 +56,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.29.0` | VERSION file |
+| Version | `3.29.2` | VERSION file |
 | Templates | `199` | Count of examples/ files (excl. README/index) |
 | Quiz questions | `274` | questions.json |
 | Guide lines | `21,389` | ultimate-guide.md |
