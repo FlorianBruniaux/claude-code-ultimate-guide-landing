@@ -1,6 +1,6 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for 49+ templates
+ * Source of truth for 55+ templates
  */
 
 export interface ExampleFile {
@@ -139,6 +139,19 @@ export const EXAMPLES = {
         description: "Behavioral modes for Claude (SuperClaude framework). Place in ~/.claude/",
         files: [
             { name: "MODE_Learning.md", path: "modes/MODE_Learning.md", description: "Just-in-time explanations mode", favorite: true }
+        ]
+    },
+    "claude-md": {
+        icon: "\u{1F4C4}",
+        label: "CLAUDE.md Configs",
+        description: "Ready-to-use CLAUDE.md configuration profiles. Add to ~/.claude/CLAUDE.md or project CLAUDE.md",
+        files: [
+            { name: "session-naming.md", path: "claude-md/session-naming.md", description: "Auto-rename sessions with descriptive titles for parallel work", favorite: true },
+            { name: "rtk-optimized.md", path: "claude-md/rtk-optimized.md", description: "RTK token-optimized configuration" },
+            { name: "learning-mode.md", path: "claude-md/learning-mode.md", description: "Learning-focused development configuration" },
+            { name: "devops-sre.md", path: "claude-md/devops-sre.md", description: "DevOps/SRE project configuration" },
+            { name: "tts-enabled.md", path: "claude-md/tts-enabled.md", description: "Text-to-speech enabled configuration" },
+            { name: "product-designer.md", path: "claude-md/product-designer.md", description: "Product designer workflow configuration" }
         ]
     }
 } as const satisfies ExamplesData;

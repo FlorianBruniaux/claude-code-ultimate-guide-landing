@@ -596,6 +596,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-session-naming-template",
+    "title": "Session Naming Template",
+    "keywords": "session naming template examples claude session naming",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/session-naming.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-mode-template",
     "title": "Learning Mode Template",
     "keywords": "learning mode template examples claude learning mode",
@@ -777,6 +785,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox score",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/4/5",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-straude-eval",
+    "title": "Third Party Straude Eval",
+    "keywords": "third party straude eval docs resource evaluations straude evaluation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/straude-evaluation.md",
     "source": "guide"
   },
   {

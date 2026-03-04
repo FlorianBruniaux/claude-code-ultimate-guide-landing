@@ -1,0 +1,323 @@
+<!-- Claude Ecosystem: Which tool for you? -->
+<section class="section ecosystem" id="which-tool">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Three tools. One subscription.</h2>
+            <p class="section-subtitle">Claude AI, Claude Code, and Claude Cowork solve different problems. Here's how to pick yours.</p>
+        </div>
+
+        <div class="ecosystem-grid">
+            <!-- Claude AI -->
+            <div class="eco-card">
+                <div class="eco-header eco-header--ai">
+                    <div class="eco-icon" aria-hidden="true">✏️</div>
+                    <div>
+                        <div class="eco-label">claude.ai</div>
+                        <h3 class="eco-title">Claude AI</h3>
+                    </div>
+                </div>
+
+                <p class="eco-tagline">You write, think, search.</p>
+                <p class="eco-definition">Generalist conversational assistant. Zero config, multimodal, available on web and mobile.</p>
+
+                <div class="eco-use-cases">
+                    <div class="eco-use-case">📝 Writing & editing</div>
+                    <div class="eco-use-case">💡 Brainstorming</div>
+                    <div class="eco-use-case">🔍 Research & synthesis</div>
+                </div>
+
+                <div class="eco-tradeoffs">
+                    <div class="eco-pro">✓ Zero setup, works instantly</div>
+                    <div class="eco-pro">✓ Multimodal (images, PDFs, voice)</div>
+                    <div class="eco-con">✗ No system access</div>
+                    <div class="eco-con">✗ Limited memory between sessions</div>
+                </div>
+
+                <div class="eco-profile">
+                    <span class="eco-profile-label">Ideal for</span>
+                    <span class="eco-profile-tags">Writer · Consultant · Student · Manager</span>
+                </div>
+            </div>
+
+            <!-- Claude Code -->
+            <div class="eco-card eco-card--featured">
+                <div class="eco-badge">This guide</div>
+                <div class="eco-header eco-header--code">
+                    <div class="eco-icon" aria-hidden="true">⌨️</div>
+                    <div>
+                        <div class="eco-label">CLI / Terminal</div>
+                        <h3 class="eco-title">Claude Code</h3>
+                    </div>
+                </div>
+
+                <p class="eco-tagline">You code at scale.</p>
+                <p class="eco-definition">Autonomous CLI agent. Understands your full codebase and acts on it — it doesn't just answer.</p>
+
+                <div class="eco-use-cases">
+                    <div class="eco-use-case">🔧 Multi-file debugging</div>
+                    <div class="eco-use-case">♻️ Refactoring</div>
+                    <div class="eco-use-case">🧪 Automated testing</div>
+                </div>
+
+                <div class="eco-tradeoffs">
+                    <div class="eco-pro">✓ Full codebase context</div>
+                    <div class="eco-pro">✓ Runs commands, writes files</div>
+                    <div class="eco-con">✗ Human review always needed</div>
+                    <div class="eco-con">✗ Token costs on heavy projects</div>
+                </div>
+
+                <div class="eco-profile">
+                    <span class="eco-profile-label">Ideal for</span>
+                    <span class="eco-profile-tags">Developer · Engineer · Tech Lead</span>
+                </div>
+            </div>
+
+            <!-- Claude Cowork -->
+            <div class="eco-card">
+                <div class="eco-header eco-header--cowork">
+                    <div class="eco-icon" aria-hidden="true">📁</div>
+                    <div>
+                        <div class="eco-label">Desktop app · macOS</div>
+                        <h3 class="eco-title"><a href="https://cowork.bruniaux.com/" target="_blank" rel="noopener" class="eco-title-link">Claude Cowork</a></h3>
+                    </div>
+                </div>
+
+                <p class="eco-tagline">You automate without code.</p>
+                <p class="eco-definition">Agentic desktop app for knowledge workers. Accesses local folders and apps — no terminal required.</p>
+
+                <div class="eco-use-cases">
+                    <div class="eco-use-case">🗂️ Bulk file organization</div>
+                    <div class="eco-use-case">📊 PDF → spreadsheet extraction</div>
+                    <div class="eco-use-case">🔄 Cross-app workflows</div>
+                </div>
+
+                <div class="eco-tradeoffs">
+                    <div class="eco-pro">✓ No code required</div>
+                    <div class="eco-pro">✓ Works with your existing apps</div>
+                    <div class="eco-con">✗ macOS only, still in beta</div>
+                    <div class="eco-con">✗ Limited customization</div>
+                </div>
+
+                <div class="eco-profile">
+                    <span class="eco-profile-label">Ideal for</span>
+                    <span class="eco-profile-tags">Ops · Assistant · SMB non-tech</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ecosystem-note">
+            <span class="ecosystem-note-icon">💡</span>
+            <span>These three tools are <strong>complementary</strong>, not competing. All included in the $20/mo Pro plan.</span>
+        </div>
+    </div>
+</section>
+
+<style>
+.ecosystem {
+    background-color: var(--bg-secondary);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    align-items: stretch;
+}
+
+/* Card base */
+.eco-card {
+    position: relative;
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.eco-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.eco-card--featured {
+    border-color: var(--accent);
+    border-width: 2px;
+}
+
+.eco-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* Header */
+.eco-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid;
+}
+
+.eco-header--ai    { border-color: var(--accent-tertiary); }
+.eco-header--code  { border-color: var(--accent); }
+.eco-header--cowork { border-color: var(--accent-secondary); }
+
+.eco-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.eco-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.eco-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.eco-header--ai    .eco-title { color: var(--accent-tertiary); }
+.eco-header--code  .eco-title { color: var(--accent); }
+.eco-header--cowork .eco-title { color: var(--accent-secondary); }
+
+.eco-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+.eco-title-link:hover {
+    text-decoration: underline;
+}
+
+/* Tagline + definition */
+.eco-tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.eco-definition {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    margin-top: calc(-1 * var(--space-sm));
+}
+
+/* Use cases */
+.eco-use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.eco-use-case {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding: var(--space-xs) 0;
+}
+
+/* Tradeoffs */
+.eco-tradeoffs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: var(--space-md);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius);
+}
+
+.eco-pro,
+.eco-con {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.eco-pro { color: var(--status-success); }
+.eco-con { color: var(--text-muted); }
+
+/* Profile */
+.eco-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+}
+
+.eco-profile-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.eco-profile-tags {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Bottom note */
+.ecosystem-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-2xl);
+    padding: var(--space-md) var(--space-xl);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius-lg);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.ecosystem-note-icon { font-size: 1.1rem; }
+.ecosystem-note strong { color: var(--text-primary); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .ecosystem-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .eco-card--featured {
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .ecosystem-note {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
