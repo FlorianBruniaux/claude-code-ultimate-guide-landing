@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HeroBanner from '../components/landing/HeroBanner.astro'
+import Onboarding from '../components/landing/Onboarding.astro'
 import WhyGuide from '../components/landing/WhyGuide.astro'
 import PromptFormula from '../components/landing/PromptFormula.astro'
 import FeaturesGrid from '../components/landing/FeaturesGrid.astro'
@@ -56,6 +57,7 @@ const jsonLd = [
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
   <HeroBanner />
+  <Onboarding />
   <WhyGuide />
   <PromptFormula />
   <FeaturesGrid />

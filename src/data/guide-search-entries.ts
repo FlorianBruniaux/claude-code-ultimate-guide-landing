@@ -164,6 +164,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-rules-first-principles",
+    "title": "Rules First Principles",
+    "keywords": "rules first principles examples rules first principles",
+    "category": "Examples > Rules",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/rules/first-principles.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-modular-context-architecture",
+    "title": "Modular Context Architecture",
+    "keywords": "modular context architecture guide ultimate guide",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adversarial-plan-review",
+    "title": "Adversarial Plan Review",
+    "keywords": "adversarial plan review examples agents plan challenger",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/plan-challenger.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adr-auto-generation",
+    "title": "Adr Auto Generation",
+    "keywords": "adr auto generation examples agents adr writer",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/adr-writer.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-codebase-audit-scoring",
+    "title": "Codebase Audit Scoring",
+    "keywords": "codebase audit scoring examples commands audit codebase",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/audit-codebase.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-event-driven-agents",
+    "title": "Event Driven Agents",
+    "keywords": "event driven agents guide workflows event driven agents",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/event-driven-agents/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-large-justified",
+    "title": "Agent Teams Large Justified",
+    "keywords": "agent teams large justified guide workflows agent teams",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
     "id": "guide-team-ai-instructions-section",
     "title": "Team AI Instructions Section",
     "keywords": "team ai instructions section guide ultimate guide md#35 team configuration scale",
@@ -265,14 +321,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "bridge schema examples scripts bridge plan schema",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/bridge-plan-schema.json",
-    "source": "guide"
-  },
-  {
-    "id": "guide-bridge-guide",
-    "title": "Bridge Guide",
-    "keywords": "bridge guide guide ultimate guide",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
     "source": "guide"
   },
   {
@@ -1201,14 +1249,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "codebase design llms txt example machine readable llms txt",
     "category": "Reference",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/llms.txt",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agent-teams",
-    "title": "Agent Teams",
-    "keywords": "agent teams guide workflows agent teams",
-    "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
     "source": "guide"
   },
   {
