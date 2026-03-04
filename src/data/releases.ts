@@ -16,6 +16,46 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.66',
+    date: 'Mar 4, 2026',
+    highlights: [
+      'Reduced spurious error logging',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.63',
+    date: 'Feb 27, 2026',
+    highlights: [
+      '⭐ <strong>HTTP hooks</strong> — hooks can now POST JSON to a URL and receive JSON back, instead of running a shell command',
+      '⭐ Project configs & auto-memory now shared across all git worktrees of the same repository',
+      '<code>/simplify</code> and <code>/batch</code> bundled slash commands added',
+      '<code>ENABLE_CLAUDEAI_MCP_SERVERS=false</code> env var to opt out of claude.ai MCP servers',
+      '<code>/model</code> command shows currently active model in the picker',
+      'Major memory leak fixes: WebSocket, MCP caches, git root detection, JSON parsing, bash prefix, subagent state',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ HTTP hooks',
+  },
+  {
+    version: 'v2.1.62',
+    date: 'Feb 27, 2026',
+    highlights: [
+      'Fixed prompt suggestion cache regression that reduced cache hit rates',
+    ],
+    initiallyVisible: false,
+  },
+  {
+    version: 'v2.1.61',
+    date: 'Feb 27, 2026',
+    highlights: [
+      'Fixed concurrent writes corrupting config file on Windows',
+    ],
+    initiallyVisible: false,
+  },
+  {
     version: 'v2.1.59',
     date: 'Feb 26, 2026',
     highlights: [
@@ -25,7 +65,6 @@ export const releases: Release[] = [
       'Fixed MCP OAuth token refresh race condition with multiple simultaneous Claude Code instances',
       'Fixed config file corruption wiping authentication when multiple instances ran simultaneously',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ Auto-memory',
