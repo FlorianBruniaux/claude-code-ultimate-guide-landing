@@ -431,7 +431,7 @@ sidebar:
 
 > A comprehensive, self-contained guide to mastering Claude Code — from zero to power user.
 
-**Over 44,000 lines** covering everything from installation to advanced agent architectures.
+**Over 22,000 lines** covering everything from installation to advanced agent architectures.
 
 ## Chapters
 

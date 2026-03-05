@@ -1332,6 +1332,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-pr-triage-skill",
+    "title": "PR Triage Skill",
+    "keywords": "pr triage skill examples skills triage skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pr-triage/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-pr-triage-template",
+    "title": "PR Triage Template",
+    "keywords": "pr triage template examples skills triage templates review comment",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pr-triage/templates/review-comment.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-issue-triage-skill",
+    "title": "Issue Triage Skill",
+    "keywords": "issue triage skill examples skills issue triage skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/issue-triage/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-issue-triage-template",
+    "title": "Issue Triage Template",
+    "keywords": "issue triage template examples skills issue triage templates issue comment",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/issue-triage/templates/issue-comment.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-issue-triage-vs-pr-triage",
+    "title": "Issue Triage Vs PR Triage",
+    "keywords": "issue triage vs pr triage issue triage = issue backlog (comment label close) | pr triage = pr backlog (code review comment)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/issue-triage = issue backlog (comment/label/close) | pr-triage = PR backlog (code review comment)",
+    "source": "guide"
+  },
+  {
     "id": "guide-cowork-reference",
     "title": "Cowork Reference",
     "keywords": "cowork reference machine readable cowork reference",
