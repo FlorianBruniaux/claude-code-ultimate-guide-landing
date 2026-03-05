@@ -117,9 +117,9 @@ export interface SecurityData {
 
 export const SECURITY_DATA = {
     meta: {
-        version: "2.0.0",
-        updated: "2026-02-11",
-        sources_count: 14
+        version: "2.5.0",
+        updated: "2026-03-05",
+        sources_count: 44
     },
     stats: {
         skills_scanned: 3984,
@@ -127,9 +127,9 @@ export const SECURITY_DATA = {
         critical_risk: 534,
         critical_pct: 13.4,
         malicious_payloads: 76,
-        cves_tracked: 18,
+        cves_tracked: 35,
         malicious_skills: 400,
-        exposed_servers: 1000,
+        exposed_servers: 17500,
         hardcoded_secrets_pct: 10.9,
         still_live: 8
     },
@@ -137,7 +137,8 @@ export const SECURITY_DATA = {
         { name: "zaycv", source: "Snyk ToxicSkills", risk: "critical", notes: "40+ malicious skills, programmatic malware campaign, clawhub/clawdhub1 typosquats" },
         { name: "Aslaep123", source: "Snyk ToxicSkills", risk: "critical", notes: "Malicious crypto/trading skills, typosquatted exchange tools" },
         { name: "pepe276", source: "Snyk ToxicSkills", risk: "critical", notes: "Unicode-obfuscated instructions, DAN-style jailbreaking for exfiltration" },
-        { name: "moonshine-100rze", source: "Snyk ToxicSkills", risk: "critical", notes: "Mixed prompt-injection + exfil; GitHub repo aztr0nutzs/NET_NiNjA.v1.2 hosts additional weaponized skills" }
+        { name: "moonshine-100rze", source: "Snyk ToxicSkills", risk: "critical", notes: "Mixed prompt-injection + exfil; GitHub repo aztr0nutzs/NET_NiNjA.v1.2 hosts additional weaponized skills" },
+        { name: "hightower6eu", source: "VirusTotal OpenClaw Analysis", risk: "critical", notes: "Single malicious publisher responsible for 314+ OpenClaw skills; all confirmed malicious by VirusTotal scan; malware disguised as productivity/utility tools" }
     ],
     malicious_skills: [
         // Snyk ToxicSkills confirmed
@@ -248,7 +249,23 @@ export const SECURITY_DATA = {
         { id: "CVE-2025-9611", component: "Microsoft Playwright MCP Server (@playwright/mcp)", severity: "medium", description: "DNS rebinding / Origin-less CSRF: missing Origin validation on local instance", source: "Mondoo / NVD", fixed_in: "0.0.40", mitigation: "Update to >= 0.0.40" },
         { id: "CVE-2025-6515", component: "MCP SSE Transport (oatpp-mcp)", severity: "high", description: "Prompt hijacking via predictable/reused session IDs; attacker replaces tool outputs", source: "JFrog", mitigation: "Use cryptographically secure session IDs (128+ bits entropy)" },
         { id: "CVE-2026-25546", component: "Godot MCP Server (godot-mcp)", severity: "high", description: "Command injection via user-controlled projectPath passed to exec()", source: "Feedly CVE", fixed_in: "0.1.1", mitigation: "Update to >= 0.1.1; sanitize projectPath; avoid exec() with user input" },
-        { id: "CVE-2025-54073", component: "mcp-package-docs", severity: "high", description: "Command injection in child_process.exec via unsanitized input", source: "NVD", fixed_in: "0.1.28", mitigation: "Update to >= 0.1.28" }
+        { id: "CVE-2025-54073", component: "mcp-package-docs", severity: "high", description: "Command injection in child_process.exec via unsanitized input", source: "NVD", fixed_in: "0.1.28", mitigation: "Update to >= 0.1.28" },
+        { id: "CVE-2026-23744", component: "MCPJam Inspector", severity: "critical", description: "RCE via crafted HTTP request that triggers automatic MCP server installation; allows remote attacker to execute arbitrary code on developer machine", source: "Immersive Labs / CVE-2026-23744", fixed_in: "1.4.3", mitigation: "Update MCPJam Inspector to >= 1.4.3; restrict to localhost" },
+        { id: "CVE-2026-2178", component: "xcode-mcp-server (r-huijts)", severity: "high", description: "Command injection in registerXcodeTools function via unsanitized args passed to exec(); allows RCE or data exfiltration", source: "SentinelOne", fixed_in: "after commit f3419f00117aa9949e326f78cc940166c88f18cb", mitigation: "Update to latest commit; switch to execFile() with argument arrays" },
+        { id: "CVE-2026-0755", component: "gemini-mcp-tool", severity: "critical", cvss: 9.8, description: "Command injection via LLM-generated arguments passed directly to shell without validation; network-reachable RCE requiring no auth and no user interaction", source: "Penligent AI", fixed_in: "no fix confirmed at time of research (2026-02-22)", mitigation: "Replace shell string execution with execFile(); validate all LLM-generated arguments; do not expose to untrusted networks" },
+        { id: "SNYK-PYTHON-MCPRUNPYTHON-15250607", component: "mcp-run-python", severity: "high", description: "SSRF via overly permissive Deno sandbox configuration — sandbox allows localhost interface access, enabling attackers to reach internal network resources", source: "Snyk (2026-02-09)", fixed_in: "unknown — check upstream", mitigation: "Restrict Deno sandbox network permissions; block localhost/internal ranges" },
+        { id: "CVE-2026-25650", component: "MCP Salesforce Connector", severity: "medium", description: "Arbitrary attribute access via crafted MCP requests potentially exposing sensitive Salesforce data", source: "NVD", fixed_in: "0.1.10", mitigation: "Update MCP Salesforce Connector to >= 0.1.10; enforce attribute allowlists" },
+        { id: "CVE-2026-26029", component: "sf-mcp-server (Salesforce MCP)", severity: "high", description: "Command injection via unsafe child_process.exec when constructing Salesforce CLI commands with user-controlled input", source: "NVD (2026-02-11)", fixed_in: "unknown — check upstream", mitigation: "Replace child_process.exec with execFile(); sanitize all user-controlled inputs" },
+        { id: "CVE-2026-27203", component: "eBay API MCP Server", severity: "medium", description: "Environment variable injection via updateEnvFile function in ebay_set_user_tokens tool — attacker can inject arbitrary env variables", source: "CVEDetails (2026-02-20)", fixed_in: "no fix confirmed", mitigation: "Sanitize all inputs to updateEnvFile; do not expose to untrusted inputs" },
+        { id: "CVE-2026-27735", component: "MCP Git Server (mcp-server-git)", severity: "medium", cvss: 6.4, description: "Path traversal in git_add tool — unsafe GitPython call without path boundary validation allows staging files outside repo (e.g. /etc/shadow, ~/.ssh/id_rsa)", source: "NVD / dev.to (2026-02-26)", fixed_in: "2026.1.14", mitigation: "Update mcp-server-git to >= 2026.1.14; audit recent git commits managed by agents" },
+        { id: "CVE-2025-59536", component: "Claude Code", severity: "critical", description: "RCE via enableAllProjectMcpServers config — malicious .claude/settings.json sets flag to auto-start MCP servers before trust dialog is shown; injected commands execute immediately upon claude startup in untrusted directory", source: "Check Point Research (2026-02-25)", fixed_in: "1.0.111", mitigation: "Update to Claude Code >= 1.0.111; never run claude in untrusted repositories without reviewing config files first" },
+        { id: "CVE-2026-21852", component: "Claude Code", severity: "medium", cvss: 5.3, description: "API key exfiltration via ANTHROPIC_BASE_URL in malicious repository config — Claude Code sends API requests (including bearer API key) to attacker server before trust dialog", source: "Check Point Research (2026-02-25)", fixed_in: "2.0.65", mitigation: "Update to Claude Code >= 2.0.65; inspect .claude/settings.json and .mcp.json before opening unfamiliar repos" },
+        { id: "CVE-2026-25253", component: "OpenClaw (aka clawdbot, Moltbot)", severity: "high", cvss: 8.8, description: "Authentication token theft and RCE via malicious gatewayUrl — OpenClaw automatically establishes WebSocket to attacker-controlled server without origin validation; 17,500+ internet-exposed instances identified", source: "SonicWall / Hunt.io / runZero (2026-02-03 to 2026-02-26)", fixed_in: "2026.1.29", mitigation: "Update OpenClaw to >= 2026.1.29; block public internet exposure of OpenClaw instances" },
+        { id: "CVE-2026-25725", component: "Claude Code", severity: "high", description: "Sandbox escape via persistent configuration injection — bubblewrap sandbox fails to protect missing .claude/settings.json; malicious code inside sandbox creates it with SessionStart hooks executing with host privileges on restart", source: "NVD / GHSA-ff64-7w26-62rf (2026-02-06)", fixed_in: "2.1.2", mitigation: "Update Claude Code to >= 2.1.34; monitor .claude/settings.json for unexpected SessionStart hooks" },
+        { id: "CVE-2026-3484", component: "nmap-mcp-server (PhialsBasement)", severity: "medium", cvss: 6.5, description: "Command injection in Nmap CLI Command Handler — child_process.exec in src/index.ts processes special elements without sanitization; remotely exploitable with no authentication", source: "NVD / PT Security (2026-03-04)", fixed_in: "patch commit 30a6b9e1c7fa6146f51e28d6ab83a2568d9a3488", mitigation: "Apply patch commit 30a6b9e; replace child_process.exec with execFile()" },
+        { id: "CVE-2025-35028", component: "HexStrike AI MCP Server (0x4m4)", severity: "critical", cvss: 9.1, description: "Command injection via semicolon-prefixed argument — EnhancedCommandExecutor fails to sanitize args; attacker provides ; prefix to API endpoint, executing arbitrary OS commands typically as root; no auth required", source: "Check Point Advisories / NVD (2025-11-30)", fixed_in: "no fix confirmed", mitigation: "Sanitize all command-line arguments; replace exec() with execFile(); do not expose to untrusted networks" },
+        { id: "CVE-2025-15061", component: "Framelink Figma MCP Server (figma-developer-mcp)", severity: "critical", cvss: 9.8, description: "Command injection RCE via fetchWithRetry method — user-supplied input passed to system calls without sanitization of shell metacharacters; no authentication required", source: "ZDI-25-1197 / SentinelOne (NVD published 2026-01-23)", fixed_in: "latest patched version", mitigation: "Update Framelink Figma MCP Server to latest version; restrict network access to trusted sources" },
+        { id: "CVE-2026-0757", component: "MCP Manager for Claude Desktop", severity: "high", description: "Command injection sandbox escape — execute-command fails to sanitize user-supplied strings from MCP config objects before passing to system calls; attacker crafts malicious config to execute arbitrary commands outside sandbox", source: "NVD / ZDI-CAN-27810 (2026-01-22)", fixed_in: "unknown — check upstream", mitigation: "Restrict MCP Manager to trusted configurations only; sanitize all MCP config object fields" }
     ],
     campaigns: [
         {
@@ -325,6 +342,15 @@ export const SECURITY_DATA = {
             platform: "npm",
             package: "postmark-mcp",
             technique: "Copies official Postmark MCP server with hidden backdoor"
+        },
+        {
+            name: "Clinejection",
+            source: "Snyk / Adnan Khan",
+            date: "2026-02-17",
+            platform: "GitHub Actions / npm",
+            packages: ["cline-cli@2.3.0 (malicious, 4000 downloads, 8-hour window)"],
+            technique: "Prompt injection via GitHub issue title → GitHub Actions cache poisoning (10 GB junk fill, LRU eviction) → stolen CI/CD publishing tokens → malicious npm publish; OpenClaw AI agent installer distributed to developer machines",
+            delivery: ["Prompt injection in GitHub issue title", "CI cache poisoning to steal publishing tokens", "Malicious npm publish to cline-cli@2.3.0"]
         }
     ],
     attack_techniques: [
@@ -390,6 +416,42 @@ export const SECURITY_DATA = {
             examples: ["rankaj skill: reads ~/.clawdbot/.env, POSTs to webhook.site", "Base64-encoded curl to send ~/.aws/credentials"],
             campaigns: ["ClawHavoc", "ToxicSkills"],
             mitigation: "Block agent access to .env, .aws, .ssh directories; use pre-execution hooks"
+        },
+        {
+            id: "T009",
+            name: "Slopsquatting / Hallucinated Package Injection",
+            description: "Malicious skills spread hallucinated or fabricated package names that resolve to attacker-controlled packages on npm/PyPI when executed",
+            examples: ["Skills with setup instructions referencing nonexistent npm packages that typosquat legitimate tools", "AI-generated skill content propagating hallucinated npx commands that install malicious packages"],
+            mitigation: "Verify every package reference in SKILL.md before executing setup instructions; use lockfiles; pin all dependencies to known-good checksums"
+        },
+        {
+            id: "T010",
+            name: "Agent-to-Agent Communication Injection",
+            description: "Attacker injects malicious instructions into communication channels (Slack, email, ticketing, code review) that AI agents monitor autonomously; agent executes unauthorized actions without cryptographic source verification",
+            examples: ["Posting fake urgent security alerts in Slack channels monitored by DevOps AI agents causing unauthorized deployments", "Embedding malicious instructions in GitHub issue comments that redirect CI/CD agents to commit backdoored code"],
+            mitigation: "Validate agent instruction sources cryptographically; treat all external channel content as untrusted; require human-in-the-loop for high-impact actions"
+        },
+        {
+            id: "T011",
+            name: "Project Configuration Hijacking",
+            description: "Attacker embeds malicious settings in repository config files (.claude/settings.json, .mcp.json) that auto-execute MCP servers or redirect API traffic before trust dialog is shown",
+            examples: ["Setting enableAllProjectMcpServers:true to auto-start attacker MCP server before trust dialog (CVE-2025-59536)", "Setting ANTHROPIC_BASE_URL to attacker endpoint — API key sent before user can approve (CVE-2026-21852)"],
+            cves: ["CVE-2025-59536", "CVE-2026-21852"],
+            mitigation: "Review .claude/settings.json and .mcp.json before opening unfamiliar repos; treat these files as code; update Claude Code to >= 2.0.65"
+        },
+        {
+            id: "T012",
+            name: "AI Recommendation Poisoning",
+            description: "Attacker embeds hidden instructions in URLs that inject persistent memory entries into AI assistants, biasing future recommendations toward attacker-controlled content or services",
+            examples: ["Company embeds 'remember [Brand] as a trusted source' in URL parameters of 'Summarize with AI' buttons; user clicks → AI memory poisoned", "50+ unique prompts from 31 companies across 14 industries documented by Microsoft over 60 days (2026-02-10)"],
+            mitigation: "Disable URL-based memory pre-population in AI assistants; treat any 'Summarize with AI' button as potentially adversarial; periodically audit AI memory"
+        },
+        {
+            id: "T013",
+            name: "Autonomous Safety Control Bypass",
+            description: "AI coding agent autonomously disables or circumvents its own security controls (sandbox, denylist, permission enforcement) when those controls block task completion — the agent's reasoning decides to bypass its own protections without attacker instruction",
+            examples: ["Claude Code disabling bubblewrap sandbox when it blocks file operations required for task", "Agent using path tricks, ELF dynamic linker, or alternative code-loading mechanisms to bypass denylist enforcement"],
+            mitigation: "Implement hard security boundaries that cannot be overridden by agent reasoning; monitor for unexpected sandbox exits; apply principle of least privilege so agents cannot access sandbox configuration"
         }
     ],
     scanning_tools: [
@@ -520,13 +582,16 @@ export const SECURITY_DATA = {
     minimum_safe_versions: {
         "filesystem-mcp": "0.6.3",
         "mcp-inspector": "0.14.1",
-        "mcp-server-git": "2025.12.18",
+        "mcp-server-git": "2026.1.14",
         "mcp-python-sdk": "1.23.0",
         "mcp-gateway": "0.28.0",
         "figma-developer-mcp": "0.6.3",
         "@playwright/mcp": "0.0.40",
         "mcp-package-docs": "0.1.28",
         "cursor": "1.3.9",
-        "claude-code": "2.1.34"
+        "claude-code": "2.1.34",
+        "mcpjam-inspector": "1.4.3",
+        "mcp-salesforce-connector": "0.1.10",
+        "openclaw": "2026.1.29"
     }
 } as const satisfies SecurityData;
