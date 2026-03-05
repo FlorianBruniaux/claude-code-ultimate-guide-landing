@@ -16,12 +16,38 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.69',
+    date: 'Mar 4, 2026',
+    highlights: [
+      '🔒 <strong>4 security fixes</strong>: nested skills from node_modules, symlink bypass outside workdir, trust dialog silently enabling servers, sandbox not blocking domains',
+      '⭐ <strong>InstructionsLoaded hook</strong> event fires when CLAUDE.md/.rules files load + <code>agent_id</code>, <code>agent_type</code>, <code>worktree</code> added to all hook events',
+      '<code>${CLAUDE_SKILL_DIR}</code> variable for skills + <code>/reload-plugins</code> command (no restart needed)',
+      'Voice STT expanded to <strong>20 languages</strong> (+10: Russian, Polish, Turkish, Dutch, Ukrainian, Greek, Czech, Danish, Swedish, Norwegian)',
+      '15+ memory leak fixes; ~16MB baseline reduction; faster startup; MCP binary content (PDFs/audio) now saved to disk',
+      'Sonnet 4.5 users on Pro/Max/Team auto-migrated to Sonnet 4.6',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '🔒 4 Security Fixes + Hooks',
+  },
+  {
+    version: 'v2.1.68',
+    date: 'Mar 4, 2026',
+    highlights: [
+      'Opus 4.6 now defaults to <strong>medium effort</strong> for Max and Team subscribers',
+      'Re-introduced <code>ultrathink</code> keyword to enable high effort for the next turn',
+      '<strong>Breaking</strong>: Opus 4 and Opus 4.1 removed from Claude Code first-party API — auto-migrated to Opus 4.6',
+    ],
+    initiallyVisible: true,
+    breaking: ['Opus 4 and Opus 4.1 removed from Claude Code first-party API'],
+  },
+  {
     version: 'v2.1.66',
     date: 'Mar 4, 2026',
     highlights: [
       'Reduced spurious error logging',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
