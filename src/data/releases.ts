@@ -16,6 +16,35 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.71',
+    date: 'Mar 6, 2026',
+    highlights: [
+      '⭐ <strong>/loop command</strong> — run a prompt or slash command on a recurring interval (e.g. <code>/loop 5m check the deploy</code>)',
+      '⭐ <strong>Cron scheduling tools</strong> for recurring prompts within a session',
+      '<code>voice:pushToTalk</code> keybinding now rebindable in <code>keybindings.json</code> (default: space)',
+      'Fixed stdin freeze in long sessions; 5–8s startup freeze with voice mode; forked sessions sharing plan files',
+      'Improved plugin MCP server deduplication; <code>/plugin uninstall</code> now writes to <code>settings.local.json</code>',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ /loop + Cron scheduling',
+  },
+  {
+    version: 'v2.1.70',
+    date: 'Mar 6, 2026',
+    highlights: [
+      '⭐ <strong>VSCode</strong>: spark icon listing all sessions in activity bar, plan markdown view, native <code>/mcp</code> management dialog',
+      'Fixed API 400 errors with third-party gateways (<code>ANTHROPIC_BASE_URL</code>) and Bedrock custom inference profiles',
+      'Fixed empty responses after <code>ToolSearch</code> + prompt-cache bust when MCP server with instructions connects',
+      'Fixed voice on Windows native binary; clipboard CJK/emoji corruption on Windows/WSL',
+      'Reduced prompt input re-renders by ~74%; startup memory −426KB; Remote Control poll rate 300× lower',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ VSCode session list + MCP dialog',
+  },
+  {
     version: 'v2.1.69',
     date: 'Mar 4, 2026',
     highlights: [
@@ -26,7 +55,6 @@ export const releases: Release[] = [
       '15+ memory leak fixes; ~16MB baseline reduction; faster startup; MCP binary content (PDFs/audio) now saved to disk',
       'Sonnet 4.5 users on Pro/Max/Team auto-migrated to Sonnet 4.6',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '🔒 4 Security Fixes + Hooks',
