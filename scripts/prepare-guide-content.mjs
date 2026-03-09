@@ -54,19 +54,19 @@ const ANCHOR_MAP_PATH = resolve(ROOT, 'src/data/guide-anchor-map.json')
 
 // --- Chapter definitions ---
 const CHAPTERS = [
-  { num: 0,  slug: '00-introduction',      title: 'Introduction',           order: 0,  desc: 'Overview, TL;DR, and table of contents' },
-  { num: 1,  slug: '01-quick-start',       title: '1. Quick Start',         order: 1,  desc: 'Installation, first workflow, essential commands, and permission modes' },
-  { num: 2,  slug: '02-core-workflow',     title: '2. Core Workflow',       order: 2,  desc: 'Interaction loop, context management, plan mode, and structured prompting' },
-  { num: 3,  slug: '03-memory-files',      title: '3. Memory & Files',      order: 3,  desc: 'CLAUDE.md, .claude/ folder structure, settings and permissions' },
-  { num: 4,  slug: '04-agents',            title: '4. Agents',              order: 4,  desc: 'Custom agents, agent patterns, and best practices' },
-  { num: 5,  slug: '05-skills',            title: '5. Skills',              order: 5,  desc: 'Skills system, creating skills, and community repositories' },
-  { num: 6,  slug: '06-commands',          title: '6. Slash Commands',      order: 6,  desc: 'Slash commands, custom commands, and templates' },
-  { num: 7,  slug: '07-hooks',             title: '7. Hooks',               order: 7,  desc: 'Event system, hook creation, security, and examples' },
-  { num: 8,  slug: '08-mcp',              title: '8. MCP Servers',         order: 8,  desc: 'Available servers, configuration, selection guide, and security' },
-  { num: 9,  slug: '09-advanced-patterns', title: '9. Advanced Patterns',   order: 9,  desc: 'CI/CD, workflow optimization, agent teams, and scaling patterns' },
-  { num: 10, slug: '10-reference',         title: '10. Reference',          order: 10, desc: 'Commands table, shortcuts, configuration, troubleshooting, and templates' },
-  { num: 11, slug: '11-ai-ecosystem',      title: '11. AI Ecosystem',       order: 11, desc: 'Complementary tools and the broader AI development landscape' },
-  { num: 12, slug: '12-appendices',        title: 'Appendices',             order: 12, desc: 'File locations, FAQ, resource evaluation, and myths vs reality' },
+  { num: 0,  slug: '00-introduction',      title: 'Introduction',           order: 0,  desc: 'Overview, TL;DR, and full table of contents for the Claude Code Ultimate Guide.' },
+  { num: 1,  slug: '01-quick-start',       title: '1. Quick Start',         order: 1,  desc: 'Install Claude Code and complete your first AI-assisted task in 15 minutes. Essential slash commands, permission modes, context management basics, and 8 beginner mistakes to avoid.' },
+  { num: 2,  slug: '02-core-workflow',     title: '2. Core Workflow',       order: 2,  desc: 'Master the Claude Code workflow: context window zones (50/70/90%), Plan Mode for safe exploration, WHAT/WHERE/HOW/VERIFY prompting formula, Rewind to undo changes, and trust calibration.' },
+  { num: 3,  slug: '03-memory-files',      title: '3. Memory & Files',      order: 3,  desc: 'Configure CLAUDE.md project memory files and .claude/ folder structure. Settings hierarchy, permissions, hooks config, personal vs team settings — give Claude persistent project context.' },
+  { num: 4,  slug: '04-agents',            title: '4. Agents',              order: 4,  desc: 'Create custom Claude Code agents: backend-architect, code-reviewer, security-auditor, devops-sre. Tool SEO for routing, sub-agent orchestration, and multi-agent coordination with TeamCreate.' },
+  { num: 5,  slug: '05-skills',            title: '5. Skills',              order: 5,  desc: 'Build reusable Claude Code skills: Capability Uplift vs Encoded Preference. Skills 2.0 with Benchmark Mode, A/B testing, Trigger Tuning, lifecycle management, and 17 production templates.' },
+  { num: 6,  slug: '06-commands',          title: '6. Slash Commands',      order: 6,  desc: 'Create custom slash commands for Claude Code: /pr, /commit, /generate-tests, /diagnose, /git-worktree. Variable interpolation with $ARGUMENTS syntax and 19 production-ready command templates.' },
+  { num: 7,  slug: '07-hooks',             title: '7. Hooks',               order: 7,  desc: 'Automate Claude Code with event hooks: block dangerous commands, scan for secrets, auto-format code, run tests after edits. PreToolUse, PostToolUse, UserPromptSubmit — Bash and PowerShell.' },
+  { num: 8,  slug: '08-mcp',              title: '8. MCP Servers',         order: 8,  desc: 'Extend Claude Code with MCP servers: Serena (codebase indexation + memory), Context7 (library docs), grepai (semantic search), Playwright (browser automation), Postgres. Config and security vetting.' },
+  { num: 9,  slug: '09-advanced-patterns', title: '9. Advanced Patterns',   order: 9,  desc: 'Advanced Claude Code patterns: Trinity workflow (Plan+Thinking+MCP), GitHub Actions CI/CD, multi-agent Teams API, Tasks API for cross-session state, git worktree isolation, feedback loops.' },
+  { num: 10, slug: '10-reference',         title: '10. Reference',          order: 10, desc: 'Complete Claude Code reference: 45+ CLI flags, keyboard shortcuts, /compact context management, CLAUDE.md starter templates, troubleshooting guide, and cost optimization by model.' },
+  { num: 11, slug: '11-ai-ecosystem',      title: '11. AI Ecosystem',       order: 11, desc: 'Claude Code in the broader AI ecosystem: complementary tools, model comparisons, multi-provider setups, and community resources.' },
+  { num: 12, slug: '12-appendices',        title: 'Appendices',             order: 12, desc: 'Claude Code appendices: file locations reference, FAQ, resource evaluations, myths vs reality, and glossary.' },
 ]
 
 const CHAPTER_BY_NUM = new Map(CHAPTERS.map(c => [c.num, c]))
