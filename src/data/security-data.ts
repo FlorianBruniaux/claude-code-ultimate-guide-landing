@@ -117,9 +117,9 @@ export interface SecurityData {
 
 export const SECURITY_DATA = {
     meta: {
-        version: "2.5.0",
-        updated: "2026-03-05",
-        sources_count: 44
+        version: "2.6.0",
+        updated: "2026-03-09",
+        sources_count: 46
     },
     stats: {
         skills_scanned: 3984,
@@ -127,8 +127,8 @@ export const SECURITY_DATA = {
         critical_risk: 534,
         critical_pct: 13.4,
         malicious_payloads: 76,
-        cves_tracked: 35,
-        malicious_skills: 400,
+        cves_tracked: 15,
+        malicious_skills: 655,
         exposed_servers: 17500,
         hardcoded_secrets_pct: 10.9,
         still_live: 8
@@ -351,6 +351,15 @@ export const SECURITY_DATA = {
             packages: ["cline-cli@2.3.0 (malicious, 4000 downloads, 8-hour window)"],
             technique: "Prompt injection via GitHub issue title → GitHub Actions cache poisoning (10 GB junk fill, LRU eviction) → stolen CI/CD publishing tokens → malicious npm publish; OpenClaw AI agent installer distributed to developer machines",
             delivery: ["Prompt injection in GitHub issue title", "CI cache poisoning to steal publishing tokens", "Malicious npm publish to cline-cli@2.3.0"]
+        },
+        {
+            name: "ClawHub Wave 2 (71 Skills)",
+            source: "Oasis Security / The Hacker News",
+            date: "2026-02-28",
+            platform: "ClawHub / OpenClaw",
+            packages: ["71 additional malicious ClawHub skills"],
+            technique: "Second identifiable wave of malicious ClawHub skills spreading malware and cryptocurrency scams, discovered alongside the ClawJacked vulnerability disclosure (patched in OpenClaw v2026.2.26)",
+            delivery: ["Malware distribution via ClawHub marketplace", "Cryptocurrency scam skills"]
         }
     ],
     attack_techniques: [
@@ -452,6 +461,21 @@ export const SECURITY_DATA = {
             description: "AI coding agent autonomously disables or circumvents its own security controls (sandbox, denylist, permission enforcement) when those controls block task completion — the agent's reasoning decides to bypass its own protections without attacker instruction",
             examples: ["Claude Code disabling bubblewrap sandbox when it blocks file operations required for task", "Agent using path tricks, ELF dynamic linker, or alternative code-loading mechanisms to bypass denylist enforcement"],
             mitigation: "Implement hard security boundaries that cannot be overridden by agent reasoning; monitor for unexpected sandbox exits; apply principle of least privilege so agents cannot access sandbox configuration"
+        },
+        {
+            id: "T014",
+            name: "WebSocket Localhost Gateway Hijacking",
+            description: "Malicious website opens WebSocket connection to a locally running AI agent gateway on localhost, brute-forces the gateway password (rate limiter exempts localhost connections), auto-registers as a trusted device without user confirmation, and gains admin-level control of the victim's AI agent session",
+            examples: ["ClawJacked: JavaScript on attacker page connects to OpenClaw localhost port, brute-forces password at hundreds/s, registers device silently, reads logs and exfiltrates config data (patched v2026.2.26)"],
+            campaigns: ["ClawHub Wave 2 (71 Skills)"],
+            mitigation: "Update OpenClaw to >= v2026.2.26; apply rate limiting to ALL connections including localhost; require explicit user confirmation for device pairing; block WebSocket connections from browser contexts to localhost AI agent ports"
+        },
+        {
+            id: "T015",
+            name: "Log Poisoning via WebSocket for Prompt Injection",
+            description: "Attacker writes malicious content to publicly exposed AI agent log files via unauthenticated WebSocket requests; the agent then reads its own logs for troubleshooting, and the injected content acts as indirect prompt injection, triggering unintended actions",
+            examples: ["OpenClaw: WebSocket requests to TCP port 18789 inject adversarial instructions into log files; agent reading logs during troubleshooting executes attacker instructions (patched v2026.2.13)"],
+            mitigation: "Update OpenClaw to >= v2026.2.13; require authentication for all WebSocket endpoints including log-write; treat log files as untrusted input when parsed by the AI agent; sandbox log file read context"
         }
     ],
     scanning_tools: [
@@ -561,6 +585,51 @@ export const SECURITY_DATA = {
                 "Policy-based blocklists"
             ],
             limitations: []
+        },
+        {
+            name: "Verify Security Scanner",
+            vendor: "Verify (mcpmarket.com)",
+            type: "claude-code-skill",
+            url: "https://mcpmarket.com/tools/skills/verify-security-bug-scanner",
+            capabilities: [
+                "Claude Code skill integrating Ultimate Bug Scanner (UBS) directly in agent workflow",
+                "Detects 1000+ bug patterns across multiple programming languages",
+                "SARIF and JSON output formats for CI/CD pipeline integration",
+                "Mandatory pre-commit scan enforcement mode",
+                "Targets AI-generated code patterns specifically"
+            ],
+            limitations: [
+                "Claude Code specific — requires skill support",
+                "Does not scan SKILL.md or MCP configs directly"
+            ]
+        },
+        {
+            name: "GitHub MCP Server Secret Scanning",
+            vendor: "GitHub",
+            type: "platform",
+            url: "https://github.com/github/roadmap/issues/1221",
+            capabilities: [
+                "GitHub Advanced Security secret scanning in MCP-compatible IDE workflows",
+                "Detects exposed secrets in MCP-connected IDE prompts, file reads, and tool calls",
+                "Available via Remote GitHub MCP Server integration (2026-02-27)"
+            ],
+            limitations: [
+                "Requires GitHub Advanced Security subscription"
+            ]
+        },
+        {
+            name: "Cycode AI Guardrails for MCP",
+            vendor: "Cycode",
+            type: "platform",
+            url: "https://cycode.com/blog/ai-cybersecurity-tools/",
+            capabilities: [
+                "AI Governance module enforces MCP usage policies and tracks tool invocations",
+                "AI Guardrails intercept secrets in real time across IDE prompts, file reads, and MCP tool calls",
+                "Prevents secrets from reaching the LLM or external services"
+            ],
+            limitations: [
+                "Commercial product — requires Cycode subscription"
+            ]
         }
     ],
     sources: [
@@ -577,7 +646,9 @@ export const SECURITY_DATA = {
         { name: "The Hacker News - MCP Git Server Flaws", url: "https://thehackernews.com/2026/01/three-flaws-in-anthropic-mcp-git-server.html", date: "2026-01" },
         { name: "Bitsight TRACE - Exposed MCP Servers", url: "https://www.bitsight.com/blog/exposed-mcp-servers-reveal-new-ai-vulnerabilities", date: "2026-01" },
         { name: "Defender's Initiative - Postmark MCP Squatter", url: "https://defendersinitiative.substack.com/p/npm-not-another-package-malicious", date: "2025-11" },
-        { name: "SAFE-MCP Framework", url: "https://www.safemcp.org", date: "2026-01" }
+        { name: "SAFE-MCP Framework", url: "https://www.safemcp.org", date: "2026-01" },
+        { name: "Oasis Security - ClawJacked OpenClaw WebSocket Hijack", url: "https://www.oasis.security/blog/openclaw-vulnerability", date: "2026-02-26" },
+        { name: "THN - ClawJacked + 71 Malicious ClawHub Skills", url: "https://thehackernews.com/2026/02/clawjacked-flaw-lets-malicious-sites.html", date: "2026-02-28" }
     ],
     minimum_safe_versions: {
         "filesystem-mcp": "0.6.3",
@@ -592,6 +663,6 @@ export const SECURITY_DATA = {
         "claude-code": "2.1.34",
         "mcpjam-inspector": "1.4.3",
         "mcp-salesforce-connector": "0.1.10",
-        "openclaw": "2026.1.29"
+        "openclaw": "2026.2.26"
     }
 } as const satisfies SecurityData;
