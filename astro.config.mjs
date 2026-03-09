@@ -71,18 +71,19 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     sitemap({
       serialize(item) {
+        const lastmod = new Date().toISOString().split('T')[0]
         if (item.url === 'https://cc.bruniaux.com/') {
-          return { ...item, priority: 1.0, changefreq: 'weekly' }
+          return { ...item, priority: 1.0, changefreq: 'weekly', lastmod }
         }
         if (item.url.includes('/quiz/')) {
-          return { ...item, priority: 0.9, changefreq: 'monthly' }
+          return { ...item, priority: 0.9, changefreq: 'monthly', lastmod }
         }
         if (
           item.url.includes('/learning/') ||
           item.url.includes('/security/') ||
           item.url.includes('/diagrams/')
         ) {
-          return { ...item, priority: 0.85, changefreq: 'weekly' }
+          return { ...item, priority: 0.85, changefreq: 'weekly', lastmod }
         }
         if (
           item.url.includes('/cheatsheet/') ||
@@ -91,12 +92,12 @@ export default defineConfig({
           item.url.includes('/compare/') ||
           item.url.includes('/releases/')
         ) {
-          return { ...item, priority: 0.8, changefreq: 'monthly' }
+          return { ...item, priority: 0.8, changefreq: 'monthly', lastmod }
         }
         if (item.url.includes('/guide/')) {
-          return { ...item, priority: 0.85, changefreq: 'weekly' }
+          return { ...item, priority: 0.85, changefreq: 'weekly', lastmod }
         }
-        return { ...item, priority: 0.7, changefreq: 'monthly' }
+        return { ...item, priority: 0.7, changefreq: 'monthly', lastmod }
       },
     }),
     partytown({
