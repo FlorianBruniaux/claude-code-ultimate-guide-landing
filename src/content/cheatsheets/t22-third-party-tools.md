@@ -1,0 +1,77 @@
+---
+title: Third-Party Tools
+subtitle: Les outils complémentaires indispensables de l'écosystème
+cardNumber: T22
+category: Technique
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 22
+---
+
+## Tracking des Coûts
+
+**ccusage** — l'outil de référence communautaire pour suivre ses dépenses API. Parse les fichiers JSONL locaux, zéro donnée envoyée en externe.
+
+```bash
+npx ccusage          # Résumé du jour
+ccusage daily        # Rapport journalier
+ccusage blocks --live # Monitoring temps réel (fenêtres 5h)
+ccusage --breakdown  # Détail par modèle
+```
+
+**ccburn** — alternative Python avec graphiques de burn-rate en terminal. Utile pour visualiser la consommation relative aux limites de facturation, dans un ecosystème Python.
+
+```bash
+pip install ccburn
+ccburn
+```
+
+## Dashboard & Monitoring
+
+**ccboard** — TUI et interface web pour monitorer sessions, coûts et statistiques en temps réel.
+
+```bash
+cargo install ccboard
+ccboard          # Interface TUI
+ccboard --web    # UI web sur localhost:3000
+```
+
+## Recherche dans l'Historique
+
+**Straude** — dashboard social pour tracker et partager ses stats de consommation. Pousse les métriques quotidiennes (coût, tokens, modèles) vers un leaderboard public. Attention : envoie le hostname machine et un UUID device aux serveurs Straude. Utiliser `--dry-run` avant le premier push.
+
+```bash
+npx straude@latest   # Auth + sync en une commande
+straude push --dry-run  # Prévisualiser sans envoyer
+straude status       # Streak, rank global, totaux
+```
+
+## Optimisation Tokens
+
+**RTK (Rust Token Killer)** — proxy CLI qui filtre les outputs avant qu'ils entrent dans le contexte. 92% de réduction sur `git log`, 90% sur les tests. Voir fiche T20 pour le détail.
+
+```bash
+brew install rtk-ai/tap/rtk
+rtk init             # Setup avec hook automatique
+```
+
+## Orchestration Parallèle
+
+**Conductor** — application macOS pour orchestrer plusieurs instances Claude Code en parallèle via git worktrees. Interface intégrée : diff viewer, CI/GitHub Actions, Linear, PR workflow.
+
+Installer depuis conductor.build (macOS uniquement en mars 2026).
+
+Flux typique : créer un workspace par feature depuis une issue GitHub ou Linear, laisser les agents tourner, utiliser "Next Workspace" pour traiter uniquement ceux en attente d'input.
+
+## Tableau de Recommandation
+
+| Profil | Outils recommandés |
+|--------|--------------------|
+| Développeur solo | ccusage + claude-code-viewer |
+| Petite équipe | ccusage + Conductor ou multiclaude |
+| Multi-agents | Conductor ou Toad |
+| Écosystème Python | ccburn + Claude Chic |
+
+## Lacunes Connues (Mars 2026)
+
+Pas d'éditeur visuel pour les skills `.claude/skills/`. Pas de dashboard unifié combinant config, sessions, coûts et MCP. La gestion de config MCP reste manuelle via `~/.claude.json`.

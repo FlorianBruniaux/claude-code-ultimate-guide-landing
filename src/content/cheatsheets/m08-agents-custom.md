@@ -1,0 +1,85 @@
+---
+title: Agents Custom
+subtitle: Créer des sous-agents spécialisés pour déléguer des tâches
+cardNumber: M08
+category: Méthodologie
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 108
+---
+
+## Structure d'un agent
+
+Un agent est un fichier Markdown placé dans `.claude/agents/` avec un frontmatter YAML. Claude Code le découvre automatiquement au démarrage de session.
+
+```yaml
+---
+name: code-reviewer
+description: Utiliser pour relire du code avant tout commit
+model: sonnet
+tools: Read, Grep, Glob
+memory: project
+---
+```
+
+Le corps du fichier contient les instructions en Markdown : rôle, méthodologie, exemples, contraintes.
+
+## Champs du frontmatter
+
+| Champ | Obligatoire | Rôle |
+|-------|-------------|------|
+| `name` | Oui | Identifiant kebab-case |
+| `description` | Oui | Déclencheur d'activation (50-100 chars) |
+| `model` | Non | `haiku`, `sonnet` (défaut), `opus` |
+| `tools` | Non | Whitelist des outils accessibles |
+| `memory` | Non | Portée de la mémoire persistante |
+| `maxTurns` | Non | Limite de tours agentic |
+| `permissionMode` | Non | Contrôle des permissions |
+| `isolation` | Non | `worktree` pour isolation git |
+| `color` | Non | Couleur CLI pour distinction visuelle |
+
+## Le champ tools : isolation par défaut
+
+Limiter `tools` à ce dont l'agent a réellement besoin réduit la surface d'exposition et les erreurs accidentelles. Un agent de code review n'a besoin que de `Read, Grep, Glob` — aucune raison de lui donner `Bash` ou `Write`.
+
+## Mémoire persistante (v2.1.32+)
+
+```yaml
+memory: project   # .claude/agent-memory/<name>/
+memory: user      # ~/.claude/agent-memory/<name>/
+memory: local     # .claude/agent-memory-local/<name>/
+```
+
+La mémoire `project` est committée avec le repo — utile pour que l'agent accumule des connaissances partagées par toute l'équipe. La mémoire `local` reste privée à la machine.
+
+## Agent vs Slash Command
+
+| Critère | Agent | Slash Command |
+|---------|-------|---------------|
+| Spécialité | Oui, domaine précis | Non, workflow générique |
+| Mémoire propre | Oui (v2.1.32+) | Non |
+| Outils isolés | Oui, whitelist | Non |
+| Invocation | Automatique ou manuelle | Manuelle uniquement |
+| Format | Markdown + frontmatter | Markdown template |
+
+Créer un agent quand la tâche revient régulièrement avec un contexte et des outils stables. Créer une command quand c'est un workflow ponctuel ou une procédure à suivre.
+
+## Exemple concret : agent de code review
+
+```yaml
+---
+name: code-reviewer
+description: Utiliser PROACTIVELY après chaque modification
+  de code pour vérifier qualité, sécurité et conventions
+model: sonnet
+tools: Read, Grep, Glob
+memory: project
+---
+
+# Code Reviewer
+
+Vérifier systématiquement : sécurité OWASP, couverture de tests,
+respect des conventions du projet, et dette technique introduite.
+```
+
+Le mot-clé `PROACTIVELY` dans la description encourage Claude à invoquer l'agent sans attendre une demande explicite.

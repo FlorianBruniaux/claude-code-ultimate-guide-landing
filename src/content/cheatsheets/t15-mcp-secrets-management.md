@@ -1,0 +1,79 @@
+---
+title: MCP Secrets Management
+subtitle: Gérer les credentials des MCP servers sans les exposer
+cardNumber: T15
+category: Technique
+difficulty: advanced
+guideVersion: 3.32.1
+order: 15
+---
+
+## Le problème central
+
+Les MCP servers ont besoin de clés API et de credentials pour fonctionner. Les stocker en clair dans `settings.json` ou `.mcp.json` crée un risque réel : commit accidentel sur Git, exposition dans les logs, ou mouvement latéral après une compromission. La règle absolue est que les secrets ne doivent jamais apparaître dans les fichiers versionnés.
+
+## Trois approches selon le contexte
+
+| Approche | Sécurité | Complexité | Idéal pour |
+|----------|----------|------------|------------|
+| OS Keychain | Élevée | Moyenne | Devs solo, macOS/Linux |
+| `.env` + `.gitignore` | Moyenne | Faible | Petites équipes, prototypage |
+| Secret Vaults | Très élevée | Haute | Enterprise, SOC 2, HIPAA |
+
+## Approche 1 : OS Keychain (recommandée)
+
+Le secret est chiffré au repos par l'OS et accessible uniquement aux processus autorisés. La configuration MCP n'expose qu'une commande de récupération, jamais la valeur.
+
+```bash
+# macOS : stocker un token GitHub
+security add-generic-password \
+  -a "claude-mcp" -s "github-token" \
+  -w "ghp_votre_token_ici"
+```
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "bash",
+      "args": ["-c", "GITHUB_TOKEN=$(security find-generic-password -s 'github-token' -w) npx @github/mcp-server"]
+    }
+  }
+}
+```
+
+**Linux** : utiliser `secret-tool` (libsecret, GNOME Keyring ou KWallet) avec la même logique de wrapper script.
+
+## Approche 2 : .env + .gitignore
+
+Simple et suffisante pour un usage solo ou une petite équipe avec bonne discipline.
+
+```bash
+# Créer le fichier de secrets
+cat > ~/.claude/.env << EOF
+GITHUB_TOKEN=ghp_votre_token
+OPENAI_KEY=sk-votre_cle
+EOF
+chmod 600 ~/.claude/.env   # Permissions restrictives
+echo ".env" >> ~/.claude/.gitignore
+```
+
+Dans la config MCP, référencer avec `"${GITHUB_TOKEN}"` dans le champ `env`. Claude Code résout les variables d'environnement au démarrage du server.
+
+**Template pour les équipes** : commiter `mcp-config.template.json` avec des placeholders, générer le fichier réel via `envsubst`. Ne jamais commiter le fichier généré.
+
+## Approche 3 : Secret Vaults (enterprise)
+
+HashiCorp Vault, AWS Secrets Manager, ou 1Password CLI permettent une rotation automatisée, un audit centralisé et un contrôle d'accès granulaire. Le principe reste identique : un wrapper script récupère le secret au runtime et l'exporte comme variable d'environnement avant de lancer le server MCP.
+
+```bash
+# HashiCorp Vault
+export GITHUB_TOKEN=$(vault kv get -field=token secret/claude/github)
+npx @github/mcp-server
+```
+
+## Ce qu'il ne faut jamais faire
+
+Hardcoder un token directement dans la valeur `command` ou `args` d'un MCP server versionné. Même dans un repo privé, les secrets en clair dans Git restent dans l'historique même après suppression et peuvent être exposés par un `git log` ou un accès non autorisé.
+
+Un hook de pre-commit qui scanne les patterns de tokens (`ghp_`, `sk-`, `Bearer `) avant chaque commit est une protection supplémentaire simple à mettre en place.

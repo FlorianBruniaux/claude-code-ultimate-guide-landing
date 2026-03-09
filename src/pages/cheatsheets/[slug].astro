@@ -1,0 +1,387 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const cards = await getCollection('cheatsheets')
+  return cards.map(card => ({
+    params: { slug: card.id },
+    props: { card },
+  }))
+}
+
+const { card } = Astro.props
+const { Content } = await render(card)
+
+// Build prev/next within the same series (same first char of cardNumber)
+const allCards = await getCollection('cheatsheets')
+const seriesChar = card.data.cardNumber[0]
+const seriesCards = allCards
+  .filter(c => c.data.cardNumber[0] === seriesChar)
+  .sort((a, b) => a.data.order - b.data.order)
+const currentIdx = seriesCards.findIndex(c => c.id === card.id)
+const prevCard = currentIdx > 0 ? seriesCards[currentIdx - 1] : null
+const nextCard = currentIdx < seriesCards.length - 1 ? seriesCards[currentIdx + 1] : null
+
+const difficultyLabel: Record<string, string> = {
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
+}
+
+const seriesLabel: Record<string, string> = {
+  T: 'Technique',
+  M: 'Méthodologie',
+  C: 'Conception',
+}
+
+const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
+const description = card.data.subtitle
+
+const jsonLd = [
+  {
+    "@type": "TechArticle",
+    "headline": card.data.title,
+    "description": card.data.subtitle,
+    "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "inLanguage": "fr",
+    "keywords": `claude code, ${card.data.category}, ${card.data.difficulty}, recap card, cheat sheet`,
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/cheatsheets/">Cheat Sheets</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{card.data.cardNumber}</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="card-hero">
+    <div class="container">
+      <div class="hero-meta">
+        <span class={`card-number-badge series-${card.data.cardNumber[0].toLowerCase()}`}>
+          {card.data.cardNumber}
+        </span>
+        <span class={`difficulty-pill diff-${card.data.difficulty}`}>
+          {difficultyLabel[card.data.difficulty]}
+        </span>
+        <span class="category-pill">
+          {card.data.category}
+        </span>
+      </div>
+      <h1>{card.data.title}</h1>
+      <p class="card-subtitle">{card.data.subtitle}</p>
+      <div class="hero-actions">
+        <a
+          href={`/cheatsheets/pdf/${card.id}.pdf`}
+          class="btn btn-primary"
+          download
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download PDF
+        </a>
+        <a href="/cheatsheets/" class="btn btn-secondary">
+          ← All cards
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="card-content">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </main>
+
+  <!-- Prev/Next navigation -->
+  {(prevCard || nextCard) && (
+    <nav class="card-nav" aria-label="Navigate between cards in this series">
+      <div class="container">
+        <div class="nav-hint">
+          Other cards in <strong>{seriesLabel[seriesChar] ?? card.data.category}</strong> series
+        </div>
+        <div class="nav-links">
+          {prevCard ? (
+            <a href={`/cheatsheets/${prevCard.id}/`} class="nav-prev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <div class="nav-label">Previous</div>
+                <div class="nav-title">{prevCard.data.cardNumber} — {prevCard.data.title}</div>
+              </div>
+            </a>
+          ) : <div />}
+          {nextCard && (
+            <a href={`/cheatsheets/${nextCard.id}/`} class="nav-next">
+              <div>
+                <div class="nav-label">Next</div>
+                <div class="nav-title">{nextCard.data.cardNumber} — {nextCard.data.title}</div>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </nav>
+  )}
+
+</Layout>
+
+<style>
+  /* ── Breadcrumb ── */
+  .breadcrumb {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb [aria-current="page"] { color: var(--text-secondary); }
+
+  /* ── Container ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── Hero ── */
+  .card-hero {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .card-number-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.3rem;
+  }
+  .series-t { background: color-mix(in srgb, #f97316 15%, transparent); color: #ea6c00; }
+  .series-m { background: color-mix(in srgb, #3b82f6 15%, transparent); color: #2563eb; }
+  .series-c { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
+
+  .difficulty-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+  }
+  .diff-beginner { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
+  .diff-intermediate { background: color-mix(in srgb, #eab308 15%, transparent); color: #ca8a04; }
+  .diff-advanced { background: color-mix(in srgb, #ef4444 15%, transparent); color: #dc2626; }
+
+  .category-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .card-hero h1 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+  .card-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+
+  /* ── Content / Prose ── */
+  .card-content { padding: 2.5rem 0; }
+
+  .prose {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  .prose :global(h2) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--accent);
+  }
+  .prose :global(h3) {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.5rem;
+  }
+  .prose :global(p) { margin: 0.75rem 0; }
+  .prose :global(ul), .prose :global(ol) {
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose :global(li) { margin: 0.3rem 0; }
+  .prose :global(strong) { color: var(--text-primary); font-weight: 700; }
+  .prose :global(em) { color: var(--text-secondary); }
+  .prose :global(code) {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.85em;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    padding: 0.1em 0.35em;
+    border-radius: 0.25rem;
+    color: var(--text-primary);
+  }
+  .prose :global(pre) {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  .prose :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    display: block;
+  }
+  .prose :global(th) {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 700;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+  }
+  .prose :global(td) {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .prose :global(tr:nth-child(even) td) {
+    background: color-mix(in srgb, var(--bg-tertiary) 40%, transparent);
+  }
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── Prev/Next nav ── */
+  .card-nav {
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .nav-hint strong { color: var(--text-secondary); }
+  .nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .nav-prev, .nav-next {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    background: var(--bg-secondary);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .nav-prev:hover, .nav-next:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+  .nav-next { justify-content: flex-end; text-align: right; }
+  .nav-prev svg, .nav-next svg { color: var(--accent); flex-shrink: 0; }
+  .nav-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+  .nav-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { grid-template-columns: 1fr; }
+    .nav-next { justify-content: flex-start; text-align: left; }
+    .prose :global(table) { font-size: 0.8rem; }
+  }
+</style>

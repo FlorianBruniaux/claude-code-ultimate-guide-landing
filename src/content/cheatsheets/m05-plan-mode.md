@@ -1,0 +1,79 @@
+---
+title: Plan Mode
+subtitle: Faire planifier Claude avant d'agir
+cardNumber: M05
+category: Méthodologie
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 105
+---
+
+## Qu'est-ce que Plan Mode
+
+Plan Mode est le mode "regarder sans toucher" de Claude Code. En Plan Mode, Claude peut lire, chercher, analyser, et proposer des approches, mais ne peut pas modifier de fichiers, créer des fichiers, ou exécuter des commandes qui changent l'état du système.
+
+```
+/plan              # Entrer en Plan Mode
+Shift+Tab          # Basculer Plan ↔ Normal
+/execute           # Quitter et passer à l'exécution
+```
+
+## Pourquoi Ça Change Tout
+
+Boris Cherny (Head of Claude Code chez Anthropic) commence environ **80% de ses tâches en Plan Mode**, laissant Claude planifier avant d'écrire une seule ligne de code. Résultat : l'exécution est presque toujours correcte au premier essai.
+
+Le raisonnement : Claude explore le codebase sans pression d'agir. Il identifie les dépendances cachées, les impacts secondaires, les edge cases. Le plan qui en sort est plus solide que ce que Claude produirait en mode réactif.
+
+## Ce que Permet Plan Mode
+
+- Lecture de fichiers et exploration du codebase
+- Analyse d'architecture et de dépendances
+- Proposition d'approches et de plans d'action
+- Écriture dans un fichier plan (notes, PLAN.md)
+
+**Ce qu'il interdit :**
+- Édition de fichiers existants
+- Création de nouveaux fichiers
+- Exécution de commandes modifiant l'état
+- Commits git
+
+## Quand l'Utiliser
+
+| Situation | Plan Mode ? |
+|-----------|-------------|
+| Exploration d'un codebase inconnu | Oui |
+| Feature touchant 3+ fichiers | Oui |
+| Refactorisation significative | Oui |
+| Fix de typo ou renommage simple | Non |
+| Edit rapide sur fichier connu | Non |
+
+## Pattern Plan-Validate-Execute
+
+```
+1. /plan
+   Claude explore et propose un plan structuré
+
+2. Review du plan
+   Modifier, affiner, valider les étapes
+
+3. /execute (ou Shift+Tab → Normal Mode)
+   Exécution supervisée du plan approuvé
+```
+
+La validation du plan avant exécution permet de catcher 30-40% des problèmes qui auraient été découverts après coup, selon les retours de la communauté.
+
+## Auto Plan Mode
+
+Pour les projets où le niveau de risque justifie une planification systématique, une configuration `--append-system-prompt` peut forcer Claude à présenter un plan avant chaque action :
+
+```bash
+# Alias pratique
+alias claude-safe='claude --append-system-prompt \
+  "Before executing ANY tool, present a plan and wait for approval."'
+```
+
+Ce pattern rapporte 76% de réduction de tokens avec de meilleurs résultats, parce que le plan est validé avant la dépense de tokens d'exécution.
+
+## Intégration avec Agents
+
+Les agents définis dans `.claude/agents/` peuvent aussi entrer en Plan Mode via `/plan` dans leur contexte. Un pattern courant : agent planificateur (Opus, read-only) qui passe le plan à un agent implémenteur (Haiku, exécution mécanique).

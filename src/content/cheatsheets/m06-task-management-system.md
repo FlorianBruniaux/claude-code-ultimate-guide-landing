@@ -1,0 +1,81 @@
+---
+title: Task Management System
+subtitle: Organiser le travail de Claude avec la Tasks API
+cardNumber: M06
+category: Méthodologie
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 106
+---
+
+## Hiérarchie des tâches
+
+La Tasks API (v2.1.16+) introduit une structure en quatre niveaux pour décomposer n'importe quel projet complexe de façon claire et traçable.
+
+| Niveau | Rôle |
+|--------|------|
+| **Plan** | Objectif de haut niveau |
+| **Phase** | Jalon majeur |
+| **Task** | Livrable concret |
+| **Subtask** | Action atomique |
+
+Les tâches survivent aux fins de session, aux compactions de contexte, et aux redémarrages — elles sont stockées dans `~/.claude/tasks/<id>/`.
+
+## Outils principaux
+
+```
+TaskCreate   Créer une tâche ou sous-tâche
+TaskList     Lister toutes les tâches (statuts + blocages)
+TaskGet      Lire les détails complets d'une tâche
+TaskUpdate   Mettre à jour le statut ou les métadonnées
+TaskStop     Annuler une tâche en cours
+```
+
+## Cycle d'exécution
+
+```bash
+# 1. Initialiser avec un ID de liste stable
+export CLAUDE_CODE_TASK_LIST_ID="monprojet-auth-v2"
+claude
+
+# 2. Lister et reprendre
+> "TaskList pour voir l'état actuel"
+
+# 3. Passer une tâche en cours puis la terminer
+> "Marque task-login comme in_progress, puis implémente"
+> "Marque task-login comme completed"
+```
+
+## Statuts disponibles
+
+| Statut | Signification |
+|--------|---------------|
+| `pending` | En attente |
+| `in_progress` | En cours d'exécution |
+| `completed` | Terminée avec succès |
+| `cancelled` | Annulée |
+
+## Dépendances avec blockedBy
+
+Le champ `blockedBy` empêche l'exécution prématurée d'une tâche qui dépend d'une autre. Les IDs utilisés doivent être les identifiants réels des tâches, pas leurs titres.
+
+```
+TaskCreate: {
+  title: "Écrire les tests d'intégration",
+  blockedBy: ["task-login", "task-refresh"]
+}
+```
+
+Claude respecte cet ordre automatiquement lors de l'exécution.
+
+## Quand activer la Tasks API
+
+Utiliser dès que le travail dépasse trois étapes séquentielles, implique plusieurs répertoires, ou doit se poursuivre sur plusieurs sessions. Pour une tâche rapide qui se boucle en moins de dix minutes dans une seule session, TodoWrite reste suffisant.
+
+## Coût à anticiper
+
+`TaskList` coûte un appel API. Récupérer les détails de chaque tâche avec `TaskGet` ajoute un appel supplémentaire par tâche — pour vingt tâches, cela représente vingt fois plus d'overhead. Placer les informations critiques dans le champ `subject` (visible via `TaskList`) et garder les descriptions concises limite ce coût.
+
+## ID de liste : règles de nommage
+
+Un ID générique partagé entre projets provoque des collisions. Utiliser un identifiant spécifique au repo, de la forme `<organisation>-<repo>-<feature>`.

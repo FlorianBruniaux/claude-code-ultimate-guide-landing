@@ -1,0 +1,90 @@
+---
+title: Workflow Quotidien
+subtitle: La routine optimale pour une session de développement productive
+cardNumber: M01
+category: Méthodologie
+difficulty: beginner
+guideVersion: 3.32.1
+order: 101
+---
+
+## La Boucle d'Interaction
+
+Chaque session Claude Code suit ce schéma :
+
+```
+1. DESCRIBE  → Expliquer ce qu'on veut
+2. ANALYZE   → Claude explore le codebase
+3. PROPOSE   → Claude propose un diff
+4. REVIEW    → Lire et évaluer
+5. DECIDE    → Accepter / Rejeter / Modifier
+6. VERIFY    → Lancer les tests
+7. COMMIT    → Sauvegarder (optionnel)
+```
+
+La clé : **Claude propose, vous décidez.** Ne jamais sauter l'étape de review, même sur des changements qui paraissent évidents.
+
+## Démarrage de Session
+
+**Avant de taper la première demande :**
+
+1. Vérifier que CLAUDE.md est chargé (première ligne affichée dans le contexte)
+2. Définir une intention claire : un seul objectif par session
+3. Commencer par `/plan` si la tâche touche plusieurs fichiers
+
+```bash
+cd votre-projet
+claude
+# Vérifier : "✓ CLAUDE.md loaded"
+```
+
+## Pendant la Session
+
+**Revue du diff à chaque étape** — ne pas laisser Claude enchaîner plusieurs changements sans validation intermédiaire. Sur des modifications significatives, demander explicitement :
+
+```
+You: Montre-moi ce que tu as modifié avant de continuer
+```
+
+**Gestion du contexte :**
+
+| Contexte | Action |
+|---------|--------|
+| 0-50% | Travailler librement |
+| 50-75% | Être sélectif sur les fichiers ouverts |
+| 75%+ | `/compact` maintenant |
+| 90%+ | `/clear` requis |
+
+## Anti-Pattern : Le Vibe Coding
+
+Laisser Claude itérer sans supervision sur plusieurs fichiers, puis découvrir les problèmes une heure plus tard. Le diff de fin de session devient illisible et le retour arrière coûteux.
+
+**Contremesures concrètes :**
+- Valider après chaque fichier modifié, pas après tout un batch
+- Lancer les tests après chaque changement significatif
+- Committer régulièrement pour avoir des points de retour propres
+
+## Fin de Session
+
+Avant de fermer :
+
+```bash
+# Vérifier l'état du repo
+git diff --stat
+
+# Committer si tout est propre
+git commit -m "feat: description courte"
+```
+
+Si des décisions importantes ont été prises en cours de session (choix d'architecture, conventions adoptées), les noter dans CLAUDE.md pour que la prochaine session reparte du bon contexte. Les sessions ne transfèrent pas d'elles-mêmes les décisions implicites.
+
+## Format de Prompt Efficace
+
+```
+WHAT:   Fixer le bug de timeout sur le login
+WHERE:  src/auth/session.ts
+HOW:    Augmenter l'expiry de 1h à 24h
+VERIFY: Le login persiste après refresh navigateur
+```
+
+Ce cadre évite les ambiguïtés et réduit les allers-retours de clarification.

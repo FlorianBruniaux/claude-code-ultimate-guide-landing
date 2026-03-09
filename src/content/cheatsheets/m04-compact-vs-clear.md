@@ -1,0 +1,82 @@
+---
+title: Compact vs Clear
+subtitle: Quand résumer et quand réinitialiser le contexte
+cardNumber: M04
+category: Méthodologie
+difficulty: beginner
+guideVersion: 3.32.1
+order: 104
+---
+
+## Les Deux Commandes
+
+| | `/compact` | `/clear` |
+|--|-----------|---------|
+| Historique | Résumé conservé | Perdu |
+| Fil de session | Maintenu | Rompu |
+| Libération contexte | ~40-50% | 100% |
+| Quand utiliser | En cours de tâche | Changement de sujet |
+
+La distinction fondamentale : `/compact` compresse sans couper le fil, `/clear` repart de zéro. Aucun des deux n'est meilleur dans l'absolu, le choix dépend de la situation.
+
+## Zones de Contexte
+
+```
+0-50%   Travailler librement
+50-75%  Être sélectif sur les fichiers chargés
+75-90%  /compact maintenant (pas en urgence)
+90%+    /clear si la session est mal engagée
+        ou /compact en dernier recours
+```
+
+L'erreur classique : attendre 90% pour faire `/compact`. À ce stade, Claude commence à oublier des instructions et la qualité des réponses baisse. 75% est le bon seuil.
+
+## Quand Utiliser `/compact`
+
+**Situations idéales :**
+- Tâche en cours avec contexte historique utile
+- Session longue sur un même module ou feature
+- Vous avez besoin de vous souvenir des décisions prises
+
+```
+/compact
+```
+
+Claude résume l'historique, conserve les éléments critiques, et libère 40-50% du contexte utilisé. Le résumé devient la nouvelle "mémoire de session".
+
+## Quand Utiliser `/clear`
+
+**Situations idéales :**
+- Changement complet de sujet ou de projet
+- Contexte pollué par de nombreuses erreurs et tentatives ratées
+- Session mal engagée qui génère des incohérences
+
+```
+/clear
+```
+
+Tout le contexte est effacé. Repartir avec un prompt ciblé et le fichier de contexte minimal nécessaire.
+
+## "Summarize from Here" : La Troisième Option
+
+Via `/rewind` (ou `Esc + Esc`), on peut sélectionner un point précis dans l'historique et choisir "Summarize from here". Claude résume uniquement depuis ce point, en conservant le contexte antérieur intact.
+
+```
+Esc + Esc → sélectionner un checkpoint → "Summarize from here"
+```
+
+Plus précis que `/compact` global, utile quand seule la fin de la session est verbeuse.
+
+## Comparaison Rapide
+
+| Situation | Commande |
+|-----------|---------|
+| Session longue, même tâche, 75%+ | `/compact` |
+| Nouveaux sujets après une session dense | `/clear` |
+| Fin de session verbeuse à nettoyer | Rewind → Summarize |
+| Contexte 70-90%, tâche en cours | `/compact` |
+| Contexte 90%+, session mal engagée | `/clear` |
+
+## Ce que `/compact` NE Conserve PAS
+
+Le résumé généré par `/compact` est une synthèse. Il peut simplifier des nuances techniques ou des décisions implicites. Après un compact, vérifier que les éléments critiques sont encore accessibles avant de poursuivre une implémentation complexe.

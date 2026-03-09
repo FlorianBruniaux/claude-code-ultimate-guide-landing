@@ -1,0 +1,105 @@
+---
+title: GitHub Actions + Claude Code
+subtitle: Intégrer Claude Code dans les pipelines CI/CD GitHub
+cardNumber: M19
+category: Méthodologie
+difficulty: advanced
+guideVersion: 3.32.1
+order: 119
+---
+
+## Pattern recommandé : prompt externalisé
+
+Le pattern le plus robuste sépare la logique de review de la mécanique du workflow. Le fichier YAML orchestre les déclencheurs et permissions ; le fichier `.github/prompts/code-review.md` contient les critères de review. Modifier les critères ne nécessite pas de toucher au workflow.
+
+```
+.github/
+├── workflows/
+│   └── claude-review.yml    # Mécanique CI
+└── prompts/
+    └── code-review.md       # Critères, protocoles
+```
+
+Cette séparation permet d'itérer sur la qualité des reviews sans risquer de casser le pipeline.
+
+## Authentification : OAuth vs API Key
+
+| Méthode | Coût par review | Prérequis |
+|---------|----------------|-----------|
+| OAuth token (Plan Max) | ~0$ | Claude GitHub App installée |
+| `ANTHROPIC_API_KEY` | 0,05-0,15$ (Sonnet) | Clé API Anthropic |
+
+L'OAuth via la Claude GitHub App est la solution privilégiée pour les équipes avec un plan Max : zéro coût marginal par review, configuration en un clic.
+
+## Workflow minimal commenté
+
+```yaml
+on:
+  pull_request:
+    types: [opened, synchronize]
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    if: |
+      github.event_name == 'pull_request' ||
+      contains(github.event.comment.body, '/claude-review')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: claude-sonnet-4-6
+          prompt_file: .github/prompts/code-review.md
+          allowed_tools: Read,Glob,Grep
+```
+
+Le `fetch-depth: 0` est nécessaire pour que Claude ait accès à l'historique git complet et puisse comparer la branche avec main.
+
+## Outils autorisés en CI
+
+En CI, limiter Claude aux outils de lecture uniquement. `Read`, `Glob` et `Grep` couvrent tous les besoins d'une review de code. Ajouter `Write` ou `Bash` crée un risque de modification accidentelle du dépôt pendant l'analyse.
+
+Les outils MCP GitHub (`mcp__github__get_pull_request_diff`, `mcp__github__submit_pending_pull_request_review`) permettent à Claude de poster des commentaires inline sans accès en écriture direct au dépôt.
+
+## Anti-hallucination protocol
+
+Le principal problème des reviews automatisées : Claude invente des numéros de ligne ou rapporte des issues qu'il n'a pas vérifiées. Le protocol de mitigation consiste à demander explicitement dans le prompt de vérification avant toute assertion.
+
+Formulation dans `code-review.md` :
+
+```markdown
+Before reporting any issue, verify it with Read or Grep.
+Never cite a line number you have not confirmed.
+Structure output: MUST FIX / SHOULD FIX / CAN SKIP.
+```
+
+Cette instruction réduit les faux positifs sans complexifier le workflow.
+
+## Trigger on-demand : `/claude-review`
+
+Le `issue_comment` trigger permet à n'importe quel membre de l'équipe de déclencher une review à la demande en tapant `/claude-review` dans un commentaire de PR. Utile pour les PRs complexes où une review automatique à l'ouverture n'aurait pas eu assez de contexte.
+
+La condition `github.event.issue.pull_request != null` filtre les commentaires d'issues ordinaires pour n'activer l'agent que sur les PRs.
+
+## Gestion des échecs
+
+Prévoir un job de fallback qui poste un commentaire en cas d'échec du job Claude. Sans fallback, une PR peut rester silencieuse pendant des heures si l'agent plante, sans que l'équipe le sache.
+
+```yaml
+- name: Handle review failure
+  if: failure()
+  uses: actions/github-script@v7
+  with:
+    script: |
+      github.rest.issues.createComment({
+        issue_number: context.payload.pull_request.number,
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        body: '⚠️ Claude review failed — human reviewer needed.'
+      });
+```

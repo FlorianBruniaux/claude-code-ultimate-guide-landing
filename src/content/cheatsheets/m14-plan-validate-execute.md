@@ -1,0 +1,84 @@
+---
+title: Plan-Validate-Execute Pipeline
+subtitle: Le workflow 3 phases pour des tâches complexes sous contrôle
+cardNumber: M14
+category: Méthodologie
+difficulty: advanced
+guideVersion: 3.32.1
+order: 114
+---
+
+## Vue d'ensemble
+
+Plan-Validate-Execute est un pipeline en trois phases qui s'impose dès qu'une tâche touche plus de cinq fichiers ou deux répertoires. L'objectif : ne jamais exécuter sans avoir validé un plan explicite. Boris Cherny (Head of Claude Code chez Anthropic) démarre 80% de ses tâches en Plan Mode pour cette raison — l'exécution est presque toujours correcte du premier coup quand le plan est solide.
+
+## Phase 1 : Plan
+
+Entrer en Plan Mode (lecture seule) pour que Claude analyse et propose un plan d'action détaillé avant d'écrire une seule ligne.
+
+```bash
+# Activer le Plan Mode
+Shift+Tab x2   # Depuis Normal Mode
+
+# Ou via slash command
+/plan
+
+# Claude génère un plan structuré :
+# 1. Lire schema.prisma
+# 2. Ajouter le champ email: String? @unique
+# 3. Générer la migration Prisma
+# 4. Mettre à jour les types TypeScript
+# Impact: 3 fichiers, 1 migration
+```
+
+Sortir du Plan Mode : `Shift+Tab` (retour en Normal Mode). Claude demandera confirmation avant d'implémenter.
+
+## Phase 2 : Validate
+
+Avant d'approuver le plan, le soumettre à une revue critique. Deux approches :
+
+**Review manuelle** : lire le plan et identifier les angles morts (fichiers oubliés, ordre d'opérations incorrect, effets de bord non anticipés).
+
+**Agent adversarial** : déléguer la critique à un sous-agent dont la mission est de trouver des failles dans le plan proposé. Demander explicitement : "Quel est le risque principal de ce plan ? Qu'est-ce qui pourrait mal tourner ?"
+
+La validation n'est pas optionnelle sur les tâches complexes — c'est le filet de sécurité.
+
+## Phase 3 : Execute
+
+Une fois le plan validé, exécuter avec des checkpoints réguliers.
+
+```bash
+# Quitter le Plan Mode et exécuter
+Shift+Tab   # Retour en Normal Mode
+> "Approuve ce plan et implémente étape par étape"
+
+# Pour les tâches très longues : créer les tasks avant d'exécuter
+export CLAUDE_CODE_TASK_LIST_ID="projet-migration-v2"
+# Puis TaskCreate depuis le plan validé
+```
+
+## Intégration Tasks API
+
+Convertir le plan validé en tasks persistantes avant l'exécution. Chaque étape du plan devient une task avec ses dépendances déclarées. Si la session est interrompue en cours d'exécution, `TaskList` permet de reprendre exactement là où on s'est arrêté.
+
+## Quand appliquer ce pipeline
+
+| Critère | Seuil |
+|---------|-------|
+| Fichiers touchés | Plus de 5 |
+| Répertoires impliqués | Plus de 2 |
+| Durée estimée | Plus de 30 minutes |
+| Risque de régression | Toute modification de schéma, API publique, ou config |
+
+Pour les corrections rapides et les tâches connues, le pipeline ajoute plus de friction que de valeur. Le bon réflexe : douter de la complexité avant de lancer, pas après.
+
+## Auto Plan Mode
+
+Forcer le Plan Mode sur toutes les opérations via `--append-system-prompt` :
+
+```bash
+alias claude-safe='claude --append-system-prompt \
+  "$(cat ~/.claude/auto-plan-mode.txt)"'
+```
+
+Le fichier `auto-plan-mode.txt` instruit Claude de présenter un plan et d'attendre l'approbation explicite avant chaque outil. Utile pour les sessions sur des bases de code critiques ou inconnues.

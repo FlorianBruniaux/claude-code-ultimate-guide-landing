@@ -1,0 +1,74 @@
+---
+title: AI Traceability
+subtitle: Tracer la contribution de l'IA dans le code et les commits
+cardNumber: C10
+category: Conception
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 210
+---
+
+## Pourquoi tracer maintenant
+
+La majorité des outils AI (Copilot, Cursor, ChatGPT) ne laissent aucune trace dans le versioning. Les contributions IA deviennent indiscernables des contributions humaines. Ce silence crée trois problèmes concrets : les reviewers ne savent pas quoi examiner avec plus d'attention, les auditeurs ne peuvent pas vérifier l'usage de l'IA, et en cas de bug, il est impossible de savoir si la logique vient d'une décision humaine ou d'une génération automatique.
+
+Claude Code ajoute par défaut un trailer `Co-Authored-By` dans les commits. C'est un point de départ, mais pas l'unique option.
+
+## Le spectre de disclosure
+
+| Niveau | Méthode | Quand l'utiliser |
+|--------|---------|-----------------|
+| Minimal | `Co-Authored-By` trailer | OSS casual, équipes petites |
+| Standard | `Assisted-by` trailer + disclosure PR | Projets actifs, contribution OSS |
+| Full | git-ai checkpoints + prompts préservés | Enterprise, conformité, audit |
+
+**Convention `Co-Authored-By` (défaut Claude Code) :**
+
+```
+feat: implement user authentication
+
+JWT-based auth with refresh tokens.
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+```
+
+**Convention `Assisted-by` (standard LLVM) :** sémantique différente. Le développeur reste l'auteur principal, l'IA a assisté.
+
+```
+Assisted-by: Claude (Anthropic)
+```
+
+## Politiques des projets majeurs
+
+| Projet | Politique | Trigger |
+|--------|-----------|---------|
+| LLVM (janv. 2026) | `Assisted-by` obligatoire | Aide significative |
+| Ghostty | Disclosure dans la PR | N'importe quel outil AI |
+| Fedora | Disclosure + accountability | Usage "substantial" |
+
+Les trois projets interdisent les agents entièrement autonomes et exigent qu'un humain comprenne, relise et reste responsable du code.
+
+**Ce que la traceability n'est pas :** une certification de qualité. Mentionner Claude ne garantit pas que le code est bon, ni qu'il a été relu. C'est de la transparence sur l'origine, pas une validation.
+
+## Template CONTRIBUTING.md pour votre équipe
+
+```markdown
+## AI Assistance Disclosure
+
+Si vous utilisez un outil AI pour contribuer, indiquez-le
+dans la description de votre PR.
+
+Quoi déclarer : code généré, recherche assistée,
+algorithmes suggérés, documentation rédigée.
+
+Pas besoin de déclarer : autocomplete trivial,
+correction grammaticale, helpers IDE.
+```
+
+## AI Code Halflife
+
+Des études sur les dépôts utilisant git-ai montrent que la durée de vie médiane du code généré par IA est de 3,33 ans avant d'être remplacé, contre une durée plus longue pour le code humain. Le code AI est souvent plus générique, moins ancré dans l'architecture projet, et nécessite plus de rework quand les besoins évoluent. La traceability permet de cibler précisément ces zones lors des refactorings futurs.
+
+## Outil avancé : Entire CLI
+
+Pour les équipes enterprise, Entire CLI (Feb 2026, Thomas Dohmke) capture les sessions complètes comme checkpoints Git : prompts, tool calls, diffs et raisonnement, sur une branche orpheline sans polluer l'historique principal. Utile pour les contextes SOC2/HIPAA nécessitant une auditabilité complète.

@@ -1,0 +1,437 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const allCards = await getCollection('cheatsheets')
+const cards = allCards.sort((a, b) => a.data.order - b.data.order)
+
+const techniqueCards = cards.filter(c => c.data.category === 'Technique')
+const methodologieCards = cards.filter(c => c.data.category === 'Méthodologie')
+const conceptionCards = cards.filter(c => c.data.category === 'Conception')
+
+const totalCards = cards.length
+
+const difficultyLabel: Record<string, string> = {
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
+}
+
+const title = `Cheat Sheets — ${totalCards} Recap Cards | Claude Code`
+const description = `${totalCards} printable A4 recap cards covering Claude Code commands, workflows, agents, MCP, security, and more. Plus the original 1-page quick reference.`
+
+const jsonLd = [
+  {
+    "@type": "ItemList",
+    "name": "Claude Code Cheat Sheets",
+    "description": description,
+    "numberOfItems": totalCards + 1,
+    "url": "https://cc.bruniaux.com/cheatsheets/",
+    "itemListElement": cards.map((card, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
+      "name": card.data.title,
+    })),
+  }
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+
+  <header class="page-hero">
+    <div class="container">
+      <h1>Cheat Sheets</h1>
+      <p class="tagline">{totalCards} printable A4 recap cards covering every aspect of Claude Code — commands, workflows, multi-agent, security, MCP, and more.</p>
+      <div class="cta-buttons">
+        <a href="#cards" class="btn btn-primary">Browse all cards</a>
+        <a href="/cheatsheet/" class="btn btn-secondary">Quick Reference (1-page EN)</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-section" id="cards">
+    <div class="container">
+
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">{totalCards}</span>
+          <span class="stat-label">Recap Cards</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{techniqueCards.length}</span>
+          <span class="stat-label">Technique</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{methodologieCards.length}</span>
+          <span class="stat-label">Méthodologie</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{conceptionCards.length}</span>
+          <span class="stat-label">Conception</span>
+        </div>
+      </div>
+
+      <!-- Original cheatsheet card -->
+      <div class="cheatsheet-featured">
+        <a href="/cheatsheet/" class="featured-card">
+          <div class="featured-badge">1-PAGE QUICK REF</div>
+          <div class="featured-content">
+            <h3>Quick Reference</h3>
+            <p>All essential commands, shortcuts, hooks, MCP, and golden rules on a single printable page. English.</p>
+          </div>
+          <svg class="featured-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+        <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">
+          All <span class="tab-count">{totalCards}</span>
+        </button>
+        <button class="tab-btn" data-filter="Technique" role="tab" aria-selected="false">
+          Technique <span class="tab-count">{techniqueCards.length}</span>
+        </button>
+        <button class="tab-btn" data-filter="Méthodologie" role="tab" aria-selected="false">
+          Méthodologie <span class="tab-count">{methodologieCards.length}</span>
+        </button>
+        <button class="tab-btn" data-filter="Conception" role="tab" aria-selected="false">
+          Conception <span class="tab-count">{conceptionCards.length}</span>
+        </button>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="cards-grid" id="cards-grid">
+        {cards.map(card => (
+          <article
+            class="recap-card"
+            data-category={card.data.category}
+          >
+            <a href={`/cheatsheets/${card.id}/`} class="card-link">
+              <div class="card-header">
+                <span class={`card-number-badge series-${card.data.cardNumber[0].toLowerCase()}`}>
+                  {card.data.cardNumber}
+                </span>
+                <span class={`difficulty-pill diff-${card.data.difficulty}`}>
+                  {difficultyLabel[card.data.difficulty]}
+                </span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{card.data.title}</h3>
+                <p class="card-subtitle">{card.data.subtitle}</p>
+              </div>
+              <div class="card-footer">
+                <a
+                  href={`/cheatsheets/pdf/${card.id}.pdf`}
+                  class="pdf-download"
+                  download
+                  aria-label={`Download ${card.data.title} PDF`}
+                  onclick="event.stopPropagation()"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  PDF
+                </a>
+                <span class="card-read">Read →</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <p class="no-results hidden" id="no-results">No cards match this filter.</p>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .page-hero {
+    padding: 4rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+
+  /* ── Section ── */
+  .content-section { padding: 3rem 0 5rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── Stats ── */
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Featured cheatsheet ── */
+  .cheatsheet-featured { margin-bottom: 2rem; }
+  .featured-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--accent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .featured-card:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .featured-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .featured-content { flex: 1; }
+  .featured-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .featured-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .featured-arrow { color: var(--accent); flex-shrink: 0; }
+
+  /* ── Filter tabs ── */
+  .filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.875rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tab-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+  .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .tab-btn.active .tab-count { background: rgba(255,255,255,0.25); color: #fff; }
+  .tab-count {
+    font-size: 0.75rem;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    padding: 0.1rem 0.4rem;
+    border-radius: 1rem;
+    font-weight: 600;
+  }
+
+  /* ── Cards grid ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .recap-card {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--bg-secondary);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    overflow: hidden;
+  }
+  .recap-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    gap: 0.5rem;
+  }
+  .card-header { display: flex; align-items: center; justify-content: space-between; }
+
+  /* Card number badges by series */
+  .card-number-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .series-t { background: color-mix(in srgb, #f97316 15%, transparent); color: #ea6c00; }
+  .series-m { background: color-mix(in srgb, #3b82f6 15%, transparent); color: #2563eb; }
+  .series-c { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
+
+  /* Difficulty pills */
+  .difficulty-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 1rem;
+  }
+  .diff-beginner { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
+  .diff-intermediate { background: color-mix(in srgb, #eab308 15%, transparent); color: #ca8a04; }
+  .diff-advanced { background: color-mix(in srgb, #ef4444 15%, transparent); color: #dc2626; }
+
+  .card-body { flex: 1; }
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .pdf-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .pdf-download:hover { color: var(--accent); border-color: var(--accent); }
+  .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+
+  /* No results */
+  .no-results {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 3rem;
+  }
+  .hidden { display: none; }
+</style>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
+  const cardItems = document.querySelectorAll<HTMLElement>('.recap-card')
+  const noResults = document.getElementById('no-results')
+
+  function filterCards(filter: string) {
+    let visible = 0
+    cardItems.forEach(card => {
+      const category = card.dataset.category ?? ''
+      const show = filter === 'all' || category === filter
+      card.style.display = show ? '' : 'none'
+      if (show) visible++
+    })
+    if (noResults) noResults.classList.toggle('hidden', visible > 0)
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => {
+        b.classList.remove('active')
+        b.setAttribute('aria-selected', 'false')
+      })
+      btn.classList.add('active')
+      btn.setAttribute('aria-selected', 'true')
+      filterCards(btn.dataset.filter ?? 'all')
+    })
+  })
+</script>

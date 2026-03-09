@@ -1,0 +1,60 @@
+---
+title: Memory Stack (4 niveaux)
+subtitle: Où vit l'information que Claude utilise et comment la gérer
+cardNumber: C05
+category: Conception
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 205
+---
+
+## Les 4 niveaux de mémoire
+
+Claude Code ne stocke pas d'état entre les sessions par défaut. Tout ce qui doit persister doit être explicitement placé dans l'un des quatre niveaux.
+
+**Niveau 1 : CLAUDE.md (règles explicites)**
+Fichiers Markdown lus au démarrage de chaque session. Contiennent les conventions projet, les commandes importantes, les décisions d'architecture. Lisibles par l'humain, versionnés avec le code.
+
+```
+~/.claude/CLAUDE.md          # Global (toutes sessions)
+.claude/CLAUDE.md             # Projet (équipe)
+CLAUDE.md                     # Racine (dossier courant)
+```
+
+**Niveau 2 : Auto-memories (apprentissage automatique)**
+Claude enregistre automatiquement les décisions prises pendant les sessions dans `~/.claude/projects/*/memory/MEMORY.md`. Ce mécanisme est transparent : vous pouvez relire ces fichiers pour auditer ce que Claude a appris.
+
+**Niveau 3 : Tasks API (état structuré cross-session)**
+Pour les workflows multi-étapes qui s'étendent sur plusieurs sessions, la Tasks API maintient un état avec dépendances et statuts. Utile pour les projets longs où chaque session reprend là où la précédente s'est arrêtée.
+
+**Niveau 4 : Agent memory field (contexte local)**
+Chaque agent spécialisé peut avoir sa propre mémoire déclarative dans son frontmatter YAML, indépendante de la session principale.
+
+## Ce qui disparaît à chaque session
+
+La conversation elle-même est éphémère. Quand vous fermez une session, tout ce qui n'a pas été explicitement persisté est perdu. Il existe une exception : `claude --continue` reprend la dernière session, mais cela ne fonctionne que si vous n'avez pas ouvert d'autres sessions entre-temps.
+
+## Règle de sélection
+
+| Besoin | Niveau à utiliser |
+|--------|-------------------|
+| Convention permanent du projet | CLAUDE.md |
+| Décision prise en session | Auto-memory (ou CLAUDE.md manuel) |
+| État d'une tâche longue | Tasks API |
+| Contexte d'un agent spécialisé | Agent memory field |
+| Configuration éphémère | Session (pas de persistance) |
+
+## CLAUDE.md comme mémoire composée
+
+> "You should never have to correct Claude twice for the same mistake." (Boris Cherny, créateur de Claude Code)
+
+Chaque erreur corrigée une fois devient une règle CLAUDE.md. Sur 3 mois, un CLAUDE.md bien maintenu accumule les conventions, les gotchas, et les décisions d'architecture qui accélèrent toutes les sessions suivantes, y compris pour les nouveaux membres de l'équipe.
+
+```markdown
+# CLAUDE.md (pattern de croissance)
+Semaine 1 : 5 règles  →  5 erreurs évitées
+Mois 1    : 20 règles → 20 erreurs évitées
+Mois 3    : 50 règles → onboarding accéléré
+```
+
+**Taille cible :** entre 4 et 8 Ko au total (tous niveaux confondus). Au-delà de 16 Ko, la cohérence du modèle se dégrade selon les études praticiennes.

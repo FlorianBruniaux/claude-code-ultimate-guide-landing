@@ -1188,6 +1188,102 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-plan-pipeline-workflow",
+    "title": "Plan Pipeline Workflow",
+    "keywords": "plan pipeline workflow guide workflows plan pipeline",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/plan-pipeline/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-pipeline-commands",
+    "title": "Plan Pipeline Commands",
+    "keywords": "plan pipeline commands plan start →  plan validate →  plan execute",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//plan-start → /plan-validate → /plan-execute",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-pipeline-adr-loop",
+    "title": "Plan Pipeline Adr Loop",
+    "keywords": "plan pipeline adr loop watching (1) → emerging (2) → confirmed (3+) → claude md promotion",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Watching (1) → Emerging (2) → Confirmed (3+) → CLAUDE.md promotion",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-pipeline-context-reset",
+    "title": "Plan Pipeline Context Reset",
+    "keywords": "plan pipeline context reset clear between each command (plan, validate, execute)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//clear between each command (plan, validate, execute)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-start-command",
+    "title": "Plan Start Command",
+    "keywords": "plan start command examples commands plan start",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-start.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-validate-command",
+    "title": "Plan Validate Command",
+    "keywords": "plan validate command examples commands plan validate",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-validate.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-validate-layer1",
+    "title": "Plan Validate Layer1",
+    "keywords": "plan validate layer1 structural checks inline: format, deps, file existence, adr consistency, claude",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/structural checks inline: format, deps, file existence, ADR consistency, CLAUDE.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-validate-autofix",
+    "title": "Plan Validate Autofix",
+    "keywords": "plan validate autofix bucket a auto resolve (adr patterns first principles ~95%) + bucket b human input",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Bucket A auto-resolve (ADR/PATTERNS/first-principles ~95%) + Bucket B human input",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plan-execute-command",
+    "title": "Plan Execute Command",
+    "keywords": "plan execute command examples commands plan execute",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-execute.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-planning-coordinator-agent",
+    "title": "Planning Coordinator Agent",
+    "keywords": "planning coordinator agent examples agents planning coordinator",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/planning-coordinator.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-integration-reviewer-agent",
+    "title": "Integration Reviewer Agent",
+    "keywords": "integration reviewer agent examples agents integration reviewer",
+    "category": "Examples > Agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/integration-reviewer.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-integration-reviewer-role",
+    "title": "Integration Reviewer Role",
+    "keywords": "integration reviewer role opus runtime validator: connection params, async sync, env vars, library api correctness, otel pipeline",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Opus runtime validator: connection params, async/sync, env vars, library API correctness, OTEL pipeline",
+    "source": "guide"
+  },
+  {
     "id": "guide-annotation-cycle-pattern",
     "title": "Annotation Cycle Pattern",
     "keywords": "annotation cycle pattern guide workflows plan driven md#the annotation cycle",

@@ -1,0 +1,70 @@
+---
+title: Auto-Memories — Quand et Comment
+subtitle: Le système de mémorisation automatique vs CLAUDE.md manuel
+cardNumber: T08
+category: Technique
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 8
+---
+
+## Qu'est-ce que c'est ?
+
+Introduites en v2.1.59 (février 2026), les auto-memories permettent à Claude Code de sauvegarder du contexte utile entre les sessions sans édition manuelle de CLAUDE.md. Claude identifie les décisions clés pendant les conversations et les stocke automatiquement pour les sessions futures du même projet.
+
+**Ne pas confondre** avec la mémoire de Claude.ai (interface web). Ce sont deux systèmes distincts. Les auto-memories de Claude Code sont locales, par projet, sans lien avec votre compte claude.ai.
+
+## Où sont stockées les memories
+
+```
+~/.claude/projects/<chemin-encodé>/memory/MEMORY.md
+```
+
+Pour les memories au niveau projet (si vous utilisez `.claude/memory/`) :
+
+```
+.claude/memory/MEMORY.md
+```
+
+Depuis v2.1.63, les auto-memories sont partagées entre les git worktrees du même repo.
+
+## Ce qui se retrouve mémorisé
+
+```
+Décisions architecturales :
+  "Ce projet utilise Prisma pour l'accès base de données"
+
+Préférences équipe :
+  "Les composants fonctionnels sont préférés aux classes"
+
+Patterns spécifiques :
+  "Les routes API suivent le nommage RESTful dans /api/v1/"
+
+Problèmes connus :
+  "Ne pas utiliser le package X, conflit de version avec Y"
+```
+
+## CLAUDE.md vs Auto-Memories
+
+| Aspect | CLAUDE.md | Auto-Memories |
+|--------|-----------|---------------|
+| Gestion | Edition manuelle | Capture automatique |
+| Source | Documentation explicite | Analyse de conversation |
+| Visibilité | Git, partagé équipe | Local utilisateur, gitignore |
+| Contenu idéal | Conventions équipe | Découvertes personnelles |
+| Contrôle | Total | Limité |
+
+## Gérer les memories avec /memory
+
+```bash
+# Dans Claude Code (mode interactif)
+/memory          # Voir, éditer ou supprimer les entrées
+```
+
+## Quand utiliser quoi
+
+**Écrire dans CLAUDE.md manuellement :** conventions d'équipe, règles critiques que tout le monde doit respecter, décisions architecturales officielles.
+
+**Laisser les auto-memories travailler :** préférences de flux de travail personnelles, patterns découverts en cours de session, contexte temporaire lié à une fonctionnalité en cours.
+
+**Limite principale** : pas de contrôle fin sur ce qui est mémorisé automatiquement. Si une décision capturée devient obsolète, il faut la supprimer manuellement via `/memory`. Les auto-memories ne sont pas committées en Git, elles restent donc invisibles pour les autres membres de l'équipe.

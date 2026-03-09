@@ -1,0 +1,97 @@
+---
+title: TDD / BDD / SDD Workflows
+subtitle: Méthodologies de développement structurées avec Claude Code
+cardNumber: M15
+category: Méthodologie
+difficulty: intermediate
+guideVersion: 3.32.1
+order: 115
+---
+
+## Comparaison des trois approches
+
+| Aspect | TDD | BDD | SDD |
+|--------|-----|-----|-----|
+| **Point de départ** | Test technique | Comportement métier | Spécification écrite |
+| **Langage** | Code de test | Given/When/Then | Document structuré |
+| **Audience** | Développeurs | Devs + métier | Équipe entière |
+| **Feedback** | Tests pass/fail | Scénarios validés | Spec implémentée |
+
+## TDD avec Claude : Red-Green-Refactor
+
+Le cycle classique, rendu explicite dans les prompts pour éviter que Claude ne saute directement à l'implémentation.
+
+```bash
+# Phase RED : demander le test qui échoue d'abord
+> "Écris un test FAILING pour isValidEmail().
+   La fonction n'existe pas encore."
+
+# Phase GREEN : implémentation minimale
+> "Écris le code minimal pour faire passer ce test."
+
+# Phase REFACTOR : amélioration
+> "Améliore l'implémentation. Les tests doivent
+   rester verts."
+```
+
+Être explicite sur "FAILING" et "n'existe pas encore" est essentiel — sinon Claude tend à écrire test et implémentation ensemble.
+
+## BDD avec Claude : Given/When/Then
+
+```bash
+> "Décris le comportement de la page de login
+   en scénarios Gherkin, puis implémente."
+
+# Claude génère :
+# Scénario: Connexion avec identifiants valides
+#   Given un utilisateur enregistré avec email test@ex.com
+#   When il soumet le formulaire avec le bon mot de passe
+#   Then il est redirigé vers son tableau de bord
+```
+
+L'intérêt : les scénarios servent à la fois de spec, de documentation et de base de test, dans un langage lisible par des non-développeurs.
+
+## SDD avec Claude : Spec d'abord
+
+Écrire la spécification complète avant la première ligne de code. Claude utilise ensuite la spec comme référence tout au long de l'implémentation.
+
+```bash
+> "Voici la spec de l'endpoint POST /auth/login
+   [coller la spec]. Implémente section par section
+   en respectant chaque contrainte."
+```
+
+## Verification Loops : le principe fondateur
+
+Les trois méthodes reposent sur le même principe identifié par Boris Cherny : **un agent qui peut "voir" ce qu'il a produit donne de meilleurs résultats.** Sans mécanisme de vérification, Claude itère à l'aveugle.
+
+| Domaine | Outil de vérification |
+|---------|-----------------------|
+| Backend | Tests (unit, integration) |
+| Frontend | Aperçu navigateur live |
+| Types | Compilateur TypeScript |
+| Style | ESLint / Prettier |
+| Sécurité | Semgrep, analyseurs statiques |
+
+## Chain-of-Verification
+
+Pattern de validation croisée (arXiv:2309.11495) pour réduire les hallucinations : Claude génère une réponse, puis génère des questions de vérification sur cette réponse, puis répond à ces questions pour détecter les incohérences.
+
+Applicable quand la correction du résultat est critique et que les tests automatiques ne suffisent pas (algorithmes complexes, logique métier subtile).
+
+## Intégration avec Tasks API
+
+```bash
+# Créer la hiérarchie TDD dans Tasks API
+TaskCreate: { title: "Écrire les tests failing pour auth" }
+TaskCreate: {
+  title: "Implémenter auth pour passer les tests",
+  blockedBy: ["task-tests-failing"]
+}
+TaskCreate: {
+  title: "Refactoriser auth",
+  blockedBy: ["task-impl-auth"]
+}
+```
+
+Le cycle Red-Green-Refactor devient traçable et persistant entre sessions.
