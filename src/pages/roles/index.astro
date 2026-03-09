@@ -1,0 +1,711 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
+
+const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
+const description = 'Map of 13 AI engineering roles — Prompt Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "AI Roles & Career Paths: The New Engineering Landscape",
+    "description": "Comprehensive map of emerging AI roles with responsibilities, skills, and career trajectories for developers considering an AI specialization",
+    "url": "https://cc.bruniaux.com/roles/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/roles/",
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-03-09",
+    "inLanguage": "en",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Developers considering AI career specialization"
+    },
+    "keywords": "AI engineer, context engineer, harness engineer, prompt engineer, AI agent engineer, founding AI engineer, AI roles 2025, AI career paths, LLM engineer"
+  }
+]
+
+const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-roles.md'
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">{ROLES_META.count} roles mapped</span>
+        <span class="hero-badge hero-badge--secondary">Updated {ROLES_META.updated}</span>
+      </div>
+      <h1>The New AI Engineering Landscape</h1>
+      <p class="tagline">The AI wave didn't just create new tools — it created new jobs that didn't exist 3 years ago. Find where you fit.</p>
+      <div class="cta-buttons">
+        <a href="#decision-matrix" class="btn btn-primary">Find My Role →</a>
+        <a href="{guideBase}" target="_blank" rel="noopener" class="btn btn-secondary">Full Profiles in Guide</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Landscape overview -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Two Axes, One Map</h2>
+      <p class="section-subtitle">Where you sit on these two axes defines which role fits you.</p>
+      <div class="landscape-grid">
+        <div class="axis-card axis-card--model">
+          <div class="axis-icon">🧠</div>
+          <h3>Closer to the model</h3>
+          <p>You work with model internals — training, fine-tuning, evaluation, safety. High barrier to entry, fewer roles, highest research overlap.</p>
+          <div class="axis-roles">
+            <span class="axis-role-tag">ML Engineer</span>
+            <span class="axis-role-tag">LLM Engineer</span>
+            <span class="axis-role-tag">AI Safety & Eval</span>
+          </div>
+        </div>
+        <div class="axis-card axis-card--prod">
+          <div class="axis-icon">🚀</div>
+          <h3>Closer to production</h3>
+          <p>You build systems that ship. Models are a tool, not the subject. Highest job volume, fastest growth, most accessible from traditional engineering.</p>
+          <div class="axis-roles">
+            <span class="axis-role-tag">AI Engineer</span>
+            <span class="axis-role-tag">Context Engineer</span>
+            <span class="axis-role-tag">Agent Engineer</span>
+            <span class="axis-role-tag">Platform Engineer</span>
+            <span class="axis-role-tag">Harness Engineer</span>
+          </div>
+        </div>
+      </div>
+      <p class="landscape-note">Most new job demand sits in the production-facing quadrant. The applied, product-facing roles are where the 2025–2026 growth is.</p>
+    </div>
+  </section>
+
+  <!-- Role Cards -->
+  <section class="section" id="roles">
+    <div class="container">
+      <h2 class="section-title">13 Roles, Mapped</h2>
+      <p class="section-subtitle">From well-established to just emerging. Each card links to the full profile in the guide.</p>
+
+      <div class="roles-grid">
+        {ROLES.map((role) => {
+          const statusConf = STATUS_CONFIG[role.status]
+          return (
+            <div class:list={['role-card', role.highlight && 'role-card--highlight']}>
+              <div class="role-card-header">
+                <h3 class="role-card-title">{role.title}</h3>
+                <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
+                  {statusConf.label}
+                </span>
+              </div>
+              <p class="role-card-mission">{role.mission}</p>
+              <div class="role-card-skills">
+                {role.skills.map((skill) => (
+                  <span class="skill-tag">{skill}</span>
+                ))}
+              </div>
+              {role.salary && (
+                <div class="role-card-salary">
+                  <span class="salary-label">Mid-level</span>
+                  <span class="salary-value">{role.salary.mid}</span>
+                </div>
+              )}
+              {!role.salary && (
+                <div class="role-card-salary role-card-salary--emerging">
+                  <span class="salary-label">Salary</span>
+                  <span class="salary-value">Not yet standardized</span>
+                </div>
+              )}
+              <a href={`${guideBase}#${role.guideAnchor}`} target="_blank" rel="noopener" class="role-card-cta">
+                Full profile →
+              </a>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Decision Matrix -->
+  <section class="section section--alt" id="decision-matrix">
+    <div class="container">
+      <h2 class="section-title">Career Decision Matrix</h2>
+      <p class="section-subtitle">Where to go from where you are now.</p>
+
+      <div class="matrix-table-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Your current profile</th>
+              <th>Best next role</th>
+              <th>Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DECISION_MATRIX.map((row) => (
+              <tr>
+                <td class="matrix-background">{row.background}</td>
+                <td class="matrix-role">
+                  <a href={`#${row.roleId}`}>{row.role}</a>
+                </td>
+                <td class="matrix-timeline">{row.timeline}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-box">
+        <h3>The fastest path to AI employment in 2025–2026</h3>
+        <ol class="fast-path-list">
+          <li><strong>Build something</strong> with AI APIs — a real project, not a tutorial</li>
+          <li><strong>Write about it</strong> — blog post, GitHub README, LinkedIn thread</li>
+          <li><strong>Add evals</strong> — measure your system's quality, show the numbers</li>
+          <li><strong>Apply for AI Engineer roles</strong> — the bar is demonstrated building, not credentials</li>
+        </ol>
+        <p class="callout-note">76% of candidates claiming AI expertise lack production-level deployment experience. The bar is lower than it looks if you've actually shipped something.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Salary Benchmarks -->
+  <section class="section" id="salaries">
+    <div class="container">
+      <h2 class="section-title">Salary Benchmarks</h2>
+      <p class="section-subtitle">
+        US market figures · {ROLES_META.salaryMarket} · Source: FinalRoundAI, Alcor, RiseWorks AI Talent Report (2025)
+      </p>
+
+      <div class="salary-table-wrapper">
+        <table class="salary-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Entry</th>
+              <th>Mid</th>
+              <th>Senior</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ROLES.map((role) => {
+              const statusConf = STATUS_CONFIG[role.status]
+              return (
+                <tr>
+                  <td class="salary-role-name">{role.title}</td>
+                  <td>
+                    <span class="status-dot" style={`--status-color: ${statusConf.color}`}>
+                      {role.status}
+                    </span>
+                  </td>
+                  <td class="salary-figure">{role.salary?.entry ?? '—'}</td>
+                  <td class="salary-figure salary-figure--mid">{role.salary?.mid ?? '—'}</td>
+                  <td class="salary-figure">{role.salary?.senior ?? '—'}</td>
+                  <td class="salary-note">{role.salary?.note ?? (role.salary === null ? 'Role emerging — no data yet' : '')}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-disclaimer">Non-US markets: Europe ~30–50% lower, other regions ~40–60% lower. Total comp (equity, bonus) can significantly exceed base at startups and FAANG.</p>
+    </div>
+  </section>
+
+  <!-- What's Not a Role -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">What's Not a Role (Yet)</h2>
+      <p class="section-subtitle">Terms you'll hear that describe practices, not job titles.</p>
+      <div class="not-roles-grid">
+        <div class="not-role-card">
+          <h3>"Vibe Coder"</h3>
+          <p>A methodology (use AI to handle implementation while you focus on design), not a job. Andrej Karpathy coined the term then moved to "context engineering" as more precise. No serious company has "Vibe Coder" on a job description.</p>
+        </div>
+        <div class="not-role-card">
+          <h3>"AI-Native Engineer"</h3>
+          <p>Describes a quality expected of all engineers increasingly — you use AI tools fluently in your daily workflow. It's the bar, not the title.</p>
+        </div>
+        <div class="not-role-card">
+          <h3>"Orchestration Engineer"</h3>
+          <p>Sometimes used for agent systems. Overlaps significantly with AI Agent Engineer. Not yet a distinct category in job postings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section roles-cta-section">
+    <div class="container">
+      <div class="roles-cta-box">
+        <h2>Full profiles in the guide</h2>
+        <p>Each role has a complete profile: detailed responsibilities, required skills, entry paths, and where the role is heading. Free, open-source.</p>
+        <div class="cta-buttons">
+          <a href={guideBase} target="_blank" rel="noopener" class="btn btn-primary">Read Full Profiles →</a>
+          <a href="/" class="btn btn-secondary">← Back to Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ============================================
+   Hero badges
+   ============================================ */
+.hero-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-badge--secondary {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Landscape overview
+   ============================================ */
+.landscape-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.axis-card {
+  padding: var(--space-xl);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+}
+
+.axis-card--model {
+  border-left: 3px solid var(--accent-tertiary);
+}
+
+.axis-card--prod {
+  border-left: 3px solid var(--accent);
+}
+
+.axis-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.axis-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.axis-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.axis-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.axis-role-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.landscape-note {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ============================================
+   Role cards
+   ============================================ */
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.role-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.role-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.role-card--highlight {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--bg-tertiary);
+}
+
+.role-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.role-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.role-status-badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--status-color);
+  background: color-mix(in srgb, var(--status-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-color) 30%, transparent);
+}
+
+.role-card-mission {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.role-card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.skill-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.role-card-salary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.role-card-salary--emerging {
+  opacity: 0.6;
+}
+
+.salary-label {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.salary-value {
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}
+
+.role-card-cta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.role-card-cta:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Decision matrix
+   ============================================ */
+.matrix-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-xl);
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.matrix-table th {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border);
+}
+
+.matrix-table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.matrix-table tr:last-child td {
+  border-bottom: none;
+}
+
+.matrix-table tr:hover td {
+  background: var(--bg-tertiary);
+}
+
+.matrix-background {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.matrix-role a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.matrix-role a:hover {
+  text-decoration: underline;
+}
+
+.matrix-timeline {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.callout-box {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+}
+
+.callout-box h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-md);
+}
+
+.fast-path-list {
+  padding-left: 1.5rem;
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.fast-path-list li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.callout-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================
+   Salary table
+   ============================================ */
+.salary-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.salary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.salary-table th {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+.salary-table td {
+  padding: 0.625rem var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.salary-table tr:last-child td {
+  border-bottom: none;
+}
+
+.salary-table tr:hover td {
+  background: var(--bg-tertiary);
+}
+
+.salary-role-name {
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.status-dot {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--status-color);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.salary-figure {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.salary-figure--mid {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.salary-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.table-disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ============================================
+   Not a role section
+   ============================================ */
+.not-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.not-role-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  border-top: 2px dashed var(--border);
+}
+
+.not-role-card h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.not-role-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   CTA section
+   ============================================ */
+.roles-cta-section {
+  border-top: 1px solid var(--border);
+}
+
+.roles-cta-box {
+  max-width: 640px;
+}
+
+.roles-cta-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.roles-cta-box p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .landscape-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .not-roles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix-background {
+    font-size: 0.8rem;
+  }
+
+  .salary-table th:nth-child(3),
+  .salary-table td:nth-child(3),
+  .salary-table th:nth-child(5),
+  .salary-table td:nth-child(5),
+  .salary-table th:nth-child(6),
+  .salary-table td:nth-child(6) {
+    display: none;
+  }
+}
+</style>

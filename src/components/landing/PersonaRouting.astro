@@ -1,0 +1,149 @@
+<!-- Persona Routing — Choose Your Entry Point -->
+<section class="section persona-routing" id="persona-routing">
+    <div class="container">
+        <h2 class="section-title">Choose Your Entry Point</h2>
+        <p class="section-subtitle">The guide adapts to your profile — start with what fits you</p>
+
+        <div class="persona-grid">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/for-tech-leads.md" class="persona-card" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">🏗️</span>
+                <div class="persona-content">
+                    <strong class="persona-title">Tech Lead / EM</strong>
+                    <span class="persona-desc">Deploying Claude Code across your team</span>
+                    <span class="persona-time">30 min</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/for-cto.md" class="persona-card" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">📊</span>
+                <div class="persona-content">
+                    <strong class="persona-title">CTO / Decision Maker</strong>
+                    <span class="persona-desc">ROI, security posture, team adoption</span>
+                    <span class="persona-time">15 min</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/for-cio-ceo.md" class="persona-card" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">💼</span>
+                <div class="persona-content">
+                    <strong class="persona-title">CIO / CEO</strong>
+                    <span class="persona-desc">Budget, risk, questions for your tech team</span>
+                    <span class="persona-time">3 min</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/for-product-managers.md" class="persona-card" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">🎨</span>
+                <div class="persona-content">
+                    <strong class="persona-title">PM / Designer</strong>
+                    <span class="persona-desc">Vibe coding, working with AI-assisted dev teams</span>
+                    <span class="persona-time">20 min</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" class="persona-card persona-card--featured" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">👨‍💻</span>
+                <div class="persona-content">
+                    <strong class="persona-title">Developer</strong>
+                    <span class="persona-desc">Full guide — Quick Start to advanced patterns</span>
+                    <span class="persona-time persona-time--primary">Main guide →</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/FlorianBruniaux/claude-cowork-guide" class="persona-card" target="_blank" rel="noopener">
+                <span class="persona-icon" aria-hidden="true">✍️</span>
+                <div class="persona-content">
+                    <strong class="persona-title">Non-dev (Writer, Ops, Manager)</strong>
+                    <span class="persona-desc">Claude Cowork Guide — dedicated separate repo</span>
+                    <span class="persona-time">Dedicated repo</span>
+                </div>
+            </a>
+
+            <a href="/roles/" class="persona-card">
+                <span class="persona-icon" aria-hidden="true">🧭</span>
+                <div class="persona-content">
+                    <strong class="persona-title">Career pivot / AI role clarity</strong>
+                    <span class="persona-desc">13 roles mapped — find where you fit in the new AI landscape</span>
+                    <span class="persona-time">20 min</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.persona-routing {
+    border-top: 1px solid var(--border);
+}
+
+.persona-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.persona-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.persona-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.persona-card--featured {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+}
+
+.persona-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.persona-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.persona-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.persona-desc {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.persona-time {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 500;
+    font-family: var(--font-mono);
+}
+
+.persona-time--primary {
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .persona-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
