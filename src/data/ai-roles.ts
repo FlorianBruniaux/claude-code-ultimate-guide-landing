@@ -24,6 +24,7 @@ export interface RoleEntry {
   entryPaths: string[]
   salary: SalaryRange | null
   guideAnchor: string
+  landingUrl: string
   highlight?: boolean
 }
 
@@ -56,6 +57,7 @@ export const ROLES: RoleEntry[] = [
       note: 'Shrinking standalone market',
     },
     guideAnchor: '2-prompt-engineer',
+    landingUrl: '/guide/ai-roles/',
   },
   {
     id: 'context-engineer',
@@ -70,6 +72,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$180K–$230K',
     },
     guideAnchor: '3-context-engineer',
+    landingUrl: '/guide/ai-ecosystem/',
   },
   {
     id: 'ai-engineer',
@@ -84,6 +87,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$220K–$300K',
     },
     guideAnchor: '4-ai-engineer',
+    landingUrl: '/guide/',
     highlight: true,
   },
   {
@@ -100,6 +104,7 @@ export const ROLES: RoleEntry[] = [
       note: 'Lab-level roles higher',
     },
     guideAnchor: '5-llm-engineer',
+    landingUrl: '/guide/agent-evaluation/',
   },
   {
     id: 'ai-agent-engineer',
@@ -114,6 +119,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$240K–$320K',
     },
     guideAnchor: '6-ai-agent-engineer',
+    landingUrl: '/guide/architecture/',
     highlight: true,
   },
   {
@@ -130,6 +136,7 @@ export const ROLES: RoleEntry[] = [
       note: 'Equity makes total comp wide-ranging',
     },
     guideAnchor: '7-founding-ai-engineer',
+    landingUrl: '/guide/adoption-approaches/',
   },
   {
     id: 'ai-architect',
@@ -144,6 +151,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$260K–$380K',
     },
     guideAnchor: '8-ai-architect',
+    landingUrl: '/guide/architecture/',
   },
   {
     id: 'platform-engineer',
@@ -158,6 +166,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$210K–$280K',
     },
     guideAnchor: '9-platform-engineer-ai-context',
+    landingUrl: '/guide/devops-sre/',
   },
   {
     id: 'harness-engineer',
@@ -168,6 +177,7 @@ export const ROLES: RoleEntry[] = [
     entryPaths: ['Staff/principal engineer', 'Platform engineer', 'AI architect'],
     salary: null,
     guideAnchor: '10-harness-engineer',
+    landingUrl: '/guide/production-safety/',
     highlight: true,
   },
   {
@@ -184,6 +194,7 @@ export const ROLES: RoleEntry[] = [
       note: 'FAANG premium significant',
     },
     guideAnchor: '11-ai-product-manager',
+    landingUrl: '/guide/ai-ecosystem/',
   },
   {
     id: 'ai-safety-eval-engineer',
@@ -199,6 +210,7 @@ export const ROLES: RoleEntry[] = [
       note: 'Lab compensation highest',
     },
     guideAnchor: '12-ai-safety--eval-engineer',
+    landingUrl: '/guide/agent-evaluation/',
   },
   {
     id: 'ml-engineer',
@@ -213,6 +225,7 @@ export const ROLES: RoleEntry[] = [
       senior: '$200K–$280K',
     },
     guideAnchor: '13-ml-engineer',
+    landingUrl: '/guide/methodologies/',
   },
 ]
 
