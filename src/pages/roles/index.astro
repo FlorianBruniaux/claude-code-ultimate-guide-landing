@@ -25,7 +25,7 @@ const jsonLd = [
   }
 ]
 
-const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-roles.md'
+const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
@@ -41,7 +41,7 @@ const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide
       <p class="tagline">The AI wave didn't just create new tools — it created new jobs that didn't exist 3 years ago. Find where you fit.</p>
       <div class="cta-buttons">
         <a href="#decision-matrix" class="btn btn-primary">Find My Role →</a>
-        <a href="{guideBase}" target="_blank" rel="noopener" class="btn btn-secondary">Full Profiles in Guide</a>
+        <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
       </div>
     </div>
   </header>
@@ -242,7 +242,7 @@ const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide
         <h2>Full profiles in the guide</h2>
         <p>Each role has a complete profile: detailed responsibilities, required skills, entry paths, and where the role is heading. Free, open-source.</p>
         <div class="cta-buttons">
-          <a href={guideBase} target="_blank" rel="noopener" class="btn btn-primary">Read Full Profiles →</a>
+          <a href={guideBase} class="btn btn-primary">Read Full Profiles →</a>
           <a href="/" class="btn btn-secondary">← Back to Guide</a>
         </div>
       </div>
