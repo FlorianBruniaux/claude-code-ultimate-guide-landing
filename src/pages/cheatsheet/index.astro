@@ -12,7 +12,7 @@ const jsonLd = [
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-01-17",
-    "dateModified": "2026-03-02",
+    "dateModified": "2026-03-09",
     "url": "https://cc.bruniaux.com/cheatsheet/",
     "mainEntityOfPage": "https://cc.bruniaux.com/cheatsheet/",
     "inLanguage": "en"
@@ -31,7 +31,7 @@ const jsonLd = [
       <p class="tagline">1 printable page: daily essentials for maximum productivity</p>
       <div class="meta-info">
         <span>By <a href="https://methode-aristote.fr" target="_blank">Florian BRUNIAUX</a></span>
-        <span>Version 3.29.2</span>
+        <span>Version 3.32.0</span>
         <span>March 2026</span>
       </div>
       <div class="cta-buttons" style="margin-top: var(--space-lg);">
@@ -72,6 +72,10 @@ const jsonLd = [
           <tr><td>/teleport</td><td>Teleport session from web</td></tr>
           <tr><td>/tasks</td><td>Monitor background tasks</td></tr>
           <tr><td>/fast</td><td>Toggle fast mode (2.5x speed)</td></tr>
+          <tr><td>/loop [interval] [prompt]</td><td>Recurring scheduler — /loop 5m check the deploy (default 10m)</td></tr>
+          <tr><td>/stats</td><td>Usage graph, favorite model, streak</td></tr>
+          <tr><td>/rename [name]</td><td>Name or rename current session</td></tr>
+          <tr><td>/copy</td><td>Interactive picker to copy a code block or full response</td></tr>
           <tr><td>/debug</td><td>Systematic troubleshooting</td></tr>
           <tr><td>/remote-env</td><td>Configure cloud environment</td></tr>
           <tr><td>/simplify</td><td>Detect over-engineering in changed code + auto-fix</td></tr>
@@ -90,6 +94,7 @@ const jsonLd = [
           <tr><td>Ctrl+R</td><td>Search command history</td></tr>
           <tr><td>Ctrl+L</td><td>Clear screen (keeps context)</td></tr>
           <tr><td>Ctrl+B</td><td>Background tasks</td></tr>
+          <tr><td>Ctrl+F</td><td>Kill all background agents (double press)</td></tr>
           <tr><td>Alt+T</td><td>Toggle thinking on/off</td></tr>
           <tr><td>Tab</td><td>Autocomplete</td></tr>
           <tr><td>Shift+Enter</td><td>New line</td></tr>
@@ -123,6 +128,7 @@ const jsonLd = [
           <tr><td><strong>LSP Tool</strong></td><td>v2.0.74</td><td>Code intelligence (go-to-def, refs)</td></tr>
           <tr><td><strong>/simplify</strong></td><td>v2.1.63</td><td>Architecture-level over-engineering detection + auto-fix</td></tr>
           <tr><td><strong>/batch</strong></td><td>v2.1.63</td><td>Spawns 5–30 agents in isolated worktrees, each opens a PR</td></tr>
+          <tr><td><strong>/loop</strong></td><td>v2.1.71</td><td>Recurring scheduler: run any prompt or command on an interval (5m, 10m...) while you work</td></tr>
         </table>
         <div class="tip"><strong>Pro tip</strong>: These aren't "secrets"--they're in the <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank">CHANGELOG</a>. Read it!</div>
       </div>
