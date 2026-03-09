@@ -170,8 +170,11 @@ const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide
   <section class="section" id="salaries">
     <div class="container">
       <h2 class="section-title">Salary Benchmarks</h2>
+      <div class="salary-disclaimer">
+        <strong>Indicative only — large variance applies.</strong> These are US base salaries (2025–2026). Europe runs 30–50% lower, other markets 40–60% lower. Total comp (equity, bonus, RSUs) can significantly exceed base, especially at startups and FAANG. Use as orientation, not negotiation anchors.
+      </div>
       <p class="section-subtitle">
-        US market figures · {ROLES_META.salaryMarket} · Source: FinalRoundAI, Alcor, RiseWorks AI Talent Report (2025)
+        Source: FinalRoundAI, Alcor, RiseWorks AI Talent Report (2025)
       </p>
 
       <div class="salary-table-wrapper">
@@ -207,7 +210,6 @@ const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide
           </tbody>
         </table>
       </div>
-      <p class="table-disclaimer">Non-US markets: Europe ~30–50% lower, other regions ~40–60% lower. Total comp (equity, bonus) can significantly exceed base at startups and FAANG.</p>
     </div>
   </section>
 
@@ -622,10 +624,20 @@ const guideBase = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide
   font-style: italic;
 }
 
-.table-disclaimer {
-  font-size: 0.8rem;
+.salary-disclaimer {
+  padding: var(--space-md) var(--space-lg);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.salary-disclaimer strong {
+  color: var(--text-primary);
 }
 
 /* ============================================
