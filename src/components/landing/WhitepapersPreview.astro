@@ -1,0 +1,250 @@
+---
+const whitepapers = [
+  { id: 'WP00', title: 'Introduction & Fondamentaux' },
+  { id: 'WP01', title: 'Prompts Efficaces' },
+  { id: 'WP02', title: 'Personnalisation & Configuration' },
+  { id: 'WP03', title: 'Sécurité en Production' },
+  { id: 'WP04', title: 'Architecture Interne' },
+  { id: 'WP05', title: 'Adoption en Équipe' },
+  { id: 'WP06', title: 'Privacy & Conformité' },
+  { id: 'WP07', title: 'Guide de Référence Condensé' },
+  { id: 'WP08', title: 'Agent Teams & Sub-Agents' },
+  { id: 'WP09', title: 'Apprendre avec l\'IA — UVAL' },
+  { id: 'WP10', title: 'Budget & ROI de l\'IA' },
+]
+---
+
+<section class="section wp-section" id="whitepapers">
+  <div class="container">
+    <h2 class="section-title">Whitepapers & Fiches Récap</h2>
+    <p class="section-subtitle">
+      10 whitepapers + 11e (budget IA) sur les thèmes stratégiques Claude Code — format PDF court et dense
+    </p>
+
+    <div class="wp-layout">
+      <!-- Whitepapers list -->
+      <div class="wp-list-wrapper">
+        <div class="wp-list-header">
+          <span class="wp-count-badge">11 whitepapers</span>
+          <span class="wp-lang-pill">FR + EN</span>
+        </div>
+        <ul class="wp-list">
+          {whitepapers.map((wp) => (
+            <li class="wp-item">
+              <span class="wp-id">{wp.id}</span>
+              <span class="wp-title">{wp.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Fiches récap -->
+      <div class="recap-card">
+        <div class="recap-header">
+          <span class="recap-badge">NEW</span>
+          <span class="recap-label">Fiches Récap</span>
+        </div>
+        <p class="recap-desc">
+          10 fiches récap A4 — 1 fiche par whitepaper, format synthèse ultra-dense. Imprimables, prêtes à l'emploi.
+        </p>
+        <ul class="recap-features">
+          <li>Format A4 1 page par fiche</li>
+          <li>Synthèse des concepts clés</li>
+          <li>Exemples et commandes intégrés</li>
+          <li>Palette Bold Guy (PDF haute qualité)</li>
+        </ul>
+        <a
+          href="https://www.florian.bruniaux.com/guides"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary wp-cta"
+        >
+          Télécharger les PDFs &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.wp-section {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+/* Whitepapers list */
+.wp-list-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xl);
+}
+
+.wp-list-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.wp-count-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.wp-lang-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+}
+
+.wp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wp-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-item:last-child {
+  border-bottom: none;
+}
+
+.wp-id {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 3.5rem;
+  flex-shrink: 0;
+}
+
+.wp-title {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Fiches récap card */
+.recap-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  border-left: 3px solid var(--accent);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.recap-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.recap-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recap-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.recap-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.recap-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.recap-features li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.recap-features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.1em;
+}
+
+.wp-cta {
+  align-self: flex-start;
+  margin-top: var(--space-sm);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wp-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .wp-list-wrapper,
+  .recap-card {
+    padding: var(--space-lg);
+  }
+
+  .wp-id {
+    min-width: 3rem;
+    font-size: 0.68rem;
+  }
+
+  .wp-title {
+    font-size: 0.85rem;
+  }
+}
+</style>
