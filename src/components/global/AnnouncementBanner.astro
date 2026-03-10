@@ -1,0 +1,136 @@
+---
+/**
+ * AnnouncementBanner
+ * Dismissible strip under the nav to surface major new content.
+ * Dismissed state stored in localStorage so it stays hidden on reload.
+ *
+ * Update `BANNER_ID` whenever you change the message — this resets
+ * the dismissed state for all visitors.
+ */
+
+// Increment this ID whenever the banner content changes
+const BANNER_ID = 'banner-roles-2026-03'
+---
+
+<div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
+  <div class="ann-inner">
+    <a href="/roles/" class="ann-content" aria-label="See AI Roles section">
+      <span class="ann-badge">NEW</span>
+      <span class="ann-text">
+        AI Roles section added: 13 roles mapped, personality quiz, salary benchmarks.
+        <span class="ann-cta">Find where you fit →</span>
+      </span>
+    </a>
+    <button
+      id="ann-close"
+      class="ann-close"
+      aria-label="Dismiss announcement"
+      type="button"
+    >×</button>
+  </div>
+</div>
+
+<script>
+  const BANNER_ID = document.getElementById('announcement-banner')?.dataset.bannerId ?? ''
+  const STORAGE_KEY = `ann_dismissed_${BANNER_ID}`
+  const banner = document.getElementById('announcement-banner')
+
+  // Hide immediately if already dismissed
+  if (localStorage.getItem(STORAGE_KEY) === '1') {
+    banner?.remove()
+  }
+
+  document.getElementById('ann-close')?.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, '1')
+    banner?.remove()
+  })
+</script>
+
+<style>
+.ann-banner {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-top: 2px solid var(--accent);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.ann-inner {
+  max-width: var(--max-width, 1200px);
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ann-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  flex: 1;
+  min-width: 0;
+}
+
+.ann-content:hover .ann-cta {
+  text-decoration: underline;
+}
+
+.ann-badge {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+}
+
+.ann-text {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ann-cta {
+  color: var(--accent);
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.ann-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem 0.375rem;
+  line-height: 1;
+  border-radius: 3px;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.ann-close:hover {
+  opacity: 1;
+  background: var(--bg-tertiary);
+}
+
+@media (max-width: 640px) {
+  .ann-text {
+    white-space: normal;
+  }
+
+  .ann-inner {
+    padding: 0.5rem 1rem;
+  }
+}
+</style>
