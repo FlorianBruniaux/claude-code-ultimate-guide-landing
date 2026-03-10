@@ -82,6 +82,20 @@ Le site a migré de HTML statique vers Astro 5. Les références à `index.html`
 - **`src/data/guide-search-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (162 entrées depuis reference.yaml)
 - **`src/data/guide-content-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (848 entrées H2 depuis src/content/docs/guide/)
 - **`src/components/global/SearchModal.astro`**: Modal Cmd+K
+- **`src/components/global/AnnouncementBanner.astro`**: Bandeau dismissible sous le nav (voir section dédiée ci-dessous)
+
+## Announcement Banner — Workflow de mise à jour
+
+Bandeau dismissible affiché sur toutes les pages, juste sous le header fixe (dans `<main>`, avant `<slot />`).
+
+**Quand mettre à jour :** nouvelle page majeure, section importante ajoutée, milestone notable.
+
+**Comment mettre à jour :**
+1. Modifier le texte dans `src/components/global/AnnouncementBanner.astro`
+2. Bumper `BANNER_ID` (ex: `banner-roles-2026-03` → `banner-guide-2026-04`) pour reset l'état dismissed chez tous les visiteurs
+3. `pnpm build` + commit + push
+
+**Contenu actuel (mars 2026) :** `banner-roles-2026-03` — AI Roles + guide en ligne sur /guide/
 
 ## Vérification avant modification
 
