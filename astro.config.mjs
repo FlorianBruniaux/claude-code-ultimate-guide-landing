@@ -57,10 +57,51 @@ export default defineConfig({
           autogenerate: { directory: 'guide/ultimate-guide' },
         },
         {
-          label: 'Core Guides',
-          // Dynamic items: only flat .md files in guide/ (no subdirectories, no index).
-          // autogenerate.exclude is unreliable for subdirectory groups in Starlight 0.37.x.
-          items: getCoreGuideItems(),
+          label: 'Core Reference',
+          items: [
+            { slug: 'guide/cheatsheet' },
+            { slug: 'guide/architecture' },
+            { slug: 'guide/methodologies' },
+            { slug: 'guide/visual-reference' },
+            { slug: 'guide/claude-code-releases' },
+            { slug: 'guide/known-issues' },
+          ],
+        },
+        {
+          label: 'Security',
+          items: [
+            { slug: 'guide/security-hardening' },
+            { slug: 'guide/sandbox-isolation' },
+            { slug: 'guide/sandbox-native' },
+            { slug: 'guide/production-safety' },
+            { slug: 'guide/data-privacy' },
+          ],
+        },
+        {
+          label: 'Ecosystem',
+          items: [
+            { slug: 'guide/ai-ecosystem' },
+            { slug: 'guide/mcp-servers-ecosystem' },
+            { slug: 'guide/third-party-tools' },
+            { slug: 'guide/remarkable-ai' },
+          ],
+        },
+        {
+          label: 'Roles & Adoption',
+          items: [
+            { slug: 'guide/ai-roles' },
+            { slug: 'guide/adoption-approaches' },
+            { slug: 'guide/learning-with-ai' },
+            { slug: 'guide/agent-evaluation' },
+          ],
+        },
+        {
+          label: 'Operations',
+          items: [
+            { slug: 'guide/devops-sre' },
+            { slug: 'guide/observability' },
+            { slug: 'guide/ai-traceability' },
+          ],
         },
         {
           label: 'Workflows',

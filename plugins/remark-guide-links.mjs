@@ -77,9 +77,21 @@ function resolveGuideLink(href, anchorFragment, anchorMap) {
     return { url: `${GUIDE_BASE}ultimate-guide/`, isExternal: false }
   }
 
-  // ── Relative guide files (same directory) ─────────────────────────
-  if (cleanHref.endsWith('.md') && !cleanHref.includes('/')) {
-    const slug = cleanHref.replace(/\.md$/, '')
+  // ── Relative guide files (same directory or in known subdirectories) ─────
+  // Handles: ./data-privacy.md, ./core/architecture.md, ../security/hardening.md
+  // All guide files are served flat at /guide/<slug>/
+  const KNOWN_GUIDE_SUBDIRS = new Set(['core', 'security', 'ecosystem', 'roles', 'ops'])
+  if (cleanHref.endsWith('.md') && !cleanHref.startsWith('ultimate-guide') && !cleanHref.startsWith('workflows/') && !cleanHref.startsWith('images/')) {
+    if (cleanHref.includes('/')) {
+      // Has a path component — only handle known guide subdirectories
+      const pathWithoutDots = cleanHref.replace(/^(\.\.\/)+/, '')
+      const firstDir = pathWithoutDots.split('/')[0]
+      if (!KNOWN_GUIDE_SUBDIRS.has(firstDir)) {
+        return null // unknown path, fall back to GitHub
+      }
+    }
+    const basename = cleanHref.split('/').pop()
+    const slug = basename.replace(/\.md$/, '')
     const fragment = anchorFragment || ''
     return { url: `${GUIDE_BASE}${slug}/${fragment}`, isExternal: false }
   }

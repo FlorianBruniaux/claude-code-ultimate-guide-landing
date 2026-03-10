@@ -19,28 +19,35 @@ const LOCAL_GUIDE_BASE = '/guide/'
 // Guide files that are accessible locally at /guide/SLUG/
 // Files in guide/ directory (not ultimate-guide, not workflows)
 const LOCAL_GUIDE_FILES = new Set([
-  'guide/adoption-approaches.md',
-  'guide/agent-evaluation.md',
-  'guide/ai-ecosystem.md',
-  'guide/ai-traceability.md',
-  'guide/architecture.md',
+  // Root-level guide files
   'guide/cheatsheet.md',
-  'guide/claude-code-releases.md',
   'guide/cowork.md',
-  'guide/data-privacy.md',
-  'guide/devops-sre.md',
-  'guide/known-issues.md',
-  'guide/learning-with-ai.md',
-  'guide/mcp-servers-ecosystem.md',
-  'guide/methodologies.md',
-  'guide/observability.md',
-  'guide/production-safety.md',
-  'guide/sandbox-isolation.md',
-  'guide/sandbox-native.md',
-  'guide/search-tools-cheatsheet.md',
-  'guide/security-hardening.md',
-  'guide/third-party-tools.md',
-  'guide/visual-reference.md',
+  // core/
+  'guide/core/architecture.md',
+  'guide/core/claude-code-releases.md',
+  'guide/core/known-issues.md',
+  'guide/core/methodologies.md',
+  'guide/core/visual-reference.md',
+  // security/
+  'guide/security/data-privacy.md',
+  'guide/security/production-safety.md',
+  'guide/security/sandbox-isolation.md',
+  'guide/security/sandbox-native.md',
+  'guide/security/security-hardening.md',
+  // ecosystem/
+  'guide/ecosystem/ai-ecosystem.md',
+  'guide/ecosystem/mcp-servers-ecosystem.md',
+  'guide/ecosystem/remarkable-ai.md',
+  'guide/ecosystem/third-party-tools.md',
+  // roles/
+  'guide/roles/adoption-approaches.md',
+  'guide/roles/agent-evaluation.md',
+  'guide/roles/ai-roles.md',
+  'guide/roles/learning-with-ai.md',
+  // ops/
+  'guide/ops/ai-traceability.md',
+  'guide/ops/devops-sre.md',
+  'guide/ops/observability.md',
 ])
 
 /**
@@ -151,10 +158,12 @@ function main() {
     const category = getCategory(cleanPath)
 
     // Use local /guide/ URL if the file is served locally, else fall back to GitHub
+    // NOTE: guide files in subdirs (guide/core/arch.md) are served flat at /guide/arch/
     let url
     if (LOCAL_GUIDE_FILES.has(cleanPath)) {
-      const slug = cleanPath.replace(/^guide\//, '').replace(/\.md$/, '')
-      url = `${LOCAL_GUIDE_BASE}${slug}/`
+      // Extract basename only — all guide files served flat at /guide/<slug>/
+      const basename = cleanPath.split('/').pop().replace(/\.md$/, '')
+      url = `${LOCAL_GUIDE_BASE}${basename}/`
     } else if (cleanPath.startsWith('guide/workflows/') && cleanPath.endsWith('.md')) {
       const slug = cleanPath.replace(/^guide\//, '').replace(/\.md$/, '')
       url = `${LOCAL_GUIDE_BASE}${slug}/`

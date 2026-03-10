@@ -207,17 +207,32 @@ const anchorMap = {}  // anchor slug → 'ultimate-guide/chapter-slug'
 // 1. Regular guide files (all .md except ultimate-guide, README, .bak)
 // -----------------------------------------------------------------------
 const SKIP_FILES = new Set(['ultimate-guide.md', 'ultimate-guide.md.bak', 'README.md'])
+// Subdirectories that contain guide files (served flat at /guide/slug/)
+const GUIDE_SUBDIRS = ['core', 'security', 'ecosystem', 'roles', 'ops']
 
-const guideFiles = readdirSync(GUIDE_DIR)
+// Collect guide files: root-level + known subdirectories (written flat to OUT_GUIDE)
+const guideFileSources = []
+// Root-level guide files
+readdirSync(GUIDE_DIR)
   .filter(f => f.endsWith('.md') && !SKIP_FILES.has(f) && !f.endsWith('.bak'))
   .sort()
+  .forEach(f => guideFileSources.push({ file: f, srcDir: GUIDE_DIR }))
+// Subdirectory guide files
+for (const sub of GUIDE_SUBDIRS) {
+  const subDir = resolve(GUIDE_DIR, sub)
+  if (!existsSync(subDir)) continue
+  readdirSync(subDir)
+    .filter(f => f.endsWith('.md') && !f.endsWith('.bak'))
+    .sort()
+    .forEach(f => guideFileSources.push({ file: f, srcDir: subDir }))
+}
 
 // Buffer guide file content — anchors will be rewritten after anchorMap is built (step 3)
 const guideFileBuffer = []
 
-for (let i = 0; i < guideFiles.length; i++) {
-  const file = guideFiles[i]
-  const src = resolve(GUIDE_DIR, file)
+for (let i = 0; i < guideFileSources.length; i++) {
+  const { file, srcDir } = guideFileSources[i]
+  const src = resolve(srcDir, file)
   let content = readFileSync(src, 'utf-8')
 
   // Extract existing title/desc for fallback
@@ -403,19 +418,69 @@ hero:
       link: /guide/ultimate-guide/01-quick-start/
       icon: right-arrow
       variant: primary
-    - text: View all guides
-      link: /guide/architecture/
+    - text: Cheatsheet
+      link: /guide/cheatsheet/
       icon: open-book
 ---
 
-| Section | Description |
-|---------|-------------|
-| [Ultimate Guide](/guide/ultimate-guide/) | 44K lines covering everything |
-| [Architecture](/guide/architecture/) | How Claude Code works internally |
-| [Workflows](/guide/workflows/agent-teams/) | Proven development workflows |
-| [MCP Ecosystem](/guide/mcp-servers-ecosystem/) | Available MCP servers guide |
-| [Security](/guide/security-hardening/) | Security hardening & best practices |
-| [AI Ecosystem](/guide/ai-ecosystem/) | Complementary tools & integrations |
+## Core Reference
+
+| Guide | Description | Time |
+|-------|-------------|------|
+| [Ultimate Guide](/guide/ultimate-guide/) | Complete reference — 22K+ lines covering everything | ~3 hours |
+| [Cheatsheet](/guide/cheatsheet/) | 1-page printable quick reference | 5 min |
+| [Architecture](/guide/architecture/) | How Claude Code works internally | 25 min |
+| [Methodologies](/guide/methodologies/) | 15 dev methodologies (TDD, SDD, BDD...) | 20 min |
+| [Visual Reference](/guide/visual-reference/) | ASCII diagrams for key concepts | 5 min |
+| [Claude Code Releases](/guide/claude-code-releases/) | Official release history (condensed) | 10 min |
+| [Known Issues](/guide/known-issues/) | Critical bugs tracker | 15 min |
+
+## Security
+
+| Guide | Description | Time |
+|-------|-------------|------|
+| [Security Hardening](/guide/security-hardening/) | Threats, MCP vetting, injection defense | 25 min |
+| [Sandbox Isolation](/guide/sandbox-isolation/) | Docker sandboxes, cloud alternatives | 10 min |
+| [Native Sandbox](/guide/sandbox-native/) | Native Claude Code sandbox | 10 min |
+| [Production Safety](/guide/production-safety/) | Guardrails, review gates, rollback | 15 min |
+| [Data Privacy](/guide/data-privacy/) | Data retention and privacy | 10 min |
+
+## Ecosystem
+
+| Guide | Description | Time |
+|-------|-------------|------|
+| [AI Ecosystem](/guide/ai-ecosystem/) | Perplexity, Gemini, Kimi, NotebookLM, TTS | 30 min |
+| [MCP Servers Ecosystem](/guide/mcp-servers-ecosystem/) | 8 validated community MCP servers | 25 min |
+| [Third-Party Tools](/guide/third-party-tools/) | GUIs, TUIs, config managers, token trackers | 15 min |
+| [Remarkable AI](/guide/remarkable-ai/) | Power-user patterns | 10 min |
+
+## Roles & Adoption
+
+| Guide | Description | Time |
+|-------|-------------|------|
+| [AI Roles](/guide/ai-roles/) | When to use CC vs Desktop vs API | 10 min |
+| [Adoption Approaches](/guide/adoption-approaches/) | Team rollout strategies | 15 min |
+| [Learning with AI](/guide/learning-with-ai/) | For juniors using AI without losing skills | 15 min |
+| [Agent Evaluation](/guide/agent-evaluation/) | Agent quality metrics & feedback loops | 20 min |
+
+## Operations
+
+| Guide | Description | Time |
+|-------|-------------|------|
+| [DevOps & SRE](/guide/devops-sre/) | FIRE framework for infra diagnosis | 30 min |
+| [Observability](/guide/observability/) | Session monitoring, cost tracking | 15 min |
+| [AI Traceability](/guide/ai-traceability/) | Attribution, disclosure policies, compliance | 20 min |
+
+## Workflows
+
+| Workflow | Description |
+|----------|-------------|
+| [TDD with Claude](/guide/workflows/tdd-with-claude/) | Test-Driven Development |
+| [Spec-First](/guide/workflows/spec-first/) | Specification-Driven Development |
+| [Agent Teams](/guide/workflows/agent-teams/) | Multi-agent orchestration |
+| [Plan-Driven](/guide/workflows/plan-driven/) | Using /plan mode effectively |
+| [Search Tools Mastery](/guide/workflows/search-tools-mastery/) | rg, grepai, Serena, ast-grep |
+| [All Workflows →](/guide/workflows/agent-teams/) | 19 total workflow guides |
 `
 writeFileSync(resolve(OUT_GUIDE, 'index.md'), guideIndexContent, 'utf-8')
 
