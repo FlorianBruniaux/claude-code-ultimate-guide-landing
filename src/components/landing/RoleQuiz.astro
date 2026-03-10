@@ -1,0 +1,486 @@
+---
+/**
+ * RoleQuiz — Personality quiz that recommends 1–3 AI roles
+ * 3 screens: intro → question → results
+ * All client logic in src/scripts/role-quiz.ts
+ */
+import { ROLE_QUIZ_QUESTIONS } from '../../data/role-quiz'
+
+const total = ROLE_QUIZ_QUESTIONS.length
+---
+
+<section class="section rq-section" id="role-quiz" aria-label="AI role personality quiz">
+  <div class="container">
+    <div class="rq-wrapper">
+
+      <!-- ── Screen 1: Intro (server-rendered, visible without JS) ── -->
+      <div id="rq-intro" class="rq-screen rq-active">
+        <div class="rq-intro-content">
+          <div class="rq-intro-badge">{total} questions · under 2 minutes · no sign-up</div>
+          <h2 class="rq-intro-title">Which AI Role Fits You?</h2>
+          <p class="rq-intro-sub">
+            Answer {total} short questions about how you work and think. We will match you to the roles that fit your mindset, not just your current skills.
+          </p>
+          <button id="rq-start" class="btn btn-primary rq-start-btn">Start Quiz</button>
+          <noscript>
+            <p class="rq-noscript">
+              JavaScript is required for the quiz.
+              <a href="#decision-matrix">Use the static decision matrix instead →</a>
+            </p>
+          </noscript>
+        </div>
+      </div>
+
+      <!-- ── Screen 2: Question ── -->
+      <div id="rq-question" class="rq-screen">
+        <div class="rq-progress-bar">
+          <div id="rq-progress-fill" class="rq-progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="rq-question-meta">
+          <span id="rq-question-num" class="rq-question-num">1 / {total}</span>
+          <span id="rq-dimension" class="rq-dimension">dimension</span>
+        </div>
+
+        <p id="rq-question-text" class="rq-question-text">Question text</p>
+
+        <div id="rq-options" class="rq-options" role="group" aria-label="Answer options">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="rq-nav">
+          <button id="rq-back" class="btn btn-secondary rq-nav-btn" disabled>Back</button>
+          <button id="rq-next" class="btn btn-primary rq-nav-btn" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- ── Screen 3: Results ── -->
+      <div id="rq-results" class="rq-screen">
+        <h2 class="rq-results-title">Your Profile</h2>
+
+        <!-- Primary match -->
+        <div class="rq-primary-wrap">
+          <p class="rq-section-label">Primary match</p>
+          <div id="rq-primary" class="rq-primary-card">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Secondary matches -->
+        <div class="rq-secondary-wrap">
+          <p class="rq-section-label">Also a good fit</p>
+          <div id="rq-secondary" class="rq-secondary-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Flat profile notice -->
+        <div id="rq-flat-notice" class="rq-flat-notice" style="display: none">
+          Your answers span multiple dimensions — you may have a generalist profile.
+          <a href="#ai-engineer">AI Engineer</a> is a strong versatile starting point.
+        </div>
+
+        <!-- Actions -->
+        <div class="rq-results-actions">
+          <button id="rq-retake" class="btn btn-secondary">Retake Quiz</button>
+          <button id="rq-see-roles" class="btn btn-primary">See Roles Below →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/role-quiz'
+</script>
+
+<style>
+/* ── Layout ─────────────────────────────────────────────────────────── */
+.rq-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.rq-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Screen visibility */
+.rq-screen {
+  display: none;
+}
+.rq-screen.rq-active {
+  display: block;
+}
+
+/* ── Screen 1: Intro ────────────────────────────────────────────────── */
+.rq-intro-content {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.rq-intro-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+}
+
+.rq-intro-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.rq-intro-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto var(--space-xl);
+}
+
+.rq-start-btn {
+  font-size: 1rem;
+  padding: 0.875rem 2.5rem;
+  min-width: 180px;
+}
+
+.rq-noscript {
+  margin-top: var(--space-md);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.rq-noscript a {
+  color: var(--accent);
+}
+
+/* ── Screen 2: Question ─────────────────────────────────────────────── */
+.rq-progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+
+.rq-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.rq-question-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.rq-question-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.rq-dimension {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  text-transform: capitalize;
+}
+
+.rq-question-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: var(--space-xl);
+}
+
+.rq-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+:global(.rq-option) {
+  width: 100%;
+  text-align: left;
+  padding: 0.875rem var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  min-height: 44px;
+}
+
+:global(.rq-option:hover) {
+  border-color: var(--accent);
+  background: var(--bg-tertiary);
+}
+
+:global(.rq-option--selected) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-elevated));
+  color: var(--text-primary);
+}
+
+.rq-nav {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-end;
+}
+
+.rq-nav-btn {
+  min-width: 100px;
+}
+
+/* ── Screen 3: Results ──────────────────────────────────────────────── */
+.rq-results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+}
+
+.rq-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-sm);
+}
+
+.rq-primary-wrap {
+  margin-bottom: var(--space-xl);
+}
+
+.rq-primary-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+:global(.rq-result-header) {
+  margin-bottom: var(--space-sm);
+}
+
+:global(.rq-match-badge) {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+:global(.rq-match-badge--strong) {
+  background: color-mix(in srgb, #22c55e 15%, transparent);
+  color: #22c55e;
+  border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+}
+
+:global(.rq-match-badge--good) {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+:global(.rq-match-badge--moderate) {
+  background: color-mix(in srgb, #6b7280 12%, transparent);
+  color: #6b7280;
+  border: 1px solid color-mix(in srgb, #6b7280 30%, transparent);
+}
+
+:global(.rq-result-title) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+:global(.rq-bar-wrap) {
+  margin-bottom: var(--space-md);
+}
+
+:global(.rq-bar) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 28px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: visible;
+  position: relative;
+}
+
+:global(.rq-bar::before) {
+  content: '';
+  display: block;
+  height: 100%;
+  width: var(--pct);
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  min-width: 4px;
+}
+
+:global(.rq-bar-label) {
+  position: absolute;
+  right: calc(100% - var(--pct) + 8px);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+:global(.rq-bar--secondary::before) {
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+:global(.rq-result-explanation) {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+:global(.rq-result-link) {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+:global(.rq-result-link:hover) {
+  text-decoration: underline;
+}
+
+:global(.rq-result-link--sm) {
+  font-size: 0.8rem;
+}
+
+.rq-secondary-wrap {
+  margin-bottom: var(--space-xl);
+}
+
+.rq-secondary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+:global(.rq-secondary-card) {
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+:global(.rq-secondary-header) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+:global(.rq-secondary-title) {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+:global(.rq-secondary-pct) {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.rq-flat-notice {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+.rq-flat-notice a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.rq-results-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .rq-intro-title {
+    font-size: 1.4rem;
+  }
+
+  .rq-question-text {
+    font-size: 1.05rem;
+  }
+
+  :global(.rq-option) {
+    font-size: 0.9rem;
+    padding: 0.75rem var(--space-md);
+  }
+
+  .rq-nav {
+    justify-content: stretch;
+  }
+
+  .rq-nav-btn {
+    flex: 1;
+  }
+
+  .rq-results-actions {
+    flex-direction: column;
+  }
+
+  .rq-results-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
+import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 
 const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
 const description = 'Map of 13 AI engineering roles — Prompt Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
@@ -40,11 +41,14 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
       <h1>The New AI Engineering Landscape</h1>
       <p class="tagline">The AI wave didn't just create new tools — it created new jobs that didn't exist 3 years ago. Find where you fit.</p>
       <div class="cta-buttons">
-        <a href="#decision-matrix" class="btn btn-primary">Find My Role →</a>
+        <a href="#role-quiz" class="btn btn-primary">Find My Role →</a>
         <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
       </div>
     </div>
   </header>
+
+  <!-- Role Quiz -->
+  <RoleQuiz />
 
   <!-- Landscape overview -->
   <section class="section section--alt">
@@ -89,7 +93,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         {ROLES.map((role) => {
           const statusConf = STATUS_CONFIG[role.status]
           return (
-            <div class:list={['role-card', role.highlight && 'role-card--highlight']}>
+            <div id={role.id} class:list={['role-card', role.highlight && 'role-card--highlight']}>
               <div class="role-card-header">
                 <h3 class="role-card-title">{role.title}</h3>
                 <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>

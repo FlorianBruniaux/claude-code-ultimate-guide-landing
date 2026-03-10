@@ -54,6 +54,14 @@ const pageEntries: SearchEntry[] = [
     source: 'landing',
   },
   {
+    id: 'role-quiz',
+    title: 'AI Role Personality Quiz',
+    keywords: 'quiz role career personality test which ai role career path match fit',
+    category: 'Tools',
+    url: '/roles/#role-quiz',
+    source: 'landing',
+  },
+  {
     id: 'page-compare',
     title: 'Compare AI Coding Tools',
     keywords: 'compare comparison cursor copilot windsurf cline tools ai coding assistant',
