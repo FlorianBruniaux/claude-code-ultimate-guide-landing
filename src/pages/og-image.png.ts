@@ -42,6 +42,7 @@ export const GET: APIRoute = async () => {
   )
   const fontData: ArrayBuffer = readFileSync(fontPath).buffer as ArrayBuffer
 
+
   const svg = await satori(
     {
       type: 'div',
@@ -150,6 +151,7 @@ export const GET: APIRoute = async () => {
               style: {
                 display: 'flex',
                 gap: '16px',
+                marginBottom: '40px',
               },
               children: stats.map(({ value, label }) => ({
                 type: 'div',
@@ -193,6 +195,45 @@ export const GET: APIRoute = async () => {
                   ],
                 },
               })),
+            },
+          },
+          // Author footer — bottom left
+          {
+            type: 'div',
+            props: {
+              style: {
+                position: 'absolute',
+                bottom: '36px',
+                left: '48px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+              },
+              children: [
+                {
+                  type: 'span',
+                  props: {
+                    style: {
+                      fontSize: '28px',
+                      fontWeight: 800,
+                      color: '#c0522a',
+                      letterSpacing: '-0.02em',
+                    },
+                    children: 'FB.',
+                  },
+                },
+                {
+                  type: 'span',
+                  props: {
+                    style: {
+                      fontSize: '16px',
+                      color: '#8b949e',
+                      fontWeight: 400,
+                    },
+                    children: 'florian.bruniaux.com',
+                  },
+                },
+              ],
             },
           },
         ],
