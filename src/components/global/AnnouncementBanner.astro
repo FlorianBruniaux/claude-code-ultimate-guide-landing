@@ -9,18 +9,19 @@
  */
 
 // Increment this ID whenever the banner content changes
-const BANNER_ID = 'banner-roles-guide-2026-03'
+const BANNER_ID = 'banner-roles-guide-2026-03-v2'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
   <div class="ann-inner">
-    <a href="/roles/" class="ann-content" aria-label="See what's new">
+    <div class="ann-content">
       <span class="ann-badge">NEW</span>
       <span class="ann-text">
-        AI Roles section (13 roles, personality quiz) + full guide now readable online at
-        <span class="ann-cta">cc.bruniaux.com/guide/ →</span>
+        <a href="/roles/" class="ann-link">AI Roles — 13 roles + personality quiz →</a>
+        <span class="ann-sep" aria-hidden="true">·</span>
+        <a href="/guide/" class="ann-link">Full guide now readable online →</a>
       </span>
-    </a>
+    </div>
     <button
       id="ann-close"
       class="ann-close"
@@ -69,14 +70,8 @@ const BANNER_ID = 'banner-roles-guide-2026-03'
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none;
-  color: var(--text-secondary);
   flex: 1;
   min-width: 0;
-}
-
-.ann-content:hover .ann-cta {
-  text-decoration: underline;
 }
 
 .ann-badge {
@@ -97,12 +92,27 @@ const BANNER_ID = 'banner-roles-guide-2026-03'
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.ann-cta {
+.ann-link {
   color: var(--accent);
   font-weight: 500;
-  margin-left: 0.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ann-link:hover {
+  text-decoration: underline;
+}
+
+.ann-sep {
+  color: var(--border);
+  flex-shrink: 0;
+  user-select: none;
 }
 
 .ann-close {
