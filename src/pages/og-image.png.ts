@@ -27,7 +27,7 @@ function countQuestions(): number {
 export const GET: APIRoute = async () => {
   const quizCount = countQuestions()
 
-  // Stats — templates kept in sync with HeroBanner.astro manually
+  // Stats (templates kept in sync with HeroBanner.astro manually)
   const stats = [
     { value: `${quizCount}`, label: 'QUIZ QUESTIONS' },
     { value: '229+', label: 'TEMPLATES' },
@@ -140,7 +140,7 @@ export const GET: APIRoute = async () => {
                 marginBottom: '40px',
                 textAlign: 'center',
               },
-              children: 'Beginner to Power User — The most comprehensive resource for Claude Code',
+              children: 'Beginner to Power User, the most comprehensive resource for Claude Code',
             },
           },
           // Stats row
