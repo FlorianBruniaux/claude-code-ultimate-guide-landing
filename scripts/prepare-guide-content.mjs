@@ -444,6 +444,7 @@ hero:
 | [Native Sandbox](/guide/sandbox-native/) | Native Claude Code sandbox | 10 min |
 | [Production Safety](/guide/production-safety/) | Guardrails, review gates, rollback | 15 min |
 | [Data Privacy](/guide/data-privacy/) | Data retention and privacy | 10 min |
+| [Enterprise Governance](/guide/enterprise-governance/) | **Org-level governance**: usage charters, MCP approval workflow, guardrail tiers (Starter/Standard/Strict/Regulated), compliance | 25 min |
 
 ## Ecosystem
 
