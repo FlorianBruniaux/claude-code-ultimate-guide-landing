@@ -16,6 +16,21 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.72',
+    date: 'Mar 9, 2026',
+    highlights: [
+      '⭐ <strong>Agent model override restored</strong> — <code>model</code> parameter back on Agent tool for per-invocation overrides',
+      '⭐ <strong>SDK 12x token savings</strong> — fixed <code>query()</code> prompt cache invalidation (up to 12× input token cost reduction)',
+      'CLAUDE.md HTML comments now hidden from Claude when auto-injected; <code>/plan</code> accepts optional description',
+      'Simplified effort levels: low/medium/high (removed max), new symbols ○ ◐ ●; <code>ExitWorktree</code> tool added',
+      '<code>CLAUDE_CODE_DISABLE_CRON</code> env var; <code>lsof</code>, <code>fd</code>, <code>pgrep</code> added to bash auto-approval allowlist',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Agent model override + 12x SDK token savings',
+  },
+  {
     version: 'v2.1.71',
     date: 'Mar 6, 2026',
     highlights: [
@@ -25,7 +40,6 @@ export const releases: Release[] = [
       'Fixed stdin freeze in long sessions; 5–8s startup freeze with voice mode; forked sessions sharing plan files',
       'Improved plugin MCP server deduplication; <code>/plugin uninstall</code> now writes to <code>settings.local.json</code>',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ /loop + Cron scheduling',
