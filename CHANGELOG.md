@@ -4,6 +4,19 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.7.0] - 2026-03-10
+
+### Added
+- **Section Cheat Sheets (`/cheatsheets/`)** — 57 fiches recap A4 lisibles en ligne
+  - Script de conversion `scripts/convert-recap-cards.mjs` : QMD → MD content collection + copie PDFs
+  - Collection Astro `cheatsheets` avec schema Zod (`cardNumber`, `category`, `difficulty`, `order`)
+  - Page index `/cheatsheets/` : stats, tabs de filtrage (All / Technique / Méthodologie / Conception), grille responsive, badges colorés par série (T=orange, M=bleu, C=vert), pills de difficulté, download PDF inline
+  - 57 routes dynamiques `/cheatsheets/[slug]/` : rendu Markdown, navigation prev/next dans la série, bouton download PDF, breadcrumb
+  - Navigation header "Cheat Sheet" → "Cheat Sheets" pointant vers `/cheatsheets/` (ancienne page `/cheatsheet/` conservée et liée depuis l'index)
+  - Footer mis à jour en cohérence
+  - Entrée `page-cheatsheets` ajoutée au search index global (Cmd+K)
+  - Script câblé dans `pnpm build:cheatsheets` et dans le build principal
+
 ## [2.6.1] - 2026-02-21
 
 ### Fixed

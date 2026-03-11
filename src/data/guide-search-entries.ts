@@ -38,7 +38,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-session-limits",
     "title": "Session Limits",
-    "keywords": "session limits guide architecture",
+    "keywords": "session limits guide core architecture",
     "category": "Guide",
     "url": "/guide/architecture/",
     "source": "guide"
@@ -46,7 +46,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-scope-success-rates",
     "title": "Scope Success Rates",
-    "keywords": "scope success rates guide adoption approaches",
+    "keywords": "scope success rates guide roles adoption approaches",
     "category": "Guide",
     "url": "/guide/adoption-approaches/",
     "source": "guide"
@@ -54,7 +54,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-claude-code-releases",
     "title": "Claude Code Releases",
-    "keywords": "claude code releases guide claude code releases",
+    "keywords": "claude code releases guide core claude code releases",
     "category": "Guide",
     "url": "/guide/claude-code-releases/",
     "source": "guide"
@@ -220,6 +220,150 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-context-engineering-guide",
+    "title": "Context Engineering Guide",
+    "keywords": "context engineering guide guide core context engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-what-is",
+    "title": "Context Engineering What Is",
+    "keywords": "context engineering what is guide core context engineering md#1 what context engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#1-what-is-context-engineering",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-budget",
+    "title": "Context Engineering Budget",
+    "keywords": "context engineering budget guide core context engineering md#2 the context budget",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#2-the-context-budget",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-hierarchy",
+    "title": "Context Engineering Hierarchy",
+    "keywords": "context engineering hierarchy guide core context engineering md#3 configuration hierarchy",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#3-configuration-hierarchy",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-modular",
+    "title": "Context Engineering Modular",
+    "keywords": "context engineering modular guide core context engineering md#4 modular architecture",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#4-modular-architecture",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-team",
+    "title": "Context Engineering Team",
+    "keywords": "context engineering team guide core context engineering md#5 team assembly",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#5-team-assembly",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-lifecycle",
+    "title": "Context Engineering Lifecycle",
+    "keywords": "context engineering lifecycle guide core context engineering md#6 context lifecycle",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#6-context-lifecycle",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-quality",
+    "title": "Context Engineering Quality",
+    "keywords": "context engineering quality guide core context engineering md#7 quality measurement",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#7-quality-measurement",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-reduction",
+    "title": "Context Engineering Reduction",
+    "keywords": "context engineering reduction guide core context engineering md#8 context reduction techniques",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#8-context-reduction-techniques",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-audit-tool",
+    "title": "Context Engineering Audit Tool",
+    "keywords": "context engineering audit tool tools context audit prompt",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/context-audit-prompt.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-examples",
+    "title": "Context Engineering Examples",
+    "keywords": "context engineering examples examples context engineering",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-assembler",
+    "title": "Context Engineering Assembler",
+    "keywords": "context engineering assembler examples context engineering assembler",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/assembler.ts",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-profile-template",
+    "title": "Context Engineering Profile Template",
+    "keywords": "context engineering profile template examples context engineering profile template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/profile-template.yaml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-skeleton",
+    "title": "Context Engineering Skeleton",
+    "keywords": "context engineering skeleton examples context engineering skeleton template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/skeleton-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-canary",
+    "title": "Context Engineering Canary",
+    "keywords": "context engineering canary examples context engineering canary check",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/canary-check.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-ci-drift",
+    "title": "Context Engineering CI Drift",
+    "keywords": "context engineering ci drift examples context engineering drift check yml",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/ci-drift-check.yml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-budget-calc",
+    "title": "Context Engineering Budget Calc",
+    "keywords": "context engineering budget calc examples context engineering context budget calculator",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/context-budget-calculator.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-eval-questions",
+    "title": "Context Engineering Eval Questions",
+    "keywords": "context engineering eval questions examples context engineering eval questions",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/eval-questions.yaml",
+    "source": "guide"
+  },
+  {
     "id": "guide-team-ai-instructions-section",
     "title": "Team AI Instructions Section",
     "keywords": "team ai instructions section guide ultimate guide md#35 team configuration scale",
@@ -262,7 +406,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-known-issues",
     "title": "Known Issues",
-    "keywords": "known issues guide known issues",
+    "keywords": "known issues guide core known issues",
     "category": "Guide",
     "url": "/guide/known-issues/",
     "source": "guide"
@@ -278,7 +422,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-session-search",
     "title": "Session Search",
-    "keywords": "session search guide observability",
+    "keywords": "session search guide ops observability",
     "category": "Guide",
     "url": "/guide/observability/",
     "source": "guide"
@@ -334,7 +478,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-rtk-third-party",
     "title": "RTK Third Party",
-    "keywords": "rtk third party guide third party tools",
+    "keywords": "rtk third party guide ecosystem third party tools",
     "category": "Guide",
     "url": "/guide/third-party-tools/",
     "source": "guide"
@@ -382,7 +526,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
-    "keywords": "antigravity guide guide ecosystem",
+    "keywords": "antigravity guide guide ecosystem ecosystem",
     "category": "Guide",
     "url": "/guide/ai-ecosystem/",
     "source": "guide"
@@ -502,73 +646,73 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-remarkable-ai-guide",
     "title": "Remarkable AI Guide",
-    "keywords": "remarkable ai guide guide remarkable",
+    "keywords": "remarkable ai guide guide ecosystem remarkable",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-mcp-server",
     "title": "Remarkable MCP Server",
-    "keywords": "remarkable mcp server guide remarkable md#1 remarkable mcp game changer",
+    "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp game changer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#1-remarkable-mcp--le-game-changer",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#1-remarkable-mcp--le-game-changer",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-ghostwriter",
     "title": "Remarkable Ghostwriter",
-    "keywords": "remarkable ghostwriter guide remarkable md#2 ghostwriter interface vision llm",
+    "keywords": "remarkable ghostwriter guide ecosystem remarkable md#2 ghostwriter interface vision llm",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#2-ghostwriter--interface-vision-llm",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#2-ghostwriter--interface-vision-llm",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-obsidian-sync",
     "title": "Remarkable Obsidian Sync",
-    "keywords": "remarkable obsidian sync guide remarkable md#3 sync remarkable obsidian",
+    "keywords": "remarkable obsidian sync guide ecosystem remarkable md#3 sync remarkable obsidian",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#3-sync-remarkable--obsidian",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#3-sync-remarkable--obsidian",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-ocr-pipeline",
     "title": "Remarkable Ocr Pipeline",
-    "keywords": "remarkable ocr pipeline guide remarkable md#4 ocr pipeline custom",
+    "keywords": "remarkable ocr pipeline guide ecosystem remarkable md#4 ocr pipeline custom",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#4-ocr--ai-pipeline-custom",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#4-ocr--ai-pipeline-custom",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-ssh-tools",
     "title": "Remarkable Ssh Tools",
-    "keywords": "remarkable ssh tools guide remarkable md#5 accès ssh outils communautaires",
+    "keywords": "remarkable ssh tools guide ecosystem remarkable md#5 accès ssh outils communautaires",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#5-accès-ssh-et-outils-communautaires",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#5-accès-ssh-et-outils-communautaires",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-meeting-workflow",
     "title": "Remarkable Meeting Workflow",
-    "keywords": "remarkable meeting workflow guide remarkable md#10 meeting notes summary",
+    "keywords": "remarkable meeting workflow guide ecosystem remarkable md#10 meeting notes summary",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#10-meeting-notes--ai-summary",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#10-meeting-notes--ai-summary",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-workflows-to-build",
     "title": "Remarkable Workflows To Build",
-    "keywords": "remarkable workflows to build guide remarkable md#14 workflows augmentés construire",
+    "keywords": "remarkable workflows to build guide ecosystem remarkable md#14 workflows augmentés construire",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#14-workflows-ai-augmentés-à-construire",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#14-workflows-ai-augmentés-à-construire",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-getting-started",
     "title": "Remarkable Getting Started",
-    "keywords": "remarkable getting started guide remarkable md#15 par commencer",
+    "keywords": "remarkable getting started guide ecosystem remarkable md#15 par commencer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/remarkable-ai.md#15-par-où-commencer",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#15-par-où-commencer",
     "source": "guide"
   },
   {
@@ -590,7 +734,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
-    "keywords": "learning quick check guide learning with",
+    "keywords": "learning quick check guide roles learning with",
     "category": "Guide",
     "url": "/guide/learning-with-ai/",
     "source": "guide"
@@ -646,7 +790,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-traceability-guide",
     "title": "AI Traceability Guide",
-    "keywords": "ai traceability guide guide traceability",
+    "keywords": "ai traceability guide guide ops traceability",
     "category": "Guide",
     "url": "/guide/ai-traceability/",
     "source": "guide"
@@ -726,7 +870,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-isolation-guide",
     "title": "Sandbox Isolation Guide",
-    "keywords": "sandbox isolation guide guide sandbox isolation",
+    "keywords": "sandbox isolation guide guide security sandbox isolation",
     "category": "Guide",
     "url": "/guide/sandbox-isolation/",
     "source": "guide"
@@ -734,7 +878,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-native-guide",
     "title": "Sandbox Native Guide",
-    "keywords": "sandbox native guide guide sandbox native",
+    "keywords": "sandbox native guide guide security sandbox native",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -788,6 +932,174 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-enterprise-governance-guide",
+    "title": "Enterprise Governance Guide",
+    "keywords": "enterprise governance guide guide security enterprise governance",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-local-vs-shared",
+    "title": "Enterprise Governance Local Vs Shared",
+    "keywords": "enterprise governance local vs shared guide security enterprise governance md#1 local shared the governance split",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#1-local-vs-shared-the-governance-split",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-charter",
+    "title": "Enterprise Governance Charter",
+    "keywords": "enterprise governance charter guide security enterprise governance md#2 usage charter",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#2-ai-usage-charter",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-charter-template",
+    "title": "Enterprise Governance Charter Template",
+    "keywords": "enterprise governance charter template examples scripts usage charter template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/ai-usage-charter-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-mcp-workflow",
+    "title": "Enterprise Governance MCP Workflow",
+    "keywords": "enterprise governance mcp workflow guide security enterprise governance md#3 mcp governance workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#3-mcp-governance-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-mcp-registry",
+    "title": "Enterprise Governance MCP Registry",
+    "keywords": "enterprise governance mcp registry guide security enterprise governance md#32 mcp registry format",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#32-mcp-registry-format",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-mcp-registry-template",
+    "title": "Enterprise Governance MCP Registry Template",
+    "keywords": "enterprise governance mcp registry template examples scripts mcp registry template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/mcp-registry-template.yaml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-guardrail-tiers",
+    "title": "Enterprise Governance Guardrail Tiers",
+    "keywords": "enterprise governance guardrail tiers guide security enterprise governance md#4 guardrail tiers",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#4-guardrail-tiers",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-tier-starter",
+    "title": "Enterprise Governance Tier Starter",
+    "keywords": "enterprise governance tier starter guide security enterprise governance md#tier starter",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-1-starter",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-tier-standard",
+    "title": "Enterprise Governance Tier Standard",
+    "keywords": "enterprise governance tier standard guide security enterprise governance md#tier standard",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-2-standard",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-tier-strict",
+    "title": "Enterprise Governance Tier Strict",
+    "keywords": "enterprise governance tier strict guide security enterprise governance md#tier strict",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-3-strict",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-tier-regulated",
+    "title": "Enterprise Governance Tier Regulated",
+    "keywords": "enterprise governance tier regulated guide security enterprise governance md#tier regulated",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-4-regulated",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-policy-at-scale",
+    "title": "Enterprise Governance Policy At Scale",
+    "keywords": "enterprise governance policy at scale guide security enterprise governance md#5 policy enforcement scale",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#5-policy-enforcement-at-scale",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-onboarding-checklist",
+    "title": "Enterprise Governance Onboarding Checklist",
+    "keywords": "enterprise governance onboarding checklist guide security enterprise governance md#52 onboarding checklist",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#52-onboarding-checklist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-compliance-check",
+    "title": "Enterprise Governance Compliance Check",
+    "keywords": "enterprise governance compliance check guide security enterprise governance md#53 compliance checking",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#53-compliance-checking",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-cicd-gates",
+    "title": "Enterprise Governance Cicd Gates",
+    "keywords": "enterprise governance cicd gates guide security enterprise governance md#55 cicd gates",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#55-cicd-gates",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-audit",
+    "title": "Enterprise Governance Audit",
+    "keywords": "enterprise governance audit guide security enterprise governance md#6 audit compliance governance structure",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#6-audit-compliance--governance-structure",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-soc2-iso27001",
+    "title": "Enterprise Governance Soc2 Iso27001",
+    "keywords": "enterprise governance soc2 iso27001 guide security enterprise governance md#61 what soc2 and iso27001 auditors actually ask",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#61-what-soc2-and-iso27001-auditors-actually-ask",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-audit-trail",
+    "title": "Enterprise Governance Audit Trail",
+    "keywords": "enterprise governance audit trail guide security enterprise governance md#62 audit trail setup",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#62-audit-trail-setup",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-hook",
+    "title": "Enterprise Governance Hook",
+    "keywords": "enterprise governance hook examples hooks bash governance enforcement hook",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/governance-enforcement-hook.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-enterprise-governance-scope",
+    "title": "Enterprise Governance Scope",
+    "keywords": "enterprise governance scope org level policy (vs security hardening md = individual dev security)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Org-level policy (vs security-hardening.md = individual dev security)",
+    "source": "guide"
+  },
+  {
     "id": "guide-third-party-straude-eval",
     "title": "Third Party Straude Eval",
     "keywords": "third party straude eval docs resource evaluations straude evaluation",
@@ -830,7 +1142,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-visual-reference",
     "title": "Visual Reference",
-    "keywords": "visual reference guide visual reference",
+    "keywords": "visual reference guide core visual reference",
     "category": "Guide",
     "url": "/guide/visual-reference/",
     "source": "guide"
@@ -974,7 +1286,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-chain-of-verification",
     "title": "Chain Of Verification",
-    "keywords": "chain of verification guide methodologies",
+    "keywords": "chain of verification guide core methodologies",
     "category": "Guide",
     "url": "/guide/methodologies/",
     "source": "guide"
@@ -1126,7 +1438,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-verification-paradox",
     "title": "Verification Paradox",
-    "keywords": "verification paradox guide production safety",
+    "keywords": "verification paradox guide security production safety",
     "category": "Guide",
     "url": "/guide/production-safety/",
     "source": "guide"
@@ -1134,7 +1446,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-devops-sre-guide",
     "title": "Devops Sre Guide",
-    "keywords": "devops sre guide guide devops sre",
+    "keywords": "devops sre guide guide ops devops sre",
     "category": "Guide",
     "url": "/guide/devops-sre/",
     "source": "guide"
@@ -1526,7 +1838,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-security-hardening",
     "title": "Security Hardening",
-    "keywords": "security hardening guide security hardening",
+    "keywords": "security hardening guide security security hardening",
     "category": "Guide",
     "url": "/guide/security-hardening/",
     "source": "guide"
@@ -1590,7 +1902,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-git-mcp-guide",
     "title": "Git MCP Guide",
-    "keywords": "git mcp guide guide mcp servers ecosystem",
+    "keywords": "git mcp guide guide ecosystem mcp servers ecosystem",
     "category": "Guide",
     "url": "/guide/mcp-servers-ecosystem/",
     "source": "guide"

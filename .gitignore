@@ -34,3 +34,6 @@ questions.json.original
 src/content/docs/guide/
 public/guide/images/
 src/data/guide-anchor-map.json
+
+# Vitals provenance data
+.vitals/
