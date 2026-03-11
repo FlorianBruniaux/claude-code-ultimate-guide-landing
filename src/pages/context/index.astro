@@ -1,0 +1,1561 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Context Engineering Configurator | Claude Code Guide'
+const description = 'Generate a personalized CLAUDE.md starter kit in 3 steps. Answer questions about your team size, current setup, and tech stack — get a ready-to-use context file plus a maturity level assessment.'
+
+const jsonLd = [
+  {
+    "@type": "WebApplication",
+    "name": "Context Engineering Configurator",
+    "description": "Multi-step configurator that generates a personalized CLAUDE.md starter kit based on team size, current context setup, and tech stack",
+    "url": "https://cc.bruniaux.com/context/",
+    "applicationCategory": "DeveloperApplication",
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "inLanguage": "en",
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="cc-badge-row">
+        <span class="cc-hero-badge">3 steps · under 2 minutes · no sign-up</span>
+        <span class="cc-hero-badge cc-hero-badge--secondary">Generates CLAUDE.md + maturity score</span>
+      </div>
+      <h1>Build Your AI Context System</h1>
+      <p class="tagline">Answer 3 short questions and get a personalized CLAUDE.md starter kit, a maturity level assessment, and concrete next steps.</p>
+      <div class="cta-buttons">
+        <a href="#cc-configurator" class="btn btn-primary">Start Configurator →</a>
+        <a href="https://cc.bruniaux.com/guide/context-engineering/" class="btn btn-secondary">Read the Guide</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Configurator -->
+  <section class="section cc-section" id="cc-configurator" aria-label="Context engineering configurator">
+    <div class="container">
+      <div class="cc-wrapper">
+
+        <!-- Screen: Intro -->
+        <div id="cc-intro" class="cc-screen cc-active">
+          <div class="cc-intro-content">
+            <div class="cc-intro-badge">Configure Your Context</div>
+            <h2 class="cc-intro-title">Generate Your Starter Kit</h2>
+            <p class="cc-intro-sub">
+              Tell us about your team size, what you already have set up, and your tech stack. We will generate a ready-to-use CLAUDE.md and score your context maturity level.
+            </p>
+            <div class="cc-intro-features">
+              <div class="cc-intro-feature">
+                <span class="cc-feature-icon">📄</span>
+                <span>Personalized CLAUDE.md</span>
+              </div>
+              <div class="cc-intro-feature">
+                <span class="cc-feature-icon">📊</span>
+                <span>Maturity level 1–5</span>
+              </div>
+              <div class="cc-intro-feature">
+                <span class="cc-feature-icon">🎯</span>
+                <span>Concrete next steps</span>
+              </div>
+              <div class="cc-intro-feature">
+                <span class="cc-feature-icon">👥</span>
+                <span>Team profile template</span>
+              </div>
+            </div>
+            <button id="cc-start" class="btn btn-primary cc-start-btn">Start Configurator →</button>
+            <noscript>
+              <p class="cc-noscript">JavaScript is required for the configurator. <a href="https://cc.bruniaux.com/guide/context-engineering/">Read the Context Engineering guide instead →</a></p>
+            </noscript>
+          </div>
+        </div>
+
+        <!-- Screen: Step 1 — Profile -->
+        <div id="cc-step-profile" class="cc-screen">
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill" style="width: 33%"></div>
+          </div>
+          <div class="cc-step-meta">
+            <span class="cc-step-num">Step 1 of 3</span>
+            <span class="cc-step-label">Your Profile</span>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">Team size</h3>
+            <p class="cc-field-sub">How many developers work on this project?</p>
+            <div class="cc-options-grid" id="cc-team-options" role="group" aria-label="Team size">
+              <button class="cc-option" data-group="teamSize" data-value="solo">
+                <span class="cc-option-label">Solo</span>
+                <span class="cc-option-desc">Just me</span>
+              </button>
+              <button class="cc-option" data-group="teamSize" data-value="small">
+                <span class="cc-option-label">2-5 people</span>
+                <span class="cc-option-desc">Small team</span>
+              </button>
+              <button class="cc-option" data-group="teamSize" data-value="medium">
+                <span class="cc-option-label">6-20 people</span>
+                <span class="cc-option-desc">Medium team</span>
+              </button>
+              <button class="cc-option" data-group="teamSize" data-value="large">
+                <span class="cc-option-label">20+</span>
+                <span class="cc-option-desc">Large team</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">AI tools you use <span class="cc-optional">(select all that apply)</span></h3>
+            <p class="cc-field-sub">Which AI coding tools are active in your workflow?</p>
+            <div class="cc-options-grid cc-options-grid--multi" id="cc-tools-options" role="group" aria-label="AI tools">
+              <button class="cc-option cc-option--check" data-group="aiTools" data-value="claude-code">
+                <span class="cc-option-label">Claude Code</span>
+                <span class="cc-option-desc">CLI tool (CLAUDE.md)</span>
+              </button>
+              <button class="cc-option cc-option--check" data-group="aiTools" data-value="cursor">
+                <span class="cc-option-label">Cursor</span>
+                <span class="cc-option-desc">.cursorrules</span>
+              </button>
+              <button class="cc-option cc-option--check" data-group="aiTools" data-value="copilot">
+                <span class="cc-option-label">GitHub Copilot</span>
+                <span class="cc-option-desc">.github/copilot-instructions.md</span>
+              </button>
+              <button class="cc-option cc-option--check" data-group="aiTools" data-value="windsurf">
+                <span class="cc-option-label">Windsurf</span>
+                <span class="cc-option-desc">.windsurfrules</span>
+              </button>
+              <button class="cc-option cc-option--check" data-group="aiTools" data-value="codex">
+                <span class="cc-option-label">OpenAI Codex</span>
+                <span class="cc-option-desc">AGENTS.md</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-nav">
+            <div></div>
+            <button id="cc-next-profile" class="btn btn-primary cc-nav-btn" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Screen: Step 2 — Current Setup -->
+        <div id="cc-step-current" class="cc-screen">
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill" style="width: 66%"></div>
+          </div>
+          <div class="cc-step-meta">
+            <span class="cc-step-num">Step 2 of 3</span>
+            <span class="cc-step-label">Current Setup</span>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">Your CLAUDE.md status</h3>
+            <p class="cc-field-sub">How developed is your current context file?</p>
+            <div class="cc-options-grid" id="cc-claude-md-options" role="group" aria-label="CLAUDE.md status">
+              <button class="cc-option" data-group="claudeMdStatus" data-value="none">
+                <span class="cc-option-label">No CLAUDE.md yet</span>
+                <span class="cc-option-desc">Starting from scratch</span>
+              </button>
+              <button class="cc-option" data-group="claudeMdStatus" data-value="small">
+                <span class="cc-option-label">Under 100 lines</span>
+                <span class="cc-option-desc">Basic setup</span>
+              </button>
+              <button class="cc-option" data-group="claudeMdStatus" data-value="medium">
+                <span class="cc-option-label">100-500 lines</span>
+                <span class="cc-option-desc">Established setup</span>
+              </button>
+              <button class="cc-option" data-group="claudeMdStatus" data-value="large">
+                <span class="cc-option-label">500+ lines</span>
+                <span class="cc-option-desc">Comprehensive setup</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">Separate rules files</h3>
+            <p class="cc-field-sub">How many .md files in your rules/ or .claude/ directories?</p>
+            <div class="cc-options-grid" id="cc-rules-options" role="group" aria-label="Rules files count">
+              <button class="cc-option" data-group="rulesFiles" data-value="0">
+                <span class="cc-option-label">None</span>
+                <span class="cc-option-desc">No separate rules files</span>
+              </button>
+              <button class="cc-option" data-group="rulesFiles" data-value="1-5">
+                <span class="cc-option-label">1-5 files</span>
+                <span class="cc-option-desc">Some modularization</span>
+              </button>
+              <button class="cc-option" data-group="rulesFiles" data-value="6-15">
+                <span class="cc-option-label">6-15 files</span>
+                <span class="cc-option-desc">Well-modularized</span>
+              </button>
+              <button class="cc-option" data-group="rulesFiles" data-value="15+">
+                <span class="cc-option-label">15+ files</span>
+                <span class="cc-option-desc">Fully modular</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-nav">
+            <button id="cc-back-current" class="btn btn-secondary cc-nav-btn">← Back</button>
+            <button id="cc-next-current" class="btn btn-primary cc-nav-btn" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Screen: Step 3 — Stack -->
+        <div id="cc-step-stack" class="cc-screen">
+          <div class="cc-progress-bar">
+            <div class="cc-progress-fill" style="width: 100%"></div>
+          </div>
+          <div class="cc-step-meta">
+            <span class="cc-step-num">Step 3 of 3</span>
+            <span class="cc-step-label">Tech Stack</span>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">Primary language</h3>
+            <p class="cc-field-sub">What is the main backend or system language?</p>
+            <div class="cc-options-grid" id="cc-stack-options" role="group" aria-label="Primary stack">
+              <button class="cc-option" data-group="stack" data-value="typescript">
+                <span class="cc-option-label">TypeScript / Node</span>
+                <span class="cc-option-desc">TS, Node, npm/pnpm</span>
+              </button>
+              <button class="cc-option" data-group="stack" data-value="python">
+                <span class="cc-option-label">Python</span>
+                <span class="cc-option-desc">FastAPI, Django, Flask</span>
+              </button>
+              <button class="cc-option" data-group="stack" data-value="rust">
+                <span class="cc-option-label">Rust</span>
+                <span class="cc-option-desc">Cargo, async/tokio</span>
+              </button>
+              <button class="cc-option" data-group="stack" data-value="go">
+                <span class="cc-option-label">Go</span>
+                <span class="cc-option-desc">Standard library, gin, echo</span>
+              </button>
+              <button class="cc-option" data-group="stack" data-value="java">
+                <span class="cc-option-label">Java / Kotlin</span>
+                <span class="cc-option-desc">Spring, JVM</span>
+              </button>
+              <button class="cc-option" data-group="stack" data-value="other">
+                <span class="cc-option-label">Other</span>
+                <span class="cc-option-desc">PHP, Ruby, C++, etc.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-field-group">
+            <h3 class="cc-field-title">Frontend framework</h3>
+            <p class="cc-field-sub">Any frontend layer on this project?</p>
+            <div class="cc-options-grid" id="cc-frontend-options" role="group" aria-label="Frontend framework">
+              <button class="cc-option" data-group="frontend" data-value="react">
+                <span class="cc-option-label">React</span>
+                <span class="cc-option-desc">React / Next.js / Vite</span>
+              </button>
+              <button class="cc-option" data-group="frontend" data-value="vue">
+                <span class="cc-option-label">Vue</span>
+                <span class="cc-option-desc">Vue / Nuxt</span>
+              </button>
+              <button class="cc-option" data-group="frontend" data-value="angular">
+                <span class="cc-option-label">Angular</span>
+                <span class="cc-option-desc">Angular / NgRx</span>
+              </button>
+              <button class="cc-option" data-group="frontend" data-value="none">
+                <span class="cc-option-label">No frontend</span>
+                <span class="cc-option-desc">Backend only, CLI, API</span>
+              </button>
+              <button class="cc-option" data-group="frontend" data-value="other">
+                <span class="cc-option-label">Other</span>
+                <span class="cc-option-desc">Svelte, Astro, etc.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cc-nav">
+            <button id="cc-back-stack" class="btn btn-secondary cc-nav-btn">← Back</button>
+            <button id="cc-generate" class="btn btn-primary cc-nav-btn" disabled>Generate Kit →</button>
+          </div>
+        </div>
+
+        <!-- Screen: Results -->
+        <div id="cc-results" class="cc-screen">
+          <div class="cc-results-header">
+            <h2 class="cc-results-title">Your Starter Kit</h2>
+            <button id="cc-restart" class="cc-restart-btn">Start Over</button>
+          </div>
+
+          <!-- Maturity level -->
+          <div class="cc-maturity-card" id="cc-maturity-display">
+            <div class="cc-maturity-header">
+              <div>
+                <p class="cc-section-label">Context Maturity</p>
+                <h3 id="cc-maturity-name" class="cc-maturity-name">Level 1 — Starter</h3>
+              </div>
+              <div id="cc-maturity-badge" class="cc-maturity-badge">L1</div>
+            </div>
+            <div class="cc-maturity-levels">
+              <div class="cc-level-pip" data-level="1"></div>
+              <div class="cc-level-pip" data-level="2"></div>
+              <div class="cc-level-pip" data-level="3"></div>
+              <div class="cc-level-pip" data-level="4"></div>
+              <div class="cc-level-pip" data-level="5"></div>
+            </div>
+            <div class="cc-maturity-cols">
+              <div>
+                <p class="cc-maturity-col-label">Current criteria</p>
+                <ul id="cc-maturity-criteria" class="cc-maturity-list"></ul>
+              </div>
+              <div>
+                <p class="cc-maturity-col-label">Next steps to level up</p>
+                <ul id="cc-maturity-next" class="cc-maturity-list cc-maturity-list--next"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CLAUDE.md artifact -->
+          <div class="cc-artifact">
+            <div class="cc-artifact-header">
+              <div class="cc-artifact-title-row">
+                <span class="cc-artifact-filename">CLAUDE.md</span>
+                <span class="cc-artifact-badge">Personalized</span>
+              </div>
+              <button class="cc-copy-btn" id="cc-copy-claude-md" data-target="cc-claude-md-content">Copy</button>
+            </div>
+            <pre id="cc-claude-md-content" class="cc-artifact-body"></pre>
+          </div>
+
+          <!-- Profile YAML (team only) -->
+          <div class="cc-artifact" id="cc-profile-yaml-section" style="display: none">
+            <div class="cc-artifact-header">
+              <div class="cc-artifact-title-row">
+                <span class="cc-artifact-filename">.claude/profiles/developer.yaml</span>
+                <span class="cc-artifact-badge cc-artifact-badge--secondary">Team profiles</span>
+              </div>
+              <button class="cc-copy-btn" id="cc-copy-profile" data-target="cc-profile-yaml-content">Copy</button>
+            </div>
+            <pre id="cc-profile-yaml-content" class="cc-artifact-body"></pre>
+          </div>
+
+          <!-- Links -->
+          <div class="cc-results-links">
+            <a href="https://cc.bruniaux.com/guide/context-engineering/" class="cc-result-link">Read the Context Engineering guide →</a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/context-engineering" class="cc-result-link">Browse example templates on GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Context Engineering -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">What Is Context Engineering?</h2>
+      <p class="section-subtitle">The practice of systematically designing and managing the information you give AI coding tools — so they produce better output, more reliably.</p>
+      <div class="cc-concepts-grid">
+        <div class="cc-concept-card">
+          <div class="cc-concept-icon">📄</div>
+          <h3>CLAUDE.md as a contract</h3>
+          <p>The CLAUDE.md file tells Claude Code what your project is, how it is structured, and what the team's conventions are. It is read at the start of every session, so it shapes every response.</p>
+        </div>
+        <div class="cc-concept-card">
+          <div class="cc-concept-icon">🗂️</div>
+          <h3>Modular rules files</h3>
+          <p>Instead of one giant file, experienced teams extract rules into separate .md files — one per concern (security, testing, git) — and import them via @path syntax. Easier to maintain, easier to scope by directory.</p>
+        </div>
+        <div class="cc-concept-card">
+          <div class="cc-concept-icon">👤</div>
+          <h3>Profile-based assembly</h3>
+          <p>On larger teams, different roles need different context. A profile YAML defines which modules to assemble for a given team member — frontend dev, backend dev, or staff engineer.</p>
+        </div>
+        <div class="cc-concept-card">
+          <div class="cc-concept-icon">🔄</div>
+          <h3>The ACE pipeline</h3>
+          <p>Assemble, Check, Execute. The most mature setups automate context assembly from modules, run drift detection in CI to catch stale rules, and feed session learnings back into the context system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maturity ladder overview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">The 5 Maturity Levels</h2>
+      <p class="section-subtitle">Where most teams start and where the best teams end up.</p>
+      <div class="cc-ladder">
+        <div class="cc-ladder-item">
+          <div class="cc-ladder-level" style="--level-color: #6b7280">L1</div>
+          <div class="cc-ladder-content">
+            <h3>Starter</h3>
+            <p>Single CLAUDE.md, written once, rarely updated. Better than nothing, but drift accumulates fast.</p>
+          </div>
+        </div>
+        <div class="cc-ladder-item">
+          <div class="cc-ladder-level" style="--level-color: #3b82f6">L2</div>
+          <div class="cc-ladder-content">
+            <h3>Modular</h3>
+            <p>Rules extracted to separate files, organized by concern. @imports keep the root file clean. Path-scoping directs rules to the right subdirectories.</p>
+          </div>
+        </div>
+        <div class="cc-ladder-item">
+          <div class="cc-ladder-level" style="--level-color: #f59e0b">L3</div>
+          <div class="cc-ladder-content">
+            <h3>Team-Ready</h3>
+            <p>Profile-based assembly for different roles. Shared module library across the team. CI drift detection flags when docs fall out of sync with the codebase.</p>
+          </div>
+        </div>
+        <div class="cc-ladder-item">
+          <div class="cc-ladder-level" style="--level-color: #10b981">L4</div>
+          <div class="cc-ladder-content">
+            <h3>Measured</h3>
+            <p>Quarterly self-evaluations test whether Claude follows the rules. Canary checks in CI verify rule adherence. Metrics per rule, not just per project.</p>
+          </div>
+        </div>
+        <div class="cc-ladder-item">
+          <div class="cc-ladder-level" style="--level-color: var(--accent)">L5</div>
+          <div class="cc-ladder-content">
+            <h3>Adaptive</h3>
+            <p>Knowledge feeding loop: every session retrospective updates the context. ACE pipeline runs automatically. The context system improves itself over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cc-cta-section">
+    <div class="container">
+      <div class="cc-cta-box">
+        <h2>Full guide in the docs</h2>
+        <p>The Context Engineering section covers every maturity level in depth — architecture patterns, example file structures, CI setup, and real team configurations.</p>
+        <div class="cta-buttons">
+          <a href="https://cc.bruniaux.com/guide/context-engineering/" class="btn btn-primary">Read the Full Guide →</a>
+          <a href="/" class="btn btn-secondary">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ============================================
+   Hero badges
+   ============================================ */
+.cc-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.cc-hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.cc-hero-badge--secondary {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Configurator section
+   ============================================ */
+.cc-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Screen visibility */
+.cc-screen {
+  display: none;
+}
+
+.cc-screen.cc-active {
+  display: block;
+}
+
+/* ============================================
+   Intro screen
+   ============================================ */
+.cc-intro-content {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.cc-intro-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+}
+
+.cc-intro-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.cc-intro-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto var(--space-xl);
+}
+
+.cc-intro-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.cc-intro-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.cc-feature-icon {
+  font-size: 1rem;
+}
+
+.cc-start-btn {
+  font-size: 1rem;
+  padding: 0.875rem 2.5rem;
+  min-width: 200px;
+}
+
+.cc-noscript {
+  margin-top: var(--space-md);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.cc-noscript a {
+  color: var(--accent);
+}
+
+/* ============================================
+   Progress bar
+   ============================================ */
+.cc-progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+
+.cc-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   Step meta
+   ============================================ */
+.cc-step-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.cc-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.cc-step-label {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   Field groups and options
+   ============================================ */
+.cc-field-group {
+  margin-bottom: var(--space-xl);
+}
+
+.cc-field-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.cc-optional {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.cc-field-sub {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.cc-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-sm);
+}
+
+.cc-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.875rem var(--space-md);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  text-align: left;
+  min-height: 64px;
+}
+
+.cc-option:hover {
+  border-color: var(--accent);
+  background: var(--bg-tertiary);
+}
+
+.cc-option.cc-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-elevated));
+}
+
+.cc-option-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.cc-option-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+/* Multi-select checkmark indicator */
+.cc-option--check.cc-selected .cc-option-label::before {
+  content: '✓ ';
+  color: var(--accent);
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+.cc-nav {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+}
+
+.cc-nav-btn {
+  min-width: 120px;
+}
+
+.cc-nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Results screen
+   ============================================ */
+.cc-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.cc-results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cc-restart-btn {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.cc-restart-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+/* Maturity card */
+.cc-maturity-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.cc-maturity-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.cc-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-bottom: 0.375rem;
+}
+
+.cc-maturity-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cc-maturity-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: white;
+  background: var(--maturity-color, #6b7280);
+}
+
+.cc-maturity-levels {
+  display: flex;
+  gap: 6px;
+  margin-bottom: var(--space-xl);
+}
+
+.cc-level-pip {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  transition: background 0.3s ease;
+}
+
+.cc-level-pip.cc-pip-active {
+  background: var(--maturity-color, #6b7280);
+}
+
+.cc-maturity-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.cc-maturity-col-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-sm);
+}
+
+.cc-maturity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.cc-maturity-list li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.cc-maturity-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--text-secondary);
+}
+
+.cc-maturity-list--next li::before {
+  content: '→';
+  color: var(--accent);
+}
+
+/* Artifact cards */
+.cc-artifact {
+  margin-bottom: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.cc-artifact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.cc-artifact-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.cc-artifact-filename {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cc-artifact-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.cc-artifact-badge--secondary {
+  background: color-mix(in srgb, var(--accent-tertiary) 12%, transparent);
+  color: var(--accent-tertiary);
+  border-color: color-mix(in srgb, var(--accent-tertiary) 30%, transparent);
+}
+
+.cc-copy-btn {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.25rem 0.625rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.cc-copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.cc-copy-btn.cc-copied {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.cc-artifact-body {
+  padding: var(--space-lg);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  overflow-x: auto;
+  white-space: pre;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Results links */
+.cc-results-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+}
+
+.cc-result-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.cc-result-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Concepts grid
+   ============================================ */
+.cc-concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.cc-concept-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.cc-concept-icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-md);
+}
+
+.cc-concept-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.cc-concept-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Maturity ladder
+   ============================================ */
+.cc-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.cc-ladder-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--surface-elevated);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition-fast);
+}
+
+.cc-ladder-item:last-child {
+  border-bottom: none;
+}
+
+.cc-ladder-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.cc-ladder-level {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  background: var(--level-color, #6b7280);
+  margin-top: 2px;
+}
+
+.cc-ladder-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.375rem;
+}
+
+.cc-ladder-content p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   CTA section
+   ============================================ */
+.cc-cta-section {
+  border-top: 1px solid var(--border);
+}
+
+.cc-cta-box {
+  max-width: 640px;
+}
+
+.cc-cta-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.cc-cta-box p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 640px) {
+  .cc-intro-title {
+    font-size: 1.4rem;
+  }
+
+  .cc-options-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cc-maturity-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-nav {
+    flex-wrap: wrap;
+  }
+
+  .cc-nav-btn {
+    flex: 1;
+  }
+
+  .cc-concepts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-ladder-item {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 400px) {
+  .cc-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+  // ── Data ────────────────────────────────────────────────────────────────
+  const MATURITY_LEVELS = [
+    {
+      level: 1,
+      name: 'Starter',
+      color: '#6b7280',
+      criteria: ['Single CLAUDE.md', 'No rules files or @imports', 'Basic or no structure'],
+      nextSteps: ['Add project overview section', 'Add anti-patterns section', 'Add git conventions'],
+    },
+    {
+      level: 2,
+      name: 'Modular',
+      color: '#3b82f6',
+      criteria: ['Rules extracted to separate files', 'Path-scoping with @imports', 'Organized sections'],
+      nextSteps: ['Set up path-scoped rules', 'Add CI drift detection', 'Create rules/ directory'],
+    },
+    {
+      level: 3,
+      name: 'Team-Ready',
+      color: '#f59e0b',
+      criteria: ['Profile-based assembly for team members', 'CI drift detection running', 'Shared module library'],
+      nextSteps: ['Add self-evaluation questions', 'Set up canary checks', 'Track adherence metrics'],
+    },
+    {
+      level: 4,
+      name: 'Measured',
+      color: '#10b981',
+      criteria: ['Self-evaluation runs quarterly', 'Canary checks in CI', 'Adherence tracked per rule'],
+      nextSteps: ['Implement knowledge feeding loop', 'Add session retrospectives', 'Build ACE pipeline'],
+    },
+    {
+      level: 5,
+      name: 'Adaptive',
+      color: 'var(--accent)',
+      criteria: ['Knowledge feeding loop active', 'ACE pipeline (Assemble, Check, Execute)', 'Automated context feedback'],
+      nextSteps: ['Maintain and evolve', 'Share patterns with team', 'Open-source your context system'],
+    },
+  ]
+
+  // ── State ───────────────────────────────────────────────────────────────
+  const answers = {
+    teamSize: '',
+    aiTools: [] as string[],
+    claudeMdStatus: '',
+    rulesFiles: '',
+    stack: '',
+    frontend: '',
+  }
+
+  // ── Helpers ─────────────────────────────────────────────────────────────
+  function showScreen(id: string) {
+    document.querySelectorAll('.cc-screen').forEach((el) => el.classList.remove('cc-active'))
+    const target = document.getElementById(id)
+    if (target) target.classList.add('cc-active')
+    window.scrollTo({ top: document.getElementById('cc-configurator')?.offsetTop ?? 0, behavior: 'smooth' })
+  }
+
+  function saveToStorage() {
+    try {
+      localStorage.setItem('cc-configurator-answers', JSON.stringify(answers))
+    } catch (_) {}
+  }
+
+  function loadFromStorage() {
+    try {
+      const stored = localStorage.getItem('cc-configurator-answers')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        Object.assign(answers, parsed)
+      }
+    } catch (_) {}
+  }
+
+  // ── Option selection ─────────────────────────────────────────────────────
+  function initOptionGroup(groupId: string, field: string, multi = false) {
+    const container = document.getElementById(groupId)
+    if (!container) return
+
+    container.querySelectorAll('.cc-option').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = (btn as HTMLElement).dataset.value || ''
+        if (multi) {
+          const idx = (answers as any)[field].indexOf(value)
+          if (idx >= 0) {
+            (answers as any)[field].splice(idx, 1)
+            btn.classList.remove('cc-selected')
+          } else {
+            (answers as any)[field].push(value)
+            btn.classList.add('cc-selected')
+          }
+        } else {
+          container.querySelectorAll('.cc-option').forEach((b) => b.classList.remove('cc-selected'))
+          btn.classList.add('cc-selected')
+          ;(answers as any)[field] = value
+        }
+        saveToStorage()
+        updateNavButtons()
+      })
+    })
+  }
+
+  function restoreSelections() {
+    // Restore radio selections
+    const radioGroups: { groupId: string; field: string }[] = [
+      { groupId: 'cc-team-options', field: 'teamSize' },
+      { groupId: 'cc-claude-md-options', field: 'claudeMdStatus' },
+      { groupId: 'cc-rules-options', field: 'rulesFiles' },
+      { groupId: 'cc-stack-options', field: 'stack' },
+      { groupId: 'cc-frontend-options', field: 'frontend' },
+    ]
+    radioGroups.forEach(({ groupId, field }) => {
+      const container = document.getElementById(groupId)
+      if (!container) return
+      const val = (answers as any)[field]
+      if (val) {
+        container.querySelector(`[data-value="${val}"]`)?.classList.add('cc-selected')
+      }
+    })
+    // Restore multi-select
+    const toolsContainer = document.getElementById('cc-tools-options')
+    if (toolsContainer && answers.aiTools.length) {
+      answers.aiTools.forEach((v) => {
+        toolsContainer.querySelector(`[data-value="${v}"]`)?.classList.add('cc-selected')
+      })
+    }
+  }
+
+  function updateNavButtons() {
+    const nextProfile = document.getElementById('cc-next-profile') as HTMLButtonElement | null
+    const nextCurrent = document.getElementById('cc-next-current') as HTMLButtonElement | null
+    const generate = document.getElementById('cc-generate') as HTMLButtonElement | null
+
+    if (nextProfile) nextProfile.disabled = !answers.teamSize
+    if (nextCurrent) nextCurrent.disabled = !answers.claudeMdStatus || !answers.rulesFiles
+    if (generate) generate.disabled = !answers.stack || !answers.frontend
+  }
+
+  // ── Maturity calculation ──────────────────────────────────────────────────
+  function calculateMaturity(): number {
+    const { claudeMdStatus, rulesFiles, teamSize } = answers
+    if (claudeMdStatus === 'none') return 1
+    if (claudeMdStatus === 'small' && rulesFiles === '0') return 1
+    if (rulesFiles === '0') return claudeMdStatus === 'medium' ? 2 : 1
+    if (rulesFiles === '1-5') return 2
+    if (rulesFiles === '6-15') return teamSize !== 'solo' ? 3 : 2
+    if (rulesFiles === '15+') return teamSize !== 'solo' ? 3 : 2
+    return 1
+  }
+
+  // ── Template generation ─────────────────────────────────────────────────
+  function generateClaudeMd(): string {
+    const { stack, frontend, teamSize } = answers
+    const hasFrontend = frontend !== 'none'
+    const isTeam = teamSize !== 'solo'
+
+    const stackSections: Record<string, string> = {
+      typescript: `## TypeScript Standards
+- Strict mode enabled (\`strict: true\` in tsconfig.json)
+- Explicit return types on all exported functions
+- No \`any\` types except in migration code (must be commented)
+- Prefer \`interface\` over \`type\` for object shapes
+- Imports: absolute paths only (no \`../../\` chains)`,
+      python: `## Python Standards
+- Type hints required on all function signatures
+- Docstrings for public functions (Google style)
+- Use \`ruff\` for linting, \`black\` for formatting
+- Prefer \`pathlib\` over \`os.path\`
+- f-strings only (no \`%\` or \`.format()\`)`,
+      rust: `## Rust Standards
+- \`clippy\` must pass with no warnings
+- \`unwrap()\` only in tests — use \`?/anyhow\` in production
+- Prefer \`thiserror\` for library errors, \`anyhow\` for apps
+- All public items must have doc comments
+- \`async\`: use \`tokio\` as the async runtime`,
+      go: `## Go Standards
+- Standard library preferred over third-party when feasible
+- Error wrapping: \`fmt.Errorf("context: %w", err)\`
+- All exported symbols must have doc comments
+- Prefer \`context.Context\` as first parameter
+- No global mutable state`,
+      java: `## Java/Kotlin Standards
+- Prefer Kotlin over Java for new code
+- Use constructor injection (not field injection)
+- All public APIs must be nullable-annotated
+- Sealed classes for result types
+- Tests: JUnit 5, Mockito`,
+      other: `## Code Standards
+- Consistent naming conventions (document your conventions here)
+- Error handling: explicit, never swallow exceptions silently
+- Comments: explain why, not what`,
+    }
+
+    const frontendSections: Record<string, string> = {
+      react: `\n## React / Frontend
+- Functional components only (no class components)
+- Custom hooks for shared stateful logic
+- Props: TypeScript interfaces, required unless explicitly optional
+- State management: prefer local state, context for shared, zustand/jotai for global
+- CSS: [your preferred approach — e.g., Tailwind, CSS Modules]`,
+      vue: `\n## Vue / Frontend
+- Composition API only (no Options API for new code)
+- TypeScript: \`defineProps\` and \`defineEmits\` with explicit types
+- Composables for shared logic
+- Prefer \`<script setup>\` syntax`,
+      angular: `\n## Angular / Frontend
+- Standalone components (no NgModule for new code)
+- Signals for reactive state
+- OnPush change detection for performance-sensitive components
+- Inject function over constructor injection`,
+      other: `\n## Frontend Standards
+- [Document your frontend framework conventions here]`,
+    }
+
+    const teamSection = isTeam
+      ? `\n## Team Conventions
+- Branch naming: \`feat/description\`, \`fix/description\`, \`chore/description\`
+- PR requirements: description of changes + test coverage
+- Code review: at least 1 approval before merge
+- Commit style: conventional commits (\`feat:\`, \`fix:\`, \`chore:\`)`
+      : `\n## Workflow
+- Commit style: conventional commits (\`feat:\`, \`fix:\`, \`chore:\`)
+- Branch naming: \`feat/description\`, \`fix/description\``
+
+    const stackSection = stackSections[stack] || stackSections.other
+    const frontendSection = hasFrontend && frontendSections[frontend] ? frontendSections[frontend] : ''
+
+    return `# CLAUDE.md — [Project Name]
+<!-- Generated by cc.bruniaux.com/context/ — customize for your project -->
+
+## Project Overview
+<!-- Required: 2-3 sentences describing what this project does and who uses it -->
+[Describe your project here]
+
+## Architecture
+<!-- Document key architectural decisions -->
+- Stack: ${stack}${hasFrontend ? ` + ${frontend}` : ''}
+- [Add your key architecture decisions here]
+- [Database, state management, deployment target]
+
+${stackSection}
+${frontendSection}
+## Testing
+- Tests required for: all new features, bug fixes, critical paths
+- Test files co-located with source: \`component.test.ts\` next to \`component.ts\`
+- Mock strategy: mock at the boundary (external APIs, databases)
+${teamSection}
+
+## What NOT to Do
+<!-- Anti-patterns specific to your project — add your own -->
+- Do not add dependencies without discussing trade-offs first
+- Do not use \`console.log\` in production code (use structured logging)
+- Do not commit secrets or API keys (use environment variables)
+- Do not skip tests for "simple" changes
+
+## Deployment
+<!-- Document your deployment process -->
+- Environments: [staging → production]
+- Deploy command: \`[your deploy command]\`
+- Post-deploy: [what to verify after deployment]
+`
+  }
+
+  function generateProfileYaml(): string | null {
+    const { teamSize, stack, frontend } = answers
+    if (teamSize === 'solo') return null
+
+    const role = stack === 'typescript' && frontend !== 'none'
+      ? 'frontend'
+      : frontend === 'none'
+      ? 'backend'
+      : 'fullstack'
+
+    return `# Team Profile Template
+# Save as: .claude/profiles/<team-member-name>.yaml
+# Run: ts-node assembler.ts --profile .claude/profiles/<name>.yaml
+
+profile:
+  name: "developer-name"
+  role: "${role}"
+  seniority: "mid"  # junior | mid | senior | staff
+
+tools:
+  primary_lang: "${stack}"
+  frontend: "${frontend}"
+
+modules:
+  include:
+    - shared/core-rules.md
+    - shared/git-conventions.md
+    - shared/security-rules.md
+    # Add role-specific modules as you create them
+
+overrides:
+  custom_rules: []
+  # Add personal preferences here
+`
+  }
+
+  // ── Results rendering ────────────────────────────────────────────────────
+  function renderResults() {
+    const level = calculateMaturity()
+    const maturityData = MATURITY_LEVELS[level - 1]
+
+    // Badge and name
+    const badge = document.getElementById('cc-maturity-badge')
+    const nameEl = document.getElementById('cc-maturity-name')
+    if (badge) {
+      badge.textContent = `L${level}`
+      badge.style.setProperty('--maturity-color', maturityData.color)
+      badge.style.background = maturityData.color === 'var(--accent)' ? 'var(--accent)' : maturityData.color
+    }
+    if (nameEl) nameEl.textContent = `Level ${level} — ${maturityData.name}`
+
+    // Level pips
+    const card = document.getElementById('cc-maturity-display')
+    if (card) {
+      card.style.setProperty('--maturity-color', maturityData.color === 'var(--accent)' ? 'var(--accent)' : maturityData.color)
+      card.querySelectorAll('.cc-level-pip').forEach((pip) => {
+        const pipLevel = parseInt((pip as HTMLElement).dataset.level || '0')
+        if (pipLevel <= level) {
+          pip.classList.add('cc-pip-active')
+          ;(pip as HTMLElement).style.background = maturityData.color === 'var(--accent)' ? 'var(--accent)' : maturityData.color
+        } else {
+          pip.classList.remove('cc-pip-active')
+          ;(pip as HTMLElement).style.background = ''
+        }
+      })
+    }
+
+    // Criteria and next steps
+    const criteriaEl = document.getElementById('cc-maturity-criteria')
+    const nextEl = document.getElementById('cc-maturity-next')
+    if (criteriaEl) {
+      criteriaEl.innerHTML = maturityData.criteria.map((c) => `<li>${c}</li>`).join('')
+    }
+    if (nextEl) {
+      if (level === 5) {
+        nextEl.innerHTML = maturityData.nextSteps.map((s) => `<li>${s}</li>`).join('')
+      } else {
+        const nextLevel = MATURITY_LEVELS[level]
+        nextEl.innerHTML = nextLevel.nextSteps.map((s) => `<li>${s}</li>`).join('')
+      }
+    }
+
+    // CLAUDE.md artifact
+    const claudeMdEl = document.getElementById('cc-claude-md-content')
+    if (claudeMdEl) claudeMdEl.textContent = generateClaudeMd()
+
+    // Profile YAML
+    const profileSection = document.getElementById('cc-profile-yaml-section')
+    const profileEl = document.getElementById('cc-profile-yaml-content')
+    const profileYaml = generateProfileYaml()
+    if (profileSection && profileEl) {
+      if (profileYaml) {
+        profileSection.style.display = ''
+        profileEl.textContent = profileYaml
+      } else {
+        profileSection.style.display = 'none'
+      }
+    }
+  }
+
+  // ── Copy to clipboard ────────────────────────────────────────────────────
+  function initCopyButtons() {
+    document.querySelectorAll('.cc-copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const targetId = (btn as HTMLElement).dataset.target
+        if (!targetId) return
+        const source = document.getElementById(targetId)
+        if (!source) return
+        const text = source.textContent || ''
+        try {
+          await navigator.clipboard.writeText(text)
+        } catch (_) {
+          // Fallback for older browsers
+          const ta = document.createElement('textarea')
+          ta.value = text
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+        }
+        btn.textContent = 'Copied!'
+        btn.classList.add('cc-copied')
+        setTimeout(() => {
+          btn.textContent = 'Copy'
+          btn.classList.remove('cc-copied')
+        }, 2000)
+      })
+    })
+  }
+
+  // ── Wire navigation ─────────────────────────────────────────────────────
+  function initNav() {
+    document.getElementById('cc-start')?.addEventListener('click', () => showScreen('cc-step-profile'))
+
+    document.getElementById('cc-next-profile')?.addEventListener('click', () => {
+      saveToStorage()
+      showScreen('cc-step-current')
+    })
+
+    document.getElementById('cc-back-current')?.addEventListener('click', () => showScreen('cc-step-profile'))
+    document.getElementById('cc-next-current')?.addEventListener('click', () => {
+      saveToStorage()
+      showScreen('cc-step-stack')
+    })
+
+    document.getElementById('cc-back-stack')?.addEventListener('click', () => showScreen('cc-step-current'))
+    document.getElementById('cc-generate')?.addEventListener('click', () => {
+      saveToStorage()
+      renderResults()
+      showScreen('cc-results')
+    })
+
+    document.getElementById('cc-restart')?.addEventListener('click', () => {
+      // Reset state
+      answers.teamSize = ''
+      answers.aiTools = []
+      answers.claudeMdStatus = ''
+      answers.rulesFiles = ''
+      answers.stack = ''
+      answers.frontend = ''
+      document.querySelectorAll('.cc-option.cc-selected').forEach((el) => el.classList.remove('cc-selected'))
+      updateNavButtons()
+      try { localStorage.removeItem('cc-configurator-answers') } catch (_) {}
+      showScreen('cc-intro')
+    })
+  }
+
+  // ── Init ────────────────────────────────────────────────────────────────
+  function init() {
+    loadFromStorage()
+    restoreSelections()
+    updateNavButtons()
+
+    initOptionGroup('cc-team-options', 'teamSize', false)
+    initOptionGroup('cc-tools-options', 'aiTools', true)
+    initOptionGroup('cc-claude-md-options', 'claudeMdStatus', false)
+    initOptionGroup('cc-rules-options', 'rulesFiles', false)
+    initOptionGroup('cc-stack-options', 'stack', false)
+    initOptionGroup('cc-frontend-options', 'frontend', false)
+
+    initNav()
+    initCopyButtons()
+  }
+
+  init()
+</script>
