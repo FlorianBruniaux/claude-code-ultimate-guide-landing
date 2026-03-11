@@ -227,11 +227,12 @@ Mitigation: Scan SKILL.md for shell commands;
     id: 'slash',
     label: 'Slash commands',
     title: 'Slash commands',
-    description: '8 shortcuts /ccguide:* — one keystroke to search, fetch templates, get the digest, or browse the cheatsheet.',
+    description: '13 shortcuts /ccguide:* — search, fetch templates, track official Anthropic docs changes, and get a daily briefing.',
     output: `# Slash commands /ccguide:*
 
 Copy once to ~/.claude/commands/ccguide/ → available in every project.
 
+── Guide ────────────────────────────────────────────────────────────────────
 ┌──────────────────────────┬────────────────────────────────────────────────┐
 │ Command                  │ What it does                                   │
 ├──────────────────────────┼────────────────────────────────────────────────┤
@@ -245,20 +246,23 @@ Copy once to ~/.claude/commands/ccguide/ → available in every project.
 │ /ccguide:topics          │ Browse 25 topic categories (893 entries)       │
 └──────────────────────────┴────────────────────────────────────────────────┘
 
+── Official Anthropic docs tracker (v1.1.0+) ───────────────────────────────
+┌──────────────────────────┬────────────────────────────────────────────────┐
+│ Command                  │ What it does                                   │
+├──────────────────────────┼────────────────────────────────────────────────┤
+│ /ccguide:init-docs       │ Fetch official docs + store as baseline (once) │
+│ /ccguide:refresh-docs    │ Update current snapshot (baseline unchanged)   │
+│ /ccguide:diff-docs       │ Compare baseline vs current — 0 network        │
+│ /ccguide:search-docs <q> │ Search official Anthropic docs from cache      │
+│ /ccguide:daily           │ Daily: refresh + diff + guide digest           │
+└──────────────────────────┴────────────────────────────────────────────────┘
+
 Install:
   cp -r .claude/commands/ccguide ~/.claude/commands/ccguide
 
-Examples:
-  /ccguide:search hooks
-  /ccguide:digest week
-  /ccguide:example code-reviewer
-  /ccguide:cheatsheet memory
-  /ccguide:release 2.1.59
-
-Onboarding one-liner (after install):
-  claude "Use the claude-code-guide MCP. Activate claude-code-expert
-  prompt, ask me 3 questions about my goal and level, build a
-  personalized learning path with search_guide + read_section."`,
+Daily workflow:
+  /ccguide:init-docs     # once — creates baseline in ~/.cache/claude-code-guide/
+  /ccguide:daily         # every day — refresh + diff + digest in one shot`,
   },
 ]
 ---
