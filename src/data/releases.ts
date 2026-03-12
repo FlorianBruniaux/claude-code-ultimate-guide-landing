@@ -16,6 +16,35 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.74',
+    date: 'Mar 12, 2026',
+    highlights: [
+      '⭐ <strong>/context actionable suggestions</strong> — identifies context-heavy tools, memory bloat, capacity warnings with optimization tips',
+      '⭐ <strong>Memory leak fixed</strong> — streaming API buffers unbounded RSS growth on npm path resolved',
+      '<code>autoMemoryDirectory</code> setting to configure custom directory for auto-memory storage',
+      'Fixed managed policy <code>ask</code> rules being bypassed by user <code>allow</code> rules or skill <code>allowed-tools</code>',
+      'Fixed <code>SessionEnd</code> hooks killed after 1.5s regardless of <code>hook.timeout</code> (now configurable)',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ /context suggestions + memory leak fix',
+  },
+  {
+    version: 'v2.1.73',
+    date: 'Mar 11, 2026',
+    highlights: [
+      '⭐ <strong>modelOverrides setting</strong> — map model picker entries to custom provider model IDs (Bedrock ARNs, etc.)',
+      'Fixed deadlock when many skill files change at once (e.g. <code>git pull</code> in large <code>.claude/skills/</code> repo)',
+      'Fixed subagents with <code>model: opus/sonnet/haiku</code> being silently downgraded on Bedrock/Vertex/Foundry',
+      'Fixed <code>SessionStart</code> hooks firing twice when resuming via <code>--resume</code> or <code>--continue</code>',
+      'Changed default Opus on Bedrock/Vertex/Foundry → Opus 4.6; deprecated <code>/output-style</code> in favor of <code>/config</code>',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ modelOverrides + Opus 4.6 default on Bedrock/Vertex',
+  },
+  {
     version: 'v2.1.72',
     date: 'Mar 9, 2026',
     highlights: [
@@ -25,10 +54,8 @@ export const releases: Release[] = [
       'Simplified effort levels: low/medium/high (removed max), new symbols ○ ◐ ●; <code>ExitWorktree</code> tool added',
       '<code>CLAUDE_CODE_DISABLE_CRON</code> env var; <code>lsof</code>, <code>fd</code>, <code>pgrep</code> added to bash auto-approval allowlist',
     ],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: '⭐ Agent model override + 12x SDK token savings',
+    featured: false,
   },
   {
     version: 'v2.1.71',
