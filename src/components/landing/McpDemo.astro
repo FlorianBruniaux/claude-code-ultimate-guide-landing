@@ -4,55 +4,55 @@
 
 const commands = [
   {
-    id: 'digest',
-    label: '/ccguide:digest week',
-    title: 'Weekly Digest',
-    description: 'Guide changes + Claude Code CLI releases for the past 7 days, with GitHub/site links on every resource.',
-    output: `# Digest — 7 derniers jours (22-28 fév 2026)
+    id: 'daily',
+    label: '/ccguide:daily',
+    title: 'Daily Update',
+    description: 'One command: refresh official Anthropic docs, diff against baseline, then guide + CC CLI digest. Everything that changed since yesterday.',
+    output: `# Daily Claude Code Update — 2026-03-12
 
-## Claude Code CLI — Releases
+## Official Anthropic Docs
+5 sections modified (0 added, 0 removed):
 
-v2.1.59 (26 fév) — Auto-memory natif (/memory), /copy avec picker
-                    interactif, fix race condition MCP OAuth
-v2.1.58 (26 fév) — Remote Control élargi à plus d'utilisateurs
-v2.1.56 (25 fév) — Fix crash VSCode Windows
-v2.1.53 (25 fév) — Stability batch : panics Windows, WebAssembly
-                    crashes, fix Remote Control stale sessions
-v2.1.51 (24 fév) — claude remote-control subcommand, SDK env vars,
-                    /model labels lisibles
+- amazon-bedrock (+18 lines) — New section "Map each model version
+  to an inference profile"
+  https://code.claude.com/docs/en/amazon-bedrock
+- model-config (+26 lines) — New section "Override model IDs per
+  version" (modelOverrides feature)
+  https://code.claude.com/docs/en/model-config
+- settings (+1 line) — Added modelOverrides entry
+  https://code.claude.com/docs/en/settings
+- output-styles (+5 lines) — Updated: "Run /config and select
+  Output style…" (reflects /output-style deprecation)
+  https://code.claude.com/docs/en/output-styles
+- interactive-mode (-8013 chars) — Large content removal in
+  command reference table
+  https://code.claude.com/docs/en/interactive-mode
 
-Release notes : https://github.com/FlorianBruniaux/claude-code-ultimate-guide
-                /blob/main/guide/claude-code-releases.md
+## Guide + CC CLI
+
+Guide [3.34.4] — 2026-03-12:
+- CC releases tracking updated to v2.1.74 — /context actionable
+  suggestions, autoMemoryDirectory, streaming buffer memory leak
+  fix, managed policy ask bypass fix, SessionEnd timeout fix
+- v2.1.73 — modelOverrides setting, skill hot-reload deadlock fix,
+  subagent model downgrade fix on Bedrock/Vertex/Foundry,
+  Opus 4.6 default on 3P, /output-style deprecated
+
+CC CLI releases: none in last 24h (latest tracked: v2.1.74)
 
 ---
-## Guide — Changements majeurs
+Key signal: Anthropic docs now live with modelOverrides
+documentation (Bedrock inference profile ARN mapping) — aligns
+with v2.1.73 release.
 
-- Remote Control (§9.22) — workflow QR/URL/app, tmux multi-session,
-  limitations slash commands, architecture sécurité
-- Terminal Personalization (§3.3) — spinnerVerbs, spinnerTipsOverride,
-  113+ tips en 13 catégories
-- MLflow Tracing (observability.md) — CLI zero-Python, LLM-as-judge
-- Threat Database v2.1.0 → v2.2.0 : CVE-2026-0755 (CVSS 9.8, RCE),
-  SNYK mcp-run-python SSRF, technique T010 agent-to-agent injection
-
----
-## Resources mentionnées
-
-- examples/config/settings-personalization.json
-  https://github.com/FlorianBruniaux/...
-- guide/observability.md
-  https://github.com/FlorianBruniaux/... | https://cc.bruniaux.com/guide/observability
-- examples/hooks/bash/security-gate.sh
-  https://github.com/FlorianBruniaux/...
-- examples/agents/security-patcher.md
-  https://github.com/FlorianBruniaux/...`,
+Docs snapshot: 2026-03-11 → 2026-03-12`,
   },
   {
     id: 'examples',
     label: '/ccguide:examples',
     title: 'Templates',
-    description: '204 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
-    output: `# Claude Code Ultimate Guide — Templates
+    description: '229 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
+    output: `# Claude Code Ultimate Guide — Templates (229)
 GitHub: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
 
 ## Agents (6)
@@ -105,7 +105,7 @@ ex: /ccguide:example security-gate`,
     label: '/ccguide:topics',
     title: 'Topics',
     description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
-    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.34.2)
+    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.34.4)
 
 ┌────────────┬─────────┬───────────────────────────────────────────────┐
 │ Category   │ Entries │ Examples                                       │
@@ -144,37 +144,41 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.59 (updated: 2026-02-26)
+Latest: v2.1.74 (updated: 2026-03-12)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
-v2.1.59 — 26 fév 2026
+v2.1.74 — 2026-03-12
 
-- Auto-memory : Claude sauvegarde automatiquement le contexte utile,
-  gérable via /memory
-- /copy : picker interactif pour copier un bloc ou la réponse complète
-- Suggestions "always allow" plus intelligentes pour les commandes
-  bash composées (prefixes par sous-commande)
-- Fix : race condition MCP OAuth token refresh avec plusieurs instances
-- Fix : corruption du fichier config effaçant l'auth multi-instances
+- /context command now shows actionable suggestions (context-heavy
+  tools, memory bloat, capacity warnings)
+- Fixed memory leak in streaming API buffers (unbounded RSS growth)
+- autoMemoryDirectory setting for custom auto-memory storage path
+- Fixed managed policy ask rules bypassed by user allow rules
+- Fixed MCP OAuth hanging on callback port conflict
+- Fixed SessionEnd hooks killed after 1.5s (now configurable)
 
-v2.1.58 — 26 fév 2026
-- Remote Control élargi à plus d'utilisateurs
+v2.1.73 — 2026-03-11
+- modelOverrides setting: map model picker entries to custom
+  provider model IDs (Bedrock ARNs etc.)
+- Fixed deadlock when many skill files change at once
+- Fixed subagents with model: opus/sonnet/haiku being downgraded
+  on Bedrock/Vertex/Foundry
+- Deprecated /output-style — use /config instead
 
-v2.1.56 — 25 fév 2026
-- VSCode : fix crash "command claude-vscode.editor.openLast not found"
+v2.1.72 — 2026-03-09
+- Restored model param on Agent tool for per-invocation overrides
+- Fixed SDK query() prompt cache invalidation (up to 12x savings)
+- /plan accepts optional description; ExitWorktree tool added
+- Simplified effort levels: low/medium/high (removed max)
 
-v2.1.55 — 25 fév 2026
-- Fix BashTool EINVAL sur Windows
-
-v2.1.53 — 25 fév 2026
-- Stability batch : panics Windows, crashes process spawn, WebAssembly
-- Fix Remote Control : sessions stale après graceful shutdown
-- Fix UI flicker, kill agents en masse (ctrl+f)
+v2.1.71 — 2026-03-06
+- /loop command: run a prompt or slash command on a schedule
+- Cron scheduling tools for recurring prompts within a session
 
 ---
-76 releases trackées au total.
-Pour une version spécifique : /ccguide:release 2.1.51`,
+80+ releases tracked.
+Pour une version spécifique : /ccguide:release 2.1.73`,
   },
   {
     id: 'security',
@@ -228,41 +232,38 @@ Mitigation: Scan SKILL.md for shell commands;
     label: 'Slash commands',
     title: 'Slash commands',
     description: '13 shortcuts /ccguide:* — search, fetch templates, track official Anthropic docs changes, and get a daily briefing.',
-    output: `# Slash commands /ccguide:*
+    output: `# Slash commands /ccguide:* (13 total)
 
-Copy once to ~/.claude/commands/ccguide/ → available in every project.
+cp -r .claude/commands/ccguide ~/.claude/commands/ccguide
 
-── Guide ────────────────────────────────────────────────────────────────────
-┌──────────────────────────┬────────────────────────────────────────────────┐
-│ Command                  │ What it does                                   │
-├──────────────────────────┼────────────────────────────────────────────────┤
-│ /ccguide:search <query>  │ Search 893 indexed entries with scores + links │
-│ /ccguide:digest <period> │ Guide + CC CLI changes (day/week/month)        │
-│ /ccguide:examples        │ List all 204 templates by category             │
-│ /ccguide:example <name>  │ Fetch a template (agent/hook/command/skill)    │
-│ /ccguide:cheatsheet      │ Full cheatsheet or filtered by section         │
-│ /ccguide:release         │ Latest Claude Code CLI release notes           │
-│ /ccguide:changelog       │ Last N CHANGELOG entries from the guide        │
-│ /ccguide:topics          │ Browse 25 topic categories (893 entries)       │
-└──────────────────────────┴────────────────────────────────────────────────┘
+── Guide ────────────────────────────────────────────────────────────
+┌──────────────────────────┬──────────────────────────────────────────┐
+│ Command                  │ What it does                             │
+├──────────────────────────┼──────────────────────────────────────────┤
+│ /ccguide:search <query>  │ Search 893 entries with scores + links   │
+│ /ccguide:digest <period> │ Guide + CC CLI changes (day/week/month)  │
+│ /ccguide:examples        │ List all 229 templates by category       │
+│ /ccguide:example <name>  │ Fetch a template (agent/hook/skill...)   │
+│ /ccguide:cheatsheet      │ Full cheatsheet or filtered by section   │
+│ /ccguide:release         │ Latest Claude Code CLI release notes     │
+│ /ccguide:changelog       │ Last N CHANGELOG entries from the guide  │
+│ /ccguide:topics          │ Browse 25 topic categories               │
+└──────────────────────────┴──────────────────────────────────────────┘
 
-── Official Anthropic docs tracker (v1.1.0+) ───────────────────────────────
-┌──────────────────────────┬────────────────────────────────────────────────┐
-│ Command                  │ What it does                                   │
-├──────────────────────────┼────────────────────────────────────────────────┤
-│ /ccguide:init-docs       │ Fetch official docs + store as baseline (once) │
-│ /ccguide:refresh-docs    │ Update current snapshot (baseline unchanged)   │
-│ /ccguide:diff-docs       │ Compare baseline vs current — 0 network        │
-│ /ccguide:search-docs <q> │ Search official Anthropic docs from cache      │
-│ /ccguide:daily           │ Daily: refresh + diff + guide digest           │
-└──────────────────────────┴────────────────────────────────────────────────┘
-
-Install:
-  cp -r .claude/commands/ccguide ~/.claude/commands/ccguide
+── Official Anthropic docs tracker (v1.1.0) ─────────────────────────
+┌──────────────────────────┬──────────────────────────────────────────┐
+│ Command                  │ What it does                             │
+├──────────────────────────┼──────────────────────────────────────────┤
+│ /ccguide:init-docs       │ Fetch docs + store as baseline (once)    │
+│ /ccguide:refresh-docs    │ Update current snapshot (no baseline Δ)  │
+│ /ccguide:diff-docs       │ Compare baseline vs current — 0 network  │
+│ /ccguide:search-docs <q> │ Search official Anthropic docs from cache│
+│ /ccguide:daily           │ refresh + diff + digest in one shot      │
+└──────────────────────────┴──────────────────────────────────────────┘
 
 Daily workflow:
-  /ccguide:init-docs     # once — creates baseline in ~/.cache/claude-code-guide/
-  /ccguide:daily         # every day — refresh + diff + digest in one shot`,
+  /ccguide:init-docs  # once → baseline in ~/.cache/claude-code-guide/
+  /ccguide:daily      # every morning`,
   },
 ]
 ---
@@ -277,6 +278,10 @@ Daily workflow:
     <div class="install-pill">
       <span class="install-label">install</span>
       <code class="install-cmd">npx -y claude-code-ultimate-guide-mcp</code>
+      <button class="copy-btn" data-copy="npx -y claude-code-ultimate-guide-mcp" aria-label="Copy install command">
+        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+      </button>
     </div>
 
     <!-- Command tabs -->
@@ -326,12 +331,31 @@ Daily workflow:
       >
         Full documentation →
       </a>
-      <span class="demo-footer-note">12 tools &bull; 3 resources &bull; 8 slash commands &bull; 1 custom agent</span>
+      <span class="demo-footer-note">17 tools &bull; 3 resources &bull; 13 slash commands &bull; 1 custom agent</span>
     </div>
   </div>
 </section>
 
 <script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = btn as HTMLElement
+      const text = el.dataset.copy || ''
+      navigator.clipboard.writeText(text).then(() => {
+        const copy = el.querySelector('.copy-icon') as HTMLElement
+        const check = el.querySelector('.check-icon') as HTMLElement
+        copy.style.display = 'none'
+        check.style.display = 'block'
+        el.classList.add('copied')
+        setTimeout(() => {
+          copy.style.display = 'block'
+          check.style.display = 'none'
+          el.classList.remove('copied')
+        }, 1800)
+      })
+    })
+  })
+
   document.querySelectorAll('.demo-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const el = tab as HTMLElement
@@ -385,6 +409,33 @@ Daily workflow:
 .install-cmd {
   color: var(--text-primary);
   font-size: 0.875rem;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.copy-btn:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
+  background: var(--bg-secondary);
+}
+
+.copy-btn.copied {
+  border-color: #16a34a;
+  color: #16a34a;
 }
 
 /* Tabs */
@@ -470,6 +521,9 @@ Daily workflow:
   overflow-x: auto;
   max-height: 420px;
   overflow-y: auto;
+  /* Force light text color on the entire terminal body so no CSS variable
+     from the light-mode theme can bleed through via inheritance or cascade. */
+  color: #e6edf3;
 }
 
 .terminal-output {
@@ -483,7 +537,11 @@ Daily workflow:
 }
 
 .terminal-output code {
-  color: #e6edf3;
+  color: #e6edf3 !important;
+  background: none !important;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
 }
 
 /* Footer */

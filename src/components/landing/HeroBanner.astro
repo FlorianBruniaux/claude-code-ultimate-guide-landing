@@ -21,7 +21,7 @@
             <div class="hero-badges">
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/stargazers" target="_blank" rel="noopener" class="badge badge-stars">
                     <span class="badge-label">stars</span>
-                    <span class="badge-value">101</span>
+                    <span class="badge-value">1337</span>
                 </a>
                 <span class="badge badge-templates">
                     <span class="badge-label">templates</span>
@@ -65,7 +65,7 @@
                 const stars = data.stargazers_count;
                 const starsEl = document.querySelector('.badge-stars .badge-value');
                 if (starsEl && stars) {
-                    starsEl.textContent = stars;
+                    starsEl.textContent = stars >= 1000 ? (stars / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(stars);
                 }
             }
         } catch (error) {

@@ -1,30 +1,31 @@
 ---
 const whitepapers = [
-  { id: 'WP00', title: 'Introduction & Fondamentaux' },
-  { id: 'WP01', title: 'Prompts Efficaces' },
-  { id: 'WP02', title: 'Personnalisation & Configuration' },
-  { id: 'WP03', title: 'Sécurité en Production' },
-  { id: 'WP04', title: 'Architecture Interne' },
-  { id: 'WP05', title: 'Adoption en Équipe' },
-  { id: 'WP06', title: 'Privacy & Conformité' },
-  { id: 'WP07', title: 'Guide de Référence Condensé' },
+  { id: 'WP00', title: 'Introduction & Fundamentals' },
+  { id: 'WP01', title: 'Effective Prompts' },
+  { id: 'WP02', title: 'Customization & Configuration' },
+  { id: 'WP03', title: 'Security in Production' },
+  { id: 'WP04', title: 'Internal Architecture' },
+  { id: 'WP05', title: 'Team Adoption' },
+  { id: 'WP06', title: 'Privacy & Compliance' },
+  { id: 'WP07', title: 'Condensed Reference Guide' },
   { id: 'WP08', title: 'Agent Teams & Sub-Agents' },
-  { id: 'WP09', title: 'Apprendre avec l\'IA — UVAL' },
-  { id: 'WP10', title: 'Budget & ROI de l\'IA' },
+  { id: 'WP09', title: 'Learning with AI — UVAL' },
+  { id: 'WP10', title: 'AI Budget & ROI' },
 ]
 ---
 
 <section class="section wp-section" id="whitepapers">
   <div class="container">
-    <h2 class="section-title">Whitepapers & Fiches Récap</h2>
+    <h2 class="section-title">Whitepapers & Recap Cards</h2>
     <p class="section-subtitle">
-      10 whitepapers + 11e (budget IA) sur les thèmes stratégiques Claude Code — format PDF court et dense
+      10 whitepapers + 11th (AI budget) on strategic Claude Code topics — short, dense PDF format
     </p>
 
     <div class="wp-layout">
       <!-- Whitepapers list -->
       <div class="wp-list-wrapper">
         <div class="wp-list-header">
+          <span class="recap-badge">COMING SOON</span>
           <span class="wp-count-badge">11 whitepapers</span>
           <span class="wp-lang-pill">FR + EN</span>
         </div>
@@ -38,29 +39,22 @@ const whitepapers = [
         </ul>
       </div>
 
-      <!-- Fiches récap -->
+      <!-- Recap cards -->
       <div class="recap-card">
         <div class="recap-header">
-          <span class="recap-badge">NEW</span>
-          <span class="recap-label">Fiches Récap</span>
+          <span class="recap-badge">COMING SOON</span>
+          <span class="recap-label">Recap Cards</span>
+          <span class="wp-lang-pill">FR + EN</span>
         </div>
         <p class="recap-desc">
-          10 fiches récap A4 — 1 fiche par whitepaper, format synthèse ultra-dense. Imprimables, prêtes à l'emploi.
+          10 A4 recap cards — 1 card per whitepaper, ultra-dense synthesis format. Printable, ready to use.
         </p>
         <ul class="recap-features">
-          <li>Format A4 1 page par fiche</li>
-          <li>Synthèse des concepts clés</li>
-          <li>Exemples et commandes intégrés</li>
-          <li>Palette Bold Guy (PDF haute qualité)</li>
+          <li>1-page A4 format per card</li>
+          <li>Key concepts synthesis</li>
+          <li>Integrated examples and commands</li>
+          <li>Bold Guy palette (high-quality PDF)</li>
         </ul>
-        <a
-          href="https://www.florian.bruniaux.com/guides"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-primary wp-cta"
-        >
-          Télécharger les PDFs &rarr;
-        </a>
       </div>
     </div>
   </div>
@@ -84,8 +78,10 @@ const whitepapers = [
 .wp-list-wrapper {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
   border-radius: var(--border-radius-lg);
   padding: var(--space-xl);
+  opacity: 0.75;
 }
 
 .wp-list-header {
@@ -151,16 +147,17 @@ const whitepapers = [
   line-height: 1.4;
 }
 
-/* Fiches récap card */
+/* Recap cards */
 .recap-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--border-radius-lg);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--border);
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
+  opacity: 0.75;
 }
 
 .recap-header {
@@ -170,7 +167,7 @@ const whitepapers = [
 }
 
 .recap-badge {
-  background: var(--accent);
+  background: var(--text-secondary);
   color: #fff;
   font-size: 0.68rem;
   font-weight: 800;
@@ -214,14 +211,9 @@ const whitepapers = [
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--text-secondary);
   font-size: 0.75rem;
   top: 0.1em;
-}
-
-.wp-cta {
-  align-self: flex-start;
-  margin-top: var(--space-sm);
 }
 
 /* Responsive */
