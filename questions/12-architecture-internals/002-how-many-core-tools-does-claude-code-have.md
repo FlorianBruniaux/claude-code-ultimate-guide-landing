@@ -22,4 +22,4 @@ How many core tools does Claude Code have?
 
 ---
 
-Claude Code has exactly 8 core tools: Bash (universal adapter), Read (file contents), Edit (modify files), Write (create/overwrite), Grep (search contents), Glob (find files), Task (sub-agents), and TodoWrite (progress tracking). That's the entire arsenal.
+Claude Code has exactly 8 core tools: Bash (universal adapter), Read (file contents), Edit (modify files), Write (create/overwrite), Grep (search contents), Glob (find files), Task (sub-agents), and TodoWrite (progress tracking). That's the entire arsenal. Note: TodoWrite was replaced by the Tasks API (TaskCreate/TaskGet/TaskList/TaskUpdate) in v2.1.16+ for persistent task management with dependencies.
