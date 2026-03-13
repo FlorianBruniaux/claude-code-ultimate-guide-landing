@@ -4,6 +4,19 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.8.0] - 2026-03-13
+
+### Added
+- **Ecosystem page (`/ecosystem/`)** — interactive browser for 25 community-built tools extending Claude Code
+  - Filterable by category (8), status (stable/beta/alpha/watch), and text search
+  - Cards with install command, language badge, expandable features/limitations/links
+  - URL hash navigation (`#rtk` scrolls to and expands that tool's card)
+  - Count-up animation on stats strip (25 tools, 8 categories, 6 languages, 4 stable)
+  - "Recommendations by Persona" table (6 personas)
+  - "Known Gaps" section (6 missing pieces in the community ecosystem)
+  - Source: `src/data/ecosystem-data.ts` (25 tools manually extracted from `guide/ecosystem/third-party-tools.md`)
+- **Header "More" dropdown** — added "Ecosystem" link between "AI Roles" and "Context"
+
 ## [2.7.0] - 2026-03-10
 
 ### Added

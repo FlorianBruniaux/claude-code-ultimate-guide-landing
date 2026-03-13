@@ -1,0 +1,957 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Third-Party Ecosystem: Tools for Claude Code | Claude Code Guide'
+const description = 'Community-built tools that extend Claude Code. 25+ tools across token tracking, session management, alternative UIs, multi-agent orchestration, and the plugin ecosystem.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "Third-Party Ecosystem: Tools for Claude Code",
+    "description": "Community-built tools extending Claude Code: token tracking, session management, alternative UIs, multi-agent orchestration, and the plugin ecosystem.",
+    "url": "https://cc.bruniaux.com/ecosystem/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/ecosystem/",
+    "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+    "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "inLanguage": "en",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Developers using Claude Code CLI"
+    }
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+    <header class="page-hero">
+        <div class="container">
+            <h1>Third-Party Ecosystem</h1>
+            <p class="tagline">Community-built tools that extend Claude Code. Every tool verified against its public repository.</p>
+            <div class="hero-badge">25+ tools &mdash; Last verified March 2026</div>
+            <div class="cta-buttons">
+                <a href="#tool-browser" class="btn btn-primary">Browse Tools</a>
+                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/third-party-tools.md" target="_blank" class="btn btn-secondary">Full Guide &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="content-section">
+        <h2>By the Numbers</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-target="25">0</div>
+                <div class="stat-label">Community Tools</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="6">0</div>
+                <div class="stat-label">Languages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="4">0</div>
+                <div class="stat-label">Stable Tools</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Browser -->
+    <section class="content-section content-section--alt" id="tool-browser">
+        <h2>Tool Browser</h2>
+
+        <div class="browser-controls">
+            <div class="search-wrap">
+                <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input
+                    type="text"
+                    id="tool-search"
+                    placeholder="Search tools (name, description...)"
+                    aria-label="Search tools"
+                />
+            </div>
+            <select id="category-filter" aria-label="Filter by category">
+                <option value="all">All categories</option>
+                <option value="token-tracking">Token &amp; Cost Tracking</option>
+                <option value="session-management">Session Management</option>
+                <option value="config-management">Configuration Management</option>
+                <option value="hook-utilities">Hook Utilities</option>
+                <option value="alternative-ui">Alternative UIs</option>
+                <option value="multi-agent">Multi-Agent Orchestration</option>
+                <option value="external-orchestration">External Orchestration</option>
+                <option value="plugin-ecosystem">Plugin Ecosystem</option>
+            </select>
+            <select id="status-filter" aria-label="Filter by status">
+                <option value="all">All statuses</option>
+                <option value="stable">Stable</option>
+                <option value="beta">Beta</option>
+                <option value="alpha">Alpha</option>
+                <option value="watch">Watch</option>
+            </select>
+        </div>
+
+        <div class="results-bar">
+            <span id="results-count">Loading...</span>
+        </div>
+
+        <div id="tools-grid" class="tools-grid" role="list">
+            <!-- Populated by JS -->
+        </div>
+
+        <div id="no-results" class="no-results eco-hidden">
+            <p>No tools match your filters. <button id="reset-filters" class="link-btn">Reset filters</button></p>
+        </div>
+    </section>
+
+    <!-- Recommendations by Persona -->
+    <section class="content-section">
+        <h2>Recommendations by Persona</h2>
+        <div class="persona-table-wrap">
+            <table class="persona-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>Recommended Tools</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Solo developer</strong></td>
+                        <td>ccusage + claude-code-viewer</td>
+                        <td>Cost awareness + session history review</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Small team (2-5)</strong></td>
+                        <td>ccusage + Conductor or multiclaude</td>
+                        <td>Cost tracking + parallel development</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enterprise</strong></td>
+                        <td>ccusage (MCP) + Entire CLI</td>
+                        <td>Programmatic cost data + audit trails</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Python-centric</strong></td>
+                        <td>ccburn + Claude Chic</td>
+                        <td>Native Python ecosystem tools</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multi-agent user</strong></td>
+                        <td>Toad or Conductor</td>
+                        <td>Unified agent management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Config-heavy setup</strong></td>
+                        <td>claude-code-config + AIBlueprint</td>
+                        <td>TUI config management + scaffolding</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Known Gaps -->
+    <section class="content-section content-section--alt">
+        <h2>Known Gaps</h2>
+        <p class="gaps-intro">As of March 2026, community tooling has notable missing pieces:</p>
+        <div class="gaps-grid">
+            <div class="gap-card">
+                <h3>Visual Skills Editor</h3>
+                <p>No GUI for creating or editing <code>.claude/skills/</code> — must edit YAML/Markdown manually.</p>
+            </div>
+            <div class="gap-card">
+                <h3>Visual Hooks Editor</h3>
+                <p>No GUI for managing hooks in <code>settings.json</code> — requires JSON editing.</p>
+            </div>
+            <div class="gap-card">
+                <h3>Unified Admin Panel</h3>
+                <p>No single dashboard combining config, sessions, cost, and MCP management.</p>
+            </div>
+            <div class="gap-card">
+                <h3>Per-MCP-Server Profiler</h3>
+                <p>No way to measure token cost attributable to each MCP server individually.</p>
+            </div>
+            <div class="gap-card">
+                <h3>Cross-Platform Config Sync</h3>
+                <p>No tool syncs Claude Code config across machines — manual copy of <code>~/.claude/</code> required.</p>
+            </div>
+            <div class="gap-card gap-card--filled">
+                <h3>Session Replay ✅ Filled</h3>
+                <p>Entire CLI (launched Feb 2026) provides rewindable checkpoints with full context replay.</p>
+            </div>
+        </div>
+    </section>
+
+</Layout>
+
+<script>
+    import { ECOSYSTEM_TOOLS, CATEGORY_LABELS, STATUS_LABELS } from '../../data/ecosystem-data';
+
+    // ── Count-up animation ────────────────────────────────────────────────────
+    function animateCountUp(el) {
+        var target = parseFloat(el.dataset.target);
+        var duration = 1200;
+        var start = performance.now();
+
+        function update(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target).toLocaleString();
+            if (progress < 1) requestAnimationFrame(update);
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCountUp(entry.target);
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(function(el) {
+        statsObserver.observe(el);
+    });
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function hexToRgba(hex, alpha) {
+        var r = parseInt(hex.slice(1, 3), 16);
+        var g = parseInt(hex.slice(3, 5), 16);
+        var b = parseInt(hex.slice(5, 7), 16);
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function getCategoryColor(category) {
+        // Colors chosen for legibility in both light and dark mode:
+        // bright enough to read on dark bg, saturated enough for light bg.
+        var colors = {
+            'token-tracking':        '#f97316',
+            'session-management':    '#60a5fa',
+            'config-management':     '#34d399',
+            'hook-utilities':        '#c084fc',
+            'alternative-ui':        '#f87171',
+            'multi-agent':           '#2dd4bf',
+            'external-orchestration':'#fb923c',
+            'plugin-ecosystem':      '#94a3b8',
+        };
+        return colors[category] || '#94a3b8';
+    }
+
+    function getStatusClass(status) {
+        return {
+            stable: 'status-stable',
+            beta:   'status-beta',
+            alpha:  'status-alpha',
+            watch:  'status-watch',
+        }[status] || 'status-alpha';
+    }
+
+    // ── Render ────────────────────────────────────────────────────────────────
+    function renderInstall(install) {
+        return '<div class="install-cmd"><code>' + escapeHtml(install) + '</code></div>';
+    }
+
+    function renderCard(tool) {
+        var catColor = getCategoryColor(tool.category);
+        var catLabel = CATEGORY_LABELS[tool.category] || tool.category;
+        var statusLabel = STATUS_LABELS[tool.status] || tool.status;
+
+        var featuresList = (tool.features || []).slice(0, 5).map(function(f) {
+            return '<li>' + escapeHtml(f) + '</li>';
+        }).join('');
+
+        var limitsList = (tool.limitations || []).map(function(l) {
+            return '<li>' + escapeHtml(l) + '</li>';
+        }).join('');
+
+        var detailsContent = '';
+        if (tool.when_to_use) {
+            detailsContent += '<div class="detail-block"><strong>When to use</strong><p>' + escapeHtml(tool.when_to_use) + '</p></div>';
+        }
+        if (featuresList) {
+            detailsContent += '<div class="detail-block"><strong>Key features</strong><ul>' + featuresList + '</ul></div>';
+        }
+        if (limitsList) {
+            detailsContent += '<div class="detail-block detail-block--warn"><strong>Limitations</strong><ul>' + limitsList + '</ul></div>';
+        }
+
+        var links = '<a href="' + escapeHtml(tool.source_url) + '" target="_blank" rel="noopener" class="tool-link">Source &rarr;</a>';
+        if (tool.website_url && tool.website_url !== tool.source_url) {
+            links += '<a href="' + escapeHtml(tool.website_url) + '" target="_blank" rel="noopener" class="tool-link">Website &rarr;</a>';
+        }
+
+        return (
+            '<div class="tool-card" id="' + escapeHtml(tool.id) + '" data-category="' + escapeHtml(tool.category) + '" data-status="' + escapeHtml(tool.status) + '" role="listitem">' +
+            '<div class="tool-card-header">' +
+            '<span class="cat-badge" style="background:' + hexToRgba(catColor, 0.12) + ';color:' + catColor + ';border-color:' + hexToRgba(catColor, 0.35) + '">' + escapeHtml(catLabel) + '</span>' +
+            '<span class="' + getStatusClass(tool.status) + ' status-badge">' + escapeHtml(statusLabel) + '</span>' +
+            '</div>' +
+            '<h3 class="tool-name">' + escapeHtml(tool.name) + '</h3>' +
+            (tool.author ? '<div class="tool-author">by ' + escapeHtml(tool.author) + '</div>' : '') +
+            '<p class="tool-desc">' + escapeHtml(tool.description) + '</p>' +
+            renderInstall(tool.install) +
+            '<div class="tool-meta">' +
+            '<span class="meta-tag">' + escapeHtml(tool.language) + '</span>' +
+            (tool.version ? '<span class="meta-tag">' + escapeHtml(tool.version) + '</span>' : '') +
+            '</div>' +
+            '<details class="tool-details">' +
+            '<summary>Details &amp; limitations</summary>' +
+            '<div class="tool-details-body">' +
+            detailsContent +
+            '<div class="tool-links">' + links + '</div>' +
+            '</div>' +
+            '</details>' +
+            '</div>'
+        );
+    }
+
+    // ── Filter logic ──────────────────────────────────────────────────────────
+    var searchInput = document.getElementById('tool-search');
+    var categoryFilter = document.getElementById('category-filter');
+    var statusFilter = document.getElementById('status-filter');
+    var toolsGrid = document.getElementById('tools-grid');
+    var noResults = document.getElementById('no-results');
+    var resultsCount = document.getElementById('results-count');
+    var resetBtn = document.getElementById('reset-filters');
+
+    function getFiltered() {
+        var query = (searchInput.value || '').toLowerCase().trim();
+        var cat = categoryFilter.value;
+        var stat = statusFilter.value;
+
+        return ECOSYSTEM_TOOLS.filter(function(tool) {
+            var matchesCat = cat === 'all' || tool.category === cat;
+            var matchesStat = stat === 'all' || tool.status === stat;
+            var matchesSearch = !query ||
+                tool.name.toLowerCase().includes(query) ||
+                tool.description.toLowerCase().includes(query) ||
+                tool.language.toLowerCase().includes(query) ||
+                (tool.author || '').toLowerCase().includes(query);
+            return matchesCat && matchesStat && matchesSearch;
+        });
+    }
+
+    function renderAll() {
+        var filtered = getFiltered();
+        if (filtered.length === 0) {
+            toolsGrid.innerHTML = '';
+            noResults.classList.remove('eco-hidden');
+            resultsCount.textContent = '0 tools';
+        } else {
+            noResults.classList.add('eco-hidden');
+            toolsGrid.innerHTML = filtered.map(renderCard).join('');
+            resultsCount.textContent = filtered.length + ' of ' + ECOSYSTEM_TOOLS.length + ' tools';
+
+            // Expand if URL hash matches a tool
+            var hash = window.location.hash.replace('#', '');
+            if (hash) {
+                var target = document.getElementById(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    var details = target.querySelector('details');
+                    if (details) details.open = true;
+                }
+            }
+        }
+    }
+
+    searchInput.addEventListener('input', renderAll);
+    categoryFilter.addEventListener('change', renderAll);
+    statusFilter.addEventListener('change', renderAll);
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            categoryFilter.value = 'all';
+            statusFilter.value = 'all';
+            renderAll();
+        });
+    }
+
+    // Handle hash navigation
+    window.addEventListener('hashchange', function() {
+        var hash = window.location.hash.replace('#', '');
+        if (hash) {
+            var target = document.getElementById(hash);
+            if (!target) {
+                // Reset filters and re-render to make the tool visible
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                statusFilter.value = 'all';
+                renderAll();
+                setTimeout(function() {
+                    var t = document.getElementById(hash);
+                    if (t) {
+                        t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        var details = t.querySelector('details');
+                        if (details) details.open = true;
+                    }
+                }, 100);
+            }
+        }
+    });
+
+    // Initial render
+    renderAll();
+</script>
+
+<style is:global>
+    .hero-badge {
+        display: inline-block;
+        padding: var(--space-sm) var(--space-lg);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: var(--space-xl);
+    }
+
+    .content-section {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: var(--space-3xl) var(--space-lg);
+    }
+
+    .content-section--alt {
+        background: var(--bg-secondary);
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: var(--space-xl);
+        padding-bottom: var(--space-md);
+        border-bottom: 3px solid var(--accent);
+        letter-spacing: -0.01em;
+    }
+
+    .content-section h2::after {
+        content: none;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: var(--space-md);
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    /* Stats */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-lg);
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .stat-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-xl);
+        text-align: center;
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        line-height: 1.1;
+        margin-bottom: var(--space-sm);
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Browser controls */
+    .browser-controls {
+        display: flex;
+        gap: var(--space-md);
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+    }
+
+    .search-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted);
+        pointer-events: none;
+    }
+
+    #tool-search {
+        width: 100%;
+        padding: var(--space-sm) var(--space-lg) var(--space-sm) 40px;
+        background: var(--surface-elevated);
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        font-size: 0.95rem;
+        transition: all var(--transition-fast);
+    }
+
+    #tool-search:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-color: var(--accent);
+    }
+
+    #category-filter,
+    #status-filter {
+        padding: var(--space-sm) var(--space-lg);
+        background: var(--surface-elevated);
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        white-space: nowrap;
+    }
+
+    #category-filter:hover,
+    #status-filter:hover {
+        border-color: var(--accent);
+    }
+
+    #category-filter:focus,
+    #status-filter:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-color: var(--accent);
+    }
+
+    .results-bar {
+        margin-bottom: var(--space-lg);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    /* Tool cards grid */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: var(--space-xl);
+    }
+
+    @media (max-width: 768px) {
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .tool-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-xl);
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .tool-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+    }
+
+    .tool-card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        min-height: 28px;
+    }
+
+    .cat-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.73rem;
+        font-weight: 600;
+        border: 1px solid;
+        letter-spacing: 0.1px;
+        line-height: 1.4;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        margin-left: auto;
+    }
+
+    .status-stable {
+        background: rgba(22, 163, 74, 0.12);
+        color: var(--status-success);
+        border: 1px solid rgba(22, 163, 74, 0.35);
+    }
+
+    .status-beta {
+        background: rgba(59, 130, 246, 0.12);
+        color: var(--status-info);
+        border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .status-alpha {
+        background: rgba(234, 179, 8, 0.12);
+        color: var(--status-warning);
+        border: 1px solid rgba(234, 179, 8, 0.35);
+    }
+
+    .status-watch {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--status-danger);
+        border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .tool-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+    }
+
+    .tool-author {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        margin-top: -6px;
+    }
+
+    .tool-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+        margin: 0;
+        flex: 1;
+        padding-top: var(--space-xs);
+        border-top: 1px solid var(--border);
+    }
+
+    .install-cmd {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--border-radius);
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.82rem;
+        overflow-x: auto;
+    }
+
+    .install-cmd code {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        white-space: nowrap;
+    }
+
+    .tool-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .meta-tag {
+        display: inline-block;
+        padding: 2px 8px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    /* Details panel */
+    .tool-details {
+        margin-top: var(--space-sm);
+        border-top: 1px solid var(--border);
+        padding-top: var(--space-md);
+    }
+
+    .tool-details summary {
+        cursor: pointer;
+        font-size: 0.875rem;
+        color: var(--accent);
+        font-weight: 600;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: opacity var(--transition-fast);
+    }
+
+    .tool-details summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .tool-details summary::before {
+        content: '▶';
+        font-size: 0.65rem;
+        transition: transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .tool-details[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    .tool-details summary:hover {
+        opacity: 0.8;
+    }
+
+    .tool-details-body {
+        margin-top: var(--space-md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .detail-block {
+        padding: var(--space-md) var(--space-lg);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        font-size: 0.875rem;
+    }
+
+    .detail-block--warn {
+        border-left: 3px solid var(--status-warning, #e67e22);
+    }
+
+    .detail-block strong {
+        display: block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        margin-bottom: var(--space-sm);
+    }
+
+    .detail-block p {
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .detail-block ul {
+        margin: 0;
+        padding-left: var(--space-lg);
+        color: var(--text-secondary);
+    }
+
+    .detail-block ul li {
+        margin-bottom: 4px;
+        line-height: 1.5;
+    }
+
+    .tool-links {
+        display: flex;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+    }
+
+    .tool-link {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        transition: opacity var(--transition-fast);
+    }
+
+    .tool-link:hover {
+        opacity: 0.75;
+        text-decoration: underline;
+    }
+
+    /* No results */
+    .no-results {
+        text-align: center;
+        padding: var(--space-3xl);
+        color: var(--text-muted);
+    }
+
+    .eco-hidden {
+        display: none;
+    }
+
+    .link-btn {
+        background: none;
+        border: none;
+        color: var(--accent);
+        font-weight: 600;
+        cursor: pointer;
+        font-size: inherit;
+        text-decoration: underline;
+        padding: 0;
+    }
+
+    /* Persona table */
+    .persona-table-wrap {
+        overflow-x: auto;
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .persona-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .persona-table th,
+    .persona-table td {
+        padding: var(--space-md) var(--space-lg);
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.95rem;
+    }
+
+    .persona-table th {
+        background: var(--bg-secondary);
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .persona-table tbody tr:hover {
+        background: var(--bg-secondary);
+    }
+
+    .persona-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .persona-table td:nth-child(2) {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--accent);
+    }
+
+    /* Known gaps */
+    .gaps-intro {
+        color: var(--text-secondary);
+        margin-bottom: var(--space-xl);
+        font-size: 0.95rem;
+    }
+
+    .gaps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .gap-card {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        padding: var(--space-lg);
+        transition: all var(--transition-fast);
+    }
+
+    .gap-card--filled {
+        border-left-color: var(--accent);
+        opacity: 0.75;
+    }
+
+    .gap-card h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: var(--text-primary);
+    }
+
+    .gap-card p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .gap-card code {
+        font-family: var(--font-mono);
+        font-size: 0.8em;
+        background: var(--bg-tertiary);
+        padding: 1px 5px;
+        border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+        .browser-controls {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-wrap {
+            min-width: unset;
+        }
+
+        .gaps-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
