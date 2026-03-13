@@ -412,6 +412,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-rpi-workflow",
+    "title": "Rpi Workflow",
+    "keywords": "rpi workflow guide workflows rpi",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
     "id": "guide-install-templates-script",
     "title": "Install Templates Script",
     "keywords": "install templates script scripts install templates",
@@ -553,6 +561,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "pdf generator skill examples skills pdf generator",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pdf-generator.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-og-image-generation-guide",
+    "title": "Og Image Generation Guide",
+    "keywords": "og image generation guide guide workflows image generation",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/og-image-generation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-og-image-astro-template",
+    "title": "Og Image Astro Template",
+    "keywords": "og image astro template examples scripts image astro",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/og-image-astro.ts",
+    "source": "guide"
+  },
+  {
+    "id": "guide-og-image-gotchas",
+    "title": "Og Image Gotchas",
+    "keywords": "og image gotchas woff1 only (no woff2 ttf), static file shadowing, dynamic stat counting from content dirs",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/woff1 only (no woff2/ttf), static file shadowing, dynamic stat counting from content dirs",
     "source": "guide"
   },
   {
