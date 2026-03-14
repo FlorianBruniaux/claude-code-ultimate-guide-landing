@@ -31,14 +31,13 @@ const commands = [
 ## Guide + CC CLI
 
 Guide [3.35.0] — 2026-03-13:
-- CC releases tracking updated to v2.1.74 — /context actionable
-  suggestions, autoMemoryDirectory, streaming buffer memory leak
-  fix, managed policy ask bypass fix, SessionEnd timeout fix
-- v2.1.73 — modelOverrides setting, skill hot-reload deadlock fix,
-  subagent model downgrade fix on Bedrock/Vertex/Foundry,
-  Opus 4.6 default on 3P, /output-style deprecated
+- CC releases tracking updated to v2.1.75 — 1M context Opus 4.6
+  default for Max/Team/Enterprise, session name on prompt bar,
+  token estimation fix (premature compaction), Bash ! mangling fix
+- v2.1.74 — /context actionable suggestions, autoMemoryDirectory,
+  streaming buffer memory leak fix, SessionEnd timeout fix
 
-CC CLI releases: none in last 24h (latest tracked: v2.1.74)
+CC CLI releases: v2.1.75 released 2026-03-13 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -144,10 +143,20 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.74 (updated: 2026-03-12)
+Latest: v2.1.75 (updated: 2026-03-13)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
+v2.1.75 — 2026-03-13
+
+- 1M context for Opus 4.6 now default for Max, Team, Enterprise
+  (previously required extra usage)
+- Session name display on prompt bar when using /rename
+- Fixed token estimation over-counting for thinking/tool_use blocks
+  (was causing premature context compaction)
+- Fixed Bash tool mangling ! in piped commands
+- Improved startup performance on macOS non-MDM machines
+
 v2.1.74 — 2026-03-12
 
 - /context command now shows actionable suggestions (context-heavy
@@ -155,7 +164,6 @@ v2.1.74 — 2026-03-12
 - Fixed memory leak in streaming API buffers (unbounded RSS growth)
 - autoMemoryDirectory setting for custom auto-memory storage path
 - Fixed managed policy ask rules bypassed by user allow rules
-- Fixed MCP OAuth hanging on callback port conflict
 - Fixed SessionEnd hooks killed after 1.5s (now configurable)
 
 v2.1.73 — 2026-03-11

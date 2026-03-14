@@ -16,6 +16,21 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.75',
+    date: 'Mar 13, 2026',
+    highlights: [
+      '⭐ <strong>1M context for Opus 4.6 — default</strong> for Max, Team, and Enterprise plans (no extra usage required)',
+      'Session name display on prompt bar with <code>/rename</code>; hook source displayed in permission prompts',
+      'Fixed token estimation over-counting for thinking/<code>tool_use</code> blocks (was causing premature compaction)',
+      'Fixed Bash tool mangling <code>!</code> in piped commands (e.g. <code>jq \'select(.x != .y)\'</code> now works)',
+      'Improved startup performance on macOS non-MDM machines',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ 1M context Opus 4.6 default + token fix',
+  },
+  {
     version: 'v2.1.74',
     date: 'Mar 12, 2026',
     highlights: [
@@ -25,7 +40,6 @@ export const releases: Release[] = [
       'Fixed managed policy <code>ask</code> rules being bypassed by user <code>allow</code> rules or skill <code>allowed-tools</code>',
       'Fixed <code>SessionEnd</code> hooks killed after 1.5s regardless of <code>hook.timeout</code> (now configurable)',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ /context suggestions + memory leak fix',
