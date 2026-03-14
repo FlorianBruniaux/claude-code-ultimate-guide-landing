@@ -16,6 +16,21 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.76',
+    date: 'Mar 14, 2026',
+    highlights: [
+      '⭐ <strong>MCP elicitation</strong> — servers request structured input mid-task via interactive dialog; new <code>Elicitation</code>, <code>ElicitationResult</code>, <code>PostCompact</code> hooks',
+      '<code>-n</code>/<code>--name</code> CLI flag for session display name; <code>worktree.sparsePaths</code> for monorepo sparse checkout; <code>/effort</code> slash command',
+      'Fixed deferred tools (<code>ToolSearch</code>) losing input schemas after compaction; auto-compact circuit breaker (stops after 3 failures)',
+      'Fixed <code>Bash(cmd:*)</code> rules not matching when argument contains <code>#</code>; plan mode re-approval after already accepted',
+      'Improved: background agent partial results preserved on kill; model fallback notifications always visible',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ MCP elicitation + PostCompact hook',
+  },
+  {
     version: 'v2.1.75',
     date: 'Mar 13, 2026',
     highlights: [
@@ -25,7 +40,6 @@ export const releases: Release[] = [
       'Fixed Bash tool mangling <code>!</code> in piped commands (e.g. <code>jq \'select(.x != .y)\'</code> now works)',
       'Improved startup performance on macOS non-MDM machines',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ 1M context Opus 4.6 default + token fix',

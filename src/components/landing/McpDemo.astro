@@ -30,14 +30,14 @@ const commands = [
 
 ## Guide + CC CLI
 
-Guide [3.35.0] — 2026-03-13:
-- CC releases tracking updated to v2.1.75 — 1M context Opus 4.6
-  default for Max/Team/Enterprise, session name on prompt bar,
+Guide [3.35.0] — 2026-03-14:
+- CC releases tracking updated to v2.1.76 — MCP elicitation support,
+  Elicitation/ElicitationResult/PostCompact hooks, -n/--name flag,
+  /effort command, ToolSearch schema fix, auto-compact circuit breaker
+- v2.1.75 — 1M context Opus 4.6 default for Max/Team/Enterprise,
   token estimation fix (premature compaction), Bash ! mangling fix
-- v2.1.74 — /context actionable suggestions, autoMemoryDirectory,
-  streaming buffer memory leak fix, SessionEnd timeout fix
 
-CC CLI releases: v2.1.75 released 2026-03-13 (latest tracked)
+CC CLI releases: v2.1.76 released 2026-03-14 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -143,10 +143,21 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.75 (updated: 2026-03-13)
+Latest: v2.1.76 (updated: 2026-03-14)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
+v2.1.76 — 2026-03-14
+
+- MCP elicitation: servers request structured input mid-task via
+  interactive dialog (form fields or browser URL)
+- New hooks: Elicitation, ElicitationResult, PostCompact
+- -n/--name CLI flag for session display name; worktree.sparsePaths
+  for monorepo sparse checkout; /effort slash command
+- Fixed ToolSearch deferred tools losing input schemas after compaction
+- Auto-compact circuit breaker: stops after 3 consecutive failures
+- Fixed Bash(cmd:*) rules not matching when argument contains #
+
 v2.1.75 — 2026-03-13
 
 - 1M context for Opus 4.6 now default for Max, Team, Enterprise
