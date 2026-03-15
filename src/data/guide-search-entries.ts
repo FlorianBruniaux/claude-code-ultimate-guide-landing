@@ -588,6 +588,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-gstack-workflow",
+    "title": "Gstack Workflow",
+    "keywords": "gstack workflow guide workflows gstack workflow",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-plan-ceo-review",
+    "title": "Gstack Plan Ceo Review",
+    "keywords": "gstack plan ceo review examples commands plan ceo review",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-ceo-review.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-plan-eng-review",
+    "title": "Gstack Plan Eng Review",
+    "keywords": "gstack plan eng review examples commands plan eng review",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-eng-review.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-talk-pipeline-workflow",
     "title": "Talk Pipeline Workflow",
     "keywords": "talk pipeline workflow guide workflows talk pipeline",
@@ -1129,6 +1153,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "enterprise governance scope org level policy (vs security hardening md = individual dev security)",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Org-level policy (vs security-hardening.md = individual dev security)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-gitdiff-watcher-purpose",
+    "title": "Third Party Gitdiff Watcher Purpose",
+    "keywords": "third party gitdiff watcher purpose stop hook utility — enforces build test quality gates before handoff, fires only when matching files changed",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Stop hook utility — enforces build/test quality gates before handoff, fires only when matching files changed",
     "source": "guide"
   },
   {

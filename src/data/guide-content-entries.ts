@@ -2909,6 +2909,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-third-party-tools-hook-utilities",
+    "title": "Hook Utilities",
+    "keywords": "hook utilities third party tools for claude code tools that extend claude code's hook system with additional logic, conditional execution, or automation patterns. for diy hook examples, see the hooks",
+    "category": "Core Guides",
+    "url": "/guide/third-party-tools/#hook-utilities",
+    "source": "guide"
+  },
+  {
     "id": "gc-third-party-tools-alternative-uis",
     "title": "Alternative UIs",
     "keywords": "alternative uis third party tools for claude code claude chic a styled terminal ui for claude code built on anthropic's claude-agent-sdk. replaces the default claude code tui with a visually enhanced",
@@ -6266,6 +6274,86 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "see also exploration before implementation - plan-driven.md — for codebase exploration (/plan mode) - iterative-refinement.md — refine after choosing approach - ../examples/semantic-anchors/anc",
     "category": "Workflows",
     "url": "/guide/workflows/exploration-workflow/#see-also",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-tl-dr",
+    "title": "TL;DR",
+    "keywords": "tl dr cognitive mode switching one generic assistant blurs all phases together. this pattern gives each phase a distinct cognitive mode: you summon the right brain for the job, then",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#tl-dr",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-the-6-gears",
+    "title": "The 6 Gears",
+    "keywords": "the 6 gears cognitive mode switching command role core question when to switch --------- ------ --------------- ---------------- founder / ceo \"are we building the right thing?\" before wr",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#the-6-gears",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-the-gap-this-fills-pre-implementation-strategic-ga",
+    "title": "The Gap This Fills: Pre-Implementation Strategic Gate",
+    "keywords": "the gap this fills pre implementation strategic gate cognitive mode switching the hardest thing to get right with an ai coding assistant is not the implementation. it is the question that comes before",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#the-gap-this-fills-pre-implementation-strategic-gate",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-plan-eng-review-making-the-idea-buildable",
+    "title": "/plan-eng-review: Making the Idea Buildable",
+    "keywords": "plan eng review making the idea buildable cognitive mode switching once direction is locked, the cognitive mode shifts from product intuition to engineering rigor. is where ideation stops and architec",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#plan-eng-review-making-the-idea-buildable",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-review-paranoid-staff-engineer-mode",
+    "title": "/review: Paranoid Staff Engineer Mode",
+    "keywords": "review paranoid staff engineer mode cognitive mode switching passing tests do not mean the branch is safe. exists for the class of bugs that survive ci and hit production anyway. what it checks: - n+1",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#review-paranoid-staff-engineer-mode",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-browse-non-mcp-native-browser-automation",
+    "title": "/browse: Non-MCP Native Browser Automation",
+    "keywords": "browse non mcp native browser automation cognitive mode switching is the most technically distinct piece of gstack. it is not a mcp server. it is a compiled native binary (typescript + bun) that runs ",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#browse-non-mcp-native-browser-automation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-full-cycle-demo",
+    "title": "Full Cycle Demo",
+    "keywords": "full cycle demo cognitive mode switching ``` 1. strategic gate — challenge the brief [plan mode] you: i want to add seller photo upload to the listing app. sellers should be able to upload a",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#full-cycle-demo",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-install",
+    "title": "Install",
+    "keywords": "install cognitive mode switching or paste this directly into claude code and it handles the rest: install gstack: run for team installs (committed to repo so just works for teammates)",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#install",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-when-to-use-this-vs-other-workflows",
+    "title": "When to Use This vs. Other Workflows",
+    "keywords": "when to use this vs other workflows cognitive mode switching situation this workflow alternative ----------- --------------- ------------- complex feature, direction uncertain first spec-first directi",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#when-to-use-this-vs-other-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-gstack-workflow-see-also",
+    "title": "See Also",
+    "keywords": "see also cognitive mode switching - plan pipeline — automated 3-command workflow with adr learning loop - plan-driven development — fundamentals of planning before coding - iterative r",
+    "category": "Workflows",
+    "url": "/guide/workflows/gstack-workflow/#see-also",
     "source": "guide"
   },
   {
