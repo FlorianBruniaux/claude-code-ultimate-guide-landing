@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for 222+ templates
- * Last synced: 2026-03-09
+ * Source of truth for 226+ templates
+ * Last synced: 2026-03-16
  */
 
 export interface ExampleFile {
@@ -137,7 +137,10 @@ export const EXAMPLES = {
             { name: "privacy-warning.sh", path: "hooks/bash/privacy-warning.sh", description: "Warn on privacy-sensitive ops" },
             { name: "tts-selective.sh", path: "hooks/bash/tts-selective.sh", description: "Text-to-speech for selected outputs" },
             { name: "notification.sh", path: "hooks/bash/notification.sh", description: "macOS contextual sound alerts" },
-            { name: "pre-commit-evaluator.sh", path: "hooks/bash/pre-commit-evaluator.sh", description: "LLM-as-a-Judge pre-commit validation" }
+            { name: "pre-commit-evaluator.sh", path: "hooks/bash/pre-commit-evaluator.sh", description: "LLM-as-a-Judge pre-commit validation" },
+            { name: "smart-suggest.sh", path: "hooks/bash/smart-suggest.sh", description: "Suggest relevant commands/agents based on prompt intent", favorite: true },
+            { name: "governance-enforcement-hook.sh", path: "hooks/bash/governance-enforcement-hook.sh", description: "Enforce project config, MCP registry, and data classification policies" },
+            { name: "identity-reinjection.sh", path: "hooks/bash/identity-reinjection.sh", description: "Re-inject agent identity after context compaction" }
         ]
     },
     "hooks-powershell": {
@@ -216,7 +219,8 @@ export const EXAMPLES = {
             { name: "migrate-arguments-syntax.ps1", path: "scripts/migrate-arguments-syntax.ps1", description: "Migrate v1 → v2 slash command argument syntax (PowerShell)" },
             { name: "rtk-benchmark.sh", path: "scripts/rtk-benchmark.sh", description: "Benchmark RTK token savings vs raw commands" },
             { name: "sync-claude-config.sh", path: "scripts/sync-claude-config.sh", description: "Sync Claude config files across machines" },
-            { name: "sonnetplan.sh", path: "scripts/sonnetplan.sh", description: "Run Claude with Sonnet replacing Opus (cost optimization)" }
+            { name: "sonnetplan.sh", path: "scripts/sonnetplan.sh", description: "Run Claude with Sonnet replacing Opus (cost optimization)" },
+            { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI — track suggestion follow-through rates", favorite: true }
         ]
     },
     "team-config": {
