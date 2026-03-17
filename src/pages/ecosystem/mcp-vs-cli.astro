@@ -1,0 +1,915 @@
+---
+// SYNC: content derived from guide/ecosystem/mcp-vs-cli.md
+// Source: /Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide/guide/ecosystem/mcp-vs-cli.md
+// When updating the guide section, update this page too.
+// Checked by: scripts/check-landing-sync.sh (section 7)
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'MCP vs CLI in Claude Code — When to Use Each | Claude Code Guide'
+const description = 'Neither MCP servers nor CLI tools are universally better. Four decision questions to pick the right approach for your context, with a 15-row guidance table and practitioner quotes.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "MCP vs CLI in Claude Code — Which One Should You Use?",
+    "description": "Decision guide: MCP servers vs CLI tools in Claude Code workflows. Four decision dimensions, guidance by situation, token cost analysis, and practitioner quotes.",
+    "keywords": "MCP vs CLI, Claude Code MCP, Claude Code CLI tools, MCP servers token cost, when to use MCP, Claude Code workflow",
+    "url": "https://cc.bruniaux.com/ecosystem/mcp-vs-cli/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/ecosystem/mcp-vs-cli/",
+    "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
+    "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
+    "datePublished": "2026-03-17",
+    "dateModified": "2026-03-17",
+    "inLanguage": "en"
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="mcp-hero">
+    <div class="container">
+      <div class="mcp-hero-breadcrumb">
+        <a href="/">&larr; Guide</a>
+        <span>/</span>
+        <a href="/ecosystem/">Ecosystem</a>
+        <span>/</span>
+        <span>MCP vs CLI</span>
+      </div>
+      <h1>MCP vs CLI in Claude Code &mdash; Which One Should You Use?</h1>
+      <p class="mcp-hero-tagline">Neither is universally better. The right choice depends on your context — and most production workflows end up using both.</p>
+      <p class="mcp-hero-date">Last reviewed: March 2026</p>
+      <nav class="mcp-hero-nav" aria-label="Page sections">
+        <a href="#decisions" class="mcp-nav-pill">Decision Guide</a>
+        <a href="#situations" class="mcp-nav-pill">By Situation</a>
+        <a href="#tradeoffs" class="mcp-nav-pill">Tradeoffs</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- TL;DR callout -->
+  <section class="mcp-section mcp-section--tldr">
+    <div class="container">
+      <div class="tldr-callout">
+        <div class="tldr-label">TL;DR</div>
+        <p>Most production workflows use both. CLI for the inner loop (local dev, git, file ops). MCP for the outer loop (CI/CD, shared infrastructure, non-technical users). Here's how to decide which for what.</p>
+        <p class="tldr-stat">Each MCP server injects 500&ndash;2,000 tokens at startup. With 5 servers loaded, that's 2,500&ndash;10,000 tokens before any task starts &mdash; whether or not those tools are used that session. <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#token-cost-of-mcp-schemas--what-the-numbers-look-like">Full token cost analysis in the guide &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Four Questions to Decide -->
+  <section class="mcp-section" id="decisions">
+    <div class="container">
+      <div class="mcp-section-header">
+        <h2>Four Questions to Decide</h2>
+        <p>Answer these in order. They rank from most to least constraining.</p>
+      </div>
+
+      <div class="decision-cards">
+
+        <div class="decision-card">
+          <div class="ws-num">1</div>
+          <div class="decision-content">
+            <strong>Who is the end user?</strong>
+            <p>This is the dominant variable. Everything else is secondary.</p>
+            <div class="decision-branches">
+              <div class="decision-branch decision-branch--mcp">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-mcp">MCP / Skill</span>
+                Non-technical user (chat interface, no terminal). You cannot expose a raw CLI to a non-dev user. Connectors must be MCP-based or wrapped invisibly in a skill.
+              </div>
+              <div class="decision-branch decision-branch--cli">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-cli">CLI</span>
+                Technical user / developer. Continue to question 2.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="ws-num">2</div>
+          <div class="decision-content">
+            <strong>Which model is driving the tool?</strong>
+            <p>Frontier models handle CLIs natively. Smaller models benefit from structured schemas.</p>
+            <div class="decision-branches">
+              <div class="decision-branch decision-branch--cli">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-cli">CLI</span>
+                Frontier model (Claude Opus/Sonnet 4.6). Strong enough to drive complex CLIs directly. A structured MCP schema adds overhead without proportional benefit.
+              </div>
+              <div class="decision-branch decision-branch--mcp">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-mcp">MCP</span>
+                Smaller or local model (Qwen, Mistral, lighter deployments). Structured schemas compensate for weaker CLI parsing ability.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="ws-num">3</div>
+          <div class="decision-content">
+            <strong>Does your organization need observability?</strong>
+            <p>CLI calls on local machines are invisible. MCP Remote servers can log every tool invocation.</p>
+            <div class="decision-branches">
+              <div class="decision-branch decision-branch--mcp">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-mcp-remote">MCP Remote</span>
+                Yes &mdash; enterprise, compliance, ROI attribution, C-level reporting. Local CLI calls are a black box. A remote MCP server can log every invocation, associate it with a user, and feed dashboards.
+              </div>
+              <div class="decision-branch decision-branch--cli">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-cli">CLI</span>
+                No &mdash; individual dev, local workflow. Observability is not a constraint.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="ws-num">4</div>
+          <div class="decision-content">
+            <strong>How often does the tool schema change?</strong>
+            <p>Stable APIs justify the MCP investment. Thin wrappers are cheaper to maintain as CLIs.</p>
+            <div class="decision-branches">
+              <div class="decision-branch decision-branch--mcp">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-mcp">MCP</span>
+                Stable API (mature tool, versioned interface). MCP investment pays off over time. One server update, all connected clients get the change.
+              </div>
+              <div class="decision-branch decision-branch--cli">
+                <span class="branch-arrow">&rarr;</span>
+                <span class="branch-badge badge-cli">CLI</span>
+                Rapidly changing or thin wrapper. A custom CLI exposing only the 5 commands you actually use is more durable than a full MCP that duplicates the entire API surface.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="section-footnote"><a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md">Full 24-point tradeoff comparison in the guide &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- Section 2: Practitioner Quotes -->
+  <section class="mcp-section mcp-section--alt" id="tradeoffs">
+    <div class="container">
+      <div class="mcp-section-header">
+        <h2>What Practitioners Say</h2>
+        <p>Representative perspectives from experienced Claude Code users in production.</p>
+      </div>
+
+      <div class="quotes-list">
+        <blockquote class="practitioner-quote">
+          <p>"I prefer CLI for deterministic actions. For GitLab interactions I use glab (the GitLab MCP is too limited) wrapped in a custom CLI &mdash; usable by both humans and AI."</p>
+          <footer class="quote-tag">on deterministic actions</footer>
+        </blockquote>
+
+        <blockquote class="practitioner-quote">
+          <p>"On Claude Code with frontier models, fewer MCPs is better. I replaced playwright-mcp with playwright-cli + skill &mdash; faster and more effective. I still use context7-mcp only because I haven't found a CLI equivalent."</p>
+          <footer class="quote-tag">on frontier models</footer>
+        </blockquote>
+
+        <blockquote class="practitioner-quote">
+          <p>"The CLI vs MCP debate is only happening among devs doing dev things. But there's one fundamental constraint: you cannot propose a CLI solution to a non-technical user who just wants to use their tool simply."</p>
+          <footer class="quote-tag">on user context</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Guidance by Situation -->
+  <section class="mcp-section" id="situations">
+    <div class="container">
+      <div class="mcp-section-header">
+        <h2>Guidance by Situation</h2>
+        <p>Directional defaults, not hard rules. Your context may justify a different choice.</p>
+      </div>
+
+      <div class="situations-groups">
+
+        <details open>
+          <summary>By User Type</summary>
+          <div class="situations-table-wrap">
+            <table class="situations-table">
+              <thead>
+                <tr><th>Situation</th><th>Lean toward</th><th>Rationale</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Non-technical user, chat interface</td>
+                  <td><span class="badge-inline badge-mcp">MCP / Skill</span></td>
+                  <td>CLI is inaccessible; connectors must be invisible</td>
+                </tr>
+                <tr>
+                  <td>Frontier model (Claude 4.x), developer workflow</td>
+                  <td><span class="badge-inline badge-cli">CLI</span></td>
+                  <td>Model handles it natively; schemas are overhead</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details open>
+          <summary>By Model Capability</summary>
+          <div class="situations-table-wrap">
+            <table class="situations-table">
+              <thead>
+                <tr><th>Situation</th><th>Lean toward</th><th>Rationale</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Smaller/local model</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>Schema guides the model reliably</td>
+                </tr>
+                <tr>
+                  <td>Browser automation (non-frontier model)</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>Playwright MCP structures interaction reliably</td>
+                </tr>
+                <tr>
+                  <td>Browser automation (frontier model, Claude Code)</td>
+                  <td><span class="badge-inline badge-skill">CLI + Skill</span></td>
+                  <td>playwright-cli + skill reported faster and more efficient in practice</td>
+                </tr>
+                <tr>
+                  <td>Documentation lookup (Context7)</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>No CLI equivalent; structured doc retrieval has no shell analog</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details open>
+          <summary>By Organization Needs</summary>
+          <div class="situations-table-wrap">
+            <table class="situations-table">
+              <thead>
+                <tr><th>Situation</th><th>Lean toward</th><th>Rationale</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Enterprise, observability required</td>
+                  <td><span class="badge-inline badge-mcp">MCP Remote</span></td>
+                  <td>Only way to log, attribute, and report on usage</td>
+                </tr>
+                <tr>
+                  <td>Team distribution (10+ devs)</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>Central update vs per-machine CLI maintenance</td>
+                </tr>
+                <tr>
+                  <td>Complex auth (OAuth, token refresh)</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>Server handles auth; CLI would require credential plumbing</td>
+                </tr>
+                <tr>
+                  <td>Individual dev, local machine</td>
+                  <td><span class="badge-inline badge-cli">CLI or Skill</span></td>
+                  <td>Simpler, faster, no infrastructure</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details open>
+          <summary>By Technical Workflow</summary>
+          <div class="situations-table-wrap">
+            <table class="situations-table">
+              <thead>
+                <tr><th>Situation</th><th>Lean toward</th><th>Rationale</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Deterministic actions (git, CI, deploy)</td>
+                  <td><span class="badge-inline badge-cli">CLI</span></td>
+                  <td>Explicit commands, predictable output, auditable</td>
+                </tr>
+                <tr>
+                  <td>Tight context budget / many tools loaded</td>
+                  <td><span class="badge-inline badge-cli">CLI</span></td>
+                  <td>No schema injection at startup</td>
+                </tr>
+                <tr>
+                  <td>Agent-to-agent structured output</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>JSON responses are more reliable than parsed CLI text</td>
+                </tr>
+                <tr>
+                  <td>Debugging / prototyping a new integration</td>
+                  <td><span class="badge-inline badge-cli">CLI</span></td>
+                  <td>Easier to inspect, faster to iterate</td>
+                </tr>
+                <tr>
+                  <td>GitLab / GitHub access</td>
+                  <td><span class="badge-inline badge-cli">CLI</span> (glab, gh)</td>
+                  <td>Official CLIs are richer than most MCP wrappers</td>
+                </tr>
+                <tr>
+                  <td>Stable API, mature tool</td>
+                  <td><span class="badge-inline badge-mcp">MCP</span></td>
+                  <td>MCP investment pays off over time; one server update reaches all clients</td>
+                </tr>
+                <tr>
+                  <td>Thin wrapper or rapidly changing API</td>
+                  <td><span class="badge-inline badge-cli">CLI</span></td>
+                  <td>CLI exposing only the 5 commands you use is cheaper to maintain</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Tooling -->
+  <section class="mcp-section mcp-section--alt">
+    <div class="container">
+      <div class="mcp-section-header">
+        <h2>Tools in This Space</h2>
+        <p>Three tools addressing the MCP-vs-CLI boundary directly.</p>
+      </div>
+
+      <div class="tooling-rows">
+        <div class="tooling-row">
+          <div class="tooling-name">RTK <span class="maturity-badge maturity-stable">Stable</span></div>
+          <div class="tooling-desc">Filters CLI output before it reaches Claude's context window. Reduces response verbosity, not schema overhead. Useful for high-frequency dev loops (git, cargo, pnpm).</div>
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#tooling-in-this-space" class="tooling-link">Details in guide &rarr;</a>
+        </div>
+        <div class="tooling-row">
+          <div class="tooling-name">MCPorter <span class="maturity-badge maturity-ready">Ready</span></div>
+          <div class="tooling-desc">TypeScript runtime for calling MCP servers from scripts, generating CLI wrappers, and emitting typed TS clients. 3K stars, MIT. Useful for testing MCP servers and writing hooks that need MCP access.</div>
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#tooling-in-this-space" class="tooling-link">Details in guide &rarr;</a>
+        </div>
+        <div class="tooling-row">
+          <div class="tooling-name">mcp2cli <span class="maturity-badge maturity-watch">Watch</span></div>
+          <div class="tooling-desc">Converts MCP/OpenAPI/GraphQL to runtime CLI, eliminating schema injection. Claims 96-99% token savings. 1.2K stars. Core claim is architecturally valid but not yet production-ready for standard Claude Code workflows.</div>
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#tooling-in-this-space" class="tooling-link">Details in guide &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mcp-section mcp-section--cta">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Ready to go deeper?</h2>
+        <p>The full guide section has the complete 24-point tradeoff comparison, token cost mitigation strategies, and the hybrid architecture pattern.</p>
+        <div class="cta-block-btns">
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md" class="btn btn-primary" target="_blank" rel="noopener">Read the Full Guide &rarr;</a>
+          <a href="/ecosystem/" class="btn btn-secondary">Explore MCP Ecosystem</a>
+        </div>
+        <p class="cta-back"><a href="/">&larr; Back to Hub</a></p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ── HERO ─────────────────────────────────────────────────────────────── */
+    .mcp-hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      background-color: var(--bg-primary);
+      background-image: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mcp-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .mcp-hero-breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .mcp-hero-breadcrumb a:hover { color: var(--accent-hover); }
+
+    .mcp-hero h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+
+    .mcp-hero-tagline {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin-bottom: var(--space-sm);
+      line-height: 1.6;
+    }
+
+    .mcp-hero-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xl);
+    }
+
+    .mcp-hero-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .mcp-nav-pill {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      background: var(--bg-secondary);
+      transition: all 0.15s ease;
+    }
+
+    .mcp-nav-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--bg-primary);
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────────────────────── */
+    .mcp-section {
+      padding: var(--space-3xl) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mcp-section--alt {
+      background-color: var(--bg-secondary);
+    }
+
+    .mcp-section--tldr {
+      padding: var(--space-xl) 0;
+    }
+
+    .mcp-section--cta {
+      border-bottom: none;
+    }
+
+    .mcp-section-header {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .mcp-section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    .mcp-section-header p {
+      color: var(--text-secondary);
+      margin-top: var(--space-md);
+      max-width: 640px;
+    }
+
+    /* ── TLDR CALLOUT ─────────────────────────────────────────────────────── */
+    .tldr-callout {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl) var(--space-2xl);
+      max-width: 820px;
+    }
+
+    .tldr-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: var(--space-sm);
+      font-family: var(--font-mono);
+    }
+
+    .tldr-callout p {
+      margin-bottom: var(--space-md);
+      line-height: 1.65;
+    }
+
+    .tldr-callout p:last-child { margin-bottom: 0; }
+
+    .tldr-stat {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .tldr-stat a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .tldr-stat a:hover { text-decoration: underline; }
+
+    /* ── DECISION CARDS ───────────────────────────────────────────────────── */
+    .decision-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .decision-card {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ws-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      background-color: var(--accent-tertiary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .decision-content {
+      flex: 1;
+    }
+
+    .decision-content strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .decision-content > p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-md);
+      line-height: 1.5;
+    }
+
+    .decision-branches {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .decision-branch {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--border-radius);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .decision-branch--mcp { background: rgba(var(--accent-tertiary-rgb, 59, 130, 246), 0.06); }
+    .decision-branch--cli { background: rgba(var(--accent-rgb, 220, 100, 40), 0.06); }
+
+    .branch-arrow {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .branch-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--border-radius);
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-mcp { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+    .badge-mcp-remote { background: rgba(99, 102, 241, 0.15); color: #6366f1; }
+    .badge-cli { background: rgba(var(--accent-rgb, 220, 100, 40), 0.15); color: var(--accent); }
+    .badge-skill { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+    .section-footnote {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .section-footnote a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .section-footnote a:hover { text-decoration: underline; }
+
+    /* ── QUOTES ───────────────────────────────────────────────────────────── */
+    .quotes-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      max-width: 760px;
+    }
+
+    .practitioner-quote {
+      margin: 0;
+      padding: var(--space-lg) var(--space-xl);
+      border-left: 4px solid var(--accent-tertiary, #3b82f6);
+      background: var(--surface-elevated);
+      border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    }
+
+    .practitioner-quote p {
+      margin: 0 0 var(--space-sm);
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    .quote-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: lowercase;
+    }
+
+    /* ── SITUATIONS TABLE ─────────────────────────────────────────────────── */
+    .situations-groups {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      background: var(--surface-elevated);
+      overflow: hidden;
+    }
+
+    summary {
+      padding: var(--space-md) var(--space-xl);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-primary);
+      transition: background 0.15s ease;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '\25B2';
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    details:not([open]) summary::after {
+      transform: rotate(180deg);
+    }
+
+    summary:hover { background: var(--bg-tertiary); }
+
+    .situations-table-wrap {
+      overflow-x: auto;
+    }
+
+    .situations-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .situations-table th,
+    .situations-table td {
+      padding: var(--space-sm) var(--space-xl);
+      text-align: left;
+      border-top: 1px solid var(--border);
+    }
+
+    .situations-table th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+
+    .situations-table td:first-child {
+      font-weight: 500;
+      color: var(--text-primary);
+      width: 36%;
+    }
+
+    .situations-table td:last-child {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .situations-table tbody tr:hover { background: var(--bg-tertiary); }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--border-radius);
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    /* ── TOOLING ROWS ─────────────────────────────────────────────────────── */
+    .tooling-rows {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .tooling-row {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg) var(--space-xl);
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+    }
+
+    .tooling-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .tooling-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .tooling-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .tooling-link:hover { text-decoration: underline; }
+
+    .maturity-badge {
+      display: inline-flex;
+      padding: 2px 7px;
+      border-radius: var(--border-radius);
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .maturity-stable { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .maturity-ready { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+    .maturity-watch { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
+    /* ── CTA ──────────────────────────────────────────────────────────────── */
+    .cta-block {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-block h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-block p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xl);
+      line-height: 1.6;
+    }
+
+    .cta-block-btns {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cta-back {
+      font-size: 0.875rem;
+      margin-bottom: 0;
+    }
+
+    .cta-back a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .cta-back a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .decision-card {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .decision-branches {
+        gap: var(--space-xs);
+      }
+
+      .tooling-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+      }
+
+      .tldr-callout {
+        padding: var(--space-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Guidance table: stacked cards */
+      .situations-table thead { display: none; }
+
+      .situations-table,
+      .situations-table tbody,
+      .situations-table tr,
+      .situations-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .situations-table tr {
+        padding: var(--space-md) var(--space-lg);
+        border-top: 1px solid var(--border);
+        background: var(--surface-elevated);
+      }
+
+      .situations-table td {
+        padding: var(--space-xs) 0;
+        border: none;
+        width: auto;
+      }
+
+      .situations-table td:first-child {
+        font-weight: 600;
+        margin-bottom: var(--space-xs);
+      }
+
+      .situations-table td:last-child {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .cta-block-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+
+</Layout>
