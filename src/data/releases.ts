@@ -16,6 +16,22 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.77',
+    date: 'Mar 17, 2026',
+    highlights: [
+      '⭐ <strong>Opus 4.6 output limits raised</strong> — default max output to 64k tokens; upper bound for Opus 4.6 and Sonnet 4.6 to 128k tokens',
+      '<code>allowRead</code> sandbox setting to re-allow reads within <code>denyRead</code> regions; <code>/copy N</code> for Nth-latest response; <code>/branch</code> replaces <code>/fork</code>',
+      '<strong>Security fix</strong>: <code>PreToolUse</code> hooks returning <code>"allow"</code> could bypass enterprise <code>deny</code> permission rules',
+      'Fixed auto-updater accumulating GBs of memory from overlapping downloads; fixed <code>--resume</code> silently truncating recent history',
+      'Breaking: <code>Agent</code> tool no longer accepts <code>resume</code> parameter — use <code>SendMessage({to: agentId})</code> instead',
+    ],
+    breaking: ['Agent tool: <code>resume</code> parameter removed — use <code>SendMessage({to: agentId})</code>'],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Opus 4.6 128k output + security fix',
+  },
+  {
     version: 'v2.1.76',
     date: 'Mar 14, 2026',
     highlights: [
@@ -25,7 +41,6 @@ export const releases: Release[] = [
       'Fixed <code>Bash(cmd:*)</code> rules not matching when argument contains <code>#</code>; plan mode re-approval after already accepted',
       'Improved: background agent partial results preserved on kill; model fallback notifications always visible',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ MCP elicitation + PostCompact hook',

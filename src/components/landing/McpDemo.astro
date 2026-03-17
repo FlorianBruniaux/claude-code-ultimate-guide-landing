@@ -30,14 +30,14 @@ const commands = [
 
 ## Guide + CC CLI
 
-Guide [3.35.0] — 2026-03-14:
-- CC releases tracking updated to v2.1.76 — MCP elicitation support,
-  Elicitation/ElicitationResult/PostCompact hooks, -n/--name flag,
-  /effort command, ToolSearch schema fix, auto-compact circuit breaker
-- v2.1.75 — 1M context Opus 4.6 default for Max/Team/Enterprise,
-  token estimation fix (premature compaction), Bash ! mangling fix
+Guide [3.35.0] — 2026-03-17:
+- CC releases tracking updated to v2.1.77 — Opus 4.6 default output
+  64k/128k tokens, security fix (PreToolUse bypass), allowRead sandbox,
+  /branch command, auto-updater memory fix, Agent resume param removed
+- v2.1.76 — MCP elicitation, PostCompact hook, /effort command
+- v2.1.75 — 1M context Opus 4.6 default for Max/Team/Enterprise
 
-CC CLI releases: v2.1.76 released 2026-03-14 (latest tracked)
+CC CLI releases: v2.1.77 released 2026-03-17 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -143,10 +143,22 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.76 (updated: 2026-03-14)
+Latest: v2.1.77 (updated: 2026-03-17)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
+v2.1.77 — 2026-03-17
+
+- Opus 4.6 default max output raised to 64k tokens; upper bound for
+  Opus 4.6 and Sonnet 4.6 raised to 128k tokens
+- allowRead sandbox setting to re-allow reads within denyRead regions
+- /copy N to copy Nth-latest response; /branch replaces /fork (alias kept)
+- Security fix: PreToolUse hooks returning "allow" could bypass enterprise
+  deny permission rules (including managed settings)
+- Fixed auto-updater accumulating GBs of memory from overlapping downloads
+- Fixed --resume silently truncating recent conversation history
+- Breaking: Agent tool resume parameter removed — use SendMessage instead
+
 v2.1.76 — 2026-03-14
 
 - MCP elicitation: servers request structured input mid-task via
