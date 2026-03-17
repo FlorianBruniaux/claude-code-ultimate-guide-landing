@@ -39,7 +39,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Built infrastructure that will accelerate the whole team',
-        scores: { 'platform-engineer': 3, 'harness-engineer': 2, 'ai-architect': 2 },
+        scores: { 'platform-engineer': 3, 'harness-engineer': 2, 'ai-architect': 2, 'mlops-engineer': 2 },
       },
       {
         text: 'Defined what should be built and convinced stakeholders',
@@ -66,7 +66,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Synthesize: understand enough of each domain to make good calls',
-        scores: { 'ai-product-manager': 3, 'context-engineer': 2, 'prompt-engineer': 2 },
+        scores: { 'ai-product-manager': 3, 'context-engineer': 2, 'prompt-engineer': 2, 'ai-developer-advocate': 1 },
       },
     ],
   },
@@ -123,7 +123,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
     options: [
       {
         text: 'Translating between technical and product, bridging both worlds',
-        scores: { 'ai-product-manager': 3, 'founding-ai-engineer': 2, 'ai-agent-engineer': 1 },
+        scores: { 'ai-product-manager': 3, 'founding-ai-engineer': 2, 'ai-agent-engineer': 1, 'ai-developer-advocate': 1 },
       },
       {
         text: 'Diving into implementation details with engineers',
@@ -135,7 +135,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Explaining what AI can and cannot do to the team',
-        scores: { 'prompt-engineer': 3, 'context-engineer': 2, 'ai-safety-eval-engineer': 1 },
+        scores: { 'prompt-engineer': 3, 'context-engineer': 2, 'ai-safety-eval-engineer': 1, 'ai-developer-advocate': 2 },
       },
     ],
   },
@@ -150,7 +150,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Build safeguards first (constraints, monitors, rollback) then ship',
-        scores: { 'harness-engineer': 3, 'platform-engineer': 2, 'ai-safety-eval-engineer': 2 },
+        scores: { 'harness-engineer': 3, 'platform-engineer': 2, 'ai-safety-eval-engineer': 2, 'mlops-engineer': 1 },
       },
       {
         text: 'Research thoroughly, understand the risk before acting',
@@ -177,7 +177,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'A feature stream: end-to-end on a product area, across teams',
-        scores: { 'ai-engineer': 3, 'context-engineer': 2, 'ai-agent-engineer': 2 },
+        scores: { 'ai-engineer': 3, 'context-engineer': 2, 'ai-agent-engineer': 2, 'ai-orchestration-engineer': 1 },
       },
       {
         text: 'The architecture: set standards and patterns the whole org follows',
@@ -204,7 +204,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'I orchestrate around it. Data is an input; I focus on the system',
-        scores: { 'ai-engineer': 3, 'platform-engineer': 2, 'founding-ai-engineer': 2, 'ai-agent-engineer': 1 },
+        scores: { 'ai-engineer': 3, 'platform-engineer': 2, 'founding-ai-engineer': 2, 'ai-agent-engineer': 1, 'ai-orchestration-engineer': 2 },
       },
     ],
   },
@@ -223,11 +223,11 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Coding features, debugging APIs, reviewing pull requests',
-        scores: { 'ai-engineer': 3, 'ai-agent-engineer': 2, 'founding-ai-engineer': 2 },
+        scores: { 'ai-engineer': 3, 'ai-agent-engineer': 2, 'founding-ai-engineer': 2, 'ai-orchestration-engineer': 1 },
       },
       {
         text: 'Building infra: CI/CD, monitoring, auto-scaling, cost dashboards',
-        scores: { 'platform-engineer': 3, 'ml-engineer': 2, 'harness-engineer': 2 },
+        scores: { 'platform-engineer': 3, 'ml-engineer': 2, 'harness-engineer': 2, 'mlops-engineer': 2 },
       },
     ],
   },
@@ -250,7 +250,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Understand user impact, then communicate while you investigate',
-        scores: { 'ai-product-manager': 3, 'context-engineer': 2, 'ai-architect': 1 },
+        scores: { 'ai-product-manager': 3, 'context-engineer': 2, 'ai-architect': 1, 'ai-developer-advocate': 2 },
       },
     ],
   },
@@ -265,7 +265,7 @@ export const ROLE_QUIZ_QUESTIONS: RoleQuizQuestion[] = [
       },
       {
         text: 'Growth phase: take what works and make it reliable at scale',
-        scores: { 'platform-engineer': 3, 'ai-architect': 2, 'ml-engineer': 1 },
+        scores: { 'platform-engineer': 3, 'ai-architect': 2, 'ml-engineer': 1, 'mlops-engineer': 2 },
       },
       {
         text: 'Mature systems: establish governance, standards, long-term stability',
@@ -362,6 +362,21 @@ export const ROLE_EXPLANATIONS: RoleResultExplanation[] = [
     roleId: 'ml-engineer',
     explanation:
       'You work with training data, model architectures, and ML pipelines. You want to understand AI at the mathematical and empirical level, not just consuming APIs but shaping the models themselves.',
+  },
+  {
+    roleId: 'mlops-engineer',
+    explanation:
+      'You think about what happens after the model ships. CI/CD pipelines, drift monitoring, rollback procedures — you own the operational layer that keeps models reliable in production over time. Your core question is not "does it work?" but "does it keep working?"',
+  },
+  {
+    roleId: 'ai-developer-advocate',
+    explanation:
+      'You bridge an AI platform and the developers who use it. You build real things with the platform, then turn that knowledge into tutorials, demos, and community presence. Technical credibility is your core asset — your audience is other engineers, and they know when you have not actually shipped anything.',
+  },
+  {
+    roleId: 'ai-orchestration-engineer',
+    explanation:
+      'You connect AI capabilities to the systems, processes, and data that already exist. Integration complexity is your core challenge: making AI reliably operable within enterprise infrastructure, designing fallbacks, tracing every step. You think in workflows, not just features.',
   },
 ]
 

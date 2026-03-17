@@ -4,7 +4,7 @@ import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai
 import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 
 const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
-const description = 'Map of 13 AI engineering roles — Prompt Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
+const description = 'Map of 16 AI engineering roles — Prompt Engineer, Context Engineer, AI Agent Engineer, MLOps Engineer, AI Developer Advocate, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
 
 const jsonLd = [
   {
@@ -16,13 +16,13 @@ const jsonLd = [
     "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
     "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
     "datePublished": "2026-03-09",
-    "dateModified": "2026-03-09",
+    "dateModified": "2026-03-17",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
       "audienceType": "Developers considering AI career specialization"
     },
-    "keywords": "AI engineer, context engineer, harness engineer, prompt engineer, AI agent engineer, founding AI engineer, AI roles 2025, AI career paths, LLM engineer"
+    "keywords": "AI engineer, context engineer, harness engineer, prompt engineer, AI agent engineer, founding AI engineer, MLOps engineer, AI developer advocate, AI orchestration engineer, AI roles 2025, AI career paths, LLM engineer"
   }
 ]
 
@@ -76,6 +76,9 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
             <span class="axis-role-tag">Agent Engineer</span>
             <span class="axis-role-tag">Platform Engineer</span>
             <span class="axis-role-tag">Harness Engineer</span>
+            <span class="axis-role-tag">MLOps Engineer</span>
+            <span class="axis-role-tag">AI Developer Advocate</span>
+            <span class="axis-role-tag">Orchestration Engineer</span>
           </div>
         </div>
       </div>
@@ -86,7 +89,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
   <!-- Role Cards -->
   <section class="section" id="roles">
     <div class="container">
-      <h2 class="section-title">13 Roles, Mapped</h2>
+      <h2 class="section-title">16 Roles, Mapped</h2>
       <p class="section-subtitle">From well-established to just emerging. Each card links to the full profile in the guide.</p>
 
       <div class="roles-grid">
@@ -230,10 +233,6 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         <div class="not-role-card">
           <h3>"AI-Native Engineer"</h3>
           <p>Describes a quality expected of all engineers increasingly — you use AI tools fluently in your daily workflow. It's the bar, not the title.</p>
-        </div>
-        <div class="not-role-card">
-          <h3>"Orchestration Engineer"</h3>
-          <p>Sometimes used for agent systems. Overlaps significantly with AI Agent Engineer. Not yet a distinct category in job postings.</p>
         </div>
       </div>
     </div>

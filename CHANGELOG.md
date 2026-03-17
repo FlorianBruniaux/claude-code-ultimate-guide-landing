@@ -4,6 +4,19 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.9.0] - 2026-03-17
+
+### Added
+
+- **3 new AI role profiles** (`/roles/`): MLOps Engineer, AI Developer Advocate, AI Orchestration Engineer added to role cards, salary benchmarks, and career decision matrix. Role count: 13 → 16.
+- **Role quiz scoring** (`src/data/role-quiz.ts`): 3 new roles now surface in quiz results. Scores added across 11 existing question options (MLOps: Q1/Q6/Q9/Q11, DevAdvocate: Q2/Q5/Q10, Orchestration: Q7/Q8/Q9). Explanations added for each.
+
+### Changed
+
+- **`/roles/` — "What's Not a Role" section**: Removed "Orchestration Engineer" card — confirmed real job postings at Vista Equity, Zapier, Heidi Health, Adobe (March 2026).
+- **`/roles/` — axis tags**: Production-facing axis now includes MLOps Engineer, AI Developer Advocate, Orchestration Engineer.
+- **SEO**: Meta description, JSON-LD keywords, `dateModified` updated for roles page.
+
 ## [2.8.0] - 2026-03-13
 
 ### Added

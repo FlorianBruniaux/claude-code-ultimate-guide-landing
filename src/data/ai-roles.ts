@@ -36,8 +36,8 @@ export interface DecisionRow {
 }
 
 export const ROLES_META = {
-  count: 13,
-  updated: 'Q1 2026',
+  count: 16,
+  updated: 'March 2026',
   salaryMarket: 'US market · ±30%',
   sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-roles.md',
 } as const
@@ -227,6 +227,55 @@ export const ROLES: RoleEntry[] = [
     guideAnchor: '13-ml-engineer',
     landingUrl: '/guide/methodologies/',
   },
+  {
+    id: 'mlops-engineer',
+    title: 'MLOps Engineer',
+    status: 'Established',
+    mission: 'Own the operational layer that keeps models reliable in production — CI/CD pipelines, drift monitoring, and deployment infrastructure.',
+    skills: ['MLflow / Weights & Biases', 'Model drift monitoring', 'Kubernetes & infrastructure as code'],
+    entryPaths: ['DevOps/platform engineer', 'ML engineer (infra-minded)', 'Data engineer'],
+    salary: {
+      entry: '$110K–$150K',
+      mid: '$150K–$200K',
+      senior: '$200K–$270K',
+      note: 'High demand in enterprises deploying at scale',
+    },
+    guideAnchor: '14-mlops-engineer',
+    landingUrl: '/guide/devops-sre/',
+  },
+  {
+    id: 'ai-developer-advocate',
+    title: 'AI Developer Advocate',
+    status: 'Growing',
+    mission: 'Bridge an AI platform and the developers who use it — build demos, create tutorials, represent developer needs to the product team.',
+    skills: ['Technical content creation', 'Community building', 'Deep platform/API fluency'],
+    entryPaths: ['Software engineer with public presence', 'Technical writer with engineering background', 'Early AI community builder'],
+    salary: {
+      entry: '$120K–$160K',
+      mid: '$160K–$220K',
+      senior: '$220K–$300K',
+      note: 'Active hiring at AI platforms',
+    },
+    guideAnchor: '15-ai-developer-advocate',
+    landingUrl: '/guide/ai-ecosystem/',
+    highlight: true,
+  },
+  {
+    id: 'ai-orchestration-engineer',
+    title: 'AI Orchestration Engineer',
+    status: 'Emerging',
+    mission: 'Connect AI capabilities to existing enterprise systems, data sources, and business processes through reliable automation workflows.',
+    skills: ['Orchestration platforms (n8n, LangChain)', 'API integration (REST, webhooks)', 'Observability & tracing (LangSmith, Langfuse)'],
+    entryPaths: ['Integration engineer', 'Backend engineer + automation experience', 'DevOps engineer adding AI tooling'],
+    salary: {
+      entry: '$100K–$140K',
+      mid: '$140K–$190K',
+      senior: '$190K–$260K',
+      note: 'Emerging — title varies across companies',
+    },
+    guideAnchor: '16-ai-orchestration-engineer',
+    landingUrl: '/guide/architecture/',
+  },
 ]
 
 export const DECISION_MATRIX: DecisionRow[] = [
@@ -238,6 +287,9 @@ export const DECISION_MATRIX: DecisionRow[] = [
   { background: 'Non-technical, works with AI daily', role: 'Prompt → Context Engineer', timeline: '6–18 months', roleId: 'context-engineer' },
   { background: 'PM who wants to stay PM', role: 'AI Product Manager', timeline: '3–6 months upskill', roleId: 'ai-product-manager' },
   { background: 'Engineer obsessed with reliability & archi', role: 'Harness Engineer', timeline: "Pioneers' territory", roleId: 'harness-engineer' },
+  { background: 'DevOps/platform engineer, wants to work with models', role: 'MLOps Engineer', timeline: '3–6 months upskill', roleId: 'mlops-engineer' },
+  { background: 'Engineer with public presence & community instincts', role: 'AI Developer Advocate', timeline: '6–12 months', roleId: 'ai-developer-advocate' },
+  { background: 'Integration or automation engineer adding AI', role: 'AI Orchestration Engineer', timeline: '3–6 months', roleId: 'ai-orchestration-engineer' },
 ]
 
 export const STATUS_CONFIG: Record<RoleStatus, { label: string; color: string }> = {
