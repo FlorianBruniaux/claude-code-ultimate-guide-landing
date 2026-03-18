@@ -173,7 +173,23 @@ const gaId = 'G-WH1C8CM79E'
 </html>
 
 <style is:global>
-  /* ── Copy button on all <pre> blocks ── */
+  /* ── Expressive-code copy button: always visible (not just on hover) ── */
+  .expressive-code .copy button {
+    opacity: 1 !important;
+  }
+  .expressive-code .copy button:not(:hover) {
+    background: transparent !important;
+    border-color: rgba(255,255,255,0.15) !important;
+    color: var(--text-muted, #888) !important;
+  }
+  .expressive-code .copy button:hover {
+    opacity: 1 !important;
+    border-color: var(--accent, #f97316) !important;
+    color: var(--accent, #f97316) !important;
+    background: color-mix(in srgb, var(--accent, #f97316) 8%, transparent) !important;
+  }
+
+  /* ── Copy button on non-expressive-code <pre> blocks ── */
   .code-copy-wrapper {
     position: relative;
   }
