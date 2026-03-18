@@ -19,6 +19,16 @@ export interface RecapCardSeries {
 
 export const RECAP_BASE_URL = `${PDF_BASE_URL}/recap-cards`
 
+/** First 3 cards of each released series — freely downloadable, no email required */
+export const FREE_CARD_IDS: ReadonlySet<string> = new Set([
+  't01-commandes-essentielles',
+  't02-mode-non-interactif',
+  't03-permission-modes',
+  'm01-workflow-quotidien',
+  'm02-context-management',
+  'm03-sessions-continuite',
+])
+
 export const RECAP_SERIES: RecapCardSeries[] = [
   {
     id: 'T',

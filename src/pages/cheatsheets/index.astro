@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
-import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES } from '../../data/recap-cards-data'
+import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES, FREE_CARD_IDS } from '../../data/recap-cards-data'
 
 const allCards = await getCollection('cheatsheets')
 const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
@@ -135,7 +135,7 @@ for (const card of cards) {
         </div>
         <form class="gate-form" id="gate-form" novalidate>
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="text" name="firstname" id="gate-firstname" placeholder="First name (optional)" autocomplete="given-name" maxlength="50">
+          <input type="text" name="firstname" id="gate-firstname" placeholder="Full name (optional)" autocomplete="name" maxlength="100">
           <input type="email" name="email" id="gate-email" placeholder="you@example.com" required autocomplete="email">
           <input type="url" name="linkedin" id="gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
           <button type="submit" class="gate-submit" id="gate-submit">
@@ -169,26 +169,45 @@ for (const card of cards) {
                 <span class={`difficulty-pill diff-${card.data.difficulty}`}>
                   {difficultyLabel[card.data.difficulty]}
                 </span>
+                {FREE_CARD_IDS.has(card.id) && (
+                  <span class="free-badge">Free</span>
+                )}
               </div>
               <div class="card-body">
                 <h3 class="card-title">{card.data.title}</h3>
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
               <div class="card-footer">
-                <!-- PDF button: rendered as span, upgraded to <a> by JS when unlocked -->
-                <span
-                  class="pdf-download pdf-gated"
-                  data-card-id={card.id}
-                  data-series={card.data.cardNumber[0]}
-                  aria-label={`Download ${card.data.title} PDF`}
-                  role="button"
-                  tabindex="0"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  PDF
-                </span>
+                {FREE_CARD_IDS.has(card.id) && cardUrls[card.id] ? (
+                  <!-- Free card: direct download, no gate -->
+                  <a
+                    class="pdf-download pdf-free"
+                    href={cardUrls[card.id]}
+                    download
+                    aria-label={`Download ${card.data.title} PDF`}
+                    onclick="event.stopPropagation()"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    PDF
+                  </a>
+                ) : (
+                  <!-- Gated card: upgraded to link by JS when unlocked -->
+                  <span
+                    class="pdf-download pdf-gated"
+                    data-card-id={card.id}
+                    data-series={card.data.cardNumber[0]}
+                    aria-label={`Download ${card.data.title} PDF`}
+                    role="button"
+                    tabindex="0"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    PDF
+                  </span>
+                )}
                 <span class="card-read">Read →</span>
               </div>
             </a>
@@ -288,19 +307,18 @@ function updateGateBanner(filter) {
   // If specific released series and NOT unlocked → show gate
   if (series && series.released && !isUnlocked(sid)) {
     gateBanner.classList.remove('hidden')
-    if (gateTitle) gateTitle.textContent = `Unlock all ${series.cardCount} ${series.nameEn} cards`
+    if (gateTitle) gateTitle.textContent = `Get the full ${series.nameEn} series — PDF bundle delivered to your inbox`
     resetGateForm()
     return
   }
 
-  // "All" tab: show gate if BOTH T and M are locked
+  // "All" tab: show gate if T or M are locked
   if (!sid) {
     const tLocked = !isUnlocked('T')
     const mLocked = !isUnlocked('M')
     if (tLocked || mLocked) {
       gateBanner.classList.remove('hidden')
-      const names = [tLocked ? 'Technique' : null, mLocked ? 'Methodology' : null].filter(Boolean).join(' + ')
-      if (gateTitle) gateTitle.textContent = `Unlock ${names} cards`
+      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technique + Methodology series`
       resetGateForm()
       return
     }
@@ -892,6 +910,26 @@ updateGateBanner('all')
   .pdf-gated:hover {
     color: var(--text-secondary);
     border-color: var(--text-muted);
+  }
+  .pdf-free {
+    color: #16a34a;
+    border-color: color-mix(in srgb, #16a34a 40%, transparent);
+    text-decoration: none;
+  }
+  .pdf-free:hover {
+    color: #15803d;
+    border-color: #16a34a;
+  }
+  .free-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, #16a34a 15%, transparent);
+    color: #16a34a;
+    border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
   }
   .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 

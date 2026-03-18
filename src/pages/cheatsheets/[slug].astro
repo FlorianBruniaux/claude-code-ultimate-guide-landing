@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
-import { RECAP_BASE_URL, CARD_HASHES } from '../../data/recap-cards-data'
+import { RECAP_BASE_URL, CARD_HASHES, FREE_CARD_IDS } from '../../data/recap-cards-data'
 
 export async function getStaticPaths() {
   const cards = await getCollection('cheatsheets')
@@ -40,6 +40,7 @@ const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
 const cardHashedUrl = CARD_HASHES[card.id]
   ? `${RECAP_BASE_URL}/${CARD_HASHES[card.id]}`
   : null
+const isFreeCard = FREE_CARD_IDS.has(card.id)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
 const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
@@ -89,28 +90,43 @@ const jsonLd = [
       <h1>{card.data.title}</h1>
       <p class="card-subtitle">{card.data.subtitle}</p>
       <div class="hero-actions">
-        <!-- PDF button: rendered as gated span, upgraded to link by JS when unlocked -->
-        <span
-          id="slug-pdf-btn"
-          class="btn btn-primary pdf-gated-slug"
-          data-card-id={card.id}
-          data-series={seriesId}
-          data-hashed-url={cardHashedUrl ?? ''}
-          role="button"
-          tabindex="0"
-          aria-label="Download PDF (unlock required)"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span id="pdf-btn-label">🔒 Unlock PDF</span>
-        </span>
+        {isFreeCard && cardHashedUrl ? (
+          <!-- Free card: direct download, no gate -->
+          <a
+            href={cardHashedUrl}
+            class="btn btn-primary"
+            download
+            aria-label={`Download ${card.data.title} PDF`}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download PDF
+          </a>
+        ) : (
+          <!-- Gated card: upgraded to link by JS when unlocked -->
+          <span
+            id="slug-pdf-btn"
+            class="btn btn-primary pdf-gated-slug"
+            data-card-id={card.id}
+            data-series={seriesId}
+            data-hashed-url={cardHashedUrl ?? ''}
+            role="button"
+            tabindex="0"
+            aria-label="Download PDF (unlock required)"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span id="pdf-btn-label">🔒 Unlock PDF</span>
+          </span>
+        )}
         <a href="/cheatsheets/" class="btn btn-secondary">
           ← All cards
         </a>
       </div>
 
-      <!-- Inline gate for locked series -->
+      <!-- Inline gate for locked series (only shown for gated cards) -->
       <div id="slug-gate" class="slug-gate hidden" aria-live="polite">
         <p class="slug-gate-msg">Enter your email to unlock all {seriesLabel[seriesChar] ?? card.data.category} cards and get the full PDF bundle.</p>
         <form id="slug-gate-form" class="slug-gate-form" novalidate>
@@ -174,7 +190,7 @@ const jsonLd = [
 
 </Layout>
 
-<script define:vars={{ seriesId, cardHashedUrl, API_BASE }}>
+<script define:vars={{ seriesId, cardHashedUrl, API_BASE, isFreeCard }}>
   const LS_SUBSCRIBER = 'cc-subscriber'
   const lsUnlockKey = (s) => `cc-unlocked-${s}`
   // API_BASE est injecté via define:vars depuis le frontmatter (env-driven)
@@ -203,22 +219,25 @@ const jsonLd = [
     pdfBtn.parentNode.replaceChild(a, pdfBtn)
   }
 
-  if (isUnlocked()) {
-    upgradePdfBtn()
-  } else {
-    // Show inline gate on click
-    if (pdfBtn) {
-      pdfBtn.addEventListener('click', () => {
-        if (slugGate) slugGate.classList.remove('hidden')
-        document.getElementById('slug-gate-email')?.focus()
-      })
-      pdfBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
+  // Free cards have a direct <a> tag — no JS gating needed
+  if (!isFreeCard) {
+    if (isUnlocked()) {
+      upgradePdfBtn()
+    } else {
+      // Show inline gate on click
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', () => {
           if (slugGate) slugGate.classList.remove('hidden')
           document.getElementById('slug-gate-email')?.focus()
-        }
-      })
+        })
+        pdfBtn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            if (slugGate) slugGate.classList.remove('hidden')
+            document.getElementById('slug-gate-email')?.focus()
+          }
+        })
+      }
     }
   }
 
