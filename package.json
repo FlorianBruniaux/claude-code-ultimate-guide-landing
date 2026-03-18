@@ -4,6 +4,7 @@
   "version": "3.15.0",
   "scripts": {
     "dev": "astro dev",
+    "dev:full": "node scripts/prepare-guide-content.mjs && astro dev",
     "build:search": "node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs",
     "build:search-content": "node scripts/build-guide-content-index.mjs",
     "build:guide": "node scripts/prepare-guide-content.mjs",

@@ -171,3 +171,101 @@ const gaId = 'G-WH1C8CM79E'
     <FeedbackFab />
   </body>
 </html>
+
+<style is:global>
+  /* ── Copy button on all <pre> blocks ── */
+  .code-copy-wrapper {
+    position: relative;
+  }
+  .code-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 0.3rem;
+    color: var(--text-muted, #666);
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    z-index: 2;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+  .code-copy-btn:hover {
+    color: var(--accent, #f97316);
+    border-color: var(--accent, #f97316);
+    background: color-mix(in srgb, var(--accent, #f97316) 8%, transparent);
+  }
+  .code-copy-btn.copied {
+    color: #22c55e;
+    border-color: #22c55e;
+    background: color-mix(in srgb, #22c55e 8%, transparent);
+  }
+  /* Ensure pre has room for the button */
+  .code-copy-wrapper > pre {
+    padding-top: 2.2rem !important;
+  }
+</style>
+
+<script>
+  function initCopyButtons() {
+    // Skip <pre> already inside expressive-code (Starlight) or already wrapped
+    const pres = document.querySelectorAll('pre:not(.expressive-code pre):not(.code-copy-wrapper pre)')
+    pres.forEach((pre) => {
+      if (pre.closest('.expressive-code') || pre.closest('.code-copy-wrapper')) return
+
+      const wrapper = document.createElement('div')
+      wrapper.className = 'code-copy-wrapper'
+
+      const btn = document.createElement('button')
+      btn.className = 'code-copy-btn'
+      btn.setAttribute('aria-label', 'Copy code')
+      btn.textContent = 'Copy'
+
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation()
+        const text = pre.innerText ?? pre.textContent ?? ''
+        try {
+          await navigator.clipboard.writeText(text)
+          btn.textContent = 'Copied!'
+          btn.classList.add('copied')
+          setTimeout(() => {
+            btn.textContent = 'Copy'
+            btn.classList.remove('copied')
+          }, 2000)
+        } catch {
+          // Fallback for older browsers
+          const ta = document.createElement('textarea')
+          ta.value = text
+          ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none'
+          document.body.appendChild(ta)
+          ta.select()
+          try { document.execCommand('copy') } catch {}
+          document.body.removeChild(ta)
+          btn.textContent = 'Copied!'
+          btn.classList.add('copied')
+          setTimeout(() => {
+            btn.textContent = 'Copy'
+            btn.classList.remove('copied')
+          }, 2000)
+        }
+      })
+
+      pre.parentNode?.insertBefore(wrapper, pre)
+      wrapper.appendChild(btn)
+      wrapper.appendChild(pre)
+    })
+  }
+
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', initCopyButtons)
+  // Also run immediately in case DOMContentLoaded already fired
+  if (document.readyState !== 'loading') initCopyButtons()
+</script>

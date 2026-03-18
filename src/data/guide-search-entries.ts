@@ -420,6 +420,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-changelog-fragments-workflow",
+    "title": "Changelog Fragments Workflow",
+    "keywords": "changelog fragments workflow guide workflows changelog fragments",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/changelog-fragments/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-smart-suggest-hook",
+    "title": "Smart Suggest Hook",
+    "keywords": "smart suggest hook examples hooks bash smart suggest",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/smart-suggest.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-identity-reinjection-example",
+    "title": "Identity Reinjection Example",
+    "keywords": "identity reinjection example examples hooks bash identity reinjection",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/identity-reinjection.sh",
+    "source": "guide"
+  },
+  {
     "id": "guide-install-templates-script",
     "title": "Install Templates Script",
     "keywords": "install templates script scripts install templates",
@@ -449,6 +473,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cc sessions script examples scripts sessions",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/cc-sessions.py",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cc-sessions-discover",
+    "title": "Cc Sessions Discover",
+    "keywords": "cc sessions discover guide ultimate guide md#session pattern discovery",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#session-pattern-discovery",
     "source": "guide"
   },
   {

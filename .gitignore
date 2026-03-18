@@ -37,3 +37,4 @@ src/data/guide-anchor-map.json
 
 # Vitals provenance data
 .vitals/
+.env.local

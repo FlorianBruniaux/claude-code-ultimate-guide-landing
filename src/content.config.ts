@@ -32,4 +32,17 @@ const docs = defineCollection({
   schema: docsSchema(),
 })
 
-export const collections = { questions, docs }
+const cheatsheets = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/cheatsheets' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    cardNumber: z.string(),
+    category: z.string(),
+    difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+    guideVersion: z.string().optional(),
+    order: z.number(),
+  }),
+})
+
+export const collections = { questions, docs, cheatsheets }

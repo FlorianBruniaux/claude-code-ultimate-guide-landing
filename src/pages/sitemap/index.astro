@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const cheatsheetCards = await getCollection('cheatsheets').catch(() => [])
+const sortedCards = cheatsheetCards.sort((a, b) => a.data.order - b.data.order)
+const techniqueCards = sortedCards.filter(c => c.data.category === 'Technique')
+const methodologieCards = sortedCards.filter(c => c.data.category === 'Méthodologie')
+
+const sections = [
+  {
+    title: 'Core',
+    icon: '📚',
+    links: [
+      { href: '/', label: 'Home', desc: 'Overview, features, and quick start' },
+      { href: '/guide/', label: 'Ultimate Guide', desc: '20K+ line reference, searchable online' },
+      { href: '/cheatsheet/', label: 'Quick Reference (1-page)', desc: 'All essential commands on a single printable page' },
+      { href: '/cheatsheets/', label: 'Cheat Sheets (57 cards)', desc: 'Printable A4 recap cards — Technique + Methodology series' },
+      { href: '/whitepapers/', label: 'Ebooks', desc: '11 deep-dive PDFs, FR + EN, 472+ pages' },
+    ],
+  },
+  {
+    title: 'Learn',
+    icon: '🎓',
+    links: [
+      { href: '/learning/', label: 'Learning Paths', desc: 'Personalized onboarding and structured learning' },
+      { href: '/quiz/', label: 'Quiz', desc: '274 questions across 15 categories, 4 difficulty levels' },
+      { href: '/roles/', label: 'AI Roles', desc: 'Role definitions and behavioral profiles for Claude Code' },
+      { href: '/faq/', label: 'FAQ', desc: 'Frequently asked questions' },
+    ],
+  },
+  {
+    title: 'Reference',
+    icon: '🔍',
+    links: [
+      { href: '/examples/', label: 'Examples & Templates', desc: '232 production-ready templates — agents, hooks, commands, skills' },
+      { href: '/diagrams/', label: 'Diagrams', desc: 'Visual architecture and workflow diagrams' },
+      { href: '/releases/', label: 'Releases', desc: 'Claude Code release history and changelog' },
+      { href: '/security/', label: 'Security', desc: 'CVEs, threat database, security hardening guides' },
+      { href: '/compare/', label: 'Compare', desc: 'Claude Code vs other AI coding tools' },
+      { href: '/context/', label: 'Context Management', desc: 'Context window strategies and best practices' },
+      { href: '/ecosystem/', label: 'Ecosystem', desc: 'AI ecosystem overview, MCP servers, third-party tools' },
+    ],
+  },
+  {
+    title: 'Cheat Sheets — Technique series (22 cards)',
+    icon: '🟠',
+    links: techniqueCards.map(c => ({
+      href: `/cheatsheets/${c.id}/`,
+      label: `${c.data.cardNumber} — ${c.data.title}`,
+      desc: c.data.subtitle,
+    })),
+  },
+  {
+    title: 'Cheat Sheets — Méthodologie series (22 cards)',
+    icon: '🔵',
+    links: methodologieCards.map(c => ({
+      href: `/cheatsheets/${c.id}/`,
+      label: `${c.data.cardNumber} — ${c.data.title}`,
+      desc: c.data.subtitle,
+    })),
+  },
+]
+---
+
+<Layout
+  title="Sitemap — Claude Code Ultimate Guide"
+  description="Full list of all pages available on the Claude Code Ultimate Guide: guide, cheat sheets, ebooks, quiz, examples, and more."
+  noIndex={false}
+>
+  <header class="page-hero">
+    <div class="container">
+      <h1>Sitemap</h1>
+      <p class="tagline">All pages on <strong>cc.bruniaux.com</strong> — {sections.reduce((acc, s) => acc + s.links.length, 0)} pages across {sections.length} sections.</p>
+    </div>
+  </header>
+
+  <main class="sitemap-content">
+    <div class="container">
+      {sections.map(section => (
+        <section class="sitemap-section">
+          <h2 class="section-title">
+            <span class="section-icon" aria-hidden="true">{section.icon}</span>
+            {section.title}
+            <span class="section-count">{section.links.length}</span>
+          </h2>
+          <ul class="link-grid">
+            {section.links.map(link => (
+              <li>
+                <a href={link.href} class="sitemap-link">
+                  <span class="link-label">{link.label}</span>
+                  {link.desc && <span class="link-desc">{link.desc}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 3.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .tagline strong { color: var(--text-primary); }
+
+  .sitemap-content { padding: 3rem 0 5rem; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .sitemap-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0 0 0.875rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon { font-size: 1rem; }
+  .section-count {
+    margin-left: auto;
+    font-size: 0.72rem;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    padding: 0.1rem 0.45rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .link-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .sitemap-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .sitemap-link:hover {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+  .sitemap-link:hover .link-label {
+    color: var(--accent);
+  }
+  .link-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.15s;
+  }
+  .link-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .link-grid { grid-template-columns: 1fr; }
+  }
+</style>

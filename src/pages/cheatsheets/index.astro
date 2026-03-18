@@ -1,14 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES } from '../../data/recap-cards-data'
 
 const allCards = await getCollection('cheatsheets')
-const cards = allCards.sort((a, b) => a.data.order - b.data.order)
+const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
 
-const techniqueCards = cards.filter(c => c.data.category === 'Technique')
-const methodologieCards = cards.filter(c => c.data.category === 'Méthodologie')
-const conceptionCards = cards.filter(c => c.data.category === 'Conception')
+const techniqueCards = allSorted.filter(c => c.data.category === 'Technique')
+const methodologieCards = allSorted.filter(c => c.data.category === 'Méthodologie')
+const conceptionCards = allSorted.filter(c => c.data.category === 'Conception')
 
+// Only display released series (T + M) in the grid — C is "coming soon"
+const cards = allSorted.filter(c => c.data.category !== 'Conception')
 const totalCards = cards.length
 
 const difficultyLabel: Record<string, string> = {
@@ -17,17 +20,17 @@ const difficultyLabel: Record<string, string> = {
   advanced: 'Advanced',
 }
 
-const title = `Cheat Sheets — ${totalCards} Recap Cards | Claude Code`
-const description = `${totalCards} printable A4 recap cards covering Claude Code commands, workflows, agents, MCP, security, and more. Plus the original 1-page quick reference.`
+const title = `Cheat Sheets — ${allSorted.length} Recap Cards | Claude Code`
+const description = `${allSorted.length} printable A4 recap cards covering Claude Code commands, workflows, agents, MCP, security, and more. Plus the original 1-page quick reference.`
 
 const jsonLd = [
   {
     "@type": "ItemList",
     "name": "Claude Code Cheat Sheets",
     "description": description,
-    "numberOfItems": totalCards + 1,
+    "numberOfItems": allSorted.length + 1,
     "url": "https://cc.bruniaux.com/cheatsheets/",
-    "itemListElement": cards.map((card, i) => ({
+    "itemListElement": allSorted.map((card, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
@@ -35,6 +38,16 @@ const jsonLd = [
     })),
   }
 ]
+
+// API base URL for subscribe endpoint (overridable via env for local dev)
+const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
+
+// Build card URL map for client-side JS (card id → full hashed URL)
+const cardUrls: Record<string, string> = {}
+for (const card of cards) {
+  const hash = CARD_HASHES[card.id]
+  if (hash) cardUrls[card.id] = `${RECAP_BASE_URL}/${hash}`
+}
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -56,7 +69,7 @@ const jsonLd = [
       <!-- Stats row -->
       <div class="stats-row">
         <div class="stat-item">
-          <span class="stat-number">{totalCards}</span>
+          <span class="stat-number">{allSorted.length}</span>
           <span class="stat-label">Recap Cards</span>
         </div>
         <div class="stat-item">
@@ -73,13 +86,23 @@ const jsonLd = [
         </div>
       </div>
 
-      <!-- Original cheatsheet card -->
-      <div class="cheatsheet-featured">
+      <!-- Original cheatsheet card + Whitepapers cross-promo -->
+      <div class="featured-row">
         <a href="/cheatsheet/" class="featured-card">
           <div class="featured-badge">1-PAGE QUICK REF</div>
           <div class="featured-content">
             <h3>Quick Reference</h3>
             <p>All essential commands, shortcuts, hooks, MCP, and golden rules on a single printable page. English.</p>
+          </div>
+          <svg class="featured-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="/whitepapers/" class="featured-card">
+          <div class="featured-badge">11 EBOOKS</div>
+          <div class="featured-content">
+            <h3>Deep-dive Whitepapers</h3>
+            <p>472+ pages, FR + EN, PDF + EPUB. Architecture, security, team adoption, ROI, and more.</p>
           </div>
           <svg class="featured-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -92,15 +115,42 @@ const jsonLd = [
         <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">
           All <span class="tab-count">{totalCards}</span>
         </button>
-        <button class="tab-btn" data-filter="Technique" role="tab" aria-selected="false">
+        <button class="tab-btn" data-filter="Technique" data-series="T" role="tab" aria-selected="false">
           Technique <span class="tab-count">{techniqueCards.length}</span>
         </button>
-        <button class="tab-btn" data-filter="Méthodologie" role="tab" aria-selected="false">
+        <button class="tab-btn" data-filter="Méthodologie" data-series="M" role="tab" aria-selected="false">
           Méthodologie <span class="tab-count">{methodologieCards.length}</span>
         </button>
-        <button class="tab-btn" data-filter="Conception" role="tab" aria-selected="false">
-          Conception <span class="tab-count">{conceptionCards.length}</span>
+        <button class="tab-btn tab-coming-soon" data-filter="Conception" data-series="C" role="tab" aria-selected="false">
+          Conception <span class="tab-count">{conceptionCards.length}</span> <span class="tab-soon">soon</span>
         </button>
+      </div>
+
+      <!-- Gate banner (rendered server-side, shown/hidden by client JS) -->
+      <div class="gate-banner hidden" id="gate-banner" aria-live="polite">
+        <div class="gate-icon">🔒</div>
+        <div class="gate-text">
+          <p class="gate-title" id="gate-title">Unlock all Technique cards</p>
+          <p class="gate-sub">Enter your email to get the full series as a PDF bundle delivered to your inbox.</p>
+        </div>
+        <form class="gate-form" id="gate-form" novalidate>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="firstname" id="gate-firstname" placeholder="First name (optional)" autocomplete="given-name" maxlength="50">
+          <input type="email" name="email" id="gate-email" placeholder="you@example.com" required autocomplete="email">
+          <input type="url" name="linkedin" id="gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
+          <button type="submit" class="gate-submit" id="gate-submit">
+            <span class="submit-label">Get all cards</span>
+            <span class="submit-spinner hidden" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="gate-error hidden" id="gate-error" role="alert"></p>
+        <p class="gate-success hidden" id="gate-success" role="status"></p>
+      </div>
+
+      <!-- "Coming soon" for Conception (shown by JS when C tab active and not unlocked) -->
+      <div class="coming-soon-msg hidden" id="coming-soon-msg">
+        <p>Conception series (13 cards) — coming soon.</p>
+        <p class="coming-soon-sub">13 cards on trust calibration, prompting, security, and architecture design.</p>
       </div>
 
       <!-- Cards grid -->
@@ -109,6 +159,7 @@ const jsonLd = [
           <article
             class="recap-card"
             data-category={card.data.category}
+            data-series={card.data.cardNumber[0]}
           >
             <a href={`/cheatsheets/${card.id}/`} class="card-link">
               <div class="card-header">
@@ -124,18 +175,20 @@ const jsonLd = [
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
               <div class="card-footer">
-                <a
-                  href={`/cheatsheets/pdf/${card.id}.pdf`}
-                  class="pdf-download"
-                  download
+                <!-- PDF button: rendered as span, upgraded to <a> by JS when unlocked -->
+                <span
+                  class="pdf-download pdf-gated"
+                  data-card-id={card.id}
+                  data-series={card.data.cardNumber[0]}
                   aria-label={`Download ${card.data.title} PDF`}
-                  onclick="event.stopPropagation()"
+                  role="button"
+                  tabindex="0"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   PDF
-                </a>
+                </span>
                 <span class="card-read">Read →</span>
               </div>
             </a>
@@ -149,6 +202,293 @@ const jsonLd = [
   </section>
 
 </Layout>
+
+<script define:vars={{ RECAP_BASE_URL, RECAP_SERIES, API_BASE, cardUrlsMap: cardUrls }}>
+// ──────────────────────────────────────────────────────────────────────────────
+// Recap Cards Gating Logic
+// ──────────────────────────────────────────────────────────────────────────────
+
+const LS_SUBSCRIBER = 'cc-subscriber'
+const lsUnlockKey = (s) => `cc-unlocked-${s}`
+
+function isUnlocked(seriesId) {
+  try {
+    return localStorage.getItem(LS_SUBSCRIBER) === '1' ||
+           localStorage.getItem(lsUnlockKey(seriesId)) === '1'
+  } catch { return false }
+}
+
+function setUnlocked(seriesId) {
+  try {
+    localStorage.setItem(lsUnlockKey(seriesId), '1')
+  } catch {}
+}
+
+// cardUrlsMap is injected at build time via define:vars
+const cardUrls = cardUrlsMap
+
+// Upgrade gated PDF spans to download links for unlocked series
+function upgradeUnlockedPDFs() {
+  document.querySelectorAll('.pdf-gated').forEach(span => {
+    const series = span.dataset.series
+    const cardId = span.dataset.cardId
+    if (!series || !isUnlocked(series)) return
+
+    const url = cardUrls[cardId]
+    if (!url || url.endsWith('/')) return  // missing hash
+
+    const a = document.createElement('a')
+    a.href = url
+    a.className = 'pdf-download pdf-unlocked'
+    a.setAttribute('download', '')
+    a.setAttribute('aria-label', span.getAttribute('aria-label') || 'Download PDF')
+    a.innerHTML = span.innerHTML
+    a.addEventListener('click', e => e.stopPropagation())
+    span.parentNode.replaceChild(a, span)
+  })
+}
+
+// Gate banner state
+let activeSeries = null  // 'T' | 'M' | 'C' | null (null = "All" tab)
+
+const gateBanner = document.getElementById('gate-banner')
+const gateTitle  = document.getElementById('gate-title')
+const gateForm   = document.getElementById('gate-form')
+const gateEmail  = document.getElementById('gate-email')
+const gateFirstname = document.getElementById('gate-firstname')
+const gateSubmit = document.getElementById('gate-submit')
+const gateError  = document.getElementById('gate-error')
+const gateSuccess = document.getElementById('gate-success')
+const comingSoon = document.getElementById('coming-soon-msg')
+
+function seriesData(id) {
+  return RECAP_SERIES.find(s => s.id === id)
+}
+
+function updateGateBanner(filter) {
+  if (!gateBanner) return
+
+  // filter: 'all' | 'Technique' | 'Méthodologie' | 'Conception'
+  const seriesMap = { 'Technique': 'T', 'Méthodologie': 'M', 'Conception': 'C' }
+  const sid = seriesMap[filter] || null
+  activeSeries = sid
+
+  // Hide coming-soon by default
+  if (comingSoon) comingSoon.classList.add('hidden')
+
+  if (sid === 'C') {
+    // Coming soon — no gate, just a message
+    gateBanner.classList.add('hidden')
+    if (comingSoon) comingSoon.classList.remove('hidden')
+    return
+  }
+
+  const series = sid ? seriesData(sid) : null
+
+  // If specific released series and NOT unlocked → show gate
+  if (series && series.released && !isUnlocked(sid)) {
+    gateBanner.classList.remove('hidden')
+    if (gateTitle) gateTitle.textContent = `Unlock all ${series.cardCount} ${series.nameEn} cards`
+    resetGateForm()
+    return
+  }
+
+  // "All" tab: show gate if BOTH T and M are locked
+  if (!sid) {
+    const tLocked = !isUnlocked('T')
+    const mLocked = !isUnlocked('M')
+    if (tLocked || mLocked) {
+      gateBanner.classList.remove('hidden')
+      const names = [tLocked ? 'Technique' : null, mLocked ? 'Methodology' : null].filter(Boolean).join(' + ')
+      if (gateTitle) gateTitle.textContent = `Unlock ${names} cards`
+      resetGateForm()
+      return
+    }
+  }
+
+  // Already unlocked or coming soon — hide banner
+  gateBanner.classList.add('hidden')
+}
+
+function resetGateForm() {
+  if (gateError) { gateError.classList.add('hidden'); gateError.textContent = '' }
+  if (gateSuccess) { gateSuccess.classList.add('hidden'); gateSuccess.textContent = '' }
+  if (gateSubmit) {
+    gateSubmit.disabled = false
+    gateSubmit.querySelector('.submit-label').classList.remove('hidden')
+    gateSubmit.querySelector('.submit-spinner').classList.add('hidden')
+  }
+}
+
+// Form submission
+if (gateForm) {
+  gateForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const email = gateEmail?.value?.trim()
+    if (!email) {
+      showError('Please enter a valid email.')
+      return
+    }
+
+    // Determine which series to send (for "all" tab, send the first locked one then the other)
+    const seriesesToSend = activeSeries
+      ? [activeSeries].filter(s => !isUnlocked(s))
+      : ['T', 'M'].filter(s => !isUnlocked(s))
+
+    if (seriesesToSend.length === 0) {
+      gateBanner.classList.add('hidden')
+      upgradeUnlockedPDFs()
+      return
+    }
+
+    setLoading(true)
+
+    const firstname = gateFirstname?.value?.trim() || ''
+    const linkedin = document.getElementById('gate-linkedin')?.value?.trim() || ''
+    const honeypot = gateForm.querySelector('input[name="website"]')?.value || ''
+    const utmCampaign = new URLSearchParams(location.search).get('utm_campaign') || ''
+    const utmSource = new URLSearchParams(location.search).get('utm_source') || 'cheatsheets'
+
+    // Send one request per ZIP that needs to be unlocked
+    const errors = []
+    for (const sid of seriesesToSend) {
+      const series = seriesData(sid)
+      if (!series || !series.hashedZipFr) continue
+
+      try {
+        const res = await fetch(`${API_BASE}/api/subscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            firstName: firstname || undefined,
+            filename: series.hashedZipFr,
+            website: honeypot,
+            source: utmSource,
+            utmCampaign: utmCampaign || undefined,
+            linkedin: linkedin || undefined,
+          }),
+        })
+        const data = await res.json()
+        if (data.success) {
+          setUnlocked(sid)
+        } else {
+          errors.push(data.error || 'Request failed')
+        }
+      } catch {
+        errors.push('Network error. Please try again.')
+      }
+    }
+
+    setLoading(false)
+
+    if (errors.length > 0) {
+      showError(errors[0])
+      return
+    }
+
+    // Set shared subscriber flag
+    try { localStorage.setItem(LS_SUBSCRIBER, '1') } catch {}
+
+    // Fire GA event
+    try {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'recap_card_subscribe', {
+          event_category: 'engagement',
+          event_label: seriesesToSend.join('+'),
+        })
+      }
+    } catch {}
+
+    showSuccess('Check your inbox — the PDF bundle is on its way!')
+    upgradeUnlockedPDFs()
+
+    // Hide banner after short delay
+    setTimeout(() => {
+      if (gateBanner) gateBanner.classList.add('hidden')
+    }, 3000)
+  })
+}
+
+function setLoading(loading) {
+  if (!gateSubmit) return
+  gateSubmit.disabled = loading
+  gateSubmit.querySelector('.submit-label').classList.toggle('hidden', loading)
+  gateSubmit.querySelector('.submit-spinner').classList.toggle('hidden', !loading)
+}
+
+function showError(msg) {
+  if (gateError) { gateError.textContent = msg; gateError.classList.remove('hidden') }
+  if (gateSuccess) gateSuccess.classList.add('hidden')
+}
+
+function showSuccess(msg) {
+  if (gateSuccess) { gateSuccess.textContent = msg; gateSuccess.classList.remove('hidden') }
+  if (gateError) gateError.classList.add('hidden')
+}
+
+// Gated PDF click: scroll to gate banner
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.pdf-gated')
+  if (!target) return
+  e.preventDefault()
+  e.stopPropagation()
+  if (gateBanner && !gateBanner.classList.contains('hidden')) {
+    gateBanner.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    gateEmail?.focus()
+  }
+})
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return
+  const target = e.target.closest('.pdf-gated')
+  if (!target) return
+  e.preventDefault()
+  if (gateBanner && !gateBanner.classList.contains('hidden')) {
+    gateBanner.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    gateEmail?.focus()
+  }
+})
+
+// ── Filter tabs ──────────────────────────────────────────────────────────────
+const tabBtns = document.querySelectorAll('.tab-btn')
+const cardItems = document.querySelectorAll('.recap-card')
+const noResults = document.getElementById('no-results')
+const cardsGrid = document.getElementById('cards-grid')
+
+function filterCards(filter) {
+  let visible = 0
+  cardItems.forEach(card => {
+    const category = card.dataset.category ?? ''
+    const show = filter === 'all' || category === filter
+    card.style.display = show ? '' : 'none'
+    if (show) visible++
+  })
+  if (noResults) noResults.classList.toggle('hidden', visible > 0)
+
+  // Show/hide grid based on Conception "coming soon"
+  const isComing = filter === 'Conception'
+  if (cardsGrid) cardsGrid.style.display = isComing ? 'none' : ''
+}
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => {
+      b.classList.remove('active')
+      b.setAttribute('aria-selected', 'false')
+    })
+    btn.classList.add('active')
+    btn.setAttribute('aria-selected', 'true')
+    const filter = btn.dataset.filter ?? 'all'
+    filterCards(filter)
+    updateGateBanner(filter)
+  })
+})
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+upgradeUnlockedPDFs()
+updateGateBanner('all')
+</script>
 
 <style>
   /* ── Hero ── */
@@ -228,8 +568,16 @@ const jsonLd = [
     letter-spacing: 0.05em;
   }
 
-  /* ── Featured cheatsheet ── */
-  .cheatsheet-featured { margin-bottom: 2rem; }
+  /* ── Featured row ── */
+  .featured-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 640px) {
+    .featured-row { grid-template-columns: 1fr; }
+  }
   .featured-card {
     display: flex;
     align-items: center;
@@ -295,6 +643,15 @@ const jsonLd = [
     color: #fff;
   }
   .tab-btn.active .tab-count { background: rgba(255,255,255,0.25); color: #fff; }
+  .tab-soon {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+  .tab-btn.active .tab-soon { color: rgba(255,255,255,0.7); opacity: 1; }
   .tab-count {
     font-size: 0.75rem;
     background: var(--bg-tertiary);
@@ -302,6 +659,141 @@ const jsonLd = [
     padding: 0.1rem 0.4rem;
     border-radius: 1rem;
     font-weight: 600;
+  }
+
+  /* ── Gate banner ── */
+  .gate-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .gate-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .gate-text { flex: 1; min-width: 200px; }
+  .gate-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .gate-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .gate-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .gate-form input[type="text"],
+  .gate-form input[type="email"],
+  .gate-form input[type="url"] {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s;
+    min-width: 0;
+  }
+  .gate-form input[type="text"]:focus,
+  .gate-form input[type="email"]:focus,
+  .gate-form input[type="url"]:focus {
+    border-color: var(--accent);
+  }
+  .gate-form input[name="firstname"] { width: 140px; }
+  .gate-form input[type="email"] { width: 210px; }
+  .gate-form input[name="linkedin"] { width: 200px; }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .gate-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .gate-submit:hover:not(:disabled) { background: var(--accent-hover); }
+  .gate-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+  .submit-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .gate-error {
+    width: 100%;
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    color: #ef4444;
+  }
+  .gate-success {
+    width: 100%;
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    color: #22c55e;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .gate-banner { flex-direction: column; }
+    .gate-form { width: 100%; }
+    .gate-form input[name="firstname"],
+    .gate-form input[name="linkedin"],
+    .gate-form input[type="email"] { width: 100%; }
+    .gate-submit { width: 100%; }
+  }
+
+  /* ── Coming soon ── */
+  .coming-soon-msg {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px dashed var(--border);
+    border-radius: 0.75rem;
+  }
+  .coming-soon-msg p { margin: 0 0 0.5rem; }
+  .coming-soon-msg p:last-child { margin: 0; }
+  .coming-soon-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
   }
 
   /* ── Cards grid ── */
@@ -396,6 +888,11 @@ const jsonLd = [
     transition: color 0.15s, border-color 0.15s;
   }
   .pdf-download:hover { color: var(--accent); border-color: var(--accent); }
+  .pdf-gated { cursor: pointer; }
+  .pdf-gated:hover {
+    color: var(--text-secondary);
+    border-color: var(--text-muted);
+  }
   .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 
   /* No results */
@@ -404,34 +901,5 @@ const jsonLd = [
     color: var(--text-muted);
     padding: 3rem;
   }
-  .hidden { display: none; }
+  .hidden { display: none !important; }
 </style>
-
-<script>
-  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
-  const cardItems = document.querySelectorAll<HTMLElement>('.recap-card')
-  const noResults = document.getElementById('no-results')
-
-  function filterCards(filter: string) {
-    let visible = 0
-    cardItems.forEach(card => {
-      const category = card.dataset.category ?? ''
-      const show = filter === 'all' || category === filter
-      card.style.display = show ? '' : 'none'
-      if (show) visible++
-    })
-    if (noResults) noResults.classList.toggle('hidden', visible > 0)
-  }
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => {
-        b.classList.remove('active')
-        b.setAttribute('aria-selected', 'false')
-      })
-      btn.classList.add('active')
-      btn.setAttribute('aria-selected', 'true')
-      filterCards(btn.dataset.filter ?? 'all')
-    })
-  })
-</script>

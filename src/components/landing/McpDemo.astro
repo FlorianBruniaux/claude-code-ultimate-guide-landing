@@ -30,15 +30,15 @@ const commands = [
 
 ## Guide + CC CLI
 
-Guide [3.37.0] — 2026-03-17:
+Guide [3.37.1] — 2026-03-18:
 - 3 new AI roles: MLOps Engineer, AI Developer Advocate, AI Orchestration Engineer
 - Packmind — Engineering Standards Distribution (ContextOps, MCP server)
 - Comprehension debt concept + regulatory exposure (EU AI Act, FDA 2025)
 - CLAUDE.md anti-patterns: ETH Zürich /init research, discoverability filter, anchoring risk
 
-Guide [3.37.0] — 2026-03-18:
+Guide [3.37.1] — 2026-03-18:
 - CC releases tracking updated to v2.1.78 — StopFailure hook,
-  ${CLAUDE_PLUGIN_DATA} persistent plugin state, streaming line-by-line,
+  \${CLAUDE_PLUGIN_DATA} persistent plugin state, streaming line-by-line,
   3 security fixes (silent sandbox disable, MCP deny rules bypass,
   protected dirs writable in bypassPermissions mode)
 - v2.1.77 — Opus 4.6 64k/128k output, /branch command, security fix
@@ -111,7 +111,7 @@ ex: /ccguide:example security-gate`,
     label: '/ccguide:topics',
     title: 'Topics',
     description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
-    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.37.0)
+    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.37.1)
 
 ┌────────────┬─────────┬───────────────────────────────────────────────┐
 │ Category   │ Entries │ Examples                                       │
@@ -157,7 +157,7 @@ https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 v2.1.78 — 2026-03-18
 
 - StopFailure hook event fires on API errors (rate limit, auth failure)
-- ${CLAUDE_PLUGIN_DATA} variable for persistent plugin state across updates
+- \${CLAUDE_PLUGIN_DATA} variable for persistent plugin state across updates
 - effort, maxTurns, disallowedTools frontmatter for plugin-shipped agents
 - Response text now streams line-by-line as generated
 - Security: silent sandbox disable when deps missing now shows warning

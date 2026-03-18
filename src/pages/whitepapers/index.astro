@@ -1,0 +1,942 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { WHITEPAPERS, TOTAL_PAGES, PDF_BASE_URL } from '../../data/whitepapers-data.ts'
+
+const title = 'Ebooks — 11 Whitepapers | Claude Code'
+const description = `11 whitepapers, ${TOTAL_PAGES}+ pages, FR + EN, PDF + EPUB. From Claude Code fundamentals to multi-agent architecture, security, and ROI. Free for WP00 and WP03.`
+
+const jsonLd = [
+  {
+    "@type": "CollectionPage",
+    "name": "Claude Code Ebooks & Whitepapers",
+    "description": description,
+    "url": "https://cc.bruniaux.com/whitepapers/",
+    "hasPart": WHITEPAPERS.map(wp => ({
+      "@type": "Book",
+      "name": wp.titleEn,
+      "bookFormat": "EBook",
+      "inLanguage": ["fr", "en"],
+      "url": "https://cc.bruniaux.com/whitepapers/",
+    })),
+  }
+]
+
+const profiles = [
+  {
+    label: 'New to Claude Code',
+    icon: '🚀',
+    path: ['WP00', 'WP02', 'WP01'],
+    desc: 'Start here — foundations, then configuration, then prompts.',
+  },
+  {
+    label: 'Senior Developer',
+    icon: '⚙️',
+    path: ['WP04', 'WP08', 'WP02'],
+    desc: 'Architecture internals, multi-agent patterns, advanced config.',
+  },
+  {
+    label: 'DevSecOps / Security',
+    icon: '🔒',
+    path: ['WP03', 'WP06', 'WP04'],
+    desc: 'Security hardening, privacy compliance, then architecture.',
+  },
+  {
+    label: 'Tech Lead / Manager',
+    icon: '👥',
+    path: ['WP05', 'WP10', 'WP00'],
+    desc: 'Team rollout playbook, ROI calculation, share the primer.',
+  },
+  {
+    label: 'Daily Reference',
+    icon: '📖',
+    path: ['WP07', 'WP01'],
+    desc: 'Dense reference + prompting patterns on your desk.',
+  },
+  {
+    label: 'Trainer / Educator',
+    icon: '🎓',
+    path: ['WP09', 'WP05', 'WP01'],
+    desc: 'UVAL learning method, team adoption, prompt patterns.',
+  },
+  {
+    label: 'CTO / Decision-Maker',
+    icon: '💼',
+    path: ['WP10', 'WP05', 'WP03'],
+    desc: 'ROI first, then team rollout, then security posture.',
+  },
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-label">Ebooks & Whitepapers</div>
+      <h1>Deep dives, not summaries</h1>
+      <p class="tagline">
+        11 whitepapers covering every layer of Claude Code — from first install to org-wide adoption.
+        Structured for practitioners, grounded in production experience.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">11</span>
+          <span class="stat-lbl">Whitepapers</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">{TOTAL_PAGES}+</span>
+          <span class="stat-lbl">Pages</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">FR + EN</span>
+          <span class="stat-lbl">Languages</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">PDF + EPUB</span>
+          <span class="stat-lbl">Formats</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#table" class="btn btn-primary">Browse all ebooks</a>
+        <a href="#free" class="btn btn-secondary">Free downloads</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content container">
+
+    <!-- Free featured cards -->
+    <section id="free" class="section">
+      <h2 class="section-heading">Free to download</h2>
+      <p class="section-sub">No email required — grab these two directly.</p>
+      <div class="featured-grid">
+        {WHITEPAPERS.filter(wp => !wp.gated).map(wp => (
+          <div class="featured-card">
+            <div class="featured-header">
+              <span class="wp-num-badge">{wp.num}</span>
+              <span class="badge badge-free">Free</span>
+            </div>
+            <h3 class="featured-title">{wp.titleEn}</h3>
+            <p class="featured-sub">{wp.subtitle}</p>
+            <div class="featured-meta">
+              <span class="meta-pill">{wp.audience}</span>
+              <span class="meta-pill">~{wp.pages}p</span>
+            </div>
+            <div class="featured-actions">
+              <div class="lang-format-group">
+                <div class="lang-buttons">
+                  <a href={`${PDF_BASE_URL}/${wp.hashedFileFr}`} target="_blank" rel="noopener" class="dl-btn dl-pdf" aria-label={`Download ${wp.titleFr} PDF`}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    FR PDF
+                  </a>
+                  <a href={`${PDF_BASE_URL}/${wp.hashedFileEn}`} target="_blank" rel="noopener" class="dl-btn dl-pdf" aria-label={`Download ${wp.titleEn} PDF`}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    EN PDF
+                  </a>
+                </div>
+                <div class="lang-buttons">
+                  <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleFr} EPUB`}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                    FR EPUB
+                  </a>
+                  <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleEn} EPUB`}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                    EN EPUB
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Complete table -->
+    <section id="table" class="section">
+      <h2 class="section-heading">All 11 whitepapers</h2>
+      <div class="wp-table">
+        {WHITEPAPERS.map(wp => (
+          <div class="wp-row" id={`wp-${wp.num}`}>
+            <div class="wp-row-info">
+              <div class="wp-row-header">
+                <span class="wp-num-badge">{wp.num}</span>
+                {wp.badge && <span class={`badge ${wp.badge === 'Free' ? 'badge-free' : 'badge-popular'}`}>{wp.badge}</span>}
+                <span class="wp-audience">{wp.audience}</span>
+                <span class="wp-pages">~{wp.pages}p</span>
+              </div>
+              <h3 class="wp-row-title">{wp.titleEn}</h3>
+              <p class="wp-row-subtitle">{wp.subtitle}</p>
+              <div class="wp-tags">
+                {wp.tags.slice(0, 3).map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div class="wp-row-actions">
+              {wp.gated ? (
+                <div class="gated-block" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
+                  <button
+                    type="button"
+                    class="get-btn"
+                    data-wp={wp.num}
+                    aria-expanded="false"
+                    aria-controls={`form-${wp.num}`}
+                  >
+                    Get ebook
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div id={`form-${wp.num}`} class="inline-form hidden" role="region" aria-label={`Get ${wp.titleEn}`}>
+                    <form class="subscribe-form" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
+                      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                      <div class="form-row">
+                        <input type="text" name="firstname" placeholder="First name" required class="form-input" autocomplete="given-name" />
+                        <input type="email" name="email" placeholder="Email address" required class="form-input" autocomplete="email" />
+                      </div>
+                      <input type="url" name="linkedin" placeholder="LinkedIn profile (optional)" class="form-input form-input-full" autocomplete="off" />
+                      <div class="format-selector">
+                        <span class="format-label">Format:</span>
+                        <label class="radio-pill">
+                          <input type="radio" name={`format-${wp.num}`} value="pdf" checked /> PDF
+                        </label>
+                        <label class="radio-pill">
+                          <input type="radio" name={`format-${wp.num}`} value="epub" /> EPUB
+                        </label>
+                        <span class="lang-label">Lang:</span>
+                        <label class="radio-pill">
+                          <input type="radio" name={`lang-${wp.num}`} value="en" checked /> EN
+                        </label>
+                        <label class="radio-pill">
+                          <input type="radio" name={`lang-${wp.num}`} value="fr" /> FR
+                        </label>
+                      </div>
+                      <button type="submit" class="submit-btn">
+                        <span class="submit-text">Send to my inbox</span>
+                        <span class="submit-spinner hidden" aria-hidden="true">···</span>
+                      </button>
+                      <p class="form-note">No spam. One email with your download link.</p>
+                    </form>
+                    <div class="form-success hidden" role="alert">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Check your inbox — download link sent.
+                    </div>
+                    <div class="form-error hidden" role="alert">
+                      Something went wrong. <a href="mailto:florian@bruniaux.com">Contact me</a> to get the ebook.
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div class="free-downloads">
+                  <a href={`${PDF_BASE_URL}/${wp.hashedFileFr}`} target="_blank" rel="noopener" class="dl-btn dl-pdf">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    FR PDF
+                  </a>
+                  <a href={`${PDF_BASE_URL}/${wp.hashedFileEn}`} target="_blank" rel="noopener" class="dl-btn dl-pdf">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    EN PDF
+                  </a>
+                  <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                    FR EPUB
+                  </a>
+                  <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                    EN EPUB
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cross-promo: Recap Cards -->
+    <section class="section">
+      <a href="/cheatsheets/" class="recap-promo-card">
+        <div class="featured-badge-wp">57 RECAP CARDS</div>
+        <div class="featured-content-wp">
+          <h3>Printable A4 Cheat Sheets</h3>
+          <p>One topic per card, 3 series (Technique, Methodology, Design). Printable, scannable, and actionable. Perfect complement to the whitepapers.</p>
+        </div>
+        <svg class="featured-arrow-wp" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Reading paths -->
+    <section id="paths" class="section">
+      <h2 class="section-heading">Reading paths by profile</h2>
+      <p class="section-sub">Start with what matters to you, skip what you already know.</p>
+      <div class="paths-grid">
+        {profiles.map(p => (
+          <div class="path-card">
+            <div class="path-icon" aria-hidden="true">{p.icon}</div>
+            <h3 class="path-label">{p.label}</h3>
+            <p class="path-desc">{p.desc}</p>
+            <div class="path-sequence">
+              {p.path.map((num, i) => {
+                const wp = WHITEPAPERS.find(w => `WP${w.num}` === num)
+                return wp ? (
+                  <span class="path-step">
+                    {i > 0 && <span class="path-arrow" aria-hidden="true">→</span>}
+                    <a href={`#wp-${wp.num}`} class="path-link">{num}</a>
+                  </span>
+                ) : null
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq-section">
+      <h2 class="section-heading">FAQ</h2>
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary class="faq-q">What formats are available?</summary>
+          <p class="faq-a">All whitepapers come in PDF (Typst-rendered, Bold Guy palette) and EPUB3 (Pandoc, works on Kindle, Apple Books, Kobo). Both FR and EN for every title.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Why are two whitepapers free?</summary>
+          <p class="faq-a">WP00 (fundamentals) and WP03 (security) are the most universally useful. WP00 gives everyone a baseline, WP03 is critical enough to circulate freely. The rest require an email so I can share updates when they're revised.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What's the difference with the main guide?</summary>
+          <p class="faq-a">The guide (23K+ lines) is the authoritative reference — comprehensive but dense. Whitepapers are structured narratives on a single topic: better for focused reading, printing, or sharing with non-developers.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Will they be updated?</summary>
+          <p class="faq-a">Yes. Each whitepaper has its own version number independent of the guide. Subscribe to get notified when a new version drops — the email you provided at download is used for that.</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
+
+</Layout>
+
+<style>
+  /* ── Recap Cards cross-promo ── */
+  .recap-promo-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--accent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .recap-promo-card:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .featured-badge-wp {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+  .featured-content-wp { flex: 1; }
+  .featured-content-wp h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .featured-content-wp p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .featured-arrow-wp { color: var(--accent); flex-shrink: 0; }
+
+  /* Layout */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+  .main-content { padding-bottom: 5rem; }
+
+  /* Hero */
+  .page-hero {
+    padding: 4rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-primary);
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+  }
+  .tagline {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    line-height: 1.65;
+  }
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+  .stat-num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .stat-lbl {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.15rem;
+  }
+  .stat-sep {
+    width: 1px;
+    height: 2rem;
+    background: var(--border);
+  }
+  .hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-secondary); }
+  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+
+  /* Sections */
+  .section { padding: 3rem 0 1rem; }
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.4rem;
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0 0 1.75rem;
+  }
+
+  /* Badges */
+  .badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+  .badge-free { background: color-mix(in srgb, #22c55e 20%, transparent); color: #16a34a; }
+  .badge-popular { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent); }
+
+  .wp-num-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+  }
+
+  /* Featured cards */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .featured-card {
+    border: 1px solid var(--accent);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background: color-mix(in srgb, var(--accent) 4%, var(--bg-secondary));
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .featured-header { display: flex; align-items: center; gap: 0.5rem; }
+  .featured-title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+  .featured-sub { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+  .featured-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .meta-pill {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+  }
+  .featured-actions { margin-top: 0.25rem; }
+  .lang-format-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .lang-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  /* Download buttons */
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border-radius: 0.35rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid var(--border);
+  }
+  .dl-pdf {
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+  .dl-pdf:hover { color: var(--accent); border-color: var(--accent); }
+  .dl-epub {
+    color: var(--text-muted);
+    background: var(--bg-primary);
+  }
+  .dl-epub:hover { color: var(--text-primary); border-color: var(--border); }
+
+  /* Table */
+  .wp-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .wp-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .wp-row:last-child { border-bottom: none; }
+  .wp-row:hover { background: var(--bg-secondary); }
+  .wp-row-info { flex: 1; min-width: 0; }
+  .wp-row-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+  }
+  .wp-audience {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .wp-pages {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+  .wp-row-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .wp-row-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
+  }
+  .wp-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    background: var(--bg-tertiary, var(--bg-secondary));
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+  }
+  .wp-row-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    min-width: 160px;
+  }
+  .free-downloads { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+
+  /* Get button */
+  .get-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.45rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .get-btn:hover { background: var(--accent-hover); }
+  .get-btn svg { transition: transform 0.2s; }
+  .get-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  /* Inline form */
+  .inline-form {
+    margin-top: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 420px;
+  }
+  .inline-form.hidden { display: none; }
+  .honeypot { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+  .form-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .form-input {
+    flex: 1;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    font-size: 0.85rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-width: 0;
+    transition: border-color 0.15s;
+  }
+  .form-input:focus { outline: none; border-color: var(--accent); }
+  .format-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .format-label, .lang-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+  .radio-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    transition: color 0.1s;
+  }
+  .radio-pill:hover { color: var(--text-primary); }
+  .radio-pill input { cursor: pointer; accent-color: var(--accent); }
+  .submit-btn {
+    width: 100%;
+    padding: 0.55rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-bottom: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--accent-hover); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0;
+  }
+  .form-success, .form-error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .form-success.hidden, .form-error.hidden { display: none; }
+  .form-success { background: color-mix(in srgb, #22c55e 12%, transparent); color: #15803d; }
+  .form-error { background: color-mix(in srgb, #ef4444 12%, transparent); color: #dc2626; }
+  .form-error a { color: inherit; text-decoration: underline; }
+  .submit-spinner { font-family: monospace; letter-spacing: 0.2em; }
+
+  /* Paths */
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .path-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    background: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .path-icon { font-size: 1.4rem; line-height: 1; }
+  .path-label { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+  .path-desc { font-size: 0.825rem; color: var(--text-secondary); margin: 0; line-height: 1.45; }
+  .path-sequence {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+  .path-step { display: flex; align-items: center; gap: 0.25rem; }
+  .path-arrow { color: var(--text-muted); font-size: 0.8rem; }
+  .path-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .path-link:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+
+  /* FAQ */
+  .faq-section { padding-bottom: 2rem; }
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    overflow: hidden;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    list-style: none;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+  }
+  .faq-q:hover { background: var(--bg-secondary); }
+  .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+  .faq-item[open] .faq-q::after { content: '−'; }
+  .faq-a {
+    padding: 0 1.25rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-stats { gap: 0; }
+    .stat { padding: 0 1rem; }
+    .stat-num { font-size: 1.2rem; }
+    .wp-row { flex-direction: column; gap: 1rem; }
+    .wp-row-actions { align-items: flex-start; min-width: auto; width: 100%; }
+    .inline-form { max-width: 100%; }
+    .form-row { flex-direction: column; }
+    .featured-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .stat-sep { display: none; }
+    .stat { padding: 0.5rem 0.75rem; }
+  }
+</style>
+
+<script>
+  // Toggle inline form
+  document.querySelectorAll<HTMLButtonElement>('.get-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wpNum = btn.dataset.wp
+      const form = document.getElementById(`form-${wpNum}`)
+      if (!form) return
+      const isOpen = btn.getAttribute('aria-expanded') === 'true'
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true')
+      form.classList.toggle('hidden', isOpen)
+      if (!isOpen) {
+        const firstInput = form.querySelector<HTMLInputElement>('input:not(.honeypot):not([type="radio"])')
+        firstInput?.focus()
+      }
+    })
+  })
+
+  const PDF_BASE = import.meta.env.PUBLIC_PDF_BASE ?? 'https://florian.bruniaux.com/guides'
+
+  // Capture UTM params from URL once (shared across all forms)
+  const urlParams = new URLSearchParams(window.location.search)
+  const utmSource = urlParams.get('utm_source') || document.referrer || 'direct'
+  const utmCampaign = urlParams.get('utm_campaign') || null
+
+  // Handle form submission
+  document.querySelectorAll<HTMLFormElement>('.subscribe-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const wpNum = form.dataset.wp
+      const fileFr = form.dataset.fileFr!
+      const fileEn = form.dataset.fileEn!
+
+      const honeypot = (form.querySelector('[name="website"]') as HTMLInputElement)?.value
+      if (honeypot) return  // bot detected — silent ignore
+
+      const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value
+      const firstName = (form.querySelector('[name="firstname"]') as HTMLInputElement)?.value
+      const linkedin = (form.querySelector('[name="linkedin"]') as HTMLInputElement)?.value?.trim() || undefined
+      const format = (form.querySelector(`[name="format-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'pdf'
+      const lang = (form.querySelector(`[name="lang-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'en'
+
+      // For gated PDFs: use hashed filename (API validates against server-side whitelist)
+      // For EPUBs: direct download from landing (not gated via API)
+      const isEpub = format === 'epub'
+      const slugFr = fileFr.replace(/\.fr\..*\.pdf$/, '')
+      const slugEn = fileEn.replace(/\.en\..*\.pdf$/, '')
+      const epubUrl = lang === 'fr'
+        ? `/ebooks/epub/fr/${slugFr}.epub`
+        : `/ebooks/epub/en/${slugEn}.epub`
+      const filename = lang === 'fr' ? fileFr : fileEn
+      const downloadUrl = isEpub ? epubUrl : `${PDF_BASE}/${filename}`
+
+      const submitBtn = form.querySelector<HTMLButtonElement>('.submit-btn')
+      const submitText = form.querySelector('.submit-text')
+      const submitSpinner = form.querySelector('.submit-spinner')
+      const successMsg = form.parentElement?.querySelector('.form-success')
+
+      if (submitBtn) submitBtn.disabled = true
+      submitText?.classList.add('hidden')
+      submitSpinner?.classList.remove('hidden')
+
+      try {
+        // For EPUBs: skip API (not in allowlist), trigger download directly
+        const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe'
+        if (!isEpub) {
+          await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              firstName,
+              filename,
+              website: '',
+              source: utmSource,
+              ...(utmCampaign && { utmCampaign }),
+              ...(linkedin && { linkedin }),
+            }),
+          })
+        }
+
+        form.classList.add('hidden')
+        successMsg?.classList.remove('hidden')
+        // Mark as subscriber — unlocks recap cards automatically
+        try { localStorage.setItem('cc-subscriber', '1') } catch {}
+        // GA event
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'ebook_subscribe', {
+            guide: filename,
+            format: isEpub ? 'epub' : 'pdf',
+            source: utmSource,
+            ...(utmCampaign && { campaign: utmCampaign }),
+          })
+        }
+        // Trigger download
+        setTimeout(() => {
+          const link = document.createElement('a')
+          link.href = downloadUrl
+          if (isEpub) link.download = ''
+          else link.target = '_blank'
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        }, 800)
+      } catch (err) {
+        // On API failure: still deliver the download
+        form.classList.add('hidden')
+        successMsg?.classList.remove('hidden')
+        setTimeout(() => {
+          const link = document.createElement('a')
+          link.href = downloadUrl
+          if (!isEpub) link.target = '_blank'
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        }, 500)
+        console.warn('Subscribe API error (download still triggered):', err)
+      } finally {
+        if (submitBtn) submitBtn.disabled = false
+        submitText?.classList.remove('hidden')
+        submitSpinner?.classList.add('hidden')
+      }
+    })
+  })
+</script>

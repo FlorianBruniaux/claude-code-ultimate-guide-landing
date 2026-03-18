@@ -38,6 +38,14 @@ const pageEntries: SearchEntry[] = [
     source: 'landing',
   },
   {
+    id: 'page-cheatsheets',
+    title: 'Recap Cards — 57 Printable Cheat Sheets',
+    keywords: 'recap cards cheat sheets printable a4 technique methodologie conception pdf serie',
+    category: 'Pages',
+    url: '/cheatsheets/',
+    source: 'landing',
+  },
+  {
     id: 'page-examples',
     title: 'Examples & Templates',
     keywords: 'examples templates agents hooks commands skills production ready',
@@ -107,6 +115,14 @@ const pageEntries: SearchEntry[] = [
     keywords: 'diagrams visual architecture mermaid svg flowchart workflows multi-agent security',
     category: 'Pages',
     url: '/diagrams/',
+    source: 'landing',
+  },
+  {
+    id: 'page-whitepapers',
+    title: 'Ebooks & Whitepapers',
+    keywords: 'ebooks whitepapers pdf epub download free whitepaper wp00 wp01 wp02 wp03 security prompts architecture team adoption privacy roi budget agents learning',
+    category: 'Pages',
+    url: '/whitepapers/',
     source: 'landing',
   },
 ]

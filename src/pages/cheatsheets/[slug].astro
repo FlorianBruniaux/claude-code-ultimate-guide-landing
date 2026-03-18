@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
+import { RECAP_BASE_URL, CARD_HASHES } from '../../data/recap-cards-data'
 
 export async function getStaticPaths() {
   const cards = await getCollection('cheatsheets')
@@ -34,6 +35,12 @@ const seriesLabel: Record<string, string> = {
   M: 'Méthodologie',
   C: 'Conception',
 }
+
+const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
+const cardHashedUrl = CARD_HASHES[card.id]
+  ? `${RECAP_BASE_URL}/${CARD_HASHES[card.id]}`
+  : null
+const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
 const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
 const description = card.data.subtitle
@@ -82,19 +89,41 @@ const jsonLd = [
       <h1>{card.data.title}</h1>
       <p class="card-subtitle">{card.data.subtitle}</p>
       <div class="hero-actions">
-        <a
-          href={`/cheatsheets/pdf/${card.id}.pdf`}
-          class="btn btn-primary"
-          download
+        <!-- PDF button: rendered as gated span, upgraded to link by JS when unlocked -->
+        <span
+          id="slug-pdf-btn"
+          class="btn btn-primary pdf-gated-slug"
+          data-card-id={card.id}
+          data-series={seriesId}
+          data-hashed-url={cardHashedUrl ?? ''}
+          role="button"
+          tabindex="0"
+          aria-label="Download PDF (unlock required)"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Download PDF
-        </a>
+          <span id="pdf-btn-label">🔒 Unlock PDF</span>
+        </span>
         <a href="/cheatsheets/" class="btn btn-secondary">
           ← All cards
         </a>
+      </div>
+
+      <!-- Inline gate for locked series -->
+      <div id="slug-gate" class="slug-gate hidden" aria-live="polite">
+        <p class="slug-gate-msg">Enter your email to unlock all {seriesLabel[seriesChar] ?? card.data.category} cards and get the full PDF bundle.</p>
+        <form id="slug-gate-form" class="slug-gate-form" novalidate>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="email" name="email" id="slug-gate-email" placeholder="you@example.com" required autocomplete="email">
+          <input type="url" name="linkedin" id="slug-gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
+          <button type="submit" id="slug-gate-submit" class="btn btn-primary">
+            <span class="submit-label">Get all cards</span>
+            <span class="submit-spinner hidden" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p id="slug-gate-error" class="slug-gate-error hidden" role="alert"></p>
+        <p id="slug-gate-success" class="slug-gate-success hidden" role="status"></p>
       </div>
     </div>
   </header>
@@ -144,6 +173,138 @@ const jsonLd = [
   )}
 
 </Layout>
+
+<script define:vars={{ seriesId, cardHashedUrl, API_BASE }}>
+  const LS_SUBSCRIBER = 'cc-subscriber'
+  const lsUnlockKey = (s) => `cc-unlocked-${s}`
+  // API_BASE est injecté via define:vars depuis le frontmatter (env-driven)
+
+  function isUnlocked() {
+    try {
+      return localStorage.getItem(LS_SUBSCRIBER) === '1' ||
+             localStorage.getItem(lsUnlockKey(seriesId)) === '1'
+    } catch { return false }
+  }
+
+  const pdfBtn = document.getElementById('slug-pdf-btn')
+  const pdfLabel = document.getElementById('pdf-btn-label')
+  const slugGate = document.getElementById('slug-gate')
+
+  function upgradePdfBtn() {
+    if (!pdfBtn || !cardHashedUrl) return
+    const a = document.createElement('a')
+    a.href = cardHashedUrl
+    a.className = 'btn btn-primary'
+    a.setAttribute('download', '')
+    a.innerHTML = pdfBtn.innerHTML
+    // Update the label inside
+    const label = a.querySelector('#pdf-btn-label')
+    if (label) label.textContent = 'Download PDF'
+    pdfBtn.parentNode.replaceChild(a, pdfBtn)
+  }
+
+  if (isUnlocked()) {
+    upgradePdfBtn()
+  } else {
+    // Show inline gate on click
+    if (pdfBtn) {
+      pdfBtn.addEventListener('click', () => {
+        if (slugGate) slugGate.classList.remove('hidden')
+        document.getElementById('slug-gate-email')?.focus()
+      })
+      pdfBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          if (slugGate) slugGate.classList.remove('hidden')
+          document.getElementById('slug-gate-email')?.focus()
+        }
+      })
+    }
+  }
+
+  // Gate form submission
+  const slugGateForm = document.getElementById('slug-gate-form')
+  if (slugGateForm) {
+    slugGateForm.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const email = document.getElementById('slug-gate-email')?.value?.trim()
+      if (!email) return
+
+      const submitBtn = document.getElementById('slug-gate-submit')
+      const honeypot = slugGateForm.querySelector('input[name="website"]')?.value || ''
+      const linkedin = document.getElementById('slug-gate-linkedin')?.value?.trim() || ''
+
+      if (submitBtn) {
+        submitBtn.disabled = true
+        submitBtn.querySelector('.submit-label').classList.add('hidden')
+        submitBtn.querySelector('.submit-spinner').classList.remove('hidden')
+      }
+
+      // Determine ZIP filename for this series
+      const seriesZips = {
+        T: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
+        M: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
+      }
+      const zipFile = seriesZips[seriesId]
+
+      if (!zipFile) {
+        showSlugError('This series is not yet available.')
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.submit-label').classList.remove('hidden'); submitBtn.querySelector('.submit-spinner').classList.add('hidden') }
+        return
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/api/subscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            filename: zipFile,
+            website: honeypot,
+            source: 'cheatsheets-slug',
+            linkedin: linkedin || undefined,
+          }),
+        })
+        const data = await res.json()
+
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.submit-label').classList.remove('hidden'); submitBtn.querySelector('.submit-spinner').classList.add('hidden') }
+
+        if (data.success) {
+          try {
+            localStorage.setItem(lsUnlockKey(seriesId), '1')
+            localStorage.setItem(LS_SUBSCRIBER, '1')
+          } catch {}
+          try {
+            if (typeof gtag !== 'undefined') gtag('event', 'recap_card_subscribe', { event_label: seriesId })
+          } catch {}
+          showSlugSuccess('Check your inbox — the PDF bundle is on its way!')
+          setTimeout(() => {
+            if (slugGate) slugGate.classList.add('hidden')
+            upgradePdfBtn()
+          }, 2500)
+        } else {
+          showSlugError(data.error || 'Failed to send. Please try again.')
+        }
+      } catch {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.submit-label').classList.remove('hidden'); submitBtn.querySelector('.submit-spinner').classList.add('hidden') }
+        showSlugError('Network error. Please try again.')
+      }
+    })
+  }
+
+  function showSlugError(msg) {
+    const el = document.getElementById('slug-gate-error')
+    const ok = document.getElementById('slug-gate-success')
+    if (el) { el.textContent = msg; el.classList.remove('hidden') }
+    if (ok) ok.classList.add('hidden')
+  }
+  function showSlugSuccess(msg) {
+    const el = document.getElementById('slug-gate-success')
+    const err = document.getElementById('slug-gate-error')
+    if (el) { el.textContent = msg; el.classList.remove('hidden') }
+    if (err) err.classList.add('hidden')
+  }
+</script>
 
 <style>
   /* ── Breadcrumb ── */
@@ -284,6 +445,11 @@ const jsonLd = [
     border-radius: 0.25rem;
     color: var(--text-primary);
   }
+  /* Override Tailwind Typography backtick pseudo-elements on inline code */
+  .prose :global(:not(pre) > code::before),
+  .prose :global(:not(pre) > code::after) {
+    content: none !important;
+  }
   .prose :global(pre) {
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
@@ -384,4 +550,70 @@ const jsonLd = [
     .nav-next { justify-content: flex-start; text-align: left; }
     .prose :global(table) { font-size: 0.8rem; }
   }
+
+  /* ── Slug gate ── */
+  .pdf-gated-slug { cursor: pointer; }
+  .slug-gate {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 0.625rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+  .slug-gate-msg {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+  .slug-gate-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .slug-gate-form input[type="email"],
+  .slug-gate-form input[type="url"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    outline: none;
+  }
+  .slug-gate-form input[type="email"]:focus,
+  .slug-gate-form input[type="url"]:focus { border-color: var(--accent); }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .submit-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .slug-gate-error {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: #ef4444;
+  }
+  .slug-gate-success {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: #22c55e;
+    font-weight: 500;
+  }
+  .hidden { display: none !important; }
 </style>

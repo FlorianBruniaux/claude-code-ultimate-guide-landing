@@ -18,16 +18,16 @@ const whitepapers = [
   <div class="container">
     <h2 class="section-title">Whitepapers & Recap Cards</h2>
     <p class="section-subtitle">
-      10 whitepapers + 11th (AI budget) on strategic Claude Code topics — short, dense PDF format
+      11 whitepapers · 472 pages · PDF + EPUB · FR + EN — from foundations to AI budget justification for decision-makers
     </p>
 
     <div class="wp-layout">
       <!-- Whitepapers list -->
       <div class="wp-list-wrapper">
         <div class="wp-list-header">
-          <span class="recap-badge">COMING SOON</span>
           <span class="wp-count-badge">11 whitepapers</span>
           <span class="wp-lang-pill">FR + EN</span>
+          <span class="wp-lang-pill">PDF + EPUB</span>
         </div>
         <ul class="wp-list">
           {whitepapers.map((wp) => (
@@ -37,24 +37,26 @@ const whitepapers = [
             </li>
           ))}
         </ul>
+        <a href="/whitepapers/" class="wp-browse-cta">Browse all ebooks &rarr;</a>
       </div>
 
       <!-- Recap cards -->
       <div class="recap-card">
         <div class="recap-header">
-          <span class="recap-badge">COMING SOON</span>
+          <span class="recap-badge">57 CARDS</span>
           <span class="recap-label">Recap Cards</span>
-          <span class="wp-lang-pill">FR + EN</span>
+          <span class="wp-lang-pill">FR · EN coming</span>
         </div>
         <p class="recap-desc">
-          10 A4 recap cards — 1 card per whitepaper, ultra-dense synthesis format. Printable, ready to use.
+          57 A4 recap cards — 1 page per concept, 3 series covering every aspect of Claude Code. Printable, ready to use.
         </p>
         <ul class="recap-features">
-          <li>1-page A4 format per card</li>
-          <li>Key concepts synthesis</li>
-          <li>Integrated examples and commands</li>
-          <li>Bold Guy palette (high-quality PDF)</li>
+          <li>Technique (22 cards) — Commands, config, MCP, sandbox</li>
+          <li>Méthodologie (22 cards) — Workflows, agents, hooks, CI/CD</li>
+          <li>Conception (13 cards) — Mental models, security, cost</li>
+          <li>Bold Guy palette — 1-page A4 strict, high-quality PDF</li>
         </ul>
+        <a href="/cheatsheets/" class="wp-browse-cta">Browse all recap cards &rarr;</a>
       </div>
     </div>
   </div>
@@ -78,10 +80,9 @@ const whitepapers = [
 .wp-list-wrapper {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: var(--border-radius-lg);
   padding: var(--space-xl);
-  opacity: 0.75;
 }
 
 .wp-list-header {
@@ -157,7 +158,6 @@ const whitepapers = [
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  opacity: 0.75;
 }
 
 .recap-header {
@@ -215,6 +215,17 @@ const whitepapers = [
   font-size: 0.75rem;
   top: 0.1em;
 }
+
+.wp-browse-cta {
+  display: inline-block;
+  margin-top: var(--space-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.wp-browse-cta:hover { color: var(--accent-hover, var(--accent)); text-decoration: underline; }
 
 /* Responsive */
 @media (max-width: 900px) {
