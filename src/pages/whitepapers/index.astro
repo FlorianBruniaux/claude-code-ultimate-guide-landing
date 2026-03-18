@@ -101,23 +101,23 @@ const profiles = [
       </div>
       <div class="hero-cta">
         <a href="#table" class="btn btn-primary">Browse all ebooks</a>
-        <a href="#free" class="btn btn-secondary">Free downloads</a>
+        <a href="#free" class="btn btn-secondary">Open access</a>
       </div>
     </div>
   </header>
 
   <div class="main-content container">
 
-    <!-- Free featured cards -->
+    <!-- Open access featured card -->
     <section id="free" class="section">
-      <h2 class="section-heading">Free to download</h2>
-      <p class="section-sub">No email required — grab these two directly.</p>
+      <h2 class="section-heading">No email required</h2>
+      <p class="section-sub">Direct download — open access, no form.</p>
       <div class="featured-grid">
-        {WHITEPAPERS.filter(wp => !wp.gated).map(wp => (
+        {WHITEPAPERS.filter(wp => !wp.gated && !wp.comingSoon).map(wp => (
           <div class="featured-card">
             <div class="featured-header">
               <span class="wp-num-badge">{wp.num}</span>
-              <span class="badge badge-free">Free</span>
+              <span class="badge badge-open">Open access</span>
             </div>
             <h3 class="featured-title">{wp.titleEn}</h3>
             <p class="featured-sub">{wp.subtitle}</p>
@@ -157,13 +157,17 @@ const profiles = [
     <!-- Complete table -->
     <section id="table" class="section">
       <h2 class="section-heading">All 11 whitepapers</h2>
+      <div class="release-notice">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
+        All 11 are written and production-ready. Releasing one per week through early May — get WP01–03 now to stay in the loop.
+      </div>
       <div class="wp-table">
         {WHITEPAPERS.map(wp => (
           <div class="wp-row" id={`wp-${wp.num}`}>
             <div class="wp-row-info">
               <div class="wp-row-header">
                 <span class="wp-num-badge">{wp.num}</span>
-                {wp.badge && <span class={`badge ${wp.badge === 'Free' ? 'badge-free' : 'badge-popular'}`}>{wp.badge}</span>}
+                {wp.badge && <span class={`badge ${wp.badge === 'Open' ? 'badge-open' : wp.badge === 'Popular' ? 'badge-popular' : 'badge-open'}`}>{wp.badge}</span>}
                 <span class="wp-audience">{wp.audience}</span>
                 <span class="wp-pages">~{wp.pages}p</span>
               </div>
@@ -176,7 +180,11 @@ const profiles = [
               </div>
             </div>
             <div class="wp-row-actions">
-              {wp.gated ? (
+              {wp.comingSoon ? (
+                <div class="coming-soon-block">
+                  <span class="badge badge-soon">Coming soon</span>
+                </div>
+              ) : wp.gated ? (
                 <div class="gated-block" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
                   <button
                     type="button"
@@ -216,7 +224,7 @@ const profiles = [
                         <span class="submit-text">Send to my inbox</span>
                         <span class="submit-spinner hidden" aria-hidden="true">···</span>
                       </button>
-                      <p class="form-note">No spam. One email with your download link.</p>
+                      <p class="form-note">Not a paywall — you get one email with your download link. That's it.</p>
                     </form>
                     <div class="form-success hidden" role="alert">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -302,8 +310,8 @@ const profiles = [
           <p class="faq-a">All whitepapers come in PDF (Typst-rendered, Bold Guy palette) and EPUB3 (Pandoc, works on Kindle, Apple Books, Kobo). Both FR and EN for every title.</p>
         </details>
         <details class="faq-item">
-          <summary class="faq-q">Why are two whitepapers free?</summary>
-          <p class="faq-a">WP00 (fundamentals) and WP03 (security) are the most universally useful. WP00 gives everyone a baseline, WP03 is critical enough to circulate freely. The rest require an email so I can share updates when they're revised.</p>
+          <summary class="faq-q">Why do most whitepapers ask for an email?</summary>
+          <p class="faq-a">Not a paywall — everything is free. WP00 is open access with no form at all. The others ask for your email so I can send you the download link and notify you when a revised version drops. One email, no newsletter unless you opt in.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">What's the difference with the main guide?</summary>
@@ -321,6 +329,48 @@ const profiles = [
 </Layout>
 
 <style>
+  /* ── Badges ── */
+  .badge-open {
+    background: color-mix(in srgb, #22c55e 15%, transparent);
+    color: #22c55e;
+    border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .badge-soon {
+    background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .coming-soon-block {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  /* ── Release notice ── */
+  .release-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    border-radius: 0.5rem;
+    padding: 0.625rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .release-notice svg { color: var(--accent); flex-shrink: 0; }
+
   /* ── Recap Cards cross-promo ── */
   .recap-promo-card {
     display: flex;
