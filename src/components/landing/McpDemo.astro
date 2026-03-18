@@ -30,20 +30,21 @@ const commands = [
 
 ## Guide + CC CLI
 
-Guide [3.36.0] — 2026-03-17:
+Guide [3.37.0] — 2026-03-17:
 - 3 new AI roles: MLOps Engineer, AI Developer Advocate, AI Orchestration Engineer
 - Packmind — Engineering Standards Distribution (ContextOps, MCP server)
 - Comprehension debt concept + regulatory exposure (EU AI Act, FDA 2025)
 - CLAUDE.md anti-patterns: ETH Zürich /init research, discoverability filter, anchoring risk
 
-Guide [3.35.0] — 2026-03-17:
-- CC releases tracking updated to v2.1.77 — Opus 4.6 default output
-  64k/128k tokens, security fix (PreToolUse bypass), allowRead sandbox,
-  /branch command, auto-updater memory fix, Agent resume param removed
+Guide [3.37.0] — 2026-03-18:
+- CC releases tracking updated to v2.1.78 — StopFailure hook,
+  ${CLAUDE_PLUGIN_DATA} persistent plugin state, streaming line-by-line,
+  3 security fixes (silent sandbox disable, MCP deny rules bypass,
+  protected dirs writable in bypassPermissions mode)
+- v2.1.77 — Opus 4.6 64k/128k output, /branch command, security fix
 - v2.1.76 — MCP elicitation, PostCompact hook, /effort command
-- v2.1.75 — 1M context Opus 4.6 default for Max/Team/Enterprise
 
-CC CLI releases: v2.1.77 released 2026-03-17 (latest tracked)
+CC CLI releases: v2.1.78 released 2026-03-18 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -110,7 +111,7 @@ ex: /ccguide:example security-gate`,
     label: '/ccguide:topics',
     title: 'Topics',
     description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
-    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.36.0)
+    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.37.0)
 
 ┌────────────┬─────────┬───────────────────────────────────────────────┐
 │ Category   │ Entries │ Examples                                       │
@@ -149,10 +150,22 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.77 (updated: 2026-03-17)
+Latest: v2.1.78 (updated: 2026-03-18)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
+v2.1.78 — 2026-03-18
+
+- StopFailure hook event fires on API errors (rate limit, auth failure)
+- ${CLAUDE_PLUGIN_DATA} variable for persistent plugin state across updates
+- effort, maxTurns, disallowedTools frontmatter for plugin-shipped agents
+- Response text now streams line-by-line as generated
+- Security: silent sandbox disable when deps missing now shows warning
+- Security: deny MCP permission rules now properly block tools from model
+- Security: protected dirs no longer writable in bypassPermissions mode
+- Fixed infinite loop from API errors triggering stop hooks in a cycle
+- Fixed --resume truncating history on large sessions with subagents
+
 v2.1.77 — 2026-03-17
 
 - Opus 4.6 default max output raised to 64k tokens; upper bound for

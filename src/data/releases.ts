@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.78',
+    date: 'Mar 18, 2026',
+    highlights: [
+      '<code>StopFailure</code> hook event fires when turn ends due to API error (rate limit, auth failure); <code>${CLAUDE_PLUGIN_DATA}</code> for persistent plugin state',
+      '<code>effort</code>, <code>maxTurns</code>, <code>disallowedTools</code> frontmatter for plugin-shipped agents; response text now streams line-by-line',
+      '⚠️ <strong>3 security fixes</strong>: silent sandbox disable, MCP deny rules bypassed, protected dirs writable in bypassPermissions mode',
+      'Fixed infinite loop when API errors triggered stop hooks re-feeding blocking errors; fixed <code>--resume</code> truncating history on large sessions with subagents',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'StopFailure hook + 3 security fixes',
+  },
+  {
     version: 'v2.1.77',
     date: 'Mar 17, 2026',
     highlights: [
@@ -26,10 +40,7 @@ export const releases: Release[] = [
       'Breaking: <code>Agent</code> tool no longer accepts <code>resume</code> parameter — use <code>SendMessage({to: agentId})</code> instead',
     ],
     breaking: ['Agent tool: <code>resume</code> parameter removed — use <code>SendMessage({to: agentId})</code>'],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: '⭐ Opus 4.6 128k output + security fix',
   },
   {
     version: 'v2.1.76',
