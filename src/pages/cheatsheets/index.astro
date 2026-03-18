@@ -40,7 +40,7 @@ const jsonLd = [
 ]
 
 // API base URL for subscribe endpoint (overridable via env for local dev)
-const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
+const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
 // Build card URL map for client-side JS (card id → full hashed URL)
 const cardUrls: Record<string, string> = {}

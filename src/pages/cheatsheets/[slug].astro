@@ -40,7 +40,7 @@ const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
 const cardHashedUrl = CARD_HASHES[card.id]
   ? `${RECAP_BASE_URL}/${CARD_HASHES[card.id]}`
   : null
-const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
+const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
 const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
 const description = card.data.subtitle

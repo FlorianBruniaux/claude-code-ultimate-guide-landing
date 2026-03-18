@@ -929,7 +929,7 @@ const profiles = [
 
       try {
         // For EPUBs: skip API (not in allowlist), trigger download directly
-        const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://florian.bruniaux.com/api/subscribe'
+        const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe'
         if (!isEpub) {
           await fetch(API_URL, {
             method: 'POST',

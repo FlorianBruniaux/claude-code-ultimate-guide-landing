@@ -54,20 +54,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
 
 /** Map: card ID (slug) → hashed PDF filename on Vercel */
 export const CARD_HASHES: Record<string, string> = {
-  // ── Conception (C) ──────────────────────────────────────────────────────────
-  'c01-trust-calibration': 'c01-trust-calibration.fr.v1.0.0.06c8ad61a256.pdf',
-  'c02-prompting-basics': 'c02-prompting-basics.fr.v1.0.0.cae8e821774f.pdf',
-  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.fr.v1.0.0.3e63b40073f4.pdf',
-  'c04-commands-skills-plugins-agents': 'c04-commands-skills-plugins-agents.fr.v1.0.0.5f4a9bda368a.pdf',
-  'c05-memory-stack': 'c05-memory-stack.fr.v1.0.0.32172370d8ea.pdf',
-  'c06-configuration-decision-guide': 'c06-configuration-decision-guide.fr.v1.0.0.ed45b4044350.pdf',
-  'c07-conventions-equipe-scale': 'c07-conventions-equipe-scale.fr.v1.0.0.dd1324e19bf6.pdf',
-  'c08-surface-attaque-menaces': 'c08-surface-attaque-menaces.fr.v1.0.0.a3fb49640eb2.pdf',
-  'c09-prompt-injection-defenses': 'c09-prompt-injection-defenses.fr.v1.0.0.89a395ae6f29.pdf',
-  'c10-ai-traceability': 'c10-ai-traceability.fr.v1.0.0.a9550e0df0ae.pdf',
-  'c11-subscription-vs-api-patterns': 'c11-subscription-vs-api-patterns.fr.v1.0.0.70371cd7a428.pdf',
-  'c12-agent-sdk-integrations-ide': 'c12-agent-sdk-integrations-ide.fr.v1.0.0.c79ed0bdc8b6.pdf',
-  'c13-erreurs-courantes': 'c13-erreurs-courantes.fr.v1.0.0.3ddd18dab628.pdf',
+  // ── Conception (C) — coming soon, hashes stored in claudedocs/recap-cards-c-hashes.md ──
   // ── Méthodologie (M) ────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.fr.v1.0.0.7a39ae6c702e.pdf',
   'm02-context-management': 'm02-context-management.fr.v1.0.0.bb231e85d45a.pdf',
