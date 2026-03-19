@@ -163,6 +163,15 @@ const cardUrls = cardUrlsFr
       <div class="coming-soon-msg hidden" id="coming-soon-msg">
         <p>Design series (13 cards) — coming soon.</p>
         <p class="coming-soon-sub">13 cards on trust calibration, prompting, security, and architecture design.</p>
+        <form id="waitlist-form" class="waitlist-form" novalidate>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="waitlist-row">
+            <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+            <button type="submit" class="btn btn-primary btn-sm">Notify me</button>
+          </div>
+        </form>
+        <p id="waitlist-success" class="waitlist-success hidden">You're on the list!</p>
+        <p id="waitlist-error" class="waitlist-error hidden"></p>
       </div>
 
       <!-- Cards grid -->
@@ -547,6 +556,64 @@ document.querySelectorAll('.gate-lang-btn').forEach(btn => {
 // ── Init ─────────────────────────────────────────────────────────────────────
 upgradeUnlockedPDFs()
 updateGateBanner('all')
+
+// ── Waitlist form (Design series) ────────────────────────────────────────────
+const waitlistForm = document.getElementById('waitlist-form')
+const waitlistSuccess = document.getElementById('waitlist-success')
+const waitlistError = document.getElementById('waitlist-error')
+
+const LS_WAITLIST_DESIGN = 'waitlist-design'
+
+// Restore persisted state on load
+if (waitlistSuccess && waitlistError && waitlistForm) {
+  if (localStorage.getItem(LS_WAITLIST_DESIGN) === '1') {
+    waitlistForm.classList.add('hidden')
+    waitlistSuccess.classList.remove('hidden')
+  }
+}
+
+if (waitlistForm) {
+  waitlistForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const emailInput = waitlistForm.querySelector('input[type="email"]')
+    const honeypot = waitlistForm.querySelector('input[name="website"]')?.value || ''
+    const email = emailInput?.value?.trim()
+
+    if (!email) {
+      if (waitlistError) { waitlistError.textContent = 'Please enter a valid email.'; waitlistError.classList.remove('hidden') }
+      return
+    }
+
+    const submitBtn = waitlistForm.querySelector('button[type="submit"]')
+    if (submitBtn) submitBtn.disabled = true
+
+    try {
+      const res = await fetch(`${API_BASE}/api/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          interest: 'design-series',
+          website: honeypot,
+          source: 'cheatsheets-waitlist',
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        try { localStorage.setItem(LS_WAITLIST_DESIGN, '1') } catch {}
+        waitlistForm.classList.add('hidden')
+        if (waitlistSuccess) waitlistSuccess.classList.remove('hidden')
+        if (waitlistError) waitlistError.classList.add('hidden')
+      } else {
+        if (waitlistError) { waitlistError.textContent = data.error || 'Something went wrong. Try again.'; waitlistError.classList.remove('hidden') }
+        if (submitBtn) submitBtn.disabled = false
+      }
+    } catch {
+      if (waitlistError) { waitlistError.textContent = 'Network error. Please try again.'; waitlistError.classList.remove('hidden') }
+      if (submitBtn) submitBtn.disabled = false
+    }
+  })
+}
 </script>
 
 <style>
@@ -892,10 +959,42 @@ updateGateBanner('all')
     border-radius: 0.75rem;
   }
   .coming-soon-msg p { margin: 0 0 0.5rem; }
-  .coming-soon-msg p:last-child { margin: 0; }
   .coming-soon-sub {
     font-size: 0.85rem;
     color: var(--text-muted);
+  }
+
+  /* ── Waitlist form ── */
+  .waitlist-form {
+    max-width: 400px;
+    margin: 1rem auto 0;
+  }
+  .waitlist-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .waitlist-row input[type="email"] {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .waitlist-row input[type="email"]:focus { border-color: var(--accent); }
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+  .waitlist-success {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #22c55e;
+  }
+  .waitlist-error {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #ef4444;
   }
 
   /* ── Cards grid ── */

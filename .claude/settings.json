@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); echo \"$input\" | grep -q 'git push' && printf '\\n\u26a0\ufe0f  [RSS] Pushed to landing. New content? Update src/data/rss-entries.ts\\n    Types: guide_release | new_page | new_cheatcard | new_whitepaper | new_section\\n    File: /Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide-landing/src/data/rss-entries.ts\\n' || true"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -19,6 +19,7 @@ const moreLinks = [
   { href: '/ecosystem/', label: 'Ecosystem' },
   { href: '/context/', label: 'Context' },
   { href: '/faq/', label: 'FAQ' },
+  { href: '/rss.xml', label: 'RSS Feed', rss: true },
 ]
 
 const currentPath = Astro.url.pathname
@@ -84,19 +85,23 @@ const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
             style="background: var(--bg-primary);"
           >
             {moreLinks.map((link) => {
-              const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+              const isActive = !link.rss && currentPath.startsWith(link.href.replace('/#', '/'))
               return (
                 <a
                   href={link.href}
                   role="menuitem"
                   aria-current={isActive ? 'page' : undefined}
                   class:list={[
-                    'block px-4 py-2 text-sm font-medium transition-colors',
+                    'flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors',
+                    link.rss ? 'border-t border-border mt-1 pt-2' : '',
                     isActive
                       ? 'text-accent'
                       : 'text-text-secondary hover:text-text-primary hover:bg-background-tertiary',
                   ]}
                 >
+                  {link.rss && (
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;opacity:0.7"><path d="M6.18 15.64a2.18 2.18 0 010 4.36 2.18 2.18 0 010-4.36M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/></svg>
+                  )}
                   {link.label}
                 </a>
               )
@@ -181,16 +186,20 @@ const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
       })}
       <div class="border-t border-border my-2 pt-2">
         {moreLinks.map((link) => {
-          const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
+          const isActive = !link.rss && currentPath.startsWith(link.href.replace('/#', '/'))
           return (
             <a
               href={link.href}
               aria-current={isActive ? 'page' : undefined}
               class:list={[
-                'block py-2 text-base font-medium transition-colors',
+                'flex items-center gap-2 py-2 text-base font-medium transition-colors',
+                link.rss ? 'border-t border-border mt-1 pt-3' : '',
                 isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
               ]}
             >
+              {link.rss && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;opacity:0.7"><path d="M6.18 15.64a2.18 2.18 0 010 4.36 2.18 2.18 0 010-4.36M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/></svg>
+              )}
               {link.label}
             </a>
           )
