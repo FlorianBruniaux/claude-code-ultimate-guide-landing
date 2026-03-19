@@ -1,60 +1,60 @@
 ---
-title: Trust Calibration & Mental Model
-subtitle: Comment penser la relation avec Claude pour en tirer le meilleur
+title: "Trust Calibration & Mental Model"
+subtitle: "How to think about your relationship with Claude to get the most out of it"
 cardNumber: C01
-category: Conception
+category: Design
 difficulty: beginner
 guideVersion: 3.32.1
 order: 201
 ---
 
-## Le bon mental model
+## The right mental model
 
-La façon la plus productive de penser à Claude Code : un développeur junior très rapide, avec une connaissance encyclopédique des patterns, mais sans le jugement qui vient de l'expérience projet. Il peut produire 100 lignes de code solide en 10 secondes, et prendre une mauvaise décision d'architecture dans la même foulée.
+The most productive way to think about Claude Code: a very fast junior developer with encyclopedic knowledge of patterns, but without the judgment that comes from project experience. It can produce 100 lines of solid code in 10 seconds, and make a bad architectural decision in the same breath.
 
-Ce cadre a une implication immédiate : la supervision n'est pas optionnelle. Elle est calibrée selon le type de tâche.
+This framing has an immediate implication: supervision is not optional. It is calibrated according to the type of task.
 
-## Calibration par type de tâche
+## Calibration by task type
 
-| Tâche | Niveau de confiance | Action |
-|-------|---------------------|--------|
-| Renommage, formatage | Élevé | Accepter sans relire |
-| Génération de tests | Moyen-élevé | Vérifier la couverture |
-| Refactoring d'un module | Moyen | Relire le diff |
-| Décision d'architecture | Faible | Valider obligatoirement |
-| Logique métier critique | Faible | Revue systématique |
+| Task | Trust level | Action |
+|------|-------------|--------|
+| Renaming, formatting | High | Accept without reviewing |
+| Test generation | Medium-high | Check coverage |
+| Module refactoring | Medium | Review the diff |
+| Architecture decision | Low | Mandatory validation |
+| Critical business logic | Low | Systematic review |
 
-La règle générale : plus la décision est irréversible ou coûteuse à corriger, plus la validation est nécessaire.
+The general rule: the more irreversible or costly to fix a decision is, the more validation is needed.
 
-## Le piège de l'itération non supervisée
+## The unsupervised iteration trap
 
-Le coût d'une erreur augmente de façon quasi exponentielle avec le nombre d'itérations non supervisées. Un mauvais choix de structure de données à l'étape 1 contaminera les 8 étapes suivantes.
+The cost of an error grows quasi-exponentially with the number of unsupervised iterations. A bad data structure choice at step 1 will contaminate all 8 subsequent steps.
 
-La pratique recommandée : valider par petits incréments. Après chaque changement significatif, regarder le diff avant de continuer.
+The recommended practice: validate in small increments. After each significant change, look at the diff before continuing.
 
 ```bash
-# Vérifier ce que Claude a réellement modifié
+# Check what Claude actually modified
 git diff --stat
 git diff src/
 ```
 
-## Vous êtes le "main thread"
+## You are the "main thread"
 
-Claude Code exécute. Vous orchestrez. La distinction n'est pas stylistique, elle est structurelle : vous définissez les tâches, les priorités, et les critères de validation. Claude produit les artefacts. Cette répartition est ce qui permet de paralléliser plusieurs instances Claude sur des tâches indépendantes.
+Claude Code executes. You orchestrate. The distinction is not stylistic, it is structural: you define the tasks, priorities, and validation criteria. Claude produces the artifacts. This division is what enables parallelizing multiple Claude instances on independent tasks.
 
-**Ce que vous gardez toujours :** les décisions d'architecture, les choix de bibliothèques, la définition des critères d'acceptation.
+**What you always keep:** architecture decisions, library choices, acceptance criteria definition.
 
-**Ce que vous déléguez :** l'implémentation dans un scope défini, la génération de boilerplate, les refactorings mécaniques.
+**What you delegate:** implementation within a defined scope, boilerplate generation, mechanical refactorings.
 
-## Rewind : annuler une mauvaise direction
+## Rewind: undoing a bad direction
 
-Si Claude part dans une direction problématique, `/rewind` permet de revenir à l'état précédent avant de ré-itérer. Mieux vaut rewindrer tôt que de construire 10 échanges supplémentaires sur une base bancale.
+If Claude heads in a problematic direction, `/rewind` lets you return to the previous state before re-iterating. Better to rewind early than to build 10 more exchanges on a shaky foundation.
 
 ```
-/rewind    # Annule les derniers changements
-           # Revenir au dernier point sain
+/rewind    # Undo the latest changes
+           # Return to the last healthy point
 ```
 
 ## Pattern Amplification
 
-Claude reproduit les patterns qu'il trouve. Dans une codebase bien structurée, il produit du code cohérent et idiomatique. Dans une codebase désordonnée, il amplifie le désordre. Si votre code manque de patterns clairs, fournissez-les explicitement dans `CLAUDE.md` plutôt que d'espérer que Claude les inférera.
+Claude reproduces the patterns it finds. In a well-structured codebase, it produces coherent and idiomatic code. In a disorganized codebase, it amplifies the disorder. If your code lacks clear patterns, provide them explicitly in `CLAUDE.md` rather than hoping Claude will infer them.

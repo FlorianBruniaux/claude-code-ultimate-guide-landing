@@ -1,31 +1,31 @@
 ---
-title: CI/CD & Production Security
-subtitle: Utiliser Claude Code en production avec les bonnes garanties de sécurité
+title: "CI/CD & Production Security"
+subtitle: "Using Claude Code in production with the right security guarantees"
 cardNumber: M20
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 120
 ---
 
-## Le flag `--dangerously-skip-permissions`
+## The `--dangerously-skip-permissions` flag
 
-Ce flag désactive les confirmations interactives de Claude Code, ce qui est indispensable pour les pipelines CI/CD non interactifs. Mais il supprime aussi la dernière ligne de défense contre les actions destructives. Son utilisation n'est acceptable que dans un container éphémère isolé, jamais sur une machine partagée persistante.
+This flag disables Claude Code's interactive confirmations, which is essential for non-interactive CI/CD pipelines. But it also removes the last line of defense against destructive actions. Its use is only acceptable inside an isolated ephemeral container, never on a shared persistent machine.
 
 ```bash
-# Acceptable en CI (container éphémère)
+# Acceptable in CI (ephemeral container)
 claude --dangerously-skip-permissions \
   -p "Run tests and fix failing ones"
 
-# Inacceptable (machine partagée, accès réseau libre)
+# Unacceptable (shared machine, open network access)
 claude --dangerously-skip-permissions  # ❌
 ```
 
-La règle : le flag élargit la confiance accordée à Claude, donc le périmètre du container doit compenser en réduisant ce que Claude peut atteindre.
+The rule: the flag widens the trust granted to Claude, so the container perimeter must compensate by reducing what Claude can reach.
 
-## Environnement recommandé
+## Recommended environment
 
-Un container Docker jetable créé au début du job et détruit à la fin. Le dépôt est monté en volume, les dépendances installées à l'intérieur, et aucun fichier sensible de la machine hôte n'est accessible.
+A disposable Docker container created at job start and destroyed at the end. The repository is mounted as a volume, dependencies installed inside, and no sensitive files from the host machine are accessible.
 
 ```yaml
 jobs:
@@ -43,61 +43,61 @@ jobs:
             -p "Run tests, fix failures, open PR"
 ```
 
-Pour une isolation maximale, les solutions cloud (E2B, Vercel Sandboxes) offrent des microVMs avec un kernel séparé, ce qui élimine le risque d'échappement de container.
+For maximum isolation, cloud solutions (E2B, Vercel Sandboxes) offer microVMs with a separate kernel, eliminating the container escape risk.
 
-## Whitelist d'outils stricte
+## Strict tool whitelist
 
-Même en mode bypass, il est possible de limiter les outils disponibles. Un agent de review n'a besoin que de `Read`, `Glob`, `Grep`. Un agent d'implémentation peut avoir `Edit` sur des chemins ciblés, mais rarement `Bash` sans contrainte.
+Even in bypass mode, it is possible to limit available tools. A review agent only needs `Read`, `Glob`, `Grep`. An implementation agent can have `Edit` on targeted paths, but rarely `Bash` without constraints.
 
-| Rôle de l'agent | Outils autorisés |
-|-----------------|-----------------|
-| Review de code | Read, Glob, Grep |
-| Correction de tests | Read, Edit, Bash(test runner) |
-| Analyse de sécurité | Read, Glob, Grep |
-| Implémentation | Read, Edit, Write, Bash |
+| Agent role | Allowed tools |
+|------------|--------------|
+| Code review | Read, Glob, Grep |
+| Test fixing | Read, Edit, Bash(test runner) |
+| Security analysis | Read, Glob, Grep |
+| Implementation | Read, Edit, Write, Bash |
 
-La whitelist se configure via `--allowedTools` en CLI ou `allowed_tools` dans l'action GitHub.
+The whitelist is configured via `--allowedTools` in CLI or `allowed_tools` in the GitHub action.
 
-## Secrets en CI
+## Secrets in CI
 
-Les clés API et tokens ne doivent jamais apparaître dans le fichier YAML du workflow. Utiliser les secrets GitHub (Settings → Secrets and variables → Actions) et les injecter en variables d'environnement.
+API keys and tokens must never appear in the workflow YAML file. Use GitHub secrets (Settings → Secrets and variables → Actions) and inject them as environment variables.
 
 ```yaml
 env:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-  # Jamais :
+  # Never:
   # ANTHROPIC_API_KEY: sk-ant-xxxxx  ❌
 ```
 
-Rotation recommandée : changer les clés tous les 90 jours et auditer les accès via les logs GitHub.
+Recommended rotation: change keys every 90 days and audit access via GitHub logs.
 
-## Réseau : accès restreint
+## Network: restricted access
 
-Ne jamais exécuter Claude en mode bypass avec un accès réseau non restreint. Configurer une allowlist réseau explicite pour les domaines légitimes :
+Never run Claude in bypass mode with unrestricted network access. Configure an explicit network allowlist for legitimate domains:
 
 ```
-api.anthropic.com   # Modèle
+api.anthropic.com   # Model
 *.npmjs.org         # Packages
 github.com          # Git operations
 ```
 
-Tout le reste en deny par défaut. Cela bloque l'exfiltration de données vers des endpoints externes si l'agent est compromis ou mal configuré.
+Everything else deny by default. This blocks data exfiltration to external endpoints if the agent is compromised or misconfigured.
 
-## Pattern safe autonomy
+## Safe autonomy pattern
 
-Le pattern le plus sûr pour la production : Claude propose, un humain approuve. L'agent ouvre une PR avec ses changements, la pipeline de tests valide, et un reviewer humain approuve avant le merge.
+The safest pattern for production: Claude proposes, a human approves. The agent opens a PR with its changes, the test pipeline validates, and a human reviewer approves before the merge.
 
 ```
-Agent → branche → PR → CI tests → human review → merge
+Agent → branch → PR → CI tests → human review → merge
 ```
 
-Ne pas automatiser le merge final, même si tous les tests passent. Garder un humain dans la boucle pour les changements vers main.
+Do not automate the final merge, even if all tests pass. Keep a human in the loop for changes to main.
 
-## Anti-patterns à éviter
+## Anti-patterns to avoid
 
-| Anti-pattern | Risque |
-|-------------|--------|
-| Skip permissions sur machine hôte | Accès filesystem/réseau non borné |
-| Monter `/home` dans le container | Exposition des clés SSH, credentials |
-| Allowlist réseau `*` | Exfiltration possible |
-| Merge automatique sans review | Régression non détectée |
+| Anti-pattern | Risk |
+|-------------|------|
+| Skip permissions on host machine | Unbounded filesystem/network access |
+| Mounting `/home` in the container | Exposure of SSH keys, credentials |
+| Network allowlist `*` | Possible exfiltration |
+| Automatic merge without review | Undetected regression |

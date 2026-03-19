@@ -1,60 +1,60 @@
 ---
-title: Memory Stack (4 niveaux)
-subtitle: Où vit l'information que Claude utilise et comment la gérer
+title: "Memory Stack (4 levels)"
+subtitle: "Where the information Claude uses lives and how to manage it"
 cardNumber: C05
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 205
 ---
 
-## Les 4 niveaux de mémoire
+## The 4 memory levels
 
-Claude Code ne stocke pas d'état entre les sessions par défaut. Tout ce qui doit persister doit être explicitement placé dans l'un des quatre niveaux.
+Claude Code does not store state between sessions by default. Everything that needs to persist must be explicitly placed in one of the four levels.
 
-**Niveau 1 : CLAUDE.md (règles explicites)**
-Fichiers Markdown lus au démarrage de chaque session. Contiennent les conventions projet, les commandes importantes, les décisions d'architecture. Lisibles par l'humain, versionnés avec le code.
+**Level 1: CLAUDE.md (explicit rules)**
+Markdown files read at the start of each session. They contain project conventions, important commands, and architecture decisions. Human-readable, versioned with the code.
 
 ```
-~/.claude/CLAUDE.md          # Global (toutes sessions)
-.claude/CLAUDE.md             # Projet (équipe)
-CLAUDE.md                     # Racine (dossier courant)
+~/.claude/CLAUDE.md          # Global (all sessions)
+.claude/CLAUDE.md             # Project (team)
+CLAUDE.md                     # Root (current folder)
 ```
 
-**Niveau 2 : Auto-memories (apprentissage automatique)**
-Claude enregistre automatiquement les décisions prises pendant les sessions dans `~/.claude/projects/*/memory/MEMORY.md`. Ce mécanisme est transparent : vous pouvez relire ces fichiers pour auditer ce que Claude a appris.
+**Level 2: Auto-memories (automatic learning)**
+Claude automatically records decisions made during sessions in `~/.claude/projects/*/memory/MEMORY.md`. This mechanism is transparent: you can review these files to audit what Claude has learned.
 
-**Niveau 3 : Tasks API (état structuré cross-session)**
-Pour les workflows multi-étapes qui s'étendent sur plusieurs sessions, la Tasks API maintient un état avec dépendances et statuts. Utile pour les projets longs où chaque session reprend là où la précédente s'est arrêtée.
+**Level 3: Tasks API (structured cross-session state)**
+For multi-step workflows spanning several sessions, the Tasks API maintains state with dependencies and statuses. Useful for long projects where each session picks up where the previous one left off.
 
-**Niveau 4 : Agent memory field (contexte local)**
-Chaque agent spécialisé peut avoir sa propre mémoire déclarative dans son frontmatter YAML, indépendante de la session principale.
+**Level 4: Agent memory field (local context)**
+Each specialized agent can have its own declarative memory in its YAML frontmatter, independent from the main session.
 
-## Ce qui disparaît à chaque session
+## What disappears each session
 
-La conversation elle-même est éphémère. Quand vous fermez une session, tout ce qui n'a pas été explicitement persisté est perdu. Il existe une exception : `claude --continue` reprend la dernière session, mais cela ne fonctionne que si vous n'avez pas ouvert d'autres sessions entre-temps.
+The conversation itself is ephemeral. When you close a session, everything that has not been explicitly persisted is lost. There is one exception: `claude --continue` resumes the last session, but this only works if you have not opened any other sessions in between.
 
-## Règle de sélection
+## Selection rule
 
-| Besoin | Niveau à utiliser |
-|--------|-------------------|
-| Convention permanent du projet | CLAUDE.md |
-| Décision prise en session | Auto-memory (ou CLAUDE.md manuel) |
-| État d'une tâche longue | Tasks API |
-| Contexte d'un agent spécialisé | Agent memory field |
-| Configuration éphémère | Session (pas de persistance) |
+| Need | Level to use |
+|------|-------------|
+| Permanent project convention | CLAUDE.md |
+| Decision made in session | Auto-memory (or manual CLAUDE.md) |
+| State of a long task | Tasks API |
+| Context of a specialized agent | Agent memory field |
+| Ephemeral configuration | Session (no persistence) |
 
-## CLAUDE.md comme mémoire composée
+## CLAUDE.md as composed memory
 
-> "You should never have to correct Claude twice for the same mistake." (Boris Cherny, créateur de Claude Code)
+> "You should never have to correct Claude twice for the same mistake." (Boris Cherny, creator of Claude Code)
 
-Chaque erreur corrigée une fois devient une règle CLAUDE.md. Sur 3 mois, un CLAUDE.md bien maintenu accumule les conventions, les gotchas, et les décisions d'architecture qui accélèrent toutes les sessions suivantes, y compris pour les nouveaux membres de l'équipe.
+Each mistake corrected once becomes a CLAUDE.md rule. Over 3 months, a well-maintained CLAUDE.md accumulates the conventions, gotchas, and architecture decisions that accelerate all subsequent sessions, including for new team members.
 
 ```markdown
-# CLAUDE.md (pattern de croissance)
-Semaine 1 : 5 règles  →  5 erreurs évitées
-Mois 1    : 20 règles → 20 erreurs évitées
-Mois 3    : 50 règles → onboarding accéléré
+# CLAUDE.md (growth pattern)
+Week 1 :  5 rules  →  5 errors avoided
+Month 1 : 20 rules → 20 errors avoided
+Month 3 : 50 rules → accelerated onboarding
 ```
 
-**Taille cible :** entre 4 et 8 Ko au total (tous niveaux confondus). Au-delà de 16 Ko, la cohérence du modèle se dégrade selon les études praticiennes.
+**Target size:** between 4 and 8 KB total (across all levels). Beyond 16 KB, model coherence degrades according to practitioner studies.

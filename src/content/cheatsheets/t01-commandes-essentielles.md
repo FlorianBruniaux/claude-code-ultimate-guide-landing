@@ -1,91 +1,91 @@
 ---
-title: Commandes Essentielles
-subtitle: Raccourcis clavier & commandes slash indispensables
+title: "Essential Commands"
+subtitle: "Keyboard shortcuts & indispensable slash commands"
 cardNumber: T01
-category: Technique
+category: Technical
 difficulty: beginner
 guideVersion: 3.32.1
 order: 1
 ---
 
-## Raccourcis Clavier
+## Keyboard Shortcuts
 
-| Raccourci | Action |
-|-----------|--------|
-| `Ctrl+J` / `Cmd+J` | Ouvrir Claude Code |
-| `Shift+Tab` | Basculer mode auto-accept |
-| `Ctrl+C` | Interrompre la génération |
-| `Esc` | Annuler l'action en cours |
-| `↑` / `↓` | Historique des messages |
-| `Tab` | Complétion de chemin |
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+J` / `Cmd+J` | Open Claude Code |
+| `Shift+Tab` | Toggle auto-accept mode |
+| `Ctrl+C` | Interrupt generation |
+| `Esc` | Cancel current action |
+| `↑` / `↓` | Message history |
+| `Tab` | Path completion |
 
-## Commandes Slash Core
-
-```
-/help           Aide et commandes disponibles
-/clear          Vider le contexte (reset)
-/compact        Compresser l'historique
-/model          Changer de modèle
-/cost           Voir les coûts de session
-/status         Statut du contexte
-```
-
-## Modes de Permission
+## Core Slash Commands
 
 ```
-claude                    Mode interactif (défaut)
+/help           Help and available commands
+/clear          Clear context (reset)
+/compact        Compress history
+/model          Switch model
+/cost           View session costs
+/status         Context status
+```
+
+## Permission Modes
+
+```
+claude                    Interactive mode (default)
 claude --dangerously-skip-permissions
-                          Bypass total (CI/CD)
+                          Full bypass (CI/CD)
 claude --allowedTools "Edit,Read,Bash"
-                          Whitelist d'outils
+                          Tool whitelist
 ```
 
-## Démarrage Rapide
+## Quick Start
 
 ```bash
-# Lancer Claude Code
+# Launch Claude Code
 claude
 
-# Avec fichier de contexte
+# With context file
 claude --context CLAUDE.md
 
-# Mode non-interactif (scripts)
-claude -p "Analyse ce fichier" < input.txt
+# Non-interactive mode (scripts)
+claude -p "Analyze this file" < input.txt
 
-# Continuer la dernière session
+# Continue last session
 claude --continue
 ```
 
-## Commandes de Session
+## Session Commands
 
 ```
-/new            Nouvelle session
-/resume         Reprendre session précédente
-/sessions       Lister les sessions
+/new            New session
+/resume         Resume previous session
+/sessions       List sessions
 ```
 
-## Navigation Contexte
+## Context Navigation
 
-| Commande | Effet |
-|----------|-------|
-| `/compact` | Résume et libère de l'espace |
-| `/clear` | Réinitialise complètement |
-| `#fichier` | Ajouter fichier au contexte |
+| Command | Effect |
+|---------|--------|
+| `/compact` | Summarize and free up space |
+| `/clear` | Full reset |
+| `#file` | Add file to context |
 
-## Slash Commands Personnalisées
+## Custom Slash Commands
 
 ```
-# Invoquer une commande personnalisée
-/nom-commande [args]
+# Invoke a custom command
+/command-name [args]
 
-# Définies dans :
-.claude/commands/nom-commande.md
+# Defined in:
+.claude/commands/command-name.md
 ```
 
-## Tips Essentiels
+## Essential Tips
 
-**Contrôle de verbosité** — Utiliser `--no-stream` pour voir la réponse complète d'un coup.
+**Verbosity control** — Use `--no-stream` to see the full response at once.
 
-**Multiline** — `Shift+Enter` dans le terminal pour sauter une ligne sans valider.
+**Multiline** — `Shift+Enter` in the terminal to add a new line without submitting.
 
-**Vim mode** — Ajouter `{"vim": true}` dans `~/.claude/settings.json` pour les raccourcis Vim.
+**Vim mode** — Add `{"vim": true}` to `~/.claude/settings.json` for Vim keybindings.

@@ -1,84 +1,84 @@
 ---
-title: Context Management
-subtitle: Gérer la fenêtre de contexte pour des sessions efficaces
+title: "Context Management"
+subtitle: "Managing the context window for efficient sessions"
 cardNumber: M02
-category: Méthodologie
+category: Methodology
 difficulty: beginner
 guideVersion: 3.32.1
 order: 102
 ---
 
-## Les 4 Zones de Contexte
+## The 4 Context Zones
 
-| Zone | Seuil | Action requise |
-|------|-------|----------------|
-| 🟢 Verte | 0–75% | Travail normal, aucune action |
-| 🟡 Jaune | 75–85% | Suggérer `/compact` |
-| 🟠 Orange | 85–90% | Compacter sans attendre |
-| 🔴 Rouge | 90%+ | Urgence, `/clear` si besoin |
+| Zone | Threshold | Required action |
+|------|-----------|-----------------|
+| 🟢 Green | 0–75% | Normal work, no action needed |
+| 🟡 Yellow | 75–85% | Suggest `/compact` |
+| 🟠 Orange | 85–90% | Compact without waiting |
+| 🔴 Red | 90%+ | Urgent, `/clear` if needed |
 
-## Sources de Contexte (par priorité)
+## Context Sources (by priority)
 
 ```
-1. ~/.claude/CLAUDE.md       Règles globales
-2. ./CLAUDE.md               Règles projet (racine)
-3. sous-dossier/CLAUDE.md    Règles locales (cumulé)
-4. @fichier                  Import explicite inline
-5. --context flag            Fichier passé en CLI
+1. ~/.claude/CLAUDE.md       Global rules
+2. ./CLAUDE.md               Project rules (root)
+3. subfolder/CLAUDE.md       Local rules (cumulative)
+4. @file                     Explicit inline import
+5. --context flag            File passed via CLI
 ```
 
-## Commandes de Gestion
+## Management Commands
 
 ```bash
-/compact        # Résumer + libérer ~40% de contexte
-/clear          # Reset complet (perte de l'historique)
-/cost           # Voir tokens utilisés / restants
-/status         # État détaillé du contexte
+/compact        # Summarize + free ~40% of context
+/clear          # Full reset (loses history)
+/cost           # View tokens used / remaining
+/status         # Detailed context state
 ```
 
-## Ajouter du Contexte Intelligemment
+## Adding Context Intelligently
 
 ```
-# Dans le prompt
-@src/auth.ts Regarde cette fonction
+# In the prompt
+@src/auth.ts Look at this function
 
-# Via CLAUDE.md (persistant)
+# Via CLAUDE.md (persistent)
 Always read package.json before working on deps.
 
 # Via --context (session)
 claude --context "We use TypeScript strict mode"
 ```
 
-## Stratégies par Scénario
+## Strategies by Scenario
 
-**Session longue (refacto)** — Faire des checkpoints réguliers avec `/compact` tous les 30 min. Sauvegarder les décisions importantes dans `CLAUDE.md`.
+**Long session (refactor)** — Make regular checkpoints with `/compact` every 30 min. Save important decisions in `CLAUDE.md`.
 
-**Débogage complexe** — Donner uniquement les fichiers pertinents avec `@fichier`. Éviter d'ouvrir tout le projet d'un coup.
+**Complex debugging** — Provide only the relevant files with `@file`. Avoid loading the entire project at once.
 
-**Multi-fichiers** — Utiliser les agents (`--agent`) pour déléguer : chaque sous-agent a son propre contexte isolé.
+**Multi-file** — Use agents (`--agent`) to delegate: each sub-agent has its own isolated context.
 
-## Ce qui Consomme le Plus
+## What Consumes the Most
 
 | Source | Impact |
 |--------|--------|
-| Gros fichiers lus en entier | Très élevé |
-| Historique de conversation | Élevé |
-| Sorties de commandes verbeuses | Élevé |
-| CLAUDE.md trop long | Moyen |
-| Réponses Claude longues | Moyen |
+| Large files read in full | Very high |
+| Conversation history | High |
+| Verbose command outputs | High |
+| Overly long CLAUDE.md | Medium |
+| Long Claude responses | Medium |
 
-## Optimiser CLAUDE.md
+## Optimizing CLAUDE.md
 
 ```markdown
-# Bon : règles courtes et actionnables
+# Good: short and actionable rules
 - Always use TypeScript strict mode
 - Prefer pnpm over npm
 
-# Mauvais : contexte narratif long
+# Bad: long narrative context
 We have been working on this project since 2023
 and the team decided after many debates to...
 ```
 
-## Anti-patterns Fréquents
+## Common Anti-patterns
 
-Ne pas coller de gros JSON ou logs bruts dans le prompt — utiliser plutôt un fichier temporaire et `@fichier`. Ne pas ignorer les avertissements de contexte : à 85%+, la qualité des réponses se dégrade visiblement.
+Do not paste large JSON or raw logs into the prompt — use a temporary file and `@file` instead. Do not ignore context warnings: at 85%+, response quality degrades noticeably.

@@ -1,79 +1,79 @@
 ---
-title: Sessions & Continuité
-subtitle: Reprendre une session là où on l'a laissée
+title: "Sessions & Continuity"
+subtitle: "Resuming a session right where you left off"
 cardNumber: M03
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 103
 ---
 
-## Reprendre une Session
+## Resuming a Session
 
 ```bash
-# Continuer la session la plus récente
-claude --continue        # ou : claude -c
+# Continue the most recent session
+claude --continue        # or: claude -c
 
-# Choisir une session spécifique (sélecteur interactif)
-claude --resume          # ou : claude -r
+# Choose a specific session (interactive picker)
+claude --resume          # or: claude -r
 
-# Reprendre par ID
+# Resume by ID
 claude --resume abc123def
 
-# Reprendre depuis un PR GitHub (v2.1.49+)
+# Resume from a GitHub PR (v2.1.49+)
 claude --from-pr 123
 ```
 
-Les sessions sont stockées dans `~/.claude/projects/<chemin-encodé>/` sous forme de fichiers JSONL.
+Sessions are stored in `~/.claude/projects/<encoded-path>/` as JSONL files.
 
-## Recherche dans les Sessions
+## Searching Sessions
 
-Le script `session-search.sh` (fourni dans `examples/scripts/`) est la méthode la plus rapide : zéro dépendance, 15ms pour lister, 400ms pour chercher.
+The `session-search.sh` script (provided in `examples/scripts/`) is the fastest method: zero dependencies, 15ms to list, 400ms to search.
 
 ```bash
-cs                        # 10 sessions récentes
-cs "authentication"       # Recherche full-text
-cs "Prisma migration"     # AND multi-mots
-cs --since 7d             # 7 derniers jours
-cs -p mon-projet "auth"   # Filtrer par projet
+cs                        # 10 recent sessions
+cs "authentication"       # Full-text search
+cs "Prisma migration"     # AND multi-word
+cs --since 7d             # Last 7 days
+cs -p my-project "auth"   # Filter by project
 ```
 
-Chaque résultat affiche la commande `claude --resume <id>` prête à copier-coller.
+Each result displays the `claude --resume <id>` command ready to copy-paste.
 
-## Limitation Critique : Scope Répertoire
+## Critical Limitation: Directory Scope
 
-Claude Code stocke les sessions en encodant le **chemin absolu** du projet. Une session dans `/home/user/myapp` ne sera pas trouvée si vous déplacez le projet vers `/home/user/projects/myapp`.
+Claude Code stores sessions by encoding the **absolute path** of the project. A session in `/home/user/myapp` will not be found if you move the project to `/home/user/projects/myapp`.
 
-**Solution si vous déplacez un projet :**
+**Solution if you move a project:**
 
 ```bash
 cd ~/.claude/projects/
 mv -- -old-location-myapp- -new-location-myapp-
 ```
 
-La migration manuelle du dossier de session suffit dans la grande majorité des cas.
+Manual migration of the session folder works in the vast majority of cases.
 
-## Ce que la Reprise NE Fait PAS
+## What Resuming Does NOT Do
 
-Reprendre une session ne restaure pas :
-- Les décisions implicites prises en cours de session
-- Le contexte des fichiers qui ont changé entre-temps
-- Les variables d'environnement ou configs modifiées
+Resuming a session does not restore:
+- Implicit decisions made during the session
+- Context of files that changed in the meantime
+- Modified environment variables or configs
 
-Pour les décisions importantes (choix d'architecture, conventions), les noter explicitement dans CLAUDE.md plutôt que de compter sur la mémoire de la session. C'est plus fiable et ça bénéficie aux sessions futures.
+For important decisions (architecture choices, conventions), note them explicitly in CLAUDE.md rather than relying on session memory. It is more reliable and benefits future sessions.
 
-## Sessions et Sous-Agents
+## Sessions and Sub-Agents
 
-Les sessions de sous-agents (tâches déléguées) sont stockées dans un sous-dossier `subagents/`. Elles ne remontent pas dans la liste normale de `--resume`. Si vous migrez des sessions manuellement, copier aussi ce sous-dossier.
+Sub-agent sessions (delegated tasks) are stored in a `subagents/` subfolder. They do not appear in the normal `--resume` list. If you migrate sessions manually, copy this subfolder too.
 
-## Outils Complémentaires
+## Complementary Tools
 
-| Outil | Usage | Install |
-|-------|-------|---------|
-| `session-search.sh` | Recherche rapide bash | Copier depuis `examples/scripts/` |
-| `cc-sessions.py` | Index incrémental, filtres avancés | Python, même dossier |
-| `claude-code-viewer` | Navigateur web read-only | `npx @kimuson/claude-code-viewer` |
+| Tool | Usage | Install |
+|------|-------|---------|
+| `session-search.sh` | Fast bash search | Copy from `examples/scripts/` |
+| `cc-sessions.py` | Incremental index, advanced filters | Python, same folder |
+| `claude-code-viewer` | Read-only web browser | `npx @kimuson/claude-code-viewer` |
 
-## Pattern Recommandé
+## Recommended Pattern
 
-Ne pas compter sur `--resume` comme mécanisme de continuité principal sur des projets longs. Préférer un CLAUDE.md bien tenu avec les décisions clés, des commits réguliers, et des sessions courtes et ciblées. La reprise de session est un filet de sécurité, pas un workflow de substitution.
+Do not rely on `--resume` as the primary continuity mechanism for long projects. Prefer a well-maintained CLAUDE.md with key decisions, regular commits, and short targeted sessions. Session resumption is a safety net, not a replacement workflow.

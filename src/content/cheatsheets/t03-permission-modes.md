@@ -1,36 +1,36 @@
 ---
-title: Permission Modes
-subtitle: Contrôle des accès outils — du plus sûr au plus permissif
+title: "Permission Modes"
+subtitle: "Tool access control — from safest to most permissive"
 cardNumber: T03
-category: Technique
+category: Technical
 difficulty: beginner
 guideVersion: 3.32.1
 order: 3
 ---
 
-## Modes Disponibles
+## Available Modes
 
-| Mode | Flag | Usage recommandé |
+| Mode | Flag | Recommended use |
 |------|------|-----------------|
-| **Default** | _(aucun)_ | Développement quotidien |
-| **Auto-accept edits** | `Shift+Tab` | Revues de code |
-| **Auto-accept all** | `Shift+Tab x2` | Tâches répétitives connues |
-| **Bypass total** | `--dangerously-skip-permissions` | CI/CD headless |
+| **Default** | _(none)_ | Daily development |
+| **Auto-accept edits** | `Shift+Tab` | Code reviews |
+| **Auto-accept all** | `Shift+Tab x2` | Known repetitive tasks |
+| **Full bypass** | `--dangerously-skip-permissions` | Headless CI/CD |
 
-## Whitelist d'Outils
+## Tool Whitelist
 
 ```bash
-# Autoriser seulement certains outils
+# Allow only specific tools
 claude --allowedTools "Read,Grep,Glob"
 
-# Bloquer des outils spécifiques
+# Block specific tools
 claude --disallowedTools "Bash,Write"
 
-# Combinaisons utiles
+# Useful combinations
 claude --allowedTools "Read,Edit,Bash(git*)"
 ```
 
-## Configuration dans settings.json
+## Configuration in settings.json
 
 ```json
 {
@@ -49,32 +49,32 @@ claude --allowedTools "Read,Edit,Bash(git*)"
 }
 ```
 
-## Hiérarchie des Permissions
+## Permission Hierarchy
 
-Les permissions se cumulent et s'héritent dans cet ordre :
+Permissions accumulate and are inherited in this order:
 
 1. `~/.claude/settings.json` — global user
-2. `.claude/settings.json` — projet (partagé)
-3. `.claude/settings.local.json` — projet (local, gitignored)
-4. Flags CLI — session uniquement
+2. `.claude/settings.json` — project (shared)
+3. `.claude/settings.local.json` — project (local, gitignored)
+4. CLI flags — session only
 
-## Glob Patterns pour Bash
+## Glob Patterns for Bash
 
 ```bash
-# Autoriser git seulement
+# Allow git only
 "Bash(git *)"
 
-# Autoriser npm test et build
+# Allow npm test and build
 "Bash(npm test*)", "Bash(npm run build*)"
 
-# Autoriser lecture fichiers
+# Allow file reading
 "Bash(cat *)", "Bash(ls *)"
 ```
 
-## Bonnes Pratiques
+## Best Practices
 
-**CI/CD** — Toujours utiliser `--dangerously-skip-permissions` avec un environnement sandboxé (Docker, container éphémère). Ne jamais sur une machine de production partagée.
+**CI/CD** — Always use `--dangerously-skip-permissions` with a sandboxed environment (Docker, ephemeral container). Never on a shared production machine.
 
-**Projets sensibles** — Restreindre les outils Bash avec des globs précis dans `.claude/settings.json`. Committer ce fichier pour que toute l'équipe utilise les mêmes contraintes.
+**Sensitive projects** — Restrict Bash tools with precise globs in `.claude/settings.json`. Commit this file so the whole team uses the same constraints.
 
-**Audit** — Les actions de Claude sont loggées dans `~/.claude/logs/`. Vérifiable à tout moment.
+**Audit** — Claude's actions are logged in `~/.claude/logs/`. Verifiable at any time.

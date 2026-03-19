@@ -1,16 +1,16 @@
 ---
-title: 'Hooks : Patterns Concrets'
-subtitle: Exemples pratiques de hooks pour automatiser le workflow
+title: "Hooks: Concrete Patterns"
+subtitle: "Practical hook examples to automate your workflow"
 cardNumber: M12
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 112
 ---
 
-## Auto-format après édition
+## Auto-format after editing
 
-Hook `PostToolUse` sur `Edit|Write`. Détecte l'extension du fichier modifié et applique le formateur adapté.
+`PostToolUse` hook on `Edit|Write`. Detects the extension of the modified file and applies the appropriate formatter.
 
 ```bash
 INPUT=$(cat)
@@ -25,24 +25,24 @@ esac
 exit 0
 ```
 
-Configurer en `async: true` — le formatage est cosmétique et ne doit pas bloquer Claude.
+Configure as `async: true` — formatting is cosmetic and should not block Claude.
 
-## Notification macOS à la fin
+## macOS notification on completion
 
-Hook `Stop`. Déclenche une alerte système macOS avec un son contextuel (succès, erreur, attente).
+`Stop` hook. Triggers a macOS system alert with a contextual sound (success, error, waiting).
 
 ```bash
 INPUT=$(cat)
-MESSAGE=$(echo "$INPUT" | jq -r '.message // "Terminé"')
+MESSAGE=$(echo "$INPUT" | jq -r '.message // "Done"')
 osascript -e "display notification \"$MESSAGE\" \
   with title \"Claude Code\""
 afplay /System/Library/Sounds/Hero.aiff &
 exit 0
 ```
 
-## Sécurité : bloquer les commandes dangereuses
+## Security: block dangerous commands
 
-Hook `PreToolUse` sur `Bash`. Intercepte les patterns destructifs avant exécution.
+`PreToolUse` hook on `Bash`. Intercepts destructive patterns before execution.
 
 ```bash
 COMMAND=$(echo "$TOOL_INPUT" | jq -r '.command')
@@ -57,11 +57,11 @@ done
 exit 0
 ```
 
-Exit code 2 bloque l'action et remonte le message stderr à Claude.
+Exit code 2 blocks the action and surfaces the stderr message to Claude.
 
-## Git auto-stage après édition
+## Git auto-stage after editing
 
-Hook `PostToolUse` sur `Edit|Write`. Prépare automatiquement les fichiers modifiés pour le prochain commit.
+`PostToolUse` hook on `Edit|Write`. Automatically prepares modified files for the next commit.
 
 ```bash
 INPUT=$(cat)
@@ -73,13 +73,13 @@ exit 0
 
 ## RTK auto-wrapper
 
-Hook `PreToolUse` sur `Bash`. Détecte les commandes optimisables par RTK et informe Claude de l'alternative disponible.
+`PreToolUse` hook on `Bash`. Detects commands optimizable by RTK and informs Claude of the available alternative.
 
-La logique : si la commande commence par `git log`, `cargo test`, `pnpm list` ou des équivalents verbeux, suggérer `rtk <commande>` via stdout avant de laisser passer.
+The logic: if the command starts with `git log`, `cargo test`, `pnpm list` or verbose equivalents, suggest `rtk <command>` via stdout before letting it through.
 
-## Logger toutes les commandes exécutées
+## Log all executed commands
 
-Hook `PostToolUse` sur `Bash`. Utile pour l'audit et le debug de sessions longues.
+`PostToolUse` hook on `Bash`. Useful for auditing and debugging long sessions.
 
 ```bash
 COMMAND=$(cat | jq -r '.tool_input.command // empty')
@@ -88,15 +88,15 @@ echo "$(date -u +%FT%T) | $COMMAND" \
 exit 0
 ```
 
-## Pattern dispatcher : un seul point d'entrée
+## Dispatcher pattern: a single entry point
 
-Plutôt que multiplier les entrées dans `settings.json`, un script `dispatch.sh` route vers des handlers spécialisés selon le fichier ou l'outil. Résultat : un seul matcher `Edit|Write|Bash` dans la config, et des handlers maintenables séparément dans `.claude/hooks/handlers/`.
+Rather than multiplying entries in `settings.json`, a `dispatch.sh` script routes to specialized handlers based on the file or tool. Result: a single `Edit|Write|Bash` matcher in the config, with separately maintainable handlers in `.claude/hooks/handlers/`.
 
-## Checklist installation
+## Installation checklist
 
 ```bash
-chmod +x .claude/hooks/mon-hook.sh   # Obligatoire
-# Tester manuellement avant d'activer :
+chmod +x .claude/hooks/my-hook.sh   # Required
+# Test manually before activating:
 echo '{"tool_name":"Edit","tool_input":{"file_path":"test.ts"}}' \
-  | .claude/hooks/mon-hook.sh
+  | .claude/hooks/my-hook.sh
 ```

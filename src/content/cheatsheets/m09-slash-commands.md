@@ -1,92 +1,92 @@
 ---
-title: Slash Commands
-subtitle: Créer des commandes personnalisées réutilisables
+title: "Slash Commands"
+subtitle: "Create reusable custom commands"
 cardNumber: M09
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 109
 ---
 
-## Principe
+## Principle
 
-Une slash command est un fichier Markdown qui définit un workflow. Claude l'exécute comme s'il avait reçu ce texte en prompt, avec la possibilité de passer des arguments dynamiques.
+A slash command is a Markdown file that defines a workflow. Claude executes it as if it had received that text as a prompt, with the ability to pass dynamic arguments.
 
-## Emplacement des fichiers
+## File locations
 
 ```
-.claude/commands/          # Commandes projet (équipe)
+.claude/commands/          # Project commands (team)
 ├── commit.md              → /commit
 ├── review-pr.md           → /review-pr
 └── tech/
     └── deploy.md          → /tech:deploy
 
-~/.claude/commands/        # Commandes globales (perso)
+~/.claude/commands/        # Global commands (personal)
 ├── release.md             → /release
 └── sync.md                → /sync
 ```
 
-Les commandes globales sont disponibles dans toutes les sessions, quel que soit le projet.
+Global commands are available in all sessions, regardless of the project.
 
-## Invocation et arguments
+## Invocation and arguments
 
 ```
-/commit                    # Aucun argument
-/tech:deploy production    # Argument positionnel
-/release minor             # Bump de version
+/commit                    # No argument
+/tech:deploy production    # Positional argument
+/release minor             # Version bump
 ```
 
-Dans le fichier Markdown, les arguments sont accessibles via des variables :
+In the Markdown file, arguments are accessible via variables:
 
 ```markdown
-Déployer en environment : $ARGUMENTS[0]
-Avec la stratégie : $ARGUMENTS[1]
+Deploy to environment: $ARGUMENTS[0]
+With strategy: $ARGUMENTS[1]
 
-Si aucun argument fourni : utiliser "staging" par défaut.
+If no argument provided: use "staging" by default.
 ```
 
-La syntaxe `$0`, `$1` est équivalente à `$ARGUMENTS[0]`, `$ARGUMENTS[1]`. L'ancienne notation avec point (`$ARGUMENTS.0`) est dépréciée depuis v2.1.19.
+The `$0`, `$1` syntax is equivalent to `$ARGUMENTS[0]`, `$ARGUMENTS[1]`. The old dot notation (`$ARGUMENTS.0`) is deprecated since v2.1.19.
 
-## Structure recommandée
+## Recommended structure
 
 ```markdown
-# Nom de la Commande
+# Command Name
 
-## Objectif
-Ce que fait cette commande en une phrase.
+## Objective
+What this command does in one sentence.
 
-## Processus
-1. **Étape 1** — instructions détaillées
-2. **Étape 2** — instructions détaillées
-3. **Étape 3** — instructions détaillées
+## Process
+1. **Step 1** — detailed instructions
+2. **Step 2** — detailed instructions
+3. **Step 3** — detailed instructions
 
 ## Arguments
-- $0 : environnement cible (défaut: staging)
+- $0: target environment (default: staging)
 
-## Format de sortie
-Description du résultat attendu.
+## Output format
+Description of the expected result.
 ```
 
-## Commandes utiles à créer
+## Useful commands to create
 
-| Commande | Usage |
-|----------|-------|
-| `/commit` | Commit conventionnel automatique |
-| `/review-pr` | Revue de PR selon critères projet |
-| `/release [patch|minor|major]` | Bump version + changelog |
-| `/sync` | Vérification cohérence multi-fichiers |
-| `/security-check` | Scan rapide de la config |
+| Command | Usage |
+|---------|-------|
+| `/commit` | Automatic conventional commit |
+| `/review-pr` | PR review against project criteria |
+| `/release [patch|minor|major]` | Version bump + changelog |
+| `/sync` | Multi-file consistency check |
+| `/security-check` | Quick config scan |
 
 ## Command vs Skill vs Agent
 
-| Mécanisme | Quand l'utiliser |
-|-----------|-----------------|
-| **Command** | Workflow ponctuel, procédure à suivre |
-| **Skill** | Connaissance réutilisable + ressources embarquées |
-| **Agent** | Spécialiste récurrent avec mémoire propre |
+| Mechanism | When to use |
+|-----------|-------------|
+| **Command** | One-off workflow, procedure to follow |
+| **Skill** | Reusable knowledge + embedded resources |
+| **Agent** | Recurring specialist with own memory |
 
-Une command ne peut pas embarquer des fichiers de référence supplémentaires — pour ça, utiliser un skill. Une command n'a pas de mémoire persistante — pour ça, utiliser un agent.
+A command cannot embed additional reference files — for that, use a skill. A command has no persistent memory — for that, use an agent.
 
-## Conseils pratiques
+## Practical tips
 
-Une commande, une responsabilité. Dès qu'une commande fait deux choses distinctes, la découper. Nommer avec un verbe d'action en premier (`commit`, `release`, `sync`) pour que l'intention soit immédiatement lisible dans la liste des commandes disponibles.
+One command, one responsibility. As soon as a command does two distinct things, split it. Name with an action verb first (`commit`, `release`, `sync`) so that the intent is immediately readable in the list of available commands.

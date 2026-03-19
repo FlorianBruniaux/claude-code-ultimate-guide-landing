@@ -1,57 +1,57 @@
 ---
-title: Erreurs Courantes
-subtitle: Les pièges fréquents et comment les éviter
+title: "Common Mistakes"
+subtitle: "Frequent pitfalls and how to avoid them"
 cardNumber: C13
-category: Conception
+category: Design
 difficulty: beginner
 guideVersion: 3.32.1
 order: 213
 ---
 
-## Contexte & Mémoire
+## Context & Memory
 
-**Coller des logs bruts dans le prompt**
-Donne tout le fichier à Claude au lieu d'isoler la partie pertinente. Le contexte se remplit en quelques échanges.
+**Pasting raw logs into the prompt**
+Dumps the entire file to Claude instead of isolating the relevant part. The context fills up within a few exchanges.
 
-**Ne pas utiliser CLAUDE.md**
-Répéter les conventions du projet à chaque session. Centralize dans `CLAUDE.md` tout ce qui doit être constant.
+**Not using CLAUDE.md**
+Repeating project conventions every session. Centralize in `CLAUDE.md` everything that needs to be constant.
 
-**Ignorer les avertissements de contexte**
-À 85%+, la qualité des réponses se dégrade. Utiliser `/compact` dès 75%.
+**Ignoring context warnings**
+At 85%+, response quality degrades. Use `/compact` as early as 75%.
 
 ## Prompting
 
-**Demandes vagues**
-`Refactorise ce fichier` sans contexte → résultat imprévisible. Préciser : quoi, pourquoi, contraintes.
+**Vague requests**
+`Refactor this file` with no context — unpredictable result. Be specific: what, why, constraints.
 
-**Itérer sans checkpoint**
-Enchaîner 10 échanges sans valider. Vérifier le diff après chaque changement significatif.
+**Iterating without checkpoints**
+Chaining 10 exchanges without validating. Check the diff after each significant change.
 
-**Accepter sans relire**
-`--dangerously-skip-permissions` sans comprendre ce que fait Claude. Toujours auto-accept dans un scope limité.
+**Accepting without reviewing**
+`--dangerously-skip-permissions` without understanding what Claude is doing. Always auto-accept within a limited scope.
 
 ## Configuration
 
-**CLAUDE.md trop long**
-Mettre toute la doc projet dans CLAUDE.md. Le contexte au démarrage doit être concis (< 200 lignes).
+**CLAUDE.md too long**
+Putting all project documentation in CLAUDE.md. The startup context should be concise (< 200 lines).
 
-**Hooks sans tests**
-Écrire un hook complexe sans le tester en isolation. Tester d'abord manuellement, puis l'activer.
+**Hooks without testing**
+Writing a complex hook without testing it in isolation. Test manually first, then enable it.
 
-**Ignorer settings.local.json**
-Ne pas gitignorer ce fichier → fuites de config personnelle dans le dépôt de l'équipe.
+**Ignoring settings.local.json**
+Not gitignoring this file — personal config leaks into the team repository.
 
-## Sécurité
+## Security
 
-**Prompt injection non gérée**
-Laisser Claude traiter du contenu externe (emails, issues) sans garde-fous. Utiliser un mode restreint avec whitelist d'outils.
+**Unhandled prompt injection**
+Letting Claude process external content (emails, issues) without guardrails. Use a restricted mode with a tool whitelist.
 
-**Secrets dans le contexte**
-Passer des clés API dans le prompt ou les lire via `@fichier`. Utiliser des variables d'environnement.
+**Secrets in context**
+Passing API keys in the prompt or reading them via `@file`. Use environment variables instead.
 
-**--dangerously-skip-permissions sans sandbox**
-Exécuter en bypass total sur une machine partagée ou en production. Réserver aux environnements éphémères.
+**--dangerously-skip-permissions without sandbox**
+Running in full bypass on a shared machine or in production. Reserve for ephemeral environments only.
 
-## Règles d'Or
+## Golden Rules
 
-Donner des instructions claires et courtes, puis laisser Claude travailler. Revenir valider par petits incréments plutôt que de tout laisser faire d'un coup. Documenter les décisions importantes dans `CLAUDE.md` pour les prochaines sessions.
+Give clear and concise instructions, then let Claude work. Come back to validate in small increments rather than letting everything happen at once. Document important decisions in `CLAUDE.md` for future sessions.

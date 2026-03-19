@@ -1,77 +1,77 @@
 ---
-title: Context7 & Sequential MCP
-subtitle: Documentation officielle et raisonnement multi-étapes à portée de prompt
+title: "Context7 & Sequential MCP"
+subtitle: "Official documentation and multi-step reasoning within reach of a prompt"
 cardNumber: T13
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 13
 ---
 
-## Context7 : documentation versionnée à la demande
+## Context7: versioned documentation on demand
 
-Context7 résout un problème courant : Claude connaît les APIs populaires jusqu'à sa date de cutoff, mais pas leurs versions récentes ni les patterns officiels exacts. Context7 interroge la documentation officielle d'une bibliothèque et injecte les extraits pertinents directement dans le contexte.
+Context7 solves a common problem: Claude knows popular APIs up to its knowledge cutoff, but not their recent versions or exact official patterns. Context7 queries the official documentation for a library and injects the relevant excerpts directly into the context.
 
-**Triggers naturels** : présence d'un import statement, question sur une API spécifique, besoin d'un pattern conforme à la doc officielle.
+**Natural triggers**: presence of an import statement, question about a specific API, need for a pattern compliant with official documentation.
 
 ```
-# Ce type de prompt déclenche Context7
-"Implémente useEffect avec cleanup — React 19"
-"Ajoute l'auth Auth0 avec Next.js App Router"
-"Configure Prisma pour les transactions imbriquées"
+# This type of prompt triggers Context7
+"Implement useEffect with cleanup — React 19"
+"Add Auth0 auth with Next.js App Router"
+"Configure Prisma for nested transactions"
 ```
 
-**Quand privilégier Context7 sur WebSearch** : quand la précision de version compte, quand les résultats WebSearch sont trop génériques, ou quand le code doit suivre les patterns officiels sans interprétation.
+**When to prefer Context7 over WebSearch**: when version precision matters, when WebSearch results are too generic, or when code must follow official patterns without interpretation.
 
-## Sequential Thinking : analyse structurée
+## Sequential Thinking: structured analysis
 
-Sequential Thinking apporte un moteur de raisonnement multi-étapes pour les problèmes complexes. Plutôt que de répondre directement, il décompose le problème en hypothèses, les teste, et construit une réponse argumentée étape par étape.
+Sequential Thinking brings a multi-step reasoning engine for complex problems. Rather than answering directly, it decomposes the problem into hypotheses, tests them, and builds an argued response step by step.
 
-**Triggers** : flags `--think`, `--think-hard`, `--ultrathink`, ou problèmes impliquant 3+ composants interconnectés.
+**Triggers**: `--think`, `--think-hard`, `--ultrathink` flags, or problems involving 3+ interconnected components.
 
 ```bash
-# Activer Sequential pour un debug complexe
-"Pourquoi cette API est-elle lente ? --think-hard"
+# Activate Sequential for complex debugging
+"Why is this API slow? --think-hard"
 
-# Design d'architecture
-"Conçois un système de cache multi-niveaux --ultrathink"
+# Architecture design
+"Design a multi-level cache system --ultrathink"
 ```
 
-**Ne pas utiliser pour** : corrections simples, typos, explications courtes, tâches à fichier unique. L'overhead de raisonnement ne se justifie pas sur des cas triviaux.
+**Do not use for**: simple fixes, typos, short explanations, single-file tasks. The reasoning overhead is not justified on trivial cases.
 
-## Tableau comparatif
+## Comparison table
 
-| Critère | Context7 | Sequential | Claude natif |
-|---------|----------|------------|--------------|
-| **Usage optimal** | Docs bibliothèques | Analyse complexe | Tâches simples |
-| **Setup** | MCP requis | MCP requis | Aucun |
-| **Coût tokens** | Moyen | Élevé | Faible |
-| **Vitesse** | Rapide | Lent (raisonnement) | Très rapide |
-| **Précision** | Docs officielles | Logique structurée | Connaissance générale |
+| Criterion | Context7 | Sequential | Native Claude |
+|-----------|----------|------------|---------------|
+| **Optimal use** | Library docs | Complex analysis | Simple tasks |
+| **Setup** | MCP required | MCP required | None |
+| **Token cost** | Medium | High | Low |
+| **Speed** | Fast | Slow (reasoning) | Very fast |
+| **Precision** | Official docs | Structured logic | General knowledge |
 
-## Combinaison efficace
+## Effective combination
 
-Les deux serveurs se complètent bien pour les tâches d'architecture ou de migration :
+The two servers complement each other well for architecture or migration tasks:
 
-1. Context7 fournit les patterns officiels de la bibliothèque cible
-2. Sequential analyse comment les intégrer dans le système existant
-3. Claude natif exécute les modifications fichier par fichier
+1. Context7 provides official patterns for the target library
+2. Sequential analyzes how to integrate them into the existing system
+3. Native Claude executes the file-by-file modifications
 
 ```
-# Workflow type migration Next.js 14 → 15
-1. Context7 → patterns officiels de migration (App Router, caching)
-2. Sequential → analyse de l'impact sur le codebase existant
-3. Claude natif → éditions des fichiers concernés
+# Typical Next.js 14 → 15 migration workflow
+1. Context7 → official migration patterns (App Router, caching)
+2. Sequential → impact analysis on existing codebase
+3. Native Claude → edits to affected files
 ```
 
-## Installation rapide
+## Quick installation
 
 ```bash
 # Context7
 npx -y @upstash/context7-mcp
 
-# Sequential Thinking (officiel Anthropic)
+# Sequential Thinking (official Anthropic)
 npx -y @modelcontextprotocol/server-sequential-thinking
 ```
 
-Ajouter dans `~/.claude/settings.json` sous la clé `mcpServers` avec `command: "npx"` et les args correspondants.
+Add in `~/.claude/settings.json` under the `mcpServers` key with `command: "npx"` and the corresponding args.

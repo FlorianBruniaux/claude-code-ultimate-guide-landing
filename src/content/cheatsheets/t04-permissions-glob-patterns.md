@@ -1,16 +1,16 @@
 ---
-title: 'Permissions : Glob Patterns & Whitelist'
-subtitle: Contrôler précisément les outils accessibles avec des patterns glob
+title: "Permissions: Glob Patterns & Whitelist"
+subtitle: "Precisely controlling accessible tools with glob patterns"
 cardNumber: T04
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 4
 ---
 
-## Deux formats de patterns
+## Two pattern formats
 
-**Format simple** : correspond au nom d'outil ou à une commande Bash.
+**Simple format**: matches a tool name or a Bash command.
 
 ```json
 "permissions": {
@@ -19,7 +19,7 @@ order: 4
 }
 ```
 
-**Format tool-qualified** : correspond au chemin du fichier passé en argument à Read, Edit ou Write. Plus précis que le format simple.
+**Tool-qualified format**: matches the file path passed as argument to Read, Edit or Write. More precise than the simple format.
 
 ```json
 "permissions": {
@@ -32,50 +32,50 @@ order: 4
 }
 ```
 
-## Syntaxe glob
+## Glob syntax
 
-| Pattern | Ce qui correspond |
-|---------|-------------------|
-| `Bash(git *)` | Toute commande git |
+| Pattern | What matches |
+|---------|--------------|
+| `Bash(git *)` | Any git command |
 | `Bash(npm test*)` | `npm test`, `npm test:watch` |
 | `Read(file_path:*.env*)` | `.env`, `.env.local`, `.env.prod` |
-| `Edit(file_path:src/**)` | Tous les fichiers sous `src/` |
-| `Write(file_path:*.key)` | Tout fichier `.key` |
+| `Edit(file_path:src/**)` | All files under `src/` |
+| `Write(file_path:*.key)` | Any `.key` file |
 
-## Niveaux progressifs
+## Progressive levels
 
 ```json
-// Niveau 1 - Lecture seule
+// Level 1 - Read only
 { "autoApproveTools": ["Read", "Grep", "Glob"] }
 
-// Niveau 2 - Git + gestionnaire de paquets
+// Level 2 - Git + package manager
 { "autoApproveTools": ["Read", "Grep", "Glob",
     "Bash(git *)", "Bash(pnpm *)"] }
 
-// Niveau 3 - Développement complet
+// Level 3 - Full development
 { "autoApproveTools": ["Read", "Grep", "Glob",
     "Edit", "Write", "Bash(git *)", "Bash(pnpm *)"] }
 ```
 
-## Comportements des trois catégories
+## Behavior of the three categories
 
-| Catégorie | Comportement |
-|-----------|-------------|
-| `allow` | Auto-approuvé, sans demande |
-| `deny` | Bloqué complètement |
-| `ask` | Demande de confirmation |
-| (défaut) | Mode de permission par défaut |
+| Category | Behavior |
+|----------|----------|
+| `allow` | Auto-approved, no prompt |
+| `deny` | Completely blocked |
+| `ask` | Confirmation requested |
+| (default) | Default permission mode |
 
-## Limitation connue
+## Known limitation
 
-`permissions.deny` a une limite documentée : le background indexing peut exposer le contenu de fichiers via des rappels système avant que les checks de permission ne s'appliquent (GitHub #4160). Pour une protection garantie des secrets, stocker ces fichiers en dehors du répertoire projet.
+`permissions.deny` has a documented limit: background indexing can expose file content via system callbacks before permission checks apply (GitHub #4160). For guaranteed secret protection, store these files outside the project directory.
 
-## Où définir les permissions
+## Where to define permissions
 
 ```
-~/.claude/settings.json       (global, tous les projets)
-.claude/settings.json         (projet, partagé avec l'équipe)
-.claude/settings.local.json   (machine locale, gitignore)
+~/.claude/settings.json       (global, all projects)
+.claude/settings.json         (project, shared with team)
+.claude/settings.local.json   (local machine, gitignore)
 ```
 
-**Ordre de priorité** : `settings.local.json` gagne sur `settings.json` qui gagne sur le global. Utiliser `settings.local.json` pour des permissions personnelles sans affecter l'équipe.
+**Priority order**: `settings.local.json` wins over `settings.json` which wins over global. Use `settings.local.json` for personal permissions without affecting the team.

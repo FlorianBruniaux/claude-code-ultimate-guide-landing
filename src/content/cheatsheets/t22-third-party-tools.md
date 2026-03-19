@@ -1,25 +1,25 @@
 ---
-title: Third-Party Tools
-subtitle: Les outils complémentaires indispensables de l'écosystème
+title: "Third-Party Tools"
+subtitle: "The essential complementary tools in the ecosystem"
 cardNumber: T22
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 22
 ---
 
-## Tracking des Coûts
+## Cost Tracking
 
-**ccusage** — l'outil de référence communautaire pour suivre ses dépenses API. Parse les fichiers JSONL locaux, zéro donnée envoyée en externe.
+**ccusage** — the community reference tool for tracking API spending. Parses local JSONL files, zero data sent externally.
 
 ```bash
-npx ccusage          # Résumé du jour
-ccusage daily        # Rapport journalier
-ccusage blocks --live # Monitoring temps réel (fenêtres 5h)
-ccusage --breakdown  # Détail par modèle
+npx ccusage          # Today's summary
+ccusage daily        # Daily report
+ccusage blocks --live # Real-time monitoring (5h windows)
+ccusage --breakdown  # Breakdown by model
 ```
 
-**ccburn** — alternative Python avec graphiques de burn-rate en terminal. Utile pour visualiser la consommation relative aux limites de facturation, dans un ecosystème Python.
+**ccburn** — Python alternative with burn-rate charts in the terminal. Useful for visualizing consumption relative to billing limits, within a Python ecosystem.
 
 ```bash
 pip install ccburn
@@ -28,50 +28,50 @@ ccburn
 
 ## Dashboard & Monitoring
 
-**ccboard** — TUI et interface web pour monitorer sessions, coûts et statistiques en temps réel.
+**ccboard** — TUI and web interface for monitoring sessions, costs, and statistics in real time.
 
 ```bash
 cargo install ccboard
-ccboard          # Interface TUI
-ccboard --web    # UI web sur localhost:3000
+ccboard          # TUI interface
+ccboard --web    # Web UI on localhost:3000
 ```
 
-## Recherche dans l'Historique
+## History Search
 
-**Straude** — dashboard social pour tracker et partager ses stats de consommation. Pousse les métriques quotidiennes (coût, tokens, modèles) vers un leaderboard public. Attention : envoie le hostname machine et un UUID device aux serveurs Straude. Utiliser `--dry-run` avant le premier push.
+**Straude** — social dashboard to track and share consumption stats. Pushes daily metrics (cost, tokens, models) to a public leaderboard. Note: sends machine hostname and a device UUID to Straude servers. Use `--dry-run` before the first push.
 
 ```bash
-npx straude@latest   # Auth + sync en une commande
-straude push --dry-run  # Prévisualiser sans envoyer
-straude status       # Streak, rank global, totaux
+npx straude@latest   # Auth + sync in one command
+straude push --dry-run  # Preview without sending
+straude status       # Streak, global rank, totals
 ```
 
-## Optimisation Tokens
+## Token Optimization
 
-**RTK (Rust Token Killer)** — proxy CLI qui filtre les outputs avant qu'ils entrent dans le contexte. 92% de réduction sur `git log`, 90% sur les tests. Voir fiche T20 pour le détail.
+**RTK (Rust Token Killer)** — CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details.
 
 ```bash
 brew install rtk-ai/tap/rtk
-rtk init             # Setup avec hook automatique
+rtk init             # Setup with automatic hook
 ```
 
-## Orchestration Parallèle
+## Parallel Orchestration
 
-**Conductor** — application macOS pour orchestrer plusieurs instances Claude Code en parallèle via git worktrees. Interface intégrée : diff viewer, CI/GitHub Actions, Linear, PR workflow.
+**Conductor** — macOS application for orchestrating multiple Claude Code instances in parallel via git worktrees. Integrated interface: diff viewer, CI/GitHub Actions, Linear, PR workflow.
 
-Installer depuis conductor.build (macOS uniquement en mars 2026).
+Install from conductor.build (macOS only as of March 2026).
 
-Flux typique : créer un workspace par feature depuis une issue GitHub ou Linear, laisser les agents tourner, utiliser "Next Workspace" pour traiter uniquement ceux en attente d'input.
+Typical flow: create one workspace per feature from a GitHub or Linear issue, let the agents run, use "Next Workspace" to handle only those waiting for input.
 
-## Tableau de Recommandation
+## Recommendation Table
 
-| Profil | Outils recommandés |
-|--------|--------------------|
-| Développeur solo | ccusage + claude-code-viewer |
-| Petite équipe | ccusage + Conductor ou multiclaude |
-| Multi-agents | Conductor ou Toad |
-| Écosystème Python | ccburn + Claude Chic |
+| Profile | Recommended tools |
+|---------|------------------|
+| Solo developer | ccusage + claude-code-viewer |
+| Small team | ccusage + Conductor or multiclaude |
+| Multi-agents | Conductor or Toad |
+| Python ecosystem | ccburn + Claude Chic |
 
-## Lacunes Connues (Mars 2026)
+## Known Gaps (March 2026)
 
-Pas d'éditeur visuel pour les skills `.claude/skills/`. Pas de dashboard unifié combinant config, sessions, coûts et MCP. La gestion de config MCP reste manuelle via `~/.claude.json`.
+No visual editor for `.claude/skills/` skill files. No unified dashboard combining config, sessions, costs, and MCP. MCP config management remains manual via `~/.claude.json`.

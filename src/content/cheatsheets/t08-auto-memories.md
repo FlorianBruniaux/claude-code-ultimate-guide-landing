@@ -1,70 +1,70 @@
 ---
-title: Auto-Memories — Quand et Comment
-subtitle: Le système de mémorisation automatique vs CLAUDE.md manuel
+title: "Auto-Memories — When and How"
+subtitle: "The automatic memory system vs manual CLAUDE.md"
 cardNumber: T08
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 8
 ---
 
-## Qu'est-ce que c'est ?
+## What is it?
 
-Introduites en v2.1.59 (février 2026), les auto-memories permettent à Claude Code de sauvegarder du contexte utile entre les sessions sans édition manuelle de CLAUDE.md. Claude identifie les décisions clés pendant les conversations et les stocke automatiquement pour les sessions futures du même projet.
+Introduced in v2.1.59 (February 2026), auto-memories allow Claude Code to save useful context between sessions without manually editing CLAUDE.md. Claude identifies key decisions during conversations and stores them automatically for future sessions in the same project.
 
-**Ne pas confondre** avec la mémoire de Claude.ai (interface web). Ce sont deux systèmes distincts. Les auto-memories de Claude Code sont locales, par projet, sans lien avec votre compte claude.ai.
+**Do not confuse** with Claude.ai memory (web interface). These are two distinct systems. Claude Code auto-memories are local, per-project, with no connection to your claude.ai account.
 
-## Où sont stockées les memories
+## Where memories are stored
 
 ```
-~/.claude/projects/<chemin-encodé>/memory/MEMORY.md
+~/.claude/projects/<encoded-path>/memory/MEMORY.md
 ```
 
-Pour les memories au niveau projet (si vous utilisez `.claude/memory/`) :
+For project-level memories (if you use `.claude/memory/`):
 
 ```
 .claude/memory/MEMORY.md
 ```
 
-Depuis v2.1.63, les auto-memories sont partagées entre les git worktrees du même repo.
+Since v2.1.63, auto-memories are shared across git worktrees of the same repo.
 
-## Ce qui se retrouve mémorisé
+## What gets memorized
 
 ```
-Décisions architecturales :
-  "Ce projet utilise Prisma pour l'accès base de données"
+Architectural decisions:
+  "This project uses Prisma for database access"
 
-Préférences équipe :
-  "Les composants fonctionnels sont préférés aux classes"
+Team preferences:
+  "Functional components are preferred over classes"
 
-Patterns spécifiques :
-  "Les routes API suivent le nommage RESTful dans /api/v1/"
+Specific patterns:
+  "API routes follow RESTful naming in /api/v1/"
 
-Problèmes connus :
-  "Ne pas utiliser le package X, conflit de version avec Y"
+Known issues:
+  "Do not use package X, version conflict with Y"
 ```
 
 ## CLAUDE.md vs Auto-Memories
 
 | Aspect | CLAUDE.md | Auto-Memories |
 |--------|-----------|---------------|
-| Gestion | Edition manuelle | Capture automatique |
-| Source | Documentation explicite | Analyse de conversation |
-| Visibilité | Git, partagé équipe | Local utilisateur, gitignore |
-| Contenu idéal | Conventions équipe | Découvertes personnelles |
-| Contrôle | Total | Limité |
+| Management | Manual editing | Automatic capture |
+| Source | Explicit documentation | Conversation analysis |
+| Visibility | Git, shared with team | Local user, gitignore |
+| Ideal content | Team conventions | Personal discoveries |
+| Control | Full | Limited |
 
-## Gérer les memories avec /memory
+## Managing memories with /memory
 
 ```bash
-# Dans Claude Code (mode interactif)
-/memory          # Voir, éditer ou supprimer les entrées
+# In Claude Code (interactive mode)
+/memory          # View, edit, or delete entries
 ```
 
-## Quand utiliser quoi
+## When to use which
 
-**Écrire dans CLAUDE.md manuellement :** conventions d'équipe, règles critiques que tout le monde doit respecter, décisions architecturales officielles.
+**Write in CLAUDE.md manually:** team conventions, critical rules everyone must follow, official architectural decisions.
 
-**Laisser les auto-memories travailler :** préférences de flux de travail personnelles, patterns découverts en cours de session, contexte temporaire lié à une fonctionnalité en cours.
+**Let auto-memories work:** personal workflow preferences, patterns discovered mid-session, temporary context tied to a feature in progress.
 
-**Limite principale** : pas de contrôle fin sur ce qui est mémorisé automatiquement. Si une décision capturée devient obsolète, il faut la supprimer manuellement via `/memory`. Les auto-memories ne sont pas committées en Git, elles restent donc invisibles pour les autres membres de l'équipe.
+**Main limitation**: no fine-grained control over what gets memorized automatically. If a captured decision becomes outdated, it must be deleted manually via `/memory`. Auto-memories are not committed to Git, so they remain invisible to other team members.

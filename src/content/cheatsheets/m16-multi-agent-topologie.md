@@ -1,77 +1,77 @@
 ---
-title: 'Multi-Agent : Topologie & Orchestration'
-subtitle: Architecturer des équipes d'agents pour les tâches complexes
+title: "Multi-Agent: Topology & Orchestration"
+subtitle: "Architecting agent teams for complex tasks"
 cardNumber: M16
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 116
 ---
 
-## Quand passer en multi-agent
+## When to switch to multi-agent
 
-Un seul agent reste optimal jusqu'à environ 7 répertoires ou 50 fichiers. Au-delà, la fenêtre de contexte se remplit à 80-90% simplement pour charger les fichiers pertinents, ce qui ne laisse presque plus de place au raisonnement. Répartir le travail entre plusieurs agents maintient chacun autour de 40% d'utilisation, avec suffisamment d'espace pour analyser et décider.
+A single agent remains optimal up to roughly 7 directories or 50 files. Beyond that, the context window fills to 80-90% just loading relevant files, leaving almost no room for reasoning. Distributing work across multiple agents keeps each around 40% utilization, with enough space to analyze and decide.
 
-| Scope | Agent unique | Équipe |
-|-------|-------------|--------|
-| <10 répertoires | Confortable (~30%) | Inutile |
-| 50K lignes | Dégradé (80-90%) | Recommandé |
-| 100K+ lignes | Context overflow | Indispensable |
+| Scope | Single agent | Team |
+|-------|-------------|------|
+| <10 directories | Comfortable (~30%) | Unnecessary |
+| 50K lines | Degraded (80-90%) | Recommended |
+| 100K+ lines | Context overflow | Essential |
 
-## Topologie étoile (Star)
+## Star topology
 
-L'orchestrateur central reçoit l'objectif global, le décompose en sous-tâches, délègue à des agents spécialisés, puis synthétise leurs résultats. C'est la topologie par défaut de Claude Code Agent Teams.
-
-```
-Orchestrateur
-├── Agent Sécurité  → analyse auth
-├── Agent Qualité   → revue code
-└── Agent Tests     → couverture
-```
-
-L'orchestrateur planifie et délègue ; il ne code pas lui-même. Son rôle est d'allouer le travail, de débloquer les dépendances, et de présenter une réponse unifiée.
-
-## Topologie pipeline
-
-Les agents travaillent en séquence : la sortie de l'un devient l'entrée du suivant. Utile quand les étapes sont strictement ordonnées et que chaque résultat conditionne le suivant.
+The central orchestrator receives the global objective, breaks it down into subtasks, delegates to specialized agents, then synthesizes their results. This is the default topology for Claude Code Agent Teams.
 
 ```
-Analyste → Architecte → Implémenteur → Relecteur
+Orchestrator
+├── Security Agent  → auth analysis
+├── Quality Agent   → code review
+└── Test Agent      → coverage
 ```
 
-Avantage : chaque agent se concentre sur une phase précise, sans bruit des phases précédentes dans son contexte. Inconvénient : un blocage sur une étape arrête tout le pipeline.
+The orchestrator plans and delegates; it does not code itself. Its role is to allocate work, unblock dependencies, and present a unified response.
 
-## Topologie parallèle
+## Pipeline topology
 
-Des agents indépendants travaillent simultanément sur des modules sans dépendance entre eux. Cas typique : refactoring frontend, backend et infra en parallèle sur des fichiers non partagés.
+Agents work in sequence: the output of one becomes the input of the next. Useful when steps are strictly ordered and each result conditions the next.
 
 ```
-Agent Frontend   ─┐
-Agent Backend    ─┼─→ merge final
-Agent Infra      ─┘
+Analyst → Architect → Implementer → Reviewer
 ```
 
-Condition d'applicabilité : les modules doivent avoir zéro état partagé. Si les agents doivent constamment lire les sorties des autres ou modifier des fichiers communs, les conflits git et les messages de coordination annulent le gain.
+Advantage: each agent focuses on a precise phase, without noise from previous phases in its context. Disadvantage: a blockage on one step stops the entire pipeline.
 
-## Isolation et permissions par agent
+## Parallel topology
 
-Chaque agent dispose de sa propre fenêtre de contexte (1M tokens avec Opus 4.6) et peut recevoir une whitelist d'outils distincte. Limiter un agent aux outils `Read`, `Glob`, `Grep` empêche toute modification accidentelle pendant la phase d'analyse.
+Independent agents work simultaneously on modules with no dependencies between them. Typical case: refactoring frontend, backend and infra in parallel on non-shared files.
 
-| Agent | Outils autorisés |
-|-------|-----------------|
-| Explorateur | Read, Glob, Grep |
-| Planificateur | Read, Glob, Grep, Write(plan) |
-| Implémenteur | Read, Edit, Bash, Write |
-| Relecteur | Read, Glob, Grep |
+```
+Frontend Agent   ─┐
+Backend Agent    ─┼─→ final merge
+Infra Agent      ─┘
+```
 
-## Activer les Agent Teams
+Applicability condition: modules must have zero shared state. If agents constantly need to read each other's outputs or modify common files, git conflicts and coordination messages cancel out the gain.
+
+## Isolation and permissions per agent
+
+Each agent has its own context window (1M tokens with Opus 4.6) and can receive a distinct tool whitelist. Limiting an agent to `Read`, `Glob`, `Grep` tools prevents any accidental modification during the analysis phase.
+
+| Agent | Allowed tools |
+|-------|--------------|
+| Explorer | Read, Glob, Grep |
+| Planner | Read, Glob, Grep, Write(plan) |
+| Implementer | Read, Edit, Bash, Write |
+| Reviewer | Read, Glob, Grep |
+
+## Enabling Agent Teams
 
 ```bash
-# Variable d'environnement (session courante)
+# Environment variable (current session)
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 claude
 
-# Configuration persistante ~/.claude/settings.json
+# Persistent configuration ~/.claude/settings.json
 {
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
@@ -79,8 +79,8 @@ claude
 }
 ```
 
-Prérequis : Claude Code v2.1.32+, modèle Opus 4.6 (`/model opus`), dépôt git initialisé. Navigation entre agents via `Shift+Down` en mode in-process.
+Prerequisites: Claude Code v2.1.32+, Opus 4.6 model (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
 
-## Règle du >5 agents
+## The >5 agents rule
 
-Démarrer avec 2 à 3 agents, puis augmenter progressivement. Au-delà de 5, le coût de coordination (messages mailbox, conflits git) dépasse généralement le gain de parallélisation. L'exception : modules physiquement indépendants sur une base de code de 100K+ lignes.
+Start with 2 to 3 agents, then increase progressively. Beyond 5, the coordination cost (mailbox messages, git conflicts) generally exceeds the parallelization gain. The exception: physically independent modules on a 100K+ line codebase.

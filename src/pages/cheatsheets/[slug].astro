@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
-import { RECAP_BASE_URL, CARD_HASHES, FREE_CARD_IDS } from '../../data/recap-cards-data'
+import { RECAP_BASE_URL, CARD_HASHES, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 
 export async function getStaticPaths() {
   const cards = await getCollection('cheatsheets')
@@ -31,16 +31,16 @@ const difficultyLabel: Record<string, string> = {
 }
 
 const seriesLabel: Record<string, string> = {
-  T: 'Technique',
-  M: 'Méthodologie',
-  C: 'Conception',
+  T: 'Technical',
+  M: 'Methodology',
+  C: 'Design',
 }
 
 const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
 const cardHashedUrl = CARD_HASHES[card.id]
   ? `${RECAP_BASE_URL}/${CARD_HASHES[card.id]}`
   : null
-const isFreeCard = FREE_CARD_IDS.has(card.id)
+const isDirectAccess = DIRECT_ACCESS_IDS.has(card.id)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
 const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
@@ -54,7 +54,7 @@ const jsonLd = [
     "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
     "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
     "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
-    "inLanguage": "fr",
+    "inLanguage": "en",
     "keywords": `claude code, ${card.data.category}, ${card.data.difficulty}, recap card, cheat sheet`,
   }
 ]
@@ -90,8 +90,8 @@ const jsonLd = [
       <h1>{card.data.title}</h1>
       <p class="card-subtitle">{card.data.subtitle}</p>
       <div class="hero-actions">
-        {isFreeCard && cardHashedUrl ? (
-          <!-- Free card: direct download, no gate -->
+        {isDirectAccess && cardHashedUrl ? (
+          <!-- Direct access card: no gate -->
           <a
             href={cardHashedUrl}
             class="btn btn-primary"
@@ -104,7 +104,7 @@ const jsonLd = [
             Download PDF
           </a>
         ) : (
-          <!-- Gated card: upgraded to link by JS when unlocked -->
+          <!-- Gated card: JS upgrades to link when unlocked, or scrolls to content gate -->
           <span
             id="slug-pdf-btn"
             class="btn btn-primary pdf-gated-slug"
@@ -125,31 +125,36 @@ const jsonLd = [
           ← All cards
         </a>
       </div>
-
-      <!-- Inline gate for locked series (only shown for gated cards) -->
-      <div id="slug-gate" class="slug-gate hidden" aria-live="polite">
-        <p class="slug-gate-msg">Enter your email to unlock all {seriesLabel[seriesChar] ?? card.data.category} cards and get the full PDF bundle.</p>
-        <form id="slug-gate-form" class="slug-gate-form" novalidate>
-          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="email" name="email" id="slug-gate-email" placeholder="you@example.com" required autocomplete="email">
-          <input type="url" name="linkedin" id="slug-gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
-          <button type="submit" id="slug-gate-submit" class="btn btn-primary">
-            <span class="submit-label">Get all cards</span>
-            <span class="submit-spinner hidden" aria-hidden="true"></span>
-          </button>
-        </form>
-        <p id="slug-gate-error" class="slug-gate-error hidden" role="alert"></p>
-        <p id="slug-gate-success" class="slug-gate-success hidden" role="status"></p>
-      </div>
     </div>
   </header>
 
   <!-- Content -->
   <main class="card-content">
     <div class="container">
-      <div class="prose">
+      <div class="prose" id="card-prose" data-gated={!isDirectAccess ? 'true' : undefined}>
         <Content />
       </div>
+
+      {!isDirectAccess && (
+        <!-- Content gate: shown when locked, hidden after unlock -->
+        <div id="content-gate" class="content-gate">
+          <div class="content-gate-inner">
+            <p class="content-gate-msg">Enter your email to read the full card and get the complete PDF bundle.</p>
+            <p class="content-gate-note">All content is free and open-source. We just ask for your email.</p>
+            <form id="content-gate-form" class="content-gate-form" novalidate>
+              <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="email" name="email" id="content-gate-email" placeholder="you@example.com" required autocomplete="email">
+              <input type="url" name="linkedin" id="content-gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
+              <button type="submit" id="content-gate-submit" class="btn btn-primary">
+                <span class="submit-label">Unlock full card</span>
+                <span class="submit-spinner hidden" aria-hidden="true"></span>
+              </button>
+            </form>
+            <p id="content-gate-error" class="content-gate-error hidden" role="alert"></p>
+            <p id="content-gate-success" class="content-gate-success hidden" role="status"></p>
+          </div>
+        </div>
+      )}
     </div>
   </main>
 
@@ -190,10 +195,9 @@ const jsonLd = [
 
 </Layout>
 
-<script define:vars={{ seriesId, cardHashedUrl, API_BASE, isFreeCard }}>
+<script define:vars={{ seriesId, cardHashedUrl, API_BASE, isDirectAccess }}>
   const LS_SUBSCRIBER = 'cc-subscriber'
   const lsUnlockKey = (s) => `cc-unlocked-${s}`
-  // API_BASE est injecté via define:vars depuis le frontmatter (env-driven)
 
   function isUnlocked() {
     try {
@@ -202,9 +206,18 @@ const jsonLd = [
     } catch { return false }
   }
 
+  const prose = document.getElementById('card-prose')
+  const contentGate = document.getElementById('content-gate')
   const pdfBtn = document.getElementById('slug-pdf-btn')
-  const pdfLabel = document.getElementById('pdf-btn-label')
-  const slugGate = document.getElementById('slug-gate')
+
+  function unlock() {
+    // Remove blur/truncation from prose
+    if (prose) prose.classList.remove('is-locked')
+    // Hide content gate
+    if (contentGate) contentGate.style.display = 'none'
+    // Upgrade PDF button to direct link
+    upgradePdfBtn()
+  }
 
   function upgradePdfBtn() {
     if (!pdfBtn || !cardHashedUrl) return
@@ -213,45 +226,46 @@ const jsonLd = [
     a.className = 'btn btn-primary'
     a.setAttribute('download', '')
     a.innerHTML = pdfBtn.innerHTML
-    // Update the label inside
     const label = a.querySelector('#pdf-btn-label')
     if (label) label.textContent = 'Download PDF'
     pdfBtn.parentNode.replaceChild(a, pdfBtn)
   }
 
-  // Free cards have a direct <a> tag — no JS gating needed
-  if (!isFreeCard) {
+  // Direct access cards: nothing to gate
+  if (!isDirectAccess) {
     if (isUnlocked()) {
-      upgradePdfBtn()
+      unlock()
     } else {
-      // Show inline gate on click
+      // Apply locked state: truncate + blur prose
+      if (prose) prose.classList.add('is-locked')
+
+      // PDF button click: scroll to content gate
       if (pdfBtn) {
-        pdfBtn.addEventListener('click', () => {
-          if (slugGate) slugGate.classList.remove('hidden')
-          document.getElementById('slug-gate-email')?.focus()
-        })
-        pdfBtn.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            if (slugGate) slugGate.classList.remove('hidden')
-            document.getElementById('slug-gate-email')?.focus()
+        const scrollToGate = () => {
+          if (contentGate) {
+            contentGate.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            document.getElementById('content-gate-email')?.focus()
           }
+        }
+        pdfBtn.addEventListener('click', scrollToGate)
+        pdfBtn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToGate() }
         })
       }
     }
   }
 
-  // Gate form submission
-  const slugGateForm = document.getElementById('slug-gate-form')
-  if (slugGateForm) {
-    slugGateForm.addEventListener('submit', async (e) => {
+  // Content gate form submission
+  const gateForm = document.getElementById('content-gate-form')
+  if (gateForm) {
+    gateForm.addEventListener('submit', async (e) => {
       e.preventDefault()
-      const email = document.getElementById('slug-gate-email')?.value?.trim()
+      const email = document.getElementById('content-gate-email')?.value?.trim()
       if (!email) return
 
-      const submitBtn = document.getElementById('slug-gate-submit')
-      const honeypot = slugGateForm.querySelector('input[name="website"]')?.value || ''
-      const linkedin = document.getElementById('slug-gate-linkedin')?.value?.trim() || ''
+      const submitBtn = document.getElementById('content-gate-submit')
+      const honeypot = gateForm.querySelector('input[name="website"]')?.value || ''
+      const linkedin = document.getElementById('content-gate-linkedin')?.value?.trim() || ''
 
       if (submitBtn) {
         submitBtn.disabled = true
@@ -259,7 +273,6 @@ const jsonLd = [
         submitBtn.querySelector('.submit-spinner').classList.remove('hidden')
       }
 
-      // Determine ZIP filename for this series
       const seriesZips = {
         T: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
         M: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
@@ -267,7 +280,7 @@ const jsonLd = [
       const zipFile = seriesZips[seriesId]
 
       if (!zipFile) {
-        showSlugError('This series is not yet available.')
+        showError('This series is not yet available.')
         if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.submit-label').classList.remove('hidden'); submitBtn.querySelector('.submit-spinner').classList.add('hidden') }
         return
       }
@@ -296,30 +309,27 @@ const jsonLd = [
           try {
             if (typeof gtag !== 'undefined') gtag('event', 'recap_card_subscribe', { event_label: seriesId })
           } catch {}
-          showSlugSuccess('Check your inbox — the PDF bundle is on its way!')
-          setTimeout(() => {
-            if (slugGate) slugGate.classList.add('hidden')
-            upgradePdfBtn()
-          }, 2500)
+          showSuccess('Check your inbox — the PDF bundle is on its way!')
+          setTimeout(() => unlock(), 2000)
         } else {
-          showSlugError(data.error || 'Failed to send. Please try again.')
+          showError(data.error || 'Failed to send. Please try again.')
         }
       } catch {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.submit-label').classList.remove('hidden'); submitBtn.querySelector('.submit-spinner').classList.add('hidden') }
-        showSlugError('Network error. Please try again.')
+        showError('Network error. Please try again.')
       }
     })
   }
 
-  function showSlugError(msg) {
-    const el = document.getElementById('slug-gate-error')
-    const ok = document.getElementById('slug-gate-success')
+  function showError(msg) {
+    const el = document.getElementById('content-gate-error')
+    const ok = document.getElementById('content-gate-success')
     if (el) { el.textContent = msg; el.classList.remove('hidden') }
     if (ok) ok.classList.add('hidden')
   }
-  function showSlugSuccess(msg) {
-    const el = document.getElementById('slug-gate-success')
-    const err = document.getElementById('slug-gate-error')
+  function showSuccess(msg) {
+    const el = document.getElementById('content-gate-success')
+    const err = document.getElementById('content-gate-error')
     if (el) { el.textContent = msg; el.classList.remove('hidden') }
     if (err) err.classList.add('hidden')
   }
@@ -570,29 +580,57 @@ const jsonLd = [
     .prose :global(table) { font-size: 0.8rem; }
   }
 
-  /* ── Slug gate ── */
+  /* ── PDF gated button ── */
   .pdf-gated-slug { cursor: pointer; }
-  .slug-gate {
-    margin-top: 1rem;
-    padding: 1rem 1.25rem;
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-    border-radius: 0.625rem;
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
+
+  /* ── Content gating (blur/fade) ── */
+  .prose[data-gated].is-locked {
+    max-height: 420px;
+    overflow: hidden;
+    position: relative;
   }
-  .slug-gate-msg {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin: 0 0 0.75rem;
+  .prose[data-gated].is-locked::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, var(--bg-primary, #fff));
+    pointer-events: none;
+  }
+
+  /* ── Content gate ── */
+  .content-gate {
+    margin-top: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    overflow: hidden;
+  }
+  .content-gate-inner {
+    padding: 1.5rem;
+  }
+  .content-gate-msg {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.35rem;
     line-height: 1.5;
   }
-  .slug-gate-form {
+  .content-gate-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+  }
+  .content-gate-form {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
     align-items: center;
   }
-  .slug-gate-form input[type="email"],
-  .slug-gate-form input[type="url"] {
+  .content-gate-form input[type="email"],
+  .content-gate-form input[type="url"] {
     flex: 1;
     min-width: 200px;
     padding: 0.5rem 0.75rem;
@@ -603,8 +641,8 @@ const jsonLd = [
     font-size: 0.875rem;
     outline: none;
   }
-  .slug-gate-form input[type="email"]:focus,
-  .slug-gate-form input[type="url"]:focus { border-color: var(--accent); }
+  .content-gate-form input[type="email"]:focus,
+  .content-gate-form input[type="url"]:focus { border-color: var(--accent); }
   .honeypot {
     position: absolute;
     left: -9999px;
@@ -623,12 +661,12 @@ const jsonLd = [
     flex-shrink: 0;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .slug-gate-error {
+  .content-gate-error {
     margin: 0.5rem 0 0;
     font-size: 0.8rem;
     color: #ef4444;
   }
-  .slug-gate-success {
+  .content-gate-success {
     margin: 0.5rem 0 0;
     font-size: 0.8rem;
     color: #22c55e;

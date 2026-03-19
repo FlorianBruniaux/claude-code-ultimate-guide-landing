@@ -1,25 +1,25 @@
 ---
-title: Commands, Skills, Plugins & Agents
-subtitle: Choisir le bon mécanisme d'extension selon le besoin
+title: "Commands, Skills, Plugins & Agents"
+subtitle: "Choosing the right extension mechanism for the need"
 cardNumber: C04
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 204
 ---
 
-## Tableau de comparaison
+## Comparison table
 
-| Mécanisme | Scope | Persistance | Ressources | Cas d'usage |
-|-----------|-------|-------------|-----------|-------------|
-| **Command** | Prompt unique | Session | Non | Tâche ponctuelle répétable |
-| **Skill** | Capacité réutilisable | Cross-session | Oui | Expertise partagée |
-| **Plugin** | Marketplace | Global | Oui | Écosystème tiers |
-| **Agent** | Spécialiste autonome | Cross-session | Via memory | Délégation complexe |
+| Mechanism | Scope | Persistence | Resources | Use case |
+|-----------|-------|-------------|-----------|----------|
+| **Command** | Single prompt | Session | No | Repeatable one-off task |
+| **Skill** | Reusable capability | Cross-session | Yes | Shared expertise |
+| **Plugin** | Marketplace | Global | Yes | Third-party ecosystem |
+| **Agent** | Autonomous specialist | Cross-session | Via memory | Complex delegation |
 
-## Commands : tâches ponctuelles
+## Commands: one-off tasks
 
-Une command est un fichier Markdown dans `.claude/commands/` que vous invoquez avec `/nom-command`. Elle est résolue à l'appel : tout son contenu est injecté dans le contexte comme instruction.
+A command is a Markdown file in `.claude/commands/` that you invoke with `/command-name`. It is resolved at call time: its entire content is injected into the context as an instruction.
 
 ```
 .claude/commands/
@@ -28,35 +28,35 @@ Une command est un fichier Markdown dans `.claude/commands/` que vous invoquez a
 └── sync.md           # /sync
 ```
 
-**Quand choisir :** vous avez une séquence d'instructions que vous tapez à la main plusieurs fois par semaine. Une command la codifie une fois pour toutes.
+**When to choose:** you have a sequence of instructions you type manually several times a week. A command codifies it once and for all.
 
-## Skills : savoir-faire réutilisable
+## Skills: reusable know-how
 
-Un Skill est un module de connaissance structuré (fichier SKILL.md avec frontmatter YAML) que Claude peut invoquer quand il en a besoin. Contrairement à une command qui s'exécute explicitement, un Skill est chargé en fonction du contexte.
+A Skill is a structured knowledge module (SKILL.md file with YAML frontmatter) that Claude can invoke when needed. Unlike a command that runs explicitly, a Skill is loaded based on context.
 
 ```yaml
 # .claude/skills/pdf-generator/SKILL.md
 ---
 name: pdf-generator
-description: Génère des PDFs avec le template whitepaper-typst
+description: Generates PDFs using the whitepaper-typst template
 allowed-tools: [Read, Write, Bash]
 ---
-Utiliser quarto render --to whitepaper-typst...
+Use quarto render --to whitepaper-typst...
 ```
 
-**Quand choisir :** vous avez un processus technique avec des paramètres variables (build d'un PDF, déploiement d'un service) que vous voulez déléguer entièrement à Claude avec des guardrails.
+**When to choose:** you have a technical process with variable parameters (PDF build, service deployment) that you want to fully delegate to Claude with guardrails.
 
-**Attention au 56% warning :** les Skills sont invoqués à la demande, pas automatiquement. Si Claude n'invoque pas votre Skill, utilisez `.claude/rules/` (chargement systématique) ou une Command explicite.
+**Note on the 56% warning:** Skills are invoked on demand, not automatically. If Claude does not invoke your Skill, use `.claude/rules/` (systematic loading) or an explicit Command instead.
 
-## Plugins : intégrations tierces
+## Plugins: third-party integrations
 
-Les Plugins proviennent du marketplace et ajoutent des capacités externes (Context7 pour la doc, Linear MCP pour les tickets, Figma MCP pour le design-to-code). Ils s'installent via `/plugin marketplace add`.
+Plugins come from the marketplace and add external capabilities (Context7 for documentation, Linear MCP for tickets, Figma MCP for design-to-code). They are installed via `/plugin marketplace add`.
 
-**Quand choisir :** une intégration avec un service tiers existant couvre exactement votre besoin. Ne développez pas ce qui existe déjà.
+**When to choose:** an integration with an existing third-party service covers exactly your need. Do not build what already exists.
 
-## Agents : délégation de tâches complexes
+## Agents: complex task delegation
 
-Un Agent est un Claude spécialisé avec ses propres outils, son propre scope et potentiellement sa propre mémoire. Il sert à isoler le contexte, pas à simuler un rôle humain.
+An Agent is a specialized Claude with its own tools, its own scope, and potentially its own memory. It serves to isolate context, not to simulate a human role.
 
 ```yaml
 # .claude/agents/security-audit.md
@@ -65,11 +65,11 @@ name: security-audit
 model: opus
 tools: Read, Grep, Glob
 ---
-Analyser le code pour les vulnérabilités OWASP...
+Analyze code for OWASP vulnerabilities...
 ```
 
-**Quand choisir :** vous avez une tâche longue qui polluerait le contexte principal, ou un travail qui peut tourner en parallèle pendant que vous continuez ailleurs.
+**When to choose:** you have a long task that would pollute the main context, or work that can run in parallel while you continue elsewhere.
 
-## Règle de décision rapide
+## Quick decision rule
 
-Une instruction à répéter manuellement = **Command**. Un savoir-faire à encapsuler = **Skill**. Une intégration tierce = **Plugin**. Une tâche à déléguer entièrement avec son propre contexte = **Agent**.
+An instruction to repeat manually = **Command**. Know-how to encapsulate = **Skill**. A third-party integration = **Plugin**. A task to fully delegate with its own context = **Agent**.

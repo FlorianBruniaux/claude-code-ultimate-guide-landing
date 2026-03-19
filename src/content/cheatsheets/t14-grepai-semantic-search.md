@@ -1,22 +1,22 @@
 ---
-title: Grepai — Recherche Sémantique
-subtitle: Trouver du code par intention, pas par regex
+title: "Grepai — Semantic Search"
+subtitle: "Finding code by intent, not by regex"
 cardNumber: T14
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 14
 ---
 
-## Principe : chercher par intention
+## Principle: search by intent
 
-Grep natif (ripgrep) est idéal quand on connaît le texte exact à trouver. Grepai prend le relai quand on cherche "le code qui gère X" sans connaître les noms exacts des fonctions ou des variables. Il s'appuie sur des embeddings locaux via Ollama et le modèle `nomic-embed-text`, ce qui garantit une confidentialité totale : aucune donnée ne quitte la machine.
+Native Grep (ripgrep) is ideal when you know the exact text to find. Grepai takes over when you are looking for "the code that handles X" without knowing the exact function or variable names. It relies on local embeddings via Ollama and the `nomic-embed-text` model, which guarantees full privacy: no data leaves the machine.
 
-**Économie de tokens** : ~4K tokens avec grepai vs ~15K en faisant grep brut + lecture de fichiers entiers.
+**Token savings**: ~4K tokens with grepai vs ~15K doing raw grep + reading full files.
 
-## Les 4 outils principaux
+## The 4 main tools
 
-**`grepai_search`** : recherche par description naturelle. Les requêtes courtes (1-3 mots-clés) donnent de meilleurs résultats que des phrases longues.
+**`grepai_search`**: search by natural language description. Short queries (1-3 keywords) yield better results than long phrases.
 
 ```
 grepai_search("payment flow")
@@ -24,55 +24,55 @@ grepai_search("JWT validation")
 grepai_search("rate limiting middleware")
 ```
 
-**`grepai_trace_callers`** : trouve toutes les fonctions qui appellent un symbole donné.
+**`grepai_trace_callers`**: finds all functions that call a given symbol.
 
-**`grepai_trace_callees`** : liste ce qu'une fonction appelle en interne.
+**`grepai_trace_callees`**: lists what a function calls internally.
 
-**`grepai_index_status`** : vérifie que l'index est à jour avant de lancer des recherches.
+**`grepai_index_status`**: checks that the index is up to date before running searches.
 
-## Graphe d'appels en pratique
+## Call graph in practice
 
-Le cas d'usage le plus puissant de grepai est l'analyse de dépendances. Avant de refactorer une fonction, savoir qui l'appelle évite les régressions silencieuses.
+The most powerful use case for grepai is dependency analysis. Before refactoring a function, knowing who calls it prevents silent regressions.
 
 ```
-# Qui appelle validateJWT ?
+# Who calls validateJWT?
 grepai_trace_callers("validateJWT")
 → ApiGateway, AdminPanel, UserController
 
-# Que fait validateJWT en interne ?
+# What does validateJWT do internally?
 grepai_trace_callees("validateJWT")
 → decodeToken, checkExpiry, verifySignature
 ```
 
-Profondeur recommandée : 2 par défaut, 3 au maximum pour les analyses complexes.
+Recommended depth: 2 by default, 3 at most for complex analyses.
 
-## Grepai vs Grep natif
+## Grepai vs native Grep
 
-| Situation | Outil recommandé |
+| Situation | Recommended tool |
 |-----------|-----------------|
-| Pattern exact connu (`"authenticate"`) | Grep natif (~20ms) |
-| Recherche par concept ou intention | Grepai (~500ms) |
-| Analyse de graphe d'appels | Grepai (`trace_callers`) |
-| Refactoring multi-fichiers | Grepai + Serena |
-| Regex avancée sur structure AST | ast-grep |
+| Exact pattern known (`"authenticate"`) | Native Grep (~20ms) |
+| Search by concept or intent | Grepai (~500ms) |
+| Call graph analysis | Grepai (`trace_callers`) |
+| Multi-file refactoring | Grepai + Serena |
+| Advanced regex on AST structure | ast-grep |
 
-**Règle simple** : si on peut écrire la regex, utiliser Grep. Sinon, grepai.
+**Simple rule**: if you can write the regex, use Grep. Otherwise, grepai.
 
 ## Setup
 
 ```bash
-# Installer grepai
+# Install grepai
 curl -sSL https://raw.githubusercontent.com/yoanbernabeu/grepai/main/install.sh | sh
 
-# Initialiser dans le projet (choisir: ollama, nomic-embed-text)
+# Initialize in the project (choose: ollama, nomic-embed-text)
 grepai init
 
-# Vérifier le statut
+# Check status
 grepai status
 ```
 
-Prérequis : Ollama installé avec le modèle `nomic-embed-text` disponible. En cas d'erreur "connection refused" : `brew services start ollama`.
+Prerequisites: Ollama installed with the `nomic-embed-text` model available. If "connection refused" error: `brew services start ollama`.
 
-## Bonnes pratiques
+## Best practices
 
-Toujours appeler `grepai_index_status` en début de session si le codebase a évolué depuis la dernière indexation. Limiter les résultats à 5 par défaut et augmenter uniquement si les premiers résultats ne sont pas pertinents. Grepai découvre les fichiers, Grep natif affine ensuite avec une regex précise : les deux outils se complètent naturellement.
+Always call `grepai_index_status` at the start of a session if the codebase has changed since the last indexing. Limit results to 5 by default and increase only if the first results are not relevant. Grepai discovers files, then native Grep refines with a precise regex: both tools complement each other naturally.

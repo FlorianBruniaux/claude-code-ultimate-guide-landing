@@ -1,68 +1,68 @@
 ---
-title: Config Multi-Machine & Backup
-subtitle: Synchroniser sa configuration Claude Code entre plusieurs postes
+title: "Multi-Machine Config & Backup"
+subtitle: "Syncing your Claude Code configuration across multiple machines"
 cardNumber: T10
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 10
 ---
 
-## Ce qui reste local vs ce qui se partage
+## What stays local vs what is shareable
 
-| Local uniquement | Partageable |
-|-----------------|-------------|
+| Local only | Shareable |
+|------------|-----------|
 | `settings.local.json` | `agents/`, `commands/` |
-| Clés API, tokens | `hooks/`, `rules/`, `skills/` |
-| Historique de sessions | `settings.template.json` |
-| `.env` avec secrets | CLAUDE.md (conventions équipe) |
+| API keys, tokens | `hooks/`, `rules/`, `skills/` |
+| Session history | `settings.template.json` |
+| `.env` with secrets | CLAUDE.md (team conventions) |
 
-**Règle d'or** : ne jamais committer de clés API ou credentials. Utiliser des fichiers template avec des placeholders `${VAR_NAME}` pour les valeurs sensibles.
+**Golden rule**: never commit API keys or credentials. Use template files with `${VAR_NAME}` placeholders for sensitive values.
 
-## Stratégie Git + symlinks (recommandée)
+## Git + symlinks strategy (recommended)
 
-Approche inspirée par Martin Ratinaud (504 sessions testées) et brianlovin/claude-config.
+Approach inspired by Martin Ratinaud (504 tested sessions) and brianlovin/claude-config.
 
 ```bash
-# 1. Créer un repo privé pour la config globale
+# 1. Create a private repo for global config
 mkdir ~/claude-config-backup && cd ~/claude-config-backup
 git init
 
-# 2. Créer des symlinks (les changements sont automatiques)
+# 2. Create symlinks (changes are automatic)
 ln -s ~/.claude/agents   ./agents
 ln -s ~/.claude/commands ./commands
 ln -s ~/.claude/hooks    ./hooks
 ln -s ~/.claude/skills   ./skills
 
-# 3. Template sans secrets
+# 3. Template without secrets
 cp ~/.claude/settings.json ./settings.template.json
-# Remplacer les valeurs par ${ANTHROPIC_API_KEY} etc.
+# Replace values with ${ANTHROPIC_API_KEY} etc.
 
-# 4. .gitignore strict
+# 4. Strict .gitignore
 echo "settings.json\nmcp.json\nprojects/" > .gitignore
 
 git remote add origin git@github.com:you/claude-config-private.git
 git push -u origin main
 ```
 
-## Synchronisation entre machines
+## Syncing between machines
 
 ```bash
-# Machine source (après modification)
+# Source machine (after modification)
 cd ~/claude-config-backup
 git add agents/ commands/ hooks/ skills/
 git commit -m "Update hooks: add auto-format"
 git push
 
-# Machine cible
+# Target machine
 cd ~/claude-config-backup
 git pull
-# Les symlinks propagent automatiquement vers ~/.claude/
+# Symlinks propagate automatically to ~/.claude/
 ```
 
-## `settings.local.json` pour les overrides machine
+## `settings.local.json` for machine-specific overrides
 
-Chaque machine peut avoir ses propres préférences sans toucher à la configuration partagée. Ce fichier prend le dessus sur `settings.json` et ne se committe jamais.
+Each machine can have its own preferences without touching the shared configuration. This file takes precedence over `settings.json` and is never committed.
 
 ```json
 {
@@ -75,21 +75,21 @@ Chaque machine peut avoir ses propres préférences sans toucher à la configura
 }
 ```
 
-## Alternative : cloud sync par symlink
+## Alternative: cloud sync via symlink
 
 ```bash
-# Déplacer ~/.claude vers Dropbox/iCloud
+# Move ~/.claude to Dropbox/iCloud
 mv ~/.claude ~/Dropbox/claude-config
 ln -s ~/Dropbox/claude-config ~/.claude
-# Synchronisation automatique entre machines
+# Automatic sync between machines
 ```
 
-Avantage : zéro effort de maintenance. Inconvénient : pas d'historique de versions, risque de conflits de synchronisation si les deux machines sont actives simultanément.
+Advantage: zero maintenance effort. Drawback: no version history, risk of sync conflicts if both machines are active simultaneously.
 
-## Backup automatique avec cron
+## Automatic backup with cron
 
 ```bash
-# Backup quotidien à 2h du matin
+# Daily backup at 2am
 0 2 * * * tar -czf ~/claude-backups/config-$(date +%F).tar.gz \
   ~/.claude/agents ~/.claude/commands \
   ~/.claude/hooks ~/.claude/settings.json

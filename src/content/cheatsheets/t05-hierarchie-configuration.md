@@ -1,37 +1,37 @@
 ---
-title: Hiérarchie de Configuration
-subtitle: Où configurer quoi — de global à local
+title: "Configuration Hierarchy"
+subtitle: "Where to configure what — from global to local"
 cardNumber: T05
-category: Technique
+category: Technical
 difficulty: beginner
 guideVersion: 3.32.1
 order: 5
 ---
 
-## Niveaux de Configuration
+## Configuration Levels
 
-| Niveau | Fichier | Scope | Git |
-|--------|---------|-------|-----|
-| Global user | `~/.claude/settings.json` | Tous projets | Non |
-| Global rules | `~/.claude/CLAUDE.md` | Tous projets | Non |
-| Projet partagé | `.claude/settings.json` | Équipe | Oui |
-| Projet local | `.claude/settings.local.json` | Perso | Non |
-| Projet rules | `CLAUDE.md` (racine) | Équipe | Oui |
-| Sous-dossier | `sous-dossier/CLAUDE.md` | Dossier | Oui |
+| Level | File | Scope | Git |
+|-------|------|-------|-----|
+| Global user | `~/.claude/settings.json` | All projects | No |
+| Global rules | `~/.claude/CLAUDE.md` | All projects | No |
+| Shared project | `.claude/settings.json` | Team | Yes |
+| Local project | `.claude/settings.local.json` | Personal | No |
+| Project rules | `CLAUDE.md` (root) | Team | Yes |
+| Subfolder | `subfolder/CLAUDE.md` | Folder | Yes |
 
-## Résolution des Conflits
+## Conflict Resolution
 
 ```
-~/.claude/CLAUDE.md          (1 - base globale)
+~/.claude/CLAUDE.md          (1 - global base)
 ↓ + merge
-./CLAUDE.md                  (2 - règles projet)
+./CLAUDE.md                  (2 - project rules)
 ↓ + merge
-sous-dossier/CLAUDE.md       (3 - règles locales)
+subfolder/CLAUDE.md          (3 - local rules)
 ↓ + merge
-@import explicite             (4 - import inline)
+@explicit import             (4 - inline import)
 ```
 
-Les règles du niveau inférieur **complètent** et ne remplacent pas les niveaux supérieurs.
+Rules at a lower level **supplement** rather than replace higher levels.
 
 ## settings.json — Structure
 
@@ -48,35 +48,35 @@ Les règles du niveau inférieur **complètent** et ne remplacent pas les niveau
 }
 ```
 
-## CLAUDE.md — Bonnes Pratiques
+## CLAUDE.md — Best Practices
 
 ```markdown
-# Conventions Projet
+# Project Conventions
 
 ## Stack
 - TypeScript strict mode
-- pnpm (pas npm)
+- pnpm (not npm)
 - Tests: Vitest
 
-## Règles
-- Toujours vérifier les types avant de modifier
-- Commit en anglais
-- Ne jamais modifier package-lock.json
+## Rules
+- Always check types before modifying
+- Commits in English
+- Never modify package-lock.json
 ```
 
-## Ce qui Va Où
+## What Goes Where
 
-**Global CLAUDE.md** — Préférences personnelles, style de code, conventions universelles.
+**Global CLAUDE.md** — Personal preferences, code style, universal conventions.
 
-**Projet CLAUDE.md** — Architecture, stack, conventions équipe, commandes de build/test.
+**Project CLAUDE.md** — Architecture, stack, team conventions, build/test commands.
 
-**settings.json projet** — Permissions d'outils, modèle par défaut, variables d'env de dev.
+**Project settings.json** — Tool permissions, default model, dev environment variables.
 
-**settings.local.json** — Overrides perso qui ne doivent pas affecter l'équipe.
+**settings.local.json** — Personal overrides that should not affect the team.
 
-## .gitignore Obligatoire
+## Required .gitignore
 
 ```
-# Dans .gitignore du projet
+# In the project .gitignore
 .claude/settings.local.json
 ```

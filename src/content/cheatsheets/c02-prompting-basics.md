@@ -1,59 +1,59 @@
 ---
-title: Prompting Basics pour Claude Code
-subtitle: Les principes qui font la différence entre un bon et un mauvais prompt
+title: "Prompting Basics for Claude Code"
+subtitle: "The principles that make the difference between a good and a bad prompt"
 cardNumber: C02
-category: Conception
+category: Design
 difficulty: beginner
 guideVersion: 3.32.1
 order: 202
 ---
 
-## Contexte > Longueur
+## Context > Length
 
-Un prompt de 3 lignes avec le bon contexte produit de meilleurs résultats qu'un prompt de 30 lignes vague. Claude a besoin de savoir où il se trouve dans le projet, quel est l'objectif précis, et ce qu'il ne doit pas toucher.
+A 3-line prompt with the right context produces better results than a vague 30-line prompt. Claude needs to know where it is in the project, what the precise objective is, and what it must not touch.
 
-La question à se poser avant d'écrire un prompt : "Est-ce que quelqu'un qui découvre cette codebase aujourd'hui comprendrait exactement ce que je veux ?" Si la réponse est non, le prompt manque de contexte.
+The question to ask before writing a prompt: "Would someone discovering this codebase today understand exactly what I want?" If the answer is no, the prompt lacks context.
 
-## Spécificité : le mot qui change tout
+## Specificity: the word that changes everything
 
-"Refactoring" ne dit rien. "Extraire la fonction `validateUser` vers `src/auth/validation.ts` en gardant tous les tests verts et sans modifier les types publics" dit tout ce qu'il faut.
+"Refactoring" says nothing. "Extract the `validateUser` function to `src/auth/validation.ts` while keeping all tests green and without modifying public types" says everything needed.
 
-| Formulation vague | Formulation précise |
-|-------------------|---------------------|
-| `Améliore ce code` | `Réduire la complexité cyclomatique de parseConfig() sans changer l'API publique` |
-| `Ajoute des tests` | `Écrire des tests unitaires pour validateUser, couvrir les cas null et les emails malformés` |
-| `Corrige le bug` | `La fonction sortItems trie par ordre inverse, corriger en gardant le même type de retour` |
+| Vague phrasing | Precise phrasing |
+|----------------|------------------|
+| `Improve this code` | `Reduce cyclomatic complexity of parseConfig() without changing the public API` |
+| `Add tests` | `Write unit tests for validateUser, cover null cases and malformed emails` |
+| `Fix the bug` | `The sortItems function sorts in reverse order, fix it while keeping the same return type` |
 
-## Itération courte : valider par incréments
+## Short iteration: validate in increments
 
-Demander tout d'un coup est tentant mais risqué. Claude peut produire une solution cohérente en interne mais qui ne correspond pas aux attentes implicites. La pratique qui fonctionne : décomposer en étapes de 20-40 lignes maximum, valider chacune avant de continuer.
+Asking for everything at once is tempting but risky. Claude can produce an internally consistent solution that does not match implicit expectations. The practice that works: decompose into steps of 20-40 lines maximum, validate each one before continuing.
 
 ```bash
-# Après chaque changement, vérifier avant de continuer
+# After each change, check before continuing
 git diff
 pnpm test
 ```
 
-## Montrer plutôt qu'expliquer
+## Show rather than explain
 
-Donner un fichier de référence vaut plus qu'expliquer le style en prose. Si vous voulez que Claude suive les conventions de `UserService`, indiquez-lui simplement : "Suis le même pattern que `src/services/UserService.ts`."
+Giving a reference file is worth more than explaining the style in prose. If you want Claude to follow the conventions of `UserService`, simply indicate: "Follow the same pattern as `src/services/UserService.ts`."
 
-Le principe s'applique aussi aux types : si vous avez un type `ApiResponse<T>` existant, montrez-le au lieu de le décrire.
+The principle applies to types as well: if you have an existing `ApiResponse<T>` type, show it instead of describing it.
 
-## Ce qu'il ne faut PAS faire
+## What NOT to do
 
-**Questions rhétoriques :** "Peux-tu refactoriser cette fonction ?" invite Claude à potentiellement répondre "oui" puis attendre. Préférez l'impératif direct : "Refactorise cette fonction."
+**Rhetorical questions:** "Can you refactor this function?" invites Claude to potentially answer "yes" then wait. Prefer the direct imperative: "Refactor this function."
 
-**Contraintes implicites :** Si les tests doivent rester verts, si les types publics ne doivent pas changer, si une librairie spécifique est interdite, dites-le explicitement. Claude n'a pas accès à vos conventions non documentées.
+**Implicit constraints:** If tests must stay green, if public types must not change, if a specific library is forbidden — say it explicitly. Claude does not have access to your undocumented conventions.
 
-**Ambiguïté sur le scope :** "Ce fichier" sans référence, "l'authentification" sans préciser quel module. Utilisez des chemins absolus ou des noms de fonctions.
+**Ambiguous scope:** "This file" without a reference, "the authentication" without specifying which module. Use absolute paths or function names.
 
-## Le prompt minimaliste efficace
+## The efficient minimal prompt
 
 ```
-Contexte : [fichier ou module concerné]
-Objectif : [action précise + critère de succès]
-Contraintes : [ce que tu ne dois PAS modifier]
+Context: [file or module involved]
+Objective: [precise action + success criterion]
+Constraints: [what you must NOT modify]
 ```
 
-Trois lignes suffisent pour la majorité des tâches courantes.
+Three lines are enough for the majority of common tasks.

@@ -1,99 +1,99 @@
 ---
-title: Observabilité JSONL & jq
-subtitle: Auditer et analyser l'activité de Claude Code via les logs
+title: "Observability: JSONL & jq"
+subtitle: "Auditing and analyzing Claude Code activity through logs"
 cardNumber: M22
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 122
 ---
 
-## Le registre JSONL : source de vérité
+## The JSONL registry: source of truth
 
-Chaque action de Claude Code est enregistrée dans des fichiers JSONL (une entrée JSON par ligne) stockés dans `~/.claude/projects/<projet>/`. Ces fichiers sont la source de vérité sur ce que l'agent a réellement fait : quels fichiers il a lus, quels fichiers il a modifiés, quelles commandes il a exécutées.
+Every Claude Code action is recorded in JSONL files (one JSON entry per line) stored in `~/.claude/projects/<project>/`. These files are the source of truth for what the agent actually did: which files it read, which files it modified, which commands it executed.
 
 ```bash
-# Localiser les fichiers de session du projet courant
+# Locate session files for the current project
 ls ~/.claude/projects/-$(pwd | tr '/' '-')-/
 # → SESSION_ID.jsonl  SESSION_ID2.jsonl ...
 ```
 
-Chaque ligne de type `assistant` contient un tableau `content` dont les entrées `tool_use` documentent chaque appel d'outil avec ses paramètres d'entrée.
+Each `assistant` type line contains a `content` array whose `tool_use` entries document each tool call with its input parameters.
 
-## Ce que les outils exposent
+## What tools expose
 
-| Outil | Information disponible |
-|-------|----------------------|
-| `Read` | Chemin du fichier, plage de lignes |
-| `Edit` / `Write` | Chemin, contenu modifié |
-| `Bash` | Commande complète exécutée |
-| `WebFetch` | URL appelée (données POST incluses) |
-| `Task` | Prompt transmis au sous-agent |
-| `Glob` / `Grep` | Patterns de recherche et scope |
+| Tool | Available information |
+|------|-----------------------|
+| `Read` | File path, line range |
+| `Edit` / `Write` | Path, modified content |
+| `Bash` | Full command executed |
+| `WebFetch` | URL called (POST data included) |
+| `Task` | Prompt sent to sub-agent |
+| `Glob` / `Grep` | Search patterns and scope |
 
-## Requêtes jq essentielles
+## Essential jq queries
 
 ```bash
-SESSION=~/.claude/projects/-mon-projet-/SESSION.jsonl
+SESSION=~/.claude/projects/-my-project-/SESSION.jsonl
 
-# Fichiers lus dans la session
+# Files read in the session
 jq 'select(.type=="assistant") |
   .message.content[]? |
   select(.type=="tool_use" and .name=="Read") |
   .input.file_path' "$SESSION"
 
-# Commandes bash exécutées
+# Bash commands executed
 jq 'select(.type=="assistant") |
   .message.content[]? |
   select(.type=="tool_use" and .name=="Bash") |
   .input.command' "$SESSION"
 
-# Comptage par outil (profil d'activité)
+# Count by tool (activity profile)
 jq -r 'select(.type=="assistant") |
   .message.content[]? |
   select(.type=="tool_use") | .name' \
   "$SESSION" | sort | uniq -c | sort -rn
 ```
 
-## Patterns sensibles à surveiller
+## Sensitive patterns to monitor
 
-Ces patterns valent la peine d'être détectés automatiquement dans les audits :
+These patterns are worth detecting automatically in audits:
 
-| Pattern | Risque | Filtre jq |
-|---------|--------|-----------|
-| Read sur `.env`, `*.pem`, `id_rsa` | Accès aux credentials | `test("\\.(env|pem|key)$")` |
-| Bash avec `rm -rf` ou `--force-push` | Action destructive | `test("rm -rf")` |
-| WebFetch vers URL externe | Exfiltration potentielle | sélectionner `.name=="WebFetch"` |
-| Write hors du répertoire projet | Scope creep | Comparer le chemin au répertoire courant |
+| Pattern | Risk | jq filter |
+|---------|------|-----------|
+| Read on `.env`, `*.pem`, `id_rsa` | Credentials access | `test("\\.(env|pem|key)$")` |
+| Bash with `rm -rf` or `--force-push` | Destructive action | `test("rm -rf")` |
+| WebFetch to external URL | Potential exfiltration | select `.name=="WebFetch"` |
+| Write outside project directory | Scope creep | Compare path to current directory |
 
-Pour les équipes, synchroniser ces logs vers un stockage immuable (S3 avec versioning, par exemple) pour conserver une trace forensique inaltérable.
+For teams, synchronize these logs to immutable storage (S3 with versioning, for example) to maintain an unalterable forensic trace.
 
-## Outils externes de la communauté
+## Community external tools
 
-| Outil | Type | Usage principal |
-|-------|------|----------------|
-| **ccusage** | CLI / TUI | Coûts depuis JSONL, référence communauté |
-| **claude-code-otel** | OpenTelemetry | Export vers Prometheus + Grafana |
-| **ccboard** | TUI + Web | Dashboard sessions, coûts, activité |
-| **Akto** | SaaS | Guardrails sécurité au niveau API |
-| **MLflow Tracing** | CLI + SDK | Token counts exacts, évaluation LLM |
+| Tool | Type | Primary usage |
+|------|------|--------------|
+| **ccusage** | CLI / TUI | Costs from JSONL, community reference |
+| **claude-code-otel** | OpenTelemetry | Export to Prometheus + Grafana |
+| **ccboard** | TUI + Web | Sessions dashboard, costs, activity |
+| **Akto** | SaaS | Security guardrails at API level |
+| **MLflow Tracing** | CLI + SDK | Exact token counts, LLM evaluation |
 
 ```bash
-# Installation rapide
-npm i -g ccusage          # Coûts et statistiques
-cargo install ccboard     # Dashboard interactif
-npm i -g claude-code-otel # Export OpenTelemetry
+# Quick install
+npm i -g ccusage          # Costs and statistics
+cargo install ccboard     # Interactive dashboard
+npm i -g claude-code-otel # OpenTelemetry export
 ```
 
-## Arbre de décision
+## Decision tree
 
 ```
-Besoin rapide de coûts ?   → ccusage (0 config)
-Audit entreprise ?         → claude-code-otel + Grafana
-Déjà sur MLflow ?          → MLflow tracing integration
-Dashboard visuel ?         → ccboard
+Need costs quickly?        → ccusage (0 config)
+Enterprise audit?          → claude-code-otel + Grafana
+Already on MLflow?         → MLflow tracing integration
+Visual dashboard?          → ccboard
 ```
 
-## Estimation des coûts dans le JSONL
+## Cost estimation in JSONL
 
-Les logs JSONL ne contiennent pas les prix Anthropic directement. Les outils comme ccusage appliquent une heuristique d'environ 4 caractères par token, puis multiplient par les tarifs du modèle. Cette estimation tend à légèrement surestimer ; les chiffres sont indicatifs, pas facturés.
+JSONL logs do not contain Anthropic prices directly. Tools like ccusage apply a heuristic of approximately 4 characters per token, then multiply by model rates. This estimate tends to slightly overestimate; figures are indicative, not billed.

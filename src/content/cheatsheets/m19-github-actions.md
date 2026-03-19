@@ -1,37 +1,37 @@
 ---
-title: GitHub Actions + Claude Code
-subtitle: Intégrer Claude Code dans les pipelines CI/CD GitHub
+title: "GitHub Actions + Claude Code"
+subtitle: "Integrating Claude Code into GitHub CI/CD pipelines"
 cardNumber: M19
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 119
 ---
 
-## Pattern recommandé : prompt externalisé
+## Recommended pattern: externalized prompt
 
-Le pattern le plus robuste sépare la logique de review de la mécanique du workflow. Le fichier YAML orchestre les déclencheurs et permissions ; le fichier `.github/prompts/code-review.md` contient les critères de review. Modifier les critères ne nécessite pas de toucher au workflow.
+The most robust pattern separates review logic from workflow mechanics. The YAML file orchestrates triggers and permissions; the `.github/prompts/code-review.md` file contains the review criteria. Modifying criteria does not require touching the workflow.
 
 ```
 .github/
 ├── workflows/
-│   └── claude-review.yml    # Mécanique CI
+│   └── claude-review.yml    # CI mechanics
 └── prompts/
-    └── code-review.md       # Critères, protocoles
+    └── code-review.md       # Criteria, protocols
 ```
 
-Cette séparation permet d'itérer sur la qualité des reviews sans risquer de casser le pipeline.
+This separation allows iterating on review quality without risking breaking the pipeline.
 
-## Authentification : OAuth vs API Key
+## Authentication: OAuth vs API Key
 
-| Méthode | Coût par review | Prérequis |
-|---------|----------------|-----------|
-| OAuth token (Plan Max) | ~0$ | Claude GitHub App installée |
-| `ANTHROPIC_API_KEY` | 0,05-0,15$ (Sonnet) | Clé API Anthropic |
+| Method | Cost per review | Prerequisites |
+|--------|----------------|--------------|
+| OAuth token (Max Plan) | ~$0 | Claude GitHub App installed |
+| `ANTHROPIC_API_KEY` | $0.05-0.15 (Sonnet) | Anthropic API key |
 
-L'OAuth via la Claude GitHub App est la solution privilégiée pour les équipes avec un plan Max : zéro coût marginal par review, configuration en un clic.
+OAuth via the Claude GitHub App is the preferred solution for teams on a Max plan: zero marginal cost per review, one-click configuration.
 
-## Workflow minimal commenté
+## Annotated minimal workflow
 
 ```yaml
 on:
@@ -58,19 +58,19 @@ jobs:
           allowed_tools: Read,Glob,Grep
 ```
 
-Le `fetch-depth: 0` est nécessaire pour que Claude ait accès à l'historique git complet et puisse comparer la branche avec main.
+The `fetch-depth: 0` is necessary so Claude has access to the full git history and can compare the branch against main.
 
-## Outils autorisés en CI
+## Allowed tools in CI
 
-En CI, limiter Claude aux outils de lecture uniquement. `Read`, `Glob` et `Grep` couvrent tous les besoins d'une review de code. Ajouter `Write` ou `Bash` crée un risque de modification accidentelle du dépôt pendant l'analyse.
+In CI, limit Claude to read-only tools. `Read`, `Glob` and `Grep` cover all needs of a code review. Adding `Write` or `Bash` creates a risk of accidentally modifying the repository during analysis.
 
-Les outils MCP GitHub (`mcp__github__get_pull_request_diff`, `mcp__github__submit_pending_pull_request_review`) permettent à Claude de poster des commentaires inline sans accès en écriture direct au dépôt.
+GitHub MCP tools (`mcp__github__get_pull_request_diff`, `mcp__github__submit_pending_pull_request_review`) allow Claude to post inline comments without direct write access to the repository.
 
 ## Anti-hallucination protocol
 
-Le principal problème des reviews automatisées : Claude invente des numéros de ligne ou rapporte des issues qu'il n'a pas vérifiées. Le protocol de mitigation consiste à demander explicitement dans le prompt de vérification avant toute assertion.
+The main problem with automated reviews: Claude invents line numbers or reports issues it has not verified. The mitigation protocol consists of explicitly asking in the prompt to verify before any assertion.
 
-Formulation dans `code-review.md` :
+Wording in `code-review.md`:
 
 ```markdown
 Before reporting any issue, verify it with Read or Grep.
@@ -78,17 +78,17 @@ Never cite a line number you have not confirmed.
 Structure output: MUST FIX / SHOULD FIX / CAN SKIP.
 ```
 
-Cette instruction réduit les faux positifs sans complexifier le workflow.
+This instruction reduces false positives without complicating the workflow.
 
-## Trigger on-demand : `/claude-review`
+## On-demand trigger: `/claude-review`
 
-Le `issue_comment` trigger permet à n'importe quel membre de l'équipe de déclencher une review à la demande en tapant `/claude-review` dans un commentaire de PR. Utile pour les PRs complexes où une review automatique à l'ouverture n'aurait pas eu assez de contexte.
+The `issue_comment` trigger allows any team member to trigger a review on demand by typing `/claude-review` in a PR comment. Useful for complex PRs where an automatic review on open would not have had enough context.
 
-La condition `github.event.issue.pull_request != null` filtre les commentaires d'issues ordinaires pour n'activer l'agent que sur les PRs.
+The condition `github.event.issue.pull_request != null` filters ordinary issue comments to activate the agent only on PRs.
 
-## Gestion des échecs
+## Handling failures
 
-Prévoir un job de fallback qui poste un commentaire en cas d'échec du job Claude. Sans fallback, une PR peut rester silencieuse pendant des heures si l'agent plante, sans que l'équipe le sache.
+Provide a fallback job that posts a comment if the Claude job fails. Without a fallback, a PR can remain silent for hours if the agent crashes, without the team knowing.
 
 ```yaml
 - name: Handle review failure

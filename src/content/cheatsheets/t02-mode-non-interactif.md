@@ -1,83 +1,83 @@
 ---
-title: Mode Non-Interactif & Headless
-subtitle: 'Utiliser Claude Code sans interaction humaine : scripts, CI, pipes'
+title: "Non-Interactive & Headless Mode"
+subtitle: "Using Claude Code without human interaction: scripts, CI, pipes"
 cardNumber: T02
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 2
 ---
 
-## Flag de base : `-p`
+## Base flag: `-p`
 
-Le flag `-p` (ou `--print`) active le mode non-interactif. Claude retourne la réponse dans le terminal et quitte immédiatement sans attendre de saisie utilisateur.
+The `-p` flag (or `--print`) activates non-interactive mode. Claude returns the response in the terminal and exits immediately without waiting for user input.
 
 ```bash
-# Prompt direct
-claude -p "Analyse ce fichier et liste les bugs"
+# Direct prompt
+claude -p "Analyze this file and list the bugs"
 
-# Avec pipe stdin (le contenu devient l'entrée)
-git diff | claude -p "Explique ces changements"
-cat error.log | claude -p "Identifie la cause racine"
+# With pipe stdin (content becomes the input)
+git diff | claude -p "Explain these changes"
+cat error.log | claude -p "Identify the root cause"
 ```
 
-## Formats de sortie
+## Output formats
 
-`--output-format` contrôle la structure de la réponse, ce qui est essentiel pour l'intégration dans des scripts.
+`--output-format` controls the response structure, which is essential for integration into scripts.
 
 | Format | Usage |
 |--------|-------|
-| `text` | Lisible, défaut |
-| `json` | Parseable par `jq` |
-| `stream-json` | Streaming temps réel |
+| `text` | Human-readable, default |
+| `json` | Parseable by `jq` |
+| `stream-json` | Real-time streaming |
 
 ```bash
-# Sortie JSON pour parsing automatique
-git status --short | claude -p "Catégorise les changements" \
+# JSON output for automatic parsing
+git status --short | claude -p "Categorize the changes" \
   --output-format json | jq '.categories'
 
-# Stream JSON pour longues opérations
-cat rapport.txt | claude -p "Résume" --output-format stream-json
+# Stream JSON for long operations
+cat report.txt | claude -p "Summarize" --output-format stream-json
 ```
 
-## `--no-stream` et contrôle de flux
+## `--no-stream` and flow control
 
-Par défaut, Claude Code streame la réponse caractère par caractère. `--no-stream` attend la réponse complète avant d'afficher quoi que ce soit, ce qui simplifie les pipes avec des outils qui attendent une entrée complète.
+By default, Claude Code streams the response character by character. `--no-stream` waits for the complete response before displaying anything, which simplifies pipes with tools that expect complete input.
 
 ```bash
-claude -p "Génère un rapport" --no-stream > rapport.md
+claude -p "Generate a report" --no-stream > report.md
 ```
 
-## Usage en CI/CD
+## CI/CD usage
 
-Dans un container isolé, `--dangerously-skip-permissions` supprime toutes les demandes de confirmation. À réserver exclusivement aux environnements sandboxés où Claude ne peut pas accéder à des ressources sensibles.
+In an isolated container, `--dangerously-skip-permissions` suppresses all confirmation requests. Reserve exclusively for sandboxed environments where Claude cannot access sensitive resources.
 
 ```bash
-# GitHub Actions (container isolé)
-claude -p "Lance les tests et corrige les échecs" \
+# GitHub Actions (isolated container)
+claude -p "Run the tests and fix failures" \
   --dangerously-skip-permissions \
   --output-format json
 ```
 
-## Patterns courants
+## Common patterns
 
 ```bash
-# Analyse de logs automatique
-tail -n 200 app.log | claude -p "Alertes critiques uniquement" \
+# Automated log analysis
+tail -n 200 app.log | claude -p "Critical alerts only" \
   --output-format json
 
-# Revue de PR (intégration package.json)
-git diff main...HEAD | claude -p "Revue sécurité, format JSON" \
+# PR review (package.json integration)
+git diff main...HEAD | claude -p "Security review, JSON format" \
   --output-format json > review.json
 ```
 
-## Interactif vs Non-Interactif
+## Interactive vs Non-Interactive
 
-| Aspect | Interactif | Non-Interactif (`-p`) |
-|--------|------------|----------------------|
-| Sortie | Stream UI | stdout brut |
-| Permissions | Demande | Auto ou skip |
-| Usage | Développement | CI, scripts, pipes |
-| Session | Persistante | Unique, sans état |
+| Aspect | Interactive | Non-Interactive (`-p`) |
+|--------|-------------|------------------------|
+| Output | Stream UI | Raw stdout |
+| Permissions | Prompts | Auto or skip |
+| Usage | Development | CI, scripts, pipes |
+| Session | Persistent | Single, stateless |
 
-**Bonne pratique** : limiter la taille du pipe pour éviter de dépasser la fenêtre de contexte. Filtrer avec `head`, `grep` ou `--name-only` avant d'envoyer à Claude.
+**Best practice**: limit pipe size to avoid exceeding the context window. Filter with `head`, `grep` or `--name-only` before sending to Claude.

@@ -1,75 +1,75 @@
 ---
-title: 'Subscription vs API : Patterns de Coût'
-subtitle: Comprendre quand chaque modèle de facturation est avantageux
+title: "Subscription vs API: Cost Patterns"
+subtitle: "Understanding when each billing model is advantageous"
 cardNumber: C11
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 211
 ---
 
-## Deux modèles fondamentalement différents
+## Two fundamentally different models
 
-**Subscription :** vous payez un montant mensuel fixe et consommez dans la limite d'un budget de tokens. Le coût est prévisible, mais le budget est plafonné et les limites sont délibérément opaques.
+**Subscription:** you pay a fixed monthly amount and consume within a token budget limit. The cost is predictable, but the budget is capped and the limits are deliberately opaque.
 
-**API :** facturation au token, sans plafond. Le coût est proportionnel à l'usage. Idéal pour un usage irrégulier ou très élevé, mais sans protection contre les dépassements.
+**API:** per-token billing, no cap. The cost is proportional to usage. Ideal for irregular or very high usage, but without protection against overruns.
 
-La distinction pratique : la subscription favorise les développeurs solo avec un usage quotidien régulier, l'API favorise les équipes, les pipelines CI/CD et les usages à fort volume.
+The practical distinction: subscription favors solo developers with regular daily usage, API favors teams, CI/CD pipelines, and high-volume use cases.
 
-## Comment fonctionnent les limites subscription
+## How subscription limits work
 
-Les subscriptions utilisent un modèle hybride : une fenêtre glissante de 5 heures et un cap hebdomadaire. Les deux s'appliquent simultanément. La facturation est annoncée en "messages" mais correspond en réalité à des tokens, ce qui rend les limites difficiles à anticiper.
+Subscriptions use a hybrid model: a 5-hour rolling window and a weekly cap. Both apply simultaneously. Billing is announced in "messages" but actually corresponds to tokens, making limits difficult to anticipate.
 
-**Point critique : le ratio Opus/Sonnet.** Opus consomme 8 à 10 fois plus de quota que Sonnet pour un travail équivalent. Un utilisateur Max 20x qui utilise Opus intensivement peut épuiser son quota hebdomadaire en 24 à 40 heures de travail réel, malgré un abonnement premium.
+**Critical point: the Opus/Sonnet ratio.** Opus consumes 8 to 10 times more quota than Sonnet for equivalent work. A Max 20x user who uses Opus intensively can exhaust their weekly quota in 24 to 40 hours of real work, despite a premium subscription.
 
-## Stratégies par plan
+## Strategies by plan
 
-| Plan | Recommandation |
+| Plan | Recommendation |
 |------|---------------|
-| Pro | Sonnet uniquement, sessions par batch, éviter le context bloat |
-| Max 5x | Sonnet par défaut, Opus pour l'architecture et le debug complexe |
-| Max 20x | Plus de liberté Opus, mais surveiller la consommation hebdomadaire |
-| API | Haiku pour les tâches mécaniques, Sonnet pour le dev, Opus pour l'audit |
+| Pro | Sonnet only, batch sessions, avoid context bloat |
+| Max 5x | Sonnet by default, Opus for architecture and complex debug |
+| Max 20x | More Opus freedom, but monitor weekly consumption |
+| API | Haiku for mechanical tasks, Sonnet for dev, Opus for audit |
 
-## Le pattern OpusPlan pour économiser
+## The OpusPlan pattern for saving
 
-Sur un budget limité, le pattern le plus efficace consiste à utiliser Opus pour la planification (où la qualité du raisonnement compte), puis Sonnet ou Haiku pour l'exécution mécanique.
+On a limited budget, the most effective pattern is to use Opus for planning (where reasoning quality matters), then Sonnet or Haiku for mechanical execution.
 
 ```bash
-# Phase 1 : planification (Opus)
+# Phase 1: planning (Opus)
 claude --model opus
-"Analyse l'architecture et propose un plan de migration"
+"Analyze the architecture and propose a migration plan"
 
-# Phase 2 : exécution (Sonnet/Haiku)
+# Phase 2: execution (Sonnet/Haiku)
 claude --model sonnet
-"Implémente le plan selon les specs définies"
+"Implement the plan according to the defined specs"
 ```
 
-Ce pattern est automatisé via `/model opusplan`.
+This pattern is automated via `/model opusplan`.
 
-## Monitoring de consommation
+## Consumption monitoring
 
 ```bash
-/cost              # Coût et contexte de la session en cours
-/status            # Modèle + contexte + coût résumé
+/cost              # Cost and context of the current session
+/status            # Model + context + summarized cost
 
-# Outil communautaire pour l'historique cross-sessions
-ccusage            # Vue d'ensemble toutes périodes
-ccusage --today    # Coût du jour
-ccusage --month    # Coût du mois
-ccusage --model-breakdown  # Par modèle
+# Community tool for cross-session history
+ccusage            # Overview all periods
+ccusage --today    # Today's cost
+ccusage --month    # Monthly cost
+ccusage --model-breakdown  # By model
 ```
 
-Anthropic ne fournit pas de métriques temps réel dans l'interface. `ccusage` comble ce manque.
+Anthropic does not provide real-time metrics in the interface. `ccusage` fills this gap.
 
-## Quand l'API gagne
+## When API wins
 
-La subscription atteint ses limites dans trois cas : les équipes où plusieurs développeurs consomment simultanément, les pipelines CI/CD avec un volume de PRs élevé, et les projets avec des sessions longues quotidiennes qui épuisent le budget avant la fin de la semaine. Dans ces contextes, la facturation API (avec Haiku pour les tâches mécaniques) revient souvent moins cher que prévu, surtout avec une stratégie d'escalade progressive.
+Subscription hits its limits in three cases: teams where multiple developers consume simultaneously, CI/CD pipelines with a high PR volume, and projects with long daily sessions that exhaust the budget before the end of the week. In these contexts, API billing (with Haiku for mechanical tasks) often ends up cheaper than expected, especially with a progressive escalation strategy.
 
-## Coûts typiques en API (ordre de grandeur)
+## Typical API costs (order of magnitude)
 
 | Session type | Sonnet | Opus |
 |---|---|---|
 | Bug fix / PR review | ~$0.23 | ~$0.38 |
-| Refactoring d'un module | ~$0.75 | ~$1.25 |
-| Review CI/CD par PR (Haiku) | ~$0.02 | N/A |
+| Module refactoring | ~$0.75 | ~$1.25 |
+| CI/CD review per PR (Haiku) | ~$0.02 | N/A |

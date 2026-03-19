@@ -1,76 +1,76 @@
 ---
-title: TodoWrite vs Tasks API
-subtitle: L'ancien et le nouveau système de gestion des tâches
+title: "TodoWrite vs Tasks API"
+subtitle: "The old and new task management systems"
 cardNumber: M07
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 107
 ---
 
-## Comparaison directe
+## Direct comparison
 
-| Critère | TodoWrite (legacy) | Tasks API (v2.1.16+) |
-|---------|-------------------|---------------------|
-| **Persistance** | Session uniquement | Disque (`~/.claude/tasks/`) |
-| **Multi-session** | Perdu à la fermeture | Survit aux redémarrages |
-| **Dépendances** | Ordre manuel | `blockedBy` natif |
-| **Coordination** | Agent unique | Multi-agents, broadcast |
-| **Statuts** | pending / completed | 4 statuts + métadonnées |
-| **Résumé context** | Perdu au `/compact` | Intact après compaction |
+| Criterion | TodoWrite (legacy) | Tasks API (v2.1.16+) |
+|-----------|-------------------|---------------------|
+| **Persistence** | Session only | Disk (`~/.claude/tasks/`) |
+| **Multi-session** | Lost on close | Survives restarts |
+| **Dependencies** | Manual ordering | Native `blockedBy` |
+| **Coordination** | Single agent | Multi-agent, broadcast |
+| **Statuses** | pending / completed | 4 statuses + metadata |
+| **Context summary** | Lost on `/compact` | Intact after compaction |
 
-## Quand rester sur TodoWrite
+## When to stay on TodoWrite
 
-TodoWrite reste pertinent pour les cas simples : une liste linéaire qui se boucle en moins de dix minutes, sans dépendances complexes, dans une seule session continue. Le setup Tasks API représente un investissement qui ne vaut le coût que si le projet s'étend dans le temps.
+TodoWrite remains relevant for simple cases: a linear list that wraps up in under ten minutes, with no complex dependencies, in a single continuous session. The Tasks API setup represents an investment that only pays off if the project extends over time.
 
-## Quand migrer vers Tasks API
+## When to migrate to Tasks API
 
 ```
-Travail sur plusieurs sessions    → Tasks API obligatoire
-Dépendances entre tâches          → blockedBy natif
-Multi-terminal ou multi-agents    → broadcast en temps réel
-Reprise après /compact            → persistance garantie
+Work across multiple sessions    → Tasks API required
+Dependencies between tasks       → native blockedBy
+Multi-terminal or multi-agents   → real-time broadcast
+Resume after /compact            → guaranteed persistence
 ```
 
-## Activer et désactiver
+## Enable and disable
 
 ```bash
-# Tasks API est activée par défaut depuis v2.1.19
+# Tasks API is enabled by default since v2.1.19
 claude
 
-# Forcer le retour à TodoWrite (rare)
+# Force fallback to TodoWrite (rare)
 CLAUDE_CODE_ENABLE_TASKS=false claude
 
-# Vérifier la configuration actuelle
+# Check current configuration
 env | grep CLAUDE_CODE_ENABLE_TASKS
 ```
 
-## Migrer une liste TodoWrite existante
+## Migrating an existing TodoWrite list
 
-Voici la transformation type d'une liste plate vers une hiérarchie Tasks API.
+Here is a typical transformation from a flat list to a Tasks API hierarchy.
 
-**Avant (TodoWrite) :**
+**Before (TodoWrite):**
 ```
-- [ ] Ajouter l'authentification utilisateur
-- [ ] Hacher les mots de passe
-- [ ] Écrire les tests
+- [ ] Add user authentication
+- [ ] Hash passwords
+- [ ] Write tests
 ```
 
-**Après (Tasks API) :**
+**After (Tasks API):**
 ```bash
-export CLAUDE_CODE_TASK_LIST_ID="mon-projet-auth"
-# Puis dans Claude :
-# TaskCreate parent + enfants avec blockedBy
+export CLAUDE_CODE_TASK_LIST_ID="my-project-auth"
+# Then inside Claude:
+# TaskCreate parent + children with blockedBy
 ```
 
-## Mettre à jour CLAUDE.md
+## Update CLAUDE.md
 
-Quand vous migrez, mettez à jour vos instructions projet pour que Claude utilise automatiquement le bon système. Préciser l'ID de liste attendu dans CLAUDE.md évite les oublis entre sessions.
+When you migrate, update your project instructions so Claude automatically uses the right system. Specifying the expected list ID in CLAUDE.md prevents it from being forgotten between sessions.
 
-## Note sur l'avenir de TodoWrite
+## Note on the future of TodoWrite
 
-TodoWrite continuera à fonctionner, mais la direction d'Anthropic est clairement vers Tasks API. Les nouvelles fonctionnalités de coordination multi-agents sont exclusivement construites sur Tasks API. Migrer maintenant évite une refonte forcée plus tard, sur des projets plus grands.
+TodoWrite will continue to work, but Anthropic's direction is clearly toward the Tasks API. New multi-agent coordination features are built exclusively on the Tasks API. Migrating now avoids a forced refactor later, on larger projects.
 
-## Flag de migration automatique
+## Auto-migration flag
 
-Depuis la v2.1.19, le flag `--task-manage` active automatiquement Tasks API pour toute opération impliquant plus de trois étapes ou deux répertoires distincts. Pratique pour forcer la bonne habitude sans y penser.
+Since v2.1.19, the `--task-manage` flag automatically activates the Tasks API for any operation involving more than three steps or two distinct directories. Handy for enforcing good habits without thinking about it.

@@ -1,63 +1,63 @@
 ---
-title: Surface d'Attaque & Menaces
-subtitle: Comprendre les vecteurs d'attaque spécifiques à Claude Code
+title: "Attack Surface & Threats"
+subtitle: "Understanding the attack vectors specific to Claude Code"
 cardNumber: C08
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 208
 ---
 
-## Les 4 vecteurs principaux
+## The 4 main vectors
 
-Claude Code est un agent avec accès au filesystem, aux commandes Bash et à Internet. Sa surface d'attaque est plus large qu'un simple assistant textuel.
+Claude Code is an agent with access to the filesystem, Bash commands, and the internet. Its attack surface is broader than a simple text assistant.
 
-**Vecteur 1 : Prompt injection via contenu externe.** Quand Claude lit un email, une issue GitHub ou un fichier analysé contenant des instructions malveillantes, il peut les exécuter. L'attaque exploite la confusion entre données et instructions.
+**Vector 1: Prompt injection via external content.** When Claude reads an email, a GitHub issue, or an analyzed file containing malicious instructions, it may execute them. The attack exploits the confusion between data and instructions.
 
-**Vecteur 2 : Exfiltration de secrets via Bash.** Si les permissions sont trop larges, un prompt malveillant peut demander à Claude de lire `.env`, les clés SSH ou les tokens stockés localement, puis d'exfiltrer via une requête HTTP.
+**Vector 2: Secret exfiltration via Bash.** If permissions are too broad, a malicious prompt can ask Claude to read `.env`, SSH keys, or locally stored tokens, then exfiltrate via an HTTP request.
 
-**Vecteur 3 : Supply chain via skills et plugins malveillants.** Une étude Snyk (ToxicSkills, 2026) sur 3 984 skills a trouvé 36,8% de skills avec des failles de sécurité, dont 534 à risque critique. Le "rug pull" est la variante la plus insidieuse : un MCP légitime qui devient malveillant après avoir été approuvé.
+**Vector 3: Supply chain via malicious skills and plugins.** A Snyk study (ToxicSkills, 2026) on 3,984 skills found 36.8% of skills with security flaws, including 534 with critical risk. The "rug pull" is the most insidious variant: a legitimate MCP that becomes malicious after being approved.
 
-**Vecteur 4 : Escalade de privilèges dans les pipelines multi-agents.** Dans une orchestration, un agent compromis peut passer des instructions malveillantes aux agents suivants. Les outputs d'un agent deviennent les inputs de l'autre sans validation intermédiaire.
+**Vector 4: Privilege escalation in multi-agent pipelines.** In an orchestration, a compromised agent can pass malicious instructions to subsequent agents. The outputs of one agent become the inputs of the next without intermediate validation.
 
-## Matrice de risque rapide
+## Quick risk matrix
 
-| Scénario | Risque | Action immédiate |
-|----------|--------|-----------------|
-| Solo dev, repos publics | Moyen | Installer un hook output-scanner |
-| Équipe, codebase sensible | Élevé | Vetting MCPs + hooks injection |
-| Enterprise, production | Critique | ZDR + vérification intégrité |
+| Scenario | Risk | Immediate action |
+|----------|------|-----------------|
+| Solo dev, public repos | Medium | Install an output-scanner hook |
+| Team, sensitive codebase | High | MCP vetting + injection hooks |
+| Enterprise, production | Critical | ZDR + integrity verification |
 
-## CVEs à connaître (sélection 2025-2026)
+## CVEs to know (selection 2025-2026)
 
-| CVE | Sévérité | Résumé |
-|-----|----------|--------|
+| CVE | Severity | Summary |
+|-----|----------|---------|
 | CVE-2025-53109/53110 | High | Sandbox escape filesystem MCP |
-| CVE-2025-54135 | High | RCE via prompt injection dans Cursor |
-| ADVISORY-CC-2026-001 | High | Sandbox bypass, patcher v2.1.34+ |
-| CVE-2026-0755 | Critical (9.8) | RCE dans gemini-mcp-tool (pas de patch) |
+| CVE-2025-54135 | High | RCE via prompt injection in Cursor |
+| ADVISORY-CC-2026-001 | High | Sandbox bypass, patch v2.1.34+ |
+| CVE-2026-0755 | Critical (9.8) | RCE in gemini-mcp-tool (no patch) |
 
-**Action immédiate si vous êtes en v2.1.33 ou antérieur :** mettez à jour vers v2.1.34+ pour corriger le sandbox bypass.
+**Immediate action if you are on v2.1.33 or earlier:** update to v2.1.34+ to fix the sandbox bypass.
 
-## Défense en profondeur
+## Defense in depth
 
-Le principe est simple : chaque couche réduit la probabilité qu'une attaque aboutisse.
+The principle is simple: each layer reduces the probability that an attack succeeds.
 
 ```
-Permissions minimales (settings.json)
-  + Whitelist d'outils par tâche
-    + Lecture des MCPs avant installation
-      + Logs JSONL pour détection post-incident
-        + Sandbox / environnement éphémère
+Minimal permissions (settings.json)
+  + Tool whitelist per task
+    + Reading MCPs before installation
+      + JSONL logs for post-incident detection
+        + Sandbox / ephemeral environment
 ```
 
-**Règle de base sur les permissions :** n'accordez que ce dont la tâche a besoin. Pour une tâche de lecture/analyse, `allowedTools: ["Read", "Grep", "Glob"]`. Pas de Bash, pas de Write.
+**Basic permissions rule:** grant only what the task requires. For a read/analysis task, `allowedTools: ["Read", "Grep", "Glob"]`. No Bash, no Write.
 
-## Audit avec les logs JSONL
+## Audit with JSONL logs
 
-Claude Code écrit tous ses tool calls dans `~/.claude/logs/`. Ces logs JSONL permettent de détecter des comportements anormaux après coup : lectures inattendues de fichiers sensibles, appels réseau non prévus, tentatives de modification hors scope.
+Claude Code writes all its tool calls to `~/.claude/logs/`. These JSONL logs allow detecting abnormal behavior after the fact: unexpected reads of sensitive files, unplanned network calls, modification attempts outside scope.
 
 ```bash
-# Inspecter les tool calls d'une session
+# Inspect tool calls from a session
 cat ~/.claude/logs/session-*.jsonl | jq '.tool_name'
 ```

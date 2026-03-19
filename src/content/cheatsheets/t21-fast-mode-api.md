@@ -1,8 +1,8 @@
 ---
-title: Fast Mode & API Breaking Changes
-subtitle: Le mode rapide et les changements API majeurs à connaître
+title: "Fast Mode & API Breaking Changes"
+subtitle: "Fast mode and the major API changes you need to know"
 cardNumber: T21
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 21
@@ -10,30 +10,30 @@ order: 21
 
 ## Fast Mode
 
-Fast Mode produit des réponses **2.5x plus rapides** en échange d'un coût 6x supérieur. Le modèle sous-jacent reste Opus 4.6, pas un modèle différent : c'est une allocation de ressources prioritaire, pas une simplification du raisonnement.
+Fast Mode produces responses **2.5x faster** in exchange for a 6x higher cost. The underlying model remains Opus 4.6, not a different model: this is priority resource allocation, not simplified reasoning.
 
-| Paramètre | Standard | Fast Mode |
+| Parameter | Standard | Fast Mode |
 |-----------|----------|-----------|
-| Modèle | Opus 4.6 | Opus 4.6 |
-| Vitesse | Référence | 2.5x plus rapide |
-| Prix input | $5/MTok | $30/MTok |
-| Prix output | $25/MTok | $150/MTok |
+| Model | Opus 4.6 | Opus 4.6 |
+| Speed | Reference | 2.5x faster |
+| Input price | $5/MTok | $30/MTok |
+| Output price | $25/MTok | $150/MTok |
 
-**En CLI :** `/fast` active le mode pour la session courante.
+**In CLI:** `/fast` activates the mode for the current session.
 
-## Quand Utiliser Fast Mode
+## When to Use Fast Mode
 
-Fast Mode est rentable quand le temps de réponse a une valeur métier directe : démo en direct, paire de programmation intensive, génération de code mécanique en boucle rapide. Ce n'est pas un remplacement de Sonnet pour les tâches simples, Sonnet reste 10x moins cher.
+Fast Mode is worthwhile when response time has direct business value: live demo, intensive pair programming, mechanical code generation in a tight loop. It is not a replacement for Sonnet on simple tasks — Sonnet remains 10x cheaper.
 
-**Pertinent :**
-- Génération de boilerplate répétitif en session interactive
-- Reformatage ou conversion de code à grande échelle
-- Contexte de démo où la latence visible impacte l'expérience
+**Relevant:**
+- Repetitive boilerplate generation in an interactive session
+- Reformatting or large-scale code conversion
+- Demo context where visible latency impacts the experience
 
-**Non pertinent :**
-- Tâches de fond ou asynchrones (la vitesse ne compte pas)
-- Tâches simples couvrable par Sonnet ou Haiku
-- Budgets API serrés
+**Not relevant:**
+- Background or asynchronous tasks (speed does not matter)
+- Simple tasks covered by Sonnet or Haiku
+- Tight API budgets
 
 ## Fast Mode via API (Opus 4.6)
 
@@ -48,40 +48,40 @@ response = client.messages.create(
 )
 ```
 
-Le header beta est obligatoire. Sans lui, le paramètre `speed` est ignoré silencieusement.
+The beta header is mandatory. Without it, the `speed` parameter is silently ignored.
 
-## Breaking Change : `assistant-prefill` Supprimé
+## Breaking Change: `assistant-prefill` Removed
 
-Opus 4.6 a retiré le support de l'**assistant prefill** : la technique qui permettait de pré-remplir la réponse de Claude pour guider son format de sortie.
+Opus 4.6 removed support for **assistant prefill**: the technique that allowed pre-filling Claude's response to guide its output format.
 
 ```python
-# Avant (ne fonctionne plus sur Opus 4.6)
+# Before (no longer works on Opus 4.6)
 messages=[
-    {"role": "user", "content": "Réponds en JSON"},
+    {"role": "user", "content": "Respond in JSON"},
     {"role": "assistant", "content": "{"}  # prefill
 ]
 
-# Après — utiliser le system prompt
+# After — use the system prompt
 system="Always respond with valid JSON only."
 ```
 
-**Impact :** tout pipeline API utilisant `assistant-prefill` sur Opus 4.6 doit migrer vers des instructions explicites dans le system prompt ou des exemples few-shot.
+**Impact:** any API pipeline using `assistant-prefill` on Opus 4.6 must migrate to explicit instructions in the system prompt or few-shot examples.
 
-## Paramètre `effort` (API)
+## The `effort` Parameter (API)
 
-Le paramètre `effort` remplace `budget_tokens` sur Opus 4.6 pour contrôler la profondeur de raisonnement.
+The `effort` parameter replaces `budget_tokens` on Opus 4.6 for controlling reasoning depth.
 
 ```python
 output_config={"effort": "medium"}  # low|medium|high|max
 ```
 
-`budget_tokens` reste fonctionnel sur Opus 4.5 mais est déprécié sur 4.6. Migrer vers `effort` pour les nouveaux pipelines.
+`budget_tokens` remains functional on Opus 4.5 but is deprecated on 4.6. Migrate to `effort` for new pipelines.
 
-## Résumé des Changements Opus 4.6
+## Summary of Opus 4.6 Changes
 
-| Fonctionnalité | Statut |
-|---------------|--------|
-| `assistant-prefill` | Supprimé |
-| `budget_tokens` | Déprécié (remplacé par `effort`) |
-| Fast Mode | Nouveau (`speed: "fast"`) |
-| Adaptive Thinking | Nouveau (remplace thinking opt-in) |
+| Feature | Status |
+|---------|--------|
+| `assistant-prefill` | Removed |
+| `budget_tokens` | Deprecated (replaced by `effort`) |
+| Fast Mode | New (`speed: "fast"`) |
+| Adaptive Thinking | New (replaces opt-in thinking) |

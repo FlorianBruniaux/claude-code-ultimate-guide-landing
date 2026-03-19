@@ -1,59 +1,59 @@
 ---
-title: Token Optimization
-subtitle: Réduire la consommation de tokens sans perdre en qualité
+title: "Token Optimization"
+subtitle: "Reducing token consumption without losing quality"
 cardNumber: T20
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 20
 ---
 
-## RTK : Filtrage en Amont
+## RTK: Upstream Filtering
 
-RTK (Rust Token Killer) intercepte les outputs de commandes **avant** qu'ils entrent dans le contexte de Claude. Ce n'est pas un résumé post-hoc, c'est un filtre qui élimine le bruit structurellement redondant.
+RTK (Rust Token Killer) intercepts command outputs **before** they enter Claude's context. It is not a post-hoc summary, it is a filter that eliminates structurally redundant noise.
 
 ```bash
 # Installation
 brew install rtk-ai/tap/rtk
-# ou : cargo install rtk
+# or: cargo install rtk
 
-# Initialisation dans un projet (pose le hook automatiquement)
+# Initialize in a project (sets up the hook automatically)
 rtk init
 ```
 
-## Économies Mesurées
+## Measured Savings
 
-| Commande | Sans RTK | Avec RTK | Réduction |
-|----------|----------|----------|-----------|
-| `git log` | 13 994 chars | 1 076 chars | **92%** |
+| Command | Without RTK | With RTK | Reduction |
+|---------|------------|---------|-----------|
+| `git log` | 13,994 chars | 1,076 chars | **92%** |
 | `git status` | 100 chars | 24 chars | **76%** |
-| `vitest run` | ~50 000 chars | ~5 000 chars | **90%** |
-| `pnpm list` | ~8 000 chars | ~2 400 chars | **70%** |
+| `vitest run` | ~50,000 chars | ~5,000 chars | **90%** |
+| `pnpm list` | ~8,000 chars | ~2,400 chars | **70%** |
 
-Une session de 30 minutes avec 10-15 commandes git passe de ~150K à ~41K tokens, soit 72% d'économie sur ce poste seul.
+A 30-minute session with 10-15 git commands drops from ~150K to ~41K tokens, a 72% reduction on that item alone.
 
-## Commandes RTK Essentielles
+## Essential RTK Commands
 
 ```bash
-rtk git status        # Git condensé
-rtk git log           # Log sans bruit
-rtk cargo test        # Tests Rust filtrés
-rtk vitest run        # Tests JS condensés
-rtk gh pr view 123    # PR GitHub optimisé
-rtk gain              # Dashboard d'économies
+rtk git status        # Condensed git
+rtk git log           # Clean log output
+rtk cargo test        # Filtered Rust tests
+rtk vitest run        # Condensed JS tests
+rtk gh pr view 123    # Optimized GitHub PR
+rtk gain              # Savings dashboard
 ```
 
-## Compact : Libérer le Contexte
+## Compact: Freeing Up Context
 
-`/compact` résume l'historique de la conversation et libère environ 40-50% du contexte utilisé, sans perdre le fil de la session. À utiliser proactivement à 70% d'utilisation, pas en urgence à 90%.
+`/compact` summarizes the conversation history and frees roughly 40-50% of used context, without losing the thread of the session. Use it proactively at 70% usage, not as an emergency measure at 90%.
 
 ```
-/compact              # Résumer la session en cours
+/compact              # Summarize the current session
 ```
 
-La différence avec `/clear` : compact conserve la continuité de la session, clear repart de zéro.
+The difference from `/clear`: compact preserves session continuity, clear starts from scratch.
 
-## `.claudeignore` : Exclure le Bruit
+## `.claudeignore`: Excluding Noise
 
 ```
 node_modules/
@@ -63,24 +63,24 @@ dist/
 coverage/
 ```
 
-Sans ce fichier, Claude peut lire des milliers de fichiers non pertinents lors d'une recherche globale, consommant du contexte inutilement.
+Without this file, Claude may read thousands of irrelevant files during a global search, consuming context unnecessarily.
 
-## Règles de Prompt Efficaces
+## Efficient Prompt Rules
 
-**Cibler, pas charger :**
-- "Check the `login` function in `auth.ts:45-60`" plutôt que "Check auth.ts for issues"
-- Référencer des symboles (`calculateTotal`) plutôt que des fichiers entiers
-- Éviter de coller de gros JSON ou logs bruts dans le prompt
+**Target, don't load:**
+- "Check the `login` function in `auth.ts:45-60`" rather than "Check auth.ts for issues"
+- Reference symbols (`calculateTotal`) rather than entire files
+- Avoid pasting large JSON blobs or raw logs into the prompt
 
-**Ce qui consomme le plus :**
+**What consumes the most:**
 
-| Action | Tokens estimés |
-|--------|---------------|
-| Lecture d'un gros fichier (2000 lignes) | ~5K+ |
-| Appel MCP (Serena, Context7) | ~2K par appel |
-| Long conversation sans /compact | Accumulation |
-| Tests avec output complet non filtré | 3K-10K |
+| Action | Estimated tokens |
+|--------|----------------|
+| Reading a large file (2000 lines) | ~5K+ |
+| MCP call (Serena, Context7) | ~2K per call |
+| Long conversation without /compact | Accumulation |
+| Tests with full unfiltered output | 3K-10K |
 
-## Stratégie Combinée
+## Combined Strategy
 
-RTK réduit le coût des commandes bash (préventif). `/compact` libère le contexte en cours de session (curatif). `.claudeignore` évite les lectures inutiles (structurel). Ces trois leviers sont complémentaires et s'appliquent en parallèle.
+RTK reduces the cost of bash commands (preventive). `/compact` frees up context mid-session (curative). `.claudeignore` avoids unnecessary reads (structural). These three levers are complementary and apply in parallel.

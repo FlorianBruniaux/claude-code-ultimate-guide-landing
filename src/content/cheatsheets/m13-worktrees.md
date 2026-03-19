@@ -1,90 +1,90 @@
 ---
-title: Worktrees
-subtitle: Travailler en parallèle sur plusieurs branches sans changer de répertoire
+title: "Worktrees"
+subtitle: "Work in parallel on multiple branches without switching directories"
 cardNumber: M13
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 113
 ---
 
-## Principe
+## Principle
 
-Un worktree git crée un second (ou troisième) répertoire de travail à partir du même dépôt, chacun checké sur une branche distincte. Pas de `git stash`, pas de changement de branche — deux terminaux, deux contextes, zéro friction entre eux.
+A git worktree creates a second (or third) working directory from the same repository, each checked out on a distinct branch. No `git stash`, no branch switching — two terminals, two contexts, zero friction between them.
 
-Disponible depuis Git 2.5.0 (2015), nativement compatible avec Claude Code.
+Available since Git 2.5.0 (2015), natively compatible with Claude Code.
 
-## Commandes essentielles
+## Essential commands
 
 ```bash
-# Créer un worktree sur une branche existante ou nouvelle
-git worktree add ../monprojet-feature feature/auth
-git worktree add ../monprojet-hotfix -b hotfix/login-bug
+# Create a worktree on an existing or new branch
+git worktree add ../myproject-feature feature/auth
+git worktree add ../myproject-hotfix -b hotfix/login-bug
 
-# Lister tous les worktrees actifs
+# List all active worktrees
 git worktree list
 
-# Nettoyer après merge
-git worktree remove ../monprojet-hotfix
-git worktree prune   # Supprimer les références obsolètes
+# Clean up after merge
+git worktree remove ../myproject-hotfix
+git worktree prune   # Remove stale references
 ```
 
-## Pattern Claude Code en parallèle
+## Parallel Claude Code pattern
 
 ```bash
-# Terminal 1 : feature principale
-cd ../monprojet-feature
+# Terminal 1: main feature
+cd ../myproject-feature
 claude
-> "Implémente l'authentification JWT"
+> "Implement JWT authentication"
 
-# Terminal 2 : hotfix urgent (simultané)
-cd ../monprojet-hotfix
+# Terminal 2: urgent hotfix (simultaneous)
+cd ../myproject-hotfix
 claude
-> "Corrige le bug de timeout sur Safari"
+> "Fix the timeout bug on Safari"
 ```
 
-Chaque instance de Claude indexe son propre worktree et maintient un contexte indépendant. Les deux sessions tournent en parallèle sans interférence.
+Each Claude instance indexes its own worktree and maintains an independent context. Both sessions run in parallel without interference.
 
-## Contexte Claude Code dans les worktrees
+## Claude Code context in worktrees
 
-| Fichier | Portée |
-|---------|--------|
-| `~/.claude/CLAUDE.md` | Global, partagé par tous les worktrees |
-| `CLAUDE.md` (racine repo) | Projet, commité, partagé |
-| `.claude/CLAUDE.md` (dans le worktree) | Local au worktree uniquement |
+| File | Scope |
+|------|-------|
+| `~/.claude/CLAUDE.md` | Global, shared by all worktrees |
+| `CLAUDE.md` (repo root) | Project, committed, shared |
+| `.claude/CLAUDE.md` (inside the worktree) | Local to the worktree only |
 
-Un worktree peut avoir sa propre configuration `.claude/` pour des conventions spécifiques à la branche.
+A worktree can have its own `.claude/` configuration for branch-specific conventions.
 
-## Gestion des dépendances
+## Dependency management
 
-La principale limitation : `node_modules` ou `vendor/` ne sont pas partagés automatiquement. Chaque worktree a besoin de ses dépendances, ce qui peut prendre de l'espace disque et du temps.
+The main limitation: `node_modules` or `vendor/` are not shared automatically. Each worktree needs its own dependencies, which can take disk space and time.
 
-**Solution recommandée** — symlinker `node_modules` depuis le worktree principal :
+**Recommended solution** — symlink `node_modules` from the main worktree:
 
 ```bash
-cd ../monprojet-feature
-ln -s ../monprojet/node_modules node_modules
+cd ../myproject-feature
+ln -s ../myproject/node_modules node_modules
 ```
 
-La commande `/git-worktree` (custom command) le fait automatiquement. Utiliser `--isolated` quand les dépendances doivent différer.
+The `/git-worktree` custom command does this automatically. Use `--isolated` when dependencies must differ.
 
-## Quand utiliser les worktrees
+## When to use worktrees
 
-Adapté pour : plusieurs features en parallèle, comparaison d'approches, revue de code pendant le développement, builds CI longs pendant qu'on continue à coder.
+Suited for: multiple features in parallel, comparing approaches, code review during development, long CI builds while continuing to code.
 
-Pas adapté pour : changements de branches simples et rapides, équipes non familières avec l'outil (ajoute de la complexité opérationnelle), espace disque limité.
+Not suited for: simple and quick branch switches, teams unfamiliar with the tool (adds operational complexity), limited disk space.
 
-## Alias shell pour navigation rapide
+## Shell aliases for quick navigation
 
 ```bash
-# Dans ~/.zshrc
-alias wa="cd ../monprojet-feature-a"
-alias wb="cd ../monprojet-feature-b"
-alias wm="cd ../monprojet"   # Main worktree
+# In ~/.zshrc
+alias wa="cd ../myproject-feature-a"
+alias wb="cd ../myproject-feature-b"
+alias wm="cd ../myproject"   # Main worktree
 ```
 
-Pattern utilisé par l'équipe Claude Code en interne pour naviguer instantanément entre worktrees actifs.
+Pattern used by the Claude Code team internally to navigate instantly between active worktrees.
 
-## Nettoyage après merge
+## Cleanup after merge
 
-Après merge de la branche, supprimer le worktree pour libérer l'espace. `git worktree prune` nettoie les références aux worktrees supprimés manuellement (dossier effacé sans passer par `git worktree remove`).
+After merging the branch, remove the worktree to free up space. `git worktree prune` cleans references to worktrees that were manually deleted (folder removed without going through `git worktree remove`).

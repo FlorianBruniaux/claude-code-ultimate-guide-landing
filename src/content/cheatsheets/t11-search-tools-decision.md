@@ -1,97 +1,97 @@
 ---
-title: Search Tools Decision Tree
-subtitle: Choisir entre Glob, Grep, Read, Task et Bash selon le contexte
+title: "Search Tools Decision Tree"
+subtitle: "Choosing between Glob, Grep, Read, Task and Bash based on context"
 cardNumber: T11
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 11
 ---
 
-## Les 5 outils de recherche natifs
+## The 5 native search tools
 
-Claude Code propose 5 outils distincts pour trouver et lire des informations dans un projet. Chacun a un rôle précis, et les mélanger sans stratégie coûte des tokens inutilement.
+Claude Code offers 5 distinct tools to find and read information in a project. Each has a precise role, and mixing them without a strategy wastes tokens unnecessarily.
 
-| Outil | Rôle | Coût tokens |
-|-------|------|-------------|
-| `Glob` | Trouver des fichiers par pattern | Faible |
-| `Grep` | Chercher du contenu par regex | Faible |
-| `Read` | Lire un fichier entier ou partiel | Élevé |
-| `Task` | Exploration large, multi-fichiers | Très élevé |
-| `Bash` | Commandes système, cas non couverts | Variable |
+| Tool | Role | Token cost |
+|------|------|------------|
+| `Glob` | Find files by pattern | Low |
+| `Grep` | Search content by regex | Low |
+| `Read` | Read a full or partial file | High |
+| `Task` | Broad, multi-file exploration | Very high |
+| `Bash` | System commands, uncovered cases | Variable |
 
-## Glob : fichiers par pattern
+## Glob: files by pattern
 
-Glob retourne une liste de chemins sans lire leur contenu. C'est l'outil le plus rapide pour localiser des fichiers avant toute autre opération.
+Glob returns a list of paths without reading their content. It is the fastest tool for locating files before any other operation.
 
 ```
-Exemples de patterns :
-*.ts              → tous les .ts à la racine
-src/**/*.tsx      → tous les .tsx dans src/
-**/*.test.ts      → tous les fichiers de test
+Pattern examples:
+*.ts              → all .ts files at root
+src/**/*.tsx      → all .tsx files in src/
+**/*.test.ts      → all test files
 ```
 
-**Règle d'usage** : utiliser Glob en premier pour réduire le périmètre, puis Grep ou Read sur la liste obtenue.
+**Usage rule**: use Glob first to narrow the scope, then Grep or Read on the resulting list.
 
-## Grep : contenu par regex
+## Grep: content by regex
 
-Grep utilise ripgrep sous le capot, ce qui le rend très rapide (~20ms sur des codebases moyens). Il lit partiellement les fichiers pour extraire uniquement les lignes correspondantes, sans charger tout le contenu.
+Grep uses ripgrep under the hood, making it very fast (~20ms on medium codebases). It reads files partially to extract only the matching lines, without loading the full content.
 
 ```bash
-# Chercher une fonction par nom exact
+# Find a function by exact name
 Grep "authenticate" --type ts
 
-# Chercher avec contexte (3 lignes autour)
+# Search with context (3 lines around)
 Grep "validateJWT" -A 3
 ```
 
-Grep est suffisant pour 90% des recherches de texte exact. Ne pas escalader vers Task ou Bash si la pattern est connue.
+Grep is sufficient for 90% of exact text searches. Do not escalate to Task or Bash if the pattern is known.
 
-## Read : lecture ciblée
+## Read: targeted reading
 
-Read charge un fichier entier ou une plage de lignes via `offset` et `limit`. Sur les gros fichiers, il tronque automatiquement à 2000 lignes.
+Read loads a full file or a line range via `offset` and `limit`. On large files, it automatically truncates at 2000 lines.
 
 ```
-# Lire les lignes 50 à 120 d'un fichier
+# Read lines 50 to 120 of a file
 Read("auth.service.ts", offset=50, limit=70)
 ```
 
-Toujours préférer un Read ciblé avec offset/limit plutôt qu'un Read complet sur un fichier de plusieurs centaines de lignes.
+Always prefer a targeted Read with offset/limit over a full Read on a file with several hundred lines.
 
-## Task : exploration large
+## Task: broad exploration
 
-L'outil Task spawne un sous-agent avec son propre contexte isolé. C'est la bonne option quand on ne sait pas où chercher, que le périmètre est vaste, ou que l'exploration nécessite plusieurs fichiers en parallèle.
+The Task tool spawns a sub-agent with its own isolated context. It is the right option when you do not know where to look, the scope is wide, or exploration requires multiple files in parallel.
 
-**Coût** : chaque sous-agent ouvre un nouveau contexte, ce qui représente un overhead significatif. À réserver aux tâches qui le justifient réellement.
+**Cost**: each sub-agent opens a new context, which represents a significant overhead. Reserve it for tasks that truly justify it.
 
-## Bash : l'adaptateur universel
+## Bash: the universal adapter
 
-Bash couvre les cas que les 4 autres outils ne savent pas gérer directement : commandes git, appels système, pipes complexes, outils CLI tiers.
+Bash covers cases the other 4 tools cannot handle directly: git commands, system calls, complex pipes, third-party CLI tools.
 
 ```bash
-# Cas d'usage légitimes pour Bash
+# Legitimate use cases for Bash
 git log --oneline -20
 find . -name "*.lock" -mtime -1
 wc -l src/**/*.ts
 ```
 
-## Arbre de décision
+## Decision tree
 
 ```
-Je cherche des fichiers par nom/extension
+Looking for files by name/extension
   → Glob
 
-Je cherche du texte/code dont je connais le pattern
+Looking for text/code and know the pattern
   → Grep
 
-Je veux lire un fichier identifié
-  → Read (avec offset/limit si fichier long)
+Want to read an identified file
+  → Read (with offset/limit for long files)
 
-Je ne sais pas où chercher, périmètre large
-  → Task (sous-agent)
+Do not know where to look, broad scope
+  → Task (sub-agent)
 
-Aucun des 4 outils ne suffit
+None of the 4 tools is sufficient
   → Bash
 ```
 
-**Principe fondamental** : Glob et Grep avant d'ouvrir des fichiers avec Read. Task uniquement quand le périmètre est inconnu.
+**Core principle**: Glob and Grep before opening files with Read. Task only when the scope is unknown.

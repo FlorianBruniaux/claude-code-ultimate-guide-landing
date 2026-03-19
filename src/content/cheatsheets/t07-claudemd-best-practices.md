@@ -1,76 +1,76 @@
 ---
-title: CLAUDE.md Best Practices
-subtitle: Écrire des instructions efficaces que Claude lit à chaque session
+title: "CLAUDE.md Best Practices"
+subtitle: "Writing effective instructions that Claude reads every session"
 cardNumber: T07
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 7
 ---
 
-## Ce qu'il faut inclure
+## What to include
 
-Le CLAUDE.md efficace contient trois blocs essentiels : la stack technique, les commandes de build/test, et les conventions critiques. Tout ce que Claude peut déduire du code lui-même (structure de dossiers, framework détecté, package manager) n'a pas besoin d'être documenté.
+An effective CLAUDE.md contains three essential blocks: the tech stack, build/test commands, and critical conventions. Anything Claude can infer from the code itself (folder structure, detected framework, package manager) does not need to be documented.
 
 ```markdown
 ## Stack
 Next.js 14, TypeScript, PostgreSQL/Prisma, pnpm
 
-## Commandes
-- `pnpm dev`   — démarrer le serveur
-- `pnpm test`  — lancer les tests
-- `pnpm build` — build production
+## Commands
+- `pnpm dev`   — start the server
+- `pnpm test`  — run tests
+- `pnpm build` — production build
 
-## Conventions critiques
-- Toujours pnpm, jamais npm ni yarn
-- Composants fonctionnels uniquement
-- Fichiers kebab-case (mon-composant.tsx)
+## Critical conventions
+- Always pnpm, never npm or yarn
+- Functional components only
+- kebab-case files (my-component.tsx)
 ```
 
-## Ce qu'il ne faut PAS inclure
+## What NOT to include
 
-| A éviter | Raison |
-|----------|--------|
-| Documentation narrative longue | Dilue les règles critiques |
-| Contexte historique ("En 2023 on a décidé...") | N'aide pas Claude à agir |
-| Références à des fichiers entiers | Utiliser `@chemin/fichier` à la place |
-| Règles que Claude respecte déjà | Bruit inutile, coût en tokens |
+| Avoid | Reason |
+|-------|--------|
+| Long narrative documentation | Dilutes critical rules |
+| Historical context ("In 2023 we decided...") | Does not help Claude act |
+| References to entire files | Use `@path/file` instead |
+| Rules Claude already follows | Unnecessary noise, token cost |
 
-## Taille recommandée
+## Recommended size
 
-Garder CLAUDE.md entre 4 et 8 KB au total (tous niveaux combinés). Les fichiers dépassant 16K tokens dégradent la cohérence du modèle. Boris Cherny (créateur de Claude Code) maintient un CLAUDE.md de 2,5K tokens pour son équipe, capturant les conventions sur plusieurs mois d'usage réel.
+Keep CLAUDE.md between 4 and 8 KB total (all levels combined). Files exceeding 16K tokens degrade model consistency. Boris Cherny (creator of Claude Code) maintains a 2.5K-token CLAUDE.md for his team, capturing conventions built up over months of real usage.
 
-**Règle pratique** : si Claude fait la même erreur deux fois, ajouter la règle. Ne pas tout documenter préventivement.
+**Practical rule**: if Claude makes the same mistake twice, add the rule. Do not document everything preemptively.
 
-## Structure hiérarchique
+## Hierarchical structure
 
 ```
-~/.claude/CLAUDE.md            (global, tous projets)
-/projet/CLAUDE.md              (projet, commité)
-/projet/.claude/CLAUDE.md      (local, gitignore)
+~/.claude/CLAUDE.md            (global, all projects)
+/project/CLAUDE.md             (project, committed)
+/project/.claude/CLAUDE.md     (local, gitignore)
 ```
 
-Dans un monorepo, Claude charge le CLAUDE.md racine puis fusionne le CLAUDE.md du sous-dossier actif. Les règles enfants complètent les règles parentes sans les effacer.
+In a monorepo, Claude loads the root CLAUDE.md then merges the CLAUDE.md from the active subfolder. Child rules complement parent rules without overriding them.
 
-## Import explicite avec @
+## Explicit imports with @
 
 ```markdown
-# Dans CLAUDE.md
+# In CLAUDE.md
 @docs/conventions/coding-standards.md
 @docs/conventions/architecture.md
 ```
 
-Les fichiers importés avec `@chemin` se chargent à la demande, uniquement quand ils sont référencés. Ils ne consomment des tokens qu'au moment de leur utilisation, contrairement aux fichiers dans `.claude/rules/` qui chargent systématiquement au démarrage.
+Files imported with `@path` are loaded on demand, only when referenced. They consume tokens at the moment of use, unlike files in `.claude/rules/` which load systematically at startup.
 
-## Architecture modulaire recommandée
+## Recommended modular architecture
 
 ```
 .claude/
-├── CLAUDE.md           (index, < 100 lignes)
+├── CLAUDE.md           (index, < 100 lines)
 └── rules/
-    ├── testing.md      (seuils de couverture)
-    ├── security.md     (invariants de sécurité)
-    └── api.md          (conventions REST)
+    ├── testing.md      (coverage thresholds)
+    ├── security.md     (security invariants)
+    └── api.md          (REST conventions)
 ```
 
-CLAUDE.md reste lisible d'un coup d'oeil. Les règles détaillées vivent dans `.claude/rules/`, chargées automatiquement à chaque session.
+CLAUDE.md stays readable at a glance. Detailed rules live in `.claude/rules/`, loaded automatically every session.

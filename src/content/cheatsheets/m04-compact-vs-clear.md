@@ -1,82 +1,82 @@
 ---
-title: Compact vs Clear
-subtitle: Quand résumer et quand réinitialiser le contexte
+title: "Compact vs Clear"
+subtitle: "When to summarize and when to reset the context"
 cardNumber: M04
-category: Méthodologie
+category: Methodology
 difficulty: beginner
 guideVersion: 3.32.1
 order: 104
 ---
 
-## Les Deux Commandes
+## The Two Commands
 
 | | `/compact` | `/clear` |
 |--|-----------|---------|
-| Historique | Résumé conservé | Perdu |
-| Fil de session | Maintenu | Rompu |
-| Libération contexte | ~40-50% | 100% |
-| Quand utiliser | En cours de tâche | Changement de sujet |
+| History | Preserved as summary | Lost |
+| Session thread | Maintained | Broken |
+| Context freed | ~40-50% | 100% |
+| When to use | Mid-task | Topic change |
 
-La distinction fondamentale : `/compact` compresse sans couper le fil, `/clear` repart de zéro. Aucun des deux n'est meilleur dans l'absolu, le choix dépend de la situation.
+The fundamental distinction: `/compact` compresses without cutting the thread, `/clear` starts from scratch. Neither is universally better, the choice depends on the situation.
 
-## Zones de Contexte
+## Context Zones
 
 ```
-0-50%   Travailler librement
-50-75%  Être sélectif sur les fichiers chargés
-75-90%  /compact maintenant (pas en urgence)
-90%+    /clear si la session est mal engagée
-        ou /compact en dernier recours
+0-50%   Work freely
+50-75%  Be selective about loaded files
+75-90%  /compact now (not in a hurry)
+90%+    /clear if the session is going badly
+        or /compact as a last resort
 ```
 
-L'erreur classique : attendre 90% pour faire `/compact`. À ce stade, Claude commence à oublier des instructions et la qualité des réponses baisse. 75% est le bon seuil.
+The classic mistake: waiting until 90% to run `/compact`. At that point, Claude starts forgetting instructions and response quality drops. 75% is the right threshold.
 
-## Quand Utiliser `/compact`
+## When to Use `/compact`
 
-**Situations idéales :**
-- Tâche en cours avec contexte historique utile
-- Session longue sur un même module ou feature
-- Vous avez besoin de vous souvenir des décisions prises
+**Ideal situations:**
+- Task in progress with useful historical context
+- Long session on the same module or feature
+- You need to remember decisions made
 
 ```
 /compact
 ```
 
-Claude résume l'historique, conserve les éléments critiques, et libère 40-50% du contexte utilisé. Le résumé devient la nouvelle "mémoire de session".
+Claude summarizes the history, preserves critical elements, and frees 40-50% of used context. The summary becomes the new "session memory".
 
-## Quand Utiliser `/clear`
+## When to Use `/clear`
 
-**Situations idéales :**
-- Changement complet de sujet ou de projet
-- Contexte pollué par de nombreuses erreurs et tentatives ratées
-- Session mal engagée qui génère des incohérences
+**Ideal situations:**
+- Complete change of topic or project
+- Context polluted by many errors and failed attempts
+- Session going badly, generating inconsistencies
 
 ```
 /clear
 ```
 
-Tout le contexte est effacé. Repartir avec un prompt ciblé et le fichier de contexte minimal nécessaire.
+All context is erased. Start over with a focused prompt and the minimal necessary context file.
 
-## "Summarize from Here" : La Troisième Option
+## "Summarize from Here": The Third Option
 
-Via `/rewind` (ou `Esc + Esc`), on peut sélectionner un point précis dans l'historique et choisir "Summarize from here". Claude résume uniquement depuis ce point, en conservant le contexte antérieur intact.
+Via `/rewind` (or `Esc + Esc`), you can select a specific point in the history and choose "Summarize from here". Claude summarizes only from that point, keeping prior context intact.
 
 ```
-Esc + Esc → sélectionner un checkpoint → "Summarize from here"
+Esc + Esc → select a checkpoint → "Summarize from here"
 ```
 
-Plus précis que `/compact` global, utile quand seule la fin de la session est verbeuse.
+More precise than global `/compact`, useful when only the end of the session is verbose.
 
-## Comparaison Rapide
+## Quick Comparison
 
-| Situation | Commande |
+| Situation | Command |
 |-----------|---------|
-| Session longue, même tâche, 75%+ | `/compact` |
-| Nouveaux sujets après une session dense | `/clear` |
-| Fin de session verbeuse à nettoyer | Rewind → Summarize |
-| Contexte 70-90%, tâche en cours | `/compact` |
-| Contexte 90%+, session mal engagée | `/clear` |
+| Long session, same task, 75%+ | `/compact` |
+| New topics after a dense session | `/clear` |
+| Verbose end of session to clean up | Rewind → Summarize |
+| Context 70-90%, task in progress | `/compact` |
+| Context 90%+, session going badly | `/clear` |
 
-## Ce que `/compact` NE Conserve PAS
+## What `/compact` Does NOT Preserve
 
-Le résumé généré par `/compact` est une synthèse. Il peut simplifier des nuances techniques ou des décisions implicites. Après un compact, vérifier que les éléments critiques sont encore accessibles avant de poursuivre une implémentation complexe.
+The summary generated by `/compact` is a synthesis. It may simplify technical nuances or implicit decisions. After a compact, verify that critical elements are still accessible before continuing a complex implementation.

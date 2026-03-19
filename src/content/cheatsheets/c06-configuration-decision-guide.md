@@ -1,37 +1,37 @@
 ---
-title: Configuration Decision Guide
-subtitle: Quel mécanisme de configuration utiliser selon la situation
+title: "Configuration Decision Guide"
+subtitle: "Which configuration mechanism to use based on the situation"
 cardNumber: C06
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 206
 ---
 
-## Le problème des configurations fragmentées
+## The fragmented configuration problem
 
-56% des équipes n'utilisent pas de configuration projet partagée pour Claude Code. Chaque développeur configure son environnement localement, les conventions dérivent, et personne ne sait quelle version des instructions est "correcte". Le résultat : des comportements inconsistants selon qui lance Claude et sur quelle machine.
+56% of teams don't use a shared project configuration for Claude Code. Each developer configures their environment locally, conventions drift, and nobody knows which version of the instructions is "correct". The result: inconsistent behavior depending on who runs Claude and on which machine.
 
-La bonne pratique se résume à une distinction simple : ce qui appartient à l'équipe va dans les fichiers versionnés, ce qui est personnel reste local.
+The best practice comes down to a simple distinction: what belongs to the team goes into versioned files, what is personal stays local.
 
-## Tableau de décision
+## Decision table
 
-| Fichier | Scope | Versionné | Contenu type |
-|---------|-------|-----------|--------------|
-| `CLAUDE.md` | Équipe/projet | Oui | Conventions, commandes, architecture |
-| `.claude/settings.json` | Équipe/projet | Oui | Hooks, permissions, modèle par défaut |
-| `.claude/settings.local.json` | Personnel | Non (gitignore) | Permissions perso, préférences |
-| `~/.claude/CLAUDE.md` | Global toutes sessions | Non | Style, préférences personnelles |
-| `~/.claude/settings.json` | Global toutes sessions | Non | Config globale |
+| File | Scope | Versioned | Typical content |
+|------|-------|-----------|-----------------|
+| `CLAUDE.md` | Team/project | Yes | Conventions, commands, architecture |
+| `.claude/settings.json` | Team/project | Yes | Hooks, permissions, default model |
+| `.claude/settings.local.json` | Personal | No (gitignore) | Personal permissions, preferences |
+| `~/.claude/CLAUDE.md` | Global all sessions | No | Style, personal preferences |
+| `~/.claude/settings.json` | Global all sessions | No | Global config |
 
-## CLAUDE.md vs settings.json : quoi va où
+## CLAUDE.md vs settings.json: what goes where
 
-**CLAUDE.md** sert aux règles de comportement : comment nommer les fichiers, quel package manager utiliser, quelles conventions de commit, les décisions d'architecture à ne pas remettre en question. C'est un document Markdown lisible par un humain et par Claude.
+**CLAUDE.md** is for behavior rules: how to name files, which package manager to use, which commit conventions, architecture decisions not to revisit. It is a Markdown document readable by both humans and Claude.
 
-**settings.json** sert à la configuration technique : quels hooks exécuter, quels outils autoriser ou interdire, quel modèle utiliser par défaut, les variables d'environnement à injecter.
+**settings.json** is for technical configuration: which hooks to run, which tools to allow or block, which model to use by default, environment variables to inject.
 
 ```json
-// .claude/settings.json (équipe, versionné)
+// .claude/settings.json (team, versioned)
 {
   "hooks": { "PreToolUse": [...] },
   "allowedTools": ["Edit", "Read", "Bash"]
@@ -39,7 +39,7 @@ La bonne pratique se résume à une distinction simple : ce qui appartient à l'
 ```
 
 ```json
-// .claude/settings.local.json (personnel, gitignore)
+// .claude/settings.local.json (personal, gitignore)
 {
   "permissions": {
     "allow": ["Bash(git *)", "Bash(pnpm *)"]
@@ -47,34 +47,34 @@ La bonne pratique se résume à une distinction simple : ce qui appartient à l'
 }
 ```
 
-## Les 3 questions de décision
+## The 3 decision questions
 
-Avant d'écrire une nouvelle règle ou configuration, posez-vous ces trois questions dans l'ordre :
+Before writing a new rule or configuration, ask yourself these three questions in order:
 
-1. **Est-ce que ça change selon la machine ou l'OS ?** Si oui, `settings.local.json` ou `~/.claude/`.
+1. **Does this change depending on the machine or OS?** If yes, `settings.local.json` or `~/.claude/`.
 
-2. **Est-ce que l'équipe doit partager ça ?** Si oui, `CLAUDE.md` ou `.claude/settings.json` (versionné).
+2. **Does the team need to share this?** If yes, `CLAUDE.md` or `.claude/settings.json` (versioned).
 
-3. **Est-ce que ça expire après la session ?** Si oui, passez-le directement dans le prompt.
+3. **Does this expire after the session?** If yes, pass it directly in the prompt.
 
-## Configuration minimale recommandée
+## Recommended minimal configuration
 
-Pour un projet d'équipe, la configuration minimum qui vaut la peine d'être mise en place dès la semaine 1 :
+For a team project, the minimum configuration worth putting in place from week 1:
 
 ```markdown
-# CLAUDE.md (3 sections essentielles)
+# CLAUDE.md (3 essential sections)
 ## Stack
 - Runtime, framework, package manager
 
-## Commandes
+## Commands
 - pnpm dev / pnpm test / pnpm lint
 
 ## Conventions
-- Style de commit, règles importantes
+- Commit style, important rules
 ```
 
-Claude détecte automatiquement la plupart des éléments de la stack depuis `package.json`, `go.mod`, ou `Cargo.toml`. Inutile de tout documenter.
+Claude automatically detects most stack elements from `package.json`, `go.mod`, or `Cargo.toml`. No need to document everything.
 
-## Règle des overrides personnels
+## Personal overrides rule
 
-`settings.local.json` est gitignore par convention. Si ce fichier n'est pas dans votre `.gitignore`, ajoutez-le maintenant : les permissions et préférences personnelles ne doivent jamais se retrouver dans le dépôt partagé.
+`settings.local.json` is gitignored by convention. If this file is not in your `.gitignore`, add it now: personal permissions and preferences should never end up in the shared repository.

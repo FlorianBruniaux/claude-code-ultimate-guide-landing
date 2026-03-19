@@ -1,97 +1,97 @@
 ---
-title: TDD / BDD / SDD Workflows
-subtitle: Méthodologies de développement structurées avec Claude Code
+title: "TDD / BDD / SDD Workflows"
+subtitle: "Structured development methodologies with Claude Code"
 cardNumber: M15
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 115
 ---
 
-## Comparaison des trois approches
+## Comparing the three approaches
 
 | Aspect | TDD | BDD | SDD |
 |--------|-----|-----|-----|
-| **Point de départ** | Test technique | Comportement métier | Spécification écrite |
-| **Langage** | Code de test | Given/When/Then | Document structuré |
-| **Audience** | Développeurs | Devs + métier | Équipe entière |
-| **Feedback** | Tests pass/fail | Scénarios validés | Spec implémentée |
+| **Starting point** | Technical test | Business behavior | Written specification |
+| **Language** | Test code | Given/When/Then | Structured document |
+| **Audience** | Developers | Devs + business | Entire team |
+| **Feedback** | Tests pass/fail | Validated scenarios | Spec implemented |
 
-## TDD avec Claude : Red-Green-Refactor
+## TDD with Claude: Red-Green-Refactor
 
-Le cycle classique, rendu explicite dans les prompts pour éviter que Claude ne saute directement à l'implémentation.
-
-```bash
-# Phase RED : demander le test qui échoue d'abord
-> "Écris un test FAILING pour isValidEmail().
-   La fonction n'existe pas encore."
-
-# Phase GREEN : implémentation minimale
-> "Écris le code minimal pour faire passer ce test."
-
-# Phase REFACTOR : amélioration
-> "Améliore l'implémentation. Les tests doivent
-   rester verts."
-```
-
-Être explicite sur "FAILING" et "n'existe pas encore" est essentiel — sinon Claude tend à écrire test et implémentation ensemble.
-
-## BDD avec Claude : Given/When/Then
+The classic cycle, made explicit in prompts to prevent Claude from jumping straight to implementation.
 
 ```bash
-> "Décris le comportement de la page de login
-   en scénarios Gherkin, puis implémente."
+# RED phase: ask for the failing test first
+> "Write a FAILING test for isValidEmail().
+   The function does not exist yet."
 
-# Claude génère :
-# Scénario: Connexion avec identifiants valides
-#   Given un utilisateur enregistré avec email test@ex.com
-#   When il soumet le formulaire avec le bon mot de passe
-#   Then il est redirigé vers son tableau de bord
+# GREEN phase: minimal implementation
+> "Write the minimal code to make this test pass."
+
+# REFACTOR phase: improvement
+> "Improve the implementation. Tests must
+   stay green."
 ```
 
-L'intérêt : les scénarios servent à la fois de spec, de documentation et de base de test, dans un langage lisible par des non-développeurs.
+Being explicit about "FAILING" and "does not exist yet" is essential — otherwise Claude tends to write test and implementation together.
 
-## SDD avec Claude : Spec d'abord
-
-Écrire la spécification complète avant la première ligne de code. Claude utilise ensuite la spec comme référence tout au long de l'implémentation.
+## BDD with Claude: Given/When/Then
 
 ```bash
-> "Voici la spec de l'endpoint POST /auth/login
-   [coller la spec]. Implémente section par section
-   en respectant chaque contrainte."
+> "Describe the behavior of the login page
+   as Gherkin scenarios, then implement."
+
+# Claude generates:
+# Scenario: Login with valid credentials
+#   Given a registered user with email test@ex.com
+#   When they submit the form with the correct password
+#   Then they are redirected to their dashboard
 ```
 
-## Verification Loops : le principe fondateur
+The benefit: scenarios serve simultaneously as spec, documentation and test base, in a language readable by non-developers.
 
-Les trois méthodes reposent sur le même principe identifié par Boris Cherny : **un agent qui peut "voir" ce qu'il a produit donne de meilleurs résultats.** Sans mécanisme de vérification, Claude itère à l'aveugle.
+## SDD with Claude: Spec first
 
-| Domaine | Outil de vérification |
-|---------|-----------------------|
+Write the complete specification before the first line of code. Claude then uses the spec as a reference throughout the implementation.
+
+```bash
+> "Here is the spec for POST /auth/login endpoint
+   [paste the spec]. Implement section by section
+   respecting every constraint."
+```
+
+## Verification Loops: the founding principle
+
+All three methods rely on the same principle identified by Boris Cherny: **an agent that can "see" what it has produced delivers better results.** Without a verification mechanism, Claude iterates blindly.
+
+| Domain | Verification tool |
+|--------|-------------------|
 | Backend | Tests (unit, integration) |
-| Frontend | Aperçu navigateur live |
-| Types | Compilateur TypeScript |
+| Frontend | Live browser preview |
+| Types | TypeScript compiler |
 | Style | ESLint / Prettier |
-| Sécurité | Semgrep, analyseurs statiques |
+| Security | Semgrep, static analyzers |
 
 ## Chain-of-Verification
 
-Pattern de validation croisée (arXiv:2309.11495) pour réduire les hallucinations : Claude génère une réponse, puis génère des questions de vérification sur cette réponse, puis répond à ces questions pour détecter les incohérences.
+Cross-validation pattern (arXiv:2309.11495) to reduce hallucinations: Claude generates a response, then generates verification questions about that response, then answers those questions to detect inconsistencies.
 
-Applicable quand la correction du résultat est critique et que les tests automatiques ne suffisent pas (algorithmes complexes, logique métier subtile).
+Applicable when result correctness is critical and automated tests are insufficient (complex algorithms, subtle business logic).
 
-## Intégration avec Tasks API
+## Integration with Tasks API
 
 ```bash
-# Créer la hiérarchie TDD dans Tasks API
-TaskCreate: { title: "Écrire les tests failing pour auth" }
+# Create the TDD hierarchy in Tasks API
+TaskCreate: { title: "Write failing tests for auth" }
 TaskCreate: {
-  title: "Implémenter auth pour passer les tests",
+  title: "Implement auth to pass the tests",
   blockedBy: ["task-tests-failing"]
 }
 TaskCreate: {
-  title: "Refactoriser auth",
+  title: "Refactor auth",
   blockedBy: ["task-impl-auth"]
 }
 ```
 
-Le cycle Red-Green-Refactor devient traçable et persistant entre sessions.
+The Red-Green-Refactor cycle becomes traceable and persistent across sessions.

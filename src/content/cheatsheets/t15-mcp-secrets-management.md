@@ -1,34 +1,34 @@
 ---
-title: MCP Secrets Management
-subtitle: Gérer les credentials des MCP servers sans les exposer
+title: "MCP Secrets Management"
+subtitle: "Managing MCP server credentials without exposing them"
 cardNumber: T15
-category: Technique
+category: Technical
 difficulty: advanced
 guideVersion: 3.32.1
 order: 15
 ---
 
-## Le problème central
+## The core problem
 
-Les MCP servers ont besoin de clés API et de credentials pour fonctionner. Les stocker en clair dans `settings.json` ou `.mcp.json` crée un risque réel : commit accidentel sur Git, exposition dans les logs, ou mouvement latéral après une compromission. La règle absolue est que les secrets ne doivent jamais apparaître dans les fichiers versionnés.
+MCP servers need API keys and credentials to function. Storing them in plaintext in `settings.json` or `.mcp.json` creates a real risk: accidental commit to Git, exposure in logs, or lateral movement after a compromise. The absolute rule is that secrets must never appear in versioned files.
 
-## Trois approches selon le contexte
+## Three approaches depending on context
 
-| Approche | Sécurité | Complexité | Idéal pour |
-|----------|----------|------------|------------|
-| OS Keychain | Élevée | Moyenne | Devs solo, macOS/Linux |
-| `.env` + `.gitignore` | Moyenne | Faible | Petites équipes, prototypage |
-| Secret Vaults | Très élevée | Haute | Enterprise, SOC 2, HIPAA |
+| Approach | Security | Complexity | Ideal for |
+|----------|----------|------------|-----------|
+| OS Keychain | High | Medium | Solo devs, macOS/Linux |
+| `.env` + `.gitignore` | Medium | Low | Small teams, prototyping |
+| Secret Vaults | Very high | High | Enterprise, SOC 2, HIPAA |
 
-## Approche 1 : OS Keychain (recommandée)
+## Approach 1: OS Keychain (recommended)
 
-Le secret est chiffré au repos par l'OS et accessible uniquement aux processus autorisés. La configuration MCP n'expose qu'une commande de récupération, jamais la valeur.
+The secret is encrypted at rest by the OS and accessible only to authorized processes. The MCP configuration exposes only a retrieval command, never the value.
 
 ```bash
-# macOS : stocker un token GitHub
+# macOS: store a GitHub token
 security add-generic-password \
   -a "claude-mcp" -s "github-token" \
-  -w "ghp_votre_token_ici"
+  -w "ghp_your_token_here"
 ```
 
 ```json
@@ -42,29 +42,29 @@ security add-generic-password \
 }
 ```
 
-**Linux** : utiliser `secret-tool` (libsecret, GNOME Keyring ou KWallet) avec la même logique de wrapper script.
+**Linux**: use `secret-tool` (libsecret, GNOME Keyring or KWallet) with the same wrapper script logic.
 
-## Approche 2 : .env + .gitignore
+## Approach 2: .env + .gitignore
 
-Simple et suffisante pour un usage solo ou une petite équipe avec bonne discipline.
+Simple and sufficient for solo use or a small team with good discipline.
 
 ```bash
-# Créer le fichier de secrets
+# Create the secrets file
 cat > ~/.claude/.env << EOF
-GITHUB_TOKEN=ghp_votre_token
-OPENAI_KEY=sk-votre_cle
+GITHUB_TOKEN=ghp_your_token
+OPENAI_KEY=sk-your_key
 EOF
-chmod 600 ~/.claude/.env   # Permissions restrictives
+chmod 600 ~/.claude/.env   # Restrictive permissions
 echo ".env" >> ~/.claude/.gitignore
 ```
 
-Dans la config MCP, référencer avec `"${GITHUB_TOKEN}"` dans le champ `env`. Claude Code résout les variables d'environnement au démarrage du server.
+In the MCP config, reference with `"${GITHUB_TOKEN}"` in the `env` field. Claude Code resolves environment variables at server startup.
 
-**Template pour les équipes** : commiter `mcp-config.template.json` avec des placeholders, générer le fichier réel via `envsubst`. Ne jamais commiter le fichier généré.
+**Template for teams**: commit `mcp-config.template.json` with placeholders, generate the real file via `envsubst`. Never commit the generated file.
 
-## Approche 3 : Secret Vaults (enterprise)
+## Approach 3: Secret Vaults (enterprise)
 
-HashiCorp Vault, AWS Secrets Manager, ou 1Password CLI permettent une rotation automatisée, un audit centralisé et un contrôle d'accès granulaire. Le principe reste identique : un wrapper script récupère le secret au runtime et l'exporte comme variable d'environnement avant de lancer le server MCP.
+HashiCorp Vault, AWS Secrets Manager, or 1Password CLI enable automated rotation, centralized auditing, and granular access control. The principle remains identical: a wrapper script retrieves the secret at runtime and exports it as an environment variable before launching the MCP server.
 
 ```bash
 # HashiCorp Vault
@@ -72,8 +72,8 @@ export GITHUB_TOKEN=$(vault kv get -field=token secret/claude/github)
 npx @github/mcp-server
 ```
 
-## Ce qu'il ne faut jamais faire
+## What to never do
 
-Hardcoder un token directement dans la valeur `command` ou `args` d'un MCP server versionné. Même dans un repo privé, les secrets en clair dans Git restent dans l'historique même après suppression et peuvent être exposés par un `git log` ou un accès non autorisé.
+Hardcode a token directly in the `command` or `args` value of a versioned MCP server. Even in a private repo, secrets in plaintext in Git remain in the history even after deletion and can be exposed by a `git log` or unauthorized access.
 
-Un hook de pre-commit qui scanne les patterns de tokens (`ghp_`, `sk-`, `Bearer `) avant chaque commit est une protection supplémentaire simple à mettre en place.
+A pre-commit hook that scans for token patterns (`ghp_`, `sk-`, `Bearer `) before each commit is a simple additional protection to put in place.

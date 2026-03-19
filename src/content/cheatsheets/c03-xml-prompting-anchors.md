@@ -1,62 +1,62 @@
 ---
-title: XML Prompting & Semantic Anchors
-subtitle: Structurer les prompts complexes pour des résultats reproductibles
+title: "XML Prompting & Semantic Anchors"
+subtitle: "Structuring complex prompts for reproducible results"
 cardNumber: C03
-category: Conception
+category: Design
 difficulty: advanced
 guideVersion: 3.32.1
 order: 203
 ---
 
-## Pourquoi XML fonctionne
+## Why XML works
 
-Claude a été entraîné sur des corpus massifs qui incluent du XML. Quand vous structurez un prompt avec des balises, vous créez des délimiteurs sans ambiguïté qui séparent l'instruction, le contexte, le code de référence et les contraintes. Résultat : Claude interprète chaque section exactement dans le rôle que vous lui assignez, sans devoir inférer ce qui est instruction et ce qui est contexte.
+Claude was trained on massive corpora that include XML. When you structure a prompt with tags, you create unambiguous delimiters that separate the instruction, context, reference code, and constraints. The result: Claude interprets each section exactly in the role you assign it, without having to infer what is instruction and what is context.
 
-La structure XML est pertinente pour les tâches complexes ou réutilisables. Pour une correction d'une ligne, c'est du bruit inutile.
+XML structure is relevant for complex or reusable tasks. For a one-line fix, it is unnecessary noise.
 
-## Structure de base
+## Basic structure
 
 ```xml
 <instruction>
-Extraire la logique de validation vers un module séparé
+Extract the validation logic into a separate module
 </instruction>
 
 <context>
-Service Express, Node.js 20, pas de dépendances externes
+Express service, Node.js 20, no external dependencies
 </context>
 
 <code_example>
-// Pattern existant à conserver
+// Existing pattern to preserve
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 </code_example>
 
 <constraints>
-- Ne pas modifier les signatures de fonctions publiques
-- Garder la compatibilité avec les tests existants
+- Do not modify public function signatures
+- Maintain compatibility with existing tests
 </constraints>
 
 <output>
-Nouveau fichier src/validation/index.ts avec les exports
+New file src/validation/index.ts with exports
 </output>
 ```
 
-## Catalog de tags réutilisables
+## Reusable tag catalog
 
 | Tag | Usage |
 |-----|-------|
-| `<instruction>` | La tâche principale |
-| `<context>` | Stack, état du système, historique |
-| `<code_example>` | Pattern de référence à suivre |
-| `<constraints>` | Ce qu'il ne faut pas modifier |
-| `<output>` | Format et contenu attendus |
-| `<state>` | État actuel (bug, diff, logs) |
-| `<task>` + `<subtask>` | Décomposition hiérarchique |
+| `<instruction>` | The main task |
+| `<context>` | Stack, system state, history |
+| `<code_example>` | Reference pattern to follow |
+| `<constraints>` | What must not be modified |
+| `<output>` | Expected format and content |
+| `<state>` | Current state (bug, diff, logs) |
+| `<task>` + `<subtask>` | Hierarchical decomposition |
 
-## Semantic Anchors dans le code
+## Semantic Anchors in code
 
-Les anchors sont des marqueurs en commentaire qui permettent à Claude de référencer des zones précises du code sans lire des fichiers entiers.
+Anchors are comment markers that allow Claude to reference specific areas of code without reading entire files.
 
 ```typescript
 // ANCHOR: auth-flow
@@ -72,26 +72,26 @@ function validateJWT(token: string): Claims {
 // END-ANCHOR: token-validation
 ```
 
-Dans votre prompt : "Modifie uniquement la section ANCHOR: auth-flow pour ajouter la gestion des tokens expirés." Claude sait exactement où intervenir sans lire tout le fichier.
+In your prompt: "Modify only the ANCHOR: auth-flow section to add expired token handling." Claude knows exactly where to intervene without reading the entire file.
 
-## Quand utiliser XML
+## When to use XML
 
-| Cas | Utiliser XML ? |
-|-----|---------------|
-| Requête simple, une ligne | Non |
-| Bug à corriger dans une fonction | Non |
-| Implémentation multi-fichiers | Oui |
-| Prompt réutilisable dans une command | Oui |
-| Review avec critères précis | Oui |
+| Case | Use XML? |
+|------|----------|
+| Simple single-line request | No |
+| Bug to fix in one function | No |
+| Multi-file implementation | Yes |
+| Reusable prompt in a command | Yes |
+| Review with precise criteria | Yes |
 
-## Intégration avec CLAUDE.md
+## Integration with CLAUDE.md
 
-Vous pouvez définir les conventions XML du projet dans `CLAUDE.md` pour standardiser les prompts de l'équipe :
+You can define the project XML conventions in `CLAUDE.md` to standardize team prompts:
 
 ```markdown
-## Conventions de prompt XML
-Tags projet : <api_design>, <accessibility>, <perf_budget>
-Pour les features : toujours inclure <context> et <constraints>
+## XML Prompt Conventions
+Project tags: <api_design>, <accessibility>, <perf_budget>
+For features: always include <context> and <constraints>
 ```
 
-Tous les membres de l'équipe utilisent ensuite le même vocabulaire de tags, ce qui rend les prompts partagés (dans `.claude/commands/`) cohérents et compréhensibles.
+All team members then use the same tag vocabulary, making shared prompts (in `.claude/commands/`) consistent and understandable.

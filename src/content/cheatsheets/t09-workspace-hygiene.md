@@ -1,74 +1,74 @@
 ---
-title: Workspace Hygiene & .claudeignore
-subtitle: Garder le contexte propre en excluant ce que Claude ne doit pas lire
+title: "Workspace Hygiene & .claudeignore"
+subtitle: "Keeping context clean by excluding what Claude should not read"
 cardNumber: T09
-category: Technique
+category: Technical
 difficulty: beginner
 guideVersion: 3.32.1
 order: 9
 ---
 
-## .claudeignore : même syntaxe que .gitignore
+## .claudeignore: same syntax as .gitignore
 
-`.claudeignore` se place à la racine du projet et suit exactement la même syntaxe que `.gitignore`. Les patterns qu'il contient indiquent à Claude Code quels fichiers et dossiers exclure de son exploration du contexte.
+`.claudeignore` is placed at the project root and follows exactly the same syntax as `.gitignore`. The patterns it contains tell Claude Code which files and folders to exclude from its context exploration.
 
 ```gitignore
-# Dépendances (lourd, inutile pour Claude)
+# Dependencies (heavy, useless for Claude)
 node_modules/
 .pnpm-store/
 vendor/
 
-# Secrets (protection essentielle)
+# Secrets (essential protection)
 .env
 .env.*
 *.pem
 *.key
 *credentials*
 
-# Générés automatiquement (bruit pur)
+# Auto-generated (pure noise)
 dist/
 build/
 .next/
 coverage/
 *.min.js
 
-# Logs verbeux
+# Verbose logs
 *.log
 logs/
 ```
 
-## Pourquoi c'est important
+## Why it matters
 
-Claude Code indexe les fichiers du projet pour fournir du contexte. Sans `.claudeignore`, il peut lire des milliers de fichiers dans `node_modules/` ou des logs de 50 Mo, ce qui dilue la qualité des réponses. Moins de bruit dans le contexte signifie des réponses plus précises et des sessions moins coûteuses en tokens.
+Claude Code indexes project files to provide context. Without `.claudeignore`, it may read thousands of files inside `node_modules/` or 50 MB log files, which dilutes the quality of responses. Less noise in context means more precise answers and less token-expensive sessions.
 
 ## .gitignore vs .claudeignore
 
-| Fichier | Rôle | Scope |
-|---------|------|-------|
-| `.gitignore` | Exclut du contrôle de version | Git |
-| `.claudeignore` | Exclut de l'exploration Claude | Claude Code |
+| File | Role | Scope |
+|------|------|-------|
+| `.gitignore` | Excludes from version control | Git |
+| `.claudeignore` | Excludes from Claude exploration | Claude Code |
 
-Les deux fichiers coexistent et sont indépendants. On peut vouloir que Git ignore un fichier que Claude doit lire, ou l'inverse.
+Both files coexist and are independent. You may want Git to ignore a file that Claude should read, or the reverse.
 
-## Structure recommandée du dossier .claude/
+## Recommended .claude/ folder structure
 
 ```
 .claude/
-├── settings.json        # Config équipe (commité)
-├── settings.local.json  # Config locale (gitignore)
-├── agents/              # Agents personnalisés
-├── commands/            # Commandes slash
-├── hooks/               # Scripts d'automatisation
-├── rules/               # Conventions auto-chargées
-└── memories/            # Memories manuelles
+├── settings.json        # Team config (committed)
+├── settings.local.json  # Local config (gitignore)
+├── agents/              # Custom agents
+├── commands/            # Slash commands
+├── hooks/               # Automation scripts
+├── rules/               # Auto-loaded conventions
+└── memories/            # Manual memories
 ```
 
-Les dossiers `agents/`, `commands/`, `hooks/`, `rules/` et `skills/` se committent avec le projet. `settings.local.json` et `CLAUDE.md` (si personnel) restent dans `.gitignore`.
+The `agents/`, `commands/`, `hooks/`, `rules/` and `skills/` folders are committed with the project. `settings.local.json` and `CLAUDE.md` (if personal) stay in `.gitignore`.
 
-## Checklist workspace propre
+## Clean workspace checklist
 
-- `node_modules/` dans `.claudeignore`
-- Fichiers `.env` exclus ou hors du répertoire projet
-- Binaires et assets lourds ignorés (`*.png`, `*.pdf`, `dist/`)
-- Logs et fichiers générés exclus
-- `settings.local.json` dans `.gitignore`
+- `node_modules/` in `.claudeignore`
+- `.env` files excluded or outside the project directory
+- Binaries and heavy assets ignored (`*.png`, `*.pdf`, `dist/`)
+- Logs and generated files excluded
+- `settings.local.json` in `.gitignore`

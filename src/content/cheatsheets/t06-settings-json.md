@@ -1,26 +1,26 @@
 ---
-title: Settings.json — Structure Complète
-subtitle: Toutes les clés de configuration et leur portée
+title: "Settings.json — Complete Structure"
+subtitle: "All configuration keys and their scope"
 cardNumber: T06
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 6
 ---
 
-## Hiérarchie des fichiers
+## File hierarchy
 
 ```
-~/.claude/settings.json         (global, tous les projets)
-        ↓ surchargé par
-.claude/settings.json           (projet, partagé équipe)
-        ↓ surchargé par
-.claude/settings.local.json     (machine locale, gitignore)
+~/.claude/settings.json         (global, all projects)
+        ↓ overridden by
+.claude/settings.json           (project, shared with team)
+        ↓ overridden by
+.claude/settings.local.json     (local machine, gitignore)
 ```
 
-`settings.local.json` prend toujours le dessus. C'est l'endroit idéal pour les overrides personnels sans créer de conflits Git.
+`settings.local.json` always takes precedence. It is the ideal place for personal overrides without creating Git conflicts.
 
-## Structure complète
+## Complete structure
 
 ```json
 {
@@ -44,43 +44,43 @@ order: 6
 }
 ```
 
-## Clés disponibles
+## Available keys
 
-| Clé | Rôle |
+| Key | Role |
 |-----|------|
-| `model` | Modèle par défaut |
-| `permissions.allow` | Outils auto-approuvés |
-| `permissions.deny` | Outils bloqués |
-| `permissions.ask` | Outils avec confirmation |
-| `env` | Variables d'environnement injectées |
-| `hooks` | Scripts déclenchés sur événements |
-| `spinnerVerbs` | Mots dans le spinner de chargement |
-| `spinnerTipsOverride` | Conseils affichés pendant le traitement |
-| `enableAllProjectMcpServers` | Active tous les serveurs MCP du projet |
+| `model` | Default model |
+| `permissions.allow` | Auto-approved tools |
+| `permissions.deny` | Blocked tools |
+| `permissions.ask` | Tools requiring confirmation |
+| `env` | Injected environment variables |
+| `hooks` | Scripts triggered on events |
+| `spinnerVerbs` | Words in the loading spinner |
+| `spinnerTipsOverride` | Tips displayed during processing |
+| `enableAllProjectMcpServers` | Enables all project MCP servers |
 
-## Personnalisation du spinner
+## Spinner customization
 
 ```json
 {
   "spinnerVerbs": {
     "mode": "replace",
-    "verbs": ["Cafféination…", "Réflexion…", "Optimisation…"]
+    "verbs": ["Caffeinating…", "Thinking…", "Optimizing…"]
   },
   "spinnerTipsOverride": {
-    "tips": ["/compact quand le contexte est plein"],
+    "tips": ["/compact when context is full"],
     "excludeDefault": true
   }
 }
 ```
 
-`mode: "add"` étend la liste par défaut plutôt que de la remplacer. Ces clés n'ont aucun impact fonctionnel, uniquement cosmétique.
+`mode: "add"` extends the default list rather than replacing it. These keys have no functional impact, only cosmetic.
 
-## Ce qui doit rester en .gitignore
+## What should stay in .gitignore
 
 ```gitignore
-.claude/settings.local.json   # Overrides machine locale
-.claude/CLAUDE.md             # Instructions personnelles
+.claude/settings.local.json   # Local machine overrides
+.claude/CLAUDE.md             # Personal instructions
 .env.local                    # Secrets
 ```
 
-Les fichiers à committer (`settings.json`, `agents/`, `commands/`, `hooks/`, `rules/`) représentent la configuration d'équipe partagée. Ne jamais inclure de clés API ou de tokens dans ces fichiers.
+Files to commit (`settings.json`, `agents/`, `commands/`, `hooks/`, `rules/`) represent the shared team configuration. Never include API keys or tokens in these files.

@@ -1,62 +1,62 @@
 ---
-title: Event-Driven Agents
-subtitle: Déclencher des agents automatiquement depuis GitHub, Linear, Jira
+title: "Event-Driven Agents"
+subtitle: "Triggering agents automatically from GitHub, Linear, Jira"
 cardNumber: M18
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 118
 ---
 
-## Du pull au push
+## From pull to push
 
-L'usage interactif de Claude Code est pull-based : vous ouvrez un terminal, vous tapez une instruction, vous itérez. L'automatisation event-driven retire l'humain de l'étape de déclenchement. Une carte passe en "In Progress" dans Linear, un agent démarre. Une issue GitHub reçoit le label `claude-fix`, un agent ouvre une branche en quelques secondes.
+Interactive Claude Code usage is pull-based: you open a terminal, type an instruction, iterate. Event-driven automation removes the human from the triggering step. A card moves to "In Progress" in Linear, an agent starts. A GitHub issue receives the `claude-fix` label, an agent opens a branch within seconds.
 
-L'humain reste dans la boucle pour la validation finale (review de PR, approbation de merge), mais l'initiation du travail passe par le workflow de gestion de projet existant.
+The human remains in the loop for final validation (PR review, merge approval), but work initiation happens through the existing project management workflow.
 
-## Architecture du pipeline
+## Pipeline architecture
 
 ```
-Source d'événement
-  → Filtre (label, mention, état)
-    → Extraction du contexte
-      → Sélection de l'agent
+Event source
+  → Filter (label, mention, state)
+    → Context extraction
+      → Agent selection
         → Claude Code
-          → Routage du résultat (PR, commentaire, statut)
+          → Result routing (PR, comment, status)
 ```
 
-Chaque composant est indépendant et remplaçable. Le filtre détermine quels événements méritent un agent ; sans filtrage strict, une rafale d'événements peut instancier des dizaines d'agents simultanément.
+Each component is independent and replaceable. The filter determines which events merit an agent; without strict filtering, an event burst can instantiate dozens of agents simultaneously.
 
-## Sources d'événements compatibles
+## Compatible event sources
 
-| Source | Déclencheurs | Usage type |
-|--------|-------------|-----------|
-| GitHub Issues | Création, label ajouté | Triage, fix automatique |
-| GitHub PR | Ouverture, commentaire | Review, corrections |
-| Linear | Changement d'état, label | Implémentation de feature |
-| Jira | Transition, assignation | Travail technique, dette |
-| Slack | Message, réaction emoji | Investigations rapides |
-| PagerDuty | Incident créé | Scripts de diagnostic |
+| Source | Triggers | Typical usage |
+|--------|----------|--------------|
+| GitHub Issues | Creation, label added | Triage, automatic fix |
+| GitHub PR | Open, comment | Review, corrections |
+| Linear | State change, label | Feature implementation |
+| Jira | Transition, assignment | Technical work, debt |
+| Slack | Message, emoji reaction | Quick investigations |
+| PagerDuty | Incident created | Diagnostic scripts |
 
-## Filtre d'activation
+## Activation filter
 
-Ne pas déclencher un agent pour chaque événement. Un filtre simple en bash :
+Do not trigger an agent for every event. A simple bash filter:
 
 ```bash
-# Déclencher uniquement si label "claude-auto" présent
+# Trigger only if "claude-auto" label is present
 if [[ "$CARD_LABELS" != *"claude-auto"* ]]; then
     echo "Skipping: no claude-auto label"
     exit 0
 fi
 ```
 
-Pour GitHub, le trigger `@claude review` dans un commentaire de PR est le pattern le plus documenté : il déclenchement on-demand sans polluer le workflow automatique.
+For GitHub, the `@claude review` trigger in a PR comment is the most documented pattern: on-demand triggering without polluting the automated workflow.
 
-## Exemple concret : Linear Agent Loop
+## Concrete example: Linear Agent Loop
 
-Le pattern le plus documenté (Damian Galarza, février 2026) : Linear comme source de vérité unique, Claude Code comme implémenteur.
+The most documented pattern (Damian Galarza, February 2026): Linear as single source of truth, Claude Code as implementer.
 
-La description du ticket sert de prompt. Un ticket avec des critères d'acceptation clairs produit du code de qualité ; un ticket vague produit du code vague, exactement comme avec un développeur humain.
+The ticket description serves as prompt. A ticket with clear acceptance criteria produces quality code; a vague ticket produces vague code, exactly as with a human developer.
 
 ```bash
 spawn_agent() {
@@ -70,16 +70,16 @@ spawn_agent() {
 }
 ```
 
-## Garde-fous obligatoires
+## Mandatory safeguards
 
-**Idempotence** : vérifier qu'une branche n'existe pas déjà avant de démarrer, pour éviter le double traitement en cas de webhook dupliqué.
+**Idempotence**: check that a branch does not already exist before starting, to avoid double processing in case of a duplicated webhook.
 
-**Limite de concurrence** : cap à 3-5 agents simultanés. Au-delà, la machine sature et les coûts explosent.
+**Concurrency limit**: cap at 3-5 simultaneous agents. Beyond that, the machine saturates and costs explode.
 
-**Circuit breaker** : si un agent échoue plus de 3 fois sur le même ticket, stopper l'automatisation et alerter un humain.
+**Circuit breaker**: if an agent fails more than 3 times on the same ticket, stop the automation and alert a human.
 
-**Revue humaine** : les agents créent des PRs, les humains les approuvent. La merge vers main ne doit jamais être automatisée sans validation.
+**Human review**: agents create PRs, humans approve them. Merge to main must never be automated without validation.
 
-## Authentification minimale
+## Minimal authentication
 
-Le token Claude Code utilisé en CI doit être scoped au minimum nécessaire. Un agent de review de PR n'a pas besoin d'accès en écriture au registre npm ou aux secrets de déploiement. Séparer les tokens par type d'agent et auditer régulièrement leurs permissions effectives.
+The Claude Code token used in CI must be scoped to the minimum necessary. A PR review agent does not need write access to the npm registry or deployment secrets. Separate tokens by agent type and regularly audit their effective permissions.

@@ -1,81 +1,81 @@
 ---
-title: Task Management System
-subtitle: Organiser le travail de Claude avec la Tasks API
+title: "Task Management System"
+subtitle: "Organize Claude's work with the Tasks API"
 cardNumber: M06
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 106
 ---
 
-## Hiérarchie des tâches
+## Task hierarchy
 
-La Tasks API (v2.1.16+) introduit une structure en quatre niveaux pour décomposer n'importe quel projet complexe de façon claire et traçable.
+The Tasks API (v2.1.16+) introduces a four-level structure to break down any complex project in a clear and traceable way.
 
-| Niveau | Rôle |
-|--------|------|
-| **Plan** | Objectif de haut niveau |
-| **Phase** | Jalon majeur |
-| **Task** | Livrable concret |
-| **Subtask** | Action atomique |
+| Level | Role |
+|-------|------|
+| **Plan** | High-level objective |
+| **Phase** | Major milestone |
+| **Task** | Concrete deliverable |
+| **Subtask** | Atomic action |
 
-Les tâches survivent aux fins de session, aux compactions de contexte, et aux redémarrages — elles sont stockées dans `~/.claude/tasks/<id>/`.
+Tasks survive session endings, context compactions, and restarts — they are stored in `~/.claude/tasks/<id>/`.
 
-## Outils principaux
+## Core tools
 
 ```
-TaskCreate   Créer une tâche ou sous-tâche
-TaskList     Lister toutes les tâches (statuts + blocages)
-TaskGet      Lire les détails complets d'une tâche
-TaskUpdate   Mettre à jour le statut ou les métadonnées
-TaskStop     Annuler une tâche en cours
+TaskCreate   Create a task or subtask
+TaskList     List all tasks (statuses + blockages)
+TaskGet      Read full details of a task
+TaskUpdate   Update status or metadata
+TaskStop     Cancel an ongoing task
 ```
 
-## Cycle d'exécution
+## Execution cycle
 
 ```bash
-# 1. Initialiser avec un ID de liste stable
-export CLAUDE_CODE_TASK_LIST_ID="monprojet-auth-v2"
+# 1. Initialize with a stable list ID
+export CLAUDE_CODE_TASK_LIST_ID="myproject-auth-v2"
 claude
 
-# 2. Lister et reprendre
-> "TaskList pour voir l'état actuel"
+# 2. List and resume
+> "TaskList to see current state"
 
-# 3. Passer une tâche en cours puis la terminer
-> "Marque task-login comme in_progress, puis implémente"
-> "Marque task-login comme completed"
+# 3. Mark a task in progress then complete it
+> "Mark task-login as in_progress, then implement"
+> "Mark task-login as completed"
 ```
 
-## Statuts disponibles
+## Available statuses
 
-| Statut | Signification |
-|--------|---------------|
-| `pending` | En attente |
-| `in_progress` | En cours d'exécution |
-| `completed` | Terminée avec succès |
-| `cancelled` | Annulée |
+| Status | Meaning |
+|--------|---------|
+| `pending` | Waiting |
+| `in_progress` | Currently executing |
+| `completed` | Successfully finished |
+| `cancelled` | Cancelled |
 
-## Dépendances avec blockedBy
+## Dependencies with blockedBy
 
-Le champ `blockedBy` empêche l'exécution prématurée d'une tâche qui dépend d'une autre. Les IDs utilisés doivent être les identifiants réels des tâches, pas leurs titres.
+The `blockedBy` field prevents premature execution of a task that depends on another. The IDs used must be the actual task identifiers, not their titles.
 
 ```
 TaskCreate: {
-  title: "Écrire les tests d'intégration",
+  title: "Write integration tests",
   blockedBy: ["task-login", "task-refresh"]
 }
 ```
 
-Claude respecte cet ordre automatiquement lors de l'exécution.
+Claude respects this order automatically during execution.
 
-## Quand activer la Tasks API
+## When to activate the Tasks API
 
-Utiliser dès que le travail dépasse trois étapes séquentielles, implique plusieurs répertoires, ou doit se poursuivre sur plusieurs sessions. Pour une tâche rapide qui se boucle en moins de dix minutes dans une seule session, TodoWrite reste suffisant.
+Use it as soon as work exceeds three sequential steps, involves multiple directories, or must continue across several sessions. For a quick task that wraps up in under ten minutes in a single session, TodoWrite remains sufficient.
 
-## Coût à anticiper
+## Cost to anticipate
 
-`TaskList` coûte un appel API. Récupérer les détails de chaque tâche avec `TaskGet` ajoute un appel supplémentaire par tâche — pour vingt tâches, cela représente vingt fois plus d'overhead. Placer les informations critiques dans le champ `subject` (visible via `TaskList`) et garder les descriptions concises limite ce coût.
+`TaskList` costs one API call. Fetching each task's details with `TaskGet` adds one additional call per task — for twenty tasks, that's twenty times more overhead. Placing critical information in the `subject` field (visible via `TaskList`) and keeping descriptions concise limits this cost.
 
-## ID de liste : règles de nommage
+## List ID: naming rules
 
-Un ID générique partagé entre projets provoque des collisions. Utiliser un identifiant spécifique au repo, de la forme `<organisation>-<repo>-<feature>`.
+A generic ID shared between projects causes collisions. Use a repo-specific identifier in the form `<org>-<repo>-<feature>`.

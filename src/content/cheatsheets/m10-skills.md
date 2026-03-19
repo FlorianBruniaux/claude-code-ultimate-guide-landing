@@ -1,90 +1,90 @@
 ---
-title: Skills
-subtitle: Modules de compétences réutilisables avec ressources embarquées
+title: "Skills"
+subtitle: "Reusable skill modules with embedded resources"
 cardNumber: M10
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 110
 ---
 
-## Structure d'un skill
+## Skill structure
 
-Un skill est un dossier dans `.claude/skills/` contenant un fichier `SKILL.md` et optionnellement des ressources supplémentaires (docs, templates, scripts, checklists).
+A skill is a folder in `.claude/skills/` containing a `SKILL.md` file and optionally additional resources (docs, templates, scripts, checklists).
 
 ```
-mon-skill/
-├── SKILL.md              # Instructions + frontmatter (obligatoire)
-├── reference.md          # Documentation de référence
+my-skill/
+├── SKILL.md              # Instructions + frontmatter (required)
+├── reference.md          # Reference documentation
 ├── checklists/
 │   └── quality.md
 └── examples/
     └── pattern.ts
 ```
 
-## Frontmatter SKILL.md
+## SKILL.md frontmatter
 
 ```yaml
 ---
 name: security-guardian
-description: Expertise OWASP, auth, et protection des données
+description: OWASP expertise, auth, and data protection
 allowed-tools: Read Grep Bash
 ---
 ```
 
-| Champ | Rôle |
+| Field | Role |
 |-------|------|
-| `name` | Kebab-case, 1-64 chars, doit correspondre au dossier |
-| `description` | Déclencheur d'activation (max 1024 chars) |
-| `allowed-tools` | Whitelist d'outils (supporte les wildcards) |
-| `disable-model-invocation` | `true` pour invocation manuelle uniquement |
+| `name` | Kebab-case, 1-64 chars, must match the folder |
+| `description` | Activation trigger (max 1024 chars) |
+| `allowed-tools` | Tool whitelist (supports wildcards) |
+| `disable-model-invocation` | `true` for manual-only invocation |
 
 ## Skills vs Commands
 
 | Aspect | Skill | Command |
 |--------|-------|---------|
-| **Ressources** | Peut embarquer des fichiers | Markdown seul |
-| **Portée** | Connaissance domaine | Workflow procédural |
-| **Réutilisation** | Entre agents | Invocation directe |
-| **Standard** | agentskills.io (portable) | Claude Code uniquement |
+| **Resources** | Can embed files | Markdown only |
+| **Scope** | Domain knowledge | Procedural workflow |
+| **Reuse** | Between agents | Direct invocation |
+| **Standard** | agentskills.io (portable) | Claude Code only |
 
-La différence principale : un skill peut embarquer un fichier `reference.md` de 500 lignes qui devient disponible lors de l'invocation. Une command ne peut pas.
+The main difference: a skill can embed a 500-line `reference.md` file that becomes available on invocation. A command cannot.
 
-## Marketplace : npx add-skill
+## Marketplace: npx add-skill
 
 ```bash
-# Installer le bundle Vercel (3 skills)
+# Install the Vercel bundle (3 skills)
 npx add-skill vercel-labs/agent-skills
 
-# Installer le skill Supabase
+# Install the Supabase skill
 npx add-skill supabase/agent-skills
 
-# Vérifier les skills installés
+# Check installed skills
 ls ~/.claude/skills/
 ```
 
-Les skills du marketplace passent un audit de sécurité automatique en 3 couches (Socket, Snyk, Gen) avant publication. Plus de 200 skills disponibles.
+Marketplace skills pass an automatic 3-layer security audit (Socket, Snyk, Gen) before publication. Over 200 skills available.
 
 ## Invocation
 
-Les skills se déclenchent comme les commandes, par leur nom :
+Skills are triggered like commands, by their name:
 
 ```
-/security-guardian          # Invocation directe
-/tdd                        # Skill TDD
-/design-patterns detect     # Avec argument
+/security-guardian          # Direct invocation
+/tdd                        # TDD skill
+/design-patterns detect     # With argument
 ```
 
-Les agents peuvent précharger des skills via le champ `skills:` dans leur frontmatter — le contenu est injecté dans le contexte de l'agent au démarrage.
+Agents can preload skills via the `skills:` field in their frontmatter — the content is injected into the agent's context at startup.
 
-## Lifecycle et amélioration
+## Lifecycle and improvement
 
-Deux patterns de gestion dans le temps :
+Two long-term management patterns:
 
-**Claudeception** — méta-skill qui génère de nouveaux skills à partir des découvertes de session. Install : `git clone https://github.com/blader/Claudeception ~/.claude/skills/claudeception`
+**Claudeception** — meta-skill that generates new skills from session discoveries. Install: `git clone https://github.com/blader/Claudeception ~/.claude/skills/claudeception`
 
-**Claude Reflect System** — améliore les skills existants en analysant les corrections détectées pendant les sessions. Propose les changements avant de les appliquer.
+**Claude Reflect System** — improves existing skills by analyzing corrections detected during sessions. Proposes changes before applying them.
 
-## Précaution importante
+## Important caveat
 
-Les skills ne sont invoqués que lors d'une activation explicite — les evals montrent une invocation automatique dans seulement 56% des cas. Pour des instructions critiques qui doivent toujours s'appliquer, utiliser `CLAUDE.md` ou `.claude/rules/` plutôt qu'un skill.
+Skills are only invoked on explicit activation — evals show automatic invocation in only 56% of cases. For critical instructions that must always apply, use `CLAUDE.md` or `.claude/rules/` rather than a skill.

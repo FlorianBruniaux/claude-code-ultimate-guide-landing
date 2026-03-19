@@ -1,45 +1,45 @@
 ---
-title: Sandbox Natif — Architecture
-subtitle: Comment Claude Code isole ses opérations au niveau OS
+title: "Native Sandbox — Architecture"
+subtitle: "How Claude Code isolates its operations at the OS level"
 cardNumber: T16
-category: Technique
+category: Technical
 difficulty: advanced
 guideVersion: 3.32.1
 order: 16
 ---
 
-## Principe : l'OS comme périmètre de sécurité
+## Principle: the OS as security perimeter
 
-Depuis v2.1.0, Claude Code intègre un sandbox natif qui isole l'exécution des commandes bash au niveau du noyau. L'idée centrale est d'inverser la logique habituelle : plutôt que de valider chaque commande par une confirmation utilisateur, on laisse Claude opérer librement à l'intérieur de frontières OS-enforced. Le sandbox devient le gardien, pas le système de permissions.
+Since v2.1.0, Claude Code includes a native sandbox that isolates bash command execution at the kernel level. The core idea is to invert the usual logic: rather than validating each command with a user confirmation, Claude operates freely inside OS-enforced boundaries. The sandbox becomes the guardian, not the permissions system.
 
-**Activation** : `/sandbox` dans Claude Code (menu interactif).
+**Activation**: `/sandbox` in Claude Code (interactive menu).
 
-## Primitives OS selon la plateforme
+## OS primitives by platform
 
-**macOS : Seatbelt**. Intégré au système, aucune installation requise. Utilise le framework TrustedBSD Mandatory Access Control pour filtrer les appels système au niveau kernel. Overhead minimal (~1-2% CPU).
+**macOS: Seatbelt**. Built into the system, no installation required. Uses the TrustedBSD Mandatory Access Control framework to filter system calls at the kernel level. Minimal overhead (~1-2% CPU).
 
-**Linux / WSL2 : bubblewrap**. Nécessite l'installation de deux paquets.
+**Linux / WSL2: bubblewrap**. Requires installing two packages.
 
 ```bash
 sudo apt-get install bubblewrap socat   # Ubuntu/Debian
 sudo dnf install bubblewrap socat       # Fedora
 ```
 
-Crée un namespace isolé (mount, network, PID, IPC) pour chaque commande exécutée. Overhead comparable (~2-3% CPU, moins de 10ms de démarrage par commande).
+Creates an isolated namespace (mount, network, PID, IPC) for each executed command. Comparable overhead (~2-3% CPU, less than 10ms startup per command).
 
-**WSL1** : non supporté. **Windows natif** : planifié, pas encore disponible.
+**WSL1**: not supported. **Native Windows**: planned, not yet available.
 
-## Isolation filesystem
+## Filesystem isolation
 
-La politique par défaut est asymétrique et intentionnelle : lecture sur tout le système, écriture restreinte au répertoire de travail courant (CWD) et ses sous-dossiers.
+The default policy is asymmetric and intentional: read access across the entire system, write access restricted to the current working directory (CWD) and its subdirectories.
 
-| Accès | Périmètre |
-|-------|-----------|
-| Lecture | Tout l'ordinateur (sauf deny rules) |
-| Écriture | CWD et sous-dossiers uniquement |
-| Exécution | Commandes dans l'environnement sandboxé |
+| Access | Scope |
+|--------|-------|
+| Read | Entire computer (except deny rules) |
+| Write | CWD and subdirectories only |
+| Execute | Commands within the sandboxed environment |
 
-Pour restreindre la lecture de répertoires sensibles (SSH, credentials cloud), utiliser les `permissions.deny` dans `settings.json` :
+To restrict reading of sensitive directories (SSH, cloud credentials), use `permissions.deny` in `settings.json`:
 
 ```json
 {
@@ -49,11 +49,11 @@ Pour restreindre la lecture de répertoires sensibles (SSH, credentials cloud), 
 }
 ```
 
-## Isolation réseau
+## Network isolation
 
-Toutes les connexions réseau des commandes sandboxées passent par un proxy SOCKS5 qui tourne hors sandbox. Le proxy applique un filtrage par domaine sans inspecter le contenu du trafic (pas de deep packet inspection).
+All network connections from sandboxed commands go through a SOCKS5 proxy running outside the sandbox. The proxy applies domain-based filtering without inspecting traffic content (no deep packet inspection).
 
-Configuration : mode `deny` (bloquer tout sauf liste blanche) ou mode `allow` (autoriser tout sauf liste noire).
+Configuration: `deny` mode (block everything except allowlist) or `allow` mode (allow everything except blocklist).
 
 ```json
 {
@@ -66,17 +66,17 @@ Configuration : mode `deny` (bloquer tout sauf liste blanche) ou mode `allow` (a
 }
 ```
 
-## Deux modes de fonctionnement
+## Two operating modes
 
-**Auto-allow** : les commandes bash dans le sandbox sont automatiquement approuvées. Les commandes incompatibles avec le sandbox (ex : `docker`) déclenchent un fallback vers le flux de permissions normal. Recommandé pour le développement quotidien.
+**Auto-allow**: bash commands inside the sandbox are automatically approved. Commands incompatible with the sandbox (e.g., `docker`) trigger a fallback to the normal permissions flow. Recommended for day-to-day development.
 
-**Regular permissions** : même dans le sandbox, chaque commande demande une approbation explicite. Utile pour les environnements haute sécurité ou les codebases non fiables.
+**Regular permissions**: even inside the sandbox, each command requires explicit approval. Useful for high-security environments or untrusted codebases.
 
-## L'escape hatch : `dangerouslyDisableSandbox`
+## The escape hatch: `dangerouslyDisableSandbox`
 
-Certains outils sont incompatibles avec le sandboxing car ils nécessitent un accès à des ressources système spécifiques (`docker` via `/var/run/docker.sock`, `watchman` via les filesystem watch APIs). Claude détecte l'échec, relance la commande avec ce paramètre, et demande confirmation à l'utilisateur.
+Some tools are incompatible with sandboxing because they require access to specific system resources (`docker` via `/var/run/docker.sock`, `watchman` via filesystem watch APIs). Claude detects the failure, relaunches the command with this parameter, and asks the user for confirmation.
 
-Pour désactiver complètement l'escape hatch dans les environnements critiques :
+To completely disable the escape hatch in critical environments:
 
 ```json
 {

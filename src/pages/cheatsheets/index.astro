@@ -1,17 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
-import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES, FREE_CARD_IDS } from '../../data/recap-cards-data'
+import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 
 const allCards = await getCollection('cheatsheets')
 const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
 
-const techniqueCards = allSorted.filter(c => c.data.category === 'Technique')
-const methodologieCards = allSorted.filter(c => c.data.category === 'Méthodologie')
-const conceptionCards = allSorted.filter(c => c.data.category === 'Conception')
+const techniqueCards = allSorted.filter(c => c.data.category === 'Technical')
+const methodologieCards = allSorted.filter(c => c.data.category === 'Methodology')
+const conceptionCards = allSorted.filter(c => c.data.category === 'Design')
 
 // Only display released series (T + M) in the grid — C is "coming soon"
-const cards = allSorted.filter(c => c.data.category !== 'Conception')
+const cards = allSorted.filter(c => c.data.category !== 'Design')
 const totalCards = cards.length
 
 const difficultyLabel: Record<string, string> = {
@@ -55,7 +55,7 @@ for (const card of cards) {
   <header class="page-hero">
     <div class="container">
       <h1>Cheat Sheets</h1>
-      <p class="tagline">{totalCards} printable A4 recap cards covering every aspect of Claude Code — commands, workflows, multi-agent, security, MCP, and more.</p>
+      <p class="tagline">{totalCards} printable A4 recap cards — commands, workflows, agents, security, MCP, and more.</p>
       <div class="cta-buttons">
         <a href="#cards" class="btn btn-primary">Browse all cards</a>
         <a href="/cheatsheet/" class="btn btn-secondary">Quick Reference (1-page EN)</a>
@@ -74,15 +74,15 @@ for (const card of cards) {
         </div>
         <div class="stat-item">
           <span class="stat-number">{techniqueCards.length}</span>
-          <span class="stat-label">Technique</span>
+          <span class="stat-label">Technical</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">{methodologieCards.length}</span>
-          <span class="stat-label">Méthodologie</span>
+          <span class="stat-label">Methodology</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">{conceptionCards.length}</span>
-          <span class="stat-label">Conception</span>
+          <span class="stat-label">Design</span>
         </div>
       </div>
 
@@ -115,14 +115,14 @@ for (const card of cards) {
         <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">
           All <span class="tab-count">{totalCards}</span>
         </button>
-        <button class="tab-btn" data-filter="Technique" data-series="T" role="tab" aria-selected="false">
-          Technique <span class="tab-count">{techniqueCards.length}</span>
+        <button class="tab-btn" data-filter="Technical" data-series="T" role="tab" aria-selected="false">
+          Technical <span class="tab-count">{techniqueCards.length}</span>
         </button>
-        <button class="tab-btn" data-filter="Méthodologie" data-series="M" role="tab" aria-selected="false">
-          Méthodologie <span class="tab-count">{methodologieCards.length}</span>
+        <button class="tab-btn" data-filter="Methodology" data-series="M" role="tab" aria-selected="false">
+          Methodology <span class="tab-count">{methodologieCards.length}</span>
         </button>
-        <button class="tab-btn tab-coming-soon" data-filter="Conception" data-series="C" role="tab" aria-selected="false">
-          Conception <span class="tab-count">{conceptionCards.length}</span> <span class="tab-soon">soon</span>
+        <button class="tab-btn tab-coming-soon" data-filter="Design" data-series="C" role="tab" aria-selected="false">
+          Design <span class="tab-count">{conceptionCards.length}</span> <span class="tab-soon">soon</span>
         </button>
       </div>
 
@@ -130,7 +130,7 @@ for (const card of cards) {
       <div class="gate-banner hidden" id="gate-banner" aria-live="polite">
         <div class="gate-icon">🔒</div>
         <div class="gate-text">
-          <p class="gate-title" id="gate-title">Unlock all Technique cards</p>
+          <p class="gate-title" id="gate-title">Get the full Technical series — PDF bundle delivered to your inbox</p>
           <p class="gate-sub">Enter your email to get the full series as a PDF bundle delivered to your inbox.</p>
         </div>
         <form class="gate-form" id="gate-form" novalidate>
@@ -147,9 +147,9 @@ for (const card of cards) {
         <p class="gate-success hidden" id="gate-success" role="status"></p>
       </div>
 
-      <!-- "Coming soon" for Conception (shown by JS when C tab active and not unlocked) -->
+      <!-- "Coming soon" for Design series (shown by JS when C tab active) -->
       <div class="coming-soon-msg hidden" id="coming-soon-msg">
-        <p>Conception series (13 cards) — coming soon.</p>
+        <p>Design series (13 cards) — coming soon.</p>
         <p class="coming-soon-sub">13 cards on trust calibration, prompting, security, and architecture design.</p>
       </div>
 
@@ -169,8 +169,14 @@ for (const card of cards) {
                 <span class={`difficulty-pill diff-${card.data.difficulty}`}>
                   {difficultyLabel[card.data.difficulty]}
                 </span>
-                {FREE_CARD_IDS.has(card.id) && (
-                  <span class="free-badge">Free</span>
+                {DIRECT_ACCESS_IDS.has(card.id) ? (
+                  <span class="access-badge">DIRECT ACCESS</span>
+                ) : (
+                  <span class="access-locked" aria-label="Email required">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18 10V7a6 6 0 00-12 0v3H4a1 1 0 00-1 1v10a1 1 0 001 1h16a1 1 0 001-1V11a1 1 0 00-1-1h-2zm-6 7a2 2 0 110-4 2 2 0 010 4zm4-7H8V7a4 4 0 018 0v3z"/>
+                    </svg>
+                  </span>
                 )}
               </div>
               <div class="card-body">
@@ -178,10 +184,10 @@ for (const card of cards) {
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
               <div class="card-footer">
-                {FREE_CARD_IDS.has(card.id) && cardUrls[card.id] ? (
-                  <!-- Free card: direct download, no gate -->
+                {DIRECT_ACCESS_IDS.has(card.id) && cardUrls[card.id] ? (
+                  <!-- Direct access card: no gate -->
                   <a
-                    class="pdf-download pdf-free"
+                    class="pdf-download pdf-direct"
                     href={cardUrls[card.id]}
                     download
                     aria-label={`Download ${card.data.title} PDF`}
@@ -287,8 +293,8 @@ function seriesData(id) {
 function updateGateBanner(filter) {
   if (!gateBanner) return
 
-  // filter: 'all' | 'Technique' | 'Méthodologie' | 'Conception'
-  const seriesMap = { 'Technique': 'T', 'Méthodologie': 'M', 'Conception': 'C' }
+  // filter: 'all' | 'Technical' | 'Methodology' | 'Design'
+  const seriesMap = { 'Technical': 'T', 'Methodology': 'M', 'Design': 'C' }
   const sid = seriesMap[filter] || null
   activeSeries = sid
 
@@ -296,7 +302,7 @@ function updateGateBanner(filter) {
   if (comingSoon) comingSoon.classList.add('hidden')
 
   if (sid === 'C') {
-    // Coming soon — no gate, just a message
+    // Design series coming soon — no gate, just a message
     gateBanner.classList.add('hidden')
     if (comingSoon) comingSoon.classList.remove('hidden')
     return
@@ -307,7 +313,7 @@ function updateGateBanner(filter) {
   // If specific released series and NOT unlocked → show gate
   if (series && series.released && !isUnlocked(sid)) {
     gateBanner.classList.remove('hidden')
-    if (gateTitle) gateTitle.textContent = `Get the full ${series.nameEn} series — PDF bundle delivered to your inbox`
+    if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series — PDF bundle delivered to your inbox`
     resetGateForm()
     return
   }
@@ -318,7 +324,7 @@ function updateGateBanner(filter) {
     const mLocked = !isUnlocked('M')
     if (tLocked || mLocked) {
       gateBanner.classList.remove('hidden')
-      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technique + Methodology series`
+      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technical + Methodology series`
       resetGateForm()
       return
     }
@@ -484,8 +490,8 @@ function filterCards(filter) {
   })
   if (noResults) noResults.classList.toggle('hidden', visible > 0)
 
-  // Show/hide grid based on Conception "coming soon"
-  const isComing = filter === 'Conception'
+  // Show/hide grid based on Design "coming soon"
+  const isComing = filter === 'Design'
   if (cardsGrid) cardsGrid.style.display = isComing ? 'none' : ''
 }
 
@@ -911,17 +917,17 @@ updateGateBanner('all')
     color: var(--text-secondary);
     border-color: var(--text-muted);
   }
-  .pdf-free {
+  .pdf-direct {
     color: #16a34a;
     border-color: color-mix(in srgb, #16a34a 40%, transparent);
     text-decoration: none;
   }
-  .pdf-free:hover {
+  .pdf-direct:hover {
     color: #15803d;
     border-color: #16a34a;
   }
-  .free-badge {
-    font-size: 0.65rem;
+  .access-badge {
+    font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -930,6 +936,17 @@ updateGateBanner('all')
     background: color-mix(in srgb, #16a34a 15%, transparent);
     color: #16a34a;
     border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
+  }
+  .access-locked {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+    color: var(--text-muted);
+    flex-shrink: 0;
   }
   .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 

@@ -1,84 +1,84 @@
 ---
-title: Debug Méthodique
-subtitle: Approche structurée pour diagnostiquer et résoudre les erreurs
+title: "Methodical Debugging"
+subtitle: "Structured approach to diagnosing and resolving errors"
 cardNumber: M21
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 121
 ---
 
-## Le problème de l'itération aveugle
+## The blind iteration problem
 
-La tentation est forte de décrire un bug vaguement et de laisser Claude essayer des corrections en série. Ce pattern est coûteux en tokens et en temps, et produit souvent des "corrections" qui masquent le problème sans le résoudre. Une approche structurée en trois phases change radicalement l'efficacité du debug.
+The temptation is strong to describe a bug vaguely and let Claude try fixes in series. This pattern is costly in tokens and time, and often produces "fixes" that mask the problem without resolving it. A structured three-phase approach radically changes debugging effectiveness.
 
-## Phase 1 : Reproduire
+## Phase 1: Reproduce
 
-Avant d'analyser ou de corriger quoi que ce soit, obtenir une reproduction fiable. Un bug qu'on ne peut pas reproduire de façon déterministe est un bug qu'on ne peut pas corriger de façon fiable.
+Before analyzing or fixing anything, obtain a reliable reproduction. A bug that cannot be reproduced deterministically is a bug that cannot be fixed reliably.
 
-Fournir à Claude le minimum nécessaire pour reproduire :
+Give Claude the minimum necessary to reproduce:
 
-- Message d'erreur exact (copier-coller, pas un résumé)
-- Stack trace complète si disponible
-- Commande ou séquence d'actions qui déclenchent l'erreur
-- Environnement : OS, version de Node/Python/etc., variables d'env pertinentes
+- Exact error message (copy-paste, not a summary)
+- Full stack trace if available
+- Command or sequence of actions that trigger the error
+- Environment: OS, Node/Python/etc. version, relevant env variables
 
-## Phase 2 : Isoler
+## Phase 2: Isolate
 
-Créer un cas de test minimal qui reproduit le bug. L'isolation sert à deux choses : elle confirme qu'on a bien compris la cause, et elle fournit un test de régression immédiat une fois le bug corrigé.
+Create a minimal test case that reproduces the bug. Isolation serves two purposes: it confirms you have correctly understood the cause, and it immediately provides a regression test once the bug is fixed.
 
 ```bash
-# Exemple : isoler un bug de parsing
+# Example: isolating a parsing bug
 node -e "
 const parse = require('./src/parser');
-const input = 'cas problématique';
+const input = 'problematic case';
 console.log(parse(input));
 "
 ```
 
-Demander à Claude d'expliquer son hypothèse avant chaque changement. Si Claude ne peut pas articuler pourquoi il modifie un fichier, c'est un signal d'itération aveugle.
+Ask Claude to explain its hypothesis before each change. If Claude cannot articulate why it is modifying a file, that is a signal of blind iteration.
 
-## Phase 3 : Corriger et vérifier
+## Phase 3: Fix and verify
 
-Une fois la cause isolée, appliquer la correction minimale. Éviter de profiter du contexte de debug pour refactorer du code adjacent : le scope creep complique la validation.
+Once the cause is isolated, apply the minimal fix. Avoid using the debug context to refactor adjacent code: scope creep complicates validation.
 
-Vérification en deux temps : le cas de test minimal passe, puis la suite de tests complète passe. Si un test existant casse après la correction, c'est que la correction a des effets de bord non anticipés.
+Two-step verification: the minimal test case passes, then the full test suite passes. If an existing test breaks after the fix, the fix has unanticipated side effects.
 
-## Prompt de debug structuré
+## Structured debug prompt
 
 ```
-Bug : [description en une phrase]
-Erreur exacte : [message + stack trace]
-Reproduction : [commande / étapes]
-Déjà essayé : [tentatives précédentes]
+Bug: [one-sentence description]
+Exact error: [message + stack trace]
+Reproduction: [command / steps]
+Already tried: [previous attempts]
 
-Avant de modifier quoi que ce soit,
-énumère tes hypothèses par ordre de probabilité.
+Before modifying anything,
+list your hypotheses in order of probability.
 ```
 
-Ce prompt force Claude à exposer son raisonnement, ce qui permet de valider ou corriger la direction avant qu'il n'écrive la moindre ligne de code.
+This prompt forces Claude to expose its reasoning, allowing you to validate or correct the direction before it writes a single line of code.
 
-## Quand utiliser des agents de debug
+## When to use debug agents
 
-Un agent unique convient pour les bugs localisés sur 1 à 3 fichiers. Pour les problèmes qui traversent plusieurs composants interconnectés (un bug de réseau qui affecte l'auth qui affecte la base de données), déléguer l'exploration à un sous-agent via le Task tool préserve le contexte principal.
+A single agent suits bugs localized to 1 to 3 files. For problems that cross multiple interconnected components (a network bug affecting auth affecting the database), delegating exploration to a sub-agent via the Task tool preserves the main context.
 
 ```
 Main agent  →  Task("Explore auth flow from request to DB")
-                └─ Sub-agent explore et retourne un résumé
-Main agent reçoit le résumé (pas le contexte brut)
+                └─ Sub-agent explores and returns a summary
+Main agent receives the summary (not the raw context)
 ```
 
-L'avantage : les erreurs du sous-agent ne polluent pas le contexte de l'agent principal.
+The advantage: sub-agent errors do not pollute the main agent's context.
 
-## Signaux d'alarme pendant le debug
+## Warning signals during debugging
 
-| Signal | Interprétation |
+| Signal | Interpretation |
 |--------|---------------|
-| Claude modifie un fichier sans explication | Demander "pourquoi ce fichier ?" |
-| Correction qui contourne l'erreur | Chercher la cause racine, pas le symptôme |
-| Tests qui passent mais comportement inchangé | Test inadapté au bug réel |
-| Même erreur après correction | Reproduction insuffisamment isolée |
+| Claude modifies a file without explanation | Ask "why this file?" |
+| Fix that works around the error | Look for root cause, not symptom |
+| Tests that pass but behavior unchanged | Test not adapted to the real bug |
+| Same error after fix | Reproduction insufficiently isolated |
 
-## Réinitialiser le contexte
+## Resetting the context
 
-Après 15 à 25 tours de conversation, Claude peut perdre de vue les contraintes énoncées en début de session. Si le debug s'étire, utiliser `/compact` pour résumer l'historique ou `/clear` pour repartir avec un contexte propre incluant uniquement les éléments essentiels.
+After 15 to 25 conversation turns, Claude can lose sight of constraints stated at session start. If debugging drags on, use `/compact` to summarize the history or `/clear` to restart with a clean context containing only the essential elements.

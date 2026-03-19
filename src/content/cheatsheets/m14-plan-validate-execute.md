@@ -1,84 +1,84 @@
 ---
-title: Plan-Validate-Execute Pipeline
-subtitle: Le workflow 3 phases pour des tâches complexes sous contrôle
+title: "Plan-Validate-Execute Pipeline"
+subtitle: "The 3-phase workflow for complex tasks under control"
 cardNumber: M14
-category: Méthodologie
+category: Methodology
 difficulty: advanced
 guideVersion: 3.32.1
 order: 114
 ---
 
-## Vue d'ensemble
+## Overview
 
-Plan-Validate-Execute est un pipeline en trois phases qui s'impose dès qu'une tâche touche plus de cinq fichiers ou deux répertoires. L'objectif : ne jamais exécuter sans avoir validé un plan explicite. Boris Cherny (Head of Claude Code chez Anthropic) démarre 80% de ses tâches en Plan Mode pour cette raison — l'exécution est presque toujours correcte du premier coup quand le plan est solide.
+Plan-Validate-Execute is a three-phase pipeline that applies as soon as a task touches more than five files or two directories. The goal: never execute without having validated an explicit plan. Boris Cherny (Head of Claude Code at Anthropic) starts 80% of his tasks in Plan Mode for this reason — execution is almost always correct on the first try when the plan is solid.
 
-## Phase 1 : Plan
+## Phase 1: Plan
 
-Entrer en Plan Mode (lecture seule) pour que Claude analyse et propose un plan d'action détaillé avant d'écrire une seule ligne.
+Enter Plan Mode (read-only) so Claude can analyze and propose a detailed action plan before writing a single line.
 
 ```bash
-# Activer le Plan Mode
-Shift+Tab x2   # Depuis Normal Mode
+# Activate Plan Mode
+Shift+Tab x2   # From Normal Mode
 
-# Ou via slash command
+# Or via slash command
 /plan
 
-# Claude génère un plan structuré :
-# 1. Lire schema.prisma
-# 2. Ajouter le champ email: String? @unique
-# 3. Générer la migration Prisma
-# 4. Mettre à jour les types TypeScript
-# Impact: 3 fichiers, 1 migration
+# Claude generates a structured plan:
+# 1. Read schema.prisma
+# 2. Add the field email: String? @unique
+# 3. Generate the Prisma migration
+# 4. Update TypeScript types
+# Impact: 3 files, 1 migration
 ```
 
-Sortir du Plan Mode : `Shift+Tab` (retour en Normal Mode). Claude demandera confirmation avant d'implémenter.
+Exit Plan Mode: `Shift+Tab` (back to Normal Mode). Claude will ask for confirmation before implementing.
 
-## Phase 2 : Validate
+## Phase 2: Validate
 
-Avant d'approuver le plan, le soumettre à une revue critique. Deux approches :
+Before approving the plan, submit it to a critical review. Two approaches:
 
-**Review manuelle** : lire le plan et identifier les angles morts (fichiers oubliés, ordre d'opérations incorrect, effets de bord non anticipés).
+**Manual review**: read the plan and identify blind spots (forgotten files, incorrect operation order, unanticipated side effects).
 
-**Agent adversarial** : déléguer la critique à un sous-agent dont la mission est de trouver des failles dans le plan proposé. Demander explicitement : "Quel est le risque principal de ce plan ? Qu'est-ce qui pourrait mal tourner ?"
+**Adversarial agent**: delegate the critique to a sub-agent whose mission is to find flaws in the proposed plan. Ask explicitly: "What is the main risk of this plan? What could go wrong?"
 
-La validation n'est pas optionnelle sur les tâches complexes — c'est le filet de sécurité.
+Validation is not optional on complex tasks — it is the safety net.
 
-## Phase 3 : Execute
+## Phase 3: Execute
 
-Une fois le plan validé, exécuter avec des checkpoints réguliers.
+Once the plan is validated, execute with regular checkpoints.
 
 ```bash
-# Quitter le Plan Mode et exécuter
-Shift+Tab   # Retour en Normal Mode
-> "Approuve ce plan et implémente étape par étape"
+# Exit Plan Mode and execute
+Shift+Tab   # Back to Normal Mode
+> "Approve this plan and implement step by step"
 
-# Pour les tâches très longues : créer les tasks avant d'exécuter
-export CLAUDE_CODE_TASK_LIST_ID="projet-migration-v2"
-# Puis TaskCreate depuis le plan validé
+# For very long tasks: create tasks before executing
+export CLAUDE_CODE_TASK_LIST_ID="project-migration-v2"
+# Then TaskCreate from the validated plan
 ```
 
-## Intégration Tasks API
+## Tasks API integration
 
-Convertir le plan validé en tasks persistantes avant l'exécution. Chaque étape du plan devient une task avec ses dépendances déclarées. Si la session est interrompue en cours d'exécution, `TaskList` permet de reprendre exactement là où on s'est arrêté.
+Convert the validated plan into persistent tasks before execution. Each step of the plan becomes a task with its declared dependencies. If the session is interrupted mid-execution, `TaskList` allows resuming exactly where you left off.
 
-## Quand appliquer ce pipeline
+## When to apply this pipeline
 
-| Critère | Seuil |
-|---------|-------|
-| Fichiers touchés | Plus de 5 |
-| Répertoires impliqués | Plus de 2 |
-| Durée estimée | Plus de 30 minutes |
-| Risque de régression | Toute modification de schéma, API publique, ou config |
+| Criterion | Threshold |
+|-----------|-----------|
+| Files touched | More than 5 |
+| Directories involved | More than 2 |
+| Estimated duration | More than 30 minutes |
+| Regression risk | Any schema, public API, or config modification |
 
-Pour les corrections rapides et les tâches connues, le pipeline ajoute plus de friction que de valeur. Le bon réflexe : douter de la complexité avant de lancer, pas après.
+For quick fixes and known tasks, the pipeline adds more friction than value. The right reflex: question the complexity before launching, not after.
 
 ## Auto Plan Mode
 
-Forcer le Plan Mode sur toutes les opérations via `--append-system-prompt` :
+Force Plan Mode on all operations via `--append-system-prompt`:
 
 ```bash
 alias claude-safe='claude --append-system-prompt \
   "$(cat ~/.claude/auto-plan-mode.txt)"'
 ```
 
-Le fichier `auto-plan-mode.txt` instruit Claude de présenter un plan et d'attendre l'approbation explicite avant chaque outil. Utile pour les sessions sur des bases de code critiques ou inconnues.
+The `auto-plan-mode.txt` file instructs Claude to present a plan and wait for explicit approval before each tool. Useful for sessions on critical or unfamiliar codebases.

@@ -1,33 +1,33 @@
 ---
-title: MCP Servers Overview
-subtitle: Le protocole d'extension et les serveurs essentiels
+title: "MCP Servers Overview"
+subtitle: "The extension protocol and essential servers"
 cardNumber: T12
-category: Technique
+category: Technical
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 12
 ---
 
-## Qu'est-ce que MCP ?
+## What is MCP?
 
-MCP (Model Context Protocol) est le standard ouvert qui permet à Claude Code de se connecter à des outils externes via un protocole JSON-RPC 2.0. Chaque MCP server expose des outils supplémentaires, nommés selon la convention `mcp__<server>__<tool>`. Claude les utilise exactement comme ses outils natifs, avec le même système de permissions.
+MCP (Model Context Protocol) is the open standard that allows Claude Code to connect to external tools via a JSON-RPC 2.0 protocol. Each MCP server exposes additional tools, named according to the `mcp__<server>__<tool>` convention. Claude uses them exactly like its native tools, with the same permissions system.
 
-**Architecture de base** : Claude Code (client) communique avec le MCP server via stdio ou HTTP. Le server démarre au premier usage et reste actif pendant toute la session.
+**Basic architecture**: Claude Code (client) communicates with the MCP server via stdio or HTTP. The server starts on first use and remains active for the entire session.
 
-## Serveurs les plus utilisés
+## Most widely used servers
 
-| Serveur | Usage principal |
-|---------|-----------------|
-| **Context7** | Documentation officielle de bibliothèques |
-| **Sequential Thinking** | Raisonnement multi-étapes structuré |
-| **Grepai** | Recherche sémantique + graphe d'appels |
-| **Serena** | Navigation symbolique, refactoring |
-| **Playwright** | Automatisation browser, tests E2E |
+| Server | Primary use |
+|--------|-------------|
+| **Context7** | Official library documentation |
+| **Sequential Thinking** | Structured multi-step reasoning |
+| **Grepai** | Semantic search + call graph |
+| **Serena** | Symbol navigation, refactoring |
+| **Playwright** | Browser automation, E2E tests |
 | **GitHub** | Issues, PRs, repositories |
 
-## Configuration dans settings.json
+## Configuration in settings.json
 
-Les MCP servers se déclarent dans `~/.claude/settings.json` (global) ou `.claude/settings.json` (projet).
+MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/settings.json` (project).
 
 ```json
 {
@@ -48,11 +48,11 @@ Les MCP servers se déclarent dans `~/.claude/settings.json` (global) ou `.claud
 }
 ```
 
-## Transport : local (stdio) vs distant (HTTP)
+## Transport: local (stdio) vs remote (HTTP)
 
-**stdio (local)** : le server tourne en tant que processus enfant sur la machine. Aucune exposition réseau, idéal pour les outils locaux comme grepai (Ollama) ou Serena.
+**stdio (local)**: the server runs as a child process on the machine. No network exposure, ideal for local tools like grepai (Ollama) or Serena.
 
-**HTTP/SSE (distant)** : le server est accessible via une URL. Utilisé pour les services hébergés comme Figma MCP (`https://mcp.figma.com/mcp`) ou des serveurs d'équipe partagés.
+**HTTP/SSE (remote)**: the server is accessible via a URL. Used for hosted services like Figma MCP (`https://mcp.figma.com/mcp`) or shared team servers.
 
 ```json
 {
@@ -67,12 +67,12 @@ Les MCP servers se déclarent dans `~/.claude/settings.json` (global) ou `.claud
 
 ## MCP Apps (SEP-1865)
 
-Extension stable depuis janvier 2026, co-développée par Anthropic et OpenAI. Elle permet aux MCP servers de retourner des interfaces interactives (HTML/JS) en plus des réponses texte classiques, rendues dans un iframe sandboxé côté client.
+Stable extension since January 2026, co-developed by Anthropic and OpenAI. It allows MCP servers to return interactive interfaces (HTML/JS) in addition to classic text responses, rendered in a sandboxed iframe on the client side.
 
-**Cas d'usage** : dashboards de données, formulaires complexes, visualisations temps réel directement dans la conversation.
+**Use cases**: data dashboards, complex forms, real-time visualizations directly within the conversation.
 
-## Limites importantes
+## Important limitations
 
-Un MCP server n'accède pas à l'historique de la conversation, il ne voit que les paramètres passés lors de l'appel. Chaque appel est indépendant sauf si le server implémente lui-même un cache. Il ne peut pas non plus modifier le system prompt de Claude ni bypasser le système de permissions.
+An MCP server does not access the conversation history — it only sees the parameters passed at call time. Each call is independent unless the server itself implements a cache. It also cannot modify Claude's system prompt or bypass the permissions system.
 
-**Coût tokens** : chaque server chargé ajoute environ 2K tokens d'overhead par session (définitions des outils). Charger uniquement ce qui est nécessaire pour le projet en cours.
+**Token cost**: each loaded server adds approximately 2K tokens of overhead per session (tool definitions). Load only what is necessary for the current project.

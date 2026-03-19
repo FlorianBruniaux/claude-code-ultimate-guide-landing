@@ -1,90 +1,90 @@
 ---
-title: Workflow Quotidien
-subtitle: La routine optimale pour une session de développement productive
+title: "Daily Workflow"
+subtitle: "The optimal routine for a productive development session"
 cardNumber: M01
-category: Méthodologie
+category: Methodology
 difficulty: beginner
 guideVersion: 3.32.1
 order: 101
 ---
 
-## La Boucle d'Interaction
+## The Interaction Loop
 
-Chaque session Claude Code suit ce schéma :
+Every Claude Code session follows this pattern:
 
 ```
-1. DESCRIBE  → Expliquer ce qu'on veut
-2. ANALYZE   → Claude explore le codebase
-3. PROPOSE   → Claude propose un diff
-4. REVIEW    → Lire et évaluer
-5. DECIDE    → Accepter / Rejeter / Modifier
-6. VERIFY    → Lancer les tests
-7. COMMIT    → Sauvegarder (optionnel)
+1. DESCRIBE  → Explain what you want
+2. ANALYZE   → Claude explores the codebase
+3. PROPOSE   → Claude proposes a diff
+4. REVIEW    → Read and evaluate
+5. DECIDE    → Accept / Reject / Modify
+6. VERIFY    → Run the tests
+7. COMMIT    → Save (optional)
 ```
 
-La clé : **Claude propose, vous décidez.** Ne jamais sauter l'étape de review, même sur des changements qui paraissent évidents.
+The key: **Claude proposes, you decide.** Never skip the review step, even on changes that seem obvious.
 
-## Démarrage de Session
+## Session Start
 
-**Avant de taper la première demande :**
+**Before typing the first request:**
 
-1. Vérifier que CLAUDE.md est chargé (première ligne affichée dans le contexte)
-2. Définir une intention claire : un seul objectif par session
-3. Commencer par `/plan` si la tâche touche plusieurs fichiers
+1. Verify CLAUDE.md is loaded (first line shown in context)
+2. Set a clear intention: one single objective per session
+3. Start with `/plan` if the task touches multiple files
 
 ```bash
-cd votre-projet
+cd your-project
 claude
-# Vérifier : "✓ CLAUDE.md loaded"
+# Check: "✓ CLAUDE.md loaded"
 ```
 
-## Pendant la Session
+## During the Session
 
-**Revue du diff à chaque étape** — ne pas laisser Claude enchaîner plusieurs changements sans validation intermédiaire. Sur des modifications significatives, demander explicitement :
+**Review the diff at each step** — do not let Claude chain multiple changes without intermediate validation. On significant modifications, ask explicitly:
 
 ```
-You: Montre-moi ce que tu as modifié avant de continuer
+You: Show me what you changed before continuing
 ```
 
-**Gestion du contexte :**
+**Context management:**
 
-| Contexte | Action |
+| Context | Action |
 |---------|--------|
-| 0-50% | Travailler librement |
-| 50-75% | Être sélectif sur les fichiers ouverts |
-| 75%+ | `/compact` maintenant |
-| 90%+ | `/clear` requis |
+| 0-50% | Work freely |
+| 50-75% | Be selective about open files |
+| 75%+ | `/compact` now |
+| 90%+ | `/clear` required |
 
-## Anti-Pattern : Le Vibe Coding
+## Anti-Pattern: Vibe Coding
 
-Laisser Claude itérer sans supervision sur plusieurs fichiers, puis découvrir les problèmes une heure plus tard. Le diff de fin de session devient illisible et le retour arrière coûteux.
+Letting Claude iterate unsupervised across multiple files, then discovering problems an hour later. The end-of-session diff becomes unreadable and rolling back is costly.
 
-**Contremesures concrètes :**
-- Valider après chaque fichier modifié, pas après tout un batch
-- Lancer les tests après chaque changement significatif
-- Committer régulièrement pour avoir des points de retour propres
+**Concrete countermeasures:**
+- Validate after each modified file, not after an entire batch
+- Run tests after each significant change
+- Commit regularly to have clean rollback points
 
-## Fin de Session
+## End of Session
 
-Avant de fermer :
+Before closing:
 
 ```bash
-# Vérifier l'état du repo
+# Check the repo state
 git diff --stat
 
-# Committer si tout est propre
-git commit -m "feat: description courte"
+# Commit if everything is clean
+git commit -m "feat: short description"
 ```
 
-Si des décisions importantes ont été prises en cours de session (choix d'architecture, conventions adoptées), les noter dans CLAUDE.md pour que la prochaine session reparte du bon contexte. Les sessions ne transfèrent pas d'elles-mêmes les décisions implicites.
+If important decisions were made during the session (architecture choices, adopted conventions), note them in CLAUDE.md so the next session starts from the right context. Sessions do not transfer implicit decisions on their own.
 
-## Format de Prompt Efficace
+## Effective Prompt Format
 
 ```
-WHAT:   Fixer le bug de timeout sur le login
+WHAT:   Fix the timeout bug on login
 WHERE:  src/auth/session.ts
-HOW:    Augmenter l'expiry de 1h à 24h
-VERIFY: Le login persiste après refresh navigateur
+HOW:    Increase expiry from 1h to 24h
+VERIFY: Login persists after browser refresh
 ```
 
-Ce cadre évite les ambiguïtés et réduit les allers-retours de clarification.
+This framework avoids ambiguities and reduces clarification back-and-forth.

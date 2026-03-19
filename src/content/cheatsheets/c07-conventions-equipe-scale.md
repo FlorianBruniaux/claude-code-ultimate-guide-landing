@@ -1,40 +1,40 @@
 ---
-title: Conventions Équipe à Grande Échelle
-subtitle: Synchroniser les pratiques Claude Code dans une équipe de 5+ développeurs
+title: "Team Conventions at Scale"
+subtitle: "Synchronizing Claude Code practices across a team of 5+ developers"
 cardNumber: C07
-category: Conception
+category: Design
 difficulty: advanced
 guideVersion: 3.32.1
 order: 207
 ---
 
-## Le problème N×M×P
+## The N×M×P problem
 
-Dans une équipe de 5 développeurs utilisant 3 outils AI sur 2 OS, vous avez potentiellement 30 configurations différentes. Dans la pratique, après 3 mois, aucun développeur n'a le même CLAUDE.md : Alice a ajouté des règles TypeScript que Bob n'a jamais reçues, Carol a configuré des paths macOS qui cassent sur Linux.
+In a team of 5 developers using 3 AI tools on 2 operating systems, you potentially have 30 different configurations. In practice, after 3 months, no two developers have the same CLAUDE.md: Alice has added TypeScript rules that Bob never received, Carol configured macOS paths that break on Linux.
 
-Ce n'est pas un problème de discipline. C'est un problème d'architecture de configuration.
+This is not a discipline problem. It is a configuration architecture problem.
 
-## Solution : Profile-Based Module Assembly
+## Solution: Profile-Based Module Assembly
 
-Au lieu d'un fichier monolithique partagé, la structure recommandée décompose les instructions en modules réutilisables assemblés par profil.
+Instead of a shared monolithic file, the recommended structure breaks instructions into reusable modules assembled by profile.
 
 ```
-profiles/          ← 1 fichier YAML par développeur
+profiles/          ← 1 YAML file per developer
   alice.yaml
   bob.yaml
-modules/           ← Instructions atomiques par topic
+modules/           ← Atomic instructions per topic
   core-standards.md
   typescript-rules.md
   git-workflow.md
   macos-paths.md
-skeleton/          ← Template avec placeholders
+skeleton/          ← Template with placeholders
   claude.md
-sync-script.ts     ← Assembleur automatique
+sync-script.ts     ← Automatic assembler
 ```
 
-Un module mis à jour se propage automatiquement à tous les développeurs au prochain `sync`.
+An updated module propagates automatically to all developers on the next `sync`.
 
-## Profil développeur (YAML)
+## Developer profile (YAML)
 
 ```yaml
 # profiles/alice.yaml
@@ -46,26 +46,26 @@ modules:
   conditional: [macos-paths, cursor-rules]
 ```
 
-Alice reçoit uniquement les modules dont elle a besoin. Bob sur Linux sans Cursor reçoit un CLAUDE.md différent, généré depuis les mêmes sources.
+Alice receives only the modules she needs. Bob on Linux without Cursor receives a different CLAUDE.md, generated from the same sources.
 
-## Résultats mesurés
+## Measured results
 
-Testé sur une équipe de 5 développeurs, stack TypeScript/Node.js :
+Tested on a team of 5 developers, TypeScript/Node.js stack:
 
-| Métrique | Monolithique | Profile-Based | Delta |
-|----------|-------------|---------------|-------|
-| Taille moyenne CLAUDE.md | 380 lignes | 185 lignes | -51% |
-| Coût tokens estimé | ~8 400 tok | ~3 450 tok | -59% |
-| Propagation d'une mise à jour | Manuelle | Automatique | |
+| Metric | Monolithic | Profile-Based | Delta |
+|--------|-----------|---------------|-------|
+| Average CLAUDE.md size | 380 lines | 185 lines | -51% |
+| Estimated token cost | ~8,400 tok | ~3,450 tok | -59% |
+| Propagating an update | Manual | Automatic | |
 
-La réduction de 59% vient du fait que chaque développeur ne charge que les modules pertinents à son environnement, au lieu du fichier complet.
+The 59% reduction comes from each developer loading only the modules relevant to their environment, instead of the full file.
 
-## settings.json versionné = règles d'équipe
+## Versioned settings.json = team rules
 
-Les règles partagées (hooks, permissions autorisées) vont dans `.claude/settings.json` versionné. Les overrides personnels dans `.claude/settings.local.json` gitignore.
+Shared rules (hooks, allowed permissions) go into the versioned `.claude/settings.json`. Personal overrides go into the gitignored `.claude/settings.local.json`.
 
 ```json
-// .claude/settings.json (équipe, dans le dépôt)
+// .claude/settings.json (team, in the repository)
 {
   "hooks": {
     "PreToolUse": [{ "matcher": "Bash", "hooks": [...] }]
@@ -73,10 +73,10 @@ Les règles partagées (hooks, permissions autorisées) vont dans `.claude/setti
 }
 ```
 
-Cette séparation garantit que les guardrails de l'équipe s'appliquent à tous, tout en laissant chaque développeur personnaliser son environnement local sans risque.
+This separation ensures that team guardrails apply to everyone, while letting each developer customize their local environment without risk.
 
-## Seuil de rentabilité
+## Break-even point
 
-La mise en place vaut la peine pour des **équipes de 5+ développeurs**. En dessous, un CLAUDE.md partagé simple suffit. Le coût de maintenance de l'assembleur (quelques dizaines de lignes TypeScript ou Python) est amorti dès le premier mois sur une équipe de 5+.
+The setup is worth it for **teams of 5+ developers**. Below that, a simple shared CLAUDE.md is sufficient. The maintenance cost of the assembler (a few dozen lines of TypeScript or Python) is recouped in the first month on a team of 5+.
 
-Pour les équipes plus petites, la stratégie simple reste efficace : un CLAUDE.md commun versionné, un `settings.local.json` par développeur pour les overrides.
+For smaller teams, the simple strategy remains effective: one shared versioned CLAUDE.md, one `settings.local.json` per developer for overrides.

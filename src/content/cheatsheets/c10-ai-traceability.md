@@ -1,28 +1,28 @@
 ---
-title: AI Traceability
-subtitle: Tracer la contribution de l'IA dans le code et les commits
+title: "AI Traceability"
+subtitle: "Tracking AI contributions in code and commits"
 cardNumber: C10
-category: Conception
+category: Design
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 210
 ---
 
-## Pourquoi tracer maintenant
+## Why trace now
 
-La majorité des outils AI (Copilot, Cursor, ChatGPT) ne laissent aucune trace dans le versioning. Les contributions IA deviennent indiscernables des contributions humaines. Ce silence crée trois problèmes concrets : les reviewers ne savent pas quoi examiner avec plus d'attention, les auditeurs ne peuvent pas vérifier l'usage de l'IA, et en cas de bug, il est impossible de savoir si la logique vient d'une décision humaine ou d'une génération automatique.
+The majority of AI tools (Copilot, Cursor, ChatGPT) leave no trace in version control. AI contributions become indistinguishable from human contributions. This silence creates three concrete problems: reviewers don't know what to examine more carefully, auditors cannot verify AI usage, and when a bug appears, it is impossible to know whether the logic came from a human decision or an automated generation.
 
-Claude Code ajoute par défaut un trailer `Co-Authored-By` dans les commits. C'est un point de départ, mais pas l'unique option.
+Claude Code adds a `Co-Authored-By` trailer to commits by default. It is a starting point, but not the only option.
 
-## Le spectre de disclosure
+## The disclosure spectrum
 
-| Niveau | Méthode | Quand l'utiliser |
-|--------|---------|-----------------|
-| Minimal | `Co-Authored-By` trailer | OSS casual, équipes petites |
-| Standard | `Assisted-by` trailer + disclosure PR | Projets actifs, contribution OSS |
-| Full | git-ai checkpoints + prompts préservés | Enterprise, conformité, audit |
+| Level | Method | When to use |
+|-------|---------|-------------|
+| Minimal | `Co-Authored-By` trailer | Casual OSS, small teams |
+| Standard | `Assisted-by` trailer + PR disclosure | Active projects, OSS contributions |
+| Full | git-ai checkpoints + preserved prompts | Enterprise, compliance, audit |
 
-**Convention `Co-Authored-By` (défaut Claude Code) :**
+**`Co-Authored-By` convention (Claude Code default):**
 
 ```
 feat: implement user authentication
@@ -32,43 +32,43 @@ JWT-based auth with refresh tokens.
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 ```
 
-**Convention `Assisted-by` (standard LLVM) :** sémantique différente. Le développeur reste l'auteur principal, l'IA a assisté.
+**`Assisted-by` convention (LLVM standard):** different semantics. The developer remains the primary author, AI assisted.
 
 ```
 Assisted-by: Claude (Anthropic)
 ```
 
-## Politiques des projets majeurs
+## Policies of major projects
 
-| Projet | Politique | Trigger |
-|--------|-----------|---------|
-| LLVM (janv. 2026) | `Assisted-by` obligatoire | Aide significative |
-| Ghostty | Disclosure dans la PR | N'importe quel outil AI |
-| Fedora | Disclosure + accountability | Usage "substantial" |
+| Project | Policy | Trigger |
+|---------|---------|---------|
+| LLVM (Jan. 2026) | `Assisted-by` required | Significant assistance |
+| Ghostty | Disclosure in PR | Any AI tool |
+| Fedora | Disclosure + accountability | "Substantial" usage |
 
-Les trois projets interdisent les agents entièrement autonomes et exigent qu'un humain comprenne, relise et reste responsable du code.
+All three projects prohibit fully autonomous agents and require that a human understands, reviews, and remains responsible for the code.
 
-**Ce que la traceability n'est pas :** une certification de qualité. Mentionner Claude ne garantit pas que le code est bon, ni qu'il a été relu. C'est de la transparence sur l'origine, pas une validation.
+**What traceability is not:** a quality certification. Mentioning Claude does not guarantee that the code is good, nor that it was reviewed. It is transparency about origin, not a validation.
 
-## Template CONTRIBUTING.md pour votre équipe
+## CONTRIBUTING.md template for your team
 
 ```markdown
 ## AI Assistance Disclosure
 
-Si vous utilisez un outil AI pour contribuer, indiquez-le
-dans la description de votre PR.
+If you use an AI tool to contribute, indicate it
+in your PR description.
 
-Quoi déclarer : code généré, recherche assistée,
-algorithmes suggérés, documentation rédigée.
+What to disclose: generated code, assisted research,
+suggested algorithms, written documentation.
 
-Pas besoin de déclarer : autocomplete trivial,
-correction grammaticale, helpers IDE.
+No need to disclose: trivial autocomplete,
+grammar correction, IDE helpers.
 ```
 
 ## AI Code Halflife
 
-Des études sur les dépôts utilisant git-ai montrent que la durée de vie médiane du code généré par IA est de 3,33 ans avant d'être remplacé, contre une durée plus longue pour le code humain. Le code AI est souvent plus générique, moins ancré dans l'architecture projet, et nécessite plus de rework quand les besoins évoluent. La traceability permet de cibler précisément ces zones lors des refactorings futurs.
+Studies on repositories using git-ai show that the median lifespan of AI-generated code is 3.33 years before being replaced, compared to a longer lifespan for human code. AI code is often more generic, less anchored in the project architecture, and requires more rework when requirements evolve. Traceability allows precisely targeting these areas during future refactoring.
 
-## Outil avancé : Entire CLI
+## Advanced tool: Entire CLI
 
-Pour les équipes enterprise, Entire CLI (Feb 2026, Thomas Dohmke) capture les sessions complètes comme checkpoints Git : prompts, tool calls, diffs et raisonnement, sur une branche orpheline sans polluer l'historique principal. Utile pour les contextes SOC2/HIPAA nécessitant une auditabilité complète.
+For enterprise teams, Entire CLI (Feb 2026, Thomas Dohmke) captures complete sessions as Git checkpoints: prompts, tool calls, diffs, and reasoning, on an orphan branch without polluting the main history. Useful for SOC2/HIPAA contexts requiring full auditability.

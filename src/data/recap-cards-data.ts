@@ -8,8 +8,7 @@ import { PDF_BASE_URL } from './whitepapers-data'
 
 export interface RecapCardSeries {
   id: 'T' | 'M' | 'C'
-  name: string                  // FR name
-  nameEn: string                // EN name
+  name: string                  // EN name
   description: string           // Short description (EN)
   color: string                 // Hex color for series badge
   cardCount: number
@@ -19,8 +18,8 @@ export interface RecapCardSeries {
 
 export const RECAP_BASE_URL = `${PDF_BASE_URL}/recap-cards`
 
-/** First 3 cards of each released series — freely downloadable, no email required */
-export const FREE_CARD_IDS: ReadonlySet<string> = new Set([
+/** First 3 cards of each released series — direct access, no email required */
+export const DIRECT_ACCESS_IDS: ReadonlySet<string> = new Set([
   't01-commandes-essentielles',
   't02-mode-non-interactif',
   't03-permission-modes',
@@ -32,8 +31,7 @@ export const FREE_CARD_IDS: ReadonlySet<string> = new Set([
 export const RECAP_SERIES: RecapCardSeries[] = [
   {
     id: 'T',
-    name: 'Technique',
-    nameEn: 'Technical',
+    name: 'Technical',
     description: 'Commands, permissions, config, MCP, sandbox, models — the core toolbox.',
     color: '#d97706',
     cardCount: 22,
@@ -42,8 +40,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
   },
   {
     id: 'M',
-    name: 'Méthodologie',
-    nameEn: 'Methodology',
+    name: 'Methodology',
     description: 'Workflows, agents, hooks, CI/CD, debugging, multi-agent — how to work.',
     color: '#3b82f6',
     cardCount: 22,
@@ -52,8 +49,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
   },
   {
     id: 'C',
-    name: 'Conception',
-    nameEn: 'Design',
+    name: 'Design',
     description: 'Trust calibration, prompting, security, architecture — how to think.',
     color: '#22c55e',
     cardCount: 13,

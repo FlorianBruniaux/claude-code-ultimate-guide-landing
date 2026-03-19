@@ -1,67 +1,67 @@
 ---
-title: Agent SDK & Intégrations IDE
-subtitle: Intégrer Claude Code dans Xcode, VS Code et d'autres environnements
+title: "Agent SDK & IDE Integrations"
+subtitle: "Integrating Claude Code into Xcode, VS Code, and other environments"
 cardNumber: C12
-category: Conception
+category: Design
 difficulty: advanced
 guideVersion: 3.32.1
 order: 212
 ---
 
-## Deux produits distincts, un framework commun
+## Two distinct products, one common framework
 
-**Claude Code CLI** est l'outil en ligne de commande pour les développeurs. **Claude Agent SDK** est le framework d'Anthropic pour construire des outils de développement propulsés par Claude dans d'autres environnements. Ce sont deux produits séparés qui partagent le même moteur d'exécution d'agents.
+**Claude Code CLI** is the command-line tool for developers. **Claude Agent SDK** is Anthropic's framework for building Claude-powered developer tools in other environments. These are two separate products that share the same agent execution engine.
 
-L'implication architecturale : les intégrations IDE (VS Code, Xcode, JetBrains) ne sont pas des ports de Claude Code CLI. Elles utilisent le même Agent SDK que Claude Code, mais exposent les capacités via l'interface native de l'IDE.
+The architectural implication: IDE integrations (VS Code, Xcode, JetBrains) are not ports of Claude Code CLI. They use the same Agent SDK as Claude Code, but expose capabilities through the IDE's native interface.
 
-## Intégrations IDE disponibles
+## Available IDE integrations
 
-**VS Code :** extension disponible dans le marketplace. S'active via `Ctrl+Shift+P > Claude Code: Start Session` ou en sélectionnant du code pour `Ask Claude`.
+**VS Code:** extension available in the marketplace. Activated via `Ctrl+Shift+P > Claude Code: Start Session` or by selecting code for `Ask Claude`.
 
-**JetBrains (IntelliJ, WebStorm, PyCharm) :** plugin installable via Settings > Plugins. Fenêtre persistante accessible via `Ctrl+Shift+A > Claude Code`.
+**JetBrains (IntelliJ, WebStorm, PyCharm):** plugin installable via Settings > Plugins. Persistent window accessible via `Ctrl+Shift+A > Claude Code`.
 
-**Xcode (v2.1.32+, Feb 2026) :** l'intégration la plus récente. Xcode 26.3 RC+ inclut un support natif du Claude Agent SDK, exposant les mêmes capacités que le CLI directement dans l'IDE Apple. Configuration via Xcode > Preferences > Claude.
+**Xcode (v2.1.32+, Feb 2026):** the most recent integration. Xcode 26.3 RC+ includes native support for the Claude Agent SDK, exposing the same capabilities as the CLI directly in the Apple IDE. Configuration via Xcode > Preferences > Claude.
 
-## Pattern d'intégration IDE via MCP
+## IDE integration pattern via MCP
 
-La règle architecturale : les intégrations IDE passent par un MCP server local, pas par l'Agent SDK directement. Un MCP server expose les capacités de l'IDE (contexte de fichier ouvert, sélection, diagnostics) à Claude, qui peut alors les utiliser comme outils.
+The architectural rule: IDE integrations go through a local MCP server, not the Agent SDK directly. A local MCP server exposes IDE capabilities (open file context, selection, diagnostics) to Claude, which can then use them as tools.
 
 ```
-IDE ──→ MCP Server local ──→ Claude Agent SDK
-       (expose: fichier actif,  (raisonne, génère,
-        sélection, diagnostics)  modifie)
+IDE ──→ Local MCP Server ──→ Claude Agent SDK
+       (exposes: active file,  (reasons, generates,
+        selection, diagnostics)  modifies)
 ```
 
-Ce pattern garantit que les intégrations IDE suivent les mêmes conventions de permissions et de sécurité que les MCPs classiques.
+This pattern ensures that IDE integrations follow the same permission and security conventions as standard MCPs.
 
-## MCPs les plus utilisés (jan. 2026)
+## Most-used MCPs (Jan. 2026)
 
 | MCP | Installs | Usage |
 |-----|----------|-------|
-| Context7 | ~72k | Documentation de librairies |
-| Ralph Wiggum | ~57k | Code review automatisé |
-| Figma MCP | ~18k | Design-to-code depuis Figma |
-| Linear MCP | ~9.5k | Tickets Linear dans le contexte |
+| Context7 | ~72k | Library documentation |
+| Ralph Wiggum | ~57k | Automated code review |
+| Figma MCP | ~18k | Design-to-code from Figma |
+| Linear MCP | ~9.5k | Linear tickets in context |
 
-**Figma MCP :** Claude accède aux designs Figma directement, génère des composants qui correspondent visuellement aux mockups sans capture d'écran intermédiaire. Utile pour réduire le gap design/implémentation.
+**Figma MCP:** Claude accesses Figma designs directly, generates components that visually match mockups without an intermediate screenshot. Useful for reducing the design/implementation gap.
 
-**Linear MCP :** les tickets et leur contexte sont accessibles dans Claude sans copier-coller manuellement les specs. Claude peut référencer un ticket dans son raisonnement.
+**Linear MCP:** tickets and their context are accessible in Claude without manually copy-pasting specs. Claude can reference a ticket in its reasoning.
 
-## Règles de vetting MCP avant installation
+## MCP vetting rules before installation
 
 ```bash
-# 1. Vérifier la source (stars, activité récente)
+# 1. Check the source (stars, recent activity)
 gh repo view <mcp-repo>
 
-# 2. Vérifier la version (ne jamais utiliser "latest")
-# Toujours épingler : @1.2.3 pas @latest
+# 2. Check the version (never use "latest")
+# Always pin: @1.2.3 not @latest
 
-# 3. Scanner si disponible
+# 3. Scan if available
 npx mcp-scan ./skill-directory
 ```
 
-Ne jamais approuver un MCP d'une source inconnue sans vérification. Une fois approuvé, les mises à jour s'exécutent sans re-consentement (le vecteur "rug pull" documenté dans security-hardening.md).
+Never approve an MCP from an unknown source without verification. Once approved, updates execute without re-consent (the "rug pull" vector documented in security-hardening.md).
 
-## Cas d'usage Agent SDK custom
+## Custom Agent SDK use cases
 
-L'Agent SDK permet de construire des intégrations au-delà des IDEs standards : outils CI/CD qui font appel à Claude pour l'analyse de PR, dashboards de qualité code, systèmes de review automatisés. La documentation officielle est disponible à `code.claude.com/docs`.
+The Agent SDK allows building integrations beyond standard IDEs: CI/CD tools that call Claude for PR analysis, code quality dashboards, automated review systems. Official documentation is available at `code.claude.com/docs`.

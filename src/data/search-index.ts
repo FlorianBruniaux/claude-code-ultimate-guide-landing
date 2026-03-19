@@ -40,7 +40,7 @@ const pageEntries: SearchEntry[] = [
   {
     id: 'page-cheatsheets',
     title: 'Recap Cards — 57 Printable Cheat Sheets',
-    keywords: 'recap cards cheat sheets printable a4 technique methodologie conception pdf serie',
+    keywords: 'recap cards cheat sheets printable a4 technical methodology design pdf series',
     category: 'Pages',
     url: '/cheatsheets/',
     source: 'landing',

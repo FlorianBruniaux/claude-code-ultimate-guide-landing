@@ -1,40 +1,40 @@
 ---
-title: 'Hooks : Événements & Système'
-subtitle: Réagir automatiquement aux actions de Claude Code
+title: "Hooks: Events & System"
+subtitle: "Automatically react to Claude Code actions"
 cardNumber: M11
-category: Méthodologie
+category: Methodology
 difficulty: intermediate
 guideVersion: 3.32.1
 order: 111
 ---
 
-## Qu'est-ce qu'un hook
+## What is a hook
 
-Un hook est un script shell (ou toute commande) exécuté automatiquement quand Claude Code déclenche un événement. Comparable aux git hooks, mais pour l'environnement de l'agent. Le script reçoit un JSON via stdin décrivant le contexte de l'événement.
+A hook is a shell script (or any command) executed automatically when Claude Code triggers an event. Comparable to git hooks, but for the agent environment. The script receives a JSON via stdin describing the event context.
 
-## Événements principaux
+## Main events
 
-| Événement | Moment | Peut bloquer |
-|-----------|--------|-------------|
-| `SessionStart` | Démarrage ou reprise | Non |
-| `UserPromptSubmit` | Avant traitement du prompt | Oui |
-| `PreToolUse` | Avant l'appel d'un outil | Oui |
-| `PostToolUse` | Après succès d'un outil | Non |
-| `Notification` | Claude envoie une notification | Non |
-| `Stop` | Claude finit de répondre | Oui |
-| `SubagentStop` | Fin d'un sous-agent | Oui |
+| Event | Moment | Can block |
+|-------|--------|-----------|
+| `SessionStart` | Startup or resume | No |
+| `UserPromptSubmit` | Before prompt processing | Yes |
+| `PreToolUse` | Before a tool call | Yes |
+| `PostToolUse` | After a tool succeeds | No |
+| `Notification` | Claude sends a notification | No |
+| `Stop` | Claude finishes responding | Yes |
+| `SubagentStop` | A sub-agent ends | Yes |
 
-## Événements Agent Teams (v2.1.32+)
+## Agent Teams events (v2.1.32+)
 
-| Événement | Utilité |
-|-----------|---------|
-| `TeammateIdle` | Un membre de l'équipe va passer en idle |
-| `TaskCompleted` | Une tâche est sur le point d'être marquée terminée |
-| `ConfigChange` | Un fichier de config a changé pendant la session |
+| Event | Use |
+|-------|-----|
+| `TeammateIdle` | A team member is about to go idle |
+| `TaskCompleted` | A task is about to be marked complete |
+| `ConfigChange` | A config file changed during the session |
 
-Ces événements permettent d'implémenter des quality gates au niveau de l'équipe d'agents : empêcher qu'une tâche soit marquée `completed` si les tests échouent, par exemple.
+These events allow implementing quality gates at the agent team level: preventing a task from being marked `completed` if tests fail, for example.
 
-## Configuration dans settings.json
+## Configuration in settings.json
 
 ```json
 {
@@ -59,24 +59,24 @@ Ces événements permettent d'implémenter des quality gates au niveau de l'équ
 }
 ```
 
-## Codes de sortie
+## Exit codes
 
-| Code | Signification |
-|------|---------------|
-| `0` | Succès, continuer normalement |
-| `2` | Bloquer l'action (message stderr visible par Claude) |
-| Autre non-0 | Erreur remontée à Claude |
+| Code | Meaning |
+|------|---------|
+| `0` | Success, continue normally |
+| `2` | Block the action (stderr message visible to Claude) |
+| Other non-0 | Error surfaced to Claude |
 
-Pour les hooks `PreToolUse`, un exit 2 empêche l'outil de s'exécuter. Claude lit le message stderr et peut adapter son comportement.
+For `PreToolUse` hooks, exit 2 prevents the tool from executing. Claude reads the stderr message and can adapt its behavior.
 
-## Synchrone vs Asynchrone
+## Synchronous vs Asynchronous
 
-Hooks synchrones (défaut) : Claude attend la fin du script. Adapté à la validation et au type checking. Hooks asynchrones (`async: true`) : Claude continue immédiatement. Adapté au formatage, aux notifications et aux logs, où le feedback n'est pas nécessaire pour la suite.
+Synchronous hooks (default): Claude waits for the script to finish. Suited for validation and type checking. Asynchronous hooks (`async: true`): Claude continues immediately. Suited for formatting, notifications, and logging, where feedback is not needed for the next step.
 
-## Flux des données stdin
+## stdin data flow
 
 ```bash
-# Exemple de JSON reçu sur stdin (PostToolUse)
+# Example JSON received on stdin (PostToolUse)
 {
   "tool_name": "Edit",
   "tool_input": { "file_path": "src/auth.ts" },
@@ -85,4 +85,4 @@ Hooks synchrones (défaut) : Claude attend la fin du script. Adapté à la valid
 }
 ```
 
-L'event `Stop` inclut également un champ `last_assistant_message` depuis v2.1.47, donnant accès direct à la dernière réponse de Claude sans parser les transcripts.
+The `Stop` event also includes a `last_assistant_message` field since v2.1.47, giving direct access to Claude's last response without parsing transcripts.
