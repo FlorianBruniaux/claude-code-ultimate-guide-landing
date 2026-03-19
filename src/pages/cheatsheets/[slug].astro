@@ -155,8 +155,10 @@ const jsonLd = [
               <input type="url" name="linkedin" id="content-gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
               <div class="gate-lang-selector">
                 <span class="gate-lang-label">PDF:</span>
-                <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="en" checked> EN</label>
-                <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="fr"> FR</label>
+                <input type="radio" name="gate-lang" value="en" id="gate-lang-en" checked class="gate-lang-radio">
+                <input type="radio" name="gate-lang" value="fr" id="gate-lang-fr" class="gate-lang-radio">
+                <button type="button" class="gate-lang-btn gate-lang-btn-en gate-lang-btn--active" data-lang="en" aria-pressed="true">EN</button>
+                <button type="button" class="gate-lang-btn gate-lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
               </div>
               <button type="submit" id="content-gate-submit" class="btn btn-primary">
                 <span class="submit-label">Unlock full card</span>
@@ -375,6 +377,19 @@ const jsonLd = [
     if (el) { el.textContent = msg; el.classList.remove('hidden') }
     if (err) err.classList.add('hidden')
   }
+
+  // Lang selector buttons
+  document.querySelectorAll('.gate-lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang
+      const radio = document.getElementById(`gate-lang-${lang}`)
+      if (radio) radio.checked = true
+      document.querySelectorAll('.gate-lang-btn').forEach(b => {
+        b.classList.toggle('gate-lang-btn--active', b.dataset.lang === lang)
+        b.setAttribute('aria-pressed', String(b.dataset.lang === lang))
+      })
+    })
+  })
 </script>
 
 <style>
@@ -736,24 +751,38 @@ const jsonLd = [
     color: var(--text-muted);
     font-weight: 500;
   }
-  .gate-lang-pill {
+  .gate-lang-radio { display: none; }
+  .gate-lang-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
     font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
+    font-weight: 700;
     padding: 0.2rem 0.5rem;
-    border-radius: 9999px;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    transition: border-color 0.15s, color 0.15s;
+    border-radius: 0.3rem;
+    border: 1px solid;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.15s, border-color 0.15s;
+    background: transparent;
   }
-  .gate-lang-pill:has(input:checked) {
-    border-color: var(--accent);
-    color: var(--accent);
+  .gate-lang-btn-en {
+    color: #16a34a;
+    border-color: color-mix(in srgb, #16a34a 35%, transparent);
   }
-  .gate-lang-pill input { display: none; }
+  .gate-lang-btn-en:hover,
+  .gate-lang-btn-en.gate-lang-btn--active {
+    background: color-mix(in srgb, #16a34a 12%, transparent);
+    border-color: #16a34a;
+  }
+  .gate-lang-btn-fr {
+    color: #2563eb;
+    border-color: color-mix(in srgb, #2563eb 35%, transparent);
+  }
+  .gate-lang-btn-fr:hover,
+  .gate-lang-btn-fr.gate-lang-btn--active {
+    background: color-mix(in srgb, #2563eb 12%, transparent);
+    border-color: #2563eb;
+  }
   .honeypot {
     position: absolute;
     left: -9999px;
