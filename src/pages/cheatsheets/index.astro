@@ -143,6 +143,11 @@ const cardUrls = cardUrlsFr
           <input type="text" name="firstname" id="gate-firstname" placeholder="Full name (optional)" autocomplete="name" maxlength="100">
           <input type="email" name="email" id="gate-email" placeholder="you@example.com" required autocomplete="email">
           <input type="url" name="linkedin" id="gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
+          <div class="gate-lang-selector">
+            <span class="gate-lang-label">PDF:</span>
+            <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="en" checked> EN</label>
+            <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="fr"> FR</label>
+          </div>
           <button type="submit" class="gate-submit" id="gate-submit">
             <span class="submit-label">Get all cards</span>
             <span class="submit-spinner hidden" aria-hidden="true"></span>
@@ -388,12 +393,14 @@ if (gateForm) {
     const honeypot = gateForm.querySelector('input[name="website"]')?.value || ''
     const utmCampaign = new URLSearchParams(location.search).get('utm_campaign') || ''
     const utmSource = new URLSearchParams(location.search).get('utm_source') || 'cheatsheets'
+    const selectedLang = gateForm.querySelector('input[name="gate-lang"]:checked')?.value || 'en'
 
     // Send one request per ZIP that needs to be unlocked
     const errors = []
     for (const sid of seriesesToSend) {
       const series = seriesData(sid)
-      if (!series || !series.hashedZipFr) continue
+      const zipFile = selectedLang === 'fr' ? series?.hashedZipFr : series?.hashedZipEn
+      if (!series || !zipFile) continue
 
       try {
         const res = await fetch(`${API_BASE}/api/subscribe`, {
@@ -402,7 +409,7 @@ if (gateForm) {
           body: JSON.stringify({
             email,
             firstName: firstname || undefined,
-            filename: series.hashedZipFr,
+            filename: zipFile,
             website: honeypot,
             source: utmSource,
             utmCampaign: utmCampaign || undefined,
@@ -766,6 +773,34 @@ updateGateBanner('all')
     overflow: hidden;
     opacity: 0;
   }
+  .gate-lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .gate-lang-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .gate-lang-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .gate-lang-pill:has(input:checked) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .gate-lang-pill input { display: none; }
   .gate-submit {
     display: inline-flex;
     align-items: center;

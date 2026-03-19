@@ -153,6 +153,11 @@ const jsonLd = [
               <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
               <input type="email" name="email" id="content-gate-email" placeholder="you@example.com" required autocomplete="email">
               <input type="url" name="linkedin" id="content-gate-linkedin" placeholder="LinkedIn profile (optional)" autocomplete="url" maxlength="200">
+              <div class="gate-lang-selector">
+                <span class="gate-lang-label">PDF:</span>
+                <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="en" checked> EN</label>
+                <label class="gate-lang-pill"><input type="radio" name="gate-lang" value="fr"> FR</label>
+              </div>
               <button type="submit" id="content-gate-submit" class="btn btn-primary">
                 <span class="submit-label">Unlock full card</span>
                 <span class="submit-spinner hidden" aria-hidden="true"></span>
@@ -305,11 +310,16 @@ const jsonLd = [
         submitBtn.querySelector('.submit-spinner').classList.remove('hidden')
       }
 
-      const seriesZips = {
+      const selectedLang = gateForm.querySelector('input[name="gate-lang"]:checked')?.value || 'en'
+      const seriesZipsFr = {
         T: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
         M: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
       }
-      const zipFile = seriesZips[seriesId]
+      const seriesZipsEn = {
+        T: 'recap-cards-technique.en.v1.0.0.cc8add9f18c3.zip',
+        M: 'recap-cards-methodologie.en.v1.0.0.11cb6e161f0f.zip',
+      }
+      const zipFile = selectedLang === 'fr' ? seriesZipsFr[seriesId] : seriesZipsEn[seriesId]
 
       if (!zipFile) {
         showError('This series is not yet available.')
@@ -716,6 +726,34 @@ const jsonLd = [
   }
   .content-gate-form input[type="email"]:focus,
   .content-gate-form input[type="url"]:focus { border-color: var(--accent); }
+  .gate-lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .gate-lang-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .gate-lang-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .gate-lang-pill:has(input:checked) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .gate-lang-pill input { display: none; }
   .honeypot {
     position: absolute;
     left: -9999px;
