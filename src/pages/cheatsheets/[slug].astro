@@ -111,23 +111,28 @@ const jsonLd = [
             )}
           </div>
         ) : (
-          <!-- Gated: JS upgrades after unlock, scrolls to content gate otherwise -->
-          <span
+          <!-- Gated: same visual as direct access, but buttons scroll to gate; JS upgrades to download links after unlock -->
+          <div
             id="slug-pdf-btn"
-            class="btn btn-primary pdf-gated-slug"
+            class="pdf-lang-group pdf-lang-group--gated"
             data-card-id={card.id}
             data-series={seriesId}
             data-hashed-url-fr={cardHashedUrlFr ?? ''}
             data-hashed-url-en={cardHashedUrlEn ?? ''}
-            role="button"
-            tabindex="0"
-            aria-label="Download PDF (unlock required)"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span id="pdf-btn-label">🔒 Unlock full card</span>
-          </span>
+            <span class="pdf-lang-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              PDF
+            </span>
+            {cardHashedUrlFr && (
+              <button type="button" class="btn btn-lang btn-lang-fr gate-lang-trigger" data-lang="fr" aria-label="Unlock French PDF">FR</button>
+            )}
+            {cardHashedUrlEn && (
+              <button type="button" class="btn btn-lang btn-lang-en gate-lang-trigger" data-lang="en" aria-label="Unlock English PDF">EN</button>
+            )}
+          </div>
         )}
         <a href="/cheatsheets/" class="btn btn-secondary">
           ← All cards
@@ -240,34 +245,20 @@ const jsonLd = [
     const urlEn = pdfBtn.dataset.hashedUrlEn || cardHashedUrlEn
     if (!urlFr && !urlEn) return
 
-    // Replace gated span with dual FR/EN pill group
-    const wrapper = document.createElement('div')
-    wrapper.className = 'pdf-lang-group'
-
-    const svgIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-    const label = document.createElement('span')
-    label.className = 'pdf-lang-label'
-    label.innerHTML = svgIcon + ' PDF'
-    wrapper.appendChild(label)
-
-    if (urlFr) {
-      const aFr = document.createElement('a')
-      aFr.href = urlFr
-      aFr.className = 'btn btn-lang btn-lang-fr'
-      aFr.setAttribute('download', '')
-      aFr.textContent = 'FR'
-      wrapper.appendChild(aFr)
-    }
-    if (urlEn) {
-      const aEn = document.createElement('a')
-      aEn.href = urlEn
-      aEn.className = 'btn btn-lang btn-lang-en'
-      aEn.setAttribute('download', '')
-      aEn.textContent = 'EN'
-      wrapper.appendChild(aEn)
-    }
-
-    pdfBtn.parentNode.replaceChild(wrapper, pdfBtn)
+    // Replace gated buttons with direct download links (keep same wrapper div)
+    pdfBtn.classList.remove('pdf-lang-group--gated')
+    const triggers = pdfBtn.querySelectorAll('.gate-lang-trigger')
+    triggers.forEach(btn => {
+      const lang = btn.dataset.lang
+      const url = lang === 'fr' ? urlFr : urlEn
+      if (!url) { btn.remove(); return }
+      const a = document.createElement('a')
+      a.href = url
+      a.className = btn.className.replace('gate-lang-trigger', '').trim()
+      a.setAttribute('download', '')
+      a.textContent = btn.textContent
+      pdfBtn.replaceChild(a, btn)
+    })
   }
 
   // Direct access cards: nothing to gate
@@ -278,17 +269,24 @@ const jsonLd = [
       // Apply locked state: truncate + blur prose
       if (prose) prose.classList.add('is-locked')
 
-      // PDF button click: scroll to content gate
+      // FR/EN gate trigger buttons: pre-select lang, scroll to gate
       if (pdfBtn) {
-        const scrollToGate = () => {
-          if (contentGate) {
-            contentGate.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            document.getElementById('content-gate-email')?.focus()
-          }
-        }
-        pdfBtn.addEventListener('click', scrollToGate)
-        pdfBtn.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToGate() }
+        pdfBtn.querySelectorAll('.gate-lang-trigger').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang
+            // Pre-select the corresponding radio
+            const radio = document.getElementById(`gate-lang-${lang}`)
+            if (radio) radio.checked = true
+            // Sync active state on gate-lang-btn buttons in the form
+            document.querySelectorAll('.gate-lang-btn').forEach(b => {
+              b.classList.toggle('gate-lang-btn--active', b.dataset.lang === lang)
+              b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false')
+            })
+            if (contentGate) {
+              contentGate.scrollIntoView({ behavior: 'smooth', block: 'center' })
+              document.getElementById('content-gate-email')?.focus()
+            }
+          })
         })
       }
     }
