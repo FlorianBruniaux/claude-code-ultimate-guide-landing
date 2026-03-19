@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.79',
+    date: 'Mar 19, 2026',
+    highlights: [
+      '<code>--console</code> flag for <code>claude auth login</code> (Anthropic Console / API billing auth); "Show turn duration" toggle in <code>/config</code>',
+      'VSCode: <code>/remote-control</code> to bridge session to claude.ai/code; session tabs get AI-generated titles from first message',
+      'Fixed <code>claude -p</code> hanging without explicit stdin; fixed enterprise users unable to retry on rate limit (429) errors',
+      'Fixed <code>SessionEnd</code> hooks not firing on interactive <code>/resume</code> switch; ~18MB startup memory improvement',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '--console auth + enterprise 429 retry fix',
+  },
+  {
     version: 'v2.1.78',
     date: 'Mar 18, 2026',
     highlights: [
@@ -24,10 +38,8 @@ export const releases: Release[] = [
       '⚠️ <strong>3 security fixes</strong>: silent sandbox disable, MCP deny rules bypassed, protected dirs writable in bypassPermissions mode',
       'Fixed infinite loop when API errors triggered stop hooks re-feeding blocking errors; fixed <code>--resume</code> truncating history on large sessions with subagents',
     ],
-    latest: true,
+    latest: false,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: 'StopFailure hook + 3 security fixes',
   },
   {
     version: 'v2.1.77',

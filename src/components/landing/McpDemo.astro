@@ -44,7 +44,7 @@ Guide [3.37.1] — 2026-03-18:
 - v2.1.77 — Opus 4.6 64k/128k output, /branch command, security fix
 - v2.1.76 — MCP elicitation, PostCompact hook, /effort command
 
-CC CLI releases: v2.1.78 released 2026-03-18 (latest tracked)
+CC CLI releases: v2.1.79 released 2026-03-19 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -150,10 +150,22 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.78 (updated: 2026-03-18)
+Latest: v2.1.79 (updated: 2026-03-19)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
+v2.1.79 — 2026-03-19
+
+- --console flag for claude auth login (Anthropic Console / API billing)
+- "Show turn duration" toggle added to /config menu
+- VSCode: /remote-control to bridge session to claude.ai/code
+- VSCode: session tabs get AI-generated titles from first message
+- Fixed claude -p hanging without explicit stdin (Python subprocess.run)
+- Fixed enterprise users unable to retry on rate limit (429) errors
+- Fixed SessionEnd hooks not firing on interactive /resume session switch
+- Fixed /btw returning main agent output instead of answering side question
+- ~18MB startup memory improvement; 2-minute non-streaming API timeout
+
 v2.1.78 — 2026-03-18
 
 - StopFailure hook event fires on API errors (rate limit, auth failure)
