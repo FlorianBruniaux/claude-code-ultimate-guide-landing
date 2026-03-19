@@ -195,35 +195,36 @@ const cardUrls = cardUrlsFr
                 <h3 class="card-title">{card.data.title}</h3>
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
-              <div class="card-footer">
-                <div class="pdf-buttons">
-                  {DIRECT_ACCESS_IDS.has(card.id) ? (
-                    <!-- Direct access: dual FR/EN buttons -->
-                    <>
-                      {cardUrlsFr[card.id] && (
-                        <a class="pdf-pill pdf-fr" href={cardUrlsFr[card.id]} download aria-label={`Download ${card.data.title} FR PDF`} onclick="event.stopPropagation()">
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          FR
-                        </a>
-                      )}
-                      {cardUrlsEn[card.id] && (
-                        <a class="pdf-pill pdf-en" href={cardUrlsEn[card.id]} download aria-label={`Download ${card.data.title} EN PDF`} onclick="event.stopPropagation()">
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          EN
-                        </a>
-                      )}
-                    </>
-                  ) : (
-                    <!-- Gated: upgraded by JS when unlocked, FR pill by default -->
-                    <span class="pdf-pill pdf-gated" data-card-id={card.id} data-series={card.data.cardNumber[0]} data-url-fr={cardUrlsFr[card.id] ?? ''} data-url-en={cardUrlsEn[card.id] ?? ''} role="button" tabindex="0" aria-label={`Download ${card.data.title} PDF`}>
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      PDF
-                    </span>
-                  )}
-                </div>
-                <span class="card-read">Read →</span>
-              </div>
+              <span class="card-read">Read →</span>
             </a>
+            <div class="card-footer">
+              <div class="pdf-buttons">
+                {DIRECT_ACCESS_IDS.has(card.id) ? (
+                  <!-- Direct access: dual FR/EN buttons -->
+                  <>
+                    {cardUrlsFr[card.id] && (
+                      <a class="pdf-pill pdf-fr" href={cardUrlsFr[card.id]} download aria-label={`Download ${card.data.title} FR PDF`}>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        FR
+                      </a>
+                    )}
+                    {cardUrlsEn[card.id] && (
+                      <a class="pdf-pill pdf-en" href={cardUrlsEn[card.id]} download aria-label={`Download ${card.data.title} EN PDF`}>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        EN
+                      </a>
+                    )}
+                  </>
+                ) : (
+                  <!-- Gated: upgraded by JS when unlocked -->
+                  <span class="pdf-pill pdf-gated" data-card-id={card.id} data-series={card.data.cardNumber[0]} data-url-fr={cardUrlsFr[card.id] ?? ''} data-url-en={cardUrlsEn[card.id] ?? ''} role="button" tabindex="0" aria-label={`Download ${card.data.title} PDF`}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    PDF
+                  </span>
+                )}
+              </div>
+              <a href={`/cheatsheets/${card.id}/`} class="card-read">Read →</a>
+            </div>
           </article>
         ))}
       </div>
@@ -267,8 +268,7 @@ function upgradeUnlockedPDFs() {
     const urlEn = (span.dataset.urlEn) || cardUrlsMapEn[cardId]
     if (!urlFr && !urlEn) return
 
-    const wrapper = document.createElement('span')
-    wrapper.className = 'pdf-buttons'
+    const frag = document.createDocumentFragment()
 
     if (urlFr) {
       const aFr = document.createElement('a')
@@ -277,8 +277,7 @@ function upgradeUnlockedPDFs() {
       aFr.setAttribute('download', '')
       aFr.setAttribute('aria-label', `Download FR PDF`)
       aFr.innerHTML = span.innerHTML.replace('PDF', 'FR')
-      aFr.addEventListener('click', e => e.stopPropagation())
-      wrapper.appendChild(aFr)
+      frag.appendChild(aFr)
     }
     if (urlEn) {
       const aEn = document.createElement('a')
@@ -287,11 +286,10 @@ function upgradeUnlockedPDFs() {
       aEn.setAttribute('download', '')
       aEn.setAttribute('aria-label', `Download EN PDF`)
       aEn.innerHTML = span.innerHTML.replace('PDF', 'EN')
-      aEn.addEventListener('click', e => e.stopPropagation())
-      wrapper.appendChild(aEn)
+      frag.appendChild(aEn)
     }
 
-    span.parentNode.replaceChild(wrapper, span)
+    span.parentNode.replaceChild(frag, span)
   })
 }
 
@@ -1043,7 +1041,8 @@ updateGateBanner('all')
     color: var(--text-muted);
     flex-shrink: 0;
   }
-  .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+  .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .card-read:hover { text-decoration: underline; }
 
   /* No results */
   .no-results {
