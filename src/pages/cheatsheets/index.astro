@@ -922,6 +922,10 @@ updateGateBanner('all')
     text-decoration: none;
     gap: 0.5rem;
   }
+  .card-link:hover,
+  .card-link:hover * {
+    text-decoration: none;
+  }
   .card-header { display: flex; align-items: center; justify-content: space-between; }
 
   /* Card number badges by series */
@@ -1041,8 +1045,15 @@ updateGateBanner('all')
     color: var(--text-muted);
     flex-shrink: 0;
   }
-  .card-read { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-decoration: none; }
-  .card-read:hover { text-decoration: underline; }
+  .card-read {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .card-read:hover { border-bottom-color: var(--accent); }
 
   /* No results */
   .no-results {
