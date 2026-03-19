@@ -13,7 +13,8 @@ export interface RecapCardSeries {
   color: string                 // Hex color for series badge
   cardCount: number
   released: boolean
-  hashedZipFr: string           // Filename sent to /api/subscribe (empty if not released)
+  hashedZipFr: string           // FR ZIP filename sent to /api/subscribe (empty if not released)
+  hashedZipEn: string           // EN ZIP filename (empty if not released)
 }
 
 export const RECAP_BASE_URL = `${PDF_BASE_URL}/recap-cards`
@@ -37,6 +38,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     cardCount: 22,
     released: true,
     hashedZipFr: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
+    hashedZipEn: 'recap-cards-technique.en.v1.0.0.cc8add9f18c3.zip',
   },
   {
     id: 'M',
@@ -46,6 +48,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     cardCount: 22,
     released: true,
     hashedZipFr: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
+    hashedZipEn: 'recap-cards-methodologie.en.v1.0.0.11cb6e161f0f.zip',
   },
   {
     id: 'C',
@@ -55,11 +58,12 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     cardCount: 13,
     released: false,
     hashedZipFr: '',
+    hashedZipEn: '',
   },
 ]
 
-/** Map: card ID (slug) → hashed PDF filename on Vercel */
-export const CARD_HASHES: Record<string, string> = {
+/** Map: card ID (slug) → hashed FR PDF filename on Vercel */
+export const CARD_HASHES_FR: Record<string, string> = {
   // ── Conception (C) — coming soon, hashes stored in claudedocs/recap-cards-c-hashes.md ──
   // ── Méthodologie (M) ────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.fr.v1.0.0.7a39ae6c702e.pdf',
@@ -107,6 +111,73 @@ export const CARD_HASHES: Record<string, string> = {
   't20-token-optimization': 't20-token-optimization.fr.v1.0.0.c998377aa34e.pdf',
   't21-fast-mode-api': 't21-fast-mode-api.fr.v1.0.0.bd8dd604cc53.pdf',
   't22-third-party-tools': 't22-third-party-tools.fr.v1.0.0.102ae98e8e0b.pdf',
+}
+
+/** Backward-compat alias — prefer CARD_HASHES_FR */
+export const CARD_HASHES = CARD_HASHES_FR
+
+/** Map: card ID (slug) → hashed EN PDF filename on Vercel */
+export const CARD_HASHES_EN: Record<string, string> = {
+  // ── Design (C) ──────────────────────────────────────────────────────────────
+  'c01-trust-calibration': 'c01-trust-calibration.en.v1.0.0.af4c08364d93.pdf',
+  'c02-prompting-basics': 'c02-prompting-basics.en.v1.0.0.ced6b3210f93.pdf',
+  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.en.v1.0.0.8177452ddc12.pdf',
+  'c04-commands-skills-plugins-agents': 'c04-commands-skills-plugins-agents.en.v1.0.0.6c5be6b77ff8.pdf',
+  'c05-memory-stack': 'c05-memory-stack.en.v1.0.0.161e5ff1eced.pdf',
+  'c06-configuration-decision-guide': 'c06-configuration-decision-guide.en.v1.0.0.11e4e83bc0dc.pdf',
+  'c07-conventions-equipe-scale': 'c07-conventions-equipe-scale.en.v1.0.0.57ef170e9883.pdf',
+  'c08-surface-attaque-menaces': 'c08-surface-attaque-menaces.en.v1.0.0.f911549b13f0.pdf',
+  'c09-prompt-injection-defenses': 'c09-prompt-injection-defenses.en.v1.0.0.53a2d8549f2d.pdf',
+  'c10-ai-traceability': 'c10-ai-traceability.en.v1.0.0.208d67d4397f.pdf',
+  'c11-subscription-vs-api-patterns': 'c11-subscription-vs-api-patterns.en.v1.0.0.59cbe8a5e855.pdf',
+  'c12-agent-sdk-integrations-ide': 'c12-agent-sdk-integrations-ide.en.v1.0.0.2311afb45733.pdf',
+  'c13-erreurs-courantes': 'c13-erreurs-courantes.en.v1.0.0.2ce8af0fef54.pdf',
+  // ── Methodology (M) ─────────────────────────────────────────────────────────
+  'm01-workflow-quotidien': 'm01-workflow-quotidien.en.v1.0.0.31f32d824b67.pdf',
+  'm02-context-management': 'm02-context-management.en.v1.0.0.041e9888596e.pdf',
+  'm03-sessions-continuite': 'm03-sessions-continuite.en.v1.0.0.9ac4ce13fb8d.pdf',
+  'm04-compact-vs-clear': 'm04-compact-vs-clear.en.v1.0.0.09a57dd5e5f3.pdf',
+  'm05-plan-mode': 'm05-plan-mode.en.v1.0.0.1d5cf45a02c0.pdf',
+  'm06-task-management-system': 'm06-task-management-system.en.v1.0.0.6b00020f26bf.pdf',
+  'm07-todowrite-vs-tasks-api': 'm07-todowrite-vs-tasks-api.en.v1.0.0.bda2431e6f7f.pdf',
+  'm08-agents-custom': 'm08-agents-custom.en.v1.0.0.972bbcd23287.pdf',
+  'm09-slash-commands': 'm09-slash-commands.en.v1.0.0.627038dba4ce.pdf',
+  'm10-skills': 'm10-skills.en.v1.0.0.9ce876d86cdb.pdf',
+  'm11-hooks-evenements-systeme': 'm11-hooks-evenements-systeme.en.v1.0.0.e6b6e71b5ea1.pdf',
+  'm12-hooks-patterns-concrets': 'm12-hooks-patterns-concrets.en.v1.0.0.0c5c73e20e34.pdf',
+  'm13-worktrees': 'm13-worktrees.en.v1.0.0.d64e338330bd.pdf',
+  'm14-plan-validate-execute': 'm14-plan-validate-execute.en.v1.0.0.bd0a82a171aa.pdf',
+  'm15-tdd-bdd-sdd': 'm15-tdd-bdd-sdd.en.v1.0.0.49b7c4131fd5.pdf',
+  'm16-multi-agent-topologie': 'm16-multi-agent-topologie.en.v1.0.0.0001de06425f.pdf',
+  'm17-multi-agent-communication-trust': 'm17-multi-agent-communication-trust.en.v1.0.0.056c0a31e09b.pdf',
+  'm18-event-driven-agents': 'm18-event-driven-agents.en.v1.0.0.76bc168d03ae.pdf',
+  'm19-github-actions': 'm19-github-actions.en.v1.0.0.e8fd37b1f5de.pdf',
+  'm20-cicd-production': 'm20-cicd-production.en.v1.0.0.b5ba7951e09e.pdf',
+  'm21-debug-methodique': 'm21-debug-methodique.en.v1.0.0.8330422f3a40.pdf',
+  'm22-observabilite-jsonl': 'm22-observabilite-jsonl.en.v1.0.0.0d956038b686.pdf',
+  // ── Technical (T) ───────────────────────────────────────────────────────────
+  't01-commandes-essentielles': 't01-commandes-essentielles.en.v1.0.0.5f6a95412479.pdf',
+  't02-mode-non-interactif': 't02-mode-non-interactif.en.v1.0.0.486a5195dd10.pdf',
+  't03-permission-modes': 't03-permission-modes.en.v1.0.0.77c4dd8dfb59.pdf',
+  't04-permissions-glob-patterns': 't04-permissions-glob-patterns.en.v1.0.0.0ac6d741dd37.pdf',
+  't05-hierarchie-configuration': 't05-hierarchie-configuration.en.v1.0.0.55713a9a6f0c.pdf',
+  't06-settings-json': 't06-settings-json.en.v1.0.0.9383f7ea0aac.pdf',
+  't07-claudemd-best-practices': 't07-claudemd-best-practices.en.v1.0.0.6c3054ed415d.pdf',
+  't08-auto-memories': 't08-auto-memories.en.v1.0.0.d155e0da7ed4.pdf',
+  't09-workspace-hygiene': 't09-workspace-hygiene.en.v1.0.0.531b2d000cb2.pdf',
+  't10-config-multi-machine': 't10-config-multi-machine.en.v1.0.0.d430c52835ca.pdf',
+  't11-search-tools-decision': 't11-search-tools-decision.en.v1.0.0.d06f26f26c05.pdf',
+  't12-mcp-servers-overview': 't12-mcp-servers-overview.en.v1.0.0.354628ed4f9a.pdf',
+  't13-context7-sequential': 't13-context7-sequential.en.v1.0.0.308fdfe437c2.pdf',
+  't14-grepai-semantic-search': 't14-grepai-semantic-search.en.v1.0.0.e4bb3da178dc.pdf',
+  't15-mcp-secrets-management': 't15-mcp-secrets-management.en.v1.0.0.4a09671ee53b.pdf',
+  't16-sandbox-natif-architecture': 't16-sandbox-natif-architecture.en.v1.0.0.fc695b63d626.pdf',
+  't17-sandbox-natif-vs-docker': 't17-sandbox-natif-vs-docker.en.v1.0.0.11ce48425180.pdf',
+  't18-modeles-thinking-modes': 't18-modeles-thinking-modes.en.v1.0.0.993db39ca240.pdf',
+  't19-context-window-200k-1m': 't19-context-window-200k-1m.en.v1.0.0.5f5f5fd47805.pdf',
+  't20-token-optimization': 't20-token-optimization.en.v1.0.0.b2eb9a06938f.pdf',
+  't21-fast-mode-api': 't21-fast-mode-api.en.v1.0.0.4f0831dcbd66.pdf',
+  't22-third-party-tools': 't22-third-party-tools.en.v1.0.0.539eeafff171.pdf',
 }
 
 /** localStorage key for shared subscriber flag */

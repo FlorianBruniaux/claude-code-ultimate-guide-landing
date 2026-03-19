@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
-import { RECAP_BASE_URL, CARD_HASHES, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
+import { RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 
 export async function getStaticPaths() {
   const cards = await getCollection('cheatsheets')
@@ -37,9 +37,13 @@ const seriesLabel: Record<string, string> = {
 }
 
 const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
-const cardHashedUrl = CARD_HASHES[card.id]
-  ? `${RECAP_BASE_URL}/${CARD_HASHES[card.id]}`
+const cardHashedUrlFr = CARD_HASHES_FR[card.id]
+  ? `${RECAP_BASE_URL}/${CARD_HASHES_FR[card.id]}`
   : null
+const cardHashedUrlEn = CARD_HASHES_EN[card.id]
+  ? `${RECAP_BASE_URL}/${CARD_HASHES_EN[card.id]}`
+  : null
+const cardHashedUrl = cardHashedUrlFr  // backward compat (used in gate script)
 const isDirectAccess = DIRECT_ACCESS_IDS.has(card.id)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
@@ -90,27 +94,31 @@ const jsonLd = [
       <h1>{card.data.title}</h1>
       <p class="card-subtitle">{card.data.subtitle}</p>
       <div class="hero-actions">
-        {isDirectAccess && cardHashedUrl ? (
-          <!-- Direct access card: no gate -->
-          <a
-            href={cardHashedUrl}
-            class="btn btn-primary"
-            download
-            aria-label={`Download ${card.data.title} PDF`}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Download PDF
-          </a>
+        {isDirectAccess ? (
+          <!-- Direct access: dual FR + EN download buttons -->
+          <div class="pdf-lang-group">
+            <span class="pdf-lang-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              PDF
+            </span>
+            {cardHashedUrlFr && (
+              <a href={cardHashedUrlFr} class="btn btn-lang btn-lang-fr" download aria-label={`Download ${card.data.title} PDF (French)`}>FR</a>
+            )}
+            {cardHashedUrlEn && (
+              <a href={cardHashedUrlEn} class="btn btn-lang btn-lang-en" download aria-label={`Download ${card.data.title} PDF (English)`}>EN</a>
+            )}
+          </div>
         ) : (
-          <!-- Gated card: JS upgrades to link when unlocked, or scrolls to content gate -->
+          <!-- Gated: JS upgrades after unlock, scrolls to content gate otherwise -->
           <span
             id="slug-pdf-btn"
             class="btn btn-primary pdf-gated-slug"
             data-card-id={card.id}
             data-series={seriesId}
-            data-hashed-url={cardHashedUrl ?? ''}
+            data-hashed-url-fr={cardHashedUrlFr ?? ''}
+            data-hashed-url-en={cardHashedUrlEn ?? ''}
             role="button"
             tabindex="0"
             aria-label="Download PDF (unlock required)"
@@ -195,7 +203,7 @@ const jsonLd = [
 
 </Layout>
 
-<script define:vars={{ seriesId, cardHashedUrl, API_BASE, isDirectAccess }}>
+<script define:vars={{ seriesId, cardHashedUrl, cardHashedUrlFr, cardHashedUrlEn, API_BASE, isDirectAccess }}>
   const LS_SUBSCRIBER = 'cc-subscriber'
   const lsUnlockKey = (s) => `cc-unlocked-${s}`
 
@@ -220,15 +228,39 @@ const jsonLd = [
   }
 
   function upgradePdfBtn() {
-    if (!pdfBtn || !cardHashedUrl) return
-    const a = document.createElement('a')
-    a.href = cardHashedUrl
-    a.className = 'btn btn-primary'
-    a.setAttribute('download', '')
-    a.innerHTML = pdfBtn.innerHTML
-    const label = a.querySelector('#pdf-btn-label')
-    if (label) label.textContent = 'Download PDF'
-    pdfBtn.parentNode.replaceChild(a, pdfBtn)
+    if (!pdfBtn) return
+    const urlFr = pdfBtn.dataset.hashedUrlFr || cardHashedUrlFr
+    const urlEn = pdfBtn.dataset.hashedUrlEn || cardHashedUrlEn
+    if (!urlFr && !urlEn) return
+
+    // Replace gated span with dual FR/EN pill group
+    const wrapper = document.createElement('div')
+    wrapper.className = 'pdf-lang-group'
+
+    const svgIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    const label = document.createElement('span')
+    label.className = 'pdf-lang-label'
+    label.innerHTML = svgIcon + ' PDF'
+    wrapper.appendChild(label)
+
+    if (urlFr) {
+      const aFr = document.createElement('a')
+      aFr.href = urlFr
+      aFr.className = 'btn btn-lang btn-lang-fr'
+      aFr.setAttribute('download', '')
+      aFr.textContent = 'FR'
+      wrapper.appendChild(aFr)
+    }
+    if (urlEn) {
+      const aEn = document.createElement('a')
+      aEn.href = urlEn
+      aEn.className = 'btn btn-lang btn-lang-en'
+      aEn.setAttribute('download', '')
+      aEn.textContent = 'EN'
+      wrapper.appendChild(aEn)
+    }
+
+    pdfBtn.parentNode.replaceChild(wrapper, pdfBtn)
   }
 
   // Direct access cards: nothing to gate
@@ -434,6 +466,47 @@ const jsonLd = [
     background: var(--bg-secondary);
   }
   .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+
+  /* FR/EN dual PDF buttons */
+  .pdf-lang-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+  }
+  .pdf-lang-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .btn-lang {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid;
+    text-decoration: none;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-lang-fr {
+    color: #2563eb;
+    border-color: color-mix(in srgb, #2563eb 35%, transparent);
+    background: color-mix(in srgb, #2563eb 8%, transparent);
+  }
+  .btn-lang-fr:hover { background: color-mix(in srgb, #2563eb 16%, transparent); border-color: #2563eb; }
+  .btn-lang-en {
+    color: #16a34a;
+    border-color: color-mix(in srgb, #16a34a 35%, transparent);
+    background: color-mix(in srgb, #16a34a 8%, transparent);
+  }
+  .btn-lang-en:hover { background: color-mix(in srgb, #16a34a 16%, transparent); border-color: #16a34a; }
 
   /* ── Content / Prose ── */
   .card-content { padding: 2.5rem 0; }

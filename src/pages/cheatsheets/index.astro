@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
-import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
+import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 
 const allCards = await getCollection('cheatsheets')
 const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
@@ -42,12 +42,17 @@ const jsonLd = [
 // API base URL for subscribe endpoint (overridable via env for local dev)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
-// Build card URL map for client-side JS (card id → full hashed URL)
-const cardUrls: Record<string, string> = {}
+// Build card URL maps for client-side JS (card id → full hashed URL)
+const cardUrlsFr: Record<string, string> = {}
+const cardUrlsEn: Record<string, string> = {}
 for (const card of cards) {
-  const hash = CARD_HASHES[card.id]
-  if (hash) cardUrls[card.id] = `${RECAP_BASE_URL}/${hash}`
+  const hashFr = CARD_HASHES_FR[card.id]
+  if (hashFr) cardUrlsFr[card.id] = `${RECAP_BASE_URL}/${hashFr}`
+  const hashEn = CARD_HASHES_EN[card.id]
+  if (hashEn) cardUrlsEn[card.id] = `${RECAP_BASE_URL}/${hashEn}`
 }
+// Legacy alias used in gate form (FR ZIPs)
+const cardUrls = cardUrlsFr
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -184,36 +189,31 @@ for (const card of cards) {
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
               <div class="card-footer">
-                {DIRECT_ACCESS_IDS.has(card.id) && cardUrls[card.id] ? (
-                  <!-- Direct access card: no gate -->
-                  <a
-                    class="pdf-download pdf-direct"
-                    href={cardUrls[card.id]}
-                    download
-                    aria-label={`Download ${card.data.title} PDF`}
-                    onclick="event.stopPropagation()"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    PDF
-                  </a>
-                ) : (
-                  <!-- Gated card: upgraded to link by JS when unlocked -->
-                  <span
-                    class="pdf-download pdf-gated"
-                    data-card-id={card.id}
-                    data-series={card.data.cardNumber[0]}
-                    aria-label={`Download ${card.data.title} PDF`}
-                    role="button"
-                    tabindex="0"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    PDF
-                  </span>
-                )}
+                <div class="pdf-buttons">
+                  {DIRECT_ACCESS_IDS.has(card.id) ? (
+                    <!-- Direct access: dual FR/EN buttons -->
+                    <>
+                      {cardUrlsFr[card.id] && (
+                        <a class="pdf-pill pdf-fr" href={cardUrlsFr[card.id]} download aria-label={`Download ${card.data.title} FR PDF`} onclick="event.stopPropagation()">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          FR
+                        </a>
+                      )}
+                      {cardUrlsEn[card.id] && (
+                        <a class="pdf-pill pdf-en" href={cardUrlsEn[card.id]} download aria-label={`Download ${card.data.title} EN PDF`} onclick="event.stopPropagation()">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          EN
+                        </a>
+                      )}
+                    </>
+                  ) : (
+                    <!-- Gated: upgraded by JS when unlocked, FR pill by default -->
+                    <span class="pdf-pill pdf-gated" data-card-id={card.id} data-series={card.data.cardNumber[0]} data-url-fr={cardUrlsFr[card.id] ?? ''} data-url-en={cardUrlsEn[card.id] ?? ''} role="button" tabindex="0" aria-label={`Download ${card.data.title} PDF`}>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      PDF
+                    </span>
+                  )}
+                </div>
                 <span class="card-read">Read →</span>
               </div>
             </a>
@@ -228,7 +228,7 @@ for (const card of cards) {
 
 </Layout>
 
-<script define:vars={{ RECAP_BASE_URL, RECAP_SERIES, API_BASE, cardUrlsMap: cardUrls }}>
+<script define:vars={{ RECAP_BASE_URL, RECAP_SERIES, API_BASE, cardUrlsMapFr: cardUrlsFr, cardUrlsMapEn: cardUrlsEn }}>
 // ──────────────────────────────────────────────────────────────────────────────
 // Recap Cards Gating Logic
 // ──────────────────────────────────────────────────────────────────────────────
@@ -249,27 +249,42 @@ function setUnlocked(seriesId) {
   } catch {}
 }
 
-// cardUrlsMap is injected at build time via define:vars
-const cardUrls = cardUrlsMap
-
-// Upgrade gated PDF spans to download links for unlocked series
+// Upgrade gated PDF spans to dual FR/EN links for unlocked series
 function upgradeUnlockedPDFs() {
   document.querySelectorAll('.pdf-gated').forEach(span => {
     const series = span.dataset.series
     const cardId = span.dataset.cardId
     if (!series || !isUnlocked(series)) return
 
-    const url = cardUrls[cardId]
-    if (!url || url.endsWith('/')) return  // missing hash
+    const urlFr = (span.dataset.urlFr) || cardUrlsMapFr[cardId]
+    const urlEn = (span.dataset.urlEn) || cardUrlsMapEn[cardId]
+    if (!urlFr && !urlEn) return
 
-    const a = document.createElement('a')
-    a.href = url
-    a.className = 'pdf-download pdf-unlocked'
-    a.setAttribute('download', '')
-    a.setAttribute('aria-label', span.getAttribute('aria-label') || 'Download PDF')
-    a.innerHTML = span.innerHTML
-    a.addEventListener('click', e => e.stopPropagation())
-    span.parentNode.replaceChild(a, span)
+    const wrapper = document.createElement('span')
+    wrapper.className = 'pdf-buttons'
+
+    if (urlFr) {
+      const aFr = document.createElement('a')
+      aFr.href = urlFr
+      aFr.className = 'pdf-pill pdf-fr'
+      aFr.setAttribute('download', '')
+      aFr.setAttribute('aria-label', `Download FR PDF`)
+      aFr.innerHTML = span.innerHTML.replace('PDF', 'FR')
+      aFr.addEventListener('click', e => e.stopPropagation())
+      wrapper.appendChild(aFr)
+    }
+    if (urlEn) {
+      const aEn = document.createElement('a')
+      aEn.href = urlEn
+      aEn.className = 'pdf-pill pdf-en'
+      aEn.setAttribute('download', '')
+      aEn.setAttribute('aria-label', `Download EN PDF`)
+      aEn.innerHTML = span.innerHTML.replace('PDF', 'EN')
+      aEn.addEventListener('click', e => e.stopPropagation())
+      wrapper.appendChild(aEn)
+    }
+
+    span.parentNode.replaceChild(wrapper, span)
   })
 }
 
@@ -898,34 +913,50 @@ updateGateBanner('all')
     padding-top: 0.5rem;
     border-top: 1px solid var(--border);
   }
-  .pdf-download {
+  .pdf-buttons {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
+  }
+  .pdf-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.45rem;
     border-radius: 0.25rem;
     border: 1px solid var(--border);
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .pdf-download:hover { color: var(--accent); border-color: var(--accent); }
-  .pdf-gated { cursor: pointer; }
-  .pdf-gated:hover {
-    color: var(--text-secondary);
-    border-color: var(--text-muted);
-  }
-  .pdf-direct {
-    color: #16a34a;
-    border-color: color-mix(in srgb, #16a34a 40%, transparent);
     text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    letter-spacing: 0.03em;
   }
-  .pdf-direct:hover {
-    color: #15803d;
-    border-color: #16a34a;
+  .pdf-fr {
+    color: #2563eb;
+    border-color: color-mix(in srgb, #2563eb 35%, transparent);
+    background: color-mix(in srgb, #2563eb 8%, transparent);
   }
+  .pdf-fr:hover { color: #1d4ed8; border-color: #2563eb; background: color-mix(in srgb, #2563eb 14%, transparent); }
+  .pdf-en {
+    color: #16a34a;
+    border-color: color-mix(in srgb, #16a34a 35%, transparent);
+    background: color-mix(in srgb, #16a34a 8%, transparent);
+  }
+  .pdf-en:hover { color: #15803d; border-color: #16a34a; background: color-mix(in srgb, #16a34a 14%, transparent); }
+  .pdf-gated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.45rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  .pdf-gated:hover { color: var(--text-secondary); border-color: var(--text-muted); }
   .access-badge {
     font-size: 0.6rem;
     font-weight: 700;
