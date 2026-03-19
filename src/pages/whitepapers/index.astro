@@ -200,7 +200,7 @@ const profiles = [
                     <form class="subscribe-form" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
                       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
                       <div class="form-row">
-                        <input type="text" name="firstname" placeholder="First name" required class="form-input" autocomplete="given-name" />
+                        <input type="text" name="firstname" placeholder="Full name" required class="form-input" autocomplete="name" />
                         <input type="email" name="email" placeholder="Email address" required class="form-input" autocomplete="email" />
                       </div>
                       <input type="url" name="linkedin" placeholder="LinkedIn profile (optional)" class="form-input form-input-full" autocomplete="off" />
@@ -907,8 +907,8 @@ const profiles = [
       const format = (form.querySelector(`[name="format-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'pdf'
       const lang = (form.querySelector(`[name="lang-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'en'
 
-      // For gated PDFs: use hashed filename (API validates against server-side whitelist)
-      // For EPUBs: direct download from landing (not gated via API)
+      // Always use the hashed PDF filename for API validation.
+      // For EPUB requests: pass epubUrl so the API sends the EPUB link in the email.
       const isEpub = format === 'epub'
       const slugFr = fileFr.replace(/\.fr\..*\.pdf$/, '')
       const slugEn = fileEn.replace(/\.en\..*\.pdf$/, '')
@@ -916,7 +916,6 @@ const profiles = [
         ? `/ebooks/epub/fr/${slugFr}.epub`
         : `/ebooks/epub/en/${slugEn}.epub`
       const filename = lang === 'fr' ? fileFr : fileEn
-      const downloadUrl = isEpub ? epubUrl : `${PDF_BASE}/${filename}`
 
       const submitBtn = form.querySelector<HTMLButtonElement>('.submit-btn')
       const submitText = form.querySelector('.submit-text')
@@ -928,23 +927,22 @@ const profiles = [
       submitSpinner?.classList.remove('hidden')
 
       try {
-        // For EPUBs: skip API (not in allowlist), trigger download directly
         const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe'
-        if (!isEpub) {
-          await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email,
-              firstName,
-              filename,
-              website: '',
-              source: utmSource,
-              ...(utmCampaign && { utmCampaign }),
-              ...(linkedin && { linkedin }),
-            }),
-          })
-        }
+        const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? 'https://cc.bruniaux.com'
+        await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            firstName,
+            filename,
+            website: '',
+            source: utmSource,
+            ...(utmCampaign && { utmCampaign }),
+            ...(linkedin && { linkedin }),
+            ...(isEpub && { epubUrl: `${SITE_URL}${epubUrl}` }),
+          }),
+        })
 
         form.classList.add('hidden')
         successMsg?.classList.remove('hidden')
@@ -959,29 +957,11 @@ const profiles = [
             ...(utmCampaign && { campaign: utmCampaign }),
           })
         }
-        // Trigger download
-        setTimeout(() => {
-          const link = document.createElement('a')
-          link.href = downloadUrl
-          if (isEpub) link.download = ''
-          else link.target = '_blank'
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-        }, 800)
       } catch (err) {
-        // On API failure: still deliver the download
         form.classList.add('hidden')
-        successMsg?.classList.remove('hidden')
-        setTimeout(() => {
-          const link = document.createElement('a')
-          link.href = downloadUrl
-          if (!isEpub) link.target = '_blank'
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-        }, 500)
-        console.warn('Subscribe API error (download still triggered):', err)
+        const errorMsg = form.parentElement?.querySelector('.form-error')
+        errorMsg?.classList.remove('hidden')
+        console.warn('Subscribe API error:', err)
       } finally {
         if (submitBtn) submitBtn.disabled = false
         submitText?.classList.remove('hidden')
