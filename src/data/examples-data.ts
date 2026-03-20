@@ -61,7 +61,8 @@ export const EXAMPLES = {
             { name: "pr-triage/", path: "skills/pr-triage/", description: "4-phase PR backlog management with worktree setup", favorite: true },
             { name: "issue-triage/", path: "skills/issue-triage/", description: "3-phase issue backlog management" },
             { name: "cyber-defense-team/", path: "skills/cyber-defense-team/", description: "Multi-agent cyber defense team orchestration" },
-            { name: "talk-pipeline/", path: "skills/talk-pipeline/", description: "6-stage pipeline: raw material to slides via Kimi" }
+            { name: "talk-pipeline/", path: "skills/talk-pipeline/", description: "6-stage pipeline: raw material to slides via Kimi" },
+            { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST — 86-92% token reduction", favorite: true }
         ]
     },
     commands: {
