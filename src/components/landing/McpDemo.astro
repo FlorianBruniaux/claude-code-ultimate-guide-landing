@@ -36,15 +36,14 @@ Guide [3.37.1] — 2026-03-18:
 - Comprehension debt concept + regulatory exposure (EU AI Act, FDA 2025)
 - CLAUDE.md anti-patterns: ETH Zürich /init research, discoverability filter, anchoring risk
 
-Guide [3.37.1] — 2026-03-18:
-- CC releases tracking updated to v2.1.78 — StopFailure hook,
-  \${CLAUDE_PLUGIN_DATA} persistent plugin state, streaming line-by-line,
-  3 security fixes (silent sandbox disable, MCP deny rules bypass,
-  protected dirs writable in bypassPermissions mode)
-- v2.1.77 — Opus 4.6 64k/128k output, /branch command, security fix
-- v2.1.76 — MCP elicitation, PostCompact hook, /effort command
+Guide [3.37.2] — 2026-03-20:
+- CC releases tracking updated to v2.1.80 — rate_limits statusline field,
+  effort frontmatter for skills, --channels MCP research preview,
+  fixed --resume dropping parallel tool results, ~80MB memory reduction
+- v2.1.79 — --console auth flag, SessionEnd fix, enterprise retry fix
+- v2.1.78 — StopFailure hook, streaming line-by-line, 3 security fixes
 
-CC CLI releases: v2.1.79 released 2026-03-19 (latest tracked)
+CC CLI releases: v2.1.80 released 2026-03-20 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -150,11 +149,11 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.79 (updated: 2026-03-19)
+Latest: v2.1.80 (updated: 2026-03-20)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
-v2.1.79 — 2026-03-19
+v2.1.80 — 2026-03-20
 
 - --console flag for claude auth login (Anthropic Console / API billing)
 - "Show turn duration" toggle added to /config menu

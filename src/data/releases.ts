@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.80',
+    date: 'Mar 20, 2026',
+    highlights: [
+      '<code>rate_limits</code> field in statusline scripts for Claude.ai usage (5h + 7d windows with <code>used_percentage</code> and <code>resets_at</code>)',
+      '<code>effort</code> frontmatter for skills/slash commands to override effort level; <code>source: \'settings\'</code> plugin marketplace (inline in settings.json)',
+      '<code>--channels</code> research preview — MCP servers can push messages into your session',
+      'Fixed <code>--resume</code> dropping parallel tool results; ~80MB memory reduction on startup for large repos',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'rate_limits statusline + effort frontmatter + --channels',
+  },
+  {
     version: 'v2.1.79',
     date: 'Mar 19, 2026',
     highlights: [
@@ -24,10 +38,7 @@ export const releases: Release[] = [
       'Fixed <code>claude -p</code> hanging without explicit stdin; fixed enterprise users unable to retry on rate limit (429) errors',
       'Fixed <code>SessionEnd</code> hooks not firing on interactive <code>/resume</code> switch; ~18MB startup memory improvement',
     ],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: '--console auth + enterprise 429 retry fix',
   },
   {
     version: 'v2.1.78',
