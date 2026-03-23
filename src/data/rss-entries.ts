@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.37.5',
+    date: 'Mar 23, 2026',
+    description: 'Five documentation gaps filled from CC releases 2.1.77-2.1.81: StopFailure hook, rate_limits statusline field, ${CLAUDE_PLUGIN_DATA} plugin storage, --bare CI mode, and sandbox.filesystem settings (allowWrite/denyRead/allowRead). Threat database updated to v2.9.0.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.37.4',
     date: 'Mar 23, 2026',
     description: 'Four new resource evaluations: Harman JiTTesting Meta paper (4/5, integrated), Caliber config quality tool (3/5, integrated), Larridin AI-native teams (4/5), Anthropic weekly watch March 16-23. New guide sections on JiTTesting methodology and Configuration Quality tooling. CC releases tracking updated to v2.1.81.',
