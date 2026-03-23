@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.81',
+    date: 'Mar 22, 2026',
+    highlights: [
+      '<code>--bare</code> flag for scripted <code>-p</code> calls — skips hooks, LSP, plugin sync, skill walks (requires API key; no OAuth)',
+      '<code>--channels</code> permission relay — channel servers can forward tool approval prompts to your phone',
+      'MCP read/search tool calls collapse into "Queried {server}" line; plan mode hides "clear context" by default',
+      'Fixed worktree session resume switching back to worktree; fixed concurrent sessions repeatedly re-authenticating on OAuth refresh',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '--bare flag + --channels relay + worktree resume fix',
+  },
+  {
     version: 'v2.1.80',
     date: 'Mar 20, 2026',
     highlights: [
@@ -24,10 +38,7 @@ export const releases: Release[] = [
       '<code>--channels</code> research preview — MCP servers can push messages into your session',
       'Fixed <code>--resume</code> dropping parallel tool results; ~80MB memory reduction on startup for large repos',
     ],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: 'rate_limits statusline + effort frontmatter + --channels',
   },
   {
     version: 'v2.1.79',

@@ -41,10 +41,10 @@ Guide [3.37.3] — 2026-03-20:
 - New skill: eval-skills — audit skills frontmatter with effort-level inference engine
 - Guide section: Progressive Code Exploration added near RTK token efficiency section
 - Resource eval: tree-sitter ecosystem (4/5), Yagr n8n-grounded agent (2/5)
-- CC releases tracking updated to v2.1.80 — rate_limits statusline field,
-  effort frontmatter for skills, --channels MCP research preview
+- CC releases tracking updated to v2.1.81 — --bare flag for scripted -p calls,
+  --channels permission relay, worktree session resume fix, MCP query collapsing
 
-CC CLI releases: v2.1.80 released 2026-03-20 (latest tracked)
+CC CLI releases: v2.1.81 released 2026-03-22 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -150,21 +150,20 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.80 (updated: 2026-03-20)
+Latest: v2.1.81 (updated: 2026-03-22)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
-v2.1.80 — 2026-03-20
+v2.1.81 — 2026-03-22
 
-- --console flag for claude auth login (Anthropic Console / API billing)
-- "Show turn duration" toggle added to /config menu
-- VSCode: /remote-control to bridge session to claude.ai/code
-- VSCode: session tabs get AI-generated titles from first message
-- Fixed claude -p hanging without explicit stdin (Python subprocess.run)
-- Fixed enterprise users unable to retry on rate limit (429) errors
-- Fixed SessionEnd hooks not firing on interactive /resume session switch
-- Fixed /btw returning main agent output instead of answering side question
-- ~18MB startup memory improvement; 2-minute non-streaming API timeout
+- --bare flag for scripted -p calls (skips hooks/LSP/plugins; API key only)
+- --channels permission relay — forward tool approvals to your phone
+- MCP read/search tool calls collapse into "Queried {server}" line (Ctrl+O)
+- Plan mode hides "clear context" by default (showClearContextOnPlanAccept: true)
+- Fixed worktree session resume switching back to worktree automatically
+- Fixed concurrent sessions repeatedly re-authenticating on OAuth token refresh
+- Fixed voice mode retry failures + audio recovery after WebSocket drop
+- Fixed Node.js 18 crash; unnecessary permission prompts for dashes in commands
 
 v2.1.78 — 2026-03-18
 
