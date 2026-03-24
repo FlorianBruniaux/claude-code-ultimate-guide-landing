@@ -38,6 +38,14 @@ jobs:
       - name: Clone guide repo
         run: git clone --depth 1 https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
 
+      - name: Compute guide stats
+        run: |
+          STARS=$(curl -s https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide | jq .stargazers_count)
+          LINES=$(wc -l < ../claude-code-ultimate-guide/guide/ultimate-guide.md)
+          echo "GUIDE_STARS=$STARS" >> $GITHUB_ENV
+          echo "GUIDE_LINES=$LINES" >> $GITHUB_ENV
+          echo "Stars: $STARS | Lines: $LINES"
+
       - name: Prepare guide content
         run: node scripts/prepare-guide-content.mjs
 

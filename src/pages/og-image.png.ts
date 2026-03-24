@@ -27,12 +27,24 @@ function countQuestions(): number {
 export const GET: APIRoute = async () => {
   const quizCount = countQuestions()
 
+  // Stars and lines are injected as env vars by the CI workflow (Compute guide stats step).
+  // Fallbacks are used for local builds.
+  const rawStars = parseInt(process.env.GUIDE_STARS ?? '0')
+  const starsLabel = rawStars >= 1000
+    ? `${(rawStars / 1000).toFixed(1).replace(/\.0$/, '')}k+`
+    : rawStars > 0 ? `${rawStars}` : '2.1k+'
+
+  const rawLines = parseInt(process.env.GUIDE_LINES ?? '0')
+  const linesLabel = rawLines > 0
+    ? `${Math.floor(rawLines / 100) * 100}+`
+    : '23,800+'
+
   // Stats (templates kept in sync with HeroBanner.astro manually)
   const stats = [
     { value: `${quizCount}`, label: 'QUIZ QUESTIONS' },
     { value: '229+', label: 'TEMPLATES' },
-    { value: '23,800+', label: 'LINES OF GUIDE' },
-    { value: '2.1k+', label: 'GITHUB STARS' },
+    { value: linesLabel, label: 'LINES OF GUIDE' },
+    { value: starsLabel, label: 'GITHUB STARS' },
   ]
 
   // Use local woff font from @fontsource/inter (satori supports woff1)
