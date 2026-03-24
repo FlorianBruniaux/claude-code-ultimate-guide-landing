@@ -31,8 +31,8 @@ export const GET: APIRoute = async () => {
   const stats = [
     { value: `${quizCount}`, label: 'QUIZ QUESTIONS' },
     { value: '229+', label: 'TEMPLATES' },
-    { value: '22,800+', label: 'LINES OF GUIDE' },
-    { value: '1.1k+', label: 'GITHUB STARS' },
+    { value: '23,800+', label: 'LINES OF GUIDE' },
+    { value: '2.1k+', label: 'GITHUB STARS' },
   ]
 
   // Use local woff font from @fontsource/inter (satori supports woff1)
