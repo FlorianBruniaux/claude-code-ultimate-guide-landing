@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.83',
+    date: 'Mar 25, 2026',
+    highlights: [
+      '<code>managed-settings.d/</code> drop-in directory — teams deploy independent policy fragments that merge alphabetically',
+      '<code>CwdChanged</code> and <code>FileChanged</code> hook events for reactive environment management (direnv, auto-toolchain)',
+      'Transcript search — press <code>/</code> in transcript mode (Ctrl+O); <code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</code> strips credentials from subprocesses',
+      'Security: fixed <code>--mcp-config</code> bypassing managed <code>allowedMcpServers</code>/<code>deniedMcpServers</code> policy; fixed macOS exit hang',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'managed-settings.d/ + CwdChanged hooks + transcript search',
+  },
+  {
     version: 'v2.1.81',
     date: 'Mar 22, 2026',
     highlights: [
@@ -24,10 +38,8 @@ export const releases: Release[] = [
       'MCP read/search tool calls collapse into "Queried {server}" line; plan mode hides "clear context" by default',
       'Fixed worktree session resume switching back to worktree; fixed concurrent sessions repeatedly re-authenticating on OAuth refresh',
     ],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: '--bare flag + --channels relay + worktree resume fix',
+    featured: false,
   },
   {
     version: 'v2.1.80',
