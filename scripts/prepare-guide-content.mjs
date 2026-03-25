@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync, rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -175,6 +176,33 @@ function rewriteCrossChapterAnchors(content, currentSlug, anchorMap) {
       return `[${text}](/guide/${targetSlug}/#${anchor})`
     }
     return match
+  })
+}
+
+/**
+ * Replace ```mermaid blocks with pre-rendered SVG HTML.
+ * Renders two SVGs per block: neutral (light) and dark theme.
+ * Falls back to original code block if mmdc unavailable or fails.
+ *
+ * @param {string} content - Markdown content
+ * @param {string} fileSlug - Unique file slug for diagram IDs (e.g. 'ai-ecosystem')
+ * @returns {string} - Content with mermaid blocks replaced by SVG HTML
+ */
+function renderMermaidBlocks(content, fileSlug) {
+  if (!mmdcAvailable) return content
+
+  let blockIndex = 0
+  return content.replace(/^```mermaid\n([\s\S]*?)^```/gm, (match, code) => {
+    const id = `${fileSlug}-${blockIndex++}`
+    const lightSvg = renderSVG(code.trim(), `${id}-light`, 'neutral')
+    const darkSvg  = renderSVG(code.trim(), `${id}-dark`,  'dark')
+
+    if (!lightSvg && !darkSvg) return match
+
+    return `<div class="mermaid-diagram">
+<div class="mermaid-light">${lightSvg ?? ''}</div>
+<div class="mermaid-dark">${darkSvg ?? ''}</div>
+</div>`
   })
 }
 
@@ -385,7 +413,8 @@ for (const { num, slug, title, desc, order } of CHAPTERS) {
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
 
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}\n---`
-  const output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
+  let output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
+  output = renderMermaidBlocks(output, slug)
 
   writeFileSync(resolve(OUT_ULTIMATE, `${slug}.md`), output, 'utf-8')
   stats.chapters++
@@ -397,7 +426,9 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 // 3b. Flush buffered guide/workflow files now that anchorMap is complete
 // -----------------------------------------------------------------------
 for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
-  const rewritten = rewriteCrossChapterAnchors(rawContent, null, anchorMap)
+  let rewritten = rewriteCrossChapterAnchors(rawContent, null, anchorMap)
+  const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
+  rewritten = renderMermaidBlocks(rewritten, fileSlug)
   const outPath = isWorkflow
     ? resolve(OUT_WORKFLOWS, file.replace('workflows/', ''))
     : resolve(OUT_GUIDE, file)

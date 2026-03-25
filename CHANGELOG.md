@@ -4,6 +4,14 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+## [2.9.1] - 2026-03-25
+
+### Fixed
+
+- **Mermaid diagrams in guide pages** (`scripts/prepare-guide-content.mjs`): Mermaid code blocks in guide content pages (`/guide/ai-ecosystem/`, `/guide/sandbox-native/`, `/guide/sandbox-isolation/`, `/guide/workflows/event-driven-agents/`, `/guide/ultimate-guide/09-advanced-patterns/`) were rendering as syntax-highlighted code instead of diagrams. Blocks are now pre-rendered to SVG at build time using `mmdc` (same approach as the `/diagrams/` page). Two SVGs per block (neutral + dark themes) toggle via `[data-theme]` CSS attribute.
+- **Shared mermaid helper** (`scripts/lib/render-mermaid.mjs`): Extracted `renderSVG` function from `build-diagrams-data.mjs` into a shared module reused by both scripts.
+- **Dark/light theme CSS** (`src/styles/starlight-overrides.css`): Added `.mermaid-diagram` CSS rules that toggle light/dark SVG variants based on Starlight's `data-theme` attribute.
+
 ## [2.9.0] - 2026-03-17
 
 ### Added

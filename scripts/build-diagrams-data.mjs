@@ -8,10 +8,9 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'fs'
-import { execSync } from 'child_process'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import os from 'os'
+import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -39,21 +38,6 @@ if (!existsSync(DIAGRAMS_DIR)) {
   console.warn('[build-diagrams] Generating empty stub...')
   writeStub()
   process.exit(0)
-}
-
-// ─── Check if mmdc is available ───────────────────────────────────────────────
-let mmdcAvailable = false
-try {
-  execSync('npx --no-install mmdc --version', { stdio: 'pipe' })
-  mmdcAvailable = true
-} catch {
-  // mmdc not installed — try via @mermaid-js/mermaid-cli
-  try {
-    execSync('npx mmdc --version', { stdio: 'pipe', timeout: 30000 })
-    mmdcAvailable = true
-  } catch {
-    console.warn('[build-diagrams] WARNING: mmdc not available — all diagrams will use ASCII fallback')
-  }
 }
 
 // ─── Parse helpers ────────────────────────────────────────────────────────────
@@ -116,49 +100,6 @@ function extractDiagramBlocks(content) {
   }
 
   return blocks
-}
-
-/**
- * Render a mermaid block to SVG using mmdc CLI.
- * Returns SVG string or null on failure.
- */
-function renderSVG(mermaidCode, diagramId) {
-  if (!mmdcAvailable) return null
-
-  const tmpIn = resolve(os.tmpdir(), `diagram-${diagramId}.mmd`)
-  const tmpOut = resolve(os.tmpdir(), `diagram-${diagramId}.svg`)
-
-  try {
-    writeFileSync(tmpIn, mermaidCode, 'utf-8')
-
-    execSync(
-      `npx mmdc -i "${tmpIn}" -o "${tmpOut}" -t neutral -b transparent`,
-      { stdio: 'pipe', timeout: 30000 }
-    )
-
-    if (!existsSync(tmpOut)) {
-      console.warn(`[build-diagrams] WARNING: SVG output not found for ${diagramId}`)
-      return null
-    }
-
-    let svg = readFileSync(tmpOut, 'utf-8')
-
-    // Remove XML prolog if present
-    svg = svg.replace(/<\?xml[^>]*\?>\s*/g, '')
-
-    // Make SVG ID unique per diagram to prevent CSS selector conflicts
-    const safeId = `diagram-${diagramId.replace(/[^a-z0-9]/gi, '-')}`
-    svg = svg.replace(/id="my-svg"/g, `id="${safeId}"`)
-    svg = svg.replace(/#my-svg\b/g, `#${safeId}`)
-
-    // Add class to root <svg> element
-    svg = svg.replace(/<svg\s/, `<svg class="diagram-svg" `)
-
-    return svg
-  } catch (err) {
-    console.warn(`[build-diagrams] WARNING: mmdc failed for ${diagramId}: ${err.message}`)
-    return null
-  }
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────

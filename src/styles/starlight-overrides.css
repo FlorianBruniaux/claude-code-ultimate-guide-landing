@@ -294,3 +294,22 @@ a.sl-link-button.secondary {
 .sl-markdown-content > :first-child {
   margin-top: 0 !important;
 }
+
+/* ── Mermaid diagrams (pre-rendered SVG, dark/light toggle) ──────────── */
+.mermaid-diagram {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.mermaid-diagram .mermaid-light { display: block; }
+.mermaid-diagram .mermaid-dark  { display: none; }
+
+[data-theme='dark'] .mermaid-diagram .mermaid-light { display: none; }
+[data-theme='dark'] .mermaid-diagram .mermaid-dark  { display: block; }
+
+.mermaid-diagram .diagram-svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
