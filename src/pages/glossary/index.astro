@@ -1,0 +1,350 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { glossaryTerms, groupByLetter, categoryColors } from '../../data/glossary-data'
+
+const title = 'Claude Code Glossary: 130+ Terms Defined'
+const description = 'Comprehensive alphabetical glossary of Claude Code terms, community patterns, and AI engineering concepts. From CLAUDE.md to vibe coding, Plan Mode to prompt injection.'
+
+const grouped = groupByLetter(glossaryTerms)
+const letters = Array.from(grouped.keys()).sort()
+const totalTerms = glossaryTerms.length
+
+const jsonLd = [
+  {
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": "https://cc.bruniaux.com/glossary/",
+    "datePublished": "2026-03-25",
+    "dateModified": "2026-03-25",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Claude Code Ultimate Guide",
+      "url": "https://cc.bruniaux.com/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Florian Bruniaux",
+      "url": "https://github.com/FlorianBruniaux"
+    }
+  },
+  {
+    "@type": "DefinedTermSet",
+    "name": "Claude Code Glossary",
+    "url": "https://cc.bruniaux.com/glossary/",
+    "hasDefinedTerm": glossaryTerms.slice(0, 20).map(t => ({
+      "@type": "DefinedTerm",
+      "name": t.term,
+      "description": t.definition,
+    }))
+  }
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-badge">Reference</div>
+      <h1>Claude Code Glossary</h1>
+      <p class="hero-subtitle">
+        {totalTerms} terms — Claude Code concepts, community patterns, and AI engineering vocabulary.
+        Standard CS terms (JWT, CI/CD, REST) are excluded.
+      </p>
+
+      <!-- Quick alphabet nav -->
+      <nav class="alpha-nav" aria-label="Jump to letter">
+        {letters.map(letter => (
+          <a href={`#letter-${letter}`} class="alpha-link">{letter}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="glossary-section">
+    <div class="container">
+      {letters.map(letter => {
+        const terms = grouped.get(letter)!
+        return (
+          <div class="letter-group" id={`letter-${letter}`}>
+            <div class="letter-heading">
+              <span class="letter-char">{letter}</span>
+              <span class="letter-count">{terms.length}</span>
+            </div>
+            <div class="terms-list">
+              {terms.map(t => (
+                <div class="term-row" data-cat={t.category}>
+                  <div class="term-left">
+                    <h3 class="term-name">
+                      {t.link
+                        ? <a href={t.link} class="term-link" target={t.link.startsWith('http') ? '_blank' : undefined} rel={t.link.startsWith('http') ? 'noopener noreferrer' : undefined}>{t.term}</a>
+                        : t.term
+                      }
+                    </h3>
+                    <div class="term-meta">
+                      <span class={`badge ${categoryColors[t.category] ?? 'badge-default'}`}>{t.category}</span>
+                      <span class="badge badge-sub">{t.subcategory}</span>
+                    </div>
+                  </div>
+                  <p class="term-def">{t.definition}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="glossary-cta">
+    <div class="container">
+      <p>Full context in the <a href="/guide/" class="cta-link">Ultimate Guide</a> — or contribute a missing term on <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues" target="_blank" rel="noopener noreferrer" class="cta-link">GitHub</a>.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .page-hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    margin: 0 0 0.75rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    max-width: 540px;
+    margin: 0 0 2rem;
+    line-height: 1.65;
+  }
+
+  /* ── Alphabet nav ── */
+  .alpha-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .alpha-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  .alpha-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+
+  /* ── Glossary section ── */
+  .glossary-section {
+    padding: 3rem 0 5rem;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Letter group ── */
+  .letter-group {
+    margin-bottom: 2.5rem;
+    scroll-margin-top: 5rem;
+  }
+  .letter-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    padding: 0.55rem 0.9rem;
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .letter-char {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--color-accent);
+    line-height: 1;
+    min-width: 1ch;
+  }
+  .letter-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: color-mix(in srgb, var(--color-border) 80%, transparent);
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    margin-left: auto;
+  }
+
+  /* ── Term list ── */
+  .terms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .term-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0 2rem;
+    padding: 0.9rem 1.25rem 0.9rem 0.85rem;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+    border-left: 3px solid transparent;
+    align-items: start;
+    transition: background 0.1s;
+  }
+  .term-row:last-child {
+    border-bottom: none;
+  }
+  .term-row:nth-child(even) {
+    background: color-mix(in srgb, currentColor 4%, transparent);
+  }
+  .term-row:hover {
+    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  }
+
+  /* Category left-border colors */
+  .term-row[data-cat="Claude Code"]   { border-left-color: #3b82f6; }
+  .term-row[data-cat="AI"]            { border-left-color: #ec4899; }
+  .term-row[data-cat="Workflow"]      { border-left-color: #10b981; }
+  .term-row[data-cat="Security"]      { border-left-color: #ef4444; }
+  .term-row[data-cat="Models"]        { border-left-color: #8b5cf6; }
+  .term-row[data-cat="Ecosystem"]     { border-left-color: #f59e0b; }
+  .term-row[data-cat="Methodology"]   { border-left-color: #6b7280; }
+  .term-row[data-cat="Architecture"]  { border-left-color: #0ea5e9; }
+  .term-row[data-cat="Operations"]    { border-left-color: #22c55e; }
+
+  /* ── Term left (name + badge) ── */
+  .term-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-right: 0.5rem;
+  }
+  .term-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.35;
+    word-break: break-word;
+    font-family: inherit;
+  }
+  .term-link {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .term-link:hover {
+    text-decoration: underline;
+  }
+  .term-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  /* ── Term definition ── */
+  .term-def {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-sub {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+  .badge-cc       { background: #dbeafe; color: #1e40af; }
+  .badge-ai       { background: #fce7f3; color: #9d174d; }
+  .badge-workflow { background: #d1fae5; color: #065f46; }
+  .badge-security { background: #fee2e2; color: #991b1b; }
+  .badge-models   { background: #ede9fe; color: #5b21b6; }
+  .badge-ecosystem { background: #fef3c7; color: #92400e; }
+  .badge-methodology { background: #f3f4f6; color: #374151; }
+  .badge-arch     { background: #e0f2fe; color: #075985; }
+  .badge-ops      { background: #f0fdf4; color: #14532d; }
+  .badge-default  { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+
+  :global(.dark) .badge-cc       { background: rgba(30,58,95,0.8);  color: #93c5fd; }
+  :global(.dark) .badge-ai       { background: rgba(74,25,66,0.8);  color: #f9a8d4; }
+  :global(.dark) .badge-workflow { background: rgba(6,78,59,0.8);   color: #6ee7b7; }
+  :global(.dark) .badge-security { background: rgba(69,10,10,0.8);  color: #fca5a5; }
+  :global(.dark) .badge-models   { background: rgba(46,16,101,0.8); color: #c4b5fd; }
+  :global(.dark) .badge-ecosystem { background: rgba(69,26,3,0.8);  color: #fcd34d; }
+  :global(.dark) .badge-methodology { background: rgba(31,41,55,0.8); color: #d1d5db; }
+  :global(.dark) .badge-arch     { background: rgba(12,74,110,0.8); color: #7dd3fc; }
+  :global(.dark) .badge-ops      { background: rgba(5,46,22,0.8);   color: #86efac; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .term-row {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      padding: 0.9rem 0.85rem;
+    }
+    .alpha-link {
+      width: 1.9rem;
+      height: 1.9rem;
+      font-size: 0.78rem;
+    }
+  }
+
+  /* ── CTA ── */
+  .glossary-cta {
+    padding: 2rem 0 4rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .cta-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-link:hover { text-decoration: underline; }
+</style>
