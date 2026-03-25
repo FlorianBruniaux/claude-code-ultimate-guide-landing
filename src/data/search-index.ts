@@ -7,6 +7,7 @@ import { EXAMPLES } from './examples-data.ts'
 import { releases } from './releases.ts'
 import { GUIDE_ENTRIES } from './guide-search-entries.ts'
 import { GUIDE_CONTENT_ENTRIES } from './guide-content-entries.ts'
+import { glossaryTerms } from './glossary-data.ts'
 
 export type SearchSource = 'landing' | 'guide'
 
@@ -83,6 +84,22 @@ const pageEntries: SearchEntry[] = [
     keywords: 'security cve vulnerabilities threats attacks prompt injection hardening',
     category: 'Pages',
     url: '/security/',
+    source: 'landing',
+  },
+  {
+    id: 'page-context-engineering',
+    title: 'Context Engineering: Tools & Ecosystem',
+    keywords: 'context engineering token optimization compression rtk headroom llmlingua edgee portkey langfuse rag kv cache vllm sglang lllmops observability minimum viable context mvc context rot semantic priming',
+    category: 'Pages',
+    url: '/context-engineering/',
+    source: 'landing',
+  },
+  {
+    id: 'page-glossary',
+    title: 'Glossary — 130+ Terms Defined',
+    keywords: 'glossary terms definitions vocabulary concepts patterns claude code reference',
+    category: 'Pages',
+    url: '/glossary/',
     source: 'landing',
   },
   {
@@ -476,6 +493,16 @@ const diagramEntries: SearchEntry[] = [
   },
 ]
 
+// ─── Glossary entries ─────────────────────────────────────────────────────────
+const glossaryEntries: SearchEntry[] = glossaryTerms.map(t => ({
+  id: `glossary-${t.term.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+  title: t.term,
+  keywords: `${t.term.toLowerCase()} ${t.category.toLowerCase()} ${t.subcategory.toLowerCase()} glossary definition`,
+  category: `Glossary › ${t.category}`,
+  url: `/glossary/#letter-${t.term[0].toUpperCase()}`,
+  source: 'landing' as const,
+}))
+
 // ─── Assemble full index ──────────────────────────────────────────────────────
 export const SEARCH_INDEX: SearchEntry[] = [
   ...pageEntries,
@@ -485,6 +512,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...releaseEntries,
   ...securityEntries,
   ...diagramEntries,
+  ...glossaryEntries,
   ...(GUIDE_ENTRIES as SearchEntry[]),
   ...(GUIDE_CONTENT_ENTRIES as SearchEntry[]),
 ]

@@ -1,0 +1,721 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Context Engineering Tools 2026: Compress, Optimize & Monitor LLM Context'
+const description = 'Complete map of context engineering tools — RTK (89% token reduction), Headroom (lossless compression), LLMLingua (20x), Edgee, Portkey, Langfuse, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "Context Engineering: Tools & Ecosystem 2026",
+    "description": "Practical guide to the tools that compress, optimize, route, and observe LLM context — from CLI output filters to AI gateways to LLMOps platforms",
+    "url": "https://cc.bruniaux.com/context-engineering/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/context-engineering/",
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "datePublished": "2026-03-25",
+    "dateModified": "2026-03-25",
+    "inLanguage": "en",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "AI engineers, developers building LLM applications, DevOps teams deploying models"
+    },
+    "keywords": "context engineering, token optimization, LLM context window, RTK rust token killer, LLMLingua, Headroom, Edgee, Portkey, Langfuse, RAG optimization, KV cache, AI gateway, LLMOps"
+  }
+]
+
+const tools = [
+  {
+    category: "Output Compression",
+    icon: "⚡",
+    description: "Filter CLI and tool output before it reaches the model",
+    color: "orange",
+    tools: [
+      { name: "RTK", tagline: "CLI proxy, 89% avg savings", stars: "446" },
+      { name: "Headroom", tagline: "Lossless, 70–95% on structured data", stars: null },
+    ]
+  },
+  {
+    category: "Prompt Compression",
+    icon: "🗜",
+    description: "Reduce input tokens before sending to the LLM",
+    color: "blue",
+    tools: [
+      { name: "LLMLingua", tagline: "20x compression, ~1.5% perf loss", stars: null },
+      { name: "LLMLingua-2", tagline: "Distillation-based, faster", stars: null },
+    ]
+  },
+  {
+    category: "AI Gateways",
+    icon: "🔀",
+    description: "Routing, guardrails, and compression at the API layer",
+    color: "purple",
+    tools: [
+      { name: "Edgee", tagline: "Edge compression up to 50%", stars: null },
+      { name: "Portkey", tagline: "250+ LLMs, semantic caching", stars: null },
+    ]
+  },
+  {
+    category: "RAG Optimization",
+    icon: "🔍",
+    description: "Improve retrieval quality and reduce retrieval noise",
+    color: "teal",
+    tools: [
+      { name: "Contextual Retrieval", tagline: "Anthropic — 67% fewer failures", stars: null },
+      { name: "RAG Triad", tagline: "Evaluation: context / answer / groundedness", stars: null },
+    ]
+  },
+  {
+    category: "Memory Systems",
+    icon: "🧠",
+    description: "Persist context across sessions without flooding the window",
+    color: "green",
+    tools: [
+      { name: "ICM", tagline: "Infinite Context Memory, dual-layer", stars: null },
+      { name: "/compact", tagline: "Native Claude Code — use at 70%", stars: null },
+    ]
+  },
+  {
+    category: "LLMOps",
+    icon: "📊",
+    description: "Trace, measure, and improve your AI pipelines",
+    color: "red",
+    tools: [
+      { name: "Langfuse", tagline: "Open-source tracing, self-hostable", stars: null },
+      { name: "Arize Phoenix", tagline: "RAG Triad evaluation specialist", stars: null },
+    ]
+  },
+]
+
+const concepts = [
+  {
+    name: "Minimum Viable Context",
+    abbr: "MVC",
+    definition: "Provide exactly what the model needs — nothing more. Over-context degrades adherence as fast as under-context produces hallucinations.",
+    example: "20 precise rules beat 200 generic ones."
+  },
+  {
+    name: "Context Rot",
+    abbr: null,
+    definition: "As context length grows, models ignore information in the middle. Instructions at line 400 of a CLAUDE.md are followed ~60% as often as instructions at line 10.",
+    example: "Run /compact at 70%, not 90%."
+  },
+  {
+    name: "Semantic Priming",
+    abbr: null,
+    definition: "Ultra-compressed context works not by verbatim recall, but by activating the model's pre-trained knowledge. 10 precise keywords can outperform 100 tokens of prose.",
+    example: "\"OpenAPI 3.1, strict, no nullable\" > two paragraphs."
+  },
+]
+
+const useCaseMatrix = [
+  {
+    persona: "Claude Code developer",
+    problems: [
+      { problem: "Commands flooding context", tool: "RTK" },
+      { problem: "Context growing too long", tool: "/compact at 70%" },
+      { problem: "Rules ignored in large CLAUDE.md", tool: "Path-scoping" },
+      { problem: "Session memory lost", tool: "ICM" },
+    ]
+  },
+  {
+    persona: "AI application builder",
+    problems: [
+      { problem: "Tool output JSON too verbose", tool: "Headroom" },
+      { problem: "Prompts too long", tool: "LLMLingua" },
+      { problem: "Multi-provider routing", tool: "Portkey" },
+      { problem: "RAG chunks losing context", tool: "Contextual Retrieval" },
+      { problem: "Guardrails + compression at edge", tool: "Edgee" },
+      { problem: "RAG quality measurement", tool: "Arize Phoenix" },
+    ]
+  },
+  {
+    persona: "Self-hosted LLM deployer",
+    problems: [
+      { problem: "GPU memory fragmentation", tool: "vLLM (PagedAttention)" },
+      { problem: "Shared-prefix cache reuse", tool: "SGLang (RadixAttention)" },
+      { problem: "Repeated query caching", tool: "Redis semantic cache" },
+    ]
+  },
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">15+ tools mapped</span>
+        <span class="hero-badge hero-badge--secondary">Updated March 2026</span>
+        <span class="hero-badge hero-badge--secondary">RTK · Headroom · LLMLingua · Edgee · Portkey</span>
+      </div>
+      <h1>Context Engineering: Tools & Ecosystem</h1>
+      <p class="tagline">The context window is not storage — it's a budget of attention. This page maps the tools that help you spend it well.</p>
+      <div class="cta-buttons">
+        <a href="#tool-categories" class="btn btn-primary">Explore Tools</a>
+        <a href="https://cc.bruniaux.com/guide/ecosystem/context-engineering-tools/" class="btn btn-secondary">Full Reference Guide</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Paradigm shift -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="paradigm-grid">
+        <div class="paradigm-text">
+          <span class="section-badge">The Shift</span>
+          <h2 class="section-title">From Prompt Engineering to Context Engineering</h2>
+          <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture — what the model knows before any request begins.</p>
+          <p>When Claude generates generic output, ignores a convention, or hallucinates, the model is almost never broken. The context it received was incomplete, stale, or carrying too much noise. That reframe shifts troubleshooting from "the AI is bad at this" to "what is missing from the context?"</p>
+          <p>The tools on this page attack that problem from different angles: compressing what enters the context, filtering what shouldn't, routing intelligently, and measuring the results.</p>
+        </div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Prompt Engineering</th>
+                <th>Context Engineering</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Question</td>
+                <td>How to phrase this?</td>
+                <td>What should the model know?</td>
+              </tr>
+              <tr>
+                <td>Scope</td>
+                <td>Single request</td>
+                <td>Full system</td>
+              </tr>
+              <tr>
+                <td>Data source</td>
+                <td>Static user input</td>
+                <td>RAG, memory, tool outputs</td>
+              </tr>
+              <tr>
+                <td>Goal</td>
+                <td>One good response</td>
+                <td>Reliable system at scale</td>
+              </tr>
+              <tr>
+                <td>Approach</td>
+                <td>Heuristic, artisanal</td>
+                <td>Algorithmic, systematic</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Concepts -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Three Concepts That Change How You Think</h2>
+      <p class="section-subtitle">Before picking tools, these mental models determine whether you're solving the right problem.</p>
+      <div class="concepts-grid">
+        {concepts.map(c => (
+          <div class="concept-card">
+            <div class="concept-header">
+              <h3>{c.name}</h3>
+              {c.abbr && <span class="concept-abbr">{c.abbr}</span>}
+            </div>
+            <p class="concept-definition">{c.definition}</p>
+            <div class="concept-example">
+              <span class="concept-example-label">In practice</span>
+              <span>{c.example}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Categories -->
+  <section class="section section--alt" id="tool-categories">
+    <div class="container">
+      <h2 class="section-title">Six Tool Categories</h2>
+      <p class="section-subtitle">Each category intercepts at a different point in the pipeline — from CLI output to API gateway to observability layer.</p>
+      <div class="tool-categories-grid">
+        {tools.map(cat => (
+          <div class={`tool-category-card tool-category-card--${cat.color}`}>
+            <div class="tool-category-header">
+              <span class="tool-category-icon">{cat.icon}</span>
+              <div>
+                <h3 class="tool-category-name">{cat.category}</h3>
+                <p class="tool-category-desc">{cat.description}</p>
+              </div>
+            </div>
+            <ul class="tool-list">
+              {cat.tools.map(t => (
+                <li class="tool-item">
+                  <span class="tool-name">{t.name}</span>
+                  <span class="tool-tagline">{t.tagline}</span>
+                  {t.stars && <span class="tool-stars">★ {t.stars}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmarks -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Benchmarks Worth Knowing</h2>
+      <p class="section-subtitle">These numbers come from published research and production data — not marketing copy.</p>
+      <div class="benchmarks-grid">
+        <div class="benchmark-card">
+          <div class="benchmark-number">89%</div>
+          <div class="benchmark-label">avg token reduction</div>
+          <div class="benchmark-source">RTK — measured across git, test, and build commands</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="benchmark-number">20x</div>
+          <div class="benchmark-label">prompt compression</div>
+          <div class="benchmark-source">LLMLingua — 1.5% performance loss on GSM8K & BBH</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="benchmark-number">67%</div>
+          <div class="benchmark-label">fewer RAG failures</div>
+          <div class="benchmark-source">Anthropic Contextual Retrieval + BM25 + reranking</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="benchmark-number">90%</div>
+          <div class="benchmark-label">API cost reduction</div>
+          <div class="benchmark-source">Anthropic prompt caching on shared system prompts</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="benchmark-number">&lt;4%</div>
+          <div class="benchmark-label">GPU memory waste</div>
+          <div class="benchmark-source">vLLM PagedAttention (vs 60–80% with naive allocation)</div>
+        </div>
+        <div class="benchmark-card">
+          <div class="benchmark-number">2.5x</div>
+          <div class="benchmark-label">TTFT acceleration</div>
+          <div class="benchmark-source">SlimInfer dynamic token pruning on LLaMA 3.1</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Case Matrix -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Tool Selection by Use Case</h2>
+      <p class="section-subtitle">Which tools matter depends on where you sit in the stack.</p>
+      <div class="matrix-grid">
+        {useCaseMatrix.map(row => (
+          <div class="matrix-card">
+            <h3 class="matrix-persona">{row.persona}</h3>
+            <table class="matrix-table">
+              <tbody>
+                {row.problems.map(p => (
+                  <tr>
+                    <td class="matrix-problem">{p.problem}</td>
+                    <td class="matrix-tool">{p.tool}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key principle callout -->
+  <section class="section section--tint-warm">
+    <div class="container">
+      <div class="principle-block">
+        <blockquote class="principle-quote">
+          "Context engineering is the art of filling the context window with the right information at the right time."
+        </blockquote>
+        <cite class="principle-author">Andrej Karpathy</cite>
+        <p class="principle-note">Three words carry the weight: <em>right</em> information (not all information), <em>right</em> time (not always-on for everything). The tools on this page are the mechanics behind making that "right" a system property rather than a manual judgment call.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Full Reference in the Guide</h2>
+        <p>The guide covers every tool with install instructions, measured benchmarks, and when-to-choose-what guidance — including LLMOps tools (Langfuse, LangSmith, Arize Phoenix), KV cache infrastructure (vLLM, SGLang), and the full research landscape (SlimInfer, TopV, AttnComp).</p>
+        <div class="cta-buttons">
+          <a href="https://cc.bruniaux.com/guide/ecosystem/context-engineering-tools/" class="btn btn-primary">Open Full Guide</a>
+          <a href="https://cc.bruniaux.com/context/" class="btn btn-secondary">Build Your CLAUDE.md</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ---- Paradigm section ---- */
+  .paradigm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .paradigm-text p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+  }
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table th {
+    background: var(--bg-tertiary);
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .comparison-table td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 900px) {
+    .paradigm-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---- Concepts ---- */
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .concept-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+  }
+
+  .concept-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .concept-header h3 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .concept-abbr {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .concept-definition {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .concept-example {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 0.875rem;
+  }
+
+  .concept-example-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  /* ---- Tool Categories ---- */
+  .tool-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .tool-category-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .tool-category-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .tool-category-card--orange { border-top: 3px solid #e07b39; }
+  .tool-category-card--blue   { border-top: 3px solid #3b82f6; }
+  .tool-category-card--purple { border-top: 3px solid #8b5cf6; }
+  .tool-category-card--teal   { border-top: 3px solid #0d9488; }
+  .tool-category-card--green  { border-top: 3px solid #16a34a; }
+  .tool-category-card--red    { border-top: 3px solid #dc2626; }
+
+  .tool-category-header {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+  }
+
+  .tool-category-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .tool-category-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+
+  .tool-category-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .tool-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .tool-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.875rem;
+  }
+
+  .tool-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .tool-tagline {
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  .tool-stars {
+    font-size: 0.8rem;
+    color: #e07b39;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ---- Benchmarks ---- */
+  .benchmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .benchmark-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+
+  .benchmark-number {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    letter-spacing: -0.02em;
+  }
+
+  .benchmark-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .benchmark-source {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ---- Use Case Matrix ---- */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .matrix-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  .matrix-persona {
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-tertiary);
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .matrix-table tr:not(:last-child) td {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .matrix-problem {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    width: 60%;
+  }
+
+  .matrix-tool {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ---- Principle Quote ---- */
+  .principle-block {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .principle-quote {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md);
+    font-style: italic;
+    border: none;
+    padding: 0;
+  }
+
+  .principle-author {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: var(--space-xl);
+    font-style: normal;
+  }
+
+  .principle-note {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ---- CTA Block ---- */
+  .cta-block {
+    max-width: 640px;
+  }
+
+  .cta-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-block p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ---- Hero badges ---- */
+  .hero-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .hero-badge--secondary {
+    background: transparent;
+  }
+</style>
