@@ -16,6 +16,20 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.84',
+    date: 'Mar 26, 2026',
+    highlights: [
+      'PowerShell tool for Windows (opt-in preview) — direct PowerShell access alongside Bash tool',
+      '<code>TaskCreated</code> hook; <code>WorktreeCreate</code> hook supports <code>type: "http"</code>; <code>allowedChannelPlugins</code> managed setting',
+      'Global system-prompt caching now works when ToolSearch is enabled (better cache hit rates for MCP users)',
+      'Deep links open in preferred terminal; MCP tool descriptions capped at 2KB; idle-return prompt after 75+ min',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'PowerShell tool + TaskCreated hook + global cache with ToolSearch',
+  },
+  {
     version: 'v2.1.83',
     date: 'Mar 25, 2026',
     highlights: [
@@ -24,10 +38,7 @@ export const releases: Release[] = [
       'Transcript search — press <code>/</code> in transcript mode (Ctrl+O); <code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</code> strips credentials from subprocesses',
       'Security: fixed <code>--mcp-config</code> bypassing managed <code>allowedMcpServers</code>/<code>deniedMcpServers</code> policy; fixed macOS exit hang',
     ],
-    latest: true,
     initiallyVisible: true,
-    featured: true,
-    featuredLabel: 'managed-settings.d/ + CwdChanged hooks + transcript search',
   },
   {
     version: 'v2.1.81',
