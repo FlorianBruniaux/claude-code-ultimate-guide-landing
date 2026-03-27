@@ -16,6 +16,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.85',
+    date: 'Mar 27, 2026',
+    highlights: [
+      'Conditional <code>if</code> field for hooks — filter when they run using permission rule syntax (e.g. <code>Bash(git *)</code>) to reduce process spawning overhead',
+      '<code>CLAUDE_CODE_MCP_SERVER_NAME</code>/<code>_URL</code> env vars for <code>headersHelper</code> scripts — one helper serves multiple MCP servers',
+      'PreToolUse hooks can now satisfy AskUserQuestion headlessly (return <code>updatedInput + permissionDecision: allow</code>)',
+      'Fixed <code>/compact</code> failing with "context exceeded" on very large conversations; improved scroll performance (yoga-layout → TypeScript)',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.84',
     date: 'Mar 26, 2026',
     highlights: [
@@ -24,7 +36,6 @@ export const releases: Release[] = [
       'Global system-prompt caching now works when ToolSearch is enabled (better cache hit rates for MCP users)',
       'Deep links open in preferred terminal; MCP tool descriptions capped at 2KB; idle-return prompt after 75+ min',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: 'PowerShell tool + TaskCreated hook + global cache with ToolSearch',
