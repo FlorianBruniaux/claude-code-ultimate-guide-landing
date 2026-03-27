@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.0',
+    date: 'Mar 27, 2026',
+    description: '4 patterns added from Everything Claude Code audit: §7.6 Hook Profiles (minimal/standard/strict env-var gating for teams), §9.24 Instinct-Based Continuous Learning (Stop hook capture, confidence scoring, skill promotion pipeline), Iterative Retrieval for sub-agents (max 3 cycles, WHY/WHAT pattern), and Heartbeat Dead-Man Switch for autonomous loops (process-group kill, watchdog). 2 new templates: loop-monitor agent and session-save command. 225 templates total.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.85',
     date: 'Mar 27, 2026',
     description: 'Conditional if field for hooks lets you filter when they run using permission rule syntax (e.g. Bash(git *)), reducing process spawning overhead. New CLAUDE_CODE_MCP_SERVER_NAME/_URL env vars allow one headersHelper script to serve multiple MCP servers. PreToolUse hooks can now satisfy AskUserQuestion headlessly. Fixes /compact context-exceeded error on very large sessions.',
