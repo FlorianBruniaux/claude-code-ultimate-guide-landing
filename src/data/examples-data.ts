@@ -99,7 +99,8 @@ export const EXAMPLES = {
             { name: "plan-start.md", path: "commands/plan-start.md", description: "/plan-start - 5-phase planning with dynamic research team", favorite: true },
             { name: "plan-validate.md", path: "commands/plan-validate.md", description: "/plan-validate - 2-layer validation with specialist agents", favorite: true },
             { name: "plan-execute.md", path: "commands/plan-execute.md", description: "/plan-execute - Execute plan with TDD, parallel agents, PR creation", favorite: true },
-            { name: "review-plan.md", path: "commands/review-plan.md", description: "/review-plan - Structured plan review across 4 axes" }
+            { name: "review-plan.md", path: "commands/review-plan.md", description: "/review-plan - Structured plan review across 4 axes" },
+            { name: "autoresearch.md", path: "commands/autoresearch.md", description: "/autoresearch - Autonomous improvement loop: scan metrics, scaffold, run agent iterations", favorite: true }
         ]
     },
     "hooks-bash": {

@@ -220,6 +220,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-settings-reference",
+    "title": "Settings Reference",
+    "keywords": "settings reference guide core settings reference",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-settings-reference-description",
+    "title": "Settings Reference Description",
+    "keywords": "settings reference description 60+ settings json keys organized into 13 sections (core, permissions, mcp, sandbox, plugins, model, display ux, auth, attribution, worktrees, aws cloud) + 100+ environment variables across 13 categories  unverified entries marked ⚠️; schema only keys marked 📋",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/60+ settings.json keys organized into 13 sections (Core, Permissions, MCP, Sandbox, Plugins, Model, Display/UX, Auth, Attribution, Worktrees, AWS/Cloud) + 100+ environment variables across 13 categories. Unverified entries marked ⚠️; schema-only keys marked 📋.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-glossary",
+    "title": "Glossary",
+    "keywords": "glossary guide core glossary",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/glossary.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-glossary-description",
+    "title": "Glossary Description",
+    "keywords": "glossary description 120+ terms: claude code specific, community coined patterns, ai engineering concepts  alphabetical table with category + subcategory  excludes standard cs devops terms",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/120+ terms: Claude Code-specific, community-coined patterns, AI engineering concepts. Alphabetical table with Category + Subcategory. Excludes standard CS/DevOps terms.",
+    "source": "guide"
+  },
+  {
     "id": "guide-context-engineering-guide",
     "title": "Context Engineering Guide",
     "keywords": "context engineering guide guide core context engineering",
@@ -1249,6 +1281,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "architecture mcp visual guide images mcp architecture diagram svg",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/mcp-architecture-diagram.svg",
+    "source": "guide"
+  },
+  {
+    "id": "guide-auto-dream-access",
+    "title": "Auto Dream Access",
+    "keywords": "auto dream access memory command (or  dream if available)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//memory command (or /dream if available)",
     "source": "guide"
   },
   {
