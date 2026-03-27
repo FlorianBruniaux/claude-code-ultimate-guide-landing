@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.37.6',
+    date: 'Mar 26, 2026',
+    description: '4 new commands from gstack audit: /investigate (Iron Law root-cause debugging), /qa (diff-aware browser QA, 3 tiers), /canary (post-deploy monitoring with transient tolerance), /land-and-deploy (merge-to-verify pipeline for 6 platforms). /review-pr enhanced with scope drift detection and Fix-First heuristic. Complete settings.json reference added (1,284 lines). 223 templates total.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.84',
     date: 'Mar 26, 2026',
     description: 'PowerShell tool for Windows (opt-in preview), TaskCreated hook, WorktreeCreate hook with HTTP support, and global system-prompt caching now working when ToolSearch is enabled. Deep links open in your preferred terminal, MCP tool descriptions capped at 2KB, and an idle-return prompt appears after 75+ minutes to suggest /clear.',
