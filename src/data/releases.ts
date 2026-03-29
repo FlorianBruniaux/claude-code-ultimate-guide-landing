@@ -16,6 +16,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.86',
+    date: 'Mar 28, 2026',
+    highlights: [
+      '<code>X-Claude-Code-Session-Id</code> header on API requests — proxies aggregate by session without parsing the body',
+      'Reduced <code>@</code> file mention token overhead — raw string content no longer JSON-escaped; Read tool uses compact line-number format with dedup',
+      'Improved prompt cache hit rate for Bedrock, Vertex, Foundry by removing dynamic content from tool descriptions',
+      'Fixed marketplace plugin scripts failing with "Permission denied" on macOS/Linux (regression since v2.1.83); many other bugfixes',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.85',
     date: 'Mar 27, 2026',
     highlights: [
@@ -24,7 +36,6 @@ export const releases: Release[] = [
       'PreToolUse hooks can now satisfy AskUserQuestion headlessly (return <code>updatedInput + permissionDecision: allow</code>)',
       'Fixed <code>/compact</code> failing with "context exceeded" on very large conversations; improved scroll performance (yoga-layout → TypeScript)',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
