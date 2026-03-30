@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.1',
+    date: 'Mar 30, 2026',
+    description: 'Threat database updated to v2.11.0: 3 new CVEs (CVE-2026-33010 mcp-memory-service CORS critical, CVE-2026-33946 MCP Ruby SDK session hijacking, CVE-2026-27597 agentfront enclave sandbox escape), T021 IDEsaster attack technique (30+ chained flaws across Cursor, Windsurf, Copilot, Zed.dev — 24 CVEs assigned), and Ferrok scanner mapping to OWASP MCP Top 10 (2026).',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.0',
     date: 'Mar 27, 2026',
     description: '4 patterns added from Everything Claude Code audit: §7.6 Hook Profiles (minimal/standard/strict env-var gating for teams), §9.24 Instinct-Based Continuous Learning (Stop hook capture, confidence scoring, skill promotion pipeline), Iterative Retrieval for sub-agents (max 3 cycles, WHY/WHAT pattern), and Heartbeat Dead-Man Switch for autonomous loops (process-group kill, watchdog). 2 new templates: loop-monitor agent and session-save command. 225 templates total.',
