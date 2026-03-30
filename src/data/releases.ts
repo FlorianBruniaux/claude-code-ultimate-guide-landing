@@ -16,6 +16,15 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.87',
+    date: 'Mar 30, 2026',
+    highlights: [
+      'Fixed messages in Cowork Dispatch not getting delivered',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.86',
     date: 'Mar 28, 2026',
     highlights: [
@@ -24,7 +33,6 @@ export const releases: Release[] = [
       'Improved prompt cache hit rate for Bedrock, Vertex, Foundry by removing dynamic content from tool descriptions',
       'Fixed marketplace plugin scripts failing with "Permission denied" on macOS/Linux (regression since v2.1.83); many other bugfixes',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
