@@ -2,6 +2,16 @@
 
 Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide). Built with Astro 5.
 
+## StarMapper
+
+<a href="https://starmapper.bruniaux.com/FlorianBruniaux/claude-code-ultimate-guide-landing">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/claude-code-ultimate-guide-landing?theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/claude-code-ultimate-guide-landing?theme=light" />
+    <img alt="StarMapper — see who stars this repo on a world map" src="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/claude-code-ultimate-guide-landing" />
+  </picture>
+</a>
+
 ## Live Site
 
 **URL**: [cc.bruniaux.com](https://cc.bruniaux.com)

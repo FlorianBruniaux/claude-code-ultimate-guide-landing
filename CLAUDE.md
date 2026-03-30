@@ -56,10 +56,10 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Version | `3.34.3` | VERSION file |
-| Templates | `232` | Count of examples/ files (excl. README/index) |
-| Quiz questions | `274` | questions.json |
-| Guide lines | `23,040` | ultimate-guide.md |
+| Version | `3.38.1` | VERSION file |
+| Templates | `226` | Count of examples/ files (excl. README/index) |
+| Quiz questions | `271` | questions.json |
+| Guide lines | `24,618` | ultimate-guide.md |
 
 ## Stack technique (post-migration Astro 5)
 
