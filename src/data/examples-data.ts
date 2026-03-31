@@ -88,6 +88,7 @@ export const EXAMPLES = {
             { name: "update-threat-db.md", path: "commands/update-threat-db.md", description: "/update-threat-db - Research & update threat intelligence" },
             { name: "audit-agents-skills.md", path: "commands/audit-agents-skills.md", description: "/audit-agents-skills - Quality audit for .claude/ config" },
             { name: "sandbox-status.md", path: "commands/sandbox-status.md", description: "/sandbox-status - Sandbox isolation status check" },
+            { name: "check-cache-bugs.md", path: "commands/check-cache-bugs.md", description: "/check-cache-bugs - Audit for cache bugs CC#40524 (sentinel, --resume, attribution header)", favorite: true },
             { name: "refactor.md", path: "commands/refactor.md", description: "/refactor - SOLID-based code improvements" },
             { name: "explain.md", path: "commands/explain.md", description: "/explain - Code explanations (3 depth levels)" },
             { name: "optimize.md", path: "commands/optimize.md", description: "/optimize - Performance analysis and roadmap" },
