@@ -10,8 +10,8 @@ const techniqueCards = allSorted.filter(c => c.data.category === 'Technical')
 const methodologieCards = allSorted.filter(c => c.data.category === 'Methodology')
 const conceptionCards = allSorted.filter(c => c.data.category === 'Design')
 
-// Only display released series (T + M) in the grid — C is "coming soon"
-const cards = allSorted.filter(c => c.data.category !== 'Design')
+// All series released (T + M + C)
+const cards = allSorted
 const totalCards = cards.length
 
 const difficultyLabel: Record<string, string> = {
@@ -126,8 +126,8 @@ const cardUrls = cardUrlsFr
         <button class="tab-btn" data-filter="Methodology" data-series="M" role="tab" aria-selected="false">
           Methodology <span class="tab-count">{methodologieCards.length}</span>
         </button>
-        <button class="tab-btn tab-coming-soon" data-filter="Design" data-series="C" role="tab" aria-selected="false">
-          Design <span class="tab-count">{conceptionCards.length}</span> <span class="tab-soon">soon</span>
+        <button class="tab-btn" data-filter="Design" data-series="C" role="tab" aria-selected="false">
+          Design <span class="tab-count">{conceptionCards.length}</span>
         </button>
       </div>
 
@@ -330,17 +330,10 @@ function updateGateBanner(filter) {
   // Hide coming-soon by default
   if (comingSoon) comingSoon.classList.add('hidden')
 
-  if (sid === 'C') {
-    // Design series coming soon — no gate, just a message
-    gateBanner.classList.add('hidden')
-    if (comingSoon) comingSoon.classList.remove('hidden')
-    return
-  }
-
   const series = sid ? seriesData(sid) : null
 
-  // If specific released series and NOT unlocked → show gate
-  if (series && series.released && !isUnlocked(sid)) {
+  // If specific released series and NOT unlocked → show gate (skip C — no bundle ZIP yet)
+  if (series && series.released && !isUnlocked(sid) && sid !== 'C') {
     gateBanner.classList.remove('hidden')
     if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series — PDF bundle delivered to your inbox`
     resetGateForm()
@@ -521,9 +514,7 @@ function filterCards(filter) {
   })
   if (noResults) noResults.classList.toggle('hidden', visible > 0)
 
-  // Show/hide grid based on Design "coming soon"
-  const isComing = filter === 'Design'
-  if (cardsGrid) cardsGrid.style.display = isComing ? 'none' : ''
+  if (cardsGrid) cardsGrid.style.display = ''
 }
 
 tabBtns.forEach(btn => {
