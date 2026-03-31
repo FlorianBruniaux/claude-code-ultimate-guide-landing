@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.88',
+    date: 'Mar 31, 2026',
+    description: 'New PermissionDenied hook fires after auto mode classifier denials — return {retry: true} to let the model try an alternative. Named subagents now appear in @ mention typeahead. Breaking: thinking summaries are disabled by default (add showThinkingSummaries: true to restore). Massive bugfix batch covering CRLF on Windows, StructuredOutput cache (50% failure rate), memory leaks, voice mode, and crashes on large files.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.88',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.1',
     date: 'Mar 30, 2026',
     description: 'Threat database updated to v2.11.0: 3 new CVEs (CVE-2026-33010 mcp-memory-service CORS critical, CVE-2026-33946 MCP Ruby SDK session hijacking, CVE-2026-27597 agentfront enclave sandbox escape), T021 IDEsaster attack technique (30+ chained flaws across Cursor, Windsurf, Copilot, Zed.dev — 24 CVEs assigned), and Ferrok scanner mapping to OWASP MCP Top 10 (2026).',

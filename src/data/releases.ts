@@ -16,12 +16,26 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.88',
+    date: 'Mar 31, 2026',
+    highlights: [
+      'PermissionDenied hook — fires after auto mode classifier denials; return {retry: true} to let the model retry',
+      'Named subagents now appear in @ mention typeahead suggestions',
+      'Auto mode denied commands show notification and appear in /permissions Recent tab',
+      'Massive bugfix batch: CRLF on Windows, StructuredOutput cache (50% failure rate), memory leaks, voice mode, crashes on large files',
+    ],
+    breaking: [
+      'Thinking summaries disabled by default — add showThinkingSummaries: true to settings.json to restore',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.87',
     date: 'Mar 30, 2026',
     highlights: [
       'Fixed messages in Cowork Dispatch not getting delivered',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
