@@ -406,6 +406,14 @@ if (gateForm) {
     const firstname = gateFirstname?.value?.trim() || ''
     const linkedin = document.getElementById('gate-linkedin')?.value?.trim() || ''
     const honeypot = gateForm.querySelector('input[name="website"]')?.value || ''
+
+    // Save contact details immediately — before fetch, regardless of API outcome
+    try {
+      const email_ = gateEmail?.value?.trim()
+      if (firstname) localStorage.setItem('cc-contact-name', firstname)
+      if (email_) localStorage.setItem('cc-contact-email', email_)
+      if (linkedin) localStorage.setItem('cc-contact-linkedin', linkedin)
+    } catch {}
     const utmCampaign = new URLSearchParams(location.search).get('utm_campaign') || ''
     const utmSource = new URLSearchParams(location.search).get('utm_source') || 'cheatsheets'
     const selectedLang = gateForm.querySelector('input[name="gate-lang"]:checked')?.value || 'en'
@@ -449,16 +457,8 @@ if (gateForm) {
       return
     }
 
-    // Set shared subscriber flag + save contact details for pre-fill
-    try {
-      localStorage.setItem(LS_SUBSCRIBER, '1')
-      const email_ = gateEmail?.value?.trim()
-      const name_ = gateFirstname?.value?.trim()
-      const li_ = document.getElementById('gate-linkedin')?.value?.trim()
-      if (name_) localStorage.setItem('cc-contact-name', name_)
-      if (email_) localStorage.setItem('cc-contact-email', email_)
-      if (li_) localStorage.setItem('cc-contact-linkedin', li_)
-    } catch {}
+    // Set shared subscriber flag
+    try { localStorage.setItem(LS_SUBSCRIBER, '1') } catch {}
 
     // Fire GA event
     try {

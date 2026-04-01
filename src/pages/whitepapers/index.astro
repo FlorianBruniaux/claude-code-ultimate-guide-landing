@@ -919,6 +919,13 @@ const profiles = [
       const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value
       const firstName = (form.querySelector('[name="firstname"]') as HTMLInputElement)?.value
       const linkedin = (form.querySelector('[name="linkedin"]') as HTMLInputElement)?.value?.trim() || undefined
+
+      // Save contact details immediately — before fetch, regardless of API outcome
+      try {
+        if (firstName) localStorage.setItem('cc-contact-name', firstName)
+        if (email) localStorage.setItem('cc-contact-email', email)
+        if (linkedin) localStorage.setItem('cc-contact-linkedin', linkedin)
+      } catch {}
       const format = (form.querySelector(`[name="format-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'pdf'
       const lang = (form.querySelector(`[name="lang-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'en'
 
@@ -962,12 +969,7 @@ const profiles = [
         form.classList.add('hidden')
         successMsg?.classList.remove('hidden')
         // Mark as subscriber — unlocks recap cards automatically
-        try {
-          localStorage.setItem('cc-subscriber', '1')
-          if (firstName) localStorage.setItem('cc-contact-name', firstName)
-          if (email) localStorage.setItem('cc-contact-email', email)
-          if (linkedin) localStorage.setItem('cc-contact-linkedin', linkedin)
-        } catch {}
+        try { localStorage.setItem('cc-subscriber', '1') } catch {}
         // GA event
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'ebook_subscribe', {
