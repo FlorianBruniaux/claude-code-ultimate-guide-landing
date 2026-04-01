@@ -2357,6 +2357,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-methodologies-methodology-map",
+    "title": "Methodology Map",
+    "keywords": "methodology map development methodologies reference where each methodology sits on two axes: spec-first vs code-first (y) and lean/solo vs enterprise/governed (x). how to read it: - top-left — spec-fi",
+    "category": "Core Guides",
+    "url": "/guide/methodologies/#methodology-map",
+    "source": "guide"
+  },
+  {
     "id": "gc-methodologies-the-15-methodologies",
     "title": "The 15 Methodologies",
     "keywords": "the 15 methodologies development methodologies reference organized in a 6-tier pyramid from strategic orchestration down to optimization techniques. tier 1: strategic orchestration name what best for ",
