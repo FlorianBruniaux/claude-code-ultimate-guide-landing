@@ -16,13 +16,13 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.88',
-    date: 'Mar 31, 2026',
+    version: 'v2.1.89',
+    date: 'Apr 1, 2026',
     highlights: [
+      '<code>"defer"</code> permission decision for PreToolUse hooks — headless sessions pause at tool call and resume with <code>-p --resume</code>',
       'PermissionDenied hook — fires after auto mode classifier denials; return {retry: true} to let the model retry',
-      'Named subagents now appear in @ mention typeahead suggestions',
-      'Auto mode denied commands show notification and appear in /permissions Recent tab',
-      'Massive bugfix batch: CRLF on Windows, StructuredOutput cache (50% failure rate), memory leaks, voice mode, crashes on large files',
+      'Named subagents now appear in @ mention typeahead; <code>CLAUDE_CODE_NO_FLICKER=1</code> for flicker-free rendering',
+      'Massive bugfix batch: CRLF on Windows, StructuredOutput cache (50% failure rate), autocompact thrash circuit breaker, memory leaks',
     ],
     breaking: [
       'Thinking summaries disabled by default — add showThinkingSummaries: true to settings.json to restore',

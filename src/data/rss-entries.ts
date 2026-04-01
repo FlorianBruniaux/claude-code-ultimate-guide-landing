@@ -27,10 +27,10 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
-    title: 'Claude Code v2.1.88',
-    date: 'Mar 31, 2026',
-    description: 'New PermissionDenied hook fires after auto mode classifier denials — return {retry: true} to let the model try an alternative. Named subagents now appear in @ mention typeahead. Breaking: thinking summaries are disabled by default (add showThinkingSummaries: true to restore). Massive bugfix batch covering CRLF on Windows, StructuredOutput cache (50% failure rate), memory leaks, voice mode, and crashes on large files.',
-    link: 'https://cc.bruniaux.com/releases/#v2.1.88',
+    title: 'Claude Code v2.1.89',
+    date: 'Apr 1, 2026',
+    description: 'New "defer" permission decision for PreToolUse hooks lets headless sessions pause at a tool call and resume with -p --resume. New PermissionDenied hook fires after auto mode classifier denials with {retry: true} support. CLAUDE_CODE_NO_FLICKER=1 for flicker-free rendering. Breaking: thinking summaries off by default. Autocompact thrash circuit breaker, StructuredOutput cache fix (50% failure rate), CRLF doubling on Windows fixed.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.89',
   },
   {
     type: 'guide_release',
