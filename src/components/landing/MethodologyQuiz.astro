@@ -1,0 +1,556 @@
+---
+/**
+ * MethodologyQuiz — recommends one of 8 methodology stacks
+ * 3 screens: intro → question → results
+ * All client logic in src/scripts/methodology-quiz.ts
+ */
+import { MQ_QUESTIONS } from '../../data/methodology-quiz'
+
+const total = MQ_QUESTIONS.length
+---
+
+<section class="section mq-section" id="methodology-quiz" aria-label="Methodology quiz">
+  <div class="container">
+    <div class="mq-wrapper">
+
+      <!-- ── Screen 1: Intro (server-rendered, visible without JS) ── -->
+      <div id="mq-intro" class="mq-screen mq-active">
+        <div class="mq-intro-content">
+          <div class="mq-intro-badge">{total} questions · under 2 minutes · no sign-up</div>
+          <h2 class="mq-intro-title">Which Development Methodology Fits You?</h2>
+          <p class="mq-intro-sub">
+            Answer {total} short questions about how you work. We will match you to the methodology stack that fits your workflow, team size, and context — not just a single technique.
+          </p>
+          <button id="mq-start" class="btn btn-primary mq-start-btn">Start Quiz</button>
+          <noscript>
+            <p class="mq-noscript">
+              JavaScript is required for the quiz.
+              <a href="#methodology-decision-matrix">Use the static decision matrix instead →</a>
+            </p>
+          </noscript>
+        </div>
+      </div>
+
+      <!-- ── Screen 2: Question ── -->
+      <div id="mq-question" class="mq-screen">
+        <div class="mq-progress-bar">
+          <div id="mq-progress-fill" class="mq-progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="mq-question-meta">
+          <span id="mq-question-num" class="mq-question-num">1 / {total}</span>
+          <span id="mq-dimension" class="mq-dimension">dimension</span>
+        </div>
+
+        <p id="mq-question-text" class="mq-question-text">Question text</p>
+
+        <div id="mq-options" class="mq-options" role="group" aria-label="Answer options">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="mq-nav">
+          <button id="mq-back" class="btn btn-secondary mq-nav-btn" disabled>Back</button>
+          <button id="mq-next" class="btn btn-primary mq-nav-btn" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- ── Screen 3: Results ── -->
+      <div id="mq-results" class="mq-screen">
+        <h2 class="mq-results-title">Your Methodology Stack</h2>
+
+        <!-- Primary match -->
+        <div class="mq-primary-wrap">
+          <p class="mq-section-label">Best match</p>
+          <div id="mq-primary" class="mq-primary-card">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Secondary matches -->
+        <div class="mq-secondary-wrap">
+          <p class="mq-section-label">Also a good fit</p>
+          <div id="mq-secondary" class="mq-secondary-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Flat profile notice -->
+        <div id="mq-flat-notice" class="mq-flat-notice" style="display: none">
+          Your answers span multiple contexts — you may work across different modes. <a href="#methodology-decision-matrix">Plan-First + SDD</a> is a versatile starting combination for mixed workflows.
+        </div>
+
+        <!-- Actions -->
+        <div class="mq-results-actions">
+          <button id="mq-retake" class="btn btn-secondary">Retake Quiz</button>
+          <button id="mq-explore" class="btn btn-primary">Explore All Methodologies →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/methodology-quiz'
+</script>
+
+<style>
+/* ── Layout ─────────────────────────────────────────────────────────── */
+.mq-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.mq-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Screen visibility */
+.mq-screen {
+  display: none;
+}
+.mq-screen.mq-active {
+  display: block;
+}
+
+/* ── Screen 1: Intro ────────────────────────────────────────────────── */
+.mq-intro-content {
+  text-align: center;
+  padding: var(--space-xl) 0;
+}
+
+.mq-intro-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+}
+
+.mq-intro-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.mq-intro-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto var(--space-xl);
+}
+
+.mq-start-btn {
+  font-size: 1rem;
+  padding: 0.875rem 2.5rem;
+  min-width: 180px;
+}
+
+.mq-noscript {
+  margin-top: var(--space-md);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.mq-noscript a {
+  color: var(--accent);
+}
+
+/* ── Screen 2: Question ─────────────────────────────────────────────── */
+.mq-progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+
+.mq-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.mq-question-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.mq-question-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.mq-dimension {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  text-transform: capitalize;
+}
+
+.mq-question-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: var(--space-xl);
+}
+
+.mq-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+:global(.mq-option) {
+  width: 100%;
+  text-align: left;
+  padding: 0.875rem var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  min-height: 44px;
+}
+
+:global(.mq-option:hover) {
+  border-color: var(--accent);
+  background: var(--bg-tertiary);
+}
+
+:global(.mq-option--selected) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-elevated));
+  color: var(--text-primary);
+}
+
+.mq-nav {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-end;
+}
+
+.mq-nav-btn {
+  min-width: 100px;
+}
+
+/* ── Screen 3: Results ──────────────────────────────────────────────── */
+.mq-results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+}
+
+.mq-section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-sm);
+}
+
+.mq-primary-wrap {
+  margin-bottom: var(--space-xl);
+}
+
+.mq-primary-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+:global(.mq-result-header) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+:global(.mq-result-icon) {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+:global(.mq-match-badge) {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+:global(.mq-match-badge--strong) {
+  background: color-mix(in srgb, #22c55e 15%, transparent);
+  color: #22c55e;
+  border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+}
+
+:global(.mq-match-badge--good) {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+:global(.mq-match-badge--moderate) {
+  background: color-mix(in srgb, #6b7280 12%, transparent);
+  color: #6b7280;
+  border: 1px solid color-mix(in srgb, #6b7280 30%, transparent);
+}
+
+:global(.mq-result-title) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+/* Methodology pills */
+:global(.mq-methodology-pills) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: var(--space-md);
+}
+
+:global(.mq-pill) {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+:global(.mq-pill--sm) {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+}
+
+:global(.mq-methodology-pills--sm) {
+  gap: 0.25rem;
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+:global(.mq-bar-wrap) {
+  margin-bottom: var(--space-md);
+}
+
+:global(.mq-bar) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 28px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: visible;
+  position: relative;
+}
+
+:global(.mq-bar::before) {
+  content: '';
+  display: block;
+  height: 100%;
+  width: var(--pct);
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  min-width: 4px;
+}
+
+:global(.mq-bar-label) {
+  position: absolute;
+  right: calc(100% - var(--pct) + 8px);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+:global(.mq-bar--secondary::before) {
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+:global(.mq-result-description) {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+/* Quick start box */
+:global(.mq-quickstart) {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-md);
+}
+
+:global(.mq-quickstart-label) {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+:global(.mq-quickstart-text) {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-family: var(--font-mono);
+}
+
+:global(.mq-result-link) {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+:global(.mq-result-link:hover) {
+  text-decoration: underline;
+}
+
+:global(.mq-result-link--sm) {
+  font-size: 0.8rem;
+}
+
+.mq-secondary-wrap {
+  margin-bottom: var(--space-xl);
+}
+
+.mq-secondary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+:global(.mq-secondary-card) {
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+:global(.mq-secondary-header) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+:global(.mq-secondary-icon) {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+:global(.mq-secondary-title) {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+:global(.mq-secondary-pct) {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.mq-flat-notice {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+.mq-flat-notice a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.mq-results-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .mq-intro-title {
+    font-size: 1.4rem;
+  }
+
+  .mq-question-text {
+    font-size: 1.05rem;
+  }
+
+  :global(.mq-option) {
+    font-size: 0.9rem;
+    padding: 0.75rem var(--space-md);
+  }
+
+  .mq-nav {
+    justify-content: stretch;
+  }
+
+  .mq-nav-btn {
+    flex: 1;
+  }
+
+  .mq-results-actions {
+    flex-direction: column;
+  }
+
+  .mq-results-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

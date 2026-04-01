@@ -47,8 +47,11 @@
         </div>
 
         <div class="methodologies-cta">
+            <a href="/methodologies/" class="btn btn-primary">
+                Find your methodology stack →
+            </a>
             <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/methodologies.md" class="btn btn-secondary" target="_blank" rel="noopener">
-                Read the full methodology guide &rarr;
+                Full guide on GitHub
             </a>
         </div>
     </div>
@@ -115,7 +118,9 @@
     font-family: var(--font-mono);
 }
 .methodologies-cta {
-    text-align: left;
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
     margin-top: var(--space-xl);
 }
 @media (max-width: 768px) {

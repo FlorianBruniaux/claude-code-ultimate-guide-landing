@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'New page: Methodologies — 20 methods mapped, 8 stacks, interactive quiz',
+    date: 'Apr 1, 2026',
+    description: 'New /methodologies/ page mapping 20 AI-assisted development methodologies on two axes (Spec-First vs Code-First, Lean vs Enterprise). Includes an interactive quiz to find your methodology stack, 8 recommended combos (Solo MVP, Team Greenfield, API Contract, Power User Loop and more), and a full decision matrix.',
+    link: 'https://cc.bruniaux.com/methodologies/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code v2.1.89',
     date: 'Apr 1, 2026',
