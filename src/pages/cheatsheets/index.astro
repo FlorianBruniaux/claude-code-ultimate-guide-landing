@@ -310,6 +310,19 @@ const gateTitle  = document.getElementById('gate-title')
 const gateForm   = document.getElementById('gate-form')
 const gateEmail  = document.getElementById('gate-email')
 const gateFirstname = document.getElementById('gate-firstname')
+
+// Pre-fill contact fields from a previous submission
+try {
+  const savedName = localStorage.getItem('cc-contact-name')
+  const savedEmail = localStorage.getItem('cc-contact-email')
+  const savedLinkedin = localStorage.getItem('cc-contact-linkedin')
+  if (savedName && gateFirstname) (gateFirstname as HTMLInputElement).value = savedName
+  if (savedEmail && gateEmail) (gateEmail as HTMLInputElement).value = savedEmail
+  if (savedLinkedin) {
+    const liInput = document.getElementById('gate-linkedin') as HTMLInputElement
+    if (liInput) liInput.value = savedLinkedin
+  }
+} catch {}
 const gateSubmit = document.getElementById('gate-submit')
 const gateError  = document.getElementById('gate-error')
 const gateSuccess = document.getElementById('gate-success')
@@ -436,8 +449,16 @@ if (gateForm) {
       return
     }
 
-    // Set shared subscriber flag
-    try { localStorage.setItem(LS_SUBSCRIBER, '1') } catch {}
+    // Set shared subscriber flag + save contact details for pre-fill
+    try {
+      localStorage.setItem(LS_SUBSCRIBER, '1')
+      const email_ = gateEmail?.value?.trim()
+      const name_ = gateFirstname?.value?.trim()
+      const li_ = document.getElementById('gate-linkedin')?.value?.trim()
+      if (name_) localStorage.setItem('cc-contact-name', name_)
+      if (email_) localStorage.setItem('cc-contact-email', email_)
+      if (li_) localStorage.setItem('cc-contact-linkedin', li_)
+    } catch {}
 
     // Fire GA event
     try {

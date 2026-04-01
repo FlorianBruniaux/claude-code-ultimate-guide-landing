@@ -867,6 +867,18 @@ const profiles = [
 </style>
 
 <script>
+  // Restore saved contact details into a form (name / email / linkedin)
+  function prefillContactFields(form: Element) {
+    try {
+      const name = localStorage.getItem('cc-contact-name')
+      const email = localStorage.getItem('cc-contact-email')
+      const linkedin = localStorage.getItem('cc-contact-linkedin')
+      if (name) (form.querySelector('[name="firstname"]') as HTMLInputElement).value = name
+      if (email) (form.querySelector('[name="email"]') as HTMLInputElement).value = email
+      if (linkedin) (form.querySelector('[name="linkedin"]') as HTMLInputElement).value = linkedin
+    } catch {}
+  }
+
   // Toggle inline form
   document.querySelectorAll<HTMLButtonElement>('.get-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -877,8 +889,11 @@ const profiles = [
       btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true')
       form.classList.toggle('hidden', isOpen)
       if (!isOpen) {
-        const firstInput = form.querySelector<HTMLInputElement>('input:not(.honeypot):not([type="radio"])')
-        firstInput?.focus()
+        prefillContactFields(form)
+        // Focus first empty text input
+        const nameInput = form.querySelector<HTMLInputElement>('[name="firstname"]')
+        const firstEmpty = form.querySelector<HTMLInputElement>('input:not(.honeypot):not([type="radio"])[value=""]')
+        ;(nameInput?.value ? form.querySelector<HTMLInputElement>('[name="email"]') : nameInput)?.focus()
       }
     })
   })
@@ -947,7 +962,12 @@ const profiles = [
         form.classList.add('hidden')
         successMsg?.classList.remove('hidden')
         // Mark as subscriber — unlocks recap cards automatically
-        try { localStorage.setItem('cc-subscriber', '1') } catch {}
+        try {
+          localStorage.setItem('cc-subscriber', '1')
+          if (firstName) localStorage.setItem('cc-contact-name', firstName)
+          if (email) localStorage.setItem('cc-contact-email', email)
+          if (linkedin) localStorage.setItem('cc-contact-linkedin', linkedin)
+        } catch {}
         // GA event
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'ebook_subscribe', {
