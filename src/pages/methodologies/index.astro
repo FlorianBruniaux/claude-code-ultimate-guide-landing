@@ -26,7 +26,7 @@ const jsonLd = [
   }
 ]
 
-const guideBase = 'https://cc.bruniaux.com/guide/core/methodologies/'
+const guideBase = 'https://cc.bruniaux.com/guide/methodologies/'
 
 // Combination patterns table data
 const COMBINATION_PATTERNS = [
@@ -147,34 +147,23 @@ const COMBINATION_PATTERNS = [
       <!-- ASCII map -->
       <div class="map-container" id="methodology-map-diagram">
         <p class="map-label">Positioning map (20 methodologies)</p>
-        <pre class="methodology-map"><code>                  SPEC-FIRST
-                       │
-         BMAD ─── ─── ┤ ─── ─── Specmatic
-                       │
-  Spec Kit ────────────┼──────── CDD
-                       │
-      SDD ─── ─── ─── ┤ ─── ─── BDD
-                       │
-   ATDD ─── ─── ─── ──┤── ─── ─ OpenSpec
-                       │
-FDD ─────────────────┬─┼─────────────────── Req-Driven
-                       │
-  Plan-First ─── ─── ─┤ ─── ─── Doc-Driven
-                       │
-LEAN ─────────────────►│◄─────────────────────── ENTERPRISE
-                       │
-    TDD ─── ─── ─── ──┤── ─── ─ DDD
-                       │
-  JiTTesting ─── ─── ─┤ ─── ─── ADR-Driven
-                       │
- Iterative ─── ─── ─── ┤ ─── ─── Context Eng.
-                       │
-    Prompt Eng. ───── ─┤ ─── ─── Eval-Driven
-                       │
-      Ralph Loop ─── ──┤── ─── ─ Multi-Agent
-                       │
-                  CODE-FIRST</code></pre>
-        <p class="map-note">Full guide section with quadrant analysis: <a href={guideBase}>cc.bruniaux.com/guide/core/methodologies/</a></p>
+        <pre class="methodology-map"><code>                      SPEC / PLANNING FIRST
+                                ▲
+  ── lean · spec ──             │             ── governed · spec ──
+                                │
+  [Doc-Driven]  [SDD]           │    [BDD]  [ATDD]   [Req-Driven]
+  [GSD]  [Plan-First]           │ [CDD] [ADR-Driven]  [DDD]  [BMAD]
+                                │
+  LEAN ─────────────────────────┼────────────────────────────────► ENTERPRISE
+                                │
+  ── lean · code ──             │             ── governed · code ──
+                                │
+  [Context Eng.]   [TDD]        │       [Multi-Agent]
+  [Prompt Eng.]  [Iterative]    │       [Eval-Driven]       [FDD]
+  [Ralph Loop]                  │           [JiTTesting]
+                                │
+                         CODE / EMERGENT</code></pre>
+        <p class="map-note">Full guide section with quadrant analysis: <a href={guideBase}>cc.bruniaux.com/guide/methodologies/</a></p>
       </div>
     </div>
   </section>

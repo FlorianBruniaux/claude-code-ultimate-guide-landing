@@ -38,7 +38,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How many people touch the codebase you work on most?',
     options: [
       {
-        text: 'Just me — I own the whole thing',
+        text: 'Just me, I own the whole thing',
         scores: { 'solo-mvp': 3, 'power-solo': 3, 'plan-moderate': 1 },
       },
       {
@@ -61,19 +61,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'What best describes the project you spend most time on?',
     options: [
       {
-        text: 'Greenfield — building from scratch, no legacy constraints',
+        text: 'Greenfield, building from scratch, no legacy constraints',
         scores: { 'solo-mvp': 3, 'team-greenfield': 3, 'plan-moderate': 1 },
       },
       {
-        text: 'Growing — a working product that needs new features fast',
+        text: 'Growing, a working product that needs new features fast',
         scores: { 'brownfield-saas': 2, 'plan-moderate': 2, 'power-solo': 2 },
       },
       {
-        text: 'Mature — 100+ features, stability and regressions are the real enemy',
+        text: 'Mature, 100+ features, stability and regressions are the real enemy',
         scores: { 'brownfield-saas': 3, 'enterprise-gov': 2, 'microservices': 1 },
       },
       {
-        text: 'Experimental — prototyping ideas, most code gets thrown away',
+        text: 'Experimental, prototyping ideas, most code gets thrown away',
         scores: { 'power-solo': 3, 'llm-native': 2, 'solo-mvp': 1 },
       },
     ],
@@ -84,11 +84,11 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'Before writing code for a complex feature, what do you do first?',
     options: [
       {
-        text: 'Write a spec or design doc — I want a contract before implementation',
+        text: 'Write a spec or design doc, I want a contract before implementation',
         scores: { 'plan-moderate': 3, 'team-greenfield': 2, 'enterprise-gov': 2 },
       },
       {
-        text: 'Write a failing test — the test IS my spec',
+        text: 'Write a failing test, the test IS my spec',
         scores: { 'solo-mvp': 3, 'power-solo': 2, 'microservices': 1 },
       },
       {
@@ -107,19 +107,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How much structure do you want around AI-generated code?',
     options: [
       {
-        text: 'Minimal — I review the output myself and move on',
+        text: 'Minimal, I review the output myself and move on',
         scores: { 'power-solo': 3, 'solo-mvp': 2 },
       },
       {
-        text: 'Light — a spec file and tests are enough guardrails',
+        text: 'Light, a spec file and tests are enough guardrails',
         scores: { 'solo-mvp': 2, 'plan-moderate': 3, 'team-greenfield': 1 },
       },
       {
-        text: 'Moderate — I want acceptance criteria and behavior specs before coding starts',
+        text: 'Moderate, I want acceptance criteria and behavior specs before coding starts',
         scores: { 'team-greenfield': 3, 'brownfield-saas': 2, 'microservices': 1 },
       },
       {
-        text: 'Heavy — constitution files, agent roles, approval gates',
+        text: 'Heavy, constitution files, agent roles, approval gates',
         scores: { 'enterprise-gov': 3, 'llm-native': 1, 'brownfield-saas': 1 },
       },
     ],
@@ -130,7 +130,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How do different parts of your system communicate?',
     options: [
       {
-        text: 'It\'s one app — no service boundaries to worry about',
+        text: 'It\'s one app, no service boundaries to worry about',
         scores: { 'solo-mvp': 2, 'power-solo': 2, 'plan-moderate': 2 },
       },
       {
@@ -153,7 +153,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How often do you ship changes to production?',
     options: [
       {
-        text: 'Multiple times a day — fast, autonomous, no ceremony',
+        text: 'Multiple times a day, fast, autonomous, no ceremony',
         scores: { 'power-solo': 3, 'solo-mvp': 2, 'llm-native': 1 },
       },
       {
@@ -165,7 +165,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
         scores: { 'brownfield-saas': 3, 'microservices': 2, 'enterprise-gov': 1 },
       },
       {
-        text: 'Longer cycles — release trains or approval gates',
+        text: 'Longer cycles, release trains or approval gates',
         scores: { 'enterprise-gov': 3, 'microservices': 1, 'brownfield-saas': 1 },
       },
     ],
@@ -176,19 +176,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'Who decides what "done" looks like for a feature?',
     options: [
       {
-        text: 'Me — I define requirements and acceptance criteria myself',
+        text: 'Me, I define requirements and acceptance criteria myself',
         scores: { 'solo-mvp': 3, 'power-solo': 3 },
       },
       {
-        text: 'The dev team — we discuss and agree on scope internally',
+        text: 'The dev team, we discuss and agree on scope internally',
         scores: { 'plan-moderate': 2, 'team-greenfield': 2, 'microservices': 1 },
       },
       {
-        text: 'Dev + product/business — we write user stories together',
+        text: 'Dev + product/business, we write user stories together',
         scores: { 'team-greenfield': 3, 'brownfield-saas': 2, 'enterprise-gov': 1 },
       },
       {
-        text: 'Three Amigos (business, dev, test) — formal acceptance before coding starts',
+        text: 'Three Amigos (business, dev, test), formal acceptance before coding starts',
         scores: { 'enterprise-gov': 3, 'brownfield-saas': 2, 'team-greenfield': 1 },
       },
     ],
@@ -199,19 +199,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'What does a typical Claude Code session look like for you?',
     options: [
       {
-        text: 'Short bursts — fix a bug, add a small feature, 15–30 minutes',
+        text: 'Short bursts: fix a bug, add a small feature, 15–30 minutes',
         scores: { 'solo-mvp': 2, 'plan-moderate': 1, 'brownfield-saas': 2 },
       },
       {
-        text: 'Focused sessions — one feature at a time, 1–2 hours with plan mode',
+        text: 'Focused sessions: one feature at a time, 1–2 hours with plan mode',
         scores: { 'plan-moderate': 3, 'team-greenfield': 2, 'solo-mvp': 1 },
       },
       {
-        text: 'Long autonomous runs — set up context, let Claude work through a big task',
+        text: 'Long autonomous runs: set up context, let Claude work through a big task',
         scores: { 'power-solo': 3, 'llm-native': 2, 'enterprise-gov': 1 },
       },
       {
-        text: 'Multi-agent sessions — I orchestrate sub-agents for different parts',
+        text: 'Multi-agent sessions: I orchestrate sub-agents for different parts',
         scores: { 'llm-native': 3, 'enterprise-gov': 2, 'power-solo': 1 },
       },
     ],
@@ -222,7 +222,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'What is the current state of tests in your project?',
     options: [
       {
-        text: 'Almost none — I rely on manual testing and careful code review',
+        text: 'Almost none, I rely on manual testing and careful code review',
         scores: { 'power-solo': 2, 'solo-mvp': 2, 'plan-moderate': 1 },
       },
       {
@@ -230,11 +230,11 @@ export const MQ_QUESTIONS: MQQuestion[] = [
         scores: { 'solo-mvp': 2, 'brownfield-saas': 2, 'plan-moderate': 2 },
       },
       {
-        text: 'Good coverage — unit + integration, CI runs on every PR',
+        text: 'Good coverage: unit + integration, CI runs on every PR',
         scores: { 'team-greenfield': 2, 'microservices': 2, 'brownfield-saas': 2, 'enterprise-gov': 1 },
       },
       {
-        text: 'Comprehensive — unit, integration, e2e, and eval suites for AI outputs',
+        text: 'Comprehensive: unit, integration, e2e, and eval suites for AI outputs',
         scores: { 'enterprise-gov': 2, 'llm-native': 3, 'microservices': 2 },
       },
     ],
@@ -245,19 +245,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'What slows you down the most right now?',
     options: [
       {
-        text: 'Regressions — changes in one place break things elsewhere',
+        text: 'Regressions, changes in one place break things elsewhere',
         scores: { 'brownfield-saas': 3, 'microservices': 2, 'team-greenfield': 1 },
       },
       {
-        text: 'Context rot — Claude loses track of what we\'re building in long sessions',
+        text: 'Context rot, Claude loses track of what we\'re building in long sessions',
         scores: { 'power-solo': 3, 'plan-moderate': 2, 'llm-native': 1 },
       },
       {
-        text: 'Unclear requirements — I build the wrong thing, then have to redo it',
+        text: 'Unclear requirements, I build the wrong thing, then have to redo it',
         scores: { 'team-greenfield': 3, 'enterprise-gov': 2, 'plan-moderate': 1 },
       },
       {
-        text: 'No traceability — hard to know which spec led to which code',
+        text: 'No traceability, hard to know which spec led to which code',
         scores: { 'enterprise-gov': 3, 'brownfield-saas': 1, 'microservices': 1 },
       },
     ],
@@ -268,19 +268,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How much initial setup are you willing to invest before writing code?',
     options: [
       {
-        text: 'Zero — just CLAUDE.md and go',
+        text: 'Zero, just CLAUDE.md and go',
         scores: { 'power-solo': 3, 'solo-mvp': 1 },
       },
       {
-        text: 'Light — a spec file and a test harness, 30 minutes max',
+        text: 'Light, a spec file and a test harness, 30 minutes max',
         scores: { 'solo-mvp': 3, 'plan-moderate': 2, 'brownfield-saas': 1 },
       },
       {
-        text: 'Moderate — spec kit setup, BDD framework, CI pipeline, half a day',
+        text: 'Moderate, spec kit setup, BDD framework, CI pipeline, half a day',
         scores: { 'team-greenfield': 3, 'microservices': 2, 'brownfield-saas': 1 },
       },
       {
-        text: 'Heavy — constitution, agent roles, contract infrastructure, whatever it takes',
+        text: 'Heavy, constitution, agent roles, contract infrastructure, whatever it takes',
         scores: { 'enterprise-gov': 3, 'llm-native': 2 },
       },
     ],
@@ -291,19 +291,19 @@ export const MQ_QUESTIONS: MQQuestion[] = [
     question: 'How large is the codebase you work with?',
     options: [
       {
-        text: 'Small — under 10 files, one person can hold it all in their head',
+        text: 'Small, under 10 files, one person can hold it all in their head',
         scores: { 'solo-mvp': 3, 'power-solo': 2 },
       },
       {
-        text: 'Medium — 10–50 files, sectioned but manageable',
+        text: 'Medium, 10–50 files, sectioned but manageable',
         scores: { 'plan-moderate': 3, 'solo-mvp': 1, 'team-greenfield': 1 },
       },
       {
-        text: 'Large — 50+ files, needs domain-specific context loading',
+        text: 'Large, 50+ files, needs domain-specific context loading',
         scores: { 'team-greenfield': 2, 'brownfield-saas': 3, 'microservices': 2 },
       },
       {
-        text: 'Massive — multiple repos, service boundaries, 100K+ LoC',
+        text: 'Massive, multiple repos, service boundaries, 100K+ LoC',
         scores: { 'enterprise-gov': 3, 'microservices': 2, 'llm-native': 1 },
       },
     ],
