@@ -51,7 +51,7 @@ export const MQ_QUESTIONS: MQQuestion[] = [
       },
       {
         text: 'Multiple teams (10+), I rarely see the full picture',
-        scores: { 'enterprise-gov': 3, 'microservices': 2, 'brownfield-saas': 1 },
+        scores: { 'enterprise-gov': 2, 'microservices': 2, 'brownfield-saas': 2 },
       },
     ],
   },
@@ -361,7 +361,7 @@ export const STACK_EXPLANATIONS: StackExplanation[] = [
     icon: '🏛️',
     methodologies: ['BMAD', 'Spec Kit', 'Specmatic'],
     description:
-      'Full governance for organizations at scale. BMAD provides the constitution and multi-agent orchestration. Spec Kit structures requirements across teams. Specmatic enforces API contracts between services. High setup cost, but traceability and compliance are real.',
+      'Full governance for high-complexity projects. BMAD provides the constitution and multi-agent orchestration. Spec Kit structures requirements across teams. Specmatic enforces API contracts between services. High setup cost, but traceability and compliance are real. Note: BMAD requires stable requirements — it becomes a liability when specs change frequently mid-project.',
     quickStart:
       'Start with BMAD constitution.md, define agent roles for your workflow, set up Spec Kit for requirements, and Specmatic for API contract testing.',
     guideLink: '/guide/methodologies/#combination-patterns',
