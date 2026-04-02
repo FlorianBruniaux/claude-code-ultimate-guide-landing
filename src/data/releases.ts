@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.90',
+    date: 'Apr 2, 2026',
+    highlights: [
+      '<code>/powerup</code> — interactive animated lessons teaching Claude Code features with live demos',
+      'Fixed infinite loop crashing sessions when rate-limit dialog repeatedly auto-opened',
+      'Fixed <code>--resume</code> causing full prompt-cache miss for users with deferred tools (regression since v2.1.69)',
+      'PowerShell tool hardened: trailing & bypass, debugger hang, TOCTOU fixed; SSE transport now linear-time',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.89',
     date: 'Apr 1, 2026',
     highlights: [
@@ -27,7 +38,6 @@ export const releases: Release[] = [
     breaking: [
       'Thinking summaries disabled by default — add showThinkingSummaries: true to settings.json to restore',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

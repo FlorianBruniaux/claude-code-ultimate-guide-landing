@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.90',
+    date: 'Apr 2, 2026',
+    description: 'Adds /powerup interactive lessons with animated demos, hardens PowerShell tool permissions, and fixes a session-crashing infinite loop in the rate-limit dialog plus a prompt-cache regression in --resume.',
+    link: 'https://cc.bruniaux.com/releases/#v2190',
+  },
+  {
     type: 'new_page',
     title: 'New page: Methodologies — 20 methods mapped, 8 stacks, interactive quiz',
     date: 'Apr 1, 2026',
