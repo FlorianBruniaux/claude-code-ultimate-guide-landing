@@ -105,7 +105,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   'm21-debug-methodique': 'm21-debug-methodique.fr.v1.0.0.ff086a740842.pdf',
   'm22-observabilite-jsonl': 'm22-observabilite-jsonl.fr.v1.0.0.a108a050212c.pdf',
   // ── Technique (T) ───────────────────────────────────────────────────────────
-  't01-commandes-essentielles': '01-commandes-essentielles.fr.v1.0.0.65021e206761.pdf',
+  't01-commandes-essentielles': '01-commandes-essentielles.fr.v1.0.0.d90dbd663d18.pdf',
   't02-mode-non-interactif': 't02-mode-non-interactif.fr.v1.0.0.89847a03ef89.pdf',
   't03-permission-modes': '03-permission-modes.fr.v1.0.0.c11fa27dedba.pdf',
   't04-permissions-glob-patterns': 't04-permissions-glob-patterns.fr.v1.0.0.55e015ce94a6.pdf',
