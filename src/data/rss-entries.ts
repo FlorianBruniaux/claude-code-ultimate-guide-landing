@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.2',
+    date: 'Apr 2, 2026',
+    description: 'Hook events expanded to complete 27-event list (8 logical groups including SubagentStart/Stop, PreCompact/PostCompact, WorktreeCreate/Remove, and more). Session-scoped hooks documented. bypassPermissions safety invariant table added. MEMORY.md file limits documented (200 lines, 25KB, 200 files). reference.yaml synced.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.90',
     date: 'Apr 2, 2026',
     description: 'Adds /powerup interactive lessons with animated demos, hardens PowerShell tool permissions, and fixes a session-crashing infinite loop in the rate-limit dialog plus a prompt-cache regression in --resume.',

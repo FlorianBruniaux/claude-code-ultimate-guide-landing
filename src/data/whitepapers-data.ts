@@ -28,7 +28,7 @@ export interface Whitepaper {
   slugEn: string
 }
 
-const V = 'v3.38.1'
+const V = 'v3.38.2'
 
 export const WHITEPAPERS: Whitepaper[] = [
   {
