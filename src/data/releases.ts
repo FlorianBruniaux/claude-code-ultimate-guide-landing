@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.91',
+    date: 'Apr 3, 2026',
+    highlights: [
+      'MCP tool result size override via <code>_meta["anthropic/maxResultSizeChars"]</code> (up to 500K) — large DB schemas pass through without truncation',
+      '<code>disableSkillShellExecution</code> setting — disable inline shell execution in skills and plugin commands',
+      'Plugins can ship <code>bin/</code> executables for direct Bash tool invocation',
+      'Edit tool uses shorter <code>old_string</code> anchors — reduces output tokens',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.90',
     date: 'Apr 2, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       'Fixed <code>--resume</code> causing full prompt-cache miss for users with deferred tools (regression since v2.1.69)',
       'PowerShell tool hardened: trailing & bypass, debugger hang, TOCTOU fixed; SSE transport now linear-time',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.89',
