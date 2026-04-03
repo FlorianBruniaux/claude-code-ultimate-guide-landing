@@ -103,6 +103,14 @@ const pageEntries: SearchEntry[] = [
     source: 'landing',
   },
   {
+    id: 'page-team-metrics',
+    title: 'Team Metrics for AI-Augmented Engineering',
+    keywords: 'team metrics dora space dora 2025 archetypes deployment frequency lead time change failure rate mttr mean time to recovery bug escape rate time to value csat engineering manager tech lead piloting ai augmented 5 person 25 person velocity trap monday ritual developer experience dx core 4',
+    category: 'Pages',
+    url: '/team-metrics/',
+    source: 'landing',
+  },
+  {
     id: 'page-faq',
     title: 'FAQ',
     keywords: 'faq frequently asked questions answers help support',

@@ -1284,6 +1284,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-memory-limits-detail",
+    "title": "Memory Limits Detail",
+    "keywords": "memory limits detail memory md: 200 lines max, 25kb max  memory dir: 200 files max  truncation: lines first, then bytes, warning appended",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/MEMORY.md: 200 lines max, 25KB max. Memory dir: 200 files max. Truncation: lines first, then bytes, warning appended.",
+    "source": "guide"
+  },
+  {
     "id": "guide-auto-dream-access",
     "title": "Auto Dream Access",
     "keywords": "auto dream access memory command (or  dream if available)",

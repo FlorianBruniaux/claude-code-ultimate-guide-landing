@@ -502,6 +502,7 @@ hero:
 | [DevOps & SRE](/guide/devops-sre/) | FIRE framework for infra diagnosis | 30 min |
 | [Observability](/guide/observability/) | Session monitoring, cost tracking | 15 min |
 | [AI Traceability](/guide/ai-traceability/) | Attribution, disclosure policies, compliance | 20 min |
+| [Team Metrics](/guide/team-metrics/) | **Team metrics for AI-augmented engineering**: DORA, SPACE, AI-specific signals, by team size (5–25 people) | 20 min |
 
 ## Workflows
 
