@@ -1,0 +1,781 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Team Metrics for AI-Augmented Engineering | Claude Code Guide'
+const description = 'DORA, SPACE, DX Core 4 — metrics that matter when AI writes 70%+ of your code. A framework for 5-to-25-person teams to measure delivery health, quality signal, product impact, and human health.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "Team Metrics for AI-Augmented Engineering",
+    "description": "DORA, SPACE, DX Core 4 — metrics that matter when AI writes most of your code.",
+    "url": "https://cc.bruniaux.com/team-metrics/",
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "datePublished": "2026-04-03",
+    "dateModified": "2026-04-03",
+    "inLanguage": "en",
+    "audience": { "@type": "Audience", "audienceType": "Engineering managers, tech leads, CTOs" }
+  }
+]
+
+const guideUrl = 'https://cc.bruniaux.com/guide/ops/team-metrics/'
+
+const metricCategories = [
+  {
+    id: 'delivery',
+    title: 'Delivery Health',
+    subtitle: 'DORA',
+    accent: '#D97757',
+    note: 'The baseline. Automate these first.',
+    sourceLabel: 'DORA Research',
+    sourceUrl: 'https://dora.dev/guides/dora-metrics/',
+    guideAnchor: '#the-dora-foundation',
+    metrics: [
+      { name: 'Deployment Frequency', desc: 'How often you ship to production' },
+      { name: 'Lead Time for Changes', desc: 'Commit to production elapsed time' },
+      { name: 'Change Failure Rate', desc: '% of deploys causing incidents' },
+      { name: 'MTTR', desc: 'Mean time to restore after failure' },
+    ],
+  },
+  {
+    id: 'quality',
+    title: 'Quality Signal',
+    subtitle: null,
+    accent: '#7C6AC4',
+    note: 'Where AI hides its mistakes.',
+    sourceLabel: null,
+    sourceUrl: null,
+    guideAnchor: '#ai-specific-metrics',
+    metrics: [
+      { name: 'Bug Escape Rate', desc: 'Bugs found in prod per sprint' },
+      { name: 'PR Review Comprehension', desc: '% of PRs reviewed with genuine understanding' },
+      { name: 'CI Speed P50/P90', desc: 'Pipeline latency at median and 90th percentile' },
+    ],
+  },
+  {
+    id: 'product',
+    title: 'Product Impact',
+    subtitle: null,
+    accent: '#2E9E6A',
+    note: 'The layer most teams skip.',
+    sourceLabel: null,
+    sourceUrl: null,
+    guideAnchor: '#product-metrics-the-often-missing-layer',
+    metrics: [
+      { name: 'Time-to-Value', desc: 'Days from feature start to first user value' },
+      { name: 'Feature Adoption (14-day)', desc: '% of target users activating a feature within 2 weeks of release' },
+      { name: 'CSAT on Key Features', desc: 'User satisfaction score on high-investment areas' },
+    ],
+  },
+  {
+    id: 'human',
+    title: 'Human Health',
+    subtitle: 'SPACE',
+    accent: '#E58B3A',
+    note: "What DORA doesn't see.",
+    sourceLabel: 'SPACE Framework (ACM)',
+    sourceUrl: 'https://queue.acm.org/detail.cfm?id=3454124',
+    guideAnchor: '#beyond-dora-the-space-framework',
+    metrics: [
+      { name: 'Developer Satisfaction', desc: 'Quarterly CSAT survey (5 questions, anonymous)' },
+      { name: 'PR Review Time', desc: 'Avg hours from PR open to first review' },
+      { name: 'Burnout Signals', desc: 'After-hours commits, PTO utilization, qualitative check-ins' },
+    ],
+  },
+]
+
+const teamSizes = [
+  {
+    label: '5-person team',
+    metrics: [
+      'Deployment Frequency',
+      'Cycle Time',
+      'Time-to-Value',
+      'Bugs in prod/month',
+      'Quarterly satisfaction',
+    ],
+    tooling: 'GitHub Insights + spreadsheet',
+    guideAnchor: '#5-person-team',
+  },
+  {
+    label: '25-person team',
+    metrics: [
+      'All 4 DORA (automated)',
+      'Cycle Time per squad',
+      'Bug Escape Rate',
+      'AI contribution %',
+      'Quarterly satisfaction',
+    ],
+    tooling: 'LinearB or Faros.ai',
+    guideAnchor: '#25-person-team',
+  },
+]
+
+const testQuestions = [
+  { q: 'Can you act on it in <2 weeks?', key: 'actionable' },
+  { q: 'Does it explain WHY, not just WHAT?', key: 'causal' },
+  { q: 'Is it correlated to a business outcome?', key: 'outcome' },
+  { q: 'Can it be measured automatically?', key: 'automated' },
+]
+
+const externalSources = [
+  {
+    label: 'DORA 2025 Report',
+    url: 'https://dora.dev/research/2025/dora-report/',
+    desc: '7 archetypes, 8 dimensions — the new measurement model',
+  },
+  {
+    label: 'DORA Metrics Guide',
+    url: 'https://dora.dev/guides/dora-metrics/',
+    desc: 'Official definitions for the 4 core delivery metrics',
+  },
+  {
+    label: 'SPACE Framework (ACM Queue)',
+    url: 'https://queue.acm.org/detail.cfm?id=3454124',
+    desc: 'Forsgren et al. — 5 dimensions of developer productivity',
+  },
+  {
+    label: 'Anthropic Contribution Metrics',
+    url: 'https://claude.com/blog/contribution-metrics',
+    desc: '+67% PRs/day — Anthropic internal data, Jan 2026',
+  },
+  {
+    label: 'Anthropic: How AI Transforms Work',
+    url: 'https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic',
+    desc: 'Internal study — 70-90% AI-assisted code across teams, Aug 2025',
+  },
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">DORA 2025</span>
+        <span class="hero-badge">SPACE Framework</span>
+        <span class="hero-badge hero-badge--secondary">5-25 people</span>
+      </div>
+      <h1>Pilot Your AI-Augmented Team</h1>
+      <p class="tagline">The metrics that actually matter when AI writes 70% of your code.</p>
+      <div class="cta-buttons">
+        <a href="#framework" class="btn btn-primary">View the Framework →</a>
+        <a href={guideUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Full Guide →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section class="section section--alt" id="problem">
+    <div class="container">
+      <h2 class="section-title">When Velocity Lies</h2>
+      <p class="section-subtitle">
+        When AI accelerates delivery, old benchmarks break. PRs per day goes up, which looks like progress — and masks quality and skill problems underneath. You need different sensors.
+      </p>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-value">+67%</div>
+          <div class="stat-label">PRs/day</div>
+          <a class="stat-source stat-source--link" href="https://claude.com/blog/contribution-metrics" target="_blank" rel="noopener noreferrer">Anthropic internal, Jan 2026 ↗</a>
+        </div>
+        <div class="stat-card stat-card--accent">
+          <div class="stat-value">70–90%</div>
+          <div class="stat-label">AI-assisted code</div>
+          <a class="stat-source stat-source--link" href="https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic" target="_blank" rel="noopener noreferrer">Anthropic research, Aug 2025 ↗</a>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-value--muted">DORA tiers</div>
+          <div class="stat-label">abandoned</div>
+          <a class="stat-source stat-source--link" href="https://dora.dev/research/2025/dora-report/" target="_blank" rel="noopener noreferrer">DORA 2025 report ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework -->
+  <section class="section" id="framework">
+    <div class="container">
+      <h2 class="section-title">4 Metric Categories</h2>
+      <p class="section-subtitle">Each one covers a blind spot the others miss. Together they give you a complete picture.</p>
+
+      <div class="metrics-grid">
+        {metricCategories.map((cat) => (
+          <div class="metric-card" style={`--cat-accent: ${cat.accent}`}>
+            <div class="metric-card-header">
+              <div class="metric-card-titles">
+                <h3 class="metric-card-title">{cat.title}</h3>
+                {cat.subtitle && <span class="metric-card-badge">{cat.subtitle}</span>}
+              </div>
+              <p class="metric-card-note">{cat.note}</p>
+            </div>
+            <ul class="metric-list">
+              {cat.metrics.map((m) => (
+                <li class="metric-item">
+                  <span class="metric-name">{m.name}</span>
+                  <span class="metric-desc">{m.desc}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="metric-card-footer">
+              {cat.sourceUrl && (
+                <a class="metric-link metric-link--ext" href={cat.sourceUrl} target="_blank" rel="noopener noreferrer">{cat.sourceLabel} ↗</a>
+              )}
+              <a class="metric-link metric-link--guide" href={guideUrl + cat.guideAnchor}>Guide →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- By Team Size -->
+  <section class="section section--alt" id="by-size">
+    <div class="container">
+      <h2 class="section-title">Start Small, Scale Right</h2>
+      <p class="section-subtitle">The right metrics depend on your team size. Don't track what you can't act on.</p>
+
+      <div class="size-grid">
+        {teamSizes.map((ts) => (
+          <div class="size-card">
+            <h3 class="size-card-title">{ts.label}</h3>
+            <ul class="size-metrics">
+              {ts.metrics.map((m) => (
+                <li class="size-metric-item">
+                  <span class="size-metric-check" aria-hidden="true">&#10003;</span>
+                  {m}
+                </li>
+              ))}
+            </ul>
+            <div class="size-tooling">
+              <span class="tooling-label">Recommended tooling</span>
+              <span class="tooling-value">{ts.tooling}</span>
+            </div>
+            <a class="size-guide-link" href={guideUrl + ts.guideAnchor}>Full breakdown in guide →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The 4-Question Test -->
+  <section class="section" id="test">
+    <div class="container">
+      <h2 class="section-title">The 4-Question Test</h2>
+      <p class="section-subtitle">
+        For any metric you're considering tracking, run it through this checklist. Fewer than 3 "yes" answers? Drop it — it's noise, not signal.
+      </p>
+
+      <div class="test-grid">
+        {testQuestions.map((item, i) => (
+          <div class="test-card">
+            <div class="test-number">{i + 1}</div>
+            <div class="test-question">{item.q}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="test-rule">
+        <strong>Rule:</strong> fewer than 3 yes answers means the metric is not worth tracking. Tracking too much costs attention — the one resource AI can't augment.
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="section section--alt" id="sources">
+    <div class="container">
+      <h2 class="section-title">Sources & References</h2>
+      <p class="section-subtitle">Every data point on this page is traceable. Here are the primary sources.</p>
+      <div class="sources-grid">
+        {externalSources.map((s) => (
+          <a class="source-card" href={s.url} target="_blank" rel="noopener noreferrer">
+            <span class="source-label">{s.label} ↗</span>
+            <span class="source-desc">{s.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section metrics-cta-section">
+    <div class="container">
+      <div class="metrics-cta-box">
+        <h2>Read the full framework in the guide</h2>
+        <p>Covers implementation playbook, tooling comparison, anti-patterns, and worked examples for squads already using Claude Code daily.</p>
+        <div class="cta-buttons">
+          <a href={guideUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">Open the Guide →</a>
+          <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ============================================
+   Hero badges
+   ============================================ */
+.hero-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-badge--secondary {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Stat cards (Problem section)
+   ============================================ */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-xl);
+}
+
+.stat-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.stat-card--accent {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface-elevated));
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value--muted {
+  font-size: 1.25rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-source {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   Metric cards (Framework section)
+   ============================================ */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--cat-accent, var(--accent));
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal);
+}
+
+.metric-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.metric-card-header {
+  margin-bottom: var(--space-md);
+}
+
+.metric-card-titles {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.metric-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-card-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  color: var(--cat-accent, var(--accent));
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cat-accent, var(--accent)) 30%, transparent);
+}
+
+.metric-card-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+.metric-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.metric-item:last-child {
+  border-bottom: none;
+}
+
+.metric-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.metric-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ============================================
+   Team size cards
+   ============================================ */
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.size-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.size-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--accent);
+}
+
+.size-metrics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.size-metric-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.size-metric-check {
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.size-tooling {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+.tooling-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tooling-value {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ============================================
+   4-Question Test
+   ============================================ */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: var(--space-xl);
+}
+
+.test-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-normal);
+}
+
+.test-card:hover {
+  border-color: var(--accent);
+}
+
+.test-number {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+}
+
+.test-question {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.test-rule {
+  padding: var(--space-lg) var(--space-xl);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.test-rule strong {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   CTA section
+   ============================================ */
+.metrics-cta-section {
+  border-top: 1px solid var(--border);
+}
+
+.metrics-cta-box {
+  max-width: 640px;
+}
+
+.metrics-cta-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.metrics-cta-box p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Stat source links
+   ============================================ */
+.stat-source--link {
+  display: block;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+  transition: color var(--transition-normal);
+}
+
+.stat-source--link:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   Metric card footer (links)
+   ============================================ */
+.metric-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.metric-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.metric-link--ext {
+  color: var(--text-muted);
+}
+
+.metric-link--ext:hover {
+  color: var(--text-secondary);
+}
+
+.metric-link--guide {
+  color: var(--accent);
+  margin-left: auto;
+}
+
+.metric-link--guide:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Size card guide link
+   ============================================ */
+.size-guide-link {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-light);
+  transition: text-decoration var(--transition-normal);
+}
+
+.size-guide-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Sources section
+   ============================================ */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: var(--space-xl);
+}
+
+.source-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.source-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.source-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.source-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .size-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

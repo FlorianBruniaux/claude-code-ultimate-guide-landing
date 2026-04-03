@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.3',
+    date: 'Apr 3, 2026',
+    description: 'New page: Team Metrics for AI-Augmented Engineering — covers DORA (with 2025 archetype shift), SPACE framework, AI-specific metrics, and recommendations by team size (5 vs 25 people). Also adds a "Team-Level Steering Metrics" section to the Tech Leads guide with Velocity Trap warning and Monday ritual. Landing page at cc.bruniaux.com/team-metrics/.',
+    link: 'https://cc.bruniaux.com/team-metrics/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.2',
     date: 'Apr 2, 2026',
     description: 'Hook events expanded to complete 27-event list (8 logical groups including SubagentStart/Stop, PreCompact/PostCompact, WorktreeCreate/Remove, and more). Session-scoped hooks documented. bypassPermissions safety invariant table added. MEMORY.md file limits documented (200 lines, 25KB, 200 files). reference.yaml synced.',
