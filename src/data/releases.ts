@@ -16,6 +16,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.92',
+    date: 'Apr 4, 2026',
+    highlights: [
+      'Interactive Bedrock setup wizard from login screen — step-by-step AWS auth, region config, credential verification, and model pinning',
+      '<code>forceRemoteSettingsRefresh</code> policy setting — fail-closed managed settings enforcement (blocks startup until fresh fetch)',
+      'Per-model and cache-hit cost breakdown in <code>/cost</code> for subscription users',
+      '<code>/release-notes</code> is now an interactive version picker',
+      'Linux sandbox: <code>apply-seccomp</code> helper now in npm + native builds — restores unix-socket blocking',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.91',
     date: 'Apr 3, 2026',
     highlights: [
@@ -24,7 +36,6 @@ export const releases: Release[] = [
       'Plugins can ship <code>bin/</code> executables for direct Bash tool invocation',
       'Edit tool uses shorter <code>old_string</code> anchors — reduces output tokens',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.90',

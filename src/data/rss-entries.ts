@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.92',
+    date: 'Apr 4, 2026',
+    description: 'New interactive Bedrock setup wizard from the login screen guides through AWS auth, region config, credential verification, and model pinning. forceRemoteSettingsRefresh policy setting adds fail-closed managed settings enforcement. /cost now shows per-model and cache-hit breakdown for subscription users. Linux sandbox apply-seccomp fix restores unix-socket blocking in both npm and native builds.',
+    link: 'https://cc.bruniaux.com/releases/#v2192',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.3',
     date: 'Apr 3, 2026',
     description: 'New page: Team Metrics for AI-Augmented Engineering — covers DORA (with 2025 archetype shift), SPACE framework, AI-specific metrics, and recommendations by team size (5 vs 25 people). Also adds a "Team-Level Steering Metrics" section to the Tech Leads guide with Velocity Trap warning and Monday ritual. Landing page at cc.bruniaux.com/team-metrics/.',
