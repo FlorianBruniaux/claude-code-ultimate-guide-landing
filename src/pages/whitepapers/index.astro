@@ -227,11 +227,11 @@ const profiles = [
                           <input type="radio" name={`format-${wp.num}`} value="epub" /> EPUB
                         </label>
                         <span class="lang-label">Lang:</span>
-                        <label class="radio-pill">
-                          <input type="radio" name={`lang-${wp.num}`} value="en" checked /> EN
+                        <label class="radio-pill" style={!wp.slugEn ? 'opacity:0.4;cursor:not-allowed' : ''}>
+                          <input type="radio" name={`lang-${wp.num}`} value="en" checked={!!wp.slugEn} disabled={!wp.slugEn} /> EN
                         </label>
                         <label class="radio-pill">
-                          <input type="radio" name={`lang-${wp.num}`} value="fr" /> FR
+                          <input type="radio" name={`lang-${wp.num}`} value="fr" checked={!wp.slugEn} /> FR
                         </label>
                       </div>
                       <button type="submit" class="submit-btn">
@@ -952,7 +952,7 @@ const profiles = [
       try {
         const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe'
         const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? 'https://cc.bruniaux.com'
-        await fetch(API_URL, {
+        const res = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -966,6 +966,8 @@ const profiles = [
             ...(isEpub && { epubUrl: `${SITE_URL}${epubUrl}` }),
           }),
         })
+
+        if (!res.ok) throw new Error(`API ${res.status}`)
 
         form.classList.add('hidden')
         successMsg?.classList.remove('hidden')
