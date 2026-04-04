@@ -199,7 +199,7 @@ const profiles = [
                   <span class="badge badge-soon">Coming soon</span>
                 </div>
               ) : wp.gated ? (
-                <div class="gated-block" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
+                <div class="gated-block" data-wp={wp.num} data-file-fr={`${wp.slugFr}.fr`} data-file-en={`${wp.slugEn}.en`}>
                   <button
                     type="button"
                     class="get-btn"
@@ -211,7 +211,7 @@ const profiles = [
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </button>
                   <div id={`form-${wp.num}`} class="inline-form hidden" role="region" aria-label={`Get ${wp.titleEn}`}>
-                    <form class="subscribe-form" data-wp={wp.num} data-file-fr={wp.hashedFileFr} data-file-en={wp.hashedFileEn}>
+                    <form class="subscribe-form" data-wp={wp.num} data-file-fr={`${wp.slugFr}.fr`} data-file-en={`${wp.slugEn}.en`}>
                       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
                       <div class="form-row">
                         <input type="text" name="firstname" placeholder="Full name" required class="form-input" autocomplete="name" />
@@ -929,11 +929,12 @@ const profiles = [
       const format = (form.querySelector(`[name="format-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'pdf'
       const lang = (form.querySelector(`[name="lang-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'en'
 
-      // Always use the hashed PDF filename for API validation.
+      // filename is a stable ID (e.g. "02-personnalisation.fr") — resolved server-side
+      // by /api/guides so email links never break when PDFs are updated.
       // For EPUB requests: pass epubUrl so the API sends the EPUB link in the email.
       const isEpub = format === 'epub'
-      const slugFr = fileFr.replace(/\.fr\..*\.pdf$/, '')
-      const slugEn = fileEn.replace(/\.en\..*\.pdf$/, '')
+      const slugFr = fileFr.replace(/\.fr(\..*)?$/, '')
+      const slugEn = fileEn.replace(/\.en(\..*)?$/, '')
       const epubUrl = lang === 'fr'
         ? `/ebooks/epub/fr/${slugFr}.epub`
         : `/ebooks/epub/en/${slugEn}.epub`
