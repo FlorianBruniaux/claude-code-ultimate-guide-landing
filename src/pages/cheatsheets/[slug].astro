@@ -311,15 +311,12 @@ const jsonLd = [
       }
 
       const selectedLang = gateForm.querySelector('input[name="gate-lang"]:checked')?.value || 'en'
-      const seriesZipsFr = {
-        T: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
-        M: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
+      // Stable IDs — resolved server-side by /api/guides, never break on ZIP updates
+      const stableIds = {
+        T: { fr: 'recap-technique.fr', en: 'recap-technique.en' },
+        M: { fr: 'recap-methodologie.fr', en: 'recap-methodologie.en' },
       }
-      const seriesZipsEn = {
-        T: 'recap-cards-technique.en.v1.0.0.cc8add9f18c3.zip',
-        M: 'recap-cards-methodologie.en.v1.0.0.11cb6e161f0f.zip',
-      }
-      const zipFile = selectedLang === 'fr' ? seriesZipsFr[seriesId] : seriesZipsEn[seriesId]
+      const zipFile = stableIds[seriesId]?.[selectedLang]
 
       if (!zipFile) {
         showError('This series is not yet available.')

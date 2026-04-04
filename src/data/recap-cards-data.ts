@@ -40,7 +40,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     color: '#d97706',
     cardCount: 22,
     released: true,
-    hashedZipFr: 'recap-cards-technique.fr.v1.0.0.6d973398dd87.zip',
+    hashedZipFr: 'recap-cards-technique.fr.v1.0.0.b49e567efc83.zip',
     hashedZipEn: 'recap-cards-technique.en.v1.0.0.cc8add9f18c3.zip',
   },
   {
@@ -50,7 +50,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     color: '#3b82f6',
     cardCount: 22,
     released: true,
-    hashedZipFr: 'recap-cards-methodologie.fr.v1.0.0.7d31e042ed8b.zip',
+    hashedZipFr: 'recap-cards-methodologie.fr.v1.0.0.13e7b6ebafd5.zip',
     hashedZipEn: 'recap-cards-methodologie.en.v1.0.0.11cb6e161f0f.zip',
   },
   {
