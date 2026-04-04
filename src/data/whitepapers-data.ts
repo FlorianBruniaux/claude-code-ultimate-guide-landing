@@ -1,6 +1,6 @@
 /**
  * Whitepapers & Ebooks data
- * 11 whitepapers, FR + EN, PDF + EPUB
+ * 12 whitepapers, FR + EN, PDF + EPUB
  *
  * PDFs hosted on Vercel (florian.bruniaux.com/guides/).
  * Hashed filenames prevent brute-force discovery — the API (portfolio) validates
@@ -200,6 +200,22 @@ export const WHITEPAPERS: Whitepaper[] = [
     hashedFileEn: '',
     slugFr: '10-budget-ia',
     slugEn: '10-ai-budget',
+  },
+  {
+    num: '11',
+    titleEn: 'Team Metrics in the AI Era',
+    titleFr: "Piloter une Équipe à l'Ère de l'IA",
+    subtitle: 'DORA, SPACE, and the metrics that matter when AI writes 70% of your code.',
+    audience: 'Engineering Managers, Tech Leads, CTOs',
+    pages: 28,
+    tags: ['metrics', 'dora', 'space', 'management', 'team'],
+    gated: true,
+    badge: 'New',
+    formats: ['pdf'],
+    hashedFileFr: '11-team-metrics.fr.v3.38.3.403ab2de216c.pdf',
+    hashedFileEn: '',
+    slugFr: '11-team-metrics',
+    slugEn: '',
   },
 ]
 
