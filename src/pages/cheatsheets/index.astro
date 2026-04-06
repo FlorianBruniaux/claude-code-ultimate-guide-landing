@@ -482,10 +482,10 @@ function updateGateBanner(filter) {
     const mLocked = !isUnlocked('M')
     if (tLocked || mLocked) {
       gateBanner.classList.remove('hidden')
-      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technical + Methodology series`
+      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technical + Methodology + Design series`
       resetGateForm()
     } else {
-      showUnlockedBanner(['T', 'M'])
+      showUnlockedBanner(['T', 'M', 'C'])
     }
     return
   }
