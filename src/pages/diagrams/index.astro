@@ -564,10 +564,42 @@ const jsonLd = [
   display: block;
 }
 
-/* Dark mode adjustments for SVG edges/labels */
+/* Fix Mermaid SVG arrows: edge paths need fill:none (prevents huge black filled shapes)
+   AND explicit stroke (the embedded SVG <style> may not apply in all cascade scenarios).
+   Both !important to guarantee they win over the embedded SVG stylesheet. */
+.diagram-container :global(.flowchart-link) {
+  fill: none !important;
+  stroke: #555 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Older Mermaid versions use .edgePath */
+.diagram-container :global(.edgePath path),
+.diagram-container :global(.edge path) {
+  fill: none !important;
+  stroke: #555 !important;
+}
+
+/* Arrowhead markers — force gray fill so they're visible on light bg */
+.diagram-container :global(svg marker path),
+.diagram-container :global(svg marker polygon) {
+  fill: #555 !important;
+  stroke: #555 !important;
+}
+
+/* Dark mode: edge lines */
+[data-theme="dark"] .diagram-container :global(.flowchart-link),
 [data-theme="dark"] .diagram-container :global(.edgePath path),
 [data-theme="dark"] .diagram-container :global(.edge path) {
-  stroke: #888;
+  stroke: #999 !important;
+  fill: none !important;
+}
+
+/* Dark mode: arrowhead markers */
+[data-theme="dark"] .diagram-container :global(svg marker path),
+[data-theme="dark"] .diagram-container :global(svg marker polygon) {
+  fill: #999 !important;
+  stroke: #999 !important;
 }
 
 [data-theme="dark"] .diagram-container :global(.edgeLabel) {
