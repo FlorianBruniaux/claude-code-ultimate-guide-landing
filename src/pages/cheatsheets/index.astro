@@ -159,8 +159,15 @@ const cardUrls = cardUrlsFr
         <p class="gate-success hidden" id="gate-success" role="status"></p>
         <!-- Download state: shown when series is already unlocked -->
         <div class="gate-unlocked hidden" id="gate-unlocked">
-          <p class="gate-unlocked-label" id="gate-unlocked-title">Your bundle is ready</p>
+          <div class="gate-unlocked-header">
+            <p class="gate-unlocked-label" id="gate-unlocked-title">Your bundle is ready</p>
+            <p class="gate-unlocked-sub" id="gate-unlocked-sub">Download your PDF bundles below</p>
+          </div>
           <div class="gate-unlocked-links" id="gate-unlocked-links"></div>
+          <div class="gate-unlocked-design hidden" id="gate-unlocked-design">
+            <span class="gate-unlocked-divider">Also free:</span>
+            <div class="gate-unlocked-design-links" id="gate-unlocked-design-links"></div>
+          </div>
         </div>
       </div>
 
@@ -341,33 +348,86 @@ function showUnlockedBanner(seriesIds) {
   const gateUnlocked = document.getElementById('gate-unlocked')
   const gateUnlockedLinks = document.getElementById('gate-unlocked-links')
   const gateUnlockedTitle = document.getElementById('gate-unlocked-title')
+  const gateUnlockedSub = document.getElementById('gate-unlocked-sub')
+  const gateUnlockedDesign = document.getElementById('gate-unlocked-design')
+  const gateUnlockedDesignLinks = document.getElementById('gate-unlocked-design-links')
   const gateIcon = gateBanner.querySelector('.gate-icon')
+  const gateTextEl = gateBanner.querySelector('.gate-text')
 
   if (!gateUnlocked || !gateUnlockedLinks) return
 
-  if (gateIcon) gateIcon.textContent = '✓'
-  const names = seriesIds.map(id => seriesData(id)?.name).filter(Boolean)
-  if (gateUnlockedTitle) gateUnlockedTitle.textContent = `${names.join(' + ')} — download your bundle`
+  // Switch icon to green checkmark
+  if (gateIcon) {
+    gateIcon.textContent = '✓'
+    gateIcon.classList.add('gate-icon--unlocked')
+  }
 
+  // Hide the locked text (title + subtitle)
+  if (gateTextEl) gateTextEl.classList.add('hidden')
+
+  // Update unlocked header text
+  const names = seriesIds.map(function(id) { return seriesData(id) ? seriesData(id).name : null }).filter(Boolean)
+  if (gateUnlockedTitle) {
+    gateUnlockedTitle.textContent = names.length > 1
+      ? names.join(' + ') + ' series unlocked'
+      : names[0] + ' series unlocked'
+  }
+  if (gateUnlockedSub) {
+    gateUnlockedSub.textContent = 'Download your PDF bundles below'
+  }
+
+  // Populate ZIP download buttons
   gateUnlockedLinks.innerHTML = ''
-  for (const sid of seriesIds) {
-    const s = seriesData(sid)
+  for (var i = 0; i < seriesIds.length; i++) {
+    var sid = seriesIds[i]
+    var s = seriesData(sid)
     if (!s) continue
     if (s.hashedZipFr) {
-      const a = document.createElement('a')
-      a.href = `${RECAP_BASE_URL}/${s.hashedZipFr}`
-      a.className = 'zip-dl-btn'
-      a.setAttribute('download', '')
-      a.textContent = `${s.name} FR`
-      gateUnlockedLinks.appendChild(a)
+      var aFr = document.createElement('a')
+      aFr.href = RECAP_BASE_URL + '/' + s.hashedZipFr
+      aFr.className = 'zip-dl-btn'
+      aFr.setAttribute('download', '')
+      aFr.setAttribute('aria-label', 'Download ' + s.name + ' FR PDF bundle')
+      aFr.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>' + s.name + ' FR'
+      gateUnlockedLinks.appendChild(aFr)
     }
     if (s.hashedZipEn) {
-      const a = document.createElement('a')
-      a.href = `${RECAP_BASE_URL}/${s.hashedZipEn}`
-      a.className = 'zip-dl-btn'
-      a.setAttribute('download', '')
-      a.textContent = `${s.name} EN`
-      gateUnlockedLinks.appendChild(a)
+      var aEn = document.createElement('a')
+      aEn.href = RECAP_BASE_URL + '/' + s.hashedZipEn
+      aEn.className = 'zip-dl-btn'
+      aEn.setAttribute('download', '')
+      aEn.setAttribute('aria-label', 'Download ' + s.name + ' EN PDF bundle')
+      aEn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>' + s.name + ' EN'
+      gateUnlockedLinks.appendChild(aEn)
+    }
+  }
+
+  // Show Design free cards section (when "All" tab or Design relevant)
+  if (gateUnlockedDesign && gateUnlockedDesignLinks) {
+    var designCards = [
+      { id: 'c01-trust-calibration', label: 'Trust Calibration' },
+      { id: 'c02-prompting-basics', label: 'Prompting Basics' },
+      { id: 'c03-xml-prompting-anchors', label: 'XML Anchors' },
+    ]
+    gateUnlockedDesignLinks.innerHTML = ''
+    var hasDesignLinks = false
+    for (var j = 0; j < designCards.length; j++) {
+      var dc = designCards[j]
+      var urlFr = cardUrlsMapFr[dc.id]
+      var urlEn = cardUrlsMapEn[dc.id]
+      if (!urlFr && !urlEn) continue
+      hasDesignLinks = true
+      var lang = urlEn ? urlEn : urlFr
+      var designA = document.createElement('a')
+      designA.href = urlFr || urlEn
+      designA.className = 'zip-dl-btn zip-dl-btn--design'
+      designA.setAttribute('download', '')
+      designA.setAttribute('aria-label', 'Download ' + dc.label + ' FR PDF')
+      designA.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>' + dc.label
+      gateUnlockedDesignLinks.appendChild(designA)
+    }
+    if (hasDesignLinks) {
+      gateUnlockedDesign.classList.remove('hidden')
     }
   }
 
@@ -378,10 +438,15 @@ function showUnlockedBanner(seriesIds) {
 
 function resetBannerState() {
   const gateUnlocked = document.getElementById('gate-unlocked')
+  const gateTextEl = gateBanner.querySelector('.gate-text')
   if (gateUnlocked) gateUnlocked.classList.add('hidden')
+  if (gateTextEl) gateTextEl.classList.remove('hidden')
   if (gateForm) gateForm.classList.remove('hidden')
   const gateIcon = gateBanner.querySelector('.gate-icon')
-  if (gateIcon) gateIcon.textContent = '🔒'
+  if (gateIcon) {
+    gateIcon.textContent = '🔒'
+    gateIcon.classList.remove('gate-icon--unlocked')
+  }
 }
 
 function updateGateBanner(filter) {
@@ -1012,41 +1077,91 @@ if (waitlistForm) {
   }
 
   /* Unlocked state */
+  .gate-icon--unlocked {
+    color: #22c55e;
+  }
   .gate-unlocked {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     gap: 0.75rem;
-    flex-wrap: wrap;
-    flex-shrink: 0;
+    flex: 1;
+    min-width: 0;
+  }
+  .gate-unlocked-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
   }
   .gate-unlocked-label {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--text-primary);
     margin: 0;
-    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .gate-unlocked-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin: 0;
   }
   .gate-unlocked-links {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
+  }
+  .gate-unlocked-design {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.1rem;
+  }
+  .gate-unlocked-divider {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .gate-unlocked-design-links {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
   }
   .zip-dl-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.45rem 0.875rem;
-    border-radius: 0.4rem;
-    background: var(--accent);
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background: #22c55e;
     color: #fff;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
-    transition: opacity 0.15s;
+    transition: opacity 0.15s, transform 0.1s;
     white-space: nowrap;
+    letter-spacing: 0.01em;
+    border: none;
+    line-height: 1;
   }
-  .zip-dl-btn::before { content: '↓ '; }
-  .zip-dl-btn:hover { opacity: 0.85; }
+  .zip-dl-btn:hover { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
+  .zip-dl-btn:active { transform: translateY(0); }
+  .zip-dl-btn--design {
+    background: transparent;
+    color: #16a34a;
+    border: 1px solid color-mix(in srgb, #22c55e 50%, transparent);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  .zip-dl-btn--design:hover {
+    background: color-mix(in srgb, #22c55e 12%, transparent);
+    opacity: 1;
+  }
 
   /* When unlocked, change banner border to green tint */
   .gate-banner:has(.gate-unlocked:not(.hidden)) {
