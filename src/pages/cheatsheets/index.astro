@@ -316,10 +316,10 @@ try {
   const savedName = localStorage.getItem('cc-contact-name')
   const savedEmail = localStorage.getItem('cc-contact-email')
   const savedLinkedin = localStorage.getItem('cc-contact-linkedin')
-  if (savedName && gateFirstname) (gateFirstname as HTMLInputElement).value = savedName
-  if (savedEmail && gateEmail) (gateEmail as HTMLInputElement).value = savedEmail
+  if (savedName && gateFirstname) gateFirstname.value = savedName
+  if (savedEmail && gateEmail) gateEmail.value = savedEmail
   if (savedLinkedin) {
-    const liInput = document.getElementById('gate-linkedin') as HTMLInputElement
+    const liInput = document.getElementById('gate-linkedin')
     if (liInput) liInput.value = savedLinkedin
   }
 } catch {}
