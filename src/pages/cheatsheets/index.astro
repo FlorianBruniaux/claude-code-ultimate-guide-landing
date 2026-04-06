@@ -157,6 +157,11 @@ const cardUrls = cardUrlsFr
         </form>
         <p class="gate-error hidden" id="gate-error" role="alert"></p>
         <p class="gate-success hidden" id="gate-success" role="status"></p>
+        <!-- Download state: shown when series is already unlocked -->
+        <div class="gate-unlocked hidden" id="gate-unlocked">
+          <p class="gate-unlocked-label" id="gate-unlocked-title">Your bundle is ready</p>
+          <div class="gate-unlocked-links" id="gate-unlocked-links"></div>
+        </div>
       </div>
 
       <!-- "Coming soon" for Design series (shown by JS when C tab active) -->
@@ -332,6 +337,53 @@ function seriesData(id) {
   return RECAP_SERIES.find(s => s.id === id)
 }
 
+function showUnlockedBanner(seriesIds) {
+  const gateUnlocked = document.getElementById('gate-unlocked')
+  const gateUnlockedLinks = document.getElementById('gate-unlocked-links')
+  const gateUnlockedTitle = document.getElementById('gate-unlocked-title')
+  const gateIcon = gateBanner.querySelector('.gate-icon')
+
+  if (!gateUnlocked || !gateUnlockedLinks) return
+
+  if (gateIcon) gateIcon.textContent = '✓'
+  const names = seriesIds.map(id => seriesData(id)?.name).filter(Boolean)
+  if (gateUnlockedTitle) gateUnlockedTitle.textContent = `${names.join(' + ')} — download your bundle`
+
+  gateUnlockedLinks.innerHTML = ''
+  for (const sid of seriesIds) {
+    const s = seriesData(sid)
+    if (!s) continue
+    if (s.hashedZipFr) {
+      const a = document.createElement('a')
+      a.href = `${RECAP_BASE_URL}/${s.hashedZipFr}`
+      a.className = 'zip-dl-btn'
+      a.setAttribute('download', '')
+      a.textContent = `${s.name} FR`
+      gateUnlockedLinks.appendChild(a)
+    }
+    if (s.hashedZipEn) {
+      const a = document.createElement('a')
+      a.href = `${RECAP_BASE_URL}/${s.hashedZipEn}`
+      a.className = 'zip-dl-btn'
+      a.setAttribute('download', '')
+      a.textContent = `${s.name} EN`
+      gateUnlockedLinks.appendChild(a)
+    }
+  }
+
+  if (gateForm) gateForm.classList.add('hidden')
+  gateUnlocked.classList.remove('hidden')
+  gateBanner.classList.remove('hidden')
+}
+
+function resetBannerState() {
+  const gateUnlocked = document.getElementById('gate-unlocked')
+  if (gateUnlocked) gateUnlocked.classList.add('hidden')
+  if (gateForm) gateForm.classList.remove('hidden')
+  const gateIcon = gateBanner.querySelector('.gate-icon')
+  if (gateIcon) gateIcon.textContent = '🔒'
+}
+
 function updateGateBanner(filter) {
   if (!gateBanner) return
 
@@ -343,17 +395,23 @@ function updateGateBanner(filter) {
   // Hide coming-soon by default
   if (comingSoon) comingSoon.classList.add('hidden')
 
+  resetBannerState()
+
   const series = sid ? seriesData(sid) : null
 
-  // If specific released series and NOT unlocked → show gate (skip C — no bundle ZIP yet)
-  if (series && series.released && !isUnlocked(sid) && sid !== 'C') {
-    gateBanner.classList.remove('hidden')
-    if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series — PDF bundle delivered to your inbox`
-    resetGateForm()
+  // Specific released series (not Design — no ZIP yet)
+  if (series && series.released && sid !== 'C') {
+    if (!isUnlocked(sid)) {
+      gateBanner.classList.remove('hidden')
+      if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series — PDF bundle delivered to your inbox`
+      resetGateForm()
+    } else {
+      showUnlockedBanner([sid])
+    }
     return
   }
 
-  // "All" tab: show gate if T or M are locked
+  // "All" tab
   if (!sid) {
     const tLocked = !isUnlocked('T')
     const mLocked = !isUnlocked('M')
@@ -361,11 +419,13 @@ function updateGateBanner(filter) {
       gateBanner.classList.remove('hidden')
       if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technical + Methodology series`
       resetGateForm()
-      return
+    } else {
+      showUnlockedBanner(['T', 'M'])
     }
+    return
   }
 
-  // Already unlocked or coming soon — hide banner
+  // Design or unreleased — hide banner
   gateBanner.classList.add('hidden')
 }
 
@@ -949,6 +1009,49 @@ if (waitlistForm) {
     font-size: 0.8rem;
     color: #22c55e;
     font-weight: 500;
+  }
+
+  /* Unlocked state */
+  .gate-unlocked {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .gate-unlocked-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+  }
+  .gate-unlocked-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .zip-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.875rem;
+    border-radius: 0.4rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+  .zip-dl-btn::before { content: '↓ '; }
+  .zip-dl-btn:hover { opacity: 0.85; }
+
+  /* When unlocked, change banner border to green tint */
+  .gate-banner:has(.gate-unlocked:not(.hidden)) {
+    border-color: color-mix(in srgb, #22c55e 40%, transparent);
+    background: color-mix(in srgb, #22c55e 6%, transparent);
   }
 
   @media (max-width: 768px) {
