@@ -39,7 +39,7 @@ export const ROLES_META = {
   count: 16,
   updated: 'March 2026',
   salaryMarket: 'US market · ±30%',
-  sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ai-roles.md',
+  sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md',
 } as const
 
 export const ROLES: RoleEntry[] = [
