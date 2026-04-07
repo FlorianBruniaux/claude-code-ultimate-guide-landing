@@ -60,8 +60,8 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     color: '#22c55e',
     cardCount: 13,
     released: true,
-    hashedZipFr: '',
-    hashedZipEn: '',
+    hashedZipFr: 'recap-cards-conception.fr.v1.0.0.e21c16e4dc41.zip',
+    hashedZipEn: 'recap-cards-conception.en.v1.0.0.986267c3975d.zip',
   },
 ]
 
