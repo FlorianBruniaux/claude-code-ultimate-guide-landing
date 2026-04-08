@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.8',
+    date: 'Apr 8, 2026',
+    description: 'Full documentation of Ultraplan (research preview, v2.1.91+): cloud planning via multi-agent Opus 4.6, browser-based review with inline comments and emoji reactions, dual execution paths (cloud PR or teleport back to terminal). Includes comparison table vs Plan Mode vs OpusPlan, requirements, and when to use it.',
+    link: 'https://cc.bruniaux.com/guide/ultimate-guide/02-core-workflow/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.94',
     date: 'Apr 7, 2026',
     description: 'Amazon Bedrock powered by Mantle is now supported (CLAUDE_CODE_USE_MANTLE=1). Default effort level raised from medium to high for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users. Plugin skills now use frontmatter name for stable invocation across install methods.',
