@@ -16,6 +16,24 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.96',
+    date: 'Apr 8, 2026',
+    highlights: [
+      'Fixed Bedrock auth regression — <code>AWS_BEARER_TOKEN_BEDROCK</code> and <code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code> no longer fail with 403',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.94',
+    date: 'Apr 7, 2026',
+    highlights: [
+      '⭐ Amazon Bedrock powered by Mantle support — set <code>CLAUDE_CODE_USE_MANTLE=1</code>',
+      'Default effort changed from medium to <strong>high</strong> for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users',
+      'Plugin skills now use frontmatter <code>name</code> for stable invocation naming across install methods',
+      'Compact <code>Slacked #channel</code> header with clickable link for Slack MCP tool calls',
+    ],
+  },
+  {
     version: 'v2.1.92',
     date: 'Apr 4, 2026',
     highlights: [
@@ -25,7 +43,6 @@ export const releases: Release[] = [
       '<code>/release-notes</code> is now an interactive version picker',
       'Linux sandbox: <code>apply-seccomp</code> helper now in npm + native builds — restores unix-socket blocking',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.91',

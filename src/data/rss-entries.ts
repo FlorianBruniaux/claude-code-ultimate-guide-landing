@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.94',
+    date: 'Apr 7, 2026',
+    description: 'Amazon Bedrock powered by Mantle is now supported (CLAUDE_CODE_USE_MANTLE=1). Default effort level raised from medium to high for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users. Plugin skills now use frontmatter name for stable invocation across install methods.',
+    link: 'https://cc.bruniaux.com/releases/#v2194',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.92',
     date: 'Apr 4, 2026',
     description: 'New interactive Bedrock setup wizard from the login screen guides through AWS auth, region config, credential verification, and model pinning. forceRemoteSettingsRefresh policy setting adds fail-closed managed settings enforcement. /cost now shows per-model and cache-hit breakdown for subscription users. Linux sandbox apply-seccomp fix restores unix-socket blocking in both npm and native builds.',
