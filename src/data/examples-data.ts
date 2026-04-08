@@ -45,6 +45,7 @@ export const EXAMPLES = {
         icon: "\u{1F4DA}",
         description: "Reusable knowledge modules. Place in .claude/skills/ or ~/.claude/skills/",
         files: [
+            { name: "git-ai-archaeology/", path: "skills/git-ai-archaeology/", description: "Analyze AI config evolution in a git repo — first commits, monthly distribution, maturity phases" },
             { name: "tdd-workflow.md", path: "skills/tdd-workflow.md", description: "Test-Driven Development process" },
             { name: "security-checklist.md", path: "skills/security-checklist.md", description: "OWASP Top 10 security checks", favorite: true },
             { name: "pdf-generator.md", path: "skills/pdf-generator.md", description: "Professional PDF generation (Quarto/Typst)", favorite: true },
