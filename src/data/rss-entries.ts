@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.12',
+    date: 'Apr 9, 2026',
+    description: 'Full documentation of the built-in Output Styles feature (Default, Explanatory, Learning) — previously undocumented as a first-class product. Covers /config activation, outputStyle in settings.json, custom styles via .claude/styles/, and debunks the keep-coding-instructions myth.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.97',
     date: 'Apr 9, 2026',
     description: 'Focus view toggle (Ctrl+O) in NO_FLICKER mode shows prompt, one-line tool summary with edit diffstats, and final response. New refreshInterval status line setting and workspace.git_worktree JSON field. Massive bug-fix release: 30+ fixes across NO_FLICKER (15 fixes including crash and memory leak), /resume (6 fixes), MCP 50 MB/hr buffer leak, permissions hardening, and 429 exponential backoff.',
