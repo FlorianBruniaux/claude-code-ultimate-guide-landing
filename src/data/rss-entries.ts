@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.97',
+    date: 'Apr 9, 2026',
+    description: 'Focus view toggle (Ctrl+O) in NO_FLICKER mode shows prompt, one-line tool summary with edit diffstats, and final response. New refreshInterval status line setting and workspace.git_worktree JSON field. Massive bug-fix release: 30+ fixes across NO_FLICKER (15 fixes including crash and memory leak), /resume (6 fixes), MCP 50 MB/hr buffer leak, permissions hardening, and 429 exponential backoff.',
+    link: 'https://cc.bruniaux.com/releases/#v2197',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.8',
     date: 'Apr 8, 2026',
     description: 'Full documentation of Ultraplan (research preview, v2.1.91+): cloud planning via multi-agent Opus 4.6, browser-based review with inline comments and emoji reactions, dual execution paths (cloud PR or teleport back to terminal). Includes comparison table vs Plan Mode vs OpusPlan, requirements, and when to use it.',

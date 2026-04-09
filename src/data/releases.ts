@@ -16,12 +16,21 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.97',
+    date: 'Apr 9, 2026',
+    highlights: [
+      '⭐ Focus view toggle (<code>Ctrl+O</code>) in NO_FLICKER mode — shows prompt, tool summary with edit diffstats, and final response',
+      '<code>refreshInterval</code> status line setting + <code>workspace.git_worktree</code> JSON input field',
+      '30+ bug fixes: NO_FLICKER (15 fixes), /resume (6 fixes), MCP 50 MB/hr buffer leak, permissions hardening, 429 exponential backoff',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.96',
     date: 'Apr 8, 2026',
     highlights: [
       'Fixed Bedrock auth regression — <code>AWS_BEARER_TOKEN_BEDROCK</code> and <code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code> no longer fail with 403',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.94',
