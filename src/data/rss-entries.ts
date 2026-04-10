@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.101',
+    date: 'Apr 10, 2026',
+    description: 'New /team-onboarding command generates a teammate ramp-up guide from your local Claude Code usage. OS CA certificate store is now trusted by default, making enterprise TLS proxies work without extra config. 40+ bug fixes including --resume context loss, Bedrock SigV4 auth, and Grep ENOENT self-heal.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.101',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.12',
     date: 'Apr 9, 2026',
     description: 'Full documentation of the built-in Output Styles feature (Default, Explanatory, Learning) — previously undocumented as a first-class product. Covers /config activation, outputStyle in settings.json, custom styles via .claude/styles/, and debunks the keep-coding-instructions myth.',

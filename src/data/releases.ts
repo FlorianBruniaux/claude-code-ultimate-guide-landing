@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.101',
+    date: 'Apr 10, 2026',
+    highlights: [
+      '⭐ <code>/team-onboarding</code> command — generates a teammate ramp-up guide from your local Claude Code usage',
+      'OS CA certificate store trusted by default — enterprise TLS proxies work without extra config (<code>CLAUDE_CODE_CERT_STORE=bundled</code> to revert)',
+      '<code>/ultraplan</code> and remote-session features auto-create a default cloud environment (no web setup required first)',
+      '40+ bug fixes: <code>--resume</code> context loss, Bedrock SigV4 auth 403, sub-agents in worktrees denied file access, <code>RemoteTrigger</code> run action, Grep ENOENT self-heal, hardcoded 5-min timeout removed, LSP command injection fix',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.97',
     date: 'Apr 9, 2026',
     highlights: [
@@ -23,7 +34,6 @@ export const releases: Release[] = [
       '<code>refreshInterval</code> status line setting + <code>workspace.git_worktree</code> JSON input field',
       '30+ bug fixes: NO_FLICKER (15 fixes), /resume (6 fixes), MCP 50 MB/hr buffer leak, permissions hardening, 429 exponential backoff',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.96',
