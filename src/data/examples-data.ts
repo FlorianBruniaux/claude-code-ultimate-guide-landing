@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
  * Source of truth for 226+ templates
- * Last synced: 2026-03-16
+ * Last synced: 2026-04-10
  */
 
 export interface ExampleFile {
@@ -102,7 +102,20 @@ export const EXAMPLES = {
             { name: "plan-validate.md", path: "commands/plan-validate.md", description: "/plan-validate - 2-layer validation with specialist agents", favorite: true },
             { name: "plan-execute.md", path: "commands/plan-execute.md", description: "/plan-execute - Execute plan with TDD, parallel agents, PR creation", favorite: true },
             { name: "review-plan.md", path: "commands/review-plan.md", description: "/review-plan - Structured plan review across 4 axes" },
-            { name: "autoresearch.md", path: "commands/autoresearch.md", description: "/autoresearch - Autonomous improvement loop: scan metrics, scaffold, run agent iterations", favorite: true }
+            { name: "autoresearch.md", path: "commands/autoresearch.md", description: "/autoresearch - Autonomous improvement loop: scan metrics, scaffold, run agent iterations", favorite: true },
+            { name: "investigate.md", path: "commands/investigate.md", description: "/investigate - Systematic root-cause debugging before writing any fix", favorite: true },
+            { name: "qa.md", path: "commands/qa.md", description: "/qa - Diff-aware browser QA: 3 tiers with fix-and-verify loop" },
+            { name: "canary.md", path: "commands/canary.md", description: "/canary - Post-deploy monitoring with regression alerts vs baseline" },
+            { name: "land-and-deploy.md", path: "commands/land-and-deploy.md", description: "/land-and-deploy - Merge PR → CI → verify deploy → canary pipeline", favorite: true },
+            { name: "scaffold.md", path: "commands/scaffold.md", description: "/scaffold - Interactive coach: generates agent/command/skill/hook/rule template", favorite: true },
+            { name: "session-save.md", path: "commands/session-save.md", description: "/session-save - Save session state (decisions, files, next steps) to handoff file" },
+            { name: "methodology-advisor.md", path: "commands/methodology-advisor.md", description: "/methodology-advisor - Analyze codebase + 3 questions → recommended AI dev methodology stack" },
+            { name: "plan-ceo-review.md", path: "commands/plan-ceo-review.md", description: "/plan-ceo-review - Strategic product gate: find the 10-star product before writing code (gstack)" },
+            { name: "plan-eng-review.md", path: "commands/plan-eng-review.md", description: "/plan-eng-review - Engineering gate: lock architecture, diagrams, edge cases before coding (gstack)" },
+            { name: "ci/all.md", path: "commands/ci/all.md", description: "/ci:all - Full CI: local tests + type check + push + pipeline URL", favorite: true },
+            { name: "ci/pipeline.md", path: "commands/ci/pipeline.md", description: "/ci:pipeline - Push branch and return pipeline tracking URL (GitLab/GitHub Actions)" },
+            { name: "ci/status.md", path: "commands/ci/status.md", description: "/ci:status - Current pipeline status for active branch" },
+            { name: "ci/tests.md", path: "commands/ci/tests.md", description: "/ci:tests - Auto-detect and run test suite (pytest/vitest/cargo test)" }
         ]
     },
     "hooks-bash": {

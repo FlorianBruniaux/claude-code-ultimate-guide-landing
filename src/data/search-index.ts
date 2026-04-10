@@ -182,6 +182,14 @@ const pageEntries: SearchEntry[] = [
     url: '/ecosystem/',
     source: 'landing',
   },
+  {
+    id: 'page-mcp-vs-cli',
+    title: 'MCP vs CLI — When to Use Each in Claude Code',
+    keywords: 'mcp vs cli comparison decision guide model context protocol command line tool when to use four questions 15 row guidance table token cost practitioner quotes persistent state subprocess',
+    category: 'Pages',
+    url: '/ecosystem/mcp-vs-cli/',
+    source: 'landing',
+  },
 ]
 
 // ─── Cheatsheet Sections ─────────────────────────────────────────────────────
