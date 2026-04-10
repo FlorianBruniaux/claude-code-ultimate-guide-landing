@@ -150,6 +150,38 @@ const pageEntries: SearchEntry[] = [
     url: '/whitepapers/',
     source: 'landing',
   },
+  {
+    id: 'page-methodologies',
+    title: 'Methodology Quiz — Find Your Stack',
+    keywords: 'methodology quiz stack tdd bdd spec first vibe coding bmad fdd sdd plan mode agentic exploration pair programming 8 stacks 12 questions team size',
+    category: 'Pages',
+    url: '/methodologies/',
+    source: 'landing',
+  },
+  {
+    id: 'page-roles',
+    title: 'AI Roles — Which Role Fits You?',
+    keywords: 'ai roles career path vibe coder architect orchestrator reviewer researcher ops security pm product manager junior senior power user match fit quiz decision matrix',
+    category: 'Pages',
+    url: '/roles/',
+    source: 'landing',
+  },
+  {
+    id: 'page-context-configurator',
+    title: 'Context Engineering Configurator — CLAUDE.md Generator',
+    keywords: 'context engineering configurator claude.md generator starter kit team size setup tech stack maturity level 3 steps personalized',
+    category: 'Pages',
+    url: '/context/',
+    source: 'landing',
+  },
+  {
+    id: 'page-ecosystem',
+    title: 'Third-Party Ecosystem — 25+ Tools for Claude Code',
+    keywords: 'ecosystem third party tools token tracking session management alternative ui multi agent orchestration plugin community built extensions ccm sniffly vibetunnel claudio',
+    category: 'Pages',
+    url: '/ecosystem/',
+    source: 'landing',
+  },
 ]
 
 // ─── Cheatsheet Sections ─────────────────────────────────────────────────────
@@ -509,6 +541,106 @@ const diagramEntries: SearchEntry[] = [
   },
 ]
 
+// ─── Guide Spotlight Entries (notable sections not covered by auto-generated H2 index) ─
+const guideSpotlightEntries: SearchEntry[] = [
+  {
+    id: 'guide-output-styles',
+    title: 'Output Styles: Default, Explanatory, Learning + Custom',
+    keywords: 'output styles outputStyle default explanatory learning custom /config settings.json .claude/styles/ token cost response format',
+    category: 'Guide > Advanced Patterns',
+    url: '/guide/ultimate-guide/09-advanced-patterns/#97-output-styles',
+    source: 'guide',
+  },
+  {
+    id: 'guide-ultraplan',
+    title: 'Ultraplan: Async Cloud Planning with Opus 4.6',
+    keywords: 'ultraplan /ultraplan cloud planning async multi-agent opus browser review inline comments session teleportation github pr research preview',
+    category: 'Guide > Core Workflow',
+    url: '/guide/ultimate-guide/02-core-workflow/#ultraplan',
+    source: 'guide',
+  },
+  {
+    id: 'guide-managed-agents',
+    title: 'Claude Managed Agents (Cloud-Hosted Platform)',
+    keywords: 'managed agents cloud hosted platform messages api ant cli orchestrator specialists next.js sse streaming anthropic notion rakuten asana sentry',
+    category: 'Guide > AI Ecosystem',
+    url: '/guide/ai-ecosystem/#14-claude-managed-agents-cloud-hosted-platform',
+    source: 'guide',
+  },
+  {
+    id: 'guide-autoresearch',
+    title: 'Autoresearch: Overnight Autonomous Improvement Loops',
+    keywords: 'autoresearch autonomous loop overnight improvement karpathy measure change remeasure program.md /autoresearch h100 ml iterations sleep',
+    category: 'Guide > AI Ecosystem',
+    url: '/guide/ai-ecosystem/#13-autonomous-research-loops-autoresearch-pattern',
+    source: 'guide',
+  },
+  {
+    id: 'guide-hook-profiles',
+    title: 'Hook Profiles: Environment-Variable Gating (minimal/standard/strict)',
+    keywords: 'hook profiles environment variable gating minimal standard strict HOOK_REQUIRED_LEVEL team scaling per-hook level assignment',
+    category: 'Guide > Hooks',
+    url: '/guide/ultimate-guide/07-hooks/#76-hook-profiles',
+    source: 'guide',
+  },
+  {
+    id: 'guide-instinct-learning',
+    title: 'Instinct-Based Continuous Learning',
+    keywords: 'instinct based continuous learning observation capture stop hook confidence scoring decay model promotion pipeline rules skills automated refinement',
+    category: 'Guide > Advanced Patterns',
+    url: '/guide/ultimate-guide/09-advanced-patterns/#924-instinct-based-continuous-learning',
+    source: 'guide',
+  },
+  {
+    id: 'guide-claude-in-chrome',
+    title: 'Claude in Chrome: Visual Feedback Loop',
+    keywords: 'claude in chrome browser extension visual feedback loop --chrome --no-chrome screenshot dom interaction web ui testing v2.0.72',
+    category: 'Guide > Advanced Patterns',
+    url: '/guide/ultimate-guide/09-advanced-patterns/#claude-in-chrome-the-visual-feedback-loop',
+    source: 'guide',
+  },
+  {
+    id: 'guide-smart-explore',
+    title: 'Progressive Code Exploration (Smart Explore)',
+    keywords: 'progressive code exploration smart explore tree-sitter ast structure first drill second 86% token reduction grep discipline mcp server code review graph',
+    category: 'Guide > Advanced Patterns',
+    url: '/guide/ultimate-guide/09-advanced-patterns/#progressive-code-exploration-smart-explore',
+    source: 'guide',
+  },
+  {
+    id: 'guide-auto-dream',
+    title: 'Auto Dream: Background Memory Consolidation',
+    keywords: 'auto dream memory consolidation background sub-agent orient gather signal prune index 24h 5 sessions /memory unofficial community discovered',
+    category: 'Guide > Memory & Files',
+    url: '/guide/ultimate-guide/03-memory-files/#auto-dream-memory-consolidation-community-discovered',
+    source: 'guide',
+  },
+  {
+    id: 'guide-permission-fatigue',
+    title: 'Permission Fatigue Anti-Pattern',
+    keywords: 'permission fatigue anti-pattern approve without reading dangerously skip permissions auto mode bypass right mode decision table',
+    category: 'Guide > Quick Start',
+    url: '/guide/ultimate-guide/01-quick-start/#permission-fatigue-anti-pattern',
+    source: 'guide',
+  },
+  {
+    id: 'guide-advanced-tool-use',
+    title: 'Advanced Tool Use Patterns (API): PTC, Dynamic Filtering, Tool Use Examples',
+    keywords: 'advanced tool use patterns ptc programmatic tool calling dynamic filtering tool use examples input_examples 72% to 90% accuracy +13.3pp browsecomp api',
+    category: 'Guide > Architecture',
+    url: '/guide/architecture/#7-advanced-tool-use-patterns-api',
+    source: 'guide',
+  },
+  {
+    id: 'guide-codesight',
+    title: 'codesight: Project Context Bootstrapping (Zero-Dependencies CLI)',
+    keywords: 'codesight project context bootstrapping zero dependencies cli ast analysis routes schema deps blast radius wiki knowledge base 11 mcp tools',
+    category: 'Guide > Third-Party Tools',
+    url: '/guide/third-party-tools/#codesight',
+    source: 'guide',
+  },
+]
+
 // ─── Glossary entries ─────────────────────────────────────────────────────────
 const glossaryEntries: SearchEntry[] = glossaryTerms.map(t => ({
   id: `glossary-${t.term.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
@@ -528,6 +660,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...releaseEntries,
   ...securityEntries,
   ...diagramEntries,
+  ...guideSpotlightEntries,
   ...glossaryEntries,
   ...(GUIDE_ENTRIES as SearchEntry[]),
   ...(GUIDE_CONTENT_ENTRIES as SearchEntry[]),
