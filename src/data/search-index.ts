@@ -275,6 +275,14 @@ const cheatsheetEntries: SearchEntry[] = [
     source: 'landing',
   },
   {
+    id: 'guide-scheduled-tasks',
+    title: 'Scheduled Tasks: Cloud, Desktop & /loop',
+    keywords: 'scheduled tasks cron automation /schedule /loop cloud desktop recurring background headless claude --print',
+    category: 'Guide > Commands',
+    url: '/guide/ultimate-guide/06-commands/#scheduled-tasks-three-methods',
+    source: 'guide',
+  },
+  {
     id: 'cs-custom-agents',
     title: 'Custom Agents (Sub-Agents)',
     keywords: 'custom agents sub-agents persona specialized task automation .claude/agents',
