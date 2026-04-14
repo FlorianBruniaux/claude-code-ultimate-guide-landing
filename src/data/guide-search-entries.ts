@@ -524,6 +524,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-output-styles-setting",
+    "title": "Output Styles Setting",
+    "keywords": "output styles setting guide core settings reference md#outputstyle",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#outputstyle",
+    "source": "guide"
+  },
+  {
+    "id": "guide-output-styles-description",
+    "title": "Output Styles Description",
+    "keywords": "output styles description three built in modes: default (concise), explanatory (adds design rationale blocks), learning (pair programming with todo(human) markers)  activate via  config or outputstyle in settings  custom styles via  claude styles",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three built-in modes: Default (concise), Explanatory (adds design rationale blocks), Learning (pair-programming with TODO(human) markers). Activate via /config or outputStyle in settings.json. Custom styles via .claude/styles/.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-output-styles-custom-template",
+    "title": "Output Styles Custom Template",
+    "keywords": "output styles custom template examples styles custom style template",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/styles/custom-style-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scheduled-tasks-description",
+    "title": "Scheduled Tasks Description",
+    "keywords": "scheduled tasks description three methods: cloud ( schedule, machine off, min 1h, anthropic infra, fresh repo clone), desktop (local machine, min 1min, full file access),  loop (session scoped, min 1min, stops when session ends)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three methods: Cloud (/schedule, machine-off, min 1h, Anthropic infra, fresh repo clone), Desktop (local machine, min 1min, full file access), /loop (session-scoped, min 1min, stops when session ends)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scheduled-tasks-cloud-entry-points",
+    "title": "Scheduled Tasks Cloud Entry Points",
+    "keywords": "scheduled tasks cloud entry points claude code scheduled, desktop app,  schedule cli command",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude.ai/code/scheduled, Desktop app, /schedule CLI command",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scheduled-tasks-cloud-branch-prefix",
+    "title": "Scheduled Tasks Cloud Branch Prefix",
+    "keywords": "scheduled tasks cloud branch prefix claude  (default)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude/ (default)",
+    "source": "guide"
+  },
+  {
     "id": "guide-bridge-script",
     "title": "Bridge Script",
     "keywords": "bridge script examples scripts bridge",
@@ -1233,6 +1281,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party straude eval docs resource evaluations straude evaluation",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/straude-evaluation.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-codesight-when-useful",
+    "title": "Third Party Codesight When Useful",
+    "keywords": "third party codesight when useful typescript projects with recognized framework (express hono trpc fastify nestjs) and orm  useless on rust  use  wiki + mcp on large monorepos (>1500 files)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/TypeScript projects with recognized framework (Express/Hono/tRPC/Fastify/NestJS) and ORM. Useless on Rust. Use --wiki + MCP on large monorepos (>1500 files).",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-codesight-limitations",
+    "title": "Third Party Codesight Limitations",
+    "keywords": "third party codesight limitations ast precision ts only; next js app router = 0 routes; cf workers raw http = 0 routes; rust = near empty output;  init overwrites claude",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/AST precision TS-only; Next.js App Router = 0 routes; CF Workers raw HTTP = 0 routes; Rust = near-empty output; --init overwrites CLAUDE.md",
     "source": "guide"
   },
   {
