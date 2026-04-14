@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.105',
+    date: 'Apr 13, 2026',
+    description: 'PreCompact hook support lets hooks block compaction. EnterWorktree gains a path parameter for switching into existing worktrees. Plugin background monitors auto-arm at session start. WebFetch strips CSS/JS content from pages, and /doctor adds status icons with an f-to-fix action.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.105',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.101',
     date: 'Apr 10, 2026',
     description: 'New /team-onboarding command generates a teammate ramp-up guide from your local Claude Code usage. OS CA certificate store is now trusted by default, making enterprise TLS proxies work without extra config. 40+ bug fixes including --resume context loss, Bedrock SigV4 auth, and Grep ENOENT self-heal.',

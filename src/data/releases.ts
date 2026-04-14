@@ -16,6 +16,24 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.107',
+    date: 'Apr 14, 2026',
+    highlights: [
+      'Show thinking hints sooner during long operations for better real-time feedback',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.105',
+    date: 'Apr 13, 2026',
+    highlights: [
+      '⭐ PreCompact hook support — hooks can block compaction by exiting with code 2 or returning <code>{"decision":"block"}</code>',
+      '<code>EnterWorktree</code> tool gains <code>path</code> parameter to switch into an existing worktree; <code>/proactive</code> alias for <code>/loop</code>; background monitor support for plugins',
+      '<code>WebFetch</code> strips <code>&lt;style&gt;</code>/<code>&lt;script&gt;</code> contents; stalled API streams abort after 5 min then retry non-streaming; <code>/doctor</code> status icons with <code>f</code>-to-fix',
+      'Multiple bug fixes: queued image drops, screen blank on wrapped prompts, MCP tools missing on headless first turn, 429 raw JSON error display',
+    ],
+  },
+  {
     version: 'v2.1.101',
     date: 'Apr 10, 2026',
     highlights: [
@@ -24,7 +42,6 @@ export const releases: Release[] = [
       '<code>/ultraplan</code> and remote-session features auto-create a default cloud environment (no web setup required first)',
       '40+ bug fixes: <code>--resume</code> context loss, Bedrock SigV4 auth 403, sub-agents in worktrees denied file access, <code>RemoteTrigger</code> run action, Grep ENOENT self-heal, hardcoded 5-min timeout removed, LSP command injection fix',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.97',
