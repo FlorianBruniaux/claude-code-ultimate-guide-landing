@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.108',
+    date: 'Apr 15, 2026',
+    description: 'New ENABLE_PROMPT_CACHING_1H env var lets you opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry. New /recap command provides context when returning to a session after a break. Built-in slash commands like /init, /review, and /security-review are now discoverable and invokable via the Skill tool.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.108',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.105',
     date: 'Apr 13, 2026',
     description: 'PreCompact hook support lets hooks block compaction. EnterWorktree gains a path parameter for switching into existing worktrees. Plugin background monitors auto-arm at session start. WebFetch strips CSS/JS content from pages, and /doctor adds status icons with an f-to-fix action.',
