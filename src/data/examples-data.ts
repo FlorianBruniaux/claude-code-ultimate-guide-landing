@@ -108,6 +108,7 @@ export const EXAMPLES = {
             { name: "canary.md", path: "commands/canary.md", description: "/canary - Post-deploy monitoring with regression alerts vs baseline" },
             { name: "land-and-deploy.md", path: "commands/land-and-deploy.md", description: "/land-and-deploy - Merge PR → CI → verify deploy → canary pipeline", favorite: true },
             { name: "scaffold.md", path: "commands/scaffold.md", description: "/scaffold - Interactive coach: generates agent/command/skill/hook/rule template", favorite: true },
+            { name: "routines-discover.md", path: "commands/routines-discover.md", description: "/routines-discover - Scan project and surface high-value Routines use cases (schedule/API/GitHub triggers)" },
             { name: "session-save.md", path: "commands/session-save.md", description: "/session-save - Save session state (decisions, files, next steps) to handoff file" },
             { name: "methodology-advisor.md", path: "commands/methodology-advisor.md", description: "/methodology-advisor - Analyze codebase + 3 questions → recommended AI dev methodology stack" },
             { name: "plan-ceo-review.md", path: "commands/plan-ceo-review.md", description: "/plan-ceo-review - Strategic product gate: find the 10-star product before writing code (gstack)" },
