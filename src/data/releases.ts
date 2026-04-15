@@ -16,12 +16,29 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.109',
+    date: 'Apr 15, 2026',
+    highlights: [
+      'Improved extended-thinking indicator with a rotating progress hint for better visibility during long thinking phases',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.108',
+    date: 'Apr 15, 2026',
+    highlights: [
+      '⭐ <code>ENABLE_PROMPT_CACHING_1H</code> env var — opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry; <code>FORCE_PROMPT_CACHING_5M</code> to force 5-minute TTL',
+      '⭐ <code>/recap</code> command — provides context when returning to a session after a break; configurable in <code>/config</code>',
+      'Built-in slash commands (<code>/init</code>, <code>/review</code>, <code>/security-review</code>) now discoverable and invokable via the Skill tool; <code>/undo</code> alias for <code>/rewind</code>',
+      '<code>/resume</code> picker defaults to current directory sessions (Ctrl+A for all); improved model-switch warning mid-conversation; reduced memory footprint for file reads and syntax highlighting',
+    ],
+  },
+  {
     version: 'v2.1.107',
     date: 'Apr 14, 2026',
     highlights: [
       'Show thinking hints sooner during long operations for better real-time feedback',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.105',
