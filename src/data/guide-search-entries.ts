@@ -550,17 +550,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-scheduled-tasks-description",
     "title": "Scheduled Tasks Description",
-    "keywords": "scheduled tasks description three methods: cloud ( schedule, machine off, min 1h, anthropic infra, fresh repo clone), desktop (local machine, min 1min, full file access),  loop (session scoped, min 1min, stops when session ends)",
+    "keywords": "scheduled tasks description three methods: routines (cloud, machine off, 3 trigger types, anthropic infra), desktop (local machine, min 1min, full file access),  loop (session scoped, min 1min)",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three methods: Cloud (/schedule, machine-off, min 1h, Anthropic infra, fresh repo clone), Desktop (local machine, min 1min, full file access), /loop (session-scoped, min 1min, stops when session ends)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three methods: Routines (cloud, machine-off, 3 trigger types, Anthropic infra), Desktop (local machine, min 1min, full file access), /loop (session-scoped, min 1min)",
     "source": "guide"
   },
   {
     "id": "guide-scheduled-tasks-cloud-entry-points",
     "title": "Scheduled Tasks Cloud Entry Points",
-    "keywords": "scheduled tasks cloud entry points claude code scheduled, desktop app,  schedule cli command",
+    "keywords": "scheduled tasks cloud entry points claude code routines, desktop app (new remote task),  schedule cli command",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude.ai/code/scheduled, Desktop app, /schedule CLI command",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude.ai/code/routines, Desktop app (New remote task), /schedule CLI command",
     "source": "guide"
   },
   {
@@ -569,6 +569,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "scheduled tasks cloud branch prefix claude  (default)",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude/ (default)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-routines-trigger-types",
+    "title": "Routines Trigger Types",
+    "keywords": "routines trigger types schedule (cron)   api (http post endpoint)   github events (webhooks)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/schedule (cron) / API (HTTP POST endpoint) / GitHub events (webhooks)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-routines-daily-limits",
+    "title": "Routines Daily Limits",
+    "keywords": "routines daily limits pro 5 day, max 15 day, team enterprise 25 day",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Pro 5/day, Max 15/day, Team/Enterprise 25/day",
+    "source": "guide"
+  },
+  {
+    "id": "guide-routines-github-trigger",
+    "title": "Routines Github Trigger",
+    "keywords": "routines github trigger 17 event types (pr, push, issues, releases, check runs, workflows, discussions ), pr filters (author label branch draft fork), requires claude github app",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/17 event types (PR, push, issues, releases, check runs, workflows, discussions...), PR filters (author/label/branch/draft/fork), requires Claude GitHub App",
+    "source": "guide"
+  },
+  {
+    "id": "guide-routines-discover-command",
+    "title": "Routines Discover Command",
+    "keywords": "routines discover command examples commands routines discover",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/routines-discover.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-routines-use-case-angles",
+    "title": "Routines Use Case Angles",
+    "keywords": "routines use case angles scheduled maintenance   event driven reactions   alert response   cross system sync   release automation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/scheduled maintenance / event-driven reactions / alert response / cross-system sync / release automation",
     "source": "guide"
   },
   {
