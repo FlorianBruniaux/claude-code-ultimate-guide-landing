@@ -332,6 +332,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-setup-audit-tool",
+    "title": "Setup Audit Tool",
+    "keywords": "setup audit tool tools audit prompt",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/audit-prompt.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-setup-audit-tool-description",
+    "title": "Setup Audit Tool Description",
+    "keywords": "setup audit tool description prompt orchestrator auditing 8 weighted dimensions (100 pts): memory & context (20), rules hygiene (10), skills quality (10), agents commands quality (10), security posture (20), mcp ecosystem (10), workflow commands (10), freshness (10)  delegates to eval skills eval rules token audit audit agents skills security check when installed; inline bash fallback otherwise",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Prompt-orchestrator auditing 8 weighted dimensions (100 pts): Memory & Context (20), Rules Hygiene (10), Skills Quality (10), Agents/Commands Quality (10), Security Posture (20), MCP Ecosystem (10), Workflow Commands (10), Freshness (10). Delegates to eval-skills/eval-rules/token-audit/audit-agents-skills/security-check when installed; inline bash fallback otherwise.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-setup-audit-scope-flag",
+    "title": "Setup Audit Scope Flag",
+    "keywords": "setup audit scope flag include global (extends to ~ claude  and ~ claude json)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/--include-global (extends to ~/.claude/ and ~/.claude.json)",
+    "source": "guide"
+  },
+  {
     "id": "guide-context-engineering-examples",
     "title": "Context Engineering Examples",
     "keywords": "context engineering examples examples context engineering",
@@ -2153,6 +2177,174 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "git mcp guide guide ecosystem mcp servers ecosystem",
     "category": "Guide",
     "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-guide",
+    "title": "Skill Design Patterns Guide",
+    "keywords": "skill design patterns guide guide core skill design patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-shared-ground-truth",
+    "title": "Skill Design Patterns Shared Ground Truth",
+    "keywords": "skill design patterns shared ground truth guide core skill design patterns md#shared ground truth injection",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#shared-ground-truth-injection",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-prefiltered-refs",
+    "title": "Skill Design Patterns Prefiltered Refs",
+    "keywords": "skill design patterns prefiltered refs guide core skill design patterns md#pre filtered references via frontmatter paths",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#pre-filtered-references-via-frontmatter-paths",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-detection-only",
+    "title": "Skill Design Patterns Detection Only",
+    "keywords": "skill design patterns detection only guide core skill design patterns md#detection only scope boundary",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#detection-only-scope-boundary",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-input-handler",
+    "title": "Skill Design Patterns Input Handler",
+    "keywords": "skill design patterns input handler guide core skill design patterns md#input handler dispatch",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#input-handler-dispatch",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-versioned-subdirs",
+    "title": "Skill Design Patterns Versioned Subdirs",
+    "keywords": "skill design patterns versioned subdirs guide core skill design patterns md#versioned sub directories for tool version coupling",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#versioned-sub-directories-for-tool-version-coupling",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-two-tier",
+    "title": "Skill Design Patterns Two Tier",
+    "keywords": "skill design patterns two tier guide core skill design patterns md#two tier standards",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#two-tier-standards",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-committed-plans",
+    "title": "Skill Design Patterns Committed Plans",
+    "keywords": "skill design patterns committed plans guide core skill design patterns md#plans and specs committed artifacts",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#plans-and-specs-as-committed-artifacts",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-reference-file-pattern",
+    "title": "MCP Reference File Pattern",
+    "keywords": "mcp reference file pattern guide ecosystem mcp servers ecosystem md#documenting mcp for claude the reference file pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-servers-ecosystem.md#documenting-an-mcp-for-claude-the-reference-file-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-reference-file-template",
+    "title": "MCP Reference File Template",
+    "keywords": "mcp reference file template examples skills mcp integration reference",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/mcp-integration-reference/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-reference-file-example",
+    "title": "MCP Reference File Example",
+    "keywords": "mcp reference file example examples skills mcp integration reference references sentry mcp",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/mcp-integration-reference/references/sentry-mcp.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skeptical-reviewer-pattern",
+    "title": "Skeptical Reviewer Pattern",
+    "keywords": "skeptical reviewer pattern guide ultimate guide md#pattern skeptical reviewer sub agent",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pattern-skeptical-reviewer-sub-agent",
+    "source": "guide"
+  },
+  {
+    "id": "guide-handoff-triad-create",
+    "title": "Handoff Triad Create",
+    "keywords": "handoff triad create examples commands handoff create handoff",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/create-handoff.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-handoff-triad-resume",
+    "title": "Handoff Triad Resume",
+    "keywords": "handoff triad resume examples commands handoff resume handoff",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/resume-handoff.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-handoff-triad-update",
+    "title": "Handoff Triad Update",
+    "keywords": "handoff triad update examples commands handoff update handoff",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/update-handoff.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-recipe-template",
+    "title": "Recipe Template",
+    "keywords": "recipe template examples commands recipe template",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/recipe-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-statusline-script",
+    "title": "Statusline Script",
+    "keywords": "statusline script examples scripts statusline",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/statusline.py",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-evaluator-tool",
+    "title": "Context Evaluator Tool",
+    "keywords": "context evaluator tool guide ecosystem third party tools md#context evaluator",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/third-party-tools.md#context-evaluator",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-runtime-prompt-logging",
+    "title": "Skill Design Patterns Runtime Prompt Logging",
+    "keywords": "skill design patterns runtime prompt logging guide core skill design patterns md#runtime prompt logging",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#runtime-prompt-logging",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-adaptive-mode",
+    "title": "Skill Design Patterns Adaptive Mode",
+    "keywords": "skill design patterns adaptive mode guide core skill design patterns md#adaptive unifiedparallel mode",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#adaptive-unifiedparallel-mode",
+    "source": "guide"
+  },
+  {
+    "id": "guide-credits-guide",
+    "title": "Credits Guide",
+    "keywords": "credits guide guide core credits",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/credits.md",
     "source": "guide"
   }
 ]

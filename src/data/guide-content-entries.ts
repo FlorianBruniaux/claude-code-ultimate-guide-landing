@@ -1151,7 +1151,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-april-2026",
     "title": "2.1.x Series (January-April 2026)",
-    "keywords": "2 1 x series january april 2026 claude code release history v2.1.110 (2026-04-16) /tui fullscreen command, push notification tool, --resume resurrects scheduled tasks, /focus command, 30+ bug fixes. -",
+    "keywords": "2 1 x series january april 2026 claude code release history v2.1.111 (2026-04-16) claude opus 4.7 xhigh effort level, /ultrareview cloud code review, /less-permission-prompts skill, auto mode for max ",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-april-2026",
     "source": "guide"
@@ -1498,6 +1498,38 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "documentation claude cowork agentic desktop for knowledge work resource description ---------- ------------- complete documentation full cowork guide hub getting started setup and first workflow capab",
     "category": "Core Guides",
     "url": "/guide/cowork/#documentation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-credits-packmind-engineering-team",
+    "title": "Packmind Engineering Team",
+    "keywords": "packmind engineering team credits and external inspirations repo : github.com/packmind/packmind author : cédric teyton (cto, packmind) license : apache 2.0 packmind maintains a production claude code ",
+    "category": "Core Guides",
+    "url": "/guide/credits/#packmind-engineering-team",
+    "source": "guide"
+  },
+  {
+    "id": "gc-credits-packmind-context-evaluator",
+    "title": "Packmind context-evaluator",
+    "keywords": "packmind context evaluator credits and external inspirations repo : github.com/packmindhub/context-evaluator author : packmind engineering team license : mit context-evaluator is an oss claude.md / ag",
+    "category": "Core Guides",
+    "url": "/guide/credits/#packmind-context-evaluator",
+    "source": "guide"
+  },
+  {
+    "id": "gc-credits-anthropic-engineering-team",
+    "title": "Anthropic Engineering Team",
+    "keywords": "anthropic engineering team credits and external inspirations skill-creator : the skill vendored in the packmind repo (and referenced in this guide's skill evaluation section) was originally published ",
+    "category": "Core Guides",
+    "url": "/guide/credits/#anthropic-engineering-team",
+    "source": "guide"
+  },
+  {
+    "id": "gc-credits-adding-to-this-file",
+    "title": "Adding to This File",
+    "keywords": "adding to this file credits and external inspirations when a guide section is directly inspired by or adapted from external open-source work, add an entry here. include: - repository url - author / or",
+    "category": "Core Guides",
+    "url": "/guide/credits/#adding-to-this-file",
     "source": "guide"
   },
   {
@@ -2298,6 +2330,22 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "monthly watch methodology mcp servers ecosystem this section documents the process for maintaining this guide with monthly ecosystem updates. sources to monitor official sources : - anthropic mcp gi",
     "category": "Core Guides",
     "url": "/guide/mcp-servers-ecosystem/#monthly-watch-methodology",
+    "source": "guide"
+  },
+  {
+    "id": "gc-mcp-servers-ecosystem-documenting-an-mcp-for-claude-the-reference-file-p",
+    "title": "Documenting an MCP for Claude: The Reference File Pattern",
+    "keywords": "documenting an mcp for claude the reference file pattern mcp servers ecosystem when you integrate an mcp server into a skill, claude has to figure out the query syntax, required parameter combinations",
+    "category": "Core Guides",
+    "url": "/guide/mcp-servers-ecosystem/#documenting-an-mcp-for-claude-the-reference-file-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "gc-mcp-servers-ecosystem-step-1-read-the-mcp-reference-file",
+    "title": "Step 1: Read the MCP Reference File",
+    "keywords": "step 1 read the mcp reference file mcp servers ecosystem before doing anything else, read . this contains the query syntax and known gotchas for this mcp. do not skip this step. `` examples/skills/mcp",
+    "category": "Core Guides",
+    "url": "/guide/mcp-servers-ecosystem/#step-1-read-the-mcp-reference-file",
     "source": "guide"
   },
   {
@@ -3210,6 +3258,142 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "quick reference claude code settings reference task setting / variable ------ -------------------- set default model in settings or env var lock model choices array silence telemetry or auto-approv",
     "category": "Core Guides",
     "url": "/guide/settings-reference/#quick-reference",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-shared-ground-truth-injection",
+    "title": "Shared Ground Truth Injection",
+    "keywords": "shared ground truth injection skill design patterns problem : when you launch n parallel sub-agents to audit or analyze a set of artifacts, each agent independently discovers the same baseline facts (",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#shared-ground-truth-injection",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-pre-filtered-references-via-frontmatter-paths",
+    "title": "Pre-filtered References via Frontmatter Paths",
+    "keywords": "pre filtered references via frontmatter paths skill design patterns problem : you have a set of rules files (coding standards, security policies, style guides). each one applies to a specific subset o",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#pre-filtered-references-via-frontmatter-paths",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-rules",
+    "title": "Rules",
+    "keywords": "rules skill design patterns - use blocks for grouping related tests ... 1. glob .claude/rules/ / .md → list all rule files 2. for each rule file: a. read yaml frontmatter → extra",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#rules",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-detection-only-scope-boundary",
+    "title": "Detection-Only Scope Boundary",
+    "keywords": "detection only scope boundary skill design patterns problem : a skill that both detects issues and fixes them has two failure modes: false positives (detected and fixed something that was not a proble",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#detection-only-scope-boundary",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-input-handler-dispatch",
+    "title": "Input-Handler Dispatch",
+    "keywords": "input handler dispatch skill design patterns problem : a skill that handles two or more heterogeneous input types (images vs text, github issues vs design mockups) either grows a complex branchin",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#input-handler-dispatch",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-step-1-identify-input-type",
+    "title": "Step 1: Identify Input Type",
+    "keywords": "step 1 identify input type skill design patterns ask the user: \"are you providing a github issue or a visual mockup?\" - if github issue → follow the instructions in - if visual mockup → follow the in",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#step-1-identify-input-type",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-versioned-sub-directories-for-tool-version-couplin",
+    "title": "Versioned Sub-directories for Tool-Version Coupling",
+    "keywords": "versioned sub directories for tool version coupling skill design patterns problem : a skill wraps a cli tool that changes behavior between versions. the skill needs to detect which version the user ha",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#versioned-sub-directories-for-tool-version-coupling",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-step-1-detect-tool-version",
+    "title": "Step 1: Detect Tool Version",
+    "keywords": "step 1 detect tool version skill design patterns run: - if output starts with \"1.21\" → read - if output starts with \"1.23\" → read - if output starts with \"1.24\" → read - if version not recognized → s",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#step-1-detect-tool-version",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-two-tier-standards",
+    "title": "Two-Tier Standards",
+    "keywords": "two tier standards skill design patterns problem : a comprehensive coding standard is long (1,000-5,000 words). loading the full standard into context for every file review inflates token cos",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#two-tier-standards",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-plans-and-specs-as-committed-artifacts",
+    "title": "Plans and Specs as Committed Artifacts",
+    "keywords": "plans and specs as committed artifacts skill design patterns problem : session-scoped plans ( mode, scratchpad files) disappear when the session ends. the next session has no searchable record of why ",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#plans-and-specs-as-committed-artifacts",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-task-1-extract-token-validation-middleware",
+    "title": "Task 1: Extract token validation middleware",
+    "keywords": "task 1 extract token validation middleware skill design patterns - move validation logic from controller into - git commit -m \"refactor(auth): extract token validation into middleware\"",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#task-1-extract-token-validation-middleware",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-task-2-add-refresh-token-rotation",
+    "title": "Task 2: Add refresh token rotation",
+    "keywords": "task 2 add refresh token rotation skill design patterns - implement rotation logic with 7-day expiry - git commit -m \"feat(auth): add refresh token rotation with 7-day expiry\" markdown auth refactor d",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#task-2-add-refresh-token-rotation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-context",
+    "title": "Context",
+    "keywords": "context skill design patterns session token storage flagged by legal review (iso 27001 compliance gap). rotation required per new internal security policy v2.3.",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#context",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-rejected-approaches",
+    "title": "Rejected approaches",
+    "keywords": "rejected approaches skill design patterns - httponly cookie approach: requires cross-domain config changes (deferred) - redis session store: ops team not ready to manage another stateful servi",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#rejected-approaches",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-runtime-prompt-logging",
+    "title": "Runtime Prompt Logging",
+    "keywords": "runtime prompt logging skill design patterns problem : when an ai provider call times out or crashes, the exact prompt that was sent is gone. if you are building a skill or evaluation pipeline wi",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#runtime-prompt-logging",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-adaptive-unified-parallel-mode",
+    "title": "Adaptive Unified/Parallel Mode",
+    "keywords": "adaptive unified parallel mode skill design patterns problem : you have n files to evaluate and need to decide: send all files to one agent (better for cross-file issues, higher context cost) or send ",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#adaptive-unified-parallel-mode",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-see-also",
+    "title": "See Also",
+    "keywords": "see also skill design patterns - development methodologies: tdd, sdd, bdd, multi-agent orchestration - §9.20 agent teams: agent teams including skeptical reviewer pattern - credits:",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#see-also",
     "source": "guide"
   },
   {
@@ -4535,9 +4719,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-06-commands-error-handling",
     "title": "Error Handling",
-    "keywords": "error handling 6 slash commands if [error condition]: - [recovery action] ```",
+    "keywords": "error handling 6 slash commands if [error condition]: - [recovery action] markdown",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/06-commands/#error-handling",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide-06-commands-context-validation-checkpoints",
+    "title": "Context Validation Checkpoints",
+    "keywords": "context validation checkpoints 6 slash commands before executing any step, verify all of these are true. if any checkpoint fails, stop and explain why. [ ] target branch exists and is up to date wit",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/06-commands/#context-validation-checkpoints",
     "source": "guide"
   },
   {
