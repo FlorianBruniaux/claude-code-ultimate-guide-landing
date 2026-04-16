@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.111',
+    date: 'Apr 16, 2026',
+    description: 'Claude Opus 4.7 gains a new xhigh effort level (between high and max). Two new built-in skills: /ultrareview runs cloud-based parallel multi-agent code review on your current branch or any GitHub PR, and /less-permission-prompts auto-generates a read-only allowlist for settings.json from your transcript history. Auto mode for Max subscribers no longer requires --enable-auto-mode. Plan files are now named after your prompt instead of random words.',
+    link: 'https://cc.bruniaux.com/releases/#v2111',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.39.1',
+    date: 'Apr 16, 2026',
+    description: 'context-evaluator (Packmind, MIT) added to the Configuration Quality section: 17 AI evaluators for CLAUDE.md/AGENTS.md, zero-install at context-evaluator.ai, automated remediation via patch file. Two new skill design patterns from its source: Runtime Prompt Logging (blocking write before AI call) and Adaptive Unified/Parallel Mode (token-threshold switching between 1-agent and N-agent execution).',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.39.0',
     date: 'Apr 16, 2026',
     description: 'Six new architectural patterns from Packmind (Apache 2.0): Skeptical Reviewer sub-agent for filtering false positives, MCP Reference File pattern with a fork-ready Sentry template, Shared Ground Truth Injection, Pre-filtered Rules via frontmatter paths, Handoff Triad with per-section merge rules, and Context Validation Checkpoints for command recipes. Also adds Plans+Specs as committed artifacts and a statusline.py example with the 32K output buffer calculation.',
