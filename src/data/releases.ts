@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.111',
+    date: 'Apr 16, 2026',
+    highlights: [
+      '⭐ Claude Opus 4.7 <code>xhigh</code> effort level (between <code>high</code> and <code>max</code>); Auto mode for Max subscribers no longer requires <code>--enable-auto-mode</code>',
+      '⭐ <code>/ultrareview</code> skill — cloud-based parallel multi-agent code review; invoke without args for current branch or <code>/ultrareview &lt;PR#&gt;</code>',
+      '⭐ <code>/less-permission-prompts</code> skill — scans transcripts and proposes a prioritized read-only allowlist for <code>settings.json</code>',
+      'Plan files named after prompts; read-only bash with glob patterns and <code>cd &lt;dir&gt; &amp;&amp;</code> no longer trigger prompts; interactive <code>/effort</code> slider; many bug fixes',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.110',
     date: 'Apr 16, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       '⭐ <code>--resume</code>/<code>--continue</code> now resurrects unexpired scheduled tasks',
       '<code>/focus</code> command for focus view; <code>Ctrl+O</code> reverts to verbose transcript toggle; <code>autoScrollEnabled</code> config; session recap for telemetry-disabled users; 30+ bug fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.109',
