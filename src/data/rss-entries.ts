@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.38.17',
+    date: 'Apr 16, 2026',
+    description: 'New "Structural Metadata Files" pattern in the context-engineering section: separate rules context (CLAUDE.md) from structural context (code-map.yaml). Includes a ready-to-use template and a benchmark script (context-bench.sh) to measure token cost and structural coverage across three loading strategies.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.110',
     date: 'Apr 16, 2026',
     description: 'New /tui command and tui setting enable flicker-free fullscreen rendering within the same conversation. Claude can now send mobile push notifications via the push notification tool when Remote Control is active. --resume and --continue now resurrect unexpired scheduled tasks, and a new /focus command separates the focus view from Ctrl+O (which reverts to verbose transcript toggle).',
