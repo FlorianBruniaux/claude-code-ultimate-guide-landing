@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.39.0',
+    date: 'Apr 16, 2026',
+    description: 'Six new architectural patterns from Packmind (Apache 2.0): Skeptical Reviewer sub-agent for filtering false positives, MCP Reference File pattern with a fork-ready Sentry template, Shared Ground Truth Injection, Pre-filtered Rules via frontmatter paths, Handoff Triad with per-section merge rules, and Context Validation Checkpoints for command recipes. Also adds Plans+Specs as committed artifacts and a statusline.py example with the 32K output buffer calculation.',
+    link: 'https://cc.bruniaux.com/releases/',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.17',
     date: 'Apr 16, 2026',
     description: 'New "Structural Metadata Files" pattern in the context-engineering section: separate rules context (CLAUDE.md) from structural context (code-map.yaml). Includes a ready-to-use template and a benchmark script (context-bench.sh) to measure token cost and structural coverage across three loading strategies.',
