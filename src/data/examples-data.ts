@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for 226+ templates
- * Last synced: 2026-04-10
+ * Source of truth for 240+ templates
+ * Last synced: 2026-04-16
  */
 
 export interface ExampleFile {
@@ -38,7 +38,10 @@ export const EXAMPLES = {
             { name: "integration-reviewer.md", path: "agents/integration-reviewer.md", description: "Runtime integration validator — read-only" },
             { name: "plan-challenger.md", path: "agents/plan-challenger.md", description: "Adversarial plan review across 5 dimensions — read-only" },
             { name: "planning-coordinator.md", path: "agents/planning-coordinator.md", description: "Synthesis agent for dynamic research teams — read-only" },
-            { name: "security-patcher.md", path: "agents/security-patcher.md", description: "Apply security patches from audit findings — proposes for review" }
+            { name: "security-patcher.md", path: "agents/security-patcher.md", description: "Apply security patches from audit findings — proposes for review" },
+            { name: "loop-monitor.md", path: "agents/loop-monitor.md", description: "Detect and interrupt runaway agent loops — read-only watchdog" },
+            { name: "analytics-with-eval/", path: "agents/analytics-with-eval/", description: "Collection: analytics agent + evaluation hooks" },
+            { name: "cyber-defense/", path: "agents/cyber-defense/", description: "Collection: anomaly detector, log ingestor, risk classifier, threat reporter" }
         ]
     },
     skills: {
@@ -63,7 +66,10 @@ export const EXAMPLES = {
             { name: "issue-triage/", path: "skills/issue-triage/", description: "3-phase issue backlog management" },
             { name: "cyber-defense-team/", path: "skills/cyber-defense-team/", description: "Multi-agent cyber defense team orchestration" },
             { name: "talk-pipeline/", path: "skills/talk-pipeline/", description: "6-stage pipeline: raw material to slides via Kimi" },
-            { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST — 86-92% token reduction", favorite: true }
+            { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST — 86-92% token reduction", favorite: true },
+            { name: "token-audit/", path: "skills/token-audit/", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
+            { name: "eval-skills/", path: "skills/eval-skills/SKILL.md", description: "Audit all skills for frontmatter completeness and effort-level inference" },
+            { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/ — resolves glob patterns against real files, interactive usefulness review", favorite: true }
         ]
     },
     commands: {
@@ -189,7 +195,8 @@ export const EXAMPLES = {
         description: "CLAUDE.md memory file templates for persistent context",
         files: [
             { name: "CLAUDE.md.project-template", path: "memory/CLAUDE.md.project-template", description: "Team project memory template" },
-            { name: "CLAUDE.md.personal-template", path: "memory/CLAUDE.md.personal-template", description: "Personal global memory template" }
+            { name: "CLAUDE.md.personal-template", path: "memory/CLAUDE.md.personal-template", description: "Personal global memory template" },
+            { name: "icm-session-starter.md", path: "memory/icm-session-starter.md", description: "ICM session bootstrap — recall past decisions and store new ones" }
         ]
     },
     "claude-md": {
@@ -238,7 +245,9 @@ export const EXAMPLES = {
             { name: "rtk-benchmark.sh", path: "scripts/rtk-benchmark.sh", description: "Benchmark RTK token savings vs raw commands" },
             { name: "sync-claude-config.sh", path: "scripts/sync-claude-config.sh", description: "Sync Claude config files across machines" },
             { name: "sonnetplan.sh", path: "scripts/sonnetplan.sh", description: "Run Claude with Sonnet replacing Opus (cost optimization)" },
-            { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI — track suggestion follow-through rates", favorite: true }
+            { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI — track suggestion follow-through rates", favorite: true },
+            { name: "ai-usage-charter-template.md", path: "scripts/ai-usage-charter-template.md", description: "Team AI usage charter template — principles, scope, review cadence" },
+            { name: "mcp-registry-template.yaml", path: "scripts/mcp-registry-template.yaml", description: "MCP server registry template for team governance" }
         ]
     },
     "team-config": {
@@ -300,6 +309,29 @@ export const EXAMPLES = {
         description: "Behavioral modes for Claude (SuperClaude framework). Place in ~/.claude/",
         files: [
             { name: "MODE_Learning.md", path: "modes/MODE_Learning.md", description: "Just-in-time explanations mode", favorite: true }
+        ]
+    },
+    "context-engineering": {
+        icon: "\u{1F9EC}",
+        label: "Context Engineering",
+        description: "Templates for structuring Claude's context: code maps, budgets, eval questions, CI drift checks",
+        files: [
+            { name: "skeleton-template.md", path: "context-engineering/skeleton-template.md", description: "Minimal context skeleton — project structure, key files, current focus", favorite: true },
+            { name: "code-map-template.yaml", path: "context-engineering/code-map-template.yaml", description: "Structural metadata file — codebase shape in ~1K tokens" },
+            { name: "context-budget-calculator.sh", path: "context-engineering/context-budget-calculator.sh", description: "Calculate token budget across all context sources" },
+            { name: "eval-questions.yaml", path: "context-engineering/eval-questions.yaml", description: "Evaluation questions for context quality scoring" },
+            { name: "profile-template.yaml", path: "context-engineering/profile-template.yaml", description: "Context profile template — env, stack, constraints" },
+            { name: "canary-check.sh", path: "context-engineering/canary-check.sh", description: "Verify context integrity between sessions" },
+            { name: "ci-drift-check.yml", path: "context-engineering/ci-drift-check.yml", description: "CI workflow to detect context drift on each push" },
+            { name: "context-bench.sh", path: "context-engineering/context-bench.sh", description: "Benchmark structural metadata impact on context quality" }
+        ]
+    },
+    styles: {
+        icon: "\u{1F3A8}",
+        label: "Styles",
+        description: "Custom style templates for consistent AI output tone and formatting",
+        files: [
+            { name: "custom-style-template.md", path: "styles/custom-style-template.md", description: "Define a custom writing style for Claude — tone, vocabulary, formatting rules" }
         ]
     },
     "semantic-anchors": {
