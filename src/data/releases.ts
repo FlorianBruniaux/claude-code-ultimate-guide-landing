@@ -16,12 +16,22 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.110',
+    date: 'Apr 16, 2026',
+    highlights: [
+      '⭐ <code>/tui</code> command and <code>tui</code> setting — run <code>/tui fullscreen</code> for flicker-free rendering in the same conversation',
+      '⭐ Push notification tool — Claude can send mobile push notifications when Remote Control and "Push when Claude decides" config are enabled',
+      '⭐ <code>--resume</code>/<code>--continue</code> now resurrects unexpired scheduled tasks',
+      '<code>/focus</code> command for focus view; <code>Ctrl+O</code> reverts to verbose transcript toggle; <code>autoScrollEnabled</code> config; session recap for telemetry-disabled users; 30+ bug fixes',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.109',
     date: 'Apr 15, 2026',
     highlights: [
       'Improved extended-thinking indicator with a rotating progress hint for better visibility during long thinking phases',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.108',

@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.110',
+    date: 'Apr 16, 2026',
+    description: 'New /tui command and tui setting enable flicker-free fullscreen rendering within the same conversation. Claude can now send mobile push notifications via the push notification tool when Remote Control is active. --resume and --continue now resurrect unexpired scheduled tasks, and a new /focus command separates the focus view from Ctrl+O (which reverts to verbose transcript toggle).',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.110',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.108',
     date: 'Apr 15, 2026',
     description: 'New ENABLE_PROMPT_CACHING_1H env var lets you opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry. New /recap command provides context when returning to a session after a break. Built-in slash commands like /init, /review, and /security-review are now discoverable and invokable via the Skill tool.',
