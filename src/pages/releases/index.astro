@@ -56,13 +56,13 @@ const jsonLd = [
         Show All {releases.length} Releases
       </button>
       <p style="margin-top: 8px; color: var(--text-secondary); font-size: 0.9rem;">
-        Showing <span id="visibleCount">{releases.filter(r => r.initiallyVisible).length}</span> of {releases.length} releases
+        Showing <span id="visibleCount">12</span> of {releases.length} releases
       </p>
     </div>
 
     <div class="releases-timeline">
       {releases.map((release, index) => (
-        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index}>
+        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${index >= 12 ? 'release-card-hidden' : ''}`} data-release-index={index}>
           {release.featuredLabel && (
             <div class="release-featured-label">{release.featuredLabel}</div>
           )}
@@ -455,7 +455,7 @@ const jsonLd = [
       const hiddenCards = document.querySelectorAll('.release-card-hidden');
       const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
       const totalReleases = document.querySelectorAll('.release-card').length;
-      const initialVisible = 6;
+      const initialVisible = 12;
 
       hiddenCards.forEach(card => {
         (card as HTMLElement).style.display = isExpanded ? 'none' : 'block';
