@@ -28,6 +28,10 @@ export default defineConfig({
   site: 'https://cc.bruniaux.com',
   trailingSlash: 'always',
 
+  redirects: {
+    '/guide/security/security-hardening/': '/guide/security-hardening/',
+  },
+
   integrations: [
     starlight({
       title: 'Claude Code Guide',
