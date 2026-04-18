@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.113',
+    date: 'Apr 18, 2026',
+    description: 'The CLI now spawns a native Claude Code binary via a per-platform optional dependency instead of bundled JavaScript. New sandbox.network.deniedDomains setting blocks specific domains even when a wildcard allowedDomains rule would otherwise permit them. Security hardening across the board: macOS /private/{etc,var,tmp,home} paths flagged as dangerous for rm rules, Bash deny rules now match commands wrapped in env/sudo/watch/ionice/setsid, and Bash(find:*) allow rules no longer auto-approve -exec/-delete.',
+    link: 'https://cc.bruniaux.com/releases/#v2113',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.111',
     date: 'Apr 16, 2026',
     description: 'Claude Opus 4.7 gains a new xhigh effort level (between high and max). Two new built-in skills: /ultrareview runs cloud-based parallel multi-agent code review on your current branch or any GitHub PR, and /less-permission-prompts auto-generates a read-only allowlist for settings.json from your transcript history. Auto mode for Max subscribers no longer requires --enable-auto-mode. Plan files are now named after your prompt instead of random words.',

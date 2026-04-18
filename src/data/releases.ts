@@ -16,6 +16,24 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.114',
+    date: 'Apr 18, 2026',
+    highlights: [
+      'Fixed crash in permission dialog when an agent teams teammate requested tool permission',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.113',
+    date: 'Apr 18, 2026',
+    highlights: [
+      '⭐ CLI now spawns a native Claude Code binary via per-platform optional dependency instead of bundled JavaScript',
+      '⭐ <code>sandbox.network.deniedDomains</code> setting — block specific domains even when a wildcard <code>allowedDomains</code> would permit them',
+      'Security hardening: macOS <code>/private/{etc,var,tmp,home}</code> paths flagged for <code>Bash(rm:*)</code> rules; deny rules match <code>env</code>/<code>sudo</code>/<code>watch</code>/<code>ionice</code>/<code>setsid</code> wrappers; <code>Bash(find:*)</code> no longer auto-approves <code>-exec</code>/<code>-delete</code>',
+      'Keyboard improvements (<code>Ctrl+A</code>/<code>E</code> logical line, <code>Ctrl+Backspace</code> on Windows); <code>/loop</code> Esc cancels wakeups; subagents fail with clear error after 10 min; many bug fixes',
+    ],
+  },
+  {
     version: 'v2.1.111',
     date: 'Apr 16, 2026',
     highlights: [
@@ -24,7 +42,6 @@ export const releases: Release[] = [
       '⭐ <code>/less-permission-prompts</code> skill — scans transcripts and proposes a prioritized read-only allowlist for <code>settings.json</code>',
       'Plan files named after prompts; read-only bash with glob patterns and <code>cd &lt;dir&gt; &amp;&amp;</code> no longer trigger prompts; interactive <code>/effort</code> slider; many bug fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.110',
