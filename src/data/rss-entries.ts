@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: '7-Module Learning Path — beginner to advanced',
+    date: 'Apr 22, 2026',
+    description: 'New structured learning path covering Installation, Core Loop, Memory & Config, Agents, Skills, Hooks, and Advanced Patterns. 8-11 hours total with hands-on exercises and validation steps per module. Designed for first-time users who want a guided route through Claude Code instead of reading the 25K-line reference cold.',
+    link: 'https://cc.bruniaux.com/guide/learning-path/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code v2.1.113',
     date: 'Apr 18, 2026',

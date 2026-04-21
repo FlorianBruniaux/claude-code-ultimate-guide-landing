@@ -50,6 +50,7 @@ if (!existsSync(GUIDE_DIR)) {
 const OUT_GUIDE = resolve(ROOT, 'src/content/docs/guide')
 const OUT_ULTIMATE = resolve(ROOT, 'src/content/docs/guide/ultimate-guide')
 const OUT_WORKFLOWS = resolve(ROOT, 'src/content/docs/guide/workflows')
+const OUT_LEARNING_PATH = resolve(ROOT, 'src/content/docs/guide/learning-path')
 const OUT_IMAGES = resolve(ROOT, 'public/guide/images')
 const ANCHOR_MAP_PATH = resolve(ROOT, 'src/data/guide-anchor-map.json')
 
@@ -228,7 +229,7 @@ console.log(`[prepare-guide] Output: ${OUT_GUIDE}`)
 cleanAndCreate(OUT_GUIDE)
 ensureDir(OUT_IMAGES)
 
-const stats = { files: 0, chapters: 0, workflows: 0, images: 0 }
+const stats = { files: 0, chapters: 0, workflows: 0, learningPath: 0, images: 0 }
 const anchorMap = {}  // anchor slug → 'ultimate-guide/chapter-slug'
 
 // -----------------------------------------------------------------------
@@ -314,6 +315,50 @@ if (existsSync(WORKFLOWS_DIR)) {
   }
 
   console.log(`[prepare-guide] ✓ Workflow files: ${stats.workflows}`)
+}
+
+// -----------------------------------------------------------------------
+// 2.5 Learning-path files
+// -----------------------------------------------------------------------
+const LEARNING_PATH_DIR = resolve(GUIDE_DIR, 'learning-path')
+
+if (existsSync(LEARNING_PATH_DIR)) {
+  ensureDir(OUT_LEARNING_PATH)
+
+  const learningFiles = readdirSync(LEARNING_PATH_DIR)
+    .filter(f => f.endsWith('.md') && f !== 'README.md')
+    .sort()
+
+  for (let i = 0; i < learningFiles.length; i++) {
+    const file = learningFiles[i]
+    const src = resolve(LEARNING_PATH_DIR, file)
+    let content = readFileSync(src, 'utf-8')
+
+    const titleMatch = content.match(/^title:\s*["']?(.+?)["']?\s*$/m)
+      || content.match(/^# (.+)/m)
+    const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
+
+    const descMatch = content.match(/^description:\s*["']?(.+?)["']?\s*$/m)
+    const desc = descMatch ? descMatch[1].trim() : ''
+
+    content = addStarlightFm(content, { title, desc, order: 250 + i })
+    content = normalizeLangs(content)
+
+    guideFileBuffer.push({ file: `learning-path/${file}`, content, isWorkflow: false })
+    stats.learningPath++
+  }
+
+  // Also include the README as the learning-path index
+  const readmeSrc = resolve(LEARNING_PATH_DIR, 'README.md')
+  if (existsSync(readmeSrc)) {
+    let content = readFileSync(readmeSrc, 'utf-8')
+    content = addStarlightFm(content, { title: 'Learning Path', desc: '7-module structured learning path from Installation to Advanced Patterns (8-11 hours)', order: 249 })
+    content = normalizeLangs(content)
+    guideFileBuffer.push({ file: 'learning-path/index.md', content, isWorkflow: false })
+    stats.learningPath++
+  }
+
+  console.log(`[prepare-guide] ✓ Learning-path files: ${stats.learningPath}`)
 }
 
 // -----------------------------------------------------------------------
