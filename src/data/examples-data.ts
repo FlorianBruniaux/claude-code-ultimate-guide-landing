@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for 240+ templates
- * Last synced: 2026-04-16
+ * Source of truth for indexed templates (195 of 247 total)
+ * Last synced: 2026-04-22
  */
 
 export interface ExampleFile {
@@ -293,7 +293,12 @@ export const EXAMPLES = {
         description: "Community plugins extending Claude Code capabilities",
         files: [
             { name: "se-cove.md", path: "plugins/se-cove.md", description: "Chain-of-Verification for independent code review (Meta AI, ACL 2024)" },
-            { name: "claude-mem.md", path: "plugins/claude-mem.md", description: "Persistent memory management plugin" }
+            { name: "claude-mem.md", path: "plugins/claude-mem.md", description: "Persistent memory management plugin" },
+            { name: "security-suite/", path: "plugins/security-suite/", description: "Complete security scanning bundle: auditor agent, security-check/security-audit commands, security-gate hook", favorite: true },
+            { name: "pr-workflow/", path: "plugins/pr-workflow/", description: "Automated PR review bundle: code-reviewer agent, review-pr and pr commands, pre-pr-check hook" },
+            { name: "devops-pipeline/", path: "plugins/devops-pipeline/", description: "CI/CD automation bundle: devops-sre agent, ship and deploy commands, GitHub Actions workflow" },
+            { name: "code-quality/", path: "plugins/code-quality/", description: "Code analysis bundle: refactoring-specialist and clean-code-reviewer agents, refactor and optimize commands" },
+            { name: "release-automation/", path: "plugins/release-automation/", description: "Release management bundle: release and changelog commands, release-notes-generator skill, version-sync hook" }
         ]
     },
     "mcp-configs": {
