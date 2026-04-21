@@ -16,12 +16,22 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.116',
+    date: 'Apr 21, 2026',
+    highlights: [
+      '⭐ <code>/resume</code> up to 67% faster on large sessions (40MB+); handles sessions with many dead-fork entries more efficiently',
+      'Thinking spinner shows inline progress: "still thinking", "thinking more", "almost done thinking" — replaces the separate hint row',
+      'Security: sandbox auto-allow no longer bypasses the dangerous-path check for <code>rm</code>/<code>rmdir</code> targeting <code>/</code>, <code>$HOME</code>, or critical system directories',
+      'Agent frontmatter <code>hooks:</code> now fire when running as main-thread agent via <code>--agent</code>; <code>/config</code> search matches option values; many terminal, scrolling, and UI bug fixes',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.114',
     date: 'Apr 18, 2026',
     highlights: [
       'Fixed crash in permission dialog when an agent teams teammate requested tool permission',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.113',
