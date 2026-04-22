@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.117',
+    date: 'Apr 22, 2026',
+    description: 'Default effort raised to high for Pro/Max on Opus 4.6 and Sonnet 4.6 (was medium). Fixed Opus 4.7 context window bug — was computing /context against 200K instead of 1M. Native macOS/Linux builds now use embedded bfs/ugrep replacing Glob/Grep tools for faster searches.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.117',
+  },
+  {
     type: 'new_section',
     title: '7-Module Learning Path — beginner to advanced',
     date: 'Apr 22, 2026',

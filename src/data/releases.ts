@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.117',
+    date: 'Apr 22, 2026',
+    highlights: [
+      '⭐ Default effort changed to <code>high</code> for Pro/Max subscribers on Opus 4.6 and Sonnet 4.6 (was <code>medium</code>)',
+      '⭐ Fixed Opus 4.7 sessions showing inflated <code>/context</code> percentages and autocompacting too early — was computing against 200K instead of native 1M context window',
+      'Native macOS/Linux builds: Glob and Grep tools replaced by embedded <code>bfs</code> and <code>ugrep</code> — faster searches without extra tool round-trip (Windows/npm unchanged)',
+      '<code>/model</code> selections persist across restarts; startup header shows model source pin; plugin dependency fixes; 15+ bug fixes',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.116',
     date: 'Apr 21, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       'Security: sandbox auto-allow no longer bypasses the dangerous-path check for <code>rm</code>/<code>rmdir</code> targeting <code>/</code>, <code>$HOME</code>, or critical system directories',
       'Agent frontmatter <code>hooks:</code> now fire when running as main-thread agent via <code>--agent</code>; <code>/config</code> search matches option values; many terminal, scrolling, and UI bug fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.114',
