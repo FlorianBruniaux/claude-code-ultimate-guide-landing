@@ -1,7 +1,8 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for indexed templates (195 of 247 total)
+ * Source of truth for indexed templates (219 of 247 total)
  * Last synced: 2026-04-22
+ * Note: remaining gap = support files within skill collections (yamls, install scripts, reference material)
  */
 
 export interface ExampleFile {
@@ -41,7 +42,12 @@ export const EXAMPLES = {
             { name: "security-patcher.md", path: "agents/security-patcher.md", description: "Apply security patches from audit findings — proposes for review" },
             { name: "loop-monitor.md", path: "agents/loop-monitor.md", description: "Detect and interrupt runaway agent loops — read-only watchdog" },
             { name: "analytics-with-eval/", path: "agents/analytics-with-eval/", description: "Collection: analytics agent + evaluation hooks" },
-            { name: "cyber-defense/", path: "agents/cyber-defense/", description: "Collection: anomaly detector, log ingestor, risk classifier, threat reporter" }
+            { name: "analytics-agent.md", path: "agents/analytics-with-eval/analytics-agent.md", description: "Analytics agent with LLM-as-a-judge evaluation loop for output quality" },
+            { name: "cyber-defense/", path: "agents/cyber-defense/", description: "Collection: anomaly detector, log ingestor, risk classifier, threat reporter" },
+            { name: "anomaly-detector.md", path: "agents/cyber-defense/anomaly-detector.md", description: "Detect security log anomalies using statistical baselines" },
+            { name: "log-ingestor.md", path: "agents/cyber-defense/log-ingestor.md", description: "Ingest and normalize logs from multiple sources for threat analysis" },
+            { name: "risk-classifier.md", path: "agents/cyber-defense/risk-classifier.md", description: "Classify security events by severity using CVSS framework" },
+            { name: "threat-reporter.md", path: "agents/cyber-defense/threat-reporter.md", description: "Generate structured threat reports from classified security events" }
         ]
     },
     skills: {
@@ -69,7 +75,8 @@ export const EXAMPLES = {
             { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST — 86-92% token reduction", favorite: true },
             { name: "token-audit/", path: "skills/token-audit/", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
             { name: "eval-skills/", path: "skills/eval-skills/SKILL.md", description: "Audit all skills for frontmatter completeness and effort-level inference" },
-            { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/ — resolves glob patterns against real files, interactive usefulness review", favorite: true }
+            { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/ — resolves glob patterns against real files, interactive usefulness review", favorite: true },
+            { name: "mcp-integration-reference/", path: "skills/mcp-integration-reference/SKILL.md", description: "MCP integration reference with Sentry patterns and multi-tool query examples" }
         ]
     },
     commands: {
@@ -122,7 +129,12 @@ export const EXAMPLES = {
             { name: "ci/all.md", path: "commands/ci/all.md", description: "/ci:all - Full CI: local tests + type check + push + pipeline URL", favorite: true },
             { name: "ci/pipeline.md", path: "commands/ci/pipeline.md", description: "/ci:pipeline - Push branch and return pipeline tracking URL (GitLab/GitHub Actions)" },
             { name: "ci/status.md", path: "commands/ci/status.md", description: "/ci:status - Current pipeline status for active branch" },
-            { name: "ci/tests.md", path: "commands/ci/tests.md", description: "/ci:tests - Auto-detect and run test suite (pytest/vitest/cargo test)" }
+            { name: "ci/tests.md", path: "commands/ci/tests.md", description: "/ci:tests - Auto-detect and run test suite (pytest/vitest/cargo test)" },
+            { name: "handoff/create-handoff.md", path: "commands/handoff/create-handoff.md", description: "/create-handoff - Generate structured handoff: scope, files, discoveries, next steps" },
+            { name: "handoff/resume-handoff.md", path: "commands/handoff/resume-handoff.md", description: "/resume-handoff - Load handoff doc and resume work from previous session" },
+            { name: "handoff/update-handoff.md", path: "commands/handoff/update-handoff.md", description: "/update-handoff - Update handoff with append-only Work Done history" },
+            { name: "recipe-template.md", path: "commands/recipe-template.md", description: "Template for recipe-style commands with precondition validation pattern" },
+            { name: "resources/threat-db.yaml", path: "commands/resources/threat-db.yaml", description: "Threat intelligence database for security commands" }
         ]
     },
     "hooks-bash": {
@@ -247,7 +259,11 @@ export const EXAMPLES = {
             { name: "sonnetplan.sh", path: "scripts/sonnetplan.sh", description: "Run Claude with Sonnet replacing Opus (cost optimization)" },
             { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI — track suggestion follow-through rates", favorite: true },
             { name: "ai-usage-charter-template.md", path: "scripts/ai-usage-charter-template.md", description: "Team AI usage charter template — principles, scope, review cadence" },
-            { name: "mcp-registry-template.yaml", path: "scripts/mcp-registry-template.yaml", description: "MCP server registry template for team governance" }
+            { name: "mcp-registry-template.yaml", path: "scripts/mcp-registry-template.yaml", description: "MCP server registry template for team governance" },
+            { name: "og-image-astro.ts", path: "scripts/og-image-astro.ts", description: "Generate OG images for Astro static sites" },
+            { name: "pptx-to-pdf.sh", path: "scripts/pptx-to-pdf.sh", description: "Batch convert PPTX to PDF via Keynote (macOS/AppleScript)" },
+            { name: "statusline.py", path: "scripts/statusline.py", description: "Terminal statusline for Claude Code session monitoring" },
+            { name: "test-prompt-caching.ts", path: "scripts/test-prompt-caching.ts", description: "Test prompt caching implementation and measure savings" }
         ]
     },
     "team-config": {
@@ -276,7 +292,9 @@ export const EXAMPLES = {
             { name: "claude-code-review.yml", path: "github-actions/claude-code-review.yml", description: "Prompt-based review with anti-hallucination protocol", favorite: true },
             { name: "claude-pr-auto-review.yml", path: "github-actions/claude-pr-auto-review.yml", description: "Auto code review on PRs" },
             { name: "claude-security-review.yml", path: "github-actions/claude-security-review.yml", description: "Security-focused PR scan" },
-            { name: "claude-issue-triage.yml", path: "github-actions/claude-issue-triage.yml", description: "Auto-triage issues with labels" }
+            { name: "claude-issue-triage.yml", path: "github-actions/claude-issue-triage.yml", description: "Auto-triage issues with labels" },
+            { name: ".coderabbit.yaml", path: "github-actions/.coderabbit.yaml", description: "CodeRabbit AI code review configuration — copy to repo root" },
+            { name: "prompts/code-review.md", path: "github-actions/prompts/code-review.md", description: "Code review prompt template for GitHub Actions workflows" }
         ]
     },
     workflows: {
@@ -299,6 +317,17 @@ export const EXAMPLES = {
             { name: "devops-pipeline/", path: "plugins/devops-pipeline/", description: "CI/CD automation bundle: devops-sre agent, ship and deploy commands, GitHub Actions workflow" },
             { name: "code-quality/", path: "plugins/code-quality/", description: "Code analysis bundle: refactoring-specialist and clean-code-reviewer agents, refactor and optimize commands" },
             { name: "release-automation/", path: "plugins/release-automation/", description: "Release management bundle: release and changelog commands, release-notes-generator skill, version-sync hook" }
+        ]
+    },
+    integrations: {
+        icon: "\u{1F50C}",
+        label: "Integrations",
+        description: "Community integrations and MCP server extensions for Claude Code",
+        files: [
+            { name: "agent-vibes/README.md", path: "integrations/agent-vibes/README.md", description: "Agent Vibes: text-to-speech MCP server overview and features" },
+            { name: "agent-vibes/installation.md", path: "integrations/agent-vibes/installation.md", description: "Install Agent Vibes TTS on macOS step-by-step" },
+            { name: "agent-vibes/troubleshooting.md", path: "integrations/agent-vibes/troubleshooting.md", description: "Troubleshoot Agent Vibes TTS installation issues" },
+            { name: "agent-vibes/voice-catalog.md", path: "integrations/agent-vibes/voice-catalog.md", description: "Agent Vibes voice catalog reference" }
         ]
     },
     "mcp-configs": {
@@ -328,7 +357,10 @@ export const EXAMPLES = {
             { name: "profile-template.yaml", path: "context-engineering/profile-template.yaml", description: "Context profile template — env, stack, constraints" },
             { name: "canary-check.sh", path: "context-engineering/canary-check.sh", description: "Verify context integrity between sessions" },
             { name: "ci-drift-check.yml", path: "context-engineering/ci-drift-check.yml", description: "CI workflow to detect context drift on each push" },
-            { name: "context-bench.sh", path: "context-engineering/context-bench.sh", description: "Benchmark structural metadata impact on context quality" }
+            { name: "context-bench.sh", path: "context-engineering/context-bench.sh", description: "Benchmark structural metadata impact on context quality" },
+            { name: "assembler.ts", path: "context-engineering/assembler.ts", description: "Assemble CLAUDE.md from profile YAML + shared module markdown files" },
+            { name: "rules/knowledge-feeding.md", path: "context-engineering/rules/knowledge-feeding.md", description: "Knowledge feeding protocol — inject domain context systematically" },
+            { name: "rules/update-loop-retro.md", path: "context-engineering/rules/update-loop-retro.md", description: "Session retrospective template for capturing and persisting learnings" }
         ]
     },
     styles: {
