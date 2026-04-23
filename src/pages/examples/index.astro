@@ -42,6 +42,16 @@ const jsonLd = [
   </header>
 
   <div class="container">
+    <div class="plugin-callout">
+      <div class="plugin-callout-icon">📦</div>
+      <div class="plugin-callout-body">
+        <strong>Install these templates in one command</strong>
+        <span>All 181 templates are available as Claude Code plugins — hooks auto-wired, no manual file copying.</span>
+        <code>claude plugin marketplace add FlorianBruniaux/claude-code-plugins</code>
+      </div>
+      <a href="https://github.com/FlorianBruniaux/claude-code-plugins" class="plugin-callout-link" target="_blank" rel="noopener">View plugins →</a>
+    </div>
+
     <div class="search-bar">
       <input type="text" class="search-input" id="searchInput" placeholder="Search examples... (press / to focus)" autocomplete="off">
     </div>
@@ -59,6 +69,46 @@ const jsonLd = [
   <div class="toast" id="toast">Copied to clipboard!</div>
 
   <style is:global>
+    .plugin-callout {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+      border-radius: var(--border-radius-lg);
+      padding: 1rem 1.25rem;
+      margin: var(--space-xl) 0 0;
+      flex-wrap: wrap;
+    }
+    .plugin-callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .plugin-callout-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .plugin-callout-body strong { color: var(--text-primary); font-size: 0.95rem; }
+    .plugin-callout-body span { color: var(--text-secondary); font-size: 0.875rem; }
+    .plugin-callout-body code {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      color: var(--accent);
+      width: fit-content;
+    }
+    .plugin-callout-link {
+      flex-shrink: 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .plugin-callout-link:hover { text-decoration: underline; }
+
     .search-bar {
       display: flex;
       gap: var(--space-md);
