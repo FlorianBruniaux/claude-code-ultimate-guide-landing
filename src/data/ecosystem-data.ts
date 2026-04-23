@@ -568,6 +568,36 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
   // ── Plugin Ecosystem ───────────────────────────────────────────────────────
 
   {
+    id: 'florian-claude-plugins',
+    name: 'claude-code-plugins',
+    category: 'plugin-ecosystem',
+    description:
+      '181 production-ready templates from the Claude Code Ultimate Guide, packaged as 8 focused installable plugins. One command to add the marketplace, hooks auto-wired on install.',
+    source_url: 'https://github.com/FlorianBruniaux/claude-code-plugins',
+    website_url: 'https://github.com/FlorianBruniaux/claude-code-plugins',
+    install: 'claude plugin marketplace add FlorianBruniaux/claude-code-plugins',
+    language: 'Bash / Markdown',
+    status: 'stable',
+    author: 'Florian Bruniaux',
+    features: [
+      '`security-suite` — OWASP auditing, cyber-defense pipeline, 13 hooks',
+      '`devops-pipeline` — CI/CD, git worktrees, GitHub Actions',
+      '`release-automation` — changelog + release notes + social content',
+      '`code-quality` — SOLID refactoring, TDD, GoF patterns, 6 agents',
+      '`pr-workflow` — planning gates, PR/issue triage, handoffs',
+      '`session-tools` — ccboard monitoring, 11 session hooks',
+      '`ai-methodology` — scaffolding, 6-stage talk pipeline, context-engineering',
+      '`session-summary` — analytics dashboard (15 sections)',
+    ],
+    limitations: [
+      'Templates mirrored from guide repo — source of truth stays examples/',
+      'No claude plugin validate CLI validation yet (JSON + file structure check)',
+    ],
+    when_to_use:
+      'Starting a new Claude Code project and want a complete toolkit without manual file copying. Install only the plugins matching your workflow.',
+  },
+
+  {
     id: 'gstack',
     name: 'gstack',
     category: 'plugin-ecosystem',
