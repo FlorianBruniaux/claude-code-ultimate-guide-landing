@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.118',
+    date: 'Apr 23, 2026',
+    description: 'Vim visual mode (v/V) with selection and operators. /cost and /stats merged into /usage. Custom named themes via /theme or ~/.claude/themes/; plugins can ship themes. Hooks can now invoke MCP tools directly via type: "mcp_tool". 15+ bug fixes including MCP OAuth, credential save crash, Alt+K freeze, and /fork memory usage.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.118',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.117',
     date: 'Apr 22, 2026',
     description: 'Default effort raised to high for Pro/Max on Opus 4.6 and Sonnet 4.6 (was medium). Fixed Opus 4.7 context window bug — was computing /context against 200K instead of 1M. Native macOS/Linux builds now use embedded bfs/ugrep replacing Glob/Grep tools for faster searches.',

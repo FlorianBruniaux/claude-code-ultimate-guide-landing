@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.118',
+    date: 'Apr 23, 2026',
+    highlights: [
+      '⭐ Vim visual mode (<code>v</code>) and visual-line mode (<code>V</code>) with selection, operators, and visual feedback',
+      '⭐ <code>/cost</code> and <code>/stats</code> merged into <code>/usage</code> — both remain as typing shortcuts that open the relevant tab',
+      '⭐ Custom named themes from <code>/theme</code> or hand-edit JSON in <code>~/.claude/themes/</code>; plugins can ship themes via <code>themes/</code> directory',
+      'Hooks can invoke MCP tools directly via <code>type: "mcp_tool"</code>; <code>DISABLE_UPDATES</code> env var; <code>wslInheritsWindowsSettings</code> policy; 15+ bug fixes',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.117',
     date: 'Apr 22, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       'Native macOS/Linux builds: Glob and Grep tools replaced by embedded <code>bfs</code> and <code>ugrep</code> — faster searches without extra tool round-trip (Windows/npm unchanged)',
       '<code>/model</code> selections persist across restarts; startup header shows model source pin; plugin dependency fixes; 15+ bug fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.116',
