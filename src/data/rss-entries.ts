@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.119',
+    date: 'Apr 24, 2026',
+    description: '/config settings now persist to ~/.claude/settings.json with project/local/policy override precedence. --from-pr accepts GitLab MR, Bitbucket PR, and GitHub Enterprise URLs. --print mode honors agent tools: frontmatter; --agent honors permissionMode. Security fix: blockedMarketplaces now enforces hostPattern/pathPattern. 30+ bug fixes including CRLF paste, Glob/Grep on macOS, /plan mode, TaskList ordering, and stale worktree reuse.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.119',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.118',
     date: 'Apr 23, 2026',
     description: 'Vim visual mode (v/V) with selection and operators. /cost and /stats merged into /usage. Custom named themes via /theme or ~/.claude/themes/; plugins can ship themes. Hooks can now invoke MCP tools directly via type: "mcp_tool". 15+ bug fixes including MCP OAuth, credential save crash, Alt+K freeze, and /fork memory usage.',

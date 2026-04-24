@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.119',
+    date: 'Apr 24, 2026',
+    highlights: [
+      '⭐ <code>/config</code> settings (theme, editor mode, verbose) now persist to <code>~/.claude/settings.json</code> and participate in project/local/policy override precedence',
+      '⭐ <code>--from-pr</code> now accepts GitLab merge-request, Bitbucket pull-request, and GitHub Enterprise PR URLs',
+      '<code>--print</code> honors agent <code>tools:</code>/<code>disallowedTools:</code> frontmatter; <code>--agent</code> honors <code>permissionMode</code>; PowerShell auto-approve; <code>PostToolUse</code> hooks include <code>duration_ms</code>',
+      'Security: <code>blockedMarketplaces</code> enforces <code>hostPattern</code>/<code>pathPattern</code>; <code>prUrlTemplate</code> setting; 30+ bug fixes including CRLF paste, Glob/Grep on macOS, <code>/plan</code> mode fix, <code>TaskList</code> ordering, stale worktree reuse',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.118',
     date: 'Apr 23, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       '⭐ Custom named themes from <code>/theme</code> or hand-edit JSON in <code>~/.claude/themes/</code>; plugins can ship themes via <code>themes/</code> directory',
       'Hooks can invoke MCP tools directly via <code>type: "mcp_tool"</code>; <code>DISABLE_UPDATES</code> env var; <code>wslInheritsWindowsSettings</code> policy; 15+ bug fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.117',
