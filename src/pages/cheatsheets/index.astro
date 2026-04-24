@@ -1132,7 +1132,7 @@ if (waitlistForm) {
     flex-wrap: wrap;
     align-items: center;
   }
-  .zip-dl-btn {
+  :global(.zip-dl-btn) {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -1149,16 +1149,16 @@ if (waitlistForm) {
     border: none;
     line-height: 1;
   }
-  .zip-dl-btn:hover { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
-  .zip-dl-btn:active { transform: translateY(0); }
-  .zip-dl-btn--design {
+  :global(.zip-dl-btn:hover) { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
+  :global(.zip-dl-btn:active) { transform: translateY(0); }
+  :global(.zip-dl-btn--design) {
     background: transparent;
     color: #16a34a;
     border: 1px solid color-mix(in srgb, #22c55e 50%, transparent);
     padding: 0.35rem 0.75rem;
     font-size: 0.78rem;
   }
-  .zip-dl-btn--design:hover {
+  :global(.zip-dl-btn--design:hover) {
     background: color-mix(in srgb, #22c55e 12%, transparent);
     opacity: 1;
   }
@@ -1314,7 +1314,7 @@ if (waitlistForm) {
     align-items: center;
     gap: 0.3rem;
   }
-  .pdf-pill {
+  :global(.pdf-pill) {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
@@ -1327,18 +1327,18 @@ if (waitlistForm) {
     transition: color 0.15s, border-color 0.15s, background 0.15s;
     letter-spacing: 0.03em;
   }
-  .pdf-fr {
+  :global(.pdf-fr) {
     color: #2563eb;
     border-color: color-mix(in srgb, #2563eb 35%, transparent);
     background: color-mix(in srgb, #2563eb 8%, transparent);
   }
-  .pdf-fr:hover { color: #1d4ed8; border-color: #2563eb; background: color-mix(in srgb, #2563eb 14%, transparent); }
-  .pdf-en {
+  :global(.pdf-fr:hover) { color: #1d4ed8; border-color: #2563eb; background: color-mix(in srgb, #2563eb 14%, transparent); }
+  :global(.pdf-en) {
     color: #16a34a;
     border-color: color-mix(in srgb, #16a34a 35%, transparent);
     background: color-mix(in srgb, #16a34a 8%, transparent);
   }
-  .pdf-en:hover { color: #15803d; border-color: #16a34a; background: color-mix(in srgb, #16a34a 14%, transparent); }
+  :global(.pdf-en:hover) { color: #15803d; border-color: #16a34a; background: color-mix(in srgb, #16a34a 14%, transparent); }
   .pdf-gated {
     display: inline-flex;
     align-items: center;
