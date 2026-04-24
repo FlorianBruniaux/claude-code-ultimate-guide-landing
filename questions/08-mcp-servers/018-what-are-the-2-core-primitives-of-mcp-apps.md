@@ -27,3 +27,5 @@ MCP Apps (SEP-1865) introduce 2 core primitives:
 2. **UI resources (ui:// scheme)** - Resources that return UI components instead of data
 
 Together, these allow MCP servers to provide both functionality and user interface, enabling richer agent-to-user interactions.
+
+**Best practice (added later):** A third pattern — the **MCP Reference File** (`references/<mcp-name>.md`) — documents each server's tools and usage for Claude. It's not a protocol primitive, but the guide now recommends it as a standard setup step alongside configuring any MCP server.

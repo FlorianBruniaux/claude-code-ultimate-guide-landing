@@ -33,4 +33,4 @@ Output includes:
 Example output:
 `Model: Sonnet | Ctx: 45.2k | Cost: $1.23 | Ctx(u): 42.0%`
 
-Use `/stats` for usage statistics with activity graphs.
+Use `/usage` (which merged `/stats` and `/cost`; both still work as shortcuts) for usage statistics, activity graphs, and cost summaries.

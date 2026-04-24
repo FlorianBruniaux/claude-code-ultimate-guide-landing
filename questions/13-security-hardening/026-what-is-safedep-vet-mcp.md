@@ -22,3 +22,5 @@ What does SafeDep vet MCP provide for agent security?
 ---
 
 SafeDep vet MCP is a software composition analysis tool integrated as an MCP server. It screens package suggestions before pip/npm install, detects slopsquatting (AI-hallucinated package names that attackers register), and identifies vulnerable and malicious packages. It's package-focused and complements mcp-scan (which focuses on MCP configs and SKILL.md scanning).
+
+**Also available:** AgentShield is a `.claude/` config scanner that audits settings.json, hooks, and permissions against 102 rules, grading your overall security posture A-F. Where SafeDep focuses on supply chain (packages), AgentShield focuses on configuration hygiene — use both for full coverage.

@@ -22,3 +22,5 @@ What is "Memory Poisoning" in the context of AI agent security (technique T002)?
 ---
 
 Memory Poisoning (T002) injects persistent backdoor instructions into configuration files like SOUL.md, MEMORY.md, CLAUDE.md, or AGENTS.md. These instructions survive across sessions, creating cognitive worms that replicate across agent memory files. Identified in the ToxicSkills campaign. Mitigation: treat memory files as config; require code review for changes; monitor diffs.
+
+**Supply Chain variant (Cisco, 2026):** Attackers poison CLAUDE.md files via compromised npm/pip packages — malicious instructions arrive through `node_modules/` or installed dependencies, not direct file edits. Defense: scan CLAUDE.md files added by package install hooks; never auto-trust CLAUDE.md from third-party packages.

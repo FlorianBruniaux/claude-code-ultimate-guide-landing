@@ -23,4 +23,6 @@ What do the `/stats` and `/rename` commands do (added in cheatsheet v3.32.2)?
 ---
 
 `/stats` displays a usage chart and streak — a visual summary of your Claude Code activity over time. `/rename [name]` gives the current session a custom name, making it easier to find in `/resume` history. Both were documented in the cheatsheet update alongside `/loop` and `/copy` (from releases v2.1.59–v2.1.71). These are quality-of-life commands for session management and personal usage tracking.
+
+**Updated:** `/stats` is now a shortcut under the unified `/usage` command, which merged `/stats` and `/cost` into a single session dashboard. Both shortcuts remain functional.
 ---

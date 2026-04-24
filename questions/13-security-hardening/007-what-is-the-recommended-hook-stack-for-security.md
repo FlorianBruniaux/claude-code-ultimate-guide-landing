@@ -23,3 +23,5 @@ What is the recommended hook stack for security in settings.json?
 ---
 
 Recommended security hook stack: PreToolUse → dangerous-actions-blocker.sh (Bash), prompt-injection-detector.sh + unicode-injection-scanner.sh (Edit/Write). PostToolUse → output-secrets-scanner.sh (Bash). SessionStart → mcp-config-integrity.sh. Multiple layers for defense-in-depth.
+
+**Updated (v2.1.114+):** Bash deny rules now match **exec wrappers** — patterns like `bash -c "..."`, `sh -c "..."`, and `eval` are detected even when wrapping otherwise-allowed commands. Update dangerous-actions-blocker.sh to include exec wrapper patterns in the deny list.

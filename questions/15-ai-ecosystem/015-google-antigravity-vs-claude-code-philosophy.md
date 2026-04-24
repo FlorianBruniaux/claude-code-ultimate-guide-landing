@@ -22,4 +22,6 @@ How does the guide contrast Claude Code and Google Antigravity's core philosophi
 ---
 
 Claude Code is **terminal-first, CLI-native** — optimized for predictability, explicit approval per edit, and deep integration with existing developer workflows (CI/CD, headless pipelines). Google Antigravity is an **agent-first IDE** (VS Code fork) — makes autonomous agents the primary interface, with higher autonomy and a mission control-style UI. The guide's bottom line: Claude Code optimizes for **predictability and workflow integration**; Antigravity optimizes for **maximum agent autonomy with experimental trade-offs**. Antigravity is recommended for rapid prototyping or non-CLI developers; Claude Code for production code, CI/CD, and team standardization.
+
+**Context update (2026):** Anthropic has expanded beyond Claude Code into cloud-native agent execution with **Claude Managed Agents** (cloud-hosted, `ant` CLI, launched April 2026) and **Routines** (HTTP/GitHub-triggered cloud automation). Claude Code remains the interactive developer tool; Managed Agents targets production automation workflows where the Antigravity comparison is less relevant.
 ---

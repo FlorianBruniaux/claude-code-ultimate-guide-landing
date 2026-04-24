@@ -22,4 +22,6 @@ What is the `dangerouslyDisableSandbox` parameter and when does it apply?
 ---
 
 `dangerouslyDisableSandbox` is a **per-command escape hatch** for tools incompatible with sandboxing (e.g., `docker`, `watchman`). When a command fails due to sandbox restrictions, Claude analyzes the failure and retries with this parameter set. The user receives a normal permission prompt, and if approved, the command runs outside the sandbox. To disable this escape hatch entirely for maximum security, set `"sandbox.allowUnsandboxedCommands": false` in `settings.json` — this forces all commands to run sandboxed or be explicitly listed in `excludedCommands`.
+
+**Granular network control (added later):** `sandbox.network.deniedDomains` lets you block specific domains even when a wildcard allows the parent domain. Example: allow `*.internal.com` globally but deny `logging.internal.com` for privacy. This is separate from the unsandboxed command escape hatch — it controls network-level access within sandboxed execution.
 ---

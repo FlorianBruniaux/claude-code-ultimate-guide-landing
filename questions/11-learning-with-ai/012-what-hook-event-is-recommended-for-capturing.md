@@ -23,3 +23,5 @@ What hook event is recommended for capturing daily learning?
 ---
 
 The learning-capture.sh hook uses the Stop event (session end) to prompt: "What's ONE thing you learned today?" This logs to ~/claude-learnings.md automatically. It's lightweight (asks one question) so you'll actually use it, unlike verbose learning journals.
+
+**New built-in alternative:** The `/recap` command generates a structured session summary on demand — no hook required. It's now the primary recommended approach for session-end learning capture, with the Stop hook remaining a valid option for fully automated logging workflows.

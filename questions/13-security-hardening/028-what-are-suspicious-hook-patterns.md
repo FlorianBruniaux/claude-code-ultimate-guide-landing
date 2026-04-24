@@ -22,3 +22,5 @@ Which combination of patterns in a .claude/hooks/ script indicates a likely mali
 ---
 
 Malicious hooks typically combine: curl/wget (data exfiltration), base64 (payload obfuscation used by ClawHavoc via glot.io), /dev/tcp or /dev/udp (bash reverse shells — no legitimate hook use case), and eval/exec (dynamic code execution). Additional red flags: access to .env/credentials/ssh keys, references to paste sites (glot.io, pastebin.com), and nc/ncat/netcat (netcat reverse shells — remove immediately).
+
+**Updated pattern (v2.1.114+):** Bash deny rules now match **exec wrappers** — `bash -c "..."`, `sh -c "..."`, `python -c "..."` wrapping otherwise-allowed commands is now a flagged pattern. Legitimate hooks rarely need to wrap commands in eval or shell spawns; flag any hook using this pattern for manual review.

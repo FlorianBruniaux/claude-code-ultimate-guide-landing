@@ -23,3 +23,5 @@ What CLAUDE.md configuration enables 'Learning Mode' with Claude Code?
 ---
 
 Learning Mode in CLAUDE.md prompts Claude to ask questions before generating: "What approaches have I considered?", "What specifically am I stuck on?", "What do I expect the solution to look like?". This implements the UVAL protocol's Understand step directly in your workflow.
+
+**Modern alternative:** Claude Code now has a built-in Output Styles system. Setting `"outputStyle": "Learning"` in `settings.json` (or creating a custom style in `.claude/styles/`) achieves the same effect without a CLAUDE.md header — and applies to all sessions consistently.

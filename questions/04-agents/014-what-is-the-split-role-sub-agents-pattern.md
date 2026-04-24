@@ -20,4 +20,4 @@ What is the 'Split Role Sub-Agents' pattern?
 
 ---
 
-Split Role Sub-Agents provide multi-perspective analysis in parallel. Process: 1) Activate Plan Mode (thinking enabled by default in Opus 4.5), 2) Ask "What expert roles would analyze this?", 3) Select roles (e.g., Security Expert, Senior Dev, Code Reviewer), 4) Run parallel analysis from each perspective, 5) Consolidate reports into recommendations. Great for comprehensive code and UX reviews.
+Split Role Sub-Agents provide multi-perspective analysis in parallel. Process: 1) Activate Plan Mode (thinking enabled by default in Opus 4.7), 2) Ask "What expert roles would analyze this?", 3) Select roles (e.g., Security Expert, Senior Dev, Code Reviewer), 4) Run parallel analysis from each perspective, 5) Consolidate reports into recommendations. Great for comprehensive code and UX reviews.

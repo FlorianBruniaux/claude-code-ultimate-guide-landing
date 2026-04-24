@@ -22,3 +22,5 @@ What is Auto Plan Mode and how do you enable it?
 ---
 
 Auto Plan Mode makes Claude present a plan and wait for explicit user approval before executing ANY tool. Configure via `~/.claude/auto-plan-mode.txt` and launch with `claude --append-system-prompt "$(cat ~/.claude/auto-plan-mode.txt)"`. Results in 76% fewer tokens with better results because plans are validated before execution.
+
+**Note:** Don't confuse with **Auto Mode** (v2.1.114+, Max plan subscribers) — a completely different feature that auto-approves tool calls based on a permission classifier, with no planning step involved.
