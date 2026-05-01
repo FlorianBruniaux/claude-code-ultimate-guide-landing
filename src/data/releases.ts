@@ -16,6 +16,43 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.123',
+    date: 'Apr 29, 2026',
+    highlights: [
+      'Fixed OAuth authentication failing with 401 retry loop when <code>CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1</code> is set',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.122',
+    date: 'Apr 28, 2026',
+    highlights: [
+      '⭐ <code>ANTHROPIC_BEDROCK_SERVICE_TIER</code> env var to select Bedrock service tier (<code>default</code>/<code>flex</code>/<code>priority</code>) via <code>X-Amzn-Bedrock-Service-Tier</code> header',
+      'Pasting a PR URL into <code>/resume</code> search finds the session that created it (GitHub, GitLab, Bitbucket, GitHub Enterprise)',
+      'Fixes: Vertex AI/Bedrock <code>output_config</code> errors, image resize corrected (2576→2000px max), remote control idle redraw flood, <code>!exit</code>/<code>!quit</code> bash mode crash, <code>ToolSearch</code> missing late-connecting MCP tools',
+    ],
+  },
+  {
+    version: 'v2.1.121',
+    date: 'Apr 27, 2026',
+    highlights: [
+      '⭐ <code>alwaysLoad</code> MCP server config option — tools skip tool-search deferral and are always available',
+      '⭐ <code>claude plugin prune</code> removes orphaned auto-installed plugin deps; <code>PostToolUse</code> hooks can now replace output for all tools (previously MCP-only)',
+      'Type-to-filter search in <code>/skills</code>; MCP servers auto-retry 3x on startup; <code>--dangerously-skip-permissions</code> skips <code>.claude/</code> dirs',
+      'Critical fixes: unbounded memory growth (multi-GB RSS) with images; <code>/usage</code> memory leak (~2GB); Bash tool unusable when start dir deleted; <code>--resume</code> crash on corrupted sessions',
+    ],
+  },
+  {
+    version: 'v2.1.120',
+    date: 'Apr 24, 2026',
+    highlights: [
+      '⭐ Windows: Git for Windows (Git Bash) no longer required — PowerShell used as shell tool when absent',
+      '⭐ <code>claude ultrareview [target]</code> subcommand for non-interactive CI/script use (<code>--json</code> for raw output)',
+      'Skills can reference effort level with <code>${CLAUDE_EFFORT}</code>; <code>AI_AGENT</code> env var for <code>gh</code> traffic attribution',
+      'Fixes: Esc during stdio MCP call closing server (regression 2.1.105), <code>/rewind</code> keyboard input after <code>--resume</code>, scrollback duplication, false-positive <code>rm</code> permission prompts in auto mode',
+    ],
+  },
+  {
     version: 'v2.1.119',
     date: 'Apr 24, 2026',
     highlights: [
@@ -24,7 +61,6 @@ export const releases: Release[] = [
       '<code>--print</code> honors agent <code>tools:</code>/<code>disallowedTools:</code> frontmatter; <code>--agent</code> honors <code>permissionMode</code>; PowerShell auto-approve; <code>PostToolUse</code> hooks include <code>duration_ms</code>',
       'Security: <code>blockedMarketplaces</code> enforces <code>hostPattern</code>/<code>pathPattern</code>; <code>prUrlTemplate</code> setting; 30+ bug fixes including CRLF paste, Glob/Grep on macOS, <code>/plan</code> mode fix, <code>TaskList</code> ordering, stale worktree reuse',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.118',

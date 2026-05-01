@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.121',
+    date: 'Apr 27, 2026',
+    description: 'New alwaysLoad MCP config option lets all tools from a server bypass tool-search deferral. claude plugin prune removes orphaned plugin dependencies. PostToolUse hooks can now replace output for all tools, not just MCP. Critical memory leak fixes: multi-GB RSS growth with images and a ~2GB /usage leak on large transcript histories.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.121',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.120',
+    date: 'Apr 24, 2026',
+    description: 'Windows no longer requires Git for Windows — PowerShell is used as the shell tool when Git Bash is absent. New claude ultrareview [target] subcommand runs /ultrareview non-interactively from CI or scripts. Skills can now reference the current effort level with ${CLAUDE_EFFORT}.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.120',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.119',
     date: 'Apr 24, 2026',
     description: '/config settings now persist to ~/.claude/settings.json with project/local/policy override precedence. --from-pr accepts GitLab MR, Bitbucket PR, and GitHub Enterprise URLs. --print mode honors agent tools: frontmatter; --agent honors permissionMode. Security fix: blockedMarketplaces now enforces hostPattern/pathPattern. 30+ bug fixes including CRLF paste, Glob/Grep on macOS, /plan mode, TaskList ordering, and stale worktree reuse.',
