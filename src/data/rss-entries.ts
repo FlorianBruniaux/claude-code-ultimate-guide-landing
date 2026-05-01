@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.126',
+    date: 'May 1, 2026',
+    description: 'The /model picker now lists models from your gateway\'s /v1/models endpoint when ANTHROPIC_BASE_URL points at a compatible gateway. New claude project purge command deletes all Claude Code state for a project (transcripts, tasks, history, config entry). Security fix for allowManagedDomainsOnly/allowManagedReadPathsOnly being ignored, plus 40+ bug fixes covering image paste crashes, Stream idle timeout after sleep, and CJK text rendering on Windows.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.126',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.121',
     date: 'Apr 27, 2026',
     description: 'New alwaysLoad MCP config option lets all tools from a server bypass tool-search deferral. claude plugin prune removes orphaned plugin dependencies. PostToolUse hooks can now replace output for all tools, not just MCP. Critical memory leak fixes: multi-GB RSS growth with images and a ~2GB /usage leak on large transcript histories.',

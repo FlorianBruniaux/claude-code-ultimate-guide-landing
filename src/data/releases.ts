@@ -16,12 +16,22 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.126',
+    date: 'May 1, 2026',
+    highlights: [
+      '⭐ <code>/model</code> picker lists models from your gateway\'s <code>/v1/models</code> endpoint when <code>ANTHROPIC_BASE_URL</code> points at a compatible gateway',
+      '⭐ <code>claude project purge [path]</code> — delete all Claude Code state for a project (transcripts, tasks, history, config entry); supports <code>--dry-run</code>, <code>-y</code>, <code>-i</code>, <code>--all</code>',
+      '<code>claude auth login</code> accepts pasted OAuth code when browser callback can\'t reach localhost (WSL2, SSH, containers); Windows PowerShell 7 now detected + primary shell',
+      'Security: Fixed <code>allowManagedDomainsOnly</code>/<code>allowManagedReadPathsOnly</code> ignored when higher-priority settings lacked sandbox block; 40+ bug fixes (image paste crash >2000px, Stream idle timeout after sleep, CJK text on Windows, OAuth timeout, Agent SDK hang)',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.123',
     date: 'Apr 29, 2026',
     highlights: [
       'Fixed OAuth authentication failing with 401 retry loop when <code>CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1</code> is set',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.122',
