@@ -36,11 +36,12 @@ Guide [3.37.1] — 2026-03-18:
 - Comprehension debt concept + regulatory exposure (EU AI Act, FDA 2025)
 - CLAUDE.md anti-patterns: ETH Zürich /init research, discoverability filter, anchoring risk
 
-Guide [3.38.8] — 2026-04-08:
-- 4 patterns from ECC audit: Hook Profiles (§7.6), Instinct-Based Learning (§9.24),
-  Iterative Retrieval for sub-agents, Heartbeat Dead-Man Switch (production-safety Rule 6)
-- 2 new templates: loop-monitor agent, session-save command
-- 225 templates total (+2)
+Guide [3.40.0] — 2026-05-03:
+- Routines (cloud automation) launch: schedule recurring agents without local session
+- Opus 4.7 + xhigh effort level documented (v2.1.117)
+- /usage replaces /cost + /stats (v2.1.118); --from-pr + --print flags (v2.1.119)
+- Threat DB updated to v2.15.0 (28 CVEs, 7 new entries)
+- 181 templates total (via CATALOG.md generator)
 
 Guide [3.37.6] — 2026-03-26:
 - 4 new commands from gstack audit: /investigate (Iron Law debugging), /qa (diff-aware
@@ -66,7 +67,7 @@ Guide [3.37.4] — 2026-03-23:
 - 3 integration gaps identified: thinking.display:omitted, model capabilities API,
   --bare vs -p CI/CD tradeoffs
 
-CC CLI releases: v2.1.81 released 2026-03-22 (latest tracked)
+CC CLI releases: v2.1.119 released 2026-04-24 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
@@ -79,8 +80,8 @@ Docs snapshot: 2026-03-11 → 2026-03-12`,
     id: 'examples',
     label: '/ccguide:examples',
     title: 'Templates',
-    description: '247 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
-    output: `# Claude Code Ultimate Guide — Templates (247)
+    description: '181 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
+    output: `# Claude Code Ultimate Guide — Templates (181)
 GitHub: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
 
 ## Agents (6)
@@ -133,7 +134,7 @@ ex: /ccguide:example security-gate`,
     label: '/ccguide:topics',
     title: 'Topics',
     description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
-    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.37.5)
+    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.40.0)
 
 ┌────────────┬─────────┬───────────────────────────────────────────────┐
 │ Category   │ Entries │ Examples                                       │
@@ -172,7 +173,7 @@ Usage:
     title: 'Releases',
     description: 'Latest Claude Code CLI release notes, tracked and condensed. Pass a version for a specific entry.',
     output: `# Claude Code Releases
-Latest: v2.1.81 (updated: 2026-03-22)
+Latest: v2.1.119 (updated: 2026-04-24)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
@@ -201,6 +202,7 @@ v2.1.78 — 2026-03-18
 
 v2.1.77 — 2026-03-17
 
+- Opus 4.7 + xhigh effort level (maximum reasoning budget) added
 - Opus 4.6 default max output raised to 64k tokens; upper bound for
   Opus 4.6 and Sonnet 4.6 raised to 128k tokens
 - allowRead sandbox setting to re-allow reads within denyRead regions
@@ -224,7 +226,7 @@ v2.1.76 — 2026-03-14
 
 v2.1.75 — 2026-03-13
 
-- 1M context for Opus 4.6 now default for Max, Team, Enterprise
+- 1M context for Opus 4.7 and Opus 4.6 now default for Max, Team, Enterprise
   (previously required extra usage)
 - Session name display on prompt bar when using /rename
 - Fixed token estimation over-counting for thinking/tool_use blocks
@@ -325,7 +327,7 @@ cp -r .claude/commands/ccguide ~/.claude/commands/ccguide
 ├──────────────────────────┼──────────────────────────────────────────┤
 │ /ccguide:search <query>  │ Search 893 entries with scores + links   │
 │ /ccguide:digest <period> │ Guide + CC CLI changes (day/week/month)  │
-│ /ccguide:examples        │ List all 247 templates by category       │
+│ /ccguide:examples        │ List all 181 templates by category       │
 │ /ccguide:example <name>  │ Fetch a template (agent/hook/skill...)   │
 │ /ccguide:cheatsheet      │ Full cheatsheet or filtered by section   │
 │ /ccguide:release         │ Latest Claude Code CLI release notes     │

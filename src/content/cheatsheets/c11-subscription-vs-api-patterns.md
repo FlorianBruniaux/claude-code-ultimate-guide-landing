@@ -50,7 +50,9 @@ This pattern is automated via `/model opusplan`.
 ## Consumption monitoring
 
 ```bash
-/cost              # Cost and context of the current session
+/usage             # Cost, token counts + per-model breakdown (v2.1.118)
+/cost              # *(alias for /usage since v2.1.118)*
+/stats             # *(alias for /usage since v2.1.118)*
 /status            # Model + context + summarized cost
 
 # Community tool for cross-session history
@@ -61,6 +63,10 @@ ccusage --model-breakdown  # By model
 ```
 
 Anthropic does not provide real-time metrics in the interface. `ccusage` fills this gap.
+
+**Default effort = high on Pro and Max plans (v2.1.117):** Claude now runs at `high` effort by default on paid subscriptions, which means more thorough reasoning per request. This can increase token consumption compared to earlier versions. On CI pipelines or budget-sensitive workflows, set `CLAUDE_EFFORT=low` explicitly.
+
+**Bedrock users (v2.1.122):** set `ANTHROPIC_BEDROCK_SERVICE_TIER` in your environment or `env` block in `settings.json` to control service tier routing when using AWS Bedrock as the API backend.
 
 ## When API wins
 

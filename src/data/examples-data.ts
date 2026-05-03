@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for indexed templates (219 of 247 total)
- * Last synced: 2026-04-22
+ * Source of truth for indexed templates (181 total per CATALOG.md)
+ * Last synced: 2026-05-03
  * Note: remaining gap = support files within skill collections (yamls, install scripts, reference material)
  */
 

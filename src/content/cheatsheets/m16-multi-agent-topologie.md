@@ -55,7 +55,9 @@ Applicability condition: modules must have zero shared state. If agents constant
 
 ## Isolation and permissions per agent
 
-Each agent has its own context window (1M tokens with Opus 4.6) and can receive a distinct tool whitelist. Limiting an agent to `Read`, `Glob`, `Grep` tools prevents any accidental modification during the analysis phase.
+Each agent has its own context window (1M tokens with Opus 4.6 or 4.7) and can receive a distinct tool whitelist. Limiting an agent to `Read`, `Glob`, `Grep` tools prevents any accidental modification during the analysis phase.
+
+**Opus 4.7 (`claude-opus-4-7`)** is available for orchestrator agents requiring the deepest reasoning. The 1M context utilization bug (where the window was not fully used) was fixed in v2.1.117, making Opus 4.7 reliable for large-codebase orchestrations.
 
 | Agent | Allowed tools |
 |-------|--------------|
@@ -79,7 +81,7 @@ claude
 }
 ```
 
-Prerequisites: Claude Code v2.1.32+, Opus 4.6 model (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
+Prerequisites: Claude Code v2.1.32+, Opus 4.6 or 4.7 model (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
 
 ## The >5 agents rule
 

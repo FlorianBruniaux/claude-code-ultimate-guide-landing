@@ -57,6 +57,13 @@ order: 6
 | `spinnerVerbs` | Words in the loading spinner |
 | `spinnerTipsOverride` | Tips displayed during processing |
 | `enableAllProjectMcpServers` | Enables all project MCP servers |
+| `mcpServers.<name>.alwaysLoad` | Load this MCP server automatically every session (v2.1.121) |
+| `blockedMarketplaces.hostPattern` | Block MCP marketplace by host pattern (v2.1.119) |
+| `blockedMarketplaces.pathPattern` | Block MCP marketplace by path pattern (v2.1.119) |
+| `prUrlTemplate` | Custom PR URL template, e.g. for GitHub Enterprise (v2.1.122) |
+| `sandbox.network.deniedDomains` | Domains blocked from sandbox network access (v2.1.116) |
+
+**Bedrock users:** set `ANTHROPIC_BEDROCK_SERVICE_TIER` env var to control service tier when routing through AWS Bedrock (v2.1.122).
 
 ## Spinner customization
 

@@ -85,6 +85,19 @@ alias wm="cd ../myproject"   # Main worktree
 
 Pattern used by the Claude Code team internally to navigate instantly between active worktrees.
 
+## EnterWorktree hook: `path` parameter
+
+The `EnterWorktree` hook fires when Claude Code switches into a worktree. Since approximately v2.1.118, the hook receives a `path` field on stdin identifying the target worktree directory. Use this to run worktree-specific setup (install dependencies, load a branch-scoped CLAUDE.md).
+
+```bash
+# .claude/hooks/enter-worktree.sh
+INPUT=$(cat)
+WORKTREE_PATH=$(echo "$INPUT" | jq -r '.path')
+echo "Entering worktree: $WORKTREE_PATH"
+# e.g. ln -sf ../main/node_modules "$WORKTREE_PATH/node_modules"
+exit 0
+```
+
 ## Cleanup after merge
 
 After merging the branch, remove the worktree to free up space. `git worktree prune` cleans references to worktrees that were manually deleted (folder removed without going through `git worktree remove`).

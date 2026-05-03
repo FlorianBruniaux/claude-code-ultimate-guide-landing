@@ -70,6 +70,10 @@ order: 4
 
 `permissions.deny` has a documented limit: background indexing can expose file content via system callbacks before permission checks apply (GitHub #4160). For guaranteed secret protection, store these files outside the project directory.
 
+## Native file search: bfs and ugrep (v2.1.117)
+
+On macOS and Linux, Claude Code now uses native `bfs` (Breadth-First Search) and `ugrep` binaries instead of the Glob and Grep tools for file discovery and content search. This delivers approximately 40% faster file operations with no configuration required. The glob pattern syntax in `settings.json` remains unchanged.
+
 ## Where to define permissions
 
 ```

@@ -76,13 +76,48 @@ Synchronous hooks (default): Claude waits for the script to finish. Suited for v
 ## stdin data flow
 
 ```bash
-# Example JSON received on stdin (PostToolUse)
+# Example JSON received on stdin (PostToolUse, v2.1.119+)
 {
   "tool_name": "Edit",
   "tool_input": { "file_path": "src/auth.ts" },
   "tool_response": { "success": true },
-  "hook_event_name": "PostToolUse"
+  "hook_event_name": "PostToolUse",
+  "duration_ms": 142
 }
 ```
 
+`duration_ms` (v2.1.119): the time the tool call took in milliseconds, available in the PostToolUse input. Useful for performance monitoring hooks.
+
 The `Stop` event also includes a `last_assistant_message` field since v2.1.47, giving direct access to Claude's last response without parsing transcripts.
+
+## PostToolUse output replacement (v2.1.121)
+
+PostToolUse hooks can now **replace the tool's output** for any tool, not just Bash. Return a JSON object with `"output"` key from your hook stdout to override what Claude sees as the tool result.
+
+```bash
+# Hook stdout replaces the tool response Claude receives
+echo '{"output": "sanitized content — secrets redacted"}'
+exit 0
+```
+
+This enables output filtering, normalization, or secret redaction before Claude processes any tool result.
+
+## MCP tool hooks (v2.1.118)
+
+Hooks can now invoke MCP tools directly using `type: "mcp_tool"` instead of `type: "command"`. This allows hook chains that call external MCP servers without a shell wrapper.
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Edit",
+      "hooks": [{
+        "type": "mcp_tool",
+        "server": "github",
+        "tool": "create_review_comment",
+        "input": { "body": "Auto-review triggered" }
+      }]
+    }]
+  }
+}
+```

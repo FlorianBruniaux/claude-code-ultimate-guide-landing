@@ -83,3 +83,24 @@ project convention compliance, and introduced technical debt.
 ```
 
 The keyword `PROACTIVELY` in the description encourages Claude to invoke the agent without waiting for an explicit request.
+
+## Non-interactive agent invocation (v2.1.119)
+
+Two improvements for headless pipelines:
+
+**`--print` honors agent frontmatter:** when using `-p` / `--print` with an agent, the agent's `tools` whitelist and `permissionMode` are respected — not bypassed. This means CI pipelines get the same safety constraints as interactive sessions.
+
+**`--agent` honors `permissionMode`:** the `permissionMode` field in the agent frontmatter now applies when invoking via `--agent` flag:
+
+```yaml
+---
+name: security-scanner
+permissionMode: readonly
+tools: Read, Grep, Glob
+---
+```
+
+```bash
+# permissionMode: readonly applies even in CI
+claude --agent security-scanner -p "Scan src/ for OWASP issues"
+```

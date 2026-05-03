@@ -117,8 +117,8 @@ export interface SecurityData {
 
 export const SECURITY_DATA = {
     meta: {
-        version: "2.6.0",
-        updated: "2026-03-09",
+        version: "2.15.0",
+        updated: "2026-04-24",
         sources_count: 46
     },
     stats: {
@@ -127,7 +127,7 @@ export const SECURITY_DATA = {
         critical_risk: 534,
         critical_pct: 13.4,
         malicious_payloads: 76,
-        cves_tracked: 15,
+        cves_tracked: 28,
         malicious_skills: 655,
         exposed_servers: 17500,
         hardcoded_secrets_pct: 10.9,
@@ -265,7 +265,14 @@ export const SECURITY_DATA = {
         { id: "CVE-2026-3484", component: "nmap-mcp-server (PhialsBasement)", severity: "medium", cvss: 6.5, description: "Command injection in Nmap CLI Command Handler — child_process.exec in src/index.ts processes special elements without sanitization; remotely exploitable with no authentication", source: "NVD / PT Security (2026-03-04)", fixed_in: "patch commit 30a6b9e1c7fa6146f51e28d6ab83a2568d9a3488", mitigation: "Apply patch commit 30a6b9e; replace child_process.exec with execFile()" },
         { id: "CVE-2025-35028", component: "HexStrike AI MCP Server (0x4m4)", severity: "critical", cvss: 9.1, description: "Command injection via semicolon-prefixed argument — EnhancedCommandExecutor fails to sanitize args; attacker provides ; prefix to API endpoint, executing arbitrary OS commands typically as root; no auth required", source: "Check Point Advisories / NVD (2025-11-30)", fixed_in: "no fix confirmed", mitigation: "Sanitize all command-line arguments; replace exec() with execFile(); do not expose to untrusted networks" },
         { id: "CVE-2025-15061", component: "Framelink Figma MCP Server (figma-developer-mcp)", severity: "critical", cvss: 9.8, description: "Command injection RCE via fetchWithRetry method — user-supplied input passed to system calls without sanitization of shell metacharacters; no authentication required", source: "ZDI-25-1197 / SentinelOne (NVD published 2026-01-23)", fixed_in: "latest patched version", mitigation: "Update Framelink Figma MCP Server to latest version; restrict network access to trusted sources" },
-        { id: "CVE-2026-0757", component: "MCP Manager for Claude Desktop", severity: "high", description: "Command injection sandbox escape — execute-command fails to sanitize user-supplied strings from MCP config objects before passing to system calls; attacker crafts malicious config to execute arbitrary commands outside sandbox", source: "NVD / ZDI-CAN-27810 (2026-01-22)", fixed_in: "unknown — check upstream", mitigation: "Restrict MCP Manager to trusted configurations only; sanitize all MCP config object fields" }
+        { id: "CVE-2026-0757", component: "MCP Manager for Claude Desktop", severity: "high", description: "Command injection sandbox escape — execute-command fails to sanitize user-supplied strings from MCP config objects before passing to system calls; attacker crafts malicious config to execute arbitrary commands outside sandbox", source: "NVD / ZDI-CAN-27810 (2026-01-22)", fixed_in: "unknown — check upstream", mitigation: "Restrict MCP Manager to trusted configurations only; sanitize all MCP config object fields" },
+        { id: "CVE-2026-30623", component: "LiteLLM", severity: "high", cvss: 8.1, description: "Prompt injection via tool response manipulation — attacker controls tool response content to inject instructions that alter LLM behavior in downstream requests", source: "NVD (2026-04)", fixed_in: "check upstream", mitigation: "Validate and sanitize all tool response content before passing to LLM; treat tool outputs as untrusted" },
+        { id: "CVE-2026-40933", component: "Flowise", severity: "high", cvss: 7.5, description: "Stored XSS in flow configuration editor — attacker with access to flow editing can inject persistent JavaScript payloads executed in other users' browsers", source: "NVD (2026-04)", fixed_in: "check upstream", mitigation: "Update Flowise to latest; restrict flow editor access to trusted users; apply strict CSP" },
+        { id: "CVE-2026-33224", component: "Bisheng", severity: "critical", cvss: 8.8, description: "RCE via Python code execution in document processor — unsanitized user-supplied content passed to Python eval/exec in document processing pipeline", source: "NVD (2026-04)", fixed_in: "check upstream", mitigation: "Sandbox Python execution; validate and sanitize all document inputs; restrict code execution contexts" },
+        { id: "CVE-2025-69256", component: "Serverless Framework", severity: "high", cvss: 7.2, description: "Command injection in plugin install — user-supplied plugin name passed to shell without sanitization during plugin installation", source: "NVD (2026-04)", fixed_in: "check upstream", mitigation: "Validate plugin names against allowlist; replace shell string execution with execFile(); restrict plugin install to trusted sources" },
+        { id: "CVE-2026-6494", component: "Red Hat AAP MCP Server", severity: "high", cvss: 7.8, description: "Privilege escalation via MCP tool permissions — improper permission validation in MCP tool handler allows attacker to escalate privileges within the AAP environment", source: "Red Hat Security Advisory (2026-04)", fixed_in: "check upstream", mitigation: "Update Red Hat AAP MCP Server; enforce strict permission boundaries; audit MCP tool permission grants" },
+        { id: "CVE-2026-33032", component: "nginx-ui MCPwn", severity: "critical", cvss: 9.8, description: "Unauthenticated RCE via nginx-ui integration — no authentication required; actively exploited in the wild; allows full remote code execution on the host system", source: "NVD / CISA KEV (2026-04)", fixed_in: "check upstream — actively exploited, patch immediately", mitigation: "Patch immediately; block external access; rotate all credentials on affected systems" },
+        { id: "ADVISORY-MCP-STDIO-2026-001", component: "MCP stdio transport (multiple implementations)", severity: "medium", description: "Path traversal via relative paths in stdio transport — MCP servers using stdio transport fail to normalize relative paths, enabling directory traversal to read files outside the intended scope", source: "MCP Security Advisory (2026-04)", fixed_in: "implementation-dependent", mitigation: "Normalize all file paths before processing; use absolute paths; validate against allowlisted directories" }
     ],
     campaigns: [
         {
@@ -476,6 +483,20 @@ export const SECURITY_DATA = {
             description: "Attacker writes malicious content to publicly exposed AI agent log files via unauthenticated WebSocket requests; the agent then reads its own logs for troubleshooting, and the injected content acts as indirect prompt injection, triggering unintended actions",
             examples: ["OpenClaw: WebSocket requests to TCP port 18789 inject adversarial instructions into log files; agent reading logs during troubleshooting executes attacker instructions (patched v2026.2.13)"],
             mitigation: "Update OpenClaw to >= v2026.2.13; require authentication for all WebSocket endpoints including log-write; treat log files as untrusted input when parsed by the AI agent; sandbox log file read context"
+        },
+        {
+            id: "T026",
+            name: "Claudy Day Session Hijack",
+            description: "Session token theft via timing attacks during Claude Day events — attacker exploits predictable session token patterns or race conditions that arise during high-traffic Claude Day periods to steal active session tokens",
+            examples: ["Timing-based session token enumeration during peak Claude Day traffic windows", "Race condition exploitation in session initialization when server load is high"],
+            mitigation: "Use cryptographically random session tokens (128+ bits entropy); implement rate limiting; monitor for anomalous session creation patterns; use short-lived tokens with rotation"
+        },
+        {
+            id: "T027",
+            name: "Memory Poisoning (Cross-Session)",
+            description: "Persistent cross-session manipulation via memory file injection — attacker injects malicious instructions into auto-memory files (MEMORY.md, .claude/memories/) that persist across sessions, causing the agent to carry out attacker instructions in future unrelated sessions",
+            examples: ["Malicious skill writes to ~/.claude/memories/ during installation, injecting persistent behavioral instructions", "Compromised MCP server appends instructions to MEMORY.md that activate on next session start"],
+            mitigation: "Treat auto-memory files as security-sensitive config; review memory file contents periodically; restrict which tools can write to memory files; use hooks to monitor memory file modifications"
         }
     ],
     scanning_tools: [

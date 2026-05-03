@@ -81,3 +81,24 @@ The narrower Claude's permissions, the more limited the impact of a successful i
 | Email summary | Read only |
 | File actions | Edit + Read (no Bash) |
 | System commands | Bash with strict whitelist |
+
+## Blocking untrusted MCP marketplaces (v2.1.119)
+
+Add `blockedMarketplaces` to `settings.json` to prevent installing MCP servers from untrusted sources:
+
+```json
+{
+  "blockedMarketplaces": [
+    { "hostPattern": "*.untrusted-registry.io" },
+    { "pathPattern": "/mcp/community/*" }
+  ]
+}
+```
+
+This blocks any `npx`-based MCP installation matching the pattern. Use it to enforce an approved-server-only policy across the team.
+
+## `--dangerously-skip-permissions` now skips `.claude/` (v2.1.121)
+
+As of v2.1.121, this flag also bypasses validation of the `.claude/` directory contents (agents, hooks, commands). In threat-modeled environments, audit `.claude/` manually before using the flag, since a malicious hook could run unchecked.
+
+The Threat DB (v2.15.0) now covers 28+ CVEs and 655 malicious skill patterns. Keep it updated to catch injections via compromised MCP configurations.

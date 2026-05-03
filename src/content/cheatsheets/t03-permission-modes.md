@@ -16,6 +16,9 @@ order: 3
 | **Auto-accept edits** | `Shift+Tab` | Code reviews |
 | **Auto-accept all** | `Shift+Tab x2` | Known repetitive tasks |
 | **Full bypass** | `--dangerously-skip-permissions` | Headless CI/CD |
+| **Auto (Max users)** | `/less-permission-prompts` | Reduce interruptions on trusted projects (v2.1.111) |
+
+**Note (v2.1.121):** `--dangerously-skip-permissions` now also skips validation of the `.claude/` directory (agents, commands, hooks). In hardened environments, verify `.claude/` contents before granting this flag.
 
 ## Tool Whitelist
 

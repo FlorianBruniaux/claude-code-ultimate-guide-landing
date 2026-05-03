@@ -86,6 +86,20 @@ The `issue_comment` trigger allows any team member to trigger a review on demand
 
 The condition `github.event.issue.pull_request != null` filters ordinary issue comments to activate the agent only on PRs.
 
+## `claude ultrareview` in CI (v2.1.120)
+
+`claude ultrareview` runs a deep multi-pass review of a target file or the current PR. The `--json` flag makes it parseable downstream.
+
+```yaml
+- name: Ultra review changed files
+  run: |
+    claude ultrareview ${{ github.event.pull_request.head.sha }} \
+      --json > ultrareview.json
+    cat ultrareview.json | jq '.issues[] | select(.severity == "critical")'
+```
+
+Combine with the anti-hallucination pattern: `ultrareview` verifies each finding with `Read` or `Grep` before reporting, so false positives are reduced compared to a simple prompt-based review.
+
 ## Handling failures
 
 Provide a fallback job that posts a comment if the Claude job fails. Without a fallback, a PR can remain silent for hours if the agent crashes, without the team knowing.

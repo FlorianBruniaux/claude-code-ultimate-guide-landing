@@ -67,7 +67,23 @@ What this command does in one sentence.
 Description of the expected result.
 ```
 
-## Useful commands to create
+## Native commands (built-in since recent versions)
+
+| Command | Available since | Purpose |
+|---------|----------------|---------|
+| `/usage` | v2.1.118 | Token usage + per-model cost breakdown |
+| `/cost` | v2.1.118 | *(alias for `/usage`)* |
+| `/stats` | v2.1.118 | *(alias for `/usage`)* |
+| `/recap` | v2.1.108 | Session summary |
+| `/undo` | v2.1.108 | Revert last action |
+| `/tui` | recent | Toggle terminal UI mode |
+| `/focus` | recent | Set focus area for current session |
+| `/ultrareview` | v2.1.120 | Deep multi-pass review of a file or PR |
+| `/less-permission-prompts` | v2.1.111 | Reduce permission prompts (Max users) |
+| `/effort` | v2.1.111 | Set thinking effort level interactively |
+| `/proactive` | recent | Toggle proactive suggestions |
+
+## Useful custom commands to create
 
 | Command | Usage |
 |---------|-------|

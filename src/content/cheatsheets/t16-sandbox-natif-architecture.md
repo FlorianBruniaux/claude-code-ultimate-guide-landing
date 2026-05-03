@@ -60,11 +60,18 @@ Configuration: `deny` mode (block everything except allowlist) or `allow` mode (
   "sandbox": {
     "network": {
       "policy": "deny",
-      "allowedDomains": ["api.anthropic.com", "*.npmjs.org", "github.com"]
+      "allowedDomains": ["api.anthropic.com", "*.npmjs.org", "github.com"],
+      "deniedDomains": ["evil.com", "*.untrusted.io"]
     }
   }
 }
 ```
+
+`deniedDomains` (v2.1.116) is useful in `allow` mode to block specific domains without locking down all traffic. Both `allowedDomains` and `deniedDomains` can be combined.
+
+## Native binary spawning per platform (v2.1.114)
+
+The sandbox now launches real OS-native processes rather than wrapping commands in container runtimes. On macOS, this means actual Seatbelt-sandboxed processes; on Linux, real bubblewrap namespaces. The overhead is at the OS primitive level only, not container startup. This matters for short-lived commands (lint, format) where cold-start cost previously dominated.
 
 ## Two operating modes
 

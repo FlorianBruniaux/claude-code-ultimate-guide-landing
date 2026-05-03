@@ -35,7 +35,8 @@ MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/setti
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"],
-      "env": {}
+      "env": {},
+      "alwaysLoad": true
     },
     "github": {
       "command": "npx",
@@ -76,3 +77,5 @@ Stable extension since January 2026, co-developed by Anthropic and OpenAI. It al
 An MCP server does not access the conversation history — it only sees the parameters passed at call time. Each call is independent unless the server itself implements a cache. It also cannot modify Claude's system prompt or bypass the permissions system.
 
 **Token cost**: each loaded server adds approximately 2K tokens of overhead per session (tool definitions). Load only what is necessary for the current project.
+
+**`alwaysLoad: true` (v2.1.121)**: add this key to a server's config to make it load automatically at every session start, without needing `/mcp enable`. Useful for servers you use in every project (Context7, GitHub). Servers without this key remain on-demand.

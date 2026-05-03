@@ -67,6 +67,12 @@ Parallel multi-agent, cloud
   → Fly.io Sprites, E2B, Vercel Sandboxes
 ```
 
+## Recent native sandbox improvements (v2.1.114–v2.1.116)
+
+**Native binary spawning (v2.1.114):** the sandbox now spawns real OS processes (Seatbelt on macOS, bubblewrap on Linux) instead of wrapping them in container layers. Startup overhead for short commands (lint, format) is reduced significantly.
+
+**`deniedDomains` (v2.1.116):** new network config key for `allow` mode that lets you block specific domains without a full deny-all policy. Useful when you want outbound access with targeted exceptions.
+
 ## Known limitations
 
 **Native sandbox**: kernel shared with host (exposure to kernel exploits), domain fronting risk via CDNs, Unix sockets potentially dangerous if misconfigured.

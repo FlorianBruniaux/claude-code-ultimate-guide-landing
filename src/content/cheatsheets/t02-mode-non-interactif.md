@@ -57,6 +57,31 @@ In an isolated container, `--dangerously-skip-permissions` suppresses all confir
 claude -p "Run the tests and fix failures" \
   --dangerously-skip-permissions \
   --output-format json
+
+# Set AI_AGENT=1 to signal headless execution context (v2.1.120)
+AI_AGENT=1 claude -p "Run the tests and fix failures" \
+  --dangerously-skip-permissions
+```
+
+## `--print` honors agent frontmatter (v2.1.119)
+
+When calling a custom agent in non-interactive mode, `--print` (or `-p`) now respects the `permissionMode` and tool whitelist defined in the agent's YAML frontmatter. The agent constraints apply even in headless pipelines.
+
+```bash
+# The content-analyzer agent's restricted tools apply automatically
+claude --agent content-analyzer -p "Analyze this file: src/main.ts"
+```
+
+## `claude ultrareview` (v2.1.120)
+
+New subcommand that runs a deep multi-pass review of a target file or PR. Designed for CI integration.
+
+```bash
+# Review a specific file
+claude ultrareview src/auth.ts
+
+# Output as JSON for downstream parsing
+claude ultrareview src/auth.ts --json > review.json
 ```
 
 ## Common patterns

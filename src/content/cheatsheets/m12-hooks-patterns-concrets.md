@@ -92,6 +92,44 @@ exit 0
 
 Rather than multiplying entries in `settings.json`, a `dispatch.sh` script routes to specialized handlers based on the file or tool. Result: a single `Edit|Write|Bash` matcher in the config, with separately maintainable handlers in `.claude/hooks/handlers/`.
 
+## Output replacement: redact secrets before Claude sees them (v2.1.121)
+
+PostToolUse now supports output replacement for ALL tools. If your hook prints a JSON with an `"output"` key, Claude receives that instead of the real tool result. Use this to strip secrets from file reads.
+
+```bash
+INPUT=$(cat)
+TOOL=$(echo "$INPUT" | jq -r '.tool_name')
+OUTPUT=$(echo "$INPUT" | jq -r '.tool_response.content // empty')
+
+# Redact .env values before Claude sees them
+if [[ "$TOOL" == "Read" ]]; then
+  CLEAN=$(echo "$OUTPUT" | sed 's/\(API_KEY=\).*/\1[REDACTED]/')
+  echo "{\"output\": $(echo "$CLEAN" | jq -Rs .)}"
+fi
+exit 0
+```
+
+## Invoking an MCP tool from a hook (v2.1.118)
+
+Hooks can use `type: "mcp_tool"` to call any connected MCP server without a shell script. Example: post a Slack notification via an MCP Slack server whenever a file is edited.
+
+```json
+{
+  "PostToolUse": [{
+    "matcher": "Write|Edit",
+    "hooks": [{
+      "type": "mcp_tool",
+      "server": "slack",
+      "tool": "post_message",
+      "input": {
+        "channel": "#dev-alerts",
+        "text": "Claude edited a file"
+      }
+    }]
+  }]
+}
+```
+
 ## Installation checklist
 
 ```bash

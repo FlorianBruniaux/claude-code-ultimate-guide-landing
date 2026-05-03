@@ -32,7 +32,9 @@ order: 102
 ```bash
 /compact        # Summarize + free ~40% of context
 /clear          # Full reset (loses history)
-/cost           # View tokens used / remaining
+/usage          # View tokens used / remaining + per-model breakdown
+/cost           # *(alias for /usage since v2.1.118)*
+/stats          # *(alias for /usage since v2.1.118)*
 /status         # Detailed context state
 ```
 

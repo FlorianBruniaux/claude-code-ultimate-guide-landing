@@ -12,7 +12,7 @@ const jsonLd = [
     "author": {"@type": "Person", "name": "Florian BRUNIAUX"},
     "publisher": {"@type": "Organization", "name": "Claude Code Ultimate Guide"},
     "datePublished": "2026-01-17",
-    "dateModified": "2026-03-09",
+    "dateModified": "2026-05-03",
     "url": "https://cc.bruniaux.com/cheatsheet/",
     "mainEntityOfPage": "https://cc.bruniaux.com/cheatsheet/",
     "inLanguage": "en"
@@ -31,8 +31,8 @@ const jsonLd = [
       <p class="tagline">1 printable page: daily essentials for maximum productivity</p>
       <div class="meta-info">
         <span>By <a href="https://methode-aristote.fr" target="_blank">Florian BRUNIAUX</a></span>
-        <span>Version 3.39.1</span>
-        <span>April 2026</span>
+        <span>Version 3.40.0</span>
+        <span>May 2026</span>
       </div>
       <div class="cta-buttons" style="margin-top: var(--space-lg);">
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cheatsheet.md" target="_blank" class="btn btn-secondary">View .md</a>
@@ -74,7 +74,9 @@ const jsonLd = [
           <tr><td>/fast</td><td>Toggle fast mode (2.5x speed)</td></tr>
           <tr><td>btw [question]</td><td>Side question overlay — read-only ephemeral agent, no history pollution, no tools</td></tr>
           <tr><td>/loop [interval] [prompt]</td><td>Recurring scheduler — /loop 5m check the deploy (default 10m)</td></tr>
-          <tr><td>/stats</td><td>Usage graph, favorite model, streak</td></tr>
+          <tr><td>/usage</td><td>Usage graph, favorite model, streak (v2.1.118)</td></tr>
+          <tr><td>/stats</td><td>Usage graph, favorite model, streak <em>(alias for /usage)</em></td></tr>
+          <tr><td>/cost</td><td>Session cost summary <em>(alias for /usage)</em></td></tr>
           <tr><td>/rename [name]</td><td>Name or rename current session</td></tr>
           <tr><td>/copy</td><td>Interactive picker to copy a code block or full response</td></tr>
           <tr><td>/debug</td><td>Systematic troubleshooting</td></tr>
@@ -130,6 +132,13 @@ const jsonLd = [
           <tr><td><strong>/simplify</strong></td><td>v2.1.63</td><td>Architecture-level over-engineering detection + auto-fix</td></tr>
           <tr><td><strong>/batch</strong></td><td>v2.1.63</td><td>Spawns 5–30 agents in isolated worktrees, each opens a PR</td></tr>
           <tr><td><strong>/loop</strong></td><td>v2.1.71</td><td>Recurring scheduler: run any prompt or command on an interval (5m, 10m...) while you work</td></tr>
+          <tr><td><strong>/usage</strong></td><td>v2.1.118</td><td>Usage graph, cost breakdown, favorite model, streak (replaces /cost and /stats)</td></tr>
+          <tr><td><strong>/recap</strong></td><td>v2.1.x</td><td>Session recap — structured summary of what was done</td></tr>
+          <tr><td><strong>/undo</strong></td><td>v2.1.x</td><td>Undo last change (file-level undo)</td></tr>
+          <tr><td><strong>/tui</strong></td><td>v2.1.x</td><td>Terminal UI mode — structured interface for session navigation</td></tr>
+          <tr><td><strong>/focus</strong></td><td>v2.1.x</td><td>Restrict Claude to a specific file or directory scope</td></tr>
+          <tr><td><strong>/ultrareview</strong></td><td>v2.1.x</td><td>Deep review mode — comprehensive analysis across all dimensions</td></tr>
+          <tr><td><strong>Routines</strong></td><td>v2.1.x (Apr 14)</td><td>Cloud automation: schedule recurring agents to run without local session</td></tr>
         </table>
         <div class="tip"><strong>Pro tip</strong>: These aren't "secrets"--they're in the <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank">CHANGELOG</a>. Read it!</div>
       </div>
@@ -201,12 +210,13 @@ const jsonLd = [
           <tr><td>Shift+Tab x 2</td><td>Enter Plan Mode</td></tr>
           <tr><td>/model opusplan</td><td>Opus planning, Sonnet execution</td></tr>
         </table>
-        <h3>Thinking Mode (Opus 4.6)</h3>
+        <h3>Thinking Mode (Opus 4.7)</h3>
         <table>
-          <tr><td>Default</td><td>Thinking ON at max budget -- keywords are cosmetic only</td></tr>
+          <tr><td>Default</td><td>Thinking ON at high budget by default on Pro/Max (v2.1.117)</td></tr>
           <tr><td>Alt+T</td><td>Toggle thinking on/off (session)</td></tr>
           <tr><td>/config</td><td>Configure thinking (permanent)</td></tr>
-          <tr><td>effort</td><td>API only: low|medium|high|max</td></tr>
+          <tr><td>/effort</td><td>Set effort level: low | medium | high | xhigh (v2.1.76)</td></tr>
+          <tr><td>xhigh</td><td>Opus 4.7 only — maximum reasoning budget (new in v2.1.117)</td></tr>
         </table>
       </div>
 
@@ -267,6 +277,8 @@ VERIFY: Empty email shows error</code></pre>
           <tr><td>--allowedTools</td><td>Whitelist tools</td></tr>
           <tr><td>--debug</td><td>Debug output</td></tr>
           <tr><td>--mcp-debug</td><td>Debug MCP servers</td></tr>
+          <tr><td>--from-pr</td><td>Load context from PR (GitLab/Bitbucket/GHE, v2.1.119)</td></tr>
+          <tr><td>--print</td><td>Print output then exit (non-interactive, v2.1.119)</td></tr>
         </table>
       </div>
 

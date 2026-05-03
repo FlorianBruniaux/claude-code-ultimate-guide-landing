@@ -24,9 +24,10 @@ Above 200K input tokens, **all context tokens** are billed at the premium rate, 
 | Model | At 256K | At 1M |
 |-------|---------|-------|
 | Opus 4.6 | 93% | 76% |
+| Opus 4.7 | — | 1M context now properly utilized (v2.1.117 fix) |
 | Sonnet 4.5 | n/a | 18.5% |
 
-Opus 4.6 remains usable at 1M (76% precision), but degradation is measurable. Sonnet collapses and is not recommended beyond 200K for precise tasks.
+Opus 4.6 remains usable at 1M (76% precision), but degradation is measurable. Sonnet collapses and is not recommended beyond 200K for precise tasks. Opus 4.7 had a bug where 1M context was not being fully utilized — this was fixed in v2.1.117.
 
 ## Cost per Session (Approximate)
 

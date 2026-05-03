@@ -26,8 +26,11 @@ order: 1
 /clear          Clear context (reset)
 /compact        Compress history
 /model          Switch model
-/cost           View session costs
+/usage          View session costs and token breakdown (per model)
+/cost           *(alias for /usage since v2.1.118)*
 /status         Context status
+/recap          Summary of current session (v2.1.108)
+/undo           Undo the last action (v2.1.108)
 ```
 
 ## Permission Modes
@@ -70,6 +73,7 @@ claude --continue
 |---------|--------|
 | `/compact` | Summarize and free up space |
 | `/clear` | Full reset |
+| `/usage` | Token usage + cost per model |
 | `#file` | Add file to context |
 
 ## Custom Slash Commands

@@ -58,6 +58,8 @@ Even in bypass mode, it is possible to limit available tools. A review agent onl
 
 The whitelist is configured via `--allowedTools` in CLI or `allowed_tools` in the GitHub action.
 
+**Note (v2.1.117):** on macOS and Linux, `Glob` and `Grep` are now backed by native `bfs` and `ugrep` binaries, approximately 40% faster. The tool names in your allowlist stay the same — no config change needed.
+
 ## Secrets in CI
 
 API keys and tokens must never appear in the workflow YAML file. Use GitHub secrets (Settings → Secrets and variables → Actions) and inject them as environment variables.

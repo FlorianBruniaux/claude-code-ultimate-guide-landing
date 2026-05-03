@@ -74,6 +74,15 @@ Rules at a lower level **supplement** rather than replace higher levels.
 
 **settings.local.json** — Personal overrides that should not affect the team.
 
+## Persistent configuration via `/config` (v2.1.119)
+
+`/config` lets you view and change settings inside a session, with the option to persist them to `settings.json`. Changes made via `/config` follow the same override precedence: a project-level setting will override a global one, and a `settings.local.json` entry will override `settings.json`.
+
+```
+/config              # Open interactive config editor
+/config model        # Change default model (persists to settings.json)
+```
+
 ## Required .gitignore
 
 ```

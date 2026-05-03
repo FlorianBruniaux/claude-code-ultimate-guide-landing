@@ -95,3 +95,7 @@ None of the 4 tools is sufficient
 ```
 
 **Core principle**: Glob and Grep before opening files with Read. Task only when the scope is unknown.
+
+## Native file search on macOS/Linux (v2.1.117)
+
+Since v2.1.117, Claude Code uses `bfs` (Breadth-First Search) and `ugrep` as native replacements for Glob and Grep on macOS and Linux. These binaries provide approximately 40% faster file discovery with no configuration change. The decision logic above remains identical — the internal tool implementation is simply faster.

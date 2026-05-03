@@ -76,6 +76,10 @@ git diff --stat
 git commit -m "feat: short description"
 ```
 
+Use `/recap` (v2.1.108) to get a concise summary of what was done in the current session before closing. Useful for writing a commit message or noting key decisions in CLAUDE.md.
+
+If something went wrong in the last step, `/undo` (v2.1.108) reverts the last action Claude took, without needing to leave the session.
+
 If important decisions were made during the session (architecture choices, adopted conventions), note them in CLAUDE.md so the next session starts from the right context. Sessions do not transfer implicit decisions on their own.
 
 ## Effective Prompt Format
