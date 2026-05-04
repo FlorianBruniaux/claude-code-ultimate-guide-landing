@@ -28,7 +28,7 @@ export interface Whitepaper {
   slugEn: string
 }
 
-const V = 'v3.38.3'
+const V = 'v3.40.0'
 
 export const WHITEPAPERS: Whitepaper[] = [
   {
@@ -102,8 +102,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['architecture', 'internals', 'advanced'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: '04-architecture.fr.v3.34.1.43bc3cf7704d.pdf',
-    hashedFileEn: '04-architecture.en.v3.34.1.95396ef92178.pdf',
+    hashedFileFr: `04-architecture.fr.${V}.43bc3cf7704d.pdf`,
+    hashedFileEn: `04-architecture.en.${V}.95396ef92178.pdf`,
     slugFr: '04-architecture',
     slugEn: '04-architecture',
   },
@@ -132,8 +132,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['privacy', 'gdpr', 'compliance', 'data'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: '06-privacy.fr.v3.34.1.23249b76c352.pdf',
-    hashedFileEn: '06-privacy.en.v3.34.1.7377f5e4f946.pdf',
+    hashedFileFr: `06-privacy.fr.${V}.23249b76c352.pdf`,
+    hashedFileEn: `06-privacy.en.${V}.7377f5e4f946.pdf`,
     slugFr: '06-privacy',
     slugEn: '06-privacy',
   },
@@ -178,8 +178,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['learning', 'uval', 'pedagogy', 'ai-tutor'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: `09-apprendre-avec-ia.fr.${V}.7ff2bc4d6a05.pdf`,
-    hashedFileEn: `09-learning-with-ai.en.${V}.7e9db93d6c9d.pdf`,
+    hashedFileFr: '09-apprendre-avec-ia.fr.v3.38.3.7ff2bc4d6a05.pdf',
+    hashedFileEn: '09-learning-with-ai.en.v3.38.3.7e9db93d6c9d.pdf',
     slugFr: '09-apprendre-avec-ia',
     slugEn: '09-learning-with-ai',
   },
