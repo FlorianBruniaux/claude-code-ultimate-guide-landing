@@ -16,6 +16,17 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.128',
+    date: 'May 5, 2026',
+    highlights: [
+      '<code>EnterWorktree</code> now creates branch from local HEAD — unpushed commits no longer dropped; <code>--plugin-dir</code> accepts <code>.zip</code> plugin archives',
+      '<code>--channels</code> works with console (API key) auth; <code>/mcp</code> shows tool count per server and flags 0-tool servers',
+      'Parallel bash tool call fix: a failing read-only command no longer cancels sibling calls; sub-agent summaries now include prompt cache (~3x <code>cache_creation</code> reduction)',
+      '35+ bug fixes: 1M-context false "Prompt is too long", MCP stdio corrupted args with spaces, MCP images dropped on structured+content blocks, clipboard whitespace in code blocks',
+    ],
+    latest: true,
+  },
+  {
     version: 'v2.1.126',
     date: 'May 1, 2026',
     highlights: [
@@ -24,7 +35,6 @@ export const releases: Release[] = [
       '<code>claude auth login</code> accepts pasted OAuth code when browser callback can\'t reach localhost (WSL2, SSH, containers); Windows PowerShell 7 now detected + primary shell',
       'Security: Fixed <code>allowManagedDomainsOnly</code>/<code>allowManagedReadPathsOnly</code> ignored when higher-priority settings lacked sandbox block; 40+ bug fixes (image paste crash >2000px, Stream idle timeout after sleep, CJK text on Windows, OAuth timeout, Agent SDK hang)',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.123',
