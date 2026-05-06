@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.129',
+    date: 'May 6, 2026',
+    description: 'New --plugin-url flag lets you fetch a plugin .zip from any URL for the current session, and CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE enables background auto-upgrades with a restart prompt on Homebrew and WinGet. Ctrl+R history search is back to all-projects default (pre-2.1.124), the skillOverrides setting now works correctly, and gateway /v1/models discovery is now opt-in. 20+ bug fixes including the 1-hour prompt cache TTL downgrade, OAuth refresh race after sleep, and Bash(mkdir *) allow rules not being honored.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.129',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.126',
     date: 'May 1, 2026',
     description: 'The /model picker now lists models from your gateway\'s /v1/models endpoint when ANTHROPIC_BASE_URL points at a compatible gateway. New claude project purge command deletes all Claude Code state for a project (transcripts, tasks, history, config entry). Security fix for allowManagedDomainsOnly/allowManagedReadPathsOnly being ignored, plus 40+ bug fixes covering image paste crashes, Stream idle timeout after sleep, and CJK text rendering on Windows.',

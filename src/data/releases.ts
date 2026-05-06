@@ -16,6 +16,25 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.131',
+    date: 'May 6, 2026',
+    highlights: [
+      'Fixed VS Code extension failing to activate on Windows (hardcoded <code>createRequire</code> build path in bundled SDK)',
+      'Fixed Mantle endpoint authentication failing with missing <code>x-api-key</code> header',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.129',
+    date: 'May 6, 2026',
+    highlights: [
+      '<code>--plugin-url &lt;url&gt;</code> flag to fetch a plugin <code>.zip</code> archive from URL for the current session; <code>CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</code> for Homebrew/WinGet auto-upgrade with restart prompt',
+      'Ctrl+R history picker restored to all-projects default (pre-2.1.124 behavior) — press Ctrl+S to narrow to current project or session; <code>skillOverrides</code> setting now works',
+      'Gateway <code>/v1/models</code> discovery now opt-in via <code>CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1</code>; third-party deployments no longer see first-party spinner tips',
+      '20+ bug fixes: 1h prompt cache TTL downgrade, OAuth refresh race after sleep, <code>Bash(mkdir *)</code> allow rules, <code>/context</code> wasting ~1.6k tokens, <code>/clear</code> tab title reset, agent panel hidden regression, <code>Bash(touch *)</code> allow rules',
+    ],
+  },
+  {
     version: 'v2.1.128',
     date: 'May 5, 2026',
     highlights: [
@@ -24,7 +43,6 @@ export const releases: Release[] = [
       'Parallel bash tool call fix: a failing read-only command no longer cancels sibling calls; sub-agent summaries now include prompt cache (~3x <code>cache_creation</code> reduction)',
       '35+ bug fixes: 1M-context false "Prompt is too long", MCP stdio corrupted args with spaces, MCP images dropped on structured+content blocks, clipboard whitespace in code blocks',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.126',
