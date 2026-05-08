@@ -16,13 +16,34 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.133',
+    date: 'May 8, 2026',
+    highlights: [
+      '⭐ <code>worktree.baseRef</code> setting (<code>fresh</code> | <code>head</code>) — <code>fresh</code> (default) branches from <code>origin/&lt;default&gt;</code>; set <code>head</code> to keep local HEAD with unpushed commits. <strong>Note:</strong> reverts 2.1.128 behavior — set <code>worktree.baseRef: "head"</code> to restore it',
+      'Hooks receive active effort level via <code>effort.level</code> JSON field and <code>$CLAUDE_EFFORT</code> env var in Bash subcommands',
+      'Fixed subagents not discovering project/user/plugin skills via Skill tool',
+      'Fixed parallel sessions dead-ending at 401 after refresh-token race; <code>HTTP(S)_PROXY</code>/<code>NO_PROXY</code>/mTLS now respected for full MCP OAuth flow',
+    ],
+    breaking: ['<code>worktree.baseRef</code> defaults to <code>fresh</code> (branches from <code>origin/&lt;default&gt;</code>), reverting 2.1.128 — set <code>worktree.baseRef: "head"</code> to keep local HEAD'],
+    latest: true,
+  },
+  {
+    version: 'v2.1.132',
+    date: 'May 8, 2026',
+    highlights: [
+      '<code>CLAUDE_CODE_SESSION_ID</code> env var now passed to Bash tool subprocess environment (matches <code>session_id</code> in hook JSON input)',
+      '<code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code> to opt out of the fullscreen alternate-screen renderer and keep output in native scrollback',
+      'Fixed unbounded memory growth (10GB+ RSS) when a stdio MCP server writes non-protocol data to stdout',
+      '20+ terminal/TUI/MCP fixes: SIGINT graceful shutdown, <code>--resume</code> emoji crash, fullscreen blank after sleep, JetBrains scroll runaway, mouse wheel speed in Cursor/VS Code, pasting <code>/</code> swallow, statusline context token counts, Alt+T on macOS, MCP <code>tools/list</code> failure silent 0-tools',
+    ],
+  },
+  {
     version: 'v2.1.131',
     date: 'May 6, 2026',
     highlights: [
       'Fixed VS Code extension failing to activate on Windows (hardcoded <code>createRequire</code> build path in bundled SDK)',
       'Fixed Mantle endpoint authentication failing with missing <code>x-api-key</code> header',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.129',

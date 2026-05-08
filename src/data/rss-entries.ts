@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.133',
+    date: 'May 8, 2026',
+    description: 'New worktree.baseRef setting (fresh | head) lets you control whether EnterWorktree and agent-isolation worktrees branch from origin/<default> or local HEAD — note the default fresh reverts the 2.1.128 behavior. Hooks now receive the active effort level via effort.level JSON and $CLAUDE_EFFORT env var. Fixed subagents not discovering project/user/plugin skills, parallel sessions dead-ending at 401 after token refresh race, and MCP OAuth flow ignoring proxy settings.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.133',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.132',
+    date: 'May 8, 2026',
+    description: 'CLAUDE_CODE_SESSION_ID is now passed to Bash tool subprocess environments, matching the session_id in hook JSON. New CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1 opt-out for the fullscreen renderer. Fixed unbounded memory growth (10GB+ RSS) when a stdio MCP server writes non-protocol output. 20+ terminal and TUI fixes: SIGINT graceful shutdown, --resume emoji crash, fullscreen blank after sleep, JetBrains scroll runaway, mouse wheel speed in VS Code/Cursor, pasting / swallowing input, MCP silent 0-tool failures.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.132',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.129',
     date: 'May 6, 2026',
     description: 'New --plugin-url flag lets you fetch a plugin .zip from any URL for the current session, and CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE enables background auto-upgrades with a restart prompt on Homebrew and WinGet. Ctrl+R history search is back to all-projects default (pre-2.1.124), the skillOverrides setting now works correctly, and gateway /v1/models discovery is now opt-in. 20+ bug fixes including the 1-hour prompt cache TTL downgrade, OAuth refresh race after sleep, and Bash(mkdir *) allow rules not being honored.',
