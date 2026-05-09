@@ -37,7 +37,7 @@ export interface DecisionRow {
 
 export const ROLES_META = {
   count: 16,
-  updated: 'March 2026',
+  updated: 'May 2026',
   salaryMarket: 'US market · ±30%',
   sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md',
 } as const
@@ -64,7 +64,7 @@ export const ROLES: RoleEntry[] = [
     title: 'Context Engineer',
     status: 'Growing',
     mission: 'Design systems that give AI models the right information, at the right time, in the right format.',
-    skills: ['RAG & vector databases', 'Context window management', 'Knowledge base architecture'],
+    skills: ['RAG & vector databases', 'Prompt caching & token budget design', 'Knowledge base architecture', 'MCP context servers (retrieval, semantic indexing)'],
     entryPaths: ['Data engineer', 'Backend engineer', 'ML engineer'],
     salary: {
       entry: '$100K–$140K',
@@ -172,8 +172,8 @@ export const ROLES: RoleEntry[] = [
     id: 'harness-engineer',
     title: 'Harness Engineer',
     status: 'Emerging',
-    mission: 'Build the infrastructure that keeps AI agents under control — architectural constraints, context systems, and entropy management.',
-    skills: ['Architectural linters & static analysis', 'LLM orchestration & watchdogs', 'Entropy detection patterns'],
+    mission: 'Build the infrastructure that keeps AI agents productive — layered architecture enforcement, taste invariants, knowledge base design, and anti-entropy systems.',
+    skills: ['Custom linters with agent-readable error messages', 'Layered domain architecture enforcement', 'Anti-entropy agents & quality score tracking', 'AGENTS.md as TOC + docs/ knowledge base design'],
     entryPaths: ['Staff/principal engineer', 'Platform engineer', 'AI architect'],
     salary: null,
     guideAnchor: '10-harness-engineer',
