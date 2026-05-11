@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.136',
+    date: 'May 11, 2026',
+    description: 'New settings.autoMode.hard_deny enables unconditional auto mode classifier rules that block regardless of user intent. Fixed MCP servers silently disappearing after /clear in VS Code, JetBrains, and Agent SDK, and MCP OAuth concurrent refresh token loss (no more daily re-authentication for multi-server setups). 40+ UI and terminal fixes including plan mode write blocking, extended thinking 400 fix, and WSL2 image paste via PowerShell fallback.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.136',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.133',
     date: 'May 8, 2026',
     description: 'New worktree.baseRef setting (fresh | head) lets you control whether EnterWorktree and agent-isolation worktrees branch from origin/<default> or local HEAD — note the default fresh reverts the 2.1.128 behavior. Hooks now receive the active effort level via effort.level JSON and $CLAUDE_EFFORT env var. Fixed subagents not discovering project/user/plugin skills, parallel sessions dead-ending at 401 after token refresh race, and MCP OAuth flow ignoring proxy settings.',

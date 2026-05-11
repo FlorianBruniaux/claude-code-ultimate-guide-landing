@@ -16,6 +16,31 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.138',
+    date: 'May 11, 2026',
+    highlights: [
+      'Internal fixes',
+    ],
+    latest: true,
+  },
+  {
+    version: 'v2.1.137',
+    date: 'May 11, 2026',
+    highlights: [
+      '[VSCode] Fixed extension failing to activate on Windows',
+    ],
+  },
+  {
+    version: 'v2.1.136',
+    date: 'May 11, 2026',
+    highlights: [
+      '⭐ <code>settings.autoMode.hard_deny</code> — auto mode classifier rules that block unconditionally regardless of user intent or allow exceptions',
+      '<code>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</code> to re-enable session quality survey for enterprises capturing responses via OpenTelemetry',
+      'Fixed MCP servers disappearing after <code>/clear</code> in VS Code/JetBrains/Agent SDK; MCP OAuth concurrent refresh token race fixed (no more daily re-auth for multi-server users)',
+      '40+ UI/terminal fixes: plan mode write blocking, extended thinking redacted-block API 400 fix, <code>--resume</code> with underscores in project path, WSL2 image paste via PowerShell fallback',
+    ],
+  },
+  {
     version: 'v2.1.133',
     date: 'May 8, 2026',
     highlights: [
@@ -25,7 +50,6 @@ export const releases: Release[] = [
       'Fixed parallel sessions dead-ending at 401 after refresh-token race; <code>HTTP(S)_PROXY</code>/<code>NO_PROXY</code>/mTLS now respected for full MCP OAuth flow',
     ],
     breaking: ['<code>worktree.baseRef</code> defaults to <code>fresh</code> (branches from <code>origin/&lt;default&gt;</code>), reverting 2.1.128 — set <code>worktree.baseRef: "head"</code> to keep local HEAD'],
-    latest: true,
   },
   {
     version: 'v2.1.132',
