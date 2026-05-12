@@ -30,6 +30,8 @@ const THEME_META = {
   '08-security-and-production':{ icon: '🛡️',  id: 'security' },
   '09-cost-and-optimization':  { icon: '💰',  id: 'cost' },
   '10-adoption-and-learning':  { icon: '📚',  id: 'adoption' },
+  '11-context-engineering':    { icon: '📐',  id: 'context-engineering' },
+  '12-enterprise-governance':  { icon: '🏛️', id: 'enterprise-governance' },
 }
 
 // ─── Graceful stub if guide repo absent ──────────────────────────────────────

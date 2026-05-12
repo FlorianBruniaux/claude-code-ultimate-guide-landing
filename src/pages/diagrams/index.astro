@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro'
 import { DIAGRAM_THEMES } from '../../data/diagrams-data'
 import { DIAGRAM_GUIDE_URLS } from '../../data/diagrams-guide-urls'
 
-const title = 'Claude Code Diagrams: 40 Architecture & Workflow Visuals'
-const description = '40 Mermaid diagrams covering Claude Code architecture, MCP ecosystem, multi-agent patterns, security, and workflows. Rendered as SVG at build time.'
+const title = 'Claude Code Diagrams: 48 Architecture & Workflow Visuals'
+const description = '48 Mermaid diagrams covering Claude Code architecture, MCP ecosystem, multi-agent patterns, security, and workflows. Rendered as SVG at build time.'
 
 const totalDiagrams = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.length, 0)
 const totalWithSVG = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.filter(d => d.svg).length, 0)
@@ -42,7 +42,7 @@ const jsonLd = [
         "name": "What are Claude Code architecture diagrams?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code architecture diagrams are 40 Mermaid flowcharts covering 10 thematic areas: foundations, context management, configuration, architecture internals, MCP ecosystem, development workflows, multi-agent patterns, security, cost optimization, and adoption. Each diagram includes an ASCII text fallback."
+          "text": "Claude Code architecture diagrams are 48 Mermaid flowcharts covering 10 thematic areas: foundations, context management, configuration, architecture internals, MCP ecosystem, development workflows, multi-agent patterns, security, cost optimization, and adoption. Each diagram includes an ASCII text fallback."
         }
       },
       {
@@ -50,7 +50,7 @@ const jsonLd = [
         "name": "What topics do the Claude Code diagrams cover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 40 diagrams span 10 themes: Foundations (4-layer model, permission modes), Context & Sessions (memory hierarchy, session continuity), Configuration (precedence system, hooks pipeline), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, security threats), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security & Production (3-layer defense, CI/CD), Cost & Optimization (model selection, token strategies), and Adoption & Learning (onboarding paths, UVAL protocol)."
+          "text": "The 48 diagrams span 12 themes: Foundations (4-layer model, permission modes), Context & Sessions (memory hierarchy, session continuity), Configuration (precedence system, hooks pipeline), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, security threats), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security & Production (3-layer defense, CI/CD), Cost & Optimization (model selection, token strategies), and Adoption & Learning (onboarding paths, UVAL protocol)."
         }
       },
       {
@@ -91,7 +91,7 @@ const jsonLd = [
         <span aria-hidden="true">›</span>
         <span>Diagrams</span>
       </nav>
-      <h1>Claude Code: 40 Architecture Diagrams</h1>
+      <h1>Claude Code: 48 Architecture Diagrams</h1>
       <p class="hero-subtitle">Visual reference for Claude Code internals — architecture, MCP ecosystem, multi-agent patterns, security models, and development workflows. 38 SVGs rendered at build time, zero client JavaScript.</p>
       <div class="diagrams-hero-stats">
         <div class="hero-stat">
