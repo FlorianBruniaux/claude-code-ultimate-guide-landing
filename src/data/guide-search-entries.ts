@@ -2004,6 +2004,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-tdd-verification-gap",
+    "title": "TDD Verification Gap",
+    "keywords": "tdd verification gap guide workflows tdd with claude",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/tdd-with-claude/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-lifecycle-feature-list-template",
+    "title": "Session Lifecycle Feature List Template",
+    "keywords": "session lifecycle feature list template examples workflows feature list",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/workflows/feature-list.json",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-lifecycle-verification-hook",
+    "title": "Session Lifecycle Verification Hook",
+    "keywords": "session lifecycle verification hook examples hooks bash verification gate",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/verification-gate.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-openai-harness-engineering",
+    "title": "Openai Harness Engineering",
+    "keywords": "openai harness engineering docs resource evaluations 2026 openai harness engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-02-11-openai-harness-engineering.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-voice-refine-skill",
     "title": "Voice Refine Skill",
     "keywords": "voice refine skill examples skills voice refine skill",
