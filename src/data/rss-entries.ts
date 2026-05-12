@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.139',
+    date: 'May 12, 2026',
+    description: 'Agent view (Research Preview) lands: run claude agents to see every session — running, blocked on you, or done — in one list. New /goal command lets you set a completion condition and Claude keeps working across turns with a live elapsed/turns/tokens overlay. Hook args exec form now spawns commands without a shell, and continueOnBlock for PostToolUse feeds rejection reasons back to Claude. 40+ bug fixes including an auth deadlock, autoAllowBashIfSandboxed shell expansion, MCP SSE memory cap, and Skill wildcard prefix match.',
+    link: 'https://cc.bruniaux.com/releases/#v2.1.139',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.136',
     date: 'May 11, 2026',
     description: 'New settings.autoMode.hard_deny enables unconditional auto mode classifier rules that block regardless of user intent. Fixed MCP servers silently disappearing after /clear in VS Code, JetBrains, and Agent SDK, and MCP OAuth concurrent refresh token loss (no more daily re-authentication for multi-server setups). 40+ UI and terminal fixes including plan mode write blocking, extended thinking 400 fix, and WSL2 image paste via PowerShell fallback.',

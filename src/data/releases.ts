@@ -16,12 +16,25 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.139',
+    date: 'May 12, 2026',
+    highlights: [
+      '⭐ Agent view (Research Preview): <code>claude agents</code> lists all sessions — running, blocked on you, or done',
+      '⭐ <code>/goal</code> command: set a completion condition; Claude works across turns with live elapsed/turns/tokens overlay',
+      'Hook <code>args: string[]</code> exec form (no shell spawning) + <code>continueOnBlock</code> for PostToolUse',
+      '40+ bug fixes: auth deadlock, <code>autoAllowBashIfSandboxed</code> shell expansion, MCP SSE 16MB cap, Skill wildcard prefix match',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Agent View',
+  },
+  {
     version: 'v2.1.138',
     date: 'May 11, 2026',
     highlights: [
       'Internal fixes',
     ],
-    latest: true,
   },
   {
     version: 'v2.1.137',
