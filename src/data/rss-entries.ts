@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.141',
+    date: 'May 14, 2026',
+    description: 'Hook terminalSequence output field lets hooks emit desktop notifications, window titles, and bells without a controlling terminal. claude agents --cwd scopes the session list to a directory, and agents with lingering background shells now move to Completed. Rewind gets a "Summarize up to here" option to compress earlier context. 50+ bug fixes including Bedrock cross-account auth, MCP 403 auth hints, and Remote Control token rotation.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21141-2026-05-14',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.139',
     date: 'May 12, 2026',
     description: 'Agent view (Research Preview) lands: run claude agents to see every session — running, blocked on you, or done — in one list. New /goal command lets you set a completion condition and Claude keeps working across turns with a live elapsed/turns/tokens overlay. Hook args exec form now spawns commands without a shell, and continueOnBlock for PostToolUse feeds rejection reasons back to Claude. 40+ bug fixes including an auth deadlock, autoAllowBashIfSandboxed shell expansion, MCP SSE memory cap, and Skill wildcard prefix match.',
