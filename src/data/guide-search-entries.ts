@@ -1412,6 +1412,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-programmatic-billing-affects",
+    "title": "Programmatic Billing Affects",
+    "keywords": "programmatic billing affects claude  p, agent sdk (python+ts), github actions, openclaw hermes conductor, custom harnesses, ci cd pipelines, scheduled automation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude -p, Agent SDK (Python+TS), GitHub Actions, OpenClaw/Hermes/Conductor, custom harnesses, CI/CD pipelines, scheduled automation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-billing-unaffected",
+    "title": "Programmatic Billing Unaffected",
+    "keywords": "programmatic billing unaffected claude code terminal (interactive), ide integrations, web desktop mobile chat, human the loop workflows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Claude Code terminal (interactive), IDE integrations, web/desktop/mobile chat, human-in-the-loop workflows",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-billing-credits",
+    "title": "Programmatic Billing Credits",
+    "keywords": "programmatic billing credits pro $20 mo | max 5x $100 mo | max 20x $200 mo — no rollover, not automatic (requires email activation)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Pro $20/mo | Max 5x $100/mo | Max 20x $200/mo — no rollover, not automatic (requires email activation)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-billing-overage-sonnet",
+    "title": "Programmatic Billing Overage Sonnet",
+    "keywords": "programmatic billing overage sonnet mtok input, $15 mtok output (standard api rates)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/$3/MTok input, $15/MTok output (standard API rates)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-billing-audit",
+    "title": "Programmatic Billing Audit",
+    "keywords": "programmatic billing audit claude  cost (session) + npx ccusage (cross session history)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude /cost (session) + npx ccusage (cross-session history)",
+    "source": "guide"
+  },
+  {
     "id": "guide-memory-limits-detail",
     "title": "Memory Limits Detail",
     "keywords": "memory limits detail memory md: 200 lines max, 25kb max  memory dir: 200 files max  truncation: lines first, then bytes, warning appended",
