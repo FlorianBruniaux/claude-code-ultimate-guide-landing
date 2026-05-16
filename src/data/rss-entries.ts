@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.143',
+    date: 'May 16, 2026',
+    description: 'Plugin dependency enforcement arrives: claude plugin disable now refuses when another enabled plugin depends on the target, with a copy-pasteable disable chain; enable force-enables transitive dependencies. The /plugin marketplace browse pane gains projected context cost estimates per turn and per invocation. New worktree.bgIsolation: "none" setting lets background sessions edit the working copy directly without EnterWorktree. Stop hooks that block repeatedly now warn and end the turn after 8 blocks.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21143-2026-05-16',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.142',
+    date: 'May 15, 2026',
+    description: 'Fast mode upgrades to Opus 4.7 by default (set CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE=1 to stay on 4.6). claude agents gains eight new dispatch flags including --model, --effort, --permission-mode, and --mcp-config to configure background sessions at launch. Plugins with a root-level SKILL.md and no skills/ subdirectory are now auto-surfaced as a skill. MCP_TOOL_TIMEOUT now correctly raises the per-request timeout for remote HTTP and SSE servers, which was previously capped at 60 seconds.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21142-2026-05-15',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.141',
     date: 'May 14, 2026',
     description: 'Hook terminalSequence output field lets hooks emit desktop notifications, window titles, and bells without a controlling terminal. claude agents --cwd scopes the session list to a directory, and agents with lingering background shells now move to Completed. Rewind gets a "Summarize up to here" option to compress earlier context. 50+ bug fixes including Bedrock cross-account auth, MCP 403 auth hints, and Remote Control token rotation.',

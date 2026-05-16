@@ -16,6 +16,51 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.143',
+    date: 'May 16, 2026',
+    highlights: [
+      '⭐ Plugin dependency enforcement: <code>claude plugin disable</code> refuses when another enabled plugin depends on the target (with disable-chain hint); <code>enable</code> force-enables transitive deps',
+      '⭐ Projected context cost (per-turn and per-invocation token estimates) added to the <code>/plugin</code> marketplace browse pane',
+      '<code>worktree.bgIsolation: "none"</code> — background sessions edit working copy directly without <code>EnterWorktree</code>',
+      'Bug fixes: stop hook block loop (warns after 8 blocks), Esc/Ctrl+C cancels <code>/loop</code> wakeup, background sessions preserve model+effort after idle wake',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.142',
+    date: 'May 15, 2026',
+    highlights: [
+      '⭐ Fast mode now uses Opus 4.7 by default (was Opus 4.6) — set <code>CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE=1</code> to pin to 4.6',
+      '⭐ New <code>claude agents</code> dispatch flags: <code>--add-dir</code>, <code>--settings</code>, <code>--mcp-config</code>, <code>--model</code>, <code>--effort</code>, <code>--permission-mode</code> and more',
+      'Plugins with root-level <code>SKILL.md</code> and no <code>skills/</code> subdirectory now surface as a skill; <code>/plugin</code> shows LSP servers',
+      'Bug fixes: <code>MCP_TOOL_TIMEOUT</code> now raises per-request fetch timeout, daemon exits cleanly after <code>brew upgrade</code>, background worktree recognition',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Fast Mode Opus 4.7',
+  },
+  {
+    version: 'v2.1.141',
+    date: 'May 14, 2026',
+    highlights: [
+      '⭐ Hook <code>terminalSequence</code> output field — emit desktop notifications, window titles, and bells from hooks without a controlling terminal',
+      '⭐ <code>claude agents --cwd &lt;path&gt;</code> scopes session list to a directory; agents with lingering shells move to Completed',
+      'Rewind "Summarize up to here" — compress earlier context; <code>/bg</code> preserves permission mode; spinner warms amber after 10s',
+      '50+ bug fixes: Bedrock cross-account auth, MCP 403 needs-auth hint, Remote Control token rotation race, vim Ctrl+C, markdown table regression',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.140',
+    date: 'May 13, 2026',
+    highlights: [
+      'Agent tool <code>subagent_type</code> matching now case- and separator-insensitive (<code>"Code Reviewer"</code> resolves to <code>code-reviewer</code>)',
+      'Plugins warn when a default component folder is silently ignored due to <code>plugin.json</code> key conflict',
+      'Bug fixes: <code>/goal</code> hang with <code>disableAllHooks</code>, symlinked settings hot-reload regression, <code>claude --bg</code> connection drop',
+    ],
+  },
+  {
     version: 'v2.1.139',
     date: 'May 12, 2026',
     highlights: [
@@ -24,7 +69,6 @@ export const releases: Release[] = [
       'Hook <code>args: string[]</code> exec form (no shell spawning) + <code>continueOnBlock</code> for PostToolUse',
       '40+ bug fixes: auth deadlock, <code>autoAllowBashIfSandboxed</code> shell expansion, MCP SSE 16MB cap, Skill wildcard prefix match',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: 'Agent View',
