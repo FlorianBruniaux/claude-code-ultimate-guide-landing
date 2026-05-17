@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Context Engineering Tools 2026: Compress, Optimize & Monitor LLM Context'
-const description = 'Complete map of context engineering tools — RTK (89% token reduction), Headroom (lossless compression), LLMLingua (20x), Edgee, Portkey, Langfuse, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
+const description = 'Complete map of context engineering tools — RTK (89% CLI savings), lean-ctx (57–86% file read compression, MCP), Headroom, LLMLingua (20x), Edgee, Portkey, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
 
 const jsonLd = [
   {
@@ -32,6 +32,7 @@ const tools = [
     color: "orange",
     tools: [
       { name: "RTK", tagline: "CLI proxy, 89% avg savings", stars: "446" },
+      { name: "lean-ctx", tagline: "MCP server — file reads + session memory, 57–86% savings", stars: "1366" },
       { name: "Headroom", tagline: "Lossless, 70–95% on structured data", stars: null },
     ]
   },
@@ -113,9 +114,11 @@ const useCaseMatrix = [
     persona: "Claude Code developer",
     problems: [
       { problem: "Commands flooding context", tool: "RTK" },
+      { problem: "Large files read repeatedly in session", tool: "lean-ctx (signatures mode)" },
       { problem: "Context growing too long", tool: "/compact at 70%" },
       { problem: "Rules ignored in large CLAUDE.md", tool: "Path-scoping" },
-      { problem: "Session memory lost", tool: "ICM" },
+      { problem: "Session memory lost between runs", tool: "lean-ctx CCP" },
+      { problem: "Cross-session memory", tool: "ICM" },
     ]
   },
   {
@@ -146,9 +149,9 @@ const useCaseMatrix = [
   <header class="page-hero">
     <div class="container">
       <div class="hero-badge-row">
-        <span class="hero-badge">15+ tools mapped</span>
-        <span class="hero-badge hero-badge--secondary">Updated March 2026</span>
-        <span class="hero-badge hero-badge--secondary">RTK · Headroom · LLMLingua · Edgee · Portkey</span>
+        <span class="hero-badge">16+ tools mapped</span>
+        <span class="hero-badge hero-badge--secondary">Updated May 2026</span>
+        <span class="hero-badge hero-badge--secondary">RTK · lean-ctx · Headroom · LLMLingua · Edgee · Portkey</span>
       </div>
       <h1>Context Engineering: Tools & Ecosystem</h1>
       <p class="tagline">The context window is not storage — it's a budget of attention. This page maps the tools that help you spend it well.</p>
