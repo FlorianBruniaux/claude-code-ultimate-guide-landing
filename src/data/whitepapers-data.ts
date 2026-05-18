@@ -28,7 +28,7 @@ export interface Whitepaper {
   slugEn: string
 }
 
-const V = 'v3.40.0'
+const V = 'v3.41.0'
 
 export const WHITEPAPERS: Whitepaper[] = [
   {
@@ -72,8 +72,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['config', 'hooks', 'mcp', 'claude.md'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: `02-personnalisation.fr.${V}.0ecf727de53c.pdf`,
-    hashedFileEn: `02-customization.en.${V}.33460d03a135.pdf`,
+    hashedFileFr: `02-personnalisation.fr.${V}.e180bec0d508.pdf`,
+    hashedFileEn: `02-customization.en.${V}.d25e4115bcf4.pdf`,
     slugFr: '02-personnalisation',
     slugEn: '02-customization',
   },
@@ -102,8 +102,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['architecture', 'internals', 'advanced'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: `04-architecture.fr.${V}.fd827a22f035.pdf`,
-    hashedFileEn: `04-architecture.en.${V}.decdf3478d9b.pdf`,
+    hashedFileFr: `04-architecture.fr.${V}.0cd297103bea.pdf`,
+    hashedFileEn: `04-architecture.en.${V}.0cd297103bea.pdf`,
     slugFr: '04-architecture',
     slugEn: '04-architecture',
   },
@@ -148,8 +148,8 @@ export const WHITEPAPERS: Whitepaper[] = [
     gated: true,
     badge: 'Popular',
     formats: ['pdf', 'epub'],
-    hashedFileFr: `07-guide-reference.fr.${V}.13696d8570df.pdf`,
-    hashedFileEn: `07-reference-guide.en.${V}.ccf52cdc1d57.pdf`,
+    hashedFileFr: `07-guide-reference.fr.${V}.9f35729a4511.pdf`,
+    hashedFileEn: `07-reference-guide.en.${V}.c60d48e9d95b.pdf`,
     slugFr: '07-guide-reference',
     slugEn: '07-reference-guide',
   },

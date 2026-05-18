@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.41.0',
+    date: 'May 19, 2026',
+    description: 'Pedagogical update for CC 2.1.3: .claude/commands/ merged into .claude/skills/. The 3-way Agent/Skill/Command model becomes a 2-way Agent/Skill model with invocation modes. WP 02, 04, 07 (FR+EN) updated, plus Recap Cards c04, m09, m10, 01-commandes (FR+EN).',
+    link: 'https://cc.bruniaux.com/releases/#v3410',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.143',
     date: 'May 16, 2026',
     description: 'Plugin dependency enforcement arrives: claude plugin disable now refuses when another enabled plugin depends on the target, with a copy-pasteable disable chain; enable force-enables transitive dependencies. The /plugin marketplace browse pane gains projected context cost estimates per turn and per invocation. New worktree.bgIsolation: "none" setting lets background sessions edit the working copy directly without EnterWorktree. Stop hooks that block repeatedly now warn and end the turn after 8 blocks.',
