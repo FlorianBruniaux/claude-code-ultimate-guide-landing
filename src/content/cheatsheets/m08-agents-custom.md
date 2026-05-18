@@ -52,17 +52,17 @@ memory: local     # .claude/agent-memory-local/<name>/
 
 `project` memory is committed with the repo — useful for the agent to accumulate knowledge shared across the entire team. `local` memory stays private to the machine.
 
-## Agent vs Slash Command
+## Agent vs User-Invocable Skill
 
-| Criterion | Agent | Slash Command |
-|-----------|-------|---------------|
+| Criterion | Agent | User-Invocable Skill |
+|-----------|-------|---------------------|
 | Specialty | Yes, specific domain | No, generic workflow |
 | Own memory | Yes (v2.1.32+) | No |
-| Isolated tools | Yes, whitelist | No |
-| Invocation | Automatic or manual | Manual only |
-| Format | Markdown + frontmatter | Markdown template |
+| Isolated tools | Yes, whitelist | Via `allowed-tools` |
+| Invocation | Automatic or manual | Manual only (`/name`) |
+| Format | `.claude/agents/` + frontmatter | `.claude/skills/` + `disable-model-invocation: true` |
 
-Create an agent when the task recurs regularly with stable context and tools. Create a command when it is a one-off workflow or a procedure to follow.
+Create an agent when the task recurs regularly with stable context and tools. Create a user-invocable skill when it is a one-off workflow or a procedure to follow — since CC 2.1.3 these live in `.claude/skills/` rather than `.claude/commands/`.
 
 ## Concrete example: code review agent
 

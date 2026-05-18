@@ -19,15 +19,17 @@ doc_reference:
 official_doc: https://code.claude.com/docs/en/slash-commands
 ---
 
-How do you invoke a custom command named `commit.md` located in `.claude/commands/tech/`?
+How do you invoke a user-invocable skill named `commit` located in `.claude/skills/tech/commit/`?
 
 ---
 
-Custom commands use the format `/folder:filename` (without the .md extension).
+User-invocable skills use the format `/folder:name` based on their directory path under `.claude/skills/`.
 
-So `.claude/commands/tech/commit.md` becomes `/tech:commit`.
-This naming convention allows organizing commands by domain while keeping invocation intuitive.
+So `.claude/skills/tech/commit/SKILL.md` becomes `/tech:commit`.
+This naming convention allows organizing skills by domain while keeping invocation intuitive.
 
 Examples:
-- `.claude/commands/tech/pr.md` -> `/tech:pr`
-- `.claude/commands/product/scope.md` -> `/product:scope`
+- `.claude/skills/tech/pr/SKILL.md` -> `/tech:pr`
+- `.claude/skills/product/scope/SKILL.md` -> `/product:scope`
+
+Since CC 2.1.3, these skills replace the old `.claude/commands/` files. The `disable-model-invocation: true` flag in the SKILL.md frontmatter ensures they only fire on explicit user invocation.

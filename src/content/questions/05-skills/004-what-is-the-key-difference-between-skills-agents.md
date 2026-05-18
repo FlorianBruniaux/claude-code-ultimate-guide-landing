@@ -9,8 +9,8 @@ profiles:
 correct: b
 options:
   a: They all do the same thing
-  b: Skills = knowledge modules (inherited), Agents = specialized roles (delegated),
-    Commands = process workflows (slash invoked)
+  b: Skills = knowledge modules (user-invocable or auto), Agents = specialized roles (delegated),
+    Commands = user-invocable skills with disable-model-invocation true
   c: Commands are the only reusable component
   d: Agents cannot use skills or commands
 doc_reference:
@@ -19,8 +19,10 @@ doc_reference:
   anchor: '#skills-vs-agents-vs-commands'
 ---
 
-What is the key difference between Skills, Agents, and Commands?
+What is the key difference between Skills, Agents, and Commands (CC 2.1.3+)?
 
 ---
 
-The three concepts have distinct purposes: Skills are knowledge modules inherited by agents (like OWASP security knowledge), Agents are specialized roles that Claude delegates tasks to (like a security reviewer), and Commands are process workflows invoked with slash commands (like /tech:commit). They can be combined: agents inherit skills and execute commands.
+Since CC 2.1.3, the distinction is: Skills are knowledge modules that can be either user-invocable (formerly "commands") or auto-invoked by the model. Agents are specialized roles that Claude delegates tasks to (like a security reviewer). "Commands" are now simply user-invocable skills — skills with `disable-model-invocation: true` in their frontmatter — stored in `.claude/skills/` like all other skills.
+
+In practice: Skills with `disable-model-invocation: true` behave like the old commands (triggered by `/name`). Skills without that flag auto-load when context matches. Agents inherit skills and have their own persistent memory. They can be combined: agents inherit model-invocable skills, and users invoke user-invocable skills via `/name`.

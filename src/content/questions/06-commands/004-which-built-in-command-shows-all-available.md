@@ -32,4 +32,4 @@ Built-in commands include:
 - `/plan` - Enter Plan Mode
 - `/rewind` - Undo changes
 
-Custom commands from `.claude/commands/` are also listed here.
+User-invocable skills from `.claude/skills/` (with `disable-model-invocation: true`) are also listed here. Since CC 2.1.3, custom slash commands live in `.claude/skills/` rather than `.claude/commands/`.

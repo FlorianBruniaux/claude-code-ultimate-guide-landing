@@ -79,11 +79,12 @@ claude --continue
 ## Custom Slash Commands
 
 ```
-# Invoke a custom command
+# Invoke a user-invocable skill
 /command-name [args]
 
-# Defined in:
-.claude/commands/command-name.md
+# Defined in (CC 2.1.3+):
+.claude/skills/command-name/SKILL.md
+# with: disable-model-invocation: true
 ```
 
 ## Essential Tips

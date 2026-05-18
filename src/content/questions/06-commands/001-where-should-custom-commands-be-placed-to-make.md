@@ -8,8 +8,8 @@ profiles:
 - power
 correct: b
 options:
-  a: ~/.claude/commands/
-  b: .claude/commands/
+  a: ~/.claude/skills/
+  b: .claude/skills/
   c: /usr/local/claude/commands/
   d: .claude/config/commands/
 doc_reference:
@@ -19,15 +19,15 @@ doc_reference:
 official_doc: https://code.claude.com/docs/en/slash-commands
 ---
 
-Where should custom commands be placed to make them available in Claude Code?
+Where should custom commands (user-invocable skills) be placed to make them available in Claude Code?
 
 ---
 
-Custom commands are placed in `.claude/commands/` within your project directory.
+Since CC 2.1.3, custom slash commands live in `.claude/skills/` as user-invocable skills. Each command is a folder with a `SKILL.md` file that includes `disable-model-invocation: true` in the frontmatter.
 
 This allows project-specific commands that can be committed with your codebase.
-The global directory `~/.claude/` is for personal settings, not project commands.
+The global directory `~/.claude/skills/` is for personal commands available across all projects.
 
-Commands are organized in subdirectories:
-- `.claude/commands/tech/` for development workflows
-- `.claude/commands/product/` for product workflows
+Skills are organized in subdirectories:
+- `.claude/skills/tech/deploy/` for development workflows
+- `.claude/skills/product/scope/` for product workflows

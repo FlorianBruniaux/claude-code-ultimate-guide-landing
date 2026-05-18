@@ -4,7 +4,7 @@ subtitle: "Create reusable custom commands"
 cardNumber: M09
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.32.3
 order: 109
 ---
 
@@ -12,21 +12,41 @@ order: 109
 
 A slash command is a Markdown file that defines a workflow. Claude executes it as if it had received that text as a prompt, with the ability to pass dynamic arguments.
 
+> **CC 2.1.3:** Custom slash commands now live in `.claude/skills/` with `disable-model-invocation: true`. The old `.claude/commands/` directory is no longer used for new projects.
+
 ## File locations
 
 ```
-.claude/commands/          # Project commands (team)
-├── commit.md              → /commit
-├── review-pr.md           → /review-pr
+.claude/skills/              # Project skills (team) — since CC 2.1.3
+├── commit/
+│   └── SKILL.md             → /commit
+├── review-pr/
+│   └── SKILL.md             → /review-pr
 └── tech/
-    └── deploy.md          → /tech:deploy
+    └── deploy/
+        └── SKILL.md         → /tech:deploy
 
-~/.claude/commands/        # Global commands (personal)
-├── release.md             → /release
-└── sync.md                → /sync
+~/.claude/skills/            # Global skills (personal)
+├── release/
+│   └── SKILL.md             → /release
+└── sync/
+    └── SKILL.md             → /sync
 ```
 
-Global commands are available in all sessions, regardless of the project.
+Global skills are available in all sessions, regardless of the project.
+
+## SKILL.md frontmatter for user-invocable skills
+
+```yaml
+---
+name: commit
+description: Generate a conventional commit from staged changes
+allowed-tools: [Read, Bash]
+disable-model-invocation: true
+---
+```
+
+The `disable-model-invocation: true` flag is what makes a skill user-only — it prevents the model from auto-loading it based on context matching.
 
 ## Invocation and arguments
 
@@ -36,7 +56,7 @@ Global commands are available in all sessions, regardless of the project.
 /release minor             # Version bump
 ```
 
-In the Markdown file, arguments are accessible via variables:
+In the Markdown body, arguments are accessible via variables:
 
 ```markdown
 Deploy to environment: $ARGUMENTS[0]
@@ -83,7 +103,7 @@ Description of the expected result.
 | `/effort` | v2.1.111 | Set thinking effort level interactively |
 | `/proactive` | recent | Toggle proactive suggestions |
 
-## Useful custom commands to create
+## Useful custom skills (user-invocable) to create
 
 | Command | Usage |
 |---------|-------|
@@ -93,16 +113,16 @@ Description of the expected result.
 | `/sync` | Multi-file consistency check |
 | `/security-check` | Quick config scan |
 
-## Command vs Skill vs Agent
+## Skill (user) vs Skill (auto) vs Agent
 
 | Mechanism | When to use |
 |-----------|-------------|
-| **Command** | One-off workflow, procedure to follow |
-| **Skill** | Reusable knowledge + embedded resources |
+| **Skill (user-invocable)** | One-off workflow, procedure to follow — `disable-model-invocation: true` |
+| **Skill (model-invocable)** | Reusable knowledge + embedded resources — auto-loads on context match |
 | **Agent** | Recurring specialist with own memory |
 
-A command cannot embed additional reference files — for that, use a skill. A command has no persistent memory — for that, use an agent.
+A user-invocable skill cannot embed additional reference files without a skill folder — for that, create a full skill directory with `SKILL.md` plus resource files. A skill has no persistent memory — for that, use an agent.
 
 ## Practical tips
 
-One command, one responsibility. As soon as a command does two distinct things, split it. Name with an action verb first (`commit`, `release`, `sync`) so that the intent is immediately readable in the list of available commands.
+One skill, one responsibility. As soon as a skill does two distinct things, split it. Name with an action verb first (`commit`, `release`, `sync`) so that the intent is immediately readable in the list of available commands.

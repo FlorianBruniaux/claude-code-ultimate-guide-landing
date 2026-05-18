@@ -39,16 +39,26 @@ allowed-tools: Read Grep Bash
 | `allowed-tools` | Tool whitelist (supports wildcards) |
 | `disable-model-invocation` | `true` for manual-only invocation |
 
-## Skills vs Commands
+## Invocation Modes
 
-| Aspect | Skill | Command |
-|--------|-------|---------|
-| **Resources** | Can embed files | Markdown only |
-| **Scope** | Domain knowledge | Procedural workflow |
-| **Reuse** | Between agents | Direct invocation |
-| **Standard** | agentskills.io (portable) | Claude Code only |
+| Mode | Frontmatter | Behavior |
+|------|-------------|----------|
+| User-invocable | `disable-model-invocation: true` | Triggered by user via `/name` |
+| Model-invocable | (no flag) | Auto-loaded by model when context matches |
+| Both | (no flag) | Invocable either way — user or model |
 
-The main difference: a skill can embed a 500-line `reference.md` file that becomes available on invocation. A command cannot.
+Since CC 2.1.3, user-invocable skills (formerly "custom commands") live in `.claude/skills/` with `disable-model-invocation: true`. This unified model replaces the old `.claude/commands/` directory.
+
+## Skills vs Agents
+
+| Aspect | Skill | Agent |
+|--------|-------|-------|
+| **Resources** | Can embed files | Instructions only |
+| **Scope** | Domain knowledge | Specialized role |
+| **Reuse** | Between agents + direct | Delegation target |
+| **Standard** | agentskills.io (portable) | Claude Code format |
+
+The main difference: a skill can embed a 500-line `reference.md` that becomes available on invocation. An agent accumulates its own memory across sessions.
 
 ## Marketplace: npx add-skill
 
