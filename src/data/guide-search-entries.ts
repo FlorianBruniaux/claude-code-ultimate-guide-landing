@@ -1364,6 +1364,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-mcp2cli-purpose",
+    "title": "Third Party Mcp2cli Purpose",
+    "keywords": "third party mcp2cli purpose universal cli bridge for mcp openapi graphql — lazy loads tool schemas so llm receives only  list (16 tok tool) +  help (120 tok) instead of full schemas injected upfront each turn",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Universal CLI bridge for MCP/OpenAPI/GraphQL — lazy-loads tool schemas so LLM receives only --list (16 tok/tool) + --help (120 tok) instead of full schemas injected upfront each turn",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-mcp2cli-note",
+    "title": "Third Party Mcp2cli Note",
+    "keywords": "third party mcp2cli note 99% schema token reduction benchmarked independently (firecrawl, scalekit, circleci)  born from 2026 mcp backlash  caution: 4+ forks with same name — knowsuchagency is the reference  not for enterprise multi tenant oauth audit",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/96-99% schema-token reduction benchmarked independently (Firecrawl, Scalekit, CircleCI). Born from 2026 MCP backlash. Caution: 4+ forks with same name — knowsuchagency is the reference. Not for enterprise multi-tenant OAuth/audit.",
+    "source": "guide"
+  },
+  {
     "id": "guide-config-ratinaud-evaluation",
     "title": "Config Ratinaud Evaluation",
     "keywords": "config ratinaud evaluation docs resource evaluations ratinaud config management evaluation",

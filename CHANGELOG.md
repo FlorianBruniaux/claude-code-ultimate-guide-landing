@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Added
+
+- **Step by Token in /learning page** (`src/pages/learning/index.astro`): New "Go Deeper: Understand the Model" section with a card linking to stepbytoken.com. 21-chapter free interactive guide by Dimitri Mérault covering LLM mechanics (tokenization, attention, agents/MCP, prompt engineering, KV cache). Positioned between "Ready-to-Use Templates" and Methodologies.
+
 ## [2.9.1] - 2026-03-25
 
 ### Fixed
