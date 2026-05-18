@@ -81,7 +81,8 @@ export const EXAMPLES = {
     },
     commands: {
         icon: "\u26A1",
-        description: "Custom slash commands. Place in .claude/commands/ or ~/.claude/commands/",
+        label: "User-Invocable Skills",
+        description: "Custom slash commands (user-invocable skills). Place in .claude/skills/ with disable-model-invocation: true",
         files: [
             { name: "commit.md", path: "commands/commit.md", description: "/commit - Conventional commit messages", favorite: true },
             { name: "pr.md", path: "commands/pr.md", description: "/pr - Create well-structured PRs", favorite: true },
