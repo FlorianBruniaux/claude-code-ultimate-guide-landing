@@ -24,6 +24,7 @@ jobs:
 
     steps:
       - name: Check links on cc.bruniaux.com
+        id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
           args: >
