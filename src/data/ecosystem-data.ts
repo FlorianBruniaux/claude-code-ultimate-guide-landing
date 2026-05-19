@@ -572,7 +572,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'claude-code-plugins',
     category: 'plugin-ecosystem',
     description:
-      '181 production-ready templates from the Claude Code Ultimate Guide, packaged as 8 focused installable plugins. One command to add the marketplace, hooks auto-wired on install.',
+      '255 production-ready templates from the Claude Code Ultimate Guide, packaged as 8 focused installable plugins. One command to add the marketplace, hooks auto-wired on install.',
     source_url: 'https://github.com/FlorianBruniaux/claude-code-plugins',
     website_url: 'https://github.com/FlorianBruniaux/claude-code-plugins',
     install: 'claude plugin marketplace add FlorianBruniaux/claude-code-plugins',
