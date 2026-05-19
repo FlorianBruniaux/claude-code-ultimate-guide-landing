@@ -68,11 +68,35 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-skills-commands-merger-summary",
+    "title": "Skills Commands Merger Summary",
+    "keywords": "skills commands merger summary claude commands  merged into  claude skills  add disable model invocation: true for user only skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/.claude/commands/ merged into .claude/skills/. Add disable-model-invocation: true for user-only skills.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skills-commands-merger-guide",
+    "title": "Skills Commands Merger Guide",
+    "keywords": "skills commands merger guide guide ultimate guide",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-review-pr-advanced",
     "title": "Review PR Advanced",
-    "keywords": "review pr advanced examples commands review",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/review-pr.md",
+    "keywords": "review pr advanced examples skills review skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/review-pr/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-pr-advanced-note",
+    "title": "Review PR Advanced Note",
+    "keywords": "review pr advanced note since cc 2 3: equivalent skill uses disable model invocation: true in  claude skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Since CC 2.1.3: equivalent skill uses disable-model-invocation: true in .claude/skills/",
     "source": "guide"
   },
   {
@@ -86,9 +110,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-review-plan-command",
     "title": "Review Plan Command",
-    "keywords": "review plan command examples commands review plan",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/review-plan.md",
+    "keywords": "review plan command examples skills review plan skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/review-plan/SKILL.md",
     "source": "guide"
   },
   {
@@ -172,14 +196,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-modular-context-architecture",
-    "title": "Modular Context Architecture",
-    "keywords": "modular context architecture guide ultimate guide",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-adversarial-plan-review",
     "title": "Adversarial Plan Review",
     "keywords": "adversarial plan review examples agents plan challenger",
@@ -198,9 +214,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-codebase-audit-scoring",
     "title": "Codebase Audit Scoring",
-    "keywords": "codebase audit scoring examples commands audit codebase",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/audit-codebase.md",
+    "keywords": "codebase audit scoring examples skills audit codebase skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/audit-codebase/SKILL.md",
     "source": "guide"
   },
   {
@@ -622,9 +638,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-routines-discover-command",
     "title": "Routines Discover Command",
-    "keywords": "routines discover command examples commands routines discover",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/routines-discover.md",
+    "keywords": "routines discover command examples skills routines discover skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/routines-discover/SKILL.md",
     "source": "guide"
   },
   {
@@ -774,17 +790,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-gstack-plan-ceo-review",
     "title": "Gstack Plan Ceo Review",
-    "keywords": "gstack plan ceo review examples commands plan ceo review",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-ceo-review.md",
+    "keywords": "gstack plan ceo review examples skills plan pipeline ceo review skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/ceo-review/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-gstack-plan-eng-review",
     "title": "Gstack Plan Eng Review",
-    "keywords": "gstack plan eng review examples commands plan eng review",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-eng-review.md",
+    "keywords": "gstack plan eng review examples skills plan pipeline eng review skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/eng-review/SKILL.md",
     "source": "guide"
   },
   {
@@ -990,25 +1006,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-learn-quiz-command",
     "title": "Learn Quiz Command",
-    "keywords": "learn quiz command examples commands learn quiz",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/quiz.md",
+    "keywords": "learn quiz command examples skills learn quiz skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/learn-quiz/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-learn-teach-command",
     "title": "Learn Teach Command",
-    "keywords": "learn teach command examples commands learn teach",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/teach.md",
+    "keywords": "learn teach command examples skills learn teach skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/learn-teach/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-learn-alternatives-command",
     "title": "Learn Alternatives Command",
-    "keywords": "learn alternatives command examples commands learn alternatives",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/learn/alternatives.md",
+    "keywords": "learn alternatives command examples skills learn alternatives skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/learn-alternatives/SKILL.md",
     "source": "guide"
   },
   {
@@ -1134,9 +1150,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-status-command",
     "title": "Sandbox Status Command",
-    "keywords": "sandbox status command examples commands sandbox status",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/sandbox-status.md",
+    "keywords": "sandbox status command examples skills sandbox status skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/sandbox-status/SKILL.md",
     "source": "guide"
   },
   {
@@ -1710,15 +1726,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-audit-agents-skills-command",
     "title": "Audit Agents Skills Command",
-    "keywords": "audit agents skills command examples commands audit agents skills",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/audit-agents-skills.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-audit-agents-skills-skill",
-    "title": "Audit Agents Skills Skill",
-    "keywords": "audit agents skills skill examples skills audit agents skills skill",
+    "keywords": "audit agents skills command examples skills audit agents skills skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/audit-agents-skills/SKILL.md",
     "source": "guide"
@@ -1862,17 +1870,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-plan-start-command",
     "title": "Plan Start Command",
-    "keywords": "plan start command examples commands plan start",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-start.md",
+    "keywords": "plan start command examples skills plan pipeline start skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/start/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-plan-validate-command",
     "title": "Plan Validate Command",
-    "keywords": "plan validate command examples commands plan validate",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-validate.md",
+    "keywords": "plan validate command examples skills plan pipeline validate skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/validate/SKILL.md",
     "source": "guide"
   },
   {
@@ -1894,9 +1902,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-plan-execute-command",
     "title": "Plan Execute Command",
-    "keywords": "plan execute command examples commands plan execute",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/plan-execute.md",
+    "keywords": "plan execute command examples skills plan pipeline execute skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/execute/SKILL.md",
     "source": "guide"
   },
   {
@@ -1966,33 +1974,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-git-worktree-command",
     "title": "Git Worktree Command",
-    "keywords": "git worktree command examples commands git worktree",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/git-worktree.md",
+    "keywords": "git worktree command examples skills git worktree skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/git-worktree/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-git-worktree-status-command",
     "title": "Git Worktree Status Command",
-    "keywords": "git worktree status command examples commands git worktree status",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/git-worktree-status.md",
+    "keywords": "git worktree status command examples skills git worktree status skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/git-worktree-status/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-git-worktree-remove-command",
     "title": "Git Worktree Remove Command",
-    "keywords": "git worktree remove command examples commands git worktree remove",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/git-worktree-remove.md",
+    "keywords": "git worktree remove command examples skills git worktree remove skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/git-worktree-remove/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-git-worktree-clean-command",
     "title": "Git Worktree Clean Command",
-    "keywords": "git worktree clean command examples commands git worktree clean",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/git-worktree-clean.md",
+    "keywords": "git worktree clean command examples skills git worktree clean skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/git-worktree-clean/SKILL.md",
     "source": "guide"
   },
   {
@@ -2214,33 +2222,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-security-check-command",
     "title": "Security Check Command",
-    "keywords": "security check command examples commands security check",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/security-check.md",
+    "keywords": "security check command examples skills security check skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/security-check/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-security-audit-command",
     "title": "Security Audit Command",
-    "keywords": "security audit command examples commands security audit",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/security-audit.md",
+    "keywords": "security audit command examples skills security audit skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/security-audit/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-security-threat-db",
     "title": "Security Threat Db",
-    "keywords": "security threat db examples commands resources threat",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/resources/threat-db.yaml",
+    "keywords": "security threat db examples skills update threat threat",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/update-threat-db/threat-db.yaml",
     "source": "guide"
   },
   {
     "id": "guide-security-update-threat-db",
     "title": "Security Update Threat Db",
-    "keywords": "security update threat db examples commands update threat",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/update-threat-db.md",
+    "keywords": "security update threat db examples skills update threat skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/update-threat-db/SKILL.md",
     "source": "guide"
   },
   {
@@ -2366,33 +2374,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-handoff-triad-create",
     "title": "Handoff Triad Create",
-    "keywords": "handoff triad create examples commands handoff create handoff",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/create-handoff.md",
+    "keywords": "handoff triad create examples skills handoff create skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/handoff-create/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-handoff-triad-resume",
     "title": "Handoff Triad Resume",
-    "keywords": "handoff triad resume examples commands handoff resume handoff",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/resume-handoff.md",
+    "keywords": "handoff triad resume examples skills handoff resume skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/handoff-resume/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-handoff-triad-update",
     "title": "Handoff Triad Update",
-    "keywords": "handoff triad update examples commands handoff update handoff",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/handoff/update-handoff.md",
+    "keywords": "handoff triad update examples skills handoff update skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/handoff-update/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-recipe-template",
     "title": "Recipe Template",
-    "keywords": "recipe template examples commands recipe template",
-    "category": "Examples > Commands",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/recipe-template.md",
+    "keywords": "recipe template examples skills recipe template skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/recipe-template/SKILL.md",
     "source": "guide"
   },
   {

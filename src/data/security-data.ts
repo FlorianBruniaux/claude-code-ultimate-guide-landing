@@ -1,6 +1,6 @@
 /**
  * Security threat intelligence data - Converted from threat-db.yaml
- * Source: examples/commands/resources/threat-db.yaml
+ * Source: examples/skills/update-threat-db/threat-db.yaml
  * For use in the landing site security section
  */
 
