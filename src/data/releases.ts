@@ -16,6 +16,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.144',
+    date: 'May 19, 2026',
+    highlights: [
+      '⭐ <code>/resume</code> now lists background sessions (started via <code>--bg</code> or agent view) alongside interactive ones, marked with <code>bg</code>',
+      '⭐ <code>/model</code> is now session-only by default — press <code>d</code> in the picker to set a default model for new sessions',
+      '"extra usage" renamed to "usage credits" across CLI; <code>/extra-usage</code> → <code>/usage-credits</code> (old name still works)',
+      'Bug fixes: 75s startup hang on unreachable API (now 15s timeout), terminal rendering corruption, macOS Full Disk Access crash, MCP paginated <code>tools/list</code>, 40+ total',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.143',
     date: 'May 16, 2026',
     highlights: [
@@ -24,7 +36,6 @@ export const releases: Release[] = [
       '<code>worktree.bgIsolation: "none"</code> — background sessions edit working copy directly without <code>EnterWorktree</code>',
       'Bug fixes: stop hook block loop (warns after 8 blocks), Esc/Ctrl+C cancels <code>/loop</code> wakeup, background sessions preserve model+effort after idle wake',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

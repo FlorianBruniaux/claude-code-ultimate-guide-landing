@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.144',
+    date: 'May 19, 2026',
+    description: '/resume now surfaces background sessions alongside interactive ones in the picker. /model is session-only by default — press d to persist a default for new sessions. Fixed a 75s startup hang when api.anthropic.com is unreachable (now 15s timeout), terminal rendering corruption in long sessions, and macOS Full Disk Access crash regression. 40+ bug fixes including MCP paginated tools/list and file descriptor exhaustion in skill directories.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21144-2026-05-19',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.41.0',
     date: 'May 19, 2026',
     description: 'Pedagogical update for CC 2.1.3: .claude/commands/ merged into .claude/skills/. The 3-way Agent/Skill/Command model becomes a 2-way Agent/Skill model with invocation modes. WP 02, 04, 07 (FR+EN) updated, plus Recap Cards c04, m09, m10, 01-commandes (FR+EN).',
