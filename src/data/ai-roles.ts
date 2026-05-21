@@ -36,7 +36,7 @@ export interface DecisionRow {
 }
 
 export const ROLES_META = {
-  count: 16,
+  count: 19,
   updated: 'May 2026',
   salaryMarket: 'US market · ±30%',
   sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md',
@@ -276,6 +276,54 @@ export const ROLES: RoleEntry[] = [
     guideAnchor: '16-ai-orchestration-engineer',
     landingUrl: '/guide/architecture/',
   },
+  {
+    id: 'spec-engineer',
+    title: 'Spec Engineer',
+    status: 'Emerging',
+    mission: 'Write the structured specifications that AI agents use to plan, implement, and validate code — bridging business intent and machine-executable contracts.',
+    skills: ['Structured spec writing (Gherkin-style, SDD formats)', 'Agent failure mode understanding (multi-file pass@1)', 'SDD tools (Spec Kit, Kiro, Augment, Factory.ai)', 'Version control discipline (specs versioned before code)'],
+    entryPaths: ['Technical writer with engineering background', 'QA engineer who understands requirements', 'Product engineer frustrated by low AI output quality'],
+    salary: {
+      entry: '$90K–$130K',
+      mid: '$130K–$180K',
+      senior: '$180K–$250K',
+      note: 'Often embedded in engineering teams, not standalone',
+    },
+    guideAnchor: '17-spec-engineer',
+    landingUrl: '/guide/ai-roles/',
+  },
+  {
+    id: 'agent-identity-architect',
+    title: 'Agent Identity Architect',
+    status: 'Emerging',
+    mission: 'Design and enforce the identity layer for AI agents: authentication, permission scoping, privilege escalation prevention, and per-session auditability.',
+    skills: ['IAM and OAuth/OIDC (per-agent service principals, OBO flows)', 'Zero-trust architecture', 'MCP gateway governance', 'Incident response for non-deterministic systems'],
+    entryPaths: ['Cloud/IAM security engineer', 'Identity & access management specialist', 'Platform engineer with security focus'],
+    salary: {
+      entry: '—',
+      mid: '$170K–$240K',
+      senior: '$240K–$340K',
+      note: 'Senior only; deep IAM expertise required',
+    },
+    guideAnchor: '18-agent-identity-architect',
+    landingUrl: '/guide/ai-roles/',
+  },
+  {
+    id: 'ai-eval-engineer',
+    title: 'AI Eval Engineer',
+    status: 'Emerging',
+    mission: 'Build and operate the continuous measurement layer that tells the organization whether its AI systems are getting better or worse in production.',
+    skills: ['Statistical experiment design', 'Canary pipeline implementation (A/B on 1-2% traffic)', 'Creator-verifier pattern (+12 to +26% correctness)', 'OTel GenAI conventions (gen_ai.client stable, gen_ai.agent experimental)'],
+    entryPaths: ['Backend engineer with testing background', 'QA engineer moving into AI', 'ML engineer focused on production reliability'],
+    salary: {
+      entry: '$110K–$150K',
+      mid: '$150K–$210K',
+      senior: '$210K–$290K',
+      note: 'Growing rapidly as agentic systems reach production',
+    },
+    guideAnchor: '19-ai-eval-engineer',
+    landingUrl: '/guide/ai-roles/',
+  },
 ]
 
 export const DECISION_MATRIX: DecisionRow[] = [
@@ -290,6 +338,9 @@ export const DECISION_MATRIX: DecisionRow[] = [
   { background: 'DevOps/platform engineer, wants to work with models', role: 'MLOps Engineer', timeline: '3–6 months upskill', roleId: 'mlops-engineer' },
   { background: 'Engineer with public presence & community instincts', role: 'AI Developer Advocate', timeline: '6–12 months', roleId: 'ai-developer-advocate' },
   { background: 'Integration or automation engineer adding AI', role: 'AI Orchestration Engineer', timeline: '3–6 months', roleId: 'ai-orchestration-engineer' },
+  { background: 'Technical writer or QA engineer with engineering background', role: 'Spec Engineer', timeline: '3–6 months', roleId: 'spec-engineer' },
+  { background: 'Cloud/IAM security engineer moving into AI', role: 'Agent Identity Architect', timeline: '6–12 months', roleId: 'agent-identity-architect' },
+  { background: 'Engineer who wants to measure AI quality rigorously', role: 'AI Eval Engineer', timeline: '3–6 months upskill', roleId: 'ai-eval-engineer' },
 ]
 
 export const STATUS_CONFIG: Record<RoleStatus, { label: string; color: string }> = {
