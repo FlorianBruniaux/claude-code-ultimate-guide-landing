@@ -16,6 +16,28 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.146',
+    date: 'May 21, 2026',
+    highlights: [
+      '⭐ <code>/simplify</code> renamed to <code>/code-review</code> with optional effort level (e.g. <code>/code-review high</code>)',
+      'Auto mode no longer suppresses <code>AskUserQuestion</code> when the user or a skill explicitly relies on it',
+      'Bug fixes: Windows PowerShell "command line is invalid" regression (2.1.124), MCP paginated resources/prompts, <code>/background</code> refusing skill-only commands, backgrounded sessions re-prompting for already-granted permissions, 15+ total',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.145',
+    date: 'May 20, 2026',
+    highlights: [
+      '⭐ <code>claude agents --json</code> — list live sessions as JSON for scripting (tmux-resurrect, status bars, session pickers)',
+      '⭐ <code>/plugin</code> Discover/Browse now previews commands, agents, skills, hooks, MCP/LSP before installation; tab title shows awaiting-input count',
+      'Security fix: permission-prompt bypass for bare variable assignments to non-allowlisted env vars in Bash now requires explicit approval',
+      'Bug fixes: MCP paginated resources/templates/prompts, Read tool truncates instead of hard error, <code>/review</code> GraphQL fix, task list ordering, agent team non-ASCII names',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.144',
     date: 'May 19, 2026',
     highlights: [
@@ -24,7 +46,6 @@ export const releases: Release[] = [
       '"extra usage" renamed to "usage credits" across CLI; <code>/extra-usage</code> → <code>/usage-credits</code> (old name still works)',
       'Bug fixes: 75s startup hang on unreachable API (now 15s timeout), terminal rendering corruption, macOS Full Disk Access crash, MCP paginated <code>tools/list</code>, 40+ total',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

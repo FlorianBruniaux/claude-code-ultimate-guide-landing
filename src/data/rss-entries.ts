@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.146',
+    date: 'May 21, 2026',
+    description: '/simplify is renamed to /code-review and gains an optional effort level (e.g. /code-review high). Auto mode no longer suppresses AskUserQuestion when a user or skill explicitly relies on it. Fixes Windows PowerShell "command line is invalid" regression (v2.1.124), MCP paginated resources/prompts, /background refusing skill-only sessions, and backgrounded sessions re-prompting for already-granted permissions.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21146-2026-05-21',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.145',
+    date: 'May 20, 2026',
+    description: 'claude agents --json lists all live sessions as JSON for scripting (tmux-resurrect, status bars, session pickers). The /plugin Discover and Browse screens now preview a plugin\'s commands, agents, skills, hooks, and MCP/LSP servers before installation. Security fix: bare variable assignments to non-allowlisted env vars in Bash no longer bypass the permission prompt. MCP paginated resources/templates/prompts now return all pages.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21145-2026-05-20',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.144',
     date: 'May 19, 2026',
     description: '/resume now surfaces background sessions alongside interactive ones in the picker. /model is session-only by default — press d to persist a default for new sessions. Fixed a 75s startup hang when api.anthropic.com is unreachable (now 15s timeout), terminal rendering corruption in long sessions, and macOS Full Disk Access crash regression. 40+ bug fixes including MCP paginated tools/list and file descriptor exhaustion in skill directories.',
