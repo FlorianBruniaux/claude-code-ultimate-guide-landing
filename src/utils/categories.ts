@@ -21,6 +21,7 @@ export const categories: Category[] = [
   { id: 13, name: 'Security Hardening', slug: 'security-hardening', emoji: '\u{1F4DA}' },
   { id: 14, name: 'Privacy & Observability', slug: 'privacy-observability', emoji: '\u{1F4DA}' },
   { id: 15, name: 'AI Ecosystem', slug: 'ai-ecosystem', emoji: '\u{1F4DA}' },
+  { id: 16, name: 'Agent Harness & Context', slug: 'agent-harness-context', emoji: '\u{1F4DA}' },
 ]
 
 export function getCategoryById(id: number): Category | undefined {

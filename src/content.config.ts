@@ -7,7 +7,7 @@ const questions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/questions' }),
   schema: z.object({
     id: z.string().regex(/^\d{2}-\d{3}$/),
-    category_id: z.number().min(1).max(15),
+    category_id: z.number().min(1).max(16),
     difficulty: z.enum(['junior', 'intermediate', 'senior', 'power']),
     profiles: z.array(z.enum(['junior', 'senior', 'power', 'pm'])),
     correct: z.enum(['a', 'b', 'c', 'd']),
