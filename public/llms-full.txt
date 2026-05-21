@@ -10,15 +10,16 @@
 
 - Title: Claude Code Ultimate Guide
 - Author: Florian Bruniaux (Founding Engineer @ Méthode Aristote)
-- Version: 3.32.2
-- Last Updated: March 9, 2026
+- Version: 3.39.1
+- Last Updated: May 21, 2026
 - License: CC BY-SA 4.0
 - Repository: https://github.com/FlorianBruniaux/claude-code-ultimate-guide
 - Landing: https://cc.bruniaux.com
-- Lines of Documentation: 22,760+
-- Production Templates: 238
-- Quiz Questions: 274
-- Whitepapers: 9 titles (FR + EN)
+- Lines of Documentation: 25,298+
+- Production Templates: 255
+- Quiz Questions: 311
+- Whitepapers: 12 titles (FR + EN)
+- CVE Database: 83 tracked vulnerabilities
 
 ---
 
@@ -26,7 +27,7 @@
 
 Claude Code is Anthropic's official CLI for AI-assisted development. It lets developers interact with Claude directly from the terminal to write, edit, debug, and review code. Unlike IDE plugins, it has full filesystem access, can run shell commands, and works autonomously on multi-step tasks.
 
-This guide is the most comprehensive community resource for Claude Code. It covers everything from installation to production security, with 238 ready-to-use templates for agents, hooks, commands, and skills.
+This guide is the most comprehensive community resource for Claude Code. It covers everything from installation to production security, with 255 ready-to-use templates for agents, hooks, commands, and skills.
 
 ## Who This Guide Is For
 

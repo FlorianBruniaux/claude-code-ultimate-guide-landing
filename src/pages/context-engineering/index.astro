@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 
-const title = 'Context Engineering Tools 2026: Compress, Optimize & Monitor LLM Context'
+const title = 'Context Engineering Tools 2026: Compress LLM Context'
 const description = 'Complete map of context engineering tools — RTK (89% CLI savings), lean-ctx (57–86% file read compression, MCP), Headroom, LLMLingua (20x), Edgee, Portkey, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
 
 const jsonLd = [
@@ -85,6 +85,17 @@ const tools = [
       { name: "Langfuse", tagline: "Open-source tracing, self-hostable", stars: null },
       { name: "Arize Phoenix", tagline: "RAG Triad evaluation specialist", stars: null },
     ]
+  },
+  {
+    category: "ACE Operations",
+    icon: "🔄",
+    description: "Close the feedback loop — detect friction, propose config changes as PRs, eject dormant rules",
+    color: "amber",
+    tools: [
+      { name: "Curator (PR-based)", tagline: "Generates config-change PRs from typed friction signals + canary A/B", stars: null },
+      { name: "Ejection probes", tagline: "Identifies dormant rules and negative-ROI skills, proposes archival", stars: null },
+    ],
+    guideLink: "https://cc.bruniaux.com/guide/context-engineering/#10-signal-taxonomy-and-causal-attribution"
   },
 ]
 
@@ -241,8 +252,8 @@ const useCaseMatrix = [
   <!-- Tool Categories -->
   <section class="section section--alt" id="tool-categories">
     <div class="container">
-      <h2 class="section-title">Six Tool Categories</h2>
-      <p class="section-subtitle">Each category intercepts at a different point in the pipeline — from CLI output to API gateway to observability layer.</p>
+      <h2 class="section-title">Seven Tool Categories</h2>
+      <p class="section-subtitle">Each category intercepts at a different point in the pipeline — from CLI output to observability layer to operational loop closure.</p>
       <div class="tool-categories-grid">
         {tools.map(cat => (
           <div class={`tool-category-card tool-category-card--${cat.color}`}>
@@ -262,6 +273,9 @@ const useCaseMatrix = [
                 </li>
               ))}
             </ul>
+            {cat.guideLink && (
+              <a href={cat.guideLink} class="tool-guide-link">View in guide →</a>
+            )}
           </div>
         ))}
       </div>
@@ -502,6 +516,16 @@ const useCaseMatrix = [
   .tool-category-card--teal   { border-top: 3px solid #0d9488; }
   .tool-category-card--green  { border-top: 3px solid #16a34a; }
   .tool-category-card--red    { border-top: 3px solid #dc2626; }
+  .tool-category-card--amber  { border-top: 3px solid #d97706; }
+
+  .tool-guide-link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    color: #d97706;
+    text-decoration: none;
+  }
+  .tool-guide-link:hover { text-decoration: underline; }
 
   .tool-category-header {
     display: flex;

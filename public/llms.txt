@@ -6,12 +6,14 @@
 
 - Title: Claude Code Ultimate Guide
 - Author: Florian Bruniaux (Founding Engineer @ Méthode Aristote)
-- Version: 3.32.2
-- Last Updated: March 9, 2026
+- Version: 3.39.1
+- Last Updated: May 21, 2026
 - License: CC BY-SA 4.0 (free, open source)
-- Lines of Documentation: 22,760+
-- Production Templates: 238
-- Quiz Questions: 274
+- Lines of Documentation: 25,298+
+- Production Templates: 255
+- Quiz Questions: 311
+- Whitepapers: 12 titles (FR + EN)
+- CVE Database: 83 tracked vulnerabilities
 
 ## What This Guide Covers
 
@@ -29,17 +31,17 @@
 ## Key Resources
 
 ### For Quick Start
-- Cheatsheet (2 min): https://cc.bruniaux.com/cheatsheet.html
+- Cheatsheet (2 min): https://cc.bruniaux.com/cheatsheet/
 - 5 Golden Rules: Always review diffs, /compact at 70%, be specific (WHAT+WHERE+HOW+VERIFY), Plan Mode first, create CLAUDE.md
 
 ### For Learning
 - Full Guide (~10h): https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md
-- Interactive Quiz (274 questions): https://cc.bruniaux.com/quiz.html
-- Whitepapers (FR + EN, 9 titles): https://www.florian.bruniaux.com/guides
+- Interactive Quiz (311 questions): https://cc.bruniaux.com/quiz/
+- Whitepapers (FR + EN, 12 titles): https://cc.bruniaux.com/whitepapers/
 - Landing site: https://cc.bruniaux.com
 
 ### For Templates
-- 238 Production Templates: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
+- 255 Production Templates: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
 - Agents: backend-architect, security-guardian, code-reviewer, debugger, devops-sre, adr-writer
 - Commands: /pr, /commit, /release-notes, /diagnose, /generate-tests, /optimize, /git-worktree
 - Hooks: dangerous-actions-blocker, prompt-injection-detector, secrets-scanner (bash + PowerShell)
@@ -79,10 +81,11 @@ Disable training: https://claude.ai/settings/data-privacy-controls
 ## Security
 
 This guide tracks the MCP/AI agent threat landscape:
-- CVE database: 24 tracked vulnerabilities
+- CVE database: 83 tracked vulnerabilities
+- 3,984 skills scanned (36.82% with security flaws)
 - Supply chain threat analysis
 - Production security hardening checklist
-- Threat database: examples/commands/resources/threat-db.yaml
+- Threat database: https://cc.bruniaux.com/security/
 
 ## Machine-Readable Reference
 
