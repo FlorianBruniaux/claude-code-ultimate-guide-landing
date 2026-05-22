@@ -1,0 +1,145 @@
+---
+import { MCQ_QUESTIONS } from '../../data/mcp-cli-quiz'
+
+const total = MCQ_QUESTIONS.length
+---
+
+<section class="section mcq-section" id="mcp-cli-quiz" aria-label="MCP vs CLI quiz">
+  <div class="container">
+    <div class="mcq-wrapper">
+
+      <!-- Screen 1: Intro -->
+      <div id="mcq-intro" class="mcq-screen mcq-active">
+        <div class="mcq-intro-content">
+          <div class="mcq-intro-badge">{total} questions · under 1 minute · no sign-up</div>
+          <h2 class="mcq-intro-title">MCP or CLI?</h2>
+          <p class="mcq-intro-sub">
+            Answer {total} questions about your team, services, and model. Get a personalized recommendation: MCP-First, CLI-First, or Hybrid Workflow.
+          </p>
+          <button id="mcq-start" class="btn btn-primary mcq-start-btn">Start Quiz</button>
+          <noscript>
+            <p class="mcq-noscript">
+              JavaScript is required for the quiz.
+              <a href="/guide/ecosystem/mcp-vs-cli/">Read the decision guide instead &rarr;</a>
+            </p>
+          </noscript>
+        </div>
+      </div>
+
+      <!-- Screen 2: Question -->
+      <div id="mcq-question" class="mcq-screen">
+        <div class="mcq-progress-bar">
+          <div id="mcq-progress-fill" class="mcq-progress-fill" style="width: 0%"></div>
+        </div>
+        <div class="mcq-question-meta">
+          <span id="mcq-question-num" class="mcq-question-num">1 / {total}</span>
+          <span id="mcq-dimension" class="mcq-dimension">dimension</span>
+        </div>
+        <p id="mcq-question-text" class="mcq-question-text">Question text</p>
+        <div id="mcq-options" class="mcq-options" role="group" aria-label="Answer options">
+        </div>
+        <div class="mcq-nav">
+          <button id="mcq-back" class="btn btn-secondary mcq-nav-btn" disabled>Back</button>
+          <button id="mcq-next" class="btn btn-primary mcq-nav-btn" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- Screen 3: Results -->
+      <div id="mcq-results" class="mcq-screen">
+        <h2 class="mcq-results-title">Your Recommendation</h2>
+        <div class="mcq-primary-wrap">
+          <p class="mcq-section-label">Best fit for your context</p>
+          <div id="mcq-primary" class="mcq-primary-card"></div>
+        </div>
+        <div class="mcq-bars-wrap">
+          <p class="mcq-section-label">Score breakdown</p>
+          <div id="mcq-all-bars" class="mcq-all-bars"></div>
+        </div>
+        <div class="mcq-results-actions">
+          <button id="mcq-retake" class="btn btn-secondary">Retake Quiz</button>
+          <button id="mcq-explore" class="btn btn-primary">Read the Decision Guide &rarr;</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/mcp-cli-quiz'
+</script>
+
+<style>
+.mcq-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.mcq-wrapper { max-width: 640px; margin: 0 auto; }
+.mcq-screen { display: none; }
+.mcq-screen.mcq-active { display: block; }
+.mcq-intro-content { text-align: center; padding: var(--space-xl) 0; }
+.mcq-intro-badge {
+  display: inline-block; padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary); border: 1px solid var(--border);
+  border-radius: 999px; font-size: 0.8rem; font-family: var(--font-mono);
+  color: var(--accent); font-weight: 500; margin-bottom: var(--space-lg);
+}
+.mcq-intro-title { font-size: 1.75rem; font-weight: 700; margin-bottom: var(--space-md); color: var(--text-primary); }
+.mcq-intro-sub { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; max-width: 480px; margin: 0 auto var(--space-xl); }
+.mcq-start-btn { font-size: 1rem; padding: 0.875rem 2.5rem; min-width: 180px; }
+.mcq-noscript { margin-top: var(--space-md); font-size: 0.85rem; color: var(--text-secondary); }
+.mcq-noscript a { color: var(--accent); }
+.mcq-progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: var(--space-xl); }
+.mcq-progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s ease; }
+.mcq-question-meta { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md); }
+.mcq-question-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; }
+.mcq-dimension { font-size: 0.75rem; padding: 0.2rem 0.6rem; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; color: var(--text-secondary); font-family: var(--font-mono); text-transform: capitalize; }
+.mcq-question-text { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); line-height: 1.5; margin-bottom: var(--space-xl); }
+.mcq-options { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+:global(.mcq-option) { width: 100%; text-align: left; padding: 0.875rem var(--space-lg); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius); color: var(--text-primary); font-size: 0.95rem; line-height: 1.4; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast); min-height: 44px; }
+:global(.mcq-option:hover) { border-color: var(--accent); background: var(--bg-tertiary); }
+:global(.mcq-option--selected) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface-elevated)); }
+.mcq-nav { display: flex; gap: var(--space-md); justify-content: flex-end; }
+.mcq-nav-btn { min-width: 100px; }
+.mcq-results-title { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xl); color: var(--text-primary); }
+.mcq-section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: var(--space-sm); }
+.mcq-primary-wrap { margin-bottom: var(--space-xl); }
+.mcq-primary-card { padding: var(--space-xl); background: var(--surface-elevated); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); }
+:global(.mcq-result-header) { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+:global(.mcq-result-icon) { font-size: 1.5rem; line-height: 1; }
+:global(.mcq-match-badge) { display: inline-block; font-size: 0.7rem; font-weight: 700; font-family: var(--font-mono); padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+:global(.mcq-match-badge--strong) { background: color-mix(in srgb, #22c55e 15%, transparent); color: #22c55e; border: 1px solid color-mix(in srgb, #22c55e 30%, transparent); }
+:global(.mcq-match-badge--good) { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+:global(.mcq-match-badge--moderate) { background: color-mix(in srgb, #6b7280 12%, transparent); color: #6b7280; border: 1px solid color-mix(in srgb, #6b7280 30%, transparent); }
+:global(.mcq-result-title) { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); }
+:global(.mcq-bar-wrap) { margin-bottom: var(--space-md); }
+:global(.mcq-bar) { display: flex; align-items: center; height: 28px; background: var(--bg-tertiary); border-radius: 4px; overflow: visible; position: relative; }
+:global(.mcq-bar::before) { content: ''; display: block; height: 100%; width: var(--pct); background: var(--accent); border-radius: 4px; transition: width 0.6s ease; min-width: 4px; }
+:global(.mcq-bar-label) { position: absolute; right: calc(100% - var(--pct) + 8px); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--bg-primary); pointer-events: none; white-space: nowrap; }
+:global(.mcq-bar--secondary::before) { background: color-mix(in srgb, var(--accent) 55%, transparent); }
+:global(.mcq-result-description) { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: var(--space-md); }
+:global(.mcq-tips) { padding: var(--space-md) var(--space-lg); background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--border-radius); margin-bottom: var(--space-md); }
+:global(.mcq-tips-label) { font-size: 0.7rem; font-weight: 700; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.5rem; }
+:global(.mcq-tips-list) { margin: 0; padding-left: 1.25rem; }
+:global(.mcq-tip-item) { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.25rem; }
+:global(.mcq-result-link) { font-size: 0.875rem; font-weight: 500; color: var(--accent); text-decoration: none; }
+:global(.mcq-result-link:hover) { text-decoration: underline; }
+.mcq-bars-wrap { margin-bottom: var(--space-xl); }
+.mcq-all-bars { display: flex; flex-direction: column; gap: var(--space-md); }
+:global(.mcq-bar-row) { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius); padding: var(--space-md) var(--space-lg); }
+:global(.mcq-bar-row-meta) { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+:global(.mcq-bar-row-icon) { font-size: 1rem; line-height: 1; }
+:global(.mcq-bar-row-title) { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); flex: 1; }
+:global(.mcq-bar-row-pct) { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); }
+.mcq-results-actions { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
+@media (max-width: 640px) {
+  .mcq-intro-title { font-size: 1.4rem; }
+  .mcq-question-text { font-size: 1.05rem; }
+  :global(.mcq-option) { font-size: 0.9rem; padding: 0.75rem var(--space-md); }
+  .mcq-nav { justify-content: stretch; }
+  .mcq-nav-btn { flex: 1; }
+  .mcq-results-actions { flex-direction: column; }
+  .mcq-results-actions .btn { width: 100%; text-align: center; }
+}
+</style>

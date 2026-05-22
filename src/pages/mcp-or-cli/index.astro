@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import McpCliQuiz from '../../components/landing/McpCliQuiz.astro'
+
+const title = 'MCP or CLI? Find the Right Integration Pattern for Your Context'
+const description = 'Answer 6 questions about your team, services, and model. Get a personalized recommendation: MCP-First, CLI-First, or Hybrid Workflow. Based on the Claude Code Ultimate Guide decision framework.'
+
+const jsonLd = [
+  {
+    '@type': 'WebPage',
+    name: 'MCP or CLI? Find the Right Integration Pattern',
+    description: 'Interactive quiz: 6 questions, personalized MCP vs CLI recommendation.',
+    url: 'https://cc.bruniaux.com/mcp-or-cli/',
+    datePublished: '2026-05-22',
+    inLanguage: 'en',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Claude Code Ultimate Guide',
+      url: 'https://cc.bruniaux.com/',
+    },
+  },
+  {
+    '@type': 'Quiz',
+    name: 'MCP or CLI Quiz',
+    description: '6-question quiz that recommends MCP-First, CLI-First, or Hybrid Workflow based on your context.',
+    educationalAlignment: {
+      '@type': 'AlignmentObject',
+      educationalFramework: 'Claude Code',
+      targetName: 'MCP vs CLI Integration Decision',
+    },
+  },
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <div class="container">
+      <h1>MCP or CLI?</h1>
+      <p class="tagline">6 questions. Personalized recommendation for your context.</p>
+    </div>
+  </header>
+
+  <McpCliQuiz />
+
+  <section class="content-section">
+    <div class="container content-narrow">
+      <h2>How the recommendation works</h2>
+      <p>The quiz evaluates six dimensions that drive the MCP vs CLI decision: who uses the tools, how services authenticate, which model tier you use, whether observability is required, which mature CLIs are available for your services, and how many people need consistent access.</p>
+      <p>These map directly to the four decision dimensions in the <a href="/guide/ecosystem/mcp-vs-cli/">MCP vs CLI Decision Guide</a>: user type (dominant variable), model tier, observability requirements, and CLI availability. The team-scale and auth-model questions add precision beyond the four-dimension framework.</p>
+      <p>The three outcomes are not exclusive. Most production workflows end up using both CLI and MCP, with each covering the layer it handles best. The quiz identifies your primary lean, not a strict constraint.</p>
+      <div class="page-actions">
+        <a href="/guide/ecosystem/mcp-vs-cli/" class="btn btn-primary">Read the full decision guide &rarr;</a>
+        <a href="/ecosystem/" class="btn btn-secondary">MCP ecosystem overview</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .content-narrow { max-width: 680px; }
+  .content-narrow h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--space-md); }
+  .content-narrow p { color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--space-md); }
+  .content-narrow a { color: var(--accent); }
+  .page-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl); }
+  @media (max-width: 640px) { .page-actions { flex-direction: column; } .page-actions .btn { width: 100%; text-align: center; } }
+</style>
