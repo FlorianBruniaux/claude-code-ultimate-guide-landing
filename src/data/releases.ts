@@ -16,6 +16,26 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.148',
+    date: 'May 22, 2026',
+    highlights: [
+      'Hotfix: Bash tool returning exit code 127 on every command (regression from 2.1.147)',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.147',
+    date: 'May 22, 2026',
+    highlights: [
+      '⭐ Pinned background sessions (<code>Ctrl+T</code> in <code>claude agents</code>) — stay alive when idle, auto-restart on CC updates, shed under memory pressure only after non-pinned sessions',
+      '<code>/code-review --comment</code> — post findings as inline GitHub PR comments',
+      'Improved auto-updater: retries transient network failures, reports specific error categories and OS error codes, shows current version on failure',
+      'Bug fixes: prompt history no consecutive duplicates, PowerShell hook <code>if</code> conditions matching, pasted text <code>[Pasted text #N]</code> placeholder, plugin component counts doubled, slash commands + tab/newline treated as unknown, 25+ additional fixes',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.146',
     date: 'May 21, 2026',
     highlights: [
@@ -23,7 +43,6 @@ export const releases: Release[] = [
       'Auto mode no longer suppresses <code>AskUserQuestion</code> when the user or a skill explicitly relies on it',
       'Bug fixes: Windows PowerShell "command line is invalid" regression (2.1.124), MCP paginated resources/prompts, <code>/background</code> refusing skill-only commands, backgrounded sessions re-prompting for already-granted permissions, 15+ total',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

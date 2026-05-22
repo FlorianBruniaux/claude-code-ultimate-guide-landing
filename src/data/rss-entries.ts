@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.147',
+    date: 'May 22, 2026',
+    description: 'Pinned background sessions (Ctrl+T in claude agents) now stay alive when idle and auto-restart to apply CC updates. /code-review gains a --comment flag to post findings as inline GitHub PR comments. Auto-updater now retries transient network failures and reports specific error categories. Fixes prompt history consecutive duplicates, PowerShell hook if-conditions never matching, pasted text delivered as [Pasted text #N] placeholder, and 25+ more.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21147-2026-05-22',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.146',
     date: 'May 21, 2026',
     description: '/simplify is renamed to /code-review and gains an optional effort level (e.g. /code-review high). Auto mode no longer suppresses AskUserQuestion when a user or skill explicitly relies on it. Fixes Windows PowerShell "command line is invalid" regression (v2.1.124), MCP paginated resources/prompts, /background refusing skill-only sessions, and backgrounded sessions re-prompting for already-granted permissions.',
