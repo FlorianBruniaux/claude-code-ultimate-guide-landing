@@ -2,13 +2,13 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Context Engineering Tools 2026: Compress LLM Context'
-const description = 'Complete map of context engineering tools — RTK (89% CLI savings), lean-ctx (57–86% file read compression, MCP), Headroom, LLMLingua (20x), Edgee, Portkey, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
+const description = 'Complete map of context engineering tools: RTK (89% CLI savings), lean-ctx (57–86% file read compression, MCP), Headroom, LLMLingua (20x), Edgee, Portkey, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
 
 const jsonLd = [
   {
     "@type": "Article",
     "headline": "Context Engineering: Tools & Ecosystem 2026",
-    "description": "Practical guide to the tools that compress, optimize, route, and observe LLM context — from CLI output filters to AI gateways to LLMOps platforms",
+    "description": "Practical guide to the tools that compress, optimize, route, and observe LLM context, from CLI output filters to AI gateways to LLMOps platforms",
     "url": "https://cc.bruniaux.com/context-engineering/",
     "mainEntityOfPage": "https://cc.bruniaux.com/context-engineering/",
     "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
@@ -32,7 +32,7 @@ const tools = [
     color: "orange",
     tools: [
       { name: "RTK", tagline: "CLI proxy, 89% avg savings", stars: "446" },
-      { name: "lean-ctx", tagline: "MCP server — file reads + session memory, 57–86% savings", stars: "1366" },
+      { name: "lean-ctx", tagline: "MCP server: file reads + session memory, 57–86% savings", stars: "1366" },
       { name: "Headroom", tagline: "Lossless, 70–95% on structured data", stars: null },
     ]
   },
@@ -62,7 +62,7 @@ const tools = [
     description: "Improve retrieval quality and reduce retrieval noise",
     color: "teal",
     tools: [
-      { name: "Contextual Retrieval", tagline: "Anthropic — 67% fewer failures", stars: null },
+      { name: "Contextual Retrieval", tagline: "Anthropic, 67% fewer failures", stars: null },
       { name: "RAG Triad", tagline: "Evaluation: context / answer / groundedness", stars: null },
     ]
   },
@@ -73,7 +73,7 @@ const tools = [
     color: "green",
     tools: [
       { name: "ICM", tagline: "Infinite Context Memory, dual-layer", stars: null },
-      { name: "/compact", tagline: "Native Claude Code — use at 70%", stars: null },
+      { name: "/compact", tagline: "Native Claude Code, use at 70%", stars: null },
     ]
   },
   {
@@ -89,7 +89,7 @@ const tools = [
   {
     category: "ACE Operations",
     icon: "🔄",
-    description: "Close the feedback loop — detect friction, propose config changes as PRs, eject dormant rules",
+    description: "Close the feedback loop: detect friction, propose config changes as PRs, eject dormant rules",
     color: "amber",
     tools: [
       { name: "Curator (PR-based)", tagline: "Generates config-change PRs from typed friction signals + canary A/B", stars: null },
@@ -103,7 +103,7 @@ const concepts = [
   {
     name: "Minimum Viable Context",
     abbr: "MVC",
-    definition: "Provide exactly what the model needs — nothing more. Over-context degrades adherence as fast as under-context produces hallucinations.",
+    definition: "Provide exactly what the model needs, nothing more. Over-context degrades adherence as fast as under-context produces hallucinations.",
     example: "20 precise rules beat 200 generic ones."
   },
   {
@@ -165,7 +165,7 @@ const useCaseMatrix = [
         <span class="hero-badge hero-badge--secondary">RTK · lean-ctx · Headroom · LLMLingua · Edgee · Portkey</span>
       </div>
       <h1>Context Engineering: Tools & Ecosystem</h1>
-      <p class="tagline">The context window is not storage — it's a budget of attention. This page maps the tools that help you spend it well.</p>
+      <p class="tagline">The context window is not storage. It's a budget of attention. This page maps the tools that help you spend it well.</p>
       <div class="cta-buttons">
         <a href="#tool-categories" class="btn btn-primary">Explore Tools</a>
         <a href="https://cc.bruniaux.com/guide/ecosystem/context-engineering-tools/" class="btn btn-secondary">Full Reference Guide</a>
@@ -180,7 +180,7 @@ const useCaseMatrix = [
         <div class="paradigm-text">
           <span class="section-badge">The Shift</span>
           <h2 class="section-title">From Prompt Engineering to Context Engineering</h2>
-          <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture — what the model knows before any request begins.</p>
+          <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture: what the model knows before any request begins.</p>
           <p>When Claude generates generic output, ignores a convention, or hallucinates, the model is almost never broken. The context it received was incomplete, stale, or carrying too much noise. That reframe shifts troubleshooting from "the AI is bad at this" to "what is missing from the context?"</p>
           <p>The tools on this page attack that problem from different angles: compressing what enters the context, filtering what shouldn't, routing intelligently, and measuring the results.</p>
         </div>
@@ -253,7 +253,7 @@ const useCaseMatrix = [
   <section class="section section--alt" id="tool-categories">
     <div class="container">
       <h2 class="section-title">Seven Tool Categories</h2>
-      <p class="section-subtitle">Each category intercepts at a different point in the pipeline — from CLI output to observability layer to operational loop closure.</p>
+      <p class="section-subtitle">Each category intercepts at a different point in the pipeline, from CLI output to observability layer to operational loop closure.</p>
       <div class="tool-categories-grid">
         {tools.map(cat => (
           <div class={`tool-category-card tool-category-card--${cat.color}`}>
@@ -286,17 +286,17 @@ const useCaseMatrix = [
   <section class="section">
     <div class="container">
       <h2 class="section-title">Benchmarks Worth Knowing</h2>
-      <p class="section-subtitle">These numbers come from published research and production data — not marketing copy.</p>
+      <p class="section-subtitle">These numbers come from published research and production data, not marketing copy.</p>
       <div class="benchmarks-grid">
         <div class="benchmark-card">
           <div class="benchmark-number">89%</div>
           <div class="benchmark-label">avg token reduction</div>
-          <div class="benchmark-source">RTK — measured across git, test, and build commands</div>
+          <div class="benchmark-source">RTK, measured across git, test, and build commands</div>
         </div>
         <div class="benchmark-card">
           <div class="benchmark-number">20x</div>
           <div class="benchmark-label">prompt compression</div>
-          <div class="benchmark-source">LLMLingua — 1.5% performance loss on GSM8K & BBH</div>
+          <div class="benchmark-source">LLMLingua, 1.5% performance loss on GSM8K & BBH</div>
         </div>
         <div class="benchmark-card">
           <div class="benchmark-number">67%</div>
@@ -365,7 +365,7 @@ const useCaseMatrix = [
     <div class="container">
       <div class="cta-block">
         <h2>Full Reference in the Guide</h2>
-        <p>The guide covers every tool with install instructions, measured benchmarks, and when-to-choose-what guidance — including LLMOps tools (Langfuse, LangSmith, Arize Phoenix), KV cache infrastructure (vLLM, SGLang), and the full research landscape (SlimInfer, TopV, AttnComp).</p>
+        <p>The guide covers every tool with install instructions, measured benchmarks, and when-to-choose-what guidance, including LLMOps tools (Langfuse, LangSmith, Arize Phoenix), KV cache infrastructure (vLLM, SGLang), and the experimental catalog (SlimInfer, TopV, AttnComp).</p>
         <div class="cta-buttons">
           <a href="https://cc.bruniaux.com/guide/ecosystem/context-engineering-tools/" class="btn btn-primary">Open Full Guide</a>
           <a href="https://cc.bruniaux.com/context/" class="btn btn-secondary">Build Your CLAUDE.md</a>

@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Context Engineering Configurator | Claude Code Guide'
-const description = 'Generate a personalized CLAUDE.md starter kit in 3 steps. Answer questions about your team size, current setup, and tech stack — get a ready-to-use context file plus a maturity level assessment.'
+const description = 'Generate a personalized CLAUDE.md starter kit in 3 steps. Answer questions about your team size, current setup, and tech stack. Get a ready-to-use context file plus a maturity level assessment.'
 
 const jsonLd = [
   {
@@ -288,7 +288,7 @@ const jsonLd = [
             <div class="cc-maturity-header">
               <div>
                 <p class="cc-section-label">Context Maturity</p>
-                <h3 id="cc-maturity-name" class="cc-maturity-name">Level 1 — Starter</h3>
+                <h3 id="cc-maturity-name" class="cc-maturity-name">Level 1: Starter</h3>
               </div>
               <div id="cc-maturity-badge" class="cc-maturity-badge">L1</div>
             </div>
@@ -339,6 +339,8 @@ const jsonLd = [
           <div class="cc-results-links">
             <a href="https://cc.bruniaux.com/guide/context-engineering/" class="cc-result-link">Read the Context Engineering guide →</a>
             <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/context-engineering" class="cc-result-link">Browse example templates on GitHub →</a>
+            <a href="https://cc.bruniaux.com/guide/context-engineering/#10-signal-taxonomy-and-causal-attribution" class="cc-result-link">ACE operations: signal taxonomy, loop closure, ejection →</a>
+            <a href="https://cc.bruniaux.com/context-engineering/" class="cc-result-link">Tools panorama: RTK, lean-ctx, LLMLingua, ACE Operations →</a>
           </div>
         </div>
 
@@ -350,7 +352,7 @@ const jsonLd = [
   <section class="section section--alt">
     <div class="container">
       <h2 class="section-title">What Is Context Engineering?</h2>
-      <p class="section-subtitle">The practice of systematically designing and managing the information you give AI coding tools — so they produce better output, more reliably.</p>
+      <p class="section-subtitle">The practice of systematically designing and managing the information you give AI coding tools, so they produce better output, more reliably.</p>
       <div class="cc-concepts-grid">
         <div class="cc-concept-card">
           <div class="cc-concept-icon">📄</div>
@@ -360,12 +362,12 @@ const jsonLd = [
         <div class="cc-concept-card">
           <div class="cc-concept-icon">🗂️</div>
           <h3>Modular rules files</h3>
-          <p>Instead of one giant file, experienced teams extract rules into separate .md files — one per concern (security, testing, git) — and import them via @path syntax. Easier to maintain, easier to scope by directory.</p>
+          <p>Instead of one giant file, experienced teams extract rules into separate .md files (one per concern: security, testing, git) and import them via @path syntax. Easier to maintain, easier to scope by directory.</p>
         </div>
         <div class="cc-concept-card">
           <div class="cc-concept-icon">👤</div>
           <h3>Profile-based assembly</h3>
-          <p>On larger teams, different roles need different context. A profile YAML defines which modules to assemble for a given team member — frontend dev, backend dev, or staff engineer.</p>
+          <p>On larger teams, different roles need different context. A profile YAML defines which modules to assemble for a given team member: frontend dev, backend dev, or staff engineer.</p>
         </div>
         <div class="cc-concept-card">
           <div class="cc-concept-icon">🔄</div>
@@ -426,7 +428,7 @@ const jsonLd = [
     <div class="container">
       <div class="cc-cta-box">
         <h2>Full guide in the docs</h2>
-        <p>The Context Engineering section covers every maturity level in depth — architecture patterns, example file structures, CI setup, and real team configurations.</p>
+        <p>The Context Engineering section covers every maturity level in depth: architecture patterns, example file structures, CI setup, and real team configurations.</p>
         <div class="cta-buttons">
           <a href="https://cc.bruniaux.com/guide/context-engineering/" class="btn btn-primary">Read the Full Guide →</a>
           <a href="/" class="btn btn-secondary">← Back to Home</a>
@@ -1420,7 +1422,7 @@ overrides:
       badge.style.setProperty('--maturity-color', maturityData.color)
       badge.style.background = maturityData.color === 'var(--accent)' ? 'var(--accent)' : maturityData.color
     }
-    if (nameEl) nameEl.textContent = `Level ${level} — ${maturityData.name}`
+    if (nameEl) nameEl.textContent = `Level ${level}: ${maturityData.name}`
 
     // Level pips
     const card = document.getElementById('cc-maturity-display')

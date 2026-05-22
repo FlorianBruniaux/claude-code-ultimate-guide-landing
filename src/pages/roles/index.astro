@@ -4,12 +4,12 @@ import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai
 import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 
 const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
-const description = 'Map of 19 AI engineering roles — Spec Engineer, Agent Identity Architect, AI Eval Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
+const description = 'Map of 19 AI engineering roles: Spec Engineer, Agent Identity Architect, AI Eval Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
 
 const jsonLd = [
   {
     "@type": "Article",
-    "headline": "AI Roles & Career Paths: The New Engineering Landscape",
+    "headline": "AI Roles & Career Paths: 19 New Engineering Roles Mapped",
     "description": "Comprehensive map of emerging AI roles with responsibilities, skills, and career trajectories for developers considering an AI specialization",
     "url": "https://cc.bruniaux.com/roles/",
     "mainEntityOfPage": "https://cc.bruniaux.com/roles/",
@@ -38,8 +38,8 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         <span class="hero-badge">{ROLES_META.count} roles mapped</span>
         <span class="hero-badge hero-badge--secondary">Updated {ROLES_META.updated}</span>
       </div>
-      <h1>The New AI Engineering Landscape</h1>
-      <p class="tagline">The AI wave didn't just create new tools — it created new jobs that didn't exist 3 years ago. Find where you fit.</p>
+      <h1>The New AI Engineering Roles</h1>
+      <p class="tagline">The AI wave didn't just create new tools, it created new jobs that didn't exist 3 years ago. Find where you fit.</p>
       <div class="cta-buttons">
         <a href="#role-quiz" class="btn btn-primary">Find My Role →</a>
         <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
@@ -59,7 +59,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         <div class="axis-card axis-card--model">
           <div class="axis-icon">🧠</div>
           <h3>Closer to the model</h3>
-          <p>You work with model internals — training, fine-tuning, evaluation, safety. High barrier to entry, fewer roles, highest research overlap.</p>
+          <p>You work with model internals: training, fine-tuning, evaluation, safety. High barrier to entry, fewer roles, highest research overlap.</p>
           <div class="axis-roles">
             <span class="axis-role-tag">ML Engineer</span>
             <span class="axis-role-tag">LLM Engineer</span>
@@ -163,10 +163,10 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
       <div class="callout-box">
         <h3>The fastest path to AI employment in 2025–2026</h3>
         <ol class="fast-path-list">
-          <li><strong>Build something</strong> with AI APIs — a real project, not a tutorial</li>
-          <li><strong>Write about it</strong> — blog post, GitHub README, LinkedIn thread</li>
-          <li><strong>Add evals</strong> — measure your system's quality, show the numbers</li>
-          <li><strong>Apply for AI Engineer roles</strong> — the bar is demonstrated building, not credentials</li>
+          <li><strong>Build something</strong> with AI APIs. A real project, not a tutorial.</li>
+          <li><strong>Write about it</strong>: blog post, GitHub README, LinkedIn thread.</li>
+          <li><strong>Add evals</strong>: measure your system's quality, show the numbers.</li>
+          <li><strong>Apply for AI Engineer roles</strong>. The bar is demonstrated building, not credentials.</li>
         </ol>
         <p class="callout-note">76% of candidates claiming AI expertise lack production-level deployment experience. The bar is lower than it looks if you've actually shipped something.</p>
       </div>
@@ -178,7 +178,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
     <div class="container">
       <h2 class="section-title">Salary Benchmarks</h2>
       <div class="salary-disclaimer">
-        <strong>Indicative only — large variance applies.</strong> These are US base salaries (2025–2026). Europe runs 30–50% lower, other markets 40–60% lower. Total comp (equity, bonus, RSUs) can significantly exceed base, especially at startups and FAANG. Use as orientation, not negotiation anchors.
+        <strong>Indicative only. Large variance applies.</strong> These are US base salaries (2025–2026). Europe runs 30–50% lower, other markets 40–60% lower. Total comp (equity, bonus, RSUs) can significantly exceed base, especially at startups and FAANG. Use as orientation, not negotiation anchors.
       </div>
       <p class="section-subtitle">
         Source: FinalRoundAI, Alcor, RiseWorks AI Talent Report (2025)
@@ -210,7 +210,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
                   <td class="salary-figure">{role.salary?.entry ?? '—'}</td>
                   <td class="salary-figure salary-figure--mid">{role.salary?.mid ?? '—'}</td>
                   <td class="salary-figure">{role.salary?.senior ?? '—'}</td>
-                  <td class="salary-note">{role.salary?.note ?? (role.salary === null ? 'Role emerging — no data yet' : '')}</td>
+                  <td class="salary-note">{role.salary?.note ?? (role.salary === null ? 'Role emerging, no data yet' : '')}</td>
                 </tr>
               )
             })}
@@ -232,11 +232,11 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         </div>
         <div class="not-role-card">
           <h3>"Context Engineering"</h3>
-          <p>A design practice, not a title. It describes how you manage what goes into an LLM's context window — token budgets, retrieval strategy, session continuity, knowledge architecture. Every AI engineer does this. When companies post "Context Engineer" roles, they mean an AI Engineer who specializes in information retrieval systems.</p>
+          <p>A design practice, not a title. It describes how you manage what goes into an LLM's context window: token budgets, retrieval strategy, session continuity, knowledge architecture. Every AI engineer does this. When companies post "Context Engineer" roles, they mean an AI Engineer who specializes in information retrieval systems.</p>
         </div>
         <div class="not-role-card">
           <h3>"AI-Native Engineer"</h3>
-          <p>Describes a quality expected of all engineers increasingly — you use AI tools fluently in your daily workflow. It's the bar, not the title.</p>
+          <p>Describes a quality expected of all engineers, increasingly. You use AI tools fluently in your daily workflow. It's the bar, not the title.</p>
         </div>
       </div>
     </div>

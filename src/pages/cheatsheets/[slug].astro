@@ -348,7 +348,7 @@ const jsonLd = [
           try {
             if (typeof gtag !== 'undefined') gtag('event', 'recap_card_subscribe', { event_label: seriesId })
           } catch {}
-          showSuccess('Check your inbox — the PDF bundle is on its way!')
+          showSuccess('Check your inbox. The PDF bundle is on its way!')
           setTimeout(() => unlock(), 2000)
         } else {
           showError(data.error || 'Failed to send. Please try again.')

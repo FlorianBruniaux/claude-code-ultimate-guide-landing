@@ -77,12 +77,12 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'macOS widget + Raycast extension',
     ],
     limitations: [
-      'Relies on local JSONL parsing — estimates may differ from official Anthropic billing',
+      'Relies on local JSONL parsing. Estimates may differ from official Anthropic billing.',
       'No team aggregation without manual log merging',
     ],
     when_to_use:
       'Default choice for cost visibility. Pairs well with RTK (RTK reduces tokens, ccusage monitors them).',
-    cross_ref: 'guide/ultimate-guide.md — Section 2.4 (cost monitoring)',
+    cross_ref: 'guide/ultimate-guide.md, Section 2.4 (cost monitoring)',
   },
 
   {
@@ -133,7 +133,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     limitations: [
       'Uploads stats to an external server (machine hostname, token counts, model names)',
       'No published privacy policy as of March 2026',
-      'Very young project (created Feb 2026) — no public security audit',
+      'Very young project (created Feb 2026). No public security audit.',
     ],
     when_to_use:
       'Only tool with social / leaderboard features. If you want local-only cost visibility, ccusage or ccburn carry no data-sharing implications.',
@@ -156,7 +156,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       '`rtk vitest run`, `rtk prisma`, `rtk pnpm` (70-90% reduction)',
       'Multi-language: Python, Go, Rust toolchain support',
       'TOML Filter DSL for custom output filters without writing Rust',
-      '`rtk gain` / `rtk gain -p` — token savings analytics',
+      '`rtk gain` / `rtk gain -p`: token savings analytics',
       'Hook-first install with `settings.json` auto-patch',
     ],
     limitations: [
@@ -165,7 +165,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     ],
     when_to_use:
       'Use RTK to reduce token consumption (preprocessing). Use ccusage to monitor it (postprocessing). Use both together.',
-    cross_ref: 'guide/ultimate-guide.md — Section 9 (command output optimization)',
+    cross_ref: 'guide/ultimate-guide.md, Section 9 (command output optimization)',
   },
 
   // ── Session Management ─────────────────────────────────────────────────────
@@ -190,7 +190,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Responsive design (desktop + mobile)',
     ],
     limitations: [
-      'Read-only — cannot edit or resume sessions',
+      'Read-only. Cannot edit or resume sessions.',
       'No cost data',
       'Requires existing `~/.claude/projects/` history',
     ],
@@ -212,21 +212,21 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     author: 'Melty Labs (Thomas Dohmke)',
     features: [
       'Automatic session recording with full context (prompts + reasoning + file changes)',
-      'Rewindable checkpoints — restore any session state',
+      'Rewindable checkpoints: restore any session state',
       'Governance layer: permission system, human approval gates, audit trails',
       'Agent handoffs preserving context (Claude → Gemini)',
       'Git-native storage on `entire/checkpoints/v1` branch',
       'Multi-agent support with context sharing',
     ],
     limitations: [
-      'Very new (launched Feb 2026) — limited production feedback',
+      'Very new (launched Feb 2026). Limited production feedback.',
       'Enterprise-focused (may be complex for solo devs)',
       '~5-10% storage overhead per project',
       'macOS/Linux only (Windows via WSL)',
     ],
     when_to_use:
       'SOC2/HIPAA compliance, multi-agent workflows, debugging AI decisions by rewinding. Use claude-code-viewer for simple history browsing.',
-    cross_ref: 'guide/ops/ai-traceability.md — Section 5.1 (Entire CLI)',
+    cross_ref: 'guide/ops/ai-traceability.md, Section 5.1 (Entire CLI)',
   },
 
   // ── Configuration Management ───────────────────────────────────────────────
@@ -273,9 +273,9 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     limitations: [
       'Opinionated configuration choices',
       'Some features require a premium tier',
-      'Does not read existing config — scaffolds from scratch',
+      'Does not read existing config. Scaffolds from scratch.',
     ],
-    cross_ref: 'guide/ultimate-guide.md — Section 4 (CLAUDE.md, settings, hooks, commands)',
+    cross_ref: 'guide/ultimate-guide.md, Section 4 (CLAUDE.md, settings, hooks, commands)',
   },
 
   // ── Hook Utilities ─────────────────────────────────────────────────────────
@@ -294,19 +294,19 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     author: 'Florian Camblor',
     features: [
       'Glob-based file change detection via SHA-256 hashing',
-      'Conditional execution — only fires when matching files changed',
+      'Conditional execution: only fires when matching files changed',
       'Retry-safe: failed checks preserve snapshot, runs again next turn',
       'Parallel checks via separate hook entries',
       'Silent on no-op (no wasted CI time)',
     ],
     limitations: [
-      'v0.1.0 — explicitly WIP, CLI and state format may change',
+      'v0.1.0. Explicitly WIP, CLI and state format may change.',
       'Only detects git-tracked files (`git diff` only)',
       'Misconfigured check always failing causes infinite retry loop',
     ],
     when_to_use:
       'Use when you want file-change conditional logic and state persistence without writing it yourself. Same gate can be written in ~20 lines of bash if you prefer no dependency.',
-    cross_ref: 'guide/ultimate-guide.md — Stop hook section',
+    cross_ref: 'guide/ultimate-guide.md, Stop hook section',
   },
 
   // ── Alternative UIs ────────────────────────────────────────────────────────
@@ -331,7 +331,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Proper Markdown rendering with streaming',
     ],
     limitations: [
-      'Alpha status — expect breaking changes',
+      'Alpha status. Expect breaking changes.',
       'Python dependency chain + claude-agent-sdk required',
       'macOS/Linux only',
     ],
@@ -381,11 +381,11 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Failing CI checks forwarded automatically to Claude',
       'PR creation, title/description editing, merge from app',
       'Linear issue deeplinks and workspace creation',
-      '"Next Workspace" button — jumps to next agent awaiting input',
+      '"Next Workspace" button: jumps to next agent awaiting input',
     ],
     limitations: [
       'macOS only (Windows/Linux planned)',
-      'Proprietary — not open source',
+      'Proprietary, not open source',
       'Overlaps with standalone multi-agent tools',
     ],
     when_to_use:
@@ -407,7 +407,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Graphical layer over Claude Code inside VS Code',
     ],
     limitations: [
-      'NOT the official Anthropic extension — third-party, not Anthropic-maintained',
+      'NOT the official Anthropic extension. Third-party, not Anthropic-maintained.',
       'Features may overlap with or lag behind the official extension',
       'Limited community feedback',
     ],
@@ -454,12 +454,12 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     features: [
       'tmux integration for multiple terminals',
       'Git worktree isolation per agent',
-      '383+ stars — battle-tested community tool',
+      '383+ stars, battle-tested community tool',
       'No extra runtime dependency beyond tmux',
     ],
     limitations: [
       'Requires tmux familiarity',
-      'Minimal UI — raw terminals only',
+      'Minimal UI, raw terminals only',
       'No built-in monitoring (use agent-chat alongside)',
     ],
   },
@@ -481,7 +481,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Works alongside Gas Town and multiclaude',
     ],
     limitations: [
-      'Companion tool only — not standalone',
+      'Companion tool only, not standalone',
       'Requires Gas Town or multiclaude as the agent runner',
     ],
   },
@@ -507,8 +507,8 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Non-interactive CI/CD mode',
     ],
     limitations: [
-      'Performance metrics published without methodology — treat as unverified',
-      'Rebranded from claude-flow in early 2026 — verify npm package name continuity',
+      'Performance metrics published without methodology, treat as unverified',
+      'Rebranded from claude-flow in early 2026, verify npm package name continuity',
       'Adds significant complexity over native Claude Code orchestration',
     ],
     when_to_use:
@@ -532,8 +532,8 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'First shipped workflow: autonomous E2E test builder (Playwright)',
     ],
     limitations: [
-      'Published March 2026 — not yet audited',
-      'Source audit pending — not recommended for production yet',
+      'Published March 2026. Not yet audited.',
+      'Source audit pending, not recommended for production yet',
       'Revisit in 4-6 weeks',
     ],
   },
@@ -543,7 +543,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Pipelex + MTHDS',
     category: 'external-orchestration',
     description:
-      'A Python runtime for the MTHDS open standard. Provides a declarative DSL (.mthds files) for defining reusable AI methods — typed, git-versionable multi-step workflows chainable across LLMs, OCR, and image generation.',
+      'A Python runtime for the MTHDS open standard. Provides a declarative DSL (.mthds files) for defining reusable AI methods: typed, git-versionable multi-step workflows chainable across LLMs, OCR, and image generation.',
     source_url: 'https://github.com/Pipelex/pipelex',
     website_url: 'https://mthds.ai',
     install: 'pip install pipelex && npm install -g mthds',
@@ -557,7 +557,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'Multi-LLM, OCR, and image generation support',
     ],
     limitations: [
-      '8 months old — MTHDS standard not yet validated at scale',
+      '8 months old, MTHDS standard not yet validated at scale',
       'Python runtime adds dependency overhead',
       'Community hub (mthds.sh) early-stage',
     ],
@@ -580,17 +580,17 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     status: 'stable',
     author: 'Florian Bruniaux',
     features: [
-      '`security-suite` — OWASP auditing, cyber-defense pipeline, 13 hooks',
-      '`devops-pipeline` — CI/CD, git worktrees, GitHub Actions',
-      '`release-automation` — changelog + release notes + social content',
-      '`code-quality` — SOLID refactoring, TDD, GoF patterns, 6 agents',
-      '`pr-workflow` — planning gates, PR/issue triage, handoffs',
-      '`session-tools` — ccboard monitoring, 11 session hooks',
-      '`ai-methodology` — scaffolding, 6-stage talk pipeline, context-engineering',
-      '`session-summary` — analytics dashboard (15 sections)',
+      '`security-suite`: OWASP auditing, cyber-defense pipeline, 13 hooks',
+      '`devops-pipeline`: CI/CD, git worktrees, GitHub Actions',
+      '`release-automation`: changelog + release notes + social content',
+      '`code-quality`: SOLID refactoring, TDD, GoF patterns, 6 agents',
+      '`pr-workflow`: planning gates, PR/issue triage, handoffs',
+      '`session-tools`: ccboard monitoring, 11 session hooks',
+      '`ai-methodology`: scaffolding, 6-stage talk pipeline, context-engineering',
+      '`session-summary`: analytics dashboard (15 sections)',
     ],
     limitations: [
-      'Templates mirrored from guide repo — source of truth stays examples/',
+      'Templates mirrored from guide repo, source of truth stays examples/',
       'No claude plugin validate CLI validation yet (JSON + file structure check)',
     ],
     when_to_use:
@@ -609,19 +609,19 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     status: 'beta',
     author: 'Garry Tan (Y Combinator CEO)',
     features: [
-      '`/plan-ceo-review` — strategic product gate',
-      '`/plan-eng-review` — architecture review',
-      '`/review` — paranoid code review',
-      '`/ship` — automated release workflow',
-      '`/browse` — native browser QA',
-      '`/retro` — retrospective generation',
+      '`/plan-ceo-review`: strategic product gate',
+      '`/plan-eng-review`: architecture review',
+      '`/review`: paranoid code review',
+      '`/ship`: automated release workflow',
+      '`/browse`: native browser QA',
+      '`/retro`: retrospective generation',
     ],
     limitations: [
-      'Opinionated workflow — works best for product-focused teams',
+      'Opinionated workflow, works best for product-focused teams',
       'Requires Claude Code plugin system',
     ],
     when_to_use: 'Full-cycle shipping workflows. Pairs with Cognitive Mode Switching pattern.',
-    cross_ref: 'guide/workflows/gstack-workflow.md — Cognitive Mode Switching',
+    cross_ref: 'guide/workflows/gstack-workflow.md, Cognitive Mode Switching',
   },
 
   {
@@ -674,7 +674,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'agentskills.io',
     category: 'plugin-ecosystem',
     description:
-      'Open standard for agent skills across 26+ platforms. Promotes interoperability — skills written once, deployed across Claude Code, Cursor, Cline, and others.',
+      'Open standard for agent skills across 26+ platforms. Promotes interoperability: skills written once, deployed across Claude Code, Cursor, Cline, and others.',
     source_url: 'https://agentskills.io',
     website_url: 'https://agentskills.io',
     install: 'Browse at agentskills.io',

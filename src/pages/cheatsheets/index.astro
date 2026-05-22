@@ -60,7 +60,7 @@ const cardUrls = cardUrlsFr
   <header class="page-hero">
     <div class="container">
       <h1>Cheat Sheets</h1>
-      <p class="tagline">{totalCards} printable A4 recap cards — commands, workflows, agents, security, MCP, and more.</p>
+      <p class="tagline">{totalCards} printable A4 recap cards: commands, workflows, agents, security, MCP, and more.</p>
       <div class="cta-buttons">
         <a href="#cards" class="btn btn-primary">Browse all cards</a>
         <a href="/cheatsheet/" class="btn btn-secondary">Quick Reference (1-page EN)</a>
@@ -135,7 +135,7 @@ const cardUrls = cardUrlsFr
       <div class="gate-banner hidden" id="gate-banner" aria-live="polite">
         <div class="gate-icon">🔒</div>
         <div class="gate-text">
-          <p class="gate-title" id="gate-title">Get the full Technical series — PDF bundle delivered to your inbox</p>
+          <p class="gate-title" id="gate-title">Get the full Technical series as a PDF bundle delivered to your inbox</p>
           <p class="gate-sub">Enter your email to get the full series as a PDF bundle delivered to your inbox.</p>
         </div>
         <form class="gate-form" id="gate-form" novalidate>
@@ -173,7 +173,7 @@ const cardUrls = cardUrlsFr
 
       <!-- "Coming soon" for Design series (shown by JS when C tab active) -->
       <div class="coming-soon-msg hidden" id="coming-soon-msg">
-        <p>Design series (13 cards) — coming soon.</p>
+        <p>Design series, 13 cards. Coming soon.</p>
         <p class="coming-soon-sub">13 cards on trust calibration, prompting, security, and architecture design.</p>
         <form id="waitlist-form" class="waitlist-form" novalidate>
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -468,7 +468,7 @@ function updateGateBanner(filter) {
   if (series && series.released && sid !== 'C') {
     if (!isUnlocked(sid)) {
       gateBanner.classList.remove('hidden')
-      if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series — PDF bundle delivered to your inbox`
+      if (gateTitle) gateTitle.textContent = `Get the full ${series.name} series as a PDF bundle delivered to your inbox`
       resetGateForm()
     } else {
       showUnlockedBanner([sid])
@@ -482,7 +482,7 @@ function updateGateBanner(filter) {
     const mLocked = !isUnlocked('M')
     if (tLocked || mLocked) {
       gateBanner.classList.remove('hidden')
-      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles — Technical + Methodology + Design series`
+      if (gateTitle) gateTitle.textContent = `Get the full PDF bundles: Technical + Methodology + Design series`
       resetGateForm()
     } else {
       showUnlockedBanner(['T', 'M', 'C'])
@@ -595,7 +595,7 @@ if (gateForm) {
       }
     } catch {}
 
-    showSuccess('Check your inbox — the PDF bundle is on its way!')
+    showSuccess('Check your inbox. The PDF bundle is on its way!')
     upgradeUnlockedPDFs()
 
     // Hide banner after short delay

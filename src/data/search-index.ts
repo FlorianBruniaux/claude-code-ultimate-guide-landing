@@ -40,7 +40,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-cheatsheets',
-    title: 'Recap Cards — 57 Printable Cheat Sheets',
+    title: 'Recap Cards: 57 Printable Cheat Sheets',
     keywords: 'recap cards cheat sheets printable a4 technical methodology design pdf series',
     category: 'Pages',
     url: '/cheatsheets/',
@@ -96,7 +96,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-glossary',
-    title: 'Glossary — 130+ Terms Defined',
+    title: 'Glossary: 130+ Terms Defined',
     keywords: 'glossary terms definitions vocabulary concepts patterns claude code reference',
     category: 'Pages',
     url: '/glossary/',
@@ -152,7 +152,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-methodologies',
-    title: 'Methodology Quiz — Find Your Stack',
+    title: 'Methodology Quiz: Find Your Stack',
     keywords: 'methodology quiz stack tdd bdd spec first vibe coding bmad fdd sdd plan mode agentic exploration pair programming 8 stacks 12 questions team size',
     category: 'Pages',
     url: '/methodologies/',
@@ -160,7 +160,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-roles',
-    title: 'AI Roles — Which Role Fits You?',
+    title: 'AI Roles: Which Role Fits You?',
     keywords: 'ai roles career path vibe coder architect orchestrator reviewer researcher ops security pm product manager junior senior power user match fit quiz decision matrix',
     category: 'Pages',
     url: '/roles/',
@@ -168,7 +168,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-context-configurator',
-    title: 'Context Engineering Configurator — CLAUDE.md Generator',
+    title: 'Context Engineering Configurator: CLAUDE.md Generator',
     keywords: 'context engineering configurator claude.md generator starter kit team size setup tech stack maturity level 3 steps personalized',
     category: 'Pages',
     url: '/context/',
@@ -176,7 +176,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-ecosystem',
-    title: 'Third-Party Ecosystem — 25+ Tools for Claude Code',
+    title: 'Third-Party Ecosystem: 25+ Tools for Claude Code',
     keywords: 'ecosystem third party tools token tracking session management alternative ui multi agent orchestration plugin community built extensions ccm sniffly vibetunnel claudio',
     category: 'Pages',
     url: '/ecosystem/',
@@ -184,7 +184,7 @@ const pageEntries: SearchEntry[] = [
   },
   {
     id: 'page-mcp-vs-cli',
-    title: 'MCP vs CLI — When to Use Each in Claude Code',
+    title: 'MCP vs CLI: When to Use Each in Claude Code',
     keywords: 'mcp vs cli comparison decision guide model context protocol command line tool when to use four questions 15 row guidance table token cost practitioner quotes persistent state subprocess',
     category: 'Pages',
     url: '/ecosystem/mcp-vs-cli/',

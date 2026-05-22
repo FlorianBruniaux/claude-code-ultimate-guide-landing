@@ -340,6 +340,102 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-context-engineering-maturity",
+    "title": "Context Engineering Maturity",
+    "keywords": "context engineering maturity guide core context engineering md#9 maturity assessment",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#9-maturity-assessment",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-signal-taxonomy",
+    "title": "Context Signal Taxonomy",
+    "keywords": "context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#10-signal-taxonomy-and-causal-attribution",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-signal-taxonomy-description",
+    "title": "Context Signal Taxonomy Description",
+    "keywords": "context signal taxonomy description five category friction signal taxonomy (syntactic semantic procedural alignment performance) + yaml event schema + per pattern tracking dict  replaces flat friction score",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Five-category friction signal taxonomy (syntactic/semantic/procedural/alignment/performance) + YAML event schema + per-pattern tracking dict. Replaces flat friction_score.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-loop-closure",
+    "title": "Context Loop Closure",
+    "keywords": "context loop closure guide core context engineering md#11 loop closure based curation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#11-loop-closure-pr-based-curation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-loop-closure-description",
+    "title": "Context Loop Closure Description",
+    "keywords": "context loop closure description based curator mechanism: diff + canary a b results + friction evidence + suggestion escalation  multi timescale (real time weekly quarterly)  signal locality options (local cron   pushed store   hosted env)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/PR-based Curator mechanism: diff + canary A/B results + friction evidence + suggestion escalation. Multi-timescale (real-time/weekly/quarterly). Signal locality options (local cron / pushed store / hosted env).",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-ejection",
+    "title": "Context Ejection",
+    "keywords": "context ejection guide core context engineering md#12 ejection disciplined engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#12-ejection-disciplined-de-engineering",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-self-audit",
+    "title": "Context Self Audit",
+    "keywords": "context self audit guide core context engineering md#13 constitutional and self consistency audits",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#13-constitutional-and-self-consistency-audits",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-self-audit-description",
+    "title": "Context Self Audit Description",
+    "keywords": "context self audit description constitutional audit (pre pr rule conflict check against constitution md) + self consistency check (weekly verification that ace documentation claims match measured state)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Constitutional audit (pre-PR rule conflict check against constitution.md) + self-consistency check (weekly verification that ACE documentation claims match measured state).",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-multidev-reconciliation",
+    "title": "Context Multidev Reconciliation",
+    "keywords": "context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#14-multi-dev-profile-reconciliation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-token-audit",
+    "title": "Context Engineering Token Audit",
+    "keywords": "context engineering token audit guide core context engineering md#15 token audit workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#15-token-audit-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-research",
+    "title": "Context Engineering Research",
+    "keywords": "context engineering research guide core context engineering md#16 research patterns what the literature shows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#16-research-patterns-what-the-literature-shows",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-compression-tools",
+    "title": "Context Engineering Compression Tools",
+    "keywords": "context engineering compression tools guide core context engineering md#17 token compression tools",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-token-compression-tools",
+    "source": "guide"
+  },
+  {
     "id": "guide-context-engineering-audit-tool",
     "title": "Context Engineering Audit Tool",
     "keywords": "context engineering audit tool tools context audit prompt",
@@ -369,6 +465,70 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "setup audit scope flag include global (extends to ~ claude  and ~ claude json)",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/--include-global (extends to ~/.claude/ and ~/.claude.json)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-guide",
+    "title": "Agent Harness Guide",
+    "keywords": "agent harness guide guide core agent harness",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-nine-components",
+    "title": "Agent Harness Nine Components",
+    "keywords": "agent harness nine components guide core agent harness md#2 the nine components",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#2-the-nine-components",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-lethal-trifecta",
+    "title": "Agent Harness Lethal Trifecta",
+    "keywords": "agent harness lethal trifecta guide core agent harness md#3 the lethal trifecta security model",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#3-the-lethal-trifecta-security-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-cicd",
+    "title": "Agent Harness Cicd",
+    "keywords": "agent harness cicd guide core agent harness md#4 cicd agentic patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#4-cicd-agentic-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-observability",
+    "title": "Agent Harness Observability",
+    "keywords": "agent harness observability guide core agent harness md#6 observability stack",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#6-observability-stack",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-creator-verifier",
+    "title": "Agent Harness Creator Verifier",
+    "keywords": "agent harness creator verifier guide core agent harness md#8 creator verifier pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#8-creator-verifier-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-three-properties",
+    "title": "Agent Harness Three Properties",
+    "keywords": "agent harness three properties guide core agent harness md#1 three foundational properties",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#1-three-foundational-properties",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-digital-twin",
+    "title": "Agent Harness Digital Twin",
+    "keywords": "agent harness digital twin guide core agent harness md#5 digital twin testing",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#5-digital-twin-testing",
     "source": "guide"
   },
   {
@@ -985,6 +1145,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "learning quick check guide roles learning with",
     "category": "Guide",
     "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-guide",
+    "title": "AI Roles Guide",
+    "keywords": "ai roles guide guide roles roles",
+    "category": "Guide",
+    "url": "/guide/ai-roles/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-spec-engineer",
+    "title": "AI Roles Spec Engineer",
+    "keywords": "ai roles spec engineer guide roles roles md#17 spec engineer",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#17-spec-engineer",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-agent-identity-architect",
+    "title": "AI Roles Agent Identity Architect",
+    "keywords": "ai roles agent identity architect guide roles roles md#18 agent identity architect",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#18-agent-identity-architect",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-eval-engineer",
+    "title": "AI Roles Eval Engineer",
+    "keywords": "ai roles eval engineer guide roles roles md#19 eval engineer",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#19-ai-eval-engineer",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-harness-engineer",
+    "title": "AI Roles Harness Engineer",
+    "keywords": "ai roles harness engineer guide roles roles md#10 harness engineer",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#10-harness-engineer",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-roles-career-matrix",
+    "title": "AI Roles Career Matrix",
+    "keywords": "ai roles career matrix guide roles roles md#20 career decision matrix",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#20-career-decision-matrix",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adoption-l0-l5-shapiro",
+    "title": "Adoption L0 L5 Shapiro",
+    "keywords": "adoption l0 l5 shapiro guide roles adoption approaches md#the scale where your team",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-l0-l5-scale-where-is-your-team",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adoption-jcurve",
+    "title": "Adoption Jcurve",
+    "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-j-curve-you-will-hit-at-l2l3",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adoption-metr-rct",
+    "title": "Adoption Metr Rct",
+    "keywords": "adoption metr rct guide roles adoption approaches md#the metr calibration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-metr-calibration",
+    "source": "guide"
+  },
+  {
+    "id": "guide-adoption-deputydev",
+    "title": "Adoption Deputydev",
+    "keywords": "adoption deputydev guide roles adoption approaches md#deputydev enterprise cohort",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#deputydev-enterprise-cohort",
     "source": "guide"
   },
   {

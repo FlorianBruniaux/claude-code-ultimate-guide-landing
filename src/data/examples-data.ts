@@ -32,15 +32,15 @@ export const EXAMPLES = {
             { name: "refactoring-specialist.md", path: "agents/refactoring-specialist.md", description: "Clean code refactoring expert" },
             { name: "output-evaluator.md", path: "agents/output-evaluator.md", description: "LLM-as-a-Judge quality gate" },
             { name: "devops-sre.md", path: "agents/devops-sre.md", description: "Infrastructure troubleshooting with FIRE framework" },
-            { name: "planner.md", path: "agents/planner.md", description: "Strategic planning agent — read-only, Opus, use before implementation", favorite: true },
-            { name: "implementer.md", path: "agents/implementer.md", description: "Mechanical execution agent — Haiku, bounded scope" },
-            { name: "architecture-reviewer.md", path: "agents/architecture-reviewer.md", description: "Architecture & design review — read-only, Opus, never modifies code", favorite: true },
-            { name: "adr-writer.md", path: "agents/adr-writer.md", description: "Architecture Decision Record generator — read-only, Opus" },
-            { name: "integration-reviewer.md", path: "agents/integration-reviewer.md", description: "Runtime integration validator — read-only" },
-            { name: "plan-challenger.md", path: "agents/plan-challenger.md", description: "Adversarial plan review across 5 dimensions — read-only" },
-            { name: "planning-coordinator.md", path: "agents/planning-coordinator.md", description: "Synthesis agent for dynamic research teams — read-only" },
-            { name: "security-patcher.md", path: "agents/security-patcher.md", description: "Apply security patches from audit findings — proposes for review" },
-            { name: "loop-monitor.md", path: "agents/loop-monitor.md", description: "Detect and interrupt runaway agent loops — read-only watchdog" },
+            { name: "planner.md", path: "agents/planner.md", description: "Strategic planning agent: read-only, Opus, use before implementation", favorite: true },
+            { name: "implementer.md", path: "agents/implementer.md", description: "Mechanical execution agent: Haiku, bounded scope" },
+            { name: "architecture-reviewer.md", path: "agents/architecture-reviewer.md", description: "Architecture & design review: read-only, Opus, never modifies code", favorite: true },
+            { name: "adr-writer.md", path: "agents/adr-writer.md", description: "Architecture Decision Record generator: read-only, Opus" },
+            { name: "integration-reviewer.md", path: "agents/integration-reviewer.md", description: "Runtime integration validator (read-only)" },
+            { name: "plan-challenger.md", path: "agents/plan-challenger.md", description: "Adversarial plan review across 5 dimensions (read-only)" },
+            { name: "planning-coordinator.md", path: "agents/planning-coordinator.md", description: "Synthesis agent for dynamic research teams (read-only)" },
+            { name: "security-patcher.md", path: "agents/security-patcher.md", description: "Apply security patches from audit findings, proposes for review" },
+            { name: "loop-monitor.md", path: "agents/loop-monitor.md", description: "Detect and interrupt runaway agent loops (read-only watchdog)" },
             { name: "analytics-with-eval/", path: "agents/analytics-with-eval/", description: "Collection: analytics agent + evaluation hooks" },
             { name: "analytics-agent.md", path: "agents/analytics-with-eval/analytics-agent.md", description: "Analytics agent with LLM-as-a-judge evaluation loop for output quality" },
             { name: "cyber-defense/", path: "agents/cyber-defense/", description: "Collection: anomaly detector, log ingestor, risk classifier, threat reporter" },
@@ -54,7 +54,7 @@ export const EXAMPLES = {
         icon: "\u{1F4DA}",
         description: "Reusable knowledge modules. Place in .claude/skills/ or ~/.claude/skills/",
         files: [
-            { name: "git-ai-archaeology/", path: "skills/git-ai-archaeology/SKILL.md", description: "Analyze AI config evolution in a git repo — first commits, monthly distribution, maturity phases" },
+            { name: "git-ai-archaeology/", path: "skills/git-ai-archaeology/SKILL.md", description: "Analyze AI config evolution in a git repo: first commits, monthly distribution, maturity phases" },
             { name: "tdd-workflow.md", path: "skills/tdd-workflow.md", description: "Test-Driven Development process" },
             { name: "security-checklist.md", path: "skills/security-checklist.md", description: "OWASP Top 10 security checks", favorite: true },
             { name: "pdf-generator.md", path: "skills/pdf-generator.md", description: "Professional PDF generation (Quarto/Typst)", favorite: true },
@@ -72,10 +72,10 @@ export const EXAMPLES = {
             { name: "issue-triage/", path: "skills/issue-triage/", description: "3-phase issue backlog management" },
             { name: "cyber-defense-team/", path: "skills/cyber-defense-team/", description: "Multi-agent cyber defense team orchestration" },
             { name: "talk-pipeline/", path: "skills/talk-pipeline/", description: "6-stage pipeline: raw material to slides via Kimi" },
-            { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST — 86-92% token reduction", favorite: true },
+            { name: "smart-explore.md", path: "skills/smart-explore.md", description: "Progressive code exploration via tree-sitter AST, 86-92% token reduction", favorite: true },
             { name: "token-audit/", path: "skills/token-audit/", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
             { name: "eval-skills/", path: "skills/eval-skills/SKILL.md", description: "Audit all skills for frontmatter completeness and effort-level inference" },
-            { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/ — resolves glob patterns against real files, interactive usefulness review", favorite: true },
+            { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/: resolves glob patterns against real files, interactive usefulness review", favorite: true },
             { name: "mcp-integration-reference/", path: "skills/mcp-integration-reference/SKILL.md", description: "MCP integration reference with Sentry patterns and multi-tool query examples" }
         ]
     },
@@ -209,7 +209,7 @@ export const EXAMPLES = {
         files: [
             { name: "CLAUDE.md.project-template", path: "memory/CLAUDE.md.project-template", description: "Team project memory template" },
             { name: "CLAUDE.md.personal-template", path: "memory/CLAUDE.md.personal-template", description: "Personal global memory template" },
-            { name: "icm-session-starter.md", path: "memory/icm-session-starter.md", description: "ICM session bootstrap — recall past decisions and store new ones" }
+            { name: "icm-session-starter.md", path: "memory/icm-session-starter.md", description: "ICM session bootstrap: recall past decisions and store new ones" }
         ]
     },
     "claude-md": {
@@ -258,8 +258,8 @@ export const EXAMPLES = {
             { name: "rtk-benchmark.sh", path: "scripts/rtk-benchmark.sh", description: "Benchmark RTK token savings vs raw commands" },
             { name: "sync-claude-config.sh", path: "scripts/sync-claude-config.sh", description: "Sync Claude config files across machines" },
             { name: "sonnetplan.sh", path: "scripts/sonnetplan.sh", description: "Run Claude with Sonnet replacing Opus (cost optimization)" },
-            { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI — track suggestion follow-through rates", favorite: true },
-            { name: "ai-usage-charter-template.md", path: "scripts/ai-usage-charter-template.md", description: "Team AI usage charter template — principles, scope, review cadence" },
+            { name: "smart-suggest-roi.py", path: "scripts/smart-suggest-roi.py", description: "Measure SmartSuggest hook ROI: track suggestion follow-through rates", favorite: true },
+            { name: "ai-usage-charter-template.md", path: "scripts/ai-usage-charter-template.md", description: "Team AI usage charter template: principles, scope, review cadence" },
             { name: "mcp-registry-template.yaml", path: "scripts/mcp-registry-template.yaml", description: "MCP server registry template for team governance" },
             { name: "og-image-astro.ts", path: "scripts/og-image-astro.ts", description: "Generate OG images for Astro static sites" },
             { name: "pptx-to-pdf.sh", path: "scripts/pptx-to-pdf.sh", description: "Batch convert PPTX to PDF via Keynote (macOS/AppleScript)" },
@@ -294,7 +294,7 @@ export const EXAMPLES = {
             { name: "claude-pr-auto-review.yml", path: "github-actions/claude-pr-auto-review.yml", description: "Auto code review on PRs" },
             { name: "claude-security-review.yml", path: "github-actions/claude-security-review.yml", description: "Security-focused PR scan" },
             { name: "claude-issue-triage.yml", path: "github-actions/claude-issue-triage.yml", description: "Auto-triage issues with labels" },
-            { name: ".coderabbit.yaml", path: "github-actions/.coderabbit.yaml", description: "CodeRabbit AI code review configuration — copy to repo root" },
+            { name: ".coderabbit.yaml", path: "github-actions/.coderabbit.yaml", description: "CodeRabbit AI code review configuration, copy to repo root" },
             { name: "prompts/code-review.md", path: "github-actions/prompts/code-review.md", description: "Code review prompt template for GitHub Actions workflows" }
         ]
     },
@@ -351,16 +351,16 @@ export const EXAMPLES = {
         label: "Context Engineering",
         description: "Templates for structuring Claude's context: code maps, budgets, eval questions, CI drift checks",
         files: [
-            { name: "skeleton-template.md", path: "context-engineering/skeleton-template.md", description: "Minimal context skeleton — project structure, key files, current focus", favorite: true },
-            { name: "code-map-template.yaml", path: "context-engineering/code-map-template.yaml", description: "Structural metadata file — codebase shape in ~1K tokens" },
+            { name: "skeleton-template.md", path: "context-engineering/skeleton-template.md", description: "Minimal context skeleton: project structure, key files, current focus", favorite: true },
+            { name: "code-map-template.yaml", path: "context-engineering/code-map-template.yaml", description: "Structural metadata file: codebase shape in ~1K tokens" },
             { name: "context-budget-calculator.sh", path: "context-engineering/context-budget-calculator.sh", description: "Calculate token budget across all context sources" },
             { name: "eval-questions.yaml", path: "context-engineering/eval-questions.yaml", description: "Evaluation questions for context quality scoring" },
-            { name: "profile-template.yaml", path: "context-engineering/profile-template.yaml", description: "Context profile template — env, stack, constraints" },
+            { name: "profile-template.yaml", path: "context-engineering/profile-template.yaml", description: "Context profile template: env, stack, constraints" },
             { name: "canary-check.sh", path: "context-engineering/canary-check.sh", description: "Verify context integrity between sessions" },
             { name: "ci-drift-check.yml", path: "context-engineering/ci-drift-check.yml", description: "CI workflow to detect context drift on each push" },
             { name: "context-bench.sh", path: "context-engineering/context-bench.sh", description: "Benchmark structural metadata impact on context quality" },
             { name: "assembler.ts", path: "context-engineering/assembler.ts", description: "Assemble CLAUDE.md from profile YAML + shared module markdown files" },
-            { name: "rules/knowledge-feeding.md", path: "context-engineering/rules/knowledge-feeding.md", description: "Knowledge feeding protocol — inject domain context systematically" },
+            { name: "rules/knowledge-feeding.md", path: "context-engineering/rules/knowledge-feeding.md", description: "Knowledge feeding protocol: inject domain context systematically" },
             { name: "rules/update-loop-retro.md", path: "context-engineering/rules/update-loop-retro.md", description: "Session retrospective template for capturing and persisting learnings" }
         ]
     },
@@ -369,7 +369,7 @@ export const EXAMPLES = {
         label: "Styles",
         description: "Custom style templates for consistent AI output tone and formatting",
         files: [
-            { name: "custom-style-template.md", path: "styles/custom-style-template.md", description: "Define a custom writing style for Claude — tone, vocabulary, formatting rules" }
+            { name: "custom-style-template.md", path: "styles/custom-style-template.md", description: "Define a custom writing style for Claude: tone, vocabulary, formatting rules" }
         ]
     },
     "semantic-anchors": {

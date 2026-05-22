@@ -26,7 +26,7 @@ const profiles = [
     label: 'New to Claude Code',
     icon: '🚀',
     path: ['WP00', 'WP02', 'WP01'],
-    desc: 'Start here — foundations, then configuration, then prompts.',
+    desc: 'Start here: foundations, then configuration, then prompts.',
   },
   {
     label: 'Senior Developer',
@@ -75,7 +75,7 @@ const profiles = [
       <div class="hero-label">Ebooks & Whitepapers</div>
       <h1>Deep dives, not summaries</h1>
       <p class="tagline">
-        12 whitepapers covering every layer of Claude Code — from first install to org-wide adoption.
+        12 whitepapers covering every layer of Claude Code, from first install to org-wide adoption.
         Structured for practitioners, grounded in production experience.
       </p>
       <div class="hero-stats">
@@ -125,7 +125,7 @@ const profiles = [
     <!-- Open access featured card -->
     <section id="free" class="section">
       <h2 class="section-heading">No email required</h2>
-      <p class="section-sub">Direct download — open access, no form.</p>
+      <p class="section-sub">Direct download. Open access, no form.</p>
       <div class="featured-grid">
         {WHITEPAPERS.filter(wp => !wp.gated && !wp.comingSoon).map(wp => (
           <div class="featured-card">
@@ -173,7 +173,7 @@ const profiles = [
       <h2 class="section-heading">All 12 whitepapers</h2>
       <div class="release-notice">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
-        All 12 are written and production-ready. New ones drop regularly — subscribe to any WP to get notified.
+        All 12 are written and production-ready. New ones drop regularly. Subscribe to any WP to get notified.
       </div>
       <div class="wp-table">
         {WHITEPAPERS.map(wp => (
@@ -238,11 +238,11 @@ const profiles = [
                         <span class="submit-text">Send to my inbox</span>
                         <span class="submit-spinner hidden" aria-hidden="true">···</span>
                       </button>
-                      <p class="form-note">Not a paywall — you get one email with your download link. That's it.</p>
+                      <p class="form-note">Not a paywall. You get one email with your download link. That's it.</p>
                     </form>
                     <div class="form-success hidden" role="alert">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Check your inbox — download link sent.
+                      Check your inbox. Download link sent.
                     </div>
                     <div class="form-error hidden" role="alert">
                       Something went wrong. <a href="mailto:florian@bruniaux.com">Contact me</a> to get the ebook.
@@ -311,15 +311,15 @@ const profiles = [
         </details>
         <details class="faq-item">
           <summary class="faq-q">Why do most whitepapers ask for an email?</summary>
-          <p class="faq-a">Not a paywall — everything is free. WP00 is open access with no form at all. The others ask for your email so I can send you the download link and notify you when a revised version drops. One email, no newsletter unless you opt in.</p>
+          <p class="faq-a">Not a paywall. Everything is free. WP00 is open access with no form at all. The others ask for your email so I can send you the download link and notify you when a revised version drops. One email, no newsletter unless you opt in.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">What's the difference with the main guide?</summary>
-          <p class="faq-a">The guide (26K+ lines) is the authoritative reference — comprehensive but dense. Whitepapers are structured narratives on a single topic: better for focused reading, printing, or sharing with non-developers.</p>
+          <p class="faq-a">The guide (26K+ lines) is the authoritative reference, comprehensive but dense. Whitepapers are structured narratives on a single topic: better for focused reading, printing, or sharing with non-developers.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">Will they be updated?</summary>
-          <p class="faq-a">Yes. Each whitepaper has its own version number independent of the guide. Subscribe to get notified when a new version drops — the email you provided at download is used for that.</p>
+          <p class="faq-a">Yes. Each whitepaper has its own version number independent of the guide. Subscribe to get notified when a new version drops. The email you provided at download is used for that.</p>
         </details>
       </div>
     </section>
