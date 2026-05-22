@@ -47,7 +47,7 @@ const cardHashedUrl = cardHashedUrlFr  // backward compat (used in gate script)
 const isDirectAccess = DIRECT_ACCESS_IDS.has(card.id)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
 
-const title = `${card.data.title} — Claude Code Recap Card ${card.data.cardNumber}`
+const title = `${card.data.title} | Claude Code Recap Card ${card.data.cardNumber}`
 const description = card.data.subtitle
 
 const jsonLd = [
@@ -193,7 +193,7 @@ const jsonLd = [
               </svg>
               <div>
                 <div class="nav-label">Previous</div>
-                <div class="nav-title">{prevCard.data.cardNumber} — {prevCard.data.title}</div>
+                <div class="nav-title">{prevCard.data.cardNumber}: {prevCard.data.title}</div>
               </div>
             </a>
           ) : <div />}
@@ -201,7 +201,7 @@ const jsonLd = [
             <a href={`/cheatsheets/${nextCard.id}/`} class="nav-next">
               <div>
                 <div class="nav-label">Next</div>
-                <div class="nav-title">{nextCard.data.cardNumber} — {nextCard.data.title}</div>
+                <div class="nav-title">{nextCard.data.cardNumber}: {nextCard.data.title}</div>
               </div>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>

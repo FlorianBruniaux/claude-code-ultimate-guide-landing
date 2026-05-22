@@ -366,12 +366,12 @@ export const ROLE_EXPLANATIONS: RoleResultExplanation[] = [
   {
     roleId: 'mlops-engineer',
     explanation:
-      'You think about what happens after the model ships. CI/CD pipelines, drift monitoring, rollback procedures — you own the operational layer that keeps models reliable in production over time. Your core question is not "does it work?" but "does it keep working?"',
+      'You think about what happens after the model ships. CI/CD pipelines, drift monitoring, rollback procedures: you own the operational layer that keeps models reliable in production over time. Your core question is not "does it work?" but "does it keep working?"',
   },
   {
     roleId: 'ai-developer-advocate',
     explanation:
-      'You bridge an AI platform and the developers who use it. You build real things with the platform, then turn that knowledge into tutorials, demos, and community presence. Technical credibility is your core asset — your audience is other engineers, and they know when you have not actually shipped anything.',
+      'You bridge an AI platform and the developers who use it. You build real things with the platform, then turn that knowledge into tutorials, demos, and community presence. Technical credibility is your core asset: your audience is other engineers, and they know when you have not actually shipped anything.',
   },
   {
     roleId: 'ai-orchestration-engineer',

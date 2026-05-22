@@ -1,5 +1,5 @@
 /**
- * Guide RSS entries — maintained manually alongside guide releases.
+ * Guide RSS entries: maintained manually alongside guide releases.
  *
  * Updated via:
  * - /release command (auto-drafts an entry from CHANGELOG)
@@ -50,7 +50,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code v2.1.144',
     date: 'May 19, 2026',
-    description: '/resume now surfaces background sessions alongside interactive ones in the picker. /model is session-only by default — press d to persist a default for new sessions. Fixed a 75s startup hang when api.anthropic.com is unreachable (now 15s timeout), terminal rendering corruption in long sessions, and macOS Full Disk Access crash regression. 40+ bug fixes including MCP paginated tools/list and file descriptor exhaustion in skill directories.',
+    description: '/resume now surfaces background sessions alongside interactive ones in the picker. /model is session-only by default: press d to persist a default for new sessions. Fixed a 75s startup hang when api.anthropic.com is unreachable (now 15s timeout), terminal rendering corruption in long sessions, and macOS Full Disk Access crash regression. 40+ bug fixes including MCP paginated tools/list and file descriptor exhaustion in skill directories.',
     link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21144-2026-05-19',
   },
   {
@@ -85,7 +85,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code v2.1.139',
     date: 'May 12, 2026',
-    description: 'Agent view (Research Preview) lands: run claude agents to see every session — running, blocked on you, or done — in one list. New /goal command lets you set a completion condition and Claude keeps working across turns with a live elapsed/turns/tokens overlay. Hook args exec form now spawns commands without a shell, and continueOnBlock for PostToolUse feeds rejection reasons back to Claude. 40+ bug fixes including an auth deadlock, autoAllowBashIfSandboxed shell expansion, MCP SSE memory cap, and Skill wildcard prefix match.',
+    description: 'Agent view (Research Preview) lands: run claude agents to see every session: running, blocked on you, or done: in one list. New /goal command lets you set a completion condition and Claude keeps working across turns with a live elapsed/turns/tokens overlay. Hook args exec form now spawns commands without a shell, and continueOnBlock for PostToolUse feeds rejection reasons back to Claude. 40+ bug fixes including an auth deadlock, autoAllowBashIfSandboxed shell expansion, MCP SSE memory cap, and Skill wildcard prefix match.',
     link: 'https://cc.bruniaux.com/releases/#v2.1.139',
   },
   {
@@ -99,7 +99,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code v2.1.133',
     date: 'May 8, 2026',
-    description: 'New worktree.baseRef setting (fresh | head) lets you control whether EnterWorktree and agent-isolation worktrees branch from origin/<default> or local HEAD — note the default fresh reverts the 2.1.128 behavior. Hooks now receive the active effort level via effort.level JSON and $CLAUDE_EFFORT env var. Fixed subagents not discovering project/user/plugin skills, parallel sessions dead-ending at 401 after token refresh race, and MCP OAuth flow ignoring proxy settings.',
+    description: 'New worktree.baseRef setting (fresh | head) lets you control whether EnterWorktree and agent-isolation worktrees branch from origin/<default> or local HEAD: note the default fresh reverts the 2.1.128 behavior. Hooks now receive the active effort level via effort.level JSON and $CLAUDE_EFFORT env var. Fixed subagents not discovering project/user/plugin skills, parallel sessions dead-ending at 401 after token refresh race, and MCP OAuth flow ignoring proxy settings.',
     link: 'https://cc.bruniaux.com/releases/#v2.1.133',
   },
   {
@@ -134,7 +134,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code v2.1.120',
     date: 'Apr 24, 2026',
-    description: 'Windows no longer requires Git for Windows — PowerShell is used as the shell tool when Git Bash is absent. New claude ultrareview [target] subcommand runs /ultrareview non-interactively from CI or scripts. Skills can now reference the current effort level with ${CLAUDE_EFFORT}.',
+    description: 'Windows no longer requires Git for Windows: PowerShell is used as the shell tool when Git Bash is absent. New claude ultrareview [target] subcommand runs /ultrareview non-interactively from CI or scripts. Skills can now reference the current effort level with ${CLAUDE_EFFORT}.',
     link: 'https://cc.bruniaux.com/releases/#v2.1.120',
   },
   {
@@ -155,12 +155,12 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code v2.1.117',
     date: 'Apr 22, 2026',
-    description: 'Default effort raised to high for Pro/Max on Opus 4.6 and Sonnet 4.6 (was medium). Fixed Opus 4.7 context window bug — was computing /context against 200K instead of 1M. Native macOS/Linux builds now use embedded bfs/ugrep replacing Glob/Grep tools for faster searches.',
+    description: 'Default effort raised to high for Pro/Max on Opus 4.6 and Sonnet 4.6 (was medium). Fixed Opus 4.7 context window bug: was computing /context against 200K instead of 1M. Native macOS/Linux builds now use embedded bfs/ugrep replacing Glob/Grep tools for faster searches.',
     link: 'https://cc.bruniaux.com/releases/#v2.1.117',
   },
   {
     type: 'new_section',
-    title: '7-Module Learning Path — beginner to advanced',
+    title: '7-Module Learning Path: beginner to advanced',
     date: 'Apr 22, 2026',
     description: 'New structured learning path covering Installation, Core Loop, Memory & Config, Agents, Skills, Hooks, and Advanced Patterns. 8-11 hours total with hands-on exercises and validation steps per module. Designed for first-time users who want a guided route through Claude Code instead of reading the 25K-line reference cold.',
     link: 'https://cc.bruniaux.com/guide/learning-path/',
@@ -232,7 +232,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.12',
     date: 'Apr 9, 2026',
-    description: 'Full documentation of the built-in Output Styles feature (Default, Explanatory, Learning) — previously undocumented as a first-class product. Covers /config activation, outputStyle in settings.json, custom styles via .claude/styles/, and debunks the keep-coding-instructions myth.',
+    description: 'Full documentation of the built-in Output Styles feature (Default, Explanatory, Learning): previously undocumented as a first-class product. Covers /config activation, outputStyle in settings.json, custom styles via .claude/styles/, and debunks the keep-coding-instructions myth.',
     link: 'https://cc.bruniaux.com/releases/',
   },
   {
@@ -267,7 +267,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.3',
     date: 'Apr 3, 2026',
-    description: 'New page: Team Metrics for AI-Augmented Engineering — covers DORA (with 2025 archetype shift), SPACE framework, AI-specific metrics, and recommendations by team size (5 vs 25 people). Also adds a "Team-Level Steering Metrics" section to the Tech Leads guide with Velocity Trap warning and Monday ritual. Landing page at cc.bruniaux.com/team-metrics/.',
+    description: 'New page: Team Metrics for AI-Augmented Engineering: covers DORA (with 2025 archetype shift), SPACE framework, AI-specific metrics, and recommendations by team size (5 vs 25 people). Also adds a "Team-Level Steering Metrics" section to the Tech Leads guide with Velocity Trap warning and Monday ritual. Landing page at cc.bruniaux.com/team-metrics/.',
     link: 'https://cc.bruniaux.com/team-metrics/',
   },
   {
@@ -286,7 +286,7 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_page',
-    title: 'New page: Methodologies — 20 methods mapped, 8 stacks, interactive quiz',
+    title: 'New page: Methodologies: 20 methods mapped, 8 stacks, interactive quiz',
     date: 'Apr 1, 2026',
     description: 'New /methodologies/ page mapping 20 AI-assisted development methodologies on two axes (Spec-First vs Code-First, Lean vs Enterprise). Includes an interactive quiz to find your methodology stack, 8 recommended combos (Solo MVP, Team Greenfield, API Contract, Power User Loop and more), and a full decision matrix.',
     link: 'https://cc.bruniaux.com/methodologies/',
@@ -302,7 +302,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.38.1',
     date: 'Mar 30, 2026',
-    description: 'Threat database updated to v2.11.0: 3 new CVEs (CVE-2026-33010 mcp-memory-service CORS critical, CVE-2026-33946 MCP Ruby SDK session hijacking, CVE-2026-27597 agentfront enclave sandbox escape), T021 IDEsaster attack technique (30+ chained flaws across Cursor, Windsurf, Copilot, Zed.dev — 24 CVEs assigned), and Ferrok scanner mapping to OWASP MCP Top 10 (2026).',
+    description: 'Threat database updated to v2.11.0: 3 new CVEs (CVE-2026-33010 mcp-memory-service CORS critical, CVE-2026-33946 MCP Ruby SDK session hijacking, CVE-2026-27597 agentfront enclave sandbox escape), T021 IDEsaster attack technique (30+ chained flaws across Cursor, Windsurf, Copilot, Zed.dev: 24 CVEs assigned), and Ferrok scanner mapping to OWASP MCP Top 10 (2026).',
     link: 'https://cc.bruniaux.com/releases/',
   },
   {

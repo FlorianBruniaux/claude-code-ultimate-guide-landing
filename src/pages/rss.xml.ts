@@ -47,7 +47,7 @@ export const GET: APIRoute = async (context) => {
     .slice(0, 50)
 
   return rss({
-    title: 'Claude Code Ultimate Guide — Updates',
+    title: 'Claude Code Ultimate Guide: Updates',
     description: 'New content, CLI releases, ebooks, recap cards, and guide updates from cc.bruniaux.com.',
     site: context.site!,
     items: allItems,

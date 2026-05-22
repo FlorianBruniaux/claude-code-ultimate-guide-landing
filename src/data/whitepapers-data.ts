@@ -3,7 +3,7 @@
  * 12 whitepapers, FR + EN, PDF + EPUB
  *
  * PDFs hosted on Vercel (florian.bruniaux.com/guides/).
- * Hashed filenames prevent brute-force discovery — the API (portfolio) validates
+ * Hashed filenames prevent brute-force discovery: the API (portfolio) validates
  * filenames server-side against ALLOWED_GUIDES before serving.
  * EPUBs are hosted on the landing (public/ebooks/epub/) as secondary format.
  */
@@ -35,7 +35,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '00',
     titleEn: 'Introduction & Fundamentals',
     titleFr: 'Introduction & Fondamentaux',
-    subtitle: 'From zero to productive in a day — the complete Claude Code primer.',
+    subtitle: 'From zero to productive in a day: the complete Claude Code primer.',
     audience: 'Everyone',
     pages: 32,
     tags: ['foundations', 'setup', 'beginner'],
@@ -66,7 +66,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '02',
     titleEn: 'Customization & Configuration',
     titleFr: 'Personnalisation & Configuration',
-    subtitle: 'CLAUDE.md, hooks, MCP, and settings — the full configuration system.',
+    subtitle: 'CLAUDE.md, hooks, MCP, and settings: the full configuration system.',
     audience: 'Intermediate–Advanced',
     pages: 44,
     tags: ['config', 'hooks', 'mcp', 'claude.md'],
@@ -96,7 +96,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '04',
     titleEn: 'Internal Architecture',
     titleFr: 'Architecture Interne',
-    subtitle: 'How Claude Code works under the hood — tool loop, context, and pipeline.',
+    subtitle: 'How Claude Code works under the hood: tool loop, context, and pipeline.',
     audience: 'Senior developers',
     pages: 44,
     tags: ['architecture', 'internals', 'advanced'],
@@ -111,7 +111,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '05',
     titleEn: 'Team Adoption',
     titleFr: 'Adoption en Équipe',
-    subtitle: 'Rollout playbook — from pilot to org-wide adoption with metrics.',
+    subtitle: 'Rollout playbook: from pilot to org-wide adoption with metrics.',
     audience: 'Tech leads & managers',
     pages: 52,
     tags: ['team', 'adoption', 'management', 'rollout'],
@@ -141,7 +141,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '07',
     titleEn: 'Condensed Reference Guide',
     titleFr: 'Guide de Référence Condensé',
-    subtitle: 'Dense cheat book — every command, flag, and pattern in one place.',
+    subtitle: 'Dense cheat book: every command, flag, and pattern in one place.',
     audience: 'All levels',
     pages: 80,
     tags: ['reference', 'commands', 'cheatsheet', 'dense'],
@@ -172,7 +172,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     num: '09',
     titleEn: 'Learning with AI (UVAL)',
     titleFr: "Apprendre avec l'IA (UVAL)",
-    subtitle: 'The UVAL method — using AI as a personalized learning accelerator.',
+    subtitle: 'The UVAL method: using AI as a personalized learning accelerator.',
     audience: 'Learners & coaches',
     pages: 40,
     tags: ['learning', 'uval', 'pedagogy', 'ai-tutor'],

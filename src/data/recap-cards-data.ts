@@ -1,5 +1,5 @@
 /**
- * Recap Cards data — 57 printable A4 recap cards, 3 series
+ * Recap Cards data: 57 printable A4 recap cards, 3 series
  * PDFs hosted on Vercel (florian.bruniaux.com/guides/recap-cards/) with hashed filenames.
  * ZIPs delivered by email via /api/subscribe.
  */
@@ -19,7 +19,7 @@ export interface RecapCardSeries {
 
 export const RECAP_BASE_URL = `${PDF_BASE_URL}/recap-cards`
 
-/** First 3 cards of each released series — direct access, no email required */
+/** First 3 cards of each released series: direct access, no email required */
 export const DIRECT_ACCESS_IDS: ReadonlySet<string> = new Set([
   't01-commandes-essentielles',
   't02-mode-non-interactif',
@@ -36,7 +36,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
   {
     id: 'T',
     name: 'Technical',
-    description: 'Commands, permissions, config, MCP, sandbox, models — the core toolbox.',
+    description: 'Commands, permissions, config, MCP, sandbox, models: the core toolbox.',
     color: '#d97706',
     cardCount: 22,
     released: true,
@@ -46,7 +46,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
   {
     id: 'M',
     name: 'Methodology',
-    description: 'Workflows, agents, hooks, CI/CD, debugging, multi-agent — how to work.',
+    description: 'Workflows, agents, hooks, CI/CD, debugging, multi-agent: how to work.',
     color: '#3b82f6',
     cardCount: 22,
     released: true,
@@ -56,7 +56,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
   {
     id: 'C',
     name: 'Design',
-    description: 'Trust calibration, prompting, security, architecture — how to think.',
+    description: 'Trust calibration, prompting, security, architecture: how to think.',
     color: '#22c55e',
     cardCount: 13,
     released: true,
@@ -129,7 +129,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   't22-third-party-tools': 't22-third-party-tools.fr.v1.0.0.fc16cf3b5d04.pdf',
 }
 
-/** Backward-compat alias — prefer CARD_HASHES_FR */
+/** Backward-compat alias: prefer CARD_HASHES_FR */
 export const CARD_HASHES = CARD_HASHES_FR
 
 /** Map: card ID (slug) → hashed EN PDF filename on Vercel */

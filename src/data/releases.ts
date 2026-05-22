@@ -28,8 +28,8 @@ export const releases: Release[] = [
     version: 'v2.1.147',
     date: 'May 22, 2026',
     highlights: [
-      '⭐ Pinned background sessions (<code>Ctrl+T</code> in <code>claude agents</code>) — stay alive when idle, auto-restart on CC updates, shed under memory pressure only after non-pinned sessions',
-      '<code>/code-review --comment</code> — post findings as inline GitHub PR comments',
+      '⭐ Pinned background sessions (<code>Ctrl+T</code> in <code>claude agents</code>): stay alive when idle, auto-restart on CC updates, shed under memory pressure only after non-pinned sessions',
+      '<code>/code-review --comment</code>: post findings as inline GitHub PR comments',
       'Improved auto-updater: retries transient network failures, reports specific error categories and OS error codes, shows current version on failure',
       'Bug fixes: prompt history no consecutive duplicates, PowerShell hook <code>if</code> conditions matching, pasted text <code>[Pasted text #N]</code> placeholder, plugin component counts doubled, slash commands + tab/newline treated as unknown, 25+ additional fixes',
     ],
@@ -49,7 +49,7 @@ export const releases: Release[] = [
     version: 'v2.1.145',
     date: 'May 20, 2026',
     highlights: [
-      '⭐ <code>claude agents --json</code> — list live sessions as JSON for scripting (tmux-resurrect, status bars, session pickers)',
+      '⭐ <code>claude agents --json</code>: list live sessions as JSON for scripting (tmux-resurrect, status bars, session pickers)',
       '⭐ <code>/plugin</code> Discover/Browse now previews commands, agents, skills, hooks, MCP/LSP before installation; tab title shows awaiting-input count',
       'Security fix: permission-prompt bypass for bare variable assignments to non-allowlisted env vars in Bash now requires explicit approval',
       'Bug fixes: MCP paginated resources/templates/prompts, Read tool truncates instead of hard error, <code>/review</code> GraphQL fix, task list ordering, agent team non-ASCII names',
@@ -61,7 +61,7 @@ export const releases: Release[] = [
     date: 'May 19, 2026',
     highlights: [
       '⭐ <code>/resume</code> now lists background sessions (started via <code>--bg</code> or agent view) alongside interactive ones, marked with <code>bg</code>',
-      '⭐ <code>/model</code> is now session-only by default — press <code>d</code> in the picker to set a default model for new sessions',
+      '⭐ <code>/model</code> is now session-only by default: press <code>d</code> in the picker to set a default model for new sessions',
       '"extra usage" renamed to "usage credits" across CLI; <code>/extra-usage</code> → <code>/usage-credits</code> (old name still works)',
       'Bug fixes: 75s startup hang on unreachable API (now 15s timeout), terminal rendering corruption, macOS Full Disk Access crash, MCP paginated <code>tools/list</code>, 40+ total',
     ],
@@ -73,7 +73,7 @@ export const releases: Release[] = [
     highlights: [
       '⭐ Plugin dependency enforcement: <code>claude plugin disable</code> refuses when another enabled plugin depends on the target (with disable-chain hint); <code>enable</code> force-enables transitive deps',
       '⭐ Projected context cost (per-turn and per-invocation token estimates) added to the <code>/plugin</code> marketplace browse pane',
-      '<code>worktree.bgIsolation: "none"</code> — background sessions edit working copy directly without <code>EnterWorktree</code>',
+      '<code>worktree.bgIsolation: "none"</code>: background sessions edit working copy directly without <code>EnterWorktree</code>',
       'Bug fixes: stop hook block loop (warns after 8 blocks), Esc/Ctrl+C cancels <code>/loop</code> wakeup, background sessions preserve model+effort after idle wake',
     ],
     initiallyVisible: true,
@@ -82,7 +82,7 @@ export const releases: Release[] = [
     version: 'v2.1.142',
     date: 'May 15, 2026',
     highlights: [
-      '⭐ Fast mode now uses Opus 4.7 by default (was Opus 4.6) — set <code>CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE=1</code> to pin to 4.6',
+      '⭐ Fast mode now uses Opus 4.7 by default (was Opus 4.6): set <code>CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE=1</code> to pin to 4.6',
       '⭐ New <code>claude agents</code> dispatch flags: <code>--add-dir</code>, <code>--settings</code>, <code>--mcp-config</code>, <code>--model</code>, <code>--effort</code>, <code>--permission-mode</code> and more',
       'Plugins with root-level <code>SKILL.md</code> and no <code>skills/</code> subdirectory now surface as a skill; <code>/plugin</code> shows LSP servers',
       'Bug fixes: <code>MCP_TOOL_TIMEOUT</code> now raises per-request fetch timeout, daemon exits cleanly after <code>brew upgrade</code>, background worktree recognition',
@@ -95,9 +95,9 @@ export const releases: Release[] = [
     version: 'v2.1.141',
     date: 'May 14, 2026',
     highlights: [
-      '⭐ Hook <code>terminalSequence</code> output field — emit desktop notifications, window titles, and bells from hooks without a controlling terminal',
+      '⭐ Hook <code>terminalSequence</code> output field: emit desktop notifications, window titles, and bells from hooks without a controlling terminal',
       '⭐ <code>claude agents --cwd &lt;path&gt;</code> scopes session list to a directory; agents with lingering shells move to Completed',
-      'Rewind "Summarize up to here" — compress earlier context; <code>/bg</code> preserves permission mode; spinner warms amber after 10s',
+      'Rewind "Summarize up to here": compress earlier context; <code>/bg</code> preserves permission mode; spinner warms amber after 10s',
       '50+ bug fixes: Bedrock cross-account auth, MCP 403 needs-auth hint, Remote Control token rotation race, vim Ctrl+C, markdown table regression',
     ],
     initiallyVisible: true,
@@ -115,7 +115,7 @@ export const releases: Release[] = [
     version: 'v2.1.139',
     date: 'May 12, 2026',
     highlights: [
-      '⭐ Agent view (Research Preview): <code>claude agents</code> lists all sessions — running, blocked on you, or done',
+      '⭐ Agent view (Research Preview): <code>claude agents</code> lists all sessions: running, blocked on you, or done',
       '⭐ <code>/goal</code> command: set a completion condition; Claude works across turns with live elapsed/turns/tokens overlay',
       'Hook <code>args: string[]</code> exec form (no shell spawning) + <code>continueOnBlock</code> for PostToolUse',
       '40+ bug fixes: auth deadlock, <code>autoAllowBashIfSandboxed</code> shell expansion, MCP SSE 16MB cap, Skill wildcard prefix match',
@@ -142,7 +142,7 @@ export const releases: Release[] = [
     version: 'v2.1.136',
     date: 'May 11, 2026',
     highlights: [
-      '⭐ <code>settings.autoMode.hard_deny</code> — auto mode classifier rules that block unconditionally regardless of user intent or allow exceptions',
+      '⭐ <code>settings.autoMode.hard_deny</code>: auto mode classifier rules that block unconditionally regardless of user intent or allow exceptions',
       '<code>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</code> to re-enable session quality survey for enterprises capturing responses via OpenTelemetry',
       'Fixed MCP servers disappearing after <code>/clear</code> in VS Code/JetBrains/Agent SDK; MCP OAuth concurrent refresh token race fixed (no more daily re-auth for multi-server users)',
       '40+ UI/terminal fixes: plan mode write blocking, extended thinking redacted-block API 400 fix, <code>--resume</code> with underscores in project path, WSL2 image paste via PowerShell fallback',
@@ -152,12 +152,12 @@ export const releases: Release[] = [
     version: 'v2.1.133',
     date: 'May 8, 2026',
     highlights: [
-      '⭐ <code>worktree.baseRef</code> setting (<code>fresh</code> | <code>head</code>) — <code>fresh</code> (default) branches from <code>origin/&lt;default&gt;</code>; set <code>head</code> to keep local HEAD with unpushed commits. <strong>Note:</strong> reverts 2.1.128 behavior — set <code>worktree.baseRef: "head"</code> to restore it',
+      '⭐ <code>worktree.baseRef</code> setting (<code>fresh</code> | <code>head</code>): <code>fresh</code> (default) branches from <code>origin/&lt;default&gt;</code>; set <code>head</code> to keep local HEAD with unpushed commits. <strong>Note:</strong> reverts 2.1.128 behavior: set <code>worktree.baseRef: "head"</code> to restore it',
       'Hooks receive active effort level via <code>effort.level</code> JSON field and <code>$CLAUDE_EFFORT</code> env var in Bash subcommands',
       'Fixed subagents not discovering project/user/plugin skills via Skill tool',
       'Fixed parallel sessions dead-ending at 401 after refresh-token race; <code>HTTP(S)_PROXY</code>/<code>NO_PROXY</code>/mTLS now respected for full MCP OAuth flow',
     ],
-    breaking: ['<code>worktree.baseRef</code> defaults to <code>fresh</code> (branches from <code>origin/&lt;default&gt;</code>), reverting 2.1.128 — set <code>worktree.baseRef: "head"</code> to keep local HEAD'],
+    breaking: ['<code>worktree.baseRef</code> defaults to <code>fresh</code> (branches from <code>origin/&lt;default&gt;</code>), reverting 2.1.128: set <code>worktree.baseRef: "head"</code> to keep local HEAD'],
   },
   {
     version: 'v2.1.132',
@@ -182,7 +182,7 @@ export const releases: Release[] = [
     date: 'May 6, 2026',
     highlights: [
       '<code>--plugin-url &lt;url&gt;</code> flag to fetch a plugin <code>.zip</code> archive from URL for the current session; <code>CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</code> for Homebrew/WinGet auto-upgrade with restart prompt',
-      'Ctrl+R history picker restored to all-projects default (pre-2.1.124 behavior) — press Ctrl+S to narrow to current project or session; <code>skillOverrides</code> setting now works',
+      'Ctrl+R history picker restored to all-projects default (pre-2.1.124 behavior): press Ctrl+S to narrow to current project or session; <code>skillOverrides</code> setting now works',
       'Gateway <code>/v1/models</code> discovery now opt-in via <code>CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1</code>; third-party deployments no longer see first-party spinner tips',
       '20+ bug fixes: 1h prompt cache TTL downgrade, OAuth refresh race after sleep, <code>Bash(mkdir *)</code> allow rules, <code>/context</code> wasting ~1.6k tokens, <code>/clear</code> tab title reset, agent panel hidden regression, <code>Bash(touch *)</code> allow rules',
     ],
@@ -191,7 +191,7 @@ export const releases: Release[] = [
     version: 'v2.1.128',
     date: 'May 5, 2026',
     highlights: [
-      '<code>EnterWorktree</code> now creates branch from local HEAD — unpushed commits no longer dropped; <code>--plugin-dir</code> accepts <code>.zip</code> plugin archives',
+      '<code>EnterWorktree</code> now creates branch from local HEAD: unpushed commits no longer dropped; <code>--plugin-dir</code> accepts <code>.zip</code> plugin archives',
       '<code>--channels</code> works with console (API key) auth; <code>/mcp</code> shows tool count per server and flags 0-tool servers',
       'Parallel bash tool call fix: a failing read-only command no longer cancels sibling calls; sub-agent summaries now include prompt cache (~3x <code>cache_creation</code> reduction)',
       '35+ bug fixes: 1M-context false "Prompt is too long", MCP stdio corrupted args with spaces, MCP images dropped on structured+content blocks, clipboard whitespace in code blocks',
@@ -202,7 +202,7 @@ export const releases: Release[] = [
     date: 'May 1, 2026',
     highlights: [
       '⭐ <code>/model</code> picker lists models from your gateway\'s <code>/v1/models</code> endpoint when <code>ANTHROPIC_BASE_URL</code> points at a compatible gateway',
-      '⭐ <code>claude project purge [path]</code> — delete all Claude Code state for a project (transcripts, tasks, history, config entry); supports <code>--dry-run</code>, <code>-y</code>, <code>-i</code>, <code>--all</code>',
+      '⭐ <code>claude project purge [path]</code>: delete all Claude Code state for a project (transcripts, tasks, history, config entry); supports <code>--dry-run</code>, <code>-y</code>, <code>-i</code>, <code>--all</code>',
       '<code>claude auth login</code> accepts pasted OAuth code when browser callback can\'t reach localhost (WSL2, SSH, containers); Windows PowerShell 7 now detected + primary shell',
       'Security: Fixed <code>allowManagedDomainsOnly</code>/<code>allowManagedReadPathsOnly</code> ignored when higher-priority settings lacked sandbox block; 40+ bug fixes (image paste crash >2000px, Stream idle timeout after sleep, CJK text on Windows, OAuth timeout, Agent SDK hang)',
     ],
@@ -227,7 +227,7 @@ export const releases: Release[] = [
     version: 'v2.1.121',
     date: 'Apr 27, 2026',
     highlights: [
-      '⭐ <code>alwaysLoad</code> MCP server config option — tools skip tool-search deferral and are always available',
+      '⭐ <code>alwaysLoad</code> MCP server config option: tools skip tool-search deferral and are always available',
       '⭐ <code>claude plugin prune</code> removes orphaned auto-installed plugin deps; <code>PostToolUse</code> hooks can now replace output for all tools (previously MCP-only)',
       'Type-to-filter search in <code>/skills</code>; MCP servers auto-retry 3x on startup; <code>--dangerously-skip-permissions</code> skips <code>.claude/</code> dirs',
       'Critical fixes: unbounded memory growth (multi-GB RSS) with images; <code>/usage</code> memory leak (~2GB); Bash tool unusable when start dir deleted; <code>--resume</code> crash on corrupted sessions',
@@ -237,7 +237,7 @@ export const releases: Release[] = [
     version: 'v2.1.120',
     date: 'Apr 24, 2026',
     highlights: [
-      '⭐ Windows: Git for Windows (Git Bash) no longer required — PowerShell used as shell tool when absent',
+      '⭐ Windows: Git for Windows (Git Bash) no longer required: PowerShell used as shell tool when absent',
       '⭐ <code>claude ultrareview [target]</code> subcommand for non-interactive CI/script use (<code>--json</code> for raw output)',
       'Skills can reference effort level with <code>${CLAUDE_EFFORT}</code>; <code>AI_AGENT</code> env var for <code>gh</code> traffic attribution',
       'Fixes: Esc during stdio MCP call closing server (regression 2.1.105), <code>/rewind</code> keyboard input after <code>--resume</code>, scrollback duplication, false-positive <code>rm</code> permission prompts in auto mode',
@@ -258,7 +258,7 @@ export const releases: Release[] = [
     date: 'Apr 23, 2026',
     highlights: [
       '⭐ Vim visual mode (<code>v</code>) and visual-line mode (<code>V</code>) with selection, operators, and visual feedback',
-      '⭐ <code>/cost</code> and <code>/stats</code> merged into <code>/usage</code> — both remain as typing shortcuts that open the relevant tab',
+      '⭐ <code>/cost</code> and <code>/stats</code> merged into <code>/usage</code>: both remain as typing shortcuts that open the relevant tab',
       '⭐ Custom named themes from <code>/theme</code> or hand-edit JSON in <code>~/.claude/themes/</code>; plugins can ship themes via <code>themes/</code> directory',
       'Hooks can invoke MCP tools directly via <code>type: "mcp_tool"</code>; <code>DISABLE_UPDATES</code> env var; <code>wslInheritsWindowsSettings</code> policy; 15+ bug fixes',
     ],
@@ -268,8 +268,8 @@ export const releases: Release[] = [
     date: 'Apr 22, 2026',
     highlights: [
       '⭐ Default effort changed to <code>high</code> for Pro/Max subscribers on Opus 4.6 and Sonnet 4.6 (was <code>medium</code>)',
-      '⭐ Fixed Opus 4.7 sessions showing inflated <code>/context</code> percentages and autocompacting too early — was computing against 200K instead of native 1M context window',
-      'Native macOS/Linux builds: Glob and Grep tools replaced by embedded <code>bfs</code> and <code>ugrep</code> — faster searches without extra tool round-trip (Windows/npm unchanged)',
+      '⭐ Fixed Opus 4.7 sessions showing inflated <code>/context</code> percentages and autocompacting too early: was computing against 200K instead of native 1M context window',
+      'Native macOS/Linux builds: Glob and Grep tools replaced by embedded <code>bfs</code> and <code>ugrep</code>: faster searches without extra tool round-trip (Windows/npm unchanged)',
       '<code>/model</code> selections persist across restarts; startup header shows model source pin; plugin dependency fixes; 15+ bug fixes',
     ],
   },
@@ -278,7 +278,7 @@ export const releases: Release[] = [
     date: 'Apr 21, 2026',
     highlights: [
       '⭐ <code>/resume</code> up to 67% faster on large sessions (40MB+); handles sessions with many dead-fork entries more efficiently',
-      'Thinking spinner shows inline progress: "still thinking", "thinking more", "almost done thinking" — replaces the separate hint row',
+      'Thinking spinner shows inline progress: "still thinking", "thinking more", "almost done thinking": replaces the separate hint row',
       'Security: sandbox auto-allow no longer bypasses the dangerous-path check for <code>rm</code>/<code>rmdir</code> targeting <code>/</code>, <code>$HOME</code>, or critical system directories',
       'Agent frontmatter <code>hooks:</code> now fire when running as main-thread agent via <code>--agent</code>; <code>/config</code> search matches option values; many terminal, scrolling, and UI bug fixes',
     ],
@@ -295,7 +295,7 @@ export const releases: Release[] = [
     date: 'Apr 18, 2026',
     highlights: [
       '⭐ CLI now spawns a native Claude Code binary via per-platform optional dependency instead of bundled JavaScript',
-      '⭐ <code>sandbox.network.deniedDomains</code> setting — block specific domains even when a wildcard <code>allowedDomains</code> would permit them',
+      '⭐ <code>sandbox.network.deniedDomains</code> setting: block specific domains even when a wildcard <code>allowedDomains</code> would permit them',
       'Security hardening: macOS <code>/private/{etc,var,tmp,home}</code> paths flagged for <code>Bash(rm:*)</code> rules; deny rules match <code>env</code>/<code>sudo</code>/<code>watch</code>/<code>ionice</code>/<code>setsid</code> wrappers; <code>Bash(find:*)</code> no longer auto-approves <code>-exec</code>/<code>-delete</code>',
       'Keyboard improvements (<code>Ctrl+A</code>/<code>E</code> logical line, <code>Ctrl+Backspace</code> on Windows); <code>/loop</code> Esc cancels wakeups; subagents fail with clear error after 10 min; many bug fixes',
     ],
@@ -305,8 +305,8 @@ export const releases: Release[] = [
     date: 'Apr 16, 2026',
     highlights: [
       '⭐ Claude Opus 4.7 <code>xhigh</code> effort level (between <code>high</code> and <code>max</code>); Auto mode for Max subscribers no longer requires <code>--enable-auto-mode</code>',
-      '⭐ <code>/ultrareview</code> skill — cloud-based parallel multi-agent code review; invoke without args for current branch or <code>/ultrareview &lt;PR#&gt;</code>',
-      '⭐ <code>/less-permission-prompts</code> skill — scans transcripts and proposes a prioritized read-only allowlist for <code>settings.json</code>',
+      '⭐ <code>/ultrareview</code> skill: cloud-based parallel multi-agent code review; invoke without args for current branch or <code>/ultrareview &lt;PR#&gt;</code>',
+      '⭐ <code>/less-permission-prompts</code> skill: scans transcripts and proposes a prioritized read-only allowlist for <code>settings.json</code>',
       'Plan files named after prompts; read-only bash with glob patterns and <code>cd &lt;dir&gt; &amp;&amp;</code> no longer trigger prompts; interactive <code>/effort</code> slider; many bug fixes',
     ],
   },
@@ -314,8 +314,8 @@ export const releases: Release[] = [
     version: 'v2.1.110',
     date: 'Apr 16, 2026',
     highlights: [
-      '⭐ <code>/tui</code> command and <code>tui</code> setting — run <code>/tui fullscreen</code> for flicker-free rendering in the same conversation',
-      '⭐ Push notification tool — Claude can send mobile push notifications when Remote Control and "Push when Claude decides" config are enabled',
+      '⭐ <code>/tui</code> command and <code>tui</code> setting: run <code>/tui fullscreen</code> for flicker-free rendering in the same conversation',
+      '⭐ Push notification tool: Claude can send mobile push notifications when Remote Control and "Push when Claude decides" config are enabled',
       '⭐ <code>--resume</code>/<code>--continue</code> now resurrects unexpired scheduled tasks',
       '<code>/focus</code> command for focus view; <code>Ctrl+O</code> reverts to verbose transcript toggle; <code>autoScrollEnabled</code> config; session recap for telemetry-disabled users; 30+ bug fixes',
     ],
@@ -331,8 +331,8 @@ export const releases: Release[] = [
     version: 'v2.1.108',
     date: 'Apr 15, 2026',
     highlights: [
-      '⭐ <code>ENABLE_PROMPT_CACHING_1H</code> env var — opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry; <code>FORCE_PROMPT_CACHING_5M</code> to force 5-minute TTL',
-      '⭐ <code>/recap</code> command — provides context when returning to a session after a break; configurable in <code>/config</code>',
+      '⭐ <code>ENABLE_PROMPT_CACHING_1H</code> env var: opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry; <code>FORCE_PROMPT_CACHING_5M</code> to force 5-minute TTL',
+      '⭐ <code>/recap</code> command: provides context when returning to a session after a break; configurable in <code>/config</code>',
       'Built-in slash commands (<code>/init</code>, <code>/review</code>, <code>/security-review</code>) now discoverable and invokable via the Skill tool; <code>/undo</code> alias for <code>/rewind</code>',
       '<code>/resume</code> picker defaults to current directory sessions (Ctrl+A for all); improved model-switch warning mid-conversation; reduced memory footprint for file reads and syntax highlighting',
     ],
@@ -348,7 +348,7 @@ export const releases: Release[] = [
     version: 'v2.1.105',
     date: 'Apr 13, 2026',
     highlights: [
-      '⭐ PreCompact hook support — hooks can block compaction by exiting with code 2 or returning <code>{"decision":"block"}</code>',
+      '⭐ PreCompact hook support: hooks can block compaction by exiting with code 2 or returning <code>{"decision":"block"}</code>',
       '<code>EnterWorktree</code> tool gains <code>path</code> parameter to switch into an existing worktree; <code>/proactive</code> alias for <code>/loop</code>; background monitor support for plugins',
       '<code>WebFetch</code> strips <code>&lt;style&gt;</code>/<code>&lt;script&gt;</code> contents; stalled API streams abort after 5 min then retry non-streaming; <code>/doctor</code> status icons with <code>f</code>-to-fix',
       'Multiple bug fixes: queued image drops, screen blank on wrapped prompts, MCP tools missing on headless first turn, 429 raw JSON error display',
@@ -358,8 +358,8 @@ export const releases: Release[] = [
     version: 'v2.1.101',
     date: 'Apr 10, 2026',
     highlights: [
-      '⭐ <code>/team-onboarding</code> command — generates a teammate ramp-up guide from your local Claude Code usage',
-      'OS CA certificate store trusted by default — enterprise TLS proxies work without extra config (<code>CLAUDE_CODE_CERT_STORE=bundled</code> to revert)',
+      '⭐ <code>/team-onboarding</code> command: generates a teammate ramp-up guide from your local Claude Code usage',
+      'OS CA certificate store trusted by default: enterprise TLS proxies work without extra config (<code>CLAUDE_CODE_CERT_STORE=bundled</code> to revert)',
       '<code>/ultraplan</code> and remote-session features auto-create a default cloud environment (no web setup required first)',
       '40+ bug fixes: <code>--resume</code> context loss, Bedrock SigV4 auth 403, sub-agents in worktrees denied file access, <code>RemoteTrigger</code> run action, Grep ENOENT self-heal, hardcoded 5-min timeout removed, LSP command injection fix',
     ],
@@ -368,7 +368,7 @@ export const releases: Release[] = [
     version: 'v2.1.97',
     date: 'Apr 9, 2026',
     highlights: [
-      '⭐ Focus view toggle (<code>Ctrl+O</code>) in NO_FLICKER mode — shows prompt, tool summary with edit diffstats, and final response',
+      '⭐ Focus view toggle (<code>Ctrl+O</code>) in NO_FLICKER mode: shows prompt, tool summary with edit diffstats, and final response',
       '<code>refreshInterval</code> status line setting + <code>workspace.git_worktree</code> JSON input field',
       '30+ bug fixes: NO_FLICKER (15 fixes), /resume (6 fixes), MCP 50 MB/hr buffer leak, permissions hardening, 429 exponential backoff',
     ],
@@ -377,14 +377,14 @@ export const releases: Release[] = [
     version: 'v2.1.96',
     date: 'Apr 8, 2026',
     highlights: [
-      'Fixed Bedrock auth regression — <code>AWS_BEARER_TOKEN_BEDROCK</code> and <code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code> no longer fail with 403',
+      'Fixed Bedrock auth regression: <code>AWS_BEARER_TOKEN_BEDROCK</code> and <code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code> no longer fail with 403',
     ],
   },
   {
     version: 'v2.1.94',
     date: 'Apr 7, 2026',
     highlights: [
-      '⭐ Amazon Bedrock powered by Mantle support — set <code>CLAUDE_CODE_USE_MANTLE=1</code>',
+      '⭐ Amazon Bedrock powered by Mantle support: set <code>CLAUDE_CODE_USE_MANTLE=1</code>',
       'Default effort changed from medium to <strong>high</strong> for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users',
       'Plugin skills now use frontmatter <code>name</code> for stable invocation naming across install methods',
       'Compact <code>Slacked #channel</code> header with clickable link for Slack MCP tool calls',
@@ -394,28 +394,28 @@ export const releases: Release[] = [
     version: 'v2.1.92',
     date: 'Apr 4, 2026',
     highlights: [
-      'Interactive Bedrock setup wizard from login screen — step-by-step AWS auth, region config, credential verification, and model pinning',
-      '<code>forceRemoteSettingsRefresh</code> policy setting — fail-closed managed settings enforcement (blocks startup until fresh fetch)',
+      'Interactive Bedrock setup wizard from login screen: step-by-step AWS auth, region config, credential verification, and model pinning',
+      '<code>forceRemoteSettingsRefresh</code> policy setting: fail-closed managed settings enforcement (blocks startup until fresh fetch)',
       'Per-model and cache-hit cost breakdown in <code>/cost</code> for subscription users',
       '<code>/release-notes</code> is now an interactive version picker',
-      'Linux sandbox: <code>apply-seccomp</code> helper now in npm + native builds — restores unix-socket blocking',
+      'Linux sandbox: <code>apply-seccomp</code> helper now in npm + native builds: restores unix-socket blocking',
     ],
   },
   {
     version: 'v2.1.91',
     date: 'Apr 3, 2026',
     highlights: [
-      'MCP tool result size override via <code>_meta["anthropic/maxResultSizeChars"]</code> (up to 500K) — large DB schemas pass through without truncation',
-      '<code>disableSkillShellExecution</code> setting — disable inline shell execution in skills and plugin commands',
+      'MCP tool result size override via <code>_meta["anthropic/maxResultSizeChars"]</code> (up to 500K): large DB schemas pass through without truncation',
+      '<code>disableSkillShellExecution</code> setting: disable inline shell execution in skills and plugin commands',
       'Plugins can ship <code>bin/</code> executables for direct Bash tool invocation',
-      'Edit tool uses shorter <code>old_string</code> anchors — reduces output tokens',
+      'Edit tool uses shorter <code>old_string</code> anchors: reduces output tokens',
     ],
   },
   {
     version: 'v2.1.90',
     date: 'Apr 2, 2026',
     highlights: [
-      '<code>/powerup</code> — interactive animated lessons teaching Claude Code features with live demos',
+      '<code>/powerup</code>: interactive animated lessons teaching Claude Code features with live demos',
       'Fixed infinite loop crashing sessions when rate-limit dialog repeatedly auto-opened',
       'Fixed <code>--resume</code> causing full prompt-cache miss for users with deferred tools (regression since v2.1.69)',
       'PowerShell tool hardened: trailing & bypass, debugger hang, TOCTOU fixed; SSE transport now linear-time',
@@ -425,13 +425,13 @@ export const releases: Release[] = [
     version: 'v2.1.89',
     date: 'Apr 1, 2026',
     highlights: [
-      '<code>"defer"</code> permission decision for PreToolUse hooks — headless sessions pause at tool call and resume with <code>-p --resume</code>',
-      'PermissionDenied hook — fires after auto mode classifier denials; return {retry: true} to let the model retry',
+      '<code>"defer"</code> permission decision for PreToolUse hooks: headless sessions pause at tool call and resume with <code>-p --resume</code>',
+      'PermissionDenied hook: fires after auto mode classifier denials; return {retry: true} to let the model retry',
       'Named subagents now appear in @ mention typeahead; <code>CLAUDE_CODE_NO_FLICKER=1</code> for flicker-free rendering',
       'Massive bugfix batch: CRLF on Windows, StructuredOutput cache (50% failure rate), autocompact thrash circuit breaker, memory leaks',
     ],
     breaking: [
-      'Thinking summaries disabled by default — add showThinkingSummaries: true to settings.json to restore',
+      'Thinking summaries disabled by default: add showThinkingSummaries: true to settings.json to restore',
     ],
     initiallyVisible: true,
   },
@@ -447,8 +447,8 @@ export const releases: Release[] = [
     version: 'v2.1.86',
     date: 'Mar 28, 2026',
     highlights: [
-      '<code>X-Claude-Code-Session-Id</code> header on API requests — proxies aggregate by session without parsing the body',
-      'Reduced <code>@</code> file mention token overhead — raw string content no longer JSON-escaped; Read tool uses compact line-number format with dedup',
+      '<code>X-Claude-Code-Session-Id</code> header on API requests: proxies aggregate by session without parsing the body',
+      'Reduced <code>@</code> file mention token overhead: raw string content no longer JSON-escaped; Read tool uses compact line-number format with dedup',
       'Improved prompt cache hit rate for Bedrock, Vertex, Foundry by removing dynamic content from tool descriptions',
       'Fixed marketplace plugin scripts failing with "Permission denied" on macOS/Linux (regression since v2.1.83); many other bugfixes',
     ],
@@ -458,8 +458,8 @@ export const releases: Release[] = [
     version: 'v2.1.85',
     date: 'Mar 27, 2026',
     highlights: [
-      'Conditional <code>if</code> field for hooks — filter when they run using permission rule syntax (e.g. <code>Bash(git *)</code>) to reduce process spawning overhead',
-      '<code>CLAUDE_CODE_MCP_SERVER_NAME</code>/<code>_URL</code> env vars for <code>headersHelper</code> scripts — one helper serves multiple MCP servers',
+      'Conditional <code>if</code> field for hooks: filter when they run using permission rule syntax (e.g. <code>Bash(git *)</code>) to reduce process spawning overhead',
+      '<code>CLAUDE_CODE_MCP_SERVER_NAME</code>/<code>_URL</code> env vars for <code>headersHelper</code> scripts: one helper serves multiple MCP servers',
       'PreToolUse hooks can now satisfy AskUserQuestion headlessly (return <code>updatedInput + permissionDecision: allow</code>)',
       'Fixed <code>/compact</code> failing with "context exceeded" on very large conversations; improved scroll performance (yoga-layout → TypeScript)',
     ],
@@ -469,7 +469,7 @@ export const releases: Release[] = [
     version: 'v2.1.84',
     date: 'Mar 26, 2026',
     highlights: [
-      'PowerShell tool for Windows (opt-in preview) — direct PowerShell access alongside Bash tool',
+      'PowerShell tool for Windows (opt-in preview): direct PowerShell access alongside Bash tool',
       '<code>TaskCreated</code> hook; <code>WorktreeCreate</code> hook supports <code>type: "http"</code>; <code>allowedChannelPlugins</code> managed setting',
       'Global system-prompt caching now works when ToolSearch is enabled (better cache hit rates for MCP users)',
       'Deep links open in preferred terminal; MCP tool descriptions capped at 2KB; idle-return prompt after 75+ min',
@@ -482,9 +482,9 @@ export const releases: Release[] = [
     version: 'v2.1.83',
     date: 'Mar 25, 2026',
     highlights: [
-      '<code>managed-settings.d/</code> drop-in directory — teams deploy independent policy fragments that merge alphabetically',
+      '<code>managed-settings.d/</code> drop-in directory: teams deploy independent policy fragments that merge alphabetically',
       '<code>CwdChanged</code> and <code>FileChanged</code> hook events for reactive environment management (direnv, auto-toolchain)',
-      'Transcript search — press <code>/</code> in transcript mode (Ctrl+O); <code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</code> strips credentials from subprocesses',
+      'Transcript search: press <code>/</code> in transcript mode (Ctrl+O); <code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</code> strips credentials from subprocesses',
       'Security: fixed <code>--mcp-config</code> bypassing managed <code>allowedMcpServers</code>/<code>deniedMcpServers</code> policy; fixed macOS exit hang',
     ],
     initiallyVisible: true,
@@ -493,8 +493,8 @@ export const releases: Release[] = [
     version: 'v2.1.81',
     date: 'Mar 22, 2026',
     highlights: [
-      '<code>--bare</code> flag for scripted <code>-p</code> calls — skips hooks, LSP, plugin sync, skill walks (requires API key; no OAuth)',
-      '<code>--channels</code> permission relay — channel servers can forward tool approval prompts to your phone',
+      '<code>--bare</code> flag for scripted <code>-p</code> calls: skips hooks, LSP, plugin sync, skill walks (requires API key; no OAuth)',
+      '<code>--channels</code> permission relay: channel servers can forward tool approval prompts to your phone',
       'MCP read/search tool calls collapse into "Queried {server}" line; plan mode hides "clear context" by default',
       'Fixed worktree session resume switching back to worktree; fixed concurrent sessions repeatedly re-authenticating on OAuth refresh',
     ],
@@ -507,7 +507,7 @@ export const releases: Release[] = [
     highlights: [
       '<code>rate_limits</code> field in statusline scripts for Claude.ai usage (5h + 7d windows with <code>used_percentage</code> and <code>resets_at</code>)',
       '<code>effort</code> frontmatter for skills/slash commands to override effort level; <code>source: \'settings\'</code> plugin marketplace (inline in settings.json)',
-      '<code>--channels</code> research preview — MCP servers can push messages into your session',
+      '<code>--channels</code> research preview: MCP servers can push messages into your session',
       'Fixed <code>--resume</code> dropping parallel tool results; ~80MB memory reduction on startup for large repos',
     ],
     initiallyVisible: true,
@@ -539,20 +539,20 @@ export const releases: Release[] = [
     version: 'v2.1.77',
     date: 'Mar 17, 2026',
     highlights: [
-      '⭐ <strong>Opus 4.6 output limits raised</strong> — default max output to 64k tokens; upper bound for Opus 4.6 and Sonnet 4.6 to 128k tokens',
+      '⭐ <strong>Opus 4.6 output limits raised</strong>: default max output to 64k tokens; upper bound for Opus 4.6 and Sonnet 4.6 to 128k tokens',
       '<code>allowRead</code> sandbox setting to re-allow reads within <code>denyRead</code> regions; <code>/copy N</code> for Nth-latest response; <code>/branch</code> replaces <code>/fork</code>',
       '<strong>Security fix</strong>: <code>PreToolUse</code> hooks returning <code>"allow"</code> could bypass enterprise <code>deny</code> permission rules',
       'Fixed auto-updater accumulating GBs of memory from overlapping downloads; fixed <code>--resume</code> silently truncating recent history',
-      'Breaking: <code>Agent</code> tool no longer accepts <code>resume</code> parameter — use <code>SendMessage({to: agentId})</code> instead',
+      'Breaking: <code>Agent</code> tool no longer accepts <code>resume</code> parameter: use <code>SendMessage({to: agentId})</code> instead',
     ],
-    breaking: ['Agent tool: <code>resume</code> parameter removed — use <code>SendMessage({to: agentId})</code>'],
+    breaking: ['Agent tool: <code>resume</code> parameter removed: use <code>SendMessage({to: agentId})</code>'],
     initiallyVisible: true,
   },
   {
     version: 'v2.1.76',
     date: 'Mar 14, 2026',
     highlights: [
-      '⭐ <strong>MCP elicitation</strong> — servers request structured input mid-task via interactive dialog; new <code>Elicitation</code>, <code>ElicitationResult</code>, <code>PostCompact</code> hooks',
+      '⭐ <strong>MCP elicitation</strong>: servers request structured input mid-task via interactive dialog; new <code>Elicitation</code>, <code>ElicitationResult</code>, <code>PostCompact</code> hooks',
       '<code>-n</code>/<code>--name</code> CLI flag for session display name; <code>worktree.sparsePaths</code> for monorepo sparse checkout; <code>/effort</code> slash command',
       'Fixed deferred tools (<code>ToolSearch</code>) losing input schemas after compaction; auto-compact circuit breaker (stops after 3 failures)',
       'Fixed <code>Bash(cmd:*)</code> rules not matching when argument contains <code>#</code>; plan mode re-approval after already accepted',
@@ -566,7 +566,7 @@ export const releases: Release[] = [
     version: 'v2.1.75',
     date: 'Mar 13, 2026',
     highlights: [
-      '⭐ <strong>1M context for Opus 4.6 — default</strong> for Max, Team, and Enterprise plans (no extra usage required)',
+      '⭐ <strong>1M context for Opus 4.6: default</strong> for Max, Team, and Enterprise plans (no extra usage required)',
       'Session name display on prompt bar with <code>/rename</code>; hook source displayed in permission prompts',
       'Fixed token estimation over-counting for thinking/<code>tool_use</code> blocks (was causing premature compaction)',
       'Fixed Bash tool mangling <code>!</code> in piped commands (e.g. <code>jq \'select(.x != .y)\'</code> now works)',
@@ -580,8 +580,8 @@ export const releases: Release[] = [
     version: 'v2.1.74',
     date: 'Mar 12, 2026',
     highlights: [
-      '⭐ <strong>/context actionable suggestions</strong> — identifies context-heavy tools, memory bloat, capacity warnings with optimization tips',
-      '⭐ <strong>Memory leak fixed</strong> — streaming API buffers unbounded RSS growth on npm path resolved',
+      '⭐ <strong>/context actionable suggestions</strong>: identifies context-heavy tools, memory bloat, capacity warnings with optimization tips',
+      '⭐ <strong>Memory leak fixed</strong>: streaming API buffers unbounded RSS growth on npm path resolved',
       '<code>autoMemoryDirectory</code> setting to configure custom directory for auto-memory storage',
       'Fixed managed policy <code>ask</code> rules being bypassed by user <code>allow</code> rules or skill <code>allowed-tools</code>',
       'Fixed <code>SessionEnd</code> hooks killed after 1.5s regardless of <code>hook.timeout</code> (now configurable)',
@@ -594,7 +594,7 @@ export const releases: Release[] = [
     version: 'v2.1.73',
     date: 'Mar 11, 2026',
     highlights: [
-      '⭐ <strong>modelOverrides setting</strong> — map model picker entries to custom provider model IDs (Bedrock ARNs, etc.)',
+      '⭐ <strong>modelOverrides setting</strong>: map model picker entries to custom provider model IDs (Bedrock ARNs, etc.)',
       'Fixed deadlock when many skill files change at once (e.g. <code>git pull</code> in large <code>.claude/skills/</code> repo)',
       'Fixed subagents with <code>model: opus/sonnet/haiku</code> being silently downgraded on Bedrock/Vertex/Foundry',
       'Fixed <code>SessionStart</code> hooks firing twice when resuming via <code>--resume</code> or <code>--continue</code>',
@@ -608,8 +608,8 @@ export const releases: Release[] = [
     version: 'v2.1.72',
     date: 'Mar 9, 2026',
     highlights: [
-      '⭐ <strong>Agent model override restored</strong> — <code>model</code> parameter back on Agent tool for per-invocation overrides',
-      '⭐ <strong>SDK 12x token savings</strong> — fixed <code>query()</code> prompt cache invalidation (up to 12× input token cost reduction)',
+      '⭐ <strong>Agent model override restored</strong>: <code>model</code> parameter back on Agent tool for per-invocation overrides',
+      '⭐ <strong>SDK 12x token savings</strong>: fixed <code>query()</code> prompt cache invalidation (up to 12× input token cost reduction)',
       'CLAUDE.md HTML comments now hidden from Claude when auto-injected; <code>/plan</code> accepts optional description',
       'Simplified effort levels: low/medium/high (removed max), new symbols ○ ◐ ●; <code>ExitWorktree</code> tool added',
       '<code>CLAUDE_CODE_DISABLE_CRON</code> env var; <code>lsof</code>, <code>fd</code>, <code>pgrep</code> added to bash auto-approval allowlist',
@@ -621,7 +621,7 @@ export const releases: Release[] = [
     version: 'v2.1.71',
     date: 'Mar 6, 2026',
     highlights: [
-      '⭐ <strong>/loop command</strong> — run a prompt or slash command on a recurring interval (e.g. <code>/loop 5m check the deploy</code>)',
+      '⭐ <strong>/loop command</strong>: run a prompt or slash command on a recurring interval (e.g. <code>/loop 5m check the deploy</code>)',
       '⭐ <strong>Cron scheduling tools</strong> for recurring prompts within a session',
       '<code>voice:pushToTalk</code> keybinding now rebindable in <code>keybindings.json</code> (default: space)',
       'Fixed stdin freeze in long sessions; 5–8s startup freeze with voice mode; forked sessions sharing plan files',
@@ -666,7 +666,7 @@ export const releases: Release[] = [
     highlights: [
       'Opus 4.6 now defaults to <strong>medium effort</strong> for Max and Team subscribers',
       'Re-introduced <code>ultrathink</code> keyword to enable high effort for the next turn',
-      '<strong>Breaking</strong>: Opus 4 and Opus 4.1 removed from Claude Code first-party API — auto-migrated to Opus 4.6',
+      '<strong>Breaking</strong>: Opus 4 and Opus 4.1 removed from Claude Code first-party API: auto-migrated to Opus 4.6',
     ],
     initiallyVisible: true,
     breaking: ['Opus 4 and Opus 4.1 removed from Claude Code first-party API'],
@@ -683,7 +683,7 @@ export const releases: Release[] = [
     version: 'v2.1.63',
     date: 'Feb 27, 2026',
     highlights: [
-      '⭐ <strong>HTTP hooks</strong> — hooks can now POST JSON to a URL and receive JSON back, instead of running a shell command',
+      '⭐ <strong>HTTP hooks</strong>: hooks can now POST JSON to a URL and receive JSON back, instead of running a shell command',
       '⭐ Project configs & auto-memory now shared across all git worktrees of the same repository',
       '<code>/simplify</code> and <code>/batch</code> bundled slash commands added',
       '<code>ENABLE_CLAUDEAI_MCP_SERVERS=false</code> env var to opt out of claude.ai MCP servers',
@@ -714,8 +714,8 @@ export const releases: Release[] = [
     version: 'v2.1.59',
     date: 'Feb 26, 2026',
     highlights: [
-      '&#129504; <strong>Auto-memory</strong> — Claude automatically saves useful context to memory. Manage with <code>/memory</code>',
-      '<code>/copy</code> command — interactive picker to select individual code blocks or full response',
+      '&#129504; <strong>Auto-memory</strong>: Claude automatically saves useful context to memory. Manage with <code>/memory</code>',
+      '<code>/copy</code> command: interactive picker to select individual code blocks or full response',
       'Smarter "always allow" prefix suggestions for compound bash commands (per-subcommand prefixes)',
       'Fixed MCP OAuth token refresh race condition with multiple simultaneous Claude Code instances',
       'Fixed config file corruption wiping authentication when multiple instances ran simultaneously',
@@ -770,8 +770,8 @@ export const releases: Release[] = [
     version: 'v2.1.51',
     date: 'Feb 24, 2026',
     highlights: [
-      '&#128241; <strong>Remote Control</strong> — control your local Claude Code session from any phone, tablet, or browser via <code>/rc</code> or <code>claude remote-control</code>. Execution stays 100% local. Pro/Max only (Research Preview)',
-      'BashTool skips login shell by default when snapshot available — performance improvement',
+      '&#128241; <strong>Remote Control</strong>: control your local Claude Code session from any phone, tablet, or browser via <code>/rc</code> or <code>claude remote-control</code>. Execution stays 100% local. Pro/Max only (Research Preview)',
+      'BashTool skips login shell by default when snapshot available: performance improvement',
       '<code>CLAUDE_CODE_ACCOUNT_UUID</code> / <code>CLAUDE_CODE_USER_EMAIL</code> env vars for SDK account metadata',
       '<code>/model</code> picker shows human-readable labels; custom npm registries for plugins',
     ],

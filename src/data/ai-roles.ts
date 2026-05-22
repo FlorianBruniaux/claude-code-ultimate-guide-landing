@@ -78,7 +78,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ai-engineer',
     title: 'AI Engineer',
     status: 'Growing',
-    mission: 'Build end-to-end AI-powered applications — from LLM integration to production monitoring.',
+    mission: 'Build end-to-end AI-powered applications: from LLM integration to production monitoring.',
     skills: ['LLM APIs (Anthropic, OpenAI, Gemini)', 'Eval design & measurement', 'MLOps basics'],
     entryPaths: ['Software engineer', 'Backend engineer', 'Data engineer'],
     salary: {
@@ -142,7 +142,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ai-architect',
     title: 'AI Architect',
     status: 'Established',
-    mission: 'Design enterprise AI systems — technology choices, reference architectures, governance standards.',
+    mission: 'Design enterprise AI systems: technology choices, reference architectures, governance standards.',
     skills: ['Cloud AI services (AWS/Azure/GCP)', 'Security & compliance (GDPR, AI Act)', 'Distributed systems design'],
     entryPaths: ['Senior AI engineer → Staff → Architect', 'Cloud architect + AI upskill'],
     salary: {
@@ -172,7 +172,7 @@ export const ROLES: RoleEntry[] = [
     id: 'harness-engineer',
     title: 'Harness Engineer',
     status: 'Emerging',
-    mission: 'Build the infrastructure that keeps AI agents productive — layered architecture enforcement, taste invariants, knowledge base design, and anti-entropy systems.',
+    mission: 'Build the infrastructure that keeps AI agents productive: layered architecture enforcement, taste invariants, knowledge base design, and anti-entropy systems.',
     skills: ['Custom linters with agent-readable error messages', 'Layered domain architecture enforcement', 'Anti-entropy agents & quality score tracking', 'AGENTS.md as TOC + docs/ knowledge base design'],
     entryPaths: ['Staff/principal engineer', 'Platform engineer', 'AI architect'],
     salary: null,
@@ -184,7 +184,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ai-product-manager',
     title: 'AI Product Manager',
     status: 'Growing',
-    mission: 'Own AI-powered products — requirements, quality tradeoffs, UX of non-deterministic systems.',
+    mission: 'Own AI-powered products: requirements, quality tradeoffs, UX of non-deterministic systems.',
     skills: ['Eval design & probabilistic thinking', 'LLM API familiarity', 'AI UX patterns'],
     entryPaths: ['Traditional PM', 'Technical PM', 'QA or data analyst'],
     salary: {
@@ -200,7 +200,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ai-safety-eval-engineer',
     title: 'AI Safety & Eval Engineer',
     status: 'Growing',
-    mission: 'Ensure AI systems behave safely and reliably — build eval pipelines, red-team models, implement guardrails.',
+    mission: 'Ensure AI systems behave safely and reliably: build eval pipelines, red-team models, implement guardrails.',
     skills: ['Evaluation framework design', 'Red-teaming & adversarial testing', 'Risk reporting & governance'],
     entryPaths: ['ML engineer', 'Security engineer', 'Research engineer'],
     salary: {
@@ -216,7 +216,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ml-engineer',
     title: 'ML Engineer',
     status: 'Established',
-    mission: 'Develop, train, deploy, and maintain machine learning models — the most traditional AI engineering role.',
+    mission: 'Develop, train, deploy, and maintain machine learning models: the most traditional AI engineering role.',
     skills: ['Python + PyTorch/TensorFlow', 'Data pipelines (Spark, Airflow, dbt)', 'Cloud ML platforms (SageMaker, Vertex)'],
     entryPaths: ['Data scientist', 'Software engineer + ML upskill', 'Research scientist'],
     salary: {
@@ -231,7 +231,7 @@ export const ROLES: RoleEntry[] = [
     id: 'mlops-engineer',
     title: 'MLOps Engineer',
     status: 'Established',
-    mission: 'Own the operational layer that keeps models reliable in production — CI/CD pipelines, drift monitoring, and deployment infrastructure.',
+    mission: 'Own the operational layer that keeps models reliable in production: CI/CD pipelines, drift monitoring, and deployment infrastructure.',
     skills: ['MLflow / Weights & Biases', 'Model drift monitoring', 'Kubernetes & infrastructure as code'],
     entryPaths: ['DevOps/platform engineer', 'ML engineer (infra-minded)', 'Data engineer'],
     salary: {
@@ -247,7 +247,7 @@ export const ROLES: RoleEntry[] = [
     id: 'ai-developer-advocate',
     title: 'AI Developer Advocate',
     status: 'Growing',
-    mission: 'Bridge an AI platform and the developers who use it — build demos, create tutorials, represent developer needs to the product team.',
+    mission: 'Bridge an AI platform and the developers who use it: build demos, create tutorials, represent developer needs to the product team.',
     skills: ['Technical content creation', 'Community building', 'Deep platform/API fluency'],
     entryPaths: ['Software engineer with public presence', 'Technical writer with engineering background', 'Early AI community builder'],
     salary: {
@@ -271,7 +271,7 @@ export const ROLES: RoleEntry[] = [
       entry: '$100K–$140K',
       mid: '$140K–$190K',
       senior: '$190K–$260K',
-      note: 'Emerging — title varies across companies',
+      note: 'Emerging: title varies across companies',
     },
     guideAnchor: '16-ai-orchestration-engineer',
     landingUrl: '/guide/architecture/',
@@ -280,7 +280,7 @@ export const ROLES: RoleEntry[] = [
     id: 'spec-engineer',
     title: 'Spec Engineer',
     status: 'Emerging',
-    mission: 'Write the structured specifications that AI agents use to plan, implement, and validate code — bridging business intent and machine-executable contracts.',
+    mission: 'Write the structured specifications that AI agents use to plan, implement, and validate code: bridging business intent and machine-executable contracts.',
     skills: ['Structured spec writing (Gherkin-style, SDD formats)', 'Agent failure mode understanding (multi-file pass@1)', 'SDD tools (Spec Kit, Kiro, Augment, Factory.ai)', 'Version control discipline (specs versioned before code)'],
     entryPaths: ['Technical writer with engineering background', 'QA engineer who understands requirements', 'Product engineer frustrated by low AI output quality'],
     salary: {
