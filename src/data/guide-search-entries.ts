@@ -596,6 +596,230 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-memory-systems-guide",
+    "title": "Memory Systems Guide",
+    "keywords": "memory systems guide guide core memory systems",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-tldr",
+    "title": "Memory Systems Tldr",
+    "keywords": "memory systems tldr guide core memory systems md#1 tldr the three track model",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#1-tldr-the-three-track-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-native-stack",
+    "title": "Memory Systems Native Stack",
+    "keywords": "memory systems native stack guide core memory systems md#2 native claude code memory stack",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#2-native-claude-code-memory-stack",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-claudemd",
+    "title": "Memory Systems Claudemd",
+    "keywords": "memory systems claudemd guide core memory systems md#21 claudemd three levels",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#21-claudemd-three-levels",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-auto-memory",
+    "title": "Memory Systems Auto Memory",
+    "keywords": "memory systems auto memory guide core memory systems md#22 auto memory v21594",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#22-auto-memory-v21594",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-auto-dream",
+    "title": "Memory Systems Auto Dream",
+    "keywords": "memory systems auto dream guide core memory systems md#23 auto dream background consolidation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#23-auto-dream-background-consolidation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-agent-memory",
+    "title": "Memory Systems Agent Memory",
+    "keywords": "memory systems agent memory guide core memory systems md#24 agent memory frontmatter",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#24-agent-memory-frontmatter",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-cross-session",
+    "title": "Memory Systems Cross Session",
+    "keywords": "memory systems cross session guide core memory systems md#3 cross session tools single user",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#3-cross-session-tools-single-user",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-claude-mem",
+    "title": "Memory Systems Claude Mem",
+    "keywords": "memory systems claude mem guide core memory systems md#31 claude mem",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#31-claude-mem",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-agentmemory",
+    "title": "Memory Systems Agentmemory",
+    "keywords": "memory systems agentmemory guide core memory systems md#32 agentmemory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#32-agentmemory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-icm",
+    "title": "Memory Systems Icm",
+    "keywords": "memory systems icm guide core memory systems md#33 icm infinite context memory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#33-icm-infinite-context-memory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-kairn",
+    "title": "Memory Systems Kairn",
+    "keywords": "memory systems kairn guide core memory systems md#34 kairn",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#34-kairn",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-doobidoo",
+    "title": "Memory Systems Doobidoo",
+    "keywords": "memory systems doobidoo guide core memory systems md#35 doobidoo mcp memory service",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#35-doobidoo-mcp-memory-service",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-openMemory",
+    "title": "Memory Systems OpenMemory",
+    "keywords": "memory systems openmemory guide core memory systems md#36 openmemory mcp mem0ai",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#36-openmemory-mcp-mem0ai",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-tool-comparison",
+    "title": "Memory Systems Tool Comparison",
+    "keywords": "memory systems tool comparison guide core memory systems md#38 master comparison table",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#38-master-comparison-table",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-team-sharing",
+    "title": "Memory Systems Team Sharing",
+    "keywords": "memory systems team sharing guide core memory systems md#4 team sharing",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#4-team-sharing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-trinity",
+    "title": "Memory Systems Trinity",
+    "keywords": "memory systems trinity guide core memory systems md#41 the trinity claudemd mcpjson skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#41-the-trinity-claudemd--mcpjson--skills",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-mem0-cloud",
+    "title": "Memory Systems Mem0 Cloud",
+    "keywords": "memory systems mem0 cloud guide core memory systems md#43 mem0 cloud mcp",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#43-mem0-cloud-mcp",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-zep",
+    "title": "Memory Systems Zep",
+    "keywords": "memory systems zep guide core memory systems md#44 zep graphiti",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#44-zep--graphiti",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-team-gap",
+    "title": "Memory Systems Team Gap",
+    "keywords": "memory systems team gap guide core memory systems md#47 the structural team memory gap",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#47-the-structural-team-memory-gap",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-multi-agent",
+    "title": "Memory Systems Multi Agent",
+    "keywords": "memory systems multi agent guide core memory systems md#5 multi agent shared memory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#5-multi-agent-shared-memory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-architecture-patterns",
+    "title": "Memory Systems Architecture Patterns",
+    "keywords": "memory systems architecture patterns guide core memory systems md#6 architecture patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#6-architecture-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-risks",
+    "title": "Memory Systems Risks",
+    "keywords": "memory systems risks guide core memory systems md#7 risks and security",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#7-risks-and-security",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-memory-poisoning",
+    "title": "Memory Systems Memory Poisoning",
+    "keywords": "memory systems memory poisoning guide core memory systems md#71 memory poisoning prompt injection",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#71-memory-poisoning-prompt-injection",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-decision",
+    "title": "Memory Systems Decision",
+    "keywords": "memory systems decision guide core memory systems md#8 decision frameworks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#8-decision-frameworks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-decision-flowchart",
+    "title": "Memory Systems Decision Flowchart",
+    "keywords": "memory systems decision flowchart guide core memory systems md#81 decision flowchart",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#81-decision-flowchart",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-benchmarks",
+    "title": "Memory Systems Benchmarks",
+    "keywords": "memory systems benchmarks guide core memory systems md#9 benchmarks and evaluation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#9-benchmarks-and-evaluation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-open-problems",
+    "title": "Memory Systems Open Problems",
+    "keywords": "memory systems open problems guide core memory systems md#10 open problems",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#10-open-problems",
+    "source": "guide"
+  },
+  {
     "id": "guide-team-ai-instructions-section",
     "title": "Team AI Instructions Section",
     "keywords": "team ai instructions section guide ultimate guide md#35 team configuration scale",

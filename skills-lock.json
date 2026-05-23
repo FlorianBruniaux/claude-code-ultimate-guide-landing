@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "runtime-cache": {
+      "source": "vercel-labs/vercel-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/runtime-cache/SKILL.md",
+      "computedHash": "448f9889dc50e212b6781904c1290a5e5a7c832b541aaf6c3d6e22e4801dfe41"
+    }
+  }
+}

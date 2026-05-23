@@ -1287,7 +1287,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-may-2026",
     "title": "2.1.x Series (January-May 2026)",
-    "keywords": "2 1 x series january may 2026 claude code release history v2.1.148 (2026-05-22) hotfix: bash tool exit code 127 regression from 2.1.147. - fixed : bash tool returning exit code 127 on every command (r",
+    "keywords": "2 1 x series january may 2026 claude code release history v2.1.150 (2026-05-23) internal infrastructure improvements — no user-facing changes. --- v2.1.149 (2026-05-23) per-category breakdown, gfm tas",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-may-2026",
     "source": "guide"
@@ -3986,6 +3986,118 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "what practitioners say mcp vs cli decision guide a few representative perspectives from experienced claude code users: \"i prefer cli for deterministic actions. for gitlab interactions i use glab (the",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#what-practitioners-say",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-1-tl-dr-three-track-model",
+    "title": "1. TL;DR: Three-Track Model",
+    "keywords": "1 tl dr three track model memory systems memory for claude code splits into three tracks. the native stack (claude.md, memory.md, auto memory, auto dream) covers 80% of solo-dev needs with ze",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#1-tl-dr-three-track-model",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-2-native-claude-code-memory-stack",
+    "title": "2. Native Claude Code Memory Stack",
+    "keywords": "2 native claude code memory stack memory systems 2.1 claude.md: three levels of memory claude.md files are persistent instructions claude reads at the start of every session — long-term memory of you",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#2-native-claude-code-memory-stack",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-commands",
+    "title": "Commands",
+    "keywords": "commands memory systems - - start development server - - run tests - - check code style markdown",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#commands",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-what-stack-structure",
+    "title": "WHAT — Stack & Structure",
+    "keywords": "what stack structure memory systems - runtime: node.js 20, pnpm 9 - framework: next.js 14 app router - db: postgresql via prisma orm",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#what-stack-structure",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-why-architecture-decisions",
+    "title": "WHY — Architecture Decisions",
+    "keywords": "why architecture decisions memory systems - app router for rsc + streaming support - no redux: server state via react query, local state via usestate",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#why-architecture-decisions",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-how-working-conventions",
+    "title": "HOW — Working Conventions",
+    "keywords": "how working conventions memory systems - run: test: lint: - commits: conventional format (feat/fix/chore) `` /memory .claude/memory/memory.md /.claude/projects/<path /memory/memory.md /memo",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#how-working-conventions",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-3-cross-session-tools-single-user",
+    "title": "3. Cross-Session Tools (Single User)",
+    "keywords": "3 cross session tools single user memory systems 3.1 claude-mem repo : github.com/thedotmack/claude-mem stars : 26.5k license : agpl-3.0 + polyform noncommercial hooks into claude code lifecycle even",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#3-cross-session-tools-single-user",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-4-team-sharing",
+    "title": "4. Team Sharing",
+    "keywords": "4 team sharing memory systems the native claude.md provides shared static context (versioned, zero infra). for shared dynamic memory that evolves during sessions, no single dominan",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#4-team-sharing",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-5-multi-agent-shared-memory",
+    "title": "5. Multi-Agent Shared Memory",
+    "keywords": "5 multi agent shared memory memory systems 5.1 mcp as blackboard classical ai blackboard architecture applied to agent swarms. multiple agents read and write a shared semantic store via mcp too",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#5-multi-agent-shared-memory",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-6-architecture-patterns",
+    "title": "6. Architecture Patterns",
+    "keywords": "6 architecture patterns memory systems five patterns crystallize from this survey. they don't compose well together — most tools implement exactly one. 6.1 hook-driven lifecycle compression",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#6-architecture-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-7-risks-and-security",
+    "title": "7. Risks and Security",
+    "keywords": "7 risks and security memory systems 7.1 memory poisoning via prompt injection ⚠️ this risk is not documented by any tool in this survey. every team-shared memory tool is a write surface",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#7-risks-and-security",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-8-decision-frameworks",
+    "title": "8. Decision Frameworks",
+    "keywords": "8 decision frameworks memory systems 8.1 decision flowchart <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"memory-systems-0-light\" width=\"100%\" xmlns",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#8-decision-frameworks",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-9-benchmarks-and-evaluation",
+    "title": "9. Benchmarks and Evaluation",
+    "keywords": "9 benchmarks and evaluation memory systems academic evaluation frameworks benchmark what it measures ----------- ----------------- longmemeval retention over time, graceful degradation when cap",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#9-benchmarks-and-evaluation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-memory-systems-10-open-problems",
+    "title": "10. Open Problems",
+    "keywords": "10 open problems memory systems these gaps have no tooling answer as of may 2026: cross-project memory : \"what did i learn about connection pooling in project a that applies to proje",
+    "category": "Core Guides",
+    "url": "/guide/memory-systems/#10-open-problems",
     "source": "guide"
   },
   {
