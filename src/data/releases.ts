@@ -16,12 +16,32 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.150',
+    date: 'May 23, 2026',
+    highlights: [
+      'Internal infrastructure improvements (no user-facing changes)',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.149',
+    date: 'May 23, 2026',
+    highlights: [
+      '/usage per-category breakdown: skills, subagents, plugins, and per-MCP-server cost',
+      'Markdown GFM task list checkboxes (- [ ]/- [x]) now render natively',
+      'Security: PowerShell cd permission bypass fixed + sandbox worktree write allowlist corrected',
+      'Enterprise: allowAllClaudeAiMcps managed setting for claude.ai cloud MCP connectors',
+      '20+ bug fixes: /diff keyboard scrolling, transcript view freeze, slash-command arg hints, /insights crash',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.148',
     date: 'May 22, 2026',
     highlights: [
       'Hotfix: Bash tool returning exit code 127 on every command (regression from 2.1.147)',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

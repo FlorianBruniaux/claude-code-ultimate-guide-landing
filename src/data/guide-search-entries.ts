@@ -1636,6 +1636,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-mcp2cli-evaluation",
+    "title": "Third Party Mcp2cli Evaluation",
+    "keywords": "third party mcp2cli evaluation docs resource evaluations 2026 mcp2cli token optimization",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-03-17-mcp2cli-token-optimization.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-mcp2cli-score",
+    "title": "Third Party Mcp2cli Score",
+    "keywords": "third party mcp2cli score",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/3/5",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-cli-guide",
+    "title": "MCP Vs CLI Guide",
+    "keywords": "mcp vs cli guide guide ecosystem mcp cli",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-cli-tradeoffs",
+    "title": "MCP Vs CLI Tradeoffs",
+    "keywords": "mcp vs cli tradeoffs guide ecosystem mcp cli md#tradeoffs",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#tradeoffs",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-cli-decision-dimensions",
+    "title": "MCP Vs CLI Decision Dimensions",
+    "keywords": "mcp vs cli decision dimensions guide ecosystem mcp cli md#the four decision dimensions",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#the-four-decision-dimensions",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-cli-situation-table",
+    "title": "MCP Vs CLI Situation Table",
+    "keywords": "mcp vs cli situation table guide ecosystem mcp cli md#guidance situation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#guidance-by-situation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-cli-token-cost",
+    "title": "MCP Vs CLI Token Cost",
+    "keywords": "mcp vs cli token cost guide ecosystem mcp cli md#token cost mcp schemas what the numbers look like",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#token-cost-of-mcp-schemas--what-the-numbers-look-like",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-skills",
+    "title": "MCP Vs Skills",
+    "keywords": "mcp vs skills guide ecosystem mcp cli md#mcp skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#mcp-vs-skills",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-skills-oauth-boundary",
+    "title": "MCP Vs Skills Oauth Boundary",
+    "keywords": "mcp vs skills oauth boundary guide ecosystem mcp cli md#the oauth boundary",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#the-oauth-boundary",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-vs-skills-note",
+    "title": "MCP Vs Skills Note",
+    "keywords": "mcp vs skills note skills (markdown workflows) and mcp (execution auth) address different layers — not alternatives  oauth 2 1 is mcp's structural advantage: skills cannot hold refresh tokens or complete pkce flows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Skills (markdown workflows) and MCP (execution/auth) address different layers — not alternatives. OAuth 2.1 is MCP's structural advantage: skills cannot hold refresh tokens or complete PKCE flows.",
+    "source": "guide"
+  },
+  {
     "id": "guide-config-ratinaud-evaluation",
     "title": "Config Ratinaud Evaluation",
     "keywords": "config ratinaud evaluation docs resource evaluations ratinaud config management evaluation",
@@ -1937,14 +2017,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "resource evaluations grenier quality docs resource evaluations grenier agent skill quality",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/grenier-agent-skill-quality.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-grenier-score",
-    "title": "Resource Evaluations Grenier Score",
-    "keywords": "resource evaluations grenier score",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/3/5",
     "source": "guide"
   },
   {
