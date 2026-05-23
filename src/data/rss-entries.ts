@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.149',
+    date: 'May 23, 2026',
+    description: '/usage now breaks down limits usage by category: skills, subagents, plugins, and per-MCP-server cost. Markdown renders GFM task list checkboxes natively. Two security fixes: PowerShell cd permission bypass and sandbox worktree write allowlist covering the entire main repo root. Enterprise gains allowAllClaudeAiMcps. 20+ bug fixes including /diff keyboard scrolling, transcript view freeze, and slash-command argument hints.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21149-2026-05-23',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.147',
     date: 'May 22, 2026',
     description: 'Pinned background sessions (Ctrl+T in claude agents) now stay alive when idle and auto-restart to apply CC updates. /code-review gains a --comment flag to post findings as inline GitHub PR comments. Auto-updater now retries transient network failures and reports specific error categories. Fixes prompt history consecutive duplicates, PowerShell hook if-conditions never matching, pasted text delivered as [Pasted text #N] placeholder, and 25+ more.',
