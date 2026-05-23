@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'Memory Systems: complete reference guide',
+    date: 'May 23, 2026',
+    description: 'New canonical page consolidating all memory patterns for Claude Code: three tracks (Native Stack, Cross-Session Tools, Team Sharing), 20-tool comparison table, multi-agent coordination patterns, memory poisoning risk, Mermaid decision flowchart, and benchmarks. Replaces 15+ fragmented locations in the main guide.',
+    link: 'https://cc.bruniaux.com/guide/core/memory-systems/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code v2.1.149',
     date: 'May 23, 2026',

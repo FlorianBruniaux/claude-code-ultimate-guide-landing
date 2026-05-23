@@ -2749,6 +2749,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-learning-path-03-memory-going-further-cross-session-and-team-memory",
+    "title": "Going Further: Cross-Session and Team Memory",
+    "keywords": "going further cross session and team memory module 03 memory config the sections above cover the foundational claude.md patterns. when you're ready to go deeper, the ecosystem has more: auto memory an",
+    "category": "Core Guides",
+    "url": "/guide/learning-path/03-memory/#going-further-cross-session-and-team-memory",
+    "source": "guide"
+  },
+  {
     "id": "gc-learning-path-04-agents-goal",
     "title": "Goal",
     "keywords": "goal module 04 agents specialization create specialized agents for specific tasks. learn how to focus ai capabilities on targeted problems. ---",
@@ -5687,41 +5695,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-1-memory-files-claude-md",
     "title": "3.1 Memory Files (CLAUDE.md)",
-    "keywords": "3 1 memory files claude md 3 memory files claude.md files are persistent instructions that claude reads at the start of every session. they're called \"memory\" files because they give claude lo",
+    "keywords": "3 1 memory files claude md 3 memory files claude.md files are persistent instructions read at every session start. three levels: (global) → (project) → (local/personal). all merge additively;",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-1-memory-files-claude-md",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-03-memory-files-commands",
-    "title": "Commands",
-    "keywords": "commands 3 memory files - - start development server - - run tests - - check code style markdown",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/03-memory-files/#commands",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-03-memory-files-what-stack-structure",
-    "title": "WHAT — Stack & Structure",
-    "keywords": "what stack structure 3 memory files - runtime: node.js 20, pnpm 9 - framework: next.js 14 app router - db: postgresql via prisma orm - key dirs: src/app/ (routes), src/lib/ (shared), src",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/03-memory-files/#what-stack-structure",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-03-memory-files-why-architecture-decisions",
-    "title": "WHY — Architecture Decisions",
-    "keywords": "why architecture decisions 3 memory files - app router chosen for rsc + streaming support - prisma over raw sql: type safety + migration tooling - no redux: server state via react query, local",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/03-memory-files/#why-architecture-decisions",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-03-memory-files-how-working-conventions",
-    "title": "HOW — Working Conventions",
-    "keywords": "how working conventions 3 memory files - run: test: lint: - commits: conventional format (feat/fix/chore) - prs: always include tests for new features week 1: 5 rules → 5 mistakes prevented",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/03-memory-files/#how-working-conventions",
     "source": "guide"
   },
   {

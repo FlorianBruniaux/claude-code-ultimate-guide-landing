@@ -1,0 +1,236 @@
+<!-- Memory Systems Section -->
+<section class="section section--alt memory-systems" id="memory-systems">
+    <div class="container">
+        <h2 class="section-title">Memory Systems</h2>
+        <p class="section-subtitle">Claude Code has no single memory system — it has three distinct tracks. Knowing which one fits your situation is the difference between sessions that start from scratch and ones that pick up exactly where you left off.</p>
+
+        <div class="memory-tracks">
+            <div class="memory-track track-native">
+                <div class="track-header">
+                    <span class="track-icon" aria-hidden="true">&#128196;</span>
+                    <h3 class="track-title">Native Stack</h3>
+                    <span class="track-badge">Built-in</span>
+                </div>
+                <p class="track-desc">Zero setup, zero dependencies. Works today.</p>
+                <ul class="track-features">
+                    <li><strong>CLAUDE.md</strong> — permanent instructions at global / project / local levels</li>
+                    <li><strong>Auto Memory</strong> (v2.1.59+) — Claude writes its own <code>MEMORY.md</code> across sessions</li>
+                    <li><strong>Auto Dream</strong> — background consolidation after ≥5 sessions (community-discovered)</li>
+                    <li><strong>Agent Memory</strong> frontmatter — 200-line injection at agent startup</li>
+                </ul>
+                <a href="/guide/core/memory-systems/#2-native-claude-code-memory-stack" class="track-cta">Native stack docs &rarr;</a>
+            </div>
+
+            <div class="memory-track track-cross-session">
+                <div class="track-header">
+                    <span class="track-icon" aria-hidden="true">&#128257;</span>
+                    <h3 class="track-title">Cross-Session Tools</h3>
+                    <span class="track-badge track-badge-community">Community</span>
+                </div>
+                <p class="track-desc">Hooks-based or MCP-based tools that persist what Claude does across sessions — automatically.</p>
+                <ul class="track-features">
+                    <li><strong>claude-mem</strong> (26.5K stars) — hooks auto-capture, 3-layer disclosure, ~$5-15/month</li>
+                    <li><strong>agentmemory</strong> (16K stars) — BM25+vector+graph fusion, 95.2% recall on LongMemEval-S</li>
+                    <li><strong>ICM</strong> — Rust binary, episodic decay + permanent graph, <code>brew install icm</code></li>
+                    <li><strong>Kairn, doobidoo, OpenMemory MCP</strong> — 7 more tools compared</li>
+                </ul>
+                <a href="/guide/core/memory-systems/#3-cross-session-tools-single-user" class="track-cta">Tool comparison &rarr;</a>
+            </div>
+
+            <div class="memory-track track-team">
+                <div class="track-header">
+                    <span class="track-icon" aria-hidden="true">&#128101;</span>
+                    <h3 class="track-title">Team + Multi-Agent</h3>
+                    <span class="track-badge track-badge-advanced">Advanced</span>
+                </div>
+                <p class="track-desc">Sharing memory across developers and autonomous agents — the hardest problem, with structural reasons why it's still unsolved.</p>
+                <ul class="track-features">
+                    <li><strong>The Trinity</strong> — CLAUDE.md + <code>.mcp.json</code> + skills, committed to repo (zero infra)</li>
+                    <li><strong>Mem0 Cloud MCP</strong> — shared memory pool, free tier, one-command install</li>
+                    <li><strong>Zep / Graphiti</strong> — temporal knowledge graph, bitemporal edge windows</li>
+                    <li><strong>Leases + signals</strong> — concurrent write coordination for multi-agent scenarios</li>
+                </ul>
+                <a href="/guide/core/memory-systems/#4-team-sharing" class="track-cta">Team patterns &rarr;</a>
+            </div>
+        </div>
+
+        <div class="memory-decision">
+            <h3 class="decision-title">Which track do you need?</h3>
+            <div class="decision-rules">
+                <div class="decision-rule">
+                    <span class="rule-trigger">Solo, CLAUDE.md is enough</span>
+                    <span class="rule-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="rule-answer">Native Stack — start with Auto Memory, costs nothing</span>
+                </div>
+                <div class="decision-rule">
+                    <span class="rule-trigger">Hate re-explaining context every session</span>
+                    <span class="rule-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="rule-answer">claude-mem or agentmemory — both auto-capture without manual calls</span>
+                </div>
+                <div class="decision-rule">
+                    <span class="rule-trigger">Need causality ("this bug caused that")</span>
+                    <span class="rule-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="rule-answer">Kairn (biological decay) or ICM Memoirs (typed graph)</span>
+                </div>
+                <div class="decision-rule">
+                    <span class="rule-trigger">Team sharing, no infra budget</span>
+                    <span class="rule-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="rule-answer">The Trinity — CLAUDE.md + .mcp.json + skills in the repo</span>
+                </div>
+            </div>
+            <a href="/guide/core/memory-systems/#8-decision-frameworks" class="btn btn-primary memory-cta">Full decision flowchart &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.memory-tracks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+.memory-track {
+    padding: var(--space-xl);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+.track-native { border-top: 3px solid var(--accent); }
+.track-cross-session { border-top: 3px solid var(--status-info); }
+.track-team { border-top: 3px solid var(--status-warning); }
+
+.track-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+.track-icon {
+    font-size: 1.4rem;
+}
+.track-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+}
+.track-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    white-space: nowrap;
+}
+.track-badge-community {
+    background: var(--status-info);
+}
+.track-badge-advanced {
+    background: var(--status-warning);
+    color: #1a1a1a;
+}
+.track-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+.track-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    flex: 1;
+}
+.track-features li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding-left: var(--space-sm);
+    border-left: 2px solid var(--border);
+    line-height: 1.5;
+}
+.track-features li strong {
+    color: var(--text-primary);
+}
+.track-features li code {
+    font-size: 0.8rem;
+    background: var(--bg-tertiary, var(--bg-secondary));
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+.track-cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: auto;
+}
+.track-cta:hover {
+    text-decoration: underline;
+}
+
+.memory-decision {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+    padding: var(--space-xl);
+}
+.decision-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 var(--space-lg) 0;
+}
+.decision-rules {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+.decision-rule {
+    display: grid;
+    grid-template-columns: 1fr auto 1.5fr;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-primary, var(--bg-tertiary));
+    border-radius: var(--border-radius-sm, 6px);
+    font-size: 0.875rem;
+}
+.rule-trigger {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.rule-arrow {
+    color: var(--accent);
+    font-weight: bold;
+    text-align: center;
+}
+.rule-answer {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+.memory-cta {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (max-width: 640px) {
+    .decision-rule {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
+    }
+    .rule-arrow {
+        display: none;
+    }
+    .rule-trigger::after {
+        content: ' →';
+        color: var(--accent);
+    }
+}
+</style>
