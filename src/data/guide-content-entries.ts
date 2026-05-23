@@ -3933,6 +3933,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-mcp-vs-cli-the-api-wrapper-pattern",
+    "title": "The API wrapper pattern",
+    "keywords": "the api wrapper pattern mcp vs cli decision guide most production mcp servers for saas tools sit on top of existing rest or graphql apis. the server translates tool calls into http requests against th",
+    "category": "Core Guides",
+    "url": "/guide/mcp-vs-cli/#the-api-wrapper-pattern",
+    "source": "guide"
+  },
+  {
     "id": "gc-mcp-vs-cli-the-four-decision-dimensions",
     "title": "The four decision dimensions",
     "keywords": "the four decision dimensions mcp vs cli decision guide before asking \"mcp or cli?\", answer these four questions. they rank from most to least constraining. 1. who is the end user? this is the dominant",
