@@ -202,7 +202,7 @@ function init() {
   $('mcq-next')?.addEventListener('click', goNext)
   $('mcq-retake')?.addEventListener('click', resetQuiz)
   $('mcq-explore')?.addEventListener('click', () => {
-    window.location.href = '/guide/ecosystem/mcp-vs-cli/'
+    window.location.href = '/guide/mcp-vs-cli/'
   })
 }
 

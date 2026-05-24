@@ -110,7 +110,7 @@ export const MCQ_RESULTS: MCQResultDef[] = [
       'Wrap CLIs in skills for non-technical users who cannot use a terminal',
       'Monitor token cost per session to track which schemas load on demand',
     ],
-    guideLink: '/guide/ecosystem/mcp-vs-cli/#mcp-strengths',
+    guideLink: '/guide/mcp-vs-cli/#mcp-strengths',
   },
   {
     resultId: 'cli',
@@ -123,7 +123,7 @@ export const MCQ_RESULTS: MCQResultDef[] = [
       'Add MCP only where CLI does not exist: Sentry, Linear, Context7',
       'RTK (Rust Token Killer) filters verbose CLI output before it reaches context',
     ],
-    guideLink: '/guide/ecosystem/mcp-vs-cli/#cli-strengths',
+    guideLink: '/guide/mcp-vs-cli/#cli-strengths',
   },
   {
     resultId: 'hybrid',
@@ -136,7 +136,7 @@ export const MCQ_RESULTS: MCQResultDef[] = [
       'Skills wrap CLIs so non-technical users get transparent access',
       'Match each layer to the tool that fits it, not one answer for both',
     ],
-    guideLink: '/guide/ecosystem/mcp-vs-cli/#the-hybrid-is-the-default',
+    guideLink: '/guide/mcp-vs-cli/#the-hybrid-is-the-default',
   },
 ]
 
