@@ -1,0 +1,705 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Claude Code Memory Systems: Complete Guide 2026'
+const description = 'Three-track memory model for Claude Code: native stack (CLAUDE.md, Auto Memory, Auto Dream), cross-session tools (claude-mem, agentmemory, ICM), and team sharing (Mem0, Zep, Trinity). With decision flowchart, benchmarks, and tool comparison.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "Claude Code Memory Systems: Complete Reference 2026",
+    "description": "Three-track memory model: native stack, cross-session tools, team and multi-agent sharing. Tool comparison, decision flowchart, benchmarks.",
+    "url": "https://cc.bruniaux.com/memory-systems/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/memory-systems/",
+    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
+    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "datePublished": "2026-05-23",
+    "dateModified": "2026-05-23",
+    "inLanguage": "en",
+    "keywords": "Claude Code memory, CLAUDE.md, Auto Memory, Auto Dream, claude-mem, agentmemory, ICM, Kairn, doobidoo, Mem0, cross-session memory, agent memory"
+  }
+]
+
+const nativeTools = [
+  {
+    name: "CLAUDE.md",
+    badge: "Core",
+    badgeColor: "accent",
+    desc: "Permanent instructions injected at three levels: global (~/.claude/CLAUDE.md), project (./CLAUDE.md), and local (.claude/CLAUDE.md). The primary persistence layer for all Claude Code users.",
+    highlights: [
+      "Global → Project → Local merge order (additive)",
+      "@path/to/file.md imports for modularity",
+      "200-line limit per file for reliable attention",
+      "ETH Zürich finding: developer-written +4% adherence vs LLM-generated -3%",
+    ],
+    anchor: "21-claudemd-three-levels",
+  },
+  {
+    name: "Auto Memory",
+    badge: "v2.1.59+",
+    badgeColor: "info",
+    desc: "Claude writes its own MEMORY.md across sessions without manual calls. Uses a file-based memory system at .claude/memory/MEMORY.md per project, or ~/.claude/projects/{path}/memory/ globally.",
+    highlights: [
+      "200-line / 25 KB per file hard limit",
+      "Four memory types: user, feedback, project, reference",
+      "Per-project or global scope via settings.json",
+      "Replaces manual 'remember X' patterns",
+    ],
+    anchor: "22-auto-memory-v21594",
+  },
+  {
+    name: "Auto Dream",
+    badge: "Community",
+    badgeColor: "warning",
+    desc: "Background sub-agent that consolidates memory after ≥5 sessions AND ≥24h. Community-discovered, not officially documented. Runs a 4-phase cycle: Orient / Gather / Consolidate / Prune.",
+    highlights: [
+      "Triggers: ≥5 sessions + ≥24h gap (both required)",
+      "4-phase: Orient → Gather → Consolidate → Prune",
+      "Merges duplicates, removes stale entries",
+      "No configuration — fully automatic",
+    ],
+    anchor: "23-auto-dream-background-consolidation",
+  },
+  {
+    name: "Agent Memory",
+    badge: "v2.1.33+",
+    badgeColor: "info",
+    desc: "Frontmatter field `memory: user|project|local` in agent definition files. Injects up to 200 lines of the corresponding MEMORY.md at agent startup.",
+    highlights: [
+      "Three scopes: user (global), project, local",
+      "Injected before any user message",
+      "Works with Auto Memory output",
+      "Defined in .claude/agents/agent.md frontmatter",
+    ],
+    anchor: "24-agent-memory-frontmatter",
+  },
+]
+
+const crossSessionTools = [
+  {
+    name: "claude-mem",
+    stars: "26.5K",
+    license: "AGPL-3.0",
+    approach: "Hooks-based auto-capture",
+    storage: "SQLite + optional Chroma",
+    cost: "~$5-15/month (API calls)",
+    recall: "3-layer disclosure",
+    install: "bun worker port 37777",
+    anchor: "31-claude-mem",
+    highlight: true,
+  },
+  {
+    name: "agentmemory",
+    stars: "16K",
+    license: "MIT",
+    approach: "BM25 + Vector + Graph RRF fusion",
+    storage: "Local (SQLite + FAISS)",
+    cost: "Free (local)",
+    recall: "95.2% R@5 LongMemEval-S",
+    install: "pip install agentmemory",
+    anchor: "32-agentmemory",
+    highlight: true,
+  },
+  {
+    name: "ICM",
+    stars: null,
+    license: "MIT",
+    approach: "Episodic decay + permanent graph",
+    storage: "SQLite + semantic index",
+    cost: "Free (local)",
+    recall: "Dual: Memories + Memoirs",
+    install: "brew install icm",
+    anchor: "33-icm-infinite-context-memory",
+    highlight: false,
+  },
+  {
+    name: "Kairn",
+    stars: null,
+    license: "MIT",
+    approach: "Biological decay model",
+    storage: "Local graph DB",
+    cost: "Free (local)",
+    recall: "~200d solutions, ~50d workarounds",
+    install: "npm install kairn",
+    anchor: "34-kairn",
+    highlight: false,
+  },
+  {
+    name: "doobidoo",
+    stars: null,
+    license: "MIT",
+    approach: "MCP server",
+    storage: "SQLite-vec (default)",
+    cost: "Free (local)",
+    recall: "Vector similarity",
+    install: "npx doobidoo",
+    anchor: "35-doobidoo-mcp-memory-service",
+    highlight: false,
+  },
+  {
+    name: "OpenMemory MCP",
+    stars: null,
+    license: "Apache 2.0",
+    approach: "MCP server (Mem0 AI)",
+    storage: "Local or cloud",
+    cost: "Free tier available",
+    recall: "Semantic search",
+    install: "claude mcp add mem0",
+    anchor: "36-openmemory-mcp-mem0ai",
+    highlight: false,
+  },
+]
+
+const teamOptions = [
+  {
+    name: "The Trinity",
+    badge: "Zero infra",
+    badgeColor: "accent",
+    desc: "Commit CLAUDE.md + .mcp.json + /skills to the repo. Any developer who clones gets the full memory state immediately — no server, no account, no sync step.",
+    when: "Team with shared conventions, no infra budget",
+    anchor: "41-the-trinity-claudemd--mcpjson--skills",
+  },
+  {
+    name: "Mem0 Cloud MCP",
+    badge: "Free tier",
+    badgeColor: "info",
+    desc: "Shared memory pool accessible to all team members via MCP server. One-command install, optional self-host. Works across sessions and users.",
+    when: "Small team needing shared context without self-hosting",
+    anchor: "43-mem0-cloud-mcp",
+  },
+  {
+    name: "Zep / Graphiti",
+    badge: "Advanced",
+    badgeColor: "warning",
+    desc: "Temporal knowledge graph with bitemporal edge windows — tracks not just what was true, but when it was true and when it was learned.",
+    when: "Complex projects where history and causality matter",
+    anchor: "44-zep--graphiti",
+  },
+]
+
+const decisionRules = [
+  {
+    condition: "Solo developer, CLAUDE.md covers the context",
+    answer: "Native Stack — enable Auto Memory, costs nothing, zero setup",
+    track: "native",
+  },
+  {
+    condition: "Re-explaining context every session wastes 10+ minutes",
+    answer: "claude-mem or agentmemory — both auto-capture without explicit calls",
+    track: "cross",
+  },
+  {
+    condition: "Need causal chains: 'this bug caused that regression'",
+    answer: "Kairn (biological decay) or ICM Memoirs (typed relation graph)",
+    track: "cross",
+  },
+  {
+    condition: "Team memory, zero infra budget",
+    answer: "The Trinity — CLAUDE.md + .mcp.json + skills committed to repo",
+    track: "team",
+  },
+  {
+    condition: "Team memory, okay with a lightweight cloud service",
+    answer: "Mem0 Cloud MCP — free tier, one-command install",
+    track: "team",
+  },
+  {
+    condition: "Multi-agent pipeline, concurrent writes",
+    answer: "Lease + signal pattern on top of any persistent store",
+    track: "team",
+  },
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow">Claude Code</div>
+      <h1>Memory Systems</h1>
+      <p class="hero-desc">Claude Code has no single memory system — it has three distinct tracks. Knowing which one fits your situation determines whether sessions start from scratch or pick up exactly where you left off.</p>
+      <div class="hero-tracks-preview">
+        <a href="#2-native-claude-code-memory-stack" class="track-pill track-pill--native">Native Stack</a>
+        <a href="#3-cross-session-tools-single-user" class="track-pill track-pill--cross">Cross-Session Tools</a>
+        <a href="#4-team-sharing" class="track-pill track-pill--team">Team + Multi-Agent</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- TL;DR -->
+    <section class="section section--tldr">
+      <div class="container">
+        <div class="tldr-grid">
+          <div class="tldr-card tldr-native">
+            <div class="tldr-icon">📄</div>
+            <h3>Native Stack</h3>
+            <p>Zero setup, works today. CLAUDE.md for permanent instructions, Auto Memory for automatic cross-session notes, Auto Dream for background consolidation.</p>
+            <span class="tldr-badge">Built-in</span>
+          </div>
+          <div class="tldr-card tldr-cross">
+            <div class="tldr-icon">🔄</div>
+            <h3>Cross-Session Tools</h3>
+            <p>Community-built hooks and MCP servers that persist what Claude does automatically. claude-mem, agentmemory, ICM, Kairn, doobidoo — each with a different recall model.</p>
+            <span class="tldr-badge tldr-badge--community">Community</span>
+          </div>
+          <div class="tldr-card tldr-team">
+            <div class="tldr-icon">👥</div>
+            <h3>Team + Multi-Agent</h3>
+            <p>Sharing memory across developers or autonomous agents. The Trinity (zero infra), Mem0 Cloud, Zep/Graphiti. Concurrent-write coordination via leases and signals.</p>
+            <span class="tldr-badge tldr-badge--advanced">Advanced</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Stack -->
+    <section class="section section--alt" id="2-native-claude-code-memory-stack">
+      <div class="container">
+        <span class="section-badge section-badge--native">Track 1</span>
+        <h2 class="section-title">Native Claude Code Memory Stack</h2>
+        <p class="section-subtitle">Four mechanisms built directly into Claude Code — no extra dependencies, no API costs for the memory layer itself.</p>
+        <div class="native-grid">
+          {nativeTools.map(tool => (
+            <div class="native-card" id={tool.anchor}>
+              <div class="native-card-header">
+                <h3 class="native-card-name">{tool.name}</h3>
+                <span class={`native-badge native-badge--${tool.badgeColor}`}>{tool.badge}</span>
+              </div>
+              <p class="native-card-desc">{tool.desc}</p>
+              <ul class="native-highlights">
+                {tool.highlights.map(h => <li>{h}</li>)}
+              </ul>
+              <a href={`/guide/memory-systems/#${tool.anchor}`} class="native-guide-link">Full details in guide &rarr;</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-Session Tools -->
+    <section class="section" id="3-cross-session-tools-single-user">
+      <div class="container">
+        <span class="section-badge section-badge--cross">Track 2</span>
+        <h2 class="section-title">Cross-Session Tools</h2>
+        <p class="section-subtitle">Six community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model — choose based on what you need to remember.</p>
+
+        <div class="tool-table-wrap">
+          <table class="tool-table">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Approach</th>
+                <th>Storage</th>
+                <th>Cost</th>
+                <th>Recall</th>
+                <th>Install</th>
+              </tr>
+            </thead>
+            <tbody>
+              {crossSessionTools.map(t => (
+                <tr class={t.highlight ? 'row-highlight' : ''}>
+                  <td>
+                    <a href={`/guide/memory-systems/#${t.anchor}`} class="tool-name-link">
+                      {t.name}
+                      {t.stars && <span class="tool-stars">★ {t.stars}</span>}
+                    </a>
+                  </td>
+                  <td>{t.approach}</td>
+                  <td>{t.storage}</td>
+                  <td>{t.cost}</td>
+                  <td class="recall-cell">{t.recall}</td>
+                  <td><code>{t.install}</code></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tool-notes">
+          <p><strong>Start with:</strong> claude-mem if you want automatic capture with no manual calls and can afford ~$5-15/month in API costs. agentmemory if you want local-only with the highest benchmark recall (95.2% R@5 on LongMemEval-S). ICM if you need both episodic memory and a typed relation graph (<code>brew install icm</code>).</p>
+          <p><strong>Known issue (doobidoo):</strong> concurrent access errors under parallel agents — fix with <code>busy_timeout=15000</code> in config.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Sharing -->
+    <section class="section section--alt" id="4-team-sharing">
+      <div class="container">
+        <span class="section-badge section-badge--team">Track 3</span>
+        <h2 class="section-title">Team + Multi-Agent Sharing</h2>
+        <p class="section-subtitle">Sharing memory across developers or autonomous agents is the hardest problem. Structural reasons — no standardized conflict-resolution protocol across tools — mean no current solution handles all cases cleanly.</p>
+
+        <div class="team-options">
+          {teamOptions.map(opt => (
+            <div class="team-card" id={opt.anchor}>
+              <div class="team-card-header">
+                <h3>{opt.name}</h3>
+                <span class={`team-badge team-badge--${opt.badgeColor}`}>{opt.badge}</span>
+              </div>
+              <p class="team-card-desc">{opt.desc}</p>
+              <div class="team-card-when">
+                <span class="when-label">Best when:</span> {opt.when}
+              </div>
+              <a href={`/guide/memory-systems/#${opt.anchor}`} class="native-guide-link">Full details &rarr;</a>
+            </div>
+          ))}
+        </div>
+
+        <div class="multi-agent-note">
+          <h3>Multi-Agent Concurrent Writes</h3>
+          <p>When multiple agents write to the same memory store, you need coordination. The standard pattern: lease acquisition before write, signal-based invalidation on conflict, bounded retry with exponential backoff. No current tool implements this natively — it requires application-level wrapping.</p>
+          <a href="/guide/memory-systems/#5-multi-agent-shared-memory" class="native-guide-link">Multi-agent memory patterns &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decision Frameworks -->
+    <section class="section" id="8-decision-frameworks">
+      <div class="container">
+        <h2 class="section-title">Decision Framework: Which Track?</h2>
+        <p class="section-subtitle">Six rules that cover 90% of real situations. Each maps a concrete problem to the right solution layer.</p>
+
+        <div class="decision-rules">
+          {decisionRules.map(rule => (
+            <div class={`decision-rule decision-rule--${rule.track}`}>
+              <div class="rule-condition">
+                <span class="rule-if">If:</span>
+                <span>{rule.condition}</span>
+              </div>
+              <div class="rule-arrow" aria-hidden="true">→</div>
+              <div class="rule-answer">{rule.answer}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="decision-cta">
+          <p>The full guide includes a Mermaid decision flowchart covering edge cases: offline constraints, security requirements, data sensitivity, and multi-agent coordination.</p>
+          <a href="/guide/memory-systems/#81-decision-flowchart" class="btn btn-primary">Full decision flowchart &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risks & Architecture -->
+    <section class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">Key Risks</h2>
+        <p class="section-subtitle">Memory systems introduce attack surfaces and failure modes that don't exist with stateless contexts.</p>
+        <div class="risks-grid">
+          <div class="risk-card risk-card--high">
+            <div class="risk-header">
+              <span class="risk-level">High</span>
+              <h3>Memory Poisoning</h3>
+            </div>
+            <p>An adversarial input causes the agent to store false beliefs in its memory store. On subsequent sessions, those beliefs influence behavior. No current tool implements write validation or anomaly detection.</p>
+            <a href="/guide/memory-systems/#71-memory-poisoning-prompt-injection" class="native-guide-link">Details &rarr;</a>
+          </div>
+          <div class="risk-card risk-card--medium">
+            <div class="risk-header">
+              <span class="risk-level">Medium</span>
+              <h3>Context Inflation</h3>
+            </div>
+            <p>Memory retrieval injects tokens at session start. If retrieval is poorly tuned, you can end up with more context tokens from memory than from the actual task — degrading adherence.</p>
+          </div>
+          <div class="risk-card risk-card--medium">
+            <div class="risk-header">
+              <span class="risk-level">Medium</span>
+              <h3>Stale Beliefs</h3>
+            </div>
+            <p>Memories stored months ago may reflect outdated codebase state, team conventions, or user preferences. Decay models (Kairn, ICM) partially address this — flat storage (CLAUDE.md, doobidoo) does not.</p>
+          </div>
+          <div class="risk-card risk-card--low">
+            <div class="risk-header">
+              <span class="risk-level">Low</span>
+              <h3>Storage Fragmentation</h3>
+            </div>
+            <p>Each tool uses its own storage format. Migrating from claude-mem to ICM, or from CLAUDE.md to Mem0, has no standard export path. Lock-in is mild (stores are local files) but migration is manual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Guide CTA -->
+    <section class="section section--cta">
+      <div class="container">
+        <div class="cta-block">
+          <h2>Full Reference in the Guide</h2>
+          <p>The complete guide page covers installation instructions, configuration examples, architecture deep-dives for each tool, a full benchmark comparison (LongMemEval-S / LongMemEval-M), the Mermaid decision flowchart, open problems, and five named architecture patterns.</p>
+          <div class="cta-actions">
+            <a href="/guide/memory-systems/" class="btn btn-primary">Read the full guide &rarr;</a>
+            <a href="/guide/memory-systems/#38-master-comparison-table" class="btn btn-secondary">Tool comparison table</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+/* Hero */
+.page-hero {
+  padding: 3.5rem 0 3rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+.hero-tracks-preview {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.track-pill {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: background 0.15s, color 0.15s;
+}
+.track-pill--native { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); border-color: var(--accent); }
+.track-pill--cross { background: color-mix(in srgb, var(--status-info) 10%, transparent); color: var(--status-info); border-color: var(--status-info); }
+.track-pill--team { background: color-mix(in srgb, var(--status-warning) 10%, transparent); color: var(--status-warning); border-color: var(--status-warning); }
+.track-pill:hover { opacity: 0.8; }
+
+/* TL;DR */
+.section--tldr { padding: 2.5rem 0; }
+.tldr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.tldr-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tldr-native { border-top: 3px solid var(--accent); }
+.tldr-cross { border-top: 3px solid var(--status-info); }
+.tldr-team { border-top: 3px solid var(--status-warning); }
+.tldr-icon { font-size: 1.5rem; }
+.tldr-card h3 { font-size: 1rem; font-weight: 700; margin: 0; }
+.tldr-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; flex: 1; }
+.tldr-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  align-self: flex-start;
+}
+.tldr-badge--community { background: var(--status-info); }
+.tldr-badge--advanced { background: var(--status-warning); color: #1a1a1a; }
+
+/* Section badges */
+.section-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+}
+.section-badge--native { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+.section-badge--cross { background: color-mix(in srgb, var(--status-info) 15%, transparent); color: var(--status-info); }
+.section-badge--team { background: color-mix(in srgb, var(--status-warning) 15%, transparent); color: var(--status-warning); }
+
+/* Native Grid */
+.native-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.native-card {
+  padding: 1.5rem;
+  background: var(--bg-primary, var(--bg-tertiary));
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.native-card-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.native-card-name { font-size: 1rem; font-weight: 700; margin: 0; }
+.native-badge {
+  font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 999px; white-space: nowrap;
+}
+.native-badge--accent { background: var(--accent); color: #fff; }
+.native-badge--info { background: var(--status-info); color: #fff; }
+.native-badge--warning { background: var(--status-warning); color: #1a1a1a; }
+.native-card-desc { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+.native-highlights {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.35rem; flex: 1;
+}
+.native-highlights li {
+  font-size: 0.825rem; color: var(--text-secondary);
+  padding-left: 0.75rem; border-left: 2px solid var(--border); line-height: 1.4;
+}
+.native-guide-link {
+  font-size: 0.825rem; font-weight: 600; color: var(--accent);
+  text-decoration: none; margin-top: auto;
+}
+.native-guide-link:hover { text-decoration: underline; }
+
+/* Tool Table */
+.tool-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+.tool-table {
+  width: 100%; border-collapse: collapse; font-size: 0.875rem;
+  border: 1px solid var(--border); border-radius: var(--border-radius-md);
+}
+.tool-table th {
+  background: var(--bg-tertiary); color: var(--text-muted);
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; padding: 0.6rem 0.875rem; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.tool-table td {
+  padding: 0.6rem 0.875rem; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); vertical-align: middle;
+}
+.tool-table tr:last-child td { border-bottom: none; }
+.row-highlight td { background: color-mix(in srgb, var(--accent) 4%, transparent); }
+.tool-name-link { font-weight: 600; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; }
+.tool-name-link:hover { color: var(--accent); }
+.tool-stars { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+.recall-cell { font-size: 0.8rem; }
+.tool-table code { font-size: 0.78rem; background: var(--bg-tertiary); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+.tool-notes {
+  background: var(--bg-tertiary); border-radius: var(--border-radius-md);
+  padding: 1rem 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;
+}
+.tool-notes p { margin: 0 0 0.5rem; }
+.tool-notes p:last-child { margin: 0; }
+.tool-notes strong { color: var(--text-primary); }
+.tool-notes code { font-size: 0.8rem; background: var(--bg-secondary); padding: 1px 5px; border-radius: 3px; }
+
+/* Team Options */
+.team-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.team-card {
+  padding: 1.5rem; background: var(--bg-primary, var(--bg-tertiary));
+  border-radius: var(--border-radius-lg); border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.team-card-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.team-card-header h3 { font-size: 1rem; font-weight: 700; margin: 0; flex: 1; }
+.team-badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.team-badge--accent { background: var(--accent); color: #fff; }
+.team-badge--info { background: var(--status-info); color: #fff; }
+.team-badge--warning { background: var(--status-warning); color: #1a1a1a; }
+.team-card-desc { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; flex: 1; }
+.team-card-when { font-size: 0.8rem; color: var(--text-muted); background: var(--bg-tertiary); padding: 0.4rem 0.6rem; border-radius: 4px; }
+.when-label { font-weight: 600; color: var(--text-secondary); }
+.multi-agent-note {
+  background: color-mix(in srgb, var(--status-warning) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-warning) 30%, transparent);
+  border-radius: var(--border-radius-md); padding: 1.25rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.multi-agent-note h3 { font-size: 0.95rem; font-weight: 700; margin: 0; }
+.multi-agent-note p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+
+/* Decision Rules */
+.decision-rules { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+.decision-rule {
+  display: grid; grid-template-columns: 1fr auto 1.5fr;
+  gap: 0.75rem; align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary); border-radius: var(--border-radius-md);
+  border-left: 3px solid var(--border);
+}
+.decision-rule--native { border-left-color: var(--accent); }
+.decision-rule--cross { border-left-color: var(--status-info); }
+.decision-rule--team { border-left-color: var(--status-warning); }
+.rule-condition { display: flex; align-items: baseline; gap: 0.4rem; font-size: 0.875rem; }
+.rule-if { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); white-space: nowrap; }
+.rule-arrow { color: var(--accent); font-weight: 700; text-align: center; font-size: 1.1rem; }
+.rule-answer { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
+.decision-cta {
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg); padding: 1.5rem;
+}
+.decision-cta p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 1rem; line-height: 1.6; }
+
+/* Risks */
+.risks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.risk-card {
+  padding: 1.25rem 1.5rem; border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border); background: var(--bg-primary, var(--bg-tertiary));
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.risk-card--high { border-top: 3px solid var(--status-error, #e74c3c); }
+.risk-card--medium { border-top: 3px solid var(--status-warning); }
+.risk-card--low { border-top: 3px solid var(--border); }
+.risk-header { display: flex; align-items: center; gap: 0.5rem; }
+.risk-level {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 2px 7px; border-radius: 999px; white-space: nowrap;
+}
+.risk-card--high .risk-level { background: color-mix(in srgb, var(--status-error, #e74c3c) 15%, transparent); color: var(--status-error, #e74c3c); }
+.risk-card--medium .risk-level { background: color-mix(in srgb, var(--status-warning) 15%, transparent); color: var(--status-warning); }
+.risk-card--low .risk-level { background: var(--bg-tertiary); color: var(--text-muted); }
+.risk-header h3 { font-size: 0.95rem; font-weight: 700; margin: 0; }
+.risk-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; flex: 1; }
+
+/* CTA Section */
+.section--cta { background: var(--bg-secondary); }
+.cta-block { text-align: center; max-width: 600px; margin: 0 auto; }
+.cta-block h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem; }
+.cta-block p { color: var(--text-secondary); margin: 0 0 1.5rem; line-height: 1.6; }
+.cta-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.6rem 1.25rem; border-radius: var(--border-radius-md);
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  background: transparent; color: var(--text-primary);
+  border: 1px solid var(--border); transition: background 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--accent); }
+
+/* Layout */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 4rem 0; }
+.section--alt { background: var(--bg-secondary); }
+.section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin: 0 0 0.75rem; }
+.section-subtitle { font-size: 1rem; color: var(--text-secondary); margin: 0 0 2.5rem; max-width: 640px; line-height: 1.6; }
+
+@media (max-width: 700px) {
+  .decision-rule { grid-template-columns: 1fr; gap: 0.25rem; }
+  .rule-arrow { display: none; }
+  .tool-table { font-size: 0.8rem; }
+  .cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

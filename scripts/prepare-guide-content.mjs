@@ -158,6 +158,23 @@ function normalizeLangs(content) {
 }
 
 /**
+ * Rewrite relative .md links between guide files.
+ *
+ * Converts [text](./core/file.md#anchor) or [text](../file.md#anchor)
+ * to [text](/guide/file/#anchor), since all guide files are flattened
+ * into the same /guide/ URL namespace on the landing site.
+ */
+function rewriteRelativeGuideLinks(content) {
+  return content.replace(
+    /\[([^\]]*)\]\(\.\.?\/(?:[^)#/]*\/)*([^)#/]+)\.md(#[^)]+)?\)/g,
+    (match, text, filename, anchor) => {
+      const hash = anchor || ''
+      return `[${text}](/guide/${filename}/${hash})`
+    }
+  )
+}
+
+/**
  * Rewrite bare anchor links that point to a different chapter.
  *
  * Replaces `[text](#anchor)` with `[text](/guide/{targetSlug}/#anchor)`
@@ -453,8 +470,9 @@ for (const { num, slug, title, desc, order } of CHAPTERS) {
   const nonBlank = content.split('\n').filter(l => l.trim()).length
   if (nonBlank < 5) continue
 
-  // Rewrite cross-chapter bare anchors before writing
+  // Rewrite cross-chapter bare anchors and relative .md links before writing
   const currentSlug = `ultimate-guide/${slug}`
+  content = rewriteRelativeGuideLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
 
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}\n---`
@@ -471,7 +489,8 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 // 3b. Flush buffered guide/workflow files now that anchorMap is complete
 // -----------------------------------------------------------------------
 for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
-  let rewritten = rewriteCrossChapterAnchors(rawContent, null, anchorMap)
+  let rewritten = rewriteRelativeGuideLinks(rawContent)
+  rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
   rewritten = renderMermaidBlocks(rewritten, fileSlug)
   const outPath = isWorkflow
