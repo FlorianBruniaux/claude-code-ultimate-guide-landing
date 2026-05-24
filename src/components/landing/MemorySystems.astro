@@ -2,7 +2,7 @@
 <section class="section section--alt memory-systems" id="memory-systems">
     <div class="container">
         <h2 class="section-title">Memory Systems</h2>
-        <p class="section-subtitle">Claude Code has no single memory system — it has three distinct tracks. Knowing which one fits your situation is the difference between sessions that start from scratch and ones that pick up exactly where you left off.</p>
+        <p class="section-subtitle">Claude Code runs on three distinct memory tracks, not one. Knowing which fits your situation is the difference between sessions that start from scratch and ones that pick up exactly where you left off.</p>
 
         <div class="memory-tracks">
             <div class="memory-track track-native">
@@ -13,10 +13,10 @@
                 </div>
                 <p class="track-desc">Zero setup, zero dependencies. Works today.</p>
                 <ul class="track-features">
-                    <li><strong>CLAUDE.md</strong> — permanent instructions at global / project / local levels</li>
-                    <li><strong>Auto Memory</strong> (v2.1.59+) — Claude writes its own <code>MEMORY.md</code> across sessions</li>
-                    <li><strong>Auto Dream</strong> — background consolidation after ≥5 sessions (community-discovered)</li>
-                    <li><strong>Agent Memory</strong> frontmatter — 200-line injection at agent startup</li>
+                    <li><strong>CLAUDE.md</strong>:permanent instructions at global / project / local levels</li>
+                    <li><strong>Auto Memory</strong> (v2.1.59+):Claude writes its own <code>MEMORY.md</code> across sessions</li>
+                    <li><strong>Auto Dream</strong>:background consolidation after ≥5 sessions (community-discovered)</li>
+                    <li><strong>Agent Memory</strong> frontmatter:200-line injection at agent startup</li>
                 </ul>
                 <a href="/memory-systems/#2-native-claude-code-memory-stack" class="track-cta">Native stack docs &rarr;</a>
             </div>
@@ -27,12 +27,12 @@
                     <h3 class="track-title">Cross-Session Tools</h3>
                     <span class="track-badge track-badge-community">Community</span>
                 </div>
-                <p class="track-desc">Hooks-based or MCP-based tools that persist what Claude does across sessions — automatically.</p>
+                <p class="track-desc">Hooks-based or MCP-based tools that persist what Claude does across sessions, automatically.</p>
                 <ul class="track-features">
-                    <li><strong>claude-mem</strong> (26.5K stars) — hooks auto-capture, 3-layer disclosure, ~$5-15/month</li>
-                    <li><strong>agentmemory</strong> (16K stars) — BM25+vector+graph fusion, 95.2% recall on LongMemEval-S</li>
-                    <li><strong>ICM</strong> — Rust binary, episodic decay + permanent graph, <code>brew install icm</code></li>
-                    <li><strong>Kairn, doobidoo, OpenMemory MCP</strong> — 7 more tools compared</li>
+                    <li><strong>claude-mem</strong> (26.5K stars):hooks auto-capture, 3-layer disclosure, ~$5-15/month</li>
+                    <li><strong>agentmemory</strong> (16K stars):BM25+vector+graph fusion, 95.2% recall on LongMemEval-S</li>
+                    <li><strong>ICM</strong>:Rust binary, episodic decay + permanent graph, <code>brew install icm</code></li>
+                    <li><strong>Kairn, doobidoo, OpenMemory MCP</strong>:7 more tools compared</li>
                 </ul>
                 <a href="/memory-systems/#3-cross-session-tools-single-user" class="track-cta">Tool comparison &rarr;</a>
             </div>
@@ -43,12 +43,12 @@
                     <h3 class="track-title">Team + Multi-Agent</h3>
                     <span class="track-badge track-badge-advanced">Advanced</span>
                 </div>
-                <p class="track-desc">Sharing memory across developers and autonomous agents — the hardest problem, with structural reasons why it's still unsolved.</p>
+                <p class="track-desc">Sharing memory across developers and autonomous agents, the hardest problem, with structural reasons why it's still unsolved.</p>
                 <ul class="track-features">
-                    <li><strong>The Trinity</strong> — CLAUDE.md + <code>.mcp.json</code> + skills, committed to repo (zero infra)</li>
-                    <li><strong>Mem0 Cloud MCP</strong> — shared memory pool, free tier, one-command install</li>
-                    <li><strong>Zep / Graphiti</strong> — temporal knowledge graph, bitemporal edge windows</li>
-                    <li><strong>Leases + signals</strong> — concurrent write coordination for multi-agent scenarios</li>
+                    <li><strong>The Trinity</strong>:CLAUDE.md + <code>.mcp.json</code> + skills, committed to repo (zero infra)</li>
+                    <li><strong>Mem0 Cloud MCP</strong>:shared memory pool, free tier, one-command install</li>
+                    <li><strong>Zep / Graphiti</strong>:temporal knowledge graph, bitemporal edge windows</li>
+                    <li><strong>Leases + signals</strong>:concurrent write coordination for multi-agent scenarios</li>
                 </ul>
                 <a href="/memory-systems/#4-team-sharing" class="track-cta">Team patterns &rarr;</a>
             </div>
@@ -60,12 +60,12 @@
                 <div class="decision-rule">
                     <span class="rule-trigger">Solo, CLAUDE.md is enough</span>
                     <span class="rule-arrow" aria-hidden="true">&#8594;</span>
-                    <span class="rule-answer">Native Stack — start with Auto Memory, costs nothing</span>
+                    <span class="rule-answer">Native Stack:start with Auto Memory, costs nothing</span>
                 </div>
                 <div class="decision-rule">
                     <span class="rule-trigger">Hate re-explaining context every session</span>
                     <span class="rule-arrow" aria-hidden="true">&#8594;</span>
-                    <span class="rule-answer">claude-mem or agentmemory — both auto-capture without manual calls</span>
+                    <span class="rule-answer">claude-mem or agentmemory:both auto-capture without manual calls</span>
                 </div>
                 <div class="decision-rule">
                     <span class="rule-trigger">Need causality ("this bug caused that")</span>
@@ -75,7 +75,7 @@
                 <div class="decision-rule">
                     <span class="rule-trigger">Team sharing, no infra budget</span>
                     <span class="rule-arrow" aria-hidden="true">&#8594;</span>
-                    <span class="rule-answer">The Trinity — CLAUDE.md + .mcp.json + skills in the repo</span>
+                    <span class="rule-answer">The Trinity:CLAUDE.md + .mcp.json + skills in the repo</span>
                 </div>
             </div>
             <a href="/memory-systems/#8-decision-frameworks" class="btn btn-primary memory-cta">Full decision flowchart &rarr;</a>

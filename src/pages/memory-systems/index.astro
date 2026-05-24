@@ -56,7 +56,7 @@ const nativeTools = [
       "Triggers: ≥5 sessions + ≥24h gap (both required)",
       "4-phase: Orient → Gather → Consolidate → Prune",
       "Merges duplicates, removes stale entries",
-      "No configuration — fully automatic",
+      "No configuration:fully automatic",
     ],
     anchor: "23-auto-dream-background-consolidation",
   },
@@ -155,7 +155,7 @@ const teamOptions = [
     name: "The Trinity",
     badge: "Zero infra",
     badgeColor: "accent",
-    desc: "Commit CLAUDE.md + .mcp.json + /skills to the repo. Any developer who clones gets the full memory state immediately — no server, no account, no sync step.",
+    desc: "Commit CLAUDE.md + .mcp.json + /skills to the repo. Any developer who clones gets the full memory state immediately:no server, no account, no sync step.",
     when: "Team with shared conventions, no infra budget",
     anchor: "41-the-trinity-claudemd--mcpjson--skills",
   },
@@ -171,7 +171,7 @@ const teamOptions = [
     name: "Zep / Graphiti",
     badge: "Advanced",
     badgeColor: "warning",
-    desc: "Temporal knowledge graph with bitemporal edge windows — tracks not just what was true, but when it was true and when it was learned.",
+    desc: "Temporal knowledge graph with bitemporal edge windows:tracks not just what was true, but when it was true and when it was learned.",
     when: "Complex projects where history and causality matter",
     anchor: "44-zep--graphiti",
   },
@@ -180,12 +180,12 @@ const teamOptions = [
 const decisionRules = [
   {
     condition: "Solo developer, CLAUDE.md covers the context",
-    answer: "Native Stack — enable Auto Memory, costs nothing, zero setup",
+    answer: "Native Stack:enable Auto Memory, costs nothing, zero setup",
     track: "native",
   },
   {
     condition: "Re-explaining context every session wastes 10+ minutes",
-    answer: "claude-mem or agentmemory — both auto-capture without explicit calls",
+    answer: "claude-mem or agentmemory:both auto-capture without explicit calls",
     track: "cross",
   },
   {
@@ -195,12 +195,12 @@ const decisionRules = [
   },
   {
     condition: "Team memory, zero infra budget",
-    answer: "The Trinity — CLAUDE.md + .mcp.json + skills committed to repo",
+    answer: "The Trinity:CLAUDE.md + .mcp.json + skills committed to repo",
     track: "team",
   },
   {
     condition: "Team memory, okay with a lightweight cloud service",
-    answer: "Mem0 Cloud MCP — free tier, one-command install",
+    answer: "Mem0 Cloud MCP:free tier, one-command install",
     track: "team",
   },
   {
@@ -217,7 +217,7 @@ const decisionRules = [
     <div class="container">
       <div class="hero-eyebrow">Claude Code</div>
       <h1>Memory Systems</h1>
-      <p class="hero-desc">Claude Code has no single memory system — it has three distinct tracks. Knowing which one fits your situation determines whether sessions start from scratch or pick up exactly where you left off.</p>
+      <p class="hero-desc">Claude Code runs on three distinct memory tracks, not one. Knowing which fits your situation determines whether sessions start from scratch or pick up exactly where you left off.</p>
       <div class="hero-tracks-preview">
         <a href="#2-native-claude-code-memory-stack" class="track-pill track-pill--native">Native Stack</a>
         <a href="#3-cross-session-tools-single-user" class="track-pill track-pill--cross">Cross-Session Tools</a>
@@ -240,7 +240,7 @@ const decisionRules = [
           <div class="tldr-card tldr-cross">
             <div class="tldr-icon">🔄</div>
             <h3>Cross-Session Tools</h3>
-            <p>Community-built hooks and MCP servers that persist what Claude does automatically. claude-mem, agentmemory, ICM, Kairn, doobidoo — each with a different recall model.</p>
+            <p>Community-built hooks and MCP servers that persist what Claude does automatically. claude-mem, agentmemory, ICM, Kairn, doobidoo:each with a different recall model.</p>
             <span class="tldr-badge tldr-badge--community">Community</span>
           </div>
           <div class="tldr-card tldr-team">
@@ -258,7 +258,7 @@ const decisionRules = [
       <div class="container">
         <span class="section-badge section-badge--native">Track 1</span>
         <h2 class="section-title">Native Claude Code Memory Stack</h2>
-        <p class="section-subtitle">Four mechanisms built directly into Claude Code — no extra dependencies, no API costs for the memory layer itself.</p>
+        <p class="section-subtitle">Four mechanisms built directly into Claude Code:no extra dependencies, no API costs for the memory layer itself.</p>
         <div class="native-grid">
           {nativeTools.map(tool => (
             <div class="native-card" id={tool.anchor}>
@@ -282,7 +282,7 @@ const decisionRules = [
       <div class="container">
         <span class="section-badge section-badge--cross">Track 2</span>
         <h2 class="section-title">Cross-Session Tools</h2>
-        <p class="section-subtitle">Six community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model — choose based on what you need to remember.</p>
+        <p class="section-subtitle">Six community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model:choose based on what you need to remember.</p>
 
         <div class="tool-table-wrap">
           <table class="tool-table">
@@ -318,7 +318,7 @@ const decisionRules = [
 
         <div class="tool-notes">
           <p><strong>Start with:</strong> claude-mem if you want automatic capture with no manual calls and can afford ~$5-15/month in API costs. agentmemory if you want local-only with the highest benchmark recall (95.2% R@5 on LongMemEval-S). ICM if you need both episodic memory and a typed relation graph (<code>brew install icm</code>).</p>
-          <p><strong>Known issue (doobidoo):</strong> concurrent access errors under parallel agents — fix with <code>busy_timeout=15000</code> in config.</p>
+          <p><strong>Known issue (doobidoo):</strong> concurrent access errors under parallel agents:fix with <code>busy_timeout=15000</code> in config.</p>
         </div>
       </div>
     </section>
@@ -328,7 +328,7 @@ const decisionRules = [
       <div class="container">
         <span class="section-badge section-badge--team">Track 3</span>
         <h2 class="section-title">Team + Multi-Agent Sharing</h2>
-        <p class="section-subtitle">Sharing memory across developers or autonomous agents is the hardest problem. Structural reasons — no standardized conflict-resolution protocol across tools — mean no current solution handles all cases cleanly.</p>
+        <p class="section-subtitle">Sharing memory across developers or autonomous agents is the hardest problem. Structural reasons:no standardized conflict-resolution protocol across tools:mean no current solution handles all cases cleanly.</p>
 
         <div class="team-options">
           {teamOptions.map(opt => (
@@ -348,7 +348,7 @@ const decisionRules = [
 
         <div class="multi-agent-note">
           <h3>Multi-Agent Concurrent Writes</h3>
-          <p>When multiple agents write to the same memory store, you need coordination. The standard pattern: lease acquisition before write, signal-based invalidation on conflict, bounded retry with exponential backoff. No current tool implements this natively — it requires application-level wrapping.</p>
+          <p>When multiple agents write to the same memory store, you need coordination. The standard pattern: lease acquisition before write, signal-based invalidation on conflict, bounded retry with exponential backoff. No current tool implements this natively:it requires application-level wrapping.</p>
           <a href="/guide/memory-systems/#5-multi-agent-shared-memory" class="native-guide-link">Multi-agent memory patterns &rarr;</a>
         </div>
       </div>
@@ -399,14 +399,14 @@ const decisionRules = [
               <span class="risk-level">Medium</span>
               <h3>Context Inflation</h3>
             </div>
-            <p>Memory retrieval injects tokens at session start. If retrieval is poorly tuned, you can end up with more context tokens from memory than from the actual task — degrading adherence.</p>
+            <p>Memory retrieval injects tokens at session start. If retrieval is poorly tuned, you can end up with more context tokens from memory than from the actual task:degrading adherence.</p>
           </div>
           <div class="risk-card risk-card--medium">
             <div class="risk-header">
               <span class="risk-level">Medium</span>
               <h3>Stale Beliefs</h3>
             </div>
-            <p>Memories stored months ago may reflect outdated codebase state, team conventions, or user preferences. Decay models (Kairn, ICM) partially address this — flat storage (CLAUDE.md, doobidoo) does not.</p>
+            <p>Memories stored months ago may reflect outdated codebase state, team conventions, or user preferences. Decay models (Kairn, ICM) partially address this:flat storage (CLAUDE.md, doobidoo) does not.</p>
           </div>
           <div class="risk-card risk-card--low">
             <div class="risk-header">
