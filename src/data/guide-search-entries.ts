@@ -428,11 +428,35 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-context-engineering-attention-mechanics",
+    "title": "Context Engineering Attention Mechanics",
+    "keywords": "context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-attention-mechanics--reliability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-engineering-attention-description",
+    "title": "Context Engineering Attention Description",
+    "keywords": "context engineering attention description lost the middle mechanics (liu et al  2023, arxiv:2307 03172, u shaped curve, 71 point gap), primacy recency placement, per section pass, persistent facts block (prompt cache compatible), scratchpad, rolling summaries at 65% threshold",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Lost-in-the-middle mechanics (Liu et al. 2023, arXiv:2307.03172, U-shaped curve, 71-point gap), primacy/recency placement, per-section pass, persistent facts block (prompt-cache compatible), scratchpad, rolling summaries at 65% threshold.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-window-degradation-threshold",
+    "title": "Context Window Degradation Threshold",
+    "keywords": "context window degradation threshold 70k tokens effective even in 200k window models; see guide core context engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/50-70K tokens effective even in 200K-window models; see guide/core/context-engineering.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-context-engineering-compression-tools",
     "title": "Context Engineering Compression Tools",
-    "keywords": "context engineering compression tools guide core context engineering md#17 token compression tools",
+    "keywords": "context engineering compression tools guide core context engineering md#18 token compression tools",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-token-compression-tools",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#18-token-compression-tools",
     "source": "guide"
   },
   {
@@ -2977,6 +3001,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "credits guide guide core credits",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/credits.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-anthropic-api-patterns-description",
+    "title": "Anthropic API Patterns Description",
+    "keywords": "anthropic api patterns description message batches api (50% cost, 24h window, 100 req batch), tool choice (auto any specific none), strict mode structured outputs (beta header, constrained decoding), nullable fields, extensible enums, detected pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Message Batches API (50% cost, 24h window, 100-req batch), tool_choice (auto/any/specific/none), strict-mode structured outputs (beta header, constrained decoding), nullable fields, extensible enums, detected_pattern.",
+    "source": "guide"
+  },
+  {
+    "id": "guide-few-shot-calibration",
+    "title": "Few Shot Calibration",
+    "keywords": "few shot calibration near miss examples reduce false positive rate in ci review tasks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/near-miss examples reduce false positive rate in CI/review tasks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-few-shot-limits",
+    "title": "Few Shot Limits",
+    "keywords": "few shot limits teaches style format only; cannot enforce business rules or schema constraints",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/teaches style/format only; cannot enforce business rules or schema constraints",
+    "source": "guide"
+  },
+  {
+    "id": "guide-confidence-platt-scaling",
+    "title": "Confidence Platt Scaling",
+    "keywords": "confidence platt scaling corrects systematic overconfidence underconfidence post hoc",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/corrects systematic overconfidence/underconfidence post-hoc",
+    "source": "guide"
+  },
+  {
+    "id": "guide-production-reliability-guide",
+    "title": "Production Reliability Guide",
+    "keywords": "production reliability guide guide workflows production reliability",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hub-and-spoke-rule",
+    "title": "Hub And Spoke Rule",
+    "keywords": "hub and spoke rule coordinator decomposes dispatches aggregates; never does domain work itself",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/coordinator decomposes/dispatches/aggregates; never does domain work itself",
     "source": "guide"
   }
 ]
