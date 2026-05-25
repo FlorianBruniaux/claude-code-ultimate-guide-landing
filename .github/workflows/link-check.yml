@@ -44,10 +44,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create issue on broken links
+      - name: Find existing broken-links issue
+        id: find-issue
+        if: steps.lychee.outputs.exit_code != 0
+        run: |
+          ISSUE=$(gh issue list --repo "$GITHUB_REPOSITORY" --label "broken-links" --state open --json number --jq '.[0].number // ""')
+          echo "issue-number=$ISSUE" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create or update issue on broken links
         if: steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@v5
         with:
+          issue-number: ${{ steps.find-issue.outputs.issue-number }}
           title: "Broken links detected on cc.bruniaux.com"
           content-filepath: ./lychee/out.md
           labels: |
