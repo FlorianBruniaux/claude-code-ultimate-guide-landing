@@ -1,7 +1,7 @@
 /**
  * Third-party ecosystem tools data for Claude Code
  * Source: guide/ecosystem/third-party-tools.md
- * Last synced: 2026-03-13
+ * Last synced: 2026-05-25
  */
 
 export interface EcosystemTool {
@@ -60,12 +60,12 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'ccusage',
     category: 'token-tracking',
     description:
-      'The most mature cost tracking tool for Claude Code. Parses local session data to produce cost reports by day, month, session, or 5-hour billing window.',
+      'The most mature cost tracking tool for Claude Code. 14.5k+ stars. Parses local session data to produce cost reports by day, month, session, or 5-hour billing window.',
     source_url: 'https://www.npmjs.com/package/ccusage',
     website_url: 'https://ccusage.com',
     install: 'bunx ccusage',
     language: 'TypeScript',
-    version: '18.x',
+    version: '20.x',
     status: 'stable',
     features: [
       'Daily / monthly / session aggregated cost reports',
@@ -83,6 +83,34 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     when_to_use:
       'Default choice for cost visibility. Pairs well with RTK (RTK reduces tokens, ccusage monitors them).',
     cross_ref: 'guide/ultimate-guide.md, Section 2.4 (cost monitoring)',
+  },
+
+  {
+    id: 'claude-code-usage-monitor',
+    name: 'Claude-Code-Usage-Monitor',
+    category: 'token-tracking',
+    description:
+      'Real-time terminal usage monitor with ML-based predictions and warnings. 8k+ stars. Shows live token consumption, burn rate, and forecasts potential overages before they happen.',
+    source_url: 'https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor',
+    install: 'pip install claude-code-usage-monitor',
+    language: 'Python',
+    version: 'v3.1.0',
+    status: 'stable',
+    author: 'Maciek-roboblog',
+    features: [
+      'Real-time Rich UI in the terminal without context switching',
+      'ML-based consumption forecasting (anticipates overages proactively)',
+      'Burn-rate indicators with visual warnings',
+      'Usage pattern analysis across time of day and task type',
+      'Enterprise usage categorization for multi-project billing',
+    ],
+    limitations: [
+      'Python dependency required',
+      'ML predictions are estimates, not guarantees',
+      'No MCP integration',
+    ],
+    when_to_use:
+      'Use when you want live visual monitoring with predictive warnings rather than post-hoc reports. Pairs with ccusage for tabular history.',
   },
 
   {
@@ -132,11 +160,11 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     ],
     limitations: [
       'Uploads stats to an external server (machine hostname, token counts, model names)',
-      'No published privacy policy as of March 2026',
+      'No published privacy policy as of May 2026',
       'Very young project (created Feb 2026). No public security audit.',
     ],
     when_to_use:
-      'Only tool with social / leaderboard features. If you want local-only cost visibility, ccusage or ccburn carry no data-sharing implications.',
+      'Only tool with social / leaderboard features. If you want local-only cost visibility, ccusage or Claude-Code-Usage-Monitor carry no data-sharing implications.',
   },
 
   {
@@ -144,12 +172,12 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'RTK (Rust Token Killer)',
     category: 'token-tracking',
     description:
-      'A CLI proxy that filters command outputs before they reach Claude\'s context. 446 stars, 700+ upvotes on r/ClaudeAI. 60-90% token reduction on common dev operations.',
+      'A CLI proxy that filters command outputs before they reach Claude\'s context. 53.5k+ stars. 60-90% token reduction on common dev operations. Single Rust binary, zero dependencies.',
     source_url: 'https://github.com/rtk-ai/rtk',
     website_url: 'https://www.rtk-ai.app/',
     install: 'brew install rtk-ai/tap/rtk',
     language: 'Rust',
-    version: 'v0.28.0',
+    version: 'v0.42.0',
     status: 'stable',
     features: [
       '`rtk git log` (92% reduction), `rtk git diff` (56%), `rtk git status` (76%)',
@@ -158,6 +186,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
       'TOML Filter DSL for custom output filters without writing Rust',
       '`rtk gain` / `rtk gain -p`: token savings analytics',
       'Hook-first install with `settings.json` auto-patch',
+      'Single binary deployment, zero dependencies',
     ],
     limitations: [
       'Not suitable for interactive commands',
@@ -175,7 +204,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'claude-code-viewer',
     category: 'session-management',
     description:
-      'A web-based UI for browsing and reading Claude Code conversation history (JSONL files). Project browser with full session display and real-time updates.',
+      'A web-based UI for browsing and reading Claude Code conversation history (JSONL files). 1.2k+ stars. Project browser with full session display and real-time updates.',
     source_url: 'https://github.com/d-kimuson/claude-code-viewer',
     install: 'npx @kimuson/claude-code-viewer',
     language: 'TypeScript',
@@ -203,7 +232,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Entire CLI',
     category: 'session-management',
     description:
-      'Agent-native platform for Git-integrated session capture with rewindable checkpoints and governance layer. Founded by Thomas Dohmke (ex-GitHub CEO), $60M funding.',
+      'Agent-native platform for Git-integrated session capture with rewindable checkpoints and governance layer. 4.4k+ stars. Founded by Thomas Dohmke (ex-GitHub CEO), $60M funding.',
     source_url: 'https://github.com/entireio/cli',
     website_url: 'https://entire.io',
     install: 'See entire.io (early access)',
@@ -342,11 +371,11 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Toad',
     category: 'alternative-ui',
     description:
-      'A universal terminal frontend for AI coding agents by Will McGugan (creator of Rich & Textual). Supports Claude Code, Gemini CLI, OpenHands, Codex, and 12+ agents via Agent Client Protocol (ACP).',
+      'A universal terminal frontend for AI coding agents by Will McGugan (creator of Rich & Textual). 3.1k+ stars. Supports Claude Code, Gemini CLI, OpenHands, Codex, and 12+ agents via Agent Client Protocol (ACP).',
     source_url: 'https://github.com/batrachianai/toad',
     install: 'curl -fsSL batrachian.ai/install | sh',
     language: 'Python',
-    status: 'beta',
+    status: 'stable',
     author: 'Will McGugan',
     features: [
       'Unified interface across 12+ agent CLIs',
@@ -445,7 +474,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'multiclaude',
     category: 'multi-agent',
     description:
-      'tmux + git worktrees for spawning multiple Claude Code instances in parallel. 383+ stars. Simple, no-frills approach to parallel agents.',
+      'tmux + git worktrees for spawning multiple Claude Code instances in parallel. 550+ stars. Simple, no-frills approach to parallel agents with context window analyzer.',
     source_url: 'https://github.com/dlorenc/multiclaude',
     install: 'See GitHub README',
     language: 'Shell',
@@ -454,14 +483,42 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     features: [
       'tmux integration for multiple terminals',
       'Git worktree isolation per agent',
-      '383+ stars, battle-tested community tool',
+      '550+ stars, battle-tested community tool',
       'No extra runtime dependency beyond tmux',
+      'Context window analyzer: per-category token breakdown (claude-md, tool-output, thinking, etc.)',
     ],
     limitations: [
       'Requires tmux familiarity',
       'Minimal UI, raw terminals only',
       'No built-in monitoring (use agent-chat alongside)',
     ],
+  },
+
+  {
+    id: 'claude-code-agents-orchestra',
+    name: 'Claude Code Agents Orchestra',
+    category: 'multi-agent',
+    description:
+      'Turns Claude Code into a coordinated team of 40+ specialized AI agents working together like an engineering organization. Defines team composition, roles, and communication protocols via CLAUDE.md templates.',
+    source_url: 'https://github.com/0ldh/claude-code-agents-orchestra',
+    install: 'See GitHub README',
+    language: 'Markdown',
+    status: 'alpha',
+    author: '0ldh',
+    features: [
+      '40+ specialized agent roles (architect, reviewer, tester, security, docs...)',
+      'Pre-configured team templates for common scenarios (bug triage, security audit, docs)',
+      'Communication protocol definitions between agents',
+      'CLAUDE.md.example files for drop-in team setup',
+      'Parallelized specialist analysis patterns',
+    ],
+    limitations: [
+      'Alpha status. Templates may require tuning for your specific stack.',
+      'Complexity overhead: overkill for simple single-agent tasks',
+      '66 stars, young project with limited production feedback',
+    ],
+    when_to_use:
+      'Large codebases where specialist parallelization adds real value: security audits, cross-domain migrations, comprehensive doc generation. Not suited for focused single-task work.',
   },
 
   {
@@ -696,5 +753,5 @@ export const ECOSYSTEM_META = {
   total_tools: ECOSYSTEM_TOOLS.length,
   categories: Object.keys(CATEGORY_LABELS).length,
   languages: [...new Set(ECOSYSTEM_TOOLS.map((t) => t.language))].length,
-  last_verified: 'March 2026',
+  last_verified: 'May 2026',
 };
