@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_section',
+    title: 'CCA exam coverage: 7 new guide sections',
+    date: 'May 25, 2026',
+    description: 'Major content expansion targeting Claude Certified Architect exam gaps (32% to ~85% coverage). New sections: Anthropic API Patterns (Message Batches API, tool_choice, strict-mode structured outputs), Attention Mechanics & Reliability (lost-in-the-middle, primacy placement, scratchpad), Prompt Engineering Patterns (few-shot, validation retry loop, self-review contamination), Structured Outputs & Schema Design, Production Reliability Patterns (new page: escalation design, circuit breaker, human handoff), Advanced Orchestration Patterns (hub-and-spoke, crash recovery, SPEC test), and Advanced MCP Tool Design.',
+    link: 'https://cc.bruniaux.com/guide/workflows/production-reliability/',
+  },
+  {
+    type: 'new_section',
     title: 'Memory Systems: complete reference guide',
     date: 'May 23, 2026',
     description: 'New canonical page consolidating all memory patterns for Claude Code: three tracks (Native Stack, Cross-Session Tools, Team Sharing), 20-tool comparison table, multi-agent coordination patterns, memory poisoning risk, Mermaid decision flowchart, and benchmarks. Replaces 15+ fragmented locations in the main guide.',
