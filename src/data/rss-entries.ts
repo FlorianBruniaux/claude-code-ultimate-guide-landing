@@ -84,8 +84,8 @@ export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.41.0',
-    date: 'May 19, 2026',
-    description: 'Pedagogical update for CC 2.1.3: .claude/commands/ merged into .claude/skills/. The 3-way Agent/Skill/Command model becomes a 2-way Agent/Skill model with invocation modes. WP 02, 04, 07 (FR+EN) updated, plus Recap Cards c04, m09, m10, 01-commandes (FR+EN).',
+    date: 'May 27, 2026',
+    description: 'Three new agent research CLI tools: stacklit (repo context compression, ~250 tokens vs 50K+), scip-search (SCIP symbol index queries, worktree-compatible, no MCP), lilmd (Markdown TOC with line ranges). Threat DB v2.19.0 with OpenClaw Claw Chain CVEs. CC releases updated to v2.1.152. New sections: Prompt Engineering Patterns, Structured Outputs & Schema Design.',
     link: 'https://cc.bruniaux.com/releases/#v3410',
   },
   {
