@@ -383,6 +383,13 @@ export const rssEntries: RssEntry[] = [
     link: 'https://cc.bruniaux.com/releases/',
   },
   {
+    type: 'new_section',
+    title: 'Search Tools: stacklit, scip-search & lilmd',
+    date: 'May 27, 2026',
+    description: 'Three new agent research tools documented. stacklit compresses initial codebase exploration from 50K+ tokens to ~250 tokens and auto-configures Claude Code. scip-search queries pre-built SCIP symbol indexes with no MCP required, worktree-compatible. lilmd provides Markdown TOC with line ranges for targeted section reads. Coverage added to Search Tools Mastery (new Extended Toolkit section) and Context Engineering Tools (stacklit alongside RTK/context-mode).',
+    link: 'https://cc.bruniaux.com/guide/search-tools-mastery/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.37.1',
     date: 'Mar 19, 2026',
