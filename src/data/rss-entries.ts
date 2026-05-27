@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.152',
+    date: 'May 27, 2026',
+    description: '`/code-review --fix` now applies review findings directly to your working tree, skills can declare `disallowed-tools` in frontmatter, and a new `MessageDisplay` hook lets you transform or hide assistant output. Auto mode no longer requires opt-in. 35+ bug fixes.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21152-2026-05-27',
+  },
+  {
     type: 'new_section',
     title: 'CCA exam coverage: 7 new guide sections',
     date: 'May 25, 2026',

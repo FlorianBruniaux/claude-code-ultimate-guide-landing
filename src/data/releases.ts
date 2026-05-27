@@ -16,12 +16,23 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.152',
+    date: 'May 27, 2026',
+    highlights: [
+      '`/code-review --fix` applies review findings to working tree after review; `/simplify` now invokes `/code-review --fix`',
+      'Skills/commands can set `disallowed-tools` frontmatter to remove tools while the skill is active; `/reload-skills` re-scans directories without restart',
+      'New `MessageDisplay` hook event to transform or hide assistant message text',
+      'Auto mode no longer requires opt-in; `--fallback-model` for session-level fallback; `SessionStart` can set session title + trigger skill reload; 35+ bug fixes',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.150',
     date: 'May 23, 2026',
     highlights: [
       'Internal infrastructure improvements (no user-facing changes)',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
