@@ -16,6 +16,18 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.153',
+    date: 'May 28, 2026',
+    highlights: [
+      '`/model` now saves as default for new sessions (IDE parity); press `s` in the picker to switch current session only',
+      '`skipLfs` for plugin marketplace git sources; status line commands get `COLUMNS`/`LINES` env vars; `claude agents` autocomplete includes built-in skills + slash commands; PR column shows `PR #N` / `N PRs`',
+      '25+ bug fixes: stateful MCP reconnect loop (regression 2.1.147), API gateway credential leak, subagent MCP ignoring enterprise policies, Agent tool worktree silently discarding outputs, Windows installer false success',
+    ],
+    breaking: ['`modelPicker:setAsDefault` keybinding renamed to `modelPicker:thisSessionOnly` in keybindings.json'],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.152',
     date: 'May 27, 2026',
     highlights: [
@@ -24,7 +36,6 @@ export const releases: Release[] = [
       'New `MessageDisplay` hook event to transform or hide assistant message text',
       'Auto mode no longer requires opt-in; `--fallback-model` for session-level fallback; `SessionStart` can set session title + trigger skill reload; 35+ bug fixes',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

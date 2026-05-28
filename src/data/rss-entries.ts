@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.153',
+    date: 'May 28, 2026',
+    description: '`/model` now saves as default for new sessions (matching IDE behavior); press `s` to switch current session only. Breaking: `modelPicker:setAsDefault` renamed to `modelPicker:thisSessionOnly` in keybindings.json. 25+ bug fixes including stateful MCP reconnect loop regression and Agent tool worktree output discard.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21153-2026-05-28',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.152',
     date: 'May 27, 2026',
     description: '`/code-review --fix` now applies review findings directly to your working tree, skills can declare `disallowed-tools` in frontmatter, and a new `MessageDisplay` hook lets you transform or hide assistant output. Auto mode no longer requires opt-in. 35+ bug fixes.',
