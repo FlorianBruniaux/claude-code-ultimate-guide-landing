@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.154',
+    date: 'May 28, 2026',
+    description: 'Opus 4.8 arrives with high effort default and fast mode at 2x rate for 2.5x speed. Dynamic workflows let Claude orchestrate tens to hundreds of background agents for complex multi-step tasks. Lean system prompt is now the default for all models except Haiku, Sonnet, and Opus 4.7 and earlier.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21154-2026-05-28',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.153',
     date: 'May 28, 2026',
     description: '`/model` now saves as default for new sessions (matching IDE behavior); press `s` to switch current session only. Breaking: `modelPicker:setAsDefault` renamed to `modelPicker:thisSessionOnly` in keybindings.json. 25+ bug fixes including stateful MCP reconnect loop regression and Agent tool worktree output discard.',

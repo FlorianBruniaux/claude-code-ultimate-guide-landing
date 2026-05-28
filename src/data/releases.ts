@@ -16,6 +16,22 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.154',
+    date: 'May 28, 2026',
+    highlights: [
+      '⭐ Opus 4.8 with high effort default; `/effort xhigh` for hardest tasks; fast mode at 2x rate / 2.5x speed',
+      '⭐ Dynamic workflows: Claude orchestrates tens to hundreds of background agents in one session; run `/workflows` to monitor',
+      'Lean system prompt default for all models except Haiku/Sonnet/Opus 4.7+; `/simplify` reworked to cleanup-only (reuse/simplification/efficiency/altitude); `! <command>` in claude agents runs background shell sessions',
+      'Streaming tool execution always-on including Bedrock/Vertex/Foundry; plugin `defaultEnabled: false` option; 30+ bug fixes',
+    ],
+    breaking: [
+      '`CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` deprecated (removed 2026-06-01); use `/model claude-opus-4-6[1m]` then `/fast on`',
+      '`/simplify` now runs cleanup-only review instead of full code-review fix',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.153',
     date: 'May 28, 2026',
     highlights: [
@@ -24,7 +40,6 @@ export const releases: Release[] = [
       '25+ bug fixes: stateful MCP reconnect loop (regression 2.1.147), API gateway credential leak, subagent MCP ignoring enterprise policies, Agent tool worktree silently discarding outputs, Windows installer false success',
     ],
     breaking: ['`modelPicker:setAsDefault` keybinding renamed to `modelPicker:thisSessionOnly` in keybindings.json'],
-    latest: true,
     initiallyVisible: true,
   },
   {
