@@ -98,7 +98,8 @@ function stripMarkdown(text) {
 
 /**
  * Parse a markdown file and extract H2 sections.
- * Returns array of { heading, contentExcerpt, fileTitle }
+ * Returns array of { heading, contentExcerpt, subheadings, fileTitle }
+ * subheadings: all H3/H4 heading names found anywhere within the H2 section.
  */
 function extractH2Sections(content) {
   const lines = content.split('\n')
@@ -111,6 +112,7 @@ function extractH2Sections(content) {
 
   let currentHeading = null
   let currentLines = []
+  let currentSubheadings = []
 
   for (const line of lines) {
     // Skip frontmatter
@@ -132,18 +134,28 @@ function extractH2Sections(content) {
         sections.push({
           heading: currentHeading,
           contentExcerpt: currentLines.join('\n'),
+          subheadings: currentSubheadings,
           fileTitle,
         })
       }
       currentHeading = h2Match[1].trim()
       currentLines = []
+      currentSubheadings = []
       continue
     }
 
-    // Accumulate content (stop at next H2, already handled above)
-    // Also stop after collecting enough for keywords (first 30 lines is plenty)
-    if (currentHeading !== null && currentLines.length < 30) {
-      currentLines.push(line)
+    if (currentHeading !== null) {
+      // Collect H3/H4 heading names from the full section (no line cap)
+      const subMatch = line.match(/^#{3,4} (.+)$/)
+      if (subMatch) {
+        const name = subMatch[1].trim().replace(/[^\p{L}\p{N}\s]/gu, ' ').toLowerCase()
+        currentSubheadings.push(name)
+      }
+
+      // Accumulate first 30 lines for content excerpt
+      if (currentLines.length < 30) {
+        currentLines.push(line)
+      }
     }
   }
 
@@ -152,6 +164,7 @@ function extractH2Sections(content) {
     sections.push({
       heading: currentHeading,
       contentExcerpt: currentLines.join('\n'),
+      subheadings: currentSubheadings,
       fileTitle,
     })
   }
@@ -161,13 +174,14 @@ function extractH2Sections(content) {
 
 /**
  * Build keyword string for a section entry.
- * Combines heading words + file title + first ~200 chars of section content.
+ * Combines heading words + file title + first ~150 chars of content + all H3/H4 subheading names.
  */
-function buildKeywords(heading, fileTitle, contentExcerpt) {
+function buildKeywords(heading, fileTitle, contentExcerpt, subheadings = []) {
   const headingWords = heading.replace(/[^\p{L}\p{N}\s]/gu, ' ').toLowerCase()
   const titleWords = fileTitle.replace(/[^\p{L}\p{N}\s]/gu, ' ').toLowerCase()
   const excerpt = stripMarkdown(contentExcerpt).slice(0, 150).toLowerCase()
-  return `${headingWords} ${titleWords} ${excerpt}`.replace(/\s+/g, ' ').trim().slice(0, 200)
+  const subWords = subheadings.join(' ')
+  return `${headingWords} ${titleWords} ${excerpt} ${subWords}`.replace(/\s+/g, ' ').trim().slice(0, 500)
 }
 
 /**
@@ -217,14 +231,14 @@ function main() {
     const category = getCategory(relPath)
     const pageUrl = getPageUrl(relPath)
 
-    for (const { heading, contentExcerpt, fileTitle } of sections) {
+    for (const { heading, contentExcerpt, subheadings, fileTitle } of sections) {
       // Skip boilerplate headings
       const headingLower = heading.trim().toLowerCase().replace(/^[^\p{L}]+/u, '').trim()
       if (SKIP_HEADINGS.has(headingLower)) continue
 
       const anchor = '#' + slugify(heading)
       const id = makeId(relPath, heading)
-      const keywords = buildKeywords(heading, fileTitle, contentExcerpt)
+      const keywords = buildKeywords(heading, fileTitle, contentExcerpt, subheadings)
 
       entries.push({
         id,
