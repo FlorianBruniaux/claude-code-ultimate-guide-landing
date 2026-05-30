@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.158',
+    date: 'May 30, 2026',
+    description: 'Auto mode is now available on Bedrock, Vertex, and Foundry for Opus 4.7 and Opus 4.8. Opt in by setting CLAUDE_CODE_ENABLE_AUTO_MODE=1.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21158-2026-05-30',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.157',
+    date: 'May 29, 2026',
+    description: 'Plugins in .claude/skills directories now auto-load without needing the marketplace, and claude plugin init scaffolds new plugins directly in .claude/skills. EnterWorktree can now switch between Claude-managed worktrees mid-session. 20+ bug fixes including corrupted image handling, sandbox network prompt fixes, and WSL improvements.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21157-2026-05-29',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.154',
     date: 'May 28, 2026',
     description: 'Opus 4.8 arrives with high effort default and fast mode at 2x rate for 2.5x speed. Dynamic workflows let Claude orchestrate tens to hundreds of background agents for complex multi-step tasks. Lean system prompt is now the default for all models except Haiku, Sonnet, and Opus 4.7 and earlier.',

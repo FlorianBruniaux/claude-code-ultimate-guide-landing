@@ -16,6 +16,33 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.158',
+    date: 'May 30, 2026',
+    highlights: [
+      '⭐ Auto mode now available on Bedrock, Vertex, and Foundry for Opus 4.7 and Opus 4.8; opt in with `CLAUDE_CODE_ENABLE_AUTO_MODE=1`',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.157',
+    date: 'May 29, 2026',
+    highlights: [
+      '⭐ Plugins in `.claude/skills` directories auto-load without marketplace required; `claude plugin init <name>` scaffolds new plugins',
+      'Autocomplete for `/plugin` arguments; `agent` field in `settings.json` honored for dispatched sessions with `--agent <name>` override; `EnterWorktree` switches between worktrees mid-session',
+      '20+ bug fixes: corrupted images no longer crash requests, sandbox network prompts fixed in desktop/IDE/SDK auto mode, `--resume` improvements, WSL image paste fixes, right-click paste duplicate, long conversation performance improved',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.156',
+    date: 'May 28, 2026',
+    highlights: [
+      'Fixed Opus 4.8 thinking blocks being modified, which was causing API errors',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.154',
     date: 'May 28, 2026',
     highlights: [
@@ -28,7 +55,6 @@ export const releases: Release[] = [
       '`CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` deprecated (removed 2026-06-01); use `/model claude-opus-4-6[1m]` then `/fast on`',
       '`/simplify` now runs cleanup-only review instead of full code-review fix',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
