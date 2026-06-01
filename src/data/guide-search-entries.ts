@@ -2020,6 +2020,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agentic-tools-page",
+    "title": "Agentic Tools Page",
+    "keywords": "agentic tools page guide ecosystem agentic tools",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-tools-decision-framework",
+    "title": "Agentic Tools Decision Framework",
+    "keywords": "agentic tools decision framework guide ecosystem agentic tools md#section decision framework",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#section-5-decision-framework",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-tools-comparison-matrix",
+    "title": "Agentic Tools Comparison Matrix",
+    "keywords": "agentic tools comparison matrix guide ecosystem agentic tools md#full comparison matrix",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#full-comparison-matrix",
+    "source": "guide"
+  },
+  {
     "id": "guide-programmatic-billing-unaffected",
     "title": "Programmatic Billing Unaffected",
     "keywords": "programmatic billing unaffected claude code terminal (interactive), ide integrations, web desktop mobile chat, human the loop workflows",

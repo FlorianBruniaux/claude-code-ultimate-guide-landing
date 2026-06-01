@@ -17,13 +17,13 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
 }
 
-a:not([class*="btn"]) {
+a:not([class*="btn"]):not([class*="text-white"]) {
     color: var(--accent);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
 
-a:not([class*="btn"]):hover {
+a:not([class*="btn"]):not([class*="text-white"]):hover {
     color: var(--accent-hover);
     text-decoration: underline;
 }
