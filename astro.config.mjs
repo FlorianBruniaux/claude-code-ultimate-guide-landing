@@ -29,7 +29,50 @@ export default defineConfig({
   trailingSlash: 'always',
 
   redirects: {
+    // Security section path change
     '/guide/security/security-hardening/': '/guide/security-hardening/',
+    '/guide/security/data-privacy/': '/guide/data-privacy/',
+
+    // Architecture path change
+    '/guide/core/architecture/': '/guide/architecture/',
+
+    // Workflow pages moved from /guide/{slug}/ to /guide/workflows/{slug}/
+    '/guide/code-review/': '/guide/workflows/code-review/',
+    '/guide/github-actions/': '/guide/workflows/github-actions/',
+    '/guide/exploration-workflow/': '/guide/workflows/exploration-workflow/',
+    '/guide/task-management/': '/guide/workflows/task-management/',
+    '/guide/plan-pipeline/': '/guide/workflows/plan-pipeline/',
+    '/guide/agent-teams-quick-start/': '/guide/workflows/agent-teams-quick-start/',
+    '/guide/iterative-refinement/': '/guide/workflows/iterative-refinement/',
+    '/guide/tdd-with-claude/': '/guide/workflows/tdd-with-claude/',
+    '/guide/dual-instance-planning/': '/guide/workflows/dual-instance-planning/',
+    '/guide/search-tools-cheatsheet/': '/guide/workflows/search-tools-mastery/',
+    '/guide/search-tools-mastery/': '/guide/workflows/search-tools-mastery/',
+
+    // Example files linked as guide pages → redirect to examples or parent section
+    '/guide/git-worktree/': '/examples/',
+    '/guide/git-worktree-status/': '/examples/',
+    '/guide/git-worktree-remove/': '/examples/',
+    '/guide/git-worktree-clean/': '/examples/',
+    '/guide/tdd-workflow/': '/guide/workflows/tdd-with-claude/',
+    '/guide/database-branch-setup/': '/guide/workflows/',
+
+    // Supplementary docs not published as standalone pages → nearest section
+    '/guide/audit-prompt/': '/guide/adoption-approaches/',
+    '/guide/015-everything-claude-code-github-repo/': '/guide/ultimate-guide/11-ai-ecosystem/',
+    '/guide/ultimate-guide/09-advanced-patterns/workflows/': '/guide/ultimate-guide/09-advanced-patterns/',
+    '/guide/anthropic-2026-agentic-coding-trends/': '/guide/ultimate-guide/09-advanced-patterns/',
+    '/guide/06-development-workflows/': '/guide/ultimate-guide/09-advanced-patterns/',
+    '/guide/agents-md-empirical-study-2602-11988/': '/guide/ultimate-guide/09-advanced-patterns/',
+
+    // Short command aliases → cheatsheet
+    '/undo/': '/cheatsheet/',
+    '/tui/': '/cheatsheet/',
+    '/clear/': '/cheatsheet/',
+
+    // Old URL formats
+    '/quiz.html': '/quiz/',
+    '/changelog/': '/releases/',
   },
 
   integrations: [
