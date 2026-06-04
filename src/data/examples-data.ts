@@ -1,7 +1,7 @@
 /**
  * Examples data - Shared across all pages for global search
- * Source of truth for indexed templates (255 total per CATALOG.md)
- * Last synced: 2026-05-03
+ * Source of truth for indexed templates (268 total (50 new skills added 2026-06-04))
+ * Last synced: 2026-06-04
  * Note: remaining gap = support files within skill collections (yamls, install scripts, reference material)
  */
 
@@ -76,7 +76,55 @@ export const EXAMPLES = {
             { name: "token-audit/", path: "skills/token-audit/", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
             { name: "eval-skills/", path: "skills/eval-skills/SKILL.md", description: "Audit all skills for frontmatter completeness and effort-level inference" },
             { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/: resolves glob patterns against real files, interactive usefulness review", favorite: true },
-            { name: "mcp-integration-reference/", path: "skills/mcp-integration-reference/SKILL.md", description: "MCP integration reference with Sentry patterns and multi-tool query examples" }
+            { name: "mcp-integration-reference/", path: "skills/mcp-integration-reference/SKILL.md", description: "MCP integration reference with Sentry patterns and multi-tool query examples" },
+            { name: "eval-agents/", path: "skills/eval-agents/SKILL.md", description: "Audit agent definitions for description specificity, model tier, tools scoping, and dispatch ambiguity between agents", favorite: true },
+            { name: "eval-hooks/", path: "skills/eval-hooks/SKILL.md", description: "Audit hook definitions in settings.json for validity, performance safety, and exit-code strategy correctness", favorite: true },
+            { name: "commit/", path: "skills/commit/SKILL.md", description: "Generate a conventional commit message for staged changes", favorite: true },
+            { name: "ship/", path: "skills/ship/SKILL.md", description: "Comprehensive pre-deployment verification to ensure release readiness", favorite: true },
+            { name: "pr/", path: "skills/pr/SKILL.md", description: "Analyze changes, detect scope issues, and create a well-structured PR", favorite: true },
+            { name: "review-pr/", path: "skills/review-pr/SKILL.md", description: "Perform a comprehensive code review of a pull request" },
+            { name: "review-plan/", path: "skills/review-plan/SKILL.md", description: "Structured plan review across 4 axes before writing any code" },
+            { name: "release-notes/", path: "skills/release-notes/SKILL.md", description: "Generate release notes in multiple formats from git commits" },
+            { name: "ci-all/", path: "skills/ci-all/SKILL.md", description: "Full CI pipeline: local tests, type check, push branch, return the pipeline URL", favorite: true },
+            { name: "ci-pipeline/", path: "skills/ci-pipeline/SKILL.md", description: "Push current branch and return the pipeline tracking URL (GitLab or GitHub Actions)" },
+            { name: "ci-status/", path: "skills/ci-status/SKILL.md", description: "Show current pipeline status for the active branch" },
+            { name: "ci-tests/", path: "skills/ci-tests/SKILL.md", description: "Run the test suite: auto-detects Python (pytest/uv), Node (vitest/pnpm), or Rust (cargo test)" },
+            { name: "land-and-deploy/", path: "skills/land-and-deploy/SKILL.md", description: "Merge PR, wait for CI, verify deploy, run canary: the complete landing pipeline", favorite: true },
+            { name: "canary/", path: "skills/canary/SKILL.md", description: "Post-deploy monitoring: watch production after a deploy and alert on regressions" },
+            { name: "sandbox-status/", path: "skills/sandbox-status/SKILL.md", description: "Display native sandbox status, configuration, and recent violations" },
+            { name: "git-worktree/", path: "skills/git-worktree/SKILL.md", description: "Create isolated git worktrees for feature development without switching branches" },
+            { name: "git-worktree-clean/", path: "skills/git-worktree-clean/SKILL.md", description: "Clean up stale git worktrees with merged branch detection and disk usage report" },
+            { name: "git-worktree-remove/", path: "skills/git-worktree-remove/SKILL.md", description: "Safely remove a git worktree with branch cleanup and safety checks" },
+            { name: "git-worktree-status/", path: "skills/git-worktree-status/SKILL.md", description: "Check status of active worktrees and background verification tasks" },
+            { name: "handoff-create/", path: "skills/handoff-create/SKILL.md", description: "Generate a structured handoff capturing scope, relevant files, discoveries, work completed, and next steps", favorite: true },
+            { name: "handoff-resume/", path: "skills/handoff-resume/SKILL.md", description: "Load a handoff document and resume work from where a previous session left off" },
+            { name: "handoff-update/", path: "skills/handoff-update/SKILL.md", description: "Update an existing handoff: append-only Work Done history, replace Status and Next Steps" },
+            { name: "session-save/", path: "skills/session-save/SKILL.md", description: "Save current session state (decisions, modified files, status, next steps) to a handoff file" },
+            { name: "catchup/", path: "skills/catchup/SKILL.md", description: "Restore context after /clear by summarizing recent work and project state" },
+            { name: "investigate/", path: "skills/investigate/SKILL.md", description: "Systematic root-cause debugging: find the cause before writing any fix", favorite: true },
+            { name: "diagnose/", path: "skills/diagnose/SKILL.md", description: "Interactive troubleshooting assistant for Claude Code issues" },
+            { name: "explain/", path: "skills/explain/SKILL.md", description: "Explain code, concepts, or system behavior with adjustable depth levels" },
+            { name: "learn-alternatives/", path: "skills/learn-alternatives/SKILL.md", description: "Compare different approaches to solve the same problem" },
+            { name: "learn-quiz/", path: "skills/learn-quiz/SKILL.md", description: "Test understanding of recently written or accepted code" },
+            { name: "learn-teach/", path: "skills/learn-teach/SKILL.md", description: "Step-by-step explanation of a concept with progressive depth" },
+            { name: "qa/", path: "skills/qa/SKILL.md", description: "Systematic QA testing of a web app: diff-aware, tiered, with fix-and-verify loop" },
+            { name: "refactor/", path: "skills/refactor/SKILL.md", description: "Analyze code for SOLID violations and suggest targeted improvements" },
+            { name: "optimize/", path: "skills/optimize/SKILL.md", description: "Analyze and suggest performance improvements for code, queries, or systems" },
+            { name: "generate-tests/", path: "skills/generate-tests/SKILL.md", description: "Generate comprehensive tests for specified code" },
+            { name: "validate-changes/", path: "skills/validate-changes/SKILL.md", description: "Evaluate staged changes using LLM-as-a-Judge before committing" },
+            { name: "audit-codebase/", path: "skills/audit-codebase/SKILL.md", description: "Codebase health audit scoring 7 categories with progression plan" },
+            { name: "sonarqube/", path: "skills/sonarqube/SKILL.md", description: "Analyze SonarCloud quality issues for a specific PR" },
+            { name: "check-cache-bugs/", path: "skills/check-cache-bugs/SKILL.md", description: "Audit Claude Code setup for cache bugs CC#40524: sentinel, --resume, attribution header" },
+            { name: "security/", path: "skills/security/SKILL.md", description: "Rapid security assessment focused on OWASP Top 10 vulnerabilities" },
+            { name: "security-audit/", path: "skills/security-audit/SKILL.md", description: "Comprehensive security audit with scored posture assessment" },
+            { name: "security-check/", path: "skills/security-check/SKILL.md", description: "Quick configuration check against known threats database" },
+            { name: "update-threat-db/", path: "skills/update-threat-db/SKILL.md", description: "Research and update the AI agent security threat intelligence database" },
+            { name: "scaffold/", path: "skills/scaffold/SKILL.md", description: "Interactive coach: asks 4-5 questions to determine the right template type then generates it", favorite: true },
+            { name: "recipe-template/", path: "skills/recipe-template/SKILL.md", description: "Template for recipe-style commands with precondition validation pattern" },
+            { name: "methodology-advisor/", path: "skills/methodology-advisor/SKILL.md", description: "Analyze codebase and ask 3 targeted questions to recommend the right AI dev methodology stack" },
+            { name: "autoresearch/", path: "skills/autoresearch/SKILL.md", description: "Autonomous improvement loop: scan codebase metrics, scaffold experiments, run agent-driven iterations" },
+            { name: "routines-discover/", path: "skills/routines-discover/SKILL.md", description: "Analyze the project to surface high-value Routines use cases across schedule, API, and GitHub triggers" },
+            { name: "plan-pipeline/", path: "skills/plan-pipeline/SKILL.md", description: "Complete planning pipeline: product direction to architecture to implementation plan, validation, and execution" }
         ]
     },
     commands: {
@@ -282,7 +330,8 @@ export const EXAMPLES = {
         label: "Templates",
         description: "Session and workflow templates for context continuity",
         files: [
-            { name: "session-handoff-lorenz.md", path: "templates/session-handoff-lorenz.md", description: "Session handoff template for context continuity across sessions" }
+            { name: "session-handoff-lorenz.md", path: "templates/session-handoff-lorenz.md", description: "Session handoff template for context continuity across sessions" },
+            { name: "feature-list.json", path: "templates/feature-list.json", description: "Claude Code harness scope tracker: active features with WIP=1 constraint and evidence fields" }
         ]
     },
     "github-actions": {
@@ -304,7 +353,8 @@ export const EXAMPLES = {
         files: [
             { name: "database-branch-setup.md", path: "workflows/database-branch-setup.md", description: "Isolated feature dev with DB branches (Neon/PlanetScale)" },
             { name: "memory-stack-integration.md", path: "workflows/memory-stack-integration.md", description: "Multi-day workflow with memory tools (claude-mem + Serena + grepai)" },
-            { name: "remotion-quickstart.md", path: "workflows/remotion-quickstart.md", description: "Video generation workflow with Remotion" }
+            { name: "remotion-quickstart.md", path: "workflows/remotion-quickstart.md", description: "Video generation workflow with Remotion" },
+            { name: "feature-list.json", path: "workflows/feature-list.json", description: "Harness Engineering scope tracker: one active feature at a time with evidence-based status" }
         ]
     },
     plugins: {
