@@ -16,12 +16,53 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.162',
+    date: 'Jun 3, 2026',
+    highlights: [
+      '`claude agents --json` now includes `waitingFor` showing what a waiting session is blocked on (e.g. permission prompt)',
+      'Clicking a slash command fills it into the prompt instead of running immediately; press Enter to run',
+      'Remote Control shows as a persistent footer pill; Windsurf renamed to Devin Desktop in `/ide`, `/terminal-setup`, `/scroll-speed`',
+      'Quieter startup: notices group by severity, session info and announcements share a single line; 25+ bug fixes',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.161',
+    date: 'Jun 2, 2026',
+    highlights: [
+      '`OTEL_RESOURCE_ATTRIBUTES` values included as labels on metric datapoints for custom dimensions (team, repo)',
+      '`claude agents` rows show `done/total` for fanned-out work; `/mcp` collapses unused claude.ai connectors',
+      'Parallel tool calls: failed Bash no longer cancels other calls in the same batch',
+      '20+ bug fixes: managed-settings policies fix for third-party providers, MCP secrets no longer printed to terminal, `isolation: worktree` in background sessions fixed',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.160',
+    date: 'Jun 1, 2026',
+    highlights: [
+      '⭐ Renamed dynamic-workflow trigger keyword from `workflow` to `ultracode` (violet shimmer in prompt); asking in your own words still works',
+      'Security: added prompt before writing to shell startup files (`.zshenv`, `.zlogin`) and `~/.config/git/`; `acceptEdits` mode prompts before build-tool config files',
+      'Edit no longer requires separate Read after single-file `grep`/`egrep`/`fgrep`',
+      'Removed `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` (deprecated in 2.1.154, now no-op); JetBrains plugin suggestion removed from startup; 20+ bug fixes',
+    ],
+    breaking: ['`workflow` keyword no longer triggers dynamic workflows; use `ultracode` instead'],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.159',
+    date: 'May 31, 2026',
+    highlights: [
+      'Internal infrastructure improvements (no user-facing changes)',
+    ],
+  },
+  {
     version: 'v2.1.158',
     date: 'May 30, 2026',
     highlights: [
       '⭐ Auto mode now available on Bedrock, Vertex, and Foundry for Opus 4.7 and Opus 4.8; opt in with `CLAUDE_CODE_ENABLE_AUTO_MODE=1`',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
