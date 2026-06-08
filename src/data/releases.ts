@@ -16,6 +16,47 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.168',
+    date: 'Jun 6, 2026',
+    highlights: ['Bug fixes and reliability improvements'],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.167',
+    date: 'Jun 6, 2026',
+    highlights: ['Bug fixes and reliability improvements'],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.166',
+    date: 'Jun 6, 2026',
+    highlights: [
+      '`fallbackModel` setting: up to 3 fallback models tried in order when primary is overloaded or unavailable; `--fallback-model` works in interactive sessions too',
+      'Glob patterns in deny rule tool-name position (`"*"` denies all tools); hardened `SendMessage`: relayed messages no longer carry user authority',
+      '`MAX_THINKING_TOKENS=0`, `--thinking disabled`, and per-model toggle now disable thinking on models that think by default via Claude API',
+      '15+ bug fixes: JetBrains 2026.1+ flickering, Kitty protocol Shift+non-ASCII input, PowerShell hang, orphaned `--bg-pty-host` CPU spin',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.165',
+    date: 'Jun 5, 2026',
+    highlights: ['Bug fixes and reliability improvements'],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.163',
+    date: 'Jun 4, 2026',
+    highlights: [
+      '`requiredMinimumVersion`/`requiredMaximumVersion` managed settings: Claude Code refuses to start outside the allowed version range',
+      '`/plugin list` with `--enabled`/`--disabled` filters; Stop/SubagentStop hooks can return `additionalContext` to continue the turn',
+      'Skills: `\\$` escape for literal `$` in command bodies; stdio MCPs receive `CLAUDE_CODE_SESSION_ID` on `--resume`',
+      '10+ bug fixes: `claude -p` background hang, bazel/EDR bash regression, Windows EEXIST fix, managed settings on fresh config',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.162',
     date: 'Jun 3, 2026',
     highlights: [
@@ -24,7 +65,6 @@ export const releases: Release[] = [
       'Remote Control shows as a persistent footer pill; Windsurf renamed to Devin Desktop in `/ide`, `/terminal-setup`, `/scroll-speed`',
       'Quieter startup: notices group by severity, session info and announcements share a single line; 25+ bug fixes',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
