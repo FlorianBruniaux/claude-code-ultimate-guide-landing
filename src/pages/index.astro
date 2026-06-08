@@ -21,23 +21,28 @@ const description = 'Master Claude Code (Anthropic CLI) with 25K+ lines of docum
 
 const jsonLd = [
   {
-    "@context": "https://schema.org",
     "@type": "Course",
     "name": "Claude Code Ultimate Guide",
     "description": "Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, 270 templates, 311-question quiz, security threat database (83 CVEs), and methodology workflows.",
     "url": "https://cc.bruniaux.com/",
-    "provider": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://cc.bruniaux.com/#organization",
+      "name": "Claude Code Ultimate Guide",
+      "url": "https://cc.bruniaux.com",
+    },
     "author": {
       "@type": "Person",
+      "@id": "https://cc.bruniaux.com/#author",
       "name": "Florian BRUNIAUX",
       "url": "https://github.com/FlorianBruniaux",
-      "jobTitle": "Founding Engineer"
+      "jobTitle": "Founding Engineer",
     },
     "isAccessibleForFree": true,
     "educationalLevel": "Beginner to Advanced",
     "inLanguage": "en",
     "datePublished": "2025-06-01",
-    "dateModified": "2026-05-21",
+    "dateModified": "2026-06-08",
     "teaches": [
       "Claude Code CLI installation and configuration",
       "CLAUDE.md project memory files",
@@ -52,9 +57,36 @@ const jsonLd = [
     "hasCourseInstance": {
       "@type": "CourseInstance",
       "courseMode": "online",
-      "courseWorkload": "PT10H"
-    }
-  }
+      "courseWorkload": "PT10H",
+    },
+  },
+  {
+    "@type": "SoftwareApplication",
+    "name": "Claude Code",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Linux, Windows",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
+    "description": "Anthropic's official CLI for AI-assisted development. Reads your codebase, writes code, runs commands, and makes multi-file changes autonomously from the terminal.",
+    "author": {
+      "@type": "Organization",
+      "name": "Anthropic",
+      "url": "https://anthropic.com",
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free to install (API usage billed separately)",
+    },
+    "featureList": [
+      "Full filesystem access for multi-file edits",
+      "MCP server integration",
+      "Custom agents, skills, and slash commands",
+      "Event hooks for automation",
+      "Plan Mode for complex task orchestration",
+      "CLAUDE.md project memory",
+    ],
+  },
 ]
 ---
 

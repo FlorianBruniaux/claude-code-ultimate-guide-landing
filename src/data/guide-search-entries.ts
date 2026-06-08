@@ -246,9 +246,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-settings-reference-description",
     "title": "Settings Reference Description",
-    "keywords": "settings reference description 60+ settings json keys organized into 13 sections (core, permissions, mcp, sandbox, plugins, model, display ux, auth, attribution, worktrees, aws cloud) + 100+ environment variables across 13 categories  unverified entries marked ⚠️; schema only keys marked 📋",
+    "keywords": "settings reference description 60+ settings json keys organized into 13 sections (core, permissions, mcp, sandbox, plugins, model, display ux, auth, attribution, worktrees, aws cloud) + 190+ environment variables across 17 categories (auth, model, cloud providers, timeouts, behavior, context, telemetry, opentelemetry, feature toggles, prompt caching, mcp, proxy network, ui display, plugins, sdk headless, agent teams)  synced to v2 162  unverified entries marked ⚠️; schema only keys marked 📋",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/60+ settings.json keys organized into 13 sections (Core, Permissions, MCP, Sandbox, Plugins, Model, Display/UX, Auth, Attribution, Worktrees, AWS/Cloud) + 100+ environment variables across 13 categories. Unverified entries marked ⚠️; schema-only keys marked 📋.",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/60+ settings.json keys organized into 13 sections (Core, Permissions, MCP, Sandbox, Plugins, Model, Display/UX, Auth, Attribution, Worktrees, AWS/Cloud) + 190+ environment variables across 17 categories (Auth, Model, Cloud Providers, Timeouts, Behavior, Context, Telemetry, OpenTelemetry, Feature Toggles, Prompt Caching, MCP, Proxy/Network, UI/Display, Plugins, SDK/Headless, Agent Teams). Synced to v2.1.162. Unverified entries marked ⚠️; schema-only keys marked 📋.",
     "source": "guide"
   },
   {

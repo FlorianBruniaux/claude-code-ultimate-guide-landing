@@ -74,6 +74,10 @@ const gaId = 'G-WH1C8CM79E'
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Claude Code CLI Releases" href="/rss.xml" />
 
+    <!-- LLMs.txt — AI crawler discovery (llmstxt.org standard) -->
+    <link rel="alternate" type="text/plain" title="LLMs.txt" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="LLMs Full" href="/llms-full.txt" />
+
     <!-- Preconnect -->
     <link rel="preconnect" href="https://img.shields.io" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
@@ -113,11 +117,18 @@ const gaId = 'G-WH1C8CM79E'
             "@id": "https://cc.bruniaux.com/#website",
             name: "Claude Code Ultimate Guide",
             url: Astro.site,
-            description: "Free, open-source guide for Claude Code (Anthropic CLI)",
+            description: "Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, 270 templates, 311-question quiz, and security threat database with 83 CVEs tracked.",
             author: {
               "@type": "Person",
+              "@id": "https://cc.bruniaux.com/#author",
               name: "Florian BRUNIAUX",
               url: "https://github.com/FlorianBruniaux",
+              jobTitle: "Founding Engineer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Méthode Aristote",
+                url: "https://methode-aristote.fr",
+              },
               sameAs: [
                 "https://github.com/FlorianBruniaux",
                 "https://www.linkedin.com/in/florian-bruniaux-43408b83/",
@@ -125,8 +136,18 @@ const gaId = 'G-WH1C8CM79E'
             },
             publisher: {
               "@type": "Organization",
-              name: "Méthode Aristote",
-              url: "https://methode-aristote.fr",
+              "@id": "https://cc.bruniaux.com/#organization",
+              name: "Claude Code Ultimate Guide",
+              url: "https://cc.bruniaux.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://cc.bruniaux.com/claude-logo-orange.svg",
+                width: 512,
+                height: 512,
+              },
+              sameAs: [
+                "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+              ],
             },
             potentialAction: {
               "@type": "SearchAction",

@@ -56,8 +56,8 @@ const jsonLd = [
     "headline": card.data.title,
     "description": card.data.subtitle,
     "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
-    "author": { "@type": "Person", "name": "Florian BRUNIAUX" },
-    "publisher": { "@type": "Organization", "name": "Claude Code Ultimate Guide" },
+    "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
+    "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "inLanguage": "en",
     "keywords": `claude code, ${card.data.category}, ${card.data.difficulty}, recap card, cheat sheet`,
   }
