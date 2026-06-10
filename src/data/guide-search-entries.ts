@@ -68,14 +68,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-skills-commands-merger-summary",
-    "title": "Skills Commands Merger Summary",
-    "keywords": "skills commands merger summary claude commands  merged into  claude skills  add disable model invocation: true for user only skills",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/.claude/commands/ merged into .claude/skills/. Add disable-model-invocation: true for user-only skills.",
-    "source": "guide"
-  },
-  {
     "id": "guide-skills-commands-merger-guide",
     "title": "Skills Commands Merger Guide",
     "keywords": "skills commands merger guide guide ultimate guide",
@@ -89,14 +81,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "review pr advanced examples skills review skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/review-pr/SKILL.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-review-pr-advanced-note",
-    "title": "Review PR Advanced Note",
-    "keywords": "review pr advanced note since cc 2 3: equivalent skill uses disable model invocation: true in  claude skills",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Since CC 2.1.3: equivalent skill uses disable-model-invocation: true in .claude/skills/",
     "source": "guide"
   },
   {
@@ -129,22 +113,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "github actions code review prompt examples github actions prompts code review",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/prompts/code-review.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-github-actions-code-review-pattern",
-    "title": "Github Actions Code Review Pattern",
-    "keywords": "github actions code review pattern externalized prompt + anti hallucination protocol +  claude review on demand trigger",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/externalized prompt + anti-hallucination protocol + /claude-review on-demand trigger",
-    "source": "guide"
-  },
-  {
-    "id": "guide-github-actions-cost-per-review",
-    "title": "Github Actions Cost Per Review",
-    "keywords": "github actions cost per review 0$ with oauth max plan; ~0 15$ with api key (sonnet, ~5k tokens diff)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/0$ with OAuth/Max plan; ~0.05-0.15$ with API key (Sonnet, ~5K tokens diff)",
     "source": "guide"
   },
   {
@@ -244,27 +212,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-settings-reference-description",
-    "title": "Settings Reference Description",
-    "keywords": "settings reference description 60+ settings json keys organized into 13 sections (core, permissions, mcp, sandbox, plugins, model, display ux, auth, attribution, worktrees, aws cloud) + 190+ environment variables across 17 categories (auth, model, cloud providers, timeouts, behavior, context, telemetry, opentelemetry, feature toggles, prompt caching, mcp, proxy network, ui display, plugins, sdk headless, agent teams)  synced to v2 162  unverified entries marked ⚠️; schema only keys marked 📋",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/60+ settings.json keys organized into 13 sections (Core, Permissions, MCP, Sandbox, Plugins, Model, Display/UX, Auth, Attribution, Worktrees, AWS/Cloud) + 190+ environment variables across 17 categories (Auth, Model, Cloud Providers, Timeouts, Behavior, Context, Telemetry, OpenTelemetry, Feature Toggles, Prompt Caching, MCP, Proxy/Network, UI/Display, Plugins, SDK/Headless, Agent Teams). Synced to v2.1.162. Unverified entries marked ⚠️; schema-only keys marked 📋.",
-    "source": "guide"
-  },
-  {
     "id": "guide-glossary",
     "title": "Glossary",
     "keywords": "glossary guide core glossary",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/glossary.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-glossary-description",
-    "title": "Glossary Description",
-    "keywords": "glossary description 120+ terms: claude code specific, community coined patterns, ai engineering concepts  alphabetical table with category + subcategory  excludes standard cs devops terms",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/120+ terms: Claude Code-specific, community-coined patterns, AI engineering concepts. Alphabetical table with Category + Subcategory. Excludes standard CS/DevOps terms.",
     "source": "guide"
   },
   {
@@ -356,27 +308,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-context-signal-taxonomy-description",
-    "title": "Context Signal Taxonomy Description",
-    "keywords": "context signal taxonomy description five category friction signal taxonomy (syntactic semantic procedural alignment performance) + yaml event schema + per pattern tracking dict  replaces flat friction score",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Five-category friction signal taxonomy (syntactic/semantic/procedural/alignment/performance) + YAML event schema + per-pattern tracking dict. Replaces flat friction_score.",
-    "source": "guide"
-  },
-  {
     "id": "guide-context-loop-closure",
     "title": "Context Loop Closure",
     "keywords": "context loop closure guide core context engineering md#11 loop closure based curation",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#11-loop-closure-pr-based-curation",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-loop-closure-description",
-    "title": "Context Loop Closure Description",
-    "keywords": "context loop closure description based curator mechanism: diff + canary a b results + friction evidence + suggestion escalation  multi timescale (real time weekly quarterly)  signal locality options (local cron   pushed store   hosted env)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/PR-based Curator mechanism: diff + canary A/B results + friction evidence + suggestion escalation. Multi-timescale (real-time/weekly/quarterly). Signal locality options (local cron / pushed store / hosted env).",
     "source": "guide"
   },
   {
@@ -393,14 +329,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "context self audit guide core context engineering md#13 constitutional and self consistency audits",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#13-constitutional-and-self-consistency-audits",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-self-audit-description",
-    "title": "Context Self Audit Description",
-    "keywords": "context self audit description constitutional audit (pre pr rule conflict check against constitution md) + self consistency check (weekly verification that ace documentation claims match measured state)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Constitutional audit (pre-PR rule conflict check against constitution.md) + self-consistency check (weekly verification that ACE documentation claims match measured state).",
     "source": "guide"
   },
   {
@@ -436,59 +364,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-context-engineering-attention-description",
-    "title": "Context Engineering Attention Description",
-    "keywords": "context engineering attention description lost the middle mechanics (liu et al  2023, arxiv:2307 03172, u shaped curve, 71 point gap), primacy recency placement, per section pass, persistent facts block (prompt cache compatible), scratchpad, rolling summaries at 65% threshold",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Lost-in-the-middle mechanics (Liu et al. 2023, arXiv:2307.03172, U-shaped curve, 71-point gap), primacy/recency placement, per-section pass, persistent facts block (prompt-cache compatible), scratchpad, rolling summaries at 65% threshold.",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-window-degradation-threshold",
-    "title": "Context Window Degradation Threshold",
-    "keywords": "context window degradation threshold 70k tokens effective even in 200k window models; see guide core context engineering",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/50-70K tokens effective even in 200K-window models; see guide/core/context-engineering.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-context-engineering-compression-tools",
     "title": "Context Engineering Compression Tools",
     "keywords": "context engineering compression tools guide core context engineering md#18 token compression tools",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#18-token-compression-tools",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-audit-tool",
-    "title": "Context Engineering Audit Tool",
-    "keywords": "context engineering audit tool tools context audit prompt",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/context-audit-prompt.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-setup-audit-tool",
-    "title": "Setup Audit Tool",
-    "keywords": "setup audit tool tools audit prompt",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/audit-prompt.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-setup-audit-tool-description",
-    "title": "Setup Audit Tool Description",
-    "keywords": "setup audit tool description prompt orchestrator auditing 8 weighted dimensions (100 pts): memory & context (20), rules hygiene (10), skills quality (10), agents commands quality (10), security posture (20), mcp ecosystem (10), workflow commands (10), freshness (10)  delegates to eval skills eval rules token audit audit agents skills security check when installed; inline bash fallback otherwise",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Prompt-orchestrator auditing 8 weighted dimensions (100 pts): Memory & Context (20), Rules Hygiene (10), Skills Quality (10), Agents/Commands Quality (10), Security Posture (20), MCP Ecosystem (10), Workflow Commands (10), Freshness (10). Delegates to eval-skills/eval-rules/token-audit/audit-agents-skills/security-check when installed; inline bash fallback otherwise.",
-    "source": "guide"
-  },
-  {
-    "id": "guide-setup-audit-scope-flag",
-    "title": "Setup Audit Scope Flag",
-    "keywords": "setup audit scope flag include global (extends to ~ claude  and ~ claude json)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/--include-global (extends to ~/.claude/ and ~/.claude.json)",
     "source": "guide"
   },
   {
@@ -924,14 +804,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-install-templates-script",
-    "title": "Install Templates Script",
-    "keywords": "install templates script scripts install templates",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/scripts/install-templates.sh",
-    "source": "guide"
-  },
-  {
     "id": "guide-session-search",
     "title": "Session Search",
     "keywords": "session search guide ops observability",
@@ -964,27 +836,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-ccboard-activity-plan",
-    "title": "Ccboard Activity Plan",
-    "keywords": "ccboard activity plan docs resource evaluations ccboard activity module plan",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/ccboard-activity-module-plan.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-output-styles-setting",
     "title": "Output Styles Setting",
     "keywords": "output styles setting guide core settings reference md#outputstyle",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#outputstyle",
-    "source": "guide"
-  },
-  {
-    "id": "guide-output-styles-description",
-    "title": "Output Styles Description",
-    "keywords": "output styles description three built in modes: default (concise), explanatory (adds design rationale blocks), learning (pair programming with todo(human) markers)  activate via  config or outputstyle in settings  custom styles via  claude styles",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three built-in modes: Default (concise), Explanatory (adds design rationale blocks), Learning (pair-programming with TODO(human) markers). Activate via /config or outputStyle in settings.json. Custom styles via .claude/styles/.",
     "source": "guide"
   },
   {
@@ -996,67 +852,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-scheduled-tasks-description",
-    "title": "Scheduled Tasks Description",
-    "keywords": "scheduled tasks description three methods: routines (cloud, machine off, 3 trigger types, anthropic infra), desktop (local machine, min 1min, full file access),  loop (session scoped, min 1min)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Three methods: Routines (cloud, machine-off, 3 trigger types, Anthropic infra), Desktop (local machine, min 1min, full file access), /loop (session-scoped, min 1min)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-scheduled-tasks-cloud-entry-points",
-    "title": "Scheduled Tasks Cloud Entry Points",
-    "keywords": "scheduled tasks cloud entry points claude code routines, desktop app (new remote task),  schedule cli command",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude.ai/code/routines, Desktop app (New remote task), /schedule CLI command",
-    "source": "guide"
-  },
-  {
-    "id": "guide-scheduled-tasks-cloud-branch-prefix",
-    "title": "Scheduled Tasks Cloud Branch Prefix",
-    "keywords": "scheduled tasks cloud branch prefix claude  (default)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude/ (default)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-routines-trigger-types",
-    "title": "Routines Trigger Types",
-    "keywords": "routines trigger types schedule (cron)   api (http post endpoint)   github events (webhooks)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/schedule (cron) / API (HTTP POST endpoint) / GitHub events (webhooks)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-routines-daily-limits",
-    "title": "Routines Daily Limits",
-    "keywords": "routines daily limits pro 5 day, max 15 day, team enterprise 25 day",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Pro 5/day, Max 15/day, Team/Enterprise 25/day",
-    "source": "guide"
-  },
-  {
-    "id": "guide-routines-github-trigger",
-    "title": "Routines Github Trigger",
-    "keywords": "routines github trigger 17 event types (pr, push, issues, releases, check runs, workflows, discussions ), pr filters (author label branch draft fork), requires claude github app",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/17 event types (PR, push, issues, releases, check runs, workflows, discussions...), PR filters (author/label/branch/draft/fork), requires Claude GitHub App",
-    "source": "guide"
-  },
-  {
     "id": "guide-routines-discover-command",
     "title": "Routines Discover Command",
     "keywords": "routines discover command examples skills routines discover skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/routines-discover/SKILL.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-routines-use-case-angles",
-    "title": "Routines Use Case Angles",
-    "keywords": "routines use case angles scheduled maintenance   event driven reactions   alert response   cross system sync   release automation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/scheduled maintenance / event-driven reactions / alert response / cross-system sync / release automation",
     "source": "guide"
   },
   {
@@ -1076,11 +876,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-rtk-evaluation",
-    "title": "RTK Evaluation",
-    "keywords": "rtk evaluation docs resource evaluations rtk evaluation",
+    "id": "guide-batch-api-cost-lever",
+    "title": "Batch API Cost Lever",
+    "keywords": "batch api cost lever guide core architecture md#message batches api",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/rtk-evaluation.md",
+    "url": "/guide/architecture/",
     "source": "guide"
   },
   {
@@ -1116,35 +916,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-rtk-score",
-    "title": "RTK Score",
-    "keywords": "rtk score",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/5/5",
-    "source": "guide"
-  },
-  {
-    "id": "guide-rtk-installation",
-    "title": "RTK Installation",
-    "keywords": "rtk installation cargo install rtk or brew install rtk tap rtk",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/cargo install rtk or brew install rtk-ai/tap/rtk",
-    "source": "guide"
-  },
-  {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
     "keywords": "antigravity guide guide ecosystem ecosystem",
     "category": "Guide",
     "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-antigravity-evaluation",
-    "title": "Antigravity Evaluation",
-    "keywords": "antigravity evaluation docs resource evaluations google antigravity evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/google-antigravity-evaluation.md",
     "source": "guide"
   },
   {
@@ -1177,14 +953,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "og image astro template examples scripts image astro",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/og-image-astro.ts",
-    "source": "guide"
-  },
-  {
-    "id": "guide-og-image-gotchas",
-    "title": "Og Image Gotchas",
-    "keywords": "og image gotchas woff1 only (no woff2 ttf), static file shadowing, dynamic stat counting from content dirs",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/woff1 only (no woff2/ttf), static file shadowing, dynamic stat counting from content dirs",
     "source": "guide"
   },
   {
@@ -1312,7 +1080,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable MCP Server",
     "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp game changer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#1-remarkable-mcp--le-game-changer",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1320,7 +1088,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ghostwriter",
     "keywords": "remarkable ghostwriter guide ecosystem remarkable md#2 ghostwriter interface vision llm",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#2-ghostwriter--interface-vision-llm",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1328,7 +1096,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Obsidian Sync",
     "keywords": "remarkable obsidian sync guide ecosystem remarkable md#3 sync remarkable obsidian",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#3-sync-remarkable--obsidian",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1336,7 +1104,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ocr Pipeline",
     "keywords": "remarkable ocr pipeline guide ecosystem remarkable md#4 ocr pipeline custom",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#4-ocr--ai-pipeline-custom",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1344,7 +1112,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ssh Tools",
     "keywords": "remarkable ssh tools guide ecosystem remarkable md#5 accès ssh outils communautaires",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#5-accès-ssh-et-outils-communautaires",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1352,7 +1120,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Meeting Workflow",
     "keywords": "remarkable meeting workflow guide ecosystem remarkable md#10 meeting notes summary",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#10-meeting-notes--ai-summary",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1360,7 +1128,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Workflows To Build",
     "keywords": "remarkable workflows to build guide ecosystem remarkable md#14 workflows augmentés construire",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#14-workflows-ai-augmentés-à-construire",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1368,7 +1136,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Getting Started",
     "keywords": "remarkable getting started guide ecosystem remarkable md#15 par commencer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/remarkable-ai.md#15-par-où-commencer",
+    "url": "/guide/remarkable-ai/",
     "source": "guide"
   },
   {
@@ -1408,7 +1176,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Roles Spec Engineer",
     "keywords": "ai roles spec engineer guide roles roles md#17 spec engineer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#17-spec-engineer",
+    "url": "/guide/ai-roles/",
     "source": "guide"
   },
   {
@@ -1416,7 +1184,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Roles Agent Identity Architect",
     "keywords": "ai roles agent identity architect guide roles roles md#18 agent identity architect",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#18-agent-identity-architect",
+    "url": "/guide/ai-roles/",
     "source": "guide"
   },
   {
@@ -1424,7 +1192,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Roles Eval Engineer",
     "keywords": "ai roles eval engineer guide roles roles md#19 eval engineer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#19-ai-eval-engineer",
+    "url": "/guide/ai-roles/",
     "source": "guide"
   },
   {
@@ -1432,7 +1200,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Roles Harness Engineer",
     "keywords": "ai roles harness engineer guide roles roles md#10 harness engineer",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#10-harness-engineer",
+    "url": "/guide/ai-roles/",
     "source": "guide"
   },
   {
@@ -1440,7 +1208,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Roles Career Matrix",
     "keywords": "ai roles career matrix guide roles roles md#20 career decision matrix",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md#20-career-decision-matrix",
+    "url": "/guide/ai-roles/",
     "source": "guide"
   },
   {
@@ -1448,7 +1216,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Adoption L0 L5 Shapiro",
     "keywords": "adoption l0 l5 shapiro guide roles adoption approaches md#the scale where your team",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-l0-l5-scale-where-is-your-team",
+    "url": "/guide/adoption-approaches/",
     "source": "guide"
   },
   {
@@ -1456,7 +1224,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Adoption Jcurve",
     "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-j-curve-you-will-hit-at-l2l3",
+    "url": "/guide/adoption-approaches/",
     "source": "guide"
   },
   {
@@ -1464,7 +1232,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Adoption Metr Rct",
     "keywords": "adoption metr rct guide roles adoption approaches md#the metr calibration",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#the-metr-calibration",
+    "url": "/guide/adoption-approaches/",
     "source": "guide"
   },
   {
@@ -1472,7 +1240,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Adoption Deputydev",
     "keywords": "adoption deputydev guide roles adoption approaches md#deputydev enterprise cohort",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md#deputydev-enterprise-cohort",
+    "url": "/guide/adoption-approaches/",
     "source": "guide"
   },
   {
@@ -1620,14 +1388,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-sandbox-native-evaluation",
-    "title": "Sandbox Native Evaluation",
-    "keywords": "sandbox native evaluation docs resource evaluations native sandbox official docs",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/native-sandbox-official-docs.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-sandbox-native-config-template",
     "title": "Sandbox Native Config Template",
     "keywords": "sandbox native config template examples config sandbox native",
@@ -1652,27 +1412,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-sandbox-evaluation",
-    "title": "Sandbox Evaluation",
-    "keywords": "sandbox evaluation docs resource evaluations docker sandboxes isolation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/docker-sandboxes-isolation.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-sandbox-score",
-    "title": "Sandbox Score",
-    "keywords": "sandbox score",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/4/5",
-    "source": "guide"
-  },
-  {
     "id": "guide-enterprise-governance-guide",
     "title": "Enterprise Governance Guide",
     "keywords": "enterprise governance guide guide security enterprise governance",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1680,7 +1424,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Local Vs Shared",
     "keywords": "enterprise governance local vs shared guide security enterprise governance md#1 local shared the governance split",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#1-local-vs-shared-the-governance-split",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1688,7 +1432,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Charter",
     "keywords": "enterprise governance charter guide security enterprise governance md#2 usage charter",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#2-ai-usage-charter",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1704,7 +1448,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance MCP Workflow",
     "keywords": "enterprise governance mcp workflow guide security enterprise governance md#3 mcp governance workflow",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#3-mcp-governance-workflow",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1712,7 +1456,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance MCP Registry",
     "keywords": "enterprise governance mcp registry guide security enterprise governance md#32 mcp registry format",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#32-mcp-registry-format",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1728,7 +1472,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Guardrail Tiers",
     "keywords": "enterprise governance guardrail tiers guide security enterprise governance md#4 guardrail tiers",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#4-guardrail-tiers",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1736,7 +1480,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Starter",
     "keywords": "enterprise governance tier starter guide security enterprise governance md#tier starter",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-1-starter",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1744,7 +1488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Standard",
     "keywords": "enterprise governance tier standard guide security enterprise governance md#tier standard",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-2-standard",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1752,7 +1496,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Strict",
     "keywords": "enterprise governance tier strict guide security enterprise governance md#tier strict",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-3-strict",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1760,7 +1504,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Regulated",
     "keywords": "enterprise governance tier regulated guide security enterprise governance md#tier regulated",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#tier-4-regulated",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1768,7 +1512,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Policy At Scale",
     "keywords": "enterprise governance policy at scale guide security enterprise governance md#5 policy enforcement scale",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#5-policy-enforcement-at-scale",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1776,7 +1520,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Onboarding Checklist",
     "keywords": "enterprise governance onboarding checklist guide security enterprise governance md#52 onboarding checklist",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#52-onboarding-checklist",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1784,7 +1528,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Compliance Check",
     "keywords": "enterprise governance compliance check guide security enterprise governance md#53 compliance checking",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#53-compliance-checking",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1792,7 +1536,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Cicd Gates",
     "keywords": "enterprise governance cicd gates guide security enterprise governance md#55 cicd gates",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#55-cicd-gates",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1800,7 +1544,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Audit",
     "keywords": "enterprise governance audit guide security enterprise governance md#6 audit compliance governance structure",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#6-audit-compliance--governance-structure",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1808,7 +1552,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Soc2 Iso27001",
     "keywords": "enterprise governance soc2 iso27001 guide security enterprise governance md#61 what soc2 and iso27001 auditors actually ask",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#61-what-soc2-and-iso27001-auditors-actually-ask",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1816,7 +1560,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Audit Trail",
     "keywords": "enterprise governance audit trail guide security enterprise governance md#62 audit trail setup",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#62-audit-trail-setup",
+    "url": "/guide/enterprise-governance/",
     "source": "guide"
   },
   {
@@ -1828,75 +1572,123 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-enterprise-governance-scope",
-    "title": "Enterprise Governance Scope",
-    "keywords": "enterprise governance scope org level policy (vs security hardening md = individual dev security)",
+    "id": "guide-data-privacy-guide",
+    "title": "Data Privacy Guide",
+    "keywords": "data privacy guide guide security data privacy",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Org-level policy (vs security-hardening.md = individual dev security)",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-gitdiff-watcher-purpose",
-    "title": "Third Party Gitdiff Watcher Purpose",
-    "keywords": "third party gitdiff watcher purpose stop hook utility — enforces build test quality gates before handoff, fires only when matching files changed",
+    "id": "guide-data-privacy-retention-summary",
+    "title": "Data Privacy Retention Summary",
+    "keywords": "data privacy retention summary guide security data privacy md#tl retention summary",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Stop hook utility — enforces build/test quality gates before handoff, fires only when matching files changed",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-straude-eval",
-    "title": "Third Party Straude Eval",
-    "keywords": "third party straude eval docs resource evaluations straude evaluation",
+    "id": "guide-data-privacy-data-flow",
+    "title": "Data Privacy Data Flow",
+    "keywords": "data privacy data flow guide security data privacy md#1 understanding the data flow",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/straude-evaluation.md",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-codesight-when-useful",
-    "title": "Third Party Codesight When Useful",
-    "keywords": "third party codesight when useful typescript projects with recognized framework (express hono trpc fastify nestjs) and orm  useless on rust  use  wiki + mcp on large monorepos (>1500 files)",
+    "id": "guide-data-privacy-retention-policies",
+    "title": "Data Privacy Retention Policies",
+    "keywords": "data privacy retention policies guide security data privacy md#2 anthropic retention policies",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/TypeScript projects with recognized framework (Express/Hono/tRPC/Fastify/NestJS) and ORM. Useless on Rust. Use --wiki + MCP on large monorepos (>1500 files).",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-codesight-limitations",
-    "title": "Third Party Codesight Limitations",
-    "keywords": "third party codesight limitations ast precision ts only; next js app router = 0 routes; cf workers raw http = 0 routes; rust = near empty output;  init overwrites claude",
+    "id": "guide-data-privacy-zdr",
+    "title": "Data Privacy Zdr",
+    "keywords": "data privacy zdr guide security data privacy md#tier zero data retention zdr",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/AST precision TS-only; Next.js App Router = 0 routes; CF Workers raw HTTP = 0 routes; Rust = near-empty output; --init overwrites CLAUDE.md",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-mcp2cli-purpose",
-    "title": "Third Party Mcp2cli Purpose",
-    "keywords": "third party mcp2cli purpose universal cli bridge for mcp openapi graphql — lazy loads tool schemas so llm receives only  list (16 tok tool) +  help (120 tok) instead of full schemas injected upfront each turn",
+    "id": "guide-data-privacy-known-risks",
+    "title": "Data Privacy Known Risks",
+    "keywords": "data privacy known risks guide security data privacy md#3 known risks",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Universal CLI bridge for MCP/OpenAPI/GraphQL — lazy-loads tool schemas so LLM receives only --list (16 tok/tool) + --help (120 tok) instead of full schemas injected upfront each turn",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-mcp2cli-note",
-    "title": "Third Party Mcp2cli Note",
-    "keywords": "third party mcp2cli note 99% schema token reduction benchmarked independently (firecrawl, scalekit, circleci)  born from 2026 mcp backlash  caution: 4+ forks with same name — knowsuchagency is the reference  not for enterprise multi tenant oauth audit",
+    "id": "guide-data-privacy-bug-command",
+    "title": "Data Privacy Bug Command",
+    "keywords": "data privacy bug command guide security data privacy md#risk the bug command sends everything retained years",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/96-99% schema-token reduction benchmarked independently (Firecrawl, Scalekit, CircleCI). Born from 2026 MCP backlash. Caution: 4+ forks with same name — knowsuchagency is the reference. Not for enterprise multi-tenant OAuth/audit.",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-mcp2cli-evaluation",
-    "title": "Third Party Mcp2cli Evaluation",
-    "keywords": "third party mcp2cli evaluation docs resource evaluations 2026 mcp2cli token optimization",
+    "id": "guide-data-privacy-browser-native-messaging",
+    "title": "Data Privacy Browser Native Messaging",
+    "keywords": "data privacy browser native messaging guide security data privacy md#risk claude desktop browser integration",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-03-17-mcp2cli-token-optimization.md",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
-    "id": "guide-third-party-mcp2cli-score",
-    "title": "Third Party Mcp2cli Score",
-    "keywords": "third party mcp2cli score",
+    "id": "guide-data-privacy-protective-measures",
+    "title": "Data Privacy Protective Measures",
+    "keywords": "data privacy protective measures guide security data privacy md#4 protective measures",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/3/5",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-file-exclusions",
+    "title": "Data Privacy File Exclusions",
+    "keywords": "data privacy file exclusions guide security data privacy md#42 configure file exclusions",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-telemetry-optout",
+    "title": "Data Privacy Telemetry Optout",
+    "keywords": "data privacy telemetry optout guide security data privacy md#44 opt out telemetry and error reporting",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-enterprise-zdr",
+    "title": "Data Privacy Enterprise Zdr",
+    "keywords": "data privacy enterprise zdr guide security data privacy md#6 enterprise considerations",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-gdpr-hipaa",
+    "title": "Data Privacy Gdpr Hipaa",
+    "keywords": "data privacy gdpr hipaa guide security data privacy md#when use enterprise api zdr",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-checklist",
+    "title": "Data Privacy Checklist",
+    "keywords": "data privacy checklist guide security data privacy md#quick checklist",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-ip-considerations",
+    "title": "Data Privacy Ip Considerations",
+    "keywords": "data privacy ip considerations guide security data privacy md#8 intellectual property considerations",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
     "source": "guide"
   },
   {
@@ -1956,22 +1748,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-mcp-vs-skills-note",
-    "title": "MCP Vs Skills Note",
-    "keywords": "mcp vs skills note skills (markdown workflows) and mcp (execution auth) address different layers — not alternatives  oauth 2 1 is mcp's structural advantage: skills cannot hold refresh tokens or complete pkce flows",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Skills (markdown workflows) and MCP (execution/auth) address different layers — not alternatives. OAuth 2.1 is MCP's structural advantage: skills cannot hold refresh tokens or complete PKCE flows.",
-    "source": "guide"
-  },
-  {
-    "id": "guide-config-ratinaud-evaluation",
-    "title": "Config Ratinaud Evaluation",
-    "keywords": "config ratinaud evaluation docs resource evaluations ratinaud config management evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/ratinaud-config-management-evaluation.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-sync-claude-config-script",
     "title": "Sync Claude Config Script",
     "keywords": "sync claude config script examples scripts sync claude config",
@@ -2012,14 +1788,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-programmatic-billing-affects",
-    "title": "Programmatic Billing Affects",
-    "keywords": "programmatic billing affects claude  p, agent sdk (python+ts), github actions, openclaw hermes conductor, custom harnesses, ci cd pipelines, scheduled automation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude -p, Agent SDK (Python+TS), GitHub Actions, OpenClaw/Hermes/Conductor, custom harnesses, CI/CD pipelines, scheduled automation",
-    "source": "guide"
-  },
-  {
     "id": "guide-agentic-tools-page",
     "title": "Agentic Tools Page",
     "keywords": "agentic tools page guide ecosystem agentic tools",
@@ -2041,54 +1809,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agentic tools comparison matrix guide ecosystem agentic tools md#full comparison matrix",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#full-comparison-matrix",
-    "source": "guide"
-  },
-  {
-    "id": "guide-programmatic-billing-unaffected",
-    "title": "Programmatic Billing Unaffected",
-    "keywords": "programmatic billing unaffected claude code terminal (interactive), ide integrations, web desktop mobile chat, human the loop workflows",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Claude Code terminal (interactive), IDE integrations, web/desktop/mobile chat, human-in-the-loop workflows",
-    "source": "guide"
-  },
-  {
-    "id": "guide-programmatic-billing-credits",
-    "title": "Programmatic Billing Credits",
-    "keywords": "programmatic billing credits pro $20 mo | max 5x $100 mo | max 20x $200 mo — no rollover, not automatic (requires email activation)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Pro $20/mo | Max 5x $100/mo | Max 20x $200/mo — no rollover, not automatic (requires email activation)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-programmatic-billing-overage-sonnet",
-    "title": "Programmatic Billing Overage Sonnet",
-    "keywords": "programmatic billing overage sonnet mtok input, $15 mtok output (standard api rates)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/$3/MTok input, $15/MTok output (standard API rates)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-programmatic-billing-audit",
-    "title": "Programmatic Billing Audit",
-    "keywords": "programmatic billing audit claude  cost (session) + npx ccusage (cross session history)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/claude /cost (session) + npx ccusage (cross-session history)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-memory-limits-detail",
-    "title": "Memory Limits Detail",
-    "keywords": "memory limits detail memory md: 200 lines max, 25kb max  memory dir: 200 files max  truncation: lines first, then bytes, warning appended",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/MEMORY.md: 200 lines max, 25KB max. Memory dir: 200 files max. Truncation: lines first, then bytes, warning appended.",
-    "source": "guide"
-  },
-  {
-    "id": "guide-auto-dream-access",
-    "title": "Auto Dream Access",
-    "keywords": "auto dream access memory command (or  dream if available)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//memory command (or /dream if available)",
     "source": "guide"
   },
   {
@@ -2116,14 +1836,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-tasks-api-field-visibility",
-    "title": "Tasks API Field Visibility",
-    "keywords": "tasks api field visibility tasklist: id subject status owner blockedby only  taskget: all fields",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/TaskList: id/subject/status/owner/blockedBy only. TaskGet: all fields.",
-    "source": "guide"
-  },
-  {
     "id": "guide-workflows-task-management",
     "title": "Workflows Task Management",
     "keywords": "workflows task management guide workflows task management",
@@ -2137,70 +1849,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "design patterns skill location examples skills design patterns",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/design-patterns/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-anthropics-skills-categories",
-    "title": "Anthropics Skills Categories",
-    "keywords": "anthropics skills categories documents (docx pdf pptx xlsx), creative & design, development, enterprise",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Documents (docx/pdf/pptx/xlsx), Creative & Design, Development, Enterprise",
-    "source": "guide"
-  },
-  {
-    "id": "guide-anthropics-skills-install",
-    "title": "Anthropics Skills Install",
-    "keywords": "anthropics skills install plugin marketplace add anthropics skills",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//plugin marketplace add anthropics/skills",
-    "source": "guide"
-  },
-  {
-    "id": "guide-anthropics-plugins-official-install",
-    "title": "Anthropics Plugins Official Install",
-    "keywords": "anthropics plugins official install npx add skill anthropics claude plugins official",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/npx add-skill anthropics/claude-plugins-official",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agentskills-evaluation",
-    "title": "Agentskills Evaluation",
-    "keywords": "agentskills evaluation docs resource evaluations agentskills specification",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/agentskills-io-specification.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ccbp-repo-evaluation",
-    "title": "Ccbp Repo Evaluation",
-    "keywords": "ccbp repo evaluation docs resource evaluations 069 claude code best practice repo eval",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/069-claude-code-best-practice-repo-eval.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ccbp-repo-critical-finding",
-    "title": "Ccbp Repo Critical Finding",
-    "keywords": "ccbp repo critical finding bug at guide ultimate guide md:5646 — official agent fields misclassified as community patterns (fixed)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/bug at guide/ultimate-guide.md:5646 — official agent fields misclassified as community patterns (fixed)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ccbp-dotclaude-evaluation",
-    "title": "Ccbp Dotclaude Evaluation",
-    "keywords": "ccbp dotclaude evaluation docs resource evaluations 070 claude code best practice dot claude eval",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/070-claude-code-best-practice-dot-claude-eval.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-skills-marketplace-install",
-    "title": "Skills Marketplace Install",
-    "keywords": "skills marketplace install npx add skill <owner repo>",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/npx add-skill <owner/repo>",
     "source": "guide"
   },
   {
@@ -2228,86 +1876,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-gsd-evaluation",
-    "title": "Gsd Evaluation",
-    "keywords": "gsd evaluation docs resource evaluations gsd evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/gsd-evaluation.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-directory",
-    "title": "Resource Evaluations Directory",
-    "keywords": "resource evaluations directory docs resource evaluations",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-methodology",
-    "title": "Resource Evaluations Methodology",
-    "keywords": "resource evaluations methodology docs resource evaluations readme",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/README.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-watchlist",
-    "title": "Resource Evaluations Watchlist",
-    "keywords": "resource evaluations watchlist docs resource evaluations watch list",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/watch-list.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-readme-section",
-    "title": "Resource Evaluations Readme Section",
-    "keywords": "resource evaluations readme section readme",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/README.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-git-mcp",
-    "title": "Resource Evaluations Git MCP",
-    "keywords": "resource evaluations git mcp docs resource evaluations git mcp server evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/git-mcp-server-evaluation.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-anaconda-croce",
-    "title": "Resource Evaluations Anaconda Croce",
-    "keywords": "resource evaluations anaconda croce docs resource evaluations anaconda croce evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/anaconda-croce-evaluation.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-grenier-quality",
-    "title": "Resource Evaluations Grenier Quality",
-    "keywords": "resource evaluations grenier quality docs resource evaluations grenier agent skill quality",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/grenier-agent-skill-quality.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-grenier-gap",
-    "title": "Resource Evaluations Grenier Gap",
-    "keywords": "resource evaluations grenier gap no automated quality checks for agents skills (29 5% deploy without evaluation per langchain 2026)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/No automated quality checks for agents/skills (29.5% deploy without evaluation per LangChain 2026)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-resource-evaluations-grenier-integration",
-    "title": "Resource Evaluations Grenier Integration",
-    "keywords": "resource evaluations grenier integration created  audit agents skills command + skill + criteria",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Created /audit-agents-skills command + skill + criteria.yaml",
-    "source": "guide"
-  },
-  {
     "id": "guide-audit-agents-skills-command",
     "title": "Audit Agents Skills Command",
     "keywords": "audit agents skills command examples skills audit agents skills skill",
@@ -2324,35 +1892,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-audit-agents-skills-scoring",
-    "title": "Audit Agents Skills Scoring",
-    "keywords": "audit agents skills scoring 32 points max (agents skills), 20 points (commands)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/32 points max (agents/skills), 20 points (commands)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-audit-agents-skills-output",
-    "title": "Audit Agents Skills Output",
-    "keywords": "audit agents skills output markdown + json for ci cd integration",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Markdown + JSON for CI/CD integration",
-    "source": "guide"
-  },
-  {
     "id": "guide-audit-agents-skills-guide-refs",
     "title": "Audit Agents Skills Guide Refs",
     "keywords": "audit agents skills guide refs guide ultimate guide md:4951 (after agent validation checklist), guide ultimate guide md:5495 (after skill validation)",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md:4951 (after Agent Validation Checklist), guide/ultimate-guide.md:5495 (after Skill Validation)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-outcome-engineering-author",
-    "title": "Outcome Engineering Author",
-    "keywords": "outcome engineering author cory ondrejka (cto onebrief, co creator second life, ex vp google meta)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Cory Ondrejka (CTO Onebrief, co-creator Second Life, ex-VP Google/Meta)",
     "source": "guide"
   },
   {
@@ -2412,43 +1956,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-dual-instance-cost",
-    "title": "Dual Instance Cost",
-    "keywords": "dual instance cost $100 200 month (vs $500 1k boris pattern)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/$100-200/month (vs $500-1K Boris pattern)",
-    "source": "guide"
-  },
-  {
     "id": "guide-plan-pipeline-workflow",
     "title": "Plan Pipeline Workflow",
     "keywords": "plan pipeline workflow guide workflows plan pipeline",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/plan-pipeline/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-plan-pipeline-commands",
-    "title": "Plan Pipeline Commands",
-    "keywords": "plan pipeline commands plan start →  plan validate →  plan execute",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//plan-start → /plan-validate → /plan-execute",
-    "source": "guide"
-  },
-  {
-    "id": "guide-plan-pipeline-adr-loop",
-    "title": "Plan Pipeline Adr Loop",
-    "keywords": "plan pipeline adr loop watching (1) → emerging (2) → confirmed (3+) → claude md promotion",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Watching (1) → Emerging (2) → Confirmed (3+) → CLAUDE.md promotion",
-    "source": "guide"
-  },
-  {
-    "id": "guide-plan-pipeline-context-reset",
-    "title": "Plan Pipeline Context Reset",
-    "keywords": "plan pipeline context reset clear between each command (plan, validate, execute)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main//clear between each command (plan, validate, execute)",
     "source": "guide"
   },
   {
@@ -2465,22 +1977,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "plan validate command examples skills plan pipeline validate skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/validate/SKILL.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-plan-validate-layer1",
-    "title": "Plan Validate Layer1",
-    "keywords": "plan validate layer1 structural checks inline: format, deps, file existence, adr consistency, claude",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/structural checks inline: format, deps, file existence, ADR consistency, CLAUDE.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-plan-validate-autofix",
-    "title": "Plan Validate Autofix",
-    "keywords": "plan validate autofix bucket a auto resolve (adr patterns first principles ~95%) + bucket b human input",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Bucket A auto-resolve (ADR/PATTERNS/first-principles ~95%) + Bucket B human input",
     "source": "guide"
   },
   {
@@ -2508,19 +2004,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-integration-reviewer-role",
-    "title": "Integration Reviewer Role",
-    "keywords": "integration reviewer role opus runtime validator: connection params, async sync, env vars, library api correctness, otel pipeline",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Opus runtime validator: connection params, async/sync, env vars, library API correctness, OTEL pipeline",
-    "source": "guide"
-  },
-  {
     "id": "guide-annotation-cycle-pattern",
     "title": "Annotation Cycle Pattern",
     "keywords": "annotation cycle pattern guide workflows plan driven md#the annotation cycle",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/plan-driven.md#the-annotation-cycle",
+    "url": "/guide/workflows/plan-driven/",
     "source": "guide"
   },
   {
@@ -2528,31 +2016,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Custom Markdown Plans",
     "keywords": "custom markdown plans guide workflows plan driven md#why custom plans over plan",
     "category": "Guide > Workflows",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/plan-driven.md#why-custom-plans-over-plan",
-    "source": "guide"
-  },
-  {
-    "id": "guide-team-tips-paddo-source",
-    "title": "Team Tips Paddo Source",
-    "keywords": "team tips paddo source boris cherny thread (x com bcherny status 2017742741636321619)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Boris Cherny thread (x.com/bcherny/status/2017742741636321619)",
-    "source": "guide"
-  },
-  {
-    "id": "guide-team-tips-paddo-evaluation",
-    "title": "Team Tips Paddo Evaluation",
-    "keywords": "team tips paddo evaluation docs resource evaluations paddo team tips eval",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/paddo-team-tips-eval.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-contribution-metrics-stats",
-    "title": "Contribution Metrics Stats",
-    "keywords": "contribution metrics stats +67% prs merged engineer day, 70 90% ai assisted code (anthropic internal)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/+67% PRs merged/engineer/day, 70-90% AI-assisted code (Anthropic internal)",
+    "url": "/guide/workflows/plan-driven/",
     "source": "guide"
   },
   {
@@ -2604,22 +2068,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agentic-trends-2026-evaluation",
-    "title": "Agentic Trends 2026 Evaluation",
-    "keywords": "agentic trends 2026 evaluation docs resource evaluations anthropic 2026 agentic coding trends",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/anthropic-2026-agentic-coding-trends.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-fluency-evaluation",
-    "title": "AI Fluency Evaluation",
-    "keywords": "ai fluency evaluation docs resource evaluations 2026 anthropic fluency index",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-02-23-anthropic-ai-fluency-index.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-ai-fluency-diagram",
     "title": "AI Fluency Diagram",
     "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
@@ -2644,14 +2092,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-spec-osmani-evaluation",
-    "title": "Spec Osmani Evaluation",
-    "keywords": "spec osmani evaluation docs resource evaluations addy osmani good spec",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/addy-osmani-good-spec.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-tdd-verification-gap",
     "title": "TDD Verification Gap",
     "keywords": "tdd verification gap guide workflows tdd with claude",
@@ -2673,14 +2113,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "session lifecycle verification hook examples hooks bash verification gate",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/verification-gate.sh",
-    "source": "guide"
-  },
-  {
-    "id": "guide-openai-harness-engineering",
-    "title": "Openai Harness Engineering",
-    "keywords": "openai harness engineering docs resource evaluations 2026 openai harness engineering",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/2026-02-11-openai-harness-engineering.md",
     "source": "guide"
   },
   {
@@ -2724,14 +2156,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-issue-triage-vs-pr-triage",
-    "title": "Issue Triage Vs PR Triage",
-    "keywords": "issue triage vs pr triage issue triage = issue backlog (comment label close) | pr triage = pr backlog (code review comment)",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/issue-triage = issue backlog (comment/label/close) | pr-triage = PR backlog (code review comment)",
-    "source": "guide"
-  },
-  {
     "id": "guide-cowork-reference",
     "title": "Cowork Reference",
     "keywords": "cowork reference machine readable cowork reference",
@@ -2748,59 +2172,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-quiz-overview",
-    "title": "Quiz Overview",
-    "keywords": "quiz overview quiz readme",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/quiz/README.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-quiz-file",
-    "title": "Quiz File",
-    "keywords": "quiz file quiz questions",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/quiz/questions.json",
-    "source": "guide"
-  },
-  {
-    "id": "guide-quiz-beginner",
-    "title": "Quiz Beginner",
-    "keywords": "quiz beginner quiz categories basics,commands,shortcuts,reference",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/quiz/categories/basics,commands,shortcuts,reference",
-    "source": "guide"
-  },
-  {
-    "id": "guide-quiz-intermediate",
-    "title": "Quiz Intermediate",
-    "keywords": "quiz intermediate quiz categories workflows,context,agents,hooks",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/quiz/categories/workflows,context,agents,hooks",
-    "source": "guide"
-  },
-  {
-    "id": "guide-quiz-advanced",
-    "title": "Quiz Advanced",
-    "keywords": "quiz advanced quiz categories mcp,production,advanced,learning,ecosystem",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/quiz/categories/mcp,production,advanced,learning,ecosystem",
-    "source": "guide"
-  },
-  {
     "id": "guide-security-hardening",
     "title": "Security Hardening",
     "keywords": "security hardening guide security security hardening",
     "category": "Guide",
     "url": "/guide/security-hardening/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-security-toxicskills-evaluation",
-    "title": "Security Toxicskills Evaluation",
-    "keywords": "security toxicskills evaluation docs resource evaluations snyk toxicskills evaluation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/docs/resource-evaluations/snyk-toxicskills-evaluation.md",
     "source": "guide"
   },
   {
@@ -2928,7 +2304,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Reference File Pattern",
     "keywords": "mcp reference file pattern guide ecosystem mcp servers ecosystem md#documenting mcp for claude the reference file pattern",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-servers-ecosystem.md#documenting-an-mcp-for-claude-the-reference-file-pattern",
+    "url": "/guide/mcp-servers-ecosystem/",
     "source": "guide"
   },
   {
@@ -3000,7 +2376,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Context Evaluator Tool",
     "keywords": "context evaluator tool guide ecosystem third party tools md#context evaluator",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/third-party-tools.md#context-evaluator",
+    "url": "/guide/third-party-tools/",
     "source": "guide"
   },
   {
@@ -3028,51 +2404,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-anthropic-api-patterns-description",
-    "title": "Anthropic API Patterns Description",
-    "keywords": "anthropic api patterns description message batches api (50% cost, 24h window, 100 req batch), tool choice (auto any specific none), strict mode structured outputs (beta header, constrained decoding), nullable fields, extensible enums, detected pattern",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/Message Batches API (50% cost, 24h window, 100-req batch), tool_choice (auto/any/specific/none), strict-mode structured outputs (beta header, constrained decoding), nullable fields, extensible enums, detected_pattern.",
-    "source": "guide"
-  },
-  {
-    "id": "guide-few-shot-calibration",
-    "title": "Few Shot Calibration",
-    "keywords": "few shot calibration near miss examples reduce false positive rate in ci review tasks",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/near-miss examples reduce false positive rate in CI/review tasks",
-    "source": "guide"
-  },
-  {
-    "id": "guide-few-shot-limits",
-    "title": "Few Shot Limits",
-    "keywords": "few shot limits teaches style format only; cannot enforce business rules or schema constraints",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/teaches style/format only; cannot enforce business rules or schema constraints",
-    "source": "guide"
-  },
-  {
-    "id": "guide-confidence-platt-scaling",
-    "title": "Confidence Platt Scaling",
-    "keywords": "confidence platt scaling corrects systematic overconfidence underconfidence post hoc",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/corrects systematic overconfidence/underconfidence post-hoc",
-    "source": "guide"
-  },
-  {
     "id": "guide-production-reliability-guide",
     "title": "Production Reliability Guide",
     "keywords": "production reliability guide guide workflows production reliability",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/production-reliability/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-hub-and-spoke-rule",
-    "title": "Hub And Spoke Rule",
-    "keywords": "hub and spoke rule coordinator decomposes dispatches aggregates; never does domain work itself",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/coordinator decomposes/dispatches/aggregates; never does domain work itself",
     "source": "guide"
   }
 ]

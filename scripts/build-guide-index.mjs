@@ -30,6 +30,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/core/visual-reference.md',
   // security/
   'guide/security/data-privacy.md',
+  'guide/security/enterprise-governance.md',
   'guide/security/production-safety.md',
   'guide/security/sandbox-isolation.md',
   'guide/security/sandbox-native.md',
@@ -141,11 +142,12 @@ function main() {
   const seen = new Set()
 
   for (const [key, value] of Object.entries(deepDive)) {
-    // Only keep string values that are file paths (contain '/' or '.md')
-    // Exclude: external URLs (https://), numbers, arrays, objects
+    // Only keep string values that are actual file paths starting with a known directory
+    // Exclude: external URLs (https://), description strings, numbers, arrays, objects
     if (typeof value !== 'string') continue
     if (value.startsWith('http://') || value.startsWith('https://')) continue
-    if (!value.includes('/') && !value.includes('.md') && !value.includes('.yaml')) continue
+    const PATH_PREFIXES = ['guide/', 'examples/', 'machine-readable/', 'whitepapers/']
+    if (!PATH_PREFIXES.some(prefix => value.startsWith(prefix))) continue
 
     const cleanPath = stripLineNumber(value)
 
@@ -159,13 +161,17 @@ function main() {
 
     // Use local /guide/ URL if the file is served locally, else fall back to GitHub
     // NOTE: guide files in subdirs (guide/core/arch.md) are served flat at /guide/arch/
+    // Strip anchor before checking LOCAL_GUIDE_FILES — anchors in reference.yaml use
+    // GitHub markdown format, not Starlight format, so we link to page top to avoid
+    // broken anchors on the guide reader.
+    const filePathOnly = cleanPath.split('#')[0]
     let url
-    if (LOCAL_GUIDE_FILES.has(cleanPath)) {
+    if (LOCAL_GUIDE_FILES.has(filePathOnly)) {
       // Extract basename only — all guide files served flat at /guide/<slug>/
-      const basename = cleanPath.split('/').pop().replace(/\.md$/, '')
+      const basename = filePathOnly.split('/').pop().replace(/\.md$/, '')
       url = `${LOCAL_GUIDE_BASE}${basename}/`
-    } else if (cleanPath.startsWith('guide/workflows/') && cleanPath.endsWith('.md')) {
-      const slug = cleanPath.replace(/^guide\//, '').replace(/\.md$/, '')
+    } else if (filePathOnly.startsWith('guide/workflows/') && filePathOnly.endsWith('.md')) {
+      const slug = filePathOnly.replace(/^guide\//, '').replace(/\.md$/, '')
       url = `${LOCAL_GUIDE_BASE}${slug}/`
     } else {
       url = `${GITHUB_BASE}${cleanPath}`
