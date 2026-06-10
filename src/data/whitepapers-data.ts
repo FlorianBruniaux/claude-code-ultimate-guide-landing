@@ -209,7 +209,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     gated: true,
     badge: 'New',
     formats: ['pdf'],
-    hashedFileFr: `11-team-metrics.fr.${V}.f5c6b2160fa8.pdf`,
+    hashedFileFr: `11-team-metrics.fr.${V}.6d198e82b234.pdf`,
     hashedFileEn: `11-team-metrics.en.${V}.36d68f371fbf.pdf`,
     slugFr: '11-team-metrics',
     slugEn: '11-team-metrics',
