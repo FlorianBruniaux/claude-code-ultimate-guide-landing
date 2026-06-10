@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.170',
+    date: 'Jun 9, 2026',
+    description: 'Claude Fable 5, a Mythos-class model exceeding any previously generally available Anthropic model, is now accessible in Claude Code v2.1.170.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21170-2026-06-09',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.158',
     date: 'May 30, 2026',
     description: 'Auto mode is now available on Bedrock, Vertex, and Foundry for Opus 4.7 and Opus 4.8. Opt in by setting CLAUDE_CODE_ENABLE_AUTO_MODE=1.',

@@ -16,11 +16,32 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.170',
+    date: 'Jun 9, 2026',
+    highlights: [
+      '⭐ Claude Fable 5 (Mythos-class model) now available',
+      'Fixed transcript saving from VS Code integrated terminal sessions',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Fable 5',
+  },
+  {
+    version: 'v2.1.169',
+    date: 'Jun 9, 2026',
+    highlights: [
+      '⭐ --safe-mode flag: start with all customizations disabled for troubleshooting',
+      '⭐ /cd command: change working directory mid-session without breaking prompt cache',
+      'disableBundledSkills setting to hide built-in skills, workflows, and slash commands',
+      '15+ bug fixes: enterprise MCP policy enforcement, macOS UI stall, Windows Git popup, agents --json',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.168',
     date: 'Jun 6, 2026',
     highlights: ['Bug fixes and reliability improvements'],
-    latest: true,
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.167',
