@@ -16,13 +16,33 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.173',
+    date: 'Jun 11, 2026',
+    highlights: [
+      'Fixed Fable 5 model names with [1m] suffix not normalized (1M context included by default)',
+      'Fixed spurious "sandbox dependencies missing" startup warning on Windows',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.172',
+    date: 'Jun 11, 2026',
+    highlights: [
+      '⭐ Sub-agents can now spawn their own sub-agents (up to 5 levels deep)',
+      'Amazon Bedrock reads AWS region from ~/.aws config files when AWS_REGION not set',
+      'Search bar added when browsing marketplace plugins in /plugin',
+      '20+ bug fixes: 1M context stuck, model picker availableModels issues, permission rule wildcards, VS Code PowerShell rendering',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.170',
     date: 'Jun 9, 2026',
     highlights: [
       '⭐ Claude Fable 5 (Mythos-class model) now available',
       'Fixed transcript saving from VS Code integrated terminal sessions',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: 'Fable 5',

@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.172',
+    date: 'Jun 11, 2026',
+    description: 'Sub-agents can now spawn their own sub-agents up to 5 levels deep. Bedrock auto-detects the AWS region from ~/.aws config files. 20+ bug fixes including the 1M context stuck issue and model picker availableModels filtering.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21172-2026-06-11',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.170',
     date: 'Jun 9, 2026',
     description: 'Claude Fable 5, a Mythos-class model exceeding any previously generally available Anthropic model, is now accessible in Claude Code v2.1.170.',
