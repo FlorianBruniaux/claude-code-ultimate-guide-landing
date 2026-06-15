@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.176',
+    date: 'Jun 15, 2026',
+    description: 'Session titles are now generated in the language of your conversation, with a new `language` setting to pin a specific one. New `footerLinksRegexes` setting for custom footer badges. New `enforceAvailableModels` managed setting (v2.1.175) locks the Default model to the allowlist. 15+ bug fixes across Remote Control, tmux clipboard, hook path conditions, and Bedrock credential caching.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21176-2026-06-15',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.172',
     date: 'Jun 11, 2026',
     description: 'Sub-agents can now spawn their own sub-agents up to 5 levels deep. Bedrock auto-detects the AWS region from ~/.aws config files. 20+ bug fixes including the 1M context stuck issue and model picker availableModels filtering.',

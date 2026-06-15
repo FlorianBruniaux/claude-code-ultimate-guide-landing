@@ -16,13 +16,43 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.176',
+    date: 'Jun 15, 2026',
+    highlights: [
+      '⭐ Session titles generated in the language of your conversation; `language` setting pins a specific language',
+      '`footerLinksRegexes` setting: regex-matched link badges in the footer row',
+      'Improved Bedrock credential caching: cached until Expiration instead of fixed 1 hour',
+      '15+ bug fixes: availableModels alias enforcement, Fable 5 auto mode fallback, hook if path conditions, Linux sandbox symlink, tmux clipboard, Remote Control model switch',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.175',
+    date: 'Jun 15, 2026',
+    highlights: [
+      '⭐ `enforceAvailableModels` managed setting: constrains Default model to allowlist; blocks user/project settings from widening a managed list',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.174',
+    date: 'Jun 15, 2026',
+    highlights: [
+      '`wheelScrollAccelerationEnabled` setting to disable mouse-wheel scroll acceleration in fullscreen mode',
+      'Fixed /model picker hiding the model family that Default resolves to (Opus/Sonnet row visible per plan type)',
+      '[VSCode] Usage attribution in /usage dialog: cache misses, long context, subagents, per-skill/agent/plugin/MCP breakdowns',
+      '8+ bug fixes: Fable 5 billing banner, Bedrock GovCloud prefix, background session env inheritance, exit pause on macOS/Linux',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.173',
     date: 'Jun 11, 2026',
     highlights: [
       'Fixed Fable 5 model names with [1m] suffix not normalized (1M context included by default)',
       'Fixed spurious "sandbox dependencies missing" startup warning on Windows',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
