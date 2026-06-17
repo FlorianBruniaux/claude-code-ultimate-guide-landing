@@ -16,6 +16,28 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.179',
+    date: 'Jun 17, 2026',
+    highlights: [
+      'Fixed mid-stream connection drops: partial responses preserved, spinner no longer stuck at "running tool"',
+      'Fixed mouse-wheel scrolling in WSL2 under Windows Terminal and VS Code (regression in 2.1.172)',
+      '6+ bug fixes: sandbox denyRead/allowRead glob performance, feedback survey rating, welcome banner stacking, Ctrl+O subagent transcript, prompt focus',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.178',
+    date: 'Jun 17, 2026',
+    highlights: [
+      '⭐ Tool(param:value) syntax for permission rules to match tool input parameters, e.g. Agent(model:opus) to block Opus subagents',
+      'Nested .claude/skills directories load when working on files there; directory-qualified names on clash prevent conflicts',
+      'Improved auto mode: subagent spawns evaluated by classifier before launch',
+      '10+ bug fixes: subagent transcript, compaction fallback model, stale auth credentials, MCP disallowedTools server specs, vim undo',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.176',
     date: 'Jun 15, 2026',
     highlights: [
@@ -24,7 +46,6 @@ export const releases: Release[] = [
       'Improved Bedrock credential caching: cached until Expiration instead of fixed 1 hour',
       '15+ bug fixes: availableModels alias enforcement, Fable 5 auto mode fallback, hook if path conditions, Linux sandbox symlink, tmux clipboard, Remote Control model switch',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

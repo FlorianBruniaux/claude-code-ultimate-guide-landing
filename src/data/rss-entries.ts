@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.178',
+    date: 'Jun 17, 2026',
+    description: 'New Tool(param:value) syntax for permission rules lets you match tool input parameters with wildcards, e.g. Agent(model:opus) to block Opus subagents. Nested .claude/skills directories now load automatically with name-clash disambiguation. Auto mode subagent spawns are evaluated by the classifier before launch. 10+ bug fixes including subagent transcript visibility, compaction fallback model, and MCP disallowedTools for server-level specs.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21178-2026-06-17',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.176',
     date: 'Jun 15, 2026',
     description: 'Session titles are now generated in the language of your conversation, with a new `language` setting to pin a specific one. New `footerLinksRegexes` setting for custom footer badges. New `enforceAvailableModels` managed setting (v2.1.175) locks the Default model to the allowlist. 15+ bug fixes across Remote Control, tmux clipboard, hook path conditions, and Bedrock credential caching.',
