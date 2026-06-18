@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.181',
+    date: 'Jun 18, 2026',
+    description: 'New /config key=value syntax lets you set any setting inline from the prompt (e.g. /config thinking=false), working in interactive, -p, and Remote Control modes. Long paragraphs now stream line-by-line instead of waiting for the first line break. Subagent panel improvements: idle agents auto-hide after 30s, list caps at 5 rows with scroll hints. 30+ bug fixes including prompt caching on custom ANTHROPIC_BASE_URL, Write/Edit truncated files on network drives, and a 120ms startup regression.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21181-2026-06-18',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.178',
     date: 'Jun 17, 2026',
     description: 'New Tool(param:value) syntax for permission rules lets you match tool input parameters with wildcards, e.g. Agent(model:opus) to block Opus subagents. Nested .claude/skills directories now load automatically with name-clash disambiguation. Auto mode subagent spawns are evaluated by the classifier before launch. 10+ bug fixes including subagent transcript visibility, compaction fallback model, and MCP disallowedTools for server-level specs.',
