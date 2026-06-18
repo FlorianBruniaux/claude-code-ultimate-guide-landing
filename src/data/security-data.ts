@@ -117,9 +117,9 @@ export interface SecurityData {
 
 export const SECURITY_DATA = {
     meta: {
-        version: "2.17.0",
-        updated: "2026-05-11",
-        sources_count: 46
+        version: "2.22.0",
+        updated: "2026-06-18",
+        sources_count: 55
     },
     stats: {
         skills_scanned: 3984,
@@ -127,8 +127,8 @@ export const SECURITY_DATA = {
         critical_risk: 534,
         critical_pct: 13.4,
         malicious_payloads: 76,
-        cves_tracked: 39,
-        malicious_skills: 655,
+        cves_tracked: 42,
+        malicious_skills: 657,
         exposed_servers: 17500,
         hardcoded_secrets_pct: 10.9,
         still_live: 8
