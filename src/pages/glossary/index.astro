@@ -2,6 +2,10 @@
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, groupByLetter, categoryColors } from '../../data/glossary-data'
 
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+}
+
 const title = 'Claude Code Glossary: 139 Terms Defined'
 const description = 'Comprehensive alphabetical glossary of Claude Code terms, community patterns, and AI engineering concepts. From CLAUDE.md to vibe coding, Plan Mode to prompt injection.'
 
@@ -78,10 +82,7 @@ const jsonLd = [
                 <div class="term-row" data-cat={t.category}>
                   <div class="term-left">
                     <h3 class="term-name">
-                      {t.link
-                        ? <a href={t.link} class="term-link" target={t.link.startsWith('http') ? '_blank' : undefined} rel={t.link.startsWith('http') ? 'noopener noreferrer' : undefined}>{t.term}</a>
-                        : t.term
-                      }
+                      <a href={`/glossary/${slugify(t.term)}/`} class="term-link">{t.term}</a>
                     </h3>
                     <div class="term-meta">
                       <span class={`badge ${categoryColors[t.category] ?? 'badge-default'}`}>{t.category}</span>

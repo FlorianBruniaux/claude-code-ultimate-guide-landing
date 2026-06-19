@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { COMPARISON_TOOLS } from '../../data/compare-data'
 
 const title = 'Claude Code vs Copilot vs Cursor | AI Tools Comparison'
 const description = 'Claude Code vs Copilot vs Cursor: objective comparison with workflows. 271 templates, 346-question quiz, 83 CVEs tracked. Discover which AI tools complement each other.'
@@ -26,7 +27,7 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-02-17" modifiedDate="2026-06-08">
 
   <!-- Hero -->
   <header class="compare-hero">
@@ -39,12 +40,40 @@ const jsonLd = [
       <h1>Compare & Choose</h1>
       <p class="compare-hero-tagline">Two perspectives: how this guide fits among resources, and how Claude Code fits in the broader AI tool ecosystem.</p>
       <nav class="compare-hero-nav" aria-label="Page sections">
+        <a href="#direct-comparisons" class="compare-nav-pill">Direct Comparisons</a>
         <a href="#guide-vs" class="compare-nav-pill">This Guide vs Others</a>
         <a href="#ecosystem" class="compare-nav-pill">AI Ecosystem</a>
         <a href="#workflows" class="compare-nav-pill">Workflow Patterns</a>
       </nav>
     </div>
   </header>
+
+  <!-- Section 0: Direct Comparisons -->
+  <section class="compare-section compare-section--direct" id="direct-comparisons">
+    <div class="container">
+      <div class="compare-section-header">
+        <h2>Claude Code vs [Tool]: Direct Comparisons</h2>
+        <p>Feature tables, pricing, and honest trade-offs for each tool — from 6 months of daily use.</p>
+      </div>
+      <div class="direct-comparisons-grid">
+        {COMPARISON_TOOLS.map(tool => (
+          <a href={`/compare/claude-code-vs-${tool.slug}/`} class="direct-comparison-card">
+            <div class="dc-header">
+              <span class="dc-type">{tool.type}</span>
+            </div>
+            <div class="dc-title">Claude Code vs {tool.name}</div>
+            <div class="dc-tagline">{tool.tagline}</div>
+            <div class="dc-footer">
+              <span class={`dc-badge ${tool.complementsClaudeCode ? 'dc-badge--complements' : 'dc-badge--overlaps'}`}>
+                {tool.complementsClaudeCode ? 'Complementary' : 'Overlaps'}
+              </span>
+              <span class="dc-arrow">&rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Section 1: This Guide vs Other Resources -->
   <section class="compare-section" id="guide-vs">
@@ -432,6 +461,99 @@ const jsonLd = [
       color: var(--text-secondary);
       margin-top: var(--space-md);
       max-width: 640px;
+    }
+
+    /* ── DIRECT COMPARISONS SECTION ──────────────────────────────────────── */
+    .compare-section--direct {
+      background-color: var(--bg-primary);
+    }
+
+    .direct-comparisons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .direct-comparison-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      text-decoration: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .direct-comparison-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-card-hover);
+      text-decoration: none;
+    }
+
+    .dc-header {
+      margin-bottom: var(--space-sm);
+    }
+
+    .dc-type {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border-radius: var(--border-radius);
+      padding: 2px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .dc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .dc-tagline {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      flex: 1;
+      margin-bottom: var(--space-md);
+    }
+
+    .dc-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .dc-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .dc-badge--complements {
+      background: color-mix(in srgb, var(--status-success) 12%, transparent);
+      color: var(--status-success);
+      border: 1px solid color-mix(in srgb, var(--status-success) 30%, transparent);
+    }
+
+    .dc-badge--overlaps {
+      background: color-mix(in srgb, var(--status-warning) 12%, transparent);
+      color: var(--status-warning);
+      border: 1px solid color-mix(in srgb, var(--status-warning) 30%, transparent);
+    }
+
+    .dc-arrow {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
     }
 
     /* ── GUIDE COMPARISON TABLE ───────────────────────────────────────────── */

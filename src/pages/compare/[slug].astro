@@ -1,0 +1,516 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { COMPARISON_TOOLS } from '../../data/compare-data'
+
+export function getStaticPaths() {
+  return COMPARISON_TOOLS.map(tool => ({
+    params: { slug: `claude-code-vs-${tool.slug}` },
+    props: { tool },
+  }))
+}
+
+const { tool } = Astro.props
+
+const title = `Claude Code vs ${tool.name} (2026): Honest Comparison | Claude Code Guide`
+const description = `Claude Code vs ${tool.name}: ${tool.tagline}. Feature matrix, pricing comparison, and which tool fits your workflow. From 6 months of daily use.`
+
+const jsonLd = [
+  {
+    "@type": "SoftwareApplication",
+    "name": "Claude Code",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Windows, Linux",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "requires Anthropic API subscription" },
+    "url": "https://claude.ai/code",
+  },
+  {
+    "@type": "SoftwareApplication",
+    "name": tool.name,
+    "applicationCategory": "DeveloperApplication",
+    "description": tool.tagline,
+    "offers": {
+      "@type": "Offer",
+      "price": tool.pricingFree ? "0" : undefined,
+      "description": tool.pricingMonthly,
+    },
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Is ${tool.name} better than Claude Code?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `It depends on your workflow. ${tool.name} is best for: ${tool.bestFor}. Claude Code is best for terminal-driven, multi-step agentic workflows where context management and orchestration matter.`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `Can I use ${tool.name} with Claude Code?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": tool.complementsClaudeCode
+            ? `Yes. ${tool.complementReason}`
+            : `${tool.name} and Claude Code overlap significantly. ${tool.complementReason}`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `How much does ${tool.name} cost compared to Claude Code?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `${tool.name}: ${tool.pricingMonthly}. Claude Code: $20+/month via Anthropic Max subscription, or pay-per-use via the Anthropic API.`,
+        },
+      },
+    ],
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cc.bruniaux.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://cc.bruniaux.com/compare/" },
+      { "@type": "ListItem", "position": 3, "name": `Claude Code vs ${tool.name}`, "item": `https://cc.bruniaux.com/compare/claude-code-vs-${tool.slug}/` },
+    ],
+  },
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-06-19" modifiedDate="2026-06-19">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/compare/">Compare</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">Claude Code vs {tool.name}</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="cvs-hero">
+    <div class="container">
+      <div class="cvs-tool-type">{tool.type}</div>
+      <h1>Claude Code vs {tool.name}</h1>
+      <p class="cvs-tagline">{tool.tagline}</p>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <div class="container cvs-body">
+
+    <!-- Quick comparison table -->
+    <section class="cvs-section" aria-labelledby="comparison-table-heading">
+      <h2 id="comparison-table-heading">Quick Comparison</h2>
+      <div class="cvs-table-wrapper">
+        <table class="cvs-table">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Claude Code</th>
+              <th scope="col">{tool.name}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              <td>$20+/month or API pay-per-use</td>
+              <td>{tool.pricingMonthly}</td>
+            </tr>
+            <tr>
+              <td>Free tier</td>
+              <td><span class="cvs-no" aria-hidden="true">&#10007;</span> No</td>
+              <td>
+                {tool.pricingFree
+                  ? <span><span class="cvs-yes" aria-hidden="true">&#10003;</span> Yes</span>
+                  : <span><span class="cvs-no" aria-hidden="true">&#10007;</span> No</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td>Open source</td>
+              <td><span class="cvs-no" aria-hidden="true">&#10007;</span> No</td>
+              <td>
+                {tool.openSource
+                  ? <span><span class="cvs-yes" aria-hidden="true">&#10003;</span> Yes</span>
+                  : <span><span class="cvs-no" aria-hidden="true">&#10007;</span> No</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td>Model agnostic</td>
+              <td><span class="cvs-no" aria-hidden="true">&#10007;</span> Claude only</td>
+              <td>
+                {tool.modelAgnostic
+                  ? <span><span class="cvs-yes" aria-hidden="true">&#10003;</span> Yes</span>
+                  : <span><span class="cvs-no" aria-hidden="true">&#10007;</span> No</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td>Agentic mode</td>
+              <td><span class="cvs-yes" aria-hidden="true">&#10003;</span> Yes (terminal)</td>
+              <td>
+                {tool.agenticMode
+                  ? <span><span class="cvs-yes" aria-hidden="true">&#10003;</span> Yes</span>
+                  : <span><span class="cvs-no" aria-hidden="true">&#10007;</span> No</span>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td>Works in IDE</td>
+              <td><span class="cvs-no" aria-hidden="true">&#10007;</span> Terminal only</td>
+              <td><span class="cvs-yes" aria-hidden="true">&#10003;</span> {tool.ideIntegration}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Strengths comparison -->
+    <section class="cvs-section" aria-labelledby="strengths-heading">
+      <h2 id="strengths-heading">Strengths</h2>
+      <div class="cvs-two-col">
+        <div class="cvs-strengths-card">
+          <h3>Claude Code</h3>
+          <ul>
+            <li>Terminal-native, runs anywhere (SSH, Docker, CI)</li>
+            <li>Multi-agent orchestration with sub-agents</li>
+            <li>Context auto-compact for long sessions</li>
+            <li>Hooks system for custom automation</li>
+            <li>MCP server integration for external tools</li>
+            <li>CLAUDE.md persistent project context</li>
+          </ul>
+        </div>
+        <div class="cvs-strengths-card">
+          <h3>{tool.name}</h3>
+          <ul>
+            {tool.strengths.map(s => <li>{s}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weaknesses -->
+    <section class="cvs-section" aria-labelledby="weaknesses-heading">
+      <h2 id="weaknesses-heading">Weaknesses</h2>
+      <div class="cvs-two-col">
+        <div class="cvs-weaknesses-card">
+          <h3>Claude Code</h3>
+          <ul>
+            <li>No IDE integration, terminal only</li>
+            <li>Requires Anthropic API or Max subscription</li>
+            <li>Steeper learning curve than GUI tools</li>
+            <li>No inline autocomplete while typing</li>
+          </ul>
+        </div>
+        <div class="cvs-weaknesses-card">
+          <h3>{tool.name}</h3>
+          <ul>
+            {tool.weaknesses.map(w => <li>{w}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best for -->
+    <section class="cvs-section" aria-labelledby="bestfor-heading">
+      <h2 id="bestfor-heading">Best for</h2>
+      <div class="cvs-two-col">
+        <div class="cvs-bestfor-card">
+          <h3>Claude Code</h3>
+          <p>Developers and teams who need autonomous, multi-step agentic workflows from the terminal. Strong fit for CI automation, complex refactors across many files, and projects requiring MCP tool integrations.</p>
+        </div>
+        <div class="cvs-bestfor-card">
+          <h3>{tool.name}</h3>
+          <p>{tool.bestFor}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verdict -->
+    <section class="cvs-section cvs-verdict-section" aria-labelledby="verdict-heading">
+      <h2 id="verdict-heading">Verdict</h2>
+      <div class="cvs-verdict-card">
+        <p>{tool.verdict}</p>
+      </div>
+    </section>
+
+    <!-- Using both together (conditional) -->
+    {tool.complementsClaudeCode && tool.complementReason && (
+      <section class="cvs-section cvs-together-section" aria-labelledby="together-heading">
+        <h2 id="together-heading">Using both together</h2>
+        <div class="cvs-together-card">
+          <p>{tool.complementReason}</p>
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ -->
+    <section class="cvs-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+      <div class="cvs-faq">
+        <div class="cvs-faq-item">
+          <h3>Is {tool.name} better than Claude Code?</h3>
+          <p>It depends on your workflow. {tool.name} is best for: {tool.bestFor}. Claude Code is best for terminal-driven, multi-step agentic workflows where context management and orchestration matter.</p>
+        </div>
+        <div class="cvs-faq-item">
+          <h3>Can I use {tool.name} with Claude Code?</h3>
+          <p>
+            {tool.complementsClaudeCode
+              ? `Yes. ${tool.complementReason}`
+              : `${tool.name} and Claude Code overlap significantly. ${tool.complementReason}`
+            }
+          </p>
+        </div>
+        <div class="cvs-faq-item">
+          <h3>How much does {tool.name} cost compared to Claude Code?</h3>
+          <p>{tool.name}: {tool.pricingMonthly}. Claude Code: $20+/month via Anthropic Max subscription, or pay-per-use via the Anthropic API.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back link -->
+    <div class="cvs-back">
+      <a href="/compare/" class="btn btn-secondary">&larr; See all comparisons</a>
+    </div>
+
+  </div>
+
+  <style>
+    /* ── BREADCRUMB ────────────────────────────────────────────────────────── */
+    .breadcrumb {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb .container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ── HERO ──────────────────────────────────────────────────────────────── */
+    .cvs-hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      background: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .cvs-tool-type {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      margin-bottom: var(--space-md);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cvs-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+    .cvs-tagline {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ── BODY LAYOUT ───────────────────────────────────────────────────────── */
+    .cvs-body {
+      padding-top: var(--space-3xl);
+      padding-bottom: var(--space-3xl);
+    }
+    .cvs-section {
+      margin-bottom: var(--space-3xl);
+    }
+    .cvs-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* ── TABLE ─────────────────────────────────────────────────────────────── */
+    .cvs-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+    }
+    .cvs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: var(--bg-secondary);
+    }
+    .cvs-table th,
+    .cvs-table td {
+      padding: var(--space-md) var(--space-lg);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .cvs-table th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .cvs-table tbody tr:last-child td { border-bottom: none; }
+    .cvs-table tbody tr:hover { background: var(--bg-tertiary); }
+    .cvs-table td:first-child { font-weight: 500; color: var(--text-secondary); }
+    .cvs-yes { color: var(--status-success); font-weight: 600; }
+    .cvs-no { color: #8b949e; }
+
+    /* ── TWO-COLUMN LAYOUT ─────────────────────────────────────────────────── */
+    .cvs-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    .cvs-strengths-card,
+    .cvs-weaknesses-card,
+    .cvs-bestfor-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+    }
+    .cvs-strengths-card h3,
+    .cvs-weaknesses-card h3,
+    .cvs-bestfor-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+    .cvs-strengths-card:first-child h3,
+    .cvs-weaknesses-card:first-child h3,
+    .cvs-bestfor-card:first-child h3 {
+      color: var(--accent);
+    }
+    .cvs-strengths-card ul,
+    .cvs-weaknesses-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .cvs-strengths-card ul li::before {
+      content: '+ ';
+      color: var(--status-success);
+      font-weight: 600;
+    }
+    .cvs-weaknesses-card ul li::before {
+      content: '- ';
+      color: #8b949e;
+      font-weight: 600;
+    }
+    .cvs-strengths-card ul li,
+    .cvs-weaknesses-card ul li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .cvs-bestfor-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── VERDICT ───────────────────────────────────────────────────────────── */
+    .cvs-verdict-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl) var(--space-2xl);
+    }
+    .cvs-verdict-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.975rem;
+      margin: 0;
+    }
+
+    /* ── USING BOTH TOGETHER ───────────────────────────────────────────────── */
+    .cvs-together-card {
+      background: color-mix(in srgb, var(--accent) 6%, var(--bg-secondary));
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-xl) var(--space-2xl);
+    }
+    .cvs-together-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.975rem;
+      margin: 0;
+    }
+
+    /* ── FAQ ───────────────────────────────────────────────────────────────── */
+    .cvs-faq {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .cvs-faq-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+    }
+    .cvs-faq-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .cvs-faq-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── BACK LINK ─────────────────────────────────────────────────────────── */
+    .cvs-back {
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .cvs-two-col {
+        grid-template-columns: 1fr;
+      }
+      .cvs-table th,
+      .cvs-table td {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+      }
+      .cvs-verdict-card,
+      .cvs-together-card,
+      .cvs-faq-item {
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+
+</Layout>

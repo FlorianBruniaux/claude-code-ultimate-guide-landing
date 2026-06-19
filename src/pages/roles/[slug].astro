@@ -1,0 +1,414 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ROLES, STATUS_CONFIG } from '../../data/ai-roles'
+
+export function getStaticPaths() {
+  const slugify = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+  return ROLES.map(role => ({
+    params: { slug: slugify(role.title) },
+    props: { role },
+  }))
+}
+
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+}
+
+const { role } = Astro.props
+const statusConf = STATUS_CONFIG[role.status]
+
+const pageUrl = `https://cc.bruniaux.com/roles/${slugify(role.title)}/`
+const top5Skills = role.skills.slice(0, 5).join(', ')
+const salaryAnswer = role.salary
+  ? `In 2026, a ${role.title} earns between ${role.salary.entry} at entry level and ${role.salary.senior} at senior level, with mid-level salaries around ${role.salary.mid}. ${role.salary.note ? role.salary.note + '.' : ''} US market figures, ±30%.`
+  : `The ${role.title} role is still emerging and salary data is not yet standardized. Expect compensation to develop as the role matures.`
+
+const title = `${role.title}: Skills, Salary & Career Path 2026 | Claude Code Guide`
+const metaDesc = `${role.title} role guide: ${role.mission.slice(0, 110)}. Salary range ${role.salary ? role.salary.entry + '–' + role.salary.senior : 'emerging'}, required skills, and how this role is growing in the AI era.`
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": `${role.title}: Skills, Salary & Career Path 2026`,
+    "description": role.mission,
+    "url": pageUrl,
+    "mainEntityOfPage": pageUrl,
+    "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
+    "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-06-01",
+    "inLanguage": "en",
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `What does a ${role.title} do?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": role.mission.slice(0, 200),
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `What skills does a ${role.title} need?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `The core skills for a ${role.title} are: ${top5Skills}.`,
+        },
+      },
+      {
+        "@type": "Question",
+        "name": `What is the salary for a ${role.title} in 2026?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": salaryAnswer,
+        },
+      },
+    ],
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cc.bruniaux.com/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Roles", "item": "https://cc.bruniaux.com/roles/" },
+      { "@type": "ListItem", "position": 3, "name": role.title, "item": pageUrl },
+    ],
+  },
+]
+---
+
+<Layout title={title} description={metaDesc} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate="2026-06-01">
+
+  <header class="page-hero page-hero--compact">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/roles/">AI Roles</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>{role.title}</span>
+      </nav>
+
+      <div class="role-hero-header">
+        <h1>{role.title}</h1>
+        <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
+          {statusConf.label}
+        </span>
+      </div>
+
+      <p class="tagline">{role.mission}</p>
+    </div>
+  </header>
+
+  <div class="container role-body">
+
+    <!-- Entry paths -->
+    <section class="role-section">
+      <h2>Who moves into this role</h2>
+      <ul class="entry-paths-list">
+        {role.entryPaths.map(path => (
+          <li>{path}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Skills -->
+    <section class="role-section">
+      <h2>Required skills</h2>
+      <div class="skills-grid">
+        {role.skills.map(skill => (
+          <div class="skill-item">
+            <span class="skill-bullet">→</span>
+            <span>{skill}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Salary -->
+    <section class="role-section">
+      <h2>Salary benchmarks (2026)</h2>
+      <p class="salary-disclaimer-inline">US market · ±30% · Base only. Europe runs 30–50% lower.</p>
+      {role.salary ? (
+        <div class="salary-grid">
+          <div class="salary-tier">
+            <span class="salary-tier-label">Entry</span>
+            <span class="salary-tier-value">{role.salary.entry}</span>
+          </div>
+          <div class="salary-tier salary-tier--mid">
+            <span class="salary-tier-label">Mid-level</span>
+            <span class="salary-tier-value">{role.salary.mid}</span>
+          </div>
+          <div class="salary-tier">
+            <span class="salary-tier-label">Senior</span>
+            <span class="salary-tier-value">{role.salary.senior}</span>
+          </div>
+        </div>
+      ) : (
+        <p class="salary-emerging-note">This role is still emerging. Salary data is not yet standardized across the market.</p>
+      )}
+      {role.salary?.note && (
+        <p class="salary-note-inline">{role.salary.note}</p>
+      )}
+    </section>
+
+    <!-- FAQ -->
+    <section class="role-section role-faq">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <h3>What does a {role.title} do?</h3>
+        <p>{role.mission}</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What skills does a {role.title} need?</h3>
+        <p>The core skills are: {top5Skills}.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the salary for a {role.title} in 2026?</h3>
+        <p>{salaryAnswer}</p>
+      </div>
+    </section>
+
+    <!-- Back link -->
+    <div class="role-back">
+      <a href="/roles/" class="back-link">← All AI Roles</a>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+.page-hero--compact {
+  padding-bottom: var(--space-xl);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.breadcrumb-sep {
+  color: var(--border);
+}
+
+.role-hero-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.role-hero-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.role-status-badge {
+  flex-shrink: 0;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  color: var(--status-color);
+  background: color-mix(in srgb, var(--status-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-color) 30%, transparent);
+  margin-top: 0.4rem;
+}
+
+.role-body {
+  max-width: 800px;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.role-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.role-section h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.entry-paths-list {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.entry-paths-list li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.skill-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.skill-bullet {
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.salary-disclaimer-inline {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+}
+
+.salary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.salary-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.salary-tier--mid {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--bg-tertiary);
+}
+
+.salary-tier-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.salary-tier-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.salary-tier--mid .salary-tier-value {
+  color: var(--accent);
+}
+
+.salary-note-inline {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.salary-emerging-note {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.role-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.role-faq h2 {
+  margin-bottom: var(--space-lg);
+}
+
+.faq-item {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.faq-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.role-back {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-light);
+}
+
+.back-link {
+  font-size: 0.875rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .salary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-hero-header h1 {
+    font-size: 1.5rem;
+  }
+}
+</style>

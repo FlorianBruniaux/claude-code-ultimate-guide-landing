@@ -3,6 +3,10 @@ import Layout from '../../layouts/Layout.astro'
 import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
 import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+}
+
 const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
 const description = 'Map of 19 AI engineering roles: Spec Engineer, Agent Identity Architect, AI Eval Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
 
@@ -29,7 +33,7 @@ const jsonLd = [
 const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate="2026-05-21">
 
   <!-- Hero -->
   <header class="page-hero">
@@ -121,8 +125,8 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
                   <span class="salary-value">Not yet standardized</span>
                 </div>
               )}
-              <a href={role.landingUrl} class="role-card-cta">
-                Read the guide →
+              <a href={`/roles/${slugify(role.title)}/`} class="role-card-cta">
+                Full profile →
               </a>
             </div>
           )
@@ -151,7 +155,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
               <tr>
                 <td class="matrix-background">{row.background}</td>
                 <td class="matrix-role">
-                  <a href={`#${row.roleId}`}>{row.role}</a>
+                  <a href={`/roles/${row.roleId}/`}>{row.role}</a>
                 </td>
                 <td class="matrix-timeline">{row.timeline}</td>
               </tr>

@@ -1,0 +1,774 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { EXAMPLES, type ExampleFile } from '../../data/examples-data'
+
+export function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+}
+
+function inferCategory(path: string): string {
+  const parts = path.split('/')
+  return parts[0]
+}
+
+function inferCategoryLabel(cat: string): string {
+  const labels: Record<string, string> = {
+    agents: 'Agent',
+    skills: 'Skill',
+    commands: 'Command',
+    'hooks-bash': 'Hook (Bash)',
+    'hooks-powershell': 'Hook (PowerShell)',
+    hooks: 'Hook',
+    config: 'Config',
+    memory: 'Memory',
+    'claude-md': 'CLAUDE.md',
+    rules: 'Rule',
+    scripts: 'Script',
+    'team-config': 'Team Config',
+    templates: 'Template',
+    'github-actions': 'GitHub Action',
+    workflows: 'Workflow',
+    plugins: 'Plugin',
+    integrations: 'Integration',
+    'mcp-configs': 'MCP Config',
+    modes: 'Mode',
+    'context-engineering': 'Context Engineering',
+    styles: 'Style',
+    'semantic-anchors': 'Semantic Anchor',
+  }
+  return labels[cat] ?? cat
+}
+
+function getInstallDir(path: string): string {
+  const first = path.split('/')[0]
+  const dirs: Record<string, string> = {
+    agents: '.claude/agents/',
+    skills: '.claude/skills/',
+    commands: '.claude/skills/',
+    hooks: '.claude/hooks/',
+    'hooks-bash': '.claude/hooks/',
+    config: '.claude/',
+    memory: '~/.claude/',
+    'claude-md': '~/.claude/',
+    rules: '.claude/rules/',
+    scripts: 'anywhere (run directly)',
+    'team-config': '.claude/',
+    templates: '.claude/',
+    'github-actions': '.github/workflows/',
+    workflows: '.claude/',
+    plugins: '.claude/plugins/',
+    integrations: '.claude/',
+    'mcp-configs': '~/.claude/',
+    modes: '~/.claude/',
+    'context-engineering': '.claude/',
+    styles: '~/.claude/',
+    'semantic-anchors': '.claude/',
+  }
+  return dirs[first] ?? '.claude/'
+}
+
+function isScript(path: string): boolean {
+  return path.endsWith('.sh') || path.endsWith('.ps1') || path.endsWith('.py') || path.endsWith('.js') || path.endsWith('.ts')
+}
+
+function getWhenToUse(name: string, description: string, path: string): string[] {
+  const n = name.toLowerCase()
+  const d = description.toLowerCase()
+  const cat = inferCategory(path)
+
+  // Agent-specific
+  if (n.includes('code-reviewer')) return [
+    'When you want every PR reviewed automatically against best practices before merge',
+    'When code review is a bottleneck and you need async coverage',
+    'When onboarding junior devs and want consistent feedback standards',
+  ]
+  if (n.includes('planner')) return [
+    'Before starting any multi-step implementation to get a structured plan first',
+    'When you want Opus-level reasoning during the planning phase without burning tokens in the execution phase',
+    'When a task spans multiple files and you need a read-only analysis before touching code',
+  ]
+  if (n.includes('architecture-reviewer')) return [
+    'Before merging large refactors that touch system boundaries or module contracts',
+    'When you want an independent architectural critique separate from code correctness review',
+    'When evaluating whether a new abstraction introduces coupling or violates SOLID',
+  ]
+  if (n.includes('security-auditor')) return [
+    'When shipping features that handle user authentication or sensitive data',
+    'Before any production deploy that touches permissions, sessions, or external APIs',
+    'When you want OWASP Top 10 coverage automated into your review pipeline',
+  ]
+  if (n.includes('devops') || n.includes('sre')) return [
+    'When diagnosing production incidents and you want structured FIRE-framework triage',
+    'When troubleshooting infrastructure issues across logs, metrics, and config',
+    'When you need a read-only diagnostic agent that cannot accidentally modify prod',
+  ]
+  if (n.includes('adr-writer')) return [
+    'After making a significant architectural decision that future devs need to understand',
+    'When your team wants a lightweight, git-based ADR process without heavyweight tooling',
+    'Before refactoring something established so the original reasoning is captured',
+  ]
+  if (n.includes('plan-challenger')) return [
+    'When a proposed implementation plan looks clean on paper but you want stress-testing',
+    'Before committing to a multi-sprint roadmap and want adversarial review',
+    'When checking whether edge cases, security, and cost implications have been considered',
+  ]
+  if (n.includes('loop-monitor')) return [
+    'In long-running agentic tasks where you want a watchdog detecting runaway loops',
+    'When Claude is running background automation and you want automatic circuit-breaker behavior',
+    'When token costs are a concern and infinite retry loops would be expensive',
+  ]
+  if (n.includes('anomaly-detector')) return [
+    'When you need statistical baselining to distinguish normal log noise from real threats',
+    'When alert fatigue is a problem and you want signal-to-noise improvement',
+    'As the first stage in a multi-agent security pipeline before risk classification',
+  ]
+
+  // Skills
+  if (n.includes('security-checklist') || n.includes('security-check') || n.includes('security-audit')) return [
+    'Before shipping any user-facing feature that handles auth, payments, or file uploads',
+    'When you want a fast OWASP Top 10 pass without a full dedicated security review',
+    'When adding new API endpoints and need to confirm input validation and auth checks are in place',
+  ]
+  if (n.includes('pdf-generator')) return [
+    'When generating reports, whitepapers, or client deliverables directly from Claude output',
+    'When your team produces structured Markdown and wants professional PDF exports without a design tool',
+    'When building automated document pipelines (CI-generated specs, changelogs, proposals)',
+  ]
+  if (n.includes('smart-explore')) return [
+    'When onboarding to an unfamiliar codebase and want a map before touching anything',
+    'When context windows are tight and you need AST-level exploration at 86-92% token savings',
+    'Before writing any feature to understand existing module structure and avoid duplication',
+  ]
+  if (n.includes('commit') && (cat === 'skills' || cat === 'commands')) return [
+    'Before every git commit to generate a well-scoped conventional commit message automatically',
+    'When working on a team with strict commit message conventions to avoid format inconsistencies',
+    'When you want git history that is readable as a changelog without extra tooling',
+  ]
+  if (n.includes('ship')) return [
+    'Before any production deploy to verify tests pass, linting is clean, and no obvious issues remain',
+    'When handing off a branch for review and want evidence it is deploy-ready',
+    'In a team setting where pre-deploy checklists are informal and often skipped',
+  ]
+  if (n === 'pr/' || n === 'pr.md') return [
+    'When creating a PR and want a structured description with context, changes, and test plan automatically generated',
+    'When your team enforces PR templates and you want the boilerplate filled in accurately',
+    'When working across multiple repos with different PR conventions and you want a consistent baseline',
+  ]
+  if (n.includes('pr-triage')) return [
+    'When your PR backlog has grown and you need a systematic 4-phase prioritization pass',
+    'When setting up worktrees to parallelize PR reviews without switching branches',
+    'When preparing for a sprint and need to decide which open PRs to close, merge, or escalate',
+  ]
+  if (n.includes('eval-rules')) return [
+    'When auditing .claude/rules/ to check glob patterns actually match project files',
+    'After a project restructure when rules may point to renamed or moved files',
+    'When rules are firing too broadly or never triggering at all',
+  ]
+  if (n.includes('eval-agents')) return [
+    'When you have multiple agents in .claude/agents/ and want to detect dispatch ambiguity between them',
+    'After adding new agents to an existing fleet to confirm descriptions are specific enough',
+    'When an orchestrator consistently picks the wrong agent for a task',
+  ]
+  if (n.includes('eval-hooks')) return [
+    'After configuring hooks to verify exit-code strategies and performance safety',
+    'When a hook never fires or seems to hang the agent silently',
+    'Before deploying a hook to a shared team config to confirm it is safe at production velocity',
+  ]
+  if (n.includes('ci-all') || (n.includes('ci') && n.includes('all'))) return [
+    'When you want a single command to run tests locally, type-check, push, and return the pipeline URL',
+    'Before opening a PR to make sure the full CI cycle passes without manual steps',
+    'When working on a monorepo and want consistent CI execution across different entry points',
+  ]
+  if (n.includes('land-and-deploy')) return [
+    'When merging a PR and want the full pipeline automated: merge, CI wait, deploy verification, canary',
+    'When deploying to staging and production and want a repeatable, auditable release sequence',
+    'When your current deploy process has manual steps that get skipped under time pressure',
+  ]
+  if (n.includes('handoff-create') || n.includes('create-handoff')) return [
+    'At the end of a work session to capture scope, discoveries, and next steps before context is lost',
+    'When handing work to a teammate or to a future Claude session on a long-running task',
+    'Before context windows get compacted and implementation decisions become hard to recover',
+  ]
+  if (n.includes('investigate')) return [
+    'Before writing any bug fix to find the root cause first without guessing',
+    'When a test is failing and the failure message alone is not enough to understand why',
+    'When debugging a system issue that spans multiple layers (DB, API, frontend)',
+  ]
+  if (n.includes('scaffold')) return [
+    'When you need a new agent, skill, command, hook, or rule and want the right template structure',
+    'When onboarding a new contributor who needs a guided template generator',
+    'When starting a new .claude/ config from scratch and want to avoid blank-file paralysis',
+  ]
+  if (n.includes('guide-recap')) return [
+    'When turning a CHANGELOG into LinkedIn posts, Twitter threads, or newsletter content',
+    'When you release new versions regularly and want to keep social presence updated without manual rewriting',
+    'When sharing internal release notes externally and need a tone-adjusted version',
+  ]
+  if (n.includes('release-notes')) return [
+    'When cutting a new release and need CHANGELOG.md, PR body, and Slack announcement from the same git history',
+    'When release notes are always written manually and inconsistently across team members',
+    'When preparing a hotfix announcement and time is short',
+  ]
+
+  // Commands
+  if (n.includes('review-pr')) return [
+    'When you want a structured code review with security, logic, and style dimensions covered systematically',
+    'When reviewing a PR from an unfamiliar contributor and want a thorough first-pass',
+    'When your team review process is inconsistent and you want a repeatable baseline',
+  ]
+  if (n.includes('git-worktree') && !n.includes('status') && !n.includes('remove') && !n.includes('clean')) return [
+    'When working on multiple features simultaneously without branch-switching overhead',
+    'When you want to test a branch in isolation while keeping main checked out in your primary terminal',
+    'Before running long-running tests on a feature branch without blocking your current working directory',
+  ]
+  if (n.includes('plan-start')) return [
+    'At the beginning of any non-trivial feature to build a product and technical plan before writing code',
+    'When you want a dynamic research team (planner, challenger, integrator agents) to align on scope',
+    'When stakeholders need a written spec before implementation starts',
+  ]
+  if (n.includes('plan-validate')) return [
+    'After drafting an implementation plan and before writing any code, to validate it from 2 angles',
+    'When you want specialist agents to probe assumptions and catch scope creep early',
+    'Before starting a sprint to ensure the planned approach is architecturally sound',
+  ]
+  if (n.includes('plan-execute')) return [
+    'When you have a validated plan and want TDD-driven parallel execution with automatic PR creation',
+    'When the implementation spans multiple modules and benefits from parallelized agent work',
+    'After plan-start and plan-validate to complete the full planning pipeline',
+  ]
+  if (n.includes('autoresearch')) return [
+    'When you want Claude to autonomously scan codebase metrics, run experiments, and iterate without manual prompting',
+    'When exploring whether a refactoring approach measurably improves a specific metric',
+    'When you want continuous improvement loops on a defined problem over multiple iterations',
+  ]
+  if (n.includes('check-cache-bugs')) return [
+    'When you suspect prompt caching is not working correctly in your Claude Code setup',
+    'After upgrading Claude Code to verify sentinel flags and attribution headers are present',
+    'When --resume behavior is inconsistent and you want a diagnostic pass before filing a bug',
+  ]
+
+  // Hooks
+  if (n.includes('dangerous-actions-blocker')) return [
+    'As a safety net to block destructive commands (rm -rf, DROP TABLE, force-push) before they execute',
+    'When running Claude in autonomous mode and want hard stops on irreversible operations',
+    'When team members share a Claude Code config and you need consistent guardrails across all sessions',
+  ]
+  if (n.includes('prompt-injection-detector')) return [
+    'When processing untrusted external content that might contain embedded instructions targeting Claude',
+    'When Claude reads web pages, emails, or user-submitted text that could carry injection payloads',
+    'As a first-line defense before any tool call that processes external data sources',
+  ]
+  if (n.includes('auto-rename-session')) return [
+    'When running parallel Claude sessions and need descriptive tab titles to tell them apart',
+    'When you lose track of what each session was working on after switching contexts',
+    'When you want session history that is browsable by topic rather than by timestamp',
+  ]
+  if (n.includes('session-summary')) return [
+    'At the end of a work session to get a full analytics report covering tokens, tool calls, and key decisions',
+    'When tracking productivity patterns across multiple Claude sessions over time',
+    'When you want a configurable end-of-session digest with 15 reportable sections',
+  ]
+  if (n.includes('smart-suggest')) return [
+    'When you want Claude to recommend relevant commands, agents, or skills based on what you just typed',
+    "When a team has a large .claude/ library and members don't know which template fits their task",
+    'When onboarding and you want proactive guidance rather than having to search the template catalog manually',
+  ]
+  if (n.includes('bm25-suggest')) return [
+    'When smart-suggest feels too slow and you want a self-calibrating BM25 ranking with zero dependencies',
+    'When your skill library has grown large enough that naive keyword matching misses intent',
+    'When you want routing accuracy to improve automatically as usage data accumulates',
+  ]
+
+  // Config
+  if (n.includes('sandbox-native')) return [
+    'When hardening a Claude Code setup and want native sandbox isolation enforced by default',
+    'When running Claude in a shared environment where network and filesystem access should be scoped',
+    'Before giving Claude access to production credentials and needing documented permission boundaries',
+  ]
+
+  // CLAUDE.md
+  if (n.includes('session-naming')) return [
+    'When running multiple parallel Claude Code sessions and need each tab to have a meaningful title',
+    'When reviewing session history and timestamps alone are not enough to identify what each session did',
+    'When you want automatic rename behavior without having to type /rename after every session start',
+  ]
+
+  // Rules
+  if (n.includes('first-principles')) return [
+    'When you want Claude to reason from fundamentals rather than pattern-matching to familiar solutions',
+    'When solving a novel problem where conventional approaches have already failed',
+    'When you want deliberate reasoning traces that expose assumptions before reaching conclusions',
+  ]
+
+  // Scripts
+  if (n.includes('cc-sessions')) return [
+    'When searching across past Claude Code sessions by topic, date, or content to resume earlier work',
+    'When the session list is long enough that manual browsing is slower than keyword search',
+    'When you want incremental indexing so searches stay fast even with hundreds of stored sessions',
+  ]
+  if (n.includes('smart-suggest-roi')) return [
+    'When measuring whether the smart-suggest hook is actually changing how devs work',
+    'When justifying the overhead cost of a suggestion hook by tracking follow-through rates',
+    'After 2 weeks of usage to calibrate whether suggestion relevance needs tuning',
+  ]
+
+  // GitHub Actions
+  if (n.includes('claude-code-review')) return [
+    'When you want automated AI code review on every PR with an anti-hallucination protocol',
+    'When your team is small and formal code review is a bottleneck slowing down merges',
+    'When you want a consistent review checklist applied to every PR without reviewer fatigue',
+  ]
+
+  // Plugins
+  if (n.includes('security-suite')) return [
+    'When you want the full security stack (auditor agent + commands + gate hook) installed in one step',
+    'When starting a new project that handles sensitive data and you want security coverage from day one',
+    'When a security audit revealed gaps and you want automated checks added to the development loop',
+  ]
+
+  // Modes
+  if (n.includes('mode_learning') || n.includes('learning')) return [
+    'When learning a new framework or language and want just-in-time explanations as you code',
+    'When onboarding to a codebase and want Claude to explain patterns on first encounter rather than assuming familiarity',
+    'When mentoring junior devs and want Claude to explain its reasoning rather than just producing output',
+  ]
+
+  // Context Engineering
+  if (n.includes('skeleton-template')) return [
+    'When starting a new project and want a minimal context file that gives Claude the structural overview',
+    'When context quality is inconsistent across sessions and you want a repeatable baseline document',
+    'When token budgets are tight and you need project structure in under 1K tokens',
+  ]
+
+  // Semantic Anchors
+  if (n.includes('anchor-catalog')) return [
+    'When prompts produce vague or inconsistent outputs and you want a vocabulary for precise instructions',
+    'When building a team prompt library and want shared terminology that reliably triggers intended behaviors',
+    'When Claude misinterprets ambiguous words and you want concrete alternatives backed by examples',
+  ]
+
+  // Fallback based on category
+  if (cat === 'agents') return [
+    `When you want a specialized AI persona focused specifically on ${description.toLowerCase()}`,
+    'When the default Claude context needs to be scoped to a single well-defined role',
+    'When running multi-agent workflows and need a dedicated subagent for this responsibility',
+  ]
+  if (cat === 'skills' || cat === 'commands') return [
+    `When you need ${description.toLowerCase()} on demand via a slash command`,
+    'When this pattern repeats often enough to justify a reusable, versioned command',
+    'When sharing a .claude/ config across a team and want this capability available to everyone',
+  ]
+  if (cat === 'hooks-bash' || cat === 'hooks') return [
+    `When you want ${description.toLowerCase()} triggered automatically on every relevant Claude action`,
+    'When the behavior needs to run without requiring a manual prompt each time',
+    'When adding guardrails or automation that should be invisible to the daily workflow',
+  ]
+
+  return [
+    `When you need ${description.toLowerCase()}`,
+    'When this pattern appears repeatedly in your workflow and deserves a reusable template',
+    'When sharing Claude Code config across a team and want this capability standardized',
+  ]
+}
+
+// Flatten all examples
+type FlatExample = ExampleFile & { categoryKey: string }
+
+const allExamples: FlatExample[] = Object.entries(EXAMPLES).flatMap(([categoryKey, category]) =>
+  category.files.map((file) => ({ ...file, categoryKey }))
+)
+
+export function getStaticPaths() {
+  const allEx: FlatExample[] = Object.entries(EXAMPLES).flatMap(([categoryKey, category]) =>
+    category.files.map((file) => ({ ...file, categoryKey }))
+  )
+  const favs = allEx.filter((ex) => ex.favorite)
+  const nonFavs = allEx.filter((ex) => !ex.favorite && ex.name.length < 30)
+  const top = [...favs, ...nonFavs.slice(0, 50 - favs.length)]
+
+  return top.map((ex) => ({
+    params: { slug: slugify(ex.name) },
+    props: { example: ex },
+  }))
+}
+
+const { example } = Astro.props as { example: FlatExample }
+
+const slug = slugify(example.name)
+const categoryKey = inferCategory(example.path)
+const categoryLabel = inferCategoryLabel(categoryKey)
+const installDir = getInstallDir(example.path)
+const script = isScript(example.path)
+const whenToUse = getWhenToUse(example.name, example.description, example.path)
+
+// Related: same category folder, excluding self, up to 4
+const related = allExamples
+  .filter(
+    (ex) =>
+      ex.name !== example.name &&
+      ex.favorite &&
+      inferCategory(ex.path) === categoryKey
+  )
+  .slice(0, 4)
+
+const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/'
+
+const title = `${example.name} | Claude Code Templates`
+const description = `${example.name}: ${example.description}. Ready-to-use Claude Code template. Copy and adapt for your .claude/ setup.`
+
+const jsonLd = [
+  {
+    "@type": "HowTo",
+    "name": `How to use: ${example.name}`,
+    "description": example.description,
+    "step": [
+      { "@type": "HowToStep", "text": "Copy the template file from GitHub" },
+      { "@type": "HowToStep", "text": `Place it in the appropriate ${installDir} subdirectory` },
+      { "@type": "HowToStep", "text": "Adapt the content to your project's specific needs" },
+    ],
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cc.bruniaux.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Templates", "item": "https://cc.bruniaux.com/examples/" },
+      { "@type": "ListItem", "position": 3, "name": example.name, "item": `https://cc.bruniaux.com/examples/${slug}/` },
+    ],
+  },
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="ex-container">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/examples/">Templates</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{example.name}</span>
+    </div>
+  </nav>
+
+  <header class="ex-hero">
+    <div class="ex-container">
+      <div class="ex-meta">
+        <span class="cat-badge">{categoryLabel}</span>
+        {example.favorite && <span class="fav-badge" title="Recommended">Recommended</span>}
+      </div>
+      <h1>{example.name}</h1>
+      <p class="ex-description">{example.description}</p>
+      <div class="ex-actions">
+        <a
+          href={GITHUB_BASE + example.path}
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          View on GitHub
+        </a>
+        <a href="/examples/" class="btn btn-secondary">
+          ← All 271 templates
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="ex-main">
+    <div class="ex-container">
+
+      <section class="ex-section">
+        <h2>When to use this</h2>
+        <ul class="when-list">
+          {whenToUse.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="ex-section">
+        <h2>How to use</h2>
+        <ol class="how-list">
+          <li>
+            Open the template on GitHub and copy its content:
+            <code class="path-inline">{example.path}</code>
+          </li>
+          <li>
+            Place the file inside <code class="path-inline">{installDir}</code> in your project (or globally in <code class="path-inline">~/.claude/</code> to share across all projects).
+            {script && (
+              <span> For shell scripts, make it executable: <code class="path-inline">chmod +x {example.name}</code></span>
+            )}
+          </li>
+          <li>
+            {example.path.endsWith('.md') || example.path.endsWith('.md')
+              ? 'Edit the Markdown content to match your project conventions, team constraints, and specific context.'
+              : example.path.endsWith('.sh') || example.path.endsWith('.ps1')
+              ? 'Review each command in the script, adjust paths and thresholds for your environment, then test it in a safe context before wiring it into hooks.'
+              : example.path.endsWith('.json') || example.path.endsWith('.yaml') || example.path.endsWith('.yml')
+              ? 'Replace placeholder values with your actual keys, endpoints, or preferences. Validate with a JSON/YAML linter before committing.'
+              : 'Read through the file, identify the sections that need project-specific values, and update them before committing.'}
+          </li>
+        </ol>
+      </section>
+
+      {related.length > 0 && (
+        <section class="ex-section">
+          <h2>Related templates</h2>
+          <ul class="related-list">
+            {related.map((rel) => (
+              <li>
+                <a href={`/examples/${slugify(rel.name)}/`} class="related-link">
+                  <span class="related-name">{rel.name}</span>
+                  <span class="related-desc">{rel.description}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <div class="back-link">
+        <a href="/examples/">← Browse all 271 templates</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .breadcrumb {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .breadcrumb .ex-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb [aria-current="page"] { color: var(--text-secondary); }
+
+  .ex-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .ex-hero {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ex-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cat-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .fav-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, #f85149 12%, transparent);
+    color: #f85149;
+    border: 1px solid color-mix(in srgb, #f85149 30%, transparent);
+  }
+
+  .ex-hero h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.25rem, 3.5vw, 1.875rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+    line-height: 1.25;
+    word-break: break-all;
+  }
+
+  .ex-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  .ex-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    border-color: var(--border);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+
+  .ex-main {
+    padding: 2.5rem 0 4rem;
+  }
+
+  .ex-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .ex-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  .when-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .when-list li {
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 0.5rem 0.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .how-list {
+    padding: 0;
+    margin: 0;
+    counter-reset: how-counter;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .how-list li {
+    counter-increment: how-counter;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .how-list li::before {
+    content: counter(how-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .path-inline {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    padding: 0.1em 0.4em;
+    border-radius: 0.25rem;
+    color: var(--accent);
+    word-break: break-all;
+  }
+
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .related-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .related-link:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 4%, transparent);
+  }
+
+  .related-name {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .related-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-link a {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .back-link a:hover { color: var(--accent); }
+</style>

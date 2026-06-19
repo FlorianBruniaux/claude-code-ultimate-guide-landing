@@ -221,6 +221,17 @@ const jsonLd = [
 
     .file-name:hover { text-decoration: underline; }
 
+    .details-link {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 0.5rem;
+      opacity: 0.8;
+      transition: color 0.15s, opacity 0.15s;
+    }
+    .details-link:hover { color: var(--accent); opacity: 1; }
+
     .favorite-badge {
       color: #f85149;
       font-size: 0.9rem;
@@ -319,6 +330,25 @@ const jsonLd = [
     const RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/examples/';
     const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/';
 
+    function slugify(str) {
+      return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+    }
+
+    // Slugs for templates that have individual pages at /examples/[slug]/
+    const PAGES_WITH_SLUG = new Set([
+      'codereviewermd','plannermd','architecturereviewermd','securitychecklistmd','pdfgeneratormd',
+      'guiderecap','prtriage','smartexploremd','evalrules','evalagents','evalhooks',
+      'commit','ship','pr','ciall','landanddeploy','handoffcreate','investigate','scaffold',
+      'commitmd','prmd','releasenotesmd','gitworktreemd','securitycheckmd','checkcachebugsmd',
+      'planstartmd','planvalidatemd','planexecutemd','autoresearchmd','investigatemd',
+      'landanddeploymd','scaffoldmd','ciallmd',
+      'dangerousactionsblockersh','promptinjectiondetectorsh','autorenamesessionsh',
+      'sessionsummarysh','smartsuggestsh','bm25suggestjs',
+      'sandboxnativejson','sessionnamingmd','firstprinciplesmd',
+      'ccsessionspy','smartsuggestroipy','claudecodereviewyml',
+      'securitysuite','modelearningmd','skeletontemplatemd','anchorcatalogmd',
+    ]);
+
     let contentCache = {};
     let expandedCategories = new Set();
 
@@ -384,7 +414,12 @@ const jsonLd = [
         hasResults = true;
         const isExpanded = expandedCategories.has(categoryId) || filter !== '';
         const categoryName = category.label || categoryId.replace(/-/g, ' ').replace(/(^|\s)\S/g, t => t.toUpperCase());
-        html += `<div class="category ${isExpanded ? 'expanded' : ''}" data-category="${categoryId}"><div class="category-header" data-toggle-category="${categoryId}"><div class="category-title"><span class="category-icon">${category.icon}</span><span>${categoryName}</span><span class="category-count">${filteredFiles.length}</span></div><span class="category-toggle">&#9660;</span></div><div class="category-content"><div class="category-description">${category.description}</div><ul class="file-list">${filteredFiles.map(file => `<li class="file-item" data-path="${file.path}"><div class="file-header"><div class="file-info"><a class="file-name" href="${GITHUB_BASE + file.path}" target="_blank" rel="noopener">${file.name}</a>${file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : ''}<div class="file-description">${file.description}</div></div><div class="file-actions"><button class="btn btn-view" data-action="view" data-path="${file.path}">View</button><button class="btn btn-copy" data-action="copy" data-path="${file.path}">Copy</button><button class="btn btn-download" data-action="download" data-path="${file.path}" data-filename="${file.name}" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>`).join('')}</ul></div></div>`;
+        html += '<div class="category ' + (isExpanded ? 'expanded' : '') + '" data-category="' + categoryId + '"><div class="category-header" data-toggle-category="' + categoryId + '"><div class="category-title"><span class="category-icon">' + category.icon + '</span><span>' + categoryName + '</span><span class="category-count">' + filteredFiles.length + '</span></div><span class="category-toggle">&#9660;</span></div><div class="category-content"><div class="category-description">' + category.description + '</div><ul class="file-list">' + filteredFiles.map(file => {
+          const fileSlug = slugify(file.name);
+          const hasPage = PAGES_WITH_SLUG.has(fileSlug);
+          const detailsLink = hasPage ? '<a class="details-link" href="/examples/' + fileSlug + '/" title="View template details">Details →</a>' : '';
+          return '<li class="file-item" data-path="' + file.path + '"><div class="file-header"><div class="file-info"><a class="file-name" href="' + GITHUB_BASE + file.path + '" target="_blank" rel="noopener">' + file.name + '</a>' + (file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : '') + detailsLink + '<div class="file-description">' + file.description + '</div></div><div class="file-actions"><button class="btn btn-view" data-action="view" data-path="' + file.path + '">View</button><button class="btn btn-copy" data-action="copy" data-path="' + file.path + '">Copy</button><button class="btn btn-download" data-action="download" data-path="' + file.path + '" data-filename="' + file.name + '" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>';
+        }).join('') + '</ul></div></div>';
       });
       catalogEl.innerHTML = html;
       noResultsEl.style.display = hasResults ? 'none' : 'block';

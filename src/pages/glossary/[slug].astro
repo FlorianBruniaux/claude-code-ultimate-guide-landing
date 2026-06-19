@@ -1,0 +1,311 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { glossaryTerms, categoryColors } from '../../data/glossary-data'
+
+export function getStaticPaths() {
+  const slugify = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+  return glossaryTerms.map(term => ({
+    params: { slug: slugify(term.term) },
+    props: { term },
+  }))
+}
+
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+}
+
+const { term } = Astro.props
+const slug = slugify(term.term)
+
+const relatedTerms = glossaryTerms
+  .filter(t => t.subcategory === term.subcategory && t.term !== term.term)
+  .slice(0, 5)
+
+const truncatedDef = term.definition.length > 130
+  ? term.definition.slice(0, 130).trimEnd() + '...'
+  : term.definition
+
+const pageTitle = `${term.term} | Claude Code Glossary`
+const pageDescription = `${term.term}: ${truncatedDef} From the Claude Code glossary, 173 AI engineering and agentic coding terms.`
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "name": term.term,
+    "description": term.definition,
+    "inDefinedTermSet": {
+      "@type": "DefinedTermSet",
+      "name": "Claude Code Glossary",
+      "url": "https://cc.bruniaux.com/glossary/"
+    },
+    "url": `https://cc.bruniaux.com/glossary/${slug}/`
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cc.bruniaux.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://cc.bruniaux.com/glossary/" },
+      { "@type": "ListItem", "position": 3, "name": term.term, "item": `https://cc.bruniaux.com/glossary/${slug}/` }
+    ]
+  }
+]
+---
+
+<Layout title={pageTitle} description={pageDescription} ogType="article" jsonLd={jsonLd}>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/glossary/">Glossary</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{term.term}</span>
+    </div>
+  </nav>
+
+  <!-- Term page -->
+  <main class="term-page">
+    <div class="container">
+
+      <!-- Header -->
+      <header class="term-header">
+        <div class="term-badges">
+          <span class={`badge ${categoryColors[term.category] ?? 'badge-default'}`}>{term.category}</span>
+          <span class="badge badge-sub">{term.subcategory}</span>
+        </div>
+        <h1>{term.term}</h1>
+        <p class="term-definition">{term.definition}</p>
+        {term.link && (
+          <a
+            href={term.link}
+            class="learn-more-link"
+            target={term.link.startsWith('http') ? '_blank' : undefined}
+            rel={term.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            Learn more in the guide
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        )}
+      </header>
+
+      <!-- Related terms -->
+      {relatedTerms.length > 0 && (
+        <section class="related-section">
+          <h2 class="related-heading">Related terms in {term.subcategory}</h2>
+          <ul class="related-list">
+            {relatedTerms.map(t => (
+              <li>
+                <a href={`/glossary/${slugify(t.term)}/`} class="related-item">
+                  <span class="related-term">{t.term}</span>
+                  <span class="related-def">{t.definition.length > 100 ? t.definition.slice(0, 100).trimEnd() + '...' : t.definition}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Back link -->
+      <div class="back-link-wrap">
+        <a href="/glossary/" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          See all 173 terms
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+</Layout>
+
+<style>
+  .breadcrumb {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.85rem;
+  }
+  .breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-secondary);
+  }
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover { color: var(--color-accent); }
+  .breadcrumb [aria-current="page"] { color: var(--color-text-primary); }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .term-page {
+    padding: 3rem 0 5rem;
+  }
+
+  /* Header */
+  .term-header {
+    margin-bottom: 3rem;
+  }
+  .term-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    margin: 0 0 1.25rem;
+  }
+  .term-definition {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin: 0 0 1.5rem;
+    max-width: 680px;
+  }
+  .learn-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .learn-more-link:hover {
+    background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    border-color: var(--color-accent);
+  }
+
+  /* Badges */
+  .badge {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-sub {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+  .badge-cc       { background: #dbeafe; color: #1e40af; }
+  .badge-ai       { background: #fce7f3; color: #9d174d; }
+  .badge-workflow { background: #d1fae5; color: #065f46; }
+  .badge-security { background: #fee2e2; color: #991b1b; }
+  .badge-models   { background: #ede9fe; color: #5b21b6; }
+  .badge-ecosystem { background: #fef3c7; color: #92400e; }
+  .badge-methodology { background: #f3f4f6; color: #374151; }
+  .badge-arch     { background: #e0f2fe; color: #075985; }
+  .badge-ops      { background: #f0fdf4; color: #14532d; }
+  .badge-default  { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+
+  :global(.dark) .badge-cc       { background: rgba(30,58,95,0.8);  color: #93c5fd; }
+  :global(.dark) .badge-ai       { background: rgba(74,25,66,0.8);  color: #f9a8d4; }
+  :global(.dark) .badge-workflow { background: rgba(6,78,59,0.8);   color: #6ee7b7; }
+  :global(.dark) .badge-security { background: rgba(69,10,10,0.8);  color: #fca5a5; }
+  :global(.dark) .badge-models   { background: rgba(46,16,101,0.8); color: #c4b5fd; }
+  :global(.dark) .badge-ecosystem { background: rgba(69,26,3,0.8);  color: #fcd34d; }
+  :global(.dark) .badge-methodology { background: rgba(31,41,55,0.8); color: #d1d5db; }
+  :global(.dark) .badge-arch     { background: rgba(12,74,110,0.8); color: #7dd3fc; }
+  :global(.dark) .badge-ops      { background: rgba(5,46,22,0.8);   color: #86efac; }
+
+  /* Related terms */
+  .related-section {
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .related-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin: 0 0 1rem;
+  }
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .related-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: background 0.1s;
+  }
+  .related-list li:last-child .related-item {
+    border-bottom: none;
+  }
+  .related-item:hover {
+    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  }
+  .related-term {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1.3;
+  }
+  .related-def {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Back link */
+  .back-link-wrap {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.12s;
+  }
+  .back-link:hover { color: var(--color-accent); }
+  .back-link svg { color: currentColor; }
+
+  @media (max-width: 640px) {
+    .term-page { padding: 2rem 0 4rem; }
+    h1 { font-size: 1.5rem; }
+    .term-definition { font-size: 0.95rem; }
+  }
+</style>
