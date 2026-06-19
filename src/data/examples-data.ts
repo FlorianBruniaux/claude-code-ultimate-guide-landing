@@ -224,6 +224,7 @@ export const EXAMPLES = {
             { name: "notification.sh", path: "hooks/bash/notification.sh", description: "macOS contextual sound alerts" },
             { name: "pre-commit-evaluator.sh", path: "hooks/bash/pre-commit-evaluator.sh", description: "LLM-as-a-Judge pre-commit validation" },
             { name: "smart-suggest.sh", path: "hooks/bash/smart-suggest.sh", description: "Suggest relevant commands/agents based on prompt intent", favorite: true },
+            { name: "bm25-suggest.js", path: "hooks/bm25-routing/bm25-suggest.js", description: "Self-calibrating BM25 skill routing hook (Node.js, zero deps)", favorite: true },
             { name: "governance-enforcement-hook.sh", path: "hooks/bash/governance-enforcement-hook.sh", description: "Enforce project config, MCP registry, and data classification policies" },
             { name: "identity-reinjection.sh", path: "hooks/bash/identity-reinjection.sh", description: "Re-inject agent identity after context compaction" }
         ]

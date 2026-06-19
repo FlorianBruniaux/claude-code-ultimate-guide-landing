@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'New workflow: Smart-Suggest BM25 Skill Routing',
+    date: 'Jun 19, 2026',
+    description: 'New workflow guide documenting a self-calibrating BM25 lexical scoring hook for UserPromptSubmit. Scores every prompt against a curated skill corpus (positive/negative examples per skill), auto-calibrates per-skill thresholds via F-beta leave-one-out cross-validation, and injects ranked suggestions as additionalContext. Complements regex-based routing with broad natural-language coverage. Includes a runnable Node.js example with zero npm dependencies.',
+    link: 'https://cc.bruniaux.com/guide/workflows/smart-suggest-routing/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code v2.1.181',
     date: 'Jun 18, 2026',
