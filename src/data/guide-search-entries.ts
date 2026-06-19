@@ -796,6 +796,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-smart-suggest-routing",
+    "title": "Smart Suggest Routing",
+    "keywords": "smart suggest routing guide workflows smart suggest routing",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/smart-suggest-routing/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-smart-suggest-routing-example",
+    "title": "Smart Suggest Routing Example",
+    "keywords": "smart suggest routing example examples hooks bm25 routing",
+    "category": "Examples > Hooks",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bm25-routing/",
+    "source": "guide"
+  },
+  {
     "id": "guide-identity-reinjection-example",
     "title": "Identity Reinjection Example",
     "keywords": "identity reinjection example examples hooks bash identity reinjection",
