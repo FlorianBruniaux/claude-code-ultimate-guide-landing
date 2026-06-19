@@ -10,6 +10,23 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+// Per-page lastmod dates for key landing pages.
+// Guide pages (140+) are omitted, they rebuild together and all share the build date.
+const PAGE_DATES = {
+  'https://cc.bruniaux.com/': '2026-06-19',
+  'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
+  'https://cc.bruniaux.com/faq/': '2026-06-08',
+  'https://cc.bruniaux.com/releases/': '2026-06-19',
+  'https://cc.bruniaux.com/examples/': '2026-06-08',
+  'https://cc.bruniaux.com/quiz/': '2026-06-08',
+  'https://cc.bruniaux.com/security/': '2026-06-18',
+  'https://cc.bruniaux.com/ecosystem/': '2026-03-13',
+  'https://cc.bruniaux.com/methodologies/': '2026-04-01',
+  'https://cc.bruniaux.com/learning/': '2026-04-15',
+  'https://cc.bruniaux.com/team-metrics/': '2026-05-01',
+  'https://cc.bruniaux.com/context-engineering/': '2026-05-15',
+}
+
 /**
  * Generate sidebar items for "Core Guides" by reading only the flat .md files
  * in src/content/docs/guide/ — excludes index.md and subdirectories.
@@ -159,7 +176,12 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     sitemap({
       serialize(item) {
-        const lastmod = new Date().toISOString().split('T')[0]
+        if (item.url.includes('/sitemap/')) return undefined
+        if (item.url.includes('/ultimate-guidefr/')) return undefined
+
+        const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
+        const lastmod = PAGE_DATES[normalizedUrl] ?? new Date().toISOString().split('T')[0]
+
         if (item.url === 'https://cc.bruniaux.com/') {
           return { ...item, priority: 1.0, changefreq: 'weekly', lastmod }
         }
