@@ -1,0 +1,327 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'CLAUDE.md Best Practices 2026 | Claude Code Guide'
+
+const codeTemplate = `# Project Context
+
+## Stack
+- Node 22 + TypeScript (strict)
+- PostgreSQL 16, Prisma ORM
+- Next.js 15 (App Router)
+- pnpm workspace
+
+## Commands
+- Dev: \`pnpm dev\`
+- Test: \`pnpm test\`
+- Build: \`pnpm build\`
+- Typecheck: \`pnpm tsc --noEmit\`
+
+## Conventions
+- Components: PascalCase, colocated with tests
+- API routes: snake_case, always return \`{data, error}\`
+- No \`any\` types, use \`unknown\` and narrow
+- Migrations: never edit existing, always create new
+
+## Architecture
+- Business logic lives in \`src/lib/\`, never in \`src/app/\`
+- Database access only through repository pattern in \`src/repositories/\`
+- Tests are colocated: \`Button.test.tsx\` next to \`Button.tsx\`
+`
+const description = 'Practical CLAUDE.md best practices: project memory structure, 3-level hierarchy, what to include, anti-patterns, and real templates. From daily Claude Code use.'
+
+const jsonLd = [
+  {
+    "@type": "TechArticle",
+    "headline": "CLAUDE.md Best Practices 2026",
+    "description": "Practical guide to CLAUDE.md: project memory structure, 3-level hierarchy, what to include, anti-patterns, and production-ready templates for Claude Code.",
+    "url": "https://cc.bruniaux.com/claude-md-best-practices/",
+    "mainEntityOfPage": "https://cc.bruniaux.com/claude-md-best-practices/",
+    "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
+    "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
+    "datePublished": "2026-06-19",
+    "dateModified": "2026-06-19",
+    "inLanguage": "en",
+    "keywords": "CLAUDE.md best practices, claude code project memory, CLAUDE.md template, claude code configuration, CLAUDE.md examples, CLAUDE.md guide 2026",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Software developers using Claude Code CLI"
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should I put in CLAUDE.md?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CLAUDE.md should contain: your tech stack and key dependencies, project-specific commands (build, test, dev), coding conventions (linting rules, naming standards), architecture decisions (folder structure, key patterns), and anything Claude asks repeatedly that you find yourself typing every session. Do NOT include: general coding best practices (Claude already knows these), content that belongs in README, or per-developer personal preferences (use CLAUDE.local.md for those)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 3-level CLAUDE.md hierarchy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Code reads CLAUDE.md files at 3 levels: 1) ~/.claude/CLAUDE.md, global rules that apply to every project (your personal preferences, tools you always use); 2) project root CLAUDE.md, team-shared context committed to git (tech stack, conventions, commands); 3) .claude/CLAUDE.local.md, personal project overrides, gitignored (local paths, personal shortcuts). Each level is additive. Lower files override higher ones for the same setting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long should CLAUDE.md be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Project-level CLAUDE.md: 50-200 lines is the sweet spot. Shorter means Claude lacks critical context. Longer means Claude wastes tokens on noise every session. Global CLAUDE.md: up to 400 lines is reasonable since it's amortized across all projects. If your CLAUDE.md exceeds 500 lines, it's probably including content that should live elsewhere (README, API docs, architecture diagrams)."
+        }
+      }
+    ]
+  }
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">3-level hierarchy</span>
+        <span class="hero-badge hero-badge--secondary">From daily practice</span>
+      </div>
+      <h1>CLAUDE.md Best Practices</h1>
+      <p class="tagline">CLAUDE.md is Claude Code's memory system. Get it right and Claude stops asking the same questions every session. Get it wrong and you waste tokens on noise.</p>
+      <div class="cta-buttons">
+        <a href="/examples/" class="btn btn-primary">Browse 271 Templates →</a>
+        <a href="/cheatsheet/" class="btn btn-secondary">Cheatsheet</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container content-page">
+
+    <section class="content-section">
+      <h2>The 3-Level Hierarchy</h2>
+      <p>Claude Code reads CLAUDE.md files at three levels, each additive:</p>
+
+      <div class="hierarchy-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Path</th>
+              <th>Scope</th>
+              <th>Git</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Global</td>
+              <td><code>~/.claude/CLAUDE.md</code></td>
+              <td>Every project on your machine</td>
+              <td>No (personal)</td>
+            </tr>
+            <tr>
+              <td>Project</td>
+              <td><code>{"{project-root}"}/CLAUDE.md</code></td>
+              <td>Shared team context</td>
+              <td>Yes (committed)</td>
+            </tr>
+            <tr>
+              <td>Personal</td>
+              <td><code>.claude/CLAUDE.local.md</code></td>
+              <td>Personal overrides, local paths</td>
+              <td>No (gitignored)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Claude reads all three files at session start and merges them. Lower levels override higher ones for the same setting. Your team's shared conventions live in project-level CLAUDE.md; your personal shortcuts live in CLAUDE.local.md.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>What to Include</h2>
+
+      <h3>Always include</h3>
+      <ul>
+        <li><strong>Tech stack</strong>: language versions, key frameworks, database. <em>"Node 22, TypeScript strict, PostgreSQL 16, tRPC."</em></li>
+        <li><strong>Build commands</strong>: how to run, test, and build. Claude will run these when needed. <em>"pnpm dev / pnpm test / pnpm build"</em></li>
+        <li><strong>Code conventions</strong>: linting rules, naming standards, file organization. Anything you enforce in CI.</li>
+        <li><strong>Architecture decisions</strong>: folder structure, key patterns, what NOT to do. <em>"Never put business logic in API routes."</em></li>
+        <li><strong>Repeated context</strong>: anything you find yourself typing every new session.</li>
+      </ul>
+
+      <h3>Never include</h3>
+      <ul>
+        <li>General coding best practices, Claude knows these already</li>
+        <li>Content that belongs in README (setup instructions for humans)</li>
+        <li>API documentation, link to it instead of pasting it</li>
+        <li>Per-developer personal preferences, use CLAUDE.local.md</li>
+        <li>Anything that changes every week, stale instructions confuse Claude</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Minimal Working Template</h2>
+
+      <p>This is the smallest CLAUDE.md that covers the essentials for a TypeScript project:</p>
+
+      <pre><code set:html={codeTemplate.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')} />
+
+      <p>Start small. Add to CLAUDE.md when Claude asks something you've answered before, that's the signal to capture it.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Anti-patterns That Hurt Performance</h2>
+
+      <ul>
+        <li><strong>Padding with generic rules</strong>: "Write clean code", "Follow SOLID principles". Claude knows these. You're just burning context tokens.</li>
+        <li><strong>Pasting entire files</strong>: if you reference a file by path, Claude can read it on demand. Pasting it upfront means it's read every session regardless of relevance.</li>
+        <li><strong>Stale instructions</strong>: a CLAUDE.md referencing deprecated patterns (old library versions, renamed commands) actively misleads Claude. Review quarterly.</li>
+        <li><strong>One monolithic global CLAUDE.md</strong>: global CLAUDE.md grows fast. Split personal preferences (global) from project conventions (project-level) from personal local paths (CLAUDE.local.md).</li>
+        <li><strong>Missing build commands</strong>: this is the most common omission. Without them, Claude either guesses (wrong) or asks every session.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>FAQ</h2>
+      <details class="faq-item">
+        <summary>What should I put in CLAUDE.md?</summary>
+        <p>Tech stack, build commands, code conventions, architecture decisions, and anything you find yourself typing every new session. Not general best practices (Claude already knows them), not README content, not per-developer preferences (use CLAUDE.local.md).</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long should CLAUDE.md be?</summary>
+        <p>Project-level: 50-200 lines is the sweet spot. Global: up to 400 lines is reasonable. Over 500 lines, you're probably including content that belongs elsewhere (README, API docs, architecture diagrams). Longer does not mean better; every line costs tokens on every session.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does CLAUDE.md replace README?</summary>
+        <p>No. README is for humans setting up the project. CLAUDE.md is for Claude's in-session context. They overlap slightly (both might list build commands) but serve different audiences. Don't duplicate them; if it's in README, just reference the file path in CLAUDE.md.</p>
+      </details>
+    </section>
+
+    <section class="content-section">
+      <h2>Next Steps</h2>
+      <p>See the <a href="/examples/">271 CLAUDE.md templates</a> organized by project type, stack, and role. Or read the <a href="/cheatsheet/">full cheatsheet</a> for the complete Claude Code command reference.</p>
+    </section>
+
+  </div>
+
+  <style>
+    .content-page {
+      padding: var(--space-xl) var(--space-lg);
+      max-width: 860px;
+    }
+
+    .content-section {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .content-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .content-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: var(--space-lg) 0 var(--space-sm);
+    }
+
+    .content-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .content-section ul {
+      color: var(--text-secondary);
+      padding-left: var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .content-section li {
+      margin-bottom: var(--space-sm);
+      line-height: 1.6;
+    }
+
+    .content-section pre {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--space-lg);
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    .content-section code {
+      font-family: var(--font-mono);
+      background-color: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: var(--accent);
+    }
+
+    .hierarchy-table {
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+
+    .hierarchy-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .hierarchy-table th,
+    .hierarchy-table td {
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hierarchy-table th {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hierarchy-table td:first-child {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .faq-item {
+      background-color: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      margin-bottom: var(--space-md);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: var(--space-lg);
+      cursor: pointer;
+      font-weight: 500;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 1.5rem; color: var(--text-secondary); }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item p { padding: var(--space-lg); color: var(--text-secondary); margin: 0; }
+  </style>
+
+</Layout>
