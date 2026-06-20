@@ -34,6 +34,13 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.183',
+    date: 'Jun 19, 2026',
+    description: 'Auto mode now blocks destructive git commands (reset --hard, checkout -- ., clean -fd, stash drop) and git commit --amend (for commits not made by the agent) and terraform/pulumi/cdk destroy unless you explicitly asked. Model deprecation warnings added on stderr in print mode and for agent frontmatter models. New attribution.sessionUrl setting omits the session link from commits/PRs. /config --help lists all shorthand keys. 10+ bug fixes including thinking 400 errors, WebSearch in subagents, and tmux pane launch failures.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases#v21183-2026-06-19',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.181',
     date: 'Jun 18, 2026',
     description: 'New /config key=value syntax lets you set any setting inline from the prompt (e.g. /config thinking=false), working in interactive, -p, and Remote Control modes. Long paragraphs now stream line-by-line instead of waiting for the first line break. Subagent panel improvements: idle agents auto-hide after 30s, list caps at 5 rows with scroll hints. 30+ bug fixes including prompt caching on custom ANTHROPIC_BASE_URL, Write/Edit truncated files on network drives, and a 120ms startup regression.',
