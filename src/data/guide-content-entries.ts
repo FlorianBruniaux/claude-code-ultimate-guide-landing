@@ -1231,7 +1231,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-creating-custom-components",
     "title": "Creating Custom Components",
-    "keywords": "creating custom components claude code cheatsheet agent ( ) skill — user-invocable ( ) hook (macos/linux: windows: ) bash (macos/linux): ```bash !/bin/bash input=$(cat) agent claude agents my agent md skill user invocable claude skills my command skill md hook macos linux sh windows ps1",
+    "keywords": "creating custom components claude code cheatsheet agent ( ) skill — user-invocable ( ) dynamic workflow ( ) ```js export const meta = { name: 'my-workflow', description: 'what this orchestrates', agent claude agents my agent md skill user invocable claude skills my command skill md dynamic workflow claude workflows name js hook macos linux sh windows ps1",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#creating-custom-components",
     "source": "guide"
@@ -1359,7 +1359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick Jump",
-    "keywords": "quick jump claude code release history - 2.1.x series (january-june 2026): ⭐ auto mode safety blocks destructive git/terraform ops (2.1.183), ⭐ inline setting syntax + subagent panel improv",
+    "keywords": "quick jump claude code release history - 2.1.x series (january-june 2026): stream-stall hint improved to 20s delay (2.1.185), ⭐ auto mode safety blocks destructive git/terraform ops (2.1.18",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#quick-jump",
     "source": "guide"
@@ -1367,7 +1367,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-june-2026",
     "title": "2.1.x Series (January-June 2026)",
-    "keywords": "2 1 x series january june 2026 claude code release history v2.1.183 (2026-06-19) ⭐ auto mode safety improvements block destructive git/terraform commands unless explicitly requested; model deprecation warnings v2 1 183 2026 06 19 v2 1 181 2026 06 18 v2 1 179 2026 06 17 v2 1 178 2026 06 17 v2 1 176 2026 06 15 v2 1 175 2026 06 15 v2 1 174 2026 06 15 v2 1 173 2026 06 11 v2 1 172 2026 06 11 v2 1 170 2026 06 09 v2 1 169 2026 06 09 v2 1 168 2026 06 06 v2 1 167 2026 06 06 v2 1 166 2026 06 06 v2 1 165 2",
+    "keywords": "2 1 x series january june 2026 claude code release history v2.1.185 (2026-06-22) stream-stall hint ux improvement: clearer message and longer delay before triggering. - improved : stream-stall hint now reads \" v2 1 185 2026 06 22 v2 1 183 2026 06 19 v2 1 181 2026 06 18 v2 1 179 2026 06 17 v2 1 178 2026 06 17 v2 1 176 2026 06 15 v2 1 175 2026 06 15 v2 1 174 2026 06 15 v2 1 173 2026 06 11 v2 1 172 2026 06 11 v2 1 170 2026 06 09 v2 1 169 2026 06 09 v2 1 168 2026 06 06 v2 1 167 2026 06 06 v2 1 166 2",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-june-2026",
     "source": "guide"
@@ -11754,6 +11754,86 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "see also dual instance planning workflow - main guide : section 9.17.1 — overview and comparison - plan mode : plan-driven.md — foundation for planning workflows - multi-instance (boris) : se",
     "category": "Workflows",
     "url": "/guide/workflows/dual-instance-planning/#see-also",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-1-when-to-use-workflows-vs-agent-tool-vs-skills",
+    "title": "1. When to use workflows (vs Agent tool vs Skills)",
+    "keywords": "1 when to use workflows vs agent tool vs skills dynamic workflows three tools in claude code can spawn subagents: the agent tool, skills, and dynamic workflows. picking the wrong one adds overhead without benefit, so",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#1-when-to-use-workflows-vs-agent-tool-vs-skills",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-2-primitive-reference",
+    "title": "2. Primitive reference",
+    "keywords": "2 primitive reference dynamic workflows a workflow file is a javascript module with two mandatory parts: a export (the structural backbone) and a default export function (the execution body) meta mandatory pure literal agent prompt options parallel thunks pipeline items stages phase title other injected globals",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#2-primitive-reference",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-3-behavioral-guarantees",
+    "title": "3. Behavioral guarantees",
+    "keywords": "3 behavioral guarantees dynamic workflows determinism constraints the orchestrator script must be pure. several constructs are unavailable or throw: - , , and without arguments are blocked. pa determinism constraints schema validation and retry concurrency caps and queue resume and result caching",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#3-behavioral-guarantees",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-4-pipeline-vs-parallel-when-and-why",
+    "title": "4. pipeline() vs parallel(): when and why",
+    "keywords": "4 pipeline vs parallel when and why dynamic workflows this is the most common source of performance problems in workflow design. the two primitives look similar but have fundamentally different semantics. performance data decision rule misuse patterns to avoid",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#4-pipeline-vs-parallel-when-and-why",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-5-schema-structured-outputs-across-phases",
+    "title": "5. Schema-structured outputs across phases",
+    "keywords": "5 schema structured outputs across phases dynamic workflows schemas are what turn a multi-phase pipeline from a chain of text-to-text transformations into a typed pipeline with reliable field access at every st defining schemas discovery understand plan the audit and verify pattern",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#5-schema-structured-outputs-across-phases",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-6-common-patterns",
+    "title": "6. Common patterns",
+    "keywords": "6 common patterns dynamic workflows adversarial verification a second wave of agents is tasked with refuting the outputs of the first wave. this works because the first-wave agents were adversarial verification loop until dry judge panels multi strategy sweep plan execute review",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#6-common-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-7-real-workflow-example-dev-flow-issue-to-pr",
+    "title": "7. Real workflow example: dev-flow (Issue to PR)",
+    "keywords": "7 real workflow example dev flow issue to pr dynamic workflows a complete workflow that takes a github issue number and produces a ready-to-merge pull request. six phases covering the full dev cycle: ```js export",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#7-real-workflow-example-dev-flow-issue-to-pr",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-8-when-not-to-use-workflows",
+    "title": "8. When NOT to use workflows",
+    "keywords": "8 when not to use workflows dynamic workflows dynamic workflows carry real overhead: one js file to write and maintain, a terminal panel to monitor, and a slightly longer startup time as the runti",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#8-when-not-to-use-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-9-cost-and-performance-notes",
+    "title": "9. Cost and performance notes",
+    "keywords": "9 cost and performance notes dynamic workflows the orchestrator script itself costs zero tokens. all token cost comes from calls. this has a useful implication: you can make the orchestrator as com monitoring and debugging",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#9-cost-and-performance-notes",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-dynamic-workflows-10-see-also",
+    "title": "10. See also",
+    "keywords": "10 see also dynamic workflows - tools reference, workflow section : canonical tool description, trigger keyword, and cli flags - agent teams : experimental multi-agent coordination",
+    "category": "Workflows",
+    "url": "/guide/workflows/dynamic-workflows/#10-see-also",
     "source": "guide"
   },
   {
