@@ -1172,6 +1172,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-practitioner-insights-guide",
+    "title": "Practitioner Insights Guide",
+    "keywords": "practitioner insights guide guide ecosystem practitioner insights",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-context-engineering",
+    "title": "Practitioner Insights Context Engineering",
+    "keywords": "practitioner insights context engineering guide ecosystem practitioner insights md#context engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#context-engineering",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-agentic-patterns",
+    "title": "Practitioner Insights Agentic Patterns",
+    "keywords": "practitioner insights agentic patterns guide ecosystem practitioner insights md#agentic patterns and orchestration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agentic-patterns-and-orchestration",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-llm-evaluation",
+    "title": "Practitioner Insights LLM Evaluation",
+    "keywords": "practitioner insights llm evaluation guide ecosystem practitioner insights md#llm evaluation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#llm-evaluation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-agent-security",
+    "title": "Practitioner Insights Agent Security",
+    "keywords": "practitioner insights agent security guide ecosystem practitioner insights md#agent security",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agent-security",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-devx",
+    "title": "Practitioner Insights Devx",
+    "keywords": "practitioner insights devx guide ecosystem practitioner insights md#devx and adoption",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devx-and-adoption",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-credits",
+    "title": "Practitioner Insights Credits",
+    "keywords": "practitioner insights credits guide core credits md#ifttd this then dev podcast",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/credits.md#ifttd-if-this-then-dev-podcast",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide roles learning with",

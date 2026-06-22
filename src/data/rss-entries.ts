@@ -460,6 +460,13 @@ export const rssEntries: RssEntry[] = [
     link: 'https://cc.bruniaux.com/releases/',
   },
   {
+    type: 'new_page',
+    title: 'Practitioner Insights - field reports from IFTTD episodes',
+    date: 'Jun 21, 2026',
+    description: "New guide page: 22 paraphrased insights from 11 IFTTD podcast episodes (ep 311-361), 5 themes: context engineering, agentic patterns, LLM evaluation, agent security, DevX and adoption. Speakers include Guillaume Laforge (Google Cloud), Zineb Bendhiba (Red Hat), Jocelyn N'takpe (ManoMano), Louis Pinsard (Dialogue), and others. 9 existing guide sections also enriched.",
+    link: 'https://cc.bruniaux.com/guide/ecosystem/practitioner-insights/',
+  },
+  {
     type: 'new_section',
     title: 'Search Tools: stacklit, scip-search & lilmd',
     date: 'May 27, 2026',
