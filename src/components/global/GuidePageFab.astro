@@ -2,15 +2,22 @@
 /**
  * Guide-page action buttons: "Copy for LLM" and "Open in GitHub".
  * Shown only on /guide/* pages. Positioned above the Feedback FAB.
- * Uses a static slug → source-path mapping built from the guide repo structure.
+ *
+ * Three cases:
+ *  1. Standalone pages (/guide/{slug}/)           → fetch raw .md from GitHub
+ *  2. Workflow pages (/guide/workflows/{slug}/)   → fetch raw .md from GitHub
+ *  3. Ultimate-guide chapters (/guide/ultimate-guide/{slug}/)
+ *                                                 → GitHub links to main file,
+ *                                                   Copy extracts DOM text
  */
 
 const GUIDE_REPO = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide'
 const RAW_BASE =
   'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main'
 
-// slug (URL segment) → guide-relative path (without .md)
+// slug → guide-relative path (without leading "guide/" and without ".md")
 const SLUG_TO_PATH: Record<string, string> = {
+  // Core
   'adoption-approaches': 'roles/adoption-approaches',
   'agent-evaluation': 'roles/agent-evaluation',
   'agent-harness': 'core/agent-harness',
@@ -54,7 +61,7 @@ const SLUG_TO_PATH: Record<string, string> = {
 }
 ---
 
-<div class="guide-fab-group" id="guide-fab-group" aria-hidden="true">
+<div class="guide-fab-group" id="guide-fab-group" style="display:none" aria-hidden="true">
   <button
     class="guide-fab-btn"
     id="guide-fab-copy"
@@ -62,7 +69,8 @@ const SLUG_TO_PATH: Record<string, string> = {
     type="button"
     title="Copy for LLM"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- clipboard icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
     </svg>
@@ -78,7 +86,8 @@ const SLUG_TO_PATH: Record<string, string> = {
     title="Open in GitHub"
     href="#"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <!-- GitHub icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
     </svg>
     <span class="guide-fab-label">GitHub</span>
@@ -88,15 +97,68 @@ const SLUG_TO_PATH: Record<string, string> = {
 <div class="guide-fab-toast" id="guide-fab-toast" aria-live="polite" aria-atomic="true"></div>
 
 <script define:vars={{ SLUG_TO_PATH, GUIDE_REPO, RAW_BASE }}>
-  function getSlug() {
-    // e.g. /guide/team-knowledge-base/ → "team-knowledge-base"
-    const match = window.location.pathname.match(/^\/guide\/([^/]+)\/?$/)
-    return match ? match[1] : null
+  /**
+   * Parse the current URL into a typed page descriptor.
+   * Returns null if not a guide page.
+   *
+   * /guide/{slug}/                → { type: 'standalone', slug }
+   * /guide/workflows/{slug}/      → { type: 'workflow',   slug }
+   * /guide/ultimate-guide/{slug}/ → { type: 'chapter',    slug }
+   */
+  function parsePage() {
+    const p = window.location.pathname.replace(/\/$/, '')
+    const m = p.match(/^\/guide\/(.+)$/)
+    if (!m) return null
+
+    const rest = m[1] // e.g. "team-knowledge-base" or "workflows/agent-teams"
+    if (rest.startsWith('ultimate-guide/')) {
+      return { type: 'chapter', slug: rest }
+    }
+    if (rest.startsWith('workflows/')) {
+      const slug = rest.replace('workflows/', '')
+      return { type: 'workflow', slug }
+    }
+    if (!rest.includes('/')) {
+      return { type: 'standalone', slug: rest }
+    }
+    return null
   }
 
-  function getFilePath(slug) {
-    const rel = SLUG_TO_PATH[slug]
-    return rel ? `guide/${rel}.md` : null
+  function getGithubUrl(page) {
+    if (!page) return `${GUIDE_REPO}/tree/main/guide`
+
+    if (page.type === 'standalone') {
+      const rel = SLUG_TO_PATH[page.slug]
+      return rel
+        ? `${GUIDE_REPO}/blob/main/guide/${rel}.md`
+        : `${GUIDE_REPO}/tree/main/guide`
+    }
+    if (page.type === 'workflow') {
+      return `${GUIDE_REPO}/blob/main/guide/workflows/${page.slug}.md`
+    }
+    // chapter → link to the monolithic file
+    return `${GUIDE_REPO}/blob/main/guide/ultimate-guide.md`
+  }
+
+  function getRawUrl(page) {
+    if (!page) return null
+    if (page.type === 'standalone') {
+      const rel = SLUG_TO_PATH[page.slug]
+      return rel ? `${RAW_BASE}/guide/${rel}.md` : null
+    }
+    if (page.type === 'workflow') {
+      return `${RAW_BASE}/guide/workflows/${page.slug}.md`
+    }
+    return null // chapters: no single-file raw URL
+  }
+
+  /** Extract readable text from the Starlight content area. */
+  function extractDomText() {
+    const el =
+      document.querySelector('.sl-markdown-content') ||
+      document.querySelector('article') ||
+      document.querySelector('main')
+    return el ? el.innerText.trim() : document.body.innerText.trim()
   }
 
   function showToast(message, isError = false) {
@@ -105,61 +167,49 @@ const SLUG_TO_PATH: Record<string, string> = {
     toast.textContent = message
     toast.classList.add('is-visible')
     if (isError) toast.classList.add('is-error')
-    setTimeout(() => {
-      toast.classList.remove('is-visible', 'is-error')
-    }, 2500)
+    setTimeout(() => toast.classList.remove('is-visible', 'is-error'), 2500)
   }
 
   function init() {
-    const slug = getSlug()
-    if (!slug) return
+    const page = parsePage()
+    if (!page) return
 
-    const filePath = getFilePath(slug)
     const group = document.getElementById('guide-fab-group')
     const githubBtn = document.getElementById('guide-fab-github')
     const copyBtn = document.getElementById('guide-fab-copy')
-
     if (!group || !githubBtn || !copyBtn) return
 
-    // Show the group
-    group.removeAttribute('aria-hidden')
     group.style.display = 'flex'
+    group.removeAttribute('aria-hidden')
+    githubBtn.setAttribute('href', getGithubUrl(page))
 
-    // Set GitHub URL
-    if (filePath) {
-      const githubUrl = `${GUIDE_REPO}/blob/main/${filePath}`
-      githubBtn.setAttribute('href', githubUrl)
-    } else {
-      // Fallback to repo root
-      githubBtn.setAttribute('href', `${GUIDE_REPO}/tree/main/guide`)
-    }
-
-    // Copy for LLM: fetch raw Markdown and copy to clipboard
     copyBtn.addEventListener('click', async () => {
-      if (!filePath) {
-        showToast('Source file not found', true)
-        return
-      }
-      const rawUrl = `${RAW_BASE}/${filePath}`
+      const rawUrl = getRawUrl(page)
+      copyBtn.classList.add('is-loading')
+
       try {
-        copyBtn.classList.add('is-loading')
-        const res = await fetch(rawUrl)
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const text = await res.text()
+        let text
+        if (rawUrl) {
+          const res = await fetch(rawUrl)
+          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+          text = await res.text()
+        } else {
+          // ultimate-guide chapters: extract from DOM
+          text = extractDomText()
+        }
         await navigator.clipboard.writeText(text)
         copyBtn.classList.remove('is-loading')
         copyBtn.classList.add('is-done')
-        showToast('Markdown copied to clipboard')
+        showToast(rawUrl ? 'Markdown copied' : 'Text copied (chapter view)')
         setTimeout(() => copyBtn.classList.remove('is-done'), 1500)
       } catch (err) {
         copyBtn.classList.remove('is-loading')
         showToast('Copy failed — try again', true)
-        console.error('[GuidePageFab] copy error:', err)
+        console.error('[GuidePageFab]', err)
       }
     })
   }
 
-  // Run after DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init)
   } else {
@@ -170,13 +220,12 @@ const SLUG_TO_PATH: Record<string, string> = {
 <style>
   .guide-fab-group {
     position: fixed;
-    bottom: 6rem; /* above feedback-wrapper (1.5rem + ~3rem button + gap) */
+    bottom: 6rem;
     right: 1.5rem;
     z-index: 89;
-    display: none; /* shown by JS only on guide pages */
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .guide-fab-btn {
@@ -184,16 +233,16 @@ const SLUG_TO_PATH: Record<string, string> = {
     align-items: center;
     gap: 0.4rem;
     background: var(--surface-2, #1e1e2e);
-    color: var(--text-primary, #e0e0e0);
-    border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+    color: var(--text-secondary, #bbb);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
     border-radius: 50px;
-    padding: 0.55rem 0.9rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
     white-space: nowrap;
   }
@@ -202,7 +251,7 @@ const SLUG_TO_PATH: Record<string, string> = {
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     background: var(--surface-3, #2a2a3e);
-    color: var(--text-primary, #fff);
+    color: var(--text-primary, #e0e0e0);
   }
 
   .guide-fab-btn:active {
@@ -210,21 +259,16 @@ const SLUG_TO_PATH: Record<string, string> = {
   }
 
   .guide-fab-btn.is-loading {
-    opacity: 0.6;
+    opacity: 0.5;
     pointer-events: none;
   }
 
   .guide-fab-btn.is-done {
-    background: #1a472a;
+    background: #1a3a2a;
     border-color: #2d6a4f;
     color: #74c69d;
   }
 
-  .guide-fab-label {
-    line-height: 1;
-  }
-
-  /* Toast notification */
   .guide-fab-toast {
     position: fixed;
     bottom: 5.5rem;
@@ -233,8 +277,8 @@ const SLUG_TO_PATH: Record<string, string> = {
     color: var(--text-primary, #e0e0e0);
     border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
     border-radius: 8px;
-    padding: 0.5rem 0.875rem;
-    font-size: 0.8rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     z-index: 200;
@@ -250,16 +294,14 @@ const SLUG_TO_PATH: Record<string, string> = {
   }
 
   .guide-fab-toast.is-error {
-    border-color: rgba(239, 68, 68, 0.4);
+    border-color: rgba(239, 68, 68, 0.35);
     color: #f87171;
   }
 
-  /* Hide labels on very small screens */
   @media (max-width: 480px) {
     .guide-fab-label {
       display: none;
     }
-
     .guide-fab-btn {
       padding: 0.6rem;
       border-radius: 50%;
