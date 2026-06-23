@@ -93,6 +93,40 @@ export default defineConfig({
 
     // Cannibalisation fix: /guide/claude-code-releases/ → /releases/ (canonical winner)
     '/guide/claude-code-releases/': '/releases/',
+
+    // Missing workflow pages (not yet in redirect list)
+    '/guide/event-driven-agents/': '/guide/workflows/event-driven-agents/',
+    '/guide/spec-first/': '/guide/workflows/spec-first/',
+    '/guide/changelog-fragments/': '/guide/workflows/changelog-fragments/',
+
+    // Old ecosystem URL structure
+    '/guide/ecosystem/context-engineering-tools/': '/guide/context-engineering-tools/',
+
+    // Old numbered URL structure (pre-Starlight migration)
+    '/guide/02-core-loop/': '/guide/ultimate-guide/02-core-workflow/',
+    '/guide/04-agents/': '/guide/ultimate-guide/04-agents/',
+    '/guide/04-architecture-internals/': '/guide/architecture/',
+    '/guide/06-hooks/': '/guide/ultimate-guide/07-hooks/',
+    '/guide/07-advanced/': '/guide/ultimate-guide/09-advanced-patterns/',
+
+    // Non-existent role pages → roles section
+    '/guide/security-auditor/': '/roles/',
+    '/guide/security-patcher/': '/roles/',
+
+    // Non-existent guide pages → nearest relevant section
+    '/guide/watch-list/': '/guide/',
+    '/guide/security-checklist/': '/guide/security-hardening/',
+    '/guide/README/': '/guide/',
+
+    // Short alias without trailing slash (GitHub Pages static: no auto-redirect to trailing slash)
+    '/undo': '/cheatsheet/',
+    '/tui': '/cheatsheet/',
+    '/clear': '/cheatsheet/',
+    '/focus': '/cheatsheet/',
+    '/focus/': '/cheatsheet/',
+
+    // /ultrareview is a deprecated slash-command alias → releases page
+    '/ultrareview': '/releases/',
   },
 
   integrations: [
