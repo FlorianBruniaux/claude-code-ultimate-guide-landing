@@ -1,0 +1,213 @@
+---
+interface BlogPost {
+  title: string
+  link: string
+  date: string
+}
+
+let posts: BlogPost[] = []
+let fetchFailed = false
+
+try {
+  const res = await fetch('https://www.florian.bruniaux.com/rss.xml', {
+    headers: { 'User-Agent': 'cc.bruniaux.com build bot' },
+  })
+  if (!res.ok) throw new Error(`RSS fetch returned ${res.status}`)
+  const xml = await res.text()
+
+  const itemPattern = /<item>([\s\S]*?)<\/item>/g
+  let match
+  const rawItems: BlogPost[] = []
+
+  while ((match = itemPattern.exec(xml)) !== null) {
+    const block = match[1]
+
+    const titleMatch = block.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) ||
+                       block.match(/<title>([\s\S]*?)<\/title>/)
+    const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/)
+    const dateMatch = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)
+
+    if (!titleMatch || !linkMatch) continue
+
+    let title = titleMatch[1].trim().replace(/^\d+\/\d+\s+·\s+/, '')
+    title = title
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'")
+      .replace(/&#39;/g, "'")
+
+    const link = linkMatch[1].trim()
+
+    let date = ''
+    if (dateMatch) {
+      const d = new Date(dateMatch[1].trim())
+      if (!isNaN(d.getTime())) {
+        date = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      }
+    }
+
+    rawItems.push({ title, link, date })
+  }
+
+  posts = rawItems.slice(0, 3)
+  if (posts.length === 0) fetchFailed = true
+} catch {
+  fetchFailed = true
+}
+---
+
+{fetchFailed ? (
+  <div class="blog-posts blog-posts--fallback">
+    <a href="https://www.florian.bruniaux.com/blog/" target="_blank" rel="noopener noreferrer" class="blog-fallback-link">
+      Read the blog ↗
+    </a>
+  </div>
+) : (
+  <div class="blog-posts">
+    <div class="blog-posts-header">
+      <a href="https://www.florian.bruniaux.com/blog/" target="_blank" rel="noopener noreferrer" class="blog-posts-heading">
+        From the blog ↗
+      </a>
+    </div>
+    <ul class="blog-posts-list">
+      {posts.map((post) => (
+        <li class="blog-post-item">
+          <span class="blog-post-arrow" aria-hidden="true">→</span>
+          <a href={post.link} target="_blank" rel="noopener noreferrer" class="blog-post-title">
+            {post.title}
+          </a>
+          {post.date && <span class="blog-post-date">{post.date}</span>}
+        </li>
+      ))}
+    </ul>
+    <a href="https://www.florian.bruniaux.com/blog/" target="_blank" rel="noopener noreferrer" class="blog-posts-viewall">
+      View all posts →
+    </a>
+  </div>
+)}
+
+<style>
+.blog-posts {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--border);
+}
+
+.blog-posts--fallback {
+  display: flex;
+  align-items: center;
+}
+
+.blog-fallback-link {
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.blog-fallback-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.blog-posts-header {
+  margin-bottom: 0.5rem;
+}
+
+.blog-posts-heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.blog-posts-heading:hover {
+  color: var(--accent);
+}
+
+.blog-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.blog-post-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.blog-post-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.blog-post-item:hover .blog-post-arrow {
+  opacity: 1;
+}
+
+.blog-post-title {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  line-height: 1.4;
+}
+
+.blog-post-title:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+.blog-post-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.blog-posts-viewall {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.blog-posts-viewall:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .blog-post-item {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .blog-post-date {
+    margin-left: 1rem;
+  }
+}
+</style>
