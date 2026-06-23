@@ -90,6 +90,9 @@ export default defineConfig({
     // Old URL formats
     '/quiz.html': '/quiz/',
     '/changelog/': '/releases/',
+
+    // Cannibalisation fix: /guide/claude-code-releases/ → /releases/ (canonical winner)
+    '/guide/claude-code-releases/': '/releases/',
   },
 
   integrations: [

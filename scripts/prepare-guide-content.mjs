@@ -331,6 +331,16 @@ if (existsSync(WORKFLOWS_DIR)) {
     stats.workflows++
   }
 
+  // Also include the README as the workflows index
+  const workflowReadme = resolve(WORKFLOWS_DIR, 'README.md')
+  if (existsSync(workflowReadme)) {
+    let content = readFileSync(workflowReadme, 'utf-8')
+    content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199 })
+    content = normalizeLangs(content)
+    guideFileBuffer.push({ file: 'workflows/index.md', content, isWorkflow: false })
+    stats.workflows++
+  }
+
   console.log(`[prepare-guide] ✓ Workflow files: ${stats.workflows}`)
 }
 
