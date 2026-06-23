@@ -2,8 +2,8 @@
 import Layout from '../../layouts/Layout.astro'
 import { releases, breakingChanges } from '../../data/releases'
 
-const title = 'Claude Code Releases & Changelog | Version History'
-const description = 'Complete version history, changelog, and breaking changes for Claude Code. Track every release from Anthropic with highlights and migration notes.'
+const title = 'Claude Code Version History: Env Vars, Config Flags & Changelog'
+const description = 'Complete Claude Code version history with environment variables reference. Find CLAUDE_CODE_USE_MANTLE, CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY, showThinkingSummaries, and every config flag since v2.0. Updated with each release.'
 
 const jsonLd = [
   {
@@ -30,20 +30,143 @@ const jsonLd = [
     </div>
   </header>
 
-  <!-- What's New Section -->
+  <!-- Latest Release Section (static, SSG) -->
   <section class="content-section" id="whats-new">
-    <h2>What's New</h2>
-    <p>Latest updates from the changelog</p>
-
-    <div class="changelog-container" id="changelog-container">
-      <div class="changelog-loading">Loading changelog...</div>
-    </div>
-
+    <h2>Latest Release: {releases[0].version}</h2>
+    <p>Released {releases[0].date}</p>
+    <ul class="release-highlights static-highlights">
+      {releases[0].highlights.map(h => <li set:html={h} />)}
+    </ul>
+    {releases[0].breaking && releases[0].breaking.length > 0 && (
+      <div class="release-breaking" style="margin-top: var(--space-md);">
+        <strong>Breaking:</strong>
+        <ul>
+          {releases[0].breaking.map(b => <li set:html={b} />)}
+        </ul>
+      </div>
+    )}
     <div style="text-align: left; margin-top: var(--space-xl);">
-      <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md" class="btn btn-secondary" target="_blank" rel="noopener">
-        View Full Changelog &rarr;
-      </a>
+      <a href="#releases" class="btn btn-secondary">View All {releases.length} Releases &darr;</a>
     </div>
+  </section>
+
+  <!-- Environment Variables Reference (static, SSG) -->
+  <section class="content-section" id="env-vars">
+    <h2>Environment Variables Reference</h2>
+    <p>Config flags that Claude Code reads at startup. Set in your shell profile or before the <code>claude</code> command.</p>
+
+    <table class="env-vars-table">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+          <th>Effect</th>
+          <th>Since</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>CLAUDE_CODE_USE_MANTLE</code></td>
+          <td><code>1</code></td>
+          <td>Amazon Bedrock powered by Mantle support</td>
+          <td>v2.1.97</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY</code></td>
+          <td><code>1</code></td>
+          <td>Enable <code>/v1/models</code> discovery from your gateway (opt-in)</td>
+          <td>v2.1.131</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</code></td>
+          <td><em>set</em></td>
+          <td>Auto-upgrade via Homebrew or WinGet with restart prompt</td>
+          <td>v2.1.131</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_ENABLE_AUTO_MODE</code></td>
+          <td><code>1</code></td>
+          <td>Enable auto mode on Bedrock, Vertex, and Foundry for Opus 4.7/4.8</td>
+          <td>v2.1.159</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</code></td>
+          <td><code>1</code></td>
+          <td>Opt out of fullscreen alternate-screen renderer, keep output in scrollback</td>
+          <td>v2.1.133</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_NO_FLICKER</code></td>
+          <td><code>1</code></td>
+          <td>Flicker-free rendering for terminals that have rendering artifacts</td>
+          <td>v2.1.90</td>
+        </tr>
+        <tr>
+          <td><code>ANTHROPIC_BASE_URL</code></td>
+          <td>URL</td>
+          <td>Point Claude Code at a compatible third-party gateway instead of api.anthropic.com</td>
+          <td>v2.1.71</td>
+        </tr>
+        <tr>
+          <td><code>ANTHROPIC_BEDROCK_SERVICE_TIER</code></td>
+          <td><code>default</code> / <code>flex</code> / <code>priority</code></td>
+          <td>Select Bedrock service tier via <code>X-Amzn-Bedrock-Service-Tier</code> header</td>
+          <td>v2.1.126</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_CERT_STORE</code></td>
+          <td><code>bundled</code></td>
+          <td>Revert to bundled CA certs (default trusts OS CA store since v2.1.105)</td>
+          <td>v2.1.105</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</code></td>
+          <td><code>1</code></td>
+          <td>Strip credentials from subprocess environments for security</td>
+          <td>v2.1.84</td>
+        </tr>
+        <tr>
+          <td><code>MCP_TOOL_TIMEOUT</code></td>
+          <td>ms</td>
+          <td>Per-request fetch timeout for MCP tool calls</td>
+          <td>v2.1.143</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_SESSION_ID</code></td>
+          <td><em>read-only</em></td>
+          <td>Session ID passed to Bash subprocesses and MCP stdio servers</td>
+          <td>v2.1.133</td>
+        </tr>
+        <tr>
+          <td><code>DISABLE_UPDATES</code></td>
+          <td><em>set</em></td>
+          <td>Disable automatic Claude Code update checks</td>
+          <td>v2.1.119</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_DISABLE_CRON</code></td>
+          <td><em>set</em></td>
+          <td>Disable scheduled cron tasks in Claude Code</td>
+          <td>v2.1.72</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS</code></td>
+          <td><code>1</code></td>
+          <td>Disable experimental beta features (OAuth fix: required for some deployments)</td>
+          <td>v2.1.126</td>
+        </tr>
+        <tr>
+          <td><code>CLAUDE_CODE_SKIP_BEDROCK_AUTH</code></td>
+          <td><em>set</em></td>
+          <td>Skip Bedrock authentication check (for custom auth proxies)</td>
+          <td>v2.1.97</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: var(--space-md); color: var(--text-secondary); font-size: 0.9rem;">
+      <strong>Note:</strong> <code>showThinkingSummaries: true</code> is a <strong>settings.json key</strong>, not an env var. Add it to <code>~/.claude/settings.json</code> to restore thinking summaries (disabled by default since v2.1.90).
+    </p>
   </section>
 
   <!-- Claude Code Releases Section -->
@@ -62,7 +185,7 @@ const jsonLd = [
 
     <div class="releases-timeline">
       {releases.map((release, index) => (
-        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${index >= 12 ? 'release-card-hidden' : ''}`} data-release-index={index}>
+        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${index >= 12 ? 'release-card-hidden' : ''}`} data-release-index={index} id={`v${release.version.replace(/\./g, '-').replace(/^v/, '')}`}>
           {release.featuredLabel && (
             <div class="release-featured-label">{release.featuredLabel}</div>
           )}
@@ -368,7 +491,30 @@ const jsonLd = [
       border-radius: 4px;
       margin-right: var(--space-sm);
     }
-    .release-card-hidden { display: none; }
+    .release-card-hidden { /* visibility controlled by JS on load */ }
+
+    /* Static highlights (latest release) */
+    .static-highlights { list-style: none; padding: 0; margin: var(--space-md) 0 0; }
+    .static-highlights li {
+      position: relative;
+      padding-left: var(--space-lg);
+      margin-bottom: var(--space-sm);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .static-highlights li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent); }
+    .static-highlights code { background: var(--bg-tertiary); color: var(--accent); padding: 0.1em 0.4em; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85em; }
+
+    /* Env vars table */
+    .env-vars-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: var(--space-lg); }
+    .env-vars-table th { text-align: left; padding: var(--space-sm) var(--space-md); background: var(--bg-tertiary); border-bottom: 2px solid var(--border); font-weight: 600; color: var(--text-primary); }
+    .env-vars-table td { padding: var(--space-sm) var(--space-md); border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.5; }
+    .env-vars-table tr:hover td { background: var(--surface-elevated); }
+    .env-vars-table code { background: var(--bg-tertiary); color: var(--accent); padding: 0.1em 0.35em; border-radius: 3px; font-family: var(--font-mono); font-size: 0.85em; white-space: nowrap; }
+    @media (max-width: 768px) {
+      .env-vars-table th:nth-child(3), .env-vars-table td:nth-child(3) { display: none; }
+    }
 
     /* Changelog */
     .changelog-container { }
@@ -450,6 +596,13 @@ const jsonLd = [
   </style>
 
   <script>
+    // Hide cards beyond first 12 on load (via JS, not CSS, so Googlebot sees all cards)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.release-card-hidden').forEach(el => {
+        (el as HTMLElement).style.display = 'none';
+      });
+    });
+
     // Toggle show/hide releases
     document.getElementById('toggleReleasesBtn')?.addEventListener('click', function() {
       const hiddenCards = document.querySelectorAll('.release-card-hidden');
