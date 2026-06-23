@@ -461,6 +461,13 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_page',
+    title: 'Team Knowledge Infrastructure - shared KB for Claude Code + Cowork',
+    date: 'Jun 23, 2026',
+    description: 'New guide page: 3-tier framework for setting up a company knowledge base accessible from both Claude Code and Cowork. Covers the versioned Markdown vault pattern (direct file reads, ~/Shared/CLAUDE.md bridge), MCP connectors for live systems (Atlassian Jira+Confluence, Notion, GitBook), RAG at scale with the ~100-1000 doc threshold, Onyx (self-hosted), LlamaCloud and Ragie (managed via MCP), and the plugin pattern for distributing team workflows. Includes governance caveat on Cowork audit log and DLP gaps.',
+    link: 'https://cc.bruniaux.com/guide/team-knowledge-base/',
+  },
+  {
+    type: 'new_page',
     title: 'Practitioner Insights - field reports from IFTTD episodes',
     date: 'Jun 21, 2026',
     description: "New guide page: 22 paraphrased insights from 11 IFTTD podcast episodes (ep 311-361), 5 themes: context engineering, agentic patterns, LLM evaluation, agent security, DevX and adoption. Speakers include Guillaume Laforge (Google Cloud), Zineb Bendhiba (Red Hat), Jocelyn N'takpe (ManoMano), Louis Pinsard (Dialogue), and others. 9 existing guide sections also enriched.",

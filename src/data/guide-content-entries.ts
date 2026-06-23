@@ -5421,6 +5421,94 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-team-knowledge-base-the-one-tool-for-three-needs-trap",
+    "title": "The \"One Tool for Three Needs\" Trap",
+    "keywords": "the one tool for three needs trap team knowledge base for claude code cowork a team deploys claude code for engineers and cowork for pms, ops, and support. someone asks the obvious question: \"where do we put the company knowled why claude projects does not fit",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#the-one-tool-for-three-needs-trap",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-tier-1-versioned-markdown-vault-static-docs",
+    "title": "Tier 1: Versioned Markdown Vault (Static Docs)",
+    "keywords": "tier 1 versioned markdown vault static docs team knowledge base for claude code cowork most of what a team calls \"the knowledge base\" is static documentation. runbooks, architecture decision records, coding standards, onboarding guides, why a markdown repo not a wiki setup the root claude md as index",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#tier-1-versioned-markdown-vault-static-docs",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-engineering",
+    "title": "Engineering",
+    "keywords": "engineering team knowledge base for claude code cowork - deploy procedure: engineering/deploy-runbook.md - incident response: engineering/incident-response.md - architecture decisions: engineering/adr/ (on",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#engineering",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-product",
+    "title": "Product",
+    "keywords": "product team knowledge base for claude code cowork - how we run roadmap: product/roadmap-process.md - spec format: product/spec-template.md",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#product",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-ops",
+    "title": "Ops",
+    "keywords": "ops team knowledge base for claude code cowork - on-call rotation and escalation: ops/oncall-rotation.md - vendor and account contacts: ops/vendor-contacts.md",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#ops",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-policies-read-before-any-external-facing-or-data-w",
+    "title": "Policies (read before any external-facing or data work)",
+    "keywords": "policies read before any external facing or data work team knowledge base for claude code cowork - security baseline: policies/security-baseline.md - data handling rules: policies/data-handling.md `` /shared/claude.md /shared/knowledge-base/ .md [ obsidian as an optional human layer when direct file reading is enough",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#policies-read-before-any-external-facing-or-data-work",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-tier-2-mcp-connectors-for-live-systems",
+    "title": "Tier 2: MCP Connectors for Live Systems",
+    "keywords": "tier 2 mcp connectors for live systems team knowledge base for claude code cowork static docs are the easy half. the harder half is the knowledge that lives in systems other people update all day: the jira backlog, the confluence sp atlassian jira confluence notion gitbook choosing tier 1 vs tier 2 for documentation",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#tier-2-mcp-connectors-for-live-systems",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-tier-3-rag-at-scale",
+    "title": "Tier 3: RAG at Scale",
+    "keywords": "tier 3 rag at scale team knowledge base for claude code cowork tiers 1 and 2 cover almost every team. tier 3 exists for one specific situation: you have so many documents that the agent cannot read them directly, the threshold when to add rag onyx self hosted open source llamacloud managed ragie fastest managed setup tier 3 options compared",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#tier-3-rag-at-scale",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-the-plugin-pattern-distributing-team-workflows",
+    "title": "The Plugin Pattern: Distributing Team Workflows",
+    "keywords": "the plugin pattern distributing team workflows team knowledge base for claude code cowork the third shape of knowledge from the opening table is not documents at all. it is reusable behavior: the slash commands, skills, agents, and prompts keep content in the vault behavior in the plugin what a plugin packages distribution via marketplace json",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#the-plugin-pattern-distributing-team-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-governance-and-sensitivity-caveat",
+    "title": "Governance and Sensitivity Caveat",
+    "keywords": "governance and sensitivity caveat team knowledge base for claude code cowork the architecture above optimizes for access. before you wire a sensitive corpus into it, weigh the governance side honestly, because the two agentic t cowork s current gaps when data must stay on premise a documented reference point",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#governance-and-sensitivity-caveat",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-knowledge-base-what-to-do-first",
+    "title": "What to Do First",
+    "keywords": "what to do first team knowledge base for claude code cowork the mistake at the start of this section was reaching for one tool. the correction is to classify each piece of knowledge by its nature, then apply th decision table the recommended sequence for a new team",
+    "category": "Core Guides",
+    "url": "/guide/team-knowledge-base/#what-to-do-first",
+    "source": "guide"
+  },
+  {
     "id": "gc-team-metrics-the-measurement-problem",
     "title": "The Measurement Problem",
     "keywords": "the measurement problem team metrics for ai augmented engineering ai-assisted development changes delivery speed fast enough to break most existing benchmarks. a team shipping 2 features per sprint in 2022 might now",

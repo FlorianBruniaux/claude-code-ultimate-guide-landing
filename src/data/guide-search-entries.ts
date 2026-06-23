@@ -2244,6 +2244,134 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-team-knowledge-guide",
+    "title": "Team Knowledge Guide",
+    "keywords": "team knowledge guide guide ecosystem team knowledge base",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-three-way",
+    "title": "Team Knowledge Three Way",
+    "keywords": "team knowledge three way guide ecosystem team knowledge base md#the one tool for three needs trap",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#the-one-tool-for-three-needs-trap",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-rag-threshold",
+    "title": "Team Knowledge RAG Threshold",
+    "keywords": "team knowledge rag threshold guide ecosystem team knowledge base md#the threshold when add rag",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#the-threshold-when-to-add-rag",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-static-vault",
+    "title": "Team Knowledge Static Vault",
+    "keywords": "team knowledge static vault guide ecosystem team knowledge base md#tier versioned markdown vault static docs",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#tier-1-versioned-markdown-vault-static-docs",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-shared-claudemd",
+    "title": "Team Knowledge Shared Claudemd",
+    "keywords": "team knowledge shared claudemd guide ecosystem team knowledge base md#the root claudemd index",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#the-root-claudemd-as-index",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-connectors-mcp",
+    "title": "Team Knowledge Connectors MCP",
+    "keywords": "team knowledge connectors mcp guide ecosystem team knowledge base md#tier mcp connectors for live systems",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#tier-2-mcp-connectors-for-live-systems",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-atlassian-mcp",
+    "title": "Team Knowledge Atlassian MCP",
+    "keywords": "team knowledge atlassian mcp guide ecosystem team knowledge base md#atlassian jira confluence",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#atlassian-jira--confluence",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-notion-mcp",
+    "title": "Team Knowledge Notion MCP",
+    "keywords": "team knowledge notion mcp guide ecosystem team knowledge base md#notion",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#notion",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-gitbook-mcp",
+    "title": "Team Knowledge Gitbook MCP",
+    "keywords": "team knowledge gitbook mcp guide ecosystem team knowledge base md#gitbook",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#gitbook",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-onyx",
+    "title": "Team Knowledge Onyx",
+    "keywords": "team knowledge onyx guide ecosystem team knowledge base md#onyx self hosted open source",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#onyx-self-hosted-open-source",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-managed-rag",
+    "title": "Team Knowledge Managed RAG",
+    "keywords": "team knowledge managed rag guide ecosystem team knowledge base md#tier rag scale",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#tier-3-rag-at-scale",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-llamacloud",
+    "title": "Team Knowledge Llamacloud",
+    "keywords": "team knowledge llamacloud guide ecosystem team knowledge base md#llamacloud managed",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#llamacloud-managed",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-ragie",
+    "title": "Team Knowledge Ragie",
+    "keywords": "team knowledge ragie guide ecosystem team knowledge base md#ragie fastest managed setup",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#ragie-fastest-managed-setup",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-kb-internal-pattern",
+    "title": "Team Knowledge Kb Internal Pattern",
+    "keywords": "team knowledge kb internal pattern guide ecosystem team knowledge base md#a documented reference point",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#a-documented-reference-point",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-workflows-plugins",
+    "title": "Team Knowledge Workflows Plugins",
+    "keywords": "team knowledge workflows plugins guide ecosystem team knowledge base md#the plugin pattern distributing team workflows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#the-plugin-pattern-distributing-team-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-knowledge-decision-table",
+    "title": "Team Knowledge Decision Table",
+    "keywords": "team knowledge decision table guide ecosystem team knowledge base md#decision table",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#decision-table",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-hardening",
     "title": "Security Hardening",
     "keywords": "security hardening guide security security hardening",
