@@ -1,13 +1,15 @@
 ---
 /**
  * Starlight Header override.
- * Renders the site-wide header, search modal, and feedback button.
+ * Renders the site-wide header, search modal, feedback button, and guide-page actions.
  * This replaces Starlight's default header entirely.
  */
 import GlobalHeader from '../global/Header.astro'
 import SearchModal from '../global/SearchModal.astro'
 import FeedbackFab from '../global/FeedbackFab.astro'
+import GuidePageFab from '../global/GuidePageFab.astro'
 ---
 <GlobalHeader />
 <SearchModal />
+<GuidePageFab />
 <FeedbackFab />

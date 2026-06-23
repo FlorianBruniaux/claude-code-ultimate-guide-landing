@@ -16,6 +16,48 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.186',
+    date: 'Jun 23, 2026',
+    highlights: [
+      '⭐ `claude mcp login/logout <name>` authenticates MCP servers from the CLI without the interactive /mcp menu; --no-browser flag for SSH sessions',
+      '`!` bash commands now auto-trigger Claude to respond to output; opt-out via "respondToBashCommands": false in settings.json',
+      'Background subagents surface permission prompts in main session instead of auto-denying; dialog shows which agent is asking',
+      'Fixed Agent(type) deny rules and Agent(x,y) allowed-types restrictions not enforced for named subagent spawns; 25+ bug fixes',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.185',
+    date: 'Jun 22, 2026',
+    highlights: [
+      'Improved stream-stall hint: reads "Waiting for API response · will retry in …" (was "No response from API · Retrying in …"), triggers after 20s instead of 10s',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.183',
+    date: 'Jun 19, 2026',
+    highlights: [
+      '⭐ Auto mode safety: destructive git ops (reset --hard, checkout -- ., clean -fd) and git commit --amend and terraform/pulumi/cdk destroy are blocked unless explicitly requested',
+      'Model deprecation warnings on stderr in print mode (-p) and for models set in agent frontmatter',
+      '`attribution.sessionUrl` setting omits the claude.ai session link from commits and PRs in web/Remote Control sessions',
+      '10+ bug fixes: thinking 400 errors on subagent spawns, WebSearch empty in subagents, tmux pane launch failures',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.181',
+    date: 'Jun 18, 2026',
+    highlights: [
+      '⭐ `/config key=value` syntax sets any setting inline from the prompt (e.g. `/config thinking=false`) — works in interactive, -p, and Remote Control',
+      '`sandbox.allowAppleEvents` opt-in for macOS sandboxed commands',
+      'Improved streaming: long paragraphs appear line-by-line instead of waiting for the first line break',
+      'Improved subagent panel: idle agents auto-hide after 30s, list caps at 5 rows with scroll hints; 30+ bug fixes',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.179',
     date: 'Jun 17, 2026',
     highlights: [
@@ -23,7 +65,6 @@ export const releases: Release[] = [
       'Fixed mouse-wheel scrolling in WSL2 under Windows Terminal and VS Code (regression in 2.1.172)',
       '6+ bug fixes: sandbox denyRead/allowRead glob performance, feedback survey rating, welcome banner stacking, Ctrl+O subagent transcript, prompt focus',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

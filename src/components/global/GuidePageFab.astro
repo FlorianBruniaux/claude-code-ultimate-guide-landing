@@ -1,0 +1,268 @@
+---
+/**
+ * Guide-page action buttons: "Copy for LLM" and "Open in GitHub".
+ * Shown only on /guide/* pages. Positioned above the Feedback FAB.
+ * Uses a static slug → source-path mapping built from the guide repo structure.
+ */
+
+const GUIDE_REPO = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide'
+const RAW_BASE =
+  'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main'
+
+// slug (URL segment) → guide-relative path (without .md)
+const SLUG_TO_PATH: Record<string, string> = {
+  'adoption-approaches': 'roles/adoption-approaches',
+  'agent-evaluation': 'roles/agent-evaluation',
+  'agent-harness': 'core/agent-harness',
+  'agentic-tools': 'ecosystem/agentic-tools',
+  'ai-ecosystem': 'ecosystem/ai-ecosystem',
+  'ai-roles': 'roles/ai-roles',
+  'ai-traceability': 'ops/ai-traceability',
+  'architecture': 'core/architecture',
+  'cheatsheet': 'cheatsheet',
+  'claude-code-releases': 'core/claude-code-releases',
+  'community-patterns': 'core/community-patterns',
+  'context-engineering': 'core/context-engineering',
+  'context-engineering-tools': 'ecosystem/context-engineering-tools',
+  'cowork': 'cowork',
+  'credits': 'core/credits',
+  'data-privacy': 'security/data-privacy',
+  'devops-sre': 'ops/devops-sre',
+  'enterprise-governance': 'security/enterprise-governance',
+  'glossary': 'core/glossary',
+  'hooks-events-reference': 'core/hooks-events-reference',
+  'known-issues': 'core/known-issues',
+  'learning-with-ai': 'roles/learning-with-ai',
+  'mcp-servers-ecosystem': 'ecosystem/mcp-servers-ecosystem',
+  'mcp-vs-cli': 'ecosystem/mcp-vs-cli',
+  'memory-systems': 'core/memory-systems',
+  'methodologies': 'core/methodologies',
+  'observability': 'ops/observability',
+  'practitioner-insights': 'ecosystem/practitioner-insights',
+  'production-safety': 'security/production-safety',
+  'remarkable-ai': 'ecosystem/remarkable-ai',
+  'sandbox-isolation': 'security/sandbox-isolation',
+  'sandbox-native': 'security/sandbox-native',
+  'security-hardening': 'security/security-hardening',
+  'settings-reference': 'core/settings-reference',
+  'skill-design-patterns': 'core/skill-design-patterns',
+  'team-knowledge-base': 'ecosystem/team-knowledge-base',
+  'team-metrics': 'ops/team-metrics',
+  'third-party-tools': 'ecosystem/third-party-tools',
+  'tools-reference': 'core/tools-reference',
+  'visual-reference': 'core/visual-reference',
+}
+---
+
+<div class="guide-fab-group" id="guide-fab-group" aria-hidden="true">
+  <button
+    class="guide-fab-btn"
+    id="guide-fab-copy"
+    aria-label="Copy page as Markdown for LLM"
+    type="button"
+    title="Copy for LLM"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+    <span class="guide-fab-label">Copy for LLM</span>
+  </button>
+
+  <a
+    class="guide-fab-btn"
+    id="guide-fab-github"
+    aria-label="Open source file on GitHub"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Open in GitHub"
+    href="#"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <span class="guide-fab-label">GitHub</span>
+  </a>
+</div>
+
+<div class="guide-fab-toast" id="guide-fab-toast" aria-live="polite" aria-atomic="true"></div>
+
+<script define:vars={{ SLUG_TO_PATH, GUIDE_REPO, RAW_BASE }}>
+  function getSlug() {
+    // e.g. /guide/team-knowledge-base/ → "team-knowledge-base"
+    const match = window.location.pathname.match(/^\/guide\/([^/]+)\/?$/)
+    return match ? match[1] : null
+  }
+
+  function getFilePath(slug) {
+    const rel = SLUG_TO_PATH[slug]
+    return rel ? `guide/${rel}.md` : null
+  }
+
+  function showToast(message, isError = false) {
+    const toast = document.getElementById('guide-fab-toast')
+    if (!toast) return
+    toast.textContent = message
+    toast.classList.add('is-visible')
+    if (isError) toast.classList.add('is-error')
+    setTimeout(() => {
+      toast.classList.remove('is-visible', 'is-error')
+    }, 2500)
+  }
+
+  function init() {
+    const slug = getSlug()
+    if (!slug) return
+
+    const filePath = getFilePath(slug)
+    const group = document.getElementById('guide-fab-group')
+    const githubBtn = document.getElementById('guide-fab-github')
+    const copyBtn = document.getElementById('guide-fab-copy')
+
+    if (!group || !githubBtn || !copyBtn) return
+
+    // Show the group
+    group.removeAttribute('aria-hidden')
+    group.style.display = 'flex'
+
+    // Set GitHub URL
+    if (filePath) {
+      const githubUrl = `${GUIDE_REPO}/blob/main/${filePath}`
+      githubBtn.setAttribute('href', githubUrl)
+    } else {
+      // Fallback to repo root
+      githubBtn.setAttribute('href', `${GUIDE_REPO}/tree/main/guide`)
+    }
+
+    // Copy for LLM: fetch raw Markdown and copy to clipboard
+    copyBtn.addEventListener('click', async () => {
+      if (!filePath) {
+        showToast('Source file not found', true)
+        return
+      }
+      const rawUrl = `${RAW_BASE}/${filePath}`
+      try {
+        copyBtn.classList.add('is-loading')
+        const res = await fetch(rawUrl)
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const text = await res.text()
+        await navigator.clipboard.writeText(text)
+        copyBtn.classList.remove('is-loading')
+        copyBtn.classList.add('is-done')
+        showToast('Markdown copied to clipboard')
+        setTimeout(() => copyBtn.classList.remove('is-done'), 1500)
+      } catch (err) {
+        copyBtn.classList.remove('is-loading')
+        showToast('Copy failed — try again', true)
+        console.error('[GuidePageFab] copy error:', err)
+      }
+    })
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init)
+  } else {
+    init()
+  }
+</script>
+
+<style>
+  .guide-fab-group {
+    position: fixed;
+    bottom: 6rem; /* above feedback-wrapper (1.5rem + ~3rem button + gap) */
+    right: 1.5rem;
+    z-index: 89;
+    display: none; /* shown by JS only on guide pages */
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .guide-fab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface-2, #1e1e2e);
+    color: var(--text-primary, #e0e0e0);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+    border-radius: 50px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .guide-fab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    background: var(--surface-3, #2a2a3e);
+    color: var(--text-primary, #fff);
+  }
+
+  .guide-fab-btn:active {
+    transform: translateY(0);
+  }
+
+  .guide-fab-btn.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .guide-fab-btn.is-done {
+    background: #1a472a;
+    border-color: #2d6a4f;
+    color: #74c69d;
+  }
+
+  .guide-fab-label {
+    line-height: 1;
+  }
+
+  /* Toast notification */
+  .guide-fab-toast {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    background: var(--surface-2, #1e1e2e);
+    color: var(--text-primary, #e0e0e0);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+    border-radius: 8px;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .guide-fab-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .guide-fab-toast.is-error {
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+
+  /* Hide labels on very small screens */
+  @media (max-width: 480px) {
+    .guide-fab-label {
+      display: none;
+    }
+
+    .guide-fab-btn {
+      padding: 0.6rem;
+      border-radius: 50%;
+    }
+  }
+</style>

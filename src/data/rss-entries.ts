@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.186',
+    date: 'Jun 23, 2026',
+    description: 'New claude mcp login/logout <name> command authenticates MCP servers directly from the CLI without the interactive /mcp menu, with --no-browser support for SSH. ! bash commands now auto-trigger Claude to respond to output (opt-out via respondToBashCommands: false). Background subagents surface permission prompts in the main session instead of auto-denying. Fixed Agent(type) deny rules not enforced for named subagent spawns. 25+ bug fixes.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21186-2026-06-23',
+  },
+  {
     type: 'new_page',
     title: 'New workflow: Smart-Suggest BM25 Skill Routing',
     date: 'Jun 19, 2026',
