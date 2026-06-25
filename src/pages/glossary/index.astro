@@ -6,8 +6,8 @@ function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
 }
 
-const title = 'Claude Code Glossary: 139 Terms Defined'
-const description = 'Comprehensive alphabetical glossary of Claude Code terms, community patterns, and AI engineering concepts. From CLAUDE.md to vibe coding, Plan Mode to prompt injection.'
+const title = 'Claude Code Glossary: 139 Terms Defined (Hooks, MCP, Agents, Slash Commands)'
+const description = 'Definitions for every Claude Code concept: hooks (PreToolUse, PostToolUse), MCP servers, slash commands, sub-agents, CLAUDE.md, permission modes, context window, and 130+ more terms.'
 
 const grouped = groupByLetter(glossaryTerms)
 const letters = Array.from(grouped.keys()).sort()
