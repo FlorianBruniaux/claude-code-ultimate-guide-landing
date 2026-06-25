@@ -16,7 +16,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-06-19',
   'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
   'https://cc.bruniaux.com/faq/': '2026-06-08',
-  'https://cc.bruniaux.com/releases/': '2026-06-19',
+  'https://cc.bruniaux.com/releases/': '2026-06-25',
   'https://cc.bruniaux.com/examples/': '2026-06-08',
   'https://cc.bruniaux.com/quiz/': '2026-06-08',
   'https://cc.bruniaux.com/security/': '2026-06-18',
@@ -127,6 +127,10 @@ export default defineConfig({
 
     // /ultrareview is a deprecated slash-command alias → releases page
     '/ultrareview': '/releases/',
+
+    // 404 fixes (GSC batch inspection, 2026-06-25)
+    '/guide/team-knowledge-infrastructure/': '/guide/team-knowledge-base/',
+    '/guide/claude-md-best-practices/': '/claude-md-best-practices/',
   },
 
   integrations: [

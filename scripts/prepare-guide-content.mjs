@@ -57,7 +57,7 @@ const ANCHOR_MAP_PATH = resolve(ROOT, 'src/data/guide-anchor-map.json')
 // --- Chapter definitions ---
 const CHAPTERS = [
   { num: 0,  slug: '00-introduction',      title: 'Introduction',           order: 0,  desc: 'Overview, TL;DR, and full table of contents for the Claude Code Ultimate Guide.' },
-  { num: 1,  slug: '01-quick-start',       title: '1. Quick Start',         order: 1,  desc: 'Install Claude Code and complete your first AI-assisted task in 15 minutes. Essential slash commands, permission modes, context management basics, and 8 beginner mistakes to avoid.' },
+  { num: 1,  slug: '01-quick-start',       title: 'Claude Code Quick Start: Install, First Task & Key Mistakes to Avoid', label: '1. Quick Start', order: 1,  desc: 'Install Claude Code and complete your first AI-assisted task in 15 minutes. Essential slash commands, permission modes, context management basics, and 8 beginner mistakes to avoid.' },
   { num: 2,  slug: '02-core-workflow',     title: '2. Core Workflow',       order: 2,  desc: 'Master the Claude Code workflow: context window zones (50/70/90%), Plan Mode for safe exploration, WHAT/WHERE/HOW/VERIFY prompting formula, Rewind to undo changes, and trust calibration.' },
   { num: 3,  slug: '03-memory-files',      title: '3. Memory & Files',      order: 3,  desc: 'Configure CLAUDE.md project memory files and .claude/ folder structure. Settings hierarchy, permissions, hooks config, personal vs team settings — give Claude persistent project context.' },
   { num: 4,  slug: '04-agents',            title: '4. Agents',              order: 4,  desc: 'Create custom Claude Code agents: backend-architect, code-reviewer, security-auditor, devops-sre. Tool SEO for routing, sub-agent orchestration, and multi-agent coordination with TeamCreate.' },
@@ -120,7 +120,8 @@ function detectChapterBoundary(line, currentChapter) {
  * Supports both inline (tags: [...]) and block (tags:\n  - ...) YAML forms.
  */
 function addStarlightFm(content, meta) {
-  const sidebarYaml = `sidebar:\n  order: ${meta.order}`
+  const sidebarLabel = meta.label ? `\n  label: '${meta.label}'` : ''
+  const sidebarYaml = `sidebar:\n  order: ${meta.order}${sidebarLabel}`
   const fmRegex = /^---\r?\n([\s\S]*?)\r?\n---/
 
   const match = content.match(fmRegex)
@@ -474,7 +475,7 @@ for (const line of lines) {
 // Write chapter files
 ensureDir(OUT_ULTIMATE)
 
-for (const { num, slug, title, desc, order } of CHAPTERS) {
+for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   let content = chapterLines.get(num)?.join('\n') ?? ''
   // Skip nearly-empty chapters (fewer than 5 non-blank lines)
   const nonBlank = content.split('\n').filter(l => l.trim()).length
@@ -485,7 +486,8 @@ for (const { num, slug, title, desc, order } of CHAPTERS) {
   content = rewriteRelativeGuideLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
 
-  const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}\n---`
+  const sidebarLabel = label ? `\n  label: '${label}'` : ''
+  const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}\n---`
   let output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
   output = renderMermaidBlocks(output, slug)
 
