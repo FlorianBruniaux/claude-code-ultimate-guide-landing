@@ -22,6 +22,29 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
                 </a>
             </div>
 
+            <div class="hero-nav-cards" role="navigation" aria-label="Quick access">
+                <a href="/quiz/" class="hero-nav-card">
+                    <span class="hero-nav-icon">🎯</span>
+                    <span class="hero-nav-label">Quiz</span>
+                    <span class="hero-nav-desc">Test your knowledge</span>
+                </a>
+                <a href="/cheatsheets/" class="hero-nav-card">
+                    <span class="hero-nav-icon">📋</span>
+                    <span class="hero-nav-label">Recap Cards</span>
+                    <span class="hero-nav-desc">30+ topic cheatsheets</span>
+                </a>
+                <a href="/whitepapers/" class="hero-nav-card">
+                    <span class="hero-nav-icon">📄</span>
+                    <span class="hero-nav-label">Whitepapers</span>
+                    <span class="hero-nav-desc">12 in-depth guides</span>
+                </a>
+                <a href="/examples/" class="hero-nav-card">
+                    <span class="hero-nav-icon">⚡</span>
+                    <span class="hero-nav-label">Examples</span>
+                    <span class="hero-nav-desc">271 real workflows</span>
+                </a>
+            </div>
+
             <HeroBlogPosts />
 
             <div class="hero-badges">
@@ -218,6 +241,45 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
 .badge-pdf .badge-value { background-color: #dc2626; }
 .badge-epub .badge-value { background-color: #7c3aed; }
 
+/* Nav cards grid */
+.hero-nav-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.hero-nav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.hero-nav-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-tertiary);
+}
+
+.hero-nav-icon { font-size: 1.1rem; }
+
+.hero-nav-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.hero-nav-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
 /* Quick navigation */
 .hero-quick-nav {
     display: flex;
@@ -272,6 +334,12 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
         font-size: 2rem;
     }
 
+}
+
+@media (max-width: 640px) {
+    .hero-nav-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {

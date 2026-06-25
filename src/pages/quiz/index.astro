@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 
-const title = 'Claude Code Quiz: 346 Questions | Test Free'
-const description = 'Free Claude Code quiz with 346 questions across 15 categories. Test your knowledge from beginner to power user. Track progress and share your score.'
+const title = 'Claude Code Quiz: Test Your Knowledge of Claude Code'
+const description = 'Take the Claude Code quiz: 346 questions across 15 categories, from installation to advanced agents. Free, instant results, shareable score.'
 
 const jsonLd = [
   {
@@ -161,6 +161,8 @@ const jsonLd = [
         <button class="btn btn-secondary" id="copy-result-btn">Copy Result</button>
         <button class="btn btn-primary" id="retry-btn">Try Again</button>
       </div>
+
+      <div id="quiz-cta" class="quiz-cta"></div>
     </div>
   </div>
   </div>
@@ -845,6 +847,32 @@ const jsonLd = [
       75% { transform: translateX(4px); }
     }
     .shake { animation: shake 0.3s ease; }
+
+    .quiz-cta {
+      margin-top: var(--space-xl);
+      padding: var(--space-xl);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      text-align: left;
+    }
+    .quiz-cta h4 { margin: 0 0 var(--space-md) 0; color: var(--text-primary); font-size: 1rem; }
+    .quiz-cta-links { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .quiz-cta-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      transition: border-color var(--transition-fast);
+    }
+    .quiz-cta-link:hover { border-color: var(--accent); color: var(--accent); }
+    .quiz-cta-link strong { color: var(--accent); }
   </style>
 
   <script>
@@ -1024,6 +1052,13 @@ const jsonLd = [
       currentQuestionIndex = 0;
       answers = {};
       startTime = Date.now();
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'quiz_start', {
+          quiz_name: 'claude_code',
+          question_count: filteredQuestions.length,
+          difficulty: selectedDifficulty,
+        });
+      }
       setupScreen.style.display = 'none';
       document.querySelector('.page-hero').style.display = 'none';
       questionScreen.classList.add('active');
@@ -1194,8 +1229,48 @@ const jsonLd = [
         return `<div class="category-score-item"><span>${cat}</span><div style="display: flex; align-items: center; gap: var(--space-sm);"><span style="font-family: var(--font-mono); font-size: 0.9rem;">${score.correct}/${score.total}${deltaHTML}</span><div class="category-score-bar"><div class="category-score-fill" style="width: ${catPct}%"></div></div></div></div>`;
       }).join('');
       document.getElementById('share-text').textContent = `Claude Code Quiz: ${percentage}% (${correct}/${total}) - ${badge} level!\nTest yours: cc.bruniaux.com/quiz`;
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'quiz_complete', {
+          quiz_name: 'claude_code',
+          score: percentage,
+          correct_answers: correct,
+          total_questions: total,
+          badge,
+          difficulty: selectedDifficulty,
+          time_elapsed_seconds: elapsed,
+        });
+      }
+      renderQuizCta(percentage);
       renderMostMissedQuestions();
       renderHistory();
+    }
+
+    function renderQuizCta(percentage) {
+      const cta = document.getElementById('quiz-cta');
+      if (!cta) return;
+      let heading, links;
+      if (percentage < 50) {
+        heading = 'Build your foundations';
+        links = [
+          { href: '/cheatsheet/', label: 'Cheatsheet', desc: 'all commands on one page' },
+          { href: '/guide/ultimate-guide/01-quick-start/', label: 'Quick Start Guide', desc: 'installation through first task' },
+        ];
+      } else if (percentage < 80) {
+        heading = 'Go deeper';
+        links = [
+          { href: '/workflows/', label: 'Workflows', desc: 'advanced patterns and agent flows' },
+          { href: '/cheatsheets/', label: 'Recap Cards', desc: '30+ cheatsheets by topic' },
+          { href: '/releases/', label: 'Version History', desc: 'env vars and config flags reference' },
+        ];
+      } else {
+        heading = 'Expert territory';
+        links = [
+          { href: '/whitepapers/', label: 'Whitepapers', desc: '12 in-depth technical guides' },
+          { href: '/roles/', label: 'AI Roles', desc: 'team roles and adoption strategies' },
+          { href: '/releases/', label: 'Version History', desc: 'every change since launch' },
+        ];
+      }
+      cta.innerHTML = `<h4>${heading}</h4><div class="quiz-cta-links">${links.map(l => `<a href="${l.href}" class="quiz-cta-link"><strong>${l.label}</strong><span style="color:var(--text-secondary);font-size:0.85rem;">${l.desc}</span></a>`).join('')}</div>`;
     }
 
     function renderMostMissedQuestions() {

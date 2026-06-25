@@ -131,6 +131,11 @@ export default defineConfig({
     // 404 fixes (GSC batch inspection, 2026-06-25)
     '/guide/team-knowledge-infrastructure/': '/guide/team-knowledge-base/',
     '/guide/claude-md-best-practices/': '/claude-md-best-practices/',
+
+    // Cannibalization fixes: guide sub-pages vs standalone landing pages
+    '/guide/ai-roles/': '/roles/',
+    '/guide/context-engineering/': '/context-engineering/',
+    '/guide/ai-ecosystem/': '/ecosystem/',
   },
 
   integrations: [
@@ -144,6 +149,7 @@ export default defineConfig({
         './src/styles/starlight-overrides.css',
       ],
       components: {
+        Head: './src/components/starlight/Head.astro',
         Header: './src/components/starlight/Header.astro',
         Footer: './src/components/starlight/Footer.astro',
       },
