@@ -140,6 +140,14 @@ kbd {
     line-height: 1.6;
 }
 
+.page-hero .hero-answer {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 720px;
+    line-height: 1.6;
+    margin: 0 0 var(--space-xl);
+}
+
 .page-hero .cta-buttons {
     display: flex;
     gap: var(--space-md);
