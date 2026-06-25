@@ -1255,4 +1255,24 @@ const jsonLd = [
 
     loadQuestions();
   </script>
+
+  <section class="related-links">
+    <div class="container">
+      <h2>Keep Learning</h2>
+      <ul>
+        <li><a href="/cheatsheet/">Cheatsheet</a>: all commands on one page</li>
+        <li><a href="/glossary/">Glossary</a>: definitions for every Claude Code term</li>
+        <li><a href="/releases/">Releases</a>: full version history and env vars reference</li>
+        <li><a href="/guide/data-privacy/">Data Privacy</a>: what gets sent to Anthropic and how to control it</li>
+      </ul>
+    </div>
+  </section>
+  <style>
+    .related-links { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); background: var(--bg-secondary); }
+    .related-links h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-md); }
+    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 640px; margin: 0 auto; }
+    .related-links li { color: var(--text-secondary); line-height: 1.6; }
+    .related-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .related-links a:hover { text-decoration: underline; }
+  </style>
 </Layout>
