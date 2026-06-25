@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.191',
+    date: 'Jun 24, 2026',
+    description: '/rewind now works after /clear to resume a conversation from the point before you cleared it. Streaming CPU usage drops ~37% via 100ms update coalescing. MCP capability discovery retries transient network errors; OAuth headless mode skips the browser popup. Background agents no longer resurrect after being stopped. 20+ bug fixes.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21191-2026-06-24',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.187',
+    date: 'Jun 23, 2026',
+    description: 'New sandbox.credentials setting blocks sandboxed commands from reading credential files (.aws/credentials, .ssh/) and secret environment variables. Org-configured model restrictions now enforced across the model picker, --model, /model, and ANTHROPIC_MODEL. Remote MCP tool calls that hung indefinitely now abort after 5 minutes with a clear error. 15+ additional bug fixes.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21187-2026-06-23',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.186',
     date: 'Jun 23, 2026',
     description: 'New claude mcp login/logout <name> command authenticates MCP servers directly from the CLI without the interactive /mcp menu, with --no-browser support for SSH. ! bash commands now auto-trigger Claude to respond to output (opt-out via respondToBashCommands: false). Background subagents surface permission prompts in the main session instead of auto-denying. Fixed Agent(type) deny rules not enforced for named subagent spawns. 25+ bug fixes.',

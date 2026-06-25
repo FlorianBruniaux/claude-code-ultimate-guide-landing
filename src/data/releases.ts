@@ -16,6 +16,37 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.191',
+    date: 'Jun 24, 2026',
+    highlights: [
+      '⭐ /rewind now works after /clear to resume a conversation from before the clear',
+      'Reduced CPU usage during streaming by ~37% by coalescing text updates to 100ms intervals',
+      'MCP server reliability: capability discovery retries transient errors; OAuth headless paste-URL fallback; HTTP 404 errors show URL',
+      'Fixed background agents resurrecting after stop; 20+ bug fixes including scroll jump and welcome splash overflow',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.190',
+    date: 'Jun 24, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.187',
+    date: 'Jun 23, 2026',
+    highlights: [
+      '⭐ sandbox.credentials setting blocks sandboxed commands from reading credential files and secret environment variables',
+      '⭐ Org-configured model restrictions enforced in model picker, --model, /model, and ANTHROPIC_MODEL with explanatory message',
+      'Fixed remote MCP tool calls hanging indefinitely; now abort after 5 min with error (override: CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT)',
+      'Fixed --resume failing after no-model -p runs; fixed structured output looping; 15+ bug fixes',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.186',
     date: 'Jun 23, 2026',
     highlights: [
@@ -24,8 +55,6 @@ export const releases: Release[] = [
       'Background subagents surface permission prompts in main session instead of auto-denying; dialog shows which agent is asking',
       'Fixed Agent(type) deny rules and Agent(x,y) allowed-types restrictions not enforced for named subagent spawns; 25+ bug fixes',
     ],
-    latest: true,
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.185',
