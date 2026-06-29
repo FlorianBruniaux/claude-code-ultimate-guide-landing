@@ -16,6 +16,29 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.195',
+    date: 'Jun 26, 2026',
+    highlights: [
+      'Fixed hook matchers with hyphenated identifiers (e.g. code-reviewer, mcp__brave-search) accidentally substring-matching; use mcp__brave-search__.* to match all tools from a server',
+      'Fixed voice dictation on macOS (silence after input device change) and auto-submit for languages without spaces (Japanese, Chinese, Thai)',
+      'Fixed background agent daemon socket failures, blank screen on crash restart, jobs disappearing when written by newer version',
+      'Added CLAUDE_CODE_DISABLE_MOUSE_CLICKS; Remote session startup shows provisioning checklist',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.193',
+    date: 'Jun 25, 2026',
+    highlights: [
+      '⭐ claude_code.assistant_response OpenTelemetry event logs model responses; set OTEL_LOG_ASSISTANT_RESPONSES=0 if you log prompts and want to exclude responses',
+      'autoMode.classifyAllShell routes all Bash/PowerShell through auto-mode classifier; denial reasons shown in transcript, toast, and /permissions',
+      'Live file path autocomplete in bash mode (!); startup notice when MCP servers need auth',
+      'Automatic memory-pressure reaping for idle background shell commands (disable: CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1)',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.191',
     date: 'Jun 24, 2026',
     highlights: [
@@ -24,7 +47,6 @@ export const releases: Release[] = [
       'MCP server reliability: capability discovery retries transient errors; OAuth headless paste-URL fallback; HTTP 404 errors show URL',
       'Fixed background agents resurrecting after stop; 20+ bug fixes including scroll jump and welcome splash overflow',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

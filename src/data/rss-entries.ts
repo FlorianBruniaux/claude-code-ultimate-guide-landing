@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.193',
+    date: 'Jun 25, 2026',
+    description: 'New claude_code.assistant_response OpenTelemetry event logs model response text (set OTEL_LOG_ASSISTANT_RESPONSES=0 if you already log prompts and want to exclude responses). New autoMode.classifyAllShell setting routes all Bash/PowerShell through the auto-mode classifier. Live file path autocomplete in bash mode (!) and automatic memory-pressure reaping for idle background shell commands.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21193-2026-06-25',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.191',
     date: 'Jun 24, 2026',
     description: '/rewind now works after /clear to resume a conversation from the point before you cleared it. Streaming CPU usage drops ~37% via 100ms update coalescing. MCP capability discovery retries transient network errors; OAuth headless mode skips the browser popup. Background agents no longer resurrect after being stopped. 20+ bug fixes.',
