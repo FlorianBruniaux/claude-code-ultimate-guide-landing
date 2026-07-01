@@ -16,6 +16,28 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.197',
+    date: 'Jun 30, 2026',
+    highlights: [
+      '⭐ Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31',
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Claude Sonnet 5',
+  },
+  {
+    version: 'v2.1.196',
+    date: 'Jun 29, 2026',
+    highlights: [
+      'Added organization default models (shows as "Org default" or "Role default" in /model); readable default session names; clickable file attachments in chat (Cmd/Ctrl-click reveals in Finder/Explorer)',
+      'Security: claude mcp list/get no longer spawn .mcp.json servers self-approved by a committed .claude/settings.json; untrusted workspaces show pending approval',
+      'Fixed waking a background job permanently deleting its conversation on a transcript misread; rate-limit warning flicker/over-counting; duplicate recap lines after StructuredOutput retry',
+      'Improved background session reliability across process stop/restart/update; /code-review merged five cleanup finders (~25% token reduction); streaming idle watchdog on by default',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.195',
     date: 'Jun 26, 2026',
     highlights: [
@@ -24,7 +46,6 @@ export const releases: Release[] = [
       'Fixed background agent daemon socket failures, blank screen on crash restart, jobs disappearing when written by newer version',
       'Added CLAUDE_CODE_DISABLE_MOUSE_CLICKS; Remote session startup shows provisioning checklist',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

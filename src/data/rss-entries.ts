@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.197',
+    date: 'Jun 30, 2026',
+    description: 'Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21197-2026-06-30',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.196',
+    date: 'Jun 29, 2026',
+    description: 'Organization default models now show as "Org default" in /model, plus readable default session names and clickable file attachments in chat. Security fix: claude mcp list/get no longer spawns .mcp.json servers self-approved by a committed .claude/settings.json. Streaming idle watchdog is now on by default, and background sessions survive process stop/restart/update, including on Windows.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21196-2026-06-29',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.193',
     date: 'Jun 25, 2026',
     description: 'New claude_code.assistant_response OpenTelemetry event logs model response text (set OTEL_LOG_ASSISTANT_RESPONSES=0 if you already log prompts and want to exclude responses). New autoMode.classifyAllShell setting routes all Bash/PowerShell through the auto-mode classifier. Live file path autocomplete in bash mode (!) and automatic memory-pressure reaping for idle background shell commands.',
