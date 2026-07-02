@@ -1,0 +1,21 @@
+src/data/guide-content-entries.ts
+  s_4cca2409e9c109::t_152893d1d37f64 3,983-990,999-1086,1466,1474,1498,2266,2274,4258,4711-4718,5151-5158,13951-14046
+src/data/guide-search-entries.ts
+  s_4cca2409e9c109::t_a59b4ebc7a36cd 198-205,1182-1197
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "4678f99636669e42be6382f3a98195d3dc12c198",
+  "prompts": {},
+  "sessions": {
+    "s_4cca2409e9c109": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac85cfe4-9c8f-4e55-89b1-dfc7d682dc10",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
