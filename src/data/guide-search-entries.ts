@@ -116,6 +116,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-github-actions-code-review-gate-job",
+    "title": "Github Actions Code Review Gate Job",
+    "keywords": "github actions code review gate job examples github actions claude code review yml   'gate' job parses posted review's must fix count, fails the job (add to branch protection required checks to block merge)",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml - 'gate' job parses posted review's Must Fix count, fails the job (add to branch protection required checks to block merge)",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-provider-code-review-guide",
+    "title": "Multi Provider Code Review Guide",
+    "keywords": "multi provider code review guide guide workflows multi provider code review",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-provider-code-review-batched-workflow",
+    "title": "Multi Provider Code Review Batched Workflow",
+    "keywords": "multi provider code review batched workflow examples github actions claude code review batched yml",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review-batched.yml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-provider-code-review-greptile-templates",
+    "title": "Multi Provider Code Review Greptile Templates",
+    "keywords": "multi provider code review greptile templates examples github actions greptile  (config json, rules md, files json)",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/.greptile/ (config.json, rules.md, files.json)",
+    "source": "guide"
+  },
+  {
     "id": "guide-rules-templates-directory",
     "title": "Rules Templates Directory",
     "keywords": "rules templates directory examples rules",

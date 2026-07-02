@@ -11551,7 +11551,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-code-review-cross-reference",
     "title": "Cross-reference",
-    "keywords": "cross reference code review claude code feature for manual code review workflows (cli, no teams/enterprise required): - multi-agent code review workflow — diy agent teams via cli - github actions in",
+    "keywords": "cross reference code review claude code feature for manual code review workflows (cli, no teams/enterprise required): - multi-agent code review workflow: diy agent teams via cli - github actions int",
     "category": "Workflows",
     "url": "/guide/workflows/code-review/#cross-reference",
     "source": "guide"
@@ -11559,7 +11559,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-code-review-known-limitations-research-preview",
     "title": "Known limitations (research preview)",
-    "keywords": "known limitations research preview code review claude code feature - teams and enterprise only — no free/pro access - not available for organizations with zero data retention (zdr) enabled - github only for the manage",
+    "keywords": "known limitations research preview code review claude code feature - teams and enterprise only, no free/pro access - not available for organizations with zero data retention (zdr) enabled - github only for the managed",
     "category": "Workflows",
     "url": "/guide/workflows/code-review/#known-limitations-research-preview",
     "source": "guide"
@@ -12450,6 +12450,94 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "see also iterative refinement - exploration-workflow.md — explore alternatives before iterating - tdd-with-claude.md — tdd is iterative refinement with tests - plan-driven.md — pla",
     "category": "Workflows",
     "url": "/guide/workflows/iterative-refinement/#see-also",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-why-three-providers-not-one",
+    "title": "Why Three Providers, Not One",
+    "keywords": "why three providers not one multi provider code review non redundant automated pr review a single review pass, no matter how good the model, misses things a differently-shaped tool catches. claude code action reasons deeply about a diff in",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#why-three-providers-not-one",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-role-separation",
+    "title": "Role Separation",
+    "keywords": "role separation multi provider code review non redundant automated pr review provider job can it block merge? why this job fits this tool ---------- ----- --------------------- ------------------------------ claude code action",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#role-separation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-the-non-duplication-rule",
+    "title": "The Non-Duplication Rule",
+    "keywords": "the non duplication rule multi provider code review non redundant automated pr review write the boundary into every config file, not just into a wiki page nobody reads mid-review-setup. concretely: - (claude): a one-line header noting i",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#the-non-duplication-rule",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-blocking-merge-the-ci-gate",
+    "title": "Blocking Merge: the CI Gate",
+    "keywords": "blocking merge the ci gate multi provider code review non redundant automated pr review automated review comments are advisory by default, nothing stops a merge unless a required ci check fails. the pattern that makes claude's findings ac",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#blocking-merge-the-ci-gate",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-scaling-to-large-prs-batching",
+    "title": "Scaling to Large PRs: Batching",
+    "keywords": "scaling to large prs batching multi provider code review non redundant automated pr review a single review pass over a 150-file pr either times out or spreads the model's attention so thin that findings get shallow. the batched workflow temp",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#scaling-to-large-prs-batching",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-cutting-redundant-reviews-delta-review",
+    "title": "Cutting Redundant Reviews: Delta-Review",
+    "keywords": "cutting redundant reviews delta review multi provider code review non redundant automated pr review re-reviewing the entire diff on every push to a long-lived pr burns tokens re-checking code claude already approved on the previous push. a delta-revi",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#cutting-redundant-reviews-delta-review",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-cross-tool-deduplication",
+    "title": "Cross-Tool Deduplication",
+    "keywords": "cross tool deduplication multi provider code review non redundant automated pr review when two or three bots comment on the same pr, the llm reviewer can read what the others already posted before writing its own findings, and skip anyt",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#cross-tool-deduplication",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-known-friction-rule-drift-across-configs",
+    "title": "Known Friction: Rule Drift Across Configs",
+    "keywords": "known friction rule drift across configs multi provider code review non redundant automated pr review there is no single generator that pushes one source of truth into all three provider configs. canonical conventions live in whatever internal docs a p",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#known-friction-rule-drift-across-configs",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-interactive-companions-vs-ci",
+    "title": "Interactive Companions vs. CI",
+    "keywords": "interactive companions vs ci multi provider code review non redundant automated pr review everything above runs unattended in ci. a separate, complementary layer is a handful of local claude code skills a developer runs by hand during activ",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#interactive-companions-vs-ci",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-setup-checklist",
+    "title": "Setup Checklist",
+    "keywords": "setup checklist multi provider code review non redundant automated pr review 1. copy + (see github actions workflows for the base setup) 2. fill in the prompt's stack context and a severity calibration table matched to your pro",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#setup-checklist",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-multi-provider-code-review-see-also",
+    "title": "See Also",
+    "keywords": "see also multi provider code review non redundant automated pr review - github actions workflows: the base patterns this architecture extends - ready-to-use templates: , , , - code review (managed feature): anthropic's o",
+    "category": "Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#see-also",
     "source": "guide"
   },
   {
