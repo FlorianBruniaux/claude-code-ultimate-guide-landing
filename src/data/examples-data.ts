@@ -341,10 +341,14 @@ export const EXAMPLES = {
         description: "CI/CD workflows for GitHub Actions automation",
         files: [
             { name: "claude-code-review.yml", path: "github-actions/claude-code-review.yml", description: "Prompt-based review with anti-hallucination protocol", favorite: true },
+            { name: "claude-code-review-batched.yml", path: "github-actions/claude-code-review-batched.yml", description: "Domain-split matrix code review for PRs over a file-count threshold" },
             { name: "claude-pr-auto-review.yml", path: "github-actions/claude-pr-auto-review.yml", description: "Auto code review on PRs" },
             { name: "claude-security-review.yml", path: "github-actions/claude-security-review.yml", description: "Security-focused PR scan" },
             { name: "claude-issue-triage.yml", path: "github-actions/claude-issue-triage.yml", description: "Auto-triage issues with labels" },
             { name: ".coderabbit.yaml", path: "github-actions/.coderabbit.yaml", description: "CodeRabbit AI code review configuration, copy to repo root" },
+            { name: ".greptile/config.json", path: "github-actions/.greptile/config.json", description: "Greptile PR review config, copy to repo root" },
+            { name: ".greptile/rules.md", path: "github-actions/.greptile/rules.md", description: "Greptile cross-file invariants rulebook template" },
+            { name: ".greptile/files.json", path: "github-actions/.greptile/files.json", description: "Greptile doc-to-glob RAG index template" },
             { name: "prompts/code-review.md", path: "github-actions/prompts/code-review.md", description: "Code review prompt template for GitHub Actions workflows" }
         ]
     },

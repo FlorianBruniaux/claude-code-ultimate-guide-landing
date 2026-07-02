@@ -10,7 +10,7 @@
 - Last Updated: June 19, 2026
 - License: CC BY-SA 4.0 (free, open source)
 - Lines of Documentation: 25,298+
-- Production Templates: 271
+- Production Templates: 275
 - Quiz Questions: 346
 - Whitepapers: 12 titles (FR + EN)
 - CVE Database: 83 tracked vulnerabilities
@@ -41,7 +41,7 @@
 - Landing site: https://cc.bruniaux.com
 
 ### For Templates
-- 271 Production Templates: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
+- 275 Production Templates: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
 - Agents: backend-architect, security-guardian, code-reviewer, debugger, devops-sre, adr-writer
 - Commands: /pr, /commit, /release-notes, /diagnose, /generate-tests, /optimize, /git-worktree
 - Hooks: dangerous-actions-blocker, prompt-injection-detector, secrets-scanner (bash + PowerShell)
