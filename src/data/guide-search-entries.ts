@@ -196,6 +196,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-support-csm-agent",
+    "title": "Support Csm Agent",
+    "keywords": "support csm agent guide workflows support csm agent",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/support-csm-agent/",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-teams-large-justified",
     "title": "Agent Teams Large Justified",
     "keywords": "agent teams large justified guide workflows agent teams",
@@ -1169,6 +1177,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "whitepapers en whitepapers",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/en/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-recap-cards-fr",
+    "title": "Recap Cards Fr",
+    "keywords": "recap cards fr whitepapers recap cards",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/recap-cards/fr/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-recap-cards-en",
+    "title": "Recap Cards En",
+    "keywords": "recap cards en whitepapers recap cards",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/recap-cards/en/",
     "source": "guide"
   },
   {
