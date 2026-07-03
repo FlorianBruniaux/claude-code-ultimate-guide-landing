@@ -1,0 +1,33 @@
+src/data/whitepapers-data.ts
+  s_4cca2409e9c109::t_8f78f93b5e6134 229
+  s_4cca2409e9c109::t_942f066768d7a3 121
+  s_4cca2409e9c109::t_06d5c7023af4e2 76
+  s_4cca2409e9c109::t_47ef2ead897391 46
+  s_4cca2409e9c109::t_a90eaa9c412eed 152
+  s_4cca2409e9c109::t_3e446f60185347 61
+  s_4cca2409e9c109::t_b9ece7f7412e7a 91
+  s_4cca2409e9c109::t_4a44c85c9354ca 167
+  s_4cca2409e9c109::t_cd709b6aad6c13 106
+  s_4cca2409e9c109::t_16f75c362a0719 182
+  s_4cca2409e9c109::t_503c1d248d5d8e 197
+  s_4cca2409e9c109::t_744bdd70851c1b 213
+  s_4cca2409e9c109::t_44aaf3e77ab86d 136
+src/data/guide-content-entries.ts
+  s_4cca2409e9c109::t_a81874d6f9dfa2 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "203bd268693279861b34a5a48d66fdb614a301c8",
+  "prompts": {},
+  "sessions": {
+    "s_4cca2409e9c109": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac85cfe4-9c8f-4e55-89b1-dfc7d682dc10",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
