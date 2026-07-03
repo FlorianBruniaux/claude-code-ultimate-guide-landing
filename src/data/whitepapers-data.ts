@@ -87,7 +87,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['security', 'production', 'hardening', 'sandbox'],
     gated: true,
     formats: ['pdf', 'epub'],
-    hashedFileFr: `03-securite.fr.${V}.a16fb4bca966.pdf`,
+    hashedFileFr: `03-securite.fr.${V}.0da2edd55a33.pdf`,
     hashedFileEn: `03-security.en.${V}.890b5c7db809.pdf`,
     slugFr: '03-securite',
     slugEn: '03-security',
