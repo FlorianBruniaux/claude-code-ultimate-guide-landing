@@ -1,0 +1,19 @@
+src/data/guide-search-entries.ts
+  s_5192e7e37cc8e8::t_d5824adb2b8e7b 1713,1729,1737,1753,1761,1769,1777,1785,1793
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "96a4eaa669fce8e31e530393add480ebdea60f7d",
+  "prompts": {},
+  "sessions": {
+    "s_5192e7e37cc8e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "de2a1cc5-ccc8-47ee-b18e-fbd8ac802f93",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
