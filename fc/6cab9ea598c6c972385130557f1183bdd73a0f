@@ -1,0 +1,19 @@
+src/data/recap-cards-data.ts
+  s_1183c9639859a2::t_c3e0c4b38c6ba5 43-44,53-54,63-64,73,76,86,95,108,110-111,113,116-117,140,143,145,153,158,162,175-178,180,183-184,190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "fc6cab9ea598c6c972385130557f1183bdd73a0f",
+  "prompts": {},
+  "sessions": {
+    "s_1183c9639859a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fa8d89c7-adb4-42e8-9e4e-d22173c3d7f1",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
