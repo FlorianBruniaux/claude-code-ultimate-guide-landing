@@ -1710,7 +1710,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-retention-summary",
     "title": "Data Privacy Retention Summary",
-    "keywords": "data privacy retention summary guide security data privacy md#tl retention summary",
+    "keywords": "data privacy retention summary guide security data privacy md#tldr retention summary",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1724,17 +1724,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-data-privacy-retention-policies",
-    "title": "Data Privacy Retention Policies",
-    "keywords": "data privacy retention policies guide security data privacy md#2 anthropic retention policies",
-    "category": "Guide",
-    "url": "/guide/data-privacy/",
-    "source": "guide"
-  },
-  {
     "id": "guide-data-privacy-zdr",
     "title": "Data Privacy Zdr",
-    "keywords": "data privacy zdr guide security data privacy md#tier zero data retention zdr",
+    "keywords": "data privacy zdr guide security data privacy md#when use enterprise api zdr",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1742,7 +1734,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-known-risks",
     "title": "Data Privacy Known Risks",
-    "keywords": "data privacy known risks guide security data privacy md#3 known risks",
+    "keywords": "data privacy known risks guide security data privacy md#2 known risks",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1758,7 +1750,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-browser-native-messaging",
     "title": "Data Privacy Browser Native Messaging",
-    "keywords": "data privacy browser native messaging guide security data privacy md#risk claude desktop browser integration",
+    "keywords": "data privacy browser native messaging guide security data privacy md#risk claude desktop browser integration silent native messaging host installation",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1766,7 +1758,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-protective-measures",
     "title": "Data Privacy Protective Measures",
-    "keywords": "data privacy protective measures guide security data privacy md#4 protective measures",
+    "keywords": "data privacy protective measures guide security data privacy md#3 protective measures",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1774,7 +1766,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-file-exclusions",
     "title": "Data Privacy File Exclusions",
-    "keywords": "data privacy file exclusions guide security data privacy md#42 configure file exclusions",
+    "keywords": "data privacy file exclusions guide security data privacy md#31 configure file exclusions",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1782,7 +1774,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-telemetry-optout",
     "title": "Data Privacy Telemetry Optout",
-    "keywords": "data privacy telemetry optout guide security data privacy md#44 opt out telemetry and error reporting",
+    "keywords": "data privacy telemetry optout guide security data privacy md#33 opt out telemetry and error reporting",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1790,15 +1782,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-enterprise-zdr",
     "title": "Data Privacy Enterprise Zdr",
-    "keywords": "data privacy enterprise zdr guide security data privacy md#6 enterprise considerations",
-    "category": "Guide",
-    "url": "/guide/data-privacy/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-data-privacy-gdpr-hipaa",
-    "title": "Data Privacy Gdpr Hipaa",
-    "keywords": "data privacy gdpr hipaa guide security data privacy md#when use enterprise api zdr",
+    "keywords": "data privacy enterprise zdr guide security data privacy md#5 enterprise considerations",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -1806,15 +1790,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-checklist",
     "title": "Data Privacy Checklist",
-    "keywords": "data privacy checklist guide security data privacy md#quick checklist",
-    "category": "Guide",
-    "url": "/guide/data-privacy/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-data-privacy-ip-considerations",
-    "title": "Data Privacy Ip Considerations",
-    "keywords": "data privacy ip considerations guide security data privacy md#8 intellectual property considerations",
+    "keywords": "data privacy checklist guide security data privacy md#quick audit checklist",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
