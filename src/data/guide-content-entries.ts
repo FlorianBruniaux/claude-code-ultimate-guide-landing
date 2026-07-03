@@ -1463,17 +1463,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick Jump",
-    "keywords": "quick jump claude code release history - 2.1.x series (january-june 2026): ⭐ claude sonnet 5 default model + native 1m context (2.1.197), org default models + clickable file attachments + s",
+    "keywords": "quick jump claude code release history - 2.1.x series (january-july 2026): retry hardening + subagent partial-work fixes + stacked slash-skill loading (2.1.199), ⭐ subagents background by d",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#quick-jump",
     "source": "guide"
   },
   {
-    "id": "gc-claude-code-releases-2-1-x-series-january-june-2026",
-    "title": "2.1.x Series (January-June 2026)",
-    "keywords": "2 1 x series january june 2026 claude code release history v2.1.197 (2026-06-30) ⭐ introducing claude sonnet 5: the new default model in claude code, with a native 1m-token context window and promotional prici v2 1 197 2026 06 30 v2 1 196 2026 06 29 v2 1 195 2026 06 26 v2 1 193 2026 06 25 v2 1 191 2026 06 24 v2 1 190 2026 06 24 v2 1 187 2026 06 23 v2 1 186 2026 06 23 v2 1 185 2026 06 22 v2 1 183 2026 06 19 v2 1 181 2026 06 18 v2 1 179 2026 06 17 v2 1 178 2026 06 17 v2 1 176 2026 06 15 v2 1 175 2",
+    "id": "gc-claude-code-releases-2-1-x-series-january-july-2026",
+    "title": "2.1.x Series (January-July 2026)",
+    "keywords": "2 1 x series january july 2026 claude code release history v2.1.199 (2026-07-02) retry hardening across the board: transient 429s retried automatically for subscribers, streaming partials preserved on mid-stre v2 1 199 2026 07 02 v2 1 198 2026 07 01 v2 1 197 2026 06 30 v2 1 196 2026 06 29 v2 1 195 2026 06 26 v2 1 193 2026 06 25 v2 1 191 2026 06 24 v2 1 190 2026 06 24 v2 1 187 2026 06 23 v2 1 186 2026 06 23 v2 1 185 2026 06 22 v2 1 183 2026 06 19 v2 1 181 2026 06 18 v2 1 179 2026 06 17 v2 1 178 2",
     "category": "Core Guides",
-    "url": "/guide/claude-code-releases/#2-1-x-series-january-june-2026",
+    "url": "/guide/claude-code-releases/#2-1-x-series-january-july-2026",
     "source": "guide"
   },
   {
@@ -1495,7 +1495,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-milestone-features",
     "title": "Milestone Features",
-    "keywords": "milestone features claude code release history version key features --------- -------------- v2.1.197 claude sonnet 5 becomes the default model, native 1m-token context, promotional pricing $2/$10",
+    "keywords": "milestone features claude code release history version key features --------- -------------- v2.1.198 subagents run in the background by default, claude in chrome generally available v2.1.197 claud",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#milestone-features",
     "source": "guide"
