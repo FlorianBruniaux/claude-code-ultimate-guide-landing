@@ -489,23 +489,29 @@ const jsonLd = [
         <h2>How to use</h2>
         <ol class="how-list">
           <li>
-            Open the template on GitHub and copy its content:
-            <code class="path-inline">{example.path}</code>
+            <span>
+              Open the template on GitHub and copy its content:
+              <code class="path-inline">{example.path}</code>
+            </span>
           </li>
           <li>
-            Place the file inside <code class="path-inline">{installDir}</code> in your project (or globally in <code class="path-inline">~/.claude/</code> to share across all projects).
-            {script && (
-              <span> For shell scripts, make it executable: <code class="path-inline">chmod +x {example.name}</code></span>
-            )}
+            <span>
+              Place the file inside <code class="path-inline">{installDir}</code> in your project (or globally in <code class="path-inline">~/.claude/</code> to share across all projects).
+              {script && (
+                <> For shell scripts, make it executable: <code class="path-inline">chmod +x {example.name}</code></>
+              )}
+            </span>
           </li>
           <li>
-            {example.path.endsWith('.md') || example.path.endsWith('.md')
-              ? 'Edit the Markdown content to match your project conventions, team constraints, and specific context.'
-              : example.path.endsWith('.sh') || example.path.endsWith('.ps1')
-              ? 'Review each command in the script, adjust paths and thresholds for your environment, then test it in a safe context before wiring it into hooks.'
-              : example.path.endsWith('.json') || example.path.endsWith('.yaml') || example.path.endsWith('.yml')
-              ? 'Replace placeholder values with your actual keys, endpoints, or preferences. Validate with a JSON/YAML linter before committing.'
-              : 'Read through the file, identify the sections that need project-specific values, and update them before committing.'}
+            <span>
+              {example.path.endsWith('.md') || example.path.endsWith('.md')
+                ? 'Edit the Markdown content to match your project conventions, team constraints, and specific context.'
+                : example.path.endsWith('.sh') || example.path.endsWith('.ps1')
+                ? 'Review each command in the script, adjust paths and thresholds for your environment, then test it in a safe context before wiring it into hooks.'
+                : example.path.endsWith('.json') || example.path.endsWith('.yaml') || example.path.endsWith('.yml')
+                ? 'Replace placeholder values with your actual keys, endpoints, or preferences. Validate with a JSON/YAML linter before committing.'
+                : 'Read through the file, identify the sections that need project-specific values, and update them before committing.'}
+            </span>
           </li>
         </ol>
       </section>
@@ -685,7 +691,7 @@ const jsonLd = [
   .how-list li {
     counter-increment: how-counter;
     display: grid;
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 2rem minmax(0, 1fr);
     gap: 0.75rem;
     align-items: start;
     color: var(--text-secondary);
