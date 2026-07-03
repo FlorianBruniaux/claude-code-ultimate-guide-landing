@@ -1,0 +1,20 @@
+src/pages/examples/[slug].astro
+  s_8fb41da7e7131a::t_c8f4c8b11d6315 694
+  s_8fb41da7e7131a::t_f4e5e0686c8cae 492-495,498-503,506-514
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "a005a59bd18f3afd4d29efa4ecc1851638a7937c",
+  "prompts": {},
+  "sessions": {
+    "s_8fb41da7e7131a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "222c82a5-bff4-4eef-a21d-a655b8e32428",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
