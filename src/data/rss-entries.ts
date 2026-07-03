@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.199',
+    date: 'Jul 2, 2026',
+    description: 'Retry hardening across the board: transient 429s are retried automatically for subscribers, streaming partials survive mid-stream server errors, and subagents now return partial work to the parent instead of failing silently. Stacked slash-skill invocations load up to 5 leading skills.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21199-2026-07-02',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.198',
+    date: 'Jul 1, 2026',
+    description: 'Subagents now run in the background by default, so Claude keeps working while they run. Claude in Chrome is generally available. Background agents commit, push, and open a draft PR when finishing code work, and the Explore agent now inherits the session model instead of running on Haiku.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21198-2026-07-01',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.197',
     date: 'Jun 30, 2026',
     description: 'Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31.',

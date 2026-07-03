@@ -16,12 +16,36 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.199',
+    date: 'Jul 2, 2026',
+    highlights: [
+      'Stacked slash-skill invocations like /skill-a /skill-b now load all leading skills (up to 5), not just the first',
+      'Transient server rate-limit errors (429s unrelated to usage limit) now retried automatically with backoff for subscribers; CLAUDE_CODE_RETRY_WATCHDOG raises default retries to 300 and lifts the CLAUDE_CODE_MAX_RETRIES cap',
+      'Fixed streaming responses discarded on mid-stream server errors (partial output now kept); subagents cut off by rate limits now return partial work to the parent; API errors in subagents reported instead of shown as success',
+      'Fixed the Linux background-agent daemon killing itself and all agents every ~50s after an unclean shutdown; SSL certificate errors now fail immediately with actionable guidance',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.198',
+    date: 'Jul 1, 2026',
+    highlights: [
+      '⭐ Subagents now run in the background by default: Claude keeps working while they run and is notified when they finish',
+      '⭐ Claude in Chrome is now generally available',
+      'Background agents launched from claude agents now commit, push, and open a draft PR when finishing code work; new Notification hook events agent_needs_input / agent_completed',
+      'Explore agent now inherits the session model (capped at Opus) instead of Haiku; subagents and compaction inherit extended thinking config; removed the /agents wizard',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Background subagents + Chrome GA',
+  },
+  {
     version: 'v2.1.197',
     date: 'Jun 30, 2026',
     highlights: [
       '⭐ Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31',
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: 'Claude Sonnet 5',
