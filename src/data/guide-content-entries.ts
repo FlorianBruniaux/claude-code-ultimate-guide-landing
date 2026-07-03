@@ -231,7 +231,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-the-core-claim",
     "title": "The core claim",
-    "keywords": "the core claim agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. martin fowler, addy osmani, o'reilly's 2026 ai radar, and arxiv 2605.18747 (may",
+    "keywords": "the core claim code as agent harness arxiv 2605 18747 agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. martin fowler, addy osmani, o'reilly's 2026 ai radar, and arxiv 2605.18747 (may",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#the-core-claim",
     "source": "guide"
@@ -239,7 +239,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-1-three-foundational-properties",
     "title": "1. Three Foundational Properties",
-    "keywords": "1 three foundational properties agent harness engineering arxiv 2605.18747 (\"code as agent harness\", may 2026) formalizes three properties that distinguish a harness from a simple llm wrapper: executability :",
+    "keywords": "1 three foundational properties code as agent harness arxiv 2605 18747 agent harness engineering arxiv 2605.18747 (\"code as agent harness\", may 2026) formalizes three properties that distinguish a harness from a simple llm wrapper: executability :",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#1-three-foundational-properties",
     "source": "guide"
@@ -247,7 +247,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-2-the-nine-components",
     "title": "2. The Nine Components",
-    "keywords": "2 the nine components agent harness engineering these nine components appear across claude code, anthropic sdk, openai agents sdk, langgraph, aws bedrock agentcore, and factory.ai missions. no singl 2 1 while loop engine 2 2 context management 2 3 tool registry 2 4 sub agent management 2 5 built in skills 2 6 session persistence 2 7 dynamic prompt assembly 2 8 lifecycle hooks 2 9 permission enforcement",
+    "keywords": "2 the nine components code as agent harness arxiv 2605 18747 agent harness engineering these nine components appear across claude code, anthropic sdk, openai agents sdk, langgraph, aws bedrock agentcore, and factory.ai missions. no singl 2 1 while loop engine 2 2 context management 2 3 tool registry 2 4 sub agent management 2 5 built in skills 2 6 session persistence 2 7 dynamic prompt assembly 2 8 lifecycle hooks 2 9 permission enforcement",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#2-the-nine-components",
     "source": "guide"
@@ -255,7 +255,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-3-the-lethal-trifecta-security-model",
     "title": "3. The Lethal Trifecta: Security Model",
-    "keywords": "3 the lethal trifecta security model agent harness engineering simon willison coined this term in 2025 (see martinfowler.com/articles/202508-ai-thoughts.html): private data + untrusted content + external communica defense layers why human review alone fails",
+    "keywords": "3 the lethal trifecta security model code as agent harness arxiv 2605 18747 agent harness engineering simon willison coined this term in 2025 (see martinfowler.com/articles/202508-ai-thoughts.html): private data + untrusted content + external communica defense layers why human review alone fails",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#3-the-lethal-trifecta-security-model",
     "source": "guide"
@@ -263,7 +263,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-4-ci-cd-agentic-patterns",
     "title": "4. CI/CD Agentic Patterns",
-    "keywords": "4 ci cd agentic patterns agent harness engineering three platforms have productized agents as a ci/cd primitive. the choice between them is an architectural decision, not a feature comparison. github a github agentic workflows aws bedrock agentcore gitlab duo",
+    "keywords": "4 ci cd agentic patterns code as agent harness arxiv 2605 18747 agent harness engineering three platforms have productized agents as a ci/cd primitive. the choice between them is an architectural decision, not a feature comparison. github a github agentic workflows aws bedrock agentcore gitlab duo",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#4-ci-cd-agentic-patterns",
     "source": "guide"
@@ -271,7 +271,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-5-digital-twin-testing",
     "title": "5. Digital Twin Testing",
-    "keywords": "5 digital twin testing agent harness engineering agents cannot be tested safely in production on the first pass. the standard practice for testing non-ai software is staging environments. for agents current coverage by service",
+    "keywords": "5 digital twin testing code as agent harness arxiv 2605 18747 agent harness engineering agents cannot be tested safely in production on the first pass. the standard practice for testing non-ai software is staging environments. for agents current coverage by service",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#5-digital-twin-testing",
     "source": "guide"
@@ -279,7 +279,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-6-observability-stack",
     "title": "6. Observability Stack",
-    "keywords": "6 observability stack agent harness engineering the open-source baseline that works in production, documented by independent organizations: for enterprise with governance requirements, add strata ma otel genai conventions may 2026 status what to instrument first llm as judge limitations",
+    "keywords": "6 observability stack code as agent harness arxiv 2605 18747 agent harness engineering the open-source baseline that works in production, documented by independent organizations: for enterprise with governance requirements, add strata ma otel genai conventions may 2026 status what to instrument first llm as judge limitations",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#6-observability-stack",
     "source": "guide"
@@ -287,7 +287,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-7-test-distribution-anti-pattern",
     "title": "7. Test Distribution Anti-pattern",
-    "keywords": "7 test distribution anti pattern agent harness engineering an empirical study across 39 open-source agent frameworks and 439 agentic applications (arxiv 2509.19185) found that more than 70% of testing effort i",
+    "keywords": "7 test distribution anti pattern code as agent harness arxiv 2605 18747 agent harness engineering an empirical study across 39 open-source agent frameworks and 439 agentic applications (arxiv 2509.19185) found that more than 70% of testing effort i",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#7-test-distribution-anti-pattern",
     "source": "guide"
@@ -295,7 +295,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-8-creator-verifier-pattern",
     "title": "8. Creator-Verifier Pattern",
-    "keywords": "8 creator verifier pattern agent harness engineering a structural pattern that consistently improves output correctness: one agent (or agent step) generates, a separate agent verifies, with no shared con",
+    "keywords": "8 creator verifier pattern code as agent harness arxiv 2605 18747 agent harness engineering a structural pattern that consistently improves output correctness: one agent (or agent step) generates, a separate agent verifies, with no shared con",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#8-creator-verifier-pattern",
     "source": "guide"
@@ -303,7 +303,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-9-reference-architecture",
     "title": "9. Reference Architecture",
-    "keywords": "9 reference architecture agent harness engineering ``` user instruction ↓ ┌─────────────────────────────────────────────────────────────────┐ │ harness │ │ │ │ ┌─────────────┐ ┌──────────────┐ ┌───────",
+    "keywords": "9 reference architecture code as agent harness arxiv 2605 18747 agent harness engineering ``` user instruction ↓ ┌─────────────────────────────────────────────────────────────────┐ │ harness │ │ │ │ ┌─────────────┐ ┌──────────────┐ ┌───────",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#9-reference-architecture",
     "source": "guide"
@@ -311,7 +311,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-see-also",
     "title": "See Also",
-    "keywords": "see also agent harness engineering - context engineering — ace pipeline, signal taxonomy, drift management - security hardening — production safety, injection defense - devops & sre — c",
+    "keywords": "see also code as agent harness arxiv 2605 18747 agent harness engineering - context engineering — ace pipeline, signal taxonomy, drift management - security hardening — production safety, injection defense - devops & sre — c",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#see-also",
     "source": "guide"
@@ -2511,7 +2511,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-quick-reference",
     "title": "Quick Reference",
-    "keywords": "quick reference hooks events reference event fires when matcher field can block? default timeout ------- ----------- --------------- ------------ ---------------- session begins or resumes",
+    "keywords": "quick reference claude code hooks events reference all 30 events matchers schemas event fires when matcher field can block? default timeout ------- ----------- --------------- ------------ ---------------- session begins or resumes",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#quick-reference",
     "source": "guide"
@@ -2519,7 +2519,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-matcher-values-by-event",
     "title": "Matcher Values by Event",
-    "keywords": "matcher values by event hooks events reference the field filters on a different field depending on the event type. tool events: matcher filters on events: , , , , values: , , , , , , , , , , , and tool events matcher filters on tool name sessionstart matcher filters on source setup matcher filters on trigger sessionend matcher filters on reason notification matcher filters on notification type subagentstart subagentstop matcher filters on agent type precompact postcompact matcher filters on trig",
+    "keywords": "matcher values by event claude code hooks events reference all 30 events matchers schemas the field filters on a different field depending on the event type. tool events: matcher filters on events: , , , , values: , , , , , , , , , , , and tool events matcher filters on tool name sessionstart matcher filters on source setup matcher filters on trigger sessionend matcher filters on reason notification matcher filters on notification type subagentstart subagentstop matcher filters on agent type pre",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#matcher-values-by-event",
     "source": "guide"
@@ -2527,7 +2527,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-exit-code-2-behavior-per-event",
     "title": "Exit Code 2 Behavior Per Event",
-    "keywords": "exit code 2 behavior per event hooks events reference only exit code 2 blocks. exit code 1 is non-blocking: the action proceeds and the first line of stderr appears in the transcript. is the exception: an",
+    "keywords": "exit code 2 behavior per event claude code hooks events reference all 30 events matchers schemas only exit code 2 blocks. exit code 1 is non-blocking: the action proceeds and the first line of stderr appears in the transcript. is the exception: an",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#exit-code-2-behavior-per-event",
     "source": "guide"
@@ -2535,7 +2535,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-decision-control-format-per-event",
     "title": "Decision Control Format Per Event",
-    "keywords": "decision control format per event hooks events reference top-level field used by: , , , , , , , , only is valid. omit to allow. for and , the becomes claude's next instruction. pretooluse uses for richer con top level decision field pretooluse permissionrequest permissiondenied posttooluse worktreecreate messagedisplay sessionstart additional fields elicitation elicitationresult universal fields all events",
+    "keywords": "decision control format per event claude code hooks events reference all 30 events matchers schemas top-level field used by: , , , , , , , , only is valid. omit to allow. for and , the becomes claude's next instruction. pretooluse uses for richer con top level decision field pretooluse permissionrequest permissiondenied posttooluse worktreecreate messagedisplay sessionstart additional fields elicitation elicitationresult universal fields all events",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#decision-control-format-per-event",
     "source": "guide"
@@ -2543,7 +2543,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-key-input-fields-per-event",
     "title": "Key Input Fields Per Event",
-    "keywords": "key input fields per event hooks events reference all events receive: , , , , and usually . subagent hooks also receive and . event event-specific extra input fields ------- --------------------------",
+    "keywords": "key input fields per event claude code hooks events reference all 30 events matchers schemas all events receive: , , , , and usually . subagent hooks also receive and . event event-specific extra input fields ------- --------------------------",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#key-input-fields-per-event",
     "source": "guide"
@@ -2551,7 +2551,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-hook-handler-fields",
     "title": "Hook Handler Fields",
-    "keywords": "hook handler fields hooks events reference common fields (all types) field description ------- ------------- , , , , or permission rule syntax to narrow the handler. tool events only ( , , , , common fields all types command hook fields http hook fields mcp tool hook fields prompt hook fields agent hook fields",
+    "keywords": "hook handler fields claude code hooks events reference all 30 events matchers schemas common fields (all types) field description ------- ------------- , , , , or permission rule syntax to narrow the handler. tool events only ( , , , , common fields all types command hook fields http hook fields mcp tool hook fields prompt hook fields agent hook fields",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#hook-handler-fields",
     "source": "guide"
@@ -2559,7 +2559,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-path-placeholders",
     "title": "Path Placeholders",
-    "keywords": "path placeholders hooks events reference placeholder resolves to ------------- ------------- project root directory plugin installation directory (changes on update) plugin persistent data di",
+    "keywords": "path placeholders claude code hooks events reference all 30 events matchers schemas placeholder resolves to ------------- ------------- project root directory plugin installation directory (changes on update) plugin persistent data di",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#path-placeholders",
     "source": "guide"
@@ -2567,7 +2567,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-claude-env-file",
     "title": "CLAUDE_ENV_FILE",
-    "keywords": "claude env file hooks events reference available in , , , and hooks. write lines to this path to persist variables into subsequent bash commands for the session. use append ( ) to preserve",
+    "keywords": "claude env file claude code hooks events reference all 30 events matchers schemas available in , , , and hooks. write lines to this path to persist variables into subsequent bash commands for the session. use append ( ) to preserve",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#claude-env-file",
     "source": "guide"
@@ -2575,7 +2575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-common-gotchas",
     "title": "Common Gotchas",
-    "keywords": "common gotchas hooks events reference stop hook 8-block cap : claude code overrides stop hooks after 8 consecutive blocks. read from stdin and exit 0 when it is to let claude stop cleanly.",
+    "keywords": "common gotchas claude code hooks events reference all 30 events matchers schemas stop hook 8-block cap : claude code overrides stop hooks after 8 consecutive blocks. read from stdin and exit 0 when it is to let claude stop cleanly.",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#common-gotchas",
     "source": "guide"
@@ -8167,7 +8167,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-section-10-tl-dr-1-minute",
     "title": "📌 Section 10 TL;DR (1 minute)",
-    "keywords": "section 10 tl dr 1 minute 10 reference what's inside : complete command reference, troubleshooting guides, and daily checklists. quick navigation by need: i need to... go to -------------- quick navigation by need most common lookups",
+    "keywords": "section 10 tl dr 1 minute claude code reference cli flags shortcuts claude md templates troubleshooting what's inside : complete command reference, troubleshooting guides, and daily checklists. quick navigation by need: i need to... go to -------------- quick navigation by need most common lookups",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#section-10-tl-dr-1-minute",
     "source": "guide"
@@ -8175,7 +8175,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-1-commands-table",
     "title": "10.1 Commands Table",
-    "keywords": "10 1 commands table 10 reference built-in commands command action category --------- -------- ---------- show all available commands navigation clear conversation history session summ built in commands quick actions",
+    "keywords": "10 1 commands table claude code reference cli flags shortcuts claude md templates troubleshooting built-in commands command action category --------- -------- ---------- show all available commands navigation clear conversation history session summ built in commands quick actions",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-1-commands-table",
     "source": "guide"
@@ -8183,7 +8183,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-2-keyboard-shortcuts",
     "title": "10.2 Keyboard Shortcuts",
-    "keywords": "10 2 keyboard shortcuts 10 reference session control shortcut action ---------- -------- send message new line in message cancel current operation exit claude code search command history session control input navigation mode model toggles voice input agent teams navigation useful flag combinations",
+    "keywords": "10 2 keyboard shortcuts claude code reference cli flags shortcuts claude md templates troubleshooting session control shortcut action ---------- -------- send message new line in message cancel current operation exit claude code search command history session control input navigation mode model toggles voice input agent teams navigation useful flag combinations",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-2-keyboard-shortcuts",
     "source": "guide"
@@ -8191,7 +8191,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-3-configuration-reference",
     "title": "10.3 Configuration Reference",
-    "keywords": "10 3 configuration reference 10 reference claude.md locations location scope committed ---------- ------- ----------- all projects (global) n/a this project (shared) ✅ yes this project (local claude md locations settings files permission patterns cli flags reference session context model configuration output format permissions security system prompt agent subagent mcp plugins directory workspace budget limits integration initialization maintenance debug diagnostics settings override version help",
+    "keywords": "10 3 configuration reference claude code reference cli flags shortcuts claude md templates troubleshooting claude.md locations location scope committed ---------- ------- ----------- all projects (global) n/a this project (shared) ✅ yes this project (local claude md locations settings files permission patterns cli flags reference session context model configuration output format permissions security system prompt agent subagent mcp plugins directory workspace budget limits integration initializa",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-3-configuration-reference",
     "source": "guide"
@@ -8199,7 +8199,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-4-troubleshooting",
     "title": "10.4 Troubleshooting",
-    "keywords": "10 4 troubleshooting 10 reference interactive troubleshooting : use the command for guided, interactive problem-solving. it auto-scans your environment and provides targeted solutions. quick diagnostic guide common issues reference context recovery common errors mcp server issues error 1 tool name validation failed error 2 mcp server not found error 3 windows path issues mcp debugging techniques permission issues timeout issues installation issues one shot health check scripts full clean reinsta",
+    "keywords": "10 4 troubleshooting claude code reference cli flags shortcuts claude md templates troubleshooting interactive troubleshooting : use the command for guided, interactive problem-solving. it auto-scans your environment and provides targeted solutions. quick diagnostic guide common issues reference context recovery common errors mcp server issues error 1 tool name validation failed error 2 mcp server not found error 3 windows path issues mcp debugging techniques permission issues timeout issues ins",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-4-troubleshooting",
     "source": "guide"
@@ -8207,7 +8207,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-5-cheatsheet",
     "title": "10.5 Cheatsheet",
-    "keywords": "10 5 cheatsheet 10 reference one-page quick reference ``` ╔══════════════════════════════════════════════════════════╗ ║ claude code cheatsheet ║ ╠════════════════════════════════ one page quick reference",
+    "keywords": "10 5 cheatsheet claude code reference cli flags shortcuts claude md templates troubleshooting one-page quick reference ``` ╔══════════════════════════════════════════════════════════╗ ║ claude code cheatsheet ║ ╠════════════════════════════════ one page quick reference",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-5-cheatsheet",
     "source": "guide"
@@ -8215,7 +8215,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-6-daily-workflow-checklists",
     "title": "10.6 Daily Workflow & Checklists",
-    "keywords": "10 6 daily workflow checklists 10 reference daily workflow pattern ``` ┌─────────────────────────────────────────────────────────────┐ │ daily workflow │ ├─────────────────────────────────────── daily workflow pattern prompt quality checklist",
+    "keywords": "10 6 daily workflow checklists claude code reference cli flags shortcuts claude md templates troubleshooting daily workflow pattern ``` ┌─────────────────────────────────────────────────────────────┐ │ daily workflow │ ├─────────────────────────────────────── daily workflow pattern prompt quality checklist",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-6-daily-workflow-checklists",
     "source": "guide"
@@ -8223,7 +8223,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-1-agent-template",
     "title": "A.1 Agent Template",
-    "keywords": "a 1 agent template 10 reference ```markdown --- name: your-agent-name description: use this agent when [specific trigger] model: sonnet tools: read, write, edit, bash, grep, glob ski",
+    "keywords": "a 1 agent template claude code reference cli flags shortcuts claude md templates troubleshooting ```markdown --- name: your-agent-name description: use this agent when [specific trigger] model: sonnet tools: read, write, edit, bash, grep, glob ski",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-1-agent-template",
     "source": "guide"
@@ -8231,7 +8231,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-role-definition",
     "title": "Role Definition",
-    "keywords": "role definition 10 reference you are an expert in [domain].",
+    "keywords": "role definition claude code reference cli flags shortcuts claude md templates troubleshooting you are an expert in [domain].",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#role-definition",
     "source": "guide"
@@ -8239,7 +8239,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-activation-triggers",
     "title": "Activation Triggers",
-    "keywords": "activation triggers 10 reference use this agent when: - [trigger 1] - [trigger 2]",
+    "keywords": "activation triggers claude code reference cli flags shortcuts claude md templates troubleshooting use this agent when: - [trigger 1] - [trigger 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#activation-triggers",
     "source": "guide"
@@ -8247,7 +8247,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-methodology",
     "title": "Methodology",
-    "keywords": "methodology 10 reference 1. [step 1] 2. [step 2] 3. [step 3]",
+    "keywords": "methodology claude code reference cli flags shortcuts claude md templates troubleshooting 1. [step 1] 2. [step 2] 3. [step 3]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#methodology",
     "source": "guide"
@@ -8255,7 +8255,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-output-format",
     "title": "Output Format",
-    "keywords": "output format 10 reference [expected deliverables]",
+    "keywords": "output format claude code reference cli flags shortcuts claude md templates troubleshooting [expected deliverables]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#output-format",
     "source": "guide"
@@ -8263,7 +8263,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-examples",
     "title": "Examples",
-    "keywords": "examples 10 reference [concrete usage examples] ```",
+    "keywords": "examples claude code reference cli flags shortcuts claude md templates troubleshooting [concrete usage examples] ```",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#examples",
     "source": "guide"
@@ -8271,7 +8271,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-2-skill-template",
     "title": "A.2 Skill Template",
-    "keywords": "a 2 skill template 10 reference ```markdown --- name: skill-name description: expert guidance for [domain] allowed-tools: read grep bash argument-hint: \"[--option] <required arg \" if",
+    "keywords": "a 2 skill template claude code reference cli flags shortcuts claude md templates troubleshooting ```markdown --- name: skill-name description: expert guidance for [domain] allowed-tools: read grep bash argument-hint: \"[--option] <required arg \" if",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-2-skill-template",
     "source": "guide"
@@ -8279,7 +8279,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-expertise-areas",
     "title": "Expertise Areas",
-    "keywords": "expertise areas 10 reference - [area 1] - [area 2]",
+    "keywords": "expertise areas claude code reference cli flags shortcuts claude md templates troubleshooting - [area 1] - [area 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#expertise-areas",
     "source": "guide"
@@ -8287,7 +8287,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-methodology",
     "title": "Methodology",
-    "keywords": "methodology 10 reference 1. [step 1] 2. [step 2]",
+    "keywords": "methodology claude code reference cli flags shortcuts claude md templates troubleshooting 1. [step 1] 2. [step 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#methodology",
     "source": "guide"
@@ -8295,7 +8295,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-checklists",
     "title": "Checklists",
-    "keywords": "checklists 10 reference - [ ] [check 1] - [ ] [check 2]",
+    "keywords": "checklists claude code reference cli flags shortcuts claude md templates troubleshooting - [ ] [check 1] - [ ] [check 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#checklists",
     "source": "guide"
@@ -8303,7 +8303,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-examples",
     "title": "Examples",
-    "keywords": "examples 10 reference [good and bad patterns] ```",
+    "keywords": "examples claude code reference cli flags shortcuts claude md templates troubleshooting [good and bad patterns] ```",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#examples",
     "source": "guide"
@@ -8311,7 +8311,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-3-command-template",
     "title": "A.3 Command Template",
-    "keywords": "a 3 command template 10 reference ```markdown --- description: brief description of what this command does argument-hint: \"<first arg [second arg] [--flag]\" --- command name",
+    "keywords": "a 3 command template claude code reference cli flags shortcuts claude md templates troubleshooting ```markdown --- description: brief description of what this command does argument-hint: \"<first arg [second arg] [--flag]\" --- command name",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-3-command-template",
     "source": "guide"
@@ -8319,7 +8319,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-purpose",
     "title": "Purpose",
-    "keywords": "purpose 10 reference [what this command does]",
+    "keywords": "purpose claude code reference cli flags shortcuts claude md templates troubleshooting [what this command does]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#purpose",
     "source": "guide"
@@ -8327,7 +8327,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-process",
     "title": "Process",
-    "keywords": "process 10 reference 1. step 1 : [instructions] 2. step 2 : [instructions]",
+    "keywords": "process claude code reference cli flags shortcuts claude md templates troubleshooting 1. step 1 : [instructions] 2. step 2 : [instructions]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#process",
     "source": "guide"
@@ -8335,7 +8335,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-arguments",
     "title": "Arguments",
-    "keywords": "arguments 10 reference - $arguments[0] (or $0): first argument - [how to handle] - $arguments[1] (or $1): second argument - [how to handle]",
+    "keywords": "arguments claude code reference cli flags shortcuts claude md templates troubleshooting - $arguments[0] (or $0): first argument - [how to handle] - $arguments[1] (or $1): second argument - [how to handle]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#arguments",
     "source": "guide"
@@ -8343,7 +8343,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-output-format",
     "title": "Output Format",
-    "keywords": "output format 10 reference [expected output] ```",
+    "keywords": "output format claude code reference cli flags shortcuts claude md templates troubleshooting [expected output] ```",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#output-format",
     "source": "guide"
@@ -8351,7 +8351,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-4-hook-templates",
     "title": "A.4 Hook Templates",
-    "keywords": "a 4 hook templates 10 reference pretooluse (security) posttooluse (formatting) userpromptsubmit (context) ```bash pretooluse security posttooluse formatting userpromptsubmit context",
+    "keywords": "a 4 hook templates claude code reference cli flags shortcuts claude md templates troubleshooting pretooluse (security) posttooluse (formatting) userpromptsubmit (context) ```bash pretooluse security posttooluse formatting userpromptsubmit context",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-4-hook-templates",
     "source": "guide"
@@ -8359,7 +8359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-5-settings-json-template",
     "title": "A.5 settings.json Template",
-    "keywords": "a 5 settings json template 10 reference",
+    "keywords": "a 5 settings json template claude code reference cli flags shortcuts claude md templates troubleshooting",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-5-settings-json-template",
     "source": "guide"
@@ -8367,7 +8367,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-6-settings-local-json-template",
     "title": "A.6 settings.local.json Template",
-    "keywords": "a 6 settings local json template 10 reference",
+    "keywords": "a 6 settings local json template claude code reference cli flags shortcuts claude md templates troubleshooting",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-6-settings-local-json-template",
     "source": "guide"
@@ -8375,7 +8375,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-a-7-claude-md-template",
     "title": "A.7 CLAUDE.md Template",
-    "keywords": "a 7 claude md template 10 reference ```markdown project name",
+    "keywords": "a 7 claude md template claude code reference cli flags shortcuts claude md templates troubleshooting ```markdown project name",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#a-7-claude-md-template",
     "source": "guide"
@@ -8383,7 +8383,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-tech-stack",
     "title": "Tech Stack",
-    "keywords": "tech stack 10 reference - [technology 1] - [technology 2]",
+    "keywords": "tech stack claude code reference cli flags shortcuts claude md templates troubleshooting - [technology 1] - [technology 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#tech-stack",
     "source": "guide"
@@ -8391,7 +8391,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-code-conventions",
     "title": "Code Conventions",
-    "keywords": "code conventions 10 reference - [convention 1] - [convention 2]",
+    "keywords": "code conventions claude code reference cli flags shortcuts claude md templates troubleshooting - [convention 1] - [convention 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#code-conventions",
     "source": "guide"
@@ -8399,7 +8399,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-architecture",
     "title": "Architecture",
-    "keywords": "architecture 10 reference - [pattern 1] - [pattern 2]",
+    "keywords": "architecture claude code reference cli flags shortcuts claude md templates troubleshooting - [pattern 1] - [pattern 2]",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#architecture",
     "source": "guide"
@@ -8407,7 +8407,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-commands",
     "title": "Commands",
-    "keywords": "commands 10 reference - - start development - - run tests ``` --- 11. ai ecosystem: complementary tools quick jump: why complementarity · tool matrix · practical workflows",
+    "keywords": "commands claude code reference cli flags shortcuts claude md templates troubleshooting - - start development - - run tests ``` --- 11. ai ecosystem: complementary tools quick jump: why complementarity · tool matrix · practical workflows",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#commands",
     "source": "guide"
