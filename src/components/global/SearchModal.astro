@@ -1,8 +1,6 @@
 ---
-import { SEARCH_INDEX } from '../../data/search-index.ts'
-
-// Serialize the search index at build time
-const searchData = JSON.stringify(SEARCH_INDEX)
+// Search index is served as a separate cacheable asset (/search-index.json)
+// instead of being inlined into every page (~940 KB per page otherwise).
 ---
 
 <!-- Search Modal -->
@@ -62,22 +60,25 @@ const searchData = JSON.stringify(SEARCH_INDEX)
   </div>
 </div>
 
-<!-- Search data (serialized at build time) -->
-<script id="search-data" type="application/json" set:html={searchData} />
-
 <!-- Client bootstrap -->
 <script>
   import { initSearch } from '../../scripts/search.ts'
   import type { SearchEntry } from '../../scripts/search.ts'
 
-  const dataEl = document.getElementById('search-data')
-  if (dataEl) {
-    try {
-      const entries = JSON.parse(dataEl.textContent || '[]') as SearchEntry[]
-      initSearch(entries)
-    } catch (e) {
-      console.error('[search] Failed to parse search data:', e)
-    }
+  const load = () =>
+    fetch('/search-index.json')
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
+      .then((entries: SearchEntry[]) => initSearch(entries))
+      .catch(e => console.error('[search] Failed to load search index:', e))
+
+  // Defer off the critical path; fall back for browsers without idle callback
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => load(), { timeout: 2000 })
+  } else {
+    setTimeout(load, 200)
   }
 </script>
 
