@@ -1,0 +1,19 @@
+src/data/guide-content-entries.ts
+  s_2a6fd3681b67e9::t_68d845d00e049a 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "51b8874f3e882a47e979918f8afe9f11b4eaccde",
+  "prompts": {},
+  "sessions": {
+    "s_2a6fd3681b67e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9855fdbc-8eae-4a31-8c3b-372c936b506b",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
