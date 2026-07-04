@@ -1,0 +1,21 @@
+src/components/global/SearchModal.astro
+  s_1183c9639859a2::t_9377f48187787f 2-3,68-81
+src/pages/search-index.json.ts
+  s_1183c9639859a2::t_46bb6cce44a0fa 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3fe7a5636e6857579e8b2d16941400550e953277",
+  "prompts": {},
+  "sessions": {
+    "s_1183c9639859a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fa8d89c7-adb4-42e8-9e4e-d22173c3d7f1",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
