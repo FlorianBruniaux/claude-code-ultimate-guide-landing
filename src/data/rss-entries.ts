@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Role pages: PM, Tech Lead, CTO, CIO/CEO',
+    date: 'Jul 6, 2026',
+    description: 'Four audience pages are now readable online: For Product Managers, For Tech Leads, For CTOs, and For CIOs & CEOs. Each one answers the same question for a different role: what Claude Code changes for you and where to start.',
+    link: 'https://cc.bruniaux.com/guide/for-product-managers/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code v2.1.199',
     date: 'Jul 2, 2026',

@@ -199,6 +199,20 @@ function rewriteCrossChapterAnchors(content, currentSlug, anchorMap) {
 }
 
 /**
+ * Resolve deep links into ultimate-guide.md to the right chapter page.
+ *
+ * rewriteRelativeGuideLinks flattens [text](../guide/ultimate-guide.md#anchor)
+ * to /guide/ultimate-guide/#anchor, which lands on the chapter index where the
+ * anchor doesn't exist. When the anchor is known, point to its actual chapter.
+ */
+function resolveUltimateGuideAnchors(content, anchorMap) {
+  return content.replace(/\]\(\/guide\/ultimate-guide\/#([^)]+)\)/g, (match, anchor) => {
+    const target = anchorMap[anchor]
+    return target ? `](/guide/${target}/#${anchor})` : match
+  })
+}
+
+/**
  * Replace ```mermaid blocks with pre-rendered SVG HTML.
  * Renders two SVGs per block: neutral (light) and dark theme.
  * Falls back to original code block if mmdc unavailable or fails.
@@ -247,7 +261,7 @@ console.log(`[prepare-guide] Output: ${OUT_GUIDE}`)
 cleanAndCreate(OUT_GUIDE)
 ensureDir(OUT_IMAGES)
 
-const stats = { files: 0, chapters: 0, workflows: 0, learningPath: 0, images: 0 }
+const stats = { files: 0, chapters: 0, workflows: 0, learningPath: 0, audience: 0, images: 0 }
 const anchorMap = {}  // anchor slug → 'ultimate-guide/chapter-slug'
 
 // -----------------------------------------------------------------------
@@ -390,6 +404,47 @@ if (existsSync(LEARNING_PATH_DIR)) {
 }
 
 // -----------------------------------------------------------------------
+// 2.7 Audience pages (docs/for-*.md → /guide/for-*/)
+// -----------------------------------------------------------------------
+const DOCS_DIR = resolve(GUIDE_REPO, 'docs')
+
+// Whitelisted role/audience pages from the guide repo's docs/ folder.
+// Descriptions are set here because the source files have no frontmatter.
+const AUDIENCE_PAGES = [
+  { file: 'for-product-managers.md', desc: 'Claude Code for Product Managers and Product Designers: specs that become context, reviewing AI-assisted work, and prototyping features yourself without a developer.' },
+  { file: 'for-tech-leads.md',       desc: 'Claude Code for Tech Leads and Engineering Managers: shared team configuration, security hooks, observability, and a 30-minute rollout plan.' },
+  { file: 'for-cto.md',              desc: 'Claude Code for CTOs and decision makers: the business case in 3 data points, security and governance controls, and the adoption metrics that matter.' },
+  { file: 'for-cio-ceo.md',          desc: 'Claude Code for CIOs and CEOs: what it is, what it changes, and the questions to ask your CTO, in 3 minutes.' },
+]
+
+for (let i = 0; i < AUDIENCE_PAGES.length; i++) {
+  const { file, desc } = AUDIENCE_PAGES[i]
+  const src = resolve(DOCS_DIR, file)
+  if (!existsSync(src)) {
+    console.warn(`[prepare-guide] WARNING: audience page not found: ${src}`)
+    continue
+  }
+  let content = readFileSync(src, 'utf-8')
+
+  const titleMatch = content.match(/^# (.+)/m)
+  const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
+
+  // Repo-facing links that have no .md page on the site
+  content = content
+    .replace(/\(\.\.\/README\.md\)/g, '(/)')
+    .replace(/\(\.\.\/CHANGELOG\.md\)/g, '(https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md)')
+    .replace(/\(\.\.\/examples\/\)/g, '(/examples/)')
+
+  content = addStarlightFm(content, { title, desc, order: 300 + i })
+  content = normalizeLangs(content)
+
+  guideFileBuffer.push({ file, content })
+  stats.audience++
+}
+
+console.log(`[prepare-guide] ✓ Audience pages: ${stats.audience}`)
+
+// -----------------------------------------------------------------------
 // 3. Split ultimate-guide.md by chapter
 // -----------------------------------------------------------------------
 const ULTIMATE_SRC = resolve(GUIDE_DIR, 'ultimate-guide.md')
@@ -485,6 +540,7 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   const currentSlug = `ultimate-guide/${slug}`
   content = rewriteRelativeGuideLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
+  content = resolveUltimateGuideAnchors(content, anchorMap)
 
   const sidebarLabel = label ? `\n  label: '${label}'` : ''
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}\n---`
@@ -503,6 +559,7 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
   let rewritten = rewriteRelativeGuideLinks(rawContent)
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
+  rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
   rewritten = renderMermaidBlocks(rewritten, fileSlug)
   const outPath = isWorkflow
@@ -570,6 +627,15 @@ hero:
 | [Adoption Approaches](/guide/adoption-approaches/) | Team rollout strategies | 15 min |
 | [Learning with AI](/guide/learning-with-ai/) | For juniors using AI without losing skills | 15 min |
 | [Agent Evaluation](/guide/agent-evaluation/) | Agent quality metrics & feedback loops | 20 min |
+
+## For Your Role
+
+| Page | Description | Time |
+|------|-------------|------|
+| [For Product Managers](/guide/for-product-managers/) | Specs as context, reviewing AI-assisted work, prototyping without a developer | 5 min |
+| [For Tech Leads](/guide/for-tech-leads/) | Shared team config, security hooks, 30-minute rollout plan | 5 min |
+| [For CTOs](/guide/for-cto/) | Business case, governance controls, adoption metrics | 5 min |
+| [For CIOs & CEOs](/guide/for-cio-ceo/) | The executive brief, in 3 minutes | 3 min |
 
 ## Operations
 
@@ -653,6 +719,7 @@ console.log('[prepare-guide] Done! Summary:')
 console.log(`[prepare-guide]   Guide files     : ${stats.files}`)
 console.log(`[prepare-guide]   UG chapters     : ${stats.chapters}`)
 console.log(`[prepare-guide]   Workflow files  : ${stats.workflows}`)
+console.log(`[prepare-guide]   Audience pages  : ${stats.audience}`)
 console.log(`[prepare-guide]   Images          : ${stats.images}`)
 console.log(`[prepare-guide]   Anchor entries  : ${Object.keys(anchorMap).length}`)
 console.log('[prepare-guide] ══════════════════════════════════')
