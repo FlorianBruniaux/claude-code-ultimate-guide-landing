@@ -1246,9 +1246,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-practitioner-insights-agentic-patterns",
     "title": "Practitioner Insights Agentic Patterns",
-    "keywords": "practitioner insights agentic patterns guide ecosystem practitioner insights md#agentic patterns and orchestration",
+    "keywords": "practitioner insights agentic patterns guide ecosystem practitioner insights md#agentic patterns orchestration",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agentic-patterns-and-orchestration",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agentic-patterns--orchestration",
     "source": "guide"
   },
   {
@@ -1270,9 +1270,41 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-practitioner-insights-devx",
     "title": "Practitioner Insights Devx",
-    "keywords": "practitioner insights devx guide ecosystem practitioner insights md#devx and adoption",
+    "keywords": "practitioner insights devx guide ecosystem practitioner insights md#devx adoption",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devx-and-adoption",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devx--adoption",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-devoxx",
+    "title": "Practitioner Insights Devoxx",
+    "keywords": "practitioner insights devoxx guide ecosystem practitioner insights md#devoxx",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devoxx",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-devwithai",
+    "title": "Practitioner Insights Devwithai",
+    "keywords": "practitioner insights devwithai guide ecosystem practitioner insights md#dev with meetup",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#dev-with-ai-meetup",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-bytebytego",
+    "title": "Practitioner Insights Bytebytego",
+    "keywords": "practitioner insights bytebytego guide ecosystem practitioner insights md#bytebytego",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#bytebytego",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-stanford",
+    "title": "Practitioner Insights Stanford",
+    "keywords": "practitioner insights stanford guide ecosystem practitioner insights md#stanford online",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#stanford-online",
     "source": "guide"
   },
   {
@@ -1281,6 +1313,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "practitioner insights credits guide core credits md#ifttd this then dev podcast",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/credits.md#ifttd-if-this-then-dev-podcast",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-unit-economics-guide",
+    "title": "AI Unit Economics Guide",
+    "keywords": "ai unit economics guide guide ops unit economics",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md",
     "source": "guide"
   },
   {
