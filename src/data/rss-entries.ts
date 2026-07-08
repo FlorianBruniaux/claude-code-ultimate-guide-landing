@@ -26,6 +26,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.200',
+    date: 'Jul 3, 2026',
+    description: 'AskUserQuestion dialogs no longer auto-continue by default, and the "default" permission mode is now labeled "Manual" across the CLI, VS Code, and JetBrains. Also fixes background sessions stopping mid-turn after sleep/wake and never restarting after a daemon.lock crash.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21200-2026-07-03',
+  },
+  {
     type: 'new_page',
     title: 'Role pages: PM, Tech Lead, CTO, CIO/CEO',
     date: 'Jul 6, 2026',

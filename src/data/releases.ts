@@ -16,6 +16,58 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.204',
+    date: 'Jul 8, 2026',
+    highlights: [
+      'Fixed hook events not streaming during SessionStart hooks in headless sessions, which could cause remote workers to be idle-reaped mid-hook',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.203',
+    date: 'Jul 7, 2026',
+    highlights: [
+      'Added a warning when your login is about to expire, plus a grey pause badge in the footer for manual permission mode',
+      'Fixed background-agent stability: macOS 15-20s stall on open/switch, sessions going permanently unresponsive on stale daemon tokens, crash-looping on deleted working directories, a silent auto-upgrade failure that killed every running session',
+      'Fixed worktree-isolated subagents sometimes running shell commands in the parent checkout instead of their own worktree',
+      'Reduced binary size by ~7 MB and startup memory by ~7 MB by loading a large bundled dependency lazily',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.202',
+    date: 'Jul 6, 2026',
+    highlights: [
+      'Added a Dynamic workflow size setting in /config for controlling how large Claude generally makes dynamic workflows',
+      'Added workflow.run_id and workflow.name OpenTelemetry attributes so a workflow run can be reconstructed from OTel data',
+      'Fixed images and files sent from the Remote Control mobile/web app without a caption being silently dropped',
+      'Changed /review <pr> back to a fast single-pass review; use /code-review <level> <pr#> for the multi-agent review',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.201',
+    date: 'Jul 3, 2026',
+    highlights: [
+      'Claude Sonnet 5 sessions no longer use the mid-conversation system role for harness reminders',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.200',
+    date: 'Jul 3, 2026',
+    highlights: [
+      '⭐ AskUserQuestion dialogs no longer auto-continue by default; opt into an idle timeout via /config',
+      'Changed the "default" permission mode to "Manual" across CLI, VS Code, and JetBrains; --permission-mode manual accepted alongside default',
+      'Fixed background sessions silently stopping mid-turn after sleep/wake, and never restarting after a crash left a stale daemon.lock',
+      'Fixed project-scoped plugins not loading correctly from git worktrees of the same repository',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Manual permission mode',
+  },
+  {
     version: 'v2.1.199',
     date: 'Jul 2, 2026',
     highlights: [
@@ -24,7 +76,6 @@ export const releases: Release[] = [
       'Fixed streaming responses discarded on mid-stream server errors (partial output now kept); subagents cut off by rate limits now return partial work to the parent; API errors in subagents reported instead of shown as success',
       'Fixed the Linux background-agent daemon killing itself and all agents every ~50s after an unclean shutdown; SSL certificate errors now fail immediately with actionable guidance',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
