@@ -12,7 +12,7 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 <h1 class="hero-title">Claude Code Ultimate Guide</h1>
             </div>
             <p class="hero-tagline">Learn the WHY behind Claude Code, not just the config</p>
-            <p class="hero-stats">Security-first (83 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 275 templates &bull; 330-question quiz &bull; Decision frameworks</p>
+            <p class="hero-stats">Security-first (83 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 275 templates &bull; 401-question quiz &bull; Decision frameworks</p>
 
             <div class="hero-ctas">
                 <a href="https://cc.bruniaux.com/guide/ultimate-guide/" class="btn btn-primary">
@@ -57,7 +57,7 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 </span>
                 <span class="badge badge-quiz">
                     <span class="badge-label">quiz</span>
-                    <span class="badge-value">330 questions</span>
+                    <span class="badge-value">401 questions</span>
                 </span>
                 <a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener" class="badge badge-awesome">
                     <span class="badge-label">awesome</span>
@@ -67,14 +67,20 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                     <span class="badge-label">mcp</span>
                     <span class="badge-value">npx ready</span>
                 </a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.pdf" target="_blank" rel="noopener" class="badge badge-pdf">
-                    <span class="badge-label">full guide</span>
-                    <span class="badge-value">↓ pdf</span>
-                </a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.epub" target="_blank" rel="noopener" class="badge badge-epub">
-                    <span class="badge-label">full guide</span>
-                    <span class="badge-value">↓ epub</span>
-                </a>
+            </div>
+
+            <div class="hero-downloads" role="group" aria-label="Download the full guide offline">
+                <span class="downloads-label">📖 Full guide (offline)</span>
+                <span class="downloads-group">
+                    <span class="downloads-lang">EN</span>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.pdf" target="_blank" rel="noopener" class="dl-btn dl-pdf">PDF</a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.epub" target="_blank" rel="noopener" class="dl-btn dl-epub">EPUB</a>
+                </span>
+                <span class="downloads-group">
+                    <span class="downloads-lang">FR</span>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.pdf" target="_blank" rel="noopener" class="dl-btn dl-pdf">PDF</a>
+                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.epub" target="_blank" rel="noopener" class="dl-btn dl-epub">EPUB</a>
+                </span>
             </div>
 
             <div class="hero-external-row">
@@ -244,6 +250,76 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
 .badge-epub .badge-label { background-color: #555; }
 .badge-pdf .badge-value { background-color: #dc2626; }
 .badge-epub .badge-value { background-color: #7c3aed; }
+
+/* Full guide download block */
+.hero-downloads {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    padding: 0.55rem 0.85rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--border-radius);
+}
+
+.downloads-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 0.25rem;
+}
+
+.downloads-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.downloads-lang {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    padding: 0 0.35rem;
+}
+
+.dl-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.dl-btn::before {
+    content: "↓ ";
+    opacity: 0.85;
+}
+
+.dl-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.dl-pdf { background-color: #dc2626; }
+.dl-epub { background-color: #7c3aed; }
+
+@media (max-width: 480px) {
+    .hero-downloads {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
 
 .hero-external-row {
     display: grid;
