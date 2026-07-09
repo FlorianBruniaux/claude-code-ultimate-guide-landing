@@ -1,0 +1,377 @@
+src/components/landing/FeaturesGrid.astro
+  s_d2cd69166b24a3::t_1b6516f39aadc0 30
+src/components/landing/GuideComparison.astro
+  s_d2cd69166b24a3::t_f33ecb99c3b82a 40,136,139
+src/content/questions/01-quick-start/019-what-is-claude-codes-default-permission-mode-called.md
+  s_4390aa387f11d9::t_4d560ba58397db 2-3,7,10-14,17,20,24
+src/content/questions/01-quick-start/020-what-happens-by-default-when-claude-delegates-to-a-subagent.md
+  s_4390aa387f11d9::t_1b5be68290bd67 2,10-14,16-17,20,24
+src/content/questions/02-core-concepts/009-how-do-you-exit-plan-mode-to-start-making-changes.md
+  s_a40be4fdeb38a9::t_a647f217d10996 12,25
+src/content/questions/02-core-concepts/019-what-changed-with-claude-codes-default-model.md
+  s_4390aa387f11d9::t_9bbc86e4b512be 2-4,6,8-9,11-14,16-17,20,24
+src/content/questions/02-core-concepts/020-what-promotional-pricing-came-with-claude-sonnet-5.md
+  s_4390aa387f11d9::t_bd7820682cc985 4,7,9,11-17,20,23,27
+src/content/questions/02-core-concepts/021-why-is-just-use-the-1m-token-window-an-anti-pattern.md
+  s_4390aa387f11d9::t_79825168034c5d 2-3,10-16,19,22,26
+src/content/questions/03-memory-settings/008-what-does-the-permission-pattern-bashgit-match.md
+  s_a40be4fdeb38a9::t_0c131a32269079 25
+src/content/questions/03-memory-settings/026-what-changed-for-permissions-defaultmode-in-settingsjson.md
+  s_4390aa387f11d9::t_a76c51ae20de8f 2,4,10-17,20,23,27
+src/content/questions/03-memory-settings/027-what-does-respondtobashcommands-false-do.md
+  s_4390aa387f11d9::t_4347798cd16b68 2,4,10-15,18,21,25
+src/content/questions/03-memory-settings/028-how-does-claude-code-enforce-org-model-governance.md
+  s_4390aa387f11d9::t_65f7b946329e07 2-3,10-15,18,21,25
+src/content/questions/03-memory-settings/029-which-mechanisms-propagate-settings-to-a-team.md
+  s_4390aa387f11d9::t_f56abc77f0d513 2-4,7-8,10-15,18-19,22,26
+src/content/questions/04-agents/019-how-do-subagents-behave-by-default-now.md
+  s_4390aa387f11d9::t_a03e97b5d27fbd 2-4,11-16,19,22,26
+src/content/questions/04-agents/020-what-does-a-finished-background-agent-do-with-its-worktree-changes.md
+  s_4390aa387f11d9::t_789afb39eea231 2-3,10-13,16,19,23
+src/content/questions/04-agents/021-is-dynamic-workflow-size-an-enforced-agent-count-cap.md
+  s_4390aa387f11d9::t_07def87fb3d9c9 2-3,10-13,16,19,23
+src/content/questions/04-agents/022-which-model-does-the-explore-agent-run-on.md
+  s_4390aa387f11d9::t_92462e1454823e 1-25
+src/content/questions/05-skills/010-what-is-the-agent-field-in-skillmd-frontmatter.md
+  s_70603bfa823e50::t_78986b0ea33882 12,25
+src/content/questions/05-skills/022-what-happens-when-you-stack-two-skill-invocations.md
+  s_4390aa387f11d9::t_a5c788da908edf 2-4,11-14,17,20,24
+src/content/questions/05-skills/023-what-does-the-dataviz-skill-help-with.md
+  s_4390aa387f11d9::t_c9a1fbf5baa149 2,9,12-16,18-19,22,26
+src/content/questions/05-skills/024-what-does-skillspector-check-before-installing-a-skill.md
+  s_4390aa387f11d9::t_05121075bf653c 2-3,8,10-15,18,21,25
+src/content/questions/06-commands/017-whats-the-difference-between-slash-review-and-slash-code-review.md
+  s_4390aa387f11d9::t_2d214a7900110c 1-25
+src/content/questions/06-commands/018-what-happened-to-the-slash-agents-wizard-command.md
+  s_4390aa387f11d9::t_56574aa6621a43 2-3,9,11-15,17-18,21,25
+src/content/questions/06-commands/019-can-slash-rewind-recover-a-conversation-after-slash-clear.md
+  s_4390aa387f11d9::t_6ae834176980bf 1-24
+src/content/questions/07-hooks/008-what-json-structure-should-a-hook-return-to-send.md
+  s_a40be4fdeb38a9::t_d49e826e6f77ff 19,34-35,37
+src/content/questions/07-hooks/014-what-is-the-default-timeout-for-hooks-in-the.md
+  s_a40be4fdeb38a9::t_da0d955839faae 20,34
+src/content/questions/07-hooks/016-what-are-the-3-limitations-of-async-hooks.md
+  s_a40be4fdeb38a9::t_392ed54152be4c 10-11,24,26-28,30
+src/content/questions/07-hooks/021-what-are-the-new-background-agent-notification-events.md
+  s_4390aa387f11d9::t_fd8c4f362e7362 1-25
+src/content/questions/07-hooks/022-what-changed-in-hook-matcher-behavior-for-hyphenated-names.md
+  s_4390aa387f11d9::t_30e05b20f90879 2-4,8,10-17,19-20,23,27
+src/content/questions/07-hooks/023-what-problem-does-bm25-scoring-solve-that-regex-cant.md
+  s_4390aa387f11d9::t_ffadc2235e4f20 2,8,10-18,20-21,24,28
+src/content/questions/08-mcp-servers/005-where-is-the-global-mcp-configuration-file-located.md
+  s_6b14c9a9e6e313::t_c1127606a35aea 12,25,28-29,31
+src/content/questions/08-mcp-servers/008-what-variable-can-you-use-in-mcpjson-to-reference.md
+  s_a40be4fdeb38a9::t_25f49a772e8474 12,25,27-31,36
+src/content/questions/08-mcp-servers/019-what-does-the-auton-threshold-control-in-mcp-tool.md
+  s_6b14c9a9e6e313::t_23fea0c4d7950e 15
+src/content/questions/08-mcp-servers/022-which-cli-subcommands-authenticate-an-mcp-server.md
+  s_4390aa387f11d9::t_fefd36621f201e 2-4,6,10-14,16-17,20,24
+src/content/questions/08-mcp-servers/023-what-does-claude-code-mcp-tool-idle-timeout-control.md
+  s_4390aa387f11d9::t_67743ad5a2c0df 1-26
+src/content/questions/08-mcp-servers/024-how-does-roots-list-behave-when-working-directories-change.md
+  s_4390aa387f11d9::t_47df3e353ce0e3 1-28
+src/content/questions/08-mcp-servers/025-what-should-a-well-designed-mcp-tool-encapsulate.md
+  s_4390aa387f11d9::t_83fb22956fe143 2-3,8-9,11-19,21-22,25,29
+src/content/questions/09-advanced-patterns/017-what-is-sdd-spec-driven-development-and-its-key.md
+  s_a40be4fdeb38a9::t_e3ce4dcd7d2a1e 16
+src/content/questions/09-advanced-patterns/018-what-format-does-bdd-behavior-driven-development.md
+  s_a40be4fdeb38a9::t_90d56aabdeec0e 15
+src/content/questions/09-advanced-patterns/019-what-are-the-three-steps-of-the-tdd-cycle.md
+  s_a40be4fdeb38a9::t_e8d51ea970eb1a 16
+src/content/questions/09-advanced-patterns/020-how-many-development-methodologies-are-documented.md
+  s_a40be4fdeb38a9::t_12cb4632a99716 15
+src/content/questions/09-advanced-patterns/021-what-is-context-engineering-as-a-methodology.md
+  s_a40be4fdeb38a9::t_743b950e69a868 16
+src/content/questions/09-advanced-patterns/036-why-does-greptile-catch-things-claude-code-actions-review-misses.md
+  s_4390aa387f11d9::t_d229bd856a788b 2-3,8,10-18,20-22,25,29
+src/content/questions/09-advanced-patterns/037-what-does-spec-kitty-add-that-bmad-method-doesnt.md
+  s_4390aa387f11d9::t_9e017367ba32b8 2-3,8,10-16,18-20,23,27
+src/content/questions/09-advanced-patterns/038-when-does-human-in-the-loop-review-stop-being-required.md
+  s_4390aa387f11d9::t_68cf56bf38d27f 2-4,8-9,11-18,20-22,25,29
+src/content/questions/09-advanced-patterns/039-why-run-llm-as-judge-evaluation-asynchronously.md
+  s_4390aa387f11d9::t_987415f33b6762 2-3,8,10-18,20-22,25,29
+src/content/questions/10-reference/019-what-does-the-from-pr-flag-do-in-claude-code-v2127.md
+  s_87cd37dbe960e1::t_36ba52eb629b6b 16
+src/content/questions/10-reference/026-what-does-fast-mode-actually-do-to-the-model.md
+  s_4390aa387f11d9::t_4d5b20b56ff41b 2,10-16,19,22,26
+src/content/questions/10-reference/027-what-does-claude-code-disable-mouse-clicks-do.md
+  s_4390aa387f11d9::t_ef676ec19ba4a2 2-3,9-13,15-16,19,23
+src/content/questions/11-learning-with-ai/001-what-are-the-three-developer-patterns-when-using.md
+  s_db25af9ef66501::t_7994d132054459 17
+src/content/questions/11-learning-with-ai/002-what-does-uval-stand-for-in-the-ai-learning.md
+  s_db25af9ef66501::t_92334fc9a5e1e6 16
+src/content/questions/11-learning-with-ai/003-in-the-quick-self-check-if-you-score-0-2-yes.md
+  s_db25af9ef66501::t_eb2bc99680d7e3 15
+src/content/questions/11-learning-with-ai/004-what-is-the-15-minute-rule-in-the-uval-protocols.md
+  s_db25af9ef66501::t_0adc8fa41843c3 17
+src/content/questions/11-learning-with-ai/005-what-is-the-explain-it-back-technique-in-the-uval.md
+  s_db25af9ef66501::t_0408fd425e1c52 16
+src/content/questions/11-learning-with-ai/006-in-the-30-day-progression-plan-what-is-the-ai.md
+  s_db25af9ef66501::t_0340ab086d91df 16
+src/content/questions/11-learning-with-ai/007-what-ai-usage-ratio-does-the-30-day-plan.md
+  s_db25af9ef66501::t_8ef2f58927106f 16
+src/content/questions/11-learning-with-ai/008-according-to-the-guide-what-is-the-metaphor-for.md
+  s_db25af9ef66501::t_e533bdc7724c81 17
+src/content/questions/11-learning-with-ai/009-what-is-a-red-flag-sign-of-ai-dependency.md
+  s_db25af9ef66501::t_c18f5650240e5d 16
+src/content/questions/11-learning-with-ai/010-what-is-the-apply-steps-core-principle-in-the.md
+  s_db25af9ef66501::t_73d90d052fefca 16
+src/content/questions/11-learning-with-ai/011-what-claudemd-configuration-enables-learning-mode.md
+  s_db25af9ef66501::t_12bf8d8963e577 16
+src/content/questions/11-learning-with-ai/015-what-is-the-recommended-approach-for-avoidant.md
+  s_669fcb6882e7d0::t_f62b55c503e17c 12,16,25
+src/content/questions/11-learning-with-ai/021-what-did-the-2025-pldi-compilation-error-study-find.md
+  s_4390aa387f11d9::t_abf1fca9a0cc02 2,8,10-17,19-20,23,27
+src/content/questions/11-learning-with-ai/022-what-happens-to-context-quality-near-the-budget-threshold.md
+  s_4390aa387f11d9::t_98ce02c30b1fda 2-4,8-9,11-17,19-20,23,27
+src/content/questions/12-architecture-internals/011-what-is-claude-codes-design-philosophy-as-stated.md
+  s_db25af9ef66501::t_a48ef4f15a9d40 14
+src/content/questions/12-architecture-internals/012-what-are-the-4-specialized-sub-agent-types.md
+  s_db25af9ef66501::t_5c0e44c4590bf9 15
+src/content/questions/12-architecture-internals/016-what-testing-effort-mismatch-did-the-agent-study-find.md
+  s_4390aa387f11d9::t_47c7af4b95875b 2,8,10-17,19-21,24,28
+src/content/questions/12-architecture-internals/017-what-change-reduced-cpu-usage-during-streaming.md
+  s_4390aa387f11d9::t_4760030cc0f36d 1-24
+src/content/questions/13-security-hardening/001-what-is-an-mcp-rug-pull-attack.md
+  s_db25af9ef66501::t_11d15aaebafe06 15
+src/content/questions/13-security-hardening/002-what-does-cve-2025-5310953110-escaperoute-exploit.md
+  s_db25af9ef66501::t_9a31ec36fb0598 15
+src/content/questions/13-security-hardening/003-what-is-a-known-limitation-of-permissionsdeny-in.md
+  s_db25af9ef66501::t_95cb13f890a10a 15
+src/content/questions/13-security-hardening/004-what-is-the-recommended-defense-in-depth-strategy.md
+  s_db25af9ef66501::t_84594205906372 15
+src/content/questions/13-security-hardening/005-which-prompt-injection-evasion-technique-uses.md
+  s_db25af9ef66501::t_1963628bc63c76 15
+src/content/questions/13-security-hardening/006-which-secret-detection-tool-has-the-highest.md
+  s_db25af9ef66501::t_d4472645f64a24 15
+src/content/questions/13-security-hardening/007-what-is-the-recommended-hook-stack-for-security.md
+  s_db25af9ef66501::t_ac127717135c47 16
+src/content/questions/13-security-hardening/008-which-mcp-servers-are-marked-as-safe-in-the.md
+  s_db25af9ef66501::t_bfda1b89e87981 16
+src/content/questions/13-security-hardening/009-what-is-the-first-action-when-a-secret-is-exposed.md
+  s_db25af9ef66501::t_d5a7fec19e6da7 16
+src/content/questions/13-security-hardening/010-what-are-the-three-security-posture-levels-in-the.md
+  s_db25af9ef66501::t_615e7f53073a9c 17
+src/content/questions/13-security-hardening/011-which-sandbox-isolation-approach-combines-microvm.md
+  s_db25af9ef66501::t_da518c47937334 15
+src/content/questions/13-security-hardening/012-what-is-the-github-issue-auto-creation-bug-13797.md
+  s_db25af9ef66501::t_af35d686962f81 18
+src/content/questions/13-security-hardening/013-what-is-tool-poisoning-via-skillmd.md
+  s_db25af9ef66501::t_a90ec1dae088a9 16
+src/content/questions/13-security-hardening/014-what-is-memory-poisoning-in-ai-agents.md
+  s_db25af9ef66501::t_06dfe1f6cfe9c6 15
+src/content/questions/13-security-hardening/015-what-is-a-confused-deputy-attack-via-mcp.md
+  s_db25af9ef66501::t_cb09c28bfefea5 15
+src/content/questions/13-security-hardening/016-what-is-dns-rebinding-on-local-mcp-servers.md
+  s_db25af9ef66501::t_f53e1faa1365b0 15
+src/content/questions/13-security-hardening/017-what-is-hook-based-exfiltration.md
+  s_db25af9ef66501::t_ecee9fdfd0534b 16
+src/content/questions/13-security-hardening/018-what-is-the-clawhavoc-campaign.md
+  s_db25af9ef66501::t_db20457d30cd8e 17
+src/content/questions/13-security-hardening/019-what-percentage-of-skills-had-flaws-toxicskills.md
+  s_db25af9ef66501::t_94992b1d13776f 17
+src/content/questions/13-security-hardening/020-which-author-published-40-plus-malicious-skills.md
+  s_db25af9ef66501::t_c5e7a2555dee3c 15
+src/content/questions/13-security-hardening/021-how-does-clawhavoc-deliver-malware.md
+  s_db25af9ef66501::t_fff4e5706c9329 15
+src/content/questions/13-security-hardening/022-what-is-cve-2025-49596-mcp-inspector.md
+  s_db25af9ef66501::t_afac1f1fd360b9 15
+src/content/questions/13-security-hardening/023-what-are-the-claude-code-command-bypasses.md
+  s_db25af9ef66501::t_c740d7071d06e7 14
+src/content/questions/13-security-hardening/024-what-is-the-minimum-safe-claude-code-version.md
+  s_db25af9ef66501::t_cb65dac1fc34d1 17
+src/content/questions/13-security-hardening/025-which-tool-scans-mcp-configs-for-vulns.md
+  s_db25af9ef66501::t_88638beee5c9dd 17
+src/content/questions/13-security-hardening/026-what-is-safedep-vet-mcp.md
+  s_db25af9ef66501::t_6ed4689700daf7 15
+src/content/questions/13-security-hardening/027-which-claude-directory-is-most-dangerous.md
+  s_db25af9ef66501::t_8d9077a6dd210c 16
+src/content/questions/13-security-hardening/028-what-are-suspicious-hook-patterns.md
+  s_db25af9ef66501::t_96012e2556d9e5 15
+src/content/questions/13-security-hardening/029-how-many-exposed-mcp-servers-bitsight.md
+  s_db25af9ef66501::t_1510b757ec8e47 16
+src/content/questions/13-security-hardening/030-what-is-the-safe-mcp-framework.md
+  s_db25af9ef66501::t_1737c249395426 14
+src/content/questions/13-security-hardening/035-what-does-the-sandbox-credentials-setting-do.md
+  s_4390aa387f11d9::t_b5d9599e5da2f3 2-4,8,10-14,16-17,20,24
+src/content/questions/13-security-hardening/036-where-can-you-see-why-auto-mode-denied-a-command.md
+  s_4390aa387f11d9::t_6e8f8ee51fa0ca 2,9-13,15-16,19,23
+src/content/questions/13-security-hardening/037-what-security-gap-did-v2196-close-for-claude-mcp-list.md
+  s_4390aa387f11d9::t_9d6f1e083e303f 1-24
+src/content/questions/13-security-hardening/038-why-is-webassembly-based-mcp-sandboxing-meaningful.md
+  s_4390aa387f11d9::t_89ec96247fc3f6 2,7,9-16,18-20,23,27
+src/content/questions/13-security-hardening/039-what-do-cve-2026-50548-and-50549-describe.md
+  s_4390aa387f11d9::t_6dd2bd62d4c681 2,8,10-15,18-19,22,26
+src/content/questions/14-privacy-observability/001-what-is-the-default-data-retention-period-for.md
+  s_a40be4fdeb38a9::t_886dc8cbfced22 17
+src/content/questions/14-privacy-observability/002-what-data-is-sent-to-anthropic-when-using-claude.md
+  s_a40be4fdeb38a9::t_cf1918dabcdefb 16
+src/content/questions/14-privacy-observability/003-what-is-the-risk-when-connecting-a-database-via.md
+  s_a40be4fdeb38a9::t_fd3ba35724c482 16
+src/content/questions/14-privacy-observability/004-how-can-you-reduce-claude-code-data-retention.md
+  s_a40be4fdeb38a9::t_47c80855c8f2ff 16
+src/content/questions/14-privacy-observability/005-what-is-the-enterprise-api-zdr-data-retention.md
+  s_a40be4fdeb38a9::t_b8923ffa2434c7 15
+src/content/questions/14-privacy-observability/006-what-is-the-recommended-session-search-tool-from.md
+  s_a40be4fdeb38a9::t_ca51b584de365e 16
+src/content/questions/14-privacy-observability/007-what-hook-event-is-used-for-session-logging.md
+  s_a40be4fdeb38a9::t_0aaf3e3ab93a1a 15
+src/content/questions/14-privacy-observability/008-what-is-the-token-estimation-method-used-by-the.md
+  s_a40be4fdeb38a9::t_b38ad4d2b9d4a9 15
+src/content/questions/14-privacy-observability/009-what-cannot-the-session-monitoring-do.md
+  s_a40be4fdeb38a9::t_743950c2e1fff4 15
+src/content/questions/14-privacy-observability/010-where-are-claude-code-session-logs-stored-locally.md
+  s_a40be4fdeb38a9::t_9fc01674e53bb7 16
+src/content/questions/14-privacy-observability/012-what-do-the-workflow-run-id-and-workflow-name-attributes-enable.md
+  s_4390aa387f11d9::t_081e08cc52f54d 1-25
+src/content/questions/14-privacy-observability/013-what-is-the-privacy-implication-of-the-assistant-response-otel-event.md
+  s_4390aa387f11d9::t_891c862c895e03 1-25
+src/content/questions/14-privacy-observability/014-which-lever-reduces-agentic-ai-cost-by-routing-complexity.md
+  s_4390aa387f11d9::t_46768cc5df3650 2-3,11-15,17-19,22,26
+src/content/questions/14-privacy-observability/015-what-does-an-api-gateway-add-over-a-direct-api-key.md
+  s_4390aa387f11d9::t_67c5a4c5ec5148 2-4,8,11-16,18-20,23,27
+src/content/questions/14-privacy-observability/016-what-does-the-pr-audit-trail-hook-do.md
+  s_4390aa387f11d9::t_42c15f506af4dd 2-3,10-16,18-20,23,27
+src/content/questions/15-ai-ecosystem/001-what-is-the-main-philosophy-behind-using.md
+  s_db25af9ef66501::t_b023246ab12bad 16
+src/content/questions/15-ai-ecosystem/002-when-should-you-use-perplexity-instead-of-claude.md
+  s_db25af9ef66501::t_d2094e8df5594e 16
+src/content/questions/15-ai-ecosystem/003-what-is-the-recommended-research-to-code-pipeline.md
+  s_db25af9ef66501::t_35795d59db8b54 15
+src/content/questions/15-ai-ecosystem/004-which-tool-is-best-for-converting-a-ui-screenshot.md
+  s_db25af9ef66501::t_cb388b22762135 15
+src/content/questions/15-ai-ecosystem/005-which-tool-should-you-use-to-create-powerpoint.md
+  s_db25af9ef66501::t_61c1d5744f3a1d 16
+src/content/questions/15-ai-ecosystem/006-what-is-notebooklms-unique-feature-for-developer.md
+  s_db25af9ef66501::t_1353223a4ae39e 15
+src/content/questions/15-ai-ecosystem/007-in-the-complete-workflow-pipeline-what-is-the.md
+  s_db25af9ef66501::t_6d8f9644bc642d 15
+src/content/questions/15-ai-ecosystem/008-what-is-v0dev-best-used-for-in-the-ai-ecosystem.md
+  s_db25af9ef66501::t_b235090576c0e0 16
+src/content/questions/15-ai-ecosystem/009-how-does-claude-websearch-compare-to-perplexity.md
+  s_db25af9ef66501::t_d56640c9367edc 16
+src/content/questions/15-ai-ecosystem/010-what-is-the-minimal-stack-monthly-cost.md
+  s_db25af9ef66501::t_bd16380f5e439b 14
+src/content/questions/15-ai-ecosystem/016-which-release-made-claude-in-chrome-generally-available.md
+  s_4390aa387f11d9::t_42557e7f30d508 2,7,10-13,15-16,19,23
+src/content/questions/15-ai-ecosystem/017-how-do-mcp-apps-and-the-vercel-ai-sdk-differ.md
+  s_4390aa387f11d9::t_ac31773b87a9b4 4,7-8,10-18,21-22,25,29
+src/content/questions/15-ai-ecosystem/018-at-what-corpus-size-does-tier-3-rag-start-to-pay-off.md
+  s_4390aa387f11d9::t_4d7c7639e25dd4 2-4,11-15,17-19,22,26
+src/content/questions/15-ai-ecosystem/019-what-changed-alongside-the-anthropicaws-gateway-addition.md
+  s_4390aa387f11d9::t_4b99db68b1e176 1-24
+src/content/questions/16-agent-harness-context/035-what-style-bias-score-range-does-judgebiasbench.md
+  s_70603bfa823e50::t_d53eda5c6d3070 20,24
+src/content/questions/16-agent-harness-context/036-how-does-askuserquestion-behave-when-the-user-doesnt-respond.md
+  s_4390aa387f11d9::t_57b338ae7907cf 2-3,7,10-16,19,22,26
+src/content/questions/16-agent-harness-context/037-what-does-claude-code-retry-watchdog-change.md
+  s_4390aa387f11d9::t_612c15fe0e5048 1-25
+src/content/questions/16-agent-harness-context/038-what-does-the-streaming-idle-watchdog-do.md
+  s_4390aa387f11d9::t_80e795083a96b8 1-23
+src/content/questions/16-agent-harness-context/039-did-subagents-always-inherit-the-sessions-thinking-config.md
+  s_4390aa387f11d9::t_f571c8764057a3 2-4,7,10-17,19-20,23,27
+src/content/questions/16-agent-harness-context/040-what-are-ghost-tokens-in-context-engineering.md
+  s_4390aa387f11d9::t_79728a9c5b0925 2-4,7,10-16,18-19,22,26
+src/data/guide-content-entries.ts
+  s_6a36b27df22c0e::t_f40aa797097abf 3,218,346,527-534,1007-1078,1546,1554,1602,1610,1618,1626,1650,1674,1682,1834,1906,2015-2054,4586,5018,5034,5114,6170,8858,8864-8866,8868,8874,8882,8890,8898,8906,8944-8946,8948,8954,8962,8970,8978,8984-8986,8988,8994,9002,9008-9010,9012,9018,9026,9032-9034,9036,9040-9042,9044,9048-9050,9052,9056-9058,9060,9064-9066,9068,9072-9074,9076,9080-9082,9084,9088-9090,9092,9096-9098,9100,9104-9106,9108,9112-9114,9116,9120-9122,9124,9128-9130,9132,9136-9138,9140,9144-9146,9148,9152-9154,9156,9160-9162,9164,9168-9170,9172,9176-9178,9180,9185-9186,9188,9194,9202,9210,9218,9234,9242,9282,9290,9296-9298,9300,9304-9306,9308,9314,9328-9330,9332,9336-9338,9340,9344-9346,9348,9354,9362,9370,9378,9410,9418,9426,9432-9434,9436,9441-9442,9450,9456-9458,9460,9464-9466,9468,9472-9474,9476,9480-9482,9484,9488-9490,9492,9496-9498,9500,9505-9506,9514,9546,9610,9618,9626,9634,9642,9650,9658,9666,9673,9681-9682,9689-9690,9698,9706,9800-9802,9804,9810,9816-9818,9820,9824-9826,9828,9832-9834,9836,9842,9850,9858,9866,9872-9874,9876,9882,9890,9906,9930,9935-9942,9946,9962,9970,10050,10072-10090,10092-10100,10105,10113-10114,10121-10122,10129-10130,10138,10146,10154,10162,10170,10178,10186,10192-10194,10196,10202,10208-10210,10212,10218,10234,10250,10264-10266,10268,10272-10274,10276,10282,10288-10290,10292,10296-10298,10300,10304-10306,10308,10314,10320-10378,10380,10384-10386,10388,10392-10394,10396-10404,10409-10410,10416-10418,10420,10425-10426,10434,10440-10442,10444,10450,10458,10466,10472-10474,10476,10480-10482,10484,10490,10496-10498,10500,10506,10512-10514,10516,10522,10562,10578,10586,10592-10594,10596,10600-10602,10604,10608-10610,10612,10616-10618,10620,10624-10626,10628,10632-10634,10636,10650,10658,10666,10674,10682,10690,10738,10744-10746,10748,10752-10762,10764,10770,10776-10778,10780,10784-10786,10788,10792-10794,10796,10800-10802,10804,10808-10810,10812,10818,10826,10834,10842,10850,10858,10866,10874,10882,10890,10938,10945-10946,10954,10962,10968-10970,10972,10978,10984-11098,11100-11108,11114,11130,11137-11138,11146,11160-11162,11164,11176-11178,11180,11184-11186,11188,11192-11194,11196,11200-11202,11204,11208-11210,11212,11224-11226,11228,11232-11234,11236,11240-11242,11244,11248-11250,11252,11258,11264-11266,11268,11272-11274,11276,11282,11288-11290,11292,11322,11328-11330,11332,11336-11338,11340,11346,11352-11354,11356,11360-11362,11364,11368-11370,11372,11376-11378,11380,11384-11386,11388,11394,11400-11402,11404,11408-11410,11412,11418,11426,11434,11440-11442,11444,14170,14458
+src/data/guide-search-entries.ts
+  s_6a36b27df22c0e::t_b5679537ef37ea 974-989,2038-2077
+src/layouts/Layout.astro
+  s_91e616e7526bf6::t_dc877830a1d8a4 129
+src/pages/compare/index.astro
+  s_d2cd69166b24a3::t_d8cef4758e29b7 6,119
+src/pages/index.astro
+  s_d2cd69166b24a3::t_80d5ebd989bcbc 20,26
+src/pages/quiz/index.astro
+  s_d2cd69166b24a3::t_e601164671a13a 5,11,17,31-32
+src/pages/sitemap/index.astro
+  s_d2cd69166b24a3::t_6a3ce60f69f8c0 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "23b0038345c528a4bec6bcb998dccd0acd6c7b69",
+  "prompts": {},
+  "sessions": {
+    "s_4390aa387f11d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f29e6d8-3d86-4485-8961-8722bc48cca1",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_669fcb6882e7d0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10b00866-e51c-4f90-a531-f0a0c1772281",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_6a36b27df22c0e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b20ca81-41ff-42d9-9291-c8a2ecd990fa",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_6b14c9a9e6e313": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51f67cbe-a7cf-4ee3-b002-46f1c2477e23",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_70603bfa823e50": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7abbd90c-250f-4a29-b81b-ade2c110ce13",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_87cd37dbe960e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ed01521-2541-43b4-9675-2866ed083efa",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_91e616e7526bf6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3e8621-8fcc-45d7-a61b-13335a4240d1",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a40be4fdeb38a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1f67f21-7764-41d2-90ad-8fb3d4eb5dc1",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d2cd69166b24a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e184c62-c503-433c-b050-4c43dee2e247",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_db25af9ef66501": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "773ec1f2-c557-4985-b4c1-cb84262e9e46",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
