@@ -1,0 +1,23 @@
+src/pages/cheatsheets/index.astro
+  s_4390aa387f11d9::t_2b4b06c901f5d0 760,773,779
+src/pages/methodologies/index.astro
+  s_4390aa387f11d9::t_5419ac40127bbb 253,261,288,296,302
+src/pages/whitepapers/index.astro
+  s_4390aa387f11d9::t_ae6f73cf352f11 420,446,452,463,485
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "2370854e3221561e5fa9f2c34f5dc72166ffd625",
+  "prompts": {},
+  "sessions": {
+    "s_4390aa387f11d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f29e6d8-3d86-4485-8961-8722bc48cca1",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
