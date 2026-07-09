@@ -417,7 +417,7 @@ const profiles = [
   /* Hero */
   .page-hero {
     padding: 4rem 0 3rem;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid var(--border);
     background: var(--bg-primary);
   }
@@ -443,13 +443,13 @@ const profiles = [
     font-size: 1.05rem;
     color: var(--text-secondary);
     max-width: 580px;
-    margin: 0 auto 2rem;
+    margin: 0 0 2rem;
     line-height: 1.65;
   }
   .hero-stats {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     flex-wrap: wrap;
     margin-bottom: 2rem;
@@ -460,6 +460,7 @@ const profiles = [
     align-items: center;
     padding: 0 1.5rem;
   }
+  .hero-stats .stat:first-child { padding-left: 0; }
   .stat-num {
     font-size: 1.4rem;
     font-weight: 800;
@@ -481,7 +482,7 @@ const profiles = [
   .hero-cta {
     display: flex;
     gap: 0.75rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
   .btn {

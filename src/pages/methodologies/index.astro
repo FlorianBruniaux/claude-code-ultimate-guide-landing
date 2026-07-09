@@ -250,7 +250,7 @@ const COMBINATION_PATTERNS = [
 /* ── Page Hero ──────────────────────────────────────────────────────── */
 .page-hero {
   padding: var(--space-3xl) 0 var(--space-2xl);
-  text-align: center;
+  text-align: left;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
 }
@@ -258,7 +258,7 @@ const COMBINATION_PATTERNS = [
 .hero-badge-row {
   display: flex;
   gap: var(--space-sm);
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
 }
@@ -285,7 +285,7 @@ const COMBINATION_PATTERNS = [
   line-height: 1.2;
   margin-bottom: var(--space-lg);
   max-width: 700px;
-  margin-inline: auto;
+  margin-inline: 0;
 }
 
 .tagline {
@@ -293,13 +293,13 @@ const COMBINATION_PATTERNS = [
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 560px;
-  margin: 0 auto var(--space-xl);
+  margin: 0 0 var(--space-xl);
 }
 
 .cta-buttons {
   display: flex;
   gap: var(--space-md);
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
