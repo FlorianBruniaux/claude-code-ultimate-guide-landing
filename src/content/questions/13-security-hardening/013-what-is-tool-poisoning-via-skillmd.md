@@ -13,7 +13,7 @@ options:
   c: "Hidden instructions in SKILL.md that make the agent execute malicious commands (curl|bash, base64 eval, password ZIPs)"
   d: "A SKILL.md that references deprecated API endpoints"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Attack Techniques"
   anchor: "#attack-techniques"
 ---

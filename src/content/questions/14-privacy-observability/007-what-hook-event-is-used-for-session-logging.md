@@ -12,7 +12,7 @@ options:
   c: SessionStart
   d: Notification
 doc_reference:
-  file: guide/observability.md
+  file: guide/ops/observability.md
   section: Register in Settings
   anchor: '#2-register-in-settings'
 ---

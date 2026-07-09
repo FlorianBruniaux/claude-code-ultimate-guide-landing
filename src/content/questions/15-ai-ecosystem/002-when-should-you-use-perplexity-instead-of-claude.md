@@ -13,7 +13,7 @@ options:
   c: When editing multiple files
   d: When running tests
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 1. Perplexity AI
   anchor: '#1-perplexity-ai-research--sourcing'
 ---

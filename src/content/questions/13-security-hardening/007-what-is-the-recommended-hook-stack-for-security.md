@@ -13,7 +13,7 @@ options:
   c: No hooks - rely only on permissions.deny
   d: Only UserPromptSubmit hooks
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Hook Stack Setup
   anchor: '#23-hook-stack-setup'
 ---

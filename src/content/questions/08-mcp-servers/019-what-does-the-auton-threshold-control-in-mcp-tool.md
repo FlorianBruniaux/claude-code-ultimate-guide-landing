@@ -12,7 +12,7 @@ options:
   c: Context percentage threshold that triggers automatic lazy loading (5%, 10%, or 20%)
   d: Maximum number of tools to load per MCP server
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Tool Search & Lazy Loading
   anchor: '#tool-search-lazy-loading'
 ---

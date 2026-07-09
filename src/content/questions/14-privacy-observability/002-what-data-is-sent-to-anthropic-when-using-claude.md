@@ -13,7 +13,7 @@ options:
   c: Only code snippets you copy-paste
   d: Hashed metadata only
 doc_reference:
-  file: guide/data-privacy.md
+  file: guide/security/data-privacy.md
   section: What Leaves Your Machine
   anchor: '#what-leaves-your-machine'
 ---

@@ -12,7 +12,7 @@ options:
   c: It cannot block Bash commands
   d: It requires admin privileges
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Known Security Gaps
   anchor: '#known-security-gaps'
 ---

@@ -16,7 +16,7 @@ doc_reference:
   anchor: '#hook-output'
 ---
 
-What JSON structure should a hook return to send a message back to Claude?
+What JSON structure should a hook return to surface a message to the user?
 
 ---
 
@@ -31,7 +31,7 @@ Hooks return JSON on stdout with specific fields:
 }
 ```
 
-- `systemMessage`: Displayed to Claude as context
-- `hookSpecificOutput`: Additional structured data
+- `systemMessage`: A warning message displayed to the human user (not fed to Claude)
+- `hookSpecificOutput.additionalContext`: The mechanism that actually injects content into Claude's context window
 
-This allows hooks to provide context that Claude can use in its responses.
+Use systemMessage to alert the user; use hookSpecificOutput.additionalContext (or the reason field on a decision: block response) to feed information back to Claude.

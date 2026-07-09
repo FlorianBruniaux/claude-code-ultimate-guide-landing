@@ -12,7 +12,7 @@ options:
   c: "A denial-of-service attack that fills the agent's context window"
   d: "An attack that erases the agent's conversation history"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Attack Techniques"
   anchor: "#attack-techniques"
 ---

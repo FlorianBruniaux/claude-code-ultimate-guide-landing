@@ -13,7 +13,7 @@ options:
   c: If you can't explain the code to a colleague, you haven't learned it
   d: Record yourself explaining and review later
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: V — Verify
   anchor: '#v--verify-explain-it-back'
 ---

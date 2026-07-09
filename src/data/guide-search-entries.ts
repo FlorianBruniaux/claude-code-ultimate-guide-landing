@@ -972,6 +972,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-edgee-compressor-v2-guide",
+    "title": "Edgee Compressor V2 Guide",
+    "keywords": "edgee compressor v2 guide guide ecosystem context engineering tools",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-vendor-claims-checklist",
+    "title": "Vendor Claims Checklist",
+    "keywords": "vendor claims checklist guide ops unit economics md:159 (how to read a vendor's cost reduction claim: paired design, sign test ceiling at small n, bootstrap ci width, median vs aggregate)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md:159 (How to read a vendor's cost-reduction claim: paired design, sign test ceiling at small n, bootstrap CI width, median vs aggregate)",
+    "source": "guide"
+  },
+  {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
     "keywords": "antigravity guide guide ecosystem ecosystem",
@@ -2017,6 +2033,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "chain of verification guide core methodologies",
     "category": "Guide",
     "url": "/guide/methodologies/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-bmad-method-tool-usage",
+    "title": "Bmad Method Tool Usage",
+    "keywords": "bmad method tool usage guide workflows spec first md#with bmad method multi role planning",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-bmad-method-strategic",
+    "title": "Bmad Method Strategic",
+    "keywords": "bmad method strategic guide core methodologies md#tier strategic orchestration",
+    "category": "Guide",
+    "url": "/guide/methodologies/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spec-kitty-tool",
+    "title": "Spec Kitty Tool",
+    "keywords": "spec kitty tool guide workflows spec first md#with spec kitty isolated parallel execution",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-openhands-tool",
+    "title": "Openhands Tool",
+    "keywords": "openhands tool guide ecosystem agentic tools md#24 openhands all hands",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#24-openhands-all-hands-ai",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-software-factories-section",
+    "title": "AI Software Factories Section",
+    "keywords": "ai software factories section guide workflows spec first md#full cycle software factories",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
     "source": "guide"
   },
   {

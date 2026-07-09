@@ -12,7 +12,7 @@ options:
   c: 15 methodologies
   d: 20 methodologies
 doc_reference:
-  file: guide/methodologies.md
+  file: guide/core/methodologies.md
   section: The 15 Methodologies
   anchor: '#the-15-methodologies'
 ---

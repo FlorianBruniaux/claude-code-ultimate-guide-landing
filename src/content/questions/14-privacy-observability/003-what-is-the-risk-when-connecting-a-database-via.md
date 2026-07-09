@@ -13,7 +13,7 @@ options:
   c: Claude might drop tables
   d: MCP uses too many tokens
 doc_reference:
-  file: guide/data-privacy.md
+  file: guide/security/data-privacy.md
   section: 'Risk 2: MCP Database Access'
   anchor: '#risk-2-mcp-database-access'
 ---

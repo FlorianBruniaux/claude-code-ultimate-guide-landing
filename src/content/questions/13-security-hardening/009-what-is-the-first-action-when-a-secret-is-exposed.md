@@ -13,7 +13,7 @@ options:
   c: Scan the entire repo
   d: Notify the team
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Secret Exposed
   anchor: '#31-secret-exposed'
 ---

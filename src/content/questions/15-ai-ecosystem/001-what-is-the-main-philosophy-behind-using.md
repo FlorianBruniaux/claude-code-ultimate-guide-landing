@@ -13,7 +13,7 @@ options:
   c: Use as many tools as possible simultaneously
   d: Avoid using Claude Code for coding tasks
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: Introduction
   anchor: '#introduction'
 ---

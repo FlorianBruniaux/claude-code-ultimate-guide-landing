@@ -17,7 +17,7 @@ doc_reference:
   anchor: '#hook-registration-settingsjson'
 ---
 
-What is the default timeout for hooks in the configuration?
+What timeout value does the example hook registration in the guide use?
 
 ---
 
@@ -31,5 +31,5 @@ The example hook configuration shows a timeout of 5000ms (5 seconds).
 }
 ```
 
-This prevents hooks from blocking Claude Code indefinitely.
+This prevents hooks from blocking Claude Code indefinitely. Note that 5000ms is the value chosen in this example, not the platform default: when the timeout field is omitted, command-type hooks default to 600 seconds, prompt hooks to 30 seconds, and agent hooks to 60 seconds.
 For longer operations like formatting, you might increase this to 10000ms.

@@ -12,7 +12,7 @@ options:
   c: Google Search -> Copy code -> Paste in project
   d: Ask Claude Code to search the web first
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: Integration Workflow
   anchor: '#integration-workflow'
 ---

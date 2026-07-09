@@ -13,7 +13,7 @@ options:
   c: Building context menus
   d: Managing environment variables
 doc_reference:
-  file: guide/methodologies.md
+  file: guide/core/methodologies.md
   section: 'Tier 4: Feature Delivery'
   anchor: '#tier-4-feature-delivery'
 ---

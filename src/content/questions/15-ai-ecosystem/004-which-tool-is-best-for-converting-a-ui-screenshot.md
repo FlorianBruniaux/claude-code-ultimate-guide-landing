@@ -12,7 +12,7 @@ options:
   c: Gemini 2.5 Pro -> then Claude Code for refinement
   d: NotebookLM
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 2. Google Gemini
   anchor: '#2-google-gemini-visual-understanding'
 ---

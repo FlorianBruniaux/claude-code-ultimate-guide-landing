@@ -14,7 +14,7 @@ options:
   c: Development, Staging, Production
   d: Free, Pro, Enterprise
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Security Posture Levels
   anchor: '#security-posture-levels'
 ---

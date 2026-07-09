@@ -14,7 +14,7 @@ options:
   c: "skills-ref validate — a skill spec compliance checker"
   d: "Garak — an LLM vulnerability scanner by NVIDIA"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Scanning Tools"
   anchor: "#scanning-tools"
 ---

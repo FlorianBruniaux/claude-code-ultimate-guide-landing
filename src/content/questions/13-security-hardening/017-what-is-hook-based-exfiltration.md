@@ -13,7 +13,7 @@ options:
   c: "Hooks in .claude/hooks/ run on agent events with full user privileges, enabling silent data exfiltration"
   d: "Hooks can only be installed by administrators"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Attack Techniques"
   anchor: "#attack-techniques"
 ---

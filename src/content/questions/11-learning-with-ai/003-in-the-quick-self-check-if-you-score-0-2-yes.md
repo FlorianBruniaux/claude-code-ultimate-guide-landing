@@ -12,7 +12,7 @@ options:
   c: You're at dependency risk - outsourcing thinking
   d: You're an AI avoidant
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Quick Self-Check
   anchor: '#quick-self-check-start-here'
 ---

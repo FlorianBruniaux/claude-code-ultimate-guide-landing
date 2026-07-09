@@ -12,7 +12,7 @@ options:
   c: Setup-Execute-Verify
   d: Input-Process-Output
 doc_reference:
-  file: guide/methodologies.md
+  file: guide/core/methodologies.md
   section: 'Tier 3: Behavior & Acceptance'
   anchor: '#tier-3-behavior--acceptance'
 ---

@@ -13,7 +13,7 @@ options:
   c: Understand, Validate, Analyze, Learn
   d: Use, Verify, Analyze, Log
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: The UVAL Protocol
   anchor: '#the-uval-protocol'
 ---

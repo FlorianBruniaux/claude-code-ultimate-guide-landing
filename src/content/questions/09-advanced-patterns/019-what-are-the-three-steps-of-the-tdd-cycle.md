@@ -13,7 +13,7 @@ options:
   c: Write-Run-Fix
   d: Design-Code-Review
 doc_reference:
-  file: guide/methodologies.md
+  file: guide/core/methodologies.md
   section: 'Tier 5: Implementation'
   anchor: '#tier-5-implementation'
 ---

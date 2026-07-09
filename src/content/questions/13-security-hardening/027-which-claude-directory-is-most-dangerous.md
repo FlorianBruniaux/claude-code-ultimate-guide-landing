@@ -13,7 +13,7 @@ options:
   c: ".claude/commands/ — custom commands can execute arbitrary code"
   d: ".claude/settings.json — contains all API keys and tokens"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Suspicious Patterns"
   anchor: "#suspicious-patterns"
 ---

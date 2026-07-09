@@ -12,7 +12,7 @@ options:
   c: "A technique to intercept MCP traffic between client and remote server"
   d: "An attack that poisons the DNS cache of the MCP server host"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Attack Techniques"
   anchor: "#attack-techniques"
 ---

@@ -13,7 +13,7 @@ options:
   c: browser (full access), custom MCPs
   d: All MCPs are safe by default
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: MCP Safe List (Community Vetted)
   anchor: '#mcp-safe-list-community-vetted'
 ---

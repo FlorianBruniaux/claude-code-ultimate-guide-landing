@@ -13,7 +13,7 @@ options:
   c: Standard Driven Development - follows industry standards
   d: Sequential Driven Development - linear workflow
 doc_reference:
-  file: guide/methodologies.md
+  file: guide/core/methodologies.md
   section: 'Tier 2: Specification & Architecture'
   anchor: '#tier-2-specification--architecture'
 ---

@@ -12,7 +12,7 @@ options:
   c: Real-time collaboration
   d: Git integration
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 4. NotebookLM
   anchor: '#4-notebooklm-synthesis--audio'
 ---

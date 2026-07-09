@@ -13,7 +13,7 @@ options:
   c: Using AI for code reviews
   d: Asking AI to explain concepts
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Red Flags Checklist
   anchor: '#red-flags-checklist'
 ---

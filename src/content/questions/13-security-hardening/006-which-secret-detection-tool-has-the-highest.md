@@ -12,7 +12,7 @@ options:
   c: Gitleaks
   d: detect-secrets
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Tool Comparison
   anchor: '#tool-comparison'
 ---

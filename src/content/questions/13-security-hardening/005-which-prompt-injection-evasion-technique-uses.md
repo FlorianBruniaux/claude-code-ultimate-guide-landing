@@ -12,7 +12,7 @@ options:
   c: Zero-width characters (invisible to humans)
   d: Homoglyphs
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Evasion Techniques
   anchor: '#evasion-techniques'
 ---

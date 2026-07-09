@@ -13,7 +13,7 @@ options:
   c: /var/log/claude/
   d: In the cloud only
 doc_reference:
-  file: guide/observability.md
+  file: guide/ops/observability.md
   section: Native Commands
   anchor: '#native-commands'
 ---

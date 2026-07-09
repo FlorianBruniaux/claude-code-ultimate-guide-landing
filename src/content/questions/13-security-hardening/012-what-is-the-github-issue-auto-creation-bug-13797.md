@@ -15,7 +15,7 @@ options:
   c: Issues are created but remain private
   d: Only affects paid enterprise accounts
 doc_reference:
-  file: guide/known-issues.md
+  file: guide/core/known-issues.md
   section: GitHub Issue Auto-Creation Bug
   anchor: '#github-issue-auto-creation-bug'
 ---

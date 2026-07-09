@@ -14,7 +14,7 @@ options:
   c: ">= 1.0.111 (fixes WebFetch SSRF only)"
   d: ">= 0.14.1 (fixes MCP Inspector RCE only)"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Minimum Safe Versions"
   anchor: "#minimum-safe-versions"
 ---

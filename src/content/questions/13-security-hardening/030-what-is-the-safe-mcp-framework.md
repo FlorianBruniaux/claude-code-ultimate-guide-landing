@@ -11,7 +11,7 @@ options:
   c: "A certification program for MCP server developers"
   d: "A security framework with 80+ techniques mapped to ATT&CK for MCP environments, providing policy-based blocklists"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Defensive Resources"
   anchor: "#defensive-resources"
 ---

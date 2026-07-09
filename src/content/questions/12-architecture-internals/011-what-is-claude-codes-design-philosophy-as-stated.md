@@ -11,7 +11,7 @@ options:
   c: Maximum control - explicit rules for every case
   d: Hybrid approach - RAG + classifier + model
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: 'Philosophy: Less Scaffolding, More Model'
   anchor: '#9-philosophy-less-scaffolding-more-model'
 ---

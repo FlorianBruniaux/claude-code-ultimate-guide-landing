@@ -12,7 +12,7 @@ options:
   c: 1 word = 1 token
   d: Based on file size only
 doc_reference:
-  file: guide/observability.md
+  file: guide/ops/observability.md
   section: Token Estimation Method
   anchor: '#token-estimation-method'
 ---

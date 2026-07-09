@@ -12,7 +12,7 @@ options:
   c: An MCP that uses too many tokens
   d: An attack on the MCP protocol itself
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: 'Attack: MCP Rug Pull'
   anchor: '#attack-mcp-rug-pull'
 ---

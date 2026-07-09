@@ -13,7 +13,7 @@ options:
     comprehensive research'
   d: Perplexity cannot access real-time data
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: Comparison
   anchor: '#comparison-claude-websearch-vs-perplexity'
 ---

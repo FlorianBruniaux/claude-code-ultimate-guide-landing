@@ -14,7 +14,7 @@ options:
   c: 5 years
   d: Forever
 doc_reference:
-  file: guide/data-privacy.md
+  file: guide/security/data-privacy.md
   section: TL;DR - Retention Summary
   anchor: '#tldr---retention-summary'
 ---

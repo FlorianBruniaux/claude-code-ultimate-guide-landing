@@ -11,7 +11,7 @@ options:
   c: "8 command execution bypasses via blocklist flaws (man --html, sed e modifier, git arg ambiguity, bash variable expansion)"
   d: "A denial-of-service via excessive file watching"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "CVE Database"
   anchor: "#cve-database"
 ---

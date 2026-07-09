@@ -14,7 +14,7 @@ options:
   c: AI is your assistant
   d: AI is your teacher
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: The Problem in 60 Seconds
   anchor: '#the-problem-in-60-seconds'
 ---

@@ -12,7 +12,7 @@ options:
   c: 0 days (real-time processing only, data not stored)
   d: 5 years like default
 doc_reference:
-  file: guide/data-privacy.md
+  file: guide/security/data-privacy.md
   section: 'Tier 3: Enterprise API (Zero Data Retention)'
   anchor: '#tier-3-enterprise-api-zero-data-retention'
 ---

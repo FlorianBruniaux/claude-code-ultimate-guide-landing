@@ -14,7 +14,7 @@ options:
   c: Wait 15 minutes after getting AI response before using it
   d: Spend 15 minutes explaining AI code to a colleague
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: U — Understand First
   anchor: '#u--understand-first-the-15-minute-rule'
 ---

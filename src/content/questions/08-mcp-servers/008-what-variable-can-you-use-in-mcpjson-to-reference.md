@@ -9,7 +9,7 @@ profiles:
 correct: b
 options:
   a: ${projectPath}
-  b: ${workspaceFolder}
+  b: ${CLAUDE_PROJECT_DIR}
   c: ${cwd}
   d: ${PROJECT_DIR}
 doc_reference:
@@ -22,15 +22,17 @@ What variable can you use in mcp.json to reference the current project path?
 
 ---
 
-The `${workspaceFolder}` variable expands to the current project path.
+The `${CLAUDE_PROJECT_DIR}` variable expands to the absolute path of the project root and is auto-injected into stdio-type MCP server environments.
 
-Variable substitution in mcp.json:
-- `${workspaceFolder}` - Current project path
-- `${env:VAR_NAME}` - Environment variable
+Variable substitution in Claude Code uses standard shell-style syntax:
+- `${CLAUDE_PROJECT_DIR}` - Absolute path to the project root
+- `${VAR}` / `${VAR:-default}` - Environment variable with optional default
+
+Note: `${workspaceFolder}` and `${env:VAR_NAME}` are VS Code conventions that Claude Code does NOT support.
 
 Example:
 ```json
 "env": {
-  "PROJECT_PATH": "${workspaceFolder}"
+  "PROJECT_PATH": "${CLAUDE_PROJECT_DIR}"
 }
 ```

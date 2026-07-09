@@ -13,7 +13,7 @@ options:
   c: Apply code reviews to all AI-generated code
   d: Apply unit tests to verify correctness
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: A — Apply
   anchor: '#a--apply-transform-dont-copy'
 ---

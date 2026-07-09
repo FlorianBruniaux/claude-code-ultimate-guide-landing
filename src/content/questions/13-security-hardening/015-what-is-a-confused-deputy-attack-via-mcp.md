@@ -12,7 +12,7 @@ options:
   c: "The MCP protocol itself has a buffer overflow vulnerability"
   d: "An attacker manipulates MCP session data or outputs, and the client trusts the poisoned response"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Attack Techniques"
   anchor: "#attack-techniques"
 ---

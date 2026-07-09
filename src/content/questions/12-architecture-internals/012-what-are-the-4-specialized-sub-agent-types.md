@@ -12,7 +12,7 @@ options:
   c: Junior, Senior, Expert, Architect
   d: Fast, Balanced, Thorough, Complete
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Sub-Agent Types
   anchor: '#sub-agent-types'
 ---

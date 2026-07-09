@@ -13,7 +13,7 @@ options:
   c: Kimi (Moonshot AI)
   d: Gemini
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 3. Kimi
   anchor: '#3-kimi-pptx--long-document-generation'
 ---

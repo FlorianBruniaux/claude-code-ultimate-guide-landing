@@ -14,7 +14,7 @@ options:
   c: Passive, Active, Proactive
   d: Consumer, Producer, Creator
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: The Three Patterns
   anchor: '#the-three-patterns'
 ---

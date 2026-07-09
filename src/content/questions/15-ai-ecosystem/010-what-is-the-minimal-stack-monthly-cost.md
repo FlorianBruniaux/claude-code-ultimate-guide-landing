@@ -11,7 +11,7 @@ options:
   c: $0 - only free tiers
   d: $500+/month - enterprise plans
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 8. Cost & Subscription Strategy
   anchor: '#8-cost--subscription-strategy'
 ---

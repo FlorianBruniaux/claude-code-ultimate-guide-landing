@@ -13,7 +13,7 @@ options:
   c: Use incognito mode
   d: Add --no-retention flag
 doc_reference:
-  file: guide/data-privacy.md
+  file: guide/security/data-privacy.md
   section: Opt-Out of Training
   anchor: '#41-opt-out-of-training'
 ---

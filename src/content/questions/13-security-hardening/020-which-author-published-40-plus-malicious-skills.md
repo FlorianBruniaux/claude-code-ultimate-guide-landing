@@ -12,7 +12,7 @@ options:
   c: "pepe276 — Unicode-obfuscated instructions"
   d: "Aslaep123 — typosquatted exchange tools"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Malicious Authors"
   anchor: "#malicious-authors"
 ---

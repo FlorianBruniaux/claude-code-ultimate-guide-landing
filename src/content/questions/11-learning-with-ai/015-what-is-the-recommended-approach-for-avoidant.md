@@ -9,11 +9,11 @@ profiles:
 correct: b
 options:
   a: Continue avoiding AI to maintain purity
-  b: Start with AI review of YOUR code, not AI-generated code
+  b: "Start with low-stakes AI use: generating boilerplate, explaining unfamiliar code, writing docs, and generating test cases"
   c: Immediately switch to 100% AI usage
   d: Wait until AI tools are more mature
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Embracing AI Tools
   anchor: '#embracing-ai-tools'
 ---
@@ -22,4 +22,4 @@ What is the recommended approach for 'Avoidant' developers (Pattern 2)?
 
 ---
 
-For Avoidant developers, the guide recommends gradual adoption: start with AI reviewing YOUR code (you stay in control), then move to AI explaining concepts you implement, then AI-assisted work. This respects your instinct for understanding while gaining AI benefits. Pure avoidance means being slower without being smarter.
+For Avoidant developers (Pattern 2), the guide's Week 1 'Low-Stakes Introduction' recommends easing in with low-risk AI tasks: generating boilerplate, asking AI to explain unfamiliar code, writing documentation, and generating test cases. This builds familiarity without ceding control of the core problem-solving. (Starting with AI reviewing YOUR own code is the guide's remedy for the Dependent pattern, not the Avoidant one.) Pure avoidance means being slower without being smarter.

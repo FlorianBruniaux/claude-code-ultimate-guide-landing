@@ -13,7 +13,7 @@ options:
   c: Rapid UI prototyping with Shadcn/Tailwind
   d: Security auditing
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 6. UI Prototypers
   anchor: '#6-ui-prototypers-v0-bolt-lovable'
 ---

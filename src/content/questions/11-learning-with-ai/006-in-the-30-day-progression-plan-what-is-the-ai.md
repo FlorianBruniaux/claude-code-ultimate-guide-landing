@@ -13,7 +13,7 @@ options:
   c: 60-70% AI usage
   d: 70-80% AI usage
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: 30-Day Progression Plan
   anchor: '#30-day-progression-plan'
 ---

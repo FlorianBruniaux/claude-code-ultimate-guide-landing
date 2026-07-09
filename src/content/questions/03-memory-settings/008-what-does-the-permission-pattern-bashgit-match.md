@@ -22,4 +22,4 @@ What does the permission pattern 'Bash(git *)' match?
 
 ---
 
-The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. The space-based syntax is current - colon syntax like 'Bash(git status:*)' is deprecated.
+The pattern 'Bash(git *)' matches any git command. Permission patterns use wildcards: 'Bash(git *)' matches any git command, 'Bash(pnpm *)' matches any pnpm command, 'mcp__serena__*' matches all Serena MCP tools. Both forms are equivalent per official docs: the :* suffix, as in 'Bash(git status:*)', is just an alternate way to write a trailing wildcard, not a deprecated form.

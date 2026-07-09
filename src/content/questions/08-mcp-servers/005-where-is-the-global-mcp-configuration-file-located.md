@@ -9,7 +9,7 @@ profiles:
 correct: b
 options:
   a: ~/.mcp/config.json
-  b: ~/.claude/mcp.json
+  b: ~/.claude.json
   c: /etc/claude/mcp.json
   d: ~/.config/claude/mcp.json
 doc_reference:
@@ -22,10 +22,10 @@ Where is the global MCP configuration file located?
 
 ---
 
-The global MCP configuration is at `~/.claude/mcp.json`.
+The global (user-scope) MCP configuration lives in `~/.claude.json` under the `mcpServers` field.
 
 Configuration locations:
-- `~/.claude/mcp.json` - Global (applies to all projects)
-- `/project/.claude/mcp.json` - Project-specific (overrides global)
+- `~/.claude.json` - User scope (applies across your projects)
+- `.mcp.json` in the project root - Project scope (shared with the team)
 
-The configuration specifies which servers to run and their settings.
+Claude Code explicitly does NOT read paths like `~/.claude/mcp.json` or `~/.claude/config/mcp.json`. Servers are normally registered via `claude mcp add`.

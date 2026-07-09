@@ -13,7 +13,7 @@ options:
   c: '## Teaching Mode - Always explain before showing'
   d: '## Quiz Mode - Test before implementing'
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Claude Code for Learning
   anchor: '#claude-code-for-learning-not-just-producing'
 ---

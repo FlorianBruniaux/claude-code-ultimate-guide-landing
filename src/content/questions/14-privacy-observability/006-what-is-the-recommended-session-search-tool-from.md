@@ -13,7 +13,7 @@ options:
   c: ran CLI (npm)
   d: Built-in /search command
 doc_reference:
-  file: guide/observability.md
+  file: guide/ops/observability.md
   section: 'Recommended: session-search.sh'
   anchor: '#recommended-session-searchsh'
 ---

@@ -13,7 +13,7 @@ options:
   c: Fetches all PR comments into context
   d: Closes a pull request
 doc_reference:
-  file: guide/claude-code-releases.md
+  file: guide/core/claude-code-releases.md
   section: v2.1.27
   anchor: '#v2127'
 ---

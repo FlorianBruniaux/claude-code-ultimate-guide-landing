@@ -12,7 +12,7 @@ options:
   c: Provide exact token counts and actual API costs
   d: Record operation timestamps
 doc_reference:
-  file: guide/observability.md
+  file: guide/ops/observability.md
   section: What This Monitoring CANNOT Do
   anchor: '#what-this-monitoring-cannot-do'
 ---

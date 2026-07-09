@@ -13,7 +13,7 @@ options:
   c: "Over 10,000 servers, all running outdated MCP versions"
   d: "Fewer than 10, all quickly patched after disclosure"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Defensive Resources"
   anchor: "#defensive-resources"
 ---

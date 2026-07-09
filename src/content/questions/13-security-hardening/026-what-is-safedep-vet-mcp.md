@@ -12,7 +12,7 @@ options:
   c: "DNS rebinding protection for local MCP servers"
   d: "Software composition analysis that screens packages before install and detects slopsquatting"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Scanning Tools"
   anchor: "#scanning-tools"
 ---

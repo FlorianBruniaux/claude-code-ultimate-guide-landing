@@ -12,7 +12,7 @@ options:
   c: "curl/wget + base64 + /dev/tcp + eval — network calls, encoding, reverse shell, and dynamic execution"
   d: "date, hostname, and whoami for audit logging"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Suspicious Patterns"
   anchor: "#suspicious-patterns"
 ---

@@ -12,7 +12,7 @@ options:
   c: Delivery -> Planning -> Implementation
   d: All tools simultaneously
 doc_reference:
-  file: guide/ai-ecosystem.md
+  file: guide/ecosystem/ai-ecosystem.md
   section: 7. Workflow Orchestration
   anchor: '#7-workflow-orchestration'
 ---

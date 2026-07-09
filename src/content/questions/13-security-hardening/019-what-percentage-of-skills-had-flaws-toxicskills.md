@@ -14,7 +14,7 @@ options:
   c: "36.82% — over a third of 3,984 skills had flaws, with 534 critical and 76 malicious payloads"
   d: "78.5% — the vast majority were compromised"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Campaigns"
   anchor: "#campaigns"
 ---

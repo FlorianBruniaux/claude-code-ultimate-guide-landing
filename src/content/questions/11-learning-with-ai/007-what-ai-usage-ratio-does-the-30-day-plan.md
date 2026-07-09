@@ -13,7 +13,7 @@ options:
   c: 70%
   d: 90-100%
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: 30-Day Progression Plan
   anchor: '#week-4-augmented'
 ---

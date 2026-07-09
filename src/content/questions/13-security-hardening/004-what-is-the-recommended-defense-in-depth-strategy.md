@@ -12,7 +12,7 @@ options:
   c: Encrypt all files in the project
   d: Use a VPN when running Claude Code
 doc_reference:
-  file: guide/security-hardening.md
+  file: guide/security/security-hardening.md
   section: Defense-in-Depth Strategy
   anchor: '#defense-in-depth-strategy'
 ---

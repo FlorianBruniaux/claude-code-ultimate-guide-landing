@@ -12,7 +12,7 @@ options:
   c: Docker Sandboxes (with custom templates and network policies)
   d: Cloudflare Sandbox SDK
 doc_reference:
-  file: guide/sandbox-isolation.md
+  file: guide/security/sandbox-isolation.md
   section: Docker Sandboxes
   anchor: '#docker-sandboxes'
 ---

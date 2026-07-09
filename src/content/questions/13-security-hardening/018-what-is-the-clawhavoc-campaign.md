@@ -14,7 +14,7 @@ options:
   c: "A vulnerability disclosure program run by Anthropic"
   d: "A collection of open-source security tools for agent hardening"
 doc_reference:
-  file: "guide/security-hardening.md"
+  file: "guide/security/security-hardening.md"
   section: "Campaigns"
   anchor: "#campaigns"
 ---
