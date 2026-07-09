@@ -1,0 +1,206 @@
+---
+interface Guide {
+  title: string
+  link: string
+  date: string
+}
+
+let guides: Guide[] = []
+let fetchFailed = false
+
+try {
+  const res = await fetch('https://www.florian.bruniaux.com/guides/', {
+    headers: { 'User-Agent': 'cc.bruniaux.com build bot' },
+  })
+  if (!res.ok) throw new Error(`Guides fetch returned ${res.status}`)
+  const html = await res.text()
+
+  const scriptPattern = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g
+  let match
+  let itemListElement: any[] = []
+
+  while ((match = scriptPattern.exec(html)) !== null) {
+    try {
+      const json = JSON.parse(match[1])
+      if (json['@type'] === 'CollectionPage' && json.mainEntity?.itemListElement) {
+        itemListElement = json.mainEntity.itemListElement
+        break
+      }
+    } catch {
+      continue
+    }
+  }
+
+  guides = itemListElement
+    .map((entry) => {
+      const item = entry.item
+      if (!item?.name || !item?.url) return null
+      let date = ''
+      if (item.datePublished) {
+        const d = new Date(item.datePublished)
+        if (!isNaN(d.getTime())) {
+          date = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        }
+      }
+      return { title: item.name, link: item.url, date }
+    })
+    .filter((g): g is Guide => g !== null)
+    .slice(0, 3)
+
+  if (guides.length === 0) fetchFailed = true
+} catch {
+  fetchFailed = true
+}
+---
+
+{fetchFailed ? (
+  <div class="guides-posts guides-posts--fallback">
+    <a href="https://www.florian.bruniaux.com/guides/" target="_blank" rel="noopener noreferrer" class="guides-fallback-link">
+      Read the quick guides ↗
+    </a>
+  </div>
+) : (
+  <div class="guides-posts">
+    <div class="guides-posts-header">
+      <a href="https://www.florian.bruniaux.com/guides/" target="_blank" rel="noopener noreferrer" class="guides-posts-heading">
+        Quick guides ↗
+      </a>
+    </div>
+    <ul class="guides-posts-list">
+      {guides.map((guide) => (
+        <li class="guides-post-item">
+          <span class="guides-post-arrow" aria-hidden="true">→</span>
+          <a href={guide.link} target="_blank" rel="noopener noreferrer" class="guides-post-title">
+            {guide.title}
+          </a>
+          {guide.date && <span class="guides-post-date">{guide.date}</span>}
+        </li>
+      ))}
+    </ul>
+    <a href="https://www.florian.bruniaux.com/guides/" target="_blank" rel="noopener noreferrer" class="guides-posts-viewall">
+      View all guides →
+    </a>
+  </div>
+)}
+
+<style>
+.guides-posts {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--border);
+}
+
+.guides-posts--fallback {
+  display: flex;
+  align-items: center;
+}
+
+.guides-fallback-link {
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.guides-fallback-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.guides-posts-header {
+  margin-bottom: 0.5rem;
+}
+
+.guides-posts-heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.guides-posts-heading:hover {
+  color: var(--accent);
+}
+
+.guides-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.guides-post-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.guides-post-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.guides-post-item:hover .guides-post-arrow {
+  opacity: 1;
+}
+
+.guides-post-title {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  line-height: 1.4;
+}
+
+.guides-post-title:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+.guides-post-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.guides-posts-viewall {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.guides-posts-viewall:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .guides-post-item {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .guides-post-date {
+    margin-left: 1rem;
+  }
+}
+</style>

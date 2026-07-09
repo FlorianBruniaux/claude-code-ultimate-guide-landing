@@ -1,5 +1,6 @@
 ---
 import HeroBlogPosts from './HeroBlogPosts.astro'
+import HeroQuickGuides from './HeroQuickGuides.astro'
 ---
 
 <!-- Hero Section -->
@@ -45,8 +46,6 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
                 </a>
             </div>
 
-            <HeroBlogPosts />
-
             <div class="hero-badges">
                 <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/stargazers" target="_blank" rel="noopener" class="badge badge-stars">
                     <span class="badge-label">stars</span>
@@ -76,6 +75,11 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
                     <span class="badge-label">full guide</span>
                     <span class="badge-value">↓ epub</span>
                 </a>
+            </div>
+
+            <div class="hero-external-row">
+                <HeroBlogPosts />
+                <HeroQuickGuides />
             </div>
 
             <nav class="hero-quick-nav" aria-label="Quick navigation">
@@ -174,9 +178,9 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
     margin-bottom: var(--space-xl);
 }
 
-.hero .btn-primary {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
+.hero-ctas .btn {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.4rem;
 }
 
 .hero-badges {
@@ -241,20 +245,35 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
 .badge-pdf .badge-value { background-color: #dc2626; }
 .badge-epub .badge-value { background-color: #7c3aed; }
 
+.hero-external-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 640px) {
+    .hero-external-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
 /* Nav cards grid */
 .hero-nav-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-sm);
     margin-top: var(--space-lg);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 
 .hero-nav-card {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding: var(--space-sm) var(--space-md);
+    padding: 0.6rem 0.75rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
@@ -267,16 +286,16 @@ import HeroBlogPosts from './HeroBlogPosts.astro'
     background: var(--bg-tertiary);
 }
 
-.hero-nav-icon { font-size: 1.1rem; }
+.hero-nav-icon { font-size: 0.95rem; }
 
 .hero-nav-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .hero-nav-desc {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
 }
 
