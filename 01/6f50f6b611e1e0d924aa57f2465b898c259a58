@@ -1,0 +1,43 @@
+src/components/global/Footer.astro
+  s_e7d07887caee4e::t_b764ba85a24f8a 48-50
+src/components/landing/ClaudeEcosystem.astro
+  s_e7d07887caee4e::t_0301f5caeeb5fd 76,81,105,131,141,144,154-159,195,200,209,220,227,238,242,244,251-252,259,283
+src/components/landing/HeroBanner.astro
+  s_bfe889de0f29ed::t_5e84696944c451 3,80-84,181-183,248-262,269,276,289,292,298
+src/components/landing/HeroQuickGuides.astro
+  s_6f37177639fda9::t_6f0b8c43a80c32 1-206
+src/components/landing/RelatedProjects.astro
+  s_e7d07887caee4e::t_34112c7750f636 60-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "016f50f6b611e1e0d924aa57f2465b898c259a58",
+  "prompts": {},
+  "sessions": {
+    "s_6f37177639fda9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "967f71f3-5d4c-4503-a581-b2b36ea8d2dd",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bfe889de0f29ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0acd8e81-6872-4c3b-93e6-c85bf5963ce8",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e7d07887caee4e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "597930ff-68cd-499b-98d0-9a5d7f2c607d",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
