@@ -6,6 +6,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Added
 
+- **Quiz "View in documentation" links resolve to cc.bruniaux.com** (`src/utils/resolve-doc-link.ts`, `src/pages/api/questions.json.ts`, `src/pages/quiz/index.astro`): The quiz "View in documentation" button now points at the published guide on `cc.bruniaux.com/guide/` when the referenced file has a page there with a matching heading anchor, instead of always sending users to the raw GitHub source. The `/api/questions.json` endpoint computes a `doc_url` per question at build time via a shared resolver that mirrors `prepare-guide-content.mjs` (chapter-split lookup for `ultimate-guide.md`, flattened `core/security/ecosystem/roles/ops` subdirs, `workflows/`), recomputing the site anchor with the rehype-slug slugger rather than reusing the stored GitHub-style anchor. Anything not published (or with an anchor that matches no real heading) still falls back to the GitHub blob URL.
 - **Step by Token in /learning page** (`src/pages/learning/index.astro`): New "Go Deeper: Understand the Model" section with a card linking to stepbytoken.com. 21-chapter free interactive guide by Dimitri Mérault covering LLM mechanics (tokenization, attention, agents/MCP, prompt engineering, KV cache). Positioned between "Ready-to-Use Templates" and Methodologies.
 
 ### Fixed

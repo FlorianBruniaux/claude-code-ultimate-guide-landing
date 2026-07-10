@@ -1134,7 +1134,7 @@ const jsonLd = [
         if (successRate !== null) { successRateEl.textContent = `Your accuracy: ${successRate}%`; successRateEl.style.display = 'block'; }
         else { successRateEl.style.display = 'none'; }
         const docLink = document.getElementById('doc-link');
-        if (q.doc_reference) { docLink.href = `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${q.doc_reference.file}${q.doc_reference.anchor || ''}`; docLink.style.display = 'inline-block'; }
+        if (q.doc_reference) { docLink.href = q.doc_url; docLink.style.display = 'inline-block'; }
         else { docLink.style.display = 'none'; }
         const officialDocLink = document.getElementById('official-doc-link');
         if (q.official_doc) { officialDocLink.href = q.official_doc; officialDocLink.style.display = 'inline-block'; }

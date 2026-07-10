@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 import { categories } from '../../utils/categories'
+import { resolveDocUrl } from '../../utils/resolve-doc-link'
 
 export const GET: APIRoute = async () => {
   const allQuestions = await getCollection('questions')
@@ -30,7 +31,9 @@ export const GET: APIRoute = async () => {
         correct: data.correct,
         explanation,
         source_file: sourceFile,
-        ...(data.doc_reference ? { doc_reference: data.doc_reference } : {}),
+        ...(data.doc_reference
+          ? { doc_reference: data.doc_reference, doc_url: resolveDocUrl(data.doc_reference) }
+          : {}),
         ...(data.official_doc ? { official_doc: data.official_doc } : {}),
       }
     })
