@@ -1,0 +1,241 @@
+CHANGELOG.md
+  s_b8bb3229c97243::t_c5de790653325e 11-14
+package.json
+  s_fef1a673062c9f::t_4ad804f618c490 13
+scripts/check-quiz-doc-links.mjs
+  s_d69add8584294a::t_16726bb22847d0 1-263
+src/content/questions/01-quick-start/004-what-does-the-prefix-do-in-claude-code.md
+  s_0365382975fe47::t_e2d47e5f1ca7f7 18
+src/content/questions/01-quick-start/005-what-does-the-symbol-do-when-used-in-a-prompt.md
+  s_0365382975fe47::t_4d2c196cdca50c 18
+src/content/questions/01-quick-start/006-what-is-the-recommended-approach-when-migrating.md
+  s_0365382975fe47::t_ff6ce9eef02e12 17
+src/content/questions/01-quick-start/010-which-keyboard-shortcut-cancels-the-current.md
+  s_0365382975fe47::t_51db099b7d61c7 18
+src/content/questions/01-quick-start/011-when-should-you-use-auto-accept-mode-in-claude.md
+  s_0365382975fe47::t_2fe75fad56bfc7 17
+src/content/questions/01-quick-start/016-what-is-the-optimal-image-resolution-range-for.md
+  s_0365382975fe47::t_746fca058bae46 16-17
+src/content/questions/01-quick-start/017-how-are-image-tokens-calculated-in-claude-code.md
+  s_0365382975fe47::t_d7c6f664482d25 16-17
+src/content/questions/01-quick-start/018-which-image-format-is-recommended-for-wireframes.md
+  s_0365382975fe47::t_90f44b5068c878 16-17
+src/content/questions/02-core-concepts/017-what-is-the-typical-cost-of-a-1-hour-claude-code.md
+  s_0365382975fe47::t_b82b713a349f31 17
+src/content/questions/03-memory-settings/012-what-does-allowedtools-configuration-do.md
+  s_0365382975fe47::t_7ed14c97dc4ab9 15-16
+src/content/questions/03-memory-settings/014-what-are-the-three-levels-of-progressive.md
+  s_0365382975fe47::t_bdec19c7869c36 16-17
+src/content/questions/03-memory-settings/015-why-should-you-never-use-dangerously-skip.md
+  s_0365382975fe47::t_4b0609f1276f49 16-17
+src/content/questions/03-memory-settings/019-what-is-the-fresh-context-pattern-and-when-should.md
+  s_0365382975fe47::t_7a4c71f83f01e0 18-19
+src/content/questions/03-memory-settings/020-what-does-the-modeloverrides-setting-allow.md
+  s_0365382975fe47::t_5cfe94ed6fa155 16-17
+src/content/questions/03-memory-settings/021-what-does-automemorydir-setting-configure.md
+  s_0365382975fe47::t_46581d73a98c77 16-17
+src/content/questions/03-memory-settings/023-what-happens-to-html-comments-in-claudemd.md
+  s_0365382975fe47::t_4ec1bc22238044 16-17
+src/content/questions/04-agents/006-what-is-tool-seo-in-agent-design.md
+  s_0365382975fe47::t_af1dc5779a71bf 16
+src/content/questions/04-agents/018-what-is-the-invocation-reliability-difference.md
+  s_0365382975fe47::t_1c856b55306dd1 15-16
+src/content/questions/05-skills/004-what-is-the-key-difference-between-skills-agents.md
+  s_0365382975fe47::t_94385e0a44266c 18-19
+src/content/questions/05-skills/013-in-the-security-guardian-skill-what-is-an-example.md
+  s_0365382975fe47::t_de48fc37dbfd25 18
+src/content/questions/05-skills/020-what-is-the-spot-outgrowth-pattern-in-skill-lifecycle.md
+  s_0365382975fe47::t_e7eee7382dbe96 17
+src/content/questions/06-commands/013-what-does-the-loop-command-do.md
+  s_0365382975fe47::t_e4c79cbebd7652 17-18
+src/content/questions/06-commands/016-what-do-stats-and-rename-commands-do.md
+  s_0365382975fe47::t_bbebf67f15e27e 17-18
+src/content/questions/07-hooks/015-what-configuration-parameter-makes-a-hook-run.md
+  s_0365382975fe47::t_db2606f6be551d 16-17
+src/content/questions/07-hooks/016-what-are-the-3-limitations-of-async-hooks.md
+  s_0365382975fe47::t_b16de4d7e2355d 16-17
+src/content/questions/07-hooks/017-what-are-the-worktree-hook-events.md
+  s_0365382975fe47::t_52d6eedf8a73bc 16-17
+src/content/questions/07-hooks/018-what-are-teammateidle-and-taskcompleted-hooks.md
+  s_0365382975fe47::t_d47fefb078dec7 15-16
+src/content/questions/07-hooks/019-how-does-auto-rename-session-hook-work.md
+  s_0365382975fe47::t_72c54733fe9aa0 16-17
+src/content/questions/07-hooks/020-what-event-fires-when-claudemd-rules-load.md
+  s_0365382975fe47::t_c474cd76b06f88 16-17
+src/content/questions/08-mcp-servers/004-which-mcp-server-provides-persistent-memory.md
+  s_0365382975fe47::t_420c6bc22c7054 15-16
+src/content/questions/08-mcp-servers/005-where-is-the-global-mcp-configuration-file-located.md
+  s_0365382975fe47::t_765b23a78cddf1 17-18
+src/content/questions/08-mcp-servers/016-which-figma-mcp-tool-retrieves-design-tokens.md
+  s_0365382975fe47::t_409af3face65bf 17
+src/content/questions/08-mcp-servers/017-what-command-adds-the-figma-mcp-server-for-remote.md
+  s_0365382975fe47::t_d208825babfaf9 17
+src/content/questions/08-mcp-servers/018-what-are-the-2-core-primitives-of-mcp-apps.md
+  s_0365382975fe47::t_a5382abdc8d733 16-17
+src/content/questions/08-mcp-servers/019-what-does-the-auton-threshold-control-in-mcp-tool.md
+  s_0365382975fe47::t_6e29c1cfde92cd 16-17
+src/content/questions/08-mcp-servers/020-which-mcp-server-scored-highest-9010-in-the.md
+  s_0365382975fe47::t_3ba0c1e2f58239 17-18
+src/content/questions/09-advanced-patterns/002-how-do-you-toggle-thinking-mode-in-claude-code.md
+  s_0365382975fe47::t_108e528fae982b 15-16
+src/content/questions/09-advanced-patterns/014-what-prompt-format-does-the-guide-recommend-for.md
+  s_0365382975fe47::t_3fb82cbe592895 16-17
+src/content/questions/09-advanced-patterns/015-what-is-the-recommended-learning-progression-for.md
+  s_0365382975fe47::t_4ab295c5f4e14c 19
+src/content/questions/09-advanced-patterns/017-what-is-sdd-spec-driven-development-and-its-key.md
+  s_0365382975fe47::t_17b54c05e51ca9 18
+src/content/questions/09-advanced-patterns/018-what-format-does-bdd-behavior-driven-development.md
+  s_0365382975fe47::t_915e75de4a4c69 17
+src/content/questions/09-advanced-patterns/023-what-is-a-permutation-framework-in-claude-code.md
+  s_0365382975fe47::t_928dae56ce6c05 16-17
+src/content/questions/09-advanced-patterns/025-when-task-list-items-consistently-diverge-from.md
+  s_0365382975fe47::t_1b828bddb869ee 17-18
+src/content/questions/09-advanced-patterns/026-what-is-the-occurrence-rule-for-claiming.md
+  s_0365382975fe47::t_4cd5e582ca5485 16-17
+src/content/questions/09-advanced-patterns/027-what-are-the-3-specialized-agents-in-multi-agent.md
+  s_0365382975fe47::t_a8de2cefb1e3f4 15-16
+src/content/questions/09-advanced-patterns/028-what-is-comprehension-debt-according-to-addy.md
+  s_0365382975fe47::t_3e6defc2aa2e9d 15-17
+src/content/questions/09-advanced-patterns/029-what-is-the-4-step-cycle-for-claudemd-as.md
+  s_0365382975fe47::t_5bd5df1a8a6796 16-17
+src/content/questions/09-advanced-patterns/038-when-does-human-in-the-loop-review-stop-being-required.md
+  s_0365382975fe47::t_f881a274bac6d8 22
+src/content/questions/10-reference/017-when-sequential-thinking-mcp-seems-slow-or.md
+  s_0365382975fe47::t_01ec805dfb942e 15-16
+src/content/questions/10-reference/018-what-shortcut-opens-an-external-editor-for.md
+  s_0365382975fe47::t_3eb6aa735a4552 18
+src/content/questions/10-reference/019-what-does-the-from-pr-flag-do-in-claude-code-v2127.md
+  s_0365382975fe47::t_3f93e2aeccc6e4 17-18
+src/content/questions/10-reference/020-what-breaking-change-was-introduced-in-claude.md
+  s_0365382975fe47::t_66ad3a0fe7ba31 16-17
+src/content/questions/10-reference/021-according-to-the-guides-myths-vs-reality-section.md
+  s_0365382975fe47::t_e930dad87a894d 19-20
+src/content/questions/10-reference/022-what-are-the-simplified-effort-levels-and-symbols.md
+  s_0365382975fe47::t_02551778fb562c 17-18
+src/content/questions/10-reference/023-what-is-fast-mode-in-claude-code.md
+  s_0365382975fe47::t_75eb323704a477 16-17
+src/content/questions/10-reference/024-model-parameter-restored-on-agent-tool.md
+  s_0365382975fe47::t_4f834078ffb86e 16-17
+src/content/questions/10-reference/025-what-does-updated-context-command-show.md
+  s_0365382975fe47::t_360dfe72f0b03f 17-18
+src/content/questions/11-learning-with-ai/004-what-is-the-15-minute-rule-in-the-uval-protocols.md
+  s_0365382975fe47::t_6f262b2ad290b1 19
+src/content/questions/11-learning-with-ai/005-what-is-the-explain-it-back-technique-in-the-uval.md
+  s_0365382975fe47::t_c2226df19af517 18
+src/content/questions/11-learning-with-ai/010-what-is-the-apply-steps-core-principle-in-the.md
+  s_0365382975fe47::t_e1d66258404c36 18
+src/content/questions/11-learning-with-ai/016-what-are-the-3-failure-modes-identified-in-addy.md
+  s_0365382975fe47::t_d3a2cbc8ec6c9c 15-17
+src/content/questions/11-learning-with-ai/017-what-are-the-3-symptoms-of-vibe-coding-context.md
+  s_0365382975fe47::t_2a98e344c2c3fb 17-18
+src/content/questions/11-learning-with-ai/018-metr-rct-2025-key-finding.md
+  s_0365382975fe47::t_d857608011de32 16-17
+src/content/questions/11-learning-with-ai/019-borg-rct-2025-echoes-of-ai-finding.md
+  s_0365382975fe47::t_d9c1eebbe95d9d 16-17
+src/content/questions/11-learning-with-ai/020-contribution-metrics-dashboard-feature.md
+  s_0365382975fe47::t_b992fb6dac24cd 16-17
+src/content/questions/12-architecture-internals/006-what-is-the-maximum-depth-for-sub-agents-spawned.md
+  s_0365382975fe47::t_d9a86708940507 16,18
+src/content/questions/12-architecture-internals/008-what-are-the-4-permission-layers-in-claude-codes.md
+  s_0365382975fe47::t_5369ffd4e5faa7 15,17
+src/content/questions/12-architecture-internals/011-what-is-claude-codes-design-philosophy-as-stated.md
+  s_0365382975fe47::t_bc6cf832296543 15-16
+src/content/questions/12-architecture-internals/013-what-tool-replaced-todowrite-for-task-management.md
+  s_0365382975fe47::t_b63451239397c7 17-18
+src/content/questions/12-architecture-internals/014-what-is-the-api-cost-overhead-of-fetching-full.md
+  s_0365382975fe47::t_e2f8bafb8e98bc 15-16
+src/content/questions/12-architecture-internals/015-what-is-teammatetool-and-what-is-its-status.md
+  s_0365382975fe47::t_ab6feb663dbe6c 16-17
+src/content/questions/13-security-hardening/002-what-does-cve-2025-5310953110-escaperoute-exploit.md
+  s_0365382975fe47::t_9c7b1aaab8071a 16-17
+src/content/questions/13-security-hardening/011-which-sandbox-isolation-approach-combines-microvm.md
+  s_0365382975fe47::t_3cf4033595b42f 16-17
+src/content/questions/13-security-hardening/012-what-is-the-github-issue-auto-creation-bug-13797.md
+  s_0365382975fe47::t_5978441d012179 19-20
+src/content/questions/13-security-hardening/013-what-is-tool-poisoning-via-skillmd.md
+  s_0365382975fe47::t_66ba51793190b5 17-18
+src/content/questions/13-security-hardening/014-what-is-memory-poisoning-in-ai-agents.md
+  s_0365382975fe47::t_cd5d5a9b1647ae 15-17
+src/content/questions/13-security-hardening/015-what-is-a-confused-deputy-attack-via-mcp.md
+  s_0365382975fe47::t_654bcc5a3ee438 16-17
+src/content/questions/13-security-hardening/017-what-is-hook-based-exfiltration.md
+  s_0365382975fe47::t_4b1ad69173431c 17-18
+src/content/questions/13-security-hardening/019-what-percentage-of-skills-had-flaws-toxicskills.md
+  s_0365382975fe47::t_aa2140161e0b49 18-19
+src/content/questions/13-security-hardening/022-what-is-cve-2025-49596-mcp-inspector.md
+  s_0365382975fe47::t_aaa351b048bb2d 16-17
+src/content/questions/13-security-hardening/023-what-are-the-claude-code-command-bypasses.md
+  s_0365382975fe47::t_c7ad18e77ccfb3 15-16
+src/content/questions/13-security-hardening/024-what-is-the-minimum-safe-claude-code-version.md
+  s_0365382975fe47::t_13411d22e0b753 18-19
+src/content/questions/13-security-hardening/025-which-tool-scans-mcp-configs-for-vulns.md
+  s_0365382975fe47::t_3fcef6ba4d0ec4 18-19
+src/content/questions/13-security-hardening/027-which-claude-directory-is-most-dangerous.md
+  s_0365382975fe47::t_67e421be77cc28 17-18
+src/content/questions/13-security-hardening/028-what-are-suspicious-hook-patterns.md
+  s_0365382975fe47::t_41e696ad7e7e22 16-17
+src/content/questions/14-privacy-observability/001-what-is-the-default-data-retention-period-for.md
+  s_0365382975fe47::t_c1e91c32fbed2f 19
+src/content/questions/14-privacy-observability/004-how-can-you-reduce-claude-code-data-retention.md
+  s_0365382975fe47::t_bb56febcfe4492 17-18
+src/content/questions/14-privacy-observability/005-what-is-the-enterprise-api-zdr-data-retention.md
+  s_0365382975fe47::t_fac42222a5643b 16-17
+src/content/questions/14-privacy-observability/011-when-should-you-use-co-authored-by-vs-assisted-by.md
+  s_0365382975fe47::t_2f318a0a6d4d9a 17-19
+src/content/questions/15-ai-ecosystem/002-when-should-you-use-perplexity-instead-of-claude.md
+  s_0365382975fe47::t_308682e86754d4 18
+src/content/questions/15-ai-ecosystem/005-which-tool-should-you-use-to-create-powerpoint.md
+  s_0365382975fe47::t_990ef188dc3230 18
+src/content/questions/15-ai-ecosystem/006-what-is-notebooklms-unique-feature-for-developer.md
+  s_0365382975fe47::t_b0d60a42fb159d 17
+src/content/questions/15-ai-ecosystem/007-in-the-complete-workflow-pipeline-what-is-the.md
+  s_0365382975fe47::t_ba6657b83d622d 16-17
+src/content/questions/15-ai-ecosystem/008-what-is-v0dev-best-used-for-in-the-ai-ecosystem.md
+  s_0365382975fe47::t_a2ab62543d494a 17-18
+src/content/questions/15-ai-ecosystem/010-what-is-the-minimal-stack-monthly-cost.md
+  s_0365382975fe47::t_7c247b31bdf38e 15-16
+src/content/questions/15-ai-ecosystem/012-what-are-the-3-documented-external-orchestration.md
+  s_0365382975fe47::t_69d4aa3a5bd875 14-16
+src/content/questions/15-ai-ecosystem/013-what-3-areas-should-sub-agents-audit-when.md
+  s_0365382975fe47::t_2dc687cd217fe5 15-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "24273a045ff6797b347369212f879f27b42f317c",
+  "prompts": {},
+  "sessions": {
+    "s_0365382975fe47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "37d45c69-b227-4fb9-b1db-91de5b9cb852",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b8bb3229c97243": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "05598b23-8e36-485a-979a-585b59bc80f7",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d69add8584294a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bd49882-ca40-4a42-9b5a-a288e98487b1",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_fef1a673062c9f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0069a8b-41f9-4ab2-b929-4ea77c1da32e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
