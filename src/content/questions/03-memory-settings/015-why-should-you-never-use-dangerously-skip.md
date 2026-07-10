@@ -13,8 +13,8 @@ options:
   d: It's slower
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 3.3 Settings & Permissions
-  anchor: '#-warning-never-use---dangerously-skip-permissions'
+  section: allowedTools / autoApproveTools Configuration
+  anchor: '#allowedtools-autoapprovetools-configuration'
 ---
 
 Why should you NEVER use --dangerously-skip-permissions?

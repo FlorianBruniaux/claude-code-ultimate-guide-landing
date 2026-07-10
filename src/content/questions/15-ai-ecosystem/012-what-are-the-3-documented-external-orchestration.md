@@ -11,9 +11,9 @@ options:
   c: Gas Town (Steve Yegge), multiclaude (dlorenc), agent-chat (Justin Abrahms)
   d: Kubernetes, Docker Compose, Terraform
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: External Orchestration
-  anchor: '#external-orchestration'
+  file: guide/ecosystem/ai-ecosystem.md
+  section: 8.1 Multi-Agent Orchestration Systems
+  anchor: '#81-multi-agent-orchestration-systems'
 ---
 
 What are the 3 documented external orchestration systems for multi-agent Claude Code?

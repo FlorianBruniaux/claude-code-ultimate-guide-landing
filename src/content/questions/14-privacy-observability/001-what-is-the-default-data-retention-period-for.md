@@ -16,7 +16,7 @@ options:
 doc_reference:
   file: guide/security/data-privacy.md
   section: TL;DR - Retention Summary
-  anchor: '#tldr---retention-summary'
+  anchor: '#tldr-retention-summary'
 ---
 
 What is the default data retention period for Claude Code conversations?

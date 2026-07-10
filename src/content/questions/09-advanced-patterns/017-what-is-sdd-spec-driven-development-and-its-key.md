@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/core/methodologies.md
   section: 'Tier 2: Specification & Architecture'
-  anchor: '#tier-2-specification--architecture'
+  anchor: '#tier-2-specification-architecture'
 ---
 
 What is SDD (Spec-Driven Development) and its key claim?

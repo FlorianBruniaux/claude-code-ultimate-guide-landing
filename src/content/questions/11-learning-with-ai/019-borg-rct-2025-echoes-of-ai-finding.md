@@ -13,8 +13,8 @@ options:
   d: AI code was 30.7% harder to maintain compared to human-written code
 doc_reference:
   file: guide/roles/learning-with-ai.md
-  section: Research Sources
-  anchor: '#research-sources'
+  section: Productivity Research
+  anchor: '#productivity-research'
 ---
 
 What was the key finding of the Borg et al. "Echoes of AI" RCT (2025, arXiv:2507.00788)?

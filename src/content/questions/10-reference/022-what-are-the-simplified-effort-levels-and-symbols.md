@@ -14,8 +14,8 @@ options:
   d: Two levels — fast, thorough — toggled with Alt+T
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.72
-  anchor: '#v2172'
+  section: v2.1.72 (2026-03-09)
+  anchor: '#v2172-2026-03-09'
 ---
 
 What are the effort levels in Claude Code after the v2.1.72 simplification?

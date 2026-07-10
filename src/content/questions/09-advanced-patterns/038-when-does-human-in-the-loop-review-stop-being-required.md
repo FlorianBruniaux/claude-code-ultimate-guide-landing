@@ -19,7 +19,7 @@ options:
 doc_reference:
   file: guide/workflows/support-csm-agent.md
   section: Security & Guardrails
-  anchor: '#security--guardrails'
+  anchor: '#security-guardrails'
 ---
 
 In the support and CSM agent maturity model, at which level does the human-in-the-loop review step, a person reading the draft before it reaches a client, stop being required?

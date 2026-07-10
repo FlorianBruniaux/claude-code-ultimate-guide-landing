@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 1.4 Permission Modes
-  anchor: '#auto-accept-mode'
+  anchor: '#auto-accept-mode-acceptedits'
 ---
 
 When should you use auto-accept mode in Claude Code?

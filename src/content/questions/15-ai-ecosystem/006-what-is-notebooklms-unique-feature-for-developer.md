@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
   section: 4. NotebookLM
-  anchor: '#4-notebooklm-synthesis--audio'
+  anchor: '#4-notebooklm-synthesis-audio'
 ---
 
 What is NotebookLM's unique feature for developer onboarding?

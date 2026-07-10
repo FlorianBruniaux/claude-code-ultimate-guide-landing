@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/core/methodologies.md
   section: 'Tier 3: Behavior & Acceptance'
-  anchor: '#tier-3-behavior--acceptance'
+  anchor: '#tier-3-behavior-acceptance'
 ---
 
 What format does BDD (Behavior-Driven Development) use for test scenarios?

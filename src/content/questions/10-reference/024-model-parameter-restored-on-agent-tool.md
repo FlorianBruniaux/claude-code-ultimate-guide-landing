@@ -13,8 +13,8 @@ options:
   d: It was permanently removed in v2.1.72 and replaced by modelOverrides
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.72
-  anchor: '#v2172'
+  section: v2.1.72 (2026-03-09)
+  anchor: '#v2172-2026-03-09'
 ---
 
 What does the restored `model` parameter on the Agent tool enable (v2.1.72)?

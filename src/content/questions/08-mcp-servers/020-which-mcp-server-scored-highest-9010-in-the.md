@@ -14,8 +14,8 @@ options:
   d: Kubernetes MCP (8.4/10)
 doc_reference:
   file: guide/ultimate-guide.md
-  section: MCP Servers Ecosystem
-  anchor: '#mcp-servers-ecosystem'
+  section: Community MCP Servers Ecosystem
+  anchor: '#community-mcp-servers-ecosystem'
 ---
 
 Which MCP server scored highest (9.0/10) in the production ecosystem evaluation?

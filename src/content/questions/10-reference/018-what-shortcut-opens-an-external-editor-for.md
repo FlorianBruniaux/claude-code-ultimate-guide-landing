@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 10.2 Keyboard Shortcuts
-  anchor: '#input--navigation'
+  anchor: '#input-navigation'
 ---
 
 What shortcut opens an external editor for composing long text input?

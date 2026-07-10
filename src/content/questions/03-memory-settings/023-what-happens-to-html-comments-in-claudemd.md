@@ -13,8 +13,8 @@ options:
   d: HTML comments cause a parse error and prevent CLAUDE.md from loading
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.72
-  anchor: '#v2172'
+  section: v2.1.72 (2026-03-09)
+  anchor: '#v2172-2026-03-09'
 ---
 
 Since v2.1.72, what happens to HTML comments (`<!-- ... -->`) in CLAUDE.md?

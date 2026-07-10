@@ -13,8 +13,8 @@ options:
   d: A leaderboard ranking developers by Claude Code usage within an organization
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Contribution Metrics
-  anchor: '#contribution-metrics'
+  section: Contribution Metrics (January 2026)
+  anchor: '#contribution-metrics-january-2026'
 ---
 
 What is the Contribution Metrics dashboard feature (public beta, January 2026)?

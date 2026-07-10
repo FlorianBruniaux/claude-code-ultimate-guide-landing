@@ -10,6 +10,7 @@
     "build:guide": "node scripts/prepare-guide-content.mjs",
     "build:diagrams": "node scripts/build-diagrams-data.mjs",
     "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs && astro build",
+    "check:quiz-doc-links": "node scripts/check-quiz-doc-links.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"

@@ -13,8 +13,8 @@ options:
   d: "An attacker manipulates MCP session data or outputs, and the client trusts the poisoned response"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Attack Techniques"
-  anchor: "#attack-techniques"
+  section: Attack Patterns
+  anchor: "#attack-patterns"
 ---
 
 How does a "Confused Deputy" attack work via MCP (technique T004)?

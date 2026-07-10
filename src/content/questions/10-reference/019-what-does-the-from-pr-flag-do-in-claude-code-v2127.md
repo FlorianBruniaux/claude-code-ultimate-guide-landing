@@ -14,8 +14,8 @@ options:
   d: Closes a pull request
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.27
-  anchor: '#v2127'
+  section: v2.1.27 (2026-01-29)
+  anchor: '#v2127-2026-01-29'
 ---
 
 What does the '--from-pr' flag do in Claude Code v2.1.27?

@@ -14,8 +14,8 @@ options:
   d: ".claude/settings.json — contains all API keys and tokens"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Suspicious Patterns"
-  anchor: "#suspicious-patterns"
+  section: 5-Minute .claude/ Audit Checklist
+  anchor: "#5-minute-claude-audit-checklist"
 ---
 
 Which directory in the .claude/ folder is considered most security-sensitive?

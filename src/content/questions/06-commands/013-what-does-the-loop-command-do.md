@@ -14,8 +14,8 @@ options:
   d: Loops through all files in the current directory
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 10.1 Command Reference Table
-  anchor: '#101-command-reference-table'
+  section: 10.1 Commands Table
+  anchor: '#101-commands-table'
 ---
 
 What does the `/loop` command do in Claude Code (v2.1.71+)?

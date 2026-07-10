@@ -13,8 +13,8 @@ options:
   d: Limited to 1s timeout, no stderr capture, no argument passing
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Hook Execution Model
-  anchor: '#hook-execution-model'
+  section: Limitations of Async Hooks
+  anchor: '#limitations-of-async-hooks'
 ---
 
 What are the 3 limitations of async hooks compared to sync hooks?

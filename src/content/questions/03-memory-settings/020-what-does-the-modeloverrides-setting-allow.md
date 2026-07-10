@@ -13,8 +13,8 @@ options:
   d: Overrides the model used by sub-agents only
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.73
-  anchor: '#v2173'
+  section: v2.1.73 (2026-03-11)
+  anchor: '#v2173-2026-03-11'
 ---
 
 What does the `modelOverrides` setting introduced in v2.1.73 allow you to do?

@@ -15,8 +15,8 @@ options:
   d: Agents cannot use skills or commands
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 5.1 Understanding Skills
-  anchor: '#skills-vs-agents-vs-commands'
+  section: Skills vs Agents
+  anchor: '#skills-vs-agents'
 ---
 
 What is the key difference between Skills, Agents, and Commands (CC 2.1.3+)?

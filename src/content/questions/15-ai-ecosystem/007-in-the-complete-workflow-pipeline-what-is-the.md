@@ -13,8 +13,8 @@ options:
   d: All tools simultaneously
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
-  section: 7. Workflow Orchestration
-  anchor: '#7-workflow-orchestration'
+  section: 8. Workflow Orchestration
+  anchor: '#8-workflow-orchestration'
 ---
 
 In the complete workflow pipeline, what is the correct order of phases?

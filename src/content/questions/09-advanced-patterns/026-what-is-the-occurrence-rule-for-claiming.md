@@ -13,8 +13,8 @@ options:
   d: '>20 occurrences = established, 5-20 = emerging, <5 = not established'
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Anti-Hallucination Safeguards
-  anchor: '#anti-hallucination-safeguards'
+  section: Split Role Sub-Agents
+  anchor: '#split-role-sub-agents'
 ---
 
 What is the 'occurrence rule' for claiming established patterns in code reviews?

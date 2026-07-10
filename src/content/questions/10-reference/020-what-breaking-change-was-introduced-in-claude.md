@@ -13,8 +13,8 @@ options:
   d: Arguments now require JSON format
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Breaking Changes
-  anchor: '#breaking-changes'
+  section: Variable Interpolation
+  anchor: '#variable-interpolation'
 ---
 
 What breaking change was introduced in Claude Code v2.1.19 for hook/command arguments?

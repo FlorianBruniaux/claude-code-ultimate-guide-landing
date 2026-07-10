@@ -13,8 +13,8 @@ options:
   d: AI tools made experienced developers 19% slower on large codebases despite developers perceiving themselves as 20% faster
 doc_reference:
   file: guide/roles/learning-with-ai.md
-  section: Research Sources
-  anchor: '#research-sources'
+  section: Productivity Research
+  anchor: '#productivity-research'
 ---
 
 What was the key finding of the METR Experienced Developer RCT (2025, arXiv:2507.09089)?

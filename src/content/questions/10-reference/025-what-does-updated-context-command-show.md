@@ -14,8 +14,8 @@ options:
   d: A breakdown of token usage by file type
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.74
-  anchor: '#v2174'
+  section: v2.1.74 (2026-03-12)
+  anchor: '#v2174-2026-03-12'
 ---
 
 What actionable information does the updated `/context` command now provide (v2.1.74)?

@@ -12,8 +12,8 @@ options:
   d: Junior Reviewer, Senior Reviewer, Architect Reviewer
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Multi-Agent PR Review
-  anchor: '#multi-agent-pr-review'
+  section: Split Role Sub-Agents
+  anchor: '#split-role-sub-agents'
 ---
 
 What are the 3 specialized agents in multi-agent code review?

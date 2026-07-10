@@ -13,8 +13,8 @@ options:
   d: 5 years like default
 doc_reference:
   file: guide/security/data-privacy.md
-  section: 'Tier 3: Enterprise API (Zero Data Retention)'
-  anchor: '#tier-3-enterprise-api-zero-data-retention'
+  section: TL;DR - Retention Summary
+  anchor: '#tldr-retention-summary'
 ---
 
 What is the Enterprise API (ZDR) data retention policy?

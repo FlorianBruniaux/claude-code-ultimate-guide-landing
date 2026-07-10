@@ -12,9 +12,9 @@ options:
   c: "A denial-of-service attack that fills the agent's context window"
   d: "An attack that erases the agent's conversation history"
 doc_reference:
-  file: "guide/security/security-hardening.md"
-  section: "Attack Techniques"
-  anchor: "#attack-techniques"
+  file: "guide/core/memory-systems.md"
+  section: 7.1 Memory Poisoning via Prompt Injection
+  anchor: "#71-memory-poisoning-via-prompt-injection"
 ---
 
 What is "Memory Poisoning" in the context of AI agent security (technique T002)?

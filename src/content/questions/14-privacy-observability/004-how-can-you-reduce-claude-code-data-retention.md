@@ -14,8 +14,8 @@ options:
   d: Add --no-retention flag
 doc_reference:
   file: guide/security/data-privacy.md
-  section: Opt-Out of Training
-  anchor: '#41-opt-out-of-training'
+  section: Quick Audit Checklist
+  anchor: '#quick-audit-checklist'
 ---
 
 How can you reduce Claude Code data retention from 5 years to 30 days?

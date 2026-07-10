@@ -13,8 +13,8 @@ options:
   d: Low, Medium, High
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 3.3 Settings & Permissions
-  anchor: '#progressive-permission-levels'
+  section: allowedTools / autoApproveTools Configuration
+  anchor: '#allowedtools-autoapprovetools-configuration'
 ---
 
 What are the three levels of progressive permission in allowedTools?

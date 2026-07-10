@@ -12,8 +12,8 @@ options:
   d: /thinking command
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 9.1 Extended Thinking
-  anchor: '#extended-thinking-opus-45'
+  section: Extended Thinking (Opus 4.5+) & Adaptive Thinking (Opus 4.6+)
+  anchor: '#extended-thinking-opus-45-adaptive-thinking-opus-46'
 ---
 
 How do you toggle thinking mode in Claude Code (Opus 4.5+)?

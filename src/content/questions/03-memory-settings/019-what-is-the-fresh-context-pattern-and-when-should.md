@@ -15,8 +15,8 @@ options:
   d: Deleting the .claude folder to start fresh
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Fresh Context Pattern
-  anchor: '#fresh-context-pattern'
+  section: Fresh Context Pattern (Ralph Loop)
+  anchor: '#fresh-context-pattern-ralph-loop'
 ---
 
 What is the 'Fresh Context Pattern' and when should you use it?

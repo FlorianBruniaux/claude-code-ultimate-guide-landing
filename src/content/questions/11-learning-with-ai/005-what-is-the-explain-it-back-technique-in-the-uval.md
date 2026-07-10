@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/roles/learning-with-ai.md
   section: V — Verify
-  anchor: '#v--verify-explain-it-back'
+  anchor: '#v-verify-explain-it-back'
 ---
 
 What is the 'Explain It Back' technique in the UVAL protocol's Verify step?

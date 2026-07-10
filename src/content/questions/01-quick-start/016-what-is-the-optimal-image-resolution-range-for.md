@@ -13,8 +13,8 @@ options:
   d: 8000px+ (highest resolution)
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 1.3 Essential Commands
-  anchor: '#image-resolution-guidelines'
+  section: Image Optimization for Claude Vision
+  anchor: '#image-optimization-for-claude-vision'
 ---
 
 What is the optimal image resolution range for Claude Code visual analysis?

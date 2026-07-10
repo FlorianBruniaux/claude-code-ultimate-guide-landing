@@ -13,8 +13,8 @@ options:
   d: A SessionEnd hook that reads the session JSONL, calls Haiku to generate a title, and updates the session slug
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Session Naming
-  anchor: '#session-naming'
+  section: Session Auto-Rename
+  anchor: '#session-auto-rename'
 ---
 
 What is the `auto-rename-session.sh` hook template and how does it work?

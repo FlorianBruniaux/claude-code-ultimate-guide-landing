@@ -12,8 +12,8 @@ options:
   d: "A denial-of-service via excessive file watching"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "CVE Database"
-  anchor: "#cve-database"
+  section: CVE Summary (2025-2026)
+  anchor: "#cve-summary-2025-2026"
 ---
 
 What does CVE-2025-66032 expose in Claude Code?

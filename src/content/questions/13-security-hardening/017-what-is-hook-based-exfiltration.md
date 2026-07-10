@@ -14,8 +14,8 @@ options:
   d: "Hooks can only be installed by administrators"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Attack Techniques"
-  anchor: "#attack-techniques"
+  section: "Example: Exfiltration via Hook"
+  anchor: "#example-exfiltration-via-hook"
 ---
 
 What makes hook-based exfiltration (technique T007) particularly dangerous?

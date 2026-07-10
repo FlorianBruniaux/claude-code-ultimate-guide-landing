@@ -16,8 +16,8 @@ options:
   d: Beta flags are stored in .claude/config
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Myths vs Reality
-  anchor: '#myths-vs-reality'
+  section: "Appendix D: Myths vs Reality"
+  anchor: '#appendix-d-myths-vs-reality'
 ---
 
 According to the guide's 'Myths vs Reality' section, what is the truth about 'hidden Claude Code features'?

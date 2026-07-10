@@ -13,8 +13,8 @@ options:
   d: WorktreeMount and WorktreeUnmount — fire when a worktree filesystem is mounted
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 7.3 Hook Event Types
-  anchor: '#hook-event-types'
+  section: Event Types
+  anchor: '#event-types'
 ---
 
 What are the two worktree-specific hook events added in v2.1.50?

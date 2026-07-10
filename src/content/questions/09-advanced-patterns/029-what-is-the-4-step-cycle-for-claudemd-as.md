@@ -13,8 +13,8 @@ options:
   d: Ask, Implement, Validate, Ship
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Boris Cherny Mental Models
-  anchor: '#boris-cherny-mental-models'
+  section: "Real-World Case: Boris Cherny (Interval)"
+  anchor: '#real-world-case-boris-cherny-interval'
 ---
 
 What is the '4-step cycle' for CLAUDE.md as compounding memory?

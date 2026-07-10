@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 4.3 Figma MCP Integration
-  anchor: '#available-tools-via-figma-mcp'
+  anchor: '#figma-mcp-integration'
 ---
 
 Which Figma MCP tool retrieves design tokens (colors, spacing, typography)?

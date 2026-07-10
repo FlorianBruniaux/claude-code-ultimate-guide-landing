@@ -14,8 +14,8 @@ options:
   d: ~/.config/claude/mcp.json
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 8.3 Configuration
-  anchor: '#mcpjson-location'
+  section: MCP Configuration Location
+  anchor: '#mcp-configuration-location'
 ---
 
 Where is the global MCP configuration file located?

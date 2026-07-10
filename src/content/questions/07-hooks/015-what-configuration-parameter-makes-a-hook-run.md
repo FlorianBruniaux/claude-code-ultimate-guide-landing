@@ -13,8 +13,8 @@ options:
   d: 'mode: async'
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Hook Execution Model
-  anchor: '#hook-execution-model'
+  section: Hook Execution Model (v2.1.0+)
+  anchor: '#hook-execution-model-v210'
 ---
 
 What configuration parameter makes a hook run asynchronously (v2.1.0+)?

@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 5.4 Skill Examples
-  anchor: '#authentication-patterns'
+  anchor: '#54-skill-examples'
 ---
 
 In the Security Guardian skill, what is an example of GOOD password hashing?

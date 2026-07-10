@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 1.3 Essential Commands
-  anchor: '#shell-commands-with-'
+  anchor: '#shell-commands-with'
 official_doc: https://code.claude.com/docs/en/interactive-mode
 ---
 

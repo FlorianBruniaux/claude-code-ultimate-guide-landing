@@ -13,8 +13,8 @@ options:
   d: Title, Description, Acceptance Criteria
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 9.11 Common Pitfalls & Best Practices
-  anchor: '#effective-prompt-format'
+  section: Skipping the Plan
+  anchor: '#1-skipping-the-plan'
 ---
 
 What prompt format does the guide recommend for effective requests?

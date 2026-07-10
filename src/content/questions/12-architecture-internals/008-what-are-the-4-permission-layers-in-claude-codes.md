@@ -12,9 +12,9 @@ options:
   c: Read, Write, Execute, Delete
   d: Local, Project, Global, Enterprise
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Permission & Security Model
-  anchor: '#5-permission--security-model'
+  anchor: '#5-permission-security-model'
 ---
 
 What are the 4 permission layers in Claude Code's security model?

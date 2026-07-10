@@ -14,8 +14,8 @@ options:
   d: Both commands are aliases for /status with different output formats
 doc_reference:
   file: guide/cheatsheet.md
-  section: Commands
-  anchor: '#commands'
+  section: Essential Commands
+  anchor: '#essential-commands'
 ---
 
 What do the `/stats` and `/rename` commands do (added in cheatsheet v3.32.2)?

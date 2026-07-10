@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 1.6 Migrating from Other AI Coding Tools
-  anchor: '#migration-guide-github-copilot--claude-code'
+  anchor: '#migration-guide-github-copilot-claude-code'
 ---
 
 What is the recommended approach when migrating from GitHub Copilot to Claude Code?

@@ -14,8 +14,8 @@ options:
   d: Security auditing
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
-  section: 6. UI Prototypers
-  anchor: '#6-ui-prototypers-v0-bolt-lovable'
+  section: 7. UI Prototypers (v0, Bolt, Lovable)
+  anchor: '#7-ui-prototypers-v0-bolt-lovable'
 ---
 
 What is v0.dev best used for in the AI ecosystem?

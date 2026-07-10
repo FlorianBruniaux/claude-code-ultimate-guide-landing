@@ -12,8 +12,8 @@ options:
   d: Sequential Thinking
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 8.2 Available Servers
-  anchor: '#session-memory-workflow'
+  section: Serena (Semantic Code Analysis)
+  anchor: '#serena-semantic-code-analysis'
 ---
 
 Which MCP server provides persistent memory across sessions?

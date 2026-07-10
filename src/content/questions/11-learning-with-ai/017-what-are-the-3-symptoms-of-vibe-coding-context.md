@@ -14,8 +14,8 @@ options:
   d: Excessive commits, merge conflicts, branch proliferation
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Vibe Coding Anti-Patterns
-  anchor: '#vibe-coding-anti-patterns'
+  section: "Anti-Pattern: Context Overload"
+  anchor: '#anti-pattern-context-overload'
 ---
 
 What are the 3 symptoms of vibe coding 'context overload'?

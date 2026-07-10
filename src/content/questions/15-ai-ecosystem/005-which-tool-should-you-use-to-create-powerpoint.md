@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
   section: 3. Kimi
-  anchor: '#3-kimi-pptx--long-document-generation'
+  anchor: '#3-kimi-pptx-long-document-generation'
 ---
 
 Which tool should you use to create PowerPoint presentations from code documentation?

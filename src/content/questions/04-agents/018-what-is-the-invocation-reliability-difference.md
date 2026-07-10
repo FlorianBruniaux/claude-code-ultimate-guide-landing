@@ -12,8 +12,8 @@ options:
   d: CLAUDE.md is deprecated in favor of Skills
 doc_reference:
   file: guide/ultimate-guide.md
-  section: AGENTS.md vs Skills Evaluation
-  anchor: '#agentsmd-vs-skills-evaluation'
+  section: Memory Loading Comparison
+  anchor: '#memory-loading-comparison'
 ---
 
 What is the invocation reliability difference between CLAUDE.md (eager context) and Skills (lazy invocation)?

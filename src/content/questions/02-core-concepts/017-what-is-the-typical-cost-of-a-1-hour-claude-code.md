@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 2.2 Context Management
-  anchor: '#cost-awareness--optimization'
+  anchor: '#cost-awareness-optimization'
 ---
 
 What is the typical cost of a 1-hour Claude Code session?

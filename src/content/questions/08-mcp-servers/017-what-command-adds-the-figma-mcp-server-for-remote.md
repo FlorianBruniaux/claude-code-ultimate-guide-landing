@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 4.3 Figma MCP Integration
-  anchor: '#setup-options'
+  anchor: '#figma-mcp-integration'
 ---
 
 What command adds the Figma MCP server for remote access?

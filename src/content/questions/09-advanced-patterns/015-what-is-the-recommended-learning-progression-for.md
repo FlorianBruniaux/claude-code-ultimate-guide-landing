@@ -16,7 +16,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 9.11 Common Pitfalls & Best Practices
-  anchor: '#learning--adoption-pitfalls'
+  anchor: '#learning-adoption-pitfalls'
 ---
 
 What is the recommended learning progression for Claude Code?

@@ -13,8 +13,8 @@ options:
   d: Cloudflare Sandbox SDK
 doc_reference:
   file: guide/security/sandbox-isolation.md
-  section: Docker Sandboxes
-  anchor: '#docker-sandboxes'
+  section: 3. Docker Sandboxes
+  anchor: '#3-docker-sandboxes'
 ---
 
 Which sandbox isolation approach combines microVM isolation with network policies for agent autonomy?

@@ -12,9 +12,9 @@ options:
   c: Security, Architecture, Developer Experience (DX)
   d: Tests, Documentation, CI/CD
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: Skeleton Projects Workflow
-  anchor: '#skeleton-projects-workflow'
+  file: guide/workflows/skeleton-projects.md
+  section: "Phase 1: Find and Evaluate a Skeleton"
+  anchor: '#phase-1-find-and-evaluate-a-skeleton'
 ---
 
 What 3 areas should sub-agents audit when evaluating a skeleton project before forking?

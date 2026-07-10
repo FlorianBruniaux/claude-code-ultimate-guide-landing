@@ -16,8 +16,8 @@ options:
   d: Only affects paid enterprise accounts
 doc_reference:
   file: guide/core/known-issues.md
-  section: GitHub Issue Auto-Creation Bug
-  anchor: '#github-issue-auto-creation-bug'
+  section: 1. GitHub Issue Auto-Creation in Wrong Repository (Dec 2025 - Present)
+  anchor: '#1-github-issue-auto-creation-in-wrong-repository-dec-2025-present'
 ---
 
 What is the GitHub Issue Auto-Creation Bug (#13797) and why is it dangerous?

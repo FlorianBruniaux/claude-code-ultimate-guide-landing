@@ -13,8 +13,8 @@ options:
   d: Maximum number of tools to load per MCP server
 doc_reference:
   file: guide/core/architecture.md
-  section: Tool Search & Lazy Loading
-  anchor: '#tool-search-lazy-loading'
+  section: MCP Tool Search (Lazy Loading)
+  anchor: '#mcp-tool-search-lazy-loading'
 ---
 
 What does the 'auto:N' threshold control in MCP tool configuration?

@@ -15,8 +15,8 @@ options:
   d: ">= 0.14.1 (fixes MCP Inspector RCE only)"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Minimum Safe Versions"
-  anchor: "#minimum-safe-versions"
+  section: CVE Summary (2025-2026)
+  anchor: "#cve-summary-2025-2026"
 ---
 
 What is the minimum safe version of Claude Code that fixes the sandbox bypass vulnerability?

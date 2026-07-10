@@ -14,8 +14,8 @@ options:
   d: AgendaWrite tool
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Tasks API
-  anchor: '#tasks-api'
+  section: Tasks API (v2.1.16+)
+  anchor: '#tasks-api-v2116'
 ---
 
 What tool replaced TodoWrite for task management in Claude Code v2.1.16+?

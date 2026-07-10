@@ -12,9 +12,9 @@ options:
   c: Review debt - unreviewed PRs
   d: Design debt - skipped design phase
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: Practitioner Insights
-  anchor: '#practitioner-insights'
+  file: guide/ecosystem/ai-ecosystem.md
+  section: Addy Osmani (Google Chrome Team)
+  anchor: '#addy-osmani-google-chrome-team'
 ---
 
 What is 'comprehension debt' according to Addy Osmani's '80% Problem'?

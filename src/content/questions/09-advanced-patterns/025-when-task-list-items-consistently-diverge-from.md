@@ -14,8 +14,8 @@ options:
   d: Ignore the divergence and continue
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Task Management Patterns
-  anchor: '#task-management-patterns'
+  section: Task Lists as Diagnostic Tool
+  anchor: '#task-lists-as-diagnostic-tool'
 ---
 
 When task list items consistently diverge from actual work done, what does the guide recommend?

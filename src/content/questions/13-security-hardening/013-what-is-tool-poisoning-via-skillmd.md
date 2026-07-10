@@ -14,8 +14,8 @@ options:
   d: "A SKILL.md that references deprecated API endpoints"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Attack Techniques"
-  anchor: "#attack-techniques"
+  section: Attack Patterns
+  anchor: "#attack-patterns"
 ---
 
 What is "Tool Poisoning via SKILL.md" (attack technique T001)?

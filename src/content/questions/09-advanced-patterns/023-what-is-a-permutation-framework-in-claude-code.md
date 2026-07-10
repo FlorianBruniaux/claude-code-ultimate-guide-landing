@@ -13,8 +13,8 @@ options:
   d: Automated regression test suite
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Permutation Frameworks
-  anchor: '#permutation-frameworks'
+  section: What Is a Permutation Framework?
+  anchor: '#what-is-a-permutation-framework'
 ---
 
 What is a 'Permutation Framework' in Claude Code?

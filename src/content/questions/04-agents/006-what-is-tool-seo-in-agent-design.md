@@ -13,7 +13,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 4.6 Advanced Agent Patterns
-  anchor: '#tool-seo---optimizing-agent-descriptions'
+  anchor: '#tool-seo-optimizing-agent-descriptions'
 ---
 
 What is 'Tool SEO' in agent design?

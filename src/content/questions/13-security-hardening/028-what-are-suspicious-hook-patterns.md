@@ -13,8 +13,8 @@ options:
   d: "date, hostname, and whoami for audit logging"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Suspicious Patterns"
-  anchor: "#suspicious-patterns"
+  section: 5-Minute .claude/ Audit Checklist
+  anchor: "#5-minute-claude-audit-checklist"
 ---
 
 Which combination of patterns in a .claude/hooks/ script indicates a likely malicious hook?

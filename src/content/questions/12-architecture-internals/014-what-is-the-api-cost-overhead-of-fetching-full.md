@@ -12,8 +12,8 @@ options:
   d: 100x overhead (100 API calls)
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Tasks API Limitations
-  anchor: '#tasks-api-limitations'
+  section: Tasks API (v2.1.16+)
+  anchor: '#tasks-api-v2116'
 ---
 
 What is the API cost overhead of fetching full details for 50 tasks via Tasks API?

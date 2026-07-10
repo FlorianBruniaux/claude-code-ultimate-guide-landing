@@ -12,8 +12,8 @@ options:
   d: Requires admin privileges
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 3.3 Settings & Permissions
-  anchor: '#allowedtools-configuration-alternative'
+  section: allowedTools / autoApproveTools Configuration
+  anchor: '#allowedtools-autoapprovetools-configuration'
 official_doc: https://code.claude.com/docs/en/permissions
 ---
 

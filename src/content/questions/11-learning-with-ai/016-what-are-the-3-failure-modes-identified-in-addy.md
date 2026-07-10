@@ -12,9 +12,9 @@ options:
   c: Slow responses, wrong language, missed tests
   d: Memory leaks, race conditions, deadlocks
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: Practitioner Insights
-  anchor: '#practitioner-insights'
+  file: guide/ecosystem/ai-ecosystem.md
+  section: Addy Osmani (Google Chrome Team)
+  anchor: '#addy-osmani-google-chrome-team'
 ---
 
 What are the 3 failure modes identified in Addy Osmani's '80% Problem' of agentic coding?

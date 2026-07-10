@@ -12,8 +12,8 @@ options:
   d: Both are read-only notification hooks — they cannot block operations
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 7.3 Hook Event Types
-  anchor: '#hook-event-types'
+  section: Event Types
+  anchor: '#event-types'
 ---
 
 What are the `TeammateIdle` and `TaskCompleted` hook events used for in multi-agent workflows?

@@ -15,8 +15,8 @@ options:
   d: "Garak — an LLM vulnerability scanner by NVIDIA"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Scanning Tools"
-  anchor: "#scanning-tools"
+  section: 1.2 Agent Skills Supply Chain Risks
+  anchor: "#12-agent-skills-supply-chain-risks"
 ---
 
 Which CLI tool scans MCP server configurations for known vulnerabilities?

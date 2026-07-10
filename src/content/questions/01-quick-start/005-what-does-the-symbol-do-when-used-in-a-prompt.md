@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 1.3 Essential Commands
-  anchor: '#file-references-with-'
+  anchor: '#file-references-with'
 ---
 
 What does the `@` symbol do when used in a prompt?

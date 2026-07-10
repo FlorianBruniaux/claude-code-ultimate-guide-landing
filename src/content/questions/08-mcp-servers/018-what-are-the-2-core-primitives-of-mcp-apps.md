@@ -13,8 +13,8 @@ options:
   d: Plugins and Themes
 doc_reference:
   file: guide/ultimate-guide.md
-  section: MCP Apps
-  anchor: '#mcp-apps'
+  section: What Are MCP Apps?
+  anchor: '#what-are-mcp-apps'
 ---
 
 What are the 2 core primitives of MCP Apps architecture?

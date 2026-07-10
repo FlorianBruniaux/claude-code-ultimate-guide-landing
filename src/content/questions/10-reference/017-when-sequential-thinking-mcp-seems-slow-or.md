@@ -12,8 +12,8 @@ options:
   d: Reduce the query complexity
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 10.4 Troubleshooting
-  anchor: '#sequential-thinking-mcp-issues'
+  section: MCP Debugging Techniques
+  anchor: '#mcp-debugging-techniques'
 ---
 
 When Sequential Thinking MCP seems slow or unresponsive, what should you expect?

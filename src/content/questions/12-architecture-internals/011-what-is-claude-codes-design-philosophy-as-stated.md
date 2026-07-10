@@ -12,8 +12,8 @@ options:
   d: Hybrid approach - RAG + classifier + model
 doc_reference:
   file: guide/core/architecture.md
-  section: 'Philosophy: Less Scaffolding, More Model'
-  anchor: '#9-philosophy-less-scaffolding-more-model'
+  section: "10. Philosophy: Less Scaffolding, More Model"
+  anchor: '#10-philosophy-less-scaffolding-more-model'
 ---
 
 What is Claude Code's design philosophy, as stated by Anthropic?

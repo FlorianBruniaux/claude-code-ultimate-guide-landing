@@ -13,8 +13,8 @@ options:
   d: The path where session transcripts are archived
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.74
-  anchor: '#v2174'
+  section: v2.1.74 (2026-03-12)
+  anchor: '#v2174-2026-03-12'
 ---
 
 What does the `autoMemoryDirectory` setting (v2.1.74) configure?

@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/roles/learning-with-ai.md
   section: A — Apply
-  anchor: '#a--apply-transform-dont-copy'
+  anchor: '#a-apply-transform-dont-copy'
 ---
 
 What is the 'Apply' step's core principle in the UVAL protocol?

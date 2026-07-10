@@ -13,8 +13,8 @@ options:
   d: Deprecated feature replaced by Tasks API
 doc_reference:
   file: guide/ultimate-guide.md
-  section: TeammateTool
-  anchor: '#teammatetool'
+  section: TeammateTool (Experimental)
+  anchor: '#teammatetool-experimental'
 ---
 
 What is TeammateTool and what is its status?

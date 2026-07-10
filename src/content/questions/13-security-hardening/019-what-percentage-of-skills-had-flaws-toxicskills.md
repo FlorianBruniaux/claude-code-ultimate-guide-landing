@@ -15,8 +15,8 @@ options:
   d: "78.5% — the vast majority were compromised"
 doc_reference:
   file: "guide/security/security-hardening.md"
-  section: "Campaigns"
-  anchor: "#campaigns"
+  section: 1.2 Agent Skills Supply Chain Risks
+  anchor: "#12-agent-skills-supply-chain-risks"
 ---
 
 According to Snyk's ToxicSkills report, what percentage of scanned AI agent skills had security flaws?

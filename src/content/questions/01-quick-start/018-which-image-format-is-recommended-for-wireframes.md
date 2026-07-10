@@ -13,8 +13,8 @@ options:
   d: BMP (lossless)
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 1.3 Essential Commands
-  anchor: '#format-recommendations'
+  section: Image Optimization for Claude Vision
+  anchor: '#image-optimization-for-claude-vision'
 ---
 
 Which image format is recommended for wireframes and diagrams in Claude Code?

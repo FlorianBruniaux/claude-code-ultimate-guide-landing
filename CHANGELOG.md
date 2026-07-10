@@ -8,6 +8,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 - **Step by Token in /learning page** (`src/pages/learning/index.astro`): New "Go Deeper: Understand the Model" section with a card linking to stepbytoken.com. 21-chapter free interactive guide by Dimitri Mérault covering LLM mechanics (tokenization, attention, agents/MCP, prompt engineering, KV cache). Positioned between "Ready-to-Use Templates" and Methodologies.
 
+### Fixed
+
+- **Quiz `doc_reference` anchors** (`src/content/questions/**/*.md`, 97 files): Fixed 15 `anchorAlgoMismatch` entries (GitHub-style anchors that keep consecutive hyphens, e.g. `tier-2-specification--architecture`, now collapsed to the site's rehype-slug format `tier-2-specification-architecture`) and 82 of 90 `staleAnchor` entries (anchors pointing at headings renamed, renumbered, or moved since the question was written, verified against the actual heading text in each guide source file). 6 questions were redirected to a different guide file where the exact content they reference now actually lives (`guide/core/memory-systems.md`, `guide/ecosystem/ai-ecosystem.md` ×3, `guide/ops/ai-traceability.md`, `guide/workflows/skeleton-projects.md`). 3 questions (`12-006`, `12-008`, `12-011`) had `doc_reference.file` normalized from `guide/architecture.md` to the real current path `guide/core/architecture.md`. 8 entries (`03-018`, `13-016`, `13-018`, `13-020`, `13-021`, `13-026`, `13-029`, `13-030`) remain flagged: their referenced content (the verification-loops 8-domain checklist, DNS rebinding, the ClawHavoc campaign, the zaycv author, safedep vet, Bitsight stats, the SAFE-MCP framework) was fully removed from `security-hardening.md` in a later rewrite, with no surviving equivalent heading anywhere in the guide.
+
 ## [2.9.1] - 2026-03-25
 
 ### Fixed

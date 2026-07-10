@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
   section: 1. Perplexity AI
-  anchor: '#1-perplexity-ai-research--sourcing'
+  anchor: '#1-perplexity-ai-research-sourcing'
 ---
 
 When should you use Perplexity instead of Claude Code?

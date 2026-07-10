@@ -15,7 +15,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 1.3 Essential Commands
-  anchor: '#quick-actions--shortcuts'
+  anchor: '#quick-actions-shortcuts'
 official_doc: https://code.claude.com/docs/en/interactive-mode
 ---
 

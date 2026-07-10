@@ -14,9 +14,9 @@ options:
   c: Never attribute AI in commits
   d: Use both on every commit
 doc_reference:
-  file: guide/ultimate-guide.md
-  section: AI Traceability
-  anchor: '#ai-traceability'
+  file: guide/ops/ai-traceability.md
+  section: 3.2 Assisted-by Trailer (LLVM Standard)
+  anchor: '#32-assisted-by-trailer-llvm-standard'
 ---
 
 When should you use 'Co-Authored-By' vs 'Assisted-By' in git commits?

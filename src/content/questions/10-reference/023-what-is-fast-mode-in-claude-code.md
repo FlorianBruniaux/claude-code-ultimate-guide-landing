@@ -13,8 +13,8 @@ options:
   d: Parallel tool execution mode that runs all tool calls simultaneously
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Model Pricing
-  anchor: '#model-pricing'
+  section: Pricing Model (as of April 2026)
+  anchor: '#pricing-model-as-of-april-2026'
 ---
 
 What is "fast mode" for Opus 4.6 and what are its trade-offs?

@@ -14,7 +14,7 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 5.X Skill Lifecycle & Retirement
-  anchor: '#5x-skill-lifecycle--retirement'
+  anchor: '#5x-skill-lifecycle-retirement'
 ---
 
 What is the "Spot Outgrowth" pattern in skill lifecycle management?

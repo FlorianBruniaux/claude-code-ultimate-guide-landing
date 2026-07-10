@@ -16,7 +16,7 @@ options:
 doc_reference:
   file: guide/roles/learning-with-ai.md
   section: U — Understand First
-  anchor: '#u--understand-first-the-15-minute-rule'
+  anchor: '#u-understand-first-the-15-minute-rule'
 ---
 
 What is the '15-Minute Rule' in the UVAL protocol's 'Understand First' step?

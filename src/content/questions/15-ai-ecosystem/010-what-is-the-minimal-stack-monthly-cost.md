@@ -12,8 +12,8 @@ options:
   d: $500+/month - enterprise plans
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
-  section: 8. Cost & Subscription Strategy
-  anchor: '#8-cost--subscription-strategy'
+  section: 9. Cost & Subscription Strategy
+  anchor: '#9-cost-subscription-strategy'
 ---
 
 What is the 'Minimal Stack' monthly cost recommendation for AI tools?

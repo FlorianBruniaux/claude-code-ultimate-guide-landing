@@ -13,9 +13,9 @@ options:
   c: Depth = 1 (cannot spawn sub-sub-agents)
   d: Depth = 2
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Why Depth = 1?
-  anchor: '#why-depth--1'
+  anchor: '#why-depth-1'
 ---
 
 What is the maximum depth for sub-agents spawned via the Task tool?

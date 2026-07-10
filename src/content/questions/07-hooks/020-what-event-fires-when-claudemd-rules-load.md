@@ -13,8 +13,8 @@ options:
   d: PreToolUse — fires before any tool call, including instruction file reads
 doc_reference:
   file: guide/core/claude-code-releases.md
-  section: v2.1.69
-  anchor: '#v2169'
+  section: v2.1.69 (2026-03-04)
+  anchor: '#v2169-2026-03-04'
 ---
 
 What hook event fires when CLAUDE.md or rules files are loaded into context (v2.1.69+)?
