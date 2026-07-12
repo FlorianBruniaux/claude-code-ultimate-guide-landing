@@ -16,12 +16,49 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.207',
+    date: 'Jul 11, 2026',
+    highlights: [
+      'Bedrock, Vertex AI, and Claude Platform on AWS now default to Claude Opus 4.8',
+      'Fixed the terminal freezing and keystrokes lagging while streaming very long lists, tables, paragraphs, or code blocks',
+      'Auto mode is now available without the CLAUDE_CODE_ENABLE_AUTO_MODE opt-in on Bedrock, Vertex AI, and Foundry (disable via disableAutoMode)',
+      'Security: remote managed settings from a non-interactive run were being recorded as consented without ever showing the consent dialog, now fixed',
+    ],
+    breaking: [
+      'Plugins: ${user_config.*} in shell-form hook/monitor/headersHelper commands is now rejected (shell-injection fix); use exec form or $CLAUDE_PLUGIN_OPTION_<KEY>',
+      'Plugins: option values (pluginConfigs) are no longer read from project-level .claude/settings.json; only user, --settings, and managed settings are honored',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.206',
+    date: 'Jul 9, 2026',
+    highlights: [
+      'Added a /doctor check that proposes trimming checked-in CLAUDE.md files by cutting content Claude can derive from the codebase',
+      'Changed /commit-push-pr to auto-allow git push to the repo configured push remote (remote.pushDefault, or the sole remote), not just origin',
+      'Background agents now upgrade in the background right after an update, instead of a slow stale-session upgrade on attach',
+      'Improved /code-review findings quality on claude-opus-4-8 across all effort levels',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.205',
+    date: 'Jul 8, 2026',
+    highlights: [
+      '/doctor is now a full setup checkup that can diagnose and fix issues (/checkup is its alias)',
+      'Improved the agent view: rows show a colored state word and a classifier-written headline instead of raw tool call text',
+      'Security: auto mode now blocks tampering with session transcript files, and asks before running rm -rf on a variable it cannot resolve',
+      'Fixed --json-schema silently producing unstructured output when the schema was invalid, and schemas using the format keyword being rejected',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.204',
     date: 'Jul 8, 2026',
     highlights: [
       'Fixed hook events not streaming during SessionStart hooks in headless sessions, which could cause remote workers to be idle-reaped mid-hook',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

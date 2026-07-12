@@ -27,6 +27,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.207',
+    date: 'Jul 11, 2026',
+    description: 'Bedrock, Vertex AI, and Claude Platform on AWS now default to Claude Opus 4.8, and a fix stops the terminal freezing while streaming very long lists, tables, or code blocks. Plugin authors get a breaking shell-injection fix: ${user_config.*} is now rejected in shell-form commands, use exec form or $CLAUDE_PLUGIN_OPTION_<KEY> instead.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21207-2026-07-11',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.200',
     date: 'Jul 3, 2026',
     description: 'AskUserQuestion dialogs no longer auto-continue by default, and the "default" permission mode is now labeled "Manual" across the CLI, VS Code, and JetBrains. Also fixes background sessions stopping mid-turn after sleep/wake and never restarting after a daemon.lock crash.',
