@@ -27,6 +27,20 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code v2.1.210',
+    date: 'Jul 14, 2026',
+    description: 'Long-running tool calls now show a live elapsed-time counter instead of looking stuck. Two security hardenings land: the Agent tool resists indirect prompt injection via content a subagent read, and worktree-isolated subagents can no longer run git-mutating commands against the main checkout. Write(path), NotebookEdit(path), and Glob(path) permission rules are deprecated and warn at startup, use Edit(path) or Read(path).',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21210-2026-07-14',
+  },
+  {
+    type: 'guide_release',
+    title: 'Claude Code v2.1.208',
+    date: 'Jul 13, 2026',
+    description: 'Screen reader mode arrives as an opt-in plain-text rendering, via claude --ax-screen-reader, CLAUDE_AX_SCREEN_READER=1, or axScreenReader in settings. Vim users get vimInsertModeRemaps for two-key sequences like jj, and enterprises get CLAUDE_CODE_PROCESS_WRAPPER to route every Claude Code self-spawn through a corporate launcher.',
+    link: 'https://cc.bruniaux.com/guide/core/claude-code-releases/#v21208-2026-07-13',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code v2.1.207',
     date: 'Jul 11, 2026',
     description: 'Bedrock, Vertex AI, and Claude Platform on AWS now default to Claude Opus 4.8, and a fix stops the terminal freezing while streaming very long lists, tables, or code blocks. Plugin authors get a breaking shell-injection fix: ${user_config.*} is now rejected in shell-form commands, use exec form or $CLAUDE_PLUGIN_OPTION_<KEY> instead.',

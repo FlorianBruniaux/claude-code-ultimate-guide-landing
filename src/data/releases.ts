@@ -16,6 +16,40 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.210',
+    date: 'Jul 14, 2026',
+    highlights: [
+      'Added a live elapsed-time counter to the collapsed tool summary line, so long-running tool calls visibly tick instead of looking stuck',
+      'Security: the Agent tool is hardened against indirect prompt injection via content a subagent read, and the ultracode keyword opt-in no longer fires on non-human input such as webhook payloads and relayed PR comments',
+      'Security: fixed worktree-isolated subagents being able to run git-mutating commands against the main repo checkout instead of their own worktree',
+      'Auto mode: the permission classifier now defaults to Sonnet 5 for external sessions, validated on the first request and pinned for the session',
+    ],
+    breaking: [
+      'Write(path), NotebookEdit(path), and Glob(path) permission rules now trigger a startup warning; use Edit(path) or Read(path) instead',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.209',
+    date: 'Jul 14, 2026',
+    highlights: [
+      'Fixed /model and other dialogs being blocked in claude agents background sessions (reverts an overly broad guard)',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.208',
+    date: 'Jul 13, 2026',
+    highlights: [
+      'Added screen reader mode: opt-in plain-text rendering via claude --ax-screen-reader, CLAUDE_AX_SCREEN_READER=1, or axScreenReader: true in settings',
+      'Added vimInsertModeRemaps for mapping two-key insert-mode sequences like jj to Escape, and CLAUDE_CODE_PROCESS_WRAPPER for running every Claude Code self-spawn through a corporate launcher',
+      'Fixed the context window and auto-compact indicator briefly resetting to 200k after an auto-update, causing a false 100% context used when resuming long-context sessions',
+      'Fixed very large markdown tables stalling rendering; tables over 200 rows now show the first 200 with a note about the remainder',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.207',
     date: 'Jul 11, 2026',
     highlights: [
@@ -28,7 +62,6 @@ export const releases: Release[] = [
       'Plugins: ${user_config.*} in shell-form hook/monitor/headersHelper commands is now rejected (shell-injection fix); use exec form or $CLAUDE_PLUGIN_OPTION_<KEY>',
       'Plugins: option values (pluginConfigs) are no longer read from project-level .claude/settings.json; only user, --settings, and managed settings are honored',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
