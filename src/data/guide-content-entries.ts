@@ -351,7 +351,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agentic-tools-section-3-multi-agent-frameworks",
     "title": "Section 3: Multi-Agent Frameworks",
-    "keywords": "section 3 multi agent frameworks agent tools beyond claude code these are not coding tools. they are libraries for building custom multi-agent applications from scratch: marketing pipelines, research automation, do 3 1 crewai what is crewai when to use crewai 3 2 langgraph what is langgraph when to use langgraph 3 3 autogen microsoft agent framework what is microsoft agent framework when to use maf 3 4 anthropic agent sdk",
+    "keywords": "section 3 multi agent frameworks agent tools beyond claude code these are not coding tools. they are libraries for building custom multi-agent applications from scratch: marketing pipelines, research automation, do 3 1 crewai what is crewai when to use crewai 3 2 langgraph what is langgraph when to use langgraph 3 3 autogen microsoft agent framework what is microsoft agent framework when to use maf 3 4 anthropic agent sdk 3 5 metagpt the core idea read the dates before you adopt it where it stop",
     "category": "Core Guides",
     "url": "/guide/agentic-tools/#section-3-multi-agent-frameworks",
     "source": "guide"
@@ -359,7 +359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agentic-tools-section-4-agent-orchestration-tools",
     "title": "Section 4: Agent Orchestration Tools",
-    "keywords": "section 4 agent orchestration tools agent tools beyond claude code tools that sit above agent frameworks and manage how agents are deployed, routed, and operated at scale. not to be confused with multi-claude orchestr 4 1 conductor gemini cli methodology 4 2 conductor microsoft cli 4 3 hermes control room",
+    "keywords": "section 4 agent orchestration tools agent tools beyond claude code tools that sit above agent frameworks and manage how agents are deployed, routed, and operated at scale. not to be confused with multi-claude orchestr 4 1 conductor gemini cli methodology 4 2 conductor microsoft cli 4 3 hermes control room 4 4 symphony openai what it actually does read the warning label where it stops 4 5 paperclip what it actually does why the traction matters where it stops",
     "category": "Core Guides",
     "url": "/guide/agentic-tools/#section-4-agent-orchestration-tools",
     "source": "guide"

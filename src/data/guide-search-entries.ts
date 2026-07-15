@@ -1340,6 +1340,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-unit-economics-token-estimation",
+    "title": "AI Unit Economics Token Estimation",
+    "keywords": "ai unit economics token estimation guide ops unit economics md#do not estimate tokens string length (why chars 4 breaks: measured  35% on code,  23% on accented french, erring in the unsafe direction; wrong tokenizer for claude; plus the count the wrong string second order bug)",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#do-not-estimate-tokens-by-string-length (why chars/4 breaks: measured -35% on code, -23% on accented French, erring in the unsafe direction; wrong tokenizer for Claude; plus the count-the-wrong-string second-order bug)",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide roles learning with",
@@ -1812,6 +1820,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-data-privacy-local-looking-client",
+    "title": "Data Privacy Local Looking Client",
+    "keywords": "data privacy local looking client guide security data privacy md#risk the local looking network client (a cli mcp server can be 'zero dependencies, no signup' and still post every input to a third party; size functionality check; why mcp mode turns a discipline problem into a structural one since the agent picks the input)",
+    "category": "Guide",
+    "url": "/guide/data-privacy/",
+    "source": "guide"
+  },
+  {
     "id": "guide-data-privacy-protective-measures",
     "title": "Data Privacy Protective Measures",
     "keywords": "data privacy protective measures guide security data privacy md#3 protective measures",
@@ -1972,6 +1988,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-metagpt-tool",
+    "title": "Metagpt Tool",
+    "keywords": "metagpt tool guide ecosystem agentic tools md#35 metagpt",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#35-metagpt",
+    "source": "guide"
+  },
+  {
+    "id": "guide-symphony-tool",
+    "title": "Symphony Tool",
+    "keywords": "symphony tool guide ecosystem agentic tools md#44 symphony openai",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#44-symphony-openai",
+    "source": "guide"
+  },
+  {
+    "id": "guide-paperclip-tool",
+    "title": "Paperclip Tool",
+    "keywords": "paperclip tool guide ecosystem agentic tools md#45 paperclip",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#45-paperclip",
+    "source": "guide"
+  },
+  {
     "id": "guide-planner-agent",
     "title": "Planner Agent",
     "keywords": "planner agent examples agents planner",
@@ -2073,6 +2113,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "ai software factories section guide workflows spec first md#full cycle software factories",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-hub",
+    "title": "Agentic Software Factories Hub",
+    "keywords": "agentic software factories hub guide workflows agentic software factories",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-spectrum",
+    "title": "Agentic Software Factories Spectrum",
+    "keywords": "agentic software factories spectrum guide workflows agentic software factories md#1 the spectrum six levels six costs",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-decision-tree",
+    "title": "Agentic Software Factories Decision Tree",
+    "keywords": "agentic software factories decision tree guide workflows agentic software factories md#2 the missing decision tree when does closed software factory actually win",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-governance-5th-question",
+    "title": "Agentic Software Factories Governance 5th Question",
+    "keywords": "agentic software factories governance 5th question guide workflows agentic software factories md#4 five governance questions before you adopt anything",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/",
     "source": "guide"
   },
   {
