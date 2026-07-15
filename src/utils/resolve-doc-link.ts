@@ -9,11 +9,12 @@
  * keep the three in sync if that build script changes.
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const ROOT = resolve(__dirname, '..', '..')
+// Anchored on cwd, not import.meta.url: this module is bundled into dist/ for the
+// SSR build, which would move __dirname and break both reads below.
+// `astro build` always runs from the project root, locally and in CI.
+const ROOT = process.cwd()
 const anchorMap: Record<string, string> = JSON.parse(
   readFileSync(resolve(ROOT, 'src/data/guide-anchor-map.json'), 'utf-8')
 )
