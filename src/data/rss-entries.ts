@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_page',
+    title: 'New workflow: Agentic Software Factories',
+    date: 'Jul 15, 2026',
+    description: 'The topic lived across seven files with no entry point, so this page is the map. It carries a six-level spectrum from a single Claude Code session up to a closed software factory, with the cost and the upgrade signal at each step, plus the decision tree that did not exist: when a paid factory actually beats native Agent Teams and /batch, which already cover most of the same need. Also a five-question governance checklist and a case study on what unbounded agentic velocity produces.',
+    link: 'https://cc.bruniaux.com/guide/workflows/agentic-software-factories/',
+  },
+  {
+    type: 'new_page',
     title: 'Role pages: PM, Tech Lead, CTO, CIO/CEO',
     date: 'Jul 6, 2026',
     description: 'Four audience pages are now readable online: For Product Managers, For Tech Leads, For CTOs, and For CIOs & CEOs. Each one answers the same question for a different role: what Claude Code changes for you and where to start.',

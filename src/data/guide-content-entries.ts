@@ -375,7 +375,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agentic-tools-cross-references",
     "title": "Cross-References",
-    "keywords": "cross references agent tools beyond claude code - multi-claude orchestration (gas town, multiclaude, ruflo, conductor desktop): third-party tools: multi-agent orchestration - goose deep dive : ai ec",
+    "keywords": "cross references agent tools beyond claude code - orientation map for the whole subject (spectrum, decision tree for closed platforms, governance checklist): workflows/agentic-software-factories.md",
     "category": "Core Guides",
     "url": "/guide/agentic-tools/#cross-references",
     "source": "guide"
@@ -1023,7 +1023,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-unit-economics-2-building-a-cost-per-task",
     "title": "2. Building a cost per task",
-    "keywords": "2 building a cost per task ai unit economics to manage cost per task, you first have to measure it. a single agentic task decomposes into a small number of billable components. here is the full l a concrete calculation a minimal cost function",
+    "keywords": "2 building a cost per task ai unit economics to manage cost per task, you first have to measure it. a single agentic task decomposes into a small number of billable components. here is the full l a concrete calculation a minimal cost function do not estimate tokens by string length",
     "category": "Core Guides",
     "url": "/guide/ai-unit-economics/#2-building-a-cost-per-task",
     "source": "guide"
@@ -2079,7 +2079,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-data-privacy-2-known-risks",
     "title": "2. Known Risks",
-    "keywords": "2 known risks claude code privacy what gets sent to anthropic how to control it risk 1: automatic file reading claude code reads files to understand context. by default, this includes: - and files (api keys, passwords) - , (servic risk 1 automatic file reading risk 2 mcp database access risk 3 shell command output risk 4 the bug command sends everything retained 5 years risk 5 documented community incidents risk 6 claude desktop browser integration silent native messaging host installation",
+    "keywords": "2 known risks claude code privacy what gets sent to anthropic how to control it risk 1: automatic file reading claude code reads files to understand context. by default, this includes: - and files (api keys, passwords) - , (servic risk 1 automatic file reading risk 2 mcp database access risk 3 shell command output risk 4 the bug command sends everything retained 5 years risk 5 documented community incidents risk 6 claude desktop browser integration silent native messaging host installation risk ",
     "category": "Core Guides",
     "url": "/guide/data-privacy/#2-known-risks",
     "source": "guide"
@@ -11853,6 +11853,46 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-workflows-agentic-software-factories-1-the-spectrum-six-levels-six-costs",
+    "title": "1. The spectrum: six levels, six costs",
+    "keywords": "1 the spectrum six levels six costs agentic software factories orientation map every option below solves a real problem the previous level does not. none of them is free, and the cost is rarely just money. level 0: a single claud",
+    "category": "Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#1-the-spectrum-six-levels-six-costs",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-agentic-software-factories-2-the-missing-decision-tree-when-does-a-closed-sof",
+    "title": "2. The missing decision tree: when does a closed software factory actually win",
+    "keywords": "2 the missing decision tree when does a closed software factory actually win agentic software factories orientation map two decision trees already exist in this guide for adjacent choices: multi-instance versus single-instance work in guide/ultimate-guide.md:20320 (bran",
+    "category": "Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#2-the-missing-decision-tree-when-does-a-closed-software-factory-actually-win",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-agentic-software-factories-3-the-map-of-six-files",
+    "title": "3. The map of six files",
+    "keywords": "3 the map of six files agentic software factories orientation map no single file in this guide covers the whole subject, and that is deliberate: each file earns its place by covering one layer well rather than everyo",
+    "category": "Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#3-the-map-of-six-files",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-agentic-software-factories-4-five-governance-questions-before-you-adopt-anyth",
+    "title": "4. Five governance questions before you adopt anything",
+    "keywords": "4 five governance questions before you adopt anything agentic software factories orientation map guide/workflows/spec-first.md:970-975 already lists four questions worth asking before adopting any full-cycle platform, closed or open. repeated here",
+    "category": "Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#4-five-governance-questions-before-you-adopt-anything",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-agentic-software-factories-5-the-unbounded-velocity-trap",
+    "title": "5. The unbounded velocity trap",
+    "keywords": "5 the unbounded velocity trap agentic software factories orientation map a source-level evaluation of fusion, a self-described \"software factory run by a multi-agent orchestrator,\" is documented in full at docs/resource-eva",
+    "category": "Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#5-the-unbounded-velocity-trap",
+    "source": "guide"
+  },
+  {
     "id": "gc-workflows-changelog-fragments-the-problem",
     "title": "The Problem",
     "keywords": "the problem fix empty chat after sse race condition 80 chars single files break on active teams. three open feature branches all touching the same file means merge conflicts on every merge. someone resolves the",
@@ -14463,7 +14503,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-spec-first-see-also",
     "title": "See Also",
-    "keywords": "see also spec first development with claude - ../core/methodologies.md — sdd and other methodologies - spec kit documentation - openspec documentation - tdd-with-claude.md — combine with tdd - s",
+    "keywords": "see also spec first development with claude - workflows/agentic-software-factories.md: orientation map covering the full spectrum from a single session to a closed platform, plus the decision tr",
     "category": "Workflows",
     "url": "/guide/workflows/spec-first/#see-also",
     "source": "guide"
