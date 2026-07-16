@@ -1,0 +1,29 @@
+src/data/guide-content-entries.ts
+  s_44d586a9075e5e::t_f7df01139213d4 378,1026,2082,11855-11894,14506
+src/data/rss-entries.ts
+  s_ad907d4b5e7b9c::t_bcd6118dedc21c 32-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f8d78176195a0a10343d0ebfce039f83ee69150e",
+  "prompts": {},
+  "sessions": {
+    "s_44d586a9075e5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3a5cd187-9fad-47ff-a92f-93e751818501",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ad907d4b5e7b9c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c3f4424b-d18c-42f5-b60a-373ca4c4d05c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
