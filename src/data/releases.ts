@@ -16,6 +16,32 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.212',
+    date: 'Jul 16, 2026',
+    highlights: [
+      '/fork now copies your conversation into a new background session (its own row in claude agents) while you keep working; the in-session subagent it used to launch is now /subtask',
+      'Added a session-wide WebSearch cap (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION, default 200) and a per-session subagent-spawn cap (CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION, default 200) to stop runaway loops; /clear resets the budget',
+      'MCP tool calls running longer than 2 minutes now move to the background automatically so the session stays usable (CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS)',
+      'Security: fixed plan mode auto-running file-modifying Bash commands without a permission prompt, and worktree creation following a committed .claude/worktrees symlink to create files outside the repository',
+    ],
+    breaking: [
+      "Deprecated the Task tool's mode parameter (now ignored); subagents inherit the parent session's permission mode by default",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.211',
+    date: 'Jul 15, 2026',
+    highlights: [
+      'Added --forward-subagent-text and CLAUDE_CODE_FORWARD_SUBAGENT_TEXT to include subagent text and thinking in stream-json output',
+      'Security: permission previews relayed to chat channels now neutralize bidirectional-override, zero-width, and look-alike quote characters, so tool inputs cannot visually alter the approval message',
+      "Security: auto mode no longer overrides a PreToolUse hook's ask decision for unsandboxed Bash; an ask now floors the decision at a prompt",
+      "Fixed subagents with an explicit model override reverting to the parent's model when resumed, and nested .claude/rules/*.md loading even when setting sources exclude project settings",
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.210',
     date: 'Jul 14, 2026',
     highlights: [
@@ -27,7 +53,6 @@ export const releases: Release[] = [
     breaking: [
       'Write(path), NotebookEdit(path), and Glob(path) permission rules now trigger a startup warning; use Edit(path) or Read(path) instead',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
