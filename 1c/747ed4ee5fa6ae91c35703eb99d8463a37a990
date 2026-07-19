@@ -1,0 +1,19 @@
+src/data/releases.ts
+  s_abcd3587881f7e::t_c8e18b2db70a4a 18-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1c747ed4ee5fa6ae91c35703eb99d8463a37a990",
+  "prompts": {},
+  "sessions": {
+    "s_abcd3587881f7e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a697fa98-5e89-43c9-b579-32902e71959d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
