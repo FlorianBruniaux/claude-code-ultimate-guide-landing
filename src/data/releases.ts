@@ -16,6 +16,31 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.215',
+    date: 'Jul 19, 2026',
+    highlights: [
+      'Claude no longer runs the /verify and /code-review skills on its own; invoke them with /verify or /code-review when you want them',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.214',
+    date: 'Jul 18, 2026',
+    highlights: [
+      'Security: eight Bash permission-check fixes, commands over 10,000 characters now always prompt, file-descriptor redirects fail closed, zsh variable subscripts in [[ ]] prompt, and Edit(src/**)-style single-segment rules no longer auto-approve nested src/ directories anywhere in the tree',
+      'Added the EndConversation tool so Claude can end sessions with highly abusive users or jailbreak attempts, plus a periodic progress heartbeat for long-running tool calls that previously went silent',
+      'OpenTelemetry: added message.uuid, client_request_id, and tool_source log attributes for message-level correlation, and CLAUDE_CODE_OTEL_CONTENT_MAX_LENGTH to configure the 60 KB content truncation limit',
+      'Fixed background-session lifecycle bugs: idle sessions keeping the daemon alive, completed sessions being impossible to remove via claude rm, and a displaced daemon deleting its successor control socket',
+    ],
+    breaking: [
+      'Single-segment dir/** hook if: conditions now match only <cwd>/dir; write **/dir/** for any-depth matching (deny/ask permission rules keep their any-depth match)',
+      'file commands using -m/--magic-file or -f/--files-from now require permission instead of being auto-allowed as read-only',
+      'docker commands (including the Podman shim) carrying daemon-redirect flags (--url, --connection, --identity, Podman remote mode) now prompt for permission',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.212',
     date: 'Jul 16, 2026',
     highlights: [
@@ -27,7 +52,6 @@ export const releases: Release[] = [
     breaking: [
       "Deprecated the Task tool's mode parameter (now ignored); subagents inherit the parent session's permission mode by default",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
