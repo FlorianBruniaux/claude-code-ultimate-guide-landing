@@ -232,9 +232,9 @@ const SLUG_TO_PATH: Record<string, string> = {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    background: var(--surface-2, #1e1e2e);
-    color: var(--text-secondary, #bbb);
-    border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+    background: var(--surface-elevated);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
     border-radius: 50px;
     padding: 0.5rem 0.85rem;
     font-size: 0.78rem;
@@ -250,8 +250,8 @@ const SLUG_TO_PATH: Record<string, string> = {
   .guide-fab-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-    background: var(--surface-3, #2a2a3e);
-    color: var(--text-primary, #e0e0e0);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
   }
 
   .guide-fab-btn:active {
@@ -264,18 +264,18 @@ const SLUG_TO_PATH: Record<string, string> = {
   }
 
   .guide-fab-btn.is-done {
-    background: #1a3a2a;
-    border-color: #2d6a4f;
-    color: #74c69d;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
   }
 
   .guide-fab-toast {
     position: fixed;
     bottom: 5.5rem;
     right: 1.5rem;
-    background: var(--surface-2, #1e1e2e);
-    color: var(--text-primary, #e0e0e0);
-    border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.45rem 0.8rem;
     font-size: 0.78rem;
