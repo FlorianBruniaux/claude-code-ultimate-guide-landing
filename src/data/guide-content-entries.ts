@@ -1543,7 +1543,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick Jump",
-    "keywords": "quick jump claude code release history - 2.1.x series (january-july 2026): and skills no longer auto-invoked (2.1.215), ⭐ eight bash permission-check security fixes + endconversation tool +",
+    "keywords": "quick jump claude code release history - 2.1.x series (january-july 2026): bug fixes (2.1.220), ⭐ claude opus 5 becomes the default opus model with 1m context and fast mode at $10/$50 per m",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#quick-jump",
     "source": "guide"
@@ -1551,7 +1551,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-july-2026",
     "title": "2.1.x Series (January-July 2026)",
-    "keywords": "2 1 x series january july 2026 claude code release history v2.1.215 (2026-07-19) - changed : claude no longer runs the and skills on its own; invoke them with or when you want them v2.1.214 (2026-07-18) securi v2 1 215 2026 07 19 v2 1 214 2026 07 18 v2 1 212 2026 07 16 v2 1 211 2026 07 15 v2 1 210 2026 07 14 v2 1 209 2026 07 14 v2 1 208 2026 07 13 v2 1 207 2026 07 11 v2 1 206 2026 07 09 v2 1 205 2026 07 08 v2 1 204 2026 07 08 v2 1 203 2026 07 07 v2 1 202 2026 07 06 v2 1 201 2026 07 03 v2 1 200 2",
+    "keywords": "2 1 x series january july 2026 claude code release history v2.1.220 (2026-07-24) - fixed : bug fixes and reliability improvements v2.1.219 (2026-07-24) model release. claude opus 5 takes over as the default op v2 1 220 2026 07 24 v2 1 219 2026 07 24 v2 1 218 2026 07 22 v2 1 217 2026 07 21 v2 1 216 2026 07 20 v2 1 215 2026 07 19 v2 1 214 2026 07 18 v2 1 212 2026 07 16 v2 1 211 2026 07 15 v2 1 210 2026 07 14 v2 1 209 2026 07 14 v2 1 208 2026 07 13 v2 1 207 2026 07 11 v2 1 206 2026 07 09 v2 1 205 2",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-july-2026",
     "source": "guide"
@@ -1567,7 +1567,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-breaking-changes-summary",
     "title": "Breaking Changes Summary",
-    "keywords": "breaking changes summary claude code release history urls version change --------- -------- v2.1.0, v2.1.7 oauth/api console: → windows version change --------- -------- v2.0.58 managed settings prefer v urls windows sdk agent tool api ecosystem shortcuts security fixes syntax",
+    "keywords": "breaking changes summary claude code release history urls version change --------- -------- v2.1.0, v2.1.7 oauth/api console: → windows version change --------- -------- v2.0.58 managed settings prefer v urls windows sdk agent tool models and behavior api ecosystem shortcuts security fixes syntax",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#breaking-changes-summary",
     "source": "guide"
@@ -1575,7 +1575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-milestone-features",
     "title": "Milestone Features",
-    "keywords": "milestone features claude code release history version key features --------- -------------- v2.1.214 eight bash permission-check security fixes, endconversation tool, heartbeat for long-running to",
+    "keywords": "milestone features claude code release history version key features --------- -------------- v2.1.219 claude opus 5 becomes the default opus model (1m context, fast mode $10/$50 per mtok), hook, ,",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#milestone-features",
     "source": "guide"
