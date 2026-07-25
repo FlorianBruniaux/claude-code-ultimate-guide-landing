@@ -652,11 +652,19 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-memory-systems-file-based-playbooks",
+    "title": "Memory Systems File Based Playbooks",
+    "keywords": "memory systems file based playbooks guide core memory systems md#37 file based experience playbooks orf diffmem",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#37-file-based-experience-playbooks-orf-diffmem",
+    "source": "guide"
+  },
+  {
     "id": "guide-memory-systems-tool-comparison",
     "title": "Memory Systems Tool Comparison",
-    "keywords": "memory systems tool comparison guide core memory systems md#38 master comparison table",
+    "keywords": "memory systems tool comparison guide core memory systems md#39 master comparison table",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#38-master-comparison-table",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#39-master-comparison-table",
     "source": "guide"
   },
   {
