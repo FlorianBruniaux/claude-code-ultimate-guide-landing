@@ -16,12 +16,79 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.220',
+    date: 'Jul 24, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.219',
+    date: 'Jul 24, 2026',
+    highlights: [
+      'Added Claude Opus 5 (claude-opus-5), now the default Opus model: 1M context, fast mode at $10/$50 per Mtok. Opus 4.7 leaves fast mode, so /fast covers Opus 5 and Opus 4.8',
+      'Added the DirectoryAdded hook (fires after /add-dir or the SDK register_repo_root control request), sandbox.network.strictAllowlist to deny non-allowlisted hosts without prompting, and the workflowSizeGuideline settings key',
+      'Subagents spawn nested subagents up to depth 3 again after nesting was disabled in 2.1.217; set CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1 to opt out, and stream-json forwards depth-2+ subagent text when --forward-subagent-text is set',
+      'Added mcp_server_errors to the headless stream-json init event, plus HTTP status and error text in claude mcp list and /mcp when a server fails to connect',
+    ],
+    breaking: [
+      'Opus 4.7 removed from fast mode; /fast applies to Opus 5 and Opus 4.8 only',
+      'Dynamic workflows default to a medium size guideline (aim for fewer than 15 agents); change it with Dynamic workflow size in /config',
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: 'Claude Opus 5',
+  },
+  {
+    version: 'v2.1.218',
+    date: 'Jul 22, 2026',
+    highlights: [
+      '/code-review now runs as a background subagent, so review work no longer fills the conversation and stacked slash commands stay the review target',
+      'Security: agent frontmatter hooks require the agent file own folder to have accepted workspace trust, so hooks no longer run from untrusted folders',
+      'Fixed the left arrow key discarding the conversation with no undo, Windows paths with \\u-prefixed segments (like C:\\Users\\unicorn) being corrupted into CJK characters, and /context reporting stale pre-compact token usage',
+      'Auto mode adjudicates the dangerous-rm, background-& and suspicious-Windows-path checks instead of opening permission dialogs; plan mode with auto no longer prompts for Bash the static analyzer cannot prove read-only',
+    ],
+    breaking: [
+      'Skills with context: fork run in the background by default; opt out per skill with background: false',
+      'Agent markdown files reject agent names containing :, which is reserved for plugin namespacing',
+      '/deep-research starts only when invoked manually; Claude no longer launches it on its own',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.217',
+    date: 'Jul 21, 2026',
+    highlights: [
+      'Added a cap on concurrently-running subagents (default 20, CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS) so one message cannot fan out unbounded background agents',
+      'Fixed --max-budget-usd not stopping background subagents: once the cap is reached, new spawns are denied and running background agents are halted',
+      'Fixed a memory leak where truncated MCP tool outputs kept the full untruncated result in memory for the rest of the session',
+      'Added emoji shortcode autocomplete in the prompt input (:heart: inserts a heart), disabled with the emojiCompletionEnabled setting',
+      'Security: fixed background session isolation not canonicalizing symlinked working directories, which could let sessions escape their workspace folder',
+    ],
+    breaking: [
+      'Subagents no longer spawn nested subagents by default (restored to depth 3 in 2.1.219); set CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH to control nesting',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.216',
+    date: 'Jul 20, 2026',
+    highlights: [
+      'Added sandbox.filesystem.disabled to skip filesystem isolation while keeping network egress control',
+      'Fixed a slowdown in long sessions where message normalization cost grew quadratically with the number of turns, causing multi-second stalls and slow resumes',
+      'Fixed auto mode denying commands with HTTP 401 classifier errors after the OAuth token expired or rotated mid-session',
+      'Fixed AskUserQuestion telling Claude to continue when the answer asked it to wait or explain first, and Claude Code on the web re-asking the same question after an idle period',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.215',
     date: 'Jul 19, 2026',
     highlights: [
       'Claude no longer runs the /verify and /code-review skills on its own; invoke them with /verify or /code-review when you want them',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
