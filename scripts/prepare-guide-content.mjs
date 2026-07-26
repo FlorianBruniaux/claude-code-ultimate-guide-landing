@@ -176,6 +176,21 @@ function rewriteRelativeGuideLinks(content) {
 }
 
 /**
+ * Rewrite relative links into repo files that are NOT served on the landing
+ * (docs/resource-evaluations, etc.) to their GitHub source URL.
+ *
+ * Must run BEFORE rewriteRelativeGuideLinks, which would otherwise flatten
+ * [text](../../docs/resource-evaluations/x.md) into /guide/x/ (a 404).
+ */
+function rewriteRepoDocLinks(content) {
+  return content.replace(
+    /\[([^\]]*)\]\((?:\.\.\/)+(docs\/[^)#]+\.md)(#[^)]+)?\)/g,
+    (match, text, path, anchor) =>
+      `[${text}](https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${path}${anchor || ''})`
+  )
+}
+
+/**
  * Rewrite bare anchor links that point to a different chapter.
  *
  * Replaces `[text](#anchor)` with `[text](/guide/{targetSlug}/#anchor)`
@@ -538,6 +553,7 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
 
   // Rewrite cross-chapter bare anchors and relative .md links before writing
   const currentSlug = `ultimate-guide/${slug}`
+  content = rewriteRepoDocLinks(content)
   content = rewriteRelativeGuideLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
   content = resolveUltimateGuideAnchors(content, anchorMap)
@@ -557,7 +573,8 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 // 3b. Flush buffered guide/workflow files now that anchorMap is complete
 // -----------------------------------------------------------------------
 for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
-  let rewritten = rewriteRelativeGuideLinks(rawContent)
+  let rewritten = rewriteRepoDocLinks(rawContent)
+  rewritten = rewriteRelativeGuideLinks(rewritten)
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
