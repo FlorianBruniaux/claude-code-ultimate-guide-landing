@@ -1,13 +1,26 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro'
 
-const { entry } = Astro.props
+// Starlight component overrides don't receive route data via Astro.props —
+// it lives on Astro.locals.starlightRoute (confirmed against Starlight's own
+// components, e.g. Hero.astro, LastUpdated.astro). Astro.props.entry was
+// always undefined here, silently emptying headline/description/dates in the
+// TechArticle/HowTo JSON-LD on every guide page since this component existed.
+const { entry } = Astro.locals.starlightRoute
 const url = Astro.url.pathname
 const isWorkflow = url.includes('/workflows/')
 
 const pageUrl = `https://cc.bruniaux.com${url}`
 const title = entry?.data?.title ?? ''
 const description = entry?.data?.description ?? ''
+const keywords = entry?.data?.keywords
+
+// Real per-file dates from the guide repo's own git history (injected at sync
+// time by scripts/prepare-guide-content.mjs), falling back to the last known
+// bulk-sync date for files where git history wasn't available.
+const lastUpdated = entry?.data?.lastUpdated
+const dateModified = lastUpdated instanceof Date ? lastUpdated.toISOString().slice(0, 10) : '2026-06-25'
+const datePublished = entry?.data?.datePublished ?? '2026-01-17'
 
 const schema = isWorkflow
   ? {
@@ -16,6 +29,7 @@ const schema = isWorkflow
       "name": title,
       "description": description,
       "url": pageUrl,
+      ...(keywords?.length ? { "keywords": keywords.join(', ') } : {}),
       "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX" },
       "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
       "inLanguage": "en",
@@ -26,8 +40,9 @@ const schema = isWorkflow
       "headline": title,
       "description": description,
       "url": pageUrl,
-      "datePublished": "2026-01-17",
-      "dateModified": "2026-06-25",
+      "datePublished": datePublished,
+      "dateModified": dateModified,
+      ...(keywords?.length ? { "keywords": keywords.join(', ') } : {}),
       "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
       "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX" },
       "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },

@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync, rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { execFileSync } from 'child_process'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -28,6 +29,29 @@ if (existsSync(DATA_STORE)) {
 }
 const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
 const GUIDE_DIR = resolve(GUIDE_REPO, 'guide')
+
+/**
+ * Real dateModified/datePublished for a source file, from the guide repo's
+ * own git history (not the landing repo — guide content is gitignored here,
+ * so its own git log is the only source of truth). Falls back to nulls for
+ * uncommitted files; callers keep a hardcoded default in that case.
+ */
+function getGitDates(absPath) {
+  try {
+    const modified = execFileSync(
+      'git', ['log', '-1', '--format=%cd', '--date=short', '--', absPath],
+      { cwd: GUIDE_REPO, encoding: 'utf-8' }
+    ).trim()
+    const history = execFileSync(
+      'git', ['log', '--follow', '--format=%cd', '--date=short', '--', absPath],
+      { cwd: GUIDE_REPO, encoding: 'utf-8' }
+    ).trim().split('\n').filter(Boolean)
+    const published = history.length ? history[history.length - 1] : ''
+    return { modified: modified || null, published: published || null }
+  } catch {
+    return { modified: null, published: null }
+  }
+}
 
 // Graceful fail if guide repo absent
 if (!existsSync(GUIDE_DIR)) {
@@ -122,12 +146,17 @@ function detectChapterBoundary(line, currentChapter) {
 function addStarlightFm(content, meta) {
   const sidebarLabel = meta.label ? `\n  label: '${meta.label}'` : ''
   const sidebarYaml = `sidebar:\n  order: ${meta.order}${sidebarLabel}`
+  const dateLines = [
+    meta.lastUpdated ? `lastUpdated: ${meta.lastUpdated}` : null,
+    meta.datePublished ? `datePublished: '${meta.datePublished}'` : null,
+  ].filter(Boolean)
+  const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
   const fmRegex = /^---\r?\n([\s\S]*?)\r?\n---/
 
   const match = content.match(fmRegex)
   if (!match) {
     // No frontmatter — prepend new one
-    return `---\ntitle: "${meta.title}"\ndescription: "${meta.desc}"\n${sidebarYaml}\n---\n\n${content.trimStart()}`
+    return `---\ntitle: "${meta.title}"\ndescription: "${meta.desc}"\n${sidebarYaml}${dateYaml}\n---\n\n${content.trimStart()}`
   }
 
   let fm = match[1]
@@ -137,9 +166,28 @@ function addStarlightFm(content, meta) {
   fm = fm.replace(/^tags:\n([ \t]+-[^\n]*\n)*/m, '')
   fm = fm.trim()
   if (fm) fm += '\n'
-  fm += sidebarYaml
+  fm += sidebarYaml + dateYaml
 
   return content.replace(fmRegex, `---\n${fm}\n---`)
+}
+
+/**
+ * Extract title/description from a file's own leading frontmatter block only.
+ * Never scan the full body: a body code example that happens to contain a
+ * literal `title:`/`description:` line (a sample hook config, an agent
+ * frontmatter template shown as documentation) must not be mistaken for the
+ * page's real metadata. Files with no leading frontmatter get null/empty —
+ * callers fall back to the H1 heading for title, and to '' for description.
+ */
+function extractLeadingFrontmatter(content) {
+  const fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  const fm = fmMatch ? fmMatch[1] : ''
+  const titleMatch = fm.match(/^title:\s*["']?(.+?)["']?\s*$/m)
+  const descMatch = fm.match(/^description:\s*["']?(.+?)["']?\s*$/m)
+  return {
+    title: titleMatch ? titleMatch[1].trim() : null,
+    desc: descMatch ? descMatch[1].trim() : '',
+  }
 }
 
 /**
@@ -312,15 +360,14 @@ for (let i = 0; i < guideFileSources.length; i++) {
   let content = readFileSync(src, 'utf-8')
 
   // Extract existing title/desc for fallback
-  const titleMatch = content.match(/^title:\s*["']?(.+?)["']?\s*$/m)
-    || content.match(/^# (.+)/m)
-  const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
-
-  const descMatch = content.match(/^description:\s*["']?(.+?)["']?\s*$/m)
-  const desc = descMatch ? descMatch[1].trim() : ''
+  const fmMeta = extractLeadingFrontmatter(content)
+  const h1Match = content.match(/^# (.+)/m)
+  const title = fmMeta.title ?? (h1Match ? h1Match[1].trim() : file.replace('.md', ''))
+  const desc = fmMeta.desc
 
   // order: 100 + index (keeps all guide files after ultimate-guide chapters in sidebar)
-  content = addStarlightFm(content, { title, desc, order: 100 + i })
+  const { modified, published } = getGitDates(src)
+  content = addStarlightFm(content, { title, desc, order: 100 + i, lastUpdated: modified, datePublished: published })
   content = normalizeLangs(content)
 
   guideFileBuffer.push({ file, content })
@@ -347,14 +394,13 @@ if (existsSync(WORKFLOWS_DIR)) {
     const src = resolve(WORKFLOWS_DIR, file)
     let content = readFileSync(src, 'utf-8')
 
-    const titleMatch = content.match(/^title:\s*["']?(.+?)["']?\s*$/m)
-      || content.match(/^# (.+)/m)
-    const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
+    const fmMeta = extractLeadingFrontmatter(content)
+    const h1Match = content.match(/^# (.+)/m)
+    const title = fmMeta.title ?? (h1Match ? h1Match[1].trim() : file.replace('.md', ''))
+    const desc = fmMeta.desc
 
-    const descMatch = content.match(/^description:\s*["']?(.+?)["']?\s*$/m)
-    const desc = descMatch ? descMatch[1].trim() : ''
-
-    content = addStarlightFm(content, { title, desc, order: 200 + i })
+    const { modified, published } = getGitDates(src)
+    content = addStarlightFm(content, { title, desc, order: 200 + i, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
 
     guideFileBuffer.push({ file: `workflows/${file}`, content, isWorkflow: true })
@@ -365,7 +411,8 @@ if (existsSync(WORKFLOWS_DIR)) {
   const workflowReadme = resolve(WORKFLOWS_DIR, 'README.md')
   if (existsSync(workflowReadme)) {
     let content = readFileSync(workflowReadme, 'utf-8')
-    content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199 })
+    const { modified, published } = getGitDates(workflowReadme)
+    content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
     guideFileBuffer.push({ file: 'workflows/index.md', content, isWorkflow: false })
     stats.workflows++
@@ -391,14 +438,13 @@ if (existsSync(LEARNING_PATH_DIR)) {
     const src = resolve(LEARNING_PATH_DIR, file)
     let content = readFileSync(src, 'utf-8')
 
-    const titleMatch = content.match(/^title:\s*["']?(.+?)["']?\s*$/m)
-      || content.match(/^# (.+)/m)
-    const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
+    const fmMeta = extractLeadingFrontmatter(content)
+    const h1Match = content.match(/^# (.+)/m)
+    const title = fmMeta.title ?? (h1Match ? h1Match[1].trim() : file.replace('.md', ''))
+    const desc = fmMeta.desc
 
-    const descMatch = content.match(/^description:\s*["']?(.+?)["']?\s*$/m)
-    const desc = descMatch ? descMatch[1].trim() : ''
-
-    content = addStarlightFm(content, { title, desc, order: 250 + i })
+    const { modified, published } = getGitDates(src)
+    content = addStarlightFm(content, { title, desc, order: 250 + i, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
 
     guideFileBuffer.push({ file: `learning-path/${file}`, content, isWorkflow: false })
@@ -409,7 +455,8 @@ if (existsSync(LEARNING_PATH_DIR)) {
   const readmeSrc = resolve(LEARNING_PATH_DIR, 'README.md')
   if (existsSync(readmeSrc)) {
     let content = readFileSync(readmeSrc, 'utf-8')
-    content = addStarlightFm(content, { title: 'Learning Path', desc: '7-module structured learning path from Installation to Advanced Patterns (8-11 hours)', order: 249 })
+    const { modified, published } = getGitDates(readmeSrc)
+    content = addStarlightFm(content, { title: 'Learning Path', desc: '7-module structured learning path from Installation to Advanced Patterns (8-11 hours)', order: 249, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
     guideFileBuffer.push({ file: 'learning-path/index.md', content, isWorkflow: false })
     stats.learningPath++
@@ -450,7 +497,8 @@ for (let i = 0; i < AUDIENCE_PAGES.length; i++) {
     .replace(/\(\.\.\/CHANGELOG\.md\)/g, '(https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md)')
     .replace(/\(\.\.\/examples\/\)/g, '(/examples/)')
 
-  content = addStarlightFm(content, { title, desc, order: 300 + i })
+  const { modified, published } = getGitDates(src)
+  content = addStarlightFm(content, { title, desc, order: 300 + i, lastUpdated: modified, datePublished: published })
   content = normalizeLangs(content)
 
   guideFileBuffer.push({ file, content })
@@ -544,6 +592,7 @@ for (const line of lines) {
 
 // Write chapter files
 ensureDir(OUT_ULTIMATE)
+const ultimateDates = getGitDates(ULTIMATE_SRC)
 
 for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   let content = chapterLines.get(num)?.join('\n') ?? ''
@@ -559,7 +608,12 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   content = resolveUltimateGuideAnchors(content, anchorMap)
 
   const sidebarLabel = label ? `\n  label: '${label}'` : ''
-  const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}\n---`
+  const dateLines = [
+    ultimateDates.modified ? `lastUpdated: ${ultimateDates.modified}` : null,
+    ultimateDates.published ? `datePublished: '${ultimateDates.published}'` : null,
+  ].filter(Boolean)
+  const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
+  const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}${dateYaml}\n---`
   let output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
   output = renderMermaidBlocks(output, slug)
 

@@ -7,7 +7,7 @@ const questions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/questions' }),
   schema: z.object({
     id: z.string().regex(/^\d{2}-\d{3}$/),
-    category_id: z.number().min(1).max(16),
+    category_id: z.number().min(1).max(17),
     difficulty: z.enum(['junior', 'intermediate', 'senior', 'power']),
     profiles: z.array(z.enum(['junior', 'senior', 'power', 'pm'])),
     correct: z.enum(['a', 'b', 'c', 'd']),
@@ -29,7 +29,18 @@ const questions = defineCollection({
 
 const docs = defineCollection({
   loader: docsLoader(),
-  schema: docsSchema(),
+  // datePublished is a custom extension: docsSchema() has no such field, and
+  // it's injected per-file at sync time from the guide repo's own git history
+  // (see scripts/prepare-guide-content.mjs, getGitDates) since guide content
+  // is gitignored here and has no git history of its own in this repo.
+  schema: docsSchema({
+    extend: z.object({
+      datePublished: z.string().optional(),
+      // Populated from real GSC top-query data per page, not guessed —
+      // see the content_brief-driven pass tracked as a follow-up to this sync.
+      keywords: z.array(z.string()).optional(),
+    }),
+  }),
 })
 
 const cheatsheets = defineCollection({
