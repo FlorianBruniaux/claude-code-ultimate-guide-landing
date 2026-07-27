@@ -1,0 +1,21 @@
+src/components/global/Header.astro
+  s_c24c90e299949a::t_33a14a5cd44872 141-158,160-194,387-445,448
+src/components/landing/HeroBanner.astro
+  s_c24c90e299949a::t_c45187576b0738 4-6,18,33,38,48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "24a304c9b236827a44f9b7d89348a2db85659cdf",
+  "prompts": {},
+  "sessions": {
+    "s_c24c90e299949a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff2b68f1-90c8-42eb-82e8-7bf70c0b40a4",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
