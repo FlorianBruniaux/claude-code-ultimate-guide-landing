@@ -1,25 +1,58 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { QUIZ_ROLES } from '../../data/quiz-roles'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const title = 'Claude Code Quiz: Test Your Knowledge of Claude Code'
-const description = 'Take the Claude Code quiz: 401 questions across 16 categories, from installation to advanced agents. Free, instant results, shareable score.'
+const description = 'Take the Claude Code quiz: 473 questions across 17 categories, from installation to advanced agents. Free, instant results, shareable score.'
 
 const jsonLd = [
   {
     "@type": "Quiz",
     "name": "Claude Code Knowledge Quiz",
-    "description": "401 questions to test your Claude Code expertise across 16 categories",
+    "description": "473 questions to test your Claude Code expertise across 17 categories, with optional filters by difficulty and by role (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM)",
     "url": "https://cc.bruniaux.com/quiz/",
     "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
     "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
     "datePublished": "2026-01-17",
     "educationalLevel": "beginner to advanced",
-    "numberOfQuestions": 401,
+    "numberOfQuestions": 473,
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
       "audienceType": "Software developers learning Claude Code"
     }
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this the official Claude Code 101 or Claude Cowork certification quiz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is an independent, open-source practice quiz built from the Claude Code Ultimate Guide, not affiliated with Anthropic's official courses or certification exams. If you landed here searching for official course answers, this quiz still covers the same underlying Claude Code concepts (installation, agents, hooks, MCP, permissions) but with its own question bank."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I filter quiz questions by role or by difficulty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Two independent filters combine: difficulty (Junior, Senior, Power User) and role persona (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM). Pick both to get a question pool matched to your day-to-day work with Claude Code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many questions and categories does the quiz cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "473 questions across 17 categories, from installation and slash commands to agents, hooks, MCP servers, security, and team adoption metrics. No account or sign-up required, and results are instant with a shareable score."
+        }
+      }
+    ]
   }
 ]
 ---
@@ -28,8 +61,8 @@ const jsonLd = [
   <header class="page-hero">
     <div class="container">
       <h1>Claude Code Knowledge Quiz</h1>
-      <p class="tagline">401 questions across 16 categories. Test your knowledge and share your score.</p>
-      <p class="hero-answer">The Claude Code quiz tests your knowledge with 401 questions across 16 categories, covering installation, slash commands, workflows, agents, hooks, MCP servers, and configuration. Pick your categories and difficulty, answer multiple-choice questions, and get instant results with a shareable score. No account or sign-up required.</p>
+      <p class="tagline">473 questions across 17 categories. Filter by role and difficulty, test your knowledge, share your score.</p>
+      <p class="hero-answer">The Claude Code quiz tests your knowledge with 473 questions across 17 categories, covering installation, slash commands, workflows, agents, hooks, MCP servers, security, and team adoption metrics. Pick your categories, filter by difficulty (Junior, Senior, Power User) and by role (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM), answer multiple-choice questions, and get instant results with a shareable score. No account or sign-up required.</p>
     </div>
   </header>
 
@@ -59,11 +92,22 @@ const jsonLd = [
         <button class="difficulty-btn" data-difficulty="power">Power User</button>
       </div>
 
+      <h3 style="margin-bottom: var(--space-xs);">Filter by Role (optional)</h3>
+      <p class="filter-hint">Narrow the pool to questions relevant to your role. Combines with difficulty.</p>
+      <div class="role-select">
+        <button class="role-btn selected" data-role="all">All Roles</button>
+        {QUIZ_ROLES.map((role) => (
+          <button class="role-btn" data-role={role.id} title={role.description}>{role.label}</button>
+        ))}
+      </div>
+
       <button class="btn btn-primary start-btn" id="start-btn" disabled>Start Quiz</button>
     </div>
 
     <!-- Question Screen -->
     <div id="quiz-question" class="quiz-question">
+      <div class="quiz-params" id="quiz-params"></div>
+      <div class="quiz-params-list" id="quiz-params-list"></div>
       <div class="progress-bar">
         <div class="progress-fill" id="progress-fill"></div>
       </div>
@@ -236,6 +280,40 @@ const jsonLd = [
       flex-wrap: wrap;
     }
 
+    .role-select {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: flex-start;
+      margin-bottom: var(--space-2xl);
+      flex-wrap: wrap;
+    }
+
+    .role-btn {
+      padding: var(--space-md) var(--space-xl);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .role-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .role-btn.selected {
+      border-color: var(--accent);
+      background: var(--bg-tertiary);
+    }
+
+    .filter-hint {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: var(--space-md);
+    }
+
     .difficulty-btn {
       padding: var(--space-md) var(--space-xl);
       background: var(--bg-secondary);
@@ -321,6 +399,25 @@ const jsonLd = [
 
     .quiz-question.active {
       display: block;
+    }
+
+    .quiz-params {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-xs);
+    }
+
+    .quiz-params-list {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.8;
+      margin-bottom: var(--space-sm);
+      line-height: 1.4;
+    }
+
+    .quiz-params-list:empty {
+      display: none;
     }
 
     .progress-bar {
@@ -876,11 +973,12 @@ const jsonLd = [
     .quiz-cta-link strong { color: var(--accent); }
   </style>
 
-  <script>
+  <script define:vars={{ cheatsheetCount: stats.cheatsheetCount }}>
     // Quiz State
     let quizData = null;
     let selectedCategories = new Set();
     let selectedDifficulty = 'all';
+    let selectedRole = 'all';
     let filteredQuestions = [];
     let currentQuestionIndex = 0;
     let answers = {};
@@ -1004,6 +1102,15 @@ const jsonLd = [
         });
       });
 
+      document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedRole = btn.dataset.role;
+          updateSelectedCount();
+        });
+      });
+
       document.getElementById('select-all-btn').addEventListener('click', () => {
         quizData.categories.forEach(cat => {
           const checkbox = document.getElementById(`cat-${cat.id}`);
@@ -1030,7 +1137,8 @@ const jsonLd = [
       filteredQuestions = quizData.questions.filter(q => {
         const categoryMatch = selectedCategories.has(q.category_id);
         const difficultyMatch = selectedDifficulty === 'all' || q.difficulty === selectedDifficulty;
-        return categoryMatch && difficultyMatch;
+        const roleMatch = selectedRole === 'all' || (Array.isArray(q.roles) && q.roles.includes(selectedRole));
+        return categoryMatch && difficultyMatch && roleMatch;
       });
       selectedCountEl.textContent = `${filteredQuestions.length} questions selected`;
       startBtn.disabled = filteredQuestions.length === 0;
@@ -1047,17 +1155,43 @@ const jsonLd = [
       else { previousBestEl.textContent = 'No previous attempt with this setup'; previousBestEl.className = 'previous-best'; }
     }
 
+    function renderQuizParams() {
+      const paramsEl = document.getElementById('quiz-params');
+      const paramsListEl = document.getElementById('quiz-params-list');
+      const totalCategories = quizData.categories.length;
+      const categoryLabel = selectedCategories.size === totalCategories
+        ? 'All categories'
+        : `${selectedCategories.size}/${totalCategories} categories`;
+      const difficultyBtn = document.querySelector(`.difficulty-btn[data-difficulty="${selectedDifficulty}"]`);
+      const difficultyLabel = difficultyBtn ? difficultyBtn.textContent : 'All Levels';
+      const roleBtn = document.querySelector(`.role-btn[data-role="${selectedRole}"]`);
+      const roleLabel = roleBtn ? roleBtn.textContent : 'All Roles';
+      paramsEl.textContent = `${categoryLabel} · ${difficultyLabel} · ${roleLabel}`;
+
+      if (selectedCategories.size === totalCategories) {
+        paramsListEl.textContent = '';
+      } else {
+        const names = quizData.categories
+          .filter(c => selectedCategories.has(c.id))
+          .map(c => c.name)
+          .join(', ');
+        paramsListEl.textContent = names;
+      }
+    }
+
     startBtn.addEventListener('click', () => {
       if (filteredQuestions.length === 0) return;
       filteredQuestions = filteredQuestions.sort(() => Math.random() - 0.5);
       currentQuestionIndex = 0;
       answers = {};
       startTime = Date.now();
+      renderQuizParams();
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'quiz_start', {
           quiz_name: 'claude_code',
           question_count: filteredQuestions.length,
           difficulty: selectedDifficulty,
+          role: selectedRole,
         });
       }
       setupScreen.style.display = 'none';
@@ -1260,7 +1394,7 @@ const jsonLd = [
         heading = 'Go deeper';
         links = [
           { href: '/workflows/', label: 'Workflows', desc: 'advanced patterns and agent flows' },
-          { href: '/cheatsheets/', label: 'Recap Cards', desc: '30+ cheatsheets by topic' },
+          { href: '/cheatsheets/', label: 'Recap Cards', desc: `${cheatsheetCount} cheatsheets by topic` },
           { href: '/releases/', label: 'Version History', desc: 'env vars and config flags reference' },
         ];
       } else {
@@ -1271,7 +1405,13 @@ const jsonLd = [
           { href: '/releases/', label: 'Version History', desc: 'every change since launch' },
         ];
       }
-      cta.innerHTML = `<h4>${heading}</h4><div class="quiz-cta-links">${links.map(l => `<a href="${l.href}" class="quiz-cta-link"><strong>${l.label}</strong><span style="color:var(--text-secondary);font-size:0.85rem;">${l.desc}</span></a>`).join('')}</div>`;
+      const linksHtml = links.map(l => `<a href="${l.href}" class="quiz-cta-link"><strong>${l.label}</strong><span style="color:var(--text-secondary);font-size:0.85rem;">${l.desc}</span></a>`).join('');
+      // Consulting mention only at Expert/Master tier: this audience just proved
+      // deep Claude Code knowledge, the most plausible decision-maker segment.
+      const consultingHtml = percentage >= 80
+        ? `<a href="https://florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
+        : '';
+      cta.innerHTML = `<h4>${heading}</h4><div class="quiz-cta-links">${linksHtml}${consultingHtml}</div>`;
     }
 
     function renderMostMissedQuestions() {
@@ -1332,6 +1472,24 @@ const jsonLd = [
     loadQuestions();
   </script>
 
+  <section class="quiz-faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <h3>Is this the official Claude Code 101 or Claude Cowork certification quiz?</h3>
+        <p>No. This is an independent, open-source practice quiz built from the Claude Code Ultimate Guide, not affiliated with Anthropic's official courses or certification exams. If you landed here searching for official course answers, this quiz still covers the same underlying Claude Code concepts (installation, agents, hooks, MCP, permissions) but with its own question bank.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I filter quiz questions by role or by difficulty?</h3>
+        <p>Yes. Two independent filters combine: difficulty (Junior, Senior, Power User) and role persona (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM). Pick both to get a question pool matched to your day-to-day work with Claude Code.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How many questions and categories does the quiz cover?</h3>
+        <p>473 questions across 17 categories, from installation and slash commands to agents, hooks, MCP servers, security, and team adoption metrics. No account or sign-up required, and results are instant with a shareable score.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="related-links">
     <div class="container">
       <h2>Keep Learning</h2>
@@ -1344,6 +1502,12 @@ const jsonLd = [
     </div>
   </section>
   <style>
+    .quiz-faq { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); }
+    .quiz-faq h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-lg); }
+    .quiz-faq .faq-item { max-width: 720px; margin: 0 auto var(--space-lg); }
+    .quiz-faq .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text-primary); }
+    .quiz-faq .faq-item p { color: var(--text-secondary); line-height: 1.6; }
+
     .related-links { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); background: var(--bg-secondary); }
     .related-links h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-md); }
     .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 640px; margin: 0 auto; }

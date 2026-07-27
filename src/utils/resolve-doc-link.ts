@@ -93,7 +93,7 @@ export interface DocReference {
   file: string
   section?: string
   anchor?: string
-  line?: number
+  line?: string
 }
 
 export function resolveDocUrl(ref: DocReference): string {

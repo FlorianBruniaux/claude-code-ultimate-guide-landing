@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 import { categories } from '../../utils/categories'
 import { resolveDocUrl } from '../../utils/resolve-doc-link'
+import { getRolesForQuestion } from '../../data/quiz-roles'
 
 export const GET: APIRoute = async () => {
   const allQuestions = await getCollection('questions')
@@ -25,6 +26,7 @@ export const GET: APIRoute = async () => {
         id: data.id,
         difficulty: data.difficulty,
         profiles: data.profiles,
+        roles: getRolesForQuestion(data.category_id, data.id),
         category_id: data.category_id,
         question: questionText,
         options: data.options,
