@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { EXAMPLES, type ExampleFile } from '../../data/examples-data'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 export function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
@@ -467,7 +470,7 @@ const jsonLd = [
           View on GitHub
         </a>
         <a href="/examples/" class="btn btn-secondary">
-          ← All 275 templates
+          ← All {stats.templateCount} templates
         </a>
       </div>
     </div>
@@ -533,7 +536,7 @@ const jsonLd = [
       )}
 
       <div class="back-link">
-        <a href="/examples/">← Browse all 275 templates</a>
+        <a href="/examples/">← Browse all {stats.templateCount} templates</a>
       </div>
     </div>
   </main>

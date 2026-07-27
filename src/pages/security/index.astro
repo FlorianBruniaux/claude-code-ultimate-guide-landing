@@ -1,8 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const title = 'AI Agent Security: Threat Intelligence | Claude Code Guide'
-const description = 'AI agent security for Claude Code and MCP. 3,984 skills scanned, 36.82% with flaws. 83 CVEs tracked, attack techniques, and defense tools.'
+const description = `AI agent security for Claude Code and MCP. 3,984 skills scanned, 36.82% with flaws. ${stats.cveCount} CVEs tracked, attack techniques, and defense tools.`
 
 const jsonLd = [
   {
@@ -59,7 +62,7 @@ const jsonLd = [
                 <div class="stat-label">Malicious Payloads</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="83">0</div>
+                <div class="stat-number" data-target={stats.cveCount}>0</div>
                 <div class="stat-label">CVEs Tracked</div>
             </div>
             <div class="stat-card">

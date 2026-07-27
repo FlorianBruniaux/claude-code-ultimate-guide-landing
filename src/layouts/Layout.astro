@@ -6,6 +6,7 @@ import AnnouncementBanner from '../components/global/AnnouncementBanner.astro'
 import Footer from '../components/global/Footer.astro'
 import SearchModal from '../components/global/SearchModal.astro'
 import FeedbackFab from '../components/global/FeedbackFab.astro'
+import { getSiteStats } from '../utils/site-stats'
 
 interface Props {
   title: string
@@ -34,6 +35,7 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const ogImageURL = new URL(image, Astro.site)
 const gaId = 'G-WH1C8CM79E'
+const stats = await getSiteStats()
 ---
 
 <!doctype html>
@@ -126,7 +128,7 @@ const gaId = 'G-WH1C8CM79E'
             "@id": "https://cc.bruniaux.com/#website",
             name: "Claude Code Ultimate Guide",
             url: Astro.site,
-            description: "Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, 275 templates, 401-question quiz, and security threat database with 83 CVEs tracked.",
+            description: `Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, and security threat database with ${stats.cveCount} CVEs tracked.`,
             author: {
               "@type": "Person",
               "@id": "https://cc.bruniaux.com/#author",

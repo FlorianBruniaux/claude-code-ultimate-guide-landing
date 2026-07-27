@@ -1,3 +1,9 @@
+---
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
+---
+
 <!-- Guide Comparison Section -->
 <section class="section guide-comparison" id="guide-comparison">
     <div class="container">
@@ -32,12 +38,12 @@
                     </tr>
                     <tr>
                         <td>Security hardening</td>
-                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database (83 CVEs, 3,984 skills scanned)</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database ({stats.cveCount} CVEs, 3,984 skills scanned)</td>
                         <td><span class="gc-partial">~</span> Basic patterns only</td>
                     </tr>
                     <tr>
                         <td>Test understanding</td>
-                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 401-question quiz</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 473-question quiz</td>
                         <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not available</td>
                     </tr>
                     <tr>
@@ -47,7 +53,7 @@
                     </tr>
                     <tr>
                         <td>Copy-paste ready templates</td>
-                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 275 templates</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> {stats.templateCount} templates</td>
                         <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 200+ templates</td>
                     </tr>
                 </tbody>
@@ -97,7 +103,7 @@
                     </div>
                     <p>The only resource with a structured threat database. Protect your workflow before it's compromised.</p>
                     <div class="gc-gap-metrics">
-                        <span class="gc-metric">83 CVEs tracked</span>
+                        <span class="gc-metric">{stats.cveCount} CVEs tracked</span>
                         <span class="gc-metric">3,984 skills scanned</span>
                     </div>
                 </div>
@@ -124,7 +130,7 @@
                     <div class="gc-gap-metrics">
                         <span class="gc-metric">25K+ lines</span>
                         <span class="gc-metric">16 guides</span>
-                        <span class="gc-metric">275 templates</span>
+                        <span class="gc-metric">{stats.templateCount} templates</span>
                     </div>
                 </div>
 
@@ -133,10 +139,10 @@
                         <span class="gc-gap-icon" aria-hidden="true">&#127891;</span>
                         <h4>Educational Progression</h4>
                     </div>
-                    <p>7-module learning path (8-11h) from installation to multi-agent orchestration, plus self-assessment skill and 401-question quiz.</p>
+                    <p>7-module learning path (8-11h) from installation to multi-agent orchestration, plus self-assessment skill and 473-question quiz.</p>
                     <div class="gc-gap-metrics">
                         <span class="gc-metric">7 modules</span>
-                        <span class="gc-metric">401 quiz questions</span>
+                        <span class="gc-metric">473 quiz questions</span>
                         <span class="gc-metric">/self-assessment skill</span>
                     </div>
                 </div>

@@ -1,3 +1,9 @@
+---
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
+---
+
 <!-- Level Up Section -->
 <section class="section level-up section--alt" id="level-up">
     <div class="container">
@@ -40,7 +46,7 @@
         </div>
 
         <div style="text-align: left; margin-top: var(--space-lg);">
-            <a href="/examples/" class="btn btn-secondary">Browse 275 Templates &rarr;</a>
+            <a href="/examples/" class="btn btn-secondary">Browse {stats.templateCount} Templates &rarr;</a>
         </div>
     </div>
 </section>

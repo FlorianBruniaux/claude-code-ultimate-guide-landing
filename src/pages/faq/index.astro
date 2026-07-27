@@ -1,5 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const title = 'Claude Code FAQ: 20+ Questions Answered (Cost, Privacy, Limits, Setup)'
 const description = 'Answers to the most common Claude Code questions: subscription vs API cost, what data gets sent to Anthropic, context window limits, how to run offline, and setup troubleshooting.'
@@ -113,7 +116,7 @@ const jsonLd = [
         "name": "What are MCP servers in Claude Code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library documentation lookup, Sentry for error tracking, PostgreSQL for database queries. Configure in ~/.claude/mcp.json or .mcp.json per project. Always vet MCP servers before use. 83 CVEs have been identified in the ecosystem."
+          "text": `MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library documentation lookup, Sentry for error tracking, PostgreSQL for database queries. Configure in ~/.claude/mcp.json or .mcp.json per project. Always vet MCP servers before use. ${stats.cveCount} CVEs have been identified in the ecosystem.`
         }
       },
       {
@@ -137,7 +140,7 @@ const jsonLd = [
         "name": "Is Claude Code secure for production use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code requires careful hardening for production. This guide tracks 83 CVE-mapped vulnerabilities and 3,984 skills scanned (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers, enable permission prompts, and never run in production environments without sandboxing."
+          "text": `Claude Code requires careful hardening for production. This guide tracks ${stats.cveCount} CVE-mapped vulnerabilities and 3,984 skills scanned (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers, enable permission prompts, and never run in production environments without sandboxing.`
         }
       },
       {
@@ -266,7 +269,7 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>What is a CLAUDE.md file?</summary>
-          <p>CLAUDE.md is a project memory file that gives Claude persistent context. Place it in your project root with tech stack, coding conventions, and build commands. Claude reads it automatically at session start. There are 3 levels: <code>~/.claude/CLAUDE.md</code> (global), project root (team-shared), and <code>.claude/CLAUDE.local.md</code> (personal, gitignored). See our <a href="/examples/">275 templates</a> for inspiration.</p>
+          <p>CLAUDE.md is a project memory file that gives Claude persistent context. Place it in your project root with tech stack, coding conventions, and build commands. Claude reads it automatically at session start. There are 3 levels: <code>~/.claude/CLAUDE.md</code> (global), project root (team-shared), and <code>.claude/CLAUDE.local.md</code> (personal, gitignored). See our <a href="/examples/">{stats.templateCount} templates</a> for inspiration.</p>
         </details>
         <details class="faq-item">
           <summary>What are Claude Code hooks?</summary>
@@ -282,7 +285,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>What are MCP servers in Claude Code?</summary>
-          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">83 CVEs have been identified</a> in the ecosystem.</p>
+          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">{stats.cveCount} CVEs have been identified</a> in the ecosystem.</p>
         </details>
         <details class="faq-item">
           <summary>What's the difference between Claude Code and Cowork?</summary>
@@ -320,7 +323,7 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Is Claude Code secure for production use?</summary>
-          <p>Claude Code requires careful hardening for production. This guide tracks <strong>83 CVEs</strong> and <strong>3,984 skills scanned</strong> (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/#security">5-minute audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
+          <p>Claude Code requires careful hardening for production. This guide tracks <strong>{stats.cveCount} CVEs</strong> and <strong>3,984 skills scanned</strong> (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/#security">5-minute audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
         </details>
         <details class="faq-item">
           <summary>Is my code sent to Anthropic?</summary>
