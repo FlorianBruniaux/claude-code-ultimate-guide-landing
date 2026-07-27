@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { releases, breakingChanges } from '../../data/releases'
 
 const title = 'Claude Code Version History: Env Vars, Config Flags & Changelog'
@@ -773,4 +774,6 @@ const jsonLd = [
     loadVersion();
     loadChangelog();
   </script>
+
+  <ConsultingCta placement="releases" />
 </Layout>

@@ -15,15 +15,19 @@ import MemorySystems from '../components/landing/MemorySystems.astro'
 import ComparisonTable from '../components/landing/ComparisonTable.astro'
 import Community from '../components/landing/Community.astro'
 import RelatedProjects from '../components/landing/RelatedProjects.astro'
+import ConsultingCta from '../components/global/ConsultingCta.astro'
+import { getSiteStats } from '../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const title = 'Claude Code Guide: Templates, Security, Workflows | Free'
-const description = 'Master Claude Code with 25K+ lines of documentation, 275 templates, 401-question quiz, 83 CVEs tracked, and TDD/SDD/BDD workflows. Free & open-source.'
+const description = `Master Claude Code with 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, ${stats.cveCount} CVEs tracked, and TDD/SDD/BDD workflows. Free & open-source.`
 
 const jsonLd = [
   {
     "@type": "Course",
     "name": "Claude Code Ultimate Guide",
-    "description": "Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, 275 templates, 401-question quiz, security threat database (83 CVEs), and methodology workflows.",
+    "description": `Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, security threat database (${stats.cveCount} CVEs), and methodology workflows.`,
     "url": "https://cc.bruniaux.com/",
     "provider": {
       "@type": "Organization",
@@ -106,4 +110,5 @@ const jsonLd = [
   <ComparisonTable />
   <Community />
   <RelatedProjects />
+  <ConsultingCta placement="homepage" />
 </Layout>

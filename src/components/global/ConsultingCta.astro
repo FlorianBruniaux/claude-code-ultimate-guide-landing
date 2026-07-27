@@ -1,0 +1,85 @@
+---
+/**
+ * Reusable "work with me" CTA, placed on a deliberately short list of
+ * high-traffic / high-intent pages (not sitewide — see Footer.astro for the
+ * discreet always-on version). `placement` feeds utm_content so click-through
+ * can be measured per page in GA4/GSC instead of guessed.
+ */
+interface Props {
+  heading?: string
+  body?: string
+  placement: string
+}
+
+const {
+  heading = "Need this in production, not just in a guide?",
+  body = "I do AI engineering consulting: agent architecture, Claude Code adoption for teams, and getting agentic workflows from demo to production.",
+  placement,
+} = Astro.props
+
+const contactUrl = `https://florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=${placement}`
+---
+
+<div class="consulting-cta">
+  <div class="container">
+    <div class="consulting-cta-inner">
+      <div class="consulting-cta-text">
+        <h3>{heading}</h3>
+        <p>{body}</p>
+      </div>
+      <div class="consulting-cta-actions">
+        <a href={contactUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Let's talk &rarr;</a>
+        <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener noreferrer" class="consulting-cta-github">See the code on GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .consulting-cta {
+    padding: var(--space-2xl) 0;
+    border-top: 1px solid var(--border);
+  }
+  .consulting-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+  }
+  .consulting-cta-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+    color: var(--text-primary);
+  }
+  .consulting-cta-text p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 52ch;
+  }
+  .consulting-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .consulting-cta-github {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .consulting-cta-github:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  @media (max-width: 640px) {
+    .consulting-cta-inner { flex-direction: column; align-items: flex-start; }
+    .consulting-cta-actions { width: 100%; }
+  }
+</style>

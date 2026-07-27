@@ -1,9 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { COMPARISON_TOOLS } from '../../data/compare-data'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const title = 'Claude Code vs Copilot vs Cursor | AI Tools Comparison'
-const description = 'Claude Code vs Copilot vs Cursor: objective comparison with workflows. 275 templates, 401-question quiz, 83 CVEs tracked. Discover which AI tools complement each other.'
+const description = `Claude Code vs Copilot vs Cursor: objective comparison with workflows. ${stats.templateCount} templates, 473-question quiz, ${stats.cveCount} CVEs tracked. Discover which AI tools complement each other.`
 
 const jsonLd = [
   {
@@ -111,12 +115,12 @@ const jsonLd = [
             </tr>
             <tr>
               <td>Security hardening</td>
-              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database (83 CVEs, 3,984 skills scanned)</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database ({stats.cveCount} CVEs, 3,984 skills scanned)</td>
               <td><span class="gc-partial">~</span> Basic patterns only</td>
             </tr>
             <tr>
               <td>Test understanding</td>
-              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 401-question quiz</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 473-question quiz</td>
               <td><span class="gc-no" aria-hidden="true">&#10007;</span> Not available</td>
             </tr>
             <tr>
@@ -126,7 +130,7 @@ const jsonLd = [
             </tr>
             <tr>
               <td>Copy-paste ready templates</td>
-              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 275 templates</td>
+              <td><span class="gc-yes" aria-hidden="true">&#10003;</span> {stats.templateCount} templates</td>
               <td><span class="gc-yes" aria-hidden="true">&#10003;</span> 200+ templates</td>
             </tr>
           </tbody>
@@ -819,4 +823,5 @@ const jsonLd = [
     });
   </script>
 
+  <ConsultingCta placement="compare" />
 </Layout>

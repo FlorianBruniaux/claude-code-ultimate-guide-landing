@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { WHITEPAPERS, TOTAL_PAGES, PDF_BASE_URL } from '../../data/whitepapers-data.ts'
 
 const title = 'Ebooks: 13 Whitepapers | Claude Code'
@@ -326,6 +327,7 @@ const profiles = [
 
   </div>
 
+  <ConsultingCta placement="whitepapers" />
 </Layout>
 
 <style>
