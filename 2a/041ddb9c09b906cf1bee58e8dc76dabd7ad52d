@@ -1,0 +1,27 @@
+src/content/cheatsheets/m08-agents-custom.md
+  s_1e75f1a9e26136::t_ef7f5bd7548f48 3
+src/content/cheatsheets/t03-permission-modes.md
+  s_1e75f1a9e26136::t_de5d6fd47ef65c 3
+src/content/cheatsheets/t04-permissions-glob-patterns.md
+  s_1e75f1a9e26136::t_a839f5f350b78a 3
+src/content/cheatsheets/t06-settings-json.md
+  s_1e75f1a9e26136::t_8956a91c551550 3
+src/data/glossary-data.ts
+  s_1e75f1a9e26136::t_3058d9bfffc6a6 28,35,58,97,99,109,178,180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "2a041ddb9c09b906cf1bee58e8dc76dabd7ad52d",
+  "prompts": {},
+  "sessions": {
+    "s_1e75f1a9e26136": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b16cf5a9-e8a1-43b3-b5bc-8dab6f60735a",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
