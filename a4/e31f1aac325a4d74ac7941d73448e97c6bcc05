@@ -1,0 +1,243 @@
+package.json
+  s_12f6f20dc85bf2::t_c39527ad05c1a3 14
+scripts/port-cli-questions.mjs
+  s_12f6f20dc85bf2::t_517bd2ba39d189 1-192
+src/content/questions/02-core-concepts/022-what-is-the-bmad-big-model-agentic-development.md
+  s_ac0334b288fed5::t_41f2bef9bf0369 1-24
+src/content/questions/02-core-concepts/023-what-is-the-primary-criterion-for-choosing-fdd.md
+  s_ac0334b288fed5::t_b1d623f239a639 1-24
+src/content/questions/03-memory-settings/030-what-are-the-three-scopes-for-claude-code.md
+  s_678d026c6fc78a::t_3b464c9ee117b5 1-24
+src/content/questions/03-memory-settings/031-what-is-managed-settings-d-and-what-governance.md
+  s_ac0334b288fed5::t_1a6dfc524585a2 1-24
+src/content/questions/03-memory-settings/032-what-is-claude-plugin-data-used-for-in.md
+  s_7b6fa8c588bf3b::t_b70b2805254ae3 1-23
+src/content/questions/03-memory-settings/033-what-are-the-three-hard-limits-for-the.md
+  s_7b6fa8c588bf3b::t_02abde44e0ca56 1-24
+src/content/questions/03-memory-settings/034-what-is-the-correct-approach-when-memory-md.md
+  s_d2ca25479e44e9::t_2124cfa99094de 1-24
+src/content/questions/05-skills/025-in-the-skills-2-0-taxonomy-what-distinguishes.md
+  s_ac0334b288fed5::t_55fca99b6d176f 1-24
+src/content/questions/05-skills/026-what-are-the-three-phases-of-the-skill.md
+  s_ac0334b288fed5::t_db6544f1f18ae4 1-24
+src/content/questions/05-skills/027-what-are-the-three-skill-eval-approaches-and.md
+  s_ac0334b288fed5::t_af5d7aea28dd42 1-23
+src/content/questions/06-commands/020-how-do-you-invoke-a-custom-command-named.md
+  s_12f6f20dc85bf2::t_df49504dea30f7 1-32
+src/content/questions/06-commands/021-you-run-how-does-claude-code-execute-this.md
+  s_12f6f20dc85bf2::t_01c3ac04d4e0cd 1-24
+src/content/questions/06-commands/022-what-is-the-key-difference-between-and-starting.md
+  s_12f6f20dc85bf2::t_c81318690b083b 1-24
+src/content/questions/06-commands/023-what-does-the-frontmatter-field-do-in-a.md
+  s_12f6f20dc85bf2::t_e7b3b6ada819a4 1-23
+src/content/questions/06-commands/024-among-the-guide-s-example-commands-and-which.md
+  s_12f6f20dc85bf2::t_6c518944c1a667 1-24
+src/content/questions/06-commands/025-you-need-deterministic-ci-cd-execution-unaffected-by.md
+  s_ac0334b288fed5::t_fa4fc4f8fb16a7 1-23
+src/content/questions/06-commands/026-what-is-the-purpose-of-the-cli-flag.md
+  s_ac0334b288fed5::t_1cbeb16a56f410 1-23
+src/content/questions/06-commands/027-when-running-what-does-the-flag-do.md
+  s_12c3534ac32c1a::t_f577b5feeccbd5 1-24
+src/content/questions/07-hooks/024-what-json-structure-should-a-hook-return-to.md
+  s_12f6f20dc85bf2::t_ef0aeefa83f864 1-37
+src/content/questions/07-hooks/025-what-is-the-default-timeout-for-hooks-in.md
+  s_12f6f20dc85bf2::t_973f8415296b18 1-35
+src/content/questions/07-hooks/026-a-pretooluse-hook-returns-what-happens-next-and.md
+  s_12f6f20dc85bf2::t_72d5689b23f620 1-23
+src/content/questions/07-hooks/027-when-multiple-pretooluse-hooks-return-conflicting-permission-decisions.md
+  s_12f6f20dc85bf2::t_2564ea996e2458 1-24
+src/content/questions/07-hooks/028-what-distinguishes-session-scoped-hooks-from-hooks-defined.md
+  s_12f6f20dc85bf2::t_e2818620c0c39b 1-24
+src/content/questions/07-hooks/029-which-paths-are-always-protected-and-prompt-for.md
+  s_678d026c6fc78a::t_05b594d9db37d6 1-23
+src/content/questions/07-hooks/030-what-does-the-hook-event-fire-during-and.md
+  s_12f6f20dc85bf2::t_efec24f5e83c9e 1-24
+src/content/questions/07-hooks/031-what-is-the-main-performance-benefit-of-using.md
+  s_ac0334b288fed5::t_a009774135686e 1-23
+src/content/questions/07-hooks/032-what-does-the-hook-event-allow-you-to.md
+  s_12f6f20dc85bf2::t_5cdfaac805abb5 1-24
+src/content/questions/08-mcp-servers/026-where-is-the-user-scope-mcp-configuration-stored.md
+  s_12f6f20dc85bf2::t_a14ef0bc292e59 1-31
+src/content/questions/08-mcp-servers/027-what-syntax-does-claude-code-use-for-environment.md
+  s_12f6f20dc85bf2::t_b52699d9ff369a 1-38
+src/content/questions/09-advanced-patterns/040-how-do-you-enable-agent-teams-in-claude.md
+  s_eaa7b024c41dd5::t_dced5e30a8cc97 1-28
+src/content/questions/09-advanced-patterns/041-when-should-you-use-agent-teams-instead-of.md
+  s_12f6f20dc85bf2::t_1b4191098b88a8 1-29
+src/content/questions/09-advanced-patterns/042-what-is-the-main-limitation-of-agent-teams.md
+  s_ac0334b288fed5::t_2edab24218eb58 1-31
+src/content/questions/09-advanced-patterns/043-what-minimum-claude-model-is-required-for-agent.md
+  s_12f6f20dc85bf2::t_30c0e48c9a2af8 1-31
+src/content/questions/09-advanced-patterns/044-in-agent-teams-architecture-what-is-the-role.md
+  s_12f6f20dc85bf2::t_af23fa1493a543 1-30
+src/content/questions/09-advanced-patterns/045-which-production-metric-was-validated-for-agent-teams.md
+  s_12f6f20dc85bf2::t_2d0043d451f50c 1-29
+src/content/questions/09-advanced-patterns/046-what-is-the-typical-token-cost-multiplier-for.md
+  s_12f6f20dc85bf2::t_5a6fe1dd44f676 1-32
+src/content/questions/09-advanced-patterns/047-you-need-to-rename-a-function-across-50.md
+  s_eaa7b024c41dd5::t_b403d2c7459e88 1-32
+src/content/questions/09-advanced-patterns/048-what-does-in-an-agent-s-yaml-frontmatter.md
+  s_134cd6514f1297::t_b143da6bca3b48 1-37
+src/content/questions/09-advanced-patterns/049-what-does-the-parameter-actually-control-in-opus.md
+  s_12f6f20dc85bf2::t_3785966f53fab5 1-37
+src/content/questions/09-advanced-patterns/050-what-is-the-observable-impact-of-on-tool.md
+  s_12f6f20dc85bf2::t_95f10f7e9eafad 1-35
+src/content/questions/09-advanced-patterns/051-in-the-planner-implementer-agent-pattern-which-model.md
+  s_12f6f20dc85bf2::t_c771faaae8d6e5 1-35
+src/content/questions/09-advanced-patterns/052-what-does-max-iterations-8-control-in-agent.md
+  s_678d026c6fc78a::t_698929b85813b8 1-23
+src/content/questions/09-advanced-patterns/053-in-the-dedicated-reviewer-teammate-pattern-what-is.md
+  s_12c3534ac32c1a::t_48094e31ac9e92 1-23
+src/content/questions/09-advanced-patterns/054-what-is-the-why-what-structure-in-the.md
+  s_12c3534ac32c1a::t_34039ee6dc1c60 1-23
+src/content/questions/09-advanced-patterns/055-how-does-claude-code-structure-its-cache-prefix.md
+  s_12f6f20dc85bf2::t_808905255aef74 1-23
+src/content/questions/09-advanced-patterns/056-what-is-the-20-block-lookback-in-prompt.md
+  s_12f6f20dc85bf2::t_2f1d7e7ee08402 1-23
+src/content/questions/09-advanced-patterns/057-in-the-rpi-workflow-research-plan-implement-what.md
+  s_ac0334b288fed5::t_29e8ecdbb847bc 1-23
+src/content/questions/09-advanced-patterns/058-what-is-the-prompt-caching-minimum-token-threshold.md
+  s_12f6f20dc85bf2::t_8bf04b2e398481 1-23
+src/content/questions/10-reference/028-what-keyboard-shortcut-enters-plan-mode-toggles-plan.md
+  s_12f6f20dc85bf2::t_5d4fac8c458432 1-31
+src/content/questions/10-reference/029-what-keyboard-shortcut-cancels-the-current-operation.md
+  s_12f6f20dc85bf2::t_a8526373585127 1-32
+src/content/questions/11-learning-with-ai/023-what-is-the-velocity-trap-in-ai-augmented.md
+  s_12f6f20dc85bf2::t_9d0d4109731b82 1-25
+src/content/questions/11-learning-with-ai/024-what-is-the-3-metrics-5-minutes-monday.md
+  s_12f6f20dc85bf2::t_63b29885e24e8d 1-25
+src/content/questions/12-architecture-internals/018-what-is-context-rot-and-what-makes-it.md
+  s_ac0334b288fed5::t_2219c630affeb0 1-23
+src/content/questions/12-architecture-internals/019-what-is-the-key-difference-between-jit-just.md
+  s_12c3534ac32c1a::t_e2c849c81f1ef1 1-22
+src/content/questions/12-architecture-internals/020-what-is-mmd-maximum-mean-discrepancy-used-for.md
+  s_12c3534ac32c1a::t_0e31e61a272c05 1-22
+src/content/questions/12-architecture-internals/021-what-is-the-goldilocks-altitude-problem-for-claude.md
+  s_12c3534ac32c1a::t_067ca3f93d050e 1-23
+src/content/questions/14-privacy-observability/017-what-does-claude-code-subprocess-env-scrub-do.md
+  s_ac0334b288fed5::t_65342ed692e2c9 1-24
+src/content/questions/14-privacy-observability/018-what-does-sandbox-failifunavailable-control-in-claude-code.md
+  s_ac0334b288fed5::t_46429f145343b8 1-24
+src/content/questions/14-privacy-observability/019-what-is-the-x-claude-code-session-id.md
+  s_ac0334b288fed5::t_fdfa3890cc9375 1-23
+src/content/questions/15-ai-ecosystem/020-what-is-google-antigravity-and-how-does-it.md
+  s_ac0334b288fed5::t_076d122ff16330 1-24
+src/content/questions/15-ai-ecosystem/021-what-does-research-show-about-agents-md-compound.md
+  s_12c3534ac32c1a::t_30648df43216f2 1-23
+src/content/questions/17-team-metrics/001-what-are-the-four-core-dora-metrics.md
+  s_12f6f20dc85bf2::t_09be3019692240 1-26
+src/content/questions/17-team-metrics/003-what-major-methodological-change-did-the-2025-dora.md
+  s_12f6f20dc85bf2::t_06fe55200d7713 1-25
+src/content/questions/17-team-metrics/004-what-are-the-5-dimensions-of-the-space.md
+  s_12f6f20dc85bf2::t_fbffea81b6bc93 1-25
+src/content/questions/17-team-metrics/005-what-is-the-velocity-trap-in-ai-augmented.md
+  s_12f6f20dc85bf2::t_e1cb28253f67f8 1-26
+src/content/questions/17-team-metrics/006-what-is-the-warning-signal-when-ai-pr.md
+  s_12f6f20dc85bf2::t_5bad6f6ebbdd89 1-24
+src/content/questions/17-team-metrics/007-what-is-the-bug-escape-rate-formula-and.md
+  s_12f6f20dc85bf2::t_397a33d0663bd9 1-25
+src/content/questions/17-team-metrics/008-which-metric-should-replace-sprint-velocity-and-why.md
+  s_12f6f20dc85bf2::t_ad38b6ff77a882 1-26
+src/content/questions/17-team-metrics/009-what-is-the-4-question-test-for-deciding.md
+  s_12f6f20dc85bf2::t_e9bcb2765d3d65 1-25
+src/content/questions/17-team-metrics/010-what-is-the-recommended-metrics-tooling-difference-between.md
+  s_12f6f20dc85bf2::t_d480c9343521ad 1-26
+src/content/questions/17-team-metrics/011-what-does-the-dora-metric-most-at-risk.md
+  s_12f6f20dc85bf2::t_29208b730800ac 1-24
+src/content/questions/17-team-metrics/012-what-is-the-recommended-3-phase-implementation-roadmap.md
+  s_12f6f20dc85bf2::t_bede6fba4f38d3 1-25
+src/data/quiz-roles.test.ts
+  s_12f6f20dc85bf2::t_66982bc0e44190 1-66
+src/data/quiz-roles.ts
+  s_12f6f20dc85bf2::t_caf2c06890ac23 1-99
+src/pages/api/questions.json.ts
+  s_12f6f20dc85bf2::t_f37bf69fca85e4 5,29
+src/pages/quiz/index.astro
+  s_40ad2421407764::t_f5cde74fc1abd2 3-6,9,15,21,27-55,64-65,95-103,109-110,283-316,404-422,976,981,1105-1113,1140-1141,1158-1181,1188,1194,1397,1408-1414,1475-1492,1505-1510
+src/pages/sitemap/index.astro
+  s_12c3534ac32c1a::t_9a6f659b671bf0 27
+src/utils/categories.ts
+  s_12f6f20dc85bf2::t_e096e6f25fd312 25
+src/utils/resolve-doc-link.ts
+  s_12f6f20dc85bf2::t_83539d0ef6a7c3 96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "a4e31f1aac325a4d74ac7941d73448e97c6bcc05",
+  "prompts": {},
+  "sessions": {
+    "s_12c3534ac32c1a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7ef50c6c-224e-4614-a0e9-735339eb30c7",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_12f6f20dc85bf2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d69103fd-65ae-49aa-9789-1bda66248db0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_134cd6514f1297": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7484bb11-dfd6-4f41-ab63-27c63c19764d",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_40ad2421407764": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e228545-a482-4baa-ae6d-2de573c746d7",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_678d026c6fc78a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48ae19de-ed31-4ddb-992b-17432937c2fe",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7b6fa8c588bf3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "354298a2-cae4-4b90-a92a-b8e616f5f2be",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ac0334b288fed5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3298e97-02bb-45fc-ab93-6a257a4ea74d",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d2ca25479e44e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5664706-7ae3-49cb-8424-b9057dcab289",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_eaa7b024c41dd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a48d0498-cb25-4b2d-ae23-61afb07f378f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
