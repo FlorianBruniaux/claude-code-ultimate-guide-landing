@@ -1,6 +1,6 @@
 ---
 title: "Settings.json — Complete Structure"
-subtitle: "All configuration keys and their scope"
+subtitle: "Every settings.json key explained: permissions, hooks, env, model, plus the 3-file scope hierarchy"
 cardNumber: T06
 category: Technical
 difficulty: intermediate

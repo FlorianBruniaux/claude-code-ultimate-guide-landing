@@ -1,6 +1,6 @@
 ---
 title: "Permissions: Glob Patterns & Whitelist"
-subtitle: "Precisely controlling accessible tools with glob patterns"
+subtitle: "Exact glob syntax for permissions.allow/deny, the tool-qualified format (file_path:*.env), and 3 autoApproveTools levels"
 cardNumber: T04
 category: Technical
 difficulty: intermediate

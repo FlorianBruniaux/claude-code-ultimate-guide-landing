@@ -1,6 +1,6 @@
 ---
 title: "Permission Modes"
-subtitle: "Tool access control — from safest to most permissive"
+subtitle: "The 5 Claude Code permission modes ranked: Default, Auto-accept edits, Auto-accept all, Full bypass, Auto"
 cardNumber: T03
 category: Technical
 difficulty: beginner

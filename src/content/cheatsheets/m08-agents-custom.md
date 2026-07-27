@@ -1,6 +1,6 @@
 ---
 title: "Custom Agents"
-subtitle: "Create specialized sub-agents to delegate tasks"
+subtitle: "Subagent YAML frontmatter reference: every field (name, description, model, tools, memory) with a working example"
 cardNumber: M08
 category: Methodology
 difficulty: intermediate
