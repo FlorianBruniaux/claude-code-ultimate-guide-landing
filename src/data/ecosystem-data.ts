@@ -2,6 +2,7 @@
  * Third-party ecosystem tools data for Claude Code
  * Source: guide/ecosystem/third-party-tools.md
  * Last synced: 2026-05-25
+ * Star counts last verified: 2026-07-27 (via GitHub API)
  */
 
 export interface EcosystemTool {
@@ -60,7 +61,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'ccusage',
     category: 'token-tracking',
     description:
-      'The most mature cost tracking tool for Claude Code. 14.5k+ stars. Parses local session data to produce cost reports by day, month, session, or 5-hour billing window.',
+      'The most mature cost tracking tool for Claude Code. 17.5k+ stars (verified 2026-07-27). Parses local session data to produce cost reports by day, month, session, or 5-hour billing window.',
     source_url: 'https://www.npmjs.com/package/ccusage',
     website_url: 'https://ccusage.com',
     install: 'bunx ccusage',
@@ -90,7 +91,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Claude-Code-Usage-Monitor',
     category: 'token-tracking',
     description:
-      'Real-time terminal usage monitor with ML-based predictions and warnings. 8k+ stars. Shows live token consumption, burn rate, and forecasts potential overages before they happen.',
+      'Real-time terminal usage monitor with ML-based predictions and warnings. 8.5k+ stars (verified 2026-07-27). Shows live token consumption, burn rate, and forecasts potential overages before they happen.',
     source_url: 'https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor',
     install: 'pip install claude-code-usage-monitor',
     language: 'Python',
@@ -172,7 +173,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'RTK (Rust Token Killer)',
     category: 'token-tracking',
     description:
-      'A CLI proxy that filters command outputs before they reach Claude\'s context. 53.5k+ stars. 60-90% token reduction on common dev operations. Single Rust binary, zero dependencies.',
+      'A CLI proxy that filters command outputs before they reach Claude\'s context. 73.5k+ stars (verified 2026-07-27, was 53.5k+). 60-90% token reduction on common dev operations. Single Rust binary, zero dependencies.',
     source_url: 'https://github.com/rtk-ai/rtk',
     website_url: 'https://www.rtk-ai.app/',
     install: 'brew install rtk-ai/tap/rtk',
@@ -204,7 +205,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'claude-code-viewer',
     category: 'session-management',
     description:
-      'A web-based UI for browsing and reading Claude Code conversation history (JSONL files). 1.2k+ stars. Project browser with full session display and real-time updates.',
+      'A web-based UI for browsing and reading Claude Code conversation history (JSONL files). 1.3k+ stars (verified 2026-07-27). Project browser with full session display and real-time updates.',
     source_url: 'https://github.com/d-kimuson/claude-code-viewer',
     install: 'npx @kimuson/claude-code-viewer',
     language: 'TypeScript',
@@ -232,7 +233,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Entire CLI',
     category: 'session-management',
     description:
-      'Agent-native platform for Git-integrated session capture with rewindable checkpoints and governance layer. 4.4k+ stars. Founded by Thomas Dohmke (ex-GitHub CEO), $60M funding.',
+      'Agent-native platform for Git-integrated session capture with rewindable checkpoints and governance layer. 4.9k+ stars (verified 2026-07-27, was 4.4k+). Founded by Thomas Dohmke (ex-GitHub CEO), $60M funding.',
     source_url: 'https://github.com/entireio/cli',
     website_url: 'https://entire.io',
     install: 'See entire.io (early access)',
@@ -371,7 +372,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Toad',
     category: 'alternative-ui',
     description:
-      'A universal terminal frontend for AI coding agents by Will McGugan (creator of Rich & Textual). 3.1k+ stars. Supports Claude Code, Gemini CLI, OpenHands, Codex, and 12+ agents via Agent Client Protocol (ACP).',
+      'A universal terminal frontend for AI coding agents by Will McGugan (creator of Rich & Textual). 3.3k+ stars (verified 2026-07-27). Supports Claude Code, Gemini CLI, OpenHands, Codex, and 12+ agents via Agent Client Protocol (ACP).',
     source_url: 'https://github.com/batrachianai/toad',
     install: 'curl -fsSL batrachian.ai/install | sh',
     language: 'Python',
@@ -474,7 +475,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'multiclaude',
     category: 'multi-agent',
     description:
-      'tmux + git worktrees for spawning multiple Claude Code instances in parallel. 550+ stars. Simple, no-frills approach to parallel agents with context window analyzer.',
+      'tmux + git worktrees for spawning multiple Claude Code instances in parallel. 559 stars (verified 2026-07-27). Simple, no-frills approach to parallel agents with context window analyzer.',
     source_url: 'https://github.com/dlorenc/multiclaude',
     install: 'See GitHub README',
     language: 'Shell',
@@ -483,7 +484,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     features: [
       'tmux integration for multiple terminals',
       'Git worktree isolation per agent',
-      '550+ stars, battle-tested community tool',
+      '559 stars, battle-tested community tool',
       'No extra runtime dependency beyond tmux',
       'Context window analyzer: per-category token breakdown (claude-md, tool-output, thinking, etc.)',
     ],
@@ -515,7 +516,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     limitations: [
       'Alpha status. Templates may require tuning for your specific stack.',
       'Complexity overhead: overkill for simple single-agent tasks',
-      '66 stars, young project with limited production feedback',
+      '80 stars (2026-07-27), young project with limited production feedback',
     ],
     when_to_use:
       'Large codebases where specialist parallelization adds real value: security audits, cross-domain migrations, comprehensive doc generation. Not suited for focused single-task work.',
@@ -550,7 +551,7 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'Ruflo (formerly claude-flow)',
     category: 'external-orchestration',
     description:
-      'The most adopted external orchestration framework for Claude Code. 18.9k stars. Transforms it into a multi-agent platform with hierarchical swarms, 60+ specialized agent pools, and SQLite-backed persistent memory.',
+      'The most adopted external orchestration framework for Claude Code. 66.3k stars (verified 2026-07-27, was 18.9k). Transforms it into a multi-agent platform with hierarchical swarms, 60+ specialized agent pools, and SQLite-backed persistent memory.',
     source_url: 'https://github.com/ruvnet/ruflo',
     install: 'npx ruflo@latest init --wizard',
     language: 'TypeScript',
@@ -753,5 +754,5 @@ export const ECOSYSTEM_META = {
   total_tools: ECOSYSTEM_TOOLS.length,
   categories: Object.keys(CATEGORY_LABELS).length,
   languages: [...new Set(ECOSYSTEM_TOOLS.map((t) => t.language))].length,
-  last_verified: 'May 2026',
+  last_verified: 'Jul 27, 2026',
 };

@@ -14,7 +14,7 @@ const jsonLd = [
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-05-23",
-    "dateModified": "2026-05-23",
+    "dateModified": "2026-07-27",
     "inLanguage": "en",
     "keywords": "Claude Code memory, CLAUDE.md, Auto Memory, Auto Dream, claude-mem, agentmemory, ICM, Kairn, doobidoo, Mem0, cross-session memory, agent memory"
   }
@@ -78,7 +78,7 @@ const nativeTools = [
 const crossSessionTools = [
   {
     name: "claude-mem",
-    stars: "26.5K",
+    stars: "89K",
     license: "AGPL-3.0",
     approach: "Hooks-based auto-capture",
     storage: "SQLite + optional Chroma",
@@ -90,7 +90,7 @@ const crossSessionTools = [
   },
   {
     name: "agentmemory",
-    stars: "16K",
+    stars: "26K",
     license: "MIT",
     approach: "BM25 + Vector + Graph RRF fusion",
     storage: "Local (SQLite + FAISS)",
@@ -315,6 +315,7 @@ const decisionRules = [
             </tbody>
           </table>
         </div>
+        <p class="stars-verified">Star counts verified Jul 27, 2026 via the GitHub API.</p>
 
         <div class="tool-notes">
           <p><strong>Start with:</strong> claude-mem if you want automatic capture with no manual calls and can afford ~$5-15/month in API costs. agentmemory if you want local-only with the highest benchmark recall (95.2% R@5 on LongMemEval-S). ICM if you need both episodic memory and a typed relation graph (<code>brew install icm</code>).</p>
@@ -597,6 +598,7 @@ const decisionRules = [
 .tool-stars { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
 .recall-cell { font-size: 0.8rem; }
 .tool-table code { font-size: 0.78rem; background: var(--bg-tertiary); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+.stars-verified { font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin: 0.5rem 0 1rem; }
 .tool-notes {
   background: var(--bg-tertiary); border-radius: var(--border-radius-md);
   padding: 1rem 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;

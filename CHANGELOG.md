@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Documentation
+
+- **GitHub star counts resynced from the guide's live API refresh (2026-07-27)** (`src/data/ecosystem-data.ts`, `src/data/glossary-data.ts`, `src/pages/memory-systems/index.astro`, `src/pages/ecosystem/mcp-vs-cli.astro`, `src/pages/context-engineering/index.astro`, `src/components/landing/MemorySystems.astro`, `src/components/landing/TokenOptimization.astro`): every hardcoded star count on the landing (RTK, ccusage, claude-mem, agentmemory, ruflo, and others) was updated to match the guide repo's live `gh api` refresh, following the mandatory guide-first sync order. Added a visible "star counts verified" note on the memory-systems page and its `MemorySystems.astro` card.
+
 ### Added
 
 - **Quiz "View in documentation" links resolve to cc.bruniaux.com** (`src/utils/resolve-doc-link.ts`, `src/pages/api/questions.json.ts`, `src/pages/quiz/index.astro`): The quiz "View in documentation" button now points at the published guide on `cc.bruniaux.com/guide/` when the referenced file has a page there with a matching heading anchor, instead of always sending users to the raw GitHub source. The `/api/questions.json` endpoint computes a `doc_url` per question at build time via a shared resolver that mirrors `prepare-guide-content.mjs` (chapter-split lookup for `ultimate-guide.md`, flattened `core/security/ecosystem/roles/ops` subdirs, `workflows/`), recomputing the site anchor with the rehype-slug slugger rather than reusing the stored GitHub-style anchor. Anything not published (or with an anchor that matches no real heading) still falls back to the GitHub blob URL.
