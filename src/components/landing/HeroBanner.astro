@@ -1,6 +1,9 @@
 ---
 import HeroBlogPosts from './HeroBlogPosts.astro'
 import HeroQuickGuides from './HeroQuickGuides.astro'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 ---
 
 <!-- Hero Section -->
@@ -12,7 +15,7 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 <h1 class="hero-title">Claude Code Ultimate Guide</h1>
             </div>
             <p class="hero-tagline">Learn the WHY behind Claude Code, not just the config</p>
-            <p class="hero-stats">Security-first (83 CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; 275 templates &bull; 401-question quiz &bull; Decision frameworks</p>
+            <p class="hero-stats">Security-first ({stats.cveCount} CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; {stats.templateCount} templates &bull; {stats.quizQuestionCount}-question quiz &bull; Decision frameworks</p>
 
             <div class="hero-ctas">
                 <a href="https://cc.bruniaux.com/guide/ultimate-guide/" class="btn btn-primary">
@@ -27,12 +30,12 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 <a href="/quiz/" class="hero-nav-card">
                     <span class="hero-nav-icon">🎯</span>
                     <span class="hero-nav-label">Quiz</span>
-                    <span class="hero-nav-desc">Test your knowledge</span>
+                    <span class="hero-nav-desc">{stats.quizQuestionCount} questions</span>
                 </a>
                 <a href="/cheatsheets/" class="hero-nav-card">
                     <span class="hero-nav-icon">📋</span>
                     <span class="hero-nav-label">Recap Cards</span>
-                    <span class="hero-nav-desc">30+ topic cheatsheets</span>
+                    <span class="hero-nav-desc">{stats.cheatsheetCount} topic cheatsheets</span>
                 </a>
                 <a href="/whitepapers/" class="hero-nav-card">
                     <span class="hero-nav-icon">📄</span>
@@ -42,7 +45,7 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 <a href="/examples/" class="hero-nav-card">
                     <span class="hero-nav-icon">⚡</span>
                     <span class="hero-nav-label">Examples</span>
-                    <span class="hero-nav-desc">275 real workflows</span>
+                    <span class="hero-nav-desc">{stats.templateCount} real workflows</span>
                 </a>
             </div>
 
@@ -51,14 +54,6 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                     <span class="badge-label">stars</span>
                     <span class="badge-value">1337</span>
                 </a>
-                <span class="badge badge-templates">
-                    <span class="badge-label">templates</span>
-                    <span class="badge-value">275</span>
-                </span>
-                <span class="badge badge-quiz">
-                    <span class="badge-label">quiz</span>
-                    <span class="badge-value">401 questions</span>
-                </span>
                 <a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener" class="badge badge-awesome">
                     <span class="badge-label">awesome</span>
                     <span class="badge-value">featured</span>
@@ -87,17 +82,6 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
                 <HeroBlogPosts />
                 <HeroQuickGuides />
             </div>
-
-            <nav class="hero-quick-nav" aria-label="Quick navigation">
-                <span class="quick-nav-label">Already know what you need?</span>
-                <a href="/cheatsheet/">Cheat Sheet</a>
-                <span class="quick-nav-sep" aria-hidden="true">|</span>
-                <a href="/examples/">275 Templates</a>
-                <span class="quick-nav-sep" aria-hidden="true">|</span>
-                <a href="/quiz/">Quiz</a>
-                <span class="quick-nav-sep" aria-hidden="true">|</span>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">MCP Server</a>
-            </nav>
         </div>
     </div>
 </section>
@@ -373,37 +357,6 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
 .hero-nav-desc {
     font-size: 0.7rem;
     color: var(--text-muted);
-}
-
-/* Quick navigation */
-.hero-quick-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-
-.quick-nav-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.hero-quick-nav a {
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.hero-quick-nav a:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
-}
-
-.quick-nav-sep {
-    color: var(--text-muted);
-    font-size: 0.75rem;
 }
 
 .stat-value {
