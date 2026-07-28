@@ -550,9 +550,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-tldr",
     "title": "Memory Systems Tldr",
-    "keywords": "memory systems tldr guide core memory systems md#1 tldr the three track model",
+    "keywords": "memory systems tldr guide core memory systems md#1 tldr three track model",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#1-tldr-the-three-track-model",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#1-tldr-three-track-model",
     "source": "guide"
   },
   {
@@ -566,25 +566,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-claudemd",
     "title": "Memory Systems Claudemd",
-    "keywords": "memory systems claudemd guide core memory systems md#21 claudemd three levels",
+    "keywords": "memory systems claudemd guide core memory systems md#21 claudemd three levels memory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#21-claudemd-three-levels",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#21-claudemd-three-levels-of-memory",
     "source": "guide"
   },
   {
     "id": "guide-memory-systems-auto-memory",
     "title": "Memory Systems Auto Memory",
-    "keywords": "memory systems auto memory guide core memory systems md#22 auto memory v21594",
+    "keywords": "memory systems auto memory guide core memory systems md#22 auto memory v2159",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#22-auto-memory-v21594",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#22-auto-memory-v2159",
     "source": "guide"
   },
   {
     "id": "guide-memory-systems-auto-dream",
     "title": "Memory Systems Auto Dream",
-    "keywords": "memory systems auto dream guide core memory systems md#23 auto dream background consolidation",
+    "keywords": "memory systems auto dream guide core memory systems md#23 auto dream memory consolidation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#23-auto-dream-background-consolidation",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#23-auto-dream-memory-consolidation",
     "source": "guide"
   },
   {
@@ -646,9 +646,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-openMemory",
     "title": "Memory Systems OpenMemory",
-    "keywords": "memory systems openmemory guide core memory systems md#36 openmemory mcp mem0ai",
+    "keywords": "memory systems openmemory guide core memory systems md#36 openmemory mcp",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#36-openmemory-mcp-mem0ai",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#36-openmemory-mcp",
     "source": "guide"
   },
   {
@@ -702,9 +702,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-team-gap",
     "title": "Memory Systems Team Gap",
-    "keywords": "memory systems team gap guide core memory systems md#47 the structural team memory gap",
+    "keywords": "memory systems team gap guide core memory systems md#47 why the team gap structural",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#47-the-structural-team-memory-gap",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#47-why-the-team-gap-is-structural",
     "source": "guide"
   },
   {
@@ -734,9 +734,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-memory-poisoning",
     "title": "Memory Systems Memory Poisoning",
-    "keywords": "memory systems memory poisoning guide core memory systems md#71 memory poisoning prompt injection",
+    "keywords": "memory systems memory poisoning guide core memory systems md#71 memory poisoning via prompt injection",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#71-memory-poisoning-prompt-injection",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#71-memory-poisoning-via-prompt-injection",
     "source": "guide"
   },
   {
@@ -1423,22 +1423,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-adoption-jcurve",
     "title": "Adoption Jcurve",
     "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3",
-    "category": "Guide",
-    "url": "/guide/adoption-approaches/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-adoption-metr-rct",
-    "title": "Adoption Metr Rct",
-    "keywords": "adoption metr rct guide roles adoption approaches md#the metr calibration",
-    "category": "Guide",
-    "url": "/guide/adoption-approaches/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-adoption-deputydev",
-    "title": "Adoption Deputydev",
-    "keywords": "adoption deputydev guide roles adoption approaches md#deputydev enterprise cohort",
     "category": "Guide",
     "url": "/guide/adoption-approaches/",
     "source": "guide"
@@ -2286,7 +2270,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-annotation-cycle-pattern",
     "title": "Annotation Cycle Pattern",
-    "keywords": "annotation cycle pattern guide workflows plan driven md#the annotation cycle",
+    "keywords": "annotation cycle pattern guide workflows plan driven md#phase the annotation cycle",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/plan-driven/",
     "source": "guide"
@@ -2817,6 +2801,470 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "production reliability guide guide workflows production reliability",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-index",
+    "title": "Learning Path Index",
+    "keywords": "learning path index guide learning path readme",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/README.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-installation",
+    "title": "Learning Path Installation",
+    "keywords": "learning path installation guide learning path installation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/01-installation.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-core-loop",
+    "title": "Learning Path Core Loop",
+    "keywords": "learning path core loop guide learning path core loop",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/02-core-loop.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-memory",
+    "title": "Learning Path Memory",
+    "keywords": "learning path memory guide learning path memory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/03-memory.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-agents",
+    "title": "Learning Path Agents",
+    "keywords": "learning path agents guide learning path agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/04-agents.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-skills",
+    "title": "Learning Path Skills",
+    "keywords": "learning path skills guide learning path skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/05-skills.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-hooks",
+    "title": "Learning Path Hooks",
+    "keywords": "learning path hooks guide learning path hooks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/06-hooks.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-advanced",
+    "title": "Learning Path Advanced",
+    "keywords": "learning path advanced guide learning path advanced",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/learning-path/07-advanced.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-reference",
+    "title": "Hooks Events Reference",
+    "keywords": "hooks events reference guide core hooks events reference",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-quick-reference",
+    "title": "Hooks Events Quick Reference",
+    "keywords": "hooks events quick reference guide core hooks events reference md#quick reference",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md#quick-reference",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-matchers",
+    "title": "Hooks Events Matchers",
+    "keywords": "hooks events matchers guide core hooks events reference md#matcher values event",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md#matcher-values-by-event",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-exit-code-2",
+    "title": "Hooks Events Exit Code 2",
+    "keywords": "hooks events exit code 2 guide core hooks events reference md#exit code behavior per event",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md#exit-code-2-behavior-per-event",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-decision-control",
+    "title": "Hooks Events Decision Control",
+    "keywords": "hooks events decision control guide core hooks events reference md#decision control format per event",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md#decision-control-format-per-event",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-gotchas",
+    "title": "Hooks Events Gotchas",
+    "keywords": "hooks events gotchas guide core hooks events reference md#common gotchas",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/hooks-events-reference.md#common-gotchas",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks-events-audit-skill",
+    "title": "Hooks Events Audit Skill",
+    "keywords": "hooks events audit skill examples skills eval hooks skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/eval-hooks/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-community-patterns",
+    "title": "Community Patterns",
+    "keywords": "community patterns guide core community patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/community-patterns.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-guide",
+    "title": "Dynamic Workflows Guide",
+    "keywords": "dynamic workflows guide guide workflows dynamic workflows",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-when",
+    "title": "Dynamic Workflows When",
+    "keywords": "dynamic workflows when guide workflows dynamic workflows md#1 when use workflows agent tool skills",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-primitives",
+    "title": "Dynamic Workflows Primitives",
+    "keywords": "dynamic workflows primitives guide workflows dynamic workflows md#2 primitive reference",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-pipeline-vs-parallel",
+    "title": "Dynamic Workflows Pipeline Vs Parallel",
+    "keywords": "dynamic workflows pipeline vs parallel guide workflows dynamic workflows md#4 pipeline parallel when and why",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-patterns",
+    "title": "Dynamic Workflows Patterns",
+    "keywords": "dynamic workflows patterns guide workflows dynamic workflows md#6 common patterns",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-antipatterns",
+    "title": "Dynamic Workflows Antipatterns",
+    "keywords": "dynamic workflows antipatterns guide workflows dynamic workflows md#8 when not use workflows",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-workflows-cost",
+    "title": "Dynamic Workflows Cost",
+    "keywords": "dynamic workflows cost guide workflows dynamic workflows md#9 cost and performance notes",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dynamic-workflows/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-feature",
+    "title": "Code Review Feature",
+    "keywords": "code review feature guide workflows code review",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-how-it-works",
+    "title": "Code Review How It Works",
+    "keywords": "code review how it works guide workflows code review md#how works",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-setup",
+    "title": "Code Review Setup",
+    "keywords": "code review setup guide workflows code review md#setup",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-configuration",
+    "title": "Code Review Configuration",
+    "keywords": "code review configuration guide workflows code review md#configure reviews",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-pricing",
+    "title": "Code Review Pricing",
+    "keywords": "code review pricing guide workflows code review md#pricing",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-code-review-limitations",
+    "title": "Code Review Limitations",
+    "keywords": "code review limitations guide workflows code review md#known limitations research preview",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/code-review/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-guide",
+    "title": "Github Actions Guide",
+    "keywords": "github actions guide guide workflows github actions",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-two-models",
+    "title": "Github Actions Two Models",
+    "keywords": "github actions two models guide workflows github actions md#two models",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-pattern-mention-review",
+    "title": "Github Actions Pattern Mention Review",
+    "keywords": "github actions pattern mention review guide workflows github actions md#pattern code review claude mention",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-pattern-push-review",
+    "title": "Github Actions Pattern Push Review",
+    "keywords": "github actions pattern push review guide workflows github actions md#pattern automatic review push",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-pattern-issue-triage",
+    "title": "Github Actions Pattern Issue Triage",
+    "keywords": "github actions pattern issue triage guide workflows github actions md#pattern issue triage and labeling",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-pattern-security-review",
+    "title": "Github Actions Pattern Security Review",
+    "keywords": "github actions pattern security review guide workflows github actions md#pattern security focused review",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-pattern-scheduled-maintenance",
+    "title": "Github Actions Pattern Scheduled Maintenance",
+    "keywords": "github actions pattern scheduled maintenance guide workflows github actions md#pattern scheduled repo maintenance",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-cost-control",
+    "title": "Github Actions Cost Control",
+    "keywords": "github actions cost control guide workflows github actions md#cost control",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-github-actions-security-checklist",
+    "title": "Github Actions Security Checklist",
+    "keywords": "github actions security checklist guide workflows github actions md#security checklist",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/github-actions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-guide",
+    "title": "Agent Evaluation Guide",
+    "keywords": "agent evaluation guide guide roles agent evaluation",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-metrics",
+    "title": "Agent Evaluation Metrics",
+    "keywords": "agent evaluation metrics guide roles agent evaluation md#metrics track",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-patterns",
+    "title": "Agent Evaluation Patterns",
+    "keywords": "agent evaluation patterns guide roles agent evaluation md#implementation patterns",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-probabilistic",
+    "title": "Agent Evaluation Probabilistic",
+    "keywords": "agent evaluation probabilistic guide roles agent evaluation md#evaluating probabilistic systems",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-tools",
+    "title": "Agent Evaluation Tools",
+    "keywords": "agent evaluation tools guide roles agent evaluation md#tools references",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-guide",
+    "title": "Team Metrics Guide",
+    "keywords": "team metrics guide guide ops team metrics",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-dora",
+    "title": "Team Metrics Dora",
+    "keywords": "team metrics dora guide ops team metrics md#the dora foundation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#the-dora-foundation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-dora-ai-context",
+    "title": "Team Metrics Dora AI Context",
+    "keywords": "team metrics dora ai context guide ops team metrics md#dora augmented context",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#dora-in-an-ai-augmented-context",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-space",
+    "title": "Team Metrics Space",
+    "keywords": "team metrics space guide ops team metrics md#beyond dora the space framework",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#beyond-dora-the-space-framework",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-ai-specific",
+    "title": "Team Metrics AI Specific",
+    "keywords": "team metrics ai specific guide ops team metrics md#ai specific metrics",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#ai-specific-metrics",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-agentic",
+    "title": "Team Metrics Agentic",
+    "keywords": "team metrics agentic guide ops team metrics md#agentic metrics what dora doesnt measure",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#agentic-metrics-what-dora-doesnt-measure",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-vanity",
+    "title": "Team Metrics Vanity",
+    "keywords": "team metrics vanity guide ops team metrics md#vanity metrics drop",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#vanity-metrics-to-drop",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-four-question-test",
+    "title": "Team Metrics Four Question Test",
+    "keywords": "team metrics four question test guide ops team metrics md#the question test",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#the-4-question-test",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-guide",
+    "title": "API Gateway Guide",
+    "keywords": "api gateway guide guide ops api gateway",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-litellm",
+    "title": "API Gateway Litellm",
+    "keywords": "api gateway litellm guide ops api gateway md#2 litellm gateway",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#2-litellm-gateway",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-virtual-keys",
+    "title": "API Gateway Virtual Keys",
+    "keywords": "api gateway virtual keys guide ops api gateway md#3 virtual keys and team budgets",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#3-virtual-keys-and-team-budgets",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-model-allowlists",
+    "title": "API Gateway Model Allowlists",
+    "keywords": "api gateway model allowlists guide ops api gateway md#4 model allowlists",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#4-model-allowlists",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-portkey",
+    "title": "API Gateway Portkey",
+    "keywords": "api gateway portkey guide ops api gateway md#8 portkey managed alternative",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#8-portkey-as-a-managed-alternative",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-limits",
+    "title": "API Gateway Limits",
+    "keywords": "api gateway limits guide ops api gateway md#9 what the gateway does not cover",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#9-what-the-gateway-does-not-cover",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cheatsheet-file",
+    "title": "Cheatsheet File",
+    "keywords": "cheatsheet file guide cheatsheet",
+    "category": "Guide",
+    "url": "/guide/cheatsheet/",
     "source": "guide"
   }
 ]
