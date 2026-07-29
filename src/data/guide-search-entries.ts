@@ -1260,6 +1260,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-scheduled-tasks-cloud",
+    "title": "Scheduled Tasks Cloud",
+    "keywords": "scheduled tasks cloud guide ultimate guide md#routines cloud automation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#routines-cloud-automation",
+    "source": "guide"
+  },
+  {
     "id": "guide-routines-discover-command",
     "title": "Routines Discover Command",
     "keywords": "routines discover command examples skills routines discover skill",
@@ -1273,6 +1281,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "scheduled tasks desktop guide ultimate guide md#desktop scheduled tasks",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#desktop-scheduled-tasks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scheduled-tasks-loop-command",
+    "title": "Scheduled Tasks Loop Command",
+    "keywords": "scheduled tasks loop command guide ultimate guide md#the loop command",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-loop-command",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scheduled-tasks-comparison-table",
+    "title": "Scheduled Tasks Comparison Table",
+    "keywords": "scheduled tasks comparison table guide ultimate guide md#comparison table",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#comparison-table",
     "source": "guide"
   },
   {
@@ -2172,9 +2196,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-sandbox-native-platforms",
+    "title": "Sandbox Native Platforms",
+    "keywords": "sandbox native platforms guide security sandbox native md#9 platform support",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
     "id": "guide-sandbox-native-decision-tree",
     "title": "Sandbox Native Decision Tree",
     "keywords": "sandbox native decision tree guide security sandbox native md#10 decision tree native docker sandboxes",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-config-examples",
+    "title": "Sandbox Native Config Examples",
+    "keywords": "sandbox native config examples guide security sandbox native md#11 configuration examples",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -2265,6 +2305,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox config example examples config sandbox native",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/sandbox-native.json",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-break-in-week",
+    "title": "Sandbox Break In Week",
+    "keywords": "sandbox break in week guide security sandbox native md#plan for break week",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-allow-local-binding",
+    "title": "Sandbox Allow Local Binding",
+    "keywords": "sandbox allow local binding guide security sandbox native md#local servers and proxies fail bind",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-global-npm-tooling",
+    "title": "Sandbox Global Npm Tooling",
+    "keywords": "sandbox global npm tooling guide security sandbox native md#global npm tooling fails with eperm",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-read-the-last-error",
+    "title": "Sandbox Read The Last Error",
+    "keywords": "sandbox read the last error guide security sandbox native md#read the last error not the first",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
     "source": "guide"
   },
   {
@@ -2724,6 +2796,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-mcp-secrets-rotation",
+    "title": "MCP Secrets Rotation",
+    "keywords": "mcp secrets rotation guide ultimate guide md#secrets rotation workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#secrets-rotation-workflow",
+    "source": "guide"
+  },
+  {
     "id": "guide-mcp-secrets-pre-commit",
     "title": "MCP Secrets Pre Commit",
     "keywords": "mcp secrets pre commit guide ultimate guide md#pre commit secret detection",
@@ -2753,6 +2833,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "settings local example examples config settings local example",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/settings.local.json.example",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spinner-personalization",
+    "title": "Spinner Personalization",
+    "keywords": "spinner personalization guide ultimate guide md#terminal personalization settings",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#terminal-personalization-settings",
     "source": "guide"
   },
   {
@@ -3244,6 +3332,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agentskills-guide-section",
+    "title": "Agentskills Guide Section",
+    "keywords": "agentskills guide section guide ultimate guide md#skillmd frontmatter",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#skillmd-frontmatter",
+    "source": "guide"
+  },
+  {
     "id": "guide-skills-marketplace",
     "title": "Skills Marketplace",
     "keywords": "skills marketplace guide ultimate guide md#skills marketplace skillssh",
@@ -3529,6 +3625,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "product designer claudemd examples claude product designer",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/product-designer.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-pencil-canvas",
+    "title": "Pencil Canvas",
+    "keywords": "pencil canvas guide ultimate guide md#wireframing tools for development",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#wireframing-tools-for-ai-development",
     "source": "guide"
   },
   {
@@ -3916,19 +4020,35 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-fluency-plan-review-section",
+    "title": "AI Fluency Plan Review Section",
+    "keywords": "ai fluency plan review section guide ultimate guide md#rev the engine",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#rev-the-engine",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-fluency-claudemd-section",
+    "title": "AI Fluency Claudemd Section",
+    "keywords": "ai fluency claudemd section guide ultimate guide md#claudemd best practices",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#claudemd-best-practices",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-fluency-artifact-section",
+    "title": "AI Fluency Artifact Section",
+    "keywords": "ai fluency artifact section guide ultimate guide md#911 common pitfalls best practices",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#911-common-pitfalls--best-practices",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-fluency-diagram",
     "title": "AI Fluency Diagram",
     "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency--high-vs-low-fluency-paths",
-    "source": "guide"
-  },
-  {
-    "id": "guide-rev-the-engine",
-    "title": "Rev The Engine",
-    "keywords": "rev the engine guide ultimate guide md#rev the engine",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#rev-the-engine",
     "source": "guide"
   },
   {
@@ -4097,6 +4217,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "harness agents md as toc guide ultimate guide md#9251 agentsmd toc not encyclopedia",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9251-agentsmd-as-toc-not-encyclopedia",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-knowledge-boundary",
+    "title": "Harness Knowledge Boundary",
+    "keywords": "harness knowledge boundary guide ultimate guide md#9252 what the agent cant see doesnt exist",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9252-what-the-agent-cant-see-doesnt-exist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-knowledge-base",
+    "title": "Harness Knowledge Base",
+    "keywords": "harness knowledge base guide ultimate guide md#9253 the knowledge base structure",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9253-the-knowledge-base-structure",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-observability-stack",
+    "title": "Harness Observability Stack",
+    "keywords": "harness observability stack guide ultimate guide md#9254 agent readable observability",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9254-agent-readable-observability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-taste-invariants",
+    "title": "Harness Taste Invariants",
+    "keywords": "harness taste invariants guide ultimate guide md#9255 enforcing architecture and taste",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9255-enforcing-architecture-and-taste",
     "source": "guide"
   },
   {
