@@ -12,8 +12,8 @@ order: 1
 
 | Shortcut | Action |
 |----------|--------|
-| `Ctrl+J` / `Cmd+J` | Open Claude Code |
-| `Shift+Tab` | Toggle auto-accept mode |
+| `Shift+Tab` | Cycle permission mode (Manual, acceptEdits, Plan) |
+| `Ctrl+O` | Toggle verbose transcript |
 | `Ctrl+C` | Interrupt generation |
 | `Esc` | Cancel current action |
 | `↑` / `↓` | Message history |
@@ -62,9 +62,9 @@ claude --continue
 ## Session Commands
 
 ```
-/new            New session
-/resume         Resume previous session
-/sessions       List sessions
+/new            New session (alias for /clear)
+/resume         Resume a session (opens the picker)
+/branch         Fork the conversation here (v2.1.77)
 ```
 
 ## Context Navigation
@@ -74,7 +74,7 @@ claude --continue
 | `/compact` | Summarize and free up space |
 | `/clear` | Full reset |
 | `/usage` | Token usage + cost per model |
-| `#file` | Add file to context |
+| `@file` | Reference a file in the prompt |
 
 ## Custom Slash Commands
 
@@ -93,4 +93,4 @@ claude --continue
 
 **Multiline** — `Shift+Enter` in the terminal to add a new line without submitting.
 
-**Vim mode** — Add `{"vim": true}` to `~/.claude/settings.json` for Vim keybindings.
+**Vim mode** — `/config` → Editor mode, or `{"editorMode": "vim"}` in `~/.claude/settings.json`. The `/vim` command was removed in v2.1.92.

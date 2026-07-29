@@ -18,14 +18,17 @@ doc_reference:
   anchor: "#session-control"
 ---
 
-What keyboard shortcut enters Plan Mode (toggles plan/execute)?
+What keyboard shortcut cycles into Plan Mode?
 
 ---
 
-`Shift+Tab` toggles between Plan Mode and Execute Mode.
+`Shift+Tab` cycles the permission mode: Manual, then acceptEdits, then Plan.
 
 Plan Mode navigation:
-- `Shift+Tab` once: Toggle plan/execute
-- `Shift+Tab` twice: Enter deep Plan Mode (with Opus in OpusPlan)
+- `Shift+Tab` from Manual: switch to acceptEdits
+- `Shift+Tab` twice from Manual: reach Plan Mode
+- `Shift+Tab` again: leave Plan Mode without approving the plan
+
+There is no "Execute Mode": approving the plan drops you into the mode the approval option names.
 
 Plan Mode allows safe, read-only exploration before making changes.

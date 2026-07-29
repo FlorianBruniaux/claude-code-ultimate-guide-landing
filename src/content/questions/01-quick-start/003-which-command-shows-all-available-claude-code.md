@@ -17,7 +17,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 1.3 Essential Commands
   anchor: '#13-essential-commands'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/commands
 ---
 
 Which command shows all available Claude Code commands?

@@ -15,7 +15,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.2 Creating Custom Commands
   anchor: '#variable-interpolation'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/skills
 ---
 
 What variable is used in command files to access arguments passed to the command?

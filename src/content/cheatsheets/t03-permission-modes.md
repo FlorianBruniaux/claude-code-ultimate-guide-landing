@@ -12,11 +12,13 @@ order: 3
 
 | Mode | Flag | Recommended use |
 |------|------|-----------------|
-| **Default** | _(none)_ | Daily development |
-| **Auto-accept edits** | `Shift+Tab` | Code reviews |
-| **Auto-accept all** | `Shift+Tab x2` | Known repetitive tasks |
-| **Full bypass** | `--dangerously-skip-permissions` | Headless CI/CD |
-| **Auto (Max users)** | `/less-permission-prompts` | Reduce interruptions on trusted projects (v2.1.111) |
+| **Manual** (`default`) | _(none)_ | Daily development |
+| **Auto-accept edits** (`acceptEdits`) | `Shift+Tab` | Code reviews |
+| **Plan** (`plan`) | `Shift+Tab x2` or `/plan` | Analysis without modification |
+| **Auto** (`auto`, AI classifier) | `permissions.defaultMode: "auto"` | Long tasks, fewer interruptions |
+| **Don't ask** (`dontAsk`) | `--permission-mode dontAsk` | CI, only pre-approved tools run |
+| **Full bypass** (`bypassPermissions`) | `--dangerously-skip-permissions` | Headless CI/CD, sandboxed |
+| **Fewer prompts** | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
 
 **Note (v2.1.121):** `--dangerously-skip-permissions` now also skips validation of the `.claude/` directory (agents, commands, hooks). In hardened environments, verify `.claude/` contents before granting this flag.
 

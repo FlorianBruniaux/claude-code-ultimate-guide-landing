@@ -1222,7 +1222,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-rtk-third-party",
     "title": "RTK Third Party",
-    "keywords": "rtk third party guide ecosystem third party tools",
+    "keywords": "rtk third party guide ecosystem third party tools md#rtk rust token killer",
     "category": "Guide",
     "url": "/guide/third-party-tools/",
     "source": "guide"
@@ -1369,6 +1369,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "gstack when to use guide workflows gstack workflow md#when use this other workflows",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-skill-packs",
+    "title": "Third Party Tools Skill Packs",
+    "keywords": "third party tools skill packs guide ecosystem third party tools md#plugin ecosystem",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
     "source": "guide"
   },
   {
@@ -1948,9 +1956,65 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-sandbox-native-filesystem",
+    "title": "Sandbox Native Filesystem",
+    "keywords": "sandbox native filesystem guide security sandbox native md#3 filesystem isolation",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-network",
+    "title": "Sandbox Native Network",
+    "keywords": "sandbox native network guide security sandbox native md#4 network isolation",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-escape-hatch",
+    "title": "Sandbox Native Escape Hatch",
+    "keywords": "sandbox native escape hatch guide security sandbox native md#6 escape hatch",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-security-limits",
+    "title": "Sandbox Native Security Limits",
+    "keywords": "sandbox native security limits guide security sandbox native md#7 security limitations",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-opensource",
+    "title": "Sandbox Native Opensource",
+    "keywords": "sandbox native opensource guide security sandbox native md#8 open source runtime",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
     "id": "guide-sandbox-native-decision-tree",
     "title": "Sandbox Native Decision Tree",
     "keywords": "sandbox native decision tree guide security sandbox native md#10 decision tree native docker sandboxes",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-best-practices",
+    "title": "Sandbox Native Best Practices",
+    "keywords": "sandbox native best practices guide security sandbox native md#12 best practices",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-troubleshooting",
+    "title": "Sandbox Native Troubleshooting",
+    "keywords": "sandbox native troubleshooting guide security sandbox native md#13 troubleshooting",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -2252,6 +2316,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-tools-guide",
+    "title": "Third Party Tools Guide",
+    "keywords": "third party tools guide guide ecosystem third party tools",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-session-mgmt",
+    "title": "Third Party Tools Session Mgmt",
+    "keywords": "third party tools session mgmt guide ecosystem third party tools md#session management",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-config-mgmt",
+    "title": "Third Party Tools Config Mgmt",
+    "keywords": "third party tools config mgmt guide ecosystem third party tools md#configuration management",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-recommendations",
+    "title": "Third Party Tools Recommendations",
+    "keywords": "third party tools recommendations guide ecosystem third party tools md#recommendations persona",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-straude-guide",
+    "title": "Third Party Straude Guide",
+    "keywords": "third party straude guide guide ecosystem third party tools md#straude",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-codesight-guide",
+    "title": "Third Party Codesight Guide",
+    "keywords": "third party codesight guide guide ecosystem third party tools md#codesight",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
     "id": "guide-mcp-vs-cli-guide",
     "title": "MCP Vs CLI Guide",
     "keywords": "mcp vs cli guide guide ecosystem mcp cli",
@@ -2412,9 +2524,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-architecture-tools",
+    "title": "Architecture Tools",
+    "keywords": "architecture tools guide core architecture md#2 the tool arsenal",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-context",
+    "title": "Architecture Context",
+    "keywords": "architecture context guide core architecture md#3 context management internals",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
     "id": "guide-architecture-subagents",
     "title": "Architecture Subagents",
     "keywords": "architecture subagents guide core architecture md#4 sub agent architecture",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-permissions",
+    "title": "Architecture Permissions",
+    "keywords": "architecture permissions guide core architecture md#5 permission security model",
     "category": "Guide",
     "url": "/guide/architecture/",
     "source": "guide"
@@ -2436,9 +2572,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-architecture-philosophy",
+    "title": "Architecture Philosophy",
+    "keywords": "architecture philosophy guide core architecture md#10 philosophy less scaffolding more model",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
     "id": "guide-system-prompts-architecture",
     "title": "System Prompts Architecture",
     "keywords": "system prompts architecture guide core architecture md#system prompt contents",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-apps-architecture",
+    "title": "MCP Apps Architecture",
+    "keywords": "mcp apps architecture guide core architecture md#mcp extensions apps sep 1865",
     "category": "Guide",
     "url": "/guide/architecture/",
     "source": "guide"
@@ -3372,6 +3524,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-teams-architecture",
+    "title": "Agent Teams Architecture",
+    "keywords": "agent teams architecture guide workflows agent teams md#2 architecture deep dive",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-setup",
+    "title": "Agent Teams Setup",
+    "keywords": "agent teams setup guide workflows agent teams md#3 setup configuration",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-use-cases",
+    "title": "Agent Teams Use Cases",
+    "keywords": "agent teams use cases guide workflows agent teams md#4 production use cases",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-fountain-case-study",
+    "title": "Agent Teams Fountain Case Study",
+    "keywords": "agent teams fountain case study guide workflows agent teams md#41 multi layer code review fountain",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-cred-case-study",
+    "title": "Agent Teams Cred Case Study",
+    "keywords": "agent teams cred case study guide workflows agent teams md#42 full development lifecycle cred",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-c-compiler-case-study",
+    "title": "Agent Teams C Compiler Case Study",
+    "keywords": "agent teams c compiler case study guide workflows agent teams md#43 autonomous compiler anthropic research",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-paul-rayner-workflows",
+    "title": "Agent Teams Paul Rayner Workflows",
+    "keywords": "agent teams paul rayner workflows guide workflows agent teams md#44 job search app development paul rayner",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-teams-workflow-impact",
     "title": "Agent Teams Workflow Impact",
     "keywords": "agent teams workflow impact guide workflows agent teams md#agent teams workflow",
@@ -3380,9 +3588,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-teams-limitations",
+    "title": "Agent Teams Limitations",
+    "keywords": "agent teams limitations guide workflows agent teams md#6 limitations gotchas",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-teams-decision-tree",
     "title": "Agent Teams Decision Tree",
     "keywords": "agent teams decision tree guide workflows agent teams md#decision tree when use agent teams",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-best-practices",
+    "title": "Agent Teams Best Practices",
+    "keywords": "agent teams best practices guide workflows agent teams md#8 best practices",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-troubleshooting",
+    "title": "Agent Teams Troubleshooting",
+    "keywords": "agent teams troubleshooting guide workflows agent teams md#9 troubleshooting",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams/",
     "source": "guide"
@@ -4289,6 +4521,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "source conflict resolution guide workflows production reliability md#source conflict resolution",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-advanced-orchestration",
+    "title": "Agent Teams Advanced Orchestration",
+    "keywords": "agent teams advanced orchestration guide workflows agent teams md#advanced orchestration patterns",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
     "source": "guide"
   },
   {

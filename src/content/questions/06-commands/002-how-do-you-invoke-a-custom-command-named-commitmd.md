@@ -16,7 +16,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.2 Creating Custom Commands
   anchor: '#command-naming'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/skills
 ---
 
 How do you invoke a user-invocable skill named `commit` located in `.claude/skills/tech/commit/`?

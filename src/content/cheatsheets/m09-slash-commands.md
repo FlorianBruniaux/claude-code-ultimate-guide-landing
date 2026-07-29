@@ -95,13 +95,17 @@ Description of the expected result.
 | `/cost` | v2.1.118 | *(alias for `/usage`)* |
 | `/stats` | v2.1.118 | *(alias for `/usage`)* |
 | `/recap` | v2.1.108 | Session summary |
-| `/undo` | v2.1.108 | Revert last action |
-| `/tui` | recent | Toggle terminal UI mode |
-| `/focus` | recent | Set focus area for current session |
-| `/ultrareview` | v2.1.120 | Deep multi-pass review of a file or PR |
-| `/less-permission-prompts` | v2.1.111 | Reduce permission prompts (Max users) |
-| `/effort` | v2.1.111 | Set thinking effort level interactively |
-| `/proactive` | recent | Toggle proactive suggestions |
+| `/undo` | v2.1.108 | *(alias for `/rewind`)* return to a checkpoint |
+| `/tui [default\|fullscreen]` | v2.1.110 | Pick the terminal renderer and relaunch into it |
+| `/focus` | v2.1.110 | Focus view: last prompt, tool-call summary, final response (fullscreen only) |
+| `/ultrareview` | v2.1.114 | Multi-agent cloud review, now an alias of `/code-review ultra` |
+| `/fewer-permission-prompts` | v2.1.111 | Propose a read-only allowlist from transcripts (shipped as `/less-permission-prompts`) |
+| `/effort` | v2.1.111 | Effort level: low/medium/high/xhigh/max/ultracode |
+| `/proactive` | v2.1.105 | *(alias for `/loop`)* rerun a prompt on repeat |
+| `/code-review [level]` | v2.1.152 | Review the diff for correctness bugs; `--fix` applies them |
+| `/doctor` | v2.1.205 | Full setup checkup (install, settings, hooks, `CLAUDE.md` bloat) |
+
+The complete list of ~100 built-in commands lives at [code.claude.com/docs/en/commands](https://code.claude.com/docs/en/commands).
 
 ## Useful custom skills (user-invocable) to create
 

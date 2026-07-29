@@ -16,7 +16,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.1 Slash Commands
   anchor: '#built-in-commands'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/commands
 ---
 
 Which command enters Plan Mode for safe, read-only exploration?
@@ -31,4 +31,5 @@ This is ideal for:
 - Architectural analysis before changes
 - Safe exploration of risky operations
 
-Use `/execute` to exit Plan Mode when ready to make changes.
+Exit Plan Mode by approving the plan Claude presents, or with `Shift+Tab`.
+There is no `/execute` command in Claude Code.

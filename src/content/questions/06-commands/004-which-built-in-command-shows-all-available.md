@@ -16,7 +16,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.1 Slash Commands
   anchor: '#61-slash-commands'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/commands
 ---
 
 Which built-in command shows all available commands including custom ones?

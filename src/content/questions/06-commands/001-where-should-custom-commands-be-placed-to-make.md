@@ -16,7 +16,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.2 Creating Custom Commands
   anchor: '#62-creating-custom-commands'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/skills
 ---
 
 Where should custom commands (user-invocable skills) be placed to make them available in Claude Code?

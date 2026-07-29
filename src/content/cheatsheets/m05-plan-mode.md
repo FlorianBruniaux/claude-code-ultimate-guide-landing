@@ -15,7 +15,7 @@ Plan Mode is Claude Code's "look but don't touch" mode. In Plan Mode, Claude can
 ```
 /plan              # Enter Plan Mode
 Shift+Tab          # Toggle Plan ↔ Normal
-/execute           # Exit and move to execution
+Approve the plan   # Exit and move to execution
 ```
 
 ## Why It Changes Everything
@@ -56,7 +56,7 @@ The reasoning: Claude explores the codebase without pressure to act. It identifi
 2. Review the plan
    Modify, refine, validate the steps
 
-3. /execute (or Shift+Tab → Normal Mode)
+3. Approve the plan (or Shift+Tab to leave without approving)
    Supervised execution of the approved plan
 ```
 

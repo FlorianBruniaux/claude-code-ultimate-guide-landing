@@ -15,7 +15,7 @@ doc_reference:
   file: guide/ultimate-guide.md
   section: 6.3 Command Template
   anchor: '#63-command-template'
-official_doc: https://code.claude.com/docs/en/slash-commands
+official_doc: https://code.claude.com/docs/en/skills
 ---
 
 What sections should a well-structured command template include according to best practices?

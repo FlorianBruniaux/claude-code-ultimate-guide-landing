@@ -49,7 +49,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "title": "Permission Modes Comparison",
         "description": "Claude Code has 5 permission modes that control what it can do automatically vs. what requires your approval. Choosing the wrong mode is the #1 safety mistake.",
         "svg": null,
-        "asciiFallback": "DEFAULT (Recommended)        acceptEdits               bypassPermissions\n─────────────────────        ───────────               ─────────────────\nFile reads    → AUTO ✓       File reads    → AUTO ✓    ALL ops → AUTO ⚠️\nFile writes   → PROMPT       File writes   → AUTO ✓\nShell cmds    → PROMPT       Shell cmds    → PROMPT    Use: CI/CD only,\nRisky ops     → PROMPT       Risky ops     → PROMPT    sandboxed env\n\nPlan Mode (Read-Only)        dontAsk Mode\n─────────────────────        ────────────\nFile reads    → AUTO ✓       ALL ops → AUTO DENIED ✗\nFile writes   → BLOCKED ✗    Unless pre-approved via\nShell cmds    → BLOCKED ✗    /permissions add\nExit: /execute or Shift+Tab",
+        "asciiFallback": "DEFAULT (Recommended)        acceptEdits               bypassPermissions\n─────────────────────        ───────────               ─────────────────\nFile reads    → AUTO ✓       File reads    → AUTO ✓    ALL ops → AUTO ⚠️\nFile writes   → PROMPT       File writes   → AUTO ✓\nShell cmds    → PROMPT       Shell cmds    → PROMPT    Use: CI/CD only,\nRisky ops     → PROMPT       Risky ops     → PROMPT    sandboxed env\n\nPlan Mode (Read-Only)        dontAsk Mode\n─────────────────────        ────────────\nFile reads    → AUTO ✓       ALL ops → AUTO DENIED ✗\nFile writes   → BLOCKED ✗    Unless pre-approved via\nShell cmds    → BLOCKED ✗    /permissions add\nExit: approve the plan or Shift+Tab",
         "sourceRef": "Permission System — Line ~760"
       }
     ]
@@ -330,7 +330,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "title": "Model Selection Decision Flow",
         "description": "Not all tasks need the most powerful model. Using the right model for the right task cuts costs by 5-10x without sacrificing quality.\n\n> **This diagram assumes an unconstrained budget (Max/API).** On tighter plans (Pro, Teams Standard), apply the budget modifier below.",
         "svg": null,
-        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5       ($  ~5x cheaper than Sonnet)\n├─ Standard (features, bugs)      → Sonnet 4.5/4.6  ($$ best price/quality ratio)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 4.8 (xhigh)  ($$$ ~5x more than Sonnet)\n   └─ Just large/clear?            → Sonnet 4.6         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 4.8 plan, Sonnet impl\n  Max/API          → Opus 4.8 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
+        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5     ($  ~5x cheaper than Sonnet)\n├─ Standard (features, bugs)      → Sonnet 5      ($$ best price/quality ratio)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 5 (xhigh)  ($$$ ~5x more than Sonnet)\n   └─ Just large/clear?            → Sonnet 5         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 5 plan, Sonnet impl\n  Max/API          → Opus 5 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
         "sourceRef": "Model Selection (Line ~2634)"
       },
       {

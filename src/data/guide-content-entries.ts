@@ -9079,7 +9079,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exécution",
     "title": "Exécution",
-    "keywords": "exécution the ultimate claude code guide user: /execute user: implement the plan from round 3. ``` pourquoi ça fonctionne : chaque tour force claude à reconsidérer ses hypothèses. le tour 2 d ultraplan ultrareview v2 1 114 mechanic stacking",
+    "keywords": "exécution the ultimate claude code guide [approuver le plan, ou shift+tab pour sortir du plan mode] user: implement the plan from round 3. ``` pourquoi ça fonctionne : chaque tour force claud ultraplan ultrareview v2 1 114 mechanic stacking",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exécution",
     "source": "guide"
