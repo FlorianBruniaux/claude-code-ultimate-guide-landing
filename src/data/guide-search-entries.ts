@@ -1662,9 +1662,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-unit-economics-token-estimation",
     "title": "AI Unit Economics Token Estimation",
-    "keywords": "ai unit economics token estimation guide ops unit economics md#do not estimate tokens string length (why chars 4 breaks: measured  35% on code,  23% on accented french, erring in the unsafe direction; wrong tokenizer for claude; plus the count the wrong string second order bug)",
+    "keywords": "ai unit economics token estimation guide ops unit economics md#do not estimate tokens string length",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#do-not-estimate-tokens-by-string-length (why chars/4 breaks: measured -35% on code, -23% on accented French, erring in the unsafe direction; wrong tokenizer for Claude; plus the count-the-wrong-string second-order bug)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#do-not-estimate-tokens-by-string-length",
     "source": "guide"
   },
   {
@@ -1761,6 +1761,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "session naming template examples claude session naming",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/session-naming.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-auto-rename",
+    "title": "Session Auto Rename",
+    "keywords": "session auto rename guide ultimate guide md#session auto rename",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#session-auto-rename",
     "source": "guide"
   },
   {
@@ -2198,7 +2206,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-data-privacy-local-looking-client",
     "title": "Data Privacy Local Looking Client",
-    "keywords": "data privacy local looking client guide security data privacy md#risk the local looking network client (a cli mcp server can be 'zero dependencies, no signup' and still post every input to a third party; size functionality check; why mcp mode turns a discipline problem into a structural one since the agent picks the input)",
+    "keywords": "data privacy local looking client guide security data privacy md#risk the local looking network client",
     "category": "Guide",
     "url": "/guide/data-privacy/",
     "source": "guide"
@@ -2444,6 +2452,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-first-workflow",
+    "title": "First Workflow",
+    "keywords": "first workflow guide ultimate guide md#12 first workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#12-first-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-trust-calibration",
+    "title": "Trust Calibration",
+    "keywords": "trust calibration guide ultimate guide md#17 trust calibration when and how much verify",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#17-trust-calibration-when-and-how-much-to-verify",
+    "source": "guide"
+  },
+  {
+    "id": "guide-working-with-images",
+    "title": "Working With Images",
+    "keywords": "working with images guide ultimate guide md#working with images and screenshots",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#working-with-images-and-screenshots",
+    "source": "guide"
+  },
+  {
+    "id": "guide-permission-modes",
+    "title": "Permission Modes",
+    "keywords": "permission modes guide ultimate guide md#14 permission modes",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#14-permission-modes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-interaction-loop",
+    "title": "Interaction Loop",
+    "keywords": "interaction loop guide ultimate guide md#21 the interaction loop",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#21-the-interaction-loop",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-triage",
+    "title": "Context Triage",
+    "keywords": "context triage guide ultimate guide md#context triage what keep evacuate",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#context-triage-what-to-keep-vs-evacuate",
+    "source": "guide"
+  },
+  {
+    "id": "guide-fresh-context-pattern",
+    "title": "Fresh Context Pattern",
+    "keywords": "fresh context pattern guide ultimate guide md#fresh context pattern ralph loop",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#fresh-context-pattern-ralph-loop",
+    "source": "guide"
+  },
+  {
     "id": "guide-programmatic-billing-change",
     "title": "Programmatic Billing Change",
     "keywords": "programmatic billing change guide ultimate guide md#the interactiveprogrammatic billing split effective june 2026",
@@ -2508,11 +2572,83 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ultraplan",
+    "title": "Ultraplan",
+    "keywords": "ultraplan guide ultimate guide md#ultraplan",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#ultraplan",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rewind",
+    "title": "Rewind",
+    "keywords": "rewind guide ultimate guide md#24 rewind",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#24-rewind",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mental-model",
+    "title": "Mental Model",
+    "keywords": "mental model guide ultimate guide md#26 mental model",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#26-mental-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-xml-prompting",
+    "title": "Xml Prompting",
+    "keywords": "xml prompting guide ultimate guide md#28 structured prompting with xml tags",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#28-structured-prompting-with-xml-tags",
+    "source": "guide"
+  },
+  {
+    "id": "guide-prompting-provocation",
+    "title": "Prompting Provocation",
+    "keywords": "prompting provocation guide ultimate guide md#281 prompting provocation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#281-prompting-as-provocation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-semantic-anchors",
+    "title": "Semantic Anchors",
+    "keywords": "semantic anchors guide ultimate guide md#29 semantic anchors",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#29-semantic-anchors",
+    "source": "guide"
+  },
+  {
     "id": "guide-semantic-anchors-catalog",
     "title": "Semantic Anchors Catalog",
     "keywords": "semantic anchors catalog examples semantic anchors anchor catalog",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/semantic-anchors/anchor-catalog.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-files",
+    "title": "Memory Files",
+    "keywords": "memory files guide ultimate guide md#31 memory files claudemd",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#31-memory-files-claudemd",
+    "source": "guide"
+  },
+  {
+    "id": "guide-auto-memories",
+    "title": "Auto Memories",
+    "keywords": "auto memories guide ultimate guide md#auto memories v2159",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#auto-memories-v2159",
+    "source": "guide"
+  },
+  {
+    "id": "guide-auto-dream",
+    "title": "Auto Dream",
+    "keywords": "auto dream guide ultimate guide md#auto dream memory consolidation community discovered",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#auto-dream-memory-consolidation-community-discovered",
     "source": "guide"
   },
   {
@@ -2537,6 +2673,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "architecture reviewer agent examples agents architecture reviewer",
     "category": "Examples > Agents",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/architecture-reviewer.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-opus-4-6-api-breaking-changes",
+    "title": "Opus 4 6 API Breaking Changes",
+    "keywords": "opus 4 6 api breaking changes guide ultimate guide md#api breaking changes opus",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#api-breaking-changes-opus-46",
+    "source": "guide"
+  },
+  {
+    "id": "guide-xcode-integration",
+    "title": "Xcode Integration",
+    "keywords": "xcode integration guide ultimate guide md#xcode integration feb 2026",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#xcode-integration-feb-2026",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-management-system",
+    "title": "Task Management System",
+    "keywords": "task management system guide ultimate guide md#task management system",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#task-management-system",
+    "source": "guide"
+  },
+  {
+    "id": "guide-todowrite-legacy",
+    "title": "Todowrite Legacy",
+    "keywords": "todowrite legacy guide ultimate guide md#todowrite legacy",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#todowrite-legacy",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-complete-workflow",
+    "title": "Task Complete Workflow",
+    "keywords": "task complete workflow guide ultimate guide md#complete workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#complete-workflow",
     "source": "guide"
   },
   {
@@ -2572,11 +2748,107 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-claude-folder",
+    "title": "Claude Folder",
+    "keywords": "claude folder guide ultimate guide md#32 the claude folder structure",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#32-the-claude-folder-structure",
+    "source": "guide"
+  },
+  {
+    "id": "guide-precedence-rules",
+    "title": "Precedence Rules",
+    "keywords": "precedence rules guide ultimate guide md#34 precedence rules",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#34-precedence-rules",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-template",
+    "title": "Agent Template",
+    "keywords": "agent template guide ultimate guide md#43 agent template",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#43-agent-template",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-examples",
+    "title": "Agent Examples",
+    "keywords": "agent examples guide ultimate guide md#46 agent examples",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#46-agent-examples",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-template",
+    "title": "Skill Template",
+    "keywords": "skill template guide ultimate guide md#53 skill template",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#53-skill-template",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-examples",
+    "title": "Skill Examples",
+    "keywords": "skill examples guide ultimate guide md#54 skill examples",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#54-skill-examples",
+    "source": "guide"
+  },
+  {
+    "id": "guide-design-patterns-skill",
+    "title": "Design Patterns Skill",
+    "keywords": "design patterns skill guide ultimate guide md#example design patterns analyzer skill",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#example-3-design-patterns-analyzer-skill",
+    "source": "guide"
+  },
+  {
     "id": "guide-design-patterns-skill-location",
     "title": "Design Patterns Skill Location",
     "keywords": "design patterns skill location examples skills design patterns",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/design-patterns/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-community-skills-cybersec",
+    "title": "Community Skills Cybersec",
+    "keywords": "community skills cybersec guide ultimate guide md#cybersecurity skills repository",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cybersecurity-skills-repository",
+    "source": "guide"
+  },
+  {
+    "id": "guide-claude-reflect-system",
+    "title": "Claude Reflect System",
+    "keywords": "claude reflect system guide ultimate guide md#automatic skill improvement claude reflect system",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#automatic-skill-improvement-claude-reflect-system",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ui-ux-pro-max-guide",
+    "title": "Ui Ux Pro Max Guide",
+    "keywords": "ui ux pro max guide guide ultimate guide md#design intelligence pro max",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#design-intelligence-ui-ux-pro-max",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skills-marketplace",
+    "title": "Skills Marketplace",
+    "keywords": "skills marketplace guide ultimate guide md#skills marketplace skillssh",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#skills-marketplace-skillssh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plugins-featured-community",
+    "title": "Plugins Featured Community",
+    "keywords": "plugins featured community guide ultimate guide md#featured community plugins",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#featured-community-plugins",
     "source": "guide"
   },
   {
@@ -2820,6 +3092,110 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-command-template",
+    "title": "Command Template",
+    "keywords": "command template guide ultimate guide md#63 command template",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#63-command-template",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hook-templates",
+    "title": "Hook Templates",
+    "keywords": "hook templates guide ultimate guide md#73 hook templates",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#73-hook-templates",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-hooks",
+    "title": "Security Hooks",
+    "keywords": "security hooks guide ultimate guide md#74 security hooks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#74-security-hooks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-memory-stack-patterns",
+    "title": "MCP Memory Stack Patterns",
+    "keywords": "mcp memory stack patterns guide ultimate guide md#mcp memory stack complementarity patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-memory-stack-complementarity-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-security",
+    "title": "MCP Security",
+    "keywords": "mcp security guide ultimate guide md#86 mcp security",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#86-mcp-security",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ide-integration",
+    "title": "Ide Integration",
+    "keywords": "ide integration guide ultimate guide md#94 ide integration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#94-ide-integration",
+    "source": "guide"
+  },
+  {
+    "id": "guide-feedback-loops",
+    "title": "Feedback Loops",
+    "keywords": "feedback loops guide ultimate guide md#95 tight feedback loops",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#95-tight-feedback-loops",
+    "source": "guide"
+  },
+  {
+    "id": "guide-batch-operations",
+    "title": "Batch Operations",
+    "keywords": "batch operations guide ultimate guide md#99 batch operations pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#99-batch-operations-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-teleportation",
+    "title": "Session Teleportation",
+    "keywords": "session teleportation guide ultimate guide md#916 session teleportation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#916-session-teleportation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-instance-workflows",
+    "title": "Multi Instance Workflows",
+    "keywords": "multi instance workflows guide ultimate guide md#917 scaling patterns multi instance workflows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#917-scaling-patterns-multi-instance-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "guide-boris-cherny-case-study",
+    "title": "Boris Cherny Case Study",
+    "keywords": "boris cherny case study guide ultimate guide md#real world case boris cherny interval",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#real-world-case-boris-cherny-interval",
+    "source": "guide"
+  },
+  {
+    "id": "guide-boris-cherny-team-patterns",
+    "title": "Boris Cherny Team Patterns",
+    "keywords": "boris cherny team patterns guide ultimate guide md#boris chernys principles for teams",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#boris-chernys-3-principles-for-ai-teams",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-planning",
+    "title": "Dual Instance Planning",
+    "keywords": "dual instance planning guide ultimate guide md#alternative pattern dual instance planning vertical separation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#alternative-pattern-dual-instance-planning-vertical-separation",
+    "source": "guide"
+  },
+  {
     "id": "guide-dual-instance-workflow",
     "title": "Dual Instance Workflow",
     "keywords": "dual instance workflow guide workflows dual instance planning",
@@ -2900,6 +3276,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-contribution-metrics",
+    "title": "Contribution Metrics",
+    "keywords": "contribution metrics guide ultimate guide md#contribution metrics january 2026",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#contribution-metrics-january-2026",
+    "source": "guide"
+  },
+  {
     "id": "guide-git-worktree-command",
     "title": "Git Worktree Command",
     "keywords": "git worktree command examples skills git worktree skill",
@@ -2932,11 +3316,43 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-orchestration-frameworks",
+    "title": "Orchestration Frameworks",
+    "keywords": "orchestration frameworks guide ultimate guide md#orchestration frameworks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#orchestration-frameworks",
+    "source": "guide"
+  },
+  {
     "id": "guide-codebase-design-llms-txt-example",
     "title": "Codebase Design Llms Txt Example",
     "keywords": "codebase design llms txt example machine readable llms txt",
     "category": "Reference",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/llms.txt",
+    "source": "guide"
+  },
+  {
+    "id": "guide-permutation-frameworks",
+    "title": "Permutation Frameworks",
+    "keywords": "permutation frameworks guide ultimate guide md#919 permutation frameworks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#919-permutation-frameworks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-legacy-codebase-modernization",
+    "title": "Legacy Codebase Modernization",
+    "keywords": "legacy codebase modernization guide ultimate guide md#921 legacy codebase modernization",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#921-legacy-codebase-modernization",
+    "source": "guide"
+  },
+  {
+    "id": "guide-feature-to-code-anchoring",
+    "title": "Feature To Code Anchoring",
+    "keywords": "feature to code anchoring guide ultimate guide md#feature code anchoring when youre not rewriting",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#feature-to-code-anchoring-when-youre-not-rewriting",
     "source": "guide"
   },
   {
@@ -2977,6 +3393,78 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency--high-vs-low-fluency-paths",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rev-the-engine",
+    "title": "Rev The Engine",
+    "keywords": "rev the engine guide ultimate guide md#rev the engine",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#rev-the-engine",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mechanic-stacking",
+    "title": "Mechanic Stacking",
+    "keywords": "mechanic stacking guide ultimate guide md#mechanic stacking",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mechanic-stacking",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-anti-patterns",
+    "title": "Agent Anti Patterns",
+    "keywords": "agent anti patterns guide ultimate guide md#agent anti patterns roles context control",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#agent-anti-patterns-roles-vs-context-control",
+    "source": "guide"
+  },
+  {
+    "id": "guide-scope-focused-agents",
+    "title": "Scope Focused Agents",
+    "keywords": "scope focused agents guide ultimate guide md#scope focused agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#scope-focused-agents",
+    "source": "guide"
+  },
+  {
+    "id": "guide-teammatetool-experimental",
+    "title": "Teammatetool Experimental",
+    "keywords": "teammatetool experimental guide ultimate guide md#teammatetool experimental",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#teammatetool-experimental",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-lists-diagnostic",
+    "title": "Task Lists Diagnostic",
+    "keywords": "task lists diagnostic guide ultimate guide md#task lists diagnostic tool",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#task-lists-as-diagnostic-tool",
+    "source": "guide"
+  },
+  {
+    "id": "guide-main-thread-orchestrator",
+    "title": "Main Thread Orchestrator",
+    "keywords": "main thread orchestrator guide ultimate guide md#you are the main thread",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#you-are-the-main-thread",
+    "source": "guide"
+  },
+  {
+    "id": "guide-continuous-context-update",
+    "title": "Continuous Context Update",
+    "keywords": "continuous context update guide ultimate guide md#continuous context update",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#continuous-context-update",
+    "source": "guide"
+  },
+  {
+    "id": "guide-smart-hook-dispatching",
+    "title": "Smart Hook Dispatching",
+    "keywords": "smart hook dispatching guide ultimate guide md#smart hook dispatching",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#smart-hook-dispatching",
     "source": "guide"
   },
   {
@@ -3065,6 +3553,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "harness agents md as toc guide ultimate guide md#9251 agentsmd toc not encyclopedia",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9251-agentsmd-as-toc-not-encyclopedia",
+    "source": "guide"
+  },
+  {
+    "id": "guide-commands-table",
+    "title": "Commands Table",
+    "keywords": "commands table guide ultimate guide md#101 commands table",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#101-commands-table",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cheatsheet",
+    "title": "Cheatsheet",
+    "keywords": "cheatsheet guide ultimate guide md#105 cheatsheet",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#105-cheatsheet",
     "source": "guide"
   },
   {
@@ -3316,6 +3820,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-appendix-a-file-locations",
+    "title": "Appendix A File Locations",
+    "keywords": "appendix a file locations guide ultimate guide md#appendix file locations reference",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#appendix-a-file-locations-reference",
+    "source": "guide"
+  },
+  {
+    "id": "guide-appendix-b-faq",
+    "title": "Appendix B Faq",
+    "keywords": "appendix b faq guide ultimate guide md#appendix faq",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#appendix-b-faq",
+    "source": "guide"
+  },
+  {
+    "id": "guide-faq-product-managers",
+    "title": "Faq Product Managers",
+    "keywords": "faq product managers guide ultimate guide md#can product managers use claude code",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#can-product-managers-use-claude-code",
+    "source": "guide"
+  },
+  {
+    "id": "guide-appendix-d-myths-vs-reality",
+    "title": "Appendix D Myths Vs Reality",
+    "keywords": "appendix d myths vs reality guide ultimate guide md#appendix myths reality",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#appendix-d-myths-vs-reality",
+    "source": "guide"
+  },
+  {
+    "id": "guide-myths-hidden-features",
+    "title": "Myths Hidden Features",
+    "keywords": "myths hidden features guide ultimate guide md#myth claude code has hidden features you can unlock with secret flags",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-claude-code-has-hidden-features-you-can-unlock-with-secret-flags",
+    "source": "guide"
+  },
+  {
+    "id": "guide-myths-tasks-api-autonomous",
+    "title": "Myths Tasks API Autonomous",
+    "keywords": "myths tasks api autonomous guide ultimate guide md#myth tasks api allows fully autonomous parallel agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-tasks-api-allows-fully-autonomous-parallel-agents",
+    "source": "guide"
+  },
+  {
+    "id": "guide-myths-100x-faster",
+    "title": "Myths 100x Faster",
+    "keywords": "myths 100x faster guide ultimate guide md#myth claude code 100x faster than other coding tools",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-claude-code-is-100x-faster-than-other-ai-coding-tools",
+    "source": "guide"
+  },
+  {
     "id": "guide-production-safety",
     "title": "Production Safety",
     "keywords": "production safety guide security production safety",
@@ -3417,6 +3977,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "security pr review workflow guide security security hardening md#41 security review workflow",
     "category": "Guide",
     "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-validation-checklist",
+    "title": "Agent Validation Checklist",
+    "keywords": "agent validation checklist guide ultimate guide md#agent validation checklist",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#agent-validation-checklist",
     "source": "guide"
   },
   {
