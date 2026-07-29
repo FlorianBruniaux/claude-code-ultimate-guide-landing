@@ -12,6 +12,102 @@ export interface GuideSearchEntry {
 
 export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
+    "id": "guide-diagram-foundations",
+    "title": "Diagram Foundations",
+    "keywords": "diagram foundations guide diagrams foundations",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-context-and-sessions",
+    "title": "Diagram Context And Sessions",
+    "keywords": "diagram context and sessions guide diagrams context and sessions md#context management zones",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/02-context-and-sessions.md#context-management-zones",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-configuration-system",
+    "title": "Diagram Configuration System",
+    "keywords": "diagram configuration system guide diagrams configuration system md#hooks event pipeline",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/03-configuration-system.md#hooks-event-pipeline",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-architecture-internals",
+    "title": "Diagram Architecture Internals",
+    "keywords": "diagram architecture internals guide diagrams architecture internals",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-mcp-ecosystem",
+    "title": "Diagram MCP Ecosystem",
+    "keywords": "diagram mcp ecosystem guide diagrams mcp ecosystem md#mcp server ecosystem map",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-server-ecosystem-map",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-development-workflows",
+    "title": "Diagram Development Workflows",
+    "keywords": "diagram development workflows guide diagrams development workflows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-multi-agent-patterns",
+    "title": "Diagram Multi Agent Patterns",
+    "keywords": "diagram multi agent patterns guide diagrams multi agent patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-security-and-production",
+    "title": "Diagram Security And Production",
+    "keywords": "diagram security and production guide diagrams security and production",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/08-security-and-production.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-cost-and-optimization",
+    "title": "Diagram Cost And Optimization",
+    "keywords": "diagram cost and optimization guide diagrams cost and optimization",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/09-cost-and-optimization.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-adoption-and-learning",
+    "title": "Diagram Adoption And Learning",
+    "keywords": "diagram adoption and learning guide diagrams adoption and learning md#onboarding adaptive learning paths",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/10-adoption-and-learning.md#onboarding-adaptive-learning-paths",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-context-engineering-series",
+    "title": "Diagram Context Engineering Series",
+    "keywords": "diagram context engineering series guide diagrams context engineering md#the layer context system",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md#the-3-layer-context-system",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-enterprise-governance",
+    "title": "Diagram Enterprise Governance",
+    "keywords": "diagram enterprise governance guide diagrams enterprise governance md#mcp governance workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md#mcp-governance-workflow",
+    "source": "guide"
+  },
+  {
     "id": "guide-exploration-workflow",
     "title": "Exploration Workflow",
     "keywords": "exploration workflow guide workflows exploration workflow",
@@ -22,7 +118,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-script-generation",
     "title": "Script Generation",
-    "keywords": "script generation guide workflows iterative refinement",
+    "keywords": "script generation guide workflows iterative refinement md#script generation workflow",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/iterative-refinement/",
     "source": "guide"
@@ -30,15 +126,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-anti-anchoring-prompts",
     "title": "Anti Anchoring Prompts",
-    "keywords": "anti anchoring prompts examples semantic anchors anchor catalog",
+    "keywords": "anti anchoring prompts examples semantic anchors anchor catalog md#anti anchoring techniques",
     "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/semantic-anchors/anchor-catalog.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/semantic-anchors/anchor-catalog.md#anti-anchoring-techniques",
     "source": "guide"
   },
   {
     "id": "guide-session-limits",
     "title": "Session Limits",
-    "keywords": "session limits guide core architecture",
+    "keywords": "session limits guide core architecture md#session degradation limits",
     "category": "Guide",
     "url": "/guide/architecture/",
     "source": "guide"
@@ -86,9 +182,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-review-anti-hallucination",
     "title": "Review Anti Hallucination",
-    "keywords": "review anti hallucination examples agents code reviewer",
+    "keywords": "review anti hallucination examples agents code reviewer md#anti hallucination rules",
     "category": "Examples > Agents",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/code-reviewer.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/agents/code-reviewer.md#anti-hallucination-rules",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-auto-fix-loop",
+    "title": "Review Auto Fix Loop",
+    "keywords": "review auto fix loop guide workflows iterative refinement md#review auto correction loop",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/iterative-refinement/",
     "source": "guide"
   },
   {
@@ -196,6 +300,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-modular-context-architecture",
+    "title": "Modular Context Architecture",
+    "keywords": "modular context architecture guide ultimate guide md#modular context architecture",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#modular-context-architecture",
+    "source": "guide"
+  },
+  {
     "id": "guide-adversarial-plan-review",
     "title": "Adversarial Plan Review",
     "keywords": "adversarial plan review examples agents plan challenger",
@@ -236,9 +348,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-worktree-dependency-management",
+    "title": "Worktree Dependency Management",
+    "keywords": "worktree dependency management guide ultimate guide md#advanced tooling for worktree management optional",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#advanced-tooling-for-worktree-management-optional",
+    "source": "guide"
+  },
+  {
+    "id": "guide-deployment-automation",
+    "title": "Deployment Automation",
+    "keywords": "deployment automation guide ultimate guide md#deployment automation",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#deployment-automation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-iterative-refinement-community",
+    "title": "Iterative Refinement Community",
+    "keywords": "iterative refinement community guide workflows iterative refinement md#iterative refinement",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/iterative-refinement/",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-teams-large-justified",
     "title": "Agent Teams Large Justified",
-    "keywords": "agent teams large justified guide workflows agent teams",
+    "keywords": "agent teams large justified guide workflows agent teams md#when large teams are justified",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams/",
     "source": "guide"
@@ -401,6 +537,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-attention-mechanics--reliability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-primacy-recency-placement",
+    "title": "Context Primacy Recency Placement",
+    "keywords": "context primacy recency placement guide core context engineering md#primacy and recency placement",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#primacy-and-recency-placement",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-persistent-facts-block",
+    "title": "Context Persistent Facts Block",
+    "keywords": "context persistent facts block guide core context engineering md#persistent facts block",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#persistent-facts-block",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-scratchpad-pattern",
+    "title": "Context Scratchpad Pattern",
+    "keywords": "context scratchpad pattern guide core context engineering md#scratchpad pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#scratchpad-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-rolling-summaries",
+    "title": "Context Rolling Summaries",
+    "keywords": "context rolling summaries guide core context engineering md#rolling context summaries",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#rolling-context-summaries",
     "source": "guide"
   },
   {
@@ -828,9 +996,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-rpi-slash-commands",
+    "title": "Rpi Slash Commands",
+    "keywords": "rpi slash commands guide workflows rpi md#slash command templates",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rpi-vs-other-workflows",
+    "title": "Rpi Vs Other Workflows",
+    "keywords": "rpi vs other workflows guide workflows rpi md#comparison other workflows",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
     "id": "guide-changelog-fragments-workflow",
     "title": "Changelog Fragments Workflow",
     "keywords": "changelog fragments workflow guide workflows changelog fragments",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/changelog-fragments/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-changelog-fragments-hook",
+    "title": "Changelog Fragments Hook",
+    "keywords": "changelog fragments hook guide workflows changelog fragments md#changelog fragments enforced per documentation",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/changelog-fragments/",
     "source": "guide"
@@ -852,11 +1044,27 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-smart-suggest-routing-why",
+    "title": "Smart Suggest Routing Why",
+    "keywords": "smart suggest routing why guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/smart-suggest-routing/",
+    "source": "guide"
+  },
+  {
     "id": "guide-smart-suggest-routing-example",
     "title": "Smart Suggest Routing Example",
     "keywords": "smart suggest routing example examples hooks bm25 routing",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bm25-routing/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-identity-reinjection-hook",
+    "title": "Identity Reinjection Hook",
+    "keywords": "identity reinjection hook guide ultimate guide md#identity injection after compaction",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#identity-re-injection-after-compaction",
     "source": "guide"
   },
   {
@@ -900,6 +1108,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-session-resume-limitations",
+    "title": "Session Resume Limitations",
+    "keywords": "session resume limitations guide ops observability md#session resume limitations cross folder migration",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-activity-monitoring",
+    "title": "Activity Monitoring",
+    "keywords": "activity monitoring guide ops observability md#activity monitoring",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-external-monitoring-tools",
+    "title": "External Monitoring Tools",
+    "keywords": "external monitoring tools guide ops observability md#external monitoring tools",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-proxying-claude-code",
+    "title": "Proxying Claude Code",
+    "keywords": "proxying claude code guide ops observability md#proxying claude code",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-output-styles",
+    "title": "Output Styles",
+    "keywords": "output styles guide ultimate guide md#97 output styles",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#97-output-styles",
+    "source": "guide"
+  },
+  {
     "id": "guide-output-styles-setting",
     "title": "Output Styles Setting",
     "keywords": "output styles setting guide core settings reference md#outputstyle",
@@ -924,6 +1172,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-scheduled-tasks-desktop",
+    "title": "Scheduled Tasks Desktop",
+    "keywords": "scheduled tasks desktop guide ultimate guide md#desktop scheduled tasks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#desktop-scheduled-tasks",
+    "source": "guide"
+  },
+  {
     "id": "guide-bridge-script",
     "title": "Bridge Script",
     "keywords": "bridge script examples scripts bridge",
@@ -940,11 +1196,27 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-cost-levers-table",
+    "title": "Cost Levers Table",
+    "keywords": "cost levers table guide ultimate guide md#cost optimization levers native api level",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cost-optimization-levers-native-vs-api-level",
+    "source": "guide"
+  },
+  {
     "id": "guide-batch-api-cost-lever",
     "title": "Batch API Cost Lever",
     "keywords": "batch api cost lever guide core architecture md#message batches api",
     "category": "Guide",
     "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rtk-guide",
+    "title": "RTK Guide",
+    "keywords": "rtk guide guide ultimate guide md#command output optimization with rtk",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#command-output-optimization-with-rtk",
     "source": "guide"
   },
   {
@@ -1004,6 +1276,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-generative-ui-guide",
+    "title": "Generative Ui Guide",
+    "keywords": "generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
     "id": "guide-pdf-generation",
     "title": "Pdf Generation",
     "keywords": "pdf generation guide workflows pdf generation",
@@ -1044,6 +1324,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-gstack-strategic-gate",
+    "title": "Gstack Strategic Gate",
+    "keywords": "gstack strategic gate guide workflows gstack workflow md#the gap this fills pre implementation strategic gate",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
     "id": "guide-gstack-plan-ceo-review",
     "title": "Gstack Plan Ceo Review",
     "keywords": "gstack plan ceo review examples skills plan pipeline ceo review skill",
@@ -1057,6 +1345,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "gstack plan eng review examples skills plan pipeline eng review skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/eng-review/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-browse-non-mcp",
+    "title": "Gstack Browse Non MCP",
+    "keywords": "gstack browse non mcp guide workflows gstack workflow md#browse non mcp native browser automation",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-full-cycle",
+    "title": "Gstack Full Cycle",
+    "keywords": "gstack full cycle guide workflows gstack workflow md#full cycle demo",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-when-to-use",
+    "title": "Gstack When To Use",
+    "keywords": "gstack when to use guide workflows gstack workflow md#when use this other workflows",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/",
     "source": "guide"
   },
   {
@@ -1364,6 +1676,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-learning-claude-config",
+    "title": "Learning Claude Config",
+    "keywords": "learning claude config guide roles learning with md#claudemd configuration for learning mode",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-30day-plan",
+    "title": "Learning 30day Plan",
+    "keywords": "learning 30day plan guide roles learning with md#30 day progression plan",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-roles-guide",
     "title": "AI Roles Guide",
     "keywords": "ai roles guide guide roles roles",
@@ -1476,9 +1804,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-vibe-coding-trap",
+    "title": "Vibe Coding Trap",
+    "keywords": "vibe coding trap guide roles learning with md#the vibe coding trap",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-traceability-guide",
     "title": "AI Traceability Guide",
     "keywords": "ai traceability guide guide ops traceability",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-why",
+    "title": "AI Traceability Why",
+    "keywords": "ai traceability why guide ops traceability md#why traceability matters now",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-disclosure-spectrum",
+    "title": "AI Traceability Disclosure Spectrum",
+    "keywords": "ai traceability disclosure spectrum guide ops traceability md#the disclosure spectrum",
     "category": "Guide",
     "url": "/guide/ai-traceability/",
     "source": "guide"
@@ -1564,9 +1916,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-sandbox-native-cc",
+    "title": "Sandbox Native Cc",
+    "keywords": "sandbox native cc guide core architecture md#native sandbox v210",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
     "id": "guide-sandbox-native-guide",
     "title": "Sandbox Native Guide",
     "keywords": "sandbox native guide guide security sandbox native",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-why",
+    "title": "Sandbox Native Why",
+    "keywords": "sandbox native why guide security sandbox native md#1 why native sandboxing",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-decision-tree",
+    "title": "Sandbox Native Decision Tree",
+    "keywords": "sandbox native decision tree guide security sandbox native md#10 decision tree native docker sandboxes",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -1593,6 +1969,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox validation hook examples hooks bash sandbox validation",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/sandbox-validation.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-comparison-matrix",
+    "title": "Sandbox Comparison Matrix",
+    "keywords": "sandbox comparison matrix guide security sandbox isolation md#6 comparison matrix",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/",
     "source": "guide"
   },
   {
@@ -1916,6 +2300,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-config-hierarchy",
+    "title": "Config Hierarchy",
+    "keywords": "config hierarchy guide ultimate guide md#configuration hierarchy",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#configuration-hierarchy",
+    "source": "guide"
+  },
+  {
+    "id": "guide-config-git-strategy-project",
+    "title": "Config Git Strategy Project",
+    "keywords": "config git strategy project guide ultimate guide md#git strategy for project configuration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#git-strategy-for-project-configuration",
+    "source": "guide"
+  },
+  {
+    "id": "guide-config-backup-strategies",
+    "title": "Config Backup Strategies",
+    "keywords": "config backup strategies guide ultimate guide md#backup strategies",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#backup-strategies",
+    "source": "guide"
+  },
+  {
+    "id": "guide-config-multi-machine-sync",
+    "title": "Config Multi Machine Sync",
+    "keywords": "config multi machine sync guide ultimate guide md#multi machine sync",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-machine-sync",
+    "source": "guide"
+  },
+  {
+    "id": "guide-config-community-solutions",
+    "title": "Config Community Solutions",
+    "keywords": "config community solutions guide ultimate guide md#community solutions",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#community-solutions",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-secrets-management",
+    "title": "MCP Secrets Management",
+    "keywords": "mcp secrets management guide ultimate guide md#831 mcp secrets management",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#831-mcp-secrets-management",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-secrets-pre-commit",
+    "title": "MCP Secrets Pre Commit",
+    "keywords": "mcp secrets pre commit guide ultimate guide md#pre commit secret detection",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pre-commit-secret-detection",
+    "source": "guide"
+  },
+  {
     "id": "guide-sync-claude-config-script",
     "title": "Sync Claude Config Script",
     "keywords": "sync claude config script examples scripts sync claude config",
@@ -1948,11 +2388,67 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-architecture-visual-overview",
+    "title": "Architecture Visual Overview",
+    "keywords": "architecture visual overview guide core architecture",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-master-loop",
+    "title": "Architecture Master Loop",
+    "keywords": "architecture master loop guide core architecture md#1 the master loop",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-subagents",
+    "title": "Architecture Subagents",
+    "keywords": "architecture subagents guide core architecture md#4 sub agent architecture",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-mcp",
+    "title": "Architecture MCP",
+    "keywords": "architecture mcp guide core architecture md#mcp architecture overview",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
     "id": "guide-architecture-mcp-visual",
     "title": "Architecture MCP Visual",
     "keywords": "architecture mcp visual guide images mcp architecture diagram svg",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/mcp-architecture-diagram.svg",
+    "source": "guide"
+  },
+  {
+    "id": "guide-system-prompts-architecture",
+    "title": "System Prompts Architecture",
+    "keywords": "system prompts architecture guide core architecture md#system prompt contents",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-apps-evolution",
+    "title": "MCP Apps Evolution",
+    "keywords": "mcp apps evolution guide ultimate guide md#mcp evolution apps extension sep 1865",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-evolution-apps-extension-sep-1865",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-billing-change",
+    "title": "Programmatic Billing Change",
+    "keywords": "programmatic billing change guide ultimate guide md#the interactiveprogrammatic billing split effective june 2026",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-interactiveprogrammatic-billing-split-effective-june-15-2026",
     "source": "guide"
   },
   {
@@ -2004,6 +2500,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-programmatic-billing-api-key-trap",
+    "title": "Programmatic Billing API Key Trap",
+    "keywords": "programmatic billing api key trap guide ultimate guide md#the anthropic api key billing trap",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-anthropic_api_key-billing-trap",
+    "source": "guide"
+  },
+  {
+    "id": "guide-semantic-anchors-catalog",
+    "title": "Semantic Anchors Catalog",
+    "keywords": "semantic anchors catalog examples semantic anchors anchor catalog",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/semantic-anchors/anchor-catalog.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-planner-agent",
     "title": "Planner Agent",
     "keywords": "planner agent examples agents planner",
@@ -2031,6 +2543,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-workflows-task-management",
     "title": "Workflows Task Management",
     "keywords": "workflows task management guide workflows task management",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-planning",
+    "title": "Task Workflow Planning",
+    "keywords": "task workflow planning guide workflows task management md#workflow phase task planning",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-execution",
+    "title": "Task Workflow Execution",
+    "keywords": "task workflow execution guide workflows task management md#workflow phase task execution",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-tdd-integration",
+    "title": "Task Workflow TDD Integration",
+    "keywords": "task workflow tdd integration guide workflows task management md#integration tdd task management",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/task-management/",
     "source": "guide"
@@ -2140,6 +2676,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-resource-evaluations-appendix",
+    "title": "Resource Evaluations Appendix",
+    "keywords": "resource evaluations appendix guide ultimate guide md#appendix resource evaluation process",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#appendix-c-resource-evaluation-process",
+    "source": "guide"
+  },
+  {
     "id": "guide-audit-agents-skills-command",
     "title": "Audit Agents Skills Command",
     "keywords": "audit agents skills command examples skills audit agents skills skill",
@@ -2164,9 +2708,49 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-practitioner-insights",
+    "title": "Practitioner Insights",
+    "keywords": "practitioner insights guide ecosystem ecosystem md#112 practitioner insights",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-dave-van-veen",
+    "title": "Practitioner Dave Van Veen",
+    "keywords": "practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-matteo-collina",
+    "title": "Practitioner Matteo Collina",
+    "keywords": "practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-outcome-engineering-o16g",
+    "title": "Outcome Engineering O16g",
+    "keywords": "outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-addy-osmani",
+    "title": "Practitioner Addy Osmani",
+    "keywords": "practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
     "id": "guide-verification-paradox",
     "title": "Verification Paradox",
-    "keywords": "verification paradox guide security production safety",
+    "keywords": "verification paradox guide security production safety md#rule the verification paradox",
     "category": "Guide",
     "url": "/guide/production-safety/",
     "source": "guide"
@@ -2175,6 +2759,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-devops-sre-guide",
     "title": "Devops Sre Guide",
     "keywords": "devops sre guide guide ops devops sre",
+    "category": "Guide",
+    "url": "/guide/devops-sre/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-devops-incident-response",
+    "title": "Devops Incident Response",
+    "keywords": "devops incident response guide ops devops sre md#pattern incident response",
+    "category": "Guide",
+    "url": "/guide/devops-sre/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-devops-quick-reference",
+    "title": "Devops Quick Reference",
+    "keywords": "devops quick reference guide ops devops sre md#quick reference",
     "category": "Guide",
     "url": "/guide/devops-sre/",
     "source": "guide"
@@ -2212,9 +2812,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-pencil-vs-figma",
+    "title": "Pencil Vs Figma",
+    "keywords": "pencil vs figma guide workflows design code md#pencil figma mcp",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/design-to-code/",
+    "source": "guide"
+  },
+  {
     "id": "guide-dual-instance-workflow",
     "title": "Dual Instance Workflow",
     "keywords": "dual instance workflow guide workflows dual instance planning",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dual-instance-planning/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-setup",
+    "title": "Dual Instance Setup",
+    "keywords": "dual instance setup guide workflows dual instance planning md#dual instance planning workflow",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/dual-instance-planning/",
     "source": "guide"
@@ -2324,11 +2940,35 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-teams",
+    "title": "Agent Teams",
+    "keywords": "agent teams guide workflows agent teams",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-teams-quick-start",
     "title": "Agent Teams Quick Start",
     "keywords": "agent teams quick start guide workflows agent teams quick start",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams-quick-start/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-workflow-impact",
+    "title": "Agent Teams Workflow Impact",
+    "keywords": "agent teams workflow impact guide workflows agent teams md#agent teams workflow",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-teams-decision-tree",
+    "title": "Agent Teams Decision Tree",
+    "keywords": "agent teams decision tree guide workflows agent teams md#decision tree when use agent teams",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
     "source": "guide"
   },
   {
@@ -2356,6 +2996,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-spec-modular-design",
+    "title": "Spec Modular Design",
+    "keywords": "spec modular design guide workflows spec first md#modular spec design",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spec-command-template",
+    "title": "Spec Command Template",
+    "keywords": "spec command template guide workflows spec first md#command spec template",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spec-anti-monolithic",
+    "title": "Spec Anti Monolithic",
+    "keywords": "spec anti monolithic guide workflows spec first md#anti pattern monolithic claudemd",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spec-task-granularity",
+    "title": "Spec Task Granularity",
+    "keywords": "spec task granularity guide workflows spec first md#task granularity sizing work for agents",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-spec-prd-checklist",
+    "title": "Spec Prd Checklist",
+    "keywords": "spec prd checklist guide workflows spec first md#prd quality checklist",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
     "id": "guide-tdd-verification-gap",
     "title": "TDD Verification Gap",
     "keywords": "tdd verification gap guide workflows tdd with claude",
@@ -2377,6 +3057,70 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "session lifecycle verification hook examples hooks bash verification gate",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/verification-gate.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-agents-md-as-toc",
+    "title": "Harness Agents Md As Toc",
+    "keywords": "harness agents md as toc guide ultimate guide md#9251 agentsmd toc not encyclopedia",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9251-agentsmd-as-toc-not-encyclopedia",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-context-packing",
+    "title": "AI Ecosystem Context Packing",
+    "keywords": "ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-multi-ide-sync",
+    "title": "AI Ecosystem Multi Ide Sync",
+    "keywords": "ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agents-md-support-status",
+    "title": "Agents Md Support Status",
+    "keywords": "agents md support status guide ecosystem ecosystem md#agentsmd support status",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-build-vs-use",
+    "title": "AI Ecosystem Build Vs Use",
+    "keywords": "ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture-diagrams-input",
+    "title": "Architecture Diagrams Input",
+    "keywords": "architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-voice-to-text",
+    "title": "AI Ecosystem Voice To Text",
+    "keywords": "ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-alternative-providers",
+    "title": "AI Ecosystem Alternative Providers",
+    "keywords": "ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -2433,6 +3177,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cowork summary guide cowork",
     "category": "Guide",
     "url": "/guide/cowork/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cowork-section",
+    "title": "Cowork Section",
+    "keywords": "cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -2564,9 +3316,41 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-production-safety",
+    "title": "Production Safety",
+    "keywords": "production safety guide security production safety",
+    "category": "Guide",
+    "url": "/guide/production-safety/",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-hardening",
     "title": "Security Hardening",
     "keywords": "security hardening guide security security hardening",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-cve-summary",
+    "title": "Security CVE Summary",
+    "keywords": "security cve summary guide security security hardening md#cve summary 2025 2026",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-malicious-extensions",
+    "title": "Security Malicious Extensions",
+    "keywords": "security malicious extensions guide security security hardening md#15 malicious extensions claude attack surface",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-kill-switch",
+    "title": "Security Kill Switch",
+    "keywords": "security kill switch guide security security hardening md#35 kill switch containment architecture",
     "category": "Guide",
     "url": "/guide/security-hardening/",
     "source": "guide"
@@ -2604,6 +3388,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-security-cc-scanner",
+    "title": "Security Cc Scanner",
+    "keywords": "security cc scanner guide security security hardening md#claude code security scanner research preview",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-patcher-agent",
     "title": "Security Patcher Agent",
     "keywords": "security patcher agent examples agents security patcher",
@@ -2617,6 +3409,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "security gate hook examples hooks bash security gate",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/security-gate.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-pr-review-workflow",
+    "title": "Security PR Review Workflow",
+    "keywords": "security pr review workflow guide security security hardening md#41 security review workflow",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
     "source": "guide"
   },
   {
@@ -2796,11 +3596,219 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-anthropic-api-patterns",
+    "title": "Anthropic API Patterns",
+    "keywords": "anthropic api patterns guide core architecture md#anthropic api patterns for architects",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-tool-choice-parameter",
+    "title": "Tool Choice Parameter",
+    "keywords": "tool choice parameter guide core architecture md#tool choice controlling when tools fire",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-strict-mode-structured-outputs",
+    "title": "Strict Mode Structured Outputs",
+    "keywords": "strict mode structured outputs guide core architecture md#structured outputs strict mode",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-max-turns-guidance",
+    "title": "Max Turns Guidance",
+    "keywords": "max turns guidance guide core architecture md#controlling loop depth with max turns",
+    "category": "Guide",
+    "url": "/guide/architecture/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-prompt-engineering-patterns",
+    "title": "Prompt Engineering Patterns",
+    "keywords": "prompt engineering patterns guide ultimate guide md#210 prompt engineering patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#210-prompt-engineering-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-few-shot-prompting",
+    "title": "Few Shot Prompting",
+    "keywords": "few shot prompting guide ultimate guide md#few shot prompting",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#few-shot-prompting",
+    "source": "guide"
+  },
+  {
+    "id": "guide-validation-retry-loop",
+    "title": "Validation Retry Loop",
+    "keywords": "validation retry loop guide ultimate guide md#validation retry loop",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#validation-retry-loop",
+    "source": "guide"
+  },
+  {
+    "id": "guide-self-review-contamination",
+    "title": "Self Review Contamination",
+    "keywords": "self review contamination guide ultimate guide md#self review contamination",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#self-review-contamination",
+    "source": "guide"
+  },
+  {
+    "id": "guide-structured-outputs-schema-design",
+    "title": "Structured Outputs Schema Design",
+    "keywords": "structured outputs schema design guide ultimate guide md#211 structured outputs schema design",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#211-structured-outputs--schema-design",
+    "source": "guide"
+  },
+  {
+    "id": "guide-confidence-calibration",
+    "title": "Confidence Calibration",
+    "keywords": "confidence calibration guide ultimate guide md#confidence calibration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#confidence-calibration",
+    "source": "guide"
+  },
+  {
     "id": "guide-production-reliability-guide",
     "title": "Production Reliability Guide",
     "keywords": "production reliability guide guide workflows production reliability",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-escalation-rule-based-routing",
+    "title": "Escalation Rule Based Routing",
+    "keywords": "escalation rule based routing guide workflows production reliability md#rule based routing from structured output",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-circuit-breaker-pattern",
+    "title": "Circuit Breaker Pattern",
+    "keywords": "circuit breaker pattern guide workflows production reliability md#circuit breaker pattern",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-structured-agent-error",
+    "title": "Structured Agent Error",
+    "keywords": "structured agent error guide workflows production reliability md#structured error propagation",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-structured-human-handoff",
+    "title": "Structured Human Handoff",
+    "keywords": "structured human handoff guide workflows production reliability md#structured human handoff",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-source-conflict-resolution",
+    "title": "Source Conflict Resolution",
+    "keywords": "source conflict resolution guide workflows production reliability md#source conflict resolution",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/production-reliability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hub-and-spoke-coordinator",
+    "title": "Hub And Spoke Coordinator",
+    "keywords": "hub and spoke coordinator guide workflows agent teams md#hub and spoke coordinator",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-programmatic-prerequisites",
+    "title": "Programmatic Prerequisites",
+    "keywords": "programmatic prerequisites guide workflows agent teams md#programmatic prerequisites",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dynamic-subagent-selection",
+    "title": "Dynamic Subagent Selection",
+    "keywords": "dynamic subagent selection guide workflows agent teams md#dynamic subagent selection",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-research-space-partitioning",
+    "title": "Research Space Partitioning",
+    "keywords": "research space partitioning guide workflows agent teams md#research space partitioning",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-crash-recovery-manifest",
+    "title": "Crash Recovery Manifest",
+    "keywords": "crash recovery manifest guide workflows agent teams md#crash recovery manifest",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-iterative-refinement-stopping",
+    "title": "Iterative Refinement Stopping",
+    "keywords": "iterative refinement stopping guide workflows agent teams md#iterative refinement loop",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-narrow-task-decomposition",
+    "title": "Narrow Task Decomposition",
+    "keywords": "narrow task decomposition guide workflows agent teams md#narrow task decomposition",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-advanced-mcp-tool-design",
+    "title": "Advanced MCP Tool Design",
+    "keywords": "advanced mcp tool design guide ecosystem mcp servers ecosystem md#advanced mcp tool design",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-resources-vs-tools",
+    "title": "MCP Resources Vs Tools",
+    "keywords": "mcp resources vs tools guide ecosystem mcp servers ecosystem md#mcp resources tools",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-tool-naming-conflicts",
+    "title": "MCP Tool Naming Conflicts",
+    "keywords": "mcp tool naming conflicts guide ecosystem mcp servers ecosystem md#tool naming and system prompt conflicts",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-task-scoped-profiles",
+    "title": "MCP Task Scoped Profiles",
+    "keywords": "mcp task scoped profiles guide ecosystem mcp servers ecosystem md#task scoped tool profiles",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
     "source": "guide"
   },
   {
