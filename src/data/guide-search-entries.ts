@@ -142,7 +142,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-scope-success-rates",
     "title": "Scope Success Rates",
-    "keywords": "scope success rates guide roles adoption approaches",
+    "keywords": "scope success rates guide roles adoption approaches md#what know empirical data",
     "category": "Guide",
     "url": "/guide/adoption-approaches/",
     "source": "guide"
@@ -537,6 +537,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-attention-mechanics--reliability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-lost-in-middle",
+    "title": "Context Lost In Middle",
+    "keywords": "context lost in middle guide core context engineering md#the lost the middle problem",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#the-lost-in-the-middle-problem",
     "source": "guide"
   },
   {
@@ -988,9 +996,65 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-known-issues-token-consumption",
+    "title": "Known Issues Token Consumption",
+    "keywords": "known issues token consumption guide core known issues md#2 excessive token consumption jan 2026 present",
+    "category": "Guide",
+    "url": "/guide/known-issues/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-known-issues-model-quality-aug2025",
+    "title": "Known Issues Model Quality Aug2025",
+    "keywords": "known issues model quality aug2025 guide core known issues md#model quality degradation aug sep 2025",
+    "category": "Guide",
+    "url": "/guide/known-issues/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-known-issues-llm-variance",
+    "title": "Known Issues LLM Variance",
+    "keywords": "known issues llm variance guide core known issues md#llm day day performance variance",
+    "category": "Guide",
+    "url": "/guide/known-issues/",
+    "source": "guide"
+  },
+  {
     "id": "guide-rpi-workflow",
     "title": "Rpi Workflow",
     "keywords": "rpi workflow guide workflows rpi",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rpi-when-to-use",
+    "title": "Rpi When To Use",
+    "keywords": "rpi when to use guide workflows rpi md#when use rpi",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rpi-phase1-research",
+    "title": "Rpi Phase1 Research",
+    "keywords": "rpi phase1 research guide workflows rpi md#phase research",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rpi-phase2-plan",
+    "title": "Rpi Phase2 Plan",
+    "keywords": "rpi phase2 plan guide workflows rpi md#phase plan",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/rpi/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rpi-phase3-implement",
+    "title": "Rpi Phase3 Implement",
+    "keywords": "rpi phase3 implement guide workflows rpi md#phase implement",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/rpi/",
     "source": "guide"
@@ -1015,6 +1079,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-changelog-fragments-workflow",
     "title": "Changelog Fragments Workflow",
     "keywords": "changelog fragments workflow guide workflows changelog fragments",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/changelog-fragments/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-changelog-fragments-claude-rule",
+    "title": "Changelog Fragments Claude Rule",
+    "keywords": "changelog fragments claude rule guide workflows changelog fragments md#layer claudemd workflow rule",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/changelog-fragments/",
     "source": "guide"
@@ -1111,6 +1183,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-session-resume-limitations",
     "title": "Session Resume Limitations",
     "keywords": "session resume limitations guide ops observability md#session resume limitations cross folder migration",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-migration-manual",
+    "title": "Session Migration Manual",
+    "keywords": "session migration manual guide ops observability md#manual migration recommended",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-migration-risks",
+    "title": "Session Migration Risks",
+    "keywords": "session migration risks guide ops observability md#migration risks caveats",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-migration-community-tool",
+    "title": "Session Migration Community Tool",
+    "keywords": "session migration community tool guide ops observability md#community automation tool",
     "category": "Guide",
     "url": "/guide/observability/",
     "source": "guide"
@@ -1678,7 +1774,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
-    "keywords": "learning quick check guide roles learning with",
+    "keywords": "learning quick check guide roles learning with md#quick self check start here",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-uval-protocol",
+    "title": "Learning Uval Protocol",
+    "keywords": "learning uval protocol guide roles learning with md#the uval protocol",
     "category": "Guide",
     "url": "/guide/learning-with-ai/",
     "source": "guide"
@@ -1692,9 +1796,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-learning-breaking-dependency",
+    "title": "Learning Breaking Dependency",
+    "keywords": "learning breaking dependency guide roles learning with md#breaking dependency",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-embracing-ai",
+    "title": "Learning Embracing AI",
+    "keywords": "learning embracing ai guide roles learning with md#embracing tools",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-30day-plan",
     "title": "Learning 30day Plan",
     "keywords": "learning 30day plan guide roles learning with md#30 day progression plan",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-red-flags",
+    "title": "Learning Red Flags",
+    "keywords": "learning red flags guide roles learning with md#red flags youre slipping",
     "category": "Guide",
     "url": "/guide/learning-with-ai/",
     "source": "guide"
@@ -1748,6 +1876,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-adoption-guide",
+    "title": "Adoption Guide",
+    "keywords": "adoption guide guide roles adoption approaches",
+    "category": "Guide",
+    "url": "/guide/adoption-approaches/",
+    "source": "guide"
+  },
+  {
     "id": "guide-adoption-l0-l5-shapiro",
     "title": "Adoption L0 L5 Shapiro",
     "keywords": "adoption l0 l5 shapiro guide roles adoption approaches md#the scale where your team",
@@ -1761,6 +1897,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3",
     "category": "Guide",
     "url": "/guide/adoption-approaches/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-productivity-rct-metr",
+    "title": "Productivity Rct Metr",
+    "keywords": "productivity rct metr guide roles learning with md#productivity research",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/",
     "source": "guide"
   },
   {
@@ -1852,6 +1996,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-traceability-promptpwnd",
+    "title": "AI Traceability Promptpwnd",
+    "keywords": "ai traceability promptpwnd guide ops traceability md#61 promptpwnd vulnerability",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-implementation",
+    "title": "AI Traceability Implementation",
+    "keywords": "ai traceability implementation guide ops traceability md#implementation guide",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-templates",
+    "title": "AI Traceability Templates",
+    "keywords": "ai traceability templates guide ops traceability md#templates",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-disclosure-contributing",
     "title": "AI Disclosure Contributing",
     "keywords": "ai disclosure contributing examples config contributing disclosure",
@@ -1905,6 +2073,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "tts workflow guide workflows tts setup",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/tts-setup/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-tts-ai-ecosystem",
+    "title": "Tts AI Ecosystem",
+    "keywords": "tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -2020,11 +2196,91 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-sandbox-native-config-template",
-    "title": "Sandbox Native Config Template",
-    "keywords": "sandbox native config template examples config sandbox native",
+    "id": "guide-sandbox-credentials-files",
+    "title": "Sandbox Credentials Files",
+    "keywords": "sandbox credentials files guide core settings reference md#sandboxcredentialsfiles",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxcredentialsfiles",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-credentials-envvars",
+    "title": "Sandbox Credentials Envvars",
+    "keywords": "sandbox credentials envvars guide core settings reference md#sandboxcredentialsenvvars",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxcredentialsenvvars",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-filesystem-disabled",
+    "title": "Sandbox Filesystem Disabled",
+    "keywords": "sandbox filesystem disabled guide core settings reference md#sandboxfilesystemdisabled",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxfilesystemdisabled",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-strict-allowlist",
+    "title": "Sandbox Strict Allowlist",
+    "keywords": "sandbox strict allowlist guide core settings reference md#sandboxnetworkstrictallowlist",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxnetworkstrictallowlist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-allow-apple-events",
+    "title": "Sandbox Allow Apple Events",
+    "keywords": "sandbox allow apple events guide core settings reference md#sandboxallowappleevents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxallowappleevents",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-auto-allow-exceptions",
+    "title": "Sandbox Auto Allow Exceptions",
+    "keywords": "sandbox auto allow exceptions guide security sandbox native md#what still applies auto allow mode",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-subagents-inherit",
+    "title": "Sandbox Subagents Inherit",
+    "keywords": "sandbox subagents inherit guide security sandbox native md#subagents",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-excluded-commands-traps",
+    "title": "Sandbox Excluded Commands Traps",
+    "keywords": "sandbox excluded commands traps guide security sandbox native md#three traps all verified 21220",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-config-example",
+    "title": "Sandbox Config Example",
+    "keywords": "sandbox config example examples config sandbox native",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/sandbox-native.json",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-settings-files-protected",
+    "title": "Sandbox Settings Files Protected",
+    "keywords": "sandbox settings files protected guide security sandbox native md#default behavior",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-ubuntu-apparmor",
+    "title": "Sandbox Ubuntu Apparmor",
+    "keywords": "sandbox ubuntu apparmor guide security sandbox native md#linuxwsl2 bubblewrap",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/",
     "source": "guide"
   },
   {
@@ -3022,7 +3278,23 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-chain-of-verification",
     "title": "Chain Of Verification",
-    "keywords": "chain of verification guide core methodologies",
+    "keywords": "chain of verification guide ultimate guide md#se cove chain verification",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#se-cove--chain-of-verification",
+    "source": "guide"
+  },
+  {
+    "id": "guide-verification-loops",
+    "title": "Verification Loops",
+    "keywords": "verification loops guide core methodologies md#tier implementation",
+    "category": "Guide",
+    "url": "/guide/methodologies/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gsd-methodology",
+    "title": "Gsd Methodology",
+    "keywords": "gsd methodology guide core methodologies md#tier strategic orchestration",
     "category": "Guide",
     "url": "/guide/methodologies/",
     "source": "guide"
@@ -3033,14 +3305,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "bmad method tool usage guide workflows spec first md#with bmad method multi role planning",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/spec-first/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-bmad-method-strategic",
-    "title": "Bmad Method Strategic",
-    "keywords": "bmad method strategic guide core methodologies md#tier strategic orchestration",
-    "category": "Guide",
-    "url": "/guide/methodologies/",
     "source": "guide"
   },
   {
@@ -3164,9 +3428,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-practitioner-steinberger",
+    "title": "Practitioner Steinberger",
+    "keywords": "practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
     "id": "guide-practitioner-addy-osmani",
     "title": "Practitioner Addy Osmani",
     "keywords": "practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-alan",
+    "title": "Practitioner Alan",
+    "keywords": "practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras",
     "category": "Guide",
     "url": "/guide/ai-ecosystem/",
     "source": "guide"
@@ -3191,6 +3471,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-devops-incident-response",
     "title": "Devops Incident Response",
     "keywords": "devops incident response guide ops devops sre md#pattern incident response",
+    "category": "Guide",
+    "url": "/guide/devops-sre/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-devops-iac-patterns",
+    "title": "Devops Iac Patterns",
+    "keywords": "devops iac patterns guide ops devops sre md#pattern infrastructure code",
+    "category": "Guide",
+    "url": "/guide/devops-sre/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-devops-guardrails",
+    "title": "Devops Guardrails",
+    "keywords": "devops guardrails guide ops devops sre md#guardrails adoption",
     "category": "Guide",
     "url": "/guide/devops-sre/",
     "source": "guide"
@@ -3724,6 +4020,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-spec-operational-boundaries",
+    "title": "Spec Operational Boundaries",
+    "keywords": "spec operational boundaries guide workflows spec first md#operational boundaries",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/",
+    "source": "guide"
+  },
+  {
     "id": "guide-spec-command-template",
     "title": "Spec Command Template",
     "keywords": "spec command template guide workflows spec first md#command spec template",
@@ -3780,6 +4084,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-atdd-with-agents",
+    "title": "Atdd With Agents",
+    "keywords": "atdd with agents guide core methodologies md#tier behavior acceptance",
+    "category": "Guide",
+    "url": "/guide/methodologies/",
+    "source": "guide"
+  },
+  {
     "id": "guide-harness-agents-md-as-toc",
     "title": "Harness Agents Md As Toc",
     "keywords": "harness agents md as toc guide ultimate guide md#9251 agentsmd toc not encyclopedia",
@@ -3801,6 +4113,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cheatsheet guide ultimate guide md#105 cheatsheet",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#105-cheatsheet",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-goose",
+    "title": "AI Ecosystem Goose",
+    "keywords": "ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-ecosystem-goose-comparison",
+    "title": "AI Ecosystem Goose Comparison",
+    "keywords": "ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences",
+    "category": "Guide",
+    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -4132,6 +4460,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-security-mcp-scan-tool",
+    "title": "Security MCP Scan Tool",
+    "keywords": "security mcp scan tool guide security security hardening md#11 mcp vetting workflow",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-malicious-extensions",
     "title": "Security Malicious Extensions",
     "keywords": "security malicious extensions guide security security hardening md#15 malicious extensions claude attack surface",
@@ -4143,6 +4479,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-security-kill-switch",
     "title": "Security Kill Switch",
     "keywords": "security kill switch guide security security hardening md#35 kill switch containment architecture",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-claude-folder-audit",
+    "title": "Security Claude Folder Audit",
+    "keywords": "security claude folder audit guide security security hardening md#5 minute claude audit checklist",
     "category": "Guide",
     "url": "/guide/security-hardening/",
     "source": "guide"
@@ -4591,6 +4935,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "id": "guide-advanced-mcp-tool-design",
     "title": "Advanced MCP Tool Design",
     "keywords": "advanced mcp tool design guide ecosystem mcp servers ecosystem md#advanced mcp tool design",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-isretryable",
+    "title": "MCP Isretryable",
+    "keywords": "mcp isretryable guide ecosystem mcp servers ecosystem md#isretryable application level convention",
+    "category": "Guide",
+    "url": "/guide/mcp-servers-ecosystem/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-iserror-semantics",
+    "title": "MCP Iserror Semantics",
+    "keywords": "mcp iserror semantics guide ecosystem mcp servers ecosystem md#iserror false empty content iserror true",
     "category": "Guide",
     "url": "/guide/mcp-servers-ecosystem/",
     "source": "guide"

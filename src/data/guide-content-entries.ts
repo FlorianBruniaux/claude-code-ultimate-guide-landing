@@ -5575,7 +5575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-5-sandbox-modes",
     "title": "5. Sandbox Modes",
-    "keywords": "5 sandbox modes native sandboxing in claude code auto-allow mode behavior : - bash commands automatically approved if they run inside sandbox - commands incompatible with sandbox (e.g., need non-allo auto allow mode regular permissions mode switching modes",
+    "keywords": "5 sandbox modes native sandboxing in claude code auto-allow mode behavior : - bash commands automatically approved if they run inside sandbox - commands incompatible with sandbox (e.g., need non-allo auto allow mode what still applies in auto allow mode subagents regular permissions mode switching modes",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#5-sandbox-modes",
     "source": "guide"
@@ -5583,7 +5583,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-6-escape-hatch",
     "title": "6. Escape Hatch",
-    "keywords": "6 escape hatch native sandboxing in claude code parameter some tools are incompatible with sandboxing (e.g., , ). claude code includes an escape hatch: how it works : 1. command fails due to sandbox dangerouslydisablesandbox parameter disabling the escape hatch excludedcommands",
+    "keywords": "6 escape hatch native sandboxing in claude code parameter some tools are incompatible with sandboxing (e.g., , ). claude code includes an escape hatch: how it works : 1. command fails due to sandbox dangerouslydisablesandbox parameter disabling the escape hatch excludedcommands three traps all verified on 2 1 220",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#6-escape-hatch",
     "source": "guide"

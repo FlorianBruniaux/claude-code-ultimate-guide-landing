@@ -433,6 +433,56 @@ const jsonLd = [
         <div class="threat-results" id="threat-results"></div>
     </section>
 
+    <!-- Sandbox -->
+    <section class="content-section" id="sandbox">
+        <h2>The Sandbox: Strongest Built-In Control, Three Ways to Get It Wrong</h2>
+        <p>Everything above is an attack. This is the one defense the operating system enforces for you. Permission rules decide <em>whether</em> a command runs, from its text. The sandbox decides <em>what it can touch</em> once running, and the kernel holds that line even when a command does more than its name suggests. <code>npm install</code> passes a rule for <code>npm install</code>, then runs the package's postinstall scripts, which are arbitrary code. The rule never saw it coming.</p>
+
+        <div class="callout-box">
+            <h3>Enabling it does not protect your credentials</h3>
+            <p>The sandbox's default read policy covers the <strong>entire machine</strong>, and there is no built-in denylist. <code>~/.ssh</code> and <code>~/.aws/credentials</code> stay readable by every sandboxed command until you list them in <code>sandbox.credentials.files</code>. Environment variables are worse: sandboxed commands inherit the parent environment unchanged, so a file deny alone still leaves your tokens exposed. Use <code>credentials.envVars</code> as well.</p>
+        </div>
+
+        <h3>The <code>excludedCommands</code> traps</h3>
+        <p>Verified against Claude Code 2.1.220 on a 200-repository setup. Each trap fails silently: the symptom is always <code>Operation not permitted</code> or a certificate error, never a message naming the exclusion that did not match.</p>
+
+        <div class="techniques-grid">
+            <div class="technique-card">
+                <span class="technique-id">TRAP-1</span>
+                <h3>The bare name never fires</h3>
+                <p><code>"docker"</code> matches only the zero-argument string, so it never applies to <code>docker ps</code>. The published JSON schema suggests this form, so the usual path is to configure something inert, notice the tool is still confined, and have no way to tell why.</p>
+                <p><strong>Fix:</strong> always write <code>"docker *"</code>.</p>
+                <a href="https://github.com/anthropics/claude-code/issues/10524" target="_blank" rel="noopener">anthropics/claude-code#10524</a>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">TRAP-2</span>
+                <h3>A match unsandboxes the whole call</h3>
+                <p>Once an entry matches anywhere in a compound command, every other command in that call runs unsandboxed too, <strong>including commands that execute before it</strong>. With <code>"git *"</code> present, <code>git status &amp;&amp; cat ~/.ssh/id_ed25519</code> reads the key: file denies, credentials, and the network allowlist are all suspended for that call.</p>
+                <p><strong>Fix:</strong> scope to subcommands, not binaries. <code>"git push *"</code>, <code>"git fetch *"</code>, and leave local git confined.</p>
+                <a href="https://github.com/anthropics/claude-code/issues/81157" target="_blank" rel="noopener">anthropics/claude-code#81157 (open)</a>
+            </div>
+
+            <div class="technique-card">
+                <span class="technique-id">TRAP-3</span>
+                <h3>A prefix breaks the match</h3>
+                <p>An entry matches the command as written, so a wrapper, prefix, or loop sends it back into the sandbox. <code>gh api rate_limit</code> runs unsandboxed and returns. <code>rtk gh api rate_limit</code> is sandboxed and fails. Four characters apart. Any <code>PreToolUse</code> hook that rewrites commands, which token-optimizing proxies do by design, disables every exclusion naming a wrapped binary.</p>
+                <p><strong>Fix:</strong> add the wrapped forms explicitly, and run network git as plain commands rather than inside a loop.</p>
+            </div>
+        </div>
+
+        <div class="callout-box">
+            <h3>Diagnostic signature: <code>x509: OSStatus -26276</code></h3>
+            <p>A Go CLI (<code>gh</code>, <code>glab</code>, <code>gcloud</code>, <code>terraform</code>) failing certificate verification with this code means it ran <strong>inside</strong> the sandbox and could not reach the macOS keychain. It is an exclusion that did not match, not an expired token, not an EDR agent, not a macOS security policy. The same session misdiagnosed it as all three before the real cause was found.</p>
+            <p>Two companions worth recognizing: git over SSH fails at DNS resolution because the proxy handles HTTP and HTTPS but not port 22 and blocks the ssh-agent socket. And a domain missing from the allowlist <em>hangs to timeout</em> (<code>HTTP 000</code>, curl exit 28) rather than erroring cleanly.</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/sandbox-native.md" class="btn btn-primary" target="_blank" rel="noopener">Full sandbox guide</a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/sandbox-native.json" class="btn btn-secondary" target="_blank" rel="noopener">Verified config example</a>
+        </div>
+    </section>
+
     <!-- Defense Tools -->
     <section class="content-section content-section--alt">
         <h2>Defense Tools</h2>
