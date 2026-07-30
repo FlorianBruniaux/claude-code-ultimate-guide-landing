@@ -51,6 +51,28 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/ops/observability.md',
 ])
 
+// Three of the files above resolve to a basename-derived URL that is only a
+// client-side redirect stub, not the real page ("cannibalization fix" entries
+// in astro.config.mjs's `redirects` map). Verified against the actual
+// `pnpm build` output by grepping `dist/guide/<slug>/index.html` for
+// "Redirecting to:". Kept as an explicit override rather than parsing
+// astro.config.mjs at build time (a live ESM config with functions, not
+// static data), and this only needs to track 3 known moves.
+//
+// All three real destinations are hand-authored landing pages (src/pages/ecosystem/,
+// src/pages/releases/, ClaudeEcosystem.astro and similar), not a render of the guide
+// markdown at all. No guide heading slug exists on any of them: grepping each built
+// page for its ids turns up only UI chrome (dropdowns, theme toggle) plus, for
+// /releases/, its own version-number ids (v2-1-220), unrelated to the guide's
+// heading slugs. Keeping the guide's anchor on any of these would silently produce
+// a dead in-page fragment on a page that DOES load, the quietest kind of broken
+// link, so the anchor is dropped for all three.
+const LOCAL_GUIDE_REDIRECT_TARGETS = {
+  'guide/ecosystem/ai-ecosystem.md': '/ecosystem/',
+  'guide/roles/ai-roles.md': '/roles/',
+  'guide/core/claude-code-releases.md': '/releases/',
+}
+
 /**
  * Convert snake_case key to Title Case human label
  * e.g. mcp_secrets_management → "MCP Secrets Management"
@@ -138,8 +160,7 @@ function main() {
     return
   }
 
-  const entries = []
-  const seen = new Set()
+  const entriesByUrl = new Map()
 
   for (const [key, value] of Object.entries(deepDive)) {
     // Only keep string values that are actual file paths starting with a known directory
@@ -151,36 +172,53 @@ function main() {
 
     const cleanPath = stripLineNumber(value)
 
-    // Deduplicate by path
-    if (seen.has(cleanPath)) continue
-    seen.add(cleanPath)
-
     const id = `guide-${key.replace(/_/g, '-')}`
     const title = humanize(key)
     const category = getCategory(cleanPath)
 
-    // Use local /guide/ URL if the file is served locally, else fall back to GitHub
-    // NOTE: guide files in subdirs (guide/core/arch.md) are served flat at /guide/arch/
-    // Strip anchor before checking LOCAL_GUIDE_FILES — anchors in reference.yaml use
-    // GitHub markdown format, not Starlight format, so we link to page top to avoid
-    // broken anchors on the guide reader.
+    // Use local /guide/ URL if the file is served locally, else fall back to GitHub.
+    // NOTE: guide files in subdirs (guide/core/arch.md) are served flat at /guide/arch/.
+    //
+    // The anchor is kept, not stripped, for locally-served files. It used to be
+    // dropped on the claim that reference.yaml's GitHub-format anchors ("2-the-tool-arsenal")
+    // don't match what Starlight renders. Verified false: @astrojs/markdown-remark stamps
+    // heading ids via the github-slugger package, the exact same one GitHub itself uses, so
+    // the ids match. Dropping the anchor instead collapsed every deep_dive key pointing into
+    // one file down to a single "page top" entry: 698 entries resolved to only 464 distinct
+    // URLs, 234 of them redundant (agent-teams.md alone had 22 entries all linking to the
+    // same page top). Keeping the anchor turns those into genuinely distinct deep links.
     const filePathOnly = cleanPath.split('#')[0]
+    const anchor = cleanPath.includes('#') ? cleanPath.slice(cleanPath.indexOf('#')) : ''
     let url
-    if (LOCAL_GUIDE_FILES.has(filePathOnly)) {
+    if (LOCAL_GUIDE_REDIRECT_TARGETS[filePathOnly]) {
+      url = LOCAL_GUIDE_REDIRECT_TARGETS[filePathOnly]
+    } else if (LOCAL_GUIDE_FILES.has(filePathOnly)) {
       // Extract basename only — all guide files served flat at /guide/<slug>/
       const basename = filePathOnly.split('/').pop().replace(/\.md$/, '')
-      url = `${LOCAL_GUIDE_BASE}${basename}/`
+      url = `${LOCAL_GUIDE_BASE}${basename}/${anchor}`
     } else if (filePathOnly.startsWith('guide/workflows/') && filePathOnly.endsWith('.md')) {
       const slug = filePathOnly.replace(/^guide\//, '').replace(/\.md$/, '')
-      url = `${LOCAL_GUIDE_BASE}${slug}/`
+      url = `${LOCAL_GUIDE_BASE}${slug}/${anchor}`
     } else {
       url = `${GITHUB_BASE}${cleanPath}`
     }
 
     const keywords = extractKeywords(key, cleanPath)
 
-    entries.push({ id, title, keywords, category, url, source: 'guide' })
+    // Two deep_dive keys can still legitimately resolve to the exact same URL (a bare
+    // ultimate-guide.md line ref pointing at the same paragraph as an anchored one, or two
+    // aliases for the same section). Merge their keywords into one entry rather than keep
+    // both — search should surface one result per real destination, findable under every
+    // key that named it.
+    const existing = entriesByUrl.get(url)
+    if (existing) {
+      existing.keywords = `${existing.keywords} ${keywords}`.trim()
+    } else {
+      entriesByUrl.set(url, { id, title, keywords, category, url, source: 'guide' })
+    }
   }
+
+  const entries = [...entriesByUrl.values()]
 
   console.log(`[build-guide-index] Generated ${entries.length} guide entries`)
 

@@ -120,7 +120,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Script Generation",
     "keywords": "script generation guide workflows iterative refinement md#script generation workflow",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/iterative-refinement/",
+    "url": "/guide/workflows/iterative-refinement/#script-generation-workflow",
     "source": "guide"
   },
   {
@@ -136,7 +136,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Session Limits",
     "keywords": "session limits guide core architecture md#session degradation limits",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#session-degradation-limits",
     "source": "guide"
   },
   {
@@ -144,7 +144,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Scope Success Rates",
     "keywords": "scope success rates guide roles adoption approaches md#what know empirical data",
     "category": "Guide",
-    "url": "/guide/adoption-approaches/",
+    "url": "/guide/adoption-approaches/#what-we-do-know-empirical-data",
     "source": "guide"
   },
   {
@@ -152,7 +152,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Claude Code Releases",
     "keywords": "claude code releases guide core claude code releases",
     "category": "Guide",
-    "url": "/guide/claude-code-releases/",
+    "url": "/releases/",
     "source": "guide"
   },
   {
@@ -166,7 +166,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-skills-commands-merger-guide",
     "title": "Skills Commands Merger Guide",
-    "keywords": "skills commands merger guide guide ultimate guide",
+    "keywords": "skills commands merger guide guide ultimate guide scheduled tasks guide ultimate guide bridge guide guide ultimate guide trust calibration maintainability nuance guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide config disaster recovery guide ultimate guide mcp secrets vaults guide ultimate guide permissions deny tool qualified guide ultimate guide",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
     "source": "guide"
@@ -192,7 +192,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Review Auto Fix Loop",
     "keywords": "review auto fix loop guide workflows iterative refinement md#review auto correction loop",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/iterative-refinement/",
+    "url": "/guide/workflows/iterative-refinement/#review-auto-correction-loop",
     "source": "guide"
   },
   {
@@ -350,7 +350,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-worktree-dependency-management",
     "title": "Worktree Dependency Management",
-    "keywords": "worktree dependency management guide ultimate guide md#advanced tooling for worktree management optional",
+    "keywords": "worktree dependency management guide ultimate guide md#advanced tooling for worktree management optional advanced worktree tooling guide ultimate guide md#advanced tooling for worktree management optional",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#advanced-tooling-for-worktree-management-optional",
     "source": "guide"
@@ -368,7 +368,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Iterative Refinement Community",
     "keywords": "iterative refinement community guide workflows iterative refinement md#iterative refinement",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/iterative-refinement/",
+    "url": "/guide/workflows/iterative-refinement/#iterative-refinement",
     "source": "guide"
   },
   {
@@ -376,7 +376,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Large Justified",
     "keywords": "agent teams large justified guide workflows agent teams md#when large teams are justified",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#when-large-teams-are-justified",
     "source": "guide"
   },
   {
@@ -414,7 +414,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-budget",
     "title": "Context Engineering Budget",
-    "keywords": "context engineering budget guide core context engineering md#2 the context budget",
+    "keywords": "context engineering budget guide core context engineering md#2 the context budget context 150 ceiling guide core context engineering md#2 the context budget",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#2-the-context-budget",
     "source": "guide"
@@ -430,7 +430,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-modular",
     "title": "Context Engineering Modular",
-    "keywords": "context engineering modular guide core context engineering md#4 modular architecture",
+    "keywords": "context engineering modular guide core context engineering md#4 modular architecture context path scoping guide core context engineering md#4 modular architecture",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#4-modular-architecture",
     "source": "guide"
@@ -446,7 +446,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-lifecycle",
     "title": "Context Engineering Lifecycle",
-    "keywords": "context engineering lifecycle guide core context engineering md#6 context lifecycle",
+    "keywords": "context engineering lifecycle guide core context engineering md#6 context lifecycle context ace pipeline guide core context engineering md#6 context lifecycle",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#6-context-lifecycle",
     "source": "guide"
@@ -454,7 +454,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-quality",
     "title": "Context Engineering Quality",
-    "keywords": "context engineering quality guide core context engineering md#7 quality measurement",
+    "keywords": "context engineering quality guide core context engineering md#7 quality measurement context maturity model guide core context engineering md#7 quality measurement",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#7-quality-measurement",
     "source": "guide"
@@ -990,7 +990,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-known-issues",
     "title": "Known Issues",
-    "keywords": "known issues guide core known issues",
+    "keywords": "known issues guide core known issues known issues github bug guide core known issues",
     "category": "Guide",
     "url": "/guide/known-issues/",
     "source": "guide"
@@ -1000,7 +1000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Known Issues Token Consumption",
     "keywords": "known issues token consumption guide core known issues md#2 excessive token consumption jan 2026 present",
     "category": "Guide",
-    "url": "/guide/known-issues/",
+    "url": "/guide/known-issues/#2-excessive-token-consumption-jan-2026---present",
     "source": "guide"
   },
   {
@@ -1008,15 +1008,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Known Issues Model Quality Aug2025",
     "keywords": "known issues model quality aug2025 guide core known issues md#model quality degradation aug sep 2025",
     "category": "Guide",
-    "url": "/guide/known-issues/",
+    "url": "/guide/known-issues/#model-quality-degradation-aug-sep-2025",
     "source": "guide"
   },
   {
     "id": "guide-known-issues-llm-variance",
     "title": "Known Issues LLM Variance",
-    "keywords": "known issues llm variance guide core known issues md#llm day day performance variance",
+    "keywords": "known issues llm variance guide core known issues md# llm day day performance variance",
     "category": "Guide",
-    "url": "/guide/known-issues/",
+    "url": "/guide/known-issues/#-llm-day-to-day-performance-variance",
     "source": "guide"
   },
   {
@@ -1032,7 +1032,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi When To Use",
     "keywords": "rpi when to use guide workflows rpi md#when use rpi",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#when-to-use-rpi",
     "source": "guide"
   },
   {
@@ -1040,7 +1040,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi Phase1 Research",
     "keywords": "rpi phase1 research guide workflows rpi md#phase research",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#phase-1-research",
     "source": "guide"
   },
   {
@@ -1048,7 +1048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi Phase2 Plan",
     "keywords": "rpi phase2 plan guide workflows rpi md#phase plan",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#phase-2-plan",
     "source": "guide"
   },
   {
@@ -1056,7 +1056,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi Phase3 Implement",
     "keywords": "rpi phase3 implement guide workflows rpi md#phase implement",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#phase-3-implement",
     "source": "guide"
   },
   {
@@ -1064,7 +1064,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi Slash Commands",
     "keywords": "rpi slash commands guide workflows rpi md#slash command templates",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#slash-command-templates",
     "source": "guide"
   },
   {
@@ -1072,7 +1072,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rpi Vs Other Workflows",
     "keywords": "rpi vs other workflows guide workflows rpi md#comparison other workflows",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/rpi/",
+    "url": "/guide/workflows/rpi/#comparison-to-other-workflows",
     "source": "guide"
   },
   {
@@ -1088,15 +1088,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Changelog Fragments Claude Rule",
     "keywords": "changelog fragments claude rule guide workflows changelog fragments md#layer claudemd workflow rule",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/changelog-fragments/",
+    "url": "/guide/workflows/changelog-fragments/#layer-1-claudemd-workflow-rule",
     "source": "guide"
   },
   {
     "id": "guide-changelog-fragments-hook",
     "title": "Changelog Fragments Hook",
-    "keywords": "changelog fragments hook guide workflows changelog fragments md#changelog fragments enforced per documentation",
+    "keywords": "changelog fragments hook guide workflows changelog fragments md#changelog fragments enforced per documentation changelog fragments ci guide workflows changelog fragments md#changelog fragments enforced per documentation",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/changelog-fragments/",
+    "url": "/guide/workflows/changelog-fragments/#changelog-fragments-enforced-per-pr-documentation",
     "source": "guide"
   },
   {
@@ -1118,9 +1118,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-smart-suggest-routing-why",
     "title": "Smart Suggest Routing Why",
-    "keywords": "smart suggest routing why guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints",
+    "keywords": "smart suggest routing why guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing corpus guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing calibration guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing scoring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing wiring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/smart-suggest-routing/",
+    "url": "/guide/workflows/smart-suggest-routing/#smart-suggest-routing-regex--bm25-skill-hints",
     "source": "guide"
   },
   {
@@ -1182,9 +1182,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-session-resume-limitations",
     "title": "Session Resume Limitations",
-    "keywords": "session resume limitations guide ops observability md#session resume limitations cross folder migration",
+    "keywords": "session resume limitations guide ops observability md#session resume limitations cross folder migration session cross folder migration guide ops observability md#session resume limitations cross folder migration",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#session-resume-limitations--cross-folder-migration",
     "source": "guide"
   },
   {
@@ -1192,15 +1192,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Session Migration Manual",
     "keywords": "session migration manual guide ops observability md#manual migration recommended",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#manual-migration-recommended",
     "source": "guide"
   },
   {
     "id": "guide-session-migration-risks",
     "title": "Session Migration Risks",
-    "keywords": "session migration risks guide ops observability md#migration risks caveats",
+    "keywords": "session migration risks guide ops observability md#️ migration risks caveats",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#️-migration-risks--caveats",
     "source": "guide"
   },
   {
@@ -1208,15 +1208,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Session Migration Community Tool",
     "keywords": "session migration community tool guide ops observability md#community automation tool",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#community-automation-tool",
     "source": "guide"
   },
   {
     "id": "guide-activity-monitoring",
     "title": "Activity Monitoring",
-    "keywords": "activity monitoring guide ops observability md#activity monitoring",
+    "keywords": "activity monitoring guide ops observability md#activity monitoring activity monitoring queries guide ops observability md#activity monitoring activity monitoring alerts guide ops observability md#activity monitoring",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#activity-monitoring",
     "source": "guide"
   },
   {
@@ -1224,7 +1224,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "External Monitoring Tools",
     "keywords": "external monitoring tools guide ops observability md#external monitoring tools",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#external-monitoring-tools",
     "source": "guide"
   },
   {
@@ -1232,7 +1232,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Proxying Claude Code",
     "keywords": "proxying claude code guide ops observability md#proxying claude code",
     "category": "Guide",
-    "url": "/guide/observability/",
+    "url": "/guide/observability/#proxying-claude-code",
     "source": "guide"
   },
   {
@@ -1326,9 +1326,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-batch-api-cost-lever",
     "title": "Batch API Cost Lever",
-    "keywords": "batch api cost lever guide core architecture md#message batches api",
+    "keywords": "batch api cost lever guide core architecture md#message batches api message batches api guide core architecture md#message batches api",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#message-batches-api",
     "source": "guide"
   },
   {
@@ -1342,9 +1342,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-rtk-third-party",
     "title": "RTK Third Party",
-    "keywords": "rtk third party guide ecosystem third party tools md#rtk rust token killer",
+    "keywords": "rtk third party guide ecosystem third party tools md#rtk rust token killer third party tools rtk guide ecosystem third party tools md#rtk rust token killer",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#rtk-rust-token-killer",
     "source": "guide"
   },
   {
@@ -1390,17 +1390,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
-    "keywords": "antigravity guide guide ecosystem ecosystem",
+    "keywords": "antigravity guide guide ecosystem ecosystem generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
     "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-generative-ui-guide",
-    "title": "Generative Ui Guide",
-    "keywords": "generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
+    "url": "/ecosystem/",
     "source": "guide"
   },
   {
@@ -1438,7 +1430,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-gstack-workflow",
     "title": "Gstack Workflow",
-    "keywords": "gstack workflow guide workflows gstack workflow",
+    "keywords": "gstack workflow guide workflows gstack workflow gstack 6 gears guide workflows gstack workflow",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/gstack-workflow/",
     "source": "guide"
@@ -1448,7 +1440,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack Strategic Gate",
     "keywords": "gstack strategic gate guide workflows gstack workflow md#the gap this fills pre implementation strategic gate",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/gstack-workflow/",
+    "url": "/guide/workflows/gstack-workflow/#the-gap-this-fills-pre-implementation-strategic-gate",
     "source": "guide"
   },
   {
@@ -1472,7 +1464,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack Browse Non MCP",
     "keywords": "gstack browse non mcp guide workflows gstack workflow md#browse non mcp native browser automation",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/gstack-workflow/",
+    "url": "/guide/workflows/gstack-workflow/#browse-non-mcp-native-browser-automation",
     "source": "guide"
   },
   {
@@ -1480,7 +1472,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack Full Cycle",
     "keywords": "gstack full cycle guide workflows gstack workflow md#full cycle demo",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/gstack-workflow/",
+    "url": "/guide/workflows/gstack-workflow/#full-cycle-demo",
     "source": "guide"
   },
   {
@@ -1488,7 +1480,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack When To Use",
     "keywords": "gstack when to use guide workflows gstack workflow md#when use this other workflows",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/gstack-workflow/",
+    "url": "/guide/workflows/gstack-workflow/#when-to-use-this-vs-other-workflows",
     "source": "guide"
   },
   {
@@ -1496,7 +1488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Tools Skill Packs",
     "keywords": "third party tools skill packs guide ecosystem third party tools md#plugin ecosystem",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#plugin-ecosystem",
     "source": "guide"
   },
   {
@@ -1600,7 +1592,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable MCP Server",
     "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp game changer",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#1-remarkable-mcp--le-game-changer",
     "source": "guide"
   },
   {
@@ -1608,7 +1600,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ghostwriter",
     "keywords": "remarkable ghostwriter guide ecosystem remarkable md#2 ghostwriter interface vision llm",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#2-ghostwriter--interface-vision-llm",
     "source": "guide"
   },
   {
@@ -1616,7 +1608,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Obsidian Sync",
     "keywords": "remarkable obsidian sync guide ecosystem remarkable md#3 sync remarkable obsidian",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#3-sync-remarkable--obsidian",
     "source": "guide"
   },
   {
@@ -1624,7 +1616,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ocr Pipeline",
     "keywords": "remarkable ocr pipeline guide ecosystem remarkable md#4 ocr pipeline custom",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#4-ocr--ai-pipeline-custom",
     "source": "guide"
   },
   {
@@ -1632,7 +1624,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Ssh Tools",
     "keywords": "remarkable ssh tools guide ecosystem remarkable md#5 accès ssh outils communautaires",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#5-accès-ssh-et-outils-communautaires",
     "source": "guide"
   },
   {
@@ -1640,7 +1632,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Meeting Workflow",
     "keywords": "remarkable meeting workflow guide ecosystem remarkable md#10 meeting notes summary",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#10-meeting-notes--ai-summary",
     "source": "guide"
   },
   {
@@ -1648,7 +1640,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Workflows To Build",
     "keywords": "remarkable workflows to build guide ecosystem remarkable md#14 workflows augmentés construire",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#14-workflows-ai-augmentés-à-construire",
     "source": "guide"
   },
   {
@@ -1656,7 +1648,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Remarkable Getting Started",
     "keywords": "remarkable getting started guide ecosystem remarkable md#15 par commencer",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/",
+    "url": "/guide/remarkable-ai/#15-par-où-commencer",
     "source": "guide"
   },
   {
@@ -1800,7 +1792,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide roles learning with md#quick self check start here",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#quick-self-check-start-here",
     "source": "guide"
   },
   {
@@ -1808,7 +1800,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Uval Protocol",
     "keywords": "learning uval protocol guide roles learning with md#the uval protocol",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#the-uval-protocol",
     "source": "guide"
   },
   {
@@ -1816,7 +1808,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Claude Config",
     "keywords": "learning claude config guide roles learning with md#claudemd configuration for learning mode",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#claudemd-configuration-for-learning-mode",
     "source": "guide"
   },
   {
@@ -1824,7 +1816,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Breaking Dependency",
     "keywords": "learning breaking dependency guide roles learning with md#breaking dependency",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#breaking-dependency",
     "source": "guide"
   },
   {
@@ -1832,7 +1824,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Embracing AI",
     "keywords": "learning embracing ai guide roles learning with md#embracing tools",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#embracing-ai-tools",
     "source": "guide"
   },
   {
@@ -1840,7 +1832,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning 30day Plan",
     "keywords": "learning 30day plan guide roles learning with md#30 day progression plan",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#30-day-progression-plan",
     "source": "guide"
   },
   {
@@ -1848,55 +1840,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Learning Red Flags",
     "keywords": "learning red flags guide roles learning with md#red flags youre slipping",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#red-flags-youre-slipping",
     "source": "guide"
   },
   {
     "id": "guide-ai-roles-guide",
     "title": "AI Roles Guide",
-    "keywords": "ai roles guide guide roles roles",
+    "keywords": "ai roles guide guide roles roles ai roles spec engineer guide roles roles md#17 spec engineer ai roles agent identity architect guide roles roles md#18 agent identity architect ai roles eval engineer guide roles roles md#19 eval engineer ai roles harness engineer guide roles roles md#10 harness engineer ai roles career matrix guide roles roles md#20 career decision matrix",
     "category": "Guide",
-    "url": "/guide/ai-roles/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-roles-spec-engineer",
-    "title": "AI Roles Spec Engineer",
-    "keywords": "ai roles spec engineer guide roles roles md#17 spec engineer",
-    "category": "Guide",
-    "url": "/guide/ai-roles/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-roles-agent-identity-architect",
-    "title": "AI Roles Agent Identity Architect",
-    "keywords": "ai roles agent identity architect guide roles roles md#18 agent identity architect",
-    "category": "Guide",
-    "url": "/guide/ai-roles/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-roles-eval-engineer",
-    "title": "AI Roles Eval Engineer",
-    "keywords": "ai roles eval engineer guide roles roles md#19 eval engineer",
-    "category": "Guide",
-    "url": "/guide/ai-roles/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-roles-harness-engineer",
-    "title": "AI Roles Harness Engineer",
-    "keywords": "ai roles harness engineer guide roles roles md#10 harness engineer",
-    "category": "Guide",
-    "url": "/guide/ai-roles/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-roles-career-matrix",
-    "title": "AI Roles Career Matrix",
-    "keywords": "ai roles career matrix guide roles roles md#20 career decision matrix",
-    "category": "Guide",
-    "url": "/guide/ai-roles/",
+    "url": "/roles/",
     "source": "guide"
   },
   {
@@ -1912,23 +1864,23 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Adoption L0 L5 Shapiro",
     "keywords": "adoption l0 l5 shapiro guide roles adoption approaches md#the scale where your team",
     "category": "Guide",
-    "url": "/guide/adoption-approaches/",
+    "url": "/guide/adoption-approaches/#the-l0-l5-scale-where-is-your-team",
     "source": "guide"
   },
   {
     "id": "guide-adoption-jcurve",
     "title": "Adoption Jcurve",
-    "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3",
+    "keywords": "adoption jcurve guide roles adoption approaches md#the curve you will hit l2l3 adoption metr rct guide roles adoption approaches md#the curve you will hit l2l3 adoption deputydev guide roles adoption approaches md#the curve you will hit l2l3",
     "category": "Guide",
-    "url": "/guide/adoption-approaches/",
+    "url": "/guide/adoption-approaches/#the-j-curve-you-will-hit-at-l2l3",
     "source": "guide"
   },
   {
     "id": "guide-productivity-rct-metr",
     "title": "Productivity Rct Metr",
-    "keywords": "productivity rct metr guide roles learning with md#productivity research",
+    "keywords": "productivity rct metr guide roles learning with md#productivity research productivity rct echoes guide roles learning with md#productivity research productivity maintainability empirical guide roles learning with md#productivity research",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#productivity-research",
     "source": "guide"
   },
   {
@@ -1992,13 +1944,21 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Vibe Coding Trap",
     "keywords": "vibe coding trap guide roles learning with md#the vibe coding trap",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/",
+    "url": "/guide/learning-with-ai/#the-vibe-coding-trap",
+    "source": "guide"
+  },
+  {
+    "id": "guide-vibe-coding-context-overload",
+    "title": "Vibe Coding Context Overload",
+    "keywords": "vibe coding context overload guide ultimate guide md#anti pattern context overload vibe coding phased strategy guide ultimate guide md#anti pattern context overload",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#anti-pattern-context-overload",
     "source": "guide"
   },
   {
     "id": "guide-ai-traceability-guide",
     "title": "AI Traceability Guide",
-    "keywords": "ai traceability guide guide ops traceability",
+    "keywords": "ai traceability guide guide ops traceability ai traceability co authored by guide ops traceability ai traceability assisted by guide ops traceability ai traceability git ai guide ops traceability ai traceability llvm policy guide ops traceability ai traceability ghostty policy guide ops traceability ai traceability fedora policy guide ops traceability",
     "category": "Guide",
     "url": "/guide/ai-traceability/",
     "source": "guide"
@@ -2008,7 +1968,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Why",
     "keywords": "ai traceability why guide ops traceability md#why traceability matters now",
     "category": "Guide",
-    "url": "/guide/ai-traceability/",
+    "url": "/guide/ai-traceability/#why-traceability-matters-now",
     "source": "guide"
   },
   {
@@ -2016,7 +1976,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Disclosure Spectrum",
     "keywords": "ai traceability disclosure spectrum guide ops traceability md#the disclosure spectrum",
     "category": "Guide",
-    "url": "/guide/ai-traceability/",
+    "url": "/guide/ai-traceability/#the-disclosure-spectrum",
     "source": "guide"
   },
   {
@@ -2024,7 +1984,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Promptpwnd",
     "keywords": "ai traceability promptpwnd guide ops traceability md#61 promptpwnd vulnerability",
     "category": "Guide",
-    "url": "/guide/ai-traceability/",
+    "url": "/guide/ai-traceability/#61-promptpwnd-vulnerability",
     "source": "guide"
   },
   {
@@ -2032,7 +1992,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Implementation",
     "keywords": "ai traceability implementation guide ops traceability md#implementation guide",
     "category": "Guide",
-    "url": "/guide/ai-traceability/",
+    "url": "/guide/ai-traceability/#implementation-guide",
     "source": "guide"
   },
   {
@@ -2040,7 +2000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Traceability Templates",
     "keywords": "ai traceability templates guide ops traceability md#templates",
     "category": "Guide",
-    "url": "/guide/ai-traceability/",
+    "url": "/guide/ai-traceability/#templates",
     "source": "guide"
   },
   {
@@ -2100,14 +2060,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-tts-ai-ecosystem",
-    "title": "Tts AI Ecosystem",
-    "keywords": "tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
     "id": "guide-tts-hook-example",
     "title": "Tts Hook Example",
     "keywords": "tts hook example examples hooks bash tts selective",
@@ -2126,7 +2078,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-isolation-guide",
     "title": "Sandbox Isolation Guide",
-    "keywords": "sandbox isolation guide guide security sandbox isolation",
+    "keywords": "sandbox isolation guide guide security sandbox isolation sandbox isolation decision tree guide security sandbox isolation sandbox docker sandboxes guide security sandbox isolation sandbox docker network guide security sandbox isolation sandbox docker templates guide security sandbox isolation sandbox comparison native docker guide security sandbox isolation sandbox safe autonomy guide security sandbox isolation sandbox anti patterns guide security sandbox isolation",
     "category": "Guide",
     "url": "/guide/sandbox-isolation/",
     "source": "guide"
@@ -2136,13 +2088,13 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Cc",
     "keywords": "sandbox native cc guide core architecture md#native sandbox v210",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#native-sandbox-v210",
     "source": "guide"
   },
   {
     "id": "guide-sandbox-native-guide",
     "title": "Sandbox Native Guide",
-    "keywords": "sandbox native guide guide security sandbox native",
+    "keywords": "sandbox native guide guide security sandbox native sandbox native os primitives guide security sandbox native sandbox native modes guide security sandbox native",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -2152,7 +2104,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Why",
     "keywords": "sandbox native why guide security sandbox native md#1 why native sandboxing",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#1-why-native-sandboxing",
     "source": "guide"
   },
   {
@@ -2160,7 +2112,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Filesystem",
     "keywords": "sandbox native filesystem guide security sandbox native md#3 filesystem isolation",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#3-filesystem-isolation",
     "source": "guide"
   },
   {
@@ -2168,7 +2120,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Network",
     "keywords": "sandbox native network guide security sandbox native md#4 network isolation",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#4-network-isolation",
     "source": "guide"
   },
   {
@@ -2176,7 +2128,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Escape Hatch",
     "keywords": "sandbox native escape hatch guide security sandbox native md#6 escape hatch",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#6-escape-hatch",
     "source": "guide"
   },
   {
@@ -2184,7 +2136,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Security Limits",
     "keywords": "sandbox native security limits guide security sandbox native md#7 security limitations",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#7-security-limitations",
     "source": "guide"
   },
   {
@@ -2192,7 +2144,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Opensource",
     "keywords": "sandbox native opensource guide security sandbox native md#8 open source runtime",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#8-open-source-runtime",
     "source": "guide"
   },
   {
@@ -2200,7 +2152,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Platforms",
     "keywords": "sandbox native platforms guide security sandbox native md#9 platform support",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#9-platform-support",
     "source": "guide"
   },
   {
@@ -2208,7 +2160,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Decision Tree",
     "keywords": "sandbox native decision tree guide security sandbox native md#10 decision tree native docker sandboxes",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#10-decision-tree-native-vs-docker-sandboxes",
     "source": "guide"
   },
   {
@@ -2216,7 +2168,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Config Examples",
     "keywords": "sandbox native config examples guide security sandbox native md#11 configuration examples",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#11-configuration-examples",
     "source": "guide"
   },
   {
@@ -2224,7 +2176,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Best Practices",
     "keywords": "sandbox native best practices guide security sandbox native md#12 best practices",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#12-best-practices",
     "source": "guide"
   },
   {
@@ -2232,7 +2184,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Native Troubleshooting",
     "keywords": "sandbox native troubleshooting guide security sandbox native md#13 troubleshooting",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#13-troubleshooting",
     "source": "guide"
   },
   {
@@ -2280,7 +2232,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Auto Allow Exceptions",
     "keywords": "sandbox auto allow exceptions guide security sandbox native md#what still applies auto allow mode",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#what-still-applies-in-auto-allow-mode",
     "source": "guide"
   },
   {
@@ -2288,21 +2240,21 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Subagents Inherit",
     "keywords": "sandbox subagents inherit guide security sandbox native md#subagents",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#subagents",
     "source": "guide"
   },
   {
     "id": "guide-sandbox-excluded-commands-traps",
     "title": "Sandbox Excluded Commands Traps",
-    "keywords": "sandbox excluded commands traps guide security sandbox native md#three traps all verified 21220",
+    "keywords": "sandbox excluded commands traps guide security sandbox native md#three traps all verified 21220 sandbox excluded three traps guide security sandbox native md#three traps all verified 21220",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#three-traps-all-verified-on-21220",
     "source": "guide"
   },
   {
     "id": "guide-sandbox-config-example",
     "title": "Sandbox Config Example",
-    "keywords": "sandbox config example examples config sandbox native",
+    "keywords": "sandbox config example examples config sandbox native sandbox native config template examples config sandbox native",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/sandbox-native.json",
     "source": "guide"
@@ -2312,7 +2264,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Break In Week",
     "keywords": "sandbox break in week guide security sandbox native md#plan for break week",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#plan-for-a-break-in-week",
     "source": "guide"
   },
   {
@@ -2320,7 +2272,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Allow Local Binding",
     "keywords": "sandbox allow local binding guide security sandbox native md#local servers and proxies fail bind",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#local-servers-and-proxies-fail-to-bind",
     "source": "guide"
   },
   {
@@ -2328,7 +2280,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Global Npm Tooling",
     "keywords": "sandbox global npm tooling guide security sandbox native md#global npm tooling fails with eperm",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#global-npm-tooling-fails-with-eperm",
     "source": "guide"
   },
   {
@@ -2336,15 +2288,39 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Read The Last Error",
     "keywords": "sandbox read the last error guide security sandbox native md#read the last error not the first",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#read-the-last-error-not-the-first",
     "source": "guide"
   },
   {
     "id": "guide-sandbox-settings-files-protected",
     "title": "Sandbox Settings Files Protected",
-    "keywords": "sandbox settings files protected guide security sandbox native md#default behavior",
+    "keywords": "sandbox settings files protected guide security sandbox native md#default behavior sandbox deny read misses bash guide security sandbox native md#default behavior sandbox credentials needs absolute paths guide security sandbox native md#default behavior sandbox env hook scope guide security sandbox native md#default behavior sandbox idea vscode write denied guide security sandbox native md#default behavior sandbox session tmpdir guide security sandbox native md#default behavior",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#default-behavior",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-tmpdir-witness",
+    "title": "Sandbox Tmpdir Witness",
+    "keywords": "sandbox tmpdir witness guide security sandbox native md#check whether the command actually ran sandboxed sandbox excluded flag flips whole line guide security sandbox native md#check whether the command actually ran sandboxed",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#check-whether-the-command-actually-ran-sandboxed",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-setuid-exec-denied",
+    "title": "Sandbox Setuid Exec Denied",
+    "keywords": "sandbox setuid exec denied guide security sandbox native md#commands that cannot work sandboxed all sandbox unix socket bind denied guide security sandbox native md#commands that cannot work sandboxed all",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#commands-that-cannot-work-sandboxed-at-all",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-allowlist-filters-without-strict",
+    "title": "Sandbox Allowlist Filters Without Strict",
+    "keywords": "sandbox allowlist filters without strict guide security sandbox native md#domain filtering sandbox blocked host vs missing host guide security sandbox native md#domain filtering sandbox codeload not covered guide security sandbox native md#domain filtering",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#domain-filtering",
     "source": "guide"
   },
   {
@@ -2352,7 +2328,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Ubuntu Apparmor",
     "keywords": "sandbox ubuntu apparmor guide security sandbox native md#linuxwsl2 bubblewrap",
     "category": "Guide",
-    "url": "/guide/sandbox-native/",
+    "url": "/guide/sandbox-native/#linuxwsl2-bubblewrap",
     "source": "guide"
   },
   {
@@ -2376,7 +2352,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sandbox Comparison Matrix",
     "keywords": "sandbox comparison matrix guide security sandbox isolation md#6 comparison matrix",
     "category": "Guide",
-    "url": "/guide/sandbox-isolation/",
+    "url": "/guide/sandbox-isolation/#6-comparison-matrix",
     "source": "guide"
   },
   {
@@ -2392,7 +2368,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Local Vs Shared",
     "keywords": "enterprise governance local vs shared guide security enterprise governance md#1 local shared the governance split",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#1-local-vs-shared-the-governance-split",
     "source": "guide"
   },
   {
@@ -2400,7 +2376,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Charter",
     "keywords": "enterprise governance charter guide security enterprise governance md#2 usage charter",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#2-ai-usage-charter",
     "source": "guide"
   },
   {
@@ -2416,7 +2392,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance MCP Workflow",
     "keywords": "enterprise governance mcp workflow guide security enterprise governance md#3 mcp governance workflow",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#3-mcp-governance-workflow",
     "source": "guide"
   },
   {
@@ -2424,7 +2400,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance MCP Registry",
     "keywords": "enterprise governance mcp registry guide security enterprise governance md#32 mcp registry format",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#32-mcp-registry-format",
     "source": "guide"
   },
   {
@@ -2440,7 +2416,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Guardrail Tiers",
     "keywords": "enterprise governance guardrail tiers guide security enterprise governance md#4 guardrail tiers",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#4-guardrail-tiers",
     "source": "guide"
   },
   {
@@ -2448,7 +2424,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Starter",
     "keywords": "enterprise governance tier starter guide security enterprise governance md#tier starter",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#tier-1-starter",
     "source": "guide"
   },
   {
@@ -2456,7 +2432,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Standard",
     "keywords": "enterprise governance tier standard guide security enterprise governance md#tier standard",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#tier-2-standard",
     "source": "guide"
   },
   {
@@ -2464,7 +2440,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Strict",
     "keywords": "enterprise governance tier strict guide security enterprise governance md#tier strict",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#tier-3-strict",
     "source": "guide"
   },
   {
@@ -2472,7 +2448,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Tier Regulated",
     "keywords": "enterprise governance tier regulated guide security enterprise governance md#tier regulated",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#tier-4-regulated",
     "source": "guide"
   },
   {
@@ -2480,7 +2456,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Policy At Scale",
     "keywords": "enterprise governance policy at scale guide security enterprise governance md#5 policy enforcement scale",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#5-policy-enforcement-at-scale",
     "source": "guide"
   },
   {
@@ -2488,7 +2464,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Onboarding Checklist",
     "keywords": "enterprise governance onboarding checklist guide security enterprise governance md#52 onboarding checklist",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#52-onboarding-checklist",
     "source": "guide"
   },
   {
@@ -2496,7 +2472,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Compliance Check",
     "keywords": "enterprise governance compliance check guide security enterprise governance md#53 compliance checking",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#53-compliance-checking",
     "source": "guide"
   },
   {
@@ -2504,7 +2480,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Cicd Gates",
     "keywords": "enterprise governance cicd gates guide security enterprise governance md#55 cicd gates",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#55-cicd-gates",
     "source": "guide"
   },
   {
@@ -2512,7 +2488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Audit",
     "keywords": "enterprise governance audit guide security enterprise governance md#6 audit compliance governance structure",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#6-audit-compliance--governance-structure",
     "source": "guide"
   },
   {
@@ -2520,7 +2496,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Soc2 Iso27001",
     "keywords": "enterprise governance soc2 iso27001 guide security enterprise governance md#61 what soc2 and iso27001 auditors actually ask",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#61-what-soc2-and-iso27001-auditors-actually-ask",
     "source": "guide"
   },
   {
@@ -2528,7 +2504,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Enterprise Governance Audit Trail",
     "keywords": "enterprise governance audit trail guide security enterprise governance md#62 audit trail setup",
     "category": "Guide",
-    "url": "/guide/enterprise-governance/",
+    "url": "/guide/enterprise-governance/#62-audit-trail-setup",
     "source": "guide"
   },
   {
@@ -2552,7 +2528,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Retention Summary",
     "keywords": "data privacy retention summary guide security data privacy md#tldr retention summary",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#tldr---retention-summary",
     "source": "guide"
   },
   {
@@ -2560,15 +2536,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Data Flow",
     "keywords": "data privacy data flow guide security data privacy md#1 understanding the data flow",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#1-understanding-the-data-flow",
     "source": "guide"
   },
   {
     "id": "guide-data-privacy-zdr",
     "title": "Data Privacy Zdr",
-    "keywords": "data privacy zdr guide security data privacy md#when use enterprise api zdr",
+    "keywords": "data privacy zdr guide security data privacy md#when use enterprise api zdr data privacy gdpr hipaa guide security data privacy md#when use enterprise api zdr",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#when-to-use-enterprise-api-zdr",
     "source": "guide"
   },
   {
@@ -2576,7 +2552,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Known Risks",
     "keywords": "data privacy known risks guide security data privacy md#2 known risks",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#2-known-risks",
     "source": "guide"
   },
   {
@@ -2584,7 +2560,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Bug Command",
     "keywords": "data privacy bug command guide security data privacy md#risk the bug command sends everything retained years",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#risk-4-the-bug-command-sends-everything-retained-5-years",
     "source": "guide"
   },
   {
@@ -2592,7 +2568,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Browser Native Messaging",
     "keywords": "data privacy browser native messaging guide security data privacy md#risk claude desktop browser integration silent native messaging host installation",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#risk-6-claude-desktop-browser-integration-silent-native-messaging-host-installation",
     "source": "guide"
   },
   {
@@ -2600,7 +2576,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Local Looking Client",
     "keywords": "data privacy local looking client guide security data privacy md#risk the local looking network client",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#risk-7-the-local-looking-network-client",
     "source": "guide"
   },
   {
@@ -2608,7 +2584,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Protective Measures",
     "keywords": "data privacy protective measures guide security data privacy md#3 protective measures",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#3-protective-measures",
     "source": "guide"
   },
   {
@@ -2616,7 +2592,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy File Exclusions",
     "keywords": "data privacy file exclusions guide security data privacy md#31 configure file exclusions",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#31-configure-file-exclusions",
     "source": "guide"
   },
   {
@@ -2624,7 +2600,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Telemetry Optout",
     "keywords": "data privacy telemetry optout guide security data privacy md#33 opt out telemetry and error reporting",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#33-opt-out-of-telemetry-and-error-reporting",
     "source": "guide"
   },
   {
@@ -2632,7 +2608,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Enterprise Zdr",
     "keywords": "data privacy enterprise zdr guide security data privacy md#5 enterprise considerations",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#5-enterprise-considerations",
     "source": "guide"
   },
   {
@@ -2640,13 +2616,13 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Data Privacy Checklist",
     "keywords": "data privacy checklist guide security data privacy md#quick audit checklist",
     "category": "Guide",
-    "url": "/guide/data-privacy/",
+    "url": "/guide/data-privacy/#quick-audit-checklist",
     "source": "guide"
   },
   {
     "id": "guide-third-party-tools-guide",
     "title": "Third Party Tools Guide",
-    "keywords": "third party tools guide guide ecosystem third party tools",
+    "keywords": "third party tools guide guide ecosystem third party tools third party tools cost tracking guide ecosystem third party tools third party tools hook utilities guide ecosystem third party tools third party gitdiff watcher guide ecosystem third party tools third party tools alternative uis guide ecosystem third party tools third party tools known gaps guide ecosystem third party tools third party agent orchestrator guide guide ecosystem third party tools third party tools context bootstrap guide ecosystem third party tools",
     "category": "Guide",
     "url": "/guide/third-party-tools/",
     "source": "guide"
@@ -2656,7 +2632,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Tools Session Mgmt",
     "keywords": "third party tools session mgmt guide ecosystem third party tools md#session management",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#session-management",
     "source": "guide"
   },
   {
@@ -2664,7 +2640,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Tools Config Mgmt",
     "keywords": "third party tools config mgmt guide ecosystem third party tools md#configuration management",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#configuration-management",
     "source": "guide"
   },
   {
@@ -2672,7 +2648,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Tools Recommendations",
     "keywords": "third party tools recommendations guide ecosystem third party tools md#recommendations persona",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#recommendations-by-persona",
     "source": "guide"
   },
   {
@@ -2680,7 +2656,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Straude Guide",
     "keywords": "third party straude guide guide ecosystem third party tools md#straude",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#straude",
     "source": "guide"
   },
   {
@@ -2688,7 +2664,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Third Party Codesight Guide",
     "keywords": "third party codesight guide guide ecosystem third party tools md#codesight",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#codesight",
     "source": "guide"
   },
   {
@@ -2758,7 +2734,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-config-git-strategy-project",
     "title": "Config Git Strategy Project",
-    "keywords": "config git strategy project guide ultimate guide md#git strategy for project configuration",
+    "keywords": "config git strategy project guide ultimate guide md#git strategy for project configuration config git strategy global guide ultimate guide md#git strategy for project configuration",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#git-strategy-for-project-configuration",
     "source": "guide"
@@ -2790,7 +2766,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-mcp-secrets-management",
     "title": "MCP Secrets Management",
-    "keywords": "mcp secrets management guide ultimate guide md#831 mcp secrets management",
+    "keywords": "mcp secrets management guide ultimate guide md#831 mcp secrets management mcp secrets principles guide ultimate guide md#831 mcp secrets management mcp secrets os keychain guide ultimate guide md#831 mcp secrets management mcp secrets env file guide ultimate guide md#831 mcp secrets management mcp secrets verification guide ultimate guide md#831 mcp secrets management mcp secrets best practices guide ultimate guide md#831 mcp secrets management",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#831-mcp-secrets-management",
     "source": "guide"
@@ -2854,7 +2830,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-architecture-visual-overview",
     "title": "Architecture Visual Overview",
-    "keywords": "architecture visual overview guide core architecture",
+    "keywords": "architecture visual overview guide core architecture architecture guide core architecture",
     "category": "Guide",
     "url": "/guide/architecture/",
     "source": "guide"
@@ -2864,7 +2840,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Master Loop",
     "keywords": "architecture master loop guide core architecture md#1 the master loop",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#1-the-master-loop",
     "source": "guide"
   },
   {
@@ -2872,7 +2848,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Tools",
     "keywords": "architecture tools guide core architecture md#2 the tool arsenal",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#2-the-tool-arsenal",
     "source": "guide"
   },
   {
@@ -2880,7 +2856,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Context",
     "keywords": "architecture context guide core architecture md#3 context management internals",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#3-context-management-internals",
     "source": "guide"
   },
   {
@@ -2888,7 +2864,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Subagents",
     "keywords": "architecture subagents guide core architecture md#4 sub agent architecture",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#4-sub-agent-architecture",
     "source": "guide"
   },
   {
@@ -2896,7 +2872,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Permissions",
     "keywords": "architecture permissions guide core architecture md#5 permission security model",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#5-permission--security-model",
     "source": "guide"
   },
   {
@@ -2904,7 +2880,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture MCP",
     "keywords": "architecture mcp guide core architecture md#mcp architecture overview",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#mcp-architecture-overview",
     "source": "guide"
   },
   {
@@ -2920,7 +2896,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Architecture Philosophy",
     "keywords": "architecture philosophy guide core architecture md#10 philosophy less scaffolding more model",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#10-philosophy-less-scaffolding-more-model",
     "source": "guide"
   },
   {
@@ -2928,7 +2904,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "System Prompts Architecture",
     "keywords": "system prompts architecture guide core architecture md#system prompt contents",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#system-prompt-contents",
     "source": "guide"
   },
   {
@@ -2936,7 +2912,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Apps Architecture",
     "keywords": "mcp apps architecture guide core architecture md#mcp extensions apps sep 1865",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#mcp-extensions-apps-sep-1865",
     "source": "guide"
   },
   {
@@ -2993,6 +2969,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "context triage guide ultimate guide md#context triage what keep evacuate",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#context-triage-what-to-keep-vs-evacuate",
+    "source": "guide"
+  },
+  {
+    "id": "guide-session-vs-memory",
+    "title": "Session Vs Memory",
+    "keywords": "session vs memory guide ultimate guide md#session persistent memory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#session-vs-persistent-memory",
     "source": "guide"
   },
   {
@@ -3068,6 +3052,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-plan-mode",
+    "title": "Plan Mode",
+    "keywords": "plan mode guide ultimate guide md#plan mode",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#plan-mode",
+    "source": "guide"
+  },
+  {
     "id": "guide-ultraplan",
     "title": "Ultraplan",
     "keywords": "ultraplan guide ultimate guide md#ultraplan",
@@ -3134,7 +3126,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-auto-memories",
     "title": "Auto Memories",
-    "keywords": "auto memories guide ultimate guide md#auto memories v2159",
+    "keywords": "auto memories guide ultimate guide md#auto memories v2159 auto memories vs claudemd guide ultimate guide md#auto memories v2159 auto memories file limits guide ultimate guide md#auto memories v2159",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#auto-memories-v2159",
     "source": "guide"
@@ -3142,9 +3134,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-auto-dream",
     "title": "Auto Dream",
-    "keywords": "auto dream guide ultimate guide md#auto dream memory consolidation community discovered",
+    "keywords": "auto dream guide ultimate guide md#auto dream memory consolidation community discovered auto dream phases guide ultimate guide md#auto dream memory consolidation community discovered",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#auto-dream-memory-consolidation-community-discovered",
+    "source": "guide"
+  },
+  {
+    "id": "guide-fast-mode-command",
+    "title": "Fast Mode Command",
+    "keywords": "fast mode command guide ultimate guide md#model effort and permission modes",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#model-effort-and-permission-modes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-fast-mode-api",
+    "title": "Fast Mode API",
+    "keywords": "fast mode api guide ultimate guide md#api breaking changes opus opus 4 6 api breaking changes guide ultimate guide md#api breaking changes opus",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#api-breaking-changes-opus-46",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sonnet-5-default",
+    "title": "Sonnet 5 Default",
+    "keywords": "sonnet 5 default guide ultimate guide md#pricing model july 2026",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-as-of-july-2026",
     "source": "guide"
   },
   {
@@ -3172,11 +3188,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-opus-4-6-api-breaking-changes",
-    "title": "Opus 4 6 API Breaking Changes",
-    "keywords": "opus 4 6 api breaking changes guide ultimate guide md#api breaking changes opus",
+    "id": "guide-hook-task-completed",
+    "title": "Hook Task Completed",
+    "keywords": "hook task completed guide ultimate guide md#event types",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#api-breaking-changes-opus-46",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#event-types",
     "source": "guide"
   },
   {
@@ -3190,9 +3206,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-task-management-system",
     "title": "Task Management System",
-    "keywords": "task management system guide ultimate guide md#task management system",
+    "keywords": "task management system guide ultimate guide md#task management system task management comparison guide ultimate guide md#task management system task dependency management guide ultimate guide md#task management system",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#task-management-system",
+    "source": "guide"
+  },
+  {
+    "id": "guide-tasks-api-overview",
+    "title": "Tasks API Overview",
+    "keywords": "tasks api overview guide ultimate guide md#tasks api v2116",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#tasks-api-v2116",
     "source": "guide"
   },
   {
@@ -3214,7 +3238,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-workflows-task-management",
     "title": "Workflows Task Management",
-    "keywords": "workflows task management guide workflows task management",
+    "keywords": "workflows task management guide workflows task management task workflow overview guide workflows task management task workflow session mgmt guide workflows task management task workflow plan integration guide workflows task management task workflow migration guide workflows task management task workflow patterns guide workflows task management task workflow troubleshooting guide workflows task management task workflow advanced guide workflows task management task session lifecycle guide workflows task management",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/task-management/",
     "source": "guide"
@@ -3224,7 +3248,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Task Workflow Planning",
     "keywords": "task workflow planning guide workflows task management md#workflow phase task planning",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/task-management/",
+    "url": "/guide/workflows/task-management/#workflow-phase-1-task-planning",
     "source": "guide"
   },
   {
@@ -3232,7 +3256,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Task Workflow Execution",
     "keywords": "task workflow execution guide workflows task management md#workflow phase task execution",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/task-management/",
+    "url": "/guide/workflows/task-management/#workflow-phase-2-task-execution",
     "source": "guide"
   },
   {
@@ -3240,7 +3264,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Task Workflow TDD Integration",
     "keywords": "task workflow tdd integration guide workflows task management md#integration tdd task management",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/task-management/",
+    "url": "/guide/workflows/task-management/#integration-tdd--task-management",
     "source": "guide"
   },
   {
@@ -3260,6 +3284,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agents",
+    "title": "Agents",
+    "keywords": "agents guide ultimate guide md#4 agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#4-agents",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-template",
     "title": "Agent Template",
     "keywords": "agent template guide ultimate guide md#43 agent template",
@@ -3273,6 +3305,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent examples guide ultimate guide md#46 agent examples",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#46-agent-examples",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skills",
+    "title": "Skills",
+    "keywords": "skills guide ultimate guide md#5 skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#5-skills",
     "source": "guide"
   },
   {
@@ -3316,9 +3356,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-community-skills-iac",
+    "title": "Community Skills Iac",
+    "keywords": "community skills iac guide ultimate guide md#infrastructure code skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#infrastructure-as-code-skills",
+    "source": "guide"
+  },
+  {
     "id": "guide-claude-reflect-system",
     "title": "Claude Reflect System",
-    "keywords": "claude reflect system guide ultimate guide md#automatic skill improvement claude reflect system",
+    "keywords": "claude reflect system guide ultimate guide md#automatic skill improvement claude reflect system skill improvement safety guide ultimate guide md#automatic skill improvement claude reflect system skill improvement comparison guide ultimate guide md#automatic skill improvement claude reflect system skill improvement workflow guide ultimate guide md#automatic skill improvement claude reflect system",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#automatic-skill-improvement-claude-reflect-system",
     "source": "guide"
@@ -3326,7 +3374,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ui-ux-pro-max-guide",
     "title": "Ui Ux Pro Max Guide",
-    "keywords": "ui ux pro max guide guide ultimate guide md#design intelligence pro max",
+    "keywords": "ui ux pro max guide guide ultimate guide md#design intelligence pro max ui ux pro max stars guide ultimate guide md#design intelligence pro max ui ux pro max styles guide ultimate guide md#design intelligence pro max ui ux pro max palettes guide ultimate guide md#design intelligence pro max",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#design-intelligence-ui-ux-pro-max",
     "source": "guide"
@@ -3382,17 +3430,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-verification-loops",
     "title": "Verification Loops",
-    "keywords": "verification loops guide core methodologies md#tier implementation",
+    "keywords": "verification loops guide core methodologies md#tier implementation eval harness guide core methodologies md#tier implementation",
     "category": "Guide",
-    "url": "/guide/methodologies/",
+    "url": "/guide/methodologies/#tier-5-implementation",
     "source": "guide"
   },
   {
     "id": "guide-gsd-methodology",
     "title": "Gsd Methodology",
-    "keywords": "gsd methodology guide core methodologies md#tier strategic orchestration",
+    "keywords": "gsd methodology guide core methodologies md#tier strategic orchestration bmad method strategic guide core methodologies md#tier strategic orchestration",
     "category": "Guide",
-    "url": "/guide/methodologies/",
+    "url": "/guide/methodologies/#tier-1-strategic-orchestration",
     "source": "guide"
   },
   {
@@ -3400,7 +3448,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Bmad Method Tool Usage",
     "keywords": "bmad method tool usage guide workflows spec first md#with bmad method multi role planning",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#with-bmad-method-multi-role-planning",
     "source": "guide"
   },
   {
@@ -3408,7 +3456,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Kitty Tool",
     "keywords": "spec kitty tool guide workflows spec first md#with spec kitty isolated parallel execution",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#with-spec-kitty-isolated-parallel-execution",
     "source": "guide"
   },
   {
@@ -3422,9 +3470,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-software-factories-section",
     "title": "AI Software Factories Section",
-    "keywords": "ai software factories section guide workflows spec first md#full cycle software factories",
+    "keywords": "ai software factories section guide workflows spec first md#full cycle software factories ai software factories liza oss guide workflows spec first md#full cycle software factories",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#full-cycle-ai-software-factories",
     "source": "guide"
   },
   {
@@ -3440,7 +3488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Software Factories Spectrum",
     "keywords": "agentic software factories spectrum guide workflows agentic software factories md#1 the spectrum six levels six costs",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agentic-software-factories/",
+    "url": "/guide/workflows/agentic-software-factories/#1-the-spectrum-six-levels-six-costs",
     "source": "guide"
   },
   {
@@ -3448,7 +3496,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Software Factories Decision Tree",
     "keywords": "agentic software factories decision tree guide workflows agentic software factories md#2 the missing decision tree when does closed software factory actually win",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agentic-software-factories/",
+    "url": "/guide/workflows/agentic-software-factories/#2-the-missing-decision-tree-when-does-a-closed-software-factory-actually-win",
     "source": "guide"
   },
   {
@@ -3456,13 +3504,13 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Software Factories Governance 5th Question",
     "keywords": "agentic software factories governance 5th question guide workflows agentic software factories md#4 five governance questions before you adopt anything",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agentic-software-factories/",
+    "url": "/guide/workflows/agentic-software-factories/#4-five-governance-questions-before-you-adopt-anything",
     "source": "guide"
   },
   {
     "id": "guide-resource-evaluations-appendix",
     "title": "Resource Evaluations Appendix",
-    "keywords": "resource evaluations appendix guide ultimate guide md#appendix resource evaluation process",
+    "keywords": "resource evaluations appendix guide ultimate guide md#appendix resource evaluation process appendix c resource evaluation guide ultimate guide md#appendix resource evaluation process",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#appendix-c-resource-evaluation-process",
     "source": "guide"
@@ -3470,7 +3518,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-audit-agents-skills-command",
     "title": "Audit Agents Skills Command",
-    "keywords": "audit agents skills command examples skills audit agents skills skill",
+    "keywords": "audit agents skills command examples skills audit agents skills skill audit agents skills skill examples skills audit agents skills skill",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/audit-agents-skills/SKILL.md",
     "source": "guide"
@@ -3492,73 +3540,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-practitioner-insights",
-    "title": "Practitioner Insights",
-    "keywords": "practitioner insights guide ecosystem ecosystem md#112 practitioner insights",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-practitioner-dave-van-veen",
-    "title": "Practitioner Dave Van Veen",
-    "keywords": "practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-practitioner-matteo-collina",
-    "title": "Practitioner Matteo Collina",
-    "keywords": "practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-outcome-engineering-o16g",
-    "title": "Outcome Engineering O16g",
-    "keywords": "outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-practitioner-steinberger",
-    "title": "Practitioner Steinberger",
-    "keywords": "practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-practitioner-addy-osmani",
-    "title": "Practitioner Addy Osmani",
-    "keywords": "practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-practitioner-alan",
-    "title": "Practitioner Alan",
-    "keywords": "practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
     "id": "guide-verification-paradox",
     "title": "Verification Paradox",
     "keywords": "verification paradox guide security production safety md#rule the verification paradox",
     "category": "Guide",
-    "url": "/guide/production-safety/",
+    "url": "/guide/production-safety/#rule-7-the-verification-paradox",
     "source": "guide"
   },
   {
     "id": "guide-devops-sre-guide",
     "title": "Devops Sre Guide",
-    "keywords": "devops sre guide guide ops devops sre",
+    "keywords": "devops sre guide guide ops devops sre devops fire framework guide ops devops sre devops k8s troubleshooting guide ops devops sre devops k8s prompts guide ops devops sre devops limitations guide ops devops sre",
     "category": "Guide",
     "url": "/guide/devops-sre/",
     "source": "guide"
@@ -3568,7 +3560,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Devops Incident Response",
     "keywords": "devops incident response guide ops devops sre md#pattern incident response",
     "category": "Guide",
-    "url": "/guide/devops-sre/",
+    "url": "/guide/devops-sre/#pattern-incident-response",
     "source": "guide"
   },
   {
@@ -3576,7 +3568,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Devops Iac Patterns",
     "keywords": "devops iac patterns guide ops devops sre md#pattern infrastructure code",
     "category": "Guide",
-    "url": "/guide/devops-sre/",
+    "url": "/guide/devops-sre/#pattern-infrastructure-as-code",
     "source": "guide"
   },
   {
@@ -3584,7 +3576,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Devops Guardrails",
     "keywords": "devops guardrails guide ops devops sre md#guardrails adoption",
     "category": "Guide",
-    "url": "/guide/devops-sre/",
+    "url": "/guide/devops-sre/#guardrails--adoption",
     "source": "guide"
   },
   {
@@ -3592,7 +3584,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Devops Quick Reference",
     "keywords": "devops quick reference guide ops devops sre md#quick reference",
     "category": "Guide",
-    "url": "/guide/devops-sre/",
+    "url": "/guide/devops-sre/#quick-reference",
     "source": "guide"
   },
   {
@@ -3614,7 +3606,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-product-designer-workflow",
     "title": "Product Designer Workflow",
-    "keywords": "product designer workflow guide workflows design code",
+    "keywords": "product designer workflow guide workflows design code design system handoff guide workflows design code figma make integration guide workflows design code pencil workflow guide workflows design code",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/design-to-code/",
     "source": "guide"
@@ -3640,7 +3632,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Pencil Vs Figma",
     "keywords": "pencil vs figma guide workflows design code md#pencil figma mcp",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/design-to-code/",
+    "url": "/guide/workflows/design-to-code/#pencil-vs-figma-mcp",
     "source": "guide"
   },
   {
@@ -3649,6 +3641,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "command template guide ultimate guide md#63 command template",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#63-command-template",
+    "source": "guide"
+  },
+  {
+    "id": "guide-hooks",
+    "title": "Hooks",
+    "keywords": "hooks guide ultimate guide md#7 hooks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#7-hooks",
     "source": "guide"
   },
   {
@@ -3668,11 +3668,27 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-serena-mcp",
+    "title": "Serena MCP",
+    "keywords": "serena mcp guide ultimate guide md#serena semantic code analysis",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#serena-semantic-code-analysis",
+    "source": "guide"
+  },
+  {
     "id": "guide-mcp-memory-stack-patterns",
     "title": "MCP Memory Stack Patterns",
     "keywords": "mcp memory stack patterns guide ultimate guide md#mcp memory stack complementarity patterns",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-memory-stack-complementarity-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mcp-config",
+    "title": "MCP Config",
+    "keywords": "mcp config guide ultimate guide md#mcp configuration location",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-configuration-location",
     "source": "guide"
   },
   {
@@ -3750,7 +3766,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-dual-instance-workflow",
     "title": "Dual Instance Workflow",
-    "keywords": "dual instance workflow guide workflows dual instance planning",
+    "keywords": "dual instance workflow guide workflows dual instance planning dual instance cost analysis guide workflows dual instance planning",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/dual-instance-planning/",
     "source": "guide"
@@ -3758,9 +3774,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-dual-instance-setup",
     "title": "Dual Instance Setup",
-    "keywords": "dual instance setup guide workflows dual instance planning md#dual instance planning workflow",
+    "keywords": "dual instance setup guide workflows dual instance planning md#dual instance planning workflow dual instance complete workflow guide workflows dual instance planning md#dual instance planning workflow dual instance plan template guide workflows dual instance planning md#dual instance planning workflow",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dual-instance-planning/",
+    "url": "/guide/workflows/dual-instance-planning/#dual-instance-planning-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-comparison",
+    "title": "Dual Instance Comparison",
+    "keywords": "dual instance comparison guide ultimate guide md#comparison boris horizontal jon vertical",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#comparison-boris-horizontal-vs-jon-vertical",
     "source": "guide"
   },
   {
@@ -3816,7 +3840,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Annotation Cycle Pattern",
     "keywords": "annotation cycle pattern guide workflows plan driven md#phase the annotation cycle",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/plan-driven/",
+    "url": "/guide/workflows/plan-driven/#phase-2-the-annotation-cycle",
     "source": "guide"
   },
   {
@@ -3824,7 +3848,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Custom Markdown Plans",
     "keywords": "custom markdown plans guide workflows plan driven md#why custom plans over plan",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/plan-driven/",
+    "url": "/guide/workflows/plan-driven/#why-custom-plans-over-plan",
     "source": "guide"
   },
   {
@@ -3868,11 +3892,35 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-multi-instance-costs",
+    "title": "Multi Instance Costs",
+    "keywords": "multi instance costs guide ultimate guide md#cost benefit analysis",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cost-benefit-analysis",
+    "source": "guide"
+  },
+  {
     "id": "guide-orchestration-frameworks",
     "title": "Orchestration Frameworks",
     "keywords": "orchestration frameworks guide ultimate guide md#orchestration frameworks",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#orchestration-frameworks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-instance-implementation",
+    "title": "Multi Instance Implementation",
+    "keywords": "multi instance implementation guide ultimate guide md#implementation guide progressive scaling",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#implementation-guide-progressive-scaling",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-instance-monitoring",
+    "title": "Multi Instance Monitoring",
+    "keywords": "multi instance monitoring guide ultimate guide md#monitoring observability",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#monitoring--observability",
     "source": "guide"
   },
   {
@@ -3928,7 +3976,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Architecture",
     "keywords": "agent teams architecture guide workflows agent teams md#2 architecture deep dive",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#2-architecture-deep-dive",
     "source": "guide"
   },
   {
@@ -3936,7 +3984,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Setup",
     "keywords": "agent teams setup guide workflows agent teams md#3 setup configuration",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#3-setup--configuration",
     "source": "guide"
   },
   {
@@ -3944,7 +3992,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Use Cases",
     "keywords": "agent teams use cases guide workflows agent teams md#4 production use cases",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#4-production-use-cases",
     "source": "guide"
   },
   {
@@ -3952,7 +4000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Fountain Case Study",
     "keywords": "agent teams fountain case study guide workflows agent teams md#41 multi layer code review fountain",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#41-multi-layer-code-review-fountain",
     "source": "guide"
   },
   {
@@ -3960,7 +4008,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Cred Case Study",
     "keywords": "agent teams cred case study guide workflows agent teams md#42 full development lifecycle cred",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#42-full-development-lifecycle-cred",
     "source": "guide"
   },
   {
@@ -3968,7 +4016,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams C Compiler Case Study",
     "keywords": "agent teams c compiler case study guide workflows agent teams md#43 autonomous compiler anthropic research",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#43-autonomous-c-compiler-anthropic-research",
     "source": "guide"
   },
   {
@@ -3976,7 +4024,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Paul Rayner Workflows",
     "keywords": "agent teams paul rayner workflows guide workflows agent teams md#44 job search app development paul rayner",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#44-job-search-app-development-paul-rayner",
     "source": "guide"
   },
   {
@@ -3984,7 +4032,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Workflow Impact",
     "keywords": "agent teams workflow impact guide workflows agent teams md#agent teams workflow",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#agent-teams-workflow",
     "source": "guide"
   },
   {
@@ -3992,7 +4040,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Limitations",
     "keywords": "agent teams limitations guide workflows agent teams md#6 limitations gotchas",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#6-limitations--gotchas",
     "source": "guide"
   },
   {
@@ -4000,7 +4048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Decision Tree",
     "keywords": "agent teams decision tree guide workflows agent teams md#decision tree when use agent teams",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#decision-tree-when-to-use-agent-teams",
     "source": "guide"
   },
   {
@@ -4008,7 +4056,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Best Practices",
     "keywords": "agent teams best practices guide workflows agent teams md#8 best practices",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#8-best-practices",
     "source": "guide"
   },
   {
@@ -4016,13 +4064,13 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Troubleshooting",
     "keywords": "agent teams troubleshooting guide workflows agent teams md#9 troubleshooting",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#9-troubleshooting",
     "source": "guide"
   },
   {
     "id": "guide-ai-fluency-plan-review-section",
     "title": "AI Fluency Plan Review Section",
-    "keywords": "ai fluency plan review section guide ultimate guide md#rev the engine",
+    "keywords": "ai fluency plan review section guide ultimate guide md#rev the engine rev the engine guide ultimate guide md#rev the engine",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#rev-the-engine",
     "source": "guide"
@@ -4078,7 +4126,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-teammatetool-experimental",
     "title": "Teammatetool Experimental",
-    "keywords": "teammatetool experimental guide ultimate guide md#teammatetool experimental",
+    "keywords": "teammatetool experimental guide ultimate guide md#teammatetool experimental teammatetool guide ultimate guide md#teammatetool experimental",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#teammatetool-experimental",
     "source": "guide"
@@ -4126,7 +4174,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-spec-first-workflow",
     "title": "Spec First Workflow",
-    "keywords": "spec first workflow guide workflows spec first",
+    "keywords": "spec first workflow guide workflows spec first spec feature list guide workflows spec first",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/spec-first/",
     "source": "guide"
@@ -4136,7 +4184,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Modular Design",
     "keywords": "spec modular design guide workflows spec first md#modular spec design",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#modular-spec-design",
     "source": "guide"
   },
   {
@@ -4144,7 +4192,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Operational Boundaries",
     "keywords": "spec operational boundaries guide workflows spec first md#operational boundaries",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#operational-boundaries",
     "source": "guide"
   },
   {
@@ -4152,7 +4200,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Command Template",
     "keywords": "spec command template guide workflows spec first md#command spec template",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#command-spec-template",
     "source": "guide"
   },
   {
@@ -4160,7 +4208,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Anti Monolithic",
     "keywords": "spec anti monolithic guide workflows spec first md#anti pattern monolithic claudemd",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#anti-pattern-monolithic-claudemd",
     "source": "guide"
   },
   {
@@ -4168,7 +4216,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Task Granularity",
     "keywords": "spec task granularity guide workflows spec first md#task granularity sizing work for agents",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#task-granularity-sizing-work-for-agents",
     "source": "guide"
   },
   {
@@ -4176,7 +4224,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Spec Prd Checklist",
     "keywords": "spec prd checklist guide workflows spec first md#prd quality checklist",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/spec-first/",
+    "url": "/guide/workflows/spec-first/#prd-quality-checklist",
     "source": "guide"
   },
   {
@@ -4208,7 +4256,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Atdd With Agents",
     "keywords": "atdd with agents guide core methodologies md#tier behavior acceptance",
     "category": "Guide",
-    "url": "/guide/methodologies/",
+    "url": "/guide/methodologies/#tier-3-behavior--acceptance",
     "source": "guide"
   },
   {
@@ -4246,7 +4294,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-harness-taste-invariants",
     "title": "Harness Taste Invariants",
-    "keywords": "harness taste invariants guide ultimate guide md#9255 enforcing architecture and taste",
+    "keywords": "harness taste invariants guide ultimate guide md#9255 enforcing architecture and taste harness anti entropy guide ultimate guide md#9255 enforcing architecture and taste harness layered arch guide ultimate guide md#9255 enforcing architecture and taste harness throughput merge guide ultimate guide md#9255 enforcing architecture and taste",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9255-enforcing-architecture-and-taste",
     "source": "guide"
@@ -4265,78 +4313,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cheatsheet guide ultimate guide md#105 cheatsheet",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#105-cheatsheet",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-goose",
-    "title": "AI Ecosystem Goose",
-    "keywords": "ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-goose-comparison",
-    "title": "AI Ecosystem Goose Comparison",
-    "keywords": "ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-context-packing",
-    "title": "AI Ecosystem Context Packing",
-    "keywords": "ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-multi-ide-sync",
-    "title": "AI Ecosystem Multi Ide Sync",
-    "keywords": "ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agents-md-support-status",
-    "title": "Agents Md Support Status",
-    "keywords": "agents md support status guide ecosystem ecosystem md#agentsmd support status",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-build-vs-use",
-    "title": "AI Ecosystem Build Vs Use",
-    "keywords": "ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-architecture-diagrams-input",
-    "title": "Architecture Diagrams Input",
-    "keywords": "architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-voice-to-text",
-    "title": "AI Ecosystem Voice To Text",
-    "keywords": "ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ai-ecosystem-alternative-providers",
-    "title": "AI Ecosystem Alternative Providers",
-    "keywords": "ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -4393,14 +4369,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cowork summary guide cowork",
     "category": "Guide",
     "url": "/guide/cowork/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-cowork-section",
-    "title": "Cowork Section",
-    "keywords": "cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
-    "category": "Guide",
-    "url": "/guide/ai-ecosystem/",
     "source": "guide"
   },
   {
@@ -4566,25 +4534,41 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-myths-hidden-features",
     "title": "Myths Hidden Features",
-    "keywords": "myths hidden features guide ultimate guide md#myth claude code has hidden features you can unlock with secret flags",
+    "keywords": "myths hidden features guide ultimate guide md# myth claude code has hidden features you can unlock with secret flags",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-claude-code-has-hidden-features-you-can-unlock-with-secret-flags",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#-myth-claude-code-has-hidden-features-you-can-unlock-with-secret-flags",
     "source": "guide"
   },
   {
     "id": "guide-myths-tasks-api-autonomous",
     "title": "Myths Tasks API Autonomous",
-    "keywords": "myths tasks api autonomous guide ultimate guide md#myth tasks api allows fully autonomous parallel agents",
+    "keywords": "myths tasks api autonomous guide ultimate guide md# myth tasks api allows fully autonomous parallel agents",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-tasks-api-allows-fully-autonomous-parallel-agents",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#-myth-tasks-api-allows-fully-autonomous-parallel-agents",
     "source": "guide"
   },
   {
     "id": "guide-myths-100x-faster",
     "title": "Myths 100x Faster",
-    "keywords": "myths 100x faster guide ultimate guide md#myth claude code 100x faster than other coding tools",
+    "keywords": "myths 100x faster guide ultimate guide md# myth claude code 100x faster than other coding tools",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#myth-claude-code-is-100x-faster-than-other-ai-coding-tools",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#-myth-claude-code-is-100x-faster-than-other-ai-coding-tools",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rules",
+    "title": "Rules",
+    "keywords": "rules guide ultimate guide md#the golden rules",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-golden-rules",
+    "source": "guide"
+  },
+  {
+    "id": "guide-workflow",
+    "title": "Workflow",
+    "keywords": "workflow guide ultimate guide md#the workflow",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-workflow",
     "source": "guide"
   },
   {
@@ -4598,7 +4582,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-security-hardening",
     "title": "Security Hardening",
-    "keywords": "security hardening guide security security hardening",
+    "keywords": "security hardening guide security security hardening security supply chain stats guide security security hardening",
     "category": "Guide",
     "url": "/guide/security-hardening/",
     "source": "guide"
@@ -4608,7 +4592,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security CVE Summary",
     "keywords": "security cve summary guide security security hardening md#cve summary 2025 2026",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#cve-summary-2025-2026",
     "source": "guide"
   },
   {
@@ -4616,7 +4600,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security MCP Scan Tool",
     "keywords": "security mcp scan tool guide security security hardening md#11 mcp vetting workflow",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#11-mcp-vetting-workflow",
     "source": "guide"
   },
   {
@@ -4624,7 +4608,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security Malicious Extensions",
     "keywords": "security malicious extensions guide security security hardening md#15 malicious extensions claude attack surface",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#15-malicious-extensions-claude-attack-surface",
     "source": "guide"
   },
   {
@@ -4632,7 +4616,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security Kill Switch",
     "keywords": "security kill switch guide security security hardening md#35 kill switch containment architecture",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#35-ai-kill-switch--containment-architecture",
     "source": "guide"
   },
   {
@@ -4640,7 +4624,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security Claude Folder Audit",
     "keywords": "security claude folder audit guide security security hardening md#5 minute claude audit checklist",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#5-minute-claude-audit-checklist",
     "source": "guide"
   },
   {
@@ -4680,7 +4664,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security Cc Scanner",
     "keywords": "security cc scanner guide security security hardening md#claude code security scanner research preview",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#claude-code-as-security-scanner-research-preview",
     "source": "guide"
   },
   {
@@ -4704,7 +4688,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Security PR Review Workflow",
     "keywords": "security pr review workflow guide security security hardening md#41 security review workflow",
     "category": "Guide",
-    "url": "/guide/security-hardening/",
+    "url": "/guide/security-hardening/#41-pr-security-review-workflow",
     "source": "guide"
   },
   {
@@ -4792,7 +4776,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Reference File Pattern",
     "keywords": "mcp reference file pattern guide ecosystem mcp servers ecosystem md#documenting mcp for claude the reference file pattern",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#documenting-an-mcp-for-claude-the-reference-file-pattern",
     "source": "guide"
   },
   {
@@ -4864,7 +4848,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Context Evaluator Tool",
     "keywords": "context evaluator tool guide ecosystem third party tools md#context evaluator",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#context-evaluator",
     "source": "guide"
   },
   {
@@ -4896,7 +4880,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Anthropic API Patterns",
     "keywords": "anthropic api patterns guide core architecture md#anthropic api patterns for architects",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#anthropic-api-patterns-for-architects",
     "source": "guide"
   },
   {
@@ -4904,7 +4888,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Tool Choice Parameter",
     "keywords": "tool choice parameter guide core architecture md#tool choice controlling when tools fire",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#tool_choice-controlling-when-tools-fire",
     "source": "guide"
   },
   {
@@ -4912,7 +4896,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Strict Mode Structured Outputs",
     "keywords": "strict mode structured outputs guide core architecture md#structured outputs strict mode",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#structured-outputs-strict-mode",
     "source": "guide"
   },
   {
@@ -4920,7 +4904,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Max Turns Guidance",
     "keywords": "max turns guidance guide core architecture md#controlling loop depth with max turns",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#controlling-loop-depth-with-max_turns",
     "source": "guide"
   },
   {
@@ -4984,7 +4968,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Escalation Rule Based Routing",
     "keywords": "escalation rule based routing guide workflows production reliability md#rule based routing from structured output",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/production-reliability/",
+    "url": "/guide/workflows/production-reliability/#rule-based-routing-from-structured-output",
     "source": "guide"
   },
   {
@@ -4992,7 +4976,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Circuit Breaker Pattern",
     "keywords": "circuit breaker pattern guide workflows production reliability md#circuit breaker pattern",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/production-reliability/",
+    "url": "/guide/workflows/production-reliability/#circuit-breaker-pattern",
     "source": "guide"
   },
   {
@@ -5000,7 +4984,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Structured Agent Error",
     "keywords": "structured agent error guide workflows production reliability md#structured error propagation",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/production-reliability/",
+    "url": "/guide/workflows/production-reliability/#structured-error-propagation",
     "source": "guide"
   },
   {
@@ -5008,7 +4992,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Structured Human Handoff",
     "keywords": "structured human handoff guide workflows production reliability md#structured human handoff",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/production-reliability/",
+    "url": "/guide/workflows/production-reliability/#structured-human-handoff",
     "source": "guide"
   },
   {
@@ -5016,7 +5000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Source Conflict Resolution",
     "keywords": "source conflict resolution guide workflows production reliability md#source conflict resolution",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/production-reliability/",
+    "url": "/guide/workflows/production-reliability/#source-conflict-resolution",
     "source": "guide"
   },
   {
@@ -5024,7 +5008,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Teams Advanced Orchestration",
     "keywords": "agent teams advanced orchestration guide workflows agent teams md#advanced orchestration patterns",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#advanced-orchestration-patterns",
     "source": "guide"
   },
   {
@@ -5032,7 +5016,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Hub And Spoke Coordinator",
     "keywords": "hub and spoke coordinator guide workflows agent teams md#hub and spoke coordinator",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#hub-and-spoke-coordinator",
     "source": "guide"
   },
   {
@@ -5040,7 +5024,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Programmatic Prerequisites",
     "keywords": "programmatic prerequisites guide workflows agent teams md#programmatic prerequisites",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#programmatic-prerequisites",
     "source": "guide"
   },
   {
@@ -5048,7 +5032,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Subagent Selection",
     "keywords": "dynamic subagent selection guide workflows agent teams md#dynamic subagent selection",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#dynamic-subagent-selection",
     "source": "guide"
   },
   {
@@ -5056,7 +5040,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Research Space Partitioning",
     "keywords": "research space partitioning guide workflows agent teams md#research space partitioning",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#research-space-partitioning",
     "source": "guide"
   },
   {
@@ -5064,7 +5048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Crash Recovery Manifest",
     "keywords": "crash recovery manifest guide workflows agent teams md#crash recovery manifest",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#crash-recovery-manifest",
     "source": "guide"
   },
   {
@@ -5072,7 +5056,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Iterative Refinement Stopping",
     "keywords": "iterative refinement stopping guide workflows agent teams md#iterative refinement loop",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#iterative-refinement-loop",
     "source": "guide"
   },
   {
@@ -5080,7 +5064,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Narrow Task Decomposition",
     "keywords": "narrow task decomposition guide workflows agent teams md#narrow task decomposition",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/",
+    "url": "/guide/workflows/agent-teams/#narrow-task-decomposition",
     "source": "guide"
   },
   {
@@ -5088,7 +5072,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Advanced MCP Tool Design",
     "keywords": "advanced mcp tool design guide ecosystem mcp servers ecosystem md#advanced mcp tool design",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#advanced-mcp-tool-design",
     "source": "guide"
   },
   {
@@ -5096,7 +5080,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Isretryable",
     "keywords": "mcp isretryable guide ecosystem mcp servers ecosystem md#isretryable application level convention",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#isretryable-application-level-convention",
     "source": "guide"
   },
   {
@@ -5104,7 +5088,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Iserror Semantics",
     "keywords": "mcp iserror semantics guide ecosystem mcp servers ecosystem md#iserror false empty content iserror true",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#iserror-false--empty-content-vs-iserror-true",
     "source": "guide"
   },
   {
@@ -5112,7 +5096,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Resources Vs Tools",
     "keywords": "mcp resources vs tools guide ecosystem mcp servers ecosystem md#mcp resources tools",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#mcp-resources-vs-tools",
     "source": "guide"
   },
   {
@@ -5120,7 +5104,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Tool Naming Conflicts",
     "keywords": "mcp tool naming conflicts guide ecosystem mcp servers ecosystem md#tool naming and system prompt conflicts",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#tool-naming-and-system-prompt-conflicts",
     "source": "guide"
   },
   {
@@ -5128,7 +5112,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Task Scoped Profiles",
     "keywords": "mcp task scoped profiles guide ecosystem mcp servers ecosystem md#task scoped tool profiles",
     "category": "Guide",
-    "url": "/guide/mcp-servers-ecosystem/",
+    "url": "/guide/mcp-servers-ecosystem/#task-scoped-tool-profiles",
     "source": "guide"
   },
   {
@@ -5272,7 +5256,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows When",
     "keywords": "dynamic workflows when guide workflows dynamic workflows md#1 when use workflows agent tool skills",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#1-when-to-use-workflows-vs-agent-tool-vs-skills",
     "source": "guide"
   },
   {
@@ -5280,7 +5264,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows Primitives",
     "keywords": "dynamic workflows primitives guide workflows dynamic workflows md#2 primitive reference",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#2-primitive-reference",
     "source": "guide"
   },
   {
@@ -5288,7 +5272,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows Pipeline Vs Parallel",
     "keywords": "dynamic workflows pipeline vs parallel guide workflows dynamic workflows md#4 pipeline parallel when and why",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#4-pipeline-vs-parallel-when-and-why",
     "source": "guide"
   },
   {
@@ -5296,7 +5280,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows Patterns",
     "keywords": "dynamic workflows patterns guide workflows dynamic workflows md#6 common patterns",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#6-common-patterns",
     "source": "guide"
   },
   {
@@ -5304,7 +5288,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows Antipatterns",
     "keywords": "dynamic workflows antipatterns guide workflows dynamic workflows md#8 when not use workflows",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#8-when-not-to-use-workflows",
     "source": "guide"
   },
   {
@@ -5312,7 +5296,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Dynamic Workflows Cost",
     "keywords": "dynamic workflows cost guide workflows dynamic workflows md#9 cost and performance notes",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dynamic-workflows/",
+    "url": "/guide/workflows/dynamic-workflows/#9-cost-and-performance-notes",
     "source": "guide"
   },
   {
@@ -5328,7 +5312,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Code Review How It Works",
     "keywords": "code review how it works guide workflows code review md#how works",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/",
+    "url": "/guide/workflows/code-review/#how-it-works",
     "source": "guide"
   },
   {
@@ -5336,7 +5320,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Code Review Setup",
     "keywords": "code review setup guide workflows code review md#setup",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/",
+    "url": "/guide/workflows/code-review/#setup",
     "source": "guide"
   },
   {
@@ -5344,7 +5328,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Code Review Configuration",
     "keywords": "code review configuration guide workflows code review md#configure reviews",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/",
+    "url": "/guide/workflows/code-review/#configure-reviews",
     "source": "guide"
   },
   {
@@ -5352,7 +5336,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Code Review Pricing",
     "keywords": "code review pricing guide workflows code review md#pricing",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/",
+    "url": "/guide/workflows/code-review/#pricing",
     "source": "guide"
   },
   {
@@ -5360,7 +5344,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Code Review Limitations",
     "keywords": "code review limitations guide workflows code review md#known limitations research preview",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/",
+    "url": "/guide/workflows/code-review/#known-limitations-research-preview",
     "source": "guide"
   },
   {
@@ -5376,7 +5360,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Two Models",
     "keywords": "github actions two models guide workflows github actions md#two models",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#two-models",
     "source": "guide"
   },
   {
@@ -5384,7 +5368,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Pattern Mention Review",
     "keywords": "github actions pattern mention review guide workflows github actions md#pattern code review claude mention",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#pattern-1-pr-code-review-on-claude-mention",
     "source": "guide"
   },
   {
@@ -5392,7 +5376,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Pattern Push Review",
     "keywords": "github actions pattern push review guide workflows github actions md#pattern automatic review push",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#pattern-2-automatic-pr-review-on-push",
     "source": "guide"
   },
   {
@@ -5400,7 +5384,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Pattern Issue Triage",
     "keywords": "github actions pattern issue triage guide workflows github actions md#pattern issue triage and labeling",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#pattern-3-issue-triage-and-labeling",
     "source": "guide"
   },
   {
@@ -5408,7 +5392,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Pattern Security Review",
     "keywords": "github actions pattern security review guide workflows github actions md#pattern security focused review",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#pattern-4-security-focused-review",
     "source": "guide"
   },
   {
@@ -5416,7 +5400,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Pattern Scheduled Maintenance",
     "keywords": "github actions pattern scheduled maintenance guide workflows github actions md#pattern scheduled repo maintenance",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#pattern-5-scheduled-repo-maintenance",
     "source": "guide"
   },
   {
@@ -5424,7 +5408,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Cost Control",
     "keywords": "github actions cost control guide workflows github actions md#cost control",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#cost-control",
     "source": "guide"
   },
   {
@@ -5432,7 +5416,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Github Actions Security Checklist",
     "keywords": "github actions security checklist guide workflows github actions md#security checklist",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/github-actions/",
+    "url": "/guide/workflows/github-actions/#security-checklist",
     "source": "guide"
   },
   {
@@ -5448,7 +5432,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Evaluation Metrics",
     "keywords": "agent evaluation metrics guide roles agent evaluation md#metrics track",
     "category": "Guide",
-    "url": "/guide/agent-evaluation/",
+    "url": "/guide/agent-evaluation/#metrics-to-track",
     "source": "guide"
   },
   {
@@ -5456,7 +5440,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Evaluation Patterns",
     "keywords": "agent evaluation patterns guide roles agent evaluation md#implementation patterns",
     "category": "Guide",
-    "url": "/guide/agent-evaluation/",
+    "url": "/guide/agent-evaluation/#implementation-patterns",
     "source": "guide"
   },
   {
@@ -5464,7 +5448,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Evaluation Probabilistic",
     "keywords": "agent evaluation probabilistic guide roles agent evaluation md#evaluating probabilistic systems",
     "category": "Guide",
-    "url": "/guide/agent-evaluation/",
+    "url": "/guide/agent-evaluation/#evaluating-probabilistic-systems",
     "source": "guide"
   },
   {
@@ -5472,7 +5456,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Evaluation Tools",
     "keywords": "agent evaluation tools guide roles agent evaluation md#tools references",
     "category": "Guide",
-    "url": "/guide/agent-evaluation/",
+    "url": "/guide/agent-evaluation/#tools--references",
     "source": "guide"
   },
   {
