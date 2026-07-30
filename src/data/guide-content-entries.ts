@@ -2407,7 +2407,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-enterprise-governance-3-mcp-governance-workflow",
     "title": "3. MCP Governance Workflow",
-    "keywords": "3 mcp governance workflow enterprise ai governance for claude code individual mcp vetting (the 5-minute audit) is covered in security-hardening.md §1.1. this section covers the organizational workflow: how new mcps ge 3 1 approval workflow 3 2 mcp registry format 3 3 enforcing the registry via hook 3 4 emerging runtime level mcp tool isolation",
+    "keywords": "3 mcp governance workflow enterprise ai governance for claude code individual mcp vetting (the 5-minute audit) is covered in security-hardening.md §1.1. this section covers the organizational workflow: how new mcps ge 3 1 approval workflow 3 2 mcp registry format 3 3 enforcing the registry via hook 3 4 emerging runtime level mcp tool isolation 3 5 watch executor the registry pattern as a product",
     "category": "Core Guides",
     "url": "/guide/enterprise-governance/#3-mcp-governance-workflow",
     "source": "guide"
@@ -4687,7 +4687,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-mcp-vs-cli-tradeoffs",
     "title": "Tradeoffs",
-    "keywords": "tradeoffs mcp vs cli decision guide mcp strengths advantage detail ----------- -------- structured interface tool schemas guide claude precisely — fewer hallucinated flags or arguments c mcp strengths cli strengths mcp weaknesses cli weaknesses",
+    "keywords": "tradeoffs mcp vs cli decision guide mcp strengths advantage detail ----------- -------- structured interface tool schemas guide claude precisely, fewer hallucinated flags or arguments co mcp strengths cli strengths mcp weaknesses cli weaknesses",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#tradeoffs",
     "source": "guide"
@@ -4711,7 +4711,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-mcp-vs-cli-guidance-by-situation",
     "title": "Guidance by situation",
-    "keywords": "guidance by situation mcp vs cli decision guide quick reference — not rules, but directional defaults. situation lean toward rationale ----------- ------------- ----------- non-technical user, chat",
+    "keywords": "guidance by situation mcp vs cli decision guide quick reference, not rules, but directional defaults. situation lean toward rationale ----------- ------------- ----------- non-technical user, chat i",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#guidance-by-situation",
     "source": "guide"
@@ -4734,7 +4734,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   },
   {
     "id": "gc-mcp-vs-cli-token-cost-of-mcp-schemas-what-the-numbers-look-li",
-    "title": "Token cost of MCP schemas — what the numbers look like",
+    "title": "Token cost of MCP schemas: what the numbers look like",
     "keywords": "token cost of mcp schemas what the numbers look like mcp vs cli decision guide since v2.1.7 (january 2026), claude code uses mcp tool search (lazy loading) by default. this changes the token math significantly, but does not elimi",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#token-cost-of-mcp-schemas-what-the-numbers-look-like",
@@ -4743,7 +4743,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-mcp-vs-cli-tooling-in-this-space",
     "title": "Tooling in this space",
-    "keywords": "tooling in this space mcp vs cli decision guide tool what it does status ------ ------------- -------- rtk (rust token killer) filters cli output before it reaches claude's context — reduces respons",
+    "keywords": "tooling in this space mcp vs cli decision guide tool what it does status ------ ------------- -------- rtk (rust token killer) filters cli output before it reaches claude's context (reduces response",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#tooling-in-this-space",
     "source": "guide"
@@ -4751,7 +4751,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-mcp-vs-cli-mcp-vs-skills",
     "title": "MCP vs Skills",
-    "keywords": "mcp vs skills mcp vs cli decision guide skills ( ) are a third integration paradigm — distinct from both mcp servers and cli tools. conflating them with clis is the most common framing error the oauth boundary community consensus 2026",
+    "keywords": "mcp vs skills mcp vs cli decision guide skills ( ) are a third integration paradigm, distinct from both mcp servers and cli tools. conflating them with clis is the most common framing error the oauth boundary community consensus 2026",
     "category": "Core Guides",
     "url": "/guide/mcp-vs-cli/#mcp-vs-skills",
     "source": "guide"
@@ -5487,7 +5487,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-isolation-5-cloud-sandboxes-landscape",
     "title": "5. Cloud Sandboxes Landscape",
-    "keywords": "5 cloud sandboxes landscape sandbox isolation for coding agents fly.io sprites source : sprites.dev hardware-isolated execution environments built on firecracker microvms, by fly.io. - isolation : firecracker micro fly io sprites cloudflare sandbox sdk vercel sandboxes e2b native claude code sandbox mode",
+    "keywords": "5 cloud sandboxes landscape sandbox isolation for coding agents fly.io sprites source : sprites.dev hardware-isolated execution environments built on firecracker microvms, by fly.io. - isolation : firecracker micro fly io sprites cloudflare sandbox sdk vercel sandboxes e2b native claude code sandbox mode agentos rivet the in process counter example",
     "category": "Core Guides",
     "url": "/guide/sandbox-isolation/#5-cloud-sandboxes-landscape",
     "source": "guide"
@@ -5639,7 +5639,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-13-troubleshooting",
     "title": "13. Troubleshooting",
-    "keywords": "13 troubleshooting native sandboxing in claude code check whether the command actually ran sandboxed most sandbox bug reports are measurement errors, and one variable explains nearly all of them. becaus check whether the command actually ran sandboxed commands that cannot work sandboxed at all plan for a break in week local servers and proxies fail to bind global npm tooling fails with eperm read the last error not the first sandbox not active commands failing with network error docker commands ",
+    "keywords": "13 troubleshooting native sandboxing in claude code running this checklist by hand every time gets old. packages it as a skill: eight checks that eliminate the known false positives, a report template t check whether the command actually ran sandboxed commands that cannot work sandboxed at all plan for a break in week local servers and proxies fail to bind global npm tooling fails with eperm read the last error not the first sandbox not active commands failing with network error docker commands ",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#13-troubleshooting",
     "source": "guide"
@@ -5898,6 +5898,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "adaptive unified parallel mode skill design patterns problem : you have n files to evaluate and need to decide: send all files to one agent (better for cross-file issues, higher context cost) or send eac",
     "category": "Core Guides",
     "url": "/guide/skill-design-patterns/#adaptive-unified-parallel-mode",
+    "source": "guide"
+  },
+  {
+    "id": "gc-skill-design-patterns-multi-directory-skill-discovery-for-cross-cli-comp",
+    "title": "Multi-Directory Skill Discovery for Cross-CLI Compatibility",
+    "keywords": "multi directory skill discovery for cross cli compatibility skill design patterns problem : a repository is worked on with more than one ai coding cli (claude code, plus codex, amp, or another harness). each cli expects skills or en",
+    "category": "Core Guides",
+    "url": "/guide/skill-design-patterns/#multi-directory-skill-discovery-for-cross-cli-compatibility",
     "source": "guide"
   },
   {

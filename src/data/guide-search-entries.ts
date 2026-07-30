@@ -830,7 +830,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-file-based-playbooks",
     "title": "Memory Systems File Based Playbooks",
-    "keywords": "memory systems file based playbooks guide core memory systems md#37 file based experience playbooks orf diffmem",
+    "keywords": "memory systems file based playbooks guide core memory systems md#37 file based experience playbooks orf diffmem memory systems executor gitignored memory guide core memory systems md#37 file based experience playbooks orf diffmem",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#37-file-based-experience-playbooks-orf-diffmem",
     "source": "guide"
@@ -1788,6 +1788,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-unit-economics-skill-injection-cost",
+    "title": "AI Unit Economics Skill Injection Cost",
+    "keywords": "ai unit economics skill injection cost guide ops unit economics md#audit what skill tool injects not just what costs load",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#audit-what-a-skill-or-tool-injects-not-just-what-it-costs-to-load",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide roles learning with md#quick self check start here",
@@ -2340,6 +2348,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-sandbox-unblock-skill",
+    "title": "Sandbox Unblock Skill",
+    "keywords": "sandbox unblock skill examples skills sandbox unblock skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/sandbox-unblock/SKILL.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-sandbox-validation-hook",
     "title": "Sandbox Validation Hook",
     "keywords": "sandbox validation hook examples hooks bash sandbox validation",
@@ -2516,6 +2532,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-enterprise-governance-executor-watch",
+    "title": "Enterprise Governance Executor Watch",
+    "keywords": "enterprise governance executor watch guide security enterprise governance md#35 watch executor the registry pattern product third party executor guide ref guide security enterprise governance md#35 watch executor the registry pattern product",
+    "category": "Guide",
+    "url": "/guide/enterprise-governance/#35-watch-executor-the-registry-pattern-as-a-product",
+    "source": "guide"
+  },
+  {
     "id": "guide-data-privacy-guide",
     "title": "Data Privacy Guide",
     "keywords": "data privacy guide guide security data privacy",
@@ -2668,6 +2692,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-agentos-guide-ref",
+    "title": "Third Party Agentos Guide Ref",
+    "keywords": "third party agentos guide ref guide security sandbox isolation md#agentos rivet the process counter example",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#agentos-rivet-the-in-process-counter-example",
+    "source": "guide"
+  },
+  {
     "id": "guide-mcp-vs-cli-guide",
     "title": "MCP Vs CLI Guide",
     "keywords": "mcp vs cli guide guide ecosystem mcp cli",
@@ -2704,7 +2736,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Vs CLI Token Cost",
     "keywords": "mcp vs cli token cost guide ecosystem mcp cli md#token cost mcp schemas what the numbers look like",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#token-cost-of-mcp-schemas--what-the-numbers-look-like",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-vs-cli.md#token-cost-of-mcp-schemas-what-the-numbers-look-like",
     "source": "guide"
   },
   {
@@ -4769,6 +4801,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "skill design patterns committed plans guide core skill design patterns md#plans and specs committed artifacts",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#plans-and-specs-as-committed-artifacts",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skill-design-patterns-multi-dir-skills",
+    "title": "Skill Design Patterns Multi Dir Skills",
+    "keywords": "skill design patterns multi dir skills guide core skill design patterns md#multi directory skill discovery for cross cli compatibility",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/skill-design-patterns.md#multi-directory-skill-discovery-for-cross-cli-compatibility",
     "source": "guide"
   },
   {

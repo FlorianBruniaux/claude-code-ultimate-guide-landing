@@ -116,6 +116,7 @@ export const EXAMPLES = {
             { name: "review-pr/", path: "skills/review-pr/SKILL.md", description: "Perform a comprehensive code review of a pull request" },
             { name: "routines-discover/", path: "skills/routines-discover/SKILL.md", description: "Analyze the project to surface high-value Routines use cases across schedule, API, and GitHub triggers" },
             { name: "sandbox-status/", path: "skills/sandbox-status/SKILL.md", description: "Display native sandbox status, configuration, and recent violations" },
+            { name: "sandbox-unblock/", path: "skills/sandbox-unblock/SKILL.md", description: "Eight-check diagnostic protocol before reporting a sandbox blocker, plus a report template and escalation path" },
             { name: "scaffold/", path: "skills/scaffold/SKILL.md", description: "Interactive coach: asks 4-5 questions to determine the right template type then generates it", favorite: true },
             { name: "security/", path: "skills/security/SKILL.md", description: "Rapid security assessment focused on OWASP Top 10 vulnerabilities" },
             { name: "security-audit/", path: "skills/security-audit/SKILL.md", description: "Comprehensive security audit with scored posture assessment" },
