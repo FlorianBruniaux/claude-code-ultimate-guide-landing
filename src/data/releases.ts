@@ -16,12 +16,26 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.221',
+    date: 'Aug 3, 2026',
+    highlights: [
+      'Security: fixed a Bash permission-check bypass letting zsh execute hidden commands in [[ ]] regex conditionals, plus a PowerShell path-quoting bypass on Windows; both now prompt for permission',
+      '[VSCode] Added Focus view (Ctrl+Alt+F): a chat-menu toggle that hides tool activity behind an expandable per-turn summary with a live running-tool indicator',
+      'Added mode: "mask" for sandbox credential files on Linux/WSL: sandboxed commands read a sentinel value while the sandbox proxy substitutes the real value on egress (macOS falls back to deny)',
+      'Added a prompt-audit subcommand to the claude-api skill for auditing prompts and tool descriptions written for older models',
+    ],
+    breaking: [
+      'Background sessions now commit and push automatically to preserve work, open a draft PR only when the task calls for one, and follow your CLAUDE.md git instructions',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.220',
     date: 'Jul 24, 2026',
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
