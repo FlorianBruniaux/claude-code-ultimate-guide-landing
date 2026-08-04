@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'Sandbox Isolation: just-bash, the pure-simulation counter-example',
+    date: 'Aug 4, 2026',
+    description: 'New entry in the Cloud Sandboxes Landscape section: just-bash (Vercel), a bash interpreter written directly in TypeScript with no VM at all, the opposite trade from agentOS a few lines above it. Same in-process, no-cloud-account category, weaker containment, zero moving parts in exchange. Named directly: no LICENSE file at the repo root despite the README claiming Apache-2.0.',
+    link: 'https://cc.bruniaux.com/guide/sandbox-isolation/#just-bash-vercel-simulate-dont-isolate',
+  },
+  {
     type: 'new_page',
     title: 'New workflow: Agentic Software Factories',
     date: 'Jul 15, 2026',

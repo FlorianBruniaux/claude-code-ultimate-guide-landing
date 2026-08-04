@@ -166,7 +166,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-skills-commands-merger-guide",
     "title": "Skills Commands Merger Guide",
-    "keywords": "skills commands merger guide guide ultimate guide scheduled tasks guide ultimate guide bridge guide guide ultimate guide trust calibration maintainability nuance guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide config disaster recovery guide ultimate guide mcp secrets vaults guide ultimate guide permissions deny tool qualified guide ultimate guide",
+    "keywords": "skills commands merger guide guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
     "source": "guide"
@@ -1260,6 +1260,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-scheduled-tasks",
+    "title": "Scheduled Tasks",
+    "keywords": "scheduled tasks guide ultimate guide md#scheduled tasks three methods",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#scheduled-tasks-three-methods",
+    "source": "guide"
+  },
+  {
     "id": "guide-scheduled-tasks-cloud",
     "title": "Scheduled Tasks Cloud",
     "keywords": "scheduled tasks cloud guide ultimate guide md#routines cloud automation",
@@ -1313,6 +1321,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "bridge schema examples scripts bridge plan schema",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/bridge-plan-schema.json",
+    "source": "guide"
+  },
+  {
+    "id": "guide-bridge-guide",
+    "title": "Bridge Guide",
+    "keywords": "bridge guide guide ultimate guide md#multi provider setup copilot bridge",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-provider-setup-cc-copilot-bridge",
     "source": "guide"
   },
   {
@@ -1892,6 +1908,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-trust-calibration-maintainability-nuance",
+    "title": "Trust Calibration Maintainability Nuance",
+    "keywords": "trust calibration maintainability nuance guide ultimate guide md#17 trust calibration when and how much verify trust calibration guide ultimate guide md#17 trust calibration when and how much verify",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#17-trust-calibration-when-and-how-much-to-verify",
+    "source": "guide"
+  },
+  {
     "id": "guide-session-naming-template",
     "title": "Session Naming Template",
     "keywords": "session naming template examples claude session naming",
@@ -2086,9 +2110,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-isolation-guide",
     "title": "Sandbox Isolation Guide",
-    "keywords": "sandbox isolation guide guide security sandbox isolation sandbox isolation decision tree guide security sandbox isolation sandbox docker sandboxes guide security sandbox isolation sandbox docker network guide security sandbox isolation sandbox docker templates guide security sandbox isolation sandbox comparison native docker guide security sandbox isolation sandbox safe autonomy guide security sandbox isolation sandbox anti patterns guide security sandbox isolation",
+    "keywords": "sandbox isolation guide guide security sandbox isolation sandbox isolation decision tree guide security sandbox isolation sandbox docker network guide security sandbox isolation",
     "category": "Guide",
     "url": "/guide/sandbox-isolation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-docker-sandboxes",
+    "title": "Sandbox Docker Sandboxes",
+    "keywords": "sandbox docker sandboxes guide security sandbox isolation md#3 docker sandboxes",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#3-docker-sandboxes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-docker-templates",
+    "title": "Sandbox Docker Templates",
+    "keywords": "sandbox docker templates guide security sandbox isolation md#custom templates",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#custom-templates",
     "source": "guide"
   },
   {
@@ -2340,6 +2380,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-sandbox-comparison-native-docker",
+    "title": "Sandbox Comparison Native Docker",
+    "keywords": "sandbox comparison native docker guide security sandbox isolation md#4 native claude code sandbox",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#4-native-claude-code-sandbox",
+    "source": "guide"
+  },
+  {
     "id": "guide-sandbox-status-command",
     "title": "Sandbox Status Command",
     "keywords": "sandbox status command examples skills sandbox status skill",
@@ -2361,6 +2409,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox validation hook examples hooks bash sandbox validation",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/sandbox-validation.sh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-safe-autonomy",
+    "title": "Sandbox Safe Autonomy",
+    "keywords": "sandbox safe autonomy guide security sandbox isolation md#7 safe autonomy workflows",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#7-safe-autonomy-workflows",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-anti-patterns",
+    "title": "Sandbox Anti Patterns",
+    "keywords": "sandbox anti patterns guide security sandbox isolation md#8 anti patterns",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#8-anti-patterns",
     "source": "guide"
   },
   {
@@ -2700,6 +2764,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-just-bash-guide-ref",
+    "title": "Third Party Just Bash Guide Ref",
+    "keywords": "third party just bash guide ref guide security sandbox isolation md#just bash vercel simulate dont isolate",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#just-bash-vercel-simulate-dont-isolate",
+    "source": "guide"
+  },
+  {
     "id": "guide-mcp-vs-cli-guide",
     "title": "MCP Vs CLI Guide",
     "keywords": "mcp vs cli guide guide ecosystem mcp cli",
@@ -2788,6 +2860,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-config-disaster-recovery",
+    "title": "Config Disaster Recovery",
+    "keywords": "config disaster recovery guide ultimate guide md#disaster recovery",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#disaster-recovery",
+    "source": "guide"
+  },
+  {
     "id": "guide-config-community-solutions",
     "title": "Config Community Solutions",
     "keywords": "config community solutions guide ultimate guide md#community solutions",
@@ -2798,7 +2878,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-mcp-secrets-management",
     "title": "MCP Secrets Management",
-    "keywords": "mcp secrets management guide ultimate guide md#831 mcp secrets management mcp secrets principles guide ultimate guide md#831 mcp secrets management mcp secrets os keychain guide ultimate guide md#831 mcp secrets management mcp secrets env file guide ultimate guide md#831 mcp secrets management mcp secrets verification guide ultimate guide md#831 mcp secrets management mcp secrets best practices guide ultimate guide md#831 mcp secrets management",
+    "keywords": "mcp secrets management guide ultimate guide md#831 mcp secrets management mcp secrets principles guide ultimate guide md#831 mcp secrets management mcp secrets os keychain guide ultimate guide md#831 mcp secrets management mcp secrets env file guide ultimate guide md#831 mcp secrets management mcp secrets vaults guide ultimate guide md#831 mcp secrets management mcp secrets verification guide ultimate guide md#831 mcp secrets management mcp secrets best practices guide ultimate guide md#831 mcp secrets management",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#831-mcp-secrets-management",
     "source": "guide"
@@ -2841,6 +2921,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "settings local example examples config settings local example",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/settings.local.json.example",
+    "source": "guide"
+  },
+  {
+    "id": "guide-permissions-deny-tool-qualified",
+    "title": "Permissions Deny Tool Qualified",
+    "keywords": "permissions deny tool qualified guide ultimate guide md#layer permissionsdeny",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#layer-1-permissionsdeny",
     "source": "guide"
   },
   {
@@ -2961,14 +3049,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "first workflow guide ultimate guide md#12 first workflow",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#12-first-workflow",
-    "source": "guide"
-  },
-  {
-    "id": "guide-trust-calibration",
-    "title": "Trust Calibration",
-    "keywords": "trust calibration guide ultimate guide md#17 trust calibration when and how much verify",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#17-trust-calibration-when-and-how-much-to-verify",
     "source": "guide"
   },
   {
