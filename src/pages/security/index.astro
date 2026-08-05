@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getSiteStats } from '../../utils/site-stats'
+import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
+import { SECURITY_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
 
 const stats = await getSiteStats()
 
@@ -257,6 +259,18 @@ const jsonLd = [
                 <option value="medium">Medium</option>
             </select>
         </div>
+
+        <TerminalPlayground
+            id="securityTerminal"
+            summaryLabel="Query the threat database directly with jq →"
+            titlebarLabel="bash — threat-db.json"
+            payloadUrl="/security-fs.json"
+            banner="Threat database explorer — real jq over the real CVE/campaign data."
+            suggestions={SECURITY_SUGGESTIONS}
+            fallbackLinkHref="#cve-table"
+            fallbackLinkLabel="the table below"
+        />
+
         <div class="cve-table-wrapper">
             <table class="cve-table" id="cve-table">
                 <thead>

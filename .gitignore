@@ -35,6 +35,9 @@ questions.json.original
 src/content/docs/guide/
 public/guide/images/
 src/data/guide-anchor-map.json
+public/terminal-fs.json
+public/security-fs.json
+public/reference-fs.json
 
 # Vitals provenance data
 .vitals/

@@ -2,6 +2,8 @@ packages:
   - '.'
 
 allowBuilds:
+  '@mongodb-js/zstd': true
   esbuild: true
+  node-liblzma: true
   puppeteer: false
   sharp: true

@@ -1,0 +1,356 @@
+---
+// Generic interactive terminal playground (just-bash) over a preloaded
+// virtual filesystem. Collapsed by default and loaded only on first open,
+// since the just-bash browser bundle is ~333 KB gzip. Reused across
+// multiple experimental placements (templates, security threat DB, CLI
+// reference) so the mount/UI logic exists once. See
+// src/scripts/bash-playground/VENDORED.md for the licensing status of the
+// vendored terminal UI.
+interface Suggestion {
+  label: string
+  command: string
+}
+
+interface Props {
+  id: string
+  summaryLabel: string
+  titlebarLabel: string
+  payloadUrl: string
+  banner: string
+  suggestions: Suggestion[]
+  fallbackLinkHref?: string
+  fallbackLinkLabel?: string
+}
+
+const {
+  id,
+  summaryLabel,
+  titlebarLabel,
+  payloadUrl,
+  banner,
+  suggestions,
+  fallbackLinkHref = '#',
+  fallbackLinkLabel = 'the content below',
+} = Astro.props
+
+const suggestionsJson = JSON.stringify(suggestions)
+---
+
+<details class="term-playground-shell" id={id}>
+  <summary>{summaryLabel}</summary>
+  <div class="terminal-window">
+    <div class="terminal-titlebar">
+      <span class="dot dot-red" aria-hidden="true"></span>
+      <span class="dot dot-yellow" aria-hidden="true"></span>
+      <span class="dot dot-green" aria-hidden="true"></span>
+      <span class="terminal-title">{titlebarLabel}</span>
+    </div>
+    <div class="suggestions" data-suggestions aria-label="Suggested commands"></div>
+    <div class="terminal-body" data-term-mount>
+      <p class="terminal-loading">Loading bash sandbox…</p>
+    </div>
+  </div>
+  <script is:inline type="application/json" data-suggestions-json set:html={suggestionsJson} />
+  <script is:inline type="application/json" data-config-json set:html={JSON.stringify({ payloadUrl, banner, fallbackLinkHref, fallbackLinkLabel })} />
+</details>
+
+<script>
+  import type { TerminalHandle } from '../../scripts/bash-playground/boot'
+
+  interface Suggestion {
+    label: string
+    command: string
+  }
+
+  document.querySelectorAll<HTMLDetailsElement>('.term-playground-shell').forEach((details) => {
+    const mountEl = details.querySelector<HTMLElement>('[data-term-mount]')
+    const suggestionsEl = details.querySelector<HTMLElement>('[data-suggestions]')
+    const suggestionsJson = details.querySelector('script[data-suggestions-json]')?.textContent ?? '[]'
+    const configJson = details.querySelector('script[data-config-json]')?.textContent ?? '{}'
+    const suggestions = JSON.parse(suggestionsJson) as Suggestion[]
+    const config = JSON.parse(configJson) as { payloadUrl: string; banner: string; fallbackLinkHref: string; fallbackLinkLabel: string }
+
+    if (suggestionsEl) {
+      suggestionsEl.innerHTML = suggestions
+        .map((s) => `<button type="button" class="suggestion-chip" data-cmd="${s.command.replace(/"/g, '&quot;')}">${s.label}</button>`)
+        .join('')
+    }
+
+    let mounted = false
+    let handle: TerminalHandle | null = null
+
+    details.addEventListener('toggle', async () => {
+      if (!details.open || mounted || !mountEl) return
+      mounted = true
+      try {
+        const { mountTerminal } = await import('../../scripts/bash-playground/boot')
+        mountEl.innerHTML = ''
+        handle = await mountTerminal(mountEl, { payloadUrl: config.payloadUrl, banner: config.banner })
+      } catch (err) {
+        console.error('[terminal-playground] failed to load', err)
+        mountEl.innerHTML = `<p class="terminal-error">Terminal unavailable right now. Browse <a href="${config.fallbackLinkHref}">${config.fallbackLinkLabel}</a> instead.</p>`
+      }
+    })
+
+    suggestionsEl?.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.suggestion-chip')
+      if (!btn || !handle) return
+      handle.insertCommand(btn.dataset.cmd ?? '')
+      handle.focus()
+    })
+  })
+</script>
+
+<style>
+  .term-playground-shell {
+    margin: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .term-playground-shell > summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    list-style: none;
+  }
+
+  .term-playground-shell > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .term-playground-shell > summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 0.7em;
+    transition: transform 0.15s ease;
+  }
+
+  .term-playground-shell[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  .terminal-window {
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    background: #0d1117;
+  }
+
+  .terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    background: #161b22;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-red {
+    background: #ff5f57;
+  }
+  .dot-yellow {
+    background: #febc2e;
+  }
+  .dot-green {
+    background: #28c840;
+  }
+
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-left: 0.5rem;
+  }
+
+  .suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    background: #0d1117;
+    border-bottom: 1px solid #21262d;
+  }
+
+  .terminal-body {
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    min-height: 420px;
+    max-height: 420px;
+    overflow-y: auto;
+    color: #e6edf3;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .terminal-loading {
+    margin: 0;
+    color: #8b949e;
+  }
+
+  @media (max-width: 768px) {
+    .terminal-body {
+      padding: 1rem;
+      max-height: 260px;
+      min-height: 260px;
+      font-size: 0.72rem;
+    }
+    .suggestions {
+      padding: 0.6rem 0.75rem;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Vendored lite-terminal DOM structure — see src/scripts/bash-playground/VENDORED.md.
+     Colors adapted from just-bash's own globals.css to this site's fixed
+     dark terminal chrome (the upstream demo switches light/dark via
+     prefers-color-scheme; this terminal is always dark, matching McpDemo). */
+  .lite-terminal {
+    position: relative;
+    outline: none;
+  }
+  .lite-terminal-output {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+  .lite-terminal-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+    min-height: 1.2em;
+  }
+  .lite-terminal-cursor {
+    display: inline-block;
+    vertical-align: text-bottom;
+    pointer-events: none;
+    background: #e6edf3;
+  }
+  .lite-terminal-cursor.blink {
+    animation: lite-terminal-blink 1s step-end infinite;
+  }
+
+  /* Suggestion chips and the error message are injected via innerHTML at
+     runtime (see the <script> above), so they never get Astro's scoped
+     data-astro-cid-* attribute. Scoped <style> rules silently never match
+     them — these must live in this is:global block instead. */
+  .suggestion-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #e6edf3;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .suggestion-chip:hover {
+    border-color: #f97316;
+  }
+  .terminal-error {
+    margin: 0;
+    color: #8b949e;
+  }
+  .terminal-error a {
+    color: #f97316;
+  }
+
+  @keyframes lite-terminal-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .lite-terminal-input {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .lite-terminal .bold {
+    font-weight: bold;
+  }
+  .lite-terminal .dim {
+    opacity: 0.6;
+  }
+  .lite-terminal .italic {
+    font-style: italic;
+  }
+  .lite-terminal .underline {
+    text-decoration: underline;
+  }
+  .lite-terminal .black {
+    color: #6e7681;
+  }
+  .lite-terminal .red {
+    color: #ff7b72;
+  }
+  .lite-terminal .green {
+    color: #3fb950;
+  }
+  .lite-terminal .yellow {
+    color: #d29922;
+  }
+  .lite-terminal .blue {
+    color: #58a6ff;
+  }
+  .lite-terminal .magenta {
+    color: #d2a8ff;
+  }
+  .lite-terminal .cyan {
+    color: var(--term-cyan, #f97316);
+  }
+  .lite-terminal .white {
+    color: #e6edf3;
+  }
+  .lite-terminal .brightBlack {
+    color: var(--term-brightBlack, #8b949e);
+  }
+  .lite-terminal .brightRed {
+    color: #ffa198;
+  }
+  .lite-terminal .brightGreen {
+    color: #56d364;
+  }
+  .lite-terminal .brightYellow {
+    color: #e3b341;
+  }
+  .lite-terminal .brightBlue {
+    color: #79c0ff;
+  }
+  .lite-terminal .brightMagenta {
+    color: #d2a8ff;
+  }
+  .lite-terminal .brightCyan {
+    color: var(--term-brightCyan, #fdba74);
+  }
+  .lite-terminal .brightWhite {
+    color: #ffffff;
+  }
+</style>

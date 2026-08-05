@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getSiteStats } from '../../utils/site-stats'
+import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
+import { EXAMPLES_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
 
 const stats = await getSiteStats()
 
@@ -54,6 +56,17 @@ const jsonLd = [
       </div>
       <a href="https://github.com/FlorianBruniaux/claude-code-plugins" class="plugin-callout-link" target="_blank" rel="noopener">View plugins →</a>
     </div>
+
+    <TerminalPlayground
+      id="bashPlayground"
+      summaryLabel="Explore the templates in a real terminal →"
+      titlebarLabel="bash — /home/user"
+      payloadUrl="/terminal-fs.json"
+      banner="Claude Code template explorer — a real bash shell, real templates."
+      suggestions={EXAMPLES_SUGGESTIONS}
+      fallbackLinkHref="#catalog"
+      fallbackLinkLabel="the template catalog"
+    />
 
     <div class="search-bar">
       <input type="text" class="search-input" id="searchInput" placeholder="Search examples... (press / to focus)" autocomplete="off">
@@ -450,7 +463,9 @@ const jsonLd = [
     searchInput.addEventListener('input', (e) => { clearTimeout(debounceTimer); debounceTimer = setTimeout(() => renderCatalog(e.target.value), 150); });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
+      const activeTag = document.activeElement?.tagName;
+      const typingElsewhere = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable;
+      if (e.key === '/' && document.activeElement !== searchInput && !typingElsewhere) { e.preventDefault(); searchInput.focus(); }
       if (e.key === 'Escape') { searchInput.blur(); searchInput.value = ''; renderCatalog(''); }
     });
 

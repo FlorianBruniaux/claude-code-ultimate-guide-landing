@@ -9,7 +9,8 @@
     "build:search-content": "node scripts/build-guide-content-index.mjs",
     "build:guide": "node scripts/prepare-guide-content.mjs",
     "build:diagrams": "node scripts/build-diagrams-data.mjs",
-    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs && astro build",
+    "build:terminal-fs": "node scripts/build-terminal-fs.mjs && node scripts/build-security-fs.mjs && node scripts/build-reference-fs.mjs",
+    "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs && node scripts/build-terminal-fs.mjs && node scripts/build-security-fs.mjs && node scripts/build-reference-fs.mjs && astro build",
     "check:quiz-doc-links": "node scripts/check-quiz-doc-links.mjs",
     "test": "node --test 'src/**/*.test.ts'",
     "preview": "astro preview",
@@ -30,10 +31,12 @@
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^5.17.1",
     "highlight.js": "^11.11.1",
+    "just-bash": "3.2.0",
     "satori": "^0.25.0",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",

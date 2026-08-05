@@ -5644,6 +5644,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-team-metrics-tooling",
+    "title": "Team Metrics Tooling",
+    "keywords": "team metrics tooling guide ops team metrics md#tooling",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#tooling",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-forecasting",
+    "title": "Team Metrics Forecasting",
+    "keywords": "team metrics forecasting guide ops team metrics md#probabilistic delivery forecasting",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#probabilistic-delivery-forecasting",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-board-reporting",
+    "title": "Team Metrics Board Reporting",
+    "keywords": "team metrics board reporting guide ops team metrics md#reporting delivery capacity skeptical board",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#reporting-delivery-capacity-to-a-skeptical-board",
+    "source": "guide"
+  },
+  {
     "id": "guide-api-gateway-guide",
     "title": "API Gateway Guide",
     "keywords": "api gateway guide guide ops api gateway",

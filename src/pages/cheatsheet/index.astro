@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
+import { REFERENCE_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
 
 const title = 'Claude Code Cheatsheet: Commands & Shortcuts'
 const description = 'Free printable Claude Code cheatsheet. Essential commands, keyboard shortcuts, permission modes, context management, and workflows.'
@@ -283,6 +285,17 @@ VERIFY: Empty email shows error</code></pre>
         </table>
       </div>
 
+      <TerminalPlayground
+        id="referenceTerminal"
+        summaryLabel="Search the full reference in a real terminal →"
+        titlebarLabel="bash — reference docs"
+        payloadUrl="/reference-fs.json"
+        banner="CLI &amp; settings reference explorer — grep across the real docs."
+        suggestions={REFERENCE_SUGGESTIONS}
+        fallbackLinkHref="#installation"
+        fallbackLinkLabel="the cheatsheet above"
+      />
+
       <!-- Anti-patterns -->
       <div class="section">
         <h2>Anti-patterns</h2>
@@ -487,6 +500,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       .section { break-inside: avoid; padding: var(--space-md); }
       pre, code { font-size: 8px; }
       table { font-size: 9px; }
+      .term-playground-shell { display: none !important; }
     }
 
     @media (max-width: 768px) {

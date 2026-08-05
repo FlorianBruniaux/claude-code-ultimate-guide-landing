@@ -273,4 +273,15 @@ export default defineConfig({
       },
     },
   },
+
+  vite: {
+    resolve: {
+      alias: {
+        // just-bash's browser bundle statically imports node:zlib for its
+        // gzip/gunzip/zcat commands, which this site's bash playground
+        // never exposes. See src/shims/node-zlib-browser-stub.ts.
+        'node:zlib': resolve(__dirname, 'src/shims/node-zlib-browser-stub.ts'),
+      },
+    },
+  },
 })
