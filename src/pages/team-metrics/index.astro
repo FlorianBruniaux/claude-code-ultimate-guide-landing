@@ -2,18 +2,18 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Team Metrics for AI-Augmented Engineering | Claude Code Guide'
-const description = 'DORA, SPACE, DX Core 4: metrics that matter when AI writes 70%+ of your code. A framework for 5-to-25-person teams to measure delivery health, quality signal, product impact, and human health.'
+const description = 'DORA, SPACE, DX Core 4: metrics that matter when AI writes 70%+ of your code. A framework for 5-to-25-person teams, Monte Carlo delivery forecasting, and a playbook for reporting capacity to a board that doubts you.'
 
 const jsonLd = [
   {
     "@type": "Article",
     "headline": "Team Metrics for AI-Augmented Engineering",
-    "description": "DORA, SPACE, DX Core 4: metrics that matter when AI writes most of your code.",
+    "description": "DORA, SPACE, DX Core 4, Monte Carlo forecasting, and board-reporting guidance for teams where AI writes most of the code.",
     "url": "https://cc.bruniaux.com/team-metrics/",
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-04-03",
-    "dateModified": "2026-04-03",
+    "dateModified": "2026-08-06",
     "inLanguage": "en",
     "audience": { "@type": "Audience", "audienceType": "Engineering managers, tech leads, CTOs" }
   }
@@ -145,6 +145,11 @@ const externalSources = [
     url: 'https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic',
     desc: 'Internal study, 70-90% AI-assisted code across teams, Aug 2025',
   },
+  {
+    label: 'Nave: Monte Carlo Simulation Explained',
+    url: 'https://getnave.com/blog/monte-carlo-simulation-explained/',
+    desc: 'The predictable-delivery-system requirement behind every honest forecast',
+  },
 ]
 ---
 
@@ -157,6 +162,7 @@ const externalSources = [
         <span class="hero-badge">DORA 2025</span>
         <span class="hero-badge">SPACE Framework</span>
         <span class="hero-badge hero-badge--secondary">5-25 people</span>
+        <span class="hero-badge hero-badge--secondary">Board Playbook</span>
       </div>
       <h1>Pilot Your AI-Augmented Team</h1>
       <p class="tagline">The metrics that actually matter when AI writes 70% of your code.</p>
@@ -280,6 +286,70 @@ const externalSources = [
       <div class="test-rule">
         <strong>Rule:</strong> fewer than 3 yes answers means the metric is not worth tracking. Tracking too much costs attention, the one resource AI can't augment.
       </div>
+    </div>
+  </section>
+
+  <!-- Forecasting -->
+  <section class="section section--alt" id="forecasting">
+    <div class="container">
+      <h2 class="section-title">When Will This Actually Ship</h2>
+      <p class="section-subtitle">
+        A velocity-based point estimate is a guess wearing a suit. Monte Carlo forecasting runs your own cycle-time history through thousands of simulated iterations and hands back a range, not a single date pulled from an average.
+      </p>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-value stat-value--muted">March 12</div>
+          <div class="stat-label">Point estimate</div>
+          <span class="stat-source">Implies a certainty the data never had</span>
+        </div>
+        <div class="stat-card stat-card--accent">
+          <div class="stat-value stat-value--muted">Mar 3 – Mar 20</div>
+          <div class="stat-label">80% confidence range</div>
+          <span class="stat-source">What ActionableAgile or Nave actually compute</span>
+        </div>
+      </div>
+
+      <div class="test-rule">
+        <strong>The catch:</strong> Monte Carlo forecasting is not a fix for an unstable delivery system. Nave's own documentation puts it plainly: "the sole requirement for Monte Carlo to work and give reliable answers is to use data produced by a predictable delivery system." An unpredictable team gets a wider range back, not a narrower one.
+      </div>
+
+      <p class="section-footlink"><a class="metric-link metric-link--guide" href={guideUrl + '#probabilistic-delivery-forecasting'}>Full breakdown in guide →</a></p>
+    </div>
+  </section>
+
+  <!-- Board Reporting -->
+  <section class="section" id="board">
+    <div class="container">
+      <h2 class="section-title">Reporting to a Board That Doubts You</h2>
+      <p class="section-subtitle">
+        When a board doubts delivery capacity after an estimate has slipped, adding more dashboards rarely fixes it. The doubt is almost always about trust, not about the number on the screen.
+      </p>
+
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-number">1</div>
+          <div class="test-question"><strong>Diagnose first.</strong> No published study proves any tool repairs executive trust. A dashboard answers "how fast," not "will you slip again."</div>
+        </div>
+        <div class="test-card">
+          <div class="test-number">2</div>
+          <div class="test-question"><strong>Bring scenarios, not a velocity chart.</strong> 2-3 named options, each with a timeline, a rework cost, and a business impact. That's a decision a board can actually make.</div>
+        </div>
+        <div class="test-card">
+          <div class="test-number">3</div>
+          <div class="test-question"><strong>Cap strategic objectives.</strong> A detailed multi-quarter feature roadmap is a precision claim your delivery system can't back. A small set of objectives survives a slip better than a feature list does.</div>
+        </div>
+        <div class="test-card">
+          <div class="test-number">4</div>
+          <div class="test-question"><strong>Track your commitment hit-rate.</strong> Separate committed scope from best-effort scope, then show, release after release, that committed scope ships as committed.</div>
+        </div>
+        <div class="test-card">
+          <div class="test-number">5</div>
+          <div class="test-question"><strong>Align the room before the room.</strong> A plenary board meeting is the wrong venue for first-time alignment on a contentious number. Talk to members individually first.</div>
+        </div>
+      </div>
+
+      <p class="section-footlink"><a class="size-guide-link" href={guideUrl + '#reporting-delivery-capacity-to-a-skeptical-board'}>Full playbook in guide →</a></p>
     </div>
   </section>
 
@@ -713,6 +783,13 @@ const externalSources = [
 
 .size-guide-link:hover {
   text-decoration: underline;
+}
+
+/* ============================================
+   Section footer links (Forecasting, Board)
+   ============================================ */
+.section-footlink {
+  margin-top: var(--space-xl);
 }
 
 /* ============================================
