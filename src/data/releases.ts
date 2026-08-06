@@ -16,6 +16,32 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.223',
+    date: 'Aug 5, 2026',
+    highlights: [
+      'Security: fixed a Bash permission-check bypass letting a crafted command hide parts of itself from approval, permission prompts no longer hidden by tab/invisible-Unicode padding, and workflow scripts no longer able to use dynamic import() to escape the workflow sandbox',
+      'Changed /review to be an alias of /code-review, which reviews the current diff or a PR (/code-review <level> <pr#>); /code-review with no effort level now reuses the level you typed last',
+      'Added owner wildcard entries ("owner/*") to strictKnownMarketplaces/blockedMarketplaces managed settings, and a /teleport hint in cloud sessions to continue locally with claude --teleport <session id>',
+      'Changed CLAUDE_CODE_DISABLE_1M_CONTEXT to hold every Claude model with a native 1M window to 200K via auto-compaction, not just a fixed list',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.222',
+    date: 'Aug 4, 2026',
+    highlights: [
+      'Security: fixed worktree-isolated sessions (and their subagents) being able to run destructive git commands against the main checkout; isolation now covers file edits and Bash in every session type',
+      'Security: fixed PreToolUse auto-allow hooks bypassing tool restrictions in background agent tasks (summaries, compaction, renames)',
+      'Changed Remote Control auto-start so repo-local settings can no longer turn it on (they can still turn it off); enable it at user scope via /config',
+    ],
+    breaking: [
+      'Removed the ultraplan feature',
+      'Repo-local settings (.claude/settings.json or .claude/settings.local.json) can no longer enable Remote Control auto-start; they can still disable it. Enable at user scope via /config',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.221',
     date: 'Aug 3, 2026',
     highlights: [
@@ -27,7 +53,6 @@ export const releases: Release[] = [
     breaking: [
       'Background sessions now commit and push automatically to preserve work, open a draft PR only when the task calls for one, and follow your CLAUDE.md git instructions',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
