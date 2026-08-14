@@ -16,6 +16,100 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.232',
+    date: 'Aug 13, 2026',
+    highlights: [
+      'Subagent forking is on by default: a subagent_type: "fork" subagent inherits the full conversation and prompt cache, and non-teammate agent spawns in interactive sessions now run in the background',
+      'Type @ in the prompt to mention another Claude session by name; SendMessage now delivers to a bare name that matches one live session, and same-machine sessions get unique name-word-word variants',
+      'Added GitLab support to plugin marketplaces (bare gitlab.com repo URLs clone like github.com), plus secret redaction for the GitLab token families and glab CLI credential protection',
+      'Security: fixed a PowerShell bypass overwriting $PSDefaultParameterValues, a Windows Git Bash Cygwin-symlink bypass, and nested git repositories inheriting trust from a parent directory',
+    ],
+    breaking: [
+      'sandbox.ripgrep is now honored only from user, managed, and --settings settings; project settings can no longer override the sandbox ripgrep binary',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.231',
+    date: 'Aug 13, 2026',
+    highlights: [
+      'Fixed MCP OAuth sign-in failing with a redirect URI mismatch for servers that use a pre-registered OAuth client, such as Slack',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.229',
+    date: 'Aug 12, 2026',
+    highlights: [
+      'Added plugin marketplace command sources: a local command prints the plugin directory, re-resolved each session and applied without a restart (mode: "link" uses it in place)',
+      'Fixed long responses partly disappearing while streaming and being printed twice, plus crashes on non-string tool-call values, very narrow terminals, and Windows extended-length/UNC paths',
+      'Changed /commit-push-pr so git/gh commands with dangerous flags (--force, --amend, --no-verify) are no longer auto-approved',
+      '[VSCode] Added session groups in the sidebar (right-click to create, rename, delete) and made the /btw side-question panel resizable',
+    ],
+    breaking: [
+      'Self-hosted runner on Windows now requires an explicit --base-dir; there is no default checkout directory',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.228',
+    date: 'Aug 11, 2026',
+    highlights: [
+      'Hardened skills synced from claude.ai: they no longer shadow local commands or MCP prompts, descriptions are sanitized and labeled, and their bodies do not run ! commands or expand @ files locally',
+      'Fixed session cleanup deleting contents inside a project memory folder, and Remote Control /resume leaking the resumed conversation title or history into the connected session',
+      'Fixed interactive sessions that could stop redrawing entirely while the process kept running, after a rare internal layout error',
+    ],
+    breaking: [
+      'The Write tool now lets newer models overwrite an existing file they have not read this session, matching the Edit tool rules; older models still require the read first',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.227',
+    date: 'Aug 10, 2026',
+    highlights: [
+      'Fixed feature flags being evaluated without the subscription tier on an expired login token, which wrongly prompted Max plan users to enable usage credits for Fable',
+      'Fixed every Bash command failing under claude-code-action with allowed_non_write_users on GitHub-hosted runners',
+      'Improved the slash-command menu rendering and reduced event-loop stalls on file-not-found suggestions and at-mention size checks',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.226',
+    date: 'Aug 8, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.225',
+    date: 'Aug 7, 2026',
+    highlights: [
+      'Added gateway spend-limit support to the usage warning: the limit-reached message names the cap, its reset time, and the operator message (requires the gateway on 2.1.225)',
+      'SendMessage can now start a conversation with your Remote Control sessions on other machines by name, instead of only replying after they message you first',
+      'Fixed a transient 401 replacing a long-lived CLAUDE_CODE_OAUTH_TOKEN with a stored login short-lived token, which broke headless sessions until restart',
+      'Fixed MCP OAuth servers on macOS intermittently failing with a burst of 401 errors after a keychain read timed out',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.224',
+    date: 'Aug 7, 2026',
+    highlights: [
+      'Added self-hosted environments: claude self-hosted-runner turns your own machines or containers into a place Claude Code web, mobile, and desktop sessions can run (Team and Enterprise plans)',
+      'Added cross-session SendMessage: Claude Code sessions can message each other across any of your machines, with ListAgents to discover them (macOS and Linux)',
+      'Added an archive plugin source (zip over HTTPS with optional SHA-256 pinning), the crossSessionInbound/dialogExpiry settings, and sandbox credential-masking options',
+      'Security: fixed long project paths resolving to another project session directory, and sandbox filesystem deny entries written with a trailing slash being silently bypassable',
+    ],
+    breaking: [
+      'Removed the 200-subagent-per-session spawn cap; concurrency and depth limits still apply',
+      'The /feedback survey transcript share now also uploads the last request model settings with your consent, including the system prompt (which carries your CLAUDE.md instructions), tool definitions, and model parameters; secrets stay redacted',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.223',
     date: 'Aug 5, 2026',
     highlights: [
@@ -24,7 +118,6 @@ export const releases: Release[] = [
       'Added owner wildcard entries ("owner/*") to strictKnownMarketplaces/blockedMarketplaces managed settings, and a /teleport hint in cloud sessions to continue locally with claude --teleport <session id>',
       'Changed CLAUDE_CODE_DISABLE_1M_CONTEXT to hold every Claude model with a native 1M window to 200K via auto-compaction, not just a fixed list',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
