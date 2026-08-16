@@ -27,6 +27,7 @@ pnpm-debug.log*
 # Claude
 .claudedocs/
 claudedocs/
+.worktrees/
 
 # Legacy
 questions.json.original
