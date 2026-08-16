@@ -51,6 +51,7 @@ Ne JAMAIS modifier les stats ou le contenu ici sans avoir d'abord mis à jour le
 | **Claude Code Releases** | `machine-readable/claude-code-releases.yaml` | index.html (banner + #releases section) |
 | **AI Ecosystem tools** | `guide/ai-ecosystem.md` | index.html (#ecosystem section) |
 | **Voice-to-Text** | `guide/ai-ecosystem.md#7-voice-to-text-wispr-flow` | index.html (#ecosystem card) |
+| **AgentSec security feed** | `machine-readable/agentsec-security-feed.v1.json` | `src/data/agentsec-security-feed.v1.json` |
 
 ## Valeurs actuelles (à maintenir synchronisées)
 
@@ -77,7 +78,9 @@ Le site a migré de HTML statique vers Astro 5. Les références à `index.html`
 
 - **`src/data/examples-data.ts`**: 88 templates (source of truth pour examples + search)
 - **`src/data/releases.ts`**: Changelog Claude Code
-- **`src/data/security-data.ts`**: CVEs, campaigns, threats
+- **`src/data/agentsec-security-feed.v1.json`**: **GÉNÉRÉ**, miroir public versionné des métadonnées AgentSec; ne jamais éditer directement
+- **`src/data/agentsec-security-feed.ts`**: validation fail-closed et modèle de vue de la page sécurité
+- **`src/data/security-data.ts`**: données historiques détaillées utilisées par le navigateur de menaces
 - **`src/data/search-index.ts`**: Index de recherche (landing entries) — éditer ici pour ajouter des entrées
 - **`src/data/guide-search-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (162 entrées depuis reference.yaml)
 - **`src/data/guide-content-entries.ts`**: **GÉNÉRÉ** — ne jamais éditer directement (848 entrées H2 depuis src/content/docs/guide/)

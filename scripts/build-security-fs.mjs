@@ -19,31 +19,15 @@ import yaml from 'js-yaml'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
 const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
-const SRC = resolve(GUIDE_REPO, 'examples/skills/update-threat-db/threat-db.yaml')
+const SRC = resolve(GUIDE_REPO, 'examples/commands/resources/threat-db.yaml')
 const OUT_PATH = resolve(ROOT, 'public/security-fs.json')
 
 const CWD = '/home/user'
 
 mkdirSync(dirname(OUT_PATH), { recursive: true })
 
-function writeStub(reason) {
-  console.warn(`[build-security-fs] WARNING: ${reason}`)
-  writeFileSync(
-    OUT_PATH,
-    JSON.stringify({
-      version: 'stub',
-      generatedAt: new Date().toISOString(),
-      byteSize: 0,
-      cwd: CWD,
-      files: { [`${CWD}/README.md`]: 'Threat database unavailable in this build (guide repo not found).' },
-    }),
-    'utf-8'
-  )
-}
-
 if (!existsSync(SRC)) {
-  writeStub(`threat-db.yaml not found at ${SRC}`)
-  process.exit(0)
+  throw new Error(`threat-db.yaml not found at ${SRC}`)
 }
 
 const doc = yaml.load(readFileSync(SRC, 'utf-8'))
@@ -61,7 +45,7 @@ This is real jq over real JSON, not a static table. Try:
   jq -r '.campaigns[].name' threat-db.json
   jq '.minimum_safe_versions["claude-code"]' threat-db.json
 
-Full source: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/update-threat-db/threat-db.yaml
+Full source: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/resources/threat-db.yaml
 `,
 }
 

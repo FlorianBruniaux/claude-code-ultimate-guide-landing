@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content'
 import { EXAMPLES } from '../data/examples-data'
-import { SECURITY_DATA } from '../data/security-data'
+import { AGENTSEC_FEED } from '../data/agentsec-security-feed'
 
 /**
  * Single source of truth for the counts shown across the site (hero, meta
@@ -20,6 +20,6 @@ export async function getSiteStats() {
     templateCount,
     cheatsheetCount: cheatsheets.length,
     quizQuestionCount: questions.length,
-    cveCount: SECURITY_DATA.stats.cves_tracked,
+    cveCount: AGENTSEC_FEED.database.record_counts.cves,
   }
 }

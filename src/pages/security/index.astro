@@ -1,13 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import { getSiteStats } from '../../utils/site-stats'
 import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
 import { SECURITY_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
+import {
+  AGENTSEC_FEED,
+  AGENTSEC_SECURITY_VIEW,
+} from '../../data/agentsec-security-feed'
 
-const stats = await getSiteStats()
+const feed = AGENTSEC_FEED
+const security = AGENTSEC_SECURITY_VIEW
 
 const title = 'AI Agent Security: Threat Intelligence | Claude Code Guide'
-const description = `AI agent security for Claude Code and MCP. 3,984 skills scanned, 36.82% with flaws. ${stats.cveCount} CVEs tracked, attack techniques, and defense tools.`
+const description = `AI agent security for Claude Code and MCP. ${feed.landing_metrics.skills_scanned.toLocaleString('en-US')} skills scanned, ${feed.landing_metrics.flawed_skills_percent}% with flaws. ${feed.database.record_counts.cves} CVEs tracked, attack techniques, and defense tools.`
 
 const jsonLd = [
   {
@@ -19,7 +23,7 @@ const jsonLd = [
     "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
     "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
     "datePublished": "2026-02-11",
-    "dateModified": "2026-06-18",
+    "dateModified": feed.intelligence.updated,
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
@@ -29,14 +33,15 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-02-11" modifiedDate="2026-06-18">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-02-11" modifiedDate={feed.intelligence.updated}>
 
     <header class="page-hero">
         <div class="container">
             <h1>AI Agent Security</h1>
-            <p class="tagline">Threat intelligence for the AI coding tool ecosystem. 3,984 skills scanned. Here's what we found.</p>
-            <div class="hero-badge">Threat DB v2.22.0 &mdash; Updated June 2026</div>
+            <p class="tagline">Threat intelligence for the AI coding tool ecosystem. {feed.landing_metrics.skills_scanned.toLocaleString('en-US')} skills scanned. Here's what we found.</p>
+            <div class="hero-badge">{security.databaseLabel} &bull; Updated {security.databaseUpdatedLabel}</div>
             <div class="cta-buttons">
+                <a href="#agentsec-triage" class="btn btn-primary">Check a Repository</a>
                 <a href="#threat-browser" class="btn btn-primary">Explore Threats</a>
                 <a href="/guide/security-hardening/" class="btn btn-secondary">Read Hardening Guide &rarr;</a>
             </div>
@@ -47,29 +52,39 @@ const jsonLd = [
     <section class="content-section">
         <h2>By the Numbers</h2>
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number" data-target="3984">0</div>
-                <div class="stat-label">Skills Scanned</div>
+            {security.stats.map((stat) => (
+                <div class="stat-card" data-stat-id={stat.id}>
+                    <div
+                        class="stat-number"
+                        data-target={stat.value}
+                        data-suffix={stat.suffix}
+                        data-prefix={stat.prefix}
+                        data-decimals={stat.decimals}
+                    >0</div>
+                    <div class="stat-label">{stat.label}</div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section class="content-section content-section--alt" id="agentsec-triage">
+        <h2>Verify Your Repository with AgentSec</h2>
+        <div class="agentsec-grid">
+            <div class="agentsec-copy">
+                <p><strong>AgentSec Triage</strong> checks a local repository against the threat intelligence used by this page. The current alpha covers repository lockfiles, installed package metadata, payload hashes, and startup configuration for the August 2026 Shai-Hulud campaign.</p>
+                <p>A clean result is <strong>not a security guarantee</strong>. The scan is repository-local, does not inspect Git history or host-level persistence, and uses bundled intelligence that only changes when AgentSec is updated.</p>
+                <div class="cta-buttons">
+                    <a href={feed.agentsec.installation_url} class="btn btn-primary" target="_blank" rel="noopener">Install AgentSec</a>
+                    <a href={feed.agentsec.repository_url} class="btn btn-secondary" target="_blank" rel="noopener">View Source</a>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="36.82" data-suffix="%" data-decimals="2">0</div>
-                <div class="stat-label">Have Flaws</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="534">0</div>
-                <div class="stat-label">Critical-Risk</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="76">0</div>
-                <div class="stat-label">Malicious Payloads</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target={stats.cveCount}>0</div>
-                <div class="stat-label">CVEs Tracked</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="1000" data-prefix="~">0</div>
-                <div class="stat-label">Exposed Servers</div>
+            <div class="agentsec-command">
+                <div class="agentsec-meta">
+                    <span>AgentSec {feed.agentsec.version} ({feed.agentsec.status})</span>
+                    <span>Detector {security.detector.id} v{security.detector.version}</span>
+                </div>
+                <pre><code>{feed.agentsec.scan_command}</code></pre>
+                <p>{security.detector.description}</p>
             </div>
         </div>
     </section>
@@ -311,6 +326,32 @@ const jsonLd = [
                     <tr data-severity="medium"><td>ADVISORY-MCP-STDIO-2026-001</td><td>MCP stdio transport</td><td><span class="severity-badge severity-medium">Medium</span></td><td>impl-dependent</td></tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <section class="content-section" id="agentsec-intelligence">
+        <h2>AgentSec Intelligence</h2>
+        <p class="section-intro">Reviewed security events exported from AgentSec. Each fiche keeps its status, detector coverage, and source references.</p>
+        <div class="intelligence-grid">
+            {security.events.map((event) => (
+                <article class="intelligence-card">
+                    <div class="intelligence-header">
+                        <span class={`intelligence-status intelligence-status--${event.status}`}>{event.status}</span>
+                        <time datetime={event.date}>{event.dateLabel}</time>
+                    </div>
+                    <h3>{event.title}</h3>
+                    <p>{event.summary}</p>
+                    <div class="coverage-note">
+                        <strong>Detector coverage: {event.coverageStatus}</strong>
+                        <span>{event.detector_coverage.summary}</span>
+                    </div>
+                    <ul class="source-list">
+                        {event.sources.map((source) => (
+                            <li><a href={source.url} target="_blank" rel="noopener">{source.publisher}: {source.title}</a></li>
+                        ))}
+                    </ul>
+                </article>
+            ))}
         </div>
     </section>
 
@@ -1020,6 +1061,141 @@ const jsonLd = [
         color: var(--text-secondary);
         font-size: 0.95rem;
         font-weight: 500;
+    }
+
+    .agentsec-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: var(--space-xl);
+        align-items: start;
+    }
+
+    .agentsec-copy > p,
+    .agentsec-command > p,
+    .section-intro,
+    .intelligence-card > p {
+        color: var(--text-secondary);
+        line-height: 1.65;
+    }
+
+    .agentsec-copy > p,
+    .agentsec-command > p {
+        margin-bottom: var(--space-lg);
+    }
+
+    .agentsec-command {
+        padding: var(--space-xl);
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .agentsec-command pre {
+        margin: var(--space-lg) 0;
+        padding: var(--space-lg);
+        overflow-x: auto;
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+    }
+
+    .agentsec-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .agentsec-meta span,
+    .intelligence-status {
+        display: inline-block;
+        padding: 4px 10px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .section-intro {
+        margin: calc(-1 * var(--space-md)) 0 var(--space-xl);
+    }
+
+    .intelligence-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-xl);
+    }
+
+    .intelligence-card {
+        padding: var(--space-xl);
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .intelligence-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+        margin-bottom: var(--space-lg);
+    }
+
+    .intelligence-header time {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    .intelligence-status--confirmed {
+        color: var(--status-danger);
+        border-color: var(--status-danger);
+    }
+
+    .intelligence-status--contested {
+        color: var(--status-warning);
+        border-color: var(--status-warning);
+    }
+
+    .intelligence-card h3 {
+        margin-bottom: var(--space-md);
+        font-size: 1.1rem;
+    }
+
+    .coverage-note {
+        display: grid;
+        gap: var(--space-sm);
+        margin: var(--space-lg) 0;
+        padding: var(--space-lg);
+        background: var(--bg-secondary);
+        border-left: 4px solid var(--accent);
+        border-radius: var(--border-radius);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .coverage-note strong {
+        color: var(--text-primary);
+    }
+
+    .source-list {
+        margin: 0;
+        padding-left: var(--space-lg);
+        font-size: 0.88rem;
+    }
+
+    .source-list li + li {
+        margin-top: var(--space-sm);
+    }
+
+    @media (max-width: 768px) {
+        .agentsec-grid,
+        .intelligence-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
     /* Attack technique cards */

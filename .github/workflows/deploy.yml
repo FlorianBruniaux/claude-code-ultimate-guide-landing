@@ -38,6 +38,12 @@ jobs:
       - name: Clone guide repo
         run: git clone --depth 1 https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
 
+      - name: Check AgentSec feed synchronization
+        run: pnpm check:agentsec-feed
+
+      - name: Run tests
+        run: pnpm test
+
       - name: Compute guide stats
         run: |
           STARS=$(curl -s https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide | jq .stargazers_count)

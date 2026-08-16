@@ -47,6 +47,8 @@ Landing site for the [Claude Code Ultimate Guide](https://github.com/FlorianBrun
 │   │   │   └── SearchModal.astro   # Cmd+K modal
 │   │   └── landing/                # Page sections
 │   ├── data/
+│   │   ├── agentsec-security-feed.v1.json # Versioned AgentSec public feed mirror
+│   │   ├── agentsec-security-feed.ts      # Validated security-page view model
 │   │   ├── examples-data.ts        # 88 template definitions
 │   │   ├── releases.ts             # Claude Code changelog
 │   │   ├── security-data.ts        # CVEs & threats
@@ -171,6 +173,12 @@ Edit `src/data/search-index.ts`. Each entry follows this shape:
 
 This site is **secondary**. The source of truth is the guide:
 `/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide/`
+
+Security metadata follows a stricter three-repository chain:
+
+`AgentSec exports/security-feed.v1.json` → `guide machine-readable/agentsec-security-feed.v1.json` → `landing src/data/agentsec-security-feed.v1.json`
+
+Run `pnpm check:agentsec-feed` after the guide mirror changes. CI rejects any byte-level divergence between the guide and landing copies.
 
 | Metric | Value | Source |
 |--------|-------|--------|
