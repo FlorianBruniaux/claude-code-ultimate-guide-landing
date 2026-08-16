@@ -1868,6 +1868,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-learning-review-attention-cost",
+    "title": "Learning Review Attention Cost",
+    "keywords": "learning review attention cost guide roles learning with md#the attention cost the review shift",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#the-attention-cost-of-the-review-shift",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-review-cognitive-ceiling",
+    "title": "Learning Review Cognitive Ceiling",
+    "keywords": "learning review cognitive ceiling guide roles learning with md#review has measured ceiling",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#review-has-a-measured-ceiling",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-review-automation-bias",
+    "title": "Learning Review Automation Bias",
+    "keywords": "learning review automation bias guide roles learning with md#reviewing machine output third mode",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#reviewing-machine-output-is-a-third-mode",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-review-recovery-cost",
+    "title": "Learning Review Recovery Cost",
+    "keywords": "learning review recovery cost guide roles learning with md#the day lost its low load stretches",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#the-day-lost-its-low-load-stretches",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-junior-apprenticeship-ladder",
+    "title": "Learning Junior Apprenticeship Ladder",
+    "keywords": "learning junior apprenticeship ladder guide roles learning with md#the apprenticeship ladder ran through the writing phase",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#the-apprenticeship-ladder-ran-through-the-writing-phase",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-review-shift-practices",
+    "title": "Learning Review Shift Practices",
+    "keywords": "learning review shift practices guide roles learning with md#practices that address this",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#practices-that-address-this",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-review-shift-unknowns",
+    "title": "Learning Review Shift Unknowns",
+    "keywords": "learning review shift unknowns guide roles learning with md#what not established",
+    "category": "Guide",
+    "url": "/guide/learning-with-ai/#what-is-not-established",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-roles-guide",
     "title": "AI Roles Guide",
     "keywords": "ai roles guide guide roles roles ai roles spec engineer guide roles roles md#17 spec engineer ai roles agent identity architect guide roles roles md#18 agent identity architect ai roles eval engineer guide roles roles md#19 eval engineer ai roles harness engineer guide roles roles md#10 harness engineer ai roles career matrix guide roles roles md#20 career decision matrix",
@@ -4758,9 +4814,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-security-threat-db",
     "title": "Security Threat Db",
-    "keywords": "security threat db examples skills update threat threat",
+    "keywords": "security threat db examples commands resources threat",
+    "category": "Examples > Commands",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/resources/threat-db.yaml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-threat-db-stale-copy",
+    "title": "Security Threat Db Stale Copy",
+    "keywords": "security threat db stale copy examples skills update threat threat",
     "category": "Examples > Skills",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/update-threat-db/threat-db.yaml",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-startup-hooks",
+    "title": "Security Startup Hooks",
+    "keywords": "security startup hooks guide security security hardening md#16 startup hooks code execution before your first prompt",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#16-startup-hooks-code-execution-before-your-first-prompt",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-supply-chain-triage",
+    "title": "Security Supply Chain Triage",
+    "keywords": "security supply chain triage examples scripts supply chain triage",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/scripts/supply-chain-triage.py",
     "source": "guide"
   },
   {
@@ -5185,6 +5265,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "narrow task decomposition guide workflows agent teams md#narrow task decomposition",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams/#narrow-task-decomposition",
+    "source": "guide"
+  },
+  {
+    "id": "guide-steering-a-running-agent",
+    "title": "Steering A Running Agent",
+    "keywords": "steering a running agent guide workflows agent teams md#steering running agent",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/#steering-a-running-agent",
+    "source": "guide"
+  },
+  {
+    "id": "guide-single-writer-shared-files",
+    "title": "Single Writer Shared Files",
+    "keywords": "single writer shared files guide workflows agent teams md#single writer for shared plan files",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agent-teams/#single-writer-for-shared-plan-files",
     "source": "guide"
   },
   {
