@@ -10,8 +10,8 @@ import {
 test('canonical feed exposes current database metadata and derived landing metrics', () => {
   const view = buildAgentSecSecurityView(AGENTSEC_FEED)
 
-  assert.equal(view.databaseLabel, 'Threat DB v2.26.0')
-  assert.equal(view.databaseUpdatedLabel, 'August 6, 2026')
+  assert.equal(view.databaseLabel, 'Threat DB v2.27.0')
+  assert.equal(view.databaseUpdatedLabel, 'August 17, 2026')
   assert.deepEqual(
     view.stats.map((item) => [item.id, item.value]),
     [
@@ -19,7 +19,7 @@ test('canonical feed exposes current database metadata and derived landing metri
       ['flawed-skills', 36.82],
       ['critical-risk-skills', 534],
       ['malicious-payloads', 76],
-      ['cves-tracked', 107],
+      ['cves-tracked', 114],
       ['exposed-servers', 1000],
     ],
   )

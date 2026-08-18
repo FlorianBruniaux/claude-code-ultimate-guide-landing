@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_section',
+    title: 'Why reviewing SKILL.md stopped being enough',
+    date: 'Aug 17, 2026',
+    description: 'Threat DB v2.27.0 adds seven primary-source-verified CVEs. CVE-2026-54316 affects Claude Code from 0.2.54 before 2.1.163: huggingface.co was pre-approved as a bare hostname for WebFetch, creating an out-of-band data channel through attacker-controlled paths. CVE-2026-12537 affects Gemini CLI and run-gemini-cli in headless CI before their 0.39.1 and 0.1.22 fixes. The new guide subsection covers the skills.sh Paperclip campaign: reviewing only SKILL.md missed instructions in a secondary file. An immutable commit or digest pin protects reviewed content from silent mutation, but every pin change still needs a fresh review.',
+    link: 'https://cc.bruniaux.com/guide/security-hardening/#the-delayed-payload-why-review-skillmd-is-not-enough',
+  },
+  {
+    type: 'new_section',
     title: 'Sandbox Isolation: just-bash, the pure-simulation counter-example',
     date: 'Aug 4, 2026',
     description: 'New entry in the Cloud Sandboxes Landscape section: just-bash (Vercel), a bash interpreter written directly in TypeScript with no VM at all, the opposite trade from agentOS a few lines above it. Same in-process, no-cloud-account category, weaker containment, zero moving parts in exchange. Named directly: no LICENSE file at the repo root despite the README claiming Apache-2.0.',

@@ -1,6 +1,7 @@
 /**
  * Security threat intelligence data - Converted from threat-db.yaml
- * Source: examples/skills/update-threat-db/threat-db.yaml
+ * Compatibility search data derived from examples/commands/resources/threat-db.yaml.
+ * AgentSec security-feed.v1.json owns public versions, dates, counts, and events.
  * For use in the landing site security section
  */
 
@@ -37,6 +38,8 @@ export interface MaliciousSkill {
     readonly risk: string;
     readonly category?: string;
     readonly platform?: string;
+    /** Pinned version for supply-chain entries, e.g. keyv 6.0.0. Absent for skill-name entries. */
+    readonly version?: string;
     readonly notes?: string;
 }
 
@@ -117,9 +120,9 @@ export interface SecurityData {
 
 export const SECURITY_DATA = {
     meta: {
-        version: "2.22.0",
-        updated: "2026-06-18",
-        sources_count: 55
+        version: "2.27.0",
+        updated: "2026-08-17",
+        sources_count: 221
     },
     stats: {
         skills_scanned: 3984,
@@ -127,7 +130,7 @@ export const SECURITY_DATA = {
         critical_risk: 534,
         critical_pct: 13.4,
         malicious_payloads: 76,
-        cves_tracked: 42,
+        cves_tracked: 114,
         malicious_skills: 657,
         exposed_servers: 17500,
         hardcoded_secrets_pct: 10.9,
@@ -228,7 +231,41 @@ export const SECURITY_DATA = {
         { name: "mcp-runcommand-server2", type: "supply-chain", source: "JFrog", risk: "critical", platform: "pypi", notes: "Reverse shell to 45.115.38.27:4433" },
 
         // Supply chain: Malicious npm MCP package
-        { name: "postmark-mcp", type: "supply-chain", source: "Defender's Initiative", risk: "critical", platform: "npm", notes: "Squatter copying official Postmark MCP with hidden backdoor" }
+        { name: "postmark-mcp", type: "supply-chain", source: "Defender's Initiative", risk: "critical", platform: "npm", notes: "Squatter copying official Postmark MCP with hidden backdoor" },
+
+        // Synced from threat-db.yaml v2.27.0 (2026-08-17). Entries added between
+        // v2.22.0 and v2.27.0: Shai-Hulud keyv/cacheable worm packages and the
+        // skills.sh Paperclip / Browser Use skill supply-chain campaign.
+        { name: "@openclaw-ai/openclawai", type: "supply-chain", source: "The Hacker News (GhostClaw)", risk: "critical", platform: "npm", notes: "GhostLoader RAT — persistent daemon, SOCKS5 proxy, live browser session cloning, clipboard monitor (every 3s for private keys/API keys), steals credentials/SSH keys/Apple Keychain/iMessage; 178 downloads before discovery; uploaded 2026-03-03" },
+        { name: "ambar-src", type: "supply-chain", source: "Security research (2026-03)", risk: "critical", platform: "npm", notes: "~50,000 downloads; uses evasion techniques to avoid detection; targets developer machines with malware delivery" },
+        { name: "litellm==1.82.7", type: "supply-chain", source: "TeamPCP / Datadog Security Labs / Trend Micro (2026-03-24)", risk: "critical", platform: "pypi", notes: "Malicious version live ~40 minutes on 2026-03-24 (10:39 UTC); TeamPCP obtained PyPI credentials via prior compromise of Trivy CI/CD security scanner; contains multi-stage payload: credential harvest + Kubernetes lateral movement + persistent systemd backdoor; includes hackerbot-claw using OpenClaw for automated attack targeting — first AI agent used operationally in a supply chain attack; 3.4M daily downloads at time of attack; affects CrewAI, DSPy, Microsoft GraphRAG, and dozens of other AI agent frameworks" },
+        { name: "litellm==1.82.8", type: "supply-chain", source: "TeamPCP / Datadog Security Labs / Trend Micro (2026-03-24)", risk: "critical", platform: "pypi", notes: "Second malicious version in same TeamPCP attack window (same payload as 1.82.7); both quarantined by PyPI after ~40 minutes; tracked as sonatype-2026-001357" },
+        { name: "money-radar", type: "malware", source: "Palo Alto Networks Unit 42 (2026-06-23)", risk: "critical", notes: "Runtime agentic affiliate injection targeting financial-advice communities; manipulates the agent's recommendations to redirect users toward attacker-controlled affiliate links" },
+        { name: "letssendit", type: "malware", source: "Palo Alto Networks Unit 42 (2026-06-23)", risk: "critical", notes: "Agentic front-running scheme; coordinates Solana meme-token pooling via the agent to manipulate token prices" },
+        { name: "omnicogg", type: "malware", source: "JFrog (2026-03) / Palo Alto Networks Unit 42 (2026-06-23)", risk: "critical", notes: "AMOS dropper hidden in a README.md padded to ~22M characters to exceed automated scanner size thresholds; SHA256 b30eaed1f7478c28f4ec50d07ed5ef014ffbc4b2bc5a38d689ba9f7abb5e19c2; originally found by JFrog, re-analyzed and republished by Unit 42" },
+        { name: "ai-tradingview-assistant-for-macos", type: "malware", source: "Palo Alto Networks Unit 42 (discovered 2026-05-17, reported 2026-06-23)", risk: "critical", notes: "Poses as a TradingView trading assistant; delivers a macOS infostealer tracked as 'cluw'" },
+        { name: "tradingview-ai-indicator-assistant", type: "malware", source: "Palo Alto Networks Unit 42 (discovered 2026-05-17, reported 2026-06-23)", risk: "critical", notes: "Companion skill to ai-tradingview-assistant-for-macos; same 'cluw' macOS infostealer payload" },
+        { name: "keyv", type: "supply-chain", source: "Aikido / Snyk (SNYK-JS-KEYV-18515941) / Chainguard / Socket", risk: "critical", platform: "npm", version: "6.0.0", notes: "Patient zero, 604M installs/month. Maintainer's GitHub account (jaredwray) taken over; malicious files pushed to main, then the project's own GitHub Actions release workflow published the package with VALID OIDC + SLSA provenance. Adds 'preinstall': 'node setup.mjs'. Safe version: 5.6.0" },
+        { name: "flat-cache", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "6.1.24", notes: "580M installs/month; same preinstall dropper as keyv@6.0.0" },
+        { name: "file-entry-cache", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "11.1.6", notes: "571M installs/month; transitive dependency of ESLint toolchains" },
+        { name: "cacheable-request", type: "supply-chain", source: "Aikido / ArmorCode / Chainguard", risk: "critical", platform: "npm", version: "13.0.20", notes: "137M installs/month" },
+        { name: "cacheable", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "2.5.1", notes: "30M installs/month" },
+        { name: "cache-manager", type: "supply-chain", source: "Aikido / ArmorCode / Socket", risk: "critical", platform: "npm", version: "7.2.10", notes: "16M installs/month" },
+        { name: "@cacheable/memory", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "2.2.1", notes: "28M installs/month" },
+        { name: "@cacheable/utils", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "2.5.1", notes: "34M installs/month" },
+        { name: "@cacheable/node-cache", type: "supply-chain", source: "Aikido / ArmorCode", risk: "critical", platform: "npm", version: "3.1.2", notes: "6M installs/month" },
+        { name: "@cacheable/net", type: "supply-chain", source: "Aikido / Socket", risk: "critical", platform: "npm", version: "2.1.1", notes: "Published in the 10:09:44-10:14:41 UTC burst with the rest of the cacheable family" },
+        { name: "ecto", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "5.0.1", notes: "Same maintainer as keyv/cacheable" },
+        { name: "@keyv/*", type: "supply-chain", source: "JFrog / SafeDep", risk: "critical", platform: "npm", version: "6.0.0", notes: "Storage adapters compromised at 6.0.0: @keyv/dynamo, @keyv/mongo, @keyv/memcache, @keyv/valkey, @keyv/test-suite, plus Redis/Postgres/SQLite/MySQL/Etcd/compression drivers. CONTESTED: The Hacker News reported the @keyv/* adapters stayed clean; JFrog's affected-package table and SafeDep's CSV both list them at 6.0.0. Treat as compromised." },
+        { name: "@deliveroo/reevent", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "1.0.1", notes: "Worm propagation phase, republished with a stolen npm token" },
+        { name: "@or-sdk/invitations", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "1.4.9", notes: "Worm propagation phase" },
+        { name: "@picsart/ai-sdk", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "3.32.2", notes: "Worm propagation phase" },
+        { name: "@qlik/embed-runtime", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "1.6.4", notes: "Worm propagation phase" },
+        { name: "picasso.js", type: "supply-chain", source: "Aikido", risk: "critical", platform: "npm", version: "2.11.6", notes: "Worm propagation phase, Qlik-maintained charting library" },
+        { name: "getpaperclipai/paperclip", type: "skill", source: "Zenity Labs", risk: "critical", platform: "skills.sh", notes: "Typosquat of the legitimate paperclipai/paperclip. Skill instructions told the agent to skip npm and npx and fetch a binary straight from an attacker-controlled GitHub release, which loaded a credential stealer. The malicious install steps sat in a secondary setup-installation.md so they only surfaced when the agent actually needed to install or start Paperclip." },
+        { name: "browser-use-headless/browser-use-headless-skill", type: "skill", source: "Zenity Labs", risk: "critical", platform: "skills.sh", notes: "Typosquat of browser-use/browser-use. A lure skill whose whole purpose was instructing the agent to pip install the poisoned PyPI package below." },
+        { name: "browser-use-headless", type: "supply-chain", source: "Zenity Labs; MAL-2026-10484 (Amazon Inspector, Kamil Mankowski)", risk: "critical", platform: "PyPI", version: "0.1.4", notes: "Browser Harness plus an added helpers.py holding the infostealer. Importing the helper ran the credential search and posted results to api[.]getpaperclipp[.]com/feedback. PyPI caught it within two hours on 2026-07-13, which is why the operators pivoted to serving payloads from GitHub releases instead." },
+        { name: "paperclip-ai", type: "supply-chain", source: "Zenity Labs", risk: "critical", platform: "PyPI", version: "0.1.0, 0.1.1", notes: "Same infostealer, same exfiltration endpoint. Four independent triggers were recovered: Python import, CLI execution, package postinstall during Paperclip installation, and log_action during Paperclip API use. 'I never ran the CLI' does not rule out execution." }
     ],
     cve_database: [
         { id: "CVE-2025-53109", component: "Filesystem MCP Server", severity: "high", description: "Symlink escape to arbitrary filesystem access / potential LPE", source: "Cymulate EscapeRoute", fixed_in: "0.6.3 / 2025.7.1", mitigation: "Update to >= 0.6.3; avoid Filesystem MCP in sensitive environments" },
