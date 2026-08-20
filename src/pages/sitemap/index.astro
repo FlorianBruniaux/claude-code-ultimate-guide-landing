@@ -1,11 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { getSiteStats } from '../../utils/site-stats'
+
+const stats = await getSiteStats()
 
 const cheatsheetCards = await getCollection('cheatsheets').catch(() => [])
 const sortedCards = cheatsheetCards.sort((a, b) => a.data.order - b.data.order)
-const techniqueCards = sortedCards.filter(c => c.data.category === 'Technique')
-const methodologieCards = sortedCards.filter(c => c.data.category === 'Méthodologie')
+const techniqueCards = sortedCards.filter(c => c.data.category === 'Technical')
+const methodologieCards = sortedCards.filter(c => c.data.category === 'Methodology')
+const designCards = sortedCards.filter(c => c.data.category === 'Design')
 
 const sections = [
   {
@@ -13,9 +17,9 @@ const sections = [
     icon: '📚',
     links: [
       { href: '/', label: 'Home', desc: 'Overview, features, and quick start' },
-      { href: '/guide/', label: 'Ultimate Guide', desc: '20K+ line reference, searchable online' },
+      { href: '/guide/', label: 'Ultimate Guide', desc: '25K+ line reference, searchable online' },
       { href: '/cheatsheet/', label: 'Quick Reference (1-page)', desc: 'All essential commands on a single printable page' },
-      { href: '/cheatsheets/', label: 'Cheat Sheets (57 cards)', desc: 'Printable A4 recap cards: Technique + Methodology series' },
+      { href: '/cheatsheets/', label: `Cheat Sheets (${sortedCards.length} cards)`, desc: 'Printable A4 recap cards: Technical, Methodology, and Design series' },
       { href: '/whitepapers/', label: 'Ebooks', desc: '13 deep-dive PDFs, FR + EN, 472+ pages' },
     ],
   },
@@ -39,7 +43,7 @@ const sections = [
     title: 'Reference',
     icon: '🔍',
     links: [
-      { href: '/examples/', label: 'Examples & Templates', desc: '255 production-ready templates: agents, hooks, commands, skills' },
+      { href: '/examples/', label: 'Examples & Templates', desc: `${stats.templateCount} production-ready templates: agents, hooks, commands, skills` },
       { href: '/diagrams/', label: 'Diagrams', desc: 'Visual architecture and workflow diagrams' },
       { href: '/releases/', label: 'Releases', desc: 'Claude Code release history and changelog' },
       { href: '/security/', label: 'Security', desc: 'CVEs, threat database, security hardening guides' },
@@ -56,7 +60,7 @@ const sections = [
     ],
   },
   {
-    title: 'Cheat Sheets: Technique series (22 cards)',
+    title: 'Cheat Sheets: Technical series',
     icon: '🟠',
     links: techniqueCards.map(c => ({
       href: `/cheatsheets/${c.id}/`,
@@ -65,9 +69,18 @@ const sections = [
     })),
   },
   {
-    title: 'Cheat Sheets: Méthodologie series (22 cards)',
+    title: 'Cheat Sheets: Methodology series',
     icon: '🔵',
     links: methodologieCards.map(c => ({
+      href: `/cheatsheets/${c.id}/`,
+      label: `${c.data.cardNumber}: ${c.data.title}`,
+      desc: c.data.subtitle,
+    })),
+  },
+  {
+    title: 'Cheat Sheets: Design series',
+    icon: '🟣',
+    links: designCards.map(c => ({
       href: `/cheatsheets/${c.id}/`,
       label: `${c.data.cardNumber}: ${c.data.title}`,
       desc: c.data.subtitle,
