@@ -4764,6 +4764,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-security-skill-delayed-payload",
+    "title": "Security Skill Delayed Payload",
+    "keywords": "security skill delayed payload guide security security hardening md#the delayed payload why review skillmd not enough",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#the-delayed-payload-why-review-skillmd-is-not-enough",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-mcp-scan-tool",
     "title": "Security MCP Scan Tool",
     "keywords": "security mcp scan tool guide security security hardening md#11 mcp vetting workflow",
@@ -4817,14 +4825,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "security threat db examples commands resources threat",
     "category": "Examples > Commands",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/resources/threat-db.yaml",
-    "source": "guide"
-  },
-  {
-    "id": "guide-security-threat-db-stale-copy",
-    "title": "Security Threat Db Stale Copy",
-    "keywords": "security threat db stale copy examples skills update threat threat",
-    "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/update-threat-db/threat-db.yaml",
     "source": "guide"
   },
   {

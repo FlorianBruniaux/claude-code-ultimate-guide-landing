@@ -16,6 +16,67 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.237',
+    date: 'Aug 19, 2026',
+    highlights: [
+      'Added a built-in "Concise" output style: Claude leads with results and skips preamble and narration, selectable under Output style in /config',
+      'Fixed prompt caching for sessions running through an LLM gateway or a custom base URL',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.236',
+    date: 'Aug 19, 2026',
+    highlights: [
+      'Added ANTHROPIC_DEFAULT_MODEL: sets the model new sessions start on, while a /model pick still overrides it and persists across restarts (unlike ANTHROPIC_MODEL)',
+      'Added notify_when_idle to cross-session SendMessage: another session on the machine sends one notice when it next goes idle, opt-in and one-shot, no polling (macOS and Linux)',
+      'Sandbox on macOS: wildcard read-deny rules such as **/.env now take precedence inside allowed read regions, cover matched directories, and survive a rename of the denied file',
+      'Auto mode: Monitor allow rules are set aside while auto mode runs, Bedrock/Vertex/Foundry get the same severity-scored classifier defaults as the Claude API, and the git status check no longer trusts status.showUntrackedFiles=no',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.235',
+    date: 'Aug 18, 2026',
+    highlights: [
+      'Added an optional spellcheck setting that underlines misspelled words in the prompt input using an installed aspell, hunspell, or ispell',
+      'Improved permission dialogs: display text and "don\'t ask again" options now match what a grant actually covers, and "don\'t ask again" is withheld when contents cannot be fully displayed',
+      'Fixed Shift+Tab inside the permission prompt comment field approving the edit and granting session-wide edit permission instead of closing the field',
+      'Improved memory and CPU usage while cloud sessions such as /ultrareview or /autofix-pr run in the background',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.234',
+    date: 'Aug 17, 2026',
+    highlights: [
+      'Security: remote file reads, session restore, CLAUDE.md includes, workflow scripts, and file uploads now reject Windows NT-namespace paths, closing the remaining pre-approval NTLM credential-leak surface',
+      'Added a GitLab merge request badge to the footer and statusline (MR !N with draft/pending/green states) for repos with a GitLab remote and an authenticated glab CLI',
+      'Claude Code now continues a session automatically when a claude.ai usage limit resets; disable it in /config under "Continue automatically at usage limit"',
+      'Reduced the context cost of the built-in claude-api skill from ~200K tokens to ~25K by loading reference docs on demand; /permissions and /add-dir can now be opened mid-turn',
+    ],
+    breaking: [
+      'Removed the "Default teammate model" setting from /config; agent-team teammates now use the leader model unless the spawn names one',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.233',
+    date: 'Aug 14, 2026',
+    highlights: [
+      'Added GitLab merge request URL support to --worktree and the claude agents view, plus an opt-in forward_user_identity apps gateway setting for per-user spend attribution',
+      'Added opt-in memory cgroups for Bash commands on Linux (CLAUDE_CODE_TOOL_MEMORY_LIMIT) so a runaway build cannot stall the session, and CLAUDE_CODE_WEBFETCH_CACHE_TTL_MS to tune the WebFetch URL cache',
+      'Security: fixed Windows paths spelled with the NT device prefix bypassing UNC path validation, an NTLM credential-leak vector',
+      'Fixed idle sessions on Linux pinning a CPU core at 100% with sandboxing enabled, and Notification hooks not firing for permission prompts under Claude Desktop or VS Code',
+    ],
+    breaking: [
+      'Todo/task tools (TaskCreate/Get/Update/List, TodoWrite) are no longer available on Opus 4.8, Sonnet 5, Fable 5, Mythos 5, and newer models; set CLAUDE_CODE_ENABLE_TODO_TOOLS=1 to restore them',
+      'Reverted the 2.1.232 Bash permission changes for Cygwin-style symlinks on Windows and for input redirections; a narrower version returns in a later release',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.232',
     date: 'Aug 13, 2026',
     highlights: [
@@ -27,7 +88,6 @@ export const releases: Release[] = [
     breaking: [
       'sandbox.ripgrep is now honored only from user, managed, and --settings settings; project settings can no longer override the sandbox ripgrep binary',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
