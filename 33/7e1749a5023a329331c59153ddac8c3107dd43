@@ -1,0 +1,19 @@
+astro.config.mjs
+  s_639cd8b9297baf::t_298ad75d16fca3 195-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "337e1749a5023a329331c59153ddac8c3107dd43",
+  "prompts": {},
+  "sessions": {
+    "s_639cd8b9297baf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8770a61-895e-46db-a50d-409925f16939",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
