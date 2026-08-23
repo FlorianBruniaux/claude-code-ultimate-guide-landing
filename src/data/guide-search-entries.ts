@@ -3212,6 +3212,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-opencode-tool",
+    "title": "Opencode Tool",
+    "keywords": "opencode tool guide ecosystem agentic tools md#15 opencode anomaly formerly sst",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#15-opencode-anomaly-formerly-sst",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gemini-cli-tool",
+    "title": "Gemini CLI Tool",
+    "keywords": "gemini cli tool guide ecosystem agentic tools md#16 gemini cli google",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#16-gemini-cli-google",
+    "source": "guide"
+  },
+  {
+    "id": "guide-crush-tool",
+    "title": "Crush Tool",
+    "keywords": "crush tool guide ecosystem agentic tools md#17 crush charm",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#17-crush-charm",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-comparison-page",
+    "title": "Agent Harness Comparison Page",
+    "keywords": "agent harness comparison page guide ecosystem agent harness landscape",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-definition",
+    "title": "Agent Harness Definition",
+    "keywords": "agent harness definition guide ecosystem agent harness landscape md#agent harness comparison",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#agent-harness-comparison",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-boundary-table",
+    "title": "Agent Harness Boundary Table",
+    "keywords": "agent harness boundary table guide ecosystem agent harness landscape md#whats not full harness",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#whats-not-a-full-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-deepseek-harness-tool",
+    "title": "Deepseek Harness Tool",
+    "keywords": "deepseek harness tool guide ecosystem agent harness landscape md#core coding harnesses",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#core-coding-harnesses",
+    "source": "guide"
+  },
+  {
     "id": "guide-programmatic-billing-api-key-trap",
     "title": "Programmatic Billing API Key Trap",
     "keywords": "programmatic billing api key trap guide ultimate guide md#the anthropic api key billing trap",
@@ -3225,14 +3281,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "plan mode guide ultimate guide md#plan mode",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#plan-mode",
-    "source": "guide"
-  },
-  {
-    "id": "guide-ultraplan",
-    "title": "Ultraplan",
-    "keywords": "ultraplan guide ultimate guide md#ultraplan",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#ultraplan",
     "source": "guide"
   },
   {

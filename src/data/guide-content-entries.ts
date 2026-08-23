@@ -229,6 +229,30 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-agent-harness-landscape-core-coding-harnesses",
+    "title": "Core Coding Harnesses",
+    "keywords": "core coding harnesses agent harness comparison twenty-five harnesses, from cli-only open source projects to ide-embedded proprietary products to cloud-only autonomous agents. entries with a full pr",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#core-coding-harnesses",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-landscape-what-s-not-a-full-harness",
+    "title": "What's Not a Full Harness",
+    "keywords": "what s not a full harness agent harness comparison these show up in the same conversations as coding agents, and none of them run a coding loop on their own. worth naming so the boundary stays clear. c",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#what-s-not-a-full-harness",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-landscape-the-practical-read",
+    "title": "The Practical Read",
+    "keywords": "the practical read agent harness comparison pick the lowest tier of complexity that solves the job in front of you. a single cli harness answers most day-to-day coding work; reach for an orchest",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#the-practical-read",
+    "source": "guide"
+  },
+  {
     "id": "gc-agent-harness-the-core-claim",
     "title": "The core claim",
     "keywords": "the core claim code as agent harness arxiv 2605 18747 agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. martin fowler, addy osmani, o'reilly's 2026 ai radar, and arxiv 2605.18747 (may",
@@ -335,7 +359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agentic-tools-defaults",
     "title": "Defaults",
-    "keywords": "defaults agent tools beyond claude code before any development action, explicitly list: 1. files that will be modified 2. proposed approach 3. identified risks never write code before confir 1 3 aider what is aider claude code vs aider when to choose aider quick start 1 4 goose aaif block",
+    "keywords": "defaults agent tools beyond claude code before any development action, explicitly list: 1. files that will be modified 2. proposed approach 3. identified risks never write code before confir 1 3 aider what is aider claude code vs aider when to choose aider quick start 1 4 goose aaif block 1 5 opencode anomaly formerly sst what is opencode claude code vs opencode when to choose opencode quick start 1 6 gemini cli google what is gemini cli claude code vs gemini cli when to choose gemini cli quick ",
     "category": "Core Guides",
     "url": "/guide/agentic-tools/#defaults",
     "source": "guide"
@@ -1399,7 +1423,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-plan-mode-thinking",
     "title": "Plan Mode & Thinking",
-    "keywords": "plan mode thinking claude code cheatsheet feature activation usage --------- ------------ ------- plan mode or explore without modifying opusplan opus for planning, sonnet for execution ultrap quick model selection dynamic model switching mid session",
+    "keywords": "plan mode thinking claude code cheatsheet feature activation usage --------- ------------ ------- plan mode or explore without modifying opusplan opus for planning, sonnet for execution opus 4 quick model selection dynamic model switching mid session",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#plan-mode-thinking",
     "source": "guide"
@@ -6591,7 +6615,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-02-core-workflow-execute",
     "title": "Execute",
-    "keywords": "execute 2 core workflow [approve the plan, or shift+tab to leave plan mode] user: implement the plan from round 3. ``` why it works : each round forces claude to reconsider a ultraplan ultrareview v2 1 114 mechanic stacking",
+    "keywords": "execute 2 core workflow [approve the plan, or shift+tab to leave plan mode] user: implement the plan from round 3. bash /ultrareview review current branch (diff from base) /u ultrareview v2 1 114 mechanic stacking",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/02-core-workflow/#execute",
     "source": "guide"
@@ -6855,7 +6879,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-2-the-claude-folder-structure",
     "title": "3.2 The .claude/ Folder Structure",
-    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 41 1 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
+    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 41 3 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-2-the-claude-folder-structure",
     "source": "guide"
@@ -9111,7 +9135,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exécution",
     "title": "Exécution",
-    "keywords": "exécution the ultimate claude code guide [approuver le plan, ou shift+tab pour sortir du plan mode] user: implement the plan from round 3. ``` pourquoi ça fonctionne : chaque tour force claud ultraplan ultrareview v2 1 114 mechanic stacking",
+    "keywords": "exécution the ultimate claude code guide [approuver le plan, ou shift+tab pour sortir du plan mode] user: implement the plan from round 3. bash /ultrareview réviser la branche courante (diff ultrareview v2 1 114 mechanic stacking",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exécution",
     "source": "guide"
