@@ -192,6 +192,8 @@ export default defineConfig({
           label: 'Ecosystem',
           items: [
             { slug: 'guide/ai-ecosystem' },
+            { slug: 'guide/agentic-tools' },
+            { slug: 'guide/agent-harness-landscape' },
             { slug: 'guide/mcp-servers-ecosystem' },
             { slug: 'guide/third-party-tools' },
             { slug: 'guide/remarkable-ai' },
