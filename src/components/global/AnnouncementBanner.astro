@@ -9,7 +9,23 @@
  */
 
 // Increment this ID whenever the banner content changes
-const BANNER_ID = 'banner-bm25-routing-2026-06'
+//
+// NOT YET LIVE: both new links below depend on unreleased guide content
+// (written 2026-08-24, still sitting in claude-code-ultimate-guide's
+// CHANGELOG under [Unreleased], not committed or pushed as of this edit).
+// - /guide/workflows/cross-session-messaging/ needs the source page
+//   (guide/workflows/cross-session-messaging.md) to ship through an actual
+//   `/release`, then `node scripts/prepare-guide-content.mjs && pnpm build`
+//   here to rebuild the guide reader.
+// - /diagrams/#multi-agent needs the same release, then
+//   `node scripts/build-diagrams-data.mjs` here to pick up the new 6th
+//   diagram in guide/diagrams/07-multi-agent-patterns.md (theme id
+//   "multi-agent" per THEME_META in that script). It opens the Multi-Agent
+//   Patterns theme accordion, not the single diagram: there's no per-diagram
+//   anchor in src/pages/diagrams/index.astro.
+// Re-check the version badge and "Guide vX.Y.Z →" link below against the
+// real released version before deploying this banner.
+const BANNER_ID = 'banner-cross-session-messaging-2026-08'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
@@ -18,7 +34,8 @@ const BANNER_ID = 'banner-bm25-routing-2026-06'
       <span class="ann-badge">v3.41.3</span>
       <span class="ann-text">
         <span style="color:var(--text-secondary)">New:</span>
-        <a href="/guide/workflows/smart-suggest-routing/" class="ann-link">BM25 Skill Routing</a>
+        <a href="/guide/workflows/cross-session-messaging/" class="ann-link">Cross-Session Messaging</a>
+        <a href="/diagrams/#multi-agent" class="ann-link" style="font-size:0.85em">(diagram)</a>
         <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/guide/agent-harness/" class="ann-link">Agent Harness Engineering</a>
         <span class="ann-sep" aria-hidden="true">·</span>
