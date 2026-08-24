@@ -16,13 +16,51 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.241',
+    date: 'Aug 22, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.240',
+    date: 'Aug 22, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.239',
+    date: 'Aug 21, 2026',
+    highlights: [
+      'Fixed Bedrock streaming behind proxies that strip the response Content-Type header, which silently doubled billed API calls by re-running every turn non-streaming',
+      'Added Windows cross-session messaging: Claude Code sessions across your machines can message each other with SendMessage and find each other with ListAgents, as on macOS and Linux',
+      'Cost estimates (/cost, status line, --max-budget-usd) now include the 1.1x US-only-inference premium for data-residency workspaces',
+      'Added /claude-api upgrade to migrate Python projects from anthropic 0.x to 1.x',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.238',
+    date: 'Aug 20, 2026',
+    highlights: [
+      'Added a keybindingFlavor setting: set it to "readline" to make Ctrl+W in the prompt delete back to the previous whitespace, as in Bash',
+      'Plugin marketplaces: headersHelper on a url marketplace or catalog entry runs a command that mints short-lived HTTP headers for catalog and archive fetches',
+      'Fixed unbounded memory growth in long interactive sessions: subagent tool results are now released once they leave the recent display window',
+      'Added claude self-hosted-runner --defer-shutdown-max-min for graceful draining on SIGTERM, and --proxy-authorization-command/--proxy-authorization-file for egress proxies requiring a freshly issued header',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.237',
     date: 'Aug 19, 2026',
     highlights: [
       'Added a built-in "Concise" output style: Claude leads with results and skips preamble and narration, selectable under Output style in /config',
       'Fixed prompt caching for sessions running through an LLM gateway or a custom base URL',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
