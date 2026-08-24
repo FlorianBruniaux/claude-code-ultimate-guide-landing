@@ -50,8 +50,8 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     color: '#3b82f6',
     cardCount: 22,
     released: true,
-    hashedZipFr: 'recap-cards-methodologie.fr.v1.0.0.49286b522fc9.zip',
-    hashedZipEn: 'recap-cards-methodologie.en.v1.0.0.2b4dfabb1045.zip',
+    hashedZipFr: 'recap-cards-methodologie.fr.v1.0.0.c05b721da980.zip',
+    hashedZipEn: 'recap-cards-methodologie.en.v1.0.0.3392287e361e.zip',
   },
   {
     id: 'C',
@@ -84,7 +84,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   // ── Méthodologie (M) ────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.fr.v1.0.0.1a15d1434460.pdf',
   'm02-context-management': 'm02-context-management.fr.v1.0.0.0414866c4eba.pdf',
-  'm03-sessions-continuite': 'm03-sessions-continuite.fr.v1.0.0.b1c3435a80aa.pdf',
+  'm03-sessions-continuite': 'm03-sessions-continuite.fr.v1.0.0.d1a39e38e33f.pdf',
   'm04-compact-vs-clear': 'm04-compact-vs-clear.fr.v1.0.0.ffe8cd2e42dd.pdf',
   'm05-plan-mode': 'm05-plan-mode.fr.v1.0.0.eb70a253a703.pdf',
   'm06-task-management-system': 'm06-task-management-system.fr.v1.0.0.09d4dc6b902a.pdf',
@@ -151,7 +151,7 @@ export const CARD_HASHES_EN: Record<string, string> = {
   // ── Methodology (M) ─────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.en.v1.0.0.b39e8e055e90.pdf',
   'm02-context-management': 'm02-context-management.en.v1.0.0.e304b6c231ab.pdf',
-  'm03-sessions-continuite': 'm03-sessions-continuite.en.v1.0.0.b2e35731de29.pdf',
+  'm03-sessions-continuite': 'm03-sessions-continuite.en.v1.0.0.871250f527d9.pdf',
   'm04-compact-vs-clear': 'm04-compact-vs-clear.en.v1.0.0.fdca71f6858d.pdf',
   'm05-plan-mode': 'm05-plan-mode.en.v1.0.0.a64279efd4c0.pdf',
   'm06-task-management-system': 'm06-task-management-system.en.v1.0.0.6fa06d95cd14.pdf',
