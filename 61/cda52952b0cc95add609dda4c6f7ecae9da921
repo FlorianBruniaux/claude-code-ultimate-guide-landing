@@ -1,0 +1,19 @@
+src/data/releases.ts
+  s_902ef361eded4f::t_bd9199249afc6d 18-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "61cda52952b0cc95add609dda4c6f7ecae9da921",
+  "prompts": {},
+  "sessions": {
+    "s_902ef361eded4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_902ef361eded4f",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
