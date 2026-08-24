@@ -4,13 +4,13 @@ subtitle: "Choosing the right isolation level for your context"
 cardNumber: T17
 category: Technical
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 17
 ---
 
 ## Two local isolation approaches
 
-Claude Code offers two isolation mechanisms for autonomous execution. The native sandbox is built into the CLI and relies on OS primitives. Docker Sandboxes (Docker Desktop 4.58+) use microVM isolation via hypervisor — more robust but heavier.
+Claude Code offers two isolation mechanisms for autonomous execution. The native sandbox is built into the CLI and relies on OS primitives. Docker Sandboxes (Docker Desktop 4.58+) use microVM isolation via hypervisor, more robust but heavier.
 
 ## Comparison table
 
@@ -66,12 +66,6 @@ CI/CD with sensitive workloads
 Parallel multi-agent, cloud
   → Fly.io Sprites, E2B, Vercel Sandboxes
 ```
-
-## Recent native sandbox improvements (v2.1.114–v2.1.116)
-
-**Native binary spawning (v2.1.114):** the sandbox now spawns real OS processes (Seatbelt on macOS, bubblewrap on Linux) instead of wrapping them in container layers. Startup overhead for short commands (lint, format) is reduced significantly.
-
-**`deniedDomains` (v2.1.116):** new network config key for `allow` mode that lets you block specific domains without a full deny-all policy. Useful when you want outbound access with targeted exceptions.
 
 ## Known limitations
 

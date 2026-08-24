@@ -21,4 +21,4 @@ What is the "Spot Outgrowth" pattern in skill lifecycle management?
 
 ---
 
-Spot Outgrowth occurs when a model improves to the point where it can pass a skill's eval on its own, without the skill being loaded. This is the retirement signal for Capability Uplift skills: run the eval without the skill — if it passes, the skill is no longer needed. Removing it reduces context load and maintenance overhead. This contrasts with "Catch Regressions," which detects when a skill drifts after a model update.
+Spot Outgrowth occurs when a model improves to the point where it can pass a skill's eval on its own, without the skill being loaded. This is the retirement signal for Capability Uplift skills: run the eval without the skill. If it passes, the skill is no longer needed. Removing it reduces context load and maintenance overhead. This contrasts with "Catch Regressions," which detects when a skill drifts after a model update.

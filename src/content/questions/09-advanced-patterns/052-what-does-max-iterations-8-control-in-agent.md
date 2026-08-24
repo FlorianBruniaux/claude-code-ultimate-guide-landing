@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: Maximum files an agent can read — agent stops reading and proceeds with available context
-  b: Maximum retry attempts on any failing task — agent stops and reports to the team lead rather than continuing to retry
-  c: Maximum number of teammate agents — team lead stops spawning and works sequentially
-  d: Maximum token budget per agent — agent switches to low-effort mode to conserve tokens
+  a: Maximum files an agent can read (agent stops reading and proceeds with available context)
+  b: Maximum retry attempts on any failing task (agent stops and reports to the team lead rather than continuing to retry)
+  c: Maximum number of teammate agents (team lead stops spawning and works sequentially)
+  d: Maximum token budget per agent (agent switches to low-effort mode to conserve tokens)
 doc_reference:
   file: guide/workflows/agent-teams.md
   section: Loop Guardrails

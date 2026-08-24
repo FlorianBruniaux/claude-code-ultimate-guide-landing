@@ -1,5 +1,5 @@
 /**
- * Methodology Quiz — Client-side logic
+ * Methodology Quiz: client-side logic
  * Scoring, screen transitions, scroll to stacks, event listeners
  */
 

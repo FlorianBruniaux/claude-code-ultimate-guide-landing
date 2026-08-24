@@ -20,4 +20,4 @@ What is 'Context Rot' and what makes it structural rather than incidental?
 
 ---
 
-Context Rot is structural, not incidental: transformer attention is O(n²) — each new token attends to all previous tokens. As context grows, the effective attention per token dilutes, early context gets underweighted, and recent tokens dominate disproportionately. This happens even with high-quality context content. Solutions: /compact (prune), context chaining (fresh session with curated summary), or JIT retrieval (never load; fetch on demand). You cannot fix structural rot by cleaning up your prompts.
+Context Rot is structural, not incidental: transformer attention is O(n²), where each new token attends to all previous tokens. As context grows, the effective attention per token dilutes, early context gets underweighted, and recent tokens dominate disproportionately. This happens even with high-quality context content. Solutions: /compact (prune), context chaining (fresh session with curated summary), or JIT retrieval (never load; fetch on demand). You cannot fix structural rot by cleaning up your prompts.

@@ -4,13 +4,13 @@ subtitle: "Work in parallel on multiple branches without switching directories"
 cardNumber: M13
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 113
 ---
 
 ## Principle
 
-A git worktree creates a second (or third) working directory from the same repository, each checked out on a distinct branch. No `git stash`, no branch switching — two terminals, two contexts, zero friction between them.
+A git worktree creates a second (or third) working directory from the same repository, each checked out on a distinct branch. No `git stash`, no branch switching: two terminals, two contexts, zero friction between them.
 
 Available since Git 2.5.0 (2015), natively compatible with Claude Code.
 
@@ -59,7 +59,7 @@ A worktree can have its own `.claude/` configuration for branch-specific convent
 
 The main limitation: `node_modules` or `vendor/` are not shared automatically. Each worktree needs its own dependencies, which can take disk space and time.
 
-**Recommended solution** — symlink `node_modules` from the main worktree:
+**Recommended solution**: symlink `node_modules` from the main worktree.
 
 ```bash
 cd ../myproject-feature
@@ -85,17 +85,23 @@ alias wm="cd ../myproject"   # Main worktree
 
 Pattern used by the Claude Code team internally to navigate instantly between active worktrees.
 
-## EnterWorktree hook: `path` parameter
+## worktree.baseRef (v2.1.133)
 
-The `EnterWorktree` hook fires when Claude Code switches into a worktree. Since approximately v2.1.118, the hook receives a `path` field on stdin identifying the target worktree directory. Use this to run worktree-specific setup (install dependencies, load a branch-scoped CLAUDE.md).
+Controls the base commit used when creating a worktree via `--worktree`, `EnterWorktree`, or agent isolation.
 
-```bash
-# .claude/hooks/enter-worktree.sh
-INPUT=$(cat)
-WORKTREE_PATH=$(echo "$INPUT" | jq -r '.path')
-echo "Entering worktree: $WORKTREE_PATH"
-# e.g. ln -sf ../main/node_modules "$WORKTREE_PATH/node_modules"
-exit 0
+| Value | Behavior |
+|-------|----------|
+| `fresh` (default) | Branch from `origin/<default-branch>`, always a clean remote base |
+| `head` | Branch from local HEAD, includes unpushed commits |
+
+**Breaking change v2.1.133**: `fresh` is now the default. If you have unpushed commits that need to be in the worktree branch, add this to `settings.json`:
+
+```json
+{
+  "worktree": {
+    "baseRef": "head"
+  }
+}
 ```
 
 ## Cleanup after merge

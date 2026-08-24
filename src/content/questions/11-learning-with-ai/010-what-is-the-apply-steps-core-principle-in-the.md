@@ -14,7 +14,7 @@ options:
   d: Apply unit tests to verify correctness
 doc_reference:
   file: guide/roles/learning-with-ai.md
-  section: A — Apply
+  section: "A: Apply"
   anchor: '#a-apply-transform-dont-copy'
 ---
 

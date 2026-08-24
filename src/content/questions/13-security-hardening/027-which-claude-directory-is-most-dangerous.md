@@ -8,10 +8,10 @@ profiles:
 - pm
 correct: a
 options:
-  a: ".claude/hooks/ — scripts run with full user privileges on every agent event"
-  b: ".claude/agents/ — agent definitions can override system prompts"
-  c: ".claude/commands/ — custom commands can execute arbitrary code"
-  d: ".claude/settings.json — contains all API keys and tokens"
+  a: ".claude/hooks/ (scripts run with full user privileges on every agent event)"
+  b: ".claude/agents/ (agent definitions can override system prompts)"
+  c: ".claude/commands/ (custom commands can execute arbitrary code)"
+  d: ".claude/settings.json (contains all API keys and tokens)"
 doc_reference:
   file: "guide/security/security-hardening.md"
   section: 5-Minute .claude/ Audit Checklist

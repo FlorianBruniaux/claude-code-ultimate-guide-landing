@@ -4,7 +4,7 @@ subtitle: "Writing effective instructions that Claude reads every session"
 cardNumber: T07
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 7
 ---
 

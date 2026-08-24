@@ -9,7 +9,7 @@ options:
   a: Fire when any background agent pauses; fire when a TodoWrite task is ticked
   b: TeammateIdle fires when an agent team member is about to go idle (blockable); TaskCompleted fires when a task is being marked complete (blockable)
   c: Fire when the session is idle for 5 minutes; fire when a cron job completes
-  d: Both are read-only notification hooks — they cannot block operations
+  d: Both are read-only notification hooks, they cannot block operations
 doc_reference:
   file: guide/ultimate-guide.md
   section: Event Types
@@ -20,5 +20,5 @@ What are the `TeammateIdle` and `TaskCompleted` hook events used for in multi-ag
 
 ---
 
-`TeammateIdle` fires when an agent team member is about to go idle — useful for team coordination and quality gates (can block). `TaskCompleted` fires when a task is being marked as completed — useful for enforcing completion criteria or running validation before a task is officially closed (can block). Both events are relevant to multi-agent orchestration and appear in the hook event types table alongside worktree and session lifecycle events.
+`TeammateIdle` fires when an agent team member is about to go idle, useful for team coordination and quality gates (can block). `TaskCompleted` fires when a task is being marked as completed, useful for enforcing completion criteria or running validation before a task is officially closed (can block). Both events are relevant to multi-agent orchestration and appear in the hook event types table alongside worktree and session lifecycle events.
 ---

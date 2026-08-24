@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: "`--dangerously-skip-permissions` — bypasses all permission checks for headless execution"
-  b: "`--bare` — disables hooks, LSP, plugin sync, and skill directory scanning; requires ANTHROPIC_API_KEY"
-  c: "`--no-mcp` — disables all MCP servers for a clean execution environment"
-  d: "`-p` alone — print mode already provides a hermetic execution environment"
+  a: "`--dangerously-skip-permissions`: bypasses all permission checks for headless execution"
+  b: "`--bare`: disables hooks, LSP, plugin sync, and skill directory scanning; requires ANTHROPIC_API_KEY"
+  c: "`--no-mcp`: disables all MCP servers for a clean execution environment"
+  d: "`-p` alone: print mode already provides a hermetic execution environment"
 doc_reference:
   file: guide/ultimate-guide.md
   section: GitHub Actions Integration

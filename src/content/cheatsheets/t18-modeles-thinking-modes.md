@@ -4,20 +4,20 @@ subtitle: "Choosing the right model and the right level of reasoning"
 cardNumber: T18
 category: Technical
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 18
 ---
 
-## The Models
+## The Three Models
 
 | Model | Input price/1M | Ideal for |
 |-------|---------------|-----------|
 | **Haiku 4.5** | $0.80 | Mechanical tasks, CI/CD |
 | **Sonnet 4.6** | $3.00 | Day-to-day development (default) |
-| **Opus 4.6** | $5.00 | Architecture, security, audits |
-| **Opus 4.7** | — | Most capable model; xhigh effort available |
+| **Fable 5** | See official docs | Most complex tasks (Mythos-class) |
+| **Opus 4.8** | See official docs | Architecture, security, audits |
 
-Sonnet is the natural starting point, covering 80% of use cases. Haiku cuts the cost by 4x on repetitive tasks (test generation, mass renaming). Opus only comes into play when deep reasoning genuinely changes the quality of the result. Opus 4.7 (`claude-opus-4-7`) is the most powerful option and is the only model with `xhigh` effort support.
+Sonnet is the natural starting point, covering 80% of use cases. Haiku cuts the cost by 4x on repetitive tasks (test generation, mass renaming). Opus only comes into play when deep reasoning genuinely changes the quality of the result.
 
 ## Switching Models
 
@@ -41,35 +41,26 @@ claude --model opus "Design the auth system"
 | System architecture | Opus | high |
 | Critical security audit | Opus | max |
 
-## Thinking Modes (Opus 4.6 / 4.7)
+## Thinking Modes (Opus 4.8)
 
-Opus 4.6 and 4.7 use **Adaptive Thinking**: the model dynamically allocates its compute budget based on request complexity. The `effort` parameter controls this depth.
+Opus 4.8 uses **Adaptive Thinking**: the model dynamically allocates its compute budget based on request complexity. The `effort` parameter controls this depth.
 
-**Effort levels** (v2.1.111+):
+**Effort levels**:
 
-- **xlow**: absolute minimum, speed priority
 - **low**: zero preamble, combined operations, mechanical tasks
-- **default**: balanced (applies when no effort is set)
-- **high**: design decisions, edge cases, multiple concerns — **default on Pro and Max plans since v2.1.117**
-- **max**: cross-system reasoning, irreversible decisions (Opus 4.6)
-- **xhigh**: maximum depth, Opus 4.7 only
+- **medium**: defined pattern, bounded scope, single concern
+- **high**: design decisions, edge cases, multiple concerns
+- **max**: cross-system reasoning, irreversible decisions (Opus 4.8+)
 
 ## Controlling Thinking
 
 ```
 Alt+T          Toggle on/off (current session)
 /config        Persist across sessions
-/effort        Set effort level interactively
-/model + ←/→  Effort slider
+/model + ←/→  Effort slider low|medium|high
 ```
 
-The keywords `ultrathink` and `think hard` have had no functional effect since v2.0.67. Adaptive thinking is active by default on Opus 4.6 and 4.7.
-
-**CI/CD:** use the `CLAUDE_EFFORT` env var to pin effort level in automated pipelines (v2.1.120):
-
-```bash
-CLAUDE_EFFORT=high claude -p "Review this PR" --dangerously-skip-permissions
-```
+The keywords `ultrathink` and `think hard` have had no functional effect since v2.0.67. Adaptive thinking is active by default on Opus 4.8.
 
 ## Golden Rule
 

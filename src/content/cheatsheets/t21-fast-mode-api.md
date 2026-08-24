@@ -4,26 +4,26 @@ subtitle: "Fast mode and the major API changes you need to know"
 cardNumber: T21
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 21
 ---
 
 ## Fast Mode
 
-Fast Mode produces responses **2.5x faster** in exchange for a 6x higher cost. The underlying model remains Opus 4.6 or 4.7, not a different model: this is priority resource allocation, not simplified reasoning.
+Fast Mode produces responses **2.5x faster** in exchange for a 2x higher cost (verified for Opus 4.8). The underlying model stays Opus 4.8, not a different one. Fast Mode prioritizes resource allocation, without simplifying reasoning.
 
 | Parameter | Standard | Fast Mode |
 |-----------|----------|-----------|
-| Model | Opus 4.6 / 4.7 | Opus 4.6 / 4.7 |
+| Model | Opus 4.8 | Opus 4.8 |
 | Speed | Reference | 2.5x faster |
-| Input price | $5/MTok | $30/MTok |
-| Output price | $25/MTok | $150/MTok |
+| Input price | See official docs | 2x standard |
+| Output price | See official docs | 2x standard |
 
 **In CLI:** `/fast` activates the mode for the current session.
 
 ## When to Use Fast Mode
 
-Fast Mode is worthwhile when response time has direct business value: live demo, intensive pair programming, mechanical code generation in a tight loop. It is not a replacement for Sonnet on simple tasks — Sonnet remains 10x cheaper.
+Fast Mode is worthwhile when response time has direct business value: live demo, intensive pair programming, mechanical code generation in a tight loop. It is not a replacement for Sonnet on simple tasks: Sonnet remains 10x cheaper.
 
 **Relevant:**
 - Repetitive boilerplate generation in an interactive session
@@ -35,11 +35,11 @@ Fast Mode is worthwhile when response time has direct business value: live demo,
 - Simple tasks covered by Sonnet or Haiku
 - Tight API budgets
 
-## Fast Mode via API (Opus 4.6 / 4.7)
+## Fast Mode via API (Opus 4.8)
 
 ```python
 response = client.messages.create(
-    model="claude-opus-4-7",  # or claude-opus-4-6
+    model="claude-opus-4-8",
     speed="fast",
     extra_headers={
         "anthropic-beta": "fast-mode-2026-02-01"
@@ -77,13 +77,11 @@ output_config={"effort": "medium"}  # low|medium|high|max
 
 `budget_tokens` remains functional on Opus 4.5 but is deprecated on 4.6. Migrate to `effort` for new pipelines.
 
-## Summary of Opus 4.6 / 4.7 Changes
+## Summary of Opus 4.6 Changes
 
 | Feature | Status |
 |---------|--------|
-| `assistant-prefill` | Removed (4.6+) |
+| `assistant-prefill` | Removed |
 | `budget_tokens` | Deprecated (replaced by `effort`) |
 | Fast Mode | New (`speed: "fast"`) |
 | Adaptive Thinking | New (replaces opt-in thinking) |
-| Opus 4.7 (`claude-opus-4-7`) | Most powerful model; `xhigh` effort only available here |
-| 1M context utilization | Fixed in v2.1.117 for Opus 4.7 |

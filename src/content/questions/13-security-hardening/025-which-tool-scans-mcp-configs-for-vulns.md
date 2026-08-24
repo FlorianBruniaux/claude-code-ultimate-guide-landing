@@ -9,10 +9,10 @@ profiles:
 - pm
 correct: b
 options:
-  a: "mcp-fortress — a runtime protection dashboard"
-  b: "mcp-scan (npx mcp-scan) — backed by Snyk with 90-100% recall on known malicious skills"
-  c: "skills-ref validate — a skill spec compliance checker"
-  d: "Garak — an LLM vulnerability scanner by NVIDIA"
+  a: "mcp-fortress: a runtime protection dashboard"
+  b: "mcp-scan (npx mcp-scan): backed by Snyk with 90-100% recall on known malicious skills"
+  c: "skills-ref validate: a skill spec compliance checker"
+  d: "Garak: an LLM vulnerability scanner by NVIDIA"
 doc_reference:
   file: "guide/security/security-hardening.md"
   section: 1.2 Agent Skills Supply Chain Risks

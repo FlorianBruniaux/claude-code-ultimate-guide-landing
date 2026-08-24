@@ -7,10 +7,10 @@ profiles:
   - power
 correct: c
 options:
-  a: "Opus, effort: max — renaming at scale requires deep reasoning"
-  b: "Sonnet, effort: high — large scope requires careful analysis"
-  c: "Haiku, effort: low — mechanical find-replace, no design decisions"
-  d: "Sonnet, effort: medium — safe default for any multi-file operation"
+  a: "Opus, effort: max (renaming at scale requires deep reasoning)"
+  b: "Sonnet, effort: high (large scope requires careful analysis)"
+  c: "Haiku, effort: low (mechanical find-replace, no design decisions)"
+  d: "Sonnet, effort: medium (safe default for any multi-file operation)"
 doc_reference:
   file: guide/ultimate-guide.md
   section: 2.5 Model Selection & Thinking Guide

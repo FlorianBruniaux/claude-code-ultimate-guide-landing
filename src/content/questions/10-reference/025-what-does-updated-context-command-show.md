@@ -9,7 +9,7 @@ profiles:
 correct: b
 options:
   a: A list of all active MCP server connections with ping times
-  b: Actionable suggestions — context-heavy tools, memory bloat warnings, and optimization tips
+  b: "Actionable suggestions: context-heavy tools, memory bloat warnings, and optimization tips"
   c: The full session transcript compressed to a summary
   d: A breakdown of token usage by file type
 doc_reference:

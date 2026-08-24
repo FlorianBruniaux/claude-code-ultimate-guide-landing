@@ -6,10 +6,10 @@ profiles:
   - power
 correct: c
 options:
-  a: messages > system > tools — messages layer is always a hit, tools layer is always a miss
-  b: system > tools > messages — only system prompt hits reliably
-  c: tools > system > messages — tools and system layers are almost always hits, messages layer varies
-  d: tools > messages > system — all three layers hit equally often
+  a: messages > system > tools (messages layer is always a hit, tools layer is always a miss)
+  b: system > tools > messages (only system prompt hits reliably)
+  c: tools > system > messages (tools and system layers are almost always hits, messages layer varies)
+  d: tools > messages > system (all three layers hit equally often)
 doc_reference:
   file: guide/ultimate-guide.md
   section: Cost Optimization

@@ -209,7 +209,7 @@ export const GET: APIRoute = async () => {
               })),
             },
           },
-          // Author footer — bottom left
+          // Author footer, bottom left
           {
             type: 'div',
             props: {

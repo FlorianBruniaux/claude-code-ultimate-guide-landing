@@ -580,7 +580,7 @@ const jsonLd = [
   stroke: #555 !important;
 }
 
-/* Arrowhead markers — force gray fill so they're visible on light bg */
+/* Arrowhead markers, force gray fill so they're visible on light bg */
 .diagram-container :global(svg marker path),
 .diagram-container :global(svg marker polygon) {
   fill: #555 !important;
@@ -789,7 +789,7 @@ const jsonLd = [
 
     let currentNode: Element | null = null
 
-    // Event delegation on the SVG — mouseover bubbles reliably in SVG
+    // Event delegation on the SVG, since mouseover bubbles reliably in SVG
     svg.addEventListener('mouseover', (e) => {
       const node = (e.target as Element).closest('.node')
       if (node && node !== currentNode) {
@@ -809,7 +809,7 @@ const jsonLd = [
     svg.addEventListener('click', (e) => {
       const node = (e.target as Element).closest('.node')
       if (node) {
-        // Prevent native SVG <a> navigation — tooltip handles navigation
+        // Prevent native SVG <a> navigation, tooltip handles navigation
         if (node.closest('a[href]') || node.querySelector('a[href]')) {
           e.preventDefault()
         }

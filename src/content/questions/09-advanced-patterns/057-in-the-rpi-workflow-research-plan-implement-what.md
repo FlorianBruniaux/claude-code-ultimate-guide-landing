@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: Research produces NOTES.md, Plan produces SPEC.md, Implement produces code — Gate 1 is a code review
-  b: Research produces RESEARCH.md, Plan produces PLAN.md, Implement produces code — Gate 1 is a GO/NO-GO decision by the human before any planning begins
-  c: Research produces a prompt, Plan produces a task list, Implement produces a diff — Gate 1 is an automated test pass
-  d: All phases share a PROGRESS.md — gates are enforced by Claude automatically
+  a: "Research produces NOTES.md, Plan produces SPEC.md, Implement produces code: Gate 1 is a code review"
+  b: "Research produces RESEARCH.md, Plan produces PLAN.md, Implement produces code: Gate 1 is a GO/NO-GO decision by the human before any planning begins"
+  c: "Research produces a prompt, Plan produces a task list, Implement produces a diff: Gate 1 is an automated test pass"
+  d: "All phases share a PROGRESS.md: gates are enforced by Claude automatically"
 doc_reference:
   file: guide/workflows/rpi.md
   section: How the Gates Work

@@ -4,7 +4,7 @@ subtitle: "Structured approach to diagnosing and resolving errors"
 cardNumber: M21
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 121
 ---
 

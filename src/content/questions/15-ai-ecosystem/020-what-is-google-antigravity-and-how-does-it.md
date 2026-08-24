@@ -21,4 +21,4 @@ What is Google Antigravity and how does it differ from traditional IDEs?
 
 ---
 
-Google Antigravity is an agent-first IDE that inverts the traditional IDE model. In classic IDEs, the human drives and the AI assists. In Antigravity, the agent drives execution while the human reviews, approves, and steers. The human becomes the reviewer rather than the typist. This represents a paradigm shift from AI-assisted coding to AI-led coding with human oversight — the model that Claude Code's agentic mode already approximates.
+Google Antigravity is an agent-first IDE that inverts the traditional IDE model. In classic IDEs, the human drives and the AI assists. In Antigravity, the agent drives execution while the human reviews, approves, and steers. The human becomes the reviewer rather than the typist. This represents a paradigm shift from AI-assisted coding to AI-led coding with human oversight, the model that Claude Code's agentic mode already approximates.

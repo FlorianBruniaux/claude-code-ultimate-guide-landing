@@ -1,7 +1,7 @@
 /**
  * Glue: fetch a preloaded filesystem, spin up just-bash + the vendored
  * terminal UI, wire input handling. Loaded via dynamic import only when the
- * visitor opens a <details> playground — never on initial page load (the
+ * visitor opens a <details> playground, never on initial page load (the
  * just-bash browser bundle is ~333 KB gzip). Generic over which payload
  * URL and banner text it uses, so the same engine can back several
  * playgrounds (templates, security threat DB, CLI/settings reference)

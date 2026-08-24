@@ -1,52 +1,34 @@
 ---
 title: "Slash Commands"
-subtitle: "Create reusable custom commands"
+subtitle: "Manually triggered skills via /name (CC 2.1.3)"
 cardNumber: M09
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.3
+guideVersion: 3.41.0
 order: 109
 ---
+
+> **CC 2.1.3**: Custom "commands" now live in `.claude/skills/` with `disable-model-invocation: true`. The `/name` syntax and behavior are identical.
 
 ## Principle
 
 A slash command is a Markdown file that defines a workflow. Claude executes it as if it had received that text as a prompt, with the ability to pass dynamic arguments.
 
-> **CC 2.1.3:** Custom slash commands now live in `.claude/skills/` with `disable-model-invocation: true`. The old `.claude/commands/` directory is no longer used for new projects.
-
 ## File locations
 
 ```
-.claude/skills/              # Project skills (team) — since CC 2.1.3
-├── commit/
-│   └── SKILL.md             → /commit
-├── review-pr/
-│   └── SKILL.md             → /review-pr
+.claude/skills/          # Project commands (team)
+├── commit.md              → /commit
+├── review-pr.md           → /review-pr
 └── tech/
-    └── deploy/
-        └── SKILL.md         → /tech:deploy
+    └── deploy.md          → /tech:deploy
 
-~/.claude/skills/            # Global skills (personal)
-├── release/
-│   └── SKILL.md             → /release
-└── sync/
-    └── SKILL.md             → /sync
+~/.claude/skills/        # Global commands (personal)
+├── release.md             → /release
+└── sync.md                → /sync
 ```
 
-Global skills are available in all sessions, regardless of the project.
-
-## SKILL.md frontmatter for user-invocable skills
-
-```yaml
----
-name: commit
-description: Generate a conventional commit from staged changes
-allowed-tools: [Read, Bash]
-disable-model-invocation: true
----
-```
-
-The `disable-model-invocation: true` flag is what makes a skill user-only — it prevents the model from auto-loading it based on context matching.
+Global commands are available in all sessions, regardless of the project.
 
 ## Invocation and arguments
 
@@ -56,7 +38,7 @@ The `disable-model-invocation: true` flag is what makes a skill user-only — it
 /release minor             # Version bump
 ```
 
-In the Markdown body, arguments are accessible via variables:
+In the Markdown file, arguments are accessible via variables:
 
 ```markdown
 Deploy to environment: $ARGUMENTS[0]
@@ -87,27 +69,14 @@ What this command does in one sentence.
 Description of the expected result.
 ```
 
-## Native commands (built-in since recent versions)
+## Recent native commands
 
-| Command | Available since | Purpose |
-|---------|----------------|---------|
-| `/usage` | v2.1.118 | Token usage + per-model cost breakdown |
-| `/cost` | v2.1.118 | *(alias for `/usage`)* |
-| `/stats` | v2.1.118 | *(alias for `/usage`)* |
-| `/recap` | v2.1.108 | Session summary |
-| `/undo` | v2.1.108 | *(alias for `/rewind`)* return to a checkpoint |
-| `/tui [default\|fullscreen]` | v2.1.110 | Pick the terminal renderer and relaunch into it |
-| `/focus` | v2.1.110 | Focus view: last prompt, tool-call summary, final response (fullscreen only) |
-| `/ultrareview` | v2.1.114 | Multi-agent cloud review, now an alias of `/code-review ultra` |
-| `/fewer-permission-prompts` | v2.1.111 | Propose a read-only allowlist from transcripts (shipped as `/less-permission-prompts`) |
-| `/effort` | v2.1.111 | Effort level: low/medium/high/xhigh/max/ultracode |
-| `/proactive` | v2.1.105 | *(alias for `/loop`)* rerun a prompt on repeat |
-| `/code-review [level]` | v2.1.152 | Review the diff for correctness bugs; `--fix` applies them |
-| `/doctor` | v2.1.205 | Full setup checkup (install, settings, hooks, `CLAUDE.md` bloat) |
+| Command | Usage |
+|---------|-------|
+| `/goal [condition]` | Autonomous multi-turn mode: Claude works until the condition is met, with a live elapsed/turns/tokens overlay (v2.1.139) |
+| `/scroll-speed` | Interactive slider to tune mouse wheel scroll speed with live preview (v2.1.139) |
 
-The complete list of ~100 built-in commands lives at [code.claude.com/docs/en/commands](https://code.claude.com/docs/en/commands).
-
-## Useful custom skills (user-invocable) to create
+## Useful commands to create
 
 | Command | Usage |
 |---------|-------|
@@ -117,16 +86,16 @@ The complete list of ~100 built-in commands lives at [code.claude.com/docs/en/co
 | `/sync` | Multi-file consistency check |
 | `/security-check` | Quick config scan |
 
-## Skill (user) vs Skill (auto) vs Agent
+## Command vs Skill vs Agent
 
 | Mechanism | When to use |
 |-----------|-------------|
-| **Skill (user-invocable)** | One-off workflow, procedure to follow — `disable-model-invocation: true` |
-| **Skill (model-invocable)** | Reusable knowledge + embedded resources — auto-loads on context match |
+| **Command** | One-off workflow, procedure to follow |
+| **Skill** | Reusable knowledge + embedded resources |
 | **Agent** | Recurring specialist with own memory |
 
-A user-invocable skill cannot embed additional reference files without a skill folder — for that, create a full skill directory with `SKILL.md` plus resource files. A skill has no persistent memory — for that, use an agent.
+A command cannot embed additional reference files (use a skill for that). A command has no persistent memory (use an agent for that).
 
 ## Practical tips
 
-One skill, one responsibility. As soon as a skill does two distinct things, split it. Name with an action verb first (`commit`, `release`, `sync`) so that the intent is immediately readable in the list of available commands.
+One command, one responsibility. As soon as a command does two distinct things, split it. Name with an action verb first (`commit`, `release`, `sync`) so that the intent is immediately readable in the list of available commands.

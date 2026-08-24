@@ -16,8 +16,8 @@ doc_reference:
   anchor: "#agentsmd-for-compound-learning"
 ---
 
-What does research show about AGENTS.md Compound Learning — specifically human-curated vs LLM-generated updates?
+What does research show about AGENTS.md Compound Learning, specifically human-curated vs LLM-generated updates?
 
 ---
 
-AGENTS.md Compound Learning research shows a stark divergence: human-curated updates to AGENTS.md (based on real session feedback and corrections) produce a +4% improvement in agent performance across benchmark tasks. LLM-auto-generated AGENTS.md updates produce -3% performance regression and +20% cost increase because auto-generated rules tend to over-specify, conflict, or add noise. Implication: invest human review time in AGENTS.md/CLAUDE.md maintenance — it compounds.
+AGENTS.md Compound Learning research shows a stark divergence: human-curated updates to AGENTS.md (based on real session feedback and corrections) produce a +4% improvement in agent performance across benchmark tasks. LLM-auto-generated AGENTS.md updates produce -3% performance regression and +20% cost increase because auto-generated rules tend to over-specify, conflict, or add noise. Implication: invest human review time in AGENTS.md/CLAUDE.md maintenance. It compounds.

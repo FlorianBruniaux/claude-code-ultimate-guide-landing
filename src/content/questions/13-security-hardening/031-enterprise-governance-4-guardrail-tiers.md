@@ -7,10 +7,10 @@ profiles:
 - power
 correct: b
 options:
-  a: Bronze, Silver, Gold, Platinum — scaling by team size only
-  b: Starter, Standard, Strict, Regulated — scaling by compliance requirements and production exposure
-  c: Basic, Advanced, Enterprise, Government — scaling by plan tier
-  d: Dev, Staging, Production, Compliance — mirroring deployment environments
+  a: "Bronze, Silver, Gold, Platinum: scaling by team size only"
+  b: "Starter, Standard, Strict, Regulated: scaling by compliance requirements and production exposure"
+  c: "Basic, Advanced, Enterprise, Government: scaling by plan tier"
+  d: "Dev, Staging, Production, Compliance: mirroring deployment environments"
 doc_reference:
   file: guide/security/enterprise-governance.md
   section: Guardrail Tiers

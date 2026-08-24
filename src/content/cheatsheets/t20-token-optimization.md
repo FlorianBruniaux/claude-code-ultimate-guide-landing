@@ -4,7 +4,7 @@ subtitle: "Reducing token consumption without losing quality"
 cardNumber: T20
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 20
 ---
 

@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: Claude reads only the last 20 user messages — older context is lost permanently; the fix is /save
-  b: Cache matching looks back approximately 20 message blocks — long sessions lose cache efficiency as early blocks fall outside the window; the fix is /compact
-  c: Cache is invalidated after 20 tool calls — agents must pause every 20 calls; the fix is to reduce tool usage
-  d: After 20 turns the session context is truncated — the fix is to start a new session
+  a: Claude reads only the last 20 user messages (older context is lost permanently; the fix is /save)
+  b: Cache matching looks back approximately 20 message blocks (long sessions lose cache efficiency as early blocks fall outside the window; the fix is /compact)
+  c: Cache is invalidated after 20 tool calls (agents must pause every 20 calls; the fix is to reduce tool usage)
+  d: After 20 turns the session context is truncated (the fix is to start a new session)
 doc_reference:
   file: guide/ultimate-guide.md
   section: Cost Optimization

@@ -4,7 +4,7 @@ subtitle: "Passing context between agents and managing trust levels"
 cardNumber: M17
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 117
 ---
 
@@ -71,6 +71,19 @@ Agent Teams use `.claude/tasks/` as a shared registry. Each agent claims a task 
 ```
 
 This mechanism avoids duplicate work conflicts without centralized coordination. The orchestrator can monitor `.pending` files to know what remains to be processed.
+
+## Iterative Retrieval (v3.38.0)
+
+Sub-agents lacking sufficient context should retrieve information in a structured way. Limit to 3 retrieval cycles before escalating to the orchestrator.
+
+Structure each delegation in two clear parts:
+
+```
+WHY — context + task intent
+WHAT — precise instructions + expected deliverables
+```
+
+A sub-agent that receives both parts converges faster and asks fewer unnecessary questions.
 
 ## Typical communication flow
 

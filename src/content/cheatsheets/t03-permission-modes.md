@@ -1,26 +1,27 @@
 ---
 title: "Permission Modes"
-subtitle: "The 5 Claude Code permission modes ranked: Default, Auto-accept edits, Auto-accept all, Full bypass, Auto"
+subtitle: "Tool access control, from safest to most permissive"
 cardNumber: T03
 category: Technical
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 3
 ---
 
 ## Available Modes
 
-| Mode | Flag | Recommended use |
-|------|------|-----------------|
-| **Manual** (`default`) | _(none)_ | Daily development |
-| **Auto-accept edits** (`acceptEdits`) | `Shift+Tab` | Code reviews |
-| **Plan** (`plan`) | `Shift+Tab x2` or `/plan` | Analysis without modification |
-| **Auto** (`auto`, AI classifier) | `permissions.defaultMode: "auto"` | Long tasks, fewer interruptions |
-| **Don't ask** (`dontAsk`) | `--permission-mode dontAsk` | CI, only pre-approved tools run |
-| **Full bypass** (`bypassPermissions`) | `--dangerously-skip-permissions` | Headless CI/CD, sandboxed |
-| **Fewer prompts** | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
+| Mode | Canonical name | Activation | Recommended use |
+|------|---------------|-----------|-----------------|
+| **Default** | `default` | _(none)_ | Daily development |
+| **Auto-accept edits** | `acceptEdits` | `Shift+Tab` | Code reviews |
+| **Plan** | `plan` | `Shift+Tab x2` or `/plan` | Analysis without modification |
+| **Auto (AI classifier)** | `auto` | `permissions.defaultMode: "auto"` | Long tasks, fewer interruptions |
+| **Full bypass** | `bypassPermissions` | `--dangerously-skip-permissions` | Headless CI/CD, sandboxed |
+| **Fewer prompts** | — | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
 
-**Note (v2.1.121):** `--dangerously-skip-permissions` now also skips validation of the `.claude/` directory (agents, commands, hooks). In hardened environments, verify `.claude/` contents before granting this flag.
+**CLI activation:** `claude --permission-mode <mode>` accepts `default`, `plan`, `acceptEdits`, `bypassPermissions`. **Persistent activation:** `permissions.defaultMode` key in `settings.json`.
+
+**Note:** `--dangerously-skip-permissions` also skips the `.claude/` directory (v2.1.121). The `auto` mode relies on a classifier model that evaluates each tool call before execution, less friction, not a security boundary.
 
 ## Tool Whitelist
 
@@ -58,10 +59,10 @@ claude --allowedTools "Read,Edit,Bash(git*)"
 
 Permissions accumulate and are inherited in this order:
 
-1. `~/.claude/settings.json` — global user
-2. `.claude/settings.json` — project (shared)
-3. `.claude/settings.local.json` — project (local, gitignored)
-4. CLI flags — session only
+1. `~/.claude/settings.json`: global user
+2. `.claude/settings.json`: project (shared)
+3. `.claude/settings.local.json`: project (local, gitignored)
+4. CLI flags: session only
 
 ## Glob Patterns for Bash
 
@@ -78,8 +79,8 @@ Permissions accumulate and are inherited in this order:
 
 ## Best Practices
 
-**CI/CD** — Always use `--dangerously-skip-permissions` with a sandboxed environment (Docker, ephemeral container). Never on a shared production machine.
+**CI/CD**: Always use `--dangerously-skip-permissions` with a sandboxed environment (Docker, ephemeral container). Never on a shared production machine.
 
-**Sensitive projects** — Restrict Bash tools with precise globs in `.claude/settings.json`. Commit this file so the whole team uses the same constraints.
+**Sensitive projects**: Restrict Bash tools with precise globs in `.claude/settings.json`. Commit this file so the whole team uses the same constraints.
 
-**Audit** — Claude's actions are logged in `~/.claude/logs/`. Verifiable at any time.
+**Audit**: Claude's actions are logged in `~/.claude/logs/`. Verifiable at any time.

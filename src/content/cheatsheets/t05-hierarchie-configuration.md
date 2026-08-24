@@ -1,10 +1,10 @@
 ---
 title: "Configuration Hierarchy"
-subtitle: "Where to configure what — from global to local"
+subtitle: "Where to configure what, from global to local"
 cardNumber: T05
 category: Technical
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 5
 ---
 
@@ -33,7 +33,7 @@ subfolder/CLAUDE.md          (3 - local rules)
 
 Rules at a lower level **supplement** rather than replace higher levels.
 
-## settings.json — Structure
+## settings.json: Structure
 
 ```json
 {
@@ -48,7 +48,7 @@ Rules at a lower level **supplement** rather than replace higher levels.
 }
 ```
 
-## CLAUDE.md — Best Practices
+## CLAUDE.md: Best Practices
 
 ```markdown
 # Project Conventions
@@ -66,22 +66,13 @@ Rules at a lower level **supplement** rather than replace higher levels.
 
 ## What Goes Where
 
-**Global CLAUDE.md** — Personal preferences, code style, universal conventions.
+**Global CLAUDE.md**: personal preferences, code style, universal conventions.
 
-**Project CLAUDE.md** — Architecture, stack, team conventions, build/test commands.
+**Project CLAUDE.md**: architecture, stack, team conventions, build/test commands.
 
-**Project settings.json** — Tool permissions, default model, dev environment variables.
+**Project settings.json**: tool permissions, default model, dev environment variables.
 
-**settings.local.json** — Personal overrides that should not affect the team.
-
-## Persistent configuration via `/config` (v2.1.119)
-
-`/config` lets you view and change settings inside a session, with the option to persist them to `settings.json`. Changes made via `/config` follow the same override precedence: a project-level setting will override a global one, and a `settings.local.json` entry will override `settings.json`.
-
-```
-/config              # Open interactive config editor
-/config model        # Change default model (persists to settings.json)
-```
+**settings.local.json**: personal overrides that should not affect the team.
 
 ## Required .gitignore
 

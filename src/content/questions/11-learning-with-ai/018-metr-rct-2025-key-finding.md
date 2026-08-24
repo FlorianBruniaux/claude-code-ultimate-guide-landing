@@ -21,5 +21,5 @@ What was the key finding of the METR Experienced Developer RCT (2025, arXiv:2507
 
 ---
 
-The METR RCT studied 16 experienced developers across 246 issues on large codebases (1M+ lines). The counterintuitive finding: AI tools made these experienced developers **19% slower** — yet developers **perceived themselves as 20% faster** (a 39-point perception gap). This is considered the strongest evidence for skill atrophy risk in experienced developers working on large, familiar codebases. The study highlights the difference between performance on isolated tasks (where AI helps) vs. navigating complex existing systems (where familiarity matters more).
+The METR RCT studied 16 experienced developers across 246 issues on large codebases (1M+ lines). The counterintuitive finding: AI tools made these experienced developers **19% slower**, yet developers **perceived themselves as 20% faster** (a 39-point perception gap). This is considered the strongest evidence for skill atrophy risk in experienced developers working on large, familiar codebases. The study highlights the difference between performance on isolated tasks (where AI helps) vs. navigating complex existing systems (where familiarity matters more).
 ---

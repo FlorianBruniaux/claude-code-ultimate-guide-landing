@@ -4,7 +4,7 @@ subtitle: "Understanding the attack vectors specific to Claude Code"
 cardNumber: C08
 category: Design
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 208
 ---
 
@@ -36,16 +36,8 @@ Claude Code is an agent with access to the filesystem, Bash commands, and the in
 | CVE-2025-54135 | High | RCE via prompt injection in Cursor |
 | ADVISORY-CC-2026-001 | High | Sandbox bypass, patch v2.1.34+ |
 | CVE-2026-0755 | Critical (9.8) | RCE in gemini-mcp-tool (no patch) |
-| CVE-2026-30623 | High | LiteLLM authentication bypass |
-| CVE-2026-40933 | High | Flowise remote code execution |
-| CVE-2026-33224 | High | Bisheng arbitrary file read |
-| CVE-2025-69256 | Medium | Serverless MCP privilege escalation |
-| CVE-2026-6494 | Medium | Red Hat AAP MCP config leak |
-| **CVE-2026-33032** | **Critical (9.8)** | **nginx-ui MCPwn — actively exploited, RCE via prompt injection** |
 
 **Immediate action if you are on v2.1.33 or earlier:** update to v2.1.34+ to fix the sandbox bypass.
-
-**Threat DB (v2.15.0):** 28+ CVEs tracked, 655 malicious skill patterns identified. Update regularly with `/update-threat-db` if you use the security audit commands.
 
 ## Defense in depth
 
@@ -59,7 +51,7 @@ Minimal permissions (settings.json)
         + Sandbox / ephemeral environment
 ```
 
-**Basic permissions rule:** grant only what the task requires. For a read/analysis task, `allowedTools: ["Read", "Grep", "Glob"]`. No Bash, no Write.
+**Basic permissions rule:** grant only what the task requires. For a read/analysis task, `permissions.allow: ["Read", "Grep", "Glob"]`. No Bash, no Write.
 
 ## Audit with JSONL logs
 

@@ -8,7 +8,7 @@ profiles:
 correct: b
 options:
   a: Teams smaller than 5 developers who need a simple process
-  b: Feature teams with parallel delivery needs — multiple features developed simultaneously
+  b: Feature teams with parallel delivery needs, multiple features developed simultaneously
   c: Projects requiring detailed UML documentation and design models
   d: Enterprise teams with more than 50 developers
 doc_reference:
@@ -21,4 +21,4 @@ What is the primary criterion for choosing FDD (Feature-Driven Development) with
 
 ---
 
-FDD's primary criterion is feature teams with parallel delivery needs — multiple features being developed simultaneously across the team. FDD's per-feature iteration (Design → Build) maps well onto Claude Code's session-based workflow, where each feature gets a dedicated planning and implementation session. The key signal is "parallel delivery", not team size. FDD is less suited to projects where features have deep interdependencies requiring sequential development.
+FDD's primary criterion is feature teams with parallel delivery needs, multiple features being developed simultaneously across the team. FDD's per-feature iteration (Design → Build) maps well onto Claude Code's session-based workflow, where each feature gets a dedicated planning and implementation session. The key signal is "parallel delivery", not team size. FDD is less suited to projects where features have deep interdependencies requiring sequential development.

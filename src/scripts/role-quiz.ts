@@ -1,5 +1,5 @@
 /**
- * Role Quiz — Client-side logic
+ * Role Quiz: client-side logic
  * Scoring, screen transitions, scroll to role cards, event listeners
  */
 

@@ -20,4 +20,4 @@ What does the `argument-hint` frontmatter field do in a custom command or skill 
 
 ---
 
-`argument-hint` is a frontmatter field that controls what placeholder text appears in the slash command picker when a command or skill accepts `$ARGUMENTS`. When a user types the command name, the picker shows the hint as a visual guide to the expected argument format. Example: `argument-hint: "<env> [--skip-tests] [--dry-run]"`. This field has no effect on argument validation or default values — it is purely a UI affordance for discoverability.
+`argument-hint` is a frontmatter field that controls what placeholder text appears in the slash command picker when a command or skill accepts `$ARGUMENTS`. When a user types the command name, the picker shows the hint as a visual guide to the expected argument format. Example: `argument-hint: "<env> [--skip-tests] [--dry-run]"`. This field has no effect on argument validation or default values. It is purely a UI affordance for discoverability.

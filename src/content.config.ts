@@ -36,8 +36,8 @@ const docs = defineCollection({
   schema: docsSchema({
     extend: z.object({
       datePublished: z.string().optional(),
-      // Populated from real GSC top-query data per page, not guessed —
-      // see the content_brief-driven pass tracked as a follow-up to this sync.
+      // Populated from real GSC top-query data per page, not guessed.
+      // See the content_brief-driven pass tracked as a follow-up to this sync.
       keywords: z.array(z.string()).optional(),
     }),
   }),

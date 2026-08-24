@@ -4,7 +4,7 @@ subtitle: "Resuming a session right where you left off"
 cardNumber: M03
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 103
 ---
 
@@ -15,18 +15,16 @@ order: 103
 claude --continue        # or: claude -c
 
 # Choose a specific session (interactive picker)
-claude --resume          # or: claude -r — now 67% faster (v2.1.116)
+claude --resume          # or: claude -r
 
 # Resume by ID
 claude --resume abc123def
 
-# Resume from a PR — supports GitHub, GitLab, Bitbucket, GitHub Enterprise (v2.1.119)
+# Resume from a GitHub PR (v2.1.49+)
 claude --from-pr 123
 ```
 
 Sessions are stored in `~/.claude/projects/<encoded-path>/` as JSONL files.
-
-**PR URL auto-populated (v2.1.122):** when working inside a git repo, Claude Code automatically reads the `prUrlTemplate` from `settings.json` (or falls back to the remote URL) to pre-fill the PR link. No manual copy-paste needed for GitHub Enterprise or custom forges.
 
 ## Searching Sessions
 
@@ -75,10 +73,6 @@ Sub-agent sessions (delegated tasks) are stored in a `subagents/` subfolder. The
 | `session-search.sh` | Fast bash search | Copy from `examples/scripts/` |
 | `cc-sessions.py` | Incremental index, advanced filters | Python, same folder |
 | `claude-code-viewer` | Read-only web browser | `npx @kimuson/claude-code-viewer` |
-
-## In-session continuity: `/recap`
-
-`/recap` (v2.1.108) generates a concise summary of everything done in the current session. Use it before closing to capture decisions worth noting in CLAUDE.md, or to draft a commit message.
 
 ## Recommended Pattern
 

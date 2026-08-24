@@ -1,10 +1,10 @@
 ---
-title: "Native Sandbox — Architecture"
+title: "Native Sandbox: Architecture"
 subtitle: "How Claude Code isolates its operations at the OS level"
 cardNumber: T16
 category: Technical
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 16
 ---
 
@@ -53,25 +53,17 @@ To restrict reading of sensitive directories (SSH, cloud credentials), use `perm
 
 All network connections from sandboxed commands go through a SOCKS5 proxy running outside the sandbox. The proxy applies domain-based filtering without inspecting traffic content (no deep packet inspection).
 
-Configuration: `deny` mode (block everything except allowlist) or `allow` mode (allow everything except blocklist).
+Configuration: allowlist via `sandbox.network.allowedDomains` (everything else is blocked) or blocklist via `sandbox.network.deniedDomains` (allow everything except listed domains).
 
 ```json
 {
   "sandbox": {
     "network": {
-      "policy": "deny",
-      "allowedDomains": ["api.anthropic.com", "*.npmjs.org", "github.com"],
-      "deniedDomains": ["evil.com", "*.untrusted.io"]
+      "allowedDomains": ["api.anthropic.com", "*.npmjs.org", "github.com"]
     }
   }
 }
 ```
-
-`deniedDomains` (v2.1.116) is useful in `allow` mode to block specific domains without locking down all traffic. Both `allowedDomains` and `deniedDomains` can be combined.
-
-## Native binary spawning per platform (v2.1.114)
-
-The sandbox now launches real OS-native processes rather than wrapping commands in container runtimes. On macOS, this means actual Seatbelt-sandboxed processes; on Linux, real bubblewrap namespaces. The overhead is at the OS primitive level only, not container startup. This matters for short-lived commands (lint, format) where cold-start cost previously dominated.
 
 ## Two operating modes
 
@@ -87,6 +79,11 @@ To completely disable the escape hatch in critical environments:
 
 ```json
 {
-  "sandbox": { "allowUnsandboxedCommands": false }
+  "sandbox": {
+    "allowUnsandboxedCommands": false,
+    "failIfUnavailable": true
+  }
 }
 ```
+
+`failIfUnavailable: true` (v2.1.78+): causes the session to fail if the sandbox cannot start, rather than continuing without isolation. Recommended for production environments.

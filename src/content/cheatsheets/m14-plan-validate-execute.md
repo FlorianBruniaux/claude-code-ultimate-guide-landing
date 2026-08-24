@@ -4,13 +4,13 @@ subtitle: "The 3-phase workflow for complex tasks under control"
 cardNumber: M14
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 114
 ---
 
 ## Overview
 
-Plan-Validate-Execute is a three-phase pipeline that applies as soon as a task touches more than five files or two directories. The goal: never execute without having validated an explicit plan. Boris Cherny (Head of Claude Code at Anthropic) starts 80% of his tasks in Plan Mode for this reason — execution is almost always correct on the first try when the plan is solid.
+Plan-Validate-Execute is a three-phase pipeline that applies as soon as a task touches more than five files or two directories. The goal: never execute without having validated an explicit plan. Boris Cherny (Head of Claude Code at Anthropic) starts 80% of his tasks in Plan Mode for this reason. Execution is almost always correct on the first try when the plan is solid.
 
 ## Phase 1: Plan
 
@@ -41,7 +41,7 @@ Before approving the plan, submit it to a critical review. Two approaches:
 
 **Adversarial agent**: delegate the critique to a sub-agent whose mission is to find flaws in the proposed plan. Ask explicitly: "What is the main risk of this plan? What could go wrong?"
 
-Validation is not optional on complex tasks — it is the safety net.
+On complex tasks, validation is the safety net, not an optional step.
 
 ## Phase 3: Execute
 

@@ -20,4 +20,4 @@ What is ${CLAUDE_PLUGIN_DATA} used for in Claude Code skills?
 
 ---
 
-${CLAUDE_PLUGIN_DATA} provides persistent storage for skills — a directory path that persists across sessions and is not wiped between runs. Skills can use it to store learned preferences, cached lookups, counters, or any state that should survive session restarts. Contrast with /tmp (ephemeral) or the project directory (pollutes repo). Example: a skill that tracks how many times it has been run, or caches expensive API results.
+${CLAUDE_PLUGIN_DATA} provides persistent storage for skills: a directory path that persists across sessions and is not wiped between runs. Skills can use it to store learned preferences, cached lookups, counters, or any state that should survive session restarts. Contrast with /tmp (ephemeral) or the project directory (pollutes repo). Example: a skill that tracks how many times it has been run, or caches expensive API results.

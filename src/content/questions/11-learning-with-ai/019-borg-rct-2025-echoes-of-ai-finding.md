@@ -21,5 +21,5 @@ What was the key finding of the Borg et al. "Echoes of AI" RCT (2025, arXiv:2507
 
 ---
 
-The "Echoes of AI" study (151 participants, 95% professional developers) found AI users were **30.7% faster** (median), with habitual users reaching ~55.9% faster. Critically, Phase 2 tested maintainability: downstream developers evolving AI-generated code showed **no significant difference** in evolution time or code quality vs. human-generated code. This is the first RCT to explicitly target AI code maintainability. The study was co-authored by Dave Farley ("Continuous Delivery") — note it is an arXiv preprint, not yet published in peer-reviewed proceedings.
+The "Echoes of AI" study (151 participants, 95% professional developers) found AI users were **30.7% faster** (median), with habitual users reaching ~55.9% faster. Critically, Phase 2 tested maintainability: downstream developers evolving AI-generated code showed **no significant difference** in evolution time or code quality vs. human-generated code. This is the first RCT to explicitly target AI code maintainability. The study was co-authored by Dave Farley ("Continuous Delivery"). It is an arXiv preprint, not yet published in peer-reviewed proceedings.
 ---

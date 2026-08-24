@@ -1,10 +1,10 @@
 ---
-title: "Settings.json — Complete Structure"
-subtitle: "Every settings.json key explained: permissions, hooks, env, model, plus the 3-file scope hierarchy"
+title: "Settings.json: Complete Structure"
+subtitle: "All configuration keys and their scope"
 cardNumber: T06
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 6
 ---
 
@@ -24,16 +24,23 @@ order: 6
 
 ```json
 {
-  "model": "claude-sonnet-4-5",
+  "model": "claude-sonnet-5",
   "permissions": {
     "allow": ["Bash(git *)", "Bash(pnpm *)", "Read"],
     "deny":  ["Bash(rm -rf *)", "Write(file_path:*.env*)"],
-    "ask":   ["Bash(npm publish)"]
+    "ask":   ["Bash(npm publish)"],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": ["../shared-libs/"]
   },
   "env": {
     "NODE_ENV": "development",
     "LOG_LEVEL": "debug"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "outputStyle": "Explanatory",
   "hooks": {
     "PostToolUse": [{
       "matcher": "Edit|Write",
@@ -52,18 +59,15 @@ order: 6
 | `permissions.allow` | Auto-approved tools |
 | `permissions.deny` | Blocked tools |
 | `permissions.ask` | Tools requiring confirmation |
+| `permissions.defaultMode` | Default mode (default/acceptEdits/plan/bypassPermissions) |
+| `permissions.additionalDirectories` | Additional accessible directories |
 | `env` | Injected environment variables |
 | `hooks` | Scripts triggered on events |
+| `statusLine` | Custom status line |
+| `outputStyle` | Communication style (Default/Explanatory/Learning) |
 | `spinnerVerbs` | Words in the loading spinner |
 | `spinnerTipsOverride` | Tips displayed during processing |
 | `enableAllProjectMcpServers` | Enables all project MCP servers |
-| `mcpServers.<name>.alwaysLoad` | Load this MCP server automatically every session (v2.1.121) |
-| `blockedMarketplaces.hostPattern` | Block MCP marketplace by host pattern (v2.1.119) |
-| `blockedMarketplaces.pathPattern` | Block MCP marketplace by path pattern (v2.1.119) |
-| `prUrlTemplate` | Custom PR URL template, e.g. for GitHub Enterprise (v2.1.122) |
-| `sandbox.network.deniedDomains` | Domains blocked from sandbox network access (v2.1.116) |
-
-**Bedrock users:** set `ANTHROPIC_BEDROCK_SERVICE_TIER` env var to control service tier when routing through AWS Bedrock (v2.1.122).
 
 ## Spinner customization
 
@@ -80,7 +84,7 @@ order: 6
 }
 ```
 
-`mode: "add"` extends the default list rather than replacing it. These keys have no functional impact, only cosmetic.
+`mode: "append"` extends the default list rather than replacing it. These keys have no functional impact, only cosmetic.
 
 ## What should stay in .gitignore
 
@@ -90,4 +94,4 @@ order: 6
 .env.local                    # Secrets
 ```
 
-Files to commit (`settings.json`, `agents/`, `commands/`, `hooks/`, `rules/`) represent the shared team configuration. Never include API keys or tokens in these files.
+Files to commit (`settings.json`, `agents/`, `skills/`, `hooks/`, `rules/`) represent the shared team configuration. Never include API keys or tokens in these files.

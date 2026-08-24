@@ -1,10 +1,10 @@
 ---
-title: "Grepai — Semantic Search"
+title: "Grepai: Semantic Search"
 subtitle: "Finding code by intent, not by regex"
 cardNumber: T14
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 14
 ---
 

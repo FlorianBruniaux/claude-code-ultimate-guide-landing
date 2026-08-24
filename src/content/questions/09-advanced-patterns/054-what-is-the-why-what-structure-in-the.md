@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: WHY = task description, WHAT = output format — maximum 5 cycles
-  b: WHY = the problem being solved, WHAT = the specific task — maximum 3 cycles
-  c: WHY = reason for spawning the agent, WHAT = files to read — maximum 2 cycles
-  d: WHY = business rationale, WHAT = architecture decision — maximum 1 cycle
+  a: WHY = task description, WHAT = output format (maximum 5 cycles)
+  b: WHY = the problem being solved, WHAT = the specific task (maximum 3 cycles)
+  c: WHY = reason for spawning the agent, WHAT = files to read (maximum 2 cycles)
+  d: WHY = business rationale, WHAT = architecture decision (maximum 1 cycle)
 doc_reference:
   file: guide/workflows/agent-teams.md
   section: 9. Iterative Retrieval for Sub-Agents

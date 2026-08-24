@@ -22,4 +22,4 @@ How many unauthenticated MCP servers were discovered exposed on the internet by 
 
 ---
 
-Bitsight TRACE's continuous scanning found approximately 1,000 unauthenticated MCP servers exposed on the internet. These exposed servers provided access to Kubernetes clusters, CRM systems, WhatsApp messaging, and arbitrary shell execution — all without any authentication. This highlights the critical importance of never exposing MCP servers to the internet without proper authentication.
+Bitsight TRACE's continuous scanning found approximately 1,000 unauthenticated MCP servers exposed on the internet. These exposed servers provided access to Kubernetes clusters, CRM systems, WhatsApp messaging, and arbitrary shell execution, all without any authentication. This highlights the critical importance of never exposing MCP servers to the internet without proper authentication.

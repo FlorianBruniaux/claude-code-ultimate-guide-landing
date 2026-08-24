@@ -3,7 +3,7 @@
  *
  * just-bash's coreutils bundle (`just-bash/browser`) statically imports
  * `gunzipSync`/`gzipSync`/`constants` from `node:zlib` at module top level
- * to implement its `gzip`/`gunzip`/`zcat` commands — even though the
+ * to implement its `gzip`/`gunzip`/`zcat` commands, even though the
  * package's own docs describe those commands as browser-unsupported (see
  * "Browser Support" in the just-bash README). Vite/Rollup can't bundle a
  * real Node built-in for the client, so the build fails outright unless

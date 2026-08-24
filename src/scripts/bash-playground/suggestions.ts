@@ -5,7 +5,7 @@ export interface Suggestion {
 
 /**
  * Pinned commands shown above the prompt. Without these, a visitor who
- * lands on an empty shell doesn't know what to type — the single biggest
+ * lands on an empty shell doesn't know what to type, the single biggest
  * risk identified during design. Each one demonstrates the cross-file
  * search the static template cards can't do.
  */
@@ -21,7 +21,7 @@ export const EXAMPLES_SUGGESTIONS: Suggestion[] = [
 /**
  * threat-db.json is a single JSON file (converted from the guide repo's
  * threat-db.yaml at build time), so jq is the star here rather than
- * grep/find — a real live query against the CVE/campaign/technique
+ * grep/find, running a real live query against the CVE/campaign/technique
  * database instead of a static HTML table.
  */
 export const SECURITY_SUGGESTIONS: Suggestion[] = [

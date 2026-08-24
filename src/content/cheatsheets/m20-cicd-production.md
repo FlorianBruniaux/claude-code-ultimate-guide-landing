@@ -4,7 +4,7 @@ subtitle: "Using Claude Code in production with the right security guarantees"
 cardNumber: M20
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 120
 ---
 
@@ -57,8 +57,6 @@ Even in bypass mode, it is possible to limit available tools. A review agent onl
 | Implementation | Read, Edit, Write, Bash |
 
 The whitelist is configured via `--allowedTools` in CLI or `allowed_tools` in the GitHub action.
-
-**Note (v2.1.117):** on macOS and Linux, `Glob` and `Grep` are now backed by native `bfs` and `ugrep` binaries, approximately 40% faster. The tool names in your allowlist stay the same — no config change needed.
 
 ## Secrets in CI
 

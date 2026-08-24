@@ -4,7 +4,7 @@ subtitle: "The old and new task management systems"
 cardNumber: M07
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 107
 ---
 
@@ -35,7 +35,7 @@ Resume after /compact            → guaranteed persistence
 ## Enable and disable
 
 ```bash
-# Tasks API is enabled by default since v2.1.19
+# Tasks API is the default task system (since v2.1.142)
 claude
 
 # Force fallback to TodoWrite (rare)
@@ -71,6 +71,6 @@ When you migrate, update your project instructions so Claude automatically uses 
 
 TodoWrite will continue to work, but Anthropic's direction is clearly toward the Tasks API. New multi-agent coordination features are built exclusively on the Tasks API. Migrating now avoids a forced refactor later, on larger projects.
 
-## Auto-migration flag
+## Automatic activation
 
-Since v2.1.19, the `--task-manage` flag automatically activates the Tasks API for any operation involving more than three steps or two distinct directories. Handy for enforcing good habits without thinking about it.
+Since v2.1.142 the Tasks API is the default task system: Claude switches to `TaskCreate`/`TaskUpdate` on its own for multi-step work, no flag required. TodoWrite stays available behind `CLAUDE_CODE_ENABLE_TASKS=0`.

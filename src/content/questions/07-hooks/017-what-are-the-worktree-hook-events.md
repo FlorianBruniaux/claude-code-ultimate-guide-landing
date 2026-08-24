@@ -7,10 +7,10 @@ profiles:
 - power
 correct: c
 options:
-  a: WorktreeInit and WorktreeCleanup — fire at session start/end in a worktree
-  b: WorktreeOpen and WorktreeClose — fire when a worktree tab is opened/closed in VSCode
-  c: WorktreeCreate and WorktreeRemove — fire when an agent worktree is created or torn down (v2.1.50+)
-  d: WorktreeMount and WorktreeUnmount — fire when a worktree filesystem is mounted
+  a: WorktreeInit and WorktreeCleanup (fire at session start/end in a worktree)
+  b: WorktreeOpen and WorktreeClose (fire when a worktree tab is opened/closed in VSCode)
+  c: WorktreeCreate and WorktreeRemove (fire when an agent worktree is created or torn down, v2.1.50+)
+  d: WorktreeMount and WorktreeUnmount (fire when a worktree filesystem is mounted)
 doc_reference:
   file: guide/ultimate-guide.md
   section: Event Types

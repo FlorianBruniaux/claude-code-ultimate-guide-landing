@@ -21,5 +21,5 @@ How does native sandboxing differ between macOS and Linux in Claude Code?
 
 ---
 
-On **macOS**, native sandboxing uses **Seatbelt** (the built-in `sandbox-exec` system) — no installation required, works out of the box from v2.1.0+. On **Linux/WSL2**, it uses **bubblewrap** + **socat**, which must be installed manually (`sudo apt-get install bubblewrap socat` on Ubuntu/Debian). Native sandboxing is not yet available on WSL1 or Windows (planned). The `dangerouslyDisableSandbox` parameter allows incompatible tools (like `docker` or `watchman`) to escape the sandbox on a per-command basis with user approval.
+On **macOS**, native sandboxing uses **Seatbelt** (the built-in `sandbox-exec` system), no installation required, works out of the box from v2.1.0+. On **Linux/WSL2**, it uses **bubblewrap** + **socat**, which must be installed manually (`sudo apt-get install bubblewrap socat` on Ubuntu/Debian). Native sandboxing is not yet available on WSL1 or Windows (planned). The `dangerouslyDisableSandbox` parameter allows incompatible tools (like `docker` or `watchman`) to escape the sandbox on a per-command basis with user approval.
 ---

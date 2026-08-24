@@ -22,4 +22,4 @@ What is the Bug Escape Rate formula and what threshold signals a QA process prob
 
 ---
 
-Bug Escape Rate = bugs_in_prod / (bugs_before_prod + bugs_in_prod). Example: 4 prod bugs + 16 pre-prod bugs = 20% escape rate. Threshold: >20% means QA and review processes are consistently failing to catch issues before users see them. With AI-assisted development, this metric is worth watching closely — faster code generation combined with looser review can push Bug Escape Rate up even when absolute bug count stays flat. Pair with CFR segmented by AI vs manual code origin.
+Bug Escape Rate = bugs_in_prod / (bugs_before_prod + bugs_in_prod). Example: 4 prod bugs + 16 pre-prod bugs = 20% escape rate. Threshold: >20% means QA and review processes are consistently failing to catch issues before users see them. With AI-assisted development, this metric is worth watching closely. Faster code generation combined with looser review can push Bug Escape Rate up even when absolute bug count stays flat. Pair with CFR segmented by AI vs manual code origin.

@@ -4,7 +4,7 @@ subtitle: "The principles that make the difference between a good and a bad prom
 cardNumber: C02
 category: Design
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 202
 ---
 
@@ -44,7 +44,7 @@ The principle applies to types as well: if you have an existing `ApiResponse<T>`
 
 **Rhetorical questions:** "Can you refactor this function?" invites Claude to potentially answer "yes" then wait. Prefer the direct imperative: "Refactor this function."
 
-**Implicit constraints:** If tests must stay green, if public types must not change, if a specific library is forbidden — say it explicitly. Claude does not have access to your undocumented conventions.
+**Implicit constraints:** If tests must stay green, if public types must not change, if a specific library is forbidden, say it explicitly. Claude does not have access to your undocumented conventions.
 
 **Ambiguous scope:** "This file" without a reference, "the authentication" without specifying which module. Use absolute paths or function names.
 

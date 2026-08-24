@@ -215,7 +215,7 @@ const suggestionsJson = JSON.stringify(suggestions)
 </style>
 
 <style is:global>
-  /* Vendored lite-terminal DOM structure — see src/scripts/bash-playground/VENDORED.md.
+  /* Vendored lite-terminal DOM structure. See src/scripts/bash-playground/VENDORED.md.
      Colors adapted from just-bash's own globals.css to this site's fixed
      dark terminal chrome (the upstream demo switches light/dark via
      prefers-color-scheme; this terminal is always dark, matching McpDemo). */
@@ -246,7 +246,7 @@ const suggestionsJson = JSON.stringify(suggestions)
   /* Suggestion chips and the error message are injected via innerHTML at
      runtime (see the <script> above), so they never get Astro's scoped
      data-astro-cid-* attribute. Scoped <style> rules silently never match
-     them — these must live in this is:global block instead. */
+     them, these must live in this is:global block instead. */
   .suggestion-chip {
     font-family: var(--font-mono);
     font-size: 0.72rem;

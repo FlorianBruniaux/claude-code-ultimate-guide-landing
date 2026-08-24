@@ -20,5 +20,5 @@ In the ACE pipeline, what happens when canary checks fail in the "Check" phase?
 
 ---
 
-When canary checks fail, the ACE pipeline **exits immediately** and prompts you to fix the context issue before retrying. The script design is explicit: if `CANARY_EXIT -ne 0`, print "Canary checks failed. Fix context issues before executing." and exit with code 1. This is intentional — running Claude with broken context causes downstream failures that are harder to debug. The canary set should be 3-5 test prompts that verify key behavioral requirements of your CLAUDE.md before each automated run.
+When canary checks fail, the ACE pipeline **exits immediately** and prompts you to fix the context issue before retrying. The script design is explicit: if `CANARY_EXIT -ne 0`, print "Canary checks failed. Fix context issues before executing." and exit with code 1. This is intentional. Running Claude with broken context causes downstream failures that are harder to debug. The canary set should be 3-5 test prompts that verify key behavioral requirements of your CLAUDE.md before each automated run.
 ---

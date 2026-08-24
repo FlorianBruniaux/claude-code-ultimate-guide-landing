@@ -21,5 +21,5 @@ What is the key difference between the official `git-mcp` and `github-mcp` serve
 
 ---
 
-`git-mcp` is the **official Anthropic Git server** — provides 12 local git tools (log, status, diff, commit, etc.) with no authentication required. It operates entirely on the local repository. `github-mcp` is the **official GitHub server** — connects to the remote GitHub platform and requires authentication. For remote mode (push, PR creation, issues), it requires a GitHub Copilot subscription. Choose `git-mcp` for local git operations and `github-mcp` for GitHub platform integration.
+`git-mcp` is the **official Anthropic Git server**: it provides 12 local git tools (log, status, diff, commit, etc.) with no authentication required. It operates entirely on the local repository. `github-mcp` is the **official GitHub server**: it connects to the remote GitHub platform and requires authentication. For remote mode (push, PR creation, issues), it requires a GitHub Copilot subscription. Choose `git-mcp` for local git operations and `github-mcp` for GitHub platform integration.
 ---

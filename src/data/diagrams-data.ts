@@ -20,43 +20,43 @@ export interface DiagramTheme {
 export const DIAGRAM_THEMES: DiagramTheme[] = [
   {
     "id": "foundations",
-    "title": "Foundations",
+    "title": "Claude Code: Foundations",
     "description": "Core concepts: 4-layer model, workflow pipeline, decision tree, 5 permission modes",
     "icon": "🏗️",
     "diagrams": [
       {
-        "title": "\"Chatbot to Context System\" — 4-Layer Model",
-        "description": "Claude Code isn't a chatbot — it's a context system that transforms your message into a rich multi-layer prompt before calling the API. This diagram shows the 4-layer augmentation that happens invisibly with every request.",
+        "title": "\"Chatbot to Context System\": 4-Layer Model",
+        "description": "Claude Code is a context system, not a chatbot. It transforms your message into a rich multi-layer prompt before calling the API. This diagram shows the 4-layer augmentation that happens invisibly with every request.",
         "svg": null,
         "asciiFallback": "User Message\n     │\n     ▼\n┌─────────────────────────────────┐\n│ Layer 1: System Prompt          │ ← CLAUDE.md files\n│ Layer 2: Context Injection      │ ← Working dir, git status\n│ Layer 3: Tool Definitions       │ ← All available tools\n│ Layer 4: Conversation History   │ ← Previous messages\n└─────────────────┬───────────────┘\n                  │\n                  ▼\n           Claude API Call\n                  │\n                  ▼\n           Claude Response",
-        "sourceRef": "How Claude Code Works — Line ~2360"
+        "sourceRef": "How Claude Code Works (line ~2360)"
       },
       {
         "title": "9-Step Workflow Pipeline",
-        "description": "Every request to Claude Code goes through this pipeline — from parsing your intent to displaying the final response. Understanding this loop helps you write better instructions and diagnose issues faster.",
+        "description": "Every request to Claude Code goes through this pipeline, from parsing your intent to displaying the final response. Understanding this loop helps you write better instructions and diagnose issues faster.",
         "svg": null,
         "asciiFallback": "User Message → Parse Intent → Load Context → Plan Actions\n                                                   │\n                          ┌────────────────────────┘\n                          ▼\n                    Execute Tools ◄─────────────────┐\n                          │                          │\n                    More tools?  ──── Yes ─── Collect Results\n                          │ No\n                          ▼\n                   Update Context → Generate Response → Display",
-        "sourceRef": "Getting Started — Line ~277"
+        "sourceRef": "Getting Started (line ~277)"
       },
       {
-        "title": "Quick Decision Tree — \"Should I use Claude Code?\"",
-        "description": "Not every task needs Claude Code. This decision tree helps you route the right tasks to the right tool — Claude Code CLI vs Claude.ai vs clipboard-based approaches.",
+        "title": "Quick Decision Tree: \"Should I use Claude Code?\"",
+        "description": "Not every task needs Claude Code. This decision tree helps you route the right tasks to the right tool (Claude Code CLI vs Claude.ai vs clipboard-based approaches).",
         "svg": null,
         "asciiFallback": "Task involves codebase?\n├── No → Pure writing/analysis? → Yes → Claude.ai\n│                              → No  → Clipboard + Claude.ai\n└── Yes → Repetitive or >30min?\n          ├── Yes → ✓ Claude Code\n          └── No  → Single file, simple?\n                    ├── Yes → Need file access? → No → Clipboard\n                    │                            → Yes → Claude Code\n                    └── No  → ✓ Claude Code",
-        "sourceRef": "Quick Start Decision — See also `machine-readable/reference.yaml` (decide section)"
+        "sourceRef": "Quick Start Decision; see also `machine-readable/reference.yaml` (decide section)"
       },
       {
         "title": "Permission Modes Comparison",
         "description": "Claude Code has 5 permission modes that control what it can do automatically vs. what requires your approval. Choosing the wrong mode is the #1 safety mistake.",
         "svg": null,
         "asciiFallback": "DEFAULT (Recommended)        acceptEdits               bypassPermissions\n─────────────────────        ───────────               ─────────────────\nFile reads    → AUTO ✓       File reads    → AUTO ✓    ALL ops → AUTO ⚠️\nFile writes   → PROMPT       File writes   → AUTO ✓\nShell cmds    → PROMPT       Shell cmds    → PROMPT    Use: CI/CD only,\nRisky ops     → PROMPT       Risky ops     → PROMPT    sandboxed env\n\nPlan Mode (Read-Only)        dontAsk Mode\n─────────────────────        ────────────\nFile reads    → AUTO ✓       ALL ops → AUTO DENIED ✗\nFile writes   → BLOCKED ✗    Unless pre-approved via\nShell cmds    → BLOCKED ✗    /permissions add\nExit: approve the plan or Shift+Tab",
-        "sourceRef": "Permission System — Line ~760"
+        "sourceRef": "Permission System (line ~760)"
       }
     ]
   },
   {
     "id": "context-sessions",
-    "title": "Context & Sessions",
+    "title": "Claude Code: Context & Sessions",
     "description": "Context zones, memory hierarchy, session management, and fresh context patterns",
     "icon": "🧠",
     "diagrams": [
@@ -65,34 +65,34 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Your context window has 4 distinct zones, each requiring different strategies. Knowing which zone you're in prevents context bloat and maintains response quality throughout long sessions.",
         "svg": null,
         "asciiFallback": "0%──────50%──────75%──85%──100%\n│  Green  │  Blue  │ Orange│ Red│\n│ Full    │ Normal │Suggest│Auto│\n│ access  │Monitor │compact│cmp │\n│         │        │Reduce │Ess.│\n│         │        │verbos.│only│",
-        "sourceRef": "Context Management — Line ~1335"
+        "sourceRef": "Context Management (line ~1335)"
       },
       {
-        "title": "Memory Hierarchy — 6 Types",
+        "title": "Memory Hierarchy (6 Types)",
         "description": "Claude Code has 6 distinct memory types with different scopes and persistence. Knowing which memory type to use for each piece of information is key to effective sessions.",
         "svg": null,
         "asciiFallback": "PERMANENT ──────────────────────────────── SESSION ONLY\n\n~/.claude/CLAUDE.md              In-conversation context\n      │                                      │\n/project/CLAUDE.md               Ephemeral MCP state\n      │\n/subdir/CLAUDE.md\n      │\nAuto-Memory (MEMORY.md)  ← cross-session, per project\n\nHigher = broader scope, always persists\nLower = narrower scope, survives restarts\nAuto-Memory = persists cross-session, scoped per project",
-        "sourceRef": "Memory System — Line ~3160 & ~3986 | Auto-Memory: v2.1.59+ (v3.30.0)"
+        "sourceRef": "Memory System (lines ~3160 & ~3986) | Auto-Memory: v2.1.59+ (v3.30.0)"
       },
       {
-        "title": "Session Continuity — Saving and Resuming State",
+        "title": "Session Continuity: Saving and Resuming State",
         "description": "Sessions don't automatically persist context between terminals. This diagram shows how to save state and resume it in a new session or terminal, enabling async workflows.",
         "svg": null,
         "asciiFallback": "Session 1                    CLAUDE.md         Session 2\n─────────                    ─────────         ─────────\nWork on task                    │               Open terminal\n     │                          │                    │\nSave progress ──────────────► Write             Load CLAUDE.md\n                             status,           ◄── Auto-injected\n                             decisions,\n                             next steps",
-        "sourceRef": "Session Management — Line ~9477"
+        "sourceRef": "Session Management (line ~9477)"
       },
       {
         "title": "Fresh Context Anti-Pattern vs. Best Practice",
         "description": "Long sessions accumulate noise that degrades response quality. This diagram shows the degradation pattern and the recommended \"focused sessions\" approach that maintains performance.",
         "svg": null,
         "asciiFallback": "BAD: One giant session\nTask A → Task B → Task C → Context bloat → Quality drop → Restart → Lost!\n\nGOOD: Focused sessions\nTask A ──► Checkpoint? ──Yes──► Save CLAUDE.md ──► New session for B\n           │\n           No\n           │\n         Context >75%? ──Yes──► /compact ──► Continue\n           │\n           No\n           │\n         Continue task",
-        "sourceRef": "Context Best Practices — Line ~1525"
+        "sourceRef": "Context Best Practices (line ~1525)"
       }
     ]
   },
   {
     "id": "configuration",
-    "title": "Configuration System",
+    "title": "Claude Code: Configuration System",
     "description": "Config precedence, skills vs commands vs agents, agent lifecycle, hooks pipeline",
     "icon": "⚙️",
     "diagrams": [
@@ -101,21 +101,21 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Claude Code resolves settings through a strict priority hierarchy. Higher layers override lower ones. Knowing this prevents \"why isn't my config working?\" bugs.",
         "svg": null,
         "asciiFallback": "PRIORITY (highest to lowest)\n═══════════════════════════\n1. CLI Flags            ← --model, --system-prompt\n2. Environment Vars     ← ANTHROPIC_API_KEY\n3. Project .claude/     ← settings.json, settings.local.json\n4. Global ~/.claude/    ← settings.json, CLAUDE.md\n5. Built-in defaults    ← hardcoded fallbacks",
-        "sourceRef": "Configuration System — Line ~3760"
+        "sourceRef": "Configuration System, line ~3760"
       },
       {
-        "title": "Skills vs. Commands vs. Agents — When to Use Each",
+        "title": "Skills vs. Commands vs. Agents: When to Use Each",
         "description": "Three extensibility mechanisms with different purposes and tradeoffs. Choosing the wrong abstraction leads to over-engineering or under-powered automation.",
         "svg": null,
         "asciiFallback": "Skills              Commands           Agents\nLocation:      .claude/skills/     .claude/commands/  .claude/agents/\nTrigger:       /skillname          /commandname       Task tool\nScope:         Cross-project       This project       Any context\nComplexity:    Medium (bundled)    Low (template)     High (autonomous)\nUse when:      Reusable caps       Quick shortcuts    Complex tasks",
-        "sourceRef": "Extensibility System — Line ~4495, ~5025, ~3900"
+        "sourceRef": "Extensibility System, line ~4495, ~5025, ~3900"
       },
       {
         "title": "Agent Lifecycle & Scope Isolation",
         "description": "Sub-agents run in complete isolation from the parent. They receive a copy of context but share no state. Understanding this prevents \"why can't my sub-agent see X?\" confusion.",
         "svg": null,
         "asciiFallback": "Parent ──Task(prompt, tools)──► Sub-Agent\n                                    │\n                               [isolated exec]\n                               - read files\n                               - edit files\n                               - bash (if allowed)\n                                    │\nParent ◄───── text result ──────────┘\n(no state sharing, no side effects back)",
-        "sourceRef": "Sub-Agents — Line ~3900"
+        "sourceRef": "Sub-Agents, line ~3900"
       },
       {
         "title": "Hooks Event Pipeline",
@@ -128,7 +128,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
   },
   {
     "id": "architecture",
-    "title": "Architecture Internals",
+    "title": "Claude Code: Architecture Internals",
     "description": "Master loop, tool categories, system prompt assembly, sub-agent isolation",
     "icon": "🔧",
     "diagrams": [
@@ -137,70 +137,70 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Claude Code's core execution is two nested loops: an **inner agent loop** that keeps calling the API as long as tool calls are returned, and an **outer conversation loop** that starts a new turn when the user responds.",
         "svg": null,
         "asciiFallback": "User Input\n     │\nBuild prompt (system + context + tools)\n     │\n ┌── Agent Loop ──────────────────────┐\n │ Claude API ◄────────────────────┐  │\n │      │                          │  │\n │ Tool calls?                     │  │\n │  ├─ Yes → Execute tools ────────┘  │\n │  └─ No  → exit loop               │\n └────────────────────────────────────┘\n               │\n         Display response\n               │\n         User next msg? ──► Yes → rebuild prompt → loop\n               └─ No → Session ends",
-        "sourceRef": "Architecture: Master Loop — Line ~72"
+        "sourceRef": "Architecture: Master Loop (Line ~72)"
       },
       {
         "title": "Tool Categories & Selection",
         "description": "Claude Code has 6 tool categories, each optimized for different operations. Understanding which tool Claude chooses (and why) helps you write instructions that guide better tool selection.",
         "svg": null,
         "asciiFallback": "READ:     Glob (find), Grep (search), Read (content), LS (list)\nWRITE:    Write (create), Edit (modify), MultiEdit (batch)\nEXECUTE:  Bash (shell), Task (sub-agent)  ← most powerful/risky\nWEB:      WebSearch, WebFetch\nWORKFLOW: TodoWrite, NotebookEdit\nCONTROL:  EnterPlanMode/ExitPlanMode, EnterWorktree/ExitWorktree, AskUserQuestion",
-        "sourceRef": "Architecture: Tools — Line ~213"
+        "sourceRef": "Architecture: Tools (Line ~213)"
       },
       {
         "title": "System Prompt Assembly",
         "description": "Before every API call, Claude Code assembles a system prompt from multiple sources in a specific order. The prompt is split into two cache zones separated by a boundary marker.",
         "svg": null,
         "asciiFallback": "STATIC zone (globally cacheable, cross-org):\n1. Base instructions (hardcoded)\n2. ~/.claude/CLAUDE.md\n3. /project/CLAUDE.md + subdirs\n4. Tool definitions list\n────── BOUNDARY MARKER ──────────\nDYNAMIC zone (per-session cache):\n5. Working directory + git status\n6. MCP server capabilities (always recomputed)\n7. Memory, session guidance, language\n──────────────────────────────────\n→ All combined → Claude API call",
-        "sourceRef": "Architecture: System Prompt — Line ~354"
+        "sourceRef": "Architecture: System Prompt (Line ~354)"
       },
       {
         "title": "Sub-Agent Context Isolation",
-        "description": "Sub-agents are completely isolated from the parent — they can't read the parent's conversation or modify parent state. This isolation is a feature (safety) and a constraint (intentional design).",
+        "description": "Sub-agents are completely isolated from the parent: they can't read the parent's conversation or modify parent state. This isolation is a feature (safety) and a constraint (intentional design).",
         "svg": null,
         "asciiFallback": "Parent (full context)\n    │\n    Task(prompt, tools=[...])\n    │\n    ▼\nSub-Agent (ISOLATED)\n  Input: prompt + tool grants only\n  Can: use granted tools independently\n  Cannot: see parent conversation, modify parent state\n  Output: text result ONLY\n    │\n    ▼\nParent receives: text string",
-        "sourceRef": "Architecture: Sub-Agents — Line ~444"
+        "sourceRef": "Architecture: Sub-Agents (Line ~444)"
       }
     ]
   },
   {
     "id": "mcp",
-    "title": "MCP Ecosystem",
+    "title": "Claude Code: MCP Ecosystem",
     "description": "MCP server map, architecture, rug pull attack chain, config hierarchy",
     "icon": "🔌",
     "diagrams": [
       {
         "title": "MCP Server Ecosystem Map",
-        "description": "The MCP ecosystem has 4 categories of servers — official, community-dev, community-ops, and local. Knowing what's available prevents building what already exists.",
+        "description": "The MCP ecosystem has 4 categories of servers: official, community-dev, community-ops, and local. Knowing what's available prevents building what already exists.",
         "svg": null,
         "asciiFallback": "Claude Code\n├── Official: context7, sequential-thinking, playwright, git-mcp, github-mcp\n├── Community Dev: semgrep, github, grepai, filesystem-enhanced\n├── Community Ops: kubernetes, docker, aws\n└── Local/Custom: project MCPs, internal API wrappers",
-        "sourceRef": "MCP Ecosystem — Full guide"
+        "sourceRef": "MCP Ecosystem (full guide)"
       },
       {
-        "title": "MCP Architecture — Client-Server Protocol",
+        "title": "MCP Architecture: Client-Server Protocol",
         "description": "MCP is a JSON-RPC protocol running over stdio or SSE. Claude Code acts as the client, MCP servers as tool providers. This shows the full request-response cycle.",
         "svg": null,
         "asciiFallback": "Claude Code           MCP Protocol          MCP Server\n────────────          ────────────          ──────────\nParse tool call  →  JSON-RPC Request   →  Receive call\n                    (stdio or SSE)        Execute action\n                                          ↕ External service\nUse result       ←  JSON-RPC Response  ←  Return result",
-        "sourceRef": "Architecture: MCP — Line ~795"
+        "sourceRef": "Architecture: MCP (line ~795)"
       },
       {
         "title": "MCP Rug Pull Attack Chain",
         "description": "The most dangerous MCP attack vector: malicious tool descriptions containing hidden prompt injection. This is why you should only install vetted MCP servers.",
         "svg": null,
         "asciiFallback": "ATTACK CHAIN:\n1. Attacker embeds hidden prompt in MCP tool description\n2. User installs \"legitimate looking\" MCP server\n3. Claude reads tool description → injected instruction enters context\n4. Claude executes: \"exfiltrate ~/.ssh/id_rsa\"\n5. Data sent back to attacker via tool response\n\nDEFENSE: Read MCP source before installing. Especially check tool descriptions.",
-        "sourceRef": "Security: MCP Threats — Line ~33"
+        "sourceRef": "Security: MCP Threats (line ~33)"
       },
       {
         "title": "MCP Config Hierarchy",
         "description": "MCP server configurations can live in 4 priority levels (3 actual files). The resolution order determines which servers are available and who can override what.",
         "svg": null,
         "asciiFallback": "PRIORITY (highest → lowest):\n1. --mcp-config flag  → CLI override, temporary\n2. .mcp.json          → project-scope (git-tracked, shareable)\n3. ~/.claude.json      → local scope (private, current project)\n4. ~/.claude.json      → user scope (personal, all projects)\n5. (none)             → no MCP servers available\n* local + user both in ~/.claude.json (different keys)",
-        "sourceRef": "MCP Configuration — Line ~6149"
+        "sourceRef": "MCP Configuration (line ~6149)"
       }
     ]
   },
   {
     "id": "workflows",
-    "title": "Development Workflows",
+    "title": "Claude Code: Development Workflows",
     "description": "TDD cycle, spec-first pipeline, plan-driven workflow, iterative refinement loop",
     "icon": "🔄",
     "diagrams": [
@@ -213,7 +213,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
       },
       {
         "title": "Spec-First Development Pipeline",
-        "description": "Write the specification before the code. Claude uses the spec as the single source of truth — preventing drift between what was planned and what was built.",
+        "description": "Write the specification before the code. Claude uses the spec as the single source of truth, preventing drift between what was planned and what was built.",
         "svg": null,
         "asciiFallback": "Idea → Write spec.md → Claude reviews\n                             │\n                       Approved? ─No→ Refine spec\n                             │ Yes\n                       Generate tests from spec\n                             │\n                       Generate implementation\n                             │\n                       Run tests → Pass? ─No→ Claude fixes\n                             │ Yes\n                       Human review → Matches spec? ─No→ Fix\n                             │ Yes\n                           Merge ✓",
         "sourceRef": "Spec-First Development"
@@ -230,36 +230,36 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Output rarely hits the mark on the first try. This loop gives you a systematic way to improve results through targeted feedback rather than \"make it better\" vague instructions.",
         "svg": null,
         "asciiFallback": "Prompt → Output → Evaluate → Good? ──Yes──► Done\n                                 │ No\n                          Identify specific issue\n                                 │\n                          ┌──────┴──────────────┐\n                         Style  Missing  Wrong  Length\n                          └──────┬──────────────┘\n                          Refine instruction\n                                 │\n                          Claude refines\n                                 │\n                          Better? ──Yes──► Evaluate again\n                                 │ No\n                          Different approach",
-        "sourceRef": "Iterative Refinement — Line ~347"
+        "sourceRef": "Iterative Refinement (Line ~347)"
       },
       {
-        "title": "AI Fluency — High vs Low Fluency Paths",
-        "description": "When Claude produces a polished-looking output, a cognitive bias kicks in: the more complete the output appears, the less critically most users evaluate it. This is the Artifact Paradox, documented by Anthropic across 9,830 conversations. The diagram shows what separates the 30% of high-fluency users from the 70% who accept first outputs — and the measurable difference in outcome quality.",
+        "title": "AI Fluency: High vs Low Fluency Paths",
+        "description": "When Claude produces a polished-looking output, a cognitive bias kicks in: the more complete the output appears, the less critically most users evaluate it. This is the Artifact Paradox, documented by Anthropic across 9,830 conversations. The diagram shows what separates the 30% of high-fluency users from the 70% who accept first outputs, and the measurable difference in outcome quality.",
         "svg": null,
         "asciiFallback": "User request → Claude output (code · file · config · plan)\n                        ↓\n              ⚠️ Artifact Paradox\n          Polished output → cognitive bias\n                        ↓\n    ┌───────────────────┴──────────────────────┐\n70% of users                            30% of users\nAccept without review               Iterate + question\n        ↓                                     ↓\nFluency behaviors drop:         Challenge: \"What did you miss?\n−5.2pp gap identification                What assumptions made?\"\n−3.7pp fact-checking                          ↓\n−3.1pp reasoning challenge      Identify gaps → refine\n        ↓                                     ↓\nSilent defects                  Satisfied? ──No──► iterate\n                                            ↓ Yes\n                                Verified output ✓\n                                            ↓\n                               5.6× more issue catches\n                               2.67 vs 1.33 avg behaviors",
-        "sourceRef": "Anthropic AI Fluency Index (Swanson et al., 2026-02-23) — Guide section: Common Pitfalls"
+        "sourceRef": "Anthropic AI Fluency Index (Swanson et al., 2026-02-23); Guide section: Common Pitfalls"
       }
     ]
   },
   {
     "id": "multi-agent",
-    "title": "Multi-Agent Patterns",
+    "title": "Claude Code: Multi-Agent Patterns",
     "description": "Agent topologies, worktrees, dual-instance planning, horizontal scaling, decision matrix",
     "icon": "🤖",
     "diagrams": [
       {
-        "title": "Agent Teams — 3 Orchestration Topologies",
+        "title": "Agent Teams: 3 Orchestration Topologies",
         "description": "Three proven topologies for multi-agent coordination. Choose based on task independence, ordering requirements, and specialization needs.",
         "svg": null,
         "asciiFallback": "ORCHESTRATOR + WORKERS:      PIPELINE:               ROUTER:\n\n   Lead Agent                Agent A (requirements)   Router\n  /    |     \\                    │                  /  |  \\\nW1    W2     W3              Agent B (implement)   Code Test Docs\n  \\   |     /                    │                  \\  |  /\n   Aggregate                Agent C (review)        Result\n                                 │\n                             Final output",
-        "sourceRef": "Agent Teams — Line ~59"
+        "sourceRef": "Agent Teams, line ~59"
       },
       {
         "title": "Git Worktree Multi-Instance Pattern",
         "description": "Git worktrees enable true parallel development: each Claude instance works in an isolated branch with its own working tree. No conflicts, no context mixing.",
         "svg": null,
         "asciiFallback": "Main repo\n├── git worktree add feature-A → Claude 1 → commits to feature-A\n├── git worktree add feature-B → Claude 2 → commits to feature-B\n└── git worktree add bugfix-C  → Claude 3 → commits to bugfix-C\n\nNo conflicts: separate working trees, separate branches\nAll merge back to main when done",
-        "sourceRef": "Git Worktrees — Line ~10634"
+        "sourceRef": "Git Worktrees, line ~10634"
       },
       {
         "title": "Dual-Instance Planning Pattern (Jon Williams)",
@@ -273,20 +273,20 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "When tasks can be parallelized, spawn N Claude instances simultaneously instead of running them sequentially. The speedup is proportional to task independence.",
         "svg": null,
         "asciiFallback": "Large task\n     │\nDecompose into N independent subtasks\n     │\n┌────┼────┐\n│    │    │\nI1  I2  I3... (parallel)\n│    │    │\n└────┼────┘\n     │\nAggregate → Integration review\n(~10x faster than sequential)",
-        "sourceRef": "Horizontal Scaling — Line ~9617"
+        "sourceRef": "Horizontal Scaling, line ~9617"
       },
       {
         "title": "Multi-Instance Decision Matrix",
         "description": "Not every task needs multiple instances. This decision tree guides you to the right pattern based on task characteristics.",
         "svg": null,
         "asciiFallback": "Need multiple instances?\n├─ No → Single session\n├─ Yes → How many?\n│        ├─ 2-3 → Need branch isolation?\n│        │        ├─ Yes → Git worktrees\n│        │        └─ No  → Multiple terminals\n│        └─ 4+  → Task structure?\n│                 ├─ Independent → Task tool (parallel sub-agents)\n│                 ├─ Sequential  → Agent pipeline A→B→C\n│                 └─ Mixed       → Specialist router\n└─ Planning separation? → Dual-instance (Planner + Executor)",
-        "sourceRef": "Multi-Instance Patterns — Line ~11176"
+        "sourceRef": "Multi-Instance Patterns, line ~11176"
       }
     ]
   },
   {
     "id": "security",
-    "title": "Security & Production",
+    "title": "Claude Code: Security & Production",
     "description": "3-layer defense, sandbox decision, verification paradox, CI/CD pipeline",
     "icon": "🛡️",
     "diagrams": [
@@ -295,28 +295,28 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Defense in depth for Claude Code: prevention stops most threats, detection catches what slips through, and response limits blast radius. No single layer is sufficient.",
         "svg": null,
         "asciiFallback": "Threat\n  │\nLayer 1: PREVENTION\n  - MCP vetting + CLAUDE.md restrictions + .claudeignore\n  │ (bypassed) →\nLayer 2: DETECTION\n  - Hooks logging + audit logs + anomaly alerts\n  │ (bypassed) →\nLayer 3: RESPONSE\n  - Sandbox + permission gates + rollback\n  │\nContained",
-        "sourceRef": "Security Hardening — Full guide"
+        "sourceRef": "Security Hardening, full guide"
       },
       {
         "title": "Sandbox Decision Tree",
         "description": "Sandboxing adds overhead. Use this tree to decide when it's mandatory, recommended, or optional for your situation.",
         "svg": null,
         "asciiFallback": "Production server? → YES → ALWAYS sandbox (Docker/Firecracker)\n     │ No\nUntrusted code or unknown MCP?\n  ├─ Yes → macOS sandbox / Docker / ephemeral container\n  └─ No  → Personal project with known codebase?\n            ├─ Yes → Default or acceptEdits (sandbox optional)\n            └─ No  → Sandbox recommended\n\nRule: When in doubt, sandbox it.",
-        "sourceRef": "Sandbox Native — Line ~512"
+        "sourceRef": "Sandbox Native, line ~512"
       },
       {
         "title": "The Verification Paradox",
         "description": "Asking Claude to verify its own work is circular. The same model that produced the bug will often miss it during review. This anti-pattern causes production incidents.",
         "svg": null,
         "asciiFallback": "BAD: Claude writes → Claude checks → \"Looks good\" → Deploy → Bug\n     (same model, same biases, circular)\n\nGOOD: Claude writes → Human reviews (critical sections)\n                    → Automated tests (independent)\n                    → Static analysis (different tool)\n                    → All pass? → Deploy ✓",
-        "sourceRef": "Production Safety — Line ~639"
+        "sourceRef": "Production Safety, line ~639"
       },
       {
         "title": "CI/CD Integration Pipeline",
         "description": "Claude Code can run in non-interactive mode inside CI/CD pipelines for automated code review, documentation, and quality checks on every PR.",
         "svg": null,
         "asciiFallback": "PR created → GitHub Actions → setup ANTHROPIC_API_KEY\n                                    │\n                          claude --print --headless\n                                    │\n                    ┌───────────────┼────────────────┐\n                   Lint           Tests           Security\n                                    │\n                          All pass? ──No──► Fail PR + report\n                            │ Yes\n                          ✓ Green → human review → merge",
-        "sourceRef": "CI/CD Integration — Line ~6835"
+        "sourceRef": "CI/CD Integration, line ~6835"
       }
     ]
   },
@@ -358,7 +358,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
   },
   {
     "id": "adoption",
-    "title": "Adoption & Learning",
+    "title": "Claude Code: Adoption & Learning",
     "description": "Onboarding paths, UVAL learning protocol, trust calibration matrix",
     "icon": "📚",
     "diagrams": [
@@ -371,23 +371,23 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
       },
       {
         "title": "UVAL Learning Protocol",
-        "description": "The UVAL protocol prevents the \"copy-paste trap\" — where you use Claude Code without understanding what it did. Each cycle builds real competency that survives tool unavailability.",
+        "description": "The UVAL protocol prevents the \"copy-paste trap\": using Claude Code without understanding what it did. Each cycle builds real competency that survives tool unavailability.",
         "svg": null,
         "asciiFallback": "USE → VERIFY → ADAPT → LEARN → (repeat with next task)\n\nU: Try the feature yourself first\nV: Understand what Claude did and why ← (anti: just copy-paste)\nA: Modify the approach, experiment\nL: Note pattern for future use\n\nAnti-pattern (AVOID): Accept output → Deploy → Bug → \"Claude broke it\"",
-        "sourceRef": "Learning with AI — Line ~127"
+        "sourceRef": "Learning with AI, line ~127"
       },
       {
         "title": "Trust Calibration Matrix",
         "description": "Knowing when to trust Claude's output and when to verify is the most important skill in AI-assisted development. Over-trust causes bugs; under-trust eliminates productivity gains.",
         "svg": null,
         "asciiFallback": "Can I test it?\n├─ Yes → Tests pass? → Yes → Trust with tests ✓\n│                  → No  → Fix before using\n└─ No  → Do I understand it?\n         ├─ No  → Ask Claude to explain → understand → continue\n         └─ Yes → Is it reversible?\n                  ├─ Yes     → Trust with git safety net ✓\n                  └─ No      → Security-critical?\n                               ├─ Yes → Human expert review (never skip)\n                               └─ No  → Familiar domain?\n                                        ├─ Yes → Trust with care ✓\n                                        └─ No  → Pair with expert",
-        "sourceRef": "Trust and Verification — Line ~1039"
+        "sourceRef": "Trust and Verification, line ~1039"
       }
     ]
   },
   {
     "id": "context-engineering",
-    "title": "Context Engineering",
+    "title": "Claude Code: Context Engineering",
     "description": "3-layer context system, adherence degradation, modular architecture, rule placement decision tree",
     "icon": "📐",
     "diagrams": [
@@ -396,57 +396,57 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "description": "Context engineering operates across 3 distinct layers with different scopes and persistence. Understanding which layer to use prevents the most common mistake: cramming everything into one file.",
         "svg": null,
         "asciiFallback": "GLOBAL ~/.claude/CLAUDE.md     → Identity, universal tools, cross-project conventions (<200 lines)\n    │ overridden by ↓\nPROJECT ./CLAUDE.md + modules  → Stack, architecture, team rules, path-scoped @imports (<150 lines root)\n    │ overridden by ↓\nSESSION inline / /add / flags  → One-off constraints, temporary overrides (ephemeral)\n\nOverride order: Session > Project > Global\nMore specific beats less specific at the same level",
-        "sourceRef": "Context Engineering — Configuration Hierarchy"
+        "sourceRef": "Context Engineering: Configuration Hierarchy"
       },
       {
         "title": "Context Budget & Adherence Degradation",
-        "description": "Adherence to CLAUDE.md rules degrades predictably as file size grows. Beyond ~150 rules, models begin selectively ignoring instructions. Path-scoping is the primary fix — it reduces always-on context by 40-50% without losing coverage.",
+        "description": "Adherence to CLAUDE.md rules degrades predictably as file size grows. Beyond ~150 rules, models begin selectively ignoring instructions. Path-scoping is the primary fix, reducing always-on context by 40-50% without losing coverage.",
         "svg": null,
         "asciiFallback": "Lines in CLAUDE.md    Adherence    Status\n──────────────────    ─────────    ──────\n1 – 100               ~95%         ✓ Green zone\n100 – 200             ~88%         ✓ Acceptable\n200 – 400             ~75%         ⚠️ Caution\n400 – 600             ~60%         ✗ Degraded\n600+                  ~45% ↓       ✗ Critical\n\nFix: path-scope by subsystem → root CLAUDE.md stays <150 lines\nResult: 40-50% always-on context reduction, adherence back in green zone",
-        "sourceRef": "Context Budget — Adherence data: HumanLayer production data (15-25% improvement with structured context)"
+        "sourceRef": "Context Budget. Adherence data: HumanLayer production data (15-25% improvement with structured context)"
       },
       {
         "title": "Monolithic vs. Modular Architecture",
         "description": "The monolithic CLAUDE.md is the most common failure mode in team contexts. Path-scoped modules fix it by loading only what's relevant for the current task.",
         "svg": null,
         "asciiFallback": "BAD: CLAUDE.md (600 lines, everything mixed)\n  → All 600 lines loaded every session\n  → Rules 500+ get ~30% attention weight\n  → Adherence degrades continuously\n\nGOOD: Root CLAUDE.md (~100 lines, shared only)\n  + src/api/CLAUDE-api.md      ← loaded only when editing API files\n  + src/components/CLAUDE-*.md ← loaded only when editing components\n  + prisma/CLAUDE-db.md        ← loaded only when editing DB files\n\nResult: 40-50% reduction in always-on tokens, full coverage per subsystem",
-        "sourceRef": "Modular Architecture — Path-scoping pattern"
+        "sourceRef": "Modular Architecture: path-scoping pattern"
       },
       {
         "title": "Rule Placement Decision Tree",
         "description": "Every new instruction or convention needs to land in the right layer. Wrong placement wastes tokens (too global) or loses coverage (too scoped). This tree makes the decision explicit.",
         "svg": null,
         "asciiFallback": "New rule to place\n│\nRelevant to every project? ──Yes──► Global CLAUDE.md (~/.claude/CLAUDE.md)\n│ No\nSpecific to certain files/subsystems? ──Yes──► Path-scoped module (src/area/CLAUDE-area.md)\n│ No\nProcedural step-by-step? ──Yes──► Skill file (.claude/skills/) [loaded on demand]\n│ No\nApplies to whole project? ──Yes──► Project CLAUDE.md root (./CLAUDE.md)\n│ No\n└──► Session inline instruction (ephemeral)\n\nRule of thumb: if you say it more than once, promote it to a permanent layer.",
-        "sourceRef": "Rule Placement — Decision tree from §3"
+        "sourceRef": "Rule Placement: decision tree from §3"
       }
     ]
   },
   {
     "id": "enterprise-governance",
-    "title": "Enterprise Governance",
+    "title": "Claude Code: Enterprise Governance",
     "description": "Governance risk tiers, MCP approval workflow, guardrail tier selection",
     "icon": "🏛️",
     "diagrams": [
       {
-        "title": "Governance Risk Tiers — What to Control and When",
-        "description": "Not everything needs heavy governance. This decision tree routes your context to the right control level based on actual risk — from personal dev workflow (minimal) to regulated environments (full compliance stack).",
+        "title": "Governance Risk Tiers: What to Control and When",
+        "description": "Not everything needs heavy governance. This decision tree routes your context to the right control level based on actual risk, from personal dev workflow (minimal) to regulated environments (full compliance stack).",
         "svg": null,
         "asciiFallback": "Usage context?\n├─ Personal dev workflow      → Tier 1: Starter     (CLAUDE.md + basic hooks, 10 min)\n├─ Team codebase              → Tier 2: Standard    (shared settings.json + MCP registry + PR gates)\n├─ Production system          → Tier 3: Strict      (full deny list + approval + audit trail)\n└─ Regulated (HIPAA/SOC2/PCI) → Tier 4: Regulated  (all above + compliance audit trail)\n\nYou CAN control: settings.json in repo, CLAUDE.md, hooks, CI/CD gates, MCP registry\nYou CANNOT control: personal ~/.claude, personal API key model choice, personal projects",
-        "sourceRef": "Enterprise Governance — §1 Governance Split, §4 Guardrail Tiers"
+        "sourceRef": "Enterprise Governance, §1 Governance Split, §4 Guardrail Tiers"
       },
       {
         "title": "MCP Governance Workflow",
         "description": "Individual MCP vetting takes 5 minutes. Organizational MCP governance is the 5-step pipeline that ensures approved servers stay approved, versions are pinned, and risk is classified before deployment.",
         "svg": null,
         "asciiFallback": "Developer submits MCP request (name, source, use case, data scope)\n    │\nTech Lead: 5-min security audit (stars, commits, CVEs, flags)\n    │\nClassify risk: LOW / MEDIUM / HIGH\n    │\n┌───┴────────────────────────────┐\nLOW                             MED/HIGH\nApprove immediately             2-week sandbox trial\n                                + Security team sign-off\n    │\nAdd to registry (.claude/mcp-registry.yaml)\n  - Pin exact version\n  - Set expiry (6 months for LOW, 3 months for MED)\n  - Document approved scope\n    │\nDeploy via committed settings.json (no local overrides)\n    │\nMonitor every 30 days:\n  - Check security advisories\n  - Patch bumps: auto | Minor+ bumps: manual re-review\n  - Quarterly: full registry audit",
-        "sourceRef": "MCP Governance Workflow — §3.1 Approval Workflow"
+        "sourceRef": "MCP Governance Workflow, §3.1 Approval Workflow"
       },
       {
         "title": "Data Classification & Claude Code Access Rules",
         "description": "Data classification determines what Claude Code is allowed to read and process. Getting this wrong is the highest-impact governance failure. Four levels, clear rules, no exceptions for RESTRICTED.",
         "svg": null,
         "asciiFallback": "PUBLIC       → Allowed, no restrictions\nINTERNAL     → Allowed, standard config\nCONFIDENTIAL → Enterprise plan only (Zero Data Retention required)\nRESTRICTED   → NEVER in AI context (PII, PCI, PHI, credentials)\n               Block via: permissions.deny Read(.env, *.key, *.pem, secrets/**)\n\nHard rule: RESTRICTED data never enters a context window.\nNot in prompts, not in files Claude reads, not as examples.",
-        "sourceRef": "AI Usage Charter — §2.1 Data Classification"
+        "sourceRef": "AI Usage Charter, §2.1 Data Classification"
       }
     ]
   }

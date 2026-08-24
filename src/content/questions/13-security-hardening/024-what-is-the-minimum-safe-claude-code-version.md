@@ -23,4 +23,4 @@ What is the minimum safe version of Claude Code that fixes the sandbox bypass vu
 
 ---
 
-Claude Code >= 2.1.34 is the minimum safe version, fixing ADVISORY-CC-2026-001 — a sandbox bypass where commands excluded from sandboxing could bypass Bash permission enforcement. Earlier versions also have CVE-2025-66032 (8 blocklist bypasses, fixed 1.0.93) and CVE-2026-24052 (WebFetch SSRF, fixed 1.0.111). Always run the latest version for cumulative security fixes.
+Claude Code >= 2.1.34 is the minimum safe version, fixing ADVISORY-CC-2026-001: a sandbox bypass where commands excluded from sandboxing could bypass Bash permission enforcement. Earlier versions also have CVE-2025-66032 (8 blocklist bypasses, fixed 1.0.93) and CVE-2026-24052 (WebFetch SSRF, fixed 1.0.111). Always run the latest version for cumulative security fixes.

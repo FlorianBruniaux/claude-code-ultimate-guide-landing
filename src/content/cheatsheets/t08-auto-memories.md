@@ -1,10 +1,10 @@
 ---
-title: "Auto-Memories — When and How"
+title: "Auto-Memories: When and How"
 subtitle: "The automatic memory system vs manual CLAUDE.md"
 cardNumber: T08
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 8
 ---
 

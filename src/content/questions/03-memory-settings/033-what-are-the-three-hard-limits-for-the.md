@@ -21,4 +21,4 @@ What are the three hard limits for the MEMORY.md auto-memory system?
 
 ---
 
-MEMORY.md auto-memory has three hard limits: (1) 200-line cap — lines beyond 200 in MEMORY.md are truncated and never loaded into context; (2) 25KB max per memory file — larger files are split or truncated; (3) 200-file directory cap — the memory directory is capped at 200 individual memory files. These limits exist to prevent the memory system from consuming too much context window. Manage proactively: archive old memories, merge duplicates, keep the index concise.
+MEMORY.md auto-memory has three hard limits: (1) 200-line cap: lines beyond 200 in MEMORY.md are truncated and never loaded into context; (2) 25KB max per memory file: larger files are split or truncated; (3) 200-file directory cap: the memory directory is capped at 200 individual memory files. These limits exist to prevent the memory system from consuming too much context window. Manage proactively: archive old memories, merge duplicates, keep the index concise.

@@ -21,7 +21,7 @@ What does the `effort` parameter actually control in Opus 4.6?
 
 ---
 
-`effort` controls the **overall computational budget** — not just thinking.
+`effort` controls the **overall computational budget**, not just thinking.
 
 At `effort: low`:
 - Fewer tool calls (combines operations when possible)

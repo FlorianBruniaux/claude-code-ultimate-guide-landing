@@ -4,7 +4,7 @@ subtitle: "Structured development methodologies with Claude Code"
 cardNumber: M15
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 115
 ---
 
@@ -34,7 +34,7 @@ The classic cycle, made explicit in prompts to prevent Claude from jumping strai
    stay green."
 ```
 
-Being explicit about "FAILING" and "does not exist yet" is essential — otherwise Claude tends to write test and implementation together.
+Being explicit about "FAILING" and "does not exist yet" matters. Otherwise Claude tends to write test and implementation together.
 
 ## BDD with Claude: Given/When/Then
 

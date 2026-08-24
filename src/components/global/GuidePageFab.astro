@@ -204,7 +204,7 @@ const SLUG_TO_PATH: Record<string, string> = {
         setTimeout(() => copyBtn.classList.remove('is-done'), 1500)
       } catch (err) {
         copyBtn.classList.remove('is-loading')
-        showToast('Copy failed — try again', true)
+        showToast('Copy failed, try again', true)
         console.error('[GuidePageFab]', err)
       }
     })

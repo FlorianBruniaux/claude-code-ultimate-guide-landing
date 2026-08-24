@@ -20,4 +20,4 @@ What does Trigger Tuning (Description Optimizer) do in Skill Evals?
 
 ---
 
-Trigger Tuning analyzes your skill's `description` field and suggests improvements to reduce two types of triggering errors: false positives (skill fires when it shouldn't) and false negatives (skill doesn't fire when it should). As skill libraries grow, descriptions can conflict and cause unreliable activation. According to Anthropic's internal testing, 5 of 6 document-creation skills showed improved triggering accuracy after optimization. [Source: claudecode.jp — directional]
+Trigger Tuning analyzes your skill's `description` field and suggests improvements to reduce two types of triggering errors: false positives (skill fires when it shouldn't) and false negatives (skill doesn't fire when it should). As skill libraries grow, descriptions can conflict and cause unreliable activation. According to Anthropic's internal testing, 5 of 6 document-creation skills showed improved triggering accuracy after optimization. [Source: claudecode.jp, directional]

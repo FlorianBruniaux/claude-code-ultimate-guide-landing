@@ -1,8 +1,8 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro'
 
-// Starlight component overrides don't receive route data via Astro.props —
-// it lives on Astro.locals.starlightRoute (confirmed against Starlight's own
+// Starlight component overrides don't receive route data via Astro.props.
+// It lives on Astro.locals.starlightRoute (confirmed against Starlight's own
 // components, e.g. Hero.astro, LastUpdated.astro). Astro.props.entry was
 // always undefined here, silently emptying headline/description/dates in the
 // TechArticle/HowTo JSON-LD on every guide page since this component existed.

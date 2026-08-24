@@ -4,7 +4,7 @@ subtitle: "Syncing your Claude Code configuration across multiple machines"
 cardNumber: T10
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 10
 ---
 
@@ -12,8 +12,8 @@ order: 10
 
 | Local only | Shareable |
 |------------|-----------|
-| `settings.local.json` | `agents/`, `commands/` |
-| API keys, tokens | `hooks/`, `rules/`, `skills/` |
+| `settings.local.json` | `agents/`, `skills/` |
+| API keys, tokens | `hooks/`, `rules/` |
 | Session history | `settings.template.json` |
 | `.env` with secrets | CLAUDE.md (team conventions) |
 
@@ -29,10 +29,9 @@ mkdir ~/claude-config-backup && cd ~/claude-config-backup
 git init
 
 # 2. Create symlinks (changes are automatic)
-ln -s ~/.claude/agents   ./agents
-ln -s ~/.claude/commands ./commands
-ln -s ~/.claude/hooks    ./hooks
-ln -s ~/.claude/skills   ./skills
+ln -s ~/.claude/agents ./agents
+ln -s ~/.claude/skills ./skills
+ln -s ~/.claude/hooks  ./hooks
 
 # 3. Template without secrets
 cp ~/.claude/settings.json ./settings.template.json
@@ -50,7 +49,7 @@ git push -u origin main
 ```bash
 # Source machine (after modification)
 cd ~/claude-config-backup
-git add agents/ commands/ hooks/ skills/
+git add agents/ skills/ hooks/
 git commit -m "Update hooks: add auto-format"
 git push
 
@@ -91,6 +90,6 @@ Advantage: zero maintenance effort. Drawback: no version history, risk of sync c
 ```bash
 # Daily backup at 2am
 0 2 * * * tar -czf ~/claude-backups/config-$(date +%F).tar.gz \
-  ~/.claude/agents ~/.claude/commands \
+  ~/.claude/agents ~/.claude/skills \
   ~/.claude/hooks ~/.claude/settings.json
 ```

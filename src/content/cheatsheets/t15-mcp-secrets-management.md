@@ -4,7 +4,7 @@ subtitle: "Managing MCP server credentials without exposing them"
 cardNumber: T15
 category: Technical
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 15
 ---
 
@@ -77,3 +77,5 @@ npx @github/mcp-server
 Hardcode a token directly in the `command` or `args` value of a versioned MCP server. Even in a private repo, secrets in plaintext in Git remain in the history even after deletion and can be exposed by a `git log` or unauthorized access.
 
 A pre-commit hook that scans for token patterns (`ghp_`, `sk-`, `Bearer `) before each commit is a simple additional protection to put in place.
+
+**`CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` (v2.1.78+)**: environment variable that forces Claude Code to strip sensitive variables (`*_KEY`, `*_TOKEN`, `*_SECRET`) before passing them to subprocesses and MCP servers. Enable in production to minimize exposure surface.

@@ -5,8 +5,8 @@
  * GitHub source otherwise (unpublished file, or anchor with no real match).
  *
  * Mirrors the guide-repo file layout produced by prepare-guide-content.mjs
- * and the anchor classification logic in scripts/check-quiz-doc-links.mjs —
- * keep the three in sync if that build script changes.
+ * and the anchor classification logic in scripts/check-quiz-doc-links.mjs.
+ * Keep the three in sync if that build script changes.
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'

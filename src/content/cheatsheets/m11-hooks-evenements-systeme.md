@@ -4,7 +4,7 @@ subtitle: "Automatically react to Claude Code actions"
 cardNumber: M11
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 111
 ---
 
@@ -17,9 +17,11 @@ A hook is a shell script (or any command) executed automatically when Claude Cod
 | Event | Moment | Can block |
 |-------|--------|-----------|
 | `SessionStart` | Startup or resume | No |
+| `SessionEnd` | Session ends | No |
 | `UserPromptSubmit` | Before prompt processing | Yes |
 | `PreToolUse` | Before a tool call | Yes |
 | `PostToolUse` | After a tool succeeds | No |
+| `PreCompact` | Before context compaction | Yes |
 | `Notification` | Claude sends a notification | No |
 | `Stop` | Claude finishes responding | Yes |
 | `SubagentStop` | A sub-agent ends | Yes |
@@ -59,6 +61,16 @@ These events allow implementing quality gates at the agent team level: preventin
 }
 ```
 
+## Configuration fields
+
+| Field | Usage |
+|-------|-------|
+| `command` | Shell command executed via a shell interpreter |
+| `args` | Exec form: array of strings spawned directly without a shell. Avoids injection risks and quoting issues. Overrides `command` when present. (v2.1.139) |
+| `timeout` | Max duration in ms (default: 60000) |
+| `async` | If `true`, Claude continues without waiting for completion |
+| `continueOnBlock` | `PostToolUse` only: if `true`, a block feeds Claude the rejection reason and continues the turn instead of stopping it. Claude can then self-correct. (v2.1.139) |
+
 ## Exit codes
 
 | Code | Meaning |
@@ -76,48 +88,13 @@ Synchronous hooks (default): Claude waits for the script to finish. Suited for v
 ## stdin data flow
 
 ```bash
-# Example JSON received on stdin (PostToolUse, v2.1.119+)
+# Example JSON received on stdin (PostToolUse)
 {
   "tool_name": "Edit",
   "tool_input": { "file_path": "src/auth.ts" },
   "tool_response": { "success": true },
-  "hook_event_name": "PostToolUse",
-  "duration_ms": 142
+  "hook_event_name": "PostToolUse"
 }
 ```
-
-`duration_ms` (v2.1.119): the time the tool call took in milliseconds, available in the PostToolUse input. Useful for performance monitoring hooks.
 
 The `Stop` event also includes a `last_assistant_message` field since v2.1.47, giving direct access to Claude's last response without parsing transcripts.
-
-## PostToolUse output replacement (v2.1.121)
-
-PostToolUse hooks can now **replace the tool's output** for any tool, not just Bash. Return a JSON object with `"output"` key from your hook stdout to override what Claude sees as the tool result.
-
-```bash
-# Hook stdout replaces the tool response Claude receives
-echo '{"output": "sanitized content — secrets redacted"}'
-exit 0
-```
-
-This enables output filtering, normalization, or secret redaction before Claude processes any tool result.
-
-## MCP tool hooks (v2.1.118)
-
-Hooks can now invoke MCP tools directly using `type: "mcp_tool"` instead of `type: "command"`. This allows hook chains that call external MCP servers without a shell wrapper.
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [{
-      "matcher": "Edit",
-      "hooks": [{
-        "type": "mcp_tool",
-        "server": "github",
-        "tool": "create_review_comment",
-        "input": { "body": "Auto-review triggered" }
-      }]
-    }]
-  }
-}
-```

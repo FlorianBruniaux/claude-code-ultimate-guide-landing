@@ -7,10 +7,10 @@ profiles:
 - power
 correct: b
 options:
-  a: ConfigChange — fires whenever any configuration file changes
-  b: InstructionsLoaded — fires when CLAUDE.md or .claude/rules/*.md files are loaded into context (v2.1.69+)
-  c: SessionStart — fires when the session begins (instructions are part of this event)
-  d: PreToolUse — fires before any tool call, including instruction file reads
+  a: ConfigChange (fires whenever any configuration file changes)
+  b: InstructionsLoaded (fires when CLAUDE.md or .claude/rules/*.md files are loaded into context, v2.1.69+)
+  c: SessionStart (fires when the session begins; instructions are part of this event)
+  d: PreToolUse (fires before any tool call, including instruction file reads)
 doc_reference:
   file: guide/core/claude-code-releases.md
   section: v2.1.69 (2026-03-04)

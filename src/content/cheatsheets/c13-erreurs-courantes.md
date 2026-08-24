@@ -4,7 +4,7 @@ subtitle: "Frequent pitfalls and how to avoid them"
 cardNumber: C13
 category: Design
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 213
 ---
 
@@ -22,7 +22,7 @@ At 85%+, response quality degrades. Use `/compact` as early as 75%.
 ## Prompting
 
 **Vague requests**
-`Refactor this file` with no context — unpredictable result. Be specific: what, why, constraints.
+`Refactor this file` with no context produces an unpredictable result. Be specific: what, why, constraints.
 
 **Iterating without checkpoints**
 Chaining 10 exchanges without validating. Check the diff after each significant change.
@@ -39,7 +39,7 @@ Putting all project documentation in CLAUDE.md. The startup context should be co
 Writing a complex hook without testing it in isolation. Test manually first, then enable it.
 
 **Ignoring settings.local.json**
-Not gitignoring this file — personal config leaks into the team repository.
+Not gitignoring this file lets personal config leak into the team repository.
 
 ## Security
 

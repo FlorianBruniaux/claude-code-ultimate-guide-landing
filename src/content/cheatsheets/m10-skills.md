@@ -4,7 +4,7 @@ subtitle: "Reusable skill modules with embedded resources"
 cardNumber: M10
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 110
 ---
 
@@ -21,6 +21,14 @@ my-skill/
 └── examples/
     └── pattern.ts
 ```
+
+## Invocation Modes
+
+| Mode | Frontmatter | Behavior |
+|------|-------------|----------|
+| **User-invocable** | `disable-model-invocation: true` | Triggered by user via `/name` |
+| **Model-invocable** | (no flag) | Auto-loaded by model |
+| **Both** | (no flag) | Invocable either way |
 
 ## SKILL.md frontmatter
 
@@ -39,26 +47,16 @@ allowed-tools: Read Grep Bash
 | `allowed-tools` | Tool whitelist (supports wildcards) |
 | `disable-model-invocation` | `true` for manual-only invocation |
 
-## Invocation Modes
+## Skills vs Commands
 
-| Mode | Frontmatter | Behavior |
-|------|-------------|----------|
-| User-invocable | `disable-model-invocation: true` | Triggered by user via `/name` |
-| Model-invocable | (no flag) | Auto-loaded by model when context matches |
-| Both | (no flag) | Invocable either way — user or model |
+| Aspect | Skill | Command |
+|--------|-------|---------|
+| **Resources** | Can embed files | Markdown only |
+| **Scope** | Domain knowledge | Procedural workflow |
+| **Reuse** | Between agents | Direct invocation |
+| **Standard** | agentskills.io (portable) | Claude Code only |
 
-Since CC 2.1.3, user-invocable skills (formerly "custom commands") live in `.claude/skills/` with `disable-model-invocation: true`. This unified model replaces the old `.claude/commands/` directory.
-
-## Skills vs Agents
-
-| Aspect | Skill | Agent |
-|--------|-------|-------|
-| **Resources** | Can embed files | Instructions only |
-| **Scope** | Domain knowledge | Specialized role |
-| **Reuse** | Between agents + direct | Delegation target |
-| **Standard** | agentskills.io (portable) | Claude Code format |
-
-The main difference: a skill can embed a 500-line `reference.md` that becomes available on invocation. An agent accumulates its own memory across sessions.
+The main difference: a skill can embed a 500-line `reference.md` file that becomes available on invocation. A command cannot.
 
 ## Marketplace: npx add-skill
 
@@ -85,16 +83,16 @@ Skills are triggered like commands, by their name:
 /design-patterns detect     # With argument
 ```
 
-Agents can preload skills via the `skills:` field in their frontmatter — the content is injected into the agent's context at startup.
+Agents can preload skills via the `skills:` field in their frontmatter. The content is injected into the agent's context at startup.
 
 ## Lifecycle and improvement
 
 Two long-term management patterns:
 
-**Claudeception** — meta-skill that generates new skills from session discoveries. Install: `git clone https://github.com/blader/Claudeception ~/.claude/skills/claudeception`
+**Claudeception**: meta-skill that generates new skills from session discoveries. Install: `git clone https://github.com/blader/Claudeception ~/.claude/skills/claudeception`
 
-**Claude Reflect System** — improves existing skills by analyzing corrections detected during sessions. Proposes changes before applying them.
+**Claude Reflect System**: improves existing skills by analyzing corrections detected during sessions. Proposes changes before applying them.
 
 ## Important caveat
 
-Skills are only invoked on explicit activation — evals show automatic invocation in only 56% of cases. For critical instructions that must always apply, use `CLAUDE.md` or `.claude/rules/` rather than a skill.
+Skills are only invoked on explicit activation. Evals show automatic invocation in only 56% of cases. For critical instructions that must always apply, use `CLAUDE.md` or `.claude/rules/` rather than a skill.

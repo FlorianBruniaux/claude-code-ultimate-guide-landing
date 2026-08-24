@@ -21,5 +21,5 @@ What does the restored `model` parameter on the Agent tool enable (v2.1.72)?
 
 ---
 
-The `model` parameter on the Agent tool (restored in v2.1.72) enables **per-invocation model overrides** — you can specify which model each sub-agent uses when spawning it via the Task tool. For example, an orchestrator on Opus 4.6 can spawn a code-review sub-agent on Sonnet for cost efficiency, or a security-audit sub-agent on Opus for thoroughness. This parameter was temporarily removed in a previous release and is now back with the same behavior as before.
+The `model` parameter on the Agent tool (restored in v2.1.72) enables **per-invocation model overrides**. You can specify which model each sub-agent uses when spawning it via the Task tool. For example, an orchestrator on Opus 4.6 can spawn a code-review sub-agent on Sonnet for cost efficiency, or a security-audit sub-agent on Opus for thoroughness. This parameter was temporarily removed in a previous release and is now back with the same behavior as before.
 ---

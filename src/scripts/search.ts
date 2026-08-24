@@ -1,6 +1,6 @@
 /**
  * Client-side search engine for the Cmd+K search modal
- * No external dependencies — pure TypeScript
+ * No external dependencies, pure TypeScript
  */
 
 export interface SearchEntry {

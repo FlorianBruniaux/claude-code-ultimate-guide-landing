@@ -21,4 +21,4 @@ Which image format is recommended for wireframes and diagrams in Claude Code?
 
 ---
 
-PNG is recommended for wireframes, diagrams, and text because it preserves sharp lines. WebP is good for general screenshots with compression. JPEG is for photos only—compression artifacts harm line detection. GIF should be avoided (static only, poor quality). Always crop to relevant area and resize to 1000-1200px if larger.
+PNG is recommended for wireframes, diagrams, and text because it preserves sharp lines. WebP is good for general screenshots with compression. JPEG is for photos only. Compression artifacts harm line detection. GIF should be avoided (static only, poor quality). Always crop to relevant area and resize to 1000-1200px if larger.

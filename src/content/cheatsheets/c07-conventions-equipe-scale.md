@@ -4,7 +4,7 @@ subtitle: "Synchronizing Claude Code practices across a team of 5+ developers"
 cardNumber: C07
 category: Design
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 207
 ---
 

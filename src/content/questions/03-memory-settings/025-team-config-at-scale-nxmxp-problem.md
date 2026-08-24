@@ -20,5 +20,5 @@ What is the "N×M×P fragmentation problem" in team AI configuration?
 
 ---
 
-N×M×P describes how AI instruction files multiply: N developers × M tools (Claude Code, Cursor, Windsurf) × P operating systems (macOS, Linux). For a 5-dev team using 3 tools on 2 OS types, that's 30 potential configurations. In practice, this causes real drift — one dev adds TypeScript rules, another never gets them; macOS-specific paths break on Linux. The solution is **Profile-Based Module Assembly** (Section 3.5), which extracts reusable modules and auto-assembles the final instruction file per developer profile, achieving a measured 59% token context reduction.
+N×M×P describes how AI instruction files multiply: N developers × M tools (Claude Code, Cursor, Windsurf) × P operating systems (macOS, Linux). For a 5-dev team using 3 tools on 2 OS types, that's 30 potential configurations. In practice, this causes real drift: one dev adds TypeScript rules, another never gets them; macOS-specific paths break on Linux. The solution is **Profile-Based Module Assembly** (Section 3.5), which extracts reusable modules and auto-assembles the final instruction file per developer profile, achieving a measured 59% token context reduction.
 ---

@@ -14,7 +14,7 @@ options:
   d: Record yourself explaining and review later
 doc_reference:
   file: guide/roles/learning-with-ai.md
-  section: V — Verify
+  section: 'V: Verify'
   anchor: '#v-verify-explain-it-back'
 ---
 

@@ -21,4 +21,4 @@ What does sandbox.failIfUnavailable control in Claude Code settings?
 
 ---
 
-sandbox.failIfUnavailable (boolean, default: false) controls whether Claude Code hard-fails when sandbox isolation cannot be activated. Set to true in production/CI environments to enforce that every session runs inside the sandbox — no silent fallback to unsandboxed mode. Set to false in dev environments where sandbox may not be available (e.g., certain Linux kernels or Docker-in-Docker). Part of the defense-in-depth configuration.
+sandbox.failIfUnavailable (boolean, default: false) controls whether Claude Code hard-fails when sandbox isolation cannot be activated. Set to true in production/CI environments to enforce that every session runs inside the sandbox, with no silent fallback to unsandboxed mode. Set to false in dev environments where sandbox may not be available (e.g., certain Linux kernels or Docker-in-Docker). Part of the defense-in-depth configuration.

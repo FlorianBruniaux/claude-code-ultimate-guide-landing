@@ -21,5 +21,5 @@ What is the Contribution Metrics dashboard feature (public beta, January 2026)?
 
 ---
 
-Contribution Metrics is a **Team and Enterprise plan feature** (public beta, Jan 2026) that tracks PRs merged and lines of code committed with/without Claude Code attribution. Access is for workspace admins and owners only. Setup: install the Claude GitHub App → enable GitHub Analytics in Admin settings → authenticate your GitHub organization. Anthropic's internal updated data shows **+67% PRs merged per engineer per day** and 70-90% of code now written with Claude Code assistance — though these are directional indicators, not rigorous benchmarks (no baseline period disclosed).
+Contribution Metrics is a **Team and Enterprise plan feature** (public beta, Jan 2026) that tracks PRs merged and lines of code committed with/without Claude Code attribution. Access is for workspace admins and owners only. Setup: install the Claude GitHub App → enable GitHub Analytics in Admin settings → authenticate your GitHub organization. Anthropic's internal updated data shows **+67% PRs merged per engineer per day** and 70-90% of code now written with Claude Code assistance, though these are directional indicators, not rigorous benchmarks (no baseline period disclosed).
 ---

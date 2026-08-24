@@ -23,4 +23,4 @@ What are the four core DORA metrics?
 
 ---
 
-The four core DORA metrics measure delivery system health: (1) Deployment Frequency — how often you deploy to production. (2) Lead Time for Changes — time from commit to running in production. (3) Change Failure Rate — percentage of deployments causing incidents or rollbacks. (4) Mean Time to Recovery (MTTR) — time to restore service after a failure. These four are the most validated delivery health indicators in the field, backed by years of DORA research.
+The four core DORA metrics measure delivery system health: (1) Deployment Frequency: how often you deploy to production. (2) Lead Time for Changes: time from commit to running in production. (3) Change Failure Rate: percentage of deployments causing incidents or rollbacks. (4) Mean Time to Recovery (MTTR): time to restore service after a failure. These four are the most validated delivery health indicators in the field, backed by years of DORA research.

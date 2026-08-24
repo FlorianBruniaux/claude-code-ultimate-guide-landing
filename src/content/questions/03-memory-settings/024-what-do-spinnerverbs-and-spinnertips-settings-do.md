@@ -22,5 +22,5 @@ What do the `spinnerVerbs` and `spinnerTipsOverride` settings control in `settin
 
 ---
 
-`spinnerVerbs` replaces or extends the rotating action words shown in the terminal while Claude is working (e.g. "Analyzing…", "Caffeinating…"). Set `"mode": "replace"` to fully replace the defaults or `"mode": "add"` to extend them. `spinnerTipsOverride` customizes the tips shown alongside the spinner; use `"excludeDefault": true` to remove built-in tips entirely. These settings have zero functional effect — they are purely UX personalization for developers who want a more personal or fun terminal experience.
+`spinnerVerbs` replaces or extends the rotating action words shown in the terminal while Claude is working (e.g. "Analyzing…", "Caffeinating…"). Set `"mode": "replace"` to fully replace the defaults or `"mode": "add"` to extend them. `spinnerTipsOverride` customizes the tips shown alongside the spinner; use `"excludeDefault": true` to remove built-in tips entirely. These settings have zero functional effect. They are purely UX personalization for developers who want a more personal or fun terminal experience.
 ---

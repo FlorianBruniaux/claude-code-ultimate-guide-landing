@@ -7,10 +7,10 @@ profiles:
 - power
 correct: a
 options:
-  a: "zaycv — programmatic malware campaign with clawhub/clawdhub1 typosquats"
-  b: "moonshine-100rze — DAN-style jailbreaking skills"
-  c: "pepe276 — Unicode-obfuscated instructions"
-  d: "Aslaep123 — typosquatted exchange tools"
+  a: "zaycv: programmatic malware campaign with clawhub/clawdhub1 typosquats"
+  b: "moonshine-100rze: DAN-style jailbreaking skills"
+  c: "pepe276: Unicode-obfuscated instructions"
+  d: "Aslaep123: typosquatted exchange tools"
 doc_reference:
   file: "guide/security/security-hardening.md"
   section: "Malicious Authors"

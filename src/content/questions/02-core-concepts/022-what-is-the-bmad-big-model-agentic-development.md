@@ -21,4 +21,4 @@ What is the BMAD (Big Model Agentic Development) methodology best suited for?
 
 ---
 
-BMAD is optimized for high-complexity projects with stable requirements — where the upfront investment in structured planning (requirements, architecture, stories) pays dividends. The key criterion is complexity + stability, not team headcount. BMAD uses specialized agents (Analyst, Architect, SM, Dev) to break down and execute work systematically. It struggles with rapidly changing requirements because replanning cost is high.
+BMAD is optimized for high-complexity projects with stable requirements, where the upfront investment in structured planning (requirements, architecture, stories) pays dividends. The key criterion is complexity + stability, not team headcount. BMAD uses specialized agents (Analyst, Architect, SM, Dev) to break down and execute work systematically. It struggles with rapidly changing requirements because replanning cost is high.

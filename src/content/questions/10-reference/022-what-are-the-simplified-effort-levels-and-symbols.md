@@ -8,10 +8,10 @@ profiles:
 - power
 correct: c
 options:
-  a: Four levels — low, medium, high, max — with icons ▲ △ ● ○
-  b: Three levels — quick, normal, deep — with symbols ○ ◐ ●
-  c: Three levels — low, medium, high — with symbols ○ ◐ ● (max was removed in v2.1.72)
-  d: Two levels — fast, thorough — toggled with Alt+T
+  a: Four levels (low, medium, high, max) with icons ▲ △ ● ○
+  b: Three levels (quick, normal, deep) with symbols ○ ◐ ●
+  c: Three levels (low, medium, high) with symbols ○ ◐ ● (max was removed in v2.1.72)
+  d: Two levels (fast, thorough) toggled with Alt+T
 doc_reference:
   file: guide/core/claude-code-releases.md
   section: v2.1.72 (2026-03-09)

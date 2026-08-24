@@ -4,7 +4,7 @@ subtitle: "Organize Claude's work with the Tasks API"
 cardNumber: M06
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 106
 ---
 
@@ -19,7 +19,7 @@ The Tasks API (v2.1.16+) introduces a four-level structure to break down any com
 | **Task** | Concrete deliverable |
 | **Subtask** | Atomic action |
 
-Tasks survive session endings, context compactions, and restarts — they are stored in `~/.claude/tasks/<id>/`.
+Tasks survive session endings, context compactions, and restarts. They are stored in `~/.claude/tasks/<id>/`.
 
 ## Core tools
 
@@ -74,7 +74,7 @@ Use it as soon as work exceeds three sequential steps, involves multiple directo
 
 ## Cost to anticipate
 
-`TaskList` costs one API call. Fetching each task's details with `TaskGet` adds one additional call per task — for twenty tasks, that's twenty times more overhead. Placing critical information in the `subject` field (visible via `TaskList`) and keeping descriptions concise limits this cost.
+`TaskList` costs one API call. Fetching each task's details with `TaskGet` adds one additional call per task. For twenty tasks, that's twenty times more overhead. Placing critical information in the `subject` field (visible via `TaskList`) and keeping descriptions concise limits this cost.
 
 ## List ID: naming rules
 

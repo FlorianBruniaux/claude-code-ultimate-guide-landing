@@ -4,7 +4,7 @@ subtitle: "Practical hook examples to automate your workflow"
 cardNumber: M12
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 112
 ---
 
@@ -25,7 +25,7 @@ esac
 exit 0
 ```
 
-Configure as `async: true` — formatting is cosmetic and should not block Claude.
+Configure as `async: true`, since formatting is cosmetic and should not block Claude.
 
 ## macOS notification on completion
 
@@ -92,42 +92,17 @@ exit 0
 
 Rather than multiplying entries in `settings.json`, a `dispatch.sh` script routes to specialized handlers based on the file or tool. Result: a single `Edit|Write|Bash` matcher in the config, with separately maintainable handlers in `.claude/hooks/handlers/`.
 
-## Output replacement: redact secrets before Claude sees them (v2.1.121)
+## Tool output replacement (v2.1.121)
 
-PostToolUse now supports output replacement for ALL tools. If your hook prints a JSON with an `"output"` key, Claude receives that instead of the real tool result. Use this to strip secrets from file reads.
+`PostToolUse` hook. Replaces what Claude receives as a tool result via `hookSpecificOutput.updatedToolOutput`. Works for all tools: Bash, Read, Write, Edit, MCP. Use cases: scrub sensitive data before Claude processes it, compress large results, inject audit metadata into every tool response.
 
 ```bash
 INPUT=$(cat)
-TOOL=$(echo "$INPUT" | jq -r '.tool_name')
-OUTPUT=$(echo "$INPUT" | jq -r '.tool_response.content // empty')
-
-# Redact .env values before Claude sees them
-if [[ "$TOOL" == "Read" ]]; then
-  CLEAN=$(echo "$OUTPUT" | sed 's/\(API_KEY=\).*/\1[REDACTED]/')
-  echo "{\"output\": $(echo "$CLEAN" | jq -Rs .)}"
-fi
+OUTPUT=$(echo "$INPUT" | jq -r '.tool_response.output // empty')
+# Redact tokens before Claude sees them
+CLEAN=$(echo "$OUTPUT" | sed 's/ghp_[A-Za-z0-9]*/[TOKEN_REDACTED]/g')
+echo "{\"hookSpecificOutput\": {\"updatedToolOutput\": $(echo "$CLEAN" | jq -Rs .)}}"
 exit 0
-```
-
-## Invoking an MCP tool from a hook (v2.1.118)
-
-Hooks can use `type: "mcp_tool"` to call any connected MCP server without a shell script. Example: post a Slack notification via an MCP Slack server whenever a file is edited.
-
-```json
-{
-  "PostToolUse": [{
-    "matcher": "Write|Edit",
-    "hooks": [{
-      "type": "mcp_tool",
-      "server": "slack",
-      "tool": "post_message",
-      "input": {
-        "channel": "#dev-alerts",
-        "text": "Claude edited a file"
-      }
-    }]
-  }]
-}
 ```
 
 ## Installation checklist

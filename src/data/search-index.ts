@@ -649,7 +649,7 @@ const guideSpotlightEntries: SearchEntry[] = [
   },
   {
     id: 'guide-workflow-parallel-vs-pipeline',
-    title: 'Workflow: parallel() vs pipeline() — When and Why',
+    title: 'Workflow: parallel() vs pipeline() (When and Why)',
     keywords: 'parallel pipeline barrier difference performance benchmark tokens wall clock 3x latency 2x tokens when to use workflow primitives concurrency guard budget remaining',
     category: 'Guide > Workflows',
     url: '/guide/workflows/dynamic-workflows/#4-pipeline-vs-parallel--when-and-why',

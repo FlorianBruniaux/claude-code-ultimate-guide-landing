@@ -21,5 +21,5 @@ What does the `modelOverrides` setting introduced in v2.1.73 allow you to do?
 
 ---
 
-`modelOverrides` lets you map model picker entries to custom provider model IDs — for example, pointing the "Opus" entry to a specific Bedrock inference profile ARN. This is useful on third-party providers (Bedrock, Vertex, Foundry) where the model IDs differ from first-party API names. It goes in `~/.claude/settings.json` and does not switch models mid-conversation; it redirects which provider model ID is used when you select a given model from the picker.
+`modelOverrides` lets you map model picker entries to custom provider model IDs, for example pointing the "Opus" entry to a specific Bedrock inference profile ARN. This is useful on third-party providers (Bedrock, Vertex, Foundry) where the model IDs differ from first-party API names. It goes in `~/.claude/settings.json` and does not switch models mid-conversation; it redirects which provider model ID is used when you select a given model from the picker.
 ---

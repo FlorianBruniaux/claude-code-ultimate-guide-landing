@@ -6,10 +6,10 @@ profiles:
   - power
 correct: b
 options:
-  a: "Opus 4.6: 1,024 tokens — any CLAUDE.md over one paragraph is cached"
-  b: "Opus 4.6: 4,096 tokens — a CLAUDE.md under ~4,000 tokens is never cached on Opus 4.6"
-  c: "Opus 4.6: 2,048 tokens — Opus and Sonnet share the same minimum"
-  d: "Opus 4.6: 8,192 tokens — most CLAUDE.md files are too short to be cached"
+  a: "Opus 4.6: 1,024 tokens (any CLAUDE.md over one paragraph is cached)"
+  b: "Opus 4.6: 4,096 tokens (a CLAUDE.md under ~4,000 tokens is never cached on Opus 4.6)"
+  c: "Opus 4.6: 2,048 tokens (Opus and Sonnet share the same minimum)"
+  d: "Opus 4.6: 8,192 tokens (most CLAUDE.md files are too short to be cached)"
 doc_reference:
   file: guide/ultimate-guide.md
   section: Cost Optimization

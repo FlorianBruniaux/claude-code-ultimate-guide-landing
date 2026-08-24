@@ -4,7 +4,7 @@ subtitle: "The extension protocol and essential servers"
 cardNumber: T12
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 12
 ---
 
@@ -35,8 +35,7 @@ MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/setti
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"],
-      "env": {},
-      "alwaysLoad": true
+      "env": {}
     },
     "github": {
       "command": "npx",
@@ -72,10 +71,26 @@ Stable extension since January 2026, co-developed by Anthropic and OpenAI. It al
 
 **Use cases**: data dashboards, complex forms, real-time visualizations directly within the conversation.
 
+## alwaysLoad (v2.1.121)
+
+By default, MCP tools are loaded on demand (via `ToolSearch`). For servers with 1 to 5 critical tools needed every session, use `alwaysLoad: true` to make them always available without a prior search call:
+
+```json
+{
+  "mcpServers": {
+    "my-critical-server": {
+      "command": "npx",
+      "args": ["my-mcp-server"],
+      "alwaysLoad": true
+    }
+  }
+}
+```
+
+Avoid on servers with many tools (20+): the token cost adds up quickly.
+
 ## Important limitations
 
-An MCP server does not access the conversation history — it only sees the parameters passed at call time. Each call is independent unless the server itself implements a cache. It also cannot modify Claude's system prompt or bypass the permissions system.
+An MCP server sees only the parameters passed at call time, not the conversation history. Each call is independent unless the server itself implements a cache. It also cannot modify Claude's system prompt or bypass the permissions system.
 
 **Token cost**: each loaded server adds approximately 2K tokens of overhead per session (tool definitions). Load only what is necessary for the current project.
-
-**`alwaysLoad: true` (v2.1.121)**: add this key to a server's config to make it load automatically at every session start, without needing `/mcp enable`. Useful for servers you use in every project (Context7, GitHub). Servers without this key remain on-demand.

@@ -7,7 +7,7 @@ profiles:
   - power
 correct: b
 options:
-  a: There is no difference — `/branch` is just an alias for starting a new session
+  a: "There is no difference: `/branch` is just an alias for starting a new session"
   b: "`/branch` forks the current session into an independent copy that preserves all prior context, while a fresh session starts empty"
   c: "`/branch` creates a git branch automatically, while a fresh session does not"
   d: "`/branch` is only available in Plan Mode; a fresh session works in any mode"

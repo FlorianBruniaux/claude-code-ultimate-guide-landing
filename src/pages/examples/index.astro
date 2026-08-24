@@ -60,9 +60,9 @@ const jsonLd = [
     <TerminalPlayground
       id="bashPlayground"
       summaryLabel="Explore the templates in a real terminal →"
-      titlebarLabel="bash — /home/user"
+      titlebarLabel="bash: /home/user"
       payloadUrl="/terminal-fs.json"
-      banner="Claude Code template explorer — a real bash shell, real templates."
+      banner="Claude Code template explorer: a real bash shell, real templates."
       suggestions={EXAMPLES_SUGGESTIONS}
       fallbackLinkHref="#catalog"
       fallbackLinkLabel="the template catalog"
@@ -477,7 +477,7 @@ const jsonLd = [
       }
     }
 
-    // Event delegation — handles all clicks from dynamically rendered HTML
+    // Event delegation handles all clicks from dynamically rendered HTML
     catalogEl.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
 

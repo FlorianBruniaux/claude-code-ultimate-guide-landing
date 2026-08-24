@@ -4,13 +4,13 @@ subtitle: "Integrating Claude Code into GitHub CI/CD pipelines"
 cardNumber: M19
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 119
 ---
 
 ## Recommended pattern: externalized prompt
 
-The most robust pattern separates review logic from workflow mechanics. The YAML file orchestrates triggers and permissions; the `.github/prompts/code-review.md` file contains the review criteria. Modifying criteria does not require touching the workflow.
+This pattern separates review logic from workflow mechanics. The YAML file orchestrates triggers and permissions; the `.github/prompts/code-review.md` file contains the review criteria. Modifying criteria does not require touching the workflow.
 
 ```
 .github/
@@ -85,20 +85,6 @@ This instruction reduces false positives without complicating the workflow.
 The `issue_comment` trigger allows any team member to trigger a review on demand by typing `/claude-review` in a PR comment. Useful for complex PRs where an automatic review on open would not have had enough context.
 
 The condition `github.event.issue.pull_request != null` filters ordinary issue comments to activate the agent only on PRs.
-
-## `claude ultrareview` in CI (v2.1.120)
-
-`claude ultrareview` runs a deep multi-pass review of a target file or the current PR. The `--json` flag makes it parseable downstream.
-
-```yaml
-- name: Ultra review changed files
-  run: |
-    claude ultrareview ${{ github.event.pull_request.head.sha }} \
-      --json > ultrareview.json
-    cat ultrareview.json | jq '.issues[] | select(.severity == "critical")'
-```
-
-Combine with the anti-hallucination pattern: `ultrareview` verifies each finding with `Read` or `Grep` before reporting, so false positives are reduced compared to a simple prompt-based review.
 
 ## Handling failures
 

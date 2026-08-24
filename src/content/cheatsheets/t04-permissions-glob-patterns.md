@@ -1,10 +1,10 @@
 ---
 title: "Permissions: Glob Patterns & Whitelist"
-subtitle: "Exact glob syntax for permissions.allow/deny, the tool-qualified format (file_path:*.env), and 3 autoApproveTools levels"
+subtitle: "Precisely controlling accessible tools with glob patterns"
 cardNumber: T04
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 4
 ---
 
@@ -46,15 +46,15 @@ order: 4
 
 ```json
 // Level 1 - Read only
-{ "autoApproveTools": ["Read", "Grep", "Glob"] }
+{ "permissions": { "allow": ["Read", "Grep", "Glob"] } }
 
 // Level 2 - Git + package manager
-{ "autoApproveTools": ["Read", "Grep", "Glob",
-    "Bash(git *)", "Bash(pnpm *)"] }
+{ "permissions": { "allow": ["Read", "Grep", "Glob",
+    "Bash(git *)", "Bash(pnpm *)"] } }
 
 // Level 3 - Full development
-{ "autoApproveTools": ["Read", "Grep", "Glob",
-    "Edit", "Write", "Bash(git *)", "Bash(pnpm *)"] }
+{ "permissions": { "allow": ["Read", "Grep", "Glob",
+    "Edit", "Write", "Bash(git *)", "Bash(pnpm *)"] } }
 ```
 
 ## Behavior of the three categories
@@ -69,10 +69,6 @@ order: 4
 ## Known limitation
 
 `permissions.deny` has a documented limit: background indexing can expose file content via system callbacks before permission checks apply (GitHub #4160). For guaranteed secret protection, store these files outside the project directory.
-
-## Native file search: bfs and ugrep (v2.1.117)
-
-On macOS and Linux, Claude Code now uses native `bfs` (Breadth-First Search) and `ugrep` binaries instead of the Glob and Grep tools for file discovery and content search. This delivers approximately 40% faster file operations with no configuration required. The glob pattern syntax in `settings.json` remains unchanged.
 
 ## Where to define permissions
 

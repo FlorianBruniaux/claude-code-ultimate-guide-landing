@@ -22,4 +22,4 @@ What is the '3 metrics, 5 minutes Monday ritual' for tech leads, and what does i
 
 ---
 
-The Monday ritual is a lightweight weekly habit for tech leads: spend five minutes reviewing three steering metrics (typically Deployment Frequency, CFR by code origin, and review time delta). The goal is early detection of drift. Velocity traps, skill atrophy, and review shortcuts develop gradually — weekly check-ins catch the signal before it becomes a cultural pattern that is hard to reverse. Five minutes is intentionally short: the ritual should have near-zero friction so it actually happens.
+The Monday ritual is a lightweight weekly habit for tech leads: spend five minutes reviewing three steering metrics (typically Deployment Frequency, CFR by code origin, and review time delta). The goal is early detection of drift. Velocity traps, skill atrophy, and review shortcuts develop gradually. Weekly check-ins catch the signal before it becomes a cultural pattern that is hard to reverse. Five minutes is intentionally short: the ritual should have near-zero friction so it actually happens.

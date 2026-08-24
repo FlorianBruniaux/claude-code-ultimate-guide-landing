@@ -4,7 +4,7 @@ subtitle: "When to switch to the extended context window and at what cost"
 cardNumber: T19
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 19
 ---
 
@@ -24,14 +24,13 @@ Above 200K input tokens, **all context tokens** are billed at the premium rate, 
 | Model | At 256K | At 1M |
 |-------|---------|-------|
 | Opus 4.6 | 93% | 76% |
-| Opus 4.7 | — | 1M context now properly utilized (v2.1.117 fix) |
 | Sonnet 4.5 | n/a | 18.5% |
 
-Opus 4.6 remains usable at 1M (76% precision), but degradation is measurable. Sonnet collapses and is not recommended beyond 200K for precise tasks. Opus 4.7 had a bug where 1M context was not being fully utilized — this was fixed in v2.1.117.
+Opus 4.8 remains usable at 1M (76% precision), but degradation is measurable. Sonnet collapses and is not recommended beyond 200K for precise tasks.
 
 ## Cost per Session (Approximate)
 
-| Session type | Tokens in | Sonnet 4.6 | Opus 4.6 |
+| Session type | Tokens in | Sonnet 4.6 | Opus 4.8 |
 |-------------|-----------|-----------|---------|
 | PR review (≤200K) | 50K | ~$0.23 | ~$0.38 |
 | Refactoring (≤200K) | 150K | ~$0.75 | ~$1.25 |
@@ -55,7 +54,7 @@ The community rule: 200K + RAG by default, 1M Opus reserved for cases where load
 
 ```python
 response = client.messages.create(
-    model="claude-opus-4-6",
+    model="claude-opus-4-8",
     extra_headers={
         "anthropic-beta": "context-1m-2025-08-07"
     },
@@ -63,7 +62,7 @@ response = client.messages.create(
 )
 ```
 
-For direct API access only. Claude Code Max/Team/Enterprise plans have 1M enabled automatically — no header needed. Without this header on direct API calls, requests exceeding 200K tokens return an error even on tier 4 accounts.
+For direct API access only. Claude Code Max/Team/Enterprise plans have 1M enabled automatically, no header needed. Without this header on direct API calls, requests exceeding 200K tokens return an error even on tier 4 accounts.
 
 ## Recommended Pattern
 

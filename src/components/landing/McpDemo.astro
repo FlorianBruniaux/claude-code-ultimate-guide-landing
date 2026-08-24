@@ -1,5 +1,5 @@
 ---
-// MCP Server — MCP in Action
+// MCP Server: MCP in Action
 // Tab-based terminal demo showing real command outputs
 
 const commands = [
@@ -8,42 +8,42 @@ const commands = [
     label: '/ccguide:daily',
     title: 'Daily Update',
     description: 'One command: refresh official Anthropic docs, diff against baseline, then guide + CC CLI digest. Everything that changed since yesterday.',
-    output: `# Daily Claude Code Update — 2026-03-12
+    output: `# Daily Claude Code Update (2026-03-12)
 
 ## Official Anthropic Docs
 5 sections modified (0 added, 0 removed):
 
-- amazon-bedrock (+18 lines) — New section "Map each model version
+- amazon-bedrock (+18 lines): New section "Map each model version
   to an inference profile"
   https://code.claude.com/docs/en/amazon-bedrock
-- model-config (+26 lines) — New section "Override model IDs per
+- model-config (+26 lines): New section "Override model IDs per
   version" (modelOverrides feature)
   https://code.claude.com/docs/en/model-config
-- settings (+1 line) — Added modelOverrides entry
+- settings (+1 line): Added modelOverrides entry
   https://code.claude.com/docs/en/settings
-- output-styles (+5 lines) — Updated: "Run /config and select
+- output-styles (+5 lines): Updated: "Run /config and select
   Output style…" (reflects /output-style deprecation)
   https://code.claude.com/docs/en/output-styles
-- interactive-mode (-8013 chars) — Large content removal in
+- interactive-mode (-8013 chars): Large content removal in
   command reference table
   https://code.claude.com/docs/en/interactive-mode
 
 ## Guide + CC CLI
 
-Guide [3.37.1] — 2026-03-18:
+Guide [3.37.1] (2026-03-18):
 - 3 new AI roles: MLOps Engineer, AI Developer Advocate, AI Orchestration Engineer
-- Packmind — Engineering Standards Distribution (ContextOps, MCP server)
+- Packmind: Engineering Standards Distribution (ContextOps, MCP server)
 - Comprehension debt concept + regulatory exposure (EU AI Act, FDA 2025)
 - CLAUDE.md anti-patterns: ETH Zürich /init research, discoverability filter, anchoring risk
 
-Guide [3.41.0] — 2026-05-27:
+Guide [3.41.0] (2026-05-27):
 - stacklit, scip-search, lilmd: three agent research CLI tools documented
 - Threat DB updated to v2.19.0 (OpenClaw Claw Chain CVEs, 28+ tracked)
 - CC releases updated to v2.1.152 (/code-review --fix, disallowed-tools, MessageDisplay hook)
 - Section 2.10-2.11 Prompt Engineering + Structured Outputs
 - 314 templates, 334 quiz questions
 
-Guide [3.37.6] — 2026-03-26:
+Guide [3.37.6] (2026-03-26):
 - 4 new commands from gstack audit: /investigate (Iron Law debugging), /qa (diff-aware
   browser QA, 3 tiers), /canary (post-deploy monitoring, transient tolerance), /land-and-deploy
   (merge-to-verify pipeline, 6 platform detection)
@@ -51,17 +51,17 @@ Guide [3.37.6] — 2026-03-26:
 - settings-reference.md: 1,284-line complete settings.json + env vars reference (v2.1.81)
 - 223 templates total (+4)
 
-Guide [3.37.5] — 2026-03-23:
+Guide [3.37.5] (2026-03-23):
 - 5 gaps filled from CC releases 2.1.77-2.1.81: StopFailure hook in Event Types table,
   rate_limits statusline JSON field, \${CLAUDE_PLUGIN_DATA} plugin storage, --bare CI mode
   in GitHub Actions example, sandbox.filesystem settings (allowWrite/denyRead/allowRead)
 - Threat database updated to v2.9.0 (1 new malicious author, 5 new CVEs, 2 new campaigns)
 - eval-skills skill: removed non-official tags criterion, scoring adjusted to 14 pts
 
-Guide [3.37.4] — 2026-03-23:
-- Resource eval + integration: Harman JiTTesting Meta paper (4/5) — JiTTests methodology
+Guide [3.37.4] (2026-03-23):
+- Resource eval + integration: Harman JiTTesting Meta paper (4/5), JiTTests methodology
   added to methodologies.md (4x over hardening tests, 70% reduction in review load)
-- Resource eval + integration: Caliber config quality tool (3/5) — new Configuration
+- Resource eval + integration: Caliber config quality tool (3/5), new Configuration
   Quality section in third-party-tools.md (61 checks, drift detection via git signals)
 - Resource eval: Larridin AI-native teams (4/5), Anthropic weekly watch Mar 16-23 (3/5)
 - 3 integration gaps identified: thinking.display:omitted, model capabilities API,
@@ -71,7 +71,7 @@ CC CLI releases: v2.1.139 released 2026-05-12 (latest tracked)
 
 ---
 Key signal: Anthropic docs now live with modelOverrides
-documentation (Bedrock inference profile ARN mapping) — aligns
+documentation (Bedrock inference profile ARN mapping). This aligns
 with v2.1.73 release.
 
 Docs snapshot: 2026-03-11 → 2026-03-12`,
@@ -80,8 +80,8 @@ Docs snapshot: 2026-03-11 → 2026-03-12`,
     id: 'examples',
     label: '/ccguide:examples',
     title: 'Templates',
-    description: '255 production-ready templates — agents, commands, hooks, skills, scripts — with direct GitHub links.',
-    output: `# Claude Code Ultimate Guide — Templates (255)
+    description: '255 production-ready templates (agents, commands, hooks, skills, scripts) with direct GitHub links.',
+    output: `# Claude Code Ultimate Guide: Templates (255)
 GitHub: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
 
 ## Agents (6)
@@ -133,8 +133,8 @@ ex: /ccguide:example security-gate`,
     id: 'topics',
     label: '/ccguide:topics',
     title: 'Topics',
-    description: '893 entries across 25 categories — browse the full index before diving into specific sections.',
-    output: `# Claude Code Ultimate Guide — 893 indexed entries, 25 categories (v3.41.0)
+    description: '893 entries across 25 categories. Browse the full index before diving into specific sections.',
+    output: `# Claude Code Ultimate Guide: 893 indexed entries, 25 categories (v3.41.0)
 
 ┌────────────┬─────────┬───────────────────────────────────────────────┐
 │ Category   │ Entries │ Examples                                       │
@@ -177,10 +177,10 @@ Latest: v2.1.139 (updated: 2026-05-12)
 https://github.com/FlorianBruniaux/.../guide/claude-code-releases.md
 
 ---
-v2.1.81 — 2026-03-22
+v2.1.81 (2026-03-22)
 
 - --bare flag for scripted -p calls (skips hooks/LSP/plugins; API key only)
-- --channels permission relay — forward tool approvals to your phone
+- --channels permission relay: forward tool approvals to your phone
 - MCP read/search tool calls collapse into "Queried {server}" line (Ctrl+O)
 - Plan mode hides "clear context" by default (showClearContextOnPlanAccept: true)
 - Fixed worktree session resume switching back to worktree automatically
@@ -188,7 +188,7 @@ v2.1.81 — 2026-03-22
 - Fixed voice mode retry failures + audio recovery after WebSocket drop
 - Fixed Node.js 18 crash; unnecessary permission prompts for dashes in commands
 
-v2.1.78 — 2026-03-18
+v2.1.78 (2026-03-18)
 
 - StopFailure hook event fires on API errors (rate limit, auth failure)
 - \${CLAUDE_PLUGIN_DATA} variable for persistent plugin state across updates
@@ -200,7 +200,7 @@ v2.1.78 — 2026-03-18
 - Fixed infinite loop from API errors triggering stop hooks in a cycle
 - Fixed --resume truncating history on large sessions with subagents
 
-v2.1.77 — 2026-03-17
+v2.1.77 (2026-03-17)
 
 - Opus 4.7 + xhigh effort level (maximum reasoning budget) added
 - Opus 4.6 default max output raised to 64k tokens; upper bound for
@@ -211,9 +211,9 @@ v2.1.77 — 2026-03-17
   deny permission rules (including managed settings)
 - Fixed auto-updater accumulating GBs of memory from overlapping downloads
 - Fixed --resume silently truncating recent conversation history
-- Breaking: Agent tool resume parameter removed — use SendMessage instead
+- Breaking: Agent tool resume parameter removed, use SendMessage instead
 
-v2.1.76 — 2026-03-14
+v2.1.76 (2026-03-14)
 
 - MCP elicitation: servers request structured input mid-task via
   interactive dialog (form fields or browser URL)
@@ -224,7 +224,7 @@ v2.1.76 — 2026-03-14
 - Auto-compact circuit breaker: stops after 3 consecutive failures
 - Fixed Bash(cmd:*) rules not matching when argument contains #
 
-v2.1.75 — 2026-03-13
+v2.1.75 (2026-03-13)
 
 - 1M context for Opus 4.7 and Opus 4.6 now default for Max, Team, Enterprise
   (previously required extra usage)
@@ -234,7 +234,7 @@ v2.1.75 — 2026-03-13
 - Fixed Bash tool mangling ! in piped commands
 - Improved startup performance on macOS non-MDM machines
 
-v2.1.74 — 2026-03-12
+v2.1.74 (2026-03-12)
 
 - /context command now shows actionable suggestions (context-heavy
   tools, memory bloat, capacity warnings)
@@ -243,21 +243,21 @@ v2.1.74 — 2026-03-12
 - Fixed managed policy ask rules bypassed by user allow rules
 - Fixed SessionEnd hooks killed after 1.5s (now configurable)
 
-v2.1.73 — 2026-03-11
+v2.1.73 (2026-03-11)
 - modelOverrides setting: map model picker entries to custom
   provider model IDs (Bedrock ARNs etc.)
 - Fixed deadlock when many skill files change at once
 - Fixed subagents with model: opus/sonnet/haiku being downgraded
   on Bedrock/Vertex/Foundry
-- Deprecated /output-style — use /config instead
+- Deprecated /output-style, use /config instead
 
-v2.1.72 — 2026-03-09
+v2.1.72 (2026-03-09)
 - Restored model param on Agent tool for per-invocation overrides
 - Fixed SDK query() prompt cache invalidation (up to 12x savings)
 - /plan accepts optional description; ExitWorktree tool added
 - Simplified effort levels: low/medium/high (removed max)
 
-v2.1.71 — 2026-03-06
+v2.1.71 (2026-03-06)
 - /loop command: run a prompt or slash command on a schedule
 - Cron scheduling tools for recurring prompts within a session
 
@@ -271,7 +271,7 @@ Pour une version spécifique : /ccguide:release 2.1.73`,
     title: 'Security Intelligence',
     description: 'Browse 83 CVEs and attack techniques from the threat database. Look up any CVE or T-code for full details, mitigations, and sources.',
     output: `# Threat Database Summary
-Version 2.4.0 — updated 2026-02-28
+Version 2.4.0 (updated 2026-02-28)
 https://github.com/FlorianBruniaux/.../threat-db.yaml
 
 | Category              | Count |
@@ -285,7 +285,7 @@ https://github.com/FlorianBruniaux/.../threat-db.yaml
 
 --- get_threat("CVE-2025-53109") ---
 
-# CVE-2025-53109 — Filesystem MCP Server
+# CVE-2025-53109: Filesystem MCP Server
 Severity: HIGH | Source: Cymulate EscapeRoute
 
 ## Description
@@ -298,7 +298,7 @@ Update to >= 0.6.3; avoid Filesystem MCP in sensitive environments
 
 --- get_threat("T001") ---
 
-# T001 — Tool Poisoning via SKILL.md
+# T001: Tool Poisoning via SKILL.md
 ## Description
 Hidden instructions in SKILL.md that instruct the agent
 to run malicious commands.
@@ -316,7 +316,7 @@ Mitigation: Scan SKILL.md for shell commands;
     id: 'slash',
     label: 'Slash commands',
     title: 'Slash commands',
-    description: '13 shortcuts /ccguide:* — search, fetch templates, track official Anthropic docs changes, and get a daily briefing.',
+    description: '13 shortcuts under /ccguide:* to search, fetch templates, track official Anthropic docs changes, and get a daily briefing.',
     output: `# Slash commands /ccguide:* (13 total)
 
 cp -r .claude/commands/ccguide ~/.claude/commands/ccguide

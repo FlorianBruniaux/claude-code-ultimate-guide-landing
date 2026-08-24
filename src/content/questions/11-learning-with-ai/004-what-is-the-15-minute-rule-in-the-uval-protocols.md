@@ -15,7 +15,7 @@ options:
   d: Spend 15 minutes explaining AI code to a colleague
 doc_reference:
   file: guide/roles/learning-with-ai.md
-  section: U — Understand First
+  section: "U: Understand First"
   anchor: '#u-understand-first-the-15-minute-rule'
 ---
 

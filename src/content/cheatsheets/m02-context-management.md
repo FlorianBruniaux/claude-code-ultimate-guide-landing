@@ -4,7 +4,7 @@ subtitle: "Managing the context window for efficient sessions"
 cardNumber: M02
 category: Methodology
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 102
 ---
 
@@ -23,8 +23,8 @@ order: 102
 1. ~/.claude/CLAUDE.md       Global rules
 2. ./CLAUDE.md               Project rules (root)
 3. subfolder/CLAUDE.md       Local rules (cumulative)
-4. @file                     Explicit inline import
-5. --context flag            File passed via CLI
+4. .claude/rules/*.md        Rules auto-loaded at startup
+5. @file                     Explicit inline import (in session)
 ```
 
 ## Management Commands
@@ -32,9 +32,7 @@ order: 102
 ```bash
 /compact        # Summarize + free ~40% of context
 /clear          # Full reset (loses history)
-/usage          # View tokens used / remaining + per-model breakdown
-/cost           # *(alias for /usage since v2.1.118)*
-/stats          # *(alias for /usage since v2.1.118)*
+/cost           # View tokens used / remaining
 /status         # Detailed context state
 ```
 
@@ -47,17 +45,17 @@ order: 102
 # Via CLAUDE.md (persistent)
 Always read package.json before working on deps.
 
-# Via --context (session)
-claude --context "We use TypeScript strict mode"
+# Via .claude/rules/ (auto-loaded at startup)
+Rules scoped by path (paths:) or global
 ```
 
 ## Strategies by Scenario
 
-**Long session (refactor)** — Make regular checkpoints with `/compact` every 30 min. Save important decisions in `CLAUDE.md`.
+**Long session (refactor)**: Make regular checkpoints with `/compact` every 30 min. Save important decisions in `CLAUDE.md`.
 
-**Complex debugging** — Provide only the relevant files with `@file`. Avoid loading the entire project at once.
+**Complex debugging**: Provide only the relevant files with `@file`. Avoid loading the entire project at once.
 
-**Multi-file** — Use agents (`--agent`) to delegate: each sub-agent has its own isolated context.
+**Multi-file**: Use agents (`--agent`) to delegate: each sub-agent has its own isolated context.
 
 ## What Consumes the Most
 
@@ -83,4 +81,4 @@ and the team decided after many debates to...
 
 ## Common Anti-patterns
 
-Do not paste large JSON or raw logs into the prompt — use a temporary file and `@file` instead. Do not ignore context warnings: at 85%+, response quality degrades noticeably.
+Do not paste large JSON or raw logs into the prompt. Use a temporary file and `@file` instead. Do not ignore context warnings: at 85%+, response quality degrades noticeably.

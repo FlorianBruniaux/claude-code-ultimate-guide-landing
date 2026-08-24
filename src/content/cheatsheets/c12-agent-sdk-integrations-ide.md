@@ -4,7 +4,7 @@ subtitle: "Integrating Claude Code into Xcode, VS Code, and other environments"
 cardNumber: C12
 category: Design
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 212
 ---
 

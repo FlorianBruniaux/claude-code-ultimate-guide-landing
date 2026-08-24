@@ -22,4 +22,4 @@ What are the 5 dimensions of the SPACE framework?
 
 ---
 
-SPACE (developed by GitHub, Microsoft, and University of Victoria, 2021) covers: (S) Satisfaction & Well-being — developer satisfaction and burnout signals. (P) Performance — quality and reliability of delivered work (CFR, Bug Escape Rate). (A) Activity — volume of work output (deployment frequency, throughput). (C) Communication & Collaboration — PR review latency, cross-team dependency resolution. (E) Efficiency & Flow — deep work capacity, context-switching frequency, friction. DORA measures the delivery system; SPACE measures the people inside it.
+SPACE (developed by GitHub, Microsoft, and University of Victoria, 2021) covers: (S) Satisfaction & Well-being: developer satisfaction and burnout signals. (P) Performance: quality and reliability of delivered work (CFR, Bug Escape Rate). (A) Activity: volume of work output (deployment frequency, throughput). (C) Communication & Collaboration: PR review latency, cross-team dependency resolution. (E) Efficiency & Flow: deep work capacity, context-switching frequency, friction. DORA measures the delivery system; SPACE measures the people inside it.

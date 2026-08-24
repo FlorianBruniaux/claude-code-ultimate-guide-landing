@@ -5,7 +5,7 @@
  * (public/terminal-fs.json) and fetched once, in full, when the terminal
  * mounts. Deliberately NOT lazy per-file: just-bash's InMemoryFs.stat()
  * materializes lazy entries to compute size, and grep batches 50 concurrent
- * fetches — a single `grep -r` on a lazy filesystem would fan out into
+ * fetches. A single `grep -r` on a lazy filesystem would fan out into
  * dozens of requests to a possibly rate-limited source. See the design doc
  * for the full reasoning.
  */
@@ -22,7 +22,7 @@ const DEFAULT_URL = '/terminal-fs.json'
 
 /**
  * Fetch and parse the generated payload. Throws on a non-ok response or a
- * network failure — callers decide the fallback behavior (see boot.ts,
+ * network failure; callers decide the fallback behavior (see boot.ts,
  * which falls back to FALLBACK_PAYLOAD and shows a reduced-mode banner).
  */
 type FetchLike = (url: string, init?: { signal?: AbortSignal }) => Promise<Response>
@@ -45,7 +45,7 @@ export async function loadTerminalFs(
 /**
  * Return a payload containing only files whose path starts with one of the
  * given prefixes. Used to carve a small subset (e.g. just agents/) for a
- * lighter-weight embed — the homepage teaser planned for phase 2.
+ * lighter-weight embed, the homepage teaser planned for phase 2.
  */
 export function subsetFs(payload: TerminalFsPayload, prefixes: string[]): TerminalFsPayload {
   const files: Record<string, string> = {}
@@ -60,7 +60,7 @@ export function subsetFs(payload: TerminalFsPayload, prefixes: string[]): Termin
 /**
  * Minimal, self-contained payload used when the generated JSON can't be
  * fetched (network failure, rate limit, build produced no file yet). Small
- * enough to inline directly in the bundle — no network round-trip.
+ * enough to inline directly in the bundle, with no network round-trip.
  */
 export const FALLBACK_PAYLOAD: TerminalFsPayload = {
   version: 'fallback',

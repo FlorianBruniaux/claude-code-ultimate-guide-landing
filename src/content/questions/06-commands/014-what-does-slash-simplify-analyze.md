@@ -21,5 +21,5 @@ What does the `/simplify` command do (v2.1.63+)?
 
 ---
 
-`/simplify` reviews your **recently changed code** for over-engineering and redundant abstractions, then fixes the problems it finds. It operates at the architecture and structure level — analyzing for reuse opportunities, quality issues, and efficiency improvements — not at the formatting or linting level. It complements tools like ESLint or Prettier rather than replacing them. Run it after finishing a feature, before opening a pull request: `/simplify` (all changes) or `/simplify focus on error handling` (targeted scope).
+`/simplify` reviews your **recently changed code** for over-engineering and redundant abstractions, then fixes the problems it finds. It operates at the architecture and structure level (analyzing for reuse opportunities, quality issues, and efficiency improvements), not at the formatting or linting level. It complements tools like ESLint or Prettier rather than replacing them. Run it after finishing a feature, before opening a pull request: `/simplify` (all changes) or `/simplify focus on error handling` (targeted scope).
 ---

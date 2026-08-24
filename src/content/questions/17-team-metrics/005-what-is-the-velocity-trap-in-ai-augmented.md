@@ -10,7 +10,7 @@ profiles:
 correct: b
 options:
   a: Deploying too frequently and breaking production with each release
-  b: Hitting High DORA scores while simultaneously scoring poorly on satisfaction, well-being, and efficiency — more deployments but at the cost of developer health and quality
+  b: Hitting High DORA scores while simultaneously scoring poorly on satisfaction, well-being, and efficiency (more deployments but at the cost of developer health and quality)
   c: Using AI to generate velocity reports that overstate actual team performance
   d: Sprint velocity becoming meaningless when AI writes all the code
 doc_reference:

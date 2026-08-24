@@ -4,7 +4,7 @@ subtitle: "Auditing and analyzing Claude Code activity through logs"
 cardNumber: M22
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 122
 ---
 
@@ -85,24 +85,10 @@ cargo install ccboard     # Interactive dashboard
 npm i -g claude-code-otel # OpenTelemetry export
 ```
 
-## In-session cost tracking: `/usage` (v2.1.118)
-
-`/usage` (and its aliases `/cost`, `/stats`) now provides a **per-model token breakdown** for the current session. When you mix Opus and Sonnet in a single session (e.g. using OpusPlan), each model's consumption is reported separately.
-
-```
-/usage
-→ Sonnet 4.6:  12,400 input / 3,200 output — $0.047
-→ Opus 4.7:     4,100 input / 1,800 output — $0.029
-→ Total session: ~$0.076
-```
-
-Use this before switching models or before a long task to set a cost baseline.
-
 ## Decision tree
 
 ```
 Need costs quickly?        → ccusage (0 config)
-In-session per-model cost? → /usage (native, v2.1.118)
 Enterprise audit?          → claude-code-otel + Grafana
 Already on MLflow?         → MLflow tracing integration
 Visual dashboard?          → ccboard

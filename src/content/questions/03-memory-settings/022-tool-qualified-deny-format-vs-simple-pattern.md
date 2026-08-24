@@ -7,7 +7,7 @@ profiles:
 - power
 correct: d
 options:
-  a: They are equivalent — both block the same operations
+  a: "They are equivalent: both block the same operations"
   b: Simple patterns block the tool entirely; tool-qualified patterns only warn
   c: Tool-qualified format requires a regex while simple patterns use globs
   d: Tool-qualified format matches the full path argument; simple string matches only exact file names

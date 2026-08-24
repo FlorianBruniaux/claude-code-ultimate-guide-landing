@@ -1,10 +1,10 @@
 ---
 title: "Custom Agents"
-subtitle: "Subagent YAML frontmatter reference: every field (name, description, model, tools, memory) with a working example"
+subtitle: "Create specialized sub-agents to delegate tasks"
 cardNumber: M08
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 108
 ---
 
@@ -40,7 +40,7 @@ The file body contains instructions in Markdown: role, methodology, examples, co
 
 ## The tools field: isolation by default
 
-Limiting `tools` to what the agent actually needs reduces the exposure surface and accidental errors. A code review agent only needs `Read, Grep, Glob` — no reason to give it `Bash` or `Write`.
+Limiting `tools` to what the agent actually needs reduces the exposure surface and accidental errors. A code review agent only needs `Read, Grep, Glob`. No reason to give it `Bash` or `Write`.
 
 ## Persistent memory (v2.1.32+)
 
@@ -50,19 +50,19 @@ memory: user      # ~/.claude/agent-memory/<name>/
 memory: local     # .claude/agent-memory-local/<name>/
 ```
 
-`project` memory is committed with the repo — useful for the agent to accumulate knowledge shared across the entire team. `local` memory stays private to the machine.
+`project` memory is committed with the repo, useful for the agent to accumulate knowledge shared across the entire team. `local` memory stays private to the machine.
 
-## Agent vs User-Invocable Skill
+## Agent vs Slash Command
 
-| Criterion | Agent | User-Invocable Skill |
-|-----------|-------|---------------------|
+| Criterion | Agent | Slash Command |
+|-----------|-------|---------------|
 | Specialty | Yes, specific domain | No, generic workflow |
 | Own memory | Yes (v2.1.32+) | No |
-| Isolated tools | Yes, whitelist | Via `allowed-tools` |
-| Invocation | Automatic or manual | Manual only (`/name`) |
-| Format | `.claude/agents/` + frontmatter | `.claude/skills/` + `disable-model-invocation: true` |
+| Isolated tools | Yes, whitelist | No |
+| Invocation | Automatic or manual | Manual only |
+| Format | Markdown + frontmatter | Markdown template |
 
-Create an agent when the task recurs regularly with stable context and tools. Create a user-invocable skill when it is a one-off workflow or a procedure to follow — since CC 2.1.3 these live in `.claude/skills/` rather than `.claude/commands/`.
+Create an agent when the task recurs regularly with stable context and tools. Create a command when it is a one-off workflow or a procedure to follow.
 
 ## Concrete example: code review agent
 
@@ -83,24 +83,3 @@ project convention compliance, and introduced technical debt.
 ```
 
 The keyword `PROACTIVELY` in the description encourages Claude to invoke the agent without waiting for an explicit request.
-
-## Non-interactive agent invocation (v2.1.119)
-
-Two improvements for headless pipelines:
-
-**`--print` honors agent frontmatter:** when using `-p` / `--print` with an agent, the agent's `tools` whitelist and `permissionMode` are respected — not bypassed. This means CI pipelines get the same safety constraints as interactive sessions.
-
-**`--agent` honors `permissionMode`:** the `permissionMode` field in the agent frontmatter now applies when invoking via `--agent` flag:
-
-```yaml
----
-name: security-scanner
-permissionMode: readonly
-tools: Read, Grep, Glob
----
-```
-
-```bash
-# permissionMode: readonly applies even in CI
-claude --agent security-scanner -p "Scan src/ for OWASP issues"
-```

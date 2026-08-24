@@ -20,5 +20,5 @@ What is the Plan-Validate-Execute pipeline and what makes it different from usin
 
 ---
 
-The Plan-Validate-Execute pipeline runs in 3 explicit commands: `/plan-start` (5-phase planning with a dynamic research agent team + ADRs), `/plan-validate` (independent 2-layer review by specialist agents — no confirmation bias), `/plan-execute` (parallel worktree agents through to merged PR). The key differentiator from native `/plan` mode: research is done by specialized agents in parallel (not one agent sequentially), validation is independent from planning, and every significant decision generates an ADR that auto-resolves future decisions. Run `/clear` between commands to reset context.
+The Plan-Validate-Execute pipeline runs in 3 explicit commands: `/plan-start` (5-phase planning with a dynamic research agent team + ADRs), `/plan-validate` (independent 2-layer review by specialist agents, no confirmation bias), `/plan-execute` (parallel worktree agents through to merged PR). The key differentiator from native `/plan` mode: research is done by specialized agents in parallel (not one agent sequentially), validation is independent from planning, and every significant decision generates an ADR that auto-resolves future decisions. Run `/clear` between commands to reset context.
 ---

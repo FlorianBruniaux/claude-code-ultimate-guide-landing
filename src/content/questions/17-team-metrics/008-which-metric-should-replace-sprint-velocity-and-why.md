@@ -9,9 +9,9 @@ profiles:
   - pm
 correct: b
 options:
-  a: PR count — more objective than story points
-  b: Cycle Time + Deployment Frequency — velocity is gameable within 2 sprints by changing estimation practices, while cycle time is harder to fake
-  c: Lines of code — more measurable and consistent
+  a: "PR count: more objective than story points"
+  b: "Cycle Time + Deployment Frequency: velocity is gameable within 2 sprints by changing estimation practices, while cycle time is harder to fake"
+  c: "Lines of code: more measurable and consistent"
   d: Story points normalized by team size
 doc_reference:
   file: guide/ops/team-metrics.md

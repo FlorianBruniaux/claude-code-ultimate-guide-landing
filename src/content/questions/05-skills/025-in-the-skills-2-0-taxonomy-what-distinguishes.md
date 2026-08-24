@@ -21,4 +21,4 @@ In the Skills 2.0 taxonomy, what distinguishes a Capability Uplift skill from an
 
 ---
 
-The Skills 2.0 taxonomy separates skills by their relationship to model improvement. Capability Uplift skills compensate for current model limitations — things the model cannot do well yet. As models get stronger, these skills become redundant and should be retired. Encoded Preference skills encode team-specific workflow decisions (naming conventions, review checklists, deployment conventions). These preferences are not things a better model will automatically know, so they stay durable regardless of model version.
+The Skills 2.0 taxonomy separates skills by their relationship to model improvement. Capability Uplift skills compensate for current model limitations, things the model cannot do well yet. As models get stronger, these skills become redundant and should be retired. Encoded Preference skills encode team-specific workflow decisions (naming conventions, review checklists, deployment conventions). These preferences are not things a better model will automatically know, so they stay durable regardless of model version.

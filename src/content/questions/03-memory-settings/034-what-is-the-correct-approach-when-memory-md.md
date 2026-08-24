@@ -21,4 +21,4 @@ What is the correct approach when MEMORY.md index approaches 200 lines?
 
 ---
 
-When MEMORY.md approaches 200 lines: archive stale memories (move outdated content to an archive file but remove the index pointer), merge duplicates (two entries about the same topic → one updated entry), and ensure each index line is short (under ~150 chars) — the index is just pointers, not content. MEMORY.md is an index file; the actual content lives in individual memory files. Never create a second MEMORY.md — there is no MEMORY2.md support.
+When MEMORY.md approaches 200 lines: archive stale memories (move outdated content to an archive file but remove the index pointer), merge duplicates (two entries about the same topic → one updated entry), and ensure each index line is short (under ~150 chars): the index is just pointers, not content. MEMORY.md is an index file; the actual content lives in individual memory files. Never create a second MEMORY.md, there is no MEMORY2.md support.

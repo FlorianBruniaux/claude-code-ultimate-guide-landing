@@ -4,7 +4,7 @@ subtitle: "How to think about your relationship with Claude to get the most out 
 cardNumber: C01
 category: Design
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 201
 ---
 

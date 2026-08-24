@@ -21,5 +21,5 @@ Since v2.1.72, what happens to HTML comments (`<!-- ... -->`) in CLAUDE.md?
 
 ---
 
-Starting in v2.1.72, HTML comments in CLAUDE.md are **hidden from Claude** when the file is auto-injected into context — they do not consume context tokens or influence Claude's behavior. However, they remain visible when explicitly read via the Read tool. This lets you embed developer notes, revision history, or internal documentation in CLAUDE.md that only appear when a human reads the file directly.
+Starting in v2.1.72, HTML comments in CLAUDE.md are **hidden from Claude** when the file is auto-injected into context. They do not consume context tokens or influence Claude's behavior. However, they remain visible when explicitly read via the Read tool. This lets you embed developer notes, revision history, or internal documentation in CLAUDE.md that only appear when a human reads the file directly.
 ---

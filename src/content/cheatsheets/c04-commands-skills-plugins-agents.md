@@ -1,77 +1,71 @@
 ---
 title: "Skills, Plugins & Agents"
-subtitle: "Choosing the right extension mechanism for the need"
+subtitle: "Choosing the right extension mechanism for the task"
 cardNumber: C04
 category: Design
 difficulty: intermediate
-guideVersion: 3.32.3
+guideVersion: 3.41.0
 order: 204
 ---
 
-## Comparison table
+## Comparison Table
 
-| Mechanism | Invocation | Scope | Resources | Use case |
-|-----------|-----------|-------|-----------|----------|
-| **Skill (user)** | `/name` by user | Reusable | Yes | Workflow procedure, user-triggered |
-| **Skill (auto)** | Model decides | Reusable | Yes | Domain knowledge, auto-loaded |
-| **Plugin** | Marketplace | Global | Yes | Third-party ecosystem |
-| **Agent** | Auto or manual | Cross-session | Via memory | Complex delegation |
+| Mechanism | Scope | Invocation | Resources | Use Case |
+|-----------|-------|-----------|-----------|----------|
+| **Skill (user)** | Codified workflow | `/name` (user) | Yes | Repeatable task triggered manually |
+| **Skill (auto)** | Reusable knowledge | Auto by model | Yes | Shared expertise across agents |
+| **Plugin** | Marketplace | Global | Yes | Third-party integration |
+| **Agent** | Autonomous specialist | Task tool | Via memory | Complex delegation |
 
-## User-Invocable Skills (formerly Commands)
+> **CC 2.1.3**: `.claude/commands/` is merged into `.claude/skills/`. Add `disable-model-invocation: true` for user-triggered-only skills.
 
-Since CC 2.1.3, custom slash commands live in `.claude/skills/` with `disable-model-invocation: true`. This flag makes the skill user-only: the model will not auto-load it, but `/name` invocation works as before.
+## User-Invocable Skills (formerly "Commands")
 
-```
-.claude/skills/
-├── release/
-│   ├── SKILL.md          # disable-model-invocation: true
-│   └── checklist.md
-├── security-check/
-│   └── SKILL.md          # /security-check
-└── sync/
-    └── SKILL.md          # /sync
-```
+Since CC 2.1.3, manually triggered workflows live in `.claude/skills/` with `disable-model-invocation: true`.
 
 ```yaml
 # .claude/skills/release/SKILL.md
 ---
 name: release
-description: Release workflow — bump version, update changelog, tag
+description: Prepare a release (bump version, CHANGELOG, tag)
 allowed-tools: [Read, Write, Bash]
 disable-model-invocation: true
 ---
-Run the release process for $ARGUMENTS[0] bump...
+1. Read current version from package.json
+2. Bump according to semver (patch/minor/major)
+3. Update CHANGELOG.md
+4. Create git tag
 ```
 
-**When to choose:** you have a procedure you trigger manually (commit formatting, PR creation, deployment checklist). Add `disable-model-invocation: true` so the skill never fires on its own.
+**When to choose:** You have a sequence of instructions you trigger intentionally several times a week.
 
 ## Model-Invocable Skills
 
-A Skill without `disable-model-invocation` can be auto-loaded by the model when context matches the `description` trigger. It is a structured knowledge module with optional embedded resources (docs, checklists, examples).
+A skill without `disable-model-invocation` is loaded automatically by the model when the description matches the context.
 
 ```yaml
 # .claude/skills/security-guardian/SKILL.md
 ---
 name: security-guardian
-description: OWASP expertise, auth review, and data protection patterns
-allowed-tools: [Read, Grep, Bash]
+description: OWASP security review -- use when reviewing auth, routes, or user input
+allowed-tools: [Read, Grep, Glob]
 ---
-Apply OWASP Top 10 checks systematically...
+Analyze code for OWASP Top 10 vulnerabilities...
 ```
 
-**When to choose:** domain knowledge that should activate automatically when the model detects the right context (security review, TDD cycle, PDF generation).
+**When to choose:** Multiple agents need the same specialized knowledge, or you want Claude to automatically load the right expertise.
 
-**Note on the 56% caveat:** auto-invocation works in about 56% of cases in evals. For critical instructions that must always apply, use `.claude/rules/` instead.
+## Plugins: Third-Party Integrations
 
-## Plugins
+Plugins come from the marketplace and add external capabilities. Install via `/plugin marketplace add`.
 
-Plugins come from the marketplace and add external capabilities (Context7 for documentation, Linear MCP for tickets, Figma MCP for design-to-code). Install via `/plugin marketplace add`.
+**When to choose:** An existing third-party integration covers exactly your need.
 
-**When to choose:** an integration with an existing third-party service covers exactly your need. Do not build what already exists.
+`${CLAUDE_PLUGIN_DATA}` (v2.1.78+): Persistent directory for storing state between sessions.
 
-## Agents
+## Agents: Complex Task Delegation
 
-An Agent is a specialized Claude instance with its own tools, scope, and optionally its own memory. It isolates context, not just instructions.
+An agent is a specialized Claude with its own tools and scope. It isolates context, not simulates a human role.
 
 ```yaml
 # .claude/agents/security-audit.md
@@ -83,8 +77,8 @@ tools: Read, Grep, Glob
 Analyze code for OWASP vulnerabilities...
 ```
 
-**When to choose:** you have a long or recurring task that would pollute the main context, or work that can run in parallel while you continue elsewhere.
+**When to choose:** A long task that would pollute the main context, or parallelizable work.
 
-## Quick decision rule
+## Quick Decision Rule
 
-Procedure triggered by you = **User-Invocable Skill** (`disable-model-invocation: true`). Know-how loaded by context = **Model-Invocable Skill**. A third-party integration = **Plugin**. A task to fully delegate with its own context = **Agent**.
+Manually triggered workflow = **User-invocable Skill**. Knowledge to share across agents = **Model-invocable Skill**. Third-party integration = **Plugin**. Task to delegate with isolated context = **Agent**.

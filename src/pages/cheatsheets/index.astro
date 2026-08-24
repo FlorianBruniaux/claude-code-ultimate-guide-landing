@@ -20,7 +20,7 @@ const difficultyLabel: Record<string, string> = {
   advanced: 'Advanced',
 }
 
-const title = `Cheat Sheets — ${allSorted.length} Recap Cards | Claude Code`
+const title = `Cheat Sheets: ${allSorted.length} Recap Cards | Claude Code`
 const description = `${allSorted.length} printable A4 recap cards covering Claude Code commands, workflows, agents, MCP, security, and more. Plus the original 1-page quick reference.`
 
 const jsonLd = [
@@ -464,7 +464,7 @@ function updateGateBanner(filter) {
 
   const series = sid ? seriesData(sid) : null
 
-  // Specific released series (not Design — no ZIP yet)
+  // Specific released series (not Design, no ZIP yet)
   if (series && series.released && sid !== 'C') {
     if (!isUnlocked(sid)) {
       gateBanner.classList.remove('hidden')
@@ -490,7 +490,7 @@ function updateGateBanner(filter) {
     return
   }
 
-  // Design or unreleased — hide banner
+  // Design or unreleased, hide banner
   gateBanner.classList.add('hidden')
 }
 
@@ -532,7 +532,7 @@ if (gateForm) {
     const linkedin = document.getElementById('gate-linkedin')?.value?.trim() || ''
     const honeypot = gateForm.querySelector('input[name="website"]')?.value || ''
 
-    // Save contact details immediately — before fetch, regardless of API outcome
+    // Save contact details immediately (before fetch), regardless of API outcome
     try {
       const email_ = gateEmail?.value?.trim()
       if (firstname) localStorage.setItem('cc-contact-name', firstname)

@@ -19,4 +19,4 @@ What is MMD (Maximum Mean Discrepancy) used for in context drift detection?
 
 ---
 
-MMD (Maximum Mean Discrepancy) is a kernel-based statistical test that compares two distributions without assuming a parametric form. In context drift detection: you embed tokens/messages from a baseline window and a recent window, then compute MMD between the two distributions. A high MMD score indicates the conversation has drifted semantically from its original topic — a signal to /compact or start a fresh session. Threshold: MMD > 0.3 typically warrants intervention. More robust than cosine distance for multi-modal drift.
+MMD (Maximum Mean Discrepancy) is a kernel-based statistical test that compares two distributions without assuming a parametric form. In context drift detection: you embed tokens/messages from a baseline window and a recent window, then compute MMD between the two distributions. A high MMD score indicates the conversation has drifted semantically from its original topic, a signal to /compact or start a fresh session. Threshold: MMD > 0.3 typically warrants intervention. More robust than cosine distance for multi-modal drift.

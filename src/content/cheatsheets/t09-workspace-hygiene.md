@@ -4,7 +4,7 @@ subtitle: "Keeping context clean by excluding what Claude should not read"
 cardNumber: T09
 category: Technical
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 9
 ---
 
@@ -57,13 +57,13 @@ Both files coexist and are independent. You may want Git to ignore a file that C
 ├── settings.json        # Team config (committed)
 ├── settings.local.json  # Local config (gitignore)
 ├── agents/              # Custom agents
-├── commands/            # Slash commands
+├── skills/              # Skills (includes slash commands since CC 2.1.3)
 ├── hooks/               # Automation scripts
 ├── rules/               # Auto-loaded conventions
 └── memories/            # Manual memories
 ```
 
-The `agents/`, `commands/`, `hooks/`, `rules/` and `skills/` folders are committed with the project. `settings.local.json` and `CLAUDE.md` (if personal) stay in `.gitignore`.
+The `agents/`, `skills/`, `hooks/` and `rules/` folders are committed with the project. `settings.local.json` and `CLAUDE.md` (if personal) stay in `.gitignore`.
 
 ## Clean workspace checklist
 

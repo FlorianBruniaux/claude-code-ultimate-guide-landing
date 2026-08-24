@@ -21,5 +21,5 @@ What does the `autoMemoryDirectory` setting (v2.1.74) configure?
 
 ---
 
-`autoMemoryDirectory` specifies where Claude Code stores memory files that it saves automatically via the auto-memory feature (v2.1.59+). By default, auto-memory writes to `~/.claude/projects/*/memory/MEMORY.md`. This setting lets teams redirect that storage — useful for shared drives or when you want all memory in a specific project subdirectory. It is set in `settings.json`, not in CLAUDE.md.
+`autoMemoryDirectory` specifies where Claude Code stores memory files that it saves automatically via the auto-memory feature (v2.1.59+). By default, auto-memory writes to `~/.claude/projects/*/memory/MEMORY.md`. This setting lets teams redirect that storage (useful for shared drives or when you want all memory in a specific project subdirectory). It is set in `settings.json`, not in CLAUDE.md.
 ---

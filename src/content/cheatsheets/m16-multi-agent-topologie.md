@@ -4,7 +4,7 @@ subtitle: "Architecting agent teams for complex tasks"
 cardNumber: M16
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 116
 ---
 
@@ -55,9 +55,7 @@ Applicability condition: modules must have zero shared state. If agents constant
 
 ## Isolation and permissions per agent
 
-Each agent has its own context window (1M tokens with Opus 4.6 or 4.7) and can receive a distinct tool whitelist. Limiting an agent to `Read`, `Glob`, `Grep` tools prevents any accidental modification during the analysis phase.
-
-**Opus 4.7 (`claude-opus-4-7`)** is available for orchestrator agents requiring the deepest reasoning. The 1M context utilization bug (where the window was not fully used) was fixed in v2.1.117, making Opus 4.7 reliable for large-codebase orchestrations.
+Each agent has its own context window (1M tokens with Opus 4.8) and can receive a distinct tool whitelist. Limiting an agent to `Read`, `Glob`, `Grep` tools prevents any accidental modification during the analysis phase.
 
 | Agent | Allowed tools |
 |-------|--------------|
@@ -81,7 +79,17 @@ claude
 }
 ```
 
-Prerequisites: Claude Code v2.1.32+, Opus 4.6 or 4.7 model (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
+Prerequisites: Claude Code v2.1.32+, Opus 4.8 recommended, Opus 4.6+ compatible (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
+
+## Guardrails (v3.38.0)
+
+Three essential controls for autonomous agent teams:
+
+**Loops**: `MAX_ITERATIONS=8` and a mandatory reflection prompt before each cycle. If an agent hits the limit, kill or reassign rather than letting it keep running.
+
+**Dedicated Reviewer**: 1 read-only Opus 4.8 agent (tools `Read/Grep/Glob`) auto-triggered on `TaskCompleted`, for every 4 worker agents. Ratio 1:4. (Credit: Addy Osmani)
+
+**Token budget per agent**: set a hard token limit per agent; auto-pause at 85% for human verification before continuing.
 
 ## The >5 agents rule
 

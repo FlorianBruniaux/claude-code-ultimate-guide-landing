@@ -4,7 +4,7 @@ subtitle: "The optimal routine for a productive development session"
 cardNumber: M01
 category: Methodology
 difficulty: beginner
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 101
 ---
 
@@ -40,7 +40,7 @@ claude
 
 ## During the Session
 
-**Review the diff at each step** — do not let Claude chain multiple changes without intermediate validation. On significant modifications, ask explicitly:
+**Review the diff at each step**: do not let Claude chain multiple changes without intermediate validation. On significant modifications, ask explicitly:
 
 ```
 You: Show me what you changed before continuing
@@ -75,10 +75,6 @@ git diff --stat
 # Commit if everything is clean
 git commit -m "feat: short description"
 ```
-
-Use `/recap` (v2.1.108) to get a concise summary of what was done in the current session before closing. Useful for writing a commit message or noting key decisions in CLAUDE.md.
-
-If something went wrong in the last step, `/undo` (v2.1.108) reverts the last action Claude took, without needing to leave the session.
 
 If important decisions were made during the session (architecture choices, adopted conventions), note them in CLAUDE.md so the next session starts from the right context. Sessions do not transfer implicit decisions on their own.
 

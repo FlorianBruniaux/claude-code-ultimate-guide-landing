@@ -4,7 +4,7 @@ subtitle: "Triggering agents automatically from GitHub, Linear, Jira"
 cardNumber: M18
 category: Methodology
 difficulty: advanced
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 118
 ---
 

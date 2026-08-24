@@ -317,7 +317,7 @@ const jsonLd = [
       }
 
       const selectedLang = gateForm.querySelector('input[name="gate-lang"]:checked')?.value || 'en'
-      // Stable IDs — resolved server-side by /api/guides, never break on ZIP updates
+      // Stable IDs: resolved server-side by /api/guides, never break on ZIP updates
       const stableIds = {
         T: { fr: 'recap-technique.fr', en: 'recap-technique.en' },
         M: { fr: 'recap-methodologie.fr', en: 'recap-methodologie.en' },

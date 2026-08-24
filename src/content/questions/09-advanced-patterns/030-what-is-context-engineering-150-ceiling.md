@@ -21,5 +21,5 @@ What is the "150-instruction ceiling" in context engineering?
 
 ---
 
-The 150-instruction ceiling refers to the approximate point at which transformer attention becomes unreliable for maintaining adherence to all instructions simultaneously. Research and community data (HumanLayer: 15-25% adherence on large instruction sets) show that once the number of always-on instructions exceeds roughly 150, Claude begins missing rules or applying them inconsistently. The fix is path-scoping — loading rules only when relevant files are in scope — to keep the effective instruction count well below the ceiling.
+The 150-instruction ceiling refers to the approximate point at which transformer attention becomes unreliable for maintaining adherence to all instructions simultaneously. Research and community data (HumanLayer: 15-25% adherence on large instruction sets) show that once the number of always-on instructions exceeds roughly 150, Claude begins missing rules or applying them inconsistently. The fix is path-scoping (loading rules only when relevant files are in scope) to keep the effective instruction count well below the ceiling.
 ---

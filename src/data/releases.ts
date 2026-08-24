@@ -575,7 +575,7 @@ export const releases: Release[] = [
     version: 'v2.1.181',
     date: 'Jun 18, 2026',
     highlights: [
-      '⭐ `/config key=value` syntax sets any setting inline from the prompt (e.g. `/config thinking=false`) — works in interactive, -p, and Remote Control',
+      '⭐ `/config key=value` syntax sets any setting inline from the prompt (e.g. `/config thinking=false`), works in interactive, -p, and Remote Control',
       '`sandbox.allowAppleEvents` opt-in for macOS sandboxed commands',
       'Improved streaming: long paragraphs appear line-by-line instead of waiting for the first line break',
       'Improved subagent panel: idle agents auto-hide after 30s, list caps at 5 rows with scroll hints; 30+ bug fixes',

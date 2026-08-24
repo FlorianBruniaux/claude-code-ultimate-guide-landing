@@ -106,7 +106,7 @@ export const COMPARISON_TOOLS: ComparisonTool[] = [
       'Aider and Claude Code have the most overlap: both are terminal-based agentic coding tools. The key differences: Aider is fully open source and model-agnostic (run it with Ollama locally, zero API cost); Claude Code is tightly integrated with Anthropic\'s Claude models and has more mature multi-agent orchestration features. If you need model flexibility or air-gapped environments, Aider is the stronger choice.',
     complementsClaudeCode: false,
     complementReason:
-      'Significant overlap — both are terminal CLI agents. Choose based on model preference and open source requirements.',
+      'Significant overlap: both are terminal CLI agents. Choose based on model preference and open source requirements.',
   },
   {
     slug: 'windsurf',
@@ -156,14 +156,14 @@ export const COMPARISON_TOOLS: ComparisonTool[] = [
       'No data sent to third parties when using local models',
     ],
     weaknesses: [
-      'Not an autonomous agent — requires human in the loop for each step',
+      'Not an autonomous agent: requires human in the loop for each step',
       'Requires more configuration than plug-and-play tools',
-      'Chat interface, not a coding agent — closer to an IDE chat panel than Claude Code',
+      'Chat interface, not a coding agent; closer to an IDE chat panel than Claude Code',
     ],
     bestFor:
       'Teams with data privacy requirements, self-hosting mandates, or wanting local LLM support inside VS Code or JetBrains',
     verdict:
-      'Continue fills a niche that Claude Code does not: fully private, local-first AI coding assistance inside your IDE. It does not compete on autonomous agentic workflows — it is an IDE chat panel that you can point at any LLM. If your team needs data privacy or wants to run Llama 3 locally, Continue is a strong option. Most Claude Code users will find Continue complementary rather than competitive.',
+      'Continue fills a niche that Claude Code does not: fully private, local-first AI coding assistance inside your IDE. It does not compete on autonomous agentic workflows; it is an IDE chat panel that you can point at any LLM. If your team needs data privacy or wants to run Llama 3 locally, Continue is a strong option. Most Claude Code users will find Continue complementary rather than competitive.',
     complementsClaudeCode: true,
     complementReason:
       'Continue covers local/private LLM chat inside the IDE; Claude Code covers cloud-powered agentic sessions in the terminal.',

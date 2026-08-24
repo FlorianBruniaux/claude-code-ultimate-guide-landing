@@ -917,13 +917,13 @@ const profiles = [
       const fileEn = form.dataset.fileEn!
 
       const honeypot = (form.querySelector('[name="website"]') as HTMLInputElement)?.value
-      if (honeypot) return  // bot detected — silent ignore
+      if (honeypot) return  // bot detected, silent ignore
 
       const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value
       const firstName = (form.querySelector('[name="firstname"]') as HTMLInputElement)?.value
       const linkedin = (form.querySelector('[name="linkedin"]') as HTMLInputElement)?.value?.trim() || undefined
 
-      // Save contact details immediately — before fetch, regardless of API outcome
+      // Save contact details immediately (before fetch), regardless of API outcome
       try {
         if (firstName) localStorage.setItem('cc-contact-name', firstName)
         if (email) localStorage.setItem('cc-contact-email', email)
@@ -932,7 +932,7 @@ const profiles = [
       const format = (form.querySelector(`[name="format-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'pdf'
       const lang = (form.querySelector(`[name="lang-${wpNum}"]:checked`) as HTMLInputElement)?.value || 'en'
 
-      // filename is a stable ID (e.g. "02-personnalisation.fr") — resolved server-side
+      // filename is a stable ID (e.g. "02-personnalisation.fr"), resolved server-side
       // by /api/guides so email links never break when PDFs are updated.
       // For EPUB requests: pass epubUrl so the API sends the EPUB link in the email.
       const isEpub = format === 'epub'
@@ -974,7 +974,7 @@ const profiles = [
 
         form.classList.add('hidden')
         successMsg?.classList.remove('hidden')
-        // Mark as subscriber — unlocks recap cards automatically
+        // Mark as subscriber: unlocks recap cards automatically
         try { localStorage.setItem('cc-subscriber', '1') } catch {}
         // GA event
         if (typeof window.gtag === 'function') {

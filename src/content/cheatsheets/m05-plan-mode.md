@@ -4,7 +4,7 @@ subtitle: "Let Claude plan before acting"
 cardNumber: M05
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.1
 order: 105
 ---
 

@@ -1,5 +1,5 @@
 /**
- * Guide URLs for each diagram — indexed by theme ID and diagram position.
+ * Guide URLs for each diagram, indexed by theme ID and diagram position.
  * Maps to GitHub source files with section anchors.
  * Maintained manually to match the order in guide/diagrams/*.md
  */

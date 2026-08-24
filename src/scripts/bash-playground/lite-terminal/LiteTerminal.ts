@@ -25,7 +25,7 @@ function isSafeLinkUrl(url: string): boolean {
     // anyway) don't accidentally become unsafe when resolved.
     const parsed = new URL(url, "https://example.invalid/");
     if (!SAFE_LINK_PROTOCOLS.has(parsed.protocol)) return false;
-    // If the URL was relative, the parsed origin is example.invalid —
+    // If the URL was relative, the parsed origin is example.invalid, so
     // refuse to render that as a clickable absolute link.
     if (parsed.hostname === "example.invalid" && !/^https?:|^mailto:/i.test(url)) {
       return false;
@@ -633,7 +633,7 @@ export class LiteTerminal {
     const inlineStyle = this.getInlineStyle(style);
 
     // If style has a link (from OSC 8), create an anchor element.
-    // Validate the URL scheme — without this, an OSC 8 sequence with
+    // Validate the URL scheme. Without this, an OSC 8 sequence with
     // `javascript:` (or `data:`, `vbscript:`, etc.) becomes a clickable
     // anchor that fires arbitrary JS in this origin (XSS).
     if (style.link && isSafeLinkUrl(style.link)) {
@@ -788,7 +788,7 @@ export class LiteTerminal {
    *
    * Deviation from upstream: the original scrolls `window` because
    * just-bash's own demo IS a full-page terminal (min-height: 100dvh).
-   * Here the terminal is a small box embedded in /examples — scrolling
+   * Here the terminal is a small box embedded in /examples, and scrolling
    * the window on every write/keystroke was yanking the whole page down.
    * Scroll the terminal's own container instead. See VENDORED.md.
    */

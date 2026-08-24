@@ -22,4 +22,4 @@ What is the 4-Question Test for deciding whether to add a metric to your trackin
 
 ---
 
-The 4-Question Test: (1) Can you act on it within 2 weeks? — if not, it's a reporting metric, not a steering metric. (2) Does it explain why, not just what? — if this number moves, do you know what to investigate? (3) Is it correlated to a business outcome? — deployment frequency correlates to revenue in SaaS; lines of code correlates to nothing. (4) Can it be measured automatically? — if collecting it requires manual work, it will be abandoned within 3 months. Rule: fewer than 3 "yes" answers, drop the metric.
+The 4-Question Test: (1) Can you act on it within 2 weeks? If not, it's a reporting metric, not a steering metric. (2) Does it explain why, not just what? If this number moves, do you know what to investigate? (3) Is it correlated to a business outcome? Deployment frequency correlates to revenue in SaaS; lines of code correlates to nothing. (4) Can it be measured automatically? If collecting it requires manual work, it will be abandoned within 3 months. Rule: fewer than 3 "yes" answers, drop the metric.

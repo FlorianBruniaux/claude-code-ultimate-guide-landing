@@ -4,7 +4,7 @@ subtitle: "Where the information Claude uses lives and how to manage it"
 cardNumber: C05
 category: Design
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 205
 ---
 

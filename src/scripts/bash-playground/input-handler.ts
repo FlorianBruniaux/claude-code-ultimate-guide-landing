@@ -1,15 +1,15 @@
 /**
  * Bash-aware input handling: history, tab completion, editing shortcuts,
  * command execution. Forked from just-bash's demo site
- * (examples/website/app/components/terminal-parts/input-handler.ts) —
+ * (examples/website/app/components/terminal-parts/input-handler.ts);
  * see VENDORED.md for the source commit and licensing note.
  *
  * Deviations from upstream:
  *  - No @vercel/analytics `track()` call (this site has its own analytics
  *    story and no reason to phone home to Vercel's).
- *  - No "agent"/"about"/"install"/"github" custom commands — those existed
+ *  - No "agent"/"about"/"install"/"github" custom commands: those existed
  *    to power the official demo's AI agent and are out of scope for this
- *    POC (no LLM behind this terminal, by design — see the brainstorming
+ *    POC (no LLM behind this terminal, by design; see the brainstorming
  *    spec).
  *  - HISTORY_KEY changed to avoid colliding with the upstream demo's own
  *    sessionStorage key if a visitor ever has both open.
@@ -27,7 +27,7 @@ type Terminal = {
 };
 
 // Strip ANSI/OSC before echoing untrusted strings (e.g. a command inserted
-// via setInitialCommand from a suggestion button) — same defense-in-depth
+// via setInitialCommand from a suggestion button); same defense-in-depth
 // as LiteTerminal's own OSC 8 URL validation, applied on the input side.
 // biome-ignore lint/suspicious/noControlCharactersInRegex: deliberately matching control chars
 const STRIP_OSC = /\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)/g;
@@ -71,7 +71,7 @@ function getCompletionContext(cmd: string, cursorPos: number): { prefix: string;
   return { prefix: cmd.slice(wordStart, cursorPos), wordStart };
 }
 
-// Commands for tab completion (first word only). No custom commands here —
+// Commands for tab completion (first word only). No custom commands here;
 // this shell only runs real coreutils against the preloaded templates.
 const COMPLETION_COMMANDS = [
   "cat", "ls", "grep", "head", "tail", "wc", "sort", "uniq", "tr", "cut",

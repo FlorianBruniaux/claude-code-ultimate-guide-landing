@@ -4,13 +4,13 @@ subtitle: "The essential complementary tools in the ecosystem"
 cardNumber: T22
 category: Technical
 difficulty: intermediate
-guideVersion: 3.32.1
+guideVersion: 3.41.0
 order: 22
 ---
 
 ## Cost Tracking
 
-**ccusage** — the community reference tool for tracking API spending. Parses local JSONL files, zero data sent externally.
+**ccusage**: the community reference tool for tracking API spending. Parses local JSONL files, zero data sent externally.
 
 ```bash
 npx ccusage          # Today's summary
@@ -19,7 +19,7 @@ ccusage blocks --live # Real-time monitoring (5h windows)
 ccusage --breakdown  # Breakdown by model
 ```
 
-**ccburn** — Python alternative with burn-rate charts in the terminal. Useful for visualizing consumption relative to billing limits, within a Python ecosystem.
+**ccburn**: Python alternative with burn-rate charts in the terminal. Useful for visualizing consumption relative to billing limits, within a Python ecosystem.
 
 ```bash
 pip install ccburn
@@ -28,7 +28,7 @@ ccburn
 
 ## Dashboard & Monitoring
 
-**ccboard** — TUI and web interface for monitoring sessions, costs, and statistics in real time.
+**ccboard**: TUI and web interface for monitoring sessions, costs, and statistics in real time.
 
 ```bash
 cargo install ccboard
@@ -38,7 +38,7 @@ ccboard --web    # Web UI on localhost:3000
 
 ## History Search
 
-**Straude** — social dashboard to track and share consumption stats. Pushes daily metrics (cost, tokens, models) to a public leaderboard. Note: sends machine hostname and a device UUID to Straude servers. Use `--dry-run` before the first push.
+**Straude**: social dashboard to track and share consumption stats. Pushes daily metrics (cost, tokens, models) to a public leaderboard. Note: sends machine hostname and a device UUID to Straude servers. Use `--dry-run` before the first push.
 
 ```bash
 npx straude@latest   # Auth + sync in one command
@@ -48,7 +48,7 @@ straude status       # Streak, global rank, totals
 
 ## Token Optimization
 
-**RTK (Rust Token Killer)** — CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details.
+**RTK (Rust Token Killer)**: CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details.
 
 ```bash
 brew install rtk-ai/tap/rtk
@@ -57,7 +57,7 @@ rtk init             # Setup with automatic hook
 
 ## Parallel Orchestration
 
-**Conductor** — macOS application for orchestrating multiple Claude Code instances in parallel via git worktrees. Integrated interface: diff viewer, CI/GitHub Actions, Linear, PR workflow.
+**Conductor**: macOS application for orchestrating multiple Claude Code instances in parallel via git worktrees. Integrated interface: diff viewer, CI/GitHub Actions, Linear, PR workflow.
 
 Install from conductor.build (macOS only as of March 2026).
 

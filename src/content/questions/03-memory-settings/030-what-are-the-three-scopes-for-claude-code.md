@@ -21,4 +21,4 @@ What are the three scopes for Claude Code's agent memory system?
 
 ---
 
-Agent Memory has 3 scopes: (1) User — global memory in ~/.claude/, applies to all projects, personal preferences and cross-project knowledge. (2) Project — repo-level memory in .claude/, committed to git, shared with the team. (3) Local — gitignored per-machine memory in .claude/memory/ (local), for machine-specific state that should not be shared. Understanding the scope prevents accidentally committing personal notes or missing team-level context.
+Agent Memory has 3 scopes: (1) User: global memory in ~/.claude/, applies to all projects, personal preferences and cross-project knowledge. (2) Project: repo-level memory in .claude/, committed to git, shared with the team. (3) Local: gitignored per-machine memory in .claude/memory/ (local), for machine-specific state that should not be shared. Understanding the scope prevents accidentally committing personal notes or missing team-level context.
