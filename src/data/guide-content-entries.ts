@@ -1567,7 +1567,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick Jump",
-    "keywords": "quick jump claude code release history - 2.1.x series (january-august 2026): built-in \"concise\" output style + gateway prompt-caching fix (2.1.237), + on cross-session + macos sandbox wildc",
+    "keywords": "quick jump claude code release history - 2.1.x series (january-august 2026): bug fixes (2.1.241, 2.1.240), ⭐ bedrock streaming proxy fix that stopped billing every turn twice + windows cros",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#quick-jump",
     "source": "guide"
@@ -1575,7 +1575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-august-2026",
     "title": "2.1.x Series (January-August 2026)",
-    "keywords": "2 1 x series january august 2026 claude code release history v2.1.237 (2026-08-19) - added : a built-in \"concise\" output style. claude leads with results and skips preamble and narration while doing the work jus v2 1 237 2026 08 19 v2 1 236 2026 08 19 v2 1 235 2026 08 18 v2 1 234 2026 08 17 v2 1 233 2026 08 14 v2 1 232 2026 08 13 v2 1 231 2026 08 13 v2 1 229 2026 08 12 v2 1 228 2026 08 11 v2 1 227 2026 08 10 v2 1 226 2026 08 08 v2 1 225 2026 08 07 v2 1 224 2026 08 07 v2 1 223 2026 08 05 v2 1 222",
+    "keywords": "2 1 x series january august 2026 claude code release history v2.1.241 (2026-08-22) - fixed : bug fixes and reliability improvements v2.1.240 (2026-08-22) - fixed : bug fixes and reliability improvements v2.1.239 v2 1 241 2026 08 22 v2 1 240 2026 08 22 v2 1 239 2026 08 21 v2 1 238 2026 08 20 v2 1 237 2026 08 19 v2 1 236 2026 08 19 v2 1 235 2026 08 18 v2 1 234 2026 08 17 v2 1 233 2026 08 14 v2 1 232 2026 08 13 v2 1 231 2026 08 13 v2 1 229 2026 08 12 v2 1 228 2026 08 11 v2 1 227 2026 08 10 v2 1 226",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-august-2026",
     "source": "guide"
@@ -4847,7 +4847,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-memory-systems-3-cross-session-tools-single-user",
     "title": "3. Cross-Session Tools (Single User)",
-    "keywords": "3 cross session tools single user memory systems 3.1 claude-mem repo : github.com/thedotmack/claude-mem stars : 88.7k (2026-07-27) license : agpl-3.0 + polyform noncommercial hooks into claude code l 3 1 claude mem 3 2 agentmemory 3 3 icm infinite context memory 3 4 kairn 3 5 doobidoo mcp memory service 3 6 openmemory mcp 3 7 file based experience playbooks orf diffmem the lesson match retrieval to query shape practitioner pattern retex bm25 routing this guide s own setup 3 8 other notable tools",
+    "keywords": "3 cross session tools single user memory systems 3.1 claude-mem repo : github.com/thedotmack/claude-mem stars : 88.7k (2026-07-27) license : apache-2.0 hooks into claude code lifecycle events (sessio 3 1 claude mem 3 2 agentmemory 3 3 icm infinite context memory 3 4 kairn 3 5 doobidoo mcp memory service 3 6 openmemory mcp 3 7 file based experience playbooks orf diffmem the lesson match retrieval to query shape practitioner pattern retex bm25 routing this guide s own setup 3 8 other notable tools",
     "category": "Core Guides",
     "url": "/guide/memory-systems/#3-cross-session-tools-single-user",
     "source": "guide"
@@ -5349,11 +5349,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-1-remarkable-mcp-le-game-changer",
-    "title": "1. remarkable-mcp : Le game-changer",
-    "keywords": "1 remarkable mcp le game changer remarkable 2 ai hacks outils et workflows roi : maximal effort : moyen connexion : ssh over usb (sans cloud) sam morrow a créé un serveur mcp qui connecte directement la remarkable à claude co ce que ça fait pourquoi c est le 1 stack technique installation rapide configuration dans claude code",
+    "id": "gc-remarkable-ai-1-remarkable-mcp-accès-mcp-direct-par-ssh",
+    "title": "1. remarkable-mcp : accès MCP direct par SSH",
+    "keywords": "1 remarkable mcp accès mcp direct par ssh remarkable 2 ai hacks outils et workflows roi : maximal effort : moyen connexion : ssh over usb (sans cloud) sam morrow a créé un serveur mcp qui connecte directement la remarkable à claude co ce que ça fait pourquoi c est le 1 stack technique installation rapide configuration dans claude code",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#1-remarkable-mcp-le-game-changer",
+    "url": "/guide/remarkable-ai/#1-remarkable-mcp-accès-mcp-direct-par-ssh",
     "source": "guide"
   },
   {
@@ -5762,6 +5762,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "part 7 remote control security remote control security security hardening guide feature context : remote control (research preview, feb 2026) allows controlling a local claude code session from a phone, tablet, or browser. availab architecture threat model best practices enterprise considerations comparison remote control vs alternatives",
     "category": "Core Guides",
     "url": "/guide/security-hardening/#part-7-remote-control-security-remote-control-security",
+    "source": "guide"
+  },
+  {
+    "id": "gc-security-hardening-part-8-cross-session-messaging-threat-model-cross",
+    "title": "Part 8: Cross-Session Messaging Threat Model {#cross-session-messaging-threat-model}",
+    "keywords": "part 8 cross session messaging threat model cross session messaging threat model security hardening guide feature context : since v2.1.224, any two claude code sessions can message each other via and , on the same machine automatically, or across your acco architecture threat model best practices enterprise considerations",
+    "category": "Core Guides",
+    "url": "/guide/security-hardening/#part-8-cross-session-messaging-threat-model-cross-session-messaging-threat-model",
     "source": "guide"
   },
   {
@@ -6343,7 +6351,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-tools-reference-advanced-tools-how-to-trigger-them",
     "title": "Advanced tools: how to trigger them",
-    "keywords": "advanced tools how to trigger them built in tools reference and schedulewakeup the command runs a prompt on a recurring interval. omit the interval to let claude self-pace; after each iteration it calls to deci loop and schedulewakeup scheduled tasks croncreate cronlist crondelete remote routines remotetrigger and schedule push notifications pushnotification agent teams teamcreate teamdelete sendmessage tasks api taskcreate through taskstop",
+    "keywords": "advanced tools how to trigger them built in tools reference and schedulewakeup the command runs a prompt on a recurring interval. omit the interval to let claude self-pace; after each iteration it calls to deci loop and schedulewakeup scheduled tasks croncreate cronlist crondelete remote routines remotetrigger and schedule push notifications pushnotification agent teams teamcreate teamdelete sendmessage cross session messaging listagents sendmessage tasks api taskcreate through taskstop",
     "category": "Core Guides",
     "url": "/guide/tools-reference/#advanced-tools-how-to-trigger-them",
     "source": "guide"
@@ -8578,6 +8586,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "9 26 review driven context optimization 9 advanced patterns reading time : 7 minutes skill level : month 2+ relationship to §9.24 : instinct-based learning captures observations passively from session logs. rev the problem with end of session reflections the feedback loop crit as the capture layer extracting patterns from review comments what gets promoted vs what gets discarded the round to round diff as verification practical setup",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/09-advanced-patterns/#9-26-review-driven-context-optimization",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide-09-advanced-patterns-9-27-cross-session-messaging-peer-coordination",
+    "title": "9.27 Cross-Session Messaging (Peer Coordination)",
+    "keywords": "9 27 cross session messaging peer coordination 9 advanced patterns reading time : 5 minutes (overview) full guide → ( 15 min, full mechanics and security model) skill level : month 1+ status : stable, v2.1.224+ (macos what it is discovery and delivery security boundary when to use it",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/09-advanced-patterns/#9-27-cross-session-messaging-peer-coordination",
     "source": "guide"
   },
   {
@@ -12109,6 +12125,94 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-workflows-cross-session-messaging-1-what-it-solves-and-what-it-isn-t",
+    "title": "1. What it solves, and what it isn't",
+    "keywords": "1 what it solves and what it isn t cross session messaging anthropic's framing: \"when a change in one session breaks what another is building on, claude can warn that session before you notice. when one sessio",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#1-what-it-solves-and-what-it-isn-t",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-2-discovery-listagents",
+    "title": "2. Discovery: `ListAgents`",
+    "keywords": "2 discovery listagents cross session messaging run (alias ) in any session to see what claude can reach. the first row is the session's own name (the one peers use to address it); the rows below li",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#2-discovery-listagents",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-3-delivery-sendmessage",
+    "title": "3. Delivery: `SendMessage`",
+    "keywords": "3 delivery sendmessage cross session messaging you can leave the message's wording to claude: or name the target yourself with an -mention, the same mechanism used to address a subagent explicitly. what the receiving session sees timing when a send is refused outright",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#3-delivery-sendmessage",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-4-same-machine-vs-cross-machine-delivery",
+    "title": "4. Same-machine vs. cross-machine delivery",
+    "keywords": "4 same machine vs cross machine delivery cross session messaging whether a message ever touches anthropic's infrastructure depends entirely on where the target session runs: where the other session runs how the mess",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#4-same-machine-vs-cross-machine-delivery",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-5-the-session-s-inbox-socket",
+    "title": "5. The session's inbox socket",
+    "keywords": "5 the session s inbox socket cross session messaging relevant when a session you expect isn't in the listing, when a hook or script needs to post into a session, or when a sandboxed command can't reach t",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#5-the-session-s-inbox-socket",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-6-security-model",
+    "title": "6. Security model",
+    "keywords": "6 security model cross session messaging anthropic's design keeps three properties in tension: sessions coordinate freely, but neither can control the other, and permissions never travel with what an incoming message cannot do controlling what arrives crosssessioninbound locking it down further endpoint spoofing checks",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#6-security-model",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-7-limitations",
+    "title": "7. Limitations",
+    "keywords": "7 limitations cross session messaging these are properties of the channel itself, independent of platform or provider (§8 covers those separately): - plain text only. structured agent-team",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#7-limitations",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-8-availability",
+    "title": "8. Availability",
+    "keywords": "8 availability cross session messaging requirement value --- --- macos / linux / wsl2 v2.1.224+ native windows v2.1.234+ -mention targeting, row v2.1.232+ starting a conversation with anoth",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#8-availability",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-9-get-a-notice-when-another-session-goes-idle-v2-1",
+    "title": "9. Get a notice when another session goes idle (v2.1.236+)",
+    "keywords": "9 get a notice when another session goes idle v2 1 236 cross session messaging instead of polling, ask claude to subscribe to one notice from a same-machine session: claude subscribes via 's input, either attached to a message it",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#9-get-a-notice-when-another-session-goes-idle-v2-1-236",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-10-version-timeline",
+    "title": "10. Version timeline",
+    "keywords": "10 version timeline cross session messaging version what changed --- --- v2.1.224 cross-session messaging introduced on macos, linux, wsl2. / , inbox sockets, setting. v2.1.225 starting a conver",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#10-version-timeline",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-cross-session-messaging-11-practical-patterns",
+    "title": "11. Practical patterns",
+    "keywords": "11 practical patterns cross session messaging hand over a finding. a session that discovers a breaking change or makes a decision has claude summarize it for the session working on the affected ar",
+    "category": "Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#11-practical-patterns",
+    "source": "guide"
+  },
+  {
     "id": "gc-workflows-design-to-code-tl-dr",
     "title": "TL;DR",
     "keywords": "tl dr design to code workflow with figma mcp ---",
@@ -13023,7 +13127,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-multi-provider-code-review-blocking-merge-the-ci-gate",
     "title": "Blocking Merge: the CI Gate",
-    "keywords": "blocking merge the ci gate multi provider code review non redundant automated pr review automated review comments are advisory by default, nothing stops a merge unless a required ci check fails. the pattern that makes claude's findings ac",
+    "keywords": "blocking merge the ci gate multi provider code review non redundant automated pr review automated review comments are advisory by default, nothing stops a merge unless a required ci check fails. the pattern that makes claude's findings bl",
     "category": "Workflows",
     "url": "/guide/workflows/multi-provider-code-review/#blocking-merge-the-ci-gate",
     "source": "guide"

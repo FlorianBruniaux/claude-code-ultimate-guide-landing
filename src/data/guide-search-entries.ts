@@ -4284,6 +4284,110 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-cross-session-messaging",
+    "title": "Cross Session Messaging",
+    "keywords": "cross session messaging guide workflows cross session messaging",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-overview",
+    "title": "Cross Session Messaging Overview",
+    "keywords": "cross session messaging overview guide ultimate guide md#927 cross session messaging peer coordination",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#927-cross-session-messaging-peer-coordination",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-discovery",
+    "title": "Cross Session Messaging Discovery",
+    "keywords": "cross session messaging discovery guide workflows cross session messaging md#2 discovery listagents",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#2-discovery-listagents",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-delivery",
+    "title": "Cross Session Messaging Delivery",
+    "keywords": "cross session messaging delivery guide workflows cross session messaging md#3 delivery sendmessage",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#3-delivery-sendmessage",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-cross-machine",
+    "title": "Cross Session Messaging Cross Machine",
+    "keywords": "cross session messaging cross machine guide workflows cross session messaging md#4 same machine cross machine delivery",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#4-same-machine-vs-cross-machine-delivery",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-inbox-socket",
+    "title": "Cross Session Messaging Inbox Socket",
+    "keywords": "cross session messaging inbox socket guide workflows cross session messaging md#5 the sessions inbox socket",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#5-the-sessions-inbox-socket",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-security",
+    "title": "Cross Session Messaging Security",
+    "keywords": "cross session messaging security guide workflows cross session messaging md#6 security model",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#6-security-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-limitations",
+    "title": "Cross Session Messaging Limitations",
+    "keywords": "cross session messaging limitations guide workflows cross session messaging md#7 limitations",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#7-limitations",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-availability",
+    "title": "Cross Session Messaging Availability",
+    "keywords": "cross session messaging availability guide workflows cross session messaging md#8 availability",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#8-availability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-version-timeline",
+    "title": "Cross Session Messaging Version Timeline",
+    "keywords": "cross session messaging version timeline guide workflows cross session messaging md#10 version timeline",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#10-version-timeline",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-diagram",
+    "title": "Cross Session Messaging Diagram",
+    "keywords": "cross session messaging diagram guide diagrams multi agent patterns md#cross session messaging discovery delivery",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md#cross-session-messaging-discovery--delivery",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-security-hardening",
+    "title": "Cross Session Messaging Security Hardening",
+    "keywords": "cross session messaging security hardening guide security security hardening md#cross session messaging threat model",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#cross-session-messaging-threat-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-tools-reference",
+    "title": "Cross Session Messaging Tools Reference",
+    "keywords": "cross session messaging tools reference guide core tools reference md#cross session messaging listagents sendmessage",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/tools-reference.md#cross-session-messaging-listagents--sendmessage",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-fluency-plan-review-section",
     "title": "AI Fluency Plan Review Section",
     "keywords": "ai fluency plan review section guide ultimate guide md#rev the engine rev the engine guide ultimate guide md#rev the engine",

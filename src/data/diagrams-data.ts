@@ -244,7 +244,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
   {
     "id": "multi-agent",
     "title": "Claude Code: Multi-Agent Patterns",
-    "description": "Agent topologies, worktrees, dual-instance planning, horizontal scaling, decision matrix",
+    "description": "Agent topologies, worktrees, dual-instance planning, horizontal scaling, decision matrix, cross-session messaging",
     "icon": "🤖",
     "diagrams": [
       {
@@ -281,6 +281,13 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "svg": null,
         "asciiFallback": "Need multiple instances?\n├─ No → Single session\n├─ Yes → How many?\n│        ├─ 2-3 → Need branch isolation?\n│        │        ├─ Yes → Git worktrees\n│        │        └─ No  → Multiple terminals\n│        └─ 4+  → Task structure?\n│                 ├─ Independent → Task tool (parallel sub-agents)\n│                 ├─ Sequential  → Agent pipeline A→B→C\n│                 └─ Mixed       → Specialist router\n└─ Planning separation? → Dual-instance (Planner + Executor)",
         "sourceRef": "Multi-Instance Patterns, line ~11176"
+      },
+      {
+        "title": "Cross-Session Messaging: Discovery & Delivery",
+        "description": "Independent Claude Code sessions, no spawn relationship between them, discover each other with `ListAgents` and message each other with `SendMessage`. Whether the message ever touches Anthropic's servers depends entirely on where the target session runs.",
+        "svg": null,
+        "asciiFallback": "DISCOVERY                              DELIVERY\nSession A ─┐                           list-agents rows\nSession B ─┴─> on-disk registry           │\n              + inbox socket              ▼\n                   │                 Target runs where?\n                   ▼                 ├─ Same machine ──> local socket ──┐\n            ListAgents reads              (never via Anthropic servers) │\n                   │                 └─ Other machine/web ──> Remote    │\n                   ▼                      Control (via Anthropic) ──────┤\n            list-agents rows                                           ▼\n                                                              crossSessionInbound?\n                                                              ├─ accept ─> delivered\n                                                              ├─ hold ───> user must Approve\n                                                              └─ refuse ─> dropped\n\n  Delivered message still cannot approve permissions or change config;\n  the receiving session's own permission rules apply to anything it asks for.",
+        "sourceRef": "Cross-Session Messaging"
       }
     ]
   },

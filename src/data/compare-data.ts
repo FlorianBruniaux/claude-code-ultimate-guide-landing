@@ -42,7 +42,7 @@ export const COMPARISON_TOOLS: ComparisonTool[] = [
     ],
     bestFor: 'Developers wanting autocomplete and agent mode in a single IDE with zero configuration',
     verdict:
-      'Cursor excels at IDE-native autocomplete and has a capable Composer agent. Where Claude Code differs: Claude Code runs in the terminal and handles longer, multi-turn agentic tasks with full context control. Many developers use both: Cursor for quick edits and autocomplete, Claude Code for deeper refactors and multi-file agentic workflows.',
+      'Cursor excels at IDE-native autocomplete and has a capable Composer agent. Claude Code runs in the terminal and handles longer, multi-turn agentic tasks with full context control. Many developers use both: Cursor for quick edits and autocomplete, Claude Code for deeper refactors and multi-file agentic workflows.',
     complementsClaudeCode: true,
     complementReason:
       'Cursor handles inline autocomplete and IDE-native editing; Claude Code handles terminal-driven, multi-step agentic sessions. Different interaction surfaces.',
@@ -72,7 +72,7 @@ export const COMPARISON_TOOLS: ComparisonTool[] = [
     bestFor:
       'Enterprise teams already invested in the GitHub ecosystem needing broad IDE support and compliance features',
     verdict:
-      'GitHub Copilot dominates in enterprise adoption for good reason: it integrates everywhere, has compliance features, and pairs tightly with GitHub workflows. Its agent mode lags behind Claude Code for complex multi-step tasks. The two serve different moments: Copilot for the edit loop inside an IDE, Claude Code for driving longer agentic sessions from the terminal.',
+      'GitHub Copilot dominates in enterprise adoption for good reason: it supports more IDEs than any competitor, has compliance features, and pairs tightly with GitHub workflows. Its agent mode lags behind Claude Code for complex multi-step tasks. The two serve different moments: Copilot for the edit loop inside an IDE, Claude Code for driving longer agentic sessions from the terminal.',
     complementsClaudeCode: true,
     complementReason:
       'Copilot handles inline completions inside your IDE; Claude Code handles terminal-based agentic sessions requiring deep context management.',
