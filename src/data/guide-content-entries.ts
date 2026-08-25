@@ -4679,7 +4679,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-local-vs-cloud-inference-decision-diagram",
     "title": "Decision Diagram",
-    "keywords": "decision diagram local vs cloud llm hardware and inference economics ```mermaid flowchart td a([need to run a large llm]) -- b{data must never<br/ leave your infra?} b -- yes c{model over 70b, or need<br/ maximum qualit",
+    "keywords": "decision diagram local vs cloud llm hardware and inference economics ```mermaid flowchart td a([need to run a large llm]) -- b{data must stay<br/ on your own infra?} b -- yes c{need over 70b<br/ or max quality?} b -- no",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#decision-diagram",
     "source": "guide"
