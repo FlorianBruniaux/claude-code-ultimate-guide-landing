@@ -10,7 +10,7 @@
 
 // Increment this ID whenever the banner content changes
 //
-// NOT YET LIVE: both new links below depend on unreleased guide content
+// NOT YET LIVE: two of the links below depend on unreleased guide content
 // (written 2026-08-24, still sitting in claude-code-ultimate-guide's
 // CHANGELOG under [Unreleased], not committed or pushed as of this edit).
 // - /guide/workflows/cross-session-messaging/ needs the source page
@@ -25,7 +25,11 @@
 //   anchor in src/pages/diagrams/index.astro.
 // Re-check the version badge and "Guide vX.Y.Z →" link below against the
 // real released version before deploying this banner.
-const BANNER_ID = 'banner-cross-session-messaging-2026-08'
+//
+// /guide/local-vs-cloud-inference/ IS live (guide/ecosystem/local-vs-cloud-inference.md,
+// synced and deployed 2026-08-25) — added 2026-08-25 in place of "Agent Harness
+// Engineering" to keep the strip to 4 items.
+const BANNER_ID = 'banner-local-vs-cloud-2026-08'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
@@ -37,7 +41,7 @@ const BANNER_ID = 'banner-cross-session-messaging-2026-08'
         <a href="/guide/workflows/cross-session-messaging/" class="ann-link">Cross-Session Messaging</a>
         <a href="/diagrams/#multi-agent" class="ann-link" style="font-size:0.85em">(diagram)</a>
         <span class="ann-sep" aria-hidden="true">·</span>
-        <a href="/guide/agent-harness/" class="ann-link">Agent Harness Engineering</a>
+        <a href="/guide/local-vs-cloud-inference/" class="ann-link">Local vs Cloud Inference</a>
         <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/guide/context-engineering/" class="ann-link">Context Engineering + ACE-v2</a>
         <span class="ann-sep" aria-hidden="true">·</span>
