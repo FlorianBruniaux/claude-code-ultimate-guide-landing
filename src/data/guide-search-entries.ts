@@ -4892,6 +4892,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-local-vs-cloud-model-efficiency",
+    "title": "Local Vs Cloud Model Efficiency",
+    "keywords": "local vs cloud model efficiency guide ecosystem local cloud inference md#energy efficiency model architecture",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#energy-efficiency-by-model-architecture",
+    "source": "guide"
+  },
+  {
     "id": "guide-local-vs-cloud-throughput",
     "title": "Local Vs Cloud Throughput",
     "keywords": "local vs cloud throughput guide ecosystem local cloud inference md#cloud api throughput claude gpt",

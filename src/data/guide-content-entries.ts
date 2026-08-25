@@ -4669,6 +4669,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-local-vs-cloud-inference-energy-efficiency-by-model-architecture",
+    "title": "Energy Efficiency by Model Architecture",
+    "keywords": "energy efficiency by model architecture local vs cloud llm hardware and inference economics the hardware section above answers \"how many watts does the gpu draw.\" a separate question is \"does the model itself matter\": does a mixture-of-expert",
+    "category": "Core Guides",
+    "url": "/guide/local-vs-cloud-inference/#energy-efficiency-by-model-architecture",
+    "source": "guide"
+  },
+  {
     "id": "gc-local-vs-cloud-inference-cloud-api-throughput-claude-vs-gpt-5-6",
     "title": "Cloud API Throughput: Claude vs GPT-5.6",
     "keywords": "cloud api throughput claude vs gpt 5 6 local vs cloud llm hardware and inference economics openai's gpt-5.6 family (launched july 9, 2026) ships in three durable capability tiers named after celestial bodies: sol (flagship), terra (balanced",
