@@ -4655,7 +4655,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-local-vs-cloud-inference-one-year-cost-projections",
     "title": "One-Year Cost Projections",
-    "keywords": "one year cost projections local vs cloud llm hardware and inference economics . three usage patterns, same gpu class (h100/h200), across providers. provider / gpu 4h/day 8h/day 24/7 --- --- --- --- ovh h100 80 gb €4,088 €8,176 €",
+    "keywords": "one year cost projections local vs cloud llm hardware and inference economics . three usage patterns, same gpu class (h100/h200), across providers. provider / gpu 4h/day 8h/day 24/7 --- --- --- --- ovh h100 80 gb ≈€4,088 ≈€8,176",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#one-year-cost-projections",
     "source": "guide"
@@ -4690,6 +4690,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "decision framework local vs cloud llm hardware and inference economics light or bursty usage, no data sovereignty requirement : use a managed api (claude, gpt-5.6) or a specialized inference provider. no hardware to maint",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#decision-framework",
+    "source": "guide"
+  },
+  {
+    "id": "gc-local-vs-cloud-inference-switching-providers-at-the-cli-level",
+    "title": "Switching Providers at the CLI Level",
+    "keywords": "switching providers at the cli level local vs cloud llm hardware and inference economics everything above is about which hardware or api to run inference on. a separate, complementary problem is how to point claude code itself at whichever",
+    "category": "Core Guides",
+    "url": "/guide/local-vs-cloud-inference/#switching-providers-at-the-cli-level",
     "source": "guide"
   },
   {

@@ -4916,6 +4916,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-local-vs-cloud-cli-bridge",
+    "title": "Local Vs Cloud CLI Bridge",
+    "keywords": "local vs cloud cli bridge guide ecosystem local cloud inference md#switching providers the cli level",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#switching-providers-at-the-cli-level",
+    "source": "guide"
+  },
+  {
     "id": "guide-appendix-a-file-locations",
     "title": "Appendix A File Locations",
     "keywords": "appendix a file locations guide ultimate guide md#appendix file locations reference",
