@@ -1606,9 +1606,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-remarkable-mcp-server",
     "title": "Remarkable MCP Server",
-    "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp game changer",
+    "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp accès mcp direct par ssh",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#1-remarkable-mcp--le-game-changer",
+    "url": "/guide/remarkable-ai/#1-remarkable-mcp--accès-mcp-direct-par-ssh",
     "source": "guide"
   },
   {
@@ -2804,6 +2804,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-viberank",
+    "title": "Third Party Viberank",
+    "keywords": "third party viberank guide ecosystem third party tools md#viberank",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#viberank",
+    "source": "guide"
+  },
+  {
     "id": "guide-third-party-codesight-guide",
     "title": "Third Party Codesight Guide",
     "keywords": "third party codesight guide guide ecosystem third party tools md#codesight",
@@ -3209,6 +3217,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "paperclip tool guide ecosystem agentic tools md#45 paperclip",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#45-paperclip",
+    "source": "guide"
+  },
+  {
+    "id": "guide-nimbalyst-tool",
+    "title": "Nimbalyst Tool",
+    "keywords": "nimbalyst tool guide ecosystem agentic tools md#47 nimbalyst",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#47-nimbalyst",
     "source": "guide"
   },
   {
@@ -4817,6 +4833,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "team knowledge decision table guide ecosystem team knowledge base md#decision table",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/team-knowledge-base.md#decision-table",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-guide",
+    "title": "Local Vs Cloud Guide",
+    "keywords": "local vs cloud guide guide ecosystem local cloud inference",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-llmfit",
+    "title": "Local Vs Cloud Llmfit",
+    "keywords": "local vs cloud llmfit guide ecosystem local cloud inference md#sizing local hardware with llmfit",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#sizing-local-hardware-with-llmfit",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-hardware-configs",
+    "title": "Local Vs Cloud Hardware Configs",
+    "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#ten comparable hardware configurations",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#ten-comparable-hardware-configurations",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-named-models",
+    "title": "Local Vs Cloud Named Models",
+    "keywords": "local vs cloud named models guide ecosystem local cloud inference md#what actually fits named models",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#what-actually-fits-named-models",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-gpu-rental",
+    "title": "Local Vs Cloud Gpu Rental",
+    "keywords": "local vs cloud gpu rental guide ecosystem local cloud inference md#cloud gpu rental pricing",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#cloud-gpu-rental-pricing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-tco",
+    "title": "Local Vs Cloud Tco",
+    "keywords": "local vs cloud tco guide ecosystem local cloud inference md#one year cost projections",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#one-year-cost-projections",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-throughput",
+    "title": "Local Vs Cloud Throughput",
+    "keywords": "local vs cloud throughput guide ecosystem local cloud inference md#cloud api throughput claude gpt",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#cloud-api-throughput-claude-vs-gpt-56",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-not-comparable",
+    "title": "Local Vs Cloud Not Comparable",
+    "keywords": "local vs cloud not comparable guide ecosystem local cloud inference md#why cloud and local tokenssec are not comparable",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#why-cloud-and-local-tokenssec-are-not-comparable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-diagram",
+    "title": "Local Vs Cloud Diagram",
+    "keywords": "local vs cloud diagram guide ecosystem local cloud inference md#decision diagram",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#decision-diagram",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-decision",
+    "title": "Local Vs Cloud Decision",
+    "keywords": "local vs cloud decision guide ecosystem local cloud inference md#decision framework",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#decision-framework",
     "source": "guide"
   },
   {
