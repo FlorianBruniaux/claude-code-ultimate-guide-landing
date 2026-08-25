@@ -4884,6 +4884,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-local-vs-cloud-power",
+    "title": "Local Vs Cloud Power",
+    "keywords": "local vs cloud power guide ecosystem local cloud inference md#power consumption watts watt hours joules per token",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#power-consumption-watts-watt-hours-joules-per-token",
+    "source": "guide"
+  },
+  {
     "id": "guide-local-vs-cloud-throughput",
     "title": "Local Vs Cloud Throughput",
     "keywords": "local vs cloud throughput guide ecosystem local cloud inference md#cloud api throughput claude gpt",

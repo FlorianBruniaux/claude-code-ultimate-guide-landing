@@ -4661,6 +4661,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-local-vs-cloud-inference-power-consumption-watts-watt-hours-joules-per-toke",
+    "title": "Power Consumption: Watts, Watt-Hours, Joules per Token",
+    "keywords": "power consumption watts watt hours joules per token local vs cloud llm hardware and inference economics a reader asked directly: where are the watts-per-token or watts-per-hour figures for the hardware and services above? the honest answer is that almost",
+    "category": "Core Guides",
+    "url": "/guide/local-vs-cloud-inference/#power-consumption-watts-watt-hours-joules-per-token",
+    "source": "guide"
+  },
+  {
     "id": "gc-local-vs-cloud-inference-cloud-api-throughput-claude-vs-gpt-5-6",
     "title": "Cloud API Throughput: Claude vs GPT-5.6",
     "keywords": "cloud api throughput claude vs gpt 5 6 local vs cloud llm hardware and inference economics openai's gpt-5.6 family (launched july 9, 2026) ships in three durable capability tiers named after celestial bodies: sol (flagship), terra (balanced",
