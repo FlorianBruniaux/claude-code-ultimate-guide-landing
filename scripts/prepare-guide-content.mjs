@@ -224,6 +224,27 @@ function rewriteRelativeGuideLinks(content) {
 }
 
 /**
+ * Rewrite relative image links (![alt](../images/x.webp), ./images/x.webp,
+ * etc.) to the absolute /guide/images/x.webp URL that public/guide/images/
+ * is actually served at.
+ *
+ * Astro's markdown pipeline does not reliably run the remarkGuideLinks
+ * plugin on Content Layer collection files (see that plugin's own header
+ * comment), so a relative image path survives untouched into the rendered
+ * page and gets resolved by the browser against the page's own URL
+ * (/guide/<slug>/../images/x.webp -> /images/x.webp, a 404) instead of the
+ * intended /guide/images/x.webp. Rewriting to an absolute path here, at the
+ * same raw-string-replace layer that already handles .md links reliably,
+ * sidesteps that content-layer caching gap entirely.
+ */
+function rewriteRelativeImageLinks(content) {
+  return content.replace(
+    /!\[([^\]]*)\]\((?:\.\.?\/)*images\/([^)#]+)\)/g,
+    (match, alt, filename) => `![${alt}](/guide/images/${filename})`
+  )
+}
+
+/**
  * Rewrite relative links into repo files that are NOT served on the landing
  * (docs/resource-evaluations, etc.) to their GitHub source URL.
  *
@@ -604,6 +625,7 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   const currentSlug = `ultimate-guide/${slug}`
   content = rewriteRepoDocLinks(content)
   content = rewriteRelativeGuideLinks(content)
+  content = rewriteRelativeImageLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
   content = resolveUltimateGuideAnchors(content, anchorMap)
 
@@ -629,6 +651,7 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
   let rewritten = rewriteRepoDocLinks(rawContent)
   rewritten = rewriteRelativeGuideLinks(rewritten)
+  rewritten = rewriteRelativeImageLinks(rewritten)
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')

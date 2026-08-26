@@ -62,9 +62,17 @@ function resolveGuideLink(href, anchorFragment, anchorMap) {
   const cleanHref = href.replace(/^\.\//, '')
 
   // ── Images ────────────────────────────────────────────────────────────
+  // All guide images live in the single flat guide/images/ directory, served at
+  // /guide/images/. Source files reference it as ./images/x (files directly in
+  // guide/) or ../images/x, ../../images/x, etc. (files in a subdirectory like
+  // guide/ecosystem/ or guide/core/). Strip everything up to and including the
+  // last "images/" segment so both forms resolve to the same flat URL.
   const imageExt = IMAGE_EXTS.has('.' + cleanHref.split('.').pop()?.toLowerCase() || '')
-  if (cleanHref.startsWith('images/') || IMAGE_EXTS.has('.' + (cleanHref.split('.').pop() || ''))) {
-    return { url: '/guide/' + cleanHref, isExternal: false }
+  if (cleanHref.includes('images/') && imageExt) {
+    return { url: '/guide/images/' + cleanHref.split('images/').pop(), isExternal: false }
+  }
+  if (imageExt) {
+    return { url: '/guide/' + cleanHref.replace(/^(\.\.\/)+/, ''), isExternal: false }
   }
 
   // ── ultimate-guide.md (split into chapters) ────────────────────────
