@@ -4854,9 +4854,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-local-vs-cloud-hardware-configs",
     "title": "Local Vs Cloud Hardware Configs",
-    "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#ten comparable hardware configurations",
+    "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#thirteen comparable hardware configurations",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#ten-comparable-hardware-configurations",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#thirteen-comparable-hardware-configurations",
     "source": "guide"
   },
   {
@@ -4865,6 +4865,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "local vs cloud named models guide ecosystem local cloud inference md#what actually fits named models",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#what-actually-fits-named-models",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-which-machine",
+    "title": "Local Vs Cloud Which Machine",
+    "keywords": "local vs cloud which machine guide ecosystem local cloud inference md#which local machine for which usage",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#which-local-machine-for-which-usage",
     "source": "guide"
   },
   {
