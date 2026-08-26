@@ -1567,7 +1567,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick Jump",
-    "keywords": "quick jump claude code release history - 2.1.x series (january-august 2026): bug fixes (2.1.241, 2.1.240), ⭐ bedrock streaming proxy fix that stopped billing every turn twice + windows cros",
+    "keywords": "quick jump claude code release history - 2.1.x series (january-august 2026): bash allow-rule wildcard startup warning + auto mode tab in + write tool overwrite-freeze fix + non-interactive",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#quick-jump",
     "source": "guide"
@@ -1575,7 +1575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-august-2026",
     "title": "2.1.x Series (January-August 2026)",
-    "keywords": "2 1 x series january august 2026 claude code release history v2.1.241 (2026-08-22) - fixed : bug fixes and reliability improvements v2.1.240 (2026-08-22) - fixed : bug fixes and reliability improvements v2.1.239 v2 1 241 2026 08 22 v2 1 240 2026 08 22 v2 1 239 2026 08 21 v2 1 238 2026 08 20 v2 1 237 2026 08 19 v2 1 236 2026 08 19 v2 1 235 2026 08 18 v2 1 234 2026 08 17 v2 1 233 2026 08 14 v2 1 232 2026 08 13 v2 1 231 2026 08 13 v2 1 229 2026 08 12 v2 1 228 2026 08 11 v2 1 227 2026 08 10 v2 1 226",
+    "keywords": "2 1 x series january august 2026 claude code release history v2.1.246 (2026-08-25) - added : a startup warning for bash allow rules with a wildcard before the subcommand (e.g. ), since they also match options in v2 1 246 2026 08 25 v2 1 245 2026 08 25 v2 1 243 2026 08 24 v2 1 241 2026 08 22 v2 1 240 2026 08 22 v2 1 239 2026 08 21 v2 1 238 2026 08 20 v2 1 237 2026 08 19 v2 1 236 2026 08 19 v2 1 235 2026 08 18 v2 1 234 2026 08 17 v2 1 233 2026 08 14 v2 1 232 2026 08 13 v2 1 231 2026 08 13 v2 1 229",
     "category": "Core Guides",
     "url": "/guide/claude-code-releases/#2-1-x-series-january-august-2026",
     "source": "guide"
