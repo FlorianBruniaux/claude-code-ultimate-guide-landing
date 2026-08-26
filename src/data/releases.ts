@@ -16,12 +16,42 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.246',
+    date: 'Aug 25, 2026',
+    highlights: [
+      'Added a startup warning for Bash allow rules with a wildcard before the subcommand (e.g. Bash(git * main)), since they also match options inserted before the subcommand',
+      'Added an Auto mode tab to /permissions for viewing and editing auto mode classifier rules',
+      'Fixed the Write tool reporting "Out of memory" or freezing for a long time after overwriting a very large existing file, even though the file had been written',
+      'Improved non-interactive sessions (-p, SDK, cloud sessions) to automatically continue a response cut off mid-stream by a server error, connection loss, or stall',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.245',
+    date: 'Aug 25, 2026',
+    highlights: [
+      'Fixed a crash on startup on Linux distributions that ship glibc 2.44 (for example Arch Linux, CachyOS, Fedora Rawhide)',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.243',
+    date: 'Aug 24, 2026',
+    highlights: [
+      'Added a Loops breakdown to /usage: per-loop run count, total tokens, tokens per run, and last run',
+      'Added modelPicker setting to curate the /model picker with an ordered, labeled list of models',
+      'Added promptCacheTtl and subagentPromptCacheTtl settings so API-key and cloud-provider users can keep a 1-hour prompt cache on the main conversation while subagents stay at 5 minutes',
+      "Added a keyless sign-in under /login to Anthropic Console for organizations that don't allow API keys",
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.241',
     date: 'Aug 22, 2026',
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
