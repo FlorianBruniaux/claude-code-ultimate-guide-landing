@@ -1,0 +1,19 @@
+plugins/remark-guide-links.mjs
+  s_bd1e403875ee43::t_e74537a405aa34 65-69,71-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3b0a23ca0c97acc39cda149df935194efe75259a",
+  "prompts": {},
+  "sessions": {
+    "s_bd1e403875ee43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "953892dc-6069-48d6-8505-998f61d64787",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
