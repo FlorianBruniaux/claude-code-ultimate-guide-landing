@@ -1,0 +1,37 @@
+---
+// Starlight's PAGE_TITLE_ID ('_top') isn't exported from a public subpath,
+// so it's inlined here. Matches @astrojs/starlight/constants.ts.
+const PAGE_TITLE_ID = '_top';
+
+const { lang, lastUpdated } = Astro.locals.starlightRoute;
+---
+
+<h1 id={PAGE_TITLE_ID}>{Astro.locals.starlightRoute.entry.data.title}</h1>
+
+{
+	lastUpdated && (
+		<p class="last-updated">
+			Last updated:{' '}
+			<time datetime={lastUpdated.toISOString()}>
+				{lastUpdated.toLocaleDateString(lang, { dateStyle: 'medium', timeZone: 'UTC' })}
+			</time>
+		</p>
+	)
+}
+
+<style>
+	@layer starlight.core {
+		h1 {
+			margin-top: 1rem;
+			font-size: var(--sl-text-h1);
+			line-height: var(--sl-line-height-headings);
+			font-weight: 600;
+			color: var(--sl-color-white);
+		}
+	}
+	.last-updated {
+		margin-top: 0.25rem;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+</style>
