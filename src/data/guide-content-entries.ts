@@ -14495,9 +14495,49 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-spec-first-integration-with-tools",
     "title": "Integration with Tools",
-    "keywords": "integration with tools spec first development with claude with spec kit (greenfield) with openspec (brownfield) with bmad-method (multi-role planning) bmad-method (bmad-code-org/bmad-method, 51,176 stars as o with spec kit greenfield with openspec brownfield with bmad method multi role planning with spec kitty isolated parallel execution with plan mode",
+    "keywords": "integration with tools spec first development with claude with intent.md (upstream problem statement) anthropic's ai-native sdlc playbook (2026) puts one document ahead of the spec: states the problem in natu with intent md upstream problem statement",
     "category": "Workflows",
     "url": "/guide/workflows/spec-first/#integration-with-tools",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-spec-first-author",
+    "title": "Author",
+    "keywords": "author spec first development with claude jane doe, product (jane@company.com)",
+    "category": "Workflows",
+    "url": "/guide/workflows/spec-first/#author",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-spec-first-problem",
+    "title": "Problem",
+    "keywords": "problem spec first development with claude 32% of mobile checkouts are abandoned at the payment step, versus 11% on desktop. support tickets point to the card form timing out on slow connection",
+    "category": "Workflows",
+    "url": "/guide/workflows/spec-first/#problem",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-spec-first-constraints",
+    "title": "Constraints",
+    "keywords": "constraints spec first development with claude - must not change the payment provider (stripe, contractual) - must ship before the q3 promo (2026-09-01)",
+    "category": "Workflows",
+    "url": "/guide/workflows/spec-first/#constraints",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-spec-first-open-questions",
+    "title": "Open questions",
+    "keywords": "open questions spec first development with claude - retry silently, or show a \"reconnecting\" state? - is apple pay / google pay in scope?",
+    "category": "Workflows",
+    "url": "/guide/workflows/spec-first/#open-questions",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-spec-first-gate",
+    "title": "Gate",
+    "keywords": "gate spec first development with claude approved by: [pm name], [date] bash install spec kit npx @anthropic/spec-kit init use slash commands /speckit.constitution define project guardrails / with spec kit greenfield with openspec brownfield with bmad method multi role planning with spec kitty isolated parallel execution with plan mode",
+    "category": "Workflows",
+    "url": "/guide/workflows/spec-first/#gate",
     "source": "guide"
   },
   {

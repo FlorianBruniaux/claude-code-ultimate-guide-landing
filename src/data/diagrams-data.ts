@@ -213,10 +213,10 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
       },
       {
         "title": "Spec-First Development Pipeline",
-        "description": "Write the specification before the code. Claude uses the spec as the single source of truth, preventing drift between what was planned and what was built.",
+        "description": "Write the specification before the code. Claude uses the spec as the single source of truth, preventing drift between what was planned and what was built. The loop closes on `Maintain`: a monitoring threshold crossed in production drafts a new `intent.md` automatically, a pattern Anthropic's [AI-native SDLC playbook](https://claude.com/blog/the-ai-native-sdlc-playbook) (2026) documents as the boundary between a one-shot pipeline and a continuous one.",
         "svg": null,
-        "asciiFallback": "Idea → Write spec.md → Claude reviews\n                             │\n                       Approved? ─No→ Refine spec\n                             │ Yes\n                       Generate tests from spec\n                             │\n                       Generate implementation\n                             │\n                       Run tests → Pass? ─No→ Claude fixes\n                             │ Yes\n                       Human review → Matches spec? ─No→ Fix\n                             │ Yes\n                           Merge ✓",
-        "sourceRef": "Spec-First Development"
+        "asciiFallback": "Idea → Write intent.md → Approved by PM? ─No→ Refine intent\n                             │ Yes\n                       Write spec.md → Claude reviews\n                             │\n                       Approved? ─No→ Refine spec\n                             │ Yes\n                       Generate tests from spec\n                             │\n                       Generate implementation\n                             │\n                       Run tests → Pass? ─No→ Claude fixes\n                             │ Yes\n                       Human review → Matches spec? ─No→ Fix\n                             │ Yes\n                           Merge ✓\n                             │\n                       Maintain: monitor production\n                             │\n                       Anomaly threshold crossed? ─Yes→ draft new intent.md (loop to top)\n                             │ No\n                       keep monitoring",
+        "sourceRef": "Spec-First Development; closed-loop `Maintain → Plan` pattern: Anthropic AI-native SDLC playbook (2026)"
       },
       {
         "title": "Plan-Driven Workflow with Annotation",

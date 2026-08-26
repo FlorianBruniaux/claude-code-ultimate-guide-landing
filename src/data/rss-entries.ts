@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.42.0',
+    date: 'Aug 26, 2026',
+    description: "Evaluated Anthropic's AI-native SDLC playbook blog post and closed the two real gaps against the guide's existing spec-first documentation: an intent.md upstream problem statement, gated by a PM before the technical spec starts, and a closed Maintain-to-Plan loop where a production monitoring threshold drafts a new intent.md automatically. Documented in spec-first.md's 3-document chain (intent.md, spec.md, plan.md) and the Spec-First Development Pipeline diagram.",
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#3420---2026-08-26',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.41.3',
     date: 'Aug 20, 2026',
     description: 'Consolidates several weeks of security, agent-harness, and sandbox research: the threat database jumps from v2.20.0 to v2.27.0 across the Shai-Hulud keyv npm worm, the Ghostjacking log-poisoning technique, and the skills.sh Paperclip typosquat campaign. New agent-harness-landscape.md page compares 25 CLI, IDE, and cloud harnesses. Sandbox troubleshooting rewritten around what actually breaks in daily use, not what looks dangerous on paper. The Claude Code release tracker catches up to v2.1.237, and the /ultraplan section is removed: the command was deleted from Claude Code five months ago and the guide never noticed.',

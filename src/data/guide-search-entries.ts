@@ -3708,6 +3708,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-intent-md-pattern",
+    "title": "Intent Md Pattern",
+    "keywords": "intent md pattern guide workflows spec first md#with intentmd upstream problem statement",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/#with-intentmd-upstream-problem-statement",
+    "source": "guide"
+  },
+  {
+    "id": "guide-intent-md-diagram",
+    "title": "Intent Md Diagram",
+    "keywords": "intent md diagram guide diagrams development workflows md#spec first development pipeline",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#spec-first-development-pipeline",
+    "source": "guide"
+  },
+  {
     "id": "guide-agentic-software-factories-hub",
     "title": "Agentic Software Factories Hub",
     "keywords": "agentic software factories hub guide workflows agentic software factories",
