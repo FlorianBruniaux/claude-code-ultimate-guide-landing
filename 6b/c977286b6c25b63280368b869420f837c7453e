@@ -1,0 +1,19 @@
+src/components/global/GuidePageFab.astro
+  s_caae58b859039d::t_68093141e141b8 24,29-30,46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "6bc977286b6c25b63280368b869420f837c7453e",
+  "prompts": {},
+  "sessions": {
+    "s_caae58b859039d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_caae58b859039d",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
