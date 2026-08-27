@@ -592,7 +592,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Guide",
     "keywords": "agent harness guide guide core agent harness",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md",
+    "url": "/guide/agent-harness/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-four-layers",
+    "title": "Agent Harness Four Layers",
+    "keywords": "agent harness four layers guide core agent harness md#0 four layers four responsibilities",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#0-four-layers-four-responsibilities",
     "source": "guide"
   },
   {
@@ -600,7 +608,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Nine Components",
     "keywords": "agent harness nine components guide core agent harness md#2 the nine components",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#2-the-nine-components",
+    "url": "/guide/agent-harness/#2-the-nine-components",
     "source": "guide"
   },
   {
@@ -608,7 +616,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Lethal Trifecta",
     "keywords": "agent harness lethal trifecta guide core agent harness md#3 the lethal trifecta security model",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#3-the-lethal-trifecta-security-model",
+    "url": "/guide/agent-harness/#3-the-lethal-trifecta-security-model",
     "source": "guide"
   },
   {
@@ -616,7 +624,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Cicd",
     "keywords": "agent harness cicd guide core agent harness md#4 cicd agentic patterns",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#4-cicd-agentic-patterns",
+    "url": "/guide/agent-harness/#4-cicd-agentic-patterns",
     "source": "guide"
   },
   {
@@ -624,7 +632,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Observability",
     "keywords": "agent harness observability guide core agent harness md#6 observability stack",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#6-observability-stack",
+    "url": "/guide/agent-harness/#6-observability-stack",
     "source": "guide"
   },
   {
@@ -632,7 +640,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Creator Verifier",
     "keywords": "agent harness creator verifier guide core agent harness md#8 creator verifier pattern",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#8-creator-verifier-pattern",
+    "url": "/guide/agent-harness/#8-creator-verifier-pattern",
     "source": "guide"
   },
   {
@@ -640,7 +648,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Three Properties",
     "keywords": "agent harness three properties guide core agent harness md#1 three foundational properties",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#1-three-foundational-properties",
+    "url": "/guide/agent-harness/#1-three-foundational-properties",
     "source": "guide"
   },
   {
@@ -648,7 +656,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Digital Twin",
     "keywords": "agent harness digital twin guide core agent harness md#5 digital twin testing",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/agent-harness.md#5-digital-twin-testing",
+    "url": "/guide/agent-harness/#5-digital-twin-testing",
     "source": "guide"
   },
   {
@@ -3232,7 +3240,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Tools Page",
     "keywords": "agentic tools page guide ecosystem agentic tools",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md",
+    "url": "/guide/agentic-tools/",
     "source": "guide"
   },
   {
@@ -3240,7 +3248,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Tools Decision Framework",
     "keywords": "agentic tools decision framework guide ecosystem agentic tools md#section decision framework",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#section-5-decision-framework",
+    "url": "/guide/agentic-tools/#section-5-decision-framework",
     "source": "guide"
   },
   {
@@ -3248,7 +3256,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Tools Comparison Matrix",
     "keywords": "agentic tools comparison matrix guide ecosystem agentic tools md#full comparison matrix",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#full-comparison-matrix",
+    "url": "/guide/agentic-tools/#full-comparison-matrix",
     "source": "guide"
   },
   {
@@ -3256,7 +3264,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Metagpt Tool",
     "keywords": "metagpt tool guide ecosystem agentic tools md#35 metagpt",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#35-metagpt",
+    "url": "/guide/agentic-tools/#35-metagpt",
     "source": "guide"
   },
   {
@@ -3264,7 +3272,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Symphony Tool",
     "keywords": "symphony tool guide ecosystem agentic tools md#44 symphony openai",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#44-symphony-openai",
+    "url": "/guide/agentic-tools/#44-symphony-openai",
     "source": "guide"
   },
   {
@@ -3272,7 +3280,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Paperclip Tool",
     "keywords": "paperclip tool guide ecosystem agentic tools md#45 paperclip",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#45-paperclip",
+    "url": "/guide/agentic-tools/#45-paperclip",
     "source": "guide"
   },
   {
@@ -3280,7 +3288,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Nimbalyst Tool",
     "keywords": "nimbalyst tool guide ecosystem agentic tools md#47 nimbalyst",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#47-nimbalyst",
+    "url": "/guide/agentic-tools/#47-nimbalyst",
     "source": "guide"
   },
   {
@@ -3288,7 +3296,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Opencode Tool",
     "keywords": "opencode tool guide ecosystem agentic tools md#15 opencode anomaly formerly sst",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#15-opencode-anomaly-formerly-sst",
+    "url": "/guide/agentic-tools/#15-opencode-anomaly-formerly-sst",
     "source": "guide"
   },
   {
@@ -3296,7 +3304,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gemini CLI Tool",
     "keywords": "gemini cli tool guide ecosystem agentic tools md#16 gemini cli google",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#16-gemini-cli-google",
+    "url": "/guide/agentic-tools/#16-gemini-cli-google",
     "source": "guide"
   },
   {
@@ -3304,7 +3312,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Crush Tool",
     "keywords": "crush tool guide ecosystem agentic tools md#17 crush charm",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#17-crush-charm",
+    "url": "/guide/agentic-tools/#17-crush-charm",
     "source": "guide"
   },
   {
@@ -3312,7 +3320,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Comparison Page",
     "keywords": "agent harness comparison page guide ecosystem agent harness landscape",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md",
+    "url": "/guide/agent-harness-landscape/",
     "source": "guide"
   },
   {
@@ -3320,7 +3328,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Definition",
     "keywords": "agent harness definition guide ecosystem agent harness landscape md#agent harness comparison",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#agent-harness-comparison",
+    "url": "/guide/agent-harness-landscape/#agent-harness-comparison",
     "source": "guide"
   },
   {
@@ -3328,15 +3336,23 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agent Harness Boundary Table",
     "keywords": "agent harness boundary table guide ecosystem agent harness landscape md#whats not full harness",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#whats-not-a-full-harness",
+    "url": "/guide/agent-harness-landscape/#whats-not-a-full-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-orchestrators",
+    "title": "Agent Harness Orchestrators",
+    "keywords": "agent harness orchestrators guide ecosystem agent harness landscape md#orchestrators products above the runtime",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#orchestrators-products-above-the-runtime",
     "source": "guide"
   },
   {
     "id": "guide-deepseek-harness-tool",
     "title": "Deepseek Harness Tool",
-    "keywords": "deepseek harness tool guide ecosystem agent harness landscape md#core coding harnesses",
+    "keywords": "deepseek harness tool guide ecosystem agentic tools md#18 deepseek harness dsh",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agent-harness-landscape.md#core-coding-harnesses",
+    "url": "/guide/agentic-tools/#18-deepseek-harness-dsh",
     "source": "guide"
   },
   {
@@ -3752,7 +3768,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Openhands Tool",
     "keywords": "openhands tool guide ecosystem agentic tools md#24 openhands all hands",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/agentic-tools.md#24-openhands-all-hands-ai",
+    "url": "/guide/agentic-tools/#24-openhands-all-hands-ai",
     "source": "guide"
   },
   {

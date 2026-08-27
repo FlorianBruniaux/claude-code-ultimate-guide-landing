@@ -23,6 +23,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/cheatsheet.md',
   'guide/cowork.md',
   // core/
+  'guide/core/agent-harness.md',
   'guide/core/architecture.md',
   'guide/core/claude-code-releases.md',
   'guide/core/known-issues.md',
@@ -36,6 +37,8 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/security/sandbox-native.md',
   'guide/security/security-hardening.md',
   // ecosystem/
+  'guide/ecosystem/agent-harness-landscape.md',
+  'guide/ecosystem/agentic-tools.md',
   'guide/ecosystem/ai-ecosystem.md',
   'guide/ecosystem/mcp-servers-ecosystem.md',
   'guide/ecosystem/remarkable-ai.md',

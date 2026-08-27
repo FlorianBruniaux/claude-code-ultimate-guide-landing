@@ -231,9 +231,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-core-coding-harnesses",
     "title": "Core Coding Harnesses",
-    "keywords": "core coding harnesses agent harness comparison twenty-five harnesses, from cli-only open source projects to ide-embedded proprietary products to cloud-only autonomous agents. entries with a full pr",
+    "keywords": "core coding harnesses agent harness comparison thirty-three harnesses, from cli-only open source projects to ide-embedded proprietary products to cloud-only autonomous agents. entries with a full p",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#core-coding-harnesses",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-landscape-orchestrators-products-above-the-runtime",
+    "title": "Orchestrators: Products Above the Runtime",
+    "keywords": "orchestrators products above the runtime agent harness comparison the following products coordinate tasks, isolated workspaces, or multiple agent sessions. they are useful when the problem is a queue or a fleet. they",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#orchestrators-products-above-the-runtime",
     "source": "guide"
   },
   {
@@ -258,6 +266,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "the core claim code as agent harness arxiv 2605 18747 agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. martin fowler, addy osmani, o'reilly's 2026 ai radar, and arxiv 2605.18747 (may",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#the-core-claim",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-0-four-layers-four-responsibilities",
+    "title": "0. Four Layers, Four Responsibilities",
+    "keywords": "0 four layers four responsibilities code as agent harness arxiv 2605 18747 agent harness engineering the word harness is overloaded. this guide uses four layers so a model, a runtime, a repository setup, and a fleet manager are not treated as intercha",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness/#0-four-layers-four-responsibilities",
     "source": "guide"
   },
   {
@@ -2871,7 +2887,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-h",
     "title": "H",
-    "keywords": "h glossary hook a user-defined handler that executes automatically at a specific point in claude code's lifecycle, such as before a tool runs, after a file edit, hook",
+    "keywords": "h glossary agent harness the runtime around a model that executes an agent loop: it assembles context, exposes tools, applies permissions, preserves or restores agent harness evaluation harness hook",
     "category": "Core Guides",
     "url": "/guide/glossary/#h",
     "source": "guide"
@@ -8653,11 +8669,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide-09-advanced-patterns-9-25-harness-engineering",
-    "title": "9.25 Harness Engineering",
-    "keywords": "9 25 harness engineering 9 advanced patterns reading time : 10 minutes skill level : month 2+ the core insight : model capability and execution reliability are orthogonal. the same model produces what is a harness the verification gap",
+    "id": "gc-ultimate-guide-09-advanced-patterns-9-25-repository-harness-engineering",
+    "title": "9.25 Repository Harness Engineering",
+    "keywords": "9 25 repository harness engineering 9 advanced patterns reading time : 10 minutes skill level : month 2+ the core insight : model capability and execution reliability are orthogonal. the same model produces what is a repository harness the verification gap",
     "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/09-advanced-patterns/#9-25-harness-engineering",
+    "url": "/guide/ultimate-guide/09-advanced-patterns/#9-25-repository-harness-engineering",
     "source": "guide"
   },
   {

@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'Agent Harness Landscape: Runtimes, Repositories, and Orchestrators',
+    date: 'Aug 27, 2026',
+    description: 'The harness documentation now separates four layers that are often conflated: model, runtime harness, repository harness, and orchestrator. The curated landscape covers 33 coding runtimes and 7 orchestration products, with a dedicated DeepSeek Harness profile covering its plugin architecture, setup, maturity limits, and security evidence.',
+    link: 'https://cc.bruniaux.com/guide/agent-harness-landscape/',
+  },
+  {
     type: 'new_page',
     title: 'AI Executive Agents: Virtual C-Suites and Board Simulators',
     date: 'Aug 27, 2026',
