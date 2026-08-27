@@ -4717,11 +4717,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-local-vs-cloud-inference-thirteen-comparable-hardware-configurations",
-    "title": "Thirteen Comparable Hardware Configurations",
-    "keywords": "thirteen comparable hardware configurations local vs cloud llm hardware and inference economics bare gpus are not comparable to laptops or appliances. the table below only lists complete systems: cpu, memory, gpu, and storage together, sorted by",
+    "id": "gc-local-vs-cloud-inference-fourteen-comparable-hardware-configurations",
+    "title": "Fourteen Comparable Hardware Configurations",
+    "keywords": "fourteen comparable hardware configurations local vs cloud llm hardware and inference economics bare gpus are not comparable to laptops or appliances. the table below only lists complete systems: cpu, memory, gpu, and storage together, sorted by",
     "category": "Core Guides",
-    "url": "/guide/local-vs-cloud-inference/#thirteen-comparable-hardware-configurations",
+    "url": "/guide/local-vs-cloud-inference/#fourteen-comparable-hardware-configurations",
     "source": "guide"
   },
   {
@@ -7087,7 +7087,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-2-the-claude-folder-structure",
     "title": "3.2 The .claude/ Folder Structure",
-    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 41 3 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
+    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 42 0 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-2-the-claude-folder-structure",
     "source": "guide"
@@ -8794,6 +8794,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "9 27 cross session messaging peer coordination 9 advanced patterns reading time : 5 minutes (overview) full guide → ( 15 min, full mechanics and security model) skill level : month 1+ status : stable, v2.1.224+ (macos what it is discovery and delivery security boundary when to use it",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/09-advanced-patterns/#9-27-cross-session-messaging-peer-coordination",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide-09-advanced-patterns-9-28-event-ingestion-and-safe-delegation",
+    "title": "9.28 Event Ingestion and Safe Delegation",
+    "keywords": "9 28 event ingestion and safe delegation 9 advanced patterns reading time : 3 minutes (overview) full guide → ( 12 min, sources, boundaries, and codex workflow) skill level : advanced claude code offers several",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/09-advanced-patterns/#9-28-event-ingestion-and-safe-delegation",
     "source": "guide"
   },
   {
@@ -12911,7 +12919,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-event-driven-agents-implementation-example",
     "title": "Implementation Example",
-    "keywords": "implementation example event driven agent automation a minimal bash loop that polls linear for \"in progress\" cards and spawns claude code agents: ```bash !/bin/bash linear-agent-loop.sh polls linear for",
+    "keywords": "implementation example event driven agent automation this minimal loop classifies linear cards without starting an agent or changing a repository. it records the title and description as data, then route",
     "category": "Workflows",
     "url": "/guide/workflows/event-driven-agents/#implementation-example",
     "source": "guide"
@@ -12927,7 +12935,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-event-driven-agents-guardrails",
     "title": "Guardrails",
-    "keywords": "guardrails event driven agent automation event-driven agents run with less human oversight by design, so guardrails become critical. idempotency an agent might process the same event twice (n idempotency rate limiting circuit breaker human in the loop checkpoints",
+    "keywords": "guardrails event driven agent automation event-driven agents run with less human oversight by design, so guardrails become critical. security update : this page describes a generic pattern. f idempotency rate limiting circuit breaker human in the loop checkpoints",
     "category": "Workflows",
     "url": "/guide/workflows/event-driven-agents/#guardrails",
     "source": "guide"
@@ -12951,7 +12959,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-event-driven-agents-see-also",
     "title": "See Also",
-    "keywords": "see also event driven agent automation - agent-teams.md: multi-agent parallel coordination - iterative-refinement.md: the core prompt-observe-reprompt loop - plan-driven.md: plan before exe",
+    "keywords": "see also event driven agent automation - monitor, channels and safe delegation to codex: verified events, websocket monitors, and read-only-first codex delegation - agent-teams.md: multi-ag",
     "category": "Workflows",
     "url": "/guide/workflows/event-driven-agents/#see-also",
     "source": "guide"
@@ -13119,7 +13127,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-github-actions-see-also",
     "title": "See Also",
-    "keywords": "see also github actions workflows with claude code - section 9.3 ci/cd integration: headless mode, unix piping, - production safety: guardrails for automated agents - security hardening: mcp and webhoo",
+    "keywords": "see also github actions workflows with claude code - monitor, channels and safe delegation to codex: secure split-job codex pattern and why a hosted runner is separate from a local monitor - section 9.",
     "category": "Workflows",
     "url": "/guide/workflows/github-actions/#see-also",
     "source": "guide"
@@ -13298,6 +13306,54 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "see also iterative refinement - exploration-workflow.md: explore alternatives before iterating - tdd-with-claude.md: tdd is iterative refinement with tests - plan-driven.md: plan b",
     "category": "Workflows",
     "url": "/guide/workflows/iterative-refinement/#see-also",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-choose-the-delivery-mechanism",
+    "title": "Choose the delivery mechanism",
+    "keywords": "choose the delivery mechanism monitor channels and safe delegation to codex need use boundary to keep --- --- --- stream output from one local process command source (v2.1.98+) the command follows bash permissions. receive a n",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#choose-the-delivery-mechanism",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-monitor-sources",
+    "title": "Monitor sources",
+    "keywords": "monitor sources monitor channels and safe delegation to codex command source the original source runs a background command and feeds each output line back to claude. it supports and ; stop an active monitor with command source websocket source",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#monitor-sources",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-plugin-monitors-and-channels",
+    "title": "Plugin monitors and Channels",
+    "keywords": "plugin monitors and channels monitor channels and safe delegation to codex plugin monitors are experimental, interactive-cli-only persistent shell commands. the default declaration is ; a plugin can instead set in to an inlin",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#plugin-monitors-and-channels",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-github-to-monitor-to-codex-a-safe-pipeline",
+    "title": "GitHub to Monitor to Codex: a safe pipeline",
+    "keywords": "github to monitor to codex a safe pipeline monitor channels and safe delegation to codex the verifier checks the github signature before parsing or using the payload, accepts only the repositories and event types it owns, and validates the stage 1 classify without writes stage 2 write only after a gate",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#github-to-monitor-to-codex-a-safe-pipeline",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-github-actions-is-a-separate-path",
+    "title": "GitHub Actions is a separate path",
+    "keywords": "github actions is a separate path monitor channels and safe delegation to codex for github actions, prefer over installing codex and passing the key to a shell step: the action starts a secure proxy while receiving as an action in",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#github-actions-is-a-separate-path",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-monitor-event-delegation-routines-useful-but-not-a-local-monitor",
+    "title": "Routines: useful, but not a local Monitor",
+    "keywords": "routines useful but not a local monitor monitor channels and safe delegation to codex routines run on anthropic-managed cloud infrastructure or an organization's self-hosted environment. they can react to schedules, api calls, and githu",
+    "category": "Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#routines-useful-but-not-a-local-monitor",
     "source": "guide"
   },
   {

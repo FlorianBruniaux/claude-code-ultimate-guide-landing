@@ -1300,6 +1300,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-monitor-event-delegation",
+    "title": "Monitor Event Delegation",
+    "keywords": "monitor event delegation guide workflows monitor event delegation",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-monitor-command-source",
+    "title": "Monitor Command Source",
+    "keywords": "monitor command source guide core tools reference md#monitor v2198",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/tools-reference.md#monitor-v2198",
+    "source": "guide"
+  },
+  {
+    "id": "guide-monitor-websocket-source",
+    "title": "Monitor Websocket Source",
+    "keywords": "monitor websocket source guide workflows monitor event delegation md#websocket source",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#websocket-source",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plugin-monitors",
+    "title": "Plugin Monitors",
+    "keywords": "plugin monitors guide workflows monitor event delegation md#plugin monitors and channels channels mcp guide workflows monitor event delegation md#plugin monitors and channels",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#plugin-monitors-and-channels",
+    "source": "guide"
+  },
+  {
+    "id": "guide-codex-safe-event-delegation",
+    "title": "Codex Safe Event Delegation",
+    "keywords": "codex safe event delegation guide workflows monitor event delegation md#github monitor codex safe pipeline",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/monitor-event-delegation/#github-to-monitor-to-codex-a-safe-pipeline",
+    "source": "guide"
+  },
+  {
     "id": "guide-scheduled-tasks-desktop",
     "title": "Scheduled Tasks Desktop",
     "keywords": "scheduled tasks desktop guide ultimate guide md#desktop scheduled tasks",
@@ -2873,6 +2913,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party viberank guide ecosystem third party tools md#viberank",
     "category": "Guide",
     "url": "/guide/third-party-tools/#viberank",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-switch-guide",
+    "title": "Third Party Switch Guide",
+    "keywords": "third party switch guide guide ecosystem third party tools md#known gaps",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#known-gaps",
     "source": "guide"
   },
   {
@@ -4942,9 +4990,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-local-vs-cloud-hardware-configs",
     "title": "Local Vs Cloud Hardware Configs",
-    "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#thirteen comparable hardware configurations",
+    "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#fourteen comparable hardware configurations",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#thirteen-comparable-hardware-configurations",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#fourteen-comparable-hardware-configurations",
     "source": "guide"
   },
   {

@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Monitor, Channels and Safe Event Delegation',
+    date: 'Aug 27, 2026',
+    description: 'New workflow for choosing between Monitor command and WebSocket sources, plugin monitors, MCP Channels, and Routines. The GitHub-to-Codex path verifies and deduplicates events, starts read-only, and requires an explicit gate plus an isolated worktree before any write-capable task.',
+    link: 'https://cc.bruniaux.com/guide/workflows/monitor-event-delegation/',
+  },
+  {
     type: 'new_section',
     title: 'Agent Harness Landscape: Runtimes, Repositories, and Orchestrators',
     date: 'Aug 27, 2026',
