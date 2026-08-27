@@ -10,26 +10,26 @@
 
 // Increment this ID whenever the banner content changes
 //
-// NOT YET LIVE: two of the links below depend on unreleased guide content
-// (written 2026-08-24, still sitting in claude-code-ultimate-guide's
-// CHANGELOG under [Unreleased], not committed or pushed as of this edit).
-// - /guide/workflows/cross-session-messaging/ needs the source page
-//   (guide/workflows/cross-session-messaging.md) to ship through an actual
-//   `/release`, then `node scripts/prepare-guide-content.mjs && pnpm build`
-//   here to rebuild the guide reader.
-// - /diagrams/#multi-agent needs the same release, then
-//   `node scripts/build-diagrams-data.mjs` here to pick up the new 6th
-//   diagram in guide/diagrams/07-multi-agent-patterns.md (theme id
-//   "multi-agent" per THEME_META in that script). It opens the Multi-Agent
-//   Patterns theme accordion, not the single diagram: there's no per-diagram
-//   anchor in src/pages/diagrams/index.astro.
+// STILL NOT LIVE as of 2026-08-27: Cross-Session Messaging and its diagram
+// (written 2026-08-24) are still sitting in claude-code-ultimate-guide's
+// CHANGELOG under [Unreleased], not shipped through an actual `/release`
+// (VERSION is still 3.42.0). They were dropped from this banner below
+// (previously items 1-2) because the banner itself was live in production
+// with two dead links pointing at content that doesn't exist yet on the
+// guide reader. Re-add once that release ships:
+// - /guide/workflows/cross-session-messaging/ needs
+//   `node scripts/prepare-guide-content.mjs && pnpm build` here after the release.
+// - /diagrams/#multi-agent needs `node scripts/build-diagrams-data.mjs` here
+//   for the new 6th diagram in guide/diagrams/07-multi-agent-patterns.md
+//   (theme id "multi-agent"). Opens the Multi-Agent Patterns accordion, not
+//   the single diagram: no per-diagram anchor exists in src/pages/diagrams/index.astro.
 // Re-check the version badge and "Guide vX.Y.Z →" link below against the
 // real released version before deploying this banner.
 //
-// /guide/local-vs-cloud-inference/ IS live (guide/ecosystem/local-vs-cloud-inference.md,
-// synced and deployed 2026-08-25) — added 2026-08-25 in place of "Agent Harness
-// Engineering" to keep the strip to 4 items.
-const BANNER_ID = 'banner-local-vs-cloud-2026-08'
+// /guide/ai-executive-agents/ IS live (guide/ecosystem/ai-executive-agents.md,
+// synced 2026-08-27) — added in place of the two dead links above to keep
+// the strip to 4 items.
+const BANNER_ID = 'banner-ai-exec-agents-2026-08'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
@@ -38,8 +38,7 @@ const BANNER_ID = 'banner-local-vs-cloud-2026-08'
       <span class="ann-badge">v3.42.0</span>
       <span class="ann-text">
         <span style="color:var(--text-secondary)">New:</span>
-        <a href="/guide/workflows/cross-session-messaging/" class="ann-link">Cross-Session Messaging</a>
-        <a href="/diagrams/#multi-agent" class="ann-link" style="font-size:0.85em">(diagram)</a>
+        <a href="/guide/ai-executive-agents/" class="ann-link">AI Executive Agents</a>
         <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/guide/local-vs-cloud-inference/" class="ann-link">Local vs Cloud Inference</a>
         <span class="ann-sep" aria-hidden="true">·</span>

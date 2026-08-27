@@ -878,7 +878,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-team-gap",
     "title": "Memory Systems Team Gap",
-    "keywords": "memory systems team gap guide core memory systems md#47 why the team gap structural",
+    "keywords": "memory systems team gap guide core memory systems md#47 why the team gap structural memory systems supermemory team gap guide core memory systems md#47 why the team gap structural",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#47-why-the-team-gap-is-structural",
     "source": "guide"
@@ -934,7 +934,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-memory-systems-benchmarks",
     "title": "Memory Systems Benchmarks",
-    "keywords": "memory systems benchmarks guide core memory systems md#9 benchmarks and evaluation",
+    "keywords": "memory systems benchmarks guide core memory systems md#9 benchmarks and evaluation memory systems supermemory benchmark inconsistency guide core memory systems md#9 benchmarks and evaluation",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#9-benchmarks-and-evaluation",
     "source": "guide"
@@ -945,6 +945,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "memory systems open problems guide core memory systems md#10 open problems",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#10-open-problems",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-supermemory",
+    "title": "Memory Systems Supermemory",
+    "keywords": "memory systems supermemory guide core memory systems md#38 other notable tools",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#38-other-notable-tools",
     "source": "guide"
   },
   {
@@ -1505,6 +1513,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party tools skill packs guide ecosystem third party tools md#plugin ecosystem",
     "category": "Guide",
     "url": "/guide/third-party-tools/#plugin-ecosystem",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents",
+    "title": "AI Executive Agents",
+    "keywords": "ai executive agents guide ecosystem executive agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents-openexecutive",
+    "title": "AI Executive Agents Openexecutive",
+    "keywords": "ai executive agents openexecutive guide ecosystem executive agents md#openexecutive reference architecture",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md#openexecutive-reference-architecture",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents-gstack-disambiguation",
+    "title": "AI Executive Agents Gstack Disambiguation",
+    "keywords": "ai executive agents gstack disambiguation guide ecosystem executive agents md#gstack not this category",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md#gstack-is-not-this-category",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents-oss-alternatives",
+    "title": "AI Executive Agents Oss Alternatives",
+    "keywords": "ai executive agents oss alternatives guide ecosystem executive agents md#open source alternatives openexecutive",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md#open-source-alternatives-to-openexecutive",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents-routing-table",
+    "title": "AI Executive Agents Routing Table",
+    "keywords": "ai executive agents routing table guide ecosystem executive agents md#routing table which project for which role",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md#routing-table-which-project-for-which-role",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-executive-agents-governance",
+    "title": "AI Executive Agents Governance",
+    "keywords": "ai executive agents governance guide ecosystem executive agents md#augmentation not replacement far",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/ai-executive-agents.md#augmentation-not-replacement-so-far",
     "source": "guide"
   },
   {

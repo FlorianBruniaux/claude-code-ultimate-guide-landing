@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'AI Executive Agents: Virtual C-Suites and Board Simulators',
+    date: 'Aug 27, 2026',
+    description: "New ecosystem page mapping AI agents that simulate named executive roles (CFO, CMO, CHRO, General Counsel, board of directors). Deep dive on OpenExecutive's 8-agent architecture, five open-source alternatives with GitHub-API-verified star counts (most in single digits, none close to Gstack's traction), and a routing table by role. Closes on the augmentation-vs-replacement question and the theoretical Synthetic Director legal framework.",
+    link: 'https://cc.bruniaux.com/guide/ai-executive-agents/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.42.0',
     date: 'Aug 26, 2026',

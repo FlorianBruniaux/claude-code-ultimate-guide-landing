@@ -711,6 +711,7 @@ hero:
 | [AI Ecosystem](/guide/ai-ecosystem/) | Perplexity, Gemini, Kimi, NotebookLM, TTS | 30 min |
 | [MCP Servers Ecosystem](/guide/mcp-servers-ecosystem/) | 8 validated community MCP servers | 25 min |
 | [Third-Party Tools](/guide/third-party-tools/) | GUIs, TUIs, config managers, token trackers | 15 min |
+| [AI Executive Agents](/guide/ai-executive-agents/) | Virtual C-suites and board simulators: OpenExecutive deep dive, open-source alternatives, routing table by role | 12 min |
 | [Remarkable AI](/guide/remarkable-ai/) | Power-user patterns | 10 min |
 
 ## Roles & Adoption
