@@ -45,6 +45,9 @@ const sections = [
     links: [
       { href: '/examples/', label: 'Examples & Templates', desc: `${stats.templateCount} production-ready templates: agents, hooks, commands, skills` },
       { href: '/diagrams/', label: 'Diagrams', desc: 'Visual architecture and workflow diagrams' },
+      { href: '/guide/agent-harness/', label: 'Agent Harness Engineering', desc: 'Reliability architecture around the model: context, policy, tools, verification, and observability' },
+      { href: '/guide/agent-harness-landscape/', label: 'Agent Harness Map', desc: '192 projects classified into strict runtimes, control planes, and adjacent infrastructure' },
+      { href: '/guide/agentic-tools/', label: 'Agentic Tools', desc: 'Detailed profiles and comparison matrix for coding agents and orchestration tools' },
       { href: '/guide/workflows/monitor-event-delegation/', label: 'Monitor & Safe Event Delegation', desc: 'Verified event ingestion, WebSocket monitors, Channels, Routines, and gated Codex handoff' },
       { href: '/releases/', label: 'Releases', desc: 'Claude Code release history and changelog' },
       { href: '/security/', label: 'Security', desc: 'CVEs, threat database, security hardening guides' },
@@ -92,13 +95,16 @@ const sections = [
 
 <Layout
   title="Sitemap | Claude Code Ultimate Guide"
-  description="Full list of all pages available on the Claude Code Ultimate Guide: guide, cheat sheets, ebooks, quiz, examples, and more."
+  description="Curated navigation for the Claude Code Ultimate Guide, with access to the complete XML sitemap for every indexable URL."
   noIndex={false}
 >
   <header class="page-hero">
     <div class="container">
       <h1>Sitemap</h1>
-      <p class="tagline">All pages on <strong>cc.bruniaux.com</strong>. {sections.reduce((acc, s) => acc + s.links.length, 0)} pages across {sections.length} sections.</p>
+      <p class="tagline">
+        Curated navigation for <strong>cc.bruniaux.com</strong>: {sections.reduce((acc, s) => acc + s.links.length, 0)} links across {sections.length} sections.
+        For every indexable URL, use the <a href="/sitemap-index.xml">complete XML sitemap</a>.
+      </p>
     </div>
   </header>
 
