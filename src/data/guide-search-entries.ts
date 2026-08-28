@@ -3364,9 +3364,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agent-harness-comparison-page",
-    "title": "Agent Harness Comparison Page",
-    "keywords": "agent harness comparison page guide ecosystem agent harness landscape",
+    "id": "guide-agent-harness-landscape-page",
+    "title": "Agent Harness Landscape Page",
+    "keywords": "agent harness landscape page guide ecosystem agent harness landscape",
     "category": "Guide",
     "url": "/guide/agent-harness-landscape/",
     "source": "guide"
@@ -3374,17 +3374,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-definition",
     "title": "Agent Harness Definition",
-    "keywords": "agent harness definition guide ecosystem agent harness landscape md#agent harness comparison",
+    "keywords": "agent harness definition guide ecosystem agent harness landscape md#160 projects does not mean 160 runtime harnesses",
     "category": "Guide",
-    "url": "/guide/agent-harness-landscape/#agent-harness-comparison",
+    "url": "/guide/agent-harness-landscape/#160-projects-does-not-mean-160-runtime-harnesses",
     "source": "guide"
   },
   {
-    "id": "guide-agent-harness-boundary-table",
-    "title": "Agent Harness Boundary Table",
-    "keywords": "agent harness boundary table guide ecosystem agent harness landscape md#whats not full harness",
+    "id": "guide-agent-harness-strict-runtime-map",
+    "title": "Agent Harness Strict Runtime Map",
+    "keywords": "agent harness strict runtime map guide ecosystem agent harness landscape md#core coding harnesses",
     "category": "Guide",
-    "url": "/guide/agent-harness-landscape/#whats-not-a-full-harness",
+    "url": "/guide/agent-harness-landscape/#core-coding-harnesses",
     "source": "guide"
   },
   {
@@ -3393,6 +3393,46 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness orchestrators guide ecosystem agent harness landscape md#orchestrators products above the runtime",
     "category": "Guide",
     "url": "/guide/agent-harness-landscape/#orchestrators-products-above-the-runtime",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-category-map",
+    "title": "Agent Harness Category Map",
+    "keywords": "agent harness category map guide ecosystem agent harness landscape md#the twelve category map",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#the-twelve-category-map",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-complete-directory",
+    "title": "Agent Harness Complete Directory",
+    "keywords": "agent harness complete directory guide ecosystem agent harness landscape md#complete project directory",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#complete-project-directory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-selection-guide",
+    "title": "Agent Harness Selection Guide",
+    "keywords": "agent harness selection guide guide ecosystem agent harness landscape md#how pick harness",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#how-to-pick-a-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-test-drive",
+    "title": "Agent Harness Test Drive",
+    "keywords": "agent harness test drive guide ecosystem agent harness landscape md#how test drive the shortlist",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#how-to-test-drive-the-shortlist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-machine-data",
+    "title": "Agent Harness Machine Data",
+    "keywords": "agent harness machine data machine readable agent harnesses",
+    "category": "Reference",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/agent-harnesses.json",
     "source": "guide"
   },
   {

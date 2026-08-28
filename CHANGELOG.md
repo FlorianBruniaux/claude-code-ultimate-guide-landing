@@ -8,6 +8,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 - **Evidence-backed landscape synchronized from the guide** (`src/content/docs/`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`, `src/components/global/AnnouncementBanner.astro`, `src/content/cheatsheets/`, `src/data/recap-cards-data.ts`): rebuilt the guide reader around a pinned 160-project source directory plus 31 guide supplements, a strict 42-runtime map, 14 adjacent control planes, verified project links including Devin, dated GitHub stars, three explanatory visuals, and the new C14 recap card. The RSS entry and dismissible banner now describe the published scope instead of the former 33-runtime snapshot. C14 now has bilingual one-page A4 downloads and correct publication metadata; the refreshed C12, M16, and T22 cards also use the locally published bilingual PDFs.
 
+- **Final Agent Harness Map visuals and search entries published** (`src/data/guide-search-entries.ts`): rebuilt the guide reader with the three selected Gemini infographics, corrected the selection visual to the canonical pilot size of 8 to 12 real tickets, and regenerated the search entries against the expanded landscape headings.
+
 ### Documentation
 
 - **"6 months of daily practice/use" updated to "over a year"** (`src/pages/faq/index.astro` x3, `src/pages/compare/index.astro`, `src/pages/compare/[slug].astro`): the wording dated back to the guide's first release and had not been revisited since. Same fix applied in the guide repo's `README.md`.
