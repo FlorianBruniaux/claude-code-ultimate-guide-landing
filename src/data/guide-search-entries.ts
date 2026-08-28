@@ -158,7 +158,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-claude-code-releases-yaml",
     "title": "Claude Code Releases Yaml",
-    "keywords": "claude code releases yaml machine readable claude code releases",
+    "keywords": "claude code releases yaml machine readable claude code releases agent harness release data machine readable claude code releases",
     "category": "Reference",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/claude-code-releases.yaml",
     "source": "guide"
@@ -590,9 +590,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-guide",
     "title": "Agent Harness Guide",
-    "keywords": "agent harness guide guide core agent harness",
+    "keywords": "agent harness guide guide core agent harness agent harness engineering page guide core agent harness",
     "category": "Guide",
     "url": "/guide/agent-harness/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-definition",
+    "title": "Agent Harness Definition",
+    "keywords": "agent harness definition guide core agent harness md#the core claim agent harness model harness pair guide core agent harness md#the core claim agent harness scaffold effect guide core agent harness md#the core claim",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#the-core-claim",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-entry-points",
+    "title": "Agent Harness Entry Points",
+    "keywords": "agent harness entry points guide core agent harness md#choose the right entry point",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#choose-the-right-entry-point",
     "source": "guide"
   },
   {
@@ -609,6 +625,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness nine components guide core agent harness md#2 the nine components",
     "category": "Guide",
     "url": "/guide/agent-harness/#2-the-nine-components",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-claude-code-checkpoint",
+    "title": "Agent Harness Claude Code Checkpoint",
+    "keywords": "agent harness claude code checkpoint guide core agent harness md#claude code implementation checkpoint",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#claude-code-implementation-checkpoint",
     "source": "guide"
   },
   {
@@ -657,6 +681,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness digital twin guide core agent harness md#5 digital twin testing",
     "category": "Guide",
     "url": "/guide/agent-harness/#5-digital-twin-testing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-optimizer",
+    "title": "Agent Harness Optimizer",
+    "keywords": "agent harness optimizer guide core agent harness md#11 harness optimizers and meta harnesses agent harness evaluation protocol guide core agent harness md#11 harness optimizers and meta harnesses agent harness optimizer research guide core agent harness md#11 harness optimizers and meta harnesses",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#11-harness-optimizers-and-meta-harnesses",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-optimizer-landscape",
+    "title": "Agent Harness Optimizer Landscape",
+    "keywords": "agent harness optimizer landscape guide ecosystem agent harness landscape md#harness optimizers and meta harnesses",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#harness-optimizers-and-meta-harnesses",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-smallest-sufficient",
+    "title": "Agent Harness Smallest Sufficient",
+    "keywords": "agent harness smallest sufficient guide core agent harness md#7 test distribution and component stacking anti patterns",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#7-test-distribution-and-component-stacking-anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-glossary",
+    "title": "Agent Harness Glossary",
+    "keywords": "agent harness glossary guide core glossary md#agent harness",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/glossary.md#agent-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-reference-data",
+    "title": "Agent Harness Reference Data",
+    "keywords": "agent harness reference data machine readable readme md#agent harness landscape",
+    "category": "Reference",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/README.md#agent-harness-landscape",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-repository-guide",
+    "title": "Agent Harness Repository Guide",
+    "keywords": "agent harness repository guide guide ultimate guide md#925 repository harness engineering",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#925-repository-harness-engineering",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-tools-guide",
+    "title": "Agent Harness Tools Guide",
+    "keywords": "agent harness tools guide guide ecosystem agentic tools agentic tools page guide ecosystem agentic tools",
+    "category": "Guide",
+    "url": "/guide/agentic-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-evaluation-guide",
+    "title": "Agent Harness Evaluation Guide",
+    "keywords": "agent harness evaluation guide guide roles agent evaluation agent evaluation guide guide roles agent evaluation",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-observability-guide",
+    "title": "Agent Harness Observability Guide",
+    "keywords": "agent harness observability guide guide ops observability session search guide ops observability",
+    "category": "Guide",
+    "url": "/guide/observability/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-security-guide",
+    "title": "Agent Harness Security Guide",
+    "keywords": "agent harness security guide guide security security hardening security hardening guide security security hardening security supply chain stats guide security security hardening",
+    "category": "Guide",
+    "url": "/guide/security-hardening/",
     "source": "guide"
   },
   {
@@ -1161,14 +1265,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "identity reinjection example examples hooks bash identity reinjection",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/identity-reinjection.sh",
-    "source": "guide"
-  },
-  {
-    "id": "guide-session-search",
-    "title": "Session Search",
-    "keywords": "session search guide ops observability",
-    "category": "Guide",
-    "url": "/guide/observability/",
     "source": "guide"
   },
   {
@@ -1710,17 +1806,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-remarkable-mcp-server",
     "title": "Remarkable MCP Server",
-    "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp accès mcp direct par ssh",
+    "keywords": "remarkable mcp server guide ecosystem remarkable md#1 remarkable mcp direct mcp access via ssh",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#1-remarkable-mcp--accès-mcp-direct-par-ssh",
+    "url": "/guide/remarkable-ai/#1-remarkable-mcp-direct-mcp-access-via-ssh",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-ghostwriter",
     "title": "Remarkable Ghostwriter",
-    "keywords": "remarkable ghostwriter guide ecosystem remarkable md#2 ghostwriter interface vision llm",
+    "keywords": "remarkable ghostwriter guide ecosystem remarkable md#2 ghostwriter vision llm interface",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#2-ghostwriter--interface-vision-llm",
+    "url": "/guide/remarkable-ai/#2-ghostwriter-vision-llm-interface",
     "source": "guide"
   },
   {
@@ -1734,17 +1830,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-remarkable-ocr-pipeline",
     "title": "Remarkable Ocr Pipeline",
-    "keywords": "remarkable ocr pipeline guide ecosystem remarkable md#4 ocr pipeline custom",
+    "keywords": "remarkable ocr pipeline guide ecosystem remarkable md#4 ocr custom pipeline",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#4-ocr--ai-pipeline-custom",
+    "url": "/guide/remarkable-ai/#4-ocr--custom-ai-pipeline",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-ssh-tools",
     "title": "Remarkable Ssh Tools",
-    "keywords": "remarkable ssh tools guide ecosystem remarkable md#5 accès ssh outils communautaires",
+    "keywords": "remarkable ssh tools guide ecosystem remarkable md#5 ssh access and community tools",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#5-accès-ssh-et-outils-communautaires",
+    "url": "/guide/remarkable-ai/#5-ssh-access-and-community-tools",
     "source": "guide"
   },
   {
@@ -1758,17 +1854,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-remarkable-workflows-to-build",
     "title": "Remarkable Workflows To Build",
-    "keywords": "remarkable workflows to build guide ecosystem remarkable md#14 workflows augmentés construire",
+    "keywords": "remarkable workflows to build guide ecosystem remarkable md#14 augmented workflows build",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#14-workflows-ai-augmentés-à-construire",
+    "url": "/guide/remarkable-ai/#14-ai-augmented-workflows-to-build",
     "source": "guide"
   },
   {
     "id": "guide-remarkable-getting-started",
     "title": "Remarkable Getting Started",
-    "keywords": "remarkable getting started guide ecosystem remarkable md#15 par commencer",
+    "keywords": "remarkable getting started guide ecosystem remarkable md#15 where start",
     "category": "Guide",
-    "url": "/guide/remarkable-ai/#15-par-où-commencer",
+    "url": "/guide/remarkable-ai/#15-where-to-start",
     "source": "guide"
   },
   {
@@ -3284,14 +3380,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agentic-tools-page",
-    "title": "Agentic Tools Page",
-    "keywords": "agentic tools page guide ecosystem agentic tools",
-    "category": "Guide",
-    "url": "/guide/agentic-tools/",
-    "source": "guide"
-  },
-  {
     "id": "guide-agentic-tools-decision-framework",
     "title": "Agentic Tools Decision Framework",
     "keywords": "agentic tools decision framework guide ecosystem agentic tools md#section decision framework",
@@ -3364,6 +3452,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-loop-horizons",
+    "title": "Agent Harness Loop Horizons",
+    "keywords": "agent harness loop horizons guide core agent harness md#three loop horizons",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#three-loop-horizons",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-video-evidence",
+    "title": "Agent Harness Video Evidence",
+    "keywords": "agent harness video evidence guide core agent harness md#10 practitioner video evidence",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#10-practitioner-video-evidence",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-reliability-metrics",
+    "title": "Agent Harness Reliability Metrics",
+    "keywords": "agent harness reliability metrics guide core agent harness md#operational measures beyond telemetry",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#operational-measures-beyond-telemetry",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-landscape-page",
     "title": "Agent Harness Landscape Page",
     "keywords": "agent harness landscape page guide ecosystem agent harness landscape",
@@ -3372,9 +3484,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agent-harness-definition",
-    "title": "Agent Harness Definition",
-    "keywords": "agent harness definition guide ecosystem agent harness landscape md#160 projects does not mean 160 runtime harnesses",
+    "id": "guide-agent-harness-landscape-entry-points",
+    "title": "Agent Harness Landscape Entry Points",
+    "keywords": "agent harness landscape entry points guide ecosystem agent harness landscape md#choose the right entry point",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#choose-the-right-entry-point",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-catalog-boundary",
+    "title": "Agent Harness Catalog Boundary",
+    "keywords": "agent harness catalog boundary guide ecosystem agent harness landscape md#160 projects does not mean 160 runtime harnesses",
     "category": "Guide",
     "url": "/guide/agent-harness-landscape/#160-projects-does-not-mean-160-runtime-harnesses",
     "source": "guide"
@@ -3816,7 +3936,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Chain Of Verification",
     "keywords": "chain of verification guide ultimate guide md#se cove chain verification",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#se-cove--chain-of-verification",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#se-cove-chain-of-verification",
     "source": "guide"
   },
   {
@@ -4608,7 +4728,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Fluency Diagram",
     "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency--high-vs-low-fluency-paths",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency-high-vs-low-fluency-paths",
     "source": "guide"
   },
   {
@@ -5052,6 +5172,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-local-vs-cloud-vllm-tuning",
+    "title": "Local Vs Cloud Vllm Tuning",
+    "keywords": "local vs cloud vllm tuning guide ecosystem local cloud inference md#serving engine tuning vllm production",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#serving-engine-tuning-vllm-in-production",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-mlx-coding-agent",
+    "title": "Local Vs Cloud Mlx Coding Agent",
+    "keywords": "local vs cloud mlx coding agent guide ecosystem local cloud inference md#coding agent setup apple silicon with mlx",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#coding-agent-setup-apple-silicon-with-mlx",
+    "source": "guide"
+  },
+  {
     "id": "guide-local-vs-cloud-gpu-rental",
     "title": "Local Vs Cloud Gpu Rental",
     "keywords": "local vs cloud gpu rental guide ecosystem local cloud inference md#cloud gpu rental pricing",
@@ -5201,14 +5337,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "production safety guide security production safety",
     "category": "Guide",
     "url": "/guide/production-safety/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-security-hardening",
-    "title": "Security Hardening",
-    "keywords": "security hardening guide security security hardening security supply chain stats guide security security hardening",
-    "category": "Guide",
-    "url": "/guide/security-hardening/",
     "source": "guide"
   },
   {
@@ -6089,14 +6217,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "github actions security checklist guide workflows github actions md#security checklist",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/github-actions/#security-checklist",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agent-evaluation-guide",
-    "title": "Agent Evaluation Guide",
-    "keywords": "agent evaluation guide guide roles agent evaluation",
-    "category": "Guide",
-    "url": "/guide/agent-evaluation/",
     "source": "guide"
   },
   {

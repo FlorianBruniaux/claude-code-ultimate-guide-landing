@@ -38,9 +38,9 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_section',
-    title: 'Agent Harness Map: 160 Source Projects and 31 Supplements',
+    title: 'Agent Harness Map: Runtimes, Orchestrators and Meta-Harnesses',
     date: 'Aug 28, 2026',
-    description: 'The evidence-backed map separates 42 strict runtimes from 14 adjacent control planes across a pinned 160-project source directory and 31 guide supplements. Every project name links to its official page, GitHub stars carry a capture date, and the page adds three visuals plus a repeatable 8-to-12-task test-drive protocol.',
+    description: 'The evidence-backed map separates 42 strict runtimes from 14 adjacent control planes across a pinned 160-project source directory and 31 guide supplements. It now adds the model-harness pair, repeated-run evaluation, and a separate research layer for harness optimizers and meta-harnesses, with preprint and contamination limits stated explicitly.',
     link: 'https://cc.bruniaux.com/guide/agent-harness-landscape/',
   },
   {

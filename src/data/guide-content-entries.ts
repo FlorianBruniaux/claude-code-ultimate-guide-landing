@@ -159,7 +159,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-evaluation-evaluate-the-layer-that-owns-the-behavior",
     "title": "Evaluate the Layer That Owns the Behavior",
-    "keywords": "evaluate the layer that owns the behavior agent evaluation an evaluation must identify what it is scoring. a runtime harness owns the model-and-tool loop, so measure task completion, interventions, recovery, c",
+    "keywords": "evaluate the layer that owns the behavior agent evaluation an evaluation must identify what it is scoring. a runtime harness owns the model-and-tool loop, so measure task completion, interventions, recovery, c evaluate the model harness pair",
     "category": "Core Guides",
     "url": "/guide/agent-evaluation/#evaluate-the-layer-that-owns-the-behavior",
     "source": "guide"
@@ -255,7 +255,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-core-coding-harnesses",
     "title": "Core Coding Harnesses",
-    "keywords": "core coding harnesses agent harness landscape the strict map contains 42 runtimes. every name links to its official product page or canonical repository. open-source rows include github stars when",
+    "keywords": "core coding harnesses agent harness landscape the strict map contains 42 runtimes. every name links to its official product page or canonical repository. open-source rows include github stars when creator interviews as supplementary evidence",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#core-coding-harnesses",
     "source": "guide"
@@ -269,6 +269,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-agent-harness-landscape-harness-optimizers-and-meta-harnesses",
+    "title": "Harness Optimizers and Meta-Harnesses",
+    "keywords": "harness optimizers and meta harnesses agent harness landscape harness optimizers are adjacent to the strict runtime map. they do not primarily execute user tasks or coordinate a fleet. they change a target harnes",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#harness-optimizers-and-meta-harnesses",
+    "source": "guide"
+  },
+  {
     "id": "gc-agent-harness-landscape-four-layers-four-responsibilities",
     "title": "Four Layers, Four Responsibilities",
     "keywords": "four layers four responsibilities agent harness landscape !a four-layer stack separates the model, repository harness, runtime harness, and orchestrator, with control flowing down and evidence flowing up. lay",
@@ -279,7 +287,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-complete-project-directory",
     "title": "Complete Project Directory",
-    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 31 guide supplements separately. means the pinned source did not support a conclusion. me guide supplements 31",
+    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 31 guide supplements separately. <abbr title=\"not established from the pinned sources\" ?< guide supplements 31",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#complete-project-directory",
     "source": "guide"
@@ -295,7 +303,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-how-to-test-drive-the-shortlist",
     "title": "How to Test-Drive the Shortlist",
-    "keywords": "how to test drive the shortlist agent harness landscape test two or three candidates on 8 to 12 representative tasks from the same repositories. use the same model, repository instructions, and tool permiss",
+    "keywords": "how to test drive the shortlist agent harness landscape test two or three candidates on 8 to 12 representative tasks from the same repositories. use the same model, repository instructions, tool permissions",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#how-to-test-drive-the-shortlist",
     "source": "guide"
@@ -303,9 +311,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-machine-readable-access",
     "title": "Machine-Readable Access",
-    "keywords": "machine readable access agent harness landscape - normalized dataset on github: four explicit sets, provenance, loop ownership, feature evidence, official urls, and dated github metadata. - best of",
+    "keywords": "machine readable access agent harness landscape - normalized dataset on github: four explicit sets, provenance, loop ownership, feature evidence, official urls, and dated github metadata. - machine-",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#machine-readable-access",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-landscape-related-reading",
+    "title": "Related Reading",
+    "keywords": "related reading agent harness landscape - agent harness engineering: stable architecture, claude code implementation checkpoint, meta-harness evidence, and timestamped practitioner video evi",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness-landscape/#related-reading",
     "source": "guide"
   },
   {
@@ -319,7 +335,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-the-core-claim",
     "title": "The core claim",
-    "keywords": "the core claim code as agent harness arxiv 2605 18747 agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. martin fowler, addy osmani, o'reilly's 2026 ai radar, and arxiv 2605.18747 (may",
+    "keywords": "the core claim code as agent harness arxiv 2605 18747 agent harness engineering a raw llm is not an agent. it becomes one when connected to a harness. the useful unit of evaluation is therefore the model-harness pair , not either choose the right entry point",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#the-core-claim",
     "source": "guide"
@@ -343,7 +359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-2-the-nine-components",
     "title": "2. The Nine Components",
-    "keywords": "2 the nine components code as agent harness arxiv 2605 18747 agent harness engineering these nine components appear across claude code, anthropic sdk, openai agents sdk, langgraph, aws bedrock agentcore, and factory.ai missions. no singl 2 1 while loop engine 2 2 context management 2 3 tool registry 2 4 sub agent management 2 5 built in skills 2 6 session persistence 2 7 dynamic prompt assembly 2 8 lifecycle hooks 2 9 permission enforcement",
+    "keywords": "2 the nine components code as agent harness arxiv 2605 18747 agent harness engineering these nine components appear across claude code, anthropic sdk, openai agents sdk, langgraph, aws bedrock agentcore, and factory.ai missions. no singl 2 1 while loop engine three loop horizons 2 2 context management context beyond the repository 2 3 tool registry 2 4 sub agent management 2 5 native tools and loadable skills 2 6 session persistence 2 7 dynamic prompt assembly 2 8 lifecycle hooks 2 9 permission ",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#2-the-nine-components",
     "source": "guide"
@@ -375,17 +391,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-6-observability-stack",
     "title": "6. Observability Stack",
-    "keywords": "6 observability stack code as agent harness arxiv 2605 18747 agent harness engineering the open-source baseline that works in production, documented by independent organizations: for enterprise with governance requirements, add strata ma otel genai conventions may 2026 status what to instrument first llm as judge limitations",
+    "keywords": "6 observability stack code as agent harness arxiv 2605 18747 agent harness engineering the open-source baseline that works in production, documented by independent organizations: for enterprise with governance requirements, add strata ma opentelemetry genai conventions august 2026 status what to instrument first operational measures beyond telemetry llm as judge limitations",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#6-observability-stack",
     "source": "guide"
   },
   {
-    "id": "gc-agent-harness-7-test-distribution-anti-pattern",
-    "title": "7. Test Distribution Anti-pattern",
-    "keywords": "7 test distribution anti pattern code as agent harness arxiv 2605 18747 agent harness engineering an empirical study across 39 open-source agent frameworks and 439 agentic applications (arxiv 2509.19185) found that more than 70% of testing effort i",
+    "id": "gc-agent-harness-7-test-distribution-and-component-stacking-anti-pa",
+    "title": "7. Test Distribution and Component-Stacking Anti-patterns",
+    "keywords": "7 test distribution and component stacking anti patterns code as agent harness arxiv 2605 18747 agent harness engineering an empirical study across 39 open-source agent frameworks and 439 agentic applications (arxiv 2509.19185) found that more than 70% of testing effort i",
     "category": "Core Guides",
-    "url": "/guide/agent-harness/#7-test-distribution-anti-pattern",
+    "url": "/guide/agent-harness/#7-test-distribution-and-component-stacking-anti-patterns",
     "source": "guide"
   },
   {
@@ -405,9 +421,25 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-agent-harness-10-practitioner-video-evidence",
+    "title": "10. Practitioner Video Evidence",
+    "keywords": "10 practitioner video evidence code as agent harness arxiv 2605 18747 agent harness engineering this ledger connects the architecture to dated practitioner and product-creator testimony. every quoted sentence below was checked against the local w",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness/#10-practitioner-video-evidence",
+    "source": "guide"
+  },
+  {
+    "id": "gc-agent-harness-11-harness-optimizers-and-meta-harnesses",
+    "title": "11. Harness Optimizers and Meta-Harnesses",
+    "keywords": "11 harness optimizers and meta harnesses code as agent harness arxiv 2605 18747 agent harness engineering a runtime harness improves one agent run. a harness optimizer improves the code and configuration that govern future runs. the optimizer can edit prom",
+    "category": "Core Guides",
+    "url": "/guide/agent-harness/#11-harness-optimizers-and-meta-harnesses",
+    "source": "guide"
+  },
+  {
     "id": "gc-agent-harness-see-also",
     "title": "See Also",
-    "keywords": "see also code as agent harness arxiv 2605 18747 agent harness engineering - context engineering: ace pipeline, signal taxonomy, drift management - security hardening: production safety, injection defense - devops & sre: ci/c",
+    "keywords": "see also code as agent harness arxiv 2605 18747 agent harness engineering - agent harness landscape: dated product map, evidence states, and selection protocol - architecture: claude code's master loop, tools, context, agent",
     "category": "Core Guides",
     "url": "/guide/agent-harness/#see-also",
     "source": "guide"
@@ -2927,7 +2959,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-a",
     "title": "A",
-    "keywords": "a glossary agent teams multiple independent claude code sessions coordinated by a team lead, with a shared task list and peer-to-peer messaging. unlike subagents agent teams agentic loop auto memory auto mode",
+    "keywords": "a glossary agent teams multiple independent claude code sessions coordinated by a team lead, with a shared task list and peer-to-peer messaging. unlike subagents agent teams agentic loop agent computer interface auto memory auto mode",
     "category": "Core Guides",
     "url": "/guide/glossary/#a",
     "source": "guide"
@@ -2967,7 +2999,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-h",
     "title": "H",
-    "keywords": "h glossary agent harness the runtime around a model that executes an agent loop: it assembles context, exposes tools, applies permissions, preserves or restores agent harness evaluation harness hook",
+    "keywords": "h glossary agent harness the runtime around a model that executes an agent loop: it assembles context, exposes tools, applies permissions, preserves or restores agent harness evaluation harness harness model pair harness optimizer hook",
     "category": "Core Guides",
     "url": "/guide/glossary/#h",
     "source": "guide"
@@ -2975,7 +3007,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-m",
     "title": "M",
-    "keywords": "m glossary managed settings a settings file enforced org-wide by it or devops, placed at an os-level path outside . users cannot override or exclude managed sett managed settings mcp model context protocol mcp tool search",
+    "keywords": "m glossary managed settings a settings file enforced org-wide by it or devops, placed at an os-level path outside . users cannot override or exclude managed sett managed settings meta harness mcp model context protocol mcp tool search",
     "category": "Core Guides",
     "url": "/guide/glossary/#m",
     "source": "guide"
@@ -2991,7 +3023,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-o",
     "title": "O",
-    "keywords": "o glossary output style a configuration that modifies claude's system prompt to change response behavior, tone, or format. output styles turn off the software-en output style",
+    "keywords": "o glossary orchestrator a system that coordinates runs, workspaces, queues, budgets, handoffs, or human approvals across one or more agents. an orchestrator may orchestrator output style",
     "category": "Core Guides",
     "url": "/guide/glossary/#o",
     "source": "guide"
@@ -3007,7 +3039,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-r",
     "title": "R",
-    "keywords": "r glossary remote control a way to continue a local claude code session from your phone or browser via claude.ai. your code stays on your machine; only the ui is remote control rules",
+    "keywords": "r glossary repository harness the project-specific layer that makes an agent run repeatably inside a repository: instructions, environment setup, durable state, repository harness remote control rules",
     "category": "Core Guides",
     "url": "/guide/glossary/#r",
     "source": "guide"
@@ -3015,7 +3047,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-glossary-s",
     "title": "S",
-    "keywords": "s glossary sandboxing os-level filesystem and network isolation for the bash tool. commands run inside a boundary you define upfront, so claude can work freely w sandboxing session settings layers skill subagent surface",
+    "keywords": "s glossary sandboxing os-level filesystem and network isolation for the bash tool. commands run inside a boundary you define upfront, so claude can work freely w sandboxing scaffold effect session settings layers skill subagent surface",
     "category": "Core Guides",
     "url": "/guide/glossary/#s",
     "source": "guide"
@@ -4821,6 +4853,22 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-local-vs-cloud-inference-serving-engine-tuning-vllm-in-production",
+    "title": "Serving Engine Tuning: vLLM in Production",
+    "keywords": "serving engine tuning vllm in production local vs cloud llm hardware and inference economics the tables above answer what hardware to buy. they say nothing about whether that hardware's throughput actually reaches users: the serving engine and compilation optimization levels prefix caching chunked prefill kv cache preemption parallelism strategies cpu and numa a real bottleneck but not a vllm flag on cuda multimodal vlm serving what to tune first",
+    "category": "Core Guides",
+    "url": "/guide/local-vs-cloud-inference/#serving-engine-tuning-vllm-in-production",
+    "source": "guide"
+  },
+  {
+    "id": "gc-local-vs-cloud-inference-coding-agent-setup-apple-silicon-with-mlx",
+    "title": "Coding Agent Setup: Apple Silicon with MLX",
+    "keywords": "coding agent setup apple silicon with mlx local vs cloud llm hardware and inference economics vllm does not target apple silicon; on a mac, the equivalent decision (model, runtime, memory budget) runs through mlx, apple's own array framework, a model choice one moe for daily use one dense model in reserve runtime comparison what is verified what is vendor reported what is neither a caution about apple silicon benchmark sites memory budget and context length running it as a persistent local api",
+    "category": "Core Guides",
+    "url": "/guide/local-vs-cloud-inference/#coding-agent-setup-apple-silicon-with-mlx",
+    "source": "guide"
+  },
+  {
     "id": "gc-local-vs-cloud-inference-cloud-gpu-rental-pricing",
     "title": "Cloud GPU Rental Pricing",
     "keywords": "cloud gpu rental pricing local vs cloud llm hardware and inference economics hourly, on-demand, per gpu. usd figures kept as published; eur given only where the provider quotes eur directly. provider gpu price/hour --- --- ---",
@@ -5645,129 +5693,129 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-1-remarkable-mcp-accès-mcp-direct-par-ssh",
-    "title": "1. remarkable-mcp : accès MCP direct par SSH",
-    "keywords": "1 remarkable mcp accès mcp direct par ssh remarkable 2 ai hacks outils et workflows roi : maximal effort : moyen connexion : ssh over usb (sans cloud) sam morrow a créé un serveur mcp qui connecte directement la remarkable à claude co ce que ça fait pourquoi c est le 1 stack technique installation rapide configuration dans claude code",
+    "id": "gc-remarkable-ai-1-remarkable-mcp-direct-mcp-access-via-ssh",
+    "title": "1. remarkable-mcp: direct MCP access via SSH",
+    "keywords": "1 remarkable mcp direct mcp access via ssh remarkable 2 ai hacks tools and workflows roi: maximal effort: medium connection: ssh over usb (no cloud) sam morrow created an mcp server that connects the remarkable directly to claude code, what it does why it s 1 technical stack quick installation configuration in claude code",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#1-remarkable-mcp-accès-mcp-direct-par-ssh",
+    "url": "/guide/remarkable-ai/#1-remarkable-mcp-direct-mcp-access-via-ssh",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-2-ghostwriter-interface-vision-llm",
-    "title": "2. Ghostwriter : Interface Vision-LLM",
-    "keywords": "2 ghostwriter interface vision llm remarkable 2 ai hacks outils et workflows roi : expérimental effort : faible (un binary rust à copier) attribut détails --------- --------- repo https://github.com/awwaiid/ghostwriter modèle g concept installation interactions supportées use case concret",
+    "id": "gc-remarkable-ai-2-ghostwriter-vision-llm-interface",
+    "title": "2. Ghostwriter: Vision-LLM Interface",
+    "keywords": "2 ghostwriter vision llm interface remarkable 2 ai hacks tools and workflows roi: experimental effort: low (a rust binary to copy) attribute details --------- --------- repo https://github.com/awwaiid/ghostwriter model gpt-4o v concept installation supported interactions concrete use case",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#2-ghostwriter-interface-vision-llm",
+    "url": "/guide/remarkable-ai/#2-ghostwriter-vision-llm-interface",
     "source": "guide"
   },
   {
     "id": "gc-remarkable-ai-3-sync-remarkable-obsidian",
     "title": "3. Sync reMarkable → Obsidian",
-    "keywords": "3 sync remarkable obsidian remarkable 2 ai hacks outils et workflows roi : élevé si tu utilises obsidian effort : faible à moyen option a : scrybble (le plus complet) attribut détails --------- --------- site scrybble.i option a scrybble le plus complet option b plugin custom cloud sync",
+    "keywords": "3 sync remarkable obsidian remarkable 2 ai hacks tools and workflows roi: high if you use obsidian effort: low to medium option a: scrybble (the most complete) attribute details --------- --------- site scrybble.ink obs option a scrybble the most complete option b custom cloud sync plugin",
     "category": "Core Guides",
     "url": "/guide/remarkable-ai/#3-sync-remarkable-obsidian",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-4-ocr-ai-pipeline-custom",
-    "title": "4. OCR + AI Pipeline custom",
-    "keywords": "4 ocr ai pipeline custom remarkable 2 ai hacks outils et workflows roi : élevé pour un workflow sur-mesure effort : moyen-élevé rmirror + claude api (pattern recommandé) source : https://news.ycombinator.com/item?id=4 rmirror claude api pattern recommandé pipeline diy outils de parsing",
+    "id": "gc-remarkable-ai-4-ocr-custom-ai-pipeline",
+    "title": "4. OCR + Custom AI Pipeline",
+    "keywords": "4 ocr custom ai pipeline remarkable 2 ai hacks tools and workflows roi: high for a custom workflow effort: medium-high rmirror + claude api (recommended pattern) source: https://news.ycombinator.com/item?id=47110872 ( rmirror claude api recommended pattern diy pipeline parsing tools",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#4-ocr-ai-pipeline-custom",
+    "url": "/guide/remarkable-ai/#4-ocr-custom-ai-pipeline",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-5-accès-ssh-et-outils-communautaires",
-    "title": "5. Accès SSH et outils communautaires",
-    "keywords": "5 accès ssh et outils communautaires remarkable 2 ai hacks outils et workflows base indispensable pour tout le reste activer ssh outils essentiels outil usage lien ------- ------- ------ rmhacks/xovi framework de mods pour rm1/2/ activer ssh outils essentiels templates custom",
+    "id": "gc-remarkable-ai-5-ssh-access-and-community-tools",
+    "title": "5. SSH Access and Community Tools",
+    "keywords": "5 ssh access and community tools remarkable 2 ai hacks tools and workflows essential foundation for everything else enable ssh essential tools tool usage link ------- ------- ------ rmhacks/xovi mod framework for rm1/2/paper enable ssh essential tools custom templates",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#5-accès-ssh-et-outils-communautaires",
+    "url": "/guide/remarkable-ai/#5-ssh-access-and-community-tools",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-6-features-natives-sous-exploitées",
-    "title": "6. Features natives sous-exploitées",
-    "keywords": "6 features natives sous exploitées remarkable 2 ai hacks outils et workflows effort : zéro inclus dans connect ( 6€/mois) feature usage --------- ------- handwriting conversion sélectionner → convertir → copier/coller dans n'im",
+    "id": "gc-remarkable-ai-6-underused-native-features",
+    "title": "6. Underused Native Features",
+    "keywords": "6 underused native features remarkable 2 ai hacks tools and workflows effort: zero included in connect ( 6 eur/month) feature usage --------- ------- handwriting conversion select, convert, copy/paste into any app cloud",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#6-features-natives-sous-exploitées",
+    "url": "/guide/remarkable-ai/#6-underused-native-features",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-7-api-et-developer-portal-officiel",
-    "title": "7. API et Developer Portal officiel",
-    "keywords": "7 api et developer portal officiel remarkable 2 ai hacks outils et workflows ressource lien ----------- ------ developer portal https://developer.remarkable.com cloud api docs https://github.com/splitbrain/remarkableapi communi",
+    "id": "gc-remarkable-ai-7-official-api-and-developer-portal",
+    "title": "7. Official API and Developer Portal",
+    "keywords": "7 official api and developer portal remarkable 2 ai hacks tools and workflows resource link ----------- ------ developer portal https://developer.remarkable.com cloud api docs https://github.com/splitbrain/remarkableapi communit",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#7-api-et-developer-portal-officiel",
+    "url": "/guide/remarkable-ai/#7-official-api-and-developer-portal",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-8-automatisation-zapier",
-    "title": "8. Automatisation Zapier",
-    "keywords": "8 automatisation zapier remarkable 2 ai hacks outils et workflows roi : moyen effort : faible aucun code nécessaire mécanisme : remarkable → email (my@remarkable.com) → zapier intercepte → action automatique destinat destinations possibles plan gratuit workflows concrets",
+    "id": "gc-remarkable-ai-8-zapier-automation",
+    "title": "8. Zapier Automation",
+    "keywords": "8 zapier automation remarkable 2 ai hacks tools and workflows roi: medium effort: low no code required mechanism : remarkable, then email (my@remarkable.com), then zapier intercepts, then automatic action possibl possible destinations free plan concrete workflows",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#8-automatisation-zapier",
+    "url": "/guide/remarkable-ai/#8-zapier-automation",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-9-read-it-later-web-remarkable",
-    "title": "9. Read-it-later : Web → reMarkable",
-    "keywords": "9 read it later web remarkable remarkable 2 ai hacks outils et workflows roi : élevé pour la lecture effort : quasi nul outil description ------- ------------- extension chrome \"read on remarkable\" save n'importe quelle pag",
+    "id": "gc-remarkable-ai-9-read-it-later-web-to-remarkable",
+    "title": "9. Read-it-later: Web to reMarkable",
+    "keywords": "9 read it later web to remarkable remarkable 2 ai hacks tools and workflows roi: high for reading effort: near zero tool description ------- ------------- chrome extension \"read on remarkable\" save any web page as epub/pdf on",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#9-read-it-later-web-remarkable",
+    "url": "/guide/remarkable-ai/#9-read-it-later-web-to-remarkable",
     "source": "guide"
   },
   {
     "id": "gc-remarkable-ai-10-meeting-notes-ai-summary",
     "title": "10. Meeting Notes → AI Summary",
-    "keywords": "10 meeting notes ai summary remarkable 2 ai hacks outils et workflows roi : élevé effort : très faible workflow manuel (sans mcp) workflow mcp (avec remarkable-mcp installé) avantage mcp : skip les étapes de screenshot e workflow manuel sans mcp workflow mcp avec remarkable mcp installé template recommandé",
+    "keywords": "10 meeting notes ai summary remarkable 2 ai hacks tools and workflows roi: high effort: very low manual workflow (without mcp) mcp workflow (with remarkable-mcp installed) mcp advantage : skips the screenshot and upload manual workflow without mcp mcp workflow with remarkable mcp installed recommended template",
     "category": "Core Guides",
     "url": "/guide/remarkable-ai/#10-meeting-notes-ai-summary",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-11-zotero-remarkable-recherche",
-    "title": "11. Zotero → reMarkable (recherche)",
-    "keywords": "11 zotero remarkable recherche remarkable 2 ai hacks outils et workflows roi : élevé si tu lis des papers effort : moyen outil usage ------- ------- zotero2remarkable bridge sync pdfs depuis zotero avec support des highligh",
+    "id": "gc-remarkable-ai-11-zotero-to-remarkable-research",
+    "title": "11. Zotero to reMarkable (research)",
+    "keywords": "11 zotero to remarkable research remarkable 2 ai hacks tools and workflows roi: high if you read papers effort: medium tool usage ------- ------- zotero2remarkable bridge sync pdfs from zotero with highlight support koreader",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#11-zotero-remarkable-recherche",
+    "url": "/guide/remarkable-ai/#11-zotero-to-remarkable-research",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-12-screen-sharing-comme-whiteboard-ai-assisté",
-    "title": "12. Screen sharing comme whiteboard AI-assisté",
-    "keywords": "12 screen sharing comme whiteboard ai assisté remarkable 2 ai hacks outils et workflows roi : présentation/facilitation effort : nul (feature native connect) - screen share : ton écriture live apparaît sur l'écran externe/meeting virtuel",
+    "id": "gc-remarkable-ai-12-screen-sharing-as-an-ai-assisted-whiteboard",
+    "title": "12. Screen sharing as an AI-assisted whiteboard",
+    "keywords": "12 screen sharing as an ai assisted whiteboard remarkable 2 ai hacks tools and workflows roi: presentation/facilitation effort: zero (native connect feature) - screen share : your live handwriting appears on the external screen/virtual mee",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#12-screen-sharing-comme-whiteboard-ai-assisté",
+    "url": "/guide/remarkable-ai/#12-screen-sharing-as-an-ai-assisted-whiteboard",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-13-apps-custom-et-hacks-fun",
-    "title": "13. Apps custom et hacks fun",
-    "keywords": "13 apps custom et hacks fun remarkable 2 ai hacks outils et workflows app/hack description ---------- ------------- ephemeris agenda quotidien généré depuis tes calendriers (python) remarcal sync google/outlook/apple cal",
+    "id": "gc-remarkable-ai-13-custom-apps-and-fun-hacks",
+    "title": "13. Custom apps and fun hacks",
+    "keywords": "13 custom apps and fun hacks remarkable 2 ai hacks tools and workflows app/hack description ---------- ------------- ephemeris daily agenda generated from your calendars (python) remarcal sync google/outlook/apple calenda",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#13-apps-custom-et-hacks-fun",
+    "url": "/guide/remarkable-ai/#13-custom-apps-and-fun-hacks",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-14-workflows-ai-augmentés-à-construire",
-    "title": "14. Workflows AI-augmentés à construire",
-    "keywords": "14 workflows ai augmentés à construire remarkable 2 ai hacks outils et workflows workflows pas encore packagés mais réalisables avec les briques disponibles. a. journal de bord ai-analysé b. inbox processing assisté c. sketch-to-co a journal de bord ai analysé b inbox processing assisté c sketch to code d flashcards automatiques e daily standup automatisé f brainstorm capture mind map",
+    "id": "gc-remarkable-ai-14-ai-augmented-workflows-to-build",
+    "title": "14. AI-augmented workflows to build",
+    "keywords": "14 ai augmented workflows to build remarkable 2 ai hacks tools and workflows workflows not yet packaged but achievable with the building blocks available. a. ai-analyzed logbook b. assisted inbox processing c. sketch-to-code d. a ai analyzed logbook b assisted inbox processing c sketch to code d automatic flashcards e automated daily standup f brainstorm capture mind map",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#14-workflows-ai-augmentés-à-construire",
+    "url": "/guide/remarkable-ai/#14-ai-augmented-workflows-to-build",
     "source": "guide"
   },
   {
-    "id": "gc-remarkable-ai-15-par-où-commencer",
-    "title": "15. Par où commencer",
-    "keywords": "15 par où commencer remarkable 2 ai hacks outils et workflows phase 1 : ce week-end (2h) 1. activer le ssh via settings → help → copyrights and licenses 2. installer remarkable-mcp et le connecter à claude code 3 phase 1 ce week end 2h phase 2 semaine suivante phase 3 quand tu veux aller plus loin",
+    "id": "gc-remarkable-ai-15-where-to-start",
+    "title": "15. Where to start",
+    "keywords": "15 where to start remarkable 2 ai hacks tools and workflows phase 1: this weekend (2h) 1. enable ssh via settings → help → copyrights and licenses 2. install remarkable-mcp and connect it to claude code 3. test phase 1 this weekend 2h phase 2 the following week phase 3 when you want to go further",
     "category": "Core Guides",
-    "url": "/guide/remarkable-ai/#15-par-où-commencer",
+    "url": "/guide/remarkable-ai/#15-where-to-start",
     "source": "guide"
   },
   {
     "id": "gc-remarkable-ai-sources",
     "title": "Sources",
-    "keywords": "sources remarkable 2 ai hacks outils et workflows projets github - https://github.com/sammorrowdrums/remarkable-mcp (mcp server, nov 2025) - https://github.com/awwaiid/ghostwriter (vision-llm interfac",
+    "keywords": "sources remarkable 2 ai hacks tools and workflows github projects - https://github.com/sammorrowdrums/remarkable-mcp (mcp server, nov 2025) - https://github.com/awwaiid/ghostwriter (vision-llm interfa",
     "category": "Core Guides",
     "url": "/guide/remarkable-ai/#sources",
     "source": "guide"
@@ -15639,7 +15687,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-team-ai-instructions-related",
     "title": "Related",
-    "keywords": "related team ai instructions management - section 3.5 team configuration at scale: concept overview and measured results - section 3.4 precedence rules: how claude reads multiple claude.md f",
+    "keywords": "related team ai instructions management - memory systems: how claude code loads and merges claude.md across sessions - section 3.5 team configuration at scale: concept overview and measured",
     "category": "Workflows",
     "url": "/guide/workflows/team-ai-instructions/#related",
     "source": "guide"
@@ -15727,7 +15775,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-tts-setup-next-steps",
     "title": "Next Steps",
-    "keywords": "next steps tts setup workflow agent vibes installation - voice catalog - explore 15 voices - integration guide - learn commands - installation details - deep dive ---",
+    "keywords": "next steps tts setup workflow agent vibes installation - tools reference - full list of claude code's built-in tools - voice catalog - explore 15 voices - integration guide - learn commands - installation",
     "category": "Workflows",
     "url": "/guide/workflows/tts-setup/#next-steps",
     "source": "guide"
