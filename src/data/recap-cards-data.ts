@@ -1,5 +1,5 @@
 /**
- * Recap Cards data: 57 printable A4 recap cards, 3 series
+ * Recap Cards data: 58 printable A4 recap cards, 3 series
  * PDFs hosted on Vercel (florian.bruniaux.com/guides/recap-cards/) with hashed filenames.
  * ZIPs delivered by email via /api/subscribe.
  */
@@ -58,7 +58,7 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     name: 'Design',
     description: 'Trust calibration, prompting, security, architecture: how to think.',
     color: '#22c55e',
-    cardCount: 13,
+    cardCount: 14,
     released: true,
     hashedZipFr: 'recap-cards-conception.fr.v1.0.0.8f32cd93bfe9.zip',
     hashedZipEn: 'recap-cards-conception.en.v1.0.0.8f6beb98e039.zip',
@@ -79,8 +79,9 @@ export const CARD_HASHES_FR: Record<string, string> = {
   'c09-prompt-injection-defenses': 'c09-prompt-injection-defenses.fr.v1.0.0.32476259e781.pdf',
   'c10-ai-traceability': 'c10-ai-traceability.fr.v1.0.0.16503e46db3a.pdf',
   'c11-subscription-vs-api-patterns': 'c11-subscription-vs-api-patterns.fr.v1.0.0.f34bdd7ac20a.pdf',
-  'c12-agent-sdk-integrations-ide': 'c12-agent-sdk-integrations-ide.fr.v1.0.0.38f9bda0f419.pdf',
+  'c12-agent-sdk-integrations-ide': '/cheatsheets/pdf/c12-agent-sdk-integrations-ide.fr.pdf',
   'c13-erreurs-courantes': 'c13-erreurs-courantes.fr.v1.0.0.92fd609aa24a.pdf',
+  'c14-agent-harness-map': '/cheatsheets/pdf/c14-agent-harness-map.fr.pdf',
   // ── Méthodologie (M) ────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.fr.v1.0.0.1a15d1434460.pdf',
   'm02-context-management': 'm02-context-management.fr.v1.0.0.0414866c4eba.pdf',
@@ -97,7 +98,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   'm13-worktrees': 'm13-worktrees.fr.v1.0.0.405d4a56b4e1.pdf',
   'm14-plan-validate-execute': 'm14-plan-validate-execute.fr.v1.0.0.a1adbd9acc6d.pdf',
   'm15-tdd-bdd-sdd': 'm15-tdd-bdd-sdd.fr.v1.0.0.2c6ba7069f31.pdf',
-  'm16-multi-agent-topologie': 'm16-multi-agent-topologie.fr.v1.0.0.048208ca197c.pdf',
+  'm16-multi-agent-topologie': '/cheatsheets/pdf/m16-multi-agent-topologie.fr.pdf',
   'm17-multi-agent-communication-trust': 'm17-multi-agent-communication-trust.fr.v1.0.0.9f16bf6325cb.pdf',
   'm18-event-driven-agents': 'm18-event-driven-agents.fr.v1.0.0.5aa80e85ef9a.pdf',
   'm19-github-actions': 'm19-github-actions.fr.v1.0.0.45f7fec546bc.pdf',
@@ -126,7 +127,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   't19-context-window-200k-1m': 't19-context-window-200k-1m.fr.v1.0.0.6ae7683bb2f7.pdf',
   't20-token-optimization': 't20-token-optimization.fr.v1.0.0.c4f966a53be4.pdf',
   't21-fast-mode-api': 't21-fast-mode-api.fr.v1.0.0.251ded17e9f7.pdf',
-  't22-third-party-tools': 't22-third-party-tools.fr.v1.0.0.835e93c47e70.pdf',
+  't22-third-party-tools': '/cheatsheets/pdf/t22-third-party-tools.fr.pdf',
 }
 
 /** Backward-compat alias: prefer CARD_HASHES_FR */
@@ -146,8 +147,9 @@ export const CARD_HASHES_EN: Record<string, string> = {
   'c09-prompt-injection-defenses': 'c09-prompt-injection-defenses.en.v1.0.0.a9f77a640338.pdf',
   'c10-ai-traceability': 'c10-ai-traceability.en.v1.0.0.6db50ca51adf.pdf',
   'c11-subscription-vs-api-patterns': 'c11-subscription-vs-api-patterns.en.v1.0.0.cecaae51e43c.pdf',
-  'c12-agent-sdk-integrations-ide': 'c12-agent-sdk-integrations-ide.en.v1.0.0.8954e0ae867d.pdf',
+  'c12-agent-sdk-integrations-ide': '/cheatsheets/pdf/c12-agent-sdk-integrations-ide.en.pdf',
   'c13-erreurs-courantes': 'c13-erreurs-courantes.en.v1.0.0.df176199ba21.pdf',
+  'c14-agent-harness-map': '/cheatsheets/pdf/c14-agent-harness-map.en.pdf',
   // ── Methodology (M) ─────────────────────────────────────────────────────────
   'm01-workflow-quotidien': 'm01-workflow-quotidien.en.v1.0.0.b39e8e055e90.pdf',
   'm02-context-management': 'm02-context-management.en.v1.0.0.e304b6c231ab.pdf',
@@ -164,7 +166,7 @@ export const CARD_HASHES_EN: Record<string, string> = {
   'm13-worktrees': 'm13-worktrees.en.v1.0.0.4b53a2b0520f.pdf',
   'm14-plan-validate-execute': 'm14-plan-validate-execute.en.v1.0.0.bd8724a49db6.pdf',
   'm15-tdd-bdd-sdd': 'm15-tdd-bdd-sdd.en.v1.0.0.01024b75a572.pdf',
-  'm16-multi-agent-topologie': 'm16-multi-agent-topologie.en.v1.0.0.9b8280146fb7.pdf',
+  'm16-multi-agent-topologie': '/cheatsheets/pdf/m16-multi-agent-topologie.en.pdf',
   'm17-multi-agent-communication-trust': 'm17-multi-agent-communication-trust.en.v1.0.0.42e154ae5fdc.pdf',
   'm18-event-driven-agents': 'm18-event-driven-agents.en.v1.0.0.99915ccb25c7.pdf',
   'm19-github-actions': 'm19-github-actions.en.v1.0.0.cd631792e098.pdf',
@@ -193,7 +195,7 @@ export const CARD_HASHES_EN: Record<string, string> = {
   't19-context-window-200k-1m': 't19-context-window-200k-1m.en.v1.0.0.5b4854955444.pdf',
   't20-token-optimization': 't20-token-optimization.en.v1.0.0.ad22a5ff188e.pdf',
   't21-fast-mode-api': 't21-fast-mode-api.en.v1.0.0.05517c2ff349.pdf',
-  't22-third-party-tools': 't22-third-party-tools.en.v1.0.0.811fbfd6bc50.pdf',
+  't22-third-party-tools': '/cheatsheets/pdf/t22-third-party-tools.en.pdf',
 }
 
 /** localStorage key for shared subscriber flag */

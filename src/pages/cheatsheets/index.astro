@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
+import { resolveRecapPdfUrl } from '../../utils/resolve-recap-pdf-url'
 
 const allCards = await getCollection('cheatsheets')
 const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
@@ -47,9 +48,11 @@ const cardUrlsFr: Record<string, string> = {}
 const cardUrlsEn: Record<string, string> = {}
 for (const card of cards) {
   const hashFr = CARD_HASHES_FR[card.id]
-  if (hashFr) cardUrlsFr[card.id] = `${RECAP_BASE_URL}/${hashFr}`
+  const urlFr = resolveRecapPdfUrl(hashFr, RECAP_BASE_URL)
+  if (urlFr) cardUrlsFr[card.id] = urlFr
   const hashEn = CARD_HASHES_EN[card.id]
-  if (hashEn) cardUrlsEn[card.id] = `${RECAP_BASE_URL}/${hashEn}`
+  const urlEn = resolveRecapPdfUrl(hashEn, RECAP_BASE_URL)
+  if (urlEn) cardUrlsEn[card.id] = urlEn
 }
 // Legacy alias used in gate form (FR ZIPs)
 const cardUrls = cardUrlsFr
@@ -171,10 +174,10 @@ const cardUrls = cardUrlsFr
         </div>
       </div>
 
-      <!-- "Coming soon" for Design series (shown by JS when C tab active) -->
+      <!-- Legacy waitlist block kept hidden for previously stored browser state -->
       <div class="coming-soon-msg hidden" id="coming-soon-msg">
-        <p>Design series, 13 cards. Coming soon.</p>
-        <p class="coming-soon-sub">13 cards on trust calibration, prompting, security, and architecture design.</p>
+        <p>Design series, 14 cards.</p>
+        <p class="coming-soon-sub">14 cards on trust calibration, prompting, security, architecture, and agent harness design.</p>
         <form id="waitlist-form" class="waitlist-form" novalidate>
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="waitlist-row">

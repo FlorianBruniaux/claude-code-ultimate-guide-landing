@@ -52,6 +52,8 @@ const cheatsheets = defineCollection({
     category: z.string(),
     difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
     guideVersion: z.string().optional(),
+    datePublished: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    dateModified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     order: z.number(),
   }),
 })

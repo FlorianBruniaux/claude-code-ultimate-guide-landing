@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
 import { RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
+import { resolveRecapPdfUrl } from '../../utils/resolve-recap-pdf-url'
 
 export async function getStaticPaths() {
   const cards = await getCollection('cheatsheets')
@@ -37,12 +38,8 @@ const seriesLabel: Record<string, string> = {
 }
 
 const seriesId = card.data.cardNumber[0].toUpperCase() as 'T' | 'M' | 'C'
-const cardHashedUrlFr = CARD_HASHES_FR[card.id]
-  ? `${RECAP_BASE_URL}/${CARD_HASHES_FR[card.id]}`
-  : null
-const cardHashedUrlEn = CARD_HASHES_EN[card.id]
-  ? `${RECAP_BASE_URL}/${CARD_HASHES_EN[card.id]}`
-  : null
+const cardHashedUrlFr = resolveRecapPdfUrl(CARD_HASHES_FR[card.id], RECAP_BASE_URL)
+const cardHashedUrlEn = resolveRecapPdfUrl(CARD_HASHES_EN[card.id], RECAP_BASE_URL)
 const cardHashedUrl = cardHashedUrlFr  // backward compat (used in gate script)
 const isDirectAccess = DIRECT_ACCESS_IDS.has(card.id)
 const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
@@ -56,8 +53,8 @@ const jsonLd = [
     "headline": card.data.title,
     "description": card.data.subtitle,
     "url": `https://cc.bruniaux.com/cheatsheets/${card.id}/`,
-    "datePublished": "2026-01-17",
-    "dateModified": "2026-06-25",
+    "datePublished": card.data.datePublished ?? "2026-01-17",
+    "dateModified": card.data.dateModified ?? "2026-06-25",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://cc.bruniaux.com/cheatsheets/${card.id}/`
