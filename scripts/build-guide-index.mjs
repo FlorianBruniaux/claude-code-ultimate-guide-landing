@@ -10,9 +10,13 @@ import yaml from 'js-yaml'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const GUIDE_REPO = '/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide'
+const optionValue = (name) => {
+  const index = process.argv.indexOf(name)
+  return index === -1 ? undefined : process.argv[index + 1]
+}
+const GUIDE_REPO = resolve(optionValue('--guide-root') ?? resolve(ROOT, '..', 'claude-code-ultimate-guide'))
 const YAML_PATH = resolve(GUIDE_REPO, 'machine-readable/reference.yaml')
-const OUT_PATH = resolve(ROOT, 'src/data/guide-search-entries.ts')
+const OUT_PATH = resolve(optionValue('--out') ?? resolve(ROOT, 'src/data/guide-search-entries.ts'))
 const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/'
 const LOCAL_GUIDE_BASE = '/guide/'
 
@@ -141,9 +145,8 @@ function main() {
   try {
     raw = readFileSync(YAML_PATH, 'utf-8')
   } catch (err) {
-    console.warn(`[build-guide-index] WARNING: Could not read ${YAML_PATH}`)
-    console.warn(`[build-guide-index] Generating empty guide-search-entries.ts`)
-    writeEmpty()
+    console.error(`[build-guide-index] ERROR: Could not read ${YAML_PATH}`)
+    process.exitCode = 1
     return
   }
 
@@ -152,14 +155,14 @@ function main() {
     parsed = yaml.load(raw)
   } catch (err) {
     console.error(`[build-guide-index] ERROR: Failed to parse YAML: ${err.message}`)
-    writeEmpty()
+    process.exitCode = 1
     return
   }
 
   const deepDive = parsed?.deep_dive
   if (!deepDive || typeof deepDive !== 'object') {
-    console.warn('[build-guide-index] WARNING: No deep_dive section found in YAML')
-    writeEmpty()
+    console.error('[build-guide-index] ERROR: No deep_dive section found in YAML')
+    process.exitCode = 1
     return
   }
 
@@ -228,10 +231,6 @@ function main() {
   const content = generateTS(entries)
   writeFileSync(OUT_PATH, content, 'utf-8')
   console.log(`[build-guide-index] Written to ${OUT_PATH}`)
-}
-
-function writeEmpty() {
-  writeFileSync(OUT_PATH, generateTS([]), 'utf-8')
 }
 
 function generateTS(entries) {
