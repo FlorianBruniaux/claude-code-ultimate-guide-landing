@@ -3428,6 +3428,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-liza-tool",
+    "title": "Liza Tool",
+    "keywords": "liza tool guide ecosystem agentic tools md#48 liza",
+    "category": "Guide",
+    "url": "/guide/agentic-tools/#48-liza",
+    "source": "guide"
+  },
+  {
     "id": "guide-opencode-tool",
     "title": "Opencode Tool",
     "keywords": "opencode tool guide ecosystem agentic tools md#15 opencode anomaly formerly sst",
@@ -3513,6 +3521,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness orchestrators guide ecosystem agent harness landscape md#orchestrators products above the runtime",
     "category": "Guide",
     "url": "/guide/agent-harness-landscape/#orchestrators-products-above-the-runtime",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-liza-profile",
+    "title": "Agent Harness Liza Profile",
+    "keywords": "agent harness liza profile guide ecosystem agent harness landscape md#liza repository harness and control plane combined",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#liza-a-repository-harness-and-control-plane-combined",
     "source": "guide"
   },
   {

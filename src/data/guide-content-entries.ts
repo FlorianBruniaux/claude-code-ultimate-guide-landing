@@ -263,7 +263,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-orchestrators-products-above-the-runtime",
     "title": "Orchestrators: Products Above the Runtime",
-    "keywords": "orchestrators products above the runtime agent harness landscape the adjacent map contains 14 control planes. an orchestrator coordinates queues, isolated workspaces, or multiple agent sessions. use one after a sing",
+    "keywords": "orchestrators products above the runtime agent harness landscape the adjacent map contains 15 control planes. an orchestrator coordinates queues, isolated workspaces, or multiple agent sessions. use one after a sing liza a repository harness and control plane combined",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#orchestrators-products-above-the-runtime",
     "source": "guide"
@@ -287,7 +287,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-complete-project-directory",
     "title": "Complete Project Directory",
-    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 31 guide supplements separately. <abbr title=\"not established from the pinned sources\" ?< guide supplements 31",
+    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 32 guide supplements separately. <abbr title=\"not established from the pinned sources\" ?< guide supplements 32",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#complete-project-directory",
     "source": "guide"
