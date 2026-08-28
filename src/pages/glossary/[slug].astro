@@ -1,22 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, categoryColors } from '../../data/glossary-data'
+import { normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
 
 export function getStaticPaths() {
-  const slugify = (str: string) =>
-    str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
   return glossaryTerms.map(term => ({
-    params: { slug: slugify(term.term) },
+    params: { slug: normalizeGlossarySlug(term.term) },
     props: { term },
   }))
 }
 
-function slugify(str: string): string {
-  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
-}
-
 const { term } = Astro.props
-const slug = slugify(term.term)
+const slug = normalizeGlossarySlug(term.term)
 
 const relatedTerms = glossaryTerms
   .filter(t => t.subcategory === term.subcategory && t.term !== term.term)
@@ -101,7 +96,7 @@ const jsonLd = [
           <ul class="related-list">
             {relatedTerms.map(t => (
               <li>
-                <a href={`/glossary/${slugify(t.term)}/`} class="related-item">
+                <a href={`/glossary/${normalizeGlossarySlug(t.term)}/`} class="related-item">
                   <span class="related-term">{t.term}</span>
                   <span class="related-def">{t.definition.length > 100 ? t.definition.slice(0, 100).trimEnd() + '...' : t.definition}</span>
                 </a>

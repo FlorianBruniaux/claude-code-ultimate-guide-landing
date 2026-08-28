@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Glossary
+
+- **Accessible Markdown glossary tooltips** (`src/components/starlight/GlossaryTooltips.astro`, `src/scripts/glossary-tooltips.ts`): the guide reader now enriches the first verified occurrence of up to eight allowlisted terms per page with glossary definitions and direct links. Matching is boundary-safe and excludes headings, links, code, forms, diagrams, and existing interactive content. Tooltips work with hover, focus, Enter, Space, Escape, outside click, and touch. The glossary page title now derives its count from the 173-term source of truth.
+
 ### Agent Harness Map
 
 - **Evidence and optimizer research published** (`src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`): rebuilt the guide reader and both search indexes from guide commit `46f347f`. The public pages now expose the model-harness pair, scaffold-effect evidence, repeated-run evaluation, security and observability controls, and the separate research layer for ADAS, AFlow, ACE, GEPA, Meta-Harness, Agentic Harness Engineering, and HarnessOpt-Bench. The RSS description now names the optimizer and meta-harness layer.

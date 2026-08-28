@@ -1,0 +1,86 @@
+---
+import { tooltipGlossaryTerms } from '../../data/glossary-tooltips.ts'
+
+const serializedTerms = JSON.stringify(tooltipGlossaryTerms).replace(/</g, '\\u003c')
+---
+
+<script is:inline id="glossary-tooltip-terms" type="application/json" set:html={serializedTerms}></script>
+
+<script>
+  import { initGlossaryTooltips, type TooltipTerm } from '../../scripts/glossary-tooltips.ts'
+
+  const termsElement = document.getElementById('glossary-tooltip-terms')
+  if (termsElement?.textContent) {
+    initGlossaryTooltips(document, JSON.parse(termsElement.textContent) as TooltipTerm[])
+  }
+</script>
+
+<style is:global>
+  .glossary-tooltip {
+    position: relative;
+    display: inline;
+  }
+
+  .glossary-tooltip-trigger {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px dotted var(--accent);
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    cursor: help;
+    font: inherit;
+    text-decoration: none;
+  }
+
+  .glossary-tooltip-trigger:hover,
+  .glossary-tooltip-trigger:focus-visible {
+    border-bottom-style: solid;
+    color: var(--accent);
+    outline: none;
+  }
+
+  .glossary-tooltip-trigger:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+
+  .glossary-tooltip-popover {
+    position: absolute;
+    z-index: 20;
+    bottom: calc(100% + 0.45rem);
+    left: 50%;
+    width: min(20rem, calc(100vw - 2rem));
+    transform: translateX(-50%);
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--surface-elevated, var(--bg-secondary));
+    box-shadow: 0 0.75rem 1.75rem rgb(0 0 0 / 0.18);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .glossary-tooltip-definition {
+    display: block;
+  }
+
+  .glossary-tooltip-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 32rem) {
+    .glossary-tooltip-popover {
+      left: 0;
+      transform: none;
+    }
+  }
+</style>

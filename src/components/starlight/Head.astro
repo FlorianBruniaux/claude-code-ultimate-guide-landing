@@ -1,5 +1,6 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro'
+import GlossaryTooltips from './GlossaryTooltips.astro'
 
 // Starlight component overrides don't receive route data via Astro.props.
 // It lives on Astro.locals.starlightRoute (confirmed against Starlight's own
@@ -51,3 +52,4 @@ const schema = isWorkflow
 ---
 <Default {...Astro.props} />
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<GlossaryTooltips />

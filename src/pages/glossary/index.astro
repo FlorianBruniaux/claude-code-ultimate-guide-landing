@@ -1,17 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, groupByLetter, categoryColors } from '../../data/glossary-data'
+import { normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
 
-function slugify(str: string): string {
-  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
-}
-
-const title = 'Claude Code Glossary: 139 Terms Defined (Hooks, MCP, Agents, Slash Commands)'
 const description = 'Definitions for every Claude Code concept: hooks (PreToolUse, PostToolUse), MCP servers, slash commands, sub-agents, CLAUDE.md, permission modes, context window, and 130+ more terms.'
 
 const grouped = groupByLetter(glossaryTerms)
 const letters = Array.from(grouped.keys()).sort()
 const totalTerms = glossaryTerms.length
+const title = `Claude Code Glossary: ${totalTerms} Terms Defined (Hooks, MCP, Agents, Slash Commands)`
 
 const jsonLd = [
   {
@@ -82,7 +79,7 @@ const jsonLd = [
                 <div class="term-row" data-cat={t.category}>
                   <div class="term-left">
                     <h3 class="term-name">
-                      <a href={`/glossary/${slugify(t.term)}/`} class="term-link">{t.term}</a>
+                      <a href={`/glossary/${normalizeGlossarySlug(t.term)}/`} class="term-link">{t.term}</a>
                     </h3>
                     <div class="term-meta">
                       <span class={`badge ${categoryColors[t.category] ?? 'badge-default'}`}>{t.category}</span>
