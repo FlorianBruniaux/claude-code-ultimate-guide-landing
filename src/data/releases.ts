@@ -16,6 +16,37 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.250',
+    date: 'Aug 27, 2026',
+    highlights: [
+      'Bug fixes and reliability improvements',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.248',
+    date: 'Aug 27, 2026',
+    highlights: [
+      'Added --restricted (or CLAUDE_CODE_RESTRICTED=1): removes the built-in tools that run commands or code and WebFetch (unless named in --tools), keeps file tools inside the working directory, refuses bypassPermissions, and ignores user, project, and local settings files',
+      'Added cross-session messaging (SendMessage/ListAgents) between sessions on the same machine on Bedrock, Vertex, and Foundry, and when telemetry is disabled',
+      'Fixed a prompt-cache miss (and lost extended-thinking context) roughly once an hour in long sessions, caused by tool definitions being re-rendered after an OAuth token refresh',
+      'Added experimental.cacheTtl ("5m" or "1h") to agent frontmatter for a per-agent prompt cache TTL',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.247',
+    date: 'Aug 26, 2026',
+    highlights: [
+      'Added the SendFeedback tool: Claude can draft a feedback report for you to review and send from /feedback',
+      "Changed Sonnet 5's default auto-compact window to its full 1M context, auto-compacting at about 967K tokens instead of about 934K",
+      'Added /claude-api cost-optimize to profile an existing project\'s Claude API spend and work through cost levers',
+      "Fixed sub-agents dying on a first-call model 404: they now use the session's fallback model chain",
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.246',
     date: 'Aug 25, 2026',
     highlights: [
@@ -24,7 +55,6 @@ export const releases: Release[] = [
       'Fixed the Write tool reporting "Out of memory" or freezing for a long time after overwriting a very large existing file, even though the file had been written',
       'Improved non-interactive sessions (-p, SDK, cloud sessions) to automatically continue a response cut off mid-stream by a server error, connection loss, or stall',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
