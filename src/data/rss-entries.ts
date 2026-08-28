@@ -38,10 +38,17 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_section',
-    title: 'Agent Harness Landscape: Runtimes, Repositories, and Orchestrators',
-    date: 'Aug 27, 2026',
-    description: 'The harness documentation now separates four layers that are often conflated: model, runtime harness, repository harness, and orchestrator. The curated landscape covers 33 coding runtimes and 7 orchestration products, with a dedicated DeepSeek Harness profile covering its plugin architecture, setup, maturity limits, and security evidence.',
+    title: 'Agent Harness Map: 160 Source Projects and 31 Supplements',
+    date: 'Aug 28, 2026',
+    description: 'The evidence-backed map separates 42 strict runtimes from 14 adjacent control planes across a pinned 160-project source directory and 31 guide supplements. Every project name links to its official page, GitHub stars carry a capture date, and the page adds three visuals plus a repeatable 8-to-12-task test-drive protocol.',
     link: 'https://cc.bruniaux.com/guide/agent-harness-landscape/',
+  },
+  {
+    type: 'new_cheatcard',
+    title: 'C14 Recap Card: Agent Harness Map',
+    date: 'Aug 28, 2026',
+    description: 'A one-page A4 decision aid for separating the model, runtime, repository contract, and orchestrator, then testing a shortlist on evidence and accepted-task cost.',
+    link: 'https://cc.bruniaux.com/cheatsheets/c14-agent-harness-map/',
   },
   {
     type: 'new_page',
