@@ -6,7 +6,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Glossary
 
-- **Accessible Markdown glossary tooltips** (`src/components/starlight/GlossaryTooltips.astro`, `src/scripts/glossary-tooltips.ts`): the guide reader now enriches the first verified occurrence of up to eight allowlisted terms per page with glossary definitions and direct links. Matching is boundary-safe and excludes headings, links, code, forms, diagrams, and existing interactive content. Tooltips work with hover, focus, Enter, Space, Escape, outside click, and touch. The glossary page title now derives its count from the 173-term source of truth.
+- **Accessible Markdown glossary tooltips** (`src/components/starlight/GlossaryTooltips.astro`, `src/scripts/glossary-tooltips.ts`): the guide reader now enriches the first verified occurrence of up to eight allowlisted terms per page with glossary definitions and direct links. Matching is boundary-safe and excludes headings, links, code, forms, diagrams, and existing interactive content. Tooltips work with hover, focus, Enter, Space, Escape, outside click, and touch. Viewport clamping prevents mobile overflow, delayed closes cannot hide a newly focused tooltip, original prose casing is preserved, and duplicate route slugs fail the build. Glossary counts now derive from the 173-term source of truth.
 
 ### Agent Harness Map
 

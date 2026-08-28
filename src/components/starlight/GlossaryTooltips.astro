@@ -47,12 +47,11 @@ const serializedTerms = JSON.stringify(tooltipGlossaryTerms).replace(/</g, '\\u0
   }
 
   .glossary-tooltip-popover {
-    position: absolute;
+    position: fixed;
     z-index: 20;
-    bottom: calc(100% + 0.45rem);
-    left: 50%;
     width: min(20rem, calc(100vw - 2rem));
-    transform: translateX(-50%);
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
     padding: 0.75rem;
     border: 1px solid var(--border);
     border-radius: 0.5rem;
@@ -77,10 +76,4 @@ const serializedTerms = JSON.stringify(tooltipGlossaryTerms).replace(/</g, '\\u0
     font-weight: 600;
   }
 
-  @media (max-width: 32rem) {
-    .glossary-tooltip-popover {
-      left: 0;
-      transform: none;
-    }
-  }
 </style>

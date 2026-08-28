@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, categoryColors } from '../../data/glossary-data'
-import { normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
+import { assertUniqueGlossarySlugs, normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
 
 export function getStaticPaths() {
+  assertUniqueGlossarySlugs(glossaryTerms)
   return glossaryTerms.map(term => ({
     params: { slug: normalizeGlossarySlug(term.term) },
     props: { term },
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 const { term } = Astro.props
 const slug = normalizeGlossarySlug(term.term)
+const totalTerms = glossaryTerms.length
 
 const relatedTerms = glossaryTerms
   .filter(t => t.subcategory === term.subcategory && t.term !== term.term)
@@ -22,7 +24,7 @@ const truncatedDef = term.definition.length > 130
   : term.definition
 
 const pageTitle = `${term.term} | Claude Code Glossary`
-const pageDescription = `${term.term}: ${truncatedDef} From the Claude Code glossary, 173 AI engineering and agentic coding terms.`
+const pageDescription = `${term.term}: ${truncatedDef} From the Claude Code glossary, ${totalTerms} AI engineering and agentic coding terms.`
 
 const jsonLd = [
   {
@@ -112,7 +114,7 @@ const jsonLd = [
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          See all 173 terms
+          See all {totalTerms} terms
         </a>
       </div>
 
