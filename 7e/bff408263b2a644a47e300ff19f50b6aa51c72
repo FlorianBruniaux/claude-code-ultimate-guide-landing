@@ -1,0 +1,35 @@
+src/data/glossary-data.ts
+  s_95392a6b844626::t_f211c432e71b71 78,83,89,92
+src/data/guide-content-entries.ts
+  s_a76087f74be2bb::t_77cd5bf8e52eab 3,162,346,410,2999-3006,3010,3015-3030,5386
+src/data/guide-search-entries.ts
+  s_a76087f74be2bb::t_17b54d555dac4d 3462-3469,3478-3501
+src/scripts/glossary-tooltips.test.ts
+  s_95392a6b844626::t_563a1713b9dc0d 28
+src/scripts/glossary-tooltips.ts
+  s_95392a6b844626::t_3e88700831d59c 14-15,17-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7ebff408263b2a644a47e300ff19f50b6aa51c72",
+  "prompts": {},
+  "sessions": {
+    "s_95392a6b844626": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04821-7023-7112-aeb8-f4aa59348ce9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a76087f74be2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01f2a-b167-78f0-a126-7450029bd920",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
