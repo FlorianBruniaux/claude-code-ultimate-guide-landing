@@ -3460,11 +3460,43 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-loop-graph-distinction",
+    "title": "Agent Harness Loop Graph Distinction",
+    "keywords": "agent harness loop graph distinction guide core agent harness md#loop graph harness and orchestrator are different views",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#loop-graph-harness-and-orchestrator-are-different-views",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-loop-horizons",
     "title": "Agent Harness Loop Horizons",
     "keywords": "agent harness loop horizons guide core agent harness md#three loop horizons",
     "category": "Guide",
     "url": "/guide/agent-harness/#three-loop-horizons",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-judgment-allocation",
+    "title": "Agent Harness Judgment Allocation",
+    "keywords": "agent harness judgment allocation guide core agent harness md#judgment allocation where responsibility actually sits",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#judgment-allocation-where-responsibility-actually-sits",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-reviewer-independence",
+    "title": "Agent Harness Reviewer Independence",
+    "keywords": "agent harness reviewer independence guide roles agent evaluation md#evaluate judgment allocation and reviewer independence",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#evaluate-judgment-allocation-and-reviewer-independence",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-graph-observability",
+    "title": "Agent Harness Graph Observability",
+    "keywords": "agent harness graph observability guide ops observability md#graph level observability",
+    "category": "Guide",
+    "url": "/guide/observability/#graph-level-observability",
     "source": "guide"
   },
   {

@@ -25,7 +25,7 @@ test('resolves the explicit tooltip allowlist from glossary definitions', () => 
 
   assert.deepEqual(
     terms.map((term) => term.term),
-    ['Agent harness', 'CLAUDE.md', 'Context window', 'Git worktree', 'Hook', 'MCP (Model Context Protocol)', 'Plan Mode', 'Prompt injection', 'Skill', 'Sub-agent'],
+    ['Agent harness', 'CLAUDE.md', 'Context window', 'Git worktree', 'Graph engineering', 'Harnessability', 'Hook', 'Judgment allocation', 'Loop engineering', 'MCP (Model Context Protocol)', 'Plan Mode', 'Prompt injection', 'Skill', 'Sub-agent'],
   )
   assert.ok(terms.every((term) => term.definition.length > 0))
 })
