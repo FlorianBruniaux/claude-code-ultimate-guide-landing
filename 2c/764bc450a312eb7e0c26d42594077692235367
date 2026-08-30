@@ -1,0 +1,23 @@
+.gitattributes
+  s_e6f3f9b3ebc509::t_4d096ee8393216 2-4
+CHANGELOG.md
+  s_e6f3f9b3ebc509::t_a3ee12058b1d5b 9
+src/data/landing-sync.test.ts
+  s_e6f3f9b3ebc509::t_340e2fe7b5b443 45,50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "2c764bc450a312eb7e0c26d42594077692235367",
+  "prompts": {},
+  "sessions": {
+    "s_e6f3f9b3ebc509": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a052bb-231b-7360-b4fd-17b0ba68c8a5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
