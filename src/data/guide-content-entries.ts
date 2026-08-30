@@ -5007,7 +5007,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-loop-graph-engineering-5-allocate-judgment-explicitly",
     "title": "5. Allocate judgment explicitly",
-    "keywords": "5 allocate judgment explicitly loop graph engineering automation moves judgment. it does not erase it. write down who owns the quality bar, decomposition, tool permission, exception, acceptance verdict, a",
+    "keywords": "5 allocate judgment explicitly loop graph engineering automation moves judgment. it does not erase it. write down who owns the quality bar, decomposition, tool permission, exception, acceptance verdict, a separate execution from governance",
     "category": "Core Guides",
     "url": "/guide/loop-graph-engineering/#5-allocate-judgment-explicitly",
     "source": "guide"
@@ -5583,7 +5583,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-practitioner-insights-agentic-patterns-orchestration",
     "title": "Agentic Patterns & Orchestration",
-    "keywords": "agentic patterns orchestration practitioner insights one agent, one task. a single agent that accumulates prompt additions over time degrades in unpredictable ways: fixing one behavior inadvertently brea",
+    "keywords": "agentic patterns orchestration practitioner insights a software factory is an operating model, not a product category alone. the model, runtime harness, repository gates, orchestrator, and accountable hu",
     "category": "Core Guides",
     "url": "/guide/practitioner-insights/#agentic-patterns-orchestration",
     "source": "guide"
@@ -5591,7 +5591,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-practitioner-insights-llm-evaluation",
     "title": "LLM Evaluation",
-    "keywords": "llm evaluation practitioner insights evaluation is a scored dataset, not a red/green test. unit tests that pass or fail deterministically do not apply to probabilistic outputs. instead, b",
+    "keywords": "llm evaluation practitioner insights a dashboard or a fast demonstration is not an outcome study. claims such as root-cause analysis in seconds, tenfold productivity, or an entire sdlc au",
     "category": "Core Guides",
     "url": "/guide/practitioner-insights/#llm-evaluation",
     "source": "guide"
@@ -5615,7 +5615,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-practitioner-insights-sources",
     "title": "Sources",
-    "keywords": "sources practitioner insights ifttd podcast ifttd is a french tech podcast hosted by bruno soulez. the episodes cited on this page were recorded between 2024 and 2025. transcripts ifttd podcast devoxx dev with ai meetup bytebytego stanford online",
+    "keywords": "sources practitioner insights ifttd podcast ifttd is a french tech podcast hosted by bruno soulez. the episodes cited on this page were recorded between 2024 and 2025. transcripts ifttd podcast devoxx dev with ai meetup bytebytego stanford online pavan belagatti youtube corpus",
     "category": "Core Guides",
     "url": "/guide/practitioner-insights/#sources",
     "source": "guide"
@@ -6423,17 +6423,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-subscription-strategy-tl-dr",
     "title": "TL;DR",
-    "keywords": "tl dr subscription strategy at team scale org shape start here --- --- under 150 people, mostly interactive terminal/ide usage claude team, standard and premium seats mixed over 150 people mul",
+    "keywords": "tl dr subscription strategy at team scale org shape start here --- --- 2 to 150 intended claude users, mostly terminal/ide usage claude team, standard and premium seats mixed more than 150 int",
     "category": "Core Guides",
     "url": "/guide/subscription-strategy/#tl-dr",
     "source": "guide"
   },
   {
-    "id": "gc-subscription-strategy-1-the-two-axes-that-actually-matter",
-    "title": "1. The two axes that actually matter",
-    "keywords": "1 the two axes that actually matter subscription strategy at team scale every option below sits on two independent axes. getting either one wrong is what produces a bad budget, not the choice of vendor. interactive vs prog",
+    "id": "gc-subscription-strategy-1-authentication-and-billing-source-matter-more-th",
+    "title": "1. Authentication and billing source matter more than interaction mode",
+    "keywords": "1 authentication and billing source matter more than interaction mode subscription strategy at team scale the planned split between interactive subscription usage and a separate programmatic credit did not take effect. anthropic's june 15 update says that",
     "category": "Core Guides",
-    "url": "/guide/subscription-strategy/#1-the-two-axes-that-actually-matter",
+    "url": "/guide/subscription-strategy/#1-authentication-and-billing-source-matter-more-than-interaction-mode",
     "source": "guide"
   },
   {
@@ -6453,27 +6453,27 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-subscription-strategy-4-api-gateway-the-missing-piece-between-team-and-e",
-    "title": "4. API gateway: the missing piece between Team and Enterprise",
-    "keywords": "4 api gateway the missing piece between team and enterprise subscription strategy at team scale a gateway (litellm or portkey) sits between developer machines and the anthropic api, issuing scoped virtual keys, enforcing per-team budgets that ret",
+    "id": "gc-subscription-strategy-4-api-gateway-a-control-plane-for-routed-api-traff",
+    "title": "4. API gateway: a control plane for routed API traffic",
+    "keywords": "4 api gateway a control plane for routed api traffic subscription strategy at team scale a gateway (litellm or portkey) sits between clients and provider apis. for traffic routed through it, litellm can issue virtual keys, restrict models,",
     "category": "Core Guides",
-    "url": "/guide/subscription-strategy/#4-api-gateway-the-missing-piece-between-team-and-enterprise",
+    "url": "/guide/subscription-strategy/#4-api-gateway-a-control-plane-for-routed-api-traffic",
     "source": "guide"
   },
   {
     "id": "gc-subscription-strategy-5-multi-vendor-by-design-not-by-accident",
     "title": "5. Multi-vendor by design, not by accident",
-    "keywords": "5 multi vendor by design not by accident subscription strategy at team scale an org can run claude and a second provider (openai, or a multi-provider harness like opencode) side by side, letting individuals pick per task rather",
+    "keywords": "5 multi vendor by design not by accident subscription strategy at team scale an organization can run claude and a second provider side by side, either through separate first-party tools or a multi-provider harness such as openc",
     "category": "Core Guides",
     "url": "/guide/subscription-strategy/#5-multi-vendor-by-design-not-by-accident",
     "source": "guide"
   },
   {
-    "id": "gc-subscription-strategy-6-personal-pro-max-plans-not-a-compliance-option-w",
-    "title": "6. Personal Pro/Max plans: not a compliance option, whatever the price looks like",
-    "keywords": "6 personal pro max plans not a compliance option whatever the price looks like subscription strategy at team scale a personal claude pro or max subscription is priced far below team, which makes it tempting to route business usage through individual accounts. two p",
+    "id": "gc-subscription-strategy-6-personal-pro-max-plans-not-an-organization-contr",
+    "title": "6. Personal Pro/Max plans: not an organization control plane",
+    "keywords": "6 personal pro max plans not an organization control plane subscription strategy at team scale a personal claude pro or max subscription is priced below organization plans, which can make individual reimbursement look like a shortcut. it does no",
     "category": "Core Guides",
-    "url": "/guide/subscription-strategy/#6-personal-pro-max-plans-not-a-compliance-option-whatever-the-price-looks-like",
+    "url": "/guide/subscription-strategy/#6-personal-pro-max-plans-not-an-organization-control-plane",
     "source": "guide"
   },
   {
@@ -6583,7 +6583,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-team-metrics-the-dora-foundation",
     "title": "The DORA Foundation",
-    "keywords": "the dora foundation team metrics for ai augmented engineering dora (devops research and assessment) measures the health of your delivery system, not individual contributors. that distinction matters: it keeps met deployment frequency lead time for changes change failure rate mean time to recovery mttr on the 2025 dora evolution",
+    "keywords": "the dora foundation team metrics for ai augmented engineering dora (devops research and assessment) measures the health of a software delivery system, not individual contributors. the current dora guide, updated deployment frequency change lead time change failure rate failed deployment recovery time deployment rework rate from four keys to five metrics",
     "category": "Core Guides",
     "url": "/guide/team-metrics/#the-dora-foundation",
     "source": "guide"
@@ -6591,7 +6591,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-team-metrics-dora-in-an-ai-augmented-context",
     "title": "DORA in an AI-Augmented Context",
-    "keywords": "dora in an ai augmented context team metrics for ai augmented engineering each dora metric reacts differently when ai enters the development workflow. understanding those effects helps you set the right targets and spot the deployment frequency lead time for changes change failure rate mttr raising the baseline",
+    "keywords": "dora in an ai augmented context team metrics for ai augmented engineering each dora metric reacts differently when ai enters the development workflow. understanding those effects helps you set the right targets and spot the deployment frequency change lead time change failure rate failed deployment recovery time deployment rework rate",
     "category": "Core Guides",
     "url": "/guide/team-metrics/#dora-in-an-ai-augmented-context",
     "source": "guide"
@@ -12495,7 +12495,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-agentic-software-factories-read-the-map-before-adding-a-control-plane",
     "title": "Read the Map Before Adding a Control Plane",
-    "keywords": "read the map before adding a control plane agentic software factories orientation map a software factory combines several layers. the model reasons; the runtime harness owns the coding loop; the repository harness provides instructions",
+    "keywords": "read the map before adding a control plane agentic software factories orientation map a software factory combines several layers. the model reasons; the runtime harness owns the coding loop; the repository harness provides instructions a software factory is an operating model",
     "category": "Workflows",
     "url": "/guide/workflows/agentic-software-factories/#read-the-map-before-adding-a-control-plane",
     "source": "guide"

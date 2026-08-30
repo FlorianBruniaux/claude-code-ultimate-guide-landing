@@ -14,8 +14,8 @@ options:
   d: Introduced AI-specific benchmarks that replace the original four metrics
 doc_reference:
   file: guide/ops/team-metrics.md
-  section: On the 2025 DORA Evolution
-  anchor: "#on-the-2025-dora-evolution"
+  section: From Four Keys to Five Metrics
+  anchor: "#from-four-keys-to-five-metrics"
 ---
 
 What major methodological change did the 2025 DORA report introduce?

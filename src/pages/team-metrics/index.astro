@@ -13,7 +13,7 @@ const jsonLd = [
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-04-03",
-    "dateModified": "2026-08-06",
+    "dateModified": "2026-08-30",
     "inLanguage": "en",
     "audience": { "@type": "Audience", "audienceType": "Engineering managers, tech leads, CTOs" }
   }
@@ -32,10 +32,11 @@ const metricCategories = [
     sourceUrl: 'https://dora.dev/guides/dora-metrics/',
     guideAnchor: '#the-dora-foundation',
     metrics: [
-      { name: 'Deployment Frequency', desc: 'How often you ship to production' },
-      { name: 'Lead Time for Changes', desc: 'Commit to production elapsed time' },
-      { name: 'Change Failure Rate', desc: '% of deploys causing incidents' },
-      { name: 'MTTR', desc: 'Mean time to restore after failure' },
+      { name: 'Change Lead Time', desc: 'Commit to successful production deployment' },
+      { name: 'Deployment Frequency', desc: 'Deployments over a period or time between deploys' },
+      { name: 'Failed Deployment Recovery Time', desc: 'Recovery time after a failed deployment' },
+      { name: 'Change Fail Rate', desc: 'Deployments requiring immediate intervention' },
+      { name: 'Deployment Rework Rate', desc: 'Unplanned corrective deploys caused by incidents' },
     ],
   },
   {
@@ -101,7 +102,7 @@ const teamSizes = [
   {
     label: '25-person team',
     metrics: [
-      'All 4 DORA (automated)',
+      'All 5 DORA metrics (automated)',
       'Cycle Time per squad',
       'Bug Escape Rate',
       'AI contribution %',
@@ -128,7 +129,7 @@ const externalSources = [
   {
     label: 'DORA Metrics Guide',
     url: 'https://dora.dev/guides/dora-metrics/',
-    desc: 'Official definitions for the 4 core delivery metrics',
+    desc: 'Official definitions for the current 5 delivery metrics',
   },
   {
     label: 'SPACE Framework (ACM Queue)',
@@ -153,13 +154,13 @@ const externalSources = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-04-03" modifiedDate="2026-04-03">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-04-03" modifiedDate="2026-08-30">
 
   <!-- Hero -->
   <header class="page-hero">
     <div class="container">
       <div class="hero-badge-row">
-        <span class="hero-badge">DORA 2025</span>
+        <span class="hero-badge">DORA: 5 metrics</span>
         <span class="hero-badge">SPACE Framework</span>
         <span class="hero-badge hero-badge--secondary">5-25 people</span>
         <span class="hero-badge hero-badge--secondary">Board Playbook</span>

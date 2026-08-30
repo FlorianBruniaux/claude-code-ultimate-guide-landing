@@ -40,7 +40,7 @@ export const rssEntries: RssEntry[] = [
     type: 'new_page',
     title: 'Subscription Strategy at Team Scale',
     date: 'Aug 30, 2026',
-    description: 'New ops page for choosing between Claude Team seats, Enterprise usage billing, an API gateway, multi-vendor setups, and self-hosted inference once an org grows past a handful of developers. Documents the verified Claude Team 2-150 seat cap, the personal Pro/Max compliance gap, and, in Local vs Cloud Inference, the sourced concurrent-throughput math for when self-hosting an open-weight model actually breaks even.',
+    description: 'New ops page for choosing between Claude Team seats, usage-priced Enterprise, a governed API gateway, multi-vendor setups, and self-hosted inference. Documents the verified Claude Team 2-150 seat cap, current billing and contract boundaries, observed cost distributions, timestamped practitioner reports, and scenario-bound self-hosting economics.',
     link: 'https://cc.bruniaux.com/guide/subscription-strategy/',
   },
   {
@@ -563,10 +563,10 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_page',
-    title: 'Practitioner Insights - field reports from IFTTD episodes',
+    title: 'Practitioner Insights - field reports across six source corpora',
     date: 'Jun 21, 2026',
-    description: "New guide page: 22 paraphrased insights from 11 IFTTD podcast episodes (ep 311-361), 5 themes: context engineering, agentic patterns, LLM evaluation, agent security, DevX and adoption. Speakers include Guillaume Laforge (Google Cloud), Zineb Bendhiba (Red Hat), Jocelyn N'takpe (ManoMano), Louis Pinsard (Dialogue), and others. 9 existing guide sections also enriched.",
-    link: 'https://cc.bruniaux.com/guide/ecosystem/practitioner-insights/',
+    description: "Expanded guide page: 69 paraphrased insights from IFTTD, Devoxx, Dev With AI Meetup, ByteByteGo, Stanford Online, and Pavan Belagatti's 62-video 2026 corpus. Covers context engineering, agentic patterns, LLM evaluation, agent security, DevX, and adoption with explicit evidence boundaries.",
+    link: 'https://cc.bruniaux.com/guide/practitioner-insights/',
   },
   {
     type: 'new_section',

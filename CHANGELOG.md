@@ -3,6 +3,15 @@
 All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
+### Subscription Strategy
+
+- **Team-scale AI budgeting page synchronized** (`src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`, `src/pages/sitemap/index.astro`, `src/components/global/AnnouncementBanner.astro`): rebuilt the guide reader and Cmd+K index from the corrected source page, kept the public RSS, banner, and sitemap routes, and exposed Team seat limits, usage-priced Enterprise, routed-API controls, timestamped practitioner evidence, and scenario-bound self-hosting economics without turning any benchmark into a portable fleet forecast.
+
+
+### Team Metrics and Practitioner Evidence
+
+- **Current DORA model synchronized** (`src/pages/team-metrics/index.astro`, `src/content/questions/17-team-metrics/`, `astro.config.mjs`): replaced the legacy four-metric presentation with DORA's current five metrics, including Failed Deployment Recovery Time and Deployment Rework Rate. Updated the quiz, page metadata, and modification date against DORA's official metric history.
+- **Practitioner evidence expanded** (`scripts/build-guide-index.mjs`, `src/data/rss-entries.ts`, `src/pages/sitemap/index.astro`): added the 62-video Pavan Belagatti corpus to the guide reader and Cmd+K source set, expanded the Practitioner Insights description to six source corpora, and exposed Practitioner Insights plus Agentic Software Factories in the HTML sitemap.
 
 ### Glossary
 

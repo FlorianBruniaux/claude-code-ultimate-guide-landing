@@ -27,6 +27,22 @@ test('RSS feed includes the loop and graph engineering page', () => {
 })
 
 test('Announcement banner keeps at most four links, rotates its id, and announces the page', () => {
+test('Subscription Strategy stays exposed across landing discovery surfaces', () => {
+  const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
+  const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
+  const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
+  const searchEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'), 'utf8')
+  const contentEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-content-entries.ts'), 'utf8')
+
+  assert.match(sitemapPage, /'\/guide\/subscription-strategy\/'/)
+  assert.match(sitemapPage, /Subscription Strategy at Team Scale/)
+  assert.match(rssEntries, /title: 'Subscription Strategy at Team Scale'/)
+  assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/subscription-strategy\//)
+  assert.match(banner, /href="\/guide\/subscription-strategy\/" class="ann-link">Subscription Strategy<\/a>/)
+  assert.match(searchEntries, /"id": "guide-subscription-strategy-guide"/)
+  assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tl-dr"/)
+})
+
   const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length
 

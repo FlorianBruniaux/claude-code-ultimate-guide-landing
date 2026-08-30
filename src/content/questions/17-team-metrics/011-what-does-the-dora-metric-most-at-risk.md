@@ -8,7 +8,7 @@ profiles:
 correct: c
 options:
   a: "Deployment Frequency: AI generates too many deployments"
-  b: "MTTR: AI incident response makes recovery too slow"
+  b: "Failed Deployment Recovery Time: AI incident response makes recovery too slow"
   c: "Change Failure Rate: AI generates syntactically correct but subtly wrong code; rubber-stamp reviews cause CFR to creep up over 6-12 months"
   d: "Lead Time: AI slows down review queues by generating larger diffs"
 doc_reference:

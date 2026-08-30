@@ -23,7 +23,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/ecosystem/': '2026-03-13',
   'https://cc.bruniaux.com/methodologies/': '2026-04-01',
   'https://cc.bruniaux.com/learning/': '2026-04-15',
-  'https://cc.bruniaux.com/team-metrics/': '2026-05-01',
+  'https://cc.bruniaux.com/team-metrics/': '2026-08-30',
   'https://cc.bruniaux.com/context-engineering/': '2026-05-15',
 }
 

@@ -652,6 +652,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-loop-graph-execution-governance",
+    "title": "Loop Graph Execution Governance",
+    "keywords": "loop graph execution governance guide core loop graph engineering md#separate execution from governance",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#separate-execution-from-governance",
+    "source": "guide"
+  },
+  {
     "id": "guide-loop-graph-durable-execution",
     "title": "Loop Graph Durable Execution",
     "keywords": "loop graph durable execution guide core loop graph engineering md#6 make execution durable",
@@ -2000,7 +2008,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Guide",
     "keywords": "practitioner insights guide guide ecosystem practitioner insights",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md",
+    "url": "/guide/practitioner-insights/",
     "source": "guide"
   },
   {
@@ -2008,7 +2016,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Context Engineering",
     "keywords": "practitioner insights context engineering guide ecosystem practitioner insights md#context engineering",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#context-engineering",
+    "url": "/guide/practitioner-insights/#context-engineering",
     "source": "guide"
   },
   {
@@ -2016,7 +2024,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Agentic Patterns",
     "keywords": "practitioner insights agentic patterns guide ecosystem practitioner insights md#agentic patterns orchestration",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agentic-patterns--orchestration",
+    "url": "/guide/practitioner-insights/#agentic-patterns--orchestration",
     "source": "guide"
   },
   {
@@ -2024,7 +2032,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights LLM Evaluation",
     "keywords": "practitioner insights llm evaluation guide ecosystem practitioner insights md#llm evaluation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#llm-evaluation",
+    "url": "/guide/practitioner-insights/#llm-evaluation",
     "source": "guide"
   },
   {
@@ -2032,7 +2040,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Agent Security",
     "keywords": "practitioner insights agent security guide ecosystem practitioner insights md#agent security",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#agent-security",
+    "url": "/guide/practitioner-insights/#agent-security",
     "source": "guide"
   },
   {
@@ -2040,7 +2048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Devx",
     "keywords": "practitioner insights devx guide ecosystem practitioner insights md#devx adoption",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devx--adoption",
+    "url": "/guide/practitioner-insights/#devx--adoption",
     "source": "guide"
   },
   {
@@ -2048,7 +2056,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Devoxx",
     "keywords": "practitioner insights devoxx guide ecosystem practitioner insights md#devoxx",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#devoxx",
+    "url": "/guide/practitioner-insights/#devoxx",
     "source": "guide"
   },
   {
@@ -2056,7 +2064,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Devwithai",
     "keywords": "practitioner insights devwithai guide ecosystem practitioner insights md#dev with meetup",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#dev-with-ai-meetup",
+    "url": "/guide/practitioner-insights/#dev-with-ai-meetup",
     "source": "guide"
   },
   {
@@ -2064,7 +2072,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Bytebytego",
     "keywords": "practitioner insights bytebytego guide ecosystem practitioner insights md#bytebytego",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#bytebytego",
+    "url": "/guide/practitioner-insights/#bytebytego",
     "source": "guide"
   },
   {
@@ -2072,7 +2080,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Practitioner Insights Stanford",
     "keywords": "practitioner insights stanford guide ecosystem practitioner insights md#stanford online",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/practitioner-insights.md#stanford-online",
+    "url": "/guide/practitioner-insights/#stanford-online",
+    "source": "guide"
+  },
+  {
+    "id": "guide-practitioner-insights-pavan-belagatti",
+    "title": "Practitioner Insights Pavan Belagatti",
+    "keywords": "practitioner insights pavan belagatti guide ecosystem practitioner insights md#pavan belagatti youtube corpus",
+    "category": "Guide",
+    "url": "/guide/practitioner-insights/#pavan-belagatti-youtube-corpus",
     "source": "guide"
   },
   {
@@ -2118,9 +2134,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-subscription-strategy-two-axes",
     "title": "Subscription Strategy Two Axes",
-    "keywords": "subscription strategy two axes guide ops subscription strategy md#1 the two axes that actually matter",
+    "keywords": "subscription strategy two axes guide ops subscription strategy md#1 authentication and billing source matter more than interaction mode",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#1-the-two-axes-that-actually-matter",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#1-authentication-and-billing-source-matter-more-than-interaction-mode",
     "source": "guide"
   },
   {
@@ -2142,9 +2158,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-subscription-strategy-gateway",
     "title": "Subscription Strategy Gateway",
-    "keywords": "subscription strategy gateway guide ops subscription strategy md#4 api gateway the missing piece between team and enterprise",
+    "keywords": "subscription strategy gateway guide ops subscription strategy md#4 api gateway control plane for routed api traffic",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#4-api-gateway-the-missing-piece-between-team-and-enterprise",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#4-api-gateway-a-control-plane-for-routed-api-traffic",
     "source": "guide"
   },
   {
@@ -2158,9 +2174,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-subscription-strategy-personal-plan-gap",
     "title": "Subscription Strategy Personal Plan Gap",
-    "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#6 personal promax plans not compliance option whatever the price looks like",
+    "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#6 personal promax plans not organization control plane",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#6-personal-promax-plans-not-a-compliance-option-whatever-the-price-looks-like",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#6-personal-promax-plans-not-an-organization-control-plane",
     "source": "guide"
   },
   {
@@ -4217,6 +4233,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agentic software factories hub guide workflows agentic software factories",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agentic-software-factories/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-operating-model",
+    "title": "Agentic Software Factories Operating Model",
+    "keywords": "agentic software factories operating model guide workflows agentic software factories md#a software factory operating model",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#a-software-factory-is-an-operating-model",
     "source": "guide"
   },
   {
@@ -6464,7 +6488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Guide",
     "keywords": "team metrics guide guide ops team metrics",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md",
+    "url": "/guide/team-metrics/",
     "source": "guide"
   },
   {
@@ -6472,7 +6496,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Dora",
     "keywords": "team metrics dora guide ops team metrics md#the dora foundation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#the-dora-foundation",
+    "url": "/guide/team-metrics/#the-dora-foundation",
     "source": "guide"
   },
   {
@@ -6480,7 +6504,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Dora AI Context",
     "keywords": "team metrics dora ai context guide ops team metrics md#dora augmented context",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#dora-in-an-ai-augmented-context",
+    "url": "/guide/team-metrics/#dora-in-an-ai-augmented-context",
     "source": "guide"
   },
   {
@@ -6488,7 +6512,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Space",
     "keywords": "team metrics space guide ops team metrics md#beyond dora the space framework",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#beyond-dora-the-space-framework",
+    "url": "/guide/team-metrics/#beyond-dora-the-space-framework",
     "source": "guide"
   },
   {
@@ -6496,7 +6520,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics AI Specific",
     "keywords": "team metrics ai specific guide ops team metrics md#ai specific metrics",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#ai-specific-metrics",
+    "url": "/guide/team-metrics/#ai-specific-metrics",
     "source": "guide"
   },
   {
@@ -6504,7 +6528,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Agentic",
     "keywords": "team metrics agentic guide ops team metrics md#agentic metrics what dora doesnt measure",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#agentic-metrics-what-dora-doesnt-measure",
+    "url": "/guide/team-metrics/#agentic-metrics-what-dora-doesnt-measure",
     "source": "guide"
   },
   {
@@ -6512,7 +6536,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Vanity",
     "keywords": "team metrics vanity guide ops team metrics md#vanity metrics drop",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#vanity-metrics-to-drop",
+    "url": "/guide/team-metrics/#vanity-metrics-to-drop",
     "source": "guide"
   },
   {
@@ -6520,7 +6544,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Four Question Test",
     "keywords": "team metrics four question test guide ops team metrics md#the question test",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#the-4-question-test",
+    "url": "/guide/team-metrics/#the-4-question-test",
     "source": "guide"
   },
   {
@@ -6528,7 +6552,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Tooling",
     "keywords": "team metrics tooling guide ops team metrics md#tooling",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#tooling",
+    "url": "/guide/team-metrics/#tooling",
     "source": "guide"
   },
   {
@@ -6536,7 +6560,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Forecasting",
     "keywords": "team metrics forecasting guide ops team metrics md#probabilistic delivery forecasting",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#probabilistic-delivery-forecasting",
+    "url": "/guide/team-metrics/#probabilistic-delivery-forecasting",
     "source": "guide"
   },
   {
@@ -6544,7 +6568,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Team Metrics Board Reporting",
     "keywords": "team metrics board reporting guide ops team metrics md#reporting delivery capacity skeptical board",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/team-metrics.md#reporting-delivery-capacity-to-a-skeptical-board",
+    "url": "/guide/team-metrics/#reporting-delivery-capacity-to-a-skeptical-board",
     "source": "guide"
   },
   {

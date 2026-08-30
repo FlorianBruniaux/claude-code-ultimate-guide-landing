@@ -46,6 +46,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/ecosystem/agentic-tools.md',
   'guide/ecosystem/ai-ecosystem.md',
   'guide/ecosystem/mcp-servers-ecosystem.md',
+  'guide/ecosystem/practitioner-insights.md',
   'guide/ecosystem/remarkable-ai.md',
   'guide/ecosystem/third-party-tools.md',
   // roles/
@@ -57,6 +58,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/ops/ai-traceability.md',
   'guide/ops/devops-sre.md',
   'guide/ops/observability.md',
+  'guide/ops/team-metrics.md',
 ])
 
 // Three of the files above resolve to a basename-derived URL that is only a
