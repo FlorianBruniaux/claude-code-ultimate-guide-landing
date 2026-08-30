@@ -23,7 +23,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
+const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const EXAMPLES_DIR = resolve(GUIDE_REPO, 'examples')
 const OUT_PATH = resolve(ROOT, 'public/terminal-fs.json')
 

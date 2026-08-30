@@ -5,6 +5,8 @@ import { WHITEPAPERS, TOTAL_PAGES, PDF_BASE_URL } from '../../data/whitepapers-d
 
 const title = 'Ebooks: 13 Whitepapers | Claude Code'
 const description = `13 whitepapers, ${TOTAL_PAGES}+ pages, FR + EN, PDF + EPUB. From Claude Code fundamentals to multi-agent architecture, security, and ROI. Free for WP00 and WP03.`
+const pageCountLabel = (wp: (typeof WHITEPAPERS)[number]) =>
+  wp.pagesEn && wp.pagesEn !== wp.pages ? `${wp.pagesEn}p EN · ${wp.pages}p FR` : `~${wp.pages}p`
 
 const jsonLd = [
   {
@@ -138,7 +140,7 @@ const profiles = [
             <p class="featured-sub">{wp.subtitle}</p>
             <div class="featured-meta">
               <span class="meta-pill">{wp.audience}</span>
-              <span class="meta-pill">~{wp.pages}p</span>
+              <span class="meta-pill">{pageCountLabel(wp)}</span>
             </div>
             <div class="featured-actions">
               <div class="lang-format-group">
@@ -184,7 +186,7 @@ const profiles = [
                 <span class="wp-num-badge">{wp.num}</span>
                 {wp.badge && <span class={`badge ${wp.badge === 'Open' ? 'badge-open' : wp.badge === 'Popular' ? 'badge-popular' : 'badge-open'}`}>{wp.badge}</span>}
                 <span class="wp-audience">{wp.audience}</span>
-                <span class="wp-pages">~{wp.pages}p</span>
+                <span class="wp-pages">{pageCountLabel(wp)}</span>
               </div>
               <h3 class="wp-row-title">{wp.titleEn}</h3>
               <p class="wp-row-subtitle">{wp.subtitle}</p>

@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
+const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const OUT_PATH = resolve(ROOT, 'public/reference-fs.json')
 
 const CWD = '/home/user'

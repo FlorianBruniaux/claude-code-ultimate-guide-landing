@@ -14,7 +14,8 @@ export interface Whitepaper {
   titleFr: string
   subtitle: string     // 1-line hook (EN)
   audience: string
-  pages: number        // approximate
+  pages: number        // approximate FR or shared page count
+  pagesEn?: number     // set when the EN render differs materially
   tags: string[]
   gated: boolean       // false = direct download, true = email required
   comingSoon?: boolean // true = not yet released, hashes empty
@@ -29,6 +30,7 @@ export interface Whitepaper {
 }
 
 const V = 'v3.41.3'
+const WP12_V = 'v3.43.0'
 
 export const WHITEPAPERS: Whitepaper[] = [
   {
@@ -220,13 +222,14 @@ export const WHITEPAPERS: Whitepaper[] = [
     titleFr: "L'Ingénierie Logicielle à l'Ère des Agents Autonomes",
     subtitle: 'Harnesses, agentic CI/CD, and honest productivity measurement.',
     audience: 'Tech leads & staff engineers',
-    pages: 38,
-    tags: ['agents', 'harness', 'cicd', 'productivity'],
+    pages: 42,
+    pagesEn: 33,
+    tags: ['agents', 'harness', 'loop', 'graph', 'cicd', 'productivity'],
     gated: true,
     badge: 'New',
     formats: ['pdf', 'epub'],
-    hashedFileFr: `12-agent-engineering.fr.${V}.2789f5e985e5.pdf`,
-    hashedFileEn: `12-agent-engineering.en.${V}.228adb74893a.pdf`,
+    hashedFileFr: `12-agent-engineering.fr.${WP12_V}.062baeca347e.pdf`,
+    hashedFileEn: `12-agent-engineering.en.${WP12_V}.031291a32c35.pdf`,
     slugFr: '12-agent-engineering',
     slugEn: '12-agent-engineering',
   },

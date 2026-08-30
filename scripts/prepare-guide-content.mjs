@@ -27,7 +27,7 @@ const DATA_STORE = resolve(ROOT, '.astro/data-store.json')
 if (existsSync(DATA_STORE)) {
   rmSync(DATA_STORE)
 }
-const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
+const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const GUIDE_DIR = resolve(GUIDE_REPO, 'guide')
 
 /**

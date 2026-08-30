@@ -14,7 +14,7 @@ const optionValue = (name) => {
   const index = process.argv.indexOf(name)
   return index === -1 ? undefined : process.argv[index + 1]
 }
-const GUIDE_REPO = resolve(optionValue('--guide-root') ?? resolve(ROOT, '..', 'claude-code-ultimate-guide'))
+const GUIDE_REPO = resolve(optionValue('--guide-root') ?? process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '..', 'claude-code-ultimate-guide'))
 const YAML_PATH = resolve(GUIDE_REPO, 'machine-readable/reference.yaml')
 const OUT_PATH = resolve(optionValue('--out') ?? resolve(ROOT, 'src/data/guide-search-entries.ts'))
 const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/'
@@ -31,6 +31,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/core/architecture.md',
   'guide/core/claude-code-releases.md',
   'guide/core/known-issues.md',
+  'guide/core/loop-graph-engineering.md',
   'guide/core/methodologies.md',
   'guide/core/visual-reference.md',
   // security/
@@ -79,6 +80,7 @@ const LOCAL_GUIDE_REDIRECT_TARGETS = {
   'guide/roles/ai-roles.md': '/roles/',
   'guide/core/claude-code-releases.md': '/releases/',
 }
+
 
 /**
  * Convert snake_case key to Title Case human label

@@ -30,6 +30,28 @@ test('builds the guide index from an explicit portable guide root', () => {
   assert.match(generated, /\/guide\/agentic-tools\/#48-liza/)
 })
 
+test('maps loop-graph-engineering to the local canonical guide URL', () => {
+  const root = mkdtempSync(join(tmpdir(), 'guide-index-loop-'))
+  const guideRoot = join(root, 'claude-code-ultimate-guide')
+  const outputPath = join(root, 'guide-search-entries.ts')
+  mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  writeFileSync(
+    join(guideRoot, 'machine-readable/reference.yaml'),
+    'deep_dive:\n  loop_graph_engineering: "guide/core/loop-graph-engineering.md#2-write-a-loop-contract"\n',
+  )
+
+  const result = spawnSync(
+    process.execPath,
+    [SCRIPT, '--guide-root', guideRoot, '--out', outputPath],
+    { encoding: 'utf8' },
+  )
+
+  assert.equal(result.status, 0, result.stderr)
+  const generated = readFileSync(outputPath, 'utf8')
+  assert.match(generated, /\/guide\/loop-graph-engineering\/#2-write-a-loop-contract/)
+  assert.doesNotMatch(generated, /github.com\/FlorianBruniaux\/claude-code-ultimate-guide.*loop-graph-engineering/)
+})
+
 test('does not embed a developer-specific absolute guide path', () => {
   const source = readFileSync(SCRIPT, 'utf8')
 

@@ -8,28 +8,9 @@
  * the dismissed state for all visitors.
  */
 
-// Increment this ID whenever the banner content changes
-//
-// STILL NOT LIVE as of 2026-08-27: Cross-Session Messaging and its diagram
-// (written 2026-08-24) are still sitting in claude-code-ultimate-guide's
-// CHANGELOG under [Unreleased], not shipped through an actual `/release`
-// (VERSION is still 3.42.0). They were dropped from this banner below
-// (previously items 1-2) because the banner itself was live in production
-// with two dead links pointing at content that doesn't exist yet on the
-// guide reader. Re-add once that release ships:
-// - /guide/workflows/cross-session-messaging/ needs
-//   `node scripts/prepare-guide-content.mjs && pnpm build` here after the release.
-// - /diagrams/#multi-agent needs `node scripts/build-diagrams-data.mjs` here
-//   for the new 6th diagram in guide/diagrams/07-multi-agent-patterns.md
-//   (theme id "multi-agent"). Opens the Multi-Agent Patterns accordion, not
-//   the single diagram: no per-diagram anchor exists in src/pages/diagrams/index.astro.
-// Re-check the version badge and "Guide vX.Y.Z →" link below against the
-// real released version before deploying this banner.
-//
-// /guide/ai-executive-agents/, /guide/agent-harness-landscape/, and
-// /guide/subscription-strategy/ are live.
-// Keep the strip to 4 items so it remains readable on smaller screens.
-const BANNER_ID = 'banner-subscription-strategy-2026-08'
+// Increment this ID whenever the banner content changes.
+// Keep the strip to 4 links so it stays readable on smaller screens.
+const BANNER_ID = 'banner-loop-graph-engineering-2026-08'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
@@ -37,13 +18,13 @@ const BANNER_ID = 'banner-subscription-strategy-2026-08'
     <div class="ann-content">
       <span class="ann-badge">AUG 2026</span>
       <span class="ann-text">
-        <span class="visually-hidden">Guide v3.42.0. </span>
+        <span class="visually-hidden">Latest guide updates. </span>
         <span style="color:var(--text-secondary)">Latest:</span>
+        <a href="/guide/loop-graph-engineering/" class="ann-link">Loop &amp; Graph Engineering</a>
+        <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/guide/workflows/monitor-event-delegation/" class="ann-link">Monitor &amp; Safe Delegation</a>
         <span class="ann-sep" aria-hidden="true">·</span>
-        <a href="/guide/agent-harness-landscape/#liza-a-repository-harness-and-control-plane-combined" class="ann-link">Harness Map: 192 projects + Liza</a>
-        <span class="ann-sep" aria-hidden="true">·</span>
-        <a href="/guide/subscription-strategy/" class="ann-link">Subscription Strategy at Team Scale</a>
+        <a href="/guide/subscription-strategy/" class="ann-link">Subscription Strategy</a>
         <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/releases/" class="ann-link">Changelog →</a>
       </span>

@@ -596,6 +596,102 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-loop-graph-engineering-guide",
+    "title": "Loop Graph Engineering Guide",
+    "keywords": "loop graph engineering guide guide core loop graph engineering",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-smallest-structure",
+    "title": "Loop Graph Smallest Structure",
+    "keywords": "loop graph smallest structure guide core loop graph engineering md#1 choose the smallest control structure agent harness loop graph distinction guide core loop graph engineering md#1 choose the smallest control structure",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#1-choose-the-smallest-control-structure",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-loop-contract",
+    "title": "Loop Graph Loop Contract",
+    "keywords": "loop graph loop contract guide core loop graph engineering md#2 write loop contract",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#2-write-a-loop-contract",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-feedback-horizons",
+    "title": "Loop Graph Feedback Horizons",
+    "keywords": "loop graph feedback horizons guide core loop graph engineering md#apply the feedback horizons",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#apply-the-feedback-horizons",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-graph-contract",
+    "title": "Loop Graph Graph Contract",
+    "keywords": "loop graph graph contract guide core loop graph engineering md#3 write graph contract",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#3-write-a-graph-contract",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-static-dynamic",
+    "title": "Loop Graph Static Dynamic",
+    "keywords": "loop graph static dynamic guide core loop graph engineering md#4 static and dynamic graphs",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#4-static-and-dynamic-graphs",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-judgment",
+    "title": "Loop Graph Judgment",
+    "keywords": "loop graph judgment guide core loop graph engineering md#5 allocate judgment explicitly agent harness judgment allocation guide core loop graph engineering md#5 allocate judgment explicitly",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#5-allocate-judgment-explicitly",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-durable-execution",
+    "title": "Loop Graph Durable Execution",
+    "keywords": "loop graph durable execution guide core loop graph engineering md#6 make execution durable",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#6-make-execution-durable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-observability",
+    "title": "Loop Graph Observability",
+    "keywords": "loop graph observability guide core loop graph engineering md#7 observe and evaluate the system",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#7-observe-and-evaluate-the-system",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-cases",
+    "title": "Loop Graph Cases",
+    "keywords": "loop graph cases guide core loop graph engineering md#8 three implementation cases",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#8-three-implementation-cases",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-antipatterns",
+    "title": "Loop Graph Antipatterns",
+    "keywords": "loop graph antipatterns guide core loop graph engineering md#9 anti patterns",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#9-anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-selection",
+    "title": "Loop Graph Selection",
+    "keywords": "loop graph selection guide core loop graph engineering md#10 selection checklist",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#10-selection-checklist",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-definition",
     "title": "Agent Harness Definition",
     "keywords": "agent harness definition guide core agent harness md#the core claim agent harness model harness pair guide core agent harness md#the core claim agent harness scaffold effect guide core agent harness md#the core claim",
@@ -3540,27 +3636,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agent-harness-loop-graph-distinction",
-    "title": "Agent Harness Loop Graph Distinction",
-    "keywords": "agent harness loop graph distinction guide core agent harness md#loop graph harness and orchestrator are different views",
-    "category": "Guide",
-    "url": "/guide/agent-harness/#loop-graph-harness-and-orchestrator-are-different-views",
-    "source": "guide"
-  },
-  {
     "id": "guide-agent-harness-loop-horizons",
     "title": "Agent Harness Loop Horizons",
     "keywords": "agent harness loop horizons guide core agent harness md#three loop horizons",
     "category": "Guide",
     "url": "/guide/agent-harness/#three-loop-horizons",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agent-harness-judgment-allocation",
-    "title": "Agent Harness Judgment Allocation",
-    "keywords": "agent harness judgment allocation guide core agent harness md#judgment allocation where responsibility actually sits",
-    "category": "Guide",
-    "url": "/guide/agent-harness/#judgment-allocation-where-responsibility-actually-sits",
     "source": "guide"
   },
   {

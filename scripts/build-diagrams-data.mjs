@@ -14,7 +14,7 @@ import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const GUIDE_REPO = resolve(ROOT, '../claude-code-ultimate-guide')
+const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const DIAGRAMS_DIR = resolve(GUIDE_REPO, 'guide/diagrams')
 const OUT_PATH = resolve(ROOT, 'src/data/diagrams-data.ts')
 

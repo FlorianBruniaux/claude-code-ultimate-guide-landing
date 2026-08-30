@@ -4973,6 +4973,86 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-loop-graph-engineering-1-choose-the-smallest-control-structure",
+    "title": "1. Choose the smallest control structure",
+    "keywords": "1 choose the smallest control structure loop graph engineering start with the simplest structure that can make the required decision safely. need smallest suitable loop or graph structure what must still be specif",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#1-choose-the-smallest-control-structure",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-2-write-a-loop-contract",
+    "title": "2. Write a loop contract",
+    "keywords": "2 write a loop contract loop graph engineering a loop contract makes \"keep going until it works\" testable. it names the unit of work, its permitted actions, the evidence that counts as progress, an apply the feedback horizons",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#2-write-a-loop-contract",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-3-write-a-graph-contract",
+    "title": "3. Write a graph contract",
+    "keywords": "3 write a graph contract loop graph engineering use an explicit graph when routing itself is material. the langgraph graph api is a concrete primary-source example: it represents shared state, nodes practical example a bounded change review graph",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#3-write-a-graph-contract",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-4-static-and-dynamic-graphs",
+    "title": "4. Static and dynamic graphs",
+    "keywords": "4 static and dynamic graphs loop graph engineering a static graph fixes its topology in reviewed configuration or code. a dynamic graph creates or changes tasks, dependencies, routes, or workers during",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#4-static-and-dynamic-graphs",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-5-allocate-judgment-explicitly",
+    "title": "5. Allocate judgment explicitly",
+    "keywords": "5 allocate judgment explicitly loop graph engineering automation moves judgment. it does not erase it. write down who owns the quality bar, decomposition, tool permission, exception, acceptance verdict, a",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#5-allocate-judgment-explicitly",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-6-make-execution-durable",
+    "title": "6. Make execution durable",
+    "keywords": "6 make execution durable loop graph engineering durable execution means that an interruption does not silently lose, duplicate, or invent work. it is not merely saving chat history. requirement desi",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#6-make-execution-durable",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-7-observe-and-evaluate-the-system",
+    "title": "7. Observe and evaluate the system",
+    "keywords": "7 observe and evaluate the system loop graph engineering an agent trace needs enough evidence to answer four questions: what ran, why it routed, what state changed, and who accepted the result. capture data",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#7-observe-and-evaluate-the-system",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-8-three-implementation-cases",
+    "title": "8. Three implementation cases",
+    "keywords": "8 three implementation cases loop graph engineering claude code: inner loop plus repository harness claude code owns the interactive model-and-tool loop. the repository harness provides the project cont claude code inner loop plus repository harness langgraph explicit workflow runtime liza repository harness plus control plane",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#8-three-implementation-cases",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-9-anti-patterns",
+    "title": "9. Anti-patterns",
+    "keywords": "9 anti patterns loop graph engineering anti-pattern why it fails corrective action --- --- --- \"keep trying until done\" no termination, cost, or escalation boundary write explicit success,",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#9-anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "gc-loop-graph-engineering-10-selection-checklist",
+    "title": "10. Selection checklist",
+    "keywords": "10 selection checklist loop graph engineering before adding a loop, graph, or orchestrator, answer yes to each relevant question. - [ ] the selected structure is the smallest one that meets the ro",
+    "category": "Core Guides",
+    "url": "/guide/loop-graph-engineering/#10-selection-checklist",
+    "source": "guide"
+  },
+  {
     "id": "gc-mcp-servers-ecosystem-official-vs-community-servers",
     "title": "Official vs Community Servers",
     "keywords": "official vs community servers mcp servers ecosystem type examples characteristics use when ------ ---------- ----------------- ---------- official filesystem, memory, brave-search, github anthropic-main",
@@ -7335,7 +7415,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-2-the-claude-folder-structure",
     "title": "3.2 The .claude/ Folder Structure",
-    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 42 0 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
+    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 43 0 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-2-the-claude-folder-structure",
     "source": "guide"
