@@ -1,0 +1,163 @@
+---
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import ConsultingCta from '../../components/global/ConsultingCta.astro'
+import Layout from '../../layouts/Layout.astro'
+import { guideChangelogGitHubUrl, parseGuideChangelog } from '../../utils/guide-changelog'
+
+const guideRoot = process.env.GUIDE_REPO_PATH ?? resolve(process.cwd(), '../claude-code-ultimate-guide')
+const changelogMarkdown = readFileSync(resolve(guideRoot, 'CHANGELOG.md'), 'utf8')
+const currentVersion = readFileSync(resolve(guideRoot, 'VERSION'), 'utf8').trim()
+const releases = parseGuideChangelog(changelogMarkdown)
+const unreleased = releases.find((release) => release.version === 'Unreleased')
+const publishedReleases = releases.filter((release) => release.version !== 'Unreleased')
+const recentReleases = publishedReleases.slice(0, 12)
+const olderReleases = publishedReleases.slice(12)
+
+const title = 'Guide Changelog | Claude Code Ultimate Guide'
+const description = 'Every documented update to the Claude Code Ultimate Guide, including new pages, corrected references, tools, ebooks, recap cards, and machine-readable resources.'
+---
+
+<Layout title={title} description={description} noIndex={false}>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Current guide version: v{currentVersion}</p>
+      <h1>Guide Changelog</h1>
+      <p class="tagline">A public record of what changed in the guide, its resources, and its machine-readable editions.</p>
+      <div class="route-note">
+        Looking for changes to the Claude Code CLI itself? See <a href="/releases/">Claude Code Releases</a>.
+      </div>
+    </div>
+  </header>
+
+  <main class="changelog-page">
+    <div class="container narrow">
+      {unreleased && (
+        <section class="release release-unreleased" id={unreleased.anchor}>
+          <div class="release-heading">
+            <div>
+              <p class="release-kicker">In progress</p>
+              <h2>Unreleased</h2>
+            </div>
+            <a href={guideChangelogGitHubUrl(unreleased)} target="_blank" rel="noopener noreferrer">View source</a>
+          </div>
+          <div class="section-grid">
+            {unreleased.sections.map((section) => (
+              <section class="change-section">
+                <h3>{section.title}</h3>
+                <ul>
+                  {section.items.map((item) => (
+                    <li>
+                      <strong>{item.title}</strong>
+                      {item.description && <span>{item.description}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="history-heading">
+        <h2>Published releases</h2>
+        <p>{publishedReleases.length} documented guide releases.</p>
+      </div>
+
+      {recentReleases.map((release) => (
+        <article class="release" id={release.anchor}>
+          <div class="release-heading">
+            <div>
+              <p class="release-kicker">{release.date ?? 'Date not recorded'}</p>
+              <h2>v{release.version}</h2>
+            </div>
+            <a href={guideChangelogGitHubUrl(release)} target="_blank" rel="noopener noreferrer">View source</a>
+          </div>
+          <div class="section-grid">
+            {release.sections.map((section) => (
+              <section class="change-section">
+                <h3>{section.title}</h3>
+                <ul>
+                  {section.items.map((item) => (
+                    <li>
+                      <strong>{item.title}</strong>
+                      {item.description && <span>{item.description}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </article>
+      ))}
+
+      {olderReleases.length > 0 && (
+        <details class="older-releases">
+          <summary>Show {olderReleases.length} older releases</summary>
+          {olderReleases.map((release) => (
+            <article class="release compact" id={release.anchor}>
+              <div class="release-heading">
+                <div>
+                  <p class="release-kicker">{release.date ?? 'Date not recorded'}</p>
+                  <h2>v{release.version}</h2>
+                </div>
+                <a href={guideChangelogGitHubUrl(release)} target="_blank" rel="noopener noreferrer">View source</a>
+              </div>
+              <div class="section-grid">
+                {release.sections.map((section) => (
+                  <section class="change-section">
+                    <h3>{section.title}</h3>
+                    <ul>
+                      {section.items.map((item) => (
+                        <li>
+                          <strong>{item.title}</strong>
+                          {item.description && <span>{item.description}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
+            </article>
+          ))}
+        </details>
+      )}
+
+      <ConsultingCta />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+  .narrow { max-width: 980px; }
+  .page-hero { padding: 4rem 0 2.75rem; border-bottom: 1px solid var(--border); }
+  .eyebrow, .release-kicker { margin: 0 0 0.4rem; color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-hero h1 { margin: 0; color: var(--text-primary); font-size: clamp(2.25rem, 6vw, 4.25rem); line-height: 1; }
+  .tagline { max-width: 760px; margin: 1rem 0 0; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.65; }
+  .route-note { display: inline-block; margin-top: 1.25rem; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 0.55rem; color: var(--text-secondary); background: var(--bg-secondary); }
+  .route-note a, .release-heading a { color: var(--accent); font-weight: 650; }
+  .changelog-page { padding: 3rem 0 6rem; }
+  .history-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 3.5rem 0 1rem; }
+  .history-heading h2 { margin: 0; color: var(--text-primary); font-size: 1.6rem; }
+  .history-heading p { margin: 0; color: var(--text-muted); }
+  .release { margin-bottom: 1.25rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--bg-secondary); scroll-margin-top: 6rem; }
+  .release-unreleased { border-color: color-mix(in srgb, var(--accent) 52%, var(--border)); background: color-mix(in srgb, var(--accent) 4%, var(--bg-secondary)); }
+  .release-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .release-heading h2 { margin: 0; color: var(--text-primary); font-size: 1.55rem; }
+  .release-heading a { flex-shrink: 0; font-size: 0.85rem; }
+  .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem 2rem; padding-top: 1.25rem; }
+  .change-section h3 { margin: 0 0 0.65rem; color: var(--text-primary); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .change-section ul { margin: 0; padding-left: 1.1rem; }
+  .change-section li { margin-bottom: 0.65rem; color: var(--text-secondary); line-height: 1.55; }
+  .change-section strong { color: var(--text-primary); }
+  .change-section span::before { content: ': '; }
+  .older-releases { margin-top: 1.5rem; }
+  .older-releases > summary { cursor: pointer; margin-bottom: 1.25rem; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: 0.55rem; color: var(--text-primary); font-weight: 700; background: var(--bg-secondary); }
+  .compact { background: transparent; }
+  @media (max-width: 640px) {
+    .page-hero { padding-top: 2.75rem; }
+    .history-heading, .release-heading { align-items: flex-start; flex-direction: column; }
+    .section-grid { grid-template-columns: 1fr; }
+  }
+</style>

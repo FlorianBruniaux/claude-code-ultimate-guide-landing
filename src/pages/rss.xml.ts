@@ -9,6 +9,18 @@ function parseReleaseDate(dateStr: string): Date {
   return isNaN(d.getTime()) ? new Date() : d
 }
 
+function guideEntryLink(entry: RssEntry): string {
+  if (entry.type === 'guide_release') {
+    const version = entry.title.match(/v?(\d+\.\d+\.\d+)/)?.[1]
+    const date = parseReleaseDate(entry.date).toISOString().slice(0, 10)
+    if (!version) return 'https://cc.bruniaux.com/changelog/'
+
+    return `https://cc.bruniaux.com/changelog/#${version.replace(/\./g, '')}---${date}`
+  }
+
+  return entry.link
+}
+
 const TYPE_LABELS: Record<RssEntry['type'], string> = {
   guide_release:  'Guide Release',
   new_page:       'New Page',
@@ -38,7 +50,7 @@ export const GET: APIRoute = async (context) => {
     title: `[${TYPE_LABELS[entry.type]}] ${entry.title}`,
     pubDate: parseReleaseDate(entry.date),
     description: `<p>${entry.description}</p>`,
-    link: entry.link,
+    link: guideEntryLink(entry),
   }))
 
   // Merge and sort by date descending, cap at 50

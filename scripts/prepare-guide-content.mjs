@@ -17,6 +17,7 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { execFileSync } from 'child_process'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
+import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -662,97 +663,11 @@ for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
   writeFileSync(outPath, rewritten, 'utf-8')
 }
 
-// Generate the /guide/ landing index page
-const guideIndexContent = `---
-title: "Claude Code Guide"
-description: "Comprehensive documentation for Claude Code — from quick start to advanced patterns, workflows, MCP servers, and more."
-sidebar:
-  order: -1
-template: splash
-hero:
-  tagline: Everything you need to master Claude Code — from zero to power user.
-  actions:
-    - text: Start with Quick Start
-      link: /guide/ultimate-guide/01-quick-start/
-      icon: right-arrow
-      variant: primary
-    - text: Cheatsheet
-      link: /guide/cheatsheet/
-      icon: open-book
----
-
-## Core Reference
-
-| Guide | Description | Time |
-|-------|-------------|------|
-| [Ultimate Guide](/guide/ultimate-guide/) | Complete reference — 22K+ lines covering everything | ~3 hours |
-| [Cheatsheet](/guide/cheatsheet/) | 1-page printable quick reference | 5 min |
-| [Architecture](/guide/architecture/) | How Claude Code works internally | 25 min |
-| [Methodologies](/guide/methodologies/) | 15 dev methodologies (TDD, SDD, BDD...) | 20 min |
-| [Visual Reference](/guide/visual-reference/) | ASCII diagrams for key concepts | 5 min |
-| [Claude Code Releases](/guide/claude-code-releases/) | Official release history (condensed) | 10 min |
-| [Known Issues](/guide/known-issues/) | Critical bugs tracker | 15 min |
-
-## Security
-
-| Guide | Description | Time |
-|-------|-------------|------|
-| [Security Hardening](/guide/security-hardening/) | Threats, MCP vetting, injection defense | 25 min |
-| [Sandbox Isolation](/guide/sandbox-isolation/) | Docker sandboxes, cloud alternatives | 10 min |
-| [Native Sandbox](/guide/sandbox-native/) | Native Claude Code sandbox | 10 min |
-| [Production Safety](/guide/production-safety/) | Guardrails, review gates, rollback | 15 min |
-| [Data Privacy](/guide/data-privacy/) | Data retention and privacy | 10 min |
-| [Enterprise Governance](/guide/enterprise-governance/) | **Org-level governance**: usage charters, MCP approval workflow, guardrail tiers (Starter/Standard/Strict/Regulated), compliance | 25 min |
-
-## Ecosystem
-
-| Guide | Description | Time |
-|-------|-------------|------|
-| [AI Ecosystem](/guide/ai-ecosystem/) | Perplexity, Gemini, Kimi, NotebookLM, TTS | 30 min |
-| [MCP Servers Ecosystem](/guide/mcp-servers-ecosystem/) | 8 validated community MCP servers | 25 min |
-| [Third-Party Tools](/guide/third-party-tools/) | GUIs, TUIs, config managers, token trackers | 15 min |
-| [AI Executive Agents](/guide/ai-executive-agents/) | Virtual C-suites and board simulators: OpenExecutive deep dive, open-source alternatives, routing table by role | 12 min |
-| [Remarkable AI](/guide/remarkable-ai/) | Power-user patterns | 10 min |
-
-## Roles & Adoption
-
-| Guide | Description | Time |
-|-------|-------------|------|
-| [AI Roles](/guide/ai-roles/) | When to use CC vs Desktop vs API | 10 min |
-| [Adoption Approaches](/guide/adoption-approaches/) | Team rollout strategies | 15 min |
-| [Learning with AI](/guide/learning-with-ai/) | For juniors using AI without losing skills | 15 min |
-| [Agent Evaluation](/guide/agent-evaluation/) | Agent quality metrics & feedback loops | 20 min |
-
-## For Your Role
-
-| Page | Description | Time |
-|------|-------------|------|
-| [For Product Managers](/guide/for-product-managers/) | Specs as context, reviewing AI-assisted work, prototyping without a developer | 5 min |
-| [For Tech Leads](/guide/for-tech-leads/) | Shared team config, security hooks, 30-minute rollout plan | 5 min |
-| [For CTOs](/guide/for-cto/) | Business case, governance controls, adoption metrics | 5 min |
-| [For CIOs & CEOs](/guide/for-cio-ceo/) | The executive brief, in 3 minutes | 3 min |
-
-## Operations
-
-| Guide | Description | Time |
-|-------|-------------|------|
-| [DevOps & SRE](/guide/devops-sre/) | FIRE framework for infra diagnosis | 30 min |
-| [Observability](/guide/observability/) | Session monitoring, cost tracking | 15 min |
-| [AI Traceability](/guide/ai-traceability/) | Attribution, disclosure policies, compliance | 20 min |
-| [Team Metrics](/guide/team-metrics/) | **Team metrics for AI-augmented engineering**: DORA, SPACE, AI-specific signals, by team size (5–25 people) | 20 min |
-
-## Workflows
-
-| Workflow | Description |
-|----------|-------------|
-| [TDD with Claude](/guide/workflows/tdd-with-claude/) | Test-Driven Development |
-| [Spec-First](/guide/workflows/spec-first/) | Specification-Driven Development |
-| [Agent Teams](/guide/workflows/agent-teams/) | Multi-agent orchestration |
-| [Plan-Driven](/guide/workflows/plan-driven/) | Using /plan mode effectively |
-| [Search Tools Mastery](/guide/workflows/search-tools-mastery/) | rg, grepai, Serena, ast-grep |
-| [All Workflows →](/guide/workflows/agent-teams/) | 19 total workflow guides |
-`
-writeFileSync(resolve(OUT_GUIDE, 'index.md'), guideIndexContent, 'utf-8')
+// Generate the /guide/ editorial portal.
+// The shared renderer includes "New and noteworthy" and "Choose your path".
+const guideLineCount = readFileSync(resolve(GUIDE_DIR, 'ultimate-guide.md'), 'utf8').split(/\r?\n/).length
+const guideIndexContent = renderGuideIndex({ guideLineCount, workflowCount: stats.workflows })
+writeFileSync(resolve(OUT_GUIDE, 'index.mdx'), guideIndexContent, 'utf-8')
 
 // Generate the ultimate-guide index page
 const indexContent = `---

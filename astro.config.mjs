@@ -17,6 +17,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
   'https://cc.bruniaux.com/faq/': '2026-06-08',
   'https://cc.bruniaux.com/releases/': '2026-06-25',
+  'https://cc.bruniaux.com/changelog/': '2026-08-30',
   'https://cc.bruniaux.com/examples/': '2026-06-08',
   'https://cc.bruniaux.com/quiz/': '2026-06-08',
   'https://cc.bruniaux.com/security/': '2026-06-18',
@@ -89,7 +90,6 @@ export default defineConfig({
 
     // Old URL formats
     '/quiz.html': '/quiz/',
-    '/changelog/': '/releases/',
 
     // Cannibalisation fix: /guide/claude-code-releases/ → /releases/ (canonical winner)
     '/guide/claude-code-releases/': '/releases/',

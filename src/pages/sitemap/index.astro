@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import { getSiteStats } from '../../utils/site-stats'
+import { guideSections } from '../../data/guide-navigation.mjs'
 
 const stats = await getSiteStats()
 
@@ -11,13 +12,15 @@ const techniqueCards = sortedCards.filter(c => c.data.category === 'Technical')
 const methodologieCards = sortedCards.filter(c => c.data.category === 'Methodology')
 const designCards = sortedCards.filter(c => c.data.category === 'Design')
 
-const sections = [
+const siteSections = [
   {
-    title: 'Core',
+    title: 'Start here',
     icon: '📚',
     links: [
       { href: '/', label: 'Home', desc: 'Overview, features, and quick start' },
-      { href: '/guide/', label: 'Ultimate Guide', desc: '25K+ line reference, searchable online' },
+      { href: '/guide/', label: 'Guide portal', desc: 'Editorial entry point, learning paths, and topic map' },
+      { href: '/changelog/', label: 'Guide Changelog', desc: 'New pages, corrections, resources, and machine-readable updates' },
+      { href: '/releases/', label: 'Claude Code Releases', desc: 'CLI versions, breaking changes, configuration flags, and environment variables' },
       { href: '/cheatsheet/', label: 'Quick Reference (1-page)', desc: 'All essential commands on a single printable page' },
       { href: '/cheatsheets/', label: `Cheat Sheets (${sortedCards.length} cards)`, desc: 'Printable A4 recap cards: Technical, Methodology, and Design series' },
       { href: '/whitepapers/', label: 'Ebooks', desc: '13 deep-dive PDFs, FR + EN, 472+ pages' },
@@ -40,35 +43,36 @@ const sections = [
     ],
   },
   {
-    title: 'Reference',
+    title: 'Site resources',
     icon: '🔍',
     links: [
       { href: '/examples/', label: 'Examples & Templates', desc: `${stats.templateCount} production-ready templates: agents, hooks, commands, skills` },
       { href: '/diagrams/', label: 'Diagrams', desc: 'Visual architecture and workflow diagrams' },
-      { href: '/guide/agent-harness/', label: 'Agent Harness Engineering', desc: 'Reliability architecture around the model: context, policy, tools, verification, and observability' },
-      { href: '/guide/agent-harness-landscape/', label: 'Agent Harness Map', desc: '192 projects classified into strict runtimes, control planes, and adjacent infrastructure' },
-      { href: '/guide/agentic-tools/', label: 'Agentic Tools', desc: 'Detailed profiles and comparison matrix for coding agents and orchestration tools' },
-      { href: '/guide/loop-graph-engineering/', label: 'Loop & Graph Engineering', desc: 'A practical page for repeated feedback loops, executable workflow graphs, shared state, checkpoints, and where human judgment remains explicit and accountable.' },
-      { href: '/guide/workflows/agentic-software-factories/', label: 'Agentic Software Factories', desc: 'Operating model, adoption spectrum, control-plane decision tree, and governance gates' },
-      { href: '/guide/practitioner-insights/', label: 'Practitioner Insights', desc: '69 attributed insights across six practitioner and academic sources' },
-      { href: '/guide/workflows/monitor-event-delegation/', label: 'Monitor & Safe Event Delegation', desc: 'Verified event ingestion, WebSocket monitors, Channels, Routines, and gated Codex handoff' },
-      { href: '/releases/', label: 'Releases', desc: 'Claude Code release history and changelog' },
       { href: '/security/', label: 'Security', desc: 'CVEs, threat database, security hardening guides' },
       { href: '/compare/', label: 'Compare', desc: 'Claude Code vs other AI coding tools' },
       { href: '/context/', label: 'Context Management', desc: 'Context window strategies and best practices' },
       { href: '/context-engineering/', label: 'Context Engineering Tools', desc: 'RTK, Headroom, LLMLingua, Edgee, Portkey, RAG optimization, LLMOps: full tools map' },
       { href: '/memory-systems/', label: 'Memory Systems', desc: 'Three-track model: native stack, cross-session tools, team sharing (with decision flowchart)' },
       { href: '/team-metrics/', label: 'Team Metrics', desc: 'DORA, SPACE, AI-specific metrics for piloting an AI-augmented team of 5 to 25 people' },
-      { href: '/guide/subscription-strategy/', label: 'Subscription Strategy at Team Scale', desc: 'Claude Team seat cap, Enterprise usage billing, API gateway governance, practitioner evidence, and scenario-based self-hosting economics' },
-      { href: '/guide/team-knowledge-base/', label: 'Team Knowledge Infrastructure', desc: '3-tier framework: Markdown vault, MCP connectors (Atlassian/Notion/GitBook), RAG at scale (Code + Cowork bridge)' },
       { href: '/ecosystem/', label: 'Ecosystem', desc: 'AI ecosystem overview, MCP servers, third-party tools' },
       { href: '/ecosystem/mcp-vs-cli/', label: 'MCP vs CLI', desc: 'When to reach for an MCP server versus a native CLI tool' },
       { href: '/claude-md-best-practices/', label: 'CLAUDE.md Best Practices', desc: 'Writing effective CLAUDE.md files: structure, scope, and common mistakes' },
       { href: '/faq/', label: 'FAQ', desc: 'Frequently asked questions about Claude Code' },
-      { href: '/glossary/', label: 'Glossary', desc: '130+ Claude Code terms, community patterns, and AI engineering concepts' },
       { href: '/rss.xml', label: 'RSS Feed', desc: 'Subscribe to releases and new content updates' },
     ],
   },
+]
+
+// Shared guide navigation includes Agent Engineering and every other editorial topic.
+// Key routes: '/guide/loop-graph-engineering/' Loop & Graph Engineering
+// and '/guide/subscription-strategy/' Subscription Strategy at Team Scale.
+const curatedGuideSections = guideSections.map(section => ({
+  title: section.title,
+  icon: section.icon,
+  links: section.links.map(link => ({ href: link.href, label: link.title, desc: link.desc })),
+}))
+
+const cardSections = [
   {
     title: 'Cheat Sheets: Technical series',
     icon: '🟠',
@@ -97,6 +101,8 @@ const sections = [
     })),
   },
 ]
+
+const sections = [...siteSections, ...curatedGuideSections, ...cardSections]
 ---
 
 <Layout

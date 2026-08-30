@@ -3,6 +3,13 @@
 All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
+
+### Guide navigation and public changelog
+
+- **Dedicated guide changelog** (`src/pages/changelog/index.astro`, `src/utils/guide-changelog.ts`): added a public `/changelog/` page generated from the guide repository's `CHANGELOG.md`. It clearly separates guide updates from `/releases/`, which remains the Claude Code CLI version history.
+- **Shared guide information architecture** (`src/data/guide-navigation.mjs`, `scripts/prepare-guide-content.mjs`, `src/pages/sitemap/index.astro`): replaced the stale hard-coded `/guide/` table with a current editorial portal and reused the same curated topic model in the readable HTML sitemap. Current agent-engineering, context, economics, security, team operations, ecosystem, role, and workflow pages are now visible without pretending the HTML page is the exhaustive XML sitemap.
+- **Discovery surfaces synchronized** (`astro.config.mjs`, header, footer, announcement banner, Cmd+K, home updates, RSS, and sitemap): the guide changelog now has its own searchable route, RSS release anchors, navigation labels, XML sitemap entry, and announcement link. Removed the inactive guide-changelog fetcher and styles from the Claude Code releases page.
+
 ### Subscription Strategy
 
 - **Team-scale AI budgeting page synchronized** (`src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`, `src/pages/sitemap/index.astro`, `src/components/global/AnnouncementBanner.astro`): rebuilt the guide reader and Cmd+K index from the corrected source page, kept the public RSS, banner, and sitemap routes, and exposed Team seat limits, usage-priced Enterprise, routed-API controls, timestamped practitioner evidence, and scenario-bound self-hosting economics without turning any benchmark into a portable fleet forecast.
