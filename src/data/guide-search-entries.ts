@@ -2012,6 +2012,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-subscription-strategy-guide",
+    "title": "Subscription Strategy Guide",
+    "keywords": "subscription strategy guide guide ops subscription strategy",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-two-axes",
+    "title": "Subscription Strategy Two Axes",
+    "keywords": "subscription strategy two axes guide ops subscription strategy md#1 the two axes that actually matter",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#1-the-two-axes-that-actually-matter",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-team-seat-cap",
+    "title": "Subscription Strategy Team Seat Cap",
+    "keywords": "subscription strategy team seat cap guide ops subscription strategy md#2 claude team the per seat default and its hard ceiling",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#2-claude-team-the-per-seat-default-and-its-hard-ceiling",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-enterprise",
+    "title": "Subscription Strategy Enterprise",
+    "keywords": "subscription strategy enterprise guide ops subscription strategy md#3 claude enterprise usage priced seat fee included",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#3-claude-enterprise-usage-priced-seat-fee-included",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-gateway",
+    "title": "Subscription Strategy Gateway",
+    "keywords": "subscription strategy gateway guide ops subscription strategy md#4 api gateway the missing piece between team and enterprise",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#4-api-gateway-the-missing-piece-between-team-and-enterprise",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-multi-vendor",
+    "title": "Subscription Strategy Multi Vendor",
+    "keywords": "subscription strategy multi vendor guide ops subscription strategy md#5 multi vendor design not accident",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#5-multi-vendor-by-design-not-by-accident",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-personal-plan-gap",
+    "title": "Subscription Strategy Personal Plan Gap",
+    "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#6 personal promax plans not compliance option whatever the price looks like",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#6-personal-promax-plans-not-a-compliance-option-whatever-the-price-looks-like",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-self-hosted-split",
+    "title": "Subscription Strategy Self Hosted Split",
+    "keywords": "subscription strategy self hosted split guide ops subscription strategy md#7 self hosted open weight models separate business case not line item here",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#7-self-hosted-open-weight-models-a-separate-business-case-not-a-line-item-here",
+    "source": "guide"
+  },
+  {
+    "id": "guide-opencode-go-plan",
+    "title": "Opencode Go Plan",
+    "keywords": "opencode go plan guide ecosystem agentic tools md#opencode the subscription tier and why does not scale team",
+    "category": "Guide",
+    "url": "/guide/agentic-tools/#opencode-go-the-subscription-tier-and-why-it-does-not-scale-to-a-team",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-team-sizing",
+    "title": "Local Vs Cloud Team Sizing",
+    "keywords": "local vs cloud team sizing guide ecosystem local cloud inference md#sizing self hosted inference for team",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#sizing-self-hosted-inference-for-a-team",
+    "source": "guide"
+  },
+  {
     "id": "guide-learning-quick-check",
     "title": "Learning Quick Check",
     "keywords": "learning quick check guide roles learning with md#quick self check start here",
