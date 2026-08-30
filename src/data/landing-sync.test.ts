@@ -26,7 +26,6 @@ test('RSS feed includes the loop and graph engineering page', () => {
   assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/loop-graph-engineering\//)
 })
 
-test('Announcement banner keeps at most four links, rotates its id, and announces the page', () => {
 test('Subscription Strategy stays exposed across landing discovery surfaces', () => {
   const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
   const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
@@ -43,11 +42,12 @@ test('Subscription Strategy stays exposed across landing discovery surfaces', ()
   assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tl-dr"/)
 })
 
+test('Announcement banner keeps at most four links, rotates its id, and announces the page', () => {
   const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length
 
   assert.equal(linkCount, 4)
-  assert.match(banner, /const BANNER_ID = 'banner-loop-graph-engineering-2026-08'/)
+  assert.match(banner, /const BANNER_ID = 'banner-team-ai-strategy-2026-08'/)
   assert.match(banner, /href="\/guide\/loop-graph-engineering\/" class="ann-link">Loop &amp; Graph Engineering<\/a>/)
 })
 

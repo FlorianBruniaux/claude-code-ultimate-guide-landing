@@ -1,2 +1,4 @@
 # Mark generated files for GitHub linguist
 questions.json linguist-generated=true
+*.pdf binary
+*.epub binary

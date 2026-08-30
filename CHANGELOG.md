@@ -6,6 +6,7 @@ All notable changes to the Claude Code Guide Landing Site.
 ### Subscription Strategy
 
 - **Team-scale AI budgeting page synchronized** (`src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`, `src/pages/sitemap/index.astro`, `src/components/global/AnnouncementBanner.astro`): rebuilt the guide reader and Cmd+K index from the corrected source page, kept the public RSS, banner, and sitemap routes, and exposed Team seat limits, usage-priced Enterprise, routed-API controls, timestamped practitioner evidence, and scenario-bound self-hosting economics without turning any benchmark into a portable fleet forecast.
+- **Recap-card downloads published locally** (`public/cheatsheets/pdf/`, `.gitattributes`): added the 65 generated one-page PDF downloads used by the recap-card routes and marked PDF and EPUB assets as binary so Git reviews do not expand them as text.
 
 
 ### Team Metrics and Practitioner Evidence
