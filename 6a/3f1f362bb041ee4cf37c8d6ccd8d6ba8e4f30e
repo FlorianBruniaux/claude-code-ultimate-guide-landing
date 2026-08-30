@@ -1,0 +1,205 @@
+CHANGELOG.md
+  s_e6f3f9b3ebc509::t_ddbd4f0fa49c98 6-14
+astro.config.mjs
+  s_aeebbf2fc2680c::t_bec74b8142b75d 26
+public/cheatsheets/pdf/c01-trust-calibration.pdf
+  s_882550404d6868::t_33e0319c5ead20 1-1890
+public/cheatsheets/pdf/c02-prompting-basics.pdf
+  s_882550404d6868::t_a7b0de82d7163b 1-1772
+public/cheatsheets/pdf/c03-xml-prompting-anchors.pdf
+  s_882550404d6868::t_0654882127d979 1-4277
+public/cheatsheets/pdf/c04-commands-skills-plugins-agents.pdf
+  s_882550404d6868::t_87498ba4e327b3 1-3613
+public/cheatsheets/pdf/c05-memory-stack.pdf
+  s_882550404d6868::t_91bfbee46af151 1-1778
+public/cheatsheets/pdf/c06-configuration-decision-guide.pdf
+  s_882550404d6868::t_9a0d8685689a62 1-3733
+public/cheatsheets/pdf/c07-conventions-equipe-scale.pdf
+  s_882550404d6868::t_c4cbf660b3466a 1-3616
+public/cheatsheets/pdf/c08-surface-attaque-menaces.pdf
+  s_882550404d6868::t_eaa83d85475ab2 1-2481
+public/cheatsheets/pdf/c09-prompt-injection-defenses.pdf
+  s_882550404d6868::t_1e7b12f7725263 1-2837
+public/cheatsheets/pdf/c10-ai-traceability.pdf
+  s_882550404d6868::t_2eb3f8f2ae97a1 1-2550
+public/cheatsheets/pdf/c11-subscription-vs-api-patterns.pdf
+  s_882550404d6868::t_bd1c69304bbc84 1-2710
+public/cheatsheets/pdf/c12-agent-sdk-integrations-ide.pdf
+  s_882550404d6868::t_9cf329b8352697 1-2152
+public/cheatsheets/pdf/c13-erreurs-courantes.pdf
+  s_882550404d6868::t_042e1800040fa5 1-1580
+public/cheatsheets/pdf/m01-workflow-quotidien.pdf
+  s_882550404d6868::t_004e812bd4182e 1-2401
+public/cheatsheets/pdf/m02-context-management.pdf
+  s_882550404d6868::t_3c85460d197df9 1-3483
+public/cheatsheets/pdf/m03-sessions-continuite.pdf
+  s_882550404d6868::t_0b28a7550ad439 1-2902
+public/cheatsheets/pdf/m04-compact-vs-clear.pdf
+  s_882550404d6868::t_c7e861966363e1 1-2683
+public/cheatsheets/pdf/m05-plan-mode.pdf
+  s_882550404d6868::t_6709a867f4e0c2 1-2171
+public/cheatsheets/pdf/m06-task-management-system.pdf
+  s_882550404d6868::t_ec7687b9fbecd9 1-2691
+public/cheatsheets/pdf/m07-todowrite-vs-tasks-api.pdf
+  s_882550404d6868::t_54125437c39991 1-2744
+public/cheatsheets/pdf/m08-agents-custom.pdf
+  s_882550404d6868::t_d6bceb56aa4a82 1-3889
+public/cheatsheets/pdf/m09-slash-commands.pdf
+  s_882550404d6868::t_8f502039886fcb 1-3473
+public/cheatsheets/pdf/m10-skills.pdf
+  s_882550404d6868::t_8284361202ee81 1-3534
+public/cheatsheets/pdf/m11-hooks-evenements-systeme.pdf
+  s_882550404d6868::t_5445875679fa7e 1-5589
+public/cheatsheets/pdf/m12-hooks-patterns-concrets.pdf
+  s_882550404d6868::t_6c0143e470307e 1-8646
+public/cheatsheets/pdf/m13-worktrees.pdf
+  s_882550404d6868::t_827b1517a34884 1-3466
+public/cheatsheets/pdf/m14-plan-validate-execute.pdf
+  s_882550404d6868::t_9e03791260ae18 1-2446
+public/cheatsheets/pdf/m15-tdd-bdd-sdd.pdf
+  s_882550404d6868::t_a89602e3032260 1-3558
+public/cheatsheets/pdf/m16-multi-agent-topologie.pdf
+  s_882550404d6868::t_2fd7b67245815d 1-2953
+public/cheatsheets/pdf/m17-multi-agent-communication-trust.pdf
+  s_882550404d6868::t_a8b2b710383439 1-3496
+public/cheatsheets/pdf/m18-event-driven-agents.pdf
+  s_882550404d6868::t_12e836fe8e9e15 1-3361
+public/cheatsheets/pdf/m19-github-actions.pdf
+  s_882550404d6868::t_a216d5dd3fcdaf 1-4281
+public/cheatsheets/pdf/m20-cicd-production.pdf
+  s_882550404d6868::t_66ca411c54a5a9 1-3955
+public/cheatsheets/pdf/m21-debug-methodique.pdf
+  s_882550404d6868::t_4a99cc012a5449 1-2262
+public/cheatsheets/pdf/m22-observabilite-jsonl.pdf
+  s_882550404d6868::t_d2443b30f45bd6 1-4749
+public/cheatsheets/pdf/t01-commandes-essentielles.pdf
+  s_882550404d6868::t_927df9c7cf236b 1-3932
+public/cheatsheets/pdf/t02-mode-non-interactif.pdf
+  s_882550404d6868::t_5cf9b1679e992d 1-4342
+public/cheatsheets/pdf/t03-permission-modes.pdf
+  s_882550404d6868::t_5d977091e366d9 1-4050
+public/cheatsheets/pdf/t04-permissions-glob-patterns.pdf
+  s_882550404d6868::t_4dbef4548f2e14 1-5355
+public/cheatsheets/pdf/t05-hierarchie-configuration.pdf
+  s_882550404d6868::t_ff0027ee58395f 1-3445
+public/cheatsheets/pdf/t06-settings-json.pdf
+  s_882550404d6868::t_2ecc20028b4dc3 1-6028
+public/cheatsheets/pdf/t07-claudemd-best-practices.pdf
+  s_882550404d6868::t_2ce47faad016cb 1-2330
+public/cheatsheets/pdf/t08-auto-memories.pdf
+  s_882550404d6868::t_aec8fa77d217d2 1-2138
+public/cheatsheets/pdf/t09-workspace-hygiene.pdf
+  s_882550404d6868::t_00df8b2744284d 1-2725
+public/cheatsheets/pdf/t10-config-multi-machine.pdf
+  s_882550404d6868::t_9ecf22bba62f74 1-4185
+public/cheatsheets/pdf/t11-search-tools-decision.pdf
+  s_882550404d6868::t_059d878fab3cb1 1-3112
+public/cheatsheets/pdf/t12-mcp-servers-overview.pdf
+  s_882550404d6868::t_f1da443a616277 1-4578
+public/cheatsheets/pdf/t13-context7-sequential.pdf
+  s_882550404d6868::t_52ed3cb10473bf 1-2633
+public/cheatsheets/pdf/t14-grepai-semantic-search.pdf
+  s_882550404d6868::t_edcc8c32ca60d9 1-2607
+public/cheatsheets/pdf/t15-mcp-secrets-management.pdf
+  s_882550404d6868::t_61163b87d7e3fb 1-3703
+public/cheatsheets/pdf/t16-sandbox-natif-architecture.pdf
+  s_882550404d6868::t_57d56a1a0fb6fd 1-3549
+public/cheatsheets/pdf/t17-sandbox-natif-vs-docker.pdf
+  s_882550404d6868::t_5294f9955b0732 1-2795
+public/cheatsheets/pdf/t18-modeles-thinking-modes.pdf
+  s_882550404d6868::t_da93366e8c8e90 1-3214
+public/cheatsheets/pdf/t19-context-window-200k-1m.pdf
+  s_882550404d6868::t_b1d99028ee8561 1-2781
+public/cheatsheets/pdf/t20-token-optimization.pdf
+  s_882550404d6868::t_3d7a489c1fb68b 1-3148
+public/cheatsheets/pdf/t21-fast-mode-api.pdf
+  s_882550404d6868::t_4b547e772272c5 1-3590
+public/cheatsheets/pdf/t22-third-party-tools.pdf
+  s_882550404d6868::t_bf629e194e499c 1-2547
+scripts/build-guide-index.mjs
+  s_95392a6b844626::t_738728b6e9a704 49,61
+src/components/global/AnnouncementBanner.astro
+  s_aeebbf2fc2680c::t_6d7b97e717f3c0 13,21
+src/content/questions/17-team-metrics/001-what-are-the-five-current-dora-metrics.md
+  s_a76087f74be2bb::t_f6c74c6830c51a 10,12,22,26
+src/content/questions/17-team-metrics/003-what-major-methodological-change-did-the-2025-dora.md
+  s_add58b6f2c831b::t_1a732c8e3a170e 17-18
+src/content/questions/17-team-metrics/011-what-does-the-dora-metric-most-at-risk.md
+  s_aeebbf2fc2680c::t_8ad9b9245db339 11
+src/data/guide-content-entries.ts
+  s_d812a5cba40e21::t_37f807ce8f880d 5010,5586,5594,5618,6426,6432-6434,6436,6456-6458,6460,6466,6472-6474,6476,6586,6594,12498
+src/data/guide-search-entries.ts
+  s_d812a5cba40e21::t_58ef005c7a5c18 654-661,2011,2019,2027,2035,2043,2051,2059,2067,2075,2083-2091,2137,2139,2161,2163,2177,2179,4238-4245,6491,6499,6507,6515,6523,6531,6539,6547,6555,6563,6571
+src/data/landing-sync.test.ts
+  s_e6f3f9b3ebc509::t_d10305e42562c8 30-45
+src/data/rss-entries.ts
+  s_e6f3f9b3ebc509::t_e7cbdfdc4fbf9c 43,566,568-569
+src/pages/sitemap/index.astro
+  s_e6f3f9b3ebc509::t_2172aaff8b32da 52-53,62
+src/pages/team-metrics/index.astro
+  s_add58b6f2c831b::t_599845f8e5ea74 16,35-39,105,132,157,163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "6a3f1f362bb041ee4cf37c8d6ccd8d6ba8e4f30e",
+  "prompts": {},
+  "sessions": {
+    "s_882550404d6868": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e4fb2d6-8899-4614-a54d-a004c8413b97",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95392a6b844626": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04821-7023-7112-aeb8-f4aa59348ce9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a76087f74be2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01f2a-b167-78f0-a126-7450029bd920",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_add58b6f2c831b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04c84-8125-7153-bf35-92eab4d81a08",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_aeebbf2fc2680c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e20-0cfd-78b0-b1fa-bfb10ef6a72f",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d812a5cba40e21": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a033c4-cc98-74d2-adf5-63f175b8463b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e6f3f9b3ebc509": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a052bb-231b-7360-b4fd-17b0ba68c8a5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
