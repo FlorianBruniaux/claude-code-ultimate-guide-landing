@@ -1,0 +1,79 @@
+CHANGELOG.md
+  s_0df90997879182::t_0eeea91c0c3932 6-12
+astro.config.mjs
+  s_95392a6b844626::t_a1b258e898a9e4 20
+scripts/prepare-guide-content.mjs
+  s_a76087f74be2bb::t_85cfa54b66e9a6 20,666-670
+src/data/guide-changelog.test.ts
+  s_95392a6b844626::t_02d5b10a6cd8d8 1-78
+src/data/guide-navigation.mjs
+  s_d812a5cba40e21::t_d9c2bda36ed598 1-247
+src/data/guide-navigation.test.ts
+  s_d812a5cba40e21::t_84529a52147eaf 1-62
+src/data/landing-sync.test.ts
+  s_95392a6b844626::t_5fdbdcca099ec3 50,52
+src/data/sitemap-page.test.ts
+  s_bd1e403875ee43::t_11acc9f6e89fb7 8-9,17-23
+src/pages/changelog/index.astro
+  s_d812a5cba40e21::t_cd14d5dc07053e 1-163
+src/pages/rss.xml.ts
+  s_9f2d416973d69f::t_7658706a130013 12-23,53
+src/utils/guide-changelog.ts
+  s_d812a5cba40e21::t_e7cda28d866441 1-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "5717460fa3af31c5e6ddc191220a3c729e4f7f65",
+  "prompts": {},
+  "sessions": {
+    "s_0df90997879182": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fd73a-588d-7f03-ab50-494ca0e95848",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95392a6b844626": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04821-7023-7112-aeb8-f4aa59348ce9",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9f2d416973d69f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f210a8e7-d7e8-4a36-b283-26f4cb5e4fa9",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a76087f74be2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01f2a-b167-78f0-a126-7450029bd920",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bd1e403875ee43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "953892dc-6069-48d6-8505-998f61d64787",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d812a5cba40e21": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a033c4-cc98-74d2-adf5-63f175b8463b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
