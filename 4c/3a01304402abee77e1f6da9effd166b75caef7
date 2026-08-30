@@ -1,0 +1,35 @@
+src/components/global/AnnouncementBanner.astro
+  s_02824048459000::t_2254e3bb008281 29-30,32,46
+src/data/guide-content-entries.ts
+  s_2193a3642951f9::t_814611b61060e7 3,466,4959-4966,6343-6406
+src/data/guide-search-entries.ts
+  s_2193a3642951f9::t_6b4376b5bb9600 2014-2093
+src/data/rss-entries.ts
+  s_02824048459000::t_20437aaccf377f 32-38
+src/pages/sitemap/index.astro
+  s_02824048459000::t_c7fdf148088d84 59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "4c3a01304402abee77e1f6da9effd166b75caef7",
+  "prompts": {},
+  "sessions": {
+    "s_02824048459000": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cea15dd0-1220-428d-a6cc-a0fe958e554f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_2193a3642951f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6edad717-c595-499d-bbcd-ef2a19df2de9",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
