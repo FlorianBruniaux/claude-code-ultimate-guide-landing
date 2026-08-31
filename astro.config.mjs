@@ -157,6 +157,8 @@ export default defineConfig({
         Header: './src/components/starlight/Header.astro',
         Footer: './src/components/starlight/Footer.astro',
         PageTitle: './src/components/starlight/PageTitle.astro',
+        MobileMenuToggle: './src/components/starlight/MobileMenuToggle.astro',
+        MobileTableOfContents: './src/components/starlight/MobileTableOfContents.astro',
       },
       head: [
         {

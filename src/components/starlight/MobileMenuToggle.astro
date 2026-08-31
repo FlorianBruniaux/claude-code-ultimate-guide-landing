@@ -1,0 +1,156 @@
+<starlight-menu-button class="print:hidden">
+  <button
+    type="button"
+    aria-expanded="false"
+    aria-label="Open guide navigation"
+    aria-controls="starlight__sidebar"
+    class="guide-menu-trigger sl-flex md:sl-hidden"
+  >
+    <svg class="open-menu" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+      <path d="M3 5h14M3 10h14M3 15h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" />
+    </svg>
+    <svg class="close-menu" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+      <path d="M5 5l10 10M15 5 5 15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" />
+    </svg>
+    <span class="menu-label" aria-hidden="true">Guide</span>
+  </button>
+  <div
+    class="guide-drawer-backdrop md:sl-hidden"
+    aria-hidden="true"
+  ></div>
+</starlight-menu-button>
+
+<script>
+  class StarlightGuideMenuButton extends HTMLElement {
+    private trigger: HTMLButtonElement | null = null
+    private backdrop: HTMLElement | null = null
+    private pane: HTMLElement | null = null
+    private groups: HTMLDetailsElement[] = []
+
+    connectedCallback() {
+      this.trigger = this.querySelector<HTMLButtonElement>('.guide-menu-trigger')
+      this.backdrop = this.querySelector<HTMLElement>('.guide-drawer-backdrop')
+      this.pane = this.parentElement?.querySelector<HTMLElement>('#starlight__sidebar') ?? null
+      this.groups = this.pane
+        ? Array.from(this.pane.querySelectorAll<HTMLDetailsElement>('.top-level > li > details'))
+        : []
+
+      this.trigger?.addEventListener('click', this.toggle)
+      this.backdrop?.addEventListener('click', this.closeAndRestoreFocus)
+      this.pane?.addEventListener('click', this.closeAfterNavigation)
+      this.groups.forEach((group) => group.addEventListener('toggle', this.keepSingleGroupOpen))
+      document.addEventListener('keydown', this.handleKeydown)
+      window.addEventListener('resize', this.closeAtDesktopWidth)
+    }
+
+    disconnectedCallback() {
+      this.trigger?.removeEventListener('click', this.toggle)
+      this.backdrop?.removeEventListener('click', this.closeAndRestoreFocus)
+      this.pane?.removeEventListener('click', this.closeAfterNavigation)
+      this.groups.forEach((group) => group.removeEventListener('toggle', this.keepSingleGroupOpen))
+      document.removeEventListener('keydown', this.handleKeydown)
+      window.removeEventListener('resize', this.closeAtDesktopWidth)
+      document.body.removeAttribute('data-mobile-menu-expanded')
+    }
+
+    private isOpen = () => this.getAttribute('aria-expanded') === 'true'
+
+    private toggle = () => this.setExpanded(!this.isOpen())
+
+    private setExpanded(expanded: boolean, restoreFocus = true) {
+      if (!this.trigger) return
+
+      this.setAttribute('aria-expanded', String(expanded))
+      this.trigger.setAttribute('aria-expanded', String(expanded))
+      this.trigger.setAttribute(
+        'aria-label',
+        expanded ? 'Close guide navigation' : 'Open guide navigation'
+      )
+      document.body.toggleAttribute('data-mobile-menu-expanded', expanded)
+
+      if (expanded) {
+        this.closeCompetingMenus()
+        this.openCurrentGroupOnly()
+        requestAnimationFrame(() => {
+          const current = this.pane?.querySelector<HTMLElement>('a[aria-current="page"]')
+          const firstGroup = this.pane?.querySelector<HTMLElement>('.top-level > li > details > summary')
+          ;(current ?? firstGroup ?? this.trigger)?.focus()
+        })
+      } else if (restoreFocus && this.pane?.contains(document.activeElement)) {
+        this.trigger.focus()
+      }
+    }
+
+    private closeCompetingMenus() {
+      const toc = document.querySelector<HTMLDetailsElement>('#starlight__mobile-toc[open]')
+      if (toc) toc.open = false
+
+      const globalMenu = document.querySelector<HTMLButtonElement>(
+        '#mobile-menu-toggle[aria-expanded="true"]'
+      )
+      globalMenu?.click()
+    }
+
+    private openCurrentGroupOnly() {
+      const currentGroup = this.groups.find((group) => group.querySelector('[aria-current="page"]'))
+      this.groups.forEach((group) => {
+        group.open = group === currentGroup
+      })
+    }
+
+    private keepSingleGroupOpen = (event: Event) => {
+      const openedGroup = event.currentTarget as HTMLDetailsElement
+      if (!openedGroup.open || !window.matchMedia('(max-width: 49.99rem)').matches) return
+      this.groups.forEach((group) => {
+        if (group !== openedGroup) group.open = false
+      })
+    }
+
+    private closeAfterNavigation = (event: Event) => {
+      const target = event.target
+      if (target instanceof Element && target.closest('a[href]')) {
+        this.setExpanded(false, false)
+      }
+    }
+
+    private closeAndRestoreFocus = () => this.setExpanded(false)
+
+    private closeAtDesktopWidth = () => {
+      if (window.matchMedia('(min-width: 50rem)').matches && this.isOpen()) {
+        this.setExpanded(false, false)
+      }
+    }
+
+    private handleKeydown = (event: KeyboardEvent) => {
+      if (!this.isOpen()) return
+
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        this.setExpanded(false)
+        return
+      }
+
+      if (event.key !== 'Tab' || !this.trigger || !this.pane) return
+      const focusable = [
+        this.trigger,
+        ...Array.from(
+          this.pane.querySelectorAll<HTMLElement>('a[href], summary, button:not([disabled])')
+        ),
+      ].filter((element) => element.getClientRects().length > 0)
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
+    }
+  }
+
+  if (!customElements.get('starlight-menu-button')) {
+    customElements.define('starlight-menu-button', StarlightGuideMenuButton)
+  }
+</script>

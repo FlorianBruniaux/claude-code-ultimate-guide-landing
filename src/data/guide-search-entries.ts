@@ -40,7 +40,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Claude Apps Gateway Guide",
     "keywords": "claude apps gateway guide guide ops api gateway md#current first party surface claude apps gateway",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#current-first-party-surface-claude-apps-gateway",
+    "url": "/guide/api-gateway/#current-first-party-surface-claude-apps-gateway",
     "source": "guide"
   },
   {
@@ -137,6 +137,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "diagram mcp ecosystem guide diagrams mcp ecosystem md#mcp server ecosystem map",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-server-ecosystem-map",
+    "source": "guide"
+  },
+  {
+    "id": "guide-claude-code-guide-mcp",
+    "title": "Claude Code Guide MCP",
+    "keywords": "claude code guide mcp guide ecosystem claude code guide mcp",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/claude-code-guide-mcp.md",
     "source": "guide"
   },
   {
@@ -822,7 +830,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-four-layers",
     "title": "Agent Harness Four Layers",
-    "keywords": "agent harness four layers guide core agent harness md#0 four layers four responsibilities",
+    "keywords": "agent harness four layers guide core agent harness md#0 four layers four responsibilities agent harness meta harness overload guide core agent harness md#0 four layers four responsibilities",
     "category": "Guide",
     "url": "/guide/agent-harness/#0-four-layers-four-responsibilities",
     "source": "guide"
@@ -1758,9 +1766,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-vendor-claims-checklist",
     "title": "Vendor Claims Checklist",
-    "keywords": "vendor claims checklist guide ops unit economics md#6 how read vendors cost reduction claim",
+    "keywords": "vendor claims checklist guide ops unit economics md#6 how read vendors cost reduction claim ai unit economics databricks claim review guide ops unit economics md#6 how read vendors cost reduction claim",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#6-how-to-read-a-vendors-cost-reduction-claim",
+    "url": "/guide/ai-unit-economics/#6-how-to-read-a-vendors-cost-reduction-claim",
     "source": "guide"
   },
   {
@@ -2208,7 +2216,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Unit Economics Guide",
     "keywords": "ai unit economics guide guide ops unit economics",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md",
+    "url": "/guide/ai-unit-economics/",
     "source": "guide"
   },
   {
@@ -2216,7 +2224,23 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Unit Economics Accepted Task",
     "keywords": "ai unit economics accepted task guide ops unit economics md#2 building cost per accepted task",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#2-building-a-cost-per-accepted-task",
+    "url": "/guide/ai-unit-economics/#2-building-a-cost-per-accepted-task",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-unit-economics-routing-levels",
+    "title": "AI Unit Economics Routing Levels",
+    "keywords": "ai unit economics routing levels guide ops unit economics md#route complexity",
+    "category": "Guide",
+    "url": "/guide/ai-unit-economics/#route-by-complexity",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-unit-economics-progressive-spend-policy",
+    "title": "AI Unit Economics Progressive Spend Policy",
+    "keywords": "ai unit economics progressive spend policy guide ops unit economics md#5 budget and governance per team",
+    "category": "Guide",
+    "url": "/guide/ai-unit-economics/#5-budget-and-governance-per-team",
     "source": "guide"
   },
   {
@@ -2224,7 +2248,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Unit Economics Token Estimation",
     "keywords": "ai unit economics token estimation guide ops unit economics md#do not estimate tokens string length",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#do-not-estimate-tokens-by-string-length",
+    "url": "/guide/ai-unit-economics/#do-not-estimate-tokens-by-string-length",
     "source": "guide"
   },
   {
@@ -2232,7 +2256,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "AI Unit Economics Skill Injection Cost",
     "keywords": "ai unit economics skill injection cost guide ops unit economics md#audit what skill tool injects not just what costs load",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#audit-what-a-skill-or-tool-injects-not-just-what-it-costs-to-load",
+    "url": "/guide/ai-unit-economics/#audit-what-a-skill-or-tool-injects-not-just-what-it-costs-to-load",
     "source": "guide"
   },
   {
@@ -2777,6 +2801,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox native security limits guide security sandbox native md#7 security limitations",
     "category": "Guide",
     "url": "/guide/sandbox-native/#7-security-limitations",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-cross-session-socket",
+    "title": "Sandbox Native Cross Session Socket",
+    "keywords": "sandbox native cross session socket guide security sandbox native md#cross session inbox sockets cross session messaging native sandbox guide security sandbox native md#cross session inbox sockets",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#cross-session-inbox-sockets",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-network-allow-unix-sockets",
+    "title": "Sandbox Network Allow Unix Sockets",
+    "keywords": "sandbox network allow unix sockets guide core settings reference md#sandboxnetworkallowunixsockets",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxnetworkallowunixsockets",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-network-allow-all-unix-sockets",
+    "title": "Sandbox Network Allow All Unix Sockets",
+    "keywords": "sandbox network allow all unix sockets guide core settings reference md#sandboxnetworkallowallunixsockets",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxnetworkallowallunixsockets",
     "source": "guide"
   },
   {
@@ -5028,6 +5076,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-cross-session-messaging-sandbox-boundary",
+    "title": "Cross Session Messaging Sandbox Boundary",
+    "keywords": "cross session messaging sandbox boundary guide workflows cross session messaging md#where native sandboxing fits",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#where-native-sandboxing-fits",
+    "source": "guide"
+  },
+  {
+    "id": "guide-cross-session-messaging-correlated-drift",
+    "title": "Cross Session Messaging Correlated Drift",
+    "keywords": "cross session messaging correlated drift guide workflows cross session messaging md#coordination safety correlated drift and false consensus",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/cross-session-messaging/#coordination-safety-correlated-drift-and-false-consensus",
+    "source": "guide"
+  },
+  {
     "id": "guide-cross-session-messaging-limitations",
     "title": "Cross Session Messaging Limitations",
     "keywords": "cross session messaging limitations guide workflows cross session messaging md#7 limitations",
@@ -6720,7 +6784,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Guide",
     "keywords": "api gateway guide guide ops api gateway",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md",
+    "url": "/guide/api-gateway/",
     "source": "guide"
   },
   {
@@ -6728,7 +6792,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Litellm",
     "keywords": "api gateway litellm guide ops api gateway md#2 litellm gateway",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#2-litellm-gateway",
+    "url": "/guide/api-gateway/#2-litellm-gateway",
     "source": "guide"
   },
   {
@@ -6736,7 +6800,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Virtual Keys",
     "keywords": "api gateway virtual keys guide ops api gateway md#3 virtual keys and team budgets",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#3-virtual-keys-and-team-budgets",
+    "url": "/guide/api-gateway/#3-virtual-keys-and-team-budgets",
+    "source": "guide"
+  },
+  {
+    "id": "guide-api-gateway-progressive-spend-policy",
+    "title": "API Gateway Progressive Spend Policy",
+    "keywords": "api gateway progressive spend policy guide ops api gateway md#31 progressive spend policy for interactive users",
+    "category": "Guide",
+    "url": "/guide/api-gateway/#31-progressive-spend-policy-for-interactive-users",
     "source": "guide"
   },
   {
@@ -6744,7 +6816,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Model Allowlists",
     "keywords": "api gateway model allowlists guide ops api gateway md#4 model allowlists",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#4-model-allowlists",
+    "url": "/guide/api-gateway/#4-model-allowlists",
     "source": "guide"
   },
   {
@@ -6752,7 +6824,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Portkey",
     "keywords": "api gateway portkey guide ops api gateway md#8 portkey managed alternative",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#8-portkey-as-a-managed-alternative",
+    "url": "/guide/api-gateway/#8-portkey-as-a-managed-alternative",
     "source": "guide"
   },
   {
@@ -6760,7 +6832,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "API Gateway Limits",
     "keywords": "api gateway limits guide ops api gateway md#9 what the gateway does not cover",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#9-what-the-gateway-does-not-cover",
+    "url": "/guide/api-gateway/#9-what-the-gateway-does-not-cover",
     "source": "guide"
   },
   {

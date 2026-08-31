@@ -12,6 +12,11 @@ All notable changes to the Claude Code Guide Landing Site.
 - **Evidence consistency hardened** (`src/utils/mcp-product-data.ts`, `src/components/landing/McpProof.astro`): the landing now rejects mislabeled 7-day or 30-day windows, mismatched period end dates, and non-monotonic download totals. The homepage teaser derives its pinned npm command from the same public runtime evidence as `/mcp/`.
 - **Footer and XML sitemap completed** (`src/components/global/Footer.astro`, `astro.config.mjs`): added the MCP product page to both footer variants and assigned `/mcp/` explicit monthly sitemap metadata with priority `0.9` and the dated `2026-08-31` snapshot.
 
+### AI coding cost controls
+
+- **Cost controls synchronized across landing discovery** (`scripts/build-guide-index.mjs`, `src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/guide-navigation.mjs`, and `src/data/rss-entries.ts`): exposed request-, task-, and delegation-level routing, progressive interactive spend gates, terminal budgets for unattended workloads, cache effects, and the Databricks evidence boundary in Cmd+K, the guide portal, the public guide reader, and RSS. Corrected AI Unit Economics and API Gateway search results to use their local landing routes instead of GitHub URLs.
+- **Cost-control discovery regression tested** (`src/data/landing-sync.test.ts`): added assertions for the two guide cards, RSS entry, local Cmd+K routes, and generated guide-content route.
+
 ### AI roles landing synchronization
 
 - **Role discovery page redesigned** (`src/pages/roles/index.astro`, `src/components/landing/RoleQuiz.astro`, `src/styles/roles-page.css`, `src/scripts/role-catalog.ts`): unified the page on one content grid, embedded the role quiz in the hero, added local navigation and accessible evidence-label filters, replaced the dense career table with profile-based path cards, moved front-end and compensation evidence after the catalog, removed unexplained card highlighting, and consolidated taxonomy definitions into an expandable note. The catalog defaults to durable role families while preserving all 22 profiles without JavaScript.

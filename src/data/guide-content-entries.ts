@@ -1271,7 +1271,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-unit-economics-3-the-real-cost-reduction-levers",
     "title": "3. The real cost-reduction levers",
-    "keywords": "3 the real cost reduction levers ai unit economics four levers move the per-task cost meaningfully. none of them require a pricing negotiation. they are engineering decisions. route by complexity not e route by complexity isolate heavy work in sub agents cap iterations and set explicit exit criteria reuse cached context audit what a skill or tool injects not just what it costs to load",
+    "keywords": "3 the real cost reduction levers ai unit economics five levers move the per-task cost meaningfully. none of them require a pricing negotiation. they are engineering decisions. route by complexity not e route by complexity isolate heavy work in sub agents cap iterations and set explicit exit criteria reuse cached context audit what a skill or tool injects not just what it costs to load",
     "category": "Core Guides",
     "url": "/guide/ai-unit-economics/#3-the-real-cost-reduction-levers",
     "source": "guide"
@@ -1359,7 +1359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-api-gateway-3-virtual-keys-and-team-budgets",
     "title": "3. Virtual Keys and Team Budgets",
-    "keywords": "3 virtual keys and team budgets api gateway for enterprise claude code create virtual keys through the litellm management api. each key maps to a team or project and carries an optional monthly budget cap.",
+    "keywords": "3 virtual keys and team budgets api gateway for enterprise claude code create virtual keys through the litellm management api. each key maps to a team or project and carries an optional monthly budget cap. 3 1 progressive spend policy for interactive users",
     "category": "Core Guides",
     "url": "/guide/api-gateway/#3-virtual-keys-and-team-budgets",
     "source": "guide"
@@ -1375,7 +1375,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-api-gateway-5-usage-dashboards",
     "title": "5. Usage Dashboards",
-    "keywords": "5 usage dashboards api gateway for enterprise claude code litellm exposes prometheus metrics at . add a scrape config in prometheus: key metrics for grafana panels: litellm also ships a basic ui at (enable wi",
+    "keywords": "5 usage dashboards api gateway for enterprise claude code litellm exposes prometheus metrics at . add a scrape config in prometheus: key metrics for grafana panels: for a progressive spend policy, also record",
     "category": "Core Guides",
     "url": "/guide/api-gateway/#5-usage-dashboards",
     "source": "guide"
@@ -1810,6 +1810,118 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "resources claude code cheatsheet - official docs : docs.anthropic.com/claude-code - advanced guide : claudelog.com - tips & patterns - full guide : (this repo) - whitepapers (fr + en)",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#resources",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-tl-dr",
+    "title": "TL;DR",
+    "keywords": "tl dr claude code ultimate guide mcp server use the mcp server when you want a coding client to search the guide, open the exact source section, retrieve a production template, or inspect claude",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#tl-dr",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-what-the-server-solves",
+    "title": "What the server solves",
+    "keywords": "what the server solves claude code ultimate guide mcp server the guide is too large to inject in full for every question. the mcp server provides a smaller discovery and retrieval loop: 1. search the structured",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#what-the-server-solves",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-install-by-client",
+    "title": "Install by client",
+    "keywords": "install by client claude code ultimate guide mcp server all examples below use the public npm version observed on 2026-08-31. pinning the version makes installation reproducible. claude code user scope: pro claude code codex cursor vs code",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#install-by-client",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-first-useful-query",
+    "title": "First useful query",
+    "keywords": "first useful query claude code ultimate guide mcp server ask the client: search the claude code ultimate guide for session-scoped hooks. open the most relevant source section and cite its path and heading. t",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#first-useful-query",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-architecture-and-data-flow",
+    "title": "Architecture and data flow",
+    "keywords": "architecture and data flow claude code ultimate guide mcp server the mcp protocol travels through the child process standard input and standard output. there is no hosted guide mcp endpoint in this architecture. the",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#architecture-and-data-flow",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-tools-resources-and-prompt",
+    "title": "Tools, resources, and prompt",
+    "keywords": "tools resources and prompt claude code ultimate guide mcp server the candidate exposes the following generated contract: capability count purpose --- ---: --- tools 17 search, source retrieval, templates, releases,",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#tools-resources-and-prompt",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-bundled-content-github-fetch-and-cache",
+    "title": "Bundled content, GitHub fetch, and cache",
+    "keywords": "bundled content github fetch and cache claude code ultimate guide mcp server the package bundles the structured reference, release history, guide navigation, and other declared resource datasets. initialization, list operations",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#bundled-content-github-fetch-and-cache",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-network-and-privacy-boundary",
+    "title": "Network and privacy boundary",
+    "keywords": "network and privacy boundary claude code ultimate guide mcp server version has no first-party telemetry, analytics endpoint, device identifier, or event upload. mcp requests and responses are not sent to this project' telemetry decision for 1 3 0",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#network-and-privacy-boundary",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-offline-behavior",
+    "title": "Offline behavior",
+    "keywords": "offline behavior claude code ultimate guide mcp server the server is partially offline, not fully offline. - capability listing, topic listing, release data, resources, and index search work from bundled c",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#offline-behavior",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-compatibility",
+    "title": "Compatibility",
+    "keywords": "compatibility claude code ultimate guide mcp server requirement candidate --- --- transport local stdio node.js mcp sdk tested client configuration shapes claude code, codex, cursor, vs code package man",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#compatibility",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-limitations",
+    "title": "Limitations",
+    "keywords": "limitations claude code ultimate guide mcp server - the full guide markdown is not bundled. - the npm package version and its mcp handshake version can diverge. public reports ; the candidate derives",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#limitations",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-troubleshooting",
+    "title": "Troubleshooting",
+    "keywords": "troubleshooting claude code ultimate guide mcp server symptom check action --- --- --- client cannot start the server and use node.js and verify npm registry access client shows no tools or check the serv",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#troubleshooting",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-version-and-dated-npm-statistics",
+    "title": "Version and dated npm statistics",
+    "keywords": "version and dated npm statistics claude code ultimate guide mcp server two machine-readable snapshots serve different questions: - mcp-stats.json records npm package history, daily distribution, and official-registry pres public package snapshot reproducible monthly dashboard",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#version-and-dated-npm-statistics",
+    "source": "guide"
+  },
+  {
+    "id": "gc-claude-code-guide-mcp-changelog-and-source",
+    "title": "Changelog and source",
+    "keywords": "changelog and source claude code ultimate guide mcp server - mcp package readme - generated product contract - monthly dashboard collector - guide changelog - source repository - npm package release changes mu",
+    "category": "Core Guides",
+    "url": "/guide/claude-code-guide-mcp/#changelog-and-source",
     "source": "guide"
   },
   {
@@ -6223,7 +6335,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-7-security-limitations",
     "title": "7. Security Limitations",
-    "keywords": "7 security limitations native sandboxing in claude code domain fronting risk : cdns (cloudflare, akamai) allow hosting user content on trusted domains. attack scenario : 1. attacker whitelists 2. attacker u domain fronting unix sockets privilege escalation filesystem permission escalation linux nested sandbox weakness",
+    "keywords": "7 security limitations native sandboxing in claude code domain fronting risk : cdns (cloudflare, akamai) allow hosting user content on trusted domains. attack scenario : 1. attacker whitelists 2. attacker u domain fronting unix sockets privilege escalation cross session inbox sockets filesystem permission escalation linux nested sandbox weakness",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#7-security-limitations",
     "source": "guide"
@@ -6279,7 +6391,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-14-see-also",
     "title": "14. See Also",
-    "keywords": "14 see also native sandboxing in claude code - sandbox isolation (docker, cloud) - microvm-based sandboxing for maximum isolation - architecture: permission model - how permissions and sandboxing",
+    "keywords": "14 see also native sandboxing in claude code - cross-session messaging - peer discovery, transport, inbound controls, and correlated-drift safeguards - cross-session messaging threat model - send",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#14-see-also",
     "source": "guide"
@@ -12999,7 +13111,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-cross-session-messaging-6-security-model",
     "title": "6. Security model",
-    "keywords": "6 security model cross session messaging anthropic's design keeps three properties in tension: sessions coordinate freely, but neither can control the other, and permissions never travel with what an incoming message cannot do controlling what arrives crosssessioninbound locking it down further endpoint spoofing checks",
+    "keywords": "6 security model cross session messaging anthropic's design keeps three properties in tension: sessions coordinate freely, but neither can control the other, and permissions never travel with what an incoming message cannot do controlling what arrives crosssessioninbound locking it down further endpoint spoofing checks where native sandboxing fits coordination safety correlated drift and false consensus",
     "category": "Workflows",
     "url": "/guide/workflows/cross-session-messaging/#6-security-model",
     "source": "guide"

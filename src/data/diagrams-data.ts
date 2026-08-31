@@ -335,16 +335,16 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
     "diagrams": [
       {
         "title": "Model Selection Decision Flow",
-        "description": "Not all tasks need the most powerful model. Using the right model for the right task cuts costs by 5-10x without sacrificing quality.\n\n> **This diagram assumes an unconstrained budget (Max/API).** On tighter plans (Pro, Teams Standard), apply the budget modifier below.",
+        "description": "Not all tasks need the most powerful model. A lower-cost model saves money only when it passes the same task acceptance gate without increasing retries, review, or rework.\n\n> **This diagram assumes an unconstrained budget (Max/API).** On tighter plans (Pro, Teams Standard), apply the budget modifier below.",
         "svg": null,
-        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5     ($  ~5x cheaper than Sonnet)\n├─ Standard (features, bugs)      → Sonnet 5      ($$ best price/quality ratio)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 5 (xhigh)  ($$$ ~5x more than Sonnet)\n   └─ Just large/clear?            → Sonnet 5         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 5 plan, Sonnet impl\n  Max/API          → Opus 5 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
+        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5     ($  ~2x cheaper than Sonnet 5)\n├─ Standard (features, bugs)      → Sonnet 5      ($$ validate on your task set)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 5 (xhigh)  ($$$ ~2.5x Sonnet 5)\n   └─ Just large/clear?            → Sonnet 5         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 5 plan, Sonnet impl\n  Max/API          → Opus 5 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
         "sourceRef": "Model Selection (Line ~2634)"
       },
       {
         "title": "Cost Optimization Decision Tree",
         "description": "High token costs are usually fixable. This systematic tree identifies the root cause and points to the right fix for each waste pattern.",
         "svg": null,
-        "asciiFallback": "High costs?\n├─ Context too large?      → /compact or new session    (40-60% saving)\n├─ Verbose responses?      → CLAUDE.md: be concise      (20-30% saving)\n├─ Repeating context?      → Move to CLAUDE.md          (15-25% saving)\n├─ Wrong model?            → Use Haiku for simple tasks (50-90% saving)\n├─ Noisy MCP output?       → Filter tool output         (10-20% saving)\n└─ None of the above?      → Baseline cost, acceptable",
+        "asciiFallback": "High costs?\n├─ Context too large?      → /compact or new session    (less repeated input)\n├─ Verbose responses?      → CLAUDE.md: be concise      (less output)\n├─ Repeating context?      → Move to CLAUDE.md          (stable reusable prefix)\n├─ Wrong model?            → Test a cheaper model       (same acceptance gate)\n├─ Noisy MCP output?       → Filter tool output         (less recurring context)\n└─ None of the above?      → Baseline cost, acceptable",
         "sourceRef": "Cost Optimization (Line ~8878)"
       },
       {
@@ -356,9 +356,9 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
       },
       {
         "title": "Token Reduction Strategies Pipeline",
-        "description": "Multiple strategies stack for cumulative token savings. Apply them in order from highest impact to lowest effort.",
+        "description": "Multiple strategies can reduce the same token classes, so their advertised percentages cannot be multiplied. Apply them one at a time, measure the interaction, and retain only the changes that reduce cost per accepted task.",
         "svg": null,
-        "asciiFallback": "100% baseline\n    │\nRTK proxy (CLI output compression)  → -60-90% on CLI ops\n    │\n/compact (conversation summarization) → -40-60% at checkpoint\n    │\nCLAUDE.md (avoid repeated context)    → -15-25% per session\n    │\nModel selection (Haiku for simple)    → -50-90% on simple tasks\n    │\n~10-20% of baseline for typical usage",
+        "asciiFallback": "100% baseline\n    │\nRTK proxy (CLI output compression)  → smaller supported command output\n    │\n/compact (conversation summarization) → less history in later turns\n    │\nCLAUDE.md (stable project context)    → reusable prompt prefix\n    │\nModel selection (cheaper candidate)   → keep only if acceptance stays stable\n    │\nMeasure total cost per accepted task before and after",
         "sourceRef": "Token Optimization (Line ~13355)"
       }
     ]

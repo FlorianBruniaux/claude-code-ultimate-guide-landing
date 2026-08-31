@@ -73,6 +73,27 @@ test('Subscription Strategy stays exposed across landing discovery surfaces', ()
   assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tl-dr"/)
 })
 
+test('AI coding cost controls stay exposed across landing discovery surfaces', () => {
+  const navigation = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-navigation.mjs'), 'utf8')
+  const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
+  const searchEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'), 'utf8')
+  const contentEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-content-entries.ts'), 'utf8')
+
+  assert.match(navigation, /AI Unit Economics[\s\S]*?three-level routing[\s\S]*?progressive spend controls/)
+  assert.match(navigation, /API Gateway[\s\S]*?progressive spend policy[\s\S]*?terminal budgets/)
+  assert.match(rssEntries, /title: 'AI Coding Cost Controls at Scale'/)
+  assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/ai-unit-economics\//)
+  assert.match(
+    searchEntries,
+    /"id": "guide-ai-unit-economics-routing-levels"[\s\S]*?"url": "\/guide\/ai-unit-economics\/#route-by-complexity"/,
+  )
+  assert.match(
+    searchEntries,
+    /"id": "guide-api-gateway-progressive-spend-policy"[\s\S]*?"url": "\/guide\/api-gateway\/#31-progressive-spend-policy-for-interactive-users"/,
+  )
+  assert.match(contentEntries, /"url": "\/guide\/ai-unit-economics\/#3-the-real-cost-reduction-levers"/)
+})
+
 test('Announcement banner keeps at most four links, rotates its id, and announces the page', () => {
   const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length

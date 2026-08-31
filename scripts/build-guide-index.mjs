@@ -56,7 +56,9 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/roles/ai-roles.md',
   'guide/roles/learning-with-ai.md',
   // ops/
+  'guide/ops/ai-unit-economics.md',
   'guide/ops/ai-traceability.md',
+  'guide/ops/api-gateway.md',
   'guide/ops/devops-sre.md',
   'guide/ops/observability.md',
   'guide/ops/subscription-strategy.md',
