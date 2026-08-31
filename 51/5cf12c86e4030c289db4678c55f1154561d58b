@@ -1,0 +1,29 @@
+CHANGELOG.md
+  s_443e02288114a8::t_8cab3585749dc0 9-10
+src/components/landing/RoleQuiz.astro
+  s_443e02288114a8::t_f9d7a7598001dc 9-13,17-22,101,109,115-122,128-131,146-150,179-183,487-490
+src/pages/roles/index.astro
+  s_443e02288114a8::t_8590ad1db42639 6,36-45,49,51-64,69-77,79,117-124,127-148,154,163,168,170,177,179-180,182-194,210,212-233,236-240,242-257,259,264,267-268,272,281-283
+src/scripts/role-catalog.test.ts
+  s_443e02288114a8::t_e69669b17c8daa 1-68
+src/scripts/role-catalog.ts
+  s_443e02288114a8::t_3075b7f89bccc2 1-64
+src/styles/roles-page.css
+  s_443e02288114a8::t_d8f560ed90e3e9 1-661
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "515cf12c86e4030c289db4678c55f1154561d58b",
+  "prompts": {},
+  "sessions": {
+    "s_443e02288114a8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a056ed-560a-7f51-ab57-eb258c1b6f80",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
