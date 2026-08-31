@@ -28,6 +28,20 @@ const intentSections = intentNavigation.groups.map(group => ({
   })),
 }))
 
+const landingOnlySections = [
+  {
+    title: 'Security',
+    icon: '🛡️',
+    links: [
+      { href: '/security/', label: 'Security hub', desc: 'Run a local repository check, review dated evidence, and choose the right security path' },
+      { href: '/security/threats/', label: 'Threat intelligence', desc: 'Attack techniques, campaigns, malicious skills, and sourced AgentSec events' },
+      { href: '/security/cves/', label: 'CVE database', desc: 'Search vulnerabilities, documented fixed versions, mitigations, and sources' },
+      { href: '/security/sandbox/', label: 'Sandbox security', desc: 'Isolation boundaries, silent failure modes, configuration, and runtime verification' },
+      { href: '/security/hardening/', label: 'Security hardening', desc: 'Five-minute, workstation, and team controls with tools and checklists' },
+    ],
+  },
+]
+
 // Shared guide navigation includes Agent Engineering and every other editorial topic.
 // Key routes: '/guide/loop-graph-engineering/' Loop & Graph Engineering
 // and '/guide/subscription-strategy/' Subscription Strategy at Team Scale.
@@ -67,7 +81,12 @@ const cardSections = [
   },
 ]
 
-const sections = [...intentSections, ...curatedGuideSections, ...cardSections]
+const intentPaths = new Set(intentSections.flatMap(section => section.links.map(link => link.href)))
+for (const section of landingOnlySections) {
+  section.links = section.links.filter(link => !intentPaths.has(link.href))
+}
+
+const sections = [...intentSections, ...landingOnlySections, ...curatedGuideSections, ...cardSections]
 ---
 
 <Layout

@@ -1,474 +1,682 @@
 ---
 import ThemeToggle from './ThemeToggle.astro'
-
-const mainLinks = [
-  { href: '/guide/', label: 'Guide' },
-  { href: '/whitepapers/', label: 'Ebooks' },
-  { href: '/cheatsheets/', label: 'Cheat Sheets' },
-  { href: '/examples/', label: 'Examples' },
-  { href: '/context/', label: 'Context' },
-  { href: '/quiz/', label: 'Quiz' },
-  { href: '/security/', label: 'Security' },
-]
-
-const moreLinks = [
-  { href: '/roles/', label: 'AI Roles' },
-  { href: '/methodologies/', label: 'Methodologies' },
-  { href: '/memory-systems/', label: 'Memory Systems' },
-  { href: '/ecosystem/', label: 'Ecosystem' },
-  { href: '/mcp/', label: 'Guide MCP' },
-  { href: '/mcp-or-cli/', label: 'MCP or CLI?' },
-  { href: '/changelog/', label: 'Guide Changelog' },
-  { href: '/releases/', label: 'Claude Code Releases' },
-  { href: '/compare/', label: 'Compare' },
-  { href: '/diagrams/', label: 'Diagrams' },
-  { href: '/team-metrics/', label: 'Team Metrics' },
-  { href: '/glossary/', label: 'Glossary' },
-  { href: '/faq/', label: 'FAQ' },
-  { href: '/rss.xml', label: 'RSS Feed', rss: true },
-  { href: 'https://www.florian.bruniaux.com/blog/', label: 'Blog', external: true },
-]
+import {
+  getActiveNavigation,
+  guideNavigationSection,
+  navigationSections,
+} from '../../data/header-navigation'
 
 const currentPath = Astro.url.pathname
-const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
+const activeNavigation = getActiveNavigation(currentPath)
+const headerNavigationSections = [guideNavigationSection, ...navigationSections]
+
+function isLinkActive(href: string, external = false) {
+  if (external) return false
+  if (href === '/rss.xml') return currentPath === href
+  return currentPath === href || currentPath.startsWith(href)
+}
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background: var(--bg-primary);">
-  <div class="mx-auto max-w-content px-4">
-    <div class="flex items-center justify-between h-14">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <svg height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z" fill="#D97757" fill-rule="nonzero"/></svg>
-        <svg class="text-text-primary" height="14" viewBox="0 0 97 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="nonzero" aria-hidden="true"><path d="M13.623 20.222c-3.417 0-5.753-1.901-6.855-4.827a12.992 12.992 0 01-.838-4.772c0-4.907 2.206-8.315 7.08-8.315 3.275 0 5.297 1.425 6.448 4.826h1.402l-.19-4.69C18.709 1.18 16.258.543 13.276.543c-4.2 0-7.775 1.874-9.763 5.254a11.357 11.357 0 00-1.511 5.872c0 3.753 1.777 7.08 5.113 8.926a11.95 11.95 0 005.943 1.398c3.254 0 5.835-.617 8.122-1.697l.593-5.172h-1.43c-.858 2.362-1.88 3.78-3.574 4.534-.831.373-1.88.564-3.146.564zm14.74-17.914L28.499 0h-.967L23.23 1.29v.699l1.907.882v16.142c0 1.1-.565 1.344-2.043 1.528v1.18h7.319v-1.18c-1.484-.184-2.042-.428-2.042-1.528V2.315l-.007-.007zm29.104 19.685h.565l4.95-.937v-1.208l-.695-.054c-1.157-.109-1.457-.346-1.457-1.29V9.897l.137-2.763h-.783l-4.678.672v1.181l.457.082c1.266.183 1.64.536 1.64 1.419v7.67c-1.212.937-2.369 1.527-3.744 1.527-1.525 0-2.471-.774-2.471-2.58V9.905l.136-2.763h-.804l-4.684.672v1.181l.484.082c1.266.183 1.64.536 1.64 1.418v7.08c0 3 1.703 4.426 4.412 4.426 2.07 0 3.765-1.1 5.038-2.627L57.474 22l-.007-.007zm-13.602-9.55c0-3.836-2.043-5.309-5.733-5.309-3.254 0-5.616 1.344-5.616 3.57 0 .666.238 1.175.721 1.528l2.478-.326c-.109-.746-.163-1.201-.163-1.391 0-1.263.674-1.901 2.042-1.901 2.022 0 3.044 1.419 3.044 3.7v.746l-5.106 1.527c-1.702.462-2.67.863-3.316 1.8a3.386 3.386 0 00-.476 1.9c0 2.172 1.497 3.706 4.057 3.706 1.852 0 3.493-.835 4.922-2.416.51 1.581 1.294 2.416 2.69 2.416 1.13 0 2.15-.455 3.063-1.344l-.272-.937a4.363 4.363 0 01-1.178.163c-.783 0-1.157-.617-1.157-1.826v-5.607zm-6.536 7.378c-1.396 0-2.26-.808-2.26-2.226 0-.964.456-1.528 1.43-1.854l4.139-1.31v3.965c-1.321.997-2.097 1.425-3.31 1.425zm43.095 1.235v-1.208l-.701-.054c-1.158-.109-1.45-.346-1.45-1.29V2.308L78.409 0h-.974l-4.302 1.29v.699l1.906.882V8.18a6.024 6.024 0 00-3.656-1.046c-4.276 0-7.612 3.245-7.612 8.098 0 3.998 2.397 6.761 6.346 6.761 2.042 0 3.819-.99 4.922-2.525l-.136 2.525h.571l4.95-.937zm-8.96-12.313c2.043 0 3.575 1.181 3.575 3.353v6.11a4.91 4.91 0 01-3.547 1.425c-2.928 0-4.412-2.308-4.412-5.39 0-3.462 1.695-5.498 4.385-5.498zm19.424 3.055c-.381-1.792-1.484-2.81-3.016-2.81-2.288 0-3.874 1.717-3.874 4.18 0 3.646 1.934 6.008 5.059 6.008a5.858 5.858 0 005.03-2.953l.913.245c-.408 3.163-3.281 5.525-6.808 5.525-4.14 0-6.992-3.054-6.992-7.399 0-4.378 3.098-7.46 7.237-7.46 3.09 0 5.27 1.853 5.97 5.07l-10.783 3.3V14.05l7.264-2.247v-.006z"/></svg>
-        <span class="text-text-primary font-semibold text-sm tracking-wide">Code Guide</span>
+<header
+  class="site-header fixed inset-x-0 top-0 z-50 border-b border-border"
+  data-site-header
+>
+  <div class="header-shell mx-auto max-w-content px-4">
+    <div class="header-row relative flex h-14 items-center justify-between gap-3">
+      <a href="/" class="site-brand" aria-label="Claude Code Guide home">
+        <img src="/claude-logo-orange.svg" width="23" height="23" alt="" aria-hidden="true" />
+        <span class="site-brand-title"><span>Claude</span> <strong>Code Guide</strong></span>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
-        {mainLinks.map((link) => {
-          const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
-          return (
-            <a
-              href={link.href}
-              aria-current={isActive ? 'page' : undefined}
-              class:list={[
-                'text-sm font-medium transition-colors relative',
-                'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                isActive
-                  ? 'text-text-primary after:w-full'
-                  : 'text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full',
-              ]}
+      <nav id="primary-navigation" aria-label="Main navigation" class="primary-navigation hidden">
+        {headerNavigationSections.map((section) => (
+          <details
+            class="intent-menu"
+            data-nav-section={section.id}
+          >
+            <summary
+              class:list={['top-level-link top-level-trigger', activeNavigation === section.id && 'is-active']}
+              data-nav-trigger={section.id}
+              aria-expanded="false"
+              aria-controls={`nav-panel-${section.id}`}
             >
-              {link.label}
-            </a>
-          )
-        })}
+              {section.label}
+              <svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 8 4 4 4-4" />
+              </svg>
+            </summary>
 
-        <!-- More dropdown -->
-        <div class="relative" id="more-dropdown">
-          <button
-            id="more-dropdown-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class:list={[
-              'text-sm font-medium transition-colors relative flex items-center gap-1',
-              'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-              isMoreActive
-                ? 'text-text-primary after:w-full'
-                : 'text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full',
-            ]}
-          >
-            More
-            <svg class="w-3.5 h-3.5 transition-transform duration-200" id="more-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+            <section
+              id={`nav-panel-${section.id}`}
+              class:list={['intent-panel', section.groups.length === 1 && 'intent-panel-single']}
+              data-nav-panel={section.id}
+              aria-label={`${section.label} navigation`}
+            >
+              <div class="intent-panel-header">
+                <strong>{section.label}</strong>
+                <span>
+                  {section.description}
+                  {section.overview && (
+                    <a class="intent-panel-overview" href={section.overview.href}>
+                      {section.overview.label} →
+                    </a>
+                  )}
+                </span>
+              </div>
+              <div class="intent-panel-grid">
+                {section.groups.map((group) => (
+                  <div class="intent-group">
+                    <p class="intent-group-label">{group.label}</p>
+                    <div class="intent-links">
+                      {group.links.map((link) => {
+                        const isActive = isLinkActive(link.href, link.external)
+                        return (
+                          <a
+                            href={link.href}
+                            class:list={['intent-link', isActive && 'is-active']}
+                            aria-current={isActive ? 'page' : undefined}
+                            target={link.external ? '_blank' : undefined}
+                            rel={link.external ? 'noopener noreferrer' : undefined}
+                          >
+                            <span class="intent-link-title">
+                              {link.rss && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                  <path d="M6.18 15.64a2.18 2.18 0 0 1 0 4.36 2.18 2.18 0 0 1 0-4.36M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66A9.9 9.9 0 0 1 13.9 20h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+                                </svg>
+                              )}
+                              {link.label}
+                              {link.external && <span aria-hidden="true">↗</span>}
+                            </span>
+                            <span class="intent-link-description">{link.description}</span>
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </details>
+        ))}
 
-          <div
-            id="more-dropdown-panel"
-            role="menu"
-            class="hidden absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border py-1 shadow-lg"
-            style="background: var(--bg-primary);"
-          >
-            {moreLinks.map((link) => {
-              const isActive = !link.rss && !link.external && currentPath.startsWith(link.href.replace('/#', '/'))
-              return (
-                <a
-                  href={link.href}
-                  role="menuitem"
-                  aria-current={isActive ? 'page' : undefined}
-                  target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
-                  class:list={[
-                    'flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors',
-                    link.rss ? 'border-t border-border mt-1 pt-2' : '',
-                    link.external ? 'border-t border-border mt-1 pt-2' : '',
-                    isActive
-                      ? 'text-accent'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-background-tertiary',
-                  ]}
-                >
-                  {link.rss && (
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;opacity:0.7"><path d="M6.18 15.64a2.18 2.18 0 010 4.36 2.18 2.18 0 010-4.36M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/></svg>
-                  )}
-                  {link.external && (
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="flex-shrink:0;opacity:0.6"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  )}
-                  {link.label}
-                </a>
-              )
-            })}
-          </div>
-        </div>
+        <a class="mobile-github-link" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener noreferrer">
+          GitHub repository <span aria-hidden="true">↗</span>
+        </a>
       </nav>
 
-      <!-- Actions -->
-      <div class="flex items-center gap-2">
+      <div class="header-actions flex items-center gap-1.5">
         <ThemeToggle />
 
-        <!-- Search trigger -->
         <button
           id="search-trigger"
+          type="button"
           aria-label="Search (Cmd+K)"
-          class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border text-text-muted text-sm hover:border-accent hover:text-text-secondary transition-colors"
+          class="search-trigger hidden sm:flex"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
           </svg>
-          <kbd class="text-xs bg-background-tertiary px-1.5 py-0.5 rounded border border-border">⌘K</kbd>
+          <kbd>⌘K</kbd>
         </button>
 
-        <!-- GitHub dropdown: Star repo + Follow, single trigger -->
-        <div class="relative hidden sm:block" id="github-dropdown">
-          <button
-            id="github-dropdown-toggle"
-            type="button"
-            aria-label="GitHub"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-sm font-medium transition-colors"
-            style="background: var(--github-btn-bg); border-color: var(--github-btn-border); color: var(--github-btn-color);"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        <details class="github-disclosure hidden md:block">
+          <summary aria-label="GitHub links">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
             </svg>
-            <svg class="w-3.5 h-3.5 transition-transform duration-200" id="github-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            <svg class="github-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m6 8 4 4 4-4" />
             </svg>
-          </button>
-
-          <div
-            id="github-dropdown-panel"
-            role="menu"
-            class="hidden absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border py-1 shadow-lg"
-            style="background: var(--bg-primary);"
-          >
-            <a
-              href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
-              role="menuitem"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors text-text-secondary hover:text-text-primary hover:bg-background-tertiary"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
-              </svg>
-              Star repo
-            </a>
-            <a
-              href="https://github.com/FlorianBruniaux"
-              role="menuitem"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors text-text-secondary hover:text-text-primary hover:bg-background-tertiary"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="8.5" cy="7" r="4"/>
-                <line x1="20" y1="8" x2="20" y2="14"/>
-                <line x1="23" y1="11" x2="17" y2="11"/>
-              </svg>
-              Follow
-            </a>
+          </summary>
+          <div class="github-panel">
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener noreferrer">Star repository</a>
+            <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener noreferrer">Follow Florian</a>
           </div>
-        </div>
+        </details>
 
-        <!-- Mobile Menu Button -->
         <button
           id="mobile-menu-toggle"
+          type="button"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
-          aria-controls="mobile-menu"
-          class="lg:hidden rounded-lg p-2.5 hover:bg-background-tertiary transition-colors"
+          aria-controls="primary-navigation"
+          class="mobile-menu-toggle"
         >
-          <svg id="menu-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <svg id="menu-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg id="close-icon" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-    </div>
 
-    <!-- Mobile Navigation -->
-    <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden lg:hidden pb-4">
-      {mainLinks.map((link) => {
-        const isActive = currentPath.startsWith(link.href.replace('/#', '/'))
-        return (
-          <a
-            href={link.href}
-            aria-current={isActive ? 'page' : undefined}
-            class:list={[
-              'block py-2 text-base font-medium transition-colors',
-              isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
-            ]}
-          >
-            {link.label}
-          </a>
-        )
-      })}
-      <div class="border-t border-border my-2 pt-2">
-        {moreLinks.map((link) => {
-          const isActive = !link.rss && !link.external && currentPath.startsWith(link.href.replace('/#', '/'))
-          return (
-            <a
-              href={link.href}
-              aria-current={isActive ? 'page' : undefined}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
-              class:list={[
-                'flex items-center gap-2 py-2 text-base font-medium transition-colors',
-                link.rss ? 'border-t border-border mt-1 pt-3' : '',
-                link.external ? 'border-t border-border mt-1 pt-3' : '',
-                isActive ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
-              ]}
-            >
-              {link.rss && (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;opacity:0.7"><path d="M6.18 15.64a2.18 2.18 0 010 4.36 2.18 2.18 0 010-4.36M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/></svg>
-              )}
-              {link.external && (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="flex-shrink:0;opacity:0.6"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              )}
-              {link.label}
-            </a>
-          )
-        })}
-      </div>
-      <div class="flex items-center gap-3 pt-3 border-t border-border mt-2">
-        <a
-          href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-text-secondary hover:text-accent transition-colors text-sm font-medium"
-        >
-          GitHub
-        </a>
-      </div>
-    </nav>
+    </div>
   </div>
 </header>
 
 <script>
-  function initMobileMenu() {
-    const toggle = document.getElementById('mobile-menu-toggle')
-    const menu = document.getElementById('mobile-menu')
-    const menuIcon = document.getElementById('menu-icon')
-    const closeIcon = document.getElementById('close-icon')
+  import { initHeaderNavigation } from '../../scripts/header-navigation'
 
-    if (!toggle || !menu || !menuIcon || !closeIcon) return
-
-    function closeMenu() {
-      menu.classList.add('hidden')
-      menuIcon.classList.remove('hidden')
-      closeIcon.classList.add('hidden')
-      toggle.setAttribute('aria-expanded', 'false')
-      document.body.removeAttribute('data-global-menu-expanded')
-      toggle.focus()
-    }
-
-    function openMenu() {
-      const guideMenuButton = document.querySelector(
-        'starlight-menu-button[aria-expanded="true"] button'
-      )
-      if (guideMenuButton instanceof HTMLElement) guideMenuButton.click()
-
-      menu.classList.remove('hidden')
-      menuIcon.classList.add('hidden')
-      closeIcon.classList.remove('hidden')
-      toggle.setAttribute('aria-expanded', 'true')
-      document.body.setAttribute('data-global-menu-expanded', '')
-      const firstLink = menu.querySelector('a[href]')
-      if (firstLink) firstLink.focus()
-    }
-
-    toggle.addEventListener('click', () => {
-      menu.classList.contains('hidden') ? openMenu() : closeMenu()
-    })
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu()
-    })
-
-    menu.addEventListener('keydown', (e) => {
-      if (e.key !== 'Tab') return
-      const focusable = Array.from(menu.querySelectorAll('a[href]'))
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault()
-        toggle.focus()
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault()
-        toggle.focus()
-      }
-    })
-
-    document.addEventListener('click', (e) => {
-      if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !toggle.contains(e.target)) {
-        closeMenu()
-      }
-    })
-  }
-
-  function initMoreDropdown() {
-    const container = document.getElementById('more-dropdown')
-    const toggleBtn = document.getElementById('more-dropdown-toggle')
-    const panel = document.getElementById('more-dropdown-panel')
-    const chevron = document.getElementById('more-chevron')
-
-    if (!container || !toggleBtn || !panel || !chevron) return
-
-    function open() {
-      panel.classList.remove('hidden')
-      toggleBtn.setAttribute('aria-expanded', 'true')
-      chevron.style.transform = 'rotate(180deg)'
-      const firstItem = panel.querySelector('a[role="menuitem"]')
-      if (firstItem) firstItem.focus()
-    }
-
-    function close() {
-      panel.classList.add('hidden')
-      toggleBtn.setAttribute('aria-expanded', 'false')
-      chevron.style.transform = ''
-    }
-
-    function isOpen() {
-      return !panel.classList.contains('hidden')
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      isOpen() ? close() : open()
-    })
-
-    document.addEventListener('click', (e) => {
-      if (isOpen() && !container.contains(e.target)) close()
-    })
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen()) {
-        close()
-        toggleBtn.focus()
-      }
-    })
-
-    panel.addEventListener('keydown', (e) => {
-      const items = Array.from(panel.querySelectorAll('a[role="menuitem"]'))
-      const currentIndex = items.indexOf(document.activeElement)
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        const next = items[currentIndex + 1] || items[0]
-        next.focus()
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault()
-        const prev = items[currentIndex - 1] || items[items.length - 1]
-        prev.focus()
-      } else if (e.key === 'Tab') {
-        close()
-      }
-    })
-  }
-
-  function initGithubDropdown() {
-    const container = document.getElementById('github-dropdown')
-    const toggleBtn = document.getElementById('github-dropdown-toggle')
-    const panel = document.getElementById('github-dropdown-panel')
-    const chevron = document.getElementById('github-chevron')
-
-    if (!container || !toggleBtn || !panel || !chevron) return
-
-    function open() {
-      panel.classList.remove('hidden')
-      toggleBtn.setAttribute('aria-expanded', 'true')
-      chevron.style.transform = 'rotate(180deg)'
-      const firstItem = panel.querySelector('a[role="menuitem"]')
-      if (firstItem) firstItem.focus()
-    }
-
-    function close() {
-      panel.classList.add('hidden')
-      toggleBtn.setAttribute('aria-expanded', 'false')
-      chevron.style.transform = ''
-    }
-
-    function isOpen() {
-      return !panel.classList.contains('hidden')
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      isOpen() ? close() : open()
-    })
-
-    document.addEventListener('click', (e) => {
-      if (isOpen() && !container.contains(e.target)) close()
-    })
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen()) {
-        close()
-        toggleBtn.focus()
-      }
-    })
-
-    panel.addEventListener('keydown', (e) => {
-      const items = Array.from(panel.querySelectorAll('a[role="menuitem"]'))
-      const currentIndex = items.indexOf(document.activeElement)
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        const next = items[currentIndex + 1] || items[0]
-        next.focus()
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault()
-        const prev = items[currentIndex - 1] || items[items.length - 1]
-        prev.focus()
-      } else if (e.key === 'Tab') {
-        close()
-      }
-    })
-  }
-
-  initMobileMenu()
-  initMoreDropdown()
-  initGithubDropdown()
+  initHeaderNavigation()
 </script>
 
-<style is:global>
-  @media (max-width: 1023px) {
-    body[data-global-menu-expanded] {
-      overflow: hidden;
+<style>
+  .site-header {
+    background: color-mix(in srgb, var(--bg-primary) 94%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .header-shell {
+    container-type: inline-size;
+  }
+
+  .site-brand {
+    display: inline-flex;
+    min-width: max-content;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: opacity 160ms ease;
+  }
+
+  .site-brand:hover {
+    opacity: 0.78;
+  }
+
+  .site-brand-title {
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .site-brand-title strong {
+    font-family: var(--font-mono);
+    font-weight: 650;
+  }
+
+  .primary-navigation {
+    position: absolute;
+    z-index: 55;
+    inset-block-start: calc(100% + 1px);
+    inset-inline: 0;
+    max-height: calc(100dvh - 3.5rem);
+    padding: 0.35rem 0 max(1rem, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    border-top: 1px solid var(--border);
+    background: var(--bg-primary);
+    box-shadow: 0 22px 55px rgb(0 0 0 / 0.24);
+    overscroll-behavior: contain;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .primary-navigation:not(.hidden) {
+    display: block;
+  }
+
+  .top-level-link {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0.25rem;
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 160ms ease;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
+
+  .intent-menu {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .intent-menu > summary {
+    list-style: none;
+  }
+
+  .intent-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .top-level-link:hover,
+  .top-level-link:focus-visible,
+  .top-level-link.is-active,
+  .top-level-link[data-open] {
+    color: var(--accent);
+  }
+
+  .nav-chevron {
+    width: 0.9rem;
+    height: 0.9rem;
+    transition: transform 160ms ease;
+  }
+
+  .intent-menu[open] .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .header-actions {
+    min-width: max-content;
+  }
+
+  .search-trigger,
+  .github-disclosure > summary,
+  .mobile-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+  }
+
+  .search-trigger {
+    gap: 0.4rem;
+    padding-inline: 0.65rem;
+  }
+
+  .search-trigger kbd {
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 0.3rem;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+  }
+
+  .search-trigger:hover,
+  .search-trigger:focus-visible,
+  .github-disclosure > summary:hover,
+  .github-disclosure > summary:focus-visible,
+  .mobile-menu-toggle:hover,
+  .mobile-menu-toggle:focus-visible {
+    border-color: var(--border);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .github-disclosure {
+    position: relative;
+  }
+
+  .github-disclosure > summary {
+    display: flex;
+    gap: 0.25rem;
+    padding-inline: 0.65rem;
+    list-style: none;
+  }
+
+  .github-disclosure > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .github-chevron {
+    width: 0.85rem;
+    height: 0.85rem;
+    transition: transform 160ms ease;
+  }
+
+  .github-disclosure[open] .github-chevron {
+    transform: rotate(180deg);
+  }
+
+  .github-panel {
+    position: absolute;
+    inset-block-start: calc(100% + 0.35rem);
+    inset-inline-end: 0;
+    display: grid;
+    min-width: 11rem;
+    padding: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    background: var(--bg-primary);
+    box-shadow: 0 18px 45px rgb(0 0 0 / 0.22);
+  }
+
+  .github-panel a {
+    min-height: 40px;
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .github-panel a:hover,
+  .github-panel a:focus-visible {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    padding: 0.65rem;
+  }
+
+  .intent-panel {
+    padding: 0 0.25rem 0.8rem;
+  }
+
+  .intent-panel-header {
+    padding-bottom: 0.8rem;
+  }
+
+  .intent-panel-header strong {
+    display: none;
+  }
+
+  .intent-panel-header span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .intent-panel-overview {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--accent);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .intent-panel-overview:hover,
+  .intent-panel-overview:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .intent-panel-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .intent-group {
+    min-width: 0;
+  }
+
+  .intent-group-label {
+    margin: 0 0 0.25rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .intent-links {
+    display: grid;
+  }
+
+  .intent-link {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    font-weight: 550;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+
+  .intent-link:hover,
+  .intent-link:focus-visible,
+  .intent-link.is-active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .intent-link.is-active {
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+
+  .intent-link-title {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: inherit;
+  }
+
+  .intent-link-title svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    color: var(--accent);
+  }
+
+  .intent-link-description {
+    display: none;
+  }
+
+  .mobile-github-link {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    padding: 0.65rem 0.25rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .mobile-github-link:hover,
+  .mobile-github-link:focus-visible {
+    color: var(--accent);
+  }
+
+  @media (min-width: 64rem) {
+    .primary-navigation {
+      position: static;
+      z-index: auto;
+      display: flex !important;
+      max-height: none;
+      align-items: stretch;
+      align-self: stretch;
+      justify-content: center;
+      gap: clamp(0.05rem, 0.3vw, 0.3rem);
+      padding: 0;
+      overflow: visible;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
-    #mobile-menu:not(.hidden) {
-      max-height: calc(100dvh - 3.5rem);
-      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    .top-level-link {
+      position: relative;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0 clamp(0.45rem, 0.7vw, 0.7rem);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .top-level-link::after {
+      position: absolute;
+      inset-inline: 0.5rem;
+      inset-block-end: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      content: '';
+      opacity: 0;
+      transform: scaleX(0.45);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .top-level-link:hover,
+    .top-level-link:focus-visible,
+    .top-level-link.is-active,
+    .top-level-link[data-open] {
+      color: var(--text-primary);
+    }
+
+    .top-level-link.is-active::after,
+    .top-level-link[data-open]::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .intent-menu {
+      border: 0;
+    }
+
+    .intent-panel {
+      position: absolute;
+      z-index: 60;
+      inset-block-start: calc(100% + 1px);
+      inset-inline-start: 50%;
+      width: min(58rem, calc(100vw - 2rem));
+      max-height: calc(100dvh - 4.5rem);
+      padding: 0.85rem;
       overflow-y: auto;
+      transform: translateX(-50%);
+      border: 1px solid var(--border);
+      border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+      background: var(--bg-primary);
+      box-shadow: 0 22px 55px rgb(0 0 0 / 0.24);
       overscroll-behavior: contain;
       scrollbar-color: var(--border) transparent;
+    }
+
+    .intent-panel-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.25rem 0.35rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intent-panel-header strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .intent-panel-header span {
+      font-size: 0.78rem;
+      text-align: end;
+    }
+
+    .intent-panel-overview {
+      display: inline;
+      margin-block-start: 0;
+      margin-inline-start: 0.5rem;
+    }
+
+    .intent-panel-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+    }
+
+    .intent-panel-single .intent-panel-grid {
+      grid-template-columns: minmax(0, 28rem);
+    }
+
+    .intent-group {
+      padding: 0.55rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--border-radius);
+      background: color-mix(in srgb, var(--bg-secondary) 70%, transparent);
+    }
+
+    .intent-group-label {
+      margin-bottom: 0.35rem;
+      padding-inline: 0.45rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.075em;
+    }
+
+    .intent-links {
+      gap: 0.1rem;
+    }
+
+    .intent-link {
+      display: block;
+      min-height: 3.65rem;
+      padding: 0.55rem 0.6rem;
+      border-radius: 0.45rem;
+    }
+
+    .intent-link-title {
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+
+    .intent-link-description {
+      display: block;
+      margin-top: 0.18rem;
+      color: var(--text-muted);
+      font-size: 0.71rem;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .mobile-only,
+    .mobile-github-link {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .site-brand-title > span {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-brand,
+    .top-level-link,
+    .top-level-link::after,
+    .nav-chevron,
+    .search-trigger,
+    .github-disclosure > summary,
+    .github-chevron,
+    .mobile-menu-toggle,
+    .intent-link,
+    .intent-menu > summary svg {
+      transition: none;
+    }
+  }
+</style>
+
+<style is:global>
+  @media (max-width: 63.999rem) {
+    body[data-global-menu-expanded] {
+      overflow: hidden;
     }
   }
 </style>

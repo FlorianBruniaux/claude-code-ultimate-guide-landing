@@ -11,7 +11,6 @@ const homepageContent = source('./homepage-content.ts')
 const searchIndex = source('./search-index.ts')
 const htmlSitemap = source('../pages/sitemap/index.astro')
 const intentNavigation = JSON.parse(source('./intent-navigation.json'))
-const header = source('../components/global/Header.astro')
 const footer = source('../components/global/Footer.astro')
 const astroConfig = source('../../astro.config.mjs')
 
@@ -34,9 +33,14 @@ test('Cmd+K includes one landing entry for the MCP product', () => {
   assert.match(searchIndex, /claude code ultimate guide mcp/i)
 })
 
-test('navigation and the HTML sitemap expose the MCP product separately from the choice guide', () => {
-  assert.match(header, /href: '\/mcp\/', label: 'Guide MCP'/)
-  assert.match(header, /href: '\/mcp-or-cli\/', label: 'MCP or CLI\?'/)
+test('navigation and the HTML sitemap expose the MCP product separately from the choice guide', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const buildLinks = navigationSections
+    .find((section) => section.id === 'build')
+    ?.groups.flatMap((group) => group.links)
+
+  assert.ok(buildLinks?.some((link) => link.href === '/mcp/' && link.label === 'Claude Code Guide MCP Server'))
+  assert.ok(buildLinks?.some((link) => link.href === '/mcp-or-cli/' && link.label === 'MCP or CLI?'))
   assert.match(htmlSitemap, /intent-navigation\.json/)
   const sitemapPaths = intentNavigation.groups.flatMap(group => group.items.map(item => item.site_path))
   assert.ok(sitemapPaths.includes('/mcp/'))

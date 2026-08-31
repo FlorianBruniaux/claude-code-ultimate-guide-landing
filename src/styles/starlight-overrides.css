@@ -94,10 +94,14 @@ starlight-menu-button[aria-expanded='true'] .open-menu {
 .main-frame,
 .main-pane,
 .content-panel,
-.sl-container,
 .sl-markdown-content {
   min-width: 0;
   max-width: 100%;
+}
+
+.sl-container {
+  min-width: 0;
+  max-width: var(--sl-content-width);
 }
 
 /* ── Prose typography ─────────────────────────────────────────────────── */

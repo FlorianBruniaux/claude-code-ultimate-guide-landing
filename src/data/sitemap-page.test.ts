@@ -18,9 +18,9 @@ test('describes the HTML sitemap as curated and links to the complete XML sitema
   assert.match(source, /complete XML sitemap/i)
 })
 
-test('renders the shared intent navigation before detailed guide sections', () => {
+test('renders the shared intent navigation before landing-only and guide sections', () => {
   assert.match(source, /intent-navigation\.json/)
-  assert.match(source, /const sections = \[\.\.\.intentSections, \.\.\.curatedGuideSections/)
+  assert.match(source, /const sections = \[\.\.\.intentSections, \.\.\.landingOnlySections, \.\.\.curatedGuideSections/)
   assert.deepEqual(intentNavigation.groups.map(group => group.id), ['start', 'build', 'scale', 'resources', 'updates'])
 })
 
