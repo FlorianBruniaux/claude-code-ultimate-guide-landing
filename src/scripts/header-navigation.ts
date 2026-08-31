@@ -121,6 +121,11 @@ export function initHeaderNavigation(root: NavigationRoot = document) {
     mobileMenu.querySelector<HTMLElement>('a[href], summary, button:not([disabled])')?.focus()
   }
 
+  documentRef.defaultView?.matchMedia('(min-width: 64rem)').addEventListener('change', () => {
+    closeDesktopNavigation()
+    closeMobileNavigation()
+  })
+
   mobileToggle?.addEventListener('click', () => {
     if (!mobileMenu) return
     mobileMenu.classList.contains('hidden') ? openMobileNavigation() : closeMobileNavigation()

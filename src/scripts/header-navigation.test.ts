@@ -92,6 +92,35 @@ test('the mobile trigger exposes the same navigation tree and locks page scroll 
   assert.equal(window.document.body.hasAttribute('data-global-menu-expanded'), false)
 })
 
+test('crossing the desktop breakpoint resets the open mobile navigation state', async () => {
+  const { initHeaderNavigation } = await import('./header-navigation.ts')
+  const window = createHeaderFixture()
+  const desktopQuery = new window.EventTarget()
+
+  Object.defineProperty(window, 'matchMedia', {
+    value: () => desktopQuery,
+  })
+
+  initHeaderNavigation(window.document as unknown as Document)
+
+  const toggle = window.document.querySelector('#mobile-menu-toggle') as unknown as HTMLButtonElement
+  const menu = window.document.querySelector('#primary-navigation') as unknown as HTMLElement
+  const buildTrigger = window.document.querySelector('[data-nav-trigger="build"]') as unknown as HTMLElement
+  const buildSection = window.document.querySelector('[data-nav-section="build"]') as unknown as HTMLDetailsElement
+
+  toggle.click()
+  buildTrigger.click()
+  assert.equal(menu.classList.contains('hidden'), false)
+  assert.equal(buildSection.open, true)
+
+  desktopQuery.dispatchEvent(new window.Event('change'))
+
+  assert.equal(menu.classList.contains('hidden'), true)
+  assert.equal(buildSection.open, false)
+  assert.equal(buildTrigger.getAttribute('aria-expanded'), 'false')
+  assert.equal(toggle.getAttribute('aria-expanded'), 'false')
+})
+
 test('tabbing through mobile links keeps the active accordion section open', async () => {
   const { initHeaderNavigation } = await import('./header-navigation.ts')
   const window = createHeaderFixture()
