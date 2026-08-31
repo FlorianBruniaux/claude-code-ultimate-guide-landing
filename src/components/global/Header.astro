@@ -284,14 +284,21 @@ const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
       menuIcon.classList.remove('hidden')
       closeIcon.classList.add('hidden')
       toggle.setAttribute('aria-expanded', 'false')
+      document.body.removeAttribute('data-global-menu-expanded')
       toggle.focus()
     }
 
     function openMenu() {
+      const guideMenuButton = document.querySelector(
+        'starlight-menu-button[aria-expanded="true"] button'
+      )
+      if (guideMenuButton instanceof HTMLElement) guideMenuButton.click()
+
       menu.classList.remove('hidden')
       menuIcon.classList.add('hidden')
       closeIcon.classList.remove('hidden')
       toggle.setAttribute('aria-expanded', 'true')
+      document.body.setAttribute('data-global-menu-expanded', '')
       const firstLink = menu.querySelector('a[href]')
       if (firstLink) firstLink.focus()
     }
@@ -448,3 +455,19 @@ const isMoreActive = moreLinks.some((link) => currentPath.startsWith(link.href))
   initMoreDropdown()
   initGithubDropdown()
 </script>
+
+<style is:global>
+  @media (max-width: 1023px) {
+    body[data-global-menu-expanded] {
+      overflow: hidden;
+    }
+
+    #mobile-menu:not(.hidden) {
+      max-height: calc(100dvh - 3.5rem);
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-color: var(--border) transparent;
+    }
+  }
+</style>

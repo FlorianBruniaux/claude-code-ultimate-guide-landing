@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { RELATED_PROJECTS } from '../../data/homepage-content'
+
+const title = 'Claude Code Companion Projects | Florian Bruniaux'
+const description = 'Explore open-source tools and companion projects for Claude Code sessions, routing, plugins, validation, analytics, and developer workflows.'
+---
+
+<Layout title={title} description={description}>
+  <header class="page-hero">
+    <div class="container projects-hero">
+      <a class="back-link" href="/">← Home</a>
+      <p class="eyebrow">Built around the guide</p>
+      <h1>Related projects</h1>
+      <p class="tagline">Tools for sessions, routing, plugins, context quality, analytics, and the workflows described in the guide.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container projects-grid">
+      {RELATED_PROJECTS.map((project) => (
+        <a class="project-card" href={project.href} target="_blank" rel="noopener">
+          <span class="project-icon" aria-hidden="true">{project.icon}</span>
+          <div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+          </div>
+          <span class="project-arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .projects-hero { max-width: 900px; margin-left: auto; margin-right: auto; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+  .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
+  .project-card { display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem; min-height: 160px; padding: 1.2rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: transform var(--transition-fast), border-color var(--transition-fast); }
+  .project-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .project-icon { font-size: 1.3rem; }
+  .project-card h2 { margin: 0; font-size: 1rem; }
+  .project-card p { margin: 0.4rem 0 0; color: var(--text-secondary); font-size: 0.84rem; }
+  .project-arrow { color: var(--accent); }
+  @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+</style>

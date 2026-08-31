@@ -1,0 +1,107 @@
+---
+import { authorProfile } from '../../data/author-profile'
+---
+
+<aside class="author-profile" aria-label="About the author">
+  <img
+    src={authorProfile.imageUrl}
+    alt="Florian Bruniaux"
+    class="author-photo"
+    width="44"
+    height="44"
+    loading="lazy"
+    decoding="async"
+  >
+
+  <div class="author-content">
+    <p class="author-identity">
+      <a class="author-name" href={authorProfile.aboutUrl} target="_blank" rel="noopener noreferrer">{authorProfile.name}</a>
+      <span aria-hidden="true">&middot;</span>
+      <span>{authorProfile.role} @ <a href={authorProfile.organizationUrl} target="_blank" rel="noopener noreferrer">{authorProfile.organization}</a></span>
+    </p>
+    <p class="author-meta">
+      <span>{authorProfile.experienceYears} years from developer to CTO / VP Eng</span>
+      <span aria-hidden="true">&middot;</span>
+      <a href={authorProfile.blogUrl} target="_blank" rel="noopener noreferrer">Blog ↗</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href={authorProfile.projectsUrl} target="_blank" rel="noopener noreferrer">Projects ↗</a>
+    </p>
+  </div>
+</aside>
+
+<style>
+.author-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--space-md);
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.author-photo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+.author-content {
+  min-width: 0;
+}
+
+.author-identity,
+.author-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.author-identity {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.author-name {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.author-meta {
+  margin-top: 0.15rem;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+.author-profile a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+.author-profile a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 440px) {
+  .author-profile {
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .author-photo {
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>

@@ -1,31 +1,28 @@
 ---
-const themes = [
-  { id: 'foundations',       icon: '🏗️',  title: 'Foundations',            count: 4 },
-  { id: 'context-sessions',  icon: '🧠',  title: 'Context & Sessions',     count: 4 },
-  { id: 'configuration',     icon: '⚙️',  title: 'Configuration',          count: 4 },
-  { id: 'architecture',      icon: '🔧',  title: 'Architecture',           count: 4 },
-  { id: 'mcp',               icon: '🔌',  title: 'MCP Ecosystem',          count: 4 },
-  { id: 'workflows',         icon: '🔄',  title: 'Dev Workflows',          count: 4 },
-  { id: 'multi-agent',       icon: '🤖',  title: 'Multi-Agent',            count: 5 },
-  { id: 'security',          icon: '🛡️',  title: 'Security & Production',  count: 4 },
-  { id: 'cost',              icon: '💰',  title: 'Cost & Optimization',    count: 4 },
-  { id: 'adoption',          icon: '📚',  title: 'Adoption & Learning',    count: 3 },
-]
+import { DIAGRAM_THEMES } from '../../data/diagrams-data'
+import { HOMEPAGE_METRICS } from '../../data/homepage-content'
+
+const themes = DIAGRAM_THEMES.map((theme) => ({
+  id: theme.id,
+  icon: theme.icon,
+  title: theme.title.replace('Claude Code: ', ''),
+  count: theme.diagrams.length,
+}))
 ---
 
 <!-- Visual Diagrams Section -->
 <section class="section section--alt section--compact diagrams-teaser" id="diagrams">
     <div class="container">
-        <h2 class="section-title">40 Interactive Diagrams</h2>
-        <p class="section-subtitle">See how Claude Code works: architecture, workflows, security, multi-agent patterns. Mermaid diagrams with ASCII fallbacks, organized in 10 thematic files.</p>
+        <h2 class="section-title">{HOMEPAGE_METRICS.diagramCount} Interactive Diagrams</h2>
+        <p class="section-subtitle">See how Claude Code works: architecture, workflows, security, multi-agent patterns. Mermaid diagrams with ASCII fallbacks, organized in {themes.length} themes.</p>
 
         <div class="diagrams-stats">
             <div class="diagrams-stat">
-                <div class="diagrams-stat-value">40</div>
+                <div class="diagrams-stat-value">{HOMEPAGE_METRICS.diagramCount}</div>
                 <div class="diagrams-stat-label">Diagrams</div>
             </div>
             <div class="diagrams-stat">
-                <div class="diagrams-stat-value">10</div>
+                <div class="diagrams-stat-value">{themes.length}</div>
                 <div class="diagrams-stat-label">Themes</div>
             </div>
             <div class="diagrams-stat">

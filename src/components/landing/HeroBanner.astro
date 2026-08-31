@@ -1,420 +1,187 @@
 ---
-import HeroBlogPosts from './HeroBlogPosts.astro'
-import HeroQuickGuides from './HeroQuickGuides.astro'
+import AuthorProfile from './AuthorProfile.astro'
 import { getSiteStats } from '../../utils/site-stats'
+import { HOMEPAGE_METRICS } from '../../data/homepage-content'
 
 const stats = await getSiteStats()
 ---
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-heading">
-                <img src="/claude-logo-orange.svg" alt="Claude Code CLI logo - Anthropic's AI coding assistant" class="hero-logo" fetchpriority="high" loading="eager">
-                <h1 class="hero-title">Claude Code Ultimate Guide</h1>
-            </div>
-            <p class="hero-tagline">Learn the WHY behind Claude Code, not just the config</p>
-            <p class="hero-stats">Security-first ({stats.cveCount} CVEs tracked) &bull; TDD/SDD/BDD workflows &bull; {stats.templateCount} templates &bull; {stats.quizQuestionCount}-question quiz &bull; Decision frameworks</p>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="hero-kicker">Free, open source, and built from real workflows</p>
+      <div class="hero-heading">
+        <img src="/claude-logo-orange.svg" alt="" class="hero-logo" width="50" height="50" fetchpriority="high" loading="eager">
+        <h1 id="hero-title">Claude Code Ultimate Guide</h1>
+      </div>
+      <p class="hero-tagline">Go from your first command to production-ready Claude Code workflows.</p>
+      <p class="hero-support">Security, testing, team adoption, and reusable templates, with the trade-offs explained.</p>
 
-            <div class="hero-ctas">
-                <a href="https://cc.bruniaux.com/guide/ultimate-guide/" class="btn btn-primary">
-                    Read the Guide
-                </a>
-                <a href="/cheatsheet/" class="btn btn-secondary" target="_blank" rel="noopener">
-                    Cheat Sheet (5 min)
-                </a>
-            </div>
+      <div class="hero-actions">
+        <a href="#start-here" class="btn btn-primary">Start in 15 min</a>
+        <a href="/guide/" class="btn btn-secondary">Browse the full guide</a>
+        <a href="/downloads/" class="hero-download-link">Downloads ↓</a>
+      </div>
 
-            <div class="hero-nav-cards" role="navigation" aria-label="Quick access">
-                <a href="/quiz/" class="hero-nav-card">
-                    <span class="hero-nav-icon">🎯</span>
-                    <span class="hero-nav-label">Quiz</span>
-                    <span class="hero-nav-desc">{stats.quizQuestionCount} questions</span>
-                </a>
-                <a href="/cheatsheets/" class="hero-nav-card">
-                    <span class="hero-nav-icon">📋</span>
-                    <span class="hero-nav-label">Recap Cards</span>
-                    <span class="hero-nav-desc">{stats.cheatsheetCount} topic cheatsheets</span>
-                </a>
-                <a href="/whitepapers/" class="hero-nav-card">
-                    <span class="hero-nav-icon">📄</span>
-                    <span class="hero-nav-label">Whitepapers</span>
-                    <span class="hero-nav-desc">12 in-depth guides</span>
-                </a>
-                <a href="/examples/" class="hero-nav-card">
-                    <span class="hero-nav-icon">⚡</span>
-                    <span class="hero-nav-label">Examples</span>
-                    <span class="hero-nav-desc">{stats.templateCount} real workflows</span>
-                </a>
-            </div>
+      <div class="proof-strip" aria-label="Guide highlights">
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener" class="proof-item proof-stars">
+          <span aria-hidden="true">★</span>
+          <strong class="proof-value">5.9k</strong>
+          <span>GitHub stars</span>
+        </a>
+        <a href="/examples/" class="proof-item">
+          <strong>{stats.templateCount}</strong>
+          <span>templates</span>
+        </a>
+        <a href="/security/" class="proof-item">
+          <strong>{stats.cveCount}</strong>
+          <span>CVEs tracked</span>
+        </a>
+        <a href="/resources/" class="proof-item proof-item--optional">
+          <strong>{HOMEPAGE_METRICS.recapCardCount}</strong>
+          <span>recap cards</span>
+        </a>
+      </div>
 
-            <div class="hero-badges">
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener" class="badge badge-stars">
-                    <span class="badge-label">stars</span>
-                    <span class="badge-value">1337</span>
-                </a>
-                <a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener" class="badge badge-awesome">
-                    <span class="badge-label">awesome</span>
-                    <span class="badge-value">featured</span>
-                </a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener" class="badge badge-mcp">
-                    <span class="badge-label">mcp</span>
-                    <span class="badge-value">npx ready</span>
-                </a>
-            </div>
-
-            <div class="hero-downloads" role="group" aria-label="Download the full guide offline">
-                <span class="downloads-label">📖 Full guide (offline)</span>
-                <span class="downloads-group">
-                    <span class="downloads-lang">EN</span>
-                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.pdf" target="_blank" rel="noopener" class="dl-btn dl-pdf">PDF</a>
-                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.epub" target="_blank" rel="noopener" class="dl-btn dl-epub">EPUB</a>
-                </span>
-                <span class="downloads-group">
-                    <span class="downloads-lang">FR</span>
-                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.pdf" target="_blank" rel="noopener" class="dl-btn dl-pdf">PDF</a>
-                    <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.epub" target="_blank" rel="noopener" class="dl-btn dl-epub">EPUB</a>
-                </span>
-            </div>
-
-            <div class="hero-external-row">
-                <HeroBlogPosts />
-                <HeroQuickGuides />
-            </div>
-        </div>
+      <AuthorProfile />
     </div>
+  </div>
 </section>
 
 <script>
-    // Fetch and display stars count dynamically
-    async function loadStars() {
-        try {
-            const response = await fetch('https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide');
-            if (response.ok) {
-                const data = await response.json();
-                const stars = data.stargazers_count;
-                const starsEl = document.querySelector('.badge-stars .badge-value');
-                if (starsEl && stars) {
-                    starsEl.textContent = stars >= 1000 ? (stars / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(stars);
-                }
-            }
-        } catch (error) {
-            console.log('Using fallback stars count');
-        }
+  async function loadStars() {
+    try {
+      const response = await fetch('https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide')
+      if (!response.ok) return
+      const data = await response.json()
+      const stars = Number(data.stargazers_count)
+      const starsEl = document.querySelector('.proof-stars .proof-value')
+      if (starsEl && stars > 0) {
+        starsEl.textContent = stars >= 1000
+          ? `${(stars / 1000).toFixed(1).replace(/\.0$/, '')}k`
+          : String(stars)
+      }
+    } catch {
+      // The visible fallback keeps the proof readable when GitHub is unavailable.
     }
-    loadStars();
+  }
+
+  loadStars()
 </script>
 
 <style>
-.hero {
-    padding: var(--space-4xl) 0;
-    text-align: left;
-    background-color: var(--bg-primary);
-    background-image: linear-gradient(
-        160deg,
-        var(--bg-secondary) 0%,
-        var(--bg-primary) 60%
-    );
+  .hero {
+    padding: clamp(3rem, 7vw, 5.5rem) 0 2rem;
+    background:
+      radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 32rem),
+      linear-gradient(155deg, var(--bg-secondary), var(--bg-primary) 64%);
     border-bottom: 1px solid var(--border);
-    opacity: 1;
-    transform: none;
-    width: 100%;
-}
+  }
 
-.hero-content {
-}
+  .hero-copy { max-width: 900px; }
 
-.hero-heading {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-bottom: var(--space-md);
-}
-
-.hero-logo {
-    width: 48px;
-    height: auto;
-    flex-shrink: 0;
-}
-
-.hero-title {
-    font-size: clamp(2rem, 4.5vw + 0.5rem, 3.25rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: 0;
-}
-
-.hero-tagline {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-sm);
-}
-
-.hero-stats {
+  .hero-kicker {
+    margin: 0 0 0.85rem;
+    color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 1rem;
-    color: var(--text-muted);
-    margin-bottom: var(--space-xl);
-}
-
-.hero-ctas {
-    display: flex;
-    gap: var(--space-md);
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: var(--space-xl);
-}
-
-.hero-ctas .btn {
-    font-size: 0.95rem;
-    padding: 0.7rem 1.4rem;
-}
-
-.hero-badges {
-    display: flex;
-    gap: var(--space-sm);
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-
-.hero-badges img {
-    height: 28px;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    height: 28px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 4px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.badge:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.1);
-}
-
-.badge-label,
-.badge-value {
-    padding: 0 7px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.badge-label {
-    background-color: #555;
-    color: #fff;
-}
-
-.badge-value {
-    color: #fff;
-    font-weight: 700;
-}
-
-.badge-stars .badge-value { background-color: #3b82f6; }
-.badge-templates .badge-value { background-color: #3b82f6; }
-.badge-quiz .badge-value { background-color: #fe7d37; }
-.badge-awesome .badge-value { background-color: #fc60a8; }
-.badge-stars .badge-label,
-.badge-templates .badge-label,
-.badge-quiz .badge-label,
-.badge-awesome .badge-label,
-.badge-mcp .badge-label { background-color: #555; }
-.badge-mcp .badge-value { background-color: #7c3aed; }
-.badge-pdf .badge-label,
-.badge-epub .badge-label { background-color: #555; }
-.badge-pdf .badge-value { background-color: #dc2626; }
-.badge-epub .badge-value { background-color: #7c3aed; }
-
-/* Full guide download block */
-.hero-downloads {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
-    padding: 0.55rem 0.85rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--border-radius);
-}
-
-.downloads-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-right: 0.25rem;
-}
-
-.downloads-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.downloads-lang {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    color: var(--text-muted);
-    padding: 0 0.35rem;
-}
-
-.dl-btn {
-    display: inline-flex;
-    align-items: center;
-    height: 26px;
-    padding: 0 0.6rem;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: transform 0.15s ease, filter 0.15s ease;
-}
-
-.dl-btn::before {
-    content: "↓ ";
-    opacity: 0.85;
-}
-
-.dl-btn:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.1);
-}
-
-.dl-pdf { background-color: #dc2626; }
-.dl-epub { background-color: #7c3aed; }
-
-@media (max-width: 480px) {
-    .hero-downloads {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-}
-
-.hero-external-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
-    margin-top: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
-
-@media (max-width: 640px) {
-    .hero-external-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
-    }
-}
-
-/* Nav cards grid */
-.hero-nav-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-sm);
-    margin-top: var(--space-lg);
-    margin-bottom: var(--space-md);
-}
-
-.hero-nav-card {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 0.6rem 0.75rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.hero-nav-card:hover {
-    border-color: var(--accent);
-    background: var(--bg-tertiary);
-}
-
-.hero-nav-icon { font-size: 0.95rem; }
-
-.hero-nav-label {
     font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.hero-nav-desc {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-}
-
-.stat-value {
-    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-primary);
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+    letter-spacing: 0.055em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .hero {
-        padding: var(--space-2xl) 0;
-    }
+  .hero-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    .hero-title {
-        font-size: 2rem;
-    }
+  .hero-logo {
+    width: clamp(40px, 5vw, 52px);
+    height: auto;
+    flex: 0 0 auto;
+  }
 
-}
+  h1 {
+    margin: 0;
+    font-size: clamp(2.45rem, 6vw, 4.7rem);
+    font-weight: 750;
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
 
-@media (max-width: 640px) {
-    .hero-nav-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+  .hero-tagline {
+    max-width: 780px;
+    margin: 1.5rem 0 0;
+    color: var(--text-primary);
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    font-weight: 600;
+    line-height: 1.35;
+  }
 
-@media (max-width: 480px) {
-    .hero-logo {
-        width: 36px;
-    }
+  .hero-support {
+    max-width: 700px;
+    margin: 0.55rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
 
-    .hero-title {
-        font-size: 1.5rem;
-    }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
 
-    .hero-tagline {
-        font-size: 1rem;
-    }
+  .hero-actions .btn { min-height: 46px; }
 
-    .hero-ctas {
-        flex-direction: column;
-    }
+  .hero-download-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.55rem;
+    font-weight: 650;
+  }
 
-    .hero-ctas .btn {
-        width: 100%;
-    }
+  .proof-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
 
-    .hero-badges {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .proof-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 38px;
+    padding: 0.45rem 0.7rem;
+    color: var(--text-secondary) !important;
+    background: color-mix(in srgb, var(--surface-elevated) 72%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.825rem;
+    line-height: 1;
+    text-decoration: none !important;
+  }
 
-}
+  .proof-item strong {
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+  }
+
+  .proof-item:hover { border-color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 2.75rem 0 1.5rem; }
+    .hero-heading { align-items: flex-start; gap: 0.65rem; }
+    h1 { font-size: clamp(2.2rem, 12vw, 3.25rem); }
+    .hero-tagline { margin-top: 1.1rem; }
+    .hero-actions { align-items: stretch; }
+    .hero-actions .btn { flex: 1 1 100%; }
+    .hero-download-link { justify-content: center; width: 100%; }
+    .proof-strip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .proof-item { justify-content: center; }
+  }
 </style>

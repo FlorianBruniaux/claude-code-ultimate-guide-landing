@@ -1,0 +1,34 @@
+---
+import { DEEP_TOPICS } from '../../data/homepage-content'
+---
+
+<section class="section section--alt explore" aria-labelledby="explore-title">
+  <div class="container">
+    <p class="section-kicker">Explore deeper</p>
+    <h2 class="section-title" id="explore-title">When the basics are no longer enough</h2>
+    <div class="topic-grid">
+      {DEEP_TOPICS.map((topic) => (
+        <a class="topic-card" href={topic.href}>
+          <span class="topic-icon" aria-hidden="true">{topic.icon}</span>
+          <div>
+            <h3>{topic.title}</h3>
+            <p>{topic.description}</p>
+          </div>
+          <span class="topic-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-kicker { margin: 0 0 0.35rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .topic-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; min-height: 112px; padding: 1.15rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), transform var(--transition-fast); }
+  .topic-card:hover { border-color: var(--accent); transform: translateX(2px); }
+  .topic-icon { display: grid; place-items: center; width: 42px; height: 42px; background: var(--bg-tertiary); border-radius: 10px; font-size: 1.2rem; }
+  .topic-card h3 { margin: 0; font-size: 1rem; }
+  .topic-card p { margin: 0.25rem 0 0; color: var(--text-secondary); font-size: 0.84rem; }
+  .topic-arrow { color: var(--accent); font-size: 1.15rem; }
+  @media (max-width: 720px) { .topic-grid { grid-template-columns: 1fr; } }
+</style>

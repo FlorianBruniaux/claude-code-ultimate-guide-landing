@@ -14,8 +14,8 @@
     --text-primary: #1a1207;
     --text-secondary: #4a3f31;
     --text-muted: #6b6053;
-    --accent: #d4520a;
-    --accent-hover: #ea580c;
+    --accent: #c2410c;
+    --accent-hover: #9a3412;
     --accent-secondary: #22c55e;
     --accent-secondary-hover: #16a34a;
     --accent-tertiary: #3b82f6;
@@ -115,6 +115,7 @@
     --github-btn-bg-hover: #2a2a2a;
     --github-btn-border: rgba(255, 255, 255, 0.1);
     --github-btn-color: #ffffff;
+    --btn-primary-color: #0a0a0a;
   }
 
   [data-theme="dark"] body {
@@ -140,7 +141,7 @@
     top: -40px;
     left: 0;
     background: var(--accent);
-    color: white;
+    color: var(--btn-primary-color);
     padding: 8px 16px;
     text-decoration: none;
     z-index: 100;
@@ -166,7 +167,7 @@
 
   /* Selection color */
   ::selection {
-    background-color: rgba(212, 82, 10, 0.3);
+    background-color: color-mix(in srgb, var(--accent) 30%, transparent);
     color: var(--text-primary);
   }
 }

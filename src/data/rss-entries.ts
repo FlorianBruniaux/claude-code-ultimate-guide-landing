@@ -30,6 +30,20 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'AI Coding Cost Controls at Scale',
+    date: 'Aug 31, 2026',
+    description: 'AI Unit Economics now separates request-, task-, and delegation-level routing, progressive spend gates for interactive developers, terminal budgets for unattended workloads, and cache effects. Databricks internal routing and token-reduction results remain attributed operating evidence rather than portable savings benchmarks.',
+    link: 'https://cc.bruniaux.com/guide/ai-unit-economics/',
+  },
+  {
+    type: 'new_page',
+    title: 'Translations and Language Status',
+    date: 'Aug 31, 2026',
+    description: 'New public status page for the canonical English guide, the maintained French edition, and independent Chinese and Ukrainian community translations. It records versions, synchronization dates, source provenance, coverage, and the current translation gaps without presenting community projects as official editions.',
+    link: 'https://cc.bruniaux.com/guide/translations/',
+  },
+  {
     type: 'new_page',
     title: 'Loop & Graph Engineering',
     date: 'Aug 30, 2026',

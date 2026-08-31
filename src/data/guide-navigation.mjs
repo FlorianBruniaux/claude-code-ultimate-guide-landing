@@ -1,5 +1,10 @@
 export const guideHighlights = [
   {
+    title: 'Translations and Language Status',
+    href: '/guide/translations/',
+    desc: 'Read the canonical, maintained, and community editions with explicit version, sync date, and coverage status.',
+  },
+  {
     title: 'Loop & Graph Engineering',
     href: '/guide/loop-graph-engineering/',
     desc: 'Design bounded feedback loops, executable graphs, checkpoints, recovery, and explicit judgment allocation.',
@@ -107,7 +112,7 @@ export const guideSections = [
       { title: 'Memory Systems', href: '/guide/memory-systems/', desc: 'Native, cross-session, and team-shared memory.', time: '30 min' },
       { title: 'Team Knowledge Infrastructure', href: '/guide/team-knowledge-base/', desc: 'Markdown, live connectors, and RAG at team scale.', time: '18 min' },
       { title: 'Local vs Cloud Inference', href: '/guide/local-vs-cloud-inference/', desc: 'Hardware, rental, API, throughput, and TCO boundaries.', time: '20 min' },
-      { title: 'AI Unit Economics', href: '/guide/ai-unit-economics/', desc: 'Per-task cost, routing, context injection, and break-even reasoning.', time: '15 min' },
+      { title: 'AI Unit Economics', href: '/guide/ai-unit-economics/', desc: 'Accepted-task cost, three-level routing, cache effects, progressive spend controls, and break-even.', time: '15 min' },
       { title: 'Subscription Strategy', href: '/guide/subscription-strategy/', desc: 'Seats, Enterprise usage, gateways, and self-hosting scenarios.', time: '20 min' },
     ],
   },
@@ -131,7 +136,7 @@ export const guideSections = [
     links: [
       { title: 'DevOps & SRE', href: '/guide/devops-sre/', desc: 'Infrastructure diagnosis and incident response.', time: '30 min' },
       { title: 'Observability', href: '/guide/observability/', desc: 'Traces, reliability signals, cost, and recovery metrics.', time: '20 min' },
-      { title: 'API Gateway', href: '/guide/api-gateway/', desc: 'Centralized routing, budgets, allowlists, and attribution.', time: '15 min' },
+      { title: 'API Gateway', href: '/guide/api-gateway/', desc: 'Routing, progressive spend policy, terminal budgets, allowlists, and attribution.', time: '15 min' },
       { title: 'AI Traceability', href: '/guide/ai-traceability/', desc: 'Attribution, disclosure, audit trails, and compliance.', time: '20 min' },
       { title: 'Team Metrics', href: '/guide/team-metrics/', desc: 'DORA, SPACE, Core 4, and agent-specific signals.', time: '20 min' },
       { title: 'Adoption Approaches', href: '/guide/adoption-approaches/', desc: 'Rollout strategies, trust calibration, and evidence.', time: '15 min' },

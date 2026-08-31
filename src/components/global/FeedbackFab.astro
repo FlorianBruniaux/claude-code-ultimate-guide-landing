@@ -56,9 +56,19 @@ const menuItems = [
 </div>
 
 <script>
+  import { shouldShowFeedback } from '../../utils/feedback-visibility'
+
   const btn = document.getElementById('feedback-fab-btn')!
   const menu = document.getElementById('feedback-menu')!
   const wrapper = document.getElementById('feedback-wrapper')!
+
+  function refreshVisibility() {
+    wrapper.classList.toggle('is-visible', shouldShowFeedback({
+      viewportWidth: window.innerWidth,
+      scrollY: window.scrollY,
+      viewportHeight: window.innerHeight,
+    }))
+  }
 
   function openMenu() {
     menu.classList.add('is-open')
@@ -86,4 +96,8 @@ const menuItems = [
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu()
   })
+
+  refreshVisibility()
+  window.addEventListener('scroll', refreshVisibility, { passive: true })
+  window.addEventListener('resize', refreshVisibility)
 </script>

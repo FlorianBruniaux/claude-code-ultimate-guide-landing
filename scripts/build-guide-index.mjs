@@ -56,11 +56,28 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/roles/ai-roles.md',
   'guide/roles/learning-with-ai.md',
   // ops/
+  'guide/ops/ai-unit-economics.md',
   'guide/ops/ai-traceability.md',
+  'guide/ops/api-gateway.md',
   'guide/ops/devops-sre.md',
   'guide/ops/observability.md',
+  'guide/ops/subscription-strategy.md',
   'guide/ops/team-metrics.md',
 ])
+
+// Stable aliases keep long-lived search ids working when reference.yaml keys
+// are renamed. They are intentionally additive because external consumers may
+// still depend on the previous id while the current generated id remains valid.
+const STABLE_SEARCH_ALIASES = [
+  {
+    id: 'guide-translations-status',
+    title: 'Translations Status',
+    keywords: 'translations status guide core translations',
+    category: 'Guide',
+    url: '/guide/translations/',
+    source: 'guide',
+  },
+]
 
 // Three of the files above resolve to a basename-derived URL that is only a
 // client-side redirect stub, not the real page ("cannibalization fix" entries
@@ -229,7 +246,7 @@ function main() {
     }
   }
 
-  const entries = [...entriesByUrl.values()]
+  const entries = [...STABLE_SEARCH_ALIASES, ...entriesByUrl.values()]
 
   console.log(`[build-guide-index] Generated ${entries.length} guide entries`)
 

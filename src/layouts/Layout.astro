@@ -18,6 +18,7 @@ interface Props {
   preloadImages?: string[]
   publishedDate?: string
   modifiedDate?: string
+  compactFooter?: boolean
 }
 
 const {
@@ -30,6 +31,7 @@ const {
   preloadImages = [],
   publishedDate,
   modifiedDate,
+  compactFooter = false,
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
@@ -196,7 +198,7 @@ const stats = await getSiteStats()
       <AnnouncementBanner />
       <slot />
     </main>
-    <Footer />
+    <Footer compact={compactFooter} />
     <SearchModal />
     <FeedbackFab />
   </body>

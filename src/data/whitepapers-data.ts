@@ -240,4 +240,5 @@ export const FREE_WPS = WHITEPAPERS.filter(wp => !wp.gated)
 export const GATED_WPS = WHITEPAPERS.filter(wp => wp.gated)
 
 /** Base URL for hashed PDFs on Vercel (overridable via PUBLIC_PDF_BASE env var) */
-export const PDF_BASE_URL = import.meta.env.PUBLIC_PDF_BASE ?? 'https://florian.bruniaux.com/guides'
+const publicPdfBase = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.PUBLIC_PDF_BASE
+export const PDF_BASE_URL = publicPdfBase ?? 'https://florian.bruniaux.com/guides'

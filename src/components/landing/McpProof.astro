@@ -1,0 +1,46 @@
+<section class="section mcp-proof" aria-labelledby="mcp-title">
+  <div class="container">
+    <div class="mcp-shell">
+      <div class="mcp-copy">
+        <p class="section-kicker">MCP in action</p>
+        <h2 id="mcp-title">Ask the guide from your coding session</h2>
+        <p>Install the MCP server once, then search the guide without leaving your current workflow.</p>
+        <div class="mcp-actions">
+          <a class="btn btn-primary" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">MCP setup</a>
+          <a class="text-link" href="/resources/">Browse every resource →</a>
+        </div>
+      </div>
+      <div class="terminal" aria-label="MCP installation command">
+        <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <code><span class="prompt">$</span> npx -y claude-code-ultimate-guide-mcp</code>
+        <p><span class="status">✓</span> Guide search tools ready</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mcp-proof { padding-top: var(--space-2xl); padding-bottom: var(--space-2xl); }
+  .mcp-shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); padding: clamp(1.5rem, 4vw, 2.75rem); background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 18px; }
+  .section-kicker { margin: 0 0 0.35rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); letter-spacing: -0.025em; }
+  .mcp-copy > p:not(.section-kicker) { max-width: 600px; margin: 0.7rem 0 0; color: var(--text-secondary); }
+  .mcp-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.4rem; }
+  .text-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+  .terminal { overflow: hidden; background: #101318; border: 1px solid #303640; border-radius: 12px; box-shadow: var(--shadow-lg); }
+  .terminal-bar { display: flex; gap: 0.35rem; padding: 0.7rem 0.85rem; background: #191d24; border-bottom: 1px solid #303640; }
+  .terminal-bar span { width: 8px; height: 8px; background: #5d6673; border-radius: 50%; }
+  .terminal code { display: block; padding: 1.15rem 1rem 0.75rem; color: #f3f4f6; background: transparent; font-size: 0.78rem; overflow-wrap: anywhere; }
+  .terminal .prompt { color: #fb923c; }
+  .terminal p { margin: 0; padding: 0 1rem 1.15rem; color: #aab2bf; font-family: var(--font-mono); font-size: 0.75rem; }
+  .terminal .status { color: #4ade80; }
+
+  @media (max-width: 800px) {
+    .mcp-shell { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  @media (max-width: 520px) {
+    .mcp-shell { padding: 1.15rem; }
+    .terminal code { font-size: 0.7rem; }
+  }
+</style>
