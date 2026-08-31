@@ -33,6 +33,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/core/known-issues.md',
   'guide/core/loop-graph-engineering.md',
   'guide/core/methodologies.md',
+  'guide/core/translations.md',
   'guide/core/visual-reference.md',
   // security/
   'guide/security/data-privacy.md',

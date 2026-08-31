@@ -12,6 +12,37 @@ test('Astro sitemap integration stays enabled for XML sitemap generation', () =>
   assert.match(astroConfig, /sitemap\({/)
 })
 
+test('Translation status is exposed in navigation, sidebar, and sitemap data', () => {
+  const navigation = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-navigation.mjs'), 'utf8')
+  const astroConfig = readFileSync(resolve(PROJECT_ROOT, 'astro.config.mjs'), 'utf8')
+  const footer = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/Footer.astro'), 'utf8')
+  const searchEntries = readFileSync(
+    resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'),
+    'utf8',
+  )
+
+  assert.match(navigation, /title: 'Translations'/)
+  assert.match(navigation, /href: '\/guide\/translations\/'/)
+  assert.match(navigation, /English, French, Chinese, Ukrainian, and Latin American Spanish/)
+  assert.match(astroConfig, /slug: 'guide\/translations'/)
+  assert.match(footer, /href: '\/guide\/translations\/'/)
+  assert.match(
+    searchEntries,
+    /"id": "guide-translations-status"[\s\S]*?"url": "\/guide\/translations\/"/,
+  )
+})
+
+test('Community translations are not declared as equivalent hreflang alternates', () => {
+  const mainHead = readFileSync(resolve(PROJECT_ROOT, 'src/layouts/Layout.astro'), 'utf8')
+  const starlightHead = readFileSync(
+    resolve(PROJECT_ROOT, 'src/components/starlight/Head.astro'),
+    'utf8',
+  )
+
+  assert.doesNotMatch(mainHead, /hreflang/i)
+  assert.doesNotMatch(starlightHead, /hreflang/i)
+})
+
 test('HTML sitemap exposes Loop & Graph Engineering', () => {
   const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
 

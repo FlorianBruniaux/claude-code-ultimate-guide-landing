@@ -172,6 +172,7 @@ export default defineConfig({
           label: 'Core Reference',
           items: [
             { slug: 'guide/cheatsheet' },
+            { slug: 'guide/translations' },
             { slug: 'guide/architecture' },
             { slug: 'guide/methodologies' },
             { slug: 'guide/visual-reference' },

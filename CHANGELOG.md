@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Translation governance
+
+- **Translation status route and discovery surfaces** (`astro.config.mjs`, `src/data/guide-navigation.mjs`, `scripts/build-guide-index.mjs`, `src/data/guide-search-entries.ts`, `src/components/global/Footer.astro`, and `src/pages/sitemap/index.astro`): added the generated `/guide/translations/` page to the sidebar, curated guide navigation, footer, Cmd+K index, HTML sitemap, and XML sitemap. The page links the English and French project editions plus Chinese, Ukrainian, and Latin American Spanish community adaptations with evidence boundaries. Community repositories remain normal links rather than unsupported `hreflang` alternates; the built page keeps a self-referencing canonical URL.
+
 ### Guide navigation and public changelog
 
 - **Dedicated guide changelog** (`src/pages/changelog/index.astro`, `src/utils/guide-changelog.ts`): added a public `/changelog/` page generated from the guide repository's `CHANGELOG.md`. It clearly separates guide updates from `/releases/`, which remains the Claude Code CLI version history.

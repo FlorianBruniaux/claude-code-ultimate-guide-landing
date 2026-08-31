@@ -12,6 +12,22 @@ export interface GuideSearchEntry {
 
 export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
+    "id": "guide-translations-status",
+    "title": "Translations Status",
+    "keywords": "translations status guide core translations",
+    "category": "Guide",
+    "url": "/guide/translations/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-translations-registry",
+    "title": "Translations Registry",
+    "keywords": "translations registry machine readable translations",
+    "category": "Reference",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/translations.json",
+    "source": "guide"
+  },
+  {
     "id": "guide-diagram-foundations",
     "title": "Diagram Foundations",
     "keywords": "diagram foundations guide diagrams foundations",
