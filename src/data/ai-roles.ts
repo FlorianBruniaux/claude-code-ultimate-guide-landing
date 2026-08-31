@@ -1,28 +1,20 @@
 /**
- * AI Roles & Career Paths data
- * Source: guide/ai-roles.md
- * Last synced: March 2026
+ * AI roles and career paths data.
+ * Canonical source: guide/roles/ai-roles.md
  *
- * To update: edit guide/ai-roles.md first, then sync this file manually.
+ * Update the guide first, then sync the role entries and modified date here.
+ * The displayed count and month are derived from this file.
  */
 
-export type RoleStatus = 'Established' | 'Growing' | 'Emerging'
-
-export interface SalaryRange {
-  entry: string
-  mid: string
-  senior: string
-  note?: string
-}
+export type RoleEvidence = 'Role family' | 'Specialization' | 'Capability' | 'Title qualifier'
 
 export interface RoleEntry {
   id: string
   title: string
-  status: RoleStatus
+  evidence: RoleEvidence
   mission: string
   skills: string[]
   entryPaths: string[]
-  salary: SalaryRange | null
   guideAnchor: string
   landingUrl: string
   highlight?: boolean
@@ -35,316 +27,275 @@ export interface DecisionRow {
   roleId: string
 }
 
-export const ROLES_META = {
-  count: 19,
-  updated: 'May 2026',
-  salaryMarket: 'US market · ±30%',
-  sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md',
-} as const
-
 export const ROLES: RoleEntry[] = [
   {
     id: 'prompt-engineer',
     title: 'Prompt Engineer',
-    status: 'Established',
-    mission: 'Craft and optimize instructions sent to AI models for reliable, high-quality outputs.',
-    skills: ['LLM behavior & failure modes', 'Systematic A/B testing', 'Prompt versioning'],
-    entryPaths: ['Technical writer', 'QA engineer', 'Domain expert (law, medicine, finance)'],
-    salary: {
-      entry: '$80K–$110K',
-      mid: '$110K–$150K',
-      senior: '$150K–$180K',
-      note: 'Shrinking standalone market',
-    },
+    evidence: 'Capability',
+    mission: 'Design and test instructions for reliable model behavior inside broader product, evaluation, and domain roles.',
+    skills: ['LLM behavior and failure modes', 'Systematic A/B testing', 'Prompt versioning'],
+    entryPaths: ['Technical writer', 'QA engineer', 'Domain expert'],
     guideAnchor: '2-prompt-engineer',
     landingUrl: '/guide/ai-roles/',
   },
   {
     id: 'context-engineer',
     title: 'Context Engineer',
-    status: 'Growing',
-    mission: 'Design systems that give AI models the right information, at the right time, in the right format.',
-    skills: ['RAG & vector databases', 'Prompt caching & token budget design', 'Knowledge base architecture', 'MCP context servers (retrieval, semantic indexing)'],
+    evidence: 'Specialization',
+    mission: 'Design systems that give models the right information, at the right time, in the right format.',
+    skills: ['RAG and retrieval', 'Prompt caching and token budgets', 'Knowledge architecture', 'MCP context servers'],
     entryPaths: ['Data engineer', 'Backend engineer', 'ML engineer'],
-    salary: {
-      entry: '$100K–$140K',
-      mid: '$140K–$180K',
-      senior: '$180K–$230K',
-    },
     guideAnchor: '3-context-engineer',
     landingUrl: '/guide/ai-ecosystem/',
   },
   {
     id: 'ai-engineer',
     title: 'AI Engineer',
-    status: 'Growing',
-    mission: 'Build end-to-end AI-powered applications: from LLM integration to production monitoring.',
-    skills: ['LLM APIs (Anthropic, OpenAI, Gemini)', 'Eval design & measurement', 'MLOps basics'],
+    evidence: 'Role family',
+    mission: 'Build end-to-end AI applications, from model integration and evaluation to production monitoring.',
+    skills: ['LLM APIs', 'Evaluation design', 'Production engineering'],
     entryPaths: ['Software engineer', 'Backend engineer', 'Data engineer'],
-    salary: {
-      entry: '$120K–$160K',
-      mid: '$160K–$220K',
-      senior: '$220K–$300K',
-    },
     guideAnchor: '4-ai-engineer',
     landingUrl: '/guide/',
     highlight: true,
   },
   {
+    id: 'applied-ai-engineer',
+    title: 'Applied AI Engineer',
+    evidence: 'Role family',
+    mission: 'Turn available models into production behavior for a defined product or workflow.',
+    skills: ['Application architecture', 'Context and tool use', 'Evaluation datasets', 'Production instrumentation'],
+    entryPaths: ['Software engineer', 'AI engineer', 'Product engineer'],
+    guideAnchor: '5-applied-ai-engineer',
+    landingUrl: '/guide/ai-roles/',
+    highlight: true,
+  },
+  {
     id: 'llm-engineer',
     title: 'LLM Engineer',
-    status: 'Growing',
-    mission: 'Deep specialization in LLM integration, fine-tuning, and evaluation infrastructure.',
-    skills: ['Python + PyTorch/JAX', 'Fine-tuning & RLHF', 'Evaluation framework design'],
+    evidence: 'Specialization',
+    mission: 'Specialize in model integration, adaptation, fine-tuning, and evaluation infrastructure.',
+    skills: ['Python and PyTorch/JAX', 'Fine-tuning', 'Evaluation framework design'],
     entryPaths: ['ML engineer', 'AI researcher', 'Data scientist'],
-    salary: {
-      entry: '$130K–$170K',
-      mid: '$170K–$250K',
-      senior: '$250K–$350K',
-      note: 'Lab-level roles higher',
-    },
-    guideAnchor: '5-llm-engineer',
+    guideAnchor: '6-llm-engineer',
     landingUrl: '/guide/agent-evaluation/',
   },
   {
     id: 'ai-agent-engineer',
     title: 'AI Agent Engineer',
-    status: 'Growing',
-    mission: 'Design and build autonomous agent systems that plan, reason, and execute multi-step tasks.',
-    skills: ['Agent frameworks (LangChain, AutoGen)', 'Observability & tracing', 'Guardrails & safety mechanisms'],
+    evidence: 'Role family',
+    mission: 'Design agent systems that plan, use tools, and execute multi-step tasks under explicit controls.',
+    skills: ['Agent control loops', 'Observability and tracing', 'Guardrails and safety'],
     entryPaths: ['AI engineer', 'Backend engineer', 'Software engineer'],
-    salary: {
-      entry: '$130K–$170K',
-      mid: '$170K–$240K',
-      senior: '$240K–$320K',
-    },
-    guideAnchor: '6-ai-agent-engineer',
+    guideAnchor: '7-ai-agent-engineer',
     landingUrl: '/guide/architecture/',
     highlight: true,
   },
   {
     id: 'founding-ai-engineer',
     title: 'Founding AI Engineer',
-    status: 'Growing',
-    mission: 'Build the AI core of an early-stage company end-to-end, from architecture to customer interaction.',
-    skills: ['Full-stack ownership', 'AI tools fluency (Claude Code, Cursor)', 'Product + technical judgment'],
-    entryPaths: ['Mid-level engineer wanting more ownership', 'Side-project builder'],
-    salary: {
-      entry: '$100K–$150K + equity',
-      mid: '—',
-      senior: '—',
-      note: 'Equity makes total comp wide-ranging',
-    },
-    guideAnchor: '7-founding-ai-engineer',
+    evidence: 'Title qualifier',
+    mission: 'Own the AI core of an early-stage company across architecture, product delivery, and customer feedback.',
+    skills: ['Full-stack ownership', 'AI tooling fluency', 'Product and technical judgment'],
+    entryPaths: ['Product engineer', 'Senior software engineer', 'Technical founder'],
+    guideAnchor: '8-founding-ai-engineer',
     landingUrl: '/guide/adoption-approaches/',
   },
   {
     id: 'ai-architect',
     title: 'AI Architect',
-    status: 'Established',
-    mission: 'Design enterprise AI systems: technology choices, reference architectures, governance standards.',
-    skills: ['Cloud AI services (AWS/Azure/GCP)', 'Security & compliance (GDPR, AI Act)', 'Distributed systems design'],
-    entryPaths: ['Senior AI engineer → Staff → Architect', 'Cloud architect + AI upskill'],
-    salary: {
-      entry: '—',
-      mid: '$180K–$260K',
-      senior: '$260K–$380K',
-    },
-    guideAnchor: '8-ai-architect',
+    evidence: 'Role family',
+    mission: 'Own system-level decisions for enterprise AI architecture, security, governance, and integration.',
+    skills: ['Cloud AI services', 'Security and compliance', 'Distributed systems design'],
+    entryPaths: ['Staff AI engineer', 'Cloud architect', 'Enterprise architect'],
+    guideAnchor: '9-ai-architect',
     landingUrl: '/guide/architecture/',
   },
   {
     id: 'platform-engineer',
-    title: 'Platform Engineer',
-    status: 'Established',
-    mission: 'Build the internal platform that makes AI development reliable, secure, and consistent across teams.',
-    skills: ['LLM gateway products (LiteLLM, Portkey)', 'MLOps & model versioning', 'Cost control & observability'],
-    entryPaths: ['DevOps/SRE engineer', 'Backend engineer', 'Infrastructure engineer'],
-    salary: {
-      entry: '$110K–$150K',
-      mid: '$150K–$210K',
-      senior: '$210K–$280K',
-    },
-    guideAnchor: '9-platform-engineer-ai-context',
+    title: 'AI Platform Engineer',
+    evidence: 'Role family',
+    mission: 'Build the internal platform that makes AI development reliable, secure, observable, and reusable.',
+    skills: ['Model gateways', 'MLOps and versioning', 'Cost control and observability'],
+    entryPaths: ['DevOps or SRE engineer', 'Backend engineer', 'Infrastructure engineer'],
+    guideAnchor: '10-ai-platform-engineer',
     landingUrl: '/guide/devops-sre/',
   },
   {
     id: 'harness-engineer',
     title: 'Harness Engineer',
-    status: 'Emerging',
-    mission: 'Build the infrastructure that keeps AI agents productive: layered architecture enforcement, taste invariants, knowledge base design, and anti-entropy systems.',
-    skills: ['Custom linters with agent-readable error messages', 'Layered domain architecture enforcement', 'Anti-entropy agents & quality score tracking', 'AGENTS.md as TOC + docs/ knowledge base design'],
-    entryPaths: ['Staff/principal engineer', 'Platform engineer', 'AI architect'],
-    salary: null,
-    guideAnchor: '10-harness-engineer',
+    evidence: 'Capability',
+    mission: 'Build constraints, feedback loops, and knowledge systems that keep coding agents productive.',
+    skills: ['Agent-readable checks', 'Architecture enforcement', 'Anti-entropy systems', 'Knowledge-base design'],
+    entryPaths: ['Staff engineer', 'Platform engineer', 'AI architect'],
+    guideAnchor: '11-harness-engineer',
     landingUrl: '/guide/production-safety/',
     highlight: true,
   },
   {
     id: 'ai-product-manager',
     title: 'AI Product Manager',
-    status: 'Growing',
-    mission: 'Own AI-powered products: requirements, quality tradeoffs, UX of non-deterministic systems.',
-    skills: ['Eval design & probabilistic thinking', 'LLM API familiarity', 'AI UX patterns'],
-    entryPaths: ['Traditional PM', 'Technical PM', 'QA or data analyst'],
-    salary: {
-      entry: '$130K–$170K',
-      mid: '$170K–$230K',
-      senior: '$230K–$350K',
-      note: 'FAANG premium significant',
-    },
-    guideAnchor: '11-ai-product-manager',
+    evidence: 'Role family',
+    mission: 'Own AI products, including requirements, evaluation criteria, risk tradeoffs, and non-deterministic UX.',
+    skills: ['Evaluation design', 'Probabilistic thinking', 'AI UX patterns'],
+    entryPaths: ['Product manager', 'Technical PM', 'QA or data analyst'],
+    guideAnchor: '12-ai-product-manager',
     landingUrl: '/guide/ai-ecosystem/',
   },
   {
     id: 'ai-safety-eval-engineer',
-    title: 'AI Safety & Eval Engineer',
-    status: 'Growing',
-    mission: 'Ensure AI systems behave safely and reliably: build eval pipelines, red-team models, implement guardrails.',
-    skills: ['Evaluation framework design', 'Red-teaming & adversarial testing', 'Risk reporting & governance'],
+    title: 'AI Safety Engineer',
+    evidence: 'Role family',
+    mission: 'Reduce harmful or unintended model and system behavior through safeguards, testing, and risk controls.',
+    skills: ['Safety evaluation', 'Adversarial testing', 'Risk reporting and controls'],
     entryPaths: ['ML engineer', 'Security engineer', 'Research engineer'],
-    salary: {
-      entry: '$140K–$180K',
-      mid: '$180K–$250K',
-      senior: '$250K–$400K',
-      note: 'Lab compensation highest',
-    },
-    guideAnchor: '12-ai-safety--eval-engineer',
+    guideAnchor: '13-ai-safety-engineer',
     landingUrl: '/guide/agent-evaluation/',
   },
   {
     id: 'ml-engineer',
     title: 'ML Engineer',
-    status: 'Established',
-    mission: 'Develop, train, deploy, and maintain machine learning models: the most traditional AI engineering role.',
-    skills: ['Python + PyTorch/TensorFlow', 'Data pipelines (Spark, Airflow, dbt)', 'Cloud ML platforms (SageMaker, Vertex)'],
-    entryPaths: ['Data scientist', 'Software engineer + ML upskill', 'Research scientist'],
-    salary: {
-      entry: '$100K–$140K',
-      mid: '$140K–$200K',
-      senior: '$200K–$280K',
-    },
-    guideAnchor: '13-ml-engineer',
+    evidence: 'Role family',
+    mission: 'Develop, train, deploy, and maintain machine-learning models and their production pipelines.',
+    skills: ['Python and ML frameworks', 'Data pipelines', 'Cloud ML platforms'],
+    entryPaths: ['Data scientist', 'Software engineer', 'Research scientist'],
+    guideAnchor: '14-ml-engineer',
     landingUrl: '/guide/methodologies/',
   },
   {
     id: 'mlops-engineer',
     title: 'MLOps Engineer',
-    status: 'Established',
-    mission: 'Own the operational layer that keeps models reliable in production: CI/CD pipelines, drift monitoring, and deployment infrastructure.',
-    skills: ['MLflow / Weights & Biases', 'Model drift monitoring', 'Kubernetes & infrastructure as code'],
-    entryPaths: ['DevOps/platform engineer', 'ML engineer (infra-minded)', 'Data engineer'],
-    salary: {
-      entry: '$110K–$150K',
-      mid: '$150K–$200K',
-      senior: '$200K–$270K',
-      note: 'High demand in enterprises deploying at scale',
-    },
-    guideAnchor: '14-mlops-engineer',
+    evidence: 'Role family',
+    mission: 'Operate model delivery, observability, drift detection, and deployment infrastructure.',
+    skills: ['Experiment and model tracking', 'Drift monitoring', 'Kubernetes and infrastructure as code'],
+    entryPaths: ['DevOps or platform engineer', 'ML engineer', 'Data engineer'],
+    guideAnchor: '15-mlops-engineer',
     landingUrl: '/guide/devops-sre/',
   },
   {
     id: 'ai-developer-advocate',
     title: 'AI Developer Advocate',
-    status: 'Growing',
-    mission: 'Bridge an AI platform and the developers who use it: build demos, create tutorials, represent developer needs to the product team.',
-    skills: ['Technical content creation', 'Community building', 'Deep platform/API fluency'],
-    entryPaths: ['Software engineer with public presence', 'Technical writer with engineering background', 'Early AI community builder'],
-    salary: {
-      entry: '$120K–$160K',
-      mid: '$160K–$220K',
-      senior: '$220K–$300K',
-      note: 'Active hiring at AI platforms',
-    },
-    guideAnchor: '15-ai-developer-advocate',
+    evidence: 'Role family',
+    mission: 'Connect an AI platform with developers through demos, education, community work, and product feedback.',
+    skills: ['Technical content', 'Community building', 'Platform and API fluency'],
+    entryPaths: ['Software engineer', 'Technical writer', 'Developer relations'],
+    guideAnchor: '16-ai-developer-advocate',
     landingUrl: '/guide/ai-ecosystem/',
-    highlight: true,
   },
   {
     id: 'ai-orchestration-engineer',
     title: 'AI Orchestration Engineer',
-    status: 'Emerging',
-    mission: 'Connect AI capabilities to existing enterprise systems, data sources, and business processes through reliable automation workflows.',
-    skills: ['Orchestration platforms (n8n, LangChain)', 'API integration (REST, webhooks)', 'Observability & tracing (LangSmith, Langfuse)'],
-    entryPaths: ['Integration engineer', 'Backend engineer + automation experience', 'DevOps engineer adding AI tooling'],
-    salary: {
-      entry: '$100K–$140K',
-      mid: '$140K–$190K',
-      senior: '$190K–$260K',
-      note: 'Emerging: title varies across companies',
-    },
-    guideAnchor: '16-ai-orchestration-engineer',
+    evidence: 'Specialization',
+    mission: 'Connect AI capabilities to enterprise systems, data sources, and operational workflows.',
+    skills: ['Workflow orchestration', 'API integration', 'Tracing and reliability'],
+    entryPaths: ['Integration engineer', 'Backend engineer', 'DevOps engineer'],
+    guideAnchor: '17-ai-orchestration-engineer',
     landingUrl: '/guide/architecture/',
   },
   {
     id: 'spec-engineer',
     title: 'Spec Engineer',
-    status: 'Emerging',
-    mission: 'Write the structured specifications that AI agents use to plan, implement, and validate code: bridging business intent and machine-executable contracts.',
-    skills: ['Structured spec writing (Gherkin-style, SDD formats)', 'Agent failure mode understanding (multi-file pass@1)', 'SDD tools (Spec Kit, Kiro, Augment, Factory.ai)', 'Version control discipline (specs versioned before code)'],
-    entryPaths: ['Technical writer with engineering background', 'QA engineer who understands requirements', 'Product engineer frustrated by low AI output quality'],
-    salary: {
-      entry: '$90K–$130K',
-      mid: '$130K–$180K',
-      senior: '$180K–$250K',
-      note: 'Often embedded in engineering teams, not standalone',
-    },
-    guideAnchor: '17-spec-engineer',
+    evidence: 'Capability',
+    mission: 'Write testable specifications that agents can use to plan, implement, and validate changes.',
+    skills: ['Structured specification writing', 'Agent failure modes', 'Acceptance criteria'],
+    entryPaths: ['Technical writer', 'QA engineer', 'Product engineer'],
+    guideAnchor: '18-spec-engineer',
     landingUrl: '/guide/ai-roles/',
   },
   {
     id: 'agent-identity-architect',
     title: 'Agent Identity Architect',
-    status: 'Emerging',
-    mission: 'Design and enforce the identity layer for AI agents: authentication, permission scoping, privilege escalation prevention, and per-session auditability.',
-    skills: ['IAM and OAuth/OIDC (per-agent service principals, OBO flows)', 'Zero-trust architecture', 'MCP gateway governance', 'Incident response for non-deterministic systems'],
-    entryPaths: ['Cloud/IAM security engineer', 'Identity & access management specialist', 'Platform engineer with security focus'],
-    salary: {
-      entry: '—',
-      mid: '$170K–$240K',
-      senior: '$240K–$340K',
-      note: 'Senior only; deep IAM expertise required',
-    },
-    guideAnchor: '18-agent-identity-architect',
+    evidence: 'Capability',
+    mission: 'Design authentication, delegated authority, permission scoping, and auditability for AI agents.',
+    skills: ['IAM and OAuth/OIDC', 'Zero-trust architecture', 'Agent authorization'],
+    entryPaths: ['IAM security engineer', 'Platform security engineer', 'Cloud architect'],
+    guideAnchor: '19-agent-identity-architect',
     landingUrl: '/guide/ai-roles/',
   },
   {
     id: 'ai-eval-engineer',
-    title: 'AI Eval Engineer',
-    status: 'Emerging',
-    mission: 'Build and operate the continuous measurement layer that tells the organization whether its AI systems are getting better or worse in production.',
-    skills: ['Statistical experiment design', 'Canary pipeline implementation (A/B on 1-2% traffic)', 'Creator-verifier pattern (+12 to +26% correctness)', 'OTel GenAI conventions (gen_ai.client stable, gen_ai.agent experimental)'],
-    entryPaths: ['Backend engineer with testing background', 'QA engineer moving into AI', 'ML engineer focused on production reliability'],
-    salary: {
-      entry: '$110K–$150K',
-      mid: '$150K–$210K',
-      senior: '$210K–$290K',
-      note: 'Growing rapidly as agentic systems reach production',
-    },
-    guideAnchor: '19-ai-eval-engineer',
+    title: 'AI Evaluation Engineer',
+    evidence: 'Role family',
+    mission: 'Build the continuous measurement layer for AI quality, regressions, and production behavior.',
+    skills: ['Experiment design', 'Evaluation pipelines', 'Production telemetry'],
+    entryPaths: ['Backend engineer', 'QA engineer', 'ML engineer'],
+    guideAnchor: '20-ai-evaluation-engineer',
+    landingUrl: '/guide/agent-evaluation/',
+  },
+  {
+    id: 'forward-deployed-engineer',
+    title: 'Forward-Deployed Engineer',
+    evidence: 'Role family',
+    mission: 'Own deployment of an AI system inside a customer environment, from discovery through adoption and handoff.',
+    skills: ['Technical discovery', 'Production integration', 'Evaluation and rollout', 'Customer collaboration'],
+    entryPaths: ['Solutions engineer', 'Product engineer', 'Applied AI engineer'],
+    guideAnchor: '21-forward-deployed-engineer-fde',
+    landingUrl: '/guide/ai-roles/',
+    highlight: true,
+  },
+  {
+    id: 'ai-security-engineer',
+    title: 'AI Security Engineer',
+    evidence: 'Role family',
+    mission: 'Protect AI applications, models, data paths, agents, and platforms against misuse and attack.',
+    skills: ['AI threat modeling', 'Adversarial testing', 'Runtime controls', 'AppSec and IAM integration'],
+    entryPaths: ['Application security engineer', 'Cloud security engineer', 'AI red-team engineer'],
+    guideAnchor: '22-ai-security-engineer',
+    landingUrl: '/guide/ai-roles/',
+  },
+  {
+    id: 'ai-governance-engineer',
+    title: 'AI Governance Engineer',
+    evidence: 'Role family',
+    mission: 'Turn AI policy, risk, and regulatory requirements into operational tooling and evidence.',
+    skills: ['AI inventories and lineage', 'Policy automation', 'Control evidence', 'Risk workflows'],
+    entryPaths: ['Governance engineer', 'Data platform engineer', 'Risk technology engineer'],
+    guideAnchor: '23-ai-governance-engineer',
     landingUrl: '/guide/ai-roles/',
   },
 ]
 
+export const ROLES_MODIFIED_DATE = '2026-08-31'
+
+export function formatRolesUpdatedDate(isoDate: string): string {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {
+    throw new Error(`Invalid roles modified date: ${isoDate}`)
+  }
+
+  const date = new Date(`${isoDate}T00:00:00Z`)
+  if (Number.isNaN(date.getTime())) {
+    throw new Error(`Invalid roles modified date: ${isoDate}`)
+  }
+
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date)
+}
+
+export const ROLES_META = {
+  count: ROLES.length,
+  modifiedDate: ROLES_MODIFIED_DATE,
+  updated: formatRolesUpdatedDate(ROLES_MODIFIED_DATE),
+  sourceUrl: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md',
+} as const
+
 export const DECISION_MATRIX: DecisionRow[] = [
-  { background: 'Software engineer (3+ years)', role: 'AI Engineer', timeline: '3–6 months upskill', roleId: 'ai-engineer' },
-  { background: 'Software engineer at early startup', role: 'Founding AI Engineer', timeline: 'Now, if opportunity exists', roleId: 'founding-ai-engineer' },
-  { background: 'Backend engineer, infra-minded', role: 'Platform Engineer (AI)', timeline: '6–12 months', roleId: 'platform-engineer' },
-  { background: 'Senior engineer who thinks in systems', role: 'AI Architect or Harness Engineer', timeline: '1–2 years accumulation', roleId: 'ai-architect' },
-  { background: 'Engineer who likes research & rigor', role: 'LLM Engineer or AI Safety/Eval', timeline: '+ ML foundations needed', roleId: 'llm-engineer' },
-  { background: 'Non-technical, works with AI daily', role: 'Prompt → Context Engineer', timeline: '6–18 months', roleId: 'context-engineer' },
-  { background: 'PM who wants to stay PM', role: 'AI Product Manager', timeline: '3–6 months upskill', roleId: 'ai-product-manager' },
-  { background: 'Engineer obsessed with reliability & archi', role: 'Harness Engineer', timeline: "Pioneers' territory", roleId: 'harness-engineer' },
-  { background: 'DevOps/platform engineer, wants to work with models', role: 'MLOps Engineer', timeline: '3–6 months upskill', roleId: 'mlops-engineer' },
-  { background: 'Engineer with public presence & community instincts', role: 'AI Developer Advocate', timeline: '6–12 months', roleId: 'ai-developer-advocate' },
-  { background: 'Integration or automation engineer adding AI', role: 'AI Orchestration Engineer', timeline: '3–6 months', roleId: 'ai-orchestration-engineer' },
-  { background: 'Technical writer or QA engineer with engineering background', role: 'Spec Engineer', timeline: '3–6 months', roleId: 'spec-engineer' },
-  { background: 'Cloud/IAM security engineer moving into AI', role: 'Agent Identity Architect', timeline: '6–12 months', roleId: 'agent-identity-architect' },
-  { background: 'Engineer who wants to measure AI quality rigorously', role: 'AI Eval Engineer', timeline: '3–6 months upskill', roleId: 'ai-eval-engineer' },
+  { background: 'Software or product engineer', role: 'AI Engineer or Applied AI Engineer', timeline: 'Build production AI evidence', roleId: 'ai-engineer' },
+  { background: 'Front-end specialist', role: 'Product or Software Engineer with front-end depth', timeline: 'Add backend, eval, and AI integration evidence', roleId: 'applied-ai-engineer' },
+  { background: 'Customer-facing product engineer', role: 'Forward-Deployed Engineer', timeline: 'Add discovery and rollout ownership', roleId: 'forward-deployed-engineer' },
+  { background: 'Backend or infrastructure engineer', role: 'AI Platform or MLOps Engineer', timeline: 'Add model operations and observability', roleId: 'platform-engineer' },
+  { background: 'Senior systems engineer', role: 'AI Architect or Harness capability', timeline: 'Accumulate system-level ownership', roleId: 'ai-architect' },
+  { background: 'Engineer focused on model behavior', role: 'LLM, Safety, or Evaluation Engineer', timeline: 'Add ML and evaluation foundations', roleId: 'llm-engineer' },
+  { background: 'Product manager', role: 'AI Product Manager', timeline: 'Add evaluation and AI UX practice', roleId: 'ai-product-manager' },
+  { background: 'Security engineer', role: 'AI Security Engineer', timeline: 'Extend AppSec, cloud, and IAM into AI systems', roleId: 'ai-security-engineer' },
+  { background: 'Risk or governance technologist', role: 'AI Governance Engineer', timeline: 'Build operational controls and evidence', roleId: 'ai-governance-engineer' },
 ]
 
-export const STATUS_CONFIG: Record<RoleStatus, { label: string; color: string }> = {
-  Established: { label: 'Established', color: '#22c55e' },
-  Growing: { label: 'Growing', color: '#d4520a' },
-  Emerging: { label: 'Emerging', color: '#3b82f6' },
+export const STATUS_CONFIG: Record<RoleEvidence, { label: string; color: string }> = {
+  'Role family': { label: 'Role family', color: '#22c55e' },
+  Specialization: { label: 'Specialization', color: '#d4520a' },
+  Capability: { label: 'Capability', color: '#3b82f6' },
+  'Title qualifier': { label: 'Title qualifier', color: '#7c3aed' },
 }

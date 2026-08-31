@@ -4,6 +4,14 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### AI roles landing synchronization
+
+- **Role discovery page redesigned** (`src/pages/roles/index.astro`, `src/components/landing/RoleQuiz.astro`, `src/styles/roles-page.css`, `src/scripts/role-catalog.ts`): unified the page on one content grid, embedded the role quiz in the hero, added local navigation and accessible evidence-label filters, replaced the dense career table with profile-based path cards, moved front-end and compensation evidence after the catalog, removed unexplained card highlighting, and consolidated taxonomy definitions into an expandable note. The catalog defaults to durable role families while preserving all 22 profiles without JavaScript.
+- **Role catalog filtering tested** (`src/scripts/role-catalog.test.ts`): added DOM-level coverage for the default role-family view, category switching, visible-card counts, and pressed-state accessibility.
+- **Role catalog and metadata corrected** (`src/data/ai-roles.ts`, `src/data/ai-roles.test.ts`, `src/pages/roles/`, `src/components/landing/PersonaRouting.astro`): synchronized the public landing with the guide's 22 reviewed profiles and August 31, 2026 evidence labels. The role count, visible update month, JSON-LD date, profile dates, and home-page summary now derive from one catalog and ISO date, with regression tests for count, date, unique ids, and the canonical title set.
+- **Front-end role evolution added with evidence boundaries** (`src/pages/roles/index.astro`): added the Stack Overflow 2025 self-identification data and LinkedIn 2026 hiring-skill signal without presenting either as proof that AI caused fewer front-end titles. Recommends broader Software Engineer or Product Engineer positioning while preserving front-end technical depth.
+- **Unsupported market claims removed** (`src/pages/roles/`): replaced secondary-site salary averages and the unsourced candidate statistic with employer-, location-, level-, and date-specific compensation examples plus portfolio evidence. Reclassified role cards as role families, specializations, capabilities, or title qualifiers.
+
 ### Translation governance
 
 - **Translation status route and discovery surfaces** (`astro.config.mjs`, `src/data/guide-navigation.mjs`, `scripts/build-guide-index.mjs`, `src/data/guide-search-entries.ts`, `src/components/global/Footer.astro`, and `src/pages/sitemap/index.astro`): added the generated `/guide/translations/` page to the sidebar, curated guide navigation, footer, Cmd+K index, HTML sitemap, and XML sitemap. The page links the English and French project editions plus Chinese, Ukrainian, and Latin American Spanish community adaptations with evidence boundaries. Community repositories remain normal links rather than unsupported `hreflang` alternates; the built page keeps a self-referencing canonical URL.
@@ -40,6 +48,8 @@ All notable changes to the Claude Code Guide Landing Site.
 - **Final Agent Harness Map visuals and search entries published** (`src/data/guide-search-entries.ts`): rebuilt the guide reader with the three selected Gemini infographics, corrected the selection visual to the canonical pilot size of 8 to 12 real tickets, and regenerated the search entries against the expanded landscape headings.
 
 ### Documentation
+
+- **AgentSec multi-detector coverage synchronized** (`src/data/agentsec-security-feed.v1.json`, `src/data/agentsec-security-feed.ts`, `src/data/agentsec-security-feed.test.ts`, `src/pages/security/index.astro`): mirrored the canonical ClawHavoc detector metadata and replaced the order-dependent single-detector view with a stable list. The security page now presents both Shai-Hulud repository evidence and the exact ClawHavoc skill-domain boundary, while preserving supported inputs, sources, limitations, and explicit capabilities outside the scan.
 
 - **"6 months of daily practice/use" updated to "over a year"** (`src/pages/faq/index.astro` x3, `src/pages/compare/index.astro`, `src/pages/compare/[slug].astro`): the wording dated back to the guide's first release and had not been revisited since. Same fix applied in the guide repo's `README.md`.
 - **AgentSec CoSnitch intelligence synchronized** (`src/data/agentsec-security-feed.v1.json`): updated the public security view with the 2026-08-24 AgentSec feed, two reviewed sources, and one `CVE-2026-24301` event. CoSnitch affects a hosted Microsoft Copilot endpoint and remains `not_applicable` to repository scanning; detector and runtime database counts stay unchanged.

@@ -40,7 +40,12 @@ export interface AgentSecDetector {
   id: string
   version: string
   description: string
+  campaign_ids: string[]
+  supported_inputs: string[]
+  source_references: string[]
+  technique_ids: string[]
   limitations: string[]
+  not_scanned: string[]
   remediation_url: string
 }
 
@@ -100,7 +105,7 @@ export interface AgentSecSecurityView {
     decimals?: number
   }>
   events: AgentSecEventCard[]
-  detector: AgentSecDetector
+  detectors: AgentSecDetector[]
 }
 
 function record(value: unknown, label: string): JsonRecord {
@@ -186,7 +191,12 @@ function detector(value: unknown): AgentSecDetector {
     id: string(item.id, 'detector id'),
     version: string(item.version, 'detector version'),
     description: string(item.description, 'detector description'),
+    campaign_ids: strings(item.campaign_ids, 'detector campaign ids'),
+    supported_inputs: strings(item.supported_inputs, 'detector supported inputs'),
+    source_references: strings(item.source_references, 'detector source references'),
+    technique_ids: strings(item.technique_ids, 'detector technique ids'),
     limitations: strings(item.limitations, 'detector limitations'),
+    not_scanned: strings(item.not_scanned, 'detector not scanned capabilities'),
     remediation_url: string(item.remediation_url, 'detector remediation url'),
   }
 }
@@ -273,8 +283,8 @@ export function buildAgentSecSecurityView(feed: AgentSecFeed): AgentSecSecurityV
       return match
     }),
   }))
-  const detector = feed.detectors[0]
-  if (!detector) throw new TypeError('feed has no detector')
+  const detectors = [...feed.detectors].sort((left, right) => left.id.localeCompare(right.id))
+  if (detectors.length === 0) throw new TypeError('feed has no detector')
   return {
     databaseLabel: `Threat DB v${feed.database.version}`,
     databaseUpdatedLabel: formatDate(feed.database.updated),
@@ -310,7 +320,7 @@ export function buildAgentSecSecurityView(feed: AgentSecFeed): AgentSecSecurityV
       },
     ],
     events,
-    detector,
+    detectors,
   }
 }
 
