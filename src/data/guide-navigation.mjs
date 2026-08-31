@@ -71,6 +71,7 @@ export const guideSections = [
     desc: 'Claude Code fundamentals and complete references.',
     links: [
       { title: 'Ultimate Guide', href: '/guide/ultimate-guide/', desc: 'The complete chapter-by-chapter reference.', time: '~3 hours' },
+      { title: 'Translations', href: '/guide/translations/', desc: 'Verified status for English, French, Chinese, Ukrainian, and Latin American Spanish.', time: '8 min' },
       { title: 'Cheatsheet', href: '/guide/cheatsheet/', desc: 'Essential commands and configuration on one page.', time: '5 min' },
       { title: 'Architecture', href: '/guide/architecture/', desc: 'Master loop, tool execution, context, and internal boundaries.', time: '25 min' },
       { title: 'Tools Reference', href: '/guide/tools-reference/', desc: 'Built-in tools, permissions, timeouts, and behaviors.', time: '20 min' },
