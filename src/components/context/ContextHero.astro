@@ -1,0 +1,25 @@
+---
+import ContextConfigurator from './ContextConfigurator.astro'
+---
+
+<header class="context-hero">
+  <div class="context-shell context-hero__grid">
+    <div class="context-hero__copy">
+      <div class="context-badges" aria-label="Configurator details">
+        <span>3 steps</span><span>Under 2 minutes</span><span>No sign-up</span>
+      </div>
+      <h1>Build Your AI Context System</h1>
+      <p class="context-hero__lead">Generate a project-ready CLAUDE.md, see your context maturity level, and leave with the next changes worth making.</p>
+      <div class="context-hero__actions">
+        <a class="btn btn-primary" href="#configure">Start configurator <span aria-hidden="true">→</span></a>
+        <a class="btn btn-secondary" href="/guide/context-engineering/">Read the guide</a>
+      </div>
+      <dl class="context-hero__outputs">
+        <div><dt>Output</dt><dd>CLAUDE.md starter</dd></div>
+        <div><dt>Assessment</dt><dd>5 maturity levels</dd></div>
+        <div><dt>For teams</dt><dd>Profile template</dd></div>
+      </dl>
+    </div>
+    <ContextConfigurator />
+  </div>
+</header>

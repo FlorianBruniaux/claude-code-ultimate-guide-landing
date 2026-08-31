@@ -42,3 +42,20 @@ test('keeps stable lastmod dates for the homepage resource hubs', () => {
   assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/downloads\/': '2026-08-31'/)
   assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/projects\/': '2026-08-31'/)
 })
+
+test('keeps a stable lastmod date for the Context configurator', () => {
+  assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/context\/': '2026-08-31'/)
+})
+
+test('HTML sitemap exposes the complete Security route family', () => {
+  for (const href of ['/security/', '/security/threats/', '/security/cves/', '/security/sandbox/', '/security/hardening/']) {
+    assert.match(source, new RegExp(`href: '${href}'`))
+  }
+})
+
+test('Security routes have stable lastmod dates', () => {
+  for (const path of ['', 'threats/', 'cves/', 'sandbox/', 'hardening/']) {
+    const href = `https://cc.bruniaux.com/security/${path}`.replaceAll('/', '\\/')
+    assert.match(sitemapConfig, new RegExp(`'${href}': '2026-08-31'`))
+  }
+})

@@ -1,0 +1,30 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import SecurityBreadcrumbs from '../../../components/security/SecurityBreadcrumbs.astro'
+import SecurityHero from '../../../components/security/SecurityHero.astro'
+import SecuritySubnav from '../../../components/security/SecuritySubnav.astro'
+import SecurityCveCatalog from '../../../components/security/SecurityCveCatalog.astro'
+import SecuritySourceList from '../../../components/security/SecuritySourceList.astro'
+import SecurityRelatedPages from '../../../components/security/SecurityRelatedPages.astro'
+import { SECURITY_DATA } from '../../../data/security-data'
+import { SECURITY_VIEW, filterCves, getSecurityRoute } from '../../../data/security-page'
+import '../../../styles/security-page.css'
+
+const route = getSecurityRoute('cves')
+const cves = filterCves('', new Set())
+const jsonLd = [{ '@type': 'Dataset', name: route.heading, description: route.description, url: 'https://cc.bruniaux.com/security/cves/', dateModified: SECURITY_DATA.meta.updated }]
+---
+<Layout title={route.title} description={route.description} jsonLd={jsonLd} compactFooter>
+  <SecurityBreadcrumbs route={route} />
+  <SecurityHero route={route} databaseLabel={SECURITY_VIEW.databaseLabel} databaseUpdatedLabel={SECURITY_VIEW.databaseUpdatedLabel}>
+    <Fragment slot="actions"><a class="btn btn-primary" href="#cve-database">Search CVEs</a><a class="btn btn-secondary" href="/security/hardening/">Harden a setup</a></Fragment>
+    <div class="security-panel"><h2>{cves.length} detailed records</h2><p>A missing fixed version is shown as <strong>Unknown</strong>. It is never inferred from nearby releases.</p></div>
+  </SecurityHero>
+  <SecuritySubnav items={[{ href: '#cve-database', label: 'Database' }, { href: '#minimum-versions', label: 'Safe versions' }, { href: '#cve-sources', label: 'Sources' }]} />
+  <main>
+    <section class="security-section" id="cve-database"><div class="security-shell"><div class="security-heading"><h2>Search the CVE database</h2><p>Search by identifier, component, description, mitigation, or source. Filter by reported severity.</p></div><SecurityCveCatalog records={cves} /></div></section>
+    <section class="security-section security-section--alt" id="minimum-versions"><div class="security-shell"><div class="security-heading"><h2>Documented minimum safe versions</h2><p>These values come from the maintained threat database. Absence is not proof that another version is safe.</p></div><div class="security-table-wrap"><table class="security-table"><thead><tr><th>Component</th><th>Minimum safe version</th></tr></thead><tbody>{Object.entries(SECURITY_DATA.minimum_safe_versions).map(([component, version]) => <tr><td><code>{component}</code></td><td><code>{version}</code></td></tr>)}</tbody></table></div></div></section>
+    <div id="cve-sources"><SecuritySourceList heading="CVE sources" sources={SECURITY_DATA.sources.filter((source) => /CVE|MCP|Claude Code|Cursor/i.test(source.name))} /></div>
+  </main>
+  <SecurityRelatedPages current="cves" />
+</Layout>

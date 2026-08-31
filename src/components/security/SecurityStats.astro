@@ -1,0 +1,9 @@
+---
+import type { AgentSecSecurityView } from '../../data/agentsec-security-feed'
+interface Props { stats: AgentSecSecurityView['stats']; compact?: boolean }
+const { stats, compact = false } = Astro.props
+const format = (stat: AgentSecSecurityView['stats'][number]) => `${stat.prefix ?? ''}${stat.value.toLocaleString('en-US', { minimumFractionDigits: stat.decimals ?? 0, maximumFractionDigits: stat.decimals ?? 0 })}${stat.suffix ?? ''}`
+---
+<dl class:list={['security-stats', { 'security-stats--compact': compact }]}> 
+  {stats.map((stat) => <div><dt>{stat.label}</dt><dd>{format(stat)}</dd></div>)}
+</dl>

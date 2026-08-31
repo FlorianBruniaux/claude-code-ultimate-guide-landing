@@ -1,0 +1,12 @@
+---
+import { CONTEXT_NAV_ITEMS } from '../../data/context-page'
+---
+
+<nav class="context-subnav" aria-label="On this page">
+  <div class="context-shell">
+    <span class="context-subnav__label">On this page</span>
+    <div class="context-subnav__links">
+      {CONTEXT_NAV_ITEMS.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+  </div>
+</nav>

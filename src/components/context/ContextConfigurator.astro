@@ -1,0 +1,177 @@
+---
+import {
+  AI_TOOLS_OPTIONS,
+  CLAUDE_MD_STATUS_OPTIONS,
+  FRONTEND_OPTIONS,
+  RULES_FILES_OPTIONS,
+  STACK_OPTIONS,
+  STEPS,
+  TEAM_SIZE_OPTIONS,
+} from '../../data/context-data'
+import { CONTEXT_GUIDE_HREF } from '../../data/context-page'
+
+const questionSteps = STEPS.slice(0, 3)
+---
+
+<div class="context-configurator" id="configure" data-context-configurator>
+  <div class="context-configurator__head">
+    <div>
+      <p class="context-kicker">Build your starter kit</p>
+      <h2>Three answers, concrete output</h2>
+    </div>
+    <span class="context-time">Under 2 min</span>
+  </div>
+
+  <ol class="context-progress" aria-label="Configurator progress">
+    {questionSteps.map((step, index) => (
+      <li data-context-step-indicator={step.id} aria-current={index === 0 ? 'step' : undefined}>
+        <span>{index + 1}</span>
+        <strong>{step.title}</strong>
+      </li>
+    ))}
+  </ol>
+
+  <form class="context-form" data-context-form novalidate>
+    <fieldset class="context-step" data-context-step="profile">
+      <legend>Your profile</legend>
+      <p class="context-step__intro">Tell us how many people share the context and which assistants must understand it.</p>
+
+      <div class="context-field">
+        <p class="context-field__label">Team size</p>
+        <div class="context-options context-options--four">
+          {TEAM_SIZE_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="radio" name="teamSize" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-field">
+        <p class="context-field__label">AI tools <span>optional</span></p>
+        <div class="context-options context-options--tools">
+          {AI_TOOLS_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="checkbox" name="aiTools" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-actions context-actions--end">
+        <button class="btn btn-primary" type="button" data-context-next>Continue <span aria-hidden="true">→</span></button>
+      </div>
+    </fieldset>
+
+    <fieldset class="context-step" data-context-step="current" hidden>
+      <legend>Current setup</legend>
+      <p class="context-step__intro">This establishes the starting maturity level. It does not grade code quality.</p>
+
+      <div class="context-field">
+        <p class="context-field__label">CLAUDE.md status</p>
+        <div class="context-options context-options--two">
+          {CLAUDE_MD_STATUS_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="radio" name="claudeMdStatus" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-field">
+        <p class="context-field__label">Separate rules files</p>
+        <div class="context-options context-options--two">
+          {RULES_FILES_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="radio" name="rulesFiles" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-actions">
+        <button class="btn btn-secondary" type="button" data-context-back><span aria-hidden="true">←</span> Back</button>
+        <button class="btn btn-primary" type="button" data-context-next>Continue <span aria-hidden="true">→</span></button>
+      </div>
+    </fieldset>
+
+    <fieldset class="context-step" data-context-step="stack" hidden>
+      <legend>Tech stack</legend>
+      <p class="context-step__intro">The generated file uses these choices to suggest concrete conventions.</p>
+
+      <div class="context-field">
+        <p class="context-field__label">Primary language</p>
+        <div class="context-options context-options--three">
+          {STACK_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="radio" name="stack" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-field">
+        <p class="context-field__label">Frontend framework</p>
+        <div class="context-options context-options--three">
+          {FRONTEND_OPTIONS.map((option) => (
+            <label class="context-option">
+              <input type="radio" name="frontend" value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.description}</small></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="context-actions">
+        <button class="btn btn-secondary" type="button" data-context-back><span aria-hidden="true">←</span> Back</button>
+        <button class="btn btn-primary" type="button" data-context-generate>Generate my starter kit <span aria-hidden="true">→</span></button>
+      </div>
+    </fieldset>
+
+    <p class="context-error" data-context-error role="alert"></p>
+  </form>
+
+  <section class="context-results" data-context-results hidden tabindex="-1" aria-live="polite">
+    <div class="context-results__summary">
+      <div>
+        <p class="context-kicker">Your context maturity</p>
+        <h3 data-context-maturity-label>Level 1: Starter</h3>
+      </div>
+      <button class="context-reset" type="button" data-context-restart>Start again</button>
+    </div>
+    <div class="context-results__next">
+      <strong>Recommended next steps</strong>
+      <ul data-context-next-steps></ul>
+    </div>
+    <article class="context-output">
+      <div class="context-output__head">
+        <div><span aria-hidden="true">📄</span><strong>Personalized CLAUDE.md</strong></div>
+        <button type="button" data-copy-target="claude-md">Copy file</button>
+      </div>
+      <span class="context-copy-status" data-copy-status="claude-md" aria-live="polite"></span>
+      <pre tabindex="0" data-context-claude-md></pre>
+    </article>
+    <article class="context-output" data-context-profile-panel>
+      <div class="context-output__head">
+        <div><span aria-hidden="true">👥</span><strong>Team profile template</strong></div>
+        <button type="button" data-copy-target="profile">Copy file</button>
+      </div>
+      <span class="context-copy-status" data-copy-status="profile" aria-live="polite"></span>
+      <pre tabindex="0" data-context-profile></pre>
+    </article>
+    <a class="context-guide-link" href={CONTEXT_GUIDE_HREF}>Use the full Context Engineering guide <span aria-hidden="true">→</span></a>
+  </section>
+
+  <noscript>
+    <p class="context-noscript">The configurator needs JavaScript. <a href={CONTEXT_GUIDE_HREF}>Open the Context Engineering guide</a>.</p>
+  </noscript>
+</div>
+
+<script>
+  import '../../scripts/context-configurator.ts'
+</script>

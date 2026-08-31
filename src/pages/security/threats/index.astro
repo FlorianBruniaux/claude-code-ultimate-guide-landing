@@ -1,0 +1,33 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import SecurityBreadcrumbs from '../../../components/security/SecurityBreadcrumbs.astro'
+import SecurityHero from '../../../components/security/SecurityHero.astro'
+import SecuritySubnav from '../../../components/security/SecuritySubnav.astro'
+import SecurityThreatCatalog from '../../../components/security/SecurityThreatCatalog.astro'
+import SecuritySourceList from '../../../components/security/SecuritySourceList.astro'
+import SecurityRelatedPages from '../../../components/security/SecurityRelatedPages.astro'
+import { SECURITY_DATA, type Campaign } from '../../../data/security-data'
+import { SECURITY_THREAT_RECORDS, SECURITY_VIEW, getLatestSecurityEvents, getSecurityRoute } from '../../../data/security-page'
+import '../../../styles/security-page.css'
+
+const route = getSecurityRoute('threats')
+const events = getLatestSecurityEvents(12)
+const campaigns: readonly Campaign[] = SECURITY_DATA.campaigns
+const jsonLd = [{ '@type': 'CollectionPage', name: route.heading, description: route.description, url: 'https://cc.bruniaux.com/security/threats/', dateModified: SECURITY_VIEW.databaseUpdatedLabel }]
+---
+<Layout title={route.title} description={route.description} jsonLd={jsonLd} compactFooter>
+  <SecurityBreadcrumbs route={route} />
+  <SecurityHero route={route} databaseLabel={SECURITY_VIEW.databaseLabel} databaseUpdatedLabel={SECURITY_VIEW.databaseUpdatedLabel}>
+    <Fragment slot="actions"><a class="btn btn-primary" href="#threat-database">Search records</a><a class="btn btn-secondary" href="#attack-techniques">Understand attacks</a></Fragment>
+    <div class="security-panel"><h2>{SECURITY_THREAT_RECORDS.length} indexed records</h2><p>Events, campaigns, authors, and malicious skill records. The catalogue is evidence, not a guarantee of coverage.</p></div>
+  </SecurityHero>
+  <SecuritySubnav items={[{ href: '#attack-techniques', label: 'Techniques' }, { href: '#agentsec-intelligence', label: 'Intelligence' }, { href: '#active-campaigns', label: 'Campaigns' }, { href: '#threat-database', label: 'Database' }, { href: '#security-sources', label: 'Sources' }]} />
+  <main>
+    <section class="security-section" id="attack-techniques"><div class="security-shell"><div class="security-heading"><h2>Attack techniques</h2><p>Start with the attacker’s mechanism, then inspect examples, linked campaigns, and the documented mitigation.</p></div><div class="security-card-grid">{SECURITY_DATA.attack_techniques.map((item) => <article class="security-panel"><p class="security-eyebrow">{item.id}</p><h3>{item.name}</h3><p>{item.description}</p><details><summary>Examples and mitigation</summary><ul>{item.examples.map((example) => <li>{example}</li>)}</ul><p><strong>Mitigation:</strong> {item.mitigation}</p></details></article>)}</div></div></section>
+    <section class="security-section security-section--alt" id="agentsec-intelligence"><div class="security-shell"><div class="security-heading"><h2>AgentSec intelligence</h2><p>Recent feed events, ordered by their canonical event date. Detection coverage remains explicit for each record.</p></div><div class="security-event-grid">{events.map((event) => <article class="security-event"><time datetime={event.date}>{event.dateLabel}</time><h3>{event.title}</h3><p>{event.summary}</p><p><strong>Detector coverage:</strong> {event.coverageStatus}</p><div class="security-event__sources">{event.sources.map((source) => <a href={source.url} target="_blank" rel="noopener noreferrer">{source.publisher}</a>)}</div></article>)}</div></div></section>
+    <section class="security-section" id="active-campaigns"><div class="security-shell"><div class="security-heading"><h2>Active campaigns</h2><p>Campaign records preserve their reported date and source. “Active” describes the tracked campaign collection, not a claim that every campaign is active today.</p></div><div class="security-card-grid">{campaigns.map((campaign) => <article class="security-panel"><p class="security-record-meta"><time datetime={campaign.date}>{campaign.date}</time><span>{campaign.source}</span></p><h3>{campaign.name}</h3><p>{campaign.malware ?? campaign.technique ?? `Tracked across ${campaign.platform ?? campaign.platforms?.join(', ') ?? 'AI agent ecosystems'}.`}</p></article>)}</div></div></section>
+    <section class="security-section security-section--alt" id="threat-database"><div class="security-shell"><div class="security-heading"><h2>Threat database</h2><p>Filter the complete server-rendered catalogue. Search and type controls enhance the page but are not required to read the records.</p></div><SecurityThreatCatalog records={SECURITY_THREAT_RECORDS} /></div></section>
+    <div id="security-sources"><SecuritySourceList sources={SECURITY_DATA.sources} /></div>
+  </main>
+  <SecurityRelatedPages current="threats" />
+</Layout>

@@ -1,0 +1,33 @@
+---
+import type { SecurityCveRow } from '../../data/security-page'
+interface Props { records: readonly SecurityCveRow[] }
+const { records } = Astro.props
+const severities = [...new Set(records.map((record) => record.severity.toLowerCase()))]
+---
+<div class="security-catalog" data-security-catalog data-initial-limit="12">
+  <div class="security-catalog__controls">
+    <label>Search vulnerabilities<input type="search" placeholder="CVE, component, mitigation…" data-security-search /></label>
+    <div class="security-filters" role="group" aria-label="Filter by severity">
+      {severities.map((severity) => <button type="button" data-security-filter={severity} aria-pressed="false">{severity}</button>)}
+      <button type="button" data-security-reset>Reset</button>
+    </div>
+    <p data-security-count aria-live="polite">{records.length} results</p>
+  </div>
+  <div class="security-cve-list">
+    {records.map((record) => (
+      <article class="security-cve" data-security-record data-security-cve-record data-record-type={record.severity.toLowerCase()} data-search-text={record.searchText}>
+        <div class="security-cve__head"><h3>{record.id}</h3><span class={`security-severity security-severity--${record.severity.toLowerCase()}`}>{record.severity}</span></div>
+        <p class="security-cve__component">{record.component}</p>
+        <p>{record.description}</p>
+        <dl><div><dt>Fixed in</dt><dd>{record.fixedInLabel}</dd></div><div><dt>Mitigation</dt><dd>{record.mitigation}</dd></div></dl>
+        <p class="security-cve__source">Source: {record.source}</p>
+      </article>
+    ))}
+  </div>
+  <button type="button" class="security-show-all" data-security-show-all>Show all {records.length} vulnerabilities</button>
+  <div class="security-empty" data-security-empty hidden><h3>No matching vulnerabilities</h3><p>Change the search or reset the severity filter.</p><button type="button" data-security-reset>Reset filters</button></div>
+</div>
+<script>
+  import { initSecurityCatalogs } from '../../scripts/security-catalog'
+  initSecurityCatalogs()
+</script>

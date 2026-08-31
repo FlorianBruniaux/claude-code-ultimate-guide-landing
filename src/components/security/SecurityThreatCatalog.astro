@@ -1,0 +1,31 @@
+---
+import type { SecurityThreatRow } from '../../data/security-page'
+interface Props { records: readonly SecurityThreatRow[] }
+const { records } = Astro.props
+const types = ['event', 'campaign', 'author', 'skill']
+---
+<div class="security-catalog" data-security-catalog data-initial-limit="18">
+  <div class="security-catalog__controls">
+    <label>Search threat records<input type="search" placeholder="Name, ecosystem, source…" data-security-search /></label>
+    <div class="security-filters" role="group" aria-label="Filter by record type">
+      {types.map((type) => <button type="button" data-security-filter={type} aria-pressed="false">{type}</button>)}
+      <button type="button" data-security-reset>Reset</button>
+    </div>
+    <p data-security-count aria-live="polite">{records.length} results</p>
+  </div>
+  <div class="security-threat-list">
+    {records.map((record) => (
+      <article class="security-threat" data-security-record data-security-threat-record data-record-type={record.type} data-search-text={record.searchText}>
+        <div><span class="security-record-type">{record.type}</span>{record.risk && <span class="security-severity">{record.risk}</span>}</div>
+        <h3>{record.title}</h3><p>{record.summary}</p>
+        <p class="security-record-meta">{record.date && <time datetime={record.date}>{record.date}</time>}{record.source && <span>{record.source}</span>}</p>
+      </article>
+    ))}
+  </div>
+  <button type="button" class="security-show-all" data-security-show-all>Show all {records.length} threat records</button>
+  <div class="security-empty" data-security-empty hidden><h3>No matching threat records</h3><p>Change the search or reset the type filter.</p><button type="button" data-security-reset>Reset filters</button></div>
+</div>
+<script>
+  import { initSecurityCatalogs } from '../../scripts/security-catalog'
+  initSecurityCatalogs()
+</script>

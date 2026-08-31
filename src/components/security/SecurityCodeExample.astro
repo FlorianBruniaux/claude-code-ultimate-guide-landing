@@ -1,0 +1,13 @@
+---
+interface Props { title: string; code: string; language?: string }
+const { title, code, language = 'bash' } = Astro.props
+---
+<div class="security-code" data-copy-container>
+  <div class="security-code__bar"><strong>{title}</strong><button type="button" data-copy-control>Copy</button></div>
+  <pre><code class={`language-${language}`} data-copy-source>{code}</code></pre>
+  <p data-copy-status aria-live="polite"></p>
+</div>
+<script>
+  import { initCopyControls } from '../../scripts/copy-control'
+  initCopyControls()
+</script>

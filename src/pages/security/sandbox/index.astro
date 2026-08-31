@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import SecurityBreadcrumbs from '../../../components/security/SecurityBreadcrumbs.astro'
+import SecurityHero from '../../../components/security/SecurityHero.astro'
+import SecuritySubnav from '../../../components/security/SecuritySubnav.astro'
+import SecurityCodeExample from '../../../components/security/SecurityCodeExample.astro'
+import SecurityRelatedPages from '../../../components/security/SecurityRelatedPages.astro'
+import { SECURITY_VIEW, getSecurityRoute } from '../../../data/security-page'
+import '../../../styles/security-page.css'
+
+const route = getSecurityRoute('sandbox')
+const config = `{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": false,
+    "excludedCommands": ["git push *", "git fetch *"],
+    "credentials": {
+      "files": ["~/.ssh", "~/.aws/credentials", "~/.config/gcloud"],
+      "envVars": ["AWS_ACCESS_KEY_ID", "GITHUB_TOKEN"]
+    }
+  }
+}`
+const jsonLd = [{ '@type': 'TechArticle', headline: route.heading, description: route.description, url: 'https://cc.bruniaux.com/security/sandbox/' }]
+---
+<Layout title={route.title} description={route.description} jsonLd={jsonLd} compactFooter>
+  <SecurityBreadcrumbs route={route} />
+  <SecurityHero route={route} databaseLabel={SECURITY_VIEW.databaseLabel} databaseUpdatedLabel={SECURITY_VIEW.databaseUpdatedLabel}>
+    <Fragment slot="actions"><a class="btn btn-primary" href="#configure-sandbox">Configure sandbox</a><a class="btn btn-secondary" href="#failure-modes">Avoid failures</a></Fragment>
+    <div class="security-panel"><h2>Kernel boundary, not policy magic</h2><p>Permissions decide whether a command starts. The sandbox constrains what the resulting process can touch.</p></div>
+  </SecurityHero>
+  <SecuritySubnav items={[{ href: '#protection-boundary', label: 'Boundary' }, { href: '#failure-modes', label: 'Failure modes' }, { href: '#configure-sandbox', label: 'Configuration' }, { href: '#verify-sandbox', label: 'Verification' }]} />
+  <main>
+    <section class="security-section" id="the-sandbox"><div class="security-shell"><div id="protection-boundary" class="security-heading"><h2>What the sandbox protects</h2><p>The operating system enforces filesystem and network boundaries after a command starts, including child processes and package lifecycle scripts.</p></div><div class="security-card-grid"><article class="security-panel"><h3>Strong boundary</h3><p>A permitted command cannot silently expand beyond the sandbox’s writable paths and network policy.</p></article><article class="security-panel"><h3>Separate from permissions</h3><p>A permission rule matches command text. It cannot predict everything a package installer, shell script, or child process will do.</p></article></div><div class="security-heading" style="margin-top:2rem"><h2>What it does not protect</h2><p>Default readable paths, inherited environment variables, approved exclusions, compromised dependencies, and commands launched outside the sandbox remain separate risks.</p></div><p class="security-callout"><strong>Credential warning:</strong> file restrictions alone do not remove tokens inherited through environment variables. Configure both credential files and environment variable names.</p></div></section>
+    <section class="security-section security-section--alt" id="failure-modes"><div class="security-shell"><div class="security-heading"><h2>Three silent failure modes</h2><p>These traps usually surface as an operation error or timeout, not as a message explaining which exclusion failed.</p></div><div class="security-card-grid"><article class="security-panel" data-sandbox-failure><p class="security-eyebrow">Trap 1</p><h3>The bare command never fires</h3><p><code>"docker"</code> matches the zero-argument command, not <code>docker ps</code>. Use a deliberately scoped pattern such as <code>"docker *"</code>.</p></article><article class="security-panel" data-sandbox-failure><p class="security-eyebrow">Trap 2</p><h3>A match can unsandbox a compound call</h3><p>A broad exclusion may remove the boundary for the entire compound shell call. Prefer subcommands such as <code>"git push *"</code>.</p></article><article class="security-panel" data-sandbox-failure><p class="security-eyebrow">Trap 3</p><h3>A wrapper breaks the match</h3><p><code>gh api</code> and <code>rtk gh api</code> are different command strings. Account for wrappers introduced by hooks and tooling.</p></article></div></div></section>
+    <section class="security-section" id="configure-sandbox"><div class="security-shell"><div class="security-heading"><h2>Start from an explicit configuration</h2><p>Keep exclusions narrow, block sensitive files, name credential environment variables, and leave automatic Bash approval disabled until verified.</p></div><SecurityCodeExample title=".claude/settings.json" code={config} language="json" /><p class="security-callout">Treat this as a reviewable starting point. Paths and commands must match your operating system, repository, and actual toolchain.</p></div></section>
+    <section class="security-section security-section--alt" id="verify-sandbox"><div class="security-shell"><div class="security-heading"><h2>Verify the boundary</h2><p>Test the control itself. A valid JSON file only proves structure, not runtime isolation.</p></div><ol class="security-panel"><li>Confirm a permitted write succeeds inside the repository.</li><li>Confirm a write outside allowed paths fails.</li><li>Confirm denied credential files and environment variables are unavailable.</li><li>Test every excluded command with its real wrapper and arguments.</li><li>Verify denied network destinations fail within a bounded timeout.</li></ol><div class="security-hero__actions"><a class="btn btn-primary" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/sandbox-native.md" target="_blank" rel="noopener">Read the full sandbox guide</a><a class="btn btn-secondary" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/config/sandbox-native.json" target="_blank" rel="noopener">Open verified example</a></div></div></section>
+  </main>
+  <SecurityRelatedPages current="sandbox" />
+</Layout>

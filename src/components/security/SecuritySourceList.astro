@@ -1,0 +1,12 @@
+---
+import type { SecuritySource } from '../../data/security-data'
+interface Props { sources: readonly SecuritySource[]; heading?: string }
+const { sources, heading = 'Sources and evidence' } = Astro.props
+---
+<section class="security-sources">
+  <h2>{heading}</h2>
+  <p>Dates describe the source record. Recheck the linked source before acting on time-sensitive risk information.</p>
+  <ul>
+    {sources.map((source) => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a><time datetime={source.date}>{source.date}</time></li>)}
+  </ul>
+</section>

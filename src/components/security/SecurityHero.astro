@@ -1,0 +1,22 @@
+---
+import type { SecurityRoute } from '../../data/security-page'
+
+interface Props {
+  route: SecurityRoute
+  databaseLabel: string
+  databaseUpdatedLabel: string
+}
+const { route, databaseLabel, databaseUpdatedLabel } = Astro.props
+---
+<header class="security-hero">
+  <div class="security-shell security-hero__grid">
+    <div>
+      <p class="security-eyebrow">{route.eyebrow}</p>
+      <h1>{route.heading}</h1>
+      <p class="security-hero__summary">{route.summary}</p>
+      <p class="security-freshness"><span>{databaseLabel}</span><span>Updated {databaseUpdatedLabel}</span></p>
+      <div class="security-hero__actions"><slot name="actions" /></div>
+    </div>
+    <div class="security-hero__aside"><slot /></div>
+  </div>
+</header>

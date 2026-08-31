@@ -1,0 +1,31 @@
+---
+import { SECURITY_CHECKLIST_GROUPS } from '../../data/security-page'
+interface Props { mode: 'quick' | 'full'; storageKey?: string }
+const { mode, storageKey = `security-checklist-${mode}-v1` } = Astro.props
+const groups = mode === 'quick'
+  ? SECURITY_CHECKLIST_GROUPS.map((group) => ({ ...group, items: group.items.slice(0, 1) }))
+  : SECURITY_CHECKLIST_GROUPS
+---
+<section class="security-checklist" data-security-checklist data-storage-key={storageKey}>
+  <div class="security-checklist__header">
+    <p data-checklist-progress aria-live="polite">0 of {groups.reduce((sum, group) => sum + group.items.length, 0)} complete</p>
+    <button type="button" class="security-link-button" data-checklist-reset>Reset</button>
+  </div>
+  <div class="security-checklist__groups">
+    {groups.map((group) => (
+      <fieldset>
+        <legend>{group.title}</legend>
+        {group.items.map((item, index) => (
+          <label>
+            <input type="checkbox" value={`${group.id}-${index}`} data-checklist-item />
+            <span>{item}</span>
+          </label>
+        ))}
+      </fieldset>
+    ))}
+  </div>
+</section>
+<script>
+  import { initSecurityChecklists } from '../../scripts/security-checklist'
+  initSecurityChecklists()
+</script>

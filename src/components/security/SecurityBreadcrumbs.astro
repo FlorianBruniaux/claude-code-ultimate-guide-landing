@@ -1,0 +1,11 @@
+---
+import type { SecurityRoute } from '../../data/security-page'
+interface Props { route: SecurityRoute }
+const { route } = Astro.props
+---
+<nav class="security-breadcrumbs security-shell" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    {route.id === 'hub' ? <li aria-current="page">Security</li> : <><li><a href="/security/">Security</a></li><li aria-current="page">{route.eyebrow}</li></>}
+  </ol>
+</nav>

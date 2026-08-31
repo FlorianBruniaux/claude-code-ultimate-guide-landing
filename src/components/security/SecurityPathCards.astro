@@ -1,0 +1,15 @@
+---
+import { SECURITY_ROUTES } from '../../data/security-page'
+const routes = SECURITY_ROUTES.filter((route) => route.id !== 'hub')
+const icons = { threats: '◎', cves: 'CVE', sandbox: '▣', hardening: '✓' }
+---
+<div class="security-paths">
+  {routes.map((route) => (
+    <a class="security-path-card" href={route.href}>
+      <span class="security-path-card__icon" aria-hidden="true">{icons[route.id as keyof typeof icons]}</span>
+      <h3>{route.eyebrow}</h3>
+      <p>{route.summary}</p>
+      <span class="security-text-link">Open this path <span aria-hidden="true">→</span></span>
+    </a>
+  ))}
+</div>

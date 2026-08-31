@@ -1,0 +1,11 @@
+---
+interface Item { href: string; label: string }
+interface Props { items: readonly Item[] }
+const { items } = Astro.props
+---
+<nav class="security-subnav" aria-label="On this page">
+  <div class="security-shell security-subnav__inner">
+    <span>On this page</span>
+    {items.map((item) => <a href={item.href}>{item.label}</a>)}
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+---
+import { SECURITY_ROUTES, type SecurityRouteId } from '../../data/security-page'
+interface Props { current: SecurityRouteId }
+const { current } = Astro.props
+const routes = SECURITY_ROUTES.filter((route) => route.id !== 'hub' && route.id !== current)
+---
+<aside class="security-related" aria-labelledby="related-security-title">
+  <h2 id="related-security-title">Continue your security review</h2>
+  <div class="security-related__grid">
+    {routes.map((route) => <a href={route.href}><strong>{route.eyebrow}</strong><span>{route.summary}</span></a>)}
+  </div>
+</aside>

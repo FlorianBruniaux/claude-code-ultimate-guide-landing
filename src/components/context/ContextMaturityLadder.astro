@@ -1,0 +1,23 @@
+---
+import { MATURITY_LEVELS } from '../../data/context-data'
+---
+
+<section class="context-section context-section--alt" id="maturity">
+  <div class="context-shell">
+    <div class="context-section__head context-section__head--split">
+      <div><p class="context-kicker">A practical progression</p><h2>Five context maturity levels</h2></div>
+      <p>The configurator highlights your starting point. The useful move is the next level, not the highest label.</p>
+    </div>
+    <ol class="context-ladder">
+      {MATURITY_LEVELS.map((level) => (
+        <li class="context-level" data-context-maturity={level.level}>
+          <div class="context-level__marker"><span>L{level.level}</span></div>
+          <div class="context-level__copy">
+            <div class="context-level__title"><h3>{level.name}</h3><span>{level.criteria[0]}</span></div>
+            <p>{level.criteria.slice(1).join(' · ')}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

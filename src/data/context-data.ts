@@ -20,6 +20,17 @@ export interface MaturityLevel {
   nextSteps: string[]
 }
 
+export interface ContextAnswers {
+  teamSize: string
+  aiTools: string[]
+  claudeMdStatus: string
+  rulesFiles: string
+  stack: string
+  frontend: string
+}
+
+export type PartialContextAnswers = Partial<ContextAnswers>
+
 export const STEPS: Step[] = [
   { id: 'profile', title: 'Your Profile', subtitle: 'Team size and AI tools you use' },
   { id: 'current', title: 'Current Setup', subtitle: 'Your existing context configuration' },
@@ -107,12 +118,9 @@ export const MATURITY_LEVELS: MaturityLevel[] = [
 ]
 
 // Template generators: generate CLAUDE.md content from user answers
-export function generateClaudeMd(answers: {
-  teamSize: string
-  stack: string
-  frontend: string
-  claudeMdStatus: string
-}): string {
+export function generateClaudeMd(
+  answers: Pick<ContextAnswers, 'teamSize' | 'stack' | 'frontend' | 'claudeMdStatus'>,
+): string {
   const isTeam = answers.teamSize !== 'solo'
   const hasFrontend = answers.frontend !== 'none'
 
@@ -223,11 +231,9 @@ ${teamSection}
 `
 }
 
-export function generateProfileYaml(answers: {
-  teamSize: string
-  stack: string
-  frontend: string
-}): string | null {
+export function generateProfileYaml(
+  answers: Pick<ContextAnswers, 'teamSize' | 'stack' | 'frontend'>,
+): string | null {
   if (answers.teamSize === 'solo') return null
 
   return `# Team Profile Template
@@ -256,11 +262,9 @@ overrides:
 `
 }
 
-export function calculateMaturityLevel(answers: {
-  claudeMdStatus: string
-  rulesFiles: string
-  teamSize: string
-}): number {
+export function calculateMaturityLevel(
+  answers: Pick<ContextAnswers, 'claudeMdStatus' | 'rulesFiles' | 'teamSize'>,
+): number {
   if (answers.claudeMdStatus === 'none') return 1
   if (answers.claudeMdStatus === 'small' && answers.rulesFiles === '0') return 1
   if (answers.rulesFiles === '0') return answers.claudeMdStatus === 'medium' ? 2 : 1
