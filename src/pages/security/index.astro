@@ -71,7 +71,7 @@ const jsonLd = [
         <h2>Verify Your Repository with AgentSec</h2>
         <div class="agentsec-grid">
             <div class="agentsec-copy">
-                <p><strong>AgentSec Triage</strong> checks a local repository against the threat intelligence used by this page. The current alpha covers repository lockfiles, installed package metadata, payload hashes, and startup configuration for the August 2026 Shai-Hulud campaign.</p>
+                <p><strong>AgentSec Triage</strong> checks a local repository against the threat intelligence used by this page. The current alpha covers repository lockfiles, installed package metadata, payload hashes, and startup configuration for the August 2026 Shai-Hulud campaign. It also checks local <code>SKILL.md</code> files and explicitly delegated setup instructions for the exact ClawHavoc campaign domain.</p>
                 <p>A clean result is <strong>not a security guarantee</strong>. The scan is repository-local, does not inspect Git history or host-level persistence, and uses bundled intelligence that only changes when AgentSec is updated.</p>
                 <div class="cta-buttons">
                     <a href={feed.agentsec.installation_url} class="btn btn-primary" target="_blank" rel="noopener">Install AgentSec</a>
@@ -81,10 +81,27 @@ const jsonLd = [
             <div class="agentsec-command">
                 <div class="agentsec-meta">
                     <span>AgentSec {feed.agentsec.version} ({feed.agentsec.status})</span>
-                    <span>Detector {security.detector.id} v{security.detector.version}</span>
+                    <span>{security.detectors.length} detectors</span>
                 </div>
                 <pre><code>{feed.agentsec.scan_command}</code></pre>
-                <p>{security.detector.description}</p>
+                <ul class="agentsec-detectors">
+                    {security.detectors.map((detector) => (
+                        <li>
+                            <strong>{detector.id} v{detector.version}</strong>
+                            <span>{detector.description}</span>
+                            <details>
+                                <summary>Coverage and sources</summary>
+                                <p><strong>Supported inputs:</strong> {detector.supported_inputs.join('; ')}</p>
+                                <p><strong>Not scanned:</strong> {detector.not_scanned.join(', ')}</p>
+                                <p class="agentsec-sources">
+                                    {detector.source_references.map((source, index) => (
+                                        <a href={source} target="_blank" rel="noopener">Source {index + 1}</a>
+                                    ))}
+                                </p>
+                            </details>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     </section>
@@ -1116,6 +1133,45 @@ const jsonLd = [
         font-family: var(--font-mono);
         font-size: 0.75rem;
         font-weight: 700;
+    }
+
+    .agentsec-detectors {
+        display: grid;
+        gap: var(--space-md);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .agentsec-detectors li {
+        display: grid;
+        gap: var(--space-xs);
+    }
+
+    .agentsec-detectors strong {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+    }
+
+    .agentsec-detectors span {
+        color: var(--text-secondary);
+        line-height: 1.55;
+    }
+
+    .agentsec-detectors details {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+    }
+
+    .agentsec-detectors details p {
+        margin: var(--space-sm) 0 0;
+        line-height: 1.5;
+    }
+
+    .agentsec-sources {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
     }
 
     .section-intro {

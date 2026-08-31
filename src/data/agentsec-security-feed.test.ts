@@ -38,6 +38,28 @@ test('event cards join stable source ids to public source references', () => {
   )
 })
 
+test('security view exposes every detector without depending on feed order', () => {
+  const reordered = structuredClone(AGENTSEC_FEED)
+  reordered.detectors.reverse()
+
+  const canonical = buildAgentSecSecurityView(AGENTSEC_FEED)
+  const reversed = buildAgentSecSecurityView(reordered)
+  const expected = ['clawhavoc-skill', 'shai-hulud-keyv']
+
+  assert.deepEqual(canonical.detectors.map((item) => item.id), expected)
+  assert.deepEqual(reversed.detectors.map((item) => item.id), expected)
+  assert.deepEqual(canonical.detectors[0]?.supported_inputs, [
+    'repository-local SKILL.md files',
+    'same-skill local Markdown setup files referenced by SKILL.md',
+  ])
+  assert.deepEqual(canonical.detectors[0]?.not_scanned, [
+    'skill.registry_history',
+    'skill.remote_payloads',
+    'skill.runtime_behavior',
+    'skill.unreferenced_companion_files',
+  ])
+})
+
 test('parser rejects a feed with missing contract sections', () => {
   assert.throws(
     () => parseAgentSecFeed({ schema_version: '1' }),
