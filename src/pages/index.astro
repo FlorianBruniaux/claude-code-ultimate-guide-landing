@@ -1,22 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HeroBanner from '../components/landing/HeroBanner.astro'
-import PersonaRouting from '../components/landing/PersonaRouting.astro'
-import Onboarding from '../components/landing/Onboarding.astro'
-import ClaudeEcosystem from '../components/landing/ClaudeEcosystem.astro'
-
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro'
-import WhitepapersPreview from '../components/landing/WhitepapersPreview.astro'
-import McpDemo from '../components/landing/McpDemo.astro'
-import GoldenRules from '../components/landing/GoldenRules.astro'
-import VisualDiagrams from '../components/landing/VisualDiagrams.astro'
-import SecurityTeaser from '../components/landing/SecurityTeaser.astro'
-import MemorySystems from '../components/landing/MemorySystems.astro'
-import ComparisonTable from '../components/landing/ComparisonTable.astro'
+import StartHere from '../components/landing/StartHere.astro'
+import FlagshipResources from '../components/landing/FlagshipResources.astro'
+import McpProof from '../components/landing/McpProof.astro'
+import ExploreDeeper from '../components/landing/ExploreDeeper.astro'
+import LatestContent from '../components/landing/LatestContent.astro'
 import Community from '../components/landing/Community.astro'
 import RelatedProjects from '../components/landing/RelatedProjects.astro'
 import ConsultingCta from '../components/global/ConsultingCta.astro'
 import { getSiteStats } from '../utils/site-stats'
+import { authorProfile } from '../data/author-profile'
 
 const stats = await getSiteStats()
 
@@ -38,15 +32,17 @@ const jsonLd = [
     "author": {
       "@type": "Person",
       "@id": "https://cc.bruniaux.com/#author",
-      "name": "Florian BRUNIAUX",
-      "url": "https://github.com/FlorianBruniaux",
-      "jobTitle": "Founding Engineer",
+      "name": authorProfile.name,
+      "url": authorProfile.aboutUrl,
+      "image": `https://cc.bruniaux.com${authorProfile.imageUrl}`,
+      "jobTitle": authorProfile.role,
+      "sameAs": [authorProfile.githubUrl, authorProfile.linkedinUrl],
     },
     "isAccessibleForFree": true,
     "educationalLevel": "Beginner to Advanced",
     "inLanguage": "en",
     "datePublished": "2025-06-01",
-    "dateModified": "2026-06-19",
+    "dateModified": "2026-08-31",
     "teaches": [
       "Claude Code CLI installation and configuration",
       "CLAUDE.md project memory files",
@@ -94,20 +90,13 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd} preloadImages={['/claude-logo-orange.svg']}>
+<Layout title={title} description={description} jsonLd={jsonLd} preloadImages={['/claude-logo-orange.svg']} compactFooter>
   <HeroBanner />
-  <PersonaRouting />
-  <Onboarding />
-  <ClaudeEcosystem />
-
-  <FeaturesGrid />
-  <WhitepapersPreview />
-  <McpDemo />
-  <GoldenRules />
-  <VisualDiagrams />
-  <SecurityTeaser />
-  <MemorySystems />
-  <ComparisonTable />
+  <StartHere />
+  <FlagshipResources />
+  <McpProof />
+  <ExploreDeeper />
+  <LatestContent />
   <Community />
   <RelatedProjects />
   <ConsultingCta placement="homepage" />

@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 import { resolveRecapPdfUrl } from '../../utils/resolve-recap-pdf-url'
+import { INITIAL_RECAP_CARD_LIMIT } from '../../utils/resource-catalog'
+import { TOTAL_PAGES } from '../../data/whitepapers-data'
 
 const allCards = await getCollection('cheatsheets')
 const allSorted = allCards.sort((a, b) => a.data.order - b.data.order)
@@ -58,24 +60,13 @@ for (const card of cards) {
 const cardUrls = cardUrlsFr
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd}>
+<Layout title={title} description={description} jsonLd={jsonLd} compactFooter>
 
   <header class="page-hero">
     <div class="container">
       <h1>Cheat Sheets</h1>
       <p class="tagline">{totalCards} printable A4 recap cards: commands, workflows, agents, security, MCP, and more.</p>
-      <div class="cta-buttons">
-        <a href="#cards" class="btn btn-primary">Browse all cards</a>
-        <a href="/cheatsheet/" class="btn btn-secondary">Quick Reference (1-page EN)</a>
-      </div>
-    </div>
-  </header>
-
-  <section class="content-section" id="cards">
-    <div class="container">
-
-      <!-- Stats row -->
-      <div class="stats-row">
+      <div class="stats-row" aria-label="Catalogue breakdown">
         <div class="stat-item">
           <span class="stat-number">{allSorted.length}</span>
           <span class="stat-label">Recap Cards</span>
@@ -93,6 +84,15 @@ const cardUrls = cardUrlsFr
           <span class="stat-label">Design</span>
         </div>
       </div>
+      <div class="cta-buttons">
+        <a href="#catalogue" class="btn btn-primary">Find a card</a>
+        <a href="/cheatsheet/" class="btn btn-secondary">Quick Reference (1-page EN)</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-section" id="cards">
+    <div class="container">
 
       <!-- Original cheatsheet card + Whitepapers cross-promo -->
       <div class="featured-row">
@@ -110,7 +110,7 @@ const cardUrls = cardUrlsFr
           <div class="featured-badge">13 EBOOKS</div>
           <div class="featured-content">
             <h3>Deep-dive Whitepapers</h3>
-            <p>472+ pages, FR + EN, PDF + EPUB. Architecture, security, team adoption, ROI, and more.</p>
+            <p>{TOTAL_PAGES}+ pages, FR + EN. Architecture, security, team adoption, ROI, and more.</p>
           </div>
           <svg class="featured-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -118,8 +118,21 @@ const cardUrls = cardUrlsFr
         </a>
       </div>
 
-      <!-- Filter tabs -->
-      <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+      <div class="catalogue-heading" id="catalogue">
+        <p class="section-kicker">Browse the collection</p>
+        <h2>Find the card you need</h2>
+        <p>Search by topic, title, or card number. The first {INITIAL_RECAP_CARD_LIMIT} essentials are shown by default.</p>
+      </div>
+
+      <div class="catalogue-controls">
+        <label class="search-field" for="card-search">
+          <span class="sr-only">Search recap cards</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+          <input id="card-search" type="search" placeholder="Search title, topic, or number" autocomplete="off" />
+        </label>
+
+        <!-- Filter tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Filter by category">
         <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">
           All <span class="tab-count">{totalCards}</span>
         </button>
@@ -132,7 +145,14 @@ const cardUrls = cardUrlsFr
         <button class="tab-btn" data-filter="Design" data-series="C" role="tab" aria-selected="false">
           Design <span class="tab-count">{conceptionCards.length}</span>
         </button>
+        <button class="tab-btn" data-filter="DirectAccess" role="tab" aria-selected="false">
+          Direct access <span class="tab-count">{DIRECT_ACCESS_IDS.size}</span>
+        </button>
+        </div>
+        <button type="button" class="bundle-btn" id="bundle-toggle">Get PDF bundles</button>
       </div>
+
+      <p class="catalogue-status" id="catalogue-status" aria-live="polite"></p>
 
       <!-- Gate banner (rendered server-side, shown/hidden by client JS) -->
       <div class="gate-banner hidden" id="gate-banner" aria-live="polite">
@@ -191,11 +211,14 @@ const cardUrls = cardUrlsFr
 
       <!-- Cards grid -->
       <div class="cards-grid" id="cards-grid">
-        {cards.map(card => (
+        {cards.map((card, index) => (
           <article
-            class="recap-card"
+            class:list={['recap-card', index >= INITIAL_RECAP_CARD_LIMIT && 'catalog-hidden']}
+            data-card-id={card.id}
             data-category={card.data.category}
             data-series={card.data.cardNumber[0]}
+            data-direct-access={DIRECT_ACCESS_IDS.has(card.id) ? 'true' : 'false'}
+            data-search-text={`${card.data.cardNumber} ${card.data.title} ${card.data.subtitle}`}
           >
             <a href={`/cheatsheets/${card.id}/`} class="card-link">
               <div class="card-header">
@@ -219,7 +242,6 @@ const cardUrls = cardUrlsFr
                 <h3 class="card-title">{card.data.title}</h3>
                 <p class="card-subtitle">{card.data.subtitle}</p>
               </div>
-              <span class="card-read">Read →</span>
             </a>
             <div class="card-footer">
               <div class="pdf-buttons">
@@ -254,6 +276,9 @@ const cardUrls = cardUrlsFr
       </div>
 
       <p class="no-results hidden" id="no-results">No cards match this filter.</p>
+      <div class="catalogue-more">
+        <button type="button" class="show-all-btn" id="show-all-cards">Show all {totalCards} cards</button>
+      </div>
 
     </div>
   </section>
@@ -319,6 +344,8 @@ function upgradeUnlockedPDFs() {
 
 // Gate banner state
 let activeSeries = null  // 'T' | 'M' | 'C' | null (null = "All" tab)
+let activeFilter = 'all'
+let gateRequested = false
 
 const gateBanner = document.getElementById('gate-banner')
 const gateTitle  = document.getElementById('gate-title')
@@ -455,7 +482,8 @@ function resetBannerState() {
 function updateGateBanner(filter) {
   if (!gateBanner) return
 
-  // filter: 'all' | 'Technical' | 'Methodology' | 'Design'
+  activeFilter = filter
+  // filter: 'all' | 'Technical' | 'Methodology' | 'Design' | 'DirectAccess'
   const seriesMap = { 'Technical': 'T', 'Methodology': 'M', 'Design': 'C' }
   const sid = seriesMap[filter] || null
   activeSeries = sid
@@ -464,6 +492,11 @@ function updateGateBanner(filter) {
   if (comingSoon) comingSoon.classList.add('hidden')
 
   resetBannerState()
+
+  if (!gateRequested || filter === 'DirectAccess') {
+    gateBanner.classList.add('hidden')
+    return
+  }
 
   const series = sid ? seriesData(sid) : null
 
@@ -631,6 +664,8 @@ document.addEventListener('click', (e) => {
   if (!target) return
   e.preventDefault()
   e.stopPropagation()
+  gateRequested = true
+  updateGateBanner(activeFilter)
   if (gateBanner && !gateBanner.classList.contains('hidden')) {
     gateBanner.scrollIntoView({ behavior: 'smooth', block: 'center' })
     gateEmail?.focus()
@@ -641,43 +676,25 @@ document.addEventListener('keydown', (e) => {
   const target = e.target.closest('.pdf-gated')
   if (!target) return
   e.preventDefault()
+  gateRequested = true
+  updateGateBanner(activeFilter)
   if (gateBanner && !gateBanner.classList.contains('hidden')) {
     gateBanner.scrollIntoView({ behavior: 'smooth', block: 'center' })
     gateEmail?.focus()
   }
 })
 
-// ── Filter tabs ──────────────────────────────────────────────────────────────
-const tabBtns = document.querySelectorAll('.tab-btn')
-const cardItems = document.querySelectorAll('.recap-card')
-const noResults = document.getElementById('no-results')
-const cardsGrid = document.getElementById('cards-grid')
+document.addEventListener('recap-filter-change', (event) => {
+  updateGateBanner(event.detail?.filter ?? 'all')
+})
 
-function filterCards(filter) {
-  let visible = 0
-  cardItems.forEach(card => {
-    const category = card.dataset.category ?? ''
-    const show = filter === 'all' || category === filter
-    card.style.display = show ? '' : 'none'
-    if (show) visible++
-  })
-  if (noResults) noResults.classList.toggle('hidden', visible > 0)
-
-  if (cardsGrid) cardsGrid.style.display = ''
-}
-
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabBtns.forEach(b => {
-      b.classList.remove('active')
-      b.setAttribute('aria-selected', 'false')
-    })
-    btn.classList.add('active')
-    btn.setAttribute('aria-selected', 'true')
-    const filter = btn.dataset.filter ?? 'all'
-    filterCards(filter)
-    updateGateBanner(filter)
-  })
+document.getElementById('bundle-toggle')?.addEventListener('click', () => {
+  gateRequested = true
+  updateGateBanner(activeFilter === 'DirectAccess' ? 'all' : activeFilter)
+  if (gateBanner && !gateBanner.classList.contains('hidden')) {
+    gateBanner.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    gateEmail?.focus()
+  }
 })
 
 // ── Lang selector buttons ────────────────────────────────────────────────────
@@ -695,7 +712,6 @@ document.querySelectorAll('.gate-lang-btn').forEach(btn => {
 
 // ── Init ─────────────────────────────────────────────────────────────────────
 upgradeUnlockedPDFs()
-updateGateBanner('all')
 
 // ── Waitlist form (Design series) ────────────────────────────────────────────
 const waitlistForm = document.getElementById('waitlist-form')
@@ -756,10 +772,84 @@ if (waitlistForm) {
 }
 </script>
 
+<script>
+  import { getRecapCatalogView } from '../../utils/resource-catalog'
+
+  const cardElements = Array.from(document.querySelectorAll<HTMLElement>('.recap-card'))
+  const entries = cardElements.map(card => ({
+    id: card.dataset.cardId ?? '',
+    cardNumber: card.dataset.searchText?.split(' ')[0] ?? '',
+    title: card.dataset.searchText ?? '',
+    subtitle: '',
+    tags: [],
+    category: card.dataset.category ?? '',
+    directAccess: card.dataset.directAccess === 'true',
+  }))
+
+  const state = { category: 'all', query: '', showAll: false }
+  const searchInput = document.querySelector<HTMLInputElement>('#card-search')
+  const tabButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab-btn'))
+  const status = document.querySelector<HTMLElement>('#catalogue-status')
+  const noResults = document.querySelector<HTMLElement>('#no-results')
+  const showAllButton = document.querySelector<HTMLButtonElement>('#show-all-cards')
+
+  function renderCatalogue() {
+    const view = getRecapCatalogView(entries, state)
+    const visible = new Set(view.visibleIds)
+
+    cardElements.forEach(card => {
+      card.classList.toggle('catalog-hidden', !visible.has(card.dataset.cardId ?? ''))
+    })
+
+    noResults?.classList.toggle('hidden', view.totalMatches > 0)
+    if (status) {
+      status.textContent = view.totalMatches === 0
+        ? 'No matching cards'
+        : view.hiddenCount > 0
+          ? `Showing ${view.visibleIds.length} of ${view.totalMatches} cards`
+          : `${view.totalMatches} card${view.totalMatches === 1 ? '' : 's'}`
+    }
+
+    if (showAllButton) {
+      showAllButton.classList.toggle('hidden', view.hiddenCount === 0)
+      showAllButton.textContent = `Show ${view.hiddenCount} more card${view.hiddenCount === 1 ? '' : 's'}`
+    }
+  }
+
+  searchInput?.addEventListener('input', () => {
+    state.query = searchInput.value
+    state.showAll = false
+    renderCatalogue()
+  })
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      tabButtons.forEach(item => {
+        const selected = item === button
+        item.classList.toggle('active', selected)
+        item.setAttribute('aria-selected', String(selected))
+      })
+      state.category = button.dataset.filter ?? 'all'
+      state.showAll = false
+      renderCatalogue()
+      document.dispatchEvent(new CustomEvent('recap-filter-change', {
+        detail: { filter: state.category },
+      }))
+    })
+  })
+
+  showAllButton?.addEventListener('click', () => {
+    state.showAll = true
+    renderCatalogue()
+  })
+
+  renderCatalogue()
+</script>
+
 <style>
   /* ── Hero ── */
   .page-hero {
-    padding: 4rem 0 3rem;
+    padding: clamp(2.25rem, 5vw, 3.5rem) 0 2.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border);
   }
@@ -773,8 +863,8 @@ if (waitlistForm) {
     font-size: 1.1rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 0 1.5rem;
-    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    line-height: 1.55;
   }
   .cta-buttons {
     display: flex;
@@ -791,6 +881,7 @@ if (waitlistForm) {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s;
+    min-height: 44px;
   }
   .btn-primary {
     background: var(--accent);
@@ -805,24 +896,27 @@ if (waitlistForm) {
   .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
 
   /* ── Section ── */
-  .content-section { padding: 3rem 0 5rem; }
+  .content-section { padding: 2.5rem 0 3rem; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
   /* ── Stats ── */
   .stats-row {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 0;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
   .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    align-items: flex-start;
+    gap: 0.15rem;
+    min-width: 120px;
+    padding-right: 1.5rem;
   }
   .stat-number {
-    font-size: 2rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
@@ -839,7 +933,7 @@ if (waitlistForm) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   @media (max-width: 640px) {
     .featured-row { grid-template-columns: 1fr; }
@@ -848,14 +942,15 @@ if (waitlistForm) {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 1.5rem;
-    border: 1px solid var(--accent);
+    min-height: 84px;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--border);
     border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    background: var(--bg-secondary);
     text-decoration: none;
     transition: background 0.2s;
   }
-  .featured-card:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .featured-card:hover { background: color-mix(in srgb, var(--accent) 6%, var(--bg-secondary)); border-color: var(--accent); }
   .featured-card:hover, .featured-card:hover * { text-decoration: none; }
   .featured-badge {
     font-size: 0.7rem;
@@ -882,18 +977,106 @@ if (waitlistForm) {
   }
   .featured-arrow { color: var(--accent); flex-shrink: 0; }
 
-  /* ── Filter tabs ── */
+  /* Catalogue controls */
+  .catalogue-heading { max-width: 620px; margin-bottom: 1.25rem; }
+  .section-kicker {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .catalogue-heading h2 {
+    margin: 0 0 0.35rem;
+    color: var(--text-primary);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+  }
+  .catalogue-heading > p:last-child {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .catalogue-controls {
+    display: grid;
+    grid-template-columns: minmax(230px, 1fr) auto auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--bg-secondary);
+  }
+  .search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 0.55rem;
+    background: var(--bg-primary);
+    color: var(--text-muted);
+  }
+  .search-field:focus-within { border-color: var(--accent); }
+  .search-field input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+  }
+  .bundle-btn, .show-all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--accent);
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .bundle-btn:hover, .show-all-btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .catalogue-status {
+    min-height: 1.25rem;
+    margin: 0.65rem 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  .catalogue-more { display: flex; justify-content: center; padding-top: 1.25rem; }
+  .show-all-btn { min-width: 200px; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Filter tabs */
   .filter-tabs {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
   .tab-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.4rem 0.875rem;
+    min-height: 44px;
+    padding: 0.45rem 0.75rem;
     border-radius: 2rem;
     border: 1px solid var(--border);
     background: var(--bg-secondary);
@@ -977,6 +1160,7 @@ if (waitlistForm) {
     outline: none;
     transition: border-color 0.15s;
     min-width: 0;
+    min-height: 44px;
   }
   .gate-form input[type="text"]:focus,
   .gate-form input[type="email"]:focus,
@@ -1017,6 +1201,9 @@ if (waitlistForm) {
     letter-spacing: 0.03em;
     transition: background 0.15s, border-color 0.15s;
     background: transparent;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
   }
   .gate-lang-btn-en {
     color: #16a34a;
@@ -1051,6 +1238,7 @@ if (waitlistForm) {
     cursor: pointer;
     transition: background 0.15s;
     white-space: nowrap;
+    min-height: 44px;
   }
   .gate-submit:hover:not(:disabled) { background: var(--accent-hover); }
   .gate-submit:disabled { opacity: 0.7; cursor: not-allowed; }
@@ -1151,6 +1339,7 @@ if (waitlistForm) {
     letter-spacing: 0.01em;
     border: none;
     line-height: 1;
+    min-height: 44px;
   }
   :global(.zip-dl-btn:hover) { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
   :global(.zip-dl-btn:active) { transform: translateY(0); }
@@ -1237,6 +1426,8 @@ if (waitlistForm) {
     gap: 1rem;
   }
   .recap-card {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border);
     border-radius: 0.75rem;
     background: var(--bg-secondary);
@@ -1250,8 +1441,8 @@ if (waitlistForm) {
   .card-link {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: 1rem 1.25rem;
+    flex: 1;
+    padding: 1rem 1.1rem 0.6rem;
     text-decoration: none;
     gap: 0.5rem;
   }
@@ -1311,6 +1502,7 @@ if (waitlistForm) {
     justify-content: space-between;
     padding-top: 0.5rem;
     border-top: 1px solid var(--border);
+    padding: 0.55rem 1.1rem 0.85rem;
   }
   .pdf-buttons {
     display: inline-flex;
@@ -1323,7 +1515,10 @@ if (waitlistForm) {
     gap: 0.25rem;
     font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.2rem 0.45rem;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 0.45rem 0.55rem;
     border-radius: 0.25rem;
     border: 1px solid var(--border);
     text-decoration: none;
@@ -1348,7 +1543,10 @@ if (waitlistForm) {
     gap: 0.25rem;
     font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.2rem 0.45rem;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 0.45rem 0.55rem;
     border-radius: 0.25rem;
     border: 1px solid var(--border);
     color: var(--text-muted);
@@ -1379,6 +1577,9 @@ if (waitlistForm) {
     flex-shrink: 0;
   }
   .card-read {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.8rem;
     color: var(--accent);
     font-weight: 600;
@@ -1394,5 +1595,29 @@ if (waitlistForm) {
     color: var(--text-muted);
     padding: 3rem;
   }
+  .catalog-hidden { display: none !important; }
   .hidden { display: none !important; }
+
+  @media (max-width: 980px) {
+    .catalogue-controls { grid-template-columns: 1fr; }
+    .bundle-btn { justify-self: start; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 1rem; }
+    .page-hero { padding: 2rem 0; }
+    .stats-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat-item { padding: 0.4rem 0; }
+    .cta-buttons { display: grid; grid-template-columns: 1fr; }
+    .cta-buttons .btn { justify-content: center; width: 100%; }
+    .content-section { padding-top: 2rem; }
+    .featured-card { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+    .featured-badge { grid-column: 1; justify-self: start; }
+    .featured-content { grid-column: 1; }
+    .featured-arrow { grid-column: 2; grid-row: 1 / span 2; }
+    .filter-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tab-btn { justify-content: space-between; }
+    .bundle-btn { width: 100%; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
 </style>

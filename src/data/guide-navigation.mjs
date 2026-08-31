@@ -1,5 +1,10 @@
 export const guideHighlights = [
   {
+    title: 'Translations and Language Status',
+    href: '/guide/translations/',
+    desc: 'Read the canonical, maintained, and community editions with explicit version, sync date, and coverage status.',
+  },
+  {
     title: 'Loop & Graph Engineering',
     href: '/guide/loop-graph-engineering/',
     desc: 'Design bounded feedback loops, executable graphs, checkpoints, recovery, and explicit judgment allocation.',

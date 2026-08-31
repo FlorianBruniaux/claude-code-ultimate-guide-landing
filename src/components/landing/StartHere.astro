@@ -1,0 +1,83 @@
+---
+import { START_PATHS } from '../../data/homepage-content'
+---
+
+<section class="section start-here" id="start-here" aria-labelledby="start-title">
+  <div class="container">
+    <p class="section-kicker">Start here</p>
+    <h2 class="section-title" id="start-title">Choose your next useful outcome</h2>
+    <p class="section-subtitle">Three focused routes replace the wall of options. Pick the one that matches what you need today.</p>
+
+    <div class="path-grid">
+      {START_PATHS.map((path, index) => (
+        <a class="path-card" href={path.href}>
+          <div class="path-topline">
+            <span class="path-number">0{index + 1}</span>
+            <span class="path-duration">{path.duration}</span>
+          </div>
+          <p class="path-eyebrow">{path.eyebrow}</p>
+          <h3>{path.title}</h3>
+          <p class="path-description">{path.description}</p>
+          <ol>
+            {path.steps.map((step) => <li>{step}</li>)}
+          </ol>
+          <span class="path-link">Open this path →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .section-subtitle { max-width: 720px; }
+
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 1.35rem;
+    color: var(--text-primary) !important;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none !important;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .path-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .path-topline { display: flex; align-items: center; justify-content: space-between; }
+  .path-number { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
+  .path-duration { padding: 0.25rem 0.55rem; color: var(--text-secondary); background: var(--bg-tertiary); border-radius: 999px; font-size: 0.75rem; font-weight: 650; }
+  .path-eyebrow { margin: 1.2rem 0 0.25rem; color: var(--text-muted); font-size: 0.78rem; font-weight: 650; text-transform: uppercase; }
+  .path-card h3 { margin: 0; font-size: 1.25rem; }
+  .path-description { margin: 0.55rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
+  .path-card ol { display: grid; gap: 0.45rem; margin: 1rem 0 1.25rem; padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.84rem; }
+  .path-link { margin-top: auto; color: var(--accent); font-size: 0.85rem; font-weight: 700; }
+
+  @media (max-width: 850px) {
+    .path-grid { grid-template-columns: 1fr; }
+    .path-card { min-height: auto; }
+  }
+</style>

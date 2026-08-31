@@ -60,6 +60,19 @@
 
 /* ── Layout adjustments ───────────────────────────────────────────────── */
 
+/* Tailwind Preflight is emitted outside Starlight's cascade layers. Its
+ * element resets therefore outrank Starlight's layered component styles.
+ * Restore the display contracts used by the mobile guide controls. */
+summary.sl-flex {
+  display: flex;
+  list-style: none;
+}
+
+starlight-menu-button:not([aria-expanded='true']) .close-menu,
+starlight-menu-button[aria-expanded='true'] .open-menu {
+  display: none;
+}
+
 /* Offset content for our fixed header (56px = h-14) */
 .sl-page {
   margin-top: 56px !important;
@@ -74,6 +87,17 @@
 /* Hide Starlight's built-in header (we provide our own) */
 .page-header {
   display: none !important;
+}
+
+/* Long prose, code, and tables must shrink inside the content flex/grid
+ * columns before their own horizontal scrollers engage. */
+.main-frame,
+.main-pane,
+.content-panel,
+.sl-container,
+.sl-markdown-content {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* ── Prose typography ─────────────────────────────────────────────────── */
@@ -186,14 +210,18 @@
   border: 1px solid var(--border-light);
   border-radius: 4px;
   padding: 0.15em 0.4em;
+  overflow-wrap: anywhere;
 }
 
 /* Tables */
 .sl-markdown-content table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
   margin: 1.5rem 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 
 .sl-markdown-content th {
@@ -264,6 +292,255 @@ starlight-toc a {
 
 starlight-toc a:hover {
   color: var(--accent);
+}
+
+/* ── Mobile guide layout ──────────────────────────────────────────────── */
+
+@media (max-width: 49.99rem) {
+  :root {
+    --sl-content-pad-x: 1rem;
+    --sl-mobile-toc-height: 3rem;
+  }
+
+  /* Keep the global site menu in the header. Guide navigation gets a
+   * labelled control in the utility row below it. */
+  .sidebar > starlight-menu-button > button {
+    top: calc(var(--sl-nav-height) + 0.375rem) !important;
+    inset-inline-start: 0.75rem !important;
+    inset-inline-end: auto !important;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: auto !important;
+    min-width: 4.25rem;
+    height: 2.25rem !important;
+    padding: 0.375rem 0.625rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 0.625rem !important;
+    background: var(--surface-elevated) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  .sidebar > starlight-menu-button > button::after {
+    content: 'Guide';
+    font-size: 0.75rem;
+    font-weight: 650;
+    line-height: 1;
+  }
+
+  .sidebar-content {
+    padding-top: 3.75rem !important;
+  }
+
+  mobile-starlight-toc nav {
+    top: var(--sl-nav-height);
+    height: var(--sl-mobile-toc-height);
+    padding: 0.375rem 0.75rem 0.375rem 6.25rem;
+    border-top: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-primary);
+  }
+
+  #starlight__mobile-toc {
+    height: 100%;
+  }
+
+  #starlight__mobile-toc > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    background: var(--surface-elevated);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  #starlight__mobile-toc > summary::marker,
+  #starlight__mobile-toc > summary::-webkit-details-marker {
+    display: none;
+    content: '';
+  }
+
+  #starlight__mobile-toc .toggle {
+    flex: 0 0 auto;
+    gap: 0.4rem;
+    height: 100%;
+    padding: 0 0 0 0.75rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.8125rem;
+    font-weight: 650;
+  }
+
+  #starlight__mobile-toc .display-current {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-inline-end: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: end;
+  }
+
+  #starlight__mobile-toc[open] > summary {
+    border-color: var(--accent);
+  }
+
+  #starlight__mobile-toc[open] .toggle {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    padding-inline-end: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  #starlight__mobile-toc[open] .display-current {
+    display: none;
+  }
+
+  #starlight__mobile-toc .dropdown {
+    position: fixed;
+    top: calc(var(--sl-nav-height) + var(--sl-mobile-toc-height) + 0.5rem);
+    inset-inline: 0.75rem;
+    width: auto;
+    max-height: min(62dvh, 32rem);
+    margin: 0;
+    padding: 0.4rem 0;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--surface-elevated);
+    box-shadow: var(--shadow-lg);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  #starlight__mobile-toc .dropdown ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #starlight__mobile-toc .dropdown > ul > li > a {
+    padding-block: 0.625rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 650;
+  }
+
+  #starlight__mobile-toc .dropdown ul ul {
+    margin-inline-start: 1rem;
+    border-inline-start: 1px solid var(--border-light);
+  }
+
+  #starlight__mobile-toc .dropdown ul ul a {
+    padding-block: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 450;
+  }
+
+  #starlight__mobile-toc .dropdown a span {
+    overflow-wrap: anywhere;
+  }
+
+  #starlight__mobile-toc .dropdown a[aria-current='true'] {
+    color: var(--accent);
+    background: var(--bg-tint-warm);
+  }
+
+  /* Each navigation surface owns the screen while it is open. */
+  body[data-mobile-menu-expanded] mobile-starlight-toc,
+  body[data-global-menu-expanded] mobile-starlight-toc,
+  body[data-global-menu-expanded] .sidebar > starlight-menu-button,
+  body:has(#starlight__mobile-toc[open]) .guide-fab-group,
+  body:has(#starlight__mobile-toc[open]) .feedback-wrapper,
+  body[data-mobile-menu-expanded] .guide-fab-group,
+  body[data-mobile-menu-expanded] .feedback-wrapper,
+  body[data-global-menu-expanded] .guide-fab-group,
+  body[data-global-menu-expanded] .feedback-wrapper {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Wide artifacts keep their own scroller without widening the page. */
+  .sl-markdown-content :where(pre, table, .expressive-code, .mermaid-diagram) {
+    max-width: 100%;
+  }
+
+  .sl-markdown-content {
+    line-height: 1.625;
+  }
+
+  .sl-markdown-content pre {
+    font-size: 0.8125rem;
+  }
+
+  .sl-markdown-content :where(h1, h2, h3, h4, p, li, a) {
+    overflow-wrap: anywhere;
+  }
+
+  .sl-markdown-content :where(img, video, svg) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #_top {
+    font-size: clamp(1.875rem, 8vw, 2rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .sl-markdown-content h2 {
+    margin-top: 2rem;
+    font-size: 1.375rem;
+  }
+
+  .sl-markdown-content h3 {
+    margin-top: 1.75rem;
+    font-size: 1.15rem;
+  }
+
+  .sl-markdown-content blockquote {
+    margin-inline: 0;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .guide-fab-group {
+    display: none !important;
+  }
+
+  .sl-markdown-content pre {
+    overflow-x: hidden !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .expressive-code .ec-line .code {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .feedback-wrapper {
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+  }
+
+  .guide-fab-btn,
+  .feedback-fab {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
 }
 
 /* ── Expressive Code (code blocks with copy button) ──────────────────── */

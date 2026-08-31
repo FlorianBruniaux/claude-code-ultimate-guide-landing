@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_page',
+    title: 'Translations and Language Status',
+    date: 'Aug 31, 2026',
+    description: 'New public status page for the canonical English guide, the maintained French edition, and independent Chinese and Ukrainian community translations. It records versions, synchronization dates, source provenance, coverage, and the current translation gaps without presenting community projects as official editions.',
+    link: 'https://cc.bruniaux.com/guide/translations/',
+  },
+  {
+    type: 'new_page',
     title: 'Loop & Graph Engineering',
     date: 'Aug 30, 2026',
     description: 'New canonical page for designing repeated feedback loops and executable workflow graphs without smuggling judgment into opaque automation. Covers nodes, edges, joins, checkpoints, shared state, stopping rules, and where human judgment remains explicit and accountable.',

@@ -13,3 +13,25 @@ import GuidePageFab from '../global/GuidePageFab.astro'
 <SearchModal />
 <GuidePageFab />
 <FeedbackFab />
+
+<script>
+  const guideMenu = document.querySelector('starlight-menu-button')
+  const guideMenuButton = guideMenu?.querySelector<HTMLButtonElement>(
+    'button[aria-controls="starlight__sidebar"]'
+  )
+
+  if (guideMenu && guideMenuButton) {
+    const syncGuideMenuState = () => {
+      guideMenuButton.setAttribute(
+        'aria-expanded',
+        guideMenu.getAttribute('aria-expanded') === 'true' ? 'true' : 'false'
+      )
+    }
+
+    syncGuideMenuState()
+    new MutationObserver(syncGuideMenuState).observe(guideMenu, {
+      attributes: true,
+      attributeFilter: ['aria-expanded'],
+    })
+  }
+</script>

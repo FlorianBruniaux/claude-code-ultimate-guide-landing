@@ -78,9 +78,21 @@ test('Announcement banner keeps at most four links, rotates its id, and announce
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length
 
   assert.equal(linkCount, 4)
-  assert.match(banner, /const BANNER_ID = 'banner-guide-changelog-2026-08'/)
+  assert.match(banner, /const BANNER_ID = 'banner-guide-translations-2026-08'/)
   assert.match(banner, /href="\/guide\/loop-graph-engineering\/" class="ann-link">Loop &amp; Graph Engineering<\/a>/)
+  assert.match(banner, /href="\/guide\/translations\/" class="ann-link">Translations \+ Chinese Edition<\/a>/)
   assert.match(banner, /href="\/changelog\/" class="ann-link">Changelog &rarr;<\/a>/)
+})
+
+test('Translation status stays exposed across landing discovery surfaces', () => {
+  const navigation = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-navigation.mjs'), 'utf8')
+  const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
+  const searchEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'), 'utf8')
+
+  assert.match(navigation, /href: '\/guide\/translations\/'/)
+  assert.match(rssEntries, /title: 'Translations and Language Status'/)
+  assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/translations\//)
+  assert.match(searchEntries, /"id": "guide-translation-status-guide"/)
 })
 
 test('WP12 exposes the different FR and EN PDF page counts', () => {

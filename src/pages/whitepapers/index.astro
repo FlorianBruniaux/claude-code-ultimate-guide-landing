@@ -2,9 +2,13 @@
 import Layout from '../../layouts/Layout.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { WHITEPAPERS, TOTAL_PAGES, PDF_BASE_URL } from '../../data/whitepapers-data.ts'
+import { getSiteStats } from '../../utils/site-stats'
+import { getWhitepaperFormatOptions } from '../../utils/resource-catalog.ts'
 
-const title = 'Ebooks: 13 Whitepapers | Claude Code'
-const description = `13 whitepapers, ${TOTAL_PAGES}+ pages, FR + EN, PDF + EPUB. From Claude Code fundamentals to multi-agent architecture, security, and ROI. Free for WP00 and WP03.`
+const stats = await getSiteStats()
+const whitepaperCount = WHITEPAPERS.length
+const title = `Ebooks: ${whitepaperCount} Whitepapers | Claude Code`
+const description = `${whitepaperCount} whitepapers, ${TOTAL_PAGES}+ pages, FR + EN, PDF + EPUB. From Claude Code fundamentals to multi-agent architecture, security, and ROI. WP00 is open access; the remaining titles are delivered by email.`
 const pageCountLabel = (wp: (typeof WHITEPAPERS)[number]) =>
   wp.pagesEn && wp.pagesEn !== wp.pages ? `${wp.pagesEn}p EN · ${wp.pages}p FR` : `~${wp.pages}p`
 
@@ -70,7 +74,7 @@ const profiles = [
 ]
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd}>
+<Layout title={title} description={description} jsonLd={jsonLd} compactFooter>
 
   <!-- Hero -->
   <header class="page-hero">
@@ -78,12 +82,12 @@ const profiles = [
       <div class="hero-label">Ebooks & Whitepapers</div>
       <h1>Deep dives, not summaries</h1>
       <p class="tagline">
-        13 whitepapers covering every layer of Claude Code, from first install to org-wide adoption.
+        {whitepaperCount} whitepapers covering every layer of Claude Code, from first install to org-wide adoption.
         Structured for practitioners, grounded in production experience.
       </p>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">13</span>
+          <span class="stat-num">{whitepaperCount}</span>
           <span class="stat-lbl">Whitepapers</span>
         </div>
         <div class="stat-sep" aria-hidden="true"></div>
@@ -103,32 +107,53 @@ const profiles = [
         </div>
       </div>
       <div class="hero-cta">
-        <a href="#table" class="btn btn-primary">Browse all ebooks</a>
-        <a href="#free" class="btn btn-secondary">Open access</a>
+        <a href="#paths" class="btn btn-primary">Find your ebook</a>
+        <a href="#table" class="btn btn-secondary">Browse all {whitepaperCount}</a>
       </div>
     </div>
   </header>
 
   <div class="main-content container">
 
-    <!-- Cross-promo: Recap Cards -->
-    <section class="section">
-      <a href="/cheatsheets/" class="recap-promo-card">
-        <div class="featured-badge-wp">57 RECAP CARDS</div>
-        <div class="featured-content-wp">
-          <h3>Printable A4 Cheat Sheets</h3>
-          <p>One topic per card, 3 series (Technique, Methodology, Design). Printable, scannable, and actionable. Perfect complement to the whitepapers.</p>
+    <!-- Reading paths help visitors choose before scanning the full catalogue. -->
+    <section id="paths" class="section section-paths">
+      <div class="section-heading-row">
+        <div>
+          <p class="section-kicker">Choose by goal</p>
+          <h2 class="section-heading">Start with what matters to you</h2>
+          <p class="section-sub">Pick a route, then jump directly to the recommended titles.</p>
         </div>
-        <svg class="featured-arrow-wp" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+        <a href="#table" class="section-link">Or browse all {whitepaperCount} →</a>
+      </div>
+      <div class="paths-grid">
+        {profiles.map(p => (
+          <article class="path-card">
+            <div class="path-card-heading">
+              <span class="path-icon" aria-hidden="true">{p.icon}</span>
+              <h3 class="path-label">{p.label}</h3>
+            </div>
+            <p class="path-desc">{p.desc}</p>
+            <div class="path-sequence" aria-label={`${p.label} reading order`}>
+              {p.path.map((num, i) => {
+                const wp = WHITEPAPERS.find(w => `WP${w.num}` === num)
+                return wp ? (
+                  <span class="path-step">
+                    {i > 0 && <span class="path-arrow" aria-hidden="true">→</span>}
+                    <a href={`#wp-${wp.num}`} class="path-link" title={wp.titleEn}>{num}</a>
+                  </span>
+                ) : null
+              })}
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
 
     <!-- Open access featured card -->
-    <section id="free" class="section">
-      <h2 class="section-heading">No email required</h2>
-      <p class="section-sub">Direct download. Open access, no form.</p>
+    <section id="free" class="section section-free">
+      <p class="section-kicker">Start free</p>
+      <h2 class="section-heading">Read the primer without a form</h2>
+      <p class="section-sub">Four direct downloads, no email required.</p>
       <div class="featured-grid">
         {WHITEPAPERS.filter(wp => !wp.gated && !wp.comingSoon).map(wp => (
           <div class="featured-card">
@@ -154,16 +179,18 @@ const profiles = [
                     EN PDF
                   </a>
                 </div>
-                <div class="lang-buttons">
-                  <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleFr} EPUB`}>
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
-                    FR EPUB
-                  </a>
-                  <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleEn} EPUB`}>
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
-                    EN EPUB
-                  </a>
-                </div>
+                {getWhitepaperFormatOptions(wp).includes('epub') && (
+                  <div class="lang-buttons">
+                    <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleFr} EPUB`}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                      FR EPUB
+                    </a>
+                    <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub" aria-label={`Download ${wp.titleEn} EPUB`}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                      EN EPUB
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -173,10 +200,11 @@ const profiles = [
 
     <!-- Complete table -->
     <section id="table" class="section">
-      <h2 class="section-heading">All 13 whitepapers</h2>
+      <p class="section-kicker">Complete collection</p>
+      <h2 class="section-heading">All {whitepaperCount} whitepapers</h2>
       <div class="release-notice">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
-        All 13 are written and production-ready. New ones drop regularly. Subscribe to any WP to get notified.
+        All {whitepaperCount} titles are written and production-ready. WP00 is direct access; the remaining titles are delivered by email.
       </div>
       <div class="wp-table">
         {WHITEPAPERS.map(wp => (
@@ -226,9 +254,11 @@ const profiles = [
                         <label class="radio-pill">
                           <input type="radio" name={`format-${wp.num}`} value="pdf" checked /> PDF
                         </label>
-                        <label class="radio-pill">
-                          <input type="radio" name={`format-${wp.num}`} value="epub" /> EPUB
-                        </label>
+                        {getWhitepaperFormatOptions(wp).includes('epub') && (
+                          <label class="radio-pill">
+                            <input type="radio" name={`format-${wp.num}`} value="epub" /> EPUB
+                          </label>
+                        )}
                         <span class="lang-label">Lang:</span>
                         <label class="radio-pill" style={!wp.slugEn ? 'opacity:0.4;cursor:not-allowed' : ''}>
                           <input type="radio" name={`lang-${wp.num}`} value="en" checked={!!wp.slugEn} disabled={!wp.slugEn} /> EN
@@ -262,42 +292,20 @@ const profiles = [
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     EN PDF
                   </a>
-                  <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
-                    FR EPUB
-                  </a>
-                  <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
-                    EN EPUB
-                  </a>
+                  {getWhitepaperFormatOptions(wp).includes('epub') && (
+                    <>
+                      <a href={`/ebooks/epub/fr/${wp.slugFr}.epub`} download class="dl-btn dl-epub">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                        FR EPUB
+                      </a>
+                      <a href={`/ebooks/epub/en/${wp.slugEn}.epub`} download class="dl-btn dl-epub">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>
+                        EN EPUB
+                      </a>
+                    </>
+                  )}
                 </div>
               )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Reading paths -->
-    <section id="paths" class="section">
-      <h2 class="section-heading">Reading paths by profile</h2>
-      <p class="section-sub">Start with what matters to you, skip what you already know.</p>
-      <div class="paths-grid">
-        {profiles.map(p => (
-          <div class="path-card">
-            <div class="path-icon" aria-hidden="true">{p.icon}</div>
-            <h3 class="path-label">{p.label}</h3>
-            <p class="path-desc">{p.desc}</p>
-            <div class="path-sequence">
-              {p.path.map((num, i) => {
-                const wp = WHITEPAPERS.find(w => `WP${w.num}` === num)
-                return wp ? (
-                  <span class="path-step">
-                    {i > 0 && <span class="path-arrow" aria-hidden="true">→</span>}
-                    <a href={`#wp-${wp.num}`} class="path-link">{num}</a>
-                  </span>
-                ) : null
-              })}
             </div>
           </div>
         ))}
@@ -310,7 +318,7 @@ const profiles = [
       <div class="faq-grid">
         <details class="faq-item">
           <summary class="faq-q">What formats are available?</summary>
-          <p class="faq-a">All whitepapers come in PDF (Typst-rendered, Bold Guy palette) and EPUB3 (Pandoc, works on Kindle, Apple Books, Kobo). Both FR and EN for every title.</p>
+          <p class="faq-a">Every whitepaper is available in PDF, in French and English. EPUB is also available for every title except WP11.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">Why do most whitepapers ask for an email?</summary>
@@ -325,6 +333,17 @@ const profiles = [
           <p class="faq-a">Yes. Each whitepaper has its own version number independent of the guide. Subscribe to get notified when a new version drops. The email you provided at download is used for that.</p>
         </details>
       </div>
+    </section>
+
+    <section class="section section-related" aria-labelledby="related-title">
+      <a href="/cheatsheets/" class="related-card">
+        <span class="featured-badge-wp">{stats.recapCardCount} RECAP CARDS</span>
+        <span class="related-copy">
+          <strong id="related-title">Need something faster?</strong>
+          <span>Open a focused card for the command, pattern, or workflow you need now.</span>
+        </span>
+        <span class="related-arrow" aria-hidden="true">→</span>
+      </a>
     </section>
 
   </div>
@@ -375,19 +394,23 @@ const profiles = [
   }
   .release-notice svg { color: var(--accent); flex-shrink: 0; }
 
-  /* ── Recap Cards cross-promo ── */
-  .recap-promo-card {
+  /* Related collection */
+  .related-card {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 1.5rem;
-    border: 1px solid var(--accent);
+    min-height: 72px;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--border);
     border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    background: var(--bg-secondary);
     text-decoration: none;
-    transition: background 0.2s;
+    transition: border-color 0.2s, background 0.2s;
   }
-  .recap-promo-card:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .related-card:hover {
+    background: color-mix(in srgb, var(--accent) 5%, var(--bg-secondary));
+    border-color: var(--accent);
+  }
   .featured-badge-wp {
     font-size: 0.7rem;
     font-weight: 700;
@@ -399,28 +422,28 @@ const profiles = [
     border-radius: 0.25rem;
     flex-shrink: 0;
   }
-  .featured-content-wp { flex: 1; }
-  .featured-content-wp h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 0.25rem;
+  .related-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
   }
-  .featured-content-wp p {
+  .related-copy strong { color: var(--text-primary); font-size: 0.95rem; }
+  .related-copy span {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin: 0;
     line-height: 1.4;
   }
-  .featured-arrow-wp { color: var(--accent); flex-shrink: 0; }
+  .related-arrow { color: var(--accent); flex-shrink: 0; font-size: 1.25rem; }
 
   /* Layout */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-  .main-content { padding-bottom: 5rem; }
+  .main-content { padding-bottom: 2.5rem; }
 
   /* Hero */
   .page-hero {
-    padding: 4rem 0 3rem;
+    padding: clamp(2.25rem, 5vw, 3.5rem) 0 2.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border);
     background: var(--bg-primary);
@@ -447,8 +470,8 @@ const profiles = [
     font-size: 1.05rem;
     color: var(--text-secondary);
     max-width: 580px;
-    margin: 0 0 2rem;
-    line-height: 1.65;
+    margin: 0 0 1.5rem;
+    line-height: 1.55;
   }
   .hero-stats {
     display: flex;
@@ -456,7 +479,7 @@ const profiles = [
     justify-content: flex-start;
     gap: 0;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .stat {
     display: flex;
@@ -499,6 +522,7 @@ const profiles = [
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s;
+    min-height: 44px;
   }
   .btn-primary { background: var(--accent); color: #fff; }
   .btn-primary:hover { background: var(--accent-hover); }
@@ -506,7 +530,34 @@ const profiles = [
   .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
 
   /* Sections */
-  .section { padding: 3rem 0 1rem; }
+  .section { padding: 2.5rem 0 0.5rem; }
+  .section-kicker {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-heading-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-heading-row .section-sub { margin-bottom: 0; }
+  .section-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 650;
+    text-decoration: none;
+    white-space: nowrap;
+  }
   .section-heading {
     font-size: 1.5rem;
     font-weight: 800;
@@ -579,7 +630,8 @@ const profiles = [
     gap: 0.35rem;
     font-size: 0.78rem;
     font-weight: 600;
-    padding: 0.35rem 0.7rem;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
     border-radius: 0.35rem;
     text-decoration: none;
     cursor: pointer;
@@ -599,24 +651,23 @@ const profiles = [
 
   /* Table */
   .wp-table {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
   }
   .wp-row {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
+    gap: 1rem;
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--bg-secondary);
+    transition: border-color 0.15s, background 0.15s;
   }
-  .wp-row:last-child { border-bottom: none; }
-  .wp-row:hover { background: var(--bg-secondary); }
+  .wp-row:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); }
   .wp-row-info { flex: 1; min-width: 0; }
   .wp-row-header {
     display: flex;
@@ -658,19 +709,20 @@ const profiles = [
     font-family: var(--font-mono);
   }
   .wp-row-actions {
-    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
     gap: 0.5rem;
-    min-width: 160px;
+    min-width: 0;
+    width: 100%;
   }
-  .free-downloads { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+  .free-downloads { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-start; }
 
   /* Get button */
   .get-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.4rem;
     padding: 0.5rem 1rem;
     border-radius: 0.45rem;
@@ -682,6 +734,8 @@ const profiles = [
     cursor: pointer;
     transition: background 0.15s;
     white-space: nowrap;
+    min-height: 44px;
+    width: 100%;
   }
   .get-btn:hover { background: var(--accent-hover); }
   .get-btn svg { transition: transform 0.2s; }
@@ -695,7 +749,8 @@ const profiles = [
     border: 1px solid var(--border);
     border-radius: 0.5rem;
     width: 100%;
-    max-width: 420px;
+    max-width: none;
+    box-sizing: border-box;
   }
   .inline-form.hidden { display: none; }
   .honeypot { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
@@ -713,6 +768,7 @@ const profiles = [
     background: var(--bg-primary);
     color: var(--text-primary);
     min-width: 0;
+    min-height: 44px;
     transition: border-color 0.15s;
   }
   .form-input:focus { outline: none; border-color: var(--accent); }
@@ -733,7 +789,8 @@ const profiles = [
     font-size: 0.78rem;
     color: var(--text-secondary);
     cursor: pointer;
-    padding: 0.15rem 0.4rem;
+    min-height: 44px;
+    padding: 0.35rem 0.45rem;
     border-radius: 3px;
     transition: color 0.1s;
   }
@@ -751,6 +808,7 @@ const profiles = [
     cursor: pointer;
     transition: background 0.15s;
     margin-bottom: 0.5rem;
+    min-height: 44px;
   }
   .submit-btn:hover { background: var(--accent-hover); }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -790,6 +848,7 @@ const profiles = [
     flex-direction: column;
     gap: 0.5rem;
   }
+  .path-card-heading { display: flex; align-items: center; gap: 0.6rem; }
   .path-icon { font-size: 1.4rem; line-height: 1; }
   .path-label { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; }
   .path-desc { font-size: 0.825rem; color: var(--text-secondary); margin: 0; line-height: 1.45; }
@@ -803,6 +862,11 @@ const profiles = [
   .path-step { display: flex; align-items: center; gap: 0.25rem; }
   .path-arrow { color: var(--text-muted); font-size: 0.8rem; }
   .path-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
@@ -842,6 +906,7 @@ const profiles = [
     justify-content: space-between;
     align-items: center;
     transition: background 0.15s;
+    min-height: 52px;
   }
   .faq-q:hover { background: var(--bg-secondary); }
   .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
@@ -856,18 +921,27 @@ const profiles = [
 
   /* Responsive */
   @media (max-width: 768px) {
+    .wp-table { grid-template-columns: 1fr; }
+    .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
     .hero-stats { gap: 0; }
     .stat { padding: 0 1rem; }
     .stat-num { font-size: 1.2rem; }
-    .wp-row { flex-direction: column; gap: 1rem; }
-    .wp-row-actions { align-items: flex-start; min-width: auto; width: 100%; }
     .inline-form { max-width: 100%; }
     .form-row { flex-direction: column; }
     .featured-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
+    .page-hero { padding: 1.5rem 0; }
+    .tagline { font-size: 0.95rem; line-height: 1.45; margin-bottom: 1rem; }
+    .hero-stats { margin-bottom: 1rem; }
+    .hero-cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-cta .btn { justify-content: center; }
+    .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stat-sep { display: none; }
-    .stat { padding: 0.5rem 0.75rem; }
+    .stat { align-items: flex-start; padding: 0.5rem 0; }
+    .related-card { align-items: flex-start; flex-wrap: wrap; }
+    .related-copy { flex-basis: calc(100% - 7rem); }
   }
 </style>
 

@@ -4,7 +4,7 @@
  * ZIPs delivered by email via /api/subscribe.
  */
 
-import { PDF_BASE_URL } from './whitepapers-data'
+import { PDF_BASE_URL } from './whitepapers-data.ts'
 
 export interface RecapCardSeries {
   id: 'T' | 'M' | 'C'

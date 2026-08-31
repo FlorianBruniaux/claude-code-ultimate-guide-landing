@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { GUIDE_DOWNLOADS } from '../../data/homepage-content'
+
+const title = 'Download Claude Code Ultimate Guide | PDF & EPUB'
+const description = 'Download the complete Claude Code Ultimate Guide for offline reading in English or French, as PDF or EPUB.'
+const languages = ['EN', 'FR'] as const
+---
+
+<Layout title={title} description={description}>
+  <header class="page-hero">
+    <div class="container download-hero">
+      <a class="back-link" href="/">← Home</a>
+      <p class="eyebrow">Offline guide</p>
+      <h1>Download the complete guide</h1>
+      <p class="tagline">Choose your language and format. Every link points to the latest GitHub release.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container download-layout">
+      {languages.map((language) => (
+        <section class="language-card" aria-labelledby={`language-${language.toLowerCase()}`}>
+          <div>
+            <span class="language-code">{language}</span>
+            <h2 id={`language-${language.toLowerCase()}`}>{language === 'EN' ? 'English edition' : 'Édition française'}</h2>
+            <p>Full guide, ready for offline reading and annotation.</p>
+          </div>
+          <div class="download-actions">
+            {GUIDE_DOWNLOADS.filter((download) => download.language === language).map((download) => (
+              <a class={`btn ${download.format === 'PDF' ? 'btn-primary' : 'btn-secondary'}`} href={download.href} target="_blank" rel="noopener">
+                Download {download.format}
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+      <aside class="release-note">
+        <strong>Need a specific version?</strong>
+        <span>Browse every published artifact and release note on GitHub.</span>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases" target="_blank" rel="noopener">View all releases →</a>
+      </aside>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .download-hero, .download-layout { max-width: 900px; margin-left: auto; margin-right: auto; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+  .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .download-layout { display: grid; gap: 1rem; }
+  .language-card { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem, 4vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
+  .language-code { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
+  .language-card h2 { margin: 0.25rem 0 0; font-size: 1.35rem; }
+  .language-card p { margin: 0.3rem 0 0; color: var(--text-secondary); }
+  .download-actions { display: flex; gap: 0.65rem; flex: 0 0 auto; }
+  .release-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1rem 1.2rem; color: var(--text-secondary); background: var(--bg-tertiary); border-radius: var(--border-radius-lg); font-size: 0.875rem; }
+  .release-note strong { color: var(--text-primary); }
+  .release-note a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+  @media (max-width: 680px) {
+    .language-card { align-items: flex-start; flex-direction: column; }
+    .download-actions { width: 100%; }
+    .download-actions .btn { flex: 1; }
+    .release-note { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
+</style>

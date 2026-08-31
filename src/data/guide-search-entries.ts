@@ -20,11 +20,83 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-translations-registry",
-    "title": "Translations Registry",
-    "keywords": "translations registry machine readable translations",
+    "id": "guide-computer-use-guide",
+    "title": "Computer Use Guide",
+    "keywords": "computer use guide guide core computer use",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/computer-use.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plugin-distribution-guide",
+    "title": "Plugin Distribution Guide",
+    "keywords": "plugin distribution guide guide ecosystem plugin distribution",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/plugin-distribution.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-claude-apps-gateway-guide",
+    "title": "Claude Apps Gateway Guide",
+    "keywords": "claude apps gateway guide guide ops api gateway md#current first party surface claude apps gateway",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/api-gateway.md#current-first-party-surface-claude-apps-gateway",
+    "source": "guide"
+  },
+  {
+    "id": "guide-best-of-n-workflow",
+    "title": "Best Of N Workflow",
+    "keywords": "best of n workflow guide workflows best",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/best-of-n/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-best-of-n-skill",
+    "title": "Best Of N Skill",
+    "keywords": "best of n skill examples skills best skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/best-of-n/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-testing-proof-log-template",
+    "title": "Testing Proof Log Template",
+    "keywords": "testing proof log template examples claude testing",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/TESTING.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-skill",
+    "title": "Learning Path Skill",
+    "keywords": "learning path skill examples skills learning path skill",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/learning-path/SKILL.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-path-progress-engine",
+    "title": "Learning Path Progress Engine",
+    "keywords": "learning path progress engine examples skills learning path scripts progress",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/learning-path/scripts/progress.py",
+    "source": "guide"
+  },
+  {
+    "id": "guide-learning-companion-project",
+    "title": "Learning Companion Project",
+    "keywords": "learning companion project examples learning project readme",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/learning-project/README.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-distribution-channels-registry",
+    "title": "Distribution Channels Registry",
+    "keywords": "distribution channels registry machine readable distribution channels",
     "category": "Reference",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/translations.json",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/distribution-channels.yaml",
     "source": "guide"
   },
   {
@@ -409,6 +481,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "glossary guide core glossary",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/glossary.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-translation-status-guide",
+    "title": "Translation Status Guide",
+    "keywords": "translation status guide guide core translations",
+    "category": "Guide",
+    "url": "/guide/translations/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-translation-registry",
+    "title": "Translation Registry",
+    "keywords": "translation registry machine readable translations",
+    "category": "Reference",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/translations.json",
     "source": "guide"
   },
   {
@@ -1670,9 +1758,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-vendor-claims-checklist",
     "title": "Vendor Claims Checklist",
-    "keywords": "vendor claims checklist guide ops unit economics md:159 (how to read a vendor's cost reduction claim: paired design, sign test ceiling at small n, bootstrap ci width, median vs aggregate)",
+    "keywords": "vendor claims checklist guide ops unit economics md#6 how read vendors cost reduction claim",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md:159 (How to read a vendor's cost-reduction claim: paired design, sign test ceiling at small n, bootstrap CI width, median vs aggregate)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#6-how-to-read-a-vendors-cost-reduction-claim",
     "source": "guide"
   },
   {
@@ -2124,6 +2212,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-unit-economics-accepted-task",
+    "title": "AI Unit Economics Accepted Task",
+    "keywords": "ai unit economics accepted task guide ops unit economics md#2 building cost per accepted task",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#2-building-a-cost-per-accepted-task",
+    "source": "guide"
+  },
+  {
     "id": "guide-ai-unit-economics-token-estimation",
     "title": "AI Unit Economics Token Estimation",
     "keywords": "ai unit economics token estimation guide ops unit economics md#do not estimate tokens string length",
@@ -2144,63 +2240,95 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Subscription Strategy Guide",
     "keywords": "subscription strategy guide guide ops subscription strategy",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md",
+    "url": "/guide/subscription-strategy/",
     "source": "guide"
   },
   {
-    "id": "guide-subscription-strategy-two-axes",
-    "title": "Subscription Strategy Two Axes",
-    "keywords": "subscription strategy two axes guide ops subscription strategy md#1 authentication and billing source matter more than interaction mode",
+    "id": "guide-subscription-strategy-billing",
+    "title": "Subscription Strategy Billing",
+    "keywords": "subscription strategy billing guide ops subscription strategy md#1 the enterprise seat does not include usage",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#1-authentication-and-billing-source-matter-more-than-interaction-mode",
+    "url": "/guide/subscription-strategy/#1-the-20-enterprise-seat-does-not-include-usage",
     "source": "guide"
   },
   {
-    "id": "guide-subscription-strategy-team-seat-cap",
-    "title": "Subscription Strategy Team Seat Cap",
-    "keywords": "subscription strategy team seat cap guide ops subscription strategy md#2 claude team the per seat default and its hard ceiling",
+    "id": "guide-subscription-strategy-controls",
+    "title": "Subscription Strategy Controls",
+    "keywords": "subscription strategy controls guide ops subscription strategy md#2 team covers the baseline enterprise adds specific controls",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#2-claude-team-the-per-seat-default-and-its-hard-ceiling",
+    "url": "/guide/subscription-strategy/#2-team-covers-the-baseline-enterprise-adds-specific-controls",
     "source": "guide"
   },
   {
-    "id": "guide-subscription-strategy-enterprise",
-    "title": "Subscription Strategy Enterprise",
-    "keywords": "subscription strategy enterprise guide ops subscription strategy md#3 claude enterprise usage priced seat fee included",
+    "id": "guide-subscription-strategy-supplier-assurance",
+    "title": "Subscription Strategy Supplier Assurance",
+    "keywords": "subscription strategy supplier assurance guide ops subscription strategy md#provider certifications are supplier evidence not plan control",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#3-claude-enterprise-usage-priced-seat-fee-included",
+    "url": "/guide/subscription-strategy/#provider-certifications-are-supplier-evidence-not-a-plan-control",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-compliance-api-risk",
+    "title": "Subscription Strategy Compliance API Risk",
+    "keywords": "subscription strategy compliance api risk guide ops subscription strategy md#compliance api evidence has its own risk boundary",
+    "category": "Guide",
+    "url": "/guide/subscription-strategy/#compliance-api-evidence-has-its-own-risk-boundary",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-bank-gate",
+    "title": "Subscription Strategy Bank Gate",
+    "keywords": "subscription strategy bank gate guide ops subscription strategy md#3 bank buys against control gap not plan label",
+    "category": "Guide",
+    "url": "/guide/subscription-strategy/#3-a-bank-buys-against-a-control-gap-not-a-plan-label",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-enterprise-limits",
+    "title": "Subscription Strategy Enterprise Limits",
+    "keywords": "subscription strategy enterprise limits guide ops subscription strategy md#what enterprise still does not solve",
+    "category": "Guide",
+    "url": "/guide/subscription-strategy/#what-enterprise-still-does-not-solve",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-benchmark",
+    "title": "Subscription Strategy Benchmark",
+    "keywords": "subscription strategy benchmark guide ops subscription strategy md#4 the per active day figure benchmark with missing denominators",
+    "category": "Guide",
+    "url": "/guide/subscription-strategy/#4-the-13-per-active-day-figure-is-a-benchmark-with-missing-denominators",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-strategy-model-quality",
+    "title": "Subscription Strategy Model Quality",
+    "keywords": "subscription strategy model quality guide ops subscription strategy md#5 optimize cost per accepted task not cost per token",
+    "category": "Guide",
+    "url": "/guide/subscription-strategy/#5-optimize-cost-per-accepted-task-not-cost-per-token",
     "source": "guide"
   },
   {
     "id": "guide-subscription-strategy-gateway",
     "title": "Subscription Strategy Gateway",
-    "keywords": "subscription strategy gateway guide ops subscription strategy md#4 api gateway control plane for routed api traffic",
+    "keywords": "subscription strategy gateway guide ops subscription strategy md#6 workforce plans and production api traffic solve different problems",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#4-api-gateway-a-control-plane-for-routed-api-traffic",
+    "url": "/guide/subscription-strategy/#6-workforce-plans-and-production-api-traffic-solve-different-problems",
     "source": "guide"
   },
   {
-    "id": "guide-subscription-strategy-multi-vendor",
-    "title": "Subscription Strategy Multi Vendor",
-    "keywords": "subscription strategy multi vendor guide ops subscription strategy md#5 multi vendor design not accident",
+    "id": "guide-subscription-strategy-decision-gate",
+    "title": "Subscription Strategy Decision Gate",
+    "keywords": "subscription strategy decision gate guide ops subscription strategy md#7 decision and pilot gate",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#5-multi-vendor-by-design-not-by-accident",
+    "url": "/guide/subscription-strategy/#7-decision-and-pilot-gate",
     "source": "guide"
   },
   {
     "id": "guide-subscription-strategy-personal-plan-gap",
     "title": "Subscription Strategy Personal Plan Gap",
-    "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#6 personal promax plans not organization control plane",
+    "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#8 boundaries subscription strategy self hosted split guide ops subscription strategy md#8 boundaries",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#6-personal-promax-plans-not-an-organization-control-plane",
-    "source": "guide"
-  },
-  {
-    "id": "guide-subscription-strategy-self-hosted-split",
-    "title": "Subscription Strategy Self Hosted Split",
-    "keywords": "subscription strategy self hosted split guide ops subscription strategy md#7 self hosted open weight models separate business case not line item here",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/subscription-strategy.md#7-self-hosted-open-weight-models-a-separate-business-case-not-a-line-item-here",
+    "url": "/guide/subscription-strategy/#8-boundaries",
     "source": "guide"
   },
   {
@@ -2334,7 +2462,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-roles-guide",
     "title": "AI Roles Guide",
-    "keywords": "ai roles guide guide roles roles ai roles spec engineer guide roles roles md#17 spec engineer ai roles agent identity architect guide roles roles md#18 agent identity architect ai roles eval engineer guide roles roles md#19 eval engineer ai roles harness engineer guide roles roles md#10 harness engineer ai roles career matrix guide roles roles md#20 career decision matrix",
+    "keywords": "ai roles guide guide roles roles ai roles team convergence guide roles roles md#role titles multiply while team boundaries compress ai roles applied ai engineer guide roles roles md#5 applied engineer ai roles ai platform engineer guide roles roles md#10 platform engineer ai roles harness engineer guide roles roles md#11 harness engineer ai roles spec engineer guide roles roles md#18 spec engineer ai roles agent identity architect guide roles roles md#19 agent identity architect ai roles evaluation engineer guide roles roles md#20 evaluation engineer ai roles forward deployed engineer guide roles roles md#21 forward deployed engineer fde ai roles security engineer guide roles roles md#22 security engineer ai roles governance engineer guide roles roles md#23 governance engineer ai roles career matrix guide roles roles md#24 career decision matrix ai roles compensation evidence guide roles roles md#25 compensation evidence ai roles capabilities guide roles roles md#26 capabilities and title qualifiers ai roles evidence snapshot guide roles roles md#27 evidence snapshot",
     "category": "Guide",
     "url": "/roles/",
     "source": "guide"

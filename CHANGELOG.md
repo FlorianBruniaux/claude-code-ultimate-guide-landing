@@ -10,6 +10,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Guide navigation and public changelog
 
+- **Translation status and community editions** (`src/data/guide-navigation.mjs`, `src/data/rss-entries.ts`, `src/components/global/AnnouncementBanner.astro`, Cmd+K, and sitemap): added the public `/guide/translations/` route to the guide portal and discovery surfaces. The page links the credited Simplified Chinese and Ukrainian community projects while displaying their independent, unofficial status, recorded versions, synchronization dates, and coverage beside the canonical English and maintained French editions.
+- **Readable changelog history** (`src/pages/changelog/index.astro`, `src/components/changelog/ChangelogItem.astro`, `src/utils/guide-changelog.ts`): replaced the wide card and multi-column wall with a single-column release history ordered newest to oldest. Versions, dates, source links, related guide pages, concise summaries, and expandable technical details now form a readable hierarchy on desktop and mobile. The parser also merges repeated categories, accepts annotated legacy version headings, and rejects unsupported headings instead of assigning changes to the wrong release.
 - **Dedicated guide changelog** (`src/pages/changelog/index.astro`, `src/utils/guide-changelog.ts`): added a public `/changelog/` page generated from the guide repository's `CHANGELOG.md`. It clearly separates guide updates from `/releases/`, which remains the Claude Code CLI version history.
 - **Shared guide information architecture** (`src/data/guide-navigation.mjs`, `scripts/prepare-guide-content.mjs`, `src/pages/sitemap/index.astro`): replaced the stale hard-coded `/guide/` table with a current editorial portal and reused the same curated topic model in the readable HTML sitemap. Current agent-engineering, context, economics, security, team operations, ecosystem, role, and workflow pages are now visible without pretending the HTML page is the exhaustive XML sitemap.
 - **Discovery surfaces synchronized** (`astro.config.mjs`, header, footer, announcement banner, Cmd+K, home updates, RSS, and sitemap): the guide changelog now has its own searchable route, RSS release anchors, navigation labels, XML sitemap entry, and announcement link. Removed the inactive guide-changelog fetcher and styles from the Claude Code releases page.
@@ -79,14 +81,14 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Changed
 
-- **`/roles/` — "What's Not a Role" section**: Removed "Orchestration Engineer" card — confirmed real job postings at Vista Equity, Zapier, Heidi Health, Adobe (March 2026).
-- **`/roles/` — axis tags**: Production-facing axis now includes MLOps Engineer, AI Developer Advocate, Orchestration Engineer.
+- **`/roles/` - "What's Not a Role" section**: Removed "Orchestration Engineer" card - confirmed real job postings at Vista Equity, Zapier, Heidi Health, Adobe (March 2026).
+- **`/roles/` - axis tags**: Production-facing axis now includes MLOps Engineer, AI Developer Advocate, Orchestration Engineer.
 - **SEO**: Meta description, JSON-LD keywords, `dateModified` updated for roles page.
 
 ## [2.8.0] - 2026-03-13
 
 ### Added
-- **Ecosystem page (`/ecosystem/`)** — interactive browser for 25 community-built tools extending Claude Code
+- **Ecosystem page (`/ecosystem/`)** - interactive browser for 25 community-built tools extending Claude Code
   - Filterable by category (8), status (stable/beta/alpha/watch), and text search
   - Cards with install command, language badge, expandable features/limitations/links
   - URL hash navigation (`#rtk` scrolls to and expands that tool's card)
@@ -94,12 +96,12 @@ All notable changes to the Claude Code Guide Landing Site.
   - "Recommendations by Persona" table (6 personas)
   - "Known Gaps" section (6 missing pieces in the community ecosystem)
   - Source: `src/data/ecosystem-data.ts` (25 tools manually extracted from `guide/ecosystem/third-party-tools.md`)
-- **Header "More" dropdown** — added "Ecosystem" link between "AI Roles" and "Context"
+- **Header "More" dropdown** - added "Ecosystem" link between "AI Roles" and "Context"
 
 ## [2.7.0] - 2026-03-10
 
 ### Added
-- **Section Cheat Sheets (`/cheatsheets/`)** — 57 fiches recap A4 lisibles en ligne
+- **Section Cheat Sheets (`/cheatsheets/`)** - 57 fiches recap A4 lisibles en ligne
   - Script de conversion `scripts/convert-recap-cards.mjs` : QMD → MD content collection + copie PDFs
   - Collection Astro `cheatsheets` avec schema Zod (`cardNumber`, `category`, `difficulty`, `order`)
   - Page index `/cheatsheets/` : stats, tabs de filtrage (All / Technique / Méthodologie / Conception), grille responsive, badges colorés par série (T=orange, M=bleu, C=vert), pills de difficulté, download PDF inline
@@ -112,7 +114,7 @@ All notable changes to the Claude Code Guide Landing Site.
 ## [2.6.1] - 2026-02-21
 
 ### Fixed
-- **Broken anchor links in guide chapter pages** — Quick jump links and table of contents in `00-introduction.md` now correctly navigate to the target chapter instead of staying on the same page
+- **Broken anchor links in guide chapter pages** - Quick jump links and table of contents in `00-introduction.md` now correctly navigate to the target chapter instead of staying on the same page
   - Root cause: bare anchors (`#11-installation`) were not rewritten because Astro 5 Content Layer API caches rendered content, bypassing the remark plugin entirely
   - Fix: `scripts/prepare-guide-content.mjs` now rewrites cross-chapter bare anchors at content preparation time (before Astro's cache), using the already-built `anchorMap`
   - Same-page anchors (`#before-you-start`, `#tldr-the-5-minute-summary`) are preserved unchanged
@@ -121,12 +123,12 @@ All notable changes to the Claude Code Guide Landing Site.
 ## [2.6.0] - 2026-02-19
 
 ### Added
-- **Starlight Guide Reader** — Full in-site guide reader at `/guide/`
+- **Starlight Guide Reader** - Full in-site guide reader at `/guide/`
   - `@astrojs/starlight` integration (replaces `@astrojs/mdx`)
-  - `scripts/prepare-guide-content.mjs` — copies guide `.md`, splits `ultimate-guide.md` by chapter, copies images
-  - `plugins/remark-guide-links.mjs` — rewrites relative links (`.md` → `/guide/…`, images → `/guide/images/`)
+  - `scripts/prepare-guide-content.mjs` - copies guide `.md`, splits `ultimate-guide.md` by chapter, copies images
+  - `plugins/remark-guide-links.mjs` - rewrites relative links (`.md` → `/guide/…`, images → `/guide/images/`)
   - Custom Starlight `Header.astro` + `Footer.astro` in `src/components/starlight/`
-  - `src/styles/starlight-overrides.css` — matches site design tokens
+  - `src/styles/starlight-overrides.css` - matches site design tokens
   - CI pipeline updated: clones guide repo then runs prepare script before build
   - Sitemap: `/guide/` pages at priority 0.85, changefreq weekly
 
@@ -136,13 +138,13 @@ All notable changes to the Claude Code Guide Landing Site.
   - "Learning" promoted from secondary to main nav
   - "Compare" moved to secondary "More" dropdown
   - "Read Guide" CTA now links to `/guide/` (was GitHub repo)
-- **Compare page** — major redesign: new Workflow Patterns section with tab navigation
-- **Learning page** — section reorder ("Choose Your Path" promoted to top), component extraction (`Onboarding.astro`, `Methodologies.astro`), tagline updated
-- **Community section** — removed French community callout (devw.ai)
+- **Compare page** - major redesign: new Workflow Patterns section with tab navigation
+- **Learning page** - section reorder ("Choose Your Path" promoted to top), component extraction (`Onboarding.astro`, `Methodologies.astro`), tagline updated
+- **Community section** - removed French community callout (devw.ai)
 
 ### Security
-- New CVE: `CVE-2026-23744` MCPJam — **Critical**, remediation: audit servers
-- New threat campaign: `hightower6eu` Publisher — 314+ malicious skills, credential theft via fake API workflows (Feb 2026)
+- New CVE: `CVE-2026-23744` MCPJam - **Critical**, remediation: audit servers
+- New threat campaign: `hightower6eu` Publisher - 314+ malicious skills, credential theft via fake API workflows (Feb 2026)
 - Threat DB bumped to **v2.1.0**
 
 ## [2.5.1] - 2026-02-19
@@ -161,23 +163,23 @@ All notable changes to the Claude Code Guide Landing Site.
   - Smooth open/close animation, keyboard-accessible
 
 ### Changed
-- **Quiz — Full Width Layout**
+- **Quiz - Full Width Layout**
   - Removed inner `max-width: 800px` constraint on `.quiz-container`
   - Quiz now spans the full container width (1200px), matching the header
-- **Quiz — Markdown Rendering in Explanations**
+- **Quiz - Markdown Rendering in Explanations**
   - `formatExplanation()` now parses `**bold**`, `*italic*`, and newlines (`\n → <br>`)
   - Code blocks and inline code protected via placeholder pattern before transformation
   - Fixes raw `**WHAT**` / `**WHERE**` text visible in explanation boxes
 
 ### Fixed
-- **Cheatsheet PDF** — Regenerated to fix context-bar height bug on page 7
-- **`robots.txt`** — Corrected sitemap URL to `sitemap-index.xml`
-- **Cheatsheet PDF static serving** — Moved to `public/` for correct Astro static asset serving
+- **Cheatsheet PDF** - Regenerated to fix context-bar height bug on page 7
+- **`robots.txt`** - Corrected sitemap URL to `sitemap-index.xml`
+- **Cheatsheet PDF static serving** - Moved to `public/` for correct Astro static asset serving
 
 ### Sync
-- **Claude Code releases** — Updated timeline to v2.1.47
-- **Guide v3.27.6** — Sonnet 4.6 as default model, 200K vs 1M context comparison
-- **Guide v3.27.5** — Content & search index sync
+- **Claude Code releases** - Updated timeline to v2.1.47
+- **Guide v3.27.6** - Sonnet 4.6 as default model, 200K vs 1M context comparison
+- **Guide v3.27.5** - Content & search index sync
 
 ## [2.4.2] - 2026-02-10
 

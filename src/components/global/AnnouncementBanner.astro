@@ -10,7 +10,7 @@
 
 // Increment this ID whenever the banner content changes.
 // Keep the strip to 4 links so it stays readable on smaller screens.
-const BANNER_ID = 'banner-guide-changelog-2026-08'
+const BANNER_ID = 'banner-guide-translations-2026-08'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
@@ -21,10 +21,14 @@ const BANNER_ID = 'banner-guide-changelog-2026-08'
         <span class="visually-hidden">Guide v3.43.0. Latest guide updates. </span>
         <span style="color:var(--text-secondary)">Latest:</span>
         <a href="/guide/loop-graph-engineering/" class="ann-link">Loop &amp; Graph Engineering</a>
-        <span class="ann-sep" aria-hidden="true">·</span>
-        <a href="/guide/workflows/monitor-event-delegation/" class="ann-link">Monitor &amp; Safe Delegation</a>
-        <span class="ann-sep" aria-hidden="true">·</span>
-        <a href="/guide/subscription-strategy/" class="ann-link">Subscription Strategy</a>
+        <span class="ann-secondary">
+          <span class="ann-sep" aria-hidden="true">·</span>
+          <a href="/guide/translations/" class="ann-link">Translations + Chinese Edition</a>
+        </span>
+        <span class="ann-secondary">
+          <span class="ann-sep" aria-hidden="true">·</span>
+          <a href="/guide/subscription-strategy/" class="ann-link">Subscription Strategy</a>
+        </span>
         <span class="ann-sep" aria-hidden="true">·</span>
         <a href="/changelog/" class="ann-link">Changelog &rarr;</a>
       </span>
@@ -86,7 +90,7 @@ const BANNER_ID = 'banner-guide-changelog-2026-08'
   display: inline-block;
   padding: 0.15rem 0.5rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--btn-primary-color);
   font-size: 0.7rem;
   font-weight: 700;
   font-family: var(--font-mono);
@@ -122,6 +126,10 @@ const BANNER_ID = 'banner-guide-changelog-2026-08'
   user-select: none;
 }
 
+.ann-secondary {
+  display: contents;
+}
+
 .ann-close {
   flex-shrink: 0;
   background: none;
@@ -148,6 +156,10 @@ const BANNER_ID = 'banner-guide-changelog-2026-08'
 
   .ann-inner {
     padding: 0.5rem 1rem;
+  }
+
+  .ann-secondary {
+    display: none;
   }
 }
 </style>

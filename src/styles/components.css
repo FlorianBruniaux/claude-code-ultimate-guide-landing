@@ -69,7 +69,7 @@ kbd {
 
 .btn-primary {
     background-color: var(--accent);
-    color: #ffffff;
+    color: var(--btn-primary-color);
     font-weight: 600;
     padding: 0.875rem 1.75rem;
     border: none;
@@ -78,7 +78,7 @@ kbd {
 
 .btn-primary:hover {
     background-color: var(--accent-hover);
-    color: #ffffff;
+    color: var(--btn-primary-color);
     transform: translateY(-1px);
 }
 
@@ -207,7 +207,7 @@ kbd {
     display: inline-block;
     padding: var(--space-xs) var(--space-md);
     background: var(--accent);
-    color: #ffffff;
+    color: var(--btn-primary-color);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -719,7 +719,7 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     align-items: center;
     gap: 0.5rem;
     background: var(--accent);
-    color: white;
+    color: var(--btn-primary-color);
     text-decoration: none;
     padding: 0.75rem 1.25rem;
     border-radius: 50px;
@@ -733,7 +733,7 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
 .feedback-fab:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-    color: white;
+    color: var(--btn-primary-color);
 }
 
 .feedback-fab:active {
@@ -897,6 +897,17 @@ details[open] > *:not(summary) {
 }
 
 @media (max-width: 600px) {
+    .feedback-wrapper {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(12px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .feedback-wrapper.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
     .feedback-fab-text {
         display: none;
     }
