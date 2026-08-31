@@ -240,6 +240,9 @@ export default defineConfig({
         if (item.url === 'https://cc.bruniaux.com/') {
           return { ...item, priority: 1.0, changefreq: 'weekly', lastmod }
         }
+        if (normalizedUrl === 'https://cc.bruniaux.com/mcp/') {
+          return { ...item, priority: 0.9, changefreq: 'monthly', lastmod }
+        }
         if (item.url.includes('/quiz/')) {
           return { ...item, priority: 0.9, changefreq: 'monthly', lastmod }
         }

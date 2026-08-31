@@ -11,6 +11,7 @@ const homepageContent = source('./homepage-content.ts')
 const searchIndex = source('./search-index.ts')
 const htmlSitemap = source('../pages/sitemap/index.astro')
 const header = source('../components/global/Header.astro')
+const footer = source('../components/global/Footer.astro')
 const astroConfig = source('../../astro.config.mjs')
 
 test('the homepage MCP proof leads to the dedicated product page', () => {
@@ -40,6 +41,15 @@ test('navigation and the HTML sitemap expose the MCP product separately from the
   assert.match(htmlSitemap, /href: '\/mcp-or-cli\/'/)
 })
 
-test('the XML sitemap gives the MCP page a stable modification date', () => {
+test('the XML sitemap gives the MCP page stable product metadata', () => {
   assert.match(astroConfig, /'https:\/\/cc\.bruniaux\.com\/mcp\/': '2026-08-31'/)
+  assert.match(
+    astroConfig,
+    /normalizedUrl === 'https:\/\/cc\.bruniaux\.com\/mcp\/'[\s\S]*priority: 0\.9[\s\S]*changefreq: 'monthly'/,
+  )
+})
+
+test('the full and compact footers link to the MCP product page', () => {
+  assert.match(footer, /\{ href: '\/mcp\/', label: 'MCP Server' \}/)
+  assert.match(footer, /<a href="\/mcp\/">MCP<\/a>/)
 })
