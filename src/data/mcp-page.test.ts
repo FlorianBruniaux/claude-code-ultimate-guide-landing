@@ -2,8 +2,9 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
-const pagePath = new URL('./index.astro', import.meta.url)
-const terminalPath = new URL('../../components/mcp/McpTerminal.astro', import.meta.url)
+const pagePath = new URL('../pages/mcp/index.astro', import.meta.url)
+const terminalPath = new URL('../components/mcp/McpTerminal.astro', import.meta.url)
+const footerPath = new URL('../components/global/Footer.astro', import.meta.url)
 
 function readPage(): string {
   return readFileSync(pagePath, 'utf8')
@@ -88,4 +89,11 @@ test('the terminal remains readable without JavaScript and enhances copy accessi
   assert.match(source, /Copy failed/)
   assert.match(source, /overflow-x:\s*auto/)
   assert.match(source, /word-break:\s*normal/)
+})
+
+test('shared page chrome does not invent active guide users', () => {
+  const footer = readFileSync(footerPath, 'utf8')
+
+  assert.doesNotMatch(footer, /developers use daily/i)
+  assert.doesNotMatch(footer, /active users/i)
 })

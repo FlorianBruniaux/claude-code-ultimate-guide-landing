@@ -35,9 +35,9 @@ Acceptance: the loader returns one typed page model and fails closed with action
 
 - Create `src/pages/mcp/index.astro`
 - Create `src/components/mcp/McpTerminal.astro`
-- Create `src/pages/mcp/mcp-page.test.ts`
+- Create `src/data/mcp-page.test.ts`
 
-Write the route contract test first. Render one command that matches the public npm version, a first useful query, public capabilities, compatibility, network and privacy limits, dated npm metrics, methodology, FAQ, source links, and the technical guide link. The copy button is progressive enhancement and reports success or failure through an accessible status element. Long commands must wrap or scroll safely on narrow screens.
+Write the route contract test first outside `src/pages/`, because Astro treats files in that directory as public routes. Render one command that matches the public npm version, a first useful query, public capabilities, compatibility, network and privacy limits, dated npm metrics, methodology, FAQ, source links, and the technical guide link. The copy button is progressive enhancement and reports success or failure through an accessible status element. Long commands must wrap or scroll safely on narrow screens.
 
 Acceptance: the page works without client JavaScript, uses a self-canonical URL, contains visible content matching its `SoftwareApplication` and `FAQPage` JSON-LD, and does not claim active users.
 
