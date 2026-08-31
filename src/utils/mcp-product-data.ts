@@ -136,6 +136,40 @@ function requireDownloadPeriod(value: unknown, label: string): DownloadPeriod {
   }
 }
 
+function inclusiveUtcDays(period: DownloadPeriod): number {
+  const millisecondsPerDay = 24 * 60 * 60 * 1000
+  return (Date.parse(`${period.end}T00:00:00Z`) - Date.parse(`${period.start}T00:00:00Z`)) /
+    millisecondsPerDay + 1
+}
+
+function validateDownloadWindows(downloads: McpProductData['downloads']): void {
+  const scope = 'MCP npm statistics'
+  if (inclusiveUtcDays(downloads.last30Days) !== 30) {
+    throw new Error(
+      `Invalid ${scope}: downloads.last_30_days must cover exactly 30 complete UTC days`,
+    )
+  }
+  if (inclusiveUtcDays(downloads.last7Days) !== 7) {
+    throw new Error(
+      `Invalid ${scope}: downloads.last_7_days must cover exactly 7 complete UTC days`,
+    )
+  }
+  if (
+    downloads.sinceLaunch.end !== downloads.last30Days.end ||
+    downloads.sinceLaunch.end !== downloads.last7Days.end
+  ) {
+    throw new Error(`Contradictory MCP evidence: download periods must share the same end date`)
+  }
+  if (
+    downloads.sinceLaunch.count < downloads.last30Days.count ||
+    downloads.last30Days.count < downloads.last7Days.count
+  ) {
+    throw new Error(
+      `Contradictory MCP evidence: download counts must satisfy since_launch >= last_30_days >= last_7_days`,
+    )
+  }
+}
+
 function readJsonEvidence(guideRoot: string, relativePath: string): unknown {
   const path = resolve(guideRoot, relativePath)
   let raw: string
@@ -225,6 +259,13 @@ export function loadMcpProductData(guideRoot = resolveGuideRoot()): McpProductDa
     )
   }
 
+  const downloads = {
+    sinceLaunch: requireDownloadPeriod(downloadsValue.since_launch, 'downloads.since_launch'),
+    last30Days: requireDownloadPeriod(downloadsValue.last_30_days, 'downloads.last_30_days'),
+    last7Days: requireDownloadPeriod(downloadsValue.last_7_days, 'downloads.last_7_days'),
+  }
+  validateDownloadWindows(downloads)
+
   return {
     packageName,
     publicVersion,
@@ -234,11 +275,7 @@ export function loadMcpProductData(guideRoot = resolveGuideRoot()): McpProductDa
     serverVersion,
     capabilities,
     counts,
-    downloads: {
-      sinceLaunch: requireDownloadPeriod(downloadsValue.since_launch, 'downloads.since_launch'),
-      last30Days: requireDownloadPeriod(downloadsValue.last_30_days, 'downloads.last_30_days'),
-      last7Days: requireDownloadPeriod(downloadsValue.last_7_days, 'downloads.last_7_days'),
-    },
+    downloads,
     npmSnapshotAt: requireTimestamp(stats.snapshot_at, 'snapshot_at', statsScope),
     npmSource: 'npm downloads API',
     methodology: NPM_METHODOLOGY,

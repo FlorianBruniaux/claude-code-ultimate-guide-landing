@@ -17,6 +17,9 @@ test('the homepage MCP proof leads to the dedicated product page', () => {
   assert.match(homepageMcp, /href="\/mcp\/"/)
   assert.match(homepageMcp, /View MCP setup|Explore the MCP|MCP setup/)
   assert.match(homepageMcp, /github\.com\/FlorianBruniaux\/claude-code-ultimate-guide\/tree\/main\/mcp-server/)
+  assert.match(homepageMcp, /loadMcpProductData/)
+  assert.match(homepageMcp, /\{mcp\.installCommand\}/)
+  assert.doesNotMatch(homepageMcp, /> npx -y claude-code-ultimate-guide-mcp<\/code>/)
 })
 
 test('the resource catalog exposes the MCP product route', () => {

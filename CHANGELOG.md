@@ -9,6 +9,7 @@ All notable changes to the Claude Code Guide Landing Site.
 - **Dedicated product route and discovery** (`src/pages/mcp/`, `src/components/mcp/McpTerminal.astro`, homepage MCP proof, Resources, Cmd+K, header, HTML sitemap, and XML sitemap): added a public `/mcp/` page for installation, verified runtime capabilities, compatibility, privacy limits, dated npm distribution evidence, methodology, FAQ, and technical sources. The page consumes fail-closed machine-readable evidence from the guide repository and states that npm downloads do not measure users, active installations, sessions, or executions.
 - **Progressive copy interaction** (`src/components/mcp/McpTerminal.astro`): kept the installation command readable without JavaScript and added an accessible copy status for success and failure.
 - **Unsupported daily-user claim removed** (`src/components/global/Footer.astro`): replaced the inherited "500+ developers use daily" statement with a factual description of the free, open-source guide. npm downloads remain distribution events, not evidence of active users.
+- **Evidence consistency hardened** (`src/utils/mcp-product-data.ts`, `src/components/landing/McpProof.astro`): the landing now rejects mislabeled 7-day or 30-day windows, mismatched period end dates, and non-monotonic download totals. The homepage teaser derives its pinned npm command from the same public runtime evidence as `/mcp/`.
 
 ### AI roles landing synchronization
 

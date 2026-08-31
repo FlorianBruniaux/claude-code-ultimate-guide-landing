@@ -1,3 +1,9 @@
+---
+import { loadMcpProductData } from '../../utils/mcp-product-data'
+
+const mcp = loadMcpProductData()
+---
+
 <section class="section mcp-proof" aria-labelledby="mcp-title">
   <div class="container">
     <div class="mcp-shell">
@@ -12,7 +18,7 @@
       </div>
       <div class="terminal" aria-label="MCP installation command">
         <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-        <code><span class="prompt">$</span> npx -y claude-code-ultimate-guide-mcp</code>
+        <code><span class="prompt">$</span> {mcp.installCommand}</code>
         <p><span class="status">✓</span> Guide search tools ready</p>
       </div>
     </div>

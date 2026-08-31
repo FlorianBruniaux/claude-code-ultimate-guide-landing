@@ -197,6 +197,47 @@ test('fails when an npm download period has no explicit end date', () => {
   })
 })
 
+test('rejects trailing windows whose inclusive duration is not 30 and 7 days', () => {
+  const stats = structuredClone(validStats)
+  stats.downloads.last_30_days.start = '2026-08-02'
+  stats.downloads.last_7_days.start = '2026-08-25'
+
+  withGuideFixture({ stats }, (guideRoot) => {
+    assert.throws(
+      () => loadMcpProductData(guideRoot),
+      /Invalid MCP npm statistics: downloads\.last_30_days must cover exactly 30 complete UTC days/,
+    )
+  })
+})
+
+test('rejects trailing windows that do not share the since-launch end date', () => {
+  const stats = structuredClone(validStats)
+  stats.downloads.last_7_days = {
+    ...stats.downloads.last_7_days,
+    start: '2026-08-23',
+    end: '2026-08-29',
+  }
+
+  withGuideFixture({ stats }, (guideRoot) => {
+    assert.throws(
+      () => loadMcpProductData(guideRoot),
+      /Contradictory MCP evidence: download periods must share the same end date/,
+    )
+  })
+})
+
+test('rejects download counts that increase as the measurement window narrows', () => {
+  const stats = structuredClone(validStats)
+  stats.downloads.last_7_days.count = stats.downloads.last_30_days.count + 1
+
+  withGuideFixture({ stats }, (guideRoot) => {
+    assert.throws(
+      () => loadMcpProductData(guideRoot),
+      /Contradictory MCP evidence: download counts must satisfy since_launch >= last_30_days >= last_7_days/,
+    )
+  })
+})
+
 test('fails when npm package identity contradicts the public runtime', () => {
   withGuideFixture(
     { stats: { ...validStats, public_version: '1.2.9' } },
