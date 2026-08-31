@@ -1831,7 +1831,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-guide-mcp-install-by-client",
     "title": "Install by client",
-    "keywords": "install by client claude code ultimate guide mcp server all examples below use the public npm version observed on 2026-08-31. pinning the version makes installation reproducible. claude code user scope: pro claude code codex cursor vs code",
+    "keywords": "install by client claude code ultimate guide mcp server all examples below use the public npm version observed on 2026-09-01. pinning the version makes installation reproducible. claude code user scope: pro claude code codex cursor vs code",
     "category": "Core Guides",
     "url": "/guide/claude-code-guide-mcp/#install-by-client",
     "source": "guide"
@@ -1855,7 +1855,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-guide-mcp-tools-resources-and-prompt",
     "title": "Tools, resources, and prompt",
-    "keywords": "tools resources and prompt claude code ultimate guide mcp server the candidate exposes the following generated contract: capability count purpose --- ---: --- tools 17 search, source retrieval, templates, releases,",
+    "keywords": "tools resources and prompt claude code ultimate guide mcp server the published package exposes the following generated contract: capability count purpose --- ---: --- tools 17 search, source retrieval, templates, re",
     "category": "Core Guides",
     "url": "/guide/claude-code-guide-mcp/#tools-resources-and-prompt",
     "source": "guide"
@@ -1871,7 +1871,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-guide-mcp-network-and-privacy-boundary",
     "title": "Network and privacy boundary",
-    "keywords": "network and privacy boundary claude code ultimate guide mcp server version has no first-party telemetry, analytics endpoint, device identifier, or event upload. mcp requests and responses are not sent to this project' telemetry decision for 1 3 0",
+    "keywords": "network and privacy boundary claude code ultimate guide mcp server version has no first-party telemetry, analytics endpoint, device identifier, or event upload. mcp requests and responses are not sent to this project' telemetry decision for 1 3 1",
     "category": "Core Guides",
     "url": "/guide/claude-code-guide-mcp/#network-and-privacy-boundary",
     "source": "guide"
@@ -1887,7 +1887,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-guide-mcp-compatibility",
     "title": "Compatibility",
-    "keywords": "compatibility claude code ultimate guide mcp server requirement candidate --- --- transport local stdio node.js mcp sdk tested client configuration shapes claude code, codex, cursor, vs code package man",
+    "keywords": "compatibility claude code ultimate guide mcp server requirement published --- --- transport local stdio node.js mcp sdk tested client configuration shapes claude code, codex, cursor, vs code package man",
     "category": "Core Guides",
     "url": "/guide/claude-code-guide-mcp/#compatibility",
     "source": "guide"
@@ -1895,7 +1895,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-guide-mcp-limitations",
     "title": "Limitations",
-    "keywords": "limitations claude code ultimate guide mcp server - the full guide markdown is not bundled. - the npm package version and its mcp handshake version can diverge. public reports ; the candidate derives",
+    "keywords": "limitations claude code ultimate guide mcp server - the full guide markdown is not bundled. - version derives the mcp handshake from and tests that contract. - the official registry identity is case-s",
     "category": "Core Guides",
     "url": "/guide/claude-code-guide-mcp/#limitations",
     "source": "guide"

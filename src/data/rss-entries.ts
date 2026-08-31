@@ -33,7 +33,7 @@ export const rssEntries: RssEntry[] = [
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.43.0',
     date: 'Sep 1, 2026',
-    description: 'A shorter repository entry point now shares one Start, Build, Scale, Resources, and Updates navigation contract with the public sitemap. This release also includes the MCP 1.3.0 launch candidate, loop and graph engineering, subscription strategy, translation governance, and the current security and reliability research accumulated since v3.42.0.',
+    description: 'A shorter repository entry point now shares one Start, Build, Scale, Resources, and Updates navigation contract with the public sitemap. This release also includes the published MCP 1.3.1 package and Registry entry, loop and graph engineering, subscription strategy, translation governance, and the current security and reliability research accumulated since v3.42.0.',
     link: 'https://cc.bruniaux.com/changelog/#3430---2026-09-01',
   },
   {
