@@ -1,0 +1,83 @@
+---
+import type { GuideChangelogItem } from '../../utils/guide-changelog'
+import {
+  guideChangelogItemLinks,
+  parseGuideChangelogInline,
+  summarizeGuideChangelogDescription,
+} from '../../utils/guide-changelog'
+
+interface Props {
+  item: GuideChangelogItem
+  publishedGuidePaths: ReadonlySet<string>
+}
+
+const { item, publishedGuidePaths } = Astro.props
+const titleSegments = parseGuideChangelogInline(item.title)
+const summary = summarizeGuideChangelogDescription(item.description)
+const summarySegments = parseGuideChangelogInline(summary)
+const detailSegments = parseGuideChangelogInline(item.description)
+const pageLinks = guideChangelogItemLinks(item, publishedGuidePaths)
+const hasDetails = item.description.length > 260
+---
+
+<li class="changelog-item">
+  <p class="item-title">
+    {titleSegments.map((segment) => (
+      segment.kind === 'code'
+        ? <code>{segment.text}</code>
+        : segment.kind === 'link'
+          ? <a href={segment.href} target={segment.href?.startsWith('http') ? '_blank' : undefined} rel={segment.href?.startsWith('http') ? 'noopener noreferrer' : undefined}>{segment.text}</a>
+          : segment.text
+    ))}
+  </p>
+  {summary && (
+    <p class="item-summary">
+      {summarySegments.map((segment) => (
+        segment.kind === 'code'
+          ? <code>{segment.text}</code>
+          : segment.kind === 'link'
+            ? <a href={segment.href} target={segment.href?.startsWith('http') ? '_blank' : undefined} rel={segment.href?.startsWith('http') ? 'noopener noreferrer' : undefined}>{segment.text}</a>
+            : segment.text
+      ))}
+    </p>
+  )}
+
+  {pageLinks.length > 0 && (
+    <div class="item-links" aria-label="Related guide pages">
+      {pageLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  )}
+
+  {hasDetails && (
+    <details class="item-details">
+      <summary>Technical details</summary>
+      <p>
+        {detailSegments.map((segment) => (
+          segment.kind === 'code'
+            ? <code>{segment.text}</code>
+            : segment.kind === 'link'
+              ? <a href={segment.href} target={segment.href?.startsWith('http') ? '_blank' : undefined} rel={segment.href?.startsWith('http') ? 'noopener noreferrer' : undefined}>{segment.text}</a>
+              : segment.text
+        ))}
+      </p>
+    </details>
+  )}
+</li>
+
+<style>
+  .changelog-item { padding-left: 0.1rem; color: var(--text-secondary); overflow-wrap: anywhere; }
+  .changelog-item::marker { color: var(--text-secondary); }
+  .item-title { margin: 0; color: var(--text-primary); font-size: 1rem; font-weight: 720; line-height: 1.45; }
+  .item-summary { max-width: 72ch; margin: 0.3rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; }
+  .item-title :global(code), .item-summary :global(code), .item-details :global(code) { padding: 0.08rem 0.3rem; border-radius: 0.25rem; background: var(--bg-tertiary); color: var(--text-primary); font-size: 0.88em; overflow-wrap: anywhere; }
+  .item-title :global(a), .item-summary :global(a), .item-details :global(a) { color: var(--text-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+  .item-title :global(a:hover), .item-summary :global(a:hover), .item-details :global(a:hover) { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+  .item-links { display: flex; flex-wrap: wrap; gap: 0.45rem 0.75rem; margin-top: 0.55rem; }
+  .item-links a { color: var(--text-primary); font-size: 0.82rem; font-weight: 680; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 0.18em; }
+  .item-links a::after { content: ' \2192'; }
+  .item-links a:hover { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+  .item-links a:focus-visible, .item-title :global(a:focus-visible), .item-summary :global(a:focus-visible), .item-details :global(a:focus-visible), .item-details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0.2rem; }
+  .item-details { margin-top: 0.6rem; color: var(--text-secondary); font-size: 0.9rem; }
+  .item-details summary { width: fit-content; cursor: pointer; color: var(--text-muted); font-weight: 650; }
+  .item-details p { max-width: 76ch; margin: 0.65rem 0 0; line-height: 1.65; overflow-wrap: anywhere; }
+</style>
