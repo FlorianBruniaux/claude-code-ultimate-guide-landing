@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
 import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
+import '../../styles/roles-page.css'
 
 function slugify(str: string): string {
   return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -32,31 +33,50 @@ const jsonLd = [
 ]
 
 const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
+
+const evidenceFilters = [
+  { value: 'Role family', label: 'Role families' },
+  { value: 'Specialization', label: 'Specializations' },
+  { value: 'Capability', label: 'Capabilities' },
+  { value: 'Title qualifier', label: 'Title qualifiers' },
+].map((filter) => ({
+  ...filter,
+  count: ROLES.filter((role) => role.evidence === filter.value).length,
+}))
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate={ROLES_META.modifiedDate}>
-
-  <!-- Hero -->
-  <header class="page-hero">
+  <header class="page-hero roles-hero" id="overview">
     <div class="container">
-      <div class="hero-badge-row">
-        <span class="hero-badge">{ROLES_META.count} roles mapped</span>
-        <span class="hero-badge hero-badge--secondary">Updated {ROLES_META.updated}</span>
-      </div>
-      <h1>The New AI Engineering Roles</h1>
-      <p class="tagline">Some titles are durable role families. Others are specializations, capabilities, or qualifiers. Find the scope that fits your work.</p>
-      <div class="cta-buttons">
-        <a href="#role-quiz" class="btn btn-primary">Find My Role →</a>
-        <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-badge-row">
+            <span class="hero-badge">{ROLES_META.count} profiles mapped</span>
+            <span class="hero-badge hero-badge--secondary">Updated {ROLES_META.updated}</span>
+          </div>
+          <h1>The New AI Engineering Roles</h1>
+          <p class="tagline">Some titles are durable role families. Others are specializations, capabilities, or qualifiers. Find the scope that fits your work.</p>
+          <div class="cta-buttons">
+            <a href="#roles" class="btn btn-primary">Explore Role Families →</a>
+            <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
+          </div>
+        </div>
+        <RoleQuiz embedded />
       </div>
     </div>
   </header>
 
-  <!-- Role Quiz -->
-  <RoleQuiz />
+  <nav class="role-subnav" aria-label="On this page">
+    <div class="container role-subnav-inner">
+      <a href="#landscape">Role map</a>
+      <a href="#roles">Profiles</a>
+      <a href="#decision-matrix">Career paths</a>
+      <a href="#market-evidence">Market evidence</a>
+      <a href="#full-profiles">Full guide</a>
+    </div>
+  </nav>
 
-  <!-- Landscape overview -->
-  <section class="section section--alt">
+  <section class="section roles-section" id="landscape">
     <div class="container">
       <h2 class="section-title">Two Axes, One Map</h2>
       <p class="section-subtitle">Where you sit on these two axes defines which role fits you.</p>
@@ -94,38 +114,44 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
     </div>
   </section>
 
-  <!-- Front-end role evolution -->
-  <section class="section">
-    <div class="container role-evolution">
-      <h2 class="section-title">Front-end Expertise Persists as Titles Broaden</h2>
-      <p class="section-subtitle">The evidence supports broader labels and ownership, not the disappearance of front-end work.</p>
-      <div class="evidence-grid">
-        <article class="evidence-card">
-          <h3>What the data says</h3>
-          <p><a href="https://github.com/StackExchange/Survey/blob/main/packages/archive/2025/json/developer-profile.json">Stack Overflow's 2025 role dataset</a> reports 26.96% full-stack and 4.25% front-end among 43,560 answers to its role question. In France, the figures are 25.21% and 3.48%.</p>
-          <p>This is respondent self-identification, not a count of vacancies. It cannot prove that AI caused the difference.</p>
-        </article>
-        <article class="evidence-card">
-          <h3>What employers still hire for</h3>
-          <p><a href="https://economicgraph.linkedin.com/content/dam/me/economicgraph/en-us/PDF/us-software-engineer-talent-landscape-2026.pdf">LinkedIn's 2026 US talent report</a> keeps React and JavaScript among leading skills of recent software-engineering hires, while Python, cloud, and AI demand also rises.</p>
-          <p>The practical positioning is <strong>Software Engineer or Product Engineer with front-end depth</strong>. Keep Front-end Engineer when browser architecture, accessibility, interaction quality, and performance remain the ownership boundary.</p>
-        </article>
+  <section class="section section--alt roles-section" id="roles" data-role-catalog data-default-filter="Role family">
+    <div class="container catalog-container">
+      <div class="catalog-heading">
+        <div>
+          <h2 class="section-title">Choose the Scope You Want to Own</h2>
+          <p class="section-subtitle">Start with durable role families, then inspect narrower specializations and capabilities.</p>
+        </div>
+        <p class="catalog-count" data-role-count aria-live="polite">{ROLES_META.count} profiles mapped</p>
       </div>
-      <p class="landscape-note">Using an AI coding agent does not by itself justify an AI Engineer title.</p>
-    </div>
-  </section>
 
-  <!-- Role Cards -->
-  <section class="section" id="roles">
-    <div class="container">
-      <h2 class="section-title">{ROLES_META.count} Profiles, Mapped</h2>
-      <p class="section-subtitle">Evidence labels distinguish role families from specializations, capabilities, and title qualifiers.</p>
+      <div class="role-filters" role="group" aria-label="Filter profiles by evidence label">
+        {evidenceFilters.map((filter) => (
+          <button type="button" class="role-filter" data-role-filter={filter.value} aria-pressed="false">
+            {filter.label}
+            <span>{filter.count}</span>
+          </button>
+        ))}
+        <button type="button" class="role-filter" data-role-filter="all" aria-pressed="false">
+          All profiles
+          <span>{ROLES_META.count}</span>
+        </button>
+      </div>
+
+      <details class="taxonomy-details">
+        <summary>How these labels differ</summary>
+        <div class="taxonomy-grid">
+          <p><strong>Role families</strong> describe a durable ownership boundary supported by current employer postings.</p>
+          <p><strong>Specializations</strong> narrow the work inside a broader engineering or product role.</p>
+          <p><strong>Capabilities</strong> are skills teams need, but they rarely justify a dedicated seat by themselves.</p>
+          <p><strong>Title qualifiers</strong> describe context such as company stage, not a separate discipline.</p>
+        </div>
+      </details>
 
       <div class="roles-grid">
         {ROLES.map((role) => {
           const statusConf = STATUS_CONFIG[role.evidence]
           return (
-            <div id={role.id} class:list={['role-card', role.highlight && 'role-card--highlight']}>
+            <article id={role.id} class="role-card" data-role-card data-role-evidence={role.evidence}>
               <div class="role-card-header">
                 <h3 class="role-card-title">{role.title}</h3>
                 <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
@@ -134,50 +160,38 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
               </div>
               <p class="role-card-mission">{role.mission}</p>
               <div class="role-card-skills">
-                {role.skills.map((skill) => (
+                {role.skills.slice(0, 3).map((skill) => (
                   <span class="skill-tag">{skill}</span>
                 ))}
               </div>
               <a href={`/roles/${slugify(role.title)}/`} class="role-card-cta">
-                Full profile →
+                Explore profile →
               </a>
-            </div>
+            </article>
           )
         })}
       </div>
     </div>
   </section>
 
-  <!-- Career Decision Matrix -->
-  <section class="section section--alt" id="decision-matrix">
+  <section class="section roles-section" id="decision-matrix">
     <div class="container">
-      <h2 class="section-title">Career Decision Matrix</h2>
-      <p class="section-subtitle">Where to go from where you are now.</p>
+      <h2 class="section-title">Start From the Work You Already Know</h2>
+      <p class="section-subtitle">A broader title is credible when your portfolio shows the missing ownership, not when the label changes first.</p>
 
-      <div class="matrix-table-wrapper">
-        <table class="matrix-table">
-          <thead>
-            <tr>
-              <th>Your current profile</th>
-              <th>Best next role</th>
-              <th>Timeline</th>
-            </tr>
-          </thead>
-          <tbody>
-            {DECISION_MATRIX.map((row) => {
-              const targetRole = ROLES.find((role) => role.id === row.roleId)
-              return (
-                <tr>
-                  <td class="matrix-background">{row.background}</td>
-                  <td class="matrix-role">
-                    <a href={targetRole ? `/roles/${slugify(targetRole.title)}/` : '#roles'}>{row.role}</a>
-                  </td>
-                  <td class="matrix-timeline">{row.timeline}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      <div class="career-grid">
+        {DECISION_MATRIX.map((row) => {
+          const targetRole = ROLES.find((role) => role.id === row.roleId)
+          return (
+            <article class="career-card">
+              <p class="career-card-label">Starting from</p>
+              <h3>{row.background}</h3>
+              <span class="career-arrow" aria-hidden="true">↓</span>
+              <a class="career-role" href={targetRole ? `/roles/${slugify(targetRole.title)}/` : '#roles'}>{row.role}</a>
+              <p class="career-evidence"><strong>Evidence to build</strong>{row.timeline}</p>
+            </article>
+          )
+        })}
       </div>
 
       <div class="callout-box">
@@ -193,483 +207,77 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
     </div>
   </section>
 
-  <!-- Compensation evidence -->
-  <section class="section" id="compensation">
+  <section class="section section--alt roles-section" id="market-evidence">
     <div class="container">
-      <h2 class="section-title">Compensation Evidence, Not Market Averages</h2>
-      <div class="evidence-callout">
-        <strong>One posting establishes one employer's range for one role, level, location, and date.</strong> It does not establish a global average or a premium caused by the title.
+      <h2 class="section-title">Market Signals, With Their Limits</h2>
+      <p class="section-subtitle">The evidence shows how titles and skills are used. It does not prove a single AI-driven cause.</p>
+
+      <div class="evidence-block">
+        <div class="evidence-block-heading">
+          <p class="eyebrow">Role evolution</p>
+          <h3>Front-end Expertise Persists as Titles Broaden</h3>
+          <p>The data supports broader labels and ownership, not the disappearance of front-end work.</p>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <h4>What the data says</h4>
+            <p><a href="https://github.com/StackExchange/Survey/blob/main/packages/archive/2025/json/developer-profile.json">Stack Overflow's 2025 role dataset</a> reports 26.96% full-stack and 4.25% front-end among 43,560 answers to its role question. In France, the figures are 25.21% and 3.48%.</p>
+            <p>This is respondent self-identification, not a count of vacancies. It cannot prove that AI caused the difference.</p>
+          </article>
+          <article class="evidence-card">
+            <h4>What employers still hire for</h4>
+            <p><a href="https://economicgraph.linkedin.com/content/dam/me/economicgraph/en-us/PDF/us-software-engineer-talent-landscape-2026.pdf">LinkedIn's 2026 US talent report</a> keeps React and JavaScript among leading skills of recent software-engineering hires, while Python, cloud, and AI demand also rises.</p>
+            <p>The practical positioning is <strong>Software Engineer or Product Engineer with front-end depth</strong>. Keep Front-end Engineer when browser architecture, accessibility, interaction quality, and performance remain the ownership boundary.</p>
+          </article>
+        </div>
+        <p class="landscape-note">Using an AI coding agent does not by itself justify an AI Engineer title.</p>
       </div>
-      <div class="compensation-grid">
-        <article class="compensation-card">
-          <h3>Applied AI Engineer</h3>
-          <p><strong>$197K to $278K base</strong></p>
-          <p><a href="https://openai.com/careers/applied-ai-engineer-enterprise-san-francisco/">OpenAI, Enterprise, US</a>. Equity separate. Employer-specific customer-facing scope.</p>
-        </article>
-        <article class="compensation-card">
-          <h3>Forward-Deployed Engineer</h3>
-          <p><strong>$162K to $280K base</strong></p>
-          <p><a href="https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/">OpenAI, San Francisco</a>. Equity separate. One location and a broad level range.</p>
-        </article>
-        <article class="compensation-card">
-          <h3>AI Security Engineer</h3>
-          <p><strong>$131.54K to $197K base</strong></p>
-          <p><a href="https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/AI-Security-Engineer_2603452">Marvell, Santa Clara or Austin</a>. Employer-specific enterprise cyber-engineering role.</p>
-        </article>
+
+      <div class="evidence-block evidence-block--divided" id="compensation">
+        <div class="evidence-block-heading">
+          <p class="eyebrow">Compensation evidence</p>
+          <h3>Specific Postings, Not Market Averages</h3>
+          <p>One posting establishes one employer's range for one role, level, location, and date. It does not establish a global average or a premium caused by the title.</p>
+        </div>
+        <div class="compensation-grid">
+          <article class="compensation-card">
+            <h4>Applied AI Engineer</h4>
+            <p><strong>$197K to $278K base</strong></p>
+            <p><a href="https://openai.com/careers/applied-ai-engineer-enterprise-san-francisco/">OpenAI, Enterprise, US</a>. Equity separate. Employer-specific customer-facing scope.</p>
+          </article>
+          <article class="compensation-card">
+            <h4>Forward-Deployed Engineer</h4>
+            <p><strong>$162K to $280K base</strong></p>
+            <p><a href="https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/">OpenAI, San Francisco</a>. Equity separate. One location and a broad level range.</p>
+          </article>
+          <article class="compensation-card">
+            <h4>AI Security Engineer</h4>
+            <p><strong>$131.54K to $197K base</strong></p>
+            <p><a href="https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/AI-Security-Engineer_2603452">Marvell, Santa Clara or Austin</a>. Employer-specific enterprise cyber-engineering role.</p>
+          </article>
+        </div>
+        <p class="landscape-note">Postings observed during the August 31, 2026 review. Verify that each vacancy remains open before using its range.</p>
       </div>
-      <p class="landscape-note">Postings observed during the August 31, 2026 review. Verify that each vacancy remains open before using its range.</p>
     </div>
   </section>
 
-  <!-- Evidence labels -->
-  <section class="section section--alt">
-    <div class="container">
-      <h2 class="section-title">Titles, Capabilities, and Qualifiers</h2>
-      <p class="section-subtitle">A useful term does not always justify a dedicated seat on the team.</p>
-      <div class="not-roles-grid">
-        <div class="not-role-card">
-          <h3>Role families</h3>
-          <p>AI Engineer, Applied AI Engineer, AI Platform Engineer, Forward-Deployed Engineer, AI Security Engineer, and AI Governance Engineer are supported by current official employer postings. Their ownership boundaries still vary by employer.</p>
-        </div>
-        <div class="not-role-card">
-          <h3>Specializations and capabilities</h3>
-          <p>Context engineering and orchestration are specializations. Prompt, harness, specification, and agent-identity work are capabilities that usually sit inside a broader product, platform, security, QA, or domain role.</p>
-        </div>
-        <div class="not-role-card">
-          <h3>Qualifiers and practice labels</h3>
-          <p>Founding describes company stage and ownership breadth. AI-native describes proficiency. Vibe coding describes a practice. None should be treated as a mandatory standalone role.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section roles-cta-section">
+  <section class="section roles-cta-section" id="full-profiles">
     <div class="container">
       <div class="roles-cta-box">
-        <h2>Full profiles in the guide</h2>
+        <p class="eyebrow">Continue in the guide</p>
+        <h2>Use the Full Profiles to Plan Your Next Move</h2>
         <p>Each role has a complete profile: detailed responsibilities, required skills, entry paths, and where the role is heading. Free, open-source.</p>
         <div class="cta-buttons">
           <a href={guideBase} class="btn btn-primary">Read Full Profiles →</a>
-          <a href="/" class="btn btn-secondary">← Back to Guide</a>
+          <a href="#overview" class="btn btn-secondary">Back to Overview ↑</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Go further -->
-  <section class="section section--alt">
-    <div class="container">
-      <h2 class="section-title">Go further</h2>
-      <ul class="go-further-links">
-        <li><a href="/quiz/">Quiz</a> - test your Claude Code knowledge across role profiles</li>
-        <li><a href="/cheatsheet/">Cheatsheet</a> - command reference for daily use</li>
-      </ul>
     </div>
   </section>
 
   <ConsultingCta placement="roles" />
 </Layout>
 
-<style>
-/* ============================================
-   Hero badges
-   ============================================ */
-.hero-badge-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.hero-badge--secondary {
-  color: var(--text-secondary);
-}
-
-/* ============================================
-   Landscape overview
-   ============================================ */
-.landscape-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-
-.axis-card {
-  padding: var(--space-xl);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border);
-  background: var(--surface-elevated);
-}
-
-.axis-card--model {
-  border-left: 3px solid var(--accent-tertiary);
-}
-
-.axis-card--prod {
-  border-left: 3px solid var(--accent);
-}
-
-.axis-icon {
-  font-size: 2rem;
-  margin-bottom: var(--space-sm);
-}
-
-.axis-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: var(--space-sm);
-}
-
-.axis-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: var(--space-md);
-}
-
-.axis-roles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-}
-
-.axis-role-tag {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  background: var(--bg-tertiary);
-  border-radius: 4px;
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-}
-
-.landscape-note {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-.role-evolution {
-  max-width: 1040px;
-}
-
-.evidence-grid,
-.compensation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
-  margin-bottom: var(--space-lg);
-}
-
-.evidence-card,
-.compensation-card {
-  padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-}
-
-.evidence-card h3,
-.compensation-card h3 {
-  font-size: 1rem;
-  margin-bottom: var(--space-sm);
-}
-
-.evidence-card p,
-.compensation-card p {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.evidence-card p + p,
-.compensation-card p + p {
-  margin-top: var(--space-sm);
-}
-
-/* ============================================
-   Role cards
-   ============================================ */
-.roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-lg);
-}
-
-.role-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.role-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
-}
-
-.role-card--highlight {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  background: var(--bg-tertiary);
-}
-
-.role-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-sm);
-}
-
-.role-card-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.role-status-badge {
-  flex-shrink: 0;
-  font-size: 0.7rem;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  color: var(--status-color);
-  background: color-mix(in srgb, var(--status-color) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--status-color) 30%, transparent);
-}
-
-.role-card-mission {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  flex: 1;
-}
-
-.role-card-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-}
-
-.skill-tag {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
-  color: var(--text-secondary);
-}
-
-.role-card-cta {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--accent);
-  text-decoration: none;
-  margin-top: auto;
-}
-
-.role-card-cta:hover {
-  text-decoration: underline;
-}
-
-/* ============================================
-   Decision matrix
-   ============================================ */
-.matrix-table-wrapper {
-  overflow-x: auto;
-  margin-bottom: var(--space-xl);
-}
-
-.matrix-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.matrix-table th {
-  text-align: left;
-  padding: var(--space-sm) var(--space-md);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 2px solid var(--border);
-}
-
-.matrix-table td {
-  padding: var(--space-md);
-  border-bottom: 1px solid var(--border-light);
-  vertical-align: middle;
-}
-
-.matrix-table tr:last-child td {
-  border-bottom: none;
-}
-
-.matrix-table tr:hover td {
-  background: var(--bg-tertiary);
-}
-
-.matrix-background {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-}
-
-.matrix-role a {
-  color: var(--accent);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.matrix-role a:hover {
-  text-decoration: underline;
-}
-
-.matrix-timeline {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.callout-box {
-  padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--border-radius);
-}
-
-.callout-box h3 {
-  font-size: 1rem;
-  margin-bottom: var(--space-md);
-}
-
-.fast-path-list {
-  padding-left: 1.5rem;
-  margin-bottom: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.fast-path-list li {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.callout-note {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  font-style: italic;
-  margin: 0;
-}
-
-.evidence-callout {
-  padding: var(--space-md) var(--space-lg);
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
-  border-left: 3px solid var(--accent);
-  border-radius: var(--border-radius);
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
-}
-
-.evidence-callout strong {
-  color: var(--text-primary);
-}
-
-/* ============================================
-   Not a role section
-   ============================================ */
-.not-roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
-}
-
-.not-role-card {
-  padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  border-top: 2px dashed var(--border);
-}
-
-.not-role-card h3 {
-  font-size: 1rem;
-  margin-bottom: var(--space-sm);
-  color: var(--text-secondary);
-}
-
-.not-role-card p {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* ============================================
-   CTA section
-   ============================================ */
-.roles-cta-section {
-  border-top: 1px solid var(--border);
-}
-
-.roles-cta-box {
-  max-width: 640px;
-}
-
-.roles-cta-box h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-md);
-}
-
-.roles-cta-box p {
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xl);
-  line-height: 1.6;
-}
-
-/* ============================================
-   Responsive
-   ============================================ */
-@media (max-width: 768px) {
-  .landscape-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .roles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .not-roles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .matrix-background {
-    font-size: 0.8rem;
-  }
-
-}
-</style>
+<script>
+  import '../../scripts/role-catalog'
+</script>

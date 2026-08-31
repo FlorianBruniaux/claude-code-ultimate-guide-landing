@@ -6,11 +6,20 @@
  */
 import { ROLE_QUIZ_QUESTIONS } from '../../data/role-quiz'
 
+interface Props {
+  embedded?: boolean
+}
+
+const { embedded = false } = Astro.props
 const total = ROLE_QUIZ_QUESTIONS.length
 ---
 
-<section class="section rq-section" id="role-quiz" aria-label="AI role personality quiz">
-  <div class="container">
+<div
+  class:list={['rq-section', embedded ? 'rq-section--embedded' : 'section rq-section--standalone']}
+  id="role-quiz"
+  aria-label="AI role personality quiz"
+>
+  <div class={embedded ? 'rq-container--embedded' : 'container'}>
     <div class="rq-wrapper">
 
       <!-- ── Screen 1: Intro (server-rendered, visible without JS) ── -->
@@ -89,7 +98,7 @@ const total = ROLE_QUIZ_QUESTIONS.length
 
     </div>
   </div>
-</section>
+</div>
 
 <script>
   import '../../scripts/role-quiz'
@@ -97,15 +106,27 @@ const total = ROLE_QUIZ_QUESTIONS.length
 
 <style>
 /* ── Layout ─────────────────────────────────────────────────────────── */
-.rq-section {
+.rq-section--standalone {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
+.rq-section--embedded {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
 .rq-wrapper {
   max-width: 640px;
   margin: 0 auto;
+}
+
+.rq-section--embedded .rq-wrapper {
+  max-width: none;
 }
 
 /* Screen visibility */
@@ -120,6 +141,11 @@ const total = ROLE_QUIZ_QUESTIONS.length
 .rq-intro-content {
   text-align: center;
   padding: var(--space-xl) 0;
+}
+
+.rq-section--embedded .rq-intro-content {
+  padding: 0;
+  text-align: left;
 }
 
 .rq-intro-badge {
@@ -148,6 +174,11 @@ const total = ROLE_QUIZ_QUESTIONS.length
   line-height: 1.6;
   max-width: 480px;
   margin: 0 auto var(--space-xl);
+}
+
+.rq-section--embedded .rq-intro-sub {
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .rq-start-btn {
@@ -453,6 +484,10 @@ const total = ROLE_QUIZ_QUESTIONS.length
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
+  .rq-section--embedded {
+    padding: var(--space-lg);
+  }
+
   .rq-intro-title {
     font-size: 1.4rem;
   }
