@@ -4,6 +4,12 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### AI roles landing synchronization
+
+- **Role catalog and metadata corrected** (`src/data/ai-roles.ts`, `src/data/ai-roles.test.ts`, `src/pages/roles/`, `src/components/landing/PersonaRouting.astro`): synchronized the public landing with the guide's 22 reviewed profiles and August 31, 2026 evidence labels. The role count, visible update month, JSON-LD date, profile dates, and home-page summary now derive from one catalog and ISO date, with regression tests for count, date, unique ids, and the canonical title set.
+- **Front-end role evolution added with evidence boundaries** (`src/pages/roles/index.astro`): added the Stack Overflow 2025 self-identification data and LinkedIn 2026 hiring-skill signal without presenting either as proof that AI caused fewer front-end titles. Recommends broader Software Engineer or Product Engineer positioning while preserving front-end technical depth.
+- **Unsupported market claims removed** (`src/pages/roles/`): replaced secondary-site salary averages and the unsourced candidate statistic with employer-, location-, level-, and date-specific compensation examples plus portfolio evidence. Reclassified role cards as role families, specializations, capabilities, or title qualifiers.
+
 ### Translation governance
 
 - **Translation status route and discovery surfaces** (`astro.config.mjs`, `src/data/guide-navigation.mjs`, `scripts/build-guide-index.mjs`, `src/data/guide-search-entries.ts`, `src/components/global/Footer.astro`, and `src/pages/sitemap/index.astro`): added the generated `/guide/translations/` page to the sidebar, curated guide navigation, footer, Cmd+K index, HTML sitemap, and XML sitemap. The page links the English and French project editions plus Chinese, Ukrainian, and Latin American Spanish community adaptations with evidence boundaries. Community repositories remain normal links rather than unsupported `hreflang` alternates; the built page keeps a self-referencing canonical URL.

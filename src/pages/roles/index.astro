@@ -5,36 +5,36 @@ import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 
 function slugify(str: string): string {
-  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+  return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
 const title = 'AI Engineer Roles & Career Paths 2026 | Claude Code Guide'
-const description = 'Map of 19 AI engineering roles: Spec Engineer, Agent Identity Architect, AI Eval Engineer, Context Engineer, AI Agent Engineer, Harness Engineer and more. Career decision matrix, salary benchmarks, and skill requirements.'
+const description = `Evidence-based map of ${ROLES_META.count} AI engineering role families, specializations, capabilities, and title qualifiers, with skill requirements and career paths.`
 
 const jsonLd = [
   {
     "@type": "Article",
-    "headline": "AI Roles & Career Paths: 19 New Engineering Roles Mapped",
-    "description": "Comprehensive map of emerging AI roles with responsibilities, skills, and career trajectories for developers considering an AI specialization",
+    "headline": `AI Roles & Career Paths: ${ROLES_META.count} Engineering Profiles Mapped`,
+    "description": "Evidence-based map of AI engineering roles, specializations, capabilities, and title qualifiers for developers evaluating their next career move",
     "url": "https://cc.bruniaux.com/roles/",
     "mainEntityOfPage": "https://cc.bruniaux.com/roles/",
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-03-09",
-    "dateModified": "2026-05-21",
+    "dateModified": ROLES_META.modifiedDate,
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
       "audienceType": "Developers considering AI career specialization"
     },
-    "keywords": "AI engineer, context engineer, harness engineer, prompt engineer, AI agent engineer, founding AI engineer, MLOps engineer, AI developer advocate, AI orchestration engineer, AI roles 2025, AI career paths, LLM engineer"
+    "keywords": "AI engineer, applied AI engineer, forward-deployed engineer, AI security engineer, AI governance engineer, context engineer, AI platform engineer, AI roles 2026, AI career paths, LLM engineer"
   }
 ]
 
 const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate="2026-05-21">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate={ROLES_META.modifiedDate}>
 
   <!-- Hero -->
   <header class="page-hero">
@@ -44,7 +44,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         <span class="hero-badge hero-badge--secondary">Updated {ROLES_META.updated}</span>
       </div>
       <h1>The New AI Engineering Roles</h1>
-      <p class="tagline">The AI wave created new jobs that didn't exist 3 years ago. Find where you fit.</p>
+      <p class="tagline">Some titles are durable role families. Others are specializations, capabilities, or qualifiers. Find the scope that fits your work.</p>
       <div class="cta-buttons">
         <a href="#role-quiz" class="btn btn-primary">Find My Role →</a>
         <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
@@ -64,42 +64,66 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
         <div class="axis-card axis-card--model">
           <div class="axis-icon">🧠</div>
           <h3>Closer to the model</h3>
-          <p>You work with model internals: training, fine-tuning, evaluation, safety. High barrier to entry, fewer roles, highest research overlap.</p>
+          <p>You work closer to model behavior: training, fine-tuning, evaluation, and safety. The roles vary from research-heavy to production evaluation.</p>
           <div class="axis-roles">
             <span class="axis-role-tag">ML Engineer</span>
             <span class="axis-role-tag">LLM Engineer</span>
-            <span class="axis-role-tag">AI Safety & Eval</span>
+            <span class="axis-role-tag">AI Safety</span>
+            <span class="axis-role-tag">AI Evaluation</span>
           </div>
         </div>
         <div class="axis-card axis-card--prod">
           <div class="axis-icon">🚀</div>
           <h3>Closer to production</h3>
-          <p>You build systems that ship. Models are a tool, not the subject. Highest job volume, fastest growth, most accessible from traditional engineering.</p>
+          <p>You build systems that ship. Models are a component inside product, platform, security, governance, or customer-deployment work.</p>
           <div class="axis-roles">
             <span class="axis-role-tag">AI Engineer</span>
             <span class="axis-role-tag">Context Engineer</span>
             <span class="axis-role-tag">Agent Engineer</span>
-            <span class="axis-role-tag">Platform Engineer</span>
-            <span class="axis-role-tag">Harness Engineer</span>
+            <span class="axis-role-tag">Applied AI Engineer</span>
+            <span class="axis-role-tag">AI Platform Engineer</span>
+            <span class="axis-role-tag">Forward-Deployed Engineer</span>
+            <span class="axis-role-tag">AI Security Engineer</span>
             <span class="axis-role-tag">MLOps Engineer</span>
             <span class="axis-role-tag">AI Developer Advocate</span>
             <span class="axis-role-tag">Orchestration Engineer</span>
           </div>
         </div>
       </div>
-      <p class="landscape-note">Most new job demand sits in the production-facing quadrant. The applied, product-facing roles are where the 2025–2026 growth is.</p>
+      <p class="landscape-note">This map describes ownership boundaries, not market share. A current vacancy confirms title usage at one employer and date, not the size or durability of the wider market.</p>
+    </div>
+  </section>
+
+  <!-- Front-end role evolution -->
+  <section class="section">
+    <div class="container role-evolution">
+      <h2 class="section-title">Front-end Expertise Persists as Titles Broaden</h2>
+      <p class="section-subtitle">The evidence supports broader labels and ownership, not the disappearance of front-end work.</p>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <h3>What the data says</h3>
+          <p><a href="https://github.com/StackExchange/Survey/blob/main/packages/archive/2025/json/developer-profile.json">Stack Overflow's 2025 role dataset</a> reports 26.96% full-stack and 4.25% front-end among 43,560 answers to its role question. In France, the figures are 25.21% and 3.48%.</p>
+          <p>This is respondent self-identification, not a count of vacancies. It cannot prove that AI caused the difference.</p>
+        </article>
+        <article class="evidence-card">
+          <h3>What employers still hire for</h3>
+          <p><a href="https://economicgraph.linkedin.com/content/dam/me/economicgraph/en-us/PDF/us-software-engineer-talent-landscape-2026.pdf">LinkedIn's 2026 US talent report</a> keeps React and JavaScript among leading skills of recent software-engineering hires, while Python, cloud, and AI demand also rises.</p>
+          <p>The practical positioning is <strong>Software Engineer or Product Engineer with front-end depth</strong>. Keep Front-end Engineer when browser architecture, accessibility, interaction quality, and performance remain the ownership boundary.</p>
+        </article>
+      </div>
+      <p class="landscape-note">Using an AI coding agent does not by itself justify an AI Engineer title.</p>
     </div>
   </section>
 
   <!-- Role Cards -->
   <section class="section" id="roles">
     <div class="container">
-      <h2 class="section-title">16 Roles, Mapped</h2>
-      <p class="section-subtitle">From well-established to just emerging. Each card links to the full profile in the guide.</p>
+      <h2 class="section-title">{ROLES_META.count} Profiles, Mapped</h2>
+      <p class="section-subtitle">Evidence labels distinguish role families from specializations, capabilities, and title qualifiers.</p>
 
       <div class="roles-grid">
         {ROLES.map((role) => {
-          const statusConf = STATUS_CONFIG[role.status]
+          const statusConf = STATUS_CONFIG[role.evidence]
           return (
             <div id={role.id} class:list={['role-card', role.highlight && 'role-card--highlight']}>
               <div class="role-card-header">
@@ -114,18 +138,6 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
                   <span class="skill-tag">{skill}</span>
                 ))}
               </div>
-              {role.salary && (
-                <div class="role-card-salary">
-                  <span class="salary-label">Mid-level</span>
-                  <span class="salary-value">{role.salary.mid}</span>
-                </div>
-              )}
-              {!role.salary && (
-                <div class="role-card-salary role-card-salary--emerging">
-                  <span class="salary-label">Salary</span>
-                  <span class="salary-value">Not yet standardized</span>
-                </div>
-              )}
               <a href={`/roles/${slugify(role.title)}/`} class="role-card-cta">
                 Full profile →
               </a>
@@ -152,96 +164,80 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
             </tr>
           </thead>
           <tbody>
-            {DECISION_MATRIX.map((row) => (
-              <tr>
-                <td class="matrix-background">{row.background}</td>
-                <td class="matrix-role">
-                  <a href={`/roles/${row.roleId}/`}>{row.role}</a>
-                </td>
-                <td class="matrix-timeline">{row.timeline}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div class="callout-box">
-        <h3>The fastest path to AI employment in 2025–2026</h3>
-        <ol class="fast-path-list">
-          <li><strong>Build something</strong> with AI APIs. A real project, not a tutorial.</li>
-          <li><strong>Write about it</strong>: blog post, GitHub README, LinkedIn thread.</li>
-          <li><strong>Add evals</strong>: measure your system's quality, show the numbers.</li>
-          <li><strong>Apply for AI Engineer roles</strong>. The bar is demonstrated building, not credentials.</li>
-        </ol>
-        <p class="callout-note">76% of candidates claiming AI expertise lack production-level deployment experience. The bar is lower than it looks if you've actually shipped something.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Salary Benchmarks -->
-  <section class="section" id="salaries">
-    <div class="container">
-      <h2 class="section-title">Salary Benchmarks</h2>
-      <div class="salary-disclaimer">
-        <strong>Indicative only. Large variance applies.</strong> These are US base salaries (2025–2026). Europe runs 30–50% lower, other markets 40–60% lower. Total comp (equity, bonus, RSUs) can significantly exceed base, especially at startups and FAANG. Use as orientation, not negotiation anchors.
-      </div>
-      <p class="section-subtitle">
-        Source: FinalRoundAI, Alcor, RiseWorks AI Talent Report (2025)
-      </p>
-
-      <div class="salary-table-wrapper">
-        <table class="salary-table">
-          <thead>
-            <tr>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Entry</th>
-              <th>Mid</th>
-              <th>Senior</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ROLES.map((role) => {
-              const statusConf = STATUS_CONFIG[role.status]
+            {DECISION_MATRIX.map((row) => {
+              const targetRole = ROLES.find((role) => role.id === row.roleId)
               return (
                 <tr>
-                  <td class="salary-role-name">{role.title}</td>
-                  <td>
-                    <span class="status-dot" style={`--status-color: ${statusConf.color}`}>
-                      {role.status}
-                    </span>
+                  <td class="matrix-background">{row.background}</td>
+                  <td class="matrix-role">
+                    <a href={targetRole ? `/roles/${slugify(targetRole.title)}/` : '#roles'}>{row.role}</a>
                   </td>
-                  <td class="salary-figure">{role.salary?.entry ?? '—'}</td>
-                  <td class="salary-figure salary-figure--mid">{role.salary?.mid ?? '—'}</td>
-                  <td class="salary-figure">{role.salary?.senior ?? '—'}</td>
-                  <td class="salary-note">{role.salary?.note ?? (role.salary === null ? 'Role emerging, no data yet' : '')}</td>
+                  <td class="matrix-timeline">{row.timeline}</td>
                 </tr>
               )
             })}
           </tbody>
         </table>
       </div>
+
+      <div class="callout-box">
+        <h3>Build evidence before changing your title</h3>
+        <ol class="fast-path-list">
+          <li><strong>Build something</strong> with AI APIs. A real project, not a tutorial.</li>
+          <li><strong>Define failure modes</strong> and acceptance criteria before polishing the demo.</li>
+          <li><strong>Add versioned evals</strong> and report false positives, false negatives, and uncovered cases.</li>
+          <li><strong>Instrument production behavior</strong>: latency, cost, errors, tool actions, and fallbacks.</li>
+        </ol>
+        <p class="callout-note">These artifacts demonstrate production judgment. They do not replace domain, research, security, or regulatory depth where the role requires it.</p>
+      </div>
     </div>
   </section>
 
-  <!-- What's Not a Role -->
+  <!-- Compensation evidence -->
+  <section class="section" id="compensation">
+    <div class="container">
+      <h2 class="section-title">Compensation Evidence, Not Market Averages</h2>
+      <div class="evidence-callout">
+        <strong>One posting establishes one employer's range for one role, level, location, and date.</strong> It does not establish a global average or a premium caused by the title.
+      </div>
+      <div class="compensation-grid">
+        <article class="compensation-card">
+          <h3>Applied AI Engineer</h3>
+          <p><strong>$197K to $278K base</strong></p>
+          <p><a href="https://openai.com/careers/applied-ai-engineer-enterprise-san-francisco/">OpenAI, Enterprise, US</a>. Equity separate. Employer-specific customer-facing scope.</p>
+        </article>
+        <article class="compensation-card">
+          <h3>Forward-Deployed Engineer</h3>
+          <p><strong>$162K to $280K base</strong></p>
+          <p><a href="https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/">OpenAI, San Francisco</a>. Equity separate. One location and a broad level range.</p>
+        </article>
+        <article class="compensation-card">
+          <h3>AI Security Engineer</h3>
+          <p><strong>$131.54K to $197K base</strong></p>
+          <p><a href="https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/AI-Security-Engineer_2603452">Marvell, Santa Clara or Austin</a>. Employer-specific enterprise cyber-engineering role.</p>
+        </article>
+      </div>
+      <p class="landscape-note">Postings observed during the August 31, 2026 review. Verify that each vacancy remains open before using its range.</p>
+    </div>
+  </section>
+
+  <!-- Evidence labels -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="section-title">What's Not a Role (Yet)</h2>
-      <p class="section-subtitle">Terms you'll hear that describe practices, not job titles.</p>
+      <h2 class="section-title">Titles, Capabilities, and Qualifiers</h2>
+      <p class="section-subtitle">A useful term does not always justify a dedicated seat on the team.</p>
       <div class="not-roles-grid">
         <div class="not-role-card">
-          <h3>"Vibe Coder"</h3>
-          <p>A methodology (use AI to handle implementation while you focus on design), not a job. Andrej Karpathy coined the term then moved to "context engineering" as more precise. No serious company has "Vibe Coder" on a job description.</p>
+          <h3>Role families</h3>
+          <p>AI Engineer, Applied AI Engineer, AI Platform Engineer, Forward-Deployed Engineer, AI Security Engineer, and AI Governance Engineer are supported by current official employer postings. Their ownership boundaries still vary by employer.</p>
         </div>
         <div class="not-role-card">
-          <h3>"Context Engineering"</h3>
-          <p>A design practice, not a title. It describes how you manage what goes into an LLM's context window: token budgets, retrieval strategy, session continuity, knowledge architecture. Every AI engineer does this. When companies post "Context Engineer" roles, they mean an AI Engineer who specializes in information retrieval systems.</p>
+          <h3>Specializations and capabilities</h3>
+          <p>Context engineering and orchestration are specializations. Prompt, harness, specification, and agent-identity work are capabilities that usually sit inside a broader product, platform, security, QA, or domain role.</p>
         </div>
         <div class="not-role-card">
-          <h3>"AI-Native Engineer"</h3>
-          <p>Describes a quality expected of all engineers, increasingly. You use AI tools fluently in your daily workflow. It's the bar, not the title.</p>
+          <h3>Qualifiers and practice labels</h3>
+          <p>Founding describes company stage and ownership breadth. AI-native describes proficiency. Vibe coding describes a practice. None should be treated as a mandatory standalone role.</p>
         </div>
       </div>
     </div>
@@ -365,6 +361,44 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
   font-style: italic;
 }
 
+.role-evolution {
+  max-width: 1040px;
+}
+
+.evidence-grid,
+.compensation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.evidence-card,
+.compensation-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.evidence-card h3,
+.compensation-card h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.evidence-card p,
+.compensation-card p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.evidence-card p + p,
+.compensation-card p + p {
+  margin-top: var(--space-sm);
+}
+
 /* ============================================
    Role cards
    ============================================ */
@@ -441,32 +475,6 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
   border: 1px solid var(--border-light);
   border-radius: 4px;
   color: var(--text-secondary);
-}
-
-.role-card-salary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--bg-tertiary);
-  border-radius: 6px;
-  font-size: 0.85rem;
-}
-
-.role-card-salary--emerging {
-  opacity: 0.6;
-}
-
-.salary-label {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-}
-
-.salary-value {
-  font-weight: 600;
-  font-family: var(--font-mono);
-  color: var(--text-primary);
-  font-size: 0.8rem;
 }
 
 .role-card-cta {
@@ -576,79 +584,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
   margin: 0;
 }
 
-/* ============================================
-   Salary table
-   ============================================ */
-.salary-table-wrapper {
-  overflow-x: auto;
-  margin-bottom: var(--space-lg);
-}
-
-.salary-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.875rem;
-}
-
-.salary-table th {
-  text-align: left;
-  padding: var(--space-sm) var(--space-md);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 2px solid var(--border);
-  white-space: nowrap;
-}
-
-.salary-table td {
-  padding: 0.625rem var(--space-md);
-  border-bottom: 1px solid var(--border-light);
-  vertical-align: middle;
-}
-
-.salary-table tr:last-child td {
-  border-bottom: none;
-}
-
-.salary-table tr:hover td {
-  background: var(--bg-tertiary);
-}
-
-.salary-role-name {
-  font-weight: 500;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
-.status-dot {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--status-color);
-  font-family: var(--font-mono);
-  white-space: nowrap;
-}
-
-.salary-figure {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.salary-figure--mid {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.salary-note {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-.salary-disclaimer {
+.evidence-callout {
   padding: var(--space-md) var(--space-lg);
   background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
   border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
@@ -660,7 +596,7 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
   margin-bottom: var(--space-lg);
 }
 
-.salary-disclaimer strong {
+.evidence-callout strong {
   color: var(--text-primary);
 }
 
@@ -735,13 +671,5 @@ const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
     font-size: 0.8rem;
   }
 
-  .salary-table th:nth-child(3),
-  .salary-table td:nth-child(3),
-  .salary-table th:nth-child(5),
-  .salary-table td:nth-child(5),
-  .salary-table th:nth-child(6),
-  .salary-table td:nth-child(6) {
-    display: none;
-  }
 }
 </style>
