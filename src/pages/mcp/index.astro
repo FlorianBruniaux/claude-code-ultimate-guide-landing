@@ -1,0 +1,334 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import McpTerminal from '../../components/mcp/McpTerminal.astro'
+import { loadMcpProductData } from '../../utils/mcp-product-data'
+
+const mcp = loadMcpProductData()
+const number = new Intl.NumberFormat('en-US')
+const date = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+})
+
+const formatDate = (value: string) => date.format(new Date(`${value}T00:00:00Z`))
+const runtimeSnapshotDate = date.format(new Date(mcp.snapshotAt))
+const claudeCommand = `claude mcp add --scope user claude-code-guide -- ${mcp.installCommand}`
+const codexCommand = `codex mcp add claude-code-guide -- ${mcp.installCommand}`
+
+const faqs = [
+  {
+    question: 'What does the MCP server expose?',
+    answer: `The public npm runtime exposes ${mcp.counts.tools} tools, ${mcp.counts.resources} resources, and ${mcp.counts.prompts} prompt. The surface covers guide search, source retrieval, templates, releases, security references, and official documentation snapshots.`,
+  },
+  {
+    question: 'Does it send my prompts or code anywhere?',
+    answer: 'The server has no first-party telemetry and communicates with the client over local stdio. Some content tools can contact GitHub or Anthropic when you invoke them. Your MCP client, npm, and those providers can keep their own logs.',
+  },
+  {
+    question: 'Can I use it with Claude Code and Codex?',
+    answer: 'Yes. Both clients can start a local stdio MCP server from an npx command. The setup commands on this page pin the currently published npm version.',
+  },
+  {
+    question: 'Does it work fully offline?',
+    answer: 'Only partially. Bundled search and capability listing work locally. The first npx run can need npm, uncached guide content can need GitHub, and official documentation refreshes need Anthropic.',
+  },
+]
+
+const jsonLd = [
+  {
+    '@type': 'SoftwareApplication',
+    name: 'Claude Code Ultimate Guide MCP server',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cross-platform',
+    softwareVersion: mcp.publicVersion,
+    description: 'A local stdio MCP server for searching the Claude Code Ultimate Guide, retrieving source sections, and finding production templates.',
+    url: 'https://cc.bruniaux.com/mcp/',
+    installUrl: `https://www.npmjs.com/package/${mcp.packageName}`,
+    codeRepository: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  },
+]
+
+const title = 'Claude Code Ultimate Guide MCP Server | Install and Use'
+const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the guide from Claude Code or Codex with ${mcp.counts.tools} public MCP tools and no first-party telemetry.`
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="page-hero mcp-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <a class="back-link" href="/">← Home</a>
+        <p class="eyebrow">Local stdio MCP server</p>
+        <h1>Search the guide from your coding session</h1>
+        <p class="tagline">Find the exact Claude Code reference, source section, or template without loading the full guide into context.</p>
+        <div class="runtime-facts" aria-label="Published runtime facts">
+          <span>npm v{mcp.publicVersion}</span>
+          <span>{mcp.counts.tools} tools</span>
+          <span>{mcp.counts.resources} resources</span>
+          <span>{mcp.counts.prompts} prompt</span>
+        </div>
+        <p class="snapshot-note">Public runtime measured <time datetime={mcp.snapshotAt}>{runtimeSnapshotDate}</time>. Server handshake: <code>{mcp.serverName} {mcp.serverVersion}</code>.</p>
+      </div>
+      <div class="hero-install">
+        <McpTerminal command={mcp.installCommand} label="Run the published package" />
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#compatibility">Install in your client</a>
+          <a class="btn btn-secondary" href={`https://www.npmjs.com/package/${mcp.packageName}`} target="_blank" rel="noopener">View on npm</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--alt" aria-labelledby="first-query">
+    <div class="container narrow-grid">
+      <div>
+        <p class="section-kicker">First useful query</p>
+        <h2 class="section-title" id="first-query">Ask for a source, not a summary</h2>
+        <p class="section-subtitle">This request makes the result inspectable. The client first finds a relevant section, then opens the source it will use.</p>
+      </div>
+      <div class="query-card">
+        <blockquote>Search the Claude Code Ultimate Guide for session-scoped hooks. Open the most relevant source section and cite its path and heading.</blockquote>
+        <ol>
+          <li><code>search_guide</code> locates candidate sections.</li>
+          <li><code>read_section</code> retrieves the selected source.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="capabilities">
+    <div class="container">
+      <p class="section-kicker">Published surface</p>
+      <h2 class="section-title" id="capabilities">Use the guide as a retrieval layer</h2>
+      <p class="section-subtitle">These capabilities come from the public npm runtime, not the unreleased repository candidate.</p>
+
+      <div class="use-case-grid">
+        <article class="feature-card">
+          <span class="feature-index">01</span>
+          <h3>Search and cite</h3>
+          <p>Locate a guide topic, then retrieve only the source section needed for the current decision.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">02</span>
+          <h3>Find working material</h3>
+          <p>Search production templates, examples, cheat sheets, releases, and security references by task.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">03</span>
+          <h3>Check official changes</h3>
+          <p>Create local Anthropic documentation snapshots, compare them, and search the saved result.</p>
+        </article>
+      </div>
+
+      <div class="contract-grid">
+        <details open>
+          <summary>{mcp.counts.tools} tools</summary>
+          <ul class="capability-list">
+            {mcp.capabilities.tools.map((tool: string) => <li><code>{tool}</code></li>)}
+          </ul>
+        </details>
+        <details>
+          <summary>{mcp.counts.resources} resources</summary>
+          <ul class="capability-list">
+            {mcp.capabilities.resources.map((resource: string) => <li><code>{resource}</code></li>)}
+          </ul>
+        </details>
+        <details>
+          <summary>{mcp.counts.prompts} prompt</summary>
+          <ul class="capability-list">
+            {mcp.capabilities.prompts.map((prompt: string) => <li><code>{prompt}</code></li>)}
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="compatibility">
+    <div class="container">
+      <p class="section-kicker">Client setup</p>
+      <h2 class="section-title" id="compatibility">Install the same pinned runtime in Claude Code or Codex</h2>
+      <p class="section-subtitle">Both commands create a local stdio server entry named <code>claude-code-guide</code>.</p>
+      <div class="client-grid">
+        <div>
+          <h3>Claude Code</h3>
+          <p>The user scope makes the guide available across projects.</p>
+          <McpTerminal command={claudeCommand} label="Claude Code user scope" />
+        </div>
+        <div>
+          <h3>Codex</h3>
+          <p>Codex stores the MCP entry in its client configuration.</p>
+          <McpTerminal command={codexCommand} label="Codex MCP configuration" />
+        </div>
+      </div>
+      <p class="compatibility-note">The server requires Node.js 18.14.1 or newer. Other clients can work when they support local stdio servers and command arguments, but they are not all tested here.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="privacy">
+    <div class="container boundary-grid">
+      <div>
+        <p class="section-kicker">Network boundary</p>
+        <h2 class="section-title" id="privacy">Local transport, tool-specific network access</h2>
+        <p class="section-subtitle">MCP messages travel between your client and the local child process over stdio. This project does not run a hosted MCP endpoint.</p>
+        <p class="privacy-callout"><strong>No first-party telemetry:</strong> the server does not upload prompts, arguments, source content, device identifiers, or usage events to the guide author.</p>
+      </div>
+      <div class="boundary-list" role="list" aria-label="Network behavior by operation">
+        <div role="listitem"><strong>Bundled search and capability listing</strong><span>No network and no local write.</span></div>
+        <div role="listitem"><strong>Uncached guide content</strong><span>Can contact GitHub and write a 24-hour local cache.</span></div>
+        <div role="listitem"><strong>Official documentation refresh</strong><span>Contacts Anthropic and stores local snapshots.</span></div>
+        <div role="listitem"><strong>First npx run</strong><span>Can contact npm unless the package is already installed or cached.</span></div>
+      </div>
+      <p class="boundary-caveat">Your MCP client, npm, GitHub, Anthropic, and the machine operator can have separate logs or policies. Those systems sit outside this server's first-party telemetry boundary.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="npm-stats">
+    <div class="container">
+      <p class="section-kicker">npm snapshot</p>
+      <h2 class="section-title" id="npm-stats">Published downloads, with their measurement limits</h2>
+      <p class="section-subtitle">Counts cover complete UTC days and the package <code>{mcp.packageName}</code>.</p>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <p>Since launch</p>
+          <strong>{number.format(mcp.downloads.sinceLaunch.count)}</strong>
+          <span><time datetime={mcp.downloads.sinceLaunch.start}>{formatDate(mcp.downloads.sinceLaunch.start)}</time> to <time datetime={mcp.downloads.sinceLaunch.end}>{formatDate(mcp.downloads.sinceLaunch.end)}</time></span>
+        </article>
+        <article class="stat-card">
+          <p>Trailing 30 complete days</p>
+          <strong>{number.format(mcp.downloads.last30Days.count)}</strong>
+          <span><time datetime={mcp.downloads.last30Days.start}>{formatDate(mcp.downloads.last30Days.start)}</time> to <time datetime={mcp.downloads.last30Days.end}>{formatDate(mcp.downloads.last30Days.end)}</time></span>
+        </article>
+        <article class="stat-card">
+          <p>Trailing 7 complete days</p>
+          <strong>{number.format(mcp.downloads.last7Days.count)}</strong>
+          <span><time datetime={mcp.downloads.last7Days.start}>{formatDate(mcp.downloads.last7Days.start)}</time> to <time datetime={mcp.downloads.last7Days.end}>{formatDate(mcp.downloads.last7Days.end)}</time></span>
+        </article>
+      </div>
+      <div class="method-note">
+        <strong>What this measures</strong>
+        <p>npm downloads can include installs, CI runs, cache misses, bots, and repeated downloads. npm downloads do not measure users, active installations, sessions, or tool executions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq">
+    <div class="container faq-layout">
+      <div>
+        <p class="section-kicker">Questions before installing</p>
+        <h2 class="section-title" id="faq">MCP server FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="sources">
+    <div class="container source-panel">
+      <div>
+        <p class="section-kicker">Verify the claims</p>
+        <h2 class="section-title" id="sources">Runtime, metrics, and implementation sources</h2>
+        <p>Read the installation details, network behavior, measurement method, and public contract in the technical reference.</p>
+      </div>
+      <div class="source-links">
+        <a class="btn btn-primary" href="/guide/claude-code-guide-mcp/">Read the MCP technical reference</a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">Inspect the MCP source on GitHub →</a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-stats.json" target="_blank" rel="noopener">Inspect the npm metrics snapshot →</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .mcp-hero { padding: clamp(3rem, 7vw, 6rem) 0; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr); align-items: center; gap: clamp(2rem, 7vw, 6rem); }
+  .hero-copy, .hero-install, .client-grid > div { min-width: 0; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+  .eyebrow, .section-kicker { margin: 0 0 0.45rem; color: var(--accent); font: 700 0.76rem var(--font-mono); letter-spacing: 0.07em; text-transform: uppercase; }
+  .mcp-hero h1 { max-width: 760px; margin: 0 0 1rem; font-size: clamp(2.3rem, 5.5vw, 4.75rem); line-height: 1.02; letter-spacing: -0.045em; }
+  .mcp-hero .tagline { max-width: 680px; margin-bottom: 1.4rem; }
+  .runtime-facts { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .runtime-facts span { padding: 0.35rem 0.65rem; color: var(--text-secondary); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 999px; font: 650 0.73rem var(--font-mono); }
+  .snapshot-note { max-width: 700px; margin: 0.9rem 0 0; color: var(--text-muted); font-size: 0.78rem; }
+  .hero-install { display: grid; gap: 1rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+  .hero-actions .btn { flex: 1 1 180px; }
+  .narrow-grid, .boundary-grid, .faq-layout, .source-panel { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1.2fr); gap: clamp(2rem, 7vw, 6rem); align-items: start; }
+  .section-title { max-width: 720px; margin-top: 0; }
+  .section-subtitle { max-width: 760px; }
+  .query-card { padding: clamp(1.25rem, 3vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
+  blockquote { margin: 0; padding-left: 1.15rem; color: var(--text-primary); border-left: 3px solid var(--accent); font-size: 1.08rem; font-weight: 580; line-height: 1.65; }
+  .query-card ol { margin: 1.25rem 0 0; padding-left: 1.3rem; color: var(--text-secondary); }
+  .query-card li + li { margin-top: 0.55rem; }
+  .use-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
+  .feature-card { padding: 1.25rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+  .feature-index { color: var(--accent); font: 700 0.72rem var(--font-mono); }
+  .feature-card h3 { margin: 1rem 0 0.4rem; font-size: 1.05rem; }
+  .feature-card p { margin: 0; color: var(--text-secondary); font-size: 0.88rem; }
+  .contract-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-top: 1.5rem; }
+  details { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+  summary { padding: 1rem 1.15rem; font-weight: 680; cursor: pointer; }
+  details[open] summary { border-bottom: 1px solid var(--border-light); }
+  .capability-list { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 1rem 1.15rem 1.15rem; list-style: none; }
+  .capability-list code { overflow-wrap: anywhere; }
+  .client-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  .client-grid h3 { margin: 0 0 0.3rem; }
+  .client-grid p { margin: 0 0 0.85rem; color: var(--text-secondary); }
+  .compatibility-note, .boundary-caveat { margin: 1.25rem 0 0; color: var(--text-muted); font-size: 0.86rem; }
+  .privacy-callout { padding: 1rem; background: color-mix(in srgb, var(--status-success) 8%, var(--surface-elevated)); border: 1px solid color-mix(in srgb, var(--status-success) 35%, var(--border)); border-radius: var(--border-radius-lg); }
+  .boundary-list { display: grid; gap: 0.65rem; }
+  .boundary-list > div { display: grid; gap: 0.2rem; padding: 1rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+  .boundary-list span { color: var(--text-secondary); font-size: 0.86rem; }
+  .boundary-caveat { grid-column: 1 / -1; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
+  .stat-card { padding: 1.25rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+  .stat-card p { margin: 0; color: var(--text-secondary); font-size: 0.8rem; }
+  .stat-card strong { display: block; margin: 0.35rem 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; letter-spacing: -0.04em; }
+  .stat-card span { color: var(--text-muted); font: 0.7rem var(--font-mono); }
+  .method-note { margin-top: 1rem; padding: 1rem 1.15rem; background: color-mix(in srgb, var(--status-warning) 8%, var(--surface-elevated)); border: 1px solid color-mix(in srgb, var(--status-warning) 35%, var(--border)); border-radius: var(--border-radius-lg); }
+  .method-note p { margin: 0.25rem 0 0; color: var(--text-secondary); }
+  .faq-list { display: grid; gap: 0.65rem; }
+  .faq-list p { margin: 0; padding: 0.9rem 1.15rem 1.15rem; color: var(--text-secondary); }
+  .source-panel { padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 18px; }
+  .source-panel p { color: var(--text-secondary); }
+  .source-links { display: grid; justify-items: start; gap: 0.65rem; }
+  .source-links a:not(.btn) { display: inline-flex; align-items: center; min-height: 38px; font-weight: 620; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .narrow-grid, .boundary-grid, .faq-layout, .source-panel { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-install { max-width: 720px; }
+  }
+
+  @media (max-width: 760px) {
+    .use-case-grid, .client-grid, .stats-grid { grid-template-columns: 1fr; }
+    .section { padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
+  }
+
+  @media (max-width: 520px) {
+    .mcp-hero h1 { font-size: clamp(2.15rem, 13vw, 3.25rem); }
+    .hero-actions { display: grid; }
+    .capability-list { display: grid; }
+  }
+</style>
