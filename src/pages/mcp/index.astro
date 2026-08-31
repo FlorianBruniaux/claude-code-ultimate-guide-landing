@@ -14,13 +14,15 @@ const date = new Intl.DateTimeFormat('en-US', {
 
 const formatDate = (value: string) => date.format(new Date(`${value}T00:00:00Z`))
 const runtimeSnapshotDate = date.format(new Date(mcp.snapshotAt))
+const npmSnapshotDate = date.format(new Date(mcp.npmSnapshotAt))
 const claudeCommand = `claude mcp add --scope user claude-code-guide -- ${mcp.installCommand}`
 const codexCommand = `codex mcp add claude-code-guide -- ${mcp.installCommand}`
+const promptLabel = mcp.counts.prompts === 1 ? 'prompt' : 'prompts'
 
 const faqs = [
   {
     question: 'What does the MCP server expose?',
-    answer: `The public npm runtime exposes ${mcp.counts.tools} tools, ${mcp.counts.resources} resources, and ${mcp.counts.prompts} prompt. The surface covers guide search, source retrieval, templates, releases, security references, and official documentation snapshots.`,
+    answer: `The public npm runtime exposes ${mcp.counts.tools} tools, ${mcp.counts.resources} resources, and ${mcp.counts.prompts} ${promptLabel}. The surface covers guide search, source retrieval, templates, releases, security references, and official documentation snapshots.`,
   },
   {
     question: 'Does it send my prompts or code anywhere?',
@@ -40,18 +42,11 @@ const jsonLd = [
   {
     '@type': 'SoftwareApplication',
     name: 'Claude Code Ultimate Guide MCP server',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Cross-platform',
     softwareVersion: mcp.publicVersion,
     description: 'A local stdio MCP server for searching the Claude Code Ultimate Guide, retrieving source sections, and finding production templates.',
     url: 'https://cc.bruniaux.com/mcp/',
     installUrl: `https://www.npmjs.com/package/${mcp.packageName}`,
     codeRepository: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
   },
   {
     '@type': 'FAQPage',
@@ -82,7 +77,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
           <span>npm v{mcp.publicVersion}</span>
           <span>{mcp.counts.tools} tools</span>
           <span>{mcp.counts.resources} resources</span>
-          <span>{mcp.counts.prompts} prompt</span>
+          <span>{mcp.counts.prompts} {promptLabel}</span>
         </div>
         <p class="snapshot-note">Public runtime measured <time datetime={mcp.snapshotAt}>{runtimeSnapshotDate}</time>. Server handshake: <code>{mcp.serverName} {mcp.serverVersion}</code>.</p>
       </div>
@@ -151,7 +146,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
           </ul>
         </details>
         <details>
-          <summary>{mcp.counts.prompts} prompt</summary>
+          <summary>{mcp.counts.prompts} {promptLabel}</summary>
           <ul class="capability-list">
             {mcp.capabilities.prompts.map((prompt: string) => <li><code>{prompt}</code></li>)}
           </ul>
@@ -204,6 +199,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
       <p class="section-kicker">npm snapshot</p>
       <h2 class="section-title" id="npm-stats">Published downloads, with their measurement limits</h2>
       <p class="section-subtitle">Counts cover complete UTC days and the package <code>{mcp.packageName}</code>.</p>
+      <p class="stats-provenance">Source: <strong>{mcp.npmSource}</strong>. Snapshot created <time datetime={mcp.npmSnapshotAt}>{npmSnapshotDate}</time>.</p>
       <div class="stats-grid">
         <article class="stat-card">
           <p>Since launch</p>
@@ -223,7 +219,8 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
       </div>
       <div class="method-note">
         <strong>What this measures</strong>
-        <p>npm downloads can include installs, CI runs, cache misses, bots, and repeated downloads. npm downloads do not measure users, active installations, sessions, or tool executions.</p>
+        <p>{mcp.methodology}</p>
+        <p class="method-examples">A package download event can come from a local install, CI run, cache miss, bot, or repeated download.</p>
       </div>
     </div>
   </section>
@@ -255,6 +252,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
       <div class="source-links">
         <a class="btn btn-primary" href="/guide/claude-code-guide-mcp/">Read the MCP technical reference</a>
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">Inspect the MCP source on GitHub →</a>
+        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-public-runtime.json" target="_blank" rel="noopener">Inspect the public runtime snapshot →</a>
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-stats.json" target="_blank" rel="noopener">Inspect the npm metrics snapshot →</a>
       </div>
     </div>
@@ -303,12 +301,14 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
   .boundary-list span { color: var(--text-secondary); font-size: 0.86rem; }
   .boundary-caveat { grid-column: 1 / -1; }
   .stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
+  .stats-provenance { margin: -1rem 0 1.25rem; color: var(--text-muted); font-size: 0.82rem; }
   .stat-card { padding: 1.25rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
   .stat-card p { margin: 0; color: var(--text-secondary); font-size: 0.8rem; }
   .stat-card strong { display: block; margin: 0.35rem 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; letter-spacing: -0.04em; }
   .stat-card span { color: var(--text-muted); font: 0.7rem var(--font-mono); }
   .method-note { margin-top: 1rem; padding: 1rem 1.15rem; background: color-mix(in srgb, var(--status-warning) 8%, var(--surface-elevated)); border: 1px solid color-mix(in srgb, var(--status-warning) 35%, var(--border)); border-radius: var(--border-radius-lg); }
   .method-note p { margin: 0.25rem 0 0; color: var(--text-secondary); }
+  .method-note .method-examples { margin-top: 0.65rem; font-size: 0.84rem; }
   .faq-list { display: grid; gap: 0.65rem; }
   .faq-list p { margin: 0; padding: 0.9rem 1.15rem 1.15rem; color: var(--text-secondary); }
   .source-panel { padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 18px; }

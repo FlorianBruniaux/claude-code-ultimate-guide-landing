@@ -50,7 +50,9 @@ test('npm figures are dated, scoped, and explicitly not user activity', () => {
   assert.match(source, /mcp\.downloads\.sinceLaunch\.(start|end)/)
   assert.match(source, /mcp\.downloads\.last30Days\.(start|end)/)
   assert.match(source, /mcp\.downloads\.last7Days\.(start|end)/)
-  assert.match(source, /npm downloads do not measure users, active installations, sessions, or tool executions/i)
+  assert.match(source, /<time datetime=\{mcp\.npmSnapshotAt\}>/)
+  assert.match(source, /\{mcp\.npmSource\}/)
+  assert.match(source, /\{mcp\.methodology\}/)
   assert.doesNotMatch(source, /\bactive users?\b(?![^<]*do not measure)/i)
 })
 
@@ -62,6 +64,18 @@ test('structured data only describes visible software and FAQ content', () => {
   assert.match(source, /What does the MCP server expose\?/)
   assert.match(source, /Does it send my prompts or code anywhere\?/)
   assert.match(source, /Can I use it with Claude Code and Codex\?/)
+  assert.doesNotMatch(source, /applicationCategory:/)
+  assert.doesNotMatch(source, /operatingSystem:/)
+  assert.doesNotMatch(source, /offers:/)
+})
+
+test('client commands, prompt grammar, and public evidence stay explicit', () => {
+  const source = readPage()
+
+  assert.match(source, /const claudeCommand = `claude mcp add --scope user claude-code-guide -- \$\{mcp\.installCommand\}`/)
+  assert.match(source, /const codexCommand = `codex mcp add claude-code-guide -- \$\{mcp\.installCommand\}`/)
+  assert.match(source, /const promptLabel = mcp\.counts\.prompts === 1 \? 'prompt' : 'prompts'/)
+  assert.match(source, /machine-readable\/mcp-public-runtime\.json/)
 })
 
 test('the terminal remains readable without JavaScript and enhances copy accessibly', () => {
