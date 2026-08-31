@@ -30,6 +30,28 @@ if (existsSync(DATA_STORE)) {
 }
 const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const GUIDE_DIR = resolve(GUIDE_REPO, 'guide')
+const INTENT_NAV_SOURCE = resolve(GUIDE_REPO, 'machine-readable/navigation.json')
+const INTENT_NAV_TARGET = resolve(ROOT, 'src/data/intent-navigation.json')
+
+function syncIntentNavigation() {
+  if (!existsSync(INTENT_NAV_SOURCE)) {
+    console.warn(`[prepare-guide] WARNING: Navigation manifest not found at ${INTENT_NAV_SOURCE}`)
+    return
+  }
+
+  const navigation = JSON.parse(readFileSync(INTENT_NAV_SOURCE, 'utf-8'))
+  const groupIds = navigation.groups?.map(group => group.id) ?? []
+  const expectedGroupIds = ['start', 'build', 'scale', 'resources', 'updates']
+
+  if (JSON.stringify(groupIds) !== JSON.stringify(expectedGroupIds)) {
+    throw new Error(`[prepare-guide] Invalid navigation groups: ${groupIds.join(', ')}`)
+  }
+
+  writeFileSync(INTENT_NAV_TARGET, `${JSON.stringify(navigation, null, 2)}\n`, 'utf-8')
+  console.log(`[prepare-guide] Synced intent navigation: ${INTENT_NAV_TARGET}`)
+}
+
+syncIntentNavigation()
 
 /**
  * Real dateModified/datePublished for a source file, from the guide repo's

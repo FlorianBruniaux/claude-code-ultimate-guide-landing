@@ -10,6 +10,7 @@ const homepageMcp = source('../components/landing/McpProof.astro')
 const homepageContent = source('./homepage-content.ts')
 const searchIndex = source('./search-index.ts')
 const htmlSitemap = source('../pages/sitemap/index.astro')
+const intentNavigation = JSON.parse(source('./intent-navigation.json'))
 const header = source('../components/global/Header.astro')
 const footer = source('../components/global/Footer.astro')
 const astroConfig = source('../../astro.config.mjs')
@@ -36,9 +37,10 @@ test('Cmd+K includes one landing entry for the MCP product', () => {
 test('navigation and the HTML sitemap expose the MCP product separately from the choice guide', () => {
   assert.match(header, /href: '\/mcp\/', label: 'Guide MCP'/)
   assert.match(header, /href: '\/mcp-or-cli\/', label: 'MCP or CLI\?'/)
-  assert.match(htmlSitemap, /href: '\/mcp\/'/)
-  assert.match(htmlSitemap, /Claude Code Ultimate Guide MCP/)
-  assert.match(htmlSitemap, /href: '\/mcp-or-cli\/'/)
+  assert.match(htmlSitemap, /intent-navigation\.json/)
+  const sitemapPaths = intentNavigation.groups.flatMap(group => group.items.map(item => item.site_path))
+  assert.ok(sitemapPaths.includes('/mcp/'))
+  assert.ok(sitemapPaths.includes('/mcp-or-cli/'))
 })
 
 test('the XML sitemap gives the MCP page stable product metadata', () => {

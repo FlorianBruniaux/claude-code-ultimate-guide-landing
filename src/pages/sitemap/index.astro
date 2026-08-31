@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
-import { getSiteStats } from '../../utils/site-stats'
 import { guideSections } from '../../data/guide-navigation.mjs'
-
-const stats = await getSiteStats()
+import intentNavigation from '../../data/intent-navigation.json'
 
 const cheatsheetCards = await getCollection('cheatsheets').catch(() => [])
 const sortedCards = cheatsheetCards.sort((a, b) => a.data.order - b.data.order)
@@ -12,60 +10,23 @@ const techniqueCards = sortedCards.filter(c => c.data.category === 'Technical')
 const methodologieCards = sortedCards.filter(c => c.data.category === 'Methodology')
 const designCards = sortedCards.filter(c => c.data.category === 'Design')
 
-const siteSections = [
-  {
-    title: 'Start here',
-    icon: '📚',
-    links: [
-      { href: '/', label: 'Home', desc: 'Overview, features, and quick start' },
-      { href: '/guide/', label: 'Guide portal', desc: 'Editorial entry point, learning paths, and topic map' },
-      { href: '/mcp/', label: 'Claude Code Ultimate Guide MCP', desc: 'Install the public MCP server, inspect its capabilities, and review dated distribution evidence' },
-      { href: '/changelog/', label: 'Guide Changelog', desc: 'New pages, corrections, resources, and machine-readable updates' },
-      { href: '/releases/', label: 'Claude Code Releases', desc: 'CLI versions, breaking changes, configuration flags, and environment variables' },
-      { href: '/cheatsheet/', label: 'Quick Reference (1-page)', desc: 'All essential commands on a single printable page' },
-      { href: '/cheatsheets/', label: `Cheat Sheets (${sortedCards.length} cards)`, desc: 'Printable A4 recap cards: Technical, Methodology, and Design series' },
-      { href: '/whitepapers/', label: 'Ebooks', desc: '13 deep-dive PDFs, FR + EN, 554 French pages' },
-    ],
-  },
-  {
-    title: 'Learn',
-    icon: '🎓',
-    links: [
-      { href: '/learning/', label: 'Learning Paths', desc: 'Personalized onboarding and structured learning' },
-      { href: '/quiz/', label: 'Quiz', desc: '473 questions across 17 categories, 4 difficulty levels' },
-      { href: '/roles/', label: 'AI Roles', desc: 'Role definitions and behavioral profiles for Claude Code' },
-      { href: '/guide/for-product-managers/', label: 'For Product Managers', desc: 'Specs as context, reviewing AI-assisted work, prototyping without a developer' },
-      { href: '/guide/for-tech-leads/', label: 'For Tech Leads', desc: 'Shared team config, security hooks, 30-minute rollout plan' },
-      { href: '/guide/for-cto/', label: 'For CTOs', desc: 'Business case, governance controls, adoption metrics' },
-      { href: '/guide/for-cio-ceo/', label: 'For CIOs & CEOs', desc: 'The executive brief, in 3 minutes' },
-      { href: '/methodologies/', label: 'Methodologies', desc: '20 AI-assisted development methodologies mapped, 8 recommended stacks, interactive quiz' },
-      { href: '/mcp-or-cli/', label: 'MCP or CLI?', desc: '6-question quiz: get a personalized MCP vs CLI recommendation for your context' },
-      { href: '/faq/', label: 'FAQ', desc: 'Frequently asked questions' },
-    ],
-  },
-  {
-    title: 'Site resources',
-    icon: '🔍',
-    links: [
-      { href: '/resources/', label: 'Resource hub', desc: 'Guide collections, security, memory, diagrams, and comparisons' },
-      { href: '/downloads/', label: 'Downloads', desc: 'PDF and EPUB editions in English and French' },
-      { href: '/projects/', label: 'Related projects', desc: 'Open-source tools and companion projects by the author' },
-      { href: '/examples/', label: 'Examples & Templates', desc: `${stats.templateCount} production-ready templates: agents, hooks, commands, skills` },
-      { href: '/diagrams/', label: 'Diagrams', desc: 'Visual architecture and workflow diagrams' },
-      { href: '/security/', label: 'Security', desc: 'CVEs, threat database, security hardening guides' },
-      { href: '/compare/', label: 'Compare', desc: 'Claude Code vs other AI coding tools' },
-      { href: '/context/', label: 'Context Management', desc: 'Context window strategies and best practices' },
-      { href: '/context-engineering/', label: 'Context Engineering Tools', desc: 'RTK, Headroom, LLMLingua, Edgee, Portkey, RAG optimization, LLMOps: full tools map' },
-      { href: '/memory-systems/', label: 'Memory Systems', desc: 'Three-track model: native stack, cross-session tools, team sharing (with decision flowchart)' },
-      { href: '/team-metrics/', label: 'Team Metrics', desc: 'DORA, SPACE, AI-specific metrics for piloting an AI-augmented team of 5 to 25 people' },
-      { href: '/ecosystem/', label: 'Ecosystem', desc: 'AI ecosystem overview, MCP servers, third-party tools' },
-      { href: '/ecosystem/mcp-vs-cli/', label: 'MCP vs CLI', desc: 'When to reach for an MCP server versus a native CLI tool' },
-      { href: '/claude-md-best-practices/', label: 'CLAUDE.md Best Practices', desc: 'Writing effective CLAUDE.md files: structure, scope, and common mistakes' },
-      { href: '/faq/', label: 'FAQ', desc: 'Frequently asked questions about Claude Code' },
-      { href: '/rss.xml', label: 'RSS Feed', desc: 'Subscribe to releases and new content updates' },
-    ],
-  },
-]
+const intentIcons = {
+  start: '🚀',
+  build: '🛠️',
+  scale: '📈',
+  resources: '🧭',
+  updates: '🗞️',
+}
+
+const intentSections = intentNavigation.groups.map(group => ({
+  title: group.title,
+  icon: intentIcons[group.id],
+  links: group.items.map(item => ({
+    href: item.site_path,
+    label: item.title,
+    desc: item.description,
+  })),
+}))
 
 // Shared guide navigation includes Agent Engineering and every other editorial topic.
 // Key routes: '/guide/loop-graph-engineering/' Loop & Graph Engineering
@@ -106,7 +67,7 @@ const cardSections = [
   },
 ]
 
-const sections = [...siteSections, ...curatedGuideSections, ...cardSections]
+const sections = [...intentSections, ...curatedGuideSections, ...cardSections]
 ---
 
 <Layout

@@ -4,6 +4,8 @@ import test from 'node:test'
 
 const source = readFileSync(new URL('../pages/sitemap/index.astro', import.meta.url), 'utf8')
 const sitemapConfig = readFileSync(new URL('../../astro.config.mjs', import.meta.url), 'utf8')
+const intentNavigation = JSON.parse(readFileSync(new URL('./intent-navigation.json', import.meta.url), 'utf8'))
+const intentSource = JSON.stringify(intentNavigation)
 
 test('surfaces the agent harness reference pages in the HTML sitemap', () => {
   assert.match(source, /guideSections/)
@@ -16,17 +18,23 @@ test('describes the HTML sitemap as curated and links to the complete XML sitema
   assert.match(source, /complete XML sitemap/i)
 })
 
+test('renders the shared intent navigation before detailed guide sections', () => {
+  assert.match(source, /intent-navigation\.json/)
+  assert.match(source, /const sections = \[\.\.\.intentSections, \.\.\.curatedGuideSections/)
+  assert.deepEqual(intentNavigation.groups.map(group => group.id), ['start', 'build', 'scale', 'resources', 'updates'])
+})
+
 test('links the guide changelog separately from Claude Code releases', () => {
-  assert.match(source, /href: '\/changelog\/'/)
-  assert.match(source, /Guide Changelog/)
-  assert.match(source, /href: '\/releases\/'/)
-  assert.match(source, /Claude Code Releases/)
+  assert.match(intentSource, /"site_path":"\/changelog\/"/)
+  assert.match(intentSource, /Guide Changelog/)
+  assert.match(intentSource, /"site_path":"\/releases\/"/)
+  assert.match(intentSource, /Claude Code Releases/)
 })
 
 test('exposes the homepage resource hubs in the HTML sitemap', () => {
-  assert.match(source, /href: '\/resources\/'/)
-  assert.match(source, /href: '\/downloads\/'/)
-  assert.match(source, /href: '\/projects\/'/)
+  assert.match(intentSource, /"site_path":"\/resources\/"/)
+  assert.match(intentSource, /"site_path":"\/downloads\/"/)
+  assert.match(intentSource, /"site_path":"\/projects\/"/)
 })
 
 test('keeps stable lastmod dates for the homepage resource hubs', () => {
