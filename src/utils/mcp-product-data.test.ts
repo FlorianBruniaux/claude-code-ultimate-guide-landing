@@ -209,6 +209,139 @@ test('fails when npm package identity contradicts the public runtime', () => {
   )
 })
 
+test('rejects a runtime package other than the canonical MCP package', () => {
+  withGuideFixture(
+    {
+      runtime: {
+        ...validRuntime,
+        package: { ...validRuntime.package, name: 'lookalike-guide-mcp' },
+      },
+    },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP public runtime: package\.name must be claude-code-ultimate-guide-mcp/,
+      )
+    },
+  )
+})
+
+test('rejects two agreeing artifacts that name the wrong package', () => {
+  withGuideFixture(
+    {
+      runtime: {
+        ...validRuntime,
+        package: { ...validRuntime.package, name: 'lookalike-guide-mcp' },
+      },
+      stats: { ...validStats, package: 'lookalike-guide-mcp' },
+    },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP public runtime: package\.name must be claude-code-ultimate-guide-mcp/,
+      )
+    },
+  )
+})
+
+for (const invalidVersion of ['1.2', 'v1.2.10', '01.2.10']) {
+  test(`rejects invalid runtime npm SemVer ${invalidVersion}`, () => {
+    withGuideFixture(
+      {
+        runtime: {
+          ...validRuntime,
+          package: { ...validRuntime.package, npm_version: invalidVersion },
+        },
+      },
+      (guideRoot) => {
+        assert.throws(
+          () => loadMcpProductData(guideRoot),
+          /Invalid MCP public runtime: package\.npm_version must be a SemVer version/,
+        )
+      },
+    )
+  })
+}
+
+test('rejects an invalid server handshake SemVer', () => {
+  withGuideFixture(
+    {
+      runtime: {
+        ...validRuntime,
+        server_info: { ...validRuntime.server_info, version: '1.2.0 latest' },
+      },
+    },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP public runtime: server_info\.version must be a SemVer version/,
+      )
+    },
+  )
+})
+
+test('rejects an invalid npm statistics public SemVer before comparing artifacts', () => {
+  withGuideFixture(
+    { stats: { ...validStats, public_version: 'latest' } },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP npm statistics: public_version must be a SemVer version/,
+      )
+    },
+  )
+})
+
+test('rejects an impossible public runtime calendar timestamp', () => {
+  withGuideFixture(
+    { runtime: { ...validRuntime, snapshot_at: '2026-02-30T15:30:00Z' } },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP public runtime: snapshot_at must be an ISO 8601 UTC timestamp/,
+      )
+    },
+  )
+})
+
+test('rejects an impossible npm statistics calendar timestamp', () => {
+  withGuideFixture(
+    { stats: { ...validStats, snapshot_at: '2026-13-01T15:06:00Z' } },
+    (guideRoot) => {
+      assert.throws(
+        () => loadMcpProductData(guideRoot),
+        /Invalid MCP npm statistics: snapshot_at must be an ISO 8601 UTC timestamp/,
+      )
+    },
+  )
+})
+
+for (const capability of ['tools', 'resources', 'prompts'] as const) {
+  test(`rejects duplicate ${capability} in the public capability snapshot`, () => {
+    const duplicate = validRuntime.capabilities[capability][0]
+    withGuideFixture(
+      {
+        runtime: {
+          ...validRuntime,
+          capabilities: {
+            ...validRuntime.capabilities,
+            [capability]: [duplicate, duplicate],
+          },
+          counts: { ...validRuntime.counts, [capability]: 2 },
+        },
+      },
+      (guideRoot) => {
+        assert.throws(
+          () => loadMcpProductData(guideRoot),
+          new RegExp(
+            `Invalid MCP public runtime: capabilities\\.${capability} must not contain duplicate entries`,
+          ),
+        )
+      },
+    )
+  })
+}
+
 test('reads npm statistics only from the canonical machine-readable path', () => {
   withGuideFixture(
     { statsPath: 'mcp-server/data/mcp-stats.json' },

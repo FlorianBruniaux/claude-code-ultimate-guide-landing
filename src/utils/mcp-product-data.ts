@@ -3,8 +3,11 @@ import { resolve } from 'node:path'
 
 const PUBLIC_RUNTIME_PATH = 'machine-readable/mcp-public-runtime.json'
 const NPM_STATS_PATH = 'machine-readable/mcp-stats.json'
+const EXPECTED_PACKAGE_NAME = 'claude-code-ultimate-guide-mcp'
 const NPM_METHODOLOGY =
   'npm downloads are package download events, not users, active installations, sessions, or tool executions.'
+const SEMVER_PATTERN =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/
 
 export type DownloadPeriod = {
   start: string
@@ -59,9 +62,30 @@ function requireString(value: unknown, label: string, scope: string): string {
   return value
 }
 
+function requireSemver(value: unknown, label: string, scope: string): string {
+  const version = requireString(value, label, scope)
+  if (!SEMVER_PATTERN.test(version)) {
+    throw new Error(`Invalid ${scope}: ${label} must be a SemVer version`)
+  }
+  return version
+}
+
 function requireTimestamp(value: unknown, label: string, scope: string): string {
   const timestamp = requireString(value, label, scope)
-  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(timestamp)) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?Z$/.exec(
+    timestamp,
+  )
+  const parsed = new Date(timestamp)
+  if (
+    !match ||
+    Number.isNaN(parsed.valueOf()) ||
+    parsed.getUTCFullYear() !== Number(match[1]) ||
+    parsed.getUTCMonth() + 1 !== Number(match[2]) ||
+    parsed.getUTCDate() !== Number(match[3]) ||
+    parsed.getUTCHours() !== Number(match[4]) ||
+    parsed.getUTCMinutes() !== Number(match[5]) ||
+    parsed.getUTCSeconds() !== Number(match[6])
+  ) {
     throw new Error(`Invalid ${scope}: ${label} must be an ISO 8601 UTC timestamp`)
   }
   return timestamp
@@ -70,6 +94,9 @@ function requireTimestamp(value: unknown, label: string, scope: string): string 
 function requireStringList(value: unknown, label: string, scope: string): string[] {
   if (!Array.isArray(value) || value.some((entry) => typeof entry !== 'string' || entry.trim() === '')) {
     throw new Error(`Invalid ${scope}: ${label} must be an array of non-empty strings`)
+  }
+  if (new Set(value).size !== value.length) {
+    throw new Error(`Invalid ${scope}: ${label} must not contain duplicate entries`)
   }
   return [...value]
 }
@@ -146,8 +173,14 @@ export function loadMcpProductData(guideRoot = resolveGuideRoot()): McpProductDa
 
   const packageInfo = requireObject(runtime.package, 'package', runtimeScope)
   const packageName = requireString(packageInfo.name, 'package.name', runtimeScope)
-  const publicVersion = requireString(packageInfo.npm_version, 'package.npm_version', runtimeScope)
+  if (packageName !== EXPECTED_PACKAGE_NAME) {
+    throw new Error(
+      `Invalid ${runtimeScope}: package.name must be ${EXPECTED_PACKAGE_NAME}`,
+    )
+  }
+  const publicVersion = requireSemver(packageInfo.npm_version, 'package.npm_version', runtimeScope)
   const serverInfo = requireObject(runtime.server_info, 'server_info', runtimeScope)
+  const serverVersion = requireSemver(serverInfo.version, 'server_info.version', runtimeScope)
   const capabilitiesValue = requireObject(runtime.capabilities, 'capabilities', runtimeScope)
   const countsValue = requireObject(runtime.counts, 'counts', runtimeScope)
   const capabilities = {
@@ -175,7 +208,10 @@ export function loadMcpProductData(guideRoot = resolveGuideRoot()): McpProductDa
     throw new Error(`Invalid ${statsScope}: schema_version must be 1`)
   }
   const statsPackage = requireString(stats.package, 'package', statsScope)
-  const statsVersion = requireString(stats.public_version, 'public_version', statsScope)
+  if (statsPackage !== EXPECTED_PACKAGE_NAME) {
+    throw new Error(`Invalid ${statsScope}: package must be ${EXPECTED_PACKAGE_NAME}`)
+  }
+  const statsVersion = requireSemver(stats.public_version, 'public_version', statsScope)
   const downloadsValue = requireObject(stats.downloads, 'downloads', statsScope)
 
   if (statsPackage !== packageName) {
@@ -195,7 +231,7 @@ export function loadMcpProductData(guideRoot = resolveGuideRoot()): McpProductDa
     installCommand: `npx -y ${packageName}@${publicVersion}`,
     snapshotAt: requireTimestamp(runtime.snapshot_at, 'snapshot_at', runtimeScope),
     serverName: requireString(serverInfo.name, 'server_info.name', runtimeScope),
-    serverVersion: requireString(serverInfo.version, 'server_info.version', runtimeScope),
+    serverVersion,
     capabilities,
     counts,
     downloads: {
