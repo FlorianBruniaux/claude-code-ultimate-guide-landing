@@ -14,6 +14,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 // Guide pages (140+) are omitted, they rebuild together and all share the build date.
 const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-08-31',
+  'https://cc.bruniaux.com/mcp/': '2026-08-31',
   'https://cc.bruniaux.com/resources/': '2026-08-31',
   'https://cc.bruniaux.com/downloads/': '2026-08-31',
   'https://cc.bruniaux.com/projects/': '2026-08-31',

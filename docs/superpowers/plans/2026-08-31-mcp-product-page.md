@@ -25,7 +25,7 @@ Acceptance: the generator rejects incomplete or contradictory responses, the fix
 - Create `src/utils/mcp-product-data.ts`
 - Create `src/utils/mcp-product-data.test.ts`
 
-Write failing tests for a valid snapshot, a missing file, an invalid schema, a count mismatch, and npm statistics that claim a period without explicit start and end dates. Load `machine-readable/mcp-public-runtime.json` and `mcp-server/data/mcp-stats.json` from `GUIDE_REPO_PATH`.
+Write failing tests for a valid snapshot, a missing file, an invalid schema, a count mismatch, and npm statistics that claim a period without explicit start and end dates. Load `machine-readable/mcp-public-runtime.json` and `machine-readable/mcp-stats.json` from `GUIDE_REPO_PATH`.
 
 Acceptance: the loader returns one typed page model and fails closed with actionable errors when public evidence is missing or contradictory.
 

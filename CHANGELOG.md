@@ -4,6 +4,11 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Claude Code Ultimate Guide MCP
+
+- **Dedicated product route and discovery** (`src/pages/mcp/`, `src/components/mcp/McpTerminal.astro`, homepage MCP proof, Resources, Cmd+K, header, HTML sitemap, and XML sitemap): added a public `/mcp/` page for installation, verified runtime capabilities, compatibility, privacy limits, dated npm distribution evidence, methodology, FAQ, and technical sources. The page consumes fail-closed machine-readable evidence from the guide repository and states that npm downloads do not measure users, active installations, sessions, or executions.
+- **Progressive copy interaction** (`src/components/mcp/McpTerminal.astro`): kept the installation command readable without JavaScript and added an accessible copy status for success and failure.
+
 ### AI roles landing synchronization
 
 - **Role discovery page redesigned** (`src/pages/roles/index.astro`, `src/components/landing/RoleQuiz.astro`, `src/styles/roles-page.css`, `src/scripts/role-catalog.ts`): unified the page on one content grid, embedded the role quiz in the hero, added local navigation and accessible evidence-label filters, replaced the dense career table with profile-based path cards, moved front-end and compensation evidence after the catalog, removed unexplained card highlighting, and consolidated taxonomy definitions into an expandable note. The catalog defaults to durable role families while preserving all 22 profiles without JavaScript.

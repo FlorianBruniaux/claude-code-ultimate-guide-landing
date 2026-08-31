@@ -31,6 +31,14 @@ const pageEntries: SearchEntry[] = [
     source: 'landing',
   },
   {
+    id: 'page-mcp',
+    title: 'Claude Code Ultimate Guide MCP',
+    keywords: 'claude code ultimate guide mcp model context protocol npm install search documentation resources tools',
+    category: 'Pages',
+    url: '/mcp/',
+    source: 'landing',
+  },
+  {
     id: 'page-cheatsheet',
     title: 'Cheat Sheet',
     keywords: 'cheatsheet commands shortcuts reference quick lookup',

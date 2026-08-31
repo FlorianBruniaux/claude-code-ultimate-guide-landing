@@ -129,7 +129,7 @@ export const RESOURCE_CATALOG = [
   { icon: '📋', title: 'Recap Cards', description: 'Printable cards for technical, methodology, and design topics.', meta: `${HOMEPAGE_METRICS.recapCardCount} cards`, href: '/cheatsheets/' },
   { icon: '📄', title: 'Whitepapers', description: 'Focused, bilingual guides for deeper study.', meta: `${HOMEPAGE_METRICS.whitepaperCount} guides`, href: '/whitepapers/' },
   { icon: '⬇', title: 'Offline Downloads', description: 'Keep the full guide in PDF or EPUB, in English or French.', meta: '4 formats', href: '/downloads/' },
-  { icon: '🔌', title: 'MCP Server', description: 'Search the guide directly from an MCP-compatible client.', meta: 'npm ready', href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server' },
+  { icon: '🔌', title: 'MCP Server', description: 'Search the guide directly from an MCP-compatible client.', meta: 'Public npm package', href: '/mcp/' },
   { icon: '🗺️', title: 'Learning Paths', description: 'Structured routes for beginners, teams, and advanced users.', meta: 'Role-based', href: '/guide/learning-path/' },
   { icon: '◫', title: 'Visual Diagrams', description: 'Architecture and workflow concepts rendered visually.', meta: `${HOMEPAGE_METRICS.diagramCount} diagrams`, href: '/diagrams/' },
   { icon: '🧰', title: 'Related Projects', description: 'Companion tools built around Claude Code workflows.', meta: '12 projects', href: '/projects/' },
