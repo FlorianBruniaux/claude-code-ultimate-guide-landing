@@ -1,0 +1,73 @@
+---
+interface TocItem {
+  text: string
+  slug: string
+  children: TocItem[]
+}
+
+interface Props {
+  toc: TocItem[]
+  depth?: number
+}
+
+const { toc, depth = 0 } = Astro.props
+---
+
+<ul style={`--toc-depth: ${depth}`}>
+  {
+    toc.map((heading) => (
+      <li>
+        <a href={'#' + heading.slug}>
+          <span>{heading.text}</span>
+        </a>
+        {heading.children.length > 0 && <Astro.self toc={heading.children} depth={depth + 1} />}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.625rem;
+    padding-inline: calc(1rem + var(--toc-depth) * 0.875rem) 1rem;
+    border-block-end: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+  }
+
+  a[aria-current='true'] {
+    color: var(--accent);
+    background: var(--bg-tint-warm);
+    font-weight: 650;
+  }
+
+  a[aria-current='true']::after {
+    content: '✓';
+    flex: 0 0 auto;
+    color: var(--accent);
+  }
+</style>

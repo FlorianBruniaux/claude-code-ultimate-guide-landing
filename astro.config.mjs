@@ -13,7 +13,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 // Per-page lastmod dates for key landing pages.
 // Guide pages (140+) are omitted, they rebuild together and all share the build date.
 const PAGE_DATES = {
-  'https://cc.bruniaux.com/': '2026-06-19',
+  'https://cc.bruniaux.com/': '2026-08-31',
+  'https://cc.bruniaux.com/resources/': '2026-08-31',
+  'https://cc.bruniaux.com/downloads/': '2026-08-31',
+  'https://cc.bruniaux.com/projects/': '2026-08-31',
   'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
   'https://cc.bruniaux.com/faq/': '2026-06-08',
   'https://cc.bruniaux.com/releases/': '2026-06-25',
@@ -153,6 +156,8 @@ export default defineConfig({
         Header: './src/components/starlight/Header.astro',
         Footer: './src/components/starlight/Footer.astro',
         PageTitle: './src/components/starlight/PageTitle.astro',
+        MobileMenuToggle: './src/components/starlight/MobileMenuToggle.astro',
+        MobileTableOfContents: './src/components/starlight/MobileTableOfContents.astro',
       },
       head: [
         {

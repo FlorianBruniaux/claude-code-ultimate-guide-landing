@@ -1,0 +1,191 @@
+---
+import MobileTocList from './MobileTocList.astro'
+
+const { toc } = Astro.locals.starlightRoute
+const label = Astro.locals.t('tableOfContents.onThisPage')
+---
+
+{
+  toc && (
+    <mobile-starlight-toc data-min-h={toc.minHeadingLevel} data-max-h={toc.maxHeadingLevel}>
+      <nav aria-label={label}>
+        <details id="starlight__mobile-toc">
+          <summary id="starlight__on-this-page--mobile" class="sl-flex">
+            <span class="toc-trigger-label">{label}</span>
+            <span class="display-current">Overview</span>
+            <svg class="toc-caret" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+              <path d="m6.5 8 3.5 3.5L13.5 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+            </svg>
+          </summary>
+
+          <div
+            class="toc-sheet-backdrop"
+            aria-hidden="true"
+            data-toc-sheet-close
+          ></div>
+
+          <section
+            class="toc-bottom-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="toc-bottom-sheet-title"
+          >
+            <div class="toc-sheet-handle" aria-hidden="true"></div>
+            <header class="toc-sheet-header">
+              <div>
+                <p class="toc-sheet-eyebrow">Current article</p>
+                <h2 id="toc-bottom-sheet-title">{label}</h2>
+              </div>
+              <button type="button" class="toc-sheet-close" aria-label="Close page contents" data-toc-sheet-close>
+                <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+                  <path d="M5 5l10 10M15 5 5 15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" />
+                </svg>
+              </button>
+            </header>
+            <div class="toc-sheet-scroll">
+              <MobileTocList toc={toc.items} />
+            </div>
+          </section>
+        </details>
+      </nav>
+    </mobile-starlight-toc>
+  )
+}
+
+<script>
+  class MobileStarlightBottomSheet extends HTMLElement {
+    private details: HTMLDetailsElement | null = null
+    private summary: HTMLElement | null = null
+    private sheet: HTMLElement | null = null
+    private links: HTMLAnchorElement[] = []
+    private headings: Array<{ link: HTMLAnchorElement; heading: HTMLElement }> = []
+    private frame = 0
+
+    connectedCallback() {
+      this.details = this.querySelector<HTMLDetailsElement>('details')
+      this.summary = this.querySelector<HTMLElement>('summary')
+      this.sheet = this.querySelector<HTMLElement>('.toc-bottom-sheet')
+      this.links = Array.from(this.querySelectorAll<HTMLAnchorElement>('.toc-sheet-scroll a[href^="#"]'))
+      this.headings = this.links.flatMap((link) => {
+        const id = decodeURIComponent(link.hash.slice(1))
+        const heading = document.getElementById(id)
+        return heading ? [{ link, heading }] : []
+      })
+
+      this.details?.addEventListener('toggle', this.syncOpenState)
+      this.querySelectorAll<HTMLElement>('[data-toc-sheet-close]').forEach((button) => {
+        button.addEventListener('click', this.closeAndRestoreFocus)
+      })
+      this.links.forEach((link) => link.addEventListener('click', this.closeAfterNavigation))
+      document.addEventListener('keydown', this.handleKeydown)
+      window.addEventListener('scroll', this.scheduleCurrentUpdate, { passive: true })
+      window.addEventListener('resize', this.handleResize)
+      this.updateCurrent()
+    }
+
+    disconnectedCallback() {
+      this.details?.removeEventListener('toggle', this.syncOpenState)
+      this.querySelectorAll<HTMLElement>('[data-toc-sheet-close]').forEach((button) => {
+        button.removeEventListener('click', this.closeAndRestoreFocus)
+      })
+      this.links.forEach((link) => link.removeEventListener('click', this.closeAfterNavigation))
+      document.removeEventListener('keydown', this.handleKeydown)
+      window.removeEventListener('scroll', this.scheduleCurrentUpdate)
+      window.removeEventListener('resize', this.handleResize)
+      cancelAnimationFrame(this.frame)
+      document.body.removeAttribute('data-toc-sheet-open')
+    }
+
+    private syncOpenState = () => {
+      const open = this.details?.open === true
+      document.body.toggleAttribute('data-toc-sheet-open', open)
+
+      if (open) {
+        const guideMenu = document.querySelector<HTMLElement>(
+          'starlight-menu-button[aria-expanded="true"]'
+        )
+        guideMenu?.querySelector<HTMLButtonElement>('.guide-menu-trigger')?.click()
+
+        const globalMenu = document.querySelector<HTMLButtonElement>(
+          '#mobile-menu-toggle[aria-expanded="true"]'
+        )
+        globalMenu?.click()
+
+        requestAnimationFrame(() => {
+          this.sheet?.querySelector<HTMLButtonElement>('.toc-sheet-close')?.focus()
+        })
+      }
+    }
+
+    private close(restoreFocus: boolean) {
+      if (!this.details?.open) return
+      this.details.open = false
+      if (restoreFocus) this.summary?.focus()
+    }
+
+    private closeAndRestoreFocus = () => this.close(true)
+    private closeAfterNavigation = () => this.close(false)
+
+    private handleKeydown = (event: KeyboardEvent) => {
+      if (!this.details?.open || !this.sheet) return
+
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        this.close(true)
+        return
+      }
+
+      if (event.key !== 'Tab') return
+      const focusable = Array.from(
+        this.sheet.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]')
+      ).filter((element) => element.getClientRects().length > 0)
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
+    }
+
+    private handleResize = () => {
+      if (window.matchMedia('(min-width: 50rem)').matches) this.close(false)
+      this.scheduleCurrentUpdate()
+    }
+
+    private scheduleCurrentUpdate = () => {
+      cancelAnimationFrame(this.frame)
+      this.frame = requestAnimationFrame(() => this.updateCurrent())
+    }
+
+    private updateCurrent() {
+      if (this.headings.length === 0) return
+      const navHeight = document.querySelector<HTMLElement>('.page > .header')?.offsetHeight ?? 0
+      const tocHeight = this.summary?.offsetHeight ?? 0
+      const threshold = navHeight + tocHeight + 32
+      let current = this.headings[0]
+
+      for (const candidate of this.headings) {
+        if (candidate.heading.getBoundingClientRect().top <= threshold) current = candidate
+        else break
+      }
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = this.headings[this.headings.length - 1]
+      }
+
+      this.links.forEach((link) => link.removeAttribute('aria-current'))
+      current.link.setAttribute('aria-current', 'true')
+      const currentLabel = this.querySelector<HTMLElement>('.display-current')
+      const linkLabel = current.link.querySelector<HTMLElement>('span:first-child')?.textContent
+      if (currentLabel) currentLabel.textContent = linkLabel?.trim() || 'Overview'
+    }
+  }
+
+  if (!customElements.get('mobile-starlight-toc')) {
+    customElements.define('mobile-starlight-toc', MobileStarlightBottomSheet)
+  }
+</script>
