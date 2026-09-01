@@ -1,6 +1,9 @@
 import { DIAGRAM_THEMES } from './diagrams-data.ts'
+import { PERSONAL_PROJECTS, PERSONAL_PROJECT_ROUTES } from './personal-projects.generated.ts'
 import { RECAP_SERIES } from './recap-cards-data.ts'
 import { WHITEPAPERS } from './whitepapers-data.ts'
+
+export { PERSONAL_PROJECT_ROUTES }
 
 export const HOMEPAGE_METRICS = {
   whitepaperCount: WHITEPAPERS.length,
@@ -132,22 +135,9 @@ export const RESOURCE_CATALOG = [
   { icon: '🔌', title: 'MCP Server', description: 'Search the guide directly from an MCP-compatible client.', meta: 'Public npm package', href: '/mcp/' },
   { icon: '🗺️', title: 'Learning Paths', description: 'Structured routes for beginners, teams, and advanced users.', meta: 'Role-based', href: '/guide/learning-path/' },
   { icon: '◫', title: 'Visual Diagrams', description: 'Architecture and workflow concepts rendered visually.', meta: `${HOMEPAGE_METRICS.diagramCount} diagrams`, href: '/diagrams/' },
-  { icon: '🧰', title: 'Related Projects', description: 'Companion tools built around Claude Code workflows.', meta: '12 projects', href: '/projects/' },
+  { icon: '🧰', title: 'Related Projects', description: 'Companion tools organized by the outcome they support.', meta: `${PERSONAL_PROJECTS.length} projects`, href: '/projects/' },
 ] as const
 
-export const RELATED_PROJECTS = [
-  { icon: '📊', title: 'ccboard', description: 'TUI and web dashboard for Claude Code sessions and analytics.', href: 'https://ccboard.bruniaux.com/', featured: true },
-  { icon: '🔌', title: 'cc-copilot-bridge', description: 'Multi-provider router for Anthropic, Copilot, Ollama, and more.', href: 'https://ccbridge.bruniaux.com/', featured: true },
-  { icon: '⚡', title: 'RTK', description: 'CLI token optimizer that keeps development command output focused.', href: 'https://www.rtk-ai.app/', featured: true },
-  { icon: '🖥️', title: 'Claude Cowork Guide', description: 'Guide to desktop automation and browser control with Claude Cowork.', href: 'https://cowork.bruniaux.com/', featured: false },
-  { icon: '📦', title: 'Claude Code Plugins', description: 'Production-ready templates packaged as installable plugins.', href: 'https://github.com/FlorianBruniaux/claude-code-plugins', featured: false },
-  { icon: '🌐', title: 'StarMapper', description: 'World map of GitHub stargazers and repository audiences.', href: 'https://starmapper.bruniaux.com/', featured: false },
-  { icon: '🔎', title: 'node-dep-scope', description: 'Symbol-level dependency analysis for TypeScript and JavaScript.', href: 'https://github.com/FlorianBruniaux/node-dep-scope', featured: false },
-  { icon: '🛡️', title: 'ctxharness', description: 'Validator for CLAUDE.md and rule files.', href: 'https://github.com/FlorianBruniaux/ctxharness', featured: false },
-  { icon: '📋', title: 'cc-sessions', description: 'Search and analyze Claude Code session history.', href: 'https://github.com/FlorianBruniaux/cc-sessions', featured: false },
-  { icon: '📈', title: 'Google Search Console MCP', description: 'MCP tools for search, analytics, schema, and performance audits.', href: 'https://github.com/FlorianBruniaux/google-search-console-mcp', featured: false },
-  { icon: '🎬', title: 'YouTube Video Insights', description: 'Per-video insights, aggregate reports, and scored short-form moments.', href: 'https://github.com/FlorianBruniaux/youtube-video-insights', featured: false },
-  { icon: '🔥', title: 'GitHub Roast TPC', description: 'Claude Code plugin for intent-aware GitHub profile audits.', href: 'https://github.com/FlorianBruniaux/github-roast-tpc', featured: false },
-] as const
+export const RELATED_PROJECTS = PERSONAL_PROJECTS
 
 export const FEATURED_PROJECTS = RELATED_PROJECTS.filter((project) => project.featured)

@@ -53,9 +53,14 @@ test('homepage discovery blocks remain intentionally small', () => {
   assertUnique(DEEP_TOPICS.map((topic) => topic.href), 'deep topic hrefs')
 })
 
-test('the homepage features three projects while the projects hub keeps the full set', () => {
+test('the homepage features three projects while the projects hub exposes five routes and 16 projects', () => {
   assert.equal(FEATURED_PROJECTS.length, 3)
-  assert.equal(RELATED_PROJECTS.length, 12)
+  assert.equal(RELATED_PROJECTS.length, 16)
+  assert.equal(new Set(RELATED_PROJECTS.map((project) => project.route)).size, 5)
   assert.ok(FEATURED_PROJECTS.every((project) => project.featured))
   assertUnique(RELATED_PROJECTS.map((project) => project.href), 'project hrefs')
+
+  const rtk = RELATED_PROJECTS.find((project) => project.id === 'rtk')
+  assert.equal(rtk?.github, 'https://github.com/rtk-ai/rtk')
+  assert.equal(rtk?.website, 'https://www.rtk-ai.app/')
 })

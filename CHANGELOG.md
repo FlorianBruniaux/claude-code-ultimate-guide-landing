@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Open-source project galaxy
+
+- **Intent-based project discovery** (`src/pages/projects/index.astro`, `src/data/personal-projects.generated.ts`, and homepage data): replaced the independent 12-project list with 16 projects grouped into five routes generated from the canonical GitHub profile manifest. The homepage still features three projects, while the projects page exposes format and secondary labels without copying volatile statistics.
+
 ### Claude Code Ultimate Guide MCP
 
 - **Dedicated product route and discovery** (`src/pages/mcp/`, `src/components/mcp/McpTerminal.astro`, homepage MCP proof, Resources, Cmd+K, header, HTML sitemap, and XML sitemap): added a public `/mcp/` page for installation, verified runtime capabilities, compatibility, privacy limits, dated npm distribution evidence, methodology, FAQ, and technical sources. The page consumes fail-closed machine-readable evidence from the guide repository and states that npm downloads do not measure users, active installations, sessions, or executions.
