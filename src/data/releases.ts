@@ -16,12 +16,34 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
+    version: 'v2.1.252',
+    date: 'Aug 31, 2026',
+    highlights: [
+      'Fixed Bash commands failing with a task-output-swap error on some Macs',
+      'Fixed "always allow" not saving in a project with no .claude/settings.local.json yet',
+      'Fixed Remote Control sessions hosted by Claude Desktop or VS Code stalling for minutes after a degraded claude.ai connection',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.251',
+    date: 'Aug 28, 2026',
+    highlights: [
+      'Added PreModelSwitch and PostModelSwitch hook events (block, confirm, or annotate a model switch); SessionStart resume hooks now receive session staleness and the estimated re-cache cost',
+      "Added live streaming of a foreground subagent's tool calls and results to Remote Control clients",
+      'Added a spend limit bar to /usage and a rate_limits.spend_limit status line field for gateway users',
+      'Fixed three security gaps: a symlink swap bypassing file-tool permission checks, plugin marketplace command paths escaping the plugin directory, and sandboxed Bash output-file redirection',
+      'Changed CLAUDE_CODE_SUBAGENT_MODEL to set the default subagent model rather than override everything; an agent definition\'s model: and an explicit per-spawn model now take precedence over it',
+    ],
+    initiallyVisible: true,
+  },
+  {
     version: 'v2.1.250',
     date: 'Aug 27, 2026',
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
