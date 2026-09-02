@@ -93,13 +93,28 @@ export function initHeaderNavigation(root: NavigationRoot = document) {
   const mobileMenu = header.querySelector<HTMLElement>('#primary-navigation')
   const menuIcon = header.querySelector<HTMLElement>('#menu-icon')
   const closeIcon = header.querySelector<HTMLElement>('#close-icon')
+  const mobileBackdrop = header.querySelector<HTMLElement>('.mobile-menu-backdrop')
+  const mobileDismissControls = Array.from(
+    header.querySelectorAll<HTMLElement>('[data-mobile-menu-close]'),
+  )
+  const desktopQuery = documentRef.defaultView?.matchMedia('(min-width: 64rem)')
+
+  function mobileMenuIsOpen() {
+    return mobileToggle?.getAttribute('aria-expanded') === 'true'
+  }
 
   function closeMobileNavigation(restoreFocus = false) {
     if (!mobileToggle || !mobileMenu) return
     mobileMenu.classList.add('hidden')
+    mobileMenu.setAttribute('aria-hidden', 'true')
+    mobileMenu.removeAttribute('role')
+    mobileMenu.removeAttribute('aria-modal')
+    mobileMenu.removeAttribute('aria-labelledby')
+    mobileBackdrop?.classList.add('hidden')
     menuIcon?.classList.remove('hidden')
     closeIcon?.classList.add('hidden')
     mobileToggle.setAttribute('aria-expanded', 'false')
+    mobileToggle.setAttribute('aria-label', 'Open main navigation')
     documentRef.body.removeAttribute('data-global-menu-expanded')
     if (restoreFocus) mobileToggle.focus()
   }
@@ -113,17 +128,27 @@ export function initHeaderNavigation(root: NavigationRoot = document) {
     )
     guideMenuButton?.click()
 
+    const mobileToc = documentRef.querySelector<HTMLDetailsElement>('#starlight__mobile-toc[open]')
+    if (mobileToc) mobileToc.open = false
+
     mobileMenu.classList.remove('hidden')
+    mobileMenu.setAttribute('role', 'dialog')
+    mobileMenu.setAttribute('aria-modal', 'true')
+    mobileMenu.setAttribute('aria-labelledby', 'mobile-navigation-title')
+    mobileMenu.setAttribute('aria-hidden', 'false')
+    mobileBackdrop?.classList.remove('hidden')
     menuIcon?.classList.add('hidden')
     closeIcon?.classList.remove('hidden')
     mobileToggle.setAttribute('aria-expanded', 'true')
+    mobileToggle.setAttribute('aria-label', 'Close main navigation')
     documentRef.body.setAttribute('data-global-menu-expanded', '')
     mobileMenu.querySelector<HTMLElement>('a[href], summary, button:not([disabled])')?.focus()
   }
 
-  documentRef.defaultView?.matchMedia('(min-width: 64rem)').addEventListener('change', () => {
+  desktopQuery?.addEventListener('change', (event) => {
     closeDesktopNavigation()
     closeMobileNavigation()
+    if (event.matches) mobileMenu?.removeAttribute('aria-hidden')
   })
 
   mobileToggle?.addEventListener('click', () => {
@@ -131,27 +156,43 @@ export function initHeaderNavigation(root: NavigationRoot = document) {
     mobileMenu.classList.contains('hidden') ? openMobileNavigation() : closeMobileNavigation()
   })
 
-  mobileMenu?.addEventListener('keydown', (event) => {
-    if (event.key !== 'Tab' || !mobileToggle) return
-    const focusable = Array.from(
-      mobileMenu.querySelectorAll<HTMLElement>('a[href], summary, button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
-    )
-    const first = focusable[0]
-    const last = focusable[focusable.length - 1]
+  for (const control of mobileDismissControls) {
+    control.addEventListener('click', () => closeMobileNavigation(true))
+  }
 
-    if (event.shiftKey && documentRef.activeElement === first) {
+  mobileMenu?.addEventListener('click', (event) => {
+    const target = event.target as Element | null
+    if (target?.closest('a[href]')) {
+      closeMobileNavigation()
+    }
+  })
+
+  documentRef.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      if (activeTrigger) closeDesktopNavigation(true)
+      if (mobileMenuIsOpen()) closeMobileNavigation(true)
+      return
+    }
+
+    if (event.key !== 'Tab' || !mobileToggle || !mobileMenu || !mobileMenuIsOpen()) return
+    const menuControls = Array.from(
+      mobileMenu.querySelectorAll<HTMLElement>(
+        'a[href], summary, button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    )
+    const first = menuControls[0]
+    const last = menuControls[menuControls.length - 1]
+
+    if (documentRef.activeElement === mobileToggle) {
+      event.preventDefault()
+      ;(event.shiftKey ? last : first)?.focus()
+    } else if (event.shiftKey && documentRef.activeElement === first) {
       event.preventDefault()
       mobileToggle.focus()
     } else if (!event.shiftKey && documentRef.activeElement === last) {
       event.preventDefault()
       mobileToggle.focus()
     }
-  })
-
-  documentRef.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return
-    if (activeTrigger) closeDesktopNavigation(true)
-    if (mobileMenu && !mobileMenu.classList.contains('hidden')) closeMobileNavigation(true)
   })
 
   documentRef.addEventListener('click', (event) => {
