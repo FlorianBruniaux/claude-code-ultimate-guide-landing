@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url'
 import { execFileSync } from 'child_process'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
+import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -232,16 +233,20 @@ function normalizeLangs(content) {
 /**
  * Rewrite relative .md links between guide files.
  *
- * Converts [text](./core/file.md#anchor) or [text](../file.md#anchor)
- * to [text](/guide/file/#anchor), since all guide files are flattened
- * into the same /guide/ URL namespace on the landing site.
+ * Resolve relative Markdown links from their original repository location.
+ * Root guide sections are flattened, while workflows and learning-path pages
+ * keep their public subdirectory. Unpublished repository files point to GitHub.
  */
-function rewriteRelativeGuideLinks(content) {
+function rewriteRelativeGuideLinks(content, sourcePath, anchorMap) {
   return content.replace(
-    /\[([^\]]*)\]\(\.\.?\/(?:[^)#/]*\/)*([^)#/]+)\.md(#[^)]+)?\)/g,
-    (match, text, filename, anchor) => {
-      const hash = anchor || ''
-      return `[${text}](/guide/${filename}/${hash})`
+    /(?<!!)\[([^\]]*)\]\(([^)\s]+)\)/g,
+    (match, text, url) => {
+      if (/^(?:https?:|mailto:|tel:|data:|#|\/)/i.test(url)) return match
+      const hashIndex = url.indexOf('#')
+      const href = hashIndex >= 0 ? url.slice(0, hashIndex) : url
+      const fragment = hashIndex >= 0 ? url.slice(hashIndex) : ''
+      const resolved = resolveGuideLink(href, fragment, anchorMap, sourcePath)
+      return resolved ? `[${text}](${resolved.url})` : match
     }
   )
 }
@@ -414,7 +419,8 @@ for (let i = 0; i < guideFileSources.length; i++) {
   content = addStarlightFm(content, { title, desc, order: 100 + i, lastUpdated: modified, datePublished: published })
   content = normalizeLangs(content)
 
-  guideFileBuffer.push({ file, content })
+  const sourcePath = `guide/${srcDir === GUIDE_DIR ? '' : `${srcDir.split('/').pop()}/`}${file}`
+  guideFileBuffer.push({ file, content, sourcePath })
   stats.files++
 }
 
@@ -447,7 +453,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     content = addStarlightFm(content, { title, desc, order: 200 + i, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
 
-    guideFileBuffer.push({ file: `workflows/${file}`, content, isWorkflow: true })
+    guideFileBuffer.push({ file: `workflows/${file}`, content, sourcePath: `guide/workflows/${file}`, isWorkflow: true })
     stats.workflows++
   }
 
@@ -458,7 +464,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     const { modified, published } = getGitDates(workflowReadme)
     content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
-    guideFileBuffer.push({ file: 'workflows/index.md', content, isWorkflow: false })
+    guideFileBuffer.push({ file: 'workflows/index.md', content, sourcePath: 'guide/workflows/README.md', isWorkflow: false })
     stats.workflows++
   }
 
@@ -491,7 +497,7 @@ if (existsSync(LEARNING_PATH_DIR)) {
     content = addStarlightFm(content, { title, desc, order: 250 + i, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
 
-    guideFileBuffer.push({ file: `learning-path/${file}`, content, isWorkflow: false })
+    guideFileBuffer.push({ file: `learning-path/${file}`, content, sourcePath: `guide/learning-path/${file}`, isWorkflow: false })
     stats.learningPath++
   }
 
@@ -502,7 +508,7 @@ if (existsSync(LEARNING_PATH_DIR)) {
     const { modified, published } = getGitDates(readmeSrc)
     content = addStarlightFm(content, { title: 'Learning Path', desc: '7-module structured learning path from Installation to Advanced Patterns (8-11 hours)', order: 249, lastUpdated: modified, datePublished: published })
     content = normalizeLangs(content)
-    guideFileBuffer.push({ file: 'learning-path/index.md', content, isWorkflow: false })
+    guideFileBuffer.push({ file: 'learning-path/index.md', content, sourcePath: 'guide/learning-path/README.md', isWorkflow: false })
     stats.learningPath++
   }
 
@@ -545,7 +551,7 @@ for (let i = 0; i < AUDIENCE_PAGES.length; i++) {
   content = addStarlightFm(content, { title, desc, order: 300 + i, lastUpdated: modified, datePublished: published })
   content = normalizeLangs(content)
 
-  guideFileBuffer.push({ file, content })
+  guideFileBuffer.push({ file, content, sourcePath: `docs/${file}` })
   stats.audience++
 }
 
@@ -647,7 +653,7 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   // Rewrite cross-chapter bare anchors and relative .md links before writing
   const currentSlug = `ultimate-guide/${slug}`
   content = rewriteRepoDocLinks(content)
-  content = rewriteRelativeGuideLinks(content)
+  content = rewriteRelativeGuideLinks(content, 'guide/ultimate-guide.md', anchorMap)
   content = rewriteRelativeImageLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
   content = resolveUltimateGuideAnchors(content, anchorMap)
@@ -671,9 +677,9 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 // -----------------------------------------------------------------------
 // 3b. Flush buffered guide/workflow files now that anchorMap is complete
 // -----------------------------------------------------------------------
-for (const { file, content: rawContent, isWorkflow } of guideFileBuffer) {
+for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuffer) {
   let rewritten = rewriteRepoDocLinks(rawContent)
-  rewritten = rewriteRelativeGuideLinks(rewritten)
+  rewritten = rewriteRelativeGuideLinks(rewritten, sourcePath, anchorMap)
   rewritten = rewriteRelativeImageLinks(rewritten)
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)

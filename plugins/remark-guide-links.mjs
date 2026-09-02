@@ -24,7 +24,7 @@
  */
 
 import { readFileSync, existsSync } from 'fs'
-import { resolve, dirname } from 'path'
+import { resolve, dirname, posix } from 'path'
 import { fileURLToPath } from 'url'
 import { visit } from 'unist-util-visit'
 
@@ -57,7 +57,7 @@ function loadAnchorMap() {
  * @param {object} anchorMap - Map of anchor → chapter slug
  * @returns {{ url: string, isExternal: boolean } | null}
  */
-function resolveGuideLink(href, anchorFragment, anchorMap) {
+export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourcePath) {
   // Normalize: strip leading ./
   const cleanHref = href.replace(/^\.\//, '')
 
@@ -75,8 +75,19 @@ function resolveGuideLink(href, anchorFragment, anchorMap) {
     return { url: '/guide/' + cleanHref.replace(/^(\.\.\/)+/, ''), isExternal: false }
   }
 
+  const sourceDir = currentSourcePath ? posix.dirname(currentSourcePath) : 'guide'
+  const repositoryPath = posix.normalize(posix.join(sourceDir, href.replace(/\\/g, '/')))
+
+  // ── Published directory indexes ────────────────────────────────────
+  if (repositoryPath === 'guide/workflows' || repositoryPath === 'guide/workflows/') {
+    return { url: `${GUIDE_BASE}workflows/${anchorFragment || ''}`, isExternal: false }
+  }
+  if (repositoryPath === 'guide/learning-path' || repositoryPath === 'guide/learning-path/') {
+    return { url: `${GUIDE_BASE}learning-path/${anchorFragment || ''}`, isExternal: false }
+  }
+
   // ── ultimate-guide.md (split into chapters) ────────────────────────
-  if (cleanHref === 'ultimate-guide.md' || cleanHref.startsWith('ultimate-guide.md#')) {
+  if (repositoryPath === 'guide/ultimate-guide.md') {
     const anchor = anchorFragment?.replace('#', '') || ''
     if (anchor && anchorMap[anchor]) {
       return { url: `${GUIDE_BASE}${anchorMap[anchor]}/#${anchor}`, isExternal: false }
@@ -85,35 +96,57 @@ function resolveGuideLink(href, anchorFragment, anchorMap) {
     return { url: `${GUIDE_BASE}ultimate-guide/`, isExternal: false }
   }
 
-  // ── Relative guide files (same directory or in known subdirectories) ─────
-  // Handles: ./data-privacy.md, ./core/architecture.md, ../security/hardening.md
-  // All guide files are served flat at /guide/<slug>/
-  const KNOWN_GUIDE_SUBDIRS = new Set(['core', 'security', 'ecosystem', 'roles', 'ops'])
-  if (cleanHref.endsWith('.md') && !cleanHref.startsWith('ultimate-guide') && !cleanHref.startsWith('workflows/') && !cleanHref.startsWith('images/')) {
-    if (cleanHref.includes('/')) {
-      // Has a path component — only handle known guide subdirectories
-      const pathWithoutDots = cleanHref.replace(/^(\.\.\/)+/, '')
-      const firstDir = pathWithoutDots.split('/')[0]
-      if (!KNOWN_GUIDE_SUBDIRS.has(firstDir)) {
-        return null // unknown path, fall back to GitHub
-      }
+  if (repositoryPath === 'guide/ultimate-guide.fr.md') {
+    return { url: `${GUIDE_BASE}ultimate-guidefr/${anchorFragment || ''}`, isExternal: false }
+  }
+
+  if (repositoryPath === 'guide/README.md') {
+    return { url: `${GUIDE_BASE}${anchorFragment || ''}`, isExternal: false }
+  }
+
+  if (repositoryPath === 'guide/workflows/README.md') {
+    return { url: `${GUIDE_BASE}workflows/${anchorFragment || ''}`, isExternal: false }
+  }
+
+  if (repositoryPath === 'guide/learning-path/README.md') {
+    return { url: `${GUIDE_BASE}learning-path/${anchorFragment || ''}`, isExternal: false }
+  }
+
+  const nestedMatch = repositoryPath.match(/^guide\/(workflows|learning-path)\/([^/]+)\.md$/)
+  if (nestedMatch) {
+    return {
+      url: `${GUIDE_BASE}${nestedMatch[1]}/${nestedMatch[2]}/${anchorFragment || ''}`,
+      isExternal: false,
     }
-    const basename = cleanHref.split('/').pop()
-    const slug = basename.replace(/\.md$/, '')
+  }
+
+  // ── Relative guide files in flattened source directories ───────────
+  const KNOWN_GUIDE_SUBDIRS = new Set(['core', 'security', 'ecosystem', 'roles', 'ops'])
+  const flattenedMatch = repositoryPath.match(/^guide\/([^/]+)\/([^/]+)\.md$/)
+  if (flattenedMatch && KNOWN_GUIDE_SUBDIRS.has(flattenedMatch[1])) {
+    const slug = flattenedMatch[2]
     const fragment = anchorFragment || ''
     return { url: `${GUIDE_BASE}${slug}/${fragment}`, isExternal: false }
   }
 
-  // ── Workflow files ─────────────────────────────────────────────────
-  if (cleanHref.startsWith('workflows/') && cleanHref.endsWith('.md')) {
-    const slug = cleanHref.replace(/\.md$/, '')
+  const rootGuideMatch = repositoryPath.match(/^guide\/([^/]+)\.md$/)
+  if (rootGuideMatch) {
+    const slug = rootGuideMatch[1]
     const fragment = anchorFragment || ''
     return { url: `${GUIDE_BASE}${slug}/${fragment}`, isExternal: false }
   }
 
-  // ── Anything starting with ../ → fall back to GitHub ──────────────
-  if (href.startsWith('../') || href.startsWith('..\\')) {
-    return null // signal: use GitHub fallback
+  const audienceMatch = repositoryPath.match(/^docs\/(for-(?:product-managers|tech-leads|cto|cio-ceo))\.md$/)
+  if (audienceMatch) {
+    return { url: `${GUIDE_BASE}${audienceMatch[1]}/${anchorFragment || ''}`, isExternal: false }
+  }
+
+  // ── Other repository Markdown files are source links, not site routes ──
+  if (repositoryPath.endsWith('.md') && !repositoryPath.startsWith('../')) {
+    return {
+      url: `${GITHUB_BASE}${repositoryPath}${anchorFragment || ''}`,
+      isExternal: true,
+    }
   }
 
   // ── Absolute paths or other formats → unchanged ───────────────────
@@ -139,6 +172,11 @@ function getCurrentSlug(filePath) {
   return match ? match[1] : null
 }
 
+function getCurrentSourcePath(filePath) {
+  const match = filePath.match(/content\/docs\/(guide\/.+?\.md)/)
+  return match ? match[1] : null
+}
+
 /**
  * The remark plugin factory
  */
@@ -149,6 +187,7 @@ export function remarkGuideLinks() {
     // Only process files inside the guide content dir
     const filePath = file?.history?.[0] || ''
     if (!filePath.includes('content/docs/guide')) return
+    const currentSourcePath = getCurrentSourcePath(filePath)
 
     visit(tree, ['link', 'image'], (node) => {
       const originalUrl = node.url || ''
@@ -180,7 +219,7 @@ export function remarkGuideLinks() {
 
       if (!hrefPart) return // pure anchor, skip
 
-      const resolved = resolveGuideLink(hrefPart, fragmentPart, anchorMap)
+      const resolved = resolveGuideLink(hrefPart, fragmentPart, anchorMap, currentSourcePath)
 
       if (resolved) {
         node.url = resolved.url

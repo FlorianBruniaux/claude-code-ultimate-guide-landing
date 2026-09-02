@@ -51,6 +51,9 @@ test('homepage discovery blocks remain intentionally small', () => {
   assert.equal(DEEP_TOPICS.length, 4)
   assertUnique(FLAGSHIP_RESOURCES.map((resource) => resource.href), 'flagship hrefs')
   assertUnique(DEEP_TOPICS.map((topic) => topic.href), 'deep topic hrefs')
+
+  const ultimateGuide = FLAGSHIP_RESOURCES.find((resource) => resource.title === 'Ultimate Guide')
+  assert.equal(ultimateGuide?.href, '/guide/')
 })
 
 test('the homepage features four canonical projects while the projects hub exposes five routes and 16 projects', () => {

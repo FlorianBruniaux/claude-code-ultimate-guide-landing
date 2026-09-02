@@ -74,7 +74,7 @@ export const FLAGSHIP_RESOURCES = [
     title: 'Ultimate Guide',
     description: 'The complete reference, from fundamentals to production workflows.',
     meta: '25K+ lines',
-    href: '/guide/ultimate-guide/',
+    href: '/guide/',
   },
   {
     icon: '⚡',

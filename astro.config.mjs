@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
+import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { readdirSync, existsSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -56,6 +57,8 @@ export default defineConfig({
   trailingSlash: 'always',
 
   redirects: {
+    ...legacyGuideRedirects,
+
     // Security section path change
     '/guide/security/security-hardening/': '/guide/security-hardening/',
     '/guide/security/data-privacy/': '/guide/data-privacy/',
