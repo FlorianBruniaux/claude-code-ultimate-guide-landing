@@ -12,6 +12,12 @@ test('Astro sitemap integration stays enabled for XML sitemap generation', () =>
   assert.match(astroConfig, /sitemap\({/)
 })
 
+test('compact footer sends Guide to the guide landing page', () => {
+  const footer = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/Footer.astro'), 'utf8')
+
+  assert.match(footer, /<a href="\/guide\/">Guide<\/a>/)
+})
+
 test('Translation status is exposed in navigation, sidebar, and sitemap data', () => {
   const navigation = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-navigation.mjs'), 'utf8')
   const astroConfig = readFileSync(resolve(PROJECT_ROOT, 'astro.config.mjs'), 'utf8')
