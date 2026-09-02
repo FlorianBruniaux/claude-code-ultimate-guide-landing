@@ -6,6 +6,7 @@ import AnnouncementBanner from '../components/global/AnnouncementBanner.astro'
 import Footer from '../components/global/Footer.astro'
 import SearchModal from '../components/global/SearchModal.astro'
 import FeedbackFab from '../components/global/FeedbackFab.astro'
+import Analytics from '../components/global/Analytics.astro'
 import { getSiteStats } from '../utils/site-stats'
 
 interface Props {
@@ -36,7 +37,6 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const ogImageURL = new URL(image, Astro.site)
-const gaId = 'G-WH1C8CM79E'
 const stats = await getSiteStats()
 ---
 
@@ -180,14 +180,7 @@ const stats = await getSiteStats()
       <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", ...schema })} />
     ))}
 
-    <!-- Google Analytics 4 via Partytown -->
-    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script type="text/partytown" define:vars={{ gaId }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', gaId);
-    </script>
+    <Analytics />
   </head>
   <body>
     <a href="#main-content" class="skip-to-content">

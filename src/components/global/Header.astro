@@ -1,5 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro'
+import EcosystemProjectStrip from '../ecosystem/EcosystemProjectStrip.astro'
+import { ecosystemMenuProjects } from '../../data/ecosystem-discovery'
 import {
   getActiveNavigation,
   guideNavigationSection,
@@ -95,6 +97,12 @@ function isLinkActive(href: string, external = false) {
                   </div>
                 ))}
               </div>
+              {section.id === 'build' && (
+                <EcosystemProjectStrip menu="build" projects={ecosystemMenuProjects.build} />
+              )}
+              {section.id === 'scale' && (
+                <EcosystemProjectStrip menu="scale" projects={ecosystemMenuProjects.scale} />
+              )}
             </section>
           </details>
         ))}

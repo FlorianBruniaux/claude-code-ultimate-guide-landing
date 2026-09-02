@@ -1,0 +1,140 @@
+---
+import {
+  getEcosystemProjectAccessibleLabel,
+  type EcosystemMenuId,
+  type EcosystemMenuProject,
+} from '../../data/ecosystem-discovery'
+import { PERSONAL_PROJECTS } from '../../data/personal-projects.generated.ts'
+
+interface Props {
+  menu: EcosystemMenuId
+  projects: EcosystemMenuProject[]
+}
+
+const { menu, projects } = Astro.props
+---
+
+{projects.length > 0 && (
+  <section class="ecosystem-project-strip" aria-label={`Featured ${menu} projects`}>
+    <p class="ecosystem-project-strip-label">Featured projects</p>
+    <div class="ecosystem-project-strip-links">
+      {projects.map((project) => (
+        <a
+          href={project.href}
+          class="ecosystem-project-strip-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={getEcosystemProjectAccessibleLabel(project)}
+          data-ecosystem-project-id={project.id}
+          data-ecosystem-placement="menu_strip"
+          data-ecosystem-menu={menu}
+        >
+          <span aria-hidden="true">{project.icon}</span>
+          <span class="ecosystem-project-strip-copy">
+            <span class="ecosystem-project-strip-title">{project.title}</span>
+            <span class="ecosystem-project-strip-format">{project.format}</span>
+          </span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+    <a href="/projects/" class="ecosystem-project-strip-hub-link">
+      Explore all {PERSONAL_PROJECTS.length} projects <span aria-hidden="true">→</span>
+    </a>
+  </section>
+)}
+
+<style>
+  .ecosystem-project-strip {
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .ecosystem-project-strip-label {
+    margin: 0 0 0.35rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .ecosystem-project-strip-links {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .ecosystem-project-strip-link {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+    padding: 0.55rem 0.65rem;
+    border-radius: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+
+  .ecosystem-project-strip-link > span:last-child {
+    margin-left: auto;
+  }
+
+  .ecosystem-project-strip-copy {
+    display: grid;
+    min-width: 0;
+    gap: 0.08rem;
+  }
+
+  .ecosystem-project-strip-title,
+  .ecosystem-project-strip-format {
+    overflow-wrap: anywhere;
+  }
+
+  .ecosystem-project-strip-format {
+    color: var(--text-muted);
+    font-size: 0.73rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .ecosystem-project-strip-link:hover,
+  .ecosystem-project-strip-link:focus-visible {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .ecosystem-project-strip-hub-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+    padding: 0.55rem 0.65rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .ecosystem-project-strip-hub-link:hover,
+  .ecosystem-project-strip-hub-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (min-width: 64rem) {
+    .ecosystem-project-strip {
+      grid-column: 1 / -1;
+    }
+
+    .ecosystem-project-strip-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

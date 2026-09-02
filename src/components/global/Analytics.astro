@@ -1,0 +1,17 @@
+---
+const gaId = 'G-WH1C8CM79E'
+---
+
+<!-- Google Analytics 4 via Partytown -->
+<script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+<script is:inline type="text/partytown" define:vars={{ gaId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', gaId);
+</script>
+<script>
+  import { initEcosystemAnalytics } from '../../scripts/ecosystem-analytics.ts'
+
+  initEcosystemAnalytics()
+</script>

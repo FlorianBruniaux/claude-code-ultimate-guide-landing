@@ -36,7 +36,16 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
           </header>
           <div class="projects-grid">
             {route.projects.map((project) => (
-              <a class="project-card" href={project.href} target="_blank" rel="noopener">
+              <a
+                class="project-card"
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.title} (opens in a new tab)`}
+                data-ecosystem-project-id={project.id}
+                data-ecosystem-placement="projects_hub"
+                data-ecosystem-menu="none"
+              >
                 <span class="project-icon" aria-hidden="true">{project.icon}</span>
                 <div>
                   <div class="project-title-line">

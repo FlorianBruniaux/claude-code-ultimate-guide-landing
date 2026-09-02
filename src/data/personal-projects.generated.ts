@@ -39,9 +39,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need to change the model provider behind a Claude Code workflow.",
     "format": "CLI router",
     "tags": [
-      "routing",
-      "local AI",
-      "Rust"
+      "Provider Routing",
+      "Local AI",
+      "Context Engineering"
     ],
     "href": "https://ccbridge.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/cc-copilot-bridge",
@@ -57,9 +57,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You want packaged skills, hooks, agents, and workflows instead of copying files manually.",
     "format": "Plugin collection",
     "tags": [
-      "extensions",
-      "workflows",
-      "Claude Code"
+      "Agent Extensions",
+      "Workflow Automation",
+      "Harness"
     ],
     "href": "https://github.com/FlorianBruniaux/claude-code-plugins",
     "github": "https://github.com/FlorianBruniaux/claude-code-plugins",
@@ -75,9 +75,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need evidence that CLAUDE.md, AGENTS.md, and related context still match the repository.",
     "format": "CLI",
     "tags": [
-      "harnessing",
-      "docs integrity",
-      "quality"
+      "Context Engineering",
+      "Harness",
+      "Validation"
     ],
     "href": "https://github.com/FlorianBruniaux/ctxharness",
     "github": "https://github.com/FlorianBruniaux/ctxharness",
@@ -93,9 +93,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You want shorter action-first responses without stacking several overlapping skills.",
     "format": "Claude Code skill",
     "tags": [
-      "output control",
-      "prompting",
-      "context"
+      "Context Engineering",
+      "Prompting",
+      "Token Efficiency"
     ],
     "href": "https://github.com/FlorianBruniaux/flow-lean",
     "github": "https://github.com/FlorianBruniaux/flow-lean",
@@ -111,9 +111,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "Verbose Git, test, build, or infrastructure output consumes too much context.",
     "format": "CLI proxy",
     "tags": [
-      "token efficiency",
-      "CLI",
-      "Rust"
+      "Context Engineering",
+      "Token Efficiency",
+      "Output Control"
     ],
     "href": "https://www.rtk-ai.app/",
     "github": "https://github.com/rtk-ai/rtk",
@@ -129,9 +129,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need a complete visual overview of sessions, activity, and analytics.",
     "format": "TUI + Web",
     "tags": [
-      "observability",
-      "monitoring",
-      "Rust"
+      "Observability",
+      "Session Analytics",
+      "Monitoring"
     ],
     "href": "https://ccboard.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/ccboard",
@@ -147,9 +147,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need a fast zero-dependency CLI for finding prior decisions or commands.",
     "format": "CLI",
     "tags": [
-      "session search",
-      "local-first",
-      "history"
+      "Session Search",
+      "Local-first",
+      "Knowledge Retrieval"
     ],
     "href": "https://github.com/FlorianBruniaux/cc-sessions",
     "github": "https://github.com/FlorianBruniaux/cc-sessions",
@@ -165,15 +165,15 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need to distinguish real Skill tool calls from prose mentions.",
     "format": "CLI",
     "tags": [
-      "skills analytics",
-      "local-first",
-      "transcripts"
+      "Skill Analytics",
+      "Local-first",
+      "Observability"
     ],
     "href": "https://github.com/FlorianBruniaux/cc-skill-usage",
     "github": "https://github.com/FlorianBruniaux/cc-skill-usage",
     "website": null,
     "route": "observe-improve",
-    "featured": false
+    "featured": true
   },
   {
     "id": "agentsec-triage",
@@ -183,9 +183,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need a deterministic read-only scanner for a documented campaign or compromise signal.",
     "format": "Security CLI",
     "tags": [
-      "security",
-      "supply chain",
-      "offline"
+      "Security",
+      "Supply Chain",
+      "Validation"
     ],
     "href": "https://cc.bruniaux.com/security/",
     "github": "https://github.com/FlorianBruniaux/agentsec-triage",
@@ -201,9 +201,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need to find unused package surface, duplicates, or native alternatives.",
     "format": "CLI + MCP",
     "tags": [
-      "dependencies",
-      "code quality",
-      "TypeScript"
+      "Dependency Analysis",
+      "Code Quality",
+      "Validation"
     ],
     "href": "https://www.npmjs.com/package/@florianbruniaux/dep-scope",
     "github": "https://github.com/FlorianBruniaux/node-dep-scope",
@@ -219,9 +219,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need a maintained reference for architecture, workflows, security, and adoption.",
     "format": "Documentation",
     "tags": [
-      "developers",
-      "reference",
-      "FR + EN"
+      "AI Adoption",
+      "Context Engineering",
+      "Security"
     ],
     "href": "https://cc.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
@@ -237,9 +237,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "Your work centers on documents, research, analysis, or cross-app tasks rather than software delivery.",
     "format": "Documentation",
     "tags": [
-      "knowledge workers",
-      "workflows",
-      "FR + EN"
+      "AI Adoption",
+      "Knowledge Work",
+      "Workflows"
     ],
     "href": "https://cowork.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/claude-cowork-guide",
@@ -255,9 +255,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You need transcripts, structured insights, local search, and repeatable reports from video sources.",
     "format": "CLI",
     "tags": [
-      "research",
-      "local corpus",
-      "YouTube"
+      "Research",
+      "Local Corpus",
+      "Knowledge Extraction"
     ],
     "href": "https://pypi.org/project/yt-insights/",
     "github": "https://github.com/FlorianBruniaux/youtube-video-insights",
@@ -274,8 +274,8 @@ export const PERSONAL_PROJECTS = [
     "format": "MCP server",
     "tags": [
       "SEO",
-      "analytics",
-      "growth"
+      "Analytics",
+      "Growth"
     ],
     "href": "https://pypi.org/project/gsc-mcp/",
     "github": "https://github.com/FlorianBruniaux/google-search-console-mcp",
@@ -291,9 +291,9 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You want an interactive view of repository audience and geographic reach.",
     "format": "Web app",
     "tags": [
-      "GitHub discovery",
-      "audience",
-      "visualization"
+      "GitHub Discovery",
+      "Audience",
+      "Visualization"
     ],
     "href": "https://starmapper.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/starmapper",
@@ -309,7 +309,7 @@ export const PERSONAL_PROJECTS = [
     "useWhen": "You want README, recruiter-signal, AI-marker, and profile-visibility feedback from a Claude Code plugin.",
     "format": "Claude Code plugin",
     "tags": [
-      "profile audit",
+      "Profile Audit",
       "GitHub",
       "SEO"
     ],

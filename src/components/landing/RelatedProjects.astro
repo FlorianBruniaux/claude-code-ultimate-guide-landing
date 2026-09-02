@@ -1,5 +1,5 @@
 ---
-import { FEATURED_PROJECTS } from '../../data/homepage-content'
+import { FEATURED_PROJECTS, RELATED_PROJECTS } from '../../data/homepage-content'
 ---
 
 <section class="section section--compact related" id="related" aria-labelledby="projects-title">
@@ -7,14 +7,23 @@ import { FEATURED_PROJECTS } from '../../data/homepage-content'
     <div class="section-header">
       <div>
         <p class="section-kicker">Built alongside the guide</p>
-        <h2 class="section-title" id="projects-title">Three companion tools</h2>
+        <h2 class="section-title" id="projects-title">{FEATURED_PROJECTS.length} companion tools</h2>
       </div>
-      <a class="all-link" href="/projects/">See all 12 projects →</a>
+      <a class="all-link" href="/projects/">See all {RELATED_PROJECTS.length} projects →</a>
     </div>
 
     <div class="related-grid">
       {FEATURED_PROJECTS.map((project) => (
-        <a href={project.href} class="related-card" target="_blank" rel="noopener">
+        <a
+          href={project.href}
+          class="related-card"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.title} (opens in a new tab)`}
+          data-ecosystem-project-id={project.id}
+          data-ecosystem-placement="homepage"
+          data-ecosystem-menu="none"
+        >
           <span class="related-icon" aria-hidden="true">{project.icon}</span>
           <div>
             <h3>{project.title}</h3>
@@ -32,13 +41,14 @@ import { FEATURED_PROJECTS } from '../../data/homepage-content'
   .section-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
   .section-header .section-title { margin-bottom: 0; }
   .all-link { display: inline-flex; align-items: center; min-height: 44px; flex: 0 0 auto; font-weight: 650; }
-  .related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
   .related-card { display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem; min-height: 130px; padding: 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), transform var(--transition-fast); }
   .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .related-icon { font-size: 1.2rem; }
   .related-card h3 { margin: 0; font-size: 0.95rem; }
   .related-card p { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.8rem; }
   .related-arrow { color: var(--accent); }
+  @media (max-width: 1100px) { .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 820px) { .related-grid { grid-template-columns: 1fr; } }
   @media (max-width: 600px) { .section-header { align-items: flex-start; flex-direction: column; } }
 </style>

@@ -14,36 +14,41 @@ const stats = await getSiteStats()
         <img src="/claude-logo-orange.svg" alt="" class="hero-logo" width="50" height="50" fetchpriority="high" loading="eager">
         <h1 id="hero-title">Claude Code Ultimate Guide</h1>
       </div>
-      <p class="hero-tagline">Go from your first command to production-ready Claude Code workflows.</p>
-      <p class="hero-support">Security, testing, team adoption, and reusable templates, with the trade-offs explained.</p>
 
-      <div class="hero-actions">
-        <a href="#start-here" class="btn btn-primary">Start in 15 min</a>
-        <a href="/guide/" class="btn btn-secondary">Browse the full guide</a>
-        <a href="/downloads/" class="hero-download-link">Downloads ↓</a>
+      <div class="hero-body">
+        <p class="hero-tagline">Go from your first command to production-ready Claude Code workflows.</p>
+        <p class="hero-support">Security, testing, team adoption, and reusable templates, with the trade-offs explained.</p>
+
+        <div class="hero-actions">
+          <a href="#start-here" class="btn btn-primary">Start in 15 min</a>
+          <a href="/guide/" class="btn btn-secondary">Browse the full guide</a>
+          <a href="/downloads/" class="hero-download-link">Downloads ↓</a>
+        </div>
       </div>
 
-      <div class="proof-strip" aria-label="Guide highlights">
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener" class="proof-item proof-stars">
-          <span aria-hidden="true">★</span>
-          <strong class="proof-value">5.9k</strong>
-          <span>GitHub stars</span>
-        </a>
-        <a href="/examples/" class="proof-item">
-          <strong>{stats.templateCount}</strong>
-          <span>templates</span>
-        </a>
-        <a href="/security/" class="proof-item">
-          <strong>{stats.cveCount}</strong>
-          <span>CVEs tracked</span>
-        </a>
-        <a href="/resources/" class="proof-item proof-item--optional">
-          <strong>{HOMEPAGE_METRICS.recapCardCount}</strong>
-          <span>recap cards</span>
-        </a>
-      </div>
+      <div class="hero-evidence">
+        <div class="proof-strip" aria-label="Guide highlights">
+          <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener" class="proof-item proof-stars">
+            <span aria-hidden="true">★</span>
+            <strong class="proof-value">5.9k</strong>
+            <span>GitHub stars</span>
+          </a>
+          <a href="/examples/" class="proof-item">
+            <strong>{stats.templateCount}</strong>
+            <span>templates</span>
+          </a>
+          <a href="/security/" class="proof-item">
+            <strong>{stats.cveCount}</strong>
+            <span>CVEs tracked</span>
+          </a>
+          <a href="/resources/" class="proof-item proof-item--optional">
+            <strong>{HOMEPAGE_METRICS.recapCardCount}</strong>
+            <span>recap cards</span>
+          </a>
+        </div>
 
-      <AuthorProfile />
+        <AuthorProfile />
+      </div>
     </div>
   </div>
 </section>
@@ -78,9 +83,20 @@ const stats = await getSiteStats()
     border-bottom: 1px solid var(--border);
   }
 
-  .hero-copy { max-width: 900px; }
+  .hero .container { max-width: 1440px; }
+
+  .hero-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.8fr);
+    grid-template-areas:
+      "kicker kicker"
+      "heading heading"
+      "body evidence";
+    column-gap: clamp(2.5rem, 6vw, 6rem);
+  }
 
   .hero-kicker {
+    grid-area: kicker;
     margin: 0 0 0.85rem;
     color: var(--accent);
     font-family: var(--font-mono);
@@ -91,6 +107,7 @@ const stats = await getSiteStats()
   }
 
   .hero-heading {
+    grid-area: heading;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -108,6 +125,11 @@ const stats = await getSiteStats()
     font-weight: 750;
     line-height: 0.98;
     letter-spacing: -0.05em;
+  }
+
+  .hero-body {
+    grid-area: body;
+    min-width: 0;
   }
 
   .hero-tagline {
@@ -145,9 +167,15 @@ const stats = await getSiteStats()
   }
 
   .proof-strip {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
+  }
+
+  .hero-evidence {
+    grid-area: evidence;
+    align-self: end;
+    min-width: 0;
     margin-top: 1.5rem;
   }
 
@@ -172,6 +200,24 @@ const stats = await getSiteStats()
   }
 
   .proof-item:hover { border-color: var(--accent); }
+
+  @media (max-width: 1100px) {
+    .hero-copy {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "kicker"
+        "heading"
+        "body"
+        "evidence";
+    }
+
+    .hero-evidence { max-width: 900px; }
+
+    .proof-strip {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 
   @media (max-width: 640px) {
     .hero { padding: 2.75rem 0 1.5rem; }
