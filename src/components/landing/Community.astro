@@ -4,18 +4,28 @@
         <h2 class="section-title">Community & Resources</h2>
 
         <div class="community-grid">
-            <div class="community-card">
+            <a
+                class="community-card"
+                href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md"
+                target="_blank"
+                rel="noopener"
+            >
                 <span class="community-icon" aria-hidden="true">&#128221;</span>
                 <h3>Contribute to the Guide</h3>
                 <p>The guide repo is open-source. Found an error? Have a better template?</p>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" class="link" target="_blank" rel="noopener">Contributing Guide &rarr;</a>
-            </div>
-            <div class="community-card">
+                <span class="community-link">Contributing Guide <span aria-hidden="true">&nearr;</span><span class="sr-only"> (opens in a new tab)</span></span>
+            </a>
+            <a
+                class="community-card"
+                href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
+                target="_blank"
+                rel="noopener"
+            >
                 <span class="community-icon" aria-hidden="true">&#11088;</span>
                 <h3>Star on GitHub</h3>
                 <p>If this guide saved you time, show your support.</p>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" class="link" target="_blank" rel="noopener">GitHub Repository &rarr;</a>
-            </div>
+                <span class="community-link">GitHub Repository <span aria-hidden="true">&nearr;</span><span class="sr-only"> (opens in a new tab)</span></span>
+            </a>
         </div>
 
     </div>
@@ -28,14 +38,18 @@
     gap: var(--space-lg);
 }
 .community-card {
+    display: block;
     background-color: var(--surface-elevated);
     border: 1px solid var(--border);
     border-radius: var(--border-radius-lg);
     padding: var(--space-lg);
+    color: var(--text-primary);
+    text-decoration: none;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
 }
-.community-card:hover {
+.community-card:hover,
+.community-card:focus-visible {
     border-color: var(--accent);
     transform: translateY(-2px);
     box-shadow: var(--shadow-card-hover);
@@ -44,7 +58,7 @@
 .community-icon { font-size: 1.4rem; margin-bottom: var(--space-sm); display: block; }
 .community-card h3 { font-size: 1.2rem; margin-bottom: var(--space-sm); }
 .community-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: var(--space-lg); }
-.community-card .link { font-size: 0.95rem; }
+.community-link { color: var(--accent); font-size: 0.95rem; font-weight: 600; }
 @media (max-width: 768px) {
     .community-grid { grid-template-columns: 1fr; }
 }
