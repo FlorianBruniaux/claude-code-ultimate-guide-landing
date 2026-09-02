@@ -10,7 +10,9 @@ const homepageMcp = source('../components/landing/McpProof.astro')
 const homepageContent = source('./homepage-content.ts')
 const searchIndex = source('./search-index.ts')
 const htmlSitemap = source('../pages/sitemap/index.astro')
-const intentNavigation = JSON.parse(source('./intent-navigation.json'))
+type IntentNavigationItem = { site_path: string }
+type IntentNavigationGroup = { items: IntentNavigationItem[] }
+const intentNavigation = JSON.parse(source('./intent-navigation.json')) as { groups: IntentNavigationGroup[] }
 const footer = source('../components/global/Footer.astro')
 const astroConfig = source('../../astro.config.mjs')
 

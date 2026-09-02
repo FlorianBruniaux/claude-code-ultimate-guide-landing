@@ -30,7 +30,9 @@ export function calculateResults(answers: number[]): RoleQuizResult[] {
     if (selectedIdx === -1) continue
 
     const option = question.options[selectedIdx]
+    if (!option) continue
     for (const [roleId, pts] of Object.entries(option.scores)) {
+      if (pts === undefined) continue
       rawScores[roleId] = (rawScores[roleId] ?? 0) + pts
     }
   }

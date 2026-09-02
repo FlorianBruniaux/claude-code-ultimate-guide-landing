@@ -547,7 +547,7 @@ const jsonLd = [
 
     // Toggle show/hide releases
     document.getElementById('toggleReleasesBtn')?.addEventListener('click', function() {
-      const hiddenCards = document.querySelectorAll('.release-card-hidden');
+      const hiddenCards = document.querySelectorAll<HTMLElement>('.release-card-hidden');
       const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
       const totalReleases = document.querySelectorAll('.release-card').length;
       const initialVisible = 12;

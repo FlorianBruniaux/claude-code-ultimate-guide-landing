@@ -39,11 +39,13 @@
 </section>
 
 <script>
-    function copyCode(button) {
+    function copyCode(button: HTMLElement) {
         const codeBlock = button.closest('.code-block');
-        const code = codeBlock.querySelector('code').textContent;
+        const code = codeBlock?.querySelector('code')?.textContent;
+        const icon = button.querySelector<HTMLElement>('.copy-icon');
+        if (!code || !icon) return;
+
         navigator.clipboard.writeText(code).then(() => {
-            const icon = button.querySelector('.copy-icon');
             const originalText = icon.textContent;
             icon.textContent = 'Copied!';
             button.classList.add('copied');
@@ -53,7 +55,7 @@
             }, 2000);
         });
     }
-    document.querySelectorAll('.onboarding-hero [data-copy]').forEach(btn => {
+    document.querySelectorAll<HTMLElement>('.onboarding-hero [data-copy]').forEach(btn => {
         btn.addEventListener('click', () => copyCode(btn));
     });
 </script>

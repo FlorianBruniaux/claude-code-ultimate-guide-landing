@@ -250,7 +250,7 @@ export const GET: APIRoute = async () => {
           },
         ],
       },
-    },
+    } as Parameters<typeof satori>[0],
     {
       width: 1200,
       height: 630,

@@ -4,7 +4,9 @@ import test from 'node:test'
 
 const source = readFileSync(new URL('../pages/sitemap/index.astro', import.meta.url), 'utf8')
 const sitemapConfig = readFileSync(new URL('../../astro.config.mjs', import.meta.url), 'utf8')
-const intentNavigation = JSON.parse(readFileSync(new URL('./intent-navigation.json', import.meta.url), 'utf8'))
+const intentNavigation = JSON.parse(
+  readFileSync(new URL('./intent-navigation.json', import.meta.url), 'utf8'),
+) as { groups: Array<{ id: string }> }
 const intentSource = JSON.stringify(intentNavigation)
 
 test('surfaces the agent harness reference pages in the HTML sitemap', () => {

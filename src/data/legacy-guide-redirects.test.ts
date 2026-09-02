@@ -3,7 +3,7 @@ import test from 'node:test'
 
 import { legacyGuideRedirects } from './legacy-guide-redirects.mjs'
 
-const redirects = legacyGuideRedirects
+const redirects = legacyGuideRedirects as Record<string, string>
 
 test('redirects malformed learning-path URLs emitted by the old link rewriter', () => {
   assert.equal(redirects['/guide/01-installation/'], '/guide/learning-path/01-installation/')

@@ -10,7 +10,7 @@ const techniqueCards = sortedCards.filter(c => c.data.category === 'Technical')
 const methodologieCards = sortedCards.filter(c => c.data.category === 'Methodology')
 const designCards = sortedCards.filter(c => c.data.category === 'Design')
 
-const intentIcons = {
+const intentIcons: Record<string, string> = {
   start: '🚀',
   build: '🛠️',
   scale: '📈',

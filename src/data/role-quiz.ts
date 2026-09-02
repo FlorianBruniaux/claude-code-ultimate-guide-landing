@@ -391,6 +391,7 @@ export function computeMaxPossible(): Record<string, number> {
     const maxPerRole: Record<string, number> = {}
     for (const option of question.options) {
       for (const [roleId, pts] of Object.entries(option.scores)) {
+        if (pts === undefined) continue
         if (!maxPerRole[roleId] || pts > maxPerRole[roleId]) {
           maxPerRole[roleId] = pts
         }

@@ -4,7 +4,10 @@ import { resolve } from 'node:path'
 import test from 'node:test'
 
 const snapshotUrl = new URL('./intent-navigation.json', import.meta.url)
-const snapshot = JSON.parse(readFileSync(snapshotUrl, 'utf8'))
+type IntentNavigationItem = { id: string }
+type IntentNavigationGroup = { id: string; items: IntentNavigationItem[] }
+type IntentNavigationSnapshot = { site_base_url: string; groups: IntentNavigationGroup[] }
+const snapshot = JSON.parse(readFileSync(snapshotUrl, 'utf8')) as IntentNavigationSnapshot
 
 test('intent navigation snapshot follows the public information architecture', () => {
   assert.equal(snapshot.site_base_url, 'https://cc.bruniaux.com')

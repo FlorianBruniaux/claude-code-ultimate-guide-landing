@@ -5,7 +5,6 @@ import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
-import { readdirSync, existsSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -36,20 +35,6 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/learning/': '2026-04-15',
   'https://cc.bruniaux.com/team-metrics/': '2026-08-30',
   'https://cc.bruniaux.com/context-engineering/': '2026-05-15',
-}
-
-/**
- * Generate sidebar items for "Core Guides" by reading only the flat .md files
- * in src/content/docs/guide/ — excludes index.md and subdirectories.
- * Falls back to empty array if content hasn't been generated yet.
- */
-function getCoreGuideItems() {
-  const guideDir = resolve(__dirname, 'src/content/docs/guide')
-  if (!existsSync(guideDir)) return []
-  return readdirSync(guideDir)
-    .filter(f => f.endsWith('.md') && f !== 'index.md')
-    .sort()
-    .map(f => ({ slug: `guide/${f.replace('.md', '')}` }))
 }
 
 export default defineConfig({
@@ -130,11 +115,7 @@ export default defineConfig({
     '/guide/security-checklist/': '/guide/security-hardening/',
     '/guide/README/': '/guide/',
 
-    // Short alias without trailing slash (GitHub Pages static: no auto-redirect to trailing slash)
-    '/undo': '/cheatsheet/',
-    '/tui': '/cheatsheet/',
-    '/clear': '/cheatsheet/',
-    '/focus': '/cheatsheet/',
+    // Short command alias
     '/focus/': '/cheatsheet/',
 
     // /ultrareview is a deprecated slash-command alias → releases page

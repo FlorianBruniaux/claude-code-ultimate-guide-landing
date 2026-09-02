@@ -258,7 +258,7 @@ const stats = await getSiteStats()
 <script>
   function initCopyButtons() {
     // Skip <pre> already inside expressive-code (Starlight) or already wrapped
-    const pres = document.querySelectorAll('pre:not(.expressive-code pre):not(.code-copy-wrapper pre)')
+    const pres = document.querySelectorAll<HTMLElement>('pre:not(.expressive-code pre):not(.code-copy-wrapper pre)')
     pres.forEach((pre) => {
       if (pre.closest('.expressive-code') || pre.closest('.code-copy-wrapper')) return
 

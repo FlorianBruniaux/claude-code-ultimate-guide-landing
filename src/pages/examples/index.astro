@@ -334,7 +334,7 @@ const jsonLd = [
     import bash from 'highlight.js/lib/languages/bash';
     import powershell from 'highlight.js/lib/languages/powershell';
     import plaintext from 'highlight.js/lib/languages/plaintext';
-    import { EXAMPLES } from '../../data/examples-data';
+    import { EXAMPLES, type ExamplesData } from '../../data/examples-data';
 
     hljs.registerLanguage('markdown', markdown);
     hljs.registerLanguage('json', json);
@@ -346,7 +346,7 @@ const jsonLd = [
     const RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/examples/';
     const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/';
 
-    function slugify(str) {
+    function slugify(str: string) {
       return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
     }
 
@@ -365,66 +365,78 @@ const jsonLd = [
       'securitysuite','modelearningmd','skeletontemplatemd','anchorcatalogmd',
     ]);
 
-    let contentCache = {};
-    let expandedCategories = new Set();
+    const examples: ExamplesData = EXAMPLES;
+    const contentCache: Record<string, string> = {};
+    const expandedCategories = new Set<string>();
 
-    const catalogEl = document.getElementById('catalog');
-    const statsEl = document.getElementById('stats');
-    const searchInput = document.getElementById('searchInput');
-    const noResultsEl = document.getElementById('noResults');
-    const toastEl = document.getElementById('toast');
+    const catalogEl = document.querySelector<HTMLElement>('#catalog');
+    const statsEl = document.querySelector<HTMLElement>('#stats');
+    const searchInput = document.querySelector<HTMLInputElement>('#searchInput');
+    const noResultsEl = document.querySelector<HTMLElement>('#noResults');
+    const toastEl = document.querySelector<HTMLElement>('#toast');
 
-    function getLanguage(filename) {
-      const ext = filename.split('.').pop().toLowerCase();
-      const langMap = { 'md': 'markdown', 'json': 'json', 'yml': 'yaml', 'yaml': 'yaml', 'sh': 'bash', 'ps1': 'powershell', 'gitignore': 'plaintext', 'gitignore-claude': 'plaintext' };
+    if (!catalogEl || !statsEl || !searchInput || !noResultsEl || !toastEl) {
+      throw new Error('Examples catalog markup is incomplete');
+    }
+
+    const catalog = catalogEl;
+    const statsContainer = statsEl;
+    const searchField = searchInput;
+    const noResults = noResultsEl;
+    const toast = toastEl;
+
+    function getLanguage(filename: string) {
+      const ext = filename.split('.').pop()?.toLowerCase() ?? '';
+      const langMap: Record<string, string> = { 'md': 'markdown', 'json': 'json', 'yml': 'yaml', 'yaml': 'yaml', 'sh': 'bash', 'ps1': 'powershell', 'gitignore': 'plaintext', 'gitignore-claude': 'plaintext' };
       return langMap[ext] || 'plaintext';
     }
 
-    function showToast(message) { toastEl.textContent = message; toastEl.classList.add('show'); setTimeout(() => toastEl.classList.remove('show'), 2000); }
+    function showToast(message: string) { toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); }
 
-    async function loadContent(path) {
+    async function loadContent(path: string): Promise<string> {
       if (contentCache[path]) return contentCache[path];
       try { const response = await fetch(RAW_BASE + path); if (!response.ok) throw new Error('Failed to load'); const text = await response.text(); contentCache[path] = text; return text; }
-      catch (error) { return `Error loading file: ${error.message}\n\nTry viewing on GitHub: ${GITHUB_BASE + path}`; }
+      catch (error) { const message = error instanceof Error ? error.message : 'Unknown error'; return `Error loading file: ${message}\n\nTry viewing on GitHub: ${GITHUB_BASE + path}`; }
     }
 
-    async function copyToClipboard(path) {
+    async function copyToClipboard(path: string): Promise<boolean> {
       const content = await loadContent(path);
       try { await navigator.clipboard.writeText(content); showToast('Copied to clipboard!'); return true; }
       catch (error) { showToast('Failed to copy'); return false; }
     }
 
-    function downloadFile(path, filename) {
+    function downloadFile(path: string, filename: string) {
       const url = RAW_BASE + path; const a = document.createElement('a'); a.href = url; a.download = filename; a.target = '_blank';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
     }
 
-    async function toggleView(path, contentEl, viewBtn) {
-      const fileItem = contentEl.closest('.file-item');
+    async function toggleView(path: string, contentEl: HTMLElement, viewBtn: HTMLButtonElement) {
+      const fileItem = contentEl.closest<HTMLElement>('.file-item');
+      if (!fileItem) return;
       const isViewing = fileItem.classList.contains('viewing');
       if (isViewing) { fileItem.classList.remove('viewing'); viewBtn.classList.remove('active'); viewBtn.textContent = 'View'; }
       else {
         viewBtn.textContent = '...';
-        const content = await loadContent(path); const filename = path.split('/').pop(); const language = getLanguage(filename);
+        const content = await loadContent(path); const filename = path.split('/').pop() ?? path; const language = getLanguage(filename);
         contentEl.innerHTML = `<pre><code class="language-${language}">${escapeHtml(content)}</code></pre>`;
-        hljs.highlightElement(contentEl.querySelector('code'));
+        const code = contentEl.querySelector<HTMLElement>('code');
+        if (code) hljs.highlightElement(code);
         fileItem.classList.add('viewing'); viewBtn.classList.add('active'); viewBtn.textContent = 'Hide';
       }
     }
 
-    function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+    function escapeHtml(text: string) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
 
     function renderStats() {
-      let totalFiles = 0; let totalFavorites = 0; let totalCategories = Object.keys(EXAMPLES).length;
-      Object.values(EXAMPLES).forEach(cat => { totalFiles += cat.files.length; totalFavorites += cat.files.filter(f => f.favorite).length; });
-      statsEl.innerHTML = `<div class="stat"><div class="stat-number">${totalFiles}</div><div class="stat-label">Templates</div></div><div class="stat"><div class="stat-number">${totalCategories}</div><div class="stat-label">Categories</div></div><div class="stat"><div class="stat-number" style="color: #f85149;">${totalFavorites}</div><div class="stat-label">Recommended</div></div>`;
+      let totalFiles = 0; let totalFavorites = 0; const totalCategories = Object.keys(examples).length;
+      Object.values(examples).forEach(cat => { totalFiles += cat.files.length; totalFavorites += cat.files.filter(f => f.favorite).length; });
+      statsContainer.innerHTML = `<div class="stat"><div class="stat-number">${totalFiles}</div><div class="stat-label">Templates</div></div><div class="stat"><div class="stat-number">${totalCategories}</div><div class="stat-label">Categories</div></div><div class="stat"><div class="stat-number" style="color: #f85149;">${totalFavorites}</div><div class="stat-label">Recommended</div></div>`;
     }
 
-    function renderCatalog(filter) {
-      filter = filter || '';
+    function renderCatalog(filter = '') {
       const filterLower = filter.toLowerCase();
       let html = ''; let hasResults = false;
-      Object.entries(EXAMPLES).forEach(([categoryId, category]) => {
+      Object.entries(examples).forEach(([categoryId, category]) => {
         const filteredFiles = category.files.filter(file => file.name.toLowerCase().includes(filterLower) || file.description.toLowerCase().includes(filterLower) || categoryId.toLowerCase().includes(filterLower));
         if (filteredFiles.length === 0) return;
         hasResults = true;
@@ -437,49 +449,52 @@ const jsonLd = [
           return '<li class="file-item" data-path="' + file.path + '"><div class="file-header"><div class="file-info"><a class="file-name" href="' + GITHUB_BASE + file.path + '" target="_blank" rel="noopener">' + file.name + '</a>' + (file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : '') + detailsLink + '<div class="file-description">' + file.description + '</div></div><div class="file-actions"><button class="btn btn-view" data-action="view" data-path="' + file.path + '">View</button><button class="btn btn-copy" data-action="copy" data-path="' + file.path + '">Copy</button><button class="btn btn-download" data-action="download" data-path="' + file.path + '" data-filename="' + file.name + '" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>';
         }).join('') + '</ul></div></div>';
       });
-      catalogEl.innerHTML = html;
-      noResultsEl.style.display = hasResults ? 'none' : 'block';
+      catalog.innerHTML = html;
+      noResults.style.display = hasResults ? 'none' : 'block';
     }
 
-    function toggleCategory(categoryId) {
+    function toggleCategory(categoryId: string) {
       if (expandedCategories.has(categoryId)) expandedCategories.delete(categoryId);
       else expandedCategories.add(categoryId);
-      renderCatalog(searchInput.value);
+      renderCatalog(searchField.value);
     }
 
-    async function handleView(path, btn) {
-      const fileItem = btn.closest('.file-item'); const contentEl = fileItem.querySelector('.file-content');
+    async function handleView(path: string, btn: HTMLButtonElement) {
+      const fileItem = btn.closest<HTMLElement>('.file-item');
+      const contentEl = fileItem?.querySelector<HTMLElement>('.file-content');
+      if (!contentEl) return;
       await toggleView(path, contentEl, btn);
     }
 
-    async function handleCopy(path, btn) {
+    async function handleCopy(path: string, btn: HTMLButtonElement) {
       const originalText = btn.textContent; btn.textContent = '...';
       const success = await copyToClipboard(path);
       if (success) { btn.textContent = '✓'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = originalText; btn.classList.remove('copied'); }, 1500); }
       else { btn.textContent = originalText; }
     }
 
-    let debounceTimer;
-    searchInput.addEventListener('input', (e) => { clearTimeout(debounceTimer); debounceTimer = setTimeout(() => renderCatalog(e.target.value), 150); });
+    let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+    searchField.addEventListener('input', () => { if (debounceTimer) clearTimeout(debounceTimer); debounceTimer = setTimeout(() => renderCatalog(searchField.value), 150); });
 
     document.addEventListener('keydown', (e) => {
       const activeTag = document.activeElement?.tagName;
-      const typingElsewhere = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable;
-      if (e.key === '/' && document.activeElement !== searchInput && !typingElsewhere) { e.preventDefault(); searchInput.focus(); }
-      if (e.key === 'Escape') { searchInput.blur(); searchInput.value = ''; renderCatalog(''); }
+      const typingElsewhere = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || (document.activeElement instanceof HTMLElement && document.activeElement.isContentEditable);
+      if (e.key === '/' && document.activeElement !== searchField && !typingElsewhere) { e.preventDefault(); searchField.focus(); }
+      if (e.key === 'Escape') { searchField.blur(); searchField.value = ''; renderCatalog(''); }
     });
 
     function handleHashNavigation() {
       const hash = window.location.hash.replace('#', '');
-      if (hash && EXAMPLES[hash]) {
+      if (hash && examples[hash]) {
         expandedCategories.add(hash); renderCatalog();
         requestAnimationFrame(() => { const categoryEl = document.querySelector(`[data-category="${hash}"]`); if (categoryEl) categoryEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
       }
     }
 
     // Event delegation handles all clicks from dynamically rendered HTML
-    catalogEl.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
+    catalog.addEventListener('click', (e) => {
+      if (!(e.target instanceof Element)) return;
+      const target = e.target;
 
       // Category toggle
       const categoryHeader = target.closest('[data-toggle-category]') as HTMLElement | null;

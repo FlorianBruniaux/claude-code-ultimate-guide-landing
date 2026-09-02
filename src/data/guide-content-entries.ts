@@ -1087,7 +1087,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-roles-23-ai-governance-engineer",
     "title": "23. AI Governance Engineer",
-    "keywords": "23 ai governance engineer ai roles career paths the new engineering landscape evidence label : role family, but less standardized than ai security engineer. current postings at swiss re, state street, deeploy, and dalio family o what they do responsibilities distinction from compliance and security entry paths",
+    "keywords": "23 ai governance engineer ai roles career paths the new engineering landscape evidence label : role family, but less standardized than ai security engineer. current postings at state street, deeploy, and dalio family office use what they do responsibilities distinction from compliance and security entry paths",
     "category": "Core Guides",
     "url": "/guide/ai-roles/#23-ai-governance-engineer",
     "source": "guide"

@@ -125,32 +125,36 @@ export function initSearch(entries: SearchEntry[]): void {
 
   if (!modal || !input || !resultsList) return
 
+  const searchModal = modal
+  const searchInput = input
+  const searchResults = resultsList
+
   let activeIndex = -1
   let debounceTimer: ReturnType<typeof setTimeout>
   let currentResults: SearchEntry[] = []
 
   // ── Modal lifecycle ─────────────────────────────────────────────────────────
   function openModal(): void {
-    modal.removeAttribute('hidden')
-    modal.setAttribute('aria-hidden', 'false')
-    input.value = ''
-    input.focus()
+    searchModal.removeAttribute('hidden')
+    searchModal.setAttribute('aria-hidden', 'false')
+    searchInput.value = ''
+    searchInput.focus()
     activeIndex = -1
     currentResults = []
-    renderEmpty(resultsList!)
+    renderEmpty(searchResults)
     document.body.style.overflow = 'hidden'
   }
 
   function closeModal(): void {
-    modal.setAttribute('hidden', '')
-    modal.setAttribute('aria-hidden', 'true')
+    searchModal.setAttribute('hidden', '')
+    searchModal.setAttribute('aria-hidden', 'true')
     document.body.style.overflow = ''
     activeIndex = -1
   }
 
   // ── Active item management ──────────────────────────────────────────────────
   function setActive(index: number): void {
-    const items = resultsList!.querySelectorAll<HTMLLIElement>('.search-result-item')
+    const items = searchResults.querySelectorAll<HTMLLIElement>('.search-result-item')
     if (items.length === 0) return
 
     const clampedIndex = Math.max(-1, Math.min(index, items.length - 1))
@@ -183,7 +187,7 @@ export function initSearch(entries: SearchEntry[]): void {
 
   // ── Attach result click handlers ────────────────────────────────────────────
   function attachResultHandlers(): void {
-    resultsList!.querySelectorAll<HTMLLIElement>('.search-result-item').forEach(item => {
+    searchResults.querySelectorAll<HTMLLIElement>('.search-result-item').forEach(item => {
       item.addEventListener('click', () => navigate(item))
       item.addEventListener('mouseenter', () => {
         const index = parseInt(item.dataset.index ?? '-1', 10)
@@ -198,29 +202,29 @@ export function initSearch(entries: SearchEntry[]): void {
     currentResults = []
 
     if (!query.trim()) {
-      renderEmpty(resultsList!)
+      renderEmpty(searchResults)
       return
     }
 
     const found = search(entries, query)
     if (found.length === 0) {
-      renderNoResults(resultsList!, query)
+      renderNoResults(searchResults, query)
     } else {
       currentResults = found
-      renderResults(resultsList!, found)
+      renderResults(searchResults, found)
       attachResultHandlers()
     }
   }
 
   // ── Input handler (debounced) ───────────────────────────────────────────────
-  input.addEventListener('input', () => {
+  searchInput.addEventListener('input', () => {
     clearTimeout(debounceTimer)
-    debounceTimer = setTimeout(() => runSearch(input.value.trim()), 50)
+    debounceTimer = setTimeout(() => runSearch(searchInput.value.trim()), 50)
   })
 
   // ── Keyboard navigation ─────────────────────────────────────────────────────
-  input.addEventListener('keydown', (e: KeyboardEvent) => {
-    const items = resultsList!.querySelectorAll<HTMLLIElement>('.search-result-item')
+  searchInput.addEventListener('keydown', (e: KeyboardEvent) => {
+    const items = searchResults.querySelectorAll<HTMLLIElement>('.search-result-item')
 
     switch (e.key) {
       case 'ArrowDown':
@@ -262,9 +266,9 @@ export function initSearch(entries: SearchEntry[]): void {
   document.addEventListener('keydown', (e: KeyboardEvent) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault()
-      modal.hasAttribute('hidden') ? openModal() : closeModal()
+      searchModal.hasAttribute('hidden') ? openModal() : closeModal()
     }
-    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+    if (e.key === 'Escape' && !searchModal.hasAttribute('hidden')) {
       closeModal()
     }
   })
@@ -273,5 +277,5 @@ export function initSearch(entries: SearchEntry[]): void {
   trigger?.addEventListener('click', () => openModal())
 
   // ── Initial state ───────────────────────────────────────────────────────────
-  renderEmpty(resultsList!)
+  renderEmpty(searchResults)
 }

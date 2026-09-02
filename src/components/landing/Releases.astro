@@ -75,9 +75,25 @@ import { releases, breakingChanges } from '../../data/releases'
 </section>
 
 <script>
+    interface ChangelogItem {
+        title: string;
+        description: string;
+    }
+
+    interface ChangelogSection {
+        title: string;
+        items: ChangelogItem[];
+    }
+
+    interface ChangelogRelease {
+        version: string;
+        date: string;
+        sections: ChangelogSection[];
+    }
+
     // Toggle show/hide releases
     document.getElementById('toggleReleasesBtn')?.addEventListener('click', function() {
-        const hiddenCards = document.querySelectorAll('.release-card-hidden');
+        const hiddenCards = document.querySelectorAll<HTMLElement>('.release-card-hidden');
         const isExpanded = hiddenCards.length === 0 || hiddenCards[0].style.display === 'block';
         const totalReleases = document.querySelectorAll('.release-card').length;
         const initialVisible = 6;
@@ -94,12 +110,12 @@ import { releases, breakingChanges } from '../../data/releases'
     // Changelog loading
     const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main';
 
-    function parseChangelog(markdown) {
-        const releases = [];
+    function parseChangelog(markdown: string): ChangelogRelease[] {
+        const releases: ChangelogRelease[] = [];
         const lines = markdown.split('\n');
-        let currentRelease = null;
-        let currentSection = null;
-        let buffer = [];
+        let currentRelease: ChangelogRelease | null = null;
+        let currentSection: string | null = null;
+        let buffer: ChangelogItem[] = [];
 
         for (const line of lines) {
             const releaseMatch = line.match(/^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})/);
@@ -140,25 +156,25 @@ import { releases, breakingChanges } from '../../data/releases'
         return releases;
     }
 
-    function getChangelogAnchor(version, date) {
+    function getChangelogAnchor(version: string, date: string) {
         const anchor = `${version}---${date}`.replace(/\./g, '');
         return `https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#${anchor}`;
     }
 
-    function formatDate(dateStr) {
+    function formatDate(dateStr: string) {
         const date = new Date(dateStr);
         return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
     }
 
-    function getSectionIcon(title) {
-        const icons = { 'Added': '\u2728', 'Changed': '\uD83D\uDD04', 'Fixed': '\uD83D\uDC1B', 'Removed': '\uD83D\uDDD1\uFE0F', 'Security': '\uD83D\uDD12', 'Deprecated': '\u26A0\uFE0F', 'Internal': '\uD83D\uDD27' };
+    function getSectionIcon(title: string) {
+        const icons: Record<string, string> = { 'Added': '\u2728', 'Changed': '\uD83D\uDD04', 'Fixed': '\uD83D\uDC1B', 'Removed': '\uD83D\uDDD1\uFE0F', 'Security': '\uD83D\uDD12', 'Deprecated': '\u26A0\uFE0F', 'Internal': '\uD83D\uDD27' };
         for (const [key, icon] of Object.entries(icons)) {
             if (title.startsWith(key)) return icon;
         }
         return '\uD83D\uDCDD';
     }
 
-    function renderChangelog(releases, maxReleases = 3) {
+    function renderChangelog(releases: ChangelogRelease[], maxReleases = 3) {
         const container = document.getElementById('changelog-container');
         if (!container) return;
         const displayReleases = releases.slice(0, maxReleases);

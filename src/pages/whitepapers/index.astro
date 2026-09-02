@@ -337,7 +337,7 @@ const profiles = [
 
     <section class="section section-related" aria-labelledby="related-title">
       <a href="/cheatsheets/" class="related-card">
-        <span class="featured-badge-wp">{stats.recapCardCount} RECAP CARDS</span>
+        <span class="featured-badge-wp">{stats.cheatsheetCount} RECAP CARDS</span>
         <span class="related-copy">
           <strong id="related-title">Need something faster?</strong>
           <span>Open a focused card for the command, pattern, or workflow you need now.</span>
@@ -983,6 +983,9 @@ const profiles = [
   const urlParams = new URLSearchParams(window.location.search)
   const utmSource = urlParams.get('utm_source') || document.referrer || 'direct'
   const utmCampaign = urlParams.get('utm_campaign') || null
+  const analyticsWindow = window as Window & {
+    gtag?: (command: 'event', eventName: string, payload: Record<string, string>) => void
+  }
 
   // Handle form submission
   document.querySelectorAll<HTMLFormElement>('.subscribe-form').forEach(form => {
@@ -1053,8 +1056,8 @@ const profiles = [
         // Mark as subscriber: unlocks recap cards automatically
         try { localStorage.setItem('cc-subscriber', '1') } catch {}
         // GA event
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'ebook_subscribe', {
+        if (typeof analyticsWindow.gtag === 'function') {
+          analyticsWindow.gtag('event', 'ebook_subscribe', {
             guide: filename,
             format: isEpub ? 'epub' : 'pdf',
             source: utmSource,

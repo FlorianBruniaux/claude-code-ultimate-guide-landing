@@ -824,24 +824,27 @@ const jsonLd = [
   const btnRight = document.getElementById('nav-arrow-right')
 
   if (inner && btnLeft && btnRight) {
+    const navInner = inner
+    const leftButton = btnLeft
+    const rightButton = btnRight
     const SCROLL_AMOUNT = 240
 
     function updateArrows() {
-      const atStart = inner.scrollLeft <= 4
-      const atEnd = inner.scrollLeft >= inner.scrollWidth - inner.clientWidth - 4
-      btnLeft.dataset.hidden = atStart ? 'true' : 'false'
-      btnRight.dataset.hidden = atEnd ? 'true' : 'false'
+      const atStart = navInner.scrollLeft <= 4
+      const atEnd = navInner.scrollLeft >= navInner.scrollWidth - navInner.clientWidth - 4
+      leftButton.dataset.hidden = atStart ? 'true' : 'false'
+      rightButton.dataset.hidden = atEnd ? 'true' : 'false'
     }
 
-    btnLeft.addEventListener('click', () => {
-      inner.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })
+    leftButton.addEventListener('click', () => {
+      navInner.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })
     })
 
-    btnRight.addEventListener('click', () => {
-      inner.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })
+    rightButton.addEventListener('click', () => {
+      navInner.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })
     })
 
-    inner.addEventListener('scroll', updateArrows, { passive: true })
+    navInner.addEventListener('scroll', updateArrows, { passive: true })
     updateArrows()
   }
 </script>
