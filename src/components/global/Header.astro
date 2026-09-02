@@ -4,11 +4,12 @@ import {
   getActiveNavigation,
   guideNavigationSection,
   navigationSections,
+  type HeaderNavigationSection,
 } from '../../data/header-navigation'
 
 const currentPath = Astro.url.pathname
 const activeNavigation = getActiveNavigation(currentPath)
-const headerNavigationSections = [guideNavigationSection, ...navigationSections]
+const headerNavigationSections: HeaderNavigationSection[] = [guideNavigationSection, ...navigationSections]
 
 function isLinkActive(href: string, external = false) {
   if (external) return false
@@ -95,6 +96,19 @@ function isLinkActive(href: string, external = false) {
                   </div>
                 ))}
               </div>
+              {section.galaxy && (
+                <aside class="intent-galaxy" aria-label={section.galaxy.label}>
+                  <p class="intent-galaxy-label">{section.galaxy.label}</p>
+                  <div class="intent-galaxy-projects">
+                    {section.galaxy.projects.map((project) => (
+                      <a href={project.href} target="_blank" rel="noopener noreferrer" class="intent-galaxy-project">
+                        <span class="intent-galaxy-project-title">{project.label} <span aria-hidden="true">↗</span></span>
+                        <span class="intent-galaxy-facets">{project.facets.join(' · ')}</span>
+                      </a>
+                    ))}
+                  </div>
+                </aside>
+              )}
             </section>
           </details>
         ))}
@@ -409,6 +423,57 @@ function isLinkActive(href: string, external = false) {
     gap: 0.9rem;
   }
 
+  .intent-galaxy {
+    margin-top: 0.8rem;
+    padding: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+    border-radius: var(--border-radius);
+    background: color-mix(in srgb, var(--accent) 5%, var(--bg-secondary));
+  }
+
+  .intent-galaxy-label {
+    margin: 0 0 0.5rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+  }
+
+  .intent-galaxy-projects {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .intent-galaxy-project {
+    display: block;
+    min-height: 44px;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.4rem;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .intent-galaxy-project:hover,
+  .intent-galaxy-project:focus-visible {
+    background: var(--bg-tertiary);
+  }
+
+  .intent-galaxy-project-title {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .intent-galaxy-facets {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
   .intent-group {
     min-width: 0;
   }
@@ -595,6 +660,16 @@ function isLinkActive(href: string, external = false) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.75rem;
       padding-top: 0.75rem;
+    }
+
+    .intent-galaxy {
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.75rem 0.75rem;
+    }
+
+    .intent-galaxy-projects {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.45rem;
     }
 
     .intent-panel-single .intent-panel-grid {

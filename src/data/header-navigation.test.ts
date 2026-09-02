@@ -123,3 +123,60 @@ test('uses destination-specific anchor text for priority menu links', async () =
   assert.equal(labelsByHref.get('/guide/agent-harness/'), 'Agent Harness Engineering')
   assert.equal(labelsByHref.get('/compare/'), 'AI Coding Tools Comparison')
 })
+
+test('adds three canonical galaxy projects only to Build, Scale, and Resources', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const { PERSONAL_PROJECTS } = await import('./personal-projects.generated.ts')
+  const expected = {
+    build: ['ctxharness', 'flow-lean', 'cc-copilot-bridge'],
+    scale: ['cc-skill-usage', 'ccboard', 'agentsec-triage'],
+    resources: ['cc-sessions', 'rtk', 'claude-code-plugins'],
+  } as const
+  const canonicalById = new Map(PERSONAL_PROJECTS.map(project => [project.id, project]))
+
+  for (const section of navigationSections) {
+    const galaxy = 'galaxy' in section ? section.galaxy : undefined
+    const expectedIds = section.id in expected
+      ? expected[section.id as keyof typeof expected]
+      : undefined
+
+    if (!expectedIds) {
+      assert.equal(galaxy, undefined, `${section.id} must not carry an unrelated galaxy block`)
+      continue
+    }
+
+    assert.ok(galaxy)
+    assert.equal(galaxy.label, "From Florian's open-source galaxy")
+    assert.deepEqual(galaxy.projects.map(project => project.id), expectedIds)
+    assert.ok(galaxy.projects.length <= 3)
+    assert.equal(new Set(galaxy.projects.map(project => project.id)).size, galaxy.projects.length)
+
+    for (const project of galaxy.projects) {
+      assert.equal(project.href, canonicalById.get(project.id)?.href)
+    }
+  }
+})
+
+test('puts skill usage first in Scale with decision-ready facets', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const scale = navigationSections.find(section => section.id === 'scale')
+
+  assert.ok(scale && 'galaxy' in scale && scale.galaxy)
+  assert.deepEqual(scale.galaxy.projects[0], {
+    id: 'cc-skill-usage',
+    label: 'cc-skill-usage',
+    href: 'https://github.com/FlorianBruniaux/cc-skill-usage',
+    facets: ['Skill Analytics', 'Local-first', 'Observability'],
+  })
+})
+
+test('links Team Adoption directly to the shared Start Build Scale explanation', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const scale = navigationSections.find(section => section.id === 'scale')
+  const adoption = scale?.groups.flatMap(group => group.links).find(link => link.label === 'Team Adoption')
+
+  assert.equal(
+    adoption?.href,
+    '/guide/adoption-approaches/#start-build-scale-a-practical-navigation-layer',
+  )
+})

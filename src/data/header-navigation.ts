@@ -1,4 +1,7 @@
 import { guideHighlights } from './guide-navigation.mjs'
+import { PERSONAL_PROJECTS } from './personal-projects.generated.ts'
+
+type PersonalProjectId = typeof PERSONAL_PROJECTS[number]['id']
 
 export interface HeaderNavigationLink {
   href: string
@@ -13,6 +16,13 @@ export interface HeaderNavigationGroup {
   links: HeaderNavigationLink[]
 }
 
+export interface HeaderNavigationProject {
+  id: PersonalProjectId
+  label: string
+  href: string
+  facets: string[]
+}
+
 export interface HeaderNavigationSection {
   id: 'guide' | 'start' | 'build' | 'scale' | 'resources' | 'updates'
   label: string
@@ -22,6 +32,26 @@ export interface HeaderNavigationSection {
     label: string
   }
   groups: HeaderNavigationGroup[]
+  galaxy?: {
+    label: "From Florian's open-source galaxy"
+    projects: HeaderNavigationProject[]
+  }
+}
+
+function galaxyProjects(
+  specs: Array<{ id: PersonalProjectId; facets: string[] }>,
+): HeaderNavigationProject[] {
+  return specs.map(({ id, facets }) => {
+    const project = PERSONAL_PROJECTS.find(candidate => candidate.id === id)
+    if (!project) throw new Error(`Unknown personal project: ${id}`)
+
+    return {
+      id,
+      label: project.title,
+      href: project.href,
+      facets,
+    }
+  })
 }
 
 export const navigationSections: HeaderNavigationSection[] = [
@@ -79,6 +109,14 @@ export const navigationSections: HeaderNavigationSection[] = [
         ],
       },
     ],
+    galaxy: {
+      label: "From Florian's open-source galaxy",
+      projects: galaxyProjects([
+        { id: 'ctxharness', facets: ['Context Engineering', 'Harness', 'Validation'] },
+        { id: 'flow-lean', facets: ['Context Engineering', 'Lean Output'] },
+        { id: 'cc-copilot-bridge', facets: ['Provider Routing', 'Local AI'] },
+      ]),
+    },
   },
   {
     id: 'scale',
@@ -100,7 +138,7 @@ export const navigationSections: HeaderNavigationSection[] = [
         label: 'Organization & Economics',
         links: [
           { href: '/guide/enterprise-governance/', label: 'Enterprise Governance', description: 'Define usage charters, approvals, and risk tiers.' },
-          { href: '/guide/adoption-approaches/', label: 'Team Adoption', description: 'Plan rollout, trust calibration, and shared practice.' },
+          { href: '/guide/adoption-approaches/#start-build-scale-a-practical-navigation-layer', label: 'Team Adoption', description: 'Connect controlled first use, repeatable workflows, and governed operation.' },
           { href: '/team-metrics/', label: 'Team Metrics', description: 'Measure outcomes without turning proxies into productivity.' },
           { href: '/guide/team-knowledge-base/', label: 'Team Knowledge', description: 'Preserve and share operational context across teams.' },
           { href: '/guide/subscription-strategy/', label: 'Subscription Strategy', description: 'Choose seats, APIs, gateways, and provider portfolios.' },
@@ -108,6 +146,14 @@ export const navigationSections: HeaderNavigationSection[] = [
         ],
       },
     ],
+    galaxy: {
+      label: "From Florian's open-source galaxy",
+      projects: galaxyProjects([
+        { id: 'cc-skill-usage', facets: ['Skill Analytics', 'Local-first', 'Observability'] },
+        { id: 'ccboard', facets: ['Observability', 'Session Analytics'] },
+        { id: 'agentsec-triage', facets: ['Security', 'Supply Chain', 'Validation'] },
+      ]),
+    },
   },
   {
     id: 'resources',
@@ -136,6 +182,14 @@ export const navigationSections: HeaderNavigationSection[] = [
         ],
       },
     ],
+    galaxy: {
+      label: "From Florian's open-source galaxy",
+      projects: galaxyProjects([
+        { id: 'cc-sessions', facets: ['Local-first', 'Session Search'] },
+        { id: 'rtk', facets: ['Context Engineering', 'Token Efficiency'] },
+        { id: 'claude-code-plugins', facets: ['Skills', 'Hooks', 'Agents'] },
+      ]),
+    },
   },
   {
     id: 'updates',
