@@ -4,6 +4,7 @@ import EcosystemProjectStrip from '../ecosystem/EcosystemProjectStrip.astro'
 import { ecosystemMenuProjects } from '../../data/ecosystem-discovery'
 import {
   getActiveNavigation,
+  getHeaderActionLinks,
   guideNavigationSection,
   navigationSections,
 } from '../../data/header-navigation'
@@ -11,6 +12,8 @@ import {
 const currentPath = Astro.url.pathname
 const activeNavigation = getActiveNavigation(currentPath)
 const headerNavigationSections = [guideNavigationSection, ...navigationSections]
+const desktopHeaderActions = getHeaderActionLinks('desktop')
+const mobileHeaderActions = getHeaderActionLinks('mobile')
 
 function isLinkActive(href: string, external = false) {
   if (external) return false
@@ -122,6 +125,19 @@ function isLinkActive(href: string, external = false) {
             </details>
           ))}
 
+          {mobileHeaderActions.map((link) => (
+            <a
+              class="sponsor-link sponsor-link-mobile"
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              <span>{link.label}</span>
+              {link.external && <span aria-hidden="true">↗</span>}
+              {link.external && <span class="sr-only">(opens in a new tab)</span>}
+            </a>
+          ))}
+
           <a class="mobile-github-link" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener noreferrer">
             GitHub repository <span aria-hidden="true">↗</span>
           </a>
@@ -129,6 +145,19 @@ function isLinkActive(href: string, external = false) {
       </div>
 
       <div class="header-actions flex items-center gap-1.5">
+        {desktopHeaderActions.map((link) => (
+          <a
+            class="sponsor-link sponsor-link-desktop"
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            <span>{link.label}</span>
+            {link.external && <span aria-hidden="true">↗</span>}
+            {link.external && <span class="sr-only">(opens in a new tab)</span>}
+          </a>
+        ))}
+
         <ThemeToggle />
 
         <button
@@ -395,6 +424,39 @@ function isLinkActive(href: string, external = false) {
 
   .header-actions {
     min-width: max-content;
+  }
+
+  .sponsor-link {
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
+    border-radius: var(--border-radius);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+  }
+
+  .sponsor-link:hover,
+  .sponsor-link:focus-visible {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--text-primary);
+  }
+
+  .sponsor-link-desktop {
+    display: none;
+  }
+
+  .sponsor-link-mobile {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 0.75rem 0.25rem;
+    padding-inline: 0.75rem;
   }
 
   .search-trigger,
@@ -781,8 +843,15 @@ function isLinkActive(href: string, external = false) {
     }
 
     .mobile-only,
+    .sponsor-link-mobile,
     .mobile-github-link {
       display: none;
+    }
+
+    .sponsor-link-desktop {
+      display: inline-flex;
+      padding-inline: 0.75rem;
+      white-space: nowrap;
     }
 
     .mobile-menu-toggle {
@@ -798,6 +867,7 @@ function isLinkActive(href: string, external = false) {
 
   @media (prefers-reduced-motion: reduce) {
     .site-brand,
+    .sponsor-link,
     .top-level-link,
     .top-level-link::after,
     .nav-chevron,

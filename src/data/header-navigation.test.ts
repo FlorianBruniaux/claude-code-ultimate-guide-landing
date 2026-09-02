@@ -123,3 +123,20 @@ test('uses destination-specific anchor text for priority menu links', async () =
   assert.equal(labelsByHref.get('/guide/agent-harness/'), 'Agent Harness Engineering')
   assert.equal(labelsByHref.get('/compare/'), 'AI Coding Tools Comparison')
 })
+
+test('exposes Sponsor as an external action on desktop and mobile', async () => {
+  const navigation = await import('./header-navigation.ts')
+
+  assert.equal(typeof navigation.getHeaderActionLinks, 'function')
+
+  const expected = [
+    {
+      href: 'https://www.florian.bruniaux.com/sponsor/',
+      label: 'Sponsor',
+      external: true,
+    },
+  ]
+
+  assert.deepEqual(navigation.getHeaderActionLinks('desktop'), expected)
+  assert.deepEqual(navigation.getHeaderActionLinks('mobile'), expected)
+})

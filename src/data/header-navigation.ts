@@ -24,6 +24,30 @@ export interface HeaderNavigationSection {
   groups: HeaderNavigationGroup[]
 }
 
+export type HeaderActionSurface = 'desktop' | 'mobile'
+
+interface HeaderActionLink {
+  href: string
+  label: string
+  external: boolean
+  surfaces: HeaderActionSurface[]
+}
+
+const headerActionLinks: HeaderActionLink[] = [
+  {
+    href: 'https://www.florian.bruniaux.com/sponsor/',
+    label: 'Sponsor',
+    external: true,
+    surfaces: ['desktop', 'mobile'],
+  },
+]
+
+export function getHeaderActionLinks(surface: HeaderActionSurface) {
+  return headerActionLinks
+    .filter((link) => link.surfaces.includes(surface))
+    .map(({ surfaces: _surfaces, ...link }) => link)
+}
+
 export const navigationSections: HeaderNavigationSection[] = [
   {
     id: 'start',
