@@ -1,0 +1,79 @@
+src/pages/projects/index.astro
+  s_16e4b934abc40a::t_f7fac6901a1210 39-48
+src/components/landing/RelatedProjects.astro
+  s_16e4b934abc40a::t_5e846615e3c539 2,10,12,17-26,44,51
+src/components/global/Header.astro
+  s_7eeea622d9967c::t_5d41d72af12a70 3-4,100-105
+src/components/global/Analytics.astro
+  s_c30c5e2b88e8c1::t_2c9eaa3a4532fa 1-17
+src/components/starlight/Head.astro
+  s_f7e0beb40997c4::t_764d3fae5ac142 4,55
+src/scripts/ecosystem-analytics.test.ts
+  s_bdb2613b4f3398::t_c4eb799efad27f 1-117
+src/scripts/ecosystem-analytics.ts
+  s_bdb2613b4f3398::t_511233f325eba4 1-49
+src/data/ecosystem-discovery.test.ts
+  s_7eeea622d9967c::t_d52fef217be639 1-33
+src/components/ecosystem/EcosystemProjectStrip.astro
+  s_7eeea622d9967c::t_70193dfdea9b7c 1-140
+CHANGELOG.md
+  s_f7e0beb40997c4::t_2ffb6d3a80c0bf 9
+src/layouts/Layout.astro
+  s_f7e0beb40997c4::t_96646c7049ac02 9,183
+src/components/landing/HeroBanner.astro
+  s_f7e0beb40997c4::t_17b113ccc9e7de 18-20,22-26,29-51,86-96,99,110,130-134,170-171,173-178,204-221
+src/data/homepage-content.test.ts
+  s_16e4b934abc40a::t_9bd99ee977c277 56-57,61
+src/data/ecosystem-discovery.ts
+  s_c30c5e2b88e8c1::t_791747048b4eb7 1-36
+src/data/personal-projects.generated.ts
+  s_f7e0beb40997c4::t_7e9aafd2a96579 42-44,60-62,78-80,96-98,114-116,132-134,150-152,168-170,176,186-188,204-206,222-224,240-242,258-260,277-278,294-296,312
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "87b13b2fc8bd0e9c24baa15cf5844a2e0ac53ceb",
+  "prompts": {},
+  "sessions": {
+    "s_16e4b934abc40a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061a7-d436-7ce2-9bea-059bc33d16db",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7eeea622d9967c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061a8-153e-7222-8743-1f2549b3510e",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bdb2613b4f3398": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05eba-a063-7eb2-8f50-a7bad8a04d04",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_c30c5e2b88e8c1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf8f39c7-9963-4a69-a77c-bd8e38fc55ab",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f7e0beb40997c4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06181-fe66-73a1-b8d1-ae8c70466d18",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
