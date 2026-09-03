@@ -126,7 +126,7 @@ function isLinkActive(href: string, external = false) {
 
           {headerNavigationActions.map((link) => (
             <a
-              class="sponsor-link sponsor-link-navigation"
+              class="header-support-action header-support-action-navigation"
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
@@ -412,7 +412,7 @@ function isLinkActive(href: string, external = false) {
     min-width: max-content;
   }
 
-  .sponsor-link {
+  .header-support-action {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
@@ -427,14 +427,14 @@ function isLinkActive(href: string, external = false) {
     transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
   }
 
-  .sponsor-link:hover,
-  .sponsor-link:focus-visible {
+  .header-support-action:hover,
+  .header-support-action:focus-visible {
     border-color: var(--accent);
     background: color-mix(in srgb, var(--accent) 14%, transparent);
     color: var(--text-primary);
   }
 
-  .sponsor-link-navigation {
+  .header-support-action-navigation {
     display: flex;
     justify-content: space-between;
     margin-block: 0.75rem 0.25rem;
@@ -830,7 +830,7 @@ function isLinkActive(href: string, external = false) {
       display: none;
     }
 
-    .sponsor-link-navigation {
+    .header-support-action-navigation {
       display: inline-flex;
       align-self: center;
       margin-block: 0;
@@ -851,7 +851,7 @@ function isLinkActive(href: string, external = false) {
 
   @media (prefers-reduced-motion: reduce) {
     .site-brand,
-    .sponsor-link,
+    .header-support-action,
     .top-level-link,
     .top-level-link::after,
     .nav-chevron,
