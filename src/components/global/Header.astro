@@ -412,32 +412,35 @@ function isLinkActive(href: string, external = false) {
     min-width: max-content;
   }
 
-  .header-support-action {
+  a.header-support-action.header-support-action-navigation {
     align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
+    justify-content: space-between;
+    gap: 0.3rem;
     min-height: 44px;
-    border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
-    border-radius: var(--border-radius);
-    background: color-mix(in srgb, var(--accent) 7%, transparent);
-    color: var(--accent);
-    font-size: 0.82rem;
-    font-weight: 700;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    font-weight: 600;
     text-decoration: none;
-    transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+    transition: color 160ms ease;
   }
 
-  .header-support-action:hover,
-  .header-support-action:focus-visible {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 14%, transparent);
-    color: var(--text-primary);
+  a.header-support-action.header-support-action-navigation:hover,
+  a.header-support-action.header-support-action-navigation:focus-visible {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a.header-support-action.header-support-action-navigation > span[aria-hidden='true'] {
+    font-size: 0.78em;
+    opacity: 0.72;
   }
 
   .header-support-action-navigation {
     display: flex;
     justify-content: space-between;
-    margin-block: 0.75rem 0.25rem;
+    margin-block: 0.25rem;
     padding-inline: 0.75rem;
   }
 
@@ -830,11 +833,12 @@ function isLinkActive(href: string, external = false) {
       display: none;
     }
 
-    .header-support-action-navigation {
+    a.header-support-action.header-support-action-navigation {
       display: inline-flex;
-      align-self: center;
+      align-self: flex-start;
+      justify-content: center;
       margin-block: 0;
-      padding-inline: 0.75rem;
+      padding-inline: clamp(0.3rem, 0.55vw, 0.55rem);
       white-space: nowrap;
     }
 
