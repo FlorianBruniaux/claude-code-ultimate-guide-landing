@@ -1,0 +1,19 @@
+src/components/global/Header.astro
+  s_ebd711f211e8ec::t_708a7a490192bb 415,417-418,420-430,435-437,443,836,838-839,841
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "ed756b1ace511fa55cb08a2d631070d8c0e5edf3",
+  "prompts": {},
+  "sessions": {
+    "s_ebd711f211e8ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99243c3b-3a95-4ba9-b2c0-f0aa82b2bf5d",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
