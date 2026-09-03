@@ -24,7 +24,7 @@ export interface HeaderNavigationSection {
   groups: HeaderNavigationGroup[]
 }
 
-export type HeaderActionSurface = 'desktop' | 'mobile'
+export type HeaderActionSurface = 'navigation'
 
 interface HeaderActionLink {
   href: string
@@ -38,7 +38,7 @@ const headerActionLinks: HeaderActionLink[] = [
     href: 'https://www.florian.bruniaux.com/sponsor/',
     label: 'Sponsor',
     external: true,
-    surfaces: ['desktop', 'mobile'],
+    surfaces: ['navigation'],
   },
 ]
 

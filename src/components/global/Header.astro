@@ -12,8 +12,7 @@ import {
 const currentPath = Astro.url.pathname
 const activeNavigation = getActiveNavigation(currentPath)
 const headerNavigationSections = [guideNavigationSection, ...navigationSections]
-const desktopHeaderActions = getHeaderActionLinks('desktop')
-const mobileHeaderActions = getHeaderActionLinks('mobile')
+const headerNavigationActions = getHeaderActionLinks('navigation')
 
 function isLinkActive(href: string, external = false) {
   if (external) return false
@@ -125,9 +124,9 @@ function isLinkActive(href: string, external = false) {
             </details>
           ))}
 
-          {mobileHeaderActions.map((link) => (
+          {headerNavigationActions.map((link) => (
             <a
-              class="sponsor-link sponsor-link-mobile"
+              class="sponsor-link sponsor-link-navigation"
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
@@ -145,19 +144,6 @@ function isLinkActive(href: string, external = false) {
       </div>
 
       <div class="header-actions flex items-center gap-1.5">
-        {desktopHeaderActions.map((link) => (
-          <a
-            class="sponsor-link sponsor-link-desktop"
-            href={link.href}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener noreferrer' : undefined}
-          >
-            <span>{link.label}</span>
-            {link.external && <span aria-hidden="true">↗</span>}
-            {link.external && <span class="sr-only">(opens in a new tab)</span>}
-          </a>
-        ))}
-
         <ThemeToggle />
 
         <button
@@ -448,11 +434,7 @@ function isLinkActive(href: string, external = false) {
     color: var(--text-primary);
   }
 
-  .sponsor-link-desktop {
-    display: none;
-  }
-
-  .sponsor-link-mobile {
+  .sponsor-link-navigation {
     display: flex;
     justify-content: space-between;
     margin-block: 0.75rem 0.25rem;
@@ -844,13 +826,14 @@ function isLinkActive(href: string, external = false) {
     }
 
     .mobile-only,
-    .sponsor-link-mobile,
     .mobile-github-link {
       display: none;
     }
 
-    .sponsor-link-desktop {
+    .sponsor-link-navigation {
       display: inline-flex;
+      align-self: center;
+      margin-block: 0;
       padding-inline: 0.75rem;
       white-space: nowrap;
     }
