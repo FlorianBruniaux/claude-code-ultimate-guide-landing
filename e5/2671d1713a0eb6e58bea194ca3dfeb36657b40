@@ -1,0 +1,16 @@
+scripts/lib/seo-contracts.mjs
+  h_07916ece6468dd 3,70-80,123
+src/data/seo-contracts.test.ts
+  h_07916ece6468dd 75-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e52671d1713a0eb6e58bea194ca3dfeb36657b40",
+  "prompts": {},
+  "humans": {
+    "h_07916ece6468dd": {
+      "author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
