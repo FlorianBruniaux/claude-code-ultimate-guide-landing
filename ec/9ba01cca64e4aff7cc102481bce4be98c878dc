@@ -1,0 +1,19 @@
+src/data/seo-contracts.test.ts
+  s_09d9cb0145f609::t_6c70812f97f440 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "ec9ba01cca64e4aff7cc102481bce4be98c878dc",
+  "prompts": {},
+  "sessions": {
+    "s_09d9cb0145f609": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a067aa-fca5-7e33-8bc1-60a9a6437e67",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
