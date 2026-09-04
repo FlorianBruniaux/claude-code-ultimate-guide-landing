@@ -16,7 +16,7 @@ Correct every SEO defect from the 2026-09-04 audit that can be changed and verif
 ## Local deliverables
 
 1. Generated guide pages expose one H1. The generator removes the leading document H1 after using it as a metadata fallback.
-2. The five audited guide pages receive query-aligned titles of 30 to 60 characters and descriptions of 50 to 160 characters.
+2. The five audited guide pages receive query-aligned titles of 30 to 60 rendered characters and descriptions of 50 to 160 characters. Starlight appends ` | Claude Code Guide`, so the source-title ledger uses `Claude Code Agent Harness Engineering`, `Claude Code Architecture & Agent Loop`, `Claude Code Privacy & Data Retention`, `Claude Code Hooks: 30 Event Reference`, and `Claude Code Tools: RTK, ccusage & GUIs`. Their source lengths are 36 to 38 characters and their rendered lengths are 56 to 58 characters.
 3. `/releases/`, `/glossary/`, and `/context-engineering/` receive shorter query-aligned metadata. `/releases/` keeps the current version and release date in initial HTML.
 4. Search data and generated guide links use `/releases/`, never `/guide/claude-code-releases/`, except for the redirect declaration and tests.
 5. The first six internal-link targets receive descriptive body links from semantically related pages. Links may not be placed only in global navigation or the footer.

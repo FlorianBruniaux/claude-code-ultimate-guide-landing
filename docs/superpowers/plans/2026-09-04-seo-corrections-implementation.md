@@ -83,27 +83,29 @@ Define these exact metadata values:
 ```js
 export const GUIDE_SEO_OVERRIDES = {
   'guide/core/architecture.md': {
-    title: 'Claude Code Architecture: Agent Loop & Tools',
+    title: 'Claude Code Architecture & Agent Loop',
     description: 'How Claude Code runs its model-tool loop, manages context, executes tools, and isolates subagents, with sourced architecture notes.',
   },
   'guide/core/agent-harness.md': {
-    title: 'Claude Code Agent Harness: Architecture & Evaluation',
+    title: 'Claude Code Agent Harness Engineering',
     description: 'Design and evaluate the context, policy, tool, verification, observability, and recovery layers around Claude Code agents.',
   },
   'guide/security/data-privacy.md': {
-    title: 'Claude Code Privacy: Data Usage & Retention',
+    title: 'Claude Code Privacy & Data Retention',
     description: 'What Claude Code sends to Anthropic, retention by plan, training controls, MCP exposure, and safeguards for sensitive data.',
   },
   'guide/core/hooks-events-reference.md': {
-    title: 'Claude Code Hooks: 30 Events, Matchers & Schemas',
+    title: 'Claude Code Hooks: 30 Event Reference',
     description: 'Reference for 30 Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples.',
   },
   'guide/ecosystem/third-party-tools.md': {
-    title: 'Claude Code Tools: RTK, ccusage, GUIs & More',
+    title: 'Claude Code Tools: RTK, ccusage & GUIs',
     description: 'Compare Claude Code GUIs, TUIs, configuration managers, token trackers, RTK, lean-ctx, ccusage, and other community tools.',
   },
 }
 ```
+
+Rendered-title decision: Starlight appends ` | Claude Code Guide` to each generated guide title. The five source titles above are therefore intentionally 36 to 38 characters so the rendered `<title>` values remain 56 to 58 characters and satisfy the 30 to 60 character contract.
 
 `transformGuideMarkdown` must replace only the leading frontmatter `title` and `description` for listed paths, then remove only the first document H1 immediately after frontmatter. It must leave all later headings and fenced examples unchanged.
 

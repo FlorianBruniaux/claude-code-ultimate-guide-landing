@@ -226,6 +226,7 @@ export default defineConfig({
         if (item.url.includes('/ultimate-guidefr/')) return undefined
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
+        if (normalizedUrl === 'https://cc.bruniaux.com/guide/claude-code-releases/') return undefined
         const lastmod = PAGE_DATES[normalizedUrl] ?? new Date().toISOString().split('T')[0]
 
         if (item.url === 'https://cc.bruniaux.com/') {

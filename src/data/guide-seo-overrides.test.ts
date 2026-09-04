@@ -21,23 +21,23 @@ test('removes only the leading document H1 after frontmatter', () => {
 test('uses the exact audited metadata values for guide pages', () => {
   assert.deepEqual(GUIDE_SEO_OVERRIDES, {
     'guide/core/architecture.md': {
-      title: 'Claude Code Architecture: Agent Loop & Tools',
+      title: 'Claude Code Architecture & Agent Loop',
       description: 'How Claude Code runs its model-tool loop, manages context, executes tools, and isolates subagents, with sourced architecture notes.',
     },
     'guide/core/agent-harness.md': {
-      title: 'Claude Code Agent Harness: Architecture & Evaluation',
+      title: 'Claude Code Agent Harness Engineering',
       description: 'Design and evaluate the context, policy, tool, verification, observability, and recovery layers around Claude Code agents.',
     },
     'guide/security/data-privacy.md': {
-      title: 'Claude Code Privacy: Data Usage & Retention',
+      title: 'Claude Code Privacy & Data Retention',
       description: 'What Claude Code sends to Anthropic, retention by plan, training controls, MCP exposure, and safeguards for sensitive data.',
     },
     'guide/core/hooks-events-reference.md': {
-      title: 'Claude Code Hooks: 30 Events, Matchers & Schemas',
+      title: 'Claude Code Hooks: 30 Event Reference',
       description: 'Reference for 30 Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples.',
     },
     'guide/ecosystem/third-party-tools.md': {
-      title: 'Claude Code Tools: RTK, ccusage, GUIs & More',
+      title: 'Claude Code Tools: RTK, ccusage & GUIs',
       description: 'Compare Claude Code GUIs, TUIs, configuration managers, token trackers, RTK, lean-ctx, ccusage, and other community tools.',
     },
   })
