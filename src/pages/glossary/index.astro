@@ -2,13 +2,13 @@
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, groupByLetter, categoryColors } from '../../data/glossary-data'
 import { normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
+import { landingSeo } from '../../data/seo-editorial-contract.mjs'
 
-const description = 'Definitions for every Claude Code concept: hooks (PreToolUse, PostToolUse), MCP servers, slash commands, sub-agents, CLAUDE.md, permission modes, context window, and 130+ more terms.'
+const { title, description } = landingSeo.glossary
 
 const grouped = groupByLetter(glossaryTerms)
 const letters = Array.from(grouped.keys()).sort()
 const totalTerms = glossaryTerms.length
-const title = `Claude Code Glossary: ${totalTerms} Terms Defined (Hooks, MCP, Agents, Slash Commands)`
 
 const jsonLd = [
   {

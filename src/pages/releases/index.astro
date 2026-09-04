@@ -2,48 +2,50 @@
 import Layout from '../../layouts/Layout.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { releases, breakingChanges } from '../../data/releases'
+import { landingSeo, releaseDateToIsoDate } from '../../data/seo-editorial-contract.mjs'
 
-const title = 'Claude Code Version History: Env Vars, Config Flags & Releases'
-const description = 'Complete Claude Code version history with environment variables reference. Find CLAUDE_CODE_USE_MANTLE, CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY, showThinkingSummaries, and every config flag since v2.0. Updated with each release.'
+const { title, description } = landingSeo.releases
+const latestRelease = releases[0]
+const latestReleaseDateIso = releaseDateToIsoDate(latestRelease.date)
 
 const jsonLd = [
   {
     "@type": "Article",
-    "headline": "Claude Code Releases",
-    "description": "Complete version history and breaking changes for Claude Code",
+    "headline": title,
+    "description": description,
     "url": "https://cc.bruniaux.com/releases/",
     "mainEntityOfPage": "https://cc.bruniaux.com/releases/",
     "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
     "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
     "datePublished": "2026-01-17",
-    "dateModified": "2026-06-25",
+    "dateModified": latestReleaseDateIso,
     "inLanguage": "en"
   }
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-01-17" modifiedDate="2026-06-25">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-01-17" modifiedDate={latestReleaseDateIso}>
   <header class="page-hero">
     <div class="container">
       <h1>Claude Code Releases</h1>
       <p class="tagline">CLI version history, configuration changes, and breaking changes</p>
-      <p class="hero-answer">The latest version of Claude Code is {releases[0].version}, released {releases[0].date}. This page tracks every Claude Code release, from new slash commands and features to breaking changes and environment variables. Each entry lists the version number, release date, and what changed.</p>
+      <p class="hero-answer">The latest version of Claude Code is {latestRelease.version}, released {latestRelease.date}. This page tracks every Claude Code release, from new slash commands and features to breaking changes and environment variables. Each entry lists the version number, release date, and what changed.</p>
       <a href="/" class="btn btn-secondary">&larr; Back to Guide</a>
     </div>
   </header>
 
   <!-- Latest Release Section (static, SSG) -->
   <section class="content-section" id="whats-new">
-    <h2>Latest Release: {releases[0].version}</h2>
-    <p>Released {releases[0].date}</p>
+    <h2>Latest Release: {latestRelease.version}</h2>
+    <p>Released {latestRelease.date}</p>
     <ul class="release-highlights static-highlights">
-      {releases[0].highlights.map(h => <li set:html={h} />)}
+      {latestRelease.highlights.map(h => <li set:html={h} />)}
     </ul>
-    {releases[0].breaking && releases[0].breaking.length > 0 && (
+    {latestRelease.breaking && latestRelease.breaking.length > 0 && (
       <div class="release-breaking" style="margin-top: var(--space-md);">
         <strong>Breaking:</strong>
         <ul>
-          {releases[0].breaking.map(b => <li set:html={b} />)}
+          {latestRelease.breaking.map(b => <li set:html={b} />)}
         </ul>
       </div>
     )}

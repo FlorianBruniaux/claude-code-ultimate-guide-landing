@@ -21,6 +21,8 @@ export const GUIDE_SEO_OVERRIDES = {
   },
 }
 
+import { getContextualLink } from './seo-editorial-contract.mjs'
+
 function replaceFrontmatterField(frontmatter, field, value) {
   const line = `${field}: ${JSON.stringify(value)}`
   const fieldPattern = new RegExp(`^${field}:.*(?:\\r?\\n|$)`, 'm')
@@ -55,7 +57,11 @@ export function transformGuideMarkdown(content, sourcePath) {
     })
   }
 
-  return removeLeadingDocumentH1(transformed)
+  const withoutLeadingH1 = removeLeadingDocumentH1(transformed)
+  if (sourcePath !== 'guide/core/hooks-events-reference.md') return withoutLeadingH1
+
+  const hooksRecap = getContextualLink('/cheatsheets/m11-hooks-evenements-systeme/')
+  return `${withoutLeadingH1}\n\n## Related material\n\n[${hooksRecap.anchor}](${hooksRecap.target})\n`
 }
 
 export function canonicalGuidePageUrl(relPath) {

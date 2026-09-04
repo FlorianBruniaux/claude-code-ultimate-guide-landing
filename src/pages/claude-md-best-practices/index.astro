@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
 import { getSiteStats } from '../../utils/site-stats'
 
 const stats = await getSiteStats()
+const settingsReference = getContextualLink('/cheatsheets/t06-settings-json/')
 
 const title = 'CLAUDE.md Best Practices 2026 | Claude Code Guide'
 
@@ -139,7 +141,7 @@ const jsonLd = [
         </table>
       </div>
 
-      <p>Claude reads all three files at session start and merges them. Lower levels override higher ones for the same setting. Your team's shared conventions live in project-level CLAUDE.md; your personal shortcuts live in CLAUDE.local.md.</p>
+      <p>Claude reads all three files at session start and merges them. Lower levels override higher ones for the same setting. Your team's shared conventions live in project-level CLAUDE.md; your personal shortcuts live in CLAUDE.local.md. Before changing workspace controls, <a href={settingsReference.target}>{settingsReference.anchor}</a>.</p>
     </section>
 
     <section class="content-section">

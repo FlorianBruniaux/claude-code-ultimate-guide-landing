@@ -70,6 +70,15 @@ test('removes the leading H1 from a workflow page without an SEO override', () =
   assert.match(result, /^## Steps$/m)
 })
 
+test('appends the hooks recap card to the generated Hooks Events Reference', () => {
+  const result = transformGuideMarkdown(
+    '---\ntitle: Hooks\n---\n\n# Hooks\n\n## Events',
+    'guide/core/hooks-events-reference.md',
+  )
+
+  assert.match(result, /\[Use the hooks and events recap card\]\(\/cheatsheets\/m11-hooks-evenements-systeme\/\)/)
+})
+
 test('removes the leading H1 across every generated Starlight content family', () => {
   const sourcePaths = [
     'guide/learning-path/02-core-loop.md',
