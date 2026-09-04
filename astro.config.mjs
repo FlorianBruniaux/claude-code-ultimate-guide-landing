@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
+import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -21,7 +22,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/context/': '2026-08-31',
   'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
   'https://cc.bruniaux.com/faq/': '2026-06-08',
-  'https://cc.bruniaux.com/releases/': '2026-06-25',
+  'https://cc.bruniaux.com/releases/': LATEST_CLAUDE_CODE_RELEASE_DATE_ISO,
   'https://cc.bruniaux.com/changelog/': '2026-08-30',
   'https://cc.bruniaux.com/examples/': '2026-06-08',
   'https://cc.bruniaux.com/quiz/': '2026-06-08',
@@ -171,7 +172,7 @@ export default defineConfig({
             { slug: 'guide/architecture' },
             { slug: 'guide/methodologies' },
             { slug: 'guide/visual-reference' },
-            { slug: 'guide/claude-code-releases' },
+            { label: 'Claude Code Releases', link: '/releases/' },
             { slug: 'guide/known-issues' },
           ],
         },
@@ -226,6 +227,7 @@ export default defineConfig({
         if (item.url.includes('/ultimate-guidefr/')) return undefined
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
+        if (normalizedUrl === 'https://cc.bruniaux.com/guide/claude-code-releases/') return undefined
         const lastmod = PAGE_DATES[normalizedUrl] ?? new Date().toISOString().split('T')[0]
 
         if (item.url === 'https://cc.bruniaux.com/') {

@@ -12,6 +12,8 @@
     "build:terminal-fs": "node scripts/build-terminal-fs.mjs && node scripts/build-security-fs.mjs && node scripts/build-reference-fs.mjs",
     "build": "node scripts/prepare-guide-content.mjs && node scripts/build-diagrams-data.mjs && node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs && node scripts/build-terminal-fs.mjs && node scripts/build-security-fs.mjs && node scripts/build-reference-fs.mjs && astro build",
     "check:agentsec-feed": "node scripts/check-agentsec-feed-sync.mjs",
+    "check:built-seo": "node scripts/check-built-seo.mjs",
+    "check:public-seo": "node scripts/check-public-seo.mjs",
     "check:quiz-doc-links": "node scripts/check-quiz-doc-links.mjs",
     "test": "node --test 'src/**/*.test.ts'",
     "preview": "astro preview",

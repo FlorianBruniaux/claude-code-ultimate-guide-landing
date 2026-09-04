@@ -1,3 +1,7 @@
+import { getContextualLink } from './seo-editorial-contract.mjs'
+
+const codeReviewWorkflow = getContextualLink('/guide/workflows/code-review/')
+
 export const guideHighlights = [
   {
     title: 'Translations and Language Status',
@@ -184,6 +188,7 @@ export const guideSections = [
       { title: 'Monitor & Safe Delegation', href: '/guide/workflows/monitor-event-delegation/', desc: 'Event ingestion, verification, and gated handoff.', time: '20 min' },
       { title: 'Team AI Instructions', href: '/guide/workflows/team-ai-instructions/', desc: 'Scale shared instructions across developers and tools.', time: '20 min' },
       { title: 'Production Reliability', href: '/guide/workflows/production-reliability/', desc: 'Escalation, circuit breakers, and graceful degradation.', time: '20 min' },
+      { title: codeReviewWorkflow.anchor, href: codeReviewWorkflow.target, desc: 'Use independent providers, fixed review criteria, and a human acceptance gate.', time: '20 min' },
       { title: 'Multi-Provider Code Review', href: '/guide/workflows/multi-provider-code-review/', desc: 'Independent review across providers and evidence sources.', time: '20 min' },
       { title: 'Cross-Session Messaging', href: '/guide/workflows/cross-session-messaging/', desc: 'Discover and communicate between independent sessions.', time: '15 min' },
       { title: 'Search Tools Mastery', href: '/guide/workflows/search-tools-mastery/', desc: 'Combine lexical, semantic, and structural search.', time: '20 min' },

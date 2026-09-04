@@ -62,3 +62,10 @@ test('maps the French source filename to its normalized Astro route', () => {
     '/guide/ultimate-guidefr/',
   )
 })
+
+test('maps the legacy release source document to the canonical releases page', () => {
+  assert.equal(
+    rewrite('../core/claude-code-releases.md', 'workflows/example.md'),
+    '/releases/',
+  )
+})

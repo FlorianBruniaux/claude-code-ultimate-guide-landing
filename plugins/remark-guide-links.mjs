@@ -78,6 +78,10 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
   const sourceDir = currentSourcePath ? posix.dirname(currentSourcePath) : 'guide'
   const repositoryPath = posix.normalize(posix.join(sourceDir, href.replace(/\\/g, '/')))
 
+  if (repositoryPath === 'guide/core/claude-code-releases.md') {
+    return { url: `/releases/${anchorFragment || ''}`, isExternal: false }
+  }
+
   // ── Published directory indexes ────────────────────────────────────
   if (repositoryPath === 'guide/workflows' || repositoryPath === 'guide/workflows/') {
     return { url: `${GUIDE_BASE}workflows/${anchorFragment || ''}`, isExternal: false }

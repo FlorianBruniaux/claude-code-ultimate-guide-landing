@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url'
 import { execFileSync } from 'child_process'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
+import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
 import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -407,6 +408,7 @@ for (let i = 0; i < guideFileSources.length; i++) {
   const { file, srcDir } = guideFileSources[i]
   const src = resolve(srcDir, file)
   let content = readFileSync(src, 'utf-8')
+  const sourcePath = `guide/${srcDir === GUIDE_DIR ? '' : `${srcDir.split('/').pop()}/`}${file}`
 
   // Extract existing title/desc for fallback
   const fmMeta = extractLeadingFrontmatter(content)
@@ -417,9 +419,9 @@ for (let i = 0; i < guideFileSources.length; i++) {
   // order: 100 + index (keeps all guide files after ultimate-guide chapters in sidebar)
   const { modified, published } = getGitDates(src)
   content = addStarlightFm(content, { title, desc, order: 100 + i, lastUpdated: modified, datePublished: published })
+  content = transformGuideMarkdown(content, sourcePath)
   content = normalizeLangs(content)
 
-  const sourcePath = `guide/${srcDir === GUIDE_DIR ? '' : `${srcDir.split('/').pop()}/`}${file}`
   guideFileBuffer.push({ file, content, sourcePath })
   stats.files++
 }
@@ -443,6 +445,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     const file = workflowFiles[i]
     const src = resolve(WORKFLOWS_DIR, file)
     let content = readFileSync(src, 'utf-8')
+    const sourcePath = `guide/workflows/${file}`
 
     const fmMeta = extractLeadingFrontmatter(content)
     const h1Match = content.match(/^# (.+)/m)
@@ -451,9 +454,10 @@ if (existsSync(WORKFLOWS_DIR)) {
 
     const { modified, published } = getGitDates(src)
     content = addStarlightFm(content, { title, desc, order: 200 + i, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
 
-    guideFileBuffer.push({ file: `workflows/${file}`, content, sourcePath: `guide/workflows/${file}`, isWorkflow: true })
+    guideFileBuffer.push({ file: `workflows/${file}`, content, sourcePath, isWorkflow: true })
     stats.workflows++
   }
 
@@ -461,10 +465,12 @@ if (existsSync(WORKFLOWS_DIR)) {
   const workflowReadme = resolve(WORKFLOWS_DIR, 'README.md')
   if (existsSync(workflowReadme)) {
     let content = readFileSync(workflowReadme, 'utf-8')
+    const sourcePath = 'guide/workflows/README.md'
     const { modified, published } = getGitDates(workflowReadme)
     content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
-    guideFileBuffer.push({ file: 'workflows/index.md', content, sourcePath: 'guide/workflows/README.md', isWorkflow: false })
+    guideFileBuffer.push({ file: 'workflows/index.md', content, sourcePath, isWorkflow: false })
     stats.workflows++
   }
 
@@ -487,6 +493,7 @@ if (existsSync(LEARNING_PATH_DIR)) {
     const file = learningFiles[i]
     const src = resolve(LEARNING_PATH_DIR, file)
     let content = readFileSync(src, 'utf-8')
+    const sourcePath = `guide/learning-path/${file}`
 
     const fmMeta = extractLeadingFrontmatter(content)
     const h1Match = content.match(/^# (.+)/m)
@@ -495,9 +502,10 @@ if (existsSync(LEARNING_PATH_DIR)) {
 
     const { modified, published } = getGitDates(src)
     content = addStarlightFm(content, { title, desc, order: 250 + i, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
 
-    guideFileBuffer.push({ file: `learning-path/${file}`, content, sourcePath: `guide/learning-path/${file}`, isWorkflow: false })
+    guideFileBuffer.push({ file: `learning-path/${file}`, content, sourcePath, isWorkflow: false })
     stats.learningPath++
   }
 
@@ -505,10 +513,12 @@ if (existsSync(LEARNING_PATH_DIR)) {
   const readmeSrc = resolve(LEARNING_PATH_DIR, 'README.md')
   if (existsSync(readmeSrc)) {
     let content = readFileSync(readmeSrc, 'utf-8')
+    const sourcePath = 'guide/learning-path/README.md'
     const { modified, published } = getGitDates(readmeSrc)
     content = addStarlightFm(content, { title: 'Learning Path', desc: '7-module structured learning path from Installation to Advanced Patterns (8-11 hours)', order: 249, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
-    guideFileBuffer.push({ file: 'learning-path/index.md', content, sourcePath: 'guide/learning-path/README.md', isWorkflow: false })
+    guideFileBuffer.push({ file: 'learning-path/index.md', content, sourcePath, isWorkflow: false })
     stats.learningPath++
   }
 
@@ -537,6 +547,7 @@ for (let i = 0; i < AUDIENCE_PAGES.length; i++) {
     continue
   }
   let content = readFileSync(src, 'utf-8')
+  const sourcePath = `docs/${file}`
 
   const titleMatch = content.match(/^# (.+)/m)
   const title = titleMatch ? titleMatch[1].trim() : file.replace('.md', '')
@@ -549,9 +560,10 @@ for (let i = 0; i < AUDIENCE_PAGES.length; i++) {
 
   const { modified, published } = getGitDates(src)
   content = addStarlightFm(content, { title, desc, order: 300 + i, lastUpdated: modified, datePublished: published })
+  content = transformGuideMarkdown(content, sourcePath)
   content = normalizeLangs(content)
 
-  guideFileBuffer.push({ file, content, sourcePath: `docs/${file}` })
+  guideFileBuffer.push({ file, content, sourcePath })
   stats.audience++
 }
 
@@ -665,7 +677,8 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   ].filter(Boolean)
   const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}${dateYaml}\n---`
-  let output = normalizeLangs(`${fm}\n\n${content.trimStart()}`)
+  let output = transformGuideMarkdown(`${fm}\n\n${content.trimStart()}`, 'guide/ultimate-guide.md')
+  output = normalizeLangs(output)
   output = renderMermaidBlocks(output, slug)
 
   writeFileSync(resolve(OUT_ULTIMATE, `${slug}.md`), output, 'utf-8')
@@ -698,7 +711,7 @@ const guideIndexContent = renderGuideIndex({ guideLineCount, workflowCount: stat
 writeFileSync(resolve(OUT_GUIDE, 'index.mdx'), guideIndexContent, 'utf-8')
 
 // Generate the ultimate-guide index page
-const indexContent = `---
+const indexContent = transformGuideMarkdown(`---
 title: "The Ultimate Claude Code Guide"
 description: "Comprehensive guide to mastering Claude Code — from zero to power user."
 sidebar:
@@ -728,7 +741,7 @@ sidebar:
 | [10. Reference](/guide/ultimate-guide/10-reference/) | Commands table, shortcuts, troubleshooting |
 | [11. AI Ecosystem](/guide/ultimate-guide/11-ai-ecosystem/) | Complementary tools, integrations |
 | [Appendices](/guide/ultimate-guide/12-appendices/) | Templates, FAQ, myths vs reality |
-`
+`, 'guide/ultimate-guide/index.md')
 
 writeFileSync(resolve(OUT_ULTIMATE, 'index.md'), indexContent, 'utf-8')
 

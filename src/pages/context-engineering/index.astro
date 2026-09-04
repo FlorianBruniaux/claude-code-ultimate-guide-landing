@@ -1,14 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { landingSeo } from '../../data/seo-editorial-contract.mjs'
 
-const title = 'Context Engineering Tools 2026: Compress LLM Context'
-const description = 'Complete map of context engineering tools: RTK (89% CLI savings), lean-ctx (57–86% file read compression, MCP), Headroom, LLMLingua (20x), Edgee, Portkey, and 12 more. With core concepts, use-case matrix, and research benchmarks.'
+const { title, description } = landingSeo.contextEngineering
 
 const jsonLd = [
   {
     "@type": "Article",
-    "headline": "Context Engineering: Tools & Ecosystem 2026",
-    "description": "Practical guide to the tools that compress, optimize, route, and observe LLM context, from CLI output filters to AI gateways to LLMOps platforms",
+    "headline": title,
+    "description": description,
     "url": "https://cc.bruniaux.com/context-engineering/",
     "mainEntityOfPage": "https://cc.bruniaux.com/context-engineering/",
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },

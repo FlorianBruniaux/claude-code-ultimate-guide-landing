@@ -2,9 +2,12 @@
 import Layout from '../../layouts/Layout.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { COMPARISON_TOOLS } from '../../data/compare-data'
+import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
 import { getSiteStats } from '../../utils/site-stats'
 
 const stats = await getSiteStats()
+const windsurfComparison = getContextualLink('/compare/claude-code-vs-windsurf/')
+const aiderComparison = getContextualLink('/compare/claude-code-vs-aider/')
 
 const title = 'Claude Code vs Copilot vs Cursor | AI Tools Comparison'
 const description = `Claude Code vs Copilot vs Cursor: objective comparison with workflows. ${stats.templateCount} templates, 473-question quiz, ${stats.cveCount} CVEs tracked. Discover which AI tools complement each other.`
@@ -57,7 +60,7 @@ const jsonLd = [
     <div class="container">
       <div class="compare-section-header">
         <h2>Claude Code vs [Tool]: Direct Comparisons</h2>
-        <p>Feature tables, pricing, and honest trade-offs for each tool, from over a year of daily use.</p>
+        <p>Feature tables, pricing, and honest trade-offs for each tool, from over a year of daily use. Start with <a href={windsurfComparison.target}>{windsurfComparison.anchor}</a> or <a href={aiderComparison.target}>{aiderComparison.anchor}</a>.</p>
       </div>
       <div class="direct-comparisons-grid">
         {COMPARISON_TOOLS.map(tool => (

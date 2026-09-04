@@ -70,6 +70,9 @@ jobs:
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
+      - name: Check built SEO contracts
+        run: pnpm check:built-seo
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
