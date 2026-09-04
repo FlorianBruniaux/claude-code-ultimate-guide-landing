@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
@@ -17,7 +18,30 @@ test('removes only the leading document H1 after frontmatter', () => {
   assert.match(result, /^## Keep$/m)
 })
 
-test('applies bounded metadata for audited guide pages', () => {
+test('uses the exact audited metadata values for guide pages', () => {
+  assert.deepEqual(GUIDE_SEO_OVERRIDES, {
+    'guide/core/architecture.md': {
+      title: 'Claude Code Architecture: Agent Loop & Tools',
+      description: 'How Claude Code runs its model-tool loop, manages context, executes tools, and isolates subagents, with sourced architecture notes.',
+    },
+    'guide/core/agent-harness.md': {
+      title: 'Claude Code Agent Harness: Architecture & Evaluation',
+      description: 'Design and evaluate the context, policy, tool, verification, observability, and recovery layers around Claude Code agents.',
+    },
+    'guide/security/data-privacy.md': {
+      title: 'Claude Code Privacy: Data Usage & Retention',
+      description: 'What Claude Code sends to Anthropic, retention by plan, training controls, MCP exposure, and safeguards for sensitive data.',
+    },
+    'guide/core/hooks-events-reference.md': {
+      title: 'Claude Code Hooks: 30 Events, Matchers & Schemas',
+      description: 'Reference for 30 Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples.',
+    },
+    'guide/ecosystem/third-party-tools.md': {
+      title: 'Claude Code Tools: RTK, ccusage, GUIs & More',
+      description: 'Compare Claude Code GUIs, TUIs, configuration managers, token trackers, RTK, lean-ctx, ccusage, and other community tools.',
+    },
+  })
+
   for (const override of Object.values(GUIDE_SEO_OVERRIDES)) {
     assert.ok(override.title.length >= 30 && override.title.length <= 60)
     assert.ok(override.description.length >= 50 && override.description.length <= 160)
@@ -44,4 +68,36 @@ test('removes the leading H1 from a workflow page without an SEO override', () =
 
   assert.doesNotMatch(result, /^# Workflow$/m)
   assert.match(result, /^## Steps$/m)
+})
+
+test('removes the leading H1 across every generated Starlight content family', () => {
+  const sourcePaths = [
+    'guide/learning-path/02-core-loop.md',
+    'docs/for-cto.md',
+    'guide/ultimate-guide.md',
+    'guide/ultimate-guide/index.md',
+  ]
+
+  for (const sourcePath of sourcePaths) {
+    const result = transformGuideMarkdown(
+      '---\ntitle: Page\n---\n\n# Page\n\n## Keep',
+      sourcePath,
+    )
+    assert.doesNotMatch(result, /^# Page$/m, sourcePath)
+    assert.match(result, /^## Keep$/m, sourcePath)
+  }
+})
+
+test('invokes the transform for every generated Starlight content family', () => {
+  const script = readFileSync(new URL('../../scripts/prepare-guide-content.mjs', import.meta.url), 'utf8')
+  const sections = [
+    script.slice(script.indexOf('const LEARNING_PATH_DIR'), script.indexOf('// 2.7 Audience pages')),
+    script.slice(script.indexOf('const DOCS_DIR'), script.indexOf('// 3. Split ultimate-guide.md')),
+    script.slice(script.indexOf('// Write chapter files'), script.indexOf('console.log(`[prepare-guide] ✓ Ultimate Guide chapters')),
+    script.slice(script.indexOf('// Generate the ultimate-guide index page'), script.indexOf('// -----------------------------------------------------------------------\n// 4. Copy images')),
+  ]
+
+  for (const section of sections) {
+    assert.match(section, /transformGuideMarkdown\(/)
+  }
 })
