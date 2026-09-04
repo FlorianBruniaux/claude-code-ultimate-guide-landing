@@ -1,6 +1,8 @@
 # GA4 outcome measurement gate
 
-GA4 has recorded zero conversions in the audited 28-day and 90-day windows. That count is PROUVÉ for those windows and the audited property. It does not prove why the count is zero. The configuration cause remains UNKNOWN.
+`PROUVÉ` means this task has direct local evidence. `PARTIEL` means the evidence proves only the stated portion. `DÉCLARÉ` means an audit or GA4 reported the fact without a complete local read of that system in this task. `UNKNOWN` means no evidence supports the claim in this task.
+
+The audit classifies zero recorded conversions as PROUVÉ for its audited 28-day and 90-day windows. This task records that audit result as DÉCLARÉ because it did not read GA4 directly. Neither statement proves why the count is zero. The configuration cause remains UNKNOWN.
 
 ## Preserve the historical event vocabulary
 
@@ -13,7 +15,7 @@ Do not rename these existing events. A key-event decision changes GA4 configurat
 | Subscribe for an ebook | `ebook_subscribe` | Decide whether to mark as a key event. |
 | Download a file | `file_download` | Decide which files qualify as outcomes. |
 
-The decision owner, key-event configuration, and DebugView evidence are UNKNOWN. No external configuration changed during this repository task.
+The event names are PARTIEL evidence of outcome instrumentation: their source presence does not prove GA4 received them. The decision owner, key-event configuration, and DebugView evidence are UNKNOWN. It is PROUVÉ that this repository task did not change external configuration.
 
 ## DebugView validation record
 

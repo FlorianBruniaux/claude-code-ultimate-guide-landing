@@ -69,6 +69,18 @@ test('accepts a direct permanent release redirect and required headers', async (
   })
 })
 
+test('accepts a direct HTTP 301 release redirect with required headers', async () => {
+  await withServer((request, response) => {
+    if (request.url === '/guide/claude-code-releases/') {
+      send(response, '', { status: 301, headers: { Location: '/releases/' } })
+      return
+    }
+    directReleaseSite(request, response)
+  }, async (baseUrl) => {
+    assert.deepEqual(await checkPublicSeo({ baseUrl }), [])
+  })
+})
+
 test('rejects an HTML 200 redirect stub', async () => {
   await withServer((request, response) => {
     if (request.url === '/guide/claude-code-releases/') {
@@ -83,13 +95,16 @@ test('rejects an HTML 200 redirect stub', async () => {
   })
 })
 
-test('rejects a redirect chain longer than one hop', async () => {
+test('rejects an intermediate redirect destination without following it', async () => {
+  let intermediateDestinationRequested = false
+
   await withServer((request, response) => {
     if (request.url === '/guide/claude-code-releases/') {
       send(response, '', { status: 301, headers: { Location: '/legacy-releases/' } })
       return
     }
     if (request.url === '/legacy-releases/') {
+      intermediateDestinationRequested = true
       send(response, '', { status: 308, headers: { Location: '/releases/' } })
       return
     }
@@ -98,6 +113,7 @@ test('rejects a redirect chain longer than one hop', async () => {
     const failures = await checkPublicSeo({ baseUrl })
 
     assert.ok(failures.includes('legacy release redirect: expected a direct destination of /releases/, found /legacy-releases/'))
+    assert.equal(intermediateDestinationRequested, false)
   })
 })
 

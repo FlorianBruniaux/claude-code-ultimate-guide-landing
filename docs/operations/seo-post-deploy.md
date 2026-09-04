@@ -2,14 +2,18 @@
 
 The current GitHub Pages deployment cannot satisfy the production HTTP contract. Do not call this gate complete until an external host change passes the read-only smoke check.
 
+## Evidence status vocabulary
+
+`PROUVÉ` means this task has direct repository evidence or a local test result. `PARTIEL` means the evidence proves only the stated portion. `DÉCLARÉ` means an audit or external system reported the fact, but this task did not obtain complete local evidence from that system. `UNKNOWN` means no evidence supports the claim in this task.
+
 ## Evidence baseline, 2026-09-04
 
 | Status | Fact | Boundary |
 | --- | --- | --- |
 | PROUVÉ | Astro produces static output and GitHub Actions deploys it with `actions/deploy-pages`. | The repository has no response-rule or global-header control for the GitHub Pages origin. |
-| PROUVÉ | `cc.bruniaux.com` is a CNAME to `florianbruniaux.github.io`. | DNS evidence captured on 2026-09-04. |
-| PROUVÉ | The authoritative nameservers are OVH. | They are not Cloudflare nameservers. |
-| PROUVÉ | GitHub Pages static output cannot provide a real 301 or 308 rule or global response headers for this site. | HTML can imitate a redirect, but it does not change the HTTP status. |
+| DÉCLARÉ | `cc.bruniaux.com` is a CNAME to `florianbruniaux.github.io`. | The 2026-09-04 DNS audit reported this value; this task did not query DNS. |
+| DÉCLARÉ | The authoritative nameservers are OVH. | The 2026-09-04 DNS audit reported this value; this task did not query the authority. |
+| DÉCLARÉ | GitHub Pages static output cannot provide a real 301 or 308 rule or global response headers for this site. | The hosting assessment supplied to this task reported this limitation. HTML can imitate a redirect, but it does not change the HTTP status. |
 | PARTIEL | `pnpm check:public-seo -- https://cc.bruniaux.com` checks the target contract with GET requests only. | It is a client observation, not proof that DNS, hosting, GA4, or GSC was changed. |
 | UNKNOWN | A host or proxy now enforces the contract in production. | No production reconfiguration is part of this repository task. |
 
