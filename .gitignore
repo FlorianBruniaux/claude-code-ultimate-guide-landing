@@ -24,10 +24,19 @@ Thumbs.db
 npm-debug.log*
 pnpm-debug.log*
 
+# Local pnpm store
+.pnpm-store/
+
 # Claude
 .claudedocs/
 claudedocs/
 .worktrees/
+
+# Local Codex MCP configuration
+.codex/config.toml
+
+# Local SEO audit evidence
+.audit/
 
 # Legacy
 questions.json.original
