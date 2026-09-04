@@ -2583,33 +2583,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-devops-sre-quick-start",
     "title": "Quick Start",
-    "keywords": "quick start devops sre with claude code goal : get productive with claude code for devops in 5 minutes.",
+    "keywords": "quick start devops sre with claude code goal : get productive with claude code for devops in 5 minutes. quick self-check situation jump to ----------- --------- i'm in an active incident now quick self check the fire framework why fire your first infrastructure diagnosis example pod crashloopbackoff what claude returns first response example",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#quick-start",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-quick-self-check",
-    "title": "Quick Self-Check",
-    "keywords": "quick self check devops sre with claude code situation jump to ----------- --------- i'm in an active incident now emergency: k8s troubleshooting first time using claude for devops tutorial: firs",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#quick-self-check",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-the-fire-framework",
-    "title": "The FIRE Framework",
-    "keywords": "the fire framework devops sre with claude code every infrastructure diagnosis with claude follows this pattern: why fire? phase human role claude role ------- ------------ ------------- f irst resp why fire",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#the-fire-framework",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-your-first-infrastructure-diagnosis",
-    "title": "Your First Infrastructure Diagnosis",
-    "keywords": "your first infrastructure diagnosis devops sre with claude code example: pod crashloopbackoff what claude returns (first response example) ```markdown example pod crashloopbackoff what claude returns first response example",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#your-first-infrastructure-diagnosis",
     "source": "guide"
   },
   {
@@ -2623,177 +2599,41 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-devops-sre-kubernetes-troubleshooting",
     "title": "Kubernetes Troubleshooting",
-    "keywords": "kubernetes troubleshooting devops sre with claude code k8s mcp server setup for persistent k8s context, install the k8s mcp server: benefits : claude can query cluster state directly, reducing copy-paste c k8s mcp server setup prompts by symptom crashloopbackoff oomkilled imagepullbackoff pending pod not scheduling service not reachable case study production outage root cause",
+    "keywords": "kubernetes troubleshooting devops sre with claude code k8s mcp server setup for persistent k8s context, install the k8s mcp server: benefits : claude can query cluster state directly, reducing copy-paste c k8s mcp server setup prompts by symptom case study production outage root cause log analysis correlation multi service log correlation log pattern detection prometheus grafana query help what claude can t do limitations when not to use claude when claude excels",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#kubernetes-troubleshooting",
     "source": "guide"
   },
   {
-    "id": "gc-devops-sre-log-analysis-correlation",
-    "title": "Log Analysis & Correlation",
-    "keywords": "log analysis correlation devops sre with claude code multi-service log correlation log pattern detection prometheus/grafana query help multi service log correlation log pattern detection prometheus grafana query help",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#log-analysis-correlation",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-what-claude-can-t-do-limitations",
-    "title": "What Claude CAN'T Do (Limitations)",
-    "keywords": "what claude can t do limitations devops sre with claude code understanding limitations prevents frustration and unsafe reliance. limitation impact workaround ------------ -------- ------------ no real-time clust when not to use claude when claude excels",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#what-claude-can-t-do-limitations",
-    "source": "guide"
-  },
-  {
     "id": "gc-devops-sre-pattern-incident-response",
     "title": "Pattern: Incident Response",
-    "keywords": "pattern incident response devops sre with claude code goal : structured workflows for incident management.",
+    "keywords": "pattern incident response devops sre with claude code goal : structured workflows for incident management. solo incident workflow reality : at 3 am, you're alone. this workflow is designed for one person. solo incident workflow fire in action solo incident communication during incidents stakeholder update generator incident bridge prompt multi agent pattern post incident analysis case study opsworker ai mttr reduction",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#pattern-incident-response",
     "source": "guide"
   },
   {
-    "id": "gc-devops-sre-solo-incident-workflow",
-    "title": "Solo Incident Workflow",
-    "keywords": "solo incident workflow devops sre with claude code reality : at 3 am, you're alone. this workflow is designed for one person. fire in action: solo incident f - first response (30 seconds) example : i - fire in action solo incident f first response 30 seconds i investigate 2 5 minutes r remediate with approval e evaluate post incident not during",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#solo-incident-workflow",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-communication-during-incidents",
-    "title": "Communication During Incidents",
-    "keywords": "communication during incidents devops sre with claude code stakeholder update generator output example : we experienced a 15-minute disruption to our checkout service affecting approximately 30% of transaction stakeholder update generator incident bridge prompt",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#communication-during-incidents",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-multi-agent-pattern-post-incident-analysis",
-    "title": "Multi-Agent Pattern: Post-Incident Analysis",
-    "keywords": "multi agent pattern post incident analysis devops sre with claude code when to use multi-agent : not during active incidents. use for comprehensive analysis afterward. case study: opsworker.ai mttr reduction context : sre case study opsworker ai mttr reduction",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#multi-agent-pattern-post-incident-analysis",
-    "source": "guide"
-  },
-  {
     "id": "gc-devops-sre-pattern-infrastructure-as-code",
     "title": "Pattern: Infrastructure as Code",
-    "keywords": "pattern infrastructure as code devops sre with claude code goal : use claude for terraform, ansible, and gitops workflows.",
+    "keywords": "pattern infrastructure as code devops sre with claude code goal : use claude for terraform, ansible, and gitops workflows. terraform with claude reference: anton babenko's terraform skill the most comprehensiv terraform with claude reference anton babenko s terraform skill common terraform prompts drift detection workflow ansible with claude playbook review role generation gitops with claude argocd application review helm values generation security review automation infrastructure security scan ",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#pattern-infrastructure-as-code",
     "source": "guide"
   },
   {
-    "id": "gc-devops-sre-terraform-with-claude",
-    "title": "Terraform with Claude",
-    "keywords": "terraform with claude devops sre with claude code reference: anton babenko's terraform skill the most comprehensive terraform skill for claude code: repository : antonbabenko/terraform-skill author : reference anton babenko s terraform skill common terraform prompts plan review module generation state surgery helper drift detection workflow",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#terraform-with-claude",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-ansible-with-claude",
-    "title": "Ansible with Claude",
-    "keywords": "ansible with claude devops sre with claude code playbook review role generation playbook review role generation",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#ansible-with-claude",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-gitops-with-claude",
-    "title": "GitOps with Claude",
-    "keywords": "gitops with claude devops sre with claude code argocd application review helm values generation argocd application review helm values generation",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#gitops-with-claude",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-security-review-automation",
-    "title": "Security Review Automation",
-    "keywords": "security review automation devops sre with claude code infrastructure security scan iam policy review --- infrastructure security scan iam policy review",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#security-review-automation",
-    "source": "guide"
-  },
-  {
     "id": "gc-devops-sre-guardrails-adoption",
     "title": "Guardrails & Adoption",
-    "keywords": "guardrails adoption devops sre with claude code goal : implement claude code safely and get team buy-in.",
+    "keywords": "guardrails adoption devops sre with claude code goal : implement claude code safely and get team buy-in. cost awareness claude code costs model input (1m tokens) output (1m tokens) ------- --------- cost awareness claude code costs infrastructure costs from claude suggestions security boundaries never share with claude safe prompting template approval gates for production team rollout checklist phase 1 pilot 1 2 engineers 2 weeks phase 2 expand team 4 weeks phase 3 optimize ongoing adoption pitf",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#guardrails-adoption",
     "source": "guide"
   },
   {
-    "id": "gc-devops-sre-cost-awareness",
-    "title": "Cost Awareness",
-    "keywords": "cost awareness devops sre with claude code claude code costs model input (1m tokens) output (1m tokens) ------- ------------------- ------------------- sonnet 4 $3 $15 opus 4 $15 $75 typical de claude code costs infrastructure costs from claude suggestions",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#cost-awareness",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-security-boundaries",
-    "title": "Security Boundaries",
-    "keywords": "security boundaries devops sre with claude code never share with claude data type why not alternative ----------- --------- ------------- api keys, tokens could be cached/logged use placeholders: pr never share with claude safe prompting template approval gates for production",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#security-boundaries",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-team-rollout-checklist",
-    "title": "Team Rollout Checklist",
-    "keywords": "team rollout checklist devops sre with claude code phase 1: pilot (1-2 engineers, 2 weeks) - [ ] install claude code for pilot users - [ ] create team claude.md with common context - [ ] document first phase 1 pilot 1 2 engineers 2 weeks phase 2 expand team 4 weeks phase 3 optimize ongoing adoption pitfalls to avoid",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#team-rollout-checklist",
-    "source": "guide"
-  },
-  {
     "id": "gc-devops-sre-quick-reference",
     "title": "Quick Reference",
-    "keywords": "quick reference devops sre with claude code",
+    "keywords": "quick reference devops sre with claude code fire framework summary prompts by symptom kubernetes fire framework summary prompts by symptom kubernetes cloud infrastructure terraform mcp servers for devops external resources awesome lists official resources community see also",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#quick-reference",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-fire-framework-summary",
-    "title": "FIRE Framework Summary",
-    "keywords": "fire framework summary devops sre with claude code",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#fire-framework-summary",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-prompts-by-symptom",
-    "title": "Prompts by Symptom",
-    "keywords": "prompts by symptom devops sre with claude code kubernetes symptom prompt --------- -------- crashloopbackoff oomkilled imagepullbackoff pending service unreachable cloud/infrastructure symptom prom kubernetes cloud infrastructure terraform",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#prompts-by-symptom",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-mcp-servers-for-devops",
-    "title": "MCP Servers for DevOps",
-    "keywords": "mcp servers for devops devops sre with claude code server purpose install -------- --------- --------- kubernetes direct cluster access aws aws api access gcp gcp api access prometheus direct metrics q",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#mcp-servers-for-devops",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-external-resources",
-    "title": "External Resources",
-    "keywords": "external resources devops sre with claude code awesome lists - awesome-claude-code-subagents (23.8k stars, verified 2026-07-27, was 8.1k): agent personas including sre - awesome-claude-skills (14.4 awesome lists official resources community",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#external-resources",
-    "source": "guide"
-  },
-  {
-    "id": "gc-devops-sre-see-also",
-    "title": "See Also",
-    "keywords": "see also devops sre with claude code - agent template : devops/sre agent persona for claude - claude.md template : project configuration for devops teams - security hardening guide : addi",
-    "category": "Core Guides",
-    "url": "/guide/devops-sre/#see-also",
     "source": "guide"
   },
   {
@@ -9847,33 +9687,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-12-appendices-when-forking-sessions-to-a-new-project",
     "title": "When forking sessions to a new project",
-    "keywords": "when forking sessions to a new project appendices cp -n ./-source-project-/ .jsonl ./-target-project-/ cp -r ./-source-project-/subagents ./-target-project-/ 2 /dev/null true cd /path/to/target/projec",
+    "keywords": "when forking sessions to a new project appendices cp -n ./-source-project-/ .jsonl ./-target-project-/ cp -r ./-source-project-/subagents ./-target-project-/ 2 /dev/null true cd /path/to/target/projec appendix c resource evaluation process evaluation methodology current evaluations why public evaluations appendix d myths vs reality myth claude code has hidden features you can unlock with secret flags myth tasks api allows fully autonomous parallel agents myth claude code is 100x faster than othe",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/12-appendices/#when-forking-sessions-to-a-new-project",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-12-appendices-appendix-c-resource-evaluation-process",
-    "title": "Appendix C: Resource Evaluation Process",
-    "keywords": "appendix c resource evaluation process appendices this guide systematically evaluates external resources (tools, methodologies, articles, frameworks) before integration to maintain quality and prevent evaluation methodology current evaluations why public evaluations",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/12-appendices/#appendix-c-resource-evaluation-process",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-12-appendices-appendix-d-myths-vs-reality",
-    "title": "Appendix D: Myths vs Reality",
-    "keywords": "appendix d myths vs reality appendices this section addresses common misconceptions about claude code circulating in online communities, social media, and discussions. ❌ myth: \"claude code myth claude code has hidden features you can unlock with secret flags myth tasks api allows fully autonomous parallel agents myth claude code is 100x faster than other ai coding tools reality what makes claude code actually special how to spot reliable information contributing to this section",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/12-appendices/#appendix-d-myths-vs-reality",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide-12-appendices-about-this-guide",
-    "title": "About This Guide",
-    "keywords": "about this guide appendices end of guide --- author : florian bruniaux founding engineer @méthode aristote written with : claude (anthropic) - this guide was collaboratively writ",
-    "category": "Ultimate Guide",
-    "url": "/guide/ultimate-guide/12-appendices/#about-this-guide",
     "source": "guide"
   },
   {
@@ -9919,33 +9735,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-1-quick-start-jour-1",
     "title": "1. Quick Start (Jour 1)",
-    "keywords": "1 quick start jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre",
+    "keywords": "1 quick start jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre 1 1 installation vérifier l installation mettre à jour claude code application de bureau claude code sans le terminal chemins spécifiques aux plateformes premier lancement 1 2 premier flux de travail étape 1 décrire le problème étape 2 claude analyse étape 3 réviser le diff étape 4 accepter ou re",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#1-quick-start-jour-1",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-1-installation",
-    "title": "1.1 Installation",
-    "keywords": "1 1 installation the ultimate claude code guide choisissez votre méthode d'installation préférée en fonction de votre système d'exploitation : vérifier l'installation mettre à jour claude code maint vérifier l installation mettre à jour claude code application de bureau claude code sans le terminal chemins spécifiques aux plateformes premier lancement",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-1-installation",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-2-premier-flux-de-travail",
-    "title": "1.2 Premier flux de travail",
-    "keywords": "1 2 premier flux de travail the ultimate claude code guide corrigeons un bug ensemble. cela illustre la boucle d'interaction principale. étape 1 : décrire le problème étape 2 : claude analyse claude va : - rec étape 1 décrire le problème étape 2 claude analyse étape 3 réviser le diff étape 4 accepter ou rejeter étape 5 vérifier étape 6 committer optionnel",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-2-premier-flux-de-travail",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-3-commandes-essentielles",
-    "title": "1.3 Commandes essentielles",
-    "keywords": "1 3 commandes essentielles the ultimate claude code guide voici les 7 commandes que j'utilise le plus fréquemment : commande action quand l'utiliser --------- -------- ------------- afficher toutes les comman actions rapides et raccourcis commandes shell avec références de fichiers avec travailler avec des images et des captures d écran continuation et reprise de session découverte de patterns de session cc sessions discover session pattern discovery renommage automatique de session approche a i",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-3-commandes-essentielles",
     "source": "guide"
   },
   {
@@ -9967,81 +9759,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-rules",
     "title": "Rules",
-    "keywords": "rules the ultimate claude code guide - max 50 characters, no \"session:\" prefix, no date - action verb first (fix, add, refactor, update, research, debug...) - multi-topic: dominant subjec approche b hook sessionend automatique généré par ia utiliser les deux ensemble",
+    "keywords": "rules the ultimate claude code guide - max 50 characters, no \"session:\" prefix, no date - action verb first (fix, add, refactor, update, research, debug...) - multi-topic: dominant subjec 1 4 modes de permissions mode par défaut mode auto acceptation acceptedits mode plan mode ne pas demander dontask mode auto tous les abonnements v2 1 114 mode contournement des permissions bypasspermissions fatigue des permissions anti pattern 1 5 liste de contrôle de productivité 1 6 migration depuis d autres ",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#rules",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-1-4-modes-de-permissions",
-    "title": "1.4 Modes de permissions",
-    "keywords": "1 4 modes de permissions the ultimate claude code guide claude code dispose de cinq modes de permissions qui contrôlent le degré d'autonomie accordé à claude : mode par défaut claude demande une autorisatio mode par défaut mode auto acceptation acceptedits mode plan mode ne pas demander dontask mode auto tous les abonnements v2 1 114 mode contournement des permissions bypasspermissions fatigue des permissions anti pattern",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-4-modes-de-permissions",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-5-liste-de-contrôle-de-productivité",
-    "title": "1.5 Liste de contrôle de productivité",
-    "keywords": "1 5 liste de contrôle de productivité the ultimate claude code guide vous êtes prêt pour le jour 2 quand vous savez : - [ ] lancer claude code dans votre projet - [ ] décrire une tâche et examiner les modifications prop",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-5-liste-de-contrôle-de-productivité",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-6-migration-depuis-d-autres-outils-de-codage-ia",
-    "title": "1.6 Migration depuis d'autres outils de codage IA",
-    "keywords": "1 6 migration depuis d autres outils de codage ia the ultimate claude code guide dernière mise à jour : mars 2026. les outils de codage ia évoluent rapidement ; vérifiez les tarifs et fonctionnalités sur les sites officiels. vous m pourquoi claude code est différent comparaison des tarifs mars 2026 guide de migration github copilot claude code ce que copilot fait bien ce que claude code fait mieux approche hybride recommandée guide de migration cursor claude code ce que cursor fait bien ce que c",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-6-migration-depuis-d-autres-outils-de-codage-ia",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-7-calibration-de-la-confiance-quand-et-dans-quel",
-    "title": "1.7 Calibration de la confiance : quand et dans quelle mesure vérifier",
-    "keywords": "1 7 calibration de la confiance quand et dans quelle mesure vérifier the ultimate claude code guide le code généré par l'ia nécessite une vérification proportionnelle au niveau de risque. accepter aveuglément toute la production ou examiner paranoïaq le problème la dette de vérification le spectre de vérification vérification en solo vs en équipe la checklist prouver que ça fonctionne anti patterns à éviter calibration dans le temps vue d ensemble",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-7-calibration-de-la-confiance-quand-et-dans-quelle-mesure-vérifier",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-1-8-huit-erreurs-de-débutant-et-comment-les-éviter",
-    "title": "1.8 Huit erreurs de débutant (et comment les éviter)",
-    "keywords": "1 8 huit erreurs de débutant et comment les éviter the ultimate claude code guide les pièges courants qui ralentissent les nouveaux utilisateurs de claude code : 1. ❌ sauter l'étape de planification erreur : se lancer directement da 1 sauter l étape de planification 2 ignorer les limites de contexte 3 utiliser des prompts vagues 4 accepter les changements aveuglément 5 pas de filet de sécurité avec le contrôle de version 6 permissions trop larges 7 mélanger des tâches sans rapport 8 traiter clau",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-8-huit-erreurs-de-débutant-et-comment-les-éviter",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-2-concepts-fondamentaux",
     "title": "2. Concepts fondamentaux",
-    "keywords": "2 concepts fondamentaux the ultimate claude code guide navigation rapide : la boucle d'interaction · gestion du contexte · mode plan · rewind · sélection du modèle · modèle mental · guide de décision de co",
+    "keywords": "2 concepts fondamentaux the ultimate claude code guide navigation rapide : la boucle d'interaction · gestion du contexte · mode plan · rewind · sélection du modèle · modèle mental · guide de décision de co résumé section 2 2 minutes concepts clés la règle unique 2 1 la boucle d interaction point clé 2 2 gestion du contexte référence rapide de gestion du contexte qu est ce que le contexte le budget de contexte lecture de la barre de statut configuration personnalisée de la barre de statut zones d",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#2-concepts-fondamentaux",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-résumé-section-2-2-minutes",
-    "title": "📌 Résumé Section 2 (2 minutes)",
-    "keywords": "résumé section 2 2 minutes the ultimate claude code guide ce que vous apprendrez : le modèle mental et les workflows critiques pour maîtriser claude code. concepts clés : - boucle d'interaction : cycle décrir concepts clés la règle unique",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#résumé-section-2-2-minutes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-1-la-boucle-d-interaction",
-    "title": "2.1 La boucle d'interaction",
-    "keywords": "2 1 la boucle d interaction the ultimate claude code guide chaque interaction claude code suit ce schéma : point clé",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-1-la-boucle-d-interaction",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-2-gestion-du-contexte",
-    "title": "2.2 Gestion du contexte",
-    "keywords": "2 2 gestion du contexte the ultimate claude code guide 🔴 c'est le concept le plus important dans claude code. 📌 référence rapide de gestion du contexte les zones : - 🟢 0-50% : travaillez librement - 🟡 référence rapide de gestion du contexte qu est ce que le contexte le budget de contexte lecture de la barre de statut configuration personnalisée de la barre de statut zones de contexte stratégies de récupération du contexte triage du contexte que conserver vs évacuer mémoire de session vs mémo",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-2-gestion-du-contexte",
     "source": "guide"
   },
   {
@@ -10071,97 +9799,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-ne-pas-faire",
     "title": "Ne PAS faire",
-    "keywords": "ne pas faire the ultimate claude code guide - démarrer d'autres tâches - remanier du code sans rapport `` /compact` préserve le fil de la conversation. un contexte vierge maximise l'attention pa point clé qu est ce qui consomme du contexte symptômes d épuisement du contexte inspection du contexte conscience des coûts et optimisation modèle de tarification en avril 2026 contexte 200k vs 1m performances coûts et cas d usage qu est ce qui coûte le plus stratégies d optimisation des coûts comment cl",
+    "keywords": "ne pas faire the ultimate claude code guide - démarrer d'autres tâches - remanier du code sans rapport `` /compact` préserve le fil de la conversation. un contexte vierge maximise l'attention pa qu est ce qui consomme du contexte symptômes d épuisement du contexte inspection du contexte conscience des coûts et optimisation extend thinking ultrathink the ooda loop method tour 1 analyse initiale tour 2 remise en question approfondie tour 3 plan définitif exécution ultrareview v2 1 114 mechanic sta",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#ne-pas-faire",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-tour-1-analyse-initiale",
-    "title": "Tour 1 : Analyse initiale",
-    "keywords": "tour 1 analyse initiale the ultimate claude code guide user: /plan user: analyze the current auth system. what are the key components, dependencies, and potential risks of migrating to oauth2? claude: [ana",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#tour-1-analyse-initiale",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-tour-2-remise-en-question-approfondie",
-    "title": "Tour 2 : Remise en question approfondie",
-    "keywords": "tour 2 remise en question approfondie the ultimate claude code guide user: now use extended thinking. challenge your own analysis: - what assumptions did you make? - what failure modes did you miss? - what would a senio",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#tour-2-remise-en-question-approfondie",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-tour-3-plan-définitif",
-    "title": "Tour 3 : Plan définitif",
-    "keywords": "tour 3 plan définitif the ultimate claude code guide user: based on both rounds, write the definitive migration plan. include rollback strategy and risk mitigation for each step. claude: [plan affiné int",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#tour-3-plan-définitif",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-exécution",
-    "title": "Exécution",
-    "keywords": "exécution the ultimate claude code guide [approuver le plan, ou shift+tab pour sortir du plan mode] user: implement the plan from round 3. bash /ultrareview réviser la branche courante (diff ultrareview v2 1 114 mechanic stacking",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#exécution",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-4-rewind",
-    "title": "2.4 Rewind",
-    "keywords": "2 4 rewind the ultimate claude code guide rewind est le mécanisme d'annulation de claude code. utiliser rewind accès via (double appui sur échap) ou la commande . cela ouvre une liste de point utiliser rewind ce que fait rewind limitations bonne pratique créer un point de contrôle avant un risque échelle de récupération trois niveaux d annulation pattern de point de contrôle expérimentation sécurisée",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-4-rewind",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-5-guide-de-sélection-du-modèle-et-du-mode-de-réf",
-    "title": "2.5 Guide de sélection du modèle et du mode de réflexion",
-    "keywords": "2 5 guide de sélection du modèle et du mode de réflexion the ultimate claude code guide choisir le bon modèle pour chaque tâche est l'amélioration du roi la plus rapide que la plupart des utilisateurs de claude code puissent réaliser. une tableau de décision passer à fable 5 niveaux d effort allocation de l effort par skill v2 1 80 modèle par agent modèles d utilisation quand la réflexion aide ou gaspille des tokens",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-5-guide-de-sélection-du-modèle-et-du-mode-de-réflexion",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-6-modèle-mental",
-    "title": "2.6 Modèle mental",
-    "keywords": "2 6 modèle mental the ultimate claude code guide comprendre comment claude code « pense » vous rend plus efficace. la vision de claude sur votre projet ce que claude sait 1. structure des fichiers : la vision de claude sur votre projet ce que claude sait ce que claude ne sait pas vous êtes le thread principal du chatbot au système de contexte communiquer efficacement",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-6-modèle-mental",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-8-prompts-structurés-avec-les-balises-xml",
-    "title": "2.8 Prompts Structurés avec les Balises XML",
-    "keywords": "2 8 prompts structurés avec les balises xml the ultimate claude code guide les prompts structurés en xml offrent une organisation sémantique pour les requêtes complexes, aidant claude à distinguer les différents aspects de vo que sont les prompts structurés en xml pourquoi utiliser les balises xml balises courantes et leurs usages exemples pratiques modèles avancés quand utiliser les prompts structurés en xml bonnes pratiques intégration avec claude md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-8-prompts-structurés-avec-les-balises-xml",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-balises-spécifiques-au-projet",
-    "title": "Balises spécifiques au projet",
-    "keywords": "balises spécifiques au projet the ultimate claude code guide - - spécifications de conception des endpoints api - - exigences wcag et considérations aria - - budgets de performance et objectifs d'optimisation xm combinaison avec d autres fonctionnalités bibliothèque de modèles exemple limites et considérations 2 8 1 le prompt comme provocation",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#balises-spécifiques-au-projet",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-9-ancres-sémantiques",
-    "title": "2.9 Ancres sémantiques",
-    "keywords": "2 9 ancres sémantiques the ultimate claude code guide les llm sont des apparieurs de motifs statistiques entraînés sur d'immenses corpus textuels. l'utilisation d'un vocabulaire technique précis aide clau pourquoi la précision est importante ancres courantes pour claude code comment les utiliser dans claude md combinaison avec les balises xml ancres sémantiques par domaine",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-9-ancres-sémantiques",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-2-10-patrons-d-ingénierie-des-prompts",
-    "title": "2.10 Patrons d'ingénierie des prompts",
-    "keywords": "2 10 patrons d ingénierie des prompts the ultimate claude code guide deux techniques au niveau du prompt qui réduisent l'écart entre des prompts bien structurés et des sorties fiables : les exemples few-shot pour calibr prompting few shot boucle de validation avec nouvelle tentative contamination par auto révision raisonnement en ligne pour le triage",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-10-patrons-d-ingénierie-des-prompts",
     "source": "guide"
   },
   {
@@ -10207,65 +9847,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-team-preferences",
     "title": "Team Preferences",
-    "keywords": "team preferences the ultimate claude code guide - use async/await not .then() chains - prefer explicit returns in arrow functions - all database queries go through repository layer repo/ ├── claude.",
+    "keywords": "team preferences the ultimate claude code guide - use async/await not .then() chains - prefer explicit returns in arrow functions - all database queries go through repository layer repo/ ├── claude. étape 1 amorcer avec une instruction vague étape 2 examiner la liste de tâches de claude sans l exécuter étape 3 comparer avec votre modèle mental étape 4 affiner et replanifier flux de travail complet sources gestion du contexte isolation des sub agents teammatetool expérimental anti modèles d agent",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#team-preferences",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-étape-1-amorcer-avec-une-instruction-vague",
-    "title": "Étape 1 : Amorcer avec une instruction vague",
-    "keywords": "étape 1 amorcer avec une instruction vague the ultimate claude code guide utilisateur : « améliore le tunnel de paiement »",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#étape-1-amorcer-avec-une-instruction-vague",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-étape-2-examiner-la-liste-de-tâches-de-claude-sans",
-    "title": "Étape 2 : Examiner la liste de tâches de Claude (sans l'exécuter)",
-    "keywords": "étape 2 examiner la liste de tâches de claude sans l exécuter the ultimate claude code guide claude génère : [liste de tâches]",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#étape-2-examiner-la-liste-de-tâches-de-claude-sans-l-exécuter",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-étape-3-comparer-avec-votre-modèle-mental",
-    "title": "Étape 3 : Comparer avec votre modèle mental",
-    "keywords": "étape 3 comparer avec votre modèle mental the ultimate claude code guide - manquant : logique de nouvelle tentative de paiement ? → ajouter aux instructions - inattendu : refonte ui ? → préciser le périmètre (back-end uniqu",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#étape-3-comparer-avec-votre-modèle-mental",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-étape-4-affiner-et-replanifier",
-    "title": "Étape 4 : Affiner et replanifier",
-    "keywords": "étape 4 affiner et replanifier the ultimate claude code guide utilisateur : « en fait, voici ce dont j'ai besoin : [instruction affinée avec détails] » `` tasklist` après la planification initiale comme vérificat flux de travail complet sources gestion du contexte isolation des sub agents teammatetool expérimental anti modèles d agents rôles vs contrôle du contexte agents à périmètre ciblé la philosophie en savoir plus",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#étape-4-affiner-et-replanifier",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-3-mémoire-et-paramètres",
     "title": "3. Mémoire et paramètres",
-    "keywords": "3 mémoire et paramètres the ultimate claude code guide accès rapide : fichiers mémoire (claude.md) · structure du dossier .claude/ · paramètres et permissions · règles de précédence ---",
+    "keywords": "3 mémoire et paramètres the ultimate claude code guide accès rapide : fichiers mémoire (claude.md) · structure du dossier .claude/ · paramètres et permissions · règles de précédence --- 📌 résumé section 3 résumé section 3 90 secondes 3 1 fichiers mémoire claude md claude md comme mémoire à effet composé construire pour le modèle dans six mois mise à jour continue du contexte niveau 1 global claude claude md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#3-mémoire-et-paramètres",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-résumé-section-3-90-secondes",
-    "title": "📌 Résumé Section 3 (90 secondes)",
-    "keywords": "résumé section 3 90 secondes the ultimate claude code guide la hiérarchie mémoire (concept le plus important) : règle : le plus spécifique l'emporte sur le plus général (local projet global) actions rapides : -",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#résumé-section-3-90-secondes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-3-1-fichiers-mémoire-claude-md",
-    "title": "3.1 Fichiers mémoire (CLAUDE.md)",
-    "keywords": "3 1 fichiers mémoire claude md the ultimate claude code guide les fichiers claude.md sont des instructions persistantes lues à chaque démarrage de session. trois niveaux : (global) → (projet) → (local/personnel). claude md comme mémoire à effet composé aller plus loin capitaliser les solutions entre les prs la philosophie compound engineering every to brainstormer avant de planifier la hiérarchie de documentation comme mémoire de projet construire pour le modèle dans six mois mise à jour continu",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-1-fichiers-mémoire-claude-md",
     "source": "guide"
   },
   {
@@ -10327,25 +9919,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-overrides",
     "title": "Overrides",
-    "keywords": "overrides the ultimate claude code guide - skip pre-commit hooks for quick iterations - use verbose logging during debugging `` @path @path/to/file @readme.md @docs/conventions.md @ /.claude/ bonnes pratiques pour claude md avertissement de sécurité injection via claude md mémoires automatiques v2 1 59 auto dream consolidation de la mémoire découverte communautaire modèle source unique de vérité claude md dans les monorepos",
+    "keywords": "overrides the ultimate claude code guide - skip pre-commit hooks for quick iterations - use verbose logging during debugging `` @path @path/to/file @readme.md @docs/conventions.md @ /.claude/ bonnes pratiques pour claude md avertissement de sécurité injection via claude md mémoires automatiques v2 1 59 auto dream consolidation de la mémoire découverte communautaire modèle source unique de vérité claude md dans les monorepos commandes règles inter paquets",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#overrides",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-commandes",
-    "title": "Commandes",
-    "keywords": "commandes the ultimate claude code guide - - installer toutes les dépendances - - compiler tous les paquets - - lancer le serveur de développement api - - lancer le serveur de développement w",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#commandes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-règles-inter-paquets",
-    "title": "Règles inter-paquets",
-    "keywords": "règles inter paquets the ultimate claude code guide - types partagés dans @acme/shared - tous les paquets utilisent esm markdown @acme/api backend express + prisma.",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#règles-inter-paquets",
     "source": "guide"
   },
   {
@@ -10391,41 +9967,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-contraintes-critiques",
     "title": "Contraintes critiques",
-    "keywords": "contraintes critiques the ultimate claude code guide - ne jamais modifier les fichiers dans src/generated/ (auto-générés par prisma) - toujours utiliser pnpm, jamais npm ou yarn ``` cette séparation main",
+    "keywords": "contraintes critiques the ultimate claude code guide - ne jamais modifier les fichiers dans src/generated/ (auto-générés par prisma) - toujours utiliser pnpm, jamais npm ou yarn .claude/ ├── claude.md in 3 2 la structure du dossier claude structure complète ce qui va où 3 41 1 gestion de versions et sauvegarde 3 3 paramètres permissions settings json configuration d équipe settings local json permissions personnelles paramètres de personnalisation du terminal modèles de permissions comportement ",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#contraintes-critiques",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-3-2-la-structure-du-dossier-claude",
-    "title": "3.2 La structure du dossier .claude/",
-    "keywords": "3 2 la structure du dossier claude the ultimate claude code guide le dossier est le répertoire claude code de votre projet pour la mémoire, les paramètres et les extensions. structure complète ``` .claude/ ├── claude structure complète ce qui va où 3 41 1 gestion de versions et sauvegarde hiérarchie de configuration stratégie git pour la configuration de projet gestion de versions pour la configuration globale claude stratégies de sauvegarde synchronisation multi machine considérations de sécuri",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-2-la-structure-du-dossier-claude",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-3-3-paramètres-permissions",
-    "title": "3.3 Paramètres & Permissions",
-    "keywords": "3 3 paramètres permissions the ultimate claude code guide settings.json (configuration d'équipe) ce fichier configure les hooks, les permissions, les variables d'environnement, et bien plus. le fichier au niv settings json configuration d équipe settings local json permissions personnelles paramètres de personnalisation du terminal modèles de permissions comportement des permissions configuration allowedtools autoapprovetools mémoire dynamique changement de profil",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-3-paramètres-permissions",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-3-4-règles-de-priorité",
-    "title": "3.4 Règles de priorité",
-    "keywords": "3 4 règles de priorité the ultimate claude code guide lorsque des fichiers mémoire ou des paramètres entrent en conflit, claude code applique les priorités suivantes : priorité des paramètres priorité de priorité des paramètres priorité de claude md chargement automatique des règles comparaison du chargement en mémoire règles par chemin décembre 2025",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-4-règles-de-priorité",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-3-5-configuration-d-équipe-à-grande-échelle",
-    "title": "3.5 Configuration d'équipe à grande échelle",
-    "keywords": "3 5 configuration d équipe à grande échelle the ultimate claude code guide --- 📌 résumé de la section 3.5 (60 secondes) problème : les fichiers d'instructions pour l'ia (claude.md, .cursorrules, agents.md) se fragmentent ent résumé de la section 3 5 60 secondes le problème de fragmentation n m p solution assemblage de modules basé sur des profils yaml de profil template squelette",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-5-configuration-d-équipe-à-grande-échelle",
     "source": "guide"
   },
   {
@@ -10471,41 +10015,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-4-agents",
     "title": "4. Agents",
-    "keywords": "4 agents the ultimate claude code guide accès rapide : qu'est-ce que les agents · créer des agents personnalisés · template d'agent · bonnes pratiques · exemples d'agents ---",
+    "keywords": "4 agents the ultimate claude code guide accès rapide : qu'est-ce que les agents · créer des agents personnalisés · template d'agent · bonnes pratiques · exemples d'agents --- 📌 résumé de la résumé de la section 4 60 secondes 4 1 ce que sont les agents pourquoi utiliser des agents agent vs prompt direct agents intégrés vs personnalisés 4 2 créer des agents personnalisés structure d un fichier agent champs du frontmatter sélection du modèle 4 3 modèle d agent",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#4-agents",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-résumé-de-la-section-4-60-secondes",
-    "title": "📌 Résumé de la Section 4 (60 secondes)",
-    "keywords": "résumé de la section 4 60 secondes the ultimate claude code guide ce que sont les agents : des personas ia spécialisés pour des tâches précises (comme des « consultants experts ») quand en créer un : - ✅ la tâche se",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#résumé-de-la-section-4-60-secondes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-1-ce-que-sont-les-agents",
-    "title": "4.1 Ce que sont les Agents",
-    "keywords": "4 1 ce que sont les agents the ultimate claude code guide les agents sont des sous-processus spécialisés auxquels claude peut déléguer des tâches. pourquoi utiliser des agents ? sans agents avec agents ------ pourquoi utiliser des agents agent vs prompt direct agents intégrés vs personnalisés",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-1-ce-que-sont-les-agents",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-2-créer-des-agents-personnalisés",
-    "title": "4.2 Créer des Agents Personnalisés",
-    "keywords": "4 2 créer des agents personnalisés the ultimate claude code guide les agents sont des fichiers markdown dans avec un frontmatter yaml. structure d'un fichier agent champs du frontmatter tous les champs officiels pris structure d un fichier agent champs du frontmatter sélection du modèle",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-2-créer-des-agents-personnalisés",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-3-modèle-d-agent",
-    "title": "4.3 Modèle d'Agent",
-    "keywords": "4 3 modèle d agent the ultimate claude code guide copiez ce modèle pour créer votre propre agent : ```markdown --- name: nom-de-votre-agent description: utilisez cet agent quand [description du déclen",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-3-modèle-d-agent",
     "source": "guide"
   },
   {
@@ -10551,25 +10063,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exemples",
     "title": "Exemples",
-    "keywords": "exemples the ultimate claude code guide exemple 1 : [nom du scénario] utilisateur : [exemple de prompt] votre approche : 1. [ce que vous faites en premier] 2. [ce que vous faites ensuite] 3. exemple 1 nom du scénario",
+    "keywords": "exemples the ultimate claude code guide exemple 1 : [nom du scénario] utilisateur : [exemple de prompt] votre approche : 1. [ce que vous faites en premier] 2. [ce que vous faites ensuite] 3. exemple 1 nom du scénario 4 4 bonnes pratiques à faire et à éviter spécialisation plutôt que généralisation déclencheurs d activation explicites composition de skills liste de validation d un agent sous agents en arrière plan 4 5 mémoire des agents pourquoi la mémoire des agents est importante portées de mém",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exemples",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-4-bonnes-pratiques",
-    "title": "4.4 Bonnes Pratiques",
-    "keywords": "4 4 bonnes pratiques the ultimate claude code guide à faire et à éviter ✅ à faire ❌ à éviter ----------- ------------ faire des agents spécialistes créer des agents généralistes définir des déclencheurs à faire et à éviter spécialisation plutôt que généralisation déclencheurs d activation explicites composition de skills liste de validation d un agent sous agents en arrière plan",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-4-bonnes-pratiques",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-5-mémoire-des-agents",
-    "title": "4.5 Mémoire des agents",
-    "keywords": "4 5 mémoire des agents the ultimate claude code guide introduit dans claude code v2.1.33 (février 2026), le champ frontmatter donne aux sous-agents une connaissance persistante au format markdown qui surv pourquoi la mémoire des agents est importante portées de mémoire fonctionnement de l injection des 200 lignes structure de memory md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-5-mémoire-des-agents",
     "source": "guide"
   },
   {
@@ -10599,17 +10095,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-topic-files",
     "title": "Topic files",
-    "keywords": "topic files the ultimate claude code guide - react-patterns.md — component structure, hook usage, memoization rules - security-checklist.md — owasp top 10 per-category notes yaml --- name: api- encourager les agents à utiliser leur mémoire choisir la bonne portée",
+    "keywords": "topic files the ultimate claude code guide - react-patterns.md — component structure, hook usage, memoization rules - security-checklist.md — owasp top 10 per-category notes yaml --- name: api- encourager les agents à utiliser leur mémoire choisir la bonne portée 4 6 exemples d agents exemple 1 agent de révision de code",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#topic-files",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-6-exemples-d-agents",
-    "title": "4.6 Exemples d'agents",
-    "keywords": "4 6 exemples d agents the ultimate claude code guide exemple 1 : agent de révision de code ```markdown --- name: code-reviewer description: use for code quality reviews, security audits, and performance exemple 1 agent de révision de code",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-6-exemples-d-agents",
     "source": "guide"
   },
   {
@@ -10695,33 +10183,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-contraintes",
     "title": "Contraintes",
-    "keywords": "contraintes the ultimate claude code guide - suivre les patterns existants du projet - prioriser la compatibilité ascendante - tenir compte des implications en termes de performance - documente",
+    "keywords": "contraintes the ultimate claude code guide - suivre les patterns existants du projet - prioriser la compatibilité ascendante - tenir compte des implications en termes de performance - documente 4 7 patterns d agents avancés tool seo optimisation des descriptions d agent classification des agents par poids la méthode des 7 tâches parallèles sous agents à rôles séparés agents à perspective nommée matrice de décision de parallélisation pattern d orchestration multi agent matrice de sélection de mod",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#contraintes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-4-7-patterns-d-agents-avancés",
-    "title": "4.7 Patterns d'Agents Avancés",
-    "keywords": "4 7 patterns d agents avancés the ultimate claude code guide tool seo : optimisation des descriptions d'agent le champ détermine quand claude active automatiquement votre agent. optimisez-le comme du seo : techn tool seo optimisation des descriptions d agent classification des agents par poids la méthode des 7 tâches parallèles sous agents à rôles séparés agents à perspective nommée matrice de décision de parallélisation pattern d orchestration multi agent matrice de sélection de modèle tactique",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-7-patterns-d-agents-avancés",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-étape-5-auto-évolution-après-chaque-exécution",
-    "title": "Étape 5 : Auto-évolution (après chaque exécution)",
-    "keywords": "étape 5 auto évolution après chaque exécution the ultimate claude code guide lire presentation/index.html et mettre à jour vos skills : - skill slide-structure : mettre à jour les plages de sections, la table de pondération, le",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#étape-5-auto-évolution-après-chaque-exécution",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-learnings",
-    "title": "Learnings",
-    "keywords": "learnings the ultimate claude code guide chaque exécution ajoute des découvertes ici. les invocations futures démarrent informées. - les badges de slides sont injectés en js : ne jamais les c",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#learnings",
     "source": "guide"
   },
   {
@@ -10735,41 +10199,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-5-1-comprendre-les-skills",
     "title": "5.1 Comprendre les skills",
-    "keywords": "5 1 comprendre les skills the ultimate claude code guide les skills sont des packages de connaissances que les agents peuvent hériter. skills vs agents les commandes sont dépréciées. le répertoire n'existe p skills vs agents comparaison détaillée arbre de décision lequel utiliser patterns courants skills et subagents pourquoi les skills qu est ce qui fait un bon skill",
+    "keywords": "5 1 comprendre les skills the ultimate claude code guide les skills sont des packages de connaissances que les agents peuvent hériter. skills vs agents les commandes sont dépréciées. le répertoire n'existe p skills vs agents comparaison détaillée arbre de décision lequel utiliser patterns courants skills et subagents pourquoi les skills qu est ce qui fait un bon skill 5 2 créer des skills structure d un dossier skill frontmatter de skill md valider les skills contrôles qualité des skills 5 x cyc",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#5-1-comprendre-les-skills",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-2-créer-des-skills",
-    "title": "5.2 Créer des skills",
-    "keywords": "5 2 créer des skills the ultimate claude code guide les skills résident dans des répertoires . structure d'un dossier skill frontmatter de skill.md champ spec description structure d un dossier skill frontmatter de skill md valider les skills contrôles qualité des skills",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-2-créer-des-skills",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-x-cycle-de-vie-et-retrait-des-skills",
-    "title": "5.X Cycle de vie et retrait des skills",
-    "keywords": "5 x cycle de vie et retrait des skills the ultimate claude code guide les skills ont un cycle de vie. les traiter comme des artefacts permanents conduit à la dégradation des skills : du code mort dans qui consomme des to liste de contrôle pour la décision de retrait",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-x-cycle-de-vie-et-retrait-des-skills",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-y-skill-evals",
-    "title": "5.Y Skill Evals",
-    "keywords": "5 y skill evals the ultimate claude code guide les skill evals font passer la qualité de « semble fonctionner » à « fonctionne avec certitude ». c'est la couche de tests qui rend les skills dignes fonctionnement les trois outils d eval deux utilisations des evals structure pratique d une eval principes de conception des evals",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-y-skill-evals",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-3-modèle-de-skill",
-    "title": "5.3 Modèle de skill",
-    "keywords": "5 3 modèle de skill the ultimate claude code guide ```markdown --- name: your-skill-name description: expert guidance for [domain] problems allowed-tools: read grep bash --- your skill name",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-3-modèle-de-skill",
     "source": "guide"
   },
   {
@@ -10815,25 +10247,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-examples",
     "title": "Examples",
-    "keywords": "examples the ultimate claude code guide good pattern anti-pattern good pattern anti pattern",
+    "keywords": "examples the ultimate claude code guide good pattern anti-pattern reference material see for detailed documentation. 5.4 exemples de skills exemple 1 : skill security guardian ```markdown -- good pattern anti pattern reference material 5 4 exemples de skills exemple 1 skill security guardian",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#examples",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-reference-material",
-    "title": "Reference Material",
-    "keywords": "reference material the ultimate claude code guide see for detailed documentation.",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#reference-material",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-4-exemples-de-skills",
-    "title": "5.4 Exemples de skills",
-    "keywords": "5 4 exemples de skills the ultimate claude code guide exemple 1 : skill security guardian ```markdown --- name: security-guardian description: security expertise for owasp top 10, auth, and data protectio exemple 1 skill security guardian",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-4-exemples-de-skills",
     "source": "guide"
   },
   {
@@ -10855,17 +10271,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-modèles-d-authentification",
     "title": "Modèles d'authentification",
-    "keywords": "modèles d authentification the ultimate claude code guide correct : hachage sécurisé des mots de passe incorrect : hachage non sécurisé correct hachage sécurisé des mots de passe incorrect hachage non sécurisé",
+    "keywords": "modèles d authentification the ultimate claude code guide correct : hachage sécurisé des mots de passe incorrect : hachage non sécurisé gestion des secrets ne jamais committer des secrets utiliser des variabl correct hachage sécurisé des mots de passe incorrect hachage non sécurisé gestion des secrets ne jamais committer des secrets utiliser des variables d environnement exemple 2 skill tdd",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#modèles-d-authentification",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-gestion-des-secrets",
-    "title": "Gestion des secrets",
-    "keywords": "gestion des secrets the ultimate claude code guide ne jamais committer des secrets utiliser des variables d'environnement exemple 2 : skill tdd ```markdown --- name: tdd description: test-driven develo ne jamais committer des secrets utiliser des variables d environnement exemple 2 skill tdd",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#gestion-des-secrets",
     "source": "guide"
   },
   {
@@ -10879,47 +10287,23 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-méthodologie",
     "title": "Méthodologie",
-    "keywords": "méthodologie the ultimate claude code guide étape 1 : red (écrire un test qui échoue) écrire un test pour le comportement souhaité avant d'écrire le moindre code. exécuter : → doit échouer (la f étape 1 red écrire un test qui échoue étape 2 green implémentation minimale étape 3 refactor améliorer",
+    "keywords": "méthodologie the ultimate claude code guide étape 1 : red (écrire un test qui échoue) écrire un test pour le comportement souhaité avant d'écrire le moindre code. exécuter : → doit échouer (la f étape 1 red écrire un test qui échoue étape 2 green implémentation minimale étape 3 refactor améliorer structure des tests le modèle aaa exemple 3 skill analyseur de design patterns exemple 4 skill tally form builder 5 5 dépôts de skills communautaires découverte basée sur un registre ctx7 cli dépôt de s",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#méthodologie",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-structure-des-tests-le-modèle-aaa",
-    "title": "Structure des tests : le modèle AAA",
-    "keywords": "structure des tests le modèle aaa the ultimate claude code guide exemple 3 : skill analyseur de design patterns objectif : détecter, analyser et suggérer des design patterns gang of four dans des bases de code types exemple 3 skill analyseur de design patterns exemple 4 skill tally form builder",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#structure-des-tests-le-modèle-aaa",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-5-5-dépôts-de-skills-communautaires",
-    "title": "5.5 Dépôts de Skills Communautaires",
-    "keywords": "5 5 dépôts de skills communautaires the ultimate claude code guide découverte basée sur un registre : ctx7 cli avant d'explorer des dépôts spécifiques, context7 propose un outil cli compagnon ( ) qui automatise la déc découverte basée sur un registre ctx7 cli dépôt de skills en cybersécurité exemple d utilisation avertissement important claude red bibliothèque de skills en sécurité offensive utilisation ponctuelle sans installation globale schéma de prompt ciblé périmètre éthique et légal skills",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-5-dépôts-de-skills-communautaires",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-6-commandes-skills-invocables-par-l-utilisateur",
     "title": "6. Commandes (skills invocables par l'utilisateur)",
-    "keywords": "6 commandes skills invocables par l utilisateur the ultimate claude code guide accès rapide : slash commands · créer des commandes personnalisées · modèle de commande · exemples de commandes --- cc 2.1.3 (janvier 2026) : les skil",
+    "keywords": "6 commandes skills invocables par l utilisateur the ultimate claude code guide accès rapide : slash commands · créer des commandes personnalisées · modèle de commande · exemples de commandes --- cc 2.1.3 (janvier 2026) : les skil 6 1 slash commands commandes intégrées la commande btw bifurcation de session recap contexte de session au retour la commande insights",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#6-commandes-skills-invocables-par-l-utilisateur",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-6-1-slash-commands",
-    "title": "6.1 Slash Commands",
-    "keywords": "6 1 slash commands the ultimate claude code guide les slash commands sont des skills invocables par l'utilisateur. depuis cc 2.1.3, elles se trouvent dans (et non ). la syntaxe d'invocation reste inch commandes intégrées la commande btw bifurcation de session recap contexte de session au retour la commande insights ce qu elle analyse ce qu elle produit comment l utiliser",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#6-1-slash-commands",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-en-un-coup-d-œil",
     "title": "En un coup d'œil",
-    "keywords": "en un coup d œil the ultimate claude code guide [4 sections de résumé...] url du rapport : file:///users/you/.claude/usage-data/report.html `` open /.claude/usage-data/report.html xdg-open /.claude/ exemples d analyses générées",
+    "keywords": "en un coup d œil the ultimate claude code guide [4 sections de résumé...] url du rapport : file:///users/you/.claude/usage-data/report.html `` open /.claude/usage-data/report.html xdg-open /.claude/",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#en-un-coup-d-œil",
     "source": "guide"
@@ -10927,25 +10311,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-project-directories",
     "title": "Project Directories",
-    "keywords": "project directories the ultimate claude code guide always confirm the correct working directory before starting work: - frontend: /path/to/web-app - backend: /path/to/api - docs: /path/to/documentation détails techniques fonctionnement de insights aperçu de l architecture limitations intégration avec d autres outils exemple de flux de travail comparaison avec d autres outils d analyse la commande simplify quand l utiliser ce qu elle fait positionnement la commande batch fonctionnement utilisatio",
+    "keywords": "project directories the ultimate claude code guide always confirm the correct working directory before starting work: - frontend: /path/to/web-app - backend: /path/to/api - docs: /path/to/documentation la commande simplify la commande batch tâches planifiées trois méthodes skills invocables par l utilisateur anciennement commandes personnalisées 6 2 création de commandes personnalisées emplacement des fichiers de commande nommage des commandes interpolation de variables 6 3 modèle de commande",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#project-directories",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-6-2-création-de-commandes-personnalisées",
-    "title": "6.2 Création de Commandes Personnalisées",
-    "keywords": "6 2 création de commandes personnalisées the ultimate claude code guide les commandes sont des fichiers markdown qui définissent un processus. emplacement des fichiers de commande nommage des commandes fichier invocation - emplacement des fichiers de commande nommage des commandes interpolation de variables",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#6-2-création-de-commandes-personnalisées",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-6-3-modèle-de-commande",
-    "title": "6.3 Modèle de Commande",
-    "keywords": "6 3 modèle de commande the ultimate claude code guide ```markdown --- description: description brève de ce que fait cette commande argument-hint: \"[--flag] <required arg [optional arg]\" --- nom de la comm",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#6-3-modèle-de-commande",
     "source": "guide"
   },
   {
@@ -10999,17 +10367,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-points-de-contrôle-de-validation-du-contexte",
     "title": "Points de Contrôle de Validation du Contexte",
-    "keywords": "points de contrôle de validation du contexte the ultimate claude code guide avant d'exécuter toute étape, vérifiez que tous ces éléments sont vrais. si un point de contrôle échoue, arrêtez-vous et expliquez pourquoi. [ ] la br",
+    "keywords": "points de contrôle de validation du contexte the ultimate claude code guide avant d'exécuter toute étape, vérifiez que tous ces éléments sont vrais. si un point de contrôle échoue, arrêtez-vous et expliquez pourquoi. [ ] la br 6 4 exemples de commandes exemple 1 commande commit",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#points-de-contrôle-de-validation-du-contexte",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-6-4-exemples-de-commandes",
-    "title": "6.4 Exemples de Commandes",
-    "keywords": "6 4 exemples de commandes the ultimate claude code guide exemple 1 : commande commit ```markdown valider les modifications actuelles exemple 1 commande commit",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#6-4-exemples-de-commandes",
     "source": "guide"
   },
   {
@@ -11023,25 +10383,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-processus",
     "title": "Processus",
-    "keywords": "processus the ultimate claude code guide 1. vérifier le statut exécuter pour voir toutes les modifications. 2. analyser les modifications exécuter pour comprendre ce qui a changé. 3. consulte",
+    "keywords": "processus the ultimate claude code guide 1. vérifier le statut exécuter pour voir toutes les modifications. 2. analyser les modifications exécuter pour comprendre ce qui a changé. 3. consulte arguments format de sortie exemple 2 commande pr",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#processus",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-arguments",
-    "title": "Arguments",
-    "keywords": "arguments the ultimate claude code guide si $arguments[0] est fourni : - utiliser comme indication pour le message de commit : \"$arguments[0]\" (ou \"$0\")",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#arguments",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-format-de-sortie",
-    "title": "Format de Sortie",
-    "keywords": "format de sortie the ultimate claude code guide commit : [hash] [message] fichiers : [nombre] modifié(s) markdown créer une pull request exemple 2 commande pr",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#format-de-sortie",
     "source": "guide"
   },
   {
@@ -11055,17 +10399,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-processus",
     "title": "Processus",
-    "keywords": "processus the ultimate claude code guide 1. vérifier l'état de la branche - - vérifier que le répertoire de travail est propre - - confirmer que l'on est sur la branche de fonctionnalité - -",
+    "keywords": "processus the ultimate claude code guide 1. vérifier l'état de la branche - - vérifier que le répertoire de travail est propre - - confirmer que l'on est sur la branche de fonctionnalité - - modèle de corps de pr",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#processus",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-modèle-de-corps-de-pr",
-    "title": "Modèle de corps de PR",
-    "keywords": "modèle de corps de pr the ultimate claude code guide ```markdown",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#modèle-de-corps-de-pr",
     "source": "guide"
   },
   {
@@ -11095,25 +10431,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-screenshots",
     "title": "Screenshots",
-    "keywords": "screenshots the ultimate claude code guide [if ui changes] ```",
+    "keywords": "screenshots the ultimate claude code guide [if ui changes] markdown problem framer arguments gestion des erreurs exemple 3 commande problem framer",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#screenshots",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-arguments",
-    "title": "Arguments",
-    "keywords": "arguments the ultimate claude code guide si $arguments[0] est fourni : - utiliser comme indication de titre de pr : \"$arguments[0]\" (ou \"$0\")",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#arguments",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-gestion-des-erreurs",
-    "title": "Gestion des erreurs",
-    "keywords": "gestion des erreurs the ultimate claude code guide si la branche courante n'est pas une branche de fonctionnalité : - avertir : \"créez d'abord une branche de fonctionnalité\" si le répertoire de travail exemple 3 commande problem framer",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#gestion-des-erreurs",
     "source": "guide"
   },
   {
@@ -11143,185 +10463,33 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-7-hooks",
     "title": "7. Hooks",
-    "keywords": "7 hooks the ultimate claude code guide accès rapide : le système d'événements · créer des hooks · modèles de hooks · hooks de sécurité · exemples de hooks ---",
+    "keywords": "7 hooks the ultimate claude code guide accès rapide : le système d'événements · créer des hooks · modèles de hooks · hooks de sécurité · exemples de hooks --- 📌 résumé de la section 7 (60 résumé de la section 7 60 secondes 7 1 le système d événements types d événements flux d événements modèle d exécution des hooks v2 1 0 scripts shell vs agents ia quand utiliser quoi 7 2 création de hooks enregistrement des hooks settings json champs de configuration hooks à portée de session le menu hooks hoo",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#7-hooks",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-résumé-de-la-section-7-60-secondes",
-    "title": "📌 Résumé de la section 7 (60 secondes)",
-    "keywords": "résumé de la section 7 60 secondes the ultimate claude code guide ce que sont les hooks : des scripts qui s'exécutent automatiquement lors d'événements (comme les git hooks) types d'événements : - → avant que claude",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#résumé-de-la-section-7-60-secondes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-1-le-système-d-événements",
-    "title": "7.1 Le système d'événements",
-    "keywords": "7 1 le système d événements the ultimate claude code guide les hooks sont des scripts qui s'exécutent automatiquement lorsque des événements spécifiques se produisent. types d'événements cycle de vie (événemen types d événements flux d événements modèle d exécution des hooks v2 1 0 synchrone par défaut asynchrone optionnel exemple de configuration matrice de décision impact sur les performances limitations des hooks asynchrones asyncrewake quand async a été introduit scripts shell vs agents ia q",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-1-le-système-d-événements",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-2-création-de-hooks",
-    "title": "7.2 Création de Hooks",
-    "keywords": "7 2 création de hooks the ultimate claude code guide enregistrement des hooks (settings.json) champs de configuration champ description ------- ------------- motif regex filtrant le déclenchement des hoo enregistrement des hooks settings json champs de configuration hooks à portée de session le menu hooks hooks conditionnels avec if v2 1 85 entrée du hook json sur stdin sortie du hook codes de sortie modèle de succès silencieux claude env file sessionstart setup cwdchanged filechanged référence ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-2-création-de-hooks",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-3-modèles-de-hooks",
-    "title": "7.3 Modèles de Hooks",
-    "keywords": "7 3 modèles de hooks the ultimate claude code guide modèle 1 : pretooluse (bloqueur de sécurité) ```bash !/bin/bash .claude/hooks/security-blocker.sh blocks dangerous commands input=$(cat) tool name=$(e modèle 1 pretooluse bloqueur de sécurité modèle 2 posttooluse formateur automatique modèle 3 userpromptsubmit enrichisseur de contexte modèle 4 notification alertes sonores outil natif powershell windows aperçu opt in v2 1 84 modèles de hooks windows modèle w1 vérification de sécurité pretooluse ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-3-modèles-de-hooks",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-4-hooks-de-sécurité",
-    "title": "7.4 Hooks de Sécurité",
-    "keywords": "7 4 hooks de sécurité the ultimate claude code guide les hooks de sécurité sont essentiels pour protéger votre système. configurations avancées : pour une sécurité complète incluant la détection d'inject règles de sécurité recommandées tester les hooks de sécurité configuration avancée le modèle comme gardien de sécurité stratégie de protection des fichiers trois couches de protection couche 1 permissions deny couche 2 fichier de schémas agentignore couche 3 détection de contournement exemple de",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-4-hooks-de-sécurité",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-5-exemples-de-hooks",
-    "title": "7.5 Exemples de Hooks",
-    "keywords": "7 5 exemples de hooks the ultimate claude code guide dispatching intelligent de hooks au lieu de configurer des dizaines de hooks individuels, utilisez un dispatcher unique qui achemine les événements de dispatching intelligent de hooks exemple 1 journal d activité exemple 2 portail de linting modèle de pipeline de validation le modèle configuration du pipeline en trois étapes étape 1 vérification des types étape 2 linting étape 3 exécution des tests exécution intelligente ignorer quand non pert",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-5-exemples-de-hooks",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-7-6-profils-de-hooks",
-    "title": "7.6 Profils de Hooks",
-    "keywords": "7 6 profils de hooks the ultimate claude code guide temps de lecture : 5 minutes niveau de compétence : configuration d'équipe à mesure que votre collection de hooks grandit, une tension émerge : certai implémentation quand utiliser chaque niveau règles de conception essentielles",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-6-profils-de-hooks",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-8-serveurs-mcp",
     "title": "8. Serveurs MCP",
-    "keywords": "8 serveurs mcp the ultimate claude code guide accès rapide : qu'est-ce que mcp · serveurs disponibles · configuration · guide de sélection de serveur · système de plugins · sécurité mcp --- temps",
+    "keywords": "8 serveurs mcp the ultimate claude code guide accès rapide : qu'est-ce que mcp · serveurs disponibles · configuration · guide de sélection de serveur · système de plugins · sécurité mcp --- temps 8 1 qu est ce que mcp pourquoi mcp comment ça fonctionne évolution mcp extension apps sep 1865 8 2 serveurs disponibles serena analyse sémantique du code grepai recherche sémantique recommandée claude mem mémoire de session automatique graphify graphes de connaissance de la base de code matrice de décis",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#8-serveurs-mcp",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-8-1-qu-est-ce-que-mcp",
-    "title": "8.1 Qu'est-ce que MCP",
-    "keywords": "8 1 qu est ce que mcp the ultimate claude code guide mcp (model context protocol) est un standard permettant de connecter des modèles d'ia à des outils externes et des sources de données. pourquoi mcp ? pourquoi mcp comment ça fonctionne évolution mcp extension apps sep 1865 le problème du fossé contextuel que sont les mcp apps outils interactifs disponibles support des plateformes ce que cela implique pour les utilisateurs cli fondations techniques ressources",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-1-qu-est-ce-que-mcp",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-8-2-serveurs-disponibles",
-    "title": "8.2 Serveurs disponibles",
-    "keywords": "8 2 serveurs disponibles the ultimate claude code guide <details <summary <b catalogue de serveurs mcp (cliquer pour développer)</b </summary serena (analyse sémantique du code) objectif : compréhension app serena analyse sémantique du code grepai recherche sémantique recommandée claude mem mémoire de session automatique graphify graphes de connaissance de la base de code matrice de décision des outils mémoire comparaison des outils de recherche rg vs grepai vs serena vs ast grep vs claude mem m",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-2-serveurs-disponibles",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-8-3-configuration",
-    "title": "8.3 Configuration",
-    "keywords": "8 3 configuration the ultimate claude code guide emplacement de la configuration mcp note : trois portées existent : (par défaut, privée + projet courant, dans ), (partagée via à la racine du projet) emplacement de la configuration mcp exemple de configuration champs de configuration en têtes dynamiques pour plusieurs serveurs mcp v2 1 85 substitution de variables gérer de grands ensembles de serveurs mcp recherche d outils mcp chargement différé à grande échelle configuration mcp par cli 8 3 1 ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-3-configuration",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-8-4-guide-de-sélection-des-serveurs",
-    "title": "8.4 Guide de sélection des serveurs",
-    "keywords": "8 4 guide de sélection des serveurs the ultimate claude code guide arbre de décision ``` de quoi avez-vous besoin ? │ ├─ vous connaissez le pattern/texte exact ? │ └─ utiliser l'outil natif grep ou rg ( 20ms) │ ├─ com arbre de décision comparaison des serveurs combiner les serveurs étude de cas en production enquêteur multi systèmes pour le support",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-4-guide-de-sélection-des-serveurs",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-8-5-système-de-plugins",
-    "title": "8.5 Système de plugins",
-    "keywords": "8 5 système de plugins the ultimate claude code guide claude code inclut un système de plugins complet qui vous permet d'étendre les fonctionnalités via des plugins et des marketplaces créés par la commun que sont les plugins commandes des plugins gestion des marketplaces utiliser les plugins chargement des plugins en session politique de plugins au niveau du dépôt via add dir v2 1 45 quand utiliser les plugins créer des plugins personnalisés support natif lsp v2 0 74 activation configuration de",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-5-système-de-plugins",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-8-6-sécurité-mcp",
-    "title": "8.6 Sécurité MCP",
-    "keywords": "8 6 sécurité mcp the ultimate claude code guide les serveurs mcp étendent les capacités de claude code, mais ils élargissent également sa surface d'attaque. avant d'installer un serveur mcp, en part liste de contrôle pré installation risques de sécurité à comprendre patterns de configuration sécurisés signaux d alarme audit des serveurs installés",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-6-sécurité-mcp",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-9-patterns-avancés",
     "title": "9. Patterns avancés",
-    "keywords": "9 patterns avancés the ultimate claude code guide accès rapide : la trinité · patterns de composition · intégration ci/cd · intégration ide · boucles de feedback serrées · optimisation du contexte par",
+    "keywords": "9 patterns avancés the ultimate claude code guide accès rapide : la trinité · patterns de composition · intégration ci/cd · intégration ide · boucles de feedback serrées · optimisation du contexte par section 9 tl dr 3 minutes catégories de patterns quand utiliser cette section contexte industriel tendances du codage agentique en 2026 données d adoption validées enseignements de la recherche étude interne anthropic anti patterns en entreprise études de cas industrielles navigation 9 1 la trinité",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#9-patterns-avancés",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-section-9-tl-dr-3-minutes",
-    "title": "📌 Section 9 TL;DR (3 minutes)",
-    "keywords": "section 9 tl dr 3 minutes the ultimate claude code guide ce que vous apprendrez : des workflows de niveau production qui combinent plusieurs fonctionnalités de claude code. catégories de patterns : 🎯 la tri catégories de patterns quand utiliser cette section",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#section-9-tl-dr-3-minutes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-contexte-industriel-tendances-du-codage-agentique",
-    "title": "🌍 Contexte industriel : Tendances du codage agentique en 2026",
-    "keywords": "contexte industriel tendances du codage agentique en 2026 the ultimate claude code guide source : anthropic \"2026 agentic coding trends report\" (fév. 2026) les patterns de cette section reflètent l'évolution de l'industrie documentée par a données d adoption validées enseignements de la recherche étude interne anthropic anti patterns en entreprise études de cas industrielles navigation",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#contexte-industriel-tendances-du-codage-agentique-en-2026",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-1-la-trinité",
-    "title": "9.1 La Trinité",
-    "keywords": "9 1 la trinité the ultimate claude code guide le pattern claude code le plus puissant combine trois techniques : quand utiliser la trinité situation utiliser la trinité ? quand utiliser la trinité extended thinking opus 4 5 adaptive thinking opus 4 6 chronologie d évolution adaptive thinking opus 4 6 dont opus 4 8 contrôler le mode de pensée implications sur les coûts migration pour les utilisateurs existants référence des mots clés legacy changements majeurs de l api opus 4 6 exemple utilisatio",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-1-la-trinité",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-2-patrons-de-composition",
-    "title": "9.2 Patrons de Composition",
-    "keywords": "9 2 patrons de composition the ultimate claude code guide délégation multi-agent lancez plusieurs agents pour différents aspects : claude coordonnera : - l'architecte backend conçoit l'api - le réviseur sécur délégation multi agent empilement de compétences le patron rev the engine le patron stack maximum",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-2-patrons-de-composition",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-3-intégration-ci-cd",
-    "title": "9.3 Intégration CI/CD",
-    "keywords": "9 3 intégration ci cd the ultimate claude code guide 📖 guide complet des workflows : consultez github actions workflows pour 5 patrons prêts pour la production utilisant l'action officielle (revue de pr mode headless workflows de piping unix intégration des git hooks intégration github actions débogage des exécutions ci échouées patron verify gate génération de notes de version approche 1 basée sur des commandes",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-3-intégration-ci-cd",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-process",
     "title": "Process",
-    "keywords": "process the ultimate claude code guide 1. get commits since last tag : 2. read full commit details : - include commit messages - include file changes - include pr numbers if present 3. cate",
+    "keywords": "process the ultimate claude code guide 1. get commits since last tag : 2. read full commit details : - include commit messages - include file changes - include pr numbers if present 3. cate verification approche 2 automatisation ci cd",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#process",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-verification",
-    "title": "Verification",
-    "keywords": "verification the ultimate claude code guide - check for missed breaking changes - verify all pr references are valid - ensure migration guides are clear yaml name: release on: push: tags: - 'v ' approche 2 automatisation ci cd approche 3 flux de travail interactif bonnes pratiques exemple de résultat",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#verification",
     "source": "guide"
   },
   {
@@ -11335,7 +10503,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-nouveautés-de-la-v2-0-0",
     "title": "Nouveautés de la v2.0.0",
-    "keywords": "nouveautés de la v2 0 0 the ultimate claude code guide cette version apporte des améliorations de performance, des corrections de bugs et une nouvelle fonctionnalité d'avatar. ✨ nouvelles fonctionnalités - nouvelles fonctionnalités corrections de bugs performance changements majeurs problèmes courants fragments de journal des modifications schéma d application par pr automatisation des déploiements secrets requis compétence de déploiement",
+    "keywords": "nouveautés de la v2 0 0 the ultimate claude code guide cette version apporte des améliorations de performance, des corrections de bugs et une nouvelle fonctionnalité d'avatar. ✨ nouvelles fonctionnalités - nouvelles fonctionnalités corrections de bugs performance changements majeurs fragments de journal des modifications schéma d application par pr automatisation des déploiements",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#nouveautés-de-la-v2-0-0",
     "source": "guide"
@@ -11343,33 +10511,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-deploy-workflow",
     "title": "Deploy Workflow",
-    "keywords": "deploy workflow the ultimate claude code guide 1. run tests: — stop if any fail 2. build: — stop if build fails 3. deploy to staging: 4. run smoke tests against staging url 5. pause — output stagin garde fous non négociables",
+    "keywords": "deploy workflow the ultimate claude code guide 1. run tests: — stop if any fail 2. build: — stop if build fails 3. deploy to staging: 4. run smoke tests against staging url 5. pause — output stagin 9 4 intégration avec les ide intégration avec vs code intégration avec jetbrains intégration avec xcode fév 2026 intégration dans le terminal 9 5 boucles de retour rapides la pyramide des boucles de retour mettre en œuvre des boucles rapides intégration avec claude code liste de contrôle des boucles d",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#deploy-workflow",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-4-intégration-avec-les-ide",
-    "title": "9.4 Intégration avec les IDE",
-    "keywords": "9 4 intégration avec les ide the ultimate claude code guide intégration avec vs code claude code s'intègre avec vs code : 1. installer l'extension : rechercher \"claude code\" dans extensions 2. configurer : défi intégration avec vs code intégration avec jetbrains intégration avec xcode fév 2026 intégration dans le terminal macos linux bash zsh windows powershell",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-4-intégration-avec-les-ide",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-5-boucles-de-retour-rapides",
-    "title": "9.5 Boucles de retour rapides",
-    "keywords": "9 5 boucles de retour rapides the ultimate claude code guide temps de lecture : 5 minutes niveau : semaine 1+ les boucles de retour rapides accélèrent l'apprentissage et détectent les problèmes tôt. concevez vot la pyramide des boucles de retour mettre en œuvre des boucles rapides niveau 1 immédiat ide éditeur niveau 2 à la sauvegarde git hooks niveau 3 au commit ci intégration avec claude code liste de contrôle des boucles de retour tâches en arrière plan pour le développement fullstack quand m",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-5-boucles-de-retour-rapides",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-6-les-todos-comme-miroirs-d-instructions",
-    "title": "9.6 Les Todos comme Miroirs d'Instructions",
-    "keywords": "9 6 les todos comme miroirs d instructions the ultimate claude code guide temps de lecture : 5 minutes niveau de compétence : semaine 1+ todowrite n'est pas seulement un outil de suivi, c'est un mécanisme d'instruction. des le principe du miroir le todo comme spécification",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-6-les-todos-comme-miroirs-d-instructions",
     "source": "guide"
   },
   {
@@ -11391,23 +10535,15 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-bon",
     "title": "Bon",
-    "keywords": "bon the ultimate claude code guide - [ ] add error handling: try/catch around api calls, log errors with context, return user-friendly messages, use existing errorboundary component mar modèles de todos",
+    "keywords": "bon the ultimate claude code guide - [ ] add error handling: try/catch around api calls, log errors with context, return user-friendly messages, use existing errorboundary component mar modèles de todos 9 7 styles de sortie styles intégrés impact sur les tokens styles personnalisés approche manuelle directives claude md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#bon",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-9-7-styles-de-sortie",
-    "title": "9.7 Styles de Sortie",
-    "keywords": "9 7 styles de sortie the ultimate claude code guide temps de lecture : 5 minutes niveau de compétence : semaine 1+ contrôlez comment claude répond pour correspondre à votre flux de travail et à vos préf styles intégrés impact sur les tokens styles personnalisés approche manuelle directives claude md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-7-styles-de-sortie",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-output-preferences",
     "title": "Output Preferences",
-    "keywords": "output preferences the ultimate claude code guide - code reviews : detailed, cite specific lines - bug fixes : minimal, show diff only - new features : balanced, explain architecture decisions - refac modèles de sortie génération de diagrammes mermaid types de diagrammes supportés patterns de requête exemples de sorties où visualiser conseils d intégration",
+    "keywords": "output preferences the ultimate claude code guide - code reviews : detailed, cite specific lines - bug fixes : minimal, show diff only - new features : balanced, explain architecture decisions - refac modèles de sortie génération de diagrammes mermaid",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#output-preferences",
     "source": "guide"
@@ -11415,25 +10551,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-9-10-scaffold-first-development-horizontal-first-d",
     "title": "9.10 Scaffold-First Development (Horizontal-First Development)",
-    "keywords": "9 10 scaffold first development horizontal first development the ultimate claude code guide reading time : 5 minutes skill level : month 1+ build horizontally before vertically: scaffold the full structure first, then fill details. the horizo the horizontal approach scaffold first execution scaffold template fill phase",
+    "keywords": "9 10 scaffold first development horizontal first development the ultimate claude code guide reading time : 5 minutes skill level : month 1+ build horizontally before vertically: scaffold the full structure first, then fill details. the horizo the horizontal approach scaffold first execution scaffold template fill phase 9 11 time boxing time box structure time box with claude when time runs out 9 12 advanced context management understanding context window mechanics the compact command custom comp",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#9-10-scaffold-first-development-horizontal-first-development",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-11-time-boxing",
-    "title": "9.11 Time-Boxing",
-    "keywords": "9 11 time boxing the ultimate claude code guide reading time : 3 minutes skill level : week 1 time-boxing prevents endless iteration and forces decisions. time-box structure time-box with claude whe time box structure time box with claude when time runs out",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-11-time-boxing",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-12-advanced-context-management",
-    "title": "9.12 Advanced Context Management",
-    "keywords": "9 12 advanced context management the ultimate claude code guide reading time : 12 minutes skill level : month 2+ understanding context window mechanics claude code's effectiveness is directly correlated with how we understanding context window mechanics the compact command custom compact instructions context preservation strategies strategy 1 periodic checkpoints strategy 2 parallel session management strategy 3 context budget allocation claude md as persistent memory",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-12-advanced-context-management",
     "source": "guide"
   },
   {
@@ -11455,57 +10575,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-known-issues",
     "title": "Known Issues",
-    "keywords": "known issues the ultimate claude code guide - userservice.findbyemail() has n+1 query (fix ticket 234) - tests skip the payment module (temporary, fix this sprint) main agent (coordinator) ├── r advanced multi agent context management context recovery protocols context anti patterns",
+    "keywords": "known issues the ultimate claude code guide - userservice.findbyemail() has n+1 query (fix ticket 234) - tests skip the payment module (temporary, fix this sprint) main agent (coordinator) ├── r advanced multi agent context management context recovery protocols context anti patterns 9 13 debugging patterns rubber duck debugging structured debugging protocol",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#known-issues",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-9-13-debugging-patterns-rubber-duck-debugging",
-    "title": "9.13 Debugging Patterns & Rubber Duck Debugging",
-    "keywords": "9 13 debugging patterns rubber duck debugging the ultimate claude code guide reading time : 10 minutes skill level : week 2+ structured debugging protocol claude is exceptionally effective at debugging when given structured inf structured debugging protocol the debugging template",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-13-debugging-patterns-rubber-duck-debugging",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-bug-report",
     "title": "Bug Report",
-    "keywords": "bug report the ultimate claude code guide what should happen: [expected behavior] what actually happens: [actual behavior with error message] minimal reproduction: [smallest code that shows th example effective bug report rubber duck debugging with claude binary search debugging debugging anti patterns",
+    "keywords": "bug report the ultimate claude code guide what should happen: [expected behavior] what actually happens: [actual behavior with error message] minimal reproduction: [smallest code that shows th rubber duck debugging with claude binary search debugging debugging anti patterns 9 14 code review patterns types of review the review ritual review depth levels requête batch efficace automatisation batch macos shell applescript 9 10 état d esprit d amélioration continue la question clé pipeline d amélior",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#bug-report",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-14-code-review-patterns",
-    "title": "9.14 Code Review Patterns",
-    "keywords": "9 14 code review patterns the ultimate claude code guide reading time : 5 minutes skill level : week 2+ types of review request the right review type: the review ritual ```markdown user: before i submit this types of review the review ritual review depth levels",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-14-code-review-patterns",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-requête-batch-efficace",
-    "title": "Requête Batch Efficace",
-    "keywords": "requête batch efficace the ultimate claude code guide \"appliquer ce motif de modification à tous les fichiers correspondants : motif : ajouter la directive 'use client' aux composants utilisant des hooks automatisation batch macos shell applescript",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#requête-batch-efficace",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-10-état-d-esprit-d-amélioration-continue",
-    "title": "9.10 État d'Esprit d'Amélioration Continue",
-    "keywords": "9 10 état d esprit d amélioration continue the ultimate claude code guide l'objectif n'est pas seulement d'utiliser l'ia pour coder, c'est d' améliorer continuellement le flux de travail afin que l'ia produise de meilleurs r la question clé pipeline d amélioration exemples pratiques le changement de mentalité",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-10-état-d-esprit-d-amélioration-continue",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-11-pièges-courants-bonnes-pratiques",
-    "title": "9.11 Pièges Courants & Bonnes Pratiques",
-    "keywords": "9 11 pièges courants bonnes pratiques the ultimate claude code guide apprenez des erreurs communes pour éviter la frustration et maximiser la productivité. pièges de sécurité ❌ à éviter : - utiliser sur des systèmes en pièges de sécurité pièges de performance pièges de flux de travail",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-11-pièges-courants-bonnes-pratiques",
     "source": "guide"
   },
   {
@@ -11519,17 +10599,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exemple",
     "title": "Exemple",
-    "keywords": "exemple the ultimate claude code guide what: add input validation to the login form where: src/components/loginform.tsx, src/schemas/auth.ts how: use zod schema validation, display errors i pièges de collaboration pièges liés à la structure du code pièges d optimisation des coûts pièges d apprentissage et d adoption anti patterns en entreprise données sectorielles 2026 sur délégation 5 agents automatisation prématurée prolifération d outils 10 serveurs mcp ignorer le paradoxe de la collaboration",
+    "keywords": "exemple the ultimate claude code guide what: add input validation to the login form where: src/components/loginform.tsx, src/schemas/auth.ts how: use zod schema validation, display errors i pièges de collaboration pièges liés à la structure du code pièges d optimisation des coûts pièges d apprentissage et d adoption anti patterns en entreprise données sectorielles 2026 9 12 bonnes pratiques git flux de travail bonnes pratiques pour les messages de commit",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exemple",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-12-bonnes-pratiques-git-flux-de-travail",
-    "title": "9.12 Bonnes pratiques Git & flux de travail",
-    "keywords": "9 12 bonnes pratiques git flux de travail the ultimate claude code guide flux de travail git efficaces avec claude code pour le développement professionnel. bonnes pratiques pour les messages de commit claude code génère au bonnes pratiques pour les messages de commit standards d attribution de l ia",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-12-bonnes-pratiques-git-flux-de-travail",
     "source": "guide"
   },
   {
@@ -11543,17 +10615,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-claude-md-git-workflow",
     "title": "CLAUDE.md Git Workflow",
-    "keywords": "claude md git workflow the ultimate claude code guide always work on feature branches: 1. create branch from main: git checkout -b feature/name 2. make changes and commit regularly 3. push to remote: git rewind vs revert git worktrees pour le développement en parallèle fonctionnalités natives de worktree dans claude code v2 1 49 v2 1 50 démarrer claude dans un worktree isolé isolation déclarative dans les définitions d agents configuration vcs personnalisée avec les événements de hook v2 1 50 au",
+    "keywords": "claude md git workflow the ultimate claude code guide always work on feature branches: 1. create branch from main: git checkout -b feature/name 2. make changes and commit regularly 3. push to remote: git rewind vs revert git worktrees pour le développement en parallèle fonctionnalités natives de worktree dans claude code v2 1 49 v2 1 50 isolation de branche de base de données avec les worktrees coordination de worktrees parallèles dépendances entre tâches 9 13 stratégies d optimisation des coûts",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#claude-md-git-workflow",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-13-stratégies-d-optimisation-des-coûts",
-    "title": "9.13 Stratégies d'Optimisation des Coûts",
-    "keywords": "9 13 stratégies d optimisation des coûts the ultimate claude code guide techniques pratiques pour minimiser les coûts api tout en maximisant la productivité. matrice de sélection de modèle choisissez le bon modèle pour cha matrice de sélection de modèle techniques d économie de tokens caveman réponses ia compressées optimisation de la sortie des commandes avec rtk exploration progressive du code smart explore",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-13-stratégies-d-optimisation-des-coûts",
     "source": "guide"
   },
   {
@@ -11570,38 +10634,6 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "claude md conscience des coûts the ultimate claude code guide mode économique : - utiliser haiku pour les revues et les tâches simples - réserver sonnet pour le travail sur les fonctionnalités - utiliser opus uni flux de travail économiques référence de calcul des tokens liste de contrôle d optimisation des coûts alternative tarif forfaitaire via copilot pro avancé ci cd conscient des coûts compromis coût vs productivité la séparation facturation interactive programmatique effective le 15 juin 2",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#claude-md-conscience-des-coûts",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-14-méthodologies-de-développement",
-    "title": "9.14 Méthodologies de développement",
-    "keywords": "9 14 méthodologies de développement the ultimate claude code guide référence complète : methodologies.md workflows pratiques : workflows/ 15 méthodologies de développement structurées ont émergé pour le développement arbre de décision rapide les 4 workflows fondamentaux pour claude code les 15 méthodologies référence outils sdd externes schémas de combinaison",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-14-méthodologies-de-développement",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-15-schémas-de-prompting-nommés",
-    "title": "9.15 Schémas de prompting nommés",
-    "keywords": "9 15 schémas de prompting nommés the ultimate claude code guide temps de lecture : 5 minutes niveau de compétence : semaine 2+ des schémas nommés mémorables pour une interaction efficace avec claude code. ces schém le schéma as if le schéma de contrainte le schéma explain first le schéma rubber duck le schéma incremental le schéma boundary combinaisons de schémas anti schémas à éviter",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-15-schémas-de-prompting-nommés",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-16-téléportation-de-session",
-    "title": "9.16 Téléportation de session",
-    "keywords": "9 16 téléportation de session the ultimate claude code guide temps de lecture : 5 minutes niveau de compétence : semaine 2+ statut : aperçu de recherche (depuis janvier 2026) la téléportation de session permet d chronologie d évolution référence des commandes prérequis exemple de flux de travail support des environnements limitations actuelles aperçu de recherche dépannage bonnes pratiques variables d environnement",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-16-téléportation-de-session",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-17-modèles-de-mise-à-l-échelle-flux-de-travail-m",
-    "title": "9.17 Modèles de mise à l'échelle : flux de travail multi-instances",
-    "keywords": "9 17 modèles de mise à l échelle flux de travail multi instances the ultimate claude code guide temps de lecture : 10 minutes tl;dr : l'orchestration multi-instances = un modèle avancé pour les équipes gérant 10+ fonctionnalités simultanées. néce vue agents gestion de sessions native v2 1 139 goal mode de complétion autonome v2 1 139 quand le multi instances est pertinent validation industrielle roi du multi instances anthropic 2026 cas réel boris cherny interval modèle alternatif planification ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-17-modèles-de-mise-à-l-échelle-flux-de-travail-multi-instances",
     "source": "guide"
   },
   {
@@ -11647,7 +10679,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-risques",
     "title": "Risques",
-    "keywords": "risques the ultimate claude code guide - les secrets des tokens doivent être dans le .env (jamais committés) - le stockage des tokens de rafraîchissement nécessite une table de base de donn comparaison boris horizontal vs jon vertical analyse des coûts 2 instances vs boucles de correction plans prêts pour les agents bonnes pratiques",
+    "keywords": "risques the ultimate claude code guide - les secrets des tokens doivent être dans le .env (jamais committés) - le stockage des tokens de rafraîchissement nécessite une table de base de donn",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#risques",
     "source": "guide"
@@ -11663,17 +10695,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-implémentation",
     "title": "Implémentation",
-    "keywords": "implémentation the ultimate claude code guide étape 1 : créer les utilitaires jwt fichier : src/auth/jwt.ts (nouveau fichier, 120 lignes) fonctions : - ligne 10-30 : generateaccesstoken(userid: st étape 1 créer les utilitaires jwt étape 2 créer le middleware d authentification étape 3 protéger les routes conseils pour réussir limites voir aussi fondation git worktrees indispensable outillage avancé pour la gestion des worktrees optionnel validation du modèle 3 implémentations indépendantes ai je",
+    "keywords": "implémentation the ultimate claude code guide étape 1 : créer les utilitaires jwt fichier : src/auth/jwt.ts (nouveau fichier, 120 lignes) fonctions : - ligne 10-30 : generateaccesstoken(userid: st étape 1 créer les utilitaires jwt étape 2 créer le middleware d authentification étape 3 protéger les routes fondation git worktrees indispensable outillage avancé pour la gestion des worktrees optionnel étude interne anthropic août 2025 métriques de contribution janvier 2026 analyse coût bénéfice fram",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#implémentation",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-18-conception-de-base-de-code-pour-la-productivi",
-    "title": "9.18 Conception de Base de Code pour la Productivité des Agents",
-    "keywords": "9 18 conception de base de code pour la productivité des agents the ultimate claude code guide source : agent experience best practices for coding agent productivity françois zaninotto, marmelab (21 janvier 2026) validation complémentaire : fram résumé de la section 9 18 2 minutes 9 18 1 le changement de paradigme concevoir pour les agents conception de base de code traditionnelle vs orientée ia le framework agent experience ax convention over configuration pour les agents ia",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-18-conception-de-base-de-code-pour-la-productivité-des-agents",
     "source": "guide"
   },
   {
@@ -11687,7 +10711,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-project-context",
     "title": "Project Context",
-    "keywords": "project context the ultimate claude code guide we use next.js 14 with app router. ... (minimal context, rest is framework conventions) markdown claude.md 9 18 2 intégration des connaissances métier claude md patterns avancés",
+    "keywords": "project context the ultimate claude code guide we use next.js 14 with app router. ... (minimal context, rest is framework conventions) markdown claude.md 9 18 2 intégration des connaissances métier",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#project-context",
     "source": "guide"
@@ -11719,127 +10743,31 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-gotchas",
     "title": "Gotchas",
-    "keywords": "gotchas the ultimate claude code guide - google calendar api has 10 req/sec rate limit per user → batch operations in - outlook timezone handling is non-standard → use helper - event deleti commentaires de code quoi vs comment architecture decision records adrs",
+    "keywords": "gotchas the ultimate claude code guide - google calendar api has 10 req/sec rate limit per user → batch operations in - outlook timezone handling is non-standard → use helper - event deleti contexte décision conséquences code associé 9 18 3 découvrabilité du code seo pour agents 9 18 4 formats de documentation pour les agents llms txt démarrage rapide concepts fondamentaux modèles pourquoi llms txt complète les serveurs mcp créer llms txt pour votre projet",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#gotchas",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-contexte",
-    "title": "Contexte",
-    "keywords": "contexte the ultimate claude code guide la suppression d'événements est complexe car : 1. obligation légale de conserver une piste d'audit (gdpr article 30) 2. les api de calendrier externes",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#contexte",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-décision",
-    "title": "Décision",
-    "keywords": "décision the ultimate claude code guide utiliser des suppressions logiques avec un horodatage : - les événements marqués comme supprimés restent en base de données pendant 90 jours - l'inter",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#décision",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-conséquences",
-    "title": "Conséquences",
-    "keywords": "conséquences the ultimate claude code guide avantages : - conformité aux exigences d'audit du gdpr - expérience « annuler » cohérente quel que soit le fournisseur de calendrier - résolution des",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#conséquences",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-code-associé",
-    "title": "Code associé",
-    "keywords": "code associé the ultimate claude code guide - (modèle event avec le champ deletedat) - (logique de suppression logique) - (nettoyage après 90 jours) typescript // suppression logique conformémen 9 18 3 découvrabilité du code seo pour agents utilisez des termes complets pas des abréviations ajoutez des synonymes dans les commentaires balises et facettes modèle readme par répertoire exemple avant et après la découvrabilité 9 18 4 formats de documentation pour les agents llms txt qu est ce que llms",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#code-associé",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-démarrage-rapide",
-    "title": "Démarrage rapide",
-    "keywords": "démarrage rapide the ultimate claude code guide - installation: guide/ultimate-guide.md installation (line 450) - première session: guide/cheatsheet.md first-session - configuration claude.md: guide",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#démarrage-rapide",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-concepts-fondamentaux",
-    "title": "Concepts fondamentaux",
-    "keywords": "concepts fondamentaux the ultimate claude code guide - agents: guide/ultimate-guide.md 4-agents (line 4100) - skills: guide/ultimate-guide.md 5-skills (line 5400) - hooks: guide/ultimate-guide.md 62-hook",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#concepts-fondamentaux",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-modèles",
-    "title": "Modèles",
-    "keywords": "modèles the ultimate claude code guide - agents personnalisés: examples/agents/ - slash commands: examples/commands/ - hooks d'événements: examples/hooks/ pourquoi llms txt complète les serveurs mcp créer llms txt pour votre projet",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#modèles",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-myproject",
     "title": "MyProject",
-    "keywords": "myproject the ultimate claude code guide enterprise saas platform for event management",
+    "keywords": "myproject the ultimate claude code guide enterprise saas platform for event management getting started - setup: docs/setup.md - architecture: docs/architecture.md - api reference: docs/api.md getting started development",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#myproject",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-getting-started",
-    "title": "Getting Started",
-    "keywords": "getting started the ultimate claude code guide - setup: docs/setup.md - architecture: docs/architecture.md - api reference: docs/api.md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#getting-started",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-development",
-    "title": "Development",
-    "keywords": "development the ultimate claude code guide - testing: docs/testing.md - deployment: docs/deployment.md - troubleshooting: docs/troubleshooting.md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#development",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-myproject",
     "title": "MyProject",
-    "keywords": "myproject the ultimate claude code guide",
+    "keywords": "myproject the ultimate claude code guide architecture decisions - why microservices: docs/decisions/adr-001.md (line 15) - event-driven design: docs/architecture.md event-bus (line 230) - dat architecture decisions common patterns domain knowledge quand mettre à jour llms txt intégration avec claude md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#myproject",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-architecture-decisions",
-    "title": "Architecture Decisions",
-    "keywords": "architecture decisions the ultimate claude code guide - why microservices: docs/decisions/adr-001.md (line 15) - event-driven design: docs/architecture.md event-bus (line 230) - database strategy: docs/de",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#architecture-decisions",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-common-patterns",
-    "title": "Common Patterns",
-    "keywords": "common patterns the ultimate claude code guide - authentication flow: src/services/auth-service.ts (line 78-125) - error handling: claude.md error-patterns (line 150) - rate limiting: src/middlewar",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#common-patterns",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-domain-knowledge",
-    "title": "Domain Knowledge",
-    "keywords": "domain knowledge the ultimate claude code guide - event lifecycle: docs/domain/events.md - payment processing: docs/domain/payments.md - webhook handling: docs/domain/webhooks.md ``` les numéros de quand mettre à jour llms txt intégration avec claude md",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#domain-knowledge",
     "source": "guide"
   },
   {
     "id": "gc-ultimate-guide.fr-project-documentation",
     "title": "Project Documentation",
-    "keywords": "project documentation the ultimate claude code guide complete documentation is indexed in . key resources: - architecture overview: docs/architecture.md - api reference: docs/api.md - testing guide: docs exemple concret ce guide concret le llms txt officiel d anthropic ressources sur la spécification 9 18 5 open knowledge format okf origine le pattern llm wiki de karpathy à quoi ressemble un bundle okf la spécification v0 1 relation entre okf et les patterns existants",
+    "keywords": "project documentation the ultimate claude code guide complete documentation is indexed in . key resources: - architecture overview: docs/architecture.md - api reference: docs/api.md - testing guide: docs 9 18 5 open knowledge format okf",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#project-documentation",
     "source": "guide"
@@ -11847,7 +10775,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-connaissances-du-domaine",
     "title": "Connaissances du domaine",
-    "keywords": "connaissances du domaine the ultimate claude code guide ensemble de connaissances interne : - type → schémas de tables avec règles métier - type → définitions des métriques métier et propriétaires - type → statut d adoption juin 2026 quand utiliser okf démarrage rapide 9 18 6 base de code économe en tokens diviser les fichiers volumineux les agents lisent par morceaux supprimer les commentaires évidents réduire le bruit options verbeux pour la sortie de débogage",
+    "keywords": "connaissances du domaine the ultimate claude code guide ensemble de connaissances interne : - type → schémas de tables avec règles métier - type → définitions des métriques métier et propriétaires - type → 9 18 6 base de code économe en tokens",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#connaissances-du-domaine",
     "source": "guide"
@@ -11863,7 +10791,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-journalisation",
     "title": "Journalisation",
-    "keywords": "journalisation the ultimate claude code guide - : détails détaillés (désactivé en production) - : jalons importants (toujours activé) - : problèmes récupérables - : échecs nécessitant une attentio 9 18 7 tests pour l autonomie pourquoi le tdd est plus critique pour les agents tests écrits manuellement non délégués flux de travail tdd pour les agents automatisation du navigateur pour la validation couverture de tests comme garde fou",
+    "keywords": "journalisation the ultimate claude code guide - : détails détaillés (désactivé en production) - : jalons importants (toujours activé) - : problèmes récupérables - : échecs nécessitant une attentio 9 18 7 tests pour l autonomie",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#journalisation",
     "source": "guide"
@@ -11871,7 +10799,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exigences-de-test",
     "title": "Exigences de test",
-    "keywords": "exigences de test the ultimate claude code guide toutes les fonctionnalités doivent avoir : - des tests unitaires ( 80% de couverture) - des tests d'intégration pour les endpoints api - des tests e2e 9 18 8 conventions patterns design patterns connus des agents l avantage de la tech ennuyeuse",
+    "keywords": "exigences de test the ultimate claude code guide toutes les fonctionnalités doivent avoir : - des tests unitaires ( 80% de couverture) - des tests d'intégration pour les endpoints api - des tests e2e 9 18 8 conventions patterns",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exigences-de-test",
     "source": "guide"
@@ -11895,7 +10823,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exemple",
     "title": "Exemple",
-    "keywords": "exemple the ultimate claude code guide \\ \\ <div ${this.state.user.name}</div \\ markdown adr-011: service layer architecture documenter les décisions architecturales adrs",
+    "keywords": "exemple the ultimate claude code guide \\ \\ <div ${this.state.user.name}</div \\ markdown adr-011: service layer architecture",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exemple",
     "source": "guide"
@@ -11911,23 +10839,15 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-décision",
     "title": "Décision",
-    "keywords": "décision the ultimate claude code guide adopter une architecture en 3 couches : 1. controllers ( ) : requête/réponse http, aucune logique métier 2. services ( ) : logique métier, indépendant",
+    "keywords": "décision the ultimate claude code guide adopter une architecture en 3 couches : 1. controllers ( ) : requête/réponse http, aucune logique métier 2. services ( ) : logique métier, indépendant exemple 9 18 9 garde fous et validation",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#décision",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-exemple",
-    "title": "Exemple",
-    "keywords": "exemple the ultimate claude code guide ```typescript // ❌ incorrect: controller calls repository directly class usercontroller { async getuser(req: request, res: response) { 9 18 9 garde fous et validation les hooks comme validateurs d anti patterns la philosophie du code contaminé",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#exemple",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-ci-cd-validation",
     "title": "CI/CD Validation",
-    "keywords": "ci cd validation the ultimate claude code guide all prs run automated validation: - linting (eslint) - type checking (typescript) - unit tests (jest, 80% coverage) - architecture compliance (layerin revues de pr l humain dans la boucle",
+    "keywords": "ci cd validation the ultimate claude code guide all prs run automated validation: - linting (eslint) - type checking (typescript) - unit tests (jest, 80% coverage) - architecture compliance (layerin",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#ci-cd-validation",
     "source": "guide"
@@ -11935,7 +10855,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-agent-pr-review-checklist",
     "title": "Agent PR Review Checklist",
-    "keywords": "agent pr review checklist the ultimate claude code guide - [ ] intent : does the code solve the actual problem (not just pass tests)? - [ ] edge cases : are unusual inputs handled (null, empty, negative, ext récapitulatif des couches de validation 9 18 10 sérendipité et références croisées références croisées entre modules commandes auto documentées help documentation technique intégrée",
+    "keywords": "agent pr review checklist the ultimate claude code guide - [ ] intent : does the code solve the actual problem (not just pass tests)? - [ ] edge cases : are unusual inputs handled (null, empty, negative, ext 9 18 10 sérendipité et références croisées",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#agent-pr-review-checklist",
     "source": "guide"
@@ -11943,39 +10863,15 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-utilisation",
     "title": "Utilisation",
-    "keywords": "utilisation the ultimate claude code guide",
+    "keywords": "utilisation the ultimate claude code guide authentification utilise des tokens oauth 2.0 stockés dans le champ . si le token a expiré, lance une (l'appelant doit rediriger vers une nouvelle aut authentification limites de débit gestion des erreurs 9 18 11 instructions d utilisation blocs de documentation avec exemples",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#utilisation",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-authentification",
-    "title": "Authentification",
-    "keywords": "authentification the ultimate claude code guide utilise des tokens oauth 2.0 stockés dans le champ . si le token a expiré, lance une (l'appelant doit rediriger vers une nouvelle authentification).",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#authentification",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-limites-de-débit",
-    "title": "Limites de débit",
-    "keywords": "limites de débit the ultimate claude code guide google impose 10 requêtes/seconde par utilisateur. le client régule automatiquement via la bibliothèque rate-limiter-flexible. voir rate limits.md pou",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#limites-de-débit",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-gestion-des-erreurs",
-    "title": "Gestion des erreurs",
-    "keywords": "gestion des erreurs the ultimate claude code guide erreurs courantes : - : token expiré, nouvelle authentification nécessaire - : limite de débit google dépassée (rare, nouvelle tentative automatique) 9 18 11 instructions d utilisation blocs de documentation avec exemples context7 mcp pour la documentation officielle",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#gestion-des-erreurs",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-external-dependencies",
     "title": "External Dependencies",
-    "keywords": "external dependencies the ultimate claude code guide google calendar api version : v3 (current as of 2026-01-21) docs : use context7 mcp to fetch latest: \"google calendar api v3 nodejs\" key methods : - - google calendar api why context7 valeurs par défaut sensées 9 18 12 matrice de décision et liste de contrôle d implémentation quand optimiser pour les agents plutôt que pour les humains liste de contrôle d une base de code compatible avec les agents gains rapides impact immédiat",
+    "keywords": "external dependencies the ultimate claude code guide google calendar api version : v3 (current as of 2026-01-21) docs : use context7 mcp to fetch latest: \"google calendar api v3 nodejs\" key methods : - - google calendar api why context7 9 18 12 matrice de décision et liste de contrôle d implémentation",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#external-dependencies",
     "source": "guide"
@@ -11983,17 +10879,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-fichiers-clés",
     "title": "Fichiers clés",
-    "keywords": "fichiers clés the ultimate claude code guide - - logique métier (indépendante du framework) - - gestionnaires http (couche fine) - - accès à la base de données voir adr-011 pour les règles de str ressources",
+    "keywords": "fichiers clés the ultimate claude code guide - - logique métier (indépendante du framework) - - gestionnaires http (couche fine) - - accès à la base de données voir adr-011 pour les règles de str 9 19 frameworks de permutation le problème la pensée à approche unique qu est ce qu un framework de permutation quand utiliser les frameworks de permutation implémentation permutations pilotées par claude md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#fichiers-clés",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-19-frameworks-de-permutation",
-    "title": "9.19 Frameworks de permutation",
-    "keywords": "9 19 frameworks de permutation the ultimate claude code guide temps de lecture : 10 minutes niveau : mois 1+ le problème : la pensée à approche unique la plupart des développeurs choisissent une approche et s'y t le problème la pensée à approche unique qu est ce qu un framework de permutation quand utiliser les frameworks de permutation implémentation permutations pilotées par claude md étape 1 définir le modèle de base",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-19-frameworks-de-permutation",
     "source": "guide"
   },
   {
@@ -12007,7 +10895,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-permutation-variant-name",
     "title": "Permutation: {{VARIANT_NAME}}",
-    "keywords": "permutation variant name the ultimate claude code guide architecture {{architecture pattern}} state management {{state strategy}} conventions - all implementations must include tests - use the same data mod architecture state management conventions étape 2 générer les variantes étape 3 implémenter en parallèle étape 4 évaluer avec des sous agents exemple pratique permutations de conception d api",
+    "keywords": "permutation variant name the ultimate claude code guide architecture {{architecture pattern}} state management {{state strategy}} conventions - all implementations must include tests - use the same data mod architecture state management conventions exemple pratique permutations de conception d api",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#permutation-variant-name",
     "source": "guide"
@@ -12039,65 +10927,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-variant-c-trpc",
     "title": "Variant C: tRPC",
-    "keywords": "variant c trpc the ultimate claude code guide - type-safe end-to-end - shared types between client/server - zod validation built-in markdown user: i've implemented all 3 api variants. now act as a anti patterns de permutation intégration avec d autres patterns",
+    "keywords": "variant c trpc the ultimate claude code guide - type-safe end-to-end - shared types between client/server - zod validation built-in markdown user: i've implemented all 3 api variants. now act as a anti patterns de permutation intégration avec d autres patterns 9 20 équipes d agents coordination multi agents qu est ce qu une équipe d agents introduction et validation en production vue d ensemble de l architecture équipes d agents vs multi instance vs double instance cas d usage adaptés exemple ra",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#variant-c-trpc",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-20-équipes-d-agents-coordination-multi-agents",
-    "title": "9.20 Équipes d'agents (Coordination multi-agents)",
-    "keywords": "9 20 équipes d agents coordination multi agents the ultimate claude code guide temps de lecture : 5 minutes (vue d'ensemble) démarrage rapide → (8-10 min, pratique) guide complet → ( 30 min, théorie) niveau : mois 2+ (avancé) sta qu est ce qu une équipe d agents introduction et validation en production vue d ensemble de l architecture équipes d agents vs multi instance vs double instance cas d usage adaptés exemple rapide revue de code multi couche limitations critiques arbre de décision quand u",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-20-équipes-d-agents-coordination-multi-agents",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-21-modernisation-des-bases-de-code-héritées",
-    "title": "9.21 Modernisation des bases de code héritées",
-    "keywords": "9 21 modernisation des bases de code héritées the ultimate claude code guide contexte : en février 2026, anthropic a publié un guide de modernisation cobol positionnant claude code comme remplacement direct des équipes de conse pourquoi la modernisation des systèmes hérités est difficile le workflow en 4 étapes principes clés attentes réalistes anti patterns ressources",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-21-modernisation-des-bases-de-code-héritées",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-22-contrôle-à-distance-accès-mobile",
-    "title": "9.22 Contrôle à distance (accès mobile)",
-    "keywords": "9 22 contrôle à distance accès mobile the ultimate claude code guide temps de lecture : 7 minutes niveau : semaine 2+ statut : aperçu de recherche (à partir de février 2026) disponibilité : plans pro et max uniquement, comment ça fonctionne configuration deux façons de démarrer se connecter depuis votre appareil télécharger l application mobile limitations connues aperçu de recherche patterns avancés validés par la communauté multi sessions via tmux contournement de la limite à 1 session archite",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-22-contrôle-à-distance-accès-mobile",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-récapitulatif-section-9-liste-de-vérification-de-l",
-    "title": "🎯 Récapitulatif Section 9 : Liste de vérification de la maîtrise des patterns",
-    "keywords": "récapitulatif section 9 liste de vérification de la maîtrise des patterns the ultimate claude code guide avant de passer à la section 10 (référence), vérifiez que vous comprenez : patterns fondamentaux : - [ ] pattern trinité : plan mode → extended thinki et ensuite",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#récapitulatif-section-9-liste-de-vérification-de-la-maîtrise-des-patterns",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-23-cycle-de-vie-de-la-configuration-la-boucle-de",
-    "title": "9.23 Cycle de vie de la configuration & la boucle de mise à jour",
-    "keywords": "9 23 cycle de vie de la configuration la boucle de mise à jour the ultimate claude code guide temps de lecture : 8 minutes niveau de compétence : mois 1+ voir aussi : §9.10 état d'esprit d'amélioration continue, la base conceptuelle de cette se pourquoi les configurations deviennent obsolètes détecter les frictions dans vos journaux jsonl gestion du cycle de vie des skills la boucle de mise à jour pour aller plus loin",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-23-cycle-de-vie-de-la-configuration-la-boucle-de-mise-à-jour",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-24-apprentissage-continu-basé-sur-l-instinct",
-    "title": "9.24 Apprentissage continu basé sur l'instinct",
-    "keywords": "9 24 apprentissage continu basé sur l instinct the ultimate claude code guide temps de lecture : 6 minutes niveau de compétence : mois 2+ lien avec §9.23 : l'update loop gère la maintenance délibérée de la configuration : vous c le problème de l apprentissage manuel que sont les instincts capturer au bon moment promouvoir les instincts mise en place pratique",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-24-apprentissage-continu-basé-sur-l-instinct",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-9-25-harness-engineering",
-    "title": "9.25 Harness Engineering",
-    "keywords": "9 25 harness engineering the ultimate claude code guide temps de lecture : 10 minutes niveau de compétence : mois 2+ l'intuition fondamentale : la capacité du modèle et la fiabilité d'exécution sont orthogo qu est ce qu un harness le fossé de vérification",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-25-harness-engineering",
     "source": "guide"
   },
   {
@@ -12199,97 +11031,25 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-vérification",
     "title": "Vérification",
-    "keywords": "vérification the ultimate claude code guide avant de marquer comme terminé : exécuter (lint + typecheck + tests + e2e). définition de « terminé » : toutes les couches passent, aucun saut. ``` la 9 25 2 ce que l agent ne peut pas voir n existe pas 9 25 3 la structure de la base de connaissances 9 25 4 observabilité lisible par l agent 9 25 5 appliquer l architecture et le style",
+    "keywords": "vérification the ultimate claude code guide avant de marquer comme terminé : exécuter (lint + typecheck + tests + e2e). définition de « terminé » : toutes les couches passent, aucun saut. ``` la 9 25 2 ce que l agent ne peut pas voir n existe pas 9 25 3 la structure de la base de connaissances 9 25 4 observabilité lisible par l agent 9 25 5 appliquer l architecture et le style 9 26 optimisation du contexte par révision le problème avec les réflexions de fin de session la boucle de retour crit co",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#vérification",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-9-26-optimisation-du-contexte-par-révision",
-    "title": "9.26 Optimisation du Contexte par Révision",
-    "keywords": "9 26 optimisation du contexte par révision the ultimate claude code guide temps de lecture : 7 minutes niveau de compétence : mois 2+ relation avec §9.24 : l'apprentissage par instinct capture des observations passivement de le problème avec les réflexions de fin de session la boucle de retour crit comme couche de capture extraction de patterns depuis les commentaires de révision ce qui est promu vs ce qui est écarté le diff tour à tour comme vérification mise en place pratique",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-26-optimisation-du-contexte-par-révision",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-10-référence",
     "title": "10. Référence",
-    "keywords": "10 référence the ultimate claude code guide accès rapide : tableau des commandes · raccourcis clavier · référence de configuration · dépannage · aide-mémoire · flux de travail quotidien ---",
+    "keywords": "10 référence the ultimate claude code guide accès rapide : tableau des commandes · raccourcis clavier · référence de configuration · dépannage · aide-mémoire · flux de travail quotidien --- 📌 r résumé de la section 10 1 minute navigation rapide par besoin recherches les plus fréquentes 10 1 tableau des commandes commandes intégrées actions rapides 10 2 raccourcis clavier contrôle de session saisie et navigation bascules de mode et de modèle saisie vocale navigation en équipes d agents combinais",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#10-référence",
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-résumé-de-la-section-10-1-minute",
-    "title": "📌 Résumé de la Section 10 (1 minute)",
-    "keywords": "résumé de la section 10 1 minute the ultimate claude code guide contenu : référence complète des commandes, guides de dépannage et listes de contrôle quotidiennes. navigation rapide par besoin : j'ai besoin de... a navigation rapide par besoin recherches les plus fréquentes",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#résumé-de-la-section-10-1-minute",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-1-tableau-des-commandes",
-    "title": "10.1 Tableau des Commandes",
-    "keywords": "10 1 tableau des commandes the ultimate claude code guide commandes intégrées commande action catégorie --------- -------- ---------- afficher toutes les commandes disponibles navigation effacer l'historique commandes intégrées actions rapides",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-1-tableau-des-commandes",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-2-raccourcis-clavier",
-    "title": "10.2 Raccourcis Clavier",
-    "keywords": "10 2 raccourcis clavier the ultimate claude code guide contrôle de session raccourci action ---------- -------- envoyer le message nouvelle ligne dans le message annuler l'opération en cours quitter claude contrôle de session saisie et navigation bascules de mode et de modèle saisie vocale navigation en équipes d agents combinaisons de drapeaux utiles",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-2-raccourcis-clavier",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-3-référence-de-configuration",
-    "title": "10.3 Référence de Configuration",
-    "keywords": "10 3 référence de configuration the ultimate claude code guide emplacements de claude.md emplacement portée versionné ---------- ------- ----------- tous les projets (global) n/a ce projet (partagé) ✅ oui ce proje emplacements de claude md fichiers de configuration patterns de permissions référence des flags cli session contexte modèle configuration sortie format permissions sécurité invite système agent subagent mcp plugins répertoire espace de travail budget limites intégration initialisation ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-3-référence-de-configuration",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-4-dépannage",
-    "title": "10.4 Dépannage",
-    "keywords": "10 4 dépannage the ultimate claude code guide dépannage interactif : utilisez la commande pour une résolution guidée et interactive des problèmes. elle analyse automatiquement votre environnement guide de diagnostic rapide référence des problèmes courants récupération du contexte erreurs courantes problèmes de serveur mcp erreur 1 échec de validation du nom d outil erreur 2 serveur mcp introuvable erreur 3 problèmes de chemin windows techniques de débogage mcp problèmes de permissions problèmes ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-4-dépannage",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-5-aide-mémoire",
-    "title": "10.5 Aide-mémoire",
-    "keywords": "10 5 aide mémoire the ultimate claude code guide référence rapide en une page ``` ╔══════════════════════════════════════════════════════════╗ ║ claude code cheatsheet ║ ╠════════════════════════════ référence rapide en une page",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-5-aide-mémoire",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-10-6-flux-de-travail-quotidien-listes-de-contrôle",
-    "title": "10.6 Flux de travail quotidien & listes de contrôle",
-    "keywords": "10 6 flux de travail quotidien listes de contrôle the ultimate claude code guide modèle de flux de travail quotidien ``` ┌─────────────────────────────────────────────────────────────┐ │ flux de travail quotidien │ ├─────────────── modèle de flux de travail quotidien liste de contrôle de la qualité des invites",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-6-flux-de-travail-quotidien-listes-de-contrôle",
-    "source": "guide"
-  },
-  {
     "id": "gc-ultimate-guide.fr-annexe-collection-de-modèles",
     "title": "Annexe : Collection de modèles",
-    "keywords": "annexe collection de modèles the ultimate claude code guide 💡 exemples prêts pour la production : pour des modèles complets et éprouvés incluant des commandes avancées ( , , ) et des hooks de sécurité, consult",
+    "keywords": "annexe collection de modèles the ultimate claude code guide 💡 exemples prêts pour la production : pour des modèles complets et éprouvés incluant des commandes avancées ( , , ) et des hooks de sécurité, consult a 1 modèle d agent",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#annexe-collection-de-modèles",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-1-modèle-d-agent",
-    "title": "A.1 Modèle d'agent",
-    "keywords": "a 1 modèle d agent the ultimate claude code guide ```markdown --- name: your-agent-name description: use this agent when [specific trigger] model: sonnet tools: read, write, edit, bash, grep, glob ski",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-1-modèle-d-agent",
     "source": "guide"
   },
   {
@@ -12327,17 +11087,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exemples",
     "title": "Exemples",
-    "keywords": "exemples the ultimate claude code guide [exemples d'utilisation concrets] ```",
+    "keywords": "exemples the ultimate claude code guide [exemples d'utilisation concrets] markdown --- name: skill-name description: expert guidance for [domain] allowed-tools: read grep bash argument-hint: a 2 modèle de skill",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exemples",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-2-modèle-de-skill",
-    "title": "A.2 Modèle de skill",
-    "keywords": "a 2 modèle de skill the ultimate claude code guide ```markdown --- name: skill-name description: expert guidance for [domain] allowed-tools: read grep bash argument-hint: \"[--option] <required arg \" if",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-2-modèle-de-skill",
     "source": "guide"
   },
   {
@@ -12367,17 +11119,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-exemples",
     "title": "Exemples",
-    "keywords": "exemples the ultimate claude code guide [bons et mauvais modèles] ```",
+    "keywords": "exemples the ultimate claude code guide [bons et mauvais modèles] markdown --- description: brève description de ce que fait cette commande argument-hint: \"<first arg [second arg] [--flag]\" a 3 modèle de commande",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#exemples",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-3-modèle-de-commande",
-    "title": "A.3 Modèle de commande",
-    "keywords": "a 3 modèle de commande the ultimate claude code guide ```markdown --- description: brève description de ce que fait cette commande argument-hint: \"<first arg [second arg] [--flag]\" --- nom de la commande",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-3-modèle-de-commande",
     "source": "guide"
   },
   {
@@ -12407,41 +11151,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-format-de-sortie",
     "title": "Format de sortie",
-    "keywords": "format de sortie the ultimate claude code guide [sortie attendue] ```",
+    "keywords": "format de sortie the ultimate claude code guide [sortie attendue] bash !/bin/bash input=$(cat) command=$(echo \"$input\" jq -r '.tool input.command // \"\"') bloquer les motifs dangereux [[ \"$command\" = a 4 modèles de hooks pretooluse sécurité posttooluse formatage userpromptsubmit contexte a 5 modèle settings json a 6 modèle settings local json a 7 modèle claude md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#format-de-sortie",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-4-modèles-de-hooks",
-    "title": "A.4 Modèles de hooks",
-    "keywords": "a 4 modèles de hooks the ultimate claude code guide pretooluse (sécurité) posttooluse (formatage) userpromptsubmit (contexte) ```bash pretooluse sécurité posttooluse formatage userpromptsubmit contexte",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-4-modèles-de-hooks",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-5-modèle-settings-json",
-    "title": "A.5 Modèle settings.json",
-    "keywords": "a 5 modèle settings json the ultimate claude code guide",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-5-modèle-settings-json",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-6-modèle-settings-local-json",
-    "title": "A.6 Modèle settings.local.json",
-    "keywords": "a 6 modèle settings local json the ultimate claude code guide",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-6-modèle-settings-local-json",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-a-7-modèle-claude-md",
-    "title": "A.7 Modèle CLAUDE.md",
-    "keywords": "a 7 modèle claude md the ultimate claude code guide ```markdown nom du projet",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#a-7-modèle-claude-md",
     "source": "guide"
   },
   {
@@ -12479,49 +11191,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-11-écosystème-ia-outils-complémentaires",
     "title": "11. Écosystème IA : outils complémentaires",
-    "keywords": "11 écosystème ia outils complémentaires the ultimate claude code guide accès rapide : pourquoi la complémentarité · matrice des outils · flux de travail pratiques · schémas d'intégration --- temps de lecture : 10 minutes",
+    "keywords": "11 écosystème ia outils complémentaires the ultimate claude code guide accès rapide : pourquoi la complémentarité · matrice des outils · flux de travail pratiques · schémas d'intégration --- temps de lecture : 10 minutes 11 1 pourquoi la complémentarité est essentielle ce que claude code fait le mieux là où d autres outils apportent de la valeur 11 2 matrice des outils guide de décision rapide vue d ensemble des outils complémentaires configuration multi fournisseurs cc copilot bridge passerelle",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#11-écosystème-ia-outils-complémentaires",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-11-1-pourquoi-la-complémentarité-est-essentielle",
-    "title": "11.1 Pourquoi la complémentarité est essentielle",
-    "keywords": "11 1 pourquoi la complémentarité est essentielle the ultimate claude code guide claude code est conçu pour être votre partenaire d'implémentation avec une compréhension approfondie de la base de code. il ne cherche délibérément pa ce que claude code fait le mieux là où d autres outils apportent de la valeur",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#11-1-pourquoi-la-complémentarité-est-essentielle",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-11-2-matrice-des-outils",
-    "title": "11.2 Matrice des outils",
-    "keywords": "11 2 matrice des outils the ultimate claude code guide guide de décision rapide j'ai besoin de... utiliser pourquoi pas claude ------------------- ---------- --------------------- implémenter une fonctionn guide de décision rapide vue d ensemble des outils complémentaires configuration multi fournisseurs cc copilot bridge passerelle d exécution locale planification opus exécution lm studio",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#11-2-matrice-des-outils",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-11-3-workflows-pratiques",
-    "title": "11.3 Workflows pratiques",
-    "keywords": "11 3 workflows pratiques the ultimate claude code guide pipeline recherche → code à utiliser quand : vous devez comprendre les bonnes pratiques avant d'implémenter. quand l'utiliser : toute implémentation n pipeline recherche code pipeline visuel code pipeline documentation pipeline présentation",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#11-3-workflows-pratiques",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-11-4-patterns-d-intégration",
-    "title": "11.4 Patterns d'intégration",
-    "keywords": "11 4 patterns d intégration the ultimate claude code guide workflow complet : fonctionnalité à forte composante de recherche workflow complet : fonctionnalité à forte composante visuelle ```bash 1. prototype u workflow complet fonctionnalité à forte composante de recherche workflow complet fonctionnalité à forte composante visuelle stack recommandée selon le budget conseils d optimisation des coûts pour les non développeurs claude cowork",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#11-4-patterns-d-intégration",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-pour-aller-plus-loin",
-    "title": "Pour aller plus loin",
-    "keywords": "pour aller plus loin the ultimate claude code guide livres blancs (fr + en) une série de 9 livres blancs approfondis sur claude code, disponibles en français et en anglais : sujet périmètre --- ------- livres blancs fr en workflows avancés ressources communautaires listes awesome frameworks collections de configurations en production modes comportementaux superclaude mode apprentissage installation utilisation",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#pour-aller-plus-loin",
     "source": "guide"
   },
   {
@@ -12535,49 +11207,9 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-default-behavior",
     "title": "Default Behavior",
-    "keywords": "default behavior the ultimate claude code guide off by default - activates via triggers above or explicit flag when active, tracks techniques explained this session to avoid repetition. markdown beh sites d apprentissage outils auditez votre configuration auditez la complétude des spécifications de votre projet",
+    "keywords": "default behavior the ultimate claude code guide off by default - activates via triggers above or explicit flag when active, tracks techniques explained this session to avoid repetition. markdown beh outils annexe a référence des emplacements de fichiers windows macos linux fichiers au niveau du projet variables d environnement trouver vos chemins gitignore recommandé annexe b faq claude code vs clawdbot quelle est la différence les chefs de produit peuvent ils utiliser claude code puis je repren",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#default-behavior",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-annexe-a-référence-des-emplacements-de-fichiers",
-    "title": "Annexe A : Référence des emplacements de fichiers",
-    "keywords": "annexe a référence des emplacements de fichiers the ultimate claude code guide référence rapide indiquant où claude code stocke les fichiers et la configuration. windows composant emplacement ----------- ---------- npm global bin windows macos linux fichiers au niveau du projet variables d environnement trouver vos chemins gitignore recommandé",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#annexe-a-référence-des-emplacements-de-fichiers",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-annexe-b-faq",
-    "title": "Annexe B : FAQ",
-    "keywords": "annexe b faq the ultimate claude code guide claude code vs clawdbot : quelle est la différence ? question : les deux outils ont « claude » dans leur nom et j'ai vu beaucoup de bruit autour des d claude code vs clawdbot quelle est la différence les chefs de produit peuvent ils utiliser claude code puis je reprendre une session depuis un dossier de projet différent",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#annexe-b-faq",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-annexe-c-processus-d-évaluation-des-ressources",
-    "title": "Annexe C : Processus d'évaluation des ressources",
-    "keywords": "annexe c processus d évaluation des ressources the ultimate claude code guide ce guide évalue systématiquement les ressources externes (outils, méthodologies, articles, frameworks) avant intégration afin de maintenir la qualité méthodologie d évaluation évaluations actuelles pourquoi des évaluations publiques",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#annexe-c-processus-d-évaluation-des-ressources",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-annexe-d-mythes-et-réalité",
-    "title": "Annexe D : Mythes et réalité",
-    "keywords": "annexe d mythes et réalité the ultimate claude code guide cette section aborde les idées reçues courantes sur claude code qui circulent dans les communautés en ligne, sur les réseaux sociaux et dans les discu mythe claude code possède des fonctionnalités cachées déverrouillables avec des flags secrets mythe l api tasks permet des agents parallèles entièrement autonomes mythe claude code est 100x plus rapide que les autres outils de codage ia réalité ce qui rend claude code véritablement spécial ",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#annexe-d-mythes-et-réalité",
-    "source": "guide"
-  },
-  {
-    "id": "gc-ultimate-guide.fr-à-propos-de-ce-guide",
-    "title": "À propos de ce guide",
-    "keywords": "à propos de ce guide the ultimate claude code guide fin du guide --- auteur : florian bruniaux ingénieur fondateur @méthode aristote rédigé avec : claude (anthropic) - ce guide a été rédigé en collabora",
-    "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#à-propos-de-ce-guide",
     "source": "guide"
   },
   {

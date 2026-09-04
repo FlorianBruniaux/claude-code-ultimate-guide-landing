@@ -43,6 +43,7 @@ function normalizeDocumentH1s(content) {
   const newline = body.includes('\r\n') ? '\r\n' : '\n'
   const lines = body.split(/\r?\n/)
   let firstDocumentH1Removed = false
+  let demoteDocumentSubtree = false
   let fenceMarker = ''
 
   const normalizedLines = lines.flatMap((line) => {
@@ -54,13 +55,22 @@ function normalizeDocumentH1s(content) {
       return [line]
     }
 
-    if (fenceMarker || !/^ {0,3}#(?!#)\s+/.test(line)) return [line]
-    if (!firstDocumentH1Removed) {
+    if (fenceMarker) return [line]
+
+    const headingMatch = line.match(/^( {0,3})(#{1,6})(\s+)/)
+    if (!headingMatch) return [line]
+
+    const [, indent, markers, spacing] = headingMatch
+    if (markers.length === 1 && !firstDocumentH1Removed) {
       firstDocumentH1Removed = true
       return []
     }
 
-    return [line.replace(/^( {0,3})#(\s+)/, '$1##$2')]
+    if (markers.length === 1) demoteDocumentSubtree = true
+    if (!demoteDocumentSubtree) return [line]
+
+    const shiftedMarkers = '#'.repeat(Math.min(markers.length + 1, 6))
+    return [line.replace(/^( {0,3})#{1,6}(\s+)/, `${indent}${shiftedMarkers}${spacing}`)]
   })
 
   return `${frontmatter}${normalizedLines.join(newline)}`

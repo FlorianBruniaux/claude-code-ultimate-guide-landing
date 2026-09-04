@@ -53,12 +53,15 @@ test('canonicalizes the legacy release document', () => {
 })
 
 test('keeps fenced H1 examples and demotes later document H1 headings', () => {
-  const fixture = '---\ntitle: Page\n---\n\n# Page\n\n```md\n# Example\n```\n\n# Later section'
+  const fixture = '---\ntitle: Page\n---\n\n# Page\n\n```md\n# Example\n## Example child\n```\n\n# Later section\n\n## Child\n\n### Grandchild'
   const result = transformGuideMarkdown(fixture, 'guide/core/architecture.md')
 
-  assert.match(result, /```md\n# Example\n```/)
+  assert.match(result, /```md\n# Example\n## Example child\n```/)
   assert.match(result, /^## Later section$/m)
+  assert.match(result, /^### Child$/m)
+  assert.match(result, /^#### Grandchild$/m)
   assert.doesNotMatch(result, /^# Later section$/m)
+  assert.doesNotMatch(result, /^## Child$/m)
 })
 
 test('removes the leading H1 from a workflow page without an SEO override', () => {
