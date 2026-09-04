@@ -72,6 +72,19 @@ test('does not let inert H1 markup satisfy the rendered H1 contract', async () =
   })
 })
 
+test('does not let nested template H1 markup satisfy the rendered H1 contract', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace(
+      '<main><h1>Claude Code Architecture</h1></main>',
+      '<main><template><template><p>Nested inert content</p></template><h1>Outer template heading</h1></template></main>',
+    ))
+
+    const failures = check(root)
+
+    assert.deepEqual(failures, [`${ROUTE}: expected exactly one rendered H1, found 0`])
+  })
+})
+
 test('rejects an HTTP canonical', async () => {
   await withValidFixture(async (root) => {
     await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('https://cc.bruniaux.com/guide/architecture/', 'http://cc.bruniaux.com/guide/architecture/'))

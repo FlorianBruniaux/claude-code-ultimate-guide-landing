@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { extname, join, relative } from 'node:path'
+import { Window } from 'happy-dom'
 
 const SITE_ORIGIN = 'https://cc.bruniaux.com'
 const LEGACY_RELEASE_URL = `${SITE_ORIGIN}/guide/claude-code-releases/`
@@ -66,10 +67,17 @@ function title(html) {
   return html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
 }
 
-function renderedHtml(html) {
-  return html
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<(script|style|template)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '')
+function renderedH1Count(html) {
+  const window = new Window()
+
+  try {
+    window.document.write(html)
+    window.document.close()
+    return window.document.querySelectorAll('h1').length
+  }
+  finally {
+    window.close()
+  }
 }
 
 function walkFiles(root) {
@@ -112,7 +120,7 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
       continue
     }
 
-    const h1Count = renderedHtml(html).match(/<h1(?:\s|>)/gi)?.length ?? 0
+    const h1Count = renderedH1Count(html)
     if (h1Count !== 1) failures.push(`${route}: expected exactly one rendered H1, found ${h1Count}`)
 
     const expectedCanonical = `${SITE_ORIGIN}${route}`
