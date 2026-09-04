@@ -2581,6 +2581,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-devops-sre-quick-start",
+    "title": "Quick Start",
+    "keywords": "quick start devops sre with claude code goal : get productive with claude code for devops in 5 minutes.",
+    "category": "Core Guides",
+    "url": "/guide/devops-sre/#quick-start",
+    "source": "guide"
+  },
+  {
     "id": "gc-devops-sre-quick-self-check",
     "title": "Quick Self-Check",
     "keywords": "quick self check devops sre with claude code situation jump to ----------- --------- i'm in an active incident now emergency: k8s troubleshooting first time using claude for devops tutorial: firs",
@@ -2637,6 +2645,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-devops-sre-pattern-incident-response",
+    "title": "Pattern: Incident Response",
+    "keywords": "pattern incident response devops sre with claude code goal : structured workflows for incident management.",
+    "category": "Core Guides",
+    "url": "/guide/devops-sre/#pattern-incident-response",
+    "source": "guide"
+  },
+  {
     "id": "gc-devops-sre-solo-incident-workflow",
     "title": "Solo Incident Workflow",
     "keywords": "solo incident workflow devops sre with claude code reality : at 3 am, you're alone. this workflow is designed for one person. fire in action: solo incident f - first response (30 seconds) example : i - fire in action solo incident f first response 30 seconds i investigate 2 5 minutes r remediate with approval e evaluate post incident not during",
@@ -2658,6 +2674,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "multi agent pattern post incident analysis devops sre with claude code when to use multi-agent : not during active incidents. use for comprehensive analysis afterward. case study: opsworker.ai mttr reduction context : sre case study opsworker ai mttr reduction",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#multi-agent-pattern-post-incident-analysis",
+    "source": "guide"
+  },
+  {
+    "id": "gc-devops-sre-pattern-infrastructure-as-code",
+    "title": "Pattern: Infrastructure as Code",
+    "keywords": "pattern infrastructure as code devops sre with claude code goal : use claude for terraform, ansible, and gitops workflows.",
+    "category": "Core Guides",
+    "url": "/guide/devops-sre/#pattern-infrastructure-as-code",
     "source": "guide"
   },
   {
@@ -2687,9 +2711,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-devops-sre-security-review-automation",
     "title": "Security Review Automation",
-    "keywords": "security review automation devops sre with claude code infrastructure security scan iam policy review --- guardrails & adoption goal : implement claude code safely and get team buy-in. infrastructure security scan iam policy review",
+    "keywords": "security review automation devops sre with claude code infrastructure security scan iam policy review --- infrastructure security scan iam policy review",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#security-review-automation",
+    "source": "guide"
+  },
+  {
+    "id": "gc-devops-sre-guardrails-adoption",
+    "title": "Guardrails & Adoption",
+    "keywords": "guardrails adoption devops sre with claude code goal : implement claude code safely and get team buy-in.",
+    "category": "Core Guides",
+    "url": "/guide/devops-sre/#guardrails-adoption",
     "source": "guide"
   },
   {
@@ -2714,6 +2746,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "team rollout checklist devops sre with claude code phase 1: pilot (1-2 engineers, 2 weeks) - [ ] install claude code for pilot users - [ ] create team claude.md with common context - [ ] document first phase 1 pilot 1 2 engineers 2 weeks phase 2 expand team 4 weeks phase 3 optimize ongoing adoption pitfalls to avoid",
     "category": "Core Guides",
     "url": "/guide/devops-sre/#team-rollout-checklist",
+    "source": "guide"
+  },
+  {
+    "id": "gc-devops-sre-quick-reference",
+    "title": "Quick Reference",
+    "keywords": "quick reference devops sre with claude code",
+    "category": "Core Guides",
+    "url": "/guide/devops-sre/#quick-reference",
     "source": "guide"
   },
   {
@@ -7269,6 +7309,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide-00-introduction-1-quick-start-day-1",
+    "title": "1. Quick Start (Day 1)",
+    "keywords": "1 quick start day 1 introduction quick jump: installation · first workflow · essential commands · permission modes · productivity checklist · migrating from other tools · beginner mis",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/00-introduction/#1-quick-start-day-1",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide-01-quick-start-1-1-installation",
     "title": "1.1 Installation",
     "keywords": "1 1 installation claude code quick start install first task key mistakes to avoid choose your preferred installation method based on your operating system: verify installation updating claude code keep claude code up to date for the verify installation updating claude code desktop app claude code without the terminal platform specific paths first launch",
@@ -9711,9 +9759,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-commands",
     "title": "Commands",
-    "keywords": "commands claude code reference cli flags shortcuts claude md templates troubleshooting - - start development - - run tests ``` --- 11. ai ecosystem: complementary tools quick jump: why complementarity · tool matrix · practical workflows",
+    "keywords": "commands claude code reference cli flags shortcuts claude md templates troubleshooting - - start development - - run tests ``` ---",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#commands",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide-10-reference-11-ai-ecosystem-complementary-tools",
+    "title": "11. AI Ecosystem: Complementary Tools",
+    "keywords": "11 ai ecosystem complementary tools claude code reference cli flags shortcuts claude md templates troubleshooting quick jump: why complementarity · tool matrix · practical workflows · integration patterns --- reading time : 10 minutes skill level : intermediate go",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/10-reference/#11-ai-ecosystem-complementary-tools",
     "source": "guide"
   },
   {
@@ -9789,6 +9845,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide-12-appendices-when-forking-sessions-to-a-new-project",
+    "title": "When forking sessions to a new project",
+    "keywords": "when forking sessions to a new project appendices cp -n ./-source-project-/ .jsonl ./-target-project-/ cp -r ./-source-project-/subagents ./-target-project-/ 2 /dev/null true cd /path/to/target/projec",
+    "category": "Ultimate Guide",
+    "url": "/guide/ultimate-guide/12-appendices/#when-forking-sessions-to-a-new-project",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide-12-appendices-appendix-c-resource-evaluation-process",
     "title": "Appendix C: Resource Evaluation Process",
     "keywords": "appendix c resource evaluation process appendices this guide systematically evaluates external resources (tools, methodologies, articles, frameworks) before integration to maintain quality and prevent evaluation methodology current evaluations why public evaluations",
@@ -9850,6 +9914,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "table des matières the ultimate claude code guide - 1. quick start (jour 1) - 1.1 installation - 1.2 premier workflow - 1.3 commandes essentielles - 1.4 modes de permission - 1.5 checklist de producti",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#table-des-matières",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-1-quick-start-jour-1",
+    "title": "1. Quick Start (Jour 1)",
+    "keywords": "1 quick start jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#1-quick-start-jour-1",
     "source": "guide"
   },
   {
@@ -9938,6 +10010,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "1 8 huit erreurs de débutant et comment les éviter the ultimate claude code guide les pièges courants qui ralentissent les nouveaux utilisateurs de claude code : 1. ❌ sauter l'étape de planification erreur : se lancer directement da 1 sauter l étape de planification 2 ignorer les limites de contexte 3 utiliser des prompts vagues 4 accepter les changements aveuglément 5 pas de filet de sécurité avec le contrôle de version 6 permissions trop larges 7 mélanger des tâches sans rapport 8 traiter clau",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#1-8-huit-erreurs-de-débutant-et-comment-les-éviter",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-2-concepts-fondamentaux",
+    "title": "2. Concepts fondamentaux",
+    "keywords": "2 concepts fondamentaux the ultimate claude code guide navigation rapide : la boucle d'interaction · gestion du contexte · mode plan · rewind · sélection du modèle · modèle mental · guide de décision de co",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#2-concepts-fondamentaux",
     "source": "guide"
   },
   {
@@ -10165,6 +10245,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide.fr-3-mémoire-et-paramètres",
+    "title": "3. Mémoire et paramètres",
+    "keywords": "3 mémoire et paramètres the ultimate claude code guide accès rapide : fichiers mémoire (claude.md) · structure du dossier .claude/ · paramètres et permissions · règles de précédence ---",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#3-mémoire-et-paramètres",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide.fr-résumé-section-3-90-secondes",
     "title": "📌 Résumé Section 3 (90 secondes)",
     "keywords": "résumé section 3 90 secondes the ultimate claude code guide la hiérarchie mémoire (concept le plus important) : règle : le plus spécifique l'emporte sur le plus général (local projet global) actions rapides : -",
@@ -10378,6 +10466,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "ai involvement the ultimate claude code guide what ai did : [list affected files or sections] what i did : [review, adapted, tested, understood] reviewed : [yes / no — explain if no] ``` pourquoi les 3 principes de boris cherny pour les équipes ia pour aller plus loin distribution des standards à l échelle organisationnelle",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#ai-involvement",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-4-agents",
+    "title": "4. Agents",
+    "keywords": "4 agents the ultimate claude code guide accès rapide : qu'est-ce que les agents · créer des agents personnalisés · template d'agent · bonnes pratiques · exemples d'agents ---",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#4-agents",
     "source": "guide"
   },
   {
@@ -10805,6 +10901,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide.fr-6-commandes-skills-invocables-par-l-utilisateur",
+    "title": "6. Commandes (skills invocables par l'utilisateur)",
+    "keywords": "6 commandes skills invocables par l utilisateur the ultimate claude code guide accès rapide : slash commands · créer des commandes personnalisées · modèle de commande · exemples de commandes --- cc 2.1.3 (janvier 2026) : les skil",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#6-commandes-skills-invocables-par-l-utilisateur",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide.fr-6-1-slash-commands",
     "title": "6.1 Slash Commands",
     "keywords": "6 1 slash commands the ultimate claude code guide les slash commands sont des skills invocables par l'utilisateur. depuis cc 2.1.3, elles se trouvent dans (et non ). la syntaxe d'invocation reste inch commandes intégrées la commande btw bifurcation de session recap contexte de session au retour la commande insights ce qu elle analyse ce qu elle produit comment l utiliser",
@@ -11037,6 +11141,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide.fr-7-hooks",
+    "title": "7. Hooks",
+    "keywords": "7 hooks the ultimate claude code guide accès rapide : le système d'événements · créer des hooks · modèles de hooks · hooks de sécurité · exemples de hooks ---",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#7-hooks",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide.fr-résumé-de-la-section-7-60-secondes",
     "title": "📌 Résumé de la section 7 (60 secondes)",
     "keywords": "résumé de la section 7 60 secondes the ultimate claude code guide ce que sont les hooks : des scripts qui s'exécutent automatiquement lors d'événements (comme les git hooks) types d'événements : - → avant que claude",
@@ -11093,6 +11205,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide.fr-8-serveurs-mcp",
+    "title": "8. Serveurs MCP",
+    "keywords": "8 serveurs mcp the ultimate claude code guide accès rapide : qu'est-ce que mcp · serveurs disponibles · configuration · guide de sélection de serveur · système de plugins · sécurité mcp --- temps",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#8-serveurs-mcp",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide.fr-8-1-qu-est-ce-que-mcp",
     "title": "8.1 Qu'est-ce que MCP",
     "keywords": "8 1 qu est ce que mcp the ultimate claude code guide mcp (model context protocol) est un standard permettant de connecter des modèles d'ia à des outils externes et des sources de données. pourquoi mcp ? pourquoi mcp comment ça fonctionne évolution mcp extension apps sep 1865 le problème du fossé contextuel que sont les mcp apps outils interactifs disponibles support des plateformes ce que cela implique pour les utilisateurs cli fondations techniques ressources",
@@ -11138,6 +11258,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "8 6 sécurité mcp the ultimate claude code guide les serveurs mcp étendent les capacités de claude code, mais ils élargissent également sa surface d'attaque. avant d'installer un serveur mcp, en part liste de contrôle pré installation risques de sécurité à comprendre patterns de configuration sécurisés signaux d alarme audit des serveurs installés",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#8-6-sécurité-mcp",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-9-patterns-avancés",
+    "title": "9. Patterns avancés",
+    "keywords": "9 patterns avancés the ultimate claude code guide accès rapide : la trinité · patterns de composition · intégration ci/cd · intégration ide · boucles de feedback serrées · optimisation du contexte par",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#9-patterns-avancés",
     "source": "guide"
   },
   {
@@ -11647,9 +11775,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-modèles",
     "title": "Modèles",
-    "keywords": "modèles the ultimate claude code guide - agents personnalisés: examples/agents/ - slash commands: examples/commands/ - hooks d'événements: examples/hooks/ myproject enterprise saas platform pourquoi llms txt complète les serveurs mcp créer llms txt pour votre projet",
+    "keywords": "modèles the ultimate claude code guide - agents personnalisés: examples/agents/ - slash commands: examples/commands/ - hooks d'événements: examples/hooks/ pourquoi llms txt complète les serveurs mcp créer llms txt pour votre projet",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#modèles",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-myproject",
+    "title": "MyProject",
+    "keywords": "myproject the ultimate claude code guide enterprise saas platform for event management",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#myproject",
     "source": "guide"
   },
   {
@@ -11663,9 +11799,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-development",
     "title": "Development",
-    "keywords": "development the ultimate claude code guide - testing: docs/testing.md - deployment: docs/deployment.md - troubleshooting: docs/troubleshooting.md myproject",
+    "keywords": "development the ultimate claude code guide - testing: docs/testing.md - deployment: docs/deployment.md - troubleshooting: docs/troubleshooting.md",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#development",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-myproject",
+    "title": "MyProject",
+    "keywords": "myproject the ultimate claude code guide",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#myproject",
     "source": "guide"
   },
   {
@@ -12069,6 +12213,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-ultimate-guide.fr-10-référence",
+    "title": "10. Référence",
+    "keywords": "10 référence the ultimate claude code guide accès rapide : tableau des commandes · raccourcis clavier · référence de configuration · dépannage · aide-mémoire · flux de travail quotidien ---",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#10-référence",
+    "source": "guide"
+  },
+  {
     "id": "gc-ultimate-guide.fr-résumé-de-la-section-10-1-minute",
     "title": "📌 Résumé de la Section 10 (1 minute)",
     "keywords": "résumé de la section 10 1 minute the ultimate claude code guide contenu : référence complète des commandes, guides de dépannage et listes de contrôle quotidiennes. navigation rapide par besoin : j'ai besoin de... a navigation rapide par besoin recherches les plus fréquentes",
@@ -12122,6 +12274,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "10 6 flux de travail quotidien listes de contrôle the ultimate claude code guide modèle de flux de travail quotidien ``` ┌─────────────────────────────────────────────────────────────┐ │ flux de travail quotidien │ ├─────────────── modèle de flux de travail quotidien liste de contrôle de la qualité des invites",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#10-6-flux-de-travail-quotidien-listes-de-contrôle",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-annexe-collection-de-modèles",
+    "title": "Annexe : Collection de modèles",
+    "keywords": "annexe collection de modèles the ultimate claude code guide 💡 exemples prêts pour la production : pour des modèles complets et éprouvés incluant des commandes avancées ( , , ) et des hooks de sécurité, consult",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#annexe-collection-de-modèles",
     "source": "guide"
   },
   {
@@ -12311,9 +12471,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-commandes",
     "title": "Commandes",
-    "keywords": "commandes the ultimate claude code guide - - démarrer le développement - - lancer les tests ``` --- 11. écosystème ia : outils complémentaires accès rapide : pourquoi la complémentarité · mat",
+    "keywords": "commandes the ultimate claude code guide - - démarrer le développement - - lancer les tests ``` ---",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#commandes",
+    "source": "guide"
+  },
+  {
+    "id": "gc-ultimate-guide.fr-11-écosystème-ia-outils-complémentaires",
+    "title": "11. Écosystème IA : outils complémentaires",
+    "keywords": "11 écosystème ia outils complémentaires the ultimate claude code guide accès rapide : pourquoi la complémentarité · matrice des outils · flux de travail pratiques · schémas d'intégration --- temps de lecture : 10 minutes",
+    "category": "Core Guides",
+    "url": "/guide/ultimate-guide.fr/#11-écosystème-ia-outils-complémentaires",
     "source": "guide"
   },
   {

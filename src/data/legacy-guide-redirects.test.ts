@@ -24,6 +24,10 @@ test('redirects source-directory URLs retained in published portfolio PDFs', () 
   assert.equal(redirects['/guide/roles/team-deployment/'], '/guide/adoption-approaches/')
 })
 
+test('redirects the source-directory release URL directly to the canonical page', () => {
+  assert.equal(redirects['/guide/core/claude-code-releases/'], '/releases/')
+})
+
 test('redirects the unnormalized French guide filename', () => {
   assert.equal(redirects['/guide/ultimate-guide.fr/'], '/guide/ultimate-guidefr/')
 })

@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path'
 import test from 'node:test'
 
 import { checkBuiltSeo } from '../../scripts/lib/seo-contracts.mjs'
+import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './seo-editorial-contract.mjs'
 
 const ROUTE = '/guide/architecture/'
 
@@ -16,7 +17,7 @@ function validHtml(route = ROUTE) {
     <meta name="description" content="A practical Claude Code architecture reference for reliable agent engineering decisions.">
     <link rel="canonical" href="https://cc.bruniaux.com${route}">
   </head>
-  <body><main><h1>Claude Code Architecture</h1></main></body>
+  <body><main><h1 id="_top">Claude Code Architecture</h1></main></body>
 </html>`
 }
 
@@ -32,7 +33,7 @@ async function withValidFixture(run: (root: string) => Promise<void>) {
   try {
     await writeFixtureFile(root, 'guide/architecture/index.html', validHtml())
     await writeFixtureFile(root, 'sitemap-index.xml', `<?xml version="1.0"?><sitemapindex><sitemap><loc>https://cc.bruniaux.com/sitemap-0.xml</loc></sitemap></sitemapindex>`)
-    await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc></url></urlset>`)
+    await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc><lastmod>${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}</lastmod></url></urlset>`)
     await run(root)
   }
   finally {
@@ -57,7 +58,7 @@ test('rejects two rendered H1 elements', async () => {
 test('does not let inert H1 markup satisfy the rendered H1 contract', async () => {
   await withValidFixture(async (root) => {
     await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace(
-      '<main><h1>Claude Code Architecture</h1></main>',
+      '<main><h1 id="_top">Claude Code Architecture</h1></main>',
       `<main>
         <!-- <h1>Comment heading</h1> -->
         <template><h1>Template heading</h1></template>
@@ -75,7 +76,7 @@ test('does not let inert H1 markup satisfy the rendered H1 contract', async () =
 test('does not let nested template H1 markup satisfy the rendered H1 contract', async () => {
   await withValidFixture(async (root) => {
     await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace(
-      '<main><h1>Claude Code Architecture</h1></main>',
+      '<main><h1 id="_top">Claude Code Architecture</h1></main>',
       '<main><template><template><p>Nested inert content</p></template><h1>Outer template heading</h1></template></main>',
     ))
 
@@ -112,7 +113,7 @@ test('rejects metadata outside the configured bounds', async () => {
 
 test('rejects the legacy release URL in sitemap XML', async () => {
   await withValidFixture(async (root) => {
-    await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc></url><url><loc>https://cc.bruniaux.com/guide/claude-code-releases/</loc></url></urlset>`)
+    await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc><lastmod>${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}</lastmod></url><url><loc>https://cc.bruniaux.com/guide/claude-code-releases/</loc></url></urlset>`)
 
     const failures = check(root)
 
@@ -122,6 +123,63 @@ test('rejects the legacy release URL in sitemap XML', async () => {
 
 test('accepts a valid audited page and sitemap', async () => {
   await withValidFixture(async (root) => {
+    assert.deepEqual(check(root), [])
+  })
+})
+
+test('checks every rendered Starlight document for exactly one H1', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/devops-sre/index.html', validHtml('/guide/devops-sre/').replace(
+      '</main>',
+      '<h1>Duplicate generated heading</h1></main>',
+    ))
+
+    const failures = check(root)
+
+    assert.ok(failures.includes('/guide/devops-sre/: expected exactly one rendered H1, found 2'))
+  })
+})
+
+test('does not use the page title H1 itself to identify a generated document', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/devops-sre/index.html', validHtml('/guide/devops-sre/').replace(
+      '<h1 id="_top">Claude Code Architecture</h1>',
+      '<p>Missing page title</p>',
+    ))
+
+    const failures = check(root)
+
+    assert.ok(failures.includes('/guide/devops-sre/: expected exactly one rendered H1, found 0'))
+  })
+})
+
+test('rejects rendered links to the legacy release route outside its compatibility page', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/devops-sre/index.html', validHtml('/guide/devops-sre/').replace(
+      '</main>',
+      '<a href="/guide/claude-code-releases/#v2">Old releases</a></main>',
+    ))
+
+    const failures = check(root)
+
+    assert.ok(failures.includes('/guide/devops-sre/: rendered href targets legacy release route'))
+  })
+})
+
+test('rejects a releases sitemap lastmod that differs from the displayed release date', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'sitemap-0.xml', '<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc><lastmod>2026-06-25</lastmod></url></urlset>')
+
+    const failures = check(root)
+
+    assert.ok(failures.includes(`sitemap: expected /releases/ lastmod ${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}, found 2026-06-25`))
+  })
+})
+
+test('accepts the stable release date serialized as midnight UTC', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc><lastmod>${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}T00:00:00.000Z</lastmod></url></urlset>`)
+
     assert.deepEqual(check(root), [])
   })
 })

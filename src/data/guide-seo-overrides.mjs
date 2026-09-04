@@ -34,15 +34,36 @@ function replaceFrontmatterField(frontmatter, field, value) {
   return `${frontmatter}${frontmatter ? '\n' : ''}${line}`
 }
 
-function removeLeadingDocumentH1(content) {
+function normalizeDocumentH1s(content) {
   const frontmatterMatch = content.match(/^---\r?\n[\s\S]*?\r?\n---/)
   if (!frontmatterMatch) return content
 
   const frontmatter = frontmatterMatch[0]
   const body = content.slice(frontmatter.length)
-  const withoutH1 = body.replace(/^(?:\r?\n[ \t]*)*# [^\r\n]+(?:\r?\n)?/, '')
+  const newline = body.includes('\r\n') ? '\r\n' : '\n'
+  const lines = body.split(/\r?\n/)
+  let firstDocumentH1Removed = false
+  let fenceMarker = ''
 
-  return `${frontmatter}${withoutH1}`
+  const normalizedLines = lines.flatMap((line) => {
+    const fenceMatch = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/)
+    if (fenceMatch) {
+      const marker = fenceMatch[1]
+      if (!fenceMarker) fenceMarker = marker
+      else if (marker[0] === fenceMarker[0] && marker.length >= fenceMarker.length && fenceMatch[2].trim() === '') fenceMarker = ''
+      return [line]
+    }
+
+    if (fenceMarker || !/^ {0,3}#(?!#)\s+/.test(line)) return [line]
+    if (!firstDocumentH1Removed) {
+      firstDocumentH1Removed = true
+      return []
+    }
+
+    return [line.replace(/^( {0,3})#(\s+)/, '$1##$2')]
+  })
+
+  return `${frontmatter}${normalizedLines.join(newline)}`
 }
 
 export function transformGuideMarkdown(content, sourcePath) {
@@ -57,11 +78,11 @@ export function transformGuideMarkdown(content, sourcePath) {
     })
   }
 
-  const withoutLeadingH1 = removeLeadingDocumentH1(transformed)
-  if (sourcePath !== 'guide/core/hooks-events-reference.md') return withoutLeadingH1
+  const withoutDocumentH1s = normalizeDocumentH1s(transformed)
+  if (sourcePath !== 'guide/core/hooks-events-reference.md') return withoutDocumentH1s
 
   const hooksRecap = getContextualLink('/cheatsheets/m11-hooks-evenements-systeme/')
-  return `${withoutLeadingH1}\n\n## Related material\n\n[${hooksRecap.anchor}](${hooksRecap.target})\n`
+  return `${withoutDocumentH1s}\n\n## Related material\n\n[${hooksRecap.anchor}](${hooksRecap.target})\n`
 }
 
 export function canonicalGuidePageUrl(relPath) {

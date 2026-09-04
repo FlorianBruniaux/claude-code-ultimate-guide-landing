@@ -1,8 +1,12 @@
 import assert from 'node:assert/strict'
+import { execFile } from 'node:child_process'
 import { createServer, type ServerResponse } from 'node:http'
 import test from 'node:test'
+import { promisify } from 'node:util'
 
 import { checkPublicSeo } from '../../scripts/check-public-seo.mjs'
+
+const execFileAsync = promisify(execFile)
 
 type ResponseOptions = {
   headers?: Record<string, string>
@@ -146,7 +150,58 @@ test('rejects missing nosniff, referrer, or framing policy', async () => {
     assert.deepEqual(failures, [
       '/: expected X-Content-Type-Options: nosniff, found none',
       '/releases/: expected Referrer-Policy: strict-origin-when-cross-origin, found no-referrer',
-      '/favicon.svg: expected Content-Security-Policy frame-ancestors or X-Frame-Options DENY/SAMEORIGIN',
+      "/favicon.svg: expected Content-Security-Policy frame-ancestors 'none' or X-Frame-Options DENY/SAMEORIGIN",
     ])
   })
+})
+
+test('rejects permissive or misspelled frame-ancestors directives', async () => {
+  const policies = [
+    { csp: "default-src 'self'; frame-ancestors *", xFrameOptions: 'DENY' },
+    { csp: "default-src 'self'; frame-ancestors https://embed.example.com", xFrameOptions: 'DENY' },
+    { csp: "default-src 'self'; frame-ancestors-foo 'none'", xFrameOptions: undefined },
+  ]
+
+  for (const policy of policies) {
+    await withServer((request, response) => {
+      if (request.url === '/guide/claude-code-releases/') {
+        send(response, '', { status: 301, headers: { Location: '/releases/' } })
+        return
+      }
+
+      const headers: Record<string, string> = requiredHeaders({ 'Content-Security-Policy': policy.csp })
+      if (policy.xFrameOptions) headers['X-Frame-Options'] = policy.xFrameOptions
+      send(response, 'ok', { headers })
+    }, async (baseUrl) => {
+      const failures = await checkPublicSeo({ baseUrl })
+
+      assert.ok(
+        failures.includes('/: expected Content-Security-Policy frame-ancestors \'none\' or X-Frame-Options DENY/SAMEORIGIN'),
+        policy.csp,
+      )
+    })
+  }
+})
+
+test('accepts the documented CLI separator before the base URL', async () => {
+  await withServer(directReleaseSite, async (baseUrl) => {
+    const script = new URL('../../scripts/check-public-seo.mjs', import.meta.url)
+    const result = await execFileAsync(process.execPath, [script.pathname, '--', baseUrl])
+
+    assert.match(result.stdout, /Public SEO smoke check passed/)
+    assert.equal(result.stderr, '')
+  })
+})
+
+test('reports a controlled CLI error for an invalid base URL', async () => {
+  const script = new URL('../../scripts/check-public-seo.mjs', import.meta.url)
+
+  await assert.rejects(
+    execFileAsync(process.execPath, [script.pathname, '--', 'not-a-url']),
+    (error: Error & { stderr?: string }) => {
+      assert.match(error.stderr ?? '', /Invalid base URL:/)
+      assert.doesNotMatch(error.stderr ?? '', /TypeError:/)
+      return true
+    },
+  )
 })

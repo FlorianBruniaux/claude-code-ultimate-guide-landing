@@ -52,12 +52,13 @@ test('canonicalizes the legacy release document', () => {
   assert.equal(canonicalGuidePageUrl('claude-code-releases.md'), '/releases/')
 })
 
-test('keeps headings inside code fences and later H1 examples intact', () => {
-  const fixture = '---\ntitle: Page\n---\n\n# Page\n\n```md\n# Example\n```\n\n# Later example'
+test('keeps fenced H1 examples and demotes later document H1 headings', () => {
+  const fixture = '---\ntitle: Page\n---\n\n# Page\n\n```md\n# Example\n```\n\n# Later section'
   const result = transformGuideMarkdown(fixture, 'guide/core/architecture.md')
 
   assert.match(result, /```md\n# Example\n```/)
-  assert.match(result, /# Later example/)
+  assert.match(result, /^## Later section$/m)
+  assert.doesNotMatch(result, /^# Later section$/m)
 })
 
 test('removes the leading H1 from a workflow page without an SEO override', () => {

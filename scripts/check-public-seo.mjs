@@ -6,7 +6,19 @@ export const STATIC_ASSET_PATH = '/favicon.svg'
 export const SECURITY_PATHS = ['/', RELEASE_PATH, STATIC_ASSET_PATH]
 
 function normalizedBaseUrl(baseUrl) {
-  const url = new URL(baseUrl)
+  let url
+
+  try {
+    url = new URL(baseUrl)
+  }
+  catch {
+    throw new TypeError('checkPublicSeo requires a valid HTTP(S) baseUrl')
+  }
+
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new TypeError('checkPublicSeo requires a valid HTTP(S) baseUrl')
+  }
+
   url.pathname = '/'
   url.search = ''
   url.hash = ''
@@ -28,9 +40,18 @@ function errorMessage(error) {
 function hasFramingPolicy(response) {
   const csp = header(response, 'content-security-policy')
   const xFrameOptions = header(response, 'x-frame-options')?.toUpperCase()
+  const frameAncestors = (csp ?? '')
+    .split(';')
+    .map((directive) => directive.trim().split(/\s+/))
+    .filter(([name]) => name?.toLowerCase() === 'frame-ancestors')
 
-  return /(?:^|;)\s*frame-ancestors\b/i.test(csp ?? '')
-    || xFrameOptions === 'DENY'
+  if (frameAncestors.length > 0) {
+    return frameAncestors.every(([, ...sources]) => (
+      sources.length === 1 && sources[0].toLowerCase() === "'none'"
+    ))
+  }
+
+  return xFrameOptions === 'DENY'
     || xFrameOptions === 'SAMEORIGIN'
 }
 
@@ -48,7 +69,7 @@ function checkRequiredHeaders(path, response) {
   }
 
   if (!hasFramingPolicy(response)) {
-    failures.push(`${path}: expected Content-Security-Policy frame-ancestors or X-Frame-Options DENY/SAMEORIGIN`)
+    failures.push(`${path}: expected Content-Security-Policy frame-ancestors 'none' or X-Frame-Options DENY/SAMEORIGIN`)
   }
 
   return failures
@@ -56,8 +77,15 @@ function checkRequiredHeaders(path, response) {
 
 /**
  * Performs only GET requests. It does not change DNS, hosting, GSC, or GA4.
+ *
+ * @typedef {object} PublicSeoOptions
+ * @property {string | URL} [baseUrl]
+ * @property {typeof globalThis.fetch} [fetchImpl]
+ *
+ * @param {PublicSeoOptions} [options]
  */
-export async function checkPublicSeo({ baseUrl, fetchImpl = globalThis.fetch } = {}) {
+export async function checkPublicSeo(options = {}) {
+  const { baseUrl, fetchImpl = globalThis.fetch } = options
   if (!baseUrl) throw new TypeError('checkPublicSeo requires a baseUrl')
   if (typeof fetchImpl !== 'function') throw new TypeError('checkPublicSeo requires a fetch implementation')
 
@@ -121,7 +149,9 @@ export async function checkPublicSeo({ baseUrl, fetchImpl = globalThis.fetch } =
 }
 
 async function main() {
-  const [baseUrl] = process.argv.slice(2)
+  const args = process.argv.slice(2)
+  if (args[0] === '--') args.shift()
+  const [baseUrl] = args
 
   if (!baseUrl) {
     console.error('Usage: pnpm check:public-seo -- https://cc.bruniaux.com')
@@ -129,7 +159,15 @@ async function main() {
     return
   }
 
-  const failures = await checkPublicSeo({ baseUrl })
+  let failures
+  try {
+    failures = await checkPublicSeo({ baseUrl })
+  }
+  catch (error) {
+    console.error(`Invalid base URL: ${errorMessage(error)}`)
+    process.exitCode = 1
+    return
+  }
   if (failures.length === 0) {
     console.log(`Public SEO smoke check passed for ${baseUrl}.`)
     return

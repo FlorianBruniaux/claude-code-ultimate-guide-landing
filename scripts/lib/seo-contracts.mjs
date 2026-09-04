@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { extname, join, relative } from 'node:path'
-import { Window } from 'happy-dom'
+import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from '../../src/data/seo-editorial-contract.mjs'
 
 const SITE_ORIGIN = 'https://cc.bruniaux.com'
 const LEGACY_RELEASE_URL = `${SITE_ORIGIN}/guide/claude-code-releases/`
@@ -67,17 +67,48 @@ function title(html) {
   return html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
 }
 
-function renderedH1Count(html) {
-  const window = new Window()
+function inspectRenderedDocument(html, route) {
+  const inertDepth = { script: 0, style: 0, template: 0 }
+  let h1Count = 0
+  let isRedirectDocument = false
+  let legacyReleaseHref = false
 
-  try {
-    window.document.write(html)
-    window.document.close()
-    return window.document.querySelectorAll('h1').length
+  for (const match of html.matchAll(/<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>/g)) {
+    const tag = match[0]
+    if (tag.startsWith('<!--')) continue
+
+    const tagMatch = tag.match(/^<\s*(\/?)\s*([a-zA-Z][\w:-]*)/)
+    if (!tagMatch) continue
+    const closing = tagMatch[1] === '/'
+    const name = tagMatch[2].toLowerCase()
+
+    if (Object.hasOwn(inertDepth, name)) {
+      inertDepth[name] = Math.max(0, inertDepth[name] + (closing ? -1 : 1))
+      continue
+    }
+    if (Object.values(inertDepth).some((depth) => depth > 0) || closing) continue
+
+    if (name === 'h1') {
+      h1Count++
+    }
+
+    if (name === 'meta' && attribute(tag, 'http-equiv')?.toLowerCase() === 'refresh') isRedirectDocument = true
+
+    if (name === 'a') {
+      const href = attribute(tag, 'href')
+      if (!href) continue
+      try {
+        if (new URL(href, `${SITE_ORIGIN}${route}`).pathname === '/guide/claude-code-releases/') {
+          legacyReleaseHref = true
+        }
+      }
+      catch {
+        // Invalid hrefs are outside this SEO contract.
+      }
+    }
   }
-  finally {
-    window.close()
-  }
+
+  return { h1Count, isRedirectDocument, legacyReleaseHref }
 }
 
 function walkFiles(root) {
@@ -105,11 +136,25 @@ function textArtifactFiles(distDir) {
   return walkFiles(distDir).filter((path) => TEXT_ARTIFACT_EXTENSIONS.has(extname(path).toLowerCase()))
 }
 
+function htmlRoute(distDir, path) {
+  const relativePath = relative(distDir, path).replaceAll('\\', '/')
+  if (relativePath === 'index.html') return '/'
+  if (relativePath.endsWith('/index.html')) return `/${relativePath.slice(0, -'index.html'.length)}`
+  return `/${relativePath}`
+}
+
+function sitemapCalendarDate(value) {
+  const match = value.match(/^(\d{4}-\d{2}-\d{2})(?:T00:00:00\.000Z)?$/)
+  return match?.[1] ?? value
+}
+
 export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
   const failures = []
+  const auditedPagePaths = new Set()
 
   for (const route of routes) {
     const path = pagePath(distDir, route)
+    auditedPagePaths.add(path)
     let html
 
     try {
@@ -120,7 +165,7 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
       continue
     }
 
-    const h1Count = renderedH1Count(html)
+    const { h1Count } = inspectRenderedDocument(html, route)
     if (h1Count !== 1) failures.push(`${route}: expected exactly one rendered H1, found ${h1Count}`)
 
     const expectedCanonical = `${SITE_ORIGIN}${route}`
@@ -148,9 +193,31 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
   )
   if (releaseEntries !== 1) failures.push(`sitemap: expected exactly one /releases/ entry, found ${releaseEntries}`)
 
+  const releaseLastmods = sitemapContents.flatMap(({ xml }) => (
+    Array.from(xml.matchAll(/<url>\s*([\s\S]*?)\s*<\/url>/g))
+      .filter(([, entry]) => /<loc>\s*https:\/\/cc\.bruniaux\.com\/releases\/\s*<\/loc>/.test(entry))
+      .map(([, entry]) => entry.match(/<lastmod>\s*([^<]+?)\s*<\/lastmod>/)?.[1] ?? 'none')
+  ))
+  if (releaseLastmods.length === 1 && sitemapCalendarDate(releaseLastmods[0]) !== LATEST_CLAUDE_CODE_RELEASE_DATE_ISO) {
+    failures.push(`sitemap: expected /releases/ lastmod ${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}, found ${releaseLastmods[0]}`)
+  }
+
   for (const { path, xml } of sitemapContents) {
     if (xml.includes(LEGACY_RELEASE_URL)) {
       failures.push(`sitemap: legacy release URL appears in ${relative(distDir, path)}`)
+    }
+  }
+
+  for (const path of walkFiles(distDir).filter((candidate) => extname(candidate).toLowerCase() === '.html')) {
+    const route = htmlRoute(distDir, path)
+    const document = inspectRenderedDocument(readFileSync(path, 'utf8'), route)
+
+    if (!auditedPagePaths.has(path) && route.startsWith('/guide/') && !document.isRedirectDocument && document.h1Count !== 1) {
+      failures.push(`${route}: expected exactly one rendered H1, found ${document.h1Count}`)
+    }
+
+    if (route !== '/guide/claude-code-releases/' && document.legacyReleaseHref) {
+      failures.push(`${route}: rendered href targets legacy release route`)
     }
   }
 

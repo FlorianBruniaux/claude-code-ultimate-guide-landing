@@ -8,14 +8,14 @@ The audit classifies zero recorded conversions as PROUVÉ for its audited 28-day
 
 Do not rename these existing events. A key-event decision changes GA4 configuration outside this repository and must keep the event names below so historical data remains comparable.
 
-| Objective candidate | Existing event | External decision |
-| --- | --- | --- |
-| Complete the quiz | `quiz_complete` | Decide whether to mark as a key event. |
-| Subscribe for recap cards | `recap_card_subscribe` | Decide whether to mark as a key event. |
-| Subscribe for an ebook | `ebook_subscribe` | Decide whether to mark as a key event. |
-| Download a file | `file_download` | Decide which files qualify as outcomes. |
+| Objective candidate | Existing event | Local source evidence | GA4 reception | External decision |
+| --- | --- | --- | --- | --- |
+| Complete the quiz | `quiz_complete` | PROUVÉ | UNKNOWN | Decide whether to mark as a key event. |
+| Subscribe for recap cards | `recap_card_subscribe` | PROUVÉ | UNKNOWN | Decide whether to mark as a key event. |
+| Subscribe for an ebook | `ebook_subscribe` | PROUVÉ | UNKNOWN | Decide whether to mark as a key event. |
+| Download a file | `file_download` | DÉCLARÉ | UNKNOWN | Prove the emitter or GA4 configuration, then decide which files qualify as outcomes. |
 
-The event names are PARTIEL evidence of outcome instrumentation: their source presence does not prove GA4 received them. The decision owner, key-event configuration, and DebugView evidence are UNKNOWN. It is PROUVÉ that this repository task did not change external configuration.
+The repository directly proves the source presence of `quiz_complete`, `recap_card_subscribe`, and `ebook_subscribe`. It does not prove that GA4 received any of them. `file_download` remains DÉCLARÉ until a local emitter or the GA4 configuration is inspected. The decision owner, key-event configuration, and DebugView evidence are UNKNOWN. It is PROUVÉ that this repository task did not change external configuration.
 
 ## DebugView validation record
 

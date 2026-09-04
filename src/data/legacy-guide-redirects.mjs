@@ -35,6 +35,7 @@ const workflowRedirects = existsSync(workflowsDir)
 export const legacyGuideRedirects = {
   ...flatGuideSourceRedirects,
   ...workflowRedirects,
+  '/guide/core/claude-code-releases/': '/releases/',
   '/guide/01-installation/': '/guide/learning-path/01-installation/',
   '/guide/03-memory/': '/guide/learning-path/03-memory/',
   '/guide/05-skills/': '/guide/learning-path/05-skills/',

@@ -37,7 +37,7 @@ The selected edge or host must return the following values:
 | `GET /guide/claude-code-releases/` | A single, direct `301` or `308` redirect to `/releases/`. A `200` HTML redirect stub fails. |
 | `/`, `/releases/`, and `/favicon.svg` | `X-Content-Type-Options: nosniff` |
 | `/`, `/releases/`, and `/favicon.svg` | `Referrer-Policy: strict-origin-when-cross-origin` |
-| `/`, `/releases/`, and `/favicon.svg` | `Content-Security-Policy` containing `frame-ancestors 'none'`, or `X-Frame-Options: DENY` |
+| `/`, `/releases/`, and `/favicon.svg` | `Content-Security-Policy` with the exact restrictive directive `frame-ancestors 'none'`, or `X-Frame-Options: DENY` or `SAMEORIGIN` when CSP has no conflicting `frame-ancestors` directive. Wildcards and third-party origins fail. |
 
 `X-Frame-Options: SAMEORIGIN` is accepted by the smoke checker for compatibility, but the deployment decision should record why it replaces `DENY`.
 

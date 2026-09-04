@@ -6,6 +6,7 @@ import {
   landingSeo,
   releaseDateToIsoDate,
 } from './seo-editorial-contract.mjs'
+import * as seoEditorialContract from './seo-editorial-contract.mjs'
 
 test('keeps the audited landing snippets within search-result limits', () => {
   assert.deepEqual(landingSeo, {
@@ -50,4 +51,9 @@ test('defines six contextual links with descriptive anchors outside global chrom
 
 test('derives release schema dates from release data without a build clock', () => {
   assert.equal(releaseDateToIsoDate('Aug 31, 2026'), '2026-08-31')
+})
+
+test('shares one stable latest release date with release content and sitemap output', () => {
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE, 'Aug 31, 2026')
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE_ISO, '2026-08-31')
 })

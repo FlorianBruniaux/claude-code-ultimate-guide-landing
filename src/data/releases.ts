@@ -1,3 +1,5 @@
+import { LATEST_CLAUDE_CODE_RELEASE_DATE } from './seo-editorial-contract.mjs'
+
 export interface Release {
   version: string
   date: string
@@ -17,7 +19,7 @@ export interface BreakingChange {
 export const releases: Release[] = [
   {
     version: 'v2.1.252',
-    date: 'Aug 31, 2026',
+    date: LATEST_CLAUDE_CODE_RELEASE_DATE,
     highlights: [
       'Fixed Bash commands failing with a task-output-swap error on some Macs',
       'Fixed "always allow" not saving in a project with no .claude/settings.local.json yet',
