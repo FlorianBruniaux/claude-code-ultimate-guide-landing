@@ -66,6 +66,12 @@ function title(html) {
   return html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
 }
 
+function renderedHtml(html) {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<(script|style|template)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '')
+}
+
 function walkFiles(root) {
   const files = []
   const entries = readdirSync(root, { withFileTypes: true }).sort((left, right) => left.name.localeCompare(right.name))
@@ -106,7 +112,7 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
       continue
     }
 
-    const h1Count = html.match(/<h1(?:\s|>)/gi)?.length ?? 0
+    const h1Count = renderedHtml(html).match(/<h1(?:\s|>)/gi)?.length ?? 0
     if (h1Count !== 1) failures.push(`${route}: expected exactly one rendered H1, found ${h1Count}`)
 
     const expectedCanonical = `${SITE_ORIGIN}${route}`

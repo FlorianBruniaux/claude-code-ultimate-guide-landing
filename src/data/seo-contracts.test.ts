@@ -54,6 +54,24 @@ test('rejects two rendered H1 elements', async () => {
   })
 })
 
+test('does not let inert H1 markup satisfy the rendered H1 contract', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace(
+      '<main><h1>Claude Code Architecture</h1></main>',
+      `<main>
+        <!-- <h1>Comment heading</h1> -->
+        <template><h1>Template heading</h1></template>
+        <script>const example = '<h1>Script heading</h1>'</script>
+        <style>.example::before { content: '<h1>Style heading</h1>'; }</style>
+      </main>`,
+    ))
+
+    const failures = check(root)
+
+    assert.deepEqual(failures, [`${ROUTE}: expected exactly one rendered H1, found 0`])
+  })
+})
+
 test('rejects an HTTP canonical', async () => {
   await withValidFixture(async (root) => {
     await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('https://cc.bruniaux.com/guide/architecture/', 'http://cc.bruniaux.com/guide/architecture/'))
