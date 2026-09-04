@@ -1,0 +1,29 @@
+src/data/guide-content-entries.ts
+  s_bd34fc83fb2040::t_27477ca3c1b534 3,338,346,354,362,370,378,386,394,402,410,418,426,434,442,1426,1434,1442,1450,1458,1466,1474,1482,1490,1498,1506,1514,1522,1530,1538,1546,1554,1562,1570,1578,1932,1940,1948,1956,1964,1972,2514,2522,2530,2538,2546,2554,2562,2570,2578,3330,3338,3346,3354,3362,3370,3378,3386,3394,6970,6978,6986,6994,7002,7010,7018,7026,7034,7042,7050,7058,7066,7074,7082,7090,7098,7106,7114,7122
+src/data/guide-seo-overrides.test.ts
+  s_29abe1a98b476c::t_946a35b498cd31 1-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9d685685248338caffe022e57705f37f17024f44",
+  "prompts": {},
+  "sessions": {
+    "s_29abe1a98b476c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06830-fc8a-7512-9cb6-a879928c6f7e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bd34fc83fb2040": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a067a8-767f-7da2-84ca-f3ff4f4b2a06",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
