@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url'
 import { execFileSync } from 'child_process'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
+import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
 import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -407,6 +408,7 @@ for (let i = 0; i < guideFileSources.length; i++) {
   const { file, srcDir } = guideFileSources[i]
   const src = resolve(srcDir, file)
   let content = readFileSync(src, 'utf-8')
+  const sourcePath = `guide/${srcDir === GUIDE_DIR ? '' : `${srcDir.split('/').pop()}/`}${file}`
 
   // Extract existing title/desc for fallback
   const fmMeta = extractLeadingFrontmatter(content)
@@ -417,9 +419,9 @@ for (let i = 0; i < guideFileSources.length; i++) {
   // order: 100 + index (keeps all guide files after ultimate-guide chapters in sidebar)
   const { modified, published } = getGitDates(src)
   content = addStarlightFm(content, { title, desc, order: 100 + i, lastUpdated: modified, datePublished: published })
+  content = transformGuideMarkdown(content, sourcePath)
   content = normalizeLangs(content)
 
-  const sourcePath = `guide/${srcDir === GUIDE_DIR ? '' : `${srcDir.split('/').pop()}/`}${file}`
   guideFileBuffer.push({ file, content, sourcePath })
   stats.files++
 }
@@ -443,6 +445,7 @@ if (existsSync(WORKFLOWS_DIR)) {
     const file = workflowFiles[i]
     const src = resolve(WORKFLOWS_DIR, file)
     let content = readFileSync(src, 'utf-8')
+    const sourcePath = `guide/workflows/${file}`
 
     const fmMeta = extractLeadingFrontmatter(content)
     const h1Match = content.match(/^# (.+)/m)
@@ -451,9 +454,10 @@ if (existsSync(WORKFLOWS_DIR)) {
 
     const { modified, published } = getGitDates(src)
     content = addStarlightFm(content, { title, desc, order: 200 + i, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
 
-    guideFileBuffer.push({ file: `workflows/${file}`, content, sourcePath: `guide/workflows/${file}`, isWorkflow: true })
+    guideFileBuffer.push({ file: `workflows/${file}`, content, sourcePath, isWorkflow: true })
     stats.workflows++
   }
 
@@ -461,10 +465,12 @@ if (existsSync(WORKFLOWS_DIR)) {
   const workflowReadme = resolve(WORKFLOWS_DIR, 'README.md')
   if (existsSync(workflowReadme)) {
     let content = readFileSync(workflowReadme, 'utf-8')
+    const sourcePath = 'guide/workflows/README.md'
     const { modified, published } = getGitDates(workflowReadme)
     content = addStarlightFm(content, { title: 'Claude Code Workflows', desc: 'Step-by-step guides for common development patterns with Claude Code', order: 199, lastUpdated: modified, datePublished: published })
+    content = transformGuideMarkdown(content, sourcePath)
     content = normalizeLangs(content)
-    guideFileBuffer.push({ file: 'workflows/index.md', content, sourcePath: 'guide/workflows/README.md', isWorkflow: false })
+    guideFileBuffer.push({ file: 'workflows/index.md', content, sourcePath, isWorkflow: false })
     stats.workflows++
   }
 

@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs'
 import { resolve, dirname, relative, join } from 'path'
 import { fileURLToPath } from 'url'
+import { canonicalGuidePageUrl } from '../src/data/guide-seo-overrides.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -43,19 +44,6 @@ function slugify(text) {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '')
-}
-
-/**
- * Derive URL path from file path relative to CONTENT_DIR.
- * e.g. "architecture.md"                    → "/guide/architecture/"
- *      "ultimate-guide/01-quick-start.md"   → "/guide/ultimate-guide/01-quick-start/"
- *      "workflows/agent-teams.md"           → "/guide/workflows/agent-teams/"
- */
-function getPageUrl(relPath) {
-  const withoutExt = relPath.replace(/\.md$/, '')
-  // Normalize Windows separators
-  const normalized = withoutExt.replace(/\\/g, '/')
-  return `/guide/${normalized}/`
 }
 
 /**
@@ -229,14 +217,15 @@ function main() {
     const content = readFileSync(fullPath, 'utf-8')
     const sections = extractH2Sections(content)
     const category = getCategory(relPath)
-    const pageUrl = getPageUrl(relPath)
+    const pageUrl = canonicalGuidePageUrl(relPath)
+    const shouldKeepSourceFragment = pageUrl !== '/releases/'
 
     for (const { heading, contentExcerpt, subheadings, fileTitle } of sections) {
       // Skip boilerplate headings
       const headingLower = heading.trim().toLowerCase().replace(/^[^\p{L}]+/u, '').trim()
       if (SKIP_HEADINGS.has(headingLower)) continue
 
-      const anchor = '#' + slugify(heading)
+      const anchor = shouldKeepSourceFragment ? '#' + slugify(heading) : ''
       const id = makeId(relPath, heading)
       const keywords = buildKeywords(heading, fileTitle, contentExcerpt, subheadings)
 
