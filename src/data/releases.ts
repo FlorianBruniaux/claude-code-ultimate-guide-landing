@@ -18,14 +18,66 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.252',
+    version: 'v2.1.261',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      'Added /skill-doctor to show which loaded skills go unused and what they cost in context',
+      'Added bashOutputMaxChars/taskOutputMaxChars settings to raise inline command/task output limits up to 128K characters',
+      'Fixed resuming a session losing hook output and other context around parallel tool calls',
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.260',
+    date: 'Sep 3, 2026',
+    highlights: [
+      'Added a /diff panel that opens beside the conversation in fullscreen mode and shows uncommitted changes as Claude edits',
+      'Added a likely cause for prompt-cache misses to /cost and the status line',
+      'Fixed Edit/Write/Read permission rules with parentheses in the path being dropped, which left "read-only" folders writable',
+      'Fixed one uncompilable file permission pattern breaking every file edit with an "Invalid regular expression" error',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.259',
+    date: 'Sep 2, 2026',
+    highlights: [
+      'Added managedMcpServers managed setting: organizations can provide HTTP/SSE MCP servers to every user',
+      'Added --permission-prompts none for unattended headless hosts',
+      'Fixed concurrent sessions silently reverting each other\'s ~/.claude.json changes, resetting workspace trust and losing MCP/project state',
+      'Fixed Bash Read() deny rules not covering files given as option values or git diff/git grep file operands',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.258',
+    date: 'Sep 1, 2026',
+    highlights: [
+      'Fixed Claude Code failing to launch on macOS 12 (Monterey), a regression introduced in 2.1.255',
+      'Fixed remote and scheduled sessions failing with a "non-empty content" error after a re-sent permission approval',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.257',
+    date: 'Sep 1, 2026',
+    highlights: [
+      'Added Claude Fable 5.1 (claude-fable-5-1), now the default Fable model: 1M context, $10/$50 per Mtok',
+      'Added a Containment Escape rule to auto mode against cloud metadata-credential fetches, egress evasion, and cross-tenant reach',
+      'Added a one-time auto-mode prompt before the first file read outside the working directories (permissions.blockReadsOutsideWorkingDirectories)',
+      'Changed defaultMode: "bypassPermissions" in project/local settings to be ignored, like "auto"',
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.252',
+    date: 'Aug 31, 2026',
     highlights: [
       'Fixed Bash commands failing with a task-output-swap error on some Macs',
       'Fixed "always allow" not saving in a project with no .claude/settings.local.json yet',
       'Fixed Remote Control sessions hosted by Claude Desktop or VS Code stalling for minutes after a degraded claude.ai connection',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
