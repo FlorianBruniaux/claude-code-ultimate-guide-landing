@@ -49,6 +49,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Team Metrics and Practitioner Evidence
 
+- **WP11 EPUB downloads restored** (`public/ebooks/epub/{en,fr}/11-team-metrics.epub`, `src/data/whitepapers-data.ts`): published both language editions of Team Metrics in the AI Era and re-enabled EPUB in the email download form. A regression test now requires both advertised files to exist and be non-empty, preventing another emailed 404 (guide issue #56).
 - **Current DORA model synchronized** (`src/pages/team-metrics/index.astro`, `src/content/questions/17-team-metrics/`, `astro.config.mjs`): replaced the legacy four-metric presentation with DORA's current five metrics, including Failed Deployment Recovery Time and Deployment Rework Rate. Updated the quiz, page metadata, and modification date against DORA's official metric history.
 - **Practitioner evidence expanded** (`scripts/build-guide-index.mjs`, `src/data/rss-entries.ts`, `src/pages/sitemap/index.astro`): added the 62-video Pavan Belagatti corpus to the guide reader and Cmd+K source set, expanded the Practitioner Insights description to six source corpora, and exposed Practitioner Insights plus Agentic Software Factories in the HTML sitemap.
 

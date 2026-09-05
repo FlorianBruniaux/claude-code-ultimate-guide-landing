@@ -210,7 +210,7 @@ export const WHITEPAPERS: Whitepaper[] = [
     tags: ['metrics', 'dora', 'space', 'management', 'team'],
     gated: true,
     badge: 'New',
-    formats: ['pdf'],
+    formats: ['pdf', 'epub'],
     hashedFileFr: `11-team-metrics.fr.${V}.e930d3b35da9.pdf`,
     hashedFileEn: `11-team-metrics.en.${V}.4936dfee09fc.pdf`,
     slugFr: '11-team-metrics',
