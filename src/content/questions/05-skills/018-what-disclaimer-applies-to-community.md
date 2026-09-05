@@ -20,4 +20,4 @@ What disclaimer applies to community cybersecurity skills?
 
 ---
 
-Community cybersecurity skills come with important disclaimers: test thoroughly before using in production assessments, ensure you have proper authorization before penetration testing, review and validate against your organization's security policies, use only in legal contexts with written permission from system owners, and contribute back if you find issues. Verification is essential for any security tooling.
+Test community cybersecurity skills before production use, review their instructions, supporting files, scripts, dependencies, and tool grants, and confirm that the work is authorized in writing. A catalog rating or repository popularity does not replace review of the exact version you invoke.

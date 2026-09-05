@@ -20,7 +20,7 @@ test('keeps the audited landing snippets within search-result limits', () => {
     },
     contextEngineering: {
       title: 'Context Engineering Tools for Claude Code',
-      description: 'Compare RTK, lean-ctx, LLMLingua, gateways, RAG, caching, and observability tools for reducing and managing LLM context.',
+      description: 'Compare context tools and govern Claude Code skills with usage evidence, review gates, safe retirement, and explicit ownership.',
     },
   })
 
@@ -54,6 +54,6 @@ test('derives release schema dates from release data without a build clock', () 
 })
 
 test('shares one stable latest release date with release content and sitemap output', () => {
-  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE, 'Aug 31, 2026')
-  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE_ISO, '2026-08-31')
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE, 'Sep 4, 2026')
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE_ISO, '2026-09-04')
 })

@@ -7,17 +7,17 @@ profiles:
 correct: b
 options:
   a: Tools the skill documents
-  b: Tools the skill can use when activated
+  b: Tools or command patterns pre-approved for the turn that invokes the skill
   c: Tools that can activate the skill
-  d: Tools to install
+  d: A permanent sandbox that blocks every unlisted tool
 doc_reference:
   file: guide/ultimate-guide.md
   section: 5.2 Creating Skills
   anchor: '#skillmd-frontmatter'
 ---
 
-What does the 'allowed-tools' field in skill frontmatter control?
+What does the `allowed-tools` field in skill frontmatter control?
 
 ---
 
-The `allowed-tools` field specifies which tools the skill can use when activated. For example, a security-guardian skill might have `allowed-tools: Read, Grep, Bash` - allowing it to read files, search for patterns, and run security scanning commands, but not modify files. This provides security boundaries for each skill.
+The `allowed-tools` field pre-approves matching tools or scoped commands for the turn that invokes the skill. For example, `allowed-tools: Read Grep Bash(npm run *)` narrows what runs without another permission prompt. It is not an exclusive allowlist or sandbox: other tools remain governed by session permissions. Use `disallowed-tools` for turn-scoped removal and project deny rules for persistent restrictions.

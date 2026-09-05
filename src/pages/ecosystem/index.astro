@@ -1,20 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 
-const title = 'Claude Code Third-Party Ecosystem | Tools & Integrations'
-const description = '26 community-built tools that extend Claude Code: token tracking, session management, alternative UIs, and multi-agent orchestration. Last verified May 2026.'
+const title = 'Claude Code Tools, Skills & Third-Party Ecosystem'
+const description = 'Compare 26 Claude Code tools and evaluate distributed skills by ownership, maintenance, compatibility, source, scripts, and tool grants.'
 
 const jsonLd = [
   {
     "@type": "Article",
     "headline": "Claude Code Third-Party Ecosystem",
-    "description": "Community-built tools extending Claude Code: token tracking, session management, alternative UIs, multi-agent orchestration, and the plugin ecosystem.",
+    "description": "Community-built tools and skill distribution for Claude Code, with explicit checks for ownership, maintenance, compatibility, source, scripts, and tool grants.",
     "url": "https://cc.bruniaux.com/ecosystem/",
     "mainEntityOfPage": "https://cc.bruniaux.com/ecosystem/",
     "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
     "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
     "datePublished": "2026-03-13",
-    "dateModified": "2026-03-13",
+    "dateModified": "2026-09-05",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
@@ -24,16 +24,16 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-13" modifiedDate="2026-03-13">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-13" modifiedDate="2026-09-05">
 
     <header class="page-hero">
         <div class="container">
             <h1>Claude Code Third-Party Ecosystem</h1>
             <p class="tagline">Community-built tools that extend Claude Code. Every tool verified against its public repository.</p>
-            <div class="hero-badge">26 tools · Last verified May 2026</div>
+            <div class="hero-badge">26 tools verified May 2026 · Skills guidance updated Sep 2026</div>
             <div class="cta-buttons">
                 <a href="#tool-browser" class="btn btn-primary">Browse Tools</a>
-                <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/third-party-tools.md" target="_blank" class="btn btn-secondary">Full Guide &rarr;</a>
+                <a href="/guide/third-party-tools/" class="btn btn-secondary">Full Tool Guide &rarr;</a>
             </div>
         </div>
     </header>
@@ -43,7 +43,7 @@ const jsonLd = [
         <h2>By the Numbers</h2>
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number" data-target="25">0</div>
+                <div class="stat-number" data-target="26">0</div>
                 <div class="stat-label">Community Tools</div>
             </div>
             <div class="stat-card">
@@ -57,6 +57,47 @@ const jsonLd = [
             <div class="stat-card">
                 <div class="stat-number" data-target="4">0</div>
                 <div class="stat-label">Stable Tools</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section content-section--alt" id="skill-distribution">
+        <h2>Skills: Distribution Is Not Mutualized Maintenance</h2>
+        <p class="distribution-intro">A public catalog helps you discover procedures and patterns. An install count, leaderboard position, or marketplace rating does not prove that a skill fits your client, repository, risk level, or maintenance model.</p>
+
+        <div class="scope-grid">
+            <article class="scope-card">
+                <span class="scope-label">Personal</span>
+                <h3>Your habits</h3>
+                <p>Store personal skills under <code>~/.claude/skills/</code>. Optimize for your own workflow without promising compatibility to others.</p>
+            </article>
+            <article class="scope-card">
+                <span class="scope-label">Project or team</span>
+                <h3>A shared local contract</h3>
+                <p>Commit project skills under <code>.claude/skills/</code> with a named owner, review path, assumptions, and retirement signal.</p>
+            </article>
+            <article class="scope-card">
+                <span class="scope-label">Tool or vendor</span>
+                <h3>Versioned support</h3>
+                <p>Publish through a maintained repository or plugin when users need compatibility and release support for a specific tool.</p>
+            </article>
+            <article class="scope-card">
+                <span class="scope-label">Marketplace or global</span>
+                <h3>Discovery first</h3>
+                <p>Treat the catalog as a source of candidates. Consume, fork, specialize, extract a pattern, or reject after local evaluation.</p>
+            </article>
+        </div>
+
+        <div class="distribution-panel">
+            <div>
+                <h3>Install only after inspection</h3>
+                <p>Review the selected revision, <code>SKILL.md</code>, supporting files, scripts, dependencies, and tool grants. Claude Code-specific fields may behave differently in another client.</p>
+                <code class="distribution-command">npx skills add &lt;owner/repo&gt;</code>
+            </div>
+            <div>
+                <h3>Keep both boundaries explicit</h3>
+                <p><strong>Security:</strong> treat a downloaded skill like executable code. <strong>Ownership:</strong> treat it like situated context whose assumptions and maintainer must be recorded.</p>
+                <a href="/guide/ultimate-guide/05-skills/#ownership-and-reuse-governance" class="btn btn-secondary">Skill ownership guide &rarr;</a>
             </div>
         </div>
     </section>
@@ -531,6 +572,88 @@ const jsonLd = [
         color: var(--text-secondary);
         font-size: 0.95rem;
         font-weight: 500;
+    }
+
+    .distribution-intro {
+        max-width: 76ch;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin: calc(-1 * var(--space-sm)) 0 var(--space-xl);
+    }
+
+    .scope-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .scope-card,
+    .distribution-panel {
+        background: var(--surface-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius-lg);
+    }
+
+    .scope-card {
+        padding: var(--space-lg);
+    }
+
+    .scope-label {
+        display: inline-block;
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        margin-bottom: var(--space-sm);
+        text-transform: uppercase;
+    }
+
+    .scope-card h3,
+    .distribution-panel h3 {
+        margin: 0 0 var(--space-sm);
+    }
+
+    .scope-card p,
+    .distribution-panel p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .distribution-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-xl);
+        margin-top: var(--space-lg);
+        padding: var(--space-xl);
+    }
+
+    .distribution-command {
+        display: block;
+        margin-top: var(--space-md);
+        padding: var(--space-sm) var(--space-md);
+        background: var(--bg-tertiary);
+        border-radius: var(--border-radius);
+        overflow-x: auto;
+    }
+
+    .distribution-panel .btn {
+        display: inline-block;
+        margin-top: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+        .scope-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 600px) {
+        .scope-grid,
+        .distribution-panel {
+            grid-template-columns: 1fr;
+        }
     }
 
     /* Browser controls */

@@ -4,6 +4,13 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Skill ownership and lifecycle
+
+- **Ownership guidance published on the ecosystem landing** (`src/pages/ecosystem/index.astro`): added personal, project or team, tool or vendor, and marketplace or global scopes; separated discovery from maintenance; documented the consume, fork, specialize, extract, or reject decision; and moved the full tool guide link from GitHub to the public landing. The visible tool count now matches the 26-item dataset.
+- **Retirement evidence added to context engineering** (`src/pages/context-engineering/index.astro`): documented `/skill-doctor` scope and availability limits, treated low use as a review signal, required representative with-skill and without-skill comparisons, kept the human decision explicit, and moved archives outside discovered skill directories.
+- **Quiz and discovery surfaces synchronized** (`src/content/questions/05-skills/`, `src/data/rss-entries.ts`, `src/components/global/AnnouncementBanner.astro`, and generated search indexes): corrected 10 skill questions covering ownership, `allowed-tools`, Skill Evals, Spot Outgrowth, skills versus harnesses, community security, and `/skill-doctor`; added the September announcement and RSS entry; removed a duplicate translation feed item; and routed context-engineering search results to the landing instead of GitHub.
+- **Guide source regenerated and guarded** (`scripts/prepare-guide-content.mjs`, `scripts/build-guide-index.mjs`, and tests): rebuilt the public reader and both search indexes from the current guide, updated the Skills chapter description, synchronized the latest Claude Code release date assertion, and added regression coverage for the new landing content and route mapping.
+
 ### Open-source project galaxy
 
 - **Intent-based project discovery** (`src/pages/projects/index.astro`, `src/data/personal-projects.generated.ts`, and homepage data): replaced the independent 12-project list with 16 projects grouped into five routes generated from the canonical GitHub profile manifest. The homepage highlights featured companion projects, while the full personal project hub exposes format and secondary labels without copying volatile statistics.

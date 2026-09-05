@@ -66,7 +66,6 @@ test('RSS feed includes the loop and graph engineering page', () => {
 test('Subscription Strategy stays exposed across landing discovery surfaces', () => {
   const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
   const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
-  const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
   const searchEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'), 'utf8')
   const contentEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-content-entries.ts'), 'utf8')
 
@@ -74,7 +73,6 @@ test('Subscription Strategy stays exposed across landing discovery surfaces', ()
   assert.match(sitemapPage, /Subscription Strategy at Team Scale/)
   assert.match(rssEntries, /title: 'Subscription Strategy at Team Scale'/)
   assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/subscription-strategy\//)
-  assert.match(banner, /href="\/guide\/subscription-strategy\/" class="ann-link">Subscription Strategy<\/a>/)
   assert.match(searchEntries, /"id": "guide-subscription-strategy-guide"/)
   assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tl-dr"/)
 })
@@ -105,9 +103,9 @@ test('Announcement banner keeps at most four links, rotates its id, and announce
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length
 
   assert.equal(linkCount, 4)
-  assert.match(banner, /const BANNER_ID = 'banner-guide-translations-2026-08'/)
-  assert.match(banner, /href="\/guide\/loop-graph-engineering\/" class="ann-link">Loop &amp; Graph Engineering<\/a>/)
-  assert.match(banner, /href="\/guide\/translations\/" class="ann-link">Translations \+ Chinese Edition<\/a>/)
+  assert.match(banner, /const BANNER_ID = 'banner-skill-governance-2026-09'/)
+  assert.match(banner, /href="\/guide\/ultimate-guide\/05-skills\/" class="ann-link">Skill Governance<\/a>/)
+  assert.match(banner, /href="\/context-engineering\/#skill-lifecycle" class="ann-link">Skill Lifecycle<\/a>/)
   assert.match(banner, /href="\/changelog\/" class="ann-link">Changelog &rarr;<\/a>/)
 })
 

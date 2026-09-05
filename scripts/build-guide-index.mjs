@@ -79,26 +79,27 @@ const STABLE_SEARCH_ALIASES = [
   },
 ]
 
-// Three of the files above resolve to a basename-derived URL that is only a
+// Four of the files above resolve to a basename-derived URL that is only a
 // client-side redirect stub, not the real page ("cannibalization fix" entries
 // in astro.config.mjs's `redirects` map). Verified against the actual
 // `pnpm build` output by grepping `dist/guide/<slug>/index.html` for
 // "Redirecting to:". Kept as an explicit override rather than parsing
 // astro.config.mjs at build time (a live ESM config with functions, not
-// static data), and this only needs to track 3 known moves.
+// static data), and this only needs to track 4 known moves.
 //
-// All three real destinations are hand-authored landing pages (src/pages/ecosystem/,
+// All four real destinations are hand-authored landing pages (src/pages/ecosystem/,
 // src/pages/releases/, ClaudeEcosystem.astro and similar), not a render of the guide
 // markdown at all. No guide heading slug exists on any of them: grepping each built
 // page for its ids turns up only UI chrome (dropdowns, theme toggle) plus, for
 // /releases/, its own version-number ids (v2-1-220), unrelated to the guide's
 // heading slugs. Keeping the guide's anchor on any of these would silently produce
 // a dead in-page fragment on a page that DOES load, the quietest kind of broken
-// link, so the anchor is dropped for all three.
+// link, so the anchor is dropped for all four.
 const LOCAL_GUIDE_REDIRECT_TARGETS = {
   'guide/ecosystem/ai-ecosystem.md': '/ecosystem/',
   'guide/roles/ai-roles.md': '/roles/',
   'guide/core/claude-code-releases.md': '/releases/',
+  'guide/core/context-engineering.md': '/context-engineering/',
 }
 
 

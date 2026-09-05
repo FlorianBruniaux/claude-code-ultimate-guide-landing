@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'Skill Ownership, Evaluation and Retirement',
+    date: 'Sep 5, 2026',
+    description: 'The guide now separates personal, project, vendor, and marketplace ownership; distinguishes adaptable skills from deterministic harness controls; and treats usage reports and evals as bounded evidence. The landing adds adoption checks for distributed skills and a safe retirement path built around /skill-doctor, representative comparisons, and archives outside discovery paths.',
+    link: 'https://cc.bruniaux.com/guide/ultimate-guide/05-skills/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.43.0',
     date: 'Sep 1, 2026',
@@ -42,13 +49,6 @@ export const rssEntries: RssEntry[] = [
     date: 'Aug 31, 2026',
     description: 'AI Unit Economics now separates request-, task-, and delegation-level routing, progressive spend gates for interactive developers, terminal budgets for unattended workloads, and cache effects. Databricks internal routing and token-reduction results remain attributed operating evidence rather than portable savings benchmarks.',
     link: 'https://cc.bruniaux.com/guide/ai-unit-economics/',
-  },
-  {
-    type: 'new_page',
-    title: 'Translations and Language Status',
-    date: 'Aug 31, 2026',
-    description: 'New public status page for the canonical English guide, the maintained French edition, and independent Chinese and Ukrainian community translations. It records versions, synchronization dates, source provenance, coverage, and the current translation gaps without presenting community projects as official editions.',
-    link: 'https://cc.bruniaux.com/guide/translations/',
   },
   {
     type: 'new_page',
@@ -104,14 +104,14 @@ export const rssEntries: RssEntry[] = [
     title: 'Claude Code Ultimate Guide v3.42.0',
     date: 'Aug 26, 2026',
     description: "Evaluated Anthropic's AI-native SDLC playbook blog post and closed the two real gaps against the guide's existing spec-first documentation: an intent.md upstream problem statement, gated by a PM before the technical spec starts, and a closed Maintain-to-Plan loop where a production monitoring threshold drafts a new intent.md automatically. Documented in spec-first.md's 3-document chain (intent.md, spec.md, plan.md) and the Spec-First Development Pipeline diagram.",
-    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#3420---2026-08-26',
+    link: 'https://cc.bruniaux.com/changelog/#3420---2026-08-26',
   },
   {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.41.3',
     date: 'Aug 20, 2026',
     description: 'Consolidates several weeks of security, agent-harness, and sandbox research: the threat database jumps from v2.20.0 to v2.27.0 across the Shai-Hulud keyv npm worm, the Ghostjacking log-poisoning technique, and the skills.sh Paperclip typosquat campaign. New agent-harness-landscape.md page compares 25 CLI, IDE, and cloud harnesses. Sandbox troubleshooting rewritten around what actually breaks in daily use, not what looks dangerous on paper. The Claude Code release tracker catches up to v2.1.237, and the /ultraplan section is removed: the command was deleted from Claude Code five months ago and the guide never noticed.',
-    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CHANGELOG.md#3413---2026-08-20',
+    link: 'https://cc.bruniaux.com/changelog/#3413---2026-08-20',
   },
   {
     type: 'new_section',

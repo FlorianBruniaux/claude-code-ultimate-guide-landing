@@ -7,18 +7,18 @@ profiles:
 - power
 correct: c
 options:
-  a: Active skills and Passive skills
-  b: Manual skills and Automatic skills
-  c: Capability Uplift skills and Encoded Preference skills
-  d: Model skills and Workflow skills
+  a: Local, remote, managed, and unmanaged
+  b: Free, paid, open source, and proprietary
+  c: Personal, project or team, tool or vendor, and marketplace or global
+  d: Prompt, agent, hook, and MCP
 doc_reference:
   file: guide/ultimate-guide.md
-  section: 5.0 Two Kinds of Skills
-  anchor: '#50-two-kinds-of-skills'
+  section: Ownership and Reuse Governance
+  anchor: '#ownership-and-reuse-governance'
 ---
 
-What are the two types of skills introduced in Skills 2.0 (March 2026)?
+Which four ownership scopes should you distinguish before distributing a skill?
 
 ---
 
-Skills 2.0 formalizes two distinct types: **Capability Uplift** skills fill a gap the base model can't handle consistently (e.g., precise PDF text placement). They fade over time as the model improves and should be monitored with evals. **Encoded Preference** skills sequence existing capabilities your team's specific way (e.g., NDA review against your legal criteria). They stay durable as long as the underlying workflow remains relevant.
+Choose between personal, project or team, tool or vendor, and marketplace or global scope before selecting a distribution channel. Each scope carries a different compatibility and maintenance expectation. Public distribution supports discovery, but does not create shared ownership.

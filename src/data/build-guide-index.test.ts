@@ -52,6 +52,33 @@ test('maps loop-graph-engineering to the local canonical guide URL', () => {
   assert.doesNotMatch(generated, /github.com\/FlorianBruniaux\/claude-code-ultimate-guide.*loop-graph-engineering/)
 })
 
+test('maps context engineering search entries to the hand-authored landing page', () => {
+  const root = mkdtempSync(join(tmpdir(), 'guide-index-context-'))
+  const guideRoot = join(root, 'claude-code-ultimate-guide')
+  const outputPath = join(root, 'guide-search-entries.ts')
+  mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  writeFileSync(
+    join(guideRoot, 'machine-readable/reference.yaml'),
+    [
+      'deep_dive:',
+      '  context_engineering_guide: "guide/core/context-engineering.md"',
+      '  context_ejection: "guide/core/context-engineering.md#12-ejection-disciplined-de-engineering"',
+      '',
+    ].join('\n'),
+  )
+
+  const result = spawnSync(
+    process.execPath,
+    [SCRIPT, '--guide-root', guideRoot, '--out', outputPath],
+    { encoding: 'utf8' },
+  )
+
+  assert.equal(result.status, 0, result.stderr)
+  const generated = readFileSync(outputPath, 'utf8')
+  assert.match(generated, /"url": "\/context-engineering\/"/)
+  assert.doesNotMatch(generated, /github.com\/FlorianBruniaux\/claude-code-ultimate-guide.*context-engineering/)
+})
+
 test('does not embed a developer-specific absolute guide path', () => {
   const source = readFileSync(SCRIPT, 'utf8')
 

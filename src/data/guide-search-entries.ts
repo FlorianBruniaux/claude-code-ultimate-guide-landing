@@ -262,7 +262,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-skills-commands-merger-guide",
     "title": "Skills Commands Merger Guide",
-    "keywords": "skills commands merger guide guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide",
+    "keywords": "skills commands merger guide guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide multi instance decision matrix guide ultimate guide",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
     "source": "guide"
@@ -510,193 +510,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-guide",
     "title": "Context Engineering Guide",
-    "keywords": "context engineering guide guide core context engineering",
+    "keywords": "context engineering guide guide core context engineering context engineering what is guide core context engineering md#1 what context engineering context engineering budget guide core context engineering md#2 the context budget context engineering hierarchy guide core context engineering md#3 configuration hierarchy context engineering modular guide core context engineering md#4 modular architecture context engineering team guide core context engineering md#5 team assembly context engineering lifecycle guide core context engineering md#6 context lifecycle context engineering quality guide core context engineering md#7 quality measurement context engineering reduction guide core context engineering md#8 context reduction techniques context engineering maturity guide core context engineering md#9 maturity assessment context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution context loop closure guide core context engineering md#11 loop closure based curation context ejection guide core context engineering md#12 ejection disciplined engineering context self audit guide core context engineering md#13 constitutional and self consistency audits context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation context engineering token audit guide core context engineering md#15 token audit workflow context engineering research guide core context engineering md#16 research patterns what the literature shows context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability context lost in middle guide core context engineering md#the lost the middle problem context primacy recency placement guide core context engineering md#primacy and recency placement context persistent facts block guide core context engineering md#persistent facts block context scratchpad pattern guide core context engineering md#scratchpad pattern context rolling summaries guide core context engineering md#rolling context summaries context engineering compression tools guide core context engineering md#18 token compression tools context 150 ceiling guide core context engineering md#2 the context budget context ace pipeline guide core context engineering md#6 context lifecycle context path scoping guide core context engineering md#4 modular architecture context maturity model guide core context engineering md#7 quality measurement",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-what-is",
-    "title": "Context Engineering What Is",
-    "keywords": "context engineering what is guide core context engineering md#1 what context engineering",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#1-what-is-context-engineering",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-budget",
-    "title": "Context Engineering Budget",
-    "keywords": "context engineering budget guide core context engineering md#2 the context budget context 150 ceiling guide core context engineering md#2 the context budget",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#2-the-context-budget",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-hierarchy",
-    "title": "Context Engineering Hierarchy",
-    "keywords": "context engineering hierarchy guide core context engineering md#3 configuration hierarchy",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#3-configuration-hierarchy",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-modular",
-    "title": "Context Engineering Modular",
-    "keywords": "context engineering modular guide core context engineering md#4 modular architecture context path scoping guide core context engineering md#4 modular architecture",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#4-modular-architecture",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-team",
-    "title": "Context Engineering Team",
-    "keywords": "context engineering team guide core context engineering md#5 team assembly",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#5-team-assembly",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-lifecycle",
-    "title": "Context Engineering Lifecycle",
-    "keywords": "context engineering lifecycle guide core context engineering md#6 context lifecycle context ace pipeline guide core context engineering md#6 context lifecycle",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#6-context-lifecycle",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-quality",
-    "title": "Context Engineering Quality",
-    "keywords": "context engineering quality guide core context engineering md#7 quality measurement context maturity model guide core context engineering md#7 quality measurement",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#7-quality-measurement",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-reduction",
-    "title": "Context Engineering Reduction",
-    "keywords": "context engineering reduction guide core context engineering md#8 context reduction techniques",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#8-context-reduction-techniques",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-maturity",
-    "title": "Context Engineering Maturity",
-    "keywords": "context engineering maturity guide core context engineering md#9 maturity assessment",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#9-maturity-assessment",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-signal-taxonomy",
-    "title": "Context Signal Taxonomy",
-    "keywords": "context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#10-signal-taxonomy-and-causal-attribution",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-loop-closure",
-    "title": "Context Loop Closure",
-    "keywords": "context loop closure guide core context engineering md#11 loop closure based curation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#11-loop-closure-pr-based-curation",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-ejection",
-    "title": "Context Ejection",
-    "keywords": "context ejection guide core context engineering md#12 ejection disciplined engineering",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#12-ejection-disciplined-de-engineering",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-self-audit",
-    "title": "Context Self Audit",
-    "keywords": "context self audit guide core context engineering md#13 constitutional and self consistency audits",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#13-constitutional-and-self-consistency-audits",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-multidev-reconciliation",
-    "title": "Context Multidev Reconciliation",
-    "keywords": "context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#14-multi-dev-profile-reconciliation",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-token-audit",
-    "title": "Context Engineering Token Audit",
-    "keywords": "context engineering token audit guide core context engineering md#15 token audit workflow",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#15-token-audit-workflow",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-research",
-    "title": "Context Engineering Research",
-    "keywords": "context engineering research guide core context engineering md#16 research patterns what the literature shows",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#16-research-patterns-what-the-literature-shows",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-attention-mechanics",
-    "title": "Context Engineering Attention Mechanics",
-    "keywords": "context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#17-attention-mechanics--reliability",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-lost-in-middle",
-    "title": "Context Lost In Middle",
-    "keywords": "context lost in middle guide core context engineering md#the lost the middle problem",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#the-lost-in-the-middle-problem",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-primacy-recency-placement",
-    "title": "Context Primacy Recency Placement",
-    "keywords": "context primacy recency placement guide core context engineering md#primacy and recency placement",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#primacy-and-recency-placement",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-persistent-facts-block",
-    "title": "Context Persistent Facts Block",
-    "keywords": "context persistent facts block guide core context engineering md#persistent facts block",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#persistent-facts-block",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-scratchpad-pattern",
-    "title": "Context Scratchpad Pattern",
-    "keywords": "context scratchpad pattern guide core context engineering md#scratchpad pattern",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#scratchpad-pattern",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-rolling-summaries",
-    "title": "Context Rolling Summaries",
-    "keywords": "context rolling summaries guide core context engineering md#rolling context summaries",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#rolling-context-summaries",
-    "source": "guide"
-  },
-  {
-    "id": "guide-context-engineering-compression-tools",
-    "title": "Context Engineering Compression Tools",
-    "keywords": "context engineering compression tools guide core context engineering md#18 token compression tools",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#18-token-compression-tools",
+    "url": "/context-engineering/",
     "source": "guide"
   },
   {
@@ -1774,7 +1590,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
-    "keywords": "antigravity guide guide ecosystem ecosystem generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
+    "keywords": "antigravity guide guide ecosystem ecosystem generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem coding environments guide ecosystem ecosystem md#6 ide ade and hybrid coding environments ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
     "category": "Guide",
     "url": "/ecosystem/",
     "source": "guide"
@@ -3844,6 +3660,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-warp-agent-cli",
+    "title": "Warp Agent CLI",
+    "keywords": "warp agent cli guide ecosystem agentic tools md#19 warp agent cli",
+    "category": "Guide",
+    "url": "/guide/agentic-tools/#19-warp-agent-cli",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-loop-horizons",
     "title": "Agent Harness Loop Horizons",
     "keywords": "agent harness loop horizons guide core agent harness md#three loop horizons",
@@ -3897,6 +3721,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness landscape entry points guide ecosystem agent harness landscape md#choose the right entry point",
     "category": "Guide",
     "url": "/guide/agent-harness-landscape/#choose-the-right-entry-point",
+    "source": "guide"
+  },
+  {
+    "id": "guide-coding-agent-interfaces",
+    "title": "Coding Agent Interfaces",
+    "keywords": "coding agent interfaces guide ecosystem agent harness landscape md#interface execution and loop ownership are separate",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#interface-execution-and-loop-ownership-are-separate",
     "source": "guide"
   },
   {
@@ -4244,6 +4076,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-skills-taxonomy",
+    "title": "Skills Taxonomy",
+    "keywords": "skills taxonomy guide ultimate guide md#50 two kinds skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#50-two-kinds-of-skills",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skills-reuse-governance",
+    "title": "Skills Reuse Governance",
+    "keywords": "skills reuse governance guide ultimate guide md#ownership and reuse governance",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#ownership-and-reuse-governance",
+    "source": "guide"
+  },
+  {
+    "id": "guide-skills-evals",
+    "title": "Skills Evals",
+    "keywords": "skills evals guide ultimate guide md#5y skill evals",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#5y-skill-evals",
+    "source": "guide"
+  },
+  {
     "id": "guide-skill-template",
     "title": "Skill Template",
     "keywords": "skill template guide ultimate guide md#53 skill template",
@@ -4292,9 +4148,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-skill-lifecycle",
+    "title": "Skill Lifecycle",
+    "keywords": "skill lifecycle guide ultimate guide md#5x skill lifecycle retirement",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#5x-skill-lifecycle--retirement",
+    "source": "guide"
+  },
+  {
     "id": "guide-claude-reflect-system",
     "title": "Claude Reflect System",
-    "keywords": "claude reflect system guide ultimate guide md#automatic skill improvement claude reflect system skill improvement safety guide ultimate guide md#automatic skill improvement claude reflect system skill improvement comparison guide ultimate guide md#automatic skill improvement claude reflect system skill improvement workflow guide ultimate guide md#automatic skill improvement claude reflect system",
+    "keywords": "claude reflect system guide ultimate guide md#automatic skill improvement claude reflect system skill improvement how it works guide ultimate guide md#automatic skill improvement claude reflect system skill improvement safety guide ultimate guide md#automatic skill improvement claude reflect system skill improvement security warnings guide ultimate guide md#automatic skill improvement claude reflect system skill improvement comparison guide ultimate guide md#automatic skill improvement claude reflect system skill improvement workflow guide ultimate guide md#automatic skill improvement claude reflect system",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#automatic-skill-improvement-claude-reflect-system",
     "source": "guide"

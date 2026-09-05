@@ -8,18 +8,18 @@ profiles:
 - power
 correct: b
 options:
-  a: Skills are faster
-  b: Skills provide single source of truth - update once, all agents benefit
-  c: Skills are required by Claude Code
-  d: Skills cost less
+  a: Publishing a skill automatically assigns a maintainer
+  b: A project-owned skill can remove duplication when its users share an owner, review path, and assumptions
+  c: Every agent receives every installed skill update automatically
+  d: Duplication is always worse than a generic shared skill
 doc_reference:
   file: guide/ultimate-guide.md
   section: 5.1 Understanding Skills
   anchor: '#why-skills'
 ---
 
-Why use skills instead of duplicating knowledge in multiple agents?
+When does a shared skill provide a useful single source of truth?
 
 ---
 
-Skills follow DRY (Don't Repeat Yourself) principles. Without skills, you'd duplicate security knowledge in Agent A, B, and C. With skills, the security-guardian skill is the single source - all agents inherit it, and updates propagate everywhere. This ensures consistency and simplifies maintenance.
+A project-owned skill can remove duplication when the repository defines who maintains it, how changes are reviewed, and which assumptions its consumers share. Publishing or installing a skill does not create that contract. A local fork or specialized copy may be safer than a generic artifact full of branches for incompatible contexts.

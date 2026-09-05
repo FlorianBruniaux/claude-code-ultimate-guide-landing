@@ -8,10 +8,10 @@ profiles:
 - power
 correct: b
 options:
-  a: .claude/commands/
-  b: .claude/skills/{skill-name}/
-  c: .claude/agents/
-  d: ~/.claude/skills/
+  a: Store every skill in ~/.claude/skills/ so all projects receive it
+  b: Use .claude/skills/{skill-name}/ for a project-owned skill and ~/.claude/skills/{skill-name}/ for a personal skill
+  c: Use .claude/agents/ for team skills and .claude/commands/ for personal skills
+  d: The location does not affect ownership or discovery
 doc_reference:
   file: guide/ultimate-guide.md
   section: 5.2 Creating Skills
@@ -19,8 +19,8 @@ doc_reference:
 official_doc: https://code.claude.com/docs/en/skills
 ---
 
-Where should skill files be stored?
+How should storage reflect a skill's ownership scope?
 
 ---
 
-Skills live in `.claude/skills/{skill-name}/` directories within your project. Each skill has its own folder containing at minimum a SKILL.md file, with optional reference.md, checklists/, examples/, and scripts/ subdirectories. This organization keeps knowledge modular and reusable.
+Store a project or team skill under `.claude/skills/{skill-name}/` so the repository can carry its owner, review path, and assumptions. Store a personal skill under `~/.claude/skills/{skill-name}/`. Both locations are valid, but they declare different ownership boundaries. Each directory requires a `SKILL.md` file.

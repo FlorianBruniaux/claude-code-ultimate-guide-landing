@@ -14,13 +14,13 @@ const jsonLd = [
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-03-25",
-    "dateModified": "2026-03-25",
+    "dateModified": "2026-09-05",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
       "audienceType": "AI engineers, developers building LLM applications, DevOps teams deploying models"
     },
-    "keywords": "context engineering, token optimization, LLM context window, RTK rust token killer, LLMLingua, Headroom, Edgee, Portkey, Langfuse, RAG optimization, KV cache, AI gateway, LLMOps"
+    "keywords": "context engineering, skill lifecycle, skill-doctor, token optimization, LLM context window, RTK rust token killer, LLMLingua, Headroom, Edgee, Portkey, Langfuse, RAG optimization, KV cache, AI gateway, LLMOps"
   }
 ]
 
@@ -89,13 +89,13 @@ const tools = [
   {
     category: "ACE Operations",
     icon: "🔄",
-    description: "Close the feedback loop: detect friction, propose config changes as PRs, eject dormant rules",
+    description: "Close the feedback loop: detect friction, propose config changes as PRs, and flag retirement candidates",
     color: "amber",
     tools: [
       { name: "Curator (PR-based)", tagline: "Generates config-change PRs from typed friction signals + canary A/B", stars: null },
-      { name: "Ejection probes", tagline: "Identifies dormant rules and negative-ROI skills, proposes archival", stars: null },
+      { name: "Ejection probes", tagline: "Flags low-use or negative-ROI candidates; humans decide", stars: null },
     ],
-    guideLink: "https://cc.bruniaux.com/guide/context-engineering/#10-signal-taxonomy-and-causal-attribution"
+    guideLink: "#skill-lifecycle"
   },
 ]
 
@@ -154,14 +154,14 @@ const useCaseMatrix = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-25" modifiedDate="2026-03-25">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-25" modifiedDate="2026-09-05">
 
   <!-- Hero -->
   <header class="page-hero">
     <div class="container">
       <div class="hero-badge-row">
         <span class="hero-badge">16+ tools mapped</span>
-        <span class="hero-badge hero-badge--secondary">Updated May 2026</span>
+        <span class="hero-badge hero-badge--secondary">Updated Sep 2026</span>
         <span class="hero-badge hero-badge--secondary">RTK · lean-ctx · Headroom · LLMLingua · Edgee · Portkey</span>
       </div>
       <h1>Context Engineering: Tools & Ecosystem</h1>
@@ -278,6 +278,42 @@ const useCaseMatrix = [
             )}
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skill-lifecycle">
+    <div class="container">
+      <span class="section-badge">Skill Governance</span>
+      <h2 class="section-title">Low Use Is a Review Signal, Not a Deletion Rule</h2>
+      <p class="section-subtitle">A quiet skill may be obsolete, rarely needed, successfully preventive, or simply missing telemetry. The usage signal starts an investigation; it does not settle the decision.</p>
+
+      <div class="lifecycle-grid">
+        <article class="lifecycle-card">
+          <span class="lifecycle-step">1</span>
+          <h3>Observe</h3>
+          <p>Run <code>/skill-doctor</code> in a Claude Code terminal to inspect visible skill context cost and never-invoked skills.</p>
+        </article>
+        <article class="lifecycle-card">
+          <span class="lifecycle-step">2</span>
+          <h3>Bound the evidence</h3>
+          <p>The report requires v2.1.252 or later, excludes bundled and enterprise skills, depends on feature-flag fetching, and is unavailable through Remote Control.</p>
+        </article>
+        <article class="lifecycle-card">
+          <span class="lifecycle-step">3</span>
+          <h3>Compare</h3>
+          <p>Disable the candidate, run representative sessions with and without it, and combine those results with task frequency and failure severity.</p>
+        </article>
+        <article class="lifecycle-card">
+          <span class="lifecycle-step">4</span>
+          <h3>Retire safely</h3>
+          <p>Keep the retired version in Git history or outside discovered skill directories. An archive under <code>.claude/skills/</code> can remain visible through nested discovery.</p>
+        </article>
+      </div>
+
+      <div class="lifecycle-decision">
+        <p><strong>Human decision:</strong> account for ownership, assumptions, risk, and whether the skill encodes a temporary model gap or a durable team preference.</p>
+        <a href="/guide/ultimate-guide/05-skills/#5x-skill-lifecycle--retirement" class="btn btn-primary">Skill retirement checklist</a>
       </div>
     </div>
   </section>
@@ -526,6 +562,82 @@ const useCaseMatrix = [
     text-decoration: none;
   }
   .tool-guide-link:hover { text-decoration: underline; }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .lifecycle-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+  }
+
+  .lifecycle-step {
+    align-items: center;
+    background: var(--accent);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    height: 1.75rem;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    width: 1.75rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1rem;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .lifecycle-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .lifecycle-decision {
+    align-items: center;
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    display: flex;
+    gap: var(--space-xl);
+    justify-content: space-between;
+    margin-top: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  .lifecycle-decision p {
+    margin: 0;
+  }
+
+  .lifecycle-decision .btn {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .lifecycle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .lifecycle-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lifecycle-decision {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
 
   .tool-category-header {
     display: flex;
