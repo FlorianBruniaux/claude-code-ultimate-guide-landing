@@ -1,0 +1,33 @@
+CHANGELOG.md
+  s_89505e1dce07cc::t_0d0cf9e4d302bd 52
+src/data/whitepapers-data.ts
+  s_89505e1dce07cc::t_d35be3ac6c352f 213
+src/pages/whitepapers/index.astro
+  s_89505e1dce07cc::t_2c67a52c77cf02 321
+src/utils/resource-catalog.test.ts
+  s_c426f887ec311b::t_129d3b7cb9ac13 2-3,24-25,65,69-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "6cbf78a80a3e60a006cebcc459b160c25edb7bf2",
+  "prompts": {},
+  "sessions": {
+    "s_89505e1dce07cc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0716a-e13e-7473-b0a7-5739c512a87e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_c426f887ec311b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "340f698a-ce38-49ff-973d-1caf89821ebf",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
