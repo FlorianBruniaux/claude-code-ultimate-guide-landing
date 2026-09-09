@@ -1,0 +1,45 @@
+CHANGELOG.md
+  s_b75681c86b5534::t_1ec1e6a1aa146a 7-8
+astro.config.mjs
+  s_b75681c86b5534::t_3b486732c47388 187-188
+plugins/remark-guide-links.mjs
+  s_b75681c86b5534::t_37d47cddc281d7 148-151
+scripts/build-guide-index.mjs
+  s_b75681c86b5534::t_9c1ea714f0dfcc 39
+scripts/prepare-guide-content.mjs
+  s_b75681c86b5534::t_20768676d62bd2 287-289,535-551
+src/data/guide-content-entries.ts
+  s_b75681c86b5534::t_3f58dfc23ec824 3,455-510,594,2575-2622,2650,5026,5410,6082,6234,14538
+src/data/guide-navigation.mjs
+  s_b75681c86b5534::t_445256d59aa302 6
+src/data/guide-search-entries.ts
+  s_b75681c86b5534::t_f871c6ec6d3cc8 3067,3075,3083,3091,3099
+src/data/remark-guide-links.test.ts
+  s_a9da11c3793263::t_42e873934c4612 4,72-78
+src/data/rss-entries.ts
+  s_b75681c86b5534::t_6368f2e4625602 32-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "39f879d0025bc418f9abc2b56f28b01cd449460b",
+  "prompts": {},
+  "sessions": {
+    "s_a9da11c3793263": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06ae1-8792-7e60-83fb-6d0a140d2d38",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b75681c86b5534": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08528-8a68-7b00-beb6-4e1a263caf75",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
