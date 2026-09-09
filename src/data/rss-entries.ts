@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'Tokenade and RTK: Scope, Licence and Benchmark Evidence',
+    date: 'Sep 9, 2026',
+    description: 'The token-optimization guide adds Tokenade with its proprietary licence, client-specific coverage and vendor-maintained THOL results. RTK guidance distinguishes command-output estimates from full-session cost.',
+    link: 'https://cc.bruniaux.com/guide/third-party-tools/#tokenade',
+  },
+  {
     type: 'new_page',
     title: 'Agentic Pentesting: DarkMoon and Strix',
     date: 'Sep 9, 2026',

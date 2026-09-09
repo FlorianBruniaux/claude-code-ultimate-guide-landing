@@ -1532,6 +1532,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-tokenade-guide",
+    "title": "Tokenade Guide",
+    "keywords": "tokenade guide guide ecosystem third party tools md#tokenade",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#tokenade",
+    "source": "guide"
+  },
+  {
     "id": "guide-rtk-guide",
     "title": "RTK Guide",
     "keywords": "rtk guide guide ultimate guide md#command output optimization with rtk",
@@ -3681,6 +3689,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "liza tool guide ecosystem agentic tools md#48 liza",
     "category": "Guide",
     "url": "/guide/agentic-tools/#48-liza",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multica-tool",
+    "title": "Multica Tool",
+    "keywords": "multica tool guide ecosystem agentic tools md#49 multica agent harness multica profile guide ecosystem agentic tools md#49 multica",
+    "category": "Guide",
+    "url": "/guide/agentic-tools/#49-multica",
     "source": "guide"
   },
   {

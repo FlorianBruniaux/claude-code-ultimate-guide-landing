@@ -295,7 +295,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-harness-landscape-complete-project-directory",
     "title": "Complete Project Directory",
-    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 32 guide supplements separately. <abbr title=\"not established from the pinned sources\" ?< guide supplements 32",
+    "keywords": "complete project directory agent harness landscape the directory preserves every upstream project and lists the 33 guide supplements separately. <abbr title=\"not established from the pinned sources\" ?< guide supplements 33",
     "category": "Core Guides",
     "url": "/guide/agent-harness-landscape/#complete-project-directory",
     "source": "guide"
@@ -6855,7 +6855,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-third-party-tools-context-compression",
     "title": "Context Compression",
-    "keywords": "context compression claude code tools rtk ccusage guis tools that reduce tokens entering llm context through compression, lazy-loading, or intelligent filtering, complementary to the tracking tools above. lean ctx tilth maki mcp2cli",
+    "keywords": "context compression claude code tools rtk ccusage guis tools that reduce tokens entering llm context through compression, lazy-loading, or intelligent filtering, complementary to the tracking tools above. tokenade lean ctx tilth maki mcp2cli",
     "category": "Core Guides",
     "url": "/guide/third-party-tools/#context-compression",
     "source": "guide"
