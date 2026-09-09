@@ -36,6 +36,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/core/translations.md',
   'guide/core/visual-reference.md',
   // security/
+  'guide/security/agentic-pentesting.md',
   'guide/security/data-privacy.md',
   'guide/security/enterprise-governance.md',
   'guide/security/production-safety.md',

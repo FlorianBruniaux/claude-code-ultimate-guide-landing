@@ -3,6 +3,7 @@ import { getContextualLink } from './seo-editorial-contract.mjs'
 const codeReviewWorkflow = getContextualLink('/guide/workflows/code-review/')
 
 export const guideHighlights = [
+  { title: 'Agentic Pentesting: DarkMoon and Strix', href: '/guide/agentic-pentesting/', desc: 'Compare execution scope, privacy controls, and exploit evidence, with a reproducible evaluation protocol.' },
   {
     title: 'Translations and Language Status',
     href: '/guide/translations/',

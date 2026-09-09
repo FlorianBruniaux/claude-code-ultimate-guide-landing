@@ -284,7 +284,9 @@ function rewriteRepoDocLinks(content) {
   return content.replace(
     /\[([^\]]*)\]\((?:\.\.\/)+(docs\/[^)#]+\.md)(#[^)]+)?\)/g,
     (match, text, path, anchor) =>
-      `[${text}](https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${path}${anchor || ''})`
+      path === 'docs/resource-evaluations/darkmoon-strix-agentic-pentesting.md'
+        ? `[${text}](/guide/darkmoon-strix-agentic-pentesting/${anchor || ''})`
+        : `[${text}](https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/${path}${anchor || ''})`
   )
 }
 
@@ -529,6 +531,23 @@ if (existsSync(LEARNING_PATH_DIR)) {
 // 2.7 Audience pages (docs/for-*.md → /guide/for-*/)
 // -----------------------------------------------------------------------
 const DOCS_DIR = resolve(GUIDE_REPO, 'docs')
+
+// Publish the reviewed pentesting evidence alongside its guide page.
+const evaluationFile = 'darkmoon-strix-agentic-pentesting.md'
+const evaluationSource = `docs/resource-evaluations/${evaluationFile}`
+const evaluationPath = resolve(GUIDE_REPO, evaluationSource)
+const evaluationDates = getGitDates(evaluationPath)
+guideFileBuffer.push({
+  file: evaluationFile,
+  sourcePath: evaluationSource,
+  content: normalizeLangs(addStarlightFm(readFileSync(evaluationPath, 'utf-8').replace(/^# .+\r?\n/m, ''), {
+    title: 'DarkMoon and Strix: Evidence and Evaluation',
+    desc: 'Source revisions, synthetic privacy tests, and evidence needed to evaluate DarkMoon and Strix.',
+    order: 299,
+    lastUpdated: evaluationDates.modified,
+    datePublished: evaluationDates.published,
+  })),
+})
 
 // Whitelisted role/audience pages from the guide repo's docs/ folder.
 // Descriptions are set here because the source files have no frontmatter.

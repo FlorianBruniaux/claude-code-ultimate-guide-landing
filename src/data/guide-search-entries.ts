@@ -3064,7 +3064,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Pentesting",
     "keywords": "agentic pentesting guide security agentic pentesting",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md",
+    "url": "/guide/agentic-pentesting/",
     "source": "guide"
   },
   {
@@ -3072,7 +3072,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Darkmoon Strix Comparison",
     "keywords": "darkmoon strix comparison guide security agentic pentesting md#compare the inspected implementations",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#compare-the-inspected-implementations",
+    "url": "/guide/agentic-pentesting/#compare-the-inspected-implementations",
     "source": "guide"
   },
   {
@@ -3080,7 +3080,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Darkmoon Privacy Gateway",
     "keywords": "darkmoon privacy gateway guide security agentic pentesting md#follow the data through privacy gateway",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#follow-the-data-through-a-privacy-gateway",
+    "url": "/guide/agentic-pentesting/#follow-the-data-through-a-privacy-gateway",
     "source": "guide"
   },
   {
@@ -3088,7 +3088,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Pentesting Evidence",
     "keywords": "agentic pentesting evidence guide security agentic pentesting md#read findings claims verify",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#read-findings-as-claims-to-verify",
+    "url": "/guide/agentic-pentesting/#read-findings-as-claims-to-verify",
     "source": "guide"
   },
   {
@@ -3096,7 +3096,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Agentic Pentesting Lab Protocol",
     "keywords": "agentic pentesting lab protocol guide security agentic pentesting md#evaluate the same laboratory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#evaluate-on-the-same-laboratory",
+    "url": "/guide/agentic-pentesting/#evaluate-on-the-same-laboratory",
     "source": "guide"
   },
   {

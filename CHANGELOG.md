@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Published DarkMoon/Strix guide and evidence pages in the site reader, with local search links, security navigation, and guide discovery.
+
 ### Skill ownership and lifecycle
 
 - **Ownership guidance published on the ecosystem landing** (`src/pages/ecosystem/index.astro`): added personal, project or team, tool or vendor, and marketplace or global scopes; separated discovery from maintenance; documented the consume, fork, specialize, extract, or reject decision; and moved the full tool guide link from GitHub to the public landing. The visible tool count now matches the 26-item dataset.

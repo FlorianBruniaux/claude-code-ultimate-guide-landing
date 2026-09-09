@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Agentic Pentesting: DarkMoon and Strix',
+    date: 'Sep 9, 2026',
+    description: 'Compare execution architecture, privacy boundaries, and exploit evidence. Includes a sourced evaluation and a reproducible synthetic masking check.',
+    link: 'https://cc.bruniaux.com/guide/agentic-pentesting/',
+  },
+  {
     type: 'new_section',
     title: 'Skill Ownership, Evaluation and Retirement',
     date: 'Sep 5, 2026',

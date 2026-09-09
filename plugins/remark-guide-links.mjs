@@ -145,6 +145,10 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
     return { url: `${GUIDE_BASE}${audienceMatch[1]}/${anchorFragment || ''}`, isExternal: false }
   }
 
+  if (repositoryPath === 'docs/resource-evaluations/darkmoon-strix-agentic-pentesting.md') {
+    return { url: `${GUIDE_BASE}darkmoon-strix-agentic-pentesting/${anchorFragment || ''}`, isExternal: false }
+  }
+
   // ── Other repository Markdown files are source links, not site routes ──
   if (repositoryPath.endsWith('.md') && !repositoryPath.startsWith('../')) {
     return {

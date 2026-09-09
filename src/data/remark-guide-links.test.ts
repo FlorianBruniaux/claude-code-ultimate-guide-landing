@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { remarkGuideLinks } from '../../plugins/remark-guide-links.mjs'
+import { remarkGuideLinks, resolveGuideLink } from '../../plugins/remark-guide-links.mjs'
 
 function rewrite(url: string, currentFile: string): string {
   const tree = {
@@ -68,4 +68,11 @@ test('maps the legacy release source document to the canonical releases page', (
     rewrite('../core/claude-code-releases.md', 'workflows/example.md'),
     '/releases/',
   )
+})
+
+
+test('publishes pentesting evidence with local guide links while keeping other evaluations external', () => {
+  assert.equal(resolveGuideLink('../../docs/resource-evaluations/darkmoon-strix-agentic-pentesting.md', '#synthetic-sanitation-check', {}, 'guide/security/agentic-pentesting.md').url,
+    '/guide/darkmoon-strix-agentic-pentesting/#synthetic-sanitation-check')
+  assert.equal(resolveGuideLink('../../docs/resource-evaluations/unpublished.md', '', {}, 'guide/security/agentic-pentesting.md').isExternal, true)
 })

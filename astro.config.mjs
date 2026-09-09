@@ -184,6 +184,8 @@ export default defineConfig({
             { slug: 'guide/sandbox-native' },
             { slug: 'guide/production-safety' },
             { slug: 'guide/data-privacy' },
+            { slug: 'guide/agentic-pentesting' },
+            { slug: 'guide/darkmoon-strix-agentic-pentesting' },
           ],
         },
         {
