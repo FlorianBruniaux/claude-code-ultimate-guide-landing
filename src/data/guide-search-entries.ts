@@ -3060,6 +3060,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agentic-pentesting",
+    "title": "Agentic Pentesting",
+    "keywords": "agentic pentesting guide security agentic pentesting",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-darkmoon-strix-comparison",
+    "title": "Darkmoon Strix Comparison",
+    "keywords": "darkmoon strix comparison guide security agentic pentesting md#compare the inspected implementations",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#compare-the-inspected-implementations",
+    "source": "guide"
+  },
+  {
+    "id": "guide-darkmoon-privacy-gateway",
+    "title": "Darkmoon Privacy Gateway",
+    "keywords": "darkmoon privacy gateway guide security agentic pentesting md#follow the data through privacy gateway",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#follow-the-data-through-a-privacy-gateway",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-pentesting-evidence",
+    "title": "Agentic Pentesting Evidence",
+    "keywords": "agentic pentesting evidence guide security agentic pentesting md#read findings claims verify",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#read-findings-as-claims-to-verify",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-pentesting-lab-protocol",
+    "title": "Agentic Pentesting Lab Protocol",
+    "keywords": "agentic pentesting lab protocol guide security agentic pentesting md#evaluate the same laboratory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/agentic-pentesting.md#evaluate-on-the-same-laboratory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-privacy-reversible-tokenization",
+    "title": "Data Privacy Reversible Tokenization",
+    "keywords": "data privacy reversible tokenization guide security data privacy md#reversible tokenization the model boundary",
+    "category": "Guide",
+    "url": "/guide/data-privacy/#reversible-tokenization-at-the-model-boundary",
+    "source": "guide"
+  },
+  {
     "id": "guide-data-privacy-guide",
     "title": "Data Privacy Guide",
     "keywords": "data privacy guide guide security data privacy",
