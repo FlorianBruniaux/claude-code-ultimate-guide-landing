@@ -1,0 +1,19 @@
+src/data/guide-search-entries.ts
+  s_b75681c86b5534::t_b5cd1f91747f3d 3062-3109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4aacfe5e7b57593da9120208f2065ccc9ec7cce5",
+  "prompts": {},
+  "sessions": {
+    "s_b75681c86b5534": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08528-8a68-7b00-beb6-4e1a263caf75",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
