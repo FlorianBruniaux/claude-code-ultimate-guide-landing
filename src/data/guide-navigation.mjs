@@ -190,6 +190,7 @@ export const guideSections = [
       { title: 'Team AI Instructions', href: '/guide/workflows/team-ai-instructions/', desc: 'Scale shared instructions across developers and tools.', time: '20 min' },
       { title: 'Production Reliability', href: '/guide/workflows/production-reliability/', desc: 'Escalation, circuit breakers, and graceful degradation.', time: '20 min' },
       { title: codeReviewWorkflow.anchor, href: codeReviewWorkflow.target, desc: 'Use independent providers, fixed review criteria, and a human acceptance gate.', time: '20 min' },
+      { title: 'AI-Assisted Open Source Contributions', href: '/guide/workflows/ai-assisted-open-source-contributions/', desc: 'Project policy, reproduction, author understanding, verification evidence and maintainer follow-up.', time: 'Workflow' },
       { title: 'Multi-Provider Code Review', href: '/guide/workflows/multi-provider-code-review/', desc: 'Independent review across providers and evidence sources.', time: '20 min' },
       { title: 'Cross-Session Messaging', href: '/guide/workflows/cross-session-messaging/', desc: 'Discover and communicate between independent sessions.', time: '15 min' },
       { title: 'Search Tools Mastery', href: '/guide/workflows/search-tools-mastery/', desc: 'Combine lexical, semantic, and structural search.', time: '20 min' },

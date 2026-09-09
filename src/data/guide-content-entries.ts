@@ -13,6 +13,14 @@ export interface GuideContentEntry {
 
 export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
+    "id": "gc-adoption-approaches-open-contribution-without-granting-unrestricted-de",
+    "title": "Open contribution without granting unrestricted delivery",
+    "keywords": "open contribution without granting unrestricted delivery choosing your adoption approach in ifttd episode 371, alexandre gerlic describes alan's everyone can build initiative: non-engineers initially worked on frontend changes, using the e",
+    "category": "Core Guides",
+    "url": "/guide/adoption-approaches/#open-contribution-without-granting-unrestricted-delivery",
+    "source": "guide"
+  },
+  {
     "id": "gc-adoption-approaches-what-we-don-t-know-yet",
     "title": "What We Don't Know Yet",
     "keywords": "what we don t know yet choosing your adoption approach before diving in, here's what remains genuinely uncertain: - optimal claude.md size : some teams thrive with 10 lines, others with 100. no clear winne",
@@ -591,7 +599,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-ecosystem-1-perplexity-ai-research-sourcing",
     "title": "1. Perplexity AI (Research & Sourcing)",
-    "keywords": "1 perplexity ai research sourcing ai ecosystem maximizing claude code with complementary tools complementarity diagram the following diagram illustrates how perplexity and claude code complement each other across the development workflow: <div c complementarity diagram decision flow when to use perplexity over claude perplexity pro features for developers integration workflow pattern 1 research spec code pattern 2 parallel pane workflow comparison claude websearch vs perplexity",
+    "keywords": "1 perplexity ai research sourcing ai ecosystem maximizing claude code with complementary tools complementarity diagram the following diagram illustrates how perplexity and claude code complement each other across the development workflow: ```mer complementarity diagram decision flow when to use perplexity over claude perplexity pro features for developers integration workflow pattern 1 research spec code pattern 2 parallel pane workflow comparison claude websearch vs perplexity",
     "category": "Core Guides",
     "url": "/guide/ai-ecosystem/#1-perplexity-ai-research-sourcing",
     "source": "guide"
@@ -1135,7 +1143,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-roles-21-forward-deployed-engineer-fde",
     "title": "21. Forward-Deployed Engineer (FDE)",
-    "keywords": "21 forward deployed engineer fde ai roles career paths the new engineering landscape evidence label : role family. current official postings at openai, anthropic, servicenow, and other ai vendors use forward-deployed engineer or a clos what they do responsibilities distinction from adjacent roles required skills entry paths",
+    "keywords": "21 forward deployed engineer fde ai roles career paths the new engineering landscape evidence label : role family. current official postings at openai, anthropic, servicenow, and other ai vendors use forward-deployed engineer or a clos what they do responsibilities distinction from adjacent roles required skills entry paths field example a useful system needs an adopted interaction",
     "category": "Core Guides",
     "url": "/guide/ai-roles/#21-forward-deployed-engineer-fde",
     "source": "guide"
@@ -2565,6 +2573,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-credits-ai-engineer-and-pragmatic-engineer-interviews",
+    "title": "AI Engineer and Pragmatic Engineer interviews",
+    "keywords": "ai engineer and pragmatic engineer interviews credits and external inspirations selected 2026 transcript passages informed the verification and attention updates: dex horthy on review capacity, clare liguori on continuous agent su",
+    "category": "Core Guides",
+    "url": "/guide/credits/#ai-engineer-and-pragmatic-engineer-interviews",
+    "source": "guide"
+  },
+  {
     "id": "gc-credits-adding-to-this-file",
     "title": "Adding to This File",
     "keywords": "adding to this file credits and external inspirations when a guide section is directly inspired by or adapted from external open-source work, add an entry here. include: - repository url - author / organi",
@@ -2663,7 +2679,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-data-privacy-5-enterprise-considerations",
     "title": "5. Enterprise Considerations",
-    "keywords": "5 enterprise considerations claude code privacy data retention when to use enterprise api (zdr) - handling pii (names, emails, addresses) - regulated industries (hipaa, gdpr, pci-dss) - client data processing - go when to use enterprise api zdr evaluation checklist",
+    "keywords": "5 enterprise considerations claude code privacy data retention when to use enterprise api (zdr) - handling pii (names, emails, addresses) - regulated industries (hipaa, gdpr, pci-dss) - client data processing - go when to use enterprise api zdr evaluation checklist test access continuity as well as data location",
     "category": "Core Guides",
     "url": "/guide/data-privacy/#5-enterprise-considerations",
     "source": "guide"
@@ -4855,7 +4871,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-with-ai-for-tech-leads-engineering-managers",
     "title": "For Tech Leads & Engineering Managers",
-    "keywords": "for tech leads engineering managers learning to code with ai the conscious developer s guide audience : engineering managers, tech leads, senior developers responsible for junior mentoring. problem : the rest of this guide addresses individual the onboarding imperative measuring what actually matters scalable mentoring models team level steering metrics team level ai policy claude md for teams",
+    "keywords": "for tech leads engineering managers learning to code with ai the conscious developer s guide audience : engineering managers, tech leads, senior developers responsible for junior mentoring. problem : the rest of this guide addresses individual the onboarding imperative measuring what actually matters assess explanation diagnosis and escalation scalable mentoring models team level steering metrics team level ai policy claude md for teams",
     "category": "Core Guides",
     "url": "/guide/learning-with-ai/#for-tech-leads-engineering-managers",
     "source": "guide"
@@ -4871,7 +4887,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-with-ai-the-attention-cost-of-the-review-shift",
     "title": "The Attention Cost of the Review Shift",
-    "keywords": "the attention cost of the review shift learning to code with ai the conscious developer s guide audience : developers at any experience level, plus tech leads doing capacity planning. problem : §3 the reality of ai productivity establishes that t what moved review has a measured ceiling reviewing machine output is a third mode the day lost its low load stretches the apprenticeship ladder ran through the writing phase practices that address this what is not established",
+    "keywords": "the attention cost of the review shift learning to code with ai the conscious developer s guide audience : developers at any experience level, plus tech leads doing capacity planning. problem : §3 the reality of ai productivity establishes that t what moved review has a measured ceiling reviewing machine output is a third mode the day lost its low load stretches the apprenticeship ladder ran through the writing phase practices that address this observe attention alongside throughput what is not ",
     "category": "Core Guides",
     "url": "/guide/learning-with-ai/#the-attention-cost-of-the-review-shift",
     "source": "guide"
@@ -5023,7 +5039,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-local-vs-cloud-inference-decision-diagram",
     "title": "Decision Diagram",
-    "keywords": "decision diagram local vs cloud llm hardware and inference economics <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"local-vs-cloud-inference-1-light\" width=\"100%\" xmlns=\"http://www.",
+    "keywords": "decision diagram local vs cloud llm hardware and inference economics ```mermaid flowchart td a([need to run a large llm]) -- b{data must stay on hardware you own?} b -- yes c{need over 70b or max quality?} b -- no d{usa",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#decision-diagram",
     "source": "guide"
@@ -5103,7 +5119,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-loop-graph-engineering-7-observe-and-evaluate-the-system",
     "title": "7. Observe and evaluate the system",
-    "keywords": "7 observe and evaluate the system loop graph engineering an agent trace needs enough evidence to answer four questions: what ran, why it routed, what state changed, and who accepted the result. capture data",
+    "keywords": "7 observe and evaluate the system loop graph engineering an agent trace needs enough evidence to answer four questions: what ran, why it routed, what state changed, and who accepted the result. capture data limit admission to verification capacity",
     "category": "Core Guides",
     "url": "/guide/loop-graph-engineering/#7-observe-and-evaluate-the-system",
     "source": "guide"
@@ -5407,7 +5423,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-memory-systems-8-decision-frameworks",
     "title": "8. Decision Frameworks",
-    "keywords": "8 decision frameworks memory systems 8.1 decision flowchart <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"memory-systems-0-light\" width=\"100%\" xmlns 8 1 decision flowchart 8 2 decision matrix 8 3 implementation patterns",
+    "keywords": "8 decision frameworks memory systems 8.1 decision flowchart ```mermaid flowchart td a[what is your memory use case?] -- b{solo or team?} b -- solo c{multiple machines?} b -- team t{infras 8 1 decision flowchart 8 2 decision matrix 8 3 implementation patterns",
     "category": "Core Guides",
     "url": "/guide/memory-systems/#8-decision-frameworks",
     "source": "guide"
@@ -5743,7 +5759,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-practitioner-insights-sources",
     "title": "Sources",
-    "keywords": "sources practitioner insights ifttd podcast ifttd is a french tech podcast hosted by bruno soulez. the episodes cited on this page were recorded between 2024 and 2025. transcripts ifttd podcast devoxx dev with ai meetup bytebytego stanford online pavan belagatti youtube corpus",
+    "keywords": "sources practitioner insights ifttd podcast ifttd is a french tech podcast hosted by bruno soulez. the selection includes older episodes and the 2025-2026 season. the six additions ifttd podcast devoxx dev with ai meetup bytebytego stanford online pavan belagatti youtube corpus",
     "category": "Core Guides",
     "url": "/guide/practitioner-insights/#sources",
     "source": "guide"
@@ -6079,7 +6095,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-isolation-2-isolation-approaches",
     "title": "2. Isolation Approaches",
-    "keywords": "2 isolation approaches sandbox isolation for coding agents <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"sandbox-isolation-0-light\" width=\"100%\" xmlns=\"http://www.w3.org/",
+    "keywords": "2 isolation approaches sandbox isolation for coding agents ---",
     "category": "Core Guides",
     "url": "/guide/sandbox-isolation/#2-isolation-approaches",
     "source": "guide"
@@ -6231,7 +6247,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-10-decision-tree-native-vs-docker-sandboxes",
     "title": "10. Decision Tree: Native vs Docker Sandboxes",
-    "keywords": "10 decision tree native vs docker sandboxes native sandboxing in claude code <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"sandbox-native-1-light\" width=\"100%\" xmlns=\"http://www.w3.org/200 comparison matrix",
+    "keywords": "10 decision tree native vs docker sandboxes native sandboxing in claude code comparison matrix aspect native sandbox docker sandboxes comparison matrix",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#10-decision-tree-native-vs-docker-sandboxes",
     "source": "guide"
@@ -6754,6 +6770,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "ai specific metrics team metrics for ai augmented engineering standard frameworks weren't designed with ai-assisted development in mind. these metrics fill the gap. % ai-assisted code the proportion of committed ai assisted code ai code vs human code quality review time ai prs vs manual prs developer code comprehension time to understand a pr",
     "category": "Core Guides",
     "url": "/guide/team-metrics/#ai-specific-metrics",
+    "source": "guide"
+  },
+  {
+    "id": "gc-team-metrics-measure-the-shared-verification-queue",
+    "title": "Measure the shared verification queue",
+    "keywords": "measure the shared verification queue team metrics for ai augmented engineering measure one service and comparable change classes before increasing agent concurrency. dex horthy's practitioner account describes review remaining a",
+    "category": "Core Guides",
+    "url": "/guide/team-metrics/#measure-the-shared-verification-queue",
     "source": "guide"
   },
   {
@@ -11661,6 +11685,62 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-1-check-whether-the-project-wants-this-contributio",
+    "title": "1. Check whether the project wants this contribution",
+    "keywords": "1 check whether the project wants this contribution ai assisted open source contributions read the project's contribution guide, issue templates, security reporting policy, and any ai-assistance policy. if ai-generated submissions are prohi",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#1-check-whether-the-project-wants-this-contribution",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-2-establish-the-problem-before-editing",
+    "title": "2. Establish the problem before editing",
+    "keywords": "2 establish the problem before editing ai assisted open source contributions record the affected version, environment, expected behavior, actual behavior, and minimal reproduction. run the reproduction on the unchanged revision",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#2-establish-the-problem-before-editing",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-3-keep-the-patch-and-the-claim-narrow",
+    "title": "3. Keep the patch and the claim narrow",
+    "keywords": "3 keep the patch and the claim narrow ai assisted open source contributions ask claude code to change only what is necessary for the established behavior. exclude unrelated formatting, speculative refactoring, and generated fi",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#3-keep-the-patch-and-the-claim-narrow",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-4-verify-the-change-and-explain-it-without-the-age",
+    "title": "4. Verify the change and explain it without the agent",
+    "keywords": "4 verify the change and explain it without the agent ai assisted open source contributions for a bug fix, check that the regression test exposes the original defect and succeeds with the patch. distinguish an expected assertion failure from",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#4-verify-the-change-and-explain-it-without-the-agent",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-5-submit-only-when-the-packet-is-ready-then-own-th",
+    "title": "5. Submit only when the packet is ready, then own the follow-up",
+    "keywords": "5 submit only when the packet is ready then own the follow up ai assisted open source contributions follow the project's submission process and the user's authorization for external actions. supply the smallest useful description, reproduction and ev",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#5-submit-only-when-the-packet-is-ready-then-own-the-follow-up",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-worked-readiness-decision",
+    "title": "Worked readiness decision",
+    "keywords": "worked readiness decision ai assisted open source contributions constructed example, not an executed repository test: a parser rejects a documented valid date. the contribution packet identifies the affected releas",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#worked-readiness-decision",
+    "source": "guide"
+  },
+  {
+    "id": "gc-workflows-ai-assisted-open-source-contributions-related-workflows",
+    "title": "Related workflows",
+    "keywords": "related workflows ai assisted open source contributions - code review for examining a patch - tdd with claude for establishing a regression test - learning with ai for testing author comprehension - review",
+    "category": "Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/#related-workflows",
+    "source": "guide"
+  },
+  {
     "id": "gc-workflows-best-of-n-decision-rule",
     "title": "Decision rule",
     "keywords": "decision rule best of n generate select and verify condition default reason --- --- --- one implementation path and a deterministic acceptance test one attempt, then run the test more candidates add re",
@@ -12895,7 +12975,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-multi-provider-code-review-role-separation",
     "title": "Role Separation",
-    "keywords": "role separation multi provider code review non redundant automated pr review provider job can it block merge? why this job fits this tool ---------- ----- --------------------- ------------------------------ claude code action",
+    "keywords": "role separation multi provider code review non redundant automated pr review provider job can it block merge? why this job fits this tool ---------- ----- --------------------- ------------------------------ claude code action separate discovery from verification evidence",
     "category": "Workflows",
     "url": "/guide/workflows/multi-provider-code-review/#role-separation",
     "source": "guide"
@@ -14535,7 +14615,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-support-csm-agent-flow",
     "title": "Flow",
-    "keywords": "flow support csm agent internal ticket triage and account diagnosis <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"workflows-support-csm-agent-0-light\" width=\"100%\" xmlns=\"http://w",
+    "keywords": "flow support csm agent internal ticket triage and account diagnosis the human-review step (h) is not optional and should not get automated away, even once the agent's accuracy looks good in practice. it's the control t",
     "category": "Workflows",
     "url": "/guide/workflows/support-csm-agent/#flow",
     "source": "guide"

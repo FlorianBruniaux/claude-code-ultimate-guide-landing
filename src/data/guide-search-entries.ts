@@ -1940,6 +1940,70 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-assisted-open-source-contributions",
+    "title": "AI Assisted Open Source Contributions",
+    "keywords": "ai assisted open source contributions guide workflows assisted open source contributions",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/ai-assisted-open-source-contributions/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-assisted-contribution-packet",
+    "title": "AI Assisted Contribution Packet",
+    "keywords": "ai assisted contribution packet examples templates assisted contribution",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/templates/ai-assisted-contribution.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-admission-control",
+    "title": "Review Admission Control",
+    "keywords": "review admission control guide core loop graph engineering md#limit admission verification capacity",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#limit-admission-to-verification-capacity",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-admission-worksheet",
+    "title": "Review Admission Worksheet",
+    "keywords": "review admission worksheet examples workflows review admission",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/workflows/review-admission.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-queue-measurements",
+    "title": "Review Queue Measurements",
+    "keywords": "review queue measurements guide ops team metrics md#measure the shared verification queue",
+    "category": "Guide",
+    "url": "/guide/team-metrics/#measure-the-shared-verification-queue",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-comprehension-exercise",
+    "title": "Review Comprehension Exercise",
+    "keywords": "review comprehension exercise examples learning project review comprehension exercise",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/learning-project/review-comprehension-exercise.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-contribution-authority-case",
+    "title": "Contribution Authority Case",
+    "keywords": "contribution authority case guide roles adoption approaches md#open contribution without granting unrestricted delivery",
+    "category": "Guide",
+    "url": "/guide/adoption-approaches/#open-contribution-without-granting-unrestricted-delivery",
+    "source": "guide"
+  },
+  {
+    "id": "guide-data-access-continuity",
+    "title": "Data Access Continuity",
+    "keywords": "data access continuity guide security data privacy md#test access continuity well data location",
+    "category": "Guide",
+    "url": "/guide/data-privacy/#test-access-continuity-as-well-as-data-location",
+    "source": "guide"
+  },
+  {
     "id": "guide-practitioner-insights-guide",
     "title": "Practitioner Insights Guide",
     "keywords": "practitioner insights guide guide ecosystem practitioner insights",

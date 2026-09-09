@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'AI-Assisted Open Source Contributions',
+    date: 'Sep 9, 2026',
+    description: 'Prepare a reviewable contribution with project policy, reproduction, author understanding and verification evidence. Includes a contribution packet, alongside new review-capacity and comprehension worksheets informed by IFTTD field accounts.',
+    link: 'https://cc.bruniaux.com/guide/workflows/ai-assisted-open-source-contributions/',
+  },
+  {
     type: 'new_section',
     title: 'Tokenade and RTK: Scope, Licence and Benchmark Evidence',
     date: 'Sep 9, 2026',
