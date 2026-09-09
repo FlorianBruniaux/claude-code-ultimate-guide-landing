@@ -9,7 +9,7 @@ Correct every SEO defect from the 2026-09-04 audit that can be changed and verif
 - Production site: `https://cc.bruniaux.com`
 - GSC property: `sc-domain:cc.bruniaux.com`
 - GA4 property: `523714092`, filtered to `hostname = cc.bruniaux.com`
-- Audit source: `/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide-landing/seo-action-plan-cc-bruniaux-2026-09-04.md`
+- Audit source: `./seo-action-plan-cc-bruniaux-2026-09-04.md`
 - Build platform: Astro static output deployed by GitHub Actions to GitHub Pages.
 - DNS on 2026-09-04: `cc.bruniaux.com` is a CNAME to `florianbruniaux.github.io`; authoritative nameservers are OVH, not Cloudflare.
 

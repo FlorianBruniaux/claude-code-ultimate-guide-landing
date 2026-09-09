@@ -542,7 +542,7 @@ guideFileBuffer.push({
   sourcePath: evaluationSource,
   content: normalizeLangs(addStarlightFm(readFileSync(evaluationPath, 'utf-8').replace(/^# .+\r?\n/m, ''), {
     title: 'DarkMoon and Strix: Evidence and Evaluation',
-    desc: 'Source revisions, synthetic privacy tests, and evidence needed to evaluate DarkMoon and Strix.',
+    desc: 'Privacy tests, public sources, and evidence needed to evaluate DarkMoon and Strix.',
     order: 299,
     lastUpdated: evaluationDates.modified,
     datePublished: evaluationDates.published,

@@ -463,7 +463,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agentic-pentesting-compare-the-inspected-implementations",
     "title": "Compare the inspected implementations",
-    "keywords": "compare the inspected implementations agentic pentesting scope evidence and data exposure dimension strix darkmoon --- --- --- source revision execution architecture python application using the openai agents sdk opencode agent configuratio",
+    "keywords": "compare the inspected implementations agentic pentesting scope evidence and data exposure dimension strix darkmoon --- --- --- execution architecture python application using the openai agents sdk opencode agent configuration plus mcp tools",
     "category": "Core Guides",
     "url": "/guide/agentic-pentesting/#compare-the-inspected-implementations",
     "source": "guide"
@@ -2573,11 +2573,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-darkmoon-strix-agentic-pentesting-scope-and-source-revisions",
-    "title": "Scope and source revisions",
-    "keywords": "scope and source revisions darkmoon and strix evidence and evaluation the review inspected darkmoon's prompt plugin, privacy gateway, global result sanitizer, deployment configuration, and readme; strix's readme, local-p",
+    "id": "gc-darkmoon-strix-agentic-pentesting-review-scope",
+    "title": "Review scope",
+    "keywords": "review scope darkmoon and strix evidence and evaluation the review inspected darkmoon's prompt plugin, privacy gateway, global result sanitizer, deployment configuration, and readme; strix's readme, local-p",
     "category": "Core Guides",
-    "url": "/guide/darkmoon-strix-agentic-pentesting/#scope-and-source-revisions",
+    "url": "/guide/darkmoon-strix-agentic-pentesting/#review-scope",
     "source": "guide"
   },
   {
@@ -2591,7 +2591,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-darkmoon-strix-agentic-pentesting-synthetic-sanitation-check",
     "title": "Synthetic sanitation check",
-    "keywords": "synthetic sanitation check darkmoon and strix evidence and evaluation executed on september 9, 2026 against the pinned darkmoon clone. every fixture gets a fresh vault so a previously registered value cannot hide a recog",
+    "keywords": "synthetic sanitation check darkmoon and strix evidence and evaluation executed on september 9, 2026 against the reviewed darkmoon source. every fixture gets a fresh vault so a previously registered value cannot hide a re",
     "category": "Core Guides",
     "url": "/guide/darkmoon-strix-agentic-pentesting/#synthetic-sanitation-check",
     "source": "guide"

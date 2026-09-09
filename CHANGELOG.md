@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Republished cleaned guide content without author workstation paths or DarkMoon/Strix revision tables. Added a build gate against workstation paths in rendered pages.
+
 - Published DarkMoon/Strix guide and evidence pages in the site reader, with local search links, security navigation, and guide discovery.
 
 ### Skill ownership and lifecycle

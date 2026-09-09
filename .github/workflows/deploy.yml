@@ -73,6 +73,9 @@ jobs:
       - name: Check built SEO contracts
         run: pnpm check:built-seo
 
+      - name: Check public pages for workstation paths
+        run: python3 ../claude-code-ultimate-guide/scripts/check-public-paths.py --dist dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

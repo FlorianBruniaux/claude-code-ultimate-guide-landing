@@ -172,7 +172,7 @@ Edit `src/data/search-index.ts`. Each entry follows this shape:
 ## Data Synchronization
 
 This site is **secondary**. The source of truth is the guide:
-`/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide/`
+`../claude-code-ultimate-guide/`
 
 Security metadata follows a stricter three-repository chain:
 

@@ -1,7 +1,7 @@
 # Vendored code (just-bash terminal UI)
 
 Source: https://github.com/vercel-labs/just-bash, path `examples/website/app/components/`.
-Local clone used to copy from: `/Users/florianbruniaux/Sites/divers-test/just-bash`.
+Source: the public `vercel-labs/just-bash` repository.
 
 ## Why vendored instead of imported
 

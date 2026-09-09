@@ -123,7 +123,7 @@ Run:
 
 ```bash
 node --test src/data/guide-seo-overrides.test.ts
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide node scripts/prepare-guide-content.mjs
+GUIDE_REPO_PATH=../claude-code-ultimate-guide node scripts/prepare-guide-content.mjs
 node scripts/build-guide-content-index.mjs
 ```
 
@@ -132,7 +132,7 @@ Expected: focused tests pass; generated files contain one document H1 source at 
 - [ ] **Step 6: Run the full suite and commit**
 
 ```bash
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide pnpm test
+GUIDE_REPO_PATH=../claude-code-ultimate-guide pnpm test
 git add src/data/guide-seo-overrides.mjs src/data/guide-seo-overrides.test.ts scripts/prepare-guide-content.mjs scripts/build-guide-content-index.mjs src/data/guide-content-entries.ts
 git commit -m "fix(seo): normalize generated guide metadata"
 ```
@@ -223,7 +223,7 @@ The hooks link belongs in `guide-seo-overrides.mjs` as a generated-page appendix
 
 ```bash
 node --test src/data/seo-editorial-contract.test.ts src/data/guide-seo-overrides.test.ts
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide pnpm test
+GUIDE_REPO_PATH=../claude-code-ultimate-guide pnpm test
 git add src/pages/releases/index.astro src/pages/glossary/index.astro src/pages/context-engineering/index.astro src/pages/compare/index.astro src/pages/claude-md-best-practices/index.astro src/pages/security/hardening/index.astro src/data/guide-navigation.mjs src/data/seo-editorial-contract.test.ts src/data/guide-seo-overrides.mjs src/data/guide-seo-overrides.test.ts
 git commit -m "fix(seo): align snippets and internal links"
 ```
@@ -293,9 +293,9 @@ Add `check:built-seo` to `package.json`. Run it in `.github/workflows/deploy.yml
 
 ```bash
 node --test src/data/seo-contracts.test.ts
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide pnpm build
+GUIDE_REPO_PATH=../claude-code-ultimate-guide pnpm build
 pnpm check:built-seo
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide pnpm test
+GUIDE_REPO_PATH=../claude-code-ultimate-guide pnpm test
 git add scripts/lib/seo-contracts.mjs scripts/check-built-seo.mjs src/data/seo-contracts.test.ts package.json .github/workflows/deploy.yml
 git commit -m "test(seo): enforce rendered page contracts"
 ```
@@ -367,7 +367,7 @@ State that zero recorded conversions is proven for the audited windows, while th
 
 ```bash
 node --test src/data/public-seo-check.test.ts
-GUIDE_REPO_PATH=/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide pnpm test
+GUIDE_REPO_PATH=../claude-code-ultimate-guide pnpm test
 git diff --check
 git add docs/operations/seo-post-deploy.md docs/analytics/ga4-measurement-plan.md scripts/check-public-seo.mjs src/data/public-seo-check.test.ts package.json
 git commit -m "docs(seo): define external verification gates"

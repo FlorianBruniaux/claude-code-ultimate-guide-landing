@@ -2,8 +2,8 @@
 
 ## Contexte du projet
 
-Landing page : `/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide-landing`
-Guide source : `/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide`
+Landing page : `.`
+Guide source : `../claude-code-ultimate-guide`
 Stack : Astro 5, SVGs générés au build via `mermaid-cli` (`mmdc`)
 Production : https://cc.bruniaux.com/diagrams/
 
@@ -20,7 +20,7 @@ Les diagrammes `/diagrams/` ont une tooltip JS qui s'affiche au hover/click sur 
 
 ### Sources Mermaid (dans le repo guide voisin)
 ```
-/Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide/guide/diagrams/
+../claude-code-ultimate-guide/guide/diagrams/
 ├── 01-foundations.md           (4 diagrammes)
 ├── 02-context-and-sessions.md  (4 diagrammes)
 ├── 03-configuration-system.md  (4 diagrammes)
@@ -88,7 +88,7 @@ click B href "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob
 ### Étape 3 — Rebuilder les SVGs
 
 ```bash
-cd /Users/florianbruniaux/Sites/perso/claude-code-ultimate-guide-landing
+cd .
 node scripts/build-diagrams-data.mjs
 ```
 
