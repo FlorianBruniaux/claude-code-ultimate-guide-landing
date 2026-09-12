@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'September Security Review: AgentSec 2.29.0',
+    date: 'Sep 12, 2026',
+    description: 'Review the latest coding-agent and MCP advisories, GitSpawn delivery conditions, and documented fixed versions. The AgentSec feed tracks 131 CVE/advisory records; the searchable guide catalogue retains 140 records. New intelligence does not add executable detector coverage.',
+    link: 'https://cc.bruniaux.com/guide/security-hardening/#september-2026-review',
+  },
+  {
     type: 'new_page',
     title: 'AI-Assisted Open Source Contributions',
     date: 'Sep 9, 2026',

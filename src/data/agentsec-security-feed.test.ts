@@ -1,5 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { SECURITY_DATA } from './security-data.ts'
 import feedFixture from './agentsec-security-feed.v1.json' with { type: 'json' }
 import {
   AGENTSEC_FEED,
@@ -10,8 +11,8 @@ import {
 test('canonical feed exposes current database metadata and derived landing metrics', () => {
   const view = buildAgentSecSecurityView(AGENTSEC_FEED)
 
-  assert.equal(view.databaseLabel, 'Threat DB v2.28.0')
-  assert.equal(view.databaseUpdatedLabel, 'September 1, 2026')
+  assert.equal(view.databaseLabel, 'Threat DB v2.29.0')
+  assert.equal(view.databaseUpdatedLabel, 'September 12, 2026')
   assert.deepEqual(
     view.stats.map((item) => [item.id, item.value]),
     [
@@ -19,7 +20,7 @@ test('canonical feed exposes current database metadata and derived landing metri
       ['flawed-skills', 36.82],
       ['critical-risk-skills', 534],
       ['malicious-payloads', 76],
-      ['cves-tracked', 116],
+      ['cves-tracked', 131],
       ['exposed-servers', 1000],
     ],
   )
@@ -73,4 +74,15 @@ test('view builder rejects unresolved event source ids', () => {
   const parsed = parseAgentSecFeed(malformed)
 
   assert.throws(() => buildAgentSecSecurityView(parsed), /unresolved source id missing-source/)
+})
+
+test('repository CVEs in the public event feed remain searchable in the compatibility catalogue', () => {
+  const ids = new Set<string>(SECURITY_DATA.cve_database.map((entry) => entry.id))
+  for (const event of AGENTSEC_FEED.intelligence.events) {
+    // Hosted incidents can remain timeline-only when repository checks do not apply.
+    if (event.detector_coverage.status === 'not_applicable') continue
+    for (const id of event.related.cve_ids) assert.ok(ids.has(id), `Missing catalogue record: ${id}`)
+  }
+  assert.equal(SECURITY_DATA.minimum_safe_versions['claude-code'], '2.1.269')
+  assert.equal(SECURITY_DATA.minimum_safe_versions['mysql-mcp-server'], '0.4.2')
 })

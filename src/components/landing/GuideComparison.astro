@@ -38,7 +38,7 @@ const stats = await getSiteStats()
                     </tr>
                     <tr>
                         <td>Security hardening</td>
-                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database ({stats.cveCount} CVEs, 3,984 skills scanned)</td>
+                        <td><span class="gc-yes" aria-hidden="true">&#10003;</span> Threat database ({stats.cveCount} CVEs and advisories, 3,984 skills scanned)</td>
                         <td><span class="gc-partial">~</span> Basic patterns only</td>
                     </tr>
                     <tr>
@@ -103,7 +103,7 @@ const stats = await getSiteStats()
                     </div>
                     <p>The only resource with a structured threat database. Protect your workflow before it's compromised.</p>
                     <div class="gc-gap-metrics">
-                        <span class="gc-metric">{stats.cveCount} CVEs tracked</span>
+                        <span class="gc-metric">{stats.cveCount} CVE and advisory records tracked</span>
                         <span class="gc-metric">3,984 skills scanned</span>
                     </div>
                 </div>

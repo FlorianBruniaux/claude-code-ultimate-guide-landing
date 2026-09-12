@@ -309,7 +309,7 @@ export function buildAgentSecSecurityView(feed: AgentSecFeed): AgentSecSecurityV
       },
       {
         id: 'cves-tracked',
-        label: 'CVEs Tracked',
+        label: 'CVEs & Advisories',
         value: feed.database.record_counts.cves,
       },
       {

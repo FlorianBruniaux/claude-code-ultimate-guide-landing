@@ -1,6 +1,7 @@
 ---
 // MCP Server: MCP in Action
 // Tab-based terminal demo showing real command outputs
+import { SECURITY_DATA } from '../../data/security-data'
 
 const commands = [
   {
@@ -269,19 +270,19 @@ Pour une version spécifique : /ccguide:release 2.1.73`,
     id: 'security',
     label: 'get_threat / list_threats',
     title: 'Security Intelligence',
-    description: 'Browse 83 CVEs and attack techniques from the threat database. Look up any CVE or T-code for full details, mitigations, and sources.',
-    output: `# Threat Database Summary
-Version 2.4.0 (updated 2026-02-28)
-https://github.com/FlorianBruniaux/.../threat-db.yaml
+    description: `Browse ${SECURITY_DATA.cve_database.length} CVE and advisory records, plus attack techniques from the guide catalogue. Look up a CVE or T-code for details, mitigations, and sources.`,
+    output: `# Guide Catalogue Snapshot
+Version ${SECURITY_DATA.meta.version} (updated ${SECURITY_DATA.meta.updated})
+https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/commands/resources/threat-db.yaml
 
 | Category              | Count |
 |-----------------------|-------|
-| CVEs                  |    28 |
-| Malicious Authors     |     6 |
-| Malicious Skills      |   655 |
-| Attack Techniques     |    14 |
-| Minimum Safe Versions |    12 |
-| Research Sources      |    23 |
+| CVEs and advisories   | ${SECURITY_DATA.cve_database.length} |
+| Malicious Authors     | ${SECURITY_DATA.malicious_authors.length} |
+| Malicious Skill Records | ${SECURITY_DATA.malicious_skills.length} |
+| Attack Techniques     | ${SECURITY_DATA.attack_techniques.length} |
+| Minimum Safe Versions | ${Object.keys(SECURITY_DATA.minimum_safe_versions).length} |
+| Research Sources      | ${SECURITY_DATA.sources.length} |
 
 --- get_threat("CVE-2025-53109") ---
 

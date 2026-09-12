@@ -790,7 +790,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-security-guide",
     "title": "Agent Harness Security Guide",
-    "keywords": "agent harness security guide guide security security hardening security hardening guide security security hardening security supply chain stats guide security security hardening",
+    "keywords": "agent harness security guide guide security security hardening security hardening guide security security hardening",
     "category": "Guide",
     "url": "/guide/security-hardening/",
     "source": "guide"
@@ -1481,6 +1481,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "scheduled tasks loop command guide ultimate guide md#the loop command",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-loop-command",
+    "source": "guide"
+  },
+  {
+    "id": "guide-goal-completion",
+    "title": "Goal Completion",
+    "keywords": "goal completion guide ultimate guide md#goal autonomous completion mode v21139",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#goal-autonomous-completion-mode-v21139",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-recurring-admission",
+    "title": "Loop Recurring Admission",
+    "keywords": "loop recurring admission guide core loop graph engineering md#compose recurring triage with bounded work",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#compose-recurring-triage-with-bounded-work",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-enforced-budgets",
+    "title": "Loop Enforced Budgets",
+    "keywords": "loop enforced budgets guide core loop graph engineering md#distinguish requested limits from enforced budgets",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#distinguish-requested-limits-from-enforced-budgets",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-mechanism-selection",
+    "title": "Loop Mechanism Selection",
+    "keywords": "loop mechanism selection guide workflows iterative refinement md#choose what starts the next iteration",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/iterative-refinement/#choose-what-starts-the-next-iteration",
     "source": "guide"
   },
   {
@@ -5772,11 +5804,27 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-security-gitspawn-september-2026",
+    "title": "Security Gitspawn September 2026",
+    "keywords": "security gitspawn september 2026 guide security security hardening md#september 2026 review",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#september-2026-review",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-cve-summary",
     "title": "Security CVE Summary",
     "keywords": "security cve summary guide security security hardening md#cve summary 2025 2026",
     "category": "Guide",
     "url": "/guide/security-hardening/#cve-summary-2025-2026",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-supply-chain-stats",
+    "title": "Security Supply Chain Stats",
+    "keywords": "security supply chain stats guide security security hardening md#12 agent skills supply chain risks",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#12-agent-skills-supply-chain-risks",
     "source": "guide"
   },
   {

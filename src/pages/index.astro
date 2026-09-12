@@ -15,13 +15,13 @@ import { authorProfile } from '../data/author-profile'
 const stats = await getSiteStats()
 
 const title = 'Claude Code Guide: Templates, Security, Workflows | Free'
-const description = `Master Claude Code with 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, ${stats.cveCount} CVEs tracked, and TDD/SDD/BDD workflows. Free & open-source.`
+const description = `Master Claude Code with 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, ${stats.cveCount} CVE and advisory records tracked, and TDD/SDD/BDD workflows. Free & open-source.`
 
 const jsonLd = [
   {
     "@type": "Course",
     "name": "Claude Code Ultimate Guide",
-    "description": `Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, security threat database (${stats.cveCount} CVEs), and methodology workflows.`,
+    "description": `Free, open-source guide for Claude Code (Anthropic CLI): 25K+ lines of documentation, ${stats.templateCount} templates, 473-question quiz, security threat database (${stats.cveCount} CVEs and advisories), and methodology workflows.`,
     "url": "https://cc.bruniaux.com/",
     "provider": {
       "@type": "Organization",

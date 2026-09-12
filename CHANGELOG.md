@@ -4,6 +4,11 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Refreshed every compatibility catalogue category, derived MCP demo counts from the catalogue, clarified CVE/advisory totals across the site and added the September security review to RSS.
+
+- Updated the AgentSec security feed to database 2.29.0 (September 12, 2026): 131 CVE/advisory records and 28 dated events. Preserved the distinction between documented intelligence and the two implemented detector families.
+- Synchronized the searchable compatibility catalogue from 42 to 140 CVE/advisory records and refreshed component version floors. Added a deterministic sync/check command and a regression test for repository CVEs referenced by the feed. Nine historical guide-only records remain distinct from the 131 canonical AgentSec records.
+
 - Synced six Claude Code releases through v2.1.269, the latest-release date, automatic RSS entries, and the security/behavior summary. Highlighted plugin evaluations, output-style switching, effort caps, cache repairs and Artifact permission-rule migration.
 
 - Republished cleaned guide content without author workstation paths or DarkMoon/Strix revision tables. Added a build gate against workstation paths in rendered pages.
