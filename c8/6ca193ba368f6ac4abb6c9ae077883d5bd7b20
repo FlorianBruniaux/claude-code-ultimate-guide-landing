@@ -1,0 +1,46 @@
+src/data/examples-data.ts
+  s_57189aaf4e81fc::t_962829fd984a15 344,349-351
+public/llms.txt
+  s_57189aaf4e81fc::t_20f3223ea7c581 13
+  s_57189aaf4e81fc::t_18f8a7c9edbbc5 44
+src/components/landing/FeaturesGrid.astro
+  s_57189aaf4e81fc::t_6653c800698185 23
+src/components/landing/GuideComparison.astro
+  s_57189aaf4e81fc::t_c395420a36e856 50,127
+src/components/landing/HeroBanner.astro
+  s_57189aaf4e81fc::t_4363498862b24a 14,44,57,85
+src/components/landing/LevelUp.astro
+  s_57189aaf4e81fc::t_9d5ecf804e2679 43
+src/components/landing/McpDemo.astro
+  s_57189aaf4e81fc::t_0e8582f364b434 330
+src/layouts/Layout.astro
+  s_57189aaf4e81fc::t_9a5439a23aeae0 129
+src/pages/claude-md-best-practices/index.astro
+  s_57189aaf4e81fc::t_e11eb9a0f1155c 94,204
+src/pages/compare/index.astro
+  s_57189aaf4e81fc::t_2224ce4698a1b5 6,129
+src/pages/examples/[slug].astro
+  s_57189aaf4e81fc::t_11aab074e2b216 470,530
+src/pages/examples/index.astro
+  s_57189aaf4e81fc::t_c46b61fd966de3 11-12,20,36-37
+src/pages/faq/index.astro
+  s_57189aaf4e81fc::t_0293ee6909591c 269
+src/pages/index.astro
+  s_57189aaf4e81fc::t_7c1e9b9f76aae9 20,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "c86ca193ba368f6ac4abb6c9ae077883d5bd7b20",
+  "prompts": {},
+  "sessions": {
+    "s_57189aaf4e81fc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3cd334cd-c960-4862-9798-84d9fa6f2c5e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+scripts/lib/seo-contracts.mjs
+  s_29abe1a98b476c::t_9b345112b354d8 69-74,115
+src/data/seo-contracts.test.ts
+  s_29abe1a98b476c::t_5d5a932f50154f 57-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "f860bd8decf590a98b246eec16607c7f5982e403",
+  "prompts": {},
+  "sessions": {
+    "s_29abe1a98b476c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06830-fc8a-7512-9cb6-a879928c6f7e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

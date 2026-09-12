@@ -1,0 +1,25 @@
+src/pages/api/questions.json.ts
+  s_e565b1ef574aef::t_1c782af176a51b 4,34-36
+src/pages/quiz/index.astro
+  s_e565b1ef574aef::t_5dfaed567ec39a 1137
+CHANGELOG.md
+  s_e565b1ef574aef::t_0891e9e9e64846 9
+src/utils/resolve-doc-link.ts
+  s_e565b1ef574aef::t_dc0fb8e7cefc99 1-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "0eeaa69b5d8091d190b5abde92de0577f0ef14ba",
+  "prompts": {},
+  "sessions": {
+    "s_e565b1ef574aef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc5f91b4-5e50-4140-8499-379c519a3c22",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

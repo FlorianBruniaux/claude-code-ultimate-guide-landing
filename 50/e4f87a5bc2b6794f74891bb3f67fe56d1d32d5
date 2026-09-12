@@ -1,0 +1,21 @@
+docs/superpowers/plans/2026-09-04-seo-corrections-implementation.md
+  s_09d9cb0145f609::t_51c96f34525d32 1-374
+docs/superpowers/specs/2026-09-04-seo-corrections.md
+  s_09d9cb0145f609::t_0dcfa6f6d6cc27 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "50e4f87a5bc2b6794f74891bb3f67fe56d1d32d5",
+  "prompts": {},
+  "sessions": {
+    "s_09d9cb0145f609": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a067aa-fca5-7e33-8bc1-60a9a6437e67",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

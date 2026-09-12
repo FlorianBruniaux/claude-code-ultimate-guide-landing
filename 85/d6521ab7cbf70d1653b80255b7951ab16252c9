@@ -1,0 +1,19 @@
+src/data/guide-content-entries.ts
+  s_2a6fd3681b67e9::t_0ff744701af929 234,242,250,258,266,274,282,290,298,306,314,2514,2522,2530,2538,2546,2554,2562,2570,2578,8170,8178,8186,8194,8202,8210,8218,8226,8234,8242,8250,8258,8266,8274,8282,8290,8298,8306,8314,8322,8330,8338,8346,8354,8362,8370,8378,8386,8394,8402,8410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "85d6521ab7cbf70d1653b80255b7951ab16252c9",
+  "prompts": {},
+  "sessions": {
+    "s_2a6fd3681b67e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9855fdbc-8eae-4a31-8c3b-372c936b506b",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

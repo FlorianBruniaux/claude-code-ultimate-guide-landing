@@ -1,0 +1,23 @@
+src/components/global/Header.astro
+  s_9809c5a6171063::t_f36bc166fce2de 15,127,129,437,833,835-836
+src/data/header-navigation.test.ts
+  s_9809c5a6171063::t_be25dac2f254b5 127,140
+src/data/header-navigation.ts
+  s_9809c5a6171063::t_a2cec81880c7c2 27,41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "a049977ff3e9e485c858668a4bf9a12d36af3e55",
+  "prompts": {},
+  "sessions": {
+    "s_9809c5a6171063": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a063d6-4eea-75c0-9c3d-6d1b76144edc",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

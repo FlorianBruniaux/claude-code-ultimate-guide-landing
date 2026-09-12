@@ -1,0 +1,55 @@
+src/data/guide-seo-overrides.test.ts
+  s_29abe1a98b476c::t_88bfa32440cc4f 73-81
+src/data/seo-editorial-contract.mjs
+  s_09d9cb0145f609::t_01f3c9f752854e 1-74
+src/data/seo-editorial-contract.test.ts
+  s_29abe1a98b476c::t_61ef01afb013a9 1-53
+src/data/guide-navigation.mjs
+  s_ea593c4a979ab0::t_2a3d905259895e 1-4,191
+src/data/guide-seo-overrides.mjs
+  s_ea593c4a979ab0::t_bfeb7b2d63bbd6 24-25,60-64
+src/pages/claude-md-best-practices/index.astro
+  s_ea593c4a979ab0::t_4c2a13fe5bc4d4 3,7,144
+src/pages/compare/index.astro
+  s_ea593c4a979ab0::t_88dc6040bbe04f 5,9-10,63
+src/pages/context-engineering/index.astro
+  s_ea593c4a979ab0::t_7a5e49c656b5b9 3,5,10-11
+src/pages/glossary/index.astro
+  s_ea593c4a979ab0::t_95dc8f098f49d9 5,7
+src/pages/releases/index.astro
+  s_ea593c4a979ab0::t_8219e7a5a2af97 5,7-9,14-15,21,27,32,39-40,42,44,48
+src/pages/security/hardening/index.astro
+  s_ea593c4a979ab0::t_b309fea893bd0f 13,20,30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "cfd831b3dfa3decf5797a51702637f9310aba171",
+  "prompts": {},
+  "sessions": {
+    "s_09d9cb0145f609": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a067aa-fca5-7e33-8bc1-60a9a6437e67",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_29abe1a98b476c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06830-fc8a-7512-9cb6-a879928c6f7e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ea593c4a979ab0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06b84-68f4-7c72-9305-f7d6d0458d2b",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

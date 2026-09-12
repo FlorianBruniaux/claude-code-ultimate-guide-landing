@@ -1,0 +1,19 @@
+src/components/global/Header.astro
+  s_554c34e57ae37c::t_d12b7ad40d53e4 559
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "ebac5796cbebd9fabd20fdcbd877ef4cd0cd47fa",
+  "prompts": {},
+  "sessions": {
+    "s_554c34e57ae37c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05b7b-f04d-7330-a9ed-33b8852afb44",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+src/data/guide-content-entries.ts
+  s_46f3aaca63be5a::t_a9fa6c29b37f96 4671-4678
+src/data/guide-search-entries.ts
+  s_46f3aaca63be5a::t_249f6f85909781 4894-4901
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0d1251b04e6cc2c71612f0de4f63bbb4ecbc308a",
+  "prompts": {},
+  "sessions": {
+    "s_46f3aaca63be5a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_46f3aaca63be5a",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

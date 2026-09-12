@@ -1,0 +1,181 @@
+astro.config.mjs
+  s_27dbd3303d14a1::t_07fd31936eda78 21,28-32
+docs/superpowers/plans/2026-08-31-context-page-redesign.md
+  s_95392a6b844626::t_bc560344703da9 1-387
+docs/superpowers/plans/2026-08-31-security-hub-routes.md
+  s_2efec322df84ae::t_2d3d66a8d73282 1-619
+src/components/context/ContextConfigurator.astro
+  s_9cf259c16931e6::t_82aabbc91e99ae 1-177
+src/components/context/ContextHero.astro
+  s_9cf259c16931e6::t_60f72af458f6c6 1-25
+src/components/context/ContextMaturityLadder.astro
+  s_9cf259c16931e6::t_5be22cf08cbc94 1-23
+src/components/context/ContextNextStep.astro
+  s_9cf259c16931e6::t_378fe2df8fba2b 1-19
+src/components/context/ContextSubnav.astro
+  s_9cf259c16931e6::t_80dbcc09660122 1-12
+src/components/context/ContextSystemFlow.astro
+  s_9cf259c16931e6::t_321db1e7166a7f 1-26
+src/components/security/SecurityBreadcrumbs.astro
+  s_d812a5cba40e21::t_9c3a863c5c2a9a 1-11
+src/components/security/SecurityChecklist.astro
+  s_9cf259c16931e6::t_caf6ecb58e1abf 1-31
+src/components/security/SecurityCodeExample.astro
+  s_9cf259c16931e6::t_9e4f80eaff2559 1-13
+src/components/security/SecurityHero.astro
+  s_d812a5cba40e21::t_69e574ae43381c 1-22
+src/components/security/SecurityPathCards.astro
+  s_d812a5cba40e21::t_f6a0ccbe0009e0 1-15
+src/components/security/SecurityRelatedPages.astro
+  s_d812a5cba40e21::t_db1fe555a2720c 1-12
+src/components/security/SecuritySourceList.astro
+  s_d812a5cba40e21::t_239ffd33be37f2 1-12
+src/components/security/SecurityStats.astro
+  s_0a442347250965::t_5a4b7cf4c4ed48 1-9
+src/components/security/SecuritySubnav.astro
+  s_d812a5cba40e21::t_4cda45c5772a2c 1-11
+src/data/context-data.ts
+  s_7ff0217ab4c6a5::t_e40e72dcd155f0 23-33,121-123,234-236,265-267
+src/data/context-page.test.ts
+  s_2efec322df84ae::t_c9ac78c40f5337 1-29
+src/data/context-page.ts
+  s_7ff0217ab4c6a5::t_8a9f286a868c25 1-43
+src/data/security-components.test.ts
+  s_7ff0217ab4c6a5::t_0b315f797b2481 1-26
+src/data/security-page.test.ts
+  s_7ff0217ab4c6a5::t_7a228cb37dd893 1-48
+src/data/security-routes.test.ts
+  s_9cf259c16931e6::t_1bf0020adf8e3f 1-49
+src/data/sitemap-page.test.ts
+  s_9cf259c16931e6::t_36e9692b27f508 37-53
+src/pages/context/index.astro
+  s_2efec322df84ae::t_0e71c4780b6adf 2-6,8-26,29-36
+src/pages/security/sandbox/index.astro
+  s_9cf259c16931e6::t_b290fcb1f8b120 1-39
+src/scripts/context-configurator.test.ts
+  s_4931ee55d661f3::t_c14a30cc719f3c 1-123
+src/scripts/context-configurator.ts
+  s_c2174b9e521e6b::t_50471c23286dab 1-214
+src/scripts/copy-control.test.ts
+  s_7ff0217ab4c6a5::t_1ec006e6a0e385 1-33
+src/scripts/copy-control.ts
+  s_0a442347250965::t_afbb5d0d528853 1-34
+src/scripts/security-catalog.test.ts
+  s_9cf259c16931e6::t_8199323ef4f145 1-55
+src/scripts/security-checklist.test.ts
+  s_7ff0217ab4c6a5::t_191604d7a808de 1-48
+src/scripts/security-checklist.ts
+  s_7ff0217ab4c6a5::t_f78ab43dda57e6 1-53
+src/styles/context-page.css
+  s_2efec322df84ae::t_6133b4eefaf079 1-722
+src/styles/security-page.css
+  s_d812a5cba40e21::t_2f0ef3742f201d 1-127
+src/styles/security-page.test.ts
+  s_d812a5cba40e21::t_2216fc02ddc6bf 1-29
+src/components/security/SecurityCveCatalog.astro
+  s_95f49451e7d724::t_737946660aabe7 1-33
+src/components/security/SecurityThreatCatalog.astro
+  s_95f49451e7d724::t_8f308c9a0450fc 1-31
+src/data/security-page.ts
+  s_95f49451e7d724::t_2f039cbb30ec0b 1-233
+src/pages/security/cves/index.astro
+  s_95f49451e7d724::t_6a56f09623795c 1-30
+src/pages/security/hardening/index.astro
+  s_95f49451e7d724::t_ca5bf7230c2636 1-35
+src/pages/security/index.astro
+  s_95f49451e7d724::t_cfbc03e8d48c81 3-17,19-42
+src/pages/security/threats/index.astro
+  s_95f49451e7d724::t_985ba9061edfbd 1-33
+src/pages/sitemap/index.astro
+  s_95f49451e7d724::t_627a0c9976acdf 56-59
+src/scripts/security-catalog.ts
+  s_95f49451e7d724::t_6d5921bd366c49 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "46f9853721daa32178cf71413d081839c0f0331f",
+  "prompts": {},
+  "sessions": {
+    "s_0a442347250965": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04233-7990-7c82-96d1-1418fd7722e9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_27dbd3303d14a1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0594c-893c-7b70-a587-fb964129244d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_2efec322df84ae": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a056aa-68dc-76c1-95fa-3e383c196e6d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_4931ee55d661f3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e48-c1d3-7c20-8feb-7965ebd2537c",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7ff0217ab4c6a5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a057fe-fc73-7570-b291-f5263063d475",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95392a6b844626": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04821-7023-7112-aeb8-f4aa59348ce9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95f49451e7d724": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05804-0ee0-78c3-a3c7-1595cc229a93",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9cf259c16931e6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e6c-f9af-7811-b19d-91365bbf6d38",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_c2174b9e521e6b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0540b-8786-76e1-9f39-ced61d0ad7b7",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d812a5cba40e21": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a033c4-cc98-74d2-adf5-63f175b8463b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

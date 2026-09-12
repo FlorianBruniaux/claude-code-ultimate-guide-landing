@@ -1,0 +1,33 @@
+src/pages/compare/[slug].astro
+  s_59aee4ab612299::t_96fc8c41e9ddf7 15
+src/pages/compare/index.astro
+  s_59aee4ab612299::t_750b923cb59000 60
+src/pages/faq/index.astro
+  s_59aee4ab612299::t_40ecb8b23d28b3 191,227,345
+CHANGELOG.md
+  s_d475de30b0b14b::t_62c9d9b04acd8a 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "69febb2fcbfcf4727b048a05a05f386fba226c22",
+  "prompts": {},
+  "sessions": {
+    "s_59aee4ab612299": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a29682d-9283-4a7a-ad39-bee10380f07c",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d475de30b0b14b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24946385-c9b8-4a4d-8580-cb9fb54b4342",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

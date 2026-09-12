@@ -1,0 +1,39 @@
+src/components/landing/WhitepapersPreview.astro
+  s_4cca2409e9c109::t_f5a928e41fb62f 15,23,30
+src/pages/sitemap/index.astro
+  s_4cca2409e9c109::t_ca9911710ac2b3 19
+src/pages/whitepapers/index.astro
+  s_4cca2409e9c109::t_9925a65fe0c897 5-6
+  s_4cca2409e9c109::t_731f200e253646 173,176
+  s_4cca2409e9c109::t_930020a6730ac0 78,83
+src/data/whitepapers-data.ts
+  s_4cca2409e9c109::t_747f1b595ddc67 223
+  s_4cca2409e9c109::t_e2507f0b33a446 3,31,45-46,60-61,75-76,90-91,105-106,120-121,135-136,151-152,166-167,181-182,196-197,212-213,217-222,224-231
+  s_4cca2409e9c109::t_9cc8c78a70926a 232
+src/pages/cheatsheets/index.astro
+  s_4cca2409e9c109::t_2f9a0353675bc8 107
+src/pages/cheatsheet/index.astro
+  s_4cca2409e9c109::t_fca0dce542ba21 23
+  s_4cca2409e9c109::t_f54c0418503950 15
+  s_4cca2409e9c109::t_c8aacb454a5e38 35-36
+src/data/guide-content-entries.ts
+  s_4cca2409e9c109::t_d976a70b3acf9a 11554,11562,12455-12542
+src/data/guide-search-entries.ts
+  s_4cca2409e9c109::t_2cd4b713397021 118-149
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "042b01a5454af4ec86686bf082018eb7e5036185",
+  "prompts": {},
+  "sessions": {
+    "s_4cca2409e9c109": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac85cfe4-9c8f-4e55-89b1-dfc7d682dc10",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

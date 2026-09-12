@@ -1,0 +1,19 @@
+src/pages/sitemap/index.astro
+  s_422997a1a26cd4::t_488db0451ecb5a 148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "cbd89d94cf1ad4cde68ce5079c1e7bb080233ad6",
+  "prompts": {},
+  "sessions": {
+    "s_422997a1a26cd4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_422997a1a26cd4",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

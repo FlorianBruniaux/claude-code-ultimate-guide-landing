@@ -1,0 +1,19 @@
+src/components/global/GuidePageFab.astro
+  s_4a33ecc0fc1106::t_57f4303098a0c6 235-237,253-254,267-269,276-278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "369647ec5f9975128dce79fbc05e79aeee8aefab",
+  "prompts": {},
+  "sessions": {
+    "s_4a33ecc0fc1106": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6eef641-1aa1-4c8e-9aa6-64c8521c552a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

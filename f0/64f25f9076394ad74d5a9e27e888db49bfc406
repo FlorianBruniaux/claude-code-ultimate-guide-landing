@@ -1,0 +1,21 @@
+src/data/releases.ts
+  s_69d378fb527c04::t_f7ad63a1401d95 18-69
+src/data/rss-entries.ts
+  s_69d378fb527c04::t_16a30b7b4b14c8 28-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f064f25f9076394ad74d5a9e27e888db49bfc406",
+  "prompts": {},
+  "sessions": {
+    "s_69d378fb527c04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5eb7d7ba-06d0-4a9e-85cc-6c343273adf6",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+src/data/whitepapers-data.ts
+  s_a4d2224bdc73f3::t_a02c818a71cf96 90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "897d4686ac37a3bd7daf4b57b2a3a46fa5ce2aaa",
+  "prompts": {},
+  "sessions": {
+    "s_a4d2224bdc73f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "136f1ee6-2449-4c4b-a089-e106f09467ed",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

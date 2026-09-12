@@ -1,0 +1,23 @@
+docs/analytics/ga4-measurement-plan.md
+  s_9584cc873ea5db::t_538e99d7604eb4 3-5,18
+docs/operations/seo-post-deploy.md
+  s_9584cc873ea5db::t_48c7db308dcd43 5-8,14-16
+src/data/public-seo-check.test.ts
+  s_9584cc873ea5db::t_b986fb3433dee8 72-83,98-100,107,116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7afda4c74a11d64cdf7ce9d1953e947a60a9d4a8",
+  "prompts": {},
+  "sessions": {
+    "s_9584cc873ea5db": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06ba1-bf87-7021-b4df-33994638a833",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

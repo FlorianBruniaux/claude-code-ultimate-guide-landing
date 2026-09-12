@@ -1,0 +1,21 @@
+src/data/recap-cards-data.ts
+  s_eb4f792fe0586b::t_50f575a407d97b 53-54,87,154
+src/data/whitepapers-data.ts
+  s_eb4f792fe0586b::t_28d803d01247df 45-46,60-61,75-76,105-106,120-121,135-136,151-152,166-167,181-182,212-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "5ec8d9dbb940c120e9e4c6346718c17da9a5654b",
+  "prompts": {},
+  "sessions": {
+    "s_eb4f792fe0586b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9a878aa-5863-4d5e-aeb8-076244cd1d62",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

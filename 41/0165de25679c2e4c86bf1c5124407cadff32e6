@@ -1,0 +1,51 @@
+public/cheatsheets/pdf/c12-agent-sdk-integrations-ide.en.pdf
+  s_a76087f74be2bb::t_81fff51c05934b 1-562
+public/cheatsheets/pdf/c12-agent-sdk-integrations-ide.fr.pdf
+  s_a76087f74be2bb::t_ebd786576abfd4 1-570
+public/cheatsheets/pdf/c14-agent-harness-map.en.pdf
+  s_a76087f74be2bb::t_64d1c490fde01a 1-676
+public/cheatsheets/pdf/c14-agent-harness-map.fr.pdf
+  s_a76087f74be2bb::t_1f6e28224d8087 1-678
+public/cheatsheets/pdf/m16-multi-agent-topologie.en.pdf
+  s_a76087f74be2bb::t_fb7359bef33725 1-961
+public/cheatsheets/pdf/m16-multi-agent-topologie.fr.pdf
+  s_a76087f74be2bb::t_15e9cc9858b8cd 1-935
+public/cheatsheets/pdf/t22-third-party-tools.en.pdf
+  s_a76087f74be2bb::t_13707fa63901d5 1-896
+public/cheatsheets/pdf/t22-third-party-tools.fr.pdf
+  s_a76087f74be2bb::t_fa457525f24843 1-940
+src/components/global/AnnouncementBanner.astro
+  s_400c9bf4be89f0::t_f83d5d7e3d90bd 31,42
+src/content/cheatsheets/c12-agent-sdk-integrations-ide.md
+  s_a76087f74be2bb::t_cffcd3ba584e1f 7,11,13,15-19,21,23,26,29,31,34,40,44,48
+src/content/cheatsheets/m16-multi-agent-topologie.md
+  s_a76087f74be2bb::t_f8bf67e01eef16 7,13,15-20,59,83,85,87,89
+src/content/cheatsheets/t22-third-party-tools.md
+  s_a76087f74be2bb::t_b29144e2aba9b6 7,13-14,41,51-56,83-85,87
+src/data/guide-content-entries.ts
+  s_a76087f74be2bb::t_c28808be3ccb41 3,159-166,239-254,258,266,272-282,284,288-290,292-316,479-486,1343-1350,1575-1582,1730,1738,4370,5191-5198,5311-5318,5991-5998,11855-11862,12095-12102,12271-12278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "410165de25679c2e4c86bf1c5124407cadff32e6",
+  "prompts": {},
+  "sessions": {
+    "s_400c9bf4be89f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc94ad29-ab7b-4563-b9d5-82fdaae85476",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a76087f74be2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01f2a-b167-78f0-a126-7450029bd920",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

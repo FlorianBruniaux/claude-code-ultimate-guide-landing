@@ -1,0 +1,19 @@
+src/pages/cheatsheet/index.astro
+  s_de692bb179c40a::t_011f2051ba09da 25,37-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "12109bd122ffb33b13d7dd94879ccf2fe502168d",
+  "prompts": {},
+  "sessions": {
+    "s_de692bb179c40a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f4ae5d4-c465-46f2-9e32-fbaf8b9f2b3a",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

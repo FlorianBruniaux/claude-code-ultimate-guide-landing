@@ -1,0 +1,21 @@
+src/data/guide-content-entries.ts
+  s_e43be02999e677::t_c69eb9ada55c8c 354,362
+src/data/guide-search-entries.ts
+  s_e43be02999e677::t_8fe21a58dd7e68 1342-1349,1822-1829,1990-2013,2118-2149
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "30854b2f6ba18488b04561b1731c10ba8f4c0108",
+  "prompts": {},
+  "sessions": {
+    "s_e43be02999e677": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1cd66825-f251-4f8f-bbe3-40df3289e3b4",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

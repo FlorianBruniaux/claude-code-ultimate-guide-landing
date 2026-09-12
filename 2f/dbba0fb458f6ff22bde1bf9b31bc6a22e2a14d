@@ -1,0 +1,19 @@
+src/data/rss-entries.ts
+  s_d1d495428ad5fe::t_0b731783c77138 44,58,65,72,79,86,93,100,107,114,121,128,149,156,163,170,177,191,198,205
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2fdbba0fb458f6ff22bde1bf9b31bc6a22e2a14d",
+  "prompts": {},
+  "sessions": {
+    "s_d1d495428ad5fe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d182dca-4cd0-4000-afd6-9c92c63115f4",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

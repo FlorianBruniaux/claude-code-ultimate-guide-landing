@@ -1,0 +1,16 @@
+src/utils/mcp-product-data.test.ts
+  h_07916ece6468dd 212-344
+src/utils/mcp-product-data.ts
+  h_07916ece6468dd 6,9-10,65-72,75-88,98-100,176-181,183,211-214,234
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "685e2a36aada4c49de022d0718fcdf9d62aa3187",
+  "prompts": {},
+  "humans": {
+    "h_07916ece6468dd": {
+      "author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

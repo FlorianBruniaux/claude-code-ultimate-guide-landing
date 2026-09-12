@@ -1,0 +1,43 @@
+CHANGELOG.md
+  s_0df90997879182::t_437c32a5ea2003 11
+docs/superpowers/plans/2026-08-31-mcp-product-page.md
+  s_9cf259c16931e6::t_348ea870bfed39 38,40
+src/components/global/Footer.astro
+  s_0df90997879182::t_5de497c0c51d1f 87
+src/data/astro-route-hygiene.test.ts
+  s_9cf259c16931e6::t_4832717df3e43c 1-17
+src/data/mcp-page.test.ts
+  s_1c04bf45bace81::t_a0327a12e652d2 5-7,93-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7c4668f161c07d38cc3e0d61e2a8f7cda5cb64db",
+  "prompts": {},
+  "sessions": {
+    "s_0df90997879182": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fd73a-588d-7f03-ab50-494ca0e95848",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_1c04bf45bace81": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05916-1377-73c0-9d6b-ca9edc3fb47e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9cf259c16931e6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e6c-f9af-7811-b19d-91365bbf6d38",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

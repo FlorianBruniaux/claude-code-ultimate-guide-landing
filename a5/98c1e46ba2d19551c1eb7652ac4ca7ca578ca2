@@ -1,0 +1,19 @@
+src/components/landing/HeroBanner.astro
+  s_25e214b3e7321e::t_33ddb886cc67a3 15,60,70-83,254-323
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a598c1e46ba2d19551c1eb7652ac4ca7ca578ca2",
+  "prompts": {},
+  "sessions": {
+    "s_25e214b3e7321e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf3c75d4-5490-4817-b0eb-72b195e5127d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

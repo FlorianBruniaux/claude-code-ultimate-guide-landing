@@ -1,0 +1,29 @@
+src/data/releases.ts
+  s_e565b1ef574aef::t_4e30f53f032d4a 18-55
+src/data/rss-entries.ts
+  s_d69add8584294a::t_13151128bf9a45 28-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "861226655a328ba228f497413461eadb76b63494",
+  "prompts": {},
+  "sessions": {
+    "s_d69add8584294a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bd49882-ca40-4a42-9b5a-a288e98487b1",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e565b1ef574aef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc5f91b4-5e50-4140-8499-379c519a3c22",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

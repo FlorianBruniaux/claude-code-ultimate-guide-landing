@@ -1,0 +1,63 @@
+src/components/global/ConsultingCta.astro
+  s_d2ca25479e44e9::t_d83d1f8d5e8587 1-85
+src/components/global/Footer.astro
+  s_c54dc0924c64f3::t_e109da152b7d3d 112-114
+src/pages/compare/index.astro
+  s_40ad2421407764::t_b82282d1114b90 3,5-7,10,118,123,133,826
+src/pages/index.astro
+  s_aa8c18eb70eb58::t_c9dc2b904a9158 18-21,24,30,113
+src/pages/releases/index.astro
+  s_1e75f1a9e26136::t_7b09fd31c32661 3,777-778
+src/pages/roles/index.astro
+  s_1e75f1a9e26136::t_6c111634cd3503 5,275
+src/pages/whitepapers/index.astro
+  s_1e75f1a9e26136::t_1996e552957327 3,330
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "7d4a864d42d6a97ed1247531db1412cdb6f04d9b",
+  "prompts": {},
+  "sessions": {
+    "s_1e75f1a9e26136": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b16cf5a9-e8a1-43b3-b5bc-8dab6f60735a",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_40ad2421407764": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e228545-a482-4baa-ae6d-2de573c746d7",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_c54dc0924c64f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "222c7834-6f4a-4f5b-8f04-600fe39b29d5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d2ca25479e44e9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5664706-7ae3-49cb-8424-b9057dcab289",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

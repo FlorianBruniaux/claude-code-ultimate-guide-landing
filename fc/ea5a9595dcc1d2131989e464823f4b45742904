@@ -1,0 +1,55 @@
+src/components/landing/FeaturesGrid.astro
+  s_aa8c18eb70eb58::t_ca2516f3d170e1 1-6,29,36,43
+src/components/landing/GoldenRules.astro
+  s_aa8c18eb70eb58::t_cd37bb16bf5e5e 1-6,29,31
+src/components/landing/GuideComparison.astro
+  s_aa8c18eb70eb58::t_2148e9bc825e29 1-6,41,46,56,106,133,142,145
+src/components/landing/LevelUp.astro
+  s_aa8c18eb70eb58::t_eb6b628dbfa685 1-6,49
+src/layouts/Layout.astro
+  s_aa8c18eb70eb58::t_f59905e58f4040 9,38,131
+src/pages/claude-md-best-practices/index.astro
+  s_40ad2421407764::t_7d40ba62170c00 3-5,97,207
+src/pages/examples/[slug].astro
+  s_aa8c18eb70eb58::t_d4cd5f678ca31a 4-6,473,539
+src/pages/examples/index.astro
+  s_40ad2421407764::t_6e231ade5dd46c 3-5,14-15,23,39-40
+src/pages/faq/index.astro
+  s_aa8c18eb70eb58::t_5a4626bdf22c6c 3-5,119,143,272,288,326
+src/pages/security/index.astro
+  s_40ad2421407764::t_5e1326c7fd6a7a 3-5,8,65
+src/utils/site-stats.ts
+  s_597d8e964fbc3a::t_c80b5d9ff3862e 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "fcea5a9595dcc1d2131989e464823f4b45742904",
+  "prompts": {},
+  "sessions": {
+    "s_40ad2421407764": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e228545-a482-4baa-ae6d-2de573c746d7",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_597d8e964fbc3a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6efa8fc0-1db3-462b-b91f-88dd9ae5bcfc",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

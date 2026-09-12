@@ -1,0 +1,19 @@
+src/data/releases.ts
+  s_0ae520860ec195::t_b2bc70767c6129 18-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "164fdd8602fa0a3dd77b8c84cfc24c2befe0ffdc",
+  "prompts": {},
+  "sessions": {
+    "s_0ae520860ec195": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49be0a81-3c1a-4a37-a258-61d6bd1ffd47",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+CHANGELOG.md
+  s_f5a9dbdf651254::t_df803532730b9b 7-10
+src/components/landing/MemorySystems.astro
+  s_597d8e964fbc3a::t_b7c3c2148346a5 32-33,37,168-173
+src/components/landing/TokenOptimization.astro
+  s_aa8c18eb70eb58::t_b73e08036b7bd7 5
+src/data/ecosystem-data.ts
+  s_aa8c18eb70eb58::t_adf5809ec400cf 5,64,94,176,208,236,375,478,487,519,554,757
+src/data/glossary-data.ts
+  s_133dd432085d99::t_813aee54cfeb69 32
+src/pages/context-engineering/index.astro
+  s_133dd432085d99::t_38faab25bee9e0 34-35
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_133dd432085d99::t_f8be6af5d4e02e 353,358
+src/pages/memory-systems/index.astro
+  s_133dd432085d99::t_704b511dbaa6dd 17,81,93,318,601
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "b298aed56b14f1deb27caad9c1d8e3f6e18b125a",
+  "prompts": {},
+  "sessions": {
+    "s_133dd432085d99": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d68d0195-5e9a-4608-8e8b-fe25197cfc2e",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_597d8e964fbc3a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6efa8fc0-1db3-462b-b91f-88dd9ae5bcfc",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_aa8c18eb70eb58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3184de7b-e651-4335-a390-886d67563a3b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f5a9dbdf651254": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fe43611c-8317-417c-b802-915b2cf0cc8a",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.github/workflows/deploy.yml
+  s_b75681c86b5534::t_33edf30011c17c 76-78
+CHANGELOG.md
+  s_b75681c86b5534::t_089edd3a76041e 7-8
+README.md
+  s_1b5008099987d2::t_58064597610048 175
+docs/prompt-per-node-diagram-links.md
+  s_1b5008099987d2::t_276e8642103f1e 5-6,23,91
+docs/superpowers/plans/2026-09-04-seo-corrections-implementation.md
+  s_1b5008099987d2::t_83f5f53b2d87fb 126,135,226,296,298,370
+docs/superpowers/specs/2026-09-04-seo-corrections.md
+  s_1b5008099987d2::t_62bfd450eb5760 12
+scripts/prepare-guide-content.mjs
+  s_b75681c86b5534::t_e22718958fa0fd 545
+src/data/guide-content-entries.ts
+  s_15709588a2f141::t_d2e6be441db9b7 466,2576-2578,2580,2594
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_1b5008099987d2::t_7598ab38e1832d 3
+src/scripts/bash-playground/VENDORED.md
+  s_1b5008099987d2::t_7283f23ac46f5d 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f6b81b3ea04f020a684756554e2b8df5d113b4bb",
+  "prompts": {},
+  "sessions": {
+    "s_15709588a2f141": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06cf8-d5d0-74d2-8a15-2f0d9aa53d9a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_1b5008099987d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fc271144-098a-4469-ace6-be051749d402",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b75681c86b5534": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08528-8a68-7b00-beb6-4e1a263caf75",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

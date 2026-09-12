@@ -1,0 +1,23 @@
+docs/superpowers/plans/2026-09-04-full-seo-audit.md
+  s_bd34fc83fb2040::t_ca8181f9563456 1-553
+seo-action-plan-cc-bruniaux-2026-09-04.md
+  s_bd34fc83fb2040::t_403354f7333523 1-271
+seo-audit-cc-bruniaux-2026-09-04.md
+  s_bd34fc83fb2040::t_6c781e801fbff4 1-230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "174a27784cc56aa55549efc8fb635c4a6b05cf37",
+  "prompts": {},
+  "sessions": {
+    "s_bd34fc83fb2040": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a067a8-767f-7da2-84ca-f3ff4f4b2a06",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}

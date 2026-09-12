@@ -1,0 +1,233 @@
+.agents/skills/responsive-design/SKILL.md
+  s_9cf259c16931e6::t_b35f6d22ef6635 1-44
+.agents/skills/responsive-design/references/breakpoint-strategies.md
+  s_9cf259c16931e6::t_c6ab53cf276525 1-591
+.agents/skills/responsive-design/references/container-queries.md
+  s_9cf259c16931e6::t_7af504a5364119 1-564
+.agents/skills/responsive-design/references/details.md
+  s_9cf259c16931e6::t_e5993459e09d82 1-477
+.agents/skills/responsive-design/references/fluid-layouts.md
+  s_9cf259c16931e6::t_5f043dd80bde01 1-538
+.claude/skills/responsive-design
+  s_9cf259c16931e6::t_284898d06c926a 1
+CHANGELOG.md
+  s_3d7902fac7936b::t_1b2ab4f60cc88e 7-11,26-27,99-100,106,114,119,132,141,143-144,146,156-158,161-162,181,184,190-192,195-197
+docs/superpowers/plans/2026-08-31-homepage-progressive-disclosure.md
+  s_0a442347250965::t_1adaa6035de9fa 1-131
+docs/superpowers/specs/2026-08-31-homepage-progressive-disclosure-design.md
+  s_d812a5cba40e21::t_dbad5ab42dc0eb 1-49
+scripts/build-guide-index.mjs
+  s_3d7902fac7936b::t_bbc0c5701b37e7 59,61,64,68-81,249
+skills-lock.json
+  s_95f49451e7d724::t_3c374e1aa21882 22-27
+src/components/global/AnnouncementBanner.astro
+  s_95f49451e7d724::t_e20c1dd0951839 13,24-31,93,129-132,160-163
+src/components/global/FeedbackFab.astro
+  s_95f49451e7d724::t_0f466cd58a8276 59-60,65-72,99-102
+src/components/global/Footer.astro
+  s_95f49451e7d724::t_37823a14a118ff 2-6,64-83,133-134,157-199
+src/components/global/Header.astro
+  s_95f49451e7d724::t_54c7a41cc8463c 287,292-296,301,458-473
+src/components/landing/AuthorProfile.astro
+  s_95392a6b844626::t_03b47f26f6e8f6 1-107
+src/components/landing/Community.astro
+  s_95f49451e7d724::t_3ba92a06afe142 2,34,40,44
+src/components/landing/ExploreDeeper.astro
+  s_4931ee55d661f3::t_4785eba9a36d7c 1-34
+src/components/landing/FlagshipResources.astro
+  s_c2174b9e521e6b::t_ce443522d13225 1-47
+src/components/landing/HeroBanner.astro
+  s_95f49451e7d724::t_21d8386ac1a647 2,4,9-46,48,52-65,67-69,73-77,79,81-91,93,96-97,99-100,102-103,105,107-120,122-124,127,129,131,133-135,137,139,142-145,147,150-152,154,157-161,163-167,169,171-186
+src/components/landing/HeroBlogPosts.astro
+  s_95f49451e7d724::t_20a77d1a4b132a 120,151,179
+src/components/landing/HeroQuickGuides.astro
+  s_95f49451e7d724::t_6c29ee019a202b 115,146,174
+src/components/landing/LatestContent.astro
+  s_4931ee55d661f3::t_f3f1b1770bd255 1-22
+src/components/landing/McpProof.astro
+  s_4931ee55d661f3::t_ebee2511f28596 1-46
+src/components/landing/RelatedProjects.astro
+  s_95f49451e7d724::t_b00354e91e5a31 1-13,15-25,27,31-43
+src/components/landing/StartHere.astro
+  s_c2174b9e521e6b::t_99b9c73994aad9 1-83
+src/components/landing/VisualDiagrams.astro
+  s_95f49451e7d724::t_b8596f125461fa 2-10,16-17,21,25
+src/components/landing/WhitepapersPreview.astro
+  s_95f49451e7d724::t_dbfeda7cbf9782 2-3,25,32,50,55,60
+src/data/author-profile.test.ts
+  s_f85aab81783734::t_53db9579858786 1-9
+src/data/author-profile.ts
+  s_785221fef14e1f::t_ca76e8c1c1a0a1 1-30
+src/data/diagrams-data.ts
+  s_3d7902fac7936b::t_e4cffb1e61a7ad 338,340,347,359,361
+src/data/guide-content-entries.ts
+  s_3d7902fac7936b::t_2128e3742dfda8 3,914,922,930,938,944-946,948,952-954,956,960-962,964,968-970,972,976-978,980,984-986,988,992-994,996,1000-1002,1004,1008-1010,1012,1016-1018,1020,1024-1026,1028,1032-1034,1036,1040-1042,1044,1048-1050,1052,1056-1058,1060,1064-1066,1068,1072-1074,1076,1080-1082,1084,1088-1090,1092-1132,1250,1264-1266,1268,1274,1290,1320-1338,1340,1346,1354,1362,1378,1410,1863-1910,1946,4418,4424-4426,4428,4432-4434,4436,4440-4442,4444,4448-4450,4452,4456-4458,4460,4464-4466,4468,4472-4474,4476,4481-4482,4488-4490,4492,4496-4498,4500,5658,5671-5718,6226,6282,6570,6576-6578,6580,6584-6586,6588,6592-6594,6596,6600-6602,6604,6608-6610,6612,6616-6618,6620,6624-6626,6628-6644,7063-7118,12759-12814,13002
+src/data/guide-navigation.mjs
+  s_3d7902fac7936b::t_bb50536de77b66 2-6,115,139
+src/data/guide-search-entries.ts
+  s_3d7902fac7936b::t_6083c896cffac9 23-97,99,486-501,825,1761,1763,2211-2235,2243,2251,2259,2263-2265,2267,2271-2273,2275,2279-2281,2283,2287-2289,2291,2295-2297,2299,2303-2305,2307,2311-2313,2315-2347,2481,5046-5053,6747,6755,6763-6771,6779,6787,6795
+src/data/homepage-content.test.ts
+  s_7a42d03307fc1d::t_b215215d3b9013 1-61
+src/data/homepage-content.ts
+  s_0df90997879182::t_34656909235c6a 1-153
+src/data/landing-sync.test.ts
+  s_3d7902fac7936b::t_c7d4655e0290d0 76-96,102,104,108-118
+src/data/recap-cards-data.ts
+  s_95f49451e7d724::t_df6a649fe01d2a 7
+src/data/rss-entries.ts
+  s_3d7902fac7936b::t_931a2cc0a36938 32-45
+src/data/sitemap-page.test.ts
+  s_95f49451e7d724::t_3cf8c9f7472a29 6,25-36
+src/data/whitepapers-data.ts
+  s_95f49451e7d724::t_cf4654f56a8efb 243-244
+src/layouts/Layout.astro
+  s_95f49451e7d724::t_2bdec04c8e63f1 21,34,201
+src/pages/cheatsheets/index.astro
+  s_95f49451e7d724::t_bd7278d083f7d5 6-7,63,69,87-95,113,121-135,148-152,155-156,214,216-217,220-221,279-281,347-348,485-486,496-500,667-668,679-680,687-689,691-697,775-848,852,866-867,884,899,905-906,913-916,919,936,945-947,949,953,980-1068,1078-1079,1163,1204-1206,1241,1342,1429-1430,1444-1445,1505,1518-1521,1546-1549,1580-1582,1598,1600-1622
+src/pages/downloads/index.astro
+  s_d812a5cba40e21::t_bb0781a8158b87 1-66
+src/pages/index.astro
+  s_95f49451e7d724::t_43c68ba5cf33e2 4-8,13,35-39,45,93,95-99
+src/pages/projects/index.astro
+  s_d812a5cba40e21::t_27c11838a2f258 1-48
+src/pages/quiz/index.astro
+  s_95f49451e7d724::t_7b87de93db216a 1406
+src/pages/resources/index.astro
+  s_d812a5cba40e21::t_b8ec73c4185a9c 1-74
+src/pages/sitemap/index.astro
+  s_95f49451e7d724::t_4eb9d7ba3bad08 49-51
+src/pages/whitepapers/index.astro
+  s_95f49451e7d724::t_d9d1520118c21f 5-6,8-11,77,85,90,110-111,118-124,126-149,153-156,182-193,203-204,207,257-261,295-306,321,338-348,397-398,402-404,406,408-412,425-430,432-433,438,442,446,473-474,482,525,533-560,633-634,654-656,660,663-668,670,714,716-717,719,725,737-738,752-753,771,792-793,811,851,865-869,909,924-925,934-940,942-944
+src/styles/components.css
+  s_95f49451e7d724::t_d548a71f9e698e 72,81,210,722,736,900-910
+src/styles/global.css
+  s_95f49451e7d724::t_64bc6f69fbe95f 17-18,118,144,170
+src/utils/feedback-visibility.test.ts
+  s_d812a5cba40e21::t_44d44ffb4ca79a 1-13
+src/utils/feedback-visibility.ts
+  s_7754953c862376::t_a8210bbda893c4 1-9
+src/utils/resource-catalog.test.ts
+  s_ddf0a6779540bc::t_7623e82435d81c 1-69
+src/utils/resource-catalog.ts
+  s_ddf0a6779540bc::t_9f0d71e72c8fc5 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "d026e9c4d93408ece8be41bb7bd5cb74e8650df1",
+  "prompts": {},
+  "sessions": {
+    "s_0a442347250965": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04233-7990-7c82-96d1-1418fd7722e9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_0df90997879182": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fd73a-588d-7f03-ab50-494ca0e95848",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_3d7902fac7936b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0593a-4699-7311-9240-f02da0291fff",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_4931ee55d661f3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e48-c1d3-7c20-8feb-7965ebd2537c",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7754953c862376": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a056db-d641-7e30-b80a-556c46eb5001",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_785221fef14e1f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0576c-628d-7c50-99b4-3750eac428eb",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7a42d03307fc1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a057f3-ae04-7a63-893e-a0e019725d9c",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95392a6b844626": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04821-7023-7112-aeb8-f4aa59348ce9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_95f49451e7d724": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05804-0ee0-78c3-a3c7-1595cc229a93",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9cf259c16931e6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03e6c-f9af-7811-b19d-91365bbf6d38",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_c2174b9e521e6b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0540b-8786-76e1-9f39-ced61d0ad7b7",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d812a5cba40e21": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a033c4-cc98-74d2-adf5-63f175b8463b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ddf0a6779540bc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a05859-9375-7902-a523-1487fe47fe40",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f85aab81783734": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0577f-0621-72a0-bac8-b9e161eda8f3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
