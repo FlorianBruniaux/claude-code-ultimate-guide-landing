@@ -65,6 +65,9 @@ jobs:
       - name: Build search indexes
         run: node scripts/build-guide-index.mjs && node scripts/build-guide-content-index.mjs
 
+      - name: Build interactive terminal data
+        run: pnpm build:terminal-fs
+
       - name: Build Astro site
         run: pnpm astro build
         env:

@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Generate the interactive terminal datasets during deployment so the security explorer receives the current threat database alongside the rendered catalogue.
+
 - Refreshed every compatibility catalogue category, derived MCP demo counts from the catalogue, clarified CVE/advisory totals across the site and added the September security review to RSS.
 
 - Updated the AgentSec security feed to database 2.29.0 (September 12, 2026): 131 CVE/advisory records and 28 dated events. Preserved the distinction between documented intelligence and the two implemented detector families.
