@@ -18,14 +18,76 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.261',
+    version: 'v2.1.269',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added claude plugin eval for plugin evaluation suites, with scores and JSON/HTML reports",
+      "Added /output-style [name] for listing and switching styles in terminal, Remote Control, cloud and headless sessions",
+      "Fixed prompt-cache invalidation after interrupted or output-limited turns and /goal runs stalling after errors or limits",
+      "Security fixes cover plugin archive permissions, Bash tee write destinations and negated permission rules crossing settings sources",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.268',
+    date: "Sep 10, 2026",
+    highlights: [
+      "Fixed HTTP 400 errors on third-party Anthropic-compatible endpoints introduced in v2.1.265",
+      "Added a 300-second WebFetch deadline; CLAUDE_CODE_WEBFETCH_DEADLINE_MS overrides it (0 disables it)",
+      "Security fixes cover symlinked-path permission rules, untrusted teammate definitions and secrets shown in MCP/plugin diagnostics",
+      "Improved prompt-cache stability on Bedrock, Vertex and Foundry; /plugin changes now apply when its menu closes",
+    ],
+    breaking: ["Plain WebFetch deny/ask rules no longer gate Artifact reads or updates; use Artifact or WebFetch(domain:claude.ai)."],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.267',
+    date: "Sep 9, 2026",
+    highlights: [
+      "Added maxEffortLevel globally or under modelSettings to cap effort across providers while allowing lower user choices",
+      "Added --system-prompt-snapshot off to render the system prompt anew for each request during prompt iteration",
+      "Fixed prompt-cache and thinking losses from reconnecting tools, model switches and session/subagent resumes",
+      "Security fixes reject unreadable managed hook/channel allowlists and close a marketplace backslash containment bypass",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.266',
+    date: "Sep 8, 2026",
+    highlights: [
+      "Fixed v2.1.265 forcing Cloud-gateway sign-in when CLAUDE_CODE_USE_GATEWAY was set with alternative authentication; no configuration change is needed",
+    ],
+    initiallyVisible: false,
+  },
+  {
+    version: 'v2.1.265',
+    date: "Sep 8, 2026",
+    highlights: [
+      "Added --plugin-dir support for a parent folder of plugins, including child plugins added or removed during the session",
+      "Added a 1 GB limit for tool results saved to disk, with truncation disclosed in the conversation preview",
+      "Fixed resumed subagent prompt-cache reuse and preserved interrupted tool calls after a process crash",
+      "Security fixes close plugin backslash containment bypasses and prevent nested-repository git clean filters running during status/diff probes",
+    ],
+    breaking: ["Managed forceLoginGatewayUrl now selects gateway authentication at startup; leftover claude.ai credentials or API keys are not used."],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.263',
+    date: "Sep 6, 2026",
+    highlights: [
+      "Bug fixes and reliability improvements; upstream provides no further detail",
+    ],
+    initiallyVisible: false,
+  },
+  {
+    version: 'v2.1.261',
+    date: 'Sep 4, 2026',
     highlights: [
       'Added /skill-doctor to show which loaded skills go unused and what they cost in context',
       'Added bashOutputMaxChars/taskOutputMaxChars settings to raise inline command/task output limits up to 128K characters',
       'Fixed resuming a session losing hook output and other context around parallel tool calls',
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -2322,6 +2384,9 @@ export const releases: Release[] = [
 ]
 
 export const breakingChanges: BreakingChange[] = [
+  { badge: 'Security', description: 'Plugin archive permissions and Bash tee destination checks fixed (v2.1.269); symlink-path rules and MCP/plugin secret redaction fixed (v2.1.268)' },
+  { badge: 'Permissions', description: 'Plain WebFetch deny/ask rules no longer gate Artifact reads or updates; use Artifact or WebFetch(domain:claude.ai) (v2.1.268)' },
+  { badge: 'Auth', description: 'Managed forceLoginGatewayUrl selects gateway authentication at startup and ignores leftover claude.ai credentials or API keys (v2.1.265)' },
   { badge: 'Syntax', description: 'Indexed argument syntax changed: $ARGUMENTS.0 &rarr; $ARGUMENTS[0] (v2.1.19)' },
   { badge: 'Install', description: 'npm installations deprecated - use native installer (v2.1.15)' },
   { badge: 'Security', description: 'Command injection fix in bash processing (v2.1.2)' },

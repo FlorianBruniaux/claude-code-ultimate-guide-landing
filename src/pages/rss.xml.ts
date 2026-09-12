@@ -2,11 +2,11 @@ import rss from '@astrojs/rss'
 import type { APIRoute } from 'astro'
 import { releases } from '../data/releases'
 import { rssEntries, type RssEntry } from '../data/rss-entries'
+import { releaseDateToIsoDate } from '../data/seo-editorial-contract.mjs'
 
-// Parse "Mar 19, 2026" → Date
+// Keep publication dates independent of the build machine's timezone.
 function parseReleaseDate(dateStr: string): Date {
-  const d = new Date(dateStr)
-  return isNaN(d.getTime()) ? new Date() : d
+  return new Date(`${releaseDateToIsoDate(dateStr)}T00:00:00Z`)
 }
 
 function guideEntryLink(entry: RssEntry): string {
@@ -42,7 +42,7 @@ export const GET: APIRoute = async (context) => {
         ? [`<p><strong>Breaking changes:</strong></p><ul>`, ...release.breaking.map((b) => `<li>${b}</li>`), `</ul>`]
         : []),
     ].join(''),
-    link: `https://cc.bruniaux.com/releases/#${release.version}`,
+    link: `https://cc.bruniaux.com/releases/#${release.version.replace(/\./g, '-')}`,
   }))
 
   // Guide entries → RSS items

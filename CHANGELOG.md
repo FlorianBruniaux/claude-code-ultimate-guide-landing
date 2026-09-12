@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Synced six Claude Code releases through v2.1.269, the latest-release date, automatic RSS entries, and the security/behavior summary. Highlighted plugin evaluations, output-style switching, effort caps, cache repairs and Artifact permission-rule migration.
+
 - Republished cleaned guide content without author workstation paths or DarkMoon/Strix revision tables. Added a build gate against workstation paths in rendered pages.
 
 - Published DarkMoon/Strix guide and evidence pages in the site reader, with local search links, security navigation, and guide discovery.
