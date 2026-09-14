@@ -1,0 +1,23 @@
+src/data/guide-content-entries.ts
+  s_814c80431996d6::t_0ac660afe2c17b 3,135-142,5122,8922,8928-8930,8932,8936-8938,8940,8944-8946,8948,8952-8954,8956,8960-8962,8964,12874,12954,12978
+src/data/guide-search-entries.ts
+  s_814c80431996d6::t_eebca2d0da3cd4 265,267,321,323,785,1302-1309,1641,2471-2473,2657,2670-2677,3337,3342-3349,3366-3397,3423-3425,3427-3435,3518-3525,3558-3565,3657,3659,4974-4981,5878-5885
+CHANGELOG.md
+  s_814c80431996d6::t_b8ca741a8d815d 7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0341e6d84aeb35a95420b2328811a92143014289",
+  "prompts": {},
+  "sessions": {
+    "s_814c80431996d6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3e937e35-c0e0-4f42-b4e4-9c5cb10b5535",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
