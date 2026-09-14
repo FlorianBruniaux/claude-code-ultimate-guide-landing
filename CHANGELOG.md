@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Rebuilt the guide search and content indexes after the guide repaired its positional references, so Cmd+K entries point at resolved anchors instead of bare file URLs. Picked up the Start / Build / Scale adoption layer, the revised ORF evaluation and the machine-readable architecture sections.
+
 - Generate the interactive terminal datasets during deployment so the security explorer receives the current threat database alongside the rendered catalogue.
 
 - Refreshed every compatibility catalogue category, derived MCP demo counts from the catalogue, clarified CVE/advisory totals across the site and added the September security review to RSS.

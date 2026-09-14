@@ -262,9 +262,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-skills-commands-merger-guide",
     "title": "Skills Commands Merger Guide",
-    "keywords": "skills commands merger guide guide ultimate guide session naming guide guide ultimate guide config management guide guide ultimate guide config security considerations guide ultimate guide multi instance decision matrix guide ultimate guide",
+    "keywords": "skills commands merger guide guide ultimate guide md#6 commands user invocable skills",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#6-commands-user-invocable-skills",
     "source": "guide"
   },
   {
@@ -318,9 +318,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-github-actions-code-review-gate-job",
     "title": "Github Actions Code Review Gate Job",
-    "keywords": "github actions code review gate job examples github actions claude code review yml   'gate' job parses posted review's must fix count, fails the job (add to branch protection required checks to block merge)",
+    "keywords": "github actions code review gate job examples github actions claude code review yml   illustrative only: lacks provider run current sha binding, defaults missing severity to zero, and skips after review failure; replace and exercise evidence handling before using as an acceptance gate",
     "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml - 'gate' job parses posted review's Must Fix count, fails the job (add to branch protection required checks to block merge)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml - illustrative only: lacks provider/run/current-SHA binding, defaults missing severity to zero, and skips after review failure; replace and exercise evidence handling before using as an acceptance gate",
     "source": "guide"
   },
   {
@@ -782,7 +782,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-observability-guide",
     "title": "Agent Harness Observability Guide",
-    "keywords": "agent harness observability guide guide ops observability session search guide ops observability",
+    "keywords": "agent harness observability guide guide ops observability",
     "category": "Guide",
     "url": "/guide/observability/",
     "source": "guide"
@@ -1300,6 +1300,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-session-search",
+    "title": "Session Search",
+    "keywords": "session search guide ops observability md#session search resume",
+    "category": "Guide",
+    "url": "/guide/observability/#session-search--resume",
+    "source": "guide"
+  },
+  {
     "id": "guide-session-search-script",
     "title": "Session Search Script",
     "keywords": "session search script examples scripts session search",
@@ -1630,7 +1638,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
-    "keywords": "antigravity guide guide ecosystem ecosystem generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem coding environments guide ecosystem ecosystem md#6 ide ade and hybrid coding environments ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
+    "keywords": "antigravity guide guide ecosystem ecosystem md#61 google antigravity agent first ide generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem coding environments guide ecosystem ecosystem md#6 ide ade and hybrid coding environments ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#alternative providers community workarounds cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
     "category": "Guide",
     "url": "/ecosystem/",
     "source": "guide"
@@ -2460,9 +2468,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-session-auto-rename",
-    "title": "Session Auto Rename",
-    "keywords": "session auto rename guide ultimate guide md#session auto rename",
+    "id": "guide-session-naming-guide",
+    "title": "Session Naming Guide",
+    "keywords": "session naming guide guide ultimate guide md#session auto rename session auto rename guide ultimate guide md#session auto rename",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#session-auto-rename",
     "source": "guide"
@@ -2646,7 +2654,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-isolation-guide",
     "title": "Sandbox Isolation Guide",
-    "keywords": "sandbox isolation guide guide security sandbox isolation sandbox isolation decision tree guide security sandbox isolation sandbox docker network guide security sandbox isolation",
+    "keywords": "sandbox isolation guide guide security sandbox isolation sandbox isolation decision tree guide security sandbox isolation",
     "category": "Guide",
     "url": "/guide/sandbox-isolation/",
     "source": "guide"
@@ -2657,6 +2665,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox docker sandboxes guide security sandbox isolation md#3 docker sandboxes",
     "category": "Guide",
     "url": "/guide/sandbox-isolation/#3-docker-sandboxes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-docker-network",
+    "title": "Sandbox Docker Network",
+    "keywords": "sandbox docker network guide security sandbox isolation md#network policies",
+    "category": "Guide",
+    "url": "/guide/sandbox-isolation/#network-policies",
     "source": "guide"
   },
   {
@@ -3318,9 +3334,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-third-party-tools-guide",
     "title": "Third Party Tools Guide",
-    "keywords": "third party tools guide guide ecosystem third party tools third party tools cost tracking guide ecosystem third party tools third party tools hook utilities guide ecosystem third party tools third party gitdiff watcher guide ecosystem third party tools third party tools alternative uis guide ecosystem third party tools third party tools known gaps guide ecosystem third party tools third party agent orchestrator guide guide ecosystem third party tools third party tools context bootstrap guide ecosystem third party tools",
+    "keywords": "third party tools guide guide ecosystem third party tools",
     "category": "Guide",
     "url": "/guide/third-party-tools/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-cost-tracking",
+    "title": "Third Party Tools Cost Tracking",
+    "keywords": "third party tools cost tracking guide ecosystem third party tools md#token cost tracking",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#token--cost-tracking",
     "source": "guide"
   },
   {
@@ -3337,6 +3361,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party tools config mgmt guide ecosystem third party tools md#configuration management",
     "category": "Guide",
     "url": "/guide/third-party-tools/#configuration-management",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-hook-utilities",
+    "title": "Third Party Tools Hook Utilities",
+    "keywords": "third party tools hook utilities guide ecosystem third party tools md#hook utilities",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#hook-utilities",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-gitdiff-watcher",
+    "title": "Third Party Gitdiff Watcher",
+    "keywords": "third party gitdiff watcher guide ecosystem third party tools md#gitdiff watcher",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#gitdiff-watcher",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-alternative-uis",
+    "title": "Third Party Tools Alternative Uis",
+    "keywords": "third party tools alternative uis guide ecosystem third party tools md#alternative uis",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#alternative-uis",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-known-gaps",
+    "title": "Third Party Tools Known Gaps",
+    "keywords": "third party tools known gaps guide ecosystem third party tools md#known gaps third party switch guide guide ecosystem third party tools md#known gaps",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#known-gaps",
     "source": "guide"
   },
   {
@@ -3364,11 +3420,19 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-third-party-switch-guide",
-    "title": "Third Party Switch Guide",
-    "keywords": "third party switch guide guide ecosystem third party tools md#known gaps",
+    "id": "guide-third-party-agent-orchestrator-guide",
+    "title": "Third Party Agent Orchestrator Guide",
+    "keywords": "third party agent orchestrator guide guide ecosystem third party tools md#agent orchestrator",
     "category": "Guide",
-    "url": "/guide/third-party-tools/#known-gaps",
+    "url": "/guide/third-party-tools/#agent-orchestrator-ao",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-context-bootstrap",
+    "title": "Third Party Tools Context Bootstrap",
+    "keywords": "third party tools context bootstrap guide ecosystem third party tools md#project context bootstrapping",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#project-context-bootstrapping",
     "source": "guide"
   },
   {
@@ -3452,6 +3516,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-config-management-guide",
+    "title": "Config Management Guide",
+    "keywords": "config management guide guide ultimate guide md#31 memory files claudemd memory files guide ultimate guide md#31 memory files claudemd",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#31-memory-files-claudemd",
+    "source": "guide"
+  },
+  {
     "id": "guide-config-hierarchy",
     "title": "Config Hierarchy",
     "keywords": "config hierarchy guide ultimate guide md#configuration hierarchy",
@@ -3481,6 +3553,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "config multi machine sync guide ultimate guide md#multi machine sync",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-machine-sync",
+    "source": "guide"
+  },
+  {
+    "id": "guide-config-security-considerations",
+    "title": "Config Security Considerations",
+    "keywords": "config security considerations guide ultimate guide multi instance decision matrix guide ultimate guide",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
     "source": "guide"
   },
   {
@@ -3574,9 +3654,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-architecture-visual-overview",
     "title": "Architecture Visual Overview",
-    "keywords": "architecture visual overview guide core architecture architecture guide core architecture",
+    "keywords": "architecture visual overview guide core architecture md#visual overview",
     "category": "Guide",
-    "url": "/guide/architecture/",
+    "url": "/guide/architecture/#visual-overview",
     "source": "guide"
   },
   {
@@ -4033,14 +4113,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "semantic anchors catalog examples semantic anchors anchor catalog",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/semantic-anchors/anchor-catalog.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-memory-files",
-    "title": "Memory Files",
-    "keywords": "memory files guide ultimate guide md#31 memory files claudemd",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#31-memory-files-claudemd",
     "source": "guide"
   },
   {
@@ -4897,6 +4969,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "multi instance monitoring guide ultimate guide md#monitoring observability",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#monitoring--observability",
+    "source": "guide"
+  },
+  {
+    "id": "guide-codebase-design-llms-txt",
+    "title": "Codebase Design Llms Txt",
+    "keywords": "codebase design llms txt guide ultimate guide md#9184 machine readable documentation architecture",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#9184-machine-readable-documentation-architecture",
     "source": "guide"
   },
   {
@@ -5793,6 +5873,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "workflow guide ultimate guide md#the workflow",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-architecture",
+    "title": "Architecture",
+    "keywords": "architecture guide core architecture",
+    "category": "Guide",
+    "url": "/guide/architecture/",
     "source": "guide"
   },
   {
