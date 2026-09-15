@@ -1,0 +1,19 @@
+src/data/seo-editorial-contract.test.ts
+  s_ff9704cdc527ef::t_2b06c799e9cf5d 57-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "539bff407301eaf91292155f6737a2ea9853653c",
+  "prompts": {},
+  "sessions": {
+    "s_ff9704cdc527ef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fcaa6d4b-11f4-4c1d-8631-03dd8c4a0124",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
