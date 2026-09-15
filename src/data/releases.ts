@@ -18,15 +18,47 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.269',
+    version: 'v2.1.272',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Bug fixes and reliability improvements; upstream provides no further detail",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.271',
+    date: "Sep 14, 2026",
+    highlights: [
+      "Added per-command allowed_domains to Bash, PowerShell and Monitor in auto mode with sandboxing: the hosts a command needs are reviewed with it and opened for it alone",
+      "Added omitClaudeMd to agent frontmatter and --agents JSON, letting custom and plugin subagents run without user, project and local CLAUDE.md files; managed policy files still load",
+      "Added --accept-command <sha256> to claude plugin install/update, fast mode in Remote sessions, and mouse support in the /config panel",
+      "Fixed an unreadable enterprise managed-mcp.json being ignored: it now keeps exclusive MCP control and warns at startup, alongside ~80 further fixes across MCP, resume, hooks and terminal rendering",
+    ],
+    breaking: [
+      "Monitor watches always have a deadline (30 minutes maximum, 10 in single-prompt -p runs); the no-timeout persistent option is removed.",
+      "In auto mode, a skill's or slash command's inline ! shell commands follow default-mode permission rules instead of the classifier.",
+      "Default dynamic workflow size is small on Pro plans, and the medium size guideline drops from 15 to 10 agents.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.270',
+    date: "Sep 12, 2026",
+    highlights: [
+      "Fixed read-only git commands in Bash unexpectedly asking for permission after a session had been running for a while (regression in v2.1.269)",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.269',
+    date: "Sep 11, 2026",
     highlights: [
       "Added claude plugin eval for plugin evaluation suites, with scores and JSON/HTML reports",
       "Added /output-style [name] for listing and switching styles in terminal, Remote Control, cloud and headless sessions",
       "Fixed prompt-cache invalidation after interrupted or output-limited turns and /goal runs stalling after errors or limits",
       "Security fixes cover plugin archive permissions, Bash tee write destinations and negated permission rules crossing settings sources",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {

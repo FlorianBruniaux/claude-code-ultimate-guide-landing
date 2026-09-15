@@ -684,6 +684,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-test-selection",
+    "title": "Agent Harness Test Selection",
+    "keywords": "agent harness test selection guide core agent harness md#test selection agent primitive",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#test-selection-as-an-agent-primitive",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-observability",
     "title": "Agent Harness Observability",
     "keywords": "agent harness observability guide core agent harness md#6 observability stack",
