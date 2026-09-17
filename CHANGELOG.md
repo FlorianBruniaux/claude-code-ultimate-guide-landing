@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Added a daily scheduled rebuild to the deploy workflow. The build clones the guide repository, so the schedule propagates guide-only changes without the cross-repository token the guide's trigger workflow needed. That trigger had failed on every push since its token expired on 2026-05-28, unnoticed because each sync pushed this repository anyway.
+
 - Rebuilt the guide search and content indexes after the guide repaired its positional references, so Cmd+K entries point at resolved anchors instead of bare file URLs. Picked up the Start / Build / Scale adoption layer, the revised ORF evaluation and the machine-readable architecture sections.
 
 - Generate the interactive terminal datasets during deployment so the security explorer receives the current threat database alongside the rendered catalogue.

@@ -3,6 +3,11 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches: ["main"]
+  # The build clones the guide repository below, so a scheduled run picks up
+  # guide-only changes without a cross-repository token. It replaces the guide's
+  # trigger-landing-deploy workflow, which broke silently when its token expired.
+  schedule:
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 permissions:
