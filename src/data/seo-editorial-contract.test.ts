@@ -54,6 +54,6 @@ test('derives release schema dates from release data without a build clock', () 
 })
 
 test('shares one stable latest release date with release content and sitemap output', () => {
-  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE, 'Sep 14, 2026')
-  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE_ISO, '2026-09-14')
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE, 'Sep 16, 2026')
+  assert.equal(seoEditorialContract.LATEST_CLAUDE_CODE_RELEASE_DATE_ISO, '2026-09-16')
 })

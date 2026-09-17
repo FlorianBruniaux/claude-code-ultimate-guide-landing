@@ -18,12 +18,44 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.272',
+    version: 'v2.1.274',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added a critical memory usage warning, CLAUDE_CODE_MCP_STARTUP_WAIT_MS to bound how long the first non-interactive turn waits for MCP servers, and a claude_code.managed_settings_resolved OTel event",
+      "Fixed sessions endlessly retrying \"unexpected tool_use_id\" 400 errors (corrupted transcripts now self-heal or stop with a /rewind hint), and an active /goal being lost when resuming a compacted session",
+      "Fixed Streamable HTTP MCP tool calls timing out after about 5 minutes despite a longer per-server timeout, and legacy HTTP+SSE servers configured as http failing to connect",
+      "Security fixes cover secrets from ${VAR} placeholders shown in MCP connection errors, Bash commands looping over or assigning special shell variables, and nested shell expansions in worktree-isolated sessions",
+    ],
+    breaking: [
+      "\"type\": \"sdk\" MCP entries in .mcp.json, settings, plugins and agent files are skipped with a warning; only an SDK host application can register in-process servers.",
+      "Bedrock, Vertex, Foundry and telemetry-disabled installs use the v2 MCP client and MCP 2026-07-28 negotiation by default; opt out with MCP_SDK_GENERATION=v1 or MCP_PROTOCOL_NEGOTIATION=legacy.",
+      "/code-review uses leaner inline review prompts for models without tuned settings instead of spawning many review subagents.",
+      "Plugin and marketplace clones leave Git LFS files as pointers; run git lfs pull in the checkout to fetch them.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.273',
+    date: "Sep 15, 2026",
+    highlights: [
+      "Added opt-in LLM gateway hint headers (x-claude-code-request-class, x-claude-code-agent-type, compaction and tool-duration headers) behind CLAUDE_CODE_GATEWAY_HINT_HEADERS=1",
+      "Added a notification when an MCP server disconnects and reconnection gives up, and forking a Remote Control session from the Claude app into a local background session",
+      "Security fixes: unanalyzable Bash commands skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, a subshell hiding rm in bypass mode, and MDM or managed-settings.json MCP restrictions ignored when server-managed settings are present",
+      "Fixed auto-compact firing at about half the real window when advisor-tool turns were counted twice, and /login, /upgrade and /extra-usage forcing a full prompt-cache rewrite",
+    ],
+    breaking: [
+      "Reverted the v2.1.268 check of Read and Edit deny rules on unanalyzable Bash lines (eval, env -C); such commands prompt again instead of being denied.",
+      "Auto mode on Bedrock, Vertex and Foundry uses the local classifier by default; set CLAUDE_CODE_AUTO_MODE_SERVER=1 for the platform's server-side classifier.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.272',
+    date: "Sep 14, 2026",
     highlights: [
       "Bug fixes and reliability improvements; upstream provides no further detail",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
