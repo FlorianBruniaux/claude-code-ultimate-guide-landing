@@ -18,8 +18,55 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.274',
+    version: 'v2.1.278',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Changed auto mode on the Claude API, Enterprise, Bedrock, Vertex, Foundry and gateways to default to the server-side classifier, which carries no classifier-overhead charge; a billed fallback now warns",
+      "Added an Auto mode server row to /status showing whether this session's auto mode classifier runs on the server",
+    ],
+    breaking: [
+      "Auto mode defaults to the server-side classifier on the Claude API, Enterprise, Bedrock, Vertex, Foundry and gateways; CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out on the cloud providers and gateways.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.277',
+    date: "Sep 18, 2026",
+    highlights: [
+      "Added AGENTS.md support: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, switchable under \"Project instructions\" in /config (not yet on Bedrock, Vertex or Foundry)",
+      "Added CLAUDE_GATEWAY_PROXY_IS_EGRESS_BOUNDARY=1 for gateways whose only egress is a forward proxy, plus an optional headers: map on gateway upstreams",
+      "Changed subagent results to reach the main agent under a header marking them as subagent output, so a result's text cannot pass as the session's own instructions",
+      "Fixed claude -p and Agent SDK sessions hanging with no result after an internal error, conversations failing on an empty assistant text block, and about 50 further crash, resume, plugin and rendering fixes",
+    ],
+    breaking: [
+      "The TaskOutput tool is removed; Claude reads a background task's output file with Read, and taskOutputMaxChars and TASK_MAX_OUTPUT_LENGTH no longer have any effect.",
+      "A sandbox.excludedCommands glob no longer exempts a whole compound Bash command when one part matches; every part must match.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.276',
+    date: "Sep 18, 2026",
+    highlights: [
+      "Fixed every request failing with 400 ... Input tag 'advisor_20260301' when ANTHROPIC_BASE_URL points at a proxy or gateway (a v2.1.275 regression)",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.275',
+    date: "Sep 17, 2026",
+    highlights: [
+      "Added syncing of the skills and plugins enabled on your claude.ai account to terminal sessions signed in with it; opt out with syncClaudeAiSkills: false or syncClaudeAiPlugins: false",
+      "Added a send-now key (ctrl+enter, or ctrl+x ctrl+s) that interrupts the current turn and sends all queued messages at once, and /plugin install <plugin> --marketplace <source>",
+      "Security fixes cover passwords and tokens shown in plugin and marketplace URLs, SubagentStop hooks with a matcher firing for every subagent with an empty agent type, and sandboxed Bash blocked from writing to project folders named hooks/ or config/",
+      "Fixed prompt-cache misses from a restored memory file's shifting age note, sandboxed Bash on Linux reporting exit code 0 for failed commands under zsh, and resume failing on malformed transcript entries",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.274',
+    date: "Sep 16, 2026",
     highlights: [
       "Added a critical memory usage warning, CLAUDE_CODE_MCP_STARTUP_WAIT_MS to bound how long the first non-interactive turn waits for MCP servers, and a claude_code.managed_settings_resolved OTel event",
       "Fixed sessions endlessly retrying \"unexpected tool_use_id\" 400 errors (corrupted transcripts now self-heal or stop with a /rewind hint), and an active /goal being lost when resuming a compacted session",
@@ -32,7 +79,6 @@ export const releases: Release[] = [
       "/code-review uses leaner inline review prompts for models without tuned settings instead of spawning many review subagents.",
       "Plugin and marketplace clones leave Git LFS files as pointers; run git lfs pull in the checkout to fetch them.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
