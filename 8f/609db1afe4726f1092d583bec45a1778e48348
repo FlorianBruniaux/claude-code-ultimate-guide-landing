@@ -1,0 +1,77 @@
+.github/workflows/deploy.yml
+  s_0f2d034e93f3f1::t_4b2a6990d095c0 50,81-83
+.github/workflows/link-check.yml
+  s_0f2d034e93f3f1::t_1500a9554ba673 26-34,36-43,47,55,59-60,64-67
+CHANGELOG.md
+  s_0f2d034e93f3f1::t_423d4f70e4b6e2 7-10
+package.json
+  s_0f2d034e93f3f1::t_561be3efc3f0f7 21-23
+plugins/remark-guide-links.mjs
+  s_0f2d034e93f3f1::t_7c51e679fc2235 86-88
+scripts/LINK-CHECKS.md
+  s_0f2d034e93f3f1::t_5832b0aff37328 1-39
+scripts/build-guide-index.mjs
+  s_0f2d034e93f3f1::t_3a1f1048ecc192 6-7,204-210,240
+scripts/check-links.py
+  s_0f2d034e93f3f1::t_c1f654573e3014 1-322
+scripts/test-check-links.py
+  s_0f2d034e93f3f1::t_be1572746773df 1-67
+src/components/landing/ChooseYourPath.astro
+  s_0f2d034e93f3f1::t_a15f25f65b381b 61,63,75-78
+src/components/landing/Methodologies.astro
+  s_0f2d034e93f3f1::t_66f238146df84d 53
+src/data/agentsec-security-feed.test.ts
+  s_0f2d034e93f3f1::t_28b3929835acf9 89-97
+src/data/agentsec-security-feed.ts
+  s_0f2d034e93f3f1::t_36bac77af625fc 283-286
+src/data/build-guide-index.test.ts
+  s_0f2d034e93f3f1::t_fe7208cbe1cb25 16-21,44-49,72-77,122-147
+src/data/diagrams-guide-urls.ts
+  s_0f2d034e93f3f1::t_37bf6ab30d6afa 29-32,35-37,54-56,66-67
+src/data/examples-data.ts
+  s_0f2d034e93f3f1::t_1c995074df1e91 71
+src/data/guide-content-entries.ts
+  s_0f2d034e93f3f1::t_7ecdd5686fc028 3,610,2010,2018,2042,5050,5434,5626,5634,6106,6258,6970,11610,12154,14610
+src/data/guide-search-entries.ts
+  s_0f2d034e93f3f1::t_e114788ea849c0 305,337,339,347,803,1283,1803,1955,1963,1971,1979,4363,4435,4593-4601,4603,6147
+src/data/homepage-content.test.ts
+  s_0f2d034e93f3f1::t_09c70650471794 26-27,31
+src/data/remark-guide-links.test.ts
+  s_0f2d034e93f3f1::t_c82cf14eb5c553 75,77-86
+src/data/security-data.ts
+  s_0f2d034e93f3f1::t_137147461c4aa4 642,659,691,696,737
+src/pages/api/link-targets.json.ts
+  s_0f2d034e93f3f1::t_13b9ca432d95d0 1-17
+src/pages/api/questions.json.ts
+  s_0f2d034e93f3f1::t_09d303ccf3befd 22-23
+src/pages/downloads/index.astro
+  s_0f2d034e93f3f1::t_860e54dd3ece3b 6-7,16,26,38-47
+src/pages/examples/index.astro
+  s_0f2d034e93f3f1::t_364879c6862740 337,397-398,408,445-446,450
+src/pages/faq/index.astro
+  s_0f2d034e93f3f1::t_2656d248ae384a 151,330
+src/pages/learning/index.astro
+  s_0f2d034e93f3f1::t_3f26be7e6e695d 97,110,112,124-127,205,211,217,410,696,698,700
+src/pages/quiz/index.astro
+  s_0f2d034e93f3f1::t_fbad838b66b3ff 1398
+src/utils/example-links.test.ts
+  s_0f2d034e93f3f1::t_e9d20cd7030ee5 1-16
+src/utils/example-links.ts
+  s_0f2d034e93f3f1::t_f0179282389738 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8f609db1afe4726f1092d583bec45a1778e48348",
+  "prompts": {},
+  "sessions": {
+    "s_0f2d034e93f3f1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0caf8-d697-7641-91dd-a9ed69138569",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
