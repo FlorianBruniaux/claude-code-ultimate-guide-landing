@@ -280,7 +280,10 @@ export function buildAgentSecSecurityView(feed: AgentSecFeed): AgentSecSecurityV
     sources: item.source_ids.map((sourceId) => {
       const match = sources.get(sourceId)
       if (!match) throw new TypeError(`unresolved source id ${sourceId}`)
-      return match
+      // Publisher moved this article; keep the upstream feed and its digests intact.
+      return match.url === 'https://socket.dev/blog/popular-npm-packages-keyv-and-cacheable-compromised'
+        ? { ...match, url: 'https://socket.dev/blog/popular-npm-packages-in-the-keyv-and-cacheable-namespaces-compromised-in-active-supply-chain' }
+        : match
     }),
   }))
   const detectors = [...feed.detectors].sort((left, right) => left.id.localeCompare(right.id))

@@ -47,7 +47,7 @@ jobs:
         run: pnpm check:agentsec-feed
 
       - name: Run tests
-        run: pnpm test
+        run: pnpm test && pnpm test:links
 
       - name: Compute guide stats
         run: |
@@ -77,6 +77,9 @@ jobs:
         run: pnpm astro build
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
+
+      - name: Check all built internal and repository links
+        run: pnpm check:links
 
       - name: Check built SEO contracts
         run: pnpm check:built-seo

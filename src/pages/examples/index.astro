@@ -334,6 +334,7 @@ const jsonLd = [
     import bash from 'highlight.js/lib/languages/bash';
     import powershell from 'highlight.js/lib/languages/powershell';
     import plaintext from 'highlight.js/lib/languages/plaintext';
+    import { exampleLinks } from '../../utils/example-links';
     import { EXAMPLES, type ExamplesData } from '../../data/examples-data';
 
     hljs.registerLanguage('markdown', markdown);
@@ -343,8 +344,6 @@ const jsonLd = [
     hljs.registerLanguage('powershell', powershell);
     hljs.registerLanguage('plaintext', plaintext);
 
-    const RAW_BASE = 'https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/examples/';
-    const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/';
 
     function slugify(str: string) {
       return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
@@ -395,8 +394,8 @@ const jsonLd = [
 
     async function loadContent(path: string): Promise<string> {
       if (contentCache[path]) return contentCache[path];
-      try { const response = await fetch(RAW_BASE + path); if (!response.ok) throw new Error('Failed to load'); const text = await response.text(); contentCache[path] = text; return text; }
-      catch (error) { const message = error instanceof Error ? error.message : 'Unknown error'; return `Error loading file: ${message}\n\nTry viewing on GitHub: ${GITHUB_BASE + path}`; }
+      try { const url = exampleLinks(path).raw; if (!url) throw new Error('Browse this folder on GitHub'); const response = await fetch(url); if (!response.ok) throw new Error('Failed to load'); const text = await response.text(); contentCache[path] = text; return text; }
+      catch (error) { const message = error instanceof Error ? error.message : 'Unknown error'; return `Error loading file: ${message}\n\nTry viewing on GitHub: ${exampleLinks(path).github}`; }
     }
 
     async function copyToClipboard(path: string): Promise<boolean> {
@@ -406,7 +405,7 @@ const jsonLd = [
     }
 
     function downloadFile(path: string, filename: string) {
-      const url = RAW_BASE + path; const a = document.createElement('a'); a.href = url; a.download = filename; a.target = '_blank';
+      const url = exampleLinks(path).raw; if (!url) return; const a = document.createElement('a'); a.href = url; a.download = filename; a.target = '_blank';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
     }
 
@@ -443,10 +442,12 @@ const jsonLd = [
         const isExpanded = expandedCategories.has(categoryId) || filter !== '';
         const categoryName = category.label || categoryId.replace(/-/g, ' ').replace(/(^|\s)\S/g, t => t.toUpperCase());
         html += '<div class="category ' + (isExpanded ? 'expanded' : '') + '" data-category="' + categoryId + '"><div class="category-header" data-toggle-category="' + categoryId + '"><div class="category-title"><span class="category-icon">' + category.icon + '</span><span>' + categoryName + '</span><span class="category-count">' + filteredFiles.length + '</span></div><span class="category-toggle">&#9660;</span></div><div class="category-content"><div class="category-description">' + category.description + '</div><ul class="file-list">' + filteredFiles.map(file => {
+          const isDirectory = file.path.endsWith('/');
+          const githubUrl = exampleLinks(file.path).github;
           const fileSlug = slugify(file.name);
           const hasPage = PAGES_WITH_SLUG.has(fileSlug);
           const detailsLink = hasPage ? '<a class="details-link" href="/examples/' + fileSlug + '/" title="View template details">Details →</a>' : '';
-          return '<li class="file-item" data-path="' + file.path + '"><div class="file-header"><div class="file-info"><a class="file-name" href="' + GITHUB_BASE + file.path + '" target="_blank" rel="noopener">' + file.name + '</a>' + (file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : '') + detailsLink + '<div class="file-description">' + file.description + '</div></div><div class="file-actions"><button class="btn btn-view" data-action="view" data-path="' + file.path + '">View</button><button class="btn btn-copy" data-action="copy" data-path="' + file.path + '">Copy</button><button class="btn btn-download" data-action="download" data-path="' + file.path + '" data-filename="' + file.name + '" title="Download">&#8595;</button></div></div><div class="file-content"></div></li>';
+          return '<li class="file-item" data-path="' + file.path + '"><div class="file-header"><div class="file-info"><a class="file-name" href="' + githubUrl + '" target="_blank" rel="noopener">' + file.name + '</a>' + (file.favorite ? '<span class="favorite-badge" title="Recommended">&#10084;&#65039;</span>' : '') + detailsLink + '<div class="file-description">' + file.description + '</div></div><div class="file-actions">' + (isDirectory ? '<a class="btn" href="' + githubUrl + '" target="_blank" rel="noopener">Browse files</a>' : '<button class="btn btn-view" data-action="view" data-path="' + file.path + '">View</button><button class="btn btn-copy" data-action="copy" data-path="' + file.path + '">Copy</button><button class="btn btn-download" data-action="download" data-path="' + file.path + '" data-filename="' + file.name + '" title="Download">&#8595;</button>') + '</div></div><div class="file-content"></div></li>';
         }).join('') + '</ul></div></div>';
       });
       catalog.innerHTML = html;

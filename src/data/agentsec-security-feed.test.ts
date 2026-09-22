@@ -86,3 +86,12 @@ test('repository CVEs in the public event feed remain searchable in the compatib
   assert.equal(SECURITY_DATA.minimum_safe_versions['claude-code'], '2.1.269')
   assert.equal(SECURITY_DATA.minimum_safe_versions['mysql-mcp-server'], '0.4.2')
 })
+
+test('relocated publisher links are corrected in cards without mutating the canonical feed', () => {
+  const before = JSON.stringify(AGENTSEC_FEED)
+  const view = buildAgentSecSecurityView(AGENTSEC_FEED)
+  const source = view.events.flatMap((event) => event.sources).find((item) => item.publisher === 'Socket')
+  assert.ok(source)
+  assert.equal(source.url, 'https://socket.dev/blog/popular-npm-packages-in-the-keyv-and-cacheable-namespaces-compromised-in-active-supply-chain')
+  assert.equal(JSON.stringify(AGENTSEC_FEED), before)
+})

@@ -13,6 +13,12 @@ test('builds the guide index from an explicit portable guide root', () => {
   const guideRoot = join(root, 'claude-code-ultimate-guide')
   const outputPath = join(root, 'guide-search-entries.ts')
   mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/context-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/loop-graph-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/ecosystem'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/ecosystem/agentic-tools.md'), '# Fixture')
   writeFileSync(
     join(guideRoot, 'machine-readable/reference.yaml'),
     'deep_dive:\n  liza_tool: "guide/ecosystem/agentic-tools.md#48-liza"\n',
@@ -35,6 +41,12 @@ test('maps loop-graph-engineering to the local canonical guide URL', () => {
   const guideRoot = join(root, 'claude-code-ultimate-guide')
   const outputPath = join(root, 'guide-search-entries.ts')
   mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/context-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/loop-graph-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/ecosystem'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/ecosystem/agentic-tools.md'), '# Fixture')
   writeFileSync(
     join(guideRoot, 'machine-readable/reference.yaml'),
     'deep_dive:\n  loop_graph_engineering: "guide/core/loop-graph-engineering.md#2-write-a-loop-contract"\n',
@@ -57,6 +69,12 @@ test('maps context engineering search entries to the hand-authored landing page'
   const guideRoot = join(root, 'claude-code-ultimate-guide')
   const outputPath = join(root, 'guide-search-entries.ts')
   mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/context-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/loop-graph-engineering.md'), '# Fixture')
+  mkdirSync(join(guideRoot, 'guide/ecosystem'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/ecosystem/agentic-tools.md'), '# Fixture')
   writeFileSync(
     join(guideRoot, 'machine-readable/reference.yaml'),
     [
@@ -100,4 +118,30 @@ test('fails closed without replacing the current index when reference.yaml is mi
 
   assert.notEqual(result.status, 0)
   assert.equal(readFileSync(outputPath, 'utf8'), 'existing index\n')
+})
+
+test('rejects missing or annotated repository paths without publishing a broken URL', () => {
+  for (const value of ['examples/missing.md', 'examples/file.md - explanation', 'examples/../../outside.md']) {
+    const root = mkdtempSync(join(tmpdir(), 'guide-index-invalid-'))
+    mkdirSync(join(root, 'machine-readable'))
+    mkdirSync(join(root, 'examples'))
+    writeFileSync(join(root, 'examples/file.md'), '# Example')
+    writeFileSync(join(root, 'machine-readable/reference.yaml'), `deep_dive:\n  broken: "${value}"\n`)
+    const output = join(root, 'output.ts')
+    writeFileSync(output, 'previous index')
+    const result = spawnSync(process.execPath, [SCRIPT, '--guide-root', root, '--out', output], { encoding: 'utf8' })
+    assert.notEqual(result.status, 0, value)
+    assert.equal(readFileSync(output, 'utf8'), 'previous index')
+  }
+})
+
+test('uses GitHub tree URLs for existing repository directories', () => {
+  const root = mkdtempSync(join(tmpdir(), 'guide-index-directory-'))
+  mkdirSync(join(root, 'machine-readable'))
+  mkdirSync(join(root, 'examples/skills'), { recursive: true })
+  writeFileSync(join(root, 'machine-readable/reference.yaml'), 'deep_dive:\n  skills: "examples/skills/"\n')
+  const output = join(root, 'output.ts')
+  const result = spawnSync(process.execPath, [SCRIPT, '--guide-root', root, '--out', output], { encoding: 'utf8' })
+  assert.equal(result.status, 0, result.stderr)
+  assert.match(readFileSync(output, 'utf8'), /\/tree\/main\/examples\/skills\//)
 })

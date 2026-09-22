@@ -3,8 +3,8 @@
  * Run: node scripts/build-guide-index.mjs
  */
 
-import { readFileSync, writeFileSync } from 'fs'
-import { resolve, dirname } from 'path'
+import { readFileSync, writeFileSync, existsSync, statSync } from 'fs'
+import { resolve, dirname, relative, isAbsolute } from 'path'
 import { fileURLToPath } from 'url'
 import yaml from 'js-yaml'
 
@@ -201,6 +201,13 @@ function main() {
     if (!PATH_PREFIXES.some(prefix => value.startsWith(prefix))) continue
 
     const cleanPath = stripLineNumber(value)
+    const repositoryPath = cleanPath.split('#')[0]
+    const absolutePath = resolve(GUIDE_REPO, repositoryPath)
+    const relativePath = relative(GUIDE_REPO, absolutePath)
+    if (/\s/.test(cleanPath) || relativePath.startsWith('..') || isAbsolute(relativePath) || !existsSync(absolutePath)) {
+      throw new Error(`[build-guide-index] Invalid repository path for ${key}: ${value}`)
+    }
+    const githubBase = statSync(absolutePath).isDirectory() ? GITHUB_BASE.replace('/blob/', '/tree/') : GITHUB_BASE
 
     const id = `guide-${key.replace(/_/g, '-')}`
     const title = humanize(key)
@@ -230,7 +237,7 @@ function main() {
       const slug = filePathOnly.replace(/^guide\//, '').replace(/\.md$/, '')
       url = `${LOCAL_GUIDE_BASE}${slug}/${anchor}`
     } else {
-      url = `${GITHUB_BASE}${cleanPath}`
+      url = `${githubBase}${cleanPath}`
     }
 
     const keywords = extractKeywords(key, cleanPath)

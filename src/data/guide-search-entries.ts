@@ -302,7 +302,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-github-actions-code-review-workflow",
     "title": "Github Actions Code Review Workflow",
-    "keywords": "github actions code review workflow examples github actions claude code review yml",
+    "keywords": "github actions code review workflow examples github actions claude code review yml github actions code review gate job examples github actions claude code review yml",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml",
     "source": "guide"
@@ -313,14 +313,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "github actions code review prompt examples github actions prompts code review",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/prompts/code-review.md",
-    "source": "guide"
-  },
-  {
-    "id": "guide-github-actions-code-review-gate-job",
-    "title": "Github Actions Code Review Gate Job",
-    "keywords": "github actions code review gate job examples github actions claude code review yml   illustrative only: lacks provider run current sha binding, defaults missing severity to zero, and skips after review failure; replace and exercise evidence handling before using as an acceptance gate",
-    "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/claude-code-review.yml - illustrative only: lacks provider/run/current-SHA binding, defaults missing severity to zero, and skips after review failure; replace and exercise evidence handling before using as an acceptance gate",
     "source": "guide"
   },
   {
@@ -342,9 +334,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-multi-provider-code-review-greptile-templates",
     "title": "Multi Provider Code Review Greptile Templates",
-    "keywords": "multi provider code review greptile templates examples github actions greptile  (config json, rules md, files json)",
+    "keywords": "multi provider code review greptile templates examples github actions greptile",
     "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/github-actions/.greptile/ (config.json, rules.md, files.json)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/github-actions/.greptile/",
     "source": "guide"
   },
   {
@@ -352,7 +344,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Rules Templates Directory",
     "keywords": "rules templates directory examples rules",
     "category": "Examples > Rules",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/rules/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/rules/",
     "source": "guide"
   },
   {
@@ -808,7 +800,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Context Engineering Examples",
     "keywords": "context engineering examples examples context engineering",
     "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/context-engineering/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/context-engineering/",
     "source": "guide"
   },
   {
@@ -1288,7 +1280,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Smart Suggest Routing Example",
     "keywords": "smart suggest routing example examples hooks bm25 routing",
     "category": "Examples > Hooks",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bm25-routing/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/hooks/bm25-routing/",
     "source": "guide"
   },
   {
@@ -1808,7 +1800,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Talk Pipeline Skills",
     "keywords": "talk pipeline skills examples skills talk pipeline",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills/talk-pipeline/",
     "source": "guide"
   },
   {
@@ -1960,7 +1952,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Whitepapers Fr",
     "keywords": "whitepapers fr whitepapers",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/fr/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/whitepapers/fr/",
     "source": "guide"
   },
   {
@@ -1968,7 +1960,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Whitepapers En",
     "keywords": "whitepapers en whitepapers",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/en/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/whitepapers/en/",
     "source": "guide"
   },
   {
@@ -1976,7 +1968,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Recap Cards Fr",
     "keywords": "recap cards fr whitepapers recap cards",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/recap-cards/fr/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/whitepapers/recap-cards/fr/",
     "source": "guide"
   },
   {
@@ -1984,7 +1976,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Recap Cards En",
     "keywords": "recap cards en whitepapers recap cards",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/whitepapers/recap-cards/en/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/whitepapers/recap-cards/en/",
     "source": "guide"
   },
   {
@@ -4368,7 +4360,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Design Patterns Skill Location",
     "keywords": "design patterns skill location examples skills design patterns",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/design-patterns/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills/design-patterns/",
     "source": "guide"
   },
   {
@@ -4440,7 +4432,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Plugins Recommended",
     "keywords": "plugins recommended examples plugins",
     "category": "Examples",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/plugins/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/plugins/",
     "source": "guide"
   },
   {
@@ -4598,9 +4590,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-audit-agents-skills-guide-refs",
     "title": "Audit Agents Skills Guide Refs",
-    "keywords": "audit agents skills guide refs guide ultimate guide md:4951 (after agent validation checklist), guide ultimate guide md:5495 (after skill validation)",
+    "keywords": "audit agents skills guide refs guide ultimate guide md#agent validation checklist agent validation checklist guide ultimate guide md#agent validation checklist",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md:4951 (after Agent Validation Checklist), guide/ultimate-guide.md:5495 (after Skill Validation)",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#agent-validation-checklist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-audit-agents-skills-skill-validation",
+    "title": "Audit Agents Skills Skill Validation",
+    "keywords": "audit agents skills skill validation guide ultimate guide md#validating skills",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#validating-skills",
     "source": "guide"
   },
   {
@@ -6052,14 +6052,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-agent-validation-checklist",
-    "title": "Agent Validation Checklist",
-    "keywords": "agent validation checklist guide ultimate guide md#agent validation checklist",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#agent-validation-checklist",
-    "source": "guide"
-  },
-  {
     "id": "guide-git-mcp-guide",
     "title": "Git MCP Guide",
     "keywords": "git mcp guide guide ecosystem mcp servers ecosystem",
@@ -6152,7 +6144,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "MCP Reference File Template",
     "keywords": "mcp reference file template examples skills mcp integration reference",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/mcp-integration-reference/",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills/mcp-integration-reference/",
     "source": "guide"
   },
   {

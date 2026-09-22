@@ -83,6 +83,9 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
   }
 
   // ── Published directory indexes ────────────────────────────────────
+  if (['guide/diagrams', 'guide/diagrams/', 'diagrams', 'diagrams/'].includes(repositoryPath)) {
+    return { url: `/diagrams/${anchorFragment || ''}`, isExternal: false }
+  }
   if (repositoryPath === 'guide/workflows' || repositoryPath === 'guide/workflows/') {
     return { url: `${GUIDE_BASE}workflows/${anchorFragment || ''}`, isExternal: false }
   }

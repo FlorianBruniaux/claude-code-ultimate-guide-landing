@@ -19,8 +19,8 @@ export const GET: APIRoute = async () => {
 
       // Reconstruct source_file path from the entry id
       // Entry id from glob loader is like "01-quick-start/001-slug"
-      // We need "questions/01-quick-start/001-slug.md"
-      const sourceFile = `questions/${entry.id}.md`
+      // We need "src/content/questions/01-quick-start/001-slug.md"
+      const sourceFile = `src/content/questions/${entry.id}.md`
 
       return {
         id: data.id,

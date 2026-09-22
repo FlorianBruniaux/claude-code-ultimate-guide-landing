@@ -18,7 +18,9 @@
     "test": "node --test 'src/**/*.test.ts'",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "check:links": "python3 scripts/check-links.py --dist dist",
+    "test:links": "python3 scripts/test-check-links.py"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

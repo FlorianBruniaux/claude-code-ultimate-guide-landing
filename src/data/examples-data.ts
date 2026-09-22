@@ -68,7 +68,7 @@ export const EXAMPLES = {
             { name: "issue-triage/", path: "skills/issue-triage/SKILL.md", description: "3-phase issue backlog management" },
             { name: "cyber-defense-team/", path: "skills/cyber-defense-team/SKILL.md", description: "Multi-agent cyber defense team orchestration" },
             { name: "talk-pipeline/", path: "skills/talk-pipeline/", description: "6-stage pipeline: raw material to slides via Kimi" },
-            { name: "token-audit/", path: "skills/token-audit/SKILL.md", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
+            { name: "token-audit/", path: "skills/token-audit/skill.md", description: "Measure fixed-context token overhead, classify rules by usage frequency, audit hook cost" },
             { name: "eval-skills/", path: "skills/eval-skills/SKILL.md", description: "Audit all skills for frontmatter completeness and effort-level inference" },
             { name: "eval-rules/", path: "skills/eval-rules/SKILL.md", description: "Audit .claude/rules/: resolves glob patterns against real files, interactive usefulness review", favorite: true },
             { name: "mcp-integration-reference/", path: "skills/mcp-integration-reference/SKILL.md", description: "MCP integration reference with Sentry patterns and multi-tool query examples" },

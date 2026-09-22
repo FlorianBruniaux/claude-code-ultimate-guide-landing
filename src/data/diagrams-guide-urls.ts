@@ -26,15 +26,15 @@ export const DIAGRAM_GUIDE_URLS: Record<string, string[]> = {
     BASE + 'ultimate-guide.md#hooks',
   ],
   'architecture': [
-    BASE + 'architecture.md#master-loop',
-    BASE + 'architecture.md#tools',
-    BASE + 'architecture.md#system-prompt',
-    BASE + 'architecture.md#sub-agents',
+    BASE + 'core/architecture.md#master-loop',
+    BASE + 'core/architecture.md#tools',
+    BASE + 'core/architecture.md#system-prompt',
+    BASE + 'core/architecture.md#sub-agents',
   ],
   'mcp': [
-    BASE + 'mcp-servers-ecosystem.md',
-    BASE + 'architecture.md#mcp-architecture',
-    BASE + 'security-hardening.md#mcp-threats',
+    BASE + 'ecosystem/mcp-servers-ecosystem.md',
+    BASE + 'core/architecture.md#mcp-architecture',
+    BASE + 'security/security-hardening.md#mcp-threats',
     BASE + 'ultimate-guide.md#mcp-configuration',
   ],
   'workflows': [
@@ -51,9 +51,9 @@ export const DIAGRAM_GUIDE_URLS: Record<string, string[]> = {
     BASE + 'ultimate-guide.md#multi-instance-patterns',
   ],
   'security': [
-    BASE + 'security-hardening.md',
-    BASE + 'sandbox-native.md',
-    BASE + 'production-safety.md',
+    BASE + 'security/security-hardening.md',
+    BASE + 'security/sandbox-native.md',
+    BASE + 'security/production-safety.md',
     BASE + 'ultimate-guide.md#cicd-integration',
   ],
   'cost': [
@@ -63,8 +63,8 @@ export const DIAGRAM_GUIDE_URLS: Record<string, string[]> = {
     BASE + 'ultimate-guide.md#token-optimization',
   ],
   'adoption': [
-    BASE + 'adoption-approaches.md',
-    BASE + 'learning-with-ai.md',
+    BASE + 'roles/adoption-approaches.md',
+    BASE + 'roles/learning-with-ai.md',
     BASE + 'ultimate-guide.md#trust-verification',
   ],
 }
