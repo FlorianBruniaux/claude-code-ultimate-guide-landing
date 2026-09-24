@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Documentation
+
+- Synchronized Claude Code v2.1.280 and v2.1.281, including Opus 5.5, MCP browser flows and validation, gateway controls, permission fixes and compatibility changes. Updated the release date used by structured data and the sitemap to September 23, 2026. Show the five newest notable releases initially, with older entries available through the existing Show All control; its collapsed counter now derives from the visible cards. Release data generates the RSS entries automatically; the guide remains at version 3.43.0.
+
 ### Fixed
 
 - Correct broken quiz sources, Learning and diagram links, example downloads, search targets and external references. Offer the French guide online until release assets are published. Validate every built page and interactive link dataset before deployment, with a complete public crawl after deployment.

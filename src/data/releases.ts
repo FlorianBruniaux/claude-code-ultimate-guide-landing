@@ -18,8 +18,45 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.278',
+    version: 'v2.1.281',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added browser-based MCP elicitation on protocol 2026-07-28 connections and MCP configuration checks to claude plugin validate",
+      "Added Bedrock role assumption and guardrails, telemetry labels and newer Desktop policy keys to Claude apps gateways",
+      "Changed send-now to background running tools; added \"attribution\": false to hide commit and PR attribution",
+      "Fixed resumed-session history and prompt-cache losses, duplicate tool execution from proxy stream events, background-session trust checks and permission-rule handling",
+    ],
+    breaking: [
+      "Older CLI versions skip settings files containing \"attribution\": false; keep the object form in files shared across versions.",
+      "Server-side auto mode review now also gates read-only and sandboxed shell commands; CLAUDE_CODE_AUTO_MODE_SERVER=0 also opts out on direct Anthropic API connections, where the local classifier counts toward usage.",
+      "Dangerous-rm prompts in auto and bypass modes deny after two unanswered minutes; CLAUDE_CODE_DISABLE_DANGEROUS_RM_TIMEOUT=1 disables the timeout.",
+      "Self-hosted runner wrappers and command hooks that append system prompts must use --system-prompt-file or --append-system-prompt-file.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.280',
+    date: "Sep 22, 2026",
+    highlights: [
+      "Added Claude Opus 5.5 (claude-opus-5-5) as the default Opus model: 1M context, $4/$20 per Mtok and $0.20/Mtok cache reads",
+      "Added CLAUDE_CODE_MAX_MCP_DESCRIPTION_LENGTH and VS Code dialogs for /status, /sandbox, /chrome, /export and /skills",
+      "Fixed permission approval for symlinked writes landing outside the project and local skills being moved to .trash because of a skills-folder manifest",
+      "Fixed auto-mode retry loops, malformed-history errors, resumed-subagent prompt-cache misses and lost background-agent messages or reports",
+    ],
+    breaking: [
+      "Pro and Team Standard default to Opus instead of Sonnet; newly released models no longer inherit effort levels saved before effort became per-model.",
+      "PermissionRequest no longer runs agent-type hooks; use command or HTTP hooks.",
+      "Marketplaces with names imitating reserved marketplace names are refused and existing ones stop loading.",
+      "Dialog confirmation uses Enter/Esc instead of stray y/n keys; explicit confirm:yes/confirm:no bindings restore y/n. Fullscreen ctrl+l/cmd+k redraws instead of clearing the transcript.",
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Opus 5.5',
+  },
+  {
+    version: 'v2.1.278',
+    date: "Sep 19, 2026",
     highlights: [
       "Changed auto mode on the Claude API, Enterprise, Bedrock, Vertex, Foundry and gateways to default to the server-side classifier, which carries no classifier-overhead charge; a billed fallback now warns",
       "Added an Auto mode server row to /status showing whether this session's auto mode classifier runs on the server",
@@ -27,7 +64,6 @@ export const releases: Release[] = [
     breaking: [
       "Auto mode defaults to the server-side classifier on the Claude API, Enterprise, Bedrock, Vertex, Foundry and gateways; CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out on the cloud providers and gateways.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -51,7 +87,7 @@ export const releases: Release[] = [
     highlights: [
       "Fixed every request failing with 400 ... Input tag 'advisor_20260301' when ANTHROPIC_BASE_URL points at a proxy or gateway (a v2.1.275 regression)",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.275',
@@ -79,7 +115,7 @@ export const releases: Release[] = [
       "/code-review uses leaner inline review prompts for models without tuned settings instead of spawning many review subagents.",
       "Plugin and marketplace clones leave Git LFS files as pointers; run git lfs pull in the checkout to fetch them.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.273',
@@ -94,7 +130,7 @@ export const releases: Release[] = [
       "Reverted the v2.1.268 check of Read and Edit deny rules on unanalyzable Bash lines (eval, env -C); such commands prompt again instead of being denied.",
       "Auto mode on Bedrock, Vertex and Foundry uses the local classifier by default; set CLAUDE_CODE_AUTO_MODE_SERVER=1 for the platform's server-side classifier.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.272',
@@ -102,7 +138,7 @@ export const releases: Release[] = [
     highlights: [
       "Bug fixes and reliability improvements; upstream provides no further detail",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.271',
@@ -118,7 +154,7 @@ export const releases: Release[] = [
       "In auto mode, a skill's or slash command's inline ! shell commands follow default-mode permission rules instead of the classifier.",
       "Default dynamic workflow size is small on Pro plans, and the medium size guideline drops from 15 to 10 agents.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.270',
@@ -126,7 +162,7 @@ export const releases: Release[] = [
     highlights: [
       "Fixed read-only git commands in Bash unexpectedly asking for permission after a session had been running for a while (regression in v2.1.269)",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.269',
@@ -137,7 +173,7 @@ export const releases: Release[] = [
       "Fixed prompt-cache invalidation after interrupted or output-limited turns and /goal runs stalling after errors or limits",
       "Security fixes cover plugin archive permissions, Bash tee write destinations and negated permission rules crossing settings sources",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.268',
@@ -149,7 +185,7 @@ export const releases: Release[] = [
       "Improved prompt-cache stability on Bedrock, Vertex and Foundry; /plugin changes now apply when its menu closes",
     ],
     breaking: ["Plain WebFetch deny/ask rules no longer gate Artifact reads or updates; use Artifact or WebFetch(domain:claude.ai)."],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.267',
@@ -160,7 +196,7 @@ export const releases: Release[] = [
       "Fixed prompt-cache and thinking losses from reconnecting tools, model switches and session/subagent resumes",
       "Security fixes reject unreadable managed hook/channel allowlists and close a marketplace backslash containment bypass",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.266',
@@ -180,7 +216,7 @@ export const releases: Release[] = [
       "Security fixes close plugin backslash containment bypasses and prevent nested-repository git clean filters running during status/diff probes",
     ],
     breaking: ["Managed forceLoginGatewayUrl now selects gateway authentication at startup; leftover claude.ai credentials or API keys are not used."],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.263',
@@ -198,7 +234,7 @@ export const releases: Release[] = [
       'Added bashOutputMaxChars/taskOutputMaxChars settings to raise inline command/task output limits up to 128K characters',
       'Fixed resuming a session losing hook output and other context around parallel tool calls',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.260',
@@ -209,7 +245,7 @@ export const releases: Release[] = [
       'Fixed Edit/Write/Read permission rules with parentheses in the path being dropped, which left "read-only" folders writable',
       'Fixed one uncompilable file permission pattern breaking every file edit with an "Invalid regular expression" error',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.259',
@@ -220,7 +256,7 @@ export const releases: Release[] = [
       'Fixed concurrent sessions silently reverting each other\'s ~/.claude.json changes, resetting workspace trust and losing MCP/project state',
       'Fixed Bash Read() deny rules not covering files given as option values or git diff/git grep file operands',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.258',
@@ -229,7 +265,7 @@ export const releases: Release[] = [
       'Fixed Claude Code failing to launch on macOS 12 (Monterey), a regression introduced in 2.1.255',
       'Fixed remote and scheduled sessions failing with a "non-empty content" error after a re-sent permission approval',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.257',
@@ -240,7 +276,7 @@ export const releases: Release[] = [
       'Added a one-time auto-mode prompt before the first file read outside the working directories (permissions.blockReadsOutsideWorkingDirectories)',
       'Changed defaultMode: "bypassPermissions" in project/local settings to be ignored, like "auto"',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.252',
@@ -250,7 +286,7 @@ export const releases: Release[] = [
       'Fixed "always allow" not saving in a project with no .claude/settings.local.json yet',
       'Fixed Remote Control sessions hosted by Claude Desktop or VS Code stalling for minutes after a degraded claude.ai connection',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.251',
@@ -262,7 +298,7 @@ export const releases: Release[] = [
       'Fixed three security gaps: a symlink swap bypassing file-tool permission checks, plugin marketplace command paths escaping the plugin directory, and sandboxed Bash output-file redirection',
       'Changed CLAUDE_CODE_SUBAGENT_MODEL to set the default subagent model rather than override everything; an agent definition\'s model: and an explicit per-spawn model now take precedence over it',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.250',
@@ -270,7 +306,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.248',
@@ -281,7 +317,7 @@ export const releases: Release[] = [
       'Fixed a prompt-cache miss (and lost extended-thinking context) roughly once an hour in long sessions, caused by tool definitions being re-rendered after an OAuth token refresh',
       'Added experimental.cacheTtl ("5m" or "1h") to agent frontmatter for a per-agent prompt cache TTL',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.247',
@@ -292,7 +328,7 @@ export const releases: Release[] = [
       'Added /claude-api cost-optimize to profile an existing project\'s Claude API spend and work through cost levers',
       "Fixed sub-agents dying on a first-call model 404: they now use the session's fallback model chain",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.246',
@@ -303,7 +339,7 @@ export const releases: Release[] = [
       'Fixed the Write tool reporting "Out of memory" or freezing for a long time after overwriting a very large existing file, even though the file had been written',
       'Improved non-interactive sessions (-p, SDK, cloud sessions) to automatically continue a response cut off mid-stream by a server error, connection loss, or stall',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.245',
@@ -311,7 +347,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed a crash on startup on Linux distributions that ship glibc 2.44 (for example Arch Linux, CachyOS, Fedora Rawhide)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.243',
@@ -322,7 +358,7 @@ export const releases: Release[] = [
       'Added promptCacheTtl and subagentPromptCacheTtl settings so API-key and cloud-provider users can keep a 1-hour prompt cache on the main conversation while subagents stay at 5 minutes',
       "Added a keyless sign-in under /login to Anthropic Console for organizations that don't allow API keys",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.241',
@@ -330,7 +366,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.240',
@@ -338,7 +374,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.239',
@@ -349,7 +385,7 @@ export const releases: Release[] = [
       'Cost estimates (/cost, status line, --max-budget-usd) now include the 1.1x US-only-inference premium for data-residency workspaces',
       'Added /claude-api upgrade to migrate Python projects from anthropic 0.x to 1.x',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.238',
@@ -360,7 +396,7 @@ export const releases: Release[] = [
       'Fixed unbounded memory growth in long interactive sessions: subagent tool results are now released once they leave the recent display window',
       'Added claude self-hosted-runner --defer-shutdown-max-min for graceful draining on SIGTERM, and --proxy-authorization-command/--proxy-authorization-file for egress proxies requiring a freshly issued header',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.237',
@@ -369,7 +405,7 @@ export const releases: Release[] = [
       'Added a built-in "Concise" output style: Claude leads with results and skips preamble and narration, selectable under Output style in /config',
       'Fixed prompt caching for sessions running through an LLM gateway or a custom base URL',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.236',
@@ -380,7 +416,7 @@ export const releases: Release[] = [
       'Sandbox on macOS: wildcard read-deny rules such as **/.env now take precedence inside allowed read regions, cover matched directories, and survive a rename of the denied file',
       'Auto mode: Monitor allow rules are set aside while auto mode runs, Bedrock/Vertex/Foundry get the same severity-scored classifier defaults as the Claude API, and the git status check no longer trusts status.showUntrackedFiles=no',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.235',
@@ -391,7 +427,7 @@ export const releases: Release[] = [
       'Fixed Shift+Tab inside the permission prompt comment field approving the edit and granting session-wide edit permission instead of closing the field',
       'Improved memory and CPU usage while cloud sessions such as /ultrareview or /autofix-pr run in the background',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.234',
@@ -405,7 +441,7 @@ export const releases: Release[] = [
     breaking: [
       'Removed the "Default teammate model" setting from /config; agent-team teammates now use the leader model unless the spawn names one',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.233',
@@ -420,7 +456,7 @@ export const releases: Release[] = [
       'Todo/task tools (TaskCreate/Get/Update/List, TodoWrite) are no longer available on Opus 4.8, Sonnet 5, Fable 5, Mythos 5, and newer models; set CLAUDE_CODE_ENABLE_TODO_TOOLS=1 to restore them',
       'Reverted the 2.1.232 Bash permission changes for Cygwin-style symlinks on Windows and for input redirections; a narrower version returns in a later release',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.232',
@@ -434,7 +470,7 @@ export const releases: Release[] = [
     breaking: [
       'sandbox.ripgrep is now honored only from user, managed, and --settings settings; project settings can no longer override the sandbox ripgrep binary',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.231',
@@ -442,7 +478,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed MCP OAuth sign-in failing with a redirect URI mismatch for servers that use a pre-registered OAuth client, such as Slack',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.229',
@@ -456,7 +492,7 @@ export const releases: Release[] = [
     breaking: [
       'Self-hosted runner on Windows now requires an explicit --base-dir; there is no default checkout directory',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.228',
@@ -469,7 +505,7 @@ export const releases: Release[] = [
     breaking: [
       'The Write tool now lets newer models overwrite an existing file they have not read this session, matching the Edit tool rules; older models still require the read first',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.227',
@@ -479,7 +515,7 @@ export const releases: Release[] = [
       'Fixed every Bash command failing under claude-code-action with allowed_non_write_users on GitHub-hosted runners',
       'Improved the slash-command menu rendering and reduced event-loop stalls on file-not-found suggestions and at-mention size checks',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.226',
@@ -487,7 +523,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.225',
@@ -498,7 +534,7 @@ export const releases: Release[] = [
       'Fixed a transient 401 replacing a long-lived CLAUDE_CODE_OAUTH_TOKEN with a stored login short-lived token, which broke headless sessions until restart',
       'Fixed MCP OAuth servers on macOS intermittently failing with a burst of 401 errors after a keychain read timed out',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.224',
@@ -513,7 +549,7 @@ export const releases: Release[] = [
       'Removed the 200-subagent-per-session spawn cap; concurrency and depth limits still apply',
       'The /feedback survey transcript share now also uploads the last request model settings with your consent, including the system prompt (which carries your CLAUDE.md instructions), tool definitions, and model parameters; secrets stay redacted',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.223',
@@ -524,7 +560,7 @@ export const releases: Release[] = [
       'Added owner wildcard entries ("owner/*") to strictKnownMarketplaces/blockedMarketplaces managed settings, and a /teleport hint in cloud sessions to continue locally with claude --teleport <session id>',
       'Changed CLAUDE_CODE_DISABLE_1M_CONTEXT to hold every Claude model with a native 1M window to 200K via auto-compaction, not just a fixed list',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.222',
@@ -538,7 +574,7 @@ export const releases: Release[] = [
       'Removed the ultraplan feature',
       'Repo-local settings (.claude/settings.json or .claude/settings.local.json) can no longer enable Remote Control auto-start; they can still disable it. Enable at user scope via /config',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.221',
@@ -552,7 +588,7 @@ export const releases: Release[] = [
     breaking: [
       'Background sessions now commit and push automatically to preserve work, open a draft PR only when the task calls for one, and follow your CLAUDE.md git instructions',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.220',
@@ -560,7 +596,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.219',
@@ -575,7 +611,7 @@ export const releases: Release[] = [
       'Opus 4.7 removed from fast mode; /fast applies to Opus 5 and Opus 4.8 only',
       'Dynamic workflows default to a medium size guideline (aim for fewer than 15 agents); change it with Dynamic workflow size in /config',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Claude Opus 5',
   },
@@ -593,7 +629,7 @@ export const releases: Release[] = [
       'Agent markdown files reject agent names containing :, which is reserved for plugin namespacing',
       '/deep-research starts only when invoked manually; Claude no longer launches it on its own',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.217',
@@ -608,7 +644,7 @@ export const releases: Release[] = [
     breaking: [
       'Subagents no longer spawn nested subagents by default (restored to depth 3 in 2.1.219); set CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH to control nesting',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.216',
@@ -619,7 +655,7 @@ export const releases: Release[] = [
       'Fixed auto mode denying commands with HTTP 401 classifier errors after the OAuth token expired or rotated mid-session',
       'Fixed AskUserQuestion telling Claude to continue when the answer asked it to wait or explain first, and Claude Code on the web re-asking the same question after an idle period',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.215',
@@ -627,7 +663,7 @@ export const releases: Release[] = [
     highlights: [
       'Claude no longer runs the /verify and /code-review skills on its own; invoke them with /verify or /code-review when you want them',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.214',
@@ -643,7 +679,7 @@ export const releases: Release[] = [
       'file commands using -m/--magic-file or -f/--files-from now require permission instead of being auto-allowed as read-only',
       'docker commands (including the Podman shim) carrying daemon-redirect flags (--url, --connection, --identity, Podman remote mode) now prompt for permission',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.212',
@@ -657,7 +693,7 @@ export const releases: Release[] = [
     breaking: [
       "Deprecated the Task tool's mode parameter (now ignored); subagents inherit the parent session's permission mode by default",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.211',
@@ -668,7 +704,7 @@ export const releases: Release[] = [
       "Security: auto mode no longer overrides a PreToolUse hook's ask decision for unsandboxed Bash; an ask now floors the decision at a prompt",
       "Fixed subagents with an explicit model override reverting to the parent's model when resumed, and nested .claude/rules/*.md loading even when setting sources exclude project settings",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.210',
@@ -682,7 +718,7 @@ export const releases: Release[] = [
     breaking: [
       'Write(path), NotebookEdit(path), and Glob(path) permission rules now trigger a startup warning; use Edit(path) or Read(path) instead',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.209',
@@ -690,7 +726,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed /model and other dialogs being blocked in claude agents background sessions (reverts an overly broad guard)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.208',
@@ -701,7 +737,7 @@ export const releases: Release[] = [
       'Fixed the context window and auto-compact indicator briefly resetting to 200k after an auto-update, causing a false 100% context used when resuming long-context sessions',
       'Fixed very large markdown tables stalling rendering; tables over 200 rows now show the first 200 with a note about the remainder',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.207',
@@ -716,7 +752,7 @@ export const releases: Release[] = [
       'Plugins: ${user_config.*} in shell-form hook/monitor/headersHelper commands is now rejected (shell-injection fix); use exec form or $CLAUDE_PLUGIN_OPTION_<KEY>',
       'Plugins: option values (pluginConfigs) are no longer read from project-level .claude/settings.json; only user, --settings, and managed settings are honored',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.206',
@@ -727,7 +763,7 @@ export const releases: Release[] = [
       'Background agents now upgrade in the background right after an update, instead of a slow stale-session upgrade on attach',
       'Improved /code-review findings quality on claude-opus-4-8 across all effort levels',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.205',
@@ -738,7 +774,7 @@ export const releases: Release[] = [
       'Security: auto mode now blocks tampering with session transcript files, and asks before running rm -rf on a variable it cannot resolve',
       'Fixed --json-schema silently producing unstructured output when the schema was invalid, and schemas using the format keyword being rejected',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.204',
@@ -746,7 +782,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed hook events not streaming during SessionStart hooks in headless sessions, which could cause remote workers to be idle-reaped mid-hook',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.203',
@@ -757,7 +793,7 @@ export const releases: Release[] = [
       'Fixed worktree-isolated subagents sometimes running shell commands in the parent checkout instead of their own worktree',
       'Reduced binary size by ~7 MB and startup memory by ~7 MB by loading a large bundled dependency lazily',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.202',
@@ -768,7 +804,7 @@ export const releases: Release[] = [
       'Fixed images and files sent from the Remote Control mobile/web app without a caption being silently dropped',
       'Changed /review <pr> back to a fast single-pass review; use /code-review <level> <pr#> for the multi-agent review',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.201',
@@ -776,7 +812,7 @@ export const releases: Release[] = [
     highlights: [
       'Claude Sonnet 5 sessions no longer use the mid-conversation system role for harness reminders',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.200',
@@ -787,7 +823,7 @@ export const releases: Release[] = [
       'Fixed background sessions silently stopping mid-turn after sleep/wake, and never restarting after a crash left a stale daemon.lock',
       'Fixed project-scoped plugins not loading correctly from git worktrees of the same repository',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Manual permission mode',
   },
@@ -800,7 +836,7 @@ export const releases: Release[] = [
       'Fixed streaming responses discarded on mid-stream server errors (partial output now kept); subagents cut off by rate limits now return partial work to the parent; API errors in subagents reported instead of shown as success',
       'Fixed the Linux background-agent daemon killing itself and all agents every ~50s after an unclean shutdown; SSL certificate errors now fail immediately with actionable guidance',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.198',
@@ -811,7 +847,7 @@ export const releases: Release[] = [
       'Background agents launched from claude agents now commit, push, and open a draft PR when finishing code work; new Notification hook events agent_needs_input / agent_completed',
       'Explore agent now inherits the session model (capped at Opus) instead of Haiku; subagents and compaction inherit extended thinking config; removed the /agents wizard',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Background subagents + Chrome GA',
   },
@@ -821,7 +857,7 @@ export const releases: Release[] = [
     highlights: [
       '⭐ Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Claude Sonnet 5',
   },
@@ -834,7 +870,7 @@ export const releases: Release[] = [
       'Fixed waking a background job permanently deleting its conversation on a transcript misread; rate-limit warning flicker/over-counting; duplicate recap lines after StructuredOutput retry',
       'Improved background session reliability across process stop/restart/update; /code-review merged five cleanup finders (~25% token reduction); streaming idle watchdog on by default',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.195',
@@ -845,7 +881,7 @@ export const releases: Release[] = [
       'Fixed background agent daemon socket failures, blank screen on crash restart, jobs disappearing when written by newer version',
       'Added CLAUDE_CODE_DISABLE_MOUSE_CLICKS; Remote session startup shows provisioning checklist',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.193',
@@ -856,7 +892,7 @@ export const releases: Release[] = [
       'Live file path autocomplete in bash mode (!); startup notice when MCP servers need auth',
       'Automatic memory-pressure reaping for idle background shell commands (disable: CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.191',
@@ -867,7 +903,7 @@ export const releases: Release[] = [
       'MCP server reliability: capability discovery retries transient errors; OAuth headless paste-URL fallback; HTTP 404 errors show URL',
       'Fixed background agents resurrecting after stop; 20+ bug fixes including scroll jump and welcome splash overflow',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.190',
@@ -875,7 +911,7 @@ export const releases: Release[] = [
     highlights: [
       'Bug fixes and reliability improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.187',
@@ -886,7 +922,7 @@ export const releases: Release[] = [
       'Fixed remote MCP tool calls hanging indefinitely; now abort after 5 min with error (override: CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT)',
       'Fixed --resume failing after no-model -p runs; fixed structured output looping; 15+ bug fixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.186',
@@ -904,7 +940,7 @@ export const releases: Release[] = [
     highlights: [
       'Improved stream-stall hint: reads "Waiting for API response · will retry in …" (was "No response from API · Retrying in …"), triggers after 20s instead of 10s',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.183',
@@ -915,7 +951,7 @@ export const releases: Release[] = [
       '`attribution.sessionUrl` setting omits the claude.ai session link from commits and PRs in web/Remote Control sessions',
       '10+ bug fixes: thinking 400 errors on subagent spawns, WebSearch empty in subagents, tmux pane launch failures',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.181',
@@ -926,7 +962,7 @@ export const releases: Release[] = [
       'Improved streaming: long paragraphs appear line-by-line instead of waiting for the first line break',
       'Improved subagent panel: idle agents auto-hide after 30s, list caps at 5 rows with scroll hints; 30+ bug fixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.179',
@@ -936,7 +972,7 @@ export const releases: Release[] = [
       'Fixed mouse-wheel scrolling in WSL2 under Windows Terminal and VS Code (regression in 2.1.172)',
       '6+ bug fixes: sandbox denyRead/allowRead glob performance, feedback survey rating, welcome banner stacking, Ctrl+O subagent transcript, prompt focus',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.178',
@@ -947,7 +983,7 @@ export const releases: Release[] = [
       'Improved auto mode: subagent spawns evaluated by classifier before launch',
       '10+ bug fixes: subagent transcript, compaction fallback model, stale auth credentials, MCP disallowedTools server specs, vim undo',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.176',
@@ -958,7 +994,7 @@ export const releases: Release[] = [
       'Improved Bedrock credential caching: cached until Expiration instead of fixed 1 hour',
       '15+ bug fixes: availableModels alias enforcement, Fable 5 auto mode fallback, hook if path conditions, Linux sandbox symlink, tmux clipboard, Remote Control model switch',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.175',
@@ -966,7 +1002,7 @@ export const releases: Release[] = [
     highlights: [
       '⭐ `enforceAvailableModels` managed setting: constrains Default model to allowlist; blocks user/project settings from widening a managed list',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.174',
@@ -977,7 +1013,7 @@ export const releases: Release[] = [
       '[VSCode] Usage attribution in /usage dialog: cache misses, long context, subagents, per-skill/agent/plugin/MCP breakdowns',
       '8+ bug fixes: Fable 5 billing banner, Bedrock GovCloud prefix, background session env inheritance, exit pause on macOS/Linux',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.173',
@@ -986,7 +1022,7 @@ export const releases: Release[] = [
       'Fixed Fable 5 model names with [1m] suffix not normalized (1M context included by default)',
       'Fixed spurious "sandbox dependencies missing" startup warning on Windows',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.172',
@@ -997,7 +1033,7 @@ export const releases: Release[] = [
       'Search bar added when browsing marketplace plugins in /plugin',
       '20+ bug fixes: 1M context stuck, model picker availableModels issues, permission rule wildcards, VS Code PowerShell rendering',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.170',
@@ -1006,7 +1042,7 @@ export const releases: Release[] = [
       '⭐ Claude Fable 5 (Mythos-class model) now available',
       'Fixed transcript saving from VS Code integrated terminal sessions',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Fable 5',
   },
@@ -1019,7 +1055,7 @@ export const releases: Release[] = [
       'disableBundledSkills setting to hide built-in skills, workflows, and slash commands',
       '15+ bug fixes: enterprise MCP policy enforcement, macOS UI stall, Windows Git popup, agents --json',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.168',
@@ -1030,7 +1066,7 @@ export const releases: Release[] = [
     version: 'v2.1.167',
     date: 'Jun 6, 2026',
     highlights: ['Bug fixes and reliability improvements'],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.166',
@@ -1041,13 +1077,13 @@ export const releases: Release[] = [
       '`MAX_THINKING_TOKENS=0`, `--thinking disabled`, and per-model toggle now disable thinking on models that think by default via Claude API',
       '15+ bug fixes: JetBrains 2026.1+ flickering, Kitty protocol Shift+non-ASCII input, PowerShell hang, orphaned `--bg-pty-host` CPU spin',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.165',
     date: 'Jun 5, 2026',
     highlights: ['Bug fixes and reliability improvements'],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.163',
@@ -1058,7 +1094,7 @@ export const releases: Release[] = [
       'Skills: `\\$` escape for literal `$` in command bodies; stdio MCPs receive `CLAUDE_CODE_SESSION_ID` on `--resume`',
       '10+ bug fixes: `claude -p` background hang, bazel/EDR bash regression, Windows EEXIST fix, managed settings on fresh config',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.162',
@@ -1069,7 +1105,7 @@ export const releases: Release[] = [
       'Remote Control shows as a persistent footer pill; Windsurf renamed to Devin Desktop in `/ide`, `/terminal-setup`, `/scroll-speed`',
       'Quieter startup: notices group by severity, session info and announcements share a single line; 25+ bug fixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.161',
@@ -1080,7 +1116,7 @@ export const releases: Release[] = [
       'Parallel tool calls: failed Bash no longer cancels other calls in the same batch',
       '20+ bug fixes: managed-settings policies fix for third-party providers, MCP secrets no longer printed to terminal, `isolation: worktree` in background sessions fixed',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.160',
@@ -1092,7 +1128,7 @@ export const releases: Release[] = [
       'Removed `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` (deprecated in 2.1.154, now no-op); JetBrains plugin suggestion removed from startup; 20+ bug fixes',
     ],
     breaking: ['`workflow` keyword no longer triggers dynamic workflows; use `ultracode` instead'],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.159',
@@ -1107,7 +1143,7 @@ export const releases: Release[] = [
     highlights: [
       '⭐ Auto mode now available on Bedrock, Vertex, and Foundry for Opus 4.7 and Opus 4.8; opt in with `CLAUDE_CODE_ENABLE_AUTO_MODE=1`',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.157',
@@ -1117,7 +1153,7 @@ export const releases: Release[] = [
       'Autocomplete for `/plugin` arguments; `agent` field in `settings.json` honored for dispatched sessions with `--agent <name>` override; `EnterWorktree` switches between worktrees mid-session',
       '20+ bug fixes: corrupted images no longer crash requests, sandbox network prompts fixed in desktop/IDE/SDK auto mode, `--resume` improvements, WSL image paste fixes, right-click paste duplicate, long conversation performance improved',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.156',
@@ -1125,7 +1161,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed Opus 4.8 thinking blocks being modified, which was causing API errors',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.154',
@@ -1140,7 +1176,7 @@ export const releases: Release[] = [
       '`CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` deprecated (removed 2026-06-01); use `/model claude-opus-4-6[1m]` then `/fast on`',
       '`/simplify` now runs cleanup-only review instead of full code-review fix',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.153',
@@ -1151,7 +1187,7 @@ export const releases: Release[] = [
       '25+ bug fixes: stateful MCP reconnect loop (regression 2.1.147), API gateway credential leak, subagent MCP ignoring enterprise policies, Agent tool worktree silently discarding outputs, Windows installer false success',
     ],
     breaking: ['`modelPicker:setAsDefault` keybinding renamed to `modelPicker:thisSessionOnly` in keybindings.json'],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.152',
@@ -1162,7 +1198,7 @@ export const releases: Release[] = [
       'New `MessageDisplay` hook event to transform or hide assistant message text',
       'Auto mode no longer requires opt-in; `--fallback-model` for session-level fallback; `SessionStart` can set session title + trigger skill reload; 35+ bug fixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.150',
@@ -1170,7 +1206,7 @@ export const releases: Release[] = [
     highlights: [
       'Internal infrastructure improvements (no user-facing changes)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.149',
@@ -1182,7 +1218,7 @@ export const releases: Release[] = [
       'Enterprise: allowAllClaudeAiMcps managed setting for claude.ai cloud MCP connectors',
       '20+ bug fixes: /diff keyboard scrolling, transcript view freeze, slash-command arg hints, /insights crash',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.148',
@@ -1190,7 +1226,7 @@ export const releases: Release[] = [
     highlights: [
       'Hotfix: Bash tool returning exit code 127 on every command (regression from 2.1.147)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.147',
@@ -1201,7 +1237,7 @@ export const releases: Release[] = [
       'Improved auto-updater: retries transient network failures, reports specific error categories and OS error codes, shows current version on failure',
       'Bug fixes: prompt history no consecutive duplicates, PowerShell hook <code>if</code> conditions matching, pasted text <code>[Pasted text #N]</code> placeholder, plugin component counts doubled, slash commands + tab/newline treated as unknown, 25+ additional fixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.146',
@@ -1211,7 +1247,7 @@ export const releases: Release[] = [
       'Auto mode no longer suppresses <code>AskUserQuestion</code> when the user or a skill explicitly relies on it',
       'Bug fixes: Windows PowerShell "command line is invalid" regression (2.1.124), MCP paginated resources/prompts, <code>/background</code> refusing skill-only commands, backgrounded sessions re-prompting for already-granted permissions, 15+ total',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.145',
@@ -1222,7 +1258,7 @@ export const releases: Release[] = [
       'Security fix: permission-prompt bypass for bare variable assignments to non-allowlisted env vars in Bash now requires explicit approval',
       'Bug fixes: MCP paginated resources/templates/prompts, Read tool truncates instead of hard error, <code>/review</code> GraphQL fix, task list ordering, agent team non-ASCII names',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.144',
@@ -1233,7 +1269,7 @@ export const releases: Release[] = [
       '"extra usage" renamed to "usage credits" across CLI; <code>/extra-usage</code> → <code>/usage-credits</code> (old name still works)',
       'Bug fixes: 75s startup hang on unreachable API (now 15s timeout), terminal rendering corruption, macOS Full Disk Access crash, MCP paginated <code>tools/list</code>, 40+ total',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.143',
@@ -1244,7 +1280,7 @@ export const releases: Release[] = [
       '<code>worktree.bgIsolation: "none"</code>: background sessions edit working copy directly without <code>EnterWorktree</code>',
       'Bug fixes: stop hook block loop (warns after 8 blocks), Esc/Ctrl+C cancels <code>/loop</code> wakeup, background sessions preserve model+effort after idle wake',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.142',
@@ -1255,7 +1291,7 @@ export const releases: Release[] = [
       'Plugins with root-level <code>SKILL.md</code> and no <code>skills/</code> subdirectory now surface as a skill; <code>/plugin</code> shows LSP servers',
       'Bug fixes: <code>MCP_TOOL_TIMEOUT</code> now raises per-request fetch timeout, daemon exits cleanly after <code>brew upgrade</code>, background worktree recognition',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Fast Mode Opus 4.7',
   },
@@ -1268,7 +1304,7 @@ export const releases: Release[] = [
       'Rewind "Summarize up to here": compress earlier context; <code>/bg</code> preserves permission mode; spinner warms amber after 10s',
       '50+ bug fixes: Bedrock cross-account auth, MCP 403 needs-auth hint, Remote Control token rotation race, vim Ctrl+C, markdown table regression',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.140',
@@ -1288,7 +1324,7 @@ export const releases: Release[] = [
       'Hook <code>args: string[]</code> exec form (no shell spawning) + <code>continueOnBlock</code> for PostToolUse',
       '40+ bug fixes: auth deadlock, <code>autoAllowBashIfSandboxed</code> shell expansion, MCP SSE 16MB cap, Skill wildcard prefix match',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'Agent View',
   },
@@ -1601,7 +1637,7 @@ export const releases: Release[] = [
     breaking: [
       'Thinking summaries disabled by default: add showThinkingSummaries: true to settings.json to restore',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.87',
@@ -1609,7 +1645,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed messages in Cowork Dispatch not getting delivered',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.86',
@@ -1620,7 +1656,7 @@ export const releases: Release[] = [
       'Improved prompt cache hit rate for Bedrock, Vertex, Foundry by removing dynamic content from tool descriptions',
       'Fixed marketplace plugin scripts failing with "Permission denied" on macOS/Linux (regression since v2.1.83); many other bugfixes',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.85',
@@ -1631,7 +1667,7 @@ export const releases: Release[] = [
       'PreToolUse hooks can now satisfy AskUserQuestion headlessly (return <code>updatedInput + permissionDecision: allow</code>)',
       'Fixed <code>/compact</code> failing with "context exceeded" on very large conversations; improved scroll performance (yoga-layout → TypeScript)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.84',
@@ -1642,7 +1678,7 @@ export const releases: Release[] = [
       'Global system-prompt caching now works when ToolSearch is enabled (better cache hit rates for MCP users)',
       'Deep links open in preferred terminal; MCP tool descriptions capped at 2KB; idle-return prompt after 75+ min',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: 'PowerShell tool + TaskCreated hook + global cache with ToolSearch',
   },
@@ -1655,7 +1691,7 @@ export const releases: Release[] = [
       'Transcript search: press <code>/</code> in transcript mode (Ctrl+O); <code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</code> strips credentials from subprocesses',
       'Security: fixed <code>--mcp-config</code> bypassing managed <code>allowedMcpServers</code>/<code>deniedMcpServers</code> policy; fixed macOS exit hang',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.81',
@@ -1666,7 +1702,7 @@ export const releases: Release[] = [
       'MCP read/search tool calls collapse into "Queried {server}" line; plan mode hides "clear context" by default',
       'Fixed worktree session resume switching back to worktree; fixed concurrent sessions repeatedly re-authenticating on OAuth refresh',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: false,
   },
   {
@@ -1678,7 +1714,7 @@ export const releases: Release[] = [
       '<code>--channels</code> research preview: MCP servers can push messages into your session',
       'Fixed <code>--resume</code> dropping parallel tool results; ~80MB memory reduction on startup for large repos',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.79',
@@ -1689,7 +1725,7 @@ export const releases: Release[] = [
       'Fixed <code>claude -p</code> hanging without explicit stdin; fixed enterprise users unable to retry on rate limit (429) errors',
       'Fixed <code>SessionEnd</code> hooks not firing on interactive <code>/resume</code> switch; ~18MB startup memory improvement',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.78',
@@ -1701,7 +1737,7 @@ export const releases: Release[] = [
       'Fixed infinite loop when API errors triggered stop hooks re-feeding blocking errors; fixed <code>--resume</code> truncating history on large sessions with subagents',
     ],
     latest: false,
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.77',
@@ -1714,7 +1750,7 @@ export const releases: Release[] = [
       'Breaking: <code>Agent</code> tool no longer accepts <code>resume</code> parameter: use <code>SendMessage({to: agentId})</code> instead',
     ],
     breaking: ['Agent tool: <code>resume</code> parameter removed: use <code>SendMessage({to: agentId})</code>'],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.76',
@@ -1726,7 +1762,7 @@ export const releases: Release[] = [
       'Fixed <code>Bash(cmd:*)</code> rules not matching when argument contains <code>#</code>; plan mode re-approval after already accepted',
       'Improved: background agent partial results preserved on kill; model fallback notifications always visible',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ MCP elicitation + PostCompact hook',
   },
@@ -1740,7 +1776,7 @@ export const releases: Release[] = [
       'Fixed Bash tool mangling <code>!</code> in piped commands (e.g. <code>jq \'select(.x != .y)\'</code> now works)',
       'Improved startup performance on macOS non-MDM machines',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ 1M context Opus 4.6 default + token fix',
   },
@@ -1754,7 +1790,7 @@ export const releases: Release[] = [
       'Fixed managed policy <code>ask</code> rules being bypassed by user <code>allow</code> rules or skill <code>allowed-tools</code>',
       'Fixed <code>SessionEnd</code> hooks killed after 1.5s regardless of <code>hook.timeout</code> (now configurable)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ /context suggestions + memory leak fix',
   },
@@ -1768,7 +1804,7 @@ export const releases: Release[] = [
       'Fixed <code>SessionStart</code> hooks firing twice when resuming via <code>--resume</code> or <code>--continue</code>',
       'Changed default Opus on Bedrock/Vertex/Foundry → Opus 4.6; deprecated <code>/output-style</code> in favor of <code>/config</code>',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ modelOverrides + Opus 4.6 default on Bedrock/Vertex',
   },
@@ -1782,7 +1818,7 @@ export const releases: Release[] = [
       'Simplified effort levels: low/medium/high (removed max), new symbols ○ ◐ ●; <code>ExitWorktree</code> tool added',
       '<code>CLAUDE_CODE_DISABLE_CRON</code> env var; <code>lsof</code>, <code>fd</code>, <code>pgrep</code> added to bash auto-approval allowlist',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: false,
   },
   {
@@ -1795,7 +1831,7 @@ export const releases: Release[] = [
       'Fixed stdin freeze in long sessions; 5–8s startup freeze with voice mode; forked sessions sharing plan files',
       'Improved plugin MCP server deduplication; <code>/plugin uninstall</code> now writes to <code>settings.local.json</code>',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ /loop + Cron scheduling',
   },
@@ -1809,7 +1845,7 @@ export const releases: Release[] = [
       'Fixed voice on Windows native binary; clipboard CJK/emoji corruption on Windows/WSL',
       'Reduced prompt input re-renders by ~74%; startup memory −426KB; Remote Control poll rate 300× lower',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ VSCode session list + MCP dialog',
   },
@@ -1824,7 +1860,7 @@ export const releases: Release[] = [
       '15+ memory leak fixes; ~16MB baseline reduction; faster startup; MCP binary content (PDFs/audio) now saved to disk',
       'Sonnet 4.5 users on Pro/Max/Team auto-migrated to Sonnet 4.6',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '🔒 4 Security Fixes + Hooks',
   },
@@ -1836,7 +1872,7 @@ export const releases: Release[] = [
       'Re-introduced <code>ultrathink</code> keyword to enable high effort for the next turn',
       '<strong>Breaking</strong>: Opus 4 and Opus 4.1 removed from Claude Code first-party API: auto-migrated to Opus 4.6',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     breaking: ['Opus 4 and Opus 4.1 removed from Claude Code first-party API'],
   },
   {
@@ -1845,7 +1881,7 @@ export const releases: Release[] = [
     highlights: [
       'Reduced spurious error logging',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.63',
@@ -1858,7 +1894,7 @@ export const releases: Release[] = [
       '<code>/model</code> command shows currently active model in the picker',
       'Major memory leak fixes: WebSocket, MCP caches, git root detection, JSON parsing, bash prefix, subagent state',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ HTTP hooks',
   },
@@ -1888,7 +1924,7 @@ export const releases: Release[] = [
       'Fixed MCP OAuth token refresh race condition with multiple simultaneous Claude Code instances',
       'Fixed config file corruption wiping authentication when multiple instances ran simultaneously',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ Auto-memory',
   },
@@ -1898,7 +1934,7 @@ export const releases: Release[] = [
     highlights: [
       'Remote Control expanded to more users',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.56',
@@ -1914,7 +1950,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed BashTool failing on Windows with EINVAL error',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.53',
@@ -1924,7 +1960,7 @@ export const releases: Release[] = [
       'Fixed graceful shutdown leaving stale sessions with Remote Control',
       'Fixed <code>--worktree</code> flag sometimes ignored on first launch',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.52',
@@ -1943,7 +1979,7 @@ export const releases: Release[] = [
       '<code>CLAUDE_CODE_ACCOUNT_UUID</code> / <code>CLAUDE_CODE_USER_EMAIL</code> env vars for SDK account metadata',
       '<code>/model</code> picker shows human-readable labels; custom npm registries for plugins',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '🔥 Major Feature',
   },
@@ -1956,7 +1992,7 @@ export const releases: Release[] = [
       '<code>ConfigChange</code> hook event for enterprise security auditing of config changes',
       'Simple mode includes file edit tool; Sonnet 4.6 now has 1M context on Max plan',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.47',
@@ -1967,7 +2003,7 @@ export const releases: Release[] = [
       '<code>last_assistant_message</code> field in Stop/SubagentStop hook inputs',
       '70+ bug fixes: PDF compaction, Unicode quotes, parallel file edits, OSC 8 hyperlinks',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.46',
@@ -1976,7 +2012,7 @@ export const releases: Release[] = [
       'Fixed orphaned Claude Code processes after terminal disconnect on macOS',
       'Support for using claude.ai MCP connectors in Claude Code',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.45',
@@ -1987,7 +2023,7 @@ export const releases: Release[] = [
       'SDK: <code>SDKRateLimitInfo</code> / <code>SDKRateLimitEvent</code> for rate limit tracking',
       'Fixed Agent Teams on Bedrock/Vertex/Foundry; memory improvements',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.44',
@@ -1997,7 +2033,7 @@ export const releases: Release[] = [
       'Fixed AWS auth refresh hanging (3-minute timeout)',
       'Fixed structured-outputs beta header on Vertex/Bedrock',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.42',
@@ -2007,7 +2043,7 @@ export const releases: Release[] = [
       'Improved prompt cache hit rates (date moved out of system prompt)',
       'Opus 4.6 effort callout for eligible users',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.41',
@@ -2018,7 +2054,7 @@ export const releases: Release[] = [
       '<code>/rename</code> auto-generates session name from context',
       'Multiple stability fixes (FIFOs, background tasks, permissions)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.39',
@@ -2029,7 +2065,7 @@ export const releases: Release[] = [
       'OTel <code>speed</code> attribute for fast mode',
       'Stability fixes (rendering, session close, fatal errors)',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.38',
@@ -2039,7 +2075,7 @@ export const releases: Release[] = [
       'Security: Heredoc delimiter command smuggling fix',
       'Security: Blocked writes to <code>.claude/skills</code> in sandbox',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.37',
@@ -2047,7 +2083,7 @@ export const releases: Release[] = [
     highlights: [
       'Fixed <code>/fast</code> not available after enabling <code>/extra-usage</code>',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.36',
@@ -2055,7 +2091,7 @@ export const releases: Release[] = [
     highlights: [
       '&#11088; Fast mode now available for Opus 4.6',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.34',
@@ -2064,7 +2100,7 @@ export const releases: Release[] = [
       'Fixed crash with agent teams setting changes',
       'Security fix: sandbox-excluded commands bypass',
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.33',
@@ -2494,6 +2530,10 @@ export const releases: Release[] = [
 ]
 
 export const breakingChanges: BreakingChange[] = [
+  { badge: 'Security', description: 'Symlinked writes use their real destination (v2.1.280); background sessions require workspace trust and children inherit setting-source restrictions (v2.1.281)' },
+  { badge: 'Permissions', description: 'Server-side auto mode also reviews read-only and sandboxed shell commands; dangerous-rm prompts deny after two unanswered minutes (v2.1.281)' },
+  { badge: 'Settings', description: 'Older CLI versions skip settings files containing attribution: false; retain the object form in shared files (v2.1.281)' },
+  { badge: 'Hooks', description: 'PermissionRequest requires command or HTTP hooks, not agent-type hooks (v2.1.280); self-hosted runner prompt wrappers must use file-based flags (v2.1.281)' },
   { badge: 'Security', description: 'Plugin archive permissions and Bash tee destination checks fixed (v2.1.269); symlink-path rules and MCP/plugin secret redaction fixed (v2.1.268)' },
   { badge: 'Permissions', description: 'Plain WebFetch deny/ask rules no longer gate Artifact reads or updates; use Artifact or WebFetch(domain:claude.ai) (v2.1.268)' },
   { badge: 'Auth', description: 'Managed forceLoginGatewayUrl selects gateway authentication at startup and ignores leftover claude.ai credentials or API keys (v2.1.265)' },

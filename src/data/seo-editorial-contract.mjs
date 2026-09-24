@@ -73,5 +73,5 @@ export function releaseDateToIsoDate(releaseDate) {
   return `${year}-${monthNumber}-${day.padStart(2, '0')}`
 }
 
-export const LATEST_CLAUDE_CODE_RELEASE_DATE = 'Sep 19, 2026'
+export const LATEST_CLAUDE_CODE_RELEASE_DATE = 'Sep 23, 2026'
 export const LATEST_CLAUDE_CODE_RELEASE_DATE_ISO = releaseDateToIsoDate(LATEST_CLAUDE_CODE_RELEASE_DATE)
