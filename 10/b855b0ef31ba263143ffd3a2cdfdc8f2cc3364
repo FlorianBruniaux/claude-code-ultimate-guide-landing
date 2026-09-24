@@ -1,0 +1,27 @@
+CHANGELOG.md
+  s_03ba8b1a919c17::t_6e01d25bcc7f86 7-12
+src/data/agentsec-security-feed.test.ts
+  s_03ba8b1a919c17::t_ee7e5990719f8c 14-15,23,86
+src/data/agentsec-security-feed.v1.json
+  s_03ba8b1a919c17::t_9becf621e5c637 16,19-20,100-101,105-1272,2270-2509,2519-2638,2839-2878,2958
+src/data/guide-content-entries.ts
+  s_03ba8b1a919c17::t_ef41acc3a92890 6306
+src/data/security-data.ts
+  s_03ba8b1a919c17::t_bffc1f02a77ee0 127-129,247-287,541-579,821-829,847,861
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "10b855b0ef31ba263143ffd3a2cdfdc8f2cc3364",
+  "prompts": {},
+  "sessions": {
+    "s_03ba8b1a919c17": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d374-0cc8-7963-b9d1-425a32259a25",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
