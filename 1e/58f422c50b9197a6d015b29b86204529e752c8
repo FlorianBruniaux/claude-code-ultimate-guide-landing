@@ -1,0 +1,61 @@
+CHANGELOG.md
+  s_03ba8b1a919c17::t_680902ed66d35f 7-8
+src/components/landing/FeaturesGrid.astro
+  s_03ba8b1a919c17::t_4c0afbf504c8fe 50
+src/content/cheatsheets/m08-agents-custom.md
+  s_03ba8b1a919c17::t_93b447ace440c7 7,33,41-42,47,62
+src/content/cheatsheets/m16-multi-agent-topologie.md
+  s_03ba8b1a919c17::t_225b71e0037274 7,83
+src/content/cheatsheets/t01-commandes-essentielles.md
+  s_03ba8b1a919c17::t_d4ac749a127cbd 7,22-24,31,43
+src/content/cheatsheets/t18-modeles-thinking-modes.md
+  s_03ba8b1a919c17::t_4496b354bc885f 7,11,13,15-20,22,24,26,28,30,32,34,36,38,40,42,44,46,48
+src/content/cheatsheets/t19-context-window-200k-1m.md
+  s_03ba8b1a919c17::t_e9d0745b7b8d31 7,11,13-18,20,22,24,26,28,30,32-36,38,40,42,44,46,48,50,52,54
+src/content/cheatsheets/t21-fast-mode-api.md
+  s_03ba8b1a919c17::t_a7736a1f5fe73b 7,11,13,15-18,20,22,24,26,28,30-32,36-40,44,46,48,50,52
+src/content/questions/04-agents/003-what-fields-are-required-in-an-agents-yaml.md
+  s_03ba8b1a919c17::t_0c000de975eb47 25
+src/content/questions/04-agents/005-which-model-should-you-use-for-agents-performing.md
+  s_03ba8b1a919c17::t_bffee95db4401e 24
+src/content/questions/09-advanced-patterns/002-how-do-you-toggle-thinking-mode-in-claude-code.md
+  s_03ba8b1a919c17::t_9431a75a3f70a3 9-12,15-16,19,23
+src/content/questions/09-advanced-patterns/040-how-do-you-enable-agent-teams-in-claude.md
+  s_03ba8b1a919c17::t_7493d034176e60 6,16,26,28
+src/content/questions/09-advanced-patterns/043-what-minimum-claude-model-is-required-for-agent.md
+  s_03ba8b1a919c17::t_d84bb17337b45f 6-7,10-13,16-17,20,24
+src/content/questions/09-advanced-patterns/047-you-need-to-rename-a-function-across-50.md
+  s_03ba8b1a919c17::t_9ee74a82e89eb2 6-7,10-13,16-17,20,24
+src/content/questions/09-advanced-patterns/051-in-the-planner-implementer-agent-pattern-which-model.md
+  s_03ba8b1a919c17::t_1eb95516876c27 6-7,10-13,17,24,29,32,35
+src/content/questions/10-reference/008-what-does-the-mcp-debug-flag-do.md
+  s_03ba8b1a919c17::t_449762ce0ac561 20,24,28
+src/content/questions/10-reference/023-what-is-fast-mode-in-claude-code.md
+  s_03ba8b1a919c17::t_3fa7fb95341921 10-13,16-17,20,24
+src/data/diagrams-data.ts
+  s_03ba8b1a919c17::t_a451fce91b0c65 340
+src/data/recap-cards-data.ts
+  s_03ba8b1a919c17::t_19069532adbe43 43-44,53-54,93,109,126-127,129,161,177,194-195,197
+src/data/whitepapers-data.ts
+  s_03ba8b1a919c17::t_5be20989d81a1e 73-74,78-79,104-105,109-110,150-151,156-157,167-168,172-173
+src/pages/cheatsheet/index.astro
+  s_03ba8b1a919c17::t_21be8852230fca 25,33-34,38,73,77,79,87-89,105-106,131,137,144-145,156,158,218,220-224,226-228,285,287
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_03ba8b1a919c17::t_72c5c9eafc211f 97,102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1e58f422c50b9197a6d015b29b86204529e752c8",
+  "prompts": {},
+  "sessions": {
+    "s_03ba8b1a919c17": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d374-0cc8-7963-b9d1-425a32259a25",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
