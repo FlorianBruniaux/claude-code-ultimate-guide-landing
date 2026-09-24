@@ -4,6 +4,12 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Synchronized AgentSec database 2.30.0, reviewed through September 24, 2026:
+  172 canonical CVE/advisory records, 82 sources and 69 events. The searchable
+  catalogue contains 181 records, including nine historical guide entries.
+  All 41 additions are documented-only, with conditional remediation and
+  unknown patched versions preserved. Updated the feed integration assertions.
+
 ### Documentation
 
 - Synchronized Claude Code v2.1.280 and v2.1.281, including Opus 5.5, MCP browser flows and validation, gateway controls, permission fixes and compatibility changes. Updated the release date used by structured data and the sitemap to September 23, 2026. Show the five newest notable releases initially, with older entries available through the existing Show All control; its collapsed counter now derives from the visible cards. Release data generates the RSS entries automatically; the guide remains at version 3.43.0.

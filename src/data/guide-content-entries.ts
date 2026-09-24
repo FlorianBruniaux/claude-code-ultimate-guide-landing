@@ -6303,7 +6303,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-security-hardening-september-2026-review",
     "title": "September 2026 review",
-    "keywords": "september 2026 review security hardening guide reviewed september 12, 2026. update claude code to 2.1.269 for the reviewed permission and plugin fixes, and vs code to 1.136.2 for the september advi",
+    "keywords": "september 2026 review security hardening guide reviewed september 24, 2026. update claude code to 2.1.281 for the reviewed permission and plugin fixes, and vs code to 1.136.2 for the september advi",
     "category": "Core Guides",
     "url": "/guide/security-hardening/#september-2026-review",
     "source": "guide"
