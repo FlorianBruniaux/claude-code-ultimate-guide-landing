@@ -4,7 +4,7 @@ subtitle: "Architecting agent teams for complex tasks"
 cardNumber: M16
 category: Methodology
 difficulty: advanced
-guideVersion: 3.42.0
+guideVersion: 3.43.0
 order: 116
 ---
 
@@ -80,7 +80,7 @@ claude
 }
 ```
 
-Prerequisites: Claude Code v2.1.32+, Opus 5 recommended, Opus 4.6+ compatible (`/model opus`), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
+Prerequisites: Claude Code v2.1.32+, a model available to the account (teammates may differ), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
 
 ## Loop Controls
 

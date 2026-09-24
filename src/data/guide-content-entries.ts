@@ -1663,7 +1663,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-essential-commands",
     "title": "Essential Commands",
-    "keywords": "essential commands claude code cheatsheet the 35 below are the daily drivers. claude code ships about 100 built-in commands: the complete list is in §10.1 of the guide, and the always-current",
+    "keywords": "essential commands claude code cheatsheet these are selected daily commands. availability depends on your version, provider, and plan: the complete list is in §10.1 of the guide, and the alway",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#essential-commands",
     "source": "guide"
@@ -1687,7 +1687,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-features-méconnues-but-official",
     "title": "Features Méconnues (But Official!)",
-    "keywords": "features méconnues but official claude code cheatsheet feature since what it does --------- ------- -------------- tasks api v2.1.16 persistent task lists with dependencies background agents v2.0.60 sub-ag",
+    "keywords": "features méconnues but official claude code cheatsheet feature since what it does --------- ------- -------------- tasks api v2.1.16 persistent task lists with dependencies; opt in on newer models with bac",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#features-méconnues-but-official",
     "source": "guide"
@@ -1695,7 +1695,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-permission-modes",
     "title": "Permission Modes",
-    "keywords": "permission modes claude code cheatsheet mode editing execution ------ --------- ----------- default asks asks acceptedits auto asks plan mode ❌ ❌ auto classifier decides classifier decides d",
+    "keywords": "permission modes claude code cheatsheet mode editing execution ------ --------- ----------- manual ( ) permission rules apply permission rules apply acceptedits auto asks plan mode no file c",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#permission-modes",
     "source": "guide"
@@ -1735,7 +1735,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-under-the-hood-quick-facts",
     "title": "Under the Hood (Quick Facts)",
-    "keywords": "under the hood quick facts claude code cheatsheet concept key point --------- ----------- master loop simple : no dags, no classifiers tools 8 core: bash, read, edit, write, grep, glob, agent, todowri",
+    "keywords": "under the hood quick facts claude code cheatsheet concept key point --------- ----------- master loop model/tool loop; permissions and auto-mode review are separate controls tools bash, read, edit, wr",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#under-the-hood-quick-facts",
     "source": "guide"
@@ -1751,7 +1751,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-cheatsheet-plan-mode-thinking",
     "title": "Plan Mode & Thinking",
-    "keywords": "plan mode thinking claude code cheatsheet feature activation usage --------- ------------ ------- plan mode or explore without modifying opusplan opus for planning, sonnet for execution opus 4 quick model selection dynamic model switching mid session",
+    "keywords": "plan mode thinking claude code cheatsheet feature activation usage --------- ------------ ------- plan mode or explore without modifying opusplan opus for planning, sonnet for execution verifi quick model selection dynamic model switching mid session",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#plan-mode-thinking",
     "source": "guide"
@@ -1821,17 +1821,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-cheatsheet-remote-control-mobile-access-v2-1-51-research-prev",
-    "title": "Remote Control: Mobile Access (v2.1.51+, Research Preview)",
-    "keywords": "remote control mobile access v2 1 51 research preview claude code cheatsheet pro/max only : not available on team, enterprise, or api keys connect from phone/tablet/browser: 1. scan the qr code (press spacebar after start) 2. o",
+    "id": "gc-cheatsheet-remote-control-mobile-access",
+    "title": "Remote Control: Mobile Access",
+    "keywords": "remote control mobile access claude code cheatsheet available with pro, max, team, and enterprise subscriptions. team and enterprise owners must enable it first. api keys and third-party provider connec",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#remote-control-mobile-access-v2-1-51-research-preview",
+    "url": "/guide/cheatsheet/#remote-control-mobile-access",
     "source": "guide"
   },
   {
     "id": "gc-cheatsheet-task-management-v2-1-16",
     "title": "Task Management (v2.1.16+)",
-    "keywords": "task management v2 1 16 claude code cheatsheet two systems available: system when to use persistence -------- ------------- ------------- tasks api (v2.1.16+) multi-session projects, dependencies ✅ tasks api commands",
+    "keywords": "task management v2 1 16 claude code cheatsheet availability : newer models, including opus 5.5, sonnet 5, and fable, do not receive task-tracking tools by default. start with to opt in. selects leg tasks api commands",
     "category": "Core Guides",
     "url": "/guide/cheatsheet/#task-management-v2-1-16",
     "source": "guide"
@@ -7039,7 +7039,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-tools-reference-all-built-in-tools",
     "title": "All built-in tools",
-    "keywords": "all built in tools built in tools reference the table below covers every built-in tool claude code ships with. \"permission required\" means a first-time prompt appears before the tool runs (in de file operations execution web agents and orchestration task management scheduling mcp integration worktrees and control flow",
+    "keywords": "all built in tools built in tools reference the tables below cover built-in tools and explicitly marked removed tools. availability varies by model and configuration. \"permission required\" means file operations execution web agents and orchestration task management scheduling mcp integration worktrees and control flow",
     "category": "Core Guides",
     "url": "/guide/tools-reference/#all-built-in-tools",
     "source": "guide"
@@ -7319,7 +7319,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-02-core-workflow-do-not",
     "title": "Do NOT",
-    "keywords": "do not 2 core workflow - start other tasks - refactor unrelated code `` /compact` preserves conversation flow. fresh context maximizes per-task attention at the cost of cont key insight what consumes context context depletion symptoms context inspection cost awareness optimization pricing model as of july 2026 200k vs 1m context performance cost use cases what costs the most cost optimization strategies how claude code handles caching automatically tracking costs cost vs value cost conscious wor",
+    "keywords": "do not 2 core workflow - start other tasks - refactor unrelated code `` /compact` preserves conversation flow. fresh context maximizes per-task attention at the cost of cont key insight what consumes context context depletion symptoms context inspection cost awareness optimization pricing model verified september 24 2026 200k vs 1m context performance cost use cases what costs the most cost optimization strategies how claude code handles caching automatically tracking costs cost vs value cost co",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/02-core-workflow/#do-not",
     "source": "guide"
@@ -7415,7 +7415,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-02-core-workflow-2-5-model-selection-thinking-guide",
     "title": "2.5 Model Selection & Thinking Guide",
-    "keywords": "2 5 model selection thinking guide 2 core workflow choosing the right model for each task is the fastest roi improvement most claude code users can make. one decision per task, no overthinking. quick j decision table escalating to fable 5 effort levels per skill effort allocation v2 1 80 model per agent patterns when thinking helps vs wastes tokens",
+    "keywords": "2 5 model selection thinking guide 2 core workflow choosing the right model for each task is the fastest roi improvement most claude code users can make. one decision per task, no overthinking. quick j decision table escalating to fable effort levels per skill effort allocation v2 1 80 model per agent patterns when thinking helps vs wastes tokens",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/02-core-workflow/#2-5-model-selection-thinking-guide",
     "source": "guide"
@@ -8511,7 +8511,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-09-advanced-patterns-9-1-the-trinity",
     "title": "9.1 The Trinity",
-    "keywords": "9 1 the trinity 9 advanced patterns the most powerful claude code pattern combines three techniques: when to use the trinity situation use trinity? when to use the trinity extended thinking opus 4 5 adaptive thinking opus 4 6 evolution timeline adaptive thinking opus 4 6 including opus 4 8 controlling thinking mode cost implications migration for existing users legacy keywords reference api breaking changes opus 4 6 example using the trinity",
+    "keywords": "9 1 the trinity 9 advanced patterns the most powerful claude code pattern combines three techniques: when to use the trinity situation use trinity? when to use the trinity extended thinking opus 4 5 adaptive thinking opus 4 6 adaptive thinking opus 4 6 including opus 4 8 controlling thinking mode legacy keywords reference api breaking changes opus 4 6 example using the trinity",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/09-advanced-patterns/#9-1-the-trinity",
     "source": "guide"
@@ -9359,7 +9359,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-10-reference-10-1-commands-table",
     "title": "10.1 Commands Table",
-    "keywords": "10 1 commands table claude code reference cli flags shortcuts claude md templates troubleshooting source of truth : code.claude.com/docs/en/commands is the official reference and always lists the current set. the tables below mirror it as of claude session lifecycle context model effort and permission modes parallel and scheduled work review and ship configuration and extensions interface and display diagnostics and support account and platform removed renamed and commands that never existed qui",
+    "keywords": "10 1 commands table claude code reference cli flags shortcuts claude md templates troubleshooting source of truth : code.claude.com/docs/en/commands is the official reference and always lists the current set. the tables below mirror it as of septem session lifecycle context model effort and permission modes parallel and scheduled work review and ship configuration and extensions interface and display diagnostics and support account and platform removed renamed and commands that never existed qui",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/10-reference/#10-1-commands-table",
     "source": "guide"
@@ -9799,7 +9799,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide.fr-2-14-thinking-extended-context",
     "title": "2.14 Thinking (Extended Context)",
-    "keywords": "2 14 thinking extended context the ultimate claude code guide reading time : 4 minutes goal : use claude's extended thinking and claude.md efficiently when extended thinking helps think of extended thinking as wo when extended thinking helps claude md best practices",
+    "keywords": "2 14 thinking extended context the ultimate claude code guide reading time : 4 minutes goal : use claude's extended thinking and claude.md efficiently when extended thinking helps le bénéfice du raisonnement éten when extended thinking helps claude md best practices",
     "category": "Core Guides",
     "url": "/guide/ultimate-guide.fr/#2-14-thinking-extended-context",
     "source": "guide"
@@ -11383,7 +11383,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-agent-teams-quick-start-1-5-minute-setup",
     "title": "1. 5-Minute Setup",
-    "keywords": "1 5 minute setup agent teams quick start guide step 1: prerequisites check minimum requirements : - claude code v2.1.32+ - opus 5 model (opus 4.6+ compatible) - git repository (agent teams use git step 1 prerequisites check step 2 enable feature step 3 verification step 4 first test 2 agents",
+    "keywords": "1 5 minute setup agent teams quick start guide step 1: prerequisites check minimum requirements : - claude code v2.1.32+ - a model available to your account; opus is optional and teammates may use step 1 prerequisites check step 2 enable feature step 3 verification step 4 first test 2 agents",
     "category": "Workflows",
     "url": "/guide/workflows/agent-teams-quick-start/#1-5-minute-setup",
     "source": "guide"
@@ -11471,7 +11471,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-agent-teams-3-setup-configuration",
     "title": "3. Setup & Configuration",
-    "keywords": "3 setup configuration agent teams workflow prerequisites required : - ✅ claude code v2.1.32 or later - ✅ opus 5 model ( ) - ✅ git repository (for coordination) recommended : - ✅ understanding o prerequisites method 1 environment variable method 2 settings file verification multi terminal setup",
+    "keywords": "3 setup configuration agent teams workflow prerequisites required : - ✅ claude code v2.1.32 or later - ✅ a model available to your account; is one option - ✅ git repository (for coordination) r prerequisites method 1 environment variable method 2 settings file verification multi terminal setup",
     "category": "Workflows",
     "url": "/guide/workflows/agent-teams/#3-setup-configuration",
     "source": "guide"

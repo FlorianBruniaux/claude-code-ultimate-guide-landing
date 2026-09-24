@@ -4,7 +4,7 @@ subtitle: "Keyboard shortcuts & indispensable slash commands"
 cardNumber: T01
 category: Technical
 difficulty: beginner
-guideVersion: 3.41.1
+guideVersion: 3.43.0
 order: 1
 ---
 
@@ -19,13 +19,16 @@ order: 1
 | `↑` / `↓` | Message history |
 | `Tab` | Path completion |
 
+| `Ctrl+X Ctrl+K` | Stop background subagents |
+| `Ctrl+Enter` / `Ctrl+X Ctrl+S` | Send queued messages now |
+
 ## Core Slash Commands
 
 ```
 /help           Help and available commands
 /clear          Clear context (reset)
 /compact        Compress history
-/model          Switch model
+/model          Choose model; Enter saves, s applies once
 /cost           View session costs
 /status         Context status
 ```
@@ -37,7 +40,7 @@ claude                    Interactive mode (default)
 claude --dangerously-skip-permissions
                           Full bypass (CI/CD)
 claude --allowedTools "Edit,Read,Bash"
-                          Tool whitelist
+                          Pre-approve tools; --tools restricts availability
 ```
 
 ## Quick Start

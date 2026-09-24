@@ -21,4 +21,4 @@ Which model should you use for agents performing complex architectural analysis?
 
 ---
 
-Use opus for complex reasoning and architecture tasks. Model selection guidelines: haiku (fast, low cost) for quick tasks and simple changes; sonnet (balanced, default) for most tasks; opus (slow, high cost) for complex reasoning, architecture decisions, and critical security reviews. Match the model to the task's complexity.
+Use opus for complex reasoning and architecture tasks. Model selection guidelines: haiku (fast, low cost) for quick tasks and simple changes; sonnet (balanced, explicit choice) for most tasks; opus (slow, high cost) for complex reasoning, architecture decisions, and critical security reviews. Match the model to the task's complexity.

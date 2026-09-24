@@ -7,19 +7,18 @@ profiles:
 - power
 correct: b
 options:
-  a: A mode that skips permission checks for 2.5x faster execution
-  b: Opus 4.6 running at 2.5x faster speed with 6x the price, enabled via /fast or speed:"fast" API parameter
-  c: A lightweight Haiku-based mode for simple tasks at reduced cost
-  d: Parallel tool execution mode that runs all tool calls simultaneously
+  a: It skips permission checks
+  b: Faster serving of the same model at twice its standard token rates
+  c: It switches the session to Haiku
+  d: It runs all tool calls in parallel
 doc_reference:
   file: guide/ultimate-guide.md
-  section: Pricing Model (as of April 2026)
-  anchor: '#pricing-model-as-of-april-2026'
+  section: Pricing Model (verified September 24, 2026)
+  anchor: '#pricing-model-verified-september-24-2026'
 ---
 
-What is "fast mode" for Opus 4.6 and what are its trade-offs?
+What is fast mode on Opus 5.5 and what is its standard token-price tradeoff?
 
 ---
 
-Fast mode runs Opus 4.6 at **2.5x faster** speed but at **6x the price** ($30/$150 per 1M tokens vs $5/$25 standard). Enable it in Claude Code via `/fast`, or in the API by adding `speed: "fast"` and the `anthropic-beta: fast-mode-2026-02-01` header. It is the same Opus 4.6 model (same quality, same 1M context support), just optimized for speed at a significant cost premium. Best for time-critical tasks where latency matters more than cost.
----
+Fast mode serves Opus 5.5 at $8/$40 per million input/output tokens versus $4/$20 at standard speed. Anthropic advertises up to 2.5 times faster output, not a guaranteed end-to-end speedup. Use /fast in Claude Code; subscription usage is charged to usage credits. Sonnet and Haiku do not support fast mode.

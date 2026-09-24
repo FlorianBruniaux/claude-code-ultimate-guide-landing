@@ -337,7 +337,7 @@ export const DIAGRAM_THEMES: DiagramTheme[] = [
         "title": "Model Selection Decision Flow",
         "description": "Not all tasks need the most powerful model. A lower-cost model saves money only when it passes the same task acceptance gate without increasing retries, review, or rework.\n\n> **This diagram assumes an unconstrained budget (Max/API).** On tighter plans (Pro, Teams Standard), apply the budget modifier below.",
         "svg": null,
-        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5     ($  ~2x cheaper than Sonnet 5)\n├─ Standard (features, bugs)      → Sonnet 5      ($$ validate on your task set)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 5 (xhigh)  ($$$ ~2.5x Sonnet 5)\n   └─ Just large/clear?            → Sonnet 5         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 5 plan, Sonnet impl\n  Max/API          → Opus 5 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
+        "asciiFallback": "Task complexity?\n├─ Simple (typos, format, rename) → Haiku 4.5     ($  ~2x cheaper than Sonnet 5)\n├─ Standard (features, bugs)      → Sonnet 5      ($$ validate on your task set)\n└─ Complex (architecture, sec.)\n   ├─ Needs deep reasoning?        → Opus 5.5 (xhigh)  ($$$ 2x Sonnet 5)\n   └─ Just large/clear?            → Sonnet 5         ($$ handles it)\n\nBudget modifier (downgrade one tier on constrained plans):\n  Max/API (xhigh)  → Opus 5.5 plan, Sonnet impl\n  Max/API          → Opus 5.5 plan, Sonnet impl\n  Pro/Teams        → Sonnet plan, Haiku impl (mechanical tasks)",
         "sourceRef": "Model Selection (Line ~2634)"
       },
       {

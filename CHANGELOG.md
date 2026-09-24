@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Refreshed the daily cheatsheet, model/context/fast-mode cards, and quiz answers against the September 24 Claude Code reference. Synchronized provider defaults, prices, effort, shortcuts, output styles, and task tools. Corrected the model examples on the MCP comparison page and the Agent Teams homepage summary. Rebuilt the guide reader and search data; updated the affected PDF/EPUB downloads and archive manifests.
+
 - Synchronized AgentSec database 2.30.0, reviewed through September 24, 2026:
   172 canonical CVE/advisory records, 82 sources and 69 events. The searchable
   catalogue contains 181 records, including nine historical guide entries.

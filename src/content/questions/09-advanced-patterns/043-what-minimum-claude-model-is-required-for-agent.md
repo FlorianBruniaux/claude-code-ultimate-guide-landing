@@ -3,29 +3,22 @@ id: 09-043
 category_id: 9
 difficulty: senior
 profiles:
-  - senior
-  - power
+- senior
+- power
 correct: d
 options:
-  a: Haiku
-  b: Sonnet 4.5
-  c: Opus 4.5
-  d: Opus 4.6
+  a: Every teammate must use Opus
+  b: Every teammate must use the same model as the lead
+  c: Haiku cannot be selected for a teammate
+  d: Teammates may use different models available to the account
 doc_reference:
   file: guide/workflows/agent-teams.md
-  section: Prerequisites
-  anchor: "#prerequisites"
+  section: When Large Teams ARE Justified
+  anchor: '#when-large-teams-are-justified'
 ---
 
-What minimum Claude model is required for agent teams?
+Which model rule applies to experimental Agent Teams?
 
 ---
 
-Agent teams require **Opus 4.6 minimum** (released Feb 2026 with v2.1.32).
-
-This is because:
-- Each agent needs 1M token context window
-- Git-based coordination requires advanced reasoning
-- Team lead must synthesize findings from multiple teammates
-
-Lower models (Sonnet, Haiku) cannot spawn agent teams.
+Agent Teams requires the experimental feature flag, not a minimum Opus version. Specify a model per teammate in the request or agent definition; otherwise the subagent-model setting or lead model supplies the default. Organization restrictions and forced environment overrides still apply. Each teammate has its own model-dependent context window.

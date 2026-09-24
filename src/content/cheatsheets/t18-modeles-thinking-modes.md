@@ -4,78 +4,45 @@ subtitle: "Choosing the right model and the right level of reasoning"
 cardNumber: T18
 category: Technical
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.43.0
 order: 18
 ---
 
-## The Three Models
+## Current Models
 
-| Model | Input price/1M | Ideal for |
-|-------|---------------|-----------|
-| **Haiku 4.5** | $0.80 | Mechanical tasks, CI/CD |
-| **Sonnet 4.6** | $3.00 | Day-to-day development (default) |
-| **Fable 5** | See official docs | Most complex tasks (Mythos-class) |
-| **Opus 4.8** | See official docs | Architecture, security, audits |
+Standard API rates, verified September 24, 2026. USD per million input/output tokens, excluding caching.
 
-Sonnet is the natural starting point, covering 80% of use cases. Haiku cuts the cost by 4x on repetitive tasks (test generation, mass renaming). Opus only comes into play when deep reasoning genuinely changes the quality of the result.
+| Model | Input / output | Context | Default effort |
+|-------|----------------|---------|----------------|
+| Haiku 4.5 | $1 / $5 | 200K | Unsupported |
+| Sonnet 5 | $2 / $10 | 1M | high |
+| Opus 5.5 | $4 / $20 | 1M | medium |
+| Fable 5.1 | $10 / $50 | 1M | high |
 
-## Switching Models
+Sonnet's published rate remains $2/$10 after the launch promotion. Opus 5.5 is the direct-service default; account policy can override it. Model choice does not establish a typical task cost.
 
-```bash
-# Via slash command
-/model
+## Select and Save
 
-# Via flag at startup
-claude --model haiku "Fix this typo in README.md"
-claude --model opus "Design the auth system"
-```
+`/model` opens the picker. **Enter** saves a default; **s** applies it to this session only. `claude --model sonnet` applies to the launched session. Project and managed settings can reapply at the next launch.
 
-## Quick Decision Table
+Aliases depend on the provider. `opus` maps to 5.5 on most providers, but 4.6 on Foundry. `sonnet` maps to 5 on the direct API, 4.6 on Claude Platform on AWS, and 4.5 on Bedrock, Google, and Foundry.
 
-| Task | Model | Effort |
-|------|-------|--------|
-| Renaming, formatting | Haiku | low |
-| Test generation | Haiku | low |
-| Standard feature | Sonnet | medium |
-| Module refactoring | Sonnet | high |
-| System architecture | Opus | high |
-| Critical security audit | Opus | max |
+`fable` selects 5.1 where available, or 5 through the Claude apps gateway. `best` selects Fable when available, otherwise Opus. Pin a supported full ID when version identity matters.
 
-## Thinking Modes (Opus 4.8)
+## Thinking and Effort
 
-Opus 4.8 uses **Adaptive Thinking**: the model dynamically allocates its compute budget based on request complexity. The `effort` parameter controls this depth.
+Opus 5.5, Sonnet 5, and Fable 5.1 use adaptive thinking. Haiku 4.5 supports extended thinking but has **no effort parameter**.
 
-**Effort levels**:
+Current adaptive models support `low`, `medium`, `high`, `xhigh`, and `max`. Opus 4.6 and Sonnet 4.6 support `max` but not `xhigh`.
 
-- **low**: zero preamble, combined operations, mechanical tasks
-- **medium**: defined pattern, bounded scope, single concern
-- **high**: design decisions, edge cases, multiple concerns
-- **max**: cross-system reasoning, irreversible decisions (Opus 4.8+)
+`/effort` saves levels through `xhigh` per model. Use **s** for a session-only choice. `max` is session-only; `/effort auto` clears the active model's saved choice.
 
-## Controlling Thinking
+`Option+T` / `Alt+T` toggles thinking where supported. It has no effect on Opus 5.5 or Fable, whose thinking is always enabled. Lower effort for bounded work instead.
 
-```
-Alt+T          Toggle on/off (current session)
-/config        Persist across sessions
-/model + ←/→  Effort slider low|medium|high
-```
+`ultrathink` adds a reasoning instruction without changing API effort. `think hard` is ordinary prompt text.
 
-The keywords `ultrathink` and `think hard` have had no functional effect since v2.0.67. Adaptive thinking is active by default on Opus 4.8.
+## Choose by Measured Results
 
-## Golden Rule
+Evaluate Haiku on bounded tasks, Sonnet on routine work, and Opus or Fable on harder tasks. Compare accepted outcomes, retries, latency, and total cost on the same task set. Teammates can use different models.
 
-**Start with Sonnet.** Move up to Opus only if the task involves irreversible decisions, multi-system reasoning, or a critical audit. Drop to Haiku for anything mechanical and predictable. Most sessions never need Opus.
-
-## Multi-Agent Pattern
-
-```yaml
-# planner.md — exploration, read-only
-model: opus
-tools: Read, Grep, Glob
-
-# implementer.md — mechanical execution
-model: haiku
-tools: Write, Edit, Bash
-```
-
-Assign models based on **role**, not perceived importance.
+Sources: [Model configuration](https://code.claude.com/docs/en/model-config), [API pricing](https://platform.claude.com/docs/en/about-claude/pricing).

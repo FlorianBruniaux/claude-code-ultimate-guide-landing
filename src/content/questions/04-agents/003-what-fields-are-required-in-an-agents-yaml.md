@@ -22,4 +22,4 @@ What fields are REQUIRED in an agent's YAML frontmatter?
 
 ---
 
-Only `name` and `description` are required in agent frontmatter. Optional fields include: model (sonnet default, opus, or haiku), tools (comma-separated list), skills (to inherit), and disallowedTools. The description is crucial - it determines when Claude auto-activates the agent, so make it clear and specific.
+Only `name` and `description` are required in agent frontmatter. Optional fields include: model (inherits parent by default; explicit sonnet, opus, or haiku), tools (comma-separated list), skills (to inherit), and disallowedTools. The description is crucial - it determines when Claude auto-activates the agent, so make it clear and specific.

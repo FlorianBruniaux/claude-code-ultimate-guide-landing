@@ -17,15 +17,15 @@ doc_reference:
   anchor: '#mcp-debugging-techniques'
 ---
 
-What does the --mcp-debug flag do?
+What does the --debug='mcp' flag do?
 
 ---
 
-The `--mcp-debug` flag enables debug mode for MCP server connections.
+The `--debug='mcp'` flag enables debug mode for MCP server connections.
 
 MCP debugging techniques:
 ```bash
-claude --mcp-debug  # Debug all MCP connections
+claude --debug='mcp'  # Debug all MCP connections
 /mcp               # View MCP status inside Claude Code
 ```
 

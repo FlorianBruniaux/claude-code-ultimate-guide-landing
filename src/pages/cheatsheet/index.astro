@@ -22,7 +22,7 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-01-17" modifiedDate="2026-08-20">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-01-17" modifiedDate="2026-09-24">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,12 +30,12 @@ const jsonLd = [
   <header class="page-hero">
     <div class="container">
       <h1>Claude Code <span class="accent">Cheatsheet</span></h1>
-      <p class="tagline">1 printable page: daily essentials for maximum productivity</p>
-      <p class="hero-answer">This Claude Code cheat sheet collects the core commands, keyboard shortcuts, and configuration options on one printable page. It covers installation, slash commands like /clear and /compact, permission modes, context management, file references, hooks, and MCP setup. Keep it open as a daily reference or print the PDF.</p>
+      <p class="tagline">Daily commands, shortcuts, and model settings</p>
+      <p class="hero-answer">This Claude Code cheat sheet collects the core commands, keyboard shortcuts, and configuration options in a printable reference. It covers installation, slash commands like /clear and /compact, permission modes, context management, file references, hooks, and MCP setup. Keep it open as a daily reference or print the PDF.</p>
       <div class="meta-info">
         <span>By <a href="https://methode-aristote.fr" target="_blank">Florian BRUNIAUX</a></span>
         <span>Version 3.43.0</span>
-        <span>August 2026</span>
+        <span>September 2026</span>
       </div>
       <div class="cta-buttons" style="margin-top: var(--space-lg);">
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/cheatsheet.md" target="_blank" class="btn btn-secondary">View .md</a>
@@ -70,13 +70,13 @@ const jsonLd = [
           <tr><td>/context</td><td>Detailed token breakdown</td></tr>
           <tr><td>/plan</td><td>Enter Plan Mode (no changes). Exit by approving the plan or Shift+Tab</td></tr>
           <tr><td>/code-review [level]</td><td>Review the diff for correctness bugs. --fix applies them</td></tr>
-          <tr><td>/model</td><td>Switch model (sonnet/opus/opusplan)</td></tr>
+          <tr><td>/model</td><td>Choose a model; Enter saves, s applies once</td></tr>
           <tr><td>/insights</td><td>Usage analytics + optimization</td></tr>
           <tr><td>/teleport</td><td>Teleport session from web</td></tr>
           <tr><td>/tasks</td><td>Monitor background tasks</td></tr>
-          <tr><td>/fast</td><td>Toggle fast mode (2.5x speed)</td></tr>
+          <tr><td>/fast</td><td>Opus 5.5 fast: $8/$40 per MTok input/output</td></tr>
           <tr><td>btw [question]</td><td>Side question overlay. Read-only ephemeral agent, no history pollution, no tools.</td></tr>
-          <tr><td>/loop [interval] [prompt]</td><td>Recurring scheduler. /loop 5m check the deploy (default 10m)</td></tr>
+          <tr><td>/loop [interval] [prompt]</td><td>Recurring scheduler. /loop 5m check the deploy (self-paced without an interval)</td></tr>
           <tr><td>/usage</td><td>Usage graph, favorite model, streak (v2.1.118)</td></tr>
           <tr><td>/stats</td><td>Usage graph, favorite model, streak <em>(alias for /usage)</em></td></tr>
           <tr><td>/cost</td><td>Session cost summary <em>(alias for /usage)</em></td></tr>
@@ -84,7 +84,9 @@ const jsonLd = [
           <tr><td>/copy</td><td>Interactive picker to copy a code block or full response</td></tr>
           <tr><td>/debug</td><td>Systematic troubleshooting</td></tr>
           <tr><td>/remote-env</td><td>Configure cloud environment</td></tr>
-          <tr><td>/code-review</td><td>Code review with optional effort level (renamed from /simplify in v2.1.146)</td></tr>
+          <tr><td>/simplify</td><td>Review cleanup opportunities and apply fixes; use /code-review for bugs</td></tr>
+          <tr><td>/output-style</td><td>Default, Proactive, Concise, Explanatory, Learning, or custom</td></tr>
+          <tr><td>/autocompact</td><td>Save the compaction window; auto restores the model default</td></tr>
           <tr><td>/batch</td><td>Large-scale refactors via 5–30 parallel worktree agents</td></tr>
           <tr><td>/exit</td><td>Quit (or Ctrl+D)</td></tr>
         </table>
@@ -100,8 +102,8 @@ const jsonLd = [
           <tr><td>Ctrl+R</td><td>Search command history</td></tr>
           <tr><td>Ctrl+L</td><td>Clear screen (keeps context)</td></tr>
           <tr><td>Ctrl+B</td><td>Background tasks</td></tr>
-          <tr><td>Ctrl+F</td><td>Kill all background agents (double press)</td></tr>
-          <tr><td>Alt+T</td><td>Toggle thinking on/off</td></tr>
+          <tr><td>Ctrl+X Ctrl+K</td><td>Stop background subagents</td></tr>
+          <tr><td>Alt+T</td><td>Toggle thinking where supported; no effect on Opus 5.5/Fable</td></tr>
           <tr><td>Tab</td><td>Autocomplete</td></tr>
           <tr><td>Shift+Enter</td><td>New line</td></tr>
           <tr><td>Ctrl+D</td><td>Exit</td></tr>
@@ -126,21 +128,21 @@ const jsonLd = [
         <h2>Hidden But Official Features</h2>
         <table>
           <thead><tr><th>Feature</th><th>Since</th><th>What It Does</th></tr></thead>
-          <tr><td><strong>Tasks API</strong></td><td>v2.1.16</td><td>Persistent task lists with dependencies</td></tr>
+          <tr><td><strong>Tasks API</strong></td><td>v2.1.16</td><td>Task lists with dependencies; newer models opt in with CLAUDE_CODE_ENABLE_TODO_TOOLS=1</td></tr>
           <tr><td><strong>Background Agents</strong></td><td>v2.0.60</td><td>Sub-agents work while you code</td></tr>
           <tr><td><strong>Agent Teams</strong></td><td>v2.1.32</td><td>Multi-agent coordination (TeamCreate/SendMessage)</td></tr>
           <tr><td><strong>Auto-Memories</strong></td><td>v2.1.32</td><td>Automatic cross-session context capture</td></tr>
           <tr><td><strong>Session Forking</strong></td><td>v2.1.19</td><td>Rewind + create parallel timeline</td></tr>
           <tr><td><strong>LSP Tool</strong></td><td>v2.0.74</td><td>Code intelligence (go-to-def, refs)</td></tr>
-          <tr><td><strong>/code-review</strong></td><td>v2.1.146</td><td>Code review with optional effort level (e.g. <code>/code-review high</code>). Renamed from /simplify.</td></tr>
+          <tr><td><strong>/code-review</strong></td><td>v2.1.146</td><td>Code review with optional effort level (e.g. <code>/code-review high</code>). /review is an alias; /simplify handles cleanup separately.</td></tr>
           <tr><td><strong>/batch</strong></td><td>v2.1.63</td><td>Spawns 5–30 agents in isolated worktrees, each opens a PR</td></tr>
           <tr><td><strong>/loop</strong></td><td>v2.1.71</td><td>Recurring scheduler: run any prompt or command on an interval (5m, 10m...) while you work</td></tr>
           <tr><td><strong>/usage</strong></td><td>v2.1.118</td><td>Usage graph, cost breakdown, favorite model, streak (replaces /cost and /stats)</td></tr>
           <tr><td><strong>/recap</strong></td><td>v2.1.x</td><td>Session recap: structured summary of what was done</td></tr>
           <tr><td><strong>/undo</strong></td><td>v2.1.x</td><td>Undo last change (file-level undo)</td></tr>
           <tr><td><strong>/tui</strong></td><td>v2.1.x</td><td>Terminal UI mode: structured interface for session navigation</td></tr>
-          <tr><td><strong>/focus</strong></td><td>v2.1.x</td><td>Restrict Claude to a specific file or directory scope</td></tr>
-          <tr><td><strong>/ultrareview</strong></td><td>v2.1.x</td><td>Deep review mode: comprehensive analysis across all dimensions</td></tr>
+          <tr><td><strong>/focus</strong></td><td>v2.1.x</td><td>Toggle the compact focus view in fullscreen mode</td></tr>
+          <tr><td><strong>/ultrareview</strong></td><td>v2.1.x</td><td>Cloud multi-agent code review; alias for /code-review ultra</td></tr>
           <tr><td><strong>Routines</strong></td><td>v2.1.x (Apr 14)</td><td>Cloud automation: schedule recurring agents to run without local session</td></tr>
         </table>
         <div class="tip"><strong>Pro tip</strong>: These aren't "secrets." They're in the <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" target="_blank">CHANGELOG</a>. Read it!</div>
@@ -151,9 +153,9 @@ const jsonLd = [
         <h2>Permission Modes</h2>
         <table>
           <thead><tr><th>Mode</th><th>Editing</th><th>Execution</th></tr></thead>
-          <tr><td>Default</td><td>Asks</td><td>Asks</td></tr>
+          <tr><td>Manual (default)</td><td>Permission rules</td><td>Permission rules</td></tr>
           <tr><td>Auto-accept</td><td>Auto</td><td>Asks</td></tr>
-          <tr><td>Plan Mode</td><td>None</td><td>None</td></tr>
+          <tr><td>Plan Mode</td><td>No file changes</td><td>Read-only tools</td></tr>
         </table>
         <div class="tip"><strong>Shift+Tab</strong> to switch modes</div>
       </div>
@@ -213,14 +215,17 @@ const jsonLd = [
           <tr><td>Shift+Tab x 2</td><td>Enter Plan Mode</td></tr>
           <tr><td>/model opusplan</td><td>Opus planning, Sonnet execution</td></tr>
         </table>
-        <h3>Thinking Mode (Opus 4.7)</h3>
+        <h3>Current models and effort</h3>
         <table>
-          <tr><td>Default</td><td>Thinking ON at high budget by default on Pro/Max (v2.1.117)</td></tr>
-          <tr><td>Alt+T</td><td>Toggle thinking on/off (session)</td></tr>
-          <tr><td>/config</td><td>Configure thinking (permanent)</td></tr>
-          <tr><td>/effort</td><td>Set effort level: low | medium | high | xhigh (v2.1.76)</td></tr>
-          <tr><td>xhigh</td><td>Opus 4.7 only. Maximum reasoning budget (new in v2.1.117)</td></tr>
+          <tr><th>Model</th><th>Input/output per MTok</th><th>Default effort</th></tr>
+          <tr><td>Opus 5.5</td><td>$4 / $20</td><td>medium</td></tr>
+          <tr><td>Sonnet 5</td><td>$2 / $10</td><td>high</td></tr>
+          <tr><td>Haiku 4.5</td><td>$1 / $5</td><td>No effort parameter</td></tr>
+          <tr><td>Fable 5.1</td><td>$10 / $50</td><td>high</td></tr>
         </table>
+        <p>Standard direct-API rates verified September 24, 2026. Provider aliases differ. Opus 5.5 is the direct-service default; organization settings can override it.</p>
+        <p><code>/effort</code> saves levels through xhigh per model. Press s for this session only; max is session-only. Opus 5.5 and Fable always use thinking. The ultrathink keyword adds guidance without changing API effort.</p>
+        <p><a href="/guide/ultimate-guide/#25-model-selection--thinking-guide">Full model and provider reference</a></p>
       </div>
 
       <!-- Typical Workflow -->
@@ -277,9 +282,9 @@ VERIFY: Empty email shows error</code></pre>
           <tr><td>--model sonnet</td><td>Change model</td></tr>
           <tr><td>--teleport</td><td>Teleport session from web</td></tr>
           <tr><td>--add-dir ../lib</td><td>Allow outside CWD</td></tr>
-          <tr><td>--allowedTools</td><td>Whitelist tools</td></tr>
+          <tr><td>--allowedTools</td><td>Pre-approve tools; --tools restricts availability</td></tr>
           <tr><td>--debug</td><td>Debug output</td></tr>
-          <tr><td>--mcp-debug</td><td>Debug MCP servers</td></tr>
+          <tr><td>--debug='mcp'</td><td>Debug MCP servers</td></tr>
           <tr><td>--from-pr</td><td>Load context from PR (GitLab/Bitbucket/GHE, v2.1.119)</td></tr>
           <tr><td>--print</td><td>Print output then exit (non-interactive, v2.1.119)</td></tr>
         </table>

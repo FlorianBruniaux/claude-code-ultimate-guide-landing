@@ -4,7 +4,7 @@ subtitle: "Create specialized sub-agents to delegate tasks"
 cardNumber: M08
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.43.0
 order: 108
 ---
 
@@ -30,7 +30,7 @@ The file body contains instructions in Markdown: role, methodology, examples, co
 |-------|----------|------|
 | `name` | Yes | kebab-case identifier |
 | `description` | Yes | Activation trigger (50-100 chars) |
-| `model` | No | `haiku`, `sonnet` (default), `opus` |
+| `model` | No | `haiku`, `sonnet`, `opus`, `inherit` |
 | `tools` | No | Whitelist of accessible tools |
 | `memory` | No | Persistent memory scope |
 | `maxTurns` | No | Agentic turn limit |
@@ -38,11 +38,13 @@ The file body contains instructions in Markdown: role, methodology, examples, co
 | `isolation` | No | `worktree` for git isolation |
 | `color` | No | CLI color for visual distinction |
 
+Without `model`, a subagent inherits the parent model. `inherit` selects that behavior explicitly. Environment and organization overrides can still apply.
+
 ## The tools field: isolation by default
 
 Limiting `tools` to what the agent actually needs reduces the exposure surface and accidental errors. A code review agent only needs `Read, Grep, Glob`. No reason to give it `Bash` or `Write`.
 
-## Persistent memory (v2.1.32+)
+## Persistent memory (v2.1.33+)
 
 ```yaml
 memory: project   # .claude/agent-memory/<name>/
@@ -57,7 +59,7 @@ memory: local     # .claude/agent-memory-local/<name>/
 | Criterion | Agent | Slash Command |
 |-----------|-------|---------------|
 | Specialty | Yes, specific domain | No, generic workflow |
-| Own memory | Yes (v2.1.32+) | No |
+| Own memory | Yes (v2.1.33+) | No |
 | Isolated tools | Yes, whitelist | No |
 | Invocation | Automatic or manual | Manual only |
 | Format | Markdown + frontmatter | Markdown template |

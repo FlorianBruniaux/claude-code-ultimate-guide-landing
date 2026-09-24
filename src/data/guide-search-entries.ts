@@ -3556,14 +3556,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-config-security-considerations",
-    "title": "Config Security Considerations",
-    "keywords": "config security considerations guide ultimate guide multi instance decision matrix guide ultimate guide",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
-    "source": "guide"
-  },
-  {
     "id": "guide-config-disaster-recovery",
     "title": "Config Disaster Recovery",
     "keywords": "config disaster recovery guide ultimate guide md#disaster recovery",
@@ -3801,6 +3793,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "fresh context pattern guide ultimate guide md#fresh context pattern ralph loop",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#fresh-context-pattern-ralph-loop",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subscription-opus-ratio",
+    "title": "Subscription Opus Ratio",
+    "keywords": "subscription opus ratio guide ultimate guide md#subscription plans limits",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#subscription-plans--limits",
     "source": "guide"
   },
   {
@@ -4150,9 +4150,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sonnet-5-default",
     "title": "Sonnet 5 Default",
-    "keywords": "sonnet 5 default guide ultimate guide md#pricing model july 2026",
+    "keywords": "sonnet 5 default guide ultimate guide md#pricing model verified september 2026 opus 4 6 pricing guide ultimate guide md#pricing model verified september 2026",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-as-of-july-2026",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-verified-september-24-2026",
     "source": "guide"
   },
   {
@@ -5873,6 +5873,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "myths 100x faster guide ultimate guide md# myth claude code 100x faster than other coding tools",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#-myth-claude-code-is-100x-faster-than-other-ai-coding-tools",
+    "source": "guide"
+  },
+  {
+    "id": "guide-myths-reliable-sources",
+    "title": "Myths Reliable Sources",
+    "keywords": "myths reliable sources guide ultimate guide md#how spot reliable information",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#how-to-spot-reliable-information",
     "source": "guide"
   },
   {
