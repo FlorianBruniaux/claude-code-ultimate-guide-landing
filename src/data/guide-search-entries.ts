@@ -5318,9 +5318,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-teammatetool-experimental",
     "title": "Teammatetool Experimental",
-    "keywords": "teammatetool experimental guide ultimate guide md#teammatetool experimental teammatetool guide ultimate guide md#teammatetool experimental",
+    "keywords": "teammatetool experimental guide ultimate guide md#agent teams experimental teammatetool guide ultimate guide md#agent teams experimental",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#teammatetool-experimental",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#agent-teams-experimental",
     "source": "guide"
   },
   {

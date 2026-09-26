@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Synchronize the search index after the final guide-reference repairs and refresh the examples index while preserving exact filename case.
+
 - Repair relocated architecture and learning source paths in quiz metadata and the reader index.
 
 - Add English and French full-guide PDF/EPUB downloads. Refresh the complete bilingual whitepaper, recap-card and daily-cheatsheet catalog, page counts and series archives from the reviewed 3.43.0 sources. Preserve existing download URLs. Allow the security-catalog validator to use the configured guide checkout.
