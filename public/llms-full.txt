@@ -39,7 +39,7 @@ This guide is the most comprehensive community resource for Claude Code. It cove
 
 ## Guide Structure (10 Sections + Architecture)
 
-**Architecture Deep Dive** (`guide/architecture.md`):
+**Architecture Deep Dive** (`guide/core/architecture.md`):
 - Master Loop: `while(tool_call)` — no DAGs, no classifiers, no RAG
 - 8 Core Tools: Bash, Read, Edit, Write, Grep, Glob, Task, TodoWrite
 - Context: ~200K tokens, auto-compact at 75-92%

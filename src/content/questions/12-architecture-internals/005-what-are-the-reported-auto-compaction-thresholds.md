@@ -12,7 +12,7 @@ options:
   c: 95-99%
   d: No auto-compaction exists
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Auto-Compaction
   anchor: '#auto-compaction'
 ---

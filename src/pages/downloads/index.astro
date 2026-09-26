@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { GUIDE_DOWNLOADS } from '../../data/homepage-content'
 
 const title = 'Download Claude Code Ultimate Guide | PDF & EPUB'
-const description = 'Download the English Claude Code Ultimate Guide as PDF or EPUB, or read the French edition online.'
+const description = 'Download the complete Claude Code Ultimate Guide in English or French, as PDF or EPUB.'
 const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.language))]
 ---
 
@@ -13,7 +13,7 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
       <a class="back-link" href="/">← Home</a>
       <p class="eyebrow">Offline guide</p>
       <h1>Download the complete guide</h1>
-      <p class="tagline">Download the English edition for offline reading. The French edition is available online.</p>
+      <p class="tagline">English and French editions, ready for offline reading in PDF or EPUB.</p>
     </div>
   </header>
 
@@ -23,28 +23,18 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
         <section class="language-card" aria-labelledby={`language-${language.toLowerCase()}`}>
           <div>
             <span class="language-code">{language}</span>
-            <h2 id={`language-${language.toLowerCase()}`}>English edition</h2>
-            <p>Full guide, ready for offline reading and annotation.</p>
+            <h2 id={`language-${language.toLowerCase()}`}>{language === 'FR' ? 'Édition française' : 'English edition'}</h2>
+            <p>{language === 'FR' ? 'Guide complet, à lire et à annoter hors ligne.' : 'Full guide, ready for offline reading and annotation.'}</p>
           </div>
           <div class="download-actions">
             {GUIDE_DOWNLOADS.filter((download) => download.language === language).map((download) => (
               <a class={`btn ${download.format === 'PDF' ? 'btn-primary' : 'btn-secondary'}`} href={download.href} target="_blank" rel="noopener">
-                Download {download.format}
+                {language === 'FR' ? 'Télécharger' : 'Download'} {download.format}
               </a>
             ))}
           </div>
         </section>
       ))}
-      <section class="language-card" aria-labelledby="language-fr">
-        <div>
-          <span class="language-code">FR</span>
-          <h2 id="language-fr">Édition française</h2>
-          <p>Disponible en ligne. Les fichiers PDF et EPUB français ne sont pas encore publiés.</p>
-        </div>
-        <div class="download-actions">
-          <a class="btn btn-secondary" href="/guide/ultimate-guidefr/">Lire en français</a>
-        </div>
-      </section>
       <aside class="release-note">
         <strong>Need a specific version?</strong>
         <span>Browse every published artifact and release note on GitHub.</span>

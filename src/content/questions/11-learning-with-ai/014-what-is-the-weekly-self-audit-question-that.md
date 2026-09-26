@@ -13,7 +13,7 @@ options:
   c: How much did I use AI this week?
   d: Did I meet all my deadlines?
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Weekly Self-Audit
   anchor: '#weekly-self-audit'
 ---

@@ -12,7 +12,7 @@ options:
   c: Regex pattern matching
   d: Semantic similarity search
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Fuzzy Matching Details
   anchor: '#fuzzy-matching-details'
 ---

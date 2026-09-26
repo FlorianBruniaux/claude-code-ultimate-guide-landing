@@ -124,6 +124,6 @@ test('WP12 exposes the different FR and EN PDF page counts', () => {
   const whitepapers = readFileSync(resolve(PROJECT_ROOT, 'src/data/whitepapers-data.ts'), 'utf8')
   const page = readFileSync(resolve(PROJECT_ROOT, 'src/pages/whitepapers/index.astro'), 'utf8')
 
-  assert.match(whitepapers, /num: '12',[\s\S]*?pages: 42,[\s\S]*?pagesEn: 33,/)
+  assert.match(whitepapers, /num: '12',[\s\S]*?pages: 39,[\s\S]*?pagesEn: 29,/)
   assert.match(page, /wp\.pagesEn.*?EN.*?wp\.pages.*?FR/)
 })

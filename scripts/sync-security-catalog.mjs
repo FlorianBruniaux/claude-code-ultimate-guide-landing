@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const { values } = parseArgs({ options: {
   write: { type: 'boolean', default: false },
   check: { type: 'boolean', default: false },
-  'guide-root': { type: 'string', default: resolve(root, '../claude-code-ultimate-guide') },
+  'guide-root': { type: 'string', default: process.env.GUIDE_REPO_PATH || resolve(root, '../claude-code-ultimate-guide') },
 } })
 if (values.write === values.check) throw new Error('Choose --write or --check')
 

@@ -24,6 +24,18 @@ export const GUIDE_DOWNLOADS = [
     format: 'EPUB',
     href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.epub',
   },
+  {
+    id: 'guide-fr-pdf',
+    language: 'FR',
+    format: 'PDF',
+    href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.pdf',
+  },
+  {
+    id: 'guide-fr-epub',
+    language: 'FR',
+    format: 'EPUB',
+    href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.epub',
+  },
 ] as const
 
 export const START_PATHS = [

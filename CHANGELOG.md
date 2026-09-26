@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Repair relocated architecture and learning source paths in quiz metadata and the reader index.
+
+- Add English and French full-guide PDF/EPUB downloads. Refresh the complete bilingual whitepaper, recap-card and daily-cheatsheet catalog, page counts and series archives from the reviewed 3.43.0 sources. Preserve existing download URLs. Allow the security-catalog validator to use the configured guide checkout.
+
 - Refreshed the daily cheatsheet, model/context/fast-mode cards, and quiz answers against the September 24 Claude Code reference. Synchronized provider defaults, prices, effort, shortcuts, output styles, and task tools. Corrected the model examples on the MCP comparison page and the Agent Teams homepage summary. Rebuilt the guide reader and search data; updated the affected PDF/EPUB downloads and archive manifests.
 
 - Synchronized AgentSec database 2.30.0, reviewed through September 24, 2026:

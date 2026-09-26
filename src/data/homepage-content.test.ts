@@ -24,11 +24,11 @@ test('homepage resource metrics stay aligned with their canonical datasets', () 
 })
 
 test('only published guide editions expose download links', () => {
-  assert.equal(GUIDE_DOWNLOADS.length, 2)
+  assert.equal(GUIDE_DOWNLOADS.length, 4)
   assertUnique(GUIDE_DOWNLOADS.map((download) => download.id), 'download ids')
   assert.deepEqual(
     new Set(GUIDE_DOWNLOADS.map((download) => download.language)),
-    new Set(['EN']),
+    new Set(['EN', 'FR']),
   )
   assert.deepEqual(
     new Set(GUIDE_DOWNLOADS.map((download) => download.format)),
