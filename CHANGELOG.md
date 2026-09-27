@@ -4,6 +4,12 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Serve the six reviewed Gemini infographic variants with the updated guide reader and search indexes. Synchronize translation provenance from the committed guide.
+
+- Refresh six guide reader pages and search indexes with the harness corpus supplement: review constraints, memory migration, explanation checks, tool recovery and review metrics. Sources remain scoped; no research experiment is claimed as locally reproduced. Clear both legacy and current Astro content-store locations during preparation so a rebuild serves the current guide text.
+
+- Refresh guide search and content indexes for harness controls, recovery, source evaluations and human supervision. Rebuild the guide reader with three bilingual infographic topics and preserve the distinction between proposed controls and observed behavior.
+
 - Refreshed the daily cheatsheet, model/context/fast-mode cards, and quiz answers against the September 24 Claude Code reference. Synchronized provider defaults, prices, effort, shortcuts, output styles, and task tools. Corrected the model examples on the MCP comparison page and the Agent Teams homepage summary. Rebuilt the guide reader and search data; updated the affected PDF/EPUB downloads and archive manifests.
 
 - Synchronized AgentSec database 2.30.0, reviewed through September 24, 2026:

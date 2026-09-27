@@ -740,6 +740,62 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-control-tests",
+    "title": "Agent Harness Control Tests",
+    "keywords": "agent harness control tests guide core agent harness md#test the control and its permitted path",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#test-the-control-and-its-permitted-path",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-evaluation-oracle",
+    "title": "Agent Harness Evaluation Oracle",
+    "keywords": "agent harness evaluation oracle guide roles agent evaluation md#freeze the oracle and the decision rule",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#freeze-the-oracle-and-the-decision-rule",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-review-constraints",
+    "title": "Agent Harness Review Constraints",
+    "keywords": "agent harness review constraints guide core agent harness md#test review constraints separately",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#test-review-constraints-separately",
+    "source": "guide"
+  },
+  {
+    "id": "guide-loop-graph-tool-failures",
+    "title": "Loop Graph Tool Failures",
+    "keywords": "loop graph tool failures guide core loop graph engineering md#make tool failures actionable",
+    "category": "Guide",
+    "url": "/guide/loop-graph-engineering/#make-tool-failures-actionable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-history-compaction",
+    "title": "Memory History Compaction",
+    "keywords": "memory history compaction guide core memory systems md#keep history distinct from compaction",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#keep-history-distinct-from-compaction",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-migration-evaluation",
+    "title": "Memory Migration Evaluation",
+    "keywords": "memory migration evaluation guide core memory systems md#test memory migration",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#test-memory-migration",
+    "source": "guide"
+  },
+  {
+    "id": "guide-review-uptake-correctness",
+    "title": "Review Uptake Correctness",
+    "keywords": "review uptake correctness guide roles agent evaluation md#separate review uptake from correctness",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#separate-review-uptake-from-correctness",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-glossary",
     "title": "Agent Harness Glossary",
     "keywords": "agent harness glossary guide core glossary md#agent harness",
@@ -2004,6 +2060,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-review-control-simulation",
+    "title": "Review Control Simulation",
+    "keywords": "review control simulation examples workflows review control demo",
+    "category": "Examples",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/workflows/review-control-demo.py",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-review-infographics",
+    "title": "Harness Review Infographics",
+    "keywords": "harness review infographics guide images harness review readme",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/harness-review/README.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-review-admission-worksheet",
     "title": "Review Admission Worksheet",
     "keywords": "review admission worksheet examples workflows review admission",
@@ -2364,11 +2436,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-learning-review-cognitive-ceiling",
-    "title": "Learning Review Cognitive Ceiling",
-    "keywords": "learning review cognitive ceiling guide roles learning with md#review has measured ceiling",
+    "id": "guide-learning-review-local-calibration",
+    "title": "Learning Review Local Calibration",
+    "keywords": "learning review local calibration guide roles learning with md#historical review limits need local calibration",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/#review-has-a-measured-ceiling",
+    "url": "/guide/learning-with-ai/#historical-review-limits-need-local-calibration",
     "source": "guide"
   },
   {
@@ -2380,11 +2452,11 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-learning-review-recovery-cost",
-    "title": "Learning Review Recovery Cost",
-    "keywords": "learning review recovery cost guide roles learning with md#the day lost its low load stretches",
+    "id": "guide-learning-review-supervision-capacity",
+    "title": "Learning Review Supervision Capacity",
+    "keywords": "learning review supervision capacity guide roles learning with md#supervision needs capacity and usable interface",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/#the-day-lost-its-low-load-stretches",
+    "url": "/guide/learning-with-ai/#supervision-needs-capacity-and-a-usable-interface",
     "source": "guide"
   },
   {
@@ -2398,9 +2470,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-learning-review-shift-practices",
     "title": "Learning Review Shift Practices",
-    "keywords": "learning review shift practices guide roles learning with md#practices that address this",
+    "keywords": "learning review shift practices guide roles learning with md#practices evaluate locally",
     "category": "Guide",
-    "url": "/guide/learning-with-ai/#practices-that-address-this",
+    "url": "/guide/learning-with-ai/#practices-to-evaluate-locally",
     "source": "guide"
   },
   {

@@ -26,9 +26,12 @@ const ROOT = resolve(__dirname, '..')
 
 // Clear Astro's content layer data store so stale entries don't cause
 // duplicate ID warnings after guide files are regenerated.
-const DATA_STORE = resolve(ROOT, '.astro/data-store.json')
-if (existsSync(DATA_STORE)) {
-  rmSync(DATA_STORE)
+const CONTENT_DATA_STORES = [
+  resolve(ROOT, '.astro/data-store.json'),
+  resolve(ROOT, 'node_modules/.astro/data-store.json'),
+]
+for (const dataStore of CONTENT_DATA_STORES) {
+  if (existsSync(dataStore)) rmSync(dataStore)
 }
 const GUIDE_REPO = resolve(process.env.GUIDE_REPO_PATH ?? resolve(ROOT, '../claude-code-ultimate-guide'))
 const GUIDE_DIR = resolve(GUIDE_REPO, 'guide')
