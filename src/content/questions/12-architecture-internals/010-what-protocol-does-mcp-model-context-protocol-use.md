@@ -12,7 +12,7 @@ options:
   c: JSON-RPC 2.0 over stdio or HTTP
   d: gRPC with Protocol Buffers
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: MCP Integration
   anchor: '#6-mcp-integration'
 ---

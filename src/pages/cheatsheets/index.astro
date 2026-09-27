@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import { getCollection } from 'astro:content'
 import { RECAP_SERIES, RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 import { resolveRecapPdfUrl } from '../../utils/resolve-recap-pdf-url'
@@ -66,6 +67,7 @@ const cardUrls = cardUrlsFr
     <div class="container">
       <h1>Cheat Sheets</h1>
       <p class="tagline">{totalCards} printable A4 recap cards: commands, workflows, agents, security, MCP, and more.</p>
+      <PublicationEdition />
       <div class="stats-row" aria-label="Catalogue breakdown">
         <div class="stat-item">
           <span class="stat-number">{allSorted.length}</span>

@@ -12,7 +12,7 @@ options:
   c: Last 10 messages of conversation
   d: System prompt + CLAUDE.md files
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Isolation Model
   anchor: '#isolation-model'
 ---

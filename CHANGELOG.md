@@ -4,6 +4,15 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+
+- Show the September 26, 2026 publication date and guide version on the PDF/EPUB download pages, whitepaper catalog, recap cards, and daily cheatsheet. Mirror the date from the guide's publication registry during builds, and align catalog sitemap dates and structured metadata with the published edition.
+
+- Synchronize the search index after the final guide-reference repairs and refresh the examples index while preserving exact filename case.
+
+- Repair relocated architecture and learning source paths in quiz metadata and the reader index.
+
+- Add English and French full-guide PDF/EPUB downloads. Refresh the complete bilingual whitepaper, recap-card and daily-cheatsheet catalog, page counts and series archives from the reviewed 3.43.0 sources. Preserve existing download URLs. Allow the security-catalog validator to use the configured guide checkout.
+
 - Serve the six reviewed Gemini infographic variants with the updated guide reader and search indexes. Synchronize translation provenance from the committed guide.
 
 - Refresh six guide reader pages and search indexes with the harness corpus supplement: review constraints, memory migration, explanation checks, tool recovery and review metrics. Sources remain scoped; no research experiment is claimed as locally reproduced. Clear both legacy and current Astro content-store locations during preparation so a rebuild serves the current guide text.

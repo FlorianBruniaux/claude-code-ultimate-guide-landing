@@ -12,7 +12,7 @@ options:
   c: A RAG pipeline with embeddings
   d: A multi-agent system with intent router
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: The Master Loop
   anchor: '#1-the-master-loop'
 ---

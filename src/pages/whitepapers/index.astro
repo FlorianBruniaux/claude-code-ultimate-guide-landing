@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import PublicationEdition from '../../components/global/PublicationEdition.astro'
+import edition from '../../data/publication-edition.json'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { WHITEPAPERS, TOTAL_PAGES, PDF_BASE_URL } from '../../data/whitepapers-data.ts'
 import { getSiteStats } from '../../utils/site-stats'
@@ -18,10 +20,12 @@ const jsonLd = [
     "name": "Claude Code Ebooks & Whitepapers",
     "description": description,
     "url": "https://cc.bruniaux.com/whitepapers/",
+    "dateModified": edition.updatedAt,
     "hasPart": WHITEPAPERS.map(wp => ({
       "@type": "Book",
       "name": wp.titleEn,
       "bookFormat": "EBook",
+      "dateModified": edition.updatedAt,
       "inLanguage": ["fr", "en"],
       "url": "https://cc.bruniaux.com/whitepapers/",
     })),
@@ -85,6 +89,7 @@ const profiles = [
         {whitepaperCount} whitepapers covering every layer of Claude Code, from first install to org-wide adoption.
         Structured for practitioners, grounded in production experience.
       </p>
+      <PublicationEdition formats="PDF and EPUB editions" />
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">{whitepaperCount}</span>

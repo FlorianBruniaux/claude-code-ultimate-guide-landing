@@ -12,7 +12,7 @@ options:
   c: Bash
   d: Task
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: The Bash Universal Adapter
   anchor: '#the-bash-universal-adapter'
 ---

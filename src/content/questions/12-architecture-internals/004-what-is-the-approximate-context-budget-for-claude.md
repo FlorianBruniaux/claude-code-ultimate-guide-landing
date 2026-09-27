@@ -12,7 +12,7 @@ options:
   c: ~200K tokens
   d: ~500K tokens
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: Context Budget Breakdown
   anchor: '#context-budget-breakdown'
 ---

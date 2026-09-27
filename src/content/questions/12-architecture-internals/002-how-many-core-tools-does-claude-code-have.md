@@ -13,7 +13,7 @@ options:
   c: 12 tools
   d: Unlimited (model-dependent)
 doc_reference:
-  file: guide/architecture.md
+  file: guide/core/architecture.md
   section: The Tool Arsenal
   anchor: '#2-the-tool-arsenal'
 ---

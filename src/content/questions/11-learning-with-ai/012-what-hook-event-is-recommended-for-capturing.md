@@ -13,7 +13,7 @@ options:
   c: Stop - when session ends
   d: Notification - on alerts
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: Hooks That Build Habits
   anchor: '#hooks-that-build-habits'
 ---

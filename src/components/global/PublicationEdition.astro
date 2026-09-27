@@ -1,0 +1,18 @@
+---
+import edition from '../../data/publication-edition.json'
+
+interface Props { formats?: string }
+
+const { formats = 'PDF editions' } = Astro.props
+const dateLabel = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+}).format(new Date(`${edition.updatedAt}T00:00:00Z`))
+---
+
+<p class="publication-edition">
+  {formats} · Guide v{edition.guideVersion} · Updated <time datetime={edition.updatedAt}>{dateLabel}</time>
+</p>
+
+<style>
+  .publication-edition { margin: 0.75rem 0; color: var(--text-secondary); font-size: 0.875rem; }
+</style>

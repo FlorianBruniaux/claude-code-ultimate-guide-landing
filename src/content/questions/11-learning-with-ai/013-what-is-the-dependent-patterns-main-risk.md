@@ -14,7 +14,7 @@ options:
   c: Left behind
   d: Overworked
 doc_reference:
-  file: guide/learning-with-ai.md
+  file: guide/roles/learning-with-ai.md
   section: 'Pattern 1: Dependent'
   anchor: '#pattern-1-dependent'
 ---
