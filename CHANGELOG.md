@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Show the September 26, 2026 publication date and guide version on the PDF/EPUB download pages, whitepaper catalog, recap cards, and daily cheatsheet. Mirror the date from the guide's publication registry during builds, and align catalog sitemap dates and structured metadata with the published edition.
+
 - Synchronize the search index after the final guide-reference repairs and refresh the examples index while preserving exact filename case.
 
 - Repair relocated architecture and learning source paths in quiz metadata and the reader index.

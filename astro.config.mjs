@@ -6,6 +6,7 @@ import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
+import publicationEdition from './src/data/publication-edition.json'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -17,10 +18,12 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-08-31',
   'https://cc.bruniaux.com/mcp/': '2026-08-31',
   'https://cc.bruniaux.com/resources/': '2026-08-31',
-  'https://cc.bruniaux.com/downloads/': '2026-08-31',
+  'https://cc.bruniaux.com/downloads/': publicationEdition.updatedAt,
+  'https://cc.bruniaux.com/whitepapers/': publicationEdition.updatedAt,
+  'https://cc.bruniaux.com/cheatsheets/': publicationEdition.updatedAt,
   'https://cc.bruniaux.com/projects/': '2026-08-31',
   'https://cc.bruniaux.com/context/': '2026-08-31',
-  'https://cc.bruniaux.com/cheatsheet/': '2026-05-03',
+  'https://cc.bruniaux.com/cheatsheet/': publicationEdition.updatedAt,
   'https://cc.bruniaux.com/faq/': '2026-06-08',
   'https://cc.bruniaux.com/releases/': LATEST_CLAUDE_CODE_RELEASE_DATE_ISO,
   'https://cc.bruniaux.com/changelog/': '2026-08-30',

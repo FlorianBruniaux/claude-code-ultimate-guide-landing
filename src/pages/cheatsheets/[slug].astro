@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import { getCollection, render } from 'astro:content'
 import { RECAP_BASE_URL, CARD_HASHES_FR, CARD_HASHES_EN, DIRECT_ACCESS_IDS } from '../../data/recap-cards-data'
 import { resolveRecapPdfUrl } from '../../utils/resolve-recap-pdf-url'
@@ -96,6 +97,7 @@ const jsonLd = [
       </div>
       <h1>{card.data.title}</h1>
       <p class="card-subtitle">{card.data.subtitle}</p>
+      <PublicationEdition />
       <div class="hero-actions">
         {isDirectAccess ? (
           <!-- Direct access: dual FR + EN download buttons -->

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import { GUIDE_DOWNLOADS } from '../../data/homepage-content'
 
 const title = 'Download Claude Code Ultimate Guide | PDF & EPUB'
@@ -14,6 +15,7 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
       <p class="eyebrow">Offline guide</p>
       <h1>Download the complete guide</h1>
       <p class="tagline">English and French editions, ready for offline reading in PDF or EPUB.</p>
+      <PublicationEdition formats="PDF and EPUB editions" />
     </div>
   </header>
 

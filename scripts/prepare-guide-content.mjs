@@ -55,6 +55,20 @@ function syncIntentNavigation() {
 
 syncIntentNavigation()
 
+// Mirror the actual artifact build date, never the website build date.
+const publicationsPath = resolve(GUIDE_REPO, 'machine-readable/publications.json')
+if (existsSync(publicationsPath)) {
+  const publications = JSON.parse(readFileSync(publicationsPath, 'utf-8'))
+  const updatedAt = publications.built_at?.slice(0, 10)
+  if (!publications.guide_version || !updatedAt || !Number.isFinite(Date.parse(updatedAt))) {
+    throw new Error('[prepare-guide] Invalid publication version or build date')
+  }
+  writeFileSync(resolve(ROOT, 'src/data/publication-edition.json'), `${JSON.stringify({
+    guideVersion: publications.guide_version,
+    updatedAt,
+  }, null, 2)}\n`)
+}
+
 /**
  * Real dateModified/datePublished for a source file, from the guide repo's
  * own git history (not the landing repo — guide content is gitignored here,
