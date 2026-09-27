@@ -1,0 +1,97 @@
+CHANGELOG.md
+  s_86ed8bd547d4f8::t_c675fa46806790 7-15
+astro.config.mjs
+  s_4e1865c8fd3c39::t_f483dc69791e3a 9,21-23,26
+public/llms-full.txt
+  s_4e1865c8fd3c39::t_2e269bf806eeac 42
+scripts/prepare-guide-content.mjs
+  s_4e1865c8fd3c39::t_ea4761b204e298 61-74
+scripts/sync-security-catalog.mjs
+  s_4e1865c8fd3c39::t_7196f1b8e980f7 11
+src/components/global/PublicationEdition.astro
+  s_4e1865c8fd3c39::t_323f8059ac5993 1-18
+src/content/questions/11-learning-with-ai/012-what-hook-event-is-recommended-for-capturing.md
+  s_4e1865c8fd3c39::t_8a1a9ad8a404e9 16
+src/content/questions/11-learning-with-ai/013-what-is-the-dependent-patterns-main-risk.md
+  s_4e1865c8fd3c39::t_c096f34db101a0 17
+src/content/questions/11-learning-with-ai/014-what-is-the-weekly-self-audit-question-that.md
+  s_4e1865c8fd3c39::t_bd265882569cf4 16
+src/content/questions/12-architecture-internals/001-what-is-the-core-architecture-pattern-of-claude.md
+  s_4e1865c8fd3c39::t_b5e02ef5f30ce3 15
+src/content/questions/12-architecture-internals/002-how-many-core-tools-does-claude-code-have.md
+  s_4e1865c8fd3c39::t_a09948c2554cc5 16
+src/content/questions/12-architecture-internals/003-which-tool-is-described-as-claudes-swiss-army.md
+  s_4e1865c8fd3c39::t_afa4a6e55bcdcb 15
+src/content/questions/12-architecture-internals/004-what-is-the-approximate-context-budget-for-claude.md
+  s_4e1865c8fd3c39::t_28442ac192297b 15
+src/content/questions/12-architecture-internals/005-what-are-the-reported-auto-compaction-thresholds.md
+  s_4e1865c8fd3c39::t_5bf478cd9ce5b0 15
+src/content/questions/12-architecture-internals/007-what-does-a-sub-agent-receive-when-spawned-by-the.md
+  s_4e1865c8fd3c39::t_1e48d8d9949da7 15
+src/content/questions/12-architecture-internals/009-what-algorithm-does-the-edit-tool-use-when-exact.md
+  s_4e1865c8fd3c39::t_e6dc1f5a09bff7 15
+src/content/questions/12-architecture-internals/010-what-protocol-does-mcp-model-context-protocol-use.md
+  s_4e1865c8fd3c39::t_ba9410ea841e6a 15
+src/data/examples-data.ts
+  s_9bb6202b9f92b0::t_750dbf04c18d3c 3-4,71
+src/data/guide-content-entries.ts
+  s_4e1865c8fd3c39::t_b231c0fff467b3 610,5050,5434,6114,6266,7106,7522,7538,7594,7690,8266,8298,8370,9688-9690,9692-9708,9786,9818,9824-9826,9828,9832-9834,9836,9840-9842,9844,9848-9850,9852-9908,9912-9914,9916,9920-9922,9924-9932,9994,10002,10007-10022,10066,10114,10288-10290,10292,10296-10298,10300-10308,10354,10490,10495-10510,10522,10527-10534,10562,10567-10582,10690,10696-10698,10700,10858,10864-10890,10892,10896-10898,10900-10908,10913-10914,10919-10934,10986,11002,11007-11014,11034,11039-11062,11234,11378,14818
+src/data/guide-search-entries.ts
+  s_4e1865c8fd3c39::t_436b10018d8ce2 5393,5395
+src/data/homepage-content.test.ts
+  s_4e1865c8fd3c39::t_1156fc4f25958d 27,31
+src/data/homepage-content.ts
+  s_4e1865c8fd3c39::t_b035933ff528c7 27-38
+src/data/landing-sync.test.ts
+  s_4e1865c8fd3c39::t_9d1b639be5832f 127
+src/data/publication-edition.json
+  s_9bb6202b9f92b0::t_6cbf40fbfef722 1-4
+src/data/recap-cards-data.ts
+  s_4e1865c8fd3c39::t_be8ecaa926891e 43-44,53-54,63-64,71-81,83,86-100,102-107,109-129,139-149,151,154-168,170-175,177-197
+src/data/sitemap-page.test.ts
+  s_4e1865c8fd3c39::t_b459889c88f4d9 44
+src/data/whitepapers-data.ts
+  s_4e1865c8fd3c39::t_4c854a316129c2 40-41,46-47,57-58,62-63,73-74,78-79,89-90,94-95,105-106,110-111,121-122,126-127,137-138,142-143,153,159-160,170-171,175-176,186-187,191-192,202-203,207-208,218-219,224-225,235-236,241-242
+src/pages/cheatsheet/index.astro
+  s_4e1865c8fd3c39::t_ac77f6debbccbc 3-4,19,27,40
+src/pages/cheatsheets/[slug].astro
+  s_4e1865c8fd3c39::t_3ae8329a9b13e4 3,100
+src/pages/cheatsheets/index.astro
+  s_4e1865c8fd3c39::t_2551a91d3fc1a1 3,70
+src/pages/downloads/index.astro
+  s_4e1865c8fd3c39::t_bee3ef41b0e20f 3,7,17-18,28-29,34
+src/pages/whitepapers/index.astro
+  s_4e1865c8fd3c39::t_df241311931d6a 3-4,23,28,92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "39e455c181c0006e904e637a7a7bcc2a286fe7ae",
+  "prompts": {},
+  "sessions": {
+    "s_4e1865c8fd3c39": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0dd48-5418-7f33-b960-b099ac58d3ff",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_86ed8bd547d4f8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ddea-193b-7a90-97b4-7fabe707f76c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9bb6202b9f92b0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0dd0b-3a45-74b2-bf85-a54bc884e926",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
