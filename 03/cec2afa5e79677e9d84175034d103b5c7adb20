@@ -1,0 +1,53 @@
+src/data/publication-edition.json
+  s_03ba8b1a919c17::t_017f38d9d66ac3 1-4
+src/data/sitemap-page.test.ts
+  s_86ed8bd547d4f8::t_6d37b08ec3cfc1 44
+src/pages/cheatsheet/index.astro
+  s_7e64375df4c8b6::t_451ff2f59f789f 3-4,19,27,40
+src/pages/cheatsheets/[slug].astro
+  s_aba67d75d36ed2::t_322327f40df07d 3,100
+src/pages/cheatsheets/index.astro
+  s_7e64375df4c8b6::t_1426735636135e 3,70
+src/pages/downloads/index.astro
+  s_7e64375df4c8b6::t_2741731d3d72af 3,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "03cec2afa5e79677e9d84175034d103b5c7adb20",
+  "prompts": {},
+  "sessions": {
+    "s_03ba8b1a919c17": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d374-0cc8-7963-b9d1-425a32259a25",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_7e64375df4c8b6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0cf24-9a72-7501-89c0-9d65d4d875c5",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_86ed8bd547d4f8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0ddea-193b-7a90-97b4-7fabe707f76c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_aba67d75d36ed2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08b4e-9b8b-7b93-a51f-ded90afe5aeb",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
