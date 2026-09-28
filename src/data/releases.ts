@@ -18,8 +18,59 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.281',
+    version: 'v2.1.284',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added Claude Sonnet 5.5 (claude-sonnet-5-5) as the default Sonnet model on the Anthropic API: 1M context, $2/$10 per Mtok and $0.20/Mtok cache reads",
+      "Changed interactive terminal and VS Code sessions to start in auto mode when no permission mode is configured, on every plan and provider; Ultracode becomes its own /effort toggle",
+      "Added a \"Yes, but ask again next time\" answer for auto-mode reads outside the working directories, /mcp reconnect all and dollar amounts for gateway spend limits in /usage and the status line",
+      "Fixed damaged response streams, \"Prompt is too long\" errors that persisted after compacting, resumed MCP tool calls failing while their server connects and plugin allowed-tools pre-approval under managed allowManagedPermissionRulesOnly",
+    ],
+    breaking: [
+      "Interactive terminal and VS Code sessions start in auto mode when no permission mode is configured, on every plan and provider; permissions.defaultMode still overrides it.",
+      "Ultracode is a separate /effort toggle (Tab, or /effort ultracode [on|off]) and no longer forces xhigh effort.",
+      "Under managed allowManagedPermissionRulesOnly, only plugins from an official Anthropic source or a source managed settings vouch for keep allowed-tools pre-approval; marketplace, claude.ai and npm plugins lose it.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Sonnet 5.5',
+  },
+  {
+    version: 'v2.1.283',
+    date: "Sep 25, 2026",
+    highlights: [
+      "Added deniedModels and availableModelsMatch: \"exact\" managed settings to block specific models or keep new model releases blocked until listed",
+      "Added /doctor prompt-audit to audit CLAUDE.md files, skills, agents and commands for prompting patterns written for older models",
+      "Changed interactive sessions on third-party providers or with telemetry off to start in auto mode when no permission mode is configured; reverted the 2.1.282 claude-ai name reservation",
+      "Fixed stdio MCP servers left running, stateless remote MCP servers unusable after a brief 404, /context omitting MCP server instructions and managed sandbox settings ignored when one value was invalid",
+    ],
+    breaking: [
+      "Interactive sessions on third-party providers or with telemetry off start in auto mode when no permission mode is configured; permissions.defaultMode still overrides it.",
+      "Skill(anthropic-skills:<name>) deny rules also block that skill when Claude Desktop delivers it as a plugin; claude plugin eval refuses git versions older than 2.31.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.282',
+    date: "Sep 24, 2026",
+    highlights: [
+      "Added a maxProseWidth setting and a startup notice, /status and claude doctor entries for telemetry variables in project settings that were ignored or turned telemetry off",
+      "Changed project and local settings to ignore OpenTelemetry variables that turn on export, set its endpoint or capture content",
+      "Fixed 400 errors from undecryptable web search results in history, extended thinking lost on resume or around immediate slash commands, and redacted_thinking failures on every turn",
+      "Fixed mistyped managed lock keys being ignored and managed permissions, autoMode, worktree and attribution blocks being dropped when one nested value was invalid",
+    ],
+    breaking: [
+      "Project and local settings ignore OpenTelemetry variables that turn on export, set its endpoint or capture content, such as CLAUDE_CODE_ENABLE_TELEMETRY and OTEL_LOG_*.",
+      "Auto mode uses the server-side classifier by default on a direct Anthropic API connection when telemetry is off; CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out.",
+      "sandbox.excludedCommands ignores project and local entries when managed settings or --settings set allowUnsandboxedCommands: false, or managed allowManagedDomainsOnly: true.",
+      "Skill folders, command files and workflow commands in the anthropic-skills namespace no longer load, and MCP servers named anthropic-skills list no skills or prompts; the same claude-ai reservation was reverted in 2.1.283.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.281',
+    date: "Sep 23, 2026",
     highlights: [
       "Added browser-based MCP elicitation on protocol 2026-07-28 connections and MCP configuration checks to claude plugin validate",
       "Added Bedrock role assumption and guardrails, telemetry labels and newer Desktop policy keys to Claude apps gateways",
@@ -32,7 +83,6 @@ export const releases: Release[] = [
       "Dangerous-rm prompts in auto and bypass modes deny after two unanswered minutes; CLAUDE_CODE_DISABLE_DANGEROUS_RM_TIMEOUT=1 disables the timeout.",
       "Self-hosted runner wrappers and command hooks that append system prompts must use --system-prompt-file or --append-system-prompt-file.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -64,7 +114,7 @@ export const releases: Release[] = [
     breaking: [
       "Auto mode defaults to the server-side classifier on the Claude API, Enterprise, Bedrock, Vertex, Foundry and gateways; CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out on the cloud providers and gateways.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.277',
@@ -79,7 +129,7 @@ export const releases: Release[] = [
       "The TaskOutput tool is removed; Claude reads a background task's output file with Read, and taskOutputMaxChars and TASK_MAX_OUTPUT_LENGTH no longer have any effect.",
       "A sandbox.excludedCommands glob no longer exempts a whole compound Bash command when one part matches; every part must match.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.276',
@@ -98,7 +148,7 @@ export const releases: Release[] = [
       "Security fixes cover passwords and tokens shown in plugin and marketplace URLs, SubagentStop hooks with a matcher firing for every subagent with an empty agent type, and sandboxed Bash blocked from writing to project folders named hooks/ or config/",
       "Fixed prompt-cache misses from a restored memory file's shifting age note, sandboxed Bash on Linux reporting exit code 0 for failed commands under zsh, and resume failing on malformed transcript entries",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.274',
