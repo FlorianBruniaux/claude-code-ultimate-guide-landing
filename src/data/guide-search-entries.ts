@@ -4582,9 +4582,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-intent-md-diagram",
     "title": "Intent Md Diagram",
-    "keywords": "intent md diagram guide diagrams development workflows md#spec first development pipeline",
+    "keywords": "intent md diagram guide diagrams development workflows md#spec first development pipeline maintain loop triage guide diagrams development workflows md#spec first development pipeline",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#spec-first-development-pipeline",
+    "source": "guide"
+  },
+  {
+    "id": "guide-document-chain-audit-trail",
+    "title": "Document Chain Audit Trail",
+    "keywords": "document chain audit trail guide ops traceability md#the document chain second audit trail",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#the-document-chain-as-a-second-audit-trail",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-sdlc-naming-adlc",
+    "title": "Agentic Sdlc Naming Adlc",
+    "keywords": "agentic sdlc naming adlc guide workflows spec first md#the pattern",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/#the-pattern",
     "source": "guide"
   },
   {
@@ -5086,7 +5102,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-legacy-codebase-modernization",
     "title": "Legacy Codebase Modernization",
-    "keywords": "legacy codebase modernization guide ultimate guide md#921 legacy codebase modernization",
+    "keywords": "legacy codebase modernization guide ultimate guide md#921 legacy codebase modernization brownfield zones guide ultimate guide md#921 legacy codebase modernization brownfield migration completeness guide ultimate guide md#921 legacy codebase modernization",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#921-legacy-codebase-modernization",
     "source": "guide"
@@ -5097,6 +5113,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "feature to code anchoring guide ultimate guide md#feature code anchoring when youre not rewriting",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#feature-to-code-anchoring-when-youre-not-rewriting",
+    "source": "guide"
+  },
+  {
+    "id": "guide-bun-rust-port-case-study",
+    "title": "Bun Rust Port Case Study",
+    "keywords": "bun rust port case study guide ultimate guide md#case study buns zig rust port with claude code",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#case-study-buns-zig-to-rust-port-with-claude-code",
+    "source": "guide"
+  },
+  {
+    "id": "guide-characterization-tests-independent-author",
+    "title": "Characterization Tests Independent Author",
+    "keywords": "characterization tests independent author guide workflows tdd with claude md#tdd with legacy code",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/tdd-with-claude/#tdd-with-legacy-code",
     "source": "guide"
   },
   {
