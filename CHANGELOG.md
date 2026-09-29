@@ -5,6 +5,8 @@ All notable changes to the Claude Code Guide Landing Site.
 ## [Unreleased]
 
 
+- Report external links that fda.gov redirects to its anti-bot page (`/apology_objects/abuse-detection-apology.html`, served with HTTP 404) as unverified instead of broken. The FDA draft guidance cited by the learning-with-AI page is still published; the scheduled link check had flagged it as a dead link.
+
 - Synchronize Claude Code v2.1.282 through v2.1.284, including Sonnet 5.5, auto mode as the default for interactive sessions, the Ultracode toggle, model deny lists and managed-settings compatibility changes. Update the release date used by structured data and the sitemap to September 28, 2026, keep the five newest releases initially visible, and refresh the guide content search index.
 
 - Show the September 26, 2026 publication date and guide version on the PDF/EPUB download pages, whitepaper catalog, recap cards, and daily cheatsheet. Mirror the date from the guide's publication registry during builds, and align catalog sitemap dates and structured metadata with the published edition.

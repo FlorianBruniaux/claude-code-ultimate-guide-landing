@@ -18,6 +18,11 @@ class LinkChecks(unittest.TestCase):
         self.assertEqual(links.classify(200), 'http-ok')
         self.assertEqual(links.classify(200, True), 'unverified')
 
+    def test_bot_block_redirect_is_not_reported_as_broken(self):
+        blocked = 'https://www.fda.gov/apology_objects/abuse-detection-apology.html'
+        self.assertEqual(links.classify(404, effective_url=blocked), 'unverified')
+        self.assertEqual(links.classify(404, effective_url='https://www.fda.gov/missing'), 'broken')
+
     def test_svg_diagram_and_javascript_links_are_collected(self):
         page = links.Page()
         page.feed('<a href="/guide/"></a><a xlink:href="/diagram/"></a><g data-guide-url="/source/"></g><script>const x={href:"/workflows/"}</script>')

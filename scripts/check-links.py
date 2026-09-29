@@ -109,8 +109,14 @@ def github_path(url):
     return None
 
 
-def classify(status, error=False):
+# Anti-bot pages some sites redirect crawlers to, answered with a 404 status.
+BOT_BLOCK_PATHS = ('/apology_objects/abuse-detection-apology.html',)  # fda.gov
+
+
+def classify(status, error=False, effective_url=''):
     if error:
+        return 'unverified'
+    if urlsplit(effective_url).path in BOT_BLOCK_PATHS:
         return 'unverified'
     if status in (404, 410):
         return 'broken'
@@ -144,9 +150,10 @@ def request(url, body=False, method='GET'):
     except ValueError:
         meta = {}
     status = meta.get('http_code', 0)
+    effective_url = meta.get('url_effective', url)
     return {'url': url, 'status': status, 'method': method,
-            'classification': classify(status, result.returncode != 0),
-            'effective_url': meta.get('url_effective', url), 'error': result.stderr[-300:]}, content
+            'classification': classify(status, result.returncode != 0, effective_url),
+            'effective_url': effective_url, 'error': result.stderr[-300:]}, content
 
 
 def check_http(url):
