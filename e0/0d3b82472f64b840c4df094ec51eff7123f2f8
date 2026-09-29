@@ -1,0 +1,23 @@
+scripts/check-links.py
+  s_2b47aafd5c6e51::t_6889a467856383 112-116,119-120,153,155-156
+scripts/test-check-links.py
+  s_2b47aafd5c6e51::t_fa2992889da082 21-25
+CHANGELOG.md
+  s_2b47aafd5c6e51::t_1974a37878712b 8-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e00d3b82472f64b840c4df094ec51eff7123f2f8",
+  "prompts": {},
+  "sessions": {
+    "s_2b47aafd5c6e51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb9f2c9e-2738-40ce-9df9-3c0a8467bbe6",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
