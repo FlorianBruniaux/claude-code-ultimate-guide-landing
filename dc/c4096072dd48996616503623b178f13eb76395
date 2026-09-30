@@ -1,0 +1,141 @@
+CHANGELOG.md
+  s_9b5218fd2d32ec::t_75204adf428db8 7-10
+astro.config.mjs
+  s_9e15cec8cf2013::t_5867b418885b6f 42-43
+public/llms.txt
+  s_9e15cec8cf2013::t_d9adf499b12347 37-42
+src/components/benchmarks/BenchmarkQuality.astro
+  s_6e7f8c1495b790::t_574873ef9078b5 17,20-30,32-64,66-95,98-113,115-117,121-123,129-155,159-183
+src/components/benchmarks/ClaimsVsMeasured.astro
+  s_9e15cec8cf2013::t_0d65a1806f275a 2-5,7-8,12-16,19-57,59-61,66-67,70-74,76-77,83-86,88-89,92-94,97,99-100,102-113
+src/components/benchmarks/ResearchPapers.astro
+  s_00c6bf8ee605be::t_d841b8b8d71bd4 1-81
+src/components/benchmarks/ResultsByTool.astro
+  s_9e15cec8cf2013::t_a9101fbd332bf7 2-5,13-25,29-32,35-40,42-50,53-99,101-103,105-110,112-133,137-138,142-151,154-156,158-162,165,167-175,177-179,181-184,187,190-191,195-206,208-214,216-223,225-232,237-268
+src/components/benchmarks/ToolCatalog.astro
+  s_2b47aafd5c6e51::t_f2ce92448aaa45 1-417
+src/components/benchmarks/ToolTokenShare.astro
+  s_9e15cec8cf2013::t_5329d9c0572f4e 41,83,99,102
+src/components/benchmarks/format.test.ts
+  s_00c6bf8ee605be::t_5467680a9ad727 1-40
+src/components/benchmarks/format.ts
+  s_2b47aafd5c6e51::t_55ce22e03c10ae 30,32,35-52
+src/components/benchmarks/ui/ChipGroup.astro
+  s_9e15cec8cf2013::t_3849b94ad8de7e 1-56
+src/components/benchmarks/ui/Kicker.astro
+  s_9e15cec8cf2013::t_b1bab870006dda 1-18
+src/components/benchmarks/ui/StatPair.astro
+  s_394b97e16a622a::t_96a6b9648b24da 1-18
+src/components/landing/TokenOptimization.astro
+  s_9e15cec8cf2013::t_4bd5c6137eaeee 34,36,41
+src/content/cheatsheets/m12-hooks-patterns-concrets.md
+  s_9e15cec8cf2013::t_f064f649696ec9 78
+src/content/cheatsheets/t20-token-optimization.md
+  s_00c6bf8ee605be::t_81172879685e85 13,17-18,33
+src/content/cheatsheets/t22-third-party-tools.md
+  s_9e15cec8cf2013::t_55ce9deb56d16c 59,62
+src/content/questions/15-ai-ecosystem/014-what-is-rtk-rust-token-killer.md
+  s_6e23ba2e4cbafd::t_978ed6e18a4a11 12,24
+src/data/ecosystem-data.ts
+  s_9e15cec8cf2013::t_1762cc600e8589 176,179,181
+src/data/glossary-data.ts
+  s_9e15cec8cf2013::t_d8d5b57257bb2f 114
+src/data/header-navigation.ts
+  s_9e15cec8cf2013::t_ed2de27420c1c9 131
+src/data/rss-entries.ts
+  s_9e15cec8cf2013::t_66c831b36e9d64 34,36
+src/data/token-saving-benchmarks.test.ts
+  s_6e23ba2e4cbafd::t_43b4f08ca919c0 71-111
+src/data/token-saving-benchmarks.ts
+  s_9e15cec8cf2013::t_bd6f4fea587474 15-23,83,101,103,105-125,129-140,169-186,203-204,207,213-215,233-234,241-280,289-321
+src/data/token-saving-catalog.ts
+  s_9e15cec8cf2013::t_181f58f72b35c5 1-1099
+src/data/token-saving-view.test.ts
+  s_00c6bf8ee605be::t_54d9899aa84427 1-97
+src/data/token-saving-view.ts
+  s_6e23ba2e4cbafd::t_5c6d9dcfbbdbc0 1-78
+src/layouts/Layout.astro
+  s_9e15cec8cf2013::t_2374bc28f0e67f 113,117
+src/pages/context-engineering/index.astro
+  s_00c6bf8ee605be::t_6380fa80552a6f 328-330,358
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_9e15cec8cf2013::t_d2fc65e9d6795e 348
+src/pages/faq/index.astro
+  s_9e15cec8cf2013::t_3d8ebc43f272fa 207,353
+src/pages/finops/index.astro
+  s_9e15cec8cf2013::t_033012d5f45c57 8,110
+src/pages/sitemap/index.astro
+  s_9e15cec8cf2013::t_ae9335dea65cbb 47-48
+src/pages/token-savings/index.astro
+  s_00c6bf8ee605be::t_015383ee3e33c1 4,7-13,15-17,22,34-57,63,69,71-80,85,87,91-97,99-101,105,107-115,119,121-123,127,130,135,137-138,143,145-181,188-209,212-216,218,224,230-236,238-243,245-248,251-282
+src/scripts/benchmark-filter.test.ts
+  s_00c6bf8ee605be::t_ccc9711690a43d 1-61
+src/scripts/benchmark-filter.ts
+  s_2b47aafd5c6e51::t_297f536e2c9413 1-181
+src/styles/benchmarks-tokens.css
+  s_9e15cec8cf2013::t_3ce95f22695a55 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dcc4096072dd48996616503623b178f13eb76395",
+  "prompts": {},
+  "sessions": {
+    "s_00c6bf8ee605be": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bbe7a0d7-93bd-4226-95f9-5fe27cbb6b19",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_2b47aafd5c6e51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb9f2c9e-2738-40ce-9df9-3c0a8467bbe6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_394b97e16a622a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa654826-2dbc-4b71-aa49-ed5a86c5b3be",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_6e23ba2e4cbafd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22a4c1b-9492-41fe-a273-e2a1a5693406",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_6e7f8c1495b790": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "21648802-2b1a-4bbf-810e-4c2e0f65da27",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9b5218fd2d32ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d37aac03-c830-4ea9-841a-404de6992a89",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9e15cec8cf2013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee55b5e6-c13f-4366-8ef6-02c6713eec4b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
