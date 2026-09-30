@@ -1,0 +1,376 @@
+---
+import { FINOPS_LEVERS, FINOPS_REGIMES, countLeversByRegime, type FinopsLever, type RegimeId } from '../../data/finops-levers'
+
+const regimeById = new Map(FINOPS_REGIMES.map((regime) => [regime.id, regime]))
+const counts = countLeversByRegime()
+const PARTIAL_NOTE = 'some coding plans only'
+
+const shortOf = (id: RegimeId) => regimeById.get(id)?.short ?? id
+
+function actsOn(lever: FinopsLever): string {
+  const full = lever.regimes.map(shortOf)
+  const partial = (lever.partialRegimes ?? []).map((id) => `${shortOf(id)} (${PARTIAL_NOTE})`)
+  return [...full, ...partial].join(', ')
+}
+---
+
+<div class="switchyard" data-switchyard>
+  <ol class="switchyard__levers">
+    {FINOPS_LEVERS.map((lever, index) => (
+      <li class="switchyard__item" data-lever-item={lever.id}>
+        <details
+          class="switchyard__lever"
+          data-lever={lever.id}
+          data-regimes={lever.regimes.join(' ')}
+          data-partial={(lever.partialRegimes ?? []).join(' ')}
+        >
+          <summary class="switchyard__summary">
+            <span class="switchyard__num">{String(index + 1).padStart(2, '0')}</span>
+            <span class="switchyard__name">{lever.name}</span>
+            <span class="switchyard__pills">
+              {lever.regimes.map((id) => (
+                <span class="switchyard__pill">{shortOf(id)}</span>
+              ))}
+              {(lever.partialRegimes ?? []).map((id) => (
+                <span class="switchyard__pill switchyard__pill--partial">{shortOf(id)}<span class="sr-only"> ({PARTIAL_NOTE})</span></span>
+              ))}
+            </span>
+          </summary>
+          <div class="switchyard__detail">
+            <p class="switchyard__label">What it does not solve</p>
+            <p class="switchyard__limit">{lever.limit}</p>
+            <p class="switchyard__acts"><span class="switchyard__label">Acts on:</span> {actsOn(lever)}</p>
+            <a class="switchyard__link" href={lever.href}>Read in the guide →</a>
+          </div>
+        </details>
+      </li>
+    ))}
+  </ol>
+
+  <div class="switchyard__destinations" role="group" aria-label="Cost regimes: select one to highlight its levers">
+    {FINOPS_REGIMES.map((regime) => (
+      <button type="button" class="switchyard__dest" data-regime={regime.id} aria-pressed="false" disabled>
+        <span class="switchyard__dest-title">{regime.title}</span>
+        <span class="switchyard__dest-unit">{regime.unit}</span>
+        <span class="switchyard__dest-count">{counts[regime.id]} {counts[regime.id] === 1 ? 'lever' : 'levers'}</span>
+      </button>
+    ))}
+  </div>
+
+  <svg class="switchyard__svg" data-switchyard-svg aria-hidden="true" focusable="false"></svg>
+</div>
+
+<ul class="switchyard__legend" aria-label="Legend">
+  <li><svg width="36" height="8" aria-hidden="true"><line x1="0" y1="4" x2="36" y2="4" class="switchyard__key switchyard__key--solid"></line></svg>Acts on this regime</li>
+  <li><svg width="36" height="8" aria-hidden="true"><line x1="0" y1="4" x2="36" y2="4" class="switchyard__key switchyard__key--dashed"></line></svg>Some coding plans only</li>
+</ul>
+
+<style>
+.switchyard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.switchyard__levers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.switchyard__item {
+  transition: opacity var(--transition-fast);
+}
+
+.switchyard__item[data-dimmed] {
+  opacity: 0.4;
+}
+
+.switchyard__lever {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.switchyard__lever[open] {
+  border-color: var(--accent);
+}
+
+.switchyard__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  min-height: 44px;
+  padding: 0.5rem 2.25rem 0.5rem 0.9rem;
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--border-radius);
+}
+
+.switchyard__summary::-webkit-details-marker {
+  display: none;
+}
+
+.switchyard__summary::after {
+  content: '';
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.switchyard__lever[open] > .switchyard__summary::after {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+.switchyard__summary:focus-visible,
+.switchyard__dest:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.switchyard__num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.switchyard__name {
+  flex: 1 1 12rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.switchyard__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.switchyard__pill {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.switchyard__pill--partial {
+  border-style: dashed;
+  background: transparent;
+}
+
+.switchyard__detail {
+  padding: 0.25rem 0.9rem 0.9rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+.switchyard__label {
+  margin: 0.75rem 0 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.switchyard__acts .switchyard__label {
+  display: inline;
+  margin: 0;
+}
+
+.switchyard__limit {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.switchyard__acts {
+  margin: 0.6rem 0 0;
+  color: var(--text-secondary);
+}
+
+.switchyard__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+.switchyard__destinations {
+  display: grid;
+  gap: 0.75rem;
+  align-content: space-around;
+}
+
+.switchyard__dest {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 44px;
+  padding: var(--space-md);
+  text-align: left;
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.switchyard__dest:disabled {
+  color: var(--text-primary);
+  cursor: default;
+  opacity: 1;
+}
+
+.switchyard__dest:not(:disabled):hover,
+.switchyard__dest[aria-pressed='true'] {
+  border-color: var(--accent);
+}
+
+.switchyard__dest[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface-elevated));
+}
+
+.switchyard__dest[data-regime='subscription'] {
+  --regime-accent: var(--accent);
+}
+
+.switchyard__dest[data-regime='api'] {
+  --regime-accent: var(--accent-tertiary);
+}
+
+.switchyard__dest[data-regime='capacity'] {
+  --regime-accent: var(--accent-secondary-hover);
+}
+
+.switchyard__dest {
+  border-left: 4px solid var(--regime-accent, var(--border));
+}
+
+.switchyard__dest-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.switchyard__dest-unit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.switchyard__dest-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--regime-accent, var(--accent));
+}
+
+.switchyard__svg {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.switchyard__svg :global(.switchyard__path) {
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.55;
+  transition: opacity var(--transition-fast), stroke var(--transition-fast);
+}
+
+.switchyard__svg :global(.switchyard__path[data-partial]) {
+  stroke-dasharray: 5 5;
+}
+
+.switchyard__svg :global(.switchyard__path[data-state='active']) {
+  stroke: var(--accent);
+  stroke-width: 2;
+  opacity: 1;
+}
+
+.switchyard__svg :global(.switchyard__path[data-state='dim']) {
+  opacity: 0.18;
+}
+
+.switchyard__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.switchyard__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.switchyard__key {
+  stroke: var(--text-muted);
+  stroke-width: 2;
+}
+
+.switchyard__key--dashed {
+  stroke-dasharray: 5 5;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 900px) {
+  .switchyard {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    column-gap: 9rem;
+  }
+
+  .switchyard__svg {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switchyard__item,
+  .switchyard__summary::after,
+  .switchyard__dest,
+  .switchyard__svg :global(.switchyard__path) {
+    transition: none;
+  }
+}
+</style>
+
+<script>
+  import '../../scripts/finops-switchyard.ts'
+</script>

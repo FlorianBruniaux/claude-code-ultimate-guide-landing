@@ -1,0 +1,769 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import LeverSwitchyard from '../../components/finops/LeverSwitchyard.astro'
+import CostCalculator from '../../components/cost/CostCalculator.astro'
+import { FINOPS_HUB_URL, FINOPS_REGIMES, FINOPS_SNAPSHOT_URL } from '../../data/finops-levers'
+
+const title = 'AI FinOps for Coding Agents | Claude Code Guide'
+const description = 'In September 2026, OpenAI halved the usage included in ChatGPT Pro $200 while its API price list showed GPT-6.1 Sol at one fifth of the GPT-6 Astra rate. Three cost regimes, the FinOps loop applied to agents, ten cost levers with their limits, and a market snapshot checked against vendor pages on September 30, 2026.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "AI FinOps for Coding Agents",
+    "description": "Cost regimes, cost levers, and a dated, source-checked market snapshot of API prices and subscription quotas for coding agents.",
+    "url": "https://cc.bruniaux.com/finops/",
+    "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
+    "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "inLanguage": "en",
+    "audience": { "@type": "Audience", "audienceType": "Developers, tech leads, platform and procurement owners" }
+  }
+]
+
+const hubUrl = FINOPS_HUB_URL
+const snapshotUrl = FINOPS_SNAPSHOT_URL
+
+const signals = [
+  {
+    value: '$2 / $10',
+    label: 'GPT-6.1 Sol per 1M tokens, one fifth of GPT-6 Astra',
+    source: 'OpenAI model page',
+    url: 'https://developers.openai.com/api/docs/models/gpt-6-sol',
+  },
+  {
+    value: '20x → 10x',
+    label: 'Plus allowance included in ChatGPT Pro $200 from Oct 30, same price',
+    source: 'The Next Web, Sep 29, 2026',
+    url: 'https://thenextweb.com/news/openai-devday-pro-200-usage-cut-pro-500-plan',
+    accent: true,
+  },
+  {
+    value: 'Paused',
+    label: "Anthropic's separate credit for Agent SDK and claude -p usage",
+    source: 'Claude Help Center',
+    url: 'https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan',
+  },
+]
+
+const loop = [
+  {
+    phase: 'Inform',
+    question: 'What does a unit of accepted work cost today?',
+    action: 'Record tokens per attempt, cache hit rate, retries, and review time. Divide by accepted tasks, not requests.',
+    href: '/guide/ai-unit-economics/#2-building-a-cost-per-accepted-task',
+    link: 'AI unit economics',
+  },
+  {
+    phase: 'Optimize',
+    question: 'Which lever saves the most for the least risk on this workload?',
+    action: 'Pick one lever, test it on a sample, compare cost per accepted task before and after.',
+    href: '#levers',
+    link: 'Lever map',
+  },
+  {
+    phase: 'Operate',
+    question: 'Who can spend what, and on which plan?',
+    action: 'Per-team budgets and keys, hard caps for unattended agents, seats for people, API for services.',
+    href: '/guide/subscription-strategy/#7-decision-and-pilot-gate',
+    link: 'Subscription strategy',
+  },
+]
+
+const claimKinds = {
+  plan: 'Plan condition',
+  date: 'Date',
+  model: 'Model attribution',
+  missing: 'Not found at the source',
+} as const
+
+const failedClaims: { kind: keyof typeof claimKinds; claim: string; fact: string }[] = [
+  { kind: 'plan', claim: 'Agent SDK and claude -p usage has its own credit since June 15, 2026', fact: 'Announced, then paused. That usage still draws from subscription limits.' },
+  { kind: 'plan', claim: 'DeepSeek off-peak means nights and weekends at half price', fact: 'Peak is 01:00 to 04:00 and 06:00 to 10:00 UTC on weekdays; everything else, weekends included, is off-peak.' },
+  { kind: 'plan', claim: 'OpenRouter zero data retention is a Business and Enterprise feature', fact: 'Zero-data-retention routing is on every plan; EU in-region routing is the Business and Enterprise feature.' },
+  { kind: 'date', claim: 'Cerebras Code gives 24M tokens a day for $50', fact: 'The figure is real, but the source post dates from November 2025 and both paid tiers were sold out on Sep 30, 2026.' },
+  { kind: 'model', claim: 'Gemini 3.5 scores 76.2% on Terminal-Bench 2.1', fact: 'The score belongs to Gemini 3.5 Flash.' },
+  { kind: 'missing', claim: 'Scaleway Generative APIs start at €0.15 input, L4 GPU at €0.93 per hour', fact: "Not found on Scaleway's price pages, which showed different figures on Sep 30, 2026." },
+]
+
+const claimCounts = (Object.keys(claimKinds) as (keyof typeof claimKinds)[]).map((k) => ({
+  kind: k,
+  label: claimKinds[k],
+  count: failedClaims.filter((c) => c.kind === k).length,
+}))
+
+const blogPosts = [
+  { title: 'Back Market moved 245 developers off direct Anthropic access', href: 'https://www.florian.bruniaux.com/guides/openrouter-back-market/', lever: 'Provider portability, per-person budgets', desc: 'What two months on OpenRouter measured: a per-person budget, a provider shortlist, a longer liability chain.' },
+  { title: 'How to read a token-compression benchmark', href: 'https://www.florian.bruniaux.com/blog/articles/reading-token-compression-benchmarks/', lever: 'Tool output compression, vendor claims', desc: 'Denominators, paired tasks, cache costs and success criteria, with Tokenade versus RTK as a worked example.' },
+  { title: 'Moving the memory observer to a local model', href: 'https://www.florian.bruniaux.com/guides/local-memory-observer/', lever: 'Local inference', desc: 'Background model calls billed against the quota, moved to a local model: measured timeout and output-quality limits.' },
+  { title: "Jev: understand, compare and test TypeSafe's model", href: 'https://www.florian.bruniaux.com/guides/jev/', lever: 'Local inference', desc: 'Benchmarks against simple rules, known limitations, and a local setup on a Mac without an AI API.' },
+]
+
+const deeper = [
+  { title: 'AI FinOps (section entry point)', href: hubUrl, desc: 'Cost regimes, the FinOps loop, and the full lever map.' },
+  { title: 'LLM Market Snapshot', href: snapshotUrl, desc: 'Dated API prices, subscription quotas, data location, refresh rule.' },
+  { title: 'AI Unit Economics', href: '/guide/ai-unit-economics/', desc: 'Cost per accepted task, routing, break-even, vendor claims.' },
+  { title: 'Subscription Strategy', href: '/guide/subscription-strategy/', desc: 'Seats, APIs, gateways, and provider portfolios for teams.' },
+  { title: 'API Gateway', href: '/guide/api-gateway/', desc: 'Budgets, virtual keys, model allowlists.' },
+  { title: 'Local vs Cloud Inference', href: '/guide/local-vs-cloud-inference/', desc: 'Hardware, GPU rental, and API break-even.' },
+  { title: 'What token-saving tools save, measured', href: '/token-savings/', desc: 'Vendor claims against six public benchmarks, with each publisher\'s interest.' },
+]
+// Examples use ' · ' between vendors when a vendor lists several plans; otherwise items are comma-separated.
+const splitList = (text: string) => (text.includes(' · ') ? text.split(' · ') : text.split(', ')).map((t) => t.trim())
+
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-09-30" modifiedDate="2026-09-30">
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">3 cost regimes</span>
+        <span class="hero-badge">10 levers</span>
+        <span class="hero-badge hero-badge--secondary">Prices verified 2026-09-30</span>
+      </div>
+      <h1>AI FinOps for coding agents</h1>
+      <p class="tagline">In September 2026, OpenAI announced it would halve a subscription allowance while its API price list offered a model at one fifth of the Astra rate. Which cost regime carries your work decides what changed for you.</p>
+      <div class="cta-buttons">
+        <a href="#levers" class="btn btn-primary">See the lever map →</a>
+        <a href={snapshotUrl} class="btn btn-secondary">Market snapshot →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Signals -->
+  <section class="section section--alt" id="signals">
+    <div class="container">
+      <h2 class="section-title">September 2026 in three signals</h2>
+      <p class="section-subtitle">
+        By September 30, 2026, OpenAI's API price list showed a model at one fifth of the Astra rate, and the Pro $200 allowance was set to halve. Anthropic's separate credit for programmatic usage, announced in May, is still paused. None of the three raises a per-token list price.
+      </p>
+      <div class="stat-cards">
+        {signals.map((s) => (
+          <div class={`stat-card${s.accent ? ' stat-card--accent' : ''}`}>
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+            <a class="stat-source" href={s.url} target="_blank" rel="noopener noreferrer">{s.source} ↗</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Regimes -->
+  <section class="section" id="regimes">
+    <div class="container">
+      <h2 class="section-title">Three cost regimes</h2>
+      <p class="section-subtitle">Each one has its own unit and moves on its own. Do not convert a quota into tokens: vendors weight allowances by model, effort, and context size.</p>
+      <div class="regime-grid">
+        {FINOPS_REGIMES.map((r) => (
+          <article class="regime-card" data-regime={r.id}>
+            <header class="regime-head">
+              <span class="regime-tag">{r.short}</span>
+              <h3 class="regime-title">{r.title}</h3>
+            </header>
+            <dl class="regime-facts">
+              <div class="regime-fact regime-fact--unit">
+                <dt>Unit</dt>
+                <dd>{r.unit}</dd>
+              </div>
+              <div class="regime-fact">
+                <dt>Examples</dt>
+                <dd>
+                  <ul class="regime-chips">
+                    {splitList(r.examples).map((e) => <li>{e}</li>)}
+                  </ul>
+                </dd>
+              </div>
+              <div class="regime-fact">
+                <dt>What moves it</dt>
+                <dd>
+                  <ul class="regime-moves">
+                    {splitList(r.moves).map((m) => <li>{m.charAt(0).toUpperCase() + m.slice(1)}</li>)}
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+      <p class="section-link"><a href={`${hubUrl}#1-three-cost-regimes-that-move-independently`}>Read the full explanation in the guide →</a></p>
+    </div>
+  </section>
+
+  <!-- FinOps loop -->
+  <section class="section section--alt" id="loop">
+    <div class="container">
+      <h2 class="section-title">The FinOps loop, applied to agents</h2>
+      <p class="section-subtitle">
+        The <a href="https://www.finops.org/framework/phases/" target="_blank" rel="noopener noreferrer">FinOps Foundation framework phases</a> are Inform, Optimize, and Operate.
+      </p>
+      <ol class="loop-grid">
+        {loop.map((l, i) => (
+          <li class="loop-card">
+            <span class="loop-step">{i + 1}</span>
+            <h3 class="loop-phase">{l.phase}</h3>
+            <p class="loop-question">{l.question}</p>
+            <p class="loop-action">{l.action}</p>
+            <a class="loop-link" href={l.href}>{l.link} →</a>
+          </li>
+        ))}
+      </ol>
+      <figure class="finops-figure">
+        <img src="/guide/images/finops-loop.webp" width="1376" height="768" loading="lazy" decoding="async" alt="The FinOps loop for coding agents: Inform, Optimize and Operate in a cycle around cost per accepted task, with the questions each phase answers, from what a unit of accepted work costs today to when prices are re-checked." />
+        <figcaption>The full loop, with all seven questions from the guide. <a href={`${hubUrl}#2-the-finops-loop-applied-to-agents`}>Read the phase-by-phase table →</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Levers -->
+  <section class="section" id="levers">
+    <div class="container">
+      <h2 class="section-title">Ten cost levers and their limits</h2>
+      <p class="section-subtitle">Each lever is linked to the cost regimes it acts on. Open one to see what it leaves unsolved or can make worse, which is why each one needs a before-and-after measurement of cost per accepted task.</p>
+      <LeverSwitchyard />
+    </div>
+  </section>
+
+  <!-- Workload -->
+  <section class="section section--alt" id="workload">
+    <div class="container">
+      <h2 class="section-title">One day of agent work, priced</h2>
+      <p class="section-subtitle">
+        The default inputs are a hypothesis, not a measured average: 20M input tokens, 80% served from cache, and 0.4M output tokens, at list prices read on September 30, 2026. The bill ranges from $0.76 to $76 for the same token count; the work each model completes is not measured here. Change the inputs to match your own usage.
+      </p>
+      <CostCalculator nested />
+      <p class="caveat">
+        Same token count, not same outcome. A model that fails, loops on tools, or needs three attempts costs more per accepted task than its bar suggests, and tokenizers count the same text differently. <a href={`${snapshotUrl}#5-cost-of-one-reference-workload`}>Method and all rows →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Failed claims -->
+  <section class="section" id="verification">
+    <div class="container">
+      <h2 class="section-title">Six claims that did not hold up</h2>
+      <p class="section-subtitle">This snapshot started from an AI-generated market summary, and every claim was re-read at the vendor's own page. List prices held almost everywhere. These six did not, and they are the kind of error to expect from any AI summary of prices.</p>
+      <figure class="finops-figure finops-figure--tight">
+        <img src="/guide/images/finops-claims-check.webp" width="1376" height="768" loading="lazy" decoding="async" alt="How the price snapshot was checked: claims from an AI-generated summary were re-read at vendor pricing pages, help centers, API documentation and changelogs; list prices held almost everywhere, while errors clustered in dates, plan conditions and model attribution." />
+      </figure>
+      <ul class="claim-counts" aria-label="Errors by type">
+        {claimCounts.map((c) => (
+          <li class="claim-count" data-kind={c.kind}><strong>{c.count}</strong> {c.label}</li>
+        ))}
+      </ul>
+      <ol class="claim-list">
+        {failedClaims.map((c) => (
+          <li class="claim-row" data-kind={c.kind}>
+            <span class="claim-kind">{claimKinds[c.kind]}</span>
+            <div class="claim-said">
+              <span class="claim-label"><span aria-hidden="true">✗</span> The summary said</span>
+              <p>{c.claim}</p>
+            </div>
+            <div class="claim-fact">
+              <span class="claim-label"><span aria-hidden="true">✓</span> The source says</span>
+              <p>{c.fact}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="section-link"><a href={`${snapshotUrl}#7-claims-that-did-not-survive-verification`}>See the method and all sources in the snapshot →</a></p>
+    </div>
+  </section>
+
+  <!-- Go deeper -->
+  <section class="section section--alt" id="deeper">
+    <div class="container">
+      <h2 class="section-title">Go deeper</h2>
+      <div class="deeper-grid">
+        {deeper.map((d) => (
+          <a class="deeper-card" href={d.href}>
+            <span class="deeper-title">{d.title} →</span>
+            <span class="deeper-desc">{d.desc}</span>
+          </a>
+        ))}
+      </div>
+      <h3 class="blog-heading">From the blog</h3>
+      <p class="blog-intro">Field reports that apply these levers to real workloads, published on the author's blog.</p>
+      <ul class="blog-list">
+        {blogPosts.map((b) => (
+          <li>
+            <a class="blog-card" href={b.href} target="_blank" rel="noopener noreferrer">
+              <span class="blog-lever">{b.lever}</span>
+              <span class="blog-title">{b.title} ↗</span>
+              <span class="blog-desc">{b.desc}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.hero-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-badge--secondary {
+  color: var(--text-secondary);
+}
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-xl);
+}
+
+.stat-card {
+  padding: var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.stat-card--accent {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface-elevated));
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-source {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.regime-grid,
+.loop-grid,
+.deeper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: var(--space-xl);
+}
+
+.regime-card {
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--regime-accent, var(--border));
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.regime-card[data-regime='subscription'] {
+  --regime-accent: var(--accent);
+}
+
+.regime-card[data-regime='api'] {
+  --regime-accent: var(--accent-tertiary);
+}
+
+.regime-card[data-regime='capacity'] {
+  --regime-accent: var(--accent-secondary-hover);
+}
+
+.regime-head {
+  margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: color-mix(in srgb, var(--regime-accent) 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--regime-accent) 30%, var(--border));
+}
+
+.regime-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--regime-accent);
+  margin-bottom: 0.25rem;
+}
+
+.regime-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.regime-facts {
+  margin: 0;
+  font-size: 0.9rem;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.regime-facts dt {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.regime-facts dd {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.regime-fact--unit dd {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--regime-accent);
+}
+
+.regime-chips,
+.regime-moves {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.regime-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.regime-chips li {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.regime-moves li {
+  position: relative;
+  padding-left: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.regime-moves li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--regime-accent);
+}
+
+.finops-figure {
+  margin: var(--space-xl) 0 0;
+}
+
+.finops-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.finops-figure figcaption {
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.section-link {
+  margin-top: var(--space-lg);
+}
+
+.loop-grid {
+  list-style: none;
+  padding: 0;
+}
+
+.loop-card {
+  position: relative;
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.loop-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.loop-phase {
+  font-size: 1.1rem;
+  margin: 0.6rem 0 0.4rem;
+}
+
+.loop-question {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+}
+
+.loop-action {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.loop-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.caveat {
+  margin-top: var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.finops-figure--tight {
+  margin-top: var(--space-lg);
+}
+
+.claim-counts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+}
+
+.claim-count {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--claim-accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--claim-accent) 10%, transparent);
+  color: var(--text-primary);
+}
+
+.claim-count strong {
+  font-family: var(--font-mono);
+  color: var(--claim-accent);
+  margin-right: 0.2rem;
+}
+
+[data-kind='plan'] { --claim-accent: var(--accent); }
+[data-kind='date'] { --claim-accent: var(--accent-tertiary); }
+[data-kind='model'] { --claim-accent: var(--accent-secondary-hover); }
+[data-kind='missing'] { --claim-accent: var(--text-muted); }
+
+.claim-list {
+  list-style: none;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.claim-row {
+  display: grid;
+  grid-template-columns: 11rem 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--claim-accent);
+  border-radius: var(--border-radius);
+}
+
+.claim-kind {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--claim-accent);
+  padding-top: 0.15rem;
+}
+
+.claim-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.claim-said p,
+.claim-fact p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.claim-said .claim-label {
+  color: var(--text-muted);
+}
+
+.claim-said p {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--text-muted) 70%, transparent);
+}
+
+.claim-fact .claim-label {
+  color: var(--accent-secondary-hover);
+}
+
+.claim-fact p {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 800px) {
+  .claim-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+.blog-heading {
+  margin: var(--space-xl) 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.blog-intro {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.blog-list {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  height: 100%;
+  min-height: 44px;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: border-color var(--transition-fast);
+}
+
+.blog-card:hover {
+  border-color: var(--accent);
+}
+
+.blog-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.blog-lever {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.blog-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.blog-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.deeper-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.deeper-card:hover {
+  border-color: var(--accent);
+}
+
+.deeper-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.deeper-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+</style>
