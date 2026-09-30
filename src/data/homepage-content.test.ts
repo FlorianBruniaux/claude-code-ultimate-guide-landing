@@ -56,12 +56,13 @@ test('homepage discovery blocks remain intentionally small', () => {
   assert.equal(ultimateGuide?.href, '/guide/')
 })
 
-test('the homepage features four canonical projects while the projects hub exposes five routes and 16 projects', () => {
-  assert.equal(FEATURED_PROJECTS.length, 4)
-  assert.equal(RELATED_PROJECTS.length, 16)
+test('the homepage features five canonical projects while the projects hub exposes five routes and 18 projects', () => {
+  assert.equal(FEATURED_PROJECTS.length, 5)
+  assert.equal(RELATED_PROJECTS.length, 18)
   assert.equal(new Set(RELATED_PROJECTS.map((project) => project.route)).size, 5)
   assert.ok(FEATURED_PROJECTS.every((project) => project.featured))
   assert.ok(FEATURED_PROJECTS.some((project) => project.id === 'cc-skill-usage'))
+  assert.ok(FEATURED_PROJECTS.some((project) => project.id === 'agent-router'))
   assertUnique(RELATED_PROJECTS.map((project) => project.href), 'project hrefs')
 
   const rtk = RELATED_PROJECTS.find((project) => project.id === 'rtk')

@@ -50,6 +50,23 @@ export const PERSONAL_PROJECTS = [
     "featured": true
   },
   {
+    "id": "agent-router",
+    "icon": "🧭",
+    "title": "Agent Router",
+    "description": "Pick the model, effort and skills for each phase of a Claude Code or Codex task, and explain the choice.",
+    "useWhen": "Planning, execution and verification should run on different models within a budget, with a decision you can review and replay. Pre-release; no measured cost gain is claimed yet.",
+    "format": "CLI",
+    "tags": [
+      "Model Routing",
+      "Cost Control",
+      "Agent Workflows"
+    ],
+    "href": "https://github.com/FlorianBruniaux/agent-router",
+    "github": "https://github.com/FlorianBruniaux/agent-router",
+    "route": "build-run",
+    "featured": true
+  },
+  {
     "id": "claude-code-plugins",
     "icon": "📦",
     "title": "claude-code-plugins",
@@ -262,6 +279,23 @@ export const PERSONAL_PROJECTS = [
     "href": "https://pypi.org/project/yt-insights/",
     "github": "https://github.com/FlorianBruniaux/youtube-video-insights",
     "website": "https://pypi.org/project/yt-insights/",
+    "route": "research-discover-grow",
+    "featured": false
+  },
+  {
+    "id": "paper-insights",
+    "icon": "📄",
+    "title": "Paper Insights",
+    "description": "Build an experimental local corpus of arXiv metadata with FTS5 search and traceable citations.",
+    "useWhen": "You need arXiv metadata search and traceable citations alongside video research. Experimental; human relevance review is pending.",
+    "format": "CLI",
+    "tags": [
+      "Research",
+      "Scientific Papers",
+      "Citations"
+    ],
+    "href": "https://github.com/FlorianBruniaux/paper-insights",
+    "github": "https://github.com/FlorianBruniaux/paper-insights",
     "route": "research-discover-grow",
     "featured": false
   },

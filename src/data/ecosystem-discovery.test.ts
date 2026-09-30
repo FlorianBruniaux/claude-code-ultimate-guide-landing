@@ -6,7 +6,7 @@ test('selects only featured Build and Scale projects from generated route data',
 
   assert.deepEqual(
     getEcosystemMenuProjects('build').map((project) => project.id),
-    ['cc-copilot-bridge', 'rtk'],
+    ['cc-copilot-bridge', 'agent-router', 'rtk'],
   )
   assert.deepEqual(
     getEcosystemMenuProjects('scale').map((project) => project.id),
