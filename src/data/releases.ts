@@ -18,8 +18,26 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.284',
+    version: 'v2.1.285',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added claude --desktop, claude plugin configure <plugin>, <server>.<key>=<value> for bundled .mcpb servers in claude plugin install --config and a CLAUDE_CODE_DISABLE_WEB_FETCH variable",
+      "Added an allowedProviders managed setting that limits which API providers a machine may use (Anthropic API, custom endpoint, Bedrock, Mantle, Vertex AI, Foundry, Claude Platform on AWS or a Cloud gateway)",
+      "Changed background Bash and PowerShell commands to stop at a time limit (default 30 min, max 2 h) and sessions behind a custom ANTHROPIC_BASE_URL to use the 1M context window of models that have one",
+      "Fixed PowerShell permission checks skipping deny and ask rules when the parser failed to start, an Artifact allow rule publishing files outside the working directories, fork subagents escaping plan or dontAsk mode and streaming failures retried up to 21 times",
+    ],
+    breaking: [
+      "Background Bash and PowerShell commands stop after their timeout with run_in_background (default 30 min, max 2 h); Claude is notified when one is stopped.",
+      "Sessions behind a custom ANTHROPIC_BASE_URL use the 1M context window of models that have one (Opus 4.7+, Sonnet 5+, Fable); run /autocompact 200k if the gateway stops at 200K.",
+      "claude -p and Python Agent SDK sessions on third-party providers or with telemetry off start in auto mode when no permission mode is configured; --permission-mode still overrides it.",
+      "The MCP server name widgets and close spellings are reserved in cloud sessions and on self-hosted runners; /ultrareview on macOS and Linux requires git 2.31+ for local uploads; on Windows, project and local settings env no longer set ALLUSERSPROFILE, SystemDrive or CommonProgramFiles variables.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.284',
+    date: "Sep 28, 2026",
     highlights: [
       "Added Claude Sonnet 5.5 (claude-sonnet-5-5) as the default Sonnet model on the Anthropic API: 1M context, $2/$10 per Mtok and $0.20/Mtok cache reads",
       "Changed interactive terminal and VS Code sessions to start in auto mode when no permission mode is configured, on every plan and provider; Ultracode becomes its own /effort toggle",
@@ -31,7 +49,6 @@ export const releases: Release[] = [
       "Ultracode is a separate /effort toggle (Tab, or /effort ultracode [on|off]) and no longer forces xhigh effort.",
       "Under managed allowManagedPermissionRulesOnly, only plugins from an official Anthropic source or a source managed settings vouch for keep allowed-tools pre-approval; marketplace, claude.ai and npm plugins lose it.",
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ Sonnet 5.5',
@@ -100,7 +117,7 @@ export const releases: Release[] = [
       "Marketplaces with names imitating reserved marketplace names are refused and existing ones stop loading.",
       "Dialog confirmation uses Enter/Esc instead of stray y/n keys; explicit confirm:yes/confirm:no bindings restore y/n. Fullscreen ctrl+l/cmd+k redraws instead of clearing the transcript.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ Opus 5.5',
   },
