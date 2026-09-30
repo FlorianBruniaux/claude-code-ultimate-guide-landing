@@ -27,6 +27,26 @@ export function chartDomain(values: number[], step = 20): { lo: number; hi: numb
   return { lo, hi }
 }
 
+/** Percent position of a value on the domain. A zero-width domain centres the value. */
 export function position(value: number, lo: number, hi: number): number {
+  if (hi === lo) return 50
   return ((value - lo) / (hi - lo)) * 100
+}
+
+/** Signed percents joined in study order: [7.6, 0.1] -> "+7.6% then +0.1%". */
+export function fmtValues(values: number[]): string {
+  return values.map(fmtPct).join(' then ')
+}
+
+/** Plain-words reading of every value: "7.6% more expensive, then 0.1% more expensive". */
+export function describeValues(values: number[], unit: Measurement['unit']): string {
+  return values.map((v) => describeValue(v, unit)).join(', then ')
+}
+
+/** "−9% to +13%" for several values, the single value otherwise. */
+export function fmtRange(values: number[]): string {
+  if (values.length === 0) return ''
+  const lo = Math.min(...values)
+  const hi = Math.max(...values)
+  return lo === hi ? fmtPct(lo) : `${fmtPct(lo)} to ${fmtPct(hi)}`
 }

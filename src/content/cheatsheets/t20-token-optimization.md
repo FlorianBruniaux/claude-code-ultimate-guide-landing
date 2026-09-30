@@ -10,12 +10,12 @@ order: 20
 
 ## RTK: Upstream Filtering
 
-RTK (Rust Token Killer) intercepts command outputs **before** they enter Claude's context. It is not a post-hoc summary, it is a filter that eliminates structurally redundant noise.
+RTK (Rust Token Killer) intercepts command outputs **before** they enter Claude's context. It is not a post-hoc summary, it is a filter that eliminates structurally redundant noise. Disclosure: the author of this guide is a core contributor to RTK.
 
 ```bash
 # Installation
-brew install rtk-ai/tap/rtk
-# or: cargo install rtk
+brew install rtk
+# or: cargo install --git https://github.com/rtk-ai/rtk
 
 # Initialize in a project (sets up the hook automatically)
 rtk init
@@ -30,7 +30,7 @@ rtk init
 | `vitest run` | ~50,000 chars | ~5,000 chars | **90%** |
 | `pnpm list` | ~8,000 chars | ~2,400 chars | **70%** |
 
-A 30-minute session with 10-15 git commands drops from ~150K to ~41K tokens, a 72% reduction on that item alone.
+These are per-command output reductions, not session or bill reductions. Whole-task measurements of RTK alone differ by study: JetBrains measured +7.6% median cost per task at low reasoning effort and +0.1% at high effort, Dasein +13% total cost, THOL +7.1% with an interval that crosses zero, and Codepointer's replay -0.5% of spend. RTK's maintainers dispute the JetBrains design and report -4.8% on 13 dev tasks (p = 0.305) in their own re-run. Details: https://cc.bruniaux.com/token-savings/
 
 ## Essential RTK Commands
 

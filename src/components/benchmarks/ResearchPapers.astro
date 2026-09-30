@@ -1,0 +1,81 @@
+---
+import { PAPERS, type CostBasis } from '../../data/token-saving-benchmarks'
+
+const BASIS_LABEL: Record<CostBasis, string> = {
+  billed: 'Cost billed or logged',
+  estimated: 'Cost estimated',
+  'tokens only': 'Tokens only',
+  'not applicable': 'Workload study',
+}
+const independent = PAPERS.filter((p) => !p.authorsPublishMethod)
+const methodPapers = PAPERS.filter((p) => p.authorsPublishMethod)
+---
+
+<div class="papers">
+  <p class="papers-intro">
+    arXiv preprints, read at their abstract pages on 2026-09-30. Preprints are not peer-reviewed. The first group studies cost without selling a method. In the second group the authors propose the method they measure, which is normal in research but is a conflict to keep in mind.
+  </p>
+
+  <h3 class="papers-group">Studies of cost and behavior ({independent.length})</h3>
+  <ul class="paper-list">
+    {independent.map((p) => (
+      <li class="paper">
+        <div class="paper-head">
+          <a class="paper-title" href={`https://arxiv.org/abs/${p.id}`} target="_blank" rel="noopener noreferrer">{p.title} ↗</a>
+          <span class={`basis basis--${p.costBasis.replace(' ', '-')}`}>{BASIS_LABEL[p.costBasis]}</span>
+        </div>
+        <p class="paper-finding">{p.finding}</p>
+        <span class="paper-meta">{p.authors} · arXiv {p.id} · {p.date}</span>
+      </li>
+    ))}
+  </ul>
+
+  <details class="method-group">
+    <summary>Methods measured by their own authors ({methodPapers.length})</summary>
+    <ul class="paper-list">
+      {methodPapers.map((p) => (
+        <li class="paper">
+          <div class="paper-head">
+            <a class="paper-title" href={`https://arxiv.org/abs/${p.id}`} target="_blank" rel="noopener noreferrer">{p.title} ↗</a>
+            <span class={`basis basis--${p.costBasis.replace(' ', '-')}`}>{BASIS_LABEL[p.costBasis]}</span>
+          </div>
+          <p class="paper-finding">{p.finding}</p>
+          <span class="paper-meta">{p.authors} · arXiv {p.id} · {p.date}</span>
+        </li>
+      ))}
+    </ul>
+  </details>
+</div>
+
+<style>
+.papers-intro { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 var(--space-md); max-width: 75ch; }
+.papers-group { font-size: 1.1rem; margin: var(--space-lg) 0 var(--space-sm); }
+.paper-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-xl);
+}
+.paper { display: flex; flex-direction: column; gap: 0.25rem; padding: var(--space-md) 0; border-top: 1px solid var(--border); min-width: 0; }
+.paper-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem var(--space-md); }
+.paper-title { font-weight: 700; font-size: 0.95rem; line-height: 1.35; overflow-wrap: anywhere; }
+.paper-finding { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); }
+.paper-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
+.basis {
+  flex: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.method-group { margin-top: var(--space-lg); }
+.method-group summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+@media (max-width: 800px) {
+  .paper-list { grid-template-columns: 1fr; }
+}
+</style>

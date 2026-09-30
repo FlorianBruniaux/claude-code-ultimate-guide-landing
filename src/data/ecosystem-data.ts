@@ -173,12 +173,12 @@ export const ECOSYSTEM_TOOLS: EcosystemTool[] = [
     name: 'RTK (Rust Token Killer)',
     category: 'token-tracking',
     description:
-      'A CLI proxy that filters command outputs before they reach Claude\'s context. 73.5k+ stars (verified 2026-07-27, was 53.5k+). 60-90% token reduction on common dev operations. Single Rust binary, zero dependencies.',
+      'A CLI proxy that filters command outputs before they reach Claude\'s context. 82k+ stars (read 2026-09-30, was 73.5k+ on 2026-07-27). The README claims up to 90% less bash output on supported commands, which is not the same as a 90% lower bill. Single Rust binary. Disclosure: the author of this guide is a core contributor to RTK.',
     source_url: 'https://github.com/rtk-ai/rtk',
     website_url: 'https://www.rtk-ai.app/',
-    install: 'brew install rtk-ai/tap/rtk',
+    install: 'brew install rtk',
     language: 'Rust',
-    version: 'v0.42.0',
+    version: 'v0.50.0',
     status: 'stable',
     features: [
       '`rtk git log` (92% reduction), `rtk git diff` (56%), `rtk git status` (76%)',

@@ -1,0 +1,38 @@
+/* Design tokens and shared marks for the /token-savings/ page (src/pages/token-savings).
+   Semantic colors are kept distinct from the orange accent in both themes. Meaning is never
+   carried by color alone: pair it with a sign, a word or a marker shape. */
+:root {
+  --bm-good: #166534;
+  --bm-bad: #b91c1c;
+  --bm-zero: var(--text-secondary);
+  --bm-seg-0: #9a3412;
+  --bm-seg-1: #1d4ed8;
+  --bm-seg-2: #57534e;
+}
+[data-theme="dark"] {
+  --bm-good: #4ade80;
+  --bm-bad: #fb7185;
+  --bm-zero: var(--text-secondary);
+  --bm-seg-0: #ea580c;
+  --bm-seg-1: #3b82f6;
+  --bm-seg-2: #78716c;
+}
+
+/* Marker: shape = unit (circle cost, diamond tokens), fill = sign. Position it with left: N%. */
+.bm-dot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  background: var(--bm-zero);
+  box-shadow: 0 0 0 2px var(--surface-elevated);
+  transition: opacity 120ms ease;
+}
+.bm-dot--circle { border-radius: 50%; }
+.bm-dot--diamond { width: 10px; height: 10px; transform: translate(-50%, -50%) rotate(45deg); border-radius: 1px; }
+.bm-dot--good { background: var(--bm-good); }
+.bm-dot--bad { background: var(--bm-bad); }
+@media (prefers-reduced-motion: reduce) {
+  .bm-dot { transition: none; }
+}

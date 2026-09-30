@@ -1,0 +1,270 @@
+---
+import { BENCHMARKS, BENCHMARK_SHORT, MEASUREMENTS } from '../../data/token-saving-benchmarks'
+import { groupMeasurementsByTool, isReferenceTool, shapeOf, signOf } from '../../data/token-saving-view'
+import { chartDomain, describeValue, describeValues, fmtPct, fmtRange, fmtValues, position, unitLabel } from './format'
+import ChipGroup from './ui/ChipGroup.astro'
+
+const allValues = MEASUREMENTS.flatMap((m) => m.values)
+const { lo, hi } = chartDomain(allValues)
+const zero = position(0, lo, hi)
+const ticks: number[] = []
+for (let t = lo; t <= hi; t += 20) ticks.push(t)
+
+const groups = groupMeasurementsByTool()
+const toolGroups = groups.filter((g) => !isReferenceTool(g.tool))
+const referenceRows = groups.filter((g) => isReferenceTool(g.tool)).flatMap((g) => g.rows)
+const referenceValues = [...new Set(referenceRows.flatMap((m) => m.values))]
+
+const benchUrl = (id: string) => BENCHMARKS.find((b) => b.id === id)?.url ?? '#'
+const chips = [{ value: '', label: 'All studies' }, ...BENCHMARKS.map((b) => ({ value: b.id, label: BENCHMARK_SHORT[b.id] }))]
+const total = MEASUREMENTS.length - referenceRows.length
+
+/** One line per unit, so cost percentages and token-count percentages are never merged. */
+const summarize = (rows: (typeof MEASUREMENTS)) => {
+  const units = [...new Set(rows.map((m) => m.unit))]
+  return units.map((u) => ({ unit: u, text: fmtRange(rows.filter((m) => m.unit === u).flatMap((m) => m.values)) }))
+}
+---
+
+<div class="results" data-results>
+  <div class="toolbar">
+    <ChipGroup label="Highlight one study" chips={chips} attr="bench-chip" pressed="" />
+    <p class="status" aria-live="polite" data-highlight-status>Showing all {total} results.</p>
+  </div>
+
+  <ul class="legend" aria-label="How to read the chart">
+    <li><span class="bm-dot bm-dot--circle bm-dot--zero" aria-hidden="true"></span> Cost change</li>
+    <li><span class="bm-dot bm-dot--diamond bm-dot--zero" aria-hidden="true"></span> Token-count change</li>
+    <li><span class="bm-dot bm-dot--circle bm-dot--good" aria-hidden="true"></span> Left of zero: cheaper or fewer tokens than the tool-free baseline</li>
+    <li><span class="bm-dot bm-dot--circle bm-dot--bad" aria-hidden="true"></span> Right of zero: more expensive or more tokens</li>
+  </ul>
+
+  <div class="chart">
+    <div class="axis" aria-hidden="true">
+      <span class="axis-side axis-side--good">← cheaper or fewer tokens</span>
+      <div class="axis-ticks">
+        {ticks.map((t) => (
+          <span class={`axis-tick ${t % 40 !== 0 ? 'axis-tick--minor' : ''}`} style={`left:${position(t, lo, hi)}%`}>{t > 0 ? `+${t}` : t < 0 ? `−${Math.abs(t)}` : '0'}%</span>
+        ))}
+      </div>
+      <span class="axis-side axis-side--bad">more expensive or more tokens →</span>
+    </div>
+
+    <ol class="rows">
+      {toolGroups.map(({ tool, rows }) => (
+        <li class="row">
+          <details class="rrow">
+            <summary class="rsum">
+              <span class="rlabel">
+                <span class="rtool">{tool}</span>
+                <span class="rcount">{rows.length} {rows.length === 1 ? 'result' : 'results'}</span>
+              </span>
+              <span class="track" aria-hidden="true">
+                {ticks.map((t) => <span class="gridline" style={`left:${position(t, lo, hi)}%`}></span>)}
+                <span class="zero-line" style={`left:${zero}%`}></span>
+                {referenceValues.map((v) => <span class="ref-line" style={`left:${position(v, lo, hi)}%`}></span>)}
+                {rows.map((m) => {
+                  const mid = MEASUREMENTS.indexOf(m)
+                  const pts = m.values.map((v) => position(v, lo, hi))
+                  return (
+                    <>
+                      {m.values.length > 1 && <span class="link" style={`left:${Math.min(...pts)}%;width:${Math.abs(pts[1] - pts[0])}%`}></span>}
+                      {m.values.map((v, i) => (
+                        <span
+                          class={`bm-dot bm-dot--${shapeOf(m.unit)} bm-dot--${signOf(v)}`}
+                          style={`left:${pts[i]}%`}
+                          data-bench={m.benchmark}
+                          data-m={mid}
+                          title={`${tool}, ${BENCHMARK_SHORT[m.benchmark]}: ${fmtPct(v)} (${describeValue(v, m.unit)})`}
+                        ></span>
+                      ))}
+                    </>
+                  )
+                })}
+              </span>
+              <span class="rvals">
+                {summarize(rows).map((s) => <span class="rval"><span class="runit">{unitLabel(s.unit)}</span> {s.text}</span>)}
+              </span>
+            </summary>
+            <ul class="rdetail">
+              {rows.map((m) => (
+                <li data-bench-row={m.benchmark}>
+                  <a href={benchUrl(m.benchmark)} target="_blank" rel="noopener noreferrer">{BENCHMARK_SHORT[m.benchmark]} ↗</a>
+                  <span class="d-metric">{m.metric}</span>
+                  <span class="d-val"><strong>{fmtValues(m.values)}</strong> ({describeValues(m.values, m.unit)}; {unitLabel(m.unit)})</span>
+                  {m.note && <span class="d-note">{m.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  {referenceRows.length > 0 && (
+    <p class="refnote">
+      <span class="ref-key" aria-hidden="true"></span>
+      Dashed line: {referenceRows[0].tool}, {BENCHMARK_SHORT[referenceRows[0].benchmark]}, {referenceRows[0].metric.toLowerCase()}: {fmtValues(referenceRows[0].values)} ({describeValues(referenceRows[0].values, referenceRows[0].unit)}). {referenceRows[0].note} Drawn for scale, not as a tool row.
+    </p>
+  )}
+
+  <details class="datatable">
+    <summary>Data table: every result as text</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Every result as a table, scrollable">
+      <table>
+        <caption class="sr-only">Third-party results by tool, study and metric</caption>
+        <thead>
+          <tr><th scope="col">Tool</th><th scope="col">Study</th><th scope="col">Metric</th><th scope="col">Result</th><th scope="col">Unit</th></tr>
+        </thead>
+        <tbody>
+          {groups.flatMap(({ tool, rows }) => rows.map((m) => (
+            <tr>
+              <th scope="row">{tool}</th>
+              <td><a href={benchUrl(m.benchmark)} target="_blank" rel="noopener noreferrer">{BENCHMARK_SHORT[m.benchmark]}</a></td>
+              <td>{m.metric}</td>
+              <td class="num">{fmtValues(m.values)} ({describeValues(m.values, m.unit)})</td>
+              <td>{unitLabel(m.unit)}</td>
+            </tr>
+          )))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>
+
+<script>
+  import { initHighlight } from '../../scripts/benchmark-filter'
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-results]'))) initHighlight(root)
+</script>
+
+<style>
+.results { --label-w: 190px; --vals-w: 190px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); align-items: center; }
+.status { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+/* Chips do nothing without JS. */
+.results:not([data-ready]) .toolbar { display: none; }
+
+.legend {
+  list-style: none;
+  margin: var(--space-md) 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem var(--space-lg);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.legend li { display: inline-flex; align-items: center; gap: 0.5rem; }
+.legend .bm-dot { position: static; transform: none; display: inline-block; flex: none; box-shadow: none; }
+.legend .bm-dot--diamond { transform: rotate(45deg); }
+
+.chart {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+}
+.axis {
+  position: sticky;
+  top: 6.5rem;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: var(--label-w) minmax(0, 1fr) var(--vals-w);
+  align-items: end;
+  gap: 0 var(--space-md);
+  padding: 0.4rem var(--space-md) 0.25rem;
+  background: var(--surface-elevated);
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  font-size: 0.72rem;
+}
+.axis-side { font-weight: 700; line-height: 1.2; }
+.axis-side--good { grid-column: 1; grid-row: 1; color: var(--bm-good); align-self: center; }
+.axis-side--bad { grid-column: 3; grid-row: 1; color: var(--bm-bad); text-align: right; align-self: center; }
+.axis-ticks { grid-column: 2; grid-row: 1; position: relative; height: 1.4rem; }
+.axis-tick {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.row { border-top: 1px solid var(--border-light); }
+.row:first-child { border-top: 0; }
+.rsum {
+  list-style: none;
+  display: grid;
+  grid-template-columns: var(--label-w) minmax(0, 1fr) var(--vals-w);
+  gap: 0 var(--space-md);
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-md);
+  cursor: pointer;
+}
+.rsum::-webkit-details-marker { display: none; }
+.rsum:hover, .rrow[open] > .rsum { background: var(--bg-secondary); }
+.rlabel { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.rtool { font-weight: 700; font-size: 0.92rem; color: var(--text-primary); overflow-wrap: anywhere; }
+.rcount { font-size: 0.72rem; color: var(--text-muted); }
+.rvals { display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.3; color: var(--text-secondary); text-align: right; }
+.runit { color: var(--text-muted); }
+
+.track { position: relative; height: 44px; align-self: stretch; }
+.gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border-light); }
+.zero-line { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--text-primary); z-index: 1; }
+.ref-line { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--text-muted); margin-left: -1px; z-index: 1; }
+.link { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--text-muted); z-index: 2; }
+.track .bm-dot { z-index: 3; }
+.results[data-highlighting] .bm-dot[data-dim] { opacity: 0.18; }
+.results[data-highlighting] .bm-dot:not([data-dim]) { outline: 2px solid var(--text-primary); outline-offset: 1px; }
+
+.rdetail {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  background: var(--bg-secondary);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.rdetail li { display: flex; flex-direction: column; gap: 0.1rem; padding-left: 0.75rem; border-left: 2px solid var(--border); min-width: 0; }
+.d-metric, .d-note { font-size: 0.8rem; color: var(--text-muted); }
+.d-val strong { font-family: var(--font-mono); color: var(--text-primary); }
+
+.refnote { display: flex; gap: 0.6rem; align-items: baseline; margin: var(--space-md) 0 0; font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); }
+.ref-key { flex: none; width: 0; height: 14px; border-left: 2px dashed var(--text-muted); transform: translateY(2px); }
+
+.datatable { margin-top: var(--space-md); }
+.datatable summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; color: var(--text-primary); }
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--border-radius); max-width: 100%; }
+.datatable table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 0.82rem; }
+.datatable th, .datatable td { padding: 0.45rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+.datatable thead th { background: var(--bg-tertiary); font-size: 0.75rem; }
+.datatable tbody th { font-weight: 700; }
+.datatable .num { font-family: var(--font-mono); }
+
+@media (max-width: 900px) {
+  .results { --label-w: 150px; --vals-w: 0px; }
+  .axis-side--bad, .rvals { display: none; }
+  .axis { grid-template-columns: var(--label-w) minmax(0, 1fr); }
+  .rsum { grid-template-columns: var(--label-w) minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .results { --label-w: 0px; }
+  .axis { grid-template-columns: minmax(0, 1fr); padding-inline: var(--space-md); }
+  .axis-side--good { display: none; }
+  .axis-ticks { grid-column: 1; }
+  .axis-tick--minor { display: none; }
+  .rsum { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 44px; padding-top: 0.35rem; row-gap: 0; }
+  .rlabel { flex-direction: row; align-items: baseline; gap: 0.6rem; }
+  .track { align-self: auto; }
+  .rdetail { grid-template-columns: 1fr; }
+}
+</style>

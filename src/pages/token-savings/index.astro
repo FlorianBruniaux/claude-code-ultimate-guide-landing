@@ -1,18 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import ClaimsVsMeasured from '../../components/benchmarks/ClaimsVsMeasured.astro'
-import MeasurementsExplorer from '../../components/benchmarks/MeasurementsExplorer.astro'
+import ResultsByTool from '../../components/benchmarks/ResultsByTool.astro'
 import ToolTokenShare from '../../components/benchmarks/ToolTokenShare.astro'
 import BenchmarkQuality from '../../components/benchmarks/BenchmarkQuality.astro'
-import { BENCHMARKS, BENCHMARKS_READ_ON } from '../../data/token-saving-benchmarks'
+import ToolCatalog from '../../components/benchmarks/ToolCatalog.astro'
+import ResearchPapers from '../../components/benchmarks/ResearchPapers.astro'
+import StatPair from '../../components/benchmarks/ui/StatPair.astro'
+import Kicker from '../../components/benchmarks/ui/Kicker.astro'
+import { BENCHMARKS, BENCHMARKS_READ_ON, CLAIMS_VS_MEASURED, PAPERS } from '../../data/token-saving-benchmarks'
+import { CATALOG } from '../../data/token-saving-catalog'
+import '../../styles/benchmarks-tokens.css'
 
-const title = 'What token-saving tools save, measured | Claude Code Guide'
-const description = 'Six public benchmarks measured token-saving tools for coding agents end to end. Most results sit far below vendor claims, and some show a cost increase. Claims, measurements and benchmark quality side by side.'
+const title = 'Token-saving tools for coding agents: claims and third-party studies | Claude Code Guide'
+const headline = 'Token-saving tools for coding agents: claims and third-party studies'
+const description = 'Token-saving tools for coding agents: what 45 projects claim, what 8 public benchmarks and 15 arXiv preprints measured, with sources and conflicts of interest.'
 
 const jsonLd = [
   {
     "@type": "Article",
-    "headline": "What token-saving tools save, measured",
+    "headline": headline,
     "description": description,
     "url": "https://cc.bruniaux.com/token-savings/",
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
@@ -24,163 +31,253 @@ const jsonLd = [
   }
 ]
 
+const nav = [
+  { href: '#catalogue', label: 'Catalogue' },
+  { href: '#measurements', label: 'Results by tool' },
+  { href: '#where-tokens-come-from', label: 'Where tokens go' },
+  { href: '#benchmark-quality', label: 'Benchmarks' },
+  { href: '#research', label: 'Papers' },
+  { href: '#claimed-vs-measured', label: 'Claims and studies' },
+  { href: '#sources', label: 'Sources' },
+]
+
+const notes = [
+  { term: 'Two quantities', text: 'Vendor claims measure one layer: shell output, output tokens, or a single content type. Benchmarks measure the whole task, so the two numbers rarely describe the same quantity.' },
+  { term: 'Dated models', text: 'The benchmarks used claude-sonnet-4-6, claude-sonnet-5, GPT-5.6 Sol and an unnamed Claude Sonnet; the Codepointer replay applied Opus 4.8 prices. None tested Claude Sonnet 5.5, Claude Opus 5.5 or the GPT-6 family, so read these results as dated evidence about the mechanism, not as current rankings.' },
+  { term: 'Who publishes', text: 'Three benchmarks come from a vendor with a stake: Dasein makes Parsec, the THOL maintainer makes Tokenade, and the Tura author builds a competing agent. Each says so, and the benchmark table below shows it.' },
+  { term: 'Sign convention', text: 'Negative means cheaper or fewer tokens than the tool-free baseline. Positive means more expensive or more tokens.' },
+]
+
+const notUsed = [
+  { html: 'tokbench', href: 'https://github.com/Entelligentsia/tokbench', text: ': a pilot with one bug-fix task, one run per arm, on GLM models through the author\'s own harness. It measures input tokens, not cost. Its author discloses owning the harness and using lean-ctx daily.' },
+  { html: 'tokenme', href: null, text: ': its own repository marks the 92.7% result as withdrawn because the outputs were written by hand.' },
+  { html: 'Project-run benchmarks', href: null, text: ': kept in the catalogue under each project, labelled as the project\'s own benchmark, not counted as third-party measurements.' },
+  { html: 'Blog posts and aggregator lists', href: null, text: ' that repeat a figure without a primary source: used as leads only.' },
+]
+
 const links = [
   { href: '/guide/context-engineering-tools/#independent-benchmarks', label: 'Independent benchmarks, in the guide', desc: 'The written analysis behind this page, with sources.' },
   { href: '/finops/', label: 'FinOps levers map', desc: 'Where the "tool output compression" lever sits among the other cost levers.' },
   { href: '/guide/ai-finops/#3-lever-map', label: 'AI FinOps: the lever map', desc: 'The guide section that maps each cost lever to its regime and its limits.' },
   { href: '/guide/llm-market-snapshot/', label: 'LLM market snapshot', desc: 'Current model prices, which set the size of every percentage above.' },
+  { href: 'https://www.florian.bruniaux.com/blog/articles/reading-token-compression-benchmarks/', label: 'How to read a token-compression benchmark', desc: 'Blog article: denominators, paired tasks, cache costs and success criteria, with Tokenade versus RTK as a worked example.' },
 ]
 ---
 
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate={BENCHMARKS_READ_ON} modifiedDate={BENCHMARKS_READ_ON}>
 
-  <header class="page-hero">
+  <header class="page-hero tk-hero">
     <div class="container">
-      <div class="hero-badge-row">
-        <span class="hero-badge">{BENCHMARKS.length} public benchmarks</span>
-        <span class="hero-badge">Read on {BENCHMARKS_READ_ON}</span>
-        <span class="hero-badge hero-badge--secondary">End-to-end measurements</span>
-      </div>
-      <h1>What token-saving tools save, measured</h1>
-      <p class="tagline">Six public benchmarks, read on 2026-09-30, measured these tools end to end. Most results sit far below vendor claims, and some tools made tasks more expensive.</p>
-      <div class="cta-buttons">
-        <a href="#measurements" class="btn btn-primary">See the measurements</a>
-        <a href="/guide/context-engineering-tools/#independent-benchmarks" class="btn btn-secondary">Read the guide section</a>
+      <Kicker as="p">Reference, read on {BENCHMARKS_READ_ON}</Kicker>
+      <h1>{headline}</h1>
+      <p class="tagline">What {CATALOG.length} projects claim, and what {BENCHMARKS.length} public benchmarks and {PAPERS.length} arXiv preprints measured, with a link to every source.</p>
+      <div class="hero-foot">
+        <dl class="stats">
+          <StatPair value={CATALOG.length} label="tools catalogued" />
+          <StatPair value={BENCHMARKS.length} label="public benchmarks" />
+          <StatPair value={PAPERS.length} label="arXiv papers" />
+        </dl>
+        <a href="#catalogue" class="btn btn-primary">Browse the catalogue</a>
       </div>
     </div>
   </header>
 
-  <section class="section disclosure-section" aria-label="Disclosure">
+  <section class="disclosure-section" aria-label="Disclosure">
     <div class="container">
-      <p class="disclosure"><strong>Disclosure.</strong> Florian Bruniaux, who maintains this site, is a core contributor to RTK. RTK results below are reported as measured, including the unfavourable ones.</p>
+      <p class="disclosure"><strong>Disclosure.</strong> Florian Bruniaux, who maintains this site, is a core contributor to RTK, one of the tools below. This page does not recommend a tool. It sets out what each project claims and what third parties measured, with links to every source, and reports RTK's results as measured, including the unfavourable ones. Tools enter the catalogue through a fixed rule stated there, not by preference.</p>
     </div>
   </section>
 
-  <section class="section" id="how-to-read">
+  <nav class="subnav" aria-label="On this page" data-subnav>
+    <div class="container subnav-inner">
+      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    </div>
+  </nav>
+
+  <section class="section tk-section" id="catalogue">
     <div class="container">
-      <h2 class="section-title">How to read this</h2>
-      <p class="section-subtitle">
-        Vendor claims measure one layer: shell output, output tokens, or a single content type. Benchmarks measure the whole task, so the two numbers rarely describe the same quantity. One benchmark per tool is not a verdict, and results depend on the harness, the model and the effort setting. The models tested were claude-sonnet-4-6, claude-sonnet-5, GPT-5.6 Sol and an unnamed Claude Sonnet; none of the six benchmarks tested Claude Sonnet 5.5, Claude Opus 5.5 or the GPT-6 family, so read these results as dated evidence about the mechanism, not as current rankings. Sign convention: negative means cheaper or fewer tokens than the tool-free baseline.
-      </p>
+      <h2 class="section-title">Catalogue of token-saving tools</h2>
+      <p class="section-subtitle">{CATALOG.length} projects, each with its own claim and any third-party result found. Open a row for the full claim, every result and the limits.</p>
+      <ToolCatalog />
     </div>
   </section>
 
-  <section class="section section--alt" id="claimed-vs-measured">
+  <section class="section section--alt tk-section" id="reading-notes">
     <div class="container">
-      <h2 class="section-title">Claimed vs measured</h2>
-      <p class="section-subtitle">Four tools where a vendor figure and a third-party figure can be put side by side.</p>
-      <ClaimsVsMeasured />
+      <h2 class="section-title">How to read the results</h2>
+      <dl class="notes">
+        {notes.map((n) => (
+          <div class="note">
+            <Kicker as="dt">{n.term}</Kicker>
+            <dd>{n.text}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
 
-  <section class="section" id="measurements">
+  <section class="section tk-section" id="measurements">
     <div class="container">
-      <h2 class="section-title">Measurements</h2>
-      <p class="section-subtitle">Every measured row from the six benchmarks. Filter by tool or by benchmark. The unit on each row tells cost from token counts.</p>
-      <MeasurementsExplorer />
+      <h2 class="section-title">Results by tool</h2>
+      <p class="section-subtitle">Every third-party result from the {BENCHMARKS.length} benchmarks, one row per tool. Rows are sorted by name, not by outcome. THOL publishes the opposite sign convention; its figures are converted here.</p>
+      <ResultsByTool />
     </div>
   </section>
 
-  <section class="section section--alt" id="where-tokens-come-from">
+  <section class="section section--alt tk-section" id="where-tokens-come-from">
     <div class="container">
       <h2 class="section-title">Where tool tokens come from</h2>
-      <p class="section-subtitle">Why compressing one tool's output moves the total so little.</p>
+      <p class="section-subtitle">Why compressing one tool's output moves the total by less than the output figure suggests.</p>
       <ToolTokenShare />
     </div>
   </section>
 
-  <section class="section" id="benchmark-quality">
+  <section class="section tk-section" id="benchmark-quality">
     <div class="container">
-      <h2 class="section-title">How good is each benchmark</h2>
-      <p class="section-subtitle">Eight quality checks per benchmark, plus who published it and what they stand to gain.</p>
+      <h2 class="section-title">How each benchmark was run</h2>
+      <p class="section-subtitle">Eight checks per benchmark, plus who published it and what they stand to gain.</p>
       <BenchmarkQuality />
     </div>
   </section>
 
-  <section class="section section--alt" id="related">
+  <section class="section section--alt tk-section" id="research">
     <div class="container">
-      <h2 class="section-title">Keep reading</h2>
-      <div class="links-grid">
-        {links.map((l) => (
-          <a class="link-card" href={l.href}>
-            <span class="link-label">{l.label} →</span>
-            <span class="link-desc">{l.desc}</span>
-          </a>
-        ))}
+      <h2 class="section-title">What research papers found</h2>
+      <p class="section-subtitle">Studies that measure token reduction against cost, success or time, rather than tokens alone.</p>
+      <ResearchPapers />
+    </div>
+  </section>
+
+  <section class="section tk-section" id="claimed-vs-measured">
+    <div class="container">
+      <h2 class="section-title">Claims and third-party studies</h2>
+      <p class="section-subtitle">{CLAIMS_VS_MEASURED.length} tools where a project claim and third-party results can be read side by side, with every result found for each tool.</p>
+      <ClaimsVsMeasured />
+    </div>
+  </section>
+
+  <section class="section section--alt tk-section" id="sources">
+    <div class="container">
+      <h2 class="section-title">Sources and further reading</h2>
+      <div class="sources-grid">
+        <div>
+          <h3 class="sources-h">Examined but not used</h3>
+          <ul class="not-used">
+            {notUsed.map((n) => (
+              <li>{n.href ? <a href={n.href} target="_blank" rel="noopener noreferrer">{n.html}</a> : n.html}{n.text}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="sources-h">Keep reading</h3>
+          <ul class="link-list">
+            {links.map((l) => (
+              <li>
+                <a href={l.href}>{l.label} →</a>
+                <span class="link-desc">{l.desc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
 </Layout>
 
-<style is:global>
-:root {
-  --bm-good: #15803d;
-  --bm-bad: #b91c1c;
-  --bm-seg-0: #9a3412;
-  --bm-seg-1: #1d4ed8;
-  --bm-seg-2: #57534e;
-}
-[data-theme="dark"] {
-  --bm-good: #4ade80;
-  --bm-bad: #fb923c;
-  --bm-seg-0: #ea580c;
-  --bm-seg-1: #3b82f6;
-  --bm-seg-2: #78716c;
-}
-</style>
+<script>
+  // Mark the section in view in the sticky nav.
+  const nav = document.querySelector<HTMLElement>('[data-subnav]')
+  if (nav && 'IntersectionObserver' in window) {
+    const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a'))
+    const byId = new Map(links.map((a) => [a.getAttribute('href')?.slice(1) ?? '', a]))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          for (const a of links) a.removeAttribute('aria-current')
+          byId.get(entry.target.id)?.setAttribute('aria-current', 'location')
+        }
+      },
+      { rootMargin: '-30% 0px -60% 0px' },
+    )
+    for (const id of byId.keys()) {
+      const section = document.getElementById(id)
+      if (section) observer.observe(section)
+    }
+  }
+</script>
 
 <style>
-.hero-badge-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-.hero-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-weight: 500;
-}
-.hero-badge--secondary { color: var(--text-secondary); }
+.tk-hero { padding: var(--space-2xl) 0 var(--space-xl); }
+.tk-hero h1 { max-width: 30ch; margin: 0.4rem 0 var(--space-md); font-size: clamp(1.75rem, 3.6vw, 2.5rem); }
+.tk-hero .tagline { font-size: 1.1rem; max-width: 62ch; margin-bottom: var(--space-lg); }
+.hero-foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-xl); }
+.stats { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); margin: 0; }
 
-.disclosure-section { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.disclosure-section { padding: var(--space-lg) 0; background: var(--bg-primary); }
 .disclosure {
   margin: 0;
   padding: var(--space-md) var(--space-lg);
   background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
   border-left: 4px solid var(--accent);
-  border-radius: var(--border-radius);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   color: var(--text-primary);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 1rem;
-  margin-top: var(--space-xl);
+.subnav {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 40;
+  background: color-mix(in srgb, var(--bg-primary) 94%, transparent);
+  backdrop-filter: blur(12px);
+  border-block: 1px solid var(--border);
 }
-.link-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding: var(--space-lg) var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
+.subnav-inner { display: flex; align-items: center; gap: 0.25rem; }
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.75rem;
   border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
-.link-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
-.link-label { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
-.link-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+.subnav a:hover { color: var(--accent); background: var(--bg-secondary); text-decoration: none; }
+.subnav a[aria-current] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); border-radius: var(--border-radius) var(--border-radius) 0 0; }
+
+.tk-section { padding: var(--space-2xl) 0; scroll-margin-top: 7rem; }
+.tk-section .section-subtitle { margin-bottom: var(--space-lg); font-size: 1rem; max-width: 75ch; }
+
+.notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md) var(--space-xl); margin: var(--space-lg) 0 0; }
+.note { padding-left: var(--space-md); border-left: 2px solid var(--border); }
+.note dd { margin: 0.2rem 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); }
+
+.sources-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); margin-top: var(--space-lg); }
+.sources-h { margin: 0 0 var(--space-sm); font-size: 1.1rem; }
+.not-used, .link-list { margin: 0; padding: 0; display: grid; gap: 0.6rem; font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); }
+.not-used { padding-left: 1.1rem; }
+.link-list { list-style: none; }
+.link-list li { display: flex; flex-direction: column; gap: 0.1rem; }
+.link-list a { font-weight: 600; }
+.link-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; }
+
+@media (max-width: 800px) {
+  .notes, .sources-grid { grid-template-columns: 1fr; }
+  .tk-hero { padding: var(--space-xl) 0 var(--space-lg); }
+  .tk-hero h1 { font-size: clamp(1.6rem, 6.5vw, 2rem); }
+  .tk-section { padding: var(--space-xl) 0; }
+}
+@media (max-width: 720px) {
+  .subnav { overflow-x: auto; }
+  .subnav-inner { min-width: max-content; }
+}
+@media (max-width: 480px) {
+  .hero-foot .btn { width: 100%; }
+}
 </style>

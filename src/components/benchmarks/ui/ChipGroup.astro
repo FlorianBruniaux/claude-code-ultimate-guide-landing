@@ -1,0 +1,56 @@
+---
+interface Chip {
+  value: string
+  label: string
+}
+interface Props {
+  /** Visible group label, also used as the accessible name. */
+  label: string
+  chips: Chip[]
+  /** Data attribute carrying the chip value, without the "data-" prefix. */
+  attr: string
+  pressed?: string
+}
+const { label, chips, attr, pressed = '' } = Astro.props
+const labelId = `chips-${attr}`
+function chipAttrs(value: string): Record<string, string> {
+  const out: Record<string, string> = {}
+  out['data-' + attr] = value
+  return out
+}
+---
+
+<div class="chipgroup">
+  <span class="chipgroup-label" id={labelId}>{label}</span>
+  <div class="chips" role="group" aria-labelledby={labelId}>
+    {chips.map((c) => (
+      <button type="button" class="chip" {...chipAttrs(c.value)} aria-pressed={c.value === pressed ? 'true' : 'false'}>{c.label}</button>
+    ))}
+  </div>
+</div>
+
+<style>
+.chipgroup { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; }
+.chipgroup-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--text-muted);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  font: inherit;
+  font-size: 0.85rem;
+  min-height: 44px;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); color: var(--text-primary); }
+.chip[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--btn-primary-color); font-weight: 600; }
+</style>

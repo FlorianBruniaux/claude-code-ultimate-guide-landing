@@ -5,7 +5,7 @@ import CostCalculator from '../../components/cost/CostCalculator.astro'
 import { FINOPS_HUB_URL, FINOPS_REGIMES, FINOPS_SNAPSHOT_URL } from '../../data/finops-levers'
 
 const title = 'AI FinOps for Coding Agents | Claude Code Guide'
-const description = 'In September 2026, OpenAI halved the usage included in ChatGPT Pro $200 while its API price list showed GPT-6.1 Sol at one fifth of the GPT-6 Astra rate. Three cost regimes, the FinOps loop applied to agents, ten cost levers with their limits, and a market snapshot checked against vendor pages on September 30, 2026.'
+const description = 'AI FinOps for coding agents: three cost regimes, the FinOps loop, ten cost levers and a market snapshot of API prices and quotas checked on September 30, 2026.'
 
 const jsonLd = [
   {
@@ -107,7 +107,7 @@ const deeper = [
   { title: 'Subscription Strategy', href: '/guide/subscription-strategy/', desc: 'Seats, APIs, gateways, and provider portfolios for teams.' },
   { title: 'API Gateway', href: '/guide/api-gateway/', desc: 'Budgets, virtual keys, model allowlists.' },
   { title: 'Local vs Cloud Inference', href: '/guide/local-vs-cloud-inference/', desc: 'Hardware, GPU rental, and API break-even.' },
-  { title: 'What token-saving tools save, measured', href: '/token-savings/', desc: 'Vendor claims against six public benchmarks, with each publisher\'s interest.' },
+  { title: 'What token-saving tools save, measured', href: '/token-savings/', desc: 'Claims of 45 tools against eight public benchmarks, with each publisher\'s interest.' },
 ]
 // Examples use ' · ' between vendors when a vendor lists several plans; otherwise items are comma-separated.
 const splitList = (text: string) => (text.includes(' · ') ? text.split(' · ') : text.split(', ')).map((t) => t.trim())

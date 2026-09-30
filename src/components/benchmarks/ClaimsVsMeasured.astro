@@ -1,147 +1,115 @@
 ---
-import { BENCHMARKS, CLAIMS_VS_MEASURED } from '../../data/token-saving-benchmarks'
+import { BENCHMARKS, BENCHMARK_SHORT } from '../../data/token-saving-benchmarks'
+import { claimCards } from '../../data/token-saving-view'
+import { describeValues, fmtValues, unitLabel } from './format'
+import Kicker from './ui/Kicker.astro'
 
-const benchmarkName = (id: string) => BENCHMARKS.find((b) => b.id === id)
+const cards = claimCards()
+const benchUrl = (id: string) => BENCHMARKS.find((b) => b.id === id)?.url ?? '#'
 ---
 
 <div class="claims">
-  <p class="claims-explainer">
-    A shell-output saving and a total-cost change are not the same quantity. The first counts tokens inside command results. The second counts everything the task billed, including file reads, reasoning and any extra agent steps the tool caused.
-  </p>
+  <div class="caution" role="note" aria-labelledby="caution-lead">
+    <p>
+      <strong id="caution-lead">Before reading these comparisons.</strong> These are not benchmarks run by this site. Each result comes from one published study, and each study is one among several. Results depend on the harness, the model, the effort setting, the task set and the date of the run. A project's claim and a study's result often measure different quantities, such as shell output against total task cost. A single result does not show that a tool works or fails on your workload. Open each source, check what it measured, and test on your own tasks.
+    </p>
+  </div>
 
   <ul class="claims-list">
-    {CLAIMS_VS_MEASURED.map((row) => {
-      const bench = benchmarkName(row.benchmark)
-      return (
-        <li class="claim-card">
-          <h3 class="claim-tool">
-            {row.tool}
-            {!row.sameDenominator && <span class="claim-badge">Different denominator</span>}
-          </h3>
-          <div class="claim-pair">
-            <div class="claim-side">
-              <span class="claim-kicker">Vendor claim</span>
-              <span class="claim-number">{row.claim}</span>
-              <span class="claim-denom">of {row.claimDenominator}</span>
-              <a class="claim-link" href={row.claimSource} target="_blank" rel="noopener noreferrer">Vendor source ↗</a>
-            </div>
-            <div class="claim-side claim-side--measured">
-              <span class="claim-kicker">Measured by a third party</span>
-              <span class="claim-number">{row.measured}</span>
-              <span class="claim-denom">of {row.measuredDenominator}</span>
-              {bench && <a class="claim-link" href={bench.url} target="_blank" rel="noopener noreferrer">{bench.publisher} ↗</a>}
-            </div>
+    {cards.map(({ claim, results, maintainerResponses }) => (
+      <li class="claim-card">
+        <div class="claim-head">
+          <h3 class="claim-tool">{claim.tool}</h3>
+          {!claim.sameDenominator && <span class="claim-badge">Different denominator</span>}
+        </div>
+
+        <div class="claim-block">
+          <Kicker as="p">Project claim</Kicker>
+          <p class="claim-number">{claim.claim}</p>
+          <p class="claim-denom">of {claim.claimDenominator}</p>
+          <a class="ext" href={claim.claimSource} target="_blank" rel="noopener noreferrer">Project source ↗</a>
+        </div>
+
+        <div class="claim-block">
+          <Kicker as="p">Third-party results ({results.length})</Kicker>
+          <ul class="results">
+            {results.map((m) => (
+              <li>
+                <a href={benchUrl(m.benchmark)} target="_blank" rel="noopener noreferrer">{BENCHMARK_SHORT[m.benchmark]} ↗</a>
+                <span class="r-metric">{m.metric} ({unitLabel(m.unit)})</span>
+                <span class="r-val"><strong>{fmtValues(m.values)}</strong> ({describeValues(m.values, m.unit)})</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {!claim.sameDenominator && (
+          <p class="claim-why">The claim and the results use different denominators. Each number answers a different question.</p>
+        )}
+
+        {maintainerResponses.length > 0 && (
+          <div class="claim-block">
+            <Kicker as="p">Maintainer response</Kicker>
+            <ul class="plain">
+              {maintainerResponses.map((r) => (
+                <li><a href={r.url} target="_blank" rel="noopener noreferrer">{r.label} ↗</a> <span class="r-metric">{r.date}</span></li>
+              ))}
+            </ul>
           </div>
-          {!row.sameDenominator && (
-            <p class="claim-why">The claim and the measurement use different denominators, so the gap is not a like-for-like contradiction. Each number answers a different question.</p>
-          )}
-        </li>
-      )
-    })}
+        )}
+      </li>
+    ))}
   </ul>
 </div>
 
 <style>
-.claims-explainer {
+.caution {
+  margin: 0 0 var(--space-xl);
   padding: var(--space-md) var(--space-lg);
   background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
-  border-left: 3px solid var(--accent);
-  border-radius: var(--border-radius);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0 0 var(--space-xl);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-primary);
 }
-.claims-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 1.25rem;
-}
+.caution p { margin: 0; max-width: 80ch; }
+.claims-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); align-items: start; }
 .claim-card {
-  padding: var(--space-lg);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   min-width: 0;
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
 }
-.claim-tool {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0;
-}
+.claim-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem var(--space-md); }
+.claim-tool { margin: 0; font-size: 1.2rem; font-weight: 700; }
 .claim-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
   font-family: var(--font-mono);
-  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
   border-radius: 4px;
-  border: 1px solid var(--bm-bad);
-  color: var(--bm-bad);
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
-.claim-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-}
-.claim-side {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 0;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--bg-tertiary);
-  border-radius: 6px;
-}
-.claim-side--measured {
-  border: 1px solid var(--border);
-}
-.claim-kicker {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.claim-number {
-  font-family: var(--font-mono);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  overflow-wrap: anywhere;
-}
-.claim-denom {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-.claim-link {
-  font-size: 0.78rem;
-  color: var(--accent);
-  text-decoration: none;
-  margin-top: auto;
-  padding-top: 0.25rem;
-}
-.claim-link:hover { text-decoration: underline; }
-.claim-why {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0;
-}
-@media (max-width: 480px) {
-  .claim-pair { grid-template-columns: 1fr; }
+.claim-block { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.claim-number { margin: 0; font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); overflow-wrap: anywhere; }
+.claim-denom { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); overflow-wrap: anywhere; }
+.ext { display: inline-block; min-height: 44px; line-height: 44px; font-size: 0.88rem; }
+.results, .plain { list-style: none; margin: 0.2rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; }
+.results li { display: flex; flex-direction: column; gap: 0.1rem; padding-left: 0.75rem; border-left: 2px solid var(--border); }
+.r-metric { font-size: 0.82rem; color: var(--text-muted); }
+.r-val { color: var(--text-secondary); }
+.r-val strong { font-family: var(--font-mono); color: var(--text-primary); }
+.claim-why { margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); }
+@media (max-width: 800px) {
+  .claims-list { grid-template-columns: 1fr; }
 }
 </style>

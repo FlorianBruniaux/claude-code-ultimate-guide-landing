@@ -128,7 +128,7 @@ export const navigationSections: HeaderNavigationSection[] = [
           { href: '/team-metrics/', label: 'Team Metrics', description: 'Measure outcomes without turning proxies into productivity.' },
           { href: '/guide/team-knowledge-base/', label: 'Team Knowledge', description: 'Preserve and share operational context across teams.' },
           { href: '/finops/', label: 'AI FinOps', description: 'Cost regimes, levers, and dated market prices.' },
-          { href: '/token-savings/', label: 'Token-Saving Tools, Measured', description: 'Vendor claims against six public benchmarks.' },
+          { href: '/token-savings/', label: 'Token-saving tools, measured', description: 'A catalogue of 45 tools, eight public benchmarks and 15 preprints.' },
           { href: '/guide/subscription-strategy/', label: 'Subscription Strategy', description: 'Choose seats, APIs, gateways, and provider portfolios.' },
           { href: '/guide/ai-unit-economics/', label: 'AI Unit Economics', description: 'Understand accepted-task cost and spend controls.' },
         ],

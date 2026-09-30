@@ -56,10 +56,10 @@ npx viberank-cli      # Submit ccusage data
 
 ## Token Optimization
 
-**RTK (Rust Token Killer)**: CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details.
+**RTK (Rust Token Killer)**: CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details. Disclosure: the author of this guide is a core contributor to RTK.
 
 ```bash
-brew install rtk-ai/tap/rtk
+brew install rtk
 rtk init             # Setup with automatic hook
 ```
 

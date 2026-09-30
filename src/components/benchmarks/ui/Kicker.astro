@@ -1,0 +1,18 @@
+---
+type Props = { as?: 'p' | 'span' | 'dt' }
+const { as: Tag = 'span' }: Props = Astro.props
+---
+
+<Tag class="kicker"><slot /></Tag>
+
+<style>
+.kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--text-muted);
+}
+</style>

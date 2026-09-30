@@ -31,9 +31,9 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_page',
-    title: 'Token-saving tools, measured: vendor claims against six public benchmarks',
+    title: 'Token-saving tools, measured: 45 tools, eight benchmarks, 15 preprints',
     date: 'Sep 30, 2026',
-    description: 'Caveman, RTK, Headroom, Ponytail and others, measured end to end by Dasein, Stet, Marmelab, JetBrains and the Token-Harness Optimizer Leaderboard. Most results sit far below vendor claims, and some tools made tasks more expensive. Includes each publisher\'s interest and an eight-point quality grid. The site author is a core contributor to RTK.',
+    description: 'Caveman, RTK, Headroom, Ponytail and others, measured end to end by Dasein, Stet, Marmelab, JetBrains, the Token-Harness Optimizer Leaderboard, Tura and Codepointer, next to 15 arXiv preprints and a catalogue of 45 tools grouped by mechanism. Most results sit far below vendor claims, and some tools made tasks more expensive. Includes each publisher\'s interest and an eight-point quality grid. The site author is a core contributor to RTK.',
     link: 'https://cc.bruniaux.com/token-savings/',
   },
   {

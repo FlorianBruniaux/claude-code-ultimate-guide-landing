@@ -75,7 +75,7 @@ exit 0
 
 `PreToolUse` hook on `Bash`. Detects commands optimizable by RTK and informs Claude of the available alternative.
 
-The logic: if the command starts with `git log`, `cargo test`, `pnpm list` or verbose equivalents, suggest `rtk <command>` via stdout before letting it through.
+The logic: if the command starts with `git log`, `cargo test`, `pnpm list` or verbose equivalents, suggest `rtk <command>` via stdout before letting it through. (RTK is a tool the guide author contributes to.)
 
 ## Log all executed commands
 

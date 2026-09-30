@@ -325,9 +325,9 @@ const useCaseMatrix = [
       <p class="section-subtitle">Each figure names the quantity it measures. A saving on one layer, such as shell output or cached input, is not the same number as the cost of a whole task.</p>
       <div class="benchmarks-grid">
         <div class="benchmark-card">
-          <div class="benchmark-number">+7.6%</div>
-          <div class="benchmark-label">median cost per task with RTK</div>
-          <div class="benchmark-source">JetBrains, 86 SkillsBench tasks, low effort (p=0.004). RTK's own figures count shell-output tokens only</div>
+          <div class="benchmark-number">+6.8%</div>
+          <div class="benchmark-label">billed cost, with 38.4% fewer tool-output tokens</div>
+          <div class="benchmark-source">arXiv 2607.12161, largest compression setup against unmodified Claude Code. Fewer tokens on one layer did not mean a smaller bill</div>
         </div>
         <div class="benchmark-card">
           <div class="benchmark-number">20x</div>
@@ -355,7 +355,7 @@ const useCaseMatrix = [
           <div class="benchmark-source">SlimInfer dynamic token pruning on LLaMA 3.1</div>
         </div>
       </div>
-      <p class="benchmarks-more">Six public benchmarks measured token-saving tools end to end, and most results sit far below vendor claims. The site author is a core contributor to RTK. <a href="/token-savings/">Compare claims and measurements →</a></p>
+      <p class="benchmarks-more">Eight public benchmarks measured token-saving tools end to end, and most results sit far below vendor claims. The site author is a core contributor to RTK. <a href="/token-savings/">Compare claims and measurements →</a></p>
     </div>
   </section>
 

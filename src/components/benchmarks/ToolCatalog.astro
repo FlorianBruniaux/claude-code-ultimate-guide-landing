@@ -1,0 +1,417 @@
+---
+import { ALSO_SEEN, CATALOG, CATALOG_READ_ON, MECHANISM_LABELS, type Mechanism } from '../../data/token-saving-catalog'
+import { BENCHMARKS, BENCHMARK_SHORT, MEASUREMENTS } from '../../data/token-saving-benchmarks'
+import { catalogRows, shapeOf, signOf } from '../../data/token-saving-view'
+import { chartDomain, describeValues, fmtValues, position } from './format'
+import Kicker from './ui/Kicker.astro'
+
+const rows = catalogRows()
+const mechanisms = (Object.keys(MECHANISM_LABELS) as Mechanism[]).filter((m) => CATALOG.some((c) => c.mechanism === m))
+const measuredCount = rows.filter((r) => r.results.length > 0).length
+const { lo, hi } = chartDomain(MEASUREMENTS.flatMap((m) => m.values))
+const zero = position(0, lo, hi)
+
+const benchUrl = (id: string) => BENCHMARKS.find((b) => b.id === id)?.url ?? '#'
+const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : String(n))
+---
+
+<div class="catalog" data-catalog>
+  <details class="rule">
+    <summary>How tools are listed</summary>
+    <p>
+      A project is listed when it is public, not archived, aimed at coding agents, and has at least 100 GitHub stars, or was measured by one of the benchmarks below, or is already covered by the guide. Stars, license and last push come from the GitHub API; claims were read in each project's README or product page on {CATALOG_READ_ON}. The list is sorted by name by default. GitHub stars measure attention, not quality. Each result comes from one study: see <a href="#claimed-vs-measured">Claims and studies</a> before reading a number.
+    </p>
+  </details>
+
+  <div class="controls" data-controls>
+    <div class="field field--search">
+      <label for="cat-search">Search tools</label>
+      <input id="cat-search" type="search" data-ctl-search placeholder="Name, mechanism or keyword" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="field">
+      <label for="cat-mech">Mechanism</label>
+      <select id="cat-mech" data-ctl-mech>
+        <option value="all">All mechanisms ({CATALOG.length})</option>
+        {mechanisms.map((m) => (
+          <option value={m}>{MECHANISM_LABELS[m].label} ({CATALOG.filter((c) => c.mechanism === m).length})</option>
+        ))}
+      </select>
+    </div>
+    <div class="field">
+      <label for="cat-sort">Sort by</label>
+      <select id="cat-sort" data-ctl-sort>
+        <option value="name">Name, A to Z</option>
+        <option value="stars">GitHub stars</option>
+        <option value="results">Number of third-party results</option>
+      </select>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" data-measured-only />
+      <span>Measured by a third party ({measuredCount})</span>
+    </label>
+    <button type="button" class="reset" data-reset hidden>Reset</button>
+    <p class="count" aria-live="polite" data-count></p>
+  </div>
+
+  <ol class="list" data-list>
+    {rows.map(({ entry: c, results }) => {
+      const dots = results.flatMap((m) => m.values.map((v) => ({ pos: position(v, lo, hi), sign: signOf(v), shape: shapeOf(m.unit) })))
+      const mechLabel = MECHANISM_LABELS[c.mechanism].label
+      const search = [c.name, c.id, mechLabel, c.whatItDoes ?? '', c.claimShort?.unit ?? '', ...c.flags].join(' ')
+      return (
+        <li
+          class="item"
+          id={`tool-${c.id}`}
+          data-item
+          data-name={c.name}
+          data-search={search}
+          data-mech={c.mechanism}
+          data-measured={results.length > 0 ? 'yes' : 'no'}
+          data-stars={c.stars ?? -1}
+          data-results={results.length}
+        >
+          <details class="row">
+            <summary class="sum">
+              <span class="c-name">
+                <span class="name">{c.name}</span>
+                <span class="mech">{mechLabel}</span>
+              </span>
+              <span class="c-claim">
+                {c.claimShort ? (
+                  <>
+                    <strong class="claim-val">{c.claimShort.value}</strong>
+                    <span class="claim-unit"> {c.claimShort.unit}</span>
+                  </>
+                ) : (
+                  <span class="none">No quantified claim</span>
+                )}
+              </span>
+              <span class="c-results">
+                {results.length > 0 ? (
+                  <>
+                    <span class="strip" aria-hidden="true">
+                      <span class="strip-zero" style={`--p:${zero}`}></span>
+                      {dots.map((d) => <span class={`bm-dot bm-dot--${d.shape} bm-dot--${d.sign}`} style={`--p:${d.pos}`}></span>)}
+                    </span>
+                    <span class="res-n">{results.length} third-party {results.length === 1 ? 'result' : 'results'}</span>
+                  </>
+                ) : (
+                  <span class="none">No third-party result</span>
+                )}
+              </span>
+              <span class="c-stars">{c.stars !== null ? <><span aria-hidden="true">★</span> {fmtStars(c.stars)}<span class="sr-only"> GitHub stars</span></> : ''}</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+
+            <div class="panel">
+              <div class="p-main">
+                {c.whatItDoes && <p class="lead">{c.whatItDoes}</p>}
+                <dl class="facts">
+                  <div>
+                    <Kicker as="dt">Project claim</Kicker>
+                    <dd>
+                      {c.claim ? (
+                        <>
+                          <q class="claim">{c.claim}</q>
+                          <span class="sub">Measured on: {c.claimDenominator}</span>
+                          {c.claimSource && <a class="ext" href={c.claimSource} target="_blank" rel="noopener noreferrer">Claim source ↗</a>}
+                        </>
+                      ) : (
+                        <span class="none">No quantified claim.</span>
+                      )}
+                    </dd>
+                  </div>
+                  {c.descriptionClaim && (
+                    <div>
+                      <Kicker as="dt">Repository description</Kicker>
+                      <dd>
+                        <q class="claim">{c.descriptionClaim}</q>
+                        <span class="sub">The short "About" text on GitHub, which can differ from the README.</span>
+                      </dd>
+                    </div>
+                  )}
+                  {c.vendorBenchmark && (
+                    <div>
+                      <Kicker as="dt">Project's own benchmark</Kicker>
+                      <dd>{c.vendorBenchmark}</dd>
+                    </div>
+                  )}
+                  {c.notes && (
+                    <div>
+                      <Kicker as="dt">Limits and context</Kicker>
+                      <dd>{c.notes}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+
+              <div class="p-side">
+                <div>
+                  <Kicker as="p">Third-party results ({results.length})</Kicker>
+                  {results.length > 0 ? (
+                    <ul class="results">
+                      {results.map((r) => (
+                        <li>
+                          <a href={benchUrl(r.benchmark)} target="_blank" rel="noopener noreferrer">{BENCHMARK_SHORT[r.benchmark]} ↗</a>
+                          <span class="r-metric">{r.metric}</span>
+                          <span class="r-val"><strong>{fmtValues(r.values)}</strong> ({describeValues(r.values, r.unit)})</span>
+                          {r.note && <span class="r-note">{r.note}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p class="none">None found on {CATALOG_READ_ON}.</p>
+                  )}
+                </div>
+
+                {c.maintainerResponses.length > 0 && (
+                  <div>
+                    <Kicker as="p">Maintainer response</Kicker>
+                    <ul class="plain">
+                      {c.maintainerResponses.map((r) => (
+                        <li><a href={r.url} target="_blank" rel="noopener noreferrer">{r.label} ↗</a> <span class="sub">{r.date}</span></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {c.flags.length > 0 && (
+                  <ul class="flags" aria-label="Notes">
+                    {c.flags.map((f) => <li class="flag">{f}</li>)}
+                  </ul>
+                )}
+
+                <p class="meta">
+                  {[c.license, c.lastPush ? `pushed ${c.lastPush}` : null, c.stars !== null ? `${c.stars.toLocaleString('en-US')} stars` : null].filter(Boolean).join(' · ')}
+                </p>
+                {c.targets.length > 0 && <p class="meta"><span class="meta-k">Targets stated:</span> {c.targets.join(', ')}</p>}
+                <a class="ext" href={c.url} target="_blank" rel="noopener noreferrer">Project page ↗</a>
+              </div>
+            </div>
+          </details>
+        </li>
+      )
+    })}
+  </ol>
+
+  <p class="empty" data-empty hidden>No tool matches these filters.</p>
+  <button type="button" class="more" data-more hidden>Show all {CATALOG.length}</button>
+
+  <details class="also">
+    <summary>Also found, below the inclusion bar ({ALSO_SEEN.length} projects, claims not reviewed)</summary>
+    <ul class="also-list">
+      {ALSO_SEEN.map((a) => (
+        <li>
+          <a href={a.url} target="_blank" rel="noopener noreferrer">{a.name}</a>
+          <span class="also-meta">{a.mechanism}, ★ {a.stars}, pushed {a.lastPush}</span>
+        </li>
+      ))}
+    </ul>
+  </details>
+</div>
+
+<script>
+  import { initCatalogFilter } from '../../scripts/benchmark-filter'
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-catalog]'))) initCatalogFilter(root)
+</script>
+
+<style>
+.rule { margin: 0 0 var(--space-md); font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); }
+.rule summary, .also summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.rule p { margin: 0 0 var(--space-sm); max-width: 75ch; }
+
+/* Controls exist only with JS. */
+.controls { display: none; }
+.catalog[data-ready] .controls {
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) minmax(0, 1.4fr) minmax(0, 1.2fr) auto auto;
+  gap: var(--space-sm) var(--space-md);
+  align-items: end;
+  margin-bottom: var(--space-md);
+}
+.field { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--text-muted);
+}
+.field input, .field select {
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  min-width: 0;
+  width: 100%;
+}
+.toggle { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; font-size: 0.9rem; color: var(--text-secondary); cursor: pointer; }
+.toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
+.reset {
+  min-height: 44px;
+  padding: 0 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.reset[hidden] { display: none; }
+.reset:hover { border-color: var(--accent); }
+.count { grid-column: 1 / -1; margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  background: var(--surface-elevated);
+  overflow: hidden;
+}
+.item { scroll-margin-top: 7rem; border-top: 1px solid var(--border-light); }
+.item:first-child { border-top: 0; }
+.item[hidden] { display: none; }
+
+.sum {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.6fr) 200px 64px 20px;
+  gap: var(--space-md);
+  align-items: center;
+  min-height: 56px;
+  padding: 0.5rem var(--space-md);
+  cursor: pointer;
+}
+.sum::-webkit-details-marker { display: none; }
+.sum:hover, .row[open] > .sum { background: var(--bg-secondary); }
+.c-name { display: flex; flex-direction: column; min-width: 0; }
+.name { font-weight: 700; font-size: 0.98rem; color: var(--text-primary); overflow-wrap: anywhere; }
+.mech { font-size: 0.78rem; color: var(--text-muted); }
+.c-claim { font-size: 0.88rem; line-height: 1.35; color: var(--text-secondary); min-width: 0; }
+.claim-val { font-family: var(--font-mono); color: var(--text-primary); }
+.none { color: var(--text-muted); font-size: 0.88rem; }
+.c-results { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--text-secondary); min-width: 0; }
+.strip {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 20px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+.strip-zero { position: absolute; top: 2px; bottom: 2px; width: 1px; left: calc(6px + (100% - 12px) * var(--p) / 100); background: var(--text-muted); }
+.strip .bm-dot { left: calc(6px + (100% - 12px) * var(--p) / 100); }
+.strip .bm-dot { box-shadow: 0 0 0 1.5px var(--bg-tertiary); }
+.c-stars { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-align: right; white-space: nowrap; }
+.chev {
+  width: 8px; height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  justify-self: center;
+  margin-top: -3px;
+}
+.row[open] .chev { transform: rotate(-135deg); margin-top: 3px; }
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--space-lg) var(--space-xl);
+  padding: var(--space-md) var(--space-md) var(--space-lg);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.p-main, .p-side { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+.lead { margin: 0; color: var(--text-primary); }
+.facts { margin: 0; display: flex; flex-direction: column; gap: var(--space-md); }
+.facts dd { margin: 0.2rem 0 0; overflow-wrap: anywhere; }
+.claim { display: block; font-weight: 600; color: var(--text-primary); }
+.sub { display: block; font-size: 0.85rem; color: var(--text-muted); }
+.ext { display: inline-block; min-height: 44px; line-height: 44px; font-size: 0.88rem; }
+.results { list-style: none; margin: 0.3rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.results li { display: flex; flex-direction: column; gap: 0.1rem; padding-left: 0.75rem; border-left: 2px solid var(--border); }
+.r-metric { font-size: 0.82rem; color: var(--text-muted); }
+.r-val strong { font-family: var(--font-mono); color: var(--text-primary); }
+.r-note { font-size: 0.82rem; color: var(--text-muted); }
+.plain { list-style: none; margin: 0.3rem 0 0; padding: 0; }
+.flags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.flag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+}
+.meta { margin: 0; font-size: 0.82rem; color: var(--text-muted); overflow-wrap: anywhere; }
+.meta-k { font-weight: 600; }
+
+.empty { padding: var(--space-lg); text-align: center; color: var(--text-secondary); }
+.empty[hidden] { display: none; }
+.more {
+  display: block;
+  margin: var(--space-md) auto 0;
+  min-height: 44px;
+  padding: 0 1.5rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.more[hidden] { display: none; }
+.more:hover { border-color: var(--accent); }
+
+.also { margin-top: var(--space-lg); border-top: 1px solid var(--border); padding-top: var(--space-sm); }
+.also-list { columns: 2; column-gap: var(--space-xl); padding-left: 1.1rem; font-size: 0.88rem; line-height: 1.7; }
+.also-list li { break-inside: avoid; }
+.also-meta { color: var(--text-muted); font-size: 0.8rem; margin-left: 0.4rem; }
+
+@media (max-width: 1000px) {
+  .catalog[data-ready] .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field--search { grid-column: 1 / -1; }
+  .sum { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr) 180px 56px 20px; gap: var(--space-sm); }
+  .panel { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .sum {
+    grid-template-columns: minmax(0, 1fr) auto 20px;
+    grid-template-areas: "name stars chev" "mech mech mech" "claim claim claim" "results results results";
+    gap: 0.15rem var(--space-sm);
+    padding: 0.6rem var(--space-md);
+  }
+  .c-name { display: contents; }
+  .name { grid-area: name; }
+  .mech { grid-area: mech; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .c-claim { grid-area: claim; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .c-results { grid-area: results; }
+  .c-stars { grid-area: stars; }
+  .chev { grid-area: chev; }
+  .also-list { columns: 1; }
+}
+@media (max-width: 480px) {
+  .catalog[data-ready] .controls { grid-template-columns: 1fr; }
+}
+</style>

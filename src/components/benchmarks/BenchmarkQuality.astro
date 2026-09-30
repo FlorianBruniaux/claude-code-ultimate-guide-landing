@@ -14,103 +14,172 @@ const COLUMNS: { key: QualityKey; label: string }[] = [
 ]
 const cell = (v: boolean | null) =>
   v === true ? { text: 'Yes', cls: 'yes', mark: '✓' } : v === false ? { text: 'No', cls: 'no', mark: '✕' } : { text: 'Not stated', cls: 'unknown', mark: '?' }
+const yesCount = (b: (typeof BENCHMARKS)[number]) => COLUMNS.filter((c) => b.quality[c.key] === true).length
 ---
 
-<div class="quality">
-  <p class="quality-intro">Read on {BENCHMARKS_READ_ON}. "Not stated" means the publisher's page did not say, not that the answer is no.</p>
-  <div class="scroll" tabindex="0" role="region" aria-label="Benchmark quality comparison, scrollable">
-    <table class="qtable">
-      <caption class="sr-only">Quality criteria for each benchmark</caption>
-      <thead>
-        <tr>
-          <th scope="col" class="col-name">Benchmark</th>
-          {COLUMNS.map((c) => <th scope="col" class="col-q">{c.label}</th>)}
-        </tr>
-      </thead>
-      {BENCHMARKS.map((b) => (
-        <tbody>
-          <tr class="row-main">
-            <th scope="row" class="col-name">
-              <a href={b.url} target="_blank" rel="noopener noreferrer" class="bench-name">{b.name} ↗</a>
-              <span class="bench-meta">{b.publisher}</span>
-              <span class="bench-meta">{b.date}</span>
-            </th>
-            {COLUMNS.map((c) => {
-              const r = cell(b.quality[c.key])
-              return (
-                <td class={`q q--${r.cls}`}>
-                  <span class="q-mark" aria-hidden="true">{r.mark}</span>
-                  <span class="q-text">{r.text}</span>
-                </td>
-              )
-            })}
+<div class="quality" data-quality>
+  <p class="quality-intro">Read on {BENCHMARKS_READ_ON}. "Not stated" means the publisher's page did not say, not that the answer is no. The tally counts the checks answered yes; it says nothing about the size of any result.</p>
+
+  <div class="desk">
+    <div class="scroll" tabindex="0" role="region" aria-label="Benchmark quality comparison, scrollable">
+      <table class="qtable">
+        <caption class="sr-only">Quality checks for each benchmark</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="col-name">Benchmark</th>
+            {COLUMNS.map((c) => <th scope="col" class="col-q">{c.label}</th>)}
           </tr>
-          <tr class="row-detail">
-            <td colspan={COLUMNS.length + 1}>
-              <div class="detail-inner">
-              <p class="interest"><strong>Publisher's interest:</strong> {b.interest}</p>
-              <p class="method"><strong>Method:</strong> {b.method}</p>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      ))}
-    </table>
+        </thead>
+        {BENCHMARKS.map((b) => (
+          <tbody>
+            <tr class="row-main">
+              <th scope="row" class="col-name">
+                <a href={b.url} target="_blank" rel="noopener noreferrer" class="bench-name">{b.name} ↗</a>
+                <span class="bench-meta">{b.publisher}</span>
+                <span class="bench-meta">{b.date}</span>
+                <span class="bench-tally">Yes on {yesCount(b)} of {COLUMNS.length} checks</span>
+                <button type="button" class="toggle" data-toggle aria-expanded="false" aria-controls={`qd-${b.id}`}>Method and interest</button>
+              </th>
+              {COLUMNS.map((c) => {
+                const r = cell(b.quality[c.key])
+                return (
+                  <td class={`q q--${r.cls}`}>
+                    <span class="q-mark" aria-hidden="true">{r.mark}</span>
+                    <span class="q-text">{r.text}</span>
+                  </td>
+                )
+              })}
+            </tr>
+            <tr class="row-detail" id={`qd-${b.id}`} data-detail>
+              <td colspan={COLUMNS.length + 1}>
+                <div class="detail-inner">
+                  <p class="interest"><strong>Publisher's interest:</strong> {b.interest}</p>
+                  <p class="method"><strong>Method:</strong> {b.method}</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        ))}
+      </table>
+    </div>
   </div>
+
+  <ul class="cards">
+    {BENCHMARKS.map((b) => (
+      <li>
+        <details class="card">
+          <summary>
+            <span class="card-name">{b.name}</span>
+            <span class="card-tally">{yesCount(b)} of {COLUMNS.length} checks</span>
+          </summary>
+          <div class="card-body">
+            <p class="bench-meta">{b.publisher}, {b.date}</p>
+            <ul class="checks">
+              {COLUMNS.map((c) => {
+                const r = cell(b.quality[c.key])
+                return (
+                  <li class={`q--${r.cls}`}>
+                    <span class="q-mark" aria-hidden="true">{r.mark}</span>
+                    <span>{c.label}: <strong>{r.text}</strong></span>
+                  </li>
+                )
+              })}
+            </ul>
+            <p class="interest"><strong>Publisher's interest:</strong> {b.interest}</p>
+            <p class="method"><strong>Method:</strong> {b.method}</p>
+            <a href={b.url} target="_blank" rel="noopener noreferrer" class="bench-link">Read the benchmark ↗</a>
+          </div>
+        </details>
+      </li>
+    ))}
+  </ul>
 </div>
 
+<script>
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-quality]'))) {
+    for (const detail of Array.from(root.querySelectorAll<HTMLElement>('[data-detail]'))) detail.hidden = true
+    root.setAttribute('data-ready', '')
+    for (const button of Array.from(root.querySelectorAll<HTMLButtonElement>('[data-toggle]'))) {
+      const target = root.querySelector<HTMLElement>(`#${button.getAttribute('aria-controls')}`)
+      button.addEventListener('click', () => {
+        if (!target) return
+        const open = button.getAttribute('aria-expanded') === 'true'
+        button.setAttribute('aria-expanded', String(!open))
+        target.hidden = open
+      })
+    }
+  }
+</script>
+
 <style>
-.quality-intro { font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
-.scroll {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  background: var(--surface-elevated);
-  max-width: 100%;
-}
-.scroll:focus-visible { outline: 2px solid var(--accent-tertiary); outline-offset: 2px; }
-.qtable { border-collapse: collapse; width: 100%; min-width: 880px; font-size: 0.8rem; }
+.quality-intro { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 var(--space-md); max-width: 75ch; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: var(--surface-elevated); max-width: 100%; }
+.qtable { border-collapse: collapse; width: 100%; min-width: 960px; font-size: 0.85rem; }
 .qtable thead th {
   text-align: center;
   padding: 0.6rem 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
   color: var(--text-secondary);
   background: var(--bg-tertiary);
   border-bottom: 1px solid var(--border);
   vertical-align: bottom;
 }
-.qtable thead .col-name { text-align: left; padding-left: 0.75rem; }
-.qtable tbody { border-top: 2px solid var(--border); }
-.col-name { text-align: left; padding: 0.75rem; width: 260px; vertical-align: top; }
-.bench-name { display: block; font-weight: 700; color: var(--accent); text-decoration: none; font-size: 0.85rem; line-height: 1.35; }
-.bench-name:hover { text-decoration: underline; }
-.bench-meta { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.15rem; }
-.q { text-align: center; padding: 0.5rem 0.3rem; vertical-align: middle; }
-.q-mark { display: block; font-weight: 700; font-size: 1rem; line-height: 1.2; }
-.q-text { display: block; font-size: 0.72rem; font-weight: 600; }
+.qtable thead .col-name { text-align: left; padding-left: 1rem; }
+.qtable tbody { border-top: 1px solid var(--border); }
+.qtable tbody:first-of-type { border-top: 0; }
+.col-name { text-align: left; padding: 0.7rem 1rem; width: 250px; vertical-align: middle; }
+.bench-name { display: block; font-weight: 700; font-size: 0.92rem; line-height: 1.3; text-wrap: balance; }
+.bench-meta { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.78rem; margin-top: 0.1rem; }
+.bench-tally { display: block; margin-top: 0.3rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+.toggle {
+  display: none;
+  margin-top: 0.25rem;
+  min-height: 44px;
+  padding: 0;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.quality[data-ready] .toggle { display: inline-block; }
+.toggle[aria-expanded='true']::after { content: ' (open)'; font-weight: 400; }
+.q { text-align: center; padding: 0.4rem 0.25rem; vertical-align: middle; white-space: nowrap; }
+.q-mark { display: inline-block; font-weight: 700; margin-right: 0.3rem; }
+.q-text { font-size: 0.8rem; font-weight: 600; }
 .q--yes { color: var(--bm-good); }
 .q--no { color: var(--bm-bad); }
 .q--unknown { color: var(--text-muted); }
-.row-detail td {
-  padding: 0.5rem 0.75rem 0.85rem;
-  border-top: 1px dashed var(--border-light);
-}
-.detail-inner { position: sticky; left: 0; max-width: min(860px, calc(100vw - 4rem)); }
-.interest {
-  margin: 0 0 0.35rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.85rem;
-  color: var(--text-primary);
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
-  border-left: 3px solid var(--accent);
-  border-radius: 4px;
-  line-height: 1.5;
-  white-space: normal;
-}
-.method { margin: 0; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; white-space: normal; }
-.sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+.row-detail[hidden] { display: none; }
+.row-detail td { padding: 0 1rem 1rem; }
+.detail-inner { position: sticky; left: 0; width: min(1100px, calc(100vw - 4rem)); display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; align-items: start; }
+.interest, .method { margin: 0; font-size: 0.85rem; line-height: 1.5; white-space: normal; color: var(--text-secondary); }
+.interest strong, .method strong { color: var(--text-primary); }
+
+/* Below 800px the table is replaced, not reshaped, so table roles stay intact. */
+.cards { display: none; list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: var(--surface-elevated); overflow: hidden; }
+.cards > li + li { border-top: 1px solid var(--border-light); }
+.card summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); min-height: 56px; padding: 0.5rem var(--space-md); cursor: pointer; }
+.card summary::-webkit-details-marker { display: none; }
+.card[open] > summary { background: var(--bg-secondary); }
+.card-name { font-weight: 700; font-size: 0.92rem; color: var(--text-primary); min-width: 0; }
+.card-tally { flex: none; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+.card-body { padding: var(--space-sm) var(--space-md) var(--space-md); display: flex; flex-direction: column; gap: var(--space-sm); background: var(--bg-secondary); }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; font-size: 0.85rem; color: var(--text-secondary); }
+.checks li { display: flex; gap: 0.5rem; }
+.checks .q--yes, .checks .q--no, .checks .q--unknown { color: var(--text-secondary); }
+.checks .q--yes .q-mark { color: var(--bm-good); }
+.checks .q--no .q-mark { color: var(--bm-bad); }
+.bench-link { display: inline-block; min-height: 44px; line-height: 44px; font-size: 0.88rem; }
+
+@media (max-width: 800px) {
+  .desk { display: none; }
+  .cards { display: block; }
 }
 </style>

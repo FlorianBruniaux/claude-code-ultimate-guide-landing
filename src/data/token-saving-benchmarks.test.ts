@@ -68,3 +68,44 @@ test('chart domain contains zero and every value', () => {
     }
   }
 })
+
+import { ALSO_SEEN, CATALOG, MECHANISM_LABELS } from './token-saving-catalog.ts'
+import { PAPERS } from './token-saving-benchmarks.ts'
+
+test('catalog ids are unique and mechanisms are known', () => {
+  assert.equal(new Set(CATALOG.map((c) => c.id)).size, CATALOG.length)
+  for (const c of CATALOG) assert.ok(c.mechanism in MECHANISM_LABELS, `${c.id}: ${c.mechanism}`)
+})
+
+test('catalog links are https', () => {
+  for (const c of CATALOG) {
+    assert.ok(c.url.startsWith('https://'), c.url)
+    if (c.claimSource) assert.ok(c.claimSource.startsWith('https://'), c.claimSource)
+  }
+  for (const a of ALSO_SEEN) assert.ok(a.url.startsWith('https://'), a.url)
+})
+
+test('every measuredAs name matches a measurement row', () => {
+  const tools = new Set(MEASUREMENTS.map((m) => m.tool))
+  for (const c of CATALOG) if (c.measuredAs) assert.ok(tools.has(c.measuredAs), `${c.id} -> ${c.measuredAs}`)
+})
+
+test('a claim always comes with its denominator', () => {
+  for (const c of CATALOG) if (c.claim) assert.ok(c.claimDenominator, c.id)
+})
+
+test('also-seen projects are not duplicated in the catalog', () => {
+  const repos = new Set(CATALOG.map((c) => (c.repo ?? '').toLowerCase()))
+  for (const a of ALSO_SEEN) assert.ok(!repos.has(a.name.toLowerCase()), a.name)
+})
+
+test('papers have unique arXiv ids', () => {
+  assert.equal(new Set(PAPERS.map((p) => p.id)).size, PAPERS.length)
+  for (const p of PAPERS) assert.match(p.id, /^\d{4}\.\d{5}$/)
+})
+
+test('catalog and papers text contains no em dash or local path', () => {
+  const text = JSON.stringify({ CATALOG, ALSO_SEEN, PAPERS })
+  assert.ok(!text.includes('—'))
+  assert.ok(!text.includes('/Users/'))
+})
