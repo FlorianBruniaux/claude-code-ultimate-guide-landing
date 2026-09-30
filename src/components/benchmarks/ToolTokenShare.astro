@@ -1,0 +1,107 @@
+---
+import { BENCHMARKS, TOOL_TOKEN_SHARE } from '../../data/token-saving-benchmarks'
+
+const marmelab = BENCHMARKS.find((b) => b.id === 'marmelab')!
+const read = TOOL_TOKEN_SHARE.find((t) => t.tool === 'Read')
+const bash = TOOL_TOKEN_SHARE.find((t) => t.tool === 'Bash')
+const fmt = (n: number) => n.toFixed(1)
+---
+
+<div class="share">
+  <p class="share-lead">
+    In Marmelab's workload, <strong>Read results made {read && fmt(read.sharePct)}% of tool-result tokens</strong> and <strong>Bash {bash && fmt(bash.sharePct)}%</strong>. A filter on shell output therefore touches a small share of tool-result tokens, however well it compresses that share, and tool results are only part of what a session bills.
+  </p>
+
+  <div class="share-bar" role="img" aria-label={TOOL_TOKEN_SHARE.map((t) => `${t.tool} ${fmt(t.sharePct)}%`).join(', ')}>
+    {TOOL_TOKEN_SHARE.map((t, i) => (
+      <span class={`share-seg share-seg--${i}`} style={`flex-basis:${t.sharePct}%`}>
+        {t.sharePct >= 10 && <span class="share-seg-label">{fmt(t.sharePct)}%</span>}
+      </span>
+    ))}
+  </div>
+
+  <ul class="share-legend">
+    {TOOL_TOKEN_SHARE.map((t, i) => (
+      <li class="share-item">
+        <span class={`swatch swatch--${i}`} aria-hidden="true"></span>
+        <span class="share-name">{t.tool}</span>
+        <span class="share-pct">{fmt(t.sharePct)}%</span>
+        <span class="share-per">{t.tokensPerCall} tokens per call</span>
+      </li>
+    ))}
+  </ul>
+
+  <p class="share-source">
+    Source: 9 baseline instances, <a href={marmelab.url} target="_blank" rel="noopener noreferrer">Marmelab, {marmelab.date} ↗</a>. One workload, not a general rule.
+  </p>
+</div>
+
+<style>
+.share-lead {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--space-lg);
+}
+.share-lead strong { color: var(--text-primary); }
+.share-bar {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.share-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4px;
+}
+.share-seg--0 { background: var(--bm-seg-0); }
+.share-seg--1 { background: var(--bm-seg-1); background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255,255,255,0.35) 4px 6px); }
+.share-seg--2 { background: var(--bm-seg-2); background-image: repeating-linear-gradient(90deg, transparent 0 3px, rgba(255,255,255,0.35) 3px 5px); }
+.share-seg-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+}
+.share-legend {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.share-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  align-self: center;
+  border: 1px solid var(--border);
+}
+.swatch--0 { background: var(--bm-seg-0); }
+.swatch--1 { background: var(--bm-seg-1); }
+.swatch--2 { background: var(--bm-seg-2); }
+.share-name { font-weight: 600; color: var(--text-primary); }
+.share-pct { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); }
+.share-per { color: var(--text-muted); font-size: 0.8rem; }
+.share-source {
+  margin-top: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.share-source a { color: var(--accent); text-decoration: none; }
+.share-source a:hover { text-decoration: underline; }
+</style>

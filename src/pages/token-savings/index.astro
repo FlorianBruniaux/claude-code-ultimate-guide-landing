@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import ClaimsVsMeasured from '../../components/benchmarks/ClaimsVsMeasured.astro'
+import MeasurementsExplorer from '../../components/benchmarks/MeasurementsExplorer.astro'
+import ToolTokenShare from '../../components/benchmarks/ToolTokenShare.astro'
+import BenchmarkQuality from '../../components/benchmarks/BenchmarkQuality.astro'
+import { BENCHMARKS, BENCHMARKS_READ_ON } from '../../data/token-saving-benchmarks'
+
+const title = 'What token-saving tools save, measured | Claude Code Guide'
+const description = 'Six public benchmarks measured token-saving tools for coding agents end to end. Most results sit far below vendor claims, and some show a cost increase. Claims, measurements and benchmark quality side by side.'
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "What token-saving tools save, measured",
+    "description": description,
+    "url": "https://cc.bruniaux.com/token-savings/",
+    "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
+    "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
+    "datePublished": BENCHMARKS_READ_ON,
+    "dateModified": BENCHMARKS_READ_ON,
+    "inLanguage": "en",
+    "audience": { "@type": "Audience", "audienceType": "Developers, engineering managers, tech leads" }
+  }
+]
+
+const links = [
+  { href: '/guide/context-engineering-tools/#independent-benchmarks', label: 'Independent benchmarks, in the guide', desc: 'The written analysis behind this page, with sources.' },
+  { href: '/finops/', label: 'FinOps levers map', desc: 'Where the "tool output compression" lever sits among the other cost levers.' },
+  { href: '/guide/ai-finops/#3-lever-map', label: 'AI FinOps: the lever map', desc: 'The guide section that maps each cost lever to its regime and its limits.' },
+  { href: '/guide/llm-market-snapshot/', label: 'LLM market snapshot', desc: 'Current model prices, which set the size of every percentage above.' },
+]
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate={BENCHMARKS_READ_ON} modifiedDate={BENCHMARKS_READ_ON}>
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-badge-row">
+        <span class="hero-badge">{BENCHMARKS.length} public benchmarks</span>
+        <span class="hero-badge">Read on {BENCHMARKS_READ_ON}</span>
+        <span class="hero-badge hero-badge--secondary">End-to-end measurements</span>
+      </div>
+      <h1>What token-saving tools save, measured</h1>
+      <p class="tagline">Six public benchmarks, read on 2026-09-30, measured these tools end to end. Most results sit far below vendor claims, and some tools made tasks more expensive.</p>
+      <div class="cta-buttons">
+        <a href="#measurements" class="btn btn-primary">See the measurements</a>
+        <a href="/guide/context-engineering-tools/#independent-benchmarks" class="btn btn-secondary">Read the guide section</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section disclosure-section" aria-label="Disclosure">
+    <div class="container">
+      <p class="disclosure"><strong>Disclosure.</strong> Florian Bruniaux, who maintains this site, is a core contributor to RTK. RTK results below are reported as measured, including the unfavourable ones.</p>
+    </div>
+  </section>
+
+  <section class="section" id="how-to-read">
+    <div class="container">
+      <h2 class="section-title">How to read this</h2>
+      <p class="section-subtitle">
+        Vendor claims measure one layer: shell output, output tokens, or a single content type. Benchmarks measure the whole task, so the two numbers rarely describe the same quantity. One benchmark per tool is not a verdict, and results depend on the harness, the model and the effort setting. The models tested were claude-sonnet-4-6, claude-sonnet-5, GPT-5.6 Sol and an unnamed Claude Sonnet; none of the six benchmarks tested Claude Sonnet 5.5, Claude Opus 5.5 or the GPT-6 family, so read these results as dated evidence about the mechanism, not as current rankings. Sign convention: negative means cheaper or fewer tokens than the tool-free baseline.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="claimed-vs-measured">
+    <div class="container">
+      <h2 class="section-title">Claimed vs measured</h2>
+      <p class="section-subtitle">Four tools where a vendor figure and a third-party figure can be put side by side.</p>
+      <ClaimsVsMeasured />
+    </div>
+  </section>
+
+  <section class="section" id="measurements">
+    <div class="container">
+      <h2 class="section-title">Measurements</h2>
+      <p class="section-subtitle">Every measured row from the six benchmarks. Filter by tool or by benchmark. The unit on each row tells cost from token counts.</p>
+      <MeasurementsExplorer />
+    </div>
+  </section>
+
+  <section class="section section--alt" id="where-tokens-come-from">
+    <div class="container">
+      <h2 class="section-title">Where tool tokens come from</h2>
+      <p class="section-subtitle">Why compressing one tool's output moves the total so little.</p>
+      <ToolTokenShare />
+    </div>
+  </section>
+
+  <section class="section" id="benchmark-quality">
+    <div class="container">
+      <h2 class="section-title">How good is each benchmark</h2>
+      <p class="section-subtitle">Eight quality checks per benchmark, plus who published it and what they stand to gain.</p>
+      <BenchmarkQuality />
+    </div>
+  </section>
+
+  <section class="section section--alt" id="related">
+    <div class="container">
+      <h2 class="section-title">Keep reading</h2>
+      <div class="links-grid">
+        {links.map((l) => (
+          <a class="link-card" href={l.href}>
+            <span class="link-label">{l.label} →</span>
+            <span class="link-desc">{l.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+:root {
+  --bm-good: #15803d;
+  --bm-bad: #b91c1c;
+  --bm-seg-0: #9a3412;
+  --bm-seg-1: #1d4ed8;
+  --bm-seg-2: #57534e;
+}
+[data-theme="dark"] {
+  --bm-good: #4ade80;
+  --bm-bad: #fb923c;
+  --bm-seg-0: #ea580c;
+  --bm-seg-1: #3b82f6;
+  --bm-seg-2: #78716c;
+}
+</style>
+
+<style>
+.hero-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+.hero-badge--secondary { color: var(--text-secondary); }
+
+.disclosure-section { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.disclosure {
+  margin: 0;
+  padding: var(--space-md) var(--space-lg);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-left: 4px solid var(--accent);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  margin-top: var(--space-xl);
+}
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+.link-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+.link-label { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+.link-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+</style>

@@ -1,0 +1,116 @@
+---
+import { BENCHMARKS, BENCHMARKS_READ_ON } from '../../data/token-saving-benchmarks'
+
+type QualityKey = keyof (typeof BENCHMARKS)[number]['quality']
+const COLUMNS: { key: QualityKey; label: string }[] = [
+  { key: 'paired', label: 'Paired against a baseline' },
+  { key: 'successMeasured', label: 'Task success measured' },
+  { key: 'cacheSeparated', label: 'Cache reported separately' },
+  { key: 'dollarCost', label: 'Dollar cost' },
+  { key: 'versionsNamed', label: 'Versions named' },
+  { key: 'moreThan10Tasks', label: 'More than 10 tasks' },
+  { key: 'repeated', label: 'Repeated runs' },
+  { key: 'codePublished', label: 'Code published' },
+]
+const cell = (v: boolean | null) =>
+  v === true ? { text: 'Yes', cls: 'yes', mark: '✓' } : v === false ? { text: 'No', cls: 'no', mark: '✕' } : { text: 'Not stated', cls: 'unknown', mark: '?' }
+---
+
+<div class="quality">
+  <p class="quality-intro">Read on {BENCHMARKS_READ_ON}. "Not stated" means the publisher's page did not say, not that the answer is no.</p>
+  <div class="scroll" tabindex="0" role="region" aria-label="Benchmark quality comparison, scrollable">
+    <table class="qtable">
+      <caption class="sr-only">Quality criteria for each benchmark</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="col-name">Benchmark</th>
+          {COLUMNS.map((c) => <th scope="col" class="col-q">{c.label}</th>)}
+        </tr>
+      </thead>
+      {BENCHMARKS.map((b) => (
+        <tbody>
+          <tr class="row-main">
+            <th scope="row" class="col-name">
+              <a href={b.url} target="_blank" rel="noopener noreferrer" class="bench-name">{b.name} ↗</a>
+              <span class="bench-meta">{b.publisher}</span>
+              <span class="bench-meta">{b.date}</span>
+            </th>
+            {COLUMNS.map((c) => {
+              const r = cell(b.quality[c.key])
+              return (
+                <td class={`q q--${r.cls}`}>
+                  <span class="q-mark" aria-hidden="true">{r.mark}</span>
+                  <span class="q-text">{r.text}</span>
+                </td>
+              )
+            })}
+          </tr>
+          <tr class="row-detail">
+            <td colspan={COLUMNS.length + 1}>
+              <div class="detail-inner">
+              <p class="interest"><strong>Publisher's interest:</strong> {b.interest}</p>
+              <p class="method"><strong>Method:</strong> {b.method}</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      ))}
+    </table>
+  </div>
+</div>
+
+<style>
+.quality-intro { font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
+.scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  background: var(--surface-elevated);
+  max-width: 100%;
+}
+.scroll:focus-visible { outline: 2px solid var(--accent-tertiary); outline-offset: 2px; }
+.qtable { border-collapse: collapse; width: 100%; min-width: 880px; font-size: 0.8rem; }
+.qtable thead th {
+  text-align: center;
+  padding: 0.6rem 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+  vertical-align: bottom;
+}
+.qtable thead .col-name { text-align: left; padding-left: 0.75rem; }
+.qtable tbody { border-top: 2px solid var(--border); }
+.col-name { text-align: left; padding: 0.75rem; width: 260px; vertical-align: top; }
+.bench-name { display: block; font-weight: 700; color: var(--accent); text-decoration: none; font-size: 0.85rem; line-height: 1.35; }
+.bench-name:hover { text-decoration: underline; }
+.bench-meta { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.15rem; }
+.q { text-align: center; padding: 0.5rem 0.3rem; vertical-align: middle; }
+.q-mark { display: block; font-weight: 700; font-size: 1rem; line-height: 1.2; }
+.q-text { display: block; font-size: 0.72rem; font-weight: 600; }
+.q--yes { color: var(--bm-good); }
+.q--no { color: var(--bm-bad); }
+.q--unknown { color: var(--text-muted); }
+.row-detail td {
+  padding: 0.5rem 0.75rem 0.85rem;
+  border-top: 1px dashed var(--border-light);
+}
+.detail-inner { position: sticky; left: 0; max-width: min(860px, calc(100vw - 4rem)); }
+.interest {
+  margin: 0 0 0.35rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  line-height: 1.5;
+  white-space: normal;
+}
+.method { margin: 0; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; white-space: normal; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+</style>

@@ -31,9 +31,9 @@ const tools = [
     description: "Filter CLI and tool output before it reaches the model",
     color: "orange",
     tools: [
-      { name: "RTK", tagline: "CLI proxy, 89% avg savings", stars: "73.5K" },
-      { name: "lean-ctx", tagline: "MCP server: file reads + session memory, 57–86% savings", stars: "3431" },
-      { name: "Headroom", tagline: "Lossless, 70–95% on structured data", stars: null },
+      { name: "RTK", tagline: "CLI proxy that filters shell output", stars: "82K" },
+      { name: "lean-ctx", tagline: "MCP server: file reads + session memory", stars: "3.8K" },
+      { name: "Headroom", tagline: "Compression for structured tool output", stars: null },
     ]
   },
   {
@@ -160,11 +160,11 @@ const useCaseMatrix = [
   <header class="page-hero">
     <div class="container">
       <div class="hero-badge-row">
-        <span class="hero-badge">16+ tools mapped</span>
-        <span class="hero-badge hero-badge--secondary">Updated Sep 2026</span>
+        <span class="hero-badge">15 tools mapped</span>
+        <span class="hero-badge hero-badge--secondary">Stars read Sep 30, 2026</span>
         <span class="hero-badge hero-badge--secondary">RTK · lean-ctx · Headroom · LLMLingua · Edgee · Portkey</span>
       </div>
-      <h1>Context Engineering: Tools & Ecosystem</h1>
+      <h1>Context engineering: Tools & ecosystem</h1>
       <p class="tagline">The context window is not storage. It's a budget of attention. This page maps the tools that help you spend it well.</p>
       <div class="cta-buttons">
         <a href="#tool-categories" class="btn btn-primary">Explore Tools</a>
@@ -179,7 +179,7 @@ const useCaseMatrix = [
       <div class="paradigm-grid">
         <div class="paradigm-text">
           <span class="section-badge">The Shift</span>
-          <h2 class="section-title">From Prompt Engineering to Context Engineering</h2>
+          <h2 class="section-title">From prompt engineering to context engineering</h2>
           <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture: what the model knows before any request begins.</p>
           <p>When Claude generates generic output, ignores a convention, or hallucinates, the model is almost never broken. The context it received was incomplete, stale, or carrying too much noise. That reframe shifts troubleshooting from "the AI is bad at this" to "what is missing from the context?"</p>
           <p>The tools on this page attack that problem from different angles: compressing what enters the context, filtering what shouldn't, routing intelligently, and measuring the results.</p>
@@ -229,7 +229,7 @@ const useCaseMatrix = [
   <!-- Core Concepts -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Three Concepts That Change How You Think</h2>
+      <h2 class="section-title">Three concepts that change how you think</h2>
       <p class="section-subtitle">Before picking tools, these mental models determine whether you're solving the right problem.</p>
       <div class="concepts-grid">
         {concepts.map(c => (
@@ -252,7 +252,7 @@ const useCaseMatrix = [
   <!-- Tool Categories -->
   <section class="section section--alt" id="tool-categories">
     <div class="container">
-      <h2 class="section-title">Seven Tool Categories</h2>
+      <h2 class="section-title">Seven tool categories</h2>
       <p class="section-subtitle">Each category intercepts at a different point in the pipeline, from CLI output to observability layer to operational loop closure.</p>
       <div class="tool-categories-grid">
         {tools.map(cat => (
@@ -285,7 +285,7 @@ const useCaseMatrix = [
   <section class="section" id="skill-lifecycle">
     <div class="container">
       <span class="section-badge">Skill Governance</span>
-      <h2 class="section-title">Low Use Is a Review Signal, Not a Deletion Rule</h2>
+      <h2 class="section-title">Low use is a review signal, not a deletion rule</h2>
       <p class="section-subtitle">A quiet skill may be obsolete, rarely needed, successfully preventive, or simply missing telemetry. The usage signal starts an investigation; it does not settle the decision.</p>
 
       <div class="lifecycle-grid">
@@ -321,13 +321,13 @@ const useCaseMatrix = [
   <!-- Benchmarks -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Benchmarks Worth Knowing</h2>
-      <p class="section-subtitle">These numbers come from published research and production data, not marketing copy.</p>
+      <h2 class="section-title">Benchmarks worth knowing</h2>
+      <p class="section-subtitle">Each figure names the quantity it measures. A saving on one layer, such as shell output or cached input, is not the same number as the cost of a whole task.</p>
       <div class="benchmarks-grid">
         <div class="benchmark-card">
-          <div class="benchmark-number">89%</div>
-          <div class="benchmark-label">avg token reduction</div>
-          <div class="benchmark-source">RTK, measured across git, test, and build commands</div>
+          <div class="benchmark-number">+7.6%</div>
+          <div class="benchmark-label">median cost per task with RTK</div>
+          <div class="benchmark-source">JetBrains, 86 SkillsBench tasks, low effort (p=0.004). RTK's own figures count shell-output tokens only</div>
         </div>
         <div class="benchmark-card">
           <div class="benchmark-number">20x</div>
@@ -340,9 +340,9 @@ const useCaseMatrix = [
           <div class="benchmark-source">Anthropic Contextual Retrieval + BM25 + reranking</div>
         </div>
         <div class="benchmark-card">
-          <div class="benchmark-number">90%</div>
-          <div class="benchmark-label">API cost reduction</div>
-          <div class="benchmark-source">Anthropic prompt caching on shared system prompts</div>
+          <div class="benchmark-number">90-97.5%</div>
+          <div class="benchmark-label">lower price on cached input tokens</div>
+          <div class="benchmark-source">Anthropic prompt caching: a cache read costs 10% of the base input price on most current models, 5% on Opus 5.5 and 2.5% on Fable 5.1</div>
         </div>
         <div class="benchmark-card">
           <div class="benchmark-number">&lt;4%</div>
@@ -355,13 +355,14 @@ const useCaseMatrix = [
           <div class="benchmark-source">SlimInfer dynamic token pruning on LLaMA 3.1</div>
         </div>
       </div>
+      <p class="benchmarks-more">Six public benchmarks measured token-saving tools end to end, and most results sit far below vendor claims. The site author is a core contributor to RTK. <a href="/token-savings/">Compare claims and measurements →</a></p>
     </div>
   </section>
 
   <!-- Use Case Matrix -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="section-title">Tool Selection by Use Case</h2>
+      <h2 class="section-title">Tool selection by use case</h2>
       <p class="section-subtitle">Which tools matter depends on where you sit in the stack.</p>
       <div class="matrix-grid">
         {useCaseMatrix.map(row => (
@@ -400,7 +401,7 @@ const useCaseMatrix = [
   <section class="section">
     <div class="container">
       <div class="cta-block">
-        <h2>Full Reference in the Guide</h2>
+        <h2>Full reference in the guide</h2>
         <p>The guide covers every tool with install instructions, measured benchmarks, and when-to-choose-what guidance, including LLMOps tools (Langfuse, LangSmith, Arize Phoenix), KV cache infrastructure (vLLM, SGLang), and the experimental catalog (SlimInfer, TopV, AttnComp).</p>
         <div class="cta-buttons">
           <a href="https://cc.bruniaux.com/guide/ecosystem/context-engineering-tools/" class="btn btn-primary">Open Full Guide</a>
@@ -731,6 +732,12 @@ const useCaseMatrix = [
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: var(--space-sm);
+  }
+
+  .benchmarks-more {
+    margin-top: var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
   }
 
   .benchmark-source {

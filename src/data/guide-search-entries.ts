@@ -1116,6 +1116,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-memory-systems-ingestion-poisoning",
+    "title": "Memory Systems Ingestion Poisoning",
+    "keywords": "memory systems ingestion poisoning guide core memory systems md#single user variant ingestion time poisoning compiled wikis",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#single-user-variant-ingestion-time-poisoning-in-compiled-wikis",
+    "source": "guide"
+  },
+  {
     "id": "guide-memory-systems-decision",
     "title": "Memory Systems Decision",
     "keywords": "memory systems decision guide core memory systems md#8 decision frameworks",
@@ -1678,9 +1686,25 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-edgee-compressor-v2-guide",
     "title": "Edgee Compressor V2 Guide",
-    "keywords": "edgee compressor v2 guide guide ecosystem context engineering tools",
+    "keywords": "edgee compressor v2 guide guide ecosystem context engineering tools md#edgee",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md#edgee",
+    "source": "guide"
+  },
+  {
+    "id": "guide-edgee-routing-guide",
+    "title": "Edgee Routing Guide",
+    "keywords": "edgee routing guide guide ecosystem context engineering tools md#routing",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md#routing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-shunt-guide",
+    "title": "Shunt Guide",
+    "keywords": "shunt guide guide ecosystem context engineering tools md#shunt delegation not compression",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md#shunt-delegation-not-compression",
     "source": "guide"
   },
   {
@@ -2353,6 +2377,118 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "subscription strategy personal plan gap guide ops subscription strategy md#8 boundaries subscription strategy self hosted split guide ops subscription strategy md#8 boundaries",
     "category": "Guide",
     "url": "/guide/subscription-strategy/#8-boundaries",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-finops-guide",
+    "title": "AI Finops Guide",
+    "keywords": "ai finops guide guide ops finops",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-finops.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-finops-cost-regimes",
+    "title": "AI Finops Cost Regimes",
+    "keywords": "ai finops cost regimes guide ops finops md#1 three cost regimes that move independently",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-finops.md#1-three-cost-regimes-that-move-independently",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-finops-loop",
+    "title": "AI Finops Loop",
+    "keywords": "ai finops loop guide ops finops md#2 the finops loop applied agents",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-finops.md#2-the-finops-loop-applied-to-agents",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-finops-lever-map",
+    "title": "AI Finops Lever Map",
+    "keywords": "ai finops lever map guide ops finops md#3 lever map",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-finops.md#3-lever-map",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-snapshot",
+    "title": "LLM Market Snapshot",
+    "keywords": "llm market snapshot guide ops llm market snapshot",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-trend",
+    "title": "LLM Market Trend",
+    "keywords": "llm market trend guide ops llm market snapshot md#1 the trend quotas shrink while token prices fall",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#1-the-trend-quotas-shrink-while-token-prices-fall",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-api-prices",
+    "title": "LLM Market API Prices",
+    "keywords": "llm market api prices guide ops llm market snapshot md#2 api prices",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#2-api-prices",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-subscriptions",
+    "title": "LLM Market Subscriptions",
+    "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#3-subscription-quotas",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-benchmarks",
+    "title": "LLM Market Benchmarks",
+    "keywords": "llm market benchmarks guide ops llm market snapshot md#4 capability read the benchmark conditions first",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#4-capability-read-the-benchmark-conditions-first",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-reference-workload",
+    "title": "LLM Market Reference Workload",
+    "keywords": "llm market reference workload guide ops llm market snapshot md#5 cost one reference workload",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#5-cost-of-one-reference-workload",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-data-location",
+    "title": "LLM Market Data Location",
+    "keywords": "llm market data location guide ops llm market snapshot md#6 where the data goes",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#6-where-the-data-goes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-failed-claims",
+    "title": "LLM Market Failed Claims",
+    "keywords": "llm market failed claims guide ops llm market snapshot md#7 claims that did not survive verification",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#7-claims-that-did-not-survive-verification",
+    "source": "guide"
+  },
+  {
+    "id": "guide-llm-market-refresh-rule",
+    "title": "LLM Market Refresh Rule",
+    "keywords": "llm market refresh rule guide ops llm market snapshot md#8 refresh rule",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#8-refresh-rule",
+    "source": "guide"
+  },
+  {
+    "id": "guide-token-saving-independent-benchmarks",
+    "title": "Token Saving Independent Benchmarks",
+    "keywords": "token saving independent benchmarks guide ecosystem context engineering tools md#independent benchmarks token saving layer vs bill guide ecosystem context engineering tools md#independent benchmarks token saving research preprints guide ecosystem context engineering tools md#independent benchmarks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/context-engineering-tools.md#independent-benchmarks",
     "source": "guide"
   },
   {
@@ -3878,9 +4014,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-programmatic-billing-change",
     "title": "Programmatic Billing Change",
-    "keywords": "programmatic billing change guide ultimate guide md#the interactiveprogrammatic billing split effective june 2026",
+    "keywords": "programmatic billing change guide ultimate guide md#the interactiveprogrammatic billing split announced then paused",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-interactiveprogrammatic-billing-split-effective-june-15-2026",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#the-interactiveprogrammatic-billing-split-announced-then-paused",
     "source": "guide"
   },
   {
@@ -4620,6 +4756,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agentic-software-factories-upstream-constraint",
+    "title": "Agentic Software Factories Upstream Constraint",
+    "keywords": "agentic software factories upstream constraint guide workflows agentic software factories md#the constraint moves upstream what worth building",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#the-constraint-moves-upstream-to-what-is-worth-building",
+    "source": "guide"
+  },
+  {
     "id": "guide-agentic-software-factories-spectrum",
     "title": "Agentic Software Factories Spectrum",
     "keywords": "agentic software factories spectrum guide workflows agentic software factories md#1 the spectrum six levels six costs",
@@ -4649,6 +4793,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agentic software factories post merge guide workflows agentic software factories md#6 the half the factory that runs after the merge",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agentic-software-factories/#6-the-half-of-the-factory-that-runs-after-the-merge",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agentic-software-factories-pre-merge-loops",
+    "title": "Agentic Software Factories Pre Merge Loops",
+    "keywords": "agentic software factories pre merge loops guide workflows agentic software factories md#7 before the merge two loops claude code already ships",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#7-before-the-merge-two-loops-claude-code-already-ships",
     "source": "guide"
   },
   {

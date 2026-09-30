@@ -30,6 +30,20 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Token-saving tools, measured: vendor claims against six public benchmarks',
+    date: 'Sep 30, 2026',
+    description: 'Caveman, RTK, Headroom, Ponytail and others, measured end to end by Dasein, Stet, Marmelab, JetBrains and the Token-Harness Optimizer Leaderboard. Most results sit far below vendor claims, and some tools made tasks more expensive. Includes each publisher\'s interest and an eight-point quality grid. The site author is a core contributor to RTK.',
+    link: 'https://cc.bruniaux.com/token-savings/',
+  },
+  {
+    type: 'new_section',
+    title: 'AI FinOps: cost regimes, levers, and a dated LLM market snapshot',
+    date: 'Sep 30, 2026',
+    description: 'New AI FinOps section: three cost regimes that move independently, the FinOps loop applied to coding agents, ten cost levers with their trade-offs, and a source-checked snapshot of API prices and subscription quotas across Anthropic, OpenAI, Google, DeepSeek, Mistral, xAI, Moonshot, Z.AI, and inference hosts. Also corrects the guide: Anthropic paused its separate programmatic credit, so Agent SDK and claude -p usage still draws from subscription limits.',
+    link: 'https://cc.bruniaux.com/finops/',
+  },
+  {
     type: 'new_section',
     title: 'September Security Review: AgentSec 2.29.0',
     date: 'Sep 12, 2026',

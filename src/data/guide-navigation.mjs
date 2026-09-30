@@ -117,6 +117,8 @@ export const guideSections = [
       { title: 'Memory Systems', href: '/guide/memory-systems/', desc: 'Native, cross-session, and team-shared memory.', time: '30 min' },
       { title: 'Team Knowledge Infrastructure', href: '/guide/team-knowledge-base/', desc: 'Markdown, live connectors, and RAG at team scale.', time: '18 min' },
       { title: 'Local vs Cloud Inference', href: '/guide/local-vs-cloud-inference/', desc: 'Hardware, rental, API, throughput, and TCO boundaries.', time: '20 min' },
+      { title: 'AI FinOps', href: '/guide/ai-finops/', desc: 'Section entry point: three cost regimes, the FinOps loop, and the lever map.', time: '12 min' },
+      { title: 'LLM Market Snapshot', href: '/guide/llm-market-snapshot/', desc: 'Source-checked API prices, subscription quotas, and data location, dated Sep 30, 2026.', time: '20 min' },
       { title: 'AI Unit Economics', href: '/guide/ai-unit-economics/', desc: 'Accepted-task cost, three-level routing, cache effects, progressive spend controls, and break-even.', time: '15 min' },
       { title: 'Subscription Strategy', href: '/guide/subscription-strategy/', desc: 'Seats, Enterprise usage, gateways, and self-hosting scenarios.', time: '20 min' },
     ],

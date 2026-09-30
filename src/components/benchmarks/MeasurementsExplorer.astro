@@ -1,0 +1,326 @@
+---
+import { BENCHMARKS, MEASUREMENTS } from '../../data/token-saving-benchmarks'
+import { chartDomain, describeValue, fmtPct, position, unitLabel } from './format'
+
+const allValues = MEASUREMENTS.flatMap((m) => m.values)
+const { lo, hi } = chartDomain(allValues)
+const zero = position(0, lo, hi)
+const ticks: number[] = []
+for (let t = lo; t <= hi; t += 20) ticks.push(t)
+
+const tools = [...new Set(MEASUREMENTS.map((m) => m.tool))].sort((a, b) => a.localeCompare(b))
+const SHORT_LABELS: Record<string, string> = {
+  dasein: 'Dasein Labs',
+  stet: 'Stet.sh',
+  marmelab: 'Marmelab',
+  'jetbrains-rtk': 'JetBrains (RTK)',
+  'jetbrains-caveman': 'JetBrains (Caveman)',
+  thol: 'THOL',
+}
+const benchName = (id: string) => SHORT_LABELS[id] ?? id
+const benchChips = BENCHMARKS.map((b) => ({ id: b.id, label: benchName(b.id) }))
+---
+
+<div class="explorer" data-explorer>
+  <div class="explorer-controls">
+    <div class="control">
+      <label for="tool-filter" class="control-label">Tool</label>
+      <select id="tool-filter" class="control-select" data-tool-filter>
+        <option value="">All tools</option>
+        {tools.map((t) => <option value={t}>{t}</option>)}
+      </select>
+    </div>
+    <div class="control control--chips">
+      <span class="control-label" id="bench-label">Benchmark</span>
+      <div class="chips" role="group" aria-labelledby="bench-label">
+        <button type="button" class="chip" data-bench="" aria-pressed="true">All benchmarks</button>
+        {benchChips.map((c) => <button type="button" class="chip" data-bench={c.id} aria-pressed="false">{c.label}</button>)}
+      </div>
+    </div>
+  </div>
+
+  <p class="result-count" aria-live="polite" data-count>Showing {MEASUREMENTS.length} of {MEASUREMENTS.length} measurements.</p>
+
+  <div class="axis" aria-hidden="true">
+    <div class="axis-caption">
+      <span>← cheaper or fewer tokens</span>
+      <span>more expensive or more tokens →</span>
+    </div>
+    <div class="axis-ticks">
+      {ticks.map((t) => <span class="axis-tick" style={`left:${position(t, lo, hi)}%`}>{t > 0 ? `+${t}` : t < 0 ? `−${Math.abs(t)}` : '0'}%</span>)}
+    </div>
+  </div>
+
+  <ol class="rows">
+    {MEASUREMENTS.map((m) => {
+      const pts = m.values.map((v) => position(v, lo, hi))
+      const two = m.values.length > 1
+      const minP = Math.min(...pts, zero)
+      const maxP = Math.max(...pts, zero)
+      return (
+        <li class="row" data-tool={m.tool} data-benchmark={m.benchmark}>
+          <div class="row-head">
+            <span class="row-tool">{m.tool}</span>
+            <span class="row-bench">{benchName(m.benchmark)}</span>
+            <span class={`row-unit row-unit--${m.unit.replace(' ', '-')}`}>{unitLabel(m.unit)}</span>
+          </div>
+          <div class="track" style={`--zero:${zero}%`} aria-hidden="true">
+            {ticks.map((t) => <span class="gridline" style={`left:${position(t, lo, hi)}%`}></span>)}
+            <span class="zero-line"></span>
+            {!two && (
+              <span
+                class={`bar ${m.values[0] < 0 ? 'bar--good' : 'bar--bad'}`}
+                style={`left:${Math.min(zero, pts[0])}%;width:${Math.abs(pts[0] - zero)}%`}
+              ></span>
+            )}
+            {two && <span class="link" style={`left:${Math.min(...pts)}%;width:${Math.abs(pts[1] - pts[0])}%`}></span>}
+            {two && m.values.map((v, i) => (
+              <span class={`dot ${v < 0 ? 'dot--good' : 'dot--bad'} ${i === 1 ? 'dot--second' : ''}`} style={`left:${pts[i]}%`}></span>
+            ))}
+          </div>
+          <p class="row-values">
+            <span class="row-metric">{m.metric}:</span>
+            {m.values.map((v, i) => (
+              <>
+                {i > 0 && <span class="row-sep">, </span>}
+                <span class={`row-value ${v < 0 ? 'row-value--good' : 'row-value--bad'}`}>
+                  <strong>{fmtPct(v)}</strong> <span class="row-words">({describeValue(v, m.unit)})</span>
+                </span>
+              </>
+            ))}
+          </p>
+          {m.note && <p class="row-note">{m.note}</p>}
+        </li>
+      )
+    })}
+  </ol>
+
+  <p class="no-results" data-empty hidden>No measurement matches this combination. Reset one of the filters.</p>
+
+  <p class="legend">
+    Bars and dots left of the zero line are cheaper (or fewer tokens) than the tool-free baseline; right of it is more expensive (or more tokens). Two marks joined by a line are two runs or two settings, in the order named in the metric: a circle for the first, a square for the second. Rows with the unit <em>tokens</em> or <em>output tokens</em> are token counts, not cost.
+  </p>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-explorer]')
+  if (root) {
+    const select = root.querySelector<HTMLSelectElement>('[data-tool-filter]')!
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>('.chip'))
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('.row'))
+    const count = root.querySelector<HTMLElement>('[data-count]')!
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!
+    let bench = ''
+
+    const apply = () => {
+      const tool = select.value
+      let shown = 0
+      for (const row of rows) {
+        const ok = (!tool || row.dataset.tool === tool) && (!bench || row.dataset.benchmark === bench)
+        row.hidden = !ok
+        if (ok) shown++
+      }
+      count.textContent = `Showing ${shown} of ${rows.length} measurements.`
+      empty.hidden = shown !== 0
+    }
+
+    select.addEventListener('change', apply)
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        bench = chip.dataset.bench ?? ''
+        for (const c of chips) c.setAttribute('aria-pressed', String(c === chip))
+        apply()
+      })
+    }
+  }
+</script>
+
+<style>
+.explorer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+  align-items: flex-start;
+}
+.control { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.control--chips { flex: 1 1 320px; }
+.control-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.control-select {
+  padding: 0.45rem 0.6rem;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  max-width: 100%;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.chip:focus-visible, .control-select:focus-visible {
+  outline: 2px solid var(--accent-tertiary);
+  outline-offset: 2px;
+}
+.result-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-md);
+}
+
+.axis { margin-bottom: 0.25rem; }
+.axis-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.axis-ticks { position: relative; height: 1rem; margin: 0 1.2rem; }
+.axis-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.rows { list-style: none; padding: 0; margin: 0; }
+.row {
+  padding: var(--space-sm) 0 var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+}
+.row[hidden] { display: none; }
+.row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.6rem;
+  margin-bottom: 0.3rem;
+}
+.row-tool { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; }
+.row-bench { font-size: 0.78rem; color: var(--text-muted); }
+.row-unit {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+}
+.row-unit--tokens, .row-unit--output-tokens {
+  border-color: var(--accent-tertiary);
+  border-style: dashed;
+  color: var(--text-primary);
+}
+
+.track {
+  position: relative;
+  height: 26px;
+  margin: 0 1.2rem;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+.gridline {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border-light);
+}
+.zero-line {
+  position: absolute;
+  top: -3px; bottom: -3px;
+  left: var(--zero);
+  width: 2px;
+  background: var(--text-primary);
+  z-index: 2;
+}
+.bar {
+  position: absolute;
+  top: 5px; bottom: 5px;
+  z-index: 1;
+  min-width: 2px;
+}
+.bar--good { background: var(--bm-good); border-radius: 3px 0 0 3px; }
+.bar--bad { background: var(--bm-bad); border-radius: 0 3px 3px 0; }
+.link {
+  position: absolute;
+  top: 12px;
+  height: 2px;
+  background: var(--text-secondary);
+  z-index: 1;
+}
+.dot {
+  position: absolute;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-elevated);
+  z-index: 3;
+  box-sizing: border-box;
+}
+.dot--good { background: var(--bm-good); }
+.dot--bad { background: var(--bm-bad); }
+.dot--second { border-radius: 3px; }
+
+.row-values {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.row-metric { color: var(--text-muted); }
+.row-value strong { font-family: var(--font-mono); }
+.row-value--good strong { color: var(--bm-good); }
+.row-value--bad strong { color: var(--bm-bad); }
+.row-words { color: var(--text-secondary); }
+.row-note {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.no-results {
+  padding: var(--space-lg);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.no-results[hidden] { display: none; }
+.legend {
+  margin-top: var(--space-lg);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+</style>
