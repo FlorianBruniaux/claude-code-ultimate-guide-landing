@@ -5,7 +5,21 @@ All notable changes to the Claude Code Guide Landing Site.
 ## [Unreleased]
 
 
+- Lead the announcement banner with AI FinOps and the LLM market snapshot, rotating its id so dismissed visitors see it again. On /finops/, restyle the cost-regime cards, add the FinOps loop and verification infographics, list six corrected claims by error type, and link four field reports from the author's blog.
+
+- Convert static page and component headings, and the diagram titles generated from the guide, to sentence case.
+
+- Add the `/token-savings/` page: vendor claims for token-saving tools (Caveman, RTK, Ponytail, Headroom) against six public end-to-end benchmarks, a filterable explorer of 18 measurements with a signed cost scale, the share of tool-result tokens by tool in one measured workload, and an eight-point quality grid that names each publisher's interest. Data lives in `src/data/token-saving-benchmarks.ts` with tests; the page discloses that the site author is a core contributor to RTK. Register it in the header, the sitemap, the RSS feed, and the /finops/ "Go deeper" cards.
+
+- Replace the static daily-cost bars on /finops/ with an interactive LLM cost calculator (`src/components/cost/CostCalculator.astro`): input, cache share, output and working days change the daily and monthly bill for 15 price rows, including Claude Fable 5.1, each with its vendor source; rows without a published cached price are marked as upper bounds, and DeepSeek off-peak rows are optional. The server-rendered default matches the reference workload, and prices and costs are tested in `src/data/llm-prices.test.ts`.
+
+- Correct the /context-engineering/ benchmark cards: the RTK card now shows the JetBrains end-to-end result (+7.6% median cost per task at low effort) instead of RTK's shell-output figure, the prompt-caching card describes a lower price on cached input tokens rather than an API cost reduction, vendor percentages are removed from the tool taglines, and a note links to /token-savings/ with the RTK disclosure.
+
+- Replace the /finops/ cost-lever table with an interactive lever-to-regime map: an accessible accordion of ten levers that works without JavaScript, SVG curves to the three cost regimes on wide screens, a dashed edge for off-peak pricing on coding plans, and a regime filter. Move lever and regime data to `src/data/finops-levers.ts` and replace hard-coded regime colors with theme tokens.
+
 - Synchronize Claude Code v2.1.285, including `allowedProviders`, `claude --desktop`, time-limited background commands and the 1M context window behind custom `ANTHROPIC_BASE_URL` gateways. Update the release date used by structured data and the sitemap to September 29, 2026.
+
+- Add the `/finops/` page for the guide's new AI FinOps section: three cost regimes, the FinOps loop applied to coding agents, ten cost levers with what each one does not solve, the daily cost of one reference workload across ten models, and claims that failed primary-source verification. Register it in the header (Organization & Economics), the guide navigation (AI FinOps and LLM Market Snapshot), the RSS feed, and the sitemap through the synchronized `intent-navigation.json`. Regenerate the search and content indexes so the new guide pages and the corrected programmatic-billing anchor resolve.
 
 - Report external links that fda.gov redirects to its anti-bot page (`/apology_objects/abuse-detection-apology.html`, served with HTTP 404) as unverified instead of broken. The FDA draft guidance cited by the learning-with-AI page is still published; the scheduled link check had flagged it as a dead link.
 
