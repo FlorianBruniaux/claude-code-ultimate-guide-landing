@@ -1,0 +1,121 @@
+src/components/context/ContextHero.astro
+  s_9e15cec8cf2013::t_cbaaa41e17af8c 11
+src/components/landing/ChooseYourPath.astro
+  s_9e15cec8cf2013::t_ea703642569429 4,11,26,41,57,84
+src/components/landing/Community.astro
+  s_9e15cec8cf2013::t_45a9a60c1f0bc9 4,14
+src/components/landing/CrossLinks.astro
+  s_9e15cec8cf2013::t_9a70991f0d6e1d 4,27
+src/components/landing/ExamplesCatalog.astro
+  s_d6b910c42dc21c::t_30cd74c29c1192 4
+src/components/landing/FeaturesGrid.astro
+  s_d6b910c42dc21c::t_87573e7f6b2df6 10,16,22,36,42,49,56,70
+src/components/landing/GoldenRules.astro
+  s_d6b910c42dc21c::t_18c3476995d988 10,17,28,39,50,61
+src/components/landing/GuideComparison.astro
+  s_d6b910c42dc21c::t_b0c89cd65ffe54 10,65,96,154
+src/components/landing/LevelUp.astro
+  s_9e15cec8cf2013::t_7c13e353674cc7 10
+src/components/landing/McpCliQuiz.astro
+  s_9e15cec8cf2013::t_94df07fe9909ca 49
+src/components/landing/McpDemo.astro
+  s_9e15cec8cf2013::t_7b47481b886bd8 359
+src/components/landing/MemorySystems.astro
+  s_9e15cec8cf2013::t_f2805cc84d9fcd 4,11,27,44
+src/components/landing/Methodologies.astro
+  s_9e15cec8cf2013::t_572f93a68b9274 4
+src/components/landing/MethodologyQuiz.astro
+  s_9e15cec8cf2013::t_3597df8fa00536 20,59
+src/components/landing/Onboarding.astro
+  s_9e15cec8cf2013::t_ceb671b41b5ee2 5
+src/components/landing/PersonaRouting.astro
+  s_9e15cec8cf2013::t_cce012574d58a4 8
+src/components/landing/PromptFormula.astro
+  s_9e15cec8cf2013::t_ea8a7902c32516 4
+src/components/landing/QuickRef.astro
+  s_9e15cec8cf2013::t_e401ff41cab672 4
+src/components/landing/Releases.astro
+  s_9e15cec8cf2013::t_9a8a524c38e38e 8,26,61
+src/components/landing/RoleQuiz.astro
+  s_9e15cec8cf2013::t_99506d728aa92c 29,68
+src/components/landing/SecurityTeaser.astro
+  s_9e15cec8cf2013::t_28f54900e704d3 4
+src/components/landing/WhitepapersPreview.astro
+  s_9e15cec8cf2013::t_a60e6383efa24b 23
+src/components/landing/WhyGuide.astro
+  s_9e15cec8cf2013::t_2795e94a62b5d9 4,25,39
+src/data/diagrams-data.ts
+  s_6e23ba2e4cbafd::t_69a6690b3b0449 28,35,42,49,64,71,78,85,100,107,114,121,136,143,150,157,172,179,186,193,208,215-216,218,222,229,236,251,258,265,272,279,286,301,308,315,322,337,344,351,358,373,380,387,402,409,416,423,438,445,452
+src/data/skill-governance-sync.test.ts
+  s_9e15cec8cf2013::t_ba842e2c1a8dc6 12,16
+src/pages/changelog/index.astro
+  s_9e15cec8cf2013::t_18284cbd96f028 51
+src/pages/cheatsheet/index.astro
+  s_9e15cec8cf2013::t_16bcb2cc50c844 53,65,98,112,121,129,154,166,172,186,214,234,248,262,278,322,334,346,360,368,520
+src/pages/cheatsheets/index.astro
+  s_9e15cec8cf2013::t_4181e88e583469 68,104
+src/pages/claude-md-best-practices/index.astro
+  s_9e15cec8cf2013::t_08fedd17904207 108,148,170,180,208
+src/pages/compare/[slug].astro
+  s_9e15cec8cf2013::t_0cca034ee1f52e 106
+src/pages/compare/index.astro
+  s_9e15cec8cf2013::t_64f12f201e9ac9 47,62,89,145,183,249
+src/pages/diagrams/index.astro
+  s_d6b910c42dc21c::t_e1aedac3a05501 94,180
+src/pages/ecosystem/index.astro
+  s_9e15cec8cf2013::t_b13341d62903fc 31,43,65,107,157,205,212,216,220,224,228,232,236
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_9e15cec8cf2013::t_a70cc743a83eb9 40,67,163,190,341
+src/pages/examples/index.astro
+  s_9e15cec8cf2013::t_fc57ec97491195 40
+src/pages/faq/index.astro
+  s_9e15cec8cf2013::t_a0b954f96d57c5 234,253,268,303,322,341
+src/pages/glossary/index.astro
+  s_9e15cec8cf2013::t_745d16c1695a16 51
+src/pages/learning/index.astro
+  s_d6b910c42dc21c::t_26a280133465b9 37,53,60,75,90,106,133,149,198,224,246,257,275,334,352,384,407
+src/pages/memory-systems/index.astro
+  s_9e15cec8cf2013::t_bf737f32cc6375 219,236,242,248,260,284,331,351,361,387,393,401,408,415,427
+src/pages/methodologies/index.astro
+  s_d6b910c42dc21c::t_ffa4d11fc39379 117,132,137,142,174
+src/pages/quiz/index.astro
+  s_9e15cec8cf2013::t_3af23705bf7a6d 63,75,158,1498
+src/pages/releases/index.astro
+  s_9e15cec8cf2013::t_ce5400af2ffec9 30,59,178,216
+src/pages/roles/index.astro
+  s_9e15cec8cf2013::t_0122e16e9c0dd3 57,81,121,179,212,218,239,268
+src/pages/team-metrics/index.astro
+  s_d6b910c42dc21c::t_905ee939c9e285 168,180,208,244,273,296,325,360
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0b7b3445ba687d631257d633eb9a9c1482d5f088",
+  "prompts": {},
+  "sessions": {
+    "s_6e23ba2e4cbafd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22a4c1b-9492-41fe-a273-e2a1a5693406",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9e15cec8cf2013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee55b5e6-c13f-4366-8ef6-02c6713eec4b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d6b910c42dc21c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "54c1be32-96ed-400e-9ea7-7dd550b0fdbb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
