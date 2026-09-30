@@ -50,7 +50,7 @@ const jsonLd = [
 
       <!-- Installation -->
       <div class="section" id="installation">
-        <h2>How to Install Claude Code</h2>
+        <h2>How to install Claude Code</h2>
         <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
         <p style="font-size: 0.85rem; color: var(--text-secondary); margin: var(--space-sm) 0;">Requires Node.js 18+</p>
         <table>
@@ -62,7 +62,7 @@ const jsonLd = [
 
       <!-- Essential Commands -->
       <div class="section">
-        <h2>Essential Commands</h2>
+        <h2>Essential commands</h2>
         <table>
           <tr><td>/help</td><td>Contextual help</td></tr>
           <tr><td>/clear</td><td>Reset conversation</td></tr>
@@ -95,7 +95,7 @@ const jsonLd = [
 
       <!-- Keyboard Shortcuts -->
       <div class="section">
-        <h2>Keyboard Shortcuts</h2>
+        <h2>Keyboard shortcuts</h2>
         <table>
           <tr><td>Shift+Tab</td><td>Cycle permission modes</td></tr>
           <tr><td>Esc x 2</td><td>Rewind (undo)</td></tr>
@@ -109,7 +109,7 @@ const jsonLd = [
           <tr><td>Shift+Enter</td><td>New line</td></tr>
           <tr><td>Ctrl+D</td><td>Exit</td></tr>
         </table>
-        <h3>IDE Shortcuts</h3>
+        <h3>IDE shortcuts</h3>
         <table>
           <tr><td>VS Code</td><td>Alt+K</td></tr>
           <tr><td>JetBrains</td><td>Cmd+Option+K</td></tr>
@@ -118,7 +118,7 @@ const jsonLd = [
 
       <!-- File References -->
       <div class="section">
-        <h2>File References</h2>
+        <h2>File references</h2>
         <pre><code>@path/to/file.ts    &rarr; Reference a file
 @agent-name         &rarr; Call an agent
 !shell-command      &rarr; Run shell command</code></pre>
@@ -126,7 +126,7 @@ const jsonLd = [
 
       <!-- Features Meconnues -->
       <div class="section">
-        <h2>Hidden But Official Features</h2>
+        <h2>Hidden but official features</h2>
         <table>
           <thead><tr><th>Feature</th><th>Since</th><th>What It Does</th></tr></thead>
           <tr><td><strong>Tasks API</strong></td><td>v2.1.16</td><td>Task lists with dependencies; newer models opt in with CLAUDE_CODE_ENABLE_TODO_TOOLS=1</td></tr>
@@ -151,7 +151,7 @@ const jsonLd = [
 
       <!-- Permission Modes -->
       <div class="section">
-        <h2>Permission Modes</h2>
+        <h2>Permission modes</h2>
         <table>
           <thead><tr><th>Mode</th><th>Editing</th><th>Execution</th></tr></thead>
           <tr><td>Manual (default)</td><td>Permission rules</td><td>Permission rules</td></tr>
@@ -163,13 +163,13 @@ const jsonLd = [
 
       <!-- Memory & Settings -->
       <div class="section">
-        <h2>Memory & Settings</h2>
+        <h2>Memory & settings</h2>
         <table>
           <thead><tr><th>Level</th><th>Path</th><th>Scope</th></tr></thead>
           <tr><td>Project</td><td>.claude/</td><td>Team (git)</td></tr>
           <tr><td>Personal</td><td>~/.claude/</td><td>You only</td></tr>
         </table>
-        <h3>.claude/ Structure</h3>
+        <h3>.claude/ structure</h3>
         <pre><code>.claude/
 ├── CLAUDE.md           # Local memory
 ├── settings.json       # Hooks (committed)
@@ -183,7 +183,7 @@ const jsonLd = [
 
       <!-- Context Management -->
       <div class="section">
-        <h2>Context Management</h2>
+        <h2>Context management</h2>
         <div class="context-zones">
           <div class="context-bar">
             <div class="context-zone zone-green">0-50%</div>
@@ -211,7 +211,7 @@ const jsonLd = [
 
       <!-- Plan Mode & Thinking -->
       <div class="section">
-        <h2>Plan Mode & Thinking</h2>
+        <h2>Plan mode & thinking</h2>
         <table>
           <tr><td>Shift+Tab x 2</td><td>Enter Plan Mode</td></tr>
           <tr><td>/model opusplan</td><td>Opus planning, Sonnet execution</td></tr>
@@ -231,7 +231,7 @@ const jsonLd = [
 
       <!-- Typical Workflow -->
       <div class="section">
-        <h2>Typical Workflow</h2>
+        <h2>Typical workflow</h2>
         <pre><code>1. Start session      &rarr; claude
 2. Check context      &rarr; /status
 3. Plan Mode          &rarr; Shift+Tab x 2
@@ -245,7 +245,7 @@ const jsonLd = [
 
       <!-- Quick Prompting Formula -->
       <div class="section">
-        <h2>Prompting Formula</h2>
+        <h2>Prompting formula</h2>
         <pre><code>WHAT: [Concrete deliverable]
 WHERE: [File paths]
 HOW: [Constraints, approach]
@@ -259,7 +259,7 @@ VERIFY: Empty email shows error</code></pre>
 
       <!-- MCP Servers -->
       <div class="section">
-        <h2>Model Context Protocol (MCP) Servers</h2>
+        <h2>Model Context Protocol (MCP) servers</h2>
         <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: var(--space-sm);">MCP extends Claude Code with external tools and data sources</p>
         <table>
           <tr><td>Serena</td><td>Indexation + session memory</td></tr>
@@ -275,7 +275,7 @@ VERIFY: Empty email shows error</code></pre>
 
       <!-- CLI Flags -->
       <div class="section">
-        <h2>CLI Flags</h2>
+        <h2>CLI flags</h2>
         <table>
           <tr><td>-p "query"</td><td>Non-interactive mode</td></tr>
           <tr><td>-c</td><td>Continue last session</td></tr>
@@ -319,7 +319,7 @@ VERIFY: Empty email shows error</code></pre>
 
       <!-- Cost Optimization -->
       <div class="section">
-        <h2>Cost Optimization</h2>
+        <h2>Cost optimization</h2>
         <table>
           <thead><tr><th>Model</th><th>Use For</th><th>Cost</th></tr></thead>
           <tr><td>Haiku</td><td>Simple fixes, reviews</td><td>$</td></tr>
@@ -331,7 +331,7 @@ VERIFY: Empty email shows error</code></pre>
 
       <!-- Quick Decision Tree -->
       <div class="section">
-        <h2>Quick Decision Tree</h2>
+        <h2>Quick decision tree</h2>
         <pre><code>Simple task       &rarr; Just ask Claude
 Complex task      &rarr; Tasks API to plan first
 Risky change      &rarr; Plan Mode first
@@ -343,7 +343,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
       <!-- Golden Rules -->
       <div class="section golden-rules">
-        <h2>The Golden Rules</h2>
+        <h2>The golden rules</h2>
         <ol>
           <li><strong>Always review diffs</strong> before accepting</li>
           <li><strong>Use /compact</strong> before context >70%</li>
@@ -357,7 +357,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
       <!-- Common Issues -->
       <div class="section">
-        <h2>Quick Fixes</h2>
+        <h2>Quick fixes</h2>
         <table>
           <tr><td>Command not found</td><td>Check PATH, reinstall</td></tr>
           <tr><td>Context >70%</td><td>/compact immediately</td></tr>
@@ -365,7 +365,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
           <tr><td>MCP not working</td><td>claude mcp list</td></tr>
           <tr><td>Permission denied</td><td>settings.local.json</td></tr>
         </table>
-        <h3>Health Check</h3>
+        <h3>Health check</h3>
         <pre><code>which claude && claude doctor && claude mcp list</code></pre>
       </div>
 
@@ -517,7 +517,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
   <section class="related-links">
     <div class="container">
-      <h2>Related Resources</h2>
+      <h2>Related resources</h2>
       <ul>
         <li><a href="/quiz/">Test your Claude Code knowledge</a></li>
         <li><a href="/glossary/">Full glossary of Claude Code terms</a></li>

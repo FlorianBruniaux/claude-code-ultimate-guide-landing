@@ -7,14 +7,14 @@ const stats = await getSiteStats()
 <!-- 5 Golden Rules Section -->
 <section class="section golden-rules" id="golden-rules">
     <div class="container">
-        <h2 class="section-title">5 Golden Rules</h2>
+        <h2 class="section-title">5 golden rules</h2>
         <p class="section-subtitle">Data-driven principles for working safely and effectively with AI code generation</p>
 
         <div class="rules-list">
             <div class="rule">
                 <span class="rule-number">1</span>
                 <div class="rule-content">
-                    <h3>Verify Trust Before Use</h3>
+                    <h3>Verify trust before use</h3>
                     <p>AI-generated code contains <strong>1.75x more logic errors</strong> than human code (ACM 2025). Test everything, peer review AI output like you would a junior dev's PR.</p>
                     <div class="rule-metric">
                         <span class="metric-tag">1.75x more logic errors</span>
@@ -25,7 +25,7 @@ const stats = await getSiteStats()
             <div class="rule">
                 <span class="rule-number">2</span>
                 <div class="rule-content">
-                    <h3>Never Approve MCPs from Unknown Sources</h3>
+                    <h3>Never approve MCPs from unknown sources</h3>
                     <p><strong>{stats.cveCount} CVEs and advisories</strong> tracked, <strong>3,984 skills scanned</strong> (36.82% with security flaws). Use the 5-minute audit checklist before installing any MCP server.</p>
                     <div class="rule-metric">
                         <span class="metric-tag">{stats.cveCount} CVE and advisory records tracked</span>
@@ -36,7 +36,7 @@ const stats = await getSiteStats()
             <div class="rule">
                 <span class="rule-number">3</span>
                 <div class="rule-content">
-                    <h3>Context Pressure Changes Behavior</h3>
+                    <h3>Context pressure changes behavior</h3>
                     <p>At <strong>70% context usage</strong>, Claude starts losing precision. Run <code>/compact</code> at 70%, <code>/clear</code> at 90%. Monitor with <code>/status</code>.</p>
                     <div class="rule-metric">
                         <span class="metric-tag">70% = precision loss</span>
@@ -47,7 +47,7 @@ const stats = await getSiteStats()
             <div class="rule">
                 <span class="rule-number">4</span>
                 <div class="rule-content">
-                    <h3>Start Simple, Scale Smart</h3>
+                    <h3>Start simple, scale smart</h3>
                     <p>2-week test period before scaling. 4-phase adoption: solo tasks, multi-file work, agents, then CI/CD integration. Work through each phase, don't skip ahead.</p>
                     <div class="rule-metric">
                         <span class="metric-tag">2-week test period</span>
@@ -58,7 +58,7 @@ const stats = await getSiteStats()
             <div class="rule">
                 <span class="rule-number">5</span>
                 <div class="rule-content">
-                    <h3>Methodologies Matter More with AI</h3>
+                    <h3>Methodologies matter more with AI</h3>
                     <p>AI amplifies good code <strong>AND</strong> bad code. TDD for critical logic, SDD for architecture-first, BDD for PM/dev collaboration. Choose by context, not by habit.</p>
                     <div class="rule-metric">
                         <span class="metric-tag">TDD / SDD / BDD</span>

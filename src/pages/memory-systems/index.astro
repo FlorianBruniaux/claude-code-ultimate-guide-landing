@@ -216,7 +216,7 @@ const decisionRules = [
   <header class="page-hero">
     <div class="container">
       <div class="hero-eyebrow">Claude Code</div>
-      <h1>Memory Systems</h1>
+      <h1>Memory systems</h1>
       <p class="hero-desc">Claude Code runs on three distinct memory tracks, not one. Knowing which fits your situation determines whether sessions start from scratch or pick up exactly where you left off.</p>
       <div class="hero-tracks-preview">
         <a href="#2-native-claude-code-memory-stack" class="track-pill track-pill--native">Native Stack</a>
@@ -233,19 +233,19 @@ const decisionRules = [
         <div class="tldr-grid">
           <div class="tldr-card tldr-native">
             <div class="tldr-icon">📄</div>
-            <h3>Native Stack</h3>
+            <h3>Native stack</h3>
             <p>Zero setup, works today. CLAUDE.md for permanent instructions, Auto Memory for automatic cross-session notes, Auto Dream for background consolidation.</p>
             <span class="tldr-badge">Built-in</span>
           </div>
           <div class="tldr-card tldr-cross">
             <div class="tldr-icon">🔄</div>
-            <h3>Cross-Session Tools</h3>
+            <h3>Cross-session tools</h3>
             <p>Community-built hooks and MCP servers that persist what Claude does automatically. claude-mem, agentmemory, ICM, Kairn, doobidoo:each with a different recall model.</p>
             <span class="tldr-badge tldr-badge--community">Community</span>
           </div>
           <div class="tldr-card tldr-team">
             <div class="tldr-icon">👥</div>
-            <h3>Team + Multi-Agent</h3>
+            <h3>Team + multi-agent</h3>
             <p>Sharing memory across developers or autonomous agents. The Trinity (zero infra), Mem0 Cloud, Zep/Graphiti. Concurrent-write coordination via leases and signals.</p>
             <span class="tldr-badge tldr-badge--advanced">Advanced</span>
           </div>
@@ -257,7 +257,7 @@ const decisionRules = [
     <section class="section section--alt" id="2-native-claude-code-memory-stack">
       <div class="container">
         <span class="section-badge section-badge--native">Track 1</span>
-        <h2 class="section-title">Native Claude Code Memory Stack</h2>
+        <h2 class="section-title">Native Claude Code memory stack</h2>
         <p class="section-subtitle">Four mechanisms built directly into Claude Code: no extra dependencies, no API costs for the memory layer itself.</p>
         <div class="native-grid">
           {nativeTools.map(tool => (
@@ -281,7 +281,7 @@ const decisionRules = [
     <section class="section" id="3-cross-session-tools-single-user">
       <div class="container">
         <span class="section-badge section-badge--cross">Track 2</span>
-        <h2 class="section-title">Cross-Session Tools</h2>
+        <h2 class="section-title">Cross-session tools</h2>
         <p class="section-subtitle">Six community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model: choose based on what you need to remember.</p>
 
         <div class="tool-table-wrap">
@@ -328,7 +328,7 @@ const decisionRules = [
     <section class="section section--alt" id="4-team-sharing">
       <div class="container">
         <span class="section-badge section-badge--team">Track 3</span>
-        <h2 class="section-title">Team + Multi-Agent Sharing</h2>
+        <h2 class="section-title">Team + multi-agent sharing</h2>
         <p class="section-subtitle">Sharing memory across developers or autonomous agents is the hardest problem. Structural reasons, primarily the lack of a standardized conflict-resolution protocol across tools, mean no current solution handles all cases cleanly.</p>
 
         <div class="team-options">
@@ -348,7 +348,7 @@ const decisionRules = [
         </div>
 
         <div class="multi-agent-note">
-          <h3>Multi-Agent Concurrent Writes</h3>
+          <h3>Multi-agent concurrent writes</h3>
           <p>When multiple agents write to the same memory store, you need coordination. The standard pattern: lease acquisition before write, signal-based invalidation on conflict, bounded retry with exponential backoff. No current tool implements this natively:it requires application-level wrapping.</p>
           <a href="/guide/memory-systems/#5-multi-agent-shared-memory" class="native-guide-link">Multi-agent memory patterns &rarr;</a>
         </div>
@@ -358,7 +358,7 @@ const decisionRules = [
     <!-- Decision Frameworks -->
     <section class="section" id="8-decision-frameworks">
       <div class="container">
-        <h2 class="section-title">Decision Framework: Which Track?</h2>
+        <h2 class="section-title">Decision framework: Which track?</h2>
         <p class="section-subtitle">Six rules that cover 90% of real situations. Each maps a concrete problem to the right solution layer.</p>
 
         <div class="decision-rules">
@@ -384,13 +384,13 @@ const decisionRules = [
     <!-- Risks & Architecture -->
     <section class="section section--alt">
       <div class="container">
-        <h2 class="section-title">Key Risks</h2>
+        <h2 class="section-title">Key risks</h2>
         <p class="section-subtitle">Memory systems introduce attack surfaces and failure modes that don't exist with stateless contexts.</p>
         <div class="risks-grid">
           <div class="risk-card risk-card--high">
             <div class="risk-header">
               <span class="risk-level">High</span>
-              <h3>Memory Poisoning</h3>
+              <h3>Memory poisoning</h3>
             </div>
             <p>An adversarial input causes the agent to store false beliefs in its memory store. On subsequent sessions, those beliefs influence behavior. No current tool implements write validation or anomaly detection.</p>
             <a href="/guide/memory-systems/#71-memory-poisoning-prompt-injection" class="native-guide-link">Details &rarr;</a>
@@ -398,21 +398,21 @@ const decisionRules = [
           <div class="risk-card risk-card--medium">
             <div class="risk-header">
               <span class="risk-level">Medium</span>
-              <h3>Context Inflation</h3>
+              <h3>Context inflation</h3>
             </div>
             <p>Memory retrieval injects tokens at session start. If retrieval is poorly tuned, you can end up with more context tokens from memory than from the actual task, degrading adherence.</p>
           </div>
           <div class="risk-card risk-card--medium">
             <div class="risk-header">
               <span class="risk-level">Medium</span>
-              <h3>Stale Beliefs</h3>
+              <h3>Stale beliefs</h3>
             </div>
             <p>Memories stored months ago may reflect outdated codebase state, team conventions, or user preferences. Decay models (Kairn, ICM) partially address this; flat storage (CLAUDE.md, doobidoo) does not.</p>
           </div>
           <div class="risk-card risk-card--low">
             <div class="risk-header">
               <span class="risk-level">Low</span>
-              <h3>Storage Fragmentation</h3>
+              <h3>Storage fragmentation</h3>
             </div>
             <p>Each tool uses its own storage format. Migrating from claude-mem to ICM, or from CLAUDE.md to Mem0, has no standard export path. Lock-in is mild (stores are local files) but migration is manual.</p>
           </div>
@@ -424,7 +424,7 @@ const decisionRules = [
     <section class="section section--cta">
       <div class="container">
         <div class="cta-block">
-          <h2>Full Reference in the Guide</h2>
+          <h2>Full reference in the guide</h2>
           <p>The complete guide page covers installation instructions, configuration examples, architecture deep-dives for each tool, a full benchmark comparison (LongMemEval-S / LongMemEval-M), the Mermaid decision flowchart, open problems, and five named architecture patterns.</p>
           <div class="cta-actions">
             <a href="/guide/memory-systems/" class="btn btn-primary">Read the full guide &rarr;</a>

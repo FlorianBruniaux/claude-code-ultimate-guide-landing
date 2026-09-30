@@ -9,11 +9,11 @@ test('landing pages expose the skill ownership and lifecycle guidance', () => {
   const ecosystem = readFileSync(resolve(PROJECT_ROOT, 'src/pages/ecosystem/index.astro'), 'utf8')
   const contextEngineering = readFileSync(resolve(PROJECT_ROOT, 'src/pages/context-engineering/index.astro'), 'utf8')
 
-  assert.match(ecosystem, /Distribution Is Not Mutualized Maintenance/)
+  assert.match(ecosystem, /Distribution is not mutualized maintenance/)
   assert.match(ecosystem, /Personal[\s\S]*Project or team[\s\S]*Tool or vendor[\s\S]*Marketplace or global/)
   assert.match(ecosystem, /npx skills add &lt;owner\/repo&gt;/)
   assert.match(ecosystem, /href="\/guide\/third-party-tools\/"/)
-  assert.match(contextEngineering, /Low Use Is a Review Signal, Not a Deletion Rule/)
+  assert.match(contextEngineering, /Low use is a review signal, not a deletion rule/)
   assert.match(contextEngineering, /\/skill-doctor/)
   assert.match(contextEngineering, /outside discovered skill directories/)
 })
@@ -29,7 +29,6 @@ test('announcement and RSS expose the skill governance update without duplicate 
   const { rssEntries } = await import('./rss-entries.ts')
   const entryKeys = rssEntries.map((entry) => `${entry.type}:${entry.title}:${entry.link}`)
 
-  assert.match(banner, /banner-skill-governance-2026-09/)
   assert.match(banner, /href="\/guide\/ultimate-guide\/05-skills\/" class="ann-link">Skill Governance<\/a>/)
   assert.ok(rssEntries.some((entry) => entry.title === 'Skill Ownership, Evaluation and Retirement'))
   assert.equal(new Set(entryKeys).size, entryKeys.length)

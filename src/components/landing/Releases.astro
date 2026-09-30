@@ -5,7 +5,7 @@ import { releases, breakingChanges } from '../../data/releases'
 <!-- What's New Section -->
 <section class="section whats-new section--alt" id="whats-new">
     <div class="container">
-        <h2 class="section-title">What's New</h2>
+        <h2 class="section-title">What's new</h2>
         <p class="section-subtitle">Latest updates from the changelog</p>
 
         <div class="changelog-container" id="changelog-container">
@@ -23,7 +23,7 @@ import { releases, breakingChanges } from '../../data/releases'
 <!-- Claude Code Releases Section -->
 <section class="section cc-releases" id="releases">
     <div class="container">
-        <h2 class="section-title">Claude Code Releases</h2>
+        <h2 class="section-title">Claude Code releases</h2>
         <p class="section-subtitle">Latest versions and breaking changes from Anthropic</p>
 
         <div style="text-align: left; margin-bottom: var(--space-md);">
@@ -58,7 +58,7 @@ import { releases, breakingChanges } from '../../data/releases'
         </div>
 
         <div class="breaking-changes">
-            <h3>&#9888; Recent Breaking Changes</h3>
+            <h3>&#9888; Recent breaking changes</h3>
             <ul>
                 {breakingChanges.map(bc => (
                     <li><span class="breaking-badge">{bc.badge}</span> <Fragment set:html={bc.description} /></li>
