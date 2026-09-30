@@ -1,0 +1,67 @@
+src/components/finops/LeverSwitchyard.astro
+  s_9e15cec8cf2013::t_39f5bafb19180c 1-376
+src/components/global/AnnouncementBanner.astro
+  s_9e15cec8cf2013::t_85e0111c96570a 13,23,26,30
+src/data/finops-levers.test.ts
+  s_9e15cec8cf2013::t_41f3156a472365 1-48
+src/data/finops-levers.ts
+  s_9e15cec8cf2013::t_8cc5acd96597bd 1-81
+src/data/intent-navigation.json
+  s_6e23ba2e4cbafd::t_6ebf660326c3ae 154-167
+src/data/landing-sync.test.ts
+  s_9e15cec8cf2013::t_63757f92fedbda 106-108
+src/pages/finops/index.astro
+  s_d6b910c42dc21c::t_881fad7f71b6d2 1-769
+src/scripts/finops-switchyard.test.ts
+  s_a40a2adba5e3b8::t_cd0c3c4fe16838 1-91
+src/scripts/finops-switchyard.ts
+  s_13e3fa5d5ffade::t_31721789ae6431 1-228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ac6e84aa6b6c70fe84eb03f1ca289d6fd737a13a",
+  "prompts": {},
+  "sessions": {
+    "s_13e3fa5d5ffade": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf261c02-4032-46c7-8c90-82790e40891c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_6e23ba2e4cbafd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e22a4c1b-9492-41fe-a273-e2a1a5693406",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9e15cec8cf2013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee55b5e6-c13f-4366-8ef6-02c6713eec4b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a40a2adba5e3b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08f3e-0b7a-7d83-8afe-407da4c4fddb",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d6b910c42dc21c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "54c1be32-96ed-400e-9ea7-7dd550b0fdbb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
