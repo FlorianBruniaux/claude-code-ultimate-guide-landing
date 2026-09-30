@@ -24,12 +24,10 @@ test('ecosystem inventory count matches its current 26-item dataset', () => {
   assert.match(ecosystem, /class="stat-number" data-target="26"/)
 })
 
-test('announcement and RSS expose the skill governance update without duplicate entries', async () => {
-  const banner = readFileSync(resolve(PROJECT_ROOT, 'src/components/global/AnnouncementBanner.astro'), 'utf8')
+test('RSS exposes the skill governance update without duplicate entries', async () => {
   const { rssEntries } = await import('./rss-entries.ts')
   const entryKeys = rssEntries.map((entry) => `${entry.type}:${entry.title}:${entry.link}`)
 
-  assert.match(banner, /href="\/guide\/ultimate-guide\/05-skills\/" class="ann-link">Skill Governance<\/a>/)
   assert.ok(rssEntries.some((entry) => entry.title === 'Skill Ownership, Evaluation and Retirement'))
   assert.equal(new Set(entryKeys).size, entryKeys.length)
 })

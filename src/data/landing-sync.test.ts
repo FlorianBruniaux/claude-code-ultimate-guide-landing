@@ -103,10 +103,10 @@ test('Announcement banner keeps at most four links, rotates its id, and announce
   const linkCount = (banner.match(/class=\"ann-link\"/g) ?? []).length
 
   assert.equal(linkCount, 4)
-  assert.match(banner, /const BANNER_ID = 'banner-ai-finops-2026-09'/)
+  assert.match(banner, /const BANNER_ID = 'banner-token-savings-2026-09'/)
   assert.match(banner, /href="\/finops\/" class="ann-link">AI FinOps<\/a>/)
   assert.match(banner, /href="\/guide\/llm-market-snapshot\/" class="ann-link">LLM Market Snapshot<\/a>/)
-  assert.match(banner, /href="\/guide\/ultimate-guide\/05-skills\/" class="ann-link">Skill Governance<\/a>/)
+  assert.match(banner, /href="\/token-savings\/" class="ann-link">Token-Saving Tools<\/a>/)
   assert.match(banner, /href="\/changelog\/" class="ann-link">Changelog &rarr;<\/a>/)
 })
 
