@@ -2,6 +2,18 @@
 const gaId = 'G-WH1C8CM79E'
 ---
 
+<!-- Main-thread events use the same forwarded queue as Partytown's gtag. -->
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () {
+    try {
+      window.dataLayer.push(arguments);
+    } catch {
+      // Analytics must not interrupt the action that triggered the event.
+    }
+  };
+</script>
+
 <!-- Google Analytics 4 via Partytown -->
 <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
 <script is:inline type="text/partytown" define:vars={{ gaId }}>

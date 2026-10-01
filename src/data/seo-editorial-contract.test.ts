@@ -3,15 +3,17 @@ import test from 'node:test'
 
 import {
   contextualLinks,
+  getReleaseTitle,
   landingSeo,
   releaseDateToIsoDate,
 } from './seo-editorial-contract.mjs'
 import * as seoEditorialContract from './seo-editorial-contract.mjs'
+import { releases } from './releases.ts'
 
 test('keeps the audited landing snippets within search-result limits', () => {
   assert.deepEqual(landingSeo, {
     releases: {
-      title: 'Claude Code Version History & Latest Release',
+      title: 'Claude Code Latest Version {version} | Release History',
       description: 'Current Claude Code version, release date, version history, changelog, breaking changes, environment variables, and config flags.',
     },
     glossary: {
@@ -24,10 +26,16 @@ test('keeps the audited landing snippets within search-result limits', () => {
     },
   })
 
-  for (const snippet of Object.values(landingSeo)) {
-    assert.ok(snippet.title.length >= 30 && snippet.title.length <= 60)
+  for (const [route, snippet] of Object.entries(landingSeo)) {
+    const title = route === 'releases' ? getReleaseTitle(releases[0].version) : snippet.title
+    assert.ok(title.length >= 30 && title.length <= 60)
     assert.ok(snippet.description.length >= 50 && snippet.description.length <= 160)
   }
+})
+
+test('uses the displayed current release in the releases search title', () => {
+  assert.equal(getReleaseTitle(releases[0].version), `Claude Code Latest Version ${releases[0].version} | Release History`)
+  assert.equal(getReleaseTitle('v9.9.9'), 'Claude Code Latest Version v9.9.9 | Release History')
 })
 
 test('defines six contextual links with descriptive anchors outside global chrome', () => {
