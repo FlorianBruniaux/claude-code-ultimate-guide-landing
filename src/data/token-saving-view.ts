@@ -2,8 +2,15 @@
  * View-only helpers for the /token-savings/ page. Pure functions over the verified data in
  * token-saving-benchmarks.ts and token-saving-catalog.ts. Nothing here changes a figure.
  */
-import { CLAIMS_VS_MEASURED, MEASUREMENTS, type ClaimVsMeasured, type Measurement } from './token-saving-benchmarks.ts'
+import { BENCHMARKS, CLAIMS_VS_MEASURED, MEASUREMENTS, type ClaimVsMeasured, type Measurement } from './token-saving-benchmarks.ts'
 import { CATALOG, type CatalogEntry } from './token-saving-catalog.ts'
+
+/** A row where the benchmark publisher measured its own tool (THOL for Tokenade, Dasein for Parsec). */
+export const isMakerMeasurement = (m: Measurement): boolean =>
+  BENCHMARKS.find((b) => b.id === m.benchmark)?.makerOf === m.tool
+
+/** Every measurement except a publisher measuring its own tool. */
+export const THIRD_PARTY_MEASUREMENTS: Measurement[] = MEASUREMENTS.filter((m) => !isMakerMeasurement(m))
 
 export interface ToolResults {
   tool: string
@@ -20,7 +27,7 @@ export const isReferenceTool = (tool: string): boolean => REFERENCE_TOOLS.includ
  * Group measurements by tool. Tool order is alphabetical (neutral, stable); rows inside a
  * tool keep the input order. Every input measurement appears exactly once.
  */
-export function groupMeasurementsByTool(measurements: Measurement[] = MEASUREMENTS): ToolResults[] {
+export function groupMeasurementsByTool(measurements: Measurement[] = THIRD_PARTY_MEASUREMENTS): ToolResults[] {
   const byTool = new Map<string, Measurement[]>()
   for (const m of measurements) {
     const rows = byTool.get(m.tool)
@@ -48,11 +55,11 @@ export interface CatalogRow {
 }
 
 /** Third-party results for a catalog entry, from the tool name recorded in `measuredAs`. */
-export function resultsFor(entry: CatalogEntry, measurements: Measurement[] = MEASUREMENTS): Measurement[] {
+export function resultsFor(entry: CatalogEntry, measurements: Measurement[] = THIRD_PARTY_MEASUREMENTS): Measurement[] {
   return entry.measuredAs ? measurements.filter((m) => m.tool === entry.measuredAs) : []
 }
 
-export function catalogRows(catalog: CatalogEntry[] = CATALOG, measurements: Measurement[] = MEASUREMENTS): CatalogRow[] {
+export function catalogRows(catalog: CatalogEntry[] = CATALOG, measurements: Measurement[] = THIRD_PARTY_MEASUREMENTS): CatalogRow[] {
   return catalog
     .map((entry) => ({ entry, results: resultsFor(entry, measurements) }))
     .sort((a, b) => a.entry.name.localeCompare(b.entry.name, 'en', { sensitivity: 'base' }))
@@ -67,7 +74,7 @@ export interface ClaimCard {
 /** One card per tool that has a claim-versus-study entry, with every result for that tool. */
 export function claimCards(
   claims: ClaimVsMeasured[] = CLAIMS_VS_MEASURED,
-  measurements: Measurement[] = MEASUREMENTS,
+  measurements: Measurement[] = THIRD_PARTY_MEASUREMENTS,
   catalog: CatalogEntry[] = CATALOG,
 ): ClaimCard[] {
   return claims.map((claim) => ({

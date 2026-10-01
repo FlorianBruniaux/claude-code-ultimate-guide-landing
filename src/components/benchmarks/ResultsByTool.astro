@@ -1,6 +1,6 @@
 ---
 import { BENCHMARKS, BENCHMARK_SHORT, MEASUREMENTS } from '../../data/token-saving-benchmarks'
-import { groupMeasurementsByTool, isReferenceTool, shapeOf, signOf } from '../../data/token-saving-view'
+import { THIRD_PARTY_MEASUREMENTS, groupMeasurementsByTool, isReferenceTool, shapeOf, signOf } from '../../data/token-saving-view'
 import { chartDomain, describeValue, describeValues, fmtPct, fmtRange, fmtValues, position, unitLabel } from './format'
 import ChipGroup from './ui/ChipGroup.astro'
 
@@ -17,7 +17,7 @@ const referenceValues = [...new Set(referenceRows.flatMap((m) => m.values))]
 
 const benchUrl = (id: string) => BENCHMARKS.find((b) => b.id === id)?.url ?? '#'
 const chips = [{ value: '', label: 'All studies' }, ...BENCHMARKS.map((b) => ({ value: b.id, label: BENCHMARK_SHORT[b.id] }))]
-const total = MEASUREMENTS.length - referenceRows.length
+const total = THIRD_PARTY_MEASUREMENTS.length - referenceRows.length
 
 /** One line per unit, so cost percentages and token-count percentages are never merged. */
 const summarize = (rows: (typeof MEASUREMENTS)) => {

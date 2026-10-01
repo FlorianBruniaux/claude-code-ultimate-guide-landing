@@ -4,6 +4,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- /token-savings/: a benchmark run by a tool's maker no longer counts as a third-party result for that tool, as the page's method already stated. Tokenade on THOL (maintained by Tokenade's author) and Parsec on the Dasein bench (operated by Parsec's maker) leave the results chart and the catalogue's third-party counts (33 to 31 results, 14 to 12 tools measured by a third party); both stay described under their project's own benchmark. New `makerOf` field on benchmarks, with a test. Reported by Sacha Morard.
 - Agent Router marked "Soon" while its repository is private: a `SoonBadge` in the Build menu strip, the homepage companion grid and /projects/, "coming soon" in the link labels, and the card now opens the guide's model-routing section instead of the GitHub repository that returned a 404 in the link check. The `status` and preview URL come from the regenerated profile manifest.
 - Personal projects regenerated from the profile manifest: Agent Router (featured in the Build menu and on the homepage) and Paper Insights added, 18 projects in total; the homepage companion grid moves to three columns so five featured cards do not leave one alone on a row.
 - Announcement banner: link `/token-savings/` next to AI FinOps and the LLM market snapshot, replacing Skill Governance to keep four links; `BANNER_ID` bumped so visitors who dismissed the previous banner see it again.

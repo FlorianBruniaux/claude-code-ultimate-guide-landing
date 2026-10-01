@@ -31,6 +31,11 @@ export interface Benchmark {
   method: string
   /** Commercial interest of the publisher in the comparison, stated plainly. */
   interest: string
+  /**
+   * Tool made by the publisher, as named in MEASUREMENTS. Its rows in this benchmark are the
+   * project's own benchmark: shown in its catalogue entry, never counted as third-party results.
+   */
+  makerOf?: string
   quality: {
     paired: boolean | null
     successMeasured: boolean | null
@@ -51,6 +56,7 @@ export const BENCHMARKS: Benchmark[] = [
     date: '2026-07-04 (Fermat arm 2026-09-21, not paired)',
     url: 'https://github.com/daseinlabs/code-compression-bench',
     method: '100 SWE-bench Verified tasks, headless Claude Code via the Python Agent SDK, claude-sonnet-4-6, official Docker grader, one run per arm, cache-aware cost.',
+    makerOf: 'Parsec',
     interest: 'Sponsored and operated by Dasein Labs, which makes Parsec, one of the arms. The Parsec arm also injects a turn-0 brief and a stop decision, beyond compression.',
     quality: { paired: true, successMeasured: true, cacheSeparated: true, dollarCost: true, versionsNamed: false, moreThan10Tasks: true, repeated: false, codePublished: true },
   },
@@ -101,6 +107,7 @@ export const BENCHMARKS: Benchmark[] = [
     date: 'Claude Code 2.1.206 campaign, results committed 2026-07-18',
     url: 'https://pi-infected.github.io/token-harness-optimizer-leaderboard/',
     method: 'Headless Claude Code 2.1.206 with claude-sonnet-4-6, 17 tasks, 10 runs per task and tool. The headline keeps the 7 tasks where the tool-free control used at least 200,000 tokens (70 runs per tool) and reports the ratio of end-to-end USD with bootstrap 95% intervals.',
+    makerOf: 'Tokenade',
     interest: 'Maintained by the author of Tokenade, which tops the table. The page says so.',
     quality: { paired: true, successMeasured: true, cacheSeparated: null, dollarCost: true, versionsNamed: true, moreThan10Tasks: true, repeated: true, codePublished: true },
   },
