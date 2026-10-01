@@ -34,7 +34,9 @@ if [[ $# -ne 0 ]]; then
 fi
 
 # The content scripts otherwise accept missing Chromium and publish diagram fallbacks.
-"${pnpm_cmd[@]}" exec puppeteer browsers install chrome
+chrome_install_output="$("${pnpm_cmd[@]}" exec puppeteer browsers install chrome)"
+export PUPPETEER_EXECUTABLE_PATH="${chrome_install_output##* }"
+test -x "$PUPPETEER_EXECUTABLE_PATH"
 diagram_check="$(mktemp -d)"
 trap 'rm -rf "$diagram_check"' EXIT
 printf 'graph TD; A-->B\n' > "$diagram_check/check.mmd"

@@ -33,6 +33,7 @@ for (const path of ['/', '/releases/', '/favicon.svg']) {
 assert.match(source, /GUIDE_COMMIT_SHA/)
 assert.match(source, /git -C "\$guide_root" fetch --depth 1 origin "\$GUIDE_COMMIT_SHA"/)
 assert.match(source, /process\.versions\.node/)
+assert.match(source, /export PUPPETEER_EXECUTABLE_PATH/)
 const invalidSha = spawnSync('bash', [build, '--preflight'], {
   cwd: root,
   encoding: 'utf8',
