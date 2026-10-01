@@ -1,0 +1,39 @@
+scripts/build-vercel.sh
+  s_ac2d166590f8d7::t_68ec56513b12a2 1-62
+scripts/check-vercel-config.mjs
+  s_ec22837e58ecfe::t_60af03a5ad3e03 1-44
+vercel.json
+  s_4eb375a9065173::t_377529c0748d88 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bdbc2f1d0f6ab3c4e70911d36830414566b3f588",
+  "prompts": {},
+  "sessions": {
+    "s_4eb375a9065173": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6ab-3d3e-7fa2-9f0e-2aae4c1ab380",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ac2d166590f8d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6aa-515b-7223-85d4-9a109125730c",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ec22837e58ecfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6a4-88a1-77b3-9270-14c46f3f921c",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
