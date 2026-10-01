@@ -1,0 +1,19 @@
+scripts/build-vercel.sh
+  s_ec22837e58ecfe::t_9ad6b42f7006e6 36-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7cb1e07f323b9858034e14bb310ceaf572b46eb2",
+  "prompts": {},
+  "sessions": {
+    "s_ec22837e58ecfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6a4-88a1-77b3-9270-14c46f3f921c",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
