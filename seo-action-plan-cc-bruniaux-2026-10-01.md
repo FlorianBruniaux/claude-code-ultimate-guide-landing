@@ -19,7 +19,7 @@ L'ordre A1, A2, A3 permet de corriger les éléments directement actionnables sa
 
 ## Porte de publication issue de la critique
 
-Le site local est neuf commits devant son `origin/main`; son push publierait huit commits antérieurs au correctif SEO. Le build Pages clone le guide distant. La combinaison site local + guide distant du 1er octobre construit 464 pages mais échoue au contrôle de deux liens internes vers les pages FinOps absentes du guide distant. La combinaison avec le guide local intégré construit 466 pages et passe le contrôle des liens lorsque `--guide-root` désigne cette même révision. Publier le site seul n'est donc pas une unité vérifiée.
+Le site local contient huit commits antérieurs au correctif SEO qui ne sont pas publiés; un push les inclurait. Le build Pages clone le guide distant. La combinaison site local + guide distant du 1er octobre construit 464 pages mais échoue au contrôle de deux liens internes vers les pages FinOps absentes du guide distant. La combinaison avec le guide local intégré construit 466 pages et passe le contrôle des liens lorsque `--guide-root` désigne cette même révision. Publier le site seul n'est donc pas une unité vérifiée.
 
 Avant chaque push, figer les SHA distants, le lot de commits, les deux révisions à construire et le retour arrière. Exécuter les contrôles du workflow sur cette combinaison, puis vérifier le déploiement et les parcours publics. Le guide local a aussi un export bilingue automatique; la traduction française marquée `STALE` bloque son rendu strict. Ne pas présenter ce workflow comme vert ni publier un export français non revu.
 
