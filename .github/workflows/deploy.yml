@@ -53,8 +53,8 @@ jobs:
         run: |
           STARS=$(curl -s https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide | jq .stargazers_count)
           LINES=$(wc -l < ../claude-code-ultimate-guide/guide/ultimate-guide.md)
-          echo "GUIDE_STARS=$STARS" >> $GITHUB_ENV
-          echo "GUIDE_LINES=$LINES" >> $GITHUB_ENV
+          echo "GUIDE_STARS=$STARS" >> "$GITHUB_ENV"
+          echo "GUIDE_LINES=$LINES" >> "$GITHUB_ENV"
           echo "Stars: $STARS | Lines: $LINES"
 
       - name: Prepare guide content
@@ -105,3 +105,47 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  vercel-preview:
+    needs: [build, deploy]
+    if: vars.VERCEL_PREVIEW_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: team_c7adrP3tPk90dBJkKsc4Kzmv
+      VERCEL_PROJECT_ID: prj_dBZoSMSg9jawAiK3COtfHTbqjN6E
+    steps:
+      - name: Require Vercel credentials
+        run: |
+          test -n "$VERCEL_TOKEN" || { echo 'Missing VERCEL_TOKEN' >&2; exit 1; }
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Download Pages artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: pages-artifact
+
+      - name: Extract Pages site
+        run: |
+          mkdir dist
+          tar -xf pages-artifact/artifact.tar -C dist
+
+      - name: Package Vercel Build Output API v3
+        run: |
+          node scripts/test-package-vercel-output.mjs
+          node scripts/package-vercel-output.mjs dist .vercel/output
+
+      - name: Deploy Vercel preview
+        run: |
+          npm install --global vercel@60.0.0
+          vercel deploy --prebuilt --target preview --yes --token "$VERCEL_TOKEN"
