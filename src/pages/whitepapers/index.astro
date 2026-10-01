@@ -1061,14 +1061,14 @@ const profiles = [
         // Mark as subscriber: unlocks recap cards automatically
         try { localStorage.setItem('cc-subscriber', '1') } catch {}
         // GA event
-        if (typeof analyticsWindow.gtag === 'function') {
-          analyticsWindow.gtag('event', 'ebook_subscribe', {
-            guide: filename,
-            format: isEpub ? 'epub' : 'pdf',
-            source: utmSource,
-            ...(utmCampaign && { campaign: utmCampaign }),
-          })
-        }
+        try {
+          if (typeof analyticsWindow.gtag === 'function') {
+            analyticsWindow.gtag('event', 'ebook_subscribe', {
+              guide: filename,
+              format: isEpub ? 'epub' : 'pdf',
+            })
+          }
+        } catch {}
       } catch (err) {
         form.classList.add('hidden')
         const errorMsg = form.parentElement?.querySelector('.form-error')

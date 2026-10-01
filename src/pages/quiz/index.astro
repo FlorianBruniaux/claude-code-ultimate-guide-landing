@@ -1187,14 +1187,16 @@ const jsonLd = [
       answers = {};
       startTime = Date.now();
       renderQuizParams();
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'quiz_start', {
-          quiz_name: 'claude_code',
-          question_count: filteredQuestions.length,
-          difficulty: selectedDifficulty,
-          role: selectedRole,
-        });
-      }
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'quiz_start', {
+            quiz_name: 'claude_code',
+            question_count: filteredQuestions.length,
+            difficulty: selectedDifficulty,
+            role: selectedRole,
+          });
+        }
+      } catch {}
       setupScreen.style.display = 'none';
       document.querySelector('.page-hero').style.display = 'none';
       questionScreen.classList.add('active');
@@ -1365,17 +1367,19 @@ const jsonLd = [
         return `<div class="category-score-item"><span>${cat}</span><div style="display: flex; align-items: center; gap: var(--space-sm);"><span style="font-family: var(--font-mono); font-size: 0.9rem;">${score.correct}/${score.total}${deltaHTML}</span><div class="category-score-bar"><div class="category-score-fill" style="width: ${catPct}%"></div></div></div></div>`;
       }).join('');
       document.getElementById('share-text').textContent = `Claude Code Quiz: ${percentage}% (${correct}/${total}) - ${badge} level!\nTest yours: cc.bruniaux.com/quiz`;
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'quiz_complete', {
-          quiz_name: 'claude_code',
-          score: percentage,
-          correct_answers: correct,
-          total_questions: total,
-          badge,
-          difficulty: selectedDifficulty,
-          time_elapsed_seconds: elapsed,
-        });
-      }
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'quiz_complete', {
+            quiz_name: 'claude_code',
+            score: percentage,
+            correct_answers: correct,
+            total_questions: total,
+            badge,
+            difficulty: selectedDifficulty,
+            time_elapsed_seconds: elapsed,
+          });
+        }
+      } catch {}
       renderQuizCta(percentage);
       renderMostMissedQuestions();
       renderHistory();
