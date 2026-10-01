@@ -2,26 +2,35 @@
 
 **Point de départ :** [audit du 1er octobre 2026](seo-audit-cc-bruniaux-2026-10-01.md). Les données GSC couvrent le 1er au 28 septembre. Ce plan distingue ce que le dépôt peut corriger de ce qui exige une décision sur l'hébergement ou dans GA4.
 
+## Suivi de publication du 1er octobre
+
+- **Guide publié :** `origin/main` est à `4cf942d8`. L'export PDF/EPUB a réussi dans le run GitHub Actions `36852116174` et le contrôle d'intégrité de l'index dans le run `36852803357`. La traduction intégrale française reste marquée `STALE`; l'export automatisé publie l'anglais et préserve les anciens fichiers français sans les régénérer.
+- **Landing publiée sur GitHub Pages :** le run Pages `36857454001` sur `1d60ab3` a réussi. L'accueil, les pages releases et FinOps répondent en 200; le title public de `/releases/` contient `v2.1.285`. Le parcours quiz reste utilisable lorsqu'une erreur est injectée dans `gtag`. La réception des événements dans GA4 et l'effet sur le CTR restent `UNKNOWN`.
+- **Hébergement Vercel préparé :** un déploiement de l'artefact Pages est `READY` en [préproduction Vercel](https://claude-code-ultimate-guide-landing-pid7moy7q.vercel.app), avec protection d'accès. Les requêtes authentifiées ont vérifié le 308 de l'ancienne route, les trois en-têtes requis sur l'accueil, `/releases/` et `/favicon.svg`, ainsi que le 200 sur `/finops/` et `/guide/architecture/`. Le contenu HTML de `/releases/` est identique octet pour octet à l'artefact Pages utilisé. Ce déploiement provient du build de `b8cd21b`, avant les commits Vercel seuls; il ne prouve pas un build autonome de la révision actuelle.
+- **Bascule non effectuée :** `cc.bruniaux.com` pointe encore vers GitHub Pages. Son ancienne route répond toujours 200 et les en-têtes requis manquent. L'automatisation Vercel et un jeton GitHub Actions sont nécessaires avant de remplacer ce site qui se met à jour avec le guide. La création de ce jeton a été refusée par le contrôle d'approbation automatique, car elle persisterait un identifiant d'accès sans autorisation assez explicite.
+
+Les états « locaux » des sections suivantes décrivent la preuve disponible avant cette publication. Ils restent utiles pour distinguer le comportement publié des effets différés dans Google et GA4.
+
 ## Ordre d'exécution
 
 | Réf. | Priorité | Action | Propriétaire | Taille relative | État au 1er octobre 2026 |
 | --- | --- | --- | --- | --- | --- |
-| A1 | P1 | Rétablir la remontée des événements GA4 existants | Landing | Petite | Pont local corrigé; parcours et paramètres GA4 en validation; réception `UNKNOWN` |
-| A2 | P1 | Tester un title releases contenant la version courante | Landing | Petite | HTML local vérifié; effet CTR `UNKNOWN` |
-| A3 | P1 | Choisir un hébergement capable d'un vrai 301/308 et des en-têtes | Hébergement/DNS | Grande | Décision externe nécessaire |
+| A1 | P1 | Rétablir la remontée des événements GA4 existants | Landing | Petite | Correctif publié; parcours vérifié; réception GA4 `UNKNOWN` |
+| A2 | P1 | Tester un title releases contenant la version courante | Landing | Petite | Title public vérifié; effet CTR `UNKNOWN` |
+| A3 | P1 | Choisir un hébergement capable d'un vrai 301/308 et des en-têtes | Hébergement/DNS | Grande | Vercel validé en préproduction; automatisation et DNS non activés |
 | A4 | P1 | Diagnostiquer les trois canoniques Google HTTP restants | Landing, puis GSC | Moyenne | Trois 301 directs et HTTPS vérifiés; cause Google `UNKNOWN` |
-| A5 | P1 | Contrôler la fraîcheur du contenu source des pages outils et architecture | Guide source | Moyenne à grande | Faits corrigés sur le guide local; publication et synchronisation à vérifier |
+| A5 | P1 | Contrôler la fraîcheur du contenu source des pages outils et architecture | Guide source | Moyenne à grande | Corrections du guide publiées; synchronisation Pages vérifiée, effet SEO `UNKNOWN` |
 | A6 | P1 | Choisir et vérifier les key events GA4 | Propriétaire GA4 | Petite après A1 | Décision métier et réception à vérifier |
 | A7 | P2 | Qualifier le trafic Singapour | GA4 et journaux d'accès | Moyenne | Cause `UNKNOWN` |
 | A8 | P2 | Établir une mesure de performance mobile | CrUX ou PageSpeed | Petite après accès aux données | Données terrain `UNKNOWN` |
 
 L'ordre A1, A2, A3 permet de corriger les éléments directement actionnables sans attribuer le CTR à une cause inventée. A4 et A5 peuvent être étudiées en parallèle. A6 dépend de la preuve de réception des événements. A7 ne justifie aucun filtre tant que sa cause n'est pas établie.
 
-## Porte de publication issue de la critique
+## Porte de publication issue de la critique, franchie
 
-Le site local contient huit commits antérieurs au correctif SEO qui ne sont pas publiés; un push les inclurait. Le build Pages clone le guide distant. La combinaison site local + guide distant du 1er octobre construit 464 pages mais échoue au contrôle de deux liens internes vers les pages FinOps absentes du guide distant. La combinaison avec le guide local intégré construit 466 pages et passe le contrôle des liens lorsque `--guide-root` désigne cette même révision. Publier le site seul n'est donc pas une unité vérifiée.
+Au départ, le site local contenait huit commits antérieurs au correctif SEO non publiés. Le build Pages clone le guide distant. La combinaison site local + ancien guide distant construisait 464 pages mais échouait au contrôle de deux liens internes vers les pages FinOps absentes du guide distant. La combinaison avec le guide local intégré construisait 466 pages et passait le contrôle des liens lorsque `--guide-root` désignait cette même révision. Les deux dépôts ont ensuite été publiés dans cet ordre et leurs workflows distants ont réussi, comme détaillé dans le suivi ci-dessus.
 
-Avant chaque push, figer les SHA distants, le lot de commits, les deux révisions à construire et le retour arrière. Exécuter les contrôles du workflow sur cette combinaison, puis vérifier le déploiement et les parcours publics. Le guide local a aussi un export bilingue automatique; la traduction française marquée `STALE` bloque son rendu strict. Ne pas présenter ce workflow comme vert ni publier un export français non revu.
+Avant chaque push, figer les SHA distants, le lot de commits, les deux révisions à construire et le retour arrière. Exécuter les contrôles du workflow sur cette combinaison, puis vérifier le déploiement et les parcours publics. Le guide a aussi un export bilingue automatique; la traduction française marquée `STALE` bloque son rendu strict. Le workflow passe désormais en publiant l'anglais et en préservant les anciens fichiers français; aucun export français nouveau n'est validé.
 
 ## A1. Événements GA4 existants
 
@@ -51,7 +60,7 @@ Avant chaque push, figer les SHA distants, le lot de commits, les deux révision
 
 **Preuve, PROUVÉ :** `/guide/claude-code-releases/` répond 200 avec `noindex` et canonical vers `/releases/`. Le déploiement Astro statique sur GitHub Pages ne contrôle pas le statut HTTP de cette page ni les en-têtes globaux. Le [contrat d'hébergement existant](docs/operations/seo-post-deploy.md) définit les réponses attendues, le contrôle public et le retour arrière.
 
-**Décision nécessaire :** placer un proxy HTTP devant Pages ou déplacer le site vers un hébergeur qui applique des règles de réponse. Préparer la configuration, le test de préproduction et le retour arrière pour l'option retenue avant toute bascule DNS.
+**Décision prise :** préparer Vercel avec l'artefact déjà produit par Pages. La configuration et le test de préproduction sont validés; l'automatisation, le contrôle du déploiement et le retour arrière restent à éprouver avant la bascule DNS.
 
 **Critères :** l'ancienne route donne un 301 ou 308 direct vers `/releases/`; l'accueil, `/releases/` et `/favicon.svg` portent les en-têtes requis par le contrat. Exécuter le contrôle HTTP automatisé, puis vérifier séparément téléchargements, analytics, liens externes et embeds autorisés. Ne pas ajouter `_redirects` ou `_headers` à Pages : cet hébergement ne les interprète pas.
 
@@ -75,7 +84,7 @@ Avant chaque push, figer les SHA distants, le lot de commits, les deux révision
 
 **Critères :** chaque correction de fait a une source et une date de vérification; les pages construites portent le même contenu; les métadonnées restent uniques et cohérentes. Séparer cette vérification éditoriale du test de CTR.
 
-**État local :** les énoncés figés sur les outils disponibles, le contexte universel à 200K et l'impossibilité de délégation imbriquée ont été corrigés dans le dépôt guide canonique. La page des outils tiers distingue désormais les dates de vérification et n'affirme plus une ancienneté relative devenue fausse. Le guide local est intégré avec son historique distant; le build apparié produit les pages attendues. La publication du guide et l'effet sur les résultats de recherche restent à vérifier.
+**État publié :** les énoncés figés sur les outils disponibles, le contexte universel à 200K et l'impossibilité de délégation imbriquée ont été corrigés dans le dépôt guide canonique. La page des outils tiers distingue désormais les dates de vérification et n'affirme plus une ancienneté relative devenue fausse. Le guide et la landing ont été publiés avec des workflows réussis. L'effet sur les résultats de recherche reste `UNKNOWN`.
 
 ## A6. Key events et conversion
 
@@ -95,4 +104,4 @@ Avant chaque push, figer les SHA distants, le lot de commits, les deux révision
 
 Le dépôt doit passer les tests ciblés, la suite utile, le contrôle Astro, le build de production et le contrôle du HTML construit. Après toute publication autorisée, vérifier le statut de déploiement et le comportement HTTP public. Relever ensuite GSC et GA4 selon leurs délais propres. Les modifications de code, la mise en ligne, le recrawl et l'effet sur les clics sont quatre preuves distinctes.
 
-**Vérification locale :** 324/324 tests et `pnpm check` avec 0 erreur, 0 avertissement et 27 indications après correction des parcours. Le build apparié site et guide local produit 466 pages, et le contrôle SEO du HTML passe. La génération locale signale l'absence du navigateur Puppeteer attendu pour plusieurs diagrammes Mermaid; le build statique termine avec les replis prévus. La mise en ligne, la réception GA4 et les effets sur les clics restent `UNKNOWN`.
+**Vérification :** 324/324 tests et `pnpm check` avec 0 erreur, 0 avertissement et 27 indications après correction des parcours. Le build apparié site et guide local produit 466 pages, et le contrôle SEO du HTML passe. La génération locale signale l'absence du navigateur Puppeteer attendu pour plusieurs diagrammes Mermaid; le build statique termine avec les replis prévus. La publication des deux dépôts et les réponses publiques principales sont vérifiées. La réception GA4 et les effets sur les clics restent `UNKNOWN`; le contrat HTTP complet n'est validé que sur la préproduction Vercel, pas sur `cc.bruniaux.com`.
