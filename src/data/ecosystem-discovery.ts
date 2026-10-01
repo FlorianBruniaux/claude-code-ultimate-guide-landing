@@ -16,8 +16,13 @@ export function getEcosystemMenuProjects(menu: EcosystemMenuId): EcosystemMenuPr
   )
 }
 
+export function isComingSoon(project: EcosystemMenuProject) {
+  return 'status' in project && project.status === 'soon'
+}
+
 export function getEcosystemProjectAccessibleLabel(project: EcosystemMenuProject) {
-  return `${project.title}, ${project.format}. Opens in a new tab.`
+  const soon = isComingSoon(project) ? ', coming soon' : ''
+  return `${project.title}${soon}, ${project.format}. Opens in a new tab.`
 }
 
 function validateEcosystemMenuProjects(menu: EcosystemMenuId, projects: EcosystemMenuProject[]) {

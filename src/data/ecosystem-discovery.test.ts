@@ -31,3 +31,17 @@ test('describes each external ecosystem project link with its title, format, and
     'CC-Copilot Bridge, CLI router. Opens in a new tab.',
   )
 })
+
+test('marks a coming-soon project in its label and links it to a public page', async () => {
+  const { getEcosystemProjectAccessibleLabel, getEcosystemMenuProjects, isComingSoon } = await import('./ecosystem-discovery.ts')
+  const project = getEcosystemMenuProjects('build').find((candidate) => candidate.id === 'agent-router')
+
+  assert.ok(project)
+  assert.equal(isComingSoon(project), true)
+  assert.equal(project.href, 'https://cc.bruniaux.com/guide/third-party-tools/#agent-router')
+  assert.equal(
+    getEcosystemProjectAccessibleLabel(project),
+    'Agent Router, coming soon, CLI. Opens in a new tab.',
+  )
+  assert.equal(isComingSoon(getEcosystemMenuProjects('build')[0]), false)
+})

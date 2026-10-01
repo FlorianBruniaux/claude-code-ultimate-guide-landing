@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { PERSONAL_PROJECT_ROUTES, RELATED_PROJECTS } from '../../data/homepage-content'
+import { isComingSoon } from '../../data/ecosystem-discovery'
+import SoonBadge from '../../components/ecosystem/SoonBadge.astro'
 
 const title = 'Claude Code Companion Projects | Florian Bruniaux'
 const description = 'Explore open-source tools and companion projects for Claude Code sessions, routing, plugins, validation, analytics, and developer workflows.'
@@ -41,7 +43,7 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${project.title} (opens in a new tab)`}
+                aria-label={`${project.title}${isComingSoon(project) ? ', coming soon' : ''} (opens in a new tab)`}
                 data-ecosystem-project-id={project.id}
                 data-ecosystem-placement="projects_hub"
                 data-ecosystem-menu="none"
@@ -49,7 +51,7 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
                 <span class="project-icon" aria-hidden="true">{project.icon}</span>
                 <div>
                   <div class="project-title-line">
-                    <h3>{project.title}</h3>
+                    <h3>{project.title} {isComingSoon(project) && <SoonBadge />}</h3>
                     <span class="project-format">{project.format}</span>
                   </div>
                   <p>{project.description}</p>

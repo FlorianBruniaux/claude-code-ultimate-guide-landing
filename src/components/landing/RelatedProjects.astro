@@ -1,5 +1,7 @@
 ---
 import { FEATURED_PROJECTS, RELATED_PROJECTS } from '../../data/homepage-content'
+import { isComingSoon } from '../../data/ecosystem-discovery'
+import SoonBadge from '../ecosystem/SoonBadge.astro'
 ---
 
 <section class="section section--compact related" id="related" aria-labelledby="projects-title">
@@ -19,14 +21,14 @@ import { FEATURED_PROJECTS, RELATED_PROJECTS } from '../../data/homepage-content
           class="related-card"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${project.title} (opens in a new tab)`}
+          aria-label={`${project.title}${isComingSoon(project) ? ', coming soon' : ''} (opens in a new tab)`}
           data-ecosystem-project-id={project.id}
           data-ecosystem-placement="homepage"
           data-ecosystem-menu="none"
         >
           <span class="related-icon" aria-hidden="true">{project.icon}</span>
           <div>
-            <h3>{project.title}</h3>
+            <h3>{project.title} {isComingSoon(project) && <SoonBadge />}</h3>
             <p>{project.description}</p>
           </div>
           <span class="related-arrow" aria-hidden="true">↗</span>

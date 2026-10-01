@@ -61,10 +61,11 @@ export const PERSONAL_PROJECTS = [
       "Cost Control",
       "Agent Workflows"
     ],
-    "href": "https://github.com/FlorianBruniaux/agent-router",
+    "href": "https://cc.bruniaux.com/guide/third-party-tools/#agent-router",
     "github": "https://github.com/FlorianBruniaux/agent-router",
     "route": "build-run",
-    "featured": true
+    "featured": true,
+    "status": "soon"
   },
   {
     "id": "claude-code-plugins",

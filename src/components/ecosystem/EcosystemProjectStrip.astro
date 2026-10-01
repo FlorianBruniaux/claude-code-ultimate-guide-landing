@@ -1,6 +1,8 @@
 ---
+import SoonBadge from './SoonBadge.astro'
 import {
   getEcosystemProjectAccessibleLabel,
+  isComingSoon,
   type EcosystemMenuId,
   type EcosystemMenuProject,
 } from '../../data/ecosystem-discovery'
@@ -31,7 +33,7 @@ const { menu, projects } = Astro.props
         >
           <span aria-hidden="true">{project.icon}</span>
           <span class="ecosystem-project-strip-copy">
-            <span class="ecosystem-project-strip-title">{project.title}</span>
+            <span class="ecosystem-project-strip-title">{project.title} {isComingSoon(project) && <SoonBadge />}</span>
             <span class="ecosystem-project-strip-format">{project.format}</span>
           </span>
           <span aria-hidden="true">↗</span>
