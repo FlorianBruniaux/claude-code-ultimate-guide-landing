@@ -33,6 +33,13 @@ if [[ $# -ne 0 ]]; then
   exit 1
 fi
 
+# The content scripts otherwise accept missing Chromium and publish diagram fallbacks.
+diagram_check="$(mktemp -d)"
+trap 'rm -rf "$diagram_check"' EXIT
+printf 'graph TD; A-->B\n' > "$diagram_check/check.mmd"
+"${pnpm_cmd[@]}" exec mmdc -i "$diagram_check/check.mmd" -o "$diagram_check/check.svg" > /dev/null
+test -s "$diagram_check/check.svg"
+
 git init -q "$guide_root"
 git -C "$guide_root" remote add origin https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git
 git -C "$guide_root" fetch --depth 1 origin "$GUIDE_COMMIT_SHA"
