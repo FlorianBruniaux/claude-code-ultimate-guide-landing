@@ -3596,6 +3596,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-tools-model-routing",
+    "title": "Third Party Tools Model Routing",
+    "keywords": "third party tools model routing guide ecosystem third party tools md#model routing",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#model-routing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-agent-router",
+    "title": "Third Party Agent Router",
+    "keywords": "third party agent router guide ecosystem third party tools md#agent router",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#agent-router",
+    "source": "guide"
+  },
+  {
     "id": "guide-third-party-tools-known-gaps",
     "title": "Third Party Tools Known Gaps",
     "keywords": "third party tools known gaps guide ecosystem third party tools md#known gaps third party switch guide guide ecosystem third party tools md#known gaps",
@@ -5969,6 +5985,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#fourteen comparable hardware configurations",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#fourteen-comparable-hardware-configurations",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-bandwidth-ecc",
+    "title": "Local Vs Cloud Bandwidth Ecc",
+    "keywords": "local vs cloud bandwidth ecc guide ecosystem local cloud inference md#memory bandwidth prefill and ecc",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#memory-bandwidth-prefill-and-ecc",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-small-team",
+    "title": "Local Vs Cloud Small Team",
+    "keywords": "local vs cloud small team guide ecosystem local cloud inference md#one machine for small team",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#one-machine-for-a-small-team",
     "source": "guide"
   },
   {
