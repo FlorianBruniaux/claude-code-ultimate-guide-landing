@@ -1,0 +1,41 @@
+CHANGELOG.md
+  s_9e15cec8cf2013::t_bd2f7f2a4c2c6e 7
+src/components/ecosystem/EcosystemProjectStrip.astro
+  s_9e15cec8cf2013::t_70e63fd854e993 2,5,36
+src/components/ecosystem/SoonBadge.astro
+  s_9e15cec8cf2013::t_bccba337453bff 1-24
+src/components/landing/RelatedProjects.astro
+  s_9e15cec8cf2013::t_edba3ac1ef9e1d 3-4,24,31
+src/data/ecosystem-discovery.test.ts
+  s_4eb375a9065173::t_f21e817b289497 34-47
+src/data/ecosystem-discovery.ts
+  s_9e15cec8cf2013::t_99a829f493a677 19-22,24-25
+src/data/personal-projects.generated.ts
+  s_9e15cec8cf2013::t_9caceb6d1202ff 64,67-68
+src/pages/projects/index.astro
+  s_4eb375a9065173::t_413587352af89d 4-5,46,54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "72174f7a6cfcac5245a21e44dc375fa97d564c15",
+  "prompts": {},
+  "sessions": {
+    "s_4eb375a9065173": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6ab-3d3e-7fa2-9f0e-2aae4c1ab380",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9e15cec8cf2013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee55b5e6-c13f-4366-8ef6-02c6713eec4b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
