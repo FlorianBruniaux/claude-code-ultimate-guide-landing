@@ -11,12 +11,13 @@ from concurrent.futures import ThreadPoolExecutor
 from html import unescape
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
 import threading
 import time
-from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
+from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 import xml.etree.ElementTree as ET
 
 SITE = 'https://cc.bruniaux.com'
@@ -102,11 +103,23 @@ def exact_path(root, relative):
 def github_path(url):
     parsed = urlsplit(url)
     parts = unquote(parsed.path).strip('/').split('/')
-    if parsed.hostname == 'github.com' and len(parts) >= 5 and parts[2] in ('blob', 'tree') and parts[3] == 'main':
-        return '/'.join(parts[:2]), '/'.join(parts[4:]), False
-    if parsed.hostname == 'raw.githubusercontent.com' and len(parts) >= 4 and parts[2] == 'main':
-        return '/'.join(parts[:2]), '/'.join(parts[3:]), True
+    if parsed.hostname == 'github.com' and len(parts) >= 5 and parts[2] in ('blob', 'tree'):
+        return '/'.join(parts[:2]), '/'.join(parts[4:]), False, parts[3]
+    if parsed.hostname == 'raw.githubusercontent.com' and len(parts) >= 4:
+        return '/'.join(parts[:2]), '/'.join(parts[3:]), True, parts[2]
     return None
+
+
+def check_github_tree(url, tree):
+    """A complete tree verifies both present and missing paths at its exact ref."""
+    gh = github_path(url)
+    if not gh or tree is None:
+        return None
+    _, path, raw, _ = gh
+    kind = tree.get(path.rstrip('/'))
+    expected = 'blob' if raw or urlsplit(url).path.split('/')[3] == 'blob' else 'tree'
+    return {'url': url, 'classification': 'github-tree-ok' if kind == expected else 'broken',
+            'evidence': 'exact GitHub tree path' if kind == expected else 'missing GitHub tree path'}
 
 
 # Anti-bot pages some sites redirect crawlers to, answered with a 404 status.
@@ -139,6 +152,8 @@ def request(url, body=False, method='GET'):
             '--max-redirs', '8', '--connect-timeout', '8', '--max-time', '25',
             '--user-agent', 'CCGuide-LinkCheck/1.0', '--compressed',
             '--write-out', '\n%{json}']
+    if urlsplit(url).hostname == 'api.github.com' and os.environ.get('GITHUB_TOKEN'):
+        args += ['--header', 'Authorization: Bearer ' + os.environ['GITHUB_TOKEN']]
     if method == 'HEAD':
         args += ['--head']
     if not body:
@@ -259,7 +274,7 @@ def check_local(url, dist, roots, site=SITE):
         exists = bool(target and target.is_file())
     else:
         gh = github_path(url)
-        if not gh or gh[0] not in roots:
+        if not gh or gh[0] not in roots or gh[3] != 'main':
             return None
         target = exact_path(roots[gh[0]], gh[1])
         exists = bool(target and (target.is_file() if gh[2] else target.exists()))
@@ -280,19 +295,18 @@ def main():
     records, remote = [], []
     trees = {}
     if not args.dist:
-        for repo in roots:
-            response, body = request(f'https://api.github.com/repos/{repo}/git/trees/main?recursive=1', body=True)
+        revisions = sorted({(gh[0], gh[3]) for url in refs if (gh := github_path(url))})
+        for repo, ref in revisions:
+            response, body = request(f'https://api.github.com/repos/{repo}/git/trees/{quote(ref, safe="")}?recursive=1', body=True)
             if response['classification'] == 'http-ok':
                 tree = json.loads(body)
                 if not tree.get('truncated'):
-                    trees[repo] = {entry['path']: entry['type'] for entry in tree.get('tree', [])}
+                    trees[(repo, ref)] = {entry['path']: entry['type'] for entry in tree.get('tree', [])}
     for url in sorted(refs):
         result = check_local(url, args.dist, roots, args.site) if args.dist else None
         gh = github_path(url)
-        if result is None and gh and gh[0] in trees:
-            kind = trees[gh[0]].get(gh[1].rstrip('/'))
-            if kind and (not gh[2] or kind == 'blob'):
-                result = {'url': url, 'classification': 'github-tree-ok'}
+        if result is None and gh:
+            result = check_github_tree(url, trees.get((gh[0], gh[3])))
         if result:
             records.append(result)
         elif args.external or urlsplit(url).netloc == urlsplit(args.site).netloc:

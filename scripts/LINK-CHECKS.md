@@ -29,9 +29,12 @@ python3 scripts/check-links.py --site https://cc.bruniaux.com --external --repor
 
 For external checks of a local build, add `--external` to the offline command.
 HEAD failures are retried with GET. HTTP 404/410 is reported as broken. Refused,
-throttled, asynchronous and failed requests remain unverified. GitHub repository
-paths can be verified against complete public Git trees; they are never presented
-as HTTP 200 responses.
+throttled, asynchronous and failed requests remain unverified. GitHub file and
+directory paths can be verified against complete Git trees at their linked
+revision; missing paths in a complete tree are broken. Failed or truncated tree
+lookups fall back to HTTP and stay unverified if that response is inconclusive.
+The workflow authenticates these API lookups with its built-in GitHub token.
+Tree-verified paths are never presented as HTTP 200 responses.
 
 Reports contain the complete target inventory and referring pages in JSON and a
 Markdown findings list. Exit codes: 0 for the requested checks passing, 1 for

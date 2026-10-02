@@ -27,6 +27,8 @@ jobs:
       - name: Check all sitemap pages and interactive link datasets
         id: links
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/check-links.py --site https://cc.bruniaux.com --external --report link-check
       - name: Preserve the full result, including unverified destinations
@@ -47,7 +49,7 @@ jobs:
         if: steps.links.outcome == 'failure'
         run: |
           ISSUE=$(gh issue list --repo "$GITHUB_REPOSITORY" --label "broken-links" --state open --json number --jq '.[0].number // ""')
-          echo "issue-number=$ISSUE" >> $GITHUB_OUTPUT
+          echo "issue-number=$ISSUE" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

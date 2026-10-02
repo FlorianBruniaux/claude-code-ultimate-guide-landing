@@ -10,6 +10,26 @@ spec.loader.exec_module(links)
 
 
 class LinkChecks(unittest.TestCase):
+    def test_complete_git_tree_resolves_exact_revision_paths(self):
+        url = 'https://github.com/example/project/blob/a5fc031677bea0eb109123273bfe5095a5b6745b/docs/README.md'
+        repo, path, raw, ref = links.github_path(url)
+        self.assertEqual((repo, path, raw, ref),
+                         ('example/project', 'docs/README.md', False,
+                          'a5fc031677bea0eb109123273bfe5095a5b6745b'))
+        tree = {'docs/README.md': 'blob', 'docs': 'tree'}
+        self.assertEqual(links.check_github_tree(url, tree)['classification'], 'github-tree-ok')
+        missing = url.replace('README.md', 'MISSING.md')
+        self.assertEqual(links.check_github_tree(missing, tree)['classification'], 'broken')
+        directory = url.replace('/blob/', '/tree/').replace('/README.md', '')
+        self.assertEqual(links.check_github_tree(directory, tree)['classification'], 'github-tree-ok')
+        self.assertIsNone(links.check_github_tree(url, None))
+
+    def test_raw_github_path_requires_a_blob_at_exact_revision(self):
+        url = 'https://raw.githubusercontent.com/example/project/master/docs/README.md'
+        self.assertEqual(links.github_path(url),
+                         ('example/project', 'docs/README.md', True, 'master'))
+        self.assertEqual(links.check_github_tree(url, {'docs/README.md': 'tree'})['classification'], 'broken')
+
     def test_denied_and_throttled_requests_are_not_valid_or_broken(self):
         for status in (0, 202, 403, 405, 429, 500, 999):
             self.assertEqual(links.classify(status), 'unverified')
