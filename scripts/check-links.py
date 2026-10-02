@@ -117,9 +117,9 @@ def check_github_tree(url, tree):
         return None
     _, path, raw, _ = gh
     kind = tree.get(path.rstrip('/'))
-    expected = 'blob' if raw or urlsplit(url).path.split('/')[3] == 'blob' else 'tree'
-    return {'url': url, 'classification': 'github-tree-ok' if kind == expected else 'broken',
-            'evidence': 'exact GitHub tree path' if kind == expected else 'missing GitHub tree path'}
+    exists = kind == 'blob' if raw else kind in ('blob', 'tree')
+    return {'url': url, 'classification': 'github-tree-ok' if exists else 'broken',
+            'evidence': 'exact GitHub tree path' if exists else 'missing GitHub tree path'}
 
 
 # Anti-bot pages some sites redirect crawlers to, answered with a 404 status.

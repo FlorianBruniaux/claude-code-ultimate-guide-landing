@@ -22,6 +22,8 @@ class LinkChecks(unittest.TestCase):
         self.assertEqual(links.check_github_tree(missing, tree)['classification'], 'broken')
         directory = url.replace('/blob/', '/tree/').replace('/README.md', '')
         self.assertEqual(links.check_github_tree(directory, tree)['classification'], 'github-tree-ok')
+        blob_directory = url.replace('/README.md', '')
+        self.assertEqual(links.check_github_tree(blob_directory, tree)['classification'], 'github-tree-ok')
         self.assertIsNone(links.check_github_tree(url, None))
 
     def test_raw_github_path_requires_a_blob_at_exact_revision(self):
