@@ -1,0 +1,23 @@
+.github/workflows/link-check.yml
+  s_4eb375a9065173::t_9a06bda0a2ec1f 30-31
+scripts/LINK-CHECKS.md
+  s_4eb375a9065173::t_8e20723f74e87a 32-37
+scripts/check-links.py
+  s_4eb375a9065173::t_a0d8cda6f21169 14,20,106-109,113-124,155-156,277,298-300,304,308-309
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f94748e33e1f1378b50f4c43e412a6d74e789b20",
+  "prompts": {},
+  "sessions": {
+    "s_4eb375a9065173": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f6ab-3d3e-7fa2-9f0e-2aae4c1ab380",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
