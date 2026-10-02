@@ -18,8 +18,43 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.285',
+    version: 'v2.1.287',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added Claude Mods, which let plugins modify deeper Claude Code behavior, and the built-in \"You should know\" mod, a side agent that flags things you or Claude might miss (/plugin enable cc-plugin-you-should-know@builtin)",
+      "Added an n:<text> filter to the agents view, MCP URL prompts on the 2025-11-25 protocol, prompt_text on the OpenTelemetry user_prompt event and a built-in gh api for self-hosted runners without the GitHub CLI",
+      "Changed Opus 4.7+ and Fable to use a 1M context window by default on Bedrock, Vertex, Foundry and the Claude apps gateway, and MCP alwaysLoad: false to defer all of a server's tools behind tool search",
+      "Fixed a dangerous rm losing its always-ask safeguard when the command also redirected to a ~ or wildcard path, per-tool permission ceilings dropped for an MCP tool named __proto__ and CLAUDE.md attached twice after resume or compaction",
+    ],
+    breaking: [
+      "Opus 4.7+ and Fable use a 1M context window by default on Bedrock, Vertex, Foundry and the Claude apps gateway, with no [1m] suffix; CLAUDE_CODE_DISABLE_1M_CONTEXT=1 keeps 200K.",
+      "MCP servers on the 2025-11-25 protocol can send URL prompts; if a server no longer connects, add \"bareElicitationCapability\": true to its MCP config entry. MCP alwaysLoad: false now defers all of that server's tools behind tool search.",
+      "The OpenTelemetry user_prompt event carries prompt_text, a copy of prompt; drop or mask it wherever prompt is dropped or masked. Replies from claude agents arrive as queued messages, and slash commands other than /stop sent during a turn run when it ends.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Claude Mods',
+  },
+  {
+    version: 'v2.1.286',
+    date: "Sep 30, 2026",
+    highlights: [
+      "Added a stack count (\"2 of 5\") to permission prompts and mouse support for the \"N more\" rows of lists in fullscreen mode; /hooks opens on one list of configured hooks grouped by event",
+      "Changed failed API request retries to share one limit per model call (at most 14 requests with default settings) and --bare to connect only the MCP servers named on the command line, with no system reminders or background tasks",
+      "Fixed --resume and --continue losing turns after parallel tool calls in a crashed session, API 400 errors from non-text tool or hook results, the gateway spend meter underpricing 1-hour cache writes and several secret-redaction gaps in logs and MCP errors",
+      "Improved commit guidance: when a project or user skill named verify exists, Claude is told to run it before committing, except for docs-only and tests-only commits",
+    ],
+    breaking: [
+      "--bare connects only the MCP servers named on the command line, sends no system reminders and starts no background tasks; under --bare, a shell command that reaches its timeout stops instead of moving to the background.",
+      "Plugin installs refuse npm sources that are git repositories or folders and install plugin dependencies only from registry packages; failed API requests share one retry limit per model call (at most 14 requests with default settings).",
+      "[VSCode] Stop and Escape end only the current turn; background agents keep running and are stopped one by one from the agent map.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.285',
+    date: "Sep 29, 2026",
     highlights: [
       "Added claude --desktop, claude plugin configure <plugin>, <server>.<key>=<value> for bundled .mcpb servers in claude plugin install --config and a CLAUDE_CODE_DISABLE_WEB_FETCH variable",
       "Added an allowedProviders managed setting that limits which API providers a machine may use (Anthropic API, custom endpoint, Bedrock, Mantle, Vertex AI, Foundry, Claude Platform on AWS or a Cloud gateway)",
@@ -32,7 +67,6 @@ export const releases: Release[] = [
       "claude -p and Python Agent SDK sessions on third-party providers or with telemetry off start in auto mode when no permission mode is configured; --permission-mode still overrides it.",
       "The MCP server name widgets and close spellings are reserved in cloud sessions and on self-hosted runners; /ultrareview on macOS and Linux requires git 2.31+ for local uploads; on Windows, project and local settings env no longer set ALLUSERSPROFILE, SystemDrive or CommonProgramFiles variables.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -83,7 +117,7 @@ export const releases: Release[] = [
       "sandbox.excludedCommands ignores project and local entries when managed settings or --settings set allowUnsandboxedCommands: false, or managed allowManagedDomainsOnly: true.",
       "Skill folders, command files and workflow commands in the anthropic-skills namespace no longer load, and MCP servers named anthropic-skills list no skills or prompts; the same claude-ai reservation was reverted in 2.1.283.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.281',
@@ -100,7 +134,7 @@ export const releases: Release[] = [
       "Dangerous-rm prompts in auto and bypass modes deny after two unanswered minutes; CLAUDE_CODE_DISABLE_DANGEROUS_RM_TIMEOUT=1 disables the timeout.",
       "Self-hosted runner wrappers and command hooks that append system prompts must use --system-prompt-file or --append-system-prompt-file.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.280',
