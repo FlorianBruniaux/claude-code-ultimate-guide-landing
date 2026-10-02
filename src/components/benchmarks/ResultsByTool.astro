@@ -1,6 +1,6 @@
 ---
 import { BENCHMARKS, BENCHMARK_SHORT, MEASUREMENTS } from '../../data/token-saving-benchmarks'
-import { THIRD_PARTY_MEASUREMENTS, groupMeasurementsByTool, isReferenceTool, shapeOf, signOf } from '../../data/token-saving-view'
+import { THIRD_PARTY_MEASUREMENTS, efficiencyKey, efficiencyLabel, groupMeasurementsByTool, isReferenceTool, shapeOf, signOf } from '../../data/token-saving-view'
 import { chartDomain, describeValue, describeValues, fmtPct, fmtRange, fmtValues, position, unitLabel } from './format'
 import ChipGroup from './ui/ChipGroup.astro'
 
@@ -30,6 +30,14 @@ const summarize = (rows: (typeof MEASUREMENTS)) => {
   <div class="toolbar">
     <ChipGroup label="Highlight one study" chips={chips} attr="bench-chip" pressed="" />
     <p class="status" aria-live="polite" data-highlight-status>Showing all {total} results.</p>
+    <div class="sortctl">
+      <label for="chart-sort">Sort rows by</label>
+      <select id="chart-sort" data-chart-sort>
+        <option value="name">Name, A to Z</option>
+        <option value="efficiency">Efficiency, median result (mixed studies)</option>
+      </select>
+    </div>
+    <p class="eff-warning" data-eff-warning><strong>Read the order with care.</strong> Each value comes from a different study, with different tasks, models and units. The ranking gives an order of magnitude, not a verdict.</p>
   </div>
 
   <ul class="legend" aria-label="How to read the chart">
@@ -50,14 +58,17 @@ const summarize = (rows: (typeof MEASUREMENTS)) => {
       <span class="axis-side axis-side--bad">more expensive or more tokens →</span>
     </div>
 
-    <ol class="rows">
-      {toolGroups.map(({ tool, rows }) => (
-        <li class="row">
+    <ol class="rows" data-chart-rows>
+      {toolGroups.map(({ tool, rows }) => {
+        const eff = efficiencyKey(rows)
+        return (
+        <li class="row" data-chart-row data-name={tool} data-eff={eff ? eff.median : ''}>
           <details class="rrow">
             <summary class="rsum">
               <span class="rlabel">
                 <span class="rtool">{tool}</span>
                 <span class="rcount">{rows.length} {rows.length === 1 ? 'result' : 'results'}</span>
+                <span class="eff-val" data-eff-label>{efficiencyLabel(eff)}</span>
               </span>
               <span class="track" aria-hidden="true">
                 {ticks.map((t) => <span class="gridline" style={`left:${position(t, lo, hi)}%`}></span>)}
@@ -98,7 +109,8 @@ const summarize = (rows: (typeof MEASUREMENTS)) => {
             </ul>
           </details>
         </li>
-      ))}
+        )
+      })}
     </ol>
   </div>
 
@@ -134,14 +146,43 @@ const summarize = (rows: (typeof MEASUREMENTS)) => {
 </div>
 
 <script>
-  import { initHighlight } from '../../scripts/benchmark-filter'
-  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-results]'))) initHighlight(root)
+  import { initChartSort, initHighlight } from '../../scripts/benchmark-filter'
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-results]'))) {
+    initHighlight(root)
+    initChartSort(root)
+  }
 </script>
 
 <style>
 .results { --label-w: 190px; --vals-w: 190px; }
 .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); align-items: center; }
 .status { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+.sortctl { display: flex; align-items: center; gap: 0.6rem; }
+.sortctl label { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.055em; color: var(--text-muted); }
+.sortctl select {
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+.eff-warning {
+  flex: 1 1 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--bm-bad);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  max-width: 80ch;
+}
+.eff-val { display: none; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-primary); }
+.rows[data-eff-sort] .eff-val { display: block; }
 /* Chips do nothing without JS. */
 .results:not([data-ready]) .toolbar { display: none; }
 

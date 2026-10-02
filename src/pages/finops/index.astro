@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import Tldr from '../../components/global/Tldr.astro'
 import LeverSwitchyard from '../../components/finops/LeverSwitchyard.astro'
 import CostCalculator from '../../components/cost/CostCalculator.astro'
 import { FINOPS_HUB_URL, FINOPS_REGIMES, FINOPS_SNAPSHOT_URL } from '../../data/finops-levers'
@@ -132,6 +133,8 @@ const splitList = (text: string) => (text.includes(' · ') ? text.split(' · ') 
       </div>
     </div>
   </header>
+
+  <Tldr>I expect the agent bill to keep rising through 2027: agents get more efficient, but we hand them more work, and while per-token prices fall, subscriptions give less quota for the same price. AI coding is already profitable for most teams today. The signal I watch is subscription quotas tightening, because it tells me the labs are not holding their prices.</Tldr>
 
   <!-- Signals -->
   <section class="section section--alt" id="signals">

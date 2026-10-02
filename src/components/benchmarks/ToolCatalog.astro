@@ -1,7 +1,7 @@
 ---
 import { ALSO_SEEN, CATALOG, CATALOG_READ_ON, MECHANISM_LABELS, type Mechanism } from '../../data/token-saving-catalog'
 import { BENCHMARKS, BENCHMARK_SHORT, MEASUREMENTS } from '../../data/token-saving-benchmarks'
-import { catalogRows, shapeOf, signOf } from '../../data/token-saving-view'
+import { catalogRows, efficiencyKey, efficiencyLabel, shapeOf, signOf } from '../../data/token-saving-view'
 import { chartDomain, describeValues, fmtValues, position } from './format'
 import Kicker from './ui/Kicker.astro'
 
@@ -43,6 +43,7 @@ const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 10
         <option value="name">Name, A to Z</option>
         <option value="stars">GitHub stars</option>
         <option value="results">Number of third-party results</option>
+        <option value="efficiency">Efficiency, median result (mixed studies)</option>
       </select>
     </div>
     <label class="toggle">
@@ -50,12 +51,14 @@ const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 10
       <span>Measured by a third party ({measuredCount})</span>
     </label>
     <button type="button" class="reset" data-reset hidden>Reset</button>
+    <p class="eff-warning" data-eff-warning><strong>Read the order with care.</strong> Each value comes from a different study, with different tasks, models and units. The ranking gives an order of magnitude, not a verdict.</p>
     <p class="count" aria-live="polite" data-count></p>
   </div>
 
   <ol class="list" data-list>
     {rows.map(({ entry: c, results }) => {
       const dots = results.flatMap((m) => m.values.map((v) => ({ pos: position(v, lo, hi), sign: signOf(v), shape: shapeOf(m.unit) })))
+      const eff = efficiencyKey(results)
       const mechLabel = MECHANISM_LABELS[c.mechanism].label
       const search = [c.name, c.id, mechLabel, c.whatItDoes ?? '', c.claimShort?.unit ?? '', ...c.flags].join(' ')
       return (
@@ -69,6 +72,7 @@ const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 10
           data-measured={results.length > 0 ? 'yes' : 'no'}
           data-stars={c.stars ?? -1}
           data-results={results.length}
+          data-eff={eff ? eff.median : ''}
         >
           <details class="row">
             <summary class="sum">
@@ -94,6 +98,7 @@ const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 10
                       {dots.map((d) => <span class={`bm-dot bm-dot--${d.shape} bm-dot--${d.sign}`} style={`--p:${d.pos}`}></span>)}
                     </span>
                     <span class="res-n">{results.length} third-party {results.length === 1 ? 'result' : 'results'}</span>
+                    <span class="eff-val" data-eff-label>{efficiencyLabel(eff)}</span>
                   </>
                 ) : (
                   <span class="none">No third-party result</span>
@@ -273,6 +278,21 @@ const fmtStars = (n: number | null) => (n === null ? '' : n >= 1000 ? `${(n / 10
 }
 .reset[hidden] { display: none; }
 .reset:hover { border-color: var(--accent); }
+.eff-warning {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--bm-bad);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  max-width: 80ch;
+}
+
+.eff-val { display: none; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-primary); }
+.list[data-eff-sort] .eff-val { display: inline; }
 .count { grid-column: 1 / -1; margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
 
 .list {

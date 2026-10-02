@@ -1,0 +1,33 @@
+---
+// First-person thesis block shown above a page's content. Same card tokens as the /memory-systems/ TL;DR cards.
+---
+<section class="tldr-section" id="tldr" aria-label="TL;DR">
+  <div class="container">
+    <div class="tldr-box">
+      <span class="tldr-label">TL;DR</span>
+      <p class="tldr-text"><slot /></p>
+    </div>
+  </div>
+</section>
+
+<style>
+.tldr-section { padding: 2rem 0 0.5rem; }
+.tldr-box {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tldr-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.tldr-text { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--text-primary); max-width: 70ch; }
+</style>

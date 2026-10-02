@@ -1,15 +1,18 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { CLAIMS_VS_MEASURED, MEASUREMENTS } from './token-saving-benchmarks.ts'
+import { CLAIMS_VS_MEASURED, MEASUREMENTS, type Measurement } from './token-saving-benchmarks.ts'
 import { CATALOG } from './token-saving-catalog.ts'
 import {
   REFERENCE_TOOLS,
   THIRD_PARTY_MEASUREMENTS,
   catalogRows,
   claimCards,
+  efficiencyKey,
+  efficiencyLabel,
   groupMeasurementsByTool,
   isReferenceTool,
+  rankByEfficiency,
   resultsFor,
   shapeOf,
   signOf,
@@ -107,4 +110,91 @@ test('RTK card shows every RTK result and the maintainer response', () => {
 test('view helpers add no em dash', () => {
   const text = JSON.stringify({ g: groupMeasurementsByTool(), c: claimCards() })
   assert.ok(!text.includes('—'))
+})
+
+const m = (tool: string, unit: Measurement['unit'], values: number[], benchmark: Measurement['benchmark'] = 'stet'): Measurement => ({
+  tool,
+  benchmark,
+  metric: 'test',
+  values,
+  unit,
+})
+
+test('efficiency order on real data: cheapest median first, tools without a result last', () => {
+  const ranked = rankByEfficiency(catalogRows(), (r) => r.results, (r) => r.entry.name)
+  const names = ranked.map((r) => r.item.entry.name)
+  assert.equal(names[0], "Fermat's Last Token (Quotient Labs)")
+  assert.deepEqual(names.slice(0, 12), [
+    "Fermat's Last Token (Quotient Labs)",
+    'Edgee',
+    'WOZCODE (Woz)',
+    'claude-token-efficient',
+    'Caveman',
+    'CodeGraph',
+    'Ponytail',
+    'graphify',
+    'RTK (Rust Token Killer)',
+    'LeanCTX',
+    'Headroom',
+    'Context Mode',
+  ])
+  const keyed = ranked.filter((r) => r.key)
+  assert.equal(keyed.length, 12)
+  assert.ok(keyed.every((r, i) => i === 0 || keyed[i - 1].key!.median <= r.key!.median))
+  assert.ok(ranked.slice(12).every((r) => r.key === null))
+  // RTK has several third-party cost results: the key is their median, not one study.
+  const rtk = ranked.find((r) => r.item.entry.id === 'rtk')
+  assert.ok(rtk && rtk.key?.basis === 'cost')
+  assert.equal(rtk.key.median, efficiencyKey(THIRD_PARTY_MEASUREMENTS.filter((x) => x.tool === 'RTK'))?.median)
+})
+
+test('efficiency key is the median of every cost value, two-run results count both runs', () => {
+  assert.deepEqual(efficiencyKey([m('t', 'cost', [10]), m('t', 'cost', [-20, 40])]), { median: 10, basis: 'cost' })
+  assert.deepEqual(efficiencyKey([m('t', 'cost', [-4, 32])]), { median: 14, basis: 'cost' })
+  assert.equal(efficiencyKey([m('t', 'cost', [1, 2, 3, 100])])?.median, 2.5)
+})
+
+test('without a cost result the key falls back to token counts and says so', () => {
+  const key = efficiencyKey([m('t', 'tokens', [-30]), m('t', 'output tokens', [-10, -20])])
+  assert.deepEqual(key, { median: -20, basis: 'tokens' })
+  assert.match(efficiencyLabel(key), /token count, not cost/)
+  assert.doesNotMatch(efficiencyLabel({ median: -5, basis: 'cost' }), /token count/)
+  // A cost result wins over token counts, which are then ignored.
+  assert.deepEqual(efficiencyKey([m('t', 'tokens', [-90]), m('t', 'cost', [5])]), { median: 5, basis: 'cost' })
+})
+
+test('tools with no result sort last, and a token-count tool ranks among cost tools by its median', () => {
+  const tools = [
+    { name: 'none', rows: [] as Measurement[] },
+    { name: 'tokens-only', rows: [m('tokens-only', 'tokens', [-50])] },
+    { name: 'cost-bad', rows: [m('cost-bad', 'cost', [30])] },
+    { name: 'cost-good', rows: [m('cost-good', 'cost', [-10])] },
+  ]
+  const before = tools.map((t) => t.name)
+  const ranked = rankByEfficiency(tools, (t) => t.rows, (t) => t.name)
+  assert.deepEqual(ranked.map((r) => r.item.name), ['tokens-only', 'cost-good', 'cost-bad', 'none'])
+  assert.deepEqual(tools.map((t) => t.name), before)
+  assert.equal(efficiencyKey([]), null)
+  assert.equal(efficiencyLabel(null), 'No third-party result')
+})
+
+test('equal medians fall back to the name', () => {
+  const tools = ['b', 'A', 'c'].map((name) => ({ name, rows: [m(name, 'cost', [-5])] }))
+  assert.deepEqual(rankByEfficiency(tools, (t) => t.rows, (t) => t.name).map((r) => r.item.name), ['A', 'b', 'c'])
+})
+
+test('a maker-run result never counts, even when passed in directly', () => {
+  const own = MEASUREMENTS.filter((x) => !THIRD_PARTY_MEASUREMENTS.includes(x))
+  assert.equal(own.length, 2)
+  for (const row of own) assert.equal(efficiencyKey([row]), null, `${row.tool}/${row.benchmark}`)
+  // Mixed with a real third-party row, only that row sets the key.
+  const parsecOwn = own.find((x) => x.tool === 'Parsec')!
+  assert.deepEqual(efficiencyKey([parsecOwn, m('Parsec', 'cost', [7], 'stet')]), { median: 7, basis: 'cost' })
+  // The catalogue never ranks Tokenade or Parsec by their own benchmark.
+  const ranked = rankByEfficiency(catalogRows(), (r) => r.results, (r) => r.entry.name)
+  for (const id of ['tokenade', 'parsec']) assert.equal(ranked.find((r) => r.item.entry.id === id)?.key, null, id)
+})
+
+test('efficiency labels add no em dash', () => {
+  assert.ok(!efficiencyLabel({ median: -13, basis: 'cost' }).includes('\u2014'))
 })

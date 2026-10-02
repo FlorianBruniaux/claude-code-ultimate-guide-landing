@@ -59,3 +59,13 @@ test('count label covers the empty and filtered cases', () => {
   assert.equal(countLabel(15, 45, 45), 'Showing 15 of 45 tools.')
   assert.equal(countLabel(3, 3, 45), 'Showing 3 of 3 tools, filtered from 45.')
 })
+
+test('efficiency sort puts the most negative median first and tools without a value last', () => {
+  const list = [
+    item({ name: 'none', eff: null }),
+    item({ name: 'bad', eff: 30 }),
+    item({ name: 'good', eff: -20 }),
+    item({ name: 'unset' }),
+  ]
+  assert.deepEqual([...list].sort(compareItems('efficiency')).map((i) => i.name), ['good', 'bad', 'none', 'unset'])
+})

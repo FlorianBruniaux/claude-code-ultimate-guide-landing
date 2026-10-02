@@ -6,7 +6,7 @@
  * Without JS the markup stays fully readable: controls are hidden until `data-ready` is set.
  */
 
-export type SortKey = 'name' | 'stars' | 'results'
+export type SortKey = 'name' | 'stars' | 'results' | 'efficiency'
 
 export interface FilterItem {
   name: string
@@ -15,6 +15,8 @@ export interface FilterItem {
   measured: boolean
   stars: number
   results: number
+  /** Median change used by the efficiency sort (negative = cheaper), or null when the tool has no third-party result. */
+  eff?: number | null
 }
 
 export interface FilterState {
@@ -37,11 +39,22 @@ export function matches(item: FilterItem, state: FilterState): boolean {
   return true
 }
 
+/** Most negative first, tools without a value last. Shared by the page script and the pure ranking in token-saving-view.ts. */
+export function compareEfficiency(a: number | null | undefined, b: number | null | undefined): number {
+  const x = a ?? null
+  const y = b ?? null
+  if (x === null && y === null) return 0
+  if (x === null) return 1
+  if (y === null) return -1
+  return x - y
+}
+
 /** Stable comparators. Ties fall back to the name so the order never depends on input order. */
 export function compareItems(sort: SortKey): (a: FilterItem, b: FilterItem) => number {
   const byName = (a: FilterItem, b: FilterItem) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
   if (sort === 'stars') return (a, b) => b.stars - a.stars || byName(a, b)
   if (sort === 'results') return (a, b) => b.results - a.results || byName(a, b)
+  if (sort === 'efficiency') return (a, b) => compareEfficiency(a.eff, b.eff) || byName(a, b)
   return byName
 }
 
@@ -79,6 +92,7 @@ export function readItem(el: HTMLElement): FilterItem {
     measured: d.measured === 'yes',
     stars: Number(d.stars ?? -1),
     results: Number(d.results ?? 0),
+    eff: d.eff ? Number(d.eff) : null,
   }
 }
 
@@ -101,6 +115,7 @@ export function initCatalogFilter(root: HTMLElement): void {
 
   const render = () => {
     const result = applyFilter(items, state)
+    list.toggleAttribute('data-eff-sort', state.sort === 'efficiency')
     result.order.forEach((index) => list.appendChild(rows[index]))
     rows.forEach((row, index) => {
       row.hidden = !result.visible.has(index)
@@ -178,4 +193,24 @@ export function initHighlight(root: HTMLElement): void {
   }
   for (const chip of chips) chip.addEventListener('click', () => apply(chip.dataset.benchChip ?? ''))
   root.setAttribute('data-ready', '')
+}
+
+/**
+ * Sort control for the results chart. Rows are reordered in place, nothing is hidden. The
+ * default (name) is the server-rendered order; efficiency is a choice the user makes.
+ */
+export function initChartSort(root: HTMLElement): void {
+  const select = root.querySelector<HTMLSelectElement>('[data-chart-sort]')
+  const list = root.querySelector<HTMLElement>('[data-chart-rows]')
+  if (!select || !list) return
+  const rows = Array.from(list.querySelectorAll<HTMLElement>('[data-chart-row]'))
+  const items = rows.map(readItem)
+  select.addEventListener('change', () => {
+    const cmp = compareItems(select.value === 'efficiency' ? 'efficiency' : 'name')
+    list.toggleAttribute('data-eff-sort', select.value === 'efficiency')
+    items
+      .map((item, index) => ({ item, index }))
+      .sort((a, b) => cmp(a.item, b.item))
+      .forEach(({ index }) => list.appendChild(rows[index]))
+  })
 }
