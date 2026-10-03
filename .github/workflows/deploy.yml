@@ -87,6 +87,37 @@ jobs:
       - name: Check public pages for workstation paths
         run: python3 ../claude-code-ultimate-guide/scripts/check-public-paths.py --dist dist
 
+      - name: Test asset carry-over
+        run: node scripts/test-carry-over-assets.mjs
+
+      # GitHub Pages replaces the whole site on deploy and caches HTML for 10 minutes,
+      # so a cached page can request a stylesheet this build renamed (404, unstyled page).
+      # Serve the hashed /_astro/ files of the last 3 days of builds next to the new ones.
+      - name: Restore assets from earlier builds
+        uses: actions/cache/restore@v4
+        with:
+          path: .astro-assets-carry
+          key: astro-assets-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: astro-assets-
+
+      - name: Carry over assets from earlier builds
+        run: node scripts/carry-over-assets.mjs dist/_astro .astro-assets-carry 3
+        env:
+          CARRY_OVER_RESTORED_LIST: carried-assets.txt
+
+      - name: Save assets for the next build
+        uses: actions/cache/save@v4
+        with:
+          path: .astro-assets-carry
+          key: astro-assets-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Upload carried asset list
+        uses: actions/upload-artifact@v4
+        with:
+          name: carried-assets
+          path: carried-assets.txt
+          if-no-files-found: error
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -101,10 +132,39 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Download carried asset list
+        uses: actions/download-artifact@v4
+        with:
+          name: carried-assets
+
+      - name: Check deployed and carried-over assets
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: >-
+          node scripts/check-deployed-assets.mjs "$PAGE_URL"
+          --carried carried-assets.txt
+          / /token-savings/ /finops/ /context-engineering/ /guide/ /releases/
 
   vercel-preview:
     needs: [build, deploy]
