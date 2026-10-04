@@ -1,0 +1,43 @@
+CHANGELOG.md
+  s_222d39e032fac4::t_0ba67c7c150a74 7-30
+astro.config.mjs
+  s_222d39e032fac4::t_c1265691942174 41
+src/components/global/AnnouncementBanner.astro
+  s_222d39e032fac4::t_6b2c8652293389 13,19,23,26,30
+src/data/guide-content-entries.ts
+  s_222d39e032fac4::t_4dfca2da81c534 3,426,2058,2066,2090,2242,5274,5626,5631-5638,5682,5698,5706,7618,10058,13114,13120-13122,13124,13152-13154,13156,13162
+src/data/guide-search-entries.ts
+  s_222d39e032fac4::t_72ebde628c5fd5 505,750-773,2105,2110-2117
+src/data/header-navigation.ts
+  s_222d39e032fac4::t_765e51b463a2fe 129
+src/data/landing-sync.test.ts
+  s_222d39e032fac4::t_2a4233bbf6f658 106-107
+src/data/methodology-quiz.ts
+  s_222d39e032fac4::t_b6428b8b2497ba 320,322,331,353,362,364,366
+src/pages/context-engineering/index.astro
+  s_222d39e032fac4::t_e08d2d3da5fade 187,232-245
+src/pages/lean-ai/index.astro
+  s_222d39e032fac4::t_4ae084113d306a 1-575
+src/pages/methodologies/index.astro
+  s_222d39e032fac4::t_99940fd1441d91 72-73,138,142-143,152,155,157,159,166-229,238,444-460
+src/pages/sitemap/index.astro
+  s_222d39e032fac4::t_04fb55337c1a6a 51-57
+src/pages/team-metrics/index.astro
+  s_222d39e032fac4::t_ea5c90acb0f422 5,11,16,157,169,238-242,479-503
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2dd6264615694c14e32bc05130ebf46d3f4cb625",
+  "prompts": {},
+  "sessions": {
+    "s_222d39e032fac4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fd10-0234-7173-845d-899eaaa568f7",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
