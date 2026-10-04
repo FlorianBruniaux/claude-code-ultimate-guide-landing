@@ -4,13 +4,13 @@ subtitle: "Structuring complex prompts for reproducible results"
 cardNumber: C03
 category: Design
 difficulty: advanced
-guideVersion: 3.41.1
+guideVersion: 3.43.0
 order: 203
 ---
 
 ## Why XML works
 
-Claude was trained on massive corpora that include XML. When you structure a prompt with tags, you create unambiguous delimiters that separate the instruction, context, reference code, and constraints. The result: Claude interprets each section exactly in the role you assign it, without having to infer what is instruction and what is context.
+Claude was trained on massive corpora that include XML. When you structure a prompt with tags, you create unambiguous delimiters that separate the instruction, context, reference code, and constraints. The structure can make those roles clearer, but it does not guarantee instruction following or prevent prompt injection.
 
 XML structure is relevant for complex or reusable tasks. For a one-line fix, it is unnecessary noise.
 
@@ -54,25 +54,19 @@ New file src/validation/index.ts with exports
 | `<state>` | Current state (bug, diff, logs) |
 | `<task>` + `<subtask>` | Hierarchical decomposition |
 
-## Semantic Anchors in code
+## Semantic anchors
 
-Anchors are comment markers that allow Claude to reference specific areas of code without reading entire files.
+A semantic anchor names an established method or pattern. It gives Claude a concise reference, but the task still needs project context and a check.
 
-```typescript
-// ANCHOR: auth-flow
-export async function authenticate(token: string) {
-  // ...
-}
-// END-ANCHOR: auth-flow
-
-// ANCHOR: token-validation
-function validateJWT(token: string): Claims {
-  // ...
-}
-// END-ANCHOR: token-validation
+```text
+Refactor the payment integration using Ports & Adapters.
+Keep provider code outside the domain.
+Check that the existing payment tests still pass.
 ```
 
-In your prompt: "Modify only the ANCHOR: auth-flow section to add expired token handling." Claude knows exactly where to intervene without reading the entire file.
+"Ports & Adapters" names the design approach. The next two sentences say what it means for this task and how to check the change. If Claude applies the term incorrectly, spell out the intended boundary instead of repeating the name. See the [guide section on semantic anchors](https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#29-semantic-anchors).
+
+Code comments such as `// ANCHOR: auth-flow` are location markers. They can help point to a file region, but they are a different use of the word "anchor."
 
 ## When to use XML
 

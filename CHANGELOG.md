@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Refresh the French and English C03 PDF links and design-series ZIP links after the semantic anchors card correction.
+
+- Sync the semantic anchors example, glossary and C03 card with the guide. Distinguish named methods from code-location comments and remove unsupported claims of reliable behavior.
+
 - Deploys keep the hashed `/_astro/` files of the last 3 days of builds. GitHub Pages replaces the whole site and caches HTML for 10 minutes, so after the October 2 deploy a cached /token-savings/ page requested `index.CocZ0G8T.css`, which returned 404 and left the page unstyled. `scripts/carry-over-assets.mjs` restores earlier files from an `actions/cache` store without overwriting the current build (test: `scripts/test-carry-over-assets.mjs`). A new `smoke` job runs `scripts/check-deployed-assets.mjs` after deploy and fails when a page's CSS or JS, or a carried-over file, does not return 200.
 - /token-savings/: new "Efficiency" sort in the catalogue and in "Results by tool", chosen by the visitor (name stays the default, so the server-rendered page is unchanged). The key is the median of a tool's third-party cost values, with token counts as a labelled fallback ("token count, not cost") and tools without a third-party result last; maker-run benchmark rows never count. A visible warning beside each control says the values come from different studies, tasks, models and units, so the order is an order of magnitude, not a verdict. The sort is a pure function in `token-saving-view.ts` (`efficiencyKey`, `rankByEfficiency`) with tests; no figure changed. Suggested by Arnaud Jeulin.
 - Add a first-person TL;DR block (`id="tldr"`, new `src/components/global/Tldr.astro`, card tokens shared with the /memory-systems/ TL;DR) above the content of /finops/, /token-savings/ and /context-engineering/: what the maintainer thinks and where it is heading, with the RTK contribution disclosed in the /token-savings/ one. Suggested by Arnaud Jeulin.

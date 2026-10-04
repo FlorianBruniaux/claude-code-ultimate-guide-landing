@@ -60,8 +60,8 @@ export const RECAP_SERIES: RecapCardSeries[] = [
     color: '#22c55e',
     cardCount: 14,
     released: true,
-    hashedZipFr: 'recap-cards-conception.fr.v3.43.0.80e10354e708.zip',
-    hashedZipEn: 'recap-cards-conception.en.v3.43.0.4bcaedfee81f.zip',
+    hashedZipFr: 'recap-cards-conception.fr.v3.43.0.86f01c88f0c2.zip',
+    hashedZipEn: 'recap-cards-conception.en.v3.43.0.8b966cf3f400.zip',
   },
 ]
 
@@ -70,7 +70,7 @@ export const CARD_HASHES_FR: Record<string, string> = {
   // ── Conception (C) ──────────────────────────────────────────────────────────
   'c01-trust-calibration': 'c01-trust-calibration.fr.v3.43.0.6be75a0205a1.pdf',
   'c02-prompting-basics': 'c02-prompting-basics.fr.v3.43.0.ba297d202e9c.pdf',
-  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.fr.v3.43.0.2f8304830ed8.pdf',
+  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.fr.v3.43.0.a77c34ac6813.pdf',
   'c04-commands-skills-plugins-agents': 'c04-commands-skills-plugins-agents.fr.v3.43.0.eacdb97f0308.pdf',
   'c05-memory-stack': 'c05-memory-stack.fr.v3.43.0.7bfde5b268d6.pdf',
   'c06-configuration-decision-guide': 'c06-configuration-decision-guide.fr.v3.43.0.22a71c850295.pdf',
@@ -138,7 +138,7 @@ export const CARD_HASHES_EN: Record<string, string> = {
   // ── Design (C) ──────────────────────────────────────────────────────────────
   'c01-trust-calibration': 'c01-trust-calibration.en.v3.43.0.c00496264256.pdf',
   'c02-prompting-basics': 'c02-prompting-basics.en.v3.43.0.84cf52d97963.pdf',
-  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.en.v3.43.0.a3090f4e9c69.pdf',
+  'c03-xml-prompting-anchors': 'c03-xml-prompting-anchors.en.v3.43.0.8bd2920e45b5.pdf',
   'c04-commands-skills-plugins-agents': 'c04-commands-skills-plugins-agents.en.v3.43.0.fb43974f6534.pdf',
   'c05-memory-stack': 'c05-memory-stack.en.v3.43.0.3d41cbe46c71.pdf',
   'c06-configuration-decision-guide': 'c06-configuration-decision-guide.en.v3.43.0.b50d13d114b3.pdf',

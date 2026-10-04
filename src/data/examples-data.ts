@@ -434,9 +434,9 @@ export const EXAMPLES = {
     "semantic-anchors": {
         icon: "\u{1F517}",
         label: "Semantic Anchors",
-        description: "Precise vocabulary for better LLM outputs",
+        description: "Curated technical terms with examples, sources, and usage limits",
         files: [
-            { name: "anchor-catalog.md", path: "semantic-anchors/anchor-catalog.md", description: "Comprehensive catalog of precise technical terms for prompting", favorite: true }
+            { name: "anchor-catalog.md", path: "semantic-anchors/anchor-catalog.md", description: "Curated technical vocabulary with examples, sources, and usage limits", favorite: true }
         ]
     }
 } as const satisfies ExamplesData;
