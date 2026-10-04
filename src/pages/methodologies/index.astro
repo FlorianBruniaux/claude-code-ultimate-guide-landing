@@ -69,8 +69,8 @@ const COMBINATION_PATTERNS = [
   {
     stack: 'Enterprise Governance',
     icon: '🏛️',
-    methodologies: 'BMAD + Spec Kit + Specmatic',
-    bestFor: 'High-complexity projects, stable requirements, compliance',
+    methodologies: 'BMAD + Specmatic',
+    bestFor: 'Traceable work with API contracts; keep one planning source',
     setup: 'Heavy',
     teamSize: 'Any',
     guideLink: `${guideBase}#combination-patterns`,
@@ -135,12 +135,12 @@ const COMBINATION_PATTERNS = [
         <div class="axis-card">
           <div class="axis-icon">📐</div>
           <h3>Spec-first vs code-first</h3>
-          <p>Spec-first methodologies (BMAD, SDD, BDD) require documentation before any code runs. Code-first methods (Ralph Loop, Iterative, TDD) let you start immediately and discover structure as you build.</p>
+          <p>The spec-first side makes intent explicit before implementation: SDD uses feature specs, while BDD uses shared behavior examples. BMAD spans direct building for a clear fix and deeper planning for uncertain work. These positions describe a workflow choice, not a permanent property of a tool.</p>
         </div>
         <div class="axis-card">
           <div class="axis-icon">⚖️</div>
-          <h3>Lean vs enterprise</h3>
-          <p>Lean methodologies minimize ceremony: one file, fast iteration, low coordination cost. Enterprise methods add traceability, multi-agent gates, and contract enforcement suited for high-complexity or compliance-driven projects.</p>
+          <h3>Lightweight vs governed</h3>
+          <p>This axis compares the setup and coordination cost of development workflows. Lightweight methods can use one file and short feedback cycles; governed methods add traceability and explicit gates. It does not classify the Toyota Production System or Lean management. For flow and stop rules in AI-assisted delivery, see the <a href="/guide/loop-graph-engineering/#limit-admission-to-verification-capacity">review-admission method</a>.</p>
         </div>
       </div>
 
@@ -149,21 +149,84 @@ const COMBINATION_PATTERNS = [
         <p class="map-label">Positioning map (20 methodologies)</p>
         <pre class="methodology-map"><code>                      SPEC / PLANNING FIRST
                                 ▲
-  ── lean · spec ──             │             ── governed · spec ──
+  ── light · spec ──            │             ── governed · spec ──
                                 │
   [Doc-Driven]  [SDD]           │    [BDD]  [ATDD]   [Req-Driven]
-  [GSD]  [Plan-First]           │ [CDD] [ADR-Driven]  [DDD]  [BMAD]
+  [GSD]  [Plan-First]           │ [CDD] [ADR-Driven]  [DDD]  [BMAD full]
                                 │
-  LEAN ─────────────────────────┼────────────────────────────────► ENTERPRISE
+  LIGHTWEIGHT ──────────────────┼────────────────────────────────► GOVERNED
                                 │
-  ── lean · code ──             │             ── governed · code ──
+  ── light · code ──            │             ── governed · code ──
                                 │
   [Context Eng.]   [TDD]        │       [Multi-Agent]
   [Prompt Eng.]  [Iterative]    │       [Eval-Driven]       [FDD]
   [Ralph Loop]                  │           [JiTTesting]
                                 │
                          CODE / EMERGENT</code></pre>
-        <p class="map-note">Full guide section with quadrant analysis: <a href={guideBase}>cc.bruniaux.com/guide/methodologies/</a></p>
+        <p class="map-note">BMAD is placed here for its full planning path; a small change can use direct build. Full quadrant analysis: <a href={guideBase}>guide/methodologies/</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lean-lens" id="lean-software-engineering" aria-labelledby="lean-lens-title">
+    <div class="container">
+      <p class="map-label">Lean software engineering · across every stack</p>
+      <h2 class="section-title" id="lean-lens-title">Test the flow, not just the method</h2>
+      <p class="section-subtitle">Mary and Tom Poppendieck's <a href="https://res.infoq.com/articles/poppendieck-implementing-lean/en/resources/poppendieck_ch02.pdf" target="_blank" rel="noopener noreferrer">software adaptation of Lean</a> asks teams to build quality in and optimize the whole path from customer need to deployed software. A better spec or a faster agent can still leave the request waiting at review, release or adoption. Lean is a delivery lens across the map above, not a twenty-first position on its axes.</p>
+      <div class="table-scroll">
+        <table class="matrix-table lean-table">
+          <thead><tr><th scope="col">Lean question</th><th scope="col">Methods to examine</th><th scope="col">Check in the workflow</th></tr></thead>
+          <tbody>
+            <tr><td>Is the demand worth doing?</td><td>SDD · BDD · BMAD</td><td>Name the user problem and acceptance condition before expanding a spec. Decline or narrow work without a clear need.</td></tr>
+            <tr><td>Where does work wait?</td><td>BMAD · GSD · SDD · Multi-Agent</td><td>Map one request through verification and release. Control work in progress at the constrained stage, not just inside the coding step.</td></tr>
+            <tr><td>Is quality built in?</td><td>TDD · ATDD · BDD · Eval-Driven</td><td>Check behavior early and stop affected work when a test or evidence check fails. Record correction effort as well as pass rates.</td></tr>
+            <tr><td>Can the plan change?</td><td>SDD · OpenSpec · BMAD</td><td>Keep reversible decisions open. Update a spec when evidence changes the requirement instead of preserving obsolete paperwork.</td></tr>
+            <tr><td>Did the process improve?</td><td>Retrospectives · ADRs · verification loops</td><td>Turn a recurring failure into an upstream control, then check whether recurrence and effort fall.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lean-bridge">The <a href="https://kanbanguides.org/the-kanban-guide/" target="_blank" rel="noopener noreferrer">Kanban Guide</a> makes the flow test concrete with a defined start and finish, work-in-progress control, and four flow measures: WIP, throughput, work-item age and cycle time. Throughput counts finished items, not solved customer problems. <a href="/lean-ai/">Follow one AI-assisted request to the user</a> and <a href="/guide/team-metrics/">define the additional outcome measure</a>.</p>
+      <div class="lean-source-grid" aria-label="Lean methods and inspectable repositories">
+        <article class="lean-source">
+          <p class="map-label">Method · product development</p>
+          <h3>Value-stream mapping</h3>
+          <p>The Lean Enterprise Institute maps decisions and handoffs across functions before redesigning the work.</p>
+          <a href="https://www.lean.org/the-lean-post/articles/why-value-stream-mapping-is-essential-to-product-and-process-development/" target="_blank" rel="noopener noreferrer">Read the LEI method ↗</a>
+        </article>
+        <article class="lean-source">
+          <p class="map-label">Method · knowledge work</p>
+          <h3>Kanban</h3>
+          <p>Define the workflow, control work in progress and inspect its four flow metrics. A board by itself does not establish pull.</p>
+          <a href="https://kanbanguides.org/the-kanban-guide/" target="_blank" rel="noopener noreferrer">Read the Kanban Guide ↗</a>
+        </article>
+        <article class="lean-source">
+          <p class="map-label">Repository · phase checks</p>
+          <h3>RaiSE</h3>
+          <p>Persists workflow state and runs deterministic checks at phase boundaries. The repository describes a mechanism, not a measured user outcome.</p>
+          <a href="https://github.com/humansys/raise" target="_blank" rel="noopener noreferrer">Inspect RaiSE ↗</a>
+        </article>
+        <article class="lean-source">
+          <p class="map-label">Repository · recurring defects</p>
+          <h3>Andon</h3>
+          <p>Records agent defects and proposed countermeasures. Its completion check still depends on the trustworthiness of the recorded evidence.</p>
+          <a href="https://github.com/PrimeFoldTools/andon" target="_blank" rel="noopener noreferrer">Inspect Andon ↗</a>
+        </article>
+      </div>
+      <h3 class="lean-packs-heading">Skill packs to test against the flow</h3>
+      <p class="lean-pack-note">These packs encode steps, not a Lean result. Use only the controls that address a real constraint, then check the same request from intake to user outcome.</p>
+      <div class="lean-source-grid" aria-label="Agent skill packs relevant to delivery flow">
+        <article class="lean-source">
+          <p class="map-label">Integrated workflow · gstack</p>
+          <h4>From demand to release</h4>
+          <p><code>/office-hours</code> challenges the request; <code>/landing-report</code> exposes the ship queue; <code>/qa</code> checks changed behavior and <code>/retro</code> reviews the work. The full sequence can also add waiting stages.</p>
+          <a href="https://github.com/garrytan/gstack" target="_blank" rel="noopener noreferrer">Inspect gstack ↗</a>
+        </article>
+        <article class="lean-source">
+          <p class="map-label">Composable skills · Matt Pocock</p>
+          <h4>Spec only when the work needs one</h4>
+          <p><code>/triage</code> handles incoming requests; <code>/to-spec</code> is for work spanning sessions; <code>/to-tickets</code> creates thin, testable vertical slices. <code>/tdd</code> and <code>/retro</code> help close the loop.</p>
+          <a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener noreferrer">Inspect the skills ↗</a>
+        </article>
       </div>
     </div>
   </section>
@@ -172,7 +235,7 @@ const COMBINATION_PATTERNS = [
   <section class="section" id="methodology-decision-matrix">
     <div class="container">
       <h2 class="section-title">8 recommended stacks</h2>
-      <p class="section-subtitle">Individual methodologies don't work in isolation. These stacks combine 2–3 methods that reinforce each other.</p>
+      <p class="section-subtitle">These are starting combinations, not measured productivity gains. Add an artifact or gate only when it addresses a real decision, failure or handoff.</p>
 
       <div class="stacks-grid" id="methodology-stacks">
         {STACK_EXPLANATIONS.map((stack) => (
@@ -377,6 +440,23 @@ const COMBINATION_PATTERNS = [
 .map-note a {
   color: var(--accent);
 }
+
+/* Lean delivery lens */
+.lean-lens { background: var(--bg-primary); }
+.lean-lens .section-subtitle { max-width: 82ch; }
+.lean-table { min-width: 760px; }
+.lean-table td:first-child { width: 24%; font-weight: 700; }
+.lean-table td:nth-child(2) { width: 26%; color: var(--accent); }
+.lean-table td:last-child { line-height: 1.55; }
+.lean-bridge { max-width: 86ch; margin: var(--space-lg) 0 var(--space-xl); color: var(--text-secondary); line-height: 1.65; }
+.lean-source-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+.lean-source { display: flex; flex-direction: column; padding: var(--space-lg); border: 1px solid var(--border); border-radius: var(--border-radius); background: var(--surface-elevated); }
+.lean-source h3, .lean-source h4 { margin: .4rem 0; color: var(--text-primary); font-size: 1.08rem; }
+.lean-packs-heading { margin: var(--space-2xl) 0 var(--space-sm); color: var(--text-primary); font-size: 1.35rem; }
+.lean-pack-note { max-width: 82ch; margin: 0 0 var(--space-lg); color: var(--text-secondary); line-height: 1.6; }
+.lean-source p:not(.map-label) { margin: 0 0 .75rem; color: var(--text-secondary); font-size: .9rem; line-height: 1.55; }
+.lean-source a { align-self: flex-start; margin-top: auto; font-size: .9rem; font-weight: 650; }
+@media (max-width: 700px) { .lean-source-grid { grid-template-columns: 1fr; } }
 
 /* ── Stacks grid ────────────────────────────────────────────────────── */
 .stacks-grid {

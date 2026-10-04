@@ -317,9 +317,9 @@ export const STACK_EXPLANATIONS: StackExplanation[] = [
     icon: '🚀',
     methodologies: ['SDD', 'TDD'],
     description:
-      'Minimal overhead, maximum quality. Write a short spec in CLAUDE.md, then TDD your way to a working MVP. The spec prevents scope creep; the tests prevent regressions. Natural fit for solo developers who want to ship fast without cutting corners.',
+      'Keep the feature intent in a short task spec and use TDD for its risky behavior. CLAUDE.md should carry stable repository rules, not become a growing pile of per-feature specs. Check the delivered result as well as test status.',
     quickStart:
-      'Create a CLAUDE.md with your feature spec, then: "Write failing tests for this spec, then implement until they pass."',
+      'Write the user outcome and acceptance checks in a task file; keep stable project rules in CLAUDE.md. Ask for a failing test before implementation.',
     guideLink: '/guide/methodologies/#combination-patterns',
   },
   {
@@ -328,7 +328,7 @@ export const STACK_EXPLANATIONS: StackExplanation[] = [
     icon: '🏗️',
     methodologies: ['Spec Kit', 'TDD', 'BDD'],
     description:
-      'Governance meets collaboration. Spec Kit gives you a constitution and structured requirements. BDD scenarios let product and dev speak the same language. TDD ensures every behavior is tested. The investment pays off from day one on team projects.',
+      'Spec Kit can make feature intent explicit, BDD can align product and engineering on examples, and TDD can check implementation. Use all three when the team has a real alignment or regression problem; record the cost of maintaining the artifacts.',
     quickStart:
       'Run /speckit.constitution to set guardrails, write Given/When/Then scenarios with your PM, then TDD each scenario.',
     guideLink: '/guide/methodologies/#combination-patterns',
@@ -350,7 +350,7 @@ export const STACK_EXPLANATIONS: StackExplanation[] = [
     icon: '🔄',
     methodologies: ['OpenSpec', 'BDD', 'JiTTesting'],
     description:
-      'Evolve without breaking. OpenSpec tracks what exists and what is changing, so specs never drift from reality. BDD scenarios document expected behavior for stakeholders. JiTTesting catches regressions at PR time without growing your test suite forever.',
+      'OpenSpec records proposed changes, and BDD gives stakeholders shared behavior examples. Disposable diff-focused tests are an experiment, not a guarantee against regression or a substitute for Meta’s published JiTTesting system.',
     quickStart:
       'Set up OpenSpec to capture current specs, write BDD scenarios for the feature you are changing, and add a pre-merge prompt: "Generate tests that catch regressions in this diff."',
     guideLink: '/guide/methodologies/#combination-patterns',
@@ -359,11 +359,11 @@ export const STACK_EXPLANATIONS: StackExplanation[] = [
     stackId: 'enterprise-gov',
     title: 'Enterprise Governance',
     icon: '🏛️',
-    methodologies: ['BMAD', 'Spec Kit', 'Specmatic'],
+    methodologies: ['BMAD', 'Specmatic'],
     description:
-      'Full governance for high-complexity projects. BMAD provides the constitution and multi-agent orchestration. Spec Kit structures requirements across teams. Specmatic enforces API contracts between services. High setup cost, but traceability and compliance are real. Note: BMAD requires stable requirements: it becomes a liability when specs change frequently mid-project.',
+      'Use BMAD for the planning and build path that the change needs, and Specmatic where services have explicit API contracts. Keep one planning source of truth. Add another spec system only if it serves a distinct team or interface need; neither tool proves compliance or delivery value by itself.',
     quickStart:
-      'Start with BMAD constitution.md, define agent roles for your workflow, set up Spec Kit for requirements, and Specmatic for API contract testing.',
+      'Choose the BMAD path for one change, from direct build to fuller planning. Add Specmatic contract checks at an actual service boundary; measure review wait and accepted delivery.',
     guideLink: '/guide/methodologies/#combination-patterns',
   },
   {

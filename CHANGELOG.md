@@ -4,6 +4,30 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Put Lean & AI in the October announcement banner, while keeping four links and resetting the dismissed state for the new message.
+
+- Add a worked legacy-change example to `/lean-ai/` and a Lean decision trail to `/context-engineering/`: distinguish a valid citation from correct behavior, test the actual edit path, finish one releasable unit before parallelism, and link context, harness, methodology and factory guidance. Label the controls as proposed and track their review cost.
+
+- Connect `/lean-ai/` to Marek Kalnik's Lean standards and Factory's Agent Readiness: add a repository check before scaling agent output, distinguish readiness from delivery and user outcomes, and define poka-yoke beside the existing Lean terms.
+
+- Add gstack and Matt Pocock's skills to the Lean lens on `/methodologies/`. Explain the demand, queue, testable-slice and feedback controls each pack exposes, and label the Lean mapping as an interpretation that needs local outcome measurement.
+
+- Add a Lean software engineering lens to `/methodologies/` that checks each recommended stack against demand, WIP, built-in quality, revisable plans and recurring failures. Link primary Lean and Kanban methods plus inspectable RaiSE and Andon repositories, correct outdated BMAD and SDD descriptions, and avoid stacking two planning systems by default.
+
+- Cross-reference `/lean-ai/` with the published portfolio articles and three inspectable open-source tools. Show exactly what ctxharness, cc-skill-usage and ccboard observe, and where the end-to-end user outcome still needs separate measurement.
+
+- Reorganize `/lean-ai/` into a four-step reading path: map one request, inspect the verification queue, compare source-bounded software cases, and test a local measure. Give the two factory diagrams separate sections, move Lean terminology into a compact reference, distinguish a field study from practitioner accounts and adjacent examples, and present source readings as a ledger instead of another card grid. Keep the hero title, promise and actions together beside a useful flow summary, and link the Microsoft rollout and reviewer-load papers separately. Preserve the claims and sources.
+
+- Ground the `/lean-ai/` factory analogy in Lean Software Development and Toyota terminology: define Just-in-Time/kanban, jidoka/andon, muda/mura/muri and kaizen in diagram captions and a reading key, with software-specific uses, limits and primary sources. Keep delivery time and user outcome as separate measures.
+
+- Rework the two Gemini infographics on `/lean-ai/` as an agentic-factory analogy: a demand-to-user path with pull signal, quality stop and rework, plus a possible work-in-progress rack before verification. Display them at a narrower article width with prominent full-size links, explain pull, andon and user outcome in a reading key, and keep the stage signals and illustrative queue arithmetic in accessible HTML.
+
+- Improve the `/lean-ai/` reading hierarchy with wide-screen hero and argument layouts, broader evidence grids, a clearer five-stage flow, distinct evidence-limit panels, responsive cards, visible keyboard focus, and immediate section rendering.
+
+- Add the Globo task-cycle counterexample and the Siemens Lean quality-management study to `/lean-ai/`, with their comparators and evidence limits visible beside each case.
+
+- Extend `/lean-ai/` with source-bounded Qonto, Theodo, Toyota and Lean Enterprise Institute cases, plus two open-source implementation examples. State what each source measured and what remains unknown.
+
 - Refresh the French and English C03 PDF links and design-series ZIP links after the semantic anchors card correction.
 
 - Sync the semantic anchors example, glossary and C03 card with the guide. Distinguish named methods from code-location comments and remove unsupported claims of reliable behavior.

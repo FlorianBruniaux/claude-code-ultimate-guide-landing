@@ -1,0 +1,575 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Lean and AI: Follow the Work to the User | Claude Code Guide'
+const description = 'A source-backed reading path for applying Lean to AI-assisted work: map the value stream, find the verification queue, and measure accepted outcomes.'
+const articleUrl = 'https://www.florian.bruniaux.com/blog/articles/lean-ai-work-that-reaches-users/'
+
+const jsonLd = [{
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: 'https://cc.bruniaux.com/lean-ai/',
+  datePublished: '2026-10-03',
+  inLanguage: 'en',
+  isPartOf: { '@id': 'https://cc.bruniaux.com/#website' },
+}]
+
+const stages = [
+  { number: '01', name: 'Demand', question: 'Which user problem is worth solving?', signal: 'Requests clarified or declined before work starts' },
+  { number: '02', name: 'Creation', question: 'What does AI make faster?', signal: 'Active work time and items submitted' },
+  { number: '03', name: 'Verification', question: 'Can someone establish that the result is sound?', signal: 'Waiting time, reviewer effort and corrections' },
+  { number: '04', name: 'Delivery', question: 'Did the work reach its intended user?', signal: 'Time to release or response; failures' },
+  { number: '05', name: 'Outcome', question: 'Did it solve the original problem?', signal: 'Adoption or resolution for eligible users' },
+]
+
+const readings = [
+  {
+    kind: 'Principle',
+    title: 'Toyota Production System',
+    description: 'The primary source for Just-in-Time and jidoka. Its manufacturing outcomes do not transfer automatically to software.',
+    href: 'https://global.toyota/en/company/vision-and-philosophy/production-system/',
+    linkLabel: 'Read Toyota’s explanation',
+  },
+  {
+    kind: 'Research',
+    title: 'DORA: AI changes the shape of work',
+    description: 'Qualitative responses from Google engineers describe time moving toward auditing and verification. Check the scope before generalizing.',
+    href: 'https://dora.dev/insights/balancing-ai-tensions/',
+    linkLabel: 'Read the DORA analysis',
+  },
+  {
+    kind: 'Field studies',
+    title: 'More merged PRs, with boundaries',
+    description: 'The Microsoft rollout measured an output proxy. A separate company study also observed much higher reviewer load. Neither establishes customer value.',
+    href: 'https://arxiv.org/abs/2607.01418',
+    linkLabel: 'Read the Microsoft rollout',
+    secondaryHref: 'https://arxiv.org/abs/2607.01904',
+    secondaryLinkLabel: 'Read the reviewer-load study',
+  },
+]
+
+const cases = [
+  {
+    kind: 'Software field study',
+    title: 'Globo: a shorter task cycle',
+    finding: 'In a six-week study, Jira tasks tagged as using GenAI had an average development cycle time 23% below the company’s historical figure.',
+    limit: 'Participation and task tagging were voluntary. A historical comparison does not establish that AI caused the difference or improved release quality and user outcomes.',
+    href: 'https://escholarship.org/uc/item/59h2f5hs',
+    linkLabel: 'Read the ICSE-SEIP study',
+  },
+  {
+    kind: 'Practitioner account · software migration',
+    title: 'Qonto: migrate code through kaizen',
+    finding: 'A small team iterated from a chatbot to an AI-assisted CLI with a codemod and human review. One engineer, with limited help, migrated 8,632 lines in a two-week evaluation.',
+    limit: 'The manual baseline was estimated. Lines migrated do not measure review cost, defects or customer value.',
+    href: 'https://medium.com/qonto-way/ai-driven-refactoring-in-large-scale-migrations-strategies-and-techniques-fcdb9b5116c6',
+    linkLabel: 'Read Qonto’s engineering account',
+  },
+  {
+    kind: 'Practitioner account · agent workflow',
+    title: 'Theodo: stop and correct the process',
+    finding: 'On the AP-HP ComPaRe EMA project, a CTO reports shipping 15 features in three weeks while reviewing strategy, tests and code, and changing agent instructions after failures.',
+    limit: 'The two-month comparison was an internal estimate. User adoption and later defect rates were not published.',
+    href: 'https://www.theodo.com/blog/how-i-shipped-2-months-of-features-in-3-weeks-with-llm-agents',
+    linkLabel: 'Read the Theodo account',
+  },
+  {
+    kind: 'Lean applied to AI work',
+    title: 'Toyota: observe the agent system',
+    finding: 'Toyota’s enterprise AI team describes LangSmith as an andon board for failed tools, broken pipelines and agent adoption across its internal platform.',
+    limit: 'The case is published by LangChain, a supplier. Monitoring an anomaly does not itself prove that work stops or the cause is removed.',
+    href: 'https://www.langchain.com/blog/how-toyota-north-america-put-enterprise-ai-on-the-balance-sheet-with-deep-agents-and-langsmith',
+    linkLabel: 'Read the Toyota case from LangChain',
+  },
+  {
+    kind: 'Lean quality management study',
+    title: 'Siemens: keep quality decisions accountable',
+    finding: 'A five-year practitioner study at Electronics Works Amberg examines tensions between human and AI decisions, transparent and opaque reasoning, and specification-led and data-led processes.',
+    limit: 'The paper analyses adoption in one manufacturing setting. It does not measure an AI-driven speed or quality gain.',
+    href: 'https://onlinelibrary.wiley.com/doi/full/10.1111/isj.70006',
+    linkLabel: 'Read the Siemens study',
+  },
+  {
+    kind: 'AI supporting Lean practice',
+    title: 'LEI: critique the reasoning, not the A3 form',
+    finding: 'Art Smalley describes RootCoach as feedback on root-cause reasoning. The proposed benefit is coaching available when a human coach cannot respond.',
+    limit: 'His quality comparison is personal judgment, not a blind study. LEI also warns that an AI coach can displace human authority.',
+    href: 'https://www.lean.org/the-lean-post/articles/from-skeptic-to-believer-my-journey-into-lean-and-ai/',
+    linkLabel: 'Read the RootCoach account',
+  },
+]
+
+const softwareCases = cases.slice(0, 3)
+const adjacentCases = cases.slice(3)
+---
+
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-10-03">
+  <header class="page-hero">
+    <div class="container hero-inner">
+      <div class="hero-main">
+        <a class="back-link" href="/resources/">← Resource library</a>
+        <p class="eyebrow">Lean × AI · reading path</p>
+        <h1>Follow the work to the user</h1>
+        <p class="tagline">AI can make one step faster while the request waits somewhere else. Map the full path before calling that a productivity gain.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="#map">Map the flow</a>
+          <a class="btn btn-secondary" href="#sources">Inspect the evidence</a>
+        </div>
+      </div>
+      <aside class="hero-signals" aria-label="Signals to compare across one request">
+        <p class="section-kicker">Follow one request</p>
+        <ol>
+          <li><strong>Creation</strong><span>Time to produce a draft</span></li>
+          <li><strong>Verification</strong><span>Wait, checks and corrections</span></li>
+          <li><strong>Delivery</strong><span>Time until the work reaches its user</span></li>
+          <li><strong>Outcome</strong><span>Whether the original problem was resolved</span></li>
+        </ol>
+      </aside>
+    </div>
+  </header>
+
+  <div class="lean-content">
+    <nav class="reading-route" aria-label="On this page">
+      <div class="container">
+        <ol>
+          <li><a href="#map"><span>01</span> Map the request</a></li>
+          <li><a href="#queue"><span>02</span> Inspect the queue</a></li>
+          <li><a href="#cases"><span>03</span> Compare real cases</a></li>
+          <li><a href="#measure"><span>04</span> Try one measure</a></li>
+        </ol>
+      </div>
+    </nav>
+    <section class="section lean-section" aria-labelledby="question-title">
+      <div class="container question-layout">
+        <div class="question-heading">
+          <p class="section-kicker">The operating question</p>
+          <h2 id="question-title">What reaches the user sooner?</h2>
+        </div>
+        <div class="question-copy">
+          <p class="question-lead">A draft, a pull request and a support reply are intermediate outputs. The user sees a working feature or a resolved problem. When AI increases the flow into review, testing or approval, the queue at that stage may grow even if creation time falls.</p>
+          <p>The queue shift is a possibility, not a law. Measure both the local cycle and what happens after it; the <a href="#cases">field study and team accounts below</a> show why one number cannot settle the question.</p>
+          <p>Lean gives us a way to trace that request. Toyota’s principles offer a useful analogy: make what is needed, when it is needed, and stop defects before they travel downstream. They do not supply a software-team performance forecast.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt lean-section" id="map" aria-labelledby="map-title">
+      <div class="container">
+        <p class="section-kicker">A five-stage map</p>
+        <h2 id="map-title">Trace one request end to end</h2>
+        <p class="intro">Choose a real request type. Record when it enters and leaves each stage, including revisions and rejected work. Compare equivalent requests over equivalent windows.</p>
+        <figure class="flow-figure">
+          <div class="infographic-scroll">
+            <img src="/images/lean-ai/value-stream.webp" width="1376" height="768" loading="lazy" decoding="async" alt="Factory analogy: a demand card enters an AI agent cell. A quality gate with an andon lamp can stop and return faulty work for rework. Accepted work is released before the user outcome is checked." />
+          </div>
+          <figcaption>
+            <span><strong>Read the Lean signals.</strong> The pull signal evokes <a href="https://global.toyota/en/company/plant-tours/production-system/" target="_blank" rel="noopener noreferrer">kanban</a>: the next stage requests what it needs. The lamp evokes <a href="https://global.toyota/en/company/vision-and-philosophy/production-system/" target="_blank" rel="noopener noreferrer">andon</a>; jidoka also requires stopping and correcting affected work. The shipping dock is not the user outcome. Measure the agent-cell cycle and the full path.</span>
+            <a class="infographic-open" href="/images/lean-ai/value-stream.webp" target="_blank" rel="noopener noreferrer">Enlarge factory diagram ↗</a>
+          </figcaption>
+          <p class="image-mobile-hint">Swipe sideways to explore the diagram, or use the enlarge button.</p>
+        </figure>
+        <div class="stage-heading">
+          <p class="section-kicker">The same request, in software</p>
+          <h3 id="stage-title">Record where time and corrections accumulate</h3>
+        </div>
+        <ol class="flow-grid" aria-labelledby="stage-title">
+          {stages.map((stage) => (
+            <li class="flow-card">
+              <span class="flow-number">{stage.number}</span>
+              <h3>{stage.name}</h3>
+              <p>{stage.question}</p>
+              <small>{stage.signal}</small>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section lean-section" id="queue" aria-labelledby="queue-title">
+      <div class="container">
+        <p class="section-kicker">The next constraint</p>
+        <h2 id="queue-title">When drafts arrive faster than decisions</h2>
+        <p class="intro">The queue between creation and acceptance is the part to inspect next. Count items waiting, how long they wait, and the effort spent checking and correcting them. The drawing shows one possible failure mode, not a forecast.</p>
+        <figure class="balance-figure" aria-labelledby="balance-title">
+          <figcaption>
+            <span class="section-kicker">Queue balance · illustrative counts</span>
+            <h3 id="balance-title">What is still waiting for verification?</h3>
+          </figcaption>
+          <div class="infographic-scroll">
+            <img src="/images/lean-ai/review-queue.webp" width="1376" height="768" loading="lazy" decoding="async" alt="Factory analogy: an AI agent cell sends draft cards to a waiting rack before a quality gate. Accepted work exits. If arrivals exceed exits, waiting work grows. The cards show no measured counts." />
+          </div>
+          <p class="image-mobile-hint">Swipe sideways to explore the diagram, or use the enlarge button.</p>
+          <p class="balance-visual-note"><span><strong>Read the Lean signals.</strong> The shelf is work in progress (WIP), not automatically waste. If measured flow shows unused output, uneven arrivals or reviewer overload, investigate <a href="https://www.lean.org/lexicon-terms/muda-mura-muri/" target="_blank" rel="noopener noreferrer">muda, mura and muri</a>. The blank cards show no measured volumes.</span> <a class="infographic-open" href="/images/lean-ai/review-queue.webp" target="_blank" rel="noopener noreferrer">Enlarge queue diagram ↗</a></p>
+          <div class="balance-math" role="img" aria-label="Illustrative queue count: two items already waiting, plus eight new items ready, minus five items accepted, equals five items still waiting.">
+            <span><strong>2</strong> waiting</span>
+            <span class="balance-operator" aria-hidden="true">+</span>
+            <span><strong>8</strong> new</span>
+            <span class="balance-operator" aria-hidden="true">−</span>
+            <span><strong>5</strong> accepted</span>
+            <span class="balance-operator" aria-hidden="true">=</span>
+            <span><strong>5</strong> waiting</span>
+          </div>
+          <p class="balance-note"><strong>Example, not field data.</strong> This count assumes no cancellations or other exits. A correction remains part of the same item. Also track the oldest wait, review effort and defects; counts alone cannot establish user value. <a href="/guide/team-metrics/#measure-the-shared-verification-queue">Define the queue measures</a>.</p>
+        </figure>
+        <div class="decision-callout">
+          <strong>Decision rule</strong>
+          <p>If creation gets faster but verification, correction or waiting gets worse, adjust the amount of work admitted or the verification path before scaling generation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt lean-section terms-section" id="terms" aria-labelledby="lean-terms-title">
+      <div class="container">
+        <div class="factory-translation-heading">
+          <p class="section-kicker">Lean software development</p>
+          <h2 id="lean-terms-title">The terms behind the factory analogy</h2>
+          <p>Mary and Tom Poppendieck’s <a href="https://res.infoq.com/articles/poppendieck-implementing-lean/en/resources/poppendieck_ch02.pdf" target="_blank" rel="noopener noreferrer">software adaptation</a> calls for building quality in and optimizing the whole value stream. Here, time to delivery and the later user outcome remain separate measures. These terms name possible controls to examine in a real workflow.</p>
+        </div>
+        <dl class="factory-translation" aria-labelledby="lean-terms-title">
+          <div>
+            <dt>Just-in-Time · kanban</dt>
+            <dd>A downstream need sends a pull signal upstream. A proposed work-in-progress limit would admit another agent draft only when verification has capacity; a board alone does not create pull. <a href="https://global.toyota/en/company/plant-tours/production-system/" target="_blank" rel="noopener noreferrer">Toyota</a> · <a href="https://kanban.university/kanban-guide/" target="_blank" rel="noopener noreferrer">Kanban Guide</a></dd>
+          </div>
+          <div>
+            <dt>Jidoka · andon</dt>
+            <dd>Jidoka detects an abnormality and stops affected work; an andon makes it visible. In software, early tests and evidence checks build quality in; final review cannot replace them. <a href="https://global.toyota/en/company/vision-and-philosophy/production-system/" target="_blank" rel="noopener noreferrer">Toyota</a> · <a href="https://res.infoq.com/articles/poppendieck-implementing-lean/en/resources/poppendieck_ch02.pdf" target="_blank" rel="noopener noreferrer">Poppendieck</a></dd>
+          </div>
+          <div>
+            <dt>Poka-yoke · error-proofing</dt>
+            <dd>A check close to creation rejects a known mistake before it reaches review. For an agent, a reproducible build or a targeted test is useful only if it catches the failure it was added to prevent. <a href="https://global.toyota/en/company/plant-tours/production-system/" target="_blank" rel="noopener noreferrer">Toyota</a> · <a href="https://www.lean.org/lexicon-terms/error-proofing/" target="_blank" rel="noopener noreferrer">Lean Enterprise Institute</a></dd>
+          </div>
+          <div>
+            <dt>Muda · mura · muri</dt>
+            <dd>Waste, unevenness and overburden. Unused drafts or avoidable rework may be muda; bursts of submissions, mura; an overloaded review path, muri. Check the actual flow before applying these labels. <a href="https://www.lean.org/lexicon-terms/muda-mura-muri/" target="_blank" rel="noopener noreferrer">Lean Enterprise Institute</a></dd>
+          </div>
+          <div>
+            <dt>Kaizen</dt>
+            <dd>When a failure recurs, people change an upstream test, agent instruction or intake rule, then check whether recurrence falls. An alert alone is only a signal. <a href="https://global.toyota/en/company/vision-and-philosophy/production-system/" target="_blank" rel="noopener noreferrer">Toyota</a></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section lean-section" id="cases" aria-labelledby="cases-title">
+      <div class="container">
+        <p class="section-kicker">Practice, with its limits</p>
+        <h2 id="cases-title">What companies have actually described</h2>
+        <p class="intro">Lean can shape how teams build and verify AI-assisted work. AI can also help people practise Lean problem solving. These sources document implementations and practitioner experience, but they do not establish a transferable end-to-end productivity gain.</p>
+        <div class="case-group-heading">
+          <h3>One field study, two engineering accounts</h3>
+          <p>The study reports a task-cycle comparison. Qonto and Theodo describe changes to their own work. Read each finding with its limit.</p>
+        </div>
+        <div class="case-primary-grid">
+          {softwareCases.map((caseStudy) => (
+            <article class:list={['reading-card', 'case-card', { 'case-card--study': caseStudy.kind === 'Software field study' }]}>
+              <p class="reading-kind">{caseStudy.kind}</p>
+              <h3>{caseStudy.title}</h3>
+              <p>{caseStudy.finding}</p>
+              <p class="case-limit"><strong>Evidence limit:</strong> {caseStudy.limit}</p>
+              <a href={caseStudy.href} target="_blank" rel="noopener noreferrer">{caseStudy.linkLabel} ↗</a>
+            </article>
+          ))}
+        </div>
+        <div class="adjacent-heading">
+          <h3>Related practices, different evidence</h3>
+          <p>These examples illuminate an alert, a quality decision and a coaching method. They do not measure the end-to-end software flow shown above.</p>
+        </div>
+        <div class="adjacent-list">
+          {adjacentCases.map((caseStudy) => (
+            <article class="adjacent-case">
+              <div class="adjacent-case-heading">
+                <p class="reading-kind">{caseStudy.kind}</p>
+                <h4>{caseStudy.title}</h4>
+              </div>
+              <div class="adjacent-case-body">
+                <p>{caseStudy.finding}</p>
+                <p><strong>Evidence limit:</strong> {caseStudy.limit}</p>
+                <a href={caseStudy.href} target="_blank" rel="noopener noreferrer">{caseStudy.linkLabel} ↗</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="source-note">There are inspectable open-source implementations too. <a href="https://github.com/PrimeFoldTools/andon" target="_blank" rel="noopener noreferrer">Andon</a> records recurring agent defects and countermeasures; its completion hook has stated limits when the agent writes its own verification entry. <a href="https://github.com/humansys/raise" target="_blank" rel="noopener noreferrer">RaiSE</a> describes a Lean-inspired software workflow. These repositories show design choices, not measured improvements in user outcomes.</p>
+      </div>
+    </section>
+
+    <section class="section lean-section" id="sources" aria-labelledby="sources-title">
+      <div class="container">
+        <p class="section-kicker">Evidence, with its limits</p>
+        <h2 id="sources-title">Read the source for the claim it actually supports</h2>
+        <div class="reading-ledger">
+          {readings.map((reading) => (
+            <article class="ledger-row">
+              <p class="reading-kind">{reading.kind}</p>
+              <div><h3>{reading.title}</h3><p>{reading.description}</p></div>
+              <div class="ledger-links">
+                <a href={reading.href} target="_blank" rel="noopener noreferrer">{reading.linkLabel} ↗</a>
+                {'secondaryHref' in reading && reading.secondaryHref && (
+                  <a href={reading.secondaryHref} target="_blank" rel="noopener noreferrer">{reading.secondaryLinkLabel} ↗</a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="source-note">The <a href="https://arxiv.org/abs/2607.01418" target="_blank" rel="noopener noreferrer">Microsoft rollout study</a> measured about 24% more merged PRs among adopters over four months. Merged PRs remain an output proxy. Use <a href="https://dora.dev/guides/dora-metrics/" target="_blank" rel="noopener noreferrer">DORA’s delivery metrics</a> for the release portion and define a separate user outcome for the complete service.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt lean-section" id="measure" aria-labelledby="next-title">
+      <div class="container">
+        <p class="section-kicker">Choose your next step</p>
+        <h2 id="next-title">Test the idea on one kind of request</h2>
+        <ol class="measurement-steps">
+          <li><strong>Choose a request.</strong> Use the same request type before and after a change.</li>
+          <li><strong>Trace its path.</strong> Record arrival, waiting, correction, release and the later user outcome separately.</li>
+          <li><strong>Change one control.</strong> Adjust admission or verification, then compare the same signals again.</li>
+        </ol>
+        <div class="readiness-bridge" aria-labelledby="readiness-title">
+          <p class="section-kicker">Before adding more agents</p>
+          <h3 id="readiness-title">Make one agent's station testable</h3>
+          <p class="readiness-lead"><a href="https://www.flowcon.io/fr/archives/2026/marek-kalnik-les-standards-lean-pour-guider-les-ia/" target="_blank" rel="noopener noreferrer">Marek Kalnik's Lean talk</a> describes shared standards and project readiness as conditions for AI work. <a href="https://ai.engineer/talks/ShuJ_CN6zr4-making-codebases-agent-ready" target="_blank" rel="noopener noreferrer">Eno Reyes</a> argues for reliable checks on a single task before parallel agents. Use <a href="https://docs.factory.com/agent-readiness/overview" target="_blank" rel="noopener noreferrer">Factory's repository criteria</a> to find a concrete gap, then test whether fixing it changes the work.</p>
+          <ol class="readiness-steps">
+            <li><strong>Observe a failure</strong><span>Find a repeated setup guess, inconsistent convention, flaky check or defect that reached review.</span></li>
+            <li><strong>Fix the local control</strong><span>A repository owner selects the failure to prevent. Make the command reproducible or add a check that catches that mistake on a representative task.</span></li>
+            <li><strong>Follow the request</strong><span>Compare retries, tokens and reviewer corrections for similar work, then track release and the user outcome.</span></li>
+          </ol>
+          <div class="readiness-example">
+            <strong>Example: one legacy change</strong>
+            <p>A source-line check can prove that a citation exists while the agent still misreads the behavior. Before migration, have a reviewer follow the relevant call path and run characterization checks on the existing application. Move one usable unit through review and release before opening several agent lanes. If the format is fragile, exercise the real edit path and check the resulting bytes, including alternate writes.</p>
+            <p>These are proposed controls, not results from a deployed migration. Record false blocks, rework and reviewer time alongside accepted changes.</p>
+          </div>
+          <nav class="method-links" aria-label="Apply Lean to the guide's engineering methods">
+            <a href="/context-engineering/#pull-the-context-that-the-current-decision-needs">Pull the needed context</a>
+            <a href="/guide/agent-harness/#lean-countermeasure-loop-for-a-repository-harness">Test a harness countermeasure</a>
+            <a href="/methodologies/#lean-software-engineering">Choose the method</a>
+            <a href="/guide/workflows/agentic-software-factories/#the-constraint-moves-upstream-to-what-is-worth-building">Finish one unit before parallelism</a>
+          </nav>
+          <p class="readiness-limit"><strong>Evidence limit:</strong> A readiness score describes conditions in the repository. It does not measure agent productivity, shorter delivery or value to the user. Factory's five-level model is its own rubric; scores from another radar are not directly comparable.</p>
+        </div>
+        <div class="instrument-heading">
+          <p class="section-kicker">From my open-source work</p>
+          <h3>Know what each instrument can see</h3>
+          <p>These tools expose parts of AI-assisted work, but none connects a request to acceptance, release and the user outcome. Use their signals in a local value-stream trace, not as a productivity score.</p>
+        </div>
+        <dl class="instrument-list">
+          <div>
+            <dt><a href="https://github.com/FlorianBruniaux/ctxharness" target="_blank" rel="noopener noreferrer">ctxharness ↗</a></dt>
+            <dd>Checks agent instruction files for stale versions, broken paths and missing scripts. A sounder starting context does not prove the resulting change works.</dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/FlorianBruniaux/cc-skill-usage" target="_blank" rel="noopener noreferrer">cc-skill-usage ↗</a></dt>
+            <dd>Counts actual Skill tool invocations in Claude Code transcripts. An invocation is evidence of use, not of a correct decision or accepted result.</dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/FlorianBruniaux/ccboard" target="_blank" rel="noopener noreferrer">ccboard ↗</a></dt>
+            <dd>Shows session activity, token use and costs. Those operational signals need to be joined to verification effort, delivery and product outcomes elsewhere.</dd>
+          </div>
+        </dl>
+        <p class="instrument-followup">For the measurement evidence, read my <a href="https://www.florian.bruniaux.com/blog/articles/real-cost-of-ai-productivity-reality/" target="_blank" rel="noopener noreferrer">AI productivity review</a>. For a human check at the quality gate, the <a href="https://www.florian.bruniaux.com/blog/articles/uval-protocol-comprehension-debt/" target="_blank" rel="noopener noreferrer">UVAL protocol</a> tests whether an engineer can explain the code they accept; it does not replace team-level review or a user outcome.</p>
+        <div class="next-grid">
+          <a class="next-card" href={articleUrl} target="_blank" rel="noopener noreferrer">
+            <span>Read the argument</span>
+            <h3>Lean and AI: follow the work until it reaches the user</h3>
+            <p>A practical article covering intake, review, quality stops and outcomes beyond the coding step.</p>
+          </a>
+          <a class="next-card" href="/guide/team-metrics/">
+            <span>Set the measures</span>
+            <h3>Team metrics</h3>
+            <p>Track delivery, the shared verification queue, product outcomes and human effort.</p>
+          </a>
+          <a class="next-card" href="/guide/loop-graph-engineering/">
+            <span>Design the control</span>
+            <h3>Agent engineering</h3>
+            <p>Build bounded loops, checkpoints and recovery into AI-assisted work.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .hero-inner { max-width: 1440px; }
+  .back-link { display: inline-flex; min-height: 44px; align-items: center; color: var(--text-secondary); font-weight: 650; }
+  .eyebrow, .section-kicker, .reading-kind, .next-card > span { color: var(--accent); font: 700 .78rem var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+  .eyebrow { margin: 1.1rem 0 .5rem; }
+  .page-hero h1 { max-width: 18ch; font-size: clamp(2.8rem, 5vw, 4.25rem); line-height: 1.08; letter-spacing: -.035em; }
+  .page-hero .tagline { max-width: 58ch; margin-bottom: 1.8rem; }
+  .hero-signals { max-width: 440px; padding-left: 2rem; border-left: 1px solid var(--border); }
+  .hero-signals ol { padding: 0; margin: .85rem 0 0; list-style: none; }
+  .hero-signals li { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: .75rem; padding: .85rem 0; border-top: 1px solid var(--border); font-size: .86rem; line-height: 1.4; }
+  .hero-signals strong { color: var(--text-primary); }
+  .hero-signals span { color: var(--text-secondary); }
+  .reading-route { border-bottom: 1px solid var(--border); background: var(--bg-secondary); }
+  .reading-route .container { max-width: 1200px; }
+  .reading-route ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0; margin: 0; list-style: none; }
+  .reading-route li { min-width: 0; border-right: 1px solid var(--border-light); }
+  .reading-route li:first-child { border-left: 1px solid var(--border-light); }
+  .reading-route a { display: flex; align-items: center; gap: .75rem; min-height: 60px; padding: .5rem 1rem; color: var(--text-primary) !important; font-size: .9rem; font-weight: 650; line-height: 1.2; text-decoration: none !important; }
+  .reading-route a:hover, .reading-route a:focus-visible { background: var(--bg-tertiary); }
+  .reading-route a span { color: var(--accent); font: 700 .78rem var(--font-mono); }
+  .lean-content .lean-section > .container { max-width: 1200px; }
+  .lean-content .lean-section > .question-layout { max-width: 1120px; }
+  .lean-content .lean-section:last-child { padding-bottom: var(--space-3xl); }
+  .lean-section { scroll-margin-top: 6rem; }
+  .lean-section .container > h2, .question-heading h2 { max-width: 36ch; margin: .3rem 0 1rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.025em; text-wrap: balance; }
+  .section-kicker { margin: 0; }
+  .question-copy p, .intro, .source-note { color: var(--text-secondary); line-height: 1.72; }
+  .question-copy { max-width: 70ch; }
+  .question-copy p { font-size: 1.04rem; }
+  .question-copy p:first-child { margin-top: 0; }
+  .question-heading h2 { max-width: 20ch; }
+  .question-copy .question-lead { color: var(--text-primary); font-size: 1.15rem; line-height: 1.62; }
+  .intro { max-width: 72ch; margin: 0; font-size: 1.02rem; }
+  .flow-figure { width: min(100%, 1040px); margin: 2.2rem 0 2rem; }
+  .infographic-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: #f5f0eb; }
+  .infographic-scroll img { display: block; width: 100%; max-width: 1376px; height: auto; margin-inline: auto; }
+  .flow-figure figcaption, .balance-visual-note { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--text-secondary); font-size: .91rem; line-height: 1.6; }
+  .flow-figure figcaption { margin-top: .5rem; }
+  .flow-figure figcaption span, .balance-visual-note span { max-width: 72ch; }
+  .infographic-open { display: inline-flex; align-items: center; justify-content: center; flex: none; min-height: 44px; padding: .55rem .85rem; border: 1px solid var(--border); border-radius: var(--border-radius); background: var(--surface-elevated); color: var(--accent); font-weight: 700; text-decoration: none; }
+  .infographic-open:hover { border-color: var(--accent); background: var(--bg-tertiary); }
+  .infographic-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .image-mobile-hint { display: none; }
+  .factory-translation-heading { width: min(100%, 1040px); margin: 0 0 1.5rem; }
+  .factory-translation-heading h2 { margin: .35rem 0 .65rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.025em; }
+  .factory-translation-heading > p:last-child { max-width: 75ch; margin: 0; color: var(--text-secondary); line-height: 1.65; }
+  .factory-translation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; width: min(100%, 1040px); margin: 0; }
+  .factory-translation > div { padding: 1.2rem 0; border-top: 1px solid var(--border); }
+  .factory-translation dt { color: var(--text-primary); font-weight: 750; }
+  .factory-translation dd { margin: .3rem 0 0; color: var(--text-secondary); font-size: .88rem; line-height: 1.55; }
+  .stage-heading { margin-top: 1.7rem; }
+  .stage-heading h3 { margin: .35rem 0 0; color: var(--text-primary); font-size: 1.4rem; line-height: 1.25; }
+  .flow-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .7rem; padding: 0; margin: 1.2rem 0 0; list-style: none; }
+  .flow-card, .reading-card, .next-card { padding: 1.4rem; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+  .flow-card { position: relative; display: flex; flex-direction: column; min-height: 13rem; border-top: 2px solid var(--accent); }
+  .balance-figure { box-sizing: border-box; width: min(100%, 1040px); margin: 2rem 0 1.5rem; }
+  .balance-figure figcaption { margin-bottom: 1.2rem; }
+  .balance-figure h3 { margin: .35rem 0 0; color: var(--text-primary); font-size: clamp(1.35rem, 2vw, 1.75rem); line-height: 1.2; }
+  .balance-visual-note { margin: .7rem 0 1rem; }
+  .balance-math { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem .75rem; padding: .8rem 1rem; border-radius: var(--border-radius); background: var(--bg-secondary); color: var(--text-primary); font-size: .95rem; }
+  .balance-math > span:not(.balance-operator) { white-space: nowrap; }
+  .balance-math strong { color: var(--accent); font: 700 1.45rem var(--font-mono); font-variant-numeric: tabular-nums; }
+  .balance-operator { color: var(--accent); font: 700 1.35rem var(--font-mono); }
+  .balance-note { max-width: 86ch; margin: 1.15rem 0 0; color: var(--text-secondary); font-size: .91rem; line-height: 1.65; }
+  .balance-note strong { color: var(--text-primary); }
+  .flow-number { color: var(--accent); font: 700 1.2rem var(--font-mono); }
+  .flow-card h3, .reading-card h3, .next-card h3 { margin: .7rem 0 .45rem; color: var(--text-primary); font-size: 1.12rem; line-height: 1.32; }
+  .flow-card p, .reading-card p, .next-card p { color: var(--text-secondary); font-size: .94rem; line-height: 1.58; }
+  .flow-card p { margin: 0; }
+  .flow-card small { display: block; padding-top: .8rem; margin-top: auto; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: .81rem; line-height: 1.48; }
+  .decision-callout { max-width: 1040px; padding: 1.1rem 1.4rem; border-left: 3px solid var(--accent); background: var(--bg-secondary); }
+  .decision-callout p { margin: .4rem 0 0; color: var(--text-secondary); line-height: 1.65; }
+  .readiness-bridge { box-sizing: border-box; max-width: 1040px; padding: 1.5rem; margin: 0 0 2.7rem; border: 1px solid var(--border); border-top: 3px solid var(--accent); border-radius: var(--border-radius-lg); background: var(--surface-elevated); }
+  .readiness-bridge h3 { margin: .35rem 0 .65rem; color: var(--text-primary); font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1.2; }
+  .readiness-lead, .readiness-limit { max-width: 80ch; margin: 0; color: var(--text-secondary); font-size: .94rem; line-height: 1.65; }
+  .readiness-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin: 1.4rem 0; padding: 0; list-style: none; counter-reset: ready; }
+  .readiness-steps li { padding-top: .9rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: .9rem; line-height: 1.55; counter-increment: ready; }
+  .readiness-steps li::before { content: '0' counter(ready); display: block; margin-bottom: .4rem; color: var(--accent); font: 700 .82rem var(--font-mono); }
+  .readiness-steps strong, .readiness-steps span { display: block; }
+  .readiness-steps strong, .readiness-limit strong { color: var(--text-primary); }
+  .readiness-example { max-width: 80ch; padding: 1rem 1.15rem; margin: 0 0 1rem; border-left: 3px solid var(--accent); background: var(--bg-secondary); }
+  .readiness-example strong { color: var(--text-primary); }
+  .readiness-example p { margin: .35rem 0 0; color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
+  .method-links { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 0 0 1.3rem; }
+  .method-links a { font-size: .89rem; font-weight: 650; }
+  .readiness-limit { padding-top: 1rem; border-top: 1px solid var(--border); font-size: .89rem; }
+  .instrument-heading { max-width: 76ch; margin-top: 2.7rem; }
+  .instrument-heading h3 { margin: .35rem 0 .55rem; color: var(--text-primary); font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1.2; }
+  .instrument-heading > p:last-child, .instrument-followup { margin: 0; color: var(--text-secondary); line-height: 1.65; }
+  .instrument-list { max-width: 1040px; margin: 1.3rem 0 1rem; border-bottom: 1px solid var(--border); }
+  .instrument-list > div { display: grid; grid-template-columns: minmax(0, .55fr) minmax(0, 1.45fr); gap: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--border); }
+  .instrument-list dt { font-weight: 750; }
+  .instrument-list dd { margin: 0; color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
+  .instrument-followup { max-width: 86ch; font-size: .93rem; }
+  .next-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+  .case-group-heading, .adjacent-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: end; gap: 2rem; margin: 2.5rem 0 1rem; }
+  .case-group-heading h3, .adjacent-heading h3 { margin: 0; font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.2; }
+  .case-group-heading p, .adjacent-heading p { max-width: 62ch; margin: 0; color: var(--text-secondary); font-size: .94rem; line-height: 1.6; }
+  .case-primary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .reading-card { display: flex; flex-direction: column; }
+  .reading-kind { margin: 0; }
+  .case-card { border-top: 2px solid var(--accent); }
+  .case-card--study { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); column-gap: 2rem; }
+  .case-card--study > .reading-kind, .case-card--study > h3, .case-card--study > p:not(.case-limit), .case-card--study > a { grid-column: 1; }
+  .case-card--study > .case-limit { grid-column: 2; grid-row: 1 / span 4; align-self: center; }
+  .case-card h3 { margin: .65rem 0 .25rem; font-size: 1.2rem; }
+  .case-card > p:not(.reading-kind) { margin: .45rem 0 0; }
+  .case-card .case-limit { margin: 1rem 0 .2rem; padding: .85rem 1rem; border-radius: var(--border-radius); background: var(--bg-tertiary); font-size: .87rem; }
+  .case-limit strong { color: var(--text-primary); }
+  .reading-card a { display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; margin-top: auto; padding-top: .8rem; font-weight: 700; }
+  .adjacent-list { border-bottom: 1px solid var(--border); }
+  .adjacent-case { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.7fr); gap: 2rem; padding: 1.35rem 0; border-top: 1px solid var(--border); }
+  .adjacent-case h4 { margin: .4rem 0 0; font-size: 1.05rem; line-height: 1.35; }
+  .adjacent-case-body p { margin: 0 0 .65rem; color: var(--text-secondary); font-size: .91rem; line-height: 1.6; }
+  .adjacent-case-body strong { color: var(--text-primary); }
+  .adjacent-case-body a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+  .reading-ledger { margin-top: 1.5rem; border-bottom: 1px solid var(--border); }
+  .ledger-row { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 2fr) minmax(0, 1fr); align-items: start; gap: 1.5rem; padding: 1.35rem 0; border-top: 1px solid var(--border); }
+  .ledger-row h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
+  .ledger-row p:not(.reading-kind) { max-width: 70ch; margin: 0; color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
+  .ledger-links { display: grid; justify-self: end; }
+  .ledger-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; font-weight: 700; }
+  .source-note { max-width: 72ch; margin: 1.8rem 0 0; }
+  .measurement-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; max-width: 1040px; margin: 1.5rem 0 2.5rem; padding: 0; list-style: none; counter-reset: measure; }
+  .measurement-steps li { position: relative; padding: 1rem 0 0; border-top: 2px solid var(--accent); color: var(--text-secondary); font-size: .93rem; line-height: 1.6; counter-increment: measure; }
+  .measurement-steps li::before { content: '0' counter(measure); display: block; margin-bottom: .7rem; color: var(--accent); font: 700 .9rem var(--font-mono); }
+  .measurement-steps strong { color: var(--text-primary); }
+  .next-card { display: flex; flex-direction: column; min-height: 12.5rem; color: var(--text-primary) !important; text-decoration: none !important; transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast); }
+  .next-card h3 { margin-top: .6rem; }
+  .next-card p { margin: auto 0 0; }
+  .next-card:hover, .next-card:focus-visible { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .next-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* Keep this reading path visible during full-page capture and anchor navigation. */
+  :global(.js-loaded) .lean-section { opacity: 1; transform: none; transition: none; }
+  @media (min-width: 1081px) {
+    .flow-card:not(:last-child)::after { content: '›'; position: absolute; z-index: 1; top: 50%; right: -.85rem; transform: translateY(-50%); width: .75rem; color: var(--accent); font-size: 1.4rem; font-weight: 700; line-height: 1; text-align: center; }
+  }
+  @media (min-width: 1200px) {
+    .hero-inner { display: grid; grid-template-columns: minmax(0, 62fr) minmax(0, 38fr); align-items: center; gap: clamp(3rem, 5vw, 6rem); }
+    .lean-content .lean-section > .question-layout { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 64fr); align-items: start; gap: clamp(3rem, 5vw, 6rem); max-width: 1120px; }
+    .question-heading h2 { max-width: 15ch; }
+  }
+  @media (max-width: 1199px) {
+    .hero-signals { max-width: 760px; margin-top: 2rem; padding: 1.2rem 0 0; border-top: 1px solid var(--border); border-left: 0; }
+    .hero-signals ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.25rem; }
+  }
+  @media (max-width: 1080px) {
+    .flow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow-card:last-child { grid-column: 1 / -1; min-height: 0; }
+    .next-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .next-grid > :last-child { grid-column: 1 / -1; }
+    .ledger-row { grid-template-columns: minmax(0, .55fr) minmax(0, 1.5fr); }
+    .ledger-links { grid-column: 2; justify-self: start; }
+  }
+  @media (max-width: 700px) {
+    .infographic-scroll img { width: 860px; max-width: none; margin: 0; }
+    .factory-translation { grid-template-columns: 1fr; }
+    .reading-route ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .reading-route li { border-top: 1px solid var(--border-light); }
+    .reading-route li:nth-child(odd) { border-left: 1px solid var(--border-light); }
+    .reading-route a { min-height: 56px; padding: .5rem .65rem; font-size: .84rem; }
+    .flow-figure figcaption, .balance-visual-note { display: block; }
+    .flow-figure figcaption .infographic-open, .balance-visual-note .infographic-open { margin-top: .5rem; }
+    .image-mobile-hint { display: block; margin: .5rem 0 0; color: var(--text-muted); font-size: .83rem; }
+    .page-hero h1 { font-size: clamp(2.35rem, 10vw, 3.3rem); }
+    .flow-grid, .case-primary-grid, .next-grid, .measurement-steps, .readiness-steps { grid-template-columns: 1fr; }
+    .flow-card, .flow-card:last-child { grid-column: auto; min-height: 0; }
+    .flow-card small { margin-top: .9rem; }
+    .case-group-heading, .adjacent-heading, .adjacent-case, .ledger-row { grid-template-columns: 1fr; gap: .5rem; }
+    .case-card--study { display: flex; grid-column: auto; }
+    .adjacent-case { padding: 1.2rem 0; }
+    .ledger-links { grid-column: auto; }
+    .hero-signals ol { grid-template-columns: 1fr; }
+    .next-grid > :last-child { grid-column: auto; }
+    .instrument-list > div { grid-template-columns: 1fr; gap: .35rem; }
+    .measurement-steps { gap: 1rem; }
+    .next-card { min-height: 0; }
+    .next-card p { margin-top: .4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .next-card { transition: none; }
+    .next-card:hover, .next-card:focus-visible { transform: none; }
+  }
+</style>

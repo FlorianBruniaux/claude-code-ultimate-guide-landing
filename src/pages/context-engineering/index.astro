@@ -184,7 +184,7 @@ const useCaseMatrix = [
           <span class="section-badge">The Shift</span>
           <h2 class="section-title">From prompt engineering to context engineering</h2>
           <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture: what the model knows before any request begins.</p>
-          <p>When Claude generates generic output, ignores a convention, or hallucinates, the model is almost never broken. The context it received was incomplete, stale, or carrying too much noise. That reframe shifts troubleshooting from "the AI is bad at this" to "what is missing from the context?"</p>
+          <p>When Claude generates generic output or ignores a convention, inspect the context it actually received before blaming the model. Missing, stale or noisy context is one possible cause; model limits and failed checks are others. The useful question is which cause the evidence supports.</p>
           <p>The tools on this page attack that problem from different angles: compressing what enters the context, filtering what shouldn't, routing intelligently, and measuring the results.</p>
         </div>
         <div class="comparison-table-wrap">
@@ -226,6 +226,20 @@ const useCaseMatrix = [
           </table>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="pull-the-context-that-the-current-decision-needs">
+    <div class="container">
+      <span class="section-badge">Lean applied to context</span>
+      <h2 id="pull-the-context-that-the-current-decision-needs" class="section-title">Pull the context the decision needs</h2>
+      <p class="section-subtitle">Just-in-Time is an analogy here, not a claim that a smaller prompt makes a software team Lean. Start with one recurring task and the decision it must make.</p>
+      <div class="concepts-grid">
+        <div class="concept-card"><h3>Trace the source</h3><p>Record the authoritative file, revision or retrieval time, and the relevant behavior. A repository path alone does not show that the agent saw current information.</p></div>
+        <div class="concept-card"><h3>Trace the use</h3><p>Separate information present, generated, loaded and used. Check the resulting decision against a known failure and a nearby valid case.</p></div>
+        <div class="concept-card"><h3>Trace the effect</h3><p>Compare reviewer corrections, rework and the downstream result for similar tasks. Count retrieval and maintenance cost before turning a local fix into a permanent rule.</p></div>
+      </div>
+      <p><a href="/guide/agent-harness/#lean-countermeasure-loop-for-a-repository-harness">Test the corresponding harness control</a> and <a href="/lean-ai/">follow the full request to the user</a>.</p>
     </div>
   </section>
 

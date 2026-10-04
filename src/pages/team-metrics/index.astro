@@ -2,18 +2,18 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Team Metrics for AI-Augmented Engineering | Claude Code Guide'
-const description = 'DORA, SPACE, DX Core 4: metrics that matter when AI writes 70%+ of your code. A framework for 5-to-25-person teams, Monte Carlo delivery forecasting, and a playbook for reporting capacity to a board that doubts you.'
+const description = 'Measure delivery, review capacity, product outcomes and human effort in AI-assisted engineering. Use DORA and SPACE alongside a service-level verification queue.'
 
 const jsonLd = [
   {
     "@type": "Article",
     "headline": "Team Metrics for AI-Augmented Engineering",
-    "description": "DORA, SPACE, DX Core 4, Monte Carlo forecasting, and board-reporting guidance for teams where AI writes most of the code.",
+    "description": "DORA, SPACE, review-capacity and product-outcome measures for AI-assisted engineering teams.",
     "url": "https://cc.bruniaux.com/team-metrics/",
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-04-03",
-    "dateModified": "2026-08-30",
+    "dateModified": "2026-10-02",
     "inLanguage": "en",
     "audience": { "@type": "Audience", "audienceType": "Engineering managers, tech leads, CTOs" }
   }
@@ -154,7 +154,7 @@ const externalSources = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-04-03" modifiedDate="2026-08-30">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-04-03" modifiedDate="2026-10-02">
 
   <!-- Hero -->
   <header class="page-hero">
@@ -166,7 +166,7 @@ const externalSources = [
         <span class="hero-badge hero-badge--secondary">Board Playbook</span>
       </div>
       <h1>Pilot your AI-augmented team</h1>
-      <p class="tagline">The metrics that actually matter when AI writes 70% of your code.</p>
+      <p class="tagline">Measure what reaches users, where verification waits, and what the team spends to get there.</p>
       <div class="cta-buttons">
         <a href="#framework" class="btn btn-primary">View the Framework →</a>
         <a href={guideUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Full Guide →</a>
@@ -235,6 +235,11 @@ const externalSources = [
           </div>
         ))}
       </div>
+      <aside class="flow-note" aria-labelledby="flow-note-title">
+        <h3 id="flow-note-title">When coding speeds up, check the verification queue</h3>
+        <p>Count changes ready for review, accepted changes, the oldest waiting item, active reviewer time and corrective work for one service. If new authoring outruns verification, pause admission under a rule agreed by the owner while existing reviews continue. This is a proposed control, not a measured gain.</p>
+        <a href="/guide/loop-graph-engineering/#limit-admission-to-verification-capacity">Read the review-admission method →</a>
+      </aside>
     </div>
   </section>
 
@@ -469,6 +474,31 @@ const externalSources = [
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+}
+
+.flow-note {
+  margin-top: var(--space-xl);
+  padding: var(--space-xl);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--border-radius);
+  background: var(--surface-elevated);
+}
+
+.flow-note h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.flow-note p {
+  margin: 0 0 0.75rem;
+  color: var(--text-secondary);
+  max-width: 72ch;
+}
+
+.flow-note a {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .metric-card {

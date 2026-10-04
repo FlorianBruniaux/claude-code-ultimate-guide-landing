@@ -126,6 +126,7 @@ export const navigationSections: HeaderNavigationSection[] = [
           { href: '/guide/enterprise-governance/', label: 'Enterprise Governance', description: 'Define usage charters, approvals, and risk tiers.' },
           { href: '/guide/adoption-approaches/', label: 'Team Adoption', description: 'Plan rollout, trust calibration, and shared practice.' },
           { href: '/team-metrics/', label: 'Team Metrics', description: 'Measure outcomes without turning proxies into productivity.' },
+          { href: '/lean-ai/', label: 'Lean and AI', description: 'Trace work from demand to accepted user outcome.' },
           { href: '/guide/team-knowledge-base/', label: 'Team Knowledge', description: 'Preserve and share operational context across teams.' },
           { href: '/finops/', label: 'AI FinOps', description: 'Cost regimes, levers, and dated market prices.' },
           { href: '/token-savings/', label: 'Token-saving tools, measured', description: 'A catalogue of 45 tools, eight public benchmarks and 15 preprints.' },

@@ -502,7 +502,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-guide",
     "title": "Context Engineering Guide",
-    "keywords": "context engineering guide guide core context engineering context engineering what is guide core context engineering md#1 what context engineering context engineering budget guide core context engineering md#2 the context budget context engineering hierarchy guide core context engineering md#3 configuration hierarchy context engineering modular guide core context engineering md#4 modular architecture context engineering team guide core context engineering md#5 team assembly context engineering lifecycle guide core context engineering md#6 context lifecycle context engineering quality guide core context engineering md#7 quality measurement context engineering reduction guide core context engineering md#8 context reduction techniques context engineering maturity guide core context engineering md#9 maturity assessment context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution context loop closure guide core context engineering md#11 loop closure based curation context ejection guide core context engineering md#12 ejection disciplined engineering context self audit guide core context engineering md#13 constitutional and self consistency audits context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation context engineering token audit guide core context engineering md#15 token audit workflow context engineering research guide core context engineering md#16 research patterns what the literature shows context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability context lost in middle guide core context engineering md#the lost the middle problem context primacy recency placement guide core context engineering md#primacy and recency placement context persistent facts block guide core context engineering md#persistent facts block context scratchpad pattern guide core context engineering md#scratchpad pattern context rolling summaries guide core context engineering md#rolling context summaries context engineering compression tools guide core context engineering md#18 token compression tools context 150 ceiling guide core context engineering md#2 the context budget context ace pipeline guide core context engineering md#6 context lifecycle context path scoping guide core context engineering md#4 modular architecture context maturity model guide core context engineering md#7 quality measurement",
+    "keywords": "context engineering guide guide core context engineering context engineering what is guide core context engineering md#1 what context engineering context engineering budget guide core context engineering md#2 the context budget context engineering hierarchy guide core context engineering md#3 configuration hierarchy context engineering modular guide core context engineering md#4 modular architecture context engineering team guide core context engineering md#5 team assembly context engineering lifecycle guide core context engineering md#6 context lifecycle context engineering quality guide core context engineering md#7 quality measurement context engineering reduction guide core context engineering md#8 context reduction techniques context engineering maturity guide core context engineering md#9 maturity assessment context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution context loop closure guide core context engineering md#11 loop closure based curation context ejection guide core context engineering md#12 ejection disciplined engineering context self audit guide core context engineering md#13 constitutional and self consistency audits context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation context engineering token audit guide core context engineering md#15 token audit workflow context engineering research guide core context engineering md#16 research patterns what the literature shows context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability context lost in middle guide core context engineering md#the lost the middle problem context primacy recency placement guide core context engineering md#primacy and recency placement context persistent facts block guide core context engineering md#persistent facts block context scratchpad pattern guide core context engineering md#scratchpad pattern context rolling summaries guide core context engineering md#rolling context summaries context engineering compression tools guide core context engineering md#18 token compression tools context engineering lean pull guide core context engineering md#pull the context that the current decision needs context 150 ceiling guide core context engineering md#2 the context budget context ace pipeline guide core context engineering md#6 context lifecycle context path scoping guide core context engineering md#4 modular architecture context maturity model guide core context engineering md#7 quality measurement",
     "category": "Guide",
     "url": "/context-engineering/",
     "source": "guide"
@@ -745,6 +745,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness control tests guide core agent harness md#test the control and its permitted path",
     "category": "Guide",
     "url": "/guide/agent-harness/#test-the-control-and-its-permitted-path",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-lean-countermeasure",
+    "title": "Agent Harness Lean Countermeasure",
+    "keywords": "agent harness lean countermeasure guide core agent harness md#lean countermeasure loop for repository harness",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#lean-countermeasure-loop-for-a-repository-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-software-factory-complete-unit",
+    "title": "Software Factory Complete Unit",
+    "keywords": "software factory complete unit guide workflows agentic software factories md#the constraint moves upstream what worth building agentic software factories upstream constraint guide workflows agentic software factories md#the constraint moves upstream what worth building",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/agentic-software-factories/#the-constraint-moves-upstream-to-what-is-worth-building",
+    "source": "guide"
+  },
+  {
+    "id": "guide-methodologies-lean-lens",
+    "title": "Methodologies Lean Lens",
+    "keywords": "methodologies lean lens guide core methodologies md#lean software engineering delivery lens lean software method comparison guide core methodologies md#lean software engineering delivery lens",
+    "category": "Guide",
+    "url": "/guide/methodologies/#lean-software-engineering-as-a-delivery-lens",
     "source": "guide"
   },
   {
@@ -2078,9 +2102,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-review-admission-control",
     "title": "Review Admission Control",
-    "keywords": "review admission control guide core loop graph engineering md#limit admission verification capacity",
+    "keywords": "review admission control guide core loop graph engineering md#limit admission verification capacity lean ai flow adaptation guide core loop graph engineering md#limit admission verification capacity",
     "category": "Guide",
     "url": "/guide/loop-graph-engineering/#limit-admission-to-verification-capacity",
+    "source": "guide"
+  },
+  {
+    "id": "guide-lean-skill-pack-comparison",
+    "title": "Lean Skill Pack Comparison",
+    "keywords": "lean skill pack comparison guide core methodologies md#skill packs useful controls not lean result",
+    "category": "Guide",
+    "url": "/guide/methodologies/#skill-packs-useful-controls-not-a-lean-result",
     "source": "guide"
   },
   {
@@ -4769,14 +4801,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agentic software factories operating model guide workflows agentic software factories md#a software factory operating model",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agentic-software-factories/#a-software-factory-is-an-operating-model",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agentic-software-factories-upstream-constraint",
-    "title": "Agentic Software Factories Upstream Constraint",
-    "keywords": "agentic software factories upstream constraint guide workflows agentic software factories md#the constraint moves upstream what worth building",
-    "category": "Guide > Workflows",
-    "url": "/guide/workflows/agentic-software-factories/#the-constraint-moves-upstream-to-what-is-worth-building",
     "source": "guide"
   },
   {
