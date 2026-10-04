@@ -1,0 +1,29 @@
+CHANGELOG.md
+  s_0442fc18126ac8::t_4043c52f6c7f84 7-10
+src/content/cheatsheets/c03-xml-prompting-anchors.md
+  s_0442fc18126ac8::t_e240ef6c1df792 7,13,57,59,61-64,67-69
+src/data/examples-data.ts
+  s_0442fc18126ac8::t_4bacb15d7e7d34 437,439
+src/data/glossary-data.ts
+  s_0442fc18126ac8::t_80daccb22c312f 118
+src/data/recap-cards-data.ts
+  s_0442fc18126ac8::t_ac7394b97e08c6 63-64,73,141
+src/pages/examples/[slug].astro
+  s_0442fc18126ac8::t_3fb02cec6c0d3a 349
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b721b278f3ffef0f53340ec16df94d846cf27d0f",
+  "prompts": {},
+  "sessions": {
+    "s_0442fc18126ac8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10267-4837-7722-820f-e80524de00a5",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
