@@ -607,7 +607,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-ecosystem-1-perplexity-ai-research-sourcing",
     "title": "1. Perplexity AI (research & sourcing)",
-    "keywords": "1 perplexity ai research sourcing ai ecosystem maximizing claude code with complementary tools complementarity diagram the following diagram illustrates how perplexity and claude code complement each other across the development workflow: ```mer complementarity diagram decision flow when to use perplexity over claude perplexity pro features for developers integration workflow pattern 1 research spec code pattern 2 parallel pane workflow comparison claude websearch vs perplexity",
+    "keywords": "1 perplexity ai research sourcing ai ecosystem maximizing claude code with complementary tools complementarity diagram the following diagram illustrates how perplexity and claude code complement each other across the development workflow: <div c complementarity diagram decision flow when to use perplexity over claude perplexity pro features for developers integration workflow pattern 1 research spec code pattern 2 parallel pane workflow comparison claude websearch vs perplexity",
     "category": "Core Guides",
     "url": "/guide/ai-ecosystem/#1-perplexity-ai-research-sourcing",
     "source": "guide"
@@ -5183,7 +5183,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-local-vs-cloud-inference-decision-diagram",
     "title": "Decision diagram",
-    "keywords": "decision diagram local vs cloud llm hardware and inference economics ```mermaid flowchart td a([need to run a large llm]) -- b{data must stay on hardware you own?} b -- yes c{need over 70b or max quality?} b -- no d{usa",
+    "keywords": "decision diagram local vs cloud llm hardware and inference economics <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"local-vs-cloud-inference-1-light\" width=\"100%\" xmlns=\"http://www.",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#decision-diagram",
     "source": "guide"
@@ -5575,7 +5575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-memory-systems-8-decision-frameworks",
     "title": "8. Decision frameworks",
-    "keywords": "8 decision frameworks memory systems 8.1 decision flowchart ```mermaid flowchart td a[what is your memory use case?] -- b{solo or team?} b -- solo c{multiple machines?} b -- team t{infras 8 1 decision flowchart 8 2 decision matrix 8 3 implementation patterns",
+    "keywords": "8 decision frameworks memory systems 8.1 decision flowchart <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"memory-systems-0-light\" width=\"100%\" xmlns 8 1 decision flowchart 8 2 decision matrix 8 3 implementation patterns",
     "category": "Core Guides",
     "url": "/guide/memory-systems/#8-decision-frameworks",
     "source": "guide"
@@ -6263,7 +6263,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-isolation-2-isolation-approaches",
     "title": "2. Isolation approaches",
-    "keywords": "2 isolation approaches sandbox isolation for coding agents ---",
+    "keywords": "2 isolation approaches sandbox isolation for coding agents <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"sandbox-isolation-0-light\" width=\"100%\" xmlns=\"http://www.w3.org/",
     "category": "Core Guides",
     "url": "/guide/sandbox-isolation/#2-isolation-approaches",
     "source": "guide"
@@ -6415,7 +6415,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-sandbox-native-10-decision-tree-native-vs-docker-sandboxes",
     "title": "10. Decision tree: Native vs Docker Sandboxes",
-    "keywords": "10 decision tree native vs docker sandboxes native sandboxing in claude code comparison matrix aspect native sandbox docker sandboxes comparison matrix",
+    "keywords": "10 decision tree native vs docker sandboxes native sandboxing in claude code <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"sandbox-native-1-light\" width=\"100%\" xmlns=\"http://www.w3.org/200 comparison matrix",
     "category": "Core Guides",
     "url": "/guide/sandbox-native/#10-decision-tree-native-vs-docker-sandboxes",
     "source": "guide"
@@ -6458,6 +6458,14 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "keywords": "tl dr decision matrix security hardening guide your situation immediate action time ---------------- ------------------ ------ solo dev, public repos install output scanner hook 5 min team, sensiti",
     "category": "Core Guides",
     "url": "/guide/security-hardening/#tl-dr-decision-matrix",
+    "source": "guide"
+  },
+  {
+    "id": "gc-security-hardening-october-2026-review",
+    "title": "October 2026 review",
+    "keywords": "october 2026 review security hardening guide reviewed october 4, 2026. twelve additional maintainer advisories were reviewed since september 24. the versions below cover these disclosures; check",
+    "category": "Core Guides",
+    "url": "/guide/security-hardening/#october-2026-review",
     "source": "guide"
   },
   {
@@ -14983,7 +14991,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-support-csm-agent-flow",
     "title": "Flow",
-    "keywords": "flow support csm agent internal ticket triage and account diagnosis the human-review step (h) is not optional and should not get automated away, even once the agent's accuracy looks good in practice. it's the control t",
+    "keywords": "flow support csm agent internal ticket triage and account diagnosis <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"workflows-support-csm-agent-0-light\" width=\"100%\" xmlns=\"http://w",
     "category": "Workflows",
     "url": "/guide/workflows/support-csm-agent/#flow",
     "source": "guide"

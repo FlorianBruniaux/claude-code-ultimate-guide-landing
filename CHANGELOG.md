@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **AgentSec feed 2.31.0 (October 4, 2026)**: synchronized 184 canonical advisory records, 94 sources and 81 events; regenerated the 193-record compatibility catalogue without dropping nine historical guide-only entries. The 12 additions remain `not_detected`. Updated feed metadata expectations and regenerated both guide search indexes for the October security review. No detector coverage change.
+
 - Put Lean & AI in the October announcement banner, while keeping four links and resetting the dismissed state for the new message.
 
 - Add a worked legacy-change example to `/lean-ai/` and a Lean decision trail to `/context-engineering/`: distinguish a valid citation from correct behavior, test the actual edit path, finish one releasable unit before parallelism, and link context, harness, methodology and factory guidance. Label the controls as proposed and track their review cost.

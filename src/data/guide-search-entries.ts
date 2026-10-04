@@ -1814,9 +1814,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-gstack-browse-non-mcp",
     "title": "Gstack Browse Non MCP",
-    "keywords": "gstack browse non mcp guide workflows gstack workflow md#browse non mcp native browser automation",
+    "keywords": "gstack browse non mcp guide workflows gstack workflow md#browser and browse",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/gstack-workflow/#browse-non-mcp-native-browser-automation",
+    "url": "/guide/workflows/gstack-workflow/#browser-qa-qa-and-browse",
     "source": "guide"
   },
   {
@@ -6225,6 +6225,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "production safety guide security production safety",
     "category": "Guide",
     "url": "/guide/production-safety/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-october-2026",
+    "title": "Security October 2026",
+    "keywords": "security october 2026 guide security security hardening md#october 2026 review",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#october-2026-review",
     "source": "guide"
   },
   {
