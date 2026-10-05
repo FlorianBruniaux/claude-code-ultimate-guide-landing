@@ -1,0 +1,33 @@
+public/llms-full.txt
+  s_160b3107588443::t_87ce02d6ddd9c8 61,68
+public/llms.txt
+  s_160b3107588443::t_412df1b5467894 58,65
+src/data/guide-content-entries.ts
+  s_0f4216fdd2c8ac::t_3c0bfc94ab288c 3,610,1962,1970,2002,2018,2058,2066,3402,5186,5578,6266,6418,14994
+src/data/guide-search-entries.ts
+  s_0f4216fdd2c8ac::t_b5bdf952ce6ab4 1785,1790-1797
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a6cc9478f67326b4142ea9ca32471319a258fce9",
+  "prompts": {},
+  "sessions": {
+    "s_0f4216fdd2c8ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10107-9a2f-7962-b3b2-1e3bab1cdf97",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_160b3107588443": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a106f2-069b-7be2-aa09-88b1bbf2331e",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
