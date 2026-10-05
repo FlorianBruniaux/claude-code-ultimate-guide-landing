@@ -1,0 +1,21 @@
+astro.config.mjs
+  s_e5007346b6f028::t_aa92e80bf122ae 26,37
+src/data/mcp-discovery.test.ts
+  s_e5007346b6f028::t_8ca3151667516a 53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "82267a3d184c3c235852399f6faa00f0854e3f9f",
+  "prompts": {},
+  "sessions": {
+    "s_e5007346b6f028": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10b0e-e938-75c0-8af5-8513ebc5272f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
