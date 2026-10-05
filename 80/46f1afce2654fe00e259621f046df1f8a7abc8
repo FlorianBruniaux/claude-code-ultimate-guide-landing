@@ -1,0 +1,19 @@
+src/data/glossary-data.ts
+  s_29517a6821ea0b::t_0a750848666555 173,183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8046f1afce2654fe00e259621f046df1f8a7abc8",
+  "prompts": {},
+  "sessions": {
+    "s_29517a6821ea0b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10cb1-98b3-7313-90a3-8c704e04cd39",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
