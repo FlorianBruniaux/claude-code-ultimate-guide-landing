@@ -82,10 +82,10 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
         <p class="snapshot-note">Public runtime measured <time datetime={mcp.snapshotAt}>{runtimeSnapshotDate}</time>. Server handshake: <code>{mcp.serverName} {mcp.serverVersion}</code>.</p>
       </div>
       <div class="hero-install">
-        <McpTerminal command={mcp.installCommand} label="Run the published package" />
+        <McpTerminal command={mcp.installCommand} label="Run the published package" client="any" packageVersion={mcp.publicVersion} ctaPosition="hero" />
         <div class="hero-actions">
           <a class="btn btn-primary" href="#compatibility">Install in your client</a>
-          <a class="btn btn-secondary" href={`https://www.npmjs.com/package/${mcp.packageName}`} target="_blank" rel="noopener">View on npm</a>
+          <a class="btn btn-secondary" data-mcp-link-event="mcp_npm_click" data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="hero" href={`https://www.npmjs.com/package/${mcp.packageName}`} target="_blank" rel="noopener">View on npm</a>
         </div>
       </div>
     </div>
@@ -98,8 +98,10 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
         <h2 class="section-title" id="first-query">Ask for a source, not a summary</h2>
         <p class="section-subtitle">This request makes the result inspectable. The client first finds a relevant section, then opens the source it will use.</p>
       </div>
-      <div class="query-card">
+      <div class="query-card" data-mcp-query data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="first-query">
         <blockquote>Search the Claude Code Ultimate Guide for session-scoped hooks. Open the most relevant source section and cite its path and heading.</blockquote>
+        <button type="button" class="btn btn-secondary query-copy" data-copy-query hidden>Copy first query</button>
+        <p class="query-copy-status" data-query-status aria-live="polite" aria-atomic="true"></p>
         <ol>
           <li><code>search_guide</code> locates candidate sections.</li>
           <li><code>read_section</code> retrieves the selected source.</li>
@@ -164,12 +166,12 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
         <div>
           <h3>Claude Code</h3>
           <p>The user scope makes the guide available across projects.</p>
-          <McpTerminal command={claudeCommand} label="Claude Code user scope" />
+          <McpTerminal command={claudeCommand} label="Claude Code user scope" client="claude-code" packageVersion={mcp.publicVersion} ctaPosition="client-setup" />
         </div>
         <div>
           <h3>Codex</h3>
           <p>Codex stores the MCP entry in its client configuration.</p>
-          <McpTerminal command={codexCommand} label="Codex MCP configuration" />
+          <McpTerminal command={codexCommand} label="Codex MCP configuration" client="codex" packageVersion={mcp.publicVersion} ctaPosition="client-setup" />
         </div>
       </div>
       <p class="compatibility-note">The server requires Node.js 18.14.1 or newer. Other clients can work when they support local stdio servers and command arguments, but they are not all tested here.</p>
@@ -250,14 +252,20 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
         <p>Read the installation details, network behavior, measurement method, and public contract in the technical reference.</p>
       </div>
       <div class="source-links">
-        <a class="btn btn-primary" href="/guide/claude-code-guide-mcp/">Read the MCP technical reference</a>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">Inspect the MCP source on GitHub →</a>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-public-runtime.json" target="_blank" rel="noopener">Inspect the public runtime snapshot →</a>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-stats.json" target="_blank" rel="noopener">Inspect the npm metrics snapshot →</a>
+        <a class="btn btn-primary" data-mcp-link-event="mcp_source_open" data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="technical-reference" href="/guide/claude-code-guide-mcp/">Read the MCP technical reference</a>
+        <a data-mcp-link-event="mcp_source_open" data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="source-code" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/mcp-server" target="_blank" rel="noopener">Inspect the MCP source on GitHub →</a>
+        <a data-mcp-link-event="mcp_source_open" data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="runtime-snapshot" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-public-runtime.json" target="_blank" rel="noopener">Inspect the public runtime snapshot →</a>
+        <a data-mcp-link-event="mcp_source_open" data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="npm-snapshot" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/mcp-stats.json" target="_blank" rel="noopener">Inspect the npm metrics snapshot →</a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  import { initMcpPageActions } from '../../scripts/mcp-analytics.ts'
+
+  initMcpPageActions()
+</script>
 
 <style>
   .mcp-hero { padding: clamp(3rem, 7vw, 6rem) 0; }
@@ -278,6 +286,9 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
   .section-subtitle { max-width: 760px; }
   .query-card { padding: clamp(1.25rem, 3vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
   blockquote { margin: 0; padding-left: 1.15rem; color: var(--text-primary); border-left: 3px solid var(--accent); font-size: 1.08rem; font-weight: 580; line-height: 1.65; }
+  .query-copy { margin-top: 1rem; }
+  .query-copy[hidden] { display: none; }
+  .query-copy-status { min-height: 1.5rem; margin: 0.4rem 0 0; color: var(--text-secondary); font-size: 0.85rem; }
   .query-card ol { margin: 1.25rem 0 0; padding-left: 1.3rem; color: var(--text-secondary); }
   .query-card li + li { margin-top: 0.55rem; }
   .use-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }

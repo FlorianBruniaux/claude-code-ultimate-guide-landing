@@ -33,8 +33,8 @@ test('uses the exact audited metadata values for guide pages', () => {
       description: 'What Claude Code sends to Anthropic, retention by plan, training controls, MCP exposure, and safeguards for sensitive data.',
     },
     'guide/core/hooks-events-reference.md': {
-      title: 'Claude Code Hooks: 30 Event Reference',
-      description: 'Reference for 30 Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples.',
+      title: 'Claude Code Hooks: Events & JSON',
+      description: 'Reference for Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples.',
     },
     'guide/ecosystem/third-party-tools.md': {
       title: 'Claude Code Tools: RTK, ccusage & GUIs',

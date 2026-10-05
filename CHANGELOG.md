@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **Visibility follow-up**: server-render the examples catalog and its 50 detail links, add related guide links, remove a stale hook-event count, track successful MCP copies and source clicks, prepare IndexNow ownership, and add a credential-gated daily GitHub traffic archive. Preserve dated Google/page baselines and the first real GitHub observation; search gains and GA4 receipt remain unverified.
+
 - **MCP 1.3.5 public release**: refresh the MCP installation commands and public runtime evidence in all three LLM discovery files. Rebuild the MCP landing from the measured npm 1.3.5 runtime and matching public statistics, preserving 17 tools, 6 resources and 1 prompt.
 
 - **AgentSec feed 2.31.0 (October 4, 2026)**: synchronized 184 canonical advisory records, 94 sources and 81 events; regenerated the 193-record compatibility catalogue without dropping nine historical guide-only entries. The 12 additions remain `not_detected`. Updated feed metadata expectations and regenerated both guide search indexes for the October security review. No detector coverage change.

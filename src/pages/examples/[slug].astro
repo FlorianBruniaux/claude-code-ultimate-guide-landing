@@ -1,13 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { EXAMPLES, type ExampleFile } from '../../data/examples-data'
+import { exampleLinks } from '../../utils/example-links'
 import { getSiteStats } from '../../utils/site-stats'
+import { examplePageSlug as slugify, getExamplePages } from '../../utils/example-pages'
 
 const stats = await getSiteStats()
-
-export function slugify(str: string): string {
-  return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-')
-}
 
 function inferCategory(path: string): string {
   const parts = path.split('/')
@@ -382,12 +380,7 @@ const allExamples: FlatExample[] = Object.entries(EXAMPLES).flatMap(([categoryKe
 )
 
 export function getStaticPaths() {
-  const allEx: FlatExample[] = Object.entries(EXAMPLES).flatMap(([categoryKey, category]) =>
-    category.files.map((file) => ({ ...file, categoryKey }))
-  )
-  const favs = allEx.filter((ex) => ex.favorite)
-  const nonFavs = allEx.filter((ex) => !ex.favorite && ex.name.length < 30)
-  const top = [...favs, ...nonFavs.slice(0, 50 - favs.length)]
+  const top = getExamplePages()
 
   return top.map((ex) => ({
     params: { slug: slugify(ex.name) },
@@ -414,7 +407,16 @@ const related = allExamples
   )
   .slice(0, 4)
 
-const GITHUB_BASE = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/'
+const sourceLinks = exampleLinks(example.path)
+const conceptLinks: Record<string, { href: string; label: string }> = {
+  agents: { href: '/guide/ultimate-guide/04-agents/', label: 'Configure and use custom agents' },
+  skills: { href: '/guide/skill-design-patterns/', label: 'Design reusable Claude Code skills' },
+  commands: { href: '/guide/ultimate-guide/06-commands/', label: 'Create and use slash commands' },
+  'hooks-bash': { href: '/guide/hooks-events-reference/', label: 'Choose hook events, matchers, and exit behavior' },
+  'hooks-powershell': { href: '/guide/hooks-events-reference/', label: 'Choose hook events, matchers, and exit behavior' },
+  'context-engineering': { href: '/guide/context-engineering/', label: 'Structure and measure your agent context' },
+}
+const conceptLink = conceptLinks[categoryKey]
 
 const title = `${example.name} | Claude Code Templates`
 const description = `${example.name}: ${example.description}. Ready-to-use Claude Code template. Copy and adapt for your .claude/ setup.`
@@ -462,7 +464,7 @@ const jsonLd = [
       <p class="ex-description">{example.description}</p>
       <div class="ex-actions">
         <a
-          href={GITHUB_BASE + example.path}
+          href={sourceLinks.github}
           class="btn btn-primary"
           target="_blank"
           rel="noopener"
@@ -518,6 +520,13 @@ const jsonLd = [
           </li>
         </ol>
       </section>
+
+      {conceptLink && (
+        <section class="ex-section">
+          <h2>Understand the configuration</h2>
+          <p><a href={conceptLink.href}>{conceptLink.label} →</a></p>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section class="ex-section">

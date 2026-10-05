@@ -2,12 +2,15 @@
 interface Props {
   command: string
   label?: string
+  client?: string
+  packageVersion?: string
+  ctaPosition?: string
 }
 
-const { command, label = 'Terminal' } = Astro.props
+const { command, label = 'Terminal', client, packageVersion, ctaPosition } = Astro.props
 ---
 
-<div class="mcp-terminal" data-command-shell data-command={command}>
+<div class="mcp-terminal" data-command-shell data-command={command} data-mcp-client={client} data-mcp-version={packageVersion} data-mcp-position={ctaPosition}>
   <div class="terminal-head">
     <span class="terminal-label">{label}</span>
     <button type="button" class="copy-command" data-copy-command hidden>
@@ -22,6 +25,8 @@ const { command, label = 'Terminal' } = Astro.props
 </div>
 
 <script>
+  import { trackMcpEvent } from '../../scripts/mcp-analytics.ts'
+
   document.querySelectorAll<HTMLElement>('[data-command-shell]').forEach((shell) => {
     const button = shell.querySelector<HTMLButtonElement>('[data-copy-command]')
     const status = shell.querySelector<HTMLElement>('.copy-status')
@@ -36,6 +41,7 @@ const { command, label = 'Terminal' } = Astro.props
         await navigator.clipboard.writeText(command)
         button.textContent = 'Copied'
         status.textContent = 'Command copied.'
+        trackMcpEvent('mcp_install_copy', shell)
       } catch {
         button.textContent = 'Copy command'
         status.textContent = 'Copy failed. Select the command and copy it manually.'

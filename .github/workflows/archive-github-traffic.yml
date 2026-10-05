@@ -1,0 +1,52 @@
+name: Archive GitHub Traffic
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 6 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-github-traffic
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    # Scheduled collection starts only after the dedicated credential is configured.
+    if: github.event_name == 'workflow_dispatch' || vars.GITHUB_TRAFFIC_ARCHIVE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test archive integrity
+        run: python3 scripts/github-traffic-test.py
+      - name: Require a credential for the guide repository
+        env:
+          TRAFFIC_TOKEN: ${{ secrets.GUIDE_TRAFFIC_READ_TOKEN }}
+        run: |
+          if [ -z "$TRAFFIC_TOKEN" ]; then
+            echo 'GUIDE_TRAFFIC_READ_TOKEN missing. Guide traffic is UNKNOWN; no archive will be written.' >&2
+            exit 1
+          fi
+      - name: Collect the complete rolling window
+        env:
+          GH_TOKEN: ${{ secrets.GUIDE_TRAFFIC_READ_TOKEN }}
+        run: |
+          archive="data/github-traffic/$(date -u +%F).json"
+          if [ -f "$archive" ]; then
+            echo 'Today already has an archive; preserving the existing observation.'
+            exit 0
+          fi
+          python3 scripts/github-traffic.py --repo FlorianBruniaux/claude-code-ultimate-guide
+      - name: Commit daily evidence
+        run: |
+          git add -- data/github-traffic/
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore(metrics): archive GitHub traffic window'
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

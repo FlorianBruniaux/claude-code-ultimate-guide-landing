@@ -3391,7 +3391,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-quick-reference",
     "title": "Quick reference",
-    "keywords": "quick reference claude code hooks 30 event reference event fires when matcher field can block? default timeout ------- ----------- --------------- ------------ ---------------- session begins or resumes",
+    "keywords": "quick reference claude code hooks events json event fires when matcher field can block? default timeout ------- ----------- --------------- ------------ ---------------- session begins or resumes",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#quick-reference",
     "source": "guide"
@@ -3399,7 +3399,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-matcher-values-by-event",
     "title": "Matcher values by event",
-    "keywords": "matcher values by event claude code hooks 30 event reference the field filters on a different field depending on the event type. tool events: matcher filters on events: , , , , values: , , , , , , , , , , , and tool events matcher filters on tool name sessionstart matcher filters on source setup matcher filters on trigger sessionend matcher filters on reason notification matcher filters on notification type subagentstart subagentstop matcher filters on agent type precompact postcompact matcher f",
+    "keywords": "matcher values by event claude code hooks events json the field filters on a different field depending on the event type. tool events: matcher filters on events: , , , , values: , , , , , , , , , , , and tool events matcher filters on tool name sessionstart matcher filters on source setup matcher filters on trigger sessionend matcher filters on reason notification matcher filters on notification type subagentstart subagentstop matcher filters on agent type precompact postcompact matcher f",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#matcher-values-by-event",
     "source": "guide"
@@ -3407,7 +3407,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-exit-code-2-behavior-per-event",
     "title": "Exit code 2 behavior per event",
-    "keywords": "exit code 2 behavior per event claude code hooks 30 event reference exit code 2 is the only exit code that blocks through the code alone. claude code reads json output fields from stdout on every exit code, not only 0:",
+    "keywords": "exit code 2 behavior per event claude code hooks events json exit code 2 is the only exit code that blocks through the code alone. claude code reads json output fields from stdout on every exit code, not only 0:",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#exit-code-2-behavior-per-event",
     "source": "guide"
@@ -3415,7 +3415,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-decision-control-format-per-event",
     "title": "Decision control format per event",
-    "keywords": "decision control format per event claude code hooks 30 event reference top-level field used by: , , , , , , , , only is valid. omit to allow. for and , the becomes claude's next instruction. pretooluse uses for richer con top level decision field pretooluse premodelswitch taskcreated permissionrequest permissiondenied posttooluse worktreecreate messagedisplay sessionstart additional fields elicitation elicitationresult universal fields all events",
+    "keywords": "decision control format per event claude code hooks events json top-level field used by: , , , , , , , , only is valid. omit to allow. for and , the becomes claude's next instruction. pretooluse uses for richer con top level decision field pretooluse premodelswitch taskcreated permissionrequest permissiondenied posttooluse worktreecreate messagedisplay sessionstart additional fields elicitation elicitationresult universal fields all events",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#decision-control-format-per-event",
     "source": "guide"
@@ -3423,7 +3423,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-key-input-fields-per-event",
     "title": "Key input fields per event",
-    "keywords": "key input fields per event claude code hooks 30 event reference all events receive: , , , , and usually . subagent hooks also receive and . event event-specific extra input fields ------- --------------------------",
+    "keywords": "key input fields per event claude code hooks events json all events receive: , , , , and usually . subagent hooks also receive and . event event-specific extra input fields ------- --------------------------",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#key-input-fields-per-event",
     "source": "guide"
@@ -3431,7 +3431,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-hook-handler-fields",
     "title": "Hook handler fields",
-    "keywords": "hook handler fields claude code hooks 30 event reference common fields (all types) field description ------- ------------- , , , , or permission rule syntax to narrow the handler. tool events only ( , , , , common fields all types command hook fields http hook fields mcp tool hook fields prompt hook fields agent hook fields hook type support per event",
+    "keywords": "hook handler fields claude code hooks events json common fields (all types) field description ------- ------------- , , , , or permission rule syntax to narrow the handler. tool events only ( , , , , common fields all types command hook fields http hook fields mcp tool hook fields prompt hook fields agent hook fields hook type support per event",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#hook-handler-fields",
     "source": "guide"
@@ -3439,7 +3439,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-path-placeholders",
     "title": "Path placeholders",
-    "keywords": "path placeholders claude code hooks 30 event reference placeholder resolves to ------------- ------------- project root directory plugin installation directory (changes on update) plugin persistent data di",
+    "keywords": "path placeholders claude code hooks events json placeholder resolves to ------------- ------------- project root directory plugin installation directory (changes on update) plugin persistent data di",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#path-placeholders",
     "source": "guide"
@@ -3447,7 +3447,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-claude-env-file",
     "title": "CLAUDE_ENV_FILE",
-    "keywords": "claude env file claude code hooks 30 event reference available in , , , and hooks. write lines to this path to persist variables into subsequent bash commands for the session. use append ( ) to preserve",
+    "keywords": "claude env file claude code hooks events json available in , , , and hooks. write lines to this path to persist variables into subsequent bash commands for the session. use append ( ) to preserve",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#claude-env-file",
     "source": "guide"
@@ -3455,7 +3455,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-common-gotchas",
     "title": "Common gotchas",
-    "keywords": "common gotchas claude code hooks 30 event reference stop hook continuation cap : both and go through the input and the 8-consecutive-continuation cap. read from stdin and exit 0 when it is to let claude",
+    "keywords": "common gotchas claude code hooks events json stop hook continuation cap : both and go through the input and the 8-consecutive-continuation cap. read from stdin and exit 0 when it is to let claude",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#common-gotchas",
     "source": "guide"
@@ -3463,7 +3463,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-hooks-events-reference-related-material",
     "title": "Related material",
-    "keywords": "related material claude code hooks 30 event reference use the hooks and events recap card",
+    "keywords": "related material claude code hooks events json use the hooks and events recap card",
     "category": "Core Guides",
     "url": "/guide/hooks-events-reference/#related-material",
     "source": "guide"

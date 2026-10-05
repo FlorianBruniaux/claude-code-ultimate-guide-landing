@@ -1,10 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getSiteStats } from '../../utils/site-stats'
+import { EXAMPLES, type ExamplesData } from '../../data/examples-data'
+import { exampleLinks } from '../../utils/example-links'
+import { examplePageSlug, getExamplePages } from '../../utils/example-pages'
 import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
 import { EXAMPLES_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
 
 const stats = await getSiteStats()
+const catalogCategories: ExamplesData = EXAMPLES
+const pagePaths = new Set(getExamplePages().map(example => example.path))
 
 const title = 'Claude Code Templates: Agents, Hooks, Skills | Free'
 const description = 'Browse production-ready Claude Code templates: agents, commands, hooks, skills. One-click copy with syntax highlighting.'
@@ -74,7 +79,29 @@ const jsonLd = [
 
     <div class="stats" id="stats"></div>
 
-    <main id="catalog"></main>
+    <main id="catalog" aria-label="Template catalog">
+      {Object.entries(catalogCategories).map(([categoryId, category]) => (
+        <section class="category expanded" data-category={categoryId} id={categoryId}>
+          <div class="category-header" data-toggle-category={categoryId}>
+            <h2 class="category-title"><span class="category-icon" aria-hidden="true">{category.icon}</span>{category.label || categoryId.replace(/-/g, ' ')} <span class="category-count">{category.files.length}</span></h2>
+          </div>
+          <div class="category-content">
+            <p class="category-description">{category.description}</p>
+            <ul class="file-list">
+              {category.files.map(file => (
+                <li class="file-item" data-path={file.path}>
+                  <div class="file-header"><div class="file-info">
+                    <a class="file-name" href={exampleLinks(file.path).github} target="_blank" rel="noopener">{file.name}</a>
+                    {pagePaths.has(file.path) && <a class="details-link" href={`/examples/${examplePageSlug(file.name)}/`}>Details →</a>}
+                    <p class="file-description">{file.description}</p>
+                  </div></div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))}
+    </main>
 
     <div id="noResults" class="no-results" style="display: none;">
       <div class="no-results-icon">?</div>
@@ -334,6 +361,7 @@ const jsonLd = [
     import bash from 'highlight.js/lib/languages/bash';
     import powershell from 'highlight.js/lib/languages/powershell';
     import plaintext from 'highlight.js/lib/languages/plaintext';
+    import { examplePageSlug as slugify, getExamplePages } from '../../utils/example-pages';
     import { exampleLinks } from '../../utils/example-links';
     import { EXAMPLES, type ExamplesData } from '../../data/examples-data';
 
@@ -345,24 +373,7 @@ const jsonLd = [
     hljs.registerLanguage('plaintext', plaintext);
 
 
-    function slugify(str: string) {
-      return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
-    }
-
-    // Slugs for templates that have individual pages at /examples/[slug]/
-    const PAGES_WITH_SLUG = new Set([
-      'codereviewermd','plannermd','architecturereviewermd','securitychecklistmd','pdfgeneratormd',
-      'guiderecap','prtriage','smartexploremd','evalrules','evalagents','evalhooks',
-      'commit','ship','pr','ciall','landanddeploy','handoffcreate','investigate','scaffold',
-      'commitmd','prmd','releasenotesmd','gitworktreemd','securitycheckmd','checkcachebugsmd',
-      'planstartmd','planvalidatemd','planexecutemd','autoresearchmd','investigatemd',
-      'landanddeploymd','scaffoldmd','ciallmd',
-      'dangerousactionsblockersh','promptinjectiondetectorsh','autorenamesessionsh',
-      'sessionsummarysh','smartsuggestsh','bm25suggestjs',
-      'sandboxnativejson','sessionnamingmd','firstprinciplesmd',
-      'ccsessionspy','smartsuggestroipy','claudecodereviewyml',
-      'securitysuite','modelearningmd','skeletontemplatemd','anchorcatalogmd',
-    ]);
+    const PAGES_WITH_SLUG = new Set(getExamplePages().map(example => slugify(example.name)));
 
     const examples: ExamplesData = EXAMPLES;
     const contentCache: Record<string, string> = {};
