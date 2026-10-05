@@ -58,14 +58,14 @@
 
 ## Guide MCP server
 
-The public runtime snapshot measured 2026-10-05T12:22:09Z reports npm package `claude-code-ultimate-guide-mcp@1.3.5`, 17 tools, 6 resources and 1 prompt. Version 1.3.5 includes the repaired guide index and synchronized translation metadata.
+The public runtime snapshot measured 2026-10-05T18:52:56Z reports npm package `claude-code-ultimate-guide-mcp@1.3.6`, 17 tools, 6 resources and 1 prompt. Version 1.3.6 fixes guide chapter links using ranges calculated from the guide source at package build time.
 
 - Installation and compatibility: https://cc.bruniaux.com/mcp/
 - Public runtime snapshot: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/mcp-public-runtime.json
 - Repository product contract: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/mcp-product.json
 - npm package: https://www.npmjs.com/package/claude-code-ultimate-guide-mcp
 
-`npx -y claude-code-ultimate-guide-mcp@1.3.5`
+`npx -y claude-code-ultimate-guide-mcp@1.3.6`
 
 ## Machine-readable sources
 

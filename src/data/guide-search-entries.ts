@@ -1782,9 +1782,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-gstack-workflow",
     "title": "Gstack Workflow",
-    "keywords": "gstack workflow guide workflows gstack workflow gstack 6 gears guide workflows gstack workflow",
+    "keywords": "gstack workflow guide workflows gstack workflow",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/gstack-workflow/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-gstack-6-gears",
+    "title": "Gstack 6 Gears",
+    "keywords": "gstack 6 gears guide workflows gstack workflow md#six selected gates",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/gstack-workflow/#six-selected-gates",
     "source": "guide"
   },
   {
