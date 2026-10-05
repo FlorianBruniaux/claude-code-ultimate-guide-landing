@@ -127,6 +127,25 @@ test('accepts a valid audited page and sitemap', async () => {
   })
 })
 
+for (const route of ['/guide/ai-ecosystem/', '/guide/ai-roles/', '/guide/context-engineering/', '/guide/another-redirect/']) {
+  test(`rejects the redirect document ${route} in sitemap XML`, async () => {
+    await withValidFixture(async (root) => {
+      await writeFixtureFile(root, `${route.slice(1)}index.html`, '<!doctype html><html><head><meta http-equiv="refresh" content="0;url=/ecosystem/"></head><body></body></html>')
+      await writeFixtureFile(root, 'sitemap-0.xml', `<?xml version="1.0"?><urlset><url><loc>https://cc.bruniaux.com/releases/</loc><lastmod>${LATEST_CLAUDE_CODE_RELEASE_DATE_ISO}</lastmod></url><url><loc>https://cc.bruniaux.com${route}</loc></url></urlset>`)
+
+      assert.deepEqual(check(root), [`sitemap: redirect route ${route} appears in sitemap`])
+    })
+  })
+}
+
+test('accepts redirect compatibility pages omitted from sitemap XML', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/ai-ecosystem/index.html', '<!doctype html><html><head><meta http-equiv="refresh" content="0;url=/ecosystem/"></head><body></body></html>')
+
+    assert.deepEqual(check(root), [])
+  })
+})
+
 test('checks every rendered Starlight document for exactly one H1', async () => {
   await withValidFixture(async (root) => {
     await writeFixtureFile(root, 'guide/devops-sre/index.html', validHtml('/guide/devops-sre/').replace(

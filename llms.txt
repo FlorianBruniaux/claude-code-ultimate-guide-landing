@@ -1,112 +1,91 @@
 # Claude Code Ultimate Guide
 
-> Comprehensive community guide for Claude Code, Anthropic's CLI tool for AI-assisted development.
+> Community documentation for Claude Code, Anthropic's tool for AI-assisted development. This landing index points to the guide, practical examples and dated machine-readable evidence.
 
-## Quick Facts
+## Snapshot metadata
 
-- Title: Claude Code Ultimate Guide
-- Author: Florian Bruniaux (Founding Engineer @ Méthode Aristote)
-- Version: 3.38.3
-- Last Updated: March 30, 2026
-- License: CC BY-SA 4.0 (free, open source)
-- Lines of Documentation: 24,700+
-- Production Templates: 232
-- Quiz Questions: 271
+- Guide version: 3.43.0 (VERSION)
+- Landing export synchronized: October 5, 2026
+- Scope: versioned guide fede45e34246e01d45995c2c5956e746b5e72839 and landing bfd7371d4737eb2d1e9224ec8ea3c1811e11b925; synchronization is not a deployment date
+- Main guide lines: 26185 (guide/ultimate-guide.md; not the total documentation corpus)
+- Indexed example entries: 277 across 21 categories (landing examples catalog)
+- Landing quiz questions: 473 (Markdown question collection)
+- Whitepapers: 13 titles, French and English (landing whitepaper catalog)
+- Security database: 184 CVE records, updated 2026-10-04 (AgentSec public feed)
+- License: guide CC BY-SA 4.0; templates CC0 1.0
 
-## What This Guide Covers
+## What the guide covers
 
-1. Quick Start - Install and first AI-assisted task
-2. Core Concepts - Context management, Plan Mode, permissions
-3. Memory & Settings - CLAUDE.md configuration files
-4. Agents - Custom AI personas for specialized workflows
-5. Skills - Reusable knowledge modules (Skills 2.0: Capability Uplift + Encoded Preference, Evals, lifecycle management)
-6. Commands - Custom slash commands (/pr, /commit, /diagnose)
-7. Hooks - Security automation and formatting (production hooks for bash + PowerShell)
-8. MCP Servers - External tool integration (databases, browsers, APIs, semantic search)
-9. Advanced Patterns - Trinity workflow, multi-agent teams, CI/CD, Tasks API
-10. Reference - Commands, shortcuts, troubleshooting
+1. Quick start: installation, first task, CLAUDE.md setup, learning path and companion project.
+2. Core concepts: context management, Plan Mode, permissions, model selection and memory.
+3. Skills and commands: frontmatter, ownership, discovery, evals, distribution and lifecycle.
+4. Agents and hooks: delegation, agent teams, event automation and permission controls.
+5. MCP integration: server setup, tool design, MCP versus CLI trade-offs and the guide MCP product.
+6. Harness engineering: model/runtime/repository/orchestrator responsibilities, loops, graphs, verification and recovery.
+7. Security: sandboxing, supply chain threats, privacy, hardening and reviewed incident evidence.
+8. Workflows: CI/CD, code review, bounded Best-of-N selection and open source contribution evidence.
+9. Ops and adoption: AI FinOps, observability, team metrics, roles and knowledge infrastructure.
+10. Lean and AI: review capacity, work in progress, queue measurements and recurring defect controls. The guide claims no measured software-team gain from the analogy.
+11. Reference: cheatsheet, glossary, examples, release tracking and translation status.
 
-## Key Resources
+## Reading and reference URLs
 
-### For Quick Start
-- Cheatsheet (2 min): https://cc.bruniaux.com/cheatsheet.html
-- 5 Golden Rules: Always review diffs, /compact at 70%, be specific (WHAT+WHERE+HOW+VERIFY), Plan Mode first, create CLAUDE.md
+- Guide reader: https://cc.bruniaux.com/guide/
+- Full Markdown guide: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md
+- Cheatsheet: https://cc.bruniaux.com/cheatsheet/
+- Learning path: https://cc.bruniaux.com/learning/
+- Interactive quiz: https://cc.bruniaux.com/quiz/
+- Example catalog: https://cc.bruniaux.com/examples/
+- Example source files: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
+- Whitepapers: https://cc.bruniaux.com/whitepapers/
+- Release tracking: https://cc.bruniaux.com/releases/
+- Context engineering: https://cc.bruniaux.com/context-engineering/
+- Memory systems: https://cc.bruniaux.com/memory-systems/
+- Agent Harness Engineering: https://cc.bruniaux.com/guide/agent-harness/
+- Loop and Graph Engineering: https://cc.bruniaux.com/guide/loop-graph-engineering/
+- Agent Harness Map: https://cc.bruniaux.com/guide/agent-harness-landscape/
+- Methods: https://cc.bruniaux.com/methodologies/
+- Lean and AI flow: https://cc.bruniaux.com/lean-ai/
+- Team metrics: https://cc.bruniaux.com/team-metrics/
+- AI FinOps: https://cc.bruniaux.com/finops/
+- Token savings: https://cc.bruniaux.com/token-savings/
+- Security references: https://cc.bruniaux.com/security/
+- Glossary: https://cc.bruniaux.com/glossary/
+- Translation coverage and status: https://cc.bruniaux.com/guide/translations/
 
-### For Learning
-- Full Guide (~10h): https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md
-- Interactive Quiz (271 questions): https://cc.bruniaux.com/quiz.html
-- Whitepapers (FR + EN, 9 titles): https://www.florian.bruniaux.com/guides
-- Landing site: https://cc.bruniaux.com
+## Guide MCP server
 
-### For Templates
-- 232 Production Templates: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples
-- Agents: backend-architect, security-guardian, code-reviewer, debugger, devops-sre, adr-writer
-- Commands: /pr, /commit, /release-notes, /diagnose, /generate-tests, /optimize, /git-worktree
-- Hooks: dangerous-actions-blocker, prompt-injection-detector, secrets-scanner (bash + PowerShell)
-- Skills: pdf-generator, tdd-workflow, guide-recap, landing-page-generator, skill-creator
-- Scripts: session-search, audit-scan, fresh-context-loop, sync-claude-config
+The public runtime snapshot measured 2026-09-09T09:38:50Z reports npm package `claude-code-ultimate-guide-mcp@1.3.3`, 17 tools, 6 resources and 1 prompt. The repository product manifest is version 1.3.4; it is a separate candidate contract and does not prove that version is published.
 
-## CLAUDE.md Starter Template
+- Installation and compatibility: https://cc.bruniaux.com/mcp/
+- Public runtime snapshot: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/mcp-public-runtime.json
+- Repository product contract: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/mcp-product.json
+- npm package: https://www.npmjs.com/package/claude-code-ultimate-guide-mcp
 
-```markdown
-# Project: [NAME]
+`npx -y claude-code-ultimate-guide-mcp@1.3.3`
 
-## Tech Stack
-- Language: [e.g., TypeScript]
-- Framework: [e.g., Next.js 14]
-- Testing: [e.g., Vitest]
+## Machine-readable sources
 
-## Commands
-- Build: `npm run build`
-- Test: `npm test`
-- Lint: `npm run lint`
+- Guide index with paths and anchors: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/reference.yaml
+- Claude Code release history: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/claude-code-releases.yaml
+- AgentSec feed with dated counters and evidence limits: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/agentsec-security-feed.v1.json
+- Agent Harness Map: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/agent-harnesses.json
+- Translation coverage: https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/translations.json
+- Expanded landing export: https://cc.bruniaux.com/llms-full.txt
 
-## Rules
-- Run tests before marking tasks complete
-- Follow existing code patterns
-- Keep commits atomic and conventional
-```
+This file and the landing export summarize community documentation. For current product commands, account requirements, prices and retention policies, check Anthropic's documentation and the dates on each source.
 
-## Privacy Notice
+- Official Claude Code documentation: https://code.claude.com/docs/en/overview
+- Official command reference: https://code.claude.com/docs/en/commands
+- Official data usage policy: https://code.claude.com/docs/en/data-usage
 
-Claude Code sends prompts and file contents to Anthropic servers.
-- Default: 5 years retention (training enabled)
-- Opt-out: 30 days retention
-- Enterprise: 0 retention
+## Author and citation
 
-Disable training: https://claude.ai/settings/data-privacy-controls
+Claude Code Ultimate Guide by Florian Bruniaux.
 
-## Security
-
-This guide tracks the MCP/AI agent threat landscape:
-- CVE database: 24 tracked vulnerabilities
-- Supply chain threat analysis
-- Production security hardening checklist
-- Threat database: examples/commands/resources/threat-db.yaml
-
-## Machine-Readable Reference
-
-For AI/LLM consumption (optimized ~2K tokens):
-https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/machine-readable/reference.yaml
-
-Full content (~30KB):
-https://raw.githubusercontent.com/FlorianBruniaux/claude-code-ultimate-guide/main/llms-full.txt
-
-## How to Cite
-
-"Claude Code Ultimate Guide by Florian Bruniaux"
-URL: https://github.com/FlorianBruniaux/claude-code-ultimate-guide
-License: CC BY-SA 4.0
-
-## Contact
-
+- Repository and issue tracker: https://github.com/FlorianBruniaux/claude-code-ultimate-guide
+- Guide license: CC BY-SA 4.0
+- Template license: CC0 1.0
+- Portfolio: https://florian.bruniaux.com
 - GitHub: https://github.com/FlorianBruniaux
 - LinkedIn: https://www.linkedin.com/in/florian-bruniaux-43408b83/
-- Project Issues: https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues
-
-## Related
-
-- Anthropic Official Docs: https://docs.anthropic.com/en/docs/claude-code
-- awesome-claude-code: https://github.com/hesreallyhim/awesome-claude-code
-- Dev With AI (FR community): https://www.devw.ai/
-- DeepWiki: https://deepwiki.com/FlorianBruniaux/claude-code-ultimate-guide

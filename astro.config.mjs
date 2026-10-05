@@ -12,6 +12,13 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const SITEMAP_EXCLUDED_ROUTES = new Set([
+  '/guide/claude-code-releases/',
+  '/guide/ai-ecosystem/',
+  '/guide/ai-roles/',
+  '/guide/context-engineering/',
+])
+
 // Per-page lastmod dates for key landing pages.
 // Guide pages (140+) are omitted, they rebuild together and all share the build date.
 const PAGE_DATES = {
@@ -235,7 +242,7 @@ export default defineConfig({
         if (item.url.includes('/ultimate-guidefr/')) return undefined
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
-        if (normalizedUrl === 'https://cc.bruniaux.com/guide/claude-code-releases/') return undefined
+        if (SITEMAP_EXCLUDED_ROUTES.has(new URL(normalizedUrl).pathname)) return undefined
         const lastmod = PAGE_DATES[normalizedUrl] ?? new Date().toISOString().split('T')[0]
 
         if (item.url === 'https://cc.bruniaux.com/') {

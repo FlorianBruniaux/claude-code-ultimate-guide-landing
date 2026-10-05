@@ -187,6 +187,9 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
 
   const sitemaps = sitemapFiles(distDir)
   const sitemapContents = sitemaps.map((path) => ({ path, xml: readFileSync(path, 'utf8') }))
+  const sitemapUrls = new Set(sitemapContents.flatMap(({ xml }) => (
+    Array.from(xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g), ([, url]) => url)
+  )))
   const releaseEntries = sitemapContents.reduce(
     (count, { xml }) => count + (xml.match(/<loc>\s*https:\/\/cc\.bruniaux\.com\/releases\/\s*<\/loc>/g)?.length ?? 0),
     0,
@@ -211,6 +214,10 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
   for (const path of walkFiles(distDir).filter((candidate) => extname(candidate).toLowerCase() === '.html')) {
     const route = htmlRoute(distDir, path)
     const document = inspectRenderedDocument(readFileSync(path, 'utf8'), route)
+
+    if (document.isRedirectDocument && sitemapUrls.has(`${SITE_ORIGIN}${route}`)) {
+      failures.push(`sitemap: redirect route ${route} appears in sitemap`)
+    }
 
     if (!auditedPagePaths.has(path) && route.startsWith('/guide/') && !document.isRedirectDocument && document.h1Count !== 1) {
       failures.push(`${route}: expected exactly one rendered H1, found ${document.h1Count}`)
