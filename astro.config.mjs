@@ -23,7 +23,7 @@ const SITEMAP_EXCLUDED_ROUTES = new Set([
 // Guide pages (140+) are omitted, they rebuild together and all share the build date.
 const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-08-31',
-  'https://cc.bruniaux.com/mcp/': '2026-08-31',
+  'https://cc.bruniaux.com/mcp/': '2026-10-05',
   'https://cc.bruniaux.com/resources/': '2026-08-31',
   'https://cc.bruniaux.com/downloads/': publicationEdition.updatedAt,
   'https://cc.bruniaux.com/whitepapers/': publicationEdition.updatedAt,
@@ -34,7 +34,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/faq/': '2026-06-08',
   'https://cc.bruniaux.com/releases/': LATEST_CLAUDE_CODE_RELEASE_DATE_ISO,
   'https://cc.bruniaux.com/changelog/': '2026-08-30',
-  'https://cc.bruniaux.com/examples/': '2026-06-08',
+  'https://cc.bruniaux.com/examples/': '2026-10-05',
   'https://cc.bruniaux.com/quiz/': '2026-06-08',
   'https://cc.bruniaux.com/security/': '2026-08-31',
   'https://cc.bruniaux.com/security/threats/': '2026-08-31',

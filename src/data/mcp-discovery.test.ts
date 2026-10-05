@@ -50,7 +50,7 @@ test('navigation and the HTML sitemap expose the MCP product separately from the
 })
 
 test('the XML sitemap gives the MCP page stable product metadata', () => {
-  assert.match(astroConfig, /'https:\/\/cc\.bruniaux\.com\/mcp\/': '2026-08-31'/)
+  assert.match(astroConfig, /'https:\/\/cc\.bruniaux\.com\/mcp\/': '2026-10-05'/)
   assert.match(
     astroConfig,
     /normalizedUrl === 'https:\/\/cc\.bruniaux\.com\/mcp\/'[\s\S]*priority: 0\.9[\s\S]*changefreq: 'monthly'/,
