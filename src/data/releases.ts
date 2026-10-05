@@ -18,8 +18,31 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.287',
+    version: 'v2.1.289',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Fixed managed-machine permission rules bypassed by user-installed mods, Bash deny/ask rules under sandbox auto-allow, and Read deny rules through IDE symlinks",
+      "Added agent.spawn for teammates, shared agent IDs across plugin hook events, and idle/waiting states in $.agent.list()",
+      "Fixed installed mods missing from the first session after upgrade, stale local plugin versions and plugin/mod rendering failures",
+      "Reverted the VS Code claude auth status change that could increase sign-outs; fixed terminal and published artifact freezes on malformed code blocks",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.288',
+    date: 'Oct 2, 2026',
+    highlights: [
+      "Added mod selection access via $.ui.selection(), draft recovery with Up after Ctrl+C, and MCP re-authentication prompts for additional OAuth scopes",
+      "Added /code-review --max-findings and agent-view session search with Ctrl+F",
+      "Fixed interrupted-response recovery, missed auto-compaction, resume context loss and duplicate remote MCP tool calls",
+      "Fixed plugin-defined teammate configuration, managed sandbox credential-file rules, headless signal handling and GitHub plugin installation without SSH keys",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.287',
+    date: 'Oct 1, 2026',
     highlights: [
       "Added Claude Mods, which let plugins modify deeper Claude Code behavior, and the built-in \"You should know\" mod, a side agent that flags things you or Claude might miss (/plugin enable cc-plugin-you-should-know@builtin)",
       "Added an n:<text> filter to the agents view, MCP URL prompts on the 2025-11-25 protocol, prompt_text on the OpenTelemetry user_prompt event and a built-in gh api for self-hosted runners without the GitHub CLI",
@@ -31,7 +54,6 @@ export const releases: Release[] = [
       "MCP servers on the 2025-11-25 protocol can send URL prompts; if a server no longer connects, add \"bareElicitationCapability\": true to its MCP config entry. MCP alwaysLoad: false now defers all of that server's tools behind tool search.",
       "The OpenTelemetry user_prompt event carries prompt_text, a copy of prompt; drop or mask it wherever prompt is dropped or masked. Replies from claude agents arrive as queued messages, and slash commands other than /stop sent during a turn run when it ends.",
     ],
-    latest: true,
     initiallyVisible: true,
     featured: true,
     featuredLabel: '⭐ Claude Mods',
