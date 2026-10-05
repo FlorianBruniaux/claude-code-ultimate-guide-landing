@@ -1,0 +1,59 @@
+.github/workflows/archive-github-traffic.yml
+  s_e5007346b6f028::t_5c23d4c6b488d2 1-52
+CHANGELOG.md
+  s_e5007346b6f028::t_9a12a0249c9898 7-8
+data/github-traffic/2026-10-05.json
+  s_e5007346b6f028::t_8d72e7cb13f410 1-461
+docs/github-traffic.md
+  s_e5007346b6f028::t_3ce7e0deb2190f 1-57
+docs/indexnow.md
+  s_e5007346b6f028::t_d7edf44ac3e83c 1-7
+docs/visibility-2026-10-05.md
+  s_e5007346b6f028::t_74cede013c5df6 1-54
+docs/visibility-pages-2026-10-05.csv
+  s_e5007346b6f028::t_0141cc6dca7e6b 1-21
+public/cd76d8c880a7d5e9a2113145db82aa3a.txt
+  s_e5007346b6f028::t_68f36b0440337d 1
+scripts/github-traffic-test.py
+  s_e5007346b6f028::t_cd9ee1993fa6e8 1-73
+scripts/github-traffic.py
+  s_e5007346b6f028::t_43ee59842e5094 1-95
+src/components/mcp/McpTerminal.astro
+  s_e5007346b6f028::t_9b9d49f8b463be 5-7,10,13,28-29,44
+src/data/guide-content-entries.ts
+  s_e5007346b6f028::t_23502b90ef0452 3394,3402,3410,3418,3426,3434,3442,3450,3458,3466
+src/data/guide-seo-overrides.mjs
+  s_e5007346b6f028::t_7c6d1f157e7649 15-16
+src/data/guide-seo-overrides.test.ts
+  s_e5007346b6f028::t_0bfde545ce40de 36-37
+src/pages/examples/[slug].astro
+  s_e5007346b6f028::t_060e93a609e7d6 4,6,383,410-419,467,524-530
+src/pages/examples/index.astro
+  s_e5007346b6f028::t_918117cd6d36c3 4-6,11-12,82-104,364,376
+src/pages/mcp/index.astro
+  s_e5007346b6f028::t_0e919699631e0a 85,88,101,103-104,169,174,255-258,264-269,289-291
+src/scripts/mcp-analytics.test.ts
+  s_e5007346b6f028::t_e701f2a7172606 1-109
+src/scripts/mcp-analytics.ts
+  s_e5007346b6f028::t_e9268db559a219 1-48
+src/utils/example-pages.test.ts
+  s_e5007346b6f028::t_73fefd1a7c79f3 1-18
+src/utils/example-pages.ts
+  s_e5007346b6f028::t_560fe0494d49ad 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c38dc0a0c66912144d6673ec39bfdf131118e314",
+  "prompts": {},
+  "sessions": {
+    "s_e5007346b6f028": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10b0e-e938-75c0-8af5-8513ebc5272f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
