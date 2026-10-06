@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "repository": "FlorianBruniaux/claude-code-ultimate-guide",
+  "observed_at_utc": "2026-10-06T09:15:19.260299Z",
+  "window": {
+    "kind": "github_rolling_14_days",
+    "returned_bucket_bounds": {
+      "views": {
+        "first_returned_bucket_utc": "2026-09-22T00:00:00Z",
+        "last_returned_bucket_utc": "2026-10-05T00:00:00Z"
+      },
+      "clones": {
+        "first_returned_bucket_utc": "2026-09-22T00:00:00Z",
+        "last_returned_bucket_utc": "2026-10-05T00:00:00Z"
+      }
+    },
+    "unique_counts_are_not_additive": true,
+    "note": "Rolling totals overlap across archives; returned bounds do not prove coverage of omitted days."
+  },
+  "counters": {
+    "stargazers_count": 6112,
+    "forks_count": 802,
+    "subscribers_count": 74
+  },
+  "raw": {
+    "repository": {
+      "id": 1131107802,
+      "node_id": "R_kgDOQ2tV2g",
+      "name": "claude-code-ultimate-guide",
+      "full_name": "FlorianBruniaux/claude-code-ultimate-guide",
+      "private": false,
+      "owner": {
+        "login": "FlorianBruniaux",
+        "id": 3902606,
+        "node_id": "MDQ6VXNlcjM5MDI2MDY=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3902606?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/FlorianBruniaux",
+        "html_url": "https://github.com/FlorianBruniaux",
+        "followers_url": "https://api.github.com/users/FlorianBruniaux/followers",
+        "following_url": "https://api.github.com/users/FlorianBruniaux/following{/other_user}",
+        "gists_url": "https://api.github.com/users/FlorianBruniaux/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/FlorianBruniaux/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/FlorianBruniaux/subscriptions",
+        "organizations_url": "https://api.github.com/users/FlorianBruniaux/orgs",
+        "repos_url": "https://api.github.com/users/FlorianBruniaux/repos",
+        "events_url": "https://api.github.com/users/FlorianBruniaux/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/FlorianBruniaux/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+      "description": "The most comprehensive Claude Code guide: agentic workflows, hooks, skills, MCP servers, quizzes, and production-ready templates. 430K+ lines.",
+      "fork": false,
+      "url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide",
+      "forks_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/forks",
+      "keys_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/teams",
+      "hooks_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/hooks",
+      "issue_events_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/events",
+      "assignees_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/tags",
+      "blobs_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/languages",
+      "stargazers_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/stargazers",
+      "contributors_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/contributors",
+      "subscribers_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/subscribers",
+      "subscription_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/subscription",
+      "commits_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/merges",
+      "archive_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/downloads",
+      "issues_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/labels{/name}",
+      "releases_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/FlorianBruniaux/claude-code-ultimate-guide/deployments",
+      "created_at": "2026-01-09T13:42:10Z",
+      "updated_at": "2026-10-06T07:57:48Z",
+      "pushed_at": "2026-10-05T19:22:24Z",
+      "git_url": "git://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
+      "ssh_url": "git@github.com:FlorianBruniaux/claude-code-ultimate-guide.git",
+      "clone_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
+      "svn_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+      "homepage": "https://cc.bruniaux.com/",
+      "size": 47489,
+      "stargazers_count": 6112,
+      "watchers_count": 6112,
+      "language": "Python",
+      "has_issues": true,
+      "has_projects": false,
+      "has_downloads": false,
+      "has_wiki": false,
+      "has_pages": false,
+      "has_discussions": true,
+      "forks_count": 802,
+      "mirror_url": null,
+      "archived": false,
+      "disabled": false,
+      "open_issues_count": 4,
+      "license": {
+        "key": "cc-by-sa-4.0",
+        "name": "Creative Commons Attribution Share Alike 4.0 International",
+        "spdx_id": "CC-BY-SA-4.0",
+        "url": "https://api.github.com/licenses/cc-by-sa-4.0",
+        "node_id": "MDc6TGljZW5zZTI2"
+      },
+      "allow_forking": true,
+      "is_template": false,
+      "web_commit_signoff_required": false,
+      "has_pull_requests": true,
+      "pull_request_creation_policy": "all",
+      "topics": [
+        "agentic-coding",
+        "ai-assistant",
+        "ai-coding",
+        "ai-pair-programming",
+        "ai-security",
+        "anthropic",
+        "best-practices",
+        "claude",
+        "claude-code",
+        "claude-code-guide",
+        "claude-code-tutorial",
+        "cli-tool",
+        "coding-assistant",
+        "cursor-alternative",
+        "developer-tools",
+        "llm",
+        "mcp-servers",
+        "prompt-engineering",
+        "tutorial",
+        "vibe-coding"
+      ],
+      "visibility": "public",
+      "forks": 802,
+      "open_issues": 4,
+      "watchers": 6112,
+      "default_branch": "main",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "security_and_analysis": {
+        "secret_scanning": {
+          "status": "disabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "disabled"
+        },
+        "dependabot_security_updates": {
+          "status": "disabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      },
+      "network_count": 802,
+      "subscribers_count": 74
+    },
+    "views": {
+      "count": 15170,
+      "uniques": 6980,
+      "views": [
+        {
+          "timestamp": "2026-09-22T00:00:00Z",
+          "count": 1185,
+          "uniques": 571
+        },
+        {
+          "timestamp": "2026-09-23T00:00:00Z",
+          "count": 1256,
+          "uniques": 615
+        },
+        {
+          "timestamp": "2026-09-24T00:00:00Z",
+          "count": 1276,
+          "uniques": 695
+        },
+        {
+          "timestamp": "2026-09-25T00:00:00Z",
+          "count": 1250,
+          "uniques": 654
+        },
+        {
+          "timestamp": "2026-09-26T00:00:00Z",
+          "count": 668,
+          "uniques": 402
+        },
+        {
+          "timestamp": "2026-09-27T00:00:00Z",
+          "count": 671,
+          "uniques": 350
+        },
+        {
+          "timestamp": "2026-09-28T00:00:00Z",
+          "count": 1343,
+          "uniques": 733
+        },
+        {
+          "timestamp": "2026-09-29T00:00:00Z",
+          "count": 1701,
+          "uniques": 896
+        },
+        {
+          "timestamp": "2026-09-30T00:00:00Z",
+          "count": 1158,
+          "uniques": 664
+        },
+        {
+          "timestamp": "2026-10-01T00:00:00Z",
+          "count": 1013,
+          "uniques": 550
+        },
+        {
+          "timestamp": "2026-10-02T00:00:00Z",
+          "count": 912,
+          "uniques": 456
+        },
+        {
+          "timestamp": "2026-10-03T00:00:00Z",
+          "count": 697,
+          "uniques": 383
+        },
+        {
+          "timestamp": "2026-10-04T00:00:00Z",
+          "count": 816,
+          "uniques": 368
+        },
+        {
+          "timestamp": "2026-10-05T00:00:00Z",
+          "count": 1224,
+          "uniques": 658
+        }
+      ]
+    },
+    "clones": {
+      "count": 2836,
+      "uniques": 998,
+      "clones": [
+        {
+          "timestamp": "2026-09-22T00:00:00Z",
+          "count": 113,
+          "uniques": 73
+        },
+        {
+          "timestamp": "2026-09-23T00:00:00Z",
+          "count": 175,
+          "uniques": 74
+        },
+        {
+          "timestamp": "2026-09-24T00:00:00Z",
+          "count": 243,
+          "uniques": 91
+        },
+        {
+          "timestamp": "2026-09-25T00:00:00Z",
+          "count": 108,
+          "uniques": 72
+        },
+        {
+          "timestamp": "2026-09-26T00:00:00Z",
+          "count": 146,
+          "uniques": 78
+        },
+        {
+          "timestamp": "2026-09-27T00:00:00Z",
+          "count": 168,
+          "uniques": 99
+        },
+        {
+          "timestamp": "2026-09-28T00:00:00Z",
+          "count": 124,
+          "uniques": 71
+        },
+        {
+          "timestamp": "2026-09-29T00:00:00Z",
+          "count": 247,
+          "uniques": 103
+        },
+        {
+          "timestamp": "2026-09-30T00:00:00Z",
+          "count": 161,
+          "uniques": 93
+        },
+        {
+          "timestamp": "2026-10-01T00:00:00Z",
+          "count": 231,
+          "uniques": 118
+        },
+        {
+          "timestamp": "2026-10-02T00:00:00Z",
+          "count": 175,
+          "uniques": 102
+        },
+        {
+          "timestamp": "2026-10-03T00:00:00Z",
+          "count": 128,
+          "uniques": 81
+        },
+        {
+          "timestamp": "2026-10-04T00:00:00Z",
+          "count": 446,
+          "uniques": 90
+        },
+        {
+          "timestamp": "2026-10-05T00:00:00Z",
+          "count": 371,
+          "uniques": 144
+        }
+      ]
+    },
+    "referrers": [
+      {
+        "referrer": "Google",
+        "count": 5494,
+        "uniques": 4042
+      },
+      {
+        "referrer": "Bing",
+        "count": 381,
+        "uniques": 174
+      },
+      {
+        "referrer": "github.com",
+        "count": 310,
+        "uniques": 227
+      },
+      {
+        "referrer": "search.brave.com",
+        "count": 139,
+        "uniques": 89
+      },
+      {
+        "referrer": "DuckDuckGo",
+        "count": 137,
+        "uniques": 111
+      },
+      {
+        "referrer": "t.co",
+        "count": 127,
+        "uniques": 86
+      },
+      {
+        "referrer": "cc.bruniaux.com",
+        "count": 127,
+        "uniques": 60
+      },
+      {
+        "referrer": "teams.public.onecdn.static.microsoft",
+        "count": 96,
+        "uniques": 50
+      },
+      {
+        "referrer": "l.facebook.com",
+        "count": 48,
+        "uniques": 19
+      },
+      {
+        "referrer": "perplexity.ai",
+        "count": 26,
+        "uniques": 19
+      }
+    ],
+    "paths": [
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide",
+        "title": "Overview",
+        "count": 2661,
+        "uniques": 1751
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/tools/audit-prompt.md",
+        "title": "/blob/main/tools/audit-prompt.md",
+        "count": 1690,
+        "uniques": 1330
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/tree/main",
+        "title": "/tree/main",
+        "count": 762,
+        "uniques": 535
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/dynamic-workflows.md",
+        "title": "/blob/main/guide/workflows/dynamic-workflows.md",
+        "count": 537,
+        "uniques": 384
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md",
+        "title": "/blob/main/guide/ultimate-guide.md",
+        "count": 480,
+        "uniques": 186
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agent-teams.md",
+        "title": "/blob/main/guide/workflows/agent-teams.md",
+        "count": 444,
+        "uniques": 330
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/tdd-with-claude.md",
+        "title": "/blob/main/guide/workflows/tdd-with-claude.md",
+        "count": 410,
+        "uniques": 271
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agentic-software-factories.md",
+        "title": "/blob/main/guide/workflows/agentic-software-factories.md",
+        "count": 389,
+        "uniques": 248
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md",
+        "title": "/blob/main/guide/core/architecture.md",
+        "count": 341,
+        "uniques": 270
+      },
+      {
+        "path": "/FlorianBruniaux/claude-code-ultimate-guide/blob/main/cheatsheet.pdf",
+        "title": "/blob/main/cheatsheet.pdf",
+        "count": 203,
+        "uniques": 172
+      }
+    ]
+  }
+}
