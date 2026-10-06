@@ -4,7 +4,7 @@ subtitle: "All configuration keys and their scope"
 cardNumber: T06
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 6
 ---
 
@@ -18,16 +18,16 @@ order: 6
 .claude/settings.local.json     (local machine, gitignore)
 ```
 
-`settings.local.json` always takes precedence. It is the ideal place for personal overrides without creating Git conflicts.
+Project-local settings override project and user settings. CLI arguments and managed policy have higher priority. Use local settings for personal overrides without Git conflicts.
 
 ## Complete structure
 
 ```json
 {
-  "model": "claude-sonnet-5",
+  "model": "claude-sonnet-5-5",
   "permissions": {
     "allow": ["Bash(git *)", "Bash(pnpm *)", "Read"],
-    "deny":  ["Bash(rm -rf *)", "Write(file_path:*.env*)"],
+    "deny":  ["Bash(rm -rf *)", "Write(*.env*)"],
     "ask":   ["Bash(npm publish)"],
     "defaultMode": "acceptEdits",
     "additionalDirectories": ["../shared-libs/"]
@@ -59,12 +59,12 @@ order: 6
 | `permissions.allow` | Auto-approved tools |
 | `permissions.deny` | Blocked tools |
 | `permissions.ask` | Tools requiring confirmation |
-| `permissions.defaultMode` | Default mode (default/acceptEdits/plan/bypassPermissions) |
-| `permissions.additionalDirectories` | Additional accessible directories |
+| `permissions.defaultMode` | Default mode (default/acceptEdits/plan/auto/dontAsk/bypassPermissions) |
+| `permissions` → `additionalDirectories` | Additional accessible directories |
 | `env` | Injected environment variables |
 | `hooks` | Scripts triggered on events |
 | `statusLine` | Custom status line |
-| `outputStyle` | Communication style (Default/Explanatory/Learning) |
+| `outputStyle` | Communication style (Default/Proactive/Concise/Explanatory/Learning) |
 | `spinnerVerbs` | Words in the loading spinner |
 | `spinnerTipsOverride` | Tips displayed during processing |
 | `enableAllProjectMcpServers` | Enables all project MCP servers |
@@ -90,7 +90,7 @@ order: 6
 
 ```gitignore
 .claude/settings.local.json   # Local machine overrides
-.claude/CLAUDE.md             # Personal instructions
+CLAUDE.local.md              # Personal project instructions
 .env.local                    # Secrets
 ```
 

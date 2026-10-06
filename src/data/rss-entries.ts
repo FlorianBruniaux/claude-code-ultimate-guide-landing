@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.44.1: refreshed bilingual publications',
+    date: 'Oct 6, 2026',
+    description: 'Refreshed English and French full guides, 13 e-book titles, 58 recap cards and daily cheatsheets. Includes current model references, FinOps, measured token-tool results and verification controls, with new PDF and EPUB downloads built from reviewed sources.',
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.44.1',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.44.0',
     date: 'Oct 6, 2026',
     description: 'Guide release with Lean workflow controls, AI FinOps and token-saving benchmark reviews, expanded agent harness guidance, updated security references, and the MCP 1.3.6 search and chapter-link fixes. The French full guide and downloadable book editions retain their recorded source versions.',

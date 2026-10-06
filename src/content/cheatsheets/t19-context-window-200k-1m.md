@@ -4,32 +4,32 @@ subtitle: "When to switch to the extended context window and at what cost"
 cardNumber: T19
 category: Technical
 difficulty: intermediate
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 19
 ---
 
-## Context Is Model-Specific
+## Context is model-specific
 
 | Direct API model | Context | Maximum output |
 |------------------|---------|----------------|
 | Haiku 4.5 | 200K | 64K |
-| Sonnet 5 | 1M native | 128K |
+| Sonnet 5.5 | 1M native | 128K |
 | Opus 5.5 | 1M native | 128K |
 | Fable 5.1 | 1M native | 128K |
 
-Verified September 24, 2026. Provider settings can expose different limits. Inspect `/context` for the active session.
+Guide model snapshot, September 30, 2026. Provider settings can expose different limits. Inspect `/context` for the active session.
 
-## No Native-1M Premium
+## No native-1M premium
 
-Current native 1M models use standard rates beyond 200K input tokens. They do not need the old long-context beta header. Sonnet 5 has no 200K variant on the direct API.
+Current native 1M models use standard rates beyond 200K input tokens. They do not need the old long-context beta header. Sonnet 5.5 has no 200K variant on the direct API.
 
 Older Opus 4.6 and Sonnet 4.6 have `[1m]` variants with plan/provider restrictions. Do not transfer their access rules to current models.
 
-## Price a Complete Request
+## Price a complete request
 
 Illustrative USD totals without caching or retries:
 
-| Input / output | Sonnet 5 | Opus 5.5 |
+| Input / output | Sonnet 5.5 | Opus 5.5 |
 |----------------|----------|----------|
 | 50K / 5K | $0.15 | $0.30 |
 | 150K / 20K | $0.50 | $1.00 |
@@ -37,7 +37,7 @@ Illustrative USD totals without caching or retries:
 
 Use separate input, output, cache-read, and cache-write counts. A context-window size is capacity, not a bill or an accuracy score.
 
-## Control Accumulation
+## Control accumulation
 
 `/context` shows the token breakdown. `/compact` summarizes the conversation; `/clear` starts fresh. Save decisions and verification commands before resetting context.
 
@@ -45,9 +45,9 @@ Use separate input, output, cache-read, and cache-write counts. A context-window
 
 Load relevant files rather than filling the available window. Split independent tasks when separate contexts help. No fixed percentage guarantees reliable recall.
 
-## Evaluate Retrieval
+## Evaluate retrieval
 
-Older MRCR results for Opus 4.6 or Sonnet 4.5 remain results for those models and benchmark conditions. They do not establish retrieval quality for Sonnet 5 or Opus 5.5.
+Older MRCR results for Opus 4.6 or Sonnet 4.5 remain results for those models and benchmark conditions. They do not establish retrieval quality for Sonnet 5.5 or Opus 5.5.
 
 Test on your own document set with answerable questions, expected citations, and distractors. Measure missed evidence as well as correct answers.
 

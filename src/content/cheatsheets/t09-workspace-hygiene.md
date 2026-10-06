@@ -1,54 +1,58 @@
 ---
-title: "Workspace Hygiene & .claudeignore"
-subtitle: "Keeping context clean by excluding what Claude should not read"
+title: "Workspace Hygiene"
+subtitle: "Keeping context clean by blocking what Claude should not read"
 cardNumber: T09
 category: Technical
 difficulty: beginner
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 9
 ---
 
-## .claudeignore: same syntax as .gitignore
+## There is no .claudeignore
 
-`.claudeignore` is placed at the project root and follows exactly the same syntax as `.gitignore`. The patterns it contains tell Claude Code which files and folders to exclude from its context exploration.
+Claude Code has no `.claudeignore` file in the `.gitignore` mold. Blocking file access goes through `permissions.deny` in `.claude/settings.json`, using direct path patterns such as `Read(*.env*)`. The `file_path:` qualifier is invalid for Read, Edit and Write permission rules.
 
-```gitignore
-# Dependencies (heavy, useless for Claude)
-node_modules/
-.pnpm-store/
-vendor/
-
-# Secrets (essential protection)
-.env
-.env.*
-*.pem
-*.key
-*credentials*
-
-# Auto-generated (pure noise)
-dist/
-build/
-.next/
-coverage/
-*.min.js
-
-# Verbose logs
-*.log
-logs/
+```json
+{
+  "permissions": {
+    "deny": [
+      "Read(*.env*)",
+      "Edit(*.env*)",
+      "Write(*.env*)",
+      "Read(*.pem)",
+      "Read(*.key)",
+      "Read(*credentials*)",
+      "Bash(cat .env*)"
+    ]
+  }
+}
 ```
 
 ## Why it matters
 
-Claude Code indexes project files to provide context. Without `.claudeignore`, it may read thousands of files inside `node_modules/` or 50 MB log files, which dilutes the quality of responses. Less noise in context means more precise answers and less token-expensive sessions.
+`deny` has the highest precedence: no `allow` or `ask` rule, at any scope, can override it. The rule blocks `Read`, `Edit`, `Write` calls, and Bash commands that explicitly match a deny pattern. It does not block generic Bash commands without a dedicated deny rule, nor an `ls .env*` that reveals the file exists without exposing its contents.
 
-## .gitignore vs .claudeignore
+## What permissions.deny covers
 
-| File | Role | Scope |
-|------|------|-------|
+| Vector | Blocked |
+|--------|---------|
+| `Read()` | Yes |
+| `Edit()` / `Write()` with a rule | Yes |
+| `Bash(cat .env)` with explicit rule | Yes |
+| Generic Bash without a deny rule | No |
+| `ls .env*` (filename) | Partial |
+
+For defense-in-depth: store secrets outside the project directory, add a PreToolUse hook as a second lock, never commit secrets even "blocked" ones.
+
+## .gitignore vs permissions.deny
+
+| Mechanism | Role | Scope |
+|-----------|------|-------|
 | `.gitignore` | Excludes from version control | Git |
-| `.claudeignore` | Excludes from Claude exploration | Claude Code |
+| `permissions.deny` | Blocks reading/editing/writing via tools | Claude Code |
+| `respectGitignore` (default: `true`) | The `@` picker respects `.gitignore` patterns | Claude Code |
 
-Both files coexist and are independent. You may want Git to ignore a file that Claude should read, or the reverse.
+These three mechanisms are independent. A file can be ignored by Git without being blocked for Claude, and the reverse.
 
 ## Recommended .claude/ folder structure
 
@@ -57,18 +61,17 @@ Both files coexist and are independent. You may want Git to ignore a file that C
 ├── settings.json        # Team config (committed)
 ├── settings.local.json  # Local config (gitignore)
 ├── agents/              # Custom agents
-├── skills/              # Skills (includes slash commands since CC 2.1.3)
-├── hooks/               # Automation scripts
-├── rules/               # Auto-loaded conventions
-└── memories/            # Manual memories
+├── skills/               # Skills (includes slash commands since CC 2.1.3)
+├── hooks/                # Automation scripts
+└── rules/                # Shared conventions, optionally path-scoped
 ```
 
-The `agents/`, `skills/`, `hooks/` and `rules/` folders are committed with the project. `settings.local.json` and `CLAUDE.md` (if personal) stay in `.gitignore`.
+The `agents/`, `skills/`, `hooks/` and `rules/` folders are committed with the project. `settings.local.json` and the project-root `CLAUDE.local.md` hold local configuration and personal instructions. Auto-memory lives under `~/.claude/projects/<project>/memory/`, separately from this tree.
 
 ## Clean workspace checklist
 
-- `node_modules/` in `.claudeignore`
-- `.env` files excluded or outside the project directory
-- Binaries and heavy assets ignored (`*.png`, `*.pdf`, `dist/`)
-- Logs and generated files excluded
+- `.env*`, `*.pem`, `*.key`, `*credentials*` in `permissions.deny`
+- Deny rules covering Read, Edit, Write AND the equivalent Bash commands
+- Secrets stored outside the project directory where possible
 - `settings.local.json` in `.gitignore`
+- PreToolUse hook as a second lock on critical files

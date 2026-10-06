@@ -4,13 +4,13 @@ subtitle: "How to think about your relationship with Claude to get the most out 
 cardNumber: C01
 category: Design
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 201
 ---
 
 ## The right mental model
 
-The most productive way to think about Claude Code: a very fast junior developer with encyclopedic knowledge of patterns, but without the judgment that comes from project experience. It can produce 100 lines of solid code in 10 seconds, and make a bad architectural decision in the same breath.
+The most productive way to think about Claude Code: a very fast junior developer with encyclopedic knowledge of patterns, but without the judgment that comes from project experience. It can produce code quickly while making architectural mistakes that require careful review.
 
 This framing has an immediate implication: supervision is not optional. It is calibrated according to the type of task.
 
@@ -18,7 +18,7 @@ This framing has an immediate implication: supervision is not optional. It is ca
 
 | Task | Trust level | Action |
 |------|-------------|--------|
-| Renaming, formatting | High | Accept without reviewing |
+| Renaming, formatting | High | Check the resulting diff |
 | Test generation | Medium-high | Check coverage |
 | Module refactoring | Medium | Review the diff |
 | Architecture decision | Low | Mandatory validation |
@@ -28,7 +28,7 @@ The general rule: the more irreversible or costly to fix a decision is, the more
 
 ## The unsupervised iteration trap
 
-The cost of an error grows quasi-exponentially with the number of unsupervised iterations. A bad data structure choice at step 1 will contaminate all 8 subsequent steps.
+An early mistake can propagate into later changes. The rework depends on the dependencies and how soon validation catches it.
 
 The recommended practice: validate in small increments. After each significant change, look at the diff before continuing.
 
@@ -51,10 +51,10 @@ Claude Code executes. You orchestrate. The distinction is not stylistic, it is s
 If Claude heads in a problematic direction, `/rewind` lets you return to the previous state before re-iterating. Better to rewind early than to build 10 more exchanges on a shaky foundation.
 
 ```
-/rewind    # Undo the latest changes
-           # Return to the last healthy point
+/rewind    # Open checkpoint selection
+           # Choose what to restore and review the result
 ```
 
-## Pattern Amplification
+## Pattern amplification
 
 Claude reproduces the patterns it finds. In a well-structured codebase, it produces coherent and idiomatic code. In a disorganized codebase, it amplifies the disorder. If your code lacks clear patterns, provide them explicitly in `CLAUDE.md` rather than hoping Claude will infer them.

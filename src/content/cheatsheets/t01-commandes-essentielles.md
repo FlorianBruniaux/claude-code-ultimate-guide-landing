@@ -4,11 +4,11 @@ subtitle: "Keyboard shortcuts & indispensable slash commands"
 cardNumber: T01
 category: Technical
 difficulty: beginner
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 1
 ---
 
-## Keyboard Shortcuts
+## Keyboard shortcuts
 
 | Shortcut | Action |
 |----------|--------|
@@ -22,7 +22,7 @@ order: 1
 | `Ctrl+X Ctrl+K` | Stop background subagents |
 | `Ctrl+Enter` / `Ctrl+X Ctrl+S` | Send queued messages now |
 
-## Core Slash Commands
+## Core slash commands
 
 ```
 /help           Help and available commands
@@ -30,20 +30,21 @@ order: 1
 /compact        Compress history
 /model          Choose model; Enter saves, s applies once
 /cost           View session costs
-/status         Context status
+/status         Account and active settings sources
+/context        Context usage breakdown
 ```
 
-## Permission Modes
+## Permission modes
 
 ```
 claude                    Interactive mode (default)
 claude --dangerously-skip-permissions
-                          Full bypass (CI/CD)
+                          Bypass permission prompts; requires isolation
 claude --allowedTools "Edit,Read,Bash"
                           Pre-approve tools; --tools restricts availability
 ```
 
-## Quick Start
+## Quick start
 
 ```bash
 # Launch Claude Code
@@ -60,7 +61,7 @@ claude -p "Analyze this file" < input.txt
 claude --continue
 ```
 
-## Session Commands
+## Session commands
 
 ```
 /new            New session (alias for /clear)
@@ -68,7 +69,7 @@ claude --continue
 /branch         Fork the conversation here (v2.1.77)
 ```
 
-## Context Navigation
+## Context navigation
 
 | Command | Effect |
 |---------|--------|
@@ -76,7 +77,7 @@ claude --continue
 | `/clear` | Full reset |
 | `@file` | Reference a file in the prompt |
 
-## Custom Slash Commands
+## Custom slash commands
 
 ```
 # Invoke a custom command
@@ -86,7 +87,7 @@ claude --continue
 .claude/skills/command-name/SKILL.md
 ```
 
-## Essential Tips
+## Essential tips
 
 **Verbosity control**: use `--verbose` at launch, or `Ctrl+O` in session, to see the full turn-by-turn transcript.
 

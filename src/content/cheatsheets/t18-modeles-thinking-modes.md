@@ -4,34 +4,34 @@ subtitle: "Choosing the right model and the right level of reasoning"
 cardNumber: T18
 category: Technical
 difficulty: beginner
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 18
 ---
 
-## Current Models
+## Current models
 
-Standard API rates, verified September 24, 2026. USD per million input/output tokens, excluding caching.
+Standard API rates verified October 6, 2026. USD per million input/output tokens, excluding caching.
 
 | Model | Input / output | Context | Default effort |
 |-------|----------------|---------|----------------|
 | Haiku 4.5 | $1 / $5 | 200K | Unsupported |
-| Sonnet 5 | $2 / $10 | 1M | high |
+| Sonnet 5.5 | $2 / $10 | 1M | high |
 | Opus 5.5 | $4 / $20 | 1M | medium |
 | Fable 5.1 | $10 / $50 | 1M | high |
 
 Sonnet's published rate remains $2/$10 after the launch promotion. Opus 5.5 is the direct-service default; account policy can override it. Model choice does not establish a typical task cost.
 
-## Select and Save
+## Select and save
 
 `/model` opens the picker. **Enter** saves a default; **s** applies it to this session only. `claude --model sonnet` applies to the launched session. Project and managed settings can reapply at the next launch.
 
-Aliases depend on the provider. `opus` maps to 5.5 on most providers, but 4.6 on Foundry. `sonnet` maps to 5 on the direct API, 4.6 on Claude Platform on AWS, and 4.5 on Bedrock, Google, and Foundry.
+Aliases depend on the provider. `opus` maps to 5.5 on most providers, but 4.6 on Foundry. `sonnet` maps to 5.5 on the direct API, 4.6 on Claude Platform on AWS, and 4.5 on Bedrock, Google, and Foundry.
 
 `fable` selects 5.1 where available, or 5 through the Claude apps gateway. `best` selects Fable when available, otherwise Opus. Pin a supported full ID when version identity matters.
 
-## Thinking and Effort
+## Thinking and effort
 
-Opus 5.5, Sonnet 5, and Fable 5.1 use adaptive thinking. Haiku 4.5 supports extended thinking but has **no effort parameter**.
+Opus 5.5, Sonnet 5.5, and Fable 5.1 use adaptive thinking. Haiku 4.5 supports extended thinking but has **no effort parameter**.
 
 Current adaptive models support `low`, `medium`, `high`, `xhigh`, and `max`. Opus 4.6 and Sonnet 4.6 support `max` but not `xhigh`.
 
@@ -41,7 +41,7 @@ Current adaptive models support `low`, `medium`, `high`, `xhigh`, and `max`. Opu
 
 `ultrathink` adds a reasoning instruction without changing API effort. `think hard` is ordinary prompt text.
 
-## Choose by Measured Results
+## Choose by measured results
 
 Evaluate Haiku on bounded tasks, Sonnet on routine work, and Opus or Fable on harder tasks. Compare accepted outcomes, retries, latency, and total cost on the same task set. Teammates can use different models.
 

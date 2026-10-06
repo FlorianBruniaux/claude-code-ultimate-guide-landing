@@ -4,7 +4,7 @@ subtitle: "The extension protocol and essential servers"
 cardNumber: T12
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 12
 ---
 
@@ -12,7 +12,7 @@ order: 12
 
 MCP (Model Context Protocol) is the open standard that allows Claude Code to connect to external tools via a JSON-RPC 2.0 protocol. Each MCP server exposes additional tools, named according to the `mcp__<server>__<tool>` convention. Claude uses them exactly like its native tools, with the same permissions system.
 
-**Basic architecture**: Claude Code (client) communicates with the MCP server via stdio or HTTP. The server starts on first use and remains active for the entire session.
+**Basic architecture**: Claude Code (client) communicates with the MCP server via stdio or HTTP. Connection timing and reconnection depend on the server type, runtime and configuration; inspect `/mcp` for current status.
 
 ## Most widely used servers
 
@@ -25,32 +25,31 @@ MCP (Model Context Protocol) is the open standard that allows Claude Code to con
 | **Playwright** | Browser automation, E2E tests |
 | **GitHub** | Issues, PRs, repositories |
 
-## Configuration in settings.json
+## MCP configuration scopes
 
-MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/settings.json` (project).
+Use `claude mcp add` for the desired scope. Project servers are stored in `.mcp.json`; user and local configurations are stored in `~/.claude.json`.
 
 ```json
 {
   "mcpServers": {
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"],
+      "args": ["-y", "@upstash/context7-mcp", "--api-key", "YOUR_API_KEY"],
       "env": {}
     },
     "github": {
-      "command": "npx",
-      "args": ["@github/mcp-server"],
-      "env": {
-        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
-      }
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   }
 }
 ```
 
+Authenticate the GitHub remote server through `/mcp` before use; account and organization policies may restrict access.
+
 ## Transport: local (stdio) vs remote (HTTP)
 
-**stdio (local)**: the server runs as a child process on the machine. No network exposure, ideal for local tools like grepai (Ollama) or Serena.
+**stdio (local)**: the server runs as a child process on the machine. It can still make outbound network requests; review its code and permissions.
 
 **HTTP/SSE (remote)**: the server is accessible via a URL. Used for hosted services like Figma MCP (`https://mcp.figma.com/mcp`) or shared team servers.
 
@@ -58,7 +57,7 @@ MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/setti
 {
   "mcpServers": {
     "figma": {
-      "transport": "http",
+      "type": "http",
       "url": "https://mcp.figma.com/mcp"
     }
   }
@@ -67,9 +66,9 @@ MCP servers are declared in `~/.claude/settings.json` (global) or `.claude/setti
 
 ## MCP Apps (SEP-1865)
 
-Stable extension since January 2026, co-developed by Anthropic and OpenAI. It allows MCP servers to return interactive interfaces (HTML/JS) in addition to classic text responses, rendered in a sandboxed iframe on the client side.
+Extension available since January 26, 2026, co-authored by Anthropic, OpenAI, and the MCP-UI creators. It allows MCP servers to return interactive interfaces (HTML/JS) in addition to classic text responses.
 
-**Use cases**: data dashboards, complex forms, real-time visualizations directly within the conversation.
+**Not available in Claude Code CLI**: the terminal stays text-only, these interfaces do not render there. MCP Apps works in Claude Desktop, VS Code Insiders, and ChatGPT. Value for a CLI user: explore visually in Claude Desktop, then automate the identified actions in Claude Code.
 
 ## alwaysLoad (v2.1.121)
 
@@ -93,4 +92,4 @@ Avoid on servers with many tools (20+): the token cost adds up quickly.
 
 An MCP server sees only the parameters passed at call time, not the conversation history. Each call is independent unless the server itself implements a cache. It also cannot modify Claude's system prompt or bypass the permissions system.
 
-**Token cost**: each loaded server adds approximately 2K tokens of overhead per session (tool definitions). Load only what is necessary for the current project.
+**Token cost**: tool-definition overhead varies with the schemas and tool-search deferral. Load only what is necessary for the current project.

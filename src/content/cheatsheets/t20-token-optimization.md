@@ -4,35 +4,29 @@ subtitle: "Reducing token consumption without losing quality"
 cardNumber: T20
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 20
 ---
 
-## RTK: Upstream Filtering
+## RTK: Upstream filtering
 
-RTK (Rust Token Killer) intercepts command outputs **before** they enter Claude's context. It is not a post-hoc summary, it is a filter that eliminates structurally redundant noise. Disclosure: the author of this guide is a core contributor to RTK.
+RTK (Rust Token Killer) intercepts command outputs **before** they enter Claude's context. It is not a post-hoc summary, it is a filter that eliminates structurally redundant noise.
 
 ```bash
 # Installation
 brew install rtk
 # or: cargo install --git https://github.com/rtk-ai/rtk
 
-# Initialize in a project (sets up the hook automatically)
+# Inspect configuration changes before installing the integration
+rtk init --dry-run
 rtk init
 ```
 
-## Measured Savings
+## Measure output reduction
 
-| Command | Without RTK | With RTK | Reduction |
-|---------|------------|---------|-----------|
-| `git log` | 13,994 chars | 1,076 chars | **92%** |
-| `git status` | 100 chars | 24 chars | **76%** |
-| `vitest run` | ~50,000 chars | ~5,000 chars | **90%** |
-| `pnpm list` | ~8,000 chars | ~2,400 chars | **70%** |
+Compare equivalent commands on the same repository state, inspect failures, and use `rtk gain` for local estimates. Smaller shell output is only one contributor to token usage; it does not establish an equal reduction in the total bill. RTK estimates token counts rather than running the model's tokenizer. See the [RTK savings explanation](https://github.com/rtk-ai/rtk#how-savings-work).
 
-These are per-command output reductions, not session or bill reductions. Whole-task measurements of RTK alone differ by study: JetBrains measured +7.6% median cost per task at low reasoning effort and +0.1% at high effort, Dasein +13% total cost, THOL +7.1% with an interval that crosses zero, and Codepointer's replay -0.5% of spend. RTK's maintainers dispute the JetBrains design and report -4.8% on 13 dev tasks (p = 0.305) in their own re-run. Details: https://cc.bruniaux.com/token-savings/
-
-## Essential RTK Commands
+## Essential RTK commands
 
 ```bash
 rtk git status        # Condensed git
@@ -43,9 +37,9 @@ rtk gh pr view 123    # Optimized GitHub PR
 rtk gain              # Savings dashboard
 ```
 
-## Compact: Freeing Up Context
+## Compact: Freeing up context
 
-`/compact` summarizes the conversation history and frees roughly 40-50% of used context, without losing the thread of the session. Use it proactively at 70% usage, not as an emergency measure at 90%.
+`/compact` summarizes conversation history. The recovered space varies and details can be lost; preserve decisions and next steps in files and inspect `/context` before continuing.
 
 ```
 /compact              # Summarize the current session
@@ -53,19 +47,21 @@ rtk gain              # Savings dashboard
 
 The difference from `/clear`: compact preserves session continuity, clear starts from scratch.
 
-## `.claudeignore`: Excluding Noise
+## Limit reads and search scope
 
+Claude Code does not document a native `.claudeignore` mechanism. Name the relevant directories in requests. Where access must be blocked, use permission rules in `.claude/settings.json`, for example:
+
+```json
+{
+  "permissions": {
+    "deny": ["Read(./node_modules/**)", "Read(./dist/**)"]
+  }
+}
 ```
-node_modules/
-.next/
-dist/
-*.lock
-coverage/
-```
 
-Without this file, Claude may read thousands of irrelevant files during a global search, consuming context unnecessarily.
+Review shell and MCP access separately. These rules are access restrictions, not a ranking hint for search. See [permission patterns](https://code.claude.com/docs/en/permissions#read-and-edit).
 
-## Efficient Prompt Rules
+## Efficient prompt rules
 
 **Target, don't load:**
 - "Check the `login` function in `auth.ts:45-60`" rather than "Check auth.ts for issues"
@@ -74,13 +70,19 @@ Without this file, Claude may read thousands of irrelevant files during a global
 
 **What consumes the most:**
 
-| Action | Estimated tokens |
-|--------|----------------|
-| Reading a large file (2000 lines) | ~5K+ |
-| MCP call (Serena, Context7) | ~2K per call |
-| Long conversation without /compact | Accumulation |
-| Tests with full unfiltered output | 3K-10K |
+| Action | What to measure |
+|--------|-----------------|
+| Reading a large file | Returned text size |
+| MCP call | Tool schemas and returned result |
+| Long conversation | History retained in context |
+| Test run | Output returned, including failures |
 
-## Combined Strategy
+## Combined strategy
 
-RTK reduces the cost of bash commands (preventive). `/compact` frees up context mid-session (curative). `.claudeignore` avoids unnecessary reads (structural). These three levers are complementary and apply in parallel.
+Filter verbose shell output, compact when useful, and restrict reads to relevant sources. Verify the resulting output still contains the evidence needed to complete the task.
+
+<!-- landing-note:start -->
+Disclosure: the author of this guide is a core contributor to RTK.
+
+Whole-task measurements of RTK alone differ by study: JetBrains measured +7.6% median cost per task at low reasoning effort and +0.1% at high effort, Dasein +13% total cost, THOL +7.1% with an interval that crosses zero, and Codepointer's replay -0.5% of spend. RTK's maintainers dispute the JetBrains design and report -4.8% on 13 dev tasks (p = 0.305) in their own re-run. Details: https://cc.bruniaux.com/token-savings/
+<!-- landing-note:end -->

@@ -4,13 +4,13 @@ subtitle: "Which configuration mechanism to use based on the situation"
 cardNumber: C06
 category: Design
 difficulty: intermediate
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 206
 ---
 
 ## The fragmented configuration problem
 
-56% of teams don't use a shared project configuration for Claude Code. Each developer configures their environment locally, conventions drift, and nobody knows which version of the instructions is "correct". The result: inconsistent behavior depending on who runs Claude and on which machine.
+Without a shared project configuration for Claude Code, each developer configures their environment locally, conventions drift, and nobody knows which version of the instructions is "correct". The result: inconsistent behavior depending on who runs Claude and on which machine.
 
 The best practice comes down to a simple distinction: what belongs to the team goes into versioned files, what is personal stays local.
 

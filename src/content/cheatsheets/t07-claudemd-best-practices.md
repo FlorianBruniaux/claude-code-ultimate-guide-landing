@@ -4,7 +4,7 @@ subtitle: "Writing effective instructions that Claude reads every session"
 cardNumber: T07
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 7
 ---
 
@@ -38,7 +38,7 @@ Next.js 14, TypeScript, PostgreSQL/Prisma, pnpm
 
 ## Recommended size
 
-Keep CLAUDE.md between 4 and 8 KB total (all levels combined). Files exceeding 16K tokens degrade model consistency. Boris Cherny (creator of Claude Code) maintains a 2.5K-token CLAUDE.md for his team, capturing conventions built up over months of real usage.
+Keep instructions concise and review their effect on real tasks. About 200 lines is a practical starting point, not a demonstrated boundary for model consistency.
 
 **Practical rule**: if Claude makes the same mistake twice, add the rule. Do not document everything preemptively.
 
@@ -47,7 +47,7 @@ Keep CLAUDE.md between 4 and 8 KB total (all levels combined). Files exceeding 1
 ```
 ~/.claude/CLAUDE.md            (global, all projects)
 /project/CLAUDE.md             (project, committed)
-/project/.claude/CLAUDE.md     (local, gitignore)
+/project/CLAUDE.local.md       (personal, add to .gitignore)
 ```
 
 In a monorepo, Claude loads the root CLAUDE.md then merges the CLAUDE.md from the active subfolder. Child rules complement parent rules without overriding them.
@@ -60,7 +60,7 @@ In a monorepo, Claude loads the root CLAUDE.md then merges the CLAUDE.md from th
 @docs/conventions/architecture.md
 ```
 
-Files imported with `@path` are loaded on demand, only when referenced. They consume tokens at the moment of use, unlike files in `.claude/rules/` which load systematically at startup.
+Imports in CLAUDE.md load with that instruction file. Unscoped rules load generally; rules with `paths` frontmatter load when matching files are relevant. Use a skill when the complete workflow should load only on invocation.
 
 ## Recommended modular architecture
 
@@ -73,4 +73,4 @@ Files imported with `@path` are loaded on demand, only when referenced. They con
     └── api.md          (REST conventions)
 ```
 
-CLAUDE.md stays readable at a glance. Detailed rules live in `.claude/rules/`, loaded automatically every session.
+CLAUDE.md stays readable at a glance. Detailed rules live in `.claude/rules/`; scope file-specific instructions with `paths`.

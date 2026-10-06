@@ -4,7 +4,7 @@ subtitle: "Using Claude Code without human interaction: scripts, CI, pipes"
 cardNumber: T02
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 2
 ---
 
@@ -34,10 +34,10 @@ cat error.log | claude -p "Identify the root cause"
 ```bash
 # JSON output for automatic parsing
 git status --short | claude -p "Categorize the changes" \
-  --output-format json | jq '.categories'
+  --output-format json | jq -r '.result'
 
 # Stream JSON for long operations
-cat report.txt | claude -p "Summarize" --output-format stream-json
+cat report.txt | claude -p "Summarize" --output-format stream-json --verbose
 ```
 
 ## Flow control in pipes
@@ -71,13 +71,13 @@ git diff main...HEAD | claude -p "Security review, JSON format" \
   --output-format json > review.json
 ```
 
-## Interactive vs Non-Interactive
+## Interactive vs non-interactive
 
 | Aspect | Interactive | Non-Interactive (`-p`) |
 |--------|-------------|------------------------|
 | Output | Stream UI | Raw stdout |
-| Permissions | Prompts | Auto or skip |
+| Permissions | Prompts or saved rules | Configure allow rules or a bounded permission mode |
 | Usage | Development | CI, scripts, pipes |
-| Session | Persistent | Single, stateless |
+| Session | Persistent | Saved by default; can continue or resume |
 
 **Best practice**: limit pipe size to avoid exceeding the context window. Filter with `head`, `grep` or `--name-only` before sending to Claude.

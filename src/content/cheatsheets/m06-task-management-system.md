@@ -4,13 +4,15 @@ subtitle: "Organize Claude's work with the Tasks API"
 cardNumber: M06
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 106
 ---
 
+> **v2.1.233**: on Opus 4.8, Sonnet 5, Fable 5, Mythos 5, and newer models, the Tasks API (and TodoWrite) are disabled by default. Re-enable with `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`.
+
 ## Task hierarchy
 
-The Tasks API (v2.1.16+) introduces a four-level structure to break down any complex project in a clear and traceable way.
+When enabled, the Tasks API (v2.1.16+) supports persistent status and dependency tracking. The following four levels are a planning convention, not required task types.
 
 | Level | Role |
 |-------|------|
@@ -28,13 +30,14 @@ TaskCreate   Create a task or subtask
 TaskList     List all tasks (statuses + blockages)
 TaskGet      Read full details of a task
 TaskUpdate   Update status or metadata
-TaskStop     Cancel an ongoing task
+TaskStop     Stop a running background execution
 ```
 
 ## Execution cycle
 
 ```bash
-# 1. Initialize with a stable list ID
+# 1. Opt in on newer models and use a stable list ID
+export CLAUDE_CODE_ENABLE_TODO_TOOLS=1
 export CLAUDE_CODE_TASK_LIST_ID="myproject-auth-v2"
 claude
 
@@ -53,28 +56,26 @@ claude
 | `pending` | Waiting |
 | `in_progress` | Currently executing |
 | `completed` | Successfully finished |
-| `cancelled` | Cancelled |
+
 
 ## Dependencies with blockedBy
 
 The `blockedBy` field prevents premature execution of a task that depends on another. The IDs used must be the actual task identifiers, not their titles.
 
 ```
-TaskCreate: {
-  title: "Write integration tests",
-  blockedBy: ["task-login", "task-refresh"]
-}
+Create "Write integration tests", then set its dependencies
+using the actual IDs returned for the login and refresh tasks.
 ```
 
-Claude respects this order automatically during execution.
+Pending tasks with unresolved dependencies cannot be claimed. Record failures in the description or metadata; the task states are `pending`, `in_progress`, and `completed`.
 
 ## When to activate the Tasks API
 
-Use it as soon as work exceeds three sequential steps, involves multiple directories, or must continue across several sessions. For a quick task that wraps up in under ten minutes in a single session, TodoWrite remains sufficient.
+Use it when dependencies or state must survive a session. A small task may need only a short plan; both task systems require the opt-in on newer models.
 
 ## Cost to anticipate
 
-`TaskList` costs one API call. Fetching each task's details with `TaskGet` adds one additional call per task. For twenty tasks, that's twenty times more overhead. Placing critical information in the `subject` field (visible via `TaskList`) and keeping descriptions concise limits this cost.
+`TaskList` returns a summary; `TaskGet` retrieves details for a selected task. These are tool calls, not a one-to-one count of billed model requests. Put useful summaries in `subject` and retrieve detailed descriptions when needed to limit unnecessary context.
 
 ## List ID: naming rules
 

@@ -4,7 +4,7 @@ subtitle: "Managing MCP server credentials without exposing them"
 cardNumber: T15
 category: Technical
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 15
 ---
 
@@ -25,7 +25,8 @@ MCP servers need API keys and credentials to function. Storing them in plaintext
 The secret is encrypted at rest by the OS and accessible only to authorized processes. The MCP configuration exposes only a retrieval command, never the value.
 
 ```bash
-# macOS: store a GitHub token
+# Illustrative macOS command; real values entered here can reach shell history
+# Prefer the interactive Keychain interface for actual secrets
 security add-generic-password \
   -a "claude-mcp" -s "github-token" \
   -w "ghp_your_token_here"
@@ -36,7 +37,7 @@ security add-generic-password \
   "mcpServers": {
     "github": {
       "command": "bash",
-      "args": ["-c", "GITHUB_TOKEN=$(security find-generic-password -s 'github-token' -w) npx @github/mcp-server"]
+      "args": ["-c", "GITHUB_TOKEN=$(security find-generic-password -s 'github-token' -w) /path/to/approved-mcp-server"]
     }
   }
 }
@@ -58,7 +59,7 @@ chmod 600 ~/.claude/.env   # Restrictive permissions
 echo ".env" >> ~/.claude/.gitignore
 ```
 
-In the MCP config, reference with `"${GITHUB_TOKEN}"` in the `env` field. Claude Code resolves environment variables at server startup.
+Claude Code does not automatically load this `.env` file. Export the required variables through a trusted launcher or secret manager before starting Claude, then reference `"${GITHUB_TOKEN}"` in the MCP `env` field. Review a shell file before sourcing it.
 
 **Template for teams**: commit `mcp-config.template.json` with placeholders, generate the real file via `envsubst`. Never commit the generated file.
 
@@ -69,7 +70,7 @@ HashiCorp Vault, AWS Secrets Manager, or 1Password CLI enable automated rotation
 ```bash
 # HashiCorp Vault
 export GITHUB_TOKEN=$(vault kv get -field=token secret/claude/github)
-npx @github/mcp-server
+/path/to/approved-mcp-server
 ```
 
 ## What to never do
@@ -78,4 +79,4 @@ Hardcode a token directly in the `command` or `args` value of a versioned MCP se
 
 A pre-commit hook that scans for token patterns (`ghp_`, `sk-`, `Bearer `) before each commit is a simple additional protection to put in place.
 
-**`CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` (v2.1.78+)**: environment variable that forces Claude Code to strip sensitive variables (`*_KEY`, `*_TOKEN`, `*_SECRET`) before passing them to subprocesses and MCP servers. Enable in production to minimize exposure surface.
+**`CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` (v2.1.83+)**: environment variable that forces Claude Code to strip sensitive variables that Claude Code recognizes, including Anthropic/cloud credentials and credentials in package-registry URLs before passing them to subprocesses and MCP servers. It is not a universal secret-name matcher, and may break subprocesses that require those credentials. Verify the effective environment.

@@ -4,21 +4,21 @@ subtitle: "The essential complementary tools in the ecosystem"
 cardNumber: T22
 category: Technical
 difficulty: intermediate
-guideVersion: 3.42.0
+guideVersion: 3.44.1
 order: 22
 ---
 
-## Cost Tracking
+## Cost tracking
 
 The tools in this card are adjacent layers: they observe, configure, or coordinate sessions. They do not replace the runtime that owns the agent loop. Use the [Agent Harness Map](https://cc.bruniaux.com/guide/agent-harness-landscape/) to choose a runtime or orchestrator.
 
-**ccusage**: the community reference tool for tracking API spending. Parses local JSONL files, zero data sent externally.
+**ccusage**: reads local session usage records and estimates costs. Review its network behavior and pricing source; local input alone does not establish zero network access.
 
 ```bash
-npx ccusage          # Today's summary
+npx ccusage daily --last 1 # Latest day
 ccusage daily        # Daily report
 ccusage blocks --live # Real-time monitoring (5h windows)
-ccusage --breakdown  # Breakdown by model
+ccusage daily --breakdown # Breakdown by model
 ```
 
 **ccburn**: Python alternative with burn-rate charts in the terminal. Useful for visualizing consumption relative to billing limits, within a Python ecosystem.
@@ -28,7 +28,7 @@ pip install ccburn
 ccburn
 ```
 
-## Dashboard & Monitoring
+## Dashboard & monitoring
 
 **ccboard**: TUI and web interface for monitoring sessions, costs, and statistics in real time.
 
@@ -38,7 +38,7 @@ ccboard          # TUI interface
 ccboard --web    # Web UI on localhost:3000
 ```
 
-## Social Sharing & Leaderboard
+## Social sharing & leaderboard
 
 **Straude**: social dashboard to track and share consumption stats. Pushes daily metrics (cost, tokens, models) to a public leaderboard. Note: sends machine hostname and a device UUID to Straude servers. Use `--dry-run` before the first push.
 
@@ -54,16 +54,16 @@ straude status       # Streak, global rank, totals
 npx viberank-cli      # Submit ccusage data
 ```
 
-## Token Optimization
+## Token optimization
 
-**RTK (Rust Token Killer)**: CLI proxy that filters outputs before they enter the context. 92% reduction on `git log`, 90% on tests. See card T20 for details. Disclosure: the author of this guide is a core contributor to RTK.
+**RTK (Rust Token Killer)**: CLI proxy that filters outputs before they enter the context. Savings depend on the command and output; its estimates do not establish a corresponding reduction in the API bill. See card T20 for details.
 
 ```bash
 brew install rtk
 rtk init             # Setup with automatic hook
 ```
 
-## Parallel Orchestration
+## Parallel orchestration
 
 **Conductor**: macOS application for orchestrating multiple Claude Code instances in parallel via git worktrees. Integrated interface: diff viewer, CI/GitHub Actions, Linear, PR workflow.
 
@@ -71,7 +71,7 @@ Install from conductor.build (macOS only as of March 2026).
 
 Typical flow: create one workspace per feature from a GitHub or Linear issue, let the agents run, use "Next Workspace" to handle only those waiting for input.
 
-## Recommendation Table
+## Recommendation table
 
 | Profile | Recommended tools |
 |---------|------------------|
@@ -80,8 +80,12 @@ Typical flow: create one workspace per feature from a GitHub or Linear issue, le
 | Multi-agents | Conductor or Toad |
 | Python ecosystem | ccburn + Claude Chic |
 
-## Known Gaps
+## Known gaps
 
 No visual editor for `.claude/skills/` skill files. No unified dashboard combining config, sessions, costs, and MCP. A dedicated TUI exists for MCP servers (`claude-code-config`, `pip install claude-code-config`), but it stays limited to the `~/.claude.json` scope: no `settings.json`, hooks, or commands.
 
 These projects evolve independently from Claude Code. Check the repository, permissions, and targeted release before installation; the [glossary](https://cc.bruniaux.com/guide/glossary/) distinguishes a runtime, orchestrator, protocol, and adjacent tool.
+
+<!-- landing-note:start -->
+Disclosure: the author of this guide is a core contributor to RTK.
+<!-- landing-note:end -->

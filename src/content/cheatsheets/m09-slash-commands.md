@@ -4,11 +4,11 @@ subtitle: "Manually triggered skills via /name (CC 2.1.3)"
 cardNumber: M09
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 109
 ---
 
-> **CC 2.1.3**: Custom "commands" now live in `.claude/skills/` with `disable-model-invocation: true`. The `/name` syntax and behavior are identical.
+> **CC 2.1.3**: Skills use `.claude/skills/<name>/SKILL.md`; set `disable-model-invocation: true` for manual invocation only. Legacy `.claude/commands/*.md` files remain supported. The `/name` syntax and behavior are identical.
 
 ## Principle
 
@@ -17,15 +17,14 @@ A slash command is a Markdown file that defines a workflow. Claude executes it a
 ## File locations
 
 ```
-.claude/skills/          # Project commands (team)
-├── commit.md              → /commit
-├── review-pr.md           → /review-pr
-└── tech/
-    └── deploy.md          → /tech:deploy
+.claude/skills/             # Project skills
+├── commit/SKILL.md         → /commit
+├── review-pr/SKILL.md      → /review-pr
+└── deploy/SKILL.md         → /deploy
 
-~/.claude/skills/        # Global commands (personal)
-├── release.md             → /release
-└── sync.md                → /sync
+~/.claude/skills/           # Personal skills
+├── release/SKILL.md        → /release
+└── sync/SKILL.md           → /sync
 ```
 
 Global commands are available in all sessions, regardless of the project.
@@ -34,7 +33,7 @@ Global commands are available in all sessions, regardless of the project.
 
 ```
 /commit                    # No argument
-/tech:deploy production    # Positional argument
+/deploy production    # Positional argument
 /release minor             # Version bump
 ```
 
@@ -86,7 +85,7 @@ Description of the expected result.
 | `/sync` | Multi-file consistency check |
 | `/security-check` | Quick config scan |
 
-## Command vs Skill vs Agent
+## Command vs skill vs agent
 
 | Mechanism | When to use |
 |-----------|-------------|
@@ -94,7 +93,7 @@ Description of the expected result.
 | **Skill** | Reusable knowledge + embedded resources |
 | **Agent** | Recurring specialist with own memory |
 
-A command cannot embed additional reference files (use a skill for that). A command has no persistent memory (use an agent for that).
+A skill directory can include additional reference files and scripts, whether invoked by the user or model. Agent memory is a separate persistent mechanism.
 
 ## Practical tips
 

@@ -4,11 +4,11 @@ subtitle: "Resuming a session right where you left off"
 cardNumber: M03
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 103
 ---
 
-## Resuming a Session
+## Resuming a session
 
 ```bash
 # Continue the most recent session
@@ -26,9 +26,9 @@ claude --from-pr 123
 
 Sessions are stored in `~/.claude/projects/<encoded-path>/` as JSONL files.
 
-## Searching Sessions
+## Searching sessions
 
-The `session-search.sh` script (provided in `examples/scripts/`) is the fastest method: zero dependencies, 15ms to list, 400ms to search.
+The `session-search.sh` script (provided in `examples/scripts/`) searches local transcripts. Measure its latency on your own history.
 
 ```bash
 cs                        # 10 recent sessions
@@ -40,20 +40,13 @@ cs -p my-project "auth"   # Filter by project
 
 Each result displays the `claude --resume <id>` command ready to copy-paste.
 
-## Critical Limitation: Directory Scope
+## Critical limitation: Directory scope
 
 Claude Code stores sessions by encoding the **absolute path** of the project. A session in `/home/user/myapp` will not be found if you move the project to `/home/user/projects/myapp`.
 
-**Solution if you move a project:**
+**When moving a project:** preserve the original transcripts and write a handoff with decisions, changed files and remaining checks. Start in the destination with that handoff and verify current files and tools. Manual transcript migration does not rewrite absolute paths or restore remote services; test it on a backup before relying on it.
 
-```bash
-cd ~/.claude/projects/
-mv -- -old-location-myapp- -new-location-myapp-
-```
-
-Manual migration of the session folder works in the vast majority of cases.
-
-## What Resuming Does NOT Do
+## What resuming does NOT do
 
 Resuming a session does not restore:
 - Implicit decisions made during the session
@@ -62,11 +55,11 @@ Resuming a session does not restore:
 
 For important decisions (architecture choices, conventions), note them explicitly in CLAUDE.md rather than relying on session memory. It is more reliable and benefits future sessions.
 
-## Sessions and Sub-Agents
+## Sessions and sub-agents
 
 Sub-agent sessions (delegated tasks) are stored in a `subagents/` subfolder. They do not appear in the normal `--resume` list. If you migrate sessions manually, copy this subfolder too.
 
-## Complementary Tools
+## Complementary tools
 
 | Tool | Usage | Install |
 |------|-------|---------|
@@ -74,6 +67,6 @@ Sub-agent sessions (delegated tasks) are stored in a `subagents/` subfolder. The
 | `cc-sessions.py` | Incremental index, advanced filters | Python, same folder |
 | `claude-code-viewer` | Read-only web browser | `npx @kimuson/claude-code-viewer` |
 
-## Recommended Pattern
+## Recommended pattern
 
-Do not rely on `--resume` as the primary continuity mechanism for long projects. Prefer a well-maintained CLAUDE.md with key decisions, regular commits, and short targeted sessions. Session resumption is a safety net, not a replacement workflow.
+Do not rely on `--resume` as the primary continuity mechanism for long projects. Prefer a well-maintained CLAUDE.md with key decisions, regular commits, and short targeted sessions. Session resumption complements that discipline, it does not replace it.

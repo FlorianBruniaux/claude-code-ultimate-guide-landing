@@ -4,7 +4,7 @@ subtitle: "Structured development methodologies with Claude Code"
 cardNumber: M15
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 115
 ---
 
@@ -17,7 +17,7 @@ order: 115
 | **Audience** | Developers | Devs + business | Entire team |
 | **Feedback** | Tests pass/fail | Validated scenarios | Spec implemented |
 
-## TDD with Claude: Red-Green-Refactor
+## TDD with Claude: Red-green-refactor
 
 The classic cycle, made explicit in prompts to prevent Claude from jumping straight to implementation.
 
@@ -36,7 +36,7 @@ The classic cycle, made explicit in prompts to prevent Claude from jumping strai
 
 Being explicit about "FAILING" and "does not exist yet" matters. Otherwise Claude tends to write test and implementation together.
 
-## BDD with Claude: Given/When/Then
+## BDD with Claude: Given/when/then
 
 ```bash
 > "Describe the behavior of the login page
@@ -49,7 +49,7 @@ Being explicit about "FAILING" and "does not exist yet" matters. Otherwise Claud
 #   Then they are redirected to their dashboard
 ```
 
-The benefit: scenarios serve simultaneously as spec, documentation and test base, in a language readable by non-developers.
+Scenarios serve simultaneously as spec, documentation, and test base, in a language readable by non-developers.
 
 ## SDD with Claude: Spec first
 
@@ -73,25 +73,20 @@ All three methods rely on the same principle identified by Boris Cherny: **an ag
 | Style | ESLint / Prettier |
 | Security | Semgrep, static analyzers |
 
-## Chain-of-Verification
+## Chain-of-verification
 
 Cross-validation pattern (arXiv:2309.11495) to reduce hallucinations: Claude generates a response, then generates verification questions about that response, then answers those questions to detect inconsistencies.
 
 Applicable when result correctness is critical and automated tests are insufficient (complex algorithms, subtle business logic).
 
-## Integration with Tasks API
+## Integration with tasks API
 
-```bash
-# Create the TDD hierarchy in Tasks API
-TaskCreate: { title: "Write failing tests for auth" }
-TaskCreate: {
-  title: "Implement auth to pass the tests",
-  blockedBy: ["task-tests-failing"]
-}
-TaskCreate: {
-  title: "Refactor auth",
-  blockedBy: ["task-impl-auth"]
-}
+Enable task tools with `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`, then ask Claude:
+
+```text
+Create tasks for failing auth tests, implementation, and refactoring.
+Use the IDs returned by TaskCreate to add dependencies with TaskUpdate:
+implementation waits for tests; refactoring waits for implementation.
 ```
 
 The Red-Green-Refactor cycle becomes traceable and persistent across sessions.

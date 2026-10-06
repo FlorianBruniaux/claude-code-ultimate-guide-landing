@@ -4,7 +4,7 @@ subtitle: "Passing context between agents and managing trust levels"
 cardNumber: M17
 category: Methodology
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 117
 ---
 
@@ -18,7 +18,7 @@ In Claude Code Agent Teams, communication relies on a mailbox system, not solely
 | Agent → Lead | Progress report | Results, blockers |
 | Agent ↔ Agent | Peer-to-peer mailbox | Solution debate |
 
-Contexts remain isolated: agent 2 cannot see agent 1's 1M tokens. Only explicit messages cross the boundary, which means formulating handoffs precisely and concisely.
+Contexts remain isolated: agent 2 cannot see agent 1's conversation. Only explicit messages cross the boundary, which means formulating handoffs precisely and concisely.
 
 ## Passing context between agents
 
@@ -59,20 +59,19 @@ Three safeguards to put in place:
 2. **Validate the format**: if the agent expects JSON, reject anything that is not valid JSON.
 3. **Limit tools**: a read agent does not need `Bash` or `Write`.
 
-## Coordination via git tasks
+## Coordination through shared tasks
 
-Agent Teams use `.claude/tasks/` as a shared registry. Each agent claims a task by writing a lock file; other agents avoid already-marked tasks.
+Agent Teams store tasks in `~/.claude/tasks/<team-name>/`. Task claiming uses file locking to avoid simultaneous claims; it does not lock source files or merge code. Use `TaskList` and `TaskUpdate` to coordinate.
 
 ```
-.claude/tasks/
-├── task-1.lock      # Agent A in progress
-├── task-2.lock      # Agent B in progress
-└── task-3.pending   # Available
+~/.claude/teams/<team-name>/config.json
+~/.claude/teams/<team-name>/inboxes/<agent-name>.json
+~/.claude/tasks/<team-name>/
 ```
 
-This mechanism avoids duplicate work conflicts without centralized coordination. The orchestrator can monitor `.pending` files to know what remains to be processed.
+Give each agent separate file ownership or worktrees. Mailbox messages carry progress and results; source conflicts still require review.
 
-## Iterative Retrieval (v3.38.0)
+## Iterative retrieval (v3.38.0)
 
 Sub-agents lacking sufficient context should retrieve information in a structured way. Limit to 3 retrieval cycles before escalating to the orchestrator.
 

@@ -4,11 +4,11 @@ subtitle: "Where to configure what, from global to local"
 cardNumber: T05
 category: Technical
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 5
 ---
 
-## Configuration Levels
+## Configuration levels
 
 | Level | File | Scope | Git |
 |-------|------|-------|-----|
@@ -19,7 +19,7 @@ order: 5
 | Project rules | `CLAUDE.md` (root) | Team | Yes |
 | Subfolder | `subfolder/CLAUDE.md` | Folder | Yes |
 
-## Conflict Resolution
+## Conflict resolution
 
 ```
 ~/.claude/CLAUDE.md          (1 - global base)
@@ -37,18 +37,18 @@ Rules at a lower level **supplement** rather than replace higher levels.
 
 ```json
 {
-  "model": "claude-opus-4-5",
+  "model": "claude-sonnet-5-5",
   "permissions": {
     "allow": ["Bash(git *)"],
     "deny": ["Bash(rm -rf*)"]
   },
   "env": {
-    "ANTHROPIC_LOG": "error"
+    "DISABLE_TELEMETRY": "1"
   }
 }
 ```
 
-## CLAUDE.md: Best Practices
+## CLAUDE.md: Best practices
 
 ```markdown
 # Project Conventions
@@ -64,7 +64,7 @@ Rules at a lower level **supplement** rather than replace higher levels.
 - Never modify package-lock.json
 ```
 
-## What Goes Where
+## What goes where
 
 **Global CLAUDE.md**: personal preferences, code style, universal conventions.
 

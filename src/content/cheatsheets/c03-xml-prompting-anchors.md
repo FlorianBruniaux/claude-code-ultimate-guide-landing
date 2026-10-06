@@ -4,7 +4,7 @@ subtitle: "Structuring complex prompts for reproducible results"
 cardNumber: C03
 category: Design
 difficulty: advanced
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 203
 ---
 

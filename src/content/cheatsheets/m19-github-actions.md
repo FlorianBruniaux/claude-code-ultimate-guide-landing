@@ -4,7 +4,7 @@ subtitle: "Integrating Claude Code into GitHub CI/CD pipelines"
 cardNumber: M19
 category: Methodology
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 119
 ---
 
@@ -22,14 +22,14 @@ This pattern separates review logic from workflow mechanics. The YAML file orche
 
 This separation allows iterating on review quality without risking breaking the pipeline.
 
-## Authentication: OAuth vs API Key
+## Authentication: OAuth vs API key
 
 | Method | Cost per review | Prerequisites |
 |--------|----------------|--------------|
-| OAuth token (Max Plan) | ~$0 | Claude GitHub App installed |
-| `ANTHROPIC_API_KEY` | $0.05-0.15 (Sonnet) | Anthropic API key |
+| Subscription OAuth | Uses plan allowance; limits apply | Eligible account and OAuth token |
+| `ANTHROPIC_API_KEY` | Token-based API billing | Anthropic API key |
 
-OAuth via the Claude GitHub App is the preferred solution for teams on a Max plan: zero marginal cost per review, one-click configuration.
+Choose authentication from the account and workload. A subscription review consumes allowance; neither method guarantees a fixed per-review cost.
 
 ## Annotated minimal workflow
 
@@ -44,7 +44,8 @@ jobs:
   claude-review:
     if: |
       github.event_name == 'pull_request' ||
-      contains(github.event.comment.body, '/claude-review')
+      (github.event.issue.pull_request &&
+       contains(github.event.comment.body, '/claude-review'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,12 +54,14 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: claude-sonnet-4-6
-          prompt_file: .github/prompts/code-review.md
-          allowed_tools: Read,Glob,Grep
+          trigger_phrase: /claude-review
+          prompt: Read .github/prompts/code-review.md and review the PR.
+          claude_args: >-
+            --model claude-sonnet-5-5
+            --tools "Read,Glob,Grep"
 ```
 
-The `fetch-depth: 0` is necessary so Claude has access to the full git history and can compare the branch against main.
+`fetch-depth: 0` fetches full history. The current action accepts `prompt` and `claude_args`; the CLI tool restriction keeps this example read-only. See the [official action inputs](https://github.com/anthropics/claude-code-action/blob/main/action.yml).
 
 ## Allowed tools in CI
 
@@ -68,7 +71,7 @@ GitHub MCP tools (`mcp__github__get_pull_request_diff`, `mcp__github__submit_pen
 
 ## Anti-hallucination protocol
 
-The main problem with automated reviews: Claude invents line numbers or reports issues it has not verified. The mitigation protocol consists of explicitly asking in the prompt to verify before any assertion.
+Automated reviews suffer from a recurring problem: Claude invents line numbers or reports issues it has not verified. The mitigation protocol consists of explicitly asking in the prompt to verify before any assertion.
 
 Wording in `code-review.md`:
 

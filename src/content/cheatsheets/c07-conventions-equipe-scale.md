@@ -4,7 +4,7 @@ subtitle: "Synchronizing Claude Code practices across a team of 5+ developers"
 cardNumber: C07
 category: Design
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 207
 ---
 
@@ -14,7 +14,7 @@ In a team of 5 developers using 3 AI tools on 2 operating systems, you potential
 
 This is not a discipline problem. It is a configuration architecture problem.
 
-## Solution: Profile-Based Module Assembly
+## Solution: Profile-Based module assembly
 
 Instead of a shared monolithic file, the recommended structure breaks instructions into reusable modules assembled by profile.
 
@@ -48,17 +48,9 @@ modules:
 
 Alice receives only the modules she needs. Bob on Linux without Cursor receives a different CLAUDE.md, generated from the same sources.
 
-## Measured results
+## Measure the result
 
-Tested on a team of 5 developers, TypeScript/Node.js stack:
-
-| Metric | Monolithic | Profile-Based | Delta |
-|--------|-----------|---------------|-------|
-| Average CLAUDE.md size | 380 lines | 185 lines | -51% |
-| Estimated token cost | ~8,400 tok | ~3,450 tok | -59% |
-| Propagating an update | Manual | Automatic | |
-
-The 59% reduction comes from each developer loading only the modules relevant to their environment, instead of the full file.
+Compare loaded instruction size, update propagation failures and accepted-task outcomes before and after introducing profiles. No team benchmark is supplied here; the architecture needs validation on your own configurations.
 
 ## Versioned settings.json = team rules
 
@@ -73,10 +65,10 @@ Shared rules (hooks, allowed permissions) go into the versioned `.claude/setting
 }
 ```
 
-This separation ensures that team guardrails apply to everyone, while letting each developer customize their local environment without risk.
+This separates shared defaults from personal choices. Enforce mandatory restrictions through managed policy and verify the effective configuration.
 
 ## Break-even point
 
-The setup is worth it for **teams of 5+ developers**. Below that, a simple shared CLAUDE.md is sufficient. The maintenance cost of the assembler (a few dozen lines of TypeScript or Python) is recouped in the first month on a team of 5+.
+Use an assembler when repeated configuration drift costs more than maintaining the profiles. Team size alone does not establish a break-even point.
 
 For smaller teams, the simple strategy remains effective: one shared versioned CLAUDE.md, one `settings.local.json` per developer for overrides.

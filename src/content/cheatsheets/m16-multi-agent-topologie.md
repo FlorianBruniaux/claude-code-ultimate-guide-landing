@@ -4,7 +4,7 @@ subtitle: "Architecting agent teams for complex tasks"
 cardNumber: M16
 category: Methodology
 difficulty: advanced
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 116
 ---
 
@@ -30,7 +30,7 @@ Orchestrator
 └── Test Agent      → coverage
 ```
 
-The orchestrator plans and delegates; it does not code itself. Its role is to allocate work, unblock dependencies, and present a unified response.
+In this chosen arrangement, the orchestrator focuses on planning and delegation; this is a role convention, not a tool restriction. Its role is to allocate work, unblock dependencies, and present a unified response.
 
 ## Pipeline topology
 
@@ -61,11 +61,11 @@ Each agent can receive distinct context and a tool whitelist. Limiting an agent 
 | Agent | Allowed tools |
 |-------|--------------|
 | Explorer | Read, Glob, Grep |
-| Planner | Read, Glob, Grep, Write(plan) |
+| Planner | Read, Glob, Grep; separately scoped plan-file writes |
 | Implementer | Read, Edit, Bash, Write |
 | Reviewer | Read, Glob, Grep |
 
-## Enabling Agent Teams
+## Enabling agent teams
 
 ```bash
 # Environment variable (current session)
@@ -80,10 +80,10 @@ claude
 }
 ```
 
-Prerequisites: Claude Code v2.1.32+, a model available to the account (teammates may differ), initialized git repository. Navigate between agents with `Shift+Down` in in-process mode.
+Prerequisites: Claude Code v2.1.32+, a model available to the account (teammates may differ); a Git repository is required for worktree isolation, not for task messaging itself. Navigate between agents with `Shift+Down` in in-process mode.
 
-## Loop Controls
+## Loop controls
 
 Define a budget, stop condition, recovery state, and synthesis owner before launch. Add an independent reviewer when the change is consequential or when the same agent cannot credibly produce and verify the result.
 
-Start with the smallest number of agents that covers genuinely independent scopes. Add a participant only when elapsed time, conflicts, human rework, and accepted-task cost justify the extra coordination. The [trial protocol](https://cc.bruniaux.com/guide/agent-harness-landscape/) provides the record for that decision.
+Limit new work to verification capacity; start with the smallest team covering independent scopes. Add a participant only when elapsed time, conflicts, human rework, and accepted-task cost justify the extra coordination. The [trial protocol](https://cc.bruniaux.com/guide/agent-harness-landscape/) provides the record for that decision.

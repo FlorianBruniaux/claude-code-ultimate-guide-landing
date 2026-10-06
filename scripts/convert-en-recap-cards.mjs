@@ -1,19 +1,22 @@
 /**
  * convert-en-recap-cards.mjs
  *
- * Phase 1: Replace 57 French cheatsheet MD files with English content from guide repo.
+ * Refresh landing cheatsheets from English recap cards in the guide repository.
  * Reads EN QMD files, maps by card-number, writes new landing MD files preserving order.
  *
- * Usage: node scripts/convert-en-recap-cards.mjs
+ * Usage: GUIDE_REPO_PATH=/path/to/guide node scripts/convert-en-recap-cards.mjs
+ * Optional landing-note blocks preserve reviewed web-only editorial additions.
  */
 
 import { readFileSync, writeFileSync, readdirSync } from 'fs'
-import { join, dirname } from 'path'
+import { join, dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const LANDING_ROOT = join(__dirname, '..')
-const GUIDE_ROOT = join(__dirname, '../../claude-code-ultimate-guide')
+const GUIDE_ROOT = process.env.GUIDE_REPO_PATH
+  ? resolve(process.env.GUIDE_REPO_PATH)
+  : join(__dirname, '../../claude-code-ultimate-guide')
 
 const EN_QMD_DIR = join(GUIDE_ROOT, 'whitepapers/recap-cards/en')
 const LANDING_MD_DIR = join(LANDING_ROOT, 'src/content/cheatsheets')
@@ -23,6 +26,7 @@ const CATEGORY_MAP = {
   Technical: 'Technical',
   Methodology: 'Methodology',
   Conceptual: 'Design',
+  Design: 'Design',
 }
 
 /**
@@ -71,7 +75,9 @@ for (const f of qmdFiles) {
     subtitleRaw: parsed.getRaw('subtitle'),
     category: mappedCategory,
     difficulty: parsed.get('difficulty'),
-    body: parsed.body.trim(),
+    guideVersion: parsed.get('guide-version') || parsed.get('version'),
+    // Print-only column breaks have no meaning in the web edition.
+    body: parsed.body.replace(/```\{=typst\}\r?\n#colbreak\(\)\s*```\s*/g, '').trim(),
   }
 }
 
@@ -90,7 +96,6 @@ for (const f of mdFiles) {
 
   const cardNum = parsed.get('cardNumber')
   const order = parsed.get('order')
-  const guideVersion = parsed.get('guideVersion') || '3.36.0'
 
   if (!cardNum) { console.warn(`No cardNumber in ${f}`); skipped++; continue }
 
@@ -100,6 +105,11 @@ for (const f of mdFiles) {
     skipped++
     continue
   }
+  if (!qmd.guideVersion) throw new Error(`No guide version in EN QMD for ${cardNum}`)
+
+  // Only explicitly reviewed additions survive a canonical-content refresh.
+  const landingNotes = content.match(/<!-- landing-note:start -->[\s\S]*?<!-- landing-note:end -->/g) || []
+  const body = [qmd.body, ...landingNotes].join('\n\n')
 
   // Write new MD file with EN content
   const newContent = `---
@@ -108,11 +118,11 @@ subtitle: ${qmd.subtitleRaw}
 cardNumber: ${cardNum}
 category: ${qmd.category}
 difficulty: ${qmd.difficulty}
-guideVersion: ${guideVersion}
+guideVersion: ${qmd.guideVersion}
 order: ${order}
 ---
 
-${qmd.body}
+${body}
 `
 
   writeFileSync(join(LANDING_MD_DIR, f), newContent, 'utf-8')

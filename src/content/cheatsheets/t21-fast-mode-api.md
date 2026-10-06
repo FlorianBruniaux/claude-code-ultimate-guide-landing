@@ -4,11 +4,11 @@ subtitle: "Fast mode and the major API changes you need to know"
 cardNumber: T21
 category: Technical
 difficulty: intermediate
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 21
 ---
 
-## Fast Mode on Opus 5.5
+## Fast mode on Opus 5.5
 
 Fast mode uses faster serving of the same model. Anthropic advertises **up to 2.5 times faster output**, not a guarantee for every request. Claude Code selects Opus 5.5 for fast mode from v2.1.280.
 
@@ -19,13 +19,13 @@ Fast mode uses faster serving of the same model. Anthropic advertises **up to 2.
 
 Opus 5 and Opus 4.8 also support fast mode at $10/$50. Sonnet and Haiku do not. Opus 4.7 is no longer supported in fast mode.
 
-## Activation and Billing
+## Activation and billing
 
 Use `/fast` or `Option+O` / `Alt+O`. The choice normally persists between sessions; organization settings and availability still apply. Subscription fast mode uses usage credits, not the included subscription allowance.
 
-Compare observed latency and cost on the same task. Faster output does not remove tool waits, retries, or review work. Sonnet 5 standard rates are $2/$10, four times lower than Opus 5.5 fast rates for the same token counts.
+Compare observed latency and cost on the same task. Faster output does not remove tool waits, retries, or review work. Sonnet 5.5 standard rates are $2/$10, four times lower than Opus 5.5 fast rates for the same token counts.
 
-## API Integration
+## API integration
 
 Use the current [API fast-mode instructions](https://platform.claude.com/docs/en/build-with-claude/fast-mode) for supported model IDs, headers, request fields, and fallback behavior. Do not copy an older beta example without checking SDK compatibility.
 
@@ -43,10 +43,10 @@ response = client.messages.create(
 
 This is a standard-speed example. Opus 5.5 defaults to medium effort in Claude Code; the example explicitly asks for high.
 
-## Migrating Older Examples
+## Migrating older examples
 
 Opus 4.6 removed assistant prefill. For schema-constrained JSON, use `output_config.format`; for strict tool inputs, put `strict: true` on the tool definition. A system instruction alone does not guarantee valid JSON.
 
-Current Opus, Sonnet 5, and Fable use adaptive thinking. Fixed `budget_tokens` examples belong to older models. Haiku 4.5 supports extended thinking but has no effort parameter.
+Current Opus, Sonnet 5.5, and Fable use adaptive thinking. Fixed `budget_tokens` examples belong to older models. Haiku 4.5 supports extended thinking but has no effort parameter.
 
 Verified September 24, 2026. Sources: [Claude Code fast mode](https://code.claude.com/docs/en/fast-mode), [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).

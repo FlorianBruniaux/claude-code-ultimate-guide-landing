@@ -4,7 +4,7 @@ subtitle: "Understanding the attack vectors specific to Claude Code"
 cardNumber: C08
 category: Design
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 208
 ---
 
@@ -26,7 +26,7 @@ Claude Code is an agent with access to the filesystem, Bash commands, and the in
 |----------|------|-----------------|
 | Solo dev, public repos | Medium | Install an output-scanner hook |
 | Team, sensitive codebase | High | MCP vetting + injection hooks |
-| Enterprise, production | Critical | ZDR + integrity verification |
+| Enterprise, production | Critical | Least privilege, isolation and integrity verification |
 
 ## CVEs to know (selection 2025-2026)
 
@@ -35,6 +35,7 @@ Claude Code is an agent with access to the filesystem, Bash commands, and the in
 | CVE-2025-53109/53110 | High | Sandbox escape filesystem MCP |
 | CVE-2025-54135 | High | RCE via prompt injection in Cursor |
 | ADVISORY-CC-2026-001 | High | Sandbox bypass, patch v2.1.34+ |
+| ADVISORY-CC-2026-002 | Medium | Deny rules silently dropped past 50 subcommands, patch v2.1.90+ |
 | CVE-2026-0755 | Critical (9.8) | RCE in gemini-mcp-tool (no patch) |
 
 **Immediate action if you are on v2.1.33 or earlier:** update to v2.1.34+ to fix the sandbox bypass.
@@ -51,13 +52,13 @@ Minimal permissions (settings.json)
         + Sandbox / ephemeral environment
 ```
 
-**Basic permissions rule:** grant only what the task requires. For a read/analysis task, `permissions.allow: ["Read", "Grep", "Glob"]`. No Bash, no Write.
+**Basic permissions rule:** grant only what the task requires. For a read/analysis task, restrict the agent with `tools: Read, Grep, Glob` or CLI `--tools "Read,Grep,Glob"`. An allow rule only pre-approves a tool; it does not remove other tools.
 
 ## Audit with JSONL logs
 
-Claude Code writes all its tool calls to `~/.claude/logs/`. These JSONL logs allow detecting abnormal behavior after the fact: unexpected reads of sensitive files, unplanned network calls, modification attempts outside scope.
+Claude Code writes all its tool calls to the session JSONL file, `~/.claude/projects/{encoded-path}/{session-id}.jsonl`. These logs allow detecting abnormal behavior after the fact: unexpected reads of sensitive files, unplanned network calls, modification attempts outside scope.
 
 ```bash
 # Inspect tool calls from a session
-cat ~/.claude/logs/session-*.jsonl | jq '.tool_name'
+cat ~/.claude/projects/*/*.jsonl | jq '.message.content[]?.name // empty'
 ```

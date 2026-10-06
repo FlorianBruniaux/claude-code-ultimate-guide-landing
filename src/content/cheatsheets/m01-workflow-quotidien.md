@@ -4,11 +4,11 @@ subtitle: "The optimal routine for a productive development session"
 cardNumber: M01
 category: Methodology
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 101
 ---
 
-## The Interaction Loop
+## The interaction loop
 
 Every Claude Code session follows this pattern:
 
@@ -22,23 +22,23 @@ Every Claude Code session follows this pattern:
 7. COMMIT    → Save (optional)
 ```
 
-The key: **Claude proposes, you decide.** Never skip the review step, even on changes that seem obvious.
+**Claude proposes, you decide.** Never skip the review step, even on changes that seem obvious.
 
-## Session Start
+## Session start
 
 **Before typing the first request:**
 
-1. Verify CLAUDE.md is loaded (first line shown in context)
+1. Verify CLAUDE.md is loaded: ask "What's the test command for this project?" and see if Claude answers with the configured command
 2. Set a clear intention: one single objective per session
 3. Start with `/plan` if the task touches multiple files
 
 ```bash
 cd your-project
 claude
-# Check: "✓ CLAUDE.md loaded"
+# Check with /status or a question about the project config
 ```
 
-## During the Session
+## During the session
 
 **Review the diff at each step**: do not let Claude chain multiple changes without intermediate validation. On significant modifications, ask explicitly:
 
@@ -46,16 +46,16 @@ claude
 You: Show me what you changed before continuing
 ```
 
-**Context management:**
+**Context management (personal reminders, not quality thresholds):**
 
 | Context | Action |
 |---------|--------|
 | 0-50% | Work freely |
 | 50-75% | Be selective about open files |
 | 75%+ | `/compact` now |
-| 90%+ | `/clear` required |
+| 90%+ | Save decisions, then compact or hand off as needed |
 
-## Anti-Pattern: Vibe Coding
+## Anti-Pattern: Vibe coding
 
 Letting Claude iterate unsupervised across multiple files, then discovering problems an hour later. The end-of-session diff becomes unreadable and rolling back is costly.
 
@@ -64,7 +64,7 @@ Letting Claude iterate unsupervised across multiple files, then discovering prob
 - Run tests after each significant change
 - Commit regularly to have clean rollback points
 
-## End of Session
+## End of session
 
 Before closing:
 
@@ -78,7 +78,7 @@ git commit -m "feat: short description"
 
 If important decisions were made during the session (architecture choices, adopted conventions), note them in CLAUDE.md so the next session starts from the right context. Sessions do not transfer implicit decisions on their own.
 
-## Effective Prompt Format
+## Effective prompt format
 
 ```
 WHAT:   Fix the timeout bug on login

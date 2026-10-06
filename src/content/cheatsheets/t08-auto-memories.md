@@ -4,7 +4,7 @@ subtitle: "The automatic memory system vs manual CLAUDE.md"
 cardNumber: T08
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 8
 ---
 
@@ -20,11 +20,7 @@ Introduced in v2.1.59 (February 2026), auto-memories allow Claude Code to save u
 ~/.claude/projects/<encoded-path>/memory/MEMORY.md
 ```
 
-For project-level memories (if you use `.claude/memory/`):
-
-```
-.claude/memory/MEMORY.md
-```
+This is the native default. Configure `autoMemoryDirectory` only when you need a different location; a `.claude/memory/` directory is not automatically the project memory store.
 
 Since v2.1.63, auto-memories are shared across git worktrees of the same repo.
 
@@ -44,7 +40,7 @@ Known issues:
   "Do not use package X, version conflict with Y"
 ```
 
-## CLAUDE.md vs Auto-Memories
+## CLAUDE.md vs auto-memories
 
 | Aspect | CLAUDE.md | Auto-Memories |
 |--------|-----------|---------------|
@@ -52,7 +48,7 @@ Known issues:
 | Source | Explicit documentation | Conversation analysis |
 | Visibility | Git, shared with team | Local user, gitignore |
 | Ideal content | Team conventions | Personal discoveries |
-| Control | Full | Limited |
+| Control | Edit instructions | Inspect, edit, delete or disable memory |
 
 ## Managing memories with /memory
 
@@ -67,4 +63,4 @@ Known issues:
 
 **Let auto-memories work:** personal workflow preferences, patterns discovered mid-session, temporary context tied to a feature in progress.
 
-**Main limitation**: no fine-grained control over what gets memorized automatically. If a captured decision becomes outdated, it must be deleted manually via `/memory`. Auto-memories are not committed to Git, so they remain invisible to other team members.
+**Review regularly**: inspect memory with `/memory` and correct outdated notes. Auto memory is enabled by default and can be disabled with `autoMemoryEnabled: false`. The startup index is limited to 200 lines or 25KB; topic files load on demand. Default memory files are machine-local, not shared through the repository. [Memory reference](https://code.claude.com/docs/en/memory).

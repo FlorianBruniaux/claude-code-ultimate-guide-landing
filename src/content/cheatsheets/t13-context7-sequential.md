@@ -4,7 +4,7 @@ subtitle: "Official documentation and multi-step reasoning within reach of a pro
 cardNumber: T13
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 13
 ---
 
@@ -27,14 +27,14 @@ Context7 solves a common problem: Claude knows popular APIs up to its knowledge 
 
 Sequential Thinking brings a multi-step reasoning engine for complex problems. Rather than answering directly, it decomposes the problem into hypotheses, tests them, and builds an argued response step by step.
 
-**Triggers**: `--think`, `--think-hard`, `--ultrathink` flags, or problems involving 3+ interconnected components.
+**Invocation**: request the installed Sequential Thinking MCP tool for a problem that benefits from explicit steps. `--think-hard` and `--ultrathink` are not Claude Code CLI flags. The prompt word `ultrathink` adds a reasoning instruction without changing API effort; use `/effort` for supported models. Haiku 4.5 has no effort parameter.
 
 ```bash
-# Activate Sequential for complex debugging
-"Why is this API slow? --think-hard"
+# Invoke Sequential for complex debugging
+"Why is this API slow? Use Sequential Thinking to analyze it step by step."
 
 # Architecture design
-"Design a multi-level cache system --ultrathink"
+"Design a multi-level cache system with Sequential Thinking."
 ```
 
 **Do not use for**: simple fixes, typos, short explanations, single-file tasks. The reasoning overhead is not justified on trivial cases.
@@ -67,11 +67,11 @@ The two servers complement each other well for architecture or migration tasks:
 ## Quick installation
 
 ```bash
-# Context7
-npx -y @upstash/context7-mcp
+# Context7 (requires an API key)
+npx -y @upstash/context7-mcp --api-key YOUR_API_KEY
 
 # Sequential Thinking (official Anthropic)
 npx -y @modelcontextprotocol/server-sequential-thinking
 ```
 
-Add in `~/.claude/settings.json` under the `mcpServers` key with `command: "npx"` and the corresponding args.
+Register the server with `claude mcp add --transport stdio --scope project <name> -- npx -y <package>`, using the selected package and its required arguments. Project scope writes `.mcp.json`; user and local scope live in `~/.claude.json`. Inspect the connection with `/mcp`. See [MCP installation](https://code.claude.com/docs/en/mcp).

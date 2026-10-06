@@ -4,18 +4,13 @@ subtitle: "Managing the context window for efficient sessions"
 cardNumber: M02
 category: Methodology
 difficulty: beginner
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 102
 ---
 
-## The 4 Context Zones
+## Context indicators
 
-| Zone | Threshold | Required action |
-|------|-----------|-----------------|
-| 🟢 Green | 0–75% | Normal work, no action needed |
-| 🟡 Yellow | 75–85% | Suggest `/compact` |
-| 🟠 Orange | 85–90% | Compact without waiting |
-| 🔴 Red | 90%+ | Urgent, `/clear` if needed |
+Inspect `/context` for current capacity and the largest consumers. Compact when earlier details are no longer needed, and start fresh when the task changes. Percentage thresholds can be personal reminders; they do not establish a universal loss of reasoning quality.
 
 ## Context Sources (by priority)
 
@@ -23,20 +18,20 @@ order: 102
 1. ~/.claude/CLAUDE.md       Global rules
 2. ./CLAUDE.md               Project rules (root)
 3. subfolder/CLAUDE.md       Local rules (cumulative)
-4. .claude/rules/*.md        Rules auto-loaded at startup
+4. .claude/rules/*.md        Unscoped rules at startup; paths rules when relevant
 5. @file                     Explicit inline import (in session)
 ```
 
-## Management Commands
+## Management commands
 
 ```bash
-/compact        # Summarize + free ~40% of context
-/clear          # Full reset (loses history)
-/cost           # View tokens used / remaining
-/status         # Detailed context state
+/compact        # Summarize earlier context; reduction varies
+/clear          # Start a fresh context; saved sessions may be resumed
+/usage          # Inspect usage and plan limits
+/context        # Detailed context state
 ```
 
-## Adding Context Intelligently
+## Adding context intelligently
 
 ```
 # In the prompt
@@ -49,15 +44,15 @@ Always read package.json before working on deps.
 Rules scoped by path (paths:) or global
 ```
 
-## Strategies by Scenario
+## Strategies by scenario
 
-**Long session (refactor)**: Make regular checkpoints with `/compact` every 30 min. Save important decisions in `CLAUDE.md`.
+**Long session (refactor)**: Make checkpoints at meaningful task boundaries. Save important decisions in `CLAUDE.md`.
 
 **Complex debugging**: Provide only the relevant files with `@file`. Avoid loading the entire project at once.
 
-**Multi-file**: Use agents (`--agent`) to delegate: each sub-agent has its own isolated context.
+**Multi-file**: Ask Claude to delegate through the Agent tool. `--agent` instead chooses the main session agent.
 
-## What Consumes the Most
+## What consumes the most
 
 | Source | Impact |
 |--------|--------|
@@ -81,4 +76,4 @@ and the team decided after many debates to...
 
 ## Common Anti-patterns
 
-Do not paste large JSON or raw logs into the prompt. Use a temporary file and `@file` instead. Do not ignore context warnings: at 85%+, response quality degrades noticeably.
+Do not paste large JSON or raw logs into the prompt. Use a temporary file and `@file` instead. Do not ignore context warnings: inspect what occupies the context and preserve decisions before compaction.

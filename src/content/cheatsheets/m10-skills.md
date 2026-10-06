@@ -4,7 +4,7 @@ subtitle: "Reusable skill modules with embedded resources"
 cardNumber: M10
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 110
 ---
 
@@ -22,12 +22,12 @@ my-skill/
     └── pattern.ts
 ```
 
-## Invocation Modes
+## Invocation modes
 
 | Mode | Frontmatter | Behavior |
 |------|-------------|----------|
 | **User-invocable** | `disable-model-invocation: true` | Triggered by user via `/name` |
-| **Model-invocable** | (no flag) | Auto-loaded by model |
+| **Model-invocable only** | `user-invocable: false` | Hidden from the user menu; Claude may invoke it |
 | **Both** | (no flag) | Invocable either way |
 
 ## SKILL.md frontmatter
@@ -47,7 +47,7 @@ allowed-tools: Read Grep Bash
 | `allowed-tools` | Tool whitelist (supports wildcards) |
 | `disable-model-invocation` | `true` for manual-only invocation |
 
-## Skills vs Commands
+## Skills vs commands
 
 | Aspect | Skill | Command |
 |--------|-------|---------|
@@ -58,20 +58,20 @@ allowed-tools: Read Grep Bash
 
 The main difference: a skill can embed a 500-line `reference.md` file that becomes available on invocation. A command cannot.
 
-## Marketplace: npx add-skill
+## Installing community skills
 
 ```bash
-# Install the Vercel bundle (3 skills)
-npx add-skill vercel-labs/agent-skills
+# Inspect available skills before installing
+npx skills add vercel-labs/agent-skills --list
 
-# Install the Supabase skill
-npx add-skill supabase/agent-skills
+# Select the desired skills interactively
+npx skills add vercel-labs/agent-skills --agent claude-code
 
 # Check installed skills
-ls ~/.claude/skills/
+npx skills list
 ```
 
-Marketplace skills pass an automatic 3-layer security audit (Socket, Snyk, Gen) before publication. Over 200 skills available.
+The [skills CLI](https://github.com/vercel-labs/skills) installs community packages. Listing or scanning does not guarantee safety: inspect instructions, scripts, requested access and the chosen revision before use.
 
 ## Invocation
 
@@ -95,4 +95,4 @@ Two long-term management patterns:
 
 ## Important caveat
 
-Skills are only invoked on explicit activation. Evals show automatic invocation in only 56% of cases. For critical instructions that must always apply, use `CLAUDE.md` or `.claude/rules/` rather than a skill.
+Claude may invoke eligible skills automatically, but discovery does not guarantee invocation on every relevant request. Put critical always-applicable instructions in `CLAUDE.md` or `.claude/rules/` and test skill activation on representative prompts.

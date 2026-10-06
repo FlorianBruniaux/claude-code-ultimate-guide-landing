@@ -4,17 +4,17 @@ subtitle: "Finding code by intent, not by regex"
 cardNumber: T14
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 14
 ---
 
 ## Principle: search by intent
 
-Native Grep (ripgrep) is ideal when you know the exact text to find. Grepai takes over when you are looking for "the code that handles X" without knowing the exact function or variable names. It relies on local embeddings via Ollama and the `nomic-embed-text` model, which guarantees full privacy: no data leaves the machine.
+Native Grep (ripgrep) is ideal when you know the exact text to find. Grepai takes over when you are looking for "the code that handles X" without knowing the exact function or variable names. It relies on local embeddings via Ollama and the `nomic-embed-text` model, which keeps that indexing step local. Search results returned to Claude can still enter the configured model provider's context.
 
-**Token savings**: ~4K tokens with grepai vs ~15K doing raw grep + reading full files.
+**Measure value**: compare retrieval accuracy, returned context size and accepted-task cost on representative searches.
 
-## The 4 main tools
+## The 5 main tools
 
 **`grepai_search`**: search by natural language description. Short queries (1-3 keywords) yield better results than long phrases.
 
@@ -27,6 +27,8 @@ grepai_search("rate limiting middleware")
 **`grepai_trace_callers`**: finds all functions that call a given symbol.
 
 **`grepai_trace_callees`**: lists what a function calls internally.
+
+**`grepai_trace_graph`**: generates the full dependency graph around a symbol.
 
 **`grepai_index_status`**: checks that the index is up to date before running searches.
 
@@ -50,8 +52,8 @@ Recommended depth: 2 by default, 3 at most for complex analyses.
 
 | Situation | Recommended tool |
 |-----------|-----------------|
-| Exact pattern known (`"authenticate"`) | Native Grep (~20ms) |
-| Search by concept or intent | Grepai (~500ms) |
+| Exact pattern known (`"authenticate"`) | Native Grep |
+| Search by concept or intent | Grepai |
 | Call graph analysis | Grepai (`trace_callers`) |
 | Multi-file refactoring | Grepai + Serena |
 | Advanced regex on AST structure | ast-grep |

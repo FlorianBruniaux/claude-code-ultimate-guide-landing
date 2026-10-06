@@ -4,9 +4,11 @@ subtitle: "The old and new task management systems"
 cardNumber: M07
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 107
 ---
+
+> **v2.1.233**: on Opus 4.8, Sonnet 5, Fable 5, Mythos 5, and newer models, both TodoWrite AND the Tasks API are disabled by default. Re-enable with `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`.
 
 ## Direct comparison
 
@@ -16,7 +18,7 @@ order: 107
 | **Multi-session** | Lost on close | Survives restarts |
 | **Dependencies** | Manual ordering | Native `blockedBy` |
 | **Coordination** | Single agent | Multi-agent, broadcast |
-| **Statuses** | pending / completed | 4 statuses + metadata |
+| **Statuses** | pending / in_progress / completed | pending / in_progress / completed |
 | **Context summary** | Lost on `/compact` | Intact after compaction |
 
 ## When to stay on TodoWrite
@@ -35,11 +37,11 @@ Resume after /compact            → guaranteed persistence
 ## Enable and disable
 
 ```bash
-# Tasks API is the default task system (since v2.1.142)
-claude
+# Enable task tools on newer models
+CLAUDE_CODE_ENABLE_TODO_TOOLS=1 claude
 
 # Force fallback to TodoWrite (rare)
-CLAUDE_CODE_ENABLE_TASKS=false claude
+CLAUDE_CODE_ENABLE_TODO_TOOLS=1 CLAUDE_CODE_ENABLE_TASKS=0 claude
 
 # Check current configuration
 env | grep CLAUDE_CODE_ENABLE_TASKS
@@ -73,4 +75,4 @@ TodoWrite will continue to work, but Anthropic's direction is clearly toward the
 
 ## Automatic activation
 
-Since v2.1.142 the Tasks API is the default task system: Claude switches to `TaskCreate`/`TaskUpdate` on its own for multi-step work, no flag required. TodoWrite stays available behind `CLAUDE_CODE_ENABLE_TASKS=0`.
+The Tasks API became the default task system in v2.1.142. From v2.1.233, newer models disable both systems unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1` is set. After opting in, `CLAUDE_CODE_ENABLE_TASKS=0` selects legacy TodoWrite.

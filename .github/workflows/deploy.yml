@@ -41,7 +41,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Clone guide repo
-        run: git clone --depth 1 https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
+        # Source dates require the guide history; a shallow root dates every file to this build.
+        run: git clone https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
 
       - name: Check AgentSec feed synchronization
         run: pnpm check:agentsec-feed

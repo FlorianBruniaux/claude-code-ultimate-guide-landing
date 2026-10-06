@@ -4,7 +4,7 @@ subtitle: "Triggering agents automatically from GitHub, Linear, Jira"
 cardNumber: M18
 category: Methodology
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 118
 ---
 
@@ -52,7 +52,7 @@ fi
 
 For GitHub, the `@claude review` trigger in a PR comment is the most documented pattern: on-demand triggering without polluting the automated workflow.
 
-## Concrete example: Linear Agent Loop
+## Concrete example: Linear agent loop
 
 The most documented pattern (Damian Galarza, February 2026): Linear as single source of truth, Claude Code as implementer.
 
@@ -60,6 +60,7 @@ The ticket description serves as prompt. A ticket with clear acceptance criteria
 
 ```bash
 spawn_agent() {
+    set -o pipefail
     claude --print --dangerously-skip-permissions \
         "Implement Linear card:
         Title: $title
@@ -74,7 +75,7 @@ spawn_agent() {
 
 **Idempotence**: check that a branch does not already exist before starting, to avoid double processing in case of a duplicated webhook.
 
-**Concurrency limit**: cap at 3-5 simultaneous agents. Beyond that, the machine saturates and costs explode.
+**Concurrency limit**: set a cap from measured resource use, rate limits and budget. Increase it only when independently completed tasks justify the added coordination.
 
 **Circuit breaker**: if an agent fails more than 3 times on the same ticket, stop the automation and alert a human.
 

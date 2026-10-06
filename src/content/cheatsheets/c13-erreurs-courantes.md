@@ -4,11 +4,11 @@ subtitle: "Frequent pitfalls and how to avoid them"
 cardNumber: C13
 category: Design
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 213
 ---
 
-## Context & Memory
+## Context & memory
 
 **Pasting raw logs into the prompt**
 Dumps the entire file to Claude instead of isolating the relevant part. The context fills up within a few exchanges.
@@ -17,7 +17,7 @@ Dumps the entire file to Claude instead of isolating the relevant part. The cont
 Repeating project conventions every session. Centralize in `CLAUDE.md` everything that needs to be constant.
 
 **Ignoring context warnings**
-At 85%+, response quality degrades. Use `/compact` as early as 75%.
+Use `/context` to inspect capacity and relevance. Compact or hand off when needed; no percentage guarantees a particular response quality.
 
 ## Prompting
 
@@ -52,6 +52,6 @@ Passing API keys in the prompt or reading them via `@file`. Use environment vari
 **--dangerously-skip-permissions without sandbox**
 Running in full bypass on a shared machine or in production. Reserve for ephemeral environments only.
 
-## Golden Rules
+## Golden rules
 
 Give clear and concise instructions, then let Claude work. Come back to validate in small increments rather than letting everything happen at once. Document important decisions in `CLAUDE.md` for future sessions.

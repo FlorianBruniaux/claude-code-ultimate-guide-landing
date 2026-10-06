@@ -4,7 +4,7 @@ subtitle: "Syncing your Claude Code configuration across multiple machines"
 cardNumber: T10
 category: Technical
 difficulty: intermediate
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 10
 ---
 
@@ -19,45 +19,26 @@ order: 10
 
 **Golden rule**: never commit API keys or credentials. Use template files with `${VAR_NAME}` placeholders for sensitive values.
 
-## Git + symlinks strategy (recommended)
+## Version reviewed configuration files
 
-Approach inspired by Martin Ratinaud (504 tested sessions) and brianlovin/claude-config.
+Keep actual files in a configuration repository. A symlink from the repository to `~/.claude` stores only the link target in Git, not the referenced contents.
 
 ```bash
-# 1. Create a private repo for global config
-mkdir ~/claude-config-backup && cd ~/claude-config-backup
+# Create a new private configuration repository
+mkdir ~/claude-config-backup
+cd ~/claude-config-backup
 git init
-
-# 2. Create symlinks (changes are automatic)
-ln -s ~/.claude/agents ./agents
-ln -s ~/.claude/skills ./skills
-ln -s ~/.claude/hooks  ./hooks
-
-# 3. Template without secrets
-cp ~/.claude/settings.json ./settings.template.json
-# Replace values with ${ANTHROPIC_API_KEY} etc.
-
-# 4. Strict .gitignore
-echo "settings.json\nmcp.json\nprojects/" > .gitignore
-
-git remote add origin git@github.com:you/claude-config-private.git
-git push -u origin main
+# Copy only directories that exist and have been reviewed
+cp -R ~/.claude/agents ./agents
+cp -R ~/.claude/skills ./skills
+cp -R ~/.claude/hooks ./hooks
+# Inspect copies for secrets and machine-specific paths before staging
+git add agents skills hooks
+git diff --cached
+# Commit and push only after reviewing the staged content
 ```
 
-## Syncing between machines
-
-```bash
-# Source machine (after modification)
-cd ~/claude-config-backup
-git add agents/ skills/ hooks/
-git commit -m "Update hooks: add auto-format"
-git push
-
-# Target machine
-cd ~/claude-config-backup
-git pull
-# Symlinks propagate automatically to ~/.claude/
-```
+Create a sanitized settings template separately. On another machine, clone the repository and compare files with the current configuration before copying them into place. Back up existing files and review hooks before enabling them.
 
 ## `settings.local.json` for machine-specific overrides
 
@@ -74,22 +55,14 @@ Each machine can have its own preferences without touching the shared configurat
 }
 ```
 
-## Alternative: cloud sync via symlink
+## Cloud backup scope
 
-```bash
-# Move ~/.claude to Dropbox/iCloud
-mv ~/.claude ~/Dropbox/claude-config
-ln -s ~/Dropbox/claude-config ~/.claude
-# Automatic sync between machines
-```
-
-Advantage: zero maintenance effort. Drawback: no version history, risk of sync conflicts if both machines are active simultaneously.
+Back up reviewed configuration templates rather than the entire `~/.claude` directory, which also contains transcripts and potentially credentials. Choose access and retention settings for the actual data.
 
 ## Automatic backup with cron
 
-```bash
-# Daily backup at 2am
-0 2 * * * tar -czf ~/claude-backups/config-$(date +%F).tar.gz \
-  ~/.claude/agents ~/.claude/skills \
-  ~/.claude/hooks ~/.claude/settings.json
+Create the backup directory first and protect it appropriately. This cron entry archives the reviewed repository; cron requires the percent sign in `date` to be escaped.
+
+```cron
+0 2 * * * tar -czf "$HOME/claude-backups/config-$(date +\%F).tar.gz" -C "$HOME" claude-config-backup
 ```

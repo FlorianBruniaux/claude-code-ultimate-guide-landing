@@ -4,7 +4,7 @@ subtitle: "Create specialized sub-agents to delegate tasks"
 cardNumber: M08
 category: Methodology
 difficulty: intermediate
-guideVersion: 3.43.0
+guideVersion: 3.44.1
 order: 108
 ---
 
@@ -18,7 +18,6 @@ name: code-reviewer
 description: Use to review code before any commit
 model: sonnet
 tools: Read, Grep, Glob
-memory: project
 ---
 ```
 
@@ -30,7 +29,7 @@ The file body contains instructions in Markdown: role, methodology, examples, co
 |-------|----------|------|
 | `name` | Yes | kebab-case identifier |
 | `description` | Yes | Activation trigger (50-100 chars) |
-| `model` | No | `haiku`, `sonnet`, `opus`, `inherit` |
+| `model` | No | Aliases such as `sonnet`, `inherit`, or a supported model ID |
 | `tools` | No | Whitelist of accessible tools |
 | `memory` | No | Persistent memory scope |
 | `maxTurns` | No | Agentic turn limit |
@@ -52,9 +51,9 @@ memory: user      # ~/.claude/agent-memory/<name>/
 memory: local     # .claude/agent-memory-local/<name>/
 ```
 
-`project` memory is committed with the repo, useful for the agent to accumulate knowledge shared across the entire team. `local` memory stays private to the machine.
+`project` memory can be committed for team use; review it first. `local` memory stays private to the machine. Enabling agent memory automatically adds Read, Write and Edit, so omit `memory` for a strictly read-only agent.
 
-## Agent vs Slash Command
+## Agent vs slash command
 
 | Criterion | Agent | Slash Command |
 |-----------|-------|---------------|
@@ -75,7 +74,6 @@ description: Use PROACTIVELY after every code modification
   to verify quality, security, and conventions
 model: sonnet
 tools: Read, Grep, Glob
-memory: project
 ---
 
 # Code Reviewer

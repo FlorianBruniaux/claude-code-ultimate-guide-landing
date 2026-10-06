@@ -4,11 +4,11 @@ subtitle: "Integrating Claude Code into Xcode, VS Code, and other environments"
 cardNumber: C12
 category: Design
 difficulty: advanced
-guideVersion: 3.42.0
+guideVersion: 3.44.1
 order: 212
 ---
 
-## Two Products, Separate Surfaces to Verify
+## Two products, separate surfaces to verify
 
 **Claude Code** is an interactive development product. **Claude Agent SDK** supports integrations or applications that call Claude. Their exact relationship depends on the version and surface published by Anthropic; do not infer a shared architecture from a similar interface.
 
@@ -18,7 +18,7 @@ order: 212
 | SDK | API reference, supported versions, and permission model |
 | MCP | Server, exposed tools, transport, and requested permissions |
 
-## MCP and IDE Integration
+## MCP and IDE integration
 
 MCP is a tooling protocol. An integration can use MCP, an SDK, a native extension, or several of these mechanisms. None should be presented as a required condition for another.
 
@@ -28,7 +28,7 @@ IDE or local service ↔ published integration ↔ authorized tools
 
 The security decision is unchanged: identify the tools actually exposed, their scope, and the execution path before granting permission.
 
-## MCP Vetting Before Installation
+## MCP vetting before installation
 
 ```bash
 # 1. Check the maintainer, repository, and targeted release
@@ -38,7 +38,8 @@ gh repo view <mcp-repo>
 # Always pin: @1.2.3 not @latest
 
 # 3. Read tools and permissions, then scan if available
-npx mcp-scan ./skill-directory
+# Follow the current scanner installation and scope documentation
+# https://github.com/snyk/agent-scan
 ```
 
 Do not use stars or a ranking as security evidence. Never approve an MCP from an unknown source without checking its tools, permissions, version, and update mechanism.

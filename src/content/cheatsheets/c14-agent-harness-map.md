@@ -4,13 +4,11 @@ subtitle: "Choose a runtime, repository contract, or orchestrator"
 cardNumber: C14
 category: Design
 difficulty: advanced
-guideVersion: 3.42.0
-datePublished: "2026-08-28"
-dateModified: "2026-08-28"
+guideVersion: 3.44.1
 order: 214
 ---
 
-## The Four Layers
+## The four layers
 
 | Layer | Responsibility | Does not replace |
 |-------|----------------|------------------|
@@ -21,14 +19,19 @@ order: 214
 
 An orchestrator can launch several runtimes without owning their loops. A repository can improve its contract without changing runtime.
 
-## Choose in the Right Order
+Loop and graph are not extra layers. Loop names the repeated feedback and stopping rule. Graph names the executable nodes, branches, joins, and checkpoints inside a runtime or an orchestrator.
+
+A harness optimizer sits outside this stack. It changes and evaluates candidate harnesses for later runs.
+
+## Choose in the right order
 
 1. Define the task and acceptable autonomy.
 2. Select a runtime that owns the required loop.
-3. Write the repository contract: instructions, pass criteria, verification.
-4. Add an orchestrator only when coordination, isolation, or recovery across tasks requires it.
+3. If the flow must be versioned, specify nodes, branches, and checkpoints inside the chosen runtime.
+4. Write the repository contract: instructions, pass criteria, verification.
+5. Add an orchestrator only when coordination, isolation, or recovery across tasks requires it.
 
-## Four Sources, Four Uses
+## Five sources, five uses
 
 | Source | Used to | Limit |
 |--------|---------|-------|
@@ -36,9 +39,12 @@ An orchestrator can launch several runtimes without owning their loops. A reposi
 | Orchestrator table | Compare coordination | Not a runtime |
 | Best of Agent Harnesses | Explore 160 projects, 12 categories | 2026-08-23 snapshot |
 | `agent-harnesses.json` | Read provenance and evidence | `unknown` is not `none` |
+| Optimizer research table | Compare search protocols | Mostly research systems |
 
-## Short Trial, Traceable Verdict
+Statuses for observed mechanisms: `confirmed` = visible mechanism, `claimed` = source assertion, `unknown` = not established yet, `not_applicable` = category mismatch.
 
-Compare two or three candidates on real tasks in separate worktrees. Measure human verdict, interventions, plan drift, wall time, accepted-task cost, recovery, and setup friction.
+## Short trial, traceable verdict
 
-Links: [Agent Harness Map](https://cc.bruniaux.com/guide/agent-harness-landscape/) · [Agent Harness Engineering](https://cc.bruniaux.com/guide/agent-harness/) · [Agent Tools](https://cc.bruniaux.com/guide/agentic-tools/) · [Glossary](https://cc.bruniaux.com/guide/glossary/)
+Compare two or three model-harness pairs on real tasks in separate worktrees. Repeat critical tasks. Measure human verdict, interventions, plan drift, wall time, accepted-task cost, recovery, and setup friction.
+
+Links: [Agent Harness Map](https://cc.bruniaux.com/guide/agent-harness-landscape/) · [Loop & Graph Engineering](https://cc.bruniaux.com/guide/loop-graph-engineering/) · [Agent Harness Engineering](https://cc.bruniaux.com/guide/agent-harness/) · [Agent Tools](https://cc.bruniaux.com/guide/agentic-tools/) · [Glossary](https://cc.bruniaux.com/guide/glossary/)

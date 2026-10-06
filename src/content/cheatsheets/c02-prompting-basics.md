@@ -4,11 +4,11 @@ subtitle: "The principles that make the difference between a good and a bad prom
 cardNumber: C02
 category: Design
 difficulty: beginner
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 202
 ---
 
-## Context > Length
+## Context > length
 
 A 3-line prompt with the right context produces better results than a vague 30-line prompt. Claude needs to know where it is in the project, what the precise objective is, and what it must not touch.
 

@@ -4,13 +4,13 @@ subtitle: "Using Claude Code in production with the right security guarantees"
 cardNumber: M20
 category: Methodology
 difficulty: advanced
-guideVersion: 3.41.0
+guideVersion: 3.44.1
 order: 120
 ---
 
 ## The `--dangerously-skip-permissions` flag
 
-This flag disables Claude Code's interactive confirmations, which is essential for non-interactive CI/CD pipelines. But it also removes the last line of defense against destructive actions. Its use is only acceptable inside an isolated ephemeral container, never on a shared persistent machine.
+This flag bypasses permission prompts. Headless tasks can instead use pre-approved tools and a restricted tool set. But it also removes the last line of defense against destructive actions. Its use is only acceptable inside an isolated ephemeral container, never on a shared persistent machine.
 
 ```bash
 # Acceptable in CI (ephemeral container)
@@ -29,21 +29,20 @@ A disposable Docker container created at job start and destroyed at the end. The
 
 ```yaml
 jobs:
-  agent-task:
+  agent-review:
     runs-on: ubuntu-latest
-    container:
-      image: node:22-alpine
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Run Claude
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          claude --dangerously-skip-permissions \
-            -p "Run tests, fix failures, open PR"
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "Review the checked-out source and summarize defects."
+          claude_args: '--tools "Read,Grep,Glob" --allowedTools "Read,Grep,Glob"'
 ```
 
-For maximum isolation, cloud solutions (E2B, Vercel Sandboxes) offer microVMs with a separate kernel, eliminating the container escape risk.
+This example grants source-reading access. Credentials, runner isolation and workflow triggers need a separate review. MicroVMs add a separate kernel boundary; no virtualization mechanism eliminates every escape or data-access risk.
 
 ## Strict tool whitelist
 
@@ -56,7 +55,7 @@ Even in bypass mode, it is possible to limit available tools. A review agent onl
 | Security analysis | Read, Glob, Grep |
 | Implementation | Read, Edit, Write, Bash |
 
-The whitelist is configured via `--allowedTools` in CLI or `allowed_tools` in the GitHub action.
+Use `--tools` to restrict which tools are available and `--allowedTools` to pre-approve permitted calls. Pass these through `claude_args` in the official action.
 
 ## Secrets in CI
 
@@ -81,7 +80,7 @@ api.anthropic.com   # Model
 github.com          # Git operations
 ```
 
-Everything else deny by default. This blocks data exfiltration to external endpoints if the agent is compromised or misconfigured.
+Everything else deny by default. This restricts destinations, but an allowed service can still receive sensitive data. Review credentials, request scope and the data accessible to the agent.
 
 ## Safe autonomy pattern
 

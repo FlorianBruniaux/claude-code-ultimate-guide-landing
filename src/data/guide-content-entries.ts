@@ -7495,7 +7495,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-02-core-workflow-do-not",
     "title": "Do NOT",
-    "keywords": "do not 2 core workflow - start other tasks - refactor unrelated code `` /compact` preserves conversation flow. fresh context maximizes per-task attention at the cost of cont key insight what consumes context context depletion symptoms context inspection cost awareness optimization pricing model verified september 24 2026 200k vs 1m context performance cost use cases what costs the most cost optimization strategies how claude code handles caching automatically tracking costs cost vs value cost co",
+    "keywords": "do not 2 core workflow - start other tasks - refactor unrelated code `` /compact` preserves conversation flow. fresh context maximizes per-task attention at the cost of cont key insight what consumes context context depletion symptoms context inspection cost awareness optimization pricing model rates checked october 6 2026 200k vs 1m context performance cost use cases what costs the most cost optimization strategies how claude code handles caching automatically tracking costs cost vs value cost ",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/02-core-workflow/#do-not",
     "source": "guide"
@@ -9917,11 +9917,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-ultimate-guide.fr-1-quick-start-jour-1",
-    "title": "1. Quick start (jour 1)",
-    "keywords": "1 quick start jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre 1 1 installation vérifier l installation mettre à jour claude code application de bureau claude code sans le terminal chemins spécifiques aux plateformes premier lancement 1 2 premier flux de travail étape 1 décrire le problème étape 2 claude analyse étape 3 réviser le diff étape 4 accepter ou re",
+    "id": "gc-ultimate-guide.fr-1-démarrage-rapide-jour-1",
+    "title": "1. Démarrage rapide (jour 1)",
+    "keywords": "1 démarrage rapide jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre 1 1 installation vérifier l installation mettre à jour claude code application de bureau claude code sans le terminal chemins spécifiques aux plateformes premier lancement 1 2 premier flux de travail étape 1 décrire le problème étape 2 claude analyse étape 3 réviser le diff étape 4 accepter ",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-quick-start-jour-1",
+    "url": "/guide/ultimate-guide.fr/#1-démarrage-rapide-jour-1",
     "source": "guide"
   },
   {

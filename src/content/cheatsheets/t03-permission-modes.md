@@ -4,36 +4,37 @@ subtitle: "Tool access control, from safest to most permissive"
 cardNumber: T03
 category: Technical
 difficulty: beginner
-guideVersion: 3.41.1
+guideVersion: 3.44.1
 order: 3
 ---
 
-## Available Modes
+## Available modes
 
 | Mode | Canonical name | Activation | Recommended use |
 |------|---------------|-----------|-----------------|
-| **Default** | `default` | _(none)_ | Daily development |
+| **Default** | `default` | `--permission-mode default` | Daily development |
 | **Auto-accept edits** | `acceptEdits` | `Shift+Tab` | Code reviews |
 | **Plan** | `plan` | `Shift+Tab x2` or `/plan` | Analysis without modification |
-| **Auto (AI classifier)** | `auto` | `permissions.defaultMode: "auto"` | Long tasks, fewer interruptions |
+| **Don't Ask** | `dontAsk` | `/permissions` or `permissions.allow` rules | Restrictive workflows, silent auto-deny if not pre-approved |
+| **Auto (AI classifier)** | `auto` | `permissions` → `defaultMode: "auto"` | Long tasks, fewer interruptions |
 | **Full bypass** | `bypassPermissions` | `--dangerously-skip-permissions` | Headless CI/CD, sandboxed |
-| **Fewer prompts** | — | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
+| **Fewer prompts** | _(none)_ | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
 
-**CLI activation:** `claude --permission-mode <mode>` accepts `default`, `plan`, `acceptEdits`, `bypassPermissions`. **Persistent activation:** `permissions.defaultMode` key in `settings.json`.
+**CLI activation:** `claude --permission-mode <mode>` accepts `default`, `plan`, `acceptEdits`, `dontAsk`, `auto`, `bypassPermissions`. **Persistent activation:** `permissions.defaultMode` key in `settings.json`.
 
-**Note:** `--dangerously-skip-permissions` also skips the `.claude/` directory (v2.1.121). The `auto` mode relies on a classifier model that evaluates each tool call before execution, less friction, not a security boundary.
+**Note:** `--dangerously-skip-permissions` no longer prompts for writes to `.claude/skills/`, `.claude/agents/`, and `.claude/commands/` (v2.1.121); the rest of `.claude/` (settings, hooks) and `.git/` stay protected even under full bypass. The `auto` mode relies on a classifier model that evaluates each tool call before execution, less friction, not a security boundary.
 
-## Tool Whitelist
+## Tool whitelist
 
 ```bash
 # Allow only specific tools
-claude --allowedTools "Read,Grep,Glob"
+claude --tools "Read,Grep,Glob" --allowedTools "Read,Grep,Glob"
 
 # Block specific tools
 claude --disallowedTools "Bash,Write"
 
 # Useful combinations
-claude --allowedTools "Read,Edit,Bash(git*)"
+claude --allowedTools "Read,Edit,Bash(git *)"
 ```
 
 ## Configuration in settings.json
@@ -55,7 +56,7 @@ claude --allowedTools "Read,Edit,Bash(git*)"
 }
 ```
 
-## Permission Hierarchy
+## Permission hierarchy
 
 Permissions accumulate and are inherited in this order:
 
@@ -63,8 +64,11 @@ Permissions accumulate and are inherited in this order:
 2. `.claude/settings.json`: project (shared)
 3. `.claude/settings.local.json`: project (local, gitignored)
 4. CLI flags: session only
+5. Managed policy: organization constraints
 
-## Glob Patterns for Bash
+Deny rules from any applicable scope take priority over allow rules.
+
+## Glob patterns for bash
 
 ```bash
 # Allow git only
@@ -77,10 +81,10 @@ Permissions accumulate and are inherited in this order:
 "Bash(cat *)", "Bash(ls *)"
 ```
 
-## Best Practices
+## Best practices
 
-**CI/CD**: Always use `--dangerously-skip-permissions` with a sandboxed environment (Docker, ephemeral container). Never on a shared production machine.
+**CI/CD**: Pre-approve the tools needed for a headless task and restrict availability with `--tools`. If bypass is necessary, use an isolated environment with restricted credentials and network access.
 
-**Sensitive projects**: Restrict Bash tools with precise globs in `.claude/settings.json`. Commit this file so the whole team uses the same constraints.
+**Sensitive projects**: Restrict Bash tools with precise globs in `.claude/settings.json`. Commit shared defaults; use managed policy for constraints developers must not override.
 
-**Audit**: Claude's actions are logged in `~/.claude/logs/`. Verifiable at any time.
+**Audit**: Inspect the local session transcripts under `~/.claude/projects/`. Custom hook logs need their own configured directory; transcripts are not a tamper-proof audit trail.

@@ -4414,9 +4414,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sonnet-5-default",
     "title": "Sonnet 5 Default",
-    "keywords": "sonnet 5 default guide ultimate guide md#pricing model verified september 2026 opus 4 6 pricing guide ultimate guide md#pricing model verified september 2026",
+    "keywords": "sonnet 5 default guide ultimate guide md#pricing model rates checked october 2026 opus 4 6 pricing guide ultimate guide md#pricing model rates checked october 2026",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-verified-september-24-2026",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-rates-checked-october-6-2026",
     "source": "guide"
   },
   {
