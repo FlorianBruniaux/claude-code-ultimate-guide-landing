@@ -15,7 +15,7 @@ concurrency:
 jobs:
   archive:
     # Scheduled collection starts only after the dedicated credential is configured.
-    if: github.event_name == 'workflow_dispatch' || vars.GITHUB_TRAFFIC_ARCHIVE_ENABLED == 'true'
+    if: github.event_name == 'workflow_dispatch' || vars.GUIDE_TRAFFIC_ARCHIVE_ENABLED == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

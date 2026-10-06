@@ -8,12 +8,14 @@ The top returned referrers included Google (5,393 views), Bing (370), github.com
 
 `python3 scripts/github-traffic.py` collects repository counters, views, clones, referral sources and popular paths through the authenticated GitHub CLI. No token is printed or stored. Run `python3 scripts/github-traffic-test.py` to validate failed access, malformed payloads, preservation of unique totals, and concurrent-write protection.
 
-The daily workflow is installed but scheduled collection remains disabled until the landing repository has both:
+Scheduled collection requires both of the following in the landing repository:
 
 - Secret `GUIDE_TRAFFIC_READ_TOKEN`: an existing credential restricted to the guide repository with `Administration: read`, as required by [GitHub's traffic API](https://docs.github.com/en/rest/metrics/traffic).
-- Repository variable `GITHUB_TRAFFIC_ARCHIVE_ENABLED` set to `true`.
+- Repository variable `GUIDE_TRAFFIC_ARCHIVE_ENABLED` set to `true`.
 
 No suitable secret existed in the landing repository when its secret names were checked on 2026-10-05. Local CLI authentication can read the guide's traffic; the landing workflow's built-in `GITHUB_TOKEN` does not inherit that access. No token was created or copied during this change. A manual workflow run without the dedicated secret fails with an explicit UNKNOWN state and writes no archive.
+
+On 2026-10-06, the dedicated secret was configured by the owner. The [first manual collection](https://github.com/FlorianBruniaux/claude-code-ultimate-guide-landing/actions/runs/37441673377) succeeded and committed the [complete archive](../data/github-traffic/2026-10-06.json). The activation variable is now configured as `true`; the first scheduled execution has not yet been observed.
 
 Once the secret is provided, manually run **Archive GitHub Traffic** and inspect the resulting daily archive before enabling its schedule. The workflow uses its own landing `GITHUB_TOKEN` only for the scoped archive commit. The daily archive records observation time, raw responses and the first/last returned buckets. A second run preserves an existing daily file, and atomic file publication prevents concurrent overwrites.
 

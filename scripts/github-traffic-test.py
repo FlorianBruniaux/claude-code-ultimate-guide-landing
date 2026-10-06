@@ -4,6 +4,7 @@ import datetime as dt
 import importlib.util
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
 
@@ -24,6 +25,14 @@ def fixture(endpoint):
 
 
 class ArchiveTests(unittest.TestCase):
+    def test_archive_gate_uses_creatable_repository_variable(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/archive-github-traffic.yml").read_text()
+        variables = re.findall(r"\bvars\.([A-Za-z0-9_]+)", workflow)
+        self.assertTrue(variables, "Scheduled collection must have an explicit repository-variable gate")
+        for name in variables:
+            self.assertFalse(name.upper().startswith("GITHUB_"),
+                             f"GitHub rejects repository variables with its reserved GITHUB_ prefix: {name}")
+
     def snapshot(self):
         return traffic.collect("owner/repo", fixture, dt.datetime(2026, 10, 5, tzinfo=dt.timezone.utc))
 
