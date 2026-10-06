@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.44.0',
+    date: 'Oct 6, 2026',
+    description: 'Guide release with Lean workflow controls, AI FinOps and token-saving benchmark reviews, expanded agent harness guidance, updated security references, and the MCP 1.3.6 search and chapter-link fixes. The French full guide and downloadable book editions retain their recorded source versions.',
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.44.0',
+  },
+  {
     type: 'new_page',
     title: 'Token-saving tools, measured: 45 tools, eight benchmarks, 15 preprints',
     date: 'Sep 30, 2026',
