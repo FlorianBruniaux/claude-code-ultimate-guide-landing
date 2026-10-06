@@ -1,0 +1,31 @@
+.github/workflows/archive-github-traffic.yml
+  s_0f4216fdd2c8ac::t_96f747d603ae65 18
+docs/visibility-2026-10-05.md
+  s_0f4216fdd2c8ac::t_1b69a33ca34fc2 49
+scripts/github-traffic-test.py
+  s_9e80b85afcc43a::t_0d454e0a661ac1 7,28-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bbd1c89d580a8ccd0254dd5da1cc05a426d3e4c6",
+  "prompts": {},
+  "sessions": {
+    "s_0f4216fdd2c8ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10107-9a2f-7962-b3b2-1e3bab1cdf97",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_9e80b85afcc43a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f3be-9233-7710-ac57-7b3f9fa5c15c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
