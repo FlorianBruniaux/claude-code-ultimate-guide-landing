@@ -1,0 +1,167 @@
+.github/workflows/deploy.yml
+  s_e5007346b6f028::t_fe509e1cc8897d 44-45
+scripts/convert-en-recap-cards.mjs
+  s_e5007346b6f028::t_95e443270e84f1 4,7-8,12,17-19,29,78-80,108-112,121,125,132
+src/content/cheatsheets/c01-trust-calibration.md
+  s_e5007346b6f028::t_6a68c05d8f4685 7,13,21,31,54-55,58
+src/content/cheatsheets/c02-prompting-basics.md
+  s_e5007346b6f028::t_f18ddfe995703d 7,11
+src/content/cheatsheets/c03-xml-prompting-anchors.md
+  s_e5007346b6f028::t_0fb01f703b4b33 7
+src/content/cheatsheets/c04-commands-skills-plugins-agents.md
+  s_e5007346b6f028::t_665ce856cbaa51 7,11,18,20,42,44,58,60,66,74,83
+src/content/cheatsheets/c05-memory-stack.md
+  s_e5007346b6f028::t_01a3370b3e5cd7 7,13,28,35,53,55
+src/content/cheatsheets/c06-configuration-decision-guide.md
+  s_e5007346b6f028::t_6eb1c9a4815cb2 7,13
+src/content/cheatsheets/c07-conventions-equipe-scale.md
+  s_e5007346b6f028::t_2a4ea06597d30a 7,17,51,53,68,72
+src/content/cheatsheets/c08-surface-attaque-menaces.md
+  s_e5007346b6f028::t_9f54180e757ec7 7,29,38,55,59,63
+src/content/cheatsheets/c09-prompt-injection-defenses.md
+  s_e5007346b6f028::t_fcb972593b69b3 7,58,76
+src/content/cheatsheets/c10-ai-traceability.md
+  s_e5007346b6f028::t_3014d320147ccb 7,32,68,70,74
+src/content/cheatsheets/c11-subscription-vs-api-patterns.md
+  s_e5007346b6f028::t_b86757805630ee 7,15,21,23,29-30,36,48,53-54,58-60,63,67,69,71-73,75-78
+src/content/cheatsheets/c12-agent-sdk-integrations-ide.md
+  s_e5007346b6f028::t_0ad3e348184266 7,11,21,31,41-42
+src/content/cheatsheets/c13-erreurs-courantes.md
+  s_e5007346b6f028::t_ede3306f54df46 7,11,20,55
+src/content/cheatsheets/c14-agent-harness-map.md
+  s_e5007346b6f028::t_4c05aab0d7aed1 7,11,22-26,30-32,34,42-44,46,48,50
+src/content/cheatsheets/m01-workflow-quotidien.md
+  s_e5007346b6f028::t_5d40f1419d4d52 7,11,25,27,31,38,41,49,56,58,67,81
+src/content/cheatsheets/m02-context-management.md
+  s_e5007346b6f028::t_9e3106c678e571 7,11,13,21,25,28-31,34,47,49,53,55,79
+src/content/cheatsheets/m03-sessions-continuite.md
+  s_e5007346b6f028::t_a6f5483d1f0e6e 7,11,29,31,43,47,49,58,62,70,72
+src/content/cheatsheets/m04-compact-vs-clear.md
+  s_e5007346b6f028::t_f15a74facb0d5c 7,11,15,17,20,22,24,26,37,39,50,52,62,66,69-70,72
+src/content/cheatsheets/m05-plan-mode.md
+  s_e5007346b6f028::t_45dedc8faba251 7,13,17,21,23,25,27,32,35-36,40,50,63,65,67,75,77,79
+src/content/cheatsheets/m06-task-management-system.md
+  s_e5007346b6f028::t_532b4b656e9b70 7,11-12,15,33,39-40,59,66-67,70,74,78
+src/content/cheatsheets/m07-todowrite-vs-tasks-api.md
+  s_e5007346b6f028::t_26f656adec8642 7,11-12,21,40-41,44,78
+src/content/cheatsheets/m08-agents-custom.md
+  s_e5007346b6f028::t_be03eda136f1b8 7,32,54,56
+src/content/cheatsheets/m09-slash-commands.md
+  s_e5007346b6f028::t_b809f2901ecd34 7,11,20-27,36,88,96
+src/content/cheatsheets/m10-skills.md
+  s_e5007346b6f028::t_c3cf3167b797a9 7,25,30,50,61,64-65,67-68,71,74,98
+src/content/cheatsheets/m11-hooks-evenements-systeme.md
+  s_e5007346b6f028::t_a0546ca6eed9b0 7,13,29,31-35,37,48-49,60-62,64,70-72,76,78,82,91
+src/content/cheatsheets/m12-hooks-patterns-concrets.md
+  s_e5007346b6f028::t_05afb77222819c 7,13,28,32,36-41,48,51,55,63,67,73,79,83,87-88,95,99,102-106,109-110
+src/content/cheatsheets/m13-worktrees.md
+  s_e5007346b6f028::t_14595c612bac04 7,46,54,62,65-66,69
+src/content/cheatsheets/m14-plan-validate-execute.md
+  s_e5007346b6f028::t_9641d20a1e7a52 3,7,13,15,18-20,23,25,27-32,34,36,38,40,42,44,46,48,50,52-57,59,61,63,65,72
+src/content/cheatsheets/m15-tdd-bdd-sdd.md
+  s_e5007346b6f028::t_8b9668bb0bd216 7,20,39,52,76,82,84-89
+src/content/cheatsheets/m16-multi-agent-topologie.md
+  s_e5007346b6f028::t_82bc33c0dd0207 7,33,64,68,83,85,89
+src/content/cheatsheets/m17-multi-agent-communication-trust.md
+  s_e5007346b6f028::t_f866c523449e36 7,21,62,64,67-69,72,74
+src/content/cheatsheets/m18-event-driven-agents.md
+  s_e5007346b6f028::t_7b85bd518bfd58 7,55,63,78
+src/content/cheatsheets/m19-github-actions.md
+  s_e5007346b6f028::t_39b56aec53ba10 7,25,29-30,32,47-48,57-61,64,74
+src/content/cheatsheets/m20-cicd-production.md
+  s_e5007346b6f028::t_42747710b3fa1d 7,13,32,34-35,38-42,45,58,83
+src/content/cheatsheets/m21-debug-methodique.md
+  s_e5007346b6f028::t_1957baf38c45a2 7,63,66,71,84
+src/content/cheatsheets/m22-observabilite-jsonl.md
+  s_e5007346b6f028::t_49afb62c98de23 7,13,17-18,31-32,70,86-87,101
+src/content/cheatsheets/t01-commandes-essentielles.md
+  s_e5007346b6f028::t_ff9aab63734867 7,11,25,33-34,37,42,47,64,72,80,90
+src/content/cheatsheets/t02-mode-non-interactif.md
+  s_e5007346b6f028::t_10b0bc1cbf50e1 7,37,40,74,79,81
+src/content/cheatsheets/t03-permission-modes.md
+  s_e5007346b6f028::t_9f677477048bef 7,11,15,18-19,21,23,25,27,31,37,59,67,69-71,84,86,88,90
+src/content/cheatsheets/t04-permissions-glob-patterns.md
+  s_e5007346b6f028::t_202e4c9ba94cf9 7,22,27-30,41-43,48,71,81
+src/content/cheatsheets/t05-hierarchie-configuration.md
+  s_e5007346b6f028::t_49bb18b8524881 7,11,22,40,46,51,67
+src/content/cheatsheets/t06-settings-json.md
+  s_e5007346b6f028::t_f705f5e9f6716a 7,21,27,30,62-63,67,93
+src/content/cheatsheets/t07-claudemd-best-practices.md
+  s_e5007346b6f028::t_6a39ee75b9a453 7,41,50,63,76
+src/content/cheatsheets/t08-auto-memories.md
+  s_e5007346b6f028::t_00f214b842333f 7,23,43,51,66
+src/content/cheatsheets/t09-workspace-hygiene.md
+  s_e5007346b6f028::t_eae5ab9c9a1f17 2-3,7,11-28,33,35,37-50,52-53,55,64-66,69,73-75,77
+src/content/cheatsheets/t10-config-multi-machine.md
+  s_e5007346b6f028::t_4c5273a56dee82 7,22,24,27-29,31-38,41,58,60,64-67
+src/content/cheatsheets/t11-search-tools-decision.md
+  s_e5007346b6f028::t_e21c0fb37b41f5 3,7,20,25,38,42,45,48,56,61,63,91,97
+src/content/cheatsheets/t12-mcp-servers-overview.md
+  s_e5007346b6f028::t_bf0d6d3fe6c432 7,15,28,30,37,41-42,48-49,52,60,69,71,95
+src/content/cheatsheets/t13-context7-sequential.md
+  s_e5007346b6f028::t_5f75efcbeedaab 7,30,33-34,37,70-71,77
+src/content/cheatsheets/t14-grepai-semantic-search.md
+  s_e5007346b6f028::t_8ca3f310992183 7,13,15,17,31-32,55-56
+src/content/cheatsheets/t15-mcp-secrets-management.md
+  s_e5007346b6f028::t_8f11aa302cbdb0 7,28-29,40,62,73,82
+src/content/cheatsheets/t16-sandbox-natif-architecture.md
+  s_e5007346b6f028::t_ee46f7fce32dff 7,19,28,30,34,39,56,62,73,77,90
+src/content/cheatsheets/t17-sandbox-natif-vs-docker.md
+  s_e5007346b6f028::t_df0d55050c059b 7,11,13,15-22,24,26,28-29,32,34,36,38,40,42-45,49,54-55
+src/content/cheatsheets/t18-modeles-thinking-modes.md
+  s_e5007346b6f028::t_e8e1a42b64d09a 7,11,13,18,24,28,32,34,44
+src/content/cheatsheets/t19-context-window-200k-1m.md
+  s_e5007346b6f028::t_efdce6bfee60db 7,11,16,20,22,24,28,32,40,48,50
+src/content/cheatsheets/t20-token-optimization.md
+  s_e5007346b6f028::t_ec0f006311669d 7,11,13,20-21,25,27,29,40,42,50,52-59,62,64,73-82,84-85,87-88
+src/content/cheatsheets/t21-fast-mode-api.md
+  s_e5007346b6f028::t_7b9c2a83cc3e04 7,11,22,26,28,46,50
+src/content/cheatsheets/t22-third-party-tools.md
+  s_e5007346b6f028::t_255f074e3a5032 7,11,15,18,21,31,41,57,59,66,74,83,88-91
+src/data/guide-content-entries.ts
+  s_ded836f56a6d83::t_0a5747ceb334df 7498,9920-9922,9924
+src/data/guide-search-entries.ts
+  s_ded836f56a6d83::t_279664204c0df1 4417,4419
+src/data/landing-sync.test.ts
+  s_e5007346b6f028::t_6b15b06a8f0f4a 128
+src/data/publication-edition.json
+  s_e5007346b6f028::t_d1f8486ae45188 2-3
+src/data/recap-cards-data.ts
+  s_e5007346b6f028::t_35d4a151cd3780 43-44,53-54,63-64,71-84,86-107,109-130,139-152,154-175,177-198
+src/data/rss-entries.ts
+  s_be4289eb7f1fc8::t_5109fab886e0eb 32-38
+src/data/whitepapers-data.ts
+  s_e5007346b6f028::t_2ebbbd6924fabc 6-7,38,46-47,55,58,62-63,73,78-79,94-95,105-106,110-111,121-122,126-127,137-138,142-143,153-154,159-160,171,175-176,184,187,191-192,203,207-208,216,218,224-225,236,241-242
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "57bff8b0cb38f658af0c04c840f4f31b91708a0e",
+  "prompts": {},
+  "sessions": {
+    "s_be4289eb7f1fc8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a100c0-cd59-7642-94e4-6c1983b257cf",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ded836f56a6d83": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2411f16c-88e6-4622-9ccc-03c30968a7a1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e5007346b6f028": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10b0e-e938-75c0-8af5-8513ebc5272f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
