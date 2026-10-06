@@ -1,7 +1,7 @@
 export const landingSeo = {
   releases: {
     title: 'Claude Code Latest Version {version} | Release History',
-    description: 'Current Claude Code version, release date, version history, changelog, breaking changes, environment variables, and config flags.',
+    description: 'Claude Code {version}, released {date}. See the latest version, release history, changelog, breaking changes, and configuration updates.',
   },
   glossary: {
     title: 'Claude Code Glossary: Terms & Definitions',
@@ -15,6 +15,10 @@ export const landingSeo = {
 
 export function getReleaseTitle(version) {
   return landingSeo.releases.title.replace('{version}', version)
+}
+
+export function getReleaseDescription(version, releaseDate) {
+  return landingSeo.releases.description.replace('{version}', version).replace('{date}', releaseDate)
 }
 
 export const contextualLinks = [

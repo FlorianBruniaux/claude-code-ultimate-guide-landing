@@ -2,11 +2,11 @@
 import Layout from '../../layouts/Layout.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { releases, breakingChanges } from '../../data/releases'
-import { getReleaseTitle, landingSeo, releaseDateToIsoDate } from '../../data/seo-editorial-contract.mjs'
+import { getReleaseDescription, getReleaseTitle, releaseDateToIsoDate } from '../../data/seo-editorial-contract.mjs'
 
 const latestRelease = releases[0]
 const title = getReleaseTitle(latestRelease.version)
-const { description } = landingSeo.releases
+const description = getReleaseDescription(latestRelease.version, latestRelease.date)
 const latestReleaseDateIso = releaseDateToIsoDate(latestRelease.date)
 
 const jsonLd = [

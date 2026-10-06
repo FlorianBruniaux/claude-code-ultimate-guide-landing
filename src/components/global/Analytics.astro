@@ -2,7 +2,7 @@
 const gaId = 'G-WH1C8CM79E'
 ---
 
-<!-- Main-thread events use the same forwarded queue as Partytown's gtag. -->
+<!-- Keep a main-thread fallback when Partytown has not provided its gtag forwarder. -->
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
@@ -18,9 +18,10 @@ const gaId = 'G-WH1C8CM79E'
 <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
 <script is:inline type="text/partytown" define:vars={{ gaId }}>
   window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', gaId);
+  // Build the Arguments entry in the worker; forwarding it as a nested object loses its length.
+  window.gtag = function () { dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', gaId);
 </script>
 <script>
   import { initEcosystemAnalytics } from '../../scripts/ecosystem-analytics.ts'

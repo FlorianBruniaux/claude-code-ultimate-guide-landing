@@ -19,6 +19,10 @@ export const GUIDE_SEO_OVERRIDES = {
     title: 'Claude Code Tools: RTK, ccusage & GUIs',
     description: 'Compare Claude Code GUIs, TUIs, configuration managers, token trackers, RTK, lean-ctx, ccusage, and other community tools.',
   },
+  'guide/ecosystem/claude-code-guide-mcp.md': {
+    title: 'Claude Code Guide MCP Server: Install & Tools',
+    description: 'Install the Claude Code Ultimate Guide MCP server in Claude Code, Codex, Cursor, or VS Code. Search the guide, retrieve templates, and inspect release notes.',
+  },
 }
 
 import { getContextualLink } from './seo-editorial-contract.mjs'

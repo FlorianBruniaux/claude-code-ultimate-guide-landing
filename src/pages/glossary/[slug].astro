@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, categoryColors } from '../../data/glossary-data'
 import { assertUniqueGlossarySlugs, normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
+import { getGlossaryDescription } from '../../data/glossary-seo'
 
 export function getStaticPaths() {
   assertUniqueGlossarySlugs(glossaryTerms)
@@ -19,12 +20,8 @@ const relatedTerms = glossaryTerms
   .filter(t => t.subcategory === term.subcategory && t.term !== term.term)
   .slice(0, 5)
 
-const truncatedDef = term.definition.length > 130
-  ? term.definition.slice(0, 130).trimEnd() + '...'
-  : term.definition
-
 const pageTitle = `${term.term} | Claude Code Glossary`
-const pageDescription = `${term.term}: ${truncatedDef} From the Claude Code glossary, ${totalTerms} AI engineering and agentic coding terms.`
+const pageDescription = getGlossaryDescription(term)
 
 const jsonLd = [
   {

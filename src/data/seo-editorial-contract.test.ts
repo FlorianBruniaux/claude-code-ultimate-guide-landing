@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import {
   contextualLinks,
+  getReleaseDescription,
   getReleaseTitle,
   landingSeo,
   releaseDateToIsoDate,
@@ -14,7 +15,7 @@ test('keeps the audited landing snippets within search-result limits', () => {
   assert.deepEqual(landingSeo, {
     releases: {
       title: 'Claude Code Latest Version {version} | Release History',
-      description: 'Current Claude Code version, release date, version history, changelog, breaking changes, environment variables, and config flags.',
+      description: 'Claude Code {version}, released {date}. See the latest version, release history, changelog, breaking changes, and configuration updates.',
     },
     glossary: {
       title: 'Claude Code Glossary: Terms & Definitions',
@@ -36,6 +37,15 @@ test('keeps the audited landing snippets within search-result limits', () => {
 test('uses the displayed current release in the releases search title', () => {
   assert.equal(getReleaseTitle(releases[0].version), `Claude Code Latest Version ${releases[0].version} | Release History`)
   assert.equal(getReleaseTitle('v9.9.9'), 'Claude Code Latest Version v9.9.9 | Release History')
+})
+
+test('answers current-version queries with the same version and date displayed on the release page', () => {
+  assert.equal(
+    getReleaseDescription('v2.1.111', 'Oct 3, 2026'),
+    'Claude Code v2.1.111, released Oct 3, 2026. See the latest version, release history, changelog, breaking changes, and configuration updates.',
+  )
+  assert.match(getReleaseDescription('v9.9.9', 'Jan 2, 2027'), /^Claude Code v9\.9\.9, released Jan 2, 2027\./)
+  assert.ok(getReleaseDescription(releases[0].version, releases[0].date).length <= 160)
 })
 
 test('defines six contextual links with descriptive anchors outside global chrome', () => {
