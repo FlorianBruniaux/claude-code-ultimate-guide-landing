@@ -211,6 +211,7 @@ export const guideNavigationSection = {
     {
       label: 'Latest references',
       links: selectGuideHighlights([
+        '/guide/mistral-large-4/',
         '/guide/translations/',
         '/guide/agent-harness-landscape/',
         '/guide/practitioner-insights/',

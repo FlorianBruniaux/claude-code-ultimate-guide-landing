@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Claude Code Tools, Skills & Third-Party Ecosystem'
-const description = 'Compare 26 Claude Code tools and evaluate distributed skills by ownership, maintenance, compatibility, source, scripts, and tool grants.'
+const description = 'Review Mistral Large 4 launch evidence and compare 26 Claude Code tools, with checks for ownership, maintenance, compatibility, source, and tool grants.'
 
 const jsonLd = [
   {
@@ -14,7 +14,7 @@ const jsonLd = [
     "author": {"@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer"},
     "publisher": {"@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com"},
     "datePublished": "2026-03-13",
-    "dateModified": "2026-09-05",
+    "dateModified": "2026-10-07",
     "inLanguage": "en",
     "audience": {
       "@type": "Audience",
@@ -24,7 +24,7 @@ const jsonLd = [
 ]
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-13" modifiedDate="2026-09-05">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-13" modifiedDate="2026-10-07">
 
     <header class="page-hero">
         <div class="container">
@@ -37,6 +37,23 @@ const jsonLd = [
             </div>
         </div>
     </header>
+
+    <section class="content-section content-section--alt" id="mistral-large-4">
+        <h2>Mistral Large 4: public-preview evidence</h2>
+        <p class="distribution-intro">Checked October 6, 2026. Mistral Large 4 accepts text and images and produces text through Studio and the API. The guide treats it as a provider candidate; a native Claude Code integration was not tested.</p>
+        <div class="distribution-panel">
+            <div>
+                <h3>Prices and benchmark conditions</h3>
+                <p>The standard-tier sale rates were $0.68 input, $0.07 cached input, and $2.09 output per million tokens. No sale end date was found. The dossier separates Mistral's launch scores from independent evaluator results and their conditions.</p>
+                <a href="/guide/mistral-large-4/" class="btn btn-secondary">Mistral Large 4 evidence dossier &rarr;</a>
+            </div>
+            <div>
+                <h3>Deployment questions</h3>
+                <p>Weights were planned for later in October, with differing dates in the sources. European infrastructure does not establish every endpoint's residency terms. Total parameters imply 525 GB of raw weights at four bits, before runtime and cache.</p>
+                <a href="/guide/llm-market-snapshot/" class="btn btn-secondary">Compare API prices and limits &rarr;</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Stats -->
     <section class="content-section">

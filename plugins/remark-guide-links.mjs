@@ -82,6 +82,10 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
     return { url: `/releases/${anchorFragment || ''}`, isExternal: false }
   }
 
+  if (repositoryPath === 'guide/ecosystem/ai-ecosystem.md' && anchorFragment === '#21-mistral-large-4-multimodal-api-candidate') {
+    return { url: '/ecosystem/#mistral-large-4', isExternal: false }
+  }
+
   // ── Published directory indexes ────────────────────────────────────
   if (['guide/diagrams', 'guide/diagrams/', 'diagrams', 'diagrams/'].includes(repositoryPath)) {
     return { url: `/diagrams/${anchorFragment || ''}`, isExternal: false }
@@ -148,8 +152,9 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
     return { url: `${GUIDE_BASE}${audienceMatch[1]}/${anchorFragment || ''}`, isExternal: false }
   }
 
-  if (repositoryPath === 'docs/resource-evaluations/darkmoon-strix-agentic-pentesting.md') {
-    return { url: `${GUIDE_BASE}darkmoon-strix-agentic-pentesting/${anchorFragment || ''}`, isExternal: false }
+  if (['docs/resource-evaluations/darkmoon-strix-agentic-pentesting.md', 'docs/resource-evaluations/mistral-large-4.md'].includes(repositoryPath)) {
+    const slug = posix.basename(repositoryPath, '.md')
+    return { url: `${GUIDE_BASE}${slug}/${anchorFragment || ''}`, isExternal: false }
   }
 
   // ── Other repository Markdown files are source links, not site routes ──

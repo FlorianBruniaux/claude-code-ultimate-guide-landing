@@ -1,6 +1,7 @@
 /**
  * LLM API price table (USD per 1M tokens, standard tier) and a pure cost function.
- * Prices read 2026-09-30 at the vendor pages listed in `sourceUrl`.
+ * Prices read 2026-09-30, except dated additions recorded in each row note.
+ * Vendor sources are listed in `sourceUrl`.
  * Cache writes are excluded. When a vendor publishes no cached-input price,
  * every input token is billed at the full input price (upper bound).
  */
@@ -21,6 +22,8 @@ export interface LlmPrice {
   /** USD per 1M output tokens */
   output: number
   sourceUrl: string
+  /** Dated pricing condition, displayed beside the row. */
+  note?: string
 }
 
 export interface Scenario {
@@ -60,6 +63,7 @@ export const LLM_PRICES: LlmPrice[] = [
   { id: 'gpt-6-sol', vendor: 'OpenAI', model: 'GPT-6.1 Sol', tier: 'standard', input: 2, cachedInput: 0.2, output: 10, sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6-sol' },
   { id: 'claude-sonnet-5-5', vendor: 'Anthropic', model: 'Claude Sonnet 5.5', tier: 'standard', input: 2, cachedInput: 0.2, output: 10, sourceUrl: ANTHROPIC_URL },
   { id: 'glm-5-3', vendor: 'Z.AI', model: 'GLM-5.3', tier: 'standard', input: 1.4, cachedInput: 0.26, output: 4.4, sourceUrl: 'https://docs.z.ai/guides/overview/pricing' },
+  { id: 'mistral-large-4', vendor: 'Mistral', model: 'Mistral Large 4', tier: 'standard', input: 0.68, cachedInput: 0.07, output: 2.09, sourceUrl: 'https://docs.mistral.ai/inference/pricing', note: 'Read 2026-10-06, 50% sale; no end date found. Original input/cache/output: $1.36 / $0.14 / $4.18 per 1M. Regional charges excluded; their interaction with the sale is unverified.' },
   { id: 'devstral-2', vendor: 'Mistral', model: 'Devstral 2', tier: 'standard', input: 0.4, cachedInput: null, output: 2, sourceUrl: 'https://mistral.ai/news/mistral-vibe-2-0' },
   { id: 'deepseek-v4-pro-peak', vendor: 'DeepSeek', model: 'deepseek-v4-pro', tier: 'peak', input: 1.32, cachedInput: 0.044, output: 3.96, sourceUrl: DEEPSEEK_URL },
   { id: 'deepseek-v4-pro-off-peak', vendor: 'DeepSeek', model: 'deepseek-v4-pro', tier: 'off-peak', input: 0.66, cachedInput: 0.022, output: 1.98, sourceUrl: DEEPSEEK_URL },

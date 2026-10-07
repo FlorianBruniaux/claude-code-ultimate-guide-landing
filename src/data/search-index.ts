@@ -23,6 +23,14 @@ export interface SearchEntry {
 // ─── Pages ───────────────────────────────────────────────────────────────────
 const pageEntries: SearchEntry[] = [
   {
+    id: 'page-mistral-large-4',
+    title: 'Mistral Large 4: Pricing, Benchmarks and Limits',
+    keywords: 'mistral large 4 le chonk multimodal api preview pricing sale benchmarks terminal bench european regional inference weights memory',
+    category: 'Ecosystem > Models',
+    url: '/guide/mistral-large-4/',
+    source: 'landing',
+  },
+  {
     id: 'page-home',
     title: 'Claude Code Ultimate Guide',
     keywords: 'home overview claude code guide getting started',

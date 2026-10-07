@@ -71,6 +71,7 @@ const Heading = nested ? 'h3' : 'h2'
             <div class="cost-calc__bar" aria-hidden="true">
               <span data-bar style={`width:${Math.max(0.5, (r.perDay / max) * 100).toFixed(2)}%`} class:list={[{ 'is-upper': r.upperBound }]}></span>
             </div>
+            {r.price.note && <p class="cost-calc__note">{r.price.note}</p>}
             {r.upperBound && <p class="cost-calc__note">Upper bound, no cached price published</p>}
           </li>
         )
@@ -78,7 +79,7 @@ const Heading = nested ? 'h3' : 'h2'
     </ol>
   </div>
 
-  <p class="cost-calc__meta">Prices read {PRICES_READ_DATE}; token counts differ between tokenizers, so the same text does not produce the same token count on every model.</p>
+  <p class="cost-calc__meta">Prices read {PRICES_READ_DATE}, except dated additions shown beside each row; token counts differ between tokenizers, so the same text does not produce the same token count on every model.</p>
   <p class="cost-calc__meta">This table compares bills for the same token count, not work done. Standard tier, USD per 1M tokens, cache writes excluded.</p>
 </section>
 

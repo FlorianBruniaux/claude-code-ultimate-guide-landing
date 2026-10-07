@@ -19,6 +19,7 @@ const reference: Record<string, number> = {
   'claude-sonnet-5-5': 15.2,
   'glm-5-3': 11.52,
   'devstral-2': 8.8,
+  'mistral-large-4': 4.676,
   'deepseek-v4-pro-peak': 7.568,
   'deepseek-v4-pro-off-peak': 3.784,
   'groq-gpt-oss-120b': 2.04,

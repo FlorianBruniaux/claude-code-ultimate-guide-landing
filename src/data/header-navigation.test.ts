@@ -21,6 +21,7 @@ test('routes product goals to the matching top-level navigation intent', async (
     ['/releases/', 'updates'],
     ['/guide/known-issues/', 'guide'],
     ['/guide/translations/', 'guide'],
+    ['/guide/mistral-large-4/', 'guide'],
     ['/guide/agent-harness-landscape/', 'guide'],
     ['/guide/workflows/monitor-event-delegation/', 'build'],
   ] as const
@@ -48,6 +49,7 @@ test('builds Guide from noteworthy pages not already exposed by another menu', a
       {
         label: 'Latest references',
         hrefs: [
+          '/guide/mistral-large-4/',
           '/guide/translations/',
           '/guide/agent-harness-landscape/',
           '/guide/practitioner-insights/',

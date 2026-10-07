@@ -23,6 +23,8 @@ const LOCAL_GUIDE_BASE = '/guide/'
 // Guide files that are accessible locally at /guide/SLUG/
 // Files in guide/ directory (not ultimate-guide, not workflows)
 const LOCAL_GUIDE_FILES = new Set([
+  // Reviewed evidence published by prepare-guide-content.mjs
+  'docs/resource-evaluations/mistral-large-4.md',
   // Root-level guide files
   'guide/cheatsheet.md',
   'guide/cowork.md',
@@ -46,6 +48,7 @@ const LOCAL_GUIDE_FILES = new Set([
   // ecosystem/
   'guide/ecosystem/agent-harness-landscape.md',
   'guide/ecosystem/agentic-tools.md',
+  'guide/ecosystem/local-vs-cloud-inference.md',
   'guide/ecosystem/ai-ecosystem.md',
   'guide/ecosystem/mcp-servers-ecosystem.md',
   'guide/ecosystem/practitioner-insights.md',
@@ -61,6 +64,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/ops/ai-traceability.md',
   'guide/ops/api-gateway.md',
   'guide/ops/devops-sre.md',
+  'guide/ops/llm-market-snapshot.md',
   'guide/ops/observability.md',
   'guide/ops/subscription-strategy.md',
   'guide/ops/team-metrics.md',
@@ -198,7 +202,7 @@ function main() {
     if (typeof value !== 'string') continue
     if (value.startsWith('http://') || value.startsWith('https://')) continue
     const PATH_PREFIXES = ['guide/', 'examples/', 'machine-readable/', 'whitepapers/']
-    if (!PATH_PREFIXES.some(prefix => value.startsWith(prefix))) continue
+    if (!PATH_PREFIXES.some(prefix => value.startsWith(prefix)) && !LOCAL_GUIDE_FILES.has(value.split('#')[0])) continue
 
     const cleanPath = stripLineNumber(value)
     const repositoryPath = cleanPath.split('#')[0]
@@ -227,7 +231,9 @@ function main() {
     const filePathOnly = cleanPath.split('#')[0]
     const anchor = cleanPath.includes('#') ? cleanPath.slice(cleanPath.indexOf('#')) : ''
     let url
-    if (LOCAL_GUIDE_REDIRECT_TARGETS[filePathOnly]) {
+    if (cleanPath === 'guide/ecosystem/ai-ecosystem.md#21-mistral-large-4-multimodal-api-candidate') {
+      url = '/ecosystem/#mistral-large-4'
+    } else if (LOCAL_GUIDE_REDIRECT_TARGETS[filePathOnly]) {
       url = LOCAL_GUIDE_REDIRECT_TARGETS[filePathOnly]
     } else if (LOCAL_GUIDE_FILES.has(filePathOnly)) {
       // Extract basename only — all guide files served flat at /guide/<slug>/

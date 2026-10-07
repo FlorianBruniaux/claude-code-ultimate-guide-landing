@@ -85,3 +85,13 @@ test('routes diagram directory references to the published diagram collection', 
     url: '/diagrams/', isExternal: false,
   })
 })
+
+
+test('Mistral comparison and evidence links preserve their published local destinations', () => {
+  assert.deepEqual(resolveGuideLink('../../docs/resource-evaluations/mistral-large-4.md', '#benchmark-evidence', {}, 'guide/ops/llm-market-snapshot.md'), {
+    url: '/guide/mistral-large-4/#benchmark-evidence', isExternal: false,
+  })
+  assert.deepEqual(resolveGuideLink('../../guide/ecosystem/ai-ecosystem.md', '#21-mistral-large-4-multimodal-api-candidate', {}, 'docs/resource-evaluations/mistral-large-4.md'), {
+    url: '/ecosystem/#mistral-large-4', isExternal: false,
+  })
+})

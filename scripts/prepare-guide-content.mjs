@@ -549,22 +549,36 @@ if (existsSync(LEARNING_PATH_DIR)) {
 // -----------------------------------------------------------------------
 const DOCS_DIR = resolve(GUIDE_REPO, 'docs')
 
-// Publish the reviewed pentesting evidence alongside its guide page.
-const evaluationFile = 'darkmoon-strix-agentic-pentesting.md'
-const evaluationSource = `docs/resource-evaluations/${evaluationFile}`
-const evaluationPath = resolve(GUIDE_REPO, evaluationSource)
-const evaluationDates = getGitDates(evaluationPath)
-guideFileBuffer.push({
-  file: evaluationFile,
-  sourcePath: evaluationSource,
-  content: normalizeLangs(addStarlightFm(readFileSync(evaluationPath, 'utf-8').replace(/^# .+\r?\n/m, ''), {
+// Publish selected reviewed evaluations directly from the guide source.
+const PUBLIC_EVALUATIONS = [
+  {
+    file: 'darkmoon-strix-agentic-pentesting.md',
     title: 'DarkMoon and Strix: Evidence and Evaluation',
     desc: 'Privacy tests, public sources, and evidence needed to evaluate DarkMoon and Strix.',
-    order: 299,
-    lastUpdated: evaluationDates.modified,
-    datePublished: evaluationDates.published,
-  })),
-})
+  },
+  {
+    file: 'mistral-large-4.md',
+    title: 'Mistral Large 4: Pricing, Benchmarks and Limits',
+    desc: 'October 6 launch evidence: preview access, sale prices, independent benchmarks, context limits, regional inference, and planned weights.',
+  },
+]
+
+for (const evaluation of PUBLIC_EVALUATIONS) {
+  const sourcePath = `docs/resource-evaluations/${evaluation.file}`
+  const evaluationPath = resolve(GUIDE_REPO, sourcePath)
+  const dates = getGitDates(evaluationPath)
+  guideFileBuffer.push({
+    file: evaluation.file,
+    sourcePath,
+    content: normalizeLangs(addStarlightFm(readFileSync(evaluationPath, 'utf-8').replace(/^# .+\r?\n/m, ''), {
+      title: evaluation.title,
+      desc: evaluation.desc,
+      order: 299,
+      lastUpdated: dates.modified,
+      datePublished: dates.published,
+    })),
+  })
+}
 
 // Whitelisted role/audience pages from the guide repo's docs/ folder.
 // Descriptions are set here because the source files have no frontmatter.

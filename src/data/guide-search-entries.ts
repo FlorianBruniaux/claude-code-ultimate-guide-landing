@@ -2456,7 +2456,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Snapshot",
     "keywords": "llm market snapshot guide ops llm market snapshot",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md",
+    "url": "/guide/llm-market-snapshot/",
     "source": "guide"
   },
   {
@@ -2464,7 +2464,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Trend",
     "keywords": "llm market trend guide ops llm market snapshot md#1 the trend quotas shrink while token prices fall",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#1-the-trend-quotas-shrink-while-token-prices-fall",
+    "url": "/guide/llm-market-snapshot/#1-the-trend-quotas-shrink-while-token-prices-fall",
     "source": "guide"
   },
   {
@@ -2472,7 +2472,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market API Prices",
     "keywords": "llm market api prices guide ops llm market snapshot md#2 api prices",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#2-api-prices",
+    "url": "/guide/llm-market-snapshot/#2-api-prices",
     "source": "guide"
   },
   {
@@ -2480,7 +2480,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Subscriptions",
     "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#3-subscription-quotas",
+    "url": "/guide/llm-market-snapshot/#3-subscription-quotas",
     "source": "guide"
   },
   {
@@ -2488,7 +2488,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Benchmarks",
     "keywords": "llm market benchmarks guide ops llm market snapshot md#4 capability read the benchmark conditions first",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#4-capability-read-the-benchmark-conditions-first",
+    "url": "/guide/llm-market-snapshot/#4-capability-read-the-benchmark-conditions-first",
     "source": "guide"
   },
   {
@@ -2496,7 +2496,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Reference Workload",
     "keywords": "llm market reference workload guide ops llm market snapshot md#5 cost one reference workload",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#5-cost-of-one-reference-workload",
+    "url": "/guide/llm-market-snapshot/#5-cost-of-one-reference-workload",
     "source": "guide"
   },
   {
@@ -2504,7 +2504,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Data Location",
     "keywords": "llm market data location guide ops llm market snapshot md#6 where the data goes",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#6-where-the-data-goes",
+    "url": "/guide/llm-market-snapshot/#6-where-the-data-goes",
     "source": "guide"
   },
   {
@@ -2512,7 +2512,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Failed Claims",
     "keywords": "llm market failed claims guide ops llm market snapshot md#7 claims that did not survive verification",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#7-claims-that-did-not-survive-verification",
+    "url": "/guide/llm-market-snapshot/#7-claims-that-did-not-survive-verification",
     "source": "guide"
   },
   {
@@ -2520,7 +2520,39 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "LLM Market Refresh Rule",
     "keywords": "llm market refresh rule guide ops llm market snapshot md#8 refresh rule",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/llm-market-snapshot.md#8-refresh-rule",
+    "url": "/guide/llm-market-snapshot/#8-refresh-rule",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mistral-large-4-evaluation",
+    "title": "Mistral Large 4 Evaluation",
+    "keywords": "mistral large 4 evaluation docs resource evaluations mistral large",
+    "category": "Guide",
+    "url": "/guide/mistral-large-4/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mistral-large-4-ecosystem",
+    "title": "Mistral Large 4 Ecosystem",
+    "keywords": "mistral large 4 ecosystem guide ecosystem ecosystem md#21 mistral large multimodal api candidate",
+    "category": "Guide",
+    "url": "/ecosystem/#mistral-large-4",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mistral-large-4-benchmarks",
+    "title": "Mistral Large 4 Benchmarks",
+    "keywords": "mistral large 4 benchmarks docs resource evaluations mistral large md#benchmark evidence",
+    "category": "Guide",
+    "url": "/guide/mistral-large-4/#benchmark-evidence",
+    "source": "guide"
+  },
+  {
+    "id": "guide-mistral-large-4-pricing-regions",
+    "title": "Mistral Large 4 Pricing Regions",
+    "keywords": "mistral large 4 pricing regions docs resource evaluations mistral large md#pricing and regional processing",
+    "category": "Guide",
+    "url": "/guide/mistral-large-4/#pricing-and-regional-processing",
     "source": "guide"
   },
   {
@@ -2544,7 +2576,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Team Sizing",
     "keywords": "local vs cloud team sizing guide ecosystem local cloud inference md#sizing self hosted inference for team",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#sizing-self-hosted-inference-for-a-team",
+    "url": "/guide/local-vs-cloud-inference/#sizing-self-hosted-inference-for-a-team",
     "source": "guide"
   },
   {
@@ -6000,7 +6032,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Guide",
     "keywords": "local vs cloud guide guide ecosystem local cloud inference",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md",
+    "url": "/guide/local-vs-cloud-inference/",
     "source": "guide"
   },
   {
@@ -6008,7 +6040,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Llmfit",
     "keywords": "local vs cloud llmfit guide ecosystem local cloud inference md#sizing local hardware with llmfit",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#sizing-local-hardware-with-llmfit",
+    "url": "/guide/local-vs-cloud-inference/#sizing-local-hardware-with-llmfit",
     "source": "guide"
   },
   {
@@ -6016,7 +6048,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Hardware Configs",
     "keywords": "local vs cloud hardware configs guide ecosystem local cloud inference md#fourteen comparable hardware configurations",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#fourteen-comparable-hardware-configurations",
+    "url": "/guide/local-vs-cloud-inference/#fourteen-comparable-hardware-configurations",
     "source": "guide"
   },
   {
@@ -6024,7 +6056,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Bandwidth Ecc",
     "keywords": "local vs cloud bandwidth ecc guide ecosystem local cloud inference md#memory bandwidth prefill and ecc",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#memory-bandwidth-prefill-and-ecc",
+    "url": "/guide/local-vs-cloud-inference/#memory-bandwidth-prefill-and-ecc",
     "source": "guide"
   },
   {
@@ -6032,7 +6064,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Small Team",
     "keywords": "local vs cloud small team guide ecosystem local cloud inference md#one machine for small team",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#one-machine-for-a-small-team",
+    "url": "/guide/local-vs-cloud-inference/#one-machine-for-a-small-team",
     "source": "guide"
   },
   {
@@ -6040,7 +6072,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Named Models",
     "keywords": "local vs cloud named models guide ecosystem local cloud inference md#what actually fits named models",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#what-actually-fits-named-models",
+    "url": "/guide/local-vs-cloud-inference/#what-actually-fits-named-models",
     "source": "guide"
   },
   {
@@ -6048,7 +6080,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Which Machine",
     "keywords": "local vs cloud which machine guide ecosystem local cloud inference md#which local machine for which usage",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#which-local-machine-for-which-usage",
+    "url": "/guide/local-vs-cloud-inference/#which-local-machine-for-which-usage",
     "source": "guide"
   },
   {
@@ -6056,7 +6088,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Vllm Tuning",
     "keywords": "local vs cloud vllm tuning guide ecosystem local cloud inference md#serving engine tuning vllm production",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#serving-engine-tuning-vllm-in-production",
+    "url": "/guide/local-vs-cloud-inference/#serving-engine-tuning-vllm-in-production",
     "source": "guide"
   },
   {
@@ -6064,7 +6096,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Mlx Coding Agent",
     "keywords": "local vs cloud mlx coding agent guide ecosystem local cloud inference md#coding agent setup apple silicon with mlx",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#coding-agent-setup-apple-silicon-with-mlx",
+    "url": "/guide/local-vs-cloud-inference/#coding-agent-setup-apple-silicon-with-mlx",
     "source": "guide"
   },
   {
@@ -6072,7 +6104,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Gpu Rental",
     "keywords": "local vs cloud gpu rental guide ecosystem local cloud inference md#cloud gpu rental pricing",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#cloud-gpu-rental-pricing",
+    "url": "/guide/local-vs-cloud-inference/#cloud-gpu-rental-pricing",
     "source": "guide"
   },
   {
@@ -6080,7 +6112,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Tco",
     "keywords": "local vs cloud tco guide ecosystem local cloud inference md#one year cost projections",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#one-year-cost-projections",
+    "url": "/guide/local-vs-cloud-inference/#one-year-cost-projections",
     "source": "guide"
   },
   {
@@ -6088,7 +6120,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Power",
     "keywords": "local vs cloud power guide ecosystem local cloud inference md#power consumption watts watt hours joules per token",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#power-consumption-watts-watt-hours-joules-per-token",
+    "url": "/guide/local-vs-cloud-inference/#power-consumption-watts-watt-hours-joules-per-token",
     "source": "guide"
   },
   {
@@ -6096,7 +6128,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Model Efficiency",
     "keywords": "local vs cloud model efficiency guide ecosystem local cloud inference md#energy efficiency model architecture",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#energy-efficiency-by-model-architecture",
+    "url": "/guide/local-vs-cloud-inference/#energy-efficiency-by-model-architecture",
     "source": "guide"
   },
   {
@@ -6104,7 +6136,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Throughput",
     "keywords": "local vs cloud throughput guide ecosystem local cloud inference md#cloud api throughput claude gpt",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#cloud-api-throughput-claude-vs-gpt-56",
+    "url": "/guide/local-vs-cloud-inference/#cloud-api-throughput-claude-vs-gpt-56",
     "source": "guide"
   },
   {
@@ -6112,7 +6144,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Not Comparable",
     "keywords": "local vs cloud not comparable guide ecosystem local cloud inference md#why cloud and local tokenssec are not comparable",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#why-cloud-and-local-tokenssec-are-not-comparable",
+    "url": "/guide/local-vs-cloud-inference/#why-cloud-and-local-tokenssec-are-not-comparable",
     "source": "guide"
   },
   {
@@ -6120,7 +6152,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Diagram",
     "keywords": "local vs cloud diagram guide ecosystem local cloud inference md#decision diagram",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#decision-diagram",
+    "url": "/guide/local-vs-cloud-inference/#decision-diagram",
     "source": "guide"
   },
   {
@@ -6128,7 +6160,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud Decision",
     "keywords": "local vs cloud decision guide ecosystem local cloud inference md#decision framework",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#decision-framework",
+    "url": "/guide/local-vs-cloud-inference/#decision-framework",
     "source": "guide"
   },
   {
@@ -6136,7 +6168,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Local Vs Cloud CLI Bridge",
     "keywords": "local vs cloud cli bridge guide ecosystem local cloud inference md#switching providers the cli level",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/local-vs-cloud-inference.md#switching-providers-at-the-cli-level",
+    "url": "/guide/local-vs-cloud-inference/#switching-providers-at-the-cli-level",
     "source": "guide"
   },
   {

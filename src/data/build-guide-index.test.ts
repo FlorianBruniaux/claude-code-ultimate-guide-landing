@@ -145,3 +145,28 @@ test('uses GitHub tree URLs for existing repository directories', () => {
   assert.equal(result.status, 0, result.stderr)
   assert.match(readFileSync(output, 'utf8'), /\/tree\/main\/examples\/skills\//)
 })
+
+
+test('Mistral launch evidence and ecosystem search results resolve to published local pages', () => {
+  const root = mkdtempSync(join(tmpdir(), 'guide-index-mistral-'))
+  mkdirSync(join(root, 'machine-readable'))
+  mkdirSync(join(root, 'docs/resource-evaluations'), { recursive: true })
+  mkdirSync(join(root, 'guide/ecosystem'), { recursive: true })
+  writeFileSync(join(root, 'docs/resource-evaluations/mistral-large-4.md'), '# Evidence\n\n## Benchmark evidence')
+  writeFileSync(join(root, 'guide/ecosystem/ai-ecosystem.md'), '# Ecosystem')
+  writeFileSync(join(root, 'machine-readable/reference.yaml'), [
+    'deep_dive:',
+    '  mistral_large_4_evaluation: "docs/resource-evaluations/mistral-large-4.md"',
+    '  mistral_large_4_benchmarks: "docs/resource-evaluations/mistral-large-4.md#benchmark-evidence"',
+    '  mistral_large_4_ecosystem: "guide/ecosystem/ai-ecosystem.md#21-mistral-large-4-multimodal-api-candidate"',
+    '',
+  ].join('\n'))
+  const output = join(root, 'output.ts')
+  const result = spawnSync(process.execPath, [SCRIPT, '--guide-root', root, '--out', output], { encoding: 'utf8' })
+  assert.equal(result.status, 0, result.stderr)
+  const generated = readFileSync(output, 'utf8')
+  assert.match(generated, /"url": "\/guide\/mistral-large-4\/"/)
+  assert.match(generated, /"url": "\/guide\/mistral-large-4\/#benchmark-evidence"/)
+  assert.match(generated, /"url": "\/ecosystem\/#mistral-large-4"/)
+  assert.doesNotMatch(generated, /github.com.*mistral-large-4/)
+})

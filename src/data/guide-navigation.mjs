@@ -3,6 +3,7 @@ import { getContextualLink } from './seo-editorial-contract.mjs'
 const codeReviewWorkflow = getContextualLink('/guide/workflows/code-review/')
 
 export const guideHighlights = [
+  { title: 'Mistral Large 4', href: '/guide/mistral-large-4/', desc: 'October 6 launch evidence: pricing, benchmark conditions, regional processing, and planned weights.' },
   { title: 'Agentic Pentesting: DarkMoon and Strix', href: '/guide/agentic-pentesting/', desc: 'Compare execution scope, privacy controls, and exploit evidence, with a reproducible evaluation protocol.' },
   {
     title: 'Translations and Language Status',
@@ -154,6 +155,7 @@ export const guideSections = [
     icon: '🧰',
     desc: 'Complementary tools, MCP servers, research, and field evidence.',
     links: [
+      { title: 'Mistral Large 4', href: '/guide/mistral-large-4/', desc: 'Dated launch evidence, API prices, benchmarks, and deployment limits.', time: 'Reference' },
       { title: 'AI Ecosystem', href: '/ecosystem/', desc: 'Complementary AI tools and multi-provider workflows.', time: '30 min' },
       { title: 'MCP Servers Ecosystem', href: '/guide/mcp-servers-ecosystem/', desc: 'Validated MCP servers and production configuration.', time: '25 min' },
       { title: 'MCP vs CLI', href: '/guide/mcp-vs-cli/', desc: 'Choose the smallest tool interface for the job.', time: '15 min' },

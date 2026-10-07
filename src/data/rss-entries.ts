@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Mistral Large 4: launch evidence, pricing and deployment limits',
+    date: 'Oct 7, 2026',
+    description: 'A source-checked October 6 snapshot of Mistral Large 4: public preview, sale and original API prices, independently reported benchmarks, differing context limits, regional processing constraints, and planned weights. Includes launch-day reporting and links to the guide comparisons; API access and self-hosted performance were not tested.',
+    link: 'https://cc.bruniaux.com/guide/mistral-large-4/',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.44.1: refreshed bilingual publications',
     date: 'Oct 6, 2026',

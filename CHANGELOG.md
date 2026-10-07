@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **Mistral Large 4 (October 7, 2026)**: publish the guide's reviewed October 6 launch dossier at `/guide/mistral-large-4/`, preserving dated prices, evaluator attribution, regional-inference constraints, and unresolved context and weight-release details. Add an ecosystem entry, announcement, navigation, search and RSS links; include the standard-tier sale rates in the FinOps calculator with their date and conditions. Rebuild guide content and search indexes from the canonical guide sources.
+
 - **Visibility follow-up**: server-render the examples catalog and its 50 detail links, add related guide links, remove a stale hook-event count, track successful MCP copies and source clicks, prepare IndexNow ownership, and add a credential-gated daily GitHub traffic archive. Preserve dated Google/page baselines and the first real GitHub observation; search gains and GA4 receipt remain unverified.
 
 - **MCP 1.3.5 public release**: refresh the MCP installation commands and public runtime evidence in all three LLM discovery files. Rebuild the MCP landing from the measured npm 1.3.5 runtime and matching public statistics, preserving 17 tools, 6 resources and 1 prompt.

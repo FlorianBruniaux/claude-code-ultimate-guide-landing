@@ -6,7 +6,7 @@ import CostCalculator from '../../components/cost/CostCalculator.astro'
 import { FINOPS_HUB_URL, FINOPS_REGIMES, FINOPS_SNAPSHOT_URL } from '../../data/finops-levers'
 
 const title = 'AI FinOps for Coding Agents | Claude Code Guide'
-const description = 'AI FinOps for coding agents: three cost regimes, the FinOps loop, ten cost levers and a market snapshot of API prices and quotas checked on September 30, 2026.'
+const description = 'AI FinOps for coding agents: three cost regimes, the FinOps loop, ten cost levers and a September 30 market snapshot of API prices and quotas, with Mistral Large 4 added October 6.'
 
 const jsonLd = [
   {
@@ -17,7 +17,7 @@ const jsonLd = [
     "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Founding Engineer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-09-30",
-    "dateModified": "2026-09-30",
+    "dateModified": "2026-10-07",
     "inLanguage": "en",
     "audience": { "@type": "Audience", "audienceType": "Developers, tech leads, platform and procurement owners" }
   }
@@ -103,6 +103,7 @@ const blogPosts = [
 
 const deeper = [
   { title: 'AI FinOps (section entry point)', href: hubUrl, desc: 'Cost regimes, the FinOps loop, and the full lever map.' },
+  { title: 'Mistral Large 4', href: '/guide/mistral-large-4/', desc: 'October 6 launch prices, benchmark evidence, regional processing, and weight-release limits.' },
   { title: 'LLM Market Snapshot', href: snapshotUrl, desc: 'Dated API prices, subscription quotas, data location, refresh rule.' },
   { title: 'AI Unit Economics', href: '/guide/ai-unit-economics/', desc: 'Cost per accepted task, routing, break-even, vendor claims.' },
   { title: 'Subscription Strategy', href: '/guide/subscription-strategy/', desc: 'Seats, APIs, gateways, and provider portfolios for teams.' },
@@ -115,7 +116,7 @@ const splitList = (text: string) => (text.includes(' · ') ? text.split(' · ') 
 
 ---
 
-<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-09-30" modifiedDate="2026-09-30">
+<Layout title={title} description={description} ogType="article" jsonLd={jsonLd} publishedDate="2026-09-30" modifiedDate="2026-10-07">
 
   <!-- Hero -->
   <header class="page-hero">
@@ -123,7 +124,7 @@ const splitList = (text: string) => (text.includes(' · ') ? text.split(' · ') 
       <div class="hero-badge-row">
         <span class="hero-badge">3 cost regimes</span>
         <span class="hero-badge">10 levers</span>
-        <span class="hero-badge hero-badge--secondary">Prices verified 2026-09-30</span>
+        <span class="hero-badge hero-badge--secondary">Sep 30 snapshot · Mistral Large 4 added Oct 6</span>
       </div>
       <h1>AI FinOps for coding agents</h1>
       <p class="tagline">In September 2026, OpenAI announced it would halve a subscription allowance while its API price list offered a model at one fifth of the Astra rate. Which cost regime carries your work decides what changed for you.</p>
