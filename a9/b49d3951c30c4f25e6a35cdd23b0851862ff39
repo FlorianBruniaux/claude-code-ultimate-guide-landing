@@ -1,0 +1,23 @@
+src/data/releases.ts
+  s_0f4216fdd2c8ac::t_2faaf39716c94b 21,23-83,95,113,130,146,163
+src/data/seo-editorial-contract.mjs
+  s_0f4216fdd2c8ac::t_41d64a84d52b7d 80
+src/data/seo-editorial-contract.test.ts
+  s_0f4216fdd2c8ac::t_2feaa29e8ef3fe 65-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a9b49d3951c30c4f25e6a35cdd23b0851862ff39",
+  "prompts": {},
+  "sessions": {
+    "s_0f4216fdd2c8ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10107-9a2f-7962-b3b2-1e3bab1cdf97",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
