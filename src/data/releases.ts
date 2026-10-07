@@ -18,15 +18,53 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.289',
+    version: 'v2.1.292',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added claude plugin install --marketplace <source>, an effort parameter on the Agent tool for sub-agents, and CLAUDE_CODE_OVERLOADED_RETRY_BASE_DELAY_MS for the 529 retry backoff",
+      "Fixed PreToolUse hook approvals and auto mode skipping the permission prompt for reads from network (UNC) paths, sandboxed commands reading /ultrareview staged uploads, and notebook or PDF reads through a link swapped mid-read",
+      "Fixed NO_PROXY ignored for Claude Code's own API requests, plan mode lost on /resume, scheduled tasks and /loop wakeups lost after /resume, /clear or a restart, and claude -p stopping background commands 5 seconds after the final result",
+      "Changed local (stdio) MCP connections to negotiate protocol version 2026-07-28 by default; Read now errors on a PDF pages list and @-mentioned text files over 256KB are no longer dropped silently",
+    ],
+    breaking: [
+      "Local (stdio) MCP servers negotiate protocol version 2026-07-28 by default on every install, including Bedrock, Vertex and Foundry; MCP_PROTOCOL_NEGOTIATION=legacy opts out.",
+      "Agent names are limited to 256 characters; a skill's or plugin file's longer name is ignored. claude plugin test now fails on a failed expect inside a hook the test registered instead of passing silently.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.291',
+    date: "Oct 6, 2026",
+    highlights: [
+      "Fixed a 2.1.290 regression where cloud sessions could drop answers to permission prompts",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.290',
+    date: "Oct 5, 2026",
+    highlights: [
+      "Added claude attach <name> and claude logs <name> with partial session names, /claude-api managed-agents-onboard, and warnings when managed settings link outside their folder or ignore user sandbox allowRead paths",
+      "Fixed Bash permission checks auto-approving read-only commands with shell-expanded wildcards or zsh-specific variable names, rules skipped after a PreToolUse hook rewrote input, and Read deny rules bypassed by pasted images, @-mentions and links swapped mid-read",
+      "Fixed WebFetch silently dropping page text past 100,000 characters (it now reports the rest and takes an offset), scheduled tasks lost after compaction or /background, and resumed subagents losing earlier thinking and prompt cache",
+      "Changed WebSearch to a budget that refills at 100 calls per hour, and stopped project settings from turning on Claude in Chrome or setting CLAUDE_CODE_DISABLE_ATTACHMENTS",
+    ],
+    breaking: [
+      "Interactive WebSearch uses a budget that refills at 100 calls per hour (CLAUDE_CODE_WEB_SEARCH_REFILLS_PER_HOUR sets the rate) instead of ending after 200 calls.",
+      "A project's settings files can no longer turn on Claude in Chrome or set CLAUDE_CODE_DISABLE_ATTACHMENTS; pyright and more forms of ps now ask for permission. An in-process teammate's agent_id in Agent results is its agent ID, with the name@team address in teammate_id.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.289',
+    date: "Oct 3, 2026",
     highlights: [
       "Fixed managed-machine permission rules bypassed by user-installed mods, Bash deny/ask rules under sandbox auto-allow, and Read deny rules through IDE symlinks",
       "Added agent.spawn for teammates, shared agent IDs across plugin hook events, and idle/waiting states in $.agent.list()",
       "Fixed installed mods missing from the first session after upgrade, stale local plugin versions and plugin/mod rendering failures",
       "Reverted the VS Code claude auth status change that could increase sign-outs; fixed terminal and published artifact freezes on malformed code blocks",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -54,7 +92,7 @@ export const releases: Release[] = [
       "MCP servers on the 2025-11-25 protocol can send URL prompts; if a server no longer connects, add \"bareElicitationCapability\": true to its MCP config entry. MCP alwaysLoad: false now defers all of that server's tools behind tool search.",
       "The OpenTelemetry user_prompt event carries prompt_text, a copy of prompt; drop or mask it wherever prompt is dropped or masked. Replies from claude agents arrive as queued messages, and slash commands other than /stop sent during a turn run when it ends.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ Claude Mods',
   },
@@ -72,7 +110,7 @@ export const releases: Release[] = [
       "Plugin installs refuse npm sources that are git repositories or folders and install plugin dependencies only from registry packages; failed API requests share one retry limit per model call (at most 14 requests with default settings).",
       "[VSCode] Stop and Escape end only the current turn; background agents keep running and are stopped one by one from the agent map.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.285',
@@ -89,7 +127,7 @@ export const releases: Release[] = [
       "claude -p and Python Agent SDK sessions on third-party providers or with telemetry off start in auto mode when no permission mode is configured; --permission-mode still overrides it.",
       "The MCP server name widgets and close spellings are reserved in cloud sessions and on self-hosted runners; /ultrareview on macOS and Linux requires git 2.31+ for local uploads; on Windows, project and local settings env no longer set ALLUSERSPROFILE, SystemDrive or CommonProgramFiles variables.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.284',
@@ -105,7 +143,7 @@ export const releases: Release[] = [
       "Ultracode is a separate /effort toggle (Tab, or /effort ultracode [on|off]) and no longer forces xhigh effort.",
       "Under managed allowManagedPermissionRulesOnly, only plugins from an official Anthropic source or a source managed settings vouch for keep allowed-tools pre-approval; marketplace, claude.ai and npm plugins lose it.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ Sonnet 5.5',
   },
@@ -122,7 +160,7 @@ export const releases: Release[] = [
       "Interactive sessions on third-party providers or with telemetry off start in auto mode when no permission mode is configured; permissions.defaultMode still overrides it.",
       "Skill(anthropic-skills:<name>) deny rules also block that skill when Claude Desktop delivers it as a plugin; claude plugin eval refuses git versions older than 2.31.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.282',
