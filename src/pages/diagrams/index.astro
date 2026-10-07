@@ -1,13 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { DIAGRAM_THEMES } from '../../data/diagrams-data'
-import { DIAGRAM_GUIDE_URLS } from '../../data/diagrams-guide-urls'
-
-const title = 'Claude Code Diagrams: 48 Architecture & Workflow Visuals'
-const description = '48 Mermaid diagrams covering Claude Code architecture, MCP ecosystem, multi-agent patterns, security, and workflows. Rendered as SVG at build time.'
 
 const totalDiagrams = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.length, 0)
 const totalWithSVG = DIAGRAM_THEMES.reduce((sum, t) => sum + t.diagrams.filter(d => d.svg).length, 0)
+const title = `Claude Code Diagrams: ${totalDiagrams} Architecture & Workflow Visuals`
+const description = `${totalDiagrams} Mermaid diagrams across ${DIAGRAM_THEMES.length} themes covering Claude Code architecture, MCP, multi-agent patterns, security, and workflows, with ASCII fallbacks.`
+const themeList = DIAGRAM_THEMES.map(theme => theme.title.replace(/^Claude Code:\s*/, '')).join(', ')
+const topicAnswer = `${totalDiagrams} diagrams across ${DIAGRAM_THEMES.length} themes: ${themeList}.`
+const renderingAnswer = 'Diagrams are generated as SVG at build time using mermaid-cli (mmdc), with an ASCII fallback. The page uses JavaScript for guide tooltips, filtering, and navigation; rendering the diagrams does not require a Mermaid client runtime.'
 
 const jsonLd = [
   {
@@ -17,7 +18,7 @@ const jsonLd = [
     "description": description,
     "url": "https://cc.bruniaux.com/diagrams/",
     "datePublished": "2026-02-22",
-    "dateModified": "2026-02-22",
+    "dateModified": "2026-10-07",
     "inLanguage": "en-US",
     "isPartOf": {
       "@type": "WebSite",
@@ -42,7 +43,7 @@ const jsonLd = [
         "name": "What are Claude Code architecture diagrams?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Code architecture diagrams are 48 Mermaid flowcharts covering 10 thematic areas: foundations, context management, configuration, architecture internals, MCP ecosystem, development workflows, multi-agent patterns, security, cost optimization, and adoption. Each diagram includes an ASCII text fallback."
+          "text": `${topicAnswer} Each diagram includes an ASCII text fallback. Product behavior is distinguished from conceptual models and author recommendations.`
         }
       },
       {
@@ -50,7 +51,7 @@ const jsonLd = [
         "name": "What topics do the Claude Code diagrams cover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 48 diagrams span 12 themes: Foundations (4-layer model, permission modes), Context & Sessions (memory hierarchy, session continuity), Configuration (precedence system, hooks pipeline), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, security threats), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security & Production (3-layer defense, CI/CD), Cost & Optimization (model selection, token strategies), and Adoption & Learning (onboarding paths, UVAL protocol)."
+          "text": topicAnswer
         }
       },
       {
@@ -66,7 +67,7 @@ const jsonLd = [
         "name": "How are the Claude Code diagrams rendered?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The diagrams are rendered as SVG at build time using mermaid-cli (mmdc). This means zero client-side JavaScript, no layout shift (CLS = 0), and instant display. Each diagram also has a plain-text ASCII fallback for accessibility."
+          "text": renderingAnswer
         }
       },
       {
@@ -91,8 +92,8 @@ const jsonLd = [
         <span aria-hidden="true">›</span>
         <span>Diagrams</span>
       </nav>
-      <h1>Claude Code: 48 architecture diagrams</h1>
-      <p class="hero-subtitle">Visual reference for Claude Code internals: architecture, MCP ecosystem, multi-agent patterns, security models, and development workflows. 38 SVGs rendered at build time, zero client JavaScript.</p>
+      <h1>Claude Code: {totalDiagrams} architecture diagrams</h1>
+      <p class="hero-subtitle">Visual reference for Claude Code internals: architecture, MCP ecosystem, multi-agent patterns, security models, and development workflows. {totalWithSVG} SVGs generated at build time, with ASCII fallbacks and guide links.</p>
       <div class="diagrams-hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-value">{totalDiagrams}</span>
@@ -147,7 +148,7 @@ const jsonLd = [
             {theme.description && (
               <p class="diagram-theme-desc">{theme.description}</p>
             )}
-            {theme.diagrams.map((d, i) => (
+            {theme.diagrams.map(d => (
               <article class="diagram-entry">
                 <h3 class="diagram-entry-title">{d.title}</h3>
                 {d.description && (
@@ -155,8 +156,8 @@ const jsonLd = [
                 )}
                 <div
                   class="diagram-container"
-                  data-guide-url={d.svg ? (DIAGRAM_GUIDE_URLS[theme.id]?.[i] ?? undefined) : undefined}
-                  title={d.svg && DIAGRAM_GUIDE_URLS[theme.id]?.[i] ? 'Click to view this section in the guide' : undefined}
+                  data-guide-url={d.svg ? d.guideUrl : undefined}
+                  title={d.svg ? 'Click to view this section in the guide' : undefined}
                 >
                   {d.svg ? (
                     <Fragment set:html={d.svg} />
@@ -165,7 +166,7 @@ const jsonLd = [
                   )}
                 </div>
                 {d.sourceRef && (
-                  <p class="diagram-source">{d.sourceRef}</p>
+                  <p class="diagram-source"><a href={d.guideUrl} target="_blank" rel="noopener noreferrer">{d.sourceRef}</a></p>
                 )}
               </article>
             ))}
@@ -181,7 +182,7 @@ const jsonLd = [
     <dl class="faq-list">
       <div class="faq-item">
         <dt>What topics do the diagrams cover?</dt>
-        <dd>10 thematic areas: Foundations (4-layer model, permission modes), Context &amp; Sessions (memory hierarchy), Configuration (precedence, hooks), Architecture Internals (master loop, tool categories), MCP Ecosystem (server map, rug pull attack chain), Development Workflows (TDD, spec-first, plan-driven), Multi-Agent Patterns (orchestration topologies, git worktrees), Security &amp; Production (3-layer defense, CI/CD pipeline), Cost &amp; Optimization (model selection, token strategies), and Adoption &amp; Learning (onboarding paths, UVAL protocol).</dd>
+        <dd>{topicAnswer}</dd>
       </div>
       <div class="faq-item">
         <dt>Are these diagrams free to use?</dt>
@@ -189,7 +190,7 @@ const jsonLd = [
       </div>
       <div class="faq-item">
         <dt>How are the SVGs generated?</dt>
-        <dd>At build time using <code>mermaid-cli</code> (<code>mmdc</code>) with a neutral theme and transparent background. Zero client-side JavaScript, diagrams load instantly with no layout shift.</dd>
+        <dd>{renderingAnswer}</dd>
       </div>
       <div class="faq-item">
         <dt>Where are the source files?</dt>
@@ -553,9 +554,15 @@ const jsonLd = [
   transition: background 0.12s, color 0.12s;
 }
 
-:global(.diagram-guide-tooltip-link:hover) {
+:global(.diagram-guide-tooltip-link:hover),
+:global(.diagram-guide-tooltip-link:focus-visible) {
   background: var(--accent, #E87E2F);
-  color: #fff;
+  color: var(--btn-primary-color, #fff);
+}
+
+:global(.diagram-guide-tooltip-link:focus-visible) {
+  outline: 2px solid var(--accent, #E87E2F);
+  outline-offset: 3px;
 }
 
 .diagram-container :global(svg.diagram-svg) {
@@ -729,7 +736,8 @@ const jsonLd = [
   // ── Per-node tooltip with guide link ────────────────────────────────────
   const tooltip = document.createElement('div')
   tooltip.className = 'diagram-guide-tooltip'
-  tooltip.innerHTML = `📖 <a class="diagram-guide-tooltip-link" target="_blank" rel="noopener noreferrer">View in guide →</a>`
+  // The btn class excludes this control from the shared link-hover color rules.
+  tooltip.innerHTML = `📖 <a class="btn diagram-guide-tooltip-link" target="_blank" rel="noopener noreferrer">View in guide →</a>`
   document.body.appendChild(tooltip)
 
   const tooltipLink = tooltip.querySelector<HTMLAnchorElement>('.diagram-guide-tooltip-link')!
@@ -764,6 +772,8 @@ const jsonLd = [
   // Keep tooltip open when hovering it
   tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimer))
   tooltip.addEventListener('mouseleave', hideTooltip)
+  tooltip.addEventListener('focusin', () => clearTimeout(hideTimer))
+  tooltip.addEventListener('focusout', hideTooltip)
 
   // Get per-node URL from SVG <a href> (Mermaid click directives), or fall back to diagram URL
   function getNodeUrl(node: Element, fallback: string): string {
@@ -810,7 +820,7 @@ const jsonLd = [
       const node = (e.target as Element).closest('.node')
       if (node) {
         // Prevent native SVG <a> navigation, tooltip handles navigation
-        if (node.closest('a[href]') || node.querySelector('a[href]')) {
+        if (node.closest('a') || node.querySelector('a')) {
           e.preventDefault()
         }
         showTooltip(getNodeUrl(node, url), node)

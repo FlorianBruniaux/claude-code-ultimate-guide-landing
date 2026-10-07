@@ -44,6 +44,11 @@ jobs:
         # Source dates require the guide history; a shallow root dates every file to this build.
         run: git clone https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git ../claude-code-ultimate-guide
 
+      - name: Check diagram source links and tooltip contrast
+        run: pnpm check:diagrams && node scripts/check-diagrams-hover.mjs
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
+
       - name: Check AgentSec feed synchronization
         run: pnpm check:agentsec-feed
 
@@ -78,6 +83,15 @@ jobs:
         run: pnpm astro build
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
+
+      - name: Check the built diagram tooltip
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
+        run: |
+          python3 -m http.server 4333 --bind 127.0.0.1 --directory dist > /tmp/diagrams-preview.log 2>&1 &
+          diagram_preview_pid=$!
+          trap 'kill "$diagram_preview_pid"' EXIT
+          node scripts/check-diagrams-hover.mjs http://127.0.0.1:4333/diagrams/
 
       - name: Check all built internal and repository links
         run: pnpm check:links
@@ -165,7 +179,7 @@ jobs:
         run: >-
           node scripts/check-deployed-assets.mjs "$PAGE_URL"
           --carried carried-assets.txt
-          / /token-savings/ /finops/ /context-engineering/ /guide/ /releases/
+          / /token-savings/ /finops/ /context-engineering/ /diagrams/ /guide/ /releases/
 
   vercel-preview:
     needs: [build, deploy]

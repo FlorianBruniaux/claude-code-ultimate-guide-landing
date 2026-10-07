@@ -1,0 +1,383 @@
+{
+  "counts": {
+    "urls": 62,
+    "pages": 38,
+    "ok": 62,
+    "broken": 0,
+    "unknown": 0
+  },
+  "results": [
+    {
+      "url": "https://code.claude.com/docs/en/how-claude-code-works#context-claude-code-adds-on-its-own",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/how-claude-code-works"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/how-claude-code-works#when-context-fills-up",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/how-claude-code-works"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/how-claude-code-works#the-agentic-loop",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/how-claude-code-works"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices#give-claude-a-way-to-verify-its-work",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/best-practices"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices#manage-context-aggressively",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/best-practices"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/permissions#permission-modes",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/security#additional-safeguards",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/security"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/common-workflows#resume-previous-conversations",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/common-workflows"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory#claude-md-vs-auto-memory",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/settings#settings-precedence",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/skills",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/skills"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/sub-agents"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/sub-agents#how-forks-differ-from-other-subagents",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/sub-agents"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/tools-reference"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/env-vars#precedence",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/env-vars"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/hooks#hook-lifecycle",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/hooks"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching#cache-storage-and-sharing",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/modelcontextprotocol/servers"
+    },
+    {
+      "url": "https://github.com/upstash/context7",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/upstash/context7"
+    },
+    {
+      "url": "https://github.com/github/github-mcp-server",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/github/github-mcp-server"
+    },
+    {
+      "url": "https://github.com/semgrep/mcp",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/semgrep/mcp"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/security#mcp-security",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/security"
+    },
+    {
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports"
+    },
+    {
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools#calling-tools",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/best-practices"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/cli-reference"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/microsoft/playwright-mcp"
+    },
+    {
+      "url": "https://github.com/awslabs/mcp",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://github.com/awslabs/mcp"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/mcp",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/mcp"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/mcp#scope-hierarchy-and-precedence",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/mcp"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/permissions",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/security",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/security"
+    },
+    {
+      "url": "https://academy.claude.com/tutorials/the-ai-fluency-index",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://academy.claude.com/tutorials/the-ai-fluency-index"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/agent-teams",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/agent-teams"
+    },
+    {
+      "url": "https://git-scm.com/docs/git-worktree",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://git-scm.com/docs/git-worktree"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/cross-session-messaging",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/cross-session-messaging"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/sandboxing"
+    },
+    {
+      "url": "https://claude.com/resources/articles/the-ai-native-sdlc-playbook",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://claude.com/resources/articles/the-ai-native-sdlc-playbook"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices#run-multiple-claude-sessions",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/best-practices"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/model-config#model-aliases",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/model-config"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/model-config#adjust-effort-level",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/model-config"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/commands",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/commands"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/costs#reduce-token-usage",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/costs"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/costs#using-the-/usage-command",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/costs"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/security#user-responsibility",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/security"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory#how-claude-md-files-load",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory#import-additional-files",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory#path-specific-rules",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory#write-effective-instructions",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/hooks",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/hooks"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/permissions#how-permissions-interact-with-sandboxing",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/mcp#project-scope",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/mcp"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/mcp#managed-mcp-configuration",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/mcp"
+    },
+    {
+      "url": "https://claude.com/pricing",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://claude.com/pricing"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/quickstart#before-you-begin",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/quickstart"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/quickstart",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/quickstart"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/permissions#permission-rule-syntax",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/zero-data-retention#what-zdr-does-not-cover",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/zero-data-retention"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/data-usage#data-policies",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/data-usage"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/managed-settings",
+      "status": 200,
+      "verdict": "OK",
+      "final": "https://code.claude.com/docs/en/managed-settings"
+    }
+  ]
+}

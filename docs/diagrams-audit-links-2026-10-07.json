@@ -1,0 +1,1610 @@
+{
+  "checkedOn": "2026-10-07",
+  "counts": {
+    "urls": 137,
+    "remoteFiles": 34,
+    "broken": 34,
+    "unknown": 0,
+    "verified": 103
+  },
+  "results": [
+    {
+      "url": "https://claude.com/blog/the-ai-native-sdlc-playbook",
+      "origins": [
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "http": 200,
+      "remote": "OK"
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#1-the-master-loop",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 04-architecture-internals.md",
+        "public SVG"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "1-the-master-loop",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#2-the-tool-arsenal",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 03-configuration-system.md",
+        "Mermaid 04-architecture-internals.md",
+        "public SVG"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "2-the-tool-arsenal",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#3-context-management-internals",
+      "origins": [
+        "Mermaid 02-context-and-sessions.md",
+        "public SVG"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "3-context-management-internals",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#master-loop",
+      "origins": [
+        "fallback architecture/1",
+        "Markdown 04-architecture-internals.md"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "master-loop",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#mcp-architecture",
+      "origins": [
+        "fallback mcp/2",
+        "Markdown 05-mcp-ecosystem.md"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "mcp-architecture",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#sub-agents",
+      "origins": [
+        "fallback architecture/4",
+        "Markdown 04-architecture-internals.md"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "sub-agents",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#system-prompt",
+      "origins": [
+        "fallback architecture/3",
+        "Markdown 04-architecture-internals.md"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "system-prompt",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/architecture.md#tools",
+      "origins": [
+        "fallback architecture/2",
+        "Markdown 04-architecture-internals.md"
+      ],
+      "path": "guide/core/architecture.md",
+      "fragment": "tools",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#2-the-context-budget",
+      "origins": [
+        "Mermaid 11-context-engineering.md",
+        "Markdown 11-context-engineering.md",
+        "public SVG"
+      ],
+      "path": "guide/core/context-engineering.md",
+      "fragment": "2-the-context-budget",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#3-configuration-hierarchy",
+      "origins": [
+        "Mermaid 11-context-engineering.md",
+        "Markdown 11-context-engineering.md",
+        "public SVG"
+      ],
+      "path": "guide/core/context-engineering.md",
+      "fragment": "3-configuration-hierarchy",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/context-engineering.md#4-modular-architecture",
+      "origins": [
+        "Mermaid 11-context-engineering.md",
+        "Markdown 11-context-engineering.md",
+        "public SVG"
+      ],
+      "path": "guide/core/context-engineering.md",
+      "fragment": "4-modular-architecture",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#21-claudemd-three-levels",
+      "origins": [
+        "Mermaid 02-context-and-sessions.md",
+        "public SVG"
+      ],
+      "path": "guide/core/memory-systems.md",
+      "fragment": "21-claudemd-three-levels",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#22-auto-memory-v21594",
+      "origins": [
+        "Mermaid 02-context-and-sessions.md",
+        "public SVG"
+      ],
+      "path": "guide/core/memory-systems.md",
+      "fragment": "22-auto-memory-v21594",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/visual-reference.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/core/visual-reference.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/01-foundations.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md#9-step-workflow-pipeline",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/01-foundations.md",
+      "fragment": "9-step-workflow-pipeline",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md#chatbot-to-context-system-4-layer-model",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/01-foundations.md",
+      "fragment": "chatbot-to-context-system-4-layer-model",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md#permission-modes-comparison",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/01-foundations.md",
+      "fragment": "permission-modes-comparison",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/01-foundations.md#quick-decision-tree",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/01-foundations.md",
+      "fragment": "quick-decision-tree",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/02-context-and-sessions.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/02-context-and-sessions.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/02-context-and-sessions.md#context-management-zones",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/02-context-and-sessions.md",
+      "fragment": "context-management-zones",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/03-configuration-system.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/03-configuration-system.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/04-architecture-internals.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md#sub-agent-context-isolation",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/04-architecture-internals.md",
+      "fragment": "sub-agent-context-isolation",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md#system-prompt-assembly",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/04-architecture-internals.md",
+      "fragment": "system-prompt-assembly",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md#the-master-loop",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/04-architecture-internals.md",
+      "fragment": "the-master-loop",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md#tool-categories",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/04-architecture-internals.md",
+      "fragment": "tool-categories",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/05-mcp-ecosystem.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-architecture-client-server",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/05-mcp-ecosystem.md",
+      "fragment": "mcp-architecture-client-server",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-config-hierarchy",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/05-mcp-ecosystem.md",
+      "fragment": "mcp-config-hierarchy",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-rug-pull-attack-chain",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/05-mcp-ecosystem.md",
+      "fragment": "mcp-rug-pull-attack-chain",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/05-mcp-ecosystem.md#mcp-server-ecosystem-map",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/05-mcp-ecosystem.md",
+      "fragment": "mcp-server-ecosystem-map",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/06-development-workflows.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/07-multi-agent-patterns.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md#agent-teams-topology-3-patterns",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/07-multi-agent-patterns.md",
+      "fragment": "agent-teams-topology-3-patterns",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md#cross-session-messaging-discovery--delivery",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/07-multi-agent-patterns.md",
+      "fragment": "cross-session-messaging-discovery--delivery",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md#git-worktree-multi-instance-pattern",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/07-multi-agent-patterns.md",
+      "fragment": "git-worktree-multi-instance-pattern",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/07-multi-agent-patterns.md#multi-instance-decision-matrix",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/07-multi-agent-patterns.md",
+      "fragment": "multi-instance-decision-matrix",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/08-security-and-production.md",
+      "origins": [
+        "Markdown 12-enterprise-governance.md",
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/08-security-and-production.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/08-security-and-production.md#sandbox-decision-tree",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/08-security-and-production.md",
+      "fragment": "sandbox-decision-tree",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/08-security-and-production.md#security-3-layer-defense",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/08-security-and-production.md",
+      "fragment": "security-3-layer-defense",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/08-security-and-production.md#the-verification-paradox",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/08-security-and-production.md",
+      "fragment": "the-verification-paradox",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/09-cost-and-optimization.md",
+      "origins": [
+        "Markdown 10-adoption-and-learning.md",
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/09-cost-and-optimization.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/09-cost-and-optimization.md#cost-optimization-decision-tree",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/09-cost-and-optimization.md",
+      "fragment": "cost-optimization-decision-tree",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/09-cost-and-optimization.md#model-selection-decision-flow",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/09-cost-and-optimization.md",
+      "fragment": "model-selection-decision-flow",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/09-cost-and-optimization.md#token-reduction-strategies-pipeline",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/09-cost-and-optimization.md",
+      "fragment": "token-reduction-strategies-pipeline",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/10-adoption-and-learning.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/10-adoption-and-learning.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/10-adoption-and-learning.md#onboarding-adaptive-learning-paths",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/10-adoption-and-learning.md",
+      "fragment": "onboarding-adaptive-learning-paths",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/11-context-engineering.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md#context-budget--adherence-degradation",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/11-context-engineering.md",
+      "fragment": "context-budget--adherence-degradation",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md#monolithic-vs-modular-architecture",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/11-context-engineering.md",
+      "fragment": "monolithic-vs-modular-architecture",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md#rule-placement-decision-tree",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/11-context-engineering.md",
+      "fragment": "rule-placement-decision-tree",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/11-context-engineering.md#the-3-layer-context-system",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/11-context-engineering.md",
+      "fragment": "the-3-layer-context-system",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/12-enterprise-governance.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md#data-classification--claude-code-access-rules",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/12-enterprise-governance.md",
+      "fragment": "data-classification--claude-code-access-rules",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md#governance-risk-tiers",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/12-enterprise-governance.md",
+      "fragment": "governance-risk-tiers",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md#mcp-governance-workflow",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/diagrams/12-enterprise-governance.md",
+      "fragment": "mcp-governance-workflow",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/README.md",
+      "origins": [
+        "Markdown 10-adoption-and-learning.md"
+      ],
+      "path": "guide/diagrams/README.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ecosystem/mcp-servers-ecosystem.md",
+      "origins": [
+        "fallback mcp/1",
+        "Markdown 05-mcp-ecosystem.md"
+      ],
+      "path": "guide/ecosystem/mcp-servers-ecosystem.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ops/ai-unit-economics.md#2-building-a-cost-per-accepted-task",
+      "origins": [
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "path": "guide/ops/ai-unit-economics.md",
+      "fragment": "2-building-a-cost-per-accepted-task",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/README.md",
+      "origins": [
+        "Markdown README.md"
+      ],
+      "path": "guide/README.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/adoption-approaches.md",
+      "origins": [
+        "fallback adoption/1",
+        "Mermaid 10-adoption-and-learning.md",
+        "Markdown 10-adoption-and-learning.md",
+        "public SVG"
+      ],
+      "path": "guide/roles/adoption-approaches.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/learning-with-ai.md",
+      "origins": [
+        "fallback adoption/2",
+        "Mermaid 10-adoption-and-learning.md",
+        "Markdown 10-adoption-and-learning.md",
+        "public SVG"
+      ],
+      "path": "guide/roles/learning-with-ai.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md",
+      "origins": [
+        "Markdown 12-enterprise-governance.md"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#1-local-vs-shared-the-governance-split",
+      "origins": [
+        "Mermaid 12-enterprise-governance.md",
+        "public SVG"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "fragment": "1-local-vs-shared-the-governance-split",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#12-what-you-can-and-cant-control",
+      "origins": [
+        "Mermaid 12-enterprise-governance.md",
+        "public SVG"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "fragment": "12-what-you-can-and-cant-control",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#2-ai-usage-charter",
+      "origins": [
+        "Mermaid 12-enterprise-governance.md",
+        "Markdown 12-enterprise-governance.md",
+        "public SVG"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "fragment": "2-ai-usage-charter",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#3-mcp-governance-workflow",
+      "origins": [
+        "Markdown 12-enterprise-governance.md"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "fragment": "3-mcp-governance-workflow",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/enterprise-governance.md#4-guardrail-tiers",
+      "origins": [
+        "Mermaid 12-enterprise-governance.md",
+        "public SVG"
+      ],
+      "path": "guide/security/enterprise-governance.md",
+      "fragment": "4-guardrail-tiers",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/production-safety.md",
+      "origins": [
+        "fallback security/3",
+        "Mermaid 08-security-and-production.md",
+        "Markdown 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/production-safety.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/sandbox-native.md",
+      "origins": [
+        "fallback security/2",
+        "Mermaid 08-security-and-production.md",
+        "Markdown 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/sandbox-native.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/security-hardening.md",
+      "origins": [
+        "fallback security/1",
+        "Mermaid 08-security-and-production.md",
+        "Markdown 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/security-hardening.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/security-hardening.md#mcp-threats",
+      "origins": [
+        "fallback mcp/3",
+        "Markdown 05-mcp-ecosystem.md"
+      ],
+      "path": "guide/security/security-hardening.md",
+      "fragment": "mcp-threats",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/security-hardening.md#part-1-prevention-before-you-start",
+      "origins": [
+        "Mermaid 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/security-hardening.md",
+      "fragment": "part-1-prevention-before-you-start",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/security-hardening.md#part-2-detection-while-you-work",
+      "origins": [
+        "Mermaid 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/security-hardening.md",
+      "fragment": "part-2-detection-while-you-work",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/security/security-hardening.md#part-3-response-when-things-go-wrong",
+      "origins": [
+        "Mermaid 08-security-and-production.md",
+        "public SVG"
+      ],
+      "path": "guide/security/security-hardening.md",
+      "fragment": "part-3-response-when-things-go-wrong",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#11-installation",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "11-installation",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#12-first-workflow",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 04-architecture-internals.md",
+        "Mermaid 10-adoption-and-learning.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "12-first-workflow",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#14-permission-modes",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "14-permission-modes",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#17-trust-calibration-when-and-how-much-to-verify",
+      "origins": [
+        "Mermaid 10-adoption-and-learning.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "17-trust-calibration-when-and-how-much-to-verify",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#22-context-management",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 02-context-and-sessions.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "22-context-management",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#23-plan-mode",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "23-plan-mode",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#25-model-selection--thinking-guide",
+      "origins": [
+        "Mermaid 09-cost-and-optimization.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "25-model-selection--thinking-guide",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#31-memory-files-claudemd",
+      "origins": [
+        "Mermaid 01-foundations.md",
+        "Mermaid 02-context-and-sessions.md",
+        "Mermaid 03-configuration-system.md",
+        "Mermaid 09-cost-and-optimization.md",
+        "Mermaid 10-adoption-and-learning.md",
+        "Mermaid 11-context-engineering.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "31-memory-files-claudemd",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#33-settings--permissions",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "33-settings--permissions",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#34-precedence-rules",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "34-precedence-rules",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#41-what-are-agents",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "Mermaid 04-architecture-internals.md",
+        "Mermaid 10-adoption-and-learning.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "41-what-are-agents",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#51-understanding-skills",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "Mermaid 11-context-engineering.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "51-understanding-skills",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#62-creating-custom-commands",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "62-creating-custom-commands",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#71-the-event-system",
+      "origins": [
+        "Mermaid 03-configuration-system.md",
+        "Markdown 03-configuration-system.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "71-the-event-system",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#72-creating-hooks",
+      "origins": [
+        "Mermaid 03-configuration-system.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "72-creating-hooks",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#81-what-is-mcp",
+      "origins": [
+        "Mermaid 05-mcp-ecosystem.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "81-what-is-mcp",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#82-available-servers",
+      "origins": [
+        "Mermaid 05-mcp-ecosystem.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "82-available-servers",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#83-configuration",
+      "origins": [
+        "Mermaid 05-mcp-ecosystem.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "83-configuration",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#912-git-best-practices--workflows",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "912-git-best-practices--workflows",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#913-cost-optimization-strategies",
+      "origins": [
+        "Mermaid 09-cost-and-optimization.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "913-cost-optimization-strategies",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#917-scaling-patterns-multi-instance-workflows",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "917-scaling-patterns-multi-instance-workflows",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#93-cicd-integration",
+      "origins": [
+        "Mermaid 08-security-and-production.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "93-cicd-integration",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cicd-integration",
+      "origins": [
+        "fallback security/4",
+        "Markdown 08-security-and-production.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "cicd-integration",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#common-pitfalls--best-practices",
+      "origins": [
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "common-pitfalls--best-practices",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#configuration",
+      "origins": [
+        "fallback configuration/1",
+        "Markdown 03-configuration-system.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "configuration",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#context-best-practices",
+      "origins": [
+        "fallback context-sessions/4",
+        "Markdown 02-context-and-sessions.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "context-best-practices",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#context-management",
+      "origins": [
+        "fallback context-sessions/1",
+        "Markdown 02-context-and-sessions.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "context-management",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cost-optimization",
+      "origins": [
+        "fallback cost/2",
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "cost-optimization",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#extensibility",
+      "origins": [
+        "fallback configuration/2",
+        "Markdown 03-configuration-system.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "extensibility",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#getting-started",
+      "origins": [
+        "fallback foundations/2",
+        "Markdown 01-foundations.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "getting-started",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#git-worktrees",
+      "origins": [
+        "fallback multi-agent/2",
+        "Markdown 07-multi-agent-patterns.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "git-worktrees",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#hooks",
+      "origins": [
+        "fallback configuration/4"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "hooks",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#horizontal-scaling",
+      "origins": [
+        "fallback multi-agent/4",
+        "Markdown 07-multi-agent-patterns.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "horizontal-scaling",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#how-claude-code-works",
+      "origins": [
+        "fallback foundations/1",
+        "Markdown 01-foundations.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "how-claude-code-works",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#mcp-configuration",
+      "origins": [
+        "fallback mcp/4",
+        "Markdown 05-mcp-ecosystem.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "mcp-configuration",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#memory-system",
+      "origins": [
+        "fallback context-sessions/2",
+        "Markdown 02-context-and-sessions.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "memory-system",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#model-selection",
+      "origins": [
+        "fallback cost/1",
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "model-selection",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#multi-instance-patterns",
+      "origins": [
+        "fallback multi-agent/5",
+        "Markdown 07-multi-agent-patterns.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "multi-instance-patterns",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#permission-system",
+      "origins": [
+        "fallback foundations/4",
+        "Markdown 01-foundations.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "permission-system",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#quick-start",
+      "origins": [
+        "fallback foundations/3",
+        "Markdown 01-foundations.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "quick-start",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#rev-the-engine",
+      "origins": [
+        "Mermaid 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "rev-the-engine",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#session-management",
+      "origins": [
+        "fallback context-sessions/3",
+        "Markdown 02-context-and-sessions.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "session-management",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#sub-agents",
+      "origins": [
+        "fallback configuration/3",
+        "Markdown 03-configuration-system.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "sub-agents",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#subscription-tiers",
+      "origins": [
+        "fallback cost/3",
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "subscription-tiers",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#token-optimization",
+      "origins": [
+        "fallback cost/4",
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "token-optimization",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#trust-verification",
+      "origins": [
+        "fallback adoption/3",
+        "Markdown 10-adoption-and-learning.md"
+      ],
+      "path": "guide/ultimate-guide.md",
+      "fragment": "trust-verification",
+      "local": "MISSING_FRAGMENT",
+      "remote": "MISSING_FRAGMENT",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agent-teams.md",
+      "origins": [
+        "fallback multi-agent/1",
+        "Mermaid 07-multi-agent-patterns.md",
+        "Markdown 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/agent-teams.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/cross-session-messaging.md",
+      "origins": [
+        "Markdown 07-multi-agent-patterns.md"
+      ],
+      "path": "guide/workflows/cross-session-messaging.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/cross-session-messaging.md#2-discovery-listagents",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/cross-session-messaging.md",
+      "fragment": "2-discovery-listagents",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/cross-session-messaging.md#4-same-machine-vs-cross-machine-delivery",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/cross-session-messaging.md",
+      "fragment": "4-same-machine-vs-cross-machine-delivery",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/cross-session-messaging.md#5-the-sessions-inbox-socket",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/cross-session-messaging.md",
+      "fragment": "5-the-sessions-inbox-socket",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/cross-session-messaging.md#6-security-model",
+      "origins": [
+        "Mermaid 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/cross-session-messaging.md",
+      "fragment": "6-security-model",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/dual-instance-planning.md",
+      "origins": [
+        "fallback multi-agent/3",
+        "Mermaid 07-multi-agent-patterns.md",
+        "Markdown 07-multi-agent-patterns.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/dual-instance-planning.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/iterative-refinement.md",
+      "origins": [
+        "fallback workflows/4",
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/iterative-refinement.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/plan-driven.md",
+      "origins": [
+        "fallback workflows/3",
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/plan-driven.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/spec-first.md",
+      "origins": [
+        "fallback workflows/2",
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/spec-first.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/spec-first.md#with-intentmd-upstream-problem-statement",
+      "origins": [
+        "Mermaid 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/spec-first.md",
+      "fragment": "with-intentmd-upstream-problem-statement",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/tdd-with-claude.md",
+      "origins": [
+        "fallback workflows/1",
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "path": "guide/workflows/tdd-with-claude.md",
+      "local": "OK",
+      "remote": "OK",
+      "http": 200
+    },
+    {
+      "url": "https://www.anthropic.com/pricing",
+      "origins": [
+        "Markdown 09-cost-and-optimization.md"
+      ],
+      "http": 200,
+      "remote": "OK"
+    },
+    {
+      "url": "https://www.anthropic.com/research/AI-fluency-index",
+      "origins": [
+        "Mermaid 06-development-workflows.md",
+        "Markdown 06-development-workflows.md",
+        "public SVG"
+      ],
+      "http": 200,
+      "remote": "OK"
+    }
+  ]
+}

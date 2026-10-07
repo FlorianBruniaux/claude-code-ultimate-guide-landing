@@ -1559,7 +1559,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-source-transparency",
     "title": "Source transparency",
-    "keywords": "source transparency claude code architecture agent loop this document combines three tiers of sources: tier description confidence example ------ ------------- ------------ --------- tier 1 official anthrop",
+    "keywords": "source transparency claude code architecture agent loop this document combines three tiers of sources: tier description evidence limit example ------ ------------- ------------ --------- tier 1 official ant",
     "category": "Core Guides",
     "url": "/guide/architecture/#source-transparency",
     "source": "guide"
@@ -1575,7 +1575,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-tl-dr-5-bullet-summary",
     "title": "TL;DR - 5 bullet summary",
-    "keywords": "tl dr 5 bullet summary claude code architecture agent loop 1. simple loop : claude code runs a loop, with no dags, no classifiers, no rag. the model decides everything. 2. built-in and extensible tools : claud",
+    "keywords": "tl dr 5 bullet summary claude code architecture agent loop 1. agentic loop : the model proposes tools or a response; the harness applies permission checks before executing tools. auto mode can use a classifier",
     "category": "Core Guides",
     "url": "/guide/architecture/#tl-dr-5-bullet-summary",
     "source": "guide"
@@ -1591,7 +1591,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-1-the-master-loop",
     "title": "1. The master loop",
-    "keywords": "1 the master loop claude code architecture agent loop confidence : 100% (tier 1 - official) source : anthropic engineering blog claude code is remarkably simple: ``` ┌───────────────────────────────────── what this means why this design agentic loop api vocabulary controlling loop depth with max turns native capabilities audit",
+    "keywords": "1 the master loop claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. source : anthropic engineering blog the diagram shows the central loo what this means why this design agentic loop api vocabulary controlling loop depth with max turns native capabilities audit",
     "category": "Core Guides",
     "url": "/guide/architecture/#1-the-master-loop",
     "source": "guide"
@@ -1599,7 +1599,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-2-the-tool-arsenal",
     "title": "2. The tool arsenal",
-    "keywords": "2 the tool arsenal claude code architecture agent loop confidence : 100% (tier 1 - official) source : code.claude.com/docs the tools below are examples, not an exhaustive inventory. see the current tools r the bash universal adapter tool selection logic extended tool ecosystem search tool selection matrix",
+    "keywords": "2 the tool arsenal claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. source : code.claude.com/docs the tools below are examples, not an ex the bash universal adapter tool selection logic extended tool ecosystem search tool selection matrix",
     "category": "Core Guides",
     "url": "/guide/architecture/#2-the-tool-arsenal",
     "source": "guide"
@@ -1607,7 +1607,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-3-context-management-internals",
     "title": "3. Context management internals",
-    "keywords": "3 context management internals claude code architecture agent loop confidence : 80% (tier 2 - partially official) sources : - platform.claude.com/docs (tier 1) - observed behavior (tier 2) claude code's context-window context budget breakdown system prompt contents auto compaction context preservation strategies session degradation limits failure triggered context drift",
+    "keywords": "3 context management internals claude code architecture agent loop source category : tier 2, partially official; limited to the cited observation and method. sources : - platform.claude.com/docs (tier 1) - observed be context budget breakdown system prompt contents auto compaction context preservation strategies session degradation limits failure triggered context drift",
     "category": "Core Guides",
     "url": "/guide/architecture/#3-context-management-internals",
     "source": "guide"
@@ -1615,7 +1615,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-4-sub-agent-architecture",
     "title": "4. Sub-agent architecture",
-    "keywords": "4 sub agent architecture claude code architecture agent loop confidence : 100% (tier 1 - documented behavior) source : claude code sub-agent documentation claude code's agent tool spawns sub-agents for parallel isolation model nesting and limits sub agent types when to use sub agents hub and spoke orchestration",
+    "keywords": "4 sub agent architecture claude code architecture agent loop source category : tier 1, documented behavior; bounded by the cited version/date and scope. source : claude code sub-agent documentation claude code's isolation model nesting and limits sub agent types when to use sub agents hub and spoke orchestration",
     "category": "Core Guides",
     "url": "/guide/architecture/#4-sub-agent-architecture",
     "source": "guide"
@@ -1623,7 +1623,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-5-permission-security-model",
     "title": "5. Permission & security model",
-    "keywords": "5 permission security model claude code architecture agent loop confidence : 100% (tier 1 - official) sources : - code.claude.com/docs/en/hooks - code.claude.com/docs/en/sandboxing claude code has a layered securit dangerous pattern detection native sandbox v2 1 0 hooks system",
+    "keywords": "5 permission security model claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. sources : - code.claude.com/docs/en/hooks - code.claude.com/docs/en/s dangerous pattern detection native sandbox v2 1 0 hooks system",
     "category": "Core Guides",
     "url": "/guide/architecture/#5-permission-security-model",
     "source": "guide"
@@ -1631,7 +1631,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-6-mcp-integration",
     "title": "6. MCP integration",
-    "keywords": "6 mcp integration claude code architecture agent loop confidence : 100% (tier 1 - official) source : code.claude.com/docs/en/mcp mcp (model context protocol) servers extend claude code with additional too mcp architecture overview how mcp works technical details key mcp facts what mcp cannot do mcp extensions apps sep 1865 what are mcp apps technical architecture security model sdk modelcontextprotocol ext apps platform support relevance for claude code users example implementations relationship",
+    "keywords": "6 mcp integration claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. source : code.claude.com/docs/en/mcp mcp (model context protocol) ser mcp architecture overview how mcp works technical details key mcp facts what mcp cannot do mcp extensions apps sep 1865 what are mcp apps technical architecture security model sdk modelcontextprotocol ext apps platform support relevance for claude code users example implementations relationship",
     "category": "Core Guides",
     "url": "/guide/architecture/#6-mcp-integration",
     "source": "guide"
@@ -1639,7 +1639,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-7-advanced-tool-use-patterns-api",
     "title": "7. Advanced tool use patterns (API)",
-    "keywords": "7 advanced tool use patterns api claude code architecture agent loop confidence : 90% (tier 1 - official anthropic engineering) source : anthropic engineering: advanced tool use programmatic tool calling docs four api-l programmatic tool calling ptc dynamic filtering for web search fetch tool use examples claude code relevance",
+    "keywords": "7 advanced tool use patterns api claude code architecture agent loop source category : tier 1, official anthropic engineering; bounded by the cited version/date and scope. source : anthropic engineering: advanced tool u programmatic tool calling ptc dynamic filtering for web search fetch tool use examples claude code relevance",
     "category": "Core Guides",
     "url": "/guide/architecture/#7-advanced-tool-use-patterns-api",
     "source": "guide"
@@ -1647,7 +1647,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-8-the-edit-tool-how-it-actually-works",
     "title": "8. The edit tool: How it actually works",
-    "keywords": "8 the edit tool how it actually works claude code architecture agent loop confidence : 90% (tier 2 - verified through behavior) sources : - observed behavior - github.com/cline/cline/issues/2909 (similar implementation) the edit algorithm fuzzy matching details edit validation when edit fails",
+    "keywords": "8 the edit tool how it actually works claude code architecture agent loop source category : tier 2, verified through behavior; limited to the cited observation and method. sources : - observed behavior - github.com/cline/cli edit algorithm fuzzy matching details edit validation when edit fails",
     "category": "Core Guides",
     "url": "/guide/architecture/#8-the-edit-tool-how-it-actually-works",
     "source": "guide"
@@ -1655,7 +1655,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-9-session-persistence",
     "title": "9. Session persistence",
-    "keywords": "9 session persistence claude code architecture agent loop confidence : 100% (tier 1 - official) source : code.claude.com/docs sessions can be resumed across terminal sessions. resume mechanisms command behavi resume mechanisms what gets persisted storage format",
+    "keywords": "9 session persistence claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. source : code.claude.com/docs sessions can be resumed across terminal resume mechanisms what gets persisted storage format",
     "category": "Core Guides",
     "url": "/guide/architecture/#9-session-persistence",
     "source": "guide"
@@ -1663,7 +1663,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-10-philosophy-less-scaffolding-more-model",
     "title": "10. Philosophy: Less scaffolding, more model",
-    "keywords": "10 philosophy less scaffolding more model claude code architecture agent loop confidence : 100% (tier 1 - official) source : daniela amodei (anthropic co-founder & president) - public statements the core philosophy behind claude what this means in practice why it works the trade offs community validation",
+    "keywords": "10 philosophy less scaffolding more model claude code architecture agent loop source category : tier 1, official; bounded by the cited version/date and scope. source : daniela amodei (anthropic co-founder & president) - public s what this means in practice why it works the trade offs community validation",
     "category": "Core Guides",
     "url": "/guide/architecture/#10-philosophy-less-scaffolding-more-model",
     "source": "guide"
@@ -1671,7 +1671,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-architecture-11-claude-code-vs-alternatives",
     "title": "11. Claude Code vs alternatives",
-    "keywords": "11 claude code vs alternatives claude code architecture agent loop confidence : 80% (tier 2 - based on march 2026 fact-checked data) sources : official documentation, perplexity research march 2026, vendor changelogs when to choose claude code",
+    "keywords": "11 claude code vs alternatives claude code architecture agent loop source category : tier 2, based on march 2026 fact-checked data; limited to the cited observation and method. sources : official documentation, perple when to choose claude code",
     "category": "Core Guides",
     "url": "/guide/architecture/#11-claude-code-vs-alternatives",
     "source": "guide"
@@ -2063,7 +2063,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-quick-jump",
     "title": "Quick jump",
-    "keywords": "quick jump claude code release history - v2.1.289: fixed managed-machine permission rules bypassed by user-installed mods, bash deny/ask rules under sandbox auto-allow, and read deny rules",
+    "keywords": "quick jump claude code release history - v2.1.292: , agent tool parameter, unc-path permission fix and stdio mcp protocol 2026-07-28 by default - v2.1.291: cloud-session permission-answer r",
     "category": "Core Guides",
     "url": "/releases/",
     "source": "guide"
@@ -2071,7 +2071,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-claude-code-releases-2-1-x-series-january-august-2026",
     "title": "2.1.x series (January-August 2026)",
-    "keywords": "2 1 x series january august 2026 claude code release history v2.1.289 (2026-10-03) - fixed managed-machine permission rules bypassed by user-installed mods, bash deny/ask rules under sandbox auto-allow, and read v2 1 289 2026 10 03 v2 1 288 2026 10 02 v2 1 287 2026 10 01 v2 1 286 2026 09 30 v2 1 285 2026 09 29 v2 1 284 2026 09 28 v2 1 283 2026 09 25 v2 1 282 2026 09 24 v2 1 281 2026 09 23 v2 1 280 2026 09 22 v2 1 278 2026 09 19 v2 1 277 2026 09 18 v2 1 276 2026 09 18 v2 1 275 2026 09 17 v2 1 274",
+    "keywords": "2 1 x series january august 2026 claude code release history v2.1.292 (2026-10-06) - added : adds the marketplace if needed, under the same policy checks as , then installs from it. the agent tool takes an param v2 1 292 2026 10 06 v2 1 291 2026 10 06 v2 1 290 2026 10 05 v2 1 289 2026 10 03 v2 1 288 2026 10 02 v2 1 287 2026 10 01 v2 1 286 2026 09 30 v2 1 285 2026 09 29 v2 1 284 2026 09 28 v2 1 283 2026 09 25 v2 1 282 2026 09 24 v2 1 281 2026 09 23 v2 1 280 2026 09 22 v2 1 278 2026 09 19 v2 1 277",
     "category": "Core Guides",
     "url": "/releases/",
     "source": "guide"
@@ -2255,7 +2255,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-context-engineering-2-the-context-budget",
     "title": "2. The context budget",
-    "keywords": "2 the context budget context engineering token math a concrete baseline for a mid-size project: source typical token range -------- --------------------- global claude.md 1,000 – 3,000 tokens token math the 150 instruction ceiling adherence degradation by file size signs of context overload mecw maximum effective context window path scoping and budget efficiency",
+    "keywords": "2 the context budget context engineering token math illustrative token ranges for planning, not a measured project baseline: source illustrative token range -------- --------------------- glo token math the 150 instruction ceiling adherence degradation by file size signs of context overload mecw maximum effective context window path scoping and budget efficiency",
     "category": "Core Guides",
     "url": "/guide/context-engineering/#2-the-context-budget",
     "source": "guide"
@@ -2263,7 +2263,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-context-engineering-3-configuration-hierarchy",
     "title": "3. Configuration hierarchy",
-    "keywords": "3 configuration hierarchy context engineering the three-layer stack later layers override earlier ones. a session instruction can override a project rule; a project rule can override a global defa the three layer stack global configuration",
+    "keywords": "3 configuration hierarchy context engineering the three-layer stack this stack organizes instruction context, not enforced settings precedence. conflicting instructions have no guaranteed winner. the three layer stack global configuration",
     "category": "Core Guides",
     "url": "/guide/context-engineering/#3-configuration-hierarchy",
     "source": "guide"
@@ -2317,17 +2317,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-context-engineering-path-scoped-modules",
-    "title": "Path-Scoped Modules",
-    "keywords": "path scoped modules context engineering @src/api/claude-api.md @src/components/claude-components.md @prisma/claude-db.md `` .eslintrc .editorconfig prettier.config.js /add-dir`, or system pr session configuration decision tree where does this rule go import chain and override semantics",
+    "id": "gc-context-engineering-subsystem-rules",
+    "title": "Subsystem Rules",
+    "keywords": "subsystem rules context engineering conditional rules live in .claude/rules/api.md, frontend.md, and database.md. each file declares its matching paths in yaml frontmatter. `` .eslintrc session configuration decision tree where does this rule go import chain and override semantics",
     "category": "Core Guides",
-    "url": "/guide/context-engineering/#path-scoped-modules",
+    "url": "/guide/context-engineering/#subsystem-rules",
     "source": "guide"
   },
   {
     "id": "gc-context-engineering-4-modular-architecture",
     "title": "4. Modular architecture",
-    "keywords": "4 modular architecture context engineering the problem with monolithic config a 600-line claude.md with no structure is the most common failure mode in production contexts. symptoms: 1. rules f the problem with monolithic config path scoping pattern",
+    "keywords": "4 modular architecture context engineering the problem with monolithic config a long, unstructured claude.md can make maintenance and task relevance harder. possible problems: 1. rules from dif the problem with monolithic config path scoping pattern",
     "category": "Core Guides",
     "url": "/guide/context-engineering/#4-modular-architecture",
     "source": "guide"
@@ -2341,11 +2341,11 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   },
   {
-    "id": "gc-context-engineering-subsystem-modules",
-    "title": "Subsystem Modules",
-    "keywords": "subsystem modules context engineering @src/api/claude-api.md @src/components/claude-components.md @src/lib/claude-lib.md @prisma/claude-db.md @tests/claude-tests.md markdown api rules - ro skills vs rules progressive disclosure anti pattern the monolithic claude md",
+    "id": "gc-context-engineering-subsystem-rules",
+    "title": "Subsystem Rules",
+    "keywords": "subsystem rules context engineering conditional subsystem guidance is maintained in .claude/rules/. markdown --- paths: - \"src/api/ / .ts\" --- api rules - validate endpoint input with zo skills vs rules progressive disclosure anti pattern the monolithic claude md",
     "category": "Core Guides",
-    "url": "/guide/context-engineering/#subsystem-modules",
+    "url": "/guide/context-engineering/#subsystem-rules",
     "source": "guide"
   },
   {
@@ -2391,7 +2391,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-context-engineering-8-context-reduction-techniques",
     "title": "8. Context reduction techniques",
-    "keywords": "8 context reduction techniques context engineering path-scoping: the highest-leverage technique path-scoping reduces always-on context by 40-50% with no loss of coverage. it is the single most impactfu path scoping the highest leverage technique negative constraints rule compression deduplication the archive pattern",
+    "keywords": "8 context reduction techniques context engineering path-scoping: the highest-leverage technique path-scoping can reduce irrelevant standing instructions. savings and adherence depend on the project and path scoping the highest leverage technique negative constraints rule compression deduplication the archive pattern",
     "category": "Core Guides",
     "url": "/guide/context-engineering/#8-context-reduction-techniques",
     "source": "guide"
@@ -2839,7 +2839,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-enterprise-governance-1-local-vs-shared-the-governance-split",
     "title": "1. Local vs shared: The governance split",
-    "keywords": "1 local vs shared the governance split enterprise ai governance for claude code the biggest mistake in enterprise ai governance is applying the same rules to everything. local usage and shared usage have fundamentally different ri 1 1 risk matrix 1 2 what you can and can t control 1 3 decision framework when to govern",
+    "keywords": "1 local vs shared the governance split enterprise ai governance for claude code govern according to data access, credentials, actions, and execution environment. a local checkout can contain production credentials or customer data 1 1 risk matrix 1 2 what you can and can t control 1 3 decision framework when to govern",
     "category": "Core Guides",
     "url": "/guide/enterprise-governance/#1-local-vs-shared-the-governance-split",
     "source": "guide"
@@ -2855,7 +2855,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-enterprise-governance-approved-tools",
     "title": "Approved Tools",
-    "keywords": "approved tools enterprise ai governance for claude code tool scope data classification ------ ------- --------------------- claude code (pro/team/enterprise) all dev work up to confidential claude code (per",
+    "keywords": "approved tools enterprise ai governance for claude code tool scope data classification ------ ------- --------------------- organization-approved claude code account and processing route approved dev work a",
     "category": "Core Guides",
     "url": "/guide/enterprise-governance/#approved-tools",
     "source": "guide"
@@ -2863,7 +2863,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-enterprise-governance-data-classification-rules",
     "title": "Data Classification Rules",
-    "keywords": "data classification rules enterprise ai governance for claude code classification examples allowed with claude code? ---------------- ---------- -------------------------- public open source, public docs yes, no restr",
+    "keywords": "data classification rules enterprise ai governance for claude code classification examples allowed with claude code? ---------------- ---------- -------------------------- public open source, public docs yes, subject",
     "category": "Core Guides",
     "url": "/guide/enterprise-governance/#data-classification-rules",
     "source": "guide"
@@ -2919,7 +2919,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-enterprise-governance-4-guardrail-tiers",
     "title": "4. Guardrail tiers",
-    "keywords": "4 guardrail tiers enterprise ai governance for claude code pre-configured guardrail tiers for four common scenarios. copy the relevant tier into your project's and . tier 1: starter when : small team (<5), int tier 1 starter",
+    "keywords": "4 guardrail tiers enterprise ai governance for claude code pre-configured guardrail tiers for four common scenarios. adapt the relevant tier for your project's and . these examples require the referenced hook tier 1 starter",
     "category": "Core Guides",
     "url": "/guide/enterprise-governance/#4-guardrail-tiers",
     "source": "guide"
@@ -5191,7 +5191,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-local-vs-cloud-inference-decision-diagram",
     "title": "Decision diagram",
-    "keywords": "decision diagram local vs cloud llm hardware and inference economics <div class=\"mermaid-diagram\" <div class=\"mermaid-light\" <svg class=\"diagram-svg\" id=\"local-vs-cloud-inference-1-light\" width=\"100%\" xmlns=\"http://www.",
+    "keywords": "decision diagram local vs cloud llm hardware and inference economics ```mermaid flowchart td a([need to run a large llm]) -- b{data must stay on hardware you own?} b -- yes c{need over 70b or max quality?} b -- no d{usa",
     "category": "Core Guides",
     "url": "/guide/local-vs-cloud-inference/#decision-diagram",
     "source": "guide"
@@ -7487,7 +7487,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-01-quick-start-1-4-permission-modes",
     "title": "1.4 Permission modes",
-    "keywords": "1 4 permission modes claude code quick start install first task key mistakes to avoid claude code has five permission modes that control how much autonomy claude has: default mode claude asks permission before: - editing files - running default mode auto accept mode acceptedits plan mode don t ask mode dontask auto mode all plans v2 1 114 bypass permissions mode bypasspermissions permission fatigue anti pattern",
+    "keywords": "1 4 permission modes claude code quick start install first task key mistakes to avoid claude code has six permission modes: (manual), , , , , and . their behavior depends on permission rules and the session. see the current mode referen default mode auto accept mode acceptedits plan mode don t ask mode dontask auto mode all plans v2 1 114 bypass permissions mode bypasspermissions permission fatigue anti pattern",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/01-quick-start/#1-4-permission-modes",
     "source": "guide"
@@ -7543,7 +7543,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-02-core-workflow-2-2-context-management",
     "title": "2.2 Context management",
-    "keywords": "2 2 context management 2 core workflow 🔴 this is the most important concept in claude code. 📌 context management quick reference the zones : - 🟢 0-50%: work freely - 🟡 50-75%: be select context management quick reference what is context the context budget reading the statusline custom statusline setup context zones context recovery strategies context triage what to keep vs evacuate session vs persistent memory fresh context pattern ralph loop the problem context rot the pattern when to use p",
+    "keywords": "2 2 context management 2 core workflow 🔴 this is the most important concept in claude code. 📌 context management quick reference the zones (author heuristics, not native compaction thresh context management quick reference what is context the context budget reading the statusline custom statusline setup context zones context recovery strategies context triage what to keep vs evacuate session vs persistent memory fresh context pattern ralph loop the problem context rot the pattern when to use p",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/02-core-workflow/#2-2-context-management",
     "source": "guide"
@@ -7783,7 +7783,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-1-memory-files-claude-md",
     "title": "3.1 Memory files (CLAUDE.md)",
-    "keywords": "3 1 memory files claude md 3 memory files claude.md files are persistent instructions read at every session start. three levels: (global) → (project) → (personal; add to ). instructions are co claude md as compounding memory going further capitalizing solutions across prs the compound engineering philosophy every to brainstorm before planning the documentation hierarchy as project memory build for the model 6 months out continuous context update level 1 global claude claude md",
+    "keywords": "3 1 memory files claude md 3 memory files claude.md files supply persistent instructions. applicable root user/project instructions load at startup; nested files load when relevant. common fil claude md as compounding memory going further capitalizing solutions across prs the compound engineering philosophy every to brainstorm before planning the documentation hierarchy as project memory build for the model 6 months out continuous context update level 1 global claude claude md",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-1-memory-files-claude-md",
     "source": "guide"
@@ -7919,7 +7919,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-2-the-claude-folder-structure",
     "title": "3.2 The .claude/ folder structure",
-    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md local instructions full structure what goes where 3 43 0 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
+    "keywords": "3 2 the claude folder structure 3 memory files the folder is your project's claude code directory for memory, settings, and extensions. full structure ``` .claude/ ├── claude.md shared project inst full structure what goes where 3 43 0 version control backup configuration hierarchy git strategy for project configuration version control for global config claude backup strategies multi machine sync security considerations disaster recovery community solutions",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#3-2-the-claude-folder-structure",
     "source": "guide"
@@ -8247,7 +8247,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-05-skills-5-1-understanding-skills",
     "title": "5.1 Understanding skills",
-    "keywords": "5 1 understanding skills 5 skills skills are knowledge packages that agents can inherit. skills vs agents custom commands have merged into skills, but existing files still work. a file skills vs agents detailed comparison decision tree which to use common patterns skills and subagents why skills ownership and reuse governance what makes a good skill",
+    "keywords": "5 1 understanding skills 5 skills skills package reusable instructions and supporting files. claude or the user can invoke them, subject to invocation controls; see skills. skills vs a skills vs agents detailed comparison decision tree which to use common patterns skills and subagents why skills ownership and reuse governance what makes a good skill",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/05-skills/#5-1-understanding-skills",
     "source": "guide"
@@ -8655,7 +8655,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-07-hooks-7-1-the-event-system",
     "title": "7.1 The Event System",
-    "keywords": "7 1 the event system 7 hooks hooks are scripts that run automatically when specific events occur. event types lifecycle (session-level events): event when it fires can block? use event types event flow hook execution model v2 1 0 synchronous default asynchronous optional configuration example decision matrix performance impact limitations of async hooks asyncrewake when async was introduced shell scripts vs ai agents when to use what",
+    "keywords": "7 1 the event system 7 hooks hooks run configured handlers for supported lifecycle events. handler types include , , , , and ; each event supports a subset. see the hook reference event types event flow hook execution model v2 1 0 synchronous default asynchronous optional configuration example decision matrix performance impact limitations of async hooks asyncrewake when async was introduced shell scripts vs ai agents when to use what",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/07-hooks/#7-1-the-event-system",
     "source": "guide"

@@ -4,6 +4,9 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Fix the diagram guide tooltip's hover contrast: classify the link as a button so shared link styles cannot override its text color, use theme-specific button text, and show the same contrast with a visible keyboard-focus outline. Keep the tooltip open during keyboard focus and prevent native navigation for SVG xlink anchors. Browser checks cover the real built page, hover and focus in light and dark themes.
+- Refresh all 49 diagrams from the corrected guide: derive each guide destination from its Source link, complete tooltips and source navigation across all 12 themes, calculate counts and FAQ content from the generated entries, and remove unsupported zero-JavaScript and CLS claims. Add Markdown-aware fragment checks and browser contrast checks to CI. Archive the initial audit findings and record the corrections and validation in the consolidated report.
+
 - **Mistral Large 4 (October 7, 2026)**: publish the guide's reviewed October 6 launch dossier at `/guide/mistral-large-4/`, preserving dated prices, evaluator attribution, regional-inference constraints, and unresolved context and weight-release details. Add an ecosystem entry, announcement, navigation, search and RSS links; include the standard-tier sale rates in the FinOps calculator with their date and conditions. Rebuild guide content and search indexes from the canonical guide sources.
 
 - **Visibility follow-up**: server-render the examples catalog and its 50 detail links, add related guide links, remove a stale hook-event count, track successful MCP copies and source clicks, prepare IndexNow ownership, and add a credential-gated daily GitHub traffic archive. Preserve dated Google/page baselines and the first real GitHub observation; search gains and GA4 receipt remain unverified.

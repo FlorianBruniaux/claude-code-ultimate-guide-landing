@@ -5622,9 +5622,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-fluency-diagram",
     "title": "AI Fluency Diagram",
-    "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency high low fluency paths",
+    "keywords": "ai fluency diagram guide diagrams development workflows md#ai fluency observed collaboration behaviors",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency-high-vs-low-fluency-paths",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#ai-fluency-observed-collaboration-behaviors",
     "source": "guide"
   },
   {

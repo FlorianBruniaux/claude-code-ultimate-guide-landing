@@ -7,10 +7,11 @@
  * CI:  runs after 'git clone' of guide repo, before astro build
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
+import { extractDiagramBlocks } from './lib/diagram-source.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -62,48 +63,6 @@ function parseFrontmatter(content) {
   }
 }
 
-/**
- * Extract diagram blocks from markdown content.
- * Each block = { title, description, mermaidCode, asciiFallback, sourceRef }
- */
-function extractDiagramBlocks(content) {
-  // Strip frontmatter
-  const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
-
-  const blocks = []
-
-  // Split on ### headings
-  // Match: ### Title\n\nDescription paragraph\n\n```mermaid...```\n\n<details>...(optional)</details>\n\n> Source
-  const sectionRegex = /### (.+?)\n\n([\s\S]*?)```mermaid\n([\s\S]*?)```([\s\S]*?)(?=\n---|\n### |$)/g
-
-  let match
-  while ((match = sectionRegex.exec(body)) !== null) {
-    const title = match[1].trim()
-    const description = match[2].trim()
-    const mermaidCode = match[3].trim()
-    const afterMermaid = match[4]
-
-    // Extract ASCII fallback from <details> block
-    let asciiFallback = ''
-    const asciiMatch = afterMermaid.match(/<details>[\s\S]*?```\n([\s\S]*?)```\n[\s\S]*?<\/details>/)
-    if (asciiMatch) {
-      asciiFallback = asciiMatch[1].trim()
-    }
-
-    // Extract source ref from blockquote
-    let sourceRef = ''
-    const sourceMatch = afterMermaid.match(/>\s*\*\*Source\*\*:\s*(.+?)(?:\n|$)/)
-    if (sourceMatch) {
-      // Strip markdown links from source ref
-      sourceRef = sourceMatch[1].trim().replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, '')
-    }
-
-    blocks.push({ title, description, mermaidCode, asciiFallback, sourceRef })
-  }
-
-  return blocks
-}
-
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 console.log('[build-diagrams] Starting diagram data generation...')
@@ -130,7 +89,7 @@ for (const file of files) {
   const filePath = resolve(DIAGRAMS_DIR, file)
   const content = readFileSync(filePath, 'utf-8')
   const { title, description } = parseFrontmatter(content)
-  const blocks = extractDiagramBlocks(content)
+  const blocks = extractDiagramBlocks(content, file)
 
   console.log(`[build-diagrams] ${slug}: ${blocks.length} diagrams found`)
 
@@ -138,7 +97,7 @@ for (const file of files) {
   for (let i = 0; i < blocks.length; i++) {
     const block = blocks[i]
     const diagramId = `${slug}-${i}`
-    const svg = renderSVG(block.mermaidCode, diagramId)
+    const svg = renderSVG(block.mermaidCode, diagramId, 'neutral', 120000)
 
     if (svg) totalSVGs++
     totalDiagrams++
@@ -149,6 +108,7 @@ for (const file of files) {
       svg: svg ?? null,
       asciiFallback: block.asciiFallback,
       sourceRef: block.sourceRef,
+      guideUrl: block.guideUrl,
     })
   }
 
@@ -162,6 +122,10 @@ for (const file of files) {
 }
 
 console.log(`[build-diagrams] Total: ${totalDiagrams} diagrams, ${totalSVGs} SVGs rendered`)
+
+if (totalSVGs !== totalDiagrams) {
+  throw new Error(`Diagram rendering incomplete: ${totalSVGs}/${totalDiagrams} SVGs. Generated data was not replaced.`)
+}
 
 // ─── Generate TypeScript output ───────────────────────────────────────────────
 
@@ -198,6 +162,7 @@ export interface DiagramEntry {
   svg: string | null
   asciiFallback: string
   sourceRef: string
+  guideUrl: string
 }
 
 export interface DiagramTheme {

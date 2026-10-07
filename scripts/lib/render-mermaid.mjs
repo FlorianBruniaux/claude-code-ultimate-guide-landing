@@ -32,9 +32,10 @@ export { mmdcAvailable }
  * @param {string} mermaidCode - Raw mermaid diagram code
  * @param {string} diagramId   - Unique identifier (used for temp files + SVG IDs)
  * @param {string} theme       - Mermaid theme: 'neutral' (light) or 'dark'
+ * @param {number} timeoutMs - Maximum CLI execution time
  * @returns {string|null}      - SVG string or null on failure
  */
-export function renderSVG(mermaidCode, diagramId, theme = 'neutral') {
+export function renderSVG(mermaidCode, diagramId, theme = 'neutral', timeoutMs = 30000) {
   if (!mmdcAvailable) return null
 
   const safeId = diagramId.replace(/[^a-z0-9]/gi, '-')
@@ -46,7 +47,7 @@ export function renderSVG(mermaidCode, diagramId, theme = 'neutral') {
 
     execSync(
       `npx mmdc -i "${tmpIn}" -o "${tmpOut}" -t ${theme} -b transparent`,
-      { stdio: 'pipe', timeout: 30000 }
+      { stdio: 'pipe', timeout: timeoutMs }
     )
 
     if (!existsSync(tmpOut)) return null
