@@ -18,8 +18,59 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.292',
+    version: 'v2.1.296',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added autoCompactWindow in subagent frontmatter and --agents, CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL for workflow agents, an allow_large option on the Read tool and a code key in Claude apps gateway managed.policies[] for Claude Desktop's Code tab",
+      "Fixed Bash permission checks auto-approving commands that assign and use BASH_ARGV0, managed PreToolUse deny hooks with \"continue\": false refusing the call without ending the turn, and Git Bash rm -rf /c/Users/<name> not asking in bypass permissions mode on Windows",
+      "Fixed Edit and NotebookEdit corrupting non-ASCII characters in non-UTF-8 files (such edits are now refused), PowerShell commands over about 1 KB always asking for permission, and headless sessions starting MCP servers switched off for the folder",
+      "Changed the default limit on up-front MCP tool descriptions and server instructions from 2,048 to 4,096 characters, and Sonnet 5.5 cache reads are priced at $0.10 per Mtok in /cost, the status line and --max-budget-usd",
+    ],
+    breaking: [
+      "Edit and NotebookEdit refuse to edit files that are not valid UTF-8 (Windows-1252, Shift-JIS, GBK) instead of replacing their non-ASCII characters. A turn or ! command started while ← moves the session to the background is now stopped instead of finishing out of sight.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.295',
+    date: "Oct 8, 2026",
+    highlights: [
+      "Added onFailure: \"block\" for command and HTTP hooks (a hook that can't start, times out or exits unexpectedly blocks the action), Program Status Protocol (OSC 7501) terminal status and CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS",
+      "Added per-upstream models lists, timeouts.upstream_ttfb_ms on cloud upstreams and upstream_request_id audit fields to the Claude apps gateway, plus $.ui.notify and richer Button children for mods",
+      "Fixed every request failing on a [1m] model when a gateway or cloud provider refuses the context-1m beta, --tools and --restricted not covering built-in tools that register after launch, Claude in Chrome deny rules written with port 80, and a terminal freeze on responses of tens of thousands of lines",
+      "Changed subagents to preload at most 32 skills from the skills field, claude.ai connectors to negotiate MCP protocol 2026-07-28 by default, and MCP tool descriptions loaded through tool search to be cut at 16,384 characters instead of 2,048",
+    ],
+    breaking: [
+      "claude.ai connectors negotiate MCP protocol version 2026-07-28 by default on installs that fetch no flags; MCP_PROTOCOL_NEGOTIATION=legacy opts out. WebSocket (ws) MCP messages over 16 MiB close the connection.",
+      "Subagents preload at most 32 skills from the skills field, each once; a subagent with the Skill tool can still invoke the rest. Ctrl+C at the idle prompt of an attached background session leaves a pending /loop wakeup alone; press Esc to stop it.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.294',
+    date: "Oct 8, 2026",
+    highlights: [
+      "Fixed prompt and agent hooks written as instructions (such as \"Block commands that...\") allowing what they should block, and improved how instruction-style Stop and SubagentStop prompt hooks are judged",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.293',
+    date: "Oct 7, 2026",
+    highlights: [
+      "Added Claude Haiku 5.5 (claude-haiku-5-5), now the default Haiku model on the Anthropic API, with a 1M context window and $0.10/$0.50 per Mtok ($0.50/$2.50 for prompts over 100K)",
+      "Added agentType to the subagentStatusLine payload and isDeferred to $.tool.register for mods",
+      "Fixed Claude treating its own last actions before a compaction as done and redoing finished work, an HTTP MCP memory leak, path-scoped rules and nested CLAUDE.md files not loading when Claude reads a file through cat, head, tail, sed -n or grep, and messages lost when ← moved a session to the background",
+      "Reverted the 2.1.281 auto mode denial message change and the 2.1.290 fix for cloud sessions staying asleep after a container restart lost a pending wakeup",
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Haiku 5.5',
+  },
+  {
+    version: 'v2.1.292',
+    date: "Oct 6, 2026",
     highlights: [
       "Added claude plugin install --marketplace <source>, an effort parameter on the Agent tool for sub-agents, and CLAUDE_CODE_OVERLOADED_RETRY_BASE_DELAY_MS for the 529 retry backoff",
       "Fixed PreToolUse hook approvals and auto mode skipping the permission prompt for reads from network (UNC) paths, sandboxed commands reading /ultrareview staged uploads, and notebook or PDF reads through a link swapped mid-read",
@@ -30,7 +81,6 @@ export const releases: Release[] = [
       "Local (stdio) MCP servers negotiate protocol version 2026-07-28 by default on every install, including Bedrock, Vertex and Foundry; MCP_PROTOCOL_NEGOTIATION=legacy opts out.",
       "Agent names are limited to 256 characters; a skill's or plugin file's longer name is ignored. claude plugin test now fails on a failed expect inside a hook the test registered instead of passing silently.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -39,7 +89,7 @@ export const releases: Release[] = [
     highlights: [
       "Fixed a 2.1.290 regression where cloud sessions could drop answers to permission prompts",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.290',
@@ -54,7 +104,7 @@ export const releases: Release[] = [
       "Interactive WebSearch uses a budget that refills at 100 calls per hour (CLAUDE_CODE_WEB_SEARCH_REFILLS_PER_HOUR sets the rate) instead of ending after 200 calls.",
       "A project's settings files can no longer turn on Claude in Chrome or set CLAUDE_CODE_DISABLE_ATTACHMENTS; pyright and more forms of ps now ask for permission. An in-process teammate's agent_id in Agent results is its agent ID, with the name@team address in teammate_id.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.289',
@@ -65,7 +115,7 @@ export const releases: Release[] = [
       "Fixed installed mods missing from the first session after upgrade, stale local plugin versions and plugin/mod rendering failures",
       "Reverted the VS Code claude auth status change that could increase sign-outs; fixed terminal and published artifact freezes on malformed code blocks",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.288',
@@ -76,7 +126,7 @@ export const releases: Release[] = [
       "Fixed interrupted-response recovery, missed auto-compaction, resume context loss and duplicate remote MCP tool calls",
       "Fixed plugin-defined teammate configuration, managed sandbox credential-file rules, headless signal handling and GitHub plugin installation without SSH keys",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.287',
