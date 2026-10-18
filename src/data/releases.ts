@@ -18,8 +18,70 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.296',
+    version: 'v2.1.302',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added CLAUDE_CODE_AUTO_MODE_MODEL to choose the model of the client-side auto mode classifier, an Idle compaction row in /config to turn idle compaction off or on, and a notice in /design-sync and /design-login that standalone Claude Design (claude.ai/design) closes by December 14, 2026",
+      "Fixed a \"Prompt is too long\" error when stopping a turn during compaction, Vertex or Bedrock requests failing after a mid-session switch, the Read tool loading an image of any size into memory (image sources over 128 MB are now refused), a prompt cache miss when a mid-session tool was reloaded through ToolSearch, and claude plugin subcommands exiting before a queued settings write finished",
+      "Fixed MCP servers showing no tools when they negotiate protocol 2026-07-28 but omit resultType, ttlMs or cacheScope, prompt suggestions spending usage credits, worktree isolation refusing to start under git 2.56+ with a stray .git file, and Windows refusing every file write on exFAT or FAT32 drives",
+      "Changed prompt and agent hooks to run at most 12 of one event at a time, the desktop app and VS Code to always run main-conversation subagents in the background, and the server-side auto mode classifier to compact a conversation too long for its safety check instead of denying every checked tool call",
+    ],
+    breaking: [
+      "claude -p and Agent SDK sessions with no permission mode start in default mode on third-party providers, with telemetry off or on a fresh install (--permission-mode auto keeps auto). Fork subagents are on by default in claude -p, the Agent SDK, the desktop app and VS Code (CLAUDE_CODE_FORK_SUBAGENT=0 turns them off).",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.301',
+    date: "Oct 15, 2026",
+    highlights: [
+      "Added CLAUDE_CODE_RETRY_WATCHDOG_MAX_USAGE_LIMIT_WAIT_MS so unattended retry mode ends a request at a usage limit that resets too far away, classifier_verdict, permission_mode and classifier_category on OpenTelemetry tool_decision events, the vim % motion and multi-line rows on a mod's Input",
+      "Fixed quitting removing a WorktreeCreate hook worktree that may hold unpushed commits without asking, Grep and Glob reporting no matches when the search program failed, and workflow agents skipping their step while the run still reported success",
+      "Fixed the fable and best aliases erroring when the newest Fable model is not available to the organization (Claude Code retries once on the previous Fable model), a switch to a smaller-context model spending usage credits on a summary without asking, and repeated compaction behind gateways that rename the model",
+      "Fixed the Read tool reading binary files such as .xlsm, .parquet, .epub and .heic as text, skills no longer listed to the model after /rewind, and skills or commands with very many or very long argument names stalling for seconds",
+    ],
+    breaking: [
+      "Skills and commands fill in only the first 64 argument names, each up to 64 characters. A mod hook's .catch handler runs only when the hook throws or times out, and a mod's $.env.set resolves with {} or { deny }.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.300',
+    date: "Oct 14, 2026",
+    highlights: [
+      "Added cache_creation_5m_tokens and cache_creation_1h_tokens to the OpenTelemetry api_request event, GenAI semantic-convention attributes on trace spans, /advisor on Claude Platform on AWS, and virtualText, $.ui.view, the prompt.change hook and workflow-agent rewrites in agent.spawn for mods",
+      "Fixed SessionEnd hooks sometimes not running on exit with a background command, plugin WorktreeCreate and WorktreeRemove hooks skipped under --worktree, agent hooks ignoring their model, and a login refused by forceLoginOrgUUID leaving that organization's token stored",
+      "Fixed a conversation failing every turn with a 400 error when the API rejected an MCP tool's input schema, automatic tool search turning off mid-conversation, headless and SDK resumes losing compaction state, and Write, Edit and NotebookEdit in Cowork cloud sessions reporting success for files that never arrived",
+      "Changed PreToolUse and PermissionRequest hook updatedInput to be validated like Claude's own input, exit to force-kill background commands still running after 1.5 seconds, large api.anthropic.com requests to use gzip even with telemetry off, and local transcripts to record each request's system prompt, tools and parameters",
+    ],
+    breaking: [
+      "updatedInput from PreToolUse and PermissionRequest hooks is validated like Claude's own input: unknown keys are dropped and input the tool rejects denies the call. claude remote-control --sandbox and --no-sandbox now exit with an error; set sandbox.enabled in settings instead.",
+      "claude gateway stops at start on a desktop: policy key that Claude Desktop cannot use from a gateway, CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST sessions ignore CA-bundle, tool-proxy, git TLS and git config variables in settings, and a setMode update in a Cowork cloud PermissionRequest hook's allow is ignored.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.299',
+    date: "Oct 14, 2026",
+    highlights: [
+      "Added idle compaction in the terminal: a conversation of 200K+ tokens left idle for about 54 minutes is compacted before its one-hour prompt cache expires (CLAUDE_CODE_IDLE_COMPACT_MIN_TOKENS changes the minimum, \"idleCompaction\": false turns it off)",
+      "Added CLAUDE_CODE_DISABLE_FILE_MENTIONS, /effort and /fast defaults in agent view, /usage warnings for max effort, workflows, always-on context and large tool results, and --disallow-tools for claude plugin eval",
+      "Fixed a sandboxed command writing into a --plugin-dir folder that runs outside the sandbox, macOS sandbox denied paths reachable through a symlink, glob allowRead/allowWrite grants not re-checked after a symlink swap, and plan mode running a write that a PreToolUse or tool.check hook allowed",
+      "Fixed requests to Anthropic carrying a third-party gateway's API key when ANTHROPIC_BASE_URL is set, MCP servers connected or started before policy checks ran, Windows PreToolUse and PermissionRequest hooks failing open without Git for Windows, and Write silently converting non-UTF-8 files",
+    ],
+    breaking: [
+      "MCP allow rules and agent tools: lists reach only the server they name: mcp__a no longer covers a server named a__b or a_; write mcp__<server>__* with the whole normalized name. Write refuses Windows-1252, Shift-JIS, GBK or UTF-16BE files instead of converting them to UTF-8.",
+      "UserPromptSubmit hooks run before a skill or custom slash command expands, and a skill's own front-matter UserPromptSubmit hook first runs on the prompt after the one that invokes it. Actions a plugin hook can block are refused when the hook cannot receive them or answer, and skills or commands whose names carry hidden, direction-changing or blank-like characters, < or > are not offered until renamed.",
+      "Requests to claude.ai's connector proxy, Anthropic-hosted MCP servers and the cloud MCP proxy no longer follow HTTP redirects, and cloud session and Remote Control MCP connectors negotiate protocol 2026-07-28 by default (MCP_PROTOCOL_NEGOTIATION=legacy opts out). claude plugin test render trees carry part: { plugin }, and the resume command printed at exit names the session by its ID.",
+    ],
+    initiallyVisible: true,
+    featured: true,
+    featuredLabel: '⭐ Idle compaction',
+  },
+  {
+    version: 'v2.1.296',
+    date: "Oct 9, 2026",
     highlights: [
       "Added autoCompactWindow in subagent frontmatter and --agents, CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL for workflow agents, an allow_large option on the Read tool and a code key in Claude apps gateway managed.policies[] for Claude Desktop's Code tab",
       "Fixed Bash permission checks auto-approving commands that assign and use BASH_ARGV0, managed PreToolUse deny hooks with \"continue\": false refusing the call without ending the turn, and Git Bash rm -rf /c/Users/<name> not asking in bypass permissions mode on Windows",
@@ -29,7 +91,6 @@ export const releases: Release[] = [
     breaking: [
       "Edit and NotebookEdit refuse to edit files that are not valid UTF-8 (Windows-1252, Shift-JIS, GBK) instead of replacing their non-ASCII characters. A turn or ! command started while ← moves the session to the background is now stopped instead of finishing out of sight.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -45,7 +106,7 @@ export const releases: Release[] = [
       "claude.ai connectors negotiate MCP protocol version 2026-07-28 by default on installs that fetch no flags; MCP_PROTOCOL_NEGOTIATION=legacy opts out. WebSocket (ws) MCP messages over 16 MiB close the connection.",
       "Subagents preload at most 32 skills from the skills field, each once; a subagent with the Skill tool can still invoke the rest. Ctrl+C at the idle prompt of an attached background session leaves a pending /loop wakeup alone; press Esc to stop it.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.294',
@@ -53,7 +114,7 @@ export const releases: Release[] = [
     highlights: [
       "Fixed prompt and agent hooks written as instructions (such as \"Block commands that...\") allowing what they should block, and improved how instruction-style Stop and SubagentStop prompt hooks are judged",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.293',
@@ -64,7 +125,7 @@ export const releases: Release[] = [
       "Fixed Claude treating its own last actions before a compaction as done and redoing finished work, an HTTP MCP memory leak, path-scoped rules and nested CLAUDE.md files not loading when Claude reads a file through cat, head, tail, sed -n or grep, and messages lost when ← moved a session to the background",
       "Reverted the 2.1.281 auto mode denial message change and the 2.1.290 fix for cloud sessions staying asleep after a container restart lost a pending wakeup",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
     featured: true,
     featuredLabel: '⭐ Haiku 5.5',
   },
@@ -81,7 +142,7 @@ export const releases: Release[] = [
       "Local (stdio) MCP servers negotiate protocol version 2026-07-28 by default on every install, including Bedrock, Vertex and Foundry; MCP_PROTOCOL_NEGOTIATION=legacy opts out.",
       "Agent names are limited to 256 characters; a skill's or plugin file's longer name is ignored. claude plugin test now fails on a failed expect inside a hook the test registered instead of passing silently.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.291',
