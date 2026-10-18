@@ -1,0 +1,39 @@
+CHANGELOG.md
+  s_4441f7428a3a3d::t_84421915f8b380 7
+src/data/header-navigation.ts
+  s_3605cf53b51080::t_96fe631b9e6204 73
+src/pages/learning/index.astro
+  s_b1237c5fc72e02::t_fb87dfe3520a7a 144-159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "156da43a874178e877985e32a159f18e0f7daf39",
+  "prompts": {},
+  "sessions": {
+    "s_3605cf53b51080": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13694-acd3-7190-8d33-691c11d3d458",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_4441f7428a3a3d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a140f1-7ef4-7df3-b341-2aa666e7e75c",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b1237c5fc72e02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f9be62c9-d53a-4d47-97b4-1c4c50945ad7",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
