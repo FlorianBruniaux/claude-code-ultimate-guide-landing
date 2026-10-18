@@ -4,6 +4,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Add a "Security practitioner" path to `/learning/` and a "Security practitioners" entry to the Start menu's "By role" column. The path starts with Anthropic's Cyber Verification Program, then links the guide's security scanner section, native sandboxing, sandbox isolation, data privacy, agentic pentesting and AI security engineer role, plus the security, threat and CVE pages.
 - Fix the diagram guide tooltip's hover contrast: classify the link as a button so shared link styles cannot override its text color, use theme-specific button text, and show the same contrast with a visible keyboard-focus outline. Keep the tooltip open during keyboard focus and prevent native navigation for SVG xlink anchors. Browser checks cover the real built page, hover and focus in light and dark themes.
 - Refresh all 49 diagrams from the corrected guide: derive each guide destination from its Source link, complete tooltips and source navigation across all 12 themes, calculate counts and FAQ content from the generated entries, and remove unsupported zero-JavaScript and CLS claims. Add Markdown-aware fragment checks and browser contrast checks to CI. Archive the initial audit findings and record the corrections and validation in the consolidated report.
 

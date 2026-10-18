@@ -70,6 +70,7 @@ export const navigationSections: HeaderNavigationSection[] = [
           { href: '/guide/for-tech-leads/', label: 'Tech Leads', description: 'Standardize configuration, review, and team rollout.' },
           { href: '/guide/for-cto/', label: 'CTOs', description: 'Frame the business case, controls, and adoption signals.' },
           { href: '/guide/for-cio-ceo/', label: 'CIOs & CEOs', description: 'Read the executive brief and decision boundaries.' },
+          { href: '/learning/#security-practitioner', label: 'Security practitioners', description: 'Check cyber access first, then scan, isolate, and scope tests.' },
         ],
       },
     ],
