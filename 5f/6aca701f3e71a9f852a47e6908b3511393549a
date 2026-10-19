@@ -1,0 +1,121 @@
+.github/workflows/deploy.yml
+  s_8d0cd7a2e13d8f::t_fbe0907a17be38 184-191
+CHANGELOG.md
+  s_f14159e3bfdc3d::t_c429e74654e13d 7-8
+astro.config.mjs
+  s_b306e391ff0c07::t_1d1e7f129652a2 9,23-25,71-75,161,255-257
+scripts/check-built-seo.mjs
+  s_bcdc7012b68ed1::t_ee1fbddde1721f 4,7-8
+scripts/check-release-freshness.mjs
+  s_8d0cd7a2e13d8f::t_4277fb729bc6b8 1-60
+scripts/lib/release-freshness.mjs
+  s_15322205a229a3::t_51c65fda9af88f 1-32
+scripts/lib/seo-contracts.mjs
+  s_8d0cd7a2e13d8f::t_c74a8db0bcc7b4 70-99,181-183,246-271,274-295,310-316
+src/components/global/SearchModal.astro
+  s_8d0cd7a2e13d8f::t_ab0ffd6c1a8780 68-74
+src/components/landing/AuthorProfile.astro
+  s_8d0cd7a2e13d8f::t_015a12e1eb2660 7
+src/components/starlight/Head.astro
+  s_8d0cd7a2e13d8f::t_31753c3d726de6 11,37,51
+src/data/author-profile.ts
+  s_8d0cd7a2e13d8f::t_c436847e6dcfa8 29-30
+src/data/guide-lastmod.mjs
+  s_a11b9d61f6fc4a::t_76c355102ce6c0 1-45
+src/data/guide-lastmod.test.ts
+  s_1c5db6ad802964::t_b112ad41e3111b 1-33
+src/data/guide-route-head.mjs
+  s_8d0cd7a2e13d8f::t_e50ae830385f73 1-40
+src/data/guide-route-head.test.ts
+  s_8d0cd7a2e13d8f::t_80f5b5b93adaf5 1-53
+src/data/release-freshness.test.ts
+  s_15322205a229a3::t_0a0431a9860859 1-35
+src/data/seo-contracts.test.ts
+  s_8d0cd7a2e13d8f::t_f93906184b0186 19,45-46,206-294
+src/pages/releases/index.astro
+  s_8d0cd7a2e13d8f::t_cdfa1253899fba 31,33
+src/pages/team-metrics/index.astro
+  s_8d0cd7a2e13d8f::t_59d0c7a622cef7 4,10
+src/scripts/glossary-tooltips.test.ts
+  s_8d0cd7a2e13d8f::t_c10e48df4939b1 229-280
+src/scripts/glossary-tooltips.ts
+  s_8d0cd7a2e13d8f::t_1d46711fad1d2a 117-119,142-143,353-360,362-368,371
+src/scripts/search.test.ts
+  s_8d0cd7a2e13d8f::t_64b66e38daf29f 1-142
+src/scripts/search.ts
+  s_8d0cd7a2e13d8f::t_23693c6218c999 92-95,123-131,142-163,167-170,242-253,311,323-324
+src/starlightRouteData.ts
+  s_19097d9dd42cbd::t_8a53c6537d2a13 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5f6aca701f3e71a9f852a47e6908b3511393549a",
+  "prompts": {},
+  "sessions": {
+    "s_15322205a229a3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a14f0c-423f-7df3-aaac-dc468867048f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_19097d9dd42cbd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a14398-1078-7c70-a4f0-8ef745ebc7cc",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_1c5db6ad802964": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d3cf763-ce47-4a83-9dd1-3f50a0cc2204",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_8d0cd7a2e13d8f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52224b95-b6a8-4f28-b08b-ac98a65c8845",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_a11b9d61f6fc4a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dae7342f-9e5d-46fd-b96c-c32e45fa319e",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b306e391ff0c07": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5c99837-2f58-4330-b261-101bd9f49ab7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bcdc7012b68ed1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b27d5af-a431-4e9e-81f4-0d7a76b3c12d",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f14159e3bfdc3d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1261f-7516-70e1-b57c-5d4d56724919",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
