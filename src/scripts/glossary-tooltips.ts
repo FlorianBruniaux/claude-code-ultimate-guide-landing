@@ -114,6 +114,9 @@ export function createTooltipMatcher(terms: TooltipTerm[], cap = MAX_TOOLTIPS_PE
 
       return { text, matches }
     },
+    isFull(): boolean {
+      return matchedCount >= cap
+    },
   }
 }
 
@@ -135,6 +138,8 @@ export function shouldEnrichTextNode(ancestors: string[]): boolean {
     ancestor.includes('.mermaid-diagram'),
   )
 }
+
+const SKIPPED_SUBTREES = 'pre, .expressive-code, .mermaid-diagram, svg, script, style'
 
 function isEligibleTextNode(node: Text): boolean {
   if (!node.nodeValue?.trim()) return false
@@ -345,18 +350,25 @@ export function enhanceGlossaryTooltips(document: Document, terms: TooltipTerm[]
   const matcher = createTooltipMatcher(terms)
   let tooltipIndex = 1
 
+  // Code blocks and diagrams hold most of the text nodes on long chapters:
+  // reject them as subtrees, and stop walking once the page cap is reached.
+  const filter = document.defaultView?.NodeFilter ?? { SHOW_ELEMENT: 1, SHOW_TEXT: 4, FILTER_ACCEPT: 1, FILTER_REJECT: 2, FILTER_SKIP: 3 }
+  const acceptNode = (node: Node) => {
+    if (node.nodeType === 3) return filter.FILTER_ACCEPT
+    return (node as Element).matches(SKIPPED_SUBTREES) ? filter.FILTER_REJECT : filter.FILTER_SKIP
+  }
+
   document.querySelectorAll<HTMLElement>('.sl-markdown-content').forEach((root) => {
-    const showText = document.defaultView?.NodeFilter.SHOW_TEXT ?? 4
-    const walker = document.createTreeWalker(root, showText)
-    const nodes: Text[] = []
-    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-      if (isEligibleTextNode(node as Text)) nodes.push(node as Text)
+    if (matcher.isFull()) return
+    const walker = document.createTreeWalker(root, filter.SHOW_ELEMENT | filter.SHOW_TEXT, { acceptNode })
+    const pending: Array<{ node: Text; matches: TooltipMatch[] }> = []
+    for (let node = walker.nextNode(); node && !matcher.isFull(); node = walker.nextNode()) {
+      if (!isEligibleTextNode(node as Text)) continue
+      const { matches } = matcher.match((node as Text).data)
+      if (matches.length > 0) pending.push({ node: node as Text, matches })
     }
 
-    for (const node of nodes) {
-      const { matches } = matcher.match(node.data)
-      if (matches.length > 0) tooltipIndex = replaceTextNode(document, node, matches, tooltipIndex)
-    }
+    for (const { node, matches } of pending) tooltipIndex = replaceTextNode(document, node, matches, tooltipIndex)
   })
 
   bindTooltipInteractions(document)

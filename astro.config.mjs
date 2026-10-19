@@ -6,6 +6,7 @@ import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
+import { readGuideLastmods } from './src/data/guide-lastmod.mjs'
 import publicationEdition from './src/data/publication-edition.json'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -19,8 +20,10 @@ const SITEMAP_EXCLUDED_ROUTES = new Set([
   '/guide/context-engineering/',
 ])
 
+// Guide pages take their source git date from the generated frontmatter.
+const GUIDE_DATES = readGuideLastmods(resolve(process.cwd(), 'src/content/docs'))
+
 // Per-page lastmod dates for key landing pages.
-// Guide pages (140+) are omitted, they rebuild together and all share the build date.
 const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-08-31',
   'https://cc.bruniaux.com/mcp/': '2026-10-05',
@@ -64,6 +67,11 @@ export default defineConfig({
 
     // Architecture path change
     '/guide/core/architecture/': '/guide/architecture/',
+
+    // Role slugs follow titles since 2026-08-31; Search Console still reports the id-based URLs as 404
+    '/roles/ai-safety-eval-engineer/': '/roles/ai-safety-engineer/',
+    '/roles/ai-eval-engineer/': '/roles/ai-evaluation-engineer/',
+    '/roles/platform-engineer/': '/roles/ai-platform-engineer/',
 
     // Workflow pages moved from /guide/{slug}/ to /guide/workflows/{slug}/
     '/guide/code-review/': '/guide/workflows/code-review/',
@@ -150,6 +158,7 @@ export default defineConfig({
       title: 'Claude Code Guide',
       description: 'The Ultimate Claude Code Guide — comprehensive documentation for Claude Code power users.',
       disable404Route: true,
+      routeMiddleware: './src/starlightRouteData.ts',
       customCss: [
         './src/styles/global.css',
         './src/styles/components.css',
@@ -243,7 +252,9 @@ export default defineConfig({
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
         if (SITEMAP_EXCLUDED_ROUTES.has(new URL(normalizedUrl).pathname)) return undefined
-        const lastmod = PAGE_DATES[normalizedUrl] ?? new Date().toISOString().split('T')[0]
+        const lastmod = PAGE_DATES[normalizedUrl]
+          ?? GUIDE_DATES.get(new URL(normalizedUrl).pathname)
+          ?? new Date().toISOString().split('T')[0]
 
         if (item.url === 'https://cc.bruniaux.com/') {
           return { ...item, priority: 1.0, changefreq: 'weekly', lastmod }

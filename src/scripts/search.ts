@@ -89,6 +89,10 @@ function renderNoResults(results: HTMLElement, query: string): void {
   results.innerHTML = `<li class="search-no-results">No results for "<strong>${escapeHtml(query)}</strong>"</li>`
 }
 
+function renderUnavailable(results: HTMLElement): void {
+  results.innerHTML = '<li class="search-no-results">Search is unavailable right now. Close and reopen search to try again.</li>'
+}
+
 function renderResults(results: HTMLElement, entries: SearchEntry[]): void {
   results.innerHTML = entries
     .map((entry, i) => {
@@ -116,12 +120,15 @@ function renderResults(results: HTMLElement, entries: SearchEntry[]): void {
     .join('')
 }
 
-export function initSearch(entries: SearchEntry[]): void {
-  const modal = document.getElementById('search-modal')
-  const input = document.getElementById('search-input') as HTMLInputElement | null
-  const resultsList = document.getElementById('search-results')
-  const trigger = document.getElementById('search-trigger')
-  const backdrop = document.getElementById('search-backdrop')
+// The index is fetched on the first sign of search intent (open, hover or
+// focus of the trigger), not on every page load. A failed fetch is retried
+// on the next open, not on every keystroke.
+export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Document = document): void {
+  const modal = doc.getElementById('search-modal')
+  const input = doc.getElementById('search-input') as HTMLInputElement | null
+  const resultsList = doc.getElementById('search-results')
+  const trigger = doc.getElementById('search-trigger')
+  const backdrop = doc.getElementById('search-backdrop')
 
   if (!modal || !input || !resultsList) return
 
@@ -132,9 +139,35 @@ export function initSearch(entries: SearchEntry[]): void {
   let activeIndex = -1
   let debounceTimer: ReturnType<typeof setTimeout>
   let currentResults: SearchEntry[] = []
+  let entries: SearchEntry[] | null = null
+  let pending: Promise<SearchEntry[] | null> | null = null
+  let loadFailed = false
+
+  function ensureEntries(): Promise<SearchEntry[] | null> {
+    if (entries) return Promise.resolve(entries)
+    if (loadFailed) return Promise.resolve(null)
+    if (!pending) {
+      pending = loadEntries()
+        .then((loaded) => {
+          entries = loaded
+          return loaded
+        })
+        .catch((error) => {
+          console.error('[search] Failed to load search index:', error)
+          loadFailed = true
+          return null
+        })
+        .finally(() => { pending = null })
+    }
+    return pending
+  }
 
   // ── Modal lifecycle ─────────────────────────────────────────────────────────
   function openModal(): void {
+    loadFailed = false
+    void ensureEntries().then(() => {
+      if (!searchModal.hasAttribute('hidden') && searchInput.value.trim()) runSearch(searchInput.value.trim())
+    })
     searchModal.removeAttribute('hidden')
     searchModal.setAttribute('aria-hidden', 'false')
     searchInput.value = ''
@@ -206,6 +239,18 @@ export function initSearch(entries: SearchEntry[]): void {
       return
     }
 
+    if (!entries) {
+      if (loadFailed) {
+        renderUnavailable(searchResults)
+        return
+      }
+      void ensureEntries().then((loaded) => {
+        if (loaded) runSearch(searchInput.value.trim())
+        else renderUnavailable(searchResults)
+      })
+      return
+    }
+
     const found = search(entries, query)
     if (found.length === 0) {
       renderNoResults(searchResults, query)
@@ -263,7 +308,7 @@ export function initSearch(entries: SearchEntry[]): void {
   backdrop?.addEventListener('click', closeModal)
 
   // ── Global keyboard shortcut ────────────────────────────────────────────────
-  document.addEventListener('keydown', (e: KeyboardEvent) => {
+  doc.addEventListener('keydown', (e: KeyboardEvent) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault()
       searchModal.hasAttribute('hidden') ? openModal() : closeModal()
@@ -275,6 +320,8 @@ export function initSearch(entries: SearchEntry[]): void {
 
   // ── Trigger button ──────────────────────────────────────────────────────────
   trigger?.addEventListener('click', () => openModal())
+  trigger?.addEventListener('pointerenter', () => { void ensureEntries() }, { once: true })
+  trigger?.addEventListener('focus', () => { void ensureEntries() }, { once: true })
 
   // ── Initial state ───────────────────────────────────────────────────────────
   renderEmpty(searchResults)

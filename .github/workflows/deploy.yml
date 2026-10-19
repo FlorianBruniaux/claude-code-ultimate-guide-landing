@@ -181,6 +181,14 @@ jobs:
           --carried carried-assets.txt
           / /token-savings/ /finops/ /context-engineering/ /diagrams/ /guide/ /releases/
 
+      - name: Check the deployed release page announces the latest version
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          # Up to 12 minutes, longer than the Pages HTML cache.
+          CHECK_ATTEMPTS: 13
+          CHECK_DELAY_MS: 60000
+        run: node scripts/check-release-freshness.mjs "$PAGE_URL"
+
   vercel-preview:
     needs: [build, deploy]
     if: vars.VERCEL_PREVIEW_ENABLED == 'true'

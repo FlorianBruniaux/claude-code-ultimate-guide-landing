@@ -67,6 +67,36 @@ function title(html) {
   return html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
 }
 
+function metaContent(html, key) {
+  const tag = html.match(/<meta\b[^>]*>/gi)?.find((candidate) => (
+    attribute(candidate, 'property')?.toLowerCase() === key || attribute(candidate, 'name')?.toLowerCase() === key
+  ))
+  return tag ? attribute(tag, 'content') : undefined
+}
+
+function isNoIndex(html) {
+  return /\bnoindex\b/i.test(metaContent(html, 'robots') ?? '')
+}
+
+function htmlLang(html) {
+  const tag = html.match(/<html\b[^>]*>/i)?.[0]
+  return tag ? attribute(tag, 'lang') : undefined
+}
+
+function firstH1Text(html) {
+  return renderedText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '')
+}
+
+function sharedValues(pages, pick) {
+  const routesByValue = new Map()
+  for (const page of pages) {
+    const value = pick(page)
+    if (!value) continue
+    routesByValue.set(value, [...(routesByValue.get(value) ?? []), page.route])
+  }
+  return [...routesByValue].filter(([, routes]) => routes.length > 1)
+}
+
 function inspectRenderedDocument(html, route) {
   const inertDepth = { script: 0, style: 0, template: 0 }
   let h1Count = 0
@@ -148,7 +178,9 @@ function sitemapCalendarDate(value) {
   return match?.[1] ?? value
 }
 
-export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
+// guideDates: sitemap lastmod expected per guide route, read from the
+// generated content. Omit it to skip the guide date contracts.
+export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES, guideDates }) {
   const failures = []
   const auditedPagePaths = new Set()
 
@@ -211,9 +243,56 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
     }
   }
 
+  if (guideDates) {
+    if (guideDates.size === 0) failures.push('guide dates: no source dates were read from the generated guide content')
+    for (const route of guideDates.keys()) {
+      try {
+        readFileSync(pagePath(distDir, route))
+      }
+      catch {
+        failures.push(`guide dates: ${route} has a source date but no built page`)
+      }
+    }
+  }
+
+  for (const { xml } of sitemapContents) {
+    for (const [, entry] of xml.matchAll(/<url>\s*([\s\S]*?)\s*<\/url>/g)) {
+      const loc = entry.match(/<loc>\s*([^<]+?)\s*<\/loc>/)?.[1]
+      if (!loc?.startsWith(SITE_ORIGIN)) continue
+      const expected = guideDates?.get(new URL(loc).pathname)
+      const lastmod = entry.match(/<lastmod>\s*([^<]+?)\s*<\/lastmod>/)?.[1] ?? 'none'
+      if (expected && sitemapCalendarDate(lastmod) !== expected) {
+        failures.push(`sitemap: expected ${new URL(loc).pathname} lastmod ${expected}, found ${lastmod}`)
+      }
+    }
+  }
+
+  const indexablePages = []
+
   for (const path of walkFiles(distDir).filter((candidate) => extname(candidate).toLowerCase() === '.html')) {
     const route = htmlRoute(distDir, path)
-    const document = inspectRenderedDocument(readFileSync(path, 'utf8'), route)
+    const html = readFileSync(path, 'utf8')
+    const document = inspectRenderedDocument(html, route)
+
+    if (!document.isRedirectDocument && !isNoIndex(html)) {
+      indexablePages.push({ route, title: renderedText(title(html) ?? ''), description: renderedText(metaDescription(html) ?? '') })
+
+      if (route.startsWith('/guide/') && !metaContent(html, 'og:image')) failures.push(`${route}: missing og:image`)
+
+      if (route === '/guide/ultimate-guidefr/' && htmlLang(html) !== 'fr') {
+        failures.push(`${route}: expected lang="fr", found "${htmlLang(html) ?? 'none'}"`)
+      }
+      if (route === '/guide/ultimate-guidefr/') {
+        for (const [, language] of html.matchAll(/"inLanguage"\s*:\s*"([^"]+)"/g)) {
+          if (language !== 'fr') failures.push(`${route}: JSON-LD inLanguage is "${language}", expected "fr"`)
+        }
+      }
+
+      if (route === '/releases/') {
+        const version = renderedText(title(html) ?? '').match(/v\d+\.\d+\.\d+/)?.[0]
+        if (version && !firstH1Text(html).includes(version)) failures.push(`/releases/: H1 does not announce ${version}`)
+      }
+    }
 
     if (document.isRedirectDocument && sitemapUrls.has(`${SITE_ORIGIN}${route}`)) {
       failures.push(`sitemap: redirect route ${route} appears in sitemap`)
@@ -226,6 +305,13 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES }) {
     if (route !== '/guide/claude-code-releases/' && document.legacyReleaseHref) {
       failures.push(`${route}: rendered href targets legacy release route`)
     }
+  }
+
+  for (const [value, pages] of sharedValues(indexablePages, (page) => page.title)) {
+    failures.push(`title: "${value}" is shared by ${pages.join(', ')}`)
+  }
+  for (const [value, pages] of sharedValues(indexablePages.filter((page) => page.route.startsWith('/guide/')), (page) => page.description)) {
+    failures.push(`description: "${value}" is shared by ${pages.join(', ')}`)
   }
 
   for (const path of textArtifactFiles(distDir)) {

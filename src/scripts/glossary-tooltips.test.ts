@@ -226,3 +226,55 @@ test('clamps a fixed popover within every viewport edge', () => {
     { left: 39, top: 492, width: 320 },
   )
 })
+
+test('code blocks are skipped as whole subtrees instead of node by node', () => {
+  const document = createDocument(`
+    <main class="sl-markdown-content">
+      <p>Agent harness prose.</p>
+      <div class="expressive-code"><pre><code>${'<div class="ec-line"><span>Agent harness line</span></div>'.repeat(50)}</code></pre></div>
+      <figure class="mermaid-diagram"><span>Agent harness diagram</span></figure>
+    </main>
+  `)
+  const view = document.defaultView as unknown as { Element: { prototype: Element } }
+  const original = view.Element.prototype.closest
+  const inspected: string[] = []
+  view.Element.prototype.closest = function (this: Element, selector: string) {
+    inspected.push(this.textContent ?? '')
+    return original.call(this, selector)
+  } as typeof original
+
+  try {
+    enhanceGlossaryTooltips(document, [
+      { term: 'Agent harness', definition: 'The runtime around a model.', slug: 'agent-harness' },
+    ])
+  }
+  finally {
+    view.Element.prototype.closest = original
+  }
+
+  assert.equal(inspected.filter((text) => /line|diagram/.test(text)).length, 0)
+  assert.equal(document.querySelectorAll('.glossary-tooltip-trigger').length, 1)
+})
+
+test('scanning stops once the page cap is reached', () => {
+  const paragraphs = Array.from({ length: 40 }, (_, index) => `<p>Term${index} appears here.</p>`).join('')
+  const document = createDocument(`<main class="sl-markdown-content">${paragraphs}</main>`)
+  const terms = Array.from({ length: 40 }, (_, index) => ({ term: `Term${index}`, definition: 'D.', slug: `term${index}` }))
+  const view = document.defaultView as unknown as { Element: { prototype: Element } }
+  const original = view.Element.prototype.closest
+  let checks = 0
+  view.Element.prototype.closest = function (this: Element, selector: string) {
+    checks++
+    return original.call(this, selector)
+  } as typeof original
+
+  try {
+    enhanceGlossaryTooltips(document, terms)
+  }
+  finally {
+    view.Element.prototype.closest = original
+  }
+
+  assert.equal(document.querySelectorAll('.glossary-tooltip-trigger').length, 8)
+  assert.ok(checks <= 8, `expected at most 8 eligibility checks, got ${checks}`)
+})

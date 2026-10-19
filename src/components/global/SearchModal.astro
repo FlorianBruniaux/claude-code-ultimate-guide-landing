@@ -65,21 +65,13 @@
   import { initSearch } from '../../scripts/search.ts'
   import type { SearchEntry } from '../../scripts/search.ts'
 
-  const load = () =>
-    fetch('/search-index.json')
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`)
-        return r.json()
-      })
-      .then((entries: SearchEntry[]) => initSearch(entries))
-      .catch(e => console.error('[search] Failed to load search index:', e))
-
-  // Defer off the critical path; fall back for browsers without idle callback
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => load(), { timeout: 2000 })
-  } else {
-    setTimeout(load, 200)
-  }
+  // Fetched on first search intent only, so pages do not pay for the index.
+  initSearch(() =>
+    fetch('/search-index.json').then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
+      return r.json() as Promise<SearchEntry[]>
+    }),
+  )
 </script>
 
 <style>

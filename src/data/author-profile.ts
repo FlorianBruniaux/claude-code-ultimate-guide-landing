@@ -26,5 +26,7 @@ export const authorProfile = {
   githubUrl: 'https://github.com/FlorianBruniaux',
   linkedinUrl: 'https://www.linkedin.com/in/florian-bruniaux-43408b83/',
   imageUrl: '/author.png',
+  // 44px slot, 2x density: 2 KB instead of the 213 KB source kept for JSON-LD.
+  thumbnailUrl: '/author-88.webp',
   experienceYears: getYearsOfExperience(),
 } as const

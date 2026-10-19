@@ -8,7 +8,7 @@ import Analytics from '../global/Analytics.astro'
 // components, e.g. Hero.astro, LastUpdated.astro). Astro.props.entry was
 // always undefined here, silently emptying headline/description/dates in the
 // TechArticle/HowTo JSON-LD on every guide page since this component existed.
-const { entry } = Astro.locals.starlightRoute
+const { entry, lang } = Astro.locals.starlightRoute
 const url = Astro.url.pathname
 const isWorkflow = url.includes('/workflows/')
 
@@ -34,7 +34,7 @@ const schema = isWorkflow
       ...(keywords?.length ? { "keywords": keywords.join(', ') } : {}),
       "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX" },
       "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
-      "inLanguage": "en",
+      "inLanguage": lang,
     }
   : {
       "@context": "https://schema.org",
@@ -48,7 +48,7 @@ const schema = isWorkflow
       "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
       "author": { "@type": "Person", "@id": "https://cc.bruniaux.com/#author", "name": "Florian BRUNIAUX" },
       "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
-      "inLanguage": "en",
+      "inLanguage": lang,
     }
 ---
 <Default {...Astro.props} />
