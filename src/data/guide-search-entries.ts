@@ -484,6 +484,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-concept-boundaries",
+    "title": "AI Concept Boundaries",
+    "keywords": "ai concept boundaries guide core concept boundaries",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-context-memory",
+    "title": "AI Concept Context Memory",
+    "keywords": "ai concept context memory guide core concept boundaries md#context context window and memory",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#context-context-window-and-memory",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-model-harness",
+    "title": "AI Concept Model Harness",
+    "keywords": "ai concept model harness guide core concept boundaries md#model product and harness",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#model-product-and-harness",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-workflow-agent",
+    "title": "AI Concept Workflow Agent",
+    "keywords": "ai concept workflow agent guide core concept boundaries md#assistant workflow and agent",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#assistant-workflow-and-agent",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-tool-mcp",
+    "title": "AI Concept Tool MCP",
+    "keywords": "ai concept tool mcp guide core concept boundaries md#tool and mcp",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#tool-and-mcp",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-execution-controls",
+    "title": "AI Concept Execution Controls",
+    "keywords": "ai concept execution controls guide core concept boundaries md#instructions permissions and sandbox",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#instructions-permissions-and-sandbox",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-evaluation-evidence",
+    "title": "AI Concept Evaluation Evidence",
+    "keywords": "ai concept evaluation evidence guide core concept boundaries md#evaluation and production evidence",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#evaluation-and-production-evidence",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-model-axes",
+    "title": "AI Concept Model Axes",
+    "keywords": "ai concept model axes guide core concept boundaries md#architecture size class modality and task",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#architecture-size-class-modality-and-task",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-model-pipelines",
+    "title": "Diagram Model Pipelines",
+    "keywords": "diagram model pipelines guide diagrams architecture internals md#three model pipelines dense moe and vlm",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/04-architecture-internals.md#three-model-pipelines-dense-moe-and-vlm",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-concept-scenario-checks",
+    "title": "AI Concept Scenario Checks",
+    "keywords": "ai concept scenario checks guide core concept boundaries md#check your understanding",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-concept-boundaries.md#check-your-understanding",
+    "source": "guide"
+  },
+  {
     "id": "guide-translation-status-guide",
     "title": "Translation Status Guide",
     "keywords": "translation status guide guide core translations",
@@ -502,7 +582,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-context-engineering-guide",
     "title": "Context Engineering Guide",
-    "keywords": "context engineering guide guide core context engineering context engineering what is guide core context engineering md#1 what context engineering context engineering budget guide core context engineering md#2 the context budget context engineering hierarchy guide core context engineering md#3 configuration hierarchy context engineering modular guide core context engineering md#4 modular architecture context engineering team guide core context engineering md#5 team assembly context engineering lifecycle guide core context engineering md#6 context lifecycle context engineering quality guide core context engineering md#7 quality measurement context engineering reduction guide core context engineering md#8 context reduction techniques context engineering maturity guide core context engineering md#9 maturity assessment context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution context loop closure guide core context engineering md#11 loop closure based curation context ejection guide core context engineering md#12 ejection disciplined engineering context self audit guide core context engineering md#13 constitutional and self consistency audits context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation context engineering token audit guide core context engineering md#15 token audit workflow context engineering research guide core context engineering md#16 research patterns what the literature shows context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability context lost in middle guide core context engineering md#the lost the middle problem context primacy recency placement guide core context engineering md#primacy and recency placement context persistent facts block guide core context engineering md#persistent facts block context scratchpad pattern guide core context engineering md#scratchpad pattern context rolling summaries guide core context engineering md#rolling context summaries context engineering compression tools guide core context engineering md#18 token compression tools context engineering lean pull guide core context engineering md#pull the context that the current decision needs context 150 ceiling guide core context engineering md#2 the context budget context ace pipeline guide core context engineering md#6 context lifecycle context path scoping guide core context engineering md#4 modular architecture context maturity model guide core context engineering md#7 quality measurement",
+    "keywords": "context engineering guide guide core context engineering context engineering what is guide core context engineering md#1 what context engineering context engineering budget guide core context engineering md#2 the context budget context engineering hierarchy guide core context engineering md#3 configuration hierarchy context engineering modular guide core context engineering md#4 modular architecture context engineering team guide core context engineering md#5 team assembly context engineering lifecycle guide core context engineering md#6 context lifecycle context engineering quality guide core context engineering md#7 quality measurement context engineering reduction guide core context engineering md#8 context reduction techniques context engineering maturity guide core context engineering md#9 maturity assessment context signal taxonomy guide core context engineering md#10 signal taxonomy and causal attribution context loop closure guide core context engineering md#11 loop closure based curation context ejection guide core context engineering md#12 ejection disciplined engineering context self audit guide core context engineering md#13 constitutional and self consistency audits context multidev reconciliation guide core context engineering md#14 multi dev profile reconciliation context engineering token audit guide core context engineering md#15 token audit workflow context engineering research guide core context engineering md#16 research patterns what the literature shows context engineering attention mechanics guide core context engineering md#17 attention mechanics reliability context lost in middle guide core context engineering md#the lost the middle problem context primacy recency placement guide core context engineering md#primacy and recency placement context persistent facts block guide core context engineering md#persistent facts block context scratchpad pattern guide core context engineering md#scratchpad pattern context rolling summaries guide core context engineering md#rolling context summaries context engineering compression tools guide core context engineering md#18 token compression tools context engineering lean pull guide core context engineering md#pull the context that the current decision needs context 150 ceiling guide core context engineering md#2 the context budget context ace pipeline guide core context engineering md#6 context lifecycle context path scoping guide core context engineering md#4 modular architecture context maturity model guide core context engineering md#7 quality measurement context publication contract guide core context engineering md#publication contract for curated context context evidence update loop guide core context engineering md#the update loop",
     "category": "Guide",
     "url": "/context-engineering/",
     "source": "guide"
@@ -718,9 +798,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-harness-optimizer",
     "title": "Agent Harness Optimizer",
-    "keywords": "agent harness optimizer guide core agent harness md#11 harness optimizers and meta harnesses agent harness evaluation protocol guide core agent harness md#11 harness optimizers and meta harnesses agent harness optimizer research guide core agent harness md#11 harness optimizers and meta harnesses",
+    "keywords": "agent harness optimizer guide core agent harness md#11 harness optimizers and meta harnesses wikiskill executor transfer guide core agent harness md#11 harness optimizers and meta harnesses agent harness evaluation protocol guide core agent harness md#11 harness optimizers and meta harnesses agent harness optimizer research guide core agent harness md#11 harness optimizers and meta harnesses",
     "category": "Guide",
     "url": "/guide/agent-harness/#11-harness-optimizers-and-meta-harnesses",
+    "source": "guide"
+  },
+  {
+    "id": "guide-wikiskill-persistent-proposal-history",
+    "title": "Wikiskill Persistent Proposal History",
+    "keywords": "wikiskill persistent proposal history guide core memory systems md#68 compile experience into skills wikiskill",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#68-compile-experience-into-skills-wikiskill",
     "source": "guide"
   },
   {
@@ -1684,6 +1772,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-architecture-agent-sdk",
+    "title": "Architecture Agent SDK",
+    "keywords": "architecture agent sdk guide core architecture md#claude code and the agent sdk",
+    "category": "Guide",
+    "url": "/guide/architecture/#claude-code-and-the-agent-sdk",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rtk-vs-lean-ctx",
+    "title": "RTK Vs Lean Ctx",
+    "keywords": "rtk vs lean ctx guide ecosystem third party tools md#rtk lean ctx complementary layers",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#rtk-vs-lean-ctx-complementary-layers",
+    "source": "guide"
+  },
+  {
     "id": "guide-rtk-claude-md",
     "title": "RTK Claude Md",
     "keywords": "rtk claude md examples claude rtk optimized",
@@ -2137,6 +2241,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "harness review infographics guide images harness review readme",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/harness-review/README.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-model-axes-infographics",
+    "title": "Model Axes Infographics",
+    "keywords": "model axes infographics guide images model axes readme",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/model-axes/README.md",
     "source": "guide"
   },
   {
@@ -2974,7 +3086,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-native-guide",
     "title": "Sandbox Native Guide",
-    "keywords": "sandbox native guide guide security sandbox native sandbox native os primitives guide security sandbox native sandbox native modes guide security sandbox native",
+    "keywords": "sandbox native guide guide security sandbox native sandbox native modes guide security sandbox native",
     "category": "Guide",
     "url": "/guide/sandbox-native/",
     "source": "guide"
@@ -2985,6 +3097,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox native why guide security sandbox native md#1 why native sandboxing",
     "category": "Guide",
     "url": "/guide/sandbox-native/#1-why-native-sandboxing",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-native-os-primitives",
+    "title": "Sandbox Native Os Primitives",
+    "keywords": "sandbox native os primitives guide security sandbox native md#2 primitives",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#2-os-primitives",
     "source": "guide"
   },
   {
@@ -3150,9 +3270,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sandbox-excluded-commands-traps",
     "title": "Sandbox Excluded Commands Traps",
-    "keywords": "sandbox excluded commands traps guide security sandbox native md#three traps all verified 21220 sandbox excluded three traps guide security sandbox native md#three traps all verified 21220",
+    "keywords": "sandbox excluded commands traps guide security sandbox native md#traps that still apply sandbox excluded three traps guide security sandbox native md#traps that still apply",
     "category": "Guide",
-    "url": "/guide/sandbox-native/#three-traps-all-verified-on-21220",
+    "url": "/guide/sandbox-native/#traps-that-still-apply",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-excluded-matching",
+    "title": "Sandbox Excluded Matching",
+    "keywords": "sandbox excluded matching guide security sandbox native md#how entry matches v21277",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#how-an-entry-matches-v21277",
     "source": "guide"
   },
   {
@@ -3196,9 +3324,41 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-sandbox-settings-files-protected",
-    "title": "Sandbox Settings Files Protected",
-    "keywords": "sandbox settings files protected guide security sandbox native md#default behavior sandbox deny read misses bash guide security sandbox native md#default behavior sandbox credentials needs absolute paths guide security sandbox native md#default behavior sandbox env hook scope guide security sandbox native md#default behavior sandbox idea vscode write denied guide security sandbox native md#default behavior sandbox session tmpdir guide security sandbox native md#default behavior",
+    "id": "guide-sandbox-per-command-allowed-domains",
+    "title": "Sandbox Per Command Allowed Domains",
+    "keywords": "sandbox per command allowed domains guide security sandbox native md#per command allowed domains auto mode",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#per-command-allowed-domains-in-auto-mode",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-local-address-check",
+    "title": "Sandbox Local Address Check",
+    "keywords": "sandbox local address check guide security sandbox native md#domain filtering sandbox allowlist filters without strict guide security sandbox native md#domain filtering sandbox blocked host vs missing host guide security sandbox native md#domain filtering sandbox codeload not covered guide security sandbox native md#domain filtering",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#domain-filtering",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-admin-required",
+    "title": "Sandbox Admin Required",
+    "keywords": "sandbox admin required guide security sandbox native md#admin required sandbox",
+    "category": "Guide",
+    "url": "/guide/sandbox-native/#admin-required-sandbox",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-fail-if-unavailable",
+    "title": "Sandbox Fail If Unavailable",
+    "keywords": "sandbox fail if unavailable guide core settings reference md#sandboxfailifunavailable",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/settings-reference.md#sandboxfailifunavailable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-sandbox-envvars-profile-reexport",
+    "title": "Sandbox Envvars Profile Reexport",
+    "keywords": "sandbox envvars profile reexport guide security sandbox native md#default behavior sandbox settings files protected guide security sandbox native md#default behavior sandbox deny read misses bash guide security sandbox native md#default behavior sandbox credentials needs absolute paths guide security sandbox native md#default behavior sandbox env hook scope guide security sandbox native md#default behavior sandbox idea vscode write denied guide security sandbox native md#default behavior sandbox session tmpdir guide security sandbox native md#default behavior",
     "category": "Guide",
     "url": "/guide/sandbox-native/#default-behavior",
     "source": "guide"
@@ -3217,14 +3377,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "sandbox setuid exec denied guide security sandbox native md#commands that cannot work sandboxed all sandbox unix socket bind denied guide security sandbox native md#commands that cannot work sandboxed all",
     "category": "Guide",
     "url": "/guide/sandbox-native/#commands-that-cannot-work-sandboxed-at-all",
-    "source": "guide"
-  },
-  {
-    "id": "guide-sandbox-allowlist-filters-without-strict",
-    "title": "Sandbox Allowlist Filters Without Strict",
-    "keywords": "sandbox allowlist filters without strict guide security sandbox native md#domain filtering sandbox blocked host vs missing host guide security sandbox native md#domain filtering sandbox codeload not covered guide security sandbox native md#domain filtering",
-    "category": "Guide",
-    "url": "/guide/sandbox-native/#domain-filtering",
     "source": "guide"
   },
   {
@@ -3668,6 +3820,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-third-party-desktop-workspaces",
+    "title": "Third Party Desktop Workspaces",
+    "keywords": "third party desktop workspaces guide ecosystem third party tools md#desktop agent workspace comparison",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#desktop-agent-workspace-comparison",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-vibe-kanban-status",
+    "title": "Third Party Vibe Kanban Status",
+    "keywords": "third party vibe kanban status guide ecosystem agent harness landscape md#vibe kanban maintenance status",
+    "category": "Guide",
+    "url": "/guide/agent-harness-landscape/#vibe-kanban-maintenance-status",
+    "source": "guide"
+  },
+  {
     "id": "guide-third-party-tools-model-routing",
     "title": "Third Party Tools Model Routing",
     "keywords": "third party tools model routing guide ecosystem third party tools md#model routing",
@@ -3713,6 +3881,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party viberank guide ecosystem third party tools md#viberank",
     "category": "Guide",
     "url": "/guide/third-party-tools/#viberank",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-conductor-guide",
+    "title": "Third Party Conductor Guide",
+    "keywords": "third party conductor guide guide ecosystem third party tools md#conductor",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#conductor",
     "source": "guide"
   },
   {
@@ -4828,6 +5004,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-grill-me-interview-patterns",
+    "title": "Grill Me Interview Patterns",
+    "keywords": "grill me interview patterns guide workflows spec first md#interview before the spec grill",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/#interview-before-the-spec-grill-me",
+    "source": "guide"
+  },
+  {
     "id": "guide-agentic-software-factories-hub",
     "title": "Agentic Software Factories Hub",
     "keywords": "agentic software factories hub guide workflows agentic software factories",
@@ -5150,7 +5334,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-dual-instance-workflow",
     "title": "Dual Instance Workflow",
-    "keywords": "dual instance workflow guide workflows dual instance planning dual instance cost analysis guide workflows dual instance planning",
+    "keywords": "dual instance workflow guide workflows dual instance planning",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/dual-instance-planning/",
     "source": "guide"
@@ -5158,9 +5342,33 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-dual-instance-setup",
     "title": "Dual Instance Setup",
-    "keywords": "dual instance setup guide workflows dual instance planning md#dual instance planning workflow dual instance complete workflow guide workflows dual instance planning md#dual instance planning workflow dual instance plan template guide workflows dual instance planning md#dual instance planning workflow",
+    "keywords": "dual instance setup guide workflows dual instance planning md#setup",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/dual-instance-planning/#dual-instance-planning-workflow",
+    "url": "/guide/workflows/dual-instance-planning/#setup",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-complete-workflow",
+    "title": "Dual Instance Complete Workflow",
+    "keywords": "dual instance complete workflow guide workflows dual instance planning md#complete workflow",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dual-instance-planning/#complete-workflow",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-plan-template",
+    "title": "Dual Instance Plan Template",
+    "keywords": "dual instance plan template guide workflows dual instance planning md#plan template dual instance handoff contract guide workflows dual instance planning md#plan template",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dual-instance-planning/#plan-template",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-cost-analysis",
+    "title": "Dual Instance Cost Analysis",
+    "keywords": "dual instance cost analysis guide workflows dual instance planning md#cost analysis",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dual-instance-planning/#cost-analysis",
     "source": "guide"
   },
   {
@@ -6068,6 +6276,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-local-vs-cloud-worked-example",
+    "title": "Local Vs Cloud Worked Example",
+    "keywords": "local vs cloud worked example guide ecosystem local cloud inference md#worked example what weighing october 2026",
+    "category": "Guide",
+    "url": "/guide/local-vs-cloud-inference/#worked-example-what-i-am-weighing-in-october-2026",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-copilot-credits",
+    "title": "Local Vs Cloud Copilot Credits",
+    "keywords": "local vs cloud copilot credits guide ecosystem local cloud inference md#what 1000 month copilot credits buys",
+    "category": "Guide",
+    "url": "/guide/local-vs-cloud-inference/#what-1000-a-month-of-copilot-credits-buys",
+    "source": "guide"
+  },
+  {
     "id": "guide-local-vs-cloud-named-models",
     "title": "Local Vs Cloud Named Models",
     "keywords": "local vs cloud named models guide ecosystem local cloud inference md#what actually fits named models",
@@ -6097,6 +6321,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "local vs cloud mlx coding agent guide ecosystem local cloud inference md#coding agent setup apple silicon with mlx",
     "category": "Guide",
     "url": "/guide/local-vs-cloud-inference/#coding-agent-setup-apple-silicon-with-mlx",
+    "source": "guide"
+  },
+  {
+    "id": "guide-local-vs-cloud-mlx-multi-session",
+    "title": "Local Vs Cloud Mlx Multi Session",
+    "keywords": "local vs cloud mlx multi session guide ecosystem local cloud inference md#several sessions one mac the throughput shared",
+    "category": "Guide",
+    "url": "/guide/local-vs-cloud-inference/#several-sessions-on-one-mac-the-throughput-is-shared",
     "source": "guide"
   },
   {
@@ -6390,9 +6622,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-security-cc-scanner",
     "title": "Security Cc Scanner",
-    "keywords": "security cc scanner guide security security hardening md#claude code security scanner research preview",
+    "keywords": "security cc scanner guide security security hardening md#claude code security scanner",
     "category": "Guide",
-    "url": "/guide/security-hardening/#claude-code-as-security-scanner-research-preview",
+    "url": "/guide/security-hardening/#claude-code-as-security-scanner",
     "source": "guide"
   },
   {
@@ -7345,6 +7577,38 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "cheatsheet file guide cheatsheet",
     "category": "Guide",
     "url": "/guide/cheatsheet/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-local-quality-bar",
+    "title": "Harness Local Quality Bar",
+    "keywords": "harness local quality bar guide ultimate guide md#make the local quality bar recoverable",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#make-the-local-quality-bar-recoverable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-harness-worker-epochs",
+    "title": "Harness Worker Epochs",
+    "keywords": "harness worker epochs guide roles agent evaluation md#evaluation epochs and four clocks",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#evaluation-epochs-and-four-clocks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-mld-observations",
+    "title": "Memory Mld Observations",
+    "keywords": "memory mld observations guide core memory systems md#mld observations for the harness builder",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#mld-observations-for-the-harness-builder",
+    "source": "guide"
+  },
+  {
+    "id": "guide-dual-instance-coordination-states",
+    "title": "Dual Instance Coordination States",
+    "keywords": "dual instance coordination states guide workflows dual instance planning md#phase verification",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/dual-instance-planning/#phase-4-verification",
     "source": "guide"
   }
 ]
