@@ -27,8 +27,8 @@ The `-p` flag provides a prompt directly on the command line, running Claude Cod
 # Basic headless execution
 claude -p "Run the tests and report results"
 
-# With timeout
-claude -p --timeout 300 "Build the project"
+# With a spend cap
+claude -p --max-budget-usd 5.00 "Build the project"
 
 # With specific model
 claude -p --model sonnet "Analyze code quality"

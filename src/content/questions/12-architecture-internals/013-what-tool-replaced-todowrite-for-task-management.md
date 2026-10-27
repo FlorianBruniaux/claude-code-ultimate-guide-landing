@@ -22,4 +22,4 @@ What tool replaced TodoWrite for task management in Claude Code v2.1.16+?
 
 ---
 
-The Tasks API (v2.1.16+) replaced TodoWrite with 4 tools: TaskCreate (create tasks with descriptions), TaskGet (fetch full task details), TaskList (list all tasks with status), TaskUpdate (update status, dependencies, metadata). Key improvement: task dependencies via blockedBy/blocks fields.
+The Tasks API (v2.1.16+) replaced TodoWrite with 4 tools: TaskCreate (create tasks with descriptions), TaskGet (fetch full task details), TaskList (list all tasks with status), TaskUpdate (update status, dependencies, metadata). Key improvement: task dependencies via blockedBy/blocks fields. Per the tools reference, these tools are only available by default on Opus 4.7, Sonnet 4.6, Haiku 4.5, and earlier models; on newer models Claude tracks multi-step work without a written checklist unless you opt in.

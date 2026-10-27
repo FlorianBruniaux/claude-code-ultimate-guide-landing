@@ -7,9 +7,9 @@ profiles:
 - power
 correct: b
 options:
-  a: claude plugins list
-  b: claude plugin
-  c: /plugins
+  a: claude plugin installed
+  b: claude plugin list
+  c: /plugins-list
   d: claude list plugins
 doc_reference:
   file: guide/ultimate-guide.md
@@ -21,12 +21,11 @@ What command lists all installed plugins in Claude Code?
 
 ---
 
-Running `claude plugin` (without subcommand) lists all installed plugins with status.
+`claude plugin list` lists your installed plugins. `claude plugins` is an alias of `claude plugin`, and inside a session `/plugin list` does the same.
 
 Plugin commands:
-- `claude plugin` - List installed plugins
+- `claude plugin list` - List installed plugins
 - `claude plugin install <name>` - Install plugin
 - `claude plugin enable <name>` - Enable plugin
 - `claude plugin disable <name>` - Disable plugin
-- `claude plugin uninstall <name>` - Remove plugin
 - `claude plugin validate <path>` - Validate plugin manifest

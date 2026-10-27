@@ -30,4 +30,4 @@ Use `/compact` when:
 - Claude starts forgetting earlier context
 
 This frees up context space while preserving important information.
-Check context usage with `/status`.
+Check context usage with `/context`.

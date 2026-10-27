@@ -828,6 +828,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-frugality-costs",
+    "title": "Agent Harness Frugality Costs",
+    "keywords": "agent harness frugality costs guide core agent harness md#price generated artifacts against cached context",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#price-generated-artifacts-against-cached-context",
+    "source": "guide"
+  },
+  {
+    "id": "guide-repository-harness-proportionality",
+    "title": "Repository Harness Proportionality",
+    "keywords": "repository harness proportionality guide ultimate guide md#size the repository harness the task",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#size-the-repository-harness-to-the-task",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-cache-aware-state",
+    "title": "Context Cache Aware State",
+    "keywords": "context cache aware state guide ultimate guide md#cache aware working state",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cache-aware-working-state",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-control-tests",
     "title": "Agent Harness Control Tests",
     "keywords": "agent harness control tests guide core agent harness md#test the control and its permitted path",
@@ -1585,6 +1609,54 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "output styles custom template examples styles custom style template",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/styles/custom-style-template.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-keybindings-custom",
+    "title": "Keybindings Custom",
+    "keywords": "keybindings custom guide ultimate guide md#custom keybindings",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#custom-keybindings",
+    "source": "guide"
+  },
+  {
+    "id": "guide-lsp-code-intelligence",
+    "title": "LSP Code Intelligence",
+    "keywords": "lsp code intelligence guide ultimate guide md#lsp native support v2074",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#lsp-native-support-v2074",
+    "source": "guide"
+  },
+  {
+    "id": "guide-plugin-manifest-keys",
+    "title": "Plugin Manifest Keys",
+    "keywords": "plugin manifest keys guide ultimate guide md#creating custom plugins",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#creating-custom-plugins",
+    "source": "guide"
+  },
+  {
+    "id": "guide-claude-mods",
+    "title": "Claude Mods",
+    "keywords": "claude mods guide ultimate guide md#claude mods v21287",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#claude-mods-v21287",
+    "source": "guide"
+  },
+  {
+    "id": "guide-claude-projects",
+    "title": "Claude Projects",
+    "keywords": "claude projects guide ultimate guide md#claude projects coordinated cloud threads beta",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#claude-projects-coordinated-cloud-threads-beta",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subagent-frontmatter-fields",
+    "title": "Subagent Frontmatter Fields",
+    "keywords": "subagent frontmatter fields guide ultimate guide md#frontmatter fields",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#frontmatter-fields",
     "source": "guide"
   },
   {
@@ -4624,7 +4696,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Sonnet 5 Default",
     "keywords": "sonnet 5 default guide ultimate guide md#pricing model rates checked october 2026 opus 4 6 pricing guide ultimate guide md#pricing model rates checked october 2026",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-rates-checked-october-6-2026",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-rates-checked-october-27-2026",
     "source": "guide"
   },
   {
@@ -4785,6 +4857,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "skills taxonomy guide ultimate guide md#50 two kinds skills",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#50-two-kinds-of-skills",
+    "source": "guide"
+  },
+  {
+    "id": "guide-bundled-skills",
+    "title": "Bundled Skills",
+    "keywords": "bundled skills guide ultimate guide md#bundled skills and workflows",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#bundled-skills-and-workflows",
     "source": "guide"
   },
   {
@@ -7318,9 +7398,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-code-review-limitations",
     "title": "Code Review Limitations",
-    "keywords": "code review limitations guide workflows code review md#known limitations research preview",
+    "keywords": "code review limitations guide workflows code review md#known limitations",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/code-review/#known-limitations-research-preview",
+    "url": "/guide/workflows/code-review/#known-limitations",
     "source": "guide"
   },
   {

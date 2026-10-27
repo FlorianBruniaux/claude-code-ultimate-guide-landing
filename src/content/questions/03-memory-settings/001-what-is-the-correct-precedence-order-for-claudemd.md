@@ -9,10 +9,10 @@ profiles:
 - pm
 correct: b
 options:
-  a: Global > Project > Local
-  b: Local (.claude/CLAUDE.md) > Project (/project/CLAUDE.md) > Global (~/.claude/CLAUDE.md)
-  c: Project > Local > Global
-  d: All CLAUDE.md files have equal priority
+  a: Only the most specific file is loaded and the others are ignored
+  b: The applicable files are combined, so contradictory instructions should be avoided instead of relying on an override order
+  c: Local overrides project, which overrides global, exactly like settings.json precedence
+  d: Global always overrides project and personal files
 doc_reference:
   file: guide/ultimate-guide.md
   section: 3.4 Precedence Rules
@@ -20,8 +20,8 @@ doc_reference:
 official_doc: https://code.claude.com/docs/en/memory
 ---
 
-What is the correct precedence order for CLAUDE.md files (highest to lowest priority)?
+How does Claude Code treat the applicable user (~/.claude/CLAUDE.md), project (CLAUDE.md), and personal (CLAUDE.local.md) instruction files in one session?
 
 ---
 
-The precedence is: Local (.claude/CLAUDE.md) > Project (/project/CLAUDE.md) > Global (~/.claude/CLAUDE.md). More specific beats more general. Local overrides are personal (gitignored), project settings are shared (committed), and global settings apply to all projects. This hierarchy allows personal preferences to override team conventions when needed.
+Instructions combine rather than following settings precedence. ~/.claude/CLAUDE.md applies to all your projects, CLAUDE.md or .claude/CLAUDE.md holds the shared project instructions that you commit, and CLAUDE.local.md holds personal project instructions that stay gitignored. Because all applicable files reach Claude together, a contradiction between them is a bug in your instructions, not something a precedence rule resolves for you.

@@ -5,21 +5,21 @@ difficulty: senior
 profiles:
 - senior
 - power
-correct: d
+correct: c
 options:
-  a: "They are equivalent: both block the same operations"
-  b: Simple patterns block the tool entirely; tool-qualified patterns only warn
-  c: Tool-qualified format requires a regex while simple patterns use globs
-  d: Tool-qualified format matches the full path argument; simple string matches only exact file names
+  a: Both block every Read call, because the specifier in parentheses is ignored
+  b: The bare rule only warns, while the specifier version blocks
+  c: The bare rule matches every Read call, while the specifier version matches only reads of the `.env` file
+  d: The specifier version matches any file that has `.env` anywhere in its path
 doc_reference:
   file: guide/ultimate-guide.md
   section: Permission Patterns
   anchor: '#permission-patterns'
 ---
 
-What is the key difference between `"Read(file_path:*.env*)"` and `"*.env"` in `permissions.deny`?
+What does the rule `"Read(./.env)"` match in `permissions.deny`, compared with a bare `"Read"` rule?
 
 ---
 
-The tool-qualified format `Read(file_path:*.env*)` matches against the **full path argument** passed to the Read tool, using glob patterns. The simple string form `"*.env"` only matches exact file names. For example, `Read(file_path:*.env*)` would block reads of `.env.production` or `config/.env.local`, while `"*.env"` would only block a file literally named `.env`. The tool-qualified format is more granular and recommended for sensitive file protection.
+Permission rules use the format `Tool` or `Tool(specifier)`. A bare `Read` matches every read, while `Read(./.env)` matches only reads of the `.env` file. `Bash(npm run *)` and `WebFetch(domain:example.com)` follow the same pattern for their tools. Claude Code evaluates `deny` rules first, then `ask`, then `allow`, and the first match decides, so a deny rule cannot be overridden by a broader allow rule.
 ---

@@ -7,29 +7,28 @@ profiles:
 - power
 correct: b
 options:
-  a: 1000ms (1 second)
-  b: 5000ms (5 seconds)
-  c: 30000ms (30 seconds)
-  d: No timeout by default
+  a: Milliseconds
+  b: Seconds
+  c: Minutes
+  d: Tokens
 doc_reference:
   file: guide/ultimate-guide.md
   section: 7.2 Creating Hooks
   anchor: '#hook-registration-settingsjson'
 ---
 
-What timeout value does the example hook registration in the guide use?
+In a hook registration, what unit does the `timeout` field use?
 
 ---
 
-The example hook configuration shows a timeout of 5000ms (5 seconds).
+The `timeout` field is the number of seconds before Claude Code cancels the hook.
 
 ```json
 {
   "type": "command",
   "command": ".claude/hooks/security-check.sh",
-  "timeout": 5000
+  "timeout": 10
 }
 ```
 
-This prevents hooks from blocking Claude Code indefinitely. Note that 5000ms is the value chosen in this example, not the platform default: when the timeout field is omitted, command-type hooks default to 600 seconds, prompt hooks to 30 seconds, and agent hooks to 60 seconds.
-For longer operations like formatting, you might increase this to 10000ms.
+This prevents a hook from blocking Claude Code indefinitely. When the field is omitted, command hooks default to 600 seconds, prompt hooks to 30 seconds, and agent hooks to 60 seconds. A value such as 5000 would mean 5000 seconds, not 5 seconds.

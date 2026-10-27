@@ -3,33 +3,24 @@ id: 07-025
 category_id: 7
 difficulty: senior
 profiles:
-  - senior
-  - power
-correct: b
+- senior
+- power
+correct: d
 options:
-  a: 1000ms (1 second)
-  b: 5000ms (5 seconds)
-  c: 30000ms (30 seconds)
-  d: No timeout by default
+  a: 5 seconds
+  b: 30 seconds
+  c: 60 seconds
+  d: 600 seconds
 doc_reference:
   file: guide/ultimate-guide.md
   section: 7.2 Creating Hooks
-  anchor: "#hook-registration-settingsjson"
+  anchor: '#hook-registration-settingsjson'
 ---
 
-What is the default timeout for hooks in the configuration?
+What is the default timeout of a command hook on most events when the `timeout` field is omitted?
 
 ---
 
-The example hook configuration shows a timeout of 5000ms (5 seconds).
+Command, http, and mcp_tool hooks default to 600 seconds. Prompt hooks default to 30 seconds and agent hooks to 60 seconds. A few events use shorter defaults, for example `UserPromptSubmit` (30 seconds for command hooks) and `SessionEnd` (1.5 seconds).
 
-```json
-{
-  "type": "command",
-  "command": ".claude/hooks/security-check.sh",
-  "timeout": 5000
-}
-```
-
-This prevents hooks from blocking Claude Code indefinitely.
-For longer operations like formatting, you might increase this to 10000ms.
+Set `timeout` (in seconds) explicitly on any hook that must fail fast, such as a security check that runs before every tool call.

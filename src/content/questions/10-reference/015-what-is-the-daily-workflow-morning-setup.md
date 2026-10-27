@@ -9,7 +9,7 @@ profiles:
 correct: b
 options:
   a: Just start coding
-  b: Git pull, /status, load project memory, review yesterday's progress
+  b: Git pull, /context, load project memory, review yesterday's progress
   c: Run all tests first
   d: Clear all context
 doc_reference:
@@ -25,7 +25,7 @@ What is the daily workflow morning setup according to the guide?
 Morning setup workflow:
 
 1. Git pull latest changes
-2. Review context with `/status`
+2. Review context with `/context`
 3. Load project memory (`/sc:load` if using Serena)
 4. Review yesterday's progress
 

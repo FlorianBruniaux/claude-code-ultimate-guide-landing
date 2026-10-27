@@ -577,8 +577,8 @@ const diagramEntries: SearchEntry[] = [
 const guideSpotlightEntries: SearchEntry[] = [
   {
     id: 'guide-output-styles',
-    title: 'Output Styles: Default, Explanatory, Learning + Custom',
-    keywords: 'output styles outputStyle default explanatory learning custom /config settings.json .claude/styles/ token cost response format',
+    title: 'Output Styles: Default, Proactive, Concise, Explanatory, Learning + Custom',
+    keywords: 'output styles outputStyle /output-style default proactive concise explanatory learning custom /config settings.json .claude/output-styles/ keep-coding-instructions token cost response format',
     category: 'Guide > Advanced Patterns',
     url: '/guide/ultimate-guide/09-advanced-patterns/#97-output-styles',
     source: 'guide',

@@ -17,8 +17,8 @@ doc_reference:
   anchor: '#what-this-monitoring-cannot-do'
 ---
 
-What CANNOT the session monitoring do?
+What CANNOT a hook-based session logger provide on its own?
 
 ---
 
-Monitoring CANNOT provide: exact token counts (CLI doesn't expose API metrics), actual API costs (estimates only), TTFT timing, real-time streaming metrics, or context window usage. It CAN track: tool usage counts, file access patterns, relative comparisons, operation timing.
+A hook-based logger CANNOT provide exact token counts or actual API costs by itself, because the guide's logger estimates tokens from text length instead of reading API usage data. Claude Code reports measured usage through other channels: /usage shows session cost and token usage, the status line can show context window usage, and OpenTelemetry export streams per-user token and cost metrics. A logger CAN track tool usage counts, file access patterns, relative comparisons, and operation timing.

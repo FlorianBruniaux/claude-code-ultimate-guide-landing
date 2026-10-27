@@ -5,20 +5,20 @@ difficulty: intermediate
 profiles:
 - senior
 - power
-correct: c
+correct: b
 options:
-  a: ~32K tokens
-  b: ~100K tokens
-  c: ~200K tokens
-  d: ~500K tokens
+  a: Only the conversation history
+  b: The system prompt, CLAUDE.md files, conversation history, and tool results
+  c: Only your prompts and Claude's replies
+  d: Only CLAUDE.md files and tool results
 doc_reference:
-  file: guide/core/architecture.md
+  file: guide/architecture.md
   section: Context Budget Breakdown
   anchor: '#context-budget-breakdown'
 ---
 
-What is the approximate context budget for Claude Code with Claude 3.5 Sonnet?
+Which of these share the same context window in Claude Code?
 
 ---
 
-Claude Code operates within a ~200K token context window. This is shared between: system prompt (~5-15K), CLAUDE.md files (~1-10K), conversation history (variable), tool results (variable), and reserved response buffer (~40-45K). Usable space is approximately 140-150K tokens.
+Claude Code operates within one context window shared between the system prompt, CLAUDE.md files, conversation history, and tool results, plus room reserved for the response. On the direct API, Opus 5.5, Sonnet 5.5, Haiku 5.5, and Fable 5.1 have a native 1M-token window, while the legacy Haiku 4.5 has 200K. A bigger window raises the ceiling but does not remove the need to manage what fills it.

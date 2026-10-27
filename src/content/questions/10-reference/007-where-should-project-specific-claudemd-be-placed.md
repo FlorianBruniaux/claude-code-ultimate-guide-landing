@@ -9,7 +9,7 @@ profiles:
 correct: c
 options:
   a: ~/.claude/CLAUDE.md
-  b: /project/.claude/CLAUDE.md
+  b: /project/CLAUDE.local.md
   c: /project/CLAUDE.md
   d: ~/.config/claude/project.md
 doc_reference:
@@ -28,7 +28,8 @@ CLAUDE.md locations:
 |----------|-------|-----------|
 | `~/.claude/CLAUDE.md` | All projects | N/A (global) |
 | `/project/CLAUDE.md` | This project | **Yes** |
-| `/project/.claude/CLAUDE.md` | Personal | No |
+| `/project/.claude/CLAUDE.md` | This project (alternative location) | **Yes** |
+| `/project/CLAUDE.local.md` | Personal | No (gitignored) |
 
 The root `CLAUDE.md` is committed and shared with the team.
 The `.claude/CLAUDE.md` is personal and should be in `.gitignore`.

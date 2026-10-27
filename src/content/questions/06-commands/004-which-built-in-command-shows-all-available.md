@@ -28,7 +28,7 @@ The `/help` command displays all available commands, both built-in and custom.
 Built-in commands include:
 - `/clear` - Clear conversation
 - `/compact` - Summarize context
-- `/status` - Show session info
+- `/status` - Open the Status tab (version, model, account, connectivity)
 - `/plan` - Enter Plan Mode
 - `/rewind` - Undo changes
 

@@ -9,7 +9,7 @@ correct: c
 options:
   a: Perplexity
   b: Claude Code directly
-  c: Gemini 2.5 Pro -> then Claude Code for refinement
+  c: Gemini -> then Claude Code for refinement
   d: NotebookLM
 doc_reference:
   file: guide/ecosystem/ai-ecosystem.md
@@ -21,7 +21,7 @@ Which tool is best for converting a UI screenshot to React code?
 
 ---
 
-Gemini 2.5 Pro excels at visual understanding:
+Gemini is the guide's pick for visual understanding:
 
 Visual-to-Code Pipeline:
 1. GEMINI: Upload screenshot -> Get JSX + Tailwind (90%+ fidelity)

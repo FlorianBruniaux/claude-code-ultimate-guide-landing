@@ -6,20 +6,20 @@ profiles:
 - junior
 - senior
 - power
-correct: b
+correct: c
 options:
-  a: 5 tools
-  b: 8 tools
-  c: 12 tools
-  d: Unlimited (model-dependent)
+  a: It has exactly 5 tools and nothing else
+  b: It has a fixed set of exactly 8 tools that never changes
+  c: It has a core set (Bash, Read, Edit, Write, Grep, Glob, and Agent for subagents) plus further tools such as WebFetch, WebSearch, and task tracking, all listed in the tools reference
+  d: It has no built-in tools, only MCP tools
 doc_reference:
-  file: guide/core/architecture.md
+  file: guide/architecture.md
   section: The Tool Arsenal
   anchor: '#2-the-tool-arsenal'
 ---
 
-How many core tools does Claude Code have?
+Which statement about Claude Code's built-in tools is accurate?
 
 ---
 
-Claude Code has exactly 8 core tools: Bash (universal adapter), Read (file contents), Edit (modify files), Write (create/overwrite), Grep (search contents), Glob (find files), Task (sub-agents), and TodoWrite (progress tracking). That's the entire arsenal. Note: TodoWrite was replaced by the Tasks API (TaskCreate/TaskGet/TaskList/TaskUpdate) in v2.1.16+ for persistent task management with dependencies.
+The tools reference lists many built-in tools, not a fixed count of 8. The core ones are Bash (universal adapter), Read, Edit, Write, Grep, Glob, and Agent (spawns a subagent with its own context window), alongside others such as WebFetch, WebSearch, Skill, and the task-tracking tools. TodoWrite was superseded by TaskCreate/TaskGet/TaskList/TaskUpdate, and those tools are only on by default for some older models (Opus 4.7, Sonnet 4.6, Haiku 4.5, and earlier).

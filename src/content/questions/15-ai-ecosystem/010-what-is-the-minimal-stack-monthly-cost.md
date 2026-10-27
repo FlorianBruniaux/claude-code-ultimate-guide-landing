@@ -33,4 +33,4 @@ Balanced Stack ($80-110/month):
 Cost optimization tips:
 - Use Haiku for simple tasks
 - Batch research sessions in Perplexity
-- Check context usage regularly (/status)
+- Check context usage regularly (/context)

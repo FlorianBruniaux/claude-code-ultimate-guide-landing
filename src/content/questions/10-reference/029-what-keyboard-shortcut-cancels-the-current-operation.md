@@ -3,9 +3,9 @@ id: 10-029
 category_id: 10
 difficulty: junior
 profiles:
-  - junior
-  - senior
-  - power
+- junior
+- senior
+- power
 correct: b
 options:
   a: Esc
@@ -15,18 +15,17 @@ options:
 doc_reference:
   file: guide/ultimate-guide.md
   section: 10.2 Keyboard Shortcuts
-  anchor: "#session-control"
+  anchor: '#session-control'
 ---
 
-What keyboard shortcut cancels the current operation?
+What keyboard shortcut interrupts a running operation, clears the prompt input when nothing is running, and exits on a second press?
 
 ---
 
-`Ctrl+C` cancels the current operation.
+`Ctrl+C` interrupts a running operation. If nothing is running, the first press clears the prompt input and a second press exits Claude Code.
 
-Important shortcuts:
-- `Ctrl+C`: Cancel operation
-- `Ctrl+D`: Exit Claude Code
-- `Ctrl+R`: Retry last operation
-- `Ctrl+L`: Clear screen (keeps context)
-- `Esc`: Dismiss current suggestion
+Related shortcuts:
+- `Esc`: Interrupt Claude mid-turn, or close a dialog
+- `Esc` + `Esc`: Clear the input draft, or open the rewind menu when the input is empty
+- `Ctrl+R`: Reverse search command history
+- `Ctrl+G`: Open the prompt in an external editor

@@ -21,4 +21,4 @@ How are image tokens calculated in Claude Code?
 
 ---
 
-Token calculation formula: (width × height) / 750 ≈ tokens consumed. Examples: 200×200 = ~54 tokens, 500×500 = ~334 tokens, 1000×1000 = ~1334 tokens. This helps estimate context impact before pasting images. Use /status after pasting to monitor actual context usage.
+Token calculation formula: (width × height) / 750 ≈ tokens consumed. Examples: 200×200 = ~54 tokens, 500×500 = ~334 tokens, 1000×1000 = ~1334 tokens. This helps estimate context impact before pasting images. Use /context after pasting to monitor actual context usage.

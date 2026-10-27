@@ -21,4 +21,4 @@ Which model setting is valid for a bounded rename with a verified reference list
 
 ---
 
-Haiku 4.5 has no effort parameter. It is a candidate for bounded changes when the references and acceptance checks are clear. Verify the diff and tests; renames can still affect public APIs, dynamic references, or generated files. Standard input rates are $1/MTok for Haiku 4.5 versus $4/MTok for Opus 5.5, not a 60-fold difference.
+Haiku 4.5, the haiku alias on the cloud providers, has no effort parameter; Haiku 5.5 does support effort levels. A lighter model is a candidate for bounded changes when the references and acceptance checks are clear. Verify the diff and tests; renames can still affect public APIs, dynamic references, or generated files. For scale, standard input rates are $0.10/MTok for Haiku 5.5 (up to 100K input tokens) versus $4/MTok for Opus 5.5.

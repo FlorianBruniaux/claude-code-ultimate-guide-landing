@@ -5,20 +5,20 @@ difficulty: senior
 profiles:
 - senior
 - power
-correct: b
+correct: c
 options:
-  a: $0.01 - $0.05
-  b: $0.10 - $0.50
-  c: $1.00 - $5.00
-  d: $10.00 - $20.00
+  a: Around $1
+  b: Around $5
+  c: Around $13
+  d: Around $60
 doc_reference:
   file: guide/ultimate-guide.md
   section: 2.2 Context Management
   anchor: '#cost-awareness-optimization'
 ---
 
-What is the typical cost of a 1-hour Claude Code session?
+According to Anthropic's cost documentation, what is the average cost per developer per active day across enterprise deployments?
 
 ---
 
-A typical 1-hour session costs $0.10 - $0.50 depending on usage patterns. The guide provides cost budgets: quick task (5-10 min) $0.05-$0.10, feature work (1-2 hours) $0.20-$0.50, deep refactor (half day) $1.00-$2.00. Spending $0.50 to save 30 minutes provides 60x ROI if your time is worth $30/hour - don't over-optimize!
+Across enterprise deployments, the average cost is around $13 per developer per active day and $150-250 per developer per month, with costs below $30 per active day for 90% of users. These are averages for budgeting a pilot, not a per-session price, so measure your own team's spend with /usage before extrapolating.

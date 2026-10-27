@@ -9,28 +9,19 @@ profiles:
 correct: b
 options:
   a: /info
-  b: /status
-  c: /stats
-  d: /session
+  b: /usage
+  c: /session
+  d: /status
 doc_reference:
   file: guide/ultimate-guide.md
   section: 10.1 Commands Table
   anchor: '#built-in-commands'
 ---
 
-What command shows session info including context usage and cost?
+Which command shows the session cost, plan usage limits, and activity stats?
 
 ---
 
-The `/status` command shows session information.
+The `/usage` command shows session cost, plan usage limits, and activity stats. `/cost` and `/stats` are aliases for it, and `/stats` opens on the Stats tab.
 
-Output includes:
-- Model being used
-- Context usage percentage
-- Session cost
-- Token counts
-
-Example output:
-`Model: Sonnet | Ctx: 45.2k | Cost: $1.23 | Ctx(u): 42.0%`
-
-Use `/stats` for usage statistics with activity graphs.
+`/status` is different: it opens the Settings interface on the Status tab, which shows version, model, account, and connectivity. To see how full the context window is, use `/context`.

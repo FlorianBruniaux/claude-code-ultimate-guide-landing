@@ -29,7 +29,7 @@ The same error found post-implementation = days.
 **Implementer: Haiku** — Mechanical execution.
 The approach is already decided by the planner.
 No design decisions = no need for deep reasoning.
-At standard rates, Haiku 4.5 input costs $1/MTok versus $4/MTok for Opus 5.5.
+At standard rates, Haiku 5.5 input costs $0.10/MTok (up to 100K input tokens) versus $4/MTok for Opus 5.5.
 
 **When Haiku isn't enough**: If the implementation requires judgment calls,
 the implementer should stop and report rather than decide — or you use Sonnet instead.

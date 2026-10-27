@@ -6,11 +6,11 @@ profiles:
 - junior
 - senior
 - power
-correct: c
+correct: b
 options:
-  a: Four levels (low, medium, high, max) with icons ▲ △ ● ○
-  b: Three levels (quick, normal, deep) with symbols ○ ◐ ●
-  c: Three levels (low, medium, high) with symbols ○ ◐ ● (max was removed in v2.1.72)
+  a: Three levels (low, medium, high), because max was removed in v2.1.72
+  b: Five levels (low, medium, high, xhigh, max)
+  c: Three levels (quick, normal, deep)
   d: Two levels (fast, thorough) toggled with Alt+T
 doc_reference:
   file: guide/core/claude-code-releases.md
@@ -18,11 +18,10 @@ doc_reference:
   anchor: '#v2172-2026-03-09'
 ---
 
-What are the effort levels in Claude Code after the v2.1.72 simplification?
+Which effort levels does Claude Code offer on Opus 5.5, Sonnet 5.5, and Haiku 5.5?
 
 ---
 
-v2.1.72 simplified effort to **three levels**: low (○), medium (◐), and high (●). The `max` level was removed at that point. Use `/model` with left/right arrow keys to adjust the effort slider, the `effortLevel` setting in `settings.json`, or the `CLAUDE_CODE_EFFORT_LEVEL` environment variable. The symbols provide quick visual reference in the UI. Use `/effort auto` to reset to the default adaptive behavior.
+Opus 5.5, Sonnet 5.5, Haiku 5.5, and the Fable models support `low`, `medium`, `high`, `xhigh`, and `max`. Opus 4.6 and Sonnet 4.6 stop at `max` without `xhigh`, and a level the active model does not support falls back to the highest supported level at or below it. Models not listed in the model configuration docs do not support effort.
 
-**Current state (v2.1.220):** the scale grew back. `/effort` now accepts `low`, `medium`, `high`, `xhigh` (added v2.1.111), `max`, and `ultracode`; `max` and `ultracode` apply to the current session only. Available levels depend on the model.
----
+The default is `medium` on Opus 5.5, Sonnet 5.5, and Haiku 5.5, and `high` on most other models that support effort. Set a level with `/effort`, the `/model` picker, `--effort`, or the `CLAUDE_CODE_EFFORT_LEVEL` environment variable. `max` applies to the current session only unless you set it through that environment variable. Ultracode is a separate toggle, not an effort level.
