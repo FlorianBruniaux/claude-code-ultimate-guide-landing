@@ -1,0 +1,117 @@
+src/content/questions/01-quick-start/010-which-keyboard-shortcut-cancels-the-current.md
+  s_2e9ca0d5560653::t_857885f6261583 22,26
+src/content/questions/01-quick-start/017-how-are-image-tokens-calculated-in-claude-code.md
+  s_2e9ca0d5560653::t_97b5a015ec69b0 24
+src/content/questions/02-core-concepts/002-what-is-claudes-context-window-size.md
+  s_2e9ca0d5560653::t_3a028275f43cc4 11-14,21,25
+src/content/questions/02-core-concepts/017-what-is-the-typical-cost-of-a-1-hour-claude-code.md
+  s_2e9ca0d5560653::t_4551f98b404e3c 8,10-13,20,24
+src/content/questions/03-memory-settings/001-what-is-the-correct-precedence-order-for-claudemd.md
+  s_2e9ca0d5560653::t_01525cf51d29c0 12-15,23,27
+src/content/questions/03-memory-settings/002-where-should-team-conventions-be-stored-to-be.md
+  s_2e9ca0d5560653::t_d49092bfd4a386 12,26
+src/content/questions/03-memory-settings/014-what-are-the-three-levels-of-progressive.md
+  s_2e9ca0d5560653::t_115d32f9071831 24
+src/content/questions/03-memory-settings/022-tool-qualified-deny-format-vs-simple-pattern.md
+  s_2e9ca0d5560653::t_589fdbb3ba1541 8,10-13,20,24
+src/content/questions/04-agents/014-what-is-the-split-role-sub-agents-pattern.md
+  s_2e9ca0d5560653::t_dbf476d3f0c8e2 23
+src/content/questions/06-commands/004-which-built-in-command-shows-all-available.md
+  s_2e9ca0d5560653::t_e17e11f47e7465 31
+src/content/questions/06-commands/017-whats-the-difference-between-slash-review-and-slash-code-review.md
+  s_2e9ca0d5560653::t_15150359c1506a 8,10-13,19,23
+src/content/questions/06-commands/018-what-happened-to-the-slash-agents-wizard-command.md
+  s_2e9ca0d5560653::t_e8ba5062a14ad4 14,24
+src/content/questions/06-commands/025-you-need-deterministic-ci-cd-execution-unaffected-by.md
+  s_2e9ca0d5560653::t_071d5e36afde1d 6,9-12,16,23
+src/content/questions/07-hooks/014-what-is-the-default-timeout-for-hooks-in-the.md
+  s_2e9ca0d5560653::t_1d3d445bf29448 10-13,20,24,30,34
+src/content/questions/07-hooks/025-what-is-the-default-timeout-for-hooks-in.md
+  s_2e9ca0d5560653::t_92e422866ade83 6-8,10-13,17,20,24,26
+src/content/questions/08-mcp-servers/014-what-command-lists-all-installed-plugins-in.md
+  s_2e9ca0d5560653::t_7bd7aa1933c3b3 10-12,24,27
+src/content/questions/09-advanced-patterns/001-what-are-the-three-components-of-the-trinity.md
+  s_2e9ca0d5560653::t_0b5488f83fcacd 27
+src/content/questions/09-advanced-patterns/003-what-cli-flag-runs-claude-code-without.md
+  s_2e9ca0d5560653::t_01a7075bebdc14 30-31
+src/content/questions/09-advanced-patterns/047-you-need-to-rename-a-function-across-50.md
+  s_2e9ca0d5560653::t_11f94d5e96603d 24
+src/content/questions/09-advanced-patterns/049-what-does-the-parameter-actually-control-in-opus.md
+  s_2e9ca0d5560653::t_ccb5280102acde 6-7,11,17,20,36
+src/content/questions/09-advanced-patterns/051-in-the-planner-implementer-agent-pattern-which-model.md
+  s_2e9ca0d5560653::t_4c773b8f597a29 32
+src/content/questions/09-advanced-patterns/056-what-is-the-20-block-lookback-in-prompt.md
+  s_2e9ca0d5560653::t_d75a934dce5146 6,10,16,23
+src/content/questions/09-advanced-patterns/058-what-is-the-prompt-caching-minimum-token-threshold.md
+  s_2e9ca0d5560653::t_e848c9dd6f86c3 6,9-12,16,19,23
+src/content/questions/10-reference/003-what-does-compact-do.md
+  s_2e9ca0d5560653::t_77da28e6f7462b 33
+src/content/questions/10-reference/007-where-should-project-specific-claudemd-be-placed.md
+  s_2e9ca0d5560653::t_7cf27a099903f7 12,31-32
+src/content/questions/10-reference/010-what-command-shows-session-info-including-context.md
+  s_2e9ca0d5560653::t_1f1b95977cf71b 12-14,21,25,27
+src/content/questions/10-reference/015-what-is-the-daily-workflow-morning-setup.md
+  s_2e9ca0d5560653::t_7ffe25c184e107 12,28
+src/content/questions/10-reference/022-what-are-the-simplified-effort-levels-and-symbols.md
+  s_2e9ca0d5560653::t_47035c9616fb34 9,11-13,21,25,27
+src/content/questions/10-reference/024-model-parameter-restored-on-agent-tool.md
+  s_2e9ca0d5560653::t_7bf20d95b8cc40 24
+src/content/questions/10-reference/029-what-keyboard-shortcut-cancels-the-current-operation.md
+  s_2e9ca0d5560653::t_600d9609693402 6-8,18,21,25,27-31
+src/content/questions/12-architecture-internals/002-how-many-core-tools-does-claude-code-have.md
+  s_2e9ca0d5560653::t_c60e558f736313 9,11-14,16,21,25
+src/content/questions/12-architecture-internals/004-what-is-the-approximate-context-budget-for-claude.md
+  s_2e9ca0d5560653::t_5a8c94a83f0ac1 8,10-13,15,20,24
+src/content/questions/12-architecture-internals/006-what-is-the-maximum-depth-for-sub-agents-spawned.md
+  s_2e9ca0d5560653::t_f036d769112397 9,12-14,21,25
+src/content/questions/12-architecture-internals/007-what-does-a-sub-agent-receive-when-spawned-by-the.md
+  s_2e9ca0d5560653::t_1dbe999a79e7c9 10-13,15,20,24
+src/content/questions/12-architecture-internals/012-what-are-the-4-specialized-sub-agent-types.md
+  s_2e9ca0d5560653::t_bd08ec344c22e0 11,24,26,28,30-32,36
+src/content/questions/12-architecture-internals/013-what-tool-replaced-todowrite-for-task-management.md
+  s_2e9ca0d5560653::t_2ffb60d72cf894 25
+src/content/questions/14-privacy-observability/008-what-is-the-token-estimation-method-used-by-the.md
+  s_2e9ca0d5560653::t_341f247ff1ba07 24
+src/content/questions/14-privacy-observability/009-what-cannot-the-session-monitoring-do.md
+  s_2e9ca0d5560653::t_c12a7c75dcf25e 20,24
+src/content/questions/15-ai-ecosystem/004-which-tool-is-best-for-converting-a-ui-screenshot.md
+  s_2e9ca0d5560653::t_4ea3dcf5181103 12,24
+src/content/questions/15-ai-ecosystem/010-what-is-the-minimal-stack-monthly-cost.md
+  s_2e9ca0d5560653::t_24059395371e57 36
+src/data/guide-search-entries.ts
+  s_73ab09d8e049db::t_ba6a6f3185d2e2 830-853,1614-1661,4699,4862-4869,7401,7403
+src/data/search-index.ts
+  s_0d99942bd5e52a::t_7e776bc1a13071 580-581
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9ed5d43dc3878e426a2ec207790b9f7d195b0c41",
+  "prompts": {},
+  "sessions": {
+    "s_0d99942bd5e52a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f90f712-4dec-4864-90b0-d67f46e25e7a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_2e9ca0d5560653": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff5faa5e-0006-4c12-83cb-c362dfd2ef9b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_73ab09d8e049db": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13409-d15d-7761-b3b8-0fcd083b1f73",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
