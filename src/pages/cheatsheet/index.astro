@@ -220,12 +220,12 @@ const jsonLd = [
         <table>
           <tr><th>Model</th><th>Input/output per MTok</th><th>Default effort</th></tr>
           <tr><td>Opus 5.5</td><td>$4 / $20</td><td>medium</td></tr>
-          <tr><td>Sonnet 5</td><td>$2 / $10</td><td>high</td></tr>
-          <tr><td>Haiku 4.5</td><td>$1 / $5</td><td>No effort parameter</td></tr>
+          <tr><td>Sonnet 5.5</td><td>$2 / $10</td><td>medium</td></tr>
+          <tr><td>Haiku 5.5</td><td>$0.10 / $0.50 (prompts up to 100K tokens)</td><td>medium</td></tr>
           <tr><td>Fable 5.1</td><td>$10 / $50</td><td>high</td></tr>
         </table>
-        <p>Standard direct-API rates verified September 24, 2026. Provider aliases differ. Opus 5.5 is the direct-service default; organization settings can override it.</p>
-        <p><code>/effort</code> saves levels through xhigh per model. Press s for this session only; max is session-only. Opus 5.5 and Fable always use thinking. The ultrathink keyword adds guidance without changing API effort.</p>
+        <p>Standard direct-API rates verified October 27, 2026; Haiku 5.5 costs $0.50 / $2.50 above 100K-token prompts. Provider aliases differ. Opus 5.5 is the direct-service default; organization settings can override it.</p>
+        <p><code>/effort</code> saves levels through xhigh per model. Press s for this session only; max is session-only. Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable always use thinking. The ultrathink keyword adds guidance without changing API effort.</p>
         <p><a href="/guide/ultimate-guide/#25-model-selection--thinking-guide">Full model and provider reference</a></p>
       </div>
 
@@ -237,7 +237,7 @@ const jsonLd = [
 3. Plan Mode          &rarr; Shift+Tab x 2
 4. Describe task      &rarr; Clear, specific prompt
 5. Review changes     &rarr; Always read the diff!
-6. Accept/Reject      &rarr; y/n
+6. Accept/Reject      &rarr; Enter/Esc
 7. Verify             &rarr; Run tests
 8. Commit             &rarr; When task complete
 9. /compact           &rarr; When context >70%</code></pre>
