@@ -1,0 +1,19 @@
+src/pages/cheatsheet/index.astro
+  s_ec27ff3a7ae4e7::t_9de2c2e54597f0 70,86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "16673239668f9e4512029b77667d955d77613b59",
+  "prompts": {},
+  "sessions": {
+    "s_ec27ff3a7ae4e7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a158a4-1852-7f53-a868-0ae1b16c0089",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
