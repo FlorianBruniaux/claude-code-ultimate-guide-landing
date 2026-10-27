@@ -1,0 +1,537 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import {
+  ANTI_PATTERN_CATEGORIES,
+  ANTI_PATTERNS,
+  CONSENSUS_LABELS,
+  FAMILIES,
+  LAST_VERIFIED,
+  NATIVE_PATTERNS,
+  PATTERN_COUNTS,
+  PATTERN_ROWS,
+  PROVENANCE_LABELS,
+  guideHref,
+} from '../../data/ai-design-patterns.ts'
+
+const title = 'AI Design Patterns: GoF and Resilience Patterns for Claude Code'
+const description = 'Classic design patterns (Observer, Chain of Responsibility, Memento, Circuit Breaker, Saga) mapped to Claude Code hooks, subagents, checkpoints and limits, with failure modes, checks, native agent patterns and anti-patterns.'
+const pageUrl = 'https://cc.bruniaux.com/ai-design-patterns/'
+
+const jsonLd = [
+  {
+    '@type': 'Article',
+    headline: 'AI Design Patterns: classic patterns mapped to Claude Code',
+    description,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
+    author: { '@type': 'Person', '@id': 'https://cc.bruniaux.com/#author', name: 'Florian BRUNIAUX', url: 'https://github.com/FlorianBruniaux', jobTitle: 'Founding Engineer' },
+    publisher: { '@type': 'Organization', '@id': 'https://cc.bruniaux.com/#organization', name: 'Claude Code Ultimate Guide', url: 'https://cc.bruniaux.com' },
+    datePublished: '2026-10-27',
+    dateModified: LAST_VERIFIED,
+    inLanguage: 'en',
+    keywords: 'AI design patterns, agent design patterns, GoF patterns for agents, Claude Code hooks, subagents, circuit breaker, saga, agent harness anti-patterns',
+  },
+]
+
+const divergentRows = PATTERN_ROWS.filter(row => row.consensus === 'divergent')
+
+const breaks = [
+  {
+    classic: 'Decorator',
+    guarantee: 'Wrappers run in a fixed order.',
+    harness: 'Hooks',
+    reality: 'Matching hooks for one event run in parallel; for permission decisions the most restrictive result applies.',
+    doc: 'https://code.claude.com/docs/en/hooks',
+  },
+  {
+    classic: 'Memento',
+    guarantee: 'The snapshot restores the full state.',
+    harness: 'Checkpoints',
+    reality: 'Checkpoints track changes made through Claude\'s file editing tools only. Bash commands, external processes and most background subagent edits are not captured.',
+    doc: 'https://code.claude.com/docs/en/checkpointing',
+  },
+  {
+    classic: 'Event Sourcing',
+    guarantee: 'Replaying the log rebuilds the same state.',
+    harness: 'Transcript',
+    reality: 'A resumed session restores the conversation. The model calls that follow are not deterministic.',
+    doc: 'https://code.claude.com/docs/en/sessions',
+  },
+  {
+    classic: 'Facade',
+    guarantee: 'The entry point enforces a contract.',
+    harness: 'CLAUDE.md',
+    reality: 'Claude treats CLAUDE.md as context, not enforced configuration. Blocking needs a deny rule, or a PreToolUse hook set to block when it fails: by default, a crashed hook lets the action through.',
+    doc: 'https://code.claude.com/docs/en/memory',
+  },
+]
+
+const decisionRules = [
+  { condition: 'Steps are known before the run and each one can be checked by code', pattern: 'Pipes and Filters', how: 'claude -p in a pipeline, JSON between steps', anchor: 'pipes-and-filters' },
+  { condition: 'Steps are known, but the result needs judgment', pattern: 'Template Method', how: 'A skill for the procedure, a Stop hook for the final check', anchor: 'template-method' },
+  { condition: 'The input decides which specialist should run', pattern: 'Content-Based Router', how: 'Distinct subagent descriptions, a routing test set', anchor: 'content-based-router' },
+  { condition: 'The work splits into independent parts', pattern: 'Scatter-Gather', how: 'Parallel subagents, worktree isolation for writers, explicit synthesis', anchor: 'scatter-gather' },
+  { condition: 'A clear quality criterion exists', pattern: 'Evaluator-optimizer', how: 'A reviewer subagent plus the real tests', anchor: 'evaluator-optimizer' },
+  { condition: 'None of the above: the plan itself is unknown', pattern: 'Orchestrator-workers', how: 'Plan mode first, then bounded delegation', anchor: 'orchestrator-workers' },
+]
+
+const figures = {
+  lineage: '/guide/images/ai-design-patterns/lineage-en.webp',
+  harnessMap: '/guide/images/ai-design-patterns/harness-map-en.webp',
+  breaks: '/guide/images/ai-design-patterns/analogy-breaks-en.webp',
+  failureMap: '/guide/images/ai-design-patterns/failure-map-en.webp',
+}
+
+const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow">Claude Code · Build</div>
+      <h1>AI design patterns</h1>
+      <p class="hero-desc">Your agent harness already speaks the patterns developers know: Observer, Mediator, Memento, Circuit Breaker, Saga. This page maps each one to the Claude Code mechanism behind it, then shows where the analogy breaks.</p>
+      <div class="hero-pills">
+        <a href="#crosswalk" class="pill pill--accent">{PATTERN_COUNTS.crosswalk} crosswalk rows</a>
+        <a href="#native" class="pill pill--info">{PATTERN_COUNTS.native} native agent patterns</a>
+        <a href="#anti-patterns" class="pill pill--warning">{PATTERN_COUNTS.antiPatterns} anti-patterns</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--tldr">
+      <div class="container">
+        <div class="tldr-grid">
+          <div class="tldr-card tldr-card--accent">
+            <h2>Same shapes</h2>
+            <p>Hooks react to events like observers, subagents isolate context like bulkheads, turn and budget limits cap a run like circuit breakers. The vocabulary transfers.</p>
+          </div>
+          <div class="tldr-card tldr-card--warning">
+            <h2>Weaker guarantees</h2>
+            <p>The component in the middle is a model that decides at runtime. Order, restore and enforcement are no longer given; each card names what replaces them.</p>
+          </div>
+          <div class="tldr-card tldr-card--info">
+            <h2>A check per pattern</h2>
+            <p>Every row ends with a check you can run on your own harness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="lineage">
+      <div class="container">
+        <span class="section-badge">Lineage</span>
+        <h2 class="section-title">Three generations, one question</h2>
+        <p class="section-subtitle">Object patterns (1994), integration and resilience patterns (2003 onward) and agent patterns (2024 onward) solve the same kind of problem. What changes is when the decision is taken.</p>
+        <figure class="infographic">
+          <div class="infographic-scroll">
+            <img src={figures.lineage} width="1376" height="774" loading="lazy" decoding="async" alt="Three generations of design patterns: objects in 1994 (Observer, Strategy, Command, decided at design time), services in 2003 (Router, Scatter-Gather, Circuit Breaker, Saga, decided at deployment time), and agents in 2024 (Orchestrator-workers, Evaluator-optimizer, Context isolation, decided at runtime by the model)." />
+          </div>
+          <figcaption>
+            <span>Framing after Jia Huang's <a href="https://kage-ai.com/research/pattern-evolution/" target="_blank" rel="noopener noreferrer">Pattern Evolution</a>: the shift from a structure chosen at design time to a decision taken at runtime by a model.</span>
+            <a class="infographic-open" href={figures.lineage} target="_blank" rel="noopener noreferrer">Enlarge ↗</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="crosswalk">
+      <div class="container">
+        <span class="section-badge section-badge--accent">Crosswalk</span>
+        <h2 class="section-title">Classic pattern, agent analogue, Claude Code mechanism</h2>
+        <p class="section-subtitle">{PATTERN_COUNTS.ownMapping} of {PATTERN_COUNTS.crosswalk} rows carry <strong>Our mapping</strong>: the sources give the generic agent analogue, and this guide maps it to Claude Code. Mechanisms link to the official documentation.</p>
+
+        <figure class="infographic">
+          <div class="infographic-scroll">
+            <img src={figures.harnessMap} width="1376" height="774" loading="lazy" decoding="async" alt="Map of the Claude Code harness: the agent loop in the center, connected to eight parts with their closest classic pattern. Hooks: Observer. Permission rules: Chain of Responsibility. Checkpoints: Memento. Subagents: Mediator and Bulkhead. MCP servers: Adapter. Skills: Template Method. CLAUDE.md: Facade. Turn and budget limits: Circuit Breaker." />
+          </div>
+          <figcaption>
+            <span>Each pattern is the closest classic analogue for that part, not an equivalence.</span>
+            <a class="infographic-open" href={figures.harnessMap} target="_blank" rel="noopener noreferrer">Enlarge ↗</a>
+          </figcaption>
+        </figure>
+
+        <div class="explorer" data-explorer>
+          <div class="explorer-filters" role="group" aria-label="Filter by family">
+            <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All</button>
+            {FAMILIES.map(family => (
+              <button type="button" class="filter-chip" data-filter={family.id} aria-pressed="false">{family.label}</button>
+            ))}
+          </div>
+          <div class="table-wrap">
+            <table class="pattern-table">
+              <thead>
+                <tr>
+                  <th scope="col">Classic pattern</th>
+                  <th scope="col">Agent analogue</th>
+                  <th scope="col">In Claude Code</th>
+                  <th scope="col">Failure mode</th>
+                  <th scope="col">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {PATTERN_ROWS.map(row => (
+                  <tr data-family={row.family} id={row.id}>
+                    <td>
+                      <a href={guideHref(row.guideAnchor)} class="pattern-name">{row.classic}</a>
+                      <span class="pattern-family">{row.familyLabel}</span>
+                    </td>
+                    <td>
+                      <ul class="cell-list">
+                        {row.agentAnalogue.map(analogue => <li>{analogue.label}</li>)}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="cell-list">
+                        {row.claudeCode.map(mechanism => (
+                          <li><a href={mechanism.doc} target="_blank" rel="noopener noreferrer">{mechanism.name}</a></li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td class="failure-cell">{row.failureMode}</td>
+                    <td>
+                      <span class={`badge badge--${row.consensus}`}>{CONSENSUS_LABELS[row.consensus]}</span>
+                      <span class={`badge badge--${row.provenance}`}>{PROVENANCE_LABELS[row.provenance]}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">Each row opens its full card in the guide: classic intent, every source, and the check to run. Last verified {verifiedLabel} against the official Claude Code documentation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="divergent">
+      <div class="container">
+        <span class="section-badge section-badge--warning">Divergent</span>
+        <h2 class="section-title">Where the sources disagree</h2>
+        <p class="section-subtitle">The same classic pattern gets different agent analogues depending on the source. The disagreement is shown, not resolved.</p>
+        <div class="card-grid">
+          {divergentRows.map(row => (
+            <article class="pattern-card pattern-card--divergent">
+              <h3><a href={guideHref(row.guideAnchor)}>{row.classic}</a></h3>
+              <ul class="reading-list">
+                {row.agentAnalogue.map(analogue => (
+                  <li>
+                    <span class="reading-label">{analogue.label}</span>
+                    <span class="reading-source">{analogue.sources.map(source => source.author).join(', ')}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="card-note"><strong>In Claude Code:</strong> {row.claudeCode.map(mechanism => mechanism.name).join('; ')}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="where-the-analogy-breaks">
+      <div class="container">
+        <span class="section-badge section-badge--warning">Limits</span>
+        <h2 class="section-title">Where the analogy breaks</h2>
+        <p class="section-subtitle">A classic pattern assumes the component in the middle executes what it is given. A model does not, and four guarantees change with it.</p>
+        <figure class="infographic">
+          <div class="infographic-scroll">
+            <img src={figures.breaks} width="1376" height="774" loading="lazy" decoding="async" alt="Four classic guarantees compared with Claude Code behavior: Decorator wrappers run in a fixed order, while matching hooks run in parallel; Memento restores the full state, while checkpoints track Claude's file edits only; Event Sourcing replay rebuilds the same state, while resuming a transcript does not reproduce; a Facade enforces a contract, while CLAUDE.md is read as context, not enforced." />
+          </div>
+          <figcaption>
+            <span>Each break is quoted from the official documentation below.</span>
+            <a class="infographic-open" href={figures.breaks} target="_blank" rel="noopener noreferrer">Enlarge ↗</a>
+          </figcaption>
+        </figure>
+        <div class="break-list">
+          {breaks.map(item => (
+            <div class="break-row">
+              <div class="break-classic">
+                <span class="break-name">{item.classic}</span>
+                <span>{item.guarantee}</span>
+              </div>
+              <div class="break-arrow" aria-hidden="true">→</div>
+              <div class="break-harness">
+                <span class="break-name">{item.harness}</span>
+                <span>{item.reality} <a href={item.doc} target="_blank" rel="noopener noreferrer">Docs ↗</a></span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="native">
+      <div class="container">
+        <span class="section-badge section-badge--info">Native</span>
+        <h2 class="section-title">Agent-native patterns</h2>
+        <p class="section-subtitle">Close to classic patterns, but built around two things classic patterns never managed: a context window as the scarce resource and a model as the decision-maker.</p>
+        <div class="card-grid">
+          {NATIVE_PATTERNS.map(pattern => (
+            <article class="pattern-card" id={pattern.id}>
+              <h3><a href={guideHref(pattern.guideAnchor)}>{pattern.name}</a></h3>
+              <p>{pattern.summary}</p>
+              <p class="card-note"><strong>What is new:</strong> {pattern.whyNew}</p>
+              <ul class="mechanism-list">
+                {pattern.claudeCode.map(mechanism => (
+                  <li><a href={mechanism.doc} target="_blank" rel="noopener noreferrer">{mechanism.name}</a></li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="choose">
+      <div class="container">
+        <span class="section-badge section-badge--accent">Decide</span>
+        <h2 class="section-title">Which pattern for this task?</h2>
+        <p class="section-subtitle">Pick by the shape of the problem, then use the simplest structure that passes its check.</p>
+        <div class="decision-rules">
+          {decisionRules.map(rule => (
+            <a class="decision-rule" href={guideHref(rule.anchor)}>
+              <span class="rule-condition"><span class="rule-if">If</span>{rule.condition}</span>
+              <span class="rule-arrow" aria-hidden="true">→</span>
+              <span class="rule-answer"><strong>{rule.pattern}</strong><span>{rule.how}</span></span>
+            </a>
+          ))}
+        </div>
+        <div class="always-box">
+          <p><strong>On every branch:</strong> each side effect that leaves the machine needs a written compensating action (Saga), each rule that must never break needs a deterministic gate (a PreToolUse hook or a deny rule), and every automated run needs a turn limit and a budget limit (Circuit Breaker).</p>
+          <a href={guideHref('choose-a-pattern')} class="text-link">Decision tree in the guide →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="anti-patterns">
+      <div class="container">
+        <span class="section-badge section-badge--danger">Anti-patterns</span>
+        <h2 class="section-title">Where agent harnesses fail</h2>
+        <p class="section-subtitle">Three families come from the MAST taxonomy of multi-agent failures (<a href="https://arxiv.org/abs/2503.13657" target="_blank" rel="noopener noreferrer">Cemri et al.</a>). The fourth covers Claude Code mechanics MAST does not address. The category assignment is this guide's reading.</p>
+        <figure class="infographic">
+          <div class="infographic-scroll">
+            <img src={figures.failureMap} width="1376" height="774" loading="lazy" decoding="async" alt="Ten harness anti-patterns in four families. Specification: prompt as enforcement, unbounded loop, step repetition. Inter-agent: context flooding, unguarded shared checkout. Verification: unverified done. Harness mechanics: rewind as rollback, ordered hooks assumption, specific allow overrides deny, untrusted content as instructions." />
+          </div>
+          <figcaption>
+            <span>The table below gives the symptom and the fix for each one.</span>
+            <a class="infographic-open" href={figures.failureMap} target="_blank" rel="noopener noreferrer">Enlarge ↗</a>
+          </figcaption>
+        </figure>
+        <div class="table-wrap">
+          <table class="pattern-table">
+            <thead>
+              <tr>
+                <th scope="col">Anti-pattern</th>
+                <th scope="col">Symptom</th>
+                <th scope="col">Fix</th>
+                <th scope="col">Family</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ANTI_PATTERNS.map(anti => (
+                <tr>
+                  <td><span class="pattern-name">{anti.name}</span></td>
+                  <td>{anti.symptom}</td>
+                  <td>
+                    {anti.fix}
+                    <span class="related">{anti.patterns.map((related, index) => (
+                      <>{index > 0 && ', '}<a href={guideHref(related.id)}>{related.name}</a></>
+                    ))}</span>
+                  </td>
+                  <td>{ANTI_PATTERN_CATEGORIES.find(category => category.id === anti.category)?.label}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="container">
+        <span class="section-badge">Method</span>
+        <h2 class="section-title">How a row gets in</h2>
+        <div class="method-grid">
+          <div class="method-card"><h3>A public source</h3><p>At least one published crosswalk, catalog or paper maps the classic pattern to an agent analogue. Rows marked Consensus have two or more.</p></div>
+          <div class="method-card"><h3>A documented mechanism</h3><p>The Claude Code side links to the official documentation, checked on {verifiedLabel}. Repositories built from leaked source code are excluded.</p></div>
+          <div class="method-card"><h3>A stated failure</h3><p>A row without a failure mode and a check stays out. The dataset ships as JSON and through the guide's MCP server.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta">
+      <div class="container">
+        <div class="cta-block">
+          <h2>Full cards in the guide</h2>
+          <p>Each pattern card lists the classic intent, every source with its reading, the Claude Code mechanism, the failure mode and the check to run.</p>
+          <div class="cta-actions">
+            <a href={guideHref()} class="btn btn-primary">Read the guide page →</a>
+            <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/ai-design-patterns.json" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Dataset (JSON) ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  for (const explorer of document.querySelectorAll<HTMLElement>('[data-explorer]')) {
+    const chips = explorer.querySelectorAll<HTMLButtonElement>('[data-filter]')
+    const rows = explorer.querySelectorAll<HTMLTableRowElement>('tbody tr[data-family]')
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter
+        for (const other of chips) {
+          const active = other === chip
+          other.classList.toggle('is-active', active)
+          other.setAttribute('aria-pressed', String(active))
+        }
+        for (const row of rows) row.hidden = filter !== 'all' && row.dataset.family !== filter
+      })
+    }
+  }
+</script>
+
+<style>
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 4rem 0; }
+.section--alt { background: var(--bg-secondary); }
+.section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin: 0 0 0.75rem; }
+.section-subtitle { font-size: 1rem; color: var(--text-secondary); margin: 0 0 2rem; max-width: 680px; line-height: 1.6; }
+.section-subtitle a { color: var(--accent); }
+
+/* Hero */
+.page-hero { padding: 3.5rem 0 3rem; background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
+.hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+.page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--text-primary); margin: 0 0 1rem; }
+.hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 660px; margin: 0 0 1.5rem; line-height: 1.6; }
+.hero-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.pill { display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.825rem; font-weight: 600; text-decoration: none; border: 1px solid; }
+.pill--accent { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); border-color: var(--accent); }
+.pill--info { background: color-mix(in srgb, var(--status-info) 10%, transparent); color: var(--status-info); border-color: var(--status-info); }
+.pill--warning { background: color-mix(in srgb, var(--status-warning) 12%, transparent); color: var(--text-primary); border-color: var(--status-warning); }
+.pill:hover { opacity: 0.8; }
+
+/* TL;DR */
+.section--tldr { padding: 2.5rem 0; }
+.tldr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.tldr-card { padding: 1.25rem 1.5rem; border-radius: var(--border-radius-lg); border: 1px solid var(--border); background: var(--bg-secondary); }
+.tldr-card h2 { font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem; }
+.tldr-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+.tldr-card--accent { border-top: 3px solid var(--accent); }
+.tldr-card--warning { border-top: 3px solid var(--status-warning); }
+.tldr-card--info { border-top: 3px solid var(--status-info); }
+
+/* Badges */
+.section-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 999px; margin-bottom: 0.75rem; background: var(--bg-tertiary); color: var(--text-muted); }
+.section-badge--accent { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+.section-badge--info { background: color-mix(in srgb, var(--status-info) 15%, transparent); color: var(--status-info); }
+.section-badge--warning { background: color-mix(in srgb, var(--status-warning) 20%, transparent); color: var(--text-primary); }
+.section-badge--danger { background: color-mix(in srgb, var(--status-danger) 15%, transparent); color: var(--status-danger); }
+.badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; margin: 0 0.25rem 0.25rem 0; }
+.badge--consensus { background: color-mix(in srgb, var(--status-success) 15%, transparent); color: var(--status-success); }
+.badge--single-source { background: var(--bg-tertiary); color: var(--text-secondary); }
+.badge--divergent { background: color-mix(in srgb, var(--status-warning) 22%, transparent); color: var(--text-primary); }
+.badge--own-synthesis { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.badge--third-party { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+
+/* Infographics */
+.infographic { width: min(100%, 1040px); margin: 0 0 2rem; }
+.infographic-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: #f5f0eb; }
+.infographic-scroll img { display: block; width: 100%; max-width: 1376px; height: auto; margin-inline: auto; }
+.infographic figcaption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+.infographic figcaption a { color: var(--accent); }
+.infographic-open { display: inline-flex; align-items: center; justify-content: center; flex: none; min-height: 44px; padding: 0.55rem 0.85rem; border: 1px solid var(--border); border-radius: var(--border-radius); background: var(--surface-elevated, var(--bg-secondary)); font-weight: 700; text-decoration: none; }
+.infographic-open:hover { border-color: var(--accent); background: var(--bg-tertiary); }
+
+/* Explorer */
+.explorer-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.filter-chip { font: inherit; font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.85rem; min-height: 36px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-secondary); cursor: pointer; }
+.filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+.filter-chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filter-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
+.pattern-table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 0.86rem; }
+.pattern-table th { background: var(--bg-tertiary); color: var(--text-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.65rem 0.875rem; text-align: left; border-bottom: 1px solid var(--border); }
+.pattern-table td { padding: 0.75rem 0.875rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.45; }
+.pattern-table tr:last-child td { border-bottom: none; }
+.pattern-table tr[hidden] { display: none; }
+.pattern-table a { color: var(--accent); }
+.pattern-name { display: block; font-weight: 700; color: var(--text-primary) !important; text-decoration: none; }
+a.pattern-name:hover { color: var(--accent) !important; text-decoration: underline; }
+.pattern-family { display: block; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
+.cell-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.cell-list li + li { padding-top: 0.3rem; border-top: 1px dashed var(--border); }
+.failure-cell { min-width: 220px; }
+.related { display: block; margin-top: 0.35rem; font-size: 0.78rem; }
+.table-note { font-size: 0.8rem; color: var(--text-muted); margin: 0.75rem 0 0; }
+
+/* Cards */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.pattern-card { padding: 1.4rem; background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--border-radius-lg); border-top: 3px solid var(--status-info); display: flex; flex-direction: column; gap: 0.6rem; }
+.pattern-card--divergent { border-top-color: var(--status-warning); }
+.pattern-card h3 { font-size: 1.05rem; font-weight: 800; margin: 0; }
+.pattern-card h3 a { color: var(--text-primary); text-decoration: none; }
+.pattern-card h3 a:hover { color: var(--accent); }
+.pattern-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+.card-note { font-size: 0.82rem !important; }
+.card-note strong { color: var(--text-primary); }
+.reading-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.reading-list li { padding: 0.5rem 0.65rem; background: var(--bg-tertiary); border-radius: var(--border-radius); display: flex; flex-direction: column; gap: 0.15rem; }
+.reading-label { font-size: 0.85rem; color: var(--text-primary); }
+.reading-source { font-size: 0.72rem; color: var(--text-muted); }
+.mechanism-list { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.mechanism-list a { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent); text-decoration: none; }
+.mechanism-list a:hover { border-color: var(--accent); }
+
+/* Analogy breaks */
+.break-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.break-row { display: grid; grid-template-columns: 1fr auto 1.4fr; gap: 0.75rem; align-items: stretch; }
+.break-classic, .break-harness { padding: 0.8rem 1rem; border-radius: var(--border-radius-md, var(--border-radius)); font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; display: flex; flex-direction: column; gap: 0.2rem; }
+.break-classic { background: var(--bg-secondary); border: 1px solid var(--border); }
+.break-harness { background: color-mix(in srgb, var(--accent) 6%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.break-harness a { color: var(--accent); white-space: nowrap; }
+.break-name { font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.78rem; color: var(--text-primary); }
+.break-arrow { align-self: center; color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+
+/* Decision */
+.decision-rules { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.decision-rule { display: grid; grid-template-columns: 1fr auto 1.2fr; gap: 0.75rem; align-items: center; padding: 0.8rem 1rem; background: var(--bg-secondary); border-radius: var(--border-radius); border-left: 3px solid var(--accent); text-decoration: none; color: inherit; }
+.decision-rule:hover { background: var(--bg-tertiary); }
+.rule-condition { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.875rem; color: var(--text-secondary); }
+.rule-if { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+.rule-arrow { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+.rule-answer { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.8rem; color: var(--text-muted); }
+.rule-answer strong { font-size: 0.92rem; color: var(--text-primary); }
+.always-box { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; }
+.always-box p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 0.75rem; line-height: 1.6; }
+.always-box strong { color: var(--text-primary); }
+.text-link { font-size: 0.85rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+.text-link:hover { text-decoration: underline; }
+
+/* Method */
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.method-card { padding: 1.25rem 1.4rem; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: var(--bg-secondary); }
+.method-card h3 { font-size: 0.95rem; font-weight: 800; margin: 0 0 0.4rem; }
+.method-card p { font-size: 0.86rem; color: var(--text-secondary); margin: 0; line-height: 1.55; }
+
+/* CTA */
+.section--cta { background: var(--bg-secondary); }
+.cta-block { text-align: center; max-width: 620px; margin: 0 auto; }
+.cta-block h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem; }
+.cta-block p { color: var(--text-secondary); margin: 0 0 1.5rem; line-height: 1.6; }
+.cta-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.6rem 1.25rem; border-radius: var(--border-radius); font-size: 0.9rem; font-weight: 600; text-decoration: none; background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--accent); }
+
+@media (max-width: 700px) {
+  .container { padding: 0 1rem; }
+  .section { padding: 3rem 0; }
+  .infographic-scroll img { width: 860px; max-width: none; }
+  .infographic figcaption { display: block; }
+  .infographic-open { margin-top: 0.5rem; }
+  .break-row, .decision-rule { grid-template-columns: 1fr; gap: 0.35rem; }
+  .break-arrow, .rule-arrow { display: none; }
+  .cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

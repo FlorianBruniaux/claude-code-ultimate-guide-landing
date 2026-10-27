@@ -700,6 +700,86 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-design-patterns-guide",
+    "title": "AI Design Patterns Guide",
+    "keywords": "ai design patterns guide guide core design patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-lineage",
+    "title": "AI Design Patterns Lineage",
+    "keywords": "ai design patterns lineage guide core design patterns md#lineage",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#lineage",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-crosswalk",
+    "title": "AI Design Patterns Crosswalk",
+    "keywords": "ai design patterns crosswalk guide core design patterns md#crosswalk",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#crosswalk",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-cards",
+    "title": "AI Design Patterns Cards",
+    "keywords": "ai design patterns cards guide core design patterns md#pattern cards",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#pattern-cards",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-analogy-breaks",
+    "title": "AI Design Patterns Analogy Breaks",
+    "keywords": "ai design patterns analogy breaks guide core design patterns md#where the analogy breaks",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#where-the-analogy-breaks",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-native",
+    "title": "AI Design Patterns Native",
+    "keywords": "ai design patterns native guide core design patterns md#native agent patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#native-agent-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-choose",
+    "title": "AI Design Patterns Choose",
+    "keywords": "ai design patterns choose guide core design patterns md#choose pattern",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#choose-a-pattern",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-anti-patterns",
+    "title": "AI Design Patterns Anti Patterns",
+    "keywords": "ai design patterns anti patterns guide core design patterns md#anti patterns",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-dataset",
+    "title": "AI Design Patterns Dataset",
+    "keywords": "ai design patterns dataset machine readable design patterns",
+    "category": "Reference",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/ai-design-patterns.json",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-design-patterns-infographics",
+    "title": "AI Design Patterns Infographics",
+    "keywords": "ai design patterns infographics guide images design patterns readme",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/images/ai-design-patterns/README.md",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-definition",
     "title": "Agent Harness Definition",
     "keywords": "agent harness definition guide core agent harness md#the core claim agent harness model harness pair guide core agent harness md#the core claim agent harness scaffold effect guide core agent harness md#the core claim",
@@ -825,6 +905,30 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent harness smallest sufficient guide core agent harness md#7 test distribution and component stacking anti patterns",
     "category": "Guide",
     "url": "/guide/agent-harness/#7-test-distribution-and-component-stacking-anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-frugality-costs",
+    "title": "Agent Harness Frugality Costs",
+    "keywords": "agent harness frugality costs guide core agent harness md#price generated artifacts against cached context",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#price-generated-artifacts-against-cached-context",
+    "source": "guide"
+  },
+  {
+    "id": "guide-repository-harness-proportionality",
+    "title": "Repository Harness Proportionality",
+    "keywords": "repository harness proportionality guide ultimate guide md#size the repository harness the task",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#size-the-repository-harness-to-the-task",
+    "source": "guide"
+  },
+  {
+    "id": "guide-context-cache-aware-state",
+    "title": "Context Cache Aware State",
+    "keywords": "context cache aware state guide ultimate guide md#cache aware working state",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#cache-aware-working-state",
     "source": "guide"
   },
   {

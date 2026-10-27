@@ -23,6 +23,14 @@ export interface SearchEntry {
 // ─── Pages ───────────────────────────────────────────────────────────────────
 const pageEntries: SearchEntry[] = [
   {
+    id: 'page-ai-design-patterns',
+    title: 'AI Design Patterns: GoF and Resilience Patterns for Claude Code',
+    keywords: 'ai design patterns agent design patterns gof gang of four observer mediator memento chain of responsibility circuit breaker saga bulkhead adapter facade hooks subagents checkpoints anti-patterns crosswalk',
+    category: 'Build',
+    url: '/ai-design-patterns/',
+    source: 'landing',
+  },
+  {
     id: 'page-mistral-large-4',
     title: 'Mistral Large 4: Pricing, Benchmarks and Limits',
     keywords: 'mistral large 4 le chonk multimodal api preview pricing sale benchmarks terminal bench european regional inference weights memory',
