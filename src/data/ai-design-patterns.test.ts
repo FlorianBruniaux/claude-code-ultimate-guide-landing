@@ -7,7 +7,9 @@ import {
   ANTI_PATTERN_CATEGORIES,
   ANTI_PATTERNS,
   FAMILIES,
+  FURTHER_READING,
   NATIVE_PATTERNS,
+  PATTERN_CARDS,
   PATTERN_ROWS,
   guideHref,
 } from './ai-design-patterns.ts'
@@ -96,4 +98,31 @@ test('the guide preparation script synchronizes the dataset snapshot', () => {
   assert.match(source, /machine-readable\/ai-design-patterns\.json/)
   assert.match(source, /src\/data\/ai-design-patterns\.json/)
   assert.match(source, /syncAiDesignPatterns\(\)/)
+})
+
+test('every pattern has one card image, and video links open YouTube at a timestamp', () => {
+  assert.equal(PATTERN_CARDS.length, PATTERN_ROWS.length + NATIVE_PATTERNS.length)
+  for (const card of PATTERN_CARDS) {
+    assert.equal(card.image, `/guide/images/ai-design-patterns/patterns/${card.id}.webp`, card.id)
+    assert.ok(card.alt.startsWith(card.name), `${card.id}: alt text names the pattern`)
+    for (const video of card.videos) {
+      assert.match(video.url, /^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}&t=\d+s$/, card.id)
+      assert.match(video.timeLabel, /^\d+:\d{2}$/)
+    }
+  }
+  const guideRepo = process.env.GUIDE_REPO_PATH
+  if (guideRepo) {
+    for (const card of PATTERN_CARDS) {
+      assert.ok(existsSync(resolve(guideRepo, card.image!.slice(1))), `missing ${card.image}`)
+    }
+  }
+})
+
+test('further reading entries resolve to sources and known patterns', () => {
+  assert.ok(FURTHER_READING.length > 0)
+  const ids = new Set(PATTERN_CARDS.map(card => card.id))
+  for (const item of FURTHER_READING) {
+    assert.match(item.url, /^https:\/\//)
+    for (const pattern of item.patterns) assert.ok(ids.has(pattern.id), `${item.title}: ${pattern.id}`)
+  }
 })

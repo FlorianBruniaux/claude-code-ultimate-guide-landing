@@ -5,8 +5,10 @@ import {
   ANTI_PATTERNS,
   CONSENSUS_LABELS,
   FAMILIES,
+  FURTHER_READING,
   LAST_VERIFIED,
   NATIVE_PATTERNS,
+  PATTERN_CARDS,
   PATTERN_COUNTS,
   PATTERN_ROWS,
   PROVENANCE_LABELS,
@@ -80,7 +82,11 @@ const figures = {
   harnessMap: '/guide/images/ai-design-patterns/harness-map-en.webp',
   breaks: '/guide/images/ai-design-patterns/analogy-breaks-en.webp',
   failureMap: '/guide/images/ai-design-patterns/failure-map-en.webp',
+  overview: '/guide/images/ai-design-patterns/overview-en.webp',
 }
+
+const galleryCards = PATTERN_CARDS.filter(card => card.image)
+const videoCount = new Set(PATTERN_CARDS.flatMap(card => card.videos.map(video => video.url.split('&t=')[0]))).size
 
 const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
 ---
@@ -282,6 +288,46 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
       </div>
     </section>
 
+    <section class="section" id="gallery">
+      <div class="container">
+        <span class="section-badge section-badge--accent">One card per pattern</span>
+        <h2 class="section-title">Every pattern on one card</h2>
+        <p class="section-subtitle">Each card shows the classic intent, the Claude Code mechanism, when it breaks and the check to run. Under it, conference talks where a practitioner discusses the same pattern, opened at the right minute ({videoCount} talks, each timestamp checked against its transcript).</p>
+        <figure class="infographic">
+          <div class="infographic-scroll">
+            <img src={figures.overview} width="1376" height="774" loading="lazy" decoding="async" alt="Overview of the 29 patterns in six columns: GoF creational (Factory Method, Singleton), GoF structural (Adapter, Composite, Decorator, Facade), GoF behavioral (Chain of Responsibility, Command, Mediator, Memento, Observer, Strategy, Template Method), Enterprise integration (Pipes and Filters, Content-Based Router, Scatter-Gather), Distributed and resilience (Bulkhead, Circuit Breaker, Saga, Sidecar, Event Sourcing), and Agent-native (Orchestrator-workers, Evaluator-optimizer, Plan-then-execute, Context isolation, Context compaction, Progressive disclosure, Deterministic gate, Goal loop)." />
+          </div>
+          <figcaption>
+            <span>The full map. Each pattern below has its own card.</span>
+            <a class="infographic-open" href={figures.overview} target="_blank" rel="noopener noreferrer">Enlarge ↗</a>
+          </figcaption>
+        </figure>
+        <div class="gallery-grid">
+          {galleryCards.map(card => (
+            <article class="gallery-card" id={`card-${card.id}`}>
+              <a class="gallery-image" href={card.image!} target="_blank" rel="noopener noreferrer">
+                <img src={card.image!} width="1376" height="774" loading="lazy" decoding="async" alt={card.alt} />
+              </a>
+              <div class="gallery-body">
+                <span class="gallery-label">{card.label}</span>
+                <h3><a href={guideHref(card.id)}>{card.name}</a></h3>
+                {card.videos.length > 0 && (
+                  <ul class="video-list">
+                    {card.videos.map(video => (
+                      <li>
+                        <a href={video.url} target="_blank" rel="noopener noreferrer"><span class="video-time">▶ {video.timeLabel}</span> {video.author}, {video.title}</a>
+                        <span>{video.point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="choose">
       <div class="container">
         <span class="section-badge section-badge--accent">Decide</span>
@@ -344,6 +390,23 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="further-reading">
+      <div class="container">
+        <span class="section-badge">Further reading</span>
+        <h2 class="section-title">What practitioners have written</h2>
+        <p class="section-subtitle">Articles and repositories that cover the same ground from other angles. None of them uses this page's crosswalk; each points to the closest pattern here.</p>
+        <ul class="further-list">
+          {FURTHER_READING.map(item => (
+            <li>
+              <a href={item.url} target="_blank" rel="noopener noreferrer"><strong>{item.author}</strong>, {item.title} ↗</a>
+              <p>{item.note}</p>
+              <span class="related">Related: {item.patterns.map((pattern, index) => (<>{index > 0 && ', '}<a href={`#card-${pattern.id}`}>{pattern.name}</a></>))}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 
@@ -465,6 +528,29 @@ a.pattern-name:hover { color: var(--accent) !important; text-decoration: underli
 .failure-cell { min-width: 220px; }
 .related { display: block; margin-top: 0.35rem; font-size: 0.78rem; }
 .table-note { font-size: 0.8rem; color: var(--text-muted); margin: 0.75rem 0 0; }
+
+/* Gallery */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+.gallery-card { display: flex; flex-direction: column; background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--border-radius-lg); overflow: hidden; scroll-margin-top: 6rem; }
+.gallery-image { display: block; background: #f5f0eb; border-bottom: 1px solid var(--border); }
+.gallery-image img { display: block; width: 100%; height: auto; }
+.gallery-body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.gallery-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+.gallery-body h3 { font-size: 1.05rem; font-weight: 800; margin: 0; }
+.gallery-body h3 a { color: var(--text-primary); text-decoration: none; }
+.gallery-body h3 a:hover { color: var(--accent); }
+.video-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.video-list li { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.5rem 0.65rem; background: var(--bg-tertiary); border-radius: var(--border-radius); font-size: 0.82rem; line-height: 1.45; }
+.video-list a { color: var(--text-primary); font-weight: 600; text-decoration: none; }
+.video-list a:hover { color: var(--accent); text-decoration: underline; }
+.video-list span:not(.video-time) { color: var(--text-secondary); }
+.video-time { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.further-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.further-list li { padding: 1.1rem 1.2rem; background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--border-radius-lg); display: flex; flex-direction: column; gap: 0.45rem; }
+.further-list > li > a { color: var(--text-primary); text-decoration: none; line-height: 1.4; }
+.further-list > li > a:hover { color: var(--accent); }
+.further-list p { font-size: 0.86rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+.further-list .related a { color: var(--accent); }
 
 /* Cards */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }

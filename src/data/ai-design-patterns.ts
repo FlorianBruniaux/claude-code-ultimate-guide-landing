@@ -123,6 +123,82 @@ export const ANTI_PATTERNS: AntiPattern[] = raw.anti_patterns.map(row => ({
   sources: resolveSources(row.sources),
 }))
 
+export type PatternVideo = { title: string; author: string; url: string; timeLabel: string; point: string }
+
+export type PatternCard = {
+  id: string
+  name: string
+  label: string
+  image: string | null
+  alt: string
+  videos: PatternVideo[]
+}
+
+export type FurtherReading = {
+  author: string
+  title: string
+  url: string
+  note: string
+  patterns: { id: string; name: string }[]
+}
+
+type RawMedia = {
+  id: string
+  infographic?: { file: string; alt: string }
+  videos?: { source: string; t: number; point: string }[]
+}
+
+function resolveVideos(row: RawMedia): PatternVideo[] {
+  return (row.videos ?? []).map(video => {
+    const [source] = resolveSources([video.source])
+    const minutes = Math.floor(video.t / 60)
+    const seconds = String(video.t % 60).padStart(2, '0')
+    return {
+      title: source.title,
+      author: source.author,
+      url: `${source.url}&t=${video.t}s`,
+      timeLabel: `${minutes}:${seconds}`,
+      point: video.point,
+    }
+  })
+}
+
+function siteImage(row: RawMedia): string | null {
+  // guide/images/... is copied to public/guide/images/... by prepare-guide-content.
+  return row.infographic ? `/${row.infographic.file}` : null
+}
+
+// One card per pattern, classic rows first, in dataset order.
+export const PATTERN_CARDS: PatternCard[] = [
+  ...(raw.crosswalk as (RawMedia & { classic: string; family: string })[]).map(row => ({
+    id: row.id,
+    name: row.classic,
+    label: familyLabels.get(row.family) ?? row.family,
+    image: siteImage(row),
+    alt: row.infographic?.alt ?? '',
+    videos: resolveVideos(row),
+  })),
+  ...(raw.native as (RawMedia & { name: string })[]).map(row => ({
+    id: row.id,
+    name: row.name,
+    label: 'Agent-native',
+    image: siteImage(row),
+    alt: row.infographic?.alt ?? '',
+    videos: resolveVideos(row),
+  })),
+]
+
+export const FURTHER_READING: FurtherReading[] = ((raw as { further_reading?: { source: string; note: string; patterns: string[] }[] }).further_reading ?? []).map(item => {
+  const [source] = resolveSources([item.source])
+  return {
+    author: source.author,
+    title: source.title,
+    url: source.url,
+    note: item.note,
+    patterns: item.patterns.map(id => ({ id, name: patternNames.get(id) ?? id })),
+  }
+})
+
 export const PATTERN_COUNTS = {
   crosswalk: PATTERN_ROWS.length,
   native: NATIVE_PATTERNS.length,
