@@ -84,6 +84,7 @@ export const navigationSections: HeaderNavigationSection[] = [
         label: 'Engineering',
         links: [
           { href: '/guide/loop-graph-engineering/', label: 'Agent Engineering', description: 'Design bounded loops, graphs, checkpoints, and recovery.' },
+          { href: '/ai-design-patterns/', label: 'AI Design Patterns', description: 'Map GoF and resilience patterns onto hooks, subagents, and limits.' },
           { href: '/context/', label: 'Context Configurator', description: 'Choose a context strategy for your repository and task.' },
           { href: '/context-engineering/', label: 'Context Engineering Tools', description: 'Compare compression, RAG, gateways, and LLMOps tools.' },
           { href: '/memory-systems/', label: 'Memory Systems', description: 'Choose native, cross-session, or team-shared memory.' },

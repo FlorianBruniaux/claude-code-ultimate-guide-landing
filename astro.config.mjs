@@ -49,6 +49,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/learning/': '2026-04-15',
   'https://cc.bruniaux.com/team-metrics/': '2026-08-30',
   'https://cc.bruniaux.com/lean-ai/': '2026-10-03',
+  'https://cc.bruniaux.com/ai-design-patterns/': '2026-10-27',
   'https://cc.bruniaux.com/context-engineering/': '2026-05-15',
   'https://cc.bruniaux.com/finops/': '2026-09-30',
   'https://cc.bruniaux.com/token-savings/': '2026-09-30',

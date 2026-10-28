@@ -58,6 +58,28 @@ function syncIntentNavigation() {
 
 syncIntentNavigation()
 
+const AI_DESIGN_PATTERNS_SOURCE = resolve(GUIDE_REPO, 'machine-readable/ai-design-patterns.json')
+const AI_DESIGN_PATTERNS_TARGET = resolve(ROOT, 'src/data/ai-design-patterns.json')
+
+// Byte-for-byte copy: the landing test compares this snapshot with the guide dataset.
+function syncAiDesignPatterns() {
+  if (!existsSync(AI_DESIGN_PATTERNS_SOURCE)) {
+    console.warn(`[prepare-guide] WARNING: AI design patterns dataset not found at ${AI_DESIGN_PATTERNS_SOURCE}`)
+    return
+  }
+
+  const raw = readFileSync(AI_DESIGN_PATTERNS_SOURCE, 'utf-8')
+  const dataset = JSON.parse(raw)
+  if (!Array.isArray(dataset.crosswalk) || !Array.isArray(dataset.native) || !Array.isArray(dataset.anti_patterns)) {
+    throw new Error('[prepare-guide] Invalid AI design patterns dataset: crosswalk, native and anti_patterns arrays are required')
+  }
+
+  writeFileSync(AI_DESIGN_PATTERNS_TARGET, raw, 'utf-8')
+  console.log(`[prepare-guide] Synced AI design patterns: ${AI_DESIGN_PATTERNS_TARGET}`)
+}
+
+syncAiDesignPatterns()
+
 // Mirror the actual artifact build date, never the website build date.
 const publicationsPath = resolve(GUIDE_REPO, 'machine-readable/publications.json')
 if (existsSync(publicationsPath)) {

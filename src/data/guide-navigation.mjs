@@ -3,6 +3,7 @@ import { getContextualLink } from './seo-editorial-contract.mjs'
 const codeReviewWorkflow = getContextualLink('/guide/workflows/code-review/')
 
 export const guideHighlights = [
+  { title: 'AI Design Patterns', href: '/guide/ai-design-patterns/', desc: 'Observer, Mediator, Memento, Circuit Breaker and Saga mapped to Claude Code hooks, subagents, checkpoints and limits, with where each analogy breaks.' },
   { title: 'Mistral Large 4', href: '/guide/mistral-large-4/', desc: 'October 6 launch evidence: pricing, benchmark conditions, regional processing, and planned weights.' },
   { title: 'Agentic Pentesting: DarkMoon and Strix', href: '/guide/agentic-pentesting/', desc: 'Compare execution scope, privacy controls, and exploit evidence, with a reproducible evaluation protocol.' },
   {
@@ -103,6 +104,7 @@ export const guideSections = [
     links: [
       { title: 'Agent Harness Engineering', href: '/guide/agent-harness/', desc: 'Runtime reliability architecture around the model.', time: '35 min' },
       { title: 'Loop & Graph Engineering', href: '/guide/loop-graph-engineering/', desc: 'Bounded loops, executable graphs, durable state, and judgment.', time: '25 min' },
+      { title: 'AI Design Patterns', href: '/guide/ai-design-patterns/', desc: 'Classic patterns mapped to Claude Code, with failure modes and checks.', time: '20 min' },
       { title: 'Agent Harness Landscape', href: '/guide/agent-harness-landscape/', desc: 'Evidence-backed map of runtimes and adjacent systems.', time: '20 min' },
       { title: 'Agentic Tools', href: '/guide/agentic-tools/', desc: 'Detailed tool profiles and comparison matrix.', time: '20 min' },
       { title: 'Agent Evaluation', href: '/guide/agent-evaluation/', desc: 'Measure model-harness quality across repeated runs.', time: '20 min' },
