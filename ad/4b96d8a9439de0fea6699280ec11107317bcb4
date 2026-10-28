@@ -1,0 +1,35 @@
+CHANGELOG.md
+  s_0d99942bd5e52a::t_429474e899c5f8 7-8
+src/data/ai-design-patterns.json
+  s_0d99942bd5e52a::t_394cdf4c565a35 5
+src/data/ai-design-patterns.test.ts
+  s_0d99942bd5e52a::t_d3aa1dc7507b52 14-15,173-178
+src/data/ai-design-patterns.ts
+  s_e4657147639b3d::t_c519bf56ccce51 66
+src/pages/ai-design-patterns/index.astro
+  s_e4657147639b3d::t_c43f96dbc3b1d0 9,33,92-94,102,495
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ad4b96d8a9439de0fea6699280ec11107317bcb4",
+  "prompts": {},
+  "sessions": {
+    "s_0d99942bd5e52a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f90f712-4dec-4864-90b0-d67f46e25e7a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e4657147639b3d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a74dfbb-37e9-436b-ad1f-75650865d964",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
