@@ -1,0 +1,49 @@
+CHANGELOG.md
+  s_e4657147639b3d::t_72ce988df789be 7-8
+src/content/cheatsheets/m08-agents-custom.md
+  s_e4657147639b3d::t_f2c500a468798d 31
+src/content/cheatsheets/m09-slash-commands.md
+  s_e4657147639b3d::t_b6700c8b77b49e 73-74,77-78
+src/content/cheatsheets/m10-skills.md
+  s_e4657147639b3d::t_a8a48efd4f1359 46,49-51
+src/content/cheatsheets/m11-hooks-evenements-systeme.md
+  s_e4657147639b3d::t_d6ab5a0588ec73 13,64-66
+src/content/cheatsheets/t01-commandes-essentielles.md
+  s_e4657147639b3d::t_b1ec2984d54744 15,17-18,20,31-32,68
+src/content/cheatsheets/t03-permission-modes.md
+  s_e4657147639b3d::t_9a407718623888 21,23,25
+src/content/cheatsheets/t11-search-tools-decision.md
+  s_e4657147639b3d::t_cdfff38d9f5f6d 13
+src/content/cheatsheets/t13-context7-sequential.md
+  s_e4657147639b3d::t_7e85b5240fde0f 30
+src/content/cheatsheets/t16-sandbox-natif-architecture.md
+  s_e4657147639b3d::t_908ef13e233e09 21-22
+src/content/cheatsheets/t18-modeles-thinking-modes.md
+  s_e4657147639b3d::t_6a2460af03f456 13,17-18,22,30,34,40
+src/content/cheatsheets/t19-context-window-200k-1m.md
+  s_e4657147639b3d::t_47678a0edd2281 15-16,21,25,47
+src/content/cheatsheets/t21-fast-mode-api.md
+  s_e4657147639b3d::t_b78f35dc727b7b 50
+src/data/landing-sync.test.ts
+  s_e4657147639b3d::t_64d3f169676959 128
+src/data/recap-cards-data.ts
+  s_e4657147639b3d::t_036bc4e34932b5 43-44,53-54,63-64,71-84,86-107,109-130,139-152,154-175,177-198
+src/data/whitepapers-data.ts
+  s_e4657147639b3d::t_1a2442eb125c49 46-47,57-58,62-63,73-74,78-79,90,94-95,110-111,121-122,126-127,137-138,142-143,153,159-160,171,175-176,186,191-192,202,207-208,218,224-225,235,241-242
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2612bf369298685cfb1a09771d772296370a8324",
+  "prompts": {},
+  "sessions": {
+    "s_e4657147639b3d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a74dfbb-37e9-436b-ad1f-75650865d964",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
