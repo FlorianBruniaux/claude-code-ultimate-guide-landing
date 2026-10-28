@@ -14,11 +14,12 @@ interface Props {
 }
 
 const { menu, projects } = Astro.props
+const compact = menu === 'resources'
 ---
 
 {projects.length > 0 && (
-  <section class="ecosystem-project-strip" aria-label={`Featured ${menu} projects`}>
-    <p class="ecosystem-project-strip-label">Featured projects</p>
+  <section class:list={['ecosystem-project-strip', { 'ecosystem-project-strip--compact': compact }]} aria-label={compact ? 'More projects by the author' : `Featured ${menu} projects`}>
+    <p class="ecosystem-project-strip-label">{compact ? 'More projects by the author' : 'Featured projects'}</p>
     <div class="ecosystem-project-strip-links">
       {projects.map((project) => (
         <a
@@ -137,6 +138,10 @@ const { menu, projects } = Astro.props
 
     .ecosystem-project-strip-links {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ecosystem-project-strip--compact .ecosystem-project-strip-links {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>

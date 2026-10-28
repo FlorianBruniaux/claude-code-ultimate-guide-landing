@@ -11,7 +11,7 @@ export const PERSONAL_PROJECT_ROUTES = [
   {
     "id": "observe-improve",
     "title": "Observe & Improve",
-    "description": "Understand sessions and improve real usage."
+    "description": "Inspect sessions, worktrees, and tool usage."
   },
   {
     "id": "secure-validate",
@@ -194,6 +194,24 @@ export const PERSONAL_PROJECTS = [
     "featured": true
   },
   {
+    "id": "wt-sweep",
+    "icon": "🌿",
+    "title": "Worktree Sweep",
+    "description": "Inventory Git worktrees and review their commits and local files on macOS.",
+    "useWhen": "You need to inventory Git worktrees and inspect their commits and local files before planning cleanup. Read-only macOS MVP; backup, restore and removal are unavailable.",
+    "format": "Rust CLI",
+    "tags": [
+      "Git Worktrees",
+      "Integration Evidence",
+      "Read-only"
+    ],
+    "href": "https://wt-sweep.bruniaux.com/",
+    "github": "https://github.com/FlorianBruniaux/wt-sweep",
+    "website": "https://wt-sweep.bruniaux.com/",
+    "route": "observe-improve",
+    "featured": false
+  },
+  {
     "id": "agentsec-triage",
     "icon": "🛡️",
     "title": "agentsec-triage",
@@ -303,18 +321,18 @@ export const PERSONAL_PROJECTS = [
   {
     "id": "google-search-console-mcp",
     "icon": "📈",
-    "title": "Google Search Console MCP",
-    "description": "Query Search Console, GA4, and technical search-visibility signals through MCP.",
-    "useWhen": "You need an agent-accessible interface for SEO analysis, indexing, and site diagnostics.",
+    "title": "Search Console MCP",
+    "description": "Query Google Search Console, Bing Webmaster Tools, GA4, CrUX, and public-page signals through MCP.",
+    "useWhen": "You need an agent-accessible interface for cross-engine SEO analysis, indexing, and site diagnostics.",
     "format": "MCP server",
     "tags": [
       "SEO",
       "Analytics",
       "Growth"
     ],
-    "href": "https://pypi.org/project/gsc-mcp/",
+    "href": "https://search-console.bruniaux.com/",
     "github": "https://github.com/FlorianBruniaux/google-search-console-mcp",
-    "website": "https://pypi.org/project/gsc-mcp/",
+    "website": "https://search-console.bruniaux.com/",
     "route": "research-discover-grow",
     "featured": false
   },

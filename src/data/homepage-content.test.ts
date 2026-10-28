@@ -19,7 +19,7 @@ test('homepage resource metrics stay aligned with their canonical datasets', () 
   assert.deepEqual(HOMEPAGE_METRICS, {
     whitepaperCount: 13,
     recapCardCount: 58,
-    diagramCount: 49,
+    diagramCount: 50,
   })
 })
 
@@ -56,9 +56,9 @@ test('homepage discovery blocks remain intentionally small', () => {
   assert.equal(ultimateGuide?.href, '/guide/')
 })
 
-test('the homepage features five canonical projects while the projects hub exposes five routes and 18 projects', () => {
+test('the homepage features five canonical projects while the projects hub exposes five routes and 19 projects', () => {
   assert.equal(FEATURED_PROJECTS.length, 5)
-  assert.equal(RELATED_PROJECTS.length, 18)
+  assert.equal(RELATED_PROJECTS.length, 19)
   assert.equal(new Set(RELATED_PROJECTS.map((project) => project.route)).size, 5)
   assert.ok(FEATURED_PROJECTS.every((project) => project.featured))
   assert.ok(FEATURED_PROJECTS.some((project) => project.id === 'cc-skill-usage'))

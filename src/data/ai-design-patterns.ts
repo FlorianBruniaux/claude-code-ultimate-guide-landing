@@ -125,6 +125,10 @@ export const ANTI_PATTERNS: AntiPattern[] = raw.anti_patterns.map(row => ({
 
 export type PatternVideo = { title: string; author: string; url: string; timeLabel: string; point: string }
 
+export type RelatedKind = 'guide' | 'template' | 'project' | 'article'
+export type RelatedImage = { src: string; alt: string }
+export type RelatedLink = { kind: RelatedKind; kindLabel: string; title: string; href: string; external: boolean; image: RelatedImage | null }
+
 export type PatternCard = {
   id: string
   name: string
@@ -132,6 +136,7 @@ export type PatternCard = {
   image: string | null
   alt: string
   videos: PatternVideo[]
+  related: RelatedLink[]
 }
 
 export type FurtherReading = {
@@ -142,10 +147,42 @@ export type FurtherReading = {
   patterns: { id: string; name: string }[]
 }
 
+type RawRelated = { kind: RelatedKind; title: string; path?: string; url?: string; image?: { file: string; alt: string } }
+
 type RawMedia = {
   id: string
   infographic?: { file: string; alt: string }
   videos?: { source: string; t: number; point: string }[]
+  related?: RawRelated[]
+}
+
+const RELATED_KIND_LABELS: Record<RelatedKind, string> = {
+  guide: 'Guide',
+  template: 'Template',
+  project: "Author's project",
+  article: "Author's article",
+}
+
+const REPO_BLOB = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/'
+
+// Same layout as prepare-guide-content: guide sections are flattened under
+// /guide/, workflows and learning-path keep their subdirectory, and other
+// repository files open on GitHub.
+export function repoPathHref(path: string): { href: string; external: boolean } {
+  const [file, anchor] = path.split('#')
+  const fragment = anchor ? `#${anchor}` : ''
+  const match = file.match(/^guide\/(?:(workflows|learning-path)\/|[^/]+\/)?([^/]+)\.md$/)
+  if (!match) return { href: `${REPO_BLOB}${file}${fragment}`, external: true }
+  const [, keptDir, name] = match
+  return { href: `/guide/${keptDir ? `${keptDir}/` : ''}${name}/${fragment}`, external: false }
+}
+
+function resolveRelated(row: RawMedia): RelatedLink[] {
+  return (row.related ?? []).map(item => {
+    const target = item.path ? repoPathHref(item.path) : { href: item.url ?? '', external: true }
+    const image = item.image ? { src: `/${item.image.file}`, alt: item.image.alt } : null
+    return { kind: item.kind, kindLabel: RELATED_KIND_LABELS[item.kind], title: item.title, ...target, image }
+  })
 }
 
 function resolveVideos(row: RawMedia): PatternVideo[] {
@@ -177,6 +214,7 @@ export const PATTERN_CARDS: PatternCard[] = [
     image: siteImage(row),
     alt: row.infographic?.alt ?? '',
     videos: resolveVideos(row),
+    related: resolveRelated(row),
   })),
   ...(raw.native as (RawMedia & { name: string })[]).map(row => ({
     id: row.id,
@@ -185,6 +223,7 @@ export const PATTERN_CARDS: PatternCard[] = [
     image: siteImage(row),
     alt: row.infographic?.alt ?? '',
     videos: resolveVideos(row),
+    related: resolveRelated(row),
   })),
 ]
 

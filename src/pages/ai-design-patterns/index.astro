@@ -54,14 +54,14 @@ const breaks = [
   },
   {
     classic: 'Event Sourcing',
-    guarantee: 'Replaying the log rebuilds the same state.',
+    guarantee: 'Every state change is an event, so the log rebuilds the state.',
     harness: 'Transcript',
-    reality: 'A resumed session restores the conversation. The model calls that follow are not deterministic.',
+    reality: 'The transcript restores the conversation, tool results included. It does not record the files, branches, or services the session changed, so it cannot rebuild them.',
     doc: 'https://code.claude.com/docs/en/sessions',
   },
   {
     classic: 'Facade',
-    guarantee: 'The entry point enforces a contract.',
+    guarantee: 'The facade is code, so every call goes through it.',
     harness: 'CLAUDE.md',
     reality: 'Claude treats CLAUDE.md as context, not enforced configuration. Blocking needs a deny rule, or a PreToolUse hook set to block when it fails: by default, a crashed hook lets the action through.',
     doc: 'https://code.claude.com/docs/en/memory',
@@ -102,6 +102,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
         <a href="#native" class="pill pill--info">{PATTERN_COUNTS.native} native agent patterns</a>
         <a href="#anti-patterns" class="pill pill--warning">{PATTERN_COUNTS.antiPatterns} anti-patterns</a>
       </div>
+      <p class="hero-wip"><strong>Work in progress.</strong> An attempt to connect two vocabularies, not a reference. The mappings are a reading to discuss and correct; if one does not hold for you, <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues" target="_blank" rel="noopener">open an issue with the case where it breaks</a>. The research also relies on two of the author's local research tools, which help find and cite source material: <a href="https://github.com/FlorianBruniaux/youtube-video-insights" target="_blank" rel="noopener">youtube-video-insights</a> for timestamped talk transcripts and <a href="https://github.com/FlorianBruniaux/paper-insights" target="_blank" rel="noopener">paper-insights</a> for papers with verified citations.</p>
     </div>
   </header>
 
@@ -111,7 +112,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
         <div class="tldr-grid">
           <div class="tldr-card tldr-card--accent">
             <h2>Same shapes</h2>
-            <p>Hooks react to events like observers, subagents isolate context like bulkheads, turn and budget limits cap a run like circuit breakers. The vocabulary transfers.</p>
+            <p>Hooks react to events like observers, subagents isolate context like bulkheads, turn and budget limits stop a run like the static half of a circuit breaker. The vocabulary transfers, with limits this page names.</p>
           </div>
           <div class="tldr-card tldr-card--warning">
             <h2>Weaker guarantees</h2>
@@ -132,7 +133,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
         <p class="section-subtitle">Object patterns (1994), integration and resilience patterns (2003 onward) and agent patterns (2024 onward) solve the same kind of problem. What changes is when the decision is taken.</p>
         <figure class="infographic">
           <div class="infographic-scroll">
-            <img src={figures.lineage} width="1376" height="774" loading="lazy" decoding="async" alt="Three generations of design patterns: objects in 1994 (Observer, Strategy, Command, decided at design time), services in 2003 (Router, Scatter-Gather, Circuit Breaker, Saga, decided at deployment time), and agents in 2024 (Orchestrator-workers, Evaluator-optimizer, Context isolation, decided at runtime by the model)." />
+            <img src={figures.lineage} width="1376" height="774" loading="lazy" decoding="async" alt="Three generations of design patterns, framed by who chooses the structure: objects in 1994 (Observer, Strategy, Command; a developer writes how objects collaborate), services in 2003 (Router, Scatter-Gather, Pipes and Filters; services exchange messages and survive partial failure), and agents in 2024 (Orchestrator-workers, Evaluator-optimizer, Context isolation; a harness steers a model that picks its next step)." />
           </div>
           <figcaption>
             <span>Framing after Jia Huang's <a href="https://kage-ai.com/research/pattern-evolution/" target="_blank" rel="noopener noreferrer">Pattern Evolution</a>: the shift from a structure chosen at design time to a decision taken at runtime by a model.</span>
@@ -241,7 +242,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
         <p class="section-subtitle">A classic pattern assumes the component in the middle executes what it is given. A model does not, and four guarantees change with it.</p>
         <figure class="infographic">
           <div class="infographic-scroll">
-            <img src={figures.breaks} width="1376" height="774" loading="lazy" decoding="async" alt="Four classic guarantees compared with Claude Code behavior: Decorator wrappers run in a fixed order, while matching hooks run in parallel; Memento restores the full state, while checkpoints track Claude's file edits only; Event Sourcing replay rebuilds the same state, while resuming a transcript does not reproduce; a Facade enforces a contract, while CLAUDE.md is read as context, not enforced." />
+            <img src={figures.breaks} width="1376" height="774" loading="lazy" decoding="async" alt="Four classic guarantees compared with Claude Code behavior: Decorator wrappers run in a fixed order, while matching hooks run in parallel; Memento restores the full state, while checkpoints track Claude's file edits only; Event Sourcing replay rebuilds the whole state, while a transcript keeps the conversation, not the state; a Facade enforces a contract, while CLAUDE.md is read as context, not enforced." />
           </div>
           <figcaption>
             <span>Each break is quoted from the official documentation below.</span>
@@ -321,6 +322,24 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
                     ))}
                   </ul>
                 )}
+                {card.related.length > 0 && (
+                  <div class="related-links">
+                    <span class="related-title">Go further</span>
+                    <ul>
+                      {card.related.map(link => (
+                        <li>
+                          <a href={link.href} {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{link.title}</a>
+                          <span class={`related-kind related-kind--${link.kind}`}>{link.kindLabel}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {card.related.filter(link => link.image).map(link => (
+                      <a class="related-figure" href={link.image!.src} target="_blank" rel="noopener noreferrer">
+                        <img src={link.image!.src} loading="lazy" decoding="async" alt={link.image!.alt} />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           ))}
@@ -343,7 +362,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
           ))}
         </div>
         <div class="always-box">
-          <p><strong>On every branch:</strong> each side effect that leaves the machine needs a written compensating action (Saga), each rule that must never break needs a deterministic gate (a PreToolUse hook or a deny rule), and every automated run needs a turn limit and a budget limit (Circuit Breaker).</p>
+          <p><strong>On every branch:</strong> each side effect that leaves the machine needs a written compensating action (Saga), each rule that must never break needs a deterministic gate (a PreToolUse hook or a deny rule), and every automated run needs a turn limit and a budget limit with headroom (bounded execution, the static half of a Circuit Breaker).</p>
           <a href={guideHref('choose-a-pattern')} class="text-link">Decision tree in the guide →</a>
         </div>
       </div>
@@ -469,6 +488,8 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
 .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--text-primary); margin: 0 0 1rem; }
 .hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 660px; margin: 0 0 1.5rem; line-height: 1.6; }
 .hero-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.hero-wip { font-size: 0.875rem; color: var(--text-secondary); max-width: 660px; margin: 1.25rem 0 0; padding: 0.75rem 1rem; border-left: 3px solid var(--status-warning); background: var(--bg-secondary); border-radius: var(--border-radius-sm, 4px); line-height: 1.5; }
+.hero-wip a { color: var(--accent); }
 .pill { display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.825rem; font-weight: 600; text-decoration: none; border: 1px solid; }
 .pill--accent { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); border-color: var(--accent); }
 .pill--info { background: color-mix(in srgb, var(--status-info) 10%, transparent); color: var(--status-info); border-color: var(--status-info); }
@@ -544,6 +565,16 @@ a.pattern-name:hover { color: var(--accent) !important; text-decoration: underli
 .video-list a { color: var(--text-primary); font-weight: 600; text-decoration: none; }
 .video-list a:hover { color: var(--accent); text-decoration: underline; }
 .video-list span:not(.video-time) { color: var(--text-secondary); }
+.related-links { display: flex; flex-direction: column; gap: 0.35rem; }
+.related-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); }
+.related-links ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.related-links li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem; font-size: 0.82rem; line-height: 1.4; }
+.related-links a { color: var(--text-primary); font-weight: 600; text-decoration: none; }
+.related-links a:hover { color: var(--accent); text-decoration: underline; }
+.related-kind { font-size: 0.68rem; padding: 0.05rem 0.4rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-secondary); white-space: nowrap; }
+.related-kind--project, .related-kind--article { border-color: var(--accent); color: var(--accent); }
+.related-figure { display: block; margin-top: 0.35rem; border: 1px solid var(--border); border-radius: var(--border-radius); overflow: hidden; background: var(--bg-tertiary); }
+.related-figure img { display: block; width: 100%; height: auto; }
 .video-time { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 .further-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
 .further-list li { padding: 1.1rem 1.2rem; background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--border-radius-lg); display: flex; flex-direction: column; gap: 0.45rem; }
