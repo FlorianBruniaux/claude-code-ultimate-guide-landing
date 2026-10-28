@@ -43,6 +43,11 @@ try {
       else {
         await page.mouse.move(500, 500)
         await page.keyboard.press('Tab')
+        // In the fixture the link is the only focusable element: after the first theme,
+        // Tab leaves the document, and a programmatic focus no longer counts as keyboard focus.
+        for (let i = 0; !process.argv[2] && i < 3 && !(await page.$eval(link, el => el === document.activeElement)); i++) {
+          await page.keyboard.press('Tab')
+        }
         await page.focus(link)
         assert.ok(await page.$eval(link, el => el.matches(':focus-visible')), `${theme}: keyboard focus must be visible`)
       }
