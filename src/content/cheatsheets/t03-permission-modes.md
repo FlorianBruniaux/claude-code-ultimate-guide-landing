@@ -18,11 +18,11 @@ order: 3
 | **Don't Ask** | `dontAsk` | `/permissions` or `permissions.allow` rules | Restrictive workflows, silent auto-deny if not pre-approved |
 | **Auto (AI classifier)** | `auto` | `permissions` → `defaultMode: "auto"` | Long tasks, fewer interruptions |
 | **Full bypass** | `bypassPermissions` | `--dangerously-skip-permissions` | Headless CI/CD, sandboxed |
-| **Fewer prompts** | _(none)_ | `/fewer-permission-prompts` | Generates an allowlist from transcripts (shipped as `/less-permission-prompts` in v2.1.111) |
+| **Fewer prompts** | _(none)_ | `/fewer-permission-prompts` | Bundled skill: adds an allowlist built from common read-only calls in your transcripts |
 
-**CLI activation:** `claude --permission-mode <mode>` accepts `default`, `plan`, `acceptEdits`, `dontAsk`, `auto`, `bypassPermissions`. **Persistent activation:** `permissions.defaultMode` key in `settings.json`.
+**CLI activation:** `claude --permission-mode <mode>` accepts `default`, `plan`, `acceptEdits`, `dontAsk`, `auto`, `bypassPermissions`. **Persistent activation:** `permissions.defaultMode` key in `settings.json`. Since v2.1.283, interactive terminal and VS Code sessions start in `auto` unless `permissions.defaultMode` or `--permission-mode` overrides it.
 
-**Note:** `--dangerously-skip-permissions` no longer prompts for writes to `.claude/skills/`, `.claude/agents/`, and `.claude/commands/` (v2.1.121); the rest of `.claude/` (settings, hooks) and `.git/` stay protected even under full bypass. The `auto` mode relies on a classifier model that evaluates each tool call before execution, less friction, not a security boundary.
+**Note:** `--dangerously-skip-permissions` no longer prompts for writes to `.claude/skills/`, `.claude/agents/`, and `.claude/commands/` (v2.1.121); the rest of `.claude/` (settings, hooks) and `.git/` stay protected even under full bypass. The `auto` mode relies on a classifier (server-side by default; `CLAUDE_CODE_AUTO_MODE_MODEL` sets the client-side model), less friction, not a security boundary.
 
 ## Tool whitelist
 

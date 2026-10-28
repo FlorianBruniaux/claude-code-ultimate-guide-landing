@@ -12,13 +12,12 @@ order: 1
 
 | Shortcut | Action |
 |----------|--------|
-| `Shift+Tab` | Cycle permission mode (Manual, acceptEdits, Plan) |
+| `Shift+Tab` | Cycle permission mode (Manual, acceptEdits, Plan, auto); sessions start in auto since v2.1.283 unless overridden |
 | `Ctrl+O` | Toggle verbose transcript |
-| `Ctrl+C` | Interrupt generation |
-| `Esc` | Cancel current action |
+| `Ctrl+C` | Interrupt (idle: clears input) |
+| `Esc` | Interrupt Claude or close a dialog; `Esc Esc` opens rewind |
 | `↑` / `↓` | Message history |
-| `Tab` | Path completion |
-
+| `Tab` | Accept autocomplete suggestion |
 | `Ctrl+X Ctrl+K` | Stop background subagents |
 | `Ctrl+Enter` / `Ctrl+X Ctrl+S` | Send queued messages now |
 
@@ -29,8 +28,8 @@ order: 1
 /clear          Clear context (reset)
 /compact        Compress history
 /model          Choose model; Enter saves, s applies once
-/cost           View session costs
-/status         Account and active settings sources
+/cost           Session cost (alias of /usage)
+/status         Status tab: version, model, account
 /context        Context usage breakdown
 ```
 
@@ -66,7 +65,7 @@ claude --continue
 ```
 /new            New session (alias for /clear)
 /resume         Resume a session (opens the picker)
-/branch         Fork the conversation here (v2.1.77)
+/branch         Branch the conversation here
 ```
 
 ## Context navigation

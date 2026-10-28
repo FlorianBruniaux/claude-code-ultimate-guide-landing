@@ -10,7 +10,7 @@ order: 11
 
 ## The 5 native search tools
 
-Claude Code offers 5 distinct tools to find and read information in a project. Each has a precise role, and mixing them without a strategy wastes tokens unnecessarily.
+Claude Code offers 5 distinct tools to find and read information in a project. Each has a precise role, and mixing them without a strategy wastes tokens unnecessarily. `Glob` and `Grep` are in the default tool set on Windows only; on macOS, Linux and WSL, Claude searches with `find` and `grep` through `Bash` unless they are enabled (for example via `--tools`).
 
 | Tool | Role | Token cost |
 |------|------|------------|

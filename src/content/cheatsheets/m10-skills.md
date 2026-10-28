@@ -43,9 +43,12 @@ allowed-tools: Read Grep Bash
 | Field | Role |
 |-------|------|
 | `name` | Kebab-case, 1-64 chars, must match the folder |
-| `description` | Activation trigger (max 1024 chars) |
+| `description` | Activation trigger; with `when_to_use`, truncated at 1,536 chars in the listing (1,024 is the agentskills.io limit) |
 | `allowed-tools` | Tool whitelist (supports wildcards) |
 | `disable-model-invocation` | `true` for manual-only invocation |
+| `user-invocable` | `false` hides the skill from the `/` menu |
+| `model` / `effort` | Per-skill model (`inherit` allowed) and effort (`low` to `max`) |
+| `context` / `paths` | `fork` runs in a subagent; `paths` globs limit activation |
 
 ## Skills vs commands
 

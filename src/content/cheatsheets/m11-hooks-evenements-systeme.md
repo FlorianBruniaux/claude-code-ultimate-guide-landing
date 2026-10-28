@@ -10,7 +10,7 @@ order: 111
 
 ## What is a hook
 
-Command hooks run on configured events and receive JSON on stdin. Other hook types include prompt, agent, HTTP and MCP tool hooks; availability depends on the event.
+Command hooks run on configured events and receive JSON on stdin. Other hook types include prompt, agent, HTTP and MCP tool hooks; availability depends on the event. Claude Code has 33 hook events in total; the tables show the main ones.
 
 ## Main events
 
@@ -61,7 +61,9 @@ Team gates can request further work before completion. `ConfigChange` audits con
 | `args` | Arguments passed to `command` without a shell; does not replace the executable |
 | `timeout` | Seconds; defaults: command 600, prompt 30, agent 60 |
 | `async` | If `true`, Claude continues without waiting for completion |
-| `continueOnBlock` | Prompt hooks: continue after `ok: false` on supported events, including `PreToolUse` and `PostToolUse` |
+| `continueOnBlock` | Prompt hooks: continue after `ok: false` on `PreToolUse`, `PostToolUse` and `TeammateIdle` |
+| `asyncRewake` | Runs in the background and wakes Claude on exit code 2 (implies `async`) |
+| `onFailure` | `"block"` blocks the action when a command or HTTP hook cannot start, times out or exits unexpectedly (v2.1.295; default `continue`) |
 
 ## Exit codes
 

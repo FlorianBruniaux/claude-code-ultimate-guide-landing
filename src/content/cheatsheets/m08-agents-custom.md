@@ -28,7 +28,7 @@ The file body contains instructions in Markdown: role, methodology, examples, co
 | Field | Required | Role |
 |-------|----------|------|
 | `name` | Yes | kebab-case identifier |
-| `description` | Yes | Activation trigger (50-100 chars) |
+| `description` | Yes | When Claude should delegate to it |
 | `model` | No | Aliases such as `sonnet`, `inherit`, or a supported model ID |
 | `tools` | No | Whitelist of accessible tools |
 | `memory` | No | Persistent memory scope |

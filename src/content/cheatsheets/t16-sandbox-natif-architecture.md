@@ -18,6 +18,8 @@ Since v2.1.0, Claude Code includes a native sandbox that isolates bash command e
 
 **macOS: Seatbelt**. Built into the system, no installation required. Uses the TrustedBSD Mandatory Access Control framework to filter system calls at the kernel level. Measure overhead with your own commands.
 
+Before v2.1.309, sandboxed Bash commands ran the shell's startup files outside the sandbox on macOS and Linux; update to v2.1.309 or later.
+
 **Linux / WSL2: bubblewrap**. Requires installing two packages.
 
 ```bash

@@ -70,10 +70,12 @@ Description of the expected result.
 
 ## Recent native commands
 
+These two are built-in commands. `/simplify`, `/batch`, `/loop` and `/debug` are bundled skills that work like your own.
+
 | Command | Usage |
 |---------|-------|
-| `/goal [condition]` | Autonomous multi-turn mode: Claude works until the condition is met, with a live elapsed/turns/tokens overlay (v2.1.139) |
-| `/scroll-speed` | Interactive slider to tune mouse wheel scroll speed with live preview (v2.1.139) |
+| `/goal [condition]` | Autonomous multi-turn mode: Claude works until the condition is met, with a live elapsed/turns/tokens overlay |
+| `/scroll-speed` | Interactive slider to tune mouse wheel scroll speed with live preview |
 
 ## Useful commands to create
 

@@ -27,7 +27,7 @@ Context7 solves a common problem: Claude knows popular APIs up to its knowledge 
 
 Sequential Thinking brings a multi-step reasoning engine for complex problems. Rather than answering directly, it decomposes the problem into hypotheses, tests them, and builds an argued response step by step.
 
-**Invocation**: request the installed Sequential Thinking MCP tool for a problem that benefits from explicit steps. `--think-hard` and `--ultrathink` are not Claude Code CLI flags. The prompt word `ultrathink` adds a reasoning instruction without changing API effort; use `/effort` for supported models. Haiku 4.5 has no effort parameter.
+**Invocation**: request the installed Sequential Thinking MCP tool for a problem that benefits from explicit steps. `--think-hard` and `--ultrathink` are not Claude Code CLI flags. The prompt word `ultrathink` adds a reasoning instruction without changing API effort; use `/effort` for supported models. Legacy Haiku 4.5 has no effort parameter.
 
 ```bash
 # Invoke Sequential for complex debugging
