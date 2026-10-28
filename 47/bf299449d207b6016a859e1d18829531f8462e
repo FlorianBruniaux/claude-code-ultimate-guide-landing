@@ -1,0 +1,57 @@
+CHANGELOG.md
+  s_0d99942bd5e52a::t_4902e198ab3515 7-16
+src/components/ecosystem/EcosystemProjectStrip.astro
+  s_0d99942bd5e52a::t_0eb7bd5a77af25 17,21-22,142-145
+src/components/global/Header.astro
+  s_0d99942bd5e52a::t_5ec45af6137173 123-125
+src/data/ai-design-patterns.json
+  s_0d99942bd5e52a::t_6287aae59b775c 87,93,100-111,146-157,245-256,301-317,394-400,432-433,440-451,502,527,533-546,597-613,665-681,725-731,784-804,857-873,925-941,954,970,980-981,991-1002,1054-1065,1112-1123,1144,1150-1151,1156-1172,1187,1213-1229,1262-1278,1300,1309-1327,1338,1344,1348,1356-1362,1377,1384,1396-1407,1422,1445-1461,1494-1510,1548-1559,1608,1803,1817,1885-1891,2042,2161,2175,2210,2272-2273
+src/data/ai-design-patterns.test.ts
+  s_0d99942bd5e52a::t_a6eee32fbaa2da 15,130-170
+src/data/ai-design-patterns.ts
+  s_0d99942bd5e52a::t_5109980deb37f2 128-131,139,150-151,156-185,217,226
+src/data/diagrams-data.ts
+  s_0d99942bd5e52a::t_7f26eed60f8de7 31,39,47,87,127,135,145,151,179-186,383,391,407,423,431,439,463,471,479,495,503
+src/data/ecosystem-discovery.test.ts
+  s_0d99942bd5e52a::t_5451a2c8a19b5b 17,20,25-40
+src/data/ecosystem-discovery.ts
+  s_0d99942bd5e52a::t_7273a1ec88d34b 3,8,13-17,19-26,42-45,54
+src/data/guide-content-entries.ts
+  s_0d99942bd5e52a::t_5bafe81ab96f7f 3,674,698,743-750,930,1490,1546,6090,6346,6586,6706,7330,12842,12922,13162,13474,13866,14519-14526,15434,15562
+src/data/guide-search-entries.ts
+  s_0d99942bd5e52a::t_da6debeccccfd9 782-789,1574-1581,3918-3933
+src/data/homepage-content.test.ts
+  s_0d99942bd5e52a::t_eb80f3dc785c84 22,59,61
+src/data/personal-projects.generated.ts
+  s_644367ee3c105b::t_89a9468fc070fd 14,196-213,324-326,333,335
+src/pages/ai-design-patterns/index.astro
+  s_0d99942bd5e52a::t_37961e30ed5513 57,59,64,105,115,136,245,325-342,365,491-492,568-577
+scripts/prepare-guide-content.mjs
+  s_0d99942bd5e52a::t_3fa540f8078b32 343-355,358-360,362
+src/data/guide-local-anchors.test.ts
+  s_0d99942bd5e52a::t_84fb81ba6d0bc9 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "47bf299449d207b6016a859e1d18829531f8462e",
+  "prompts": {},
+  "sessions": {
+    "s_0d99942bd5e52a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9f90f712-4dec-4864-90b0-d67f46e25e7a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_644367ee3c105b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fbae9359-d58f-4c9c-a62f-4af34559bcbb",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
