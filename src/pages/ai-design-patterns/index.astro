@@ -6,6 +6,7 @@ import {
   CONSENSUS_LABELS,
   FAMILIES,
   FURTHER_READING,
+  LAST_UPDATED,
   LAST_VERIFIED,
   NATIVE_PATTERNS,
   PATTERN_CARDS,
@@ -29,7 +30,7 @@ const jsonLd = [
     author: { '@type': 'Person', '@id': 'https://cc.bruniaux.com/#author', name: 'Florian BRUNIAUX', url: 'https://github.com/FlorianBruniaux', jobTitle: 'Founding Engineer' },
     publisher: { '@type': 'Organization', '@id': 'https://cc.bruniaux.com/#organization', name: 'Claude Code Ultimate Guide', url: 'https://cc.bruniaux.com' },
     datePublished: '2026-10-27',
-    dateModified: LAST_VERIFIED,
+    dateModified: LAST_UPDATED,
     inLanguage: 'en',
     keywords: 'AI design patterns, agent design patterns, GoF patterns for agents, Claude Code hooks, subagents, circuit breaker, saga, agent harness anti-patterns',
   },
@@ -88,7 +89,9 @@ const figures = {
 const galleryCards = PATTERN_CARDS.filter(card => card.image)
 const videoCount = new Set(PATTERN_CARDS.flatMap(card => card.videos.map(video => video.url.split('&t=')[0]))).size
 
-const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+const formatDate = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+const verifiedLabel = formatDate(LAST_VERIFIED)
+const updatedLabel = formatDate(LAST_UPDATED)
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -96,6 +99,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
     <div class="container">
       <div class="hero-eyebrow">Claude Code · Build</div>
       <h1>AI design patterns</h1>
+      <p class="hero-updated">Last updated <time datetime={LAST_UPDATED}>{updatedLabel}</time> · Claude Code mechanisms verified <time datetime={LAST_VERIFIED}>{verifiedLabel}</time></p>
       <p class="hero-desc">Your agent harness already speaks the patterns developers know: Observer, Mediator, Memento, Circuit Breaker, Saga. This page maps each one to the Claude Code mechanism behind it, then shows where the analogy breaks.</p>
       <div class="hero-pills">
         <a href="#crosswalk" class="pill pill--accent">{PATTERN_COUNTS.crosswalk} crosswalk rows</a>
@@ -488,6 +492,7 @@ const verifiedLabel = new Date(`${LAST_VERIFIED}T00:00:00Z`).toLocaleDateString(
 .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--text-primary); margin: 0 0 1rem; }
 .hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 660px; margin: 0 0 1.5rem; line-height: 1.6; }
 .hero-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.hero-updated { font-size: 0.8rem; color: var(--text-muted); margin: -0.25rem 0 0.75rem; font-variant-numeric: tabular-nums; }
 .hero-wip { font-size: 0.875rem; color: var(--text-secondary); max-width: 660px; margin: 1.25rem 0 0; padding: 0.75rem 1rem; border-left: 3px solid var(--status-warning); background: var(--bg-secondary); border-radius: var(--border-radius-sm, 4px); line-height: 1.5; }
 .hero-wip a { color: var(--accent); }
 .pill { display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.825rem; font-weight: 600; text-decoration: none; border: 1px solid; }

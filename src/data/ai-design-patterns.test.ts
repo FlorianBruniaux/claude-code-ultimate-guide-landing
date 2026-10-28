@@ -11,6 +11,8 @@ import {
   NATIVE_PATTERNS,
   PATTERN_CARDS,
   PATTERN_ROWS,
+  LAST_UPDATED,
+  LAST_VERIFIED,
   guideHref,
   repoPathHref,
 } from './ai-design-patterns.ts'
@@ -167,4 +169,10 @@ test('related images resolve to a copied guide image and carry alt text', () => 
       assert.ok(existsSync(resolve('public', image.src.slice(1))), `${image.src}: not copied to public/`)
     }
   }
+})
+
+test('the last update date is an ISO day on or after the mechanism verification date', () => {
+  assert.match(LAST_UPDATED, /^\d{4}-\d{2}-\d{2}$/)
+  assert.match(LAST_VERIFIED, /^\d{4}-\d{2}-\d{2}$/)
+  assert.ok(LAST_UPDATED >= LAST_VERIFIED, `${LAST_UPDATED} is before ${LAST_VERIFIED}`)
 })

@@ -63,6 +63,7 @@ export const PROVENANCE_LABELS: Record<Provenance, string> = {
 }
 
 export const LAST_VERIFIED: string = raw.last_verified
+export const LAST_UPDATED: string = raw.last_updated
 
 const sourcesById = new Map<string, SourceRef>(raw.sources.map(source => [source.id, source]))
 
