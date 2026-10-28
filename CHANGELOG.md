@@ -4,7 +4,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
-- **AI Design Patterns: last update date in the hero (October 28, 2026)**: under the title, `/ai-design-patterns/` now shows "Last updated" from the dataset's new `last_updated` field and the date the Claude Code mechanisms were last verified. The JSON-LD `dateModified` uses the update date. New test: the update date is an ISO day on or after the verification date.
+- **AI Design Patterns: last update date in the hero (October 28, 2026)**: under the title, `/ai-design-patterns/` now shows "Last updated: <date>" from the dataset's new `last_updated` field, in the same form as the guide reader pages. The date the Claude Code mechanisms were last verified stays in the crosswalk note and the method section. The JSON-LD `dateModified` uses the update date. New test: the update date is an ISO day on or after the verification date.
 
 - **Claude Code reference refresh and re-rendered downloads (October 28, 2026)**: current models (Opus 5.5, Sonnet 5.5, Haiku 5.5) on the cheatsheet, glossary and MCP page; `/status` and `/debug` aligned with the official commands reference; 41 quiz questions corrected against the official docs, including 01-001, which now recommends the native installer. The Output Styles search entry lists the five built-in styles, and the guide search index is regenerated from the merged guide. Downloads now point to the re-rendered guide 3.44.1 edition: 26 whitepaper PDFs and their page counts, 116 recap-card PDFs and six series ZIPs (`whitepapers-data.ts`, `recap-cards-data.ts`), the local recap-card and daily cheatsheet PDFs, 26 EPUBs, and the 12 English card pages changed upstream (M08 to M11, T01, T03, T11, T13, T16, T18, T19, T21).
 

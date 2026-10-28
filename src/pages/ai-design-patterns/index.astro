@@ -99,7 +99,7 @@ const updatedLabel = formatDate(LAST_UPDATED)
     <div class="container">
       <div class="hero-eyebrow">Claude Code · Build</div>
       <h1>AI design patterns</h1>
-      <p class="hero-updated">Last updated <time datetime={LAST_UPDATED}>{updatedLabel}</time> · Claude Code mechanisms verified <time datetime={LAST_VERIFIED}>{verifiedLabel}</time></p>
+      <p class="hero-updated">Last updated: <time datetime={LAST_UPDATED}>{updatedLabel}</time></p>
       <p class="hero-desc">Your agent harness already speaks the patterns developers know: Observer, Mediator, Memento, Circuit Breaker, Saga. This page maps each one to the Claude Code mechanism behind it, then shows where the analogy breaks.</p>
       <div class="hero-pills">
         <a href="#crosswalk" class="pill pill--accent">{PATTERN_COUNTS.crosswalk} crosswalk rows</a>
@@ -492,7 +492,7 @@ const updatedLabel = formatDate(LAST_UPDATED)
 .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--text-primary); margin: 0 0 1rem; }
 .hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 660px; margin: 0 0 1.5rem; line-height: 1.6; }
 .hero-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.hero-updated { font-size: 0.8rem; color: var(--text-muted); margin: -0.25rem 0 0.75rem; font-variant-numeric: tabular-nums; }
+.hero-updated { font-size: 0.875rem; color: var(--text-muted); margin: -0.5rem 0 1rem; }
 .hero-wip { font-size: 0.875rem; color: var(--text-secondary); max-width: 660px; margin: 1.25rem 0 0; padding: 0.75rem 1rem; border-left: 3px solid var(--status-warning); background: var(--bg-secondary); border-radius: var(--border-radius-sm, 4px); line-height: 1.5; }
 .hero-wip a { color: var(--accent); }
 .pill { display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.825rem; font-weight: 600; text-decoration: none; border: 1px solid; }
