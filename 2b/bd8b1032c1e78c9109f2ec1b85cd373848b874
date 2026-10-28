@@ -1,0 +1,19 @@
+scripts/check-diagrams-hover.mjs
+  s_b3abca724edd0a::t_2abf4b40283e61 46-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2bbd8b1032c1e78c9109f2ec1b85cd373848b874",
+  "prompts": {},
+  "sessions": {
+    "s_b3abca724edd0a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_b3abca724edd0a",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
