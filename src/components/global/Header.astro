@@ -120,6 +120,9 @@ function isLinkActive(href: string, external = false) {
                 {section.id === 'scale' && (
                   <EcosystemProjectStrip menu="scale" projects={ecosystemMenuProjects.scale} />
                 )}
+                {section.id === 'resources' && (
+                  <EcosystemProjectStrip menu="resources" projects={ecosystemMenuProjects.resources} />
+                )}
               </section>
             </details>
           ))}

@@ -340,10 +340,26 @@ function rewriteRepoDocLinks(content) {
  * @param {object} anchorMap - anchor → chapter slug mapping
  * @returns {string} - processed content
  */
+function localAnchors(content) {
+  const anchors = new Set()
+  let inFence = false
+  for (const line of content.split('\n')) {
+    if (/^\s*(```|~~~)/.test(line)) inFence = !inFence
+    if (inFence) continue
+    const heading = line.match(/^#{1,6}\s+(.+?)\s*#*\s*$/)
+    if (heading) anchors.add(toAnchor(heading[1]))
+    for (const id of line.matchAll(/\bid=["']([^"']+)["']/g)) anchors.add(id[1])
+  }
+  return anchors
+}
+
 function rewriteCrossChapterAnchors(content, currentSlug, anchorMap) {
   // Match markdown links with bare anchors: [text](#anchor)
-  // Skip anchors inside code fences by only replacing outside of them.
+  // An anchor that exists in the page itself stays local, even when an
+  // ultimate-guide chapter has a heading with the same slug.
+  const ownAnchors = localAnchors(content)
   return content.replace(/\[([^\]]*)\]\(#([^)]+)\)/g, (match, text, anchor) => {
+    if (ownAnchors.has(anchor)) return match
     const targetSlug = anchorMap[anchor]
     if (targetSlug && targetSlug !== currentSlug) {
       return `[${text}](/guide/${targetSlug}/#${anchor})`

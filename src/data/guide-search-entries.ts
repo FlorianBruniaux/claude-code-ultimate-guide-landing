@@ -780,6 +780,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-ai-design-patterns-further-reading",
+    "title": "AI Design Patterns Further Reading",
+    "keywords": "ai design patterns further reading guide core design patterns md#further reading",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/ai-design-patterns.md#further-reading",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-definition",
     "title": "Agent Harness Definition",
     "keywords": "agent harness definition guide core agent harness md#the core claim agent harness model harness pair guide core agent harness md#the core claim agent harness scaffold effect guide core agent harness md#the core claim",
@@ -1561,6 +1569,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "smart suggest routing example examples hooks bm25 routing",
     "category": "Examples > Hooks",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/hooks/bm25-routing/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-smart-suggest-routing-step-by-step",
+    "title": "Smart Suggest Routing Step By Step",
+    "keywords": "smart suggest routing step by step guide workflows smart suggest routing md#bm25 router step step",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/smart-suggest-routing/#bm25-router-step-by-step",
     "source": "guide"
   },
   {
@@ -3897,6 +3913,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party tools config mgmt guide ecosystem third party tools md#configuration management",
     "category": "Guide",
     "url": "/guide/third-party-tools/#configuration-management",
+    "source": "guide"
+  },
+  {
+    "id": "guide-entire-cli",
+    "title": "Entire CLI",
+    "keywords": "entire cli guide ops traceability md#51 entire cli",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#51-entire-cli",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-native-git-forges",
+    "title": "Agent Native Git Forges",
+    "keywords": "agent native git forges guide ecosystem third party tools md#agent native git forges 2026",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#agent-native-git-forges-2026",
     "source": "guide"
   },
   {

@@ -14,12 +14,28 @@ test('selects only featured Build and Scale projects from generated route data',
   )
 })
 
-test('keeps every enabled ecosystem menu strip within its supported project range', async () => {
+test('keeps the Build and Scale menu strips within their supported project range', async () => {
   const { ecosystemMenuProjects } = await import('./ecosystem-discovery.ts')
 
-  for (const projects of Object.values(ecosystemMenuProjects)) {
+  for (const projects of [ecosystemMenuProjects.build, ecosystemMenuProjects.scale]) {
     assert.ok(projects.length >= 1 && projects.length <= 3)
   }
+})
+
+test('lists every other author project in the Resources menu, once, without the guide itself', async () => {
+  const { ecosystemMenuProjects } = await import('./ecosystem-discovery.ts')
+  const { PERSONAL_PROJECTS } = await import('./personal-projects.generated.ts')
+  const resources = ecosystemMenuProjects.resources.map((project) => project.id)
+  const featured = [...ecosystemMenuProjects.build, ...ecosystemMenuProjects.scale].map((project) => project.id)
+
+  assert.ok(resources.includes('wt-sweep'))
+  assert.ok(resources.includes('agentsec-triage'))
+  assert.ok(!resources.includes('claude-code-guide'))
+  assert.ok(resources.every((id) => !featured.includes(id)))
+  assert.deepEqual(
+    [...resources, ...featured, 'claude-code-guide'].sort(),
+    PERSONAL_PROJECTS.map((project) => project.id).sort(),
+  )
 })
 
 test('describes each external ecosystem project link with its title, format, and new-tab behavior', async () => {

@@ -12,6 +12,7 @@ import {
   PATTERN_CARDS,
   PATTERN_ROWS,
   guideHref,
+  repoPathHref,
 } from './ai-design-patterns.ts'
 
 const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/
@@ -124,5 +125,46 @@ test('further reading entries resolve to sources and known patterns', () => {
   for (const item of FURTHER_READING) {
     assert.match(item.url, /^https:\/\//)
     for (const pattern of item.patterns) assert.ok(ids.has(pattern.id), `${item.title}: ${pattern.id}`)
+  }
+})
+
+test('repository paths map to the guide reader layout or to GitHub', () => {
+  assert.deepEqual(repoPathHref('guide/core/memory-systems.md#2-native-claude-code-memory-stack'), {
+    href: '/guide/memory-systems/#2-native-claude-code-memory-stack',
+    external: false,
+  })
+  assert.deepEqual(repoPathHref('guide/workflows/plan-driven.md'), { href: '/guide/workflows/plan-driven/', external: false })
+  assert.deepEqual(repoPathHref('examples/hooks/bm25-routing/README.md'), {
+    href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bm25-routing/README.md',
+    external: true,
+  })
+})
+
+test('related links are labeled, external links use https, and guide links target a generated page', () => {
+  const guideDir = resolve('src/content/docs/guide')
+  const links = PATTERN_CARDS.flatMap(card => card.related)
+  assert.ok(links.length > 0)
+  for (const link of links) {
+    assert.ok(link.title && link.kindLabel, `${link.href}: missing title or kind label`)
+    if (link.external) {
+      assert.match(link.href, /^https:\/\//)
+    } else if (existsSync(guideDir)) {
+      const page = link.href.replace(/^\/guide\//, '').split('#')[0].replace(/\/$/, '')
+      assert.ok(existsSync(resolve(guideDir, `${page}.md`)), `${link.href}: no generated guide page`)
+    }
+  }
+  const authorLinks = links.filter(link => link.kind === 'project' || link.kind === 'article')
+  assert.ok(authorLinks.every(link => link.kindLabel.startsWith("Author's")), 'author links must disclose authorship')
+})
+
+test('related images resolve to a copied guide image and carry alt text', () => {
+  const images = PATTERN_CARDS.flatMap(card => card.related).flatMap(link => (link.image ? [link.image] : []))
+  assert.ok(images.length > 0)
+  for (const image of images) {
+    assert.match(image.src, /^\/guide\/images\/[a-z0-9/-]+\.webp$/)
+    assert.ok(image.alt.length >= 40, `${image.src}: alt text too short`)
+    if (existsSync(resolve('public/guide/images'))) {
+      assert.ok(existsSync(resolve('public', image.src.slice(1))), `${image.src}: not copied to public/`)
+    }
   }
 })
