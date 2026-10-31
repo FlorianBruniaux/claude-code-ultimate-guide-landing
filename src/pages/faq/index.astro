@@ -1,8 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getSiteStats } from '../../utils/site-stats'
+import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
 
 const stats = await getSiteStats()
+const cursorComparison = getContextualLink('/compare/claude-code-vs-cursor/')
+const methodologyStack = getContextualLink('/methodologies/')
 
 const title = 'Claude Code FAQ: 20+ Questions Answered (Cost, Privacy, Limits, Setup)'
 const description = 'Answers to the most common Claude Code questions: subscription vs API cost, what data gets sent to Anthropic, context window limits, how to run offline, and setup troubleshooting.'
@@ -254,7 +257,7 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Is Claude Code free to use?</summary>
-          <p>The CLI is free to install, but you pay per API token. Sonnet (default) costs ~$3/$15 per million input/output tokens. Opus costs ~$15/$75. For comparison: GitHub Copilot is $10/month flat, Cursor Pro is $20/month. Claude Code can cost $5-50/day for heavy usage without optimization strategies.</p>
+          <p>The CLI is free to install, but you pay per API token. Sonnet (default) costs ~$3/$15 per million input/output tokens. Opus costs ~$15/$75. For comparison: GitHub Copilot is $10/month flat, Cursor Pro is $20/month. Claude Code can cost $5-50/day for heavy usage without optimization strategies. <a href={cursorComparison.target}>{cursorComparison.anchor}</a> for strengths, weaknesses and when to use both.</p>
         </details>
         <details class="faq-item">
           <summary>How can I reduce costs or avoid rate limits?</summary>
@@ -331,7 +334,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>How much should I trust AI-generated code?</summary>
-          <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). <strong>Nuance:</strong> a 2-phase blind RCT (<a href="https://arxiv.org/abs/2507.00788" target="_blank" rel="noopener">Borg et al., 2025, n=151 professional developers</a>) found no significant difference in downstream maintainability (colleagues who evolve AI-generated code are not measurably slower than with human-written code). The quality risk is real but more narrowly scoped than often claimed. Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD to catch errors early: write tests first, then let Claude implement.</p>
+          <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). <strong>Nuance:</strong> a 2-phase blind RCT (<a href="https://arxiv.org/abs/2507.00788" target="_blank" rel="noopener">Borg et al., 2025, n=151 professional developers</a>) found no significant difference in downstream maintainability (colleagues who evolve AI-generated code are not measurably slower than with human-written code). The quality risk is real but more narrowly scoped than often claimed. Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD to catch errors early: write tests first, then let Claude implement. <a href={methodologyStack.target}>{methodologyStack.anchor}</a> when TDD alone does not fit.</p>
         </details>
       </div>
     </section>

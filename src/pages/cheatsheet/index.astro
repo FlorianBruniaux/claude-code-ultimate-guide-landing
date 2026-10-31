@@ -4,6 +4,9 @@ import PublicationEdition from '../../components/global/PublicationEdition.astro
 import edition from '../../data/publication-edition.json'
 import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
 import { REFERENCE_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
+import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
+
+const permissionModesCard = getContextualLink('/cheatsheets/t03-permission-modes/')
 
 const title = 'Claude Code Cheatsheet: Commands & Shortcuts'
 const description = 'Free printable Claude Code cheatsheet. Essential commands, keyboard shortcuts, permission modes, context management, and workflows.'
@@ -158,7 +161,7 @@ const jsonLd = [
           <tr><td>Auto-accept</td><td>Auto</td><td>Asks</td></tr>
           <tr><td>Plan Mode</td><td>No file changes</td><td>Read-only tools</td></tr>
         </table>
-        <div class="tip"><strong>Shift+Tab</strong> to switch modes</div>
+        <div class="tip"><strong>Shift+Tab</strong> to switch modes. <a href={permissionModesCard.target}>{permissionModesCard.anchor}</a> for every mode and its limits.</div>
       </div>
 
       <!-- Memory & Settings -->

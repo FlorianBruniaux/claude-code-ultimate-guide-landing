@@ -58,6 +58,24 @@ export const contextualLinks = [
     anchor: 'Use the hooks and events recap card',
     placement: 'generated related material appendix',
   },
+  {
+    sourceRoute: '/faq/',
+    target: '/compare/claude-code-vs-cursor/',
+    anchor: 'Compare Claude Code with Cursor',
+    placement: 'cost answer',
+  },
+  {
+    sourceRoute: '/faq/',
+    target: '/methodologies/',
+    anchor: 'Find the methodology stack for your context',
+    placement: 'code quality answer',
+  },
+  {
+    sourceRoute: '/cheatsheet/',
+    target: '/cheatsheets/t03-permission-modes/',
+    anchor: 'Open the permission modes recap card',
+    placement: 'permission modes section',
+  },
 ]
 
 export function getContextualLink(target) {

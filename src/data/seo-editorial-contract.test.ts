@@ -48,7 +48,7 @@ test('answers current-version queries with the same version and date displayed o
   assert.ok(getReleaseDescription(releases[0].version, releases[0].date).length <= 160)
 })
 
-test('defines six contextual links with descriptive anchors outside global chrome', () => {
+test('defines nine contextual links with descriptive anchors outside global chrome', () => {
   const targets = new Set([
     '/guide/workflows/code-review/',
     '/compare/claude-code-vs-windsurf/',
@@ -56,6 +56,9 @@ test('defines six contextual links with descriptive anchors outside global chrom
     '/cheatsheets/t04-permissions-glob-patterns/',
     '/cheatsheets/t06-settings-json/',
     '/cheatsheets/m11-hooks-evenements-systeme/',
+    '/compare/claude-code-vs-cursor/',
+    '/methodologies/',
+    '/cheatsheets/t03-permission-modes/',
   ])
 
   assert.deepEqual(new Set(contextualLinks.map((link) => link.target)), targets)
