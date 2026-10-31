@@ -7,6 +7,7 @@ import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
 import { readGuideLastmods } from './src/data/guide-lastmod.mjs'
+import { resolveLastmod, withLastmod } from './src/data/sitemap-lastmod.mjs'
 import publicationEdition from './src/data/publication-edition.json'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -34,7 +35,7 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/projects/': '2026-08-31',
   'https://cc.bruniaux.com/context/': '2026-08-31',
   'https://cc.bruniaux.com/cheatsheet/': publicationEdition.updatedAt,
-  'https://cc.bruniaux.com/faq/': '2026-06-08',
+  'https://cc.bruniaux.com/faq/': '2026-10-31',
   'https://cc.bruniaux.com/releases/': LATEST_CLAUDE_CODE_RELEASE_DATE_ISO,
   'https://cc.bruniaux.com/changelog/': '2026-08-30',
   'https://cc.bruniaux.com/examples/': '2026-10-05',
@@ -253,25 +254,23 @@ export default defineConfig({
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
         if (SITEMAP_EXCLUDED_ROUTES.has(new URL(normalizedUrl).pathname)) return undefined
-        const lastmod = PAGE_DATES[normalizedUrl]
-          ?? GUIDE_DATES.get(new URL(normalizedUrl).pathname)
-          ?? new Date().toISOString().split('T')[0]
+        const lastmod = resolveLastmod(normalizedUrl, PAGE_DATES, GUIDE_DATES)
 
         if (item.url === 'https://cc.bruniaux.com/') {
-          return { ...item, priority: 1.0, changefreq: 'weekly', lastmod }
+          return withLastmod({ ...item, priority: 1.0, changefreq: 'weekly' }, lastmod)
         }
         if (normalizedUrl === 'https://cc.bruniaux.com/mcp/') {
-          return { ...item, priority: 0.9, changefreq: 'monthly', lastmod }
+          return withLastmod({ ...item, priority: 0.9, changefreq: 'monthly' }, lastmod)
         }
         if (item.url.includes('/quiz/')) {
-          return { ...item, priority: 0.9, changefreq: 'monthly', lastmod }
+          return withLastmod({ ...item, priority: 0.9, changefreq: 'monthly' }, lastmod)
         }
         if (
           item.url.includes('/learning/') ||
           item.url.includes('/security/') ||
           item.url.includes('/diagrams/')
         ) {
-          return { ...item, priority: 0.85, changefreq: 'weekly', lastmod }
+          return withLastmod({ ...item, priority: 0.85, changefreq: 'weekly' }, lastmod)
         }
         if (
           item.url.includes('/cheatsheet/') ||
@@ -280,12 +279,12 @@ export default defineConfig({
           item.url.includes('/compare/') ||
           item.url.includes('/releases/')
         ) {
-          return { ...item, priority: 0.8, changefreq: 'monthly', lastmod }
+          return withLastmod({ ...item, priority: 0.8, changefreq: 'monthly' }, lastmod)
         }
         if (item.url.includes('/guide/')) {
-          return { ...item, priority: 0.85, changefreq: 'weekly', lastmod }
+          return withLastmod({ ...item, priority: 0.85, changefreq: 'weekly' }, lastmod)
         }
-        return { ...item, priority: 0.7, changefreq: 'monthly', lastmod }
+        return withLastmod({ ...item, priority: 0.7, changefreq: 'monthly' }, lastmod)
       },
     }),
     partytown({
