@@ -1,0 +1,45 @@
+src/data/guide-content-entries.ts
+  s_2e9ca0d5560653::t_bc5b1d3627a260 3,178,226,2018,2026,2058,2178,2234,2242,7383-7390,7626,7762,8194,8434,8922,9714,9738,9746,10674,12434,12442,12448-12450,12452,12490,12498,12512-12514,12516
+src/data/guide-search-entries.ts
+  s_2e9ca0d5560653::t_911cc2b23359e3 2761,3998-4013,7638-7653
+src/data/releases.ts
+  s_eb2a2919c9ff00::t_42409fcc78a7c6 21,23-79,101,111,125,133
+src/data/rss-entries.ts
+  s_af50e77fbc095f::t_a383c5f3a2a007 32-38
+src/data/seo-editorial-contract.mjs
+  s_eb2a2919c9ff00::t_404e15a6060bd2 84
+src/data/seo-editorial-contract.test.ts
+  s_eb2a2919c9ff00::t_e2acb8ddfb57ec 75-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b1351b7bdbf3f66a50752e0123efd927d7ba0437",
+  "prompts": {},
+  "sessions": {
+    "s_2e9ca0d5560653": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff5faa5e-0006-4c12-83cb-c362dfd2ef9b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_af50e77fbc095f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c66d4a9c-362a-4a55-87db-2c57e31735cf",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_eb2a2919c9ff00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31c7977a-2a19-4232-ab9b-d7b35ebc0b81",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
