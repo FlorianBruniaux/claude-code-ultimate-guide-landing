@@ -63,7 +63,7 @@ const jsonLd = [
       <h1>Claude Code knowledge quiz</h1>
       <p class="tagline">473 questions across 17 categories. Filter by role and difficulty, test your knowledge, share your score.</p>
       <p class="hero-answer">The Claude Code quiz tests your knowledge with 473 questions across 17 categories, covering installation, slash commands, workflows, agents, hooks, MCP servers, security, and team adoption metrics. Pick your categories, filter by difficulty (Junior, Senior, Power User) and by role (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM), answer multiple-choice questions, and get instant results with a shareable score. No account or sign-up required.</p>
-      <p class="hero-byline">Built and maintained by <a href="https://florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>, AI Founding Engineer.</p>
+      <p class="hero-byline">Built and maintained by <a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>, AI Founding Engineer.</p>
     </div>
   </header>
 
@@ -1405,7 +1405,7 @@ const jsonLd = [
         links = [
           { href: '/cheatsheet/', label: 'Cheatsheet', desc: 'all commands on one page' },
           { href: '/guide/ultimate-guide/01-quick-start/', label: 'Quick Start Guide', desc: 'installation through first task' },
-          { href: 'https://florian.bruniaux.com/blog/articles/where-to-start-with-claude-code/?utm_source=cc-guide&utm_medium=cta&utm_campaign=quiz-results&utm_content=quiz-novice', label: 'Where to Start', desc: 'a practical on-ramp, by this guide\'s author', external: true },
+          { href: 'https://www.florian.bruniaux.com/blog/articles/where-to-start-with-claude-code/?utm_source=cc-guide&utm_medium=cta&utm_campaign=quiz-results&utm_content=quiz-novice', label: 'Where to Start', desc: 'a practical on-ramp, by this guide\'s author', external: true },
         ];
       } else if (percentage < 80) {
         heading = 'Go deeper';
@@ -1413,7 +1413,7 @@ const jsonLd = [
           { href: '/guide/workflows/', label: 'Workflows', desc: 'advanced patterns and agent flows' },
           { href: '/cheatsheets/', label: 'Recap Cards', desc: `${cheatsheetCount} cheatsheets by topic` },
           { href: '/releases/', label: 'Version History', desc: 'env vars and config flags reference' },
-          { href: 'https://florian.bruniaux.com/guides/context-engineering-l0-to-l5/?utm_source=cc-guide&utm_medium=cta&utm_campaign=quiz-results&utm_content=quiz-practitioner', label: 'Context Engineering Playbook', desc: 'level up your CLAUDE.md, by this guide\'s author', external: true },
+          { href: 'https://www.florian.bruniaux.com/guides/context-engineering-l0-to-l5/?utm_source=cc-guide&utm_medium=cta&utm_campaign=quiz-results&utm_content=quiz-practitioner', label: 'Context Engineering Playbook', desc: 'level up your CLAUDE.md, by this guide\'s author', external: true },
         ];
       } else {
         heading = 'Expert territory';
@@ -1427,7 +1427,7 @@ const jsonLd = [
       // Consulting mention only at Expert/Master tier: this audience just proved
       // deep Claude Code knowledge, the most plausible decision-maker segment.
       const consultingHtml = percentage >= 80
-        ? `<a href="https://florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
+        ? `<a href="https://www.florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
         : '';
       cta.innerHTML = `<h3 class="quiz-minor-heading">${heading}</h3><div class="quiz-cta-links">${linksHtml}${consultingHtml}</div>`;
     }
@@ -1516,7 +1516,7 @@ const jsonLd = [
         <li><a href="/glossary/">Glossary</a>: definitions for every Claude Code term</li>
         <li><a href="/releases/">Releases</a>: full version history and env vars reference</li>
         <li><a href="/guide/data-privacy/">Data Privacy</a>: what gets sent to Anthropic and how to control it</li>
-        <li><a href="https://florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>: the engineer behind this guide, writing about AI-assisted development and open-source tools</li>
+        <li><a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>: the engineer behind this guide, writing about AI-assisted development and open-source tools</li>
       </ul>
     </div>
   </section>
