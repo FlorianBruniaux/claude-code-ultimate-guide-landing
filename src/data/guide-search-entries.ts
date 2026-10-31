@@ -2758,7 +2758,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-llm-market-subscriptions",
     "title": "LLM Market Subscriptions",
-    "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas",
+    "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas claude plan lineup guide ops llm market snapshot md#3 subscription quotas",
     "category": "Guide",
     "url": "/guide/llm-market-snapshot/#3-subscription-quotas",
     "source": "guide"
@@ -3993,6 +3993,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "third party gitdiff watcher guide ecosystem third party tools md#gitdiff watcher",
     "category": "Guide",
     "url": "/guide/third-party-tools/#gitdiff-watcher",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-terminal-rendering",
+    "title": "Third Party Tools Terminal Rendering",
+    "keywords": "third party tools terminal rendering guide ecosystem third party tools md#terminal rendering mods",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#terminal-rendering-mods",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-prismantis",
+    "title": "Third Party Prismantis",
+    "keywords": "third party prismantis guide ecosystem third party tools md#prismantis",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/#prismantis",
     "source": "guide"
   },
   {
@@ -7617,6 +7633,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent evaluation tools guide roles agent evaluation md#tools references",
     "category": "Guide",
     "url": "/guide/agent-evaluation/#tools--references",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-sample-size",
+    "title": "Agent Evaluation Sample Size",
+    "keywords": "agent evaluation sample size guide roles agent evaluation md#size the comparison the decision",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#size-the-comparison-to-the-decision",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-evaluation-ablation-runners",
+    "title": "Agent Evaluation Ablation Runners",
+    "keywords": "agent evaluation ablation runners guide roles agent evaluation md#configuration ablation runners",
+    "category": "Guide",
+    "url": "/guide/agent-evaluation/#configuration-ablation-runners",
     "source": "guide"
   },
   {

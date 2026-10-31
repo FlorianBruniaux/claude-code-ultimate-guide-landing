@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.45.0',
+    date: 'Oct 31, 2026',
+    description: 'Claude Code releases tracked through 2.1.316, the Max 20x to Ultra plan rename and the monthly API credits for Max, Ultra and Team plans, a new AI Design Patterns page, agent evaluation and local inference additions, and the MCP package 1.3.7.',
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.45.0',
+  },
+  {
     type: 'new_page',
     title: 'AI Design Patterns: classic patterns mapped to Claude Code',
     date: 'Oct 27, 2026',
