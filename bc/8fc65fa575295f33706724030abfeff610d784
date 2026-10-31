@@ -1,0 +1,33 @@
+scripts/check-built-seo.mjs
+  s_5149cee0db2bb2::t_401bf20f58593d 5,9
+scripts/lib/seo-contracts.mjs
+  s_5149cee0db2bb2::t_b19f228fb4911c 20-23,109,130-136,153-200,242-247,251-265,279,281-283,362-364
+src/data/seo-contracts.test.ts
+  s_5149cee0db2bb2::t_853592020fd6c9 295-368
+src/layouts/Layout.astro
+  s_5149cee0db2bb2::t_137424999f5f54 38,108,172-174,177
+src/pages/glossary/index.astro
+  s_5149cee0db2bb2::t_547bb41f078a7f 73,76,185-188
+src/pages/index.astro
+  s_5149cee0db2bb2::t_95c162a5d048e0 18
+src/pages/quiz/index.astro
+  s_5149cee0db2bb2::t_6e395607b7af72 75,88,96,129,179,186,194,371-382,609,845,905,969,1432
+src/pages/whitepapers/index.astro
+  s_5149cee0db2bb2::t_cdff5ed0a541cf 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bc8fc65fa575295f33706724030abfeff610d784",
+  "prompts": {},
+  "sessions": {
+    "s_5149cee0db2bb2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42678932-438d-4a77-bfac-283615695d86",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
