@@ -72,7 +72,7 @@ const jsonLd = [
     <!-- Setup Screen -->
     <div id="quiz-setup" class="quiz-setup">
       <div class="category-header">
-        <h3>Select categories</h3>
+        <h2 class="quiz-step-heading">Select categories</h2>
         <div class="category-actions">
           <button class="category-action-btn" id="select-all-btn">Select All</button>
           <button class="category-action-btn" id="deselect-all-btn">Deselect All</button>
@@ -85,7 +85,7 @@ const jsonLd = [
       <div class="selected-count" id="selected-count">0 questions selected</div>
       <div class="previous-best" id="previous-best"></div>
 
-      <h3 style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h3>
+      <h2 class="quiz-step-heading" style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h2>
       <div class="difficulty-select">
         <button class="difficulty-btn selected" data-difficulty="all">All Levels</button>
         <button class="difficulty-btn" data-difficulty="junior">Junior</button>
@@ -93,7 +93,7 @@ const jsonLd = [
         <button class="difficulty-btn" data-difficulty="power">Power User</button>
       </div>
 
-      <h3 style="margin-bottom: var(--space-xs);">Filter by Role (optional)</h3>
+      <h2 class="quiz-step-heading" style="margin-bottom: var(--space-xs);">Filter by Role (optional)</h2>
       <p class="filter-hint">Narrow the pool to questions relevant to your role. Combines with difficulty.</p>
       <div class="role-select">
         <button class="role-btn selected" data-role="all">All Roles</button>
@@ -126,7 +126,7 @@ const jsonLd = [
       </div>
 
       <div class="explanation-box" id="explanation-box">
-        <h4>Explanation</h4>
+        <h3 class="quiz-minor-heading">Explanation</h3>
         <p id="explanation-text"></p>
         <div class="success-rate" id="success-rate"></div>
         <div class="doc-links">
@@ -176,14 +176,14 @@ const jsonLd = [
           </div>
         </div>
 
-        <h4 style="margin-bottom: var(--space-md); text-align: left;">Score by Category</h4>
+        <h3 class="quiz-minor-heading" style="margin-bottom: var(--space-md); text-align: left;">Score by Category</h3>
         <div class="category-scores" id="category-scores">
           <!-- Populated by JS -->
         </div>
       </div>
 
       <div class="history-section" id="history-section">
-        <h4>Your History <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted); font-style: italic;">· idea by <a href="https://www.linkedin.com/in/jeff-ladiray-79203657/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Jeff Ladiray</a></span></h4>
+        <h3 class="quiz-minor-heading">Your History <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted); font-style: italic;">· idea by <a href="https://www.linkedin.com/in/jeff-ladiray-79203657/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Jeff Ladiray</a></span></h3>
         <div class="history-list" id="history-list">
           <!-- Populated by JS -->
         </div>
@@ -191,7 +191,7 @@ const jsonLd = [
       </div>
 
       <div class="most-missed-section" id="most-missed-section" style="display: none;">
-        <h4>Most Missed Questions</h4>
+        <h3 class="quiz-minor-heading">Most Missed Questions</h3>
         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md);">
           These questions have the lowest success rates overall.
         </p>
@@ -368,7 +368,18 @@ const jsonLd = [
       gap: var(--space-sm);
     }
 
-    .category-header h3 {
+    /* Former h3/h4 sizes kept after fixing the outline levels. */
+    .quiz-step-heading {
+      font-size: 1.17em;
+      margin-block: 1em;
+    }
+
+    .quiz-minor-heading {
+      font-size: 1em;
+      margin-block: 1.33em;
+    }
+
+    .category-header h2 {
       margin: 0;
     }
 
@@ -595,7 +606,7 @@ const jsonLd = [
       display: block;
     }
 
-    .explanation-box h4 {
+    .explanation-box h3 {
       margin-bottom: var(--space-sm);
       color: var(--text-primary);
     }
@@ -831,7 +842,7 @@ const jsonLd = [
       text-align: left;
     }
 
-    .most-missed-section h4 { margin-bottom: var(--space-sm); color: var(--text-primary); }
+    .most-missed-section h3 { margin-bottom: var(--space-sm); color: var(--text-primary); }
 
     #most-missed-list { max-height: 300px; overflow-y: auto; }
 
@@ -891,7 +902,7 @@ const jsonLd = [
     }
 
     .history-section:hover { border-color: var(--accent); }
-    .history-section h4 { margin-bottom: var(--space-md); text-align: left; }
+    .history-section h3 { margin-bottom: var(--space-md); text-align: left; }
     .history-list { display: flex; flex-direction: column; gap: var(--space-sm); }
 
     .history-item {
@@ -955,7 +966,7 @@ const jsonLd = [
       border-radius: var(--border-radius-lg);
       text-align: left;
     }
-    .quiz-cta h4 { margin: 0 0 var(--space-md) 0; color: var(--text-primary); font-size: 1rem; }
+    .quiz-cta h3 { margin: 0 0 var(--space-md) 0; color: var(--text-primary); font-size: 1rem; }
     .quiz-cta-links { display: flex; flex-direction: column; gap: var(--space-sm); }
     .quiz-cta-link {
       display: flex;
@@ -1418,7 +1429,7 @@ const jsonLd = [
       const consultingHtml = percentage >= 80
         ? `<a href="https://florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
         : '';
-      cta.innerHTML = `<h4>${heading}</h4><div class="quiz-cta-links">${linksHtml}${consultingHtml}</div>`;
+      cta.innerHTML = `<h3 class="quiz-minor-heading">${heading}</h3><div class="quiz-cta-links">${linksHtml}${consultingHtml}</div>`;
     }
 
     function renderMostMissedQuestions() {

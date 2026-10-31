@@ -292,3 +292,77 @@ test('rejects source dates that no built page uses, which signals a slug mapping
     assert.deepEqual(check(root, new Map()), ['guide dates: no source dates were read from the generated guide content'])
   })
 })
+
+const breadcrumbJsonLd = '<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[]}</script>'
+
+test('rejects two BreadcrumbList JSON-LD blocks on one indexable page', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</head>', `${breadcrumbJsonLd}${breadcrumbJsonLd}</head>`))
+
+    assert.deepEqual(check(root), [`${ROUTE}: 2 BreadcrumbList JSON-LD entries, expected at most 1`])
+  })
+})
+
+test('counts a BreadcrumbList nested in a JSON-LD graph and ignores schema text shown in the page body', async () => {
+  await withValidFixture(async (root) => {
+    const graph = '<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite"},{"@type":"BreadcrumbList","itemListElement":[]}]}</script>'
+    const bodySample = '<pre><code>{"@type":"BreadcrumbList"}</code></pre>'
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</head>', `${graph}</head>`).replace('</main>', `${bodySample}</main>`))
+    assert.deepEqual(check(root), [])
+
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</head>', `${graph}${breadcrumbJsonLd}</head>`))
+    assert.deepEqual(check(root), [`${ROUTE}: 2 BreadcrumbList JSON-LD entries, expected at most 1`])
+  })
+})
+
+test('rejects a heading level jump on an audited page', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<h3>Select categories</h3></main>'))
+
+    assert.deepEqual(check(root), [`${ROUTE}: heading level jumps from H1 to H3 ("Select categories")`])
+  })
+})
+
+test('allows going back up the outline and ignores headings inside scripts and templates', async () => {
+  await withValidFixture(async (root) => {
+    const body = '<h2>Section</h2><h3>Detail</h3><h2>Next</h2><template><h4>Later</h4></template><script>el.innerHTML = "<h4>Toast</h4>"</script>'
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', `${body}</main>`))
+
+    assert.deepEqual(check(root), [])
+  })
+})
+
+const CONTEXTUAL_LINK = {
+  sourceRoute: ROUTE,
+  target: '/compare/claude-code-vs-cursor/',
+  anchor: 'Compare Claude Code with Cursor',
+  placement: 'architecture choices section',
+}
+
+test('rejects a contextual link missing from the source page body', async () => {
+  await withValidFixture(async (root) => {
+    const failures = checkBuiltSeo({ distDir: root, routes: [ROUTE], guideDates: undefined, contextualLinks: [CONTEXTUAL_LINK] })
+
+    assert.deepEqual(failures, [`${ROUTE}: contextual link to ${CONTEXTUAL_LINK.target} ("${CONTEXTUAL_LINK.anchor}") is missing from the page body`])
+  })
+})
+
+test('does not let navigation or footer chrome satisfy a contextual link', async () => {
+  await withValidFixture(async (root) => {
+    const link = `<a href="${CONTEXTUAL_LINK.target}">${CONTEXTUAL_LINK.anchor}</a>`
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('<main>', `<nav>${link}</nav><main>`).replace('</body>', `<footer>${link}</footer></body>`))
+
+    const failures = checkBuiltSeo({ distDir: root, routes: [ROUTE], guideDates: undefined, contextualLinks: [CONTEXTUAL_LINK] })
+
+    assert.equal(failures.length, 1)
+    assert.match(failures[0], /is missing from the page body/)
+  })
+})
+
+test('accepts a contextual link rendered in the page body with its anchor text', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', `<p>Then <a class="x" href="${CONTEXTUAL_LINK.target}"><span>${CONTEXTUAL_LINK.anchor}</span></a>.</p></main>`))
+
+    assert.deepEqual(checkBuiltSeo({ distDir: root, routes: [ROUTE], guideDates: undefined, contextualLinks: [CONTEXTUAL_LINK] }), [])
+  })
+})

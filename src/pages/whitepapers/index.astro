@@ -10,7 +10,7 @@ import { getWhitepaperFormatOptions } from '../../utils/resource-catalog.ts'
 const stats = await getSiteStats()
 const whitepaperCount = WHITEPAPERS.length
 const title = `Ebooks: ${whitepaperCount} Whitepapers | Claude Code`
-const description = `${whitepaperCount} whitepapers, ${TOTAL_PAGES}+ pages, FR + EN, PDF + EPUB. From Claude Code fundamentals to multi-agent architecture, security, and ROI. WP00 is open access; the remaining titles are delivered by email.`
+const description = `${whitepaperCount} whitepapers, ${TOTAL_PAGES}+ pages in French and English, PDF and EPUB: Claude Code fundamentals to multi-agent architecture, security and ROI. WP00 is open access.`
 const pageCountLabel = (wp: (typeof WHITEPAPERS)[number]) =>
   wp.pagesEn && wp.pagesEn !== wp.pages ? `${wp.pagesEn}p EN · ${wp.pages}p FR` : `~${wp.pages}p`
 

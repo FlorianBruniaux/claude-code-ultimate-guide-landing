@@ -17,6 +17,10 @@ const TEXT_ARTIFACT_EXTENSIONS = new Set([
 ])
 
 export const AUDITED_ROUTES = [
+  '/',
+  '/downloads/',
+  '/quiz/',
+  '/whitepapers/',
   '/guide/agent-harness/',
   '/guide/architecture/',
   '/guide/data-privacy/',
@@ -102,6 +106,7 @@ function inspectRenderedDocument(html, route) {
   let h1Count = 0
   let isRedirectDocument = false
   let legacyReleaseHref = false
+  const headings = []
 
   for (const match of html.matchAll(/<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>/g)) {
     const tag = match[0]
@@ -122,6 +127,13 @@ function inspectRenderedDocument(html, route) {
       h1Count++
     }
 
+    const headingLevel = name.match(/^h([1-6])$/)?.[1]
+    if (headingLevel) {
+      const rest = html.slice(match.index + tag.length)
+      const text = renderedText(rest.match(new RegExp(`^([\\s\\S]*?)<\\/${name}\\s*>`, 'i'))?.[1] ?? '')
+      headings.push({ level: Number(headingLevel), text })
+    }
+
     if (name === 'meta' && attribute(tag, 'http-equiv')?.toLowerCase() === 'refresh') isRedirectDocument = true
 
     if (name === 'a') {
@@ -138,7 +150,54 @@ function inspectRenderedDocument(html, route) {
     }
   }
 
-  return { h1Count, isRedirectDocument, legacyReleaseHref }
+  return { h1Count, headings, isRedirectDocument, legacyReleaseHref }
+}
+
+// A heading may go back up the outline at any time, but going deeper skips no level.
+function headingJumps(headings) {
+  const jumps = []
+  for (let index = 1; index < headings.length; index++) {
+    const previous = headings[index - 1]
+    const current = headings[index]
+    if (current.level > previous.level + 1) jumps.push({ from: previous.level, to: current.level, text: current.text })
+  }
+  return jumps
+}
+
+function countSchemaType(node, type) {
+  if (Array.isArray(node)) return node.reduce((count, item) => count + countSchemaType(item, type), 0)
+  if (!node || typeof node !== 'object') return 0
+  const own = [node['@type']].flat().includes(type) ? 1 : 0
+  return own + Object.values(node).reduce((count, value) => count + countSchemaType(value, type), 0)
+}
+
+function jsonLdTypeCount(html, type) {
+  let count = 0
+  for (const [, payload] of html.matchAll(/<script\b[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      count += countSchemaType(JSON.parse(payload), type)
+    }
+    catch {
+      count += payload.match(new RegExp(`"@type"\\s*:\\s*"${type}"`, 'g'))?.length ?? 0
+    }
+  }
+  return count
+}
+
+// Links a reader meets in the page content: inside <main> when present, without
+// navigation, asides, footers, comments or inert script/style/template markup.
+function bodyLinks(html) {
+  const main = html.match(/<main\b[^>]*>([\s\S]*)<\/main>/i)?.[1]
+    ?? html.match(/<body\b[^>]*>([\s\S]*)<\/body>/i)?.[1]
+    ?? html
+  const content = main
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<(script|style|template|nav|aside|footer)\b[\s\S]*?<\/\1\s*>/gi, '')
+
+  return [...content.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a\s*>/gi)].map((match) => ({
+    href: attribute(`<a ${match[1]}>`, 'href'),
+    text: renderedText(match[2]),
+  }))
 }
 
 function walkFiles(root) {
@@ -180,9 +239,29 @@ function sitemapCalendarDate(value) {
 
 // guideDates: sitemap lastmod expected per guide route, read from the
 // generated content. Omit it to skip the guide date contracts.
-export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES, guideDates }) {
+export function checkBuiltSeo({
+  distDir,
+  routes = AUDITED_ROUTES,
+  guideDates,
+  contextualLinks = /** @type {Array<{ sourceRoute: string, target: string, anchor: string }>} */ ([]),
+}) {
   const failures = []
   const auditedPagePaths = new Set()
+
+  for (const link of contextualLinks) {
+    let html
+    try {
+      html = readFileSync(pagePath(distDir, link.sourceRoute), 'utf8')
+    }
+    catch {
+      failures.push(`${link.sourceRoute}: missing rendered source page for contextual link to ${link.target}`)
+      continue
+    }
+    const present = bodyLinks(html).some(({ href, text }) => href === link.target && text === link.anchor)
+    if (!present) {
+      failures.push(`${link.sourceRoute}: contextual link to ${link.target} ("${link.anchor}") is missing from the page body`)
+    }
+  }
 
   for (const route of routes) {
     const path = pagePath(distDir, route)
@@ -197,8 +276,11 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES, guideDates }) 
       continue
     }
 
-    const { h1Count } = inspectRenderedDocument(html, route)
+    const { h1Count, headings } = inspectRenderedDocument(html, route)
     if (h1Count !== 1) failures.push(`${route}: expected exactly one rendered H1, found ${h1Count}`)
+    for (const jump of headingJumps(headings)) {
+      failures.push(`${route}: heading level jumps from H${jump.from} to H${jump.to} ("${jump.text}")`)
+    }
 
     const expectedCanonical = `${SITE_ORIGIN}${route}`
     const actualCanonical = canonicalHref(html)
@@ -276,6 +358,9 @@ export function checkBuiltSeo({ distDir, routes = AUDITED_ROUTES, guideDates }) 
 
     if (!document.isRedirectDocument && !isNoIndex(html)) {
       indexablePages.push({ route, title: renderedText(title(html) ?? ''), description: renderedText(metaDescription(html) ?? '') })
+
+      const breadcrumbLists = jsonLdTypeCount(html, 'BreadcrumbList')
+      if (breadcrumbLists > 1) failures.push(`${route}: ${breadcrumbLists} BreadcrumbList JSON-LD entries, expected at most 1`)
 
       if (route.startsWith('/guide/') && !metaContent(html, 'og:image')) failures.push(`${route}: missing og:image`)
 
