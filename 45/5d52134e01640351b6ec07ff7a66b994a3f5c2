@@ -1,0 +1,63 @@
+src/components/starlight/Head.astro
+  s_5149cee0db2bb2::t_547d7f036e75cb 35,49
+src/layouts/Layout.astro
+  s_5149cee0db2bb2::t_80c8b9738fba89 138,140,148
+src/pages/ai-design-patterns/index.astro
+  s_5149cee0db2bb2::t_943d1036861c26 30
+src/pages/cheatsheet/index.astro
+  s_5149cee0db2bb2::t_1ac4b514c3b1d2 19
+src/pages/cheatsheets/[slug].astro
+  s_5149cee0db2bb2::t_f24a631709caf1 63
+src/pages/claude-md-best-practices/index.astro
+  s_5149cee0db2bb2::t_c3df2f6701630d 45
+src/pages/compare/index.astro
+  s_5149cee0db2bb2::t_728ed6f19d2aba 23
+src/pages/context-engineering/index.astro
+  s_5149cee0db2bb2::t_d25a0aa3c3d2fc 15
+src/pages/context/index.astro
+  s_5149cee0db2bb2::t_b128ec5fccb66f 23
+src/pages/ecosystem/index.astro
+  s_5149cee0db2bb2::t_5186fddb70642e 14
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_5149cee0db2bb2::t_7862675c6b431d 19
+src/pages/examples/index.astro
+  s_5149cee0db2bb2::t_990cfbceac5032 23
+src/pages/finops/index.astro
+  s_5149cee0db2bb2::t_b382359c612e01 17
+src/pages/index.astro
+  s_5149cee0db2bb2::t_12e1dbb62e5c43 34
+src/pages/memory-systems/index.astro
+  s_5149cee0db2bb2::t_ac32bfd33f702e 14
+src/pages/methodologies/index.astro
+  s_5149cee0db2bb2::t_58fa9c4bd59cdc 16
+src/pages/quiz/index.astro
+  s_5149cee0db2bb2::t_c8585cf29e3797 17
+src/pages/releases/index.astro
+  s_5149cee0db2bb2::t_728d283481dbd7 19
+src/pages/roles/[slug].astro
+  s_5149cee0db2bb2::t_208e9ffaffe3f1 35
+src/pages/roles/index.astro
+  s_5149cee0db2bb2::t_de5b9642aab600 22
+src/pages/security/index.astro
+  s_5149cee0db2bb2::t_0e6d8b5fcf9de4 17
+src/pages/team-metrics/index.astro
+  s_5149cee0db2bb2::t_4613b78dcf2e86 13
+src/pages/token-savings/index.astro
+  s_5149cee0db2bb2::t_7ca54a66716cb2 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "455d52134e01640351b6ec07ff7a66b994a3f5c2",
+  "prompts": {},
+  "sessions": {
+    "s_5149cee0db2bb2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42678932-438d-4a77-bfac-283615695d86",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
