@@ -14,7 +14,7 @@ import '../../styles/security-page.css'
 const route = getSecurityRoute('hub')
 const latestEvents = getLatestSecurityEvents(3)
 const essentialSources = SECURITY_DATA.sources.slice(0, 8)
-const jsonLd = [{ '@type': 'CollectionPage', name: route.heading, description: route.description, url: 'https://cc.bruniaux.com/security/', dateModified: SECURITY_FEED.intelligence.updated, author: { '@type': 'Person', '@id': 'https://cc.bruniaux.com/#author', name: 'Florian BRUNIAUX' } }]
+const jsonLd = [{ '@type': 'CollectionPage', name: route.heading, description: route.description, url: 'https://cc.bruniaux.com/security/', dateModified: SECURITY_FEED.intelligence.updated, author: { '@type': 'Person', '@id': 'https://www.florian.bruniaux.com/#person', name: 'Florian BRUNIAUX' } }]
 ---
 <Layout title={route.title} description={route.description} jsonLd={jsonLd} compactFooter>
   <SecurityHero route={route} databaseLabel={SECURITY_VIEW.databaseLabel} databaseUpdatedLabel={SECURITY_VIEW.databaseUpdatedLabel}>
