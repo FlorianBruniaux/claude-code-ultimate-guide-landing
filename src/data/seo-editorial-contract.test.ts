@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import {
   contextualLinks,
+  getGlossaryTitle,
   getReleaseDescription,
   getReleaseTitle,
   landingSeo,
@@ -10,6 +11,7 @@ import {
 } from './seo-editorial-contract.mjs'
 import * as seoEditorialContract from './seo-editorial-contract.mjs'
 import { releases } from './releases.ts'
+import { glossaryTerms } from './glossary-data.ts'
 
 test('keeps the audited landing snippets within search-result limits', () => {
   assert.deepEqual(landingSeo, {
@@ -18,7 +20,7 @@ test('keeps the audited landing snippets within search-result limits', () => {
       description: 'Claude Code {version}, released {date}. See the latest version, release history, changelog, breaking changes, and configuration updates.',
     },
     glossary: {
-      title: 'Claude Code Glossary: Terms & Definitions',
+      title: 'Claude Code Glossary: {count} Terms & Definitions',
       description: 'Definitions for Claude Code commands, agents, hooks, MCP, context, permissions, workflows, and related terminology.',
     },
     contextEngineering: {
@@ -28,10 +30,19 @@ test('keeps the audited landing snippets within search-result limits', () => {
   })
 
   for (const [route, snippet] of Object.entries(landingSeo)) {
-    const title = route === 'releases' ? getReleaseTitle(releases[0].version) : snippet.title
+    const title = route === 'releases'
+      ? getReleaseTitle(releases[0].version)
+      : route === 'glossary'
+        ? getGlossaryTitle(glossaryTerms.length)
+        : snippet.title
     assert.ok(title.length >= 30 && title.length <= 60)
     assert.ok(snippet.description.length >= 50 && snippet.description.length <= 160)
   }
+})
+
+test('states the glossary size in its search title', () => {
+  assert.equal(getGlossaryTitle(179), 'Claude Code Glossary: 179 Terms & Definitions')
+  assert.equal(getGlossaryTitle(glossaryTerms.length), `Claude Code Glossary: ${glossaryTerms.length} Terms & Definitions`)
 })
 
 test('uses the displayed current release in the releases search title', () => {

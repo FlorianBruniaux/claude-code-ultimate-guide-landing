@@ -4,13 +4,17 @@ export const landingSeo = {
     description: 'Claude Code {version}, released {date}. See the latest version, release history, changelog, breaking changes, and configuration updates.',
   },
   glossary: {
-    title: 'Claude Code Glossary: Terms & Definitions',
+    title: 'Claude Code Glossary: {count} Terms & Definitions',
     description: 'Definitions for Claude Code commands, agents, hooks, MCP, context, permissions, workflows, and related terminology.',
   },
   contextEngineering: {
     title: 'Context Engineering Tools for Claude Code',
     description: 'Compare context tools and govern Claude Code skills with usage evidence, review gates, safe retirement, and explicit ownership.',
   },
+}
+
+export function getGlossaryTitle(termCount) {
+  return landingSeo.glossary.title.replace('{count}', String(termCount))
 }
 
 export function getReleaseTitle(version) {

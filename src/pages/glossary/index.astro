@@ -2,9 +2,10 @@
 import Layout from '../../layouts/Layout.astro'
 import { glossaryTerms, groupByLetter, categoryColors } from '../../data/glossary-data'
 import { normalizeGlossarySlug } from '../../scripts/glossary-tooltips'
-import { landingSeo } from '../../data/seo-editorial-contract.mjs'
+import { getGlossaryTitle, landingSeo } from '../../data/seo-editorial-contract.mjs'
 
-const { title, description } = landingSeo.glossary
+const { description } = landingSeo.glossary
+const title = getGlossaryTitle(glossaryTerms.length)
 
 const grouped = groupByLetter(glossaryTerms)
 const letters = Array.from(grouped.keys()).sort()
