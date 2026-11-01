@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.45.2: one agent, subagents or a team?',
+    date: 'Nov 1, 2026',
+    description: 'A new section weighs the October 2026 evidence on single agent versus subagents versus agent teams, the main guide documents the Ultra and Max plans and the active monthly API credits, and the French full guide and its PDF and EPUB exports are current again.',
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.45.2',
+  },
+  {
+    type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.45.1',
     date: 'Oct 31, 2026',
     description: 'Agent Router is now public: the guide links the repository and records its Apache-2.0 license and source-build install. The guide also links its sibling project sites.',
