@@ -17,9 +17,7 @@ export function getYearsOfExperience(asOf: Date = new Date()): number {
 
 export const authorProfile = {
   name: 'Florian BRUNIAUX',
-  role: 'AI Founding Engineer',
-  organization: 'Méthode Aristote',
-  organizationUrl: 'https://methode-aristote.fr/',
+  role: 'Fractional Chief AI Officer',
   aboutUrl: 'https://www.florian.bruniaux.com/about/',
   blogUrl: 'https://www.florian.bruniaux.com/blog/',
   projectsUrl: 'https://www.florian.bruniaux.com/projects/',
