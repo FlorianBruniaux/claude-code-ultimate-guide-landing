@@ -1,0 +1,59 @@
+src/layouts/Layout.astro
+  s_5149cee0db2bb2::t_166f644095c579 141
+src/pages/ai-design-patterns/index.astro
+  s_5149cee0db2bb2::t_71726234c8897b 30
+src/pages/cheatsheet/index.astro
+  s_5149cee0db2bb2::t_f8c1c1aacd9b3f 19
+src/pages/cheatsheets/[slug].astro
+  s_5149cee0db2bb2::t_824d7fda15978f 63
+src/pages/claude-md-best-practices/index.astro
+  s_5149cee0db2bb2::t_5ea4b9101a8a28 45
+src/pages/compare/index.astro
+  s_5149cee0db2bb2::t_129d4a5ca7e0af 23
+src/pages/context-engineering/index.astro
+  s_5149cee0db2bb2::t_4822de2547b409 15
+src/pages/ecosystem/index.astro
+  s_5149cee0db2bb2::t_630c86bb3b39cc 14
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_5149cee0db2bb2::t_4bfda38379f9e8 19
+src/pages/examples/index.astro
+  s_5149cee0db2bb2::t_fb1e42da331fef 23
+src/pages/faq/index.astro
+  s_5149cee0db2bb2::t_593c384b850ca6 29,32
+src/pages/finops/index.astro
+  s_5149cee0db2bb2::t_54b1ea1e20f070 17
+src/pages/learning/index.astro
+  s_5149cee0db2bb2::t_4c43975e7f8a47 17
+src/pages/memory-systems/index.astro
+  s_5149cee0db2bb2::t_03294c1ba91780 14
+src/pages/methodologies/index.astro
+  s_5149cee0db2bb2::t_0920c853c7187c 16
+src/pages/quiz/index.astro
+  s_5149cee0db2bb2::t_94a5fdf01774b5 17
+src/pages/releases/index.astro
+  s_5149cee0db2bb2::t_69db087876fff7 19
+src/pages/roles/[slug].astro
+  s_5149cee0db2bb2::t_76c29780cdcbf2 35
+src/pages/roles/index.astro
+  s_5149cee0db2bb2::t_335ad8a4c95616 22
+src/pages/team-metrics/index.astro
+  s_5149cee0db2bb2::t_d76697034494ae 13
+src/pages/token-savings/index.astro
+  s_5149cee0db2bb2::t_3921216294d03b 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "501fa8d94297154240a8e4a8c8473d9cefe0b460",
+  "prompts": {},
+  "sessions": {
+    "s_5149cee0db2bb2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42678932-438d-4a77-bfac-283615695d86",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
