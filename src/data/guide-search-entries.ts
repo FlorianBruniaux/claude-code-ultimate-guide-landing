@@ -246,7 +246,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-claude-code-releases",
     "title": "Claude Code Releases",
-    "keywords": "claude code releases guide core claude code releases",
+    "keywords": "claude code releases guide core claude code releases product changes outside cli guide core claude code releases md#product changes outside the cli changelog september october 2026",
     "category": "Guide",
     "url": "/releases/",
     "source": "guide"
@@ -896,7 +896,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Wikiskill Persistent Proposal History",
     "keywords": "wikiskill persistent proposal history guide core memory systems md#68 compile experience into skills wikiskill",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#68-compile-experience-into-skills-wikiskill",
+    "url": "/guide/memory-systems/#68-compile-experience-into-skills-wikiskill",
     "source": "guide"
   },
   {
@@ -1000,7 +1000,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory History Compaction",
     "keywords": "memory history compaction guide core memory systems md#keep history distinct from compaction",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#keep-history-distinct-from-compaction",
+    "url": "/guide/memory-systems/#keep-history-distinct-from-compaction",
     "source": "guide"
   },
   {
@@ -1008,7 +1008,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Migration Evaluation",
     "keywords": "memory migration evaluation guide core memory systems md#test memory migration",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#test-memory-migration",
+    "url": "/guide/memory-systems/#test-memory-migration",
     "source": "guide"
   },
   {
@@ -1141,18 +1141,82 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   },
   {
     "id": "guide-memory-systems-guide",
-    "title": "Memory Systems Guide",
+    "title": "Memory systems (full guide page)",
     "keywords": "memory systems guide guide core memory systems",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md",
+    "url": "/guide/memory-systems/",
     "source": "guide"
   },
   {
     "id": "guide-memory-systems-tldr",
-    "title": "Memory Systems Tldr",
+    "title": "Memory: the three-track model",
     "keywords": "memory systems tldr guide core memory systems md#1 tldr three track model",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#1-tldr-three-track-model",
+    "url": "/guide/memory-systems/#1-tldr-three-track-model",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-taxonomy-axes",
+    "title": "Memory types: coordinates, not a stack",
+    "keywords": "memory systems taxonomy axes guide core memory systems md#memory types coordinates not stack",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#memory-types-coordinates-not-a-stack",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-scope-local-shared",
+    "title": "Memory scope: local, repository or shared",
+    "keywords": "memory systems scope local shared guide core memory systems md#where memory lives local repository shared",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#where-memory-lives-local-repository-shared",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-effectiveness-pipeline",
+    "title": "Memory: is injected memory used? (six-stage pipeline)",
+    "keywords": "memory systems effectiveness pipeline guide core memory systems md#from captured effective the six stage pipeline",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#from-captured-to-effective-the-six-stage-pipeline",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-usage-benchmarks",
+    "title": "Memory benchmarks that measure actual use (2026)",
+    "keywords": "memory systems usage benchmarks guide core memory systems md#measuring whether memory used 2026",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#measuring-whether-memory-is-used-2026",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-research-poisoning-2026",
+    "title": "Memory poisoning: 2026 research",
+    "keywords": "memory systems research poisoning 2026 guide core memory systems md#71 memory poisoning via prompt injection memory systems memory poisoning guide core memory systems md#71 memory poisoning via prompt injection",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#71-memory-poisoning-via-prompt-injection",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-claude-mem-privacy-incident",
+    "title": "claude-mem privacy incident (v15.2.0 to v15.8.2)",
+    "keywords": "memory systems claude mem privacy incident guide core memory systems md#31 claude mem memory systems claude mem guide core memory systems md#31 claude mem",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#31-claude-mem",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-new-tools-2026",
+    "title": "Memory tools: memorix, basic-memory, mnemosyne, Graft",
+    "keywords": "memory systems new tools 2026 guide core memory systems md#38 other notable tools memory systems supermemory guide core memory systems md#38 other notable tools",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#38-other-notable-tools",
+    "source": "guide"
+  },
+  {
+    "id": "guide-memory-systems-kiro-decay-formula",
+    "title": "Memory decay models (Kiro, ICM, Zep)",
+    "keywords": "memory systems kiro decay formula guide core memory systems md#memory decay models",
+    "category": "Guide",
+    "url": "/guide/memory-systems/#memory-decay-models",
     "source": "guide"
   },
   {
@@ -1160,7 +1224,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Native Stack",
     "keywords": "memory systems native stack guide core memory systems md#2 native claude code memory stack",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#2-native-claude-code-memory-stack",
+    "url": "/guide/memory-systems/#2-native-claude-code-memory-stack",
     "source": "guide"
   },
   {
@@ -1168,7 +1232,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Claudemd",
     "keywords": "memory systems claudemd guide core memory systems md#21 claudemd three levels memory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#21-claudemd-three-levels-of-memory",
+    "url": "/guide/memory-systems/#21-claudemd-three-levels-of-memory",
     "source": "guide"
   },
   {
@@ -1176,7 +1240,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Auto Memory",
     "keywords": "memory systems auto memory guide core memory systems md#22 auto memory v2159",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#22-auto-memory-v2159",
+    "url": "/guide/memory-systems/#22-auto-memory-v2159",
     "source": "guide"
   },
   {
@@ -1184,15 +1248,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Auto Dream",
     "keywords": "memory systems auto dream guide core memory systems md#23 auto dream memory consolidation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#23-auto-dream-memory-consolidation",
+    "url": "/guide/memory-systems/#23-auto-dream-memory-consolidation",
     "source": "guide"
   },
   {
     "id": "guide-memory-systems-agent-memory",
-    "title": "Memory Systems Agent Memory",
+    "title": "Subagent memory frontmatter",
     "keywords": "memory systems agent memory guide core memory systems md#24 agent memory frontmatter",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#24-agent-memory-frontmatter",
+    "url": "/guide/memory-systems/#24-agent-memory-frontmatter",
     "source": "guide"
   },
   {
@@ -1200,23 +1264,15 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Cross Session",
     "keywords": "memory systems cross session guide core memory systems md#3 cross session tools single user",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#3-cross-session-tools-single-user",
-    "source": "guide"
-  },
-  {
-    "id": "guide-memory-systems-claude-mem",
-    "title": "Memory Systems Claude Mem",
-    "keywords": "memory systems claude mem guide core memory systems md#31 claude mem",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#31-claude-mem",
+    "url": "/guide/memory-systems/#3-cross-session-tools-single-user",
     "source": "guide"
   },
   {
     "id": "guide-memory-systems-agentmemory",
-    "title": "Memory Systems Agentmemory",
+    "title": "agentmemory",
     "keywords": "memory systems agentmemory guide core memory systems md#32 agentmemory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#32-agentmemory",
+    "url": "/guide/memory-systems/#32-agentmemory",
     "source": "guide"
   },
   {
@@ -1224,7 +1280,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Icm",
     "keywords": "memory systems icm guide core memory systems md#33 icm infinite context memory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#33-icm-infinite-context-memory",
+    "url": "/guide/memory-systems/#33-icm-infinite-context-memory",
     "source": "guide"
   },
   {
@@ -1232,7 +1288,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Kairn",
     "keywords": "memory systems kairn guide core memory systems md#34 kairn",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#34-kairn",
+    "url": "/guide/memory-systems/#34-kairn",
     "source": "guide"
   },
   {
@@ -1240,7 +1296,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Doobidoo",
     "keywords": "memory systems doobidoo guide core memory systems md#35 doobidoo mcp memory service",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#35-doobidoo-mcp-memory-service",
+    "url": "/guide/memory-systems/#35-doobidoo-mcp-memory-service",
     "source": "guide"
   },
   {
@@ -1248,7 +1304,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems OpenMemory",
     "keywords": "memory systems openmemory guide core memory systems md#36 openmemory mcp",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#36-openmemory-mcp",
+    "url": "/guide/memory-systems/#36-openmemory-mcp",
     "source": "guide"
   },
   {
@@ -1256,7 +1312,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems File Based Playbooks",
     "keywords": "memory systems file based playbooks guide core memory systems md#37 file based experience playbooks orf diffmem memory systems executor gitignored memory guide core memory systems md#37 file based experience playbooks orf diffmem",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#37-file-based-experience-playbooks-orf-diffmem",
+    "url": "/guide/memory-systems/#37-file-based-experience-playbooks-orf-diffmem",
     "source": "guide"
   },
   {
@@ -1264,7 +1320,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Tool Comparison",
     "keywords": "memory systems tool comparison guide core memory systems md#39 master comparison table",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#39-master-comparison-table",
+    "url": "/guide/memory-systems/#39-master-comparison-table",
     "source": "guide"
   },
   {
@@ -1272,7 +1328,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Team Sharing",
     "keywords": "memory systems team sharing guide core memory systems md#4 team sharing",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#4-team-sharing",
+    "url": "/guide/memory-systems/#4-team-sharing",
     "source": "guide"
   },
   {
@@ -1280,7 +1336,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Trinity",
     "keywords": "memory systems trinity guide core memory systems md#41 the trinity claudemd mcpjson skills",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#41-the-trinity-claudemd--mcpjson--skills",
+    "url": "/guide/memory-systems/#41-the-trinity-claudemd--mcpjson--skills",
     "source": "guide"
   },
   {
@@ -1288,7 +1344,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Mem0 Cloud",
     "keywords": "memory systems mem0 cloud guide core memory systems md#43 mem0 cloud mcp",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#43-mem0-cloud-mcp",
+    "url": "/guide/memory-systems/#43-mem0-cloud-mcp",
     "source": "guide"
   },
   {
@@ -1296,7 +1352,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Zep",
     "keywords": "memory systems zep guide core memory systems md#44 zep graphiti",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#44-zep--graphiti",
+    "url": "/guide/memory-systems/#44-zep--graphiti",
     "source": "guide"
   },
   {
@@ -1304,7 +1360,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Team Gap",
     "keywords": "memory systems team gap guide core memory systems md#47 why the team gap structural memory systems supermemory team gap guide core memory systems md#47 why the team gap structural",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#47-why-the-team-gap-is-structural",
+    "url": "/guide/memory-systems/#47-why-the-team-gap-is-structural",
     "source": "guide"
   },
   {
@@ -1312,7 +1368,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Multi Agent",
     "keywords": "memory systems multi agent guide core memory systems md#5 multi agent shared memory",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#5-multi-agent-shared-memory",
+    "url": "/guide/memory-systems/#5-multi-agent-shared-memory",
     "source": "guide"
   },
   {
@@ -1320,7 +1376,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Architecture Patterns",
     "keywords": "memory systems architecture patterns guide core memory systems md#6 architecture patterns",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#6-architecture-patterns",
+    "url": "/guide/memory-systems/#6-architecture-patterns",
     "source": "guide"
   },
   {
@@ -1328,15 +1384,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Risks",
     "keywords": "memory systems risks guide core memory systems md#7 risks and security",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#7-risks-and-security",
-    "source": "guide"
-  },
-  {
-    "id": "guide-memory-systems-memory-poisoning",
-    "title": "Memory Systems Memory Poisoning",
-    "keywords": "memory systems memory poisoning guide core memory systems md#71 memory poisoning via prompt injection",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#71-memory-poisoning-via-prompt-injection",
+    "url": "/guide/memory-systems/#7-risks-and-security",
     "source": "guide"
   },
   {
@@ -1344,7 +1392,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Ingestion Poisoning",
     "keywords": "memory systems ingestion poisoning guide core memory systems md#single user variant ingestion time poisoning compiled wikis",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#single-user-variant-ingestion-time-poisoning-in-compiled-wikis",
+    "url": "/guide/memory-systems/#single-user-variant-ingestion-time-poisoning-in-compiled-wikis",
     "source": "guide"
   },
   {
@@ -1352,7 +1400,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Decision",
     "keywords": "memory systems decision guide core memory systems md#8 decision frameworks",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#8-decision-frameworks",
+    "url": "/guide/memory-systems/#8-decision-frameworks",
     "source": "guide"
   },
   {
@@ -1360,7 +1408,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Decision Flowchart",
     "keywords": "memory systems decision flowchart guide core memory systems md#81 decision flowchart",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#81-decision-flowchart",
+    "url": "/guide/memory-systems/#81-decision-flowchart",
     "source": "guide"
   },
   {
@@ -1368,7 +1416,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Benchmarks",
     "keywords": "memory systems benchmarks guide core memory systems md#9 benchmarks and evaluation memory systems supermemory benchmark inconsistency guide core memory systems md#9 benchmarks and evaluation",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#9-benchmarks-and-evaluation",
+    "url": "/guide/memory-systems/#9-benchmarks-and-evaluation",
     "source": "guide"
   },
   {
@@ -1376,15 +1424,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Memory Systems Open Problems",
     "keywords": "memory systems open problems guide core memory systems md#10 open problems",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#10-open-problems",
-    "source": "guide"
-  },
-  {
-    "id": "guide-memory-systems-supermemory",
-    "title": "Memory Systems Supermemory",
-    "keywords": "memory systems supermemory guide core memory systems md#38 other notable tools",
-    "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#38-other-notable-tools",
+    "url": "/guide/memory-systems/#10-open-problems",
     "source": "guide"
   },
   {
@@ -2758,7 +2798,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-llm-market-subscriptions",
     "title": "LLM Market Subscriptions",
-    "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas claude plan lineup guide ops llm market snapshot md#3 subscription quotas",
+    "keywords": "llm market subscriptions guide ops llm market snapshot md#3 subscription quotas",
     "category": "Guide",
     "url": "/guide/llm-market-snapshot/#3-subscription-quotas",
     "source": "guide"
@@ -4470,7 +4510,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-subscription-opus-ratio",
     "title": "Subscription Opus Ratio",
-    "keywords": "subscription opus ratio guide ultimate guide md#subscription plans limits",
+    "keywords": "subscription opus ratio guide ultimate guide md#subscription plans limits claude plan lineup guide ultimate guide md#subscription plans limits",
     "category": "Guide",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#subscription-plans--limits",
     "source": "guide"
@@ -4721,6 +4761,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "deepseek harness tool guide ecosystem agentic tools md#18 deepseek harness dsh",
     "category": "Guide",
     "url": "/guide/agentic-tools/#18-deepseek-harness-dsh",
+    "source": "guide"
+  },
+  {
+    "id": "guide-monthly-api-credits",
+    "title": "Monthly API Credits",
+    "keywords": "monthly api credits guide ultimate guide md#monthly api credits now active",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#monthly-api-credits-now-active",
+    "source": "guide"
+  },
+  {
+    "id": "guide-subagents-vs-single-agent-evidence",
+    "title": "Subagents Vs Single Agent Evidence",
+    "keywords": "subagents vs single agent evidence guide ultimate guide md#single agent subagents team the october 2026 evidence",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#single-agent-subagents-or-a-team-the-october-2026-evidence",
     "source": "guide"
   },
   {
@@ -6708,6 +6764,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-security-november-2026",
+    "title": "Security November 2026",
+    "keywords": "security november 2026 guide security security hardening md#november 2026 review",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#november-2026-review",
+    "source": "guide"
+  },
+  {
     "id": "guide-security-october-2026",
     "title": "Security October 2026",
     "keywords": "security october 2026 guide security security hardening md#october 2026 review",
@@ -7821,10 +7885,10 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   },
   {
     "id": "guide-memory-mld-observations",
-    "title": "Memory Mld Observations",
+    "title": "Memory: MLD observations before promotion",
     "keywords": "memory mld observations guide core memory systems md#mld observations for the harness builder",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/core/memory-systems.md#mld-observations-for-the-harness-builder",
+    "url": "/guide/memory-systems/#mld-observations-for-the-harness-builder",
     "source": "guide"
   },
   {

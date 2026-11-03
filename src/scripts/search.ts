@@ -60,11 +60,27 @@ function score(entry: SearchEntry, query: string): number {
   return 0
 }
 
-function search(entries: SearchEntry[], query: string): SearchEntry[] {
+const isOffSite = (url: string): boolean => /^https?:\/\//.test(url)
+
+/**
+ * Reorders matches toward the most readable destination: a dedicated landing
+ * page first, then other landing entries (glossary, cheat sheet), then guide
+ * pages rendered on this site, then raw files on GitHub. Applied only to an
+ * entry that already matched, so it never turns a miss into a result.
+ */
+function sourceBonus(entry: SearchEntry): number {
+  if (entry.source === 'landing') return entry.id.startsWith('page-') ? 15 : 5
+  return isOffSite(entry.url) ? -5 : 0
+}
+
+export function searchEntries(entries: SearchEntry[], query: string): SearchEntry[] {
   if (!query.trim()) return []
 
   return entries
-    .map(entry => ({ entry, s: score(entry, query) }))
+    .map(entry => {
+      const base = score(entry, query)
+      return { entry, s: base > 0 ? base + sourceBonus(entry) : 0 }
+    })
     .filter(r => r.s > 0)
     .sort((a, b) => b.s - a.s || a.entry.title.localeCompare(b.entry.title))
     .slice(0, 15)
@@ -101,7 +117,7 @@ function renderResults(results: HTMLElement, entries: SearchEntry[]): void {
       const badgeStyle = isGuide
         ? 'background:var(--bg-tertiary);color:var(--text-muted);'
         : 'background:var(--accent);color:#fff;'
-      const external = isGuide ? EXTERNAL_ICON : ''
+      const external = isOffSite(entry.url) ? EXTERNAL_ICON : ''
 
       return `<li class="search-result-item"
           role="option"
@@ -206,12 +222,11 @@ export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Docum
   // ── Navigation ──────────────────────────────────────────────────────────────
   function navigate(item: HTMLElement): void {
     const url = item.dataset.url
-    const source = item.dataset.source
     if (!url) return
 
     closeModal()
 
-    if (source === 'guide') {
+    if (isOffSite(url)) {
       window.open(url, '_blank', 'noopener,noreferrer')
     } else {
       window.location.href = url
@@ -251,7 +266,7 @@ export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Docum
       return
     }
 
-    const found = search(entries, query)
+    const found = searchEntries(entries, query)
     if (found.length === 0) {
       renderNoResults(searchResults, query)
     } else {

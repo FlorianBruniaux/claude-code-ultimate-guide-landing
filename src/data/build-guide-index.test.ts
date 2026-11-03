@@ -64,6 +64,32 @@ test('maps loop-graph-engineering to the local canonical guide URL', () => {
   assert.doesNotMatch(generated, /github.com\/FlorianBruniaux\/claude-code-ultimate-guide.*loop-graph-engineering/)
 })
 
+test('maps memory-systems entries to the local guide page with readable titles', () => {
+  const root = mkdtempSync(join(tmpdir(), 'guide-index-memory-'))
+  const guideRoot = join(root, 'claude-code-ultimate-guide')
+  const outputPath = join(root, 'guide-search-entries.ts')
+  mkdirSync(join(guideRoot, 'machine-readable'), { recursive: true })
+  mkdirSync(join(guideRoot, 'guide/core'), { recursive: true })
+  writeFileSync(join(guideRoot, 'guide/core/context-engineering.md'), '# Fixture')
+  writeFileSync(join(guideRoot, 'guide/core/memory-systems.md'), '# Fixture')
+  writeFileSync(
+    join(guideRoot, 'machine-readable/reference.yaml'),
+    'deep_dive:\n  memory_systems_effectiveness_pipeline: "guide/core/memory-systems.md#from-captured-to-effective-the-six-stage-pipeline"\n',
+  )
+
+  const result = spawnSync(
+    process.execPath,
+    [SCRIPT, '--guide-root', guideRoot, '--out', outputPath],
+    { encoding: 'utf8' },
+  )
+
+  assert.equal(result.status, 0, result.stderr)
+  const generated = readFileSync(outputPath, 'utf8')
+  assert.match(generated, /"url": "\/guide\/memory-systems\/#from-captured-to-effective-the-six-stage-pipeline"/)
+  assert.match(generated, /"title": "Memory: is injected memory used\? \(six-stage pipeline\)"/)
+  assert.doesNotMatch(generated, /github.com\/FlorianBruniaux\/claude-code-ultimate-guide.*memory-systems/)
+})
+
 test('maps context engineering search entries to the hand-authored landing page', () => {
   const root = mkdtempSync(join(tmpdir(), 'guide-index-context-'))
   const guideRoot = join(root, 'claude-code-ultimate-guide')

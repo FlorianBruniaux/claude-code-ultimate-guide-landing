@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Claude Code Memory Systems: Complete Guide 2026'
-const description = 'Three-track memory model for Claude Code: native stack (CLAUDE.md, Auto Memory, Auto Dream), cross-session tools (claude-mem, agentmemory, ICM), and team sharing (Mem0, Zep, Trinity). With decision flowchart, benchmarks, and tool comparison.'
+const description = 'Claude Code memory in 2026: memory types as four axes, what stays local vs what the team shares, whether injected memory is actually used, and the native stack, cross-session tools (claude-mem, agentmemory, memorix, ICM) and team options, checked at source.'
 
 const jsonLd = [
   {
@@ -14,9 +14,9 @@ const jsonLd = [
     "author": { "@type": "Person", "@id": "https://www.florian.bruniaux.com/#person", "name": "Florian BRUNIAUX", "url": "https://github.com/FlorianBruniaux", "jobTitle": "Fractional Chief AI Officer" },
     "publisher": { "@type": "Organization", "@id": "https://cc.bruniaux.com/#organization", "name": "Claude Code Ultimate Guide", "url": "https://cc.bruniaux.com" },
     "datePublished": "2026-05-23",
-    "dateModified": "2026-07-27",
+    "dateModified": "2026-11-03",
     "inLanguage": "en",
-    "keywords": "Claude Code memory, CLAUDE.md, Auto Memory, Auto Dream, claude-mem, agentmemory, ICM, Kairn, doobidoo, Mem0, cross-session memory, agent memory"
+    "keywords": "Claude Code memory, CLAUDE.md, Auto Memory, Auto Dream, claude-mem, agentmemory, memorix, basic-memory, ICM, Kairn, doobidoo, Mem0, cross-session memory, agent memory, episodic memory, procedural memory, shared memory, memory pipeline"
   }
 ]
 
@@ -32,20 +32,20 @@ const nativeTools = [
       "200-line limit per file for reliable attention",
       "ETH Zürich finding: developer-written +4% adherence vs LLM-generated -3%",
     ],
-    anchor: "21-claudemd-three-levels",
+    anchor: "21-claudemd-three-levels-of-memory",
   },
   {
     name: "Auto Memory",
     badge: "v2.1.59+",
     badgeColor: "info",
-    desc: "Claude writes its own MEMORY.md across sessions without manual calls. Uses a file-based memory system at .claude/memory/MEMORY.md per project, or ~/.claude/projects/{path}/memory/ globally.",
+    desc: "Claude writes its own MEMORY.md across sessions without manual calls. Tied to the repository, but machine-local: all worktrees of one repository share one memory directory, and nothing syncs across machines or cloud environments.",
     highlights: [
-      "200-line / 25 KB per file hard limit",
-      "Four memory types: user, feedback, project, reference",
-      "Per-project or global scope via settings.json",
+      "200-line / 25 KB index limit",
+      "Shared by every worktree of the same repository",
+      "Excluded from transcript cleanup: stays until edited or deleted",
       "Replaces manual 'remember X' patterns",
     ],
-    anchor: "22-auto-memory-v21594",
+    anchor: "22-auto-memory-v2159",
   },
   {
     name: "Auto Dream",
@@ -56,9 +56,9 @@ const nativeTools = [
       "Triggers: ≥5 sessions + ≥24h gap (both required)",
       "4-phase: Orient → Gather → Consolidate → Prune",
       "Merges duplicates, removes stale entries",
-      "No configuration:fully automatic",
+      "Not in official docs or the changelog (checked Nov 3, 2026)",
     ],
-    anchor: "23-auto-dream-background-consolidation",
+    anchor: "23-auto-dream-memory-consolidation",
   },
   {
     name: "Agent Memory",
@@ -68,8 +68,8 @@ const nativeTools = [
     highlights: [
       "Three scopes: user (global), project, local",
       "Injected before any user message",
-      "Works with Auto Memory output",
-      "Defined in .claude/agents/agent.md frontmatter",
+      "Project scope lives in .claude/agent-memory/ and can be committed",
+      "Inert when auto memory is disabled",
     ],
     anchor: "24-agent-memory-frontmatter",
   },
@@ -78,32 +78,56 @@ const nativeTools = [
 const crossSessionTools = [
   {
     name: "claude-mem",
-    stars: "89K",
-    license: "AGPL-3.0",
-    approach: "Hooks-based auto-capture",
-    storage: "SQLite + optional Chroma",
-    cost: "~$5-15/month (API calls)",
-    recall: "3-layer disclosure",
-    install: "bun worker port 37777",
+    stars: "111K",
+    license: "Apache-2.0",
+    approach: "9 hook events + LLM observer; injects the newest 50 observations at session start",
+    storage: "SQLite + Chroma (on by default)",
+    cost: "Your Claude subscription by default",
+    recall: "Smart 3-step search",
+    install: "/plugin install claude-mem",
     anchor: "31-claude-mem",
     highlight: true,
   },
   {
     name: "agentmemory",
-    stars: "26K",
-    license: "MIT",
-    approach: "BM25 + Vector + Graph RRF fusion",
-    storage: "Local (SQLite + FAISS)",
-    cost: "Free (local)",
-    recall: "95.2% R@5 LongMemEval-S",
-    install: "pip install agentmemory",
+    stars: "30K",
+    license: "Apache-2.0",
+    approach: "12 hooks capture; injection opt-in; BM25 + Vector + Graph RRF",
+    storage: "iii file store or Redis",
+    cost: "Zero LLM by default",
+    recall: "95.2% R@5 LongMemEval-S (self-reported)",
+    install: "npm i -g @agentmemory/agentmemory",
     anchor: "32-agentmemory",
     highlight: true,
   },
   {
+    name: "memorix",
+    stars: "896",
+    license: "Apache-2.0",
+    approach: "One memory pool across ~18 coding agents, MCP + optional hooks",
+    storage: "SQLite, scoped to a project by Git identity",
+    cost: "Free (local)",
+    recall: "Consolidation and retention from a dashboard",
+    install: "memorix setup --agent <name>",
+    anchor: "38-other-notable-tools",
+    highlight: false,
+  },
+  {
+    name: "basic-memory",
+    stars: "4.5K",
+    license: "AGPL-3.0",
+    approach: "Plain Markdown you can edit, Claude Code plugin hooks",
+    storage: "Markdown + SQLite index",
+    cost: "Free locally; paid cloud for teams",
+    recall: "Hybrid search",
+    install: null,
+    anchor: "38-other-notable-tools",
+    highlight: false,
+  },
+  {
     name: "ICM",
     stars: null,
-    license: "MIT",
+    license: "Source-available",
     approach: "Episodic decay + permanent graph",
     storage: "SQLite + semantic index",
     cost: "Free (local)",
@@ -120,19 +144,19 @@ const crossSessionTools = [
     storage: "Local graph DB",
     cost: "Free (local)",
     recall: "~200d solutions, ~50d workarounds",
-    install: "npm install kairn",
+    install: "pip install kairn",
     anchor: "34-kairn",
     highlight: false,
   },
   {
     name: "doobidoo",
-    stars: null,
-    license: "MIT",
-    approach: "MCP server",
+    stars: "2.1K",
+    license: "Apache-2.0",
+    approach: "MCP + REST server, Codex hooks",
     storage: "SQLite-vec (default)",
     cost: "Free (local)",
     recall: "Vector similarity",
-    install: "npx doobidoo",
+    install: "pip install mcp-memory-service",
     anchor: "35-doobidoo-mcp-memory-service",
     highlight: false,
   },
@@ -145,7 +169,7 @@ const crossSessionTools = [
     cost: "Free tier available",
     recall: "Semantic search",
     install: "claude mcp add mem0",
-    anchor: "36-openmemory-mcp-mem0ai",
+    anchor: "36-openmemory-mcp",
     highlight: false,
   },
 ]
@@ -204,11 +228,40 @@ const decisionRules = [
     track: "team",
   },
   {
+    condition: "Several coding agents on one machine should share what they learn",
+    answer: "memorix: one project pool across Claude Code, Codex, Cursor and others",
+    track: "cross",
+  },
+  {
     condition: "Multi-agent pipeline, concurrent writes",
     answer: "Lease + signal pattern on top of any persistent store",
     track: "team",
   },
+  {
+    condition: "Before keeping any memory layer",
+    answer: "Plant a canary, then run your own tasks with memory on and off",
+    track: "native",
+  },
 ]
+
+const memoryAxes = [
+  { axis: "Content", values: "Working state, episodes, facts, procedures, reference documents", example: "MEMORY.md holds facts; a skill holds a procedure" },
+  { axis: "Form", values: "Context tokens, files, database or graph, model weights", example: "CLAUDE.md is a file that becomes context tokens at load" },
+  { axis: "Scope", values: "Turn, session, machine, repository, team service, organization, agent fleet", example: "Auto memory is tied to a repository yet stays on one machine" },
+  { axis: "Lifecycle", values: "Write, retrieve, consolidate, supersede, forget", example: "Compaction rewrites working state; Auto Dream consolidates" },
+]
+
+const memoryScopes = [
+  { mechanism: "Claude Code auto memory", scope: "One machine, every worktree of the repository", shared: "Not across machines or cloud", lifecycle: "Stays until edited or deleted" },
+  { mechanism: "Claude Code subagent memory:", scope: "user, project or local", shared: "project scope can be committed", lifecycle: "Inert when auto memory is off" },
+  { mechanism: "Managed CLAUDE.md", scope: "Organization-managed machines", shared: "Deployed by administrators", lifecycle: "Guidance, not enforcement" },
+  { mechanism: "Codex memories", scope: "Local store under ~/.codex", shared: "Separate from ChatGPT memory", lifecycle: "Off by default, updated in the background" },
+  { mechanism: "Gemini CLI Auto Memory", scope: "Local transcripts", shared: "Drafts patches and SKILL.md for review", lifecycle: "Experimental, never applied without approval" },
+  { mechanism: "GitHub Copilot Memory", scope: "Repository", shared: "Facts shared with collaborators, cited to code", lifecycle: "Expire after 90 days unless upvoted" },
+  { mechanism: "Kiro memory", scope: "Local user account", shared: "IDE and CLI on one machine", lifecycle: "Not documented" },
+]
+
+const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injected", "effective"]
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -217,11 +270,14 @@ const decisionRules = [
     <div class="container">
       <div class="hero-eyebrow">Claude Code</div>
       <h1>Memory systems</h1>
-      <p class="hero-desc">Claude Code runs on three distinct memory tracks, not one. Knowing which fits your situation determines whether sessions start from scratch or pick up exactly where you left off.</p>
+      <p class="hero-desc">Claude Code runs on three distinct memory tracks, not one. Knowing which fits your situation determines whether sessions start from scratch or pick up exactly where you left off. Knowing whether the memory is actually used decides whether it is worth keeping.</p>
       <div class="hero-tracks-preview">
+        <a href="#memory-types" class="track-pill">Memory types</a>
+        <a href="#where-memory-lives" class="track-pill">Local or shared</a>
         <a href="#2-native-claude-code-memory-stack" class="track-pill track-pill--native">Native Stack</a>
         <a href="#3-cross-session-tools-single-user" class="track-pill track-pill--cross">Cross-Session Tools</a>
         <a href="#4-team-sharing" class="track-pill track-pill--team">Team + Multi-Agent</a>
+        <a href="#memory-pipeline" class="track-pill">Is it used?</a>
       </div>
     </div>
   </header>
@@ -250,6 +306,57 @@ const decisionRules = [
             <span class="tldr-badge tldr-badge--advanced">Advanced</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Memory types -->
+    <section class="section" id="memory-types">
+      <div class="container">
+        <span class="section-badge">Concepts</span>
+        <h2 class="section-title">Memory types: coordinates, not a stack</h2>
+        <p class="section-subtitle">Popular diagrams stack five layers (working, episodic, semantic, procedural, "meta-memory") and pair each with a brain region. The research literature classifies memory on independent axes instead, and one artifact has a value on every axis.</p>
+        <div class="tool-table-wrap">
+          <table class="tool-table">
+            <thead>
+              <tr><th>Axis</th><th>Values</th><th>Claude Code example</th></tr>
+            </thead>
+            <tbody>
+              {memoryAxes.map(a => (
+                <tr><td><strong>{a.axis}</strong></td><td>{a.values}</td><td>{a.example}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tool-notes">
+          <p><strong>"Meta-memory" is the wrong word for housekeeping.</strong> In psychology it means monitoring your own remembering. Retention, deduplication and decay are memory management.</p>
+          <p><strong>Storage choices are not definitions.</strong> Episodic memory does not have to be append-only, and procedural memory is not only a skill registry: instructions, code and model weights count too. Treat brain-region pairings as an analogy, not anatomy.</p>
+        </div>
+        <a href="/guide/memory-systems/#memory-types-coordinates-not-a-stack" class="native-guide-link">Sources and details in the guide &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Where memory lives -->
+    <section class="section section--alt" id="where-memory-lives">
+      <div class="container">
+        <span class="section-badge">Scope</span>
+        <h2 class="section-title">Where memory lives: local, repository, shared</h2>
+        <p class="section-subtitle">"Tied to the project" does not mean "shared with the team". Each row was read in the vendor's documentation on Nov 3, 2026.</p>
+        <div class="tool-table-wrap">
+          <table class="tool-table">
+            <thead>
+              <tr><th>Mechanism</th><th>Scope</th><th>Shared how</th><th>Lifecycle</th></tr>
+            </thead>
+            <tbody>
+              {memoryScopes.map(s => (
+                <tr><td><strong>{s.mechanism}</strong></td><td>{s.scope}</td><td>{s.shared}</td><td>{s.lifecycle}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tool-notes">
+          <p><strong>Two designs dominate.</strong> Claude Code, Codex and Gemini CLI keep learned memory on one machine and share only files people curate (CLAUDE.md, AGENTS.md, skills). Copilot shares learned repository facts with the team and compensates with code citations, write-access gating and expiry. Neither spreads one person's learned memory to a team by accident.</p>
+        </div>
+        <a href="/guide/memory-systems/#where-memory-lives-local-repository-shared" class="native-guide-link">Sources per vendor &rarr;</a>
       </div>
     </section>
 
@@ -282,7 +389,7 @@ const decisionRules = [
       <div class="container">
         <span class="section-badge section-badge--cross">Track 2</span>
         <h2 class="section-title">Cross-session tools</h2>
-        <p class="section-subtitle">Six community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model: choose based on what you need to remember.</p>
+        <p class="section-subtitle">Community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model: choose based on what you need to remember. Facts for claude-mem and agentmemory were read at their release tags (v15.9.0 and v0.9.31).</p>
 
         <div class="tool-table-wrap">
           <table class="tool-table">
@@ -309,16 +416,17 @@ const decisionRules = [
                   <td>{t.storage}</td>
                   <td>{t.cost}</td>
                   <td class="recall-cell">{t.recall}</td>
-                  <td><code>{t.install}</code></td>
+                  <td>{t.install ? <code>{t.install}</code> : 'See the project README'}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p class="stars-verified">Star counts verified Jul 27, 2026 via the GitHub API.</p>
+        <p class="stars-verified">Star counts verified Nov 3, 2026 via the GitHub API.</p>
 
         <div class="tool-notes">
-          <p><strong>Start with:</strong> claude-mem if you want automatic capture with no manual calls and can afford ~$5-15/month in API costs. agentmemory if you want local-only with the highest benchmark recall (95.2% R@5 on LongMemEval-S). ICM if you need both episodic memory and a typed relation graph (<code>brew install icm</code>).</p>
+          <p><strong>Start with:</strong> claude-mem if you want automatic capture that is injected at every session start. agentmemory if you want local-only hybrid retrieval and are ready to opt in to injection (<code>AGENTMEMORY_INJECT_CONTEXT=true</code>); without it, the agent only pulls memory through MCP. memorix if several coding agents on one machine should share one project memory. ICM if you need both episodic memory and a typed relation graph (<code>brew install icm</code>).</p>
+          <p><strong>claude-mem, read before installing:</strong> secret redaction is off by default (<code>CLAUDE_MEM_REDACT_ENABLED</code>). From v15.2.0 to v15.8.2, the browser setup uploaded the last 30 days of prompts to cmem.ai without asking; v15.8.3 (Nov 2, 2026) fixed it.</p>
           <p><strong>Known issue (doobidoo):</strong> concurrent access errors under parallel agents: fix with <code>busy_timeout=15000</code> in config.</p>
         </div>
       </div>
@@ -352,6 +460,28 @@ const decisionRules = [
           <p>When multiple agents write to the same memory store, you need coordination. The standard pattern: lease acquisition before write, signal-based invalidation on conflict, bounded retry with exponential backoff. No current tool implements this natively:it requires application-level wrapping.</p>
           <a href="/guide/memory-systems/#5-multi-agent-shared-memory" class="native-guide-link">Multi-agent memory patterns &rarr;</a>
         </div>
+      </div>
+    </section>
+
+    <!-- Is it used? -->
+    <section class="section" id="memory-pipeline">
+      <div class="container">
+        <span class="section-badge">Evidence</span>
+        <h2 class="section-title">Is your memory used? From captured to effective</h2>
+        <p class="section-subtitle">Each step can fail without raising an error. Most tools and benchmarks stop at "retrievable": they check that the right item comes back, not that the agent used it.</p>
+        <ol class="pipeline-steps">
+          {pipelineStages.map((stage, i) => (
+            <li class={i >= 4 ? 'pipeline-step pipeline-step--rare' : 'pipeline-step'}>{stage}</li>
+          ))}
+        </ol>
+        <div class="multi-agent-note">
+          <h3>What a 2026 measurement found</h3>
+          <p>MemUse (arXiv 2611.01718, a November 2026 preprint) followed memory delivered in 8,000 SWE-bench Verified episodes from three memory systems. Resolve rates stayed within 0.4 points of a no-memory baseline. Most delivered entries were irrelevant, most relevant entries went unused, and in two systems most deliveries repeated what the agent could already see. One preprint does not settle every workload; it does justify testing your own.</p>
+        </div>
+        <div class="tool-notes">
+          <p><strong>Before adopting or keeping a memory layer:</strong> count items at each stage, plant a canary (write one synthetic observation, open a fresh session or another agent, check it comes back in the right scope and nowhere else), then run your own tasks with memory on and off. Among the tools above, only Graft publishes such an A/B, on 15 questions.</p>
+        </div>
+        <a href="/guide/memory-systems/#from-captured-to-effective-the-six-stage-pipeline" class="native-guide-link">Pipeline and 2026 usage benchmarks &rarr;</a>
       </div>
     </section>
 
@@ -392,8 +522,8 @@ const decisionRules = [
               <span class="risk-level">High</span>
               <h3>Memory poisoning</h3>
             </div>
-            <p>An adversarial input causes the agent to store false beliefs in its memory store. On subsequent sessions, those beliefs influence behavior. No current tool implements write validation or anomaly detection.</p>
-            <a href="/guide/memory-systems/#71-memory-poisoning-prompt-injection" class="native-guide-link">Details &rarr;</a>
+            <p>An adversarial input causes the agent to store false beliefs or instructions in its memory store. On later sessions, they influence behavior. 2026 preprints (MemGhost, MemHarmBench) show agents completing legitimate tasks normally while following the planted intent. Write validation is still not a default anywhere.</p>
+            <a href="/guide/memory-systems/#71-memory-poisoning-via-prompt-injection" class="native-guide-link">Details &rarr;</a>
           </div>
           <div class="risk-card risk-card--medium">
             <div class="risk-header">
@@ -428,7 +558,7 @@ const decisionRules = [
           <p>The complete guide page covers installation instructions, configuration examples, architecture deep-dives for each tool, a full benchmark comparison (LongMemEval-S / LongMemEval-M), the Mermaid decision flowchart, open problems, and five named architecture patterns.</p>
           <div class="cta-actions">
             <a href="/guide/memory-systems/" class="btn btn-primary">Read the full guide &rarr;</a>
-            <a href="/guide/memory-systems/#38-master-comparison-table" class="btn btn-secondary">Tool comparison table</a>
+            <a href="/guide/memory-systems/#39-master-comparison-table" class="btn btn-secondary">Tool comparison table</a>
           </div>
         </div>
       </div>
@@ -631,6 +761,28 @@ const decisionRules = [
   display: flex; flex-direction: column; gap: 0.75rem;
 }
 .multi-agent-note h3 { font-size: 0.95rem; font-weight: 700; margin: 0; }
+.pipeline-steps {
+  list-style: none; padding: 0; margin: 0 0 1.25rem;
+  display: flex; flex-wrap: wrap; gap: 0.5rem; counter-reset: stage;
+}
+.pipeline-step {
+  counter-increment: stage;
+  padding: 0.4rem 0.85rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--bg-secondary);
+  font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
+}
+.pipeline-step::before { content: counter(stage) ". "; color: var(--text-muted); }
+.pipeline-step--rare {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--status-warning) 60%, transparent);
+  background: color-mix(in srgb, var(--status-warning) 8%, transparent);
+}
+#memory-types .native-guide-link,
+#where-memory-lives .native-guide-link,
+#memory-pipeline .native-guide-link { display: inline-block; margin-top: 1rem; }
+#memory-types .tool-table-wrap,
+#where-memory-lives .tool-table-wrap { margin-bottom: 1rem; }
+#memory-pipeline .multi-agent-note { margin-bottom: 1rem; }
 .multi-agent-note p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
 
 /* Decision Rules */

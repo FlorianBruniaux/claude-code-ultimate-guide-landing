@@ -34,6 +34,7 @@ const LOCAL_GUIDE_FILES = new Set([
   'guide/core/claude-code-releases.md',
   'guide/core/known-issues.md',
   'guide/core/loop-graph-engineering.md',
+  'guide/core/memory-systems.md',
   'guide/core/methodologies.md',
   'guide/core/translations.md',
   'guide/core/visual-reference.md',
@@ -107,6 +108,26 @@ const LOCAL_GUIDE_REDIRECT_TARGETS = {
   'guide/core/context-engineering.md': '/context-engineering/',
 }
 
+
+// Hand-written titles for keys whose humanized form reads badly in Cmd+K
+// ("Memory Mld Observations", "Memory Systems Agentmemory"). Keyed by the
+// reference.yaml deep_dive key; every other key keeps humanize().
+const TITLE_OVERRIDES = {
+  memory_systems_guide: 'Memory systems (full guide page)',
+  memory_systems_tldr: 'Memory: the three-track model',
+  memory_systems_taxonomy_axes: 'Memory types: coordinates, not a stack',
+  memory_systems_scope_local_shared: 'Memory scope: local, repository or shared',
+  memory_systems_effectiveness_pipeline: 'Memory: is injected memory used? (six-stage pipeline)',
+  memory_systems_usage_benchmarks: 'Memory benchmarks that measure actual use (2026)',
+  memory_systems_research_poisoning_2026: 'Memory poisoning: 2026 research',
+  memory_systems_claude_mem_privacy_incident: 'claude-mem privacy incident (v15.2.0 to v15.8.2)',
+  memory_systems_new_tools_2026: 'Memory tools: memorix, basic-memory, mnemosyne, Graft',
+  memory_systems_kiro_decay_formula: 'Memory decay models (Kiro, ICM, Zep)',
+  memory_systems_agentmemory: 'agentmemory',
+  memory_systems_claude_mem: 'claude-mem',
+  memory_systems_agent_memory: 'Subagent memory frontmatter',
+  memory_mld_observations: 'Memory: MLD observations before promotion',
+}
 
 /**
  * Convert snake_case key to Title Case human label
@@ -214,7 +235,7 @@ function main() {
     const githubBase = statSync(absolutePath).isDirectory() ? GITHUB_BASE.replace('/blob/', '/tree/') : GITHUB_BASE
 
     const id = `guide-${key.replace(/_/g, '-')}`
-    const title = humanize(key)
+    const title = TITLE_OVERRIDES[key] ?? humanize(key)
     const category = getCategory(cleanPath)
 
     // Use local /guide/ URL if the file is served locally, else fall back to GitHub.

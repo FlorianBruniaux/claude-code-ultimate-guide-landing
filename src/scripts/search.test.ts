@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { Window } from 'happy-dom'
 
-import { initSearch } from './search.ts'
+import { initSearch, searchEntries } from './search.ts'
 import type { SearchEntry } from './search.ts'
 
 const ENTRIES: SearchEntry[] = [
@@ -139,4 +139,36 @@ test('a failed load tells the visitor and is not retried on every keystroke', as
 
   assert.equal(attempts, 1)
   assert.match(document.getElementById('search-results')?.textContent ?? '', /Search is unavailable/)
+})
+
+const MEMORY_ENTRIES: SearchEntry[] = [
+  { id: 'guide-memory-settings', title: 'Memory & Settings (2 levels)', keywords: 'memory settings', category: 'Core Guides', url: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#3-memory--settings', source: 'guide' },
+  { id: 'gc-memory-history', title: 'Memory History Compaction', keywords: 'memory history', category: 'Guide', url: '/guide/memory-systems/#keep-history-distinct-from-compaction', source: 'guide' },
+  { id: 'glossary-memory-hierarchy', title: 'Memory hierarchy', keywords: 'memory claude.md', category: 'Glossary', url: '/glossary/#memory-hierarchy', source: 'landing' },
+  { id: 'page-memory-systems', title: 'Memory Systems: native, cross-session and team memory', keywords: 'memory claude-mem agentmemory', category: 'Build', url: '/memory-systems/', source: 'landing' },
+  { id: 'page-releases', title: 'Claude Code Releases', keywords: 'latest version changelog', category: 'Pages', url: '/releases/', source: 'landing' },
+]
+
+test('dedicated landing pages rank above glossary entries, local guide pages and GitHub files', () => {
+  const ids = searchEntries(MEMORY_ENTRIES, 'memory').map((entry) => entry.id)
+  assert.deepEqual(ids, ['page-memory-systems', 'glossary-memory-hierarchy', 'gc-memory-history', 'guide-memory-settings'])
+})
+
+test('a ranking bonus never turns a non-matching entry into a result', () => {
+  const ids = searchEntries(MEMORY_ENTRIES, 'memory').map((entry) => entry.id)
+  assert.ok(!ids.includes('page-releases'))
+})
+
+test('only off-site results carry the external-link icon', async () => {
+  const { document } = fixture()
+  initSearch(async () => MEMORY_ENTRIES, document)
+  document.getElementById('search-trigger')?.click()
+  const input = document.getElementById('search-input') as HTMLInputElement
+  input.value = 'memory'
+  input.dispatchEvent(new document.defaultView!.Event('input'))
+  await tick(80)
+
+  const items = [...document.querySelectorAll<HTMLElement>('.search-result-item')]
+  const withIcon = items.filter((item) => item.querySelector('.search-external-icon')).map((item) => item.dataset.url)
+  assert.deepEqual(withIcon, [MEMORY_ENTRIES[0].url])
 })
