@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **RSS: October and November security reviews (November 3, 2026)**: `src/data/rss-entries.ts` adds "October Security Review: AgentSec 2.31.0" (October 4) and "November Security Review: AgentSec 2.32.0" (November 2), each linking to its section of `/guide/security-hardening/`. The feed had announced no security review since September.
+
 - **Security feed and catalogue: November 2 threat review (November 2, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors AgentSec database 2.32.0 byte for byte (219 advisories, 132 sources, 119 events), and `src/data/security-data.ts` is regenerated from the guide's compatibility database (228 records, 325 sources). The metadata test now expects `Threat DB v2.32.0`, November 2, 2026 and 219 tracked CVEs.
 
 - **AI Design Patterns: last update date in the hero (October 28, 2026)**: under the title, `/ai-design-patterns/` now shows "Last updated: <date>" from the dataset's new `last_updated` field, in the same form as the guide reader pages. The date the Claude Code mechanisms were last verified stays in the crosswalk note and the method section. The JSON-LD `dateModified` uses the update date. New test: the update date is an ISO day on or after the verification date.

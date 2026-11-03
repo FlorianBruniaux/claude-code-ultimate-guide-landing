@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_section',
+    title: 'November Security Review: AgentSec 2.32.0',
+    date: 'Nov 2, 2026',
+    description: 'Thirty-one maintainer or vendor advisories added since October 4, plus four CVE reports tracked as monitoring with no fixed version yet. Version floors for the Claude Agent SDK, MCP TypeScript 2.x, FastMCP, chrome-devtools-mcp, Junie CLI and Langflow; three MCP SDK fixes that need configuration; repositories armed with agent startup hooks; and the tampered Claude Code extension served by Cursor\'s marketplace. The vulnerabilities added in this review are not detected by AgentSec.',
+    link: 'https://cc.bruniaux.com/guide/security-hardening/#november-2026-review',
+  },
+  {
     type: 'guide_release',
     title: 'Claude Code Ultimate Guide v3.45.2: one agent, subagents or a team?',
     date: 'Nov 1, 2026',
@@ -77,6 +84,13 @@ export const rssEntries: RssEntry[] = [
     date: 'Oct 6, 2026',
     description: 'Guide release with Lean workflow controls, AI FinOps and token-saving benchmark reviews, expanded agent harness guidance, updated security references, and the MCP 1.3.6 search and chapter-link fixes. The French full guide and downloadable book editions retain their recorded source versions.',
     link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.44.0',
+  },
+  {
+    type: 'new_section',
+    title: 'October Security Review: AgentSec 2.31.0',
+    date: 'Oct 4, 2026',
+    description: 'Twelve additional maintainer advisories reviewed since September 24, with version floors for Claude Desktop Cowork on macOS, both branches of the MCP Python and TypeScript SDKs, and AWS Security Agent MCP. The MCP OAuth fixes also require issuer configuration and credential migration, not only an upgrade.',
+    link: 'https://cc.bruniaux.com/guide/security-hardening/#october-2026-review',
   },
   {
     type: 'new_page',
