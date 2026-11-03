@@ -67,9 +67,11 @@ const isOffSite = (url: string): boolean => /^https?:\/\//.test(url)
  * page first, then other landing entries (glossary, cheat sheet), then guide
  * pages rendered on this site, then raw files on GitHub. Applied only to an
  * entry that already matched, so it never turns a miss into a result.
+ * The page bonus exceeds the exact-title gap (100 - 90) plus the landing
+ * bonus, so "memory system" opens /memory-systems/ before the cheat sheet row.
  */
 function sourceBonus(entry: SearchEntry): number {
-  if (entry.source === 'landing') return entry.id.startsWith('page-') ? 15 : 5
+  if (entry.source === 'landing') return entry.id.startsWith('page-') ? 20 : 5
   return isOffSite(entry.url) ? -5 : 0
 }
 

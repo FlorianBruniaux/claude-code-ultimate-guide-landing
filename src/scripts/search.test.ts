@@ -154,6 +154,15 @@ test('dedicated landing pages rank above glossary entries, local guide pages and
   assert.deepEqual(ids, ['page-memory-systems', 'glossary-memory-hierarchy', 'gc-memory-history', 'guide-memory-settings'])
 })
 
+test('a dedicated page whose title starts with the query outranks a cheat sheet entry with that exact title', () => {
+  const entries: SearchEntry[] = [
+    { id: 'cs-memory', title: 'Memory System', keywords: 'memory system auto-memory', category: 'Cheat Sheet', url: '/cheatsheet/#memory', source: 'landing' },
+    MEMORY_ENTRIES[3],
+  ]
+  const ids = searchEntries(entries, 'memory system').map((entry) => entry.id)
+  assert.deepEqual(ids, ['page-memory-systems', 'cs-memory'])
+})
+
 test('a ranking bonus never turns a non-matching entry into a result', () => {
   const ids = searchEntries(MEMORY_ENTRIES, 'memory').map((entry) => entry.id)
   assert.ok(!ids.includes('page-releases'))
