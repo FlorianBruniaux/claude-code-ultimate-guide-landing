@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **Announcement banner: November badge (November 3, 2026)**: the strip under the nav now reads "NOV 2026" with the same latest links (AI Design Patterns, Local vs cloud AI, Grill me, Changelog). `BANNER_ID` moves to `banner-ai-design-patterns-2026-11`, so visitors who dismissed the October strip see it again.
+
 - **RSS: October and November security reviews (November 3, 2026)**: `src/data/rss-entries.ts` adds "October Security Review: AgentSec 2.31.0" (October 4) and "November Security Review: AgentSec 2.32.0" (November 2), each linking to its section of `/guide/security-hardening/`. The feed had announced no security review since September.
 
 - **Security feed and catalogue: November 2 threat review (November 2, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors AgentSec database 2.32.0 byte for byte (219 advisories, 132 sources, 119 events), and `src/data/security-data.ts` is regenerated from the guide's compatibility database (228 records, 325 sources). The metadata test now expects `Threat DB v2.32.0`, November 2, 2026 and 219 tracked CVEs.
