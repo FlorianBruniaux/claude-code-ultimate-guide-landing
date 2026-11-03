@@ -11,6 +11,11 @@ export interface GuideContentEntry {
   source: 'guide'
 }
 
+export interface GuideContentPage {
+  title: string
+  description: string
+}
+
 export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-adoption-approaches-open-contribution-without-granting-unrestricted-de",
@@ -1063,7 +1068,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ai-ecosystem-stop-when",
     "title": "Stop when",
-    "keywords": "stop when ai ecosystem maximizing claude code with complementary tools metric = 0, or no more mechanical replacements exist. /autoresearch scan + propose loops /autoresearch --scaffold loop-remove-as-any generate measure. scaffold with claude code when to use this pattern safety properties",
+    "keywords": "stop when ai ecosystem maximizing claude code with complementary tools metric = 0, or no more mechanical replacements exist. /autoresearch scan + propose loops /autoresearch --scaffold loop-remove-as-any generate measure. scaffold with claude code when to use this pattern safety properties case study when the loop repairs the baseline",
     "category": "Core Guides",
     "url": "/guide/ai-ecosystem/#stop-when",
     "source": "guide"
@@ -15685,3 +15690,470 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "source": "guide"
   }
 ]
+
+export const GUIDE_CONTENT_PAGES: Record<string, GuideContentPage> = {
+  "/guide/adoption-approaches/": {
+    "title": "Choosing Your Adoption Approach",
+    "description": "Starting points for team adoption patterns and CLAUDE.md configuration strategies"
+  },
+  "/guide/agent-evaluation/": {
+    "title": "Agent Evaluation",
+    "description": "Metrics, patterns, and tools for measuring custom agent effectiveness"
+  },
+  "/guide/agent-harness-landscape/": {
+    "title": "Agent Harness Landscape",
+    "description": "An evidence-backed map of coding-agent runtimes, repository harnesses, orchestrators, frameworks, sandboxes, memory, evaluation, and observability projects."
+  },
+  "/guide/agent-harness/": {
+    "title": "Claude Code Agent Harness Engineering",
+    "description": "Design and evaluate the context, policy, tool, verification, observability, and recovery layers around Claude Code agents."
+  },
+  "/guide/agentic-pentesting/": {
+    "title": "Agentic Pentesting: Scope, Evidence, and Data Exposure",
+    "description": "Compare DarkMoon and Strix through their execution architecture, privacy boundaries, finding validation, and the evidence required before adoption."
+  },
+  "/guide/agentic-tools/": {
+    "title": "Agent Tools: Beyond Claude Code",
+    "description": "Comparative guide to terminal coding agents, autonomous coders, multi-agent frameworks, orchestrators, and adjacent harness optimizers, with evidence-aware selection guidance."
+  },
+  "/guide/ai-concept-boundaries/": {
+    "title": "AI Concept Boundaries",
+    "description": "Seven practical distinctions for Claude Code, from context and memory to model architecture, size, modality, and task labels."
+  },
+  "/guide/ai-design-patterns/": {
+    "title": "AI Design Patterns",
+    "description": "Crosswalk between classic software design patterns (GoF, enterprise integration, distributed systems) and agent harness patterns, anchored in documented Claude Code mechanisms, with failure modes and checks."
+  },
+  "/guide/ai-ecosystem/": {
+    "title": "AI Ecosystem: Maximizing Claude Code with Complementary Tools",
+    "description": "When to use Claude Code vs complementary AI tools and how to chain them for optimal workflows"
+  },
+  "/guide/ai-executive-agents/": {
+    "title": "AI Executive Agents: Virtual C-Suites and Board Simulators",
+    "description": "How far the persona/agent pattern goes when applied to named executive roles (CFO, CMO, CHRO, General Counsel, board of directors): OpenExecutive deep dive, open-source alternatives, a routing table by role, and the augmentation-vs-replacement question"
+  },
+  "/guide/ai-finops/": {
+    "title": "AI FinOps guide: cost regimes and levers for coding agents",
+    "description": "Entry point for the cost side of coding agents: the three cost regimes (subscription quota, metered tokens, owned capacity), the Inform-Optimize-Operate loop applied to agents, and a map of every cost lever documented in the guide"
+  },
+  "/guide/ai-roles/": {
+    "title": "AI Roles & Career Paths: The New Engineering Landscape",
+    "description": "Evidence-bounded map of current AI role families, emerging specializations, and capabilities absorbed into broader engineering jobs"
+  },
+  "/guide/ai-traceability/": {
+    "title": "AI Code Traceability & Attribution",
+    "description": "Industry standards, tools, and templates for AI-generated code attribution policies"
+  },
+  "/guide/ai-unit-economics/": {
+    "title": "AI Unit Economics",
+    "description": "How to model the real cost per accepted task in agentic AI development: attempts, retries, review, rework, routing, progressive spend controls, and autonomous-agent break-even"
+  },
+  "/guide/api-gateway/": {
+    "title": "API Gateway for Enterprise Claude Code",
+    "description": "Centralize cost control, progressive spend policy, terminal budgets, model allowlists, and usage tracking across teams using Claude apps gateway or another Anthropic-compatible proxy"
+  },
+  "/guide/architecture/": {
+    "title": "Claude Code Architecture & Agent Loop",
+    "description": "How Claude Code runs its model-tool loop, manages context, executes tools, and isolates subagents, with sourced architecture notes."
+  },
+  "/guide/cheatsheet/": {
+    "title": "Claude Code Cheatsheet",
+    "description": "One-page printable daily essentials for maximum Claude Code productivity"
+  },
+  "/guide/claude-code-guide-mcp/": {
+    "title": "Claude Code Guide MCP Server: Install & Tools",
+    "description": "Install the Claude Code Ultimate Guide MCP server in Claude Code, Codex, Cursor, or VS Code. Search the guide, retrieve templates, and inspect release notes."
+  },
+  "/guide/community-patterns/": {
+    "title": "Community Patterns & Reference",
+    "description": "Community-coined patterns, AI engineering concepts, workflow terms, and Claude Code configuration reference"
+  },
+  "/guide/computer-use/": {
+    "title": "Computer Use in Claude Code",
+    "description": "Enable, constrain, and verify Claude Code computer use from an interactive macOS CLI session"
+  },
+  "/guide/context-engineering-tools/": {
+    "title": "Context Engineering: Tools & Ecosystem",
+    "description": "A practical map of the tools that compress, optimize, route, and observe LLM context, from CLI output filters to AI gateways to LLMOps platforms"
+  },
+  "/guide/context-engineering/": {
+    "title": "Context Engineering",
+    "description": "Comprehensive guide to filling Claude's context window with the right information at the right time: configuration hierarchy, budget management, modular architecture, team assembly, and quality measurement"
+  },
+  "/guide/cowork/": {
+    "title": "Claude Cowork: Agentic Desktop for Knowledge Work",
+    "description": "Summary of Claude's agentic desktop feature for non-technical knowledge workers"
+  },
+  "/guide/credits/": {
+    "title": "Credits and External Inspirations",
+    "description": "Open-source projects and engineering teams whose work informed specific patterns in this guide"
+  },
+  "/guide/darkmoon-strix-agentic-pentesting/": {
+    "title": "DarkMoon and Strix: Evidence and Evaluation",
+    "description": "Privacy tests, public sources, and evidence needed to evaluate DarkMoon and Strix."
+  },
+  "/guide/data-privacy/": {
+    "title": "Claude Code Privacy & Data Retention",
+    "description": "What Claude Code sends to Anthropic, retention by plan, training controls, MCP exposure, and safeguards for sensitive data."
+  },
+  "/guide/devops-sre/": {
+    "title": "DevOps & SRE with Claude Code",
+    "description": "FIRE framework for infrastructure diagnosis and DevOps workflows with Claude Code"
+  },
+  "/guide/enterprise-governance/": {
+    "title": "Enterprise AI Governance for Claude Code",
+    "description": "Org-level governance for teams deploying Claude Code at scale: usage charters, MCP approval workflows, guardrail tiers, and compliance"
+  },
+  "/guide/for-cio-ceo/": {
+    "title": "Claude Code: For CIOs & CEOs",
+    "description": "Claude Code for CIOs and CEOs: what it is, what it changes, and the questions to ask your CTO, in 3 minutes."
+  },
+  "/guide/for-cto/": {
+    "title": "Claude Code: For CTOs & decision makers",
+    "description": "Claude Code for CTOs and decision makers: the business case in 3 data points, security and governance controls, and the adoption metrics that matter."
+  },
+  "/guide/for-product-managers/": {
+    "title": "Claude Code: For product managers & product designers",
+    "description": "Claude Code for Product Managers and Product Designers: specs that become context, reviewing AI-assisted work, and prototyping features yourself without a developer."
+  },
+  "/guide/for-tech-leads/": {
+    "title": "Claude Code: For tech leads & engineering managers",
+    "description": "Claude Code for Tech Leads and Engineering Managers: shared team configuration, security hooks, observability, and a 30-minute rollout plan."
+  },
+  "/guide/glossary/": {
+    "title": "Glossary",
+    "description": "Definitions for Claude Code terminology"
+  },
+  "/guide/hooks-events-reference/": {
+    "title": "Claude Code Hooks: Events & JSON",
+    "description": "Reference for Claude Code hook events, matcher fields, input schemas, decision control, timeouts, and copyable JSON examples."
+  },
+  "/guide/known-issues/": {
+    "title": "Known Issues & Critical Bugs",
+    "description": "Verified critical issues affecting Claude Code users from community reports and official communications"
+  },
+  "/guide/learning-path/01-installation/": {
+    "title": "Module 01: Installation & setup",
+    "description": "Learning Path Module 01: install Claude Code, verify that it runs, and send your first command. 15 minutes, beginner."
+  },
+  "/guide/learning-path/02-core-loop/": {
+    "title": "Module 02: Core loop",
+    "description": "Learning Path Module 02: how the Claude Code decision loop and context work, and how to structure requests effectively. 45 minutes, beginner."
+  },
+  "/guide/learning-path/03-memory/": {
+    "title": "Module 03: Memory & config",
+    "description": "Learning Path Module 03: make Claude Code remember your preferences and project rules, and build your first CLAUDE.md file. 1 hour, intermediate."
+  },
+  "/guide/learning-path/04-agents/": {
+    "title": "Module 04: Agents & Specialization",
+    "description": "Learning Path Module 04: create specialized Claude Code agents with AGENT.md, restrict their capabilities, and decide when to use an agent versus asking Claude directly. 1.5 hours, intermediate."
+  },
+  "/guide/learning-path/05-skills/": {
+    "title": "Module 05: Skills & Automation",
+    "description": "Learning Path Module 05: build scoped Claude Code skills with SKILL.md, progressive disclosure, invocation controls, evals, and retirement criteria. 1.5 hours, intermediate."
+  },
+  "/guide/learning-path/06-hooks/": {
+    "title": "Module 06: Hooks and events",
+    "description": "Learning Path Module 06: add a Claude Code hook that decides from structured input, fails closed on malformed input, and is testable without a session."
+  },
+  "/guide/learning-path/07-advanced/": {
+    "title": "Module 07: Advanced Patterns",
+    "description": "Learning Path Module 07: orchestrate multi-agent Claude Code workflows, handle error recovery, and apply production-grade automation patterns for team workflows. 2-3 hours, advanced."
+  },
+  "/guide/learning-with-ai/": {
+    "title": "Learning to Code with AI: The Conscious Developer's Guide",
+    "description": "Research-based guide for junior developers learning to code effectively with AI assistance"
+  },
+  "/guide/llm-market-snapshot/": {
+    "title": "LLM Market Snapshot for Coding Agents (September 2026)",
+    "description": "Dated, source-checked snapshot of API token prices, subscription quotas, and data-location options across Anthropic, OpenAI, Google, DeepSeek, Mistral, xAI, Moonshot, Z.AI, and inference hosts, with the cost of one reference agent workload and the claims that did not survive verification"
+  },
+  "/guide/local-vs-cloud-inference/": {
+    "title": "Local vs Cloud: LLM Hardware and Inference Economics",
+    "description": "Comparable hardware builds for running large open-weight models locally, cloud GPU rental pricing, and cloud API throughput for Claude and GPT-5.6, with sourced numbers and a decision framework"
+  },
+  "/guide/loop-graph-engineering/": {
+    "title": "Loop & Graph Engineering",
+    "description": "Design bounded agent feedback loops and executable workflow graphs with durable state, explicit judgment, and inspectable evidence."
+  },
+  "/guide/mcp-servers-ecosystem/": {
+    "title": "MCP Servers Ecosystem",
+    "description": "Validated community MCP servers evaluated for production readiness and security"
+  },
+  "/guide/mcp-vs-cli/": {
+    "title": "MCP vs CLI: Decision Guide",
+    "description": "When to use MCP servers vs CLI tools in Claude Code workflows. Tradeoffs, decision dimensions, and guidance by situation."
+  },
+  "/guide/memory-systems/": {
+    "title": "Memory Systems",
+    "description": "Complete guide to memory in Claude Code: native stack, cross-session tools, team sharing, multi-agent coordination, architecture patterns, risks, and decision frameworks. Canonical reference consolidating all fragmented memory content."
+  },
+  "/guide/methodologies/": {
+    "title": "Development Methodologies Reference",
+    "description": "Quick reference for 15 structured AI-assisted development methodologies including TDD, SDD, and BDD"
+  },
+  "/guide/mistral-large-4/": {
+    "title": "Mistral Large 4: Pricing, Benchmarks and Limits",
+    "description": "October 6 launch evidence: preview access, sale prices, independent benchmarks, context limits, regional inference, and planned weights."
+  },
+  "/guide/observability/": {
+    "title": "Session Observability & Monitoring",
+    "description": "Track Claude Code usage, estimate costs, and identify patterns across development sessions"
+  },
+  "/guide/plugin-distribution/": {
+    "title": "Plugin Distribution and Recommendation Hints",
+    "description": "Distribute Claude Code plugins through marketplaces and use official recommendation hints without bypassing user consent"
+  },
+  "/guide/practitioner-insights/": {
+    "title": "Practitioner Insights",
+    "description": "Field reports from production teams on agentic systems, context engineering, LLM evaluation, and AI-assisted development"
+  },
+  "/guide/production-safety/": {
+    "title": "Production Safety Rules",
+    "description": "Non-negotiable safety rules for teams deploying Claude Code in production environments"
+  },
+  "/guide/remarkable-ai/": {
+    "title": "reMarkable 2 + AI: Hacks, Tools, and Workflows",
+    "description": "Complete mapping of AI integrations for reMarkable 2: MCP server, OCR, Obsidian/Notion pipelines, and automations"
+  },
+  "/guide/sandbox-isolation/": {
+    "title": "Sandbox Isolation for Coding Agents",
+    "description": "Running Claude Code safely in isolated environments with Docker, native sandbox, and cloud solutions"
+  },
+  "/guide/sandbox-native/": {
+    "title": "Native Sandboxing in Claude Code",
+    "description": "Understanding and configuring native process-level sandboxing in Claude Code"
+  },
+  "/guide/security-hardening/": {
+    "title": "Security Hardening Guide",
+    "description": "Active threats, injection defense, and CVE-based security hardening for Claude Code"
+  },
+  "/guide/settings-reference/": {
+    "title": "Claude Code settings reference",
+    "description": "Reference for Claude Code settings.json options and environment variables, with links to the official settings and environment variable docs."
+  },
+  "/guide/skill-design-patterns/": {
+    "title": "Skill Design Patterns",
+    "description": "Architectural patterns for designing robust, token-efficient Claude Code skills with multi-agent pipelines"
+  },
+  "/guide/subscription-strategy/": {
+    "title": "Subscription Strategy at Team Scale",
+    "description": "A control-led framework for choosing workforce coding plans, governed API access, and self-hosted inference, with a multi-provider exercise for regulated organizations"
+  },
+  "/guide/team-knowledge-base/": {
+    "title": "Team knowledge base for Claude Code + Cowork",
+    "description": "Set up a shared company knowledge base that both Claude Code and Claude Cowork can read: shared docs, live systems and reusable workflows."
+  },
+  "/guide/team-metrics/": {
+    "title": "Team Metrics for AI-Augmented Engineering",
+    "description": "How to measure and pilot a tech-product team using AI. DORA, SPACE, and the metrics that matter when AI writes 70%+ of your code."
+  },
+  "/guide/third-party-tools/": {
+    "title": "Claude Code Tools: RTK, ccusage & GUIs",
+    "description": "Compare Claude Code GUIs, TUIs, configuration managers, token trackers, RTK, lean-ctx, ccusage, and other community tools."
+  },
+  "/guide/tools-reference/": {
+    "title": "Built-in tools reference",
+    "description": "The built-in tools Claude Code uses to read, edit and run things, with the exact names used in permission rules, hooks and subagent definitions."
+  },
+  "/guide/translations/": {
+    "title": "Translations and Language Governance",
+    "description": "Verified inventory, freshness status, attribution, and maintenance rules for official and community language editions"
+  },
+  "/guide/ultimate-guide.fr/": {
+    "title": "The Ultimate Claude Code Guide",
+    "description": "Guide complet et autonome pour maîtriser Claude Code, du débutant au power user"
+  },
+  "/guide/ultimate-guide/00-introduction/": {
+    "title": "Introduction",
+    "description": "Overview, TL;DR, and full table of contents for the Claude Code Ultimate Guide."
+  },
+  "/guide/ultimate-guide/01-quick-start/": {
+    "title": "Claude Code Quick Start: Install, First Task & Key Mistakes to Avoid",
+    "description": "Install Claude Code and complete your first AI-assisted task in 15 minutes. Essential slash commands, permission modes, context management basics, and 8 beginner mistakes to avoid."
+  },
+  "/guide/ultimate-guide/02-core-workflow/": {
+    "title": "2. Core Workflow",
+    "description": "Master the Claude Code workflow: context window zones (50/70/90%), Plan Mode for safe exploration, WHAT/WHERE/HOW/VERIFY prompting formula, Rewind to undo changes, and trust calibration."
+  },
+  "/guide/ultimate-guide/03-memory-files/": {
+    "title": "3. Memory & Files",
+    "description": "Configure CLAUDE.md project memory files and .claude/ folder structure. Settings hierarchy, permissions, hooks config, personal vs team settings — give Claude persistent project context."
+  },
+  "/guide/ultimate-guide/04-agents/": {
+    "title": "4. Agents",
+    "description": "Create custom Claude Code agents: backend-architect, code-reviewer, security-auditor, devops-sre. Tool SEO for routing, sub-agent orchestration, and multi-agent coordination with TeamCreate."
+  },
+  "/guide/ultimate-guide/05-skills/": {
+    "title": "Claude Code Skills: Build, Test & Share Skills",
+    "description": "Build Claude Code skills with explicit ownership, narrow tool grants, representative evals, lifecycle controls, safe distribution, and production templates."
+  },
+  "/guide/ultimate-guide/06-commands/": {
+    "title": "Claude Code Slash Commands & Custom Commands",
+    "description": "Create custom slash commands for Claude Code: /pr, /commit, /generate-tests, /diagnose, /git-worktree. Variable interpolation with $ARGUMENTS syntax and 19 production-ready command templates."
+  },
+  "/guide/ultimate-guide/07-hooks/": {
+    "title": "7. Hooks",
+    "description": "Automate Claude Code with event hooks: block dangerous commands, scan for secrets, auto-format code, run tests after edits. PreToolUse, PostToolUse, UserPromptSubmit — Bash and PowerShell."
+  },
+  "/guide/ultimate-guide/08-mcp/": {
+    "title": "8. MCP Servers",
+    "description": "Extend Claude Code with MCP servers: Serena (codebase indexation + memory), Context7 (library docs), grepai (semantic search), Playwright (browser automation), Postgres. Config and security vetting."
+  },
+  "/guide/ultimate-guide/09-advanced-patterns/": {
+    "title": "9. Advanced Patterns",
+    "description": "Advanced Claude Code patterns: Trinity workflow (Plan+Thinking+MCP), GitHub Actions CI/CD, multi-agent Teams API, Tasks API for cross-session state, git worktree isolation, feedback loops."
+  },
+  "/guide/ultimate-guide/10-reference/": {
+    "title": "Claude Code Reference: CLI Flags, Shortcuts, CLAUDE.md Templates & Troubleshooting",
+    "description": "Complete Claude Code reference: 45+ CLI flags, keyboard shortcuts, /compact context management, CLAUDE.md starter templates, troubleshooting guide, and cost optimization by model."
+  },
+  "/guide/ultimate-guide/11-ai-ecosystem/": {
+    "title": "11. AI Ecosystem",
+    "description": "Claude Code in the broader AI ecosystem: complementary tools, model comparisons, multi-provider setups, and community resources."
+  },
+  "/guide/ultimate-guide/12-appendices/": {
+    "title": "Appendices",
+    "description": "Claude Code appendices: file locations reference, FAQ, resource evaluations, myths vs reality, and glossary."
+  },
+  "/guide/visual-reference/": {
+    "title": "Claude Code: Visual Reference",
+    "description": "ASCII diagrams consolidating key Claude Code concepts in one visual overview"
+  },
+  "/guide/workflows/agent-teams-quick-start/": {
+    "title": "Agent Teams Quick Start Guide",
+    "description": "Practical 5-minute setup guide with copy-paste patterns for agent teams"
+  },
+  "/guide/workflows/agent-teams/": {
+    "title": "Agent Teams Workflow",
+    "description": "Multi-agent parallel coordination for complex tasks with autonomous team lead"
+  },
+  "/guide/workflows/agentic-software-factories/": {
+    "title": "Agentic Software Factories: Orientation Map",
+    "description": "Where to start when scaling from a single Claude Code session to a multi-agent software factory, and when a closed commercial platform actually beats the native path"
+  },
+  "/guide/workflows/ai-assisted-open-source-contributions/": {
+    "title": "AI-Assisted Open Source Contributions",
+    "description": "Prepare reviewable contributions with Claude Code: project policy, reproduction, independent evidence, author understanding, and follow-through"
+  },
+  "/guide/workflows/best-of-n/": {
+    "title": "Best-of-N: Generate, Select, and Verify",
+    "description": "A bounded protocol for generating independent candidates, selecting against a fixed rubric, and recording executable evidence"
+  },
+  "/guide/workflows/changelog-fragments/": {
+    "title": "Changelog Fragments: Enforced Per-PR Documentation",
+    "description": "A 3-layer enforcement pattern for Claude Code that ensures every PR is documented at write time, never at release time: hook-based nudges, PR template checks, and CI enforcement."
+  },
+  "/guide/workflows/code-review/": {
+    "title": "Code Review (Claude Code feature)",
+    "description": "Managed multi-agent PR review for Team and Enterprise: setup, review levels, triggers, comment commands, REVIEW.md configuration, and cost management"
+  },
+  "/guide/workflows/cross-session-messaging/": {
+    "title": "Cross-Session Messaging",
+    "description": "How independent Claude Code sessions discover and message each other with ListAgents and SendMessage: mechanics, security model, and coordination patterns"
+  },
+  "/guide/workflows/design-to-code/": {
+    "title": "Design-to-Code Workflow with Figma MCP",
+    "description": "Automated design system implementation using Figma MCP Server for 1:1 design-code parity"
+  },
+  "/guide/workflows/dual-instance-planning/": {
+    "title": "Dual-Instance Planning Workflow",
+    "description": "Separate planning and implementation with versioned handoffs, explicit ownership, and evidence-based review"
+  },
+  "/guide/workflows/dynamic-workflows/": {
+    "title": "Dynamic Workflows",
+    "description": "JavaScript-orchestrated multi-agent pipelines with deterministic control flow, parallel fan-out, and automatic resume"
+  },
+  "/guide/workflows/event-driven-agents/": {
+    "title": "Event-Driven Agent Automation",
+    "description": "Trigger Claude Code agents from external events like Kanban card moves, GitHub issues, and Jira transitions"
+  },
+  "/guide/workflows/exploration-workflow/": {
+    "title": "Exploration Before Implementation",
+    "description": "Ask Claude for multiple approaches with trade-offs before coding to prevent anchoring bias"
+  },
+  "/guide/workflows/github-actions/": {
+    "title": "GitHub Actions Workflows with Claude Code",
+    "description": "Step-by-step setup for claude-code-action in GitHub Actions: PR code review on mention, automatic review on push, issue triage. Includes permissions config and real YAML examples."
+  },
+  "/guide/workflows/gstack-workflow/": {
+    "title": "Cognitive Mode Switching",
+    "description": "A selected path through gstack: challenge demand, review architecture and code, test behavior, ship, and reflect"
+  },
+  "/guide/workflows/iterative-refinement/": {
+    "title": "Iterative Refinement",
+    "description": "Prompt, observe, and reprompt until satisfied: the core loop of AI-assisted development"
+  },
+  "/guide/workflows/monitor-event-delegation/": {
+    "title": "Monitor, Channels and Safe Delegation to Codex",
+    "description": "Choose Monitor, plugin monitors, MCP Channels, or Routines, then route GitHub events to Codex without turning untrusted input into authority."
+  },
+  "/guide/workflows/multi-provider-code-review/": {
+    "title": "Multi-Provider Code Review: Non-Redundant Automated PR Review",
+    "description": "Run Claude Code Action alongside CodeRabbit and Greptile without triplicate findings: role separation, an explicit acceptance policy, batching for large PRs, and cross-tool deduplication"
+  },
+  "/guide/workflows/og-image-generation/": {
+    "title": "Dynamic OG image generation with Astro",
+    "description": "Generate social preview images at build time with Astro, so shared links show current stats instead of a stale static PNG."
+  },
+  "/guide/workflows/pdf-generation/": {
+    "title": "PDF Generation with Claude Code",
+    "description": "Generate professional PDFs using Claude Code with Quarto and Typst stack"
+  },
+  "/guide/workflows/plan-driven/": {
+    "title": "Plan-Driven Development",
+    "description": "Use /plan mode for non-trivial tasks to explore and propose implementation plans"
+  },
+  "/guide/workflows/plan-pipeline/": {
+    "title": "Plan-Validate-Execute Pipeline",
+    "description": "Production-grade 3-command workflow with dynamic agent teams, ADR learning loop, and automated execution from PRD to merged PR"
+  },
+  "/guide/workflows/production-reliability/": {
+    "title": "Production Reliability Patterns",
+    "description": "Escalation design, circuit breakers, structured error propagation, graceful degradation, human handoff, and source conflict resolution for Claude-powered systems"
+  },
+  "/guide/workflows/rpi/": {
+    "title": "RPI: Research → Plan → Implement",
+    "description": "A 3-phase feature development pattern with explicit validation gates between phases"
+  },
+  "/guide/workflows/search-tools-mastery/": {
+    "title": "Search Tools Mastery: Combining rg, grepai, Serena, ast-grep, scip-search & lilmd",
+    "description": "Master code search and documentation navigation by combining the right tools for maximum efficiency"
+  },
+  "/guide/workflows/skeleton-projects/": {
+    "title": "Skeleton Projects Workflow",
+    "description": "Use existing battle-tested repositories as scaffolding for new projects"
+  },
+  "/guide/workflows/smart-suggest-routing/": {
+    "title": "Smart-Suggest Routing: Regex + BM25 Skill Hints",
+    "description": "A Codex and Claude Code UserPromptSubmit routing system using regex rules and calibrated Okapi BM25 skill hints"
+  },
+  "/guide/workflows/spec-first/": {
+    "title": "Spec-First Development with Claude",
+    "description": "Define specifications in CLAUDE.md before implementation for structured development"
+  },
+  "/guide/workflows/support-csm-agent/": {
+    "title": "Support & CSM Agent: Internal Ticket Triage and Account Diagnosis",
+    "description": "Build an internal Claude Code agent that helps support and CSM teams draft replies, diagnose issues via read-only DB access, and prep client calls"
+  },
+  "/guide/workflows/talk-pipeline/": {
+    "title": "Talk Preparation Pipeline: From Idea to Slides with AI",
+    "description": "6-stage skill pipeline that transforms raw material into a conference talk with AI-generated slides"
+  },
+  "/guide/workflows/task-management/": {
+    "title": "Task Management Workflow",
+    "description": "Multi-session task coordination using Tasks API and TodoWrite for complex projects"
+  },
+  "/guide/workflows/tdd-with-claude/": {
+    "title": "TDD with Claude Code",
+    "description": "Test-Driven Development workflow with explicit prompting for red-green-refactor cycles"
+  },
+  "/guide/workflows/team-ai-instructions/": {
+    "title": "Team AI Instructions Management",
+    "description": "Scale CLAUDE.md across a multi-developer team using Profile-Based Module Assembly"
+  },
+  "/guide/workflows/tts-setup/": {
+    "title": "TTS Setup Workflow - Agent Vibes Installation",
+    "description": "Add text-to-speech narration to Claude Code on macOS"
+  }
+}

@@ -181,3 +181,98 @@ test('only off-site results carry the external-link icon', async () => {
   const withIcon = items.filter((item) => item.querySelector('.search-external-icon')).map((item) => item.dataset.url)
   assert.deepEqual(withIcon, [MEMORY_ENTRIES[0].url])
 })
+
+function groupedFixture() {
+  const window = new Window({ url: 'https://cc.bruniaux.com/' })
+  window.document.body.innerHTML = `
+    <button id="search-trigger" type="button">Search</button>
+    <div id="search-modal" hidden aria-hidden="true">
+      <div id="search-backdrop"></div>
+      <div class="search-modal-content">
+        <input id="search-input" type="search" />
+        <span id="search-totals"></span>
+        <button id="search-clear" type="button" hidden>Clear</button>
+        <div id="search-chips" hidden></div>
+        <div id="search-results"></div>
+        <aside id="search-preview" hidden></aside>
+        <nav id="search-map"><a href="/start/">Start</a></nav>
+      </div>
+    </div>`
+  return { window, document: window.document as unknown as Document }
+}
+
+const GROUPED_PAYLOAD = {
+  entries: [
+    ...MEMORY_ENTRIES,
+    { id: 'gc-memory-decay', title: 'Memory decay models', keywords: 'memory decay', category: 'Core Guides', url: '/guide/memory-systems/#decay', source: 'guide' as const },
+    { id: 'sec-memory', title: 'Memory poisoning', keywords: 'memory poisoning', category: 'Security', url: '/security/#memory-poisoning', source: 'landing' as const },
+  ],
+  pages: { '/guide/memory-systems/': { title: 'Memory Systems guide', description: 'Complete guide to memory in Claude Code.' } },
+  routes: [{ href: '/memory-systems/', group: 'build' as const }, { href: '/glossary/', group: 'resources' as const }],
+}
+
+async function typeQuery(document: Document, value: string) {
+  const input = document.getElementById('search-input') as HTMLInputElement
+  input.value = value
+  input.dispatchEvent(new document.defaultView!.Event('input'))
+  await tick(80)
+  return input
+}
+
+test('an empty query shows the site map and a query swaps it for grouped results', async () => {
+  const { document } = groupedFixture()
+  initSearch(async () => GROUPED_PAYLOAD, document)
+  document.getElementById('search-trigger')?.click()
+  await tick()
+  assert.equal(document.getElementById('search-map')?.hidden, false)
+  assert.equal(document.getElementById('search-chips')?.hidden, true)
+
+  await typeQuery(document, 'memory')
+  assert.equal(document.getElementById('search-map')?.hidden, true)
+  assert.match(document.getElementById('search-totals')?.textContent ?? '', /^\d+ pages · \d+ matches$/)
+  const guideRows = [...document.querySelectorAll<HTMLElement>('.search-result-item')].filter((row) => row.textContent?.includes('Memory Systems guide'))
+  assert.equal(guideRows.length, 1, 'the guide page shows once')
+  assert.equal(guideRows[0].querySelectorAll('.search-result-section').length, 2)
+  assert.ok(document.querySelector('.search-group[data-group="security"]'))
+})
+
+test('the first result is selected and previewed, and arrow keys move the preview', async () => {
+  const { document } = groupedFixture()
+  initSearch(async () => GROUPED_PAYLOAD, document)
+  document.getElementById('search-trigger')?.click()
+  const input = await typeQuery(document, 'memory')
+
+  const rows = [...document.querySelectorAll<HTMLElement>('.search-result-item')]
+  assert.equal(rows[0].getAttribute('aria-selected'), 'true')
+  assert.equal(input.getAttribute('aria-activedescendant'), rows[0].id)
+  const firstTitle = document.querySelector('.search-preview-title')?.textContent
+
+  input.dispatchEvent(new document.defaultView!.KeyboardEvent('keydown', { key: 'ArrowDown' }))
+  assert.equal(input.getAttribute('aria-activedescendant'), rows[1].id)
+  assert.notEqual(document.querySelector('.search-preview-title')?.textContent, firstTitle)
+})
+
+test('Tab moves to the next section filter and Shift+Tab comes back to All', async () => {
+  const { document } = groupedFixture()
+  initSearch(async () => GROUPED_PAYLOAD, document)
+  document.getElementById('search-trigger')?.click()
+  const input = await typeQuery(document, 'memory')
+  const pressed = () => document.querySelector('.search-chip[aria-pressed="true"]')?.textContent ?? ''
+
+  assert.match(pressed(), /^All\d+$/)
+  input.dispatchEvent(new document.defaultView!.KeyboardEvent('keydown', { key: 'Tab', cancelable: true }))
+  assert.match(pressed(), /^Build\d+$/)
+  assert.equal(document.querySelectorAll('.search-group').length, 1)
+  input.dispatchEvent(new document.defaultView!.KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, cancelable: true }))
+  assert.match(pressed(), /^All\d+$/)
+})
+
+test('a query with no match offers the page listing instead', async () => {
+  const { document } = groupedFixture()
+  initSearch(async () => GROUPED_PAYLOAD, document)
+  document.getElementById('search-trigger')?.click()
+  await typeQuery(document, 'zzzz-nothing')
+  const results = document.getElementById('search-results')!
+  assert.match(results.textContent ?? '', /No results for “zzzz-nothing”/)
+  assert.equal(results.querySelector('a')?.getAttribute('href'), '/sitemap/')
+})

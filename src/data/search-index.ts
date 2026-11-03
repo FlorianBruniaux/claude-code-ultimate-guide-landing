@@ -6,19 +6,14 @@
 import { EXAMPLES } from './examples-data.ts'
 import { releases } from './releases.ts'
 import { GUIDE_ENTRIES } from './guide-search-entries.ts'
-import { GUIDE_CONTENT_ENTRIES } from './guide-content-entries.ts'
+import { GUIDE_CONTENT_ENTRIES, GUIDE_CONTENT_PAGES } from './guide-content-entries.ts'
 import { glossaryTerms } from './glossary-data.ts'
+import { navigationSections } from './header-navigation.ts'
+import { guideHighlights } from './guide-navigation.mjs'
+import type { SearchEntry, SearchGroupId, SearchPageInfo, SearchPayload, SearchRoute } from '../scripts/search-model.ts'
 
-export type SearchSource = 'landing' | 'guide'
-
-export interface SearchEntry {
-  id: string
-  title: string
-  keywords: string   // lowercase, space-separated
-  category: string
-  url: string
-  source: SearchSource
-}
+export type SearchSource = SearchEntry['source']
+export type { SearchEntry }
 
 // ─── Pages ───────────────────────────────────────────────────────────────────
 const pageEntries: SearchEntry[] = [
@@ -825,3 +820,54 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...(GUIDE_ENTRIES as SearchEntry[]),
   ...(GUIDE_CONTENT_ENTRIES as SearchEntry[]),
 ]
+
+// ─── Page map and section routes for grouped Cmd+K results ───────────────────
+// Security pages are their own result group, so they stay visible even though
+// the header still files them under Scale. Updates belong to Resources.
+const SECURITY_GUIDE_PAGES = new Set(['/guide/production-safety/', '/guide/data-privacy/'])
+
+export const SEARCH_ROUTES: SearchRoute[] = navigationSections.flatMap((section) =>
+  section.groups.flatMap((group) =>
+    group.links
+      .filter((link) => !link.external && !/^https?:\/\//.test(link.href))
+      .map((link) => {
+        const href = link.href.split('#', 1)[0]
+        let routeGroup: SearchGroupId = section.id === 'updates' ? 'resources' : section.id === 'guide' ? 'guide' : section.id
+        if (href.startsWith('/security/') || SECURITY_GUIDE_PAGES.has(href)) routeGroup = 'security'
+        return { href, group: routeGroup }
+      }),
+  ),
+)
+
+function buildSearchPages(): Record<string, SearchPageInfo> {
+  const pages: Record<string, SearchPageInfo> = {}
+  const navDescriptions = new Map<string, string>()
+  for (const section of navigationSections) {
+    for (const group of section.groups) {
+      for (const link of group.links) {
+        const href = link.href.split('#', 1)[0]
+        if (!navDescriptions.has(href)) navDescriptions.set(href, link.description)
+      }
+    }
+  }
+
+  for (const entry of pageEntries) {
+    if (entry.url.includes('#')) continue
+    pages[entry.url] = { title: entry.title, description: navDescriptions.get(entry.url) }
+  }
+  for (const highlight of guideHighlights) {
+    pages[highlight.href] ??= { title: highlight.title, description: highlight.desc }
+  }
+  for (const [url, page] of Object.entries(GUIDE_CONTENT_PAGES)) {
+    pages[url] = { title: page.title, description: page.description || pages[url]?.description || navDescriptions.get(url) }
+  }
+  return pages
+}
+
+export const SEARCH_PAGES = buildSearchPages()
+
+export const SEARCH_PAYLOAD: SearchPayload = {
+  entries: SEARCH_INDEX,
+  pages: SEARCH_PAGES,
+  routes: SEARCH_ROUTES,
+}

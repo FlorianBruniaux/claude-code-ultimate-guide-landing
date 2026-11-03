@@ -1,147 +1,62 @@
 /**
- * Client-side search engine for the Cmd+K search modal
- * No external dependencies, pure TypeScript
+ * Cmd+K search modal: results grouped by site section, one row per page with
+ * its matching sections, a preview of the selected page, and category chips.
+ * The scoring and grouping live in search-model.ts; this file only renders.
  */
 
-export interface SearchEntry {
-  id: string
-  title: string
-  keywords: string
-  category: string
-  url: string
-  source: 'landing' | 'guide'
-}
+import {
+  buildSearchView,
+  cycleFilters,
+  groupLabel,
+  highlightParts,
+  isOffSite,
+  normalizePayload,
+} from './search-model.ts'
+import type { SearchEntry, SearchFilter, SearchPageHit, SearchPayload, SearchView } from './search-model.ts'
 
-/**
- * Score an entry against the query. Returns 0 if no match.
- * Higher = more relevant.
- */
-function score(entry: SearchEntry, query: string): number {
-  const q = query.toLowerCase().trim()
-  if (!q) return 0
+export { searchEntries } from './search-model.ts'
+export type { SearchEntry, SearchPayload } from './search-model.ts'
 
-  const title = entry.title.toLowerCase()
-  const keywords = entry.keywords.toLowerCase()
-  const category = entry.category.toLowerCase()
+const SVG_NS = 'http://www.w3.org/2000/svg'
+const PREVIEW_SECTIONS = 6
+const PREVIEW_RELATED = 3
+const ROW_SECTIONS = 3
 
-  // Exact title match
-  if (title === q) return 100
-
-  // Title starts with query
-  if (title.startsWith(q)) return 90
-
-  // Word boundary in title (regex, escaped)
-  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  try {
-    const wordBoundary = new RegExp(`\\b${escaped}`)
-    if (wordBoundary.test(title)) return 80
-  } catch (_) {}
-
-  // Title contains query
-  if (title.includes(q)) return 70
-
-  // Multi-word: all words present in title
-  const words = q.split(/\s+/).filter(Boolean)
-  if (words.length > 1) {
-    if (words.every(w => title.includes(w))) return 65
-    if (words.every(w => keywords.includes(w))) return 55
+function externalIcon(doc: Document): SVGSVGElement {
+  const svg = doc.createElementNS(SVG_NS, 'svg')
+  svg.setAttribute('class', 'search-external-icon')
+  svg.setAttribute('viewBox', '0 0 24 24')
+  svg.setAttribute('fill', 'none')
+  svg.setAttribute('stroke', 'currentColor')
+  svg.setAttribute('stroke-width', '2')
+  svg.setAttribute('width', '12')
+  svg.setAttribute('height', '12')
+  svg.setAttribute('aria-hidden', 'true')
+  for (const d of ['M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6', 'M15 3h6v6', 'M10 14L21 3']) {
+    const path = doc.createElementNS(SVG_NS, 'path')
+    path.setAttribute('d', d)
+    path.setAttribute('stroke-linecap', 'round')
+    path.setAttribute('stroke-linejoin', 'round')
+    svg.append(path)
   }
-
-  // Query in keywords
-  if (keywords.includes(q)) return 50
-
-  // Query in category
-  if (category.includes(q)) return 40
-
-  // Any single word hits
-  if (words.some(w => w.length > 2 && title.includes(w))) return 30
-  if (words.some(w => w.length > 2 && keywords.includes(w))) return 20
-
-  return 0
+  return svg
 }
 
-const isOffSite = (url: string): boolean => /^https?:\/\//.test(url)
+const pages = (n: number) => `${n} ${n === 1 ? 'page' : 'pages'}`
+const matches = (n: number) => `${n} ${n === 1 ? 'match' : 'matches'}`
 
-/**
- * Reorders matches toward the most readable destination: a dedicated landing
- * page first, then other landing entries (glossary, cheat sheet), then guide
- * pages rendered on this site, then raw files on GitHub. Applied only to an
- * entry that already matched, so it never turns a miss into a result.
- * The page bonus exceeds the exact-title gap (100 - 90) plus the landing
- * bonus, so "memory system" opens /memory-systems/ before the cheat sheet row.
- */
-function sourceBonus(entry: SearchEntry): number {
-  if (entry.source === 'landing') return entry.id.startsWith('page-') ? 20 : 5
-  return isOffSite(entry.url) ? -5 : 0
-}
-
-export function searchEntries(entries: SearchEntry[], query: string): SearchEntry[] {
-  if (!query.trim()) return []
-
-  return entries
-    .map(entry => {
-      const base = score(entry, query)
-      return { entry, s: base > 0 ? base + sourceBonus(entry) : 0 }
-    })
-    .filter(r => r.s > 0)
-    .sort((a, b) => b.s - a.s || a.entry.title.localeCompare(b.entry.title))
-    .slice(0, 15)
-    .map(r => r.entry)
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-}
-
-const EXTERNAL_ICON = `<svg class="search-external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true" style="flex-shrink:0;margin-left:4px;vertical-align:middle;opacity:0.6"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline stroke-linecap="round" stroke-linejoin="round" points="15 3 21 3 21 9"/><line stroke-linecap="round" stroke-linejoin="round" x1="10" y1="14" x2="21" y2="3"/></svg>`
-
-function renderEmpty(results: HTMLElement): void {
-  results.innerHTML = '<li class="search-no-results">Start typing to search…</li>'
-}
-
-function renderNoResults(results: HTMLElement, query: string): void {
-  results.innerHTML = `<li class="search-no-results">No results for "<strong>${escapeHtml(query)}</strong>"</li>`
-}
-
-function renderUnavailable(results: HTMLElement): void {
-  results.innerHTML = '<li class="search-no-results">Search is unavailable right now. Close and reopen search to try again.</li>'
-}
-
-function renderResults(results: HTMLElement, entries: SearchEntry[]): void {
-  results.innerHTML = entries
-    .map((entry, i) => {
-      const isGuide = entry.source === 'guide'
-      const badge = isGuide ? 'GUIDE' : 'SITE'
-      const badgeStyle = isGuide
-        ? 'background:var(--bg-tertiary);color:var(--text-muted);'
-        : 'background:var(--accent);color:#fff;'
-      const external = isOffSite(entry.url) ? EXTERNAL_ICON : ''
-
-      return `<li class="search-result-item"
-          role="option"
-          aria-selected="false"
-          data-index="${i}"
-          data-url="${escapeHtml(entry.url)}"
-          data-source="${entry.source}"
-          tabindex="-1">
-        <span class="search-result-type">
-          <span style="font-size:0.65rem;font-weight:700;padding:0.15rem 0.4rem;border-radius:4px;letter-spacing:0.05em;${badgeStyle}">${badge}</span>
-        </span>
-        <span class="search-result-title">${escapeHtml(entry.title)}${external}</span>
-        <span class="search-result-category">${escapeHtml(entry.category)}</span>
-      </li>`
-    })
-    .join('')
+function displayPath(url: string): string {
+  if (!isOffSite(url)) return url
+  return url.replace(/^https?:\/\/(www\.)?/, '').replace(/^github\.com\/FlorianBruniaux\/claude-code-ultimate-guide\/blob\/main\//, 'GitHub: ')
 }
 
 // The index is fetched on the first sign of search intent (open, hover or
 // focus of the trigger), not on every page load. A failed fetch is retried
 // on the next open, not on every keystroke.
-export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Document = document): void {
+export function initSearch(
+  loadIndex: () => Promise<SearchPayload | SearchEntry[]>,
+  doc: Document = document,
+): void {
   const modal = doc.getElementById('search-modal')
   const input = doc.getElementById('search-input') as HTMLInputElement | null
   const resultsList = doc.getElementById('search-results')
@@ -153,22 +68,54 @@ export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Docum
   const searchModal = modal
   const searchInput = input
   const searchResults = resultsList
+  const content = searchModal.querySelector<HTMLElement>('.search-modal-content')
+  const chips = doc.getElementById('search-chips')
+  const preview = doc.getElementById('search-preview')
+  const totals = doc.getElementById('search-totals')
+  const map = doc.getElementById('search-map')
+  const clear = doc.getElementById('search-clear')
 
-  let activeIndex = -1
   let debounceTimer: ReturnType<typeof setTimeout>
-  let currentResults: SearchEntry[] = []
-  let entries: SearchEntry[] | null = null
-  let pending: Promise<SearchEntry[] | null> | null = null
+  let payload: SearchPayload | null = null
+  let pending: Promise<SearchPayload | null> | null = null
   let loadFailed = false
+  let filter: SearchFilter = 'all'
+  let view: SearchView | null = null
+  let selected = -1
 
-  function ensureEntries(): Promise<SearchEntry[] | null> {
-    if (entries) return Promise.resolve(entries)
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, className?: string, text?: string): HTMLElementTagNameMap[K] {
+    const node = doc.createElement(tag)
+    if (className) node.className = className
+    if (text !== undefined) node.textContent = text
+    return node
+  }
+
+  function highlighted(text: string, tokens: string[]): DocumentFragment {
+    const fragment = doc.createDocumentFragment()
+    for (const part of highlightParts(text, tokens)) {
+      fragment.append(part.match ? el('mark', undefined, part.text) : doc.createTextNode(part.text))
+    }
+    return fragment
+  }
+
+  function link(url: string, className: string): HTMLAnchorElement {
+    const anchor = el('a', className)
+    anchor.href = url
+    if (isOffSite(url)) {
+      anchor.target = '_blank'
+      anchor.rel = 'noopener noreferrer'
+    }
+    return anchor
+  }
+
+  function ensurePayload(): Promise<SearchPayload | null> {
+    if (payload) return Promise.resolve(payload)
     if (loadFailed) return Promise.resolve(null)
     if (!pending) {
-      pending = loadEntries()
+      pending = loadIndex()
         .then((loaded) => {
-          entries = loaded
-          return loaded
+          payload = normalizePayload(loaded)
+          return payload
         })
         .catch((error) => {
           console.error('[search] Failed to load search index:', error)
@@ -180,140 +127,326 @@ export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Docum
     return pending
   }
 
-  // ── Modal lifecycle ─────────────────────────────────────────────────────────
+  // ── Layout state ──────────────────────────────────────────────────────────
+  function setState(state: 'map' | 'results' | 'message'): void {
+    content?.setAttribute('data-state', state)
+    if (map) map.hidden = state !== 'map'
+    if (chips) chips.hidden = state !== 'results'
+    if (preview) preview.hidden = state !== 'results'
+    if (clear) clear.hidden = !searchInput.value
+    if (state !== 'results') {
+      view = null
+      selected = -1
+      searchInput.removeAttribute('aria-activedescendant')
+      if (totals) totals.textContent = ''
+      chips?.replaceChildren()
+      preview?.replaceChildren()
+    }
+  }
+
+  function message(...parts: Array<string | Node>): void {
+    setState('message')
+    const box = el('div', 'search-no-results')
+    box.append(...parts)
+    searchResults.replaceChildren(box)
+  }
+
+  function sitemapLink(): HTMLAnchorElement {
+    const anchor = link('/sitemap/', 'search-inline-link')
+    anchor.textContent = 'Browse all pages →'
+    return anchor
+  }
+
+  function renderEmpty(): void {
+    if (map) {
+      setState('map')
+      searchResults.replaceChildren()
+    } else {
+      message('Start typing to search…')
+    }
+  }
+
+  // ── Results ───────────────────────────────────────────────────────────────
+  function renderChips(current: SearchView): void {
+    if (!chips) return
+    chips.replaceChildren()
+    for (const id of cycleFilters(current.counts)) {
+      const chip = el('button', 'search-chip')
+      chip.type = 'button'
+      chip.setAttribute('aria-pressed', String(id === filter))
+      chip.append(el('span', undefined, groupLabel(id)), el('span', 'search-chip-count', String(current.counts[id])))
+      chip.addEventListener('click', () => {
+        filter = id
+        render()
+        searchInput.focus()
+      })
+      chips.append(chip)
+    }
+  }
+
+  function renderRow(hit: SearchPageHit, index: number, tokens: string[]): HTMLElement {
+    const row = el('div', 'search-result-item')
+    row.id = `search-option-${index}`
+    row.setAttribute('role', 'option')
+    row.setAttribute('aria-selected', 'false')
+    row.dataset.index = String(index)
+    row.dataset.url = hit.url
+    row.dataset.source = hit.offSite ? 'github' : 'site'
+
+    const main = el('div', 'search-result-main')
+    const text = el('span', 'search-result-text')
+    const title = el('span', 'search-result-title')
+    title.append(highlighted(hit.title, tokens))
+    if (hit.offSite) title.append(externalIcon(doc))
+    text.append(title)
+    if (hit.description) text.append(el('span', 'search-result-desc', hit.description))
+    main.append(el('span', 'search-result-badge', hit.badge), text, el('span', 'search-result-category', hit.category))
+    row.append(main)
+
+    if (hit.sections.length) {
+      const list = el('div', 'search-result-sections')
+      for (const section of hit.sections.slice(0, ROW_SECTIONS)) {
+        const item = el('span', 'search-result-section')
+        item.dataset.url = section.url
+        item.append(highlighted(section.title, tokens))
+        item.addEventListener('click', (event) => {
+          event.stopPropagation()
+          navigate(section.url)
+        })
+        list.append(item)
+      }
+      const extra = hit.sections.length - ROW_SECTIONS
+      if (extra > 0) list.append(el('span', 'search-result-more', `+${extra} ${extra === 1 ? 'section' : 'sections'}`))
+      row.append(list)
+    }
+
+    row.addEventListener('click', () => navigate(hit.url))
+    row.addEventListener('mousemove', () => {
+      if (selected !== index) select(index, false)
+    })
+    return row
+  }
+
+  function renderResults(current: SearchView): void {
+    setState('results')
+    view = current
+    if (totals) totals.textContent = `${pages(current.totalPages)} · ${matches(current.totalMatches)}`
+    renderChips(current)
+
+    if (!current.groups.length) {
+      const box = el('div', 'search-no-results')
+      box.append(`No match for “${current.query}” in ${groupLabel(filter)}. `)
+      const back = el('button', 'search-inline-link', 'Back to All')
+      back.type = 'button'
+      back.addEventListener('click', () => {
+        filter = 'all'
+        render()
+        searchInput.focus()
+      })
+      box.append(back)
+      searchResults.replaceChildren(box)
+      preview?.replaceChildren()
+      return
+    }
+
+    const fragment = doc.createDocumentFragment()
+    let index = 0
+    for (const group of current.groups) {
+      const box = el('section', 'search-group')
+      box.dataset.group = group.id
+      box.setAttribute('role', 'group')
+      const head = el('div', 'search-group-head')
+      const label = el('span', 'search-group-label', group.label)
+      label.id = `search-group-${group.id}`
+      box.setAttribute('aria-labelledby', label.id)
+      head.append(label, el('span', 'search-group-sum', `${pages(group.pageCount)} · ${matches(group.matchCount)}`))
+      const rows = el('div', 'search-group-rows')
+      for (const hit of group.pages) rows.append(renderRow(hit, index++, current.tokens))
+      box.append(head, rows)
+      if (group.hidden > 0 && group.id !== 'best') {
+        const more = el('button', 'search-see-all', `See all ${group.pageCount} results in ${group.label} →`)
+        more.type = 'button'
+        const target = group.id
+        more.addEventListener('click', () => {
+          filter = target
+          render()
+          searchInput.focus()
+        })
+        box.append(more)
+      }
+      fragment.append(box)
+    }
+    searchResults.replaceChildren(fragment)
+    searchResults.scrollTop = 0
+    select(0, false)
+  }
+
+  function renderPreview(hit: SearchPageHit | undefined): void {
+    if (!preview) return
+    preview.replaceChildren()
+    if (!hit || !view) return
+
+    const head = el('div', 'search-preview-head')
+    head.append(
+      el('span', 'search-preview-kicker', `${groupLabel(hit.group)} · ${hit.category}`),
+      el('h2', 'search-preview-title', hit.title),
+      el('span', 'search-preview-path', displayPath(hit.key)),
+    )
+    preview.append(head)
+
+    if (hit.description) {
+      const recap = el('div', 'search-preview-block')
+      recap.append(el('span', 'search-preview-label', 'In short'), el('p', 'search-preview-recap', hit.description))
+      preview.append(recap)
+    }
+
+    const facts = el('div', 'search-preview-facts')
+    facts.append(el('span', 'search-preview-fact', matches(hit.matches)))
+    if (hit.sections.length) facts.append(el('span', 'search-preview-fact', `${hit.sections.length} ${hit.sections.length === 1 ? 'section' : 'sections'}`))
+    facts.append(el('span', 'search-preview-fact', hit.offSite ? 'Opens on GitHub' : 'On this site'))
+    preview.append(facts)
+
+    if (hit.sections.length) {
+      const block = el('div', 'search-preview-block')
+      block.append(el('span', 'search-preview-label', 'Matching sections'))
+      for (const section of hit.sections.slice(0, PREVIEW_SECTIONS)) {
+        const anchor = link(section.url, 'search-preview-section')
+        anchor.append(highlighted(section.title, view.tokens))
+        block.append(anchor)
+      }
+      const extra = hit.sections.length - PREVIEW_SECTIONS
+      if (extra > 0) block.append(el('span', 'search-result-more', `+${extra} more`))
+      preview.append(block)
+    }
+
+    const related = view.rows.filter((row) => row.group === hit.group && row.key !== hit.key).slice(0, PREVIEW_RELATED)
+    if (related.length) {
+      const block = el('div', 'search-preview-block')
+      block.append(el('span', 'search-preview-label', `Also in ${groupLabel(hit.group)}`))
+      for (const row of related) {
+        const anchor = link(row.url, 'search-preview-related')
+        anchor.textContent = row.title
+        block.append(anchor)
+      }
+      preview.append(block)
+    }
+
+    const open = link(hit.url, 'search-preview-open')
+    open.textContent = hit.offSite ? 'Open on GitHub ↵' : 'Open page ↵'
+    preview.append(open)
+  }
+
+  function rowElements(): HTMLElement[] {
+    return [...searchResults.querySelectorAll<HTMLElement>('.search-result-item')]
+  }
+
+  function select(index: number, scroll = true): void {
+    const rows = rowElements()
+    if (!rows.length || !view) return
+    selected = Math.max(0, Math.min(index, rows.length - 1))
+    rows.forEach((row, i) => {
+      const active = i === selected
+      row.setAttribute('aria-selected', String(active))
+      if (active && scroll) row.scrollIntoView?.({ block: 'nearest' })
+    })
+    searchInput.setAttribute('aria-activedescendant', rows[selected].id)
+    renderPreview(view.rows[selected])
+  }
+
+  // ── Search & render ───────────────────────────────────────────────────────
+  function render(): void {
+    const query = searchInput.value.trim()
+    if (!query) {
+      renderEmpty()
+      return
+    }
+
+    if (!payload) {
+      if (loadFailed) {
+        message('Search is unavailable right now. Close and reopen search to try again.')
+        return
+      }
+      message('Loading the search index…')
+      void ensurePayload().then((loaded) => {
+        if (loaded) render()
+        else message('Search is unavailable right now. Close and reopen search to try again.')
+      })
+      return
+    }
+
+    const current = buildSearchView(payload, query, filter)
+    if (current.totalPages === 0) {
+      message(`No results for “${query}”. `, sitemapLink())
+      return
+    }
+    renderResults(current)
+  }
+
+  // ── Modal lifecycle ───────────────────────────────────────────────────────
   function openModal(): void {
     loadFailed = false
-    void ensureEntries().then(() => {
-      if (!searchModal.hasAttribute('hidden') && searchInput.value.trim()) runSearch(searchInput.value.trim())
+    void ensurePayload().then(() => {
+      if (!searchModal.hasAttribute('hidden') && searchInput.value.trim()) render()
     })
     searchModal.removeAttribute('hidden')
     searchModal.setAttribute('aria-hidden', 'false')
     searchInput.value = ''
+    filter = 'all'
+    renderEmpty()
     searchInput.focus()
-    activeIndex = -1
-    currentResults = []
-    renderEmpty(searchResults)
-    document.body.style.overflow = 'hidden'
+    doc.body.style.overflow = 'hidden'
   }
 
   function closeModal(): void {
     searchModal.setAttribute('hidden', '')
     searchModal.setAttribute('aria-hidden', 'true')
-    document.body.style.overflow = ''
-    activeIndex = -1
+    doc.body.style.overflow = ''
   }
 
-  // ── Active item management ──────────────────────────────────────────────────
-  function setActive(index: number): void {
-    const items = searchResults.querySelectorAll<HTMLLIElement>('.search-result-item')
-    if (items.length === 0) return
-
-    const clampedIndex = Math.max(-1, Math.min(index, items.length - 1))
-
-    items.forEach((item, i) => {
-      const isActive = i === clampedIndex
-      item.setAttribute('aria-selected', String(isActive))
-      if (isActive) {
-        item.scrollIntoView({ block: 'nearest' })
-      }
-    })
-
-    activeIndex = clampedIndex
-  }
-
-  // ── Navigation ──────────────────────────────────────────────────────────────
-  function navigate(item: HTMLElement): void {
-    const url = item.dataset.url
+  function navigate(url: string | undefined): void {
     if (!url) return
-
     closeModal()
-
-    if (isOffSite(url)) {
-      window.open(url, '_blank', 'noopener,noreferrer')
-    } else {
-      window.location.href = url
-    }
+    const win = doc.defaultView
+    if (!win) return
+    if (isOffSite(url)) win.open(url, '_blank', 'noopener,noreferrer')
+    else win.location.href = url
   }
 
-  // ── Attach result click handlers ────────────────────────────────────────────
-  function attachResultHandlers(): void {
-    searchResults.querySelectorAll<HTMLLIElement>('.search-result-item').forEach(item => {
-      item.addEventListener('click', () => navigate(item))
-      item.addEventListener('mouseenter', () => {
-        const index = parseInt(item.dataset.index ?? '-1', 10)
-        if (index >= 0) setActive(index)
-      })
-    })
-  }
-
-  // ── Search & render ─────────────────────────────────────────────────────────
-  function runSearch(query: string): void {
-    activeIndex = -1
-    currentResults = []
-
-    if (!query.trim()) {
-      renderEmpty(searchResults)
-      return
-    }
-
-    if (!entries) {
-      if (loadFailed) {
-        renderUnavailable(searchResults)
-        return
-      }
-      void ensureEntries().then((loaded) => {
-        if (loaded) runSearch(searchInput.value.trim())
-        else renderUnavailable(searchResults)
-      })
-      return
-    }
-
-    const found = searchEntries(entries, query)
-    if (found.length === 0) {
-      renderNoResults(searchResults, query)
-    } else {
-      currentResults = found
-      renderResults(searchResults, found)
-      attachResultHandlers()
-    }
-  }
-
-  // ── Input handler (debounced) ───────────────────────────────────────────────
+  // ── Input & keyboard ──────────────────────────────────────────────────────
   searchInput.addEventListener('input', () => {
     clearTimeout(debounceTimer)
-    debounceTimer = setTimeout(() => runSearch(searchInput.value.trim()), 50)
+    filter = 'all'
+    if (clear) clear.hidden = !searchInput.value
+    debounceTimer = setTimeout(render, 50)
   })
 
-  // ── Keyboard navigation ─────────────────────────────────────────────────────
   searchInput.addEventListener('keydown', (e: KeyboardEvent) => {
-    const items = searchResults.querySelectorAll<HTMLLIElement>('.search-result-item')
-
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault()
-        setActive(activeIndex + 1)
+        select(selected + 1)
         break
-
       case 'ArrowUp':
         e.preventDefault()
-        if (activeIndex <= 0) {
-          // Move focus back to input
-          items.forEach(item => item.setAttribute('aria-selected', 'false'))
-          activeIndex = -1
-        } else {
-          setActive(activeIndex - 1)
-        }
+        select(selected - 1)
         break
-
-      case 'Enter':
+      case 'Enter': {
         e.preventDefault()
-        if (activeIndex >= 0 && items[activeIndex]) {
-          navigate(items[activeIndex])
-        } else if (items.length > 0) {
-          navigate(items[0])
-        }
+        const hit = view?.rows[Math.max(selected, 0)]
+        if (hit) navigate(hit.url)
         break
-
+      }
+      case 'Tab': {
+        if (!view) break
+        const filters = cycleFilters(view.counts)
+        if (filters.length < 2) break
+        e.preventDefault()
+        const step = e.shiftKey ? -1 : 1
+        const at = Math.max(0, filters.indexOf(filter))
+        filter = filters[(at + step + filters.length) % filters.length]
+        render()
+        break
+      }
       case 'Escape':
         e.preventDefault()
         closeModal()
@@ -321,25 +454,34 @@ export function initSearch(loadEntries: () => Promise<SearchEntry[]>, doc: Docum
     }
   })
 
-  // ── Close on backdrop click ─────────────────────────────────────────────────
+  clear?.addEventListener('click', () => {
+    searchInput.value = ''
+    filter = 'all'
+    renderEmpty()
+    searchInput.focus()
+  })
+
+  // A preview or map link may point at the current page: close either way.
+  preview?.addEventListener('click', (e) => {
+    if ((e.target as Element | null)?.closest?.('a')) closeModal()
+  })
+  map?.addEventListener('click', (e) => {
+    if ((e.target as Element | null)?.closest?.('a')) closeModal()
+  })
+
   backdrop?.addEventListener('click', closeModal)
 
-  // ── Global keyboard shortcut ────────────────────────────────────────────────
   doc.addEventListener('keydown', (e: KeyboardEvent) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault()
       searchModal.hasAttribute('hidden') ? openModal() : closeModal()
     }
-    if (e.key === 'Escape' && !searchModal.hasAttribute('hidden')) {
-      closeModal()
-    }
+    if (e.key === 'Escape' && !searchModal.hasAttribute('hidden')) closeModal()
   })
 
-  // ── Trigger button ──────────────────────────────────────────────────────────
   trigger?.addEventListener('click', () => openModal())
-  trigger?.addEventListener('pointerenter', () => { void ensureEntries() }, { once: true })
-  trigger?.addEventListener('focus', () => { void ensureEntries() }, { once: true })
+  trigger?.addEventListener('pointerenter', () => { void ensurePayload() }, { once: true })
+  trigger?.addEventListener('focus', () => { void ensurePayload() }, { once: true })
 
-  // ── Initial state ───────────────────────────────────────────────────────────
-  renderEmpty(searchResults)
+  renderEmpty()
 }

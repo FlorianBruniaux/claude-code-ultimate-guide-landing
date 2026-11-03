@@ -1,6 +1,45 @@
 ---
 // Search index is served as a separate cacheable asset (/search-index.json)
-// instead of being inlined into every page (~940 KB per page otherwise).
+// instead of being inlined into every page (~1.3 MB per page otherwise).
+// The empty state is a map of the site, rendered at build time from the
+// header navigation so it never drifts from the menu.
+import { guideNavigationSection, navigationSections } from '../../data/header-navigation'
+import type { HeaderNavigationLink } from '../../data/header-navigation'
+
+interface MapCard {
+  id: string
+  label: string
+  description: string
+  links: HeaderNavigationLink[]
+  total: number
+  href: string
+}
+
+const MAP_LINKS = 4
+const SECURITY_GUIDE_PAGES = new Set(['/guide/production-safety/', '/guide/data-privacy/'])
+const isSecurity = (link: HeaderNavigationLink) => link.href.startsWith('/security/') || SECURITY_GUIDE_PAGES.has(link.href)
+const internal = (link: HeaderNavigationLink) => !link.external
+
+const sectionLinks = (id: string) =>
+  navigationSections.find((section) => section.id === id)?.groups.flatMap((group) => group.links).filter(internal) ?? []
+
+function card(id: string, label: string, description: string, links: HeaderNavigationLink[], href = '/sitemap/'): MapCard {
+  return { id, label, description, links: links.slice(0, MAP_LINKS), total: links.length, href }
+}
+
+const describe = (id: string) => navigationSections.find((section) => section.id === id)?.description ?? ''
+const securityLinks = navigationSections.flatMap((section) => section.groups.flatMap((group) => group.links)).filter(isSecurity)
+const guideLinks = guideNavigationSection.groups.flatMap((group) => group.links)
+
+const mapCards: MapCard[] = [
+  card('start', 'Start', describe('start'), sectionLinks('start')),
+  card('build', 'Build', describe('build'), sectionLinks('build')),
+  card('scale', 'Scale', describe('scale'), sectionLinks('scale').filter((link) => !isSecurity(link))),
+  card('security', 'Security', 'Threats, CVEs, hardening and the guardrails for agents in production.', securityLinks, '/security/'),
+  card('resources', 'Resources', describe('resources'), sectionLinks('resources')),
+  card('guide', 'Guide', guideNavigationSection.description, guideLinks, guideNavigationSection.overview.href),
+]
+const whatsNew = sectionLinks('updates')
 ---
 
 <!-- Search Modal -->
@@ -13,12 +52,9 @@
   aria-hidden="true"
   hidden
 >
-  <!-- Backdrop -->
   <div id="search-backdrop" class="search-modal-backdrop" aria-hidden="true"></div>
 
-  <!-- Modal content -->
-  <div class="search-modal-content" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="search-results">
-    <!-- Input row -->
+  <div class="search-modal-content" data-state="map">
     <div class="search-input-wrapper">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <circle cx="11" cy="11" r="8" />
@@ -27,70 +63,76 @@
       <input
         id="search-input"
         type="search"
-        placeholder="Search pages, examples, commands, guide…"
+        placeholder="Search pages, guide chapters, templates, security…"
         autocomplete="off"
         autocorrect="off"
         autocapitalize="off"
         spellcheck="false"
-        role="searchbox"
-        aria-label="Search"
+        role="combobox"
+        aria-label="Search the site"
         aria-autocomplete="list"
+        aria-expanded="true"
         aria-controls="search-results"
       />
+      <span id="search-totals" class="search-totals" aria-live="polite"></span>
+      <button id="search-clear" type="button" class="search-clear" aria-label="Clear search" hidden>Clear</button>
       <kbd class="search-kbd" aria-label="Press Escape to close">Esc</kbd>
     </div>
 
-    <!-- Results list -->
-    <ul
-      id="search-results"
-      class="search-results"
-      role="listbox"
-      aria-label="Search results"
-      aria-live="polite"
-    >
-      <li class="search-no-results">Start typing to search…</li>
-    </ul>
+    <div id="search-chips" class="search-chips" role="toolbar" aria-label="Filter results by section" hidden></div>
 
-    <!-- Footer hint -->
+    <div class="search-body">
+      <div id="search-results" class="search-results" role="listbox" aria-label="Search results"></div>
+      <aside id="search-preview" class="search-preview" aria-label="Selected result" hidden></aside>
+
+      <nav id="search-map" class="search-map" aria-label="Map of the site">
+        {mapCards.map((item) => (
+          <section class:list={['search-map-card', { 'is-security': item.id === 'security' }]}>
+            <div class="search-map-head">
+              <h3>{item.label}</h3>
+              <span class="search-map-count">{item.total} pages</span>
+            </div>
+            <p class="search-map-desc">{item.description}</p>
+            <div class="search-map-links">
+              {item.links.map((link) => (
+                <a class="search-map-link" href={link.href}>
+                  <strong>{link.label}</strong>
+                  <span>{link.description}</span>
+                </a>
+              ))}
+            </div>
+            <a class="search-map-all" href={item.href}>
+              {item.id === 'security' ? 'Open the security hub →' : item.id === 'guide' ? 'Browse the complete guide →' : `All ${item.total} pages in ${item.label} →`}
+            </a>
+          </section>
+        ))}
+        <section class="search-map-strip" aria-label="What's new">
+          <span class="search-map-strip-label">What's new</span>
+          {whatsNew.map((link) => <a class="search-map-strip-link" href={link.href}>{link.label}</a>)}
+          <span class="search-map-strip-spacer"></span>
+          <a class="search-map-strip-link is-strong" href="/sitemap/">Browse all pages →</a>
+        </section>
+      </nav>
+    </div>
+
     <div class="search-footer" aria-hidden="true">
       <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
       <span><kbd>↵</kbd> open</span>
+      <span><kbd>Tab</kbd> next section</span>
       <span><kbd>Esc</kbd> close</span>
     </div>
   </div>
 </div>
 
-<!-- Client bootstrap -->
 <script>
   import { initSearch } from '../../scripts/search.ts'
-  import type { SearchEntry } from '../../scripts/search.ts'
+  import type { SearchPayload } from '../../scripts/search.ts'
 
   // Fetched on first search intent only, so pages do not pay for the index.
   initSearch(() =>
     fetch('/search-index.json').then(r => {
       if (!r.ok) throw new Error(`HTTP ${r.status}`)
-      return r.json() as Promise<SearchEntry[]>
+      return r.json() as Promise<SearchPayload>
     }),
   )
 </script>
-
-<style>
-  .search-footer {
-    display: flex;
-    gap: 1.25rem;
-    padding: 0.6rem 1rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  .search-footer kbd {
-    font-size: 0.65rem;
-    padding: 0.1rem 0.35rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    margin-right: 2px;
-    font-family: inherit;
-  }
-</style>
