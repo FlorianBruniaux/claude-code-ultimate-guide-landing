@@ -1,0 +1,31 @@
+CHANGELOG.md
+  s_a19513ccf22e00::t_b9077e85dc248e 7-8
+src/scripts/search.ts
+  s_f14159e3bfdc3d::t_384e739ad523b4 70-71,74
+src/scripts/search.test.ts
+  s_a19513ccf22e00::t_9389ce3f17eb9f 157-165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4dd28d1690777a30fafc6479226cf02d562aa9df",
+  "prompts": {},
+  "sessions": {
+    "s_a19513ccf22e00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "204b03e9-2b1f-4894-a4f0-9e7f6979173f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f14159e3bfdc3d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1261f-7516-70e1-b57c-5d4d56724919",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
