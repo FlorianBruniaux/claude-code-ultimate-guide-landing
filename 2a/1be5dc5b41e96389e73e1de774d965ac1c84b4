@@ -1,0 +1,75 @@
+src/components/ecosystem/EcosystemProjectStrip.astro
+  s_f9a033e45af8a3::t_45b488764f7a91 16-17,20,24-43,45,52-55,59,61,64-67,69-73,75-76,78-79,82-84,87-90,95,105-107
+src/components/global/Footer.astro
+  s_b8856734d9cecd::t_4c82eddca1274c 2-4,11-12,15-16,18-19,22,27,33-34,36-37,41,44,46-47,50,53-56,128-147,211-224
+src/components/global/Header.astro
+  s_b8856734d9cecd::t_21b8d4a93d6a04 6,8,10-11,14,19,21-23,27-36,66-81,83-126,130,133,140-185,222-226,466-475,622-624,631,638-641,643-646,648,651,655-657,662,667-686,744-747,823-826,828,832-837,842-867,877,879-880,884,892-895,898,900-907,913,916-929,932-933,936-938,941-945,949-957,961,967-968,973-975,981-986,991-992,994,997-1028,1050-1087
+src/components/global/SearchModal.astro
+  s_b8856734d9cecd::t_a7749e2eed77ee 6-12,25,27-33,36-38,41-49,51-54
+src/components/global/header-layout.test.ts
+  s_2c4b8634291107::t_14d061c2c9e83b 87-104
+src/data/ecosystem-discovery.test.ts
+  s_b8856734d9cecd::t_d40488d959011d 51,56-68
+src/data/footer-ecosystem.test.ts
+  s_b8856734d9cecd::t_a16c2a4eb48205 1-34
+src/data/footer-ecosystem.ts
+  s_2e9ca0d5560653::t_4589211b0690d2 1-23
+src/data/guide-changelog.test.ts
+  s_b8856734d9cecd::t_7a808613701e2f 36-37
+src/data/header-navigation.test.ts
+  s_b8856734d9cecd::t_c1707fae9d26af 4-23,29,32,36-37,40-42,45-47,55-56,58-59,61-62,64-67,71-73,75-76,79,81-84,86-95,97-104,106-121,124,126-128,134,140
+src/data/header-navigation.ts
+  s_f9a033e45af8a3::t_21629c46fcc32f 2,17-24,26,33,35,62-101,107-112,130-135,157-160,162,168-173,194-218,224-229,235,238,242,249,256-259,261,265-271,273-274,277-300,308-312,314-315,318-326,329-330
+src/data/mcp-discovery.test.ts
+  s_b8856734d9cecd::t_adcbc69038b0ac 61
+src/data/personal-projects.generated.ts
+  s_b8856734d9cecd::t_4cc736722d6fdc 57,64,66,68
+src/data/search-index.ts
+  s_b8856734d9cecd::t_00d9710d649aee 11,825-826,828-830,837-839
+src/pages/index.astro
+  s_b8856734d9cecd::t_6d674954ac538e 93
+src/scripts/search-model.test.ts
+  s_b8856734d9cecd::t_62de3c7aab3369 7,133-135,141-142
+src/styles/components.css
+  s_b8856734d9cecd::t_c7074af617a8bb 584-585,590-595,599-601,1199-1200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2a1be5dc5b41e96389e73e1de774d965ac1c84b4",
+  "prompts": {},
+  "sessions": {
+    "s_2c4b8634291107": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9d74ae-39ae-4425-a7eb-691eca9b23c3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_2e9ca0d5560653": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff5faa5e-0006-4c12-83cb-c362dfd2ef9b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_b8856734d9cecd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6fadf8cc-5bdc-4e98-8b22-621922e0cbd4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_f9a033e45af8a3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "646e61bd-cc92-4b20-9bca-04c66dbfea2c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
