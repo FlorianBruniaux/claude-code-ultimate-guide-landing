@@ -68,6 +68,24 @@ export const PERSONAL_PROJECTS = [
     "featured": true
   },
   {
+    "id": "agent-router-core",
+    "icon": "📦",
+    "title": "Agent Router core",
+    "description": "Public source snapshot of the Agent Router routing CLI, buildable offline without host features.",
+    "useWhen": "You want to build the provider-neutral Rust routing CLI from a fixed snapshot with its distribution inventory, SBOM and licence records. Published on 2026-10-22 and not synchronized with the Agent Router repository.",
+    "format": "Rust source",
+    "tags": [
+      "Model Routing",
+      "Supply Chain",
+      "Rust"
+    ],
+    "href": "https://github.com/FlorianBruniaux/agent-router-core",
+    "github": "https://github.com/FlorianBruniaux/agent-router-core",
+    "website": null,
+    "route": "build-run",
+    "featured": false
+  },
+  {
     "id": "claude-code-plugins",
     "icon": "📦",
     "title": "claude-code-plugins",

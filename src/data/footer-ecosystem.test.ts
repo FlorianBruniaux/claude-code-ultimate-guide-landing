@@ -5,9 +5,9 @@ test('the footer Ecosystem column lists every project of the manifest except thi
   const { PERSONAL_PROJECTS } = await import('./personal-projects.generated.ts')
   const { getFooterEcosystemProjects } = await import('./footer-ecosystem.ts')
   const listed = getFooterEcosystemProjects().map((project) => project.id)
-  const expected = PERSONAL_PROJECTS.map((project) => project.id).filter((id) => id !== 'claude-code-guide')
+  const expected: string[] = PERSONAL_PROJECTS.map((project) => project.id).filter((id) => id !== 'claude-code-guide')
 
-  for (const id of ['agent-router', 'claude-code-plugins', 'wt-sweep', 'agentsec-triage', 'paper-insights']) {
+  for (const id of ['agent-router', 'agent-router-core', 'claude-code-plugins', 'wt-sweep', 'agentsec-triage', 'paper-insights']) {
     assert.ok(listed.includes(id), `${id} is in the footer`)
   }
   assert.deepEqual(listed, expected)
