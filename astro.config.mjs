@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
 import { remarkGuideLinks } from './plugins/remark-guide-links.mjs'
+import { remarkHeadingIds } from './plugins/remark-heading-ids.mjs'
 import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
 import { readGuideLastmods } from './src/data/guide-lastmod.mjs'
@@ -173,6 +174,7 @@ export default defineConfig({
         PageTitle: './src/components/starlight/PageTitle.astro',
         MobileMenuToggle: './src/components/starlight/MobileMenuToggle.astro',
         MobileTableOfContents: './src/components/starlight/MobileTableOfContents.astro',
+        TableOfContents: './src/components/starlight/TableOfContents.astro',
       },
       head: [
         {
@@ -295,7 +297,7 @@ export default defineConfig({
   ],
 
   markdown: {
-    remarkPlugins: [remarkGuideLinks],
+    remarkPlugins: [remarkGuideLinks, remarkHeadingIds],
     shikiConfig: {
       themes: {
         light: 'github-light',

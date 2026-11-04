@@ -1,0 +1,250 @@
+---
+/**
+ * Desktop "On this page" panel (Starlight TableOfContents override).
+ *
+ * Adds what the stock panel lacks on long guide chapters:
+ * - the whole panel folds into a slim rail, and the article takes the room;
+ * - only the current section's subsections are listed, with a toggle for all;
+ * - a reading progress bar and a highlighted current heading.
+ * Both choices persist per browser in localStorage.
+ */
+interface TocItem {
+  text: string
+  slug: string
+  depth: number
+  children: TocItem[]
+}
+
+const { toc } = Astro.locals.starlightRoute
+const label = Astro.locals.t('tableOfContents.onThisPage')
+const items = (toc?.items ?? []) as TocItem[]
+const hasSubsections = items.some((item) => item.children.length > 0)
+---
+
+{
+  toc && (
+    <>
+      <script is:inline>
+        ;(function () {
+          try {
+            if (localStorage.getItem('guide-toc-collapsed') === '1') {
+              document.documentElement.setAttribute('data-toc-collapsed', '')
+            }
+          } catch (e) {}
+        })()
+      </script>
+      <guide-toc class="guide-toc" data-outline="focus">
+        <nav class="guide-toc-panel" aria-labelledby="starlight__on-this-page">
+          <header class="guide-toc-header">
+            <div class="guide-toc-title-row">
+              <h2 id="starlight__on-this-page">{label}</h2>
+              <div class="guide-toc-actions">
+                {hasSubsections && (
+                  <button
+                    type="button"
+                    class="guide-toc-icon-btn"
+                    data-toc-outline-toggle
+                    aria-pressed="false"
+                    aria-label="Show every subsection"
+                    title="Show every subsection"
+                  >
+                    <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+                      <path d="M4 5h12M7 10h9M7 15h9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7" />
+                    </svg>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  class="guide-toc-icon-btn"
+                  data-toc-collapse
+                  aria-label="Hide page contents"
+                  title="Hide page contents"
+                >
+                  <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+                    <path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="guide-toc-progress" aria-hidden="true">
+              <span class="guide-toc-progress-bar"><span class="guide-toc-progress-fill"></span></span>
+              <span class="guide-toc-progress-label">0%</span>
+            </div>
+          </header>
+
+          <div class="guide-toc-scroll">
+            <ul class="guide-toc-list">
+              {items.map((item) => (
+                <li class:list={['guide-toc-item', { 'has-children': item.children.length > 0 }]}>
+                  <a href={`#${item.slug}`} class="guide-toc-link guide-toc-link-top">
+                    <span>{item.text}</span>
+                  </a>
+                  {item.children.length > 0 && (
+                    <ul class="guide-toc-sublist">
+                      {item.children.map((child) => (
+                        <li>
+                          <a href={`#${child.slug}`} class="guide-toc-link guide-toc-link-sub">
+                            <span>{child.text}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+
+        <div class="guide-toc-rail">
+          <button
+            type="button"
+            class="guide-toc-icon-btn guide-toc-expand"
+            data-toc-expand
+            aria-label="Show page contents"
+            title="Show page contents"
+          >
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+              <path d="M4 5h12M4 10h12M4 15h8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7" />
+            </svg>
+          </button>
+          <span class="guide-toc-rail-track" aria-hidden="true"><span class="guide-toc-rail-fill"></span></span>
+        </div>
+      </guide-toc>
+    </>
+  )
+}
+
+<script>
+  const COLLAPSED_KEY = 'guide-toc-collapsed'
+  const OUTLINE_KEY = 'guide-toc-outline'
+
+  function store(key: string, value: string | null) {
+    try {
+      if (value === null) localStorage.removeItem(key)
+      else localStorage.setItem(key, value)
+    } catch {}
+  }
+
+  function read(key: string): string | null {
+    try {
+      return localStorage.getItem(key)
+    } catch {
+      return null
+    }
+  }
+
+  class GuideToc extends HTMLElement {
+    private links: HTMLAnchorElement[] = []
+    private headings: Array<{ link: HTMLAnchorElement; heading: HTMLElement }> = []
+    private scroller: HTMLElement | null = null
+    private frame = 0
+    private current: HTMLAnchorElement | null = null
+
+    connectedCallback() {
+      this.scroller = this.querySelector<HTMLElement>('.guide-toc-scroll')
+      this.links = Array.from(this.querySelectorAll<HTMLAnchorElement>('.guide-toc-link'))
+      this.headings = this.links.flatMap((link) => {
+        const heading = document.getElementById(decodeURIComponent(link.hash.slice(1)))
+        return heading ? [{ link, heading }] : []
+      })
+
+      if (read(OUTLINE_KEY) === 'all') this.setOutline('all', false)
+
+      this.querySelector('[data-toc-outline-toggle]')?.addEventListener('click', this.toggleOutline)
+      this.querySelector('[data-toc-collapse]')?.addEventListener('click', this.collapse)
+      this.querySelector('[data-toc-expand]')?.addEventListener('click', this.expand)
+      window.addEventListener('scroll', this.schedule, { passive: true })
+      window.addEventListener('resize', this.schedule)
+      this.update()
+    }
+
+    disconnectedCallback() {
+      window.removeEventListener('scroll', this.schedule)
+      window.removeEventListener('resize', this.schedule)
+      cancelAnimationFrame(this.frame)
+    }
+
+    private setOutline(mode: 'focus' | 'all', persist = true) {
+      this.dataset.outline = mode
+      const button = this.querySelector<HTMLButtonElement>('[data-toc-outline-toggle]')
+      if (button) {
+        const all = mode === 'all'
+        const text = all ? 'Show the current section only' : 'Show every subsection'
+        button.setAttribute('aria-pressed', String(all))
+        button.setAttribute('aria-label', text)
+        button.title = text
+      }
+      if (persist) store(OUTLINE_KEY, mode === 'all' ? 'all' : null)
+    }
+
+    private toggleOutline = () => {
+      this.setOutline(this.dataset.outline === 'all' ? 'focus' : 'all')
+      this.revealCurrent()
+    }
+
+    private collapse = () => {
+      document.documentElement.setAttribute('data-toc-collapsed', '')
+      store(COLLAPSED_KEY, '1')
+      this.querySelector<HTMLButtonElement>('[data-toc-expand]')?.focus()
+    }
+
+    private expand = () => {
+      document.documentElement.removeAttribute('data-toc-collapsed')
+      store(COLLAPSED_KEY, null)
+      this.querySelector<HTMLButtonElement>('[data-toc-collapse]')?.focus()
+      requestAnimationFrame(() => this.revealCurrent())
+    }
+
+    private schedule = () => {
+      cancelAnimationFrame(this.frame)
+      this.frame = requestAnimationFrame(() => this.update())
+    }
+
+    private update() {
+      this.updateProgress()
+      if (this.headings.length === 0) return
+
+      const navHeight = document.querySelector<HTMLElement>('.site-header, .page > .header')?.offsetHeight ?? 0
+      const threshold = navHeight + 32
+      let next = this.headings[0].link
+      for (const { link, heading } of this.headings) {
+        if (heading.getBoundingClientRect().top <= threshold) next = link
+        else break
+      }
+
+      if (next === this.current) return
+      this.current?.removeAttribute('aria-current')
+      next.setAttribute('aria-current', 'true')
+      this.current = next
+      this.revealCurrent()
+    }
+
+    private updateProgress() {
+      const article = document.querySelector<HTMLElement>('.sl-markdown-content')
+      let ratio = 0
+      if (article) {
+        const rect = article.getBoundingClientRect()
+        const span = rect.height - window.innerHeight * 0.6
+        ratio = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 1
+      }
+      const percent = Math.round(ratio * 100)
+      this.style.setProperty('--toc-progress', String(ratio))
+      const label = this.querySelector<HTMLElement>('.guide-toc-progress-label')
+      if (label) label.textContent = `${percent}%`
+    }
+
+    private revealCurrent() {
+      const link = this.current
+      const scroller = this.scroller
+      if (!link || !scroller || scroller.clientHeight === 0) return
+      const top = link.offsetTop
+      const bottom = top + link.offsetHeight
+      if (top < scroller.scrollTop + 24 || bottom > scroller.scrollTop + scroller.clientHeight - 48) {
+        scroller.scrollTop = Math.max(0, top - scroller.clientHeight / 3)
+      }
+    }
+  }
+
+  if (!customElements.get('guide-toc')) customElements.define('guide-toc', GuideToc)
+</script>
