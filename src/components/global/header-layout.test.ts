@@ -84,3 +84,21 @@ test('Sponsor stays muted beside the primary navigation links', () => {
 
   assert.equal(window.getComputedStyle(sponsor).color, '#6b6053')
 })
+
+test('an open panel and the current section use separate desktop styles', () => {
+  const desktop = headerSource.slice(headerSource.indexOf('@media (min-width: 64rem)'))
+  assert.doesNotMatch(desktop, /\.is-active,\s*\.top-level-link\[data-open\]/, 'active and open must not share a rule')
+  assert.match(desktop, /\.top-level-link\.is-active::after \{[^}]*opacity:\s*1;/)
+  assert.match(desktop, /\.top-level-link\[data-open\] \{[^}]*background:\s*var\(--text-primary\);/)
+  assert.match(desktop, /\.top-level-link\[data-open\]::after \{[^}]*opacity:\s*0;/)
+})
+
+test('the direct Guide link sits on the same track as the menu triggers and Sponsor', () => {
+  const desktop = headerSource.slice(headerSource.indexOf('@media (min-width: 64rem)'))
+  assert.match(desktop, /\.top-level-direct \{[^}]*\balign-self:\s*flex-start;/)
+})
+
+test('essential cards read left-aligned, title above description', () => {
+  const desktop = headerSource.slice(headerSource.indexOf('@media (min-width: 64rem)'))
+  assert.match(desktop, /\.intent-card \{[^}]*\balign-items:\s*flex-start;[^}]*\bjustify-content:\s*flex-start;/)
+})

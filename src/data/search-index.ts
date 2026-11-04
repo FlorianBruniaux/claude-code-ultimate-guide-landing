@@ -8,7 +8,7 @@ import { releases } from './releases.ts'
 import { GUIDE_ENTRIES } from './guide-search-entries.ts'
 import { GUIDE_CONTENT_ENTRIES, GUIDE_CONTENT_PAGES } from './guide-content-entries.ts'
 import { glossaryTerms } from './glossary-data.ts'
-import { navigationSections } from './header-navigation.ts'
+import { getSectionLinks, navigationSections } from './header-navigation.ts'
 import { guideHighlights } from './guide-navigation.mjs'
 import type { SearchEntry, SearchGroupId, SearchPageInfo, SearchPayload, SearchRoute } from '../scripts/search-model.ts'
 
@@ -822,32 +822,21 @@ export const SEARCH_INDEX: SearchEntry[] = [
 ]
 
 // ─── Page map and section routes for grouped Cmd+K results ───────────────────
-// Security pages are their own result group, so they stay visible even though
-// the header still files them under Scale. Updates belong to Resources.
-const SECURITY_GUIDE_PAGES = new Set(['/guide/production-safety/', '/guide/data-privacy/'])
-
+// Result groups follow the header sections. Guide pages that the menu files
+// elsewhere (security guardrails, role guides) keep that section.
 export const SEARCH_ROUTES: SearchRoute[] = navigationSections.flatMap((section) =>
-  section.groups.flatMap((group) =>
-    group.links
-      .filter((link) => !link.external && !/^https?:\/\//.test(link.href))
-      .map((link) => {
-        const href = link.href.split('#', 1)[0]
-        let routeGroup: SearchGroupId = section.id === 'updates' ? 'resources' : section.id === 'guide' ? 'guide' : section.id
-        if (href.startsWith('/security/') || SECURITY_GUIDE_PAGES.has(href)) routeGroup = 'security'
-        return { href, group: routeGroup }
-      }),
-  ),
+  getSectionLinks(section)
+    .filter((link) => !link.external && !/^https?:\/\//.test(link.href))
+    .map((link) => ({ href: link.href.split('#', 1)[0], group: section.id as SearchGroupId })),
 )
 
 function buildSearchPages(): Record<string, SearchPageInfo> {
   const pages: Record<string, SearchPageInfo> = {}
   const navDescriptions = new Map<string, string>()
   for (const section of navigationSections) {
-    for (const group of section.groups) {
-      for (const link of group.links) {
-        const href = link.href.split('#', 1)[0]
-        if (!navDescriptions.has(href)) navDescriptions.set(href, link.description)
-      }
+    for (const link of getSectionLinks(section)) {
+      const href = link.href.split('#', 1)[0]
+      if (!navDescriptions.has(href)) navDescriptions.set(href, link.description)
     }
   }
 

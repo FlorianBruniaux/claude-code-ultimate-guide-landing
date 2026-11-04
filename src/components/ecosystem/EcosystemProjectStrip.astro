@@ -13,116 +13,87 @@ interface Props {
   projects: EcosystemMenuProject[]
 }
 
+// Sits right under the panel title: one row of compact chips, so the projects
+// stay visible without pushing Essentials and Go further below the fold.
 const { menu, projects } = Astro.props
 const compact = menu === 'resources'
+const label = compact ? 'More projects by the author' : 'Featured projects'
 ---
 
 {projects.length > 0 && (
-  <section class:list={['ecosystem-project-strip', { 'ecosystem-project-strip--compact': compact }]} aria-label={compact ? 'More projects by the author' : `Featured ${menu} projects`}>
-    <p class="ecosystem-project-strip-label">{compact ? 'More projects by the author' : 'Featured projects'}</p>
-    <div class="ecosystem-project-strip-links">
-      {projects.map((project) => (
-        <a
-          href={project.href}
-          class="ecosystem-project-strip-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={getEcosystemProjectAccessibleLabel(project)}
-          data-ecosystem-project-id={project.id}
-          data-ecosystem-placement="menu_strip"
-          data-ecosystem-menu={menu}
-        >
-          <span aria-hidden="true">{project.icon}</span>
-          <span class="ecosystem-project-strip-copy">
-            <span class="ecosystem-project-strip-title">{project.title} {isComingSoon(project) && <SoonBadge />}</span>
-            <span class="ecosystem-project-strip-format">{project.format}</span>
-          </span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      ))}
-    </div>
+  <section class="ecosystem-project-strip" aria-label={compact ? label : `Featured ${menu} projects`}>
+    <p class="ecosystem-project-strip-label">{label}</p>
+    {projects.map((project) => (
+      <a
+        href={project.href}
+        class="ecosystem-project-strip-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={getEcosystemProjectAccessibleLabel(project)}
+        title={project.format}
+        data-ecosystem-project-id={project.id}
+        data-ecosystem-placement="menu_strip"
+        data-ecosystem-menu={menu}
+      >
+        <span aria-hidden="true">{project.icon}</span>
+        <span class="ecosystem-project-strip-title">{project.title}</span>
+        {isComingSoon(project) && <SoonBadge />}
+        <span class="ecosystem-project-strip-arrow" aria-hidden="true">↗</span>
+      </a>
+    ))}
     <a href="/projects/" class="ecosystem-project-strip-hub-link">
-      Explore all {PERSONAL_PROJECTS.length} projects <span aria-hidden="true">→</span>
+      All {PERSONAL_PROJECTS.length} projects <span aria-hidden="true">→</span>
     </a>
   </section>
 )}
 
 <style>
   .ecosystem-project-strip {
-    margin-top: 0.9rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid var(--border-light);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .ecosystem-project-strip-label {
-    margin: 0 0 0.35rem;
+    margin: 0 0.25rem 0 0;
     color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
+    font-size: 0.75rem;
   }
 
-  .ecosystem-project-strip-links {
-    display: grid;
-    gap: 0.25rem;
-  }
-
-  .ecosystem-project-strip-link {
-    display: flex;
-    min-height: 44px;
+  .ecosystem-project-strip-link,
+  .ecosystem-project-strip-hub-link {
+    display: inline-flex;
+    min-height: 32px;
     align-items: center;
-    gap: 0.45rem;
-    min-width: 0;
-    padding: 0.55rem 0.65rem;
-    border-radius: 0.4rem;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    background: var(--bg-secondary);
     color: var(--text-secondary);
-    font-size: 0.84rem;
-    font-weight: 650;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-decoration: none;
-    transition: background 150ms ease, color 150ms ease;
+    white-space: nowrap;
+    transition: border-color 150ms ease, color 150ms ease;
   }
 
-  .ecosystem-project-strip-link > span:last-child {
-    margin-left: auto;
+  .ecosystem-project-strip-arrow {
+    font-size: 0.85em;
+    opacity: 0.6;
   }
 
-  .ecosystem-project-strip-copy {
-    display: grid;
-    min-width: 0;
-    gap: 0.08rem;
-  }
-
-  .ecosystem-project-strip-title,
-  .ecosystem-project-strip-format {
-    overflow-wrap: anywhere;
-  }
-
-  .ecosystem-project-strip-format {
-    color: var(--text-muted);
-    font-size: 0.73rem;
-    font-weight: 500;
-    line-height: 1.25;
+  .ecosystem-project-strip-hub-link {
+    border-color: transparent;
+    background: transparent;
+    color: var(--accent);
   }
 
   .ecosystem-project-strip-link:hover,
   .ecosystem-project-strip-link:focus-visible {
-    background: var(--bg-tertiary);
+    border-color: var(--accent);
     color: var(--text-primary);
-  }
-
-  .ecosystem-project-strip-hub-link {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.25rem;
-    padding: 0.55rem 0.65rem;
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 650;
-    text-decoration: none;
   }
 
   .ecosystem-project-strip-hub-link:hover,
@@ -131,17 +102,9 @@ const compact = menu === 'resources'
     text-underline-offset: 0.18em;
   }
 
-  @media (min-width: 64rem) {
-    .ecosystem-project-strip {
-      grid-column: 1 / -1;
-    }
-
-    .ecosystem-project-strip-links {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .ecosystem-project-strip--compact .ecosystem-project-strip-links {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (prefers-reduced-motion: reduce) {
+    .ecosystem-project-strip-link {
+      transition: none;
     }
   }
 </style>

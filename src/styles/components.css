@@ -581,18 +581,24 @@ a:not(.btn):not(.feature-card-link):not(.levelup-card):not(.example-category):ho
     padding: 0 1px;
 }
 
+/* The query field is the first thing to read in the modal: framed in the
+   accent color with a soft halo, so it stands out from the section cards. */
 .search-input-wrapper {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border-light);
+    margin: 1.1rem 1.5rem 0.6rem;
+    padding: 0.85rem 1.1rem;
+    border: 2px solid var(--accent);
+    border-radius: 0.8rem;
+    background: var(--bg-primary);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
 .search-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--text-secondary);
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
     flex-shrink: 0;
 }
 
@@ -1190,7 +1196,8 @@ a.search-preview-open:hover {
     }
 
     .search-input-wrapper {
-        padding: 0.875rem 1rem;
+        margin: 0.75rem 0.75rem 0.4rem;
+        padding: 0.7rem 0.85rem;
     }
 
     #search-input {

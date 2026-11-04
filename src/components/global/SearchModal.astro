@@ -3,7 +3,13 @@
 // instead of being inlined into every page (~1.3 MB per page otherwise).
 // The empty state is a map of the site, rendered at build time from the
 // header navigation so it never drifts from the menu.
-import { guideNavigationSection, navigationSections } from '../../data/header-navigation'
+import {
+  getSectionLinks,
+  guideNavigationLink,
+  latestGuideReferenceHrefs,
+  navigationSections,
+  newGuideWorkflowHrefs,
+} from '../../data/header-navigation'
 import type { HeaderNavigationLink } from '../../data/header-navigation'
 
 interface MapCard {
@@ -16,30 +22,36 @@ interface MapCard {
 }
 
 const MAP_LINKS = 4
-const SECURITY_GUIDE_PAGES = new Set(['/guide/production-safety/', '/guide/data-privacy/'])
-const isSecurity = (link: HeaderNavigationLink) => link.href.startsWith('/security/') || SECURITY_GUIDE_PAGES.has(link.href)
-const internal = (link: HeaderNavigationLink) => !link.external
+const internal = (link: HeaderNavigationLink) => !link.external && !link.rss
 
-const sectionLinks = (id: string) =>
-  navigationSections.find((section) => section.id === id)?.groups.flatMap((group) => group.links).filter(internal) ?? []
-
-function card(id: string, label: string, description: string, links: HeaderNavigationLink[], href = '/sitemap/'): MapCard {
-  return { id, label, description, links: links.slice(0, MAP_LINKS), total: links.length, href }
+const sectionCard = (id: string): MapCard => {
+  const section = navigationSections.find((item) => item.id === id)
+  if (!section) throw new Error(`Unknown navigation section: ${id}`)
+  // The overview opens the card's footer link, so the card lists the pages under it.
+  const links = [...section.essentials, ...section.groups.flatMap((group) => group.links)].filter(internal)
+  const total = new Set(getSectionLinks(section).filter(internal).map((link) => link.href)).size
+  return { id, label: section.label, description: section.description, links: links.slice(0, MAP_LINKS), total, href: section.overview?.href ?? '/sitemap/' }
 }
 
-const describe = (id: string) => navigationSections.find((section) => section.id === id)?.description ?? ''
-const securityLinks = navigationSections.flatMap((section) => section.groups.flatMap((group) => group.links)).filter(isSecurity)
-const guideLinks = guideNavigationSection.groups.flatMap((group) => group.links)
+// The Guide card shows the newest guide pages the menu highlights.
+const highlightHrefs = new Set([...newGuideWorkflowHrefs, ...latestGuideReferenceHrefs])
+const guideLinks = navigationSections.flatMap(getSectionLinks).filter((link) => highlightHrefs.has(link.href))
 
 const mapCards: MapCard[] = [
-  card('start', 'Start', describe('start'), sectionLinks('start')),
-  card('build', 'Build', describe('build'), sectionLinks('build')),
-  card('scale', 'Scale', describe('scale'), sectionLinks('scale').filter((link) => !isSecurity(link))),
-  card('security', 'Security', 'Threats, CVEs, hardening and the guardrails for agents in production.', securityLinks, '/security/'),
-  card('resources', 'Resources', describe('resources'), sectionLinks('resources')),
-  card('guide', 'Guide', guideNavigationSection.description, guideLinks, guideNavigationSection.overview.href),
+  ...['start', 'build', 'scale', 'security', 'resources'].map(sectionCard),
+  {
+    id: 'guide',
+    label: guideNavigationLink.label,
+    description: guideNavigationLink.description,
+    links: guideLinks.slice(0, MAP_LINKS),
+    total: guideLinks.length,
+    href: guideNavigationLink.href,
+  },
 ]
-const whatsNew = sectionLinks('updates')
+const whatsNew = navigationSections
+  .find((section) => section.id === 'resources')
+  ?.groups.find((group) => group.label === "What's new")
+  ?.links ?? []
 ---
 
 <!-- Search Modal -->

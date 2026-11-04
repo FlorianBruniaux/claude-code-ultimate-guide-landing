@@ -3,22 +3,37 @@ import ThemeToggle from './ThemeToggle.astro'
 import EcosystemProjectStrip from '../ecosystem/EcosystemProjectStrip.astro'
 import { ecosystemMenuProjects } from '../../data/ecosystem-discovery'
 import {
+  allPagesLink,
   getActiveNavigation,
+  getFurtherSpans,
   getHeaderActionLinks,
-  guideNavigationSection,
+  getSectionPageCount,
+  guideNavigationLink,
   navigationSections,
 } from '../../data/header-navigation'
+import type { HeaderNavigationLink } from '../../data/header-navigation'
 
 const currentPath = Astro.url.pathname
 const activeNavigation = getActiveNavigation(currentPath)
-const headerNavigationSections = [guideNavigationSection, ...navigationSections]
 const headerNavigationActions = getHeaderActionLinks('navigation')
+const guideIsActive = activeNavigation === 'guide'
 
-function isLinkActive(href: string, external = false) {
-  if (external) return false
+function isLinkActive(link: HeaderNavigationLink) {
+  if (link.external) return false
+  const href = link.href.split('#', 1)[0]
   if (href === '/rss.xml') return currentPath === href
   return currentPath === href || currentPath.startsWith(href)
 }
+
+const panels = navigationSections.map((section) => {
+  const spans = getFurtherSpans(section.groups)
+  return {
+    section,
+    pageCount: getSectionPageCount(section),
+    projects: section.projects ? ecosystemMenuProjects[section.projects] : [],
+    groups: section.groups.map((group, index) => ({ ...group, span: spans[index] })),
+  }
+})
 ---
 
 <header
@@ -48,84 +63,126 @@ function isLinkActive(href: string, external = false) {
         </div>
 
         <nav aria-label="Main navigation" class="primary-navigation-content">
-          {headerNavigationSections.map((section) => (
-            <details
-              class="intent-menu"
-              data-nav-section={section.id}
-            >
-              <summary
-                class:list={['top-level-link top-level-trigger', activeNavigation === section.id && 'is-active']}
-                data-nav-trigger={section.id}
-                aria-expanded="false"
-                aria-controls={`nav-panel-${section.id}`}
-              >
-                {section.label}
-                <svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m6 8 4 4 4-4" />
-                </svg>
-              </summary>
+          <a
+            href={guideNavigationLink.href}
+            class:list={['top-level-link top-level-direct', guideIsActive && 'is-active']}
+            aria-current={guideIsActive ? 'true' : undefined}
+          >
+            {guideNavigationLink.label}
+            <span class="mobile-only top-level-meta" aria-hidden="true">Complete guide →</span>
+          </a>
 
-              <section
-                id={`nav-panel-${section.id}`}
-                class:list={['intent-panel', section.groups.length === 1 && 'intent-panel-single']}
-                data-nav-panel={section.id}
-                aria-label={`${section.label} navigation`}
+          {panels.map(({ section, pageCount, projects, groups }) => {
+            const isActiveSection = activeNavigation === section.id
+            const allLabel = `All ${pageCount} pages in ${section.label}`
+            return (
+              <details
+                class:list={['intent-menu', section.id === 'security' && 'intent-menu-security']}
+                data-nav-section={section.id}
               >
-                <div class="intent-panel-header">
-                  <strong>{section.label}</strong>
-                  <span>
-                    {section.description}
-                    {section.overview && (
-                      <a class="intent-panel-overview" href={section.overview.href}>
-                        {section.overview.label} →
-                      </a>
-                    )}
-                  </span>
-                </div>
-                <div class="intent-panel-grid">
-                  {section.groups.map((group) => (
-                    <div class="intent-group">
-                      <p class="intent-group-label">{group.label}</p>
-                      <div class="intent-links">
-                        {group.links.map((link) => {
-                          const isActive = isLinkActive(link.href, link.external)
+                <summary
+                  class:list={['top-level-link top-level-trigger', isActiveSection && 'is-active']}
+                  data-nav-trigger={section.id}
+                  aria-expanded="false"
+                  aria-controls={`nav-panel-${section.id}`}
+                  aria-current={isActiveSection ? 'true' : undefined}
+                >
+                  {section.label}
+                  <svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m6 8 4 4 4-4" />
+                  </svg>
+                </summary>
+
+                <section
+                  id={`nav-panel-${section.id}`}
+                  class:list={['intent-panel', `intent-panel-${section.id}`]}
+                  data-nav-panel={section.id}
+                  aria-label={`${section.label} navigation`}
+                >
+                  <div class="intent-panel-header">
+                    <strong>{section.label}</strong>
+                    <span class="intent-panel-description">{section.description}</span>
+                    <span class="intent-panel-links">
+                      {section.overview && (
+                        <a class="intent-panel-overview" href={section.overview.href}>
+                          {section.overview.label} →
+                        </a>
+                      )}
+                      <a class="intent-panel-all" href={allPagesLink.href}>{allLabel} →</a>
+                    </span>
+                  </div>
+
+                  {section.projects && (
+                    <div class="intent-panel-projects">
+                      <EcosystemProjectStrip menu={section.projects} projects={projects} />
+                    </div>
+                  )}
+
+                  <div class="intent-panel-body">
+                    <div class="intent-block">
+                      <p class="intent-kicker">Essentials</p>
+                      <div class="intent-essentials">
+                        {section.essentials.map((link) => {
+                          const isActive = isLinkActive(link)
                           return (
                             <a
                               href={link.href}
-                              class:list={['intent-link', isActive && 'is-active']}
+                              class:list={['intent-link intent-card', isActive && 'is-active']}
                               aria-current={isActive ? 'page' : undefined}
-                              target={link.external ? '_blank' : undefined}
-                              rel={link.external ? 'noopener noreferrer' : undefined}
                             >
-                              <span class="intent-link-title">
-                                {link.rss && (
-                                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <path d="M6.18 15.64a2.18 2.18 0 0 1 0 4.36 2.18 2.18 0 0 1 0-4.36M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66A9.9 9.9 0 0 1 13.9 20h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
-                                  </svg>
-                                )}
-                                {link.label}
-                                {link.external && <span aria-hidden="true">↗</span>}
-                              </span>
+                              <span class="intent-link-title">{link.label}</span>
                               <span class="intent-link-description">{link.description}</span>
                             </a>
                           )
                         })}
                       </div>
                     </div>
-                  ))}
-                </div>
-                {section.id === 'build' && (
-                  <EcosystemProjectStrip menu="build" projects={ecosystemMenuProjects.build} />
-                )}
-                {section.id === 'scale' && (
-                  <EcosystemProjectStrip menu="scale" projects={ecosystemMenuProjects.scale} />
-                )}
-                {section.id === 'resources' && (
-                  <EcosystemProjectStrip menu="resources" projects={ecosystemMenuProjects.resources} />
-                )}
-              </section>
-            </details>
-          ))}
+
+                    <div class="intent-block">
+                      <p class="intent-kicker">Go further</p>
+                      <div class="intent-further">
+                        {groups.map((group) => (
+                          <div class="intent-group" style={group.span > 1 ? `--span: ${group.span}` : undefined}>
+                            <p class="intent-group-label">{group.label}</p>
+                            <div class="intent-links">
+                              {group.links.map((link) => {
+                                const isActive = isLinkActive(link)
+                                return (
+                                  <a
+                                    href={link.href}
+                                    class:list={['intent-link', isActive && 'is-active']}
+                                    aria-current={isActive ? 'page' : undefined}
+                                    target={link.external ? '_blank' : undefined}
+                                    rel={link.external ? 'noopener noreferrer' : undefined}
+                                  >
+                                    <span class="intent-link-title">
+                                      {link.rss && (
+                                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                          <path d="M6.18 15.64a2.18 2.18 0 0 1 0 4.36 2.18 2.18 0 0 1 0-4.36M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66A9.9 9.9 0 0 1 13.9 20h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+                                        </svg>
+                                      )}
+                                      {link.label}
+                                      {link.external && <span aria-hidden="true">↗</span>}
+                                    </span>
+                                    <span class="intent-link-description">{link.description}</span>
+                                  </a>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </details>
+            )
+          })}
+
+          <a class="top-level-link top-level-direct top-level-all" href={allPagesLink.href}>
+            {allPagesLink.label}
+            <span class="top-level-meta" aria-hidden="true">Site map →</span>
+          </a>
 
           {headerNavigationActions.map((link) => (
             <a
@@ -161,6 +218,11 @@ function isLinkActive(href: string, external = false) {
           </svg>
           <kbd>⌘K</kbd>
         </button>
+
+        <a class="all-pages-link" href={allPagesLink.href}>
+          <span class="all-pages-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          {allPagesLink.label}
+        </a>
 
         <details class="github-disclosure hidden md:block">
           <summary aria-label="GitHub links">
@@ -401,6 +463,16 @@ function isLinkActive(href: string, external = false) {
     color: var(--accent);
   }
 
+  .top-level-direct {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .top-level-meta {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
   .nav-chevron {
     width: 0.9rem;
     height: 0.9rem;
@@ -547,41 +619,69 @@ function isLinkActive(href: string, external = false) {
   }
 
   .intent-panel {
-    padding: 0 0.25rem 0.8rem;
-  }
-
-  .intent-panel-header {
-    padding-bottom: 0.8rem;
+    display: grid;
+    gap: 0.8rem;
+    padding: 0 0.25rem 0.9rem;
   }
 
   .intent-panel-header strong {
     display: none;
   }
 
-  .intent-panel-header span {
+  .intent-panel-description {
     display: block;
     color: var(--text-muted);
     font-size: 0.78rem;
     line-height: 1.45;
   }
 
-  .intent-panel-overview {
-    display: block;
+  .intent-panel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
     margin-top: 0.35rem;
+  }
+
+  .intent-panel-overview,
+  .intent-panel-all {
     color: var(--accent);
+    font-size: 0.8rem;
     font-weight: 650;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .intent-panel-overview:hover,
-  .intent-panel-overview:focus-visible {
+  .intent-panel-overview:focus-visible,
+  .intent-panel-all:hover,
+  .intent-panel-all:focus-visible {
     text-decoration: underline;
     text-underline-offset: 0.18em;
   }
 
-  .intent-panel-grid {
+  .intent-panel-body {
     display: grid;
     gap: 0.9rem;
+  }
+
+  .intent-kicker {
+    margin: 0 0 0.3rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .intent-essentials,
+  .intent-further,
+  .intent-links {
+    display: grid;
+  }
+
+  .intent-further {
+    gap: 0.75rem;
   }
 
   .intent-group {
@@ -596,10 +696,6 @@ function isLinkActive(href: string, external = false) {
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-  }
-
-  .intent-links {
-    display: grid;
   }
 
   .intent-link {
@@ -642,6 +738,10 @@ function isLinkActive(href: string, external = false) {
   }
 
   .intent-link-description {
+    display: none;
+  }
+
+  .all-pages-link {
     display: none;
   }
 
@@ -720,17 +820,49 @@ function isLinkActive(href: string, external = false) {
       transition: opacity 160ms ease, transform 160ms ease;
     }
 
+    .top-level-link {
+      border-radius: 0.5rem;
+    }
+
     .top-level-link:hover,
-    .top-level-link:focus-visible,
-    .top-level-link.is-active,
-    .top-level-link[data-open] {
+    .top-level-link:focus-visible {
       color: var(--text-primary);
     }
 
-    .top-level-link.is-active::after,
-    .top-level-link[data-open]::after {
+    /* Active: the current page lives in this section. */
+    .top-level-link.is-active {
+      color: var(--accent);
+    }
+
+    .top-level-link.is-active::after {
       opacity: 1;
       transform: scaleX(1);
+    }
+
+    /* Open: this panel is displayed. Both states can show at once. */
+    .top-level-link[data-open] {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+    }
+
+    .top-level-link[data-open]::after {
+      opacity: 0;
+    }
+
+    /* Same track as the summaries and Sponsor: a direct link would otherwise
+       center on the full bar height and sit lower than its neighbours. */
+    .top-level-direct {
+      align-self: flex-start;
+      border-top: 0;
+    }
+
+    .top-level-meta,
+    .top-level-all {
+      display: none;
+    }
+
+    .all-pages-link {
+      display: none;
     }
 
     .intent-menu {
@@ -742,12 +874,14 @@ function isLinkActive(href: string, external = false) {
       z-index: 60;
       inset-block-start: calc(100% + 1px);
       inset-inline-start: 50%;
-      width: min(58rem, calc(100vw - 2rem));
+      width: min(86rem, calc(100vw - 2rem));
       max-height: calc(100dvh - 4.5rem);
-      padding: 0.85rem;
+      gap: 0;
+      padding: 1.5rem 2rem 1.75rem;
       overflow-y: auto;
       translate: -50% 0;
       border: 1px solid var(--border);
+      border-top: 0;
       border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
       background: var(--bg-primary);
       box-shadow: 0 22px 55px rgb(0 0 0 / 0.24);
@@ -755,80 +889,143 @@ function isLinkActive(href: string, external = false) {
       scrollbar-color: var(--border) transparent;
     }
 
+    .intent-panel-security {
+      background: linear-gradient(color-mix(in srgb, var(--accent) 8%, var(--bg-primary)), var(--bg-primary) 10rem);
+    }
+
     .intent-panel-header {
       display: flex;
+      flex-wrap: wrap;
       align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.25rem 0.35rem 0.75rem;
-      border-bottom: 1px solid var(--border);
+      gap: 0.25rem 0.9rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .intent-panel-projects {
+      padding-block: 0.9rem;
+      border-bottom: 1px solid var(--border-light);
     }
 
     .intent-panel-header strong {
       display: block;
       color: var(--text-primary);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
     }
 
-    .intent-panel-header span {
-      font-size: 0.78rem;
-      text-align: end;
+    .intent-panel-description {
+      flex: 1 1 16rem;
+      color: var(--text-secondary);
+      font-size: 0.84rem;
     }
 
-    .intent-panel-overview {
-      display: inline;
-      margin-block-start: 0;
-      margin-inline-start: 0.5rem;
+    .intent-panel-links {
+      gap: 1.1rem;
+      margin: 0 0 0 auto;
     }
 
-    .intent-panel-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      padding-top: 0.75rem;
+    .intent-panel-body {
+      gap: 1.5rem;
+      padding-top: 1.35rem;
     }
 
-    .intent-panel-single .intent-panel-grid {
-      grid-template-columns: minmax(0, 28rem);
+    .intent-kicker {
+      margin-bottom: 0.7rem;
+    }
+
+    .intent-essentials {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .intent-further {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem 0;
+      padding-top: 1.35rem;
+      border-top: 1px solid var(--border-light);
     }
 
     .intent-group {
-      padding: 0.55rem;
-      border: 1px solid var(--border-light);
-      border-radius: var(--border-radius);
-      background: color-mix(in srgb, var(--bg-secondary) 70%, transparent);
+      grid-column: span var(--span, 1);
+      padding-inline: 1.5rem;
+      border-left: 1px solid var(--border-light);
+    }
+
+    /* Each Go further group reads as its own column, ruled off from the next. */
+    .intent-group:first-child {
+      padding-left: 0;
+      border-left: 0;
     }
 
     .intent-group-label {
-      margin-bottom: 0.35rem;
-      padding-inline: 0.45rem;
+      margin-bottom: 0.55rem;
       font-size: 0.68rem;
       letter-spacing: 0.075em;
     }
 
     .intent-links {
-      gap: 0.1rem;
+      grid-template-columns: repeat(var(--span, 1), minmax(0, 1fr));
+      gap: 0.3rem 1.5rem;
     }
 
     .intent-link {
       display: block;
-      min-height: 3.65rem;
-      padding: 0.55rem 0.6rem;
+      min-height: 0;
+      margin-inline: -0.5rem;
+      padding: 0.45rem 0.5rem;
       border-radius: 0.45rem;
     }
 
     .intent-link-title {
       color: var(--text-primary);
-      font-size: 0.82rem;
-      font-weight: 650;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .intent-link.is-active .intent-link-title {
+      color: var(--accent);
     }
 
     .intent-link-description {
       display: block;
-      margin-top: 0.18rem;
+      overflow: hidden;
+      margin-top: 0.1rem;
       color: var(--text-muted);
-      font-size: 0.71rem;
+      font-size: 0.72rem;
       font-weight: 400;
       line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .intent-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0.3rem;
+      margin-inline: 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--border-light);
+      border-radius: 0.7rem;
+      background: var(--bg-secondary);
+    }
+
+    .intent-card:hover,
+    .intent-card:focus-visible,
+    .intent-card.is-active {
+      border-color: var(--accent);
+      background: var(--bg-secondary);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .intent-card .intent-link-title {
+      font-size: 0.92rem;
+    }
+
+    .intent-card .intent-link-description {
+      font-size: 0.76rem;
+      white-space: normal;
     }
 
     .mobile-only,
@@ -847,6 +1044,44 @@ function isLinkActive(href: string, external = false) {
 
     .mobile-menu-toggle {
       display: none !important;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .all-pages-link {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .all-pages-link:hover,
+    .all-pages-link:focus-visible {
+      border-color: var(--accent);
+      color: var(--text-primary);
+    }
+
+    .all-pages-icon {
+      display: inline-grid;
+      grid-template-columns: repeat(2, 4px);
+      gap: 2px;
+    }
+
+    .all-pages-icon span {
+      width: 4px;
+      height: 4px;
+      border-radius: 1px;
+      background: currentColor;
+      opacity: 0.75;
     }
   }
 

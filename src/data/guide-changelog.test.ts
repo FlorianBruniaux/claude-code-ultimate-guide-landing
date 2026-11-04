@@ -33,8 +33,8 @@ test('keeps guide changelog and Claude Code releases as distinct routes', () => 
   assert.match(banner, /href="\/changelog\/" class="ann-link">Changelog/)
   assert.match(search, /id: 'page-guide-changelog'[\s\S]*?url: '\/changelog\/'/)
   assert.match(search, /id: 'page-releases'[\s\S]*?Claude Code Releases/)
-  assert.match(footer, /href: '\/changelog\/', label: 'Guide Changelog'/)
-  assert.match(footer, /href: '\/releases\/', label: 'Claude Code Releases'/)
+  assert.match(footer, /href: '\/changelog\/', label: 'Guide changelog'/)
+  assert.match(footer, /href: '\/releases\/', label: 'Claude Code releases'/)
   assert.match(homeUpdates, /href="\/changelog\/"[\s\S]*?>\s*View Full Changelog/)
 })
 

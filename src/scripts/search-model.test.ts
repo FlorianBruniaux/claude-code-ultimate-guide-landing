@@ -4,7 +4,7 @@ import test from 'node:test'
 import { buildSearchView, classifyUrl, cycleFilters, groupHits, highlightParts } from './search-model.ts'
 import type { SearchEntry, SearchPayload, SearchRoute } from './search-model.ts'
 import { SEARCH_PAYLOAD } from '../data/search-index.ts'
-import { navigationSections } from '../data/header-navigation.ts'
+import { getSectionLinks, navigationSections } from '../data/header-navigation.ts'
 
 const GH = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md'
 
@@ -130,14 +130,14 @@ test('the published payload groups real guide sections under their page title', 
 test('every internal menu link is a search route, and security pages file under Security', () => {
   const routes = new Map(SEARCH_PAYLOAD.routes.map((route) => [route.href, route.group]))
   for (const section of navigationSections) {
-    for (const group of section.groups) {
-      for (const link of group.links) {
-        if (link.external || /^https?:/.test(link.href)) continue
-        assert.ok(routes.has(link.href.split('#', 1)[0]), `${link.href} has a route`)
-      }
+    for (const link of getSectionLinks(section)) {
+      if (link.external || /^https?:/.test(link.href)) continue
+      assert.ok(routes.has(link.href.split('#', 1)[0]), `${link.href} has a route`)
     }
   }
   assert.equal(routes.get('/security/'), 'security')
   assert.equal(routes.get('/releases/'), 'resources')
   assert.equal(classifyUrl('/security/#cve-database', SEARCH_PAYLOAD.routes), 'security')
+  assert.equal(classifyUrl('/security/cves/', SEARCH_PAYLOAD.routes), 'security')
+  assert.equal(classifyUrl('/guide/production-safety/', SEARCH_PAYLOAD.routes), 'security')
 })

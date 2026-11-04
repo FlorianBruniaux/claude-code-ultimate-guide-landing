@@ -1,65 +1,59 @@
 ---
+import SoonBadge from '../ecosystem/SoonBadge.astro'
+import { getFooterEcosystemProjects } from '../../data/footer-ecosystem'
+
 interface Props {
   compact?: boolean
 }
 
 const { compact = false } = Astro.props
 
+// Sentence case everywhere: only the first word, product names and acronyms
+// keep a capital, so the columns read as one list.
 const footerLinks = {
   documentation: [
-    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md', label: 'Ultimate Guide', external: true },
-    { href: '/mcp/', label: 'MCP Server' },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md', label: 'Ultimate guide', external: true },
+    { href: '/mcp/', label: 'MCP server' },
     { href: '/guide/translations/', label: 'Translations' },
-    { href: '/cheatsheet/', label: 'Quick Reference' },
-    { href: '/cheatsheets/', label: 'Recap Cards' },
+    { href: '/cheatsheet/', label: 'Quick reference' },
+    { href: '/cheatsheets/', label: 'Recap cards' },
     { href: '/whitepapers/', label: 'Ebooks (PDF)' },
     { href: '/guide/architecture/', label: 'Architecture' },
-    { href: '/guide/data-privacy/', label: 'Data Privacy' },
+    { href: '/guide/data-privacy/', label: 'Data privacy' },
   ],
   resources: [
     { href: '/quiz/', label: 'Quiz' },
     { href: '/learning/', label: 'Learning' },
-    { href: '/roles/', label: 'AI Roles' },
+    { href: '/roles/', label: 'AI roles' },
     { href: '/methodologies/', label: 'Methodologies' },
     { href: '/diagrams/', label: 'Diagrams' },
     { href: '/security/', label: 'Security' },
     { href: '/examples/', label: 'Examples' },
     { href: '/compare/', label: 'Compare' },
-    { href: '/changelog/', label: 'Guide Changelog' },
-    { href: '/releases/', label: 'Claude Code Releases' },
+    { href: '/changelog/', label: 'Guide changelog' },
+    { href: '/releases/', label: 'Claude Code releases' },
     { href: '/context/', label: 'Context' },
-    { href: '/context-engineering/', label: 'Context Eng. Tools' },
-    { href: '/team-metrics/', label: 'Team Metrics' },
+    { href: '/context-engineering/', label: 'Context engineering tools' },
+    { href: '/team-metrics/', label: 'Team metrics' },
     { href: '/ecosystem/', label: 'Ecosystem' },
     { href: '/faq/', label: 'FAQ' },
     { href: '/glossary/', label: 'Glossary' },
-    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml', label: 'LLM Reference', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/machine-readable/reference.yaml', label: 'LLM reference', external: true },
   ],
   community: [
-    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide', label: 'GitHub Repo', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide', label: 'GitHub repo', external: true },
     { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md', label: 'Contribute', external: true },
-    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues', label: 'Report Issues', external: true },
-    { href: 'https://www.devw.ai/', label: 'Dev With AI (FR)', external: true },
+    { href: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues', label: 'Report issues', external: true },
+    { href: 'https://www.devw.ai/', label: 'Dev with AI (FR)', external: true },
     { href: 'https://twitter.com/intent/tweet?url=https://cc.bruniaux.com/&text=Claude%20Code%20Guide%20-%20Master%20AI-powered%20coding', label: 'Share on X', external: true },
     { href: 'https://www.linkedin.com/sharing/share-offsite/?url=https://cc.bruniaux.com/', label: 'Share on LinkedIn', external: true },
-  ],
-  ecosystem: [
-    { href: 'https://cowork.bruniaux.com/', label: 'Cowork Guide', external: true },
-    { href: 'https://ccboard.bruniaux.com/', label: 'ccboard', external: true },
-    { href: 'https://ccbridge.bruniaux.com/', label: 'cc-copilot-bridge', external: true },
-    { href: 'https://www.rtk-ai.app/', label: 'RTK', external: true },
-    { href: 'https://starmapper.bruniaux.com/', label: 'StarMapper', external: true },
-    { href: 'https://github.com/FlorianBruniaux/node-dep-scope', label: 'node-dep-scope', external: true },
-    { href: 'https://github.com/FlorianBruniaux/ctxharness', label: 'ctxharness', external: true },
-    { href: 'https://github.com/FlorianBruniaux/cc-sessions', label: 'cc-sessions', external: true },
-    { href: 'https://github.com/FlorianBruniaux/google-search-console-mcp', label: 'google-search-console-mcp', external: true },
-    { href: 'https://github.com/FlorianBruniaux/youtube-video-insights', label: 'youtube-video-insights', external: true },
-    { href: 'https://github.com/FlorianBruniaux/github-roast-tpc', label: 'github-roast-tpc', external: true },
-    { href: 'https://github.com/FlorianBruniaux/flow-lean', label: 'flow-lean', external: true },
-    { href: 'https://github.com/FlorianBruniaux/cc-skill-usage', label: 'cc-skill-usage', external: true },
-    { href: 'https://www.florian.bruniaux.com/', label: 'Blog & Portfolio', external: true },
+    { href: 'https://www.florian.bruniaux.com/', label: 'Blog and portfolio', external: true },
   ],
 }
+
+// Read from the profile manifest, like the menu strips, so a new project shows
+// up here without editing the footer. Names keep their lowercase repo form.
+const ecosystemProjects = getFooterEcosystemProjects()
 ---
 
 <footer class:list={["border-t border-border bg-background-secondary", compact ? 'mt-12' : 'mt-24']}>
@@ -131,6 +125,26 @@ const footerLinks = {
           </ul>
         </div>
       ))}
+
+      <div class="col-span-2">
+        <h3 class="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Ecosystem</h3>
+        <ul class="footer-ecosystem">
+          {ecosystemProjects.map((project) => (
+            <li>
+              <a
+                href={project.href}
+                class="text-sm text-text-muted hover:text-accent transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                title={project.title}
+              >
+                {project.label}
+              </a>
+              {project.soon && <SoonBadge />}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
       </>
     )}
@@ -192,6 +206,20 @@ const footerLinks = {
     min-height: 44px;
     color: var(--text-secondary);
     font-size: 0.875rem;
+  }
+
+  .footer-ecosystem {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+
+  .footer-ecosystem li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   @media (max-width: 720px) {

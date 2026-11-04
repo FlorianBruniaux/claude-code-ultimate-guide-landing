@@ -48,16 +48,22 @@ test('describes each external ecosystem project link with its title, format, and
   )
 })
 
-test('marks a coming-soon project in its label and links it to a public page', async () => {
+test('Agent Router is released: it links to its repository without the Soon mark', async () => {
   const { getEcosystemProjectAccessibleLabel, getEcosystemMenuProjects, isComingSoon } = await import('./ecosystem-discovery.ts')
   const project = getEcosystemMenuProjects('build').find((candidate) => candidate.id === 'agent-router')
 
   assert.ok(project)
-  assert.equal(isComingSoon(project), true)
-  assert.equal(project.href, 'https://cc.bruniaux.com/guide/third-party-tools/#agent-router')
-  assert.equal(
-    getEcosystemProjectAccessibleLabel(project),
-    'Agent Router, coming soon, CLI. Opens in a new tab.',
-  )
-  assert.equal(isComingSoon(getEcosystemMenuProjects('build')[0]), false)
+  assert.equal(isComingSoon(project), false)
+  assert.equal(project.href, 'https://github.com/FlorianBruniaux/agent-router')
+  assert.equal(getEcosystemProjectAccessibleLabel(project), 'Agent Router, CLI. Opens in a new tab.')
+})
+
+test('a project marked soon in the manifest says so in its label', async () => {
+  const { getEcosystemProjectAccessibleLabel, getEcosystemMenuProjects, isComingSoon } = await import('./ecosystem-discovery.ts')
+  const released = getEcosystemMenuProjects('build')[0]
+  const upcoming = { ...released, status: 'soon' } as unknown as typeof released
+
+  assert.equal(isComingSoon(released), false)
+  assert.equal(isComingSoon(upcoming), true)
+  assert.match(getEcosystemProjectAccessibleLabel(upcoming), /, coming soon, /)
 })

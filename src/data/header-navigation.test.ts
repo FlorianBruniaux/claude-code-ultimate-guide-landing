@@ -1,29 +1,50 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-test('routes product goals to the matching top-level navigation intent', async () => {
+// Every href the menu exposed before the Essentials / Go further redesign
+// (November 2026). The new menu must keep each of them reachable.
+const PREVIOUS_MENU_HREFS = [
+  '/guide/', '/guide/mistral-large-4/', '/guide/translations/', '/guide/agent-harness-landscape/',
+  '/guide/practitioner-insights/', '/guide/workflows/monitor-event-delegation/',
+  '/guide/workflows/agentic-software-factories/', '/guide/workflows/team-ai-instructions/',
+  '/guide/ultimate-guide/01-quick-start/', '/learning/', '/quiz/', '/roles/',
+  '/guide/for-product-managers/', '/guide/for-tech-leads/', '/guide/for-cto/', '/guide/for-cio-ceo/',
+  '/learning/#security-practitioner', '/guide/loop-graph-engineering/', '/ai-design-patterns/', '/context/',
+  '/context-engineering/', '/memory-systems/', '/guide/workflows/', '/methodologies/', '/mcp/',
+  '/guide/claude-code-guide-mcp/', '/mcp-or-cli/', '/ecosystem/mcp-vs-cli/', '/ecosystem/',
+  '/claude-md-best-practices/', '/compare/', '/security/', '/guide/agent-harness/', '/guide/agent-evaluation/',
+  '/guide/observability/', '/guide/production-safety/', '/guide/data-privacy/', '/guide/enterprise-governance/',
+  '/guide/adoption-approaches/', '/team-metrics/', '/lean-ai/', '/guide/team-knowledge-base/', '/finops/',
+  '/token-savings/', '/guide/subscription-strategy/', '/guide/ai-unit-economics/', '/resources/', '/cheatsheet/',
+  '/cheatsheets/', '/examples/', '/diagrams/', '/glossary/', '/whitepapers/', '/downloads/', '/faq/', '/projects/',
+  'https://www.florian.bruniaux.com/blog/', '/changelog/', '/releases/', '/rss.xml',
+]
+
+test('routes each page to the section that owns it in the bar', async () => {
   const { getActiveNavigation } = await import('./header-navigation.ts')
 
   const cases = [
     ['/', null],
     ['/guide/', 'guide'],
+    ['/guide/known-issues/', 'guide'],
     ['/guide/ultimate-guide/01-quick-start/', 'start'],
     ['/roles/', 'start'],
+    ['/learning/', 'start'],
     ['/mcp/', 'build'],
     ['/guide/claude-code-guide-mcp/', 'build'],
     ['/context/', 'build'],
-    ['/security/', 'scale'],
+    ['/guide/workflows/', 'build'],
+    ['/guide/workflows/monitor-event-delegation/', 'build'],
     ['/guide/agent-harness/', 'scale'],
     ['/team-metrics/', 'scale'],
+    ['/security/', 'security'],
+    ['/security/cves/', 'security'],
+    ['/guide/production-safety/', 'security'],
     ['/resources/', 'resources'],
     ['/whitepapers/', 'resources'],
-    ['/changelog/', 'updates'],
-    ['/releases/', 'updates'],
-    ['/guide/known-issues/', 'guide'],
-    ['/guide/translations/', 'guide'],
-    ['/guide/mistral-large-4/', 'guide'],
-    ['/guide/agent-harness-landscape/', 'guide'],
-    ['/guide/workflows/monitor-event-delegation/', 'build'],
+    ['/changelog/', 'resources'],
+    ['/releases/', 'resources'],
+    ['/guide/translations/', 'resources'],
   ] as const
 
   for (const [path, expected] of cases) {
@@ -31,113 +52,90 @@ test('routes product goals to the matching top-level navigation intent', async (
   }
 })
 
-test('builds Guide from noteworthy pages not already exposed by another menu', async () => {
-  const { guideNavigationSection, navigationSections } = await import('./header-navigation.ts')
-
-  assert.ok(guideNavigationSection)
-  assert.equal(guideNavigationSection.id, 'guide')
-  assert.deepEqual(guideNavigationSection.overview, {
-    href: '/guide/',
-    label: 'Browse the complete guide',
-  })
+test('the bar reads Guide, Start, Build, Scale, Security, Resources', async () => {
+  const { guideNavigationLink, navigationSections } = await import('./header-navigation.ts')
   assert.deepEqual(
-    guideNavigationSection.groups.map((group) => ({
-      label: group.label,
-      hrefs: group.links.map((link) => link.href),
-    })),
-    [
-      {
-        label: 'Latest references',
-        hrefs: [
-          '/guide/mistral-large-4/',
-          '/guide/translations/',
-          '/guide/agent-harness-landscape/',
-          '/guide/practitioner-insights/',
-        ],
-      },
-      {
-        label: 'New workflows',
-        hrefs: [
-          '/guide/workflows/monitor-event-delegation/',
-          '/guide/workflows/agentic-software-factories/',
-          '/guide/workflows/team-ai-instructions/',
-        ],
-      },
-    ],
+    [guideNavigationLink.label, ...navigationSections.map((section) => section.label)],
+    ['Guide', 'Start', 'Build', 'Scale', 'Security', 'Resources'],
   )
+  assert.equal(guideNavigationLink.href, '/guide/')
+})
 
-  const occupiedHrefs = new Set(
-    navigationSections.flatMap((section) =>
-      section.groups.flatMap((group) => group.links.map((link) => link.href)),
-    ),
-  )
-  for (const link of guideNavigationSection.groups.flatMap((group) => group.links)) {
-    assert.equal(occupiedHrefs.has(link.href), false, `${link.href} must only appear in Guide`)
+test('every panel opens on four Essentials', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  for (const section of navigationSections) {
+    assert.equal(section.essentials.length, 4, section.id)
   }
 })
 
-test('keeps reliability separate from organization and economics inside Scale', async () => {
-  const { navigationSections } = await import('./header-navigation.ts')
-  const scale = navigationSections.find((section) => section.id === 'scale')
+test('every link of the previous menu stays reachable, and no destination is listed twice', async () => {
+  const { getSectionLinks, guideNavigationLink, navigationSections } = await import('./header-navigation.ts')
+  const hrefs = [guideNavigationLink.href, ...navigationSections.flatMap((section) => getSectionLinks(section).map((link) => link.href))]
 
-  assert.ok(scale)
-  assert.deepEqual(scale.groups.map((group) => group.label), [
-    'Reliability',
-    'Organization & Economics',
-  ])
-  assert.deepEqual(scale.groups[0].links.map((link) => link.href), [
-    '/security/',
-    '/guide/agent-harness/',
-    '/guide/agent-evaluation/',
-    '/guide/observability/',
-    '/guide/production-safety/',
-    '/guide/data-privacy/',
+  for (const href of PREVIOUS_MENU_HREFS) assert.ok(hrefs.includes(href), `${href} is still in the menu`)
+  assert.equal(new Set(hrefs).size, hrefs.length, 'a destination appears once')
+})
+
+test('Updates live in Resources as a What\'s new column', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const resources = navigationSections.find((section) => section.id === 'resources')
+  const whatsNew = resources?.groups.find((group) => group.label === "What's new")
+  assert.deepEqual(whatsNew?.links.map((link) => link.href), ['/changelog/', '/releases/', '/rss.xml'])
+})
+
+test('canonical labels: Cheat Sheet, Recap Cards, Ebooks', async () => {
+  const { getSectionLinks, navigationSections } = await import('./header-navigation.ts')
+  const labels = new Map(navigationSections.flatMap(getSectionLinks).map((link) => [link.href, link.label]))
+  assert.equal(labels.get('/cheatsheet/'), 'Cheat Sheet')
+  assert.equal(labels.get('/cheatsheets/'), 'Recap Cards')
+  assert.equal(labels.get('/whitepapers/'), 'Ebooks')
+  assert.equal(labels.get('/mcp/'), 'Claude Code Guide MCP Server')
+  assert.equal(labels.get('/guide/agent-harness/'), 'Agent Harness Engineering')
+  assert.equal(labels.get('/compare/'), 'AI Coding Tools Comparison')
+})
+
+test('Security has its own panel with the hub as overview', async () => {
+  const { navigationSections } = await import('./header-navigation.ts')
+  const security = navigationSections.find((section) => section.id === 'security')
+  assert.equal(security?.overview?.href, '/security/')
+  assert.deepEqual(security?.essentials.map((link) => link.href), [
+    '/security/threats/', '/security/cves/', '/security/hardening/', '/security/sandbox/',
   ])
 })
 
-test('exposes the MCP product and technical guide from Build without duplicate destinations', async () => {
-  const { navigationSections } = await import('./header-navigation.ts')
-  const build = navigationSections.find((section) => section.id === 'build')
-
-  assert.ok(build)
-  const buildLinks = build.groups.flatMap((group) => group.links)
-  assert.ok(buildLinks.some((link) => link.href === '/mcp/' && link.label === 'Claude Code Guide MCP Server'))
-  assert.ok(buildLinks.some((link) => link.href === '/guide/claude-code-guide-mcp/' && link.label === 'MCP Technical Guide'))
-
-  const allInternalHrefs = navigationSections
-    .flatMap((section) => section.groups)
-    .flatMap((group) => group.links)
-    .filter((link) => !link.external)
-    .map((link) => link.href)
-
-  assert.equal(new Set(allInternalHrefs).size, allInternalHrefs.length)
+test('Go further fills four columns without stacking a long group', async () => {
+  const { getFurtherSpans, navigationSections } = await import('./header-navigation.ts')
+  const spans = Object.fromEntries(navigationSections.map((section) => [section.id, getFurtherSpans(section.groups)]))
+  assert.deepEqual(spans, {
+    start: [4],
+    build: [1, 2, 1],
+    scale: [1, 3],
+    security: [2],
+    resources: [1, 1, 1, 1],
+  })
+  for (const section of navigationSections) {
+    const columns = getFurtherSpans(section.groups)
+    section.groups.forEach((group, index) => {
+      assert.ok(Math.ceil(group.links.length / columns[index]) <= 5, `${section.id} / ${group.label} stays short`)
+    })
+  }
 })
 
-test('uses destination-specific anchor text for priority menu links', async () => {
+test('project strips stay on Build, Scale and Resources', async () => {
   const { navigationSections } = await import('./header-navigation.ts')
-  const links = navigationSections.flatMap((section) =>
-    section.groups.flatMap((group) => group.links),
+  assert.deepEqual(
+    navigationSections.filter((section) => section.projects).map((section) => [section.id, section.projects]),
+    [['build', 'build'], ['scale', 'scale'], ['resources', 'resources']],
   )
-  const labelsByHref = new Map(links.map((link) => [link.href, link.label]))
-
-  assert.equal(labelsByHref.get('/security/'), 'AI Agent Security')
-  assert.equal(labelsByHref.get('/mcp/'), 'Claude Code Guide MCP Server')
-  assert.equal(labelsByHref.get('/guide/agent-harness/'), 'Agent Harness Engineering')
-  assert.equal(labelsByHref.get('/compare/'), 'AI Coding Tools Comparison')
 })
 
 test('exposes Sponsor as a primary navigation action', async () => {
   const navigation = await import('./header-navigation.ts')
-
-  assert.equal(typeof navigation.getHeaderActionLinks, 'function')
-
-  const expected = [
+  assert.deepEqual(navigation.getHeaderActionLinks('navigation'), [
     {
       href: 'https://www.florian.bruniaux.com/sponsor/',
       label: 'Sponsor',
       external: true,
     },
-  ]
-
-  assert.deepEqual(navigation.getHeaderActionLinks('navigation'), expected)
+  ])
 })

@@ -54,18 +54,18 @@ export const PERSONAL_PROJECTS = [
     "icon": "🧭",
     "title": "Agent Router",
     "description": "Pick the model, effort and skills for each phase of a Claude Code or Codex task, and explain the choice.",
-    "useWhen": "Planning, execution and verification should run on different models within a budget, with a decision you can review and replay. Pre-release; no measured cost gain is claimed yet.",
+    "useWhen": "Planning, execution and verification should run on different models within a budget, with a decision you can review and replay. Experimental; no measured cost gain is claimed yet.",
     "format": "CLI",
     "tags": [
       "Model Routing",
       "Cost Control",
       "Agent Workflows"
     ],
-    "href": "https://cc.bruniaux.com/guide/third-party-tools/#agent-router",
+    "href": "https://github.com/FlorianBruniaux/agent-router",
     "github": "https://github.com/FlorianBruniaux/agent-router",
+    "website": null,
     "route": "build-run",
-    "featured": true,
-    "status": "soon"
+    "featured": true
   },
   {
     "id": "claude-code-plugins",

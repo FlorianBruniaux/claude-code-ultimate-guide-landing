@@ -58,6 +58,6 @@ test('the XML sitemap gives the MCP page stable product metadata', () => {
 })
 
 test('the full and compact footers link to the MCP product page', () => {
-  assert.match(footer, /\{ href: '\/mcp\/', label: 'MCP Server' \}/)
+  assert.match(footer, /\{ href: '\/mcp\/', label: 'MCP server' \}/)
   assert.match(footer, /<a href="\/mcp\/">MCP<\/a>/)
 })
