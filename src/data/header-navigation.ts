@@ -93,6 +93,11 @@ export const latestGuideReferenceHrefs = [
   '/guide/practitioner-insights/',
 ]
 
+/** Newest guide reference pages, shown in Resources and on the homepage. */
+export function getLatestGuideReferenceLinks(): HeaderNavigationLink[] {
+  return guideHighlightLinks(latestGuideReferenceHrefs)
+}
+
 export const newGuideWorkflowHrefs = [
   '/guide/workflows/monitor-event-delegation/',
   '/guide/workflows/agentic-software-factories/',
@@ -255,7 +260,7 @@ export const navigationSections: HeaderNavigationSection[] = [
       },
       {
         label: 'Latest guide references',
-        links: guideHighlightLinks(latestGuideReferenceHrefs),
+        links: getLatestGuideReferenceLinks(),
       },
     ],
     projects: 'resources',

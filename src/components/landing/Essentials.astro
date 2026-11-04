@@ -1,27 +1,49 @@
 ---
-import { FLAGSHIP_RESOURCES } from '../../data/homepage-content'
+import { HOMEPAGE_ESSENTIALS, HOMEPAGE_GO_FURTHER } from '../../data/homepage-content'
+
+interface Props {
+  stats: Record<string, number>
+}
+
+const { stats } = Astro.props
+
+function metaLabel(resource: (typeof HOMEPAGE_ESSENTIALS)[number]) {
+  if (!('metaKey' in resource)) return resource.meta
+  const value = stats[resource.metaKey]
+  return typeof value === 'number' ? `${value.toLocaleString('en-US')} ${resource.meta}` : resource.meta
+}
 ---
 
-<section class="section section--alt" aria-labelledby="flagship-title">
+<section class="section section--alt essentials" aria-labelledby="essentials-title">
   <div class="container">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Core library</p>
-        <h2 class="section-title" id="flagship-title">The four resources worth bookmarking</h2>
+        <p class="section-kicker">Essentials</p>
+        <h2 class="section-title" id="essentials-title">The four places most readers start</h2>
       </div>
       <a class="all-link" href="/resources/">See all resources →</a>
     </div>
 
     <div class="resource-grid">
-      {FLAGSHIP_RESOURCES.map((resource) => (
+      {HOMEPAGE_ESSENTIALS.map((resource) => (
         <a class="resource-card" href={resource.href}>
           <span class="resource-icon" aria-hidden="true">{resource.icon}</span>
           <h3>{resource.title}</h3>
           <p>{resource.description}</p>
-          <span class="resource-meta">{resource.meta}</span>
+          <span class="resource-meta">{metaLabel(resource)}</span>
         </a>
       ))}
     </div>
+
+    <nav class="go-further" aria-label="Go further">
+      <span class="go-further-label">Go further</span>
+      <ul>
+        {HOMEPAGE_GO_FURTHER.map((topic) => (
+          <li><a href={topic.href}>{topic.title} →</a></li>
+        ))}
+        <li><a class="go-further-all" href="/sitemap/">All pages →</a></li>
+      </ul>
+    </nav>
   </div>
 </section>
 
@@ -37,6 +59,12 @@ import { FLAGSHIP_RESOURCES } from '../../data/homepage-content'
   .resource-card h3 { margin: 1.1rem 0 0.4rem; font-size: 1.05rem; }
   .resource-card p { margin: 0; color: var(--text-secondary); font-size: 0.875rem; }
   .resource-meta { margin-top: auto; padding-top: 1.25rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
+
+  .go-further { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-top: 1.25rem; padding: 0.9rem 1.1rem; border: 1px solid var(--border); border-radius: var(--border-radius-lg); background: var(--surface-elevated); }
+  .go-further-label { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .go-further ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin: 0; padding: 0; list-style: none; }
+  .go-further a { display: inline-flex; align-items: center; min-height: 32px; font-size: 0.92rem; font-weight: 600; }
+  .go-further-all { color: var(--text-secondary) !important; }
 
   @media (max-width: 900px) { .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 560px) {

@@ -61,14 +61,19 @@ export const START_PATHS = [
     id: 'answer',
     eyebrow: 'Already productive',
     title: 'Find one answer fast',
-    description: 'Jump to the cheat sheet, examples, security data, or the complete resource catalog.',
+    description: 'Open the one-page cheat sheet of commands, shortcuts, and patterns for daily use.',
     duration: '5 min',
-    href: '/resources/',
+    href: '/cheatsheet/',
     steps: ['Choose a resource', 'Apply the pattern', 'Keep the reference'],
   },
 ] as const
 
-export const FLAGSHIP_RESOURCES = [
+/**
+ * Homepage "Essentials": four cards, then a one-line "Go further" row.
+ * The Quiz is here because it is the most visited page from Google; Security
+ * appears once. `metaKey` lets the page fill live counts from site stats.
+ */
+export const HOMEPAGE_ESSENTIALS = [
   {
     icon: '📖',
     title: 'Ultimate Guide',
@@ -77,57 +82,43 @@ export const FLAGSHIP_RESOURCES = [
     href: '/guide/',
   },
   {
-    icon: '⚡',
-    title: 'Cheat Sheet',
-    description: 'Commands, shortcuts, and patterns for daily use.',
-    meta: '5-minute reference',
-    href: '/cheatsheet/',
-  },
-  {
     icon: '🧩',
     title: 'Ready-to-use Templates',
     description: 'Copyable agents, hooks, commands, skills, and workflows.',
-    meta: '272 templates',
+    meta: 'templates',
+    metaKey: 'templateCount',
     href: '/examples/',
   },
   {
-    icon: '🛡️',
-    title: 'Security Database',
-    description: 'Tracked vulnerabilities, threat patterns, and production hardening.',
-    meta: 'Continuously updated',
-    href: '/security/',
+    icon: '🎯',
+    title: 'Knowledge Quiz',
+    description: 'Test practical knowledge across tools, workflows, and safety, and find your gaps.',
+    meta: 'questions',
+    metaKey: 'quizQuestionCount',
+    href: '/quiz/',
   },
-] as const
-
-export const DEEP_TOPICS = [
   {
     icon: '🛡️',
     title: 'Security',
-    description: 'Threat model, CVEs, sandboxing, and production guardrails.',
+    description: 'Tracked vulnerabilities, threat patterns, sandboxing, and production hardening.',
+    meta: 'CVE and advisory records',
+    metaKey: 'cveCount',
     href: '/security/',
-  },
-  {
-    icon: '🧠',
-    title: 'Memory & context',
-    description: 'Keep sessions focused and preserve the knowledge that matters.',
-    href: '/memory-systems/',
-  },
-  {
-    icon: '◫',
-    title: 'Visual diagrams',
-    description: `${HOMEPAGE_METRICS.diagramCount} diagrams for architecture, workflows, and decisions.`,
-    href: '/diagrams/',
-  },
-  {
-    icon: '⇄',
-    title: 'Tool comparisons',
-    description: 'Choose the right model, editor, runtime, and integration.',
-    href: '/compare/',
   },
 ] as const
 
+export const HOMEPAGE_GO_FURTHER = [
+  { title: 'Memory & context', href: '/memory-systems/' },
+  { title: `${HOMEPAGE_METRICS.diagramCount} visual diagrams`, href: '/diagrams/' },
+  { title: 'Tool comparisons', href: '/compare/' },
+  { title: 'Workflows', href: '/guide/workflows/' },
+] as const
+
 export const RESOURCE_CATALOG = [
-  ...FLAGSHIP_RESOURCES,
+  { icon: '📖', title: 'Ultimate Guide', description: 'The complete reference, from fundamentals to production workflows.', meta: '25K+ lines', href: '/guide/' },
+  { icon: '⚡', title: 'Cheat Sheet', description: 'Commands, shortcuts, and patterns for daily use.', meta: '5-minute reference', href: '/cheatsheet/' },
+  { icon: '🧩', title: 'Ready-to-use Templates', description: 'Copyable agents, hooks, commands, skills, and workflows.', meta: '272 templates', href: '/examples/' },
+  { icon: '🛡️', title: 'Security Database', description: 'Tracked vulnerabilities, threat patterns, and production hardening.', meta: 'Continuously updated', href: '/security/' },
   { icon: '🎯', title: 'Quiz', description: 'Test practical knowledge and identify gaps.', meta: '473 questions', href: '/quiz/' },
   { icon: '📋', title: 'Recap Cards', description: 'Printable cards for technical, methodology, and design topics.', meta: `${HOMEPAGE_METRICS.recapCardCount} cards`, href: '/cheatsheets/' },
   { icon: '📄', title: 'Whitepapers', description: 'Focused, bilingual guides for deeper study.', meta: `${HOMEPAGE_METRICS.whitepaperCount} guides`, href: '/whitepapers/' },

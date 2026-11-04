@@ -2,12 +2,10 @@
 import Layout from '../layouts/Layout.astro'
 import HeroBanner from '../components/landing/HeroBanner.astro'
 import StartHere from '../components/landing/StartHere.astro'
-import FlagshipResources from '../components/landing/FlagshipResources.astro'
+import Essentials from '../components/landing/Essentials.astro'
 import McpProof from '../components/landing/McpProof.astro'
-import ExploreDeeper from '../components/landing/ExploreDeeper.astro'
 import LatestContent from '../components/landing/LatestContent.astro'
-import Community from '../components/landing/Community.astro'
-import RelatedProjects from '../components/landing/RelatedProjects.astro'
+import BuiltAroundGuide from '../components/landing/BuiltAroundGuide.astro'
 import ConsultingCta from '../components/global/ConsultingCta.astro'
 import { getSiteStats } from '../utils/site-stats'
 import { authorProfile } from '../data/author-profile'
@@ -93,11 +91,9 @@ const jsonLd = [
 <Layout title={title} description={description} jsonLd={jsonLd} preloadImages={['/claude-logo-orange.svg']}>
   <HeroBanner />
   <StartHere />
-  <FlagshipResources />
+  <Essentials stats={stats} />
   <McpProof />
-  <ExploreDeeper />
   <LatestContent />
-  <Community />
-  <RelatedProjects />
+  <BuiltAroundGuide />
   <ConsultingCta placement="homepage" />
 </Layout>

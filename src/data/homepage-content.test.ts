@@ -2,12 +2,13 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 
 import {
-  DEEP_TOPICS,
   FEATURED_PROJECTS,
-  FLAGSHIP_RESOURCES,
   GUIDE_DOWNLOADS,
+  HOMEPAGE_ESSENTIALS,
+  HOMEPAGE_GO_FURTHER,
   HOMEPAGE_METRICS,
   RELATED_PROJECTS,
+  RESOURCE_CATALOG,
   START_PATHS,
 } from './homepage-content.ts'
 
@@ -46,19 +47,30 @@ test('the homepage exposes three distinct start paths', () => {
   for (const path of START_PATHS) assert.equal(path.steps.length, 3)
 })
 
-test('homepage discovery blocks remain intentionally small', () => {
-  assert.equal(FLAGSHIP_RESOURCES.length, 4)
-  assert.equal(DEEP_TOPICS.length, 4)
-  assertUnique(FLAGSHIP_RESOURCES.map((resource) => resource.href), 'flagship hrefs')
-  assertUnique(DEEP_TOPICS.map((topic) => topic.href), 'deep topic hrefs')
-
-  const ultimateGuide = FLAGSHIP_RESOURCES.find((resource) => resource.title === 'Ultimate Guide')
-  assert.equal(ultimateGuide?.href, '/guide/')
+test('the "Find one answer fast" path opens the cheat sheet, not the resource hub', () => {
+  const answer = START_PATHS.find((path) => path.id === 'answer')
+  assert.equal(answer?.href, '/cheatsheet/')
 })
 
-test('the homepage features five canonical projects while the projects hub exposes five routes and 19 projects', () => {
+test('homepage Essentials hold four cards with Security once and the Quiz included', () => {
+  assert.equal(HOMEPAGE_ESSENTIALS.length, 4)
+  assertUnique(HOMEPAGE_ESSENTIALS.map((resource) => resource.href), 'essential hrefs')
+  assert.deepEqual(HOMEPAGE_ESSENTIALS.map((resource) => resource.href), ['/guide/', '/examples/', '/quiz/', '/security/'])
+  assert.equal(HOMEPAGE_GO_FURTHER.length, 4)
+  const all = [...HOMEPAGE_ESSENTIALS, ...HOMEPAGE_GO_FURTHER].map((item) => item.href)
+  assert.equal(all.filter((href) => href === '/security/').length, 1)
+  assertUnique(all, 'homepage discovery hrefs')
+})
+
+test('the resources hub catalog still lists the cheat sheet and the security database', () => {
+  const hrefs: string[] = RESOURCE_CATALOG.map((resource) => resource.href)
+  assertUnique(hrefs, 'resource catalog hrefs')
+  for (const href of ['/guide/', '/cheatsheet/', '/examples/', '/security/', '/quiz/']) assert.ok(hrefs.includes(href), href)
+})
+
+test('the homepage features five canonical projects while the projects hub exposes five routes and 20 projects', () => {
   assert.equal(FEATURED_PROJECTS.length, 5)
-  assert.equal(RELATED_PROJECTS.length, 19)
+  assert.equal(RELATED_PROJECTS.length, 20)
   assert.equal(new Set(RELATED_PROJECTS.map((project) => project.route)).size, 5)
   assert.ok(FEATURED_PROJECTS.every((project) => project.featured))
   assert.ok(FEATURED_PROJECTS.some((project) => project.id === 'cc-skill-usage'))

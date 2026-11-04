@@ -1,13 +1,37 @@
 ---
 import HeroBlogPosts from './HeroBlogPosts.astro'
 import HeroQuickGuides from './HeroQuickGuides.astro'
+import { getLatestGuideReferenceLinks } from '../../data/header-navigation'
+
+// The same "Latest guide references" the Resources menu panel shows.
+const guideAdditions = getLatestGuideReferenceLinks().slice(0, 3)
 ---
 
 <section class="section latest" aria-labelledby="latest-title">
   <div class="container">
     <p class="section-kicker">Latest writing</p>
     <h2 class="section-title" id="latest-title">What changed, and what I learned</h2>
-    <p class="section-subtitle">Recent essays and focused guides from Florian Bruniaux.</p>
+    <p class="section-subtitle">New guide pages, recent essays and focused guides from Florian Bruniaux.</p>
+
+    {guideAdditions.length > 0 && (
+      <div class="guide-additions">
+        <div class="guide-additions-head">
+          <h3>New in the guide</h3>
+          <a href="/changelog/">Guide changelog →</a>
+        </div>
+        <ul>
+          {guideAdditions.map((link) => (
+            <li>
+              <a href={link.href}>
+                <span class="addition-title">{link.label}</span>
+                <span class="addition-desc">{link.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     <div class="latest-grid">
       <HeroBlogPosts />
       <HeroQuickGuides />
@@ -18,5 +42,17 @@ import HeroQuickGuides from './HeroQuickGuides.astro'
 <style>
   .section-kicker { margin: 0 0 0.35rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
   .latest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 5vw, 4rem); padding-top: 0.25rem; }
+
+  .guide-additions { margin: 0 0 2.25rem; }
+  .guide-additions-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+  .guide-additions h3 { margin: 0; font-size: 1rem; }
+  .guide-additions-head a { font-size: 0.88rem; font-weight: 600; }
+  .guide-additions ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+  .guide-additions li a { display: flex; flex-direction: column; gap: 0.3rem; height: 100%; padding: 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast); }
+  .guide-additions li a:hover { border-color: var(--accent); }
+  .addition-title { font-weight: 700; font-size: 0.95rem; }
+  .addition-desc { color: var(--text-secondary); font-size: 0.84rem; line-height: 1.45; }
+
+  @media (max-width: 900px) { .guide-additions ul { grid-template-columns: 1fr; } }
   @media (max-width: 720px) { .latest-grid { grid-template-columns: 1fr; } }
 </style>
