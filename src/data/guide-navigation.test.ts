@@ -12,9 +12,11 @@ test('uses one curated navigation model for the guide hub and HTML sitemap', () 
 
   const prepare = readFileSync(resolve(ROOT, 'scripts/prepare-guide-content.mjs'), 'utf8')
   const sitemap = readFileSync(resolve(ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
+  const sitemapSections = readFileSync(resolve(ROOT, 'src/data/sitemap-sections.ts'), 'utf8')
 
   assert.match(prepare, /guide-navigation\.mjs/)
-  assert.match(sitemap, /guide-navigation\.mjs/)
+  assert.match(sitemap, /sitemap-sections\.ts/)
+  assert.match(sitemapSections, /guide-navigation\.mjs/)
 })
 
 test('surfaces the current agent engineering and team operations references', async () => {

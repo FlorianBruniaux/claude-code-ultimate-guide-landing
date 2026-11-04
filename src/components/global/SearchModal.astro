@@ -10,6 +10,7 @@ import {
   navigationSections,
   newGuideWorkflowHrefs,
 } from '../../data/header-navigation'
+import { sitemapSectionHref } from '../../data/sitemap-sections'
 import type { HeaderNavigationLink } from '../../data/header-navigation'
 
 interface MapCard {
@@ -30,7 +31,7 @@ const sectionCard = (id: string): MapCard => {
   // The overview opens the card's footer link, so the card lists the pages under it.
   const links = [...section.essentials, ...section.groups.flatMap((group) => group.links)].filter(internal)
   const total = new Set(getSectionLinks(section).filter(internal).map((link) => link.href)).size
-  return { id, label: section.label, description: section.description, links: links.slice(0, MAP_LINKS), total, href: section.overview?.href ?? '/sitemap/' }
+  return { id, label: section.label, description: section.description, links: links.slice(0, MAP_LINKS), total, href: section.overview?.href ?? sitemapSectionHref(id) }
 }
 
 // The Guide card shows the newest guide pages the menu highlights.

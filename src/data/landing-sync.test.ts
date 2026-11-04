@@ -49,11 +49,15 @@ test('Community translations are not declared as equivalent hreflang alternates'
   assert.doesNotMatch(starlightHead, /hreflang/i)
 })
 
-test('HTML sitemap exposes Loop & Graph Engineering', () => {
-  const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
 
-  assert.match(sitemapPage, /'\/guide\/loop-graph-engineering\/'/)
-  assert.match(sitemapPage, /Loop & Graph Engineering/)
+async function sitemapLinks() {
+  const { getGuideSitemapSections, getMenuSitemapSections } = await import('./sitemap-sections.ts')
+  return [...getMenuSitemapSections(), ...getGuideSitemapSections()].flatMap((section) => [...section.essentials, ...section.links])
+}
+
+test('HTML sitemap exposes Loop & Graph Engineering', async () => {
+  const links = await sitemapLinks()
+  assert.ok(links.some((link) => link.href === '/guide/loop-graph-engineering/' && /Loop & Graph Engineering/.test(link.label)))
 })
 
 test('RSS feed includes the loop and graph engineering page', () => {
@@ -63,14 +67,13 @@ test('RSS feed includes the loop and graph engineering page', () => {
   assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/loop-graph-engineering\//)
 })
 
-test('Subscription Strategy stays exposed across landing discovery surfaces', () => {
-  const sitemapPage = readFileSync(resolve(PROJECT_ROOT, 'src/pages/sitemap/index.astro'), 'utf8')
+test('Subscription Strategy stays exposed across landing discovery surfaces', async () => {
+  const links = await sitemapLinks()
   const rssEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/rss-entries.ts'), 'utf8')
   const searchEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-search-entries.ts'), 'utf8')
   const contentEntries = readFileSync(resolve(PROJECT_ROOT, 'src/data/guide-content-entries.ts'), 'utf8')
 
-  assert.match(sitemapPage, /'\/guide\/subscription-strategy\/'/)
-  assert.match(sitemapPage, /Subscription Strategy at Team Scale/)
+  assert.ok(links.some((link) => link.href === '/guide/subscription-strategy/' && /^Subscription Strategy/.test(link.label)))
   assert.match(rssEntries, /title: 'Subscription Strategy at Team Scale'/)
   assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/subscription-strategy\//)
   assert.match(searchEntries, /"id": "guide-subscription-strategy-guide"/)

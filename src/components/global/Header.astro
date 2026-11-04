@@ -12,6 +12,7 @@ import {
   navigationSections,
 } from '../../data/header-navigation'
 import type { HeaderNavigationLink } from '../../data/header-navigation'
+import { sitemapSectionHref } from '../../data/sitemap-sections'
 
 const currentPath = Astro.url.pathname
 const activeNavigation = getActiveNavigation(currentPath)
@@ -108,7 +109,7 @@ const panels = navigationSections.map((section) => {
                           {section.overview.label} →
                         </a>
                       )}
-                      <a class="intent-panel-all" href={allPagesLink.href}>{allLabel} →</a>
+                      <a class="intent-panel-all" href={sitemapSectionHref(section.id)}>{allLabel} →</a>
                     </span>
                   </div>
 

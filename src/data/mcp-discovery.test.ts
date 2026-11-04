@@ -43,8 +43,8 @@ test('navigation and the HTML sitemap expose the MCP product separately from the
 
   assert.ok(buildLinks?.some((link) => link.href === '/mcp/' && link.label === 'Claude Code Guide MCP Server'))
   assert.ok(buildLinks?.some((link) => link.href === '/mcp-or-cli/' && link.label === 'MCP or CLI?'))
-  assert.match(htmlSitemap, /intent-navigation\.json/)
-  const sitemapPaths = intentNavigation.groups.flatMap(group => group.items.map(item => item.site_path))
+  const { getMenuSitemapSections } = await import('./sitemap-sections.ts')
+  const sitemapPaths = getMenuSitemapSections().flatMap((section) => [...section.essentials, ...section.links].map((link) => link.href))
   assert.ok(sitemapPaths.includes('/mcp/'))
   assert.ok(sitemapPaths.includes('/mcp-or-cli/'))
 })
