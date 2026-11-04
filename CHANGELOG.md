@@ -4,6 +4,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- **Security data: scanning-tool commands corrected (November 4, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors the AgentSec feed byte for byte again, and `src/data/security-data.ts` takes the guide database fix: `mcp-scan` and Snyk Agent Scan now run as `uvx snyk-agent-scan@latest` instead of npm names Snyk does not publish, and Ferrok is the GitHub Action `uses: rfounds/ferrok-scan@v1`. Quiz question 13-025 now names Snyk Agent Scan and warns against the unrelated npm package `mcp-scan`.
+
 - **Cmd+K: the Memory Systems page before the cheat sheet row (November 3, 2026)**: on the live index, "memory system" still opened the cheat sheet's "Memory System" row first, because its exact title (100 + 5) tied with the page's title prefix (90 + 15). The dedicated-page bonus in `src/scripts/search.ts` rises from 15 to 20, so the page leads; a new test reproduces the tie.
 
 - **Security data: AgentSec 2.33.0 (November 3, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors the AgentSec feed byte for byte (243 advisories, 156 sources, 143 events) and `src/data/security-data.ts` is regenerated from the guide compatibility database (252 records, 349 sources) with `scripts/sync-security-catalog.mjs`. The batch adds 22 reviewed coding-agent and MCP advisories found through the mcp-cve-project index and five informational version floors. `agentsec-security-feed.test.ts` follows the new version, date and CVE count.
