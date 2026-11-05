@@ -1,3 +1,5 @@
+import { ROLES_MODIFIED_DATE } from './roles-dates.mjs'
+
 /**
  * AI roles and career paths data.
  * Canonical source: guide/roles/ai-roles.md
@@ -255,7 +257,7 @@ export const ROLES: RoleEntry[] = [
   },
 ]
 
-export const ROLES_MODIFIED_DATE = '2026-08-31'
+export { ROLES_MODIFIED_DATE }
 
 export function formatRolesUpdatedDate(isoDate: string): string {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {

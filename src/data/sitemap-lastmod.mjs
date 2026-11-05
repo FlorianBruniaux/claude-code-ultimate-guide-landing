@@ -6,11 +6,14 @@
  * @param {string} url
  * @param {Record<string, string>} pageDates
  * @param {Map<string, string>} guideDates
+ * @param {Record<string, string>} [sectionDates] path prefix -> date shared by the whole section
  * @returns {string | undefined}
  */
-export function resolveLastmod(url, pageDates, guideDates) {
+export function resolveLastmod(url, pageDates, guideDates, sectionDates = {}) {
   const normalizedUrl = url.endsWith('/') ? url : `${url}/`
-  return pageDates[normalizedUrl] ?? guideDates.get(new URL(normalizedUrl).pathname)
+  const pathname = new URL(normalizedUrl).pathname
+  const section = Object.keys(sectionDates).find((prefix) => pathname.startsWith(prefix))
+  return pageDates[normalizedUrl] ?? guideDates.get(pathname) ?? (section ? sectionDates[section] : undefined)
 }
 
 /**

@@ -26,3 +26,19 @@ test('dates the FAQ on its October 31 content change', () => {
   assert.match(config, /'https:\/\/cc\.bruniaux\.com\/faq\/': '2026-10-31'/)
   assert.doesNotMatch(config, /new Date\(\)\.toISOString\(\)/)
 })
+
+test('dates a whole section from its shared source date, after exact page dates', () => {
+  const sectionDates = { '/roles/': '2026-08-31' }
+  assert.equal(resolveLastmod('https://cc.bruniaux.com/roles/ai-engineer/', pageDates, guideDates, sectionDates), '2026-08-31')
+  assert.equal(resolveLastmod('https://cc.bruniaux.com/roles/', pageDates, guideDates, sectionDates), '2026-08-31')
+  assert.equal(resolveLastmod('https://cc.bruniaux.com/faq/', pageDates, guideDates, sectionDates), '2026-10-31')
+  assert.equal(resolveLastmod('https://cc.bruniaux.com/rolesx/', pageDates, guideDates, sectionDates), undefined)
+})
+
+test('role pages share the date their own pages declare as dateModified', async () => {
+  const { ROLES_META } = await import('./ai-roles.ts')
+  const { SECTION_DATES } = await import('./roles-dates.mjs')
+  assert.equal(SECTION_DATES['/roles/'], ROLES_META.modifiedDate)
+  const config = readFileSync(new URL('../../astro.config.mjs', import.meta.url), 'utf8')
+  assert.match(config, /resolveLastmod\(normalizedUrl, PAGE_DATES, GUIDE_DATES, SECTION_DATES\)/)
+})

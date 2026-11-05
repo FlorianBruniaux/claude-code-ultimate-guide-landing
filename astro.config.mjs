@@ -9,6 +9,7 @@ import { legacyGuideRedirects } from './src/data/legacy-guide-redirects.mjs'
 import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-contract.mjs'
 import { readGuideLastmods } from './src/data/guide-lastmod.mjs'
 import { resolveLastmod, withLastmod } from './src/data/sitemap-lastmod.mjs'
+import { SECTION_DATES } from './src/data/roles-dates.mjs'
 import publicationEdition from './src/data/publication-edition.json'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -256,7 +257,7 @@ export default defineConfig({
 
         const normalizedUrl = item.url.endsWith('/') ? item.url : item.url + '/'
         if (SITEMAP_EXCLUDED_ROUTES.has(new URL(normalizedUrl).pathname)) return undefined
-        const lastmod = resolveLastmod(normalizedUrl, PAGE_DATES, GUIDE_DATES)
+        const lastmod = resolveLastmod(normalizedUrl, PAGE_DATES, GUIDE_DATES, SECTION_DATES)
 
         if (item.url === 'https://cc.bruniaux.com/') {
           return withLastmod({ ...item, priority: 1.0, changefreq: 'weekly' }, lastmod)
