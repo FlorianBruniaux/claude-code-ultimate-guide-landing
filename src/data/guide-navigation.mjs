@@ -116,7 +116,7 @@ export const guideSections = [
     icon: '🧠',
     desc: 'Control what agents know, retain, spend, and share.',
     links: [
-      { title: 'Context Engineering', href: '/guide/context-engineering/', desc: 'Token budgets, modular context, ACE, and quality measurement.', time: '25 min' },
+      { title: 'Context Engineering', href: '/context-engineering/', desc: 'Token budgets, modular context, ACE, and quality measurement.', time: '25 min' },
       { title: 'Memory Systems', href: '/guide/memory-systems/', desc: 'Native, cross-session, and team-shared memory.', time: '30 min' },
       { title: 'Team Knowledge Infrastructure', href: '/guide/team-knowledge-base/', desc: 'Markdown, live connectors, and RAG at team scale.', time: '18 min' },
       { title: 'Local vs Cloud Inference', href: '/guide/local-vs-cloud-inference/', desc: 'Hardware, rental, API, throughput, and TCO boundaries.', time: '20 min' },

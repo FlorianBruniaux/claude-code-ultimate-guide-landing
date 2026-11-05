@@ -98,3 +98,19 @@ test('Security routes have stable lastmod dates', () => {
     assert.match(sitemapConfig, new RegExp(`'${href}': '2026-08-31'`))
   }
 })
+
+test('no All pages link points to a redirect source', async () => {
+  const { getMenuSitemapSections, getGuideSitemapSections } = await import('./sitemap-sections.ts')
+  const { legacyGuideRedirects } = await import('./legacy-guide-redirects.mjs')
+  const block = sitemapConfig.slice(sitemapConfig.indexOf('redirects: {'), sitemapConfig.indexOf('\n  },', sitemapConfig.indexOf('redirects: {')))
+  const redirectSources = new Set([
+    ...Object.keys(legacyGuideRedirects),
+    ...[...block.matchAll(/'(\/[^']*)':\s*'/g)].map((match) => match[1]),
+  ])
+  assert.ok(redirectSources.has('/guide/context-engineering/'), 'redirect block parsed')
+  const hrefs = [...getMenuSitemapSections(), ...getGuideSitemapSections()]
+    .flatMap((section) => [section.overview, ...section.essentials, ...section.links])
+    .filter((link) => link !== undefined)
+    .map((link) => link.href.split('#')[0])
+  assert.deepEqual(hrefs.filter((href) => redirectSources.has(href)), [])
+})

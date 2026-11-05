@@ -1,4 +1,4 @@
-export const CONTEXT_GUIDE_HREF = '/guide/context-engineering/'
+export const CONTEXT_GUIDE_HREF = '/context-engineering/'
 
 export const CONTEXT_NAV_ITEMS = [
   { href: '#configure', label: 'Configure' },
