@@ -1,0 +1,25 @@
+src/components/context/ContextHero.astro
+  s_b8856734d9cecd::t_5a795d4c4709dd 15
+src/data/context-page.ts
+  s_b8856734d9cecd::t_43c91e0992b1e0 1
+src/data/guide-navigation.mjs
+  s_b8856734d9cecd::t_b63761cb6ebaf1 119
+src/data/sitemap-page.test.ts
+  s_b8856734d9cecd::t_9aaa4629f392de 101-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b53b112043d26ca5f4eb465b62681fea048196d3",
+  "prompts": {},
+  "sessions": {
+    "s_b8856734d9cecd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6fadf8cc-5bdc-4e98-8b22-621922e0cbd4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
