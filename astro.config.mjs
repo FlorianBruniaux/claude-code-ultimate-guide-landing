@@ -10,6 +10,7 @@ import { LATEST_CLAUDE_CODE_RELEASE_DATE_ISO } from './src/data/seo-editorial-co
 import { readGuideLastmods } from './src/data/guide-lastmod.mjs'
 import { resolveLastmod, withLastmod } from './src/data/sitemap-lastmod.mjs'
 import { SECTION_DATES } from './src/data/roles-dates.mjs'
+import { SUPERSEDED_GUIDE_PAGES, collapseSupersededRedirects } from './src/data/superseded-guide-pages.mjs'
 import publicationEdition from './src/data/publication-edition.json'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -18,9 +19,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const SITEMAP_EXCLUDED_ROUTES = new Set([
   '/guide/claude-code-releases/',
-  '/guide/ai-ecosystem/',
-  '/guide/ai-roles/',
-  '/guide/context-engineering/',
+  ...Object.keys(SUPERSEDED_GUIDE_PAGES),
 ])
 
 // Guide pages take their source git date from the generated frontmatter.
@@ -62,7 +61,7 @@ export default defineConfig({
   site: 'https://cc.bruniaux.com',
   trailingSlash: 'always',
 
-  redirects: {
+  redirects: collapseSupersededRedirects({
     ...legacyGuideRedirects,
 
     // Security section path change
@@ -152,10 +151,8 @@ export default defineConfig({
     '/guide/claude-md-best-practices/': '/claude-md-best-practices/',
 
     // Cannibalization fixes: guide sub-pages vs standalone landing pages
-    '/guide/ai-roles/': '/roles/',
-    '/guide/context-engineering/': '/context-engineering/',
-    '/guide/ai-ecosystem/': '/ecosystem/',
-  },
+    ...SUPERSEDED_GUIDE_PAGES,
+  }),
 
   integrations: [
     starlight({
@@ -218,7 +215,7 @@ export default defineConfig({
         {
           label: 'Ecosystem',
           items: [
-            { slug: 'guide/ai-ecosystem' },
+            { label: 'AI Ecosystem: Maximizing Claude Code with Complementary Tools', link: '/ecosystem/' },
             { slug: 'guide/agentic-tools' },
             { slug: 'guide/agent-harness-landscape' },
             { slug: 'guide/mcp-servers-ecosystem' },
@@ -229,7 +226,7 @@ export default defineConfig({
         {
           label: 'Roles & Adoption',
           items: [
-            { slug: 'guide/ai-roles' },
+            { label: 'AI Roles & Career Paths: The New Engineering Landscape', link: '/roles/' },
             { slug: 'guide/adoption-approaches' },
             { slug: 'guide/learning-with-ai' },
             { slug: 'guide/agent-evaluation' },

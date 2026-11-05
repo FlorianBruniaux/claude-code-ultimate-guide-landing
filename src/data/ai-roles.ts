@@ -38,7 +38,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['LLM behavior and failure modes', 'Systematic A/B testing', 'Prompt versioning'],
     entryPaths: ['Technical writer', 'QA engineer', 'Domain expert'],
     guideAnchor: '2-prompt-engineer',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
   },
   {
     id: 'context-engineer',
@@ -48,7 +48,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['RAG and retrieval', 'Prompt caching and token budgets', 'Knowledge architecture', 'MCP context servers'],
     entryPaths: ['Data engineer', 'Backend engineer', 'ML engineer'],
     guideAnchor: '3-context-engineer',
-    landingUrl: '/guide/ai-ecosystem/',
+    landingUrl: '/ecosystem/',
   },
   {
     id: 'ai-engineer',
@@ -69,7 +69,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['Application architecture', 'Context and tool use', 'Evaluation datasets', 'Production instrumentation'],
     entryPaths: ['Software engineer', 'AI engineer', 'Product engineer'],
     guideAnchor: '5-applied-ai-engineer',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
     highlight: true,
   },
   {
@@ -142,7 +142,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['Evaluation design', 'Probabilistic thinking', 'AI UX patterns'],
     entryPaths: ['Product manager', 'Technical PM', 'QA or data analyst'],
     guideAnchor: '12-ai-product-manager',
-    landingUrl: '/guide/ai-ecosystem/',
+    landingUrl: '/ecosystem/',
   },
   {
     id: 'ai-safety-eval-engineer',
@@ -182,7 +182,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['Technical content', 'Community building', 'Platform and API fluency'],
     entryPaths: ['Software engineer', 'Technical writer', 'Developer relations'],
     guideAnchor: '16-ai-developer-advocate',
-    landingUrl: '/guide/ai-ecosystem/',
+    landingUrl: '/ecosystem/',
   },
   {
     id: 'ai-orchestration-engineer',
@@ -202,7 +202,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['Structured specification writing', 'Agent failure modes', 'Acceptance criteria'],
     entryPaths: ['Technical writer', 'QA engineer', 'Product engineer'],
     guideAnchor: '18-spec-engineer',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
   },
   {
     id: 'agent-identity-architect',
@@ -212,7 +212,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['IAM and OAuth/OIDC', 'Zero-trust architecture', 'Agent authorization'],
     entryPaths: ['IAM security engineer', 'Platform security engineer', 'Cloud architect'],
     guideAnchor: '19-agent-identity-architect',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
   },
   {
     id: 'ai-eval-engineer',
@@ -232,7 +232,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['Technical discovery', 'Production integration', 'Evaluation and rollout', 'Customer collaboration'],
     entryPaths: ['Solutions engineer', 'Product engineer', 'Applied AI engineer'],
     guideAnchor: '21-forward-deployed-engineer-fde',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
     highlight: true,
   },
   {
@@ -243,7 +243,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['AI threat modeling', 'Adversarial testing', 'Runtime controls', 'AppSec and IAM integration'],
     entryPaths: ['Application security engineer', 'Cloud security engineer', 'AI red-team engineer'],
     guideAnchor: '22-ai-security-engineer',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
   },
   {
     id: 'ai-governance-engineer',
@@ -253,7 +253,7 @@ export const ROLES: RoleEntry[] = [
     skills: ['AI inventories and lineage', 'Policy automation', 'Control evidence', 'Risk workflows'],
     entryPaths: ['Governance engineer', 'Data platform engineer', 'Risk technology engineer'],
     guideAnchor: '23-ai-governance-engineer',
-    landingUrl: '/guide/ai-roles/',
+    landingUrl: '/roles/',
   },
 ]
 

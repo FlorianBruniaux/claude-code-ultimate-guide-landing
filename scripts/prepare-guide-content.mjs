@@ -20,6 +20,7 @@ import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
 import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
 import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
 import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
+import { rewriteSupersededGuideLinks } from '../src/data/superseded-guide-pages.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -757,6 +758,7 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   content = rewriteRelativeImageLinks(content)
   content = rewriteCrossChapterAnchors(content, currentSlug, anchorMap)
   content = resolveUltimateGuideAnchors(content, anchorMap)
+  content = rewriteSupersededGuideLinks(content)
 
   const sidebarLabel = label ? `\n  label: '${label}'` : ''
   const dateLines = [
@@ -784,6 +786,7 @@ for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuf
   rewritten = rewriteRelativeImageLinks(rewritten)
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)
+  rewritten = rewriteSupersededGuideLinks(rewritten)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
   rewritten = renderMermaidBlocks(rewritten, fileSlug)
   const outPath = isWorkflow
