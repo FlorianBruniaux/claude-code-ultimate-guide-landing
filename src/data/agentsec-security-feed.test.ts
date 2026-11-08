@@ -11,8 +11,8 @@ import {
 test('canonical feed exposes current database metadata and derived landing metrics', () => {
   const view = buildAgentSecSecurityView(AGENTSEC_FEED)
 
-  assert.equal(view.databaseLabel, 'Threat DB v2.33.0')
-  assert.equal(view.databaseUpdatedLabel, 'November 3, 2026')
+  assert.equal(view.databaseLabel, 'Threat DB v2.34.0')
+  assert.equal(view.databaseUpdatedLabel, 'November 5, 2026')
   assert.deepEqual(
     view.stats.map((item) => [item.id, item.value]),
     [
@@ -45,7 +45,7 @@ test('security view exposes every detector without depending on feed order', () 
 
   const canonical = buildAgentSecSecurityView(AGENTSEC_FEED)
   const reversed = buildAgentSecSecurityView(reordered)
-  const expected = ['clawhavoc-skill', 'shai-hulud-keyv']
+  const expected = ['clawhavoc-skill', 'fakegit-archive-lure', 'shai-hulud-keyv']
 
   assert.deepEqual(canonical.detectors.map((item) => item.id), expected)
   assert.deepEqual(reversed.detectors.map((item) => item.id), expected)

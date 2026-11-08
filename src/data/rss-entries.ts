@@ -31,6 +31,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_section',
+    title: 'Fake agent-tool repositories: the FakeGit lures',
+    date: 'Nov 6, 2026',
+    description: 'Thomas Roccia reported 73 GitHub repositories posing as Claude skills, Codex tools and MCP servers. Their skill files were clean; the README linked a ZIP committed to the repository that runs the SmartLoader chain. The guide adds the checks to run on an unfamiliar agent-tool repository, and the threat database adds his indicators with their confidence grades.',
+    link: 'https://cc.bruniaux.com/guide/security-hardening/#fake-agent-tool-repositories-fakegit',
+  },
+  {
+    type: 'new_section',
     title: 'November Security Review: AgentSec 2.32.0',
     date: 'Nov 2, 2026',
     description: 'Thirty-one maintainer or vendor advisories added since October 4, plus four CVE reports tracked as monitoring with no fixed version yet. Version floors for the Claude Agent SDK, MCP TypeScript 2.x, FastMCP, chrome-devtools-mcp, Junie CLI and Langflow; three MCP SDK fixes that need configuration; repositories armed with agent startup hooks; and the tampered Claude Code extension served by Cursor\'s marketplace. The vulnerabilities added in this review are not detected by AgentSec.',
@@ -96,7 +103,7 @@ export const rssEntries: RssEntry[] = [
     type: 'new_page',
     title: 'Token-saving tools, measured: 45 tools, eight benchmarks, 15 preprints',
     date: 'Sep 30, 2026',
-    description: 'Caveman, RTK, Headroom, Ponytail and others, measured end to end by Dasein, Stet, Marmelab, JetBrains, the Token-Harness Optimizer Leaderboard, Tura and Codepointer, next to 15 arXiv preprints and a catalogue of 45 tools grouped by mechanism. Most results sit far below vendor claims, and some tools made tasks more expensive. Includes each publisher\'s interest and an eight-point quality grid. The site author is a core contributor to RTK.',
+    description: 'Caveman, RTK, Headroom, Ponytail and others, measured end to end by Dasein, Stet, Marmelab, JetBrains, the Token-Harness Optimizer Leaderboard, Tura and Codepointer, next to 15 arXiv preprints and a catalogue of 45 tools grouped by mechanism. Most results sit far below vendor claims, and some tools made tasks more expensive. Includes each publisher\'s interest and an eight-point quality grid. The site author is a historical contributor to RTK and still supports the project.',
     link: 'https://cc.bruniaux.com/token-savings/',
   },
   {
