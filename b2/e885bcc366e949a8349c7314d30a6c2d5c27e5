@@ -1,0 +1,23 @@
+src/data/releases.ts
+  s_c8c3bca8147dad::t_4974f042ad36cb 21,23-82,92,106,120,134,145
+src/data/seo-editorial-contract.mjs
+  s_c8c3bca8147dad::t_c1adc58c953c14 106
+src/data/seo-editorial-contract.test.ts
+  s_c8c3bca8147dad::t_e54900536ac3a7 89-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b2e885bcc366e949a8349c7314d30a6c2d5c27e5",
+  "prompts": {},
+  "sessions": {
+    "s_c8c3bca8147dad": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "75019b0d-0459-41ed-aa81-ed9e92b0ac5c",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
