@@ -16,14 +16,14 @@ import {
   guideHref,
 } from '../../data/ai-design-patterns.ts'
 
-const title = 'AI Design Patterns: GoF and Resilience Patterns for Claude Code'
-const description = 'Classic design patterns (Observer, Chain of Responsibility, Memento, Circuit Breaker, Saga) mapped to Claude Code hooks, subagents, checkpoints and limits, with failure modes, checks, native agent patterns and anti-patterns.'
+const title = 'AI Design Patterns for Claude Code: Visual Pattern Finder'
+const description = 'Choose an AI design pattern for your Claude Code harness. Compare hooks, subagents, checkpoints and limits in a visual map, then open the implementation checks.'
 const pageUrl = 'https://cc.bruniaux.com/ai-design-patterns/'
 
 const jsonLd = [
   {
     '@type': 'Article',
-    headline: 'AI Design Patterns: classic patterns mapped to Claude Code',
+    headline: title,
     description,
     url: pageUrl,
     mainEntityOfPage: pageUrl,
@@ -98,11 +98,12 @@ const updatedLabel = formatDate(LAST_UPDATED)
   <header class="page-hero">
     <div class="container">
       <div class="hero-eyebrow">Claude Code · Build</div>
-      <h1>AI design patterns</h1>
+      <h1>Choose an AI design pattern for Claude Code</h1>
       <p class="hero-updated">Last updated: <time datetime={LAST_UPDATED}>{updatedLabel}</time></p>
-      <p class="hero-desc">Your agent harness already speaks the patterns developers know: Observer, Mediator, Memento, Circuit Breaker, Saga. This page maps each one to the Claude Code mechanism behind it, then shows where the analogy breaks.</p>
+      <p class="hero-desc">Start with the problem your agent needs to solve. Use the visual map to compare patterns for routing, isolation, checkpoints and recovery, then open the matching card for its limits and a check you can run.</p>
       <div class="hero-pills">
-        <a href="#crosswalk" class="pill pill--accent">{PATTERN_COUNTS.crosswalk} crosswalk rows</a>
+        <a href="#choose" class="pill pill--accent">Choose by problem</a>
+        <a href={guideHref('pattern-cards')} class="pill pill--info">Read the implementation cards</a>
         <a href="#native" class="pill pill--info">{PATTERN_COUNTS.native} native agent patterns</a>
         <a href="#anti-patterns" class="pill pill--warning">{PATTERN_COUNTS.antiPatterns} anti-patterns</a>
       </div>
