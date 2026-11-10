@@ -18,8 +18,68 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.316',
+    version: 'v2.1.322',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "Added fast mode on Vertex AI in the global, us and eu regions, falling back to standard speed if Vertex refuses it",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.321',
+    date: "Nov 9, 2026",
+    highlights: [
+      "⭐ Added Claude Fable 5.2 (claude-fable-5-2), now the default Fable model, with 1M context at $8/$40 per Mtok and $0.20/Mtok cache reads",
+      "Added --settings <file> to claude remote-control, applied to every session it starts (a changed file applies after restarting claude remote-control)",
+      "Fixed MCP OAuth requests sending secrets such as refresh tokens to another host on a redirect, a read-only Bash command running outside the sandbox without a prompt, Bash permission checks judging a write from the wrong folder, and deny rules and protected-file prompts missing the file a cp or mv into a directory writes",
+      "Fixed Edit and NotebookEdit on network paths (UNC shares, WSL folders, /net mounts) changing the wrong match, replacing a whole file on an empty old_string or overwriting a notebook's first cell; fast mode now tries standard speed on the same model first when fast serving is rate-limited or failing",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.319',
+    date: "Nov 6, 2026",
+    highlights: [
+      "⭐ Added permissions.denyInsteadOfPrompting: a tool call that would wait on a permission prompt is denied and the turn continues, in terminal sessions, subagents and teammates",
+      "Added MCP tasks in the terminal: a tool call an MCP server runs as a task moves to the background and Claude gets the result when it finishes (CLAUDE_CODE_DISABLE_MCP_TASK_BACKGROUND waits instead, CLAUDE_CODE_DISABLE_MCP_TASKS=1 turns them off), plus CLAUDE_CODE_DISABLE_FEATURE_FLAGS and /claude-api latency-optimize",
+      "Changed nested skill loading: with the Bash sandbox on, .claude/skills folders below the starting folder load only if you start or /cd there; which with flags outside a lookup set now asks, and an exact Bash or PowerShell ask rule is refused when a broader deny rule covers the command",
+      "Added an \"Earlier in this session\" row to /tasks that lists finished subagents you can reopen and message, even after a restart",
+    ],
+    breaking: [
+      "Auto mode with telemetry or feature flags off, including behind LLM gateways, no longer falls back to the built-in classifier: calls the server can't check are asked about or denied; set CLAUDE_CODE_AUTO_MODE_SERVER=0 to keep the built-in classifier (Bedrock, Vertex and Foundry are unchanged).",
+      "Self-paced /loop ends when a turn finishes without rescheduling instead of scheduling a fallback wakeup; CLAUDE_CODE_LOOP_KEEPALIVE=1 keeps the old behavior. shortcuts_list and shortcuts_execute were removed from the built-in Claude in Chrome tools.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.318',
+    date: "Nov 3, 2026",
+    highlights: [
+      "Added loginExpiresAt to claude auth status, credential_expires_at to claude -p JSON results, and a stderr warning in claude -p text output starting 10 days before a stored claude.ai sign-in ends",
+      "Added an effort option to a mod's $.model.fork and assume_role on mantle upstreams of the Claude apps gateway",
+      "Changed deniedMcpServers URL entries to also block Anthropic-provided servers and cloud-session connectors whose upstream URL matches, background subagents to move a shell command to the background after 3 minutes on all providers, and subagents to stop instead of switching models when the flagged-message switch is set to \"Ask each time\"",
+      "Improved how ~/.claude.json, settings files and the stored login survive saves on shared network home directories, and unattended runs (claude -p, SDK apps) no longer rewrite ~/.claude.json when nothing changed",
+    ],
+    breaking: [
+      "Claude Code no longer installs or updates the IDE extension when started in an IDE terminal; use /ide from an outside terminal or the editor's extensions view. The 2.1.288 fix that kept earlier thinking when resuming a conversation started on 2.1.286 or earlier was removed, so that thinking can be dropped.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.317',
+    date: "Nov 2, 2026",
+    highlights: [
+      "Added a check that asks before a web or shell tool call sends your account email address to the network, and onFailure: \"block\" for Agent SDK hook callbacks",
+      "Added anthropic.plan, anthropic.seat_type, anthropic.provider and anthropic.custom_base_url to OTel metrics, events and spans, and a cost report (GET /v1/organizations/analytics/cost) to the Claude apps gateway admin API",
+      "Changed subagents and teammates on a different model from the main conversation to use that model's saved effort level or its default, and SendMessage to a running background agent to arrive earlier by moving its running command to the background",
+      "Removed the Read tool's \"file unchanged since your last Read\" stub: reading an unchanged file again returns its content",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.316',
+    date: "Oct 31, 2026",
     highlights: [
       "Added CLAUDE_CODE_SUBAGENT_EFFORT to set the effort level subagents run at when nothing else names one, CLAUDE_CODE_DISABLE_ULTRATHINK to turn the ultrathink keyword off, and pooled group budgets plus managed.policy_mode: layered on the Claude apps gateway",
       "Fixed --restricted sessions uploading files from outside the working directories under a Read allow rule, PowerShell hooks not blocking on exit code 2 when the command starts with a type cast, param, using or an attribute, and the Claude apps gateway not checking every model a request names against availableModels, deniedModels and models",
@@ -29,8 +89,7 @@ export const releases: Release[] = [
     breaking: [
       "Fast mode for Opus 4.8 is deprecated as of October 30, 2026 and scheduled for removal on November 30, 2026. After removal, fast mode requests on Opus 4.8 return an error and do not fall back to standard Opus 4.8; migrate to Opus 5.5 to keep the speedup.",
     ],
-    latest: true,
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.314',
@@ -44,7 +103,7 @@ export const releases: Release[] = [
     breaking: [
       "Hooks matching Bash now also run on shell commands started by the Monitor tool; they can block or ask, but not approve or rewrite those commands. Each PreCompact hook's output is cut at 10,000 characters. With CI set, claude ultrareview and claude remote-control refuse an untrusted folder at once instead of asking.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.312',
@@ -58,7 +117,7 @@ export const releases: Release[] = [
     breaking: [
       "Claude Code no longer sends the claude_code.safety_event OpenTelemetry event added in 2.1.307. Bedrock, Vertex, Foundry and Mantle use the shorter system prompt for model names Claude Code does not recognize, such as custom deployment names and inference profile ARNs (CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 keeps the full prompt), and automatic model switches after a flagged message cover those names (CLAUDE_CODE_DISABLE_REFUSAL_FALLBACK=1 turns them off). A hook timeout under 1 second counts as 1 second.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.311',
@@ -72,7 +131,7 @@ export const releases: Release[] = [
     breaking: [
       "Bedrock, Mantle, Vertex and Foundry load model settings from a signed file on downloads.claude.ai (CLAUDE_CODE_MODEL_CATALOG=off turns this off). --output-format json and stream-json write DEL, C1 control and Unicode format characters inside strings as \\uXXXX escapes; parsed values are unchanged. DISABLE_COMPACT in settings files and in a mod's $.env.set can only turn compaction off. VS Code starts sessions with DISABLE_TELEMETRY set while its telemetry setting is off.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.310',
@@ -83,7 +142,7 @@ export const releases: Release[] = [
       "Fixed Windows PreToolUse and PermissionRequest hooks letting a tool call through when Git Bash is missing and the hook command is only quoted strings, and file read permission prompts not showing where a symbolic link leads",
       "Improved the Linux /sandbox warning to name Ubuntu's AppArmor restriction on user namespaces when it keeps bubblewrap from starting, and added cloud sessions and Remote Control permissions to Enterprise custom roles",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.309',
