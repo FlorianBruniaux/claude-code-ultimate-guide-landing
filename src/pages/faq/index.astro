@@ -277,7 +277,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>What's the difference between agents, skills, and commands?</summary>
-          <p><strong>Agents</strong> are AI personas with specific expertise (code-reviewer, security-auditor) defined in <code>.claude/agents/</code>. <strong>Skills</strong> are reusable capability modules with bundled resources, invoked via <code>/skill-name</code>. <strong>Commands</strong> are simple slash-command templates in <code>.claude/commands/</code> for repetitive tasks. Rule of thumb: commands for single-step ops, skills for multi-step workflows with context, agents for specialized review or analysis roles. See the <a href="/#features">features section</a> for detailed comparison.</p>
+          <p><strong>Agents</strong> are AI personas with specific expertise (code-reviewer, security-auditor) defined in <code>.claude/agents/</code>. <strong>Skills</strong> are reusable capability modules with bundled resources, invoked via <code>/skill-name</code>. <strong>Commands</strong> are simple slash-command templates in <code>.claude/commands/</code> for repetitive tasks. Rule of thumb: commands for single-step ops, skills for multi-step workflows with context, agents for specialized review or analysis roles. See the <a href="/guide/ultimate-guide/05-skills/#skills-vs-agents">guide to choosing between skills and agents</a>.</p>
         </details>
         <details class="faq-item">
           <summary>How do I manage the context window in Claude Code?</summary>
@@ -285,7 +285,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>What are MCP servers in Claude Code?</summary>
-          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">{stats.cveCount} CVE and advisory records are tracked</a> in the ecosystem.</p>
+          <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/security/cves/#cve-database">{stats.cveCount} CVE and advisory records are tracked</a> in the ecosystem.</p>
         </details>
         <details class="faq-item">
           <summary>What's the difference between Claude Code and Cowork?</summary>
@@ -293,7 +293,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>Is Claude Code better than GitHub Copilot?</summary>
-          <p>Both have agentic capabilities since early 2025. Claude Code excels at terminal-first workflows with native MCP protocol, CLAUDE.md project memory, Agent SDK for custom automation, and event hooks. Copilot integrates tightly with VS Code via Agent Mode. Many developers use both: Copilot for inline autocomplete, Claude Code for complex multi-file tasks. See our <a href="/#comparison">comparison table</a> for a detailed breakdown.</p>
+          <p>Both have agentic capabilities since early 2025. Claude Code excels at terminal-first workflows with native MCP protocol, CLAUDE.md project memory, Agent SDK for custom automation, and event hooks. Copilot integrates tightly with VS Code via Agent Mode. Many developers use both: Copilot for inline autocomplete, Claude Code for complex multi-file tasks. See our <a href="/compare/claude-code-vs-github-copilot/#comparison-table-heading">comparison table</a> for a detailed breakdown.</p>
         </details>
       </div>
     </section>
@@ -323,7 +323,7 @@ const jsonLd = [
       <div class="faq-list">
         <details class="faq-item">
           <summary>Is Claude Code secure for production use?</summary>
-          <p>Claude Code requires careful hardening for production. This guide tracks <strong>{stats.cveCount} CVEs and advisories</strong> and <strong>3,984 skills scanned</strong> (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/#security">5-minute audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
+          <p>Claude Code requires careful hardening for production. This guide tracks <strong>{stats.cveCount} CVEs and advisories</strong> and <strong>3,984 skills scanned</strong> (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/guide/security-hardening/#5-minute-mcp-audit">5-minute MCP audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
         </details>
         <details class="faq-item">
           <summary>Is my code sent to Anthropic?</summary>
@@ -346,7 +346,7 @@ const jsonLd = [
         </details>
         <details class="faq-item">
           <summary>What version of Claude Code is covered?</summary>
-          <p>The guide is continuously updated to track the latest Claude Code releases. Check the <a href="/changelog/">CHANGELOG</a> for recent updates and the <a href="/#releases">releases section</a> for version-specific feature tracking.</p>
+          <p>The guide is continuously updated to track the latest Claude Code releases. Check the <a href="/changelog/">CHANGELOG</a> for recent updates and the <a href="/releases/#releases">releases section</a> for version-specific feature tracking.</p>
         </details>
         <details class="faq-item">
           <summary>Who is behind this guide?</summary>
