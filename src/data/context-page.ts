@@ -37,7 +37,7 @@ export const CONTEXT_SYSTEM_STAGES = [
     icon: '🔄',
     title: 'CI feedback',
     description: 'Detect stale rules, test adherence, and feed useful findings back into the system.',
-    guideHref: `${CONTEXT_GUIDE_HREF}#10-signal-taxonomy-and-causal-attribution`,
+    guideHref: `${CONTEXT_GUIDE_HREF}#ace-operations`,
     guideLabel: 'Close the context feedback loop',
   },
 ] as const
