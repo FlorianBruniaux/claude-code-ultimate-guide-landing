@@ -87,5 +87,5 @@ No visual editor for `.claude/skills/` skill files. No unified dashboard combini
 These projects evolve independently from Claude Code. Check the repository, permissions, and targeted release before installation; the [glossary](https://cc.bruniaux.com/guide/glossary/) distinguishes a runtime, orchestrator, protocol, and adjacent tool.
 
 <!-- landing-note:start -->
-Disclosure: the author of this guide is a core contributor to RTK.
+Disclosure: the author of this guide contributed to RTK early on and still supports it, without actively contributing to its code today.
 <!-- landing-note:end -->

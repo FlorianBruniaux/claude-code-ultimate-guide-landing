@@ -6,6 +6,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 - Add contextual links from Context Engineering Tools and AI FinOps to team training and budget audit, with a distinct campaign placement for each.
 
+### Author profile alignment
+
+- Align the author profile with the hands-on Fractional Chief AI Officer role, around fifteen years in software and eight to ten in technical leadership. Describe RTK as an early contribution and ongoing support, with no current active code contribution. Keep historical measurements and third-party attribution unchanged.
+
 - **Security data: AgentSec 2.34.0, FakeGit agent-tool lures (November 6, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors the AgentSec feed byte for byte, which adds the `fakegit-archive-lure` detector (coverage `partial`) and the three FakeGit campaign events, and `src/data/security-data.ts` is regenerated from the guide compatibility database (252 records, 353 sources) with `scripts/sync-security-catalog.mjs`. The feed carries no indicators. `src/data/rss-entries.ts` adds "Fake agent-tool repositories: the FakeGit lures", linking to the new section of `/guide/security-hardening/` that credits Thomas Roccia's report. `agentsec-security-feed.test.ts` follows the new version, date and detector list.
 
 - **Security data: scanning-tool commands corrected (November 4, 2026)**: `src/data/agentsec-security-feed.v1.json` mirrors the AgentSec feed byte for byte again, and `src/data/security-data.ts` takes the guide database fix: `mcp-scan` and Snyk Agent Scan now run as `uvx snyk-agent-scan@latest` instead of npm names Snyk does not publish, and Ferrok is the GitHub Action `uses: rfounds/ferrok-scan@v1`. Quiz question 13-025 now names Snyk Agent Scan and warns against the unrelated npm package `mcp-scan`.

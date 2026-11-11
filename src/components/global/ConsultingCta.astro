@@ -30,6 +30,10 @@ const contactUrl = `https://www.florian.bruniaux.com/contact/?utm_source=cc-guid
       <div class="consulting-cta-actions">
         <a href={contactUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Let's talk &rarr;</a>
         <a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener noreferrer" class="consulting-cta-github">See the code on GitHub</a>
+        {placement === 'homepage' && <>
+          <a href="https://www.florian.bruniaux.com/services/training/?utm_source=cc-guide&amp;utm_medium=cta&amp;utm_campaign=harness-training#cohort" class="consulting-cta-github">Get Claude Code and Codex training dates</a>
+          <a href="https://www.florian.bruniaux.com/newsletter/?utm_source=cc-guide&amp;utm_medium=cta&amp;utm_campaign=newsletter#newsletter" class="consulting-cta-github">Subscribe to Florian’s newsletter</a>
+        </>}
       </div>
     </div>
   </div>

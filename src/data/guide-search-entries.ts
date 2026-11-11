@@ -188,6 +188,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-diagram-approve-only-what-you-can-explain",
+    "title": "Diagram Approve Only What You Can Explain",
+    "keywords": "diagram approve only what you can explain guide diagrams adoption and learning md#approve only what you can explain",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/10-adoption-and-learning.md#approve-only-what-you-can-explain",
+    "source": "guide"
+  },
+  {
     "id": "guide-diagram-context-engineering-series",
     "title": "Diagram Context Engineering Series",
     "keywords": "diagram context engineering series guide diagrams context engineering md#the layer context system",
@@ -337,6 +345,78 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "multi provider code review greptile templates examples github actions greptile",
     "category": "Examples",
     "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/github-actions/.greptile/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-provider-code-review-gitlab-flow",
+    "title": "Multi Provider Code Review Gitlab Flow",
+    "keywords": "multi provider code review gitlab flow guide workflows multi provider code review md#role separation",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#role-separation",
+    "source": "guide"
+  },
+  {
+    "id": "guide-multi-provider-code-review-local-surfaces",
+    "title": "Multi Provider Code Review Local Surfaces",
+    "keywords": "multi provider code review local surfaces guide workflows multi provider code review md#local review surfaces for agent written changes",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/multi-provider-code-review/#local-review-surfaces-for-agent-written-changes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-agent-change-explained",
+    "title": "Diagram Agent Change Explained",
+    "keywords": "diagram agent change explained guide diagrams development workflows md#three places agent change gets explained",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/06-development-workflows.md#three-places-an-agent-change-gets-explained",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-guide",
+    "title": "Reviewable Agent Changes Guide",
+    "keywords": "reviewable agent changes guide guide workflows reviewable agent changes",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/reviewable-agent-changes/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-fields",
+    "title": "Reviewable Agent Changes Fields",
+    "keywords": "reviewable agent changes fields guide workflows reviewable agent changes md#what agent note records",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/reviewable-agent-changes/#what-an-agent-note-records",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-storage",
+    "title": "Reviewable Agent Changes Storage",
+    "keywords": "reviewable agent changes storage guide workflows reviewable agent changes md#where the note lives",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/reviewable-agent-changes/#where-the-note-lives",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-stale-notes",
+    "title": "Reviewable Agent Changes Stale Notes",
+    "keywords": "reviewable agent changes stale notes guide workflows reviewable agent changes md#anchoring and stale notes",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/reviewable-agent-changes/#anchoring-and-stale-notes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-typed-feedback",
+    "title": "Reviewable Agent Changes Typed Feedback",
+    "keywords": "reviewable agent changes typed feedback guide workflows reviewable agent changes md#feedback typed question change",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/reviewable-agent-changes/#feedback-typed-as-a-question-or-a-change",
+    "source": "guide"
+  },
+  {
+    "id": "guide-reviewable-agent-changes-template",
+    "title": "Reviewable Agent Changes Template",
+    "keywords": "reviewable agent changes template examples skills agent rationale",
+    "category": "Examples > Skills",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills/agent-rationale/",
     "source": "guide"
   },
   {
@@ -2054,7 +2134,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-antigravity-guide",
     "title": "Antigravity Guide",
-    "keywords": "antigravity guide guide ecosystem ecosystem md#61 google antigravity agent first ide generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem coding environments guide ecosystem ecosystem md#6 ide ade and hybrid coding environments ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#pointing claude code another backend cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
+    "keywords": "antigravity guide guide ecosystem ecosystem md#61 google antigravity agent first ide generative ui guide guide ecosystem ecosystem md#71 generative agent driven interactive output formats tts ai ecosystem guide ecosystem ecosystem md#51 text speech tools agent vibes practitioner insights guide ecosystem ecosystem md#112 practitioner insights practitioner dave van veen guide ecosystem ecosystem md#dave van veen stanford phd hoppr practitioner matteo collina guide ecosystem ecosystem md#matteo collina nodejs tsc chair outcome engineering o16g guide ecosystem ecosystem md#outcome engineering o16g manifesto cory ondrejka practitioner steinberger guide ecosystem ecosystem md#peter steinberger pspdfkit founder moltbot creator practitioner addy osmani guide ecosystem ecosystem md#addy osmani google chrome team practitioner alan guide ecosystem ecosystem md#alan engineering charles gorintin maxime bras eighty percent problem guide ecosystem ecosystem md#addy osmani google chrome team comprehension debt secondary guide ecosystem ecosystem md#addy osmani google chrome team ai ecosystem detailed guide ecosystem ecosystem ai ecosystem coding environments guide ecosystem ecosystem md#6 ide ade and hybrid coding environments ai ecosystem goose guide ecosystem ecosystem md#111 goose open source alternative block ai ecosystem goose comparison guide ecosystem ecosystem md#claude code goose key differences ai ecosystem context packing guide ecosystem ecosystem md#12 context packing tools ai ecosystem multi ide sync guide ecosystem ecosystem md#multi ide configuration sync agents md support status guide ecosystem ecosystem md#️ agentsmd support status ai ecosystem build vs use guide ecosystem ecosystem md#113 when build use autoresearch pattern guide ecosystem ecosystem md#13 autonomous research loops autoresearch pattern autoresearch repaired baseline case guide ecosystem ecosystem md#case study when the loop repairs the baseline architecture diagrams input guide ecosystem ecosystem md#architecture diagrams context advanced pattern ai ecosystem voice to text guide ecosystem ecosystem md#5 voice text tools wispr flow superwhisper ai ecosystem alternative providers guide ecosystem ecosystem md#pointing claude code another backend cowork section guide ecosystem ecosystem md#10 claude cowork research preview",
     "category": "Guide",
     "url": "/ecosystem/",
     "source": "guide"
@@ -2974,7 +3054,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-learning-review-automation-bias",
     "title": "Learning Review Automation Bias",
-    "keywords": "learning review automation bias guide roles learning with md#reviewing machine output third mode",
+    "keywords": "learning review automation bias guide roles learning with md#reviewing machine output third mode learning cognitive surrender guide roles learning with md#reviewing machine output third mode",
     "category": "Guide",
     "url": "/guide/learning-with-ai/#reviewing-machine-output-is-a-third-mode",
     "source": "guide"
@@ -3134,7 +3214,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-ai-traceability-guide",
     "title": "AI Traceability Guide",
-    "keywords": "ai traceability guide guide ops traceability ai traceability co authored by guide ops traceability ai traceability assisted by guide ops traceability ai traceability git ai guide ops traceability ai traceability llvm policy guide ops traceability ai traceability ghostty policy guide ops traceability ai traceability fedora policy guide ops traceability",
+    "keywords": "ai traceability guide guide ops traceability",
     "category": "Guide",
     "url": "/guide/ai-traceability/",
     "source": "guide"
@@ -3153,6 +3233,70 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "ai traceability disclosure spectrum guide ops traceability md#the disclosure spectrum",
     "category": "Guide",
     "url": "/guide/ai-traceability/#the-disclosure-spectrum",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-co-authored-by",
+    "title": "AI Traceability Co Authored By",
+    "keywords": "ai traceability co authored by guide ops traceability md#31 authored claude code default",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#31-co-authored-by-claude-code-default",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-assisted-by",
+    "title": "AI Traceability Assisted By",
+    "keywords": "ai traceability assisted by guide ops traceability md#32 assisted trailer llvm standard",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#32-assisted-by-trailer-llvm-standard",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-git-ai",
+    "title": "AI Traceability Git AI",
+    "keywords": "ai traceability git ai guide ops traceability md#34 checkpoint tracking git",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#34-checkpoint-tracking-git-ai",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-provenance-git-notes",
+    "title": "AI Traceability Provenance Git Notes",
+    "keywords": "ai traceability provenance git notes guide ops traceability md#35 provenance git notes",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#35-provenance-in-git-notes",
+    "source": "guide"
+  },
+  {
+    "id": "guide-diagram-ai-attribution-rewrites",
+    "title": "Diagram AI Attribution Rewrites",
+    "keywords": "diagram ai attribution rewrites guide diagrams enterprise governance md#ai attribution through history rewrites",
+    "category": "Guide",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/diagrams/12-enterprise-governance.md#ai-attribution-through-history-rewrites",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-llvm-policy",
+    "title": "AI Traceability Llvm Policy",
+    "keywords": "ai traceability llvm policy guide ops traceability md#41 llvm human the loop january 2026",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#41-llvm-human-in-the-loop-january-2026",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-ghostty-policy",
+    "title": "AI Traceability Ghostty Policy",
+    "keywords": "ai traceability ghostty policy guide ops traceability md#42 ghostty mandatory disclosure august 2025",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#42-ghostty-mandatory-disclosure-august-2025",
+    "source": "guide"
+  },
+  {
+    "id": "guide-ai-traceability-fedora-policy",
+    "title": "AI Traceability Fedora Policy",
+    "keywords": "ai traceability fedora policy guide ops traceability md#43 fedora contributor accountability october 2025",
+    "category": "Guide",
+    "url": "/guide/ai-traceability/#43-fedora-contributor-accountability-october-2025",
     "source": "guide"
   },
   {
@@ -6809,6 +6953,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "security skill delayed payload guide security security hardening md#the delayed payload why review skillmd not enough",
     "category": "Guide",
     "url": "/guide/security-hardening/#the-delayed-payload-why-review-skillmd-is-not-enough",
+    "source": "guide"
+  },
+  {
+    "id": "guide-security-fakegit-repo-lures",
+    "title": "Security Fakegit Repo Lures",
+    "keywords": "security fakegit repo lures guide security security hardening md#fake agent tool repositories fakegit",
+    "category": "Guide",
+    "url": "/guide/security-hardening/#fake-agent-tool-repositories-fakegit",
     "source": "guide"
   },
   {

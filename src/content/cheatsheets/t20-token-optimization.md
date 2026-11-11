@@ -82,7 +82,7 @@ Review shell and MCP access separately. These rules are access restrictions, not
 Filter verbose shell output, compact when useful, and restrict reads to relevant sources. Verify the resulting output still contains the evidence needed to complete the task.
 
 <!-- landing-note:start -->
-Disclosure: the author of this guide is a core contributor to RTK.
+Disclosure: the author of this guide contributed to RTK early on and still supports it, without actively contributing to its code today.
 
 Whole-task measurements of RTK alone differ by study: JetBrains measured +7.6% median cost per task at low reasoning effort and +0.1% at high effort, Dasein +13% total cost, THOL +7.1% with an interval that crosses zero, and Codepointer's replay -0.5% of spend. RTK's maintainers dispute the JetBrains design and report -4.8% on 13 dev tasks (p = 0.305) in their own re-run. Details: https://cc.bruniaux.com/token-savings/
 <!-- landing-note:end -->

@@ -77,7 +77,7 @@ export const CATALOG: CatalogEntry[] = [
     claimShort: {"value": "up to 90%", "unit": "of the bash output the agent reads"},
     descriptionClaim: "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands.",
     maintainerResponses: [{"label": "RTK AI Labs, \"RTK on SkillsBench: What the Benchmark Measures\" (vendor analysis of the JetBrains study)", "url": "https://www.rtk-ai.app/blog/rtk-on-skillsbench/", "date": "2026-08-07"}, {"label": "RTK maintainers on the JetBrains study (aeppling, issue #3157)", "url": "https://github.com/rtk-ai/rtk/issues/3157", "date": "2026-07-23"}],
-    flags: ["Guide author is a core contributor"],
+    flags: ["Guide author is a historical contributor and current supporter"],
   },
   {
     id: "snip",

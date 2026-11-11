@@ -17,7 +17,7 @@ export function getYearsOfExperience(asOf: Date = new Date()): number {
 
 export const authorProfile = {
   name: 'Florian BRUNIAUX',
-  role: 'Fractional Chief AI Officer',
+  role: 'Hands-on Fractional Chief AI Officer (CAIO)',
   aboutUrl: 'https://www.florian.bruniaux.com/about/',
   blogUrl: 'https://www.florian.bruniaux.com/blog/',
   projectsUrl: 'https://www.florian.bruniaux.com/projects/',
@@ -27,4 +27,5 @@ export const authorProfile = {
   // 44px slot, 2x density: 2 KB instead of the 213 KB source kept for JSON-LD.
   thumbnailUrl: '/author-88.webp',
   experienceYears: getYearsOfExperience(),
+  experienceLabel: 'Around 15 years in software, including 8 to 10 in technical leadership',
 } as const
