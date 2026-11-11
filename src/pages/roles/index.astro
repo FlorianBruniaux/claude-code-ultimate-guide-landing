@@ -32,7 +32,7 @@ const jsonLd = [
   }
 ]
 
-const guideBase = 'https://cc.bruniaux.com/guide/ai-roles/'
+const fullProfilesHref = 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/roles/ai-roles.md'
 
 const evidenceFilters = [
   { value: 'Role family', label: 'Role families' },
@@ -58,7 +58,7 @@ const evidenceFilters = [
           <p class="tagline">Some titles are durable role families. Others are specializations, capabilities, or qualifiers. Find the scope that fits your work.</p>
           <div class="cta-buttons">
             <a href="#roles" class="btn btn-primary">Explore Role Families →</a>
-            <a href={guideBase} class="btn btn-secondary">Full Profiles in Guide</a>
+            <a href={fullProfilesHref} class="btn btn-secondary">Full Profiles on GitHub</a>
           </div>
         </div>
         <RoleQuiz embedded />
@@ -268,7 +268,7 @@ const evidenceFilters = [
         <h2>Use the full profiles to plan your next move</h2>
         <p>Each role has a complete profile: detailed responsibilities, required skills, entry paths, and where the role is heading. Free, open-source.</p>
         <div class="cta-buttons">
-          <a href={guideBase} class="btn btn-primary">Read Full Profiles →</a>
+          <a href={fullProfilesHref} class="btn btn-primary">Read Full Profiles on GitHub →</a>
           <a href="#overview" class="btn btn-secondary">Back to Overview ↑</a>
         </div>
       </div>
