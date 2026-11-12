@@ -4,6 +4,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+- Add The minimal harness guided exercise to the Whitepapers page.
 - Add contextual links from Context Engineering Tools and AI FinOps to team training and budget audit, with a distinct campaign placement for each.
 
 ### Author profile alignment
