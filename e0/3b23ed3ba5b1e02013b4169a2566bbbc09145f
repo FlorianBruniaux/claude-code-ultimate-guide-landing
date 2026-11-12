@@ -1,0 +1,41 @@
+.claude/rules/design-system.md
+  s_fd3852d2a18190::t_0d86caceb04b41 1-55
+.gitignore
+  s_0d70aa95f16cda::t_eaa29912294c7b 57-60
+CLAUDE.md
+  s_0d70aa95f16cda::t_f498036c7ffded 77-85,108-109,111
+src/styles/design-system-guard.test.ts
+  s_5fb73736e7e0e4::t_8fb928be68f5a5 1-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e03b23ed3ba5b1e02013b4169a2566bbbc09145f",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_5fb73736e7e0e4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1d1c0-ff93-7523-ba9e-8ec3567a300e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_fd3852d2a18190": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1ced1-8db4-72a1-b848-06b81c0960e3",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
