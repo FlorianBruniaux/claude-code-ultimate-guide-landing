@@ -1,0 +1,263 @@
+astro.config.mjs
+  s_0d70aa95f16cda::t_b37ca1154a6ecc 167,184
+docs/design-system-pilot-2026-11-11/CONTRACT.md
+  s_d7b29a8e0631b4::t_83b856757f2933 1-52
+docs/design-system-pilot-2026-11-11/outils/capture.cjs
+  s_0d70aa95f16cda::t_b81c0d07aad4c5 1-45
+docs/design-system-pilot-2026-11-11/outils/clip.cjs
+  s_0d70aa95f16cda::t_56515f678eadc1 1-12
+docs/design-system-pilot-2026-11-11/outils/full.cjs
+  s_0d70aa95f16cda::t_7683cc671eecad 1-21
+docs/design-system-pilot-2026-11-11/outils/interact.cjs
+  s_0d70aa95f16cda::t_22f0c12594514a 1-112
+docs/design-system-pilot-2026-11-11/outils/menu.cjs
+  s_0d70aa95f16cda::t_2ef5f95caa7cbc 1-45
+docs/design-system-pilot-2026-11-11/outils/p5ctx-chunks.cjs
+  s_0d70aa95f16cda::t_bb6dd09b9a7c99 1-23
+docs/design-system-pilot-2026-11-11/outils/p5ctx-eval.cjs
+  s_0d70aa95f16cda::t_7c1c2cd492c1f7 1-13
+docs/design-system-pilot-2026-11-11/outils/p5ctx-hover.cjs
+  s_0d70aa95f16cda::t_09cfd803032787 1-26
+docs/design-system-pilot-2026-11-11/outils/sweep.cjs
+  s_0d70aa95f16cda::t_3ec7cac8b45b35 1-52
+docs/design-system-pilot-2026-11-11/outils/views.cjs
+  s_0d70aa95f16cda::t_821fd29a1e2bfd 1-17
+docs/design-system-pilot-2026-11-11/verifications.json
+  s_0d70aa95f16cda::t_9248d1bb6a2e5b 1-199
+public/fonts/brand/LICENSES.txt
+  s_0d70aa95f16cda::t_0212bf93fd546b 1-24
+public/fonts/brand/OFL-Barlow.txt
+  s_0d70aa95f16cda::t_0d75b817d9785c 1-93
+public/fonts/brand/OFL-IBM-Plex-Mono.txt
+  s_0d70aa95f16cda::t_ccc0d6174ba8f6 1-93
+public/fonts/brand/OFL-IBM-Plex-Sans.txt
+  s_0d70aa95f16cda::t_775d37be72ee93 1-93
+public/images/brand/section-hatching.svg
+  s_0d70aa95f16cda::t_23efe9b8238927 1-8
+src/components/benchmarks/ResearchPapers.astro
+  s_0d70aa95f16cda::t_316395e26d45a0 71
+src/components/benchmarks/ToolCatalog.astro
+  s_0d70aa95f16cda::t_fd5bcc3cb9bf90 381
+src/components/benchmarks/ToolTokenShare.astro
+  s_0d70aa95f16cda::t_9385fbc40d14d5 105-106
+src/components/benchmarks/ui/ChipGroup.astro
+  s_0d70aa95f16cda::t_c0417a2f128db1 48,55-56
+src/components/changelog/ChangelogItem.astro
+  s_0d70aa95f16cda::t_2b06c177ae77a4 73-74,76,78
+src/components/changelog/ReleaseEntry.astro
+  s_0d70aa95f16cda::t_952fd6bd104335 1-99
+src/components/context/ContextHero.astro
+  s_0d70aa95f16cda::t_0ddb5b699f38ac 5
+src/components/context/ContextMaturityLadder.astro
+  s_0d70aa95f16cda::t_1db2c88b7f2aeb 3,6,9,14
+src/components/context/ContextNextStep.astro
+  s_0d70aa95f16cda::t_d1aae2e2c43577 3,6,8,10
+src/components/context/ContextSystemFlow.astro
+  s_0d70aa95f16cda::t_694b19702e0b5f 3,6,9,18
+src/components/ecosystem/EcosystemProjectStrip.astro
+  s_0d70aa95f16cda::t_ccf49d22d4106d 72
+src/components/finops/LeverSwitchyard.astro
+  s_0d70aa95f16cda::t_b20319805d83bd 141,166,269
+src/components/global/ChapterLabel.astro
+  s_cc68c1674b4572::t_ee53b9b78c3406 1-9
+src/components/global/ConsultingCta.astro
+  s_0d70aa95f16cda::t_c9d1bd89928d1e 23,25,75,77-79,83-92
+src/components/global/Footer.astro
+  s_0d70aa95f16cda::t_e9392b80e768c0 59,88,95,100,108-109,117,129-136,142,153,180-240,295-299
+src/components/global/Header.astro
+  s_0d70aa95f16cda::t_b54c6b2251897b 220,539,543-547,559-564,735,738,740-746,836-838,865-866,868-869,908,911,917,920,922-929,934-949,1056-1061,1064,1069-1083,1121-1127,1132,1136-1137
+src/components/global/SearchModal.astro
+  s_0d70aa95f16cda::t_089e7c3e63de5b 71-81
+src/components/global/ThemeToggle.astro
+  s_0d70aa95f16cda::t_b15757cb4c35f7 3
+src/components/global/header-layout.test.ts
+  s_0d70aa95f16cda::t_b94f1295505055 92-93
+src/components/landing/BuiltAroundGuide.astro
+  s_0d70aa95f16cda::t_e2bdc97bed7546 8,11,15,18,25,45,58,80-81,88
+src/components/landing/Essentials.astro
+  s_0d70aa95f16cda::t_1979d5da801353 15,18,22,25,30,57-58
+src/components/landing/HeroBanner.astro
+  s_0d70aa95f16cda::t_4b3d8d53306b5d 9,25,79,82,120-121,123,135-139,179
+src/components/landing/LatestContent.astro
+  s_0d70aa95f16cda::t_b7e0b157dc170e 8,11,13,26
+src/components/landing/McpCliQuiz.astro
+  s_0d70aa95f16cda::t_065d13984dc42e 7,84,99,107
+src/components/landing/McpProof.astro
+  s_0d70aa95f16cda::t_a1f17872fc69c2 7,15-16,29-30,36,49
+src/components/landing/MethodologyQuiz.astro
+  s_0d70aa95f16cda::t_bf796c9b7ebf38 12,129,203,230,235,242,246-253,293-294,315,358,386,397,429,479,511
+src/components/landing/Onboarding.astro
+  s_0d70aa95f16cda::t_f52c4ea245c7d5 2,71-74,77-78,102-103,106
+src/components/landing/QuickRef.astro
+  s_0d70aa95f16cda::t_92f3564ef7bb67 2
+src/components/landing/RoleQuiz.astro
+  s_0d70aa95f16cda::t_41b303f3ecb265 120,156,235,262,267,274,278-285,325-326,339,379,390,446,472
+src/components/landing/StartHere.astro
+  s_0d70aa95f16cda::t_8add25c12e1483 3,6,8,14,63,67,71-73
+src/components/landing/built-around-guide.test.ts
+  s_0d70aa95f16cda::t_1597939ccaea52 9-12,16-17
+src/components/mcp/McpTerminal.astro
+  s_0d70aa95f16cda::t_322d2711eb11ae 59-60,94,101,105,120
+src/components/security/SecurityChecklist.astro
+  s_0d70aa95f16cda::t_fd31df7b227328 9
+src/components/security/SecurityCodeExample.astro
+  s_0d70aa95f16cda::t_777d7442a967be 5
+src/components/security/SecurityCveCatalog.astro
+  s_0d70aa95f16cda::t_09816ee7c62eae 5,7-15,21,27-31,34-35,37
+src/components/security/SecurityHero.astro
+  s_0d70aa95f16cda::t_b31fd1ebca95f4 11
+src/components/security/SecurityPathCards.astro
+  s_0d70aa95f16cda::t_43c9199b1a9b9a 8
+src/components/security/SecurityRelatedPages.astro
+  s_0d70aa95f16cda::t_c1aedc89530756 7,10
+src/components/security/SecuritySourceList.astro
+  s_0d70aa95f16cda::t_10979585d89b50 6
+src/components/security/SecurityThreatCatalog.astro
+  s_0d70aa95f16cda::t_b520d394e82c53 18
+src/layouts/Layout.astro
+  s_0d70aa95f16cda::t_72ab39546b7a52 4,100,104
+src/pages/ai-design-patterns/index.astro
+  s_0d70aa95f16cda::t_d30ac33f79460d 3,116,119,123,127,138,153,156,229,246,281,286,301,304,318,360,367,374,384,426,443,448-450,455,492,503,507-509,514,522,527,541-542,546,548-549,559-560,570,575-577,580-581,587-589,595-597,603,605-607,616-617,626-627,631-632,638,641-642,646-647,652
+src/pages/changelog/index.astro
+  s_0d70aa95f16cda::t_6cc6ecf4cf1fa8 4-5,57,59-70,75-79,81-84,86-87,89-90,95,107-109,111-123,126-127,130
+src/pages/cheatsheet/index.astro
+  s_0d70aa95f16cda::t_fbc00d4c448c4b 5,52,54,58,70,103,126,134,159,171,191,219,239,253,267,283,312,327,339,351,365,380,384,406,481,483,520,522,533-535,538
+src/pages/cheatsheets/[slug].astro
+  s_0d70aa95f16cda::t_434a089735d3b5 85,150,158,188,195,206,409,416,425,430-432,436-437,439-440,442-443,445-448,453,455,473,480-481,493,497-500,503,505,508,600,618,692-693,695,701,716-718,722-724,727,730-736
+src/pages/cheatsheets/index.astro
+  s_0d70aa95f16cda::t_646b75fa04fdfe 2,97,99,102,112,123-124,126-128,135,160,166,184,224,288,859-862,865,885-887,892-893,896,903,914-915,923-924,926,979,983,993,1026,1028-1029,1031,1033,1035-1038,1046,1048-1053,1095,1097,1100,1104-1106,1108-1109,1139-1141,1144,1150-1154,1182,1240-1243,1247,1252-1253,1256-1257,1261,1280,1301,1305,1307,1339,1344,1349-1351,1356-1357,1359-1360,1362-1363,1365-1367,1413,1415,1417,1420-1422,1424,1430-1432,1440,1451-1452,1454
+src/pages/compare/[slug].astro
+  s_0d70aa95f16cda::t_de7c7fee0c65e0 2,94,103,106-108,173,177-179,182,193,200,204-205,208,217,224,228-229,232,236,241,245-247,249,252,257-258,260,263-264,268-270,273,277,286,291,295-299,333,351,353,370,398,450,465,484
+src/pages/compare/index.astro
+  s_0d70aa95f16cda::t_8bc2ee60e9806c 2,41,60,62,69,88,90,151,160,169,183,185,192,198,204,210,216,222,228,234,250,252,367,369,398,425,427,429-433,437-439,443-447,528,634,701-702,706,724-726,729-730,733-735
+src/pages/context-engineering/index.astro
+  s_0d70aa95f16cda::t_38a998a0f4e300 3,186,234,240-242,250,252,257,274,276,281,307,310,315,320,325,330,345,347,351,356,361,366,371,376,387,393,412,425,518,522,563,575-578,580-581,597,714,733,737,747-748,867
+src/pages/diagrams/index.astro
+  s_0d70aa95f16cda::t_79b012e4477f01 2,134,136,144,181,184,186,211,213,218,234-235,237,264-266,273-274,277,302-303,307,309-310,313,319-321,347,349-350,352,355,357,361-363,368-369,399,401,429-431,433,494,525-527,529,533,552,555-558,563,568,644,685,690,693
+src/pages/downloads/index.astro
+  s_0d70aa95f16cda::t_85f3c34d219e89 3,23,25,27,42-45,49,52,59,61,66-67
+src/pages/ecosystem/index.astro
+  s_0d70aa95f16cda::t_5bffcf59944efe 2,37,42-43,58,62-63,83,86-88,127,131-133,180,184-186,231,235-236,239-240,244-246,275,534,580,712,714,719,729,732,744,772,789,800,1021
+src/pages/ecosystem/mcp-vs-cli.astro
+  s_0d70aa95f16cda::t_9d957f603fd9af 6,32,53,65,67,162,164,190,192,342,344,371,403,436,438,440-444,448-455,486,539,552,641,686
+src/pages/examples/[slug].astro
+  s_0d70aa95f16cda::t_e11fbe34f69c3b 2,458,483-485,489,492,495-497,526,530-531,534,539-541,546,553,557-563,580-581,590,604-607,609,616,622,625,647,649,652,700,702,705,716,735,752
+src/pages/examples/index.astro
+  s_0d70aa95f16cda::t_bf65659b29db50 7,55,57-58,65,79-84,120,125,131,135,143-144,146-147,149,151,154,156,158,163,166,168-169,173,176,183,187,190,193,196-198,205,210,212-217,221-224,227-228,230-232,234-238,242,250-251,253,256,358
+src/pages/faq/index.astro
+  s_0d70aa95f16cda::t_84a9879a81e831 3,232,234-236,239,243,247,252,256-258,261,265,270,274-276,279,283,287,291,295,299,303,308,312-314,317,321,325,330,334-336,339,343,347,352,356-358,361,365,369,373,378,383,389,397,399-400,409,411
+src/pages/finops/index.astro
+  s_0d70aa95f16cda::t_2033248ee5b730 3,145,152,163,165,170,207,214,232,234,256,258,271,294,305,331,379-386,436,489,549,577-583,608,698,744-746,765-767
+src/pages/glossary/[slug].astro
+  s_0d70aa95f16cda::t_78cd069dfa6ea4 65-66,80,91-95,104,116,125,133,140,143,146-147,149-151,167,170,181,186-187,198,214,221,230,242,247,254
+src/pages/glossary/index.astro
+  s_0d70aa95f16cda::t_782f05a6d46e36 45,69,71,103,121-122,124,127,130,148,151-152,157-159,161,181-185,188-191,198-201,210-213,224,233,257,264-266,269,280,291,296-297,308,336,338,342,344-345,347
+src/pages/index.astro
+  s_0d70aa95f16cda::t_5e57bf1f73104e 92-100
+src/pages/lean-ai/index.astro
+  s_0d70aa95f16cda::t_989cb835ce015b 3,144,148,162,181,192,195,258,261,270,302,327,377,382,387,403,416-417,423,439,443,483-484,527,531-533
+src/pages/learning/index.astro
+  s_0d70aa95f16cda::t_cd9336e24b24b9 5,53-55,60,75,90,106,120,133,147,164,168-170,174,216,220-222,227,233,239,245,249-251,256,273,284,299,303-305,310,324,336,348,361,365-367,382,386-387,392,400,408,416,420-421,426,434,444-445,454,462,495-496,505,518-520,522,526,532-533,557-558,569-570,579-580,602-603,617,620,622-623,630,641,651-652,668,676-677
+src/pages/mcp-or-cli/index.astro
+  s_0d70aa95f16cda::t_b609694cb9788b 3,46,48,55,62
+src/pages/mcp/index.astro
+  s_0d70aa95f16cda::t_b5fa16b325c8a2 3,95,102,114,116,121,126,131,161,163,182,185,200,202,207,212,217,231,234,248,280,288,326
+src/pages/memory-systems/index.astro
+  s_0d70aa95f16cda::t_d44d0622355e6f 3,288,291,297,303,314,317,341,369,374,391,394,443,449,472,494,512,522,526,534,541,548,560,600,610-612,638,640,654,679,681,695,697-698,718-720,737,742-743,762,796,802,811,821,824,830
+src/pages/methodologies/index.astro
+  s_0d70aa95f16cda::t_4c2afbb00024f0 3,133,137,142,173,176,193,199,205,211,221,227,238,240,246,301,338,351,456
+src/pages/projects/index.astro
+  s_0d70aa95f16cda::t_0890c44da62b4f 6,29-33,44,64,68,79-83,87-88,91-92,97
+src/pages/quiz/index.astro
+  s_0d70aa95f16cda::t_6df8c4183f0f0d 3,71,76,91,153,219,247-248,250,252,257,260-261,263-265,268-270,306-307,309,312,317,320-321,323-325,336-337,339,342,347,350-351,353-355,372,413,417,420,423-424,490,497,516,524,547,549,552,557-558,561,565-567,570-571,592,600,618,628,654,662,677,712,716,781,795,804,831,838,849,859,874,893,931,940,994,1509,1512,1516,1520,1527,1540-1541,1543-1550,1552-1553
+src/pages/releases/index.astro
+  s_0d70aa95f16cda::t_01b6d4ab7294b2 3,40-42,59,63-65,181,185-187,202,239,245-246,257,297-298,302,330,351,355-356,362,374,394,397,403-404,490
+src/pages/resources/index.astro
+  s_0d70aa95f16cda::t_1d23cc861ea057 3,21,23,27,37,39,44,63,65-66,70,72
+src/pages/roles/[slug].astro
+  s_0d70aa95f16cda::t_82babad38b4fd3 79,107-109,116,120-122,132,136-138,142,146-148,165,169-170,172,193-194,199,221,233,304
+src/pages/roles/index.astro
+  s_0d70aa95f16cda::t_d21fb71362c06e 6,80,82,86,97,119,123,157,180,182,190,201,214,216,227,232,248,253,258,269
+src/pages/security/cves/index.astro
+  s_0d70aa95f16cda::t_37a00fde75063b 2,23,27-28
+src/pages/security/hardening/index.astro
+  s_0d70aa95f16cda::t_7561f49832a0ef 2,27,31-35
+src/pages/security/index.astro
+  s_0d70aa95f16cda::t_041d332e703da8 2,23,27-40
+src/pages/security/sandbox/index.astro
+  s_0d70aa95f16cda::t_6522ce1405c2c4 2,30,34-37
+src/pages/security/threats/index.astro
+  s_0d70aa95f16cda::t_1c36134d62df9f 2,23,27-30
+src/pages/sitemap/index.astro
+  s_0d70aa95f16cda::t_de8d302401c112 90,97,118-120,144-147,272,307-308,310,313,318,320,323-324,340-341,348-351,353-366,384,411-412,441-443,445,447-448
+src/pages/team-metrics/index.astro
+  s_0d70aa95f16cda::t_68e9e4cb442872 3,181,188,193,198,208,210,216,241,252,258,280,282,290,312,317,333,335,342,346,350,354,358,375,385,416,502-508,685,740-741,748-749,751,770-771,775-779,793,802-803,809-811,843-844
+src/pages/token-savings/index.astro
+  s_0d70aa95f16cda::t_baa7d646845986 3,101,103,110,124,126,135,142,144,159,161,231-234,261-262
+src/pages/whitepapers/index.astro
+  s_0d70aa95f16cda::t_c922d21b3c4721 2,123-125,135,155,159-161,166,206,210-212,220,245,279,322,326-328,348,351-353,361,376,386,402-403,416-417,425-426,428,450,453,456,459,461,487-489,511,514,539-540,544,560,570-572,597,612,615,617-618,620-622,675,689,697,699,715,717,723,743-744,748,761,808,810-811,813-814,822-823,841,844-845
+src/scripts/search.test.ts
+  s_0d70aa95f16cda::t_adbbfa8fa786c3 279-295
+src/scripts/search.ts
+  s_0d70aa95f16cda::t_5d82ca01313d78 386-388,390-392,410-411,481-482
+src/styles/brand-foundation.css
+  s_0d70aa95f16cda::t_3c6e65a590a0f7 1-20
+src/styles/components.css
+  s_0d70aa95f16cda::t_afe449ba1dce0b 20-30,36-40,46-59,79-85,88,92-100,102,110-111,113-117,120-122,126,129-139,143-147,149-153,156-158,161-180,188-193
+src/styles/context-page.css
+  s_0d70aa95f16cda::t_fad2b412dfcc22 33,38,46-47,77,93-95,125,175,187,205,222,242,276-277,317-319,322,329,349,387-388,403,419,437,441,443-444,461-463,519,522,528,540,549-556,573,582,599,605
+src/styles/global.css
+  s_0d70aa95f16cda::t_9207b8821cfe20 1-2,10-13,15-20,32-33,36,39,43,46-55,68-70,79-80,82,89-99,111-112,114,117,120,124-125,127
+src/styles/portfolio-system.css
+  s_0d70aa95f16cda::t_00ab11ca169ce9 1-516
+src/styles/roles-page.css
+  s_0d70aa95f16cda::t_b335a5aa7276cb 32,77-78,107,111,143,178,195,198,224-226,230-231,243,308,330-331,335,398
+src/styles/security-page.css
+  s_0d70aa95f16cda::t_26fb0baee993b1 6,8-10,13,16,19,22-25,27,30-31,36,43,49,52,61,63-65,68,75,80-82,84-86,89,91,95,97-98,104-105,110,129-196
+src/styles/starlight-overrides.css
+  s_0d70aa95f16cda::t_01ae05c458e94c 14-16,19-22,24-26,29-30,40-41,47-58,125-132,134,139,280-281,285,953,958,1003-1031,1055-1057,1061,1065-1069,1073-1079,1085-1098,1139-1465
+docs/design-system-pilot-2026-11-11/README.md
+  s_0d70aa95f16cda::t_5158be54ffd1c2 1-192
+src/pages/claude-md-best-practices/index.astro
+  s_1daac187967105::t_d64ec531069400 3,106,108-110,133,148,151-153,173,176-178,183,186,189-191,201,204-205,207,211,215,219,222-223,226,237-242,281,293,298-304,339,354-356
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "728198c2396e2aa1fff64f30ab277cec6af5ce5d",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_1daac187967105": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-ap5-context-a5ee7ce3be0e6c91",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_cc68c1674b4572": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1ca4f-00ef-7261-a9ad-cfbe54a4aeb3",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d7b29a8e0631b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2ec561fb-2241-4bd3-b961-b7ba4c9920ab",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
