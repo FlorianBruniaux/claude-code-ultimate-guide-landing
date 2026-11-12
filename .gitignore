@@ -54,3 +54,7 @@ public/reference-fs.json
 .env.local
 seo-audit-cc-bruniaux-2026-06-23.md
 .vercel/
+
+# Design system: rendered captures (~560 MB), never committed
+docs/design-system-pilot-2026-11-11/captures/
+docs/design-system-pilot-2026-11-11/outils/shots/

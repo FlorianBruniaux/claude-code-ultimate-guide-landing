@@ -74,6 +74,15 @@ Le site a migré de HTML statique vers Astro 5. Les références à `index.html`
 | `styles.css` | `src/styles/global.css` + `src/styles/components.css` |
 | `search.js` + `guide-data.js` | `src/scripts/search.ts` + `src/data/search-index.ts` |
 
+## Design system (depuis le 12/11/2026)
+
+Le site suit le système visuel du portfolio : ivoire, charbon, orange `--action #f97316`, Barlow Condensed et IBM Plex, bandes hachurées, `ChapterLabel`, cartes `brand-card`. L'ancien style (indigo, cartes qui se soulèvent, ombres douces) est abandonné.
+
+- Règles et pièges : `.claude/rules/design-system.md` (chargée automatiquement sur `src/**/*.astro` et `*.css`).
+- Contrat détaillé : `docs/design-system-pilot-2026-11-11/CONTRACT.md` ; historique : `README.md` du même dossier.
+- Garde-fou : `src/styles/design-system-guard.test.ts` (dans `pnpm test`) plafonne les motifs de l'ancien style ; un plafond ne monte jamais, il descend après un nettoyage.
+- Charte et agents : skill `boldguy-ui`, agents `boldguy-ui-designer` et `boldguy-design-critic`.
+
 ## Fichiers critiques
 
 - **`src/data/examples-data.ts`**: 88 templates (source of truth pour examples + search)
@@ -96,9 +105,10 @@ Bandeau dismissible affiché sur toutes les pages, juste sous le header fixe (da
 **Comment mettre à jour :**
 1. Modifier le texte dans `src/components/global/AnnouncementBanner.astro`
 2. Bumper `BANNER_ID` (ex: `banner-roles-2026-03` → `banner-guide-2026-04`) pour reset l'état dismissed chez tous les visiteurs
-3. `pnpm build` + commit + push
+3. Mettre à jour `src/data/landing-sync.test.ts` (il vérifie l'id et le badge), puis `pnpm test`
+4. `pnpm build` + commit + push
 
-**Contenu actuel (mars 2026) :** `banner-roles-2026-03` — AI Roles + guide en ligne sur /guide/
+**Contenu actuel (novembre 2026) :** `banner-new-identity-2026-11`, badge `New identity` (fond `--action`, texte `--action-ink`).
 
 ## Vérification avant modification
 
