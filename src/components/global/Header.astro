@@ -732,7 +732,8 @@ const panels = navigationSections.map((section) => {
   .intent-link.is-active {
     background: var(--bg-tertiary);
     color: var(--text-primary);
-    text-decoration: none;
+    /* Beats the global link hover underline, which would also run under the description. */
+    text-decoration: none !important;
   }
 
   /* Current page: inset orange rule, as the portfolio menu. */
@@ -740,10 +741,12 @@ const panels = navigationSections.map((section) => {
     box-shadow: inset 3px 0 0 var(--action);
   }
 
+  /* Portfolio menu rows: the fill marks the hover, the title stays ink and gains a thin underline. */
   .intent-link:not(.intent-card):is(:hover, :focus-visible) .intent-link-title {
-    color: var(--accent);
+    color: var(--text-primary);
     text-decoration: underline;
-    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
   }
 
   .intent-link-title {
@@ -1018,9 +1021,9 @@ const panels = navigationSections.map((section) => {
     .intent-link {
       display: block;
       min-height: 0;
-      margin-inline: -0.5rem;
-      padding: 0.45rem 0.5rem;
-      border-radius: 0.45rem;
+      margin-inline: -0.6rem;
+      padding: 0.55rem 0.6rem;
+      border-radius: var(--radius-control);
     }
 
     .intent-link-title {
@@ -1030,19 +1033,20 @@ const panels = navigationSections.map((section) => {
     }
 
     .intent-link.is-active .intent-link-title {
-      color: var(--accent);
+      color: var(--text-primary);
     }
 
     .intent-link-description {
       display: block;
       overflow: hidden;
       margin-top: 0.1rem;
-      color: var(--text-muted);
-      font-size: 0.72rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
       font-weight: 400;
-      line-height: 1.35;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      line-height: 1.4;
     }
 
     .intent-card {
