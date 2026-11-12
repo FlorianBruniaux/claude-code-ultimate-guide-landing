@@ -410,7 +410,8 @@ const jsonLd = [
   .breadcrumb [aria-current="page"] { color: var(--text-secondary); }
 
   /* ── Container ── */
-  .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+  /* Reading column, left edge on the header logo. */
+  .container { max-width: 860px; margin-left: max(0px, calc((100% - var(--max-width)) / 2)); margin-right: auto; padding: 0 1rem; }
 
   /* ── Hero ── */
   .card-hero { padding: 3rem 0 2.5rem; }

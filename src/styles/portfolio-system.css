@@ -11,12 +11,12 @@
  */
 
 :root {
-  --page-content-max: 70rem;
+  --page-content-max: var(--max-width, 75rem);
   --band-ink-background: #191b1d;
   --band-ink-surface: #292c30;
   --band-ink-elevated: #34373b;
   --section-pattern-opacity: 0.09; /* portfolio preset patternOpacity: 9 */
-  --rail-left: max(7px, calc((100% - var(--page-content-max)) / 2 + 1.5rem - 28px));
+  --rail-left: max(7px, calc((100% - var(--page-content-max)) / 2 + 1rem - 28px));
 }
 
 /* ── Band surfaces ─────────────────────────────────────────────────────────

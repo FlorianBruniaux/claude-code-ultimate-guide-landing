@@ -1,4 +1,4 @@
-.security-shell { width: min(1160px, calc(100% - 2rem)); margin-inline: auto; }
+.security-shell { width: min(1168px, calc(100% - 2rem)); margin-inline: auto; }
 .security-breadcrumbs { padding-block: 1rem 0; font-size: .82rem; color: var(--text-muted); }
 .security-breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0; list-style: none; }
 .security-breadcrumbs li + li::before { content: '/'; margin-right: .4rem; color: var(--border); }
@@ -92,7 +92,7 @@
 .security-code pre { margin: 0; padding: 1rem; overflow-x: auto; color: #f0a57b; white-space: pre; }
 .security-code pre code { display: block; padding: 0; border-radius: 0; background: transparent; }
 .security-code > p { min-height: 1.25rem; margin: 0; padding: 0 .85rem .6rem; color: #b9c2cc; font-size: .76rem; }
-.security-related, .security-sources { padding: clamp(3rem, 7vw, 5rem) max(1rem, calc((100% - 1160px) / 2)); border-top: 1px solid var(--border); }
+.security-related, .security-sources { padding: clamp(3rem, 7vw, 5rem) max(1rem, calc((100% - 1168px) / 2)); border-top: 1px solid var(--border); }
 .security-related__grid { display: grid; gap: .75rem; }
 .security-related__grid a { display: grid; gap: .35rem; padding: 1rem; color: inherit; text-decoration: none; }
 .security-related__grid a:hover strong { text-decoration: underline; text-underline-offset: .24em; }

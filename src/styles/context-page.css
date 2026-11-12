@@ -1,5 +1,5 @@
 .context-shell {
-  width: min(100% - 2rem, 1180px);
+  width: min(100% - 2rem, 1168px);
   margin-inline: auto;
 }
 
@@ -679,7 +679,7 @@
 
 @media (max-width: 619px) {
   .context-shell {
-    width: min(100% - 1.25rem, 1180px);
+    width: min(100% - 2rem, 1168px);
   }
 
   .context-hero__outputs {

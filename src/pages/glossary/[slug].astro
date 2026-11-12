@@ -146,7 +146,8 @@ const jsonLd = [
   .breadcrumb a:hover, .breadcrumb a:focus-visible { color: var(--accent); text-decoration: underline; }
   .breadcrumb [aria-current="page"] { color: var(--text-primary); }
 
-  .term-page .container, .term-hero .container { max-width: 860px; }
+  /* Reading column, left edge on the header logo. */
+  .term-page .container, .term-hero .container { max-width: 860px; margin-left: max(0px, calc((100% - var(--max-width)) / 2)); margin-right: auto; padding: 0 1rem; }
   .term-hero { padding: 3rem 0 3.5rem; }
   .term-hero .term-header { margin-bottom: 0; }
 

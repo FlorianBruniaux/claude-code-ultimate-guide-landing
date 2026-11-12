@@ -65,7 +65,7 @@
     --space-4xl: 5rem;
 
     /* Layout */
-    --max-width: 70rem;
+    --max-width: 75rem; /* = header and footer shell (Tailwind max-w-content, 1200px) */
     --border-radius: 6px;
     --border-radius-lg: 8px;
 

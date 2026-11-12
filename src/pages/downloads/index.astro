@@ -53,7 +53,7 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
 </Layout>
 
 <style>
-  .download-hero, .download-layout { max-width: 900px; margin-left: auto; margin-right: auto; }
+  .download-hero, .download-layout { max-width: 900px; margin-left: max(0px, calc((100% - var(--max-width)) / 2)); margin-right: auto; }
   .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
   .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
   .download-band { padding: clamp(3rem, 6vw, 4.5rem) 0; }

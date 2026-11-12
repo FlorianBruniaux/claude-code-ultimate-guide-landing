@@ -7,7 +7,8 @@
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--space-lg);
+    /* Same gutter as the header shell (px-4), so page content lines up with the logo. */
+    padding: 0 1rem;
 }
 
 /* Typography */
