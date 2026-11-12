@@ -1,0 +1,55 @@
+src/components/global/AnnouncementBanner.astro
+  s_0d70aa95f16cda::t_65ac0035c3cb00 73
+src/pages/ai-design-patterns/index.astro
+  s_0d70aa95f16cda::t_cde615e371c6b7 489
+src/pages/changelog/index.astro
+  s_0d70aa95f16cda::t_2543cc02e76cf8 106
+src/pages/cheatsheets/[slug].astro
+  s_0d70aa95f16cda::t_e0f8097f8b4527 413-414
+src/pages/cheatsheets/index.astro
+  s_0d70aa95f16cda::t_85f1c6ff07d790 866
+src/pages/downloads/index.astro
+  s_0d70aa95f16cda::t_d2c90388bcac9d 56
+src/pages/examples/[slug].astro
+  s_0d70aa95f16cda::t_e854ad21660293 584,587-589
+src/pages/glossary/[slug].astro
+  s_0d70aa95f16cda::t_2c4a35dc7816e4 149-150
+src/pages/lean-ai/index.astro
+  s_0d70aa95f16cda::t_110c266925be68 399
+src/pages/memory-systems/index.astro
+  s_0d70aa95f16cda::t_5944a547f5a10c 827
+src/pages/projects/index.astro
+  s_0d70aa95f16cda::t_b9c9d20887fed3 75
+src/pages/resources/index.astro
+  s_0d70aa95f16cda::t_35e798b0c28298 60
+src/pages/sitemap/index.astro
+  s_0d70aa95f16cda::t_5c8938efee718b 227
+src/pages/whitepapers/index.astro
+  s_0d70aa95f16cda::t_96fe651889f27e 447
+src/styles/components.css
+  s_0d70aa95f16cda::t_9be52af86045a9 10-11
+src/styles/context-page.css
+  s_0d70aa95f16cda::t_c4a74059c5e382 2,682
+src/styles/global.css
+  s_0d70aa95f16cda::t_f2c84af3ac39c8 68
+src/styles/portfolio-system.css
+  s_0d70aa95f16cda::t_06fdd63be2c50b 14,19
+src/styles/security-page.css
+  s_0d70aa95f16cda::t_50e521e48d835c 1,95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8963734b8ca2f99455e9a67b0ec82e336e88a9da",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
