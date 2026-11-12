@@ -10,13 +10,14 @@
 
 // Increment this ID whenever the banner content changes.
 // Keep the strip to 4 links so it stays readable on smaller screens.
-const BANNER_ID = 'banner-ai-design-patterns-2026-11'
+const BANNER_ID = 'banner-new-identity-2026-11'
 ---
 
 <div id="announcement-banner" class="ann-banner" data-banner-id={BANNER_ID} aria-label="Announcement">
   <div class="ann-inner">
     <div class="ann-content">
       <span class="ann-badge">NOV 2026</span>
+      <span class="ann-badge ann-badge--new">New identity</span>
       <span class="ann-text">
         <span class="visually-hidden">Latest guide updates. </span>
         <span style="color:var(--text-secondary)">Latest:</span>
@@ -98,6 +99,13 @@ const BANNER_ID = 'banner-ai-design-patterns-2026-11'
   border-radius: 3px;
 }
 
+/* Portfolio action fill: orange with ink text, distinct from the date badge. */
+.ann-badge--new {
+  background: var(--action);
+  color: var(--action-ink);
+  text-transform: uppercase;
+}
+
 .ann-text {
   color: var(--text-secondary);
   white-space: nowrap;
@@ -159,6 +167,11 @@ const BANNER_ID = 'banner-ai-design-patterns-2026-11'
   }
 
   .ann-secondary {
+    display: none;
+  }
+
+  /* Narrow screens keep the news badge and drop the date. */
+  .ann-badge:not(.ann-badge--new) {
     display: none;
   }
 }
