@@ -262,6 +262,8 @@ const stats = await getSiteStats()
     const pres = document.querySelectorAll<HTMLElement>('pre:not(.expressive-code pre):not(.code-copy-wrapper pre)')
     pres.forEach((pre) => {
       if (pre.closest('.expressive-code') || pre.closest('.code-copy-wrapper')) return
+      // A code block that already ships its own copy button ([data-copy]) keeps only that one.
+      if (pre.closest('.code-block')?.querySelector('[data-copy]')) return
 
       const wrapper = document.createElement('div')
       wrapper.className = 'code-copy-wrapper'

@@ -1,11 +1,10 @@
 <!-- Methodologies Section -->
-<section class="section section--alt methodologies" id="methodologies">
-    <div class="container">
+<div class="methodologies" id="methodologies">
         <h2 class="section-title">Choose your methodology</h2>
         <p class="section-subtitle">AI amplifies both good and bad code, so structuring your workflow matters.</p>
 
         <div class="methodologies-grid">
-            <div class="methodology-card">
+            <div class="methodology-card brand-card brand-interactive-card">
                 <div class="methodology-header">
                     <span class="methodology-icon" aria-hidden="true">&#128308;</span>
                     <h3>TDD</h3>
@@ -15,7 +14,7 @@
                 <span class="methodology-tag">Test-Driven</span>
             </div>
 
-            <div class="methodology-card">
+            <div class="methodology-card brand-card brand-interactive-card">
                 <div class="methodology-header">
                     <span class="methodology-icon" aria-hidden="true">&#128208;</span>
                     <h3>SDD</h3>
@@ -25,7 +24,7 @@
                 <span class="methodology-tag">Spec-Driven</span>
             </div>
 
-            <div class="methodology-card">
+            <div class="methodology-card brand-card brand-interactive-card">
                 <div class="methodology-header">
                     <span class="methodology-icon" aria-hidden="true">&#129309;</span>
                     <h3>BDD</h3>
@@ -35,7 +34,7 @@
                 <span class="methodology-tag">Behavior-Driven</span>
             </div>
 
-            <div class="methodology-card">
+            <div class="methodology-card brand-card brand-interactive-card">
                 <div class="methodology-header">
                     <span class="methodology-icon" aria-hidden="true">&#9889;</span>
                     <h3>GSD</h3>
@@ -54,28 +53,19 @@
                 Full guide on GitHub
             </a>
         </div>
-    </div>
-</section>
+</div>
 
 <style>
 .methodologies-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-lg);
-    margin: var(--space-xl) 0 0;
+    margin: 0;
 }
+.methodologies .section-title { font-size: 1.75rem; margin-bottom: var(--space-sm); }
+.methodologies .section-subtitle { max-width: 62ch; margin-bottom: var(--space-xl); font-size: 1rem; }
 .methodology-card {
-    background-color: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-xl);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.methodology-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent);
+    padding: var(--space-lg);
 }
 .methodology-header {
     display: flex;
@@ -95,7 +85,7 @@
 .methodology-when {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: var(--accent-tertiary);
+    color: var(--accent);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -114,7 +104,7 @@
     color: var(--text-muted);
     font-size: 0.75rem;
     font-weight: 600;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-control);
     font-family: var(--font-mono);
 }
 .methodologies-cta {
@@ -122,6 +112,9 @@
     gap: var(--space-md);
     flex-wrap: wrap;
     margin-top: var(--space-xl);
+}
+@media (max-width: 1100px) {
+    .methodologies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 768px) {
     .methodologies-grid {

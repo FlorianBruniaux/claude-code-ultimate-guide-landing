@@ -1,6 +1,6 @@
 <!-- Interactive Onboarding Section -->
-<section class="section band band-ink section-wallpaper onboarding-hero">
-    <div class="container">
+<section class="band band-base onboarding-hero">
+    <div class="container onboarding-inner">
         <div class="onboarding-badge">Personalized Learning</div>
         <h2 class="section-title">Start with interactive onboarding</h2>
         <p class="section-subtitle">Claude asks 2-4 questions about your profile, then guides you through personalized content</p>
@@ -61,9 +61,9 @@
 </script>
 
 <style>
-.onboarding-hero {
-    border-bottom: 1px solid var(--border);
-}
+.onboarding-inner { padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
+.onboarding-hero .code-block pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.onboarding-hero .code-block code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .onboarding-hero .container { text-align: left; }
 .onboarding-badge {
     display: inline-block;
@@ -80,7 +80,7 @@
     text-align: left;
 }
 .onboarding-hero .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-.onboarding-command { margin: 0 0 var(--space-2xl); }
+.onboarding-command { margin: 0 0 var(--space-xl); }
 .onboarding-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -90,7 +90,7 @@
     display: flex;
     align-items: flex-start;
     gap: var(--space-md);
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-md) var(--space-md) 0;
     text-align: left;
 }
 .feature-num {

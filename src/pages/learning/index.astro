@@ -49,14 +49,14 @@ const jsonLd = [
     </div>
   </header>
 
-  <!-- 2. Choose Your Path (orientation immédiate) -->
+  <!-- 01. Choose -->
   <section class="band band-paper section-wallpaper" id="choose-path">
-  <div class="content-section">
-    <ChapterLabel number="01" label="Choose your path" />
-    <h2>Choose your path</h2>
-    <p>Learning tracks adapted to your experience level and role. Pick yours before diving in.</p>
+    <div class="container chapter">
+      <ChapterLabel number="01" label="Choose your path" />
+      <h2>Choose your path</h2>
+      <p class="lede">Learning tracks adapted to your experience level and role. Pick yours before diving in.</p>
 
-    <div class="paths-grid">
+      <div class="paths-grid">
       <div class="path-card brand-card brand-interactive-card featured">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#127793;</span>
@@ -67,10 +67,15 @@ const jsonLd = [
           <li><strong><a href="/guide/learning-path/" rel="noopener">Start the 7-Module Learning Path</a></strong> &#11088;</li>
           <li>Module 01: <a href="/guide/learning-path/01-installation/">Installation &amp; Setup</a> (15 min)</li>
           <li>Module 02: <a href="/guide/learning-path/02-core-loop/">Core Loop</a> (45 min)</li>
-          <li>Module 03: <a href="/guide/learning-path/03-memory/">Memory &amp; Config</a> (1h)</li>
-          <li>Modules 04-07: <a href="/guide/learning-path/04-agents/">Agents</a>, <a href="/guide/learning-path/05-skills/">Skills</a>, <a href="/guide/learning-path/06-hooks/">Hooks</a>, <a href="/guide/learning-path/07-advanced/">Advanced</a></li>
-          <li>Take the <a href="/quiz/">beginner quiz</a> after each module</li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Module 03: <a href="/guide/learning-path/03-memory/">Memory &amp; Config</a> (1h)</li>
+            <li>Modules 04-07: <a href="/guide/learning-path/04-agents/">Agents</a>, <a href="/guide/learning-path/05-skills/">Skills</a>, <a href="/guide/learning-path/06-hooks/">Hooks</a>, <a href="/guide/learning-path/07-advanced/">Advanced</a></li>
+            <li>Take the <a href="/quiz/">beginner quiz</a> after each module</li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
@@ -82,10 +87,15 @@ const jsonLd = [
           <li>Skim <a href="/guide/ultimate-guide/01-quick-start/">Quick Start</a></li>
           <li>Set up <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/hooks" target="_blank" rel="noopener">custom hooks</a></li>
           <li>Configure <a href="/guide/ultimate-guide/08-mcp/">MCP servers</a></li>
-          <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/agents" target="_blank" rel="noopener">project-specific agents</a></li>
-          <li>Master <a href="/guide/ultimate-guide/02-core-workflow/#23-plan-mode">Plan Mode</a></li>
-          <li>Build <a href="/guide/workflows/">automation workflows</a></li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Create <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/agents" target="_blank" rel="noopener">project-specific agents</a></li>
+            <li>Master <a href="/guide/ultimate-guide/02-core-workflow/#23-plan-mode">Plan Mode</a></li>
+            <li>Build <a href="/guide/workflows/">automation workflows</a></li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card featured">
         <div class="path-header">
@@ -97,11 +107,16 @@ const jsonLd = [
           <li>Read the full <a href="/guide/ultimate-guide/">Ultimate Guide</a></li>
           <li>Build <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/examples/skills" target="_blank" rel="noopener">custom skills</a></li>
           <li>Create <a href="/guide/ultimate-guide/09-advanced-patterns/">multi-agent systems</a></li>
-          <li>Implement <a href="/guide/security-hardening/">security hooks</a></li>
-          <li>Design <a href="/guide/workflows/">team workflows</a></li>
-          <li>Contribute <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">templates back</a></li>
-          <li>Pass all <a href="/quiz/">quiz levels</a></li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Implement <a href="/guide/security-hardening/">security hooks</a></li>
+            <li>Design <a href="/guide/workflows/">team workflows</a></li>
+            <li>Contribute <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">templates back</a></li>
+            <li>Pass all <a href="/quiz/">quiz levels</a></li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
@@ -113,9 +128,14 @@ const jsonLd = [
           <li>Read <a href="/guide/architecture/">Architecture overview</a></li>
           <li>Understand <a href="/guide/ultimate-guide/08-mcp/">capabilities</a></li>
           <li>Review <a href="/guide/data-privacy/">privacy guide</a></li>
-          <li>Learn <a href="/guide/ultimate-guide/03-memory-files/">team integration</a></li>
-          <li>Explore use cases</li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Learn <a href="/guide/ultimate-guide/03-memory-files/">team integration</a></li>
+            <li>Explore use cases</li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
@@ -127,8 +147,13 @@ const jsonLd = [
           <li>Setup <a href="/guide/devops-sre/#quick-self-check">Claude for infrastructure</a></li>
           <li>Master the <a href="/guide/devops-sre/#the-fire-framework">FIRE debugging framework</a></li>
           <li>Practice <a href="/guide/devops-sre/#kubernetes-troubleshooting">K8s troubleshooting</a></li>
-          <li>Automate <a href="/guide/devops-sre/#solo-incident-workflow">incident response</a></li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Automate <a href="/guide/devops-sre/#solo-incident-workflow">incident response</a></li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
@@ -140,9 +165,14 @@ const jsonLd = [
           <li>Learn <a href="/guide/ultimate-guide/01-quick-start/#working-with-images-and-screenshots">image analysis basics</a></li>
           <li>Explore <a href="/guide/ultimate-guide/01-quick-start/#wireframing-tools-for-ai-development">wireframing tools</a></li>
           <li>Setup <a href="/guide/ultimate-guide/01-quick-start/#figma-mcp-integration">Figma MCP</a></li>
-          <li>Master <a href="/guide/workflows/design-to-code/">design-to-code workflow</a> &#11088;</li>
-          <li>Print <a href="/guide/cheatsheet/">cheat sheet</a></li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="4">
+            <li>Master <a href="/guide/workflows/design-to-code/">design-to-code workflow</a> &#11088;</li>
+            <li>Print <a href="/guide/cheatsheet/">cheat sheet</a></li>
+          </ol>
+        </details>
       </div>
       <div class="path-card brand-card brand-interactive-card" id="security-practitioner">
         <div class="path-header">
@@ -153,23 +183,30 @@ const jsonLd = [
         <ol class="path-steps">
           <li>Check Anthropic's <a href="https://www.anthropic.com/news/cyber-verification-program" target="_blank" rel="noopener">Cyber Verification Program</a> first: as of October 6, 2026, it states that general-access models block most cyber work and that Red Team Access is for organizations only</li>
           <li>Choose a scan layer in <a href="/guide/security-hardening/#claude-code-as-security-scanner">Claude Code as security scanner</a></li>
-          <li>Isolate runs with <a href="/guide/sandbox-native/">native sandboxing</a> and <a href="/guide/sandbox-isolation/">sandbox isolation</a></li>
-          <li>Map what leaves your machine with the <a href="/guide/data-privacy/">data privacy guide</a></li>
-          <li>Scope and verify findings with <a href="/guide/agentic-pentesting/">agentic pentesting</a></li>
-          <li>Track risks in <a href="/security/">AI agent security</a>, the <a href="/security/threats/">threat database</a>, and the <a href="/security/cves/">CVE database</a></li>
-          <li>Compare the <a href="/roles/ai-security-engineer/">AI security engineer role</a></li>
         </ol>
+        <details class="path-more">
+          <summary>Show all steps</summary>
+          <ol class="path-steps" start="3">
+            <li>Isolate runs with <a href="/guide/sandbox-native/">native sandboxing</a> and <a href="/guide/sandbox-isolation/">sandbox isolation</a></li>
+            <li>Map what leaves your machine with the <a href="/guide/data-privacy/">data privacy guide</a></li>
+            <li>Scope and verify findings with <a href="/guide/agentic-pentesting/">agentic pentesting</a></li>
+            <li>Track risks in <a href="/security/">AI agent security</a>, the <a href="/security/threats/">threat database</a>, and the <a href="/security/cves/">CVE database</a></li>
+            <li>Compare the <a href="/roles/ai-security-engineer/">AI security engineer role</a></li>
+          </ol>
+        </details>
+      </div>
       </div>
     </div>
-  </div>
   </section>
 
-  <!-- 3. Quick Self-Check (diagnostic après orientation) -->
+  <!-- 02. Se situer -->
   <section class="band band-base" id="self-check">
-  <div class="content-section">
-    <ChapterLabel number="02" label="Self-check" />
-    <h2>Quick self-check</h2>
-    <p>Answer each question honestly. Your score appears after answering all 5.</p>
+    <div class="container chapter">
+      <ChapterLabel number="02" label="Quick self-check" />
+      <div class="situate-grid">
+        <div class="situate-col">
+          <h2>Quick self-check</h2>
+          <p class="lede">Answer each question honestly. Your score appears after answering all 5.</p>
 
     <div class="self-check brand-card">
       <div class="check-item">
@@ -213,17 +250,13 @@ const jsonLd = [
         <div class="recommendation" id="recommendation"></div>
       </div>
     </div>
-  </div>
-  </section>
+        </div>
 
-  <!-- 4. Three Developer Patterns -->
-  <section class="band band-paper section-wallpaper">
-  <div class="content-section">
-    <ChapterLabel number="03" label="Three patterns" />
-    <h2>The three developer patterns</h2>
-    <p>Which one are you? Be honest.</p>
+        <div class="situate-col">
+          <h2>The three developer patterns</h2>
+          <p class="lede">Which one are you? Be honest.</p>
 
-    <div class="patterns-grid">
+          <div class="patterns-grid">
       <div class="pattern-card brand-card brand-interactive-card dependent">
         <h3>Dependent</h3>
         <p class="signs"><strong>Signs:</strong> Copy-paste without understanding, can't debug AI code, anxiety without AI</p>
@@ -241,18 +274,22 @@ const jsonLd = [
         <p class="signs"><strong>Signs:</strong> Uses AI critically, understands everything, can work with or without AI</p>
         <a href="/guide/learning-with-ai/#optimizing-your-flow" class="action" target="_blank">&rarr; Read "Optimizing Your Flow" section</a>
       </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
   </section>
 
-  <!-- 5. Configure Learning Mode (setup avant la méthode) -->
+  <!-- 03. Pratiquer -->
   <section class="band band-ink section-wallpaper">
-  <div class="content-section">
-    <ChapterLabel number="04" label="Learning mode" />
-    <h2>Configure learning mode</h2>
-    <p>Claude Code can be configured to support your learning, alongside producing code.</p>
+    <div class="container chapter">
+      <ChapterLabel number="03" label="Learning mode" />
 
-    <div class="learning-mode-grid">
+      <div class="sub sub-first">
+        <h2>Configure learning mode</h2>
+        <p class="lede">Claude Code can be configured to support your learning, alongside producing code.</p>
+
+        <div class="learning-mode-grid">
       <div class="learning-mode-card brand-card">
         <h3>CLAUDE.md Configuration</h3>
         <p>Add this to your project's CLAUDE.md to make Claude ask questions before generating code:</p>
@@ -295,19 +332,15 @@ If I skip these, remind me to think first.
           <li><strong>30% Learning:</strong> No AI, or AI as teacher only</li>
         </ul>
       </div>
-    </div>
-  </div>
-  </section>
+        </div>
+      </div>
 
-  <!-- 6. UVAL Protocol -->
-  <section class="band band-paper section-wallpaper">
-  <div class="content-section">
-    <ChapterLabel number="05" label="UVAL protocol" />
-    <h2>The UVAL protocol</h2>
-    <p>Your framework for learning with AI without losing skills.</p>
+      <div class="sub">
+        <h2>The UVAL protocol</h2>
+        <p class="lede">Your framework for learning with AI without losing skills.</p>
 
-    <div class="uval-steps">
-      <div class="uval-step brand-card">
+        <div class="uval-steps">
+      <div class="uval-step">
         <div class="letter">U</div>
         <div class="content">
           <h4>Understand First (15-min Rule)</h4>
@@ -321,7 +354,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step brand-card">
+      <div class="uval-step">
         <div class="letter">V</div>
         <div class="content">
           <h4>Verify (Explain It Back)</h4>
@@ -333,7 +366,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step brand-card">
+      <div class="uval-step">
         <div class="letter">A</div>
         <div class="content">
           <h4>Apply (Transform, Don't Copy)</h4>
@@ -345,7 +378,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step brand-card">
+      <div class="uval-step">
         <div class="letter">L</div>
         <div class="content">
           <h4>Learn (Capture the Insight)</h4>
@@ -357,37 +390,55 @@ If I skip these, remind me to think first.
           </div>
         </div>
       </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h2>30-day progression plan</h2>
+        <p class="lede">Week-by-week guide to mastering AI-assisted development.</p>
+
+        <div class="plan-grid">
+        <article class="week-card brand-card">
+          <p class="week-num">Week 1</p>
+          <h3>Foundations</h3>
+          <p class="week-ratio"><span class="week-label">AI Ratio</span><span class="ai-ratio low">20% AI</span></p>
+          <span class="ratio-meter" aria-hidden="true"><span style="width: 20%"></span></span>
+          <p class="week-exercise"><span class="week-label">Exercise</span>Build feature WITHOUT AI, then compare</p>
+        </article>
+        <article class="week-card brand-card">
+          <p class="week-num">Week 2</p>
+          <h3>Understanding</h3>
+          <p class="week-ratio"><span class="week-label">AI Ratio</span><span class="ai-ratio medium">40% AI</span></p>
+          <span class="ratio-meter" aria-hidden="true"><span style="width: 40%"></span></span>
+          <p class="week-exercise"><span class="week-label">Exercise</span>Use AI, but explain every line</p>
+        </article>
+        <article class="week-card brand-card">
+          <p class="week-num">Week 3</p>
+          <h3>Critical Use</h3>
+          <p class="week-ratio"><span class="week-label">AI Ratio</span><span class="ai-ratio medium">60% AI</span></p>
+          <span class="ratio-meter" aria-hidden="true"><span style="width: 60%"></span></span>
+          <p class="week-exercise"><span class="week-label">Exercise</span>Challenge AI suggestions, find bugs</p>
+        </article>
+        <article class="week-card brand-card">
+          <p class="week-num">Week 4</p>
+          <h3>Augmented</h3>
+          <p class="week-ratio"><span class="week-label">AI Ratio</span><span class="ai-ratio high">70% AI</span></p>
+          <span class="ratio-meter" aria-hidden="true"><span style="width: 70%"></span></span>
+          <p class="week-exercise"><span class="week-label">Exercise</span>Full productivity with verification</p>
+        </article>
+        </div>
+      </div>
     </div>
-  </div>
   </section>
 
-  <!-- 7. 30-Day Progression Plan -->
-  <section class="band band-base">
-  <div class="content-section">
-    <ChapterLabel number="06" label="30-day plan" />
-    <h2>30-day progression plan</h2>
-    <p>Week-by-week guide to mastering AI-assisted development.</p>
-
-    <table class="plan-table">
-      <thead>
-        <tr><th>Week</th><th>Focus</th><th>AI Ratio</th><th>Exercise</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Week 1</strong></td><td>Foundations</td><td><span class="ai-ratio low">20% AI</span></td><td>Build feature WITHOUT AI, then compare</td></tr>
-        <tr><td><strong>Week 2</strong></td><td>Understanding</td><td><span class="ai-ratio medium">40% AI</span></td><td>Use AI, but explain every line</td></tr>
-        <tr><td><strong>Week 3</strong></td><td>Critical Use</td><td><span class="ai-ratio medium">60% AI</span></td><td>Challenge AI suggestions, find bugs</td></tr>
-        <tr><td><strong>Week 4</strong></td><td>Augmented</td><td><span class="ai-ratio high">70% AI</span></td><td>Full productivity with verification</td></tr>
-      </tbody>
-    </table>
-  </div>
-  </section>
-
-  <!-- 8. Ready-to-Use Templates -->
+  <!-- 04. Aller plus loin -->
   <section class="band band-paper section-wallpaper">
-  <div class="content-section">
-    <h2>Ready-to-use templates</h2>
-    <p>Configure Claude Code to support both learning and producing.</p>
+    <div class="container chapter">
+      <ChapterLabel number="04" label="Go deeper" />
 
+      <div class="sub sub-first">
+        <h2>Ready-to-use templates</h2>
+        <p class="lede">Configure Claude Code to support both learning and producing.</p>
     <div class="templates-list">
       <div class="template-item brand-card brand-interactive-card">
         <div class="info">
@@ -413,15 +464,11 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/learning-capture.sh" target="_blank" class="btn btn-secondary">View &rarr;</a>
       </div>
     </div>
-  </div>
-  </section>
+      </div>
 
-  <!-- 9. External Resources -->
-  <section class="band band-base">
-  <div class="content-section">
-    <h2>Go deeper: Understand the model</h2>
-    <p>Using a tool well requires understanding what it actually does. These resources build mechanical intuition about LLMs, which makes you a better prompt engineer and a sharper debugger when things go wrong.</p>
-
+      <div class="sub">
+        <h2>Go deeper: Understand the model</h2>
+        <p class="lede">Using a tool well requires understanding what it actually does. These resources build mechanical intuition about LLMs, which makes you a better prompt engineer and a sharper debugger when things go wrong.</p>
     <div class="templates-list">
       <div class="template-item brand-card brand-interactive-card">
         <div class="info">
@@ -431,18 +478,20 @@ If I skip these, remind me to think first.
         <a href="https://www.stepbytoken.com/en" target="_blank" rel="noopener" class="btn btn-secondary">Read &rarr;</a>
       </div>
     </div>
-  </div>
+      </div>
+
+      <div class="sub">
+        <Methodologies />
+      </div>
+    </div>
   </section>
 
-  <!-- 10. Methodologies (section avancée) -->
-  <Methodologies />
-
-  <!-- 11. Onboarding (= action finale après tout le contexte) -->
+  <!-- Onboarding (contenu, pas de bande sombre) -->
   <Onboarding />
 
-  <!-- 12. CTA unique -->
+  <!-- CTA unique -->
   <section class="band band-accent section-wallpaper">
-  <div class="content-section">
+  <div class="container chapter">
     <div class="cta-section">
       <h2>Ready to learn the right way?</h2>
       <p>The full guide includes: Red flags checklist, breaking dependency strategies, case studies, and more.</p>
@@ -454,6 +503,7 @@ If I skip these, remind me to think first.
   </div>
   </section>
 
+
   <style>
     .warning-box {
       background: var(--bg-tertiary);
@@ -464,223 +514,161 @@ If I skip these, remind me to think first.
       max-width: 700px;
       margin: 0 0 var(--space-xl);
     }
-
     .warning-box p { margin: 0; color: var(--text-primary); }
 
-    .content-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-lg);
+    /* One container per chapter: content starts on the header logo edge. */
+    .chapter { padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
+    .chapter h2 { font-size: 1.75rem; margin-bottom: var(--space-sm); }
+    .lede { color: var(--text-secondary); max-width: 62ch; margin-bottom: var(--space-xl); }
+
+    /* Sub-sections inside a chapter: a rule and room, no extra chapter label. */
+    .sub { margin-top: var(--space-3xl); padding-top: var(--space-2xl); border-top: 1px solid var(--border-light, var(--border)); }
+    .sub-first { margin-top: 0; padding-top: 0; border-top: 0; }
+
+    /* 01. Paths: 4 + 3, equal height, steps folded after the third. */
+    .paths-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+    .path-card { padding: var(--space-lg); display: flex; flex-direction: column; min-width: 0; }
+    .path-card.featured { border-color: var(--accent); border-top-width: 3px; }
+    .path-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+    .path-icon { font-size: 1.4rem; }
+    .path-header h3 { font-size: 1.2rem; margin: 0; }
+    .path-description { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md); }
+    .path-steps { list-style: decimal; padding-left: var(--space-lg); margin: 0; color: var(--text-secondary); }
+    .path-steps li { margin-bottom: var(--space-sm); font-size: 0.9rem; overflow-wrap: anywhere; }
+    .path-steps li::marker { color: var(--text-muted); }
+    .path-steps a { text-decoration: underline; text-underline-offset: 3px; }
+    .path-steps a:hover { text-decoration-thickness: 2px; }
+    .path-more { margin-top: auto; padding-top: var(--space-sm); border-top: 1px solid var(--border-light, var(--border)); }
+    .path-more summary {
+      cursor: pointer; min-height: 44px; display: flex; align-items: center;
+      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
     }
+    .path-more summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .path-more[open] summary { margin-bottom: var(--space-sm); }
 
-    .content-section h2 {
-      font-size: 1.75rem;
-      margin-bottom: var(--space-lg);
-    }
-
-    .self-check {
-      padding: var(--space-xl);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .self-check h3 { margin-bottom: var(--space-lg); }
-
+    /* 02. Self-check and patterns side by side. */
+    .situate-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .self-check { padding: var(--space-lg); }
     .check-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-md);
-      padding: var(--space-md) var(--space-lg);
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light, var(--border));
-      border-radius: var(--radius-control);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+      padding: var(--space-md); background: var(--bg-primary);
+      border: 1px solid var(--border-light, var(--border)); border-radius: var(--radius-control);
       margin-bottom: var(--space-sm);
     }
-
-    .check-item .question { flex: 1; }
-
-    .toggle-group {
-      display: flex;
-      gap: 0;
-      border-radius: var(--radius-control);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
+    .check-item .question { flex: 1; font-size: 0.95rem; }
+    .toggle-group { display: flex; gap: 0; border-radius: var(--radius-control); overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; }
     .toggle-btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 0.85rem;
-      transition: background-color 150ms ease, color 150ms ease;
-      min-width: 56px;
-      min-height: 44px;
+      padding: 0.5rem 1rem; border: none; background: var(--bg-secondary); color: var(--text-secondary);
+      cursor: pointer; font-weight: 500; font-size: 0.85rem; transition: background-color 150ms ease, color 150ms ease;
+      min-width: 56px; min-height: 44px;
     }
     .toggle-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
-
     .toggle-btn:first-child { border-right: 1px solid var(--border); }
     .toggle-btn:hover:not(.active) { background: var(--bg-tertiary); }
     .toggle-btn.active { background: var(--text-primary); color: var(--bg-primary); }
-
     .score-result {
-      margin-top: var(--space-lg);
-      padding: var(--space-lg);
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light, var(--border));
-      border-radius: var(--radius-control);
-      text-align: left;
+      margin-top: var(--space-lg); padding: var(--space-lg); background: var(--bg-primary);
+      border: 1px solid var(--border-light, var(--border)); border-radius: var(--radius-control); text-align: left;
     }
-
     .score-result.show { display: block; }
     .score-result .score { font-size: 2rem; font-weight: bold; color: var(--accent); }
     .score-result .recommendation { margin-top: var(--space-md); color: var(--text-secondary); }
 
-    .patterns-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .pattern-card {
-      padding: var(--space-xl);
-    }
-
-    .pattern-card.dependent { border-top: 4px solid #ef4444; }
-    .pattern-card.avoidant { border-top: 4px solid #f59e0b; }
-    .pattern-card.augmented { border-top: 4px solid #3b82f6; }
-    .pattern-card h3 { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
-    .pattern-card .signs { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md); }
-    .pattern-card .action { display: block; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .patterns-grid { display: grid; gap: var(--space-md); }
+    .pattern-card { padding: var(--space-lg); border-left: 4px solid var(--border); }
+    .pattern-card.dependent { border-left-color: #ef4444; }
+    .pattern-card.avoidant { border-left-color: #f59e0b; }
+    .pattern-card.augmented { border-left-color: #3b82f6; }
+    .pattern-card h3 { margin-bottom: var(--space-sm); font-size: 1.2rem; }
+    .pattern-card .signs { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-sm); }
+    .pattern-card .action { display: block; font-weight: 600; font-size: 0.9rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
     .pattern-card .action:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 
-    .uval-steps { display: grid; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
-
-    .uval-step {
-      display: flex;
-      gap: var(--space-lg);
-      padding: var(--space-xl);
-    }
-
-    .uval-step .letter {
-      width: 60px; height: 60px; background: var(--text-primary); color: var(--bg-primary);
-      font-family: var(--font-display); border-radius: var(--radius-control); display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: bold; flex-shrink: 0;
-    }
-
-    .uval-step .content h4 { margin-bottom: var(--space-sm); }
-    .uval-step .content p { color: var(--text-secondary); margin-bottom: var(--space-md); }
-
-    .uval-step .implementation {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light, var(--border));
-      border-radius: var(--radius-control);
-      padding: var(--space-md);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-
-    .learning-mode-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .learning-mode-card {
-      padding: var(--space-xl);
-    }
-
+    /* 03. Learning mode: code wraps inside its frame. */
+    .learning-mode-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); }
+    .learning-mode-card { padding: var(--space-lg); display: flex; flex-direction: column; min-width: 0; }
     .learning-mode-card h3 { margin-bottom: var(--space-md); font-size: 1.1rem; }
     .learning-mode-card p { color: var(--text-secondary); margin-bottom: var(--space-md); font-size: 0.9rem; }
-
+    .learning-mode-card .btn { margin-top: auto; align-self: flex-start; }
     .learning-mode-card .code-block {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light, var(--border));
-      border-radius: var(--radius-control);
-      padding: var(--space-md);
-      margin-bottom: var(--space-md);
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
+      background: var(--bg-primary); border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control); padding: var(--space-md); margin: 0 0 var(--space-md);
+      font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary);
     }
-
-    .learning-mode-card .code-block code { background: none; padding: 0; }
-
-    .commands-table { width: 100%; margin-bottom: var(--space-md); }
-    .commands-table td { padding: var(--space-sm) var(--space-xs); font-size: 0.85rem; vertical-align: top; }
-    .commands-table td:first-child { width: 120px; }
-    .commands-table code { background: var(--bg-primary); padding: 2px 6px; border-radius: var(--radius-control); font-size: 0.8rem; }
-
+    .learning-mode-card .code-block code { background: none; padding: 0; white-space: normal; overflow-wrap: anywhere; font-size: inherit; }
+    .commands-table { width: 100%; margin-bottom: var(--space-md); border-collapse: collapse; }
+    .commands-table td { padding: var(--space-sm) var(--space-xs); font-size: 0.85rem; vertical-align: top; border-bottom: 1px solid var(--border-light, var(--border)); }
+    .commands-table td:first-child { width: 11rem; white-space: nowrap; }
+    .commands-table code { background: var(--bg-primary); padding: 2px 6px; border-radius: var(--radius-control); font-size: 0.8rem; overflow-wrap: anywhere; }
     .ratio-visual { margin-bottom: var(--space-md); }
     .ratio-bar { display: flex; border-radius: var(--radius-control); overflow: hidden; font-size: 0.75rem; font-weight: 600; }
-    .ratio-segment { padding: var(--space-sm) var(--space-md); text-align: center; }
+    .ratio-segment { padding: var(--space-sm) var(--space-md); text-align: center; white-space: nowrap; }
     .ratio-segment.produce { background: var(--text-primary); color: var(--bg-primary); }
     .ratio-segment.learn { background: var(--bg-tertiary); color: var(--text-primary); }
     .ratio-details { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
     .ratio-details li { margin-bottom: var(--space-xs); color: var(--text-secondary); }
 
-    .plan-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-2xl); }
-    .plan-table th, .plan-table td { padding: var(--space-md); text-align: left; border-bottom: 1px solid var(--border); }
-    .plan-table th { background: var(--bg-secondary); font-weight: 600; }
-    .plan-table .ai-ratio { display: inline-block; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-control); font-size: 0.85rem; font-weight: 600; }
-    .plan-table .ai-ratio.low { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
-    .plan-table .ai-ratio.medium { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
-    .plan-table .ai-ratio.high { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
-
-    .templates-list { display: grid; gap: var(--space-md); margin-bottom: var(--space-2xl); }
-
-    .template-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-md);
-      padding: var(--space-lg);
+    /* 03. UVAL: horizontal frieze of four steps. */
+    .uval-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-lg); }
+    .uval-step { border-top: 3px solid var(--accent); padding-top: var(--space-md); min-width: 0; }
+    .uval-step .letter {
+      font-family: var(--font-display); font-weight: 700; font-size: 4.5rem; line-height: 1;
+      color: var(--accent); margin-bottom: var(--space-sm);
+    }
+    .uval-step .content h4 { margin-bottom: var(--space-sm); font-size: 1.05rem; }
+    .uval-step .content p { color: var(--text-secondary); margin-bottom: var(--space-md); font-size: 0.9rem; }
+    .uval-step .implementation {
+      background: var(--bg-primary); border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control); padding: var(--space-sm) var(--space-md);
+      font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.55; color: var(--text-secondary);
+      white-space: normal; overflow-wrap: anywhere;
     }
 
+    /* 03. Thirty days: four week cards. */
+    .plan-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+    .week-card { padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); }
+    .week-num { margin: 0; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+    .week-card h3 { margin: 0; font-size: 1.4rem; }
+    .week-ratio { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
+    .week-label { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+    .week-exercise { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
+    .week-exercise .week-label { margin-bottom: 2px; }
+    .ai-ratio { display: inline-block; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-control); font-size: 0.85rem; font-weight: 600; background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-primary); }
+    .ratio-meter { display: block; height: 4px; background: var(--bg-tertiary); border-radius: 2px; overflow: hidden; }
+    .ratio-meter > span { display: block; height: 100%; background: var(--accent); }
+
+    /* 04. Templates and resources. */
+    .templates-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); }
+    .template-item { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--space-md); padding: var(--space-lg); }
     .template-item .info h4 { margin-bottom: var(--space-xs); }
     .template-item .info p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
     .template-item .btn { flex-shrink: 0; }
+    .sub .templates-list:has(> :only-child) { grid-template-columns: 1fr; }
+    .sub .templates-list > :only-child { flex-direction: row; align-items: center; justify-content: space-between; }
 
-    .cta-section {
-      text-align: left;
-      padding: var(--space-xl) 0;
-      margin: 0;
-    }
-
-    .cta-section h2 { border: none; padding: 0; }
+    .cta-section { text-align: left; padding: var(--space-xl) 0; margin: 0; }
+    .cta-section h2 { border: none; padding: 0; font-size: 1.75rem; }
     .cta-section p { color: var(--text-secondary); margin-bottom: var(--space-xl); }
     .cta-buttons { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
 
-    .paths-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-2xl);
+    @media (max-width: 1100px) {
+      .paths-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .uval-steps, .plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .learning-mode-grid { grid-template-columns: 1fr; }
+      .situate-grid { grid-template-columns: 1fr; gap: var(--space-3xl); }
     }
-    .path-card {
-      padding: var(--space-xl);
-    }
-    .path-card.featured { border-color: var(--accent); border-top-width: 3px; }
-    .path-header { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
-    .path-icon { font-size: 1.5rem; }
-    .path-header h3 { font-size: 1.2rem; }
-    .path-description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: var(--space-lg); }
-    .path-steps { padding-left: var(--space-lg); color: var(--text-secondary); }
-    .path-steps li { margin-bottom: var(--space-sm); font-size: 0.95rem; }
-    .path-steps li::marker { color: var(--text-muted); }
-    .path-steps a { text-decoration: underline; text-underline-offset: 3px; }
-    .path-steps a:hover { text-decoration-thickness: 2px; }
 
     @media (max-width: 768px) {
-      .uval-step { flex-direction: column; align-items: flex-start; text-align: left; }
-      .template-item { flex-direction: column; gap: var(--space-md); text-align: left; }
-      .paths-grid { grid-template-columns: 1fr; }
+      .chapter { padding-top: var(--space-2xl); padding-bottom: var(--space-2xl); }
+      .paths-grid, .uval-steps, .plan-grid, .templates-list { grid-template-columns: 1fr; }
       .path-card.featured { order: -1; }
+      .check-item { flex-direction: column; align-items: flex-start; }
+      .commands-table td:first-child { width: auto; white-space: normal; }
+      .commands-table, .commands-table tbody, .commands-table tr, .commands-table td { display: block; width: 100%; }
+      .commands-table tr { padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-light, var(--border)); }
+      .commands-table td { border: 0; padding: 2px 0; }
+      .sub .templates-list > :only-child { flex-direction: column; align-items: flex-start; }
     }
   </style>
 

@@ -60,11 +60,19 @@ const jsonLd = [
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
   <header class="page-hero">
-    <div class="container">
-      <h1>Claude Code knowledge quiz</h1>
-      <p class="tagline">473 questions across 17 categories. Filter by role and difficulty, test your knowledge, share your score.</p>
-      <p class="hero-answer">The Claude Code quiz tests your knowledge with 473 questions across 17 categories, covering installation, slash commands, workflows, agents, hooks, MCP servers, security, and team adoption metrics. Pick your categories, filter by difficulty (Junior, Senior, Power User) and by role (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM), answer multiple-choice questions, and get instant results with a shareable score. No account or sign-up required.</p>
-      <p class="hero-byline">Built and maintained by <a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>, Fractional Chief AI Officer.</p>
+    <div class="container quiz-hero-grid">
+      <div class="quiz-hero-copy">
+        <h1>Claude Code knowledge quiz</h1>
+        <p class="tagline">473 questions across 17 categories. Filter by role and difficulty, test your knowledge, share your score.</p>
+        <p class="hero-answer">The Claude Code quiz tests your knowledge with 473 questions across 17 categories, covering installation, slash commands, workflows, agents, hooks, MCP servers, security, and team adoption metrics. Pick your categories, filter by difficulty (Junior, Senior, Power User) and by role (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM), answer multiple-choice questions, and get instant results with a shareable score. No account or sign-up required.</p>
+        <p class="hero-byline">Built and maintained by <a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>, Fractional Chief AI Officer.</p>
+      </div>
+      <dl class="quiz-figures">
+        <div class="quiz-figure"><dt>Questions</dt><dd>473</dd></div>
+        <div class="quiz-figure"><dt>Categories</dt><dd>17</dd></div>
+        <div class="quiz-figure"><dt>Roles</dt><dd>5</dd></div>
+        <div class="quiz-figure"><dt>Difficulty levels</dt><dd>3</dd></div>
+      </dl>
     </div>
   </header>
 
@@ -73,44 +81,51 @@ const jsonLd = [
   <div class="quiz-container">
     <!-- Setup Screen -->
     <div id="quiz-setup" class="quiz-setup">
-      <ChapterLabel number="01" label="Categories" />
-      <div class="category-header">
-        <h2 class="quiz-step-heading">Select categories</h2>
-        <div class="category-actions">
-          <button class="category-action-btn" id="select-all-btn">Select All</button>
-          <button class="category-action-btn" id="deselect-all-btn">Deselect All</button>
+     <div class="setup-layout">
+      <div class="setup-main">
+        <ChapterLabel number="01" label="Categories" />
+        <div class="category-header">
+          <h2 class="quiz-step-heading">Select categories</h2>
+          <div class="category-actions">
+            <button class="category-action-btn" id="select-all-btn">Select All</button>
+            <button class="category-action-btn" id="deselect-all-btn">Deselect All</button>
+          </div>
+        </div>
+        <div class="category-grid" id="category-grid">
+          <!-- Populated by JS -->
         </div>
       </div>
-      <div class="category-grid" id="category-grid">
-        <!-- Populated by JS -->
-      </div>
 
-      <div class="selected-count" id="selected-count">0 questions selected</div>
-      <div class="previous-best" id="previous-best"></div>
+      <aside class="setup-side brand-card">
+        <ChapterLabel number="02" label="Filters" />
+        <h2 class="quiz-step-heading">Filter by Difficulty (optional)</h2>
+        <div class="difficulty-select">
+          <button class="difficulty-btn selected" data-difficulty="all">All Levels</button>
+          <button class="difficulty-btn" data-difficulty="junior">Junior</button>
+          <button class="difficulty-btn" data-difficulty="senior">Senior</button>
+          <button class="difficulty-btn" data-difficulty="power">Power User</button>
+        </div>
 
-      <ChapterLabel number="02" label="Filters" />
-      <h2 class="quiz-step-heading" style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h2>
-      <div class="difficulty-select">
-        <button class="difficulty-btn selected" data-difficulty="all">All Levels</button>
-        <button class="difficulty-btn" data-difficulty="junior">Junior</button>
-        <button class="difficulty-btn" data-difficulty="senior">Senior</button>
-        <button class="difficulty-btn" data-difficulty="power">Power User</button>
-      </div>
+        <h2 class="quiz-step-heading">Filter by Role (optional)</h2>
+        <p class="filter-hint">Narrow the pool to questions relevant to your role. Combines with difficulty.</p>
+        <div class="role-select">
+          <button class="role-btn selected" data-role="all">All Roles</button>
+          {QUIZ_ROLES.map((role) => (
+            <button class="role-btn" data-role={role.id} title={role.description}>{role.label}</button>
+          ))}
+        </div>
 
-      <h2 class="quiz-step-heading" style="margin-bottom: var(--space-xs);">Filter by Role (optional)</h2>
-      <p class="filter-hint">Narrow the pool to questions relevant to your role. Combines with difficulty.</p>
-      <div class="role-select">
-        <button class="role-btn selected" data-role="all">All Roles</button>
-        {QUIZ_ROLES.map((role) => (
-          <button class="role-btn" data-role={role.id} title={role.description}>{role.label}</button>
-        ))}
-      </div>
-
-      <button class="btn btn-primary start-btn" id="start-btn" disabled>Start Quiz</button>
+        <div class="setup-summary">
+          <div class="selected-count" id="selected-count">0 questions selected</div>
+          <div class="previous-best" id="previous-best"></div>
+          <button class="btn btn-primary start-btn" id="start-btn" disabled>Start Quiz</button>
+        </div>
+      </aside>
+     </div>
     </div>
 
     <!-- Question Screen -->
-    <div id="quiz-question" class="quiz-question">
+    <div id="quiz-question" class="quiz-question brand-card">
       <div class="quiz-params" id="quiz-params"></div>
       <div class="quiz-params-list" id="quiz-params-list"></div>
       <div class="progress-bar">
@@ -151,6 +166,7 @@ const jsonLd = [
     <!-- Results Screen -->
     <div id="quiz-results" class="quiz-results">
       <div class="results-card brand-card" id="results-card">
+       <div class="results-main">
         <div class="screenshot-badge">
           <img src="/claude-logo-orange.svg" alt="Claude Code AI assistant certification badge">
           <div class="screenshot-badge-text">
@@ -179,27 +195,14 @@ const jsonLd = [
             <div class="meta-label">Time</div>
           </div>
         </div>
+       </div>
 
-        <h3 class="quiz-minor-heading" style="margin-bottom: var(--space-md); text-align: left;">Score by Category</h3>
+       <div class="results-side">
+        <h3 class="quiz-minor-heading">Score by Category</h3>
         <div class="category-scores" id="category-scores">
           <!-- Populated by JS -->
         </div>
-      </div>
-
-      <div class="history-section" id="history-section">
-        <h3 class="quiz-minor-heading">Your History <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted); font-style: italic;">· idea by <a href="https://www.linkedin.com/in/jeff-ladiray-79203657/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Jeff Ladiray</a></span></h3>
-        <div class="history-list" id="history-list">
-          <!-- Populated by JS -->
-        </div>
-        <a class="clear-history" id="clear-history">Clear History</a>
-      </div>
-
-      <div class="most-missed-section" id="most-missed-section" style="display: none;">
-        <h3 class="quiz-minor-heading">Most Missed Questions</h3>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md);">
-          These questions have the lowest success rates overall.
-        </p>
-        <div id="most-missed-list"></div>
+       </div>
       </div>
 
       <div class="share-text" id="share-text">
@@ -213,792 +216,267 @@ const jsonLd = [
       </div>
 
       <div id="quiz-cta" class="quiz-cta"></div>
+
+      <div class="history-section brand-card" id="history-section">
+        <h3 class="quiz-minor-heading">Your History <span class="history-credit">· idea by <a href="https://www.linkedin.com/in/jeff-ladiray-79203657/" target="_blank" rel="noopener">Jeff Ladiray</a></span></h3>
+        <div class="history-list" id="history-list">
+          <!-- Populated by JS -->
+        </div>
+        <a class="clear-history btn-quiet" id="clear-history">Clear History</a>
+      </div>
+
+      <div class="most-missed-section brand-card" id="most-missed-section" style="display: none;">
+        <h3 class="quiz-minor-heading">Most Missed Questions</h3>
+        <p class="most-missed-intro">
+          These questions have the lowest success rates overall.
+        </p>
+        <div id="most-missed-list"></div>
+      </div>
     </div>
   </div>
   </div>
   </section>
 
   <style is:global>
-    /* Quiz-specific styles */
-    .quiz-container {
-      max-width: 100%;
-      padding: var(--space-lg);
-      min-height: calc(100vh - 200px);
+    /* Quiz-specific styles. Everything starts on the header logo edge (.container). */
+    .quiz-band { padding: var(--space-2xl) 0 var(--space-3xl); }
+    .quiz-container { max-width: 100%; padding: 0; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .quiz-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); align-items: center; }
+    .quiz-hero-copy .tagline, .quiz-hero-copy .hero-answer { max-width: 62ch; }
+    .quiz-figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border: 1px solid var(--border); border-top: 3px solid var(--action); border-radius: var(--border-radius-lg); background: var(--surface-elevated); overflow: hidden; }
+    .quiz-figure { padding: var(--space-lg); border-bottom: 1px solid var(--border); }
+    .quiz-figure:nth-child(odd) { border-right: 1px solid var(--border); }
+    .quiz-figure:nth-last-child(-n+2) { border-bottom: 0; }
+    .quiz-figure dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.75rem, 6vw, 4.5rem); line-height: 1; color: var(--accent); }
+    .quiz-figure dt { margin: 0 0 var(--space-xs); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .quiz-figure { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+    @media (min-width: 960px) {
+      .quiz-hero-grid { grid-template-columns: minmax(0, 1fr) 400px; gap: var(--space-3xl); }
     }
 
-    .quiz-setup {
-      text-align: left;
-      padding: var(--space-2xl) 0;
+    /* ── Setup ────────────────────────────────────────────── */
+    .quiz-setup { text-align: left; padding: 0; }
+    .setup-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
+    @media (min-width: 1000px) {
+      .setup-layout { grid-template-columns: minmax(0, 1fr) 380px; gap: var(--space-2xl); }
+      .setup-side { position: sticky; top: 96px; }
     }
+    .setup-side { padding: var(--space-lg); }
+    .setup-side .chapter-label { margin-top: 0; }
+    .setup-side .quiz-step-heading { margin-block: var(--space-md) var(--space-sm); }
 
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--space-md);
-      margin-bottom: var(--space-2xl);
-      text-align: left;
-    }
-
-    .category-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-md);
-      min-height: 44px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      cursor: pointer;
+    .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); flex-wrap: wrap; gap: var(--space-sm); }
+    .quiz-step-heading { font-size: 1.25rem; margin-block: 1em; }
+    .quiz-minor-heading { font-size: 1.1rem; margin-block: 0 var(--space-md); }
+    .category-header h2 { margin: 0; }
+    .category-actions { display: flex; gap: var(--space-sm); }
+    .category-action-btn {
+      padding: var(--space-xs) var(--space-md); min-height: 44px; font-size: 0.85rem;
+      background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-control);
+      color: var(--text-secondary); cursor: pointer;
       transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
+    .category-action-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .category-action-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    .category-item:hover {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 1px var(--accent);
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-md); text-align: left; }
+    .category-item {
+      display: flex; align-items: center; gap: var(--space-sm);
+      padding: var(--space-md); min-height: 64px; cursor: pointer;
     }
-
     .category-item:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .category-item.selected {
-      border-color: var(--text-primary);
-      background: var(--text-primary);
-      color: var(--bg-primary);
-    }
-
+    .category-item.selected { border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-primary); }
     .category-item.selected .category-count { color: inherit; opacity: 0.8; }
     .category-item.selected input { accent-color: var(--bg-primary); }
-
-    .category-item input {
-      accent-color: var(--accent);
-      width: 18px;
-      height: 18px;
+    :root:not([data-theme="dark"]) .category-item.selected.brand-interactive-card:hover {
+      background-color: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary);
+      --text-primary: #171512; --text-secondary: #171512; --text-muted: #171512;
+      box-shadow: inset 0 0 0 1px #f97316, 4px 4px 0 #f97316;
     }
+    .category-item input { accent-color: var(--accent); width: 20px; height: 20px; flex-shrink: 0; }
+    .category-item label { flex: 1; cursor: pointer; font-weight: 600; line-height: 1.3; }
+    .category-count { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
 
-    .category-item label {
-      flex: 1;
-      cursor: pointer;
-    }
-
-    .category-count {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-
-    .difficulty-select {
-      display: flex;
-      gap: var(--space-md);
-      justify-content: flex-start;
-      margin-bottom: var(--space-2xl);
-      flex-wrap: wrap;
-    }
-
-    .role-select {
-      display: flex;
-      gap: var(--space-md);
-      justify-content: flex-start;
-      margin-bottom: var(--space-2xl);
-      flex-wrap: wrap;
-    }
-
-    .role-btn {
-      padding: var(--space-md) var(--space-xl);
-      min-height: 44px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--text-primary);
-      cursor: pointer;
+    .difficulty-select, .role-select { display: flex; gap: var(--space-sm); justify-content: flex-start; margin-bottom: var(--space-lg); flex-wrap: wrap; }
+    .role-btn, .difficulty-btn {
+      padding: var(--space-xs) var(--space-md); min-height: 44px;
+      background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-control);
+      color: var(--text-primary); cursor: pointer; font-size: 0.9rem;
       transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
+    .role-btn:hover, .difficulty-btn:hover { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .role-btn:focus-visible, .difficulty-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .role-btn.selected, .difficulty-btn.selected { border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-primary); }
+    .filter-hint { color: var(--text-muted); font-size: 0.85rem; margin: 0 0 var(--space-md); }
 
-    .role-btn:hover {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 1px var(--accent);
-    }
+    .setup-summary { margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--border); }
+    .selected-count { margin-bottom: var(--space-sm); color: var(--text-primary); font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.1; }
+    .previous-best { margin-bottom: var(--space-md); padding: var(--space-sm) var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-control); font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .previous-best:empty { display: none; }
+    .previous-best.has-data { color: var(--accent); }
+    .start-btn { width: 100%; min-height: 52px; font-size: 1.05rem; }
+    .start-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .role-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .role-btn.selected {
-      border-color: var(--text-primary);
-      background: var(--text-primary);
-      color: var(--bg-primary);
-    }
-
-    .filter-hint {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: var(--space-md);
-    }
-
-    .difficulty-btn {
-      padding: var(--space-md) var(--space-xl);
-      min-height: 44px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-    }
-
-    .difficulty-btn:hover {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 1px var(--accent);
-    }
-
-    .difficulty-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .difficulty-btn.selected {
-      border-color: var(--text-primary);
-      background: var(--text-primary);
-      color: var(--bg-primary);
-    }
-
-    .start-btn {
-      padding: var(--space-md) var(--space-2xl);
-      font-size: 1.1rem;
-    }
-
-    .selected-count {
-      margin-bottom: var(--space-lg);
-      color: var(--text-secondary);
-    }
-
-    .previous-best {
-      margin-bottom: var(--space-lg);
-      padding: var(--space-sm) var(--space-md);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-
-    .previous-best.has-data {
-      color: var(--accent);
-    }
-
-    .category-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-md);
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-    }
-
-    /* Former h3/h4 sizes kept after fixing the outline levels. */
-    .quiz-step-heading {
-      font-size: 1.17em;
-      margin-block: 1em;
-    }
-
-    .quiz-minor-heading {
-      font-size: 1em;
-      margin-block: 1.33em;
-    }
-
-    .category-header h2 {
-      margin: 0;
-    }
-
-    .category-actions {
-      display: flex;
-      gap: var(--space-sm);
-    }
-
-    .category-action-btn {
-      padding: var(--space-xs) var(--space-md);
-      min-height: 44px;
-      font-size: 0.85rem;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-    }
-
-    .category-action-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .category-action-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--bg-tertiary);
-    }
-
-    .quiz-question {
-      display: none;
-    }
-
-    .quiz-question.active {
-      display: block;
-    }
-
-    .quiz-params {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      margin-bottom: var(--space-xs);
-    }
-
-    .quiz-params-list {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      opacity: 0.8;
-      margin-bottom: var(--space-sm);
-      line-height: 1.4;
-    }
-
-    .quiz-params-list:empty {
-      display: none;
-    }
-
-    .progress-bar {
-      height: 4px;
-      background: var(--bg-tertiary);
-      border-radius: 2px;
-      margin-bottom: var(--space-xl);
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    .question-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-lg);
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-    }
-
-    .question-number {
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-    }
-
-    .question-category {
-      font-size: 0.85rem;
-      padding: var(--space-xs) var(--space-sm);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      color: var(--text-secondary);
-    }
-
-    .question-difficulty {
-      font-size: 0.8rem;
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: var(--radius-control);
-    }
-
+    /* ── Question ─────────────────────────────────────────── */
+    .quiz-question { display: none; padding: var(--space-xl); }
+    .quiz-question.active { display: block; }
+    @media (min-width: 768px) { .quiz-question { padding: var(--space-2xl); } }
+    .quiz-params { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: var(--space-xs); }
+    .quiz-params-list { font-size: 0.75rem; color: var(--text-muted); margin-bottom: var(--space-sm); line-height: 1.4; }
+    .quiz-params-list:empty { display: none; }
+    .progress-bar { height: 8px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: var(--radius-control); margin: var(--space-sm) 0 var(--space-lg); overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--action); transition: width 0.3s ease; }
+    .question-header { display: flex; justify-content: flex-start; align-items: center; margin-bottom: var(--space-lg); flex-wrap: wrap; gap: var(--space-sm) var(--space-md); }
+    .question-number { font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; line-height: 1; color: var(--text-primary); margin-right: auto; }
+    .question-number a { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
+    .question-category { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; padding: var(--space-xs) var(--space-sm); background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: var(--radius-control); color: var(--text-secondary); }
+    .question-difficulty { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-control); border: 1px solid var(--border); background: var(--bg-tertiary); color: var(--text-secondary); }
     .difficulty-junior { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
     .difficulty-senior { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
     .difficulty-power { background: var(--bg-tertiary); color: var(--status-danger); border: 1px solid var(--border); }
 
-    .question-text {
-      font-size: 1.25rem;
-      margin-bottom: var(--space-xl);
-      line-height: 1.5;
-    }
+    .question-text { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 600; margin-bottom: var(--space-xl); line-height: 1.45; max-width: 70ch; color: var(--text-primary); }
+    .question-text code, .option-btn code, .explanation-box code { font-family: var(--font-mono); font-size: 0.9em; padding: 2px 6px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: var(--radius-control); color: var(--accent); }
+    .question-text pre, .option-btn pre, .explanation-box pre { margin: var(--space-sm) 0; padding: var(--space-sm); background: var(--bg-tertiary); border-radius: var(--radius-control); overflow-x: auto; }
+    .question-text pre code, .option-btn pre code, .explanation-box pre code { background: none; border: none; padding: 0; display: block; }
 
-    .question-text code {
-      font-family: var(--font-mono);
-      font-size: 0.9em;
-      padding: 2px 6px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--accent);
-    }
-
-    .question-text pre {
-      margin: var(--space-sm) 0;
-      padding: var(--space-sm);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      overflow-x: auto;
-    }
-
-    .question-text pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      display: block;
-    }
-
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-
+    .options-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+    @media (min-width: 900px) { .options-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .option-btn {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      padding: var(--space-md) var(--space-lg);
-      background: var(--surface-elevated);
-      border: 2px solid var(--border);
-      border-radius: var(--radius-control);
-      text-align: left;
-      cursor: pointer;
-      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-      color: var(--text-primary);
-      font-size: 1rem;
+      display: flex; align-items: flex-start; gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg); min-height: 72px;
+      background: var(--surface-elevated); border: 2px solid var(--border); border-radius: var(--border-radius-lg);
+      text-align: left; cursor: pointer; color: var(--text-primary); font-size: 1rem; line-height: 1.5;
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
     }
-
     .option-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .option-btn:hover:not(.disabled) {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 1px var(--accent);
+    .option-btn:hover:not(.disabled) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border); }
+    .option-btn.selected { border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-primary); }
+    .option-btn.selected .option-key { background: var(--bg-primary); color: var(--text-primary); border-color: var(--bg-primary); }
+    .option-btn.disabled { cursor: default; color: var(--text-primary); position: relative; }
+    .option-btn.disabled:not(.correct):not(.incorrect) { opacity: 0.65; }
+    .option-btn.correct { border-color: var(--status-success); background: color-mix(in srgb, var(--status-success) 14%, var(--surface-elevated)); }
+    .option-btn.incorrect { border-color: var(--status-danger); background: color-mix(in srgb, var(--status-danger) 14%, var(--surface-elevated)); }
+    .option-btn.correct .option-key { background: var(--status-success); border-color: var(--status-success); color: #fff; }
+    .option-btn.incorrect .option-key { background: var(--status-danger); border-color: var(--status-danger); color: #fff; }
+    .option-btn.correct::after, .option-btn.incorrect::after {
+      position: absolute; top: var(--space-xs); right: var(--space-sm);
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
     }
-
-    .option-btn.selected {
-      border-color: var(--text-primary);
-      background: var(--text-primary);
-      color: var(--bg-primary);
-    }
-
-    .option-btn.selected .option-key { background: var(--bg-primary); color: var(--text-primary); }
-
-    .option-btn.correct {
-      border-color: var(--status-success);
-      background: var(--bg-tertiary);
-    }
-
-    .option-btn.incorrect {
-      border-color: var(--status-danger);
-      background: var(--bg-tertiary);
-    }
-
-    .option-btn.disabled {
-      cursor: default;
-    }
-
-    .option-btn code {
-      font-family: var(--font-mono);
-      font-size: 0.9em;
-      padding: 2px 6px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--accent);
-    }
-
-    .option-btn pre {
-      margin: var(--space-xs) 0;
-      padding: var(--space-xs);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      overflow-x: auto;
-    }
-
-    .option-btn pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      display: block;
-    }
-
+    .option-btn.correct::after { content: "Correct"; }
+    .option-btn.incorrect::after { content: "Your answer"; }
     .option-key {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 28px;
-      height: 28px;
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      font-weight: 600;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; min-width: 32px; height: 32px;
+      background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: var(--radius-control);
+      font-family: var(--font-mono); font-weight: 600; font-size: 0.9rem; flex-shrink: 0;
     }
 
-    .explanation-box {
-      display: none;
-      padding: var(--space-lg);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      margin-bottom: var(--space-xl);
-      border-left: 4px solid var(--accent);
-    }
+    .explanation-box { display: none; padding: var(--space-lg); background: var(--bg-secondary); border: 1px solid var(--border); border-left: 4px solid var(--action); border-radius: var(--radius-control); margin-bottom: var(--space-xl); }
+    .explanation-box.show { display: block; }
+    .explanation-box h3 { margin-bottom: var(--space-sm); color: var(--text-primary); }
+    .explanation-box p { color: var(--text-secondary); font-size: 1rem; line-height: 1.65; max-width: 80ch; }
+    .success-rate { margin-top: var(--space-sm); font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .explanation-box .doc-links { margin-top: var(--space-md); display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); }
+    .explanation-box .doc-link { display: inline-block; font-size: 0.9rem; }
+    .explanation-box .official-doc-link { font-size: 0.85rem; }
+    .report-error-section { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--border); }
+    .btn-report-error { display: inline-block; color: var(--text-muted); font-size: 0.85rem; text-decoration: underline; text-underline-offset: 3px; }
+    .btn-report-error:hover { color: var(--accent); }
 
-    .explanation-box.show {
-      display: block;
-    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .question-actions { display: flex; justify-content: space-between; gap: var(--space-md); padding-top: var(--space-lg); border-top: 1px solid var(--border); }
+    .nav-btn { padding: var(--space-sm) var(--space-xl); min-width: 140px; }
+    .nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .explanation-box h3 {
-      margin-bottom: var(--space-sm);
-      color: var(--text-primary);
-    }
-
-    .explanation-box p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .explanation-box code {
-      font-family: var(--font-mono);
-      font-size: 0.9em;
-      padding: 2px 6px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      color: var(--accent);
-    }
-
-    .explanation-box pre {
-      margin: var(--space-sm) 0;
-      padding: var(--space-sm);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      overflow-x: auto;
-    }
-
-    .explanation-box pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      display: block;
-    }
-
-    .success-rate {
-      margin-top: var(--space-sm);
-      padding: var(--space-xs) var(--space-sm);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-
-    .explanation-box .doc-links {
-      margin-top: var(--space-md);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .explanation-box .doc-link {
-      display: inline-block;
-      font-size: 0.9rem;
-    }
-
-    .explanation-box .official-doc-link {
-      opacity: 0.7;
-      font-size: 0.85rem;
-    }
-
-    .report-error-section {
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--border);
-    }
-
-    .btn-report-error {
-      display: inline-block;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      padding: var(--space-xs) var(--space-md);
-      border-radius: var(--radius-control);
-      font-size: 0.85rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 150ms ease, color 150ms ease;
-    }
-
-    .btn-report-error:hover {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .question-actions {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-md);
-    }
-
-    .nav-btn {
-      padding: var(--space-sm) var(--space-lg);
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .quiz-results {
-      display: none;
-      text-align: left;
-      padding: var(--space-2xl) 0;
-    }
-
-    .quiz-results.active {
-      display: block;
-    }
-
-    .results-card {
-      padding: var(--space-2xl);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .results-card h2 {
-      margin-bottom: var(--space-lg);
-    }
-
-    .score-display {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: var(--space-md);
-      color: var(--accent);
-    }
-
-    .score-label {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--space-xl);
-    }
-
-    .score-delta {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: var(--space-lg);
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-control);
-    }
-
+    /* ── Results ──────────────────────────────────────────── */
+    .quiz-results { display: none; text-align: left; padding: 0; }
+    .quiz-results.active { display: block; }
+    .results-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); padding: var(--space-xl); margin-bottom: var(--space-lg); }
+    @media (min-width: 900px) { .results-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); padding: var(--space-2xl); } }
+    .results-card h2 { margin-bottom: var(--space-xs); }
+    .score-display { font-family: var(--font-display); font-size: clamp(5rem, 14vw, 9rem); font-weight: 700; line-height: 0.95; margin-bottom: var(--space-sm); color: var(--accent); }
+    .score-label { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: var(--space-md); }
+    .score-delta { display: inline-block; font-size: 0.95rem; font-weight: 600; margin-bottom: var(--space-md); padding: var(--space-xs) var(--space-md); border-radius: var(--radius-control); border: 1px solid var(--border); }
+    .score-delta:empty { display: none; }
     .score-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
     .score-delta.negative { color: var(--status-danger); background: var(--bg-tertiary); }
     .score-delta.neutral { color: var(--text-muted); background: var(--bg-tertiary); }
     .score-delta.first { color: var(--accent); background: var(--bg-tertiary); }
-
-    .category-delta {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-left: var(--space-xs);
-      padding: 2px 6px;
-      border-radius: var(--radius-control);
-    }
-
+    .category-delta { display: inline-block; font-size: 0.75rem; font-weight: 700; margin-left: var(--space-xs); padding: 2px 6px; border-radius: var(--radius-control); }
     .category-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
     .category-delta.negative { color: var(--status-danger); background: var(--bg-tertiary); }
-
-    .score-badge {
-      display: inline-block;
-      padding: var(--space-sm) var(--space-lg);
-      border-radius: var(--radius-control);
-      font-weight: 600;
-      margin-bottom: var(--space-xl);
-    }
-
+    .score-badge { display: inline-block; padding: var(--space-xs) var(--space-lg); border-radius: var(--radius-control); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; font-weight: 600; margin: 0 0 var(--space-lg) var(--space-sm); }
     .badge-novice { background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border); }
-    .badge-apprentice { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
-    .badge-practitioner { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
-    .badge-expert { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
+    .badge-apprentice, .badge-practitioner, .badge-expert { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
     .badge-master { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
-
-    .category-scores { text-align: left; margin-bottom: var(--space-xl); }
-
-    .category-score-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--space-sm) 0;
-      border-bottom: 1px solid var(--border);
-    }
-
+    .results-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--bg-secondary); }
+    .meta-item { text-align: left; padding: var(--space-md); }
+    .meta-item + .meta-item { border-left: 1px solid var(--border); }
+    .meta-value { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1; color: var(--text-primary); }
+    .meta-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-top: var(--space-xs); }
+    .results-side .quiz-minor-heading { font-size: 1.25rem; }
+    .category-scores { text-align: left; }
+    .category-score-item { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); padding: var(--space-sm) 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
     .category-score-item:last-child { border-bottom: none; }
+    .category-score-item > div { flex: 0 1 55%; justify-content: flex-end; }
+    .category-score-bar { flex: 1; min-width: 60px; height: 10px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+    .category-score-fill { height: 100%; background: var(--action); }
 
-    .category-score-bar {
-      width: 100px;
-      height: 8px;
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      overflow: hidden;
-    }
+    .share-text { font-family: var(--font-mono); font-size: 0.9rem; padding: var(--space-md); background: var(--bg-tertiary); border: 1px dashed var(--border); border-radius: var(--radius-control); text-align: left; margin-bottom: var(--space-md); word-break: break-word; white-space: pre-line; }
+    .results-actions { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; margin-bottom: var(--space-xl); }
+    .results-actions .btn { min-width: 160px; }
 
-    .category-score-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: var(--radius-control);
-    }
-
-    .results-meta {
-      display: flex;
-      justify-content: flex-start;
-      gap: var(--space-xl);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-xl);
-      padding: var(--space-md);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-    }
-
-    .meta-item { text-align: center; }
-    .meta-value { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); }
-    .meta-label { font-size: 0.8rem; color: var(--text-muted); }
-
-    .most-missed-section {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      padding: var(--space-lg);
-      margin-bottom: var(--space-2xl);
-      text-align: left;
-    }
-
-    .most-missed-section h3 { margin-bottom: var(--space-sm); color: var(--text-primary); }
-
-    #most-missed-list { max-height: 300px; overflow-y: auto; }
-
-    .missed-question-item {
-      padding: var(--space-sm);
-      margin-bottom: var(--space-sm);
-      background: var(--bg-tertiary);
-      border-left: 3px solid var(--warning);
-      border-radius: var(--radius-control);
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .missed-question-item .question-info { flex: 1; }
-    .missed-question-item .question-id { font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); }
-    .missed-question-item .question-preview { color: var(--text-secondary); margin-top: var(--space-xs); }
-    .missed-question-item .success-rate { font-family: var(--font-mono); font-weight: 600; color: var(--warning); font-size: 1.1rem; margin-left: var(--space-md); }
-
-    .results-actions { display: flex; gap: var(--space-md); justify-content: flex-start; flex-wrap: wrap; }
-
-    .share-text {
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      padding: var(--space-md);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      text-align: left;
-      margin-bottom: var(--space-lg);
-      word-break: break-word;
-    }
-
-    .screenshot-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-md) var(--space-lg);
-      background: var(--bg-secondary);
-      border: 2px solid var(--accent);
-      border-radius: var(--border-radius-lg);
-      margin-bottom: var(--space-lg);
-    }
-
-    .screenshot-badge img { width: 40px; height: 40px; }
+    .screenshot-badge { display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--action); border-radius: var(--radius-control); margin-bottom: var(--space-md); }
+    .screenshot-badge img { width: 32px; height: 32px; }
     .screenshot-badge-text { text-align: left; }
     .screenshot-badge-title { font-weight: 600; color: var(--text-primary); }
     .screenshot-badge-url { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
 
-    .history-section {
-      background: var(--bg-secondary);
-      border: 2px solid var(--border);
-      border-radius: var(--border-radius-lg);
-      padding: var(--space-xl);
-      margin-bottom: var(--space-2xl);
-    }
-    .history-section h3 { margin-bottom: var(--space-md); text-align: left; }
+    .history-section, .most-missed-section { padding: var(--space-lg); margin-bottom: var(--space-lg); text-align: left; }
+    .history-credit { font-size: 0.75rem; font-weight: normal; color: var(--text-muted); font-style: italic; }
+    .history-credit a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
     .history-list { display: flex; flex-direction: column; gap: var(--space-sm); }
-
-    .history-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-sm) var(--space-md);
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-control);
-      font-size: 0.9rem;
-      border-left: 3px solid transparent;
-    }
-
-    .history-item:hover { background: var(--bg-secondary); }
-    .history-item.best { border-left-color: var(--accent); background: var(--bg-tertiary); }
+    .history-item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: var(--space-sm) var(--space-md); background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-control); font-size: 0.9rem; border-left: 3px solid transparent; }
+    .history-item.best { border-left-color: var(--action); }
     .history-date { color: var(--text-muted); font-size: 0.85rem; }
     .history-score { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
-    .history-badge { font-size: 0.8rem; padding: 2px 8px; border-radius: var(--radius-control); }
+    .history-badge { font-size: 0.75rem; padding: 2px 8px; margin: 0; }
     .history-meta { color: var(--text-muted); font-size: 0.8rem; }
+    .clear-history { display: inline-flex; margin-top: var(--space-md); cursor: pointer; }
+    .empty-history { color: var(--text-muted); padding: var(--space-md); font-style: italic; }
+    .most-missed-intro { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 var(--space-md); }
+    #most-missed-list { max-height: 300px; overflow-y: auto; }
+    .missed-question-item { padding: var(--space-sm) var(--space-md); margin-bottom: var(--space-sm); background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--status-warning); border-radius: var(--radius-control); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; }
+    .missed-question-item .question-info { flex: 1; }
+    .missed-question-item .question-id { font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); }
+    .missed-question-item .question-preview { color: var(--text-secondary); margin-top: var(--space-xs); }
+    .missed-question-item .success-rate { font-family: var(--font-mono); font-weight: 600; color: var(--status-warning); font-size: 1.1rem; margin: 0 0 0 var(--space-md); }
 
-    .clear-history {
-      display: inline-block;
-      margin-top: var(--space-md);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-decoration: underline;
-      cursor: pointer;
-      transition: color var(--transition-fast);
-    }
+    .quiz-cta { margin: 0 0 var(--space-lg); text-align: left; }
+    .quiz-cta h3 { margin: 0 0 var(--space-md); color: var(--text-primary); font-size: 1.25rem; }
+    .quiz-cta-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-md); }
+    .quiz-cta-link { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md) var(--space-lg); min-height: 44px; text-decoration: none; color: var(--text-primary); font-size: 1rem; }
+    .quiz-cta-link strong { color: var(--text-primary); font-family: var(--font-display); font-size: 1.25rem; }
+    .quiz-cta-link:hover, .quiz-cta-link:focus-visible { text-decoration: underline; }
 
-    .clear-history:hover { color: var(--accent); }
-    .empty-history { color: var(--text-muted); padding: var(--space-lg); font-style: italic; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+    .shake { animation: shake 0.3s ease; }
+    @media (prefers-reduced-motion: reduce) { .shake { animation: none; } .progress-fill { transition: none; } }
 
     @media (max-width: 480px) {
-      .quiz-container { padding: var(--space-md); }
-      .question-text { font-size: 1.1rem; }
-      .score-display { font-size: 3rem; }
+      .quiz-question, .results-card { padding: var(--space-md); }
       .question-actions { flex-direction: column; }
       .nav-btn { width: 100%; }
-      .score-delta { font-size: 0.9rem; }
-      .history-item { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
-      .history-meta { font-size: 0.75rem; }
-      .category-delta { font-size: 0.7rem; }
       .category-header { flex-direction: column; align-items: flex-start; }
       .category-actions { width: 100%; }
       .category-action-btn { flex: 1; }
+      .history-item { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+      .category-score-item { flex-wrap: wrap; }
+      .category-score-item > div { flex: 1 1 100%; justify-content: flex-start; }
+      .score-badge { margin-left: 0; }
     }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-4px); }
-      75% { transform: translateX(4px); }
-    }
-    .shake { animation: shake 0.3s ease; }
-
-    .quiz-cta {
-      margin-top: var(--space-xl);
-      padding: var(--space-xl);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius-lg);
-      text-align: left;
-    }
-    .quiz-cta h3 { margin: 0 0 var(--space-md) 0; color: var(--text-primary); font-size: 1rem; }
-    .quiz-cta-links { display: flex; flex-direction: column; gap: var(--space-sm); }
-    .quiz-cta-link {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-sm) var(--space-md);
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-control);
-      text-decoration: none;
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      transition: border-color var(--transition-fast);
-    }
-    .quiz-cta-link:hover { border-color: var(--accent); color: var(--accent); }
-    .quiz-cta-link strong { color: var(--accent); }
   </style>
 
   <script define:vars={{ cheatsheetCount: stats.cheatsheetCount }}>
@@ -1099,7 +577,7 @@ const jsonLd = [
       quizData.questions.forEach(q => { categoryCounts[q.category_id] = (categoryCounts[q.category_id] || 0) + 1; });
 
       categoryGrid.innerHTML = quizData.categories.map(cat => `
-        <div class="category-item" data-id="${cat.id}">
+        <div class="category-item brand-card brand-interactive-card" data-id="${cat.id}">
           <input type="checkbox" id="cat-${cat.id}" checked>
           <label for="cat-${cat.id}">${cat.name}</label>
           <span class="category-count">${categoryCounts[cat.id] || 0}</span>
@@ -1439,11 +917,11 @@ const jsonLd = [
           { href: '/releases/', label: 'Version History', desc: 'every change since launch' },
         ];
       }
-      const linksHtml = links.map(l => `<a href="${l.href}" ${l.external ? 'target="_blank" rel="noopener noreferrer" ' : ''}class="quiz-cta-link"><strong>${l.label}</strong><span style="color:var(--text-secondary);font-size:0.85rem;">${l.desc}</span></a>`).join('');
+      const linksHtml = links.map(l => `<a href="${l.href}" ${l.external ? 'target="_blank" rel="noopener noreferrer" ' : ''}class="quiz-cta-link brand-card brand-interactive-card"><strong>${l.label}</strong><span style="color:var(--text-secondary);font-size:0.85rem;">${l.desc}</span></a>`).join('');
       // Consulting mention only at Expert/Master tier: this audience just proved
       // deep Claude Code knowledge, the most plausible decision-maker segment.
       const consultingHtml = percentage >= 80
-        ? `<a href="https://www.florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
+        ? `<a href="https://www.florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=quiz-expert" target="_blank" rel="noopener noreferrer" class="quiz-cta-link brand-card brand-interactive-card"><strong>Need this at team scale?</strong><span style="color:var(--text-secondary);font-size:0.85rem;">AI engineering consulting, let's talk &rarr;</span></a>`
         : '';
       cta.innerHTML = `<h3 class="quiz-minor-heading">${heading}</h3><div class="quiz-cta-links">${linksHtml}${consultingHtml}</div>`;
     }
@@ -1509,47 +987,55 @@ const jsonLd = [
   <section class="band band-paper section-wallpaper quiz-faq">
     <div class="container">
       <h2>FAQ</h2>
-      <div class="faq-item brand-card">
-        <h3>Is this the official Claude Code 101 or Claude Cowork certification quiz?</h3>
-        <p>No. This is an independent, open-source practice quiz built from the Claude Code Ultimate Guide, not affiliated with Anthropic's official courses or certification exams. If you landed here searching for official course answers, this quiz still covers the same underlying Claude Code concepts (installation, agents, hooks, MCP, permissions) but with its own question bank.</p>
-      </div>
-      <div class="faq-item brand-card">
-        <h3>Can I filter quiz questions by role or by difficulty?</h3>
-        <p>Yes. Two independent filters combine: difficulty (Junior, Senior, Power User) and role persona (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM). Pick both to get a question pool matched to your day-to-day work with Claude Code.</p>
-      </div>
-      <div class="faq-item brand-card">
-        <h3>How many questions and categories does the quiz cover?</h3>
-        <p>473 questions across 17 categories, from installation and slash commands to agents, hooks, MCP servers, security, and team adoption metrics. No account or sign-up required, and results are instant with a shareable score.</p>
+      <div class="faq-grid">
+        <div class="faq-item brand-card">
+          <h3>Is this the official Claude Code 101 or Claude Cowork certification quiz?</h3>
+          <p>No. This is an independent, open-source practice quiz built from the Claude Code Ultimate Guide, not affiliated with Anthropic's official courses or certification exams. If you landed here searching for official course answers, this quiz still covers the same underlying Claude Code concepts (installation, agents, hooks, MCP, permissions) but with its own question bank.</p>
+        </div>
+        <div class="faq-item brand-card">
+          <h3>Can I filter quiz questions by role or by difficulty?</h3>
+          <p>Yes. Two independent filters combine: difficulty (Junior, Senior, Power User) and role persona (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM). Pick both to get a question pool matched to your day-to-day work with Claude Code.</p>
+        </div>
+        <div class="faq-item brand-card">
+          <h3>How many questions and categories does the quiz cover?</h3>
+          <p>473 questions across 17 categories, from installation and slash commands to agents, hooks, MCP servers, security, and team adoption metrics. No account or sign-up required, and results are instant with a shareable score.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="band band-ink section-wallpaper related-links">
+  <section class="band band-base related-links">
     <div class="container">
       <h2>Keep learning</h2>
       <ul>
-        <li><a href="/cheatsheet/">Cheatsheet</a>: all commands on one page</li>
-        <li><a href="/glossary/">Glossary</a>: definitions for every Claude Code term</li>
-        <li><a href="/releases/">Releases</a>: full version history and env vars reference</li>
-        <li><a href="/guide/data-privacy/">Data Privacy</a>: what gets sent to Anthropic and how to control it</li>
-        <li><a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a>: the engineer behind this guide, writing about AI-assisted development and open-source tools</li>
+        <li class="brand-card brand-interactive-card"><a href="/cheatsheet/">Cheatsheet</a><span>all commands on one page</span></li>
+        <li class="brand-card brand-interactive-card"><a href="/glossary/">Glossary</a><span>definitions for every Claude Code term</span></li>
+        <li class="brand-card brand-interactive-card"><a href="/releases/">Releases</a><span>full version history and env vars reference</span></li>
+        <li class="brand-card brand-interactive-card"><a href="/guide/data-privacy/">Data Privacy</a><span>what gets sent to Anthropic and how to control it</span></li>
+        <li class="brand-card brand-interactive-card"><a href="https://www.florian.bruniaux.com/" target="_blank" rel="noopener noreferrer">Florian Bruniaux</a><span>the engineer behind this guide, writing about AI-assisted development and open-source tools</span></li>
       </ul>
     </div>
   </section>
   <style>
     .quiz-faq { padding: var(--space-2xl) 0; }
-    .quiz-faq h2, .related-links h2 { font-size: 1.5rem; margin-bottom: var(--space-lg); text-align: left; }
+    .quiz-faq h2, .related-links h2 { font-size: 1.75rem; margin-bottom: var(--space-lg); text-align: left; }
     .hero-byline { margin-top: var(--space-sm); font-size: 0.85rem; color: var(--text-muted); }
     .hero-byline a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
     .hero-byline a:hover { text-decoration-thickness: 2px; }
-    .quiz-faq .faq-item { max-width: 760px; margin: 0 0 var(--space-md); padding: var(--space-md) var(--space-lg); }
-    .quiz-faq .faq-item h3 { font-size: 1.05rem; margin-bottom: var(--space-xs); color: var(--text-primary); }
-    .quiz-faq .faq-item p { color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); }
+    @media (min-width: 900px) { .faq-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .quiz-faq .faq-item { margin: 0; padding: var(--space-lg); }
+    .quiz-faq .faq-item h3 { font-size: 1.2rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+    .quiz-faq .faq-item p { color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 0.95rem; }
 
     .related-links { padding: var(--space-2xl) 0; }
-    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 760px; margin: 0; }
-    .related-links li { color: var(--text-secondary); line-height: 1.6; }
-    .related-links a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-    .related-links a:hover, .related-links a:focus-visible { text-decoration-thickness: 2px; }
+    .related-links ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); }
+    @media (min-width: 640px) { .related-links ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1000px) { .related-links ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .related-links li { position: relative; display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-lg); min-height: 44px; color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem; }
+    @media (min-width: 1000px) { .related-links li:last-child:nth-child(3n+2) { grid-column: span 2; } }
+    .related-links ul li a { color: var(--text-primary); font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; text-decoration: none; }
+    .related-links li a::after { content: ''; position: absolute; inset: 0; }
+    .related-links li a:hover, .related-links li a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
   </style>
 </Layout>

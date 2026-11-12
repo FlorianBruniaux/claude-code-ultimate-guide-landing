@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import { ROLES, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
+import { ROLES, ROLES_META, STATUS_CONFIG, DECISION_MATRIX } from '../../data/ai-roles'
 
 export function getStaticPaths() {
   const slugify = (str: string) =>
@@ -77,99 +77,127 @@ const jsonLd = [
   },
 ]
 import ChapterLabel from '../../components/global/ChapterLabel.astro'
+
+// Career routes from the roles hub that land on this role (same data as /roles/#career-paths).
+const careerRoutes = DECISION_MATRIX.filter((row) => row.roleId === role.id)
+// Other profiles in the same evidence class, for onward navigation.
+const relatedRoles = ROLES.filter((r) => r.evidence === role.evidence && r.id !== role.id).slice(0, 3)
 ---
 
 <Layout title={title} description={metaDesc} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate={ROLES_META.modifiedDate}>
 
   <header class="page-hero page-hero--compact">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span class="breadcrumb-sep">›</span>
-        <a href="/roles/">AI Roles</a>
-        <span class="breadcrumb-sep">›</span>
-        <span>{role.title}</span>
-      </nav>
+    <div class="container role-hero">
+      <div class="role-hero-main">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="/roles/">AI Roles</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>{role.title}</span>
+        </nav>
 
-      <div class="role-hero-header">
-        <h1>{role.title}</h1>
-        <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
-          {statusConf.label}
-        </span>
+        <div class="role-hero-header">
+          <h1>{role.title}</h1>
+          <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
+            {statusConf.label}
+          </span>
+        </div>
+
+        <p class="tagline">{role.mission}</p>
       </div>
 
-      <p class="tagline">{role.mission}</p>
+      <dl class="role-facts" aria-label="Role summary">
+        <div><dt>Evidence</dt><dd>{statusConf.label}</dd></div>
+        <div><dt>Skills</dt><dd>{role.skills.length}</dd></div>
+        <div><dt>Entry paths</dt><dd>{role.entryPaths.length}</dd></div>
+      </dl>
     </div>
   </header>
 
+  <section class="band band-base role-section">
+    <div class="container">
+      <ChapterLabel number="01" label="Profile" />
+      <div class="role-grid">
+        <article class="brand-card role-card">
+          <p class="role-card-kicker">Entry paths</p>
+          <h2>Who moves into this role</h2>
+          <ul class="role-list">
+            {role.entryPaths.map((path) => <li>{path}</li>)}
+          </ul>
+        </article>
 
-    <!-- Entry paths -->
-    <section class="band band-base role-section">
-    <div class="container role-body">
-      <ChapterLabel number="01" label="Entry paths" />
-      <h2>Who moves into this role</h2>
-      <ul class="entry-paths-list">
-        {role.entryPaths.map(path => (
-          <li>{path}</li>
-        ))}
-      </ul>
+        <article class="brand-card role-card">
+          <p class="role-card-kicker">Skills</p>
+          <h2>Required skills</h2>
+          <ul class="role-list role-list--skills">
+            {role.skills.map((skill) => <li>{skill}</li>)}
+          </ul>
+        </article>
+
+        <article class="brand-card role-card role-card--evidence">
+          <p class="role-card-kicker">Evidence</p>
+          <h2>Evidence classification</h2>
+          <p><strong>{role.evidence}.</strong> This label describes the evidence reviewed in August 2026. It does not guarantee that every employer uses the same title or ownership boundary.</p>
+          <p><a href={`${ROLES_META.sourceUrl}#${role.guideAnchor}`}>Read the sourced profile and evidence boundary →</a></p>
+        </article>
+      </div>
+
+      {careerRoutes.length > 0 && (
+        <div class="role-routes">
+          {careerRoutes.map((row) => (
+            <div class="role-route">
+              <div><span class="role-route-label">Starting from</span><strong>{row.background}</strong></div>
+              <span class="role-route-arrow" aria-hidden="true">→</span>
+              <div><span class="role-route-label">Target</span><strong>{row.role}</strong></div>
+              <div><span class="role-route-label">Evidence to build</span><span>{row.timeline}</span></div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-    </section>
+  </section>
 
-    <!-- Skills -->
-    <section class="band band-paper section-wallpaper role-section">
-    <div class="container role-body">
-      <ChapterLabel number="02" label="Skills" />
-      <h2>Required skills</h2>
-      <div class="skills-grid">
-        {role.skills.map(skill => (
-          <div class="skill-item">
-            <span class="skill-bullet">→</span>
-            <span>{skill}</span>
+  <section class="band band-ink section-wallpaper role-section role-faq">
+    <div class="container">
+      <ChapterLabel number="02" label="FAQ" />
+      <h2 class="role-section-title">Frequently asked questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item brand-card">
+          <h3>What does a {role.title} do?</h3>
+          <p>{role.mission}</p>
+        </div>
+        <div class="faq-item brand-card">
+          <h3>What skills does a {role.title} need?</h3>
+          <p>The core skills are: {top5Skills}.</p>
+        </div>
+        <div class="faq-item brand-card">
+          <h3>How should I evaluate compensation for a {role.title}?</h3>
+          <p>{compensationAnswer}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-paper section-wallpaper role-section">
+    <div class="container">
+      {relatedRoles.length > 0 && (
+        <>
+          <ChapterLabel number="03" label="Related roles" />
+          <div class="related-roles">
+            {relatedRoles.map((r) => (
+              <a class="brand-card brand-interactive-card related-role" href={`/roles/${slugify(r.title)}/`}>
+                <strong>{r.title}</strong>
+                <span>{r.mission}</span>
+                <span class="related-role-cta">Explore profile →</span>
+              </a>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
+      <a href="/roles/" class="btn btn-secondary back-link">← All AI Roles</a>
     </div>
-    </section>
-
-    <!-- Evidence classification -->
-    <section class="band band-base role-section">
-    <div class="container role-body">
-      <ChapterLabel number="03" label="Evidence" />
-      <h2>Evidence classification</h2>
-      <p><strong>{role.evidence}.</strong> This label describes the evidence reviewed in August 2026. It does not guarantee that every employer uses the same title or ownership boundary.</p>
-      <p><a href={`${ROLES_META.sourceUrl}#${role.guideAnchor}`}>Read the sourced profile and evidence boundary →</a></p>
-    </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="band band-paper section-wallpaper role-section role-faq">
-    <div class="container role-body">
-      <ChapterLabel number="04" label="FAQ" />
-      <h2>Frequently asked questions</h2>
-
-      <div class="faq-item">
-        <h3>What does a {role.title} do?</h3>
-        <p>{role.mission}</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What skills does a {role.title} need?</h3>
-        <p>The core skills are: {top5Skills}.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How should I evaluate compensation for a {role.title}?</h3>
-        <p>{compensationAnswer}</p>
-      </div>
-    </div>
-    </section>
-
-    <!-- Back link -->
-    <div class="band band-base role-back"><div class="container role-body">
-      <a href="/roles/" class="btn btn-quiet back-link">← All AI Roles</a>
-    </div>
-    </div></div>
+  </section>
 
 </Layout>
 
@@ -225,85 +253,232 @@ import ChapterLabel from '../../components/global/ChapterLabel.astro'
   margin-top: 0.4rem;
 }
 
-.role-body {
-  max-width: 800px;
+/* Hero: identity on the left, a short fact strip on the right. */
+.role-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.5rem;
+  align-items: end;
+}
+
+.role-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(7.5rem, auto));
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.role-facts > div {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--action);
+  border-radius: var(--border-radius-lg);
+  background: var(--surface-elevated);
+}
+
+.role-facts dt {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.role-facts dd {
+  margin: 0.3rem 0 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .role-section {
   padding: var(--space-3xl) 0;
 }
 
-.role-section h2 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: var(--space-md);
-  color: var(--text-primary);
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.entry-paths-list {
-  padding-left: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+.role-card {
+  padding: 1.4rem 1.5rem;
 }
 
-.entry-paths-list li {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.skill-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-sm);
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.skill-bullet {
+.role-card .role-card-kicker {
+  margin: 0 0 0.35rem;
   color: var(--accent);
-  flex-shrink: 0;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
-.role-faq h2 {
-  margin-bottom: var(--space-lg);
+.role-card h2,
+.role-section-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
 }
 
-.faq-item {
-  padding: var(--space-lg) 0;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.faq-item:last-child {
-  border-bottom: none;
-}
-
-.faq-item h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
-}
-
-.faq-item p {
-  font-size: 0.9rem;
+.role-card p {
   color: var(--text-secondary);
+  font-size: 0.92rem;
   line-height: 1.6;
 }
 
-.role-back {
-  padding: var(--space-xl) 0;
+.role-card p + p {
+  margin-top: 0.75rem;
 }
 
+.role-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
+.role-list li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
 
+.role-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 0.6rem;
+  height: 2px;
+  background: var(--action);
+}
+
+.role-list--skills li::before {
+  content: '→';
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  background: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.role-routes {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.role-route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--action);
+  border-radius: var(--border-radius-lg);
+  background: var(--surface-elevated);
+}
+
+.role-route-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.role-route strong {
+  color: var(--text-primary);
+}
+
+.role-route > div > span:not(.role-route-label) {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.role-route-arrow {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.faq-item {
+  padding: 1.4rem 1.5rem;
+}
+
+.faq-item h3 {
+  margin: 0 0 0.6rem;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.related-roles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.related-role {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.4rem;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+.related-role strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.related-role span {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.related-role .related-role-cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .role-hero { grid-template-columns: 1fr; align-items: start; }
+  .role-grid, .faq-grid, .related-roles { grid-template-columns: 1fr; }
+  .role-route { grid-template-columns: 1fr; gap: 0.6rem; }
+  .role-route-arrow { display: none; }
+}
+
+@media (max-width: 480px) {
+  .role-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .role-facts dd { font-size: 1.3rem; }
+}
 </style>
