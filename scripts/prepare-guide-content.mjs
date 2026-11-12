@@ -152,7 +152,7 @@ const CHAPTERS = [
   { num: 4,  slug: '04-agents',            title: '4. Agents',              order: 4,  desc: 'Create custom Claude Code agents: backend-architect, code-reviewer, security-auditor, devops-sre. Tool SEO for routing, sub-agent orchestration, and multi-agent coordination with TeamCreate.' },
   { num: 5,  slug: '05-skills',            title: 'Claude Code Skills: Build, Test & Share Skills', label: '5. Skills', order: 5,  desc: 'Build Claude Code skills with explicit ownership, narrow tool grants, representative evals, lifecycle controls, safe distribution, and production templates.' },
   { num: 6,  slug: '06-commands',          title: 'Claude Code Slash Commands & Custom Commands', label: '6. Slash Commands', order: 6,  desc: 'Create custom slash commands for Claude Code: /pr, /commit, /generate-tests, /diagnose, /git-worktree. Variable interpolation with $ARGUMENTS syntax and 19 production-ready command templates.' },
-  { num: 7,  slug: '07-hooks',             title: '7. Hooks',               order: 7,  desc: 'Automate Claude Code with event hooks: block dangerous commands, scan for secrets, auto-format code, run tests after edits. PreToolUse, PostToolUse, UserPromptSubmit — Bash and PowerShell.' },
+  { num: 7,  slug: '07-hooks',             title: '7. Hooks', headingAnchor: '7-hooks',               order: 7,  desc: 'Automate Claude Code with event hooks: block dangerous commands, scan for secrets, auto-format code, run tests after edits. PreToolUse, PostToolUse, UserPromptSubmit — Bash and PowerShell.' },
   { num: 8,  slug: '08-mcp',              title: '8. MCP Servers',         order: 8,  desc: 'Extend Claude Code with MCP servers: Serena (codebase indexation + memory), Context7 (library docs), grepai (semantic search), Playwright (browser automation), Postgres. Config and security vetting.' },
   { num: 9,  slug: '09-advanced-patterns', title: '9. Advanced Patterns',   order: 9,  desc: 'Advanced Claude Code patterns: Trinity workflow (Plan+Thinking+MCP), GitHub Actions CI/CD, multi-agent Teams API, Tasks API for cross-session state, git worktree isolation, feedback loops.' },
   { num: 10, slug: '10-reference',         title: 'Claude Code Reference: CLI Flags, Shortcuts, CLAUDE.md Templates & Troubleshooting', label: '10. Reference', order: 10, desc: 'Complete Claude Code reference: 45+ CLI flags, keyboard shortcuts, /compact context management, CLAUDE.md starter templates, troubleshooting guide, and cost optimization by model.' },
@@ -716,8 +716,11 @@ for (const line of lines) {
       const level = headingMatch[1].length
       const headingText = headingMatch[2].trim()
 
-      // Chapter boundary detection only for H2
-      if (level === 2) {
+      const anchor = toAnchor(headingText)
+      const chapterHeading = level === 1 && CHAPTERS.find(chapter => chapter.headingAnchor === anchor)
+      if (chapterHeading) {
+        currentChapter = chapterHeading.num
+      } else if (level === 2) {
         const newChapter = detectChapterBoundary(line, currentChapter)
         if (newChapter !== null && CHAPTER_BY_NUM.has(newChapter)) {
           currentChapter = newChapter
@@ -725,7 +728,6 @@ for (const line of lines) {
       }
 
       // Build anchor map for ALL heading levels
-      const anchor = toAnchor(headingText)
       if (anchor) {
         const meta = CHAPTER_BY_NUM.get(currentChapter)
         if (meta && !anchorMap[anchor]) {
@@ -745,7 +747,7 @@ for (const line of lines) {
 ensureDir(OUT_ULTIMATE)
 const ultimateDates = getGitDates(ULTIMATE_SRC)
 
-for (const { num, slug, title, label, desc, order } of CHAPTERS) {
+for (const { num, slug, title, label, desc, order, headingAnchor } of CHAPTERS) {
   let content = chapterLines.get(num)?.join('\n') ?? ''
   // Skip nearly-empty chapters (fewer than 5 non-blank lines)
   const nonBlank = content.split('\n').filter(l => l.trim()).length
@@ -767,7 +769,9 @@ for (const { num, slug, title, label, desc, order } of CHAPTERS) {
   ].filter(Boolean)
   const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}${dateYaml}\n---`
-  let output = transformGuideMarkdown(`${fm}\n\n${content.trimStart()}`, 'guide/ultimate-guide.md')
+  // Starlight replaces the source H1, so preserve the chapter link target.
+  const chapterAnchor = headingAnchor ? `<span id="${headingAnchor}"></span>\n\n` : ''
+  let output = transformGuideMarkdown(`${fm}\n\n${chapterAnchor}${content.trimStart()}`, 'guide/ultimate-guide.md')
   output = normalizeLangs(output)
   output = renderMermaidBlocks(output, slug)
 
@@ -784,6 +788,10 @@ for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuf
   let rewritten = rewriteRepoDocLinks(rawContent)
   rewritten = rewriteRelativeGuideLinks(rewritten, sourcePath, anchorMap)
   rewritten = rewriteRelativeImageLinks(rewritten)
+  // Keep French Hooks links on the unsplit page through both link rewriters.
+  if (file === 'ultimate-guide.fr.md' && /^## 7\. Hooks$/m.test(rewritten)) {
+    rewritten = rewritten.replaceAll('](#7-hooks)', '](/guide/ultimate-guidefr/#7-hooks)')
+  }
   rewritten = rewriteCrossChapterAnchors(rewritten, null, anchorMap)
   rewritten = resolveUltimateGuideAnchors(rewritten, anchorMap)
   rewritten = rewriteSupersededGuideLinks(rewritten)
