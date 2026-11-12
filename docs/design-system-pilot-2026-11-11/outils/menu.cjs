@@ -3,7 +3,7 @@ const { chromium } = require('/Users/florianbruniaux/Sites/perso/html-pres/node_
 const path = require('path');
 const label = process.argv[2] || 'menu';
 const OUT = path.join(__dirname, 'shots');
-const EXE = process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell';
+const EXE = (process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome');
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });
   for (const theme of ['light', 'dark']) {

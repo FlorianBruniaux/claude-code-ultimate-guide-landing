@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const BASE = process.env.BASE || 'http://127.0.0.1:4391';
 const OUT = path.join(__dirname, 'shots');
-const EXE = process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell';
+const EXE = (process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome');
 
 function lum(rgb) {
   const m = rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });

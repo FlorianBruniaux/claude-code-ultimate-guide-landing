@@ -7,7 +7,7 @@ const OUT = path.join(__dirname, 'shots', 'sweep');
 fs.mkdirSync(OUT, { recursive: true });
 const routes = ['/', '/learning/', '/roles/', '/roles/ai-agent-engineer/', '/glossary/150k-ceiling/', '/examples/adrwritermd/', '/cheatsheets/c01-trust-calibration/', '/compare/claude-code-vs-aider/', '/quiz/', '/faq/', '/glossary/', '/security/', '/security/threats/', '/security/cves/', '/security/sandbox/', '/security/hardening/', '/examples/', '/cheatsheets/', '/cheatsheet/', '/diagrams/', '/whitepapers/', '/downloads/', '/resources/', '/projects/', '/sitemap/', '/ecosystem/', '/ecosystem/mcp-vs-cli/', '/mcp/', '/mcp-or-cli/', '/compare/', '/releases/', '/changelog/', '/context/', '/context-engineering/', '/memory-systems/', '/methodologies/', '/ai-design-patterns/', '/lean-ai/', '/finops/', '/team-metrics/', '/token-savings/', '/claude-md-best-practices/', '/guide/', '/guide/ultimate-guide/01-quick-start/', '/guide/adoption-approaches/', '/guide/cheatsheet/'];
 (async () => {
-  const b = await chromium.launch({ executablePath: process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
+  const b = await chromium.launch({ executablePath: (process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome') });
   const rows = [];
   for (const [theme, w] of [['light', 1440], ['dark', 1440], ['light', 390]]) {
     const ctx = await b.newContext({ viewport: { width: w, height: 900 } });

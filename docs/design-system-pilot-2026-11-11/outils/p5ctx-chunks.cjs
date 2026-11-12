@@ -5,7 +5,7 @@ const [label, theme, width, p, chunkH, scale] = process.argv.slice(2);
 const OUT = '/private/tmp/claude-501/-Users-florianbruniaux-Sites-perso-claude-code-ultimate-guide-landing/ae2a09ea-7519-4aaf-b2dd-1d28c0e08028/scratchpad/p5ctx';
 require('fs').mkdirSync(OUT, { recursive: true });
 (async () => {
-  const b = await chromium.launch({ executablePath: process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
+  const b = await chromium.launch({ executablePath: (process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome') });
   const ctx = await b.newContext({ viewport: { width: Number(width), height: 900 }, deviceScaleFactor: Number(scale) });
   await ctx.addInitScript((t) => { localStorage.setItem('theme', t); localStorage.setItem('starlight-theme', t); }, theme);
   const page = await ctx.newPage();

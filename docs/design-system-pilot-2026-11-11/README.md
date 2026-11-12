@@ -2,6 +2,27 @@
 
 Livraison locale du 11 novembre 2026, branche `design-system-pilot` créée depuis `main@eeb23ef`. Rien n'est commité, poussé ni déployé.
 
+## Itération 6 : mise en production et retours sur pages (12/11/2026)
+
+Déployé sur https://cc.bruniaux.com/ (`main`, commits `28bffd2` à `c62e817`, déploiements GitHub Pages et contrôles de fumée réussis).
+
+- Alignement : `.container` passe à 75rem avec 1rem de gouttière, comme le header et le footer (`max-w-content`, `px-4`). Les conteneurs propres aux pages suivent ; les colonnes de lecture étroites gardent leur largeur et démarrent sur le bord du logo. Mesure : bord gauche du h1 à 136 px à 1440 sur 31 pages, comme le logo.
+- Bandeau : badge « New identity », identifiant `banner-new-identity-2026-11`, date masquée sous 640 px.
+- Menu : lignes « Go further » au style du portfolio (titre noir, fond au survol, description sur deux lignes au lieu d'une ellipse).
+- `/roles/<slug>/` : chiffres clés dans l'intro, profil en trois cartes, parcours de carrière tiré de `DECISION_MATRIX`, FAQ en cartes sur charcoal, rôles de la même classe de preuve.
+- `/learning/` : quatre chapitres au lieu de douze sections, grille de parcours 4 + 3, UVAL en frise, plan 30 jours en cartes, un seul appel à l'action final.
+- `/quiz/` : chiffres de la page dans l'intro, catégories en cartes, panneau de filtres collant, carte de question avec progression, résultats avec répartition par catégorie.
+- Bloc de code doté de son propre bouton `[data-copy]` : le script global n'ajoute plus de second bouton « Copy ».
+
+Navigateurs :
+
+- Chrome (machine, `CHROME_PATH` par défaut dans `outils/*.cjs`) : 46 gabarits, clair et sombre 1440, clair 390, 0 débordement.
+- WebKit 26.5 (Safari) : `outils/sweep-webkit.cjs`, 46 gabarits en clair 1440 et 390, 0 débordement, 0 erreur console.
+- Firefox : non vérifié, le téléchargement du navigateur Playwright échoue (connexion coupée vers 90 %).
+- Lecteur d'écran : non vérifié.
+
+Couleur des liens en sombre : la valeur du portfolio (`#ffb17a`) reste appliquée, faute d'arbitrage contraire.
+
 ## Itération 4 : menu de gauche, CVE, recherche, changelog
 
 - Menu de gauche du guide : carte charcoal à filet orange, labels mono orange, page courante avec repère orange (`starlight-overrides.css`). Même style dans le tiroir mobile.

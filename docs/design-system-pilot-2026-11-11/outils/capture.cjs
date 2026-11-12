@@ -11,7 +11,7 @@ const pages = [
   { id: 'downloads', url: '/downloads/', full: false },
 ];
 (async () => {
-  const browser = await chromium.launch({ executablePath: process.env.HOME + '/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
+  const browser = await chromium.launch({ executablePath: (process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome') });
   const report = [];
   for (const theme of ['light', 'dark']) {
     for (const vp of [{ n: 'desk', w: 1440, h: 900 }, { n: 'mob', w: 390, h: 844 }]) {
