@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 
 const title = 'Pilot an AI-Augmented Team: Delivery and Review Metrics'
 const description = 'Measure delivery, review capacity, product outcomes and human effort in AI-assisted engineering. Use DORA and SPACE alongside a service-level verification queue.'
@@ -177,23 +178,24 @@ const externalSources = [
   <!-- Problem -->
   <section class="section section--alt" id="problem">
     <div class="container">
+      <ChapterLabel number="01" label="Problem" />
       <h2 class="section-title">When velocity lies</h2>
       <p class="section-subtitle">
         When AI accelerates delivery, old benchmarks break. PRs per day goes up, which looks like progress, while masking quality and skill problems underneath. You need different sensors.
       </p>
 
       <div class="stat-cards">
-        <div class="stat-card">
+        <div class="stat-card brand-card">
           <div class="stat-value">+67%</div>
           <div class="stat-label">PRs/day</div>
           <a class="stat-source stat-source--link" href="https://claude.com/blog/contribution-metrics" target="_blank" rel="noopener noreferrer">Anthropic internal, Jan 2026 ↗</a>
         </div>
-        <div class="stat-card stat-card--accent">
+        <div class="stat-card stat-card--accent brand-card">
           <div class="stat-value">70–90%</div>
           <div class="stat-label">AI-assisted code</div>
           <a class="stat-source stat-source--link" href="https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic" target="_blank" rel="noopener noreferrer">Anthropic research, Aug 2025 ↗</a>
         </div>
-        <div class="stat-card">
+        <div class="stat-card brand-card">
           <div class="stat-value stat-value--muted">DORA tiers</div>
           <div class="stat-label">abandoned</div>
           <a class="stat-source stat-source--link" href="https://dora.dev/research/2025/dora-report/" target="_blank" rel="noopener noreferrer">DORA 2025 report ↗</a>
@@ -203,14 +205,15 @@ const externalSources = [
   </section>
 
   <!-- Framework -->
-  <section class="section" id="framework">
+  <section class="section band" id="framework">
     <div class="container">
+      <ChapterLabel number="02" label="Framework" />
       <h2 class="section-title">4 metric categories</h2>
       <p class="section-subtitle">Each one covers a blind spot the others miss. Together they give you a complete picture.</p>
 
       <div class="metrics-grid">
         {metricCategories.map((cat) => (
-          <div class="metric-card" style={`--cat-accent: ${cat.accent}`}>
+          <div class="metric-card brand-card" style={`--cat-accent: ${cat.accent}`}>
             <div class="metric-card-header">
               <div class="metric-card-titles">
                 <h3 class="metric-card-title">{cat.title}</h3>
@@ -235,7 +238,7 @@ const externalSources = [
           </div>
         ))}
       </div>
-      <aside class="flow-note" aria-labelledby="flow-note-title">
+      <aside class="flow-note brand-card" aria-labelledby="flow-note-title">
         <h3 id="flow-note-title">When coding speeds up, check the verification queue</h3>
         <p>Count changes ready for review, accepted changes, the oldest waiting item, active reviewer time and corrective work for one service. If new authoring outruns verification, pause admission under a rule agreed by the owner while existing reviews continue. This is a proposed control, not a measured gain.</p>
         <a href="/guide/loop-graph-engineering/#limit-admission-to-verification-capacity">Read the review-admission method →</a>
@@ -246,12 +249,13 @@ const externalSources = [
   <!-- By Team Size -->
   <section class="section section--alt" id="by-size">
     <div class="container">
+      <ChapterLabel number="03" label="By team size" />
       <h2 class="section-title">Start small, scale right</h2>
       <p class="section-subtitle">The right metrics depend on your team size. Don't track what you can't act on.</p>
 
       <div class="size-grid">
         {teamSizes.map((ts) => (
-          <div class="size-card">
+          <div class="size-card brand-card">
             <h3 class="size-card-title">{ts.label}</h3>
             <ul class="size-metrics">
               {ts.metrics.map((m) => (
@@ -273,8 +277,9 @@ const externalSources = [
   </section>
 
   <!-- The 4-Question Test -->
-  <section class="section" id="test">
+  <section class="section band band-ink section-wallpaper" id="test">
     <div class="container">
+      <ChapterLabel number="04" label="Test" />
       <h2 class="section-title">The 4-question test</h2>
       <p class="section-subtitle">
         For any metric you're considering tracking, run it through this checklist. Fewer than 3 "yes" answers? Drop it. It's noise, not signal.
@@ -282,7 +287,7 @@ const externalSources = [
 
       <div class="test-grid">
         {testQuestions.map((item, i) => (
-          <div class="test-card">
+          <div class="test-card brand-card">
             <div class="test-number">{i + 1}</div>
             <div class="test-question">{item.q}</div>
           </div>
@@ -304,12 +309,12 @@ const externalSources = [
       </p>
 
       <div class="stat-cards">
-        <div class="stat-card">
+        <div class="stat-card brand-card">
           <div class="stat-value stat-value--muted">March 12</div>
           <div class="stat-label">Point estimate</div>
           <span class="stat-source">Implies a certainty the data never had</span>
         </div>
-        <div class="stat-card stat-card--accent">
+        <div class="stat-card stat-card--accent brand-card">
           <div class="stat-value stat-value--muted">Mar 3 – Mar 20</div>
           <div class="stat-label">80% confidence range</div>
           <span class="stat-source">What ActionableAgile or Nave actually compute</span>
@@ -325,31 +330,32 @@ const externalSources = [
   </section>
 
   <!-- Board Reporting -->
-  <section class="section" id="board">
+  <section class="section band" id="board">
     <div class="container">
+      <ChapterLabel number="05" label="Board" />
       <h2 class="section-title">Reporting to a board that doubts you</h2>
       <p class="section-subtitle">
         When a board doubts delivery capacity after an estimate has slipped, adding more dashboards rarely fixes it. The doubt is almost always about trust, not about the number on the screen.
       </p>
 
       <div class="test-grid">
-        <div class="test-card">
+        <div class="test-card brand-card">
           <div class="test-number">1</div>
           <div class="test-question"><strong>Diagnose first.</strong> No published study proves any tool repairs executive trust. A dashboard answers "how fast," not "will you slip again."</div>
         </div>
-        <div class="test-card">
+        <div class="test-card brand-card">
           <div class="test-number">2</div>
           <div class="test-question"><strong>Bring scenarios, not a velocity chart.</strong> 2-3 named options, each with a timeline, a rework cost, and a business impact. That's a decision a board can actually make.</div>
         </div>
-        <div class="test-card">
+        <div class="test-card brand-card">
           <div class="test-number">3</div>
           <div class="test-question"><strong>Cap strategic objectives.</strong> A detailed multi-quarter feature roadmap is a precision claim your delivery system can't back. A small set of objectives survives a slip better than a feature list does.</div>
         </div>
-        <div class="test-card">
+        <div class="test-card brand-card">
           <div class="test-number">4</div>
           <div class="test-question"><strong>Track your commitment hit-rate.</strong> Separate committed scope from best-effort scope, then show, release after release, that committed scope ships as committed.</div>
         </div>
-        <div class="test-card">
+        <div class="test-card brand-card">
           <div class="test-number">5</div>
           <div class="test-question"><strong>Align the room before the room.</strong> A plenary board meeting is the wrong venue for first-time alignment on a contentious number. Talk to members individually first.</div>
         </div>
@@ -366,7 +372,7 @@ const externalSources = [
       <p class="section-subtitle">Every data point on this page is traceable. Here are the primary sources.</p>
       <div class="sources-grid">
         {externalSources.map((s) => (
-          <a class="source-card" href={s.url} target="_blank" rel="noopener noreferrer">
+          <a class="source-card brand-card brand-interactive-card" href={s.url} target="_blank" rel="noopener noreferrer">
             <span class="source-label">{s.label} ↗</span>
             <span class="source-desc">{s.desc}</span>
           </a>
@@ -376,7 +382,7 @@ const externalSources = [
   </section>
 
   <!-- CTA -->
-  <section class="section metrics-cta-section">
+  <section class="section band band-accent section-wallpaper metrics-cta-section">
     <div class="container">
       <div class="metrics-cta-box">
         <h2>Read the full framework in the guide</h2>
@@ -407,7 +413,7 @@ const externalSources = [
   padding: 0.25rem 0.75rem;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   font-size: 0.8rem;
   font-family: var(--font-mono);
   color: var(--accent);
@@ -430,9 +436,6 @@ const externalSources = [
 
 .stat-card {
   padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
   text-align: center;
 }
 
@@ -479,10 +482,7 @@ const externalSources = [
 .flow-note {
   margin-top: var(--space-xl);
   padding: var(--space-xl);
-  border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
-  border-radius: var(--border-radius);
-  background: var(--surface-elevated);
 }
 
 .flow-note h3 {
@@ -499,22 +499,20 @@ const externalSources = [
 .flow-note a {
   color: var(--accent);
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.flow-note a:hover,
+.flow-note a:focus-visible {
+  text-decoration-thickness: 2px;
 }
 
 .metric-card {
   display: flex;
   flex-direction: column;
   padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
   border-top: 3px solid var(--cat-accent, var(--accent));
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-normal);
-}
-
-.metric-card:hover {
-  box-shadow: var(--shadow-md);
 }
 
 .metric-card-header {
@@ -597,9 +595,6 @@ const externalSources = [
 
 .size-card {
   padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -677,14 +672,6 @@ const externalSources = [
   align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  transition: border-color var(--transition-normal);
-}
-
-.test-card:hover {
-  border-color: var(--accent);
 }
 
 .test-number {
@@ -695,7 +682,7 @@ const externalSources = [
   align-items: center;
   justify-content: center;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg-primary);
   font-size: 0.8rem;
   font-weight: 700;
   border-radius: 50%;
@@ -750,15 +737,18 @@ const externalSources = [
    ============================================ */
 .stat-source--link {
   display: block;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   color: var(--text-muted);
   font-size: 0.75rem;
   font-style: italic;
   transition: color var(--transition-normal);
 }
 
-.stat-source--link:hover {
+.stat-source--link:hover,
+.stat-source--link:focus-visible {
   color: var(--accent);
+  text-decoration-thickness: 2px;
 }
 
 /* ============================================
@@ -777,8 +767,14 @@ const externalSources = [
 .metric-link {
   font-size: 0.78rem;
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color var(--transition-normal);
+}
+
+.metric-link:hover,
+.metric-link:focus-visible {
+  text-decoration-thickness: 2px;
 }
 
 .metric-link--ext {
@@ -794,9 +790,7 @@ const externalSources = [
   margin-left: auto;
 }
 
-.metric-link--guide:hover {
-  text-decoration: underline;
-}
+
 
 /* ============================================
    Size card guide link
@@ -805,15 +799,16 @@ const externalSources = [
   display: block;
   font-size: 0.8rem;
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-weight: 500;
   padding-top: var(--space-sm);
   border-top: 1px solid var(--border-light);
-  transition: text-decoration var(--transition-normal);
 }
 
-.size-guide-link:hover {
-  text-decoration: underline;
+.size-guide-link:hover,
+.size-guide-link:focus-visible {
+  text-decoration-thickness: 2px;
 }
 
 /* ============================================
@@ -838,22 +833,15 @@ const externalSources = [
   flex-direction: column;
   gap: 0.35rem;
   padding: var(--space-lg) var(--space-xl);
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
   text-decoration: none;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.source-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-sm);
 }
 
 .source-label {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .source-desc {

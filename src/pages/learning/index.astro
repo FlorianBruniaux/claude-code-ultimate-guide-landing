@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import Onboarding from '../../components/landing/Onboarding.astro'
 import Methodologies from '../../components/landing/Methodologies.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 
 const title = "Learning to Code with AI: Beginner's Guide | Free"
 const description = 'Free beginner guide: use Claude Code responsibly while learning to code. UVAL Protocol, 30-day plan, and Claude Code configuration for learning mode.'
@@ -49,12 +50,14 @@ const jsonLd = [
   </header>
 
   <!-- 2. Choose Your Path (orientation immédiate) -->
-  <section class="content-section" id="choose-path">
+  <section class="band band-paper section-wallpaper" id="choose-path">
+  <div class="content-section">
+    <ChapterLabel number="01" label="Choose your path" />
     <h2>Choose your path</h2>
     <p>Learning tracks adapted to your experience level and role. Pick yours before diving in.</p>
 
     <div class="paths-grid">
-      <div class="path-card featured">
+      <div class="path-card brand-card brand-interactive-card featured">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#127793;</span>
           <h3>Junior developer</h3>
@@ -69,7 +72,7 @@ const jsonLd = [
           <li>Take the <a href="/quiz/">beginner quiz</a> after each module</li>
         </ol>
       </div>
-      <div class="path-card">
+      <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#128187;</span>
           <h3>Senior developer</h3>
@@ -84,7 +87,7 @@ const jsonLd = [
           <li>Build <a href="/guide/workflows/">automation workflows</a></li>
         </ol>
       </div>
-      <div class="path-card featured">
+      <div class="path-card brand-card brand-interactive-card featured">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#9889;</span>
           <h3>Power user</h3>
@@ -100,7 +103,7 @@ const jsonLd = [
           <li>Pass all <a href="/quiz/">quiz levels</a></li>
         </ol>
       </div>
-      <div class="path-card">
+      <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#128188;</span>
           <h3>Product manager</h3>
@@ -114,7 +117,7 @@ const jsonLd = [
           <li>Explore use cases</li>
         </ol>
       </div>
-      <div class="path-card">
+      <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#128736;</span>
           <h3>DevOps / SRE</h3>
@@ -127,7 +130,7 @@ const jsonLd = [
           <li>Automate <a href="/guide/devops-sre/#solo-incident-workflow">incident response</a></li>
         </ol>
       </div>
-      <div class="path-card">
+      <div class="path-card brand-card brand-interactive-card">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#127912;</span>
           <h3>Product designer</h3>
@@ -141,7 +144,7 @@ const jsonLd = [
           <li>Print <a href="/guide/cheatsheet/">cheat sheet</a></li>
         </ol>
       </div>
-      <div class="path-card" id="security-practitioner">
+      <div class="path-card brand-card brand-interactive-card" id="security-practitioner">
         <div class="path-header">
           <span class="path-icon" aria-hidden="true">&#128737;</span>
           <h3>Security practitioner</h3>
@@ -158,14 +161,17 @@ const jsonLd = [
         </ol>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 3. Quick Self-Check (diagnostic après orientation) -->
-  <section class="content-section" id="self-check">
+  <section class="band band-base" id="self-check">
+  <div class="content-section">
+    <ChapterLabel number="02" label="Self-check" />
     <h2>Quick self-check</h2>
     <p>Answer each question honestly. Your score appears after answering all 5.</p>
 
-    <div class="self-check">
+    <div class="self-check brand-card">
       <div class="check-item">
         <span class="question">Can you explain the last piece of code AI generated for you?</span>
         <div class="toggle-group" data-question="1">
@@ -207,41 +213,47 @@ const jsonLd = [
         <div class="recommendation" id="recommendation"></div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 4. Three Developer Patterns -->
-  <section class="content-section">
+  <section class="band band-paper section-wallpaper">
+  <div class="content-section">
+    <ChapterLabel number="03" label="Three patterns" />
     <h2>The three developer patterns</h2>
     <p>Which one are you? Be honest.</p>
 
     <div class="patterns-grid">
-      <div class="pattern-card dependent">
+      <div class="pattern-card brand-card brand-interactive-card dependent">
         <h3>Dependent</h3>
         <p class="signs"><strong>Signs:</strong> Copy-paste without understanding, can't debug AI code, anxiety without AI</p>
         <a href="/guide/learning-with-ai/#breaking-dependency" class="action" target="_blank">&rarr; Read "Breaking Dependency" section</a>
       </div>
 
-      <div class="pattern-card avoidant">
+      <div class="pattern-card brand-card brand-interactive-card avoidant">
         <h3>Avoidant</h3>
         <p class="signs"><strong>Signs:</strong> Refuses AI "on principle", slower than peers, missing out on productivity gains</p>
         <a href="/guide/learning-with-ai/#embracing-ai-tools" class="action" target="_blank">&rarr; Read "Embracing AI Tools" section</a>
       </div>
 
-      <div class="pattern-card augmented">
+      <div class="pattern-card brand-card brand-interactive-card augmented">
         <h3>Augmented</h3>
         <p class="signs"><strong>Signs:</strong> Uses AI critically, understands everything, can work with or without AI</p>
         <a href="/guide/learning-with-ai/#optimizing-your-flow" class="action" target="_blank">&rarr; Read "Optimizing Your Flow" section</a>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 5. Configure Learning Mode (setup avant la méthode) -->
-  <section class="content-section">
+  <section class="band band-ink section-wallpaper">
+  <div class="content-section">
+    <ChapterLabel number="04" label="Learning mode" />
     <h2>Configure learning mode</h2>
     <p>Claude Code can be configured to support your learning, alongside producing code.</p>
 
     <div class="learning-mode-grid">
-      <div class="learning-mode-card">
+      <div class="learning-mode-card brand-card">
         <h3>CLAUDE.md Configuration</h3>
         <p>Add this to your project's CLAUDE.md to make Claude ask questions before generating code:</p>
         <div class="code-block">
@@ -258,7 +270,7 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">Full Template &rarr;</a>
       </div>
 
-      <div class="learning-mode-card">
+      <div class="learning-mode-card brand-card">
         <h3>Slash commands for learning</h3>
         <table class="commands-table">
           <tr><td><code>/explain</code></td><td>Explain existing code (built-in)</td></tr>
@@ -269,7 +281,7 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/" target="_blank" class="btn btn-secondary">View /learn: commands &rarr;</a>
       </div>
 
-      <div class="learning-mode-card">
+      <div class="learning-mode-card brand-card">
         <h3>The 70/30 rule</h3>
         <p>Balance producing and learning each week:</p>
         <div class="ratio-visual">
@@ -284,15 +296,18 @@ If I skip these, remind me to think first.
         </ul>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 6. UVAL Protocol -->
-  <section class="content-section">
+  <section class="band band-paper section-wallpaper">
+  <div class="content-section">
+    <ChapterLabel number="05" label="UVAL protocol" />
     <h2>The UVAL protocol</h2>
     <p>Your framework for learning with AI without losing skills.</p>
 
     <div class="uval-steps">
-      <div class="uval-step">
+      <div class="uval-step brand-card">
         <div class="letter">U</div>
         <div class="content">
           <h4>Understand First (15-min Rule)</h4>
@@ -306,7 +321,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step">
+      <div class="uval-step brand-card">
         <div class="letter">V</div>
         <div class="content">
           <h4>Verify (Explain It Back)</h4>
@@ -318,7 +333,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step">
+      <div class="uval-step brand-card">
         <div class="letter">A</div>
         <div class="content">
           <h4>Apply (Transform, Don't Copy)</h4>
@@ -330,7 +345,7 @@ If I skip these, remind me to think first.
         </div>
       </div>
 
-      <div class="uval-step">
+      <div class="uval-step brand-card">
         <div class="letter">L</div>
         <div class="content">
           <h4>Learn (Capture the Insight)</h4>
@@ -343,10 +358,13 @@ If I skip these, remind me to think first.
         </div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 7. 30-Day Progression Plan -->
-  <section class="content-section">
+  <section class="band band-base">
+  <div class="content-section">
+    <ChapterLabel number="06" label="30-day plan" />
     <h2>30-day progression plan</h2>
     <p>Week-by-week guide to mastering AI-assisted development.</p>
 
@@ -361,15 +379,17 @@ If I skip these, remind me to think first.
         <tr><td><strong>Week 4</strong></td><td>Augmented</td><td><span class="ai-ratio high">70% AI</span></td><td>Full productivity with verification</td></tr>
       </tbody>
     </table>
+  </div>
   </section>
 
   <!-- 8. Ready-to-Use Templates -->
-  <section class="content-section">
+  <section class="band band-paper section-wallpaper">
+  <div class="content-section">
     <h2>Ready-to-use templates</h2>
     <p>Configure Claude Code to support both learning and producing.</p>
 
     <div class="templates-list">
-      <div class="template-item">
+      <div class="template-item brand-card brand-interactive-card">
         <div class="info">
           <h4>Learning Mode CLAUDE.md</h4>
           <p>Configuration that makes Claude explain the reasoning before generating the code. Includes challenge mode and interview prep.</p>
@@ -377,7 +397,7 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/claude-md/learning-mode.md" target="_blank" class="btn btn-secondary">View &rarr;</a>
       </div>
 
-      <div class="template-item">
+      <div class="template-item brand-card brand-interactive-card">
         <div class="info">
           <h4>/learn: Commands</h4>
           <p>Quiz, teach, and explore alternatives. Namespaced commands for learning workflows.</p>
@@ -385,7 +405,7 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/" target="_blank" class="btn btn-secondary">View &rarr;</a>
       </div>
 
-      <div class="template-item">
+      <div class="template-item brand-card brand-interactive-card">
         <div class="info">
           <h4>Learning Capture Hook</h4>
           <p>Session-end hook that prompts for ONE learning insight. Builds a learning journal with zero friction.</p>
@@ -393,15 +413,17 @@ If I skip these, remind me to think first.
         <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/hooks/bash/learning-capture.sh" target="_blank" class="btn btn-secondary">View &rarr;</a>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 9. External Resources -->
-  <section class="content-section">
+  <section class="band band-base">
+  <div class="content-section">
     <h2>Go deeper: Understand the model</h2>
     <p>Using a tool well requires understanding what it actually does. These resources build mechanical intuition about LLMs, which makes you a better prompt engineer and a sharper debugger when things go wrong.</p>
 
     <div class="templates-list">
-      <div class="template-item">
+      <div class="template-item brand-card brand-interactive-card">
         <div class="info">
           <h4>Step by Token, by Dimitri M&eacute;rault</h4>
           <p>21 interactive chapters on how LLMs work: tokenization, attention, context windows, agents and MCP, prompt engineering, extended reasoning (thinking tokens), and KV cache mechanics. Free, no equations, in 8 languages. Each chapter has at least one interactive visualization.</p>
@@ -409,6 +431,7 @@ If I skip these, remind me to think first.
         <a href="https://www.stepbytoken.com/en" target="_blank" rel="noopener" class="btn btn-secondary">Read &rarr;</a>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- 10. Methodologies (section avancée) -->
@@ -418,7 +441,8 @@ If I skip these, remind me to think first.
   <Onboarding />
 
   <!-- 12. CTA unique -->
-  <section class="content-section">
+  <section class="band band-accent section-wallpaper">
+  <div class="content-section">
     <div class="cta-section">
       <h2>Ready to learn the right way?</h2>
       <p>The full guide includes: Red flags checklist, breaking dependency strategies, case studies, and more.</p>
@@ -427,6 +451,7 @@ If I skip these, remind me to think first.
         <a href="/" class="btn btn-secondary">Back to Main Guide</a>
       </div>
     </div>
+  </div>
   </section>
 
   <style>
@@ -434,7 +459,7 @@ If I skip these, remind me to think first.
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
       border-left: 3px solid var(--status-warning);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       padding: var(--space-lg);
       max-width: 700px;
       margin: 0 0 var(--space-xl);
@@ -451,13 +476,9 @@ If I skip these, remind me to think first.
     .content-section h2 {
       font-size: 1.75rem;
       margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 2px solid var(--accent);
     }
 
     .self-check {
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
       margin-bottom: var(--space-2xl);
     }
@@ -471,9 +492,9 @@ If I skip these, remind me to think first.
       gap: var(--space-md);
       padding: var(--space-md) var(--space-lg);
       background: var(--bg-primary);
-      border-radius: var(--border-radius);
+      border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control);
       margin-bottom: var(--space-sm);
-      transition: all var(--transition-fast);
     }
 
     .check-item .question { flex: 1; }
@@ -481,7 +502,7 @@ If I skip these, remind me to think first.
     .toggle-group {
       display: flex;
       gap: 0;
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       overflow: hidden;
       border: 1px solid var(--border);
     }
@@ -494,20 +515,22 @@ If I skip these, remind me to think first.
       cursor: pointer;
       font-weight: 500;
       font-size: 0.85rem;
-      transition: all var(--transition-fast);
-      min-width: 50px;
+      transition: background-color 150ms ease, color 150ms ease;
+      min-width: 56px;
+      min-height: 44px;
     }
+    .toggle-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 
     .toggle-btn:first-child { border-right: 1px solid var(--border); }
     .toggle-btn:hover:not(.active) { background: var(--bg-tertiary); }
-    .toggle-btn.active.yes { background: #3b82f6; color: white; }
-    .toggle-btn.active.no { background: #ef4444; color: white; }
+    .toggle-btn.active { background: var(--text-primary); color: var(--bg-primary); }
 
     .score-result {
       margin-top: var(--space-lg);
       padding: var(--space-lg);
       background: var(--bg-primary);
-      border-radius: var(--border-radius);
+      border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control);
       text-align: left;
     }
 
@@ -523,35 +546,28 @@ If I skip these, remind me to think first.
     }
 
     .pattern-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
-      transition: all var(--transition-fast);
     }
 
-    .pattern-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent); }
     .pattern-card.dependent { border-top: 4px solid #ef4444; }
     .pattern-card.avoidant { border-top: 4px solid #f59e0b; }
     .pattern-card.augmented { border-top: 4px solid #3b82f6; }
     .pattern-card h3 { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
     .pattern-card .signs { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-md); }
-    .pattern-card .action { display: block; font-weight: 600; color: var(--accent); text-decoration: none; transition: all var(--transition-fast); }
-    .pattern-card .action:hover { color: var(--accent-hover); text-decoration: underline; }
+    .pattern-card .action { display: block; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .pattern-card .action:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 
     .uval-steps { display: grid; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
 
     .uval-step {
       display: flex;
       gap: var(--space-lg);
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
     }
 
     .uval-step .letter {
-      width: 60px; height: 60px; background: var(--accent); color: var(--bg-primary);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      width: 60px; height: 60px; background: var(--text-primary); color: var(--bg-primary);
+      font-family: var(--font-display); border-radius: var(--radius-control); display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; font-weight: bold; flex-shrink: 0;
     }
 
@@ -560,7 +576,8 @@ If I skip these, remind me to think first.
 
     .uval-step .implementation {
       background: var(--bg-primary);
-      border-radius: var(--border-radius);
+      border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control);
       padding: var(--space-md);
       font-family: var(--font-mono);
       font-size: 0.85rem;
@@ -574,8 +591,6 @@ If I skip these, remind me to think first.
     }
 
     .learning-mode-card {
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
     }
 
@@ -584,7 +599,8 @@ If I skip these, remind me to think first.
 
     .learning-mode-card .code-block {
       background: var(--bg-primary);
-      border-radius: var(--border-radius);
+      border: 1px solid var(--border-light, var(--border));
+      border-radius: var(--radius-control);
       padding: var(--space-md);
       margin-bottom: var(--space-md);
       font-family: var(--font-mono);
@@ -598,20 +614,20 @@ If I skip these, remind me to think first.
     .commands-table { width: 100%; margin-bottom: var(--space-md); }
     .commands-table td { padding: var(--space-sm) var(--space-xs); font-size: 0.85rem; vertical-align: top; }
     .commands-table td:first-child { width: 120px; }
-    .commands-table code { background: var(--bg-primary); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+    .commands-table code { background: var(--bg-primary); padding: 2px 6px; border-radius: var(--radius-control); font-size: 0.8rem; }
 
     .ratio-visual { margin-bottom: var(--space-md); }
-    .ratio-bar { display: flex; border-radius: var(--border-radius); overflow: hidden; font-size: 0.75rem; font-weight: 600; }
+    .ratio-bar { display: flex; border-radius: var(--radius-control); overflow: hidden; font-size: 0.75rem; font-weight: 600; }
     .ratio-segment { padding: var(--space-sm) var(--space-md); text-align: center; }
-    .ratio-segment.produce { background: var(--accent); color: var(--bg-primary); }
-    .ratio-segment.learn { background: #3b82f6; color: white; }
+    .ratio-segment.produce { background: var(--text-primary); color: var(--bg-primary); }
+    .ratio-segment.learn { background: var(--bg-tertiary); color: var(--text-primary); }
     .ratio-details { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
     .ratio-details li { margin-bottom: var(--space-xs); color: var(--text-secondary); }
 
     .plan-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-2xl); }
     .plan-table th, .plan-table td { padding: var(--space-md); text-align: left; border-bottom: 1px solid var(--border); }
     .plan-table th { background: var(--bg-secondary); font-weight: 600; }
-    .plan-table .ai-ratio { display: inline-block; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius); font-size: 0.85rem; font-weight: 600; }
+    .plan-table .ai-ratio { display: inline-block; padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-control); font-size: 0.85rem; font-weight: 600; }
     .plan-table .ai-ratio.low { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
     .plan-table .ai-ratio.medium { background: var(--bg-tertiary); color: var(--status-warning); border: 1px solid var(--border); }
     .plan-table .ai-ratio.high { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
@@ -622,25 +638,18 @@ If I skip these, remind me to think first.
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      gap: var(--space-md);
       padding: var(--space-lg);
-      transition: all var(--transition-fast);
     }
 
-    .template-item:hover { border-color: var(--accent); }
     .template-item .info h4 { margin-bottom: var(--space-xs); }
     .template-item .info p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
     .template-item .btn { flex-shrink: 0; }
 
     .cta-section {
       text-align: left;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius-lg);
-      padding: var(--space-3xl);
-      margin: var(--space-2xl) 0;
+      padding: var(--space-xl) 0;
+      margin: 0;
     }
 
     .cta-section h2 { border: none; padding: 0; }
@@ -654,19 +663,9 @@ If I skip these, remind me to think first.
       margin-bottom: var(--space-2xl);
     }
     .path-card {
-      background-color: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-normal);
     }
-    .path-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card-hover);
-    }
-    .path-card.featured { border-color: var(--accent); }
+    .path-card.featured { border-color: var(--accent); border-top-width: 3px; }
     .path-header { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
     .path-icon { font-size: 1.5rem; }
     .path-header h3 { font-size: 1.2rem; }
@@ -674,6 +673,8 @@ If I skip these, remind me to think first.
     .path-steps { padding-left: var(--space-lg); color: var(--text-secondary); }
     .path-steps li { margin-bottom: var(--space-sm); font-size: 0.95rem; }
     .path-steps li::marker { color: var(--text-muted); }
+    .path-steps a { text-decoration: underline; text-underline-offset: 3px; }
+    .path-steps a:hover { text-decoration-thickness: 2px; }
 
     @media (max-width: 768px) {
       .uval-step { flex-direction: column; align-items: flex-start; text-align: left; }

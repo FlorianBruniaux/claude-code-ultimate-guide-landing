@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 
 const title = 'Claude Code Memory Systems: Complete Guide 2026'
 const description = 'Claude Code memory in 2026: memory types as four axes, what stays local vs what the team shares, whether injected memory is actually used, and the native stack, cross-session tools (claude-mem, agentmemory, memorix, ICM) and team options, checked at source.'
@@ -284,22 +285,22 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 
   <main>
     <!-- TL;DR -->
-    <section class="section section--tldr">
+    <section class="section section--tldr band">
       <div class="container">
         <div class="tldr-grid">
-          <div class="tldr-card tldr-native">
+          <div class="tldr-card tldr-native brand-card">
             <div class="tldr-icon">📄</div>
             <h3>Native stack</h3>
             <p>Zero setup, works today. CLAUDE.md for permanent instructions, Auto Memory for automatic cross-session notes, Auto Dream for background consolidation.</p>
             <span class="tldr-badge">Built-in</span>
           </div>
-          <div class="tldr-card tldr-cross">
+          <div class="tldr-card tldr-cross brand-card">
             <div class="tldr-icon">🔄</div>
             <h3>Cross-session tools</h3>
             <p>Community-built hooks and MCP servers that persist what Claude does automatically. claude-mem, agentmemory, ICM, Kairn, doobidoo:each with a different recall model.</p>
             <span class="tldr-badge tldr-badge--community">Community</span>
           </div>
-          <div class="tldr-card tldr-team">
+          <div class="tldr-card tldr-team brand-card">
             <div class="tldr-icon">👥</div>
             <h3>Team + multi-agent</h3>
             <p>Sharing memory across developers or autonomous agents. The Trinity (zero infra), Mem0 Cloud, Zep/Graphiti. Concurrent-write coordination via leases and signals.</p>
@@ -310,9 +311,10 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Memory types -->
-    <section class="section" id="memory-types">
+    <section class="section section--alt" id="memory-types">
       <div class="container">
         <span class="section-badge">Concepts</span>
+        <ChapterLabel number="01" label="Memory types" />
         <h2 class="section-title">Memory types: coordinates, not a stack</h2>
         <p class="section-subtitle">Popular diagrams stack five layers (working, episodic, semantic, procedural, "meta-memory") and pair each with a brain region. The research literature classifies memory on independent axes instead, and one artifact has a value on every axis.</p>
         <div class="tool-table-wrap">
@@ -336,7 +338,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Where memory lives -->
-    <section class="section section--alt" id="where-memory-lives">
+    <section class="section band" id="where-memory-lives">
       <div class="container">
         <span class="section-badge">Scope</span>
         <h2 class="section-title">Where memory lives: local, repository, shared</h2>
@@ -364,11 +366,12 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     <section class="section section--alt" id="2-native-claude-code-memory-stack">
       <div class="container">
         <span class="section-badge section-badge--native">Track 1</span>
+        <ChapterLabel number="02" label="Native stack" />
         <h2 class="section-title">Native Claude Code memory stack</h2>
         <p class="section-subtitle">Four mechanisms built directly into Claude Code: no extra dependencies, no API costs for the memory layer itself.</p>
         <div class="native-grid">
           {nativeTools.map(tool => (
-            <div class="native-card" id={tool.anchor}>
+            <div class="native-card brand-card" id={tool.anchor}>
               <div class="native-card-header">
                 <h3 class="native-card-name">{tool.name}</h3>
                 <span class={`native-badge native-badge--${tool.badgeColor}`}>{tool.badge}</span>
@@ -385,9 +388,10 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Cross-Session Tools -->
-    <section class="section" id="3-cross-session-tools-single-user">
+    <section class="section band" id="3-cross-session-tools-single-user">
       <div class="container">
         <span class="section-badge section-badge--cross">Track 2</span>
+        <ChapterLabel number="03" label="Cross-session" />
         <h2 class="section-title">Cross-session tools</h2>
         <p class="section-subtitle">Community tools that persist memory beyond what the native stack offers. Each uses a different retrieval model: choose based on what you need to remember. Facts for claude-mem and agentmemory were read at their release tags (v15.9.0 and v0.9.31).</p>
 
@@ -436,12 +440,13 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     <section class="section section--alt" id="4-team-sharing">
       <div class="container">
         <span class="section-badge section-badge--team">Track 3</span>
+        <ChapterLabel number="04" label="Team sharing" />
         <h2 class="section-title">Team + multi-agent sharing</h2>
         <p class="section-subtitle">Sharing memory across developers or autonomous agents is the hardest problem. Structural reasons, primarily the lack of a standardized conflict-resolution protocol across tools, mean no current solution handles all cases cleanly.</p>
 
         <div class="team-options">
           {teamOptions.map(opt => (
-            <div class="team-card" id={opt.anchor}>
+            <div class="team-card brand-card" id={opt.anchor}>
               <div class="team-card-header">
                 <h3>{opt.name}</h3>
                 <span class={`team-badge team-badge--${opt.badgeColor}`}>{opt.badge}</span>
@@ -464,7 +469,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Is it used? -->
-    <section class="section" id="memory-pipeline">
+    <section class="section band" id="memory-pipeline">
       <div class="container">
         <span class="section-badge">Evidence</span>
         <h2 class="section-title">Is your memory used? From captured to effective</h2>
@@ -486,7 +491,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Decision Frameworks -->
-    <section class="section" id="8-decision-frameworks">
+    <section class="section band band-ink section-wallpaper" id="8-decision-frameworks">
       <div class="container">
         <h2 class="section-title">Decision framework: Which track?</h2>
         <p class="section-subtitle">Six rules that cover 90% of real situations. Each maps a concrete problem to the right solution layer.</p>
@@ -504,7 +509,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
           ))}
         </div>
 
-        <div class="decision-cta">
+        <div class="decision-cta brand-card">
           <p>The full guide includes a Mermaid decision flowchart covering edge cases: offline constraints, security requirements, data sensitivity, and multi-agent coordination.</p>
           <a href="/guide/memory-systems/#81-decision-flowchart" class="btn btn-primary">Full decision flowchart &rarr;</a>
         </div>
@@ -514,10 +519,11 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     <!-- Risks & Architecture -->
     <section class="section section--alt">
       <div class="container">
+        <ChapterLabel number="05" label="Risks" />
         <h2 class="section-title">Key risks</h2>
         <p class="section-subtitle">Memory systems introduce attack surfaces and failure modes that don't exist with stateless contexts.</p>
         <div class="risks-grid">
-          <div class="risk-card risk-card--high">
+          <div class="risk-card risk-card--high brand-card">
             <div class="risk-header">
               <span class="risk-level">High</span>
               <h3>Memory poisoning</h3>
@@ -525,21 +531,21 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
             <p>An adversarial input causes the agent to store false beliefs or instructions in its memory store. On later sessions, they influence behavior. 2026 preprints (MemGhost, MemHarmBench) show agents completing legitimate tasks normally while following the planted intent. Write validation is still not a default anywhere.</p>
             <a href="/guide/memory-systems/#71-memory-poisoning-via-prompt-injection" class="native-guide-link">Details &rarr;</a>
           </div>
-          <div class="risk-card risk-card--medium">
+          <div class="risk-card risk-card--medium brand-card">
             <div class="risk-header">
               <span class="risk-level">Medium</span>
               <h3>Context inflation</h3>
             </div>
             <p>Memory retrieval injects tokens at session start. If retrieval is poorly tuned, you can end up with more context tokens from memory than from the actual task, degrading adherence.</p>
           </div>
-          <div class="risk-card risk-card--medium">
+          <div class="risk-card risk-card--medium brand-card">
             <div class="risk-header">
               <span class="risk-level">Medium</span>
               <h3>Stale beliefs</h3>
             </div>
             <p>Memories stored months ago may reflect outdated codebase state, team conventions, or user preferences. Decay models (Kairn, ICM) partially address this; flat storage (CLAUDE.md, doobidoo) does not.</p>
           </div>
-          <div class="risk-card risk-card--low">
+          <div class="risk-card risk-card--low brand-card">
             <div class="risk-header">
               <span class="risk-level">Low</span>
               <h3>Storage fragmentation</h3>
@@ -551,7 +557,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
     </section>
 
     <!-- Full Guide CTA -->
-    <section class="section section--cta">
+    <section class="section band band-accent section-wallpaper">
       <div class="container">
         <div class="cta-block">
           <h2>Full reference in the guide</h2>
@@ -568,11 +574,6 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 
 <style>
 /* Hero */
-.page-hero {
-  padding: 3.5rem 0 3rem;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
-}
 .hero-eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
@@ -580,12 +581,6 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
   letter-spacing: 0.1em;
   color: var(--accent);
   margin-bottom: 0.5rem;
-}
-.page-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin: 0 0 1rem;
 }
 .hero-desc {
   font-size: 1.1rem;
@@ -602,7 +597,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .track-pill {
   display: inline-block;
   padding: 0.35rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   font-size: 0.825rem;
   font-weight: 600;
   text-decoration: none;
@@ -612,7 +607,9 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .track-pill--native { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); border-color: var(--accent); }
 .track-pill--cross { background: color-mix(in srgb, var(--status-info) 10%, transparent); color: var(--status-info); border-color: var(--status-info); }
 .track-pill--team { background: color-mix(in srgb, var(--status-warning) 10%, transparent); color: var(--status-warning); border-color: var(--status-warning); }
-.track-pill:hover { opacity: 0.8; }
+.track-pill:hover,
+.track-pill:focus-visible { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.track-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* TL;DR */
 .section--tldr { padding: 2.5rem 0; }
@@ -623,9 +620,6 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 }
 .tldr-card {
   padding: 1.25rem 1.5rem;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid var(--border);
-  background: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -641,9 +635,9 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
   font-size: 0.7rem;
   font-weight: 700;
   padding: 2px 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   background: var(--accent);
-  color: #fff;
+  color: var(--bg-primary);
   align-self: flex-start;
 }
 .tldr-badge--community { background: var(--status-info); }
@@ -657,7 +651,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   margin-bottom: 0.75rem;
   background: var(--bg-tertiary);
   color: var(--text-muted);
@@ -674,9 +668,6 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 }
 .native-card {
   padding: 1.5rem;
-  background: var(--bg-primary, var(--bg-tertiary));
-  border-radius: var(--border-radius-lg);
-  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -685,9 +676,9 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .native-card-name { font-size: 1rem; font-weight: 700; margin: 0; }
 .native-badge {
   font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
-  border-radius: 999px; white-space: nowrap;
+  border-radius: var(--radius-control); white-space: nowrap;
 }
-.native-badge--accent { background: var(--accent); color: #fff; }
+.native-badge--accent { background: var(--accent); color: var(--bg-primary); }
 .native-badge--info { background: var(--status-info); color: #fff; }
 .native-badge--warning { background: var(--status-warning); color: #1a1a1a; }
 .native-card-desc { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
@@ -701,9 +692,10 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 }
 .native-guide-link {
   font-size: 0.825rem; font-weight: 600; color: var(--accent);
-  text-decoration: none; margin-top: auto;
+  text-decoration: underline; text-underline-offset: 3px; margin-top: auto;
 }
-.native-guide-link:hover { text-decoration: underline; }
+.native-guide-link:hover,
+.native-guide-link:focus-visible { text-decoration-thickness: 2px; color: var(--accent-hover); }
 
 /* Tool Table */
 .tool-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
@@ -723,8 +715,9 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 }
 .tool-table tr:last-child td { border-bottom: none; }
 .row-highlight td { background: color-mix(in srgb, var(--accent) 4%, transparent); }
-.tool-name-link { font-weight: 600; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; }
-.tool-name-link:hover { color: var(--accent); }
+.tool-name-link { font-weight: 600; color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; display: flex; align-items: center; gap: 0.35rem; }
+.tool-name-link:hover,
+.tool-name-link:focus-visible { color: var(--accent); text-decoration-thickness: 2px; }
 .tool-stars { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
 .recall-cell { font-size: 0.8rem; }
 .tool-table code { font-size: 0.78rem; background: var(--bg-tertiary); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
@@ -741,14 +734,13 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 /* Team Options */
 .team-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
 .team-card {
-  padding: 1.5rem; background: var(--bg-primary, var(--bg-tertiary));
-  border-radius: var(--border-radius-lg); border: 1px solid var(--border);
+  padding: 1.5rem;
   display: flex; flex-direction: column; gap: 0.75rem;
 }
 .team-card-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .team-card-header h3 { font-size: 1rem; font-weight: 700; margin: 0; flex: 1; }
-.team-badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
-.team-badge--accent { background: var(--accent); color: #fff; }
+.team-badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-control); white-space: nowrap; }
+.team-badge--accent { background: var(--accent); color: var(--bg-primary); }
 .team-badge--info { background: var(--status-info); color: #fff; }
 .team-badge--warning { background: var(--status-warning); color: #1a1a1a; }
 .team-card-desc { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; flex: 1; }
@@ -767,7 +759,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 }
 .pipeline-step {
   counter-increment: stage;
-  padding: 0.4rem 0.85rem; border-radius: 999px;
+  padding: 0.4rem 0.85rem; border-radius: var(--radius-control);
   border: 1px solid var(--border); background: var(--bg-secondary);
   font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
 }
@@ -801,17 +793,13 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .rule-if { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); white-space: nowrap; }
 .rule-arrow { color: var(--accent); font-weight: 700; text-align: center; font-size: 1.1rem; }
 .rule-answer { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
-.decision-cta {
-  background: var(--bg-secondary); border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg); padding: 1.5rem;
-}
+.decision-cta { padding: 1.5rem; }
 .decision-cta p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 1rem; line-height: 1.6; }
 
 /* Risks */
 .risks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 .risk-card {
-  padding: 1.25rem 1.5rem; border-radius: var(--border-radius-lg);
-  border: 1px solid var(--border); background: var(--bg-primary, var(--bg-tertiary));
+  padding: 1.25rem 1.5rem;
   display: flex; flex-direction: column; gap: 0.75rem;
 }
 .risk-card--high { border-top: 3px solid var(--status-error, #e74c3c); }
@@ -820,7 +808,7 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .risk-header { display: flex; align-items: center; gap: 0.5rem; }
 .risk-level {
   font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 2px 7px; border-radius: 999px; white-space: nowrap;
+  padding: 2px 7px; border-radius: var(--radius-control); white-space: nowrap;
 }
 .risk-card--high .risk-level { background: color-mix(in srgb, var(--status-error, #e74c3c) 15%, transparent); color: var(--status-error, #e74c3c); }
 .risk-card--medium .risk-level { background: color-mix(in srgb, var(--status-warning) 15%, transparent); color: var(--status-warning); }
@@ -829,25 +817,17 @@ const pipelineStages = ["captured", "stored", "indexed", "retrievable", "injecte
 .risk-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; line-height: 1.5; flex: 1; }
 
 /* CTA Section */
-.section--cta { background: var(--bg-secondary); }
 .cta-block { text-align: center; max-width: 600px; margin: 0 auto; }
-.cta-block h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem; }
+.cta-block h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.75rem; }
 .cta-block p { color: var(--text-secondary); margin: 0 0 1.5rem; line-height: 1.6; }
 .cta-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 0.25rem;
-  padding: 0.6rem 1.25rem; border-radius: var(--border-radius-md);
-  font-size: 0.9rem; font-weight: 600; text-decoration: none;
-  background: transparent; color: var(--text-primary);
-  border: 1px solid var(--border); transition: background 0.15s, border-color 0.15s;
-}
-.btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--accent); }
+/* .btn-secondary inherits the shared action levels in src/styles/components.css. */
 
 /* Layout */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 .section { padding: 4rem 0; }
 .section--alt { background: var(--bg-secondary); }
-.section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin: 0 0 0.75rem; }
+.section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 0 0 0.75rem; }
 .section-subtitle { font-size: 1rem; color: var(--text-secondary); margin: 0 0 2.5rem; max-width: 640px; line-height: 1.6; }
 
 @media (max-width: 700px) {

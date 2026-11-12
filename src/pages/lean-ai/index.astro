@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 
 const title = 'Lean and AI: Follow the Work to the User | Claude Code Guide'
 const description = 'A source-backed reading path for applying Lean to AI-assisted work: map the value stream, find the verification queue, and measure accepted outcomes.'
@@ -140,10 +141,11 @@ const adjacentCases = cases.slice(3)
         </ol>
       </div>
     </nav>
-    <section class="section lean-section" aria-labelledby="question-title">
+    <section class="section lean-section band" aria-labelledby="question-title">
       <div class="container question-layout">
         <div class="question-heading">
           <p class="section-kicker">The operating question</p>
+          <ChapterLabel number="01" label="Question" />
           <h2 id="question-title">What reaches the user sooner?</h2>
         </div>
         <div class="question-copy">
@@ -157,6 +159,7 @@ const adjacentCases = cases.slice(3)
     <section class="section section--alt lean-section" id="map" aria-labelledby="map-title">
       <div class="container">
         <p class="section-kicker">A five-stage map</p>
+        <ChapterLabel number="02" label="Request path" />
         <h2 id="map-title">Trace one request end to end</h2>
         <p class="intro">Choose a real request type. Record when it enters and leaves each stage, including revisions and rejected work. Compare equivalent requests over equivalent windows.</p>
         <figure class="flow-figure">
@@ -175,7 +178,7 @@ const adjacentCases = cases.slice(3)
         </div>
         <ol class="flow-grid" aria-labelledby="stage-title">
           {stages.map((stage) => (
-            <li class="flow-card">
+            <li class="flow-card brand-card">
               <span class="flow-number">{stage.number}</span>
               <h3>{stage.name}</h3>
               <p>{stage.question}</p>
@@ -186,9 +189,10 @@ const adjacentCases = cases.slice(3)
       </div>
     </section>
 
-    <section class="section lean-section" id="queue" aria-labelledby="queue-title">
+    <section class="section lean-section band" id="queue" aria-labelledby="queue-title">
       <div class="container">
         <p class="section-kicker">The next constraint</p>
+        <ChapterLabel number="03" label="Queue" />
         <h2 id="queue-title">When drafts arrive faster than decisions</h2>
         <p class="intro">The queue between creation and acceptance is the part to inspect next. Count items waiting, how long they wait, and the effort spent checking and correcting them. The drawing shows one possible failure mode, not a forecast.</p>
         <figure class="balance-figure" aria-labelledby="balance-title">
@@ -251,9 +255,10 @@ const adjacentCases = cases.slice(3)
       </div>
     </section>
 
-    <section class="section lean-section" id="cases" aria-labelledby="cases-title">
+    <section class="section lean-section band" id="cases" aria-labelledby="cases-title">
       <div class="container">
         <p class="section-kicker">Practice, with its limits</p>
+        <ChapterLabel number="04" label="Cases" />
         <h2 id="cases-title">What companies have actually described</h2>
         <p class="intro">Lean can shape how teams build and verify AI-assisted work. AI can also help people practise Lean problem solving. These sources document implementations and practitioner experience, but they do not establish a transferable end-to-end productivity gain.</p>
         <div class="case-group-heading">
@@ -262,7 +267,7 @@ const adjacentCases = cases.slice(3)
         </div>
         <div class="case-primary-grid">
           {softwareCases.map((caseStudy) => (
-            <article class:list={['reading-card', 'case-card', { 'case-card--study': caseStudy.kind === 'Software field study' }]}>
+            <article class:list={['reading-card', 'case-card', 'brand-card', { 'case-card--study': caseStudy.kind === 'Software field study' }]}>
               <p class="reading-kind">{caseStudy.kind}</p>
               <h3>{caseStudy.title}</h3>
               <p>{caseStudy.finding}</p>
@@ -294,7 +299,7 @@ const adjacentCases = cases.slice(3)
       </div>
     </section>
 
-    <section class="section lean-section" id="sources" aria-labelledby="sources-title">
+    <section class="section lean-section band band-ink section-wallpaper" id="sources" aria-labelledby="sources-title">
       <div class="container">
         <p class="section-kicker">Evidence, with its limits</p>
         <h2 id="sources-title">Read the source for the claim it actually supports</h2>
@@ -319,6 +324,7 @@ const adjacentCases = cases.slice(3)
     <section class="section section--alt lean-section" id="measure" aria-labelledby="next-title">
       <div class="container">
         <p class="section-kicker">Choose your next step</p>
+        <ChapterLabel number="05" label="Measure" />
         <h2 id="next-title">Test the idea on one kind of request</h2>
         <ol class="measurement-steps">
           <li><strong>Choose a request.</strong> Use the same request type before and after a change.</li>
@@ -368,17 +374,17 @@ const adjacentCases = cases.slice(3)
         </dl>
         <p class="instrument-followup">For the measurement evidence, read my <a href="https://www.florian.bruniaux.com/blog/articles/real-cost-of-ai-productivity-reality/" target="_blank" rel="noopener noreferrer">AI productivity review</a>. For a human check at the quality gate, the <a href="https://www.florian.bruniaux.com/blog/articles/uval-protocol-comprehension-debt/" target="_blank" rel="noopener noreferrer">UVAL protocol</a> tests whether an engineer can explain the code they accept; it does not replace team-level review or a user outcome.</p>
         <div class="next-grid">
-          <a class="next-card" href={articleUrl} target="_blank" rel="noopener noreferrer">
+          <a class="next-card brand-card brand-interactive-card" href={articleUrl} target="_blank" rel="noopener noreferrer">
             <span>Read the argument</span>
             <h3>Lean and AI: follow the work until it reaches the user</h3>
             <p>A practical article covering intake, review, quality stops and outcomes beyond the coding step.</p>
           </a>
-          <a class="next-card" href="/guide/team-metrics/">
+          <a class="next-card brand-card brand-interactive-card" href="/guide/team-metrics/">
             <span>Set the measures</span>
             <h3>Team metrics</h3>
             <p>Track delivery, the shared verification queue, product outcomes and human effort.</p>
           </a>
-          <a class="next-card" href="/guide/loop-graph-engineering/">
+          <a class="next-card brand-card brand-interactive-card" href="/guide/loop-graph-engineering/">
             <span>Design the control</span>
             <h3>Agent engineering</h3>
             <p>Build bounded loops, checkpoints and recovery into AI-assisted work.</p>
@@ -394,7 +400,7 @@ const adjacentCases = cases.slice(3)
   .back-link { display: inline-flex; min-height: 44px; align-items: center; color: var(--text-secondary); font-weight: 650; }
   .eyebrow, .section-kicker, .reading-kind, .next-card > span { color: var(--accent); font: 700 .78rem var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
   .eyebrow { margin: 1.1rem 0 .5rem; }
-  .page-hero h1 { max-width: 18ch; font-size: clamp(2.8rem, 5vw, 4.25rem); line-height: 1.08; letter-spacing: -.035em; }
+  .page-hero h1 { max-width: 18ch; font-size: clamp(2.8rem, 5vw, 4.25rem); line-height: 1.08; letter-spacing: -.015em; }
   .page-hero .tagline { max-width: 58ch; margin-bottom: 1.8rem; }
   .hero-signals { max-width: 440px; padding-left: 2rem; border-left: 1px solid var(--border); }
   .hero-signals ol { padding: 0; margin: .85rem 0 0; list-style: none; }
@@ -407,13 +413,14 @@ const adjacentCases = cases.slice(3)
   .reading-route li { min-width: 0; border-right: 1px solid var(--border-light); }
   .reading-route li:first-child { border-left: 1px solid var(--border-light); }
   .reading-route a { display: flex; align-items: center; gap: .75rem; min-height: 60px; padding: .5rem 1rem; color: var(--text-primary) !important; font-size: .9rem; font-weight: 650; line-height: 1.2; text-decoration: none !important; }
-  .reading-route a:hover, .reading-route a:focus-visible { background: var(--bg-tertiary); }
+  .reading-route a:hover, .reading-route a:focus-visible { background: var(--bg-tertiary); text-decoration: underline !important; text-decoration-thickness: 2px !important; text-underline-offset: 3px; }
+  .reading-route a:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
   .reading-route a span { color: var(--accent); font: 700 .78rem var(--font-mono); }
   .lean-content .lean-section > .container { max-width: 1200px; }
   .lean-content .lean-section > .question-layout { max-width: 1120px; }
   .lean-content .lean-section:last-child { padding-bottom: var(--space-3xl); }
   .lean-section { scroll-margin-top: 6rem; }
-  .lean-section .container > h2, .question-heading h2 { max-width: 36ch; margin: .3rem 0 1rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.025em; text-wrap: balance; }
+  .lean-section .container > h2, .question-heading h2 { max-width: 36ch; margin: .3rem 0 1rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.015em; text-wrap: balance; }
   .section-kicker { margin: 0; }
   .question-copy p, .intro, .source-note { color: var(--text-secondary); line-height: 1.72; }
   .question-copy { max-width: 70ch; }
@@ -429,11 +436,11 @@ const adjacentCases = cases.slice(3)
   .flow-figure figcaption { margin-top: .5rem; }
   .flow-figure figcaption span, .balance-visual-note span { max-width: 72ch; }
   .infographic-open { display: inline-flex; align-items: center; justify-content: center; flex: none; min-height: 44px; padding: .55rem .85rem; border: 1px solid var(--border); border-radius: var(--border-radius); background: var(--surface-elevated); color: var(--accent); font-weight: 700; text-decoration: none; }
-  .infographic-open:hover { border-color: var(--accent); background: var(--bg-tertiary); }
+  .infographic-open:hover { border-color: var(--accent); background: var(--bg-tertiary); text-decoration: underline; text-underline-offset: 3px; }
   .infographic-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .image-mobile-hint { display: none; }
   .factory-translation-heading { width: min(100%, 1040px); margin: 0 0 1.5rem; }
-  .factory-translation-heading h2 { margin: .35rem 0 .65rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.025em; }
+  .factory-translation-heading h2 { margin: .35rem 0 .65rem; color: var(--text-primary); font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.12; letter-spacing: -.015em; }
   .factory-translation-heading > p:last-child { max-width: 75ch; margin: 0; color: var(--text-secondary); line-height: 1.65; }
   .factory-translation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; width: min(100%, 1040px); margin: 0; }
   .factory-translation > div { padding: 1.2rem 0; border-top: 1px solid var(--border); }
@@ -473,7 +480,8 @@ const adjacentCases = cases.slice(3)
   .readiness-example strong { color: var(--text-primary); }
   .readiness-example p { margin: .35rem 0 0; color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
   .method-links { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 0 0 1.3rem; }
-  .method-links a { font-size: .89rem; font-weight: 650; }
+  .method-links a { font-size: .89rem; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+  .method-links a:hover, .method-links a:focus-visible { text-decoration-thickness: 2px; }
   .readiness-limit { padding-top: 1rem; border-top: 1px solid var(--border); font-size: .89rem; }
   .instrument-heading { max-width: 76ch; margin-top: 2.7rem; }
   .instrument-heading h3 { margin: .35rem 0 .55rem; color: var(--text-primary); font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1.2; }
@@ -516,11 +524,13 @@ const adjacentCases = cases.slice(3)
   .measurement-steps li { position: relative; padding: 1rem 0 0; border-top: 2px solid var(--accent); color: var(--text-secondary); font-size: .93rem; line-height: 1.6; counter-increment: measure; }
   .measurement-steps li::before { content: '0' counter(measure); display: block; margin-bottom: .7rem; color: var(--accent); font: 700 .9rem var(--font-mono); }
   .measurement-steps strong { color: var(--text-primary); }
-  .next-card { display: flex; flex-direction: column; min-height: 12.5rem; color: var(--text-primary) !important; text-decoration: none !important; transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast); }
+  .next-card { display: flex; flex-direction: column; min-height: 12.5rem; color: var(--text-primary) !important; text-decoration: none !important; }
   .next-card h3 { margin-top: .6rem; }
   .next-card p { margin: auto 0 0; }
-  .next-card:hover, .next-card:focus-visible { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
   .next-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .next-card h3 { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  .reading-card a, .adjacent-case-body a, .ledger-links a { text-decoration: underline; text-underline-offset: 3px; }
+  .reading-card a:hover, .adjacent-case-body a:hover, .ledger-links a:hover { text-decoration-thickness: 2px; }
   /* Keep this reading path visible during full-page capture and anchor navigation. */
   :global(.js-loaded) .lean-section { opacity: 1; transform: none; transition: none; }
   @media (min-width: 1081px) {

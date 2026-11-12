@@ -276,3 +276,20 @@ test('a query with no match offers the page listing instead', async () => {
   assert.match(results.textContent ?? '', /No results for “zzzz-nothing”/)
   assert.equal(results.querySelector('a')?.getAttribute('href'), '/sitemap/')
 })
+
+test('closing the dialog gives the focus back to the control that opened it', async () => {
+  const { document } = fixture()
+  const { load } = countingLoader()
+  initSearch(load, document)
+
+  const trigger = document.getElementById('search-trigger') as HTMLButtonElement
+  trigger.focus()
+  trigger.click()
+  await tick()
+  assert.equal(document.activeElement?.id, 'search-input')
+
+  document.getElementById('search-input')?.dispatchEvent(new document.defaultView!.KeyboardEvent('keydown', { key: 'Escape' }))
+  await tick()
+  assert.equal(document.getElementById('search-modal')?.hasAttribute('hidden'), true)
+  assert.equal(document.activeElement?.id, 'search-trigger')
+})

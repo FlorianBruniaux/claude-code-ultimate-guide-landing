@@ -12,21 +12,22 @@ function metaLabel(resource: (typeof HOMEPAGE_ESSENTIALS)[number]) {
   const value = stats[resource.metaKey]
   return typeof value === 'number' ? `${value.toLocaleString('en-US')} ${resource.meta}` : resource.meta
 }
+import ChapterLabel from '../global/ChapterLabel.astro'
 ---
 
-<section class="section section--alt essentials" aria-labelledby="essentials-title">
+<section class="section band band-ink section-wallpaper essentials" aria-labelledby="essentials-title">
   <div class="container">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Essentials</p>
+        <ChapterLabel number="02" label="Essentials" />
         <h2 class="section-title" id="essentials-title">The four places most readers start</h2>
       </div>
-      <a class="all-link" href="/resources/">See all resources →</a>
+      <a class="btn btn-primary" href="/resources/">See all resources →</a>
     </div>
 
     <div class="resource-grid">
       {HOMEPAGE_ESSENTIALS.map((resource) => (
-        <a class="resource-card" href={resource.href}>
+        <a class="resource-card brand-card brand-interactive-card" href={resource.href}>
           <span class="resource-icon" aria-hidden="true">{resource.icon}</span>
           <h3>{resource.title}</h3>
           <p>{resource.description}</p>
@@ -53,8 +54,8 @@ function metaLabel(resource: (typeof HOMEPAGE_ESSENTIALS)[number]) {
   .section-header .section-title { margin-bottom: 0; }
   .all-link { display: inline-flex; align-items: center; min-height: 44px; flex: 0 0 auto; font-weight: 650; }
   .resource-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; }
-  .resource-card { display: flex; flex-direction: column; min-height: 220px; padding: 1.25rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: transform var(--transition-fast), border-color var(--transition-fast); }
-  .resource-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .resource-card { display: flex; flex-direction: column; min-height: 220px; padding: 1.25rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; }
+  /* Hover and focus come from .brand-interactive-card (portfolio). */
   .resource-icon { font-size: 1.45rem; }
   .resource-card h3 { margin: 1.1rem 0 0.4rem; font-size: 1.05rem; }
   .resource-card p { margin: 0; color: var(--text-secondary); font-size: 0.875rem; }

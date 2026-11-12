@@ -89,7 +89,8 @@ test('an open panel and the current section use separate desktop styles', () => 
   const desktop = headerSource.slice(headerSource.indexOf('@media (min-width: 64rem)'))
   assert.doesNotMatch(desktop, /\.is-active,\s*\.top-level-link\[data-open\]/, 'active and open must not share a rule')
   assert.match(desktop, /\.top-level-link\.is-active::after \{[^}]*opacity:\s*1;/)
-  assert.match(desktop, /\.top-level-link\[data-open\] \{[^}]*background:\s*var\(--text-primary\);/)
+  // Portfolio compact header: the open item sits on the elevated surface.
+  assert.match(desktop, /\.top-level-link\[data-open\] \{[^}]*background:\s*var\(--bg-tertiary\);/)
   assert.match(desktop, /\.top-level-link\[data-open\]::after \{[^}]*opacity:\s*0;/)
 })
 

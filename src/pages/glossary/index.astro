@@ -42,6 +42,7 @@ const jsonLd = [
     }))
   }
 ]
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -65,8 +66,9 @@ const jsonLd = [
   </section>
 
   <!-- Main content -->
-  <section class="glossary-section">
+  <section class="band band-base glossary-section">
     <div class="container">
+      <ChapterLabel number="01" label="Terms A to Z" />
       {letters.map(letter => {
         const terms = grouped.get(letter)!
         return (
@@ -98,7 +100,7 @@ const jsonLd = [
   </section>
 
   <!-- Footer CTA -->
-  <section class="glossary-cta">
+  <section class="band band-ink section-wallpaper glossary-cta">
     <div class="container">
       <p>Full context in the <a href="/guide/" class="cta-link">Ultimate Guide</a>, or contribute a missing term on <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/issues" target="_blank" rel="noopener noreferrer" class="cta-link">GitHub</a>.</p>
     </div>
@@ -109,7 +111,6 @@ const jsonLd = [
   /* ── Hero ── */
   .page-hero {
     padding: 4rem 0 3rem;
-    border-bottom: 1px solid var(--color-border);
   }
   .hero-badge {
     display: inline-block;
@@ -117,22 +118,16 @@ const jsonLd = [
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
     padding: 0.25rem 0.7rem;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     margin-bottom: 1rem;
   }
-  h1 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--color-text-primary);
-    margin: 0 0 0.75rem;
-  }
+  .page-hero h1 { margin: 0 0 0.75rem; }
   .hero-subtitle {
     font-size: 1rem;
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
     max-width: 540px;
     margin: 0 0 2rem;
     line-height: 1.65;
@@ -150,28 +145,24 @@ const jsonLd = [
     justify-content: center;
     width: 2.1rem;
     height: 2.1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-control);
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
     text-decoration: none;
     transition: color 0.12s, border-color 0.12s, background 0.12s;
   }
   .alpha-link:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+    background: var(--text-primary);
   }
+  .alpha-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* ── Glossary section ── */
   .glossary-section {
     padding: 3rem 0 5rem;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
   }
 
   /* ── Letter group ── */
@@ -187,25 +178,27 @@ const jsonLd = [
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
-    padding: 0.55rem 0.9rem;
-    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
-    border-left: 3px solid var(--color-accent);
-    border-radius: 0 6px 6px 0;
+    padding: 0.6rem 1rem;
+    background: var(--band-ink-background, #191b1d);
+    border-left: 3px solid var(--action, var(--accent));
+    border-radius: var(--radius-control) var(--radius-control) 0 0;
+    margin-bottom: 0;
   }
   .letter-char {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--action, var(--accent));
     line-height: 1;
     min-width: 1ch;
   }
   .letter-count {
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--color-text-secondary);
-    background: color-mix(in srgb, var(--color-border) 80%, transparent);
-    padding: 0.1rem 0.4rem;
-    border-radius: 999px;
+    color: #f4efe4;
+    background: var(--band-ink-surface, #292c30);
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radius-control);
     margin-left: auto;
   }
 
@@ -214,8 +207,10 @@ const jsonLd = [
     display: flex;
     flex-direction: column;
     gap: 0;
-    border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
-    border-radius: 8px;
+    border: 1px solid var(--border);
+    border-top: 0;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    background: var(--surface-elevated);
     overflow: hidden;
   }
   .term-row {
@@ -226,7 +221,7 @@ const jsonLd = [
     border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
     border-left: 3px solid transparent;
     align-items: start;
-    transition: background 0.1s;
+    transition: background-color 120ms ease;
   }
   .term-row:last-child {
     border-bottom: none;
@@ -235,7 +230,7 @@ const jsonLd = [
     background: color-mix(in srgb, currentColor 4%, transparent);
   }
   .term-row:hover {
-    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
   }
 
   /* Category left-border colors */
@@ -259,18 +254,19 @@ const jsonLd = [
   .term-name {
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--text-primary);
     margin: 0;
     line-height: 1.35;
     word-break: break-word;
     font-family: inherit;
   }
   .term-link {
-    color: var(--color-accent);
-    text-decoration: none;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .term-link:hover {
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
   .term-meta {
     display: flex;
@@ -281,7 +277,7 @@ const jsonLd = [
   /* ── Term definition ── */
   .term-def {
     font-size: 0.875rem;
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
     margin: 0;
     line-height: 1.7;
   }
@@ -292,13 +288,13 @@ const jsonLd = [
     font-weight: 600;
     letter-spacing: 0.03em;
     padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    border-radius: var(--radius-control);
     white-space: nowrap;
   }
   .badge-sub {
     background: transparent;
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
   }
   .badge-cc       { background: #dbeafe; color: #1e40af; }
   .badge-ai       { background: #fce7f3; color: #9d174d; }
@@ -309,7 +305,7 @@ const jsonLd = [
   .badge-methodology { background: #f3f4f6; color: #374151; }
   .badge-arch     { background: #e0f2fe; color: #075985; }
   .badge-ops      { background: #f0fdf4; color: #14532d; }
-  .badge-default  { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+  .badge-default  { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
 
   :global(.dark) .badge-cc       { background: rgba(30,58,95,0.8);  color: #93c5fd; }
   :global(.dark) .badge-ai       { background: rgba(74,25,66,0.8);  color: #f9a8d4; }
@@ -337,16 +333,16 @@ const jsonLd = [
 
   /* ── CTA ── */
   .glossary-cta {
-    padding: 2rem 0 4rem;
+    padding: 3rem 0 4rem;
     text-align: center;
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    border-top: 1px solid var(--color-border);
   }
   .cta-link {
-    color: var(--color-accent);
-    text-decoration: none;
+    color: var(--accent);
     font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .cta-link:hover { text-decoration: underline; }
+  .cta-link:hover { text-decoration-thickness: 2px; }
 </style>

@@ -1,16 +1,17 @@
 ---
 import { START_PATHS } from '../../data/homepage-content'
+import ChapterLabel from '../global/ChapterLabel.astro'
 ---
 
-<section class="section start-here" id="start-here" aria-labelledby="start-title">
+<section class="section band band-base start-here" id="start-here" aria-labelledby="start-title">
   <div class="container">
-    <p class="section-kicker">Start here</p>
+    <ChapterLabel number="01" label="Start here" />
     <h2 class="section-title" id="start-title">Choose your next useful outcome</h2>
     <p class="section-subtitle">Three focused routes replace the wall of options. Pick the one that matches what you need today.</p>
 
     <div class="path-grid">
       {START_PATHS.map((path, index) => (
-        <a class="path-card" href={path.href}>
+        <a class="path-card brand-card brand-interactive-card" href={path.href}>
           <div class="path-topline">
             <span class="path-number">0{index + 1}</span>
             <span class="path-duration">{path.duration}</span>
@@ -56,24 +57,20 @@ import { START_PATHS } from '../../data/homepage-content'
     background: var(--surface-elevated);
     border: 1px solid var(--border);
     border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
     text-decoration: none !important;
-    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   }
 
-  .path-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-  }
+  /* Hover and focus come from .brand-interactive-card (portfolio): no lift, hard shadow. */
 
   .path-topline { display: flex; align-items: center; justify-content: space-between; }
   .path-number { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
-  .path-duration { padding: 0.25rem 0.55rem; color: var(--text-secondary); background: var(--bg-tertiary); border-radius: 999px; font-size: 0.75rem; font-weight: 650; }
+  .path-duration { padding: 0.25rem 0.55rem; color: var(--text-secondary); background: var(--bg-tertiary); border-radius: var(--radius-control); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; }
   .path-eyebrow { margin: 1.2rem 0 0.25rem; color: var(--text-muted); font-size: 0.78rem; font-weight: 650; text-transform: uppercase; }
   .path-card h3 { margin: 0; font-size: 1.25rem; }
   .path-description { margin: 0.55rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
-  .path-card ol { display: grid; gap: 0.45rem; margin: 1rem 0 1.25rem; padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.84rem; }
+  .path-card ol { display: grid; gap: 0.45rem; margin: 1rem 0 1.25rem; padding: 0.85rem 0 0; list-style: none; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.84rem; counter-reset: step; }
+  .path-card ol li { position: relative; padding-left: 1.6rem; counter-increment: step; }
+  .path-card ol li::before { content: counter(step); position: absolute; left: 0; top: 0.05em; color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
   .path-link { margin-top: auto; color: var(--accent); font-size: 0.85rem; font-weight: 700; }
 
   @media (max-width: 850px) {

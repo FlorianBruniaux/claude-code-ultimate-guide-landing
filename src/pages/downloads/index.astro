@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import { GUIDE_DOWNLOADS } from '../../data/homepage-content'
 
@@ -19,10 +20,11 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
     </div>
   </header>
 
-  <main class="section">
+  <main class="band band-base section-wallpaper download-band">
     <div class="container download-layout">
+      <ChapterLabel number="01" label="Editions" />
       {languages.map((language) => (
-        <section class="language-card" aria-labelledby={`language-${language.toLowerCase()}`}>
+        <section class="language-card brand-card" aria-labelledby={`language-${language.toLowerCase()}`}>
           <div>
             <span class="language-code">{language}</span>
             <h2 id={`language-${language.toLowerCase()}`}>{language === 'FR' ? 'Édition française' : 'English edition'}</h2>
@@ -37,28 +39,33 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
           </div>
         </section>
       ))}
+    </div>
+  </main>
+  <section class="band band-ink section-wallpaper release-band">
+    <div class="container download-layout">
       <aside class="release-note">
         <strong>Need a specific version?</strong>
         <span>Browse every published artifact and release note on GitHub.</span>
-        <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases" target="_blank" rel="noopener">View all releases →</a>
+        <a class="btn btn-quiet" href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases" target="_blank" rel="noopener">View all releases →</a>
       </aside>
     </div>
-  </main>
+  </section>
 </Layout>
 
 <style>
   .download-hero, .download-layout { max-width: 900px; margin-left: auto; margin-right: auto; }
   .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
   .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .download-band { padding: clamp(3rem, 6vw, 4.5rem) 0; }
   .download-layout { display: grid; gap: 1rem; }
-  .language-card { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem, 4vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
+  .language-card { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem, 4vw, 2rem); }
   .language-code { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; }
   .language-card h2 { margin: 0.25rem 0 0; font-size: 1.35rem; }
   .language-card p { margin: 0.3rem 0 0; color: var(--text-secondary); }
   .download-actions { display: flex; gap: 0.65rem; flex: 0 0 auto; }
-  .release-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1rem 1.2rem; color: var(--text-secondary); background: var(--bg-tertiary); border-radius: var(--border-radius-lg); font-size: 0.875rem; }
+  .release-band { padding: clamp(2rem, 5vw, 3rem) 0; }
+  .release-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 0; color: var(--text-secondary); font-size: 0.95rem; }
   .release-note strong { color: var(--text-primary); }
-  .release-note a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
   @media (max-width: 680px) {
     .language-card { align-items: flex-start; flex-direction: column; }
     .download-actions { width: 100%; }

@@ -4,7 +4,7 @@ import { MCQ_QUESTIONS } from '../../data/mcp-cli-quiz'
 const total = MCQ_QUESTIONS.length
 ---
 
-<section class="section mcq-section" id="mcp-cli-quiz" aria-label="MCP vs CLI quiz">
+<section class="section band band-paper section-wallpaper mcq-section" id="mcp-cli-quiz" aria-label="MCP vs CLI quiz">
   <div class="container">
     <div class="mcq-wrapper">
 
@@ -71,7 +71,6 @@ const total = MCQ_QUESTIONS.length
 
 <style>
 .mcq-section {
-  background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -82,7 +81,7 @@ const total = MCQ_QUESTIONS.length
 .mcq-intro-badge {
   display: inline-block; padding: 0.25rem 0.75rem;
   background: var(--bg-tertiary); border: 1px solid var(--border);
-  border-radius: 999px; font-size: 0.8rem; font-family: var(--font-mono);
+  border-radius: var(--radius-control); font-size: 0.8rem; font-family: var(--font-mono);
   color: var(--accent); font-weight: 500; margin-bottom: var(--space-lg);
 }
 .mcq-intro-title { font-size: 1.75rem; font-weight: 700; margin-bottom: var(--space-md); color: var(--text-primary); }
@@ -97,7 +96,7 @@ const total = MCQ_QUESTIONS.length
 .mcq-dimension { font-size: 0.75rem; padding: 0.2rem 0.6rem; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; color: var(--text-secondary); font-family: var(--font-mono); text-transform: capitalize; }
 .mcq-question-text { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); line-height: 1.5; margin-bottom: var(--space-xl); }
 .mcq-options { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-xl); }
-:global(.mcq-option) { width: 100%; text-align: left; padding: 0.875rem var(--space-lg); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius); color: var(--text-primary); font-size: 0.95rem; line-height: 1.4; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast); min-height: 44px; }
+:global(.mcq-option) { width: 100%; text-align: left; padding: 0.875rem var(--space-lg); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius); color: var(--text-primary); font-size: 0.95rem; line-height: 1.4; cursor: pointer; transition: border-color 150ms ease, background-color 150ms ease; min-height: 44px; }
 :global(.mcq-option:hover) { border-color: var(--accent); background: var(--bg-tertiary); }
 :global(.mcq-option--selected) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface-elevated)); }
 .mcq-nav { display: flex; gap: var(--space-md); justify-content: flex-end; }
@@ -105,7 +104,7 @@ const total = MCQ_QUESTIONS.length
 .mcq-results-title { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xl); color: var(--text-primary); }
 .mcq-section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: var(--space-sm); }
 .mcq-primary-wrap { margin-bottom: var(--space-xl); }
-.mcq-primary-card { padding: var(--space-xl); background: var(--surface-elevated); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); }
+.mcq-primary-card { padding: var(--space-xl); background: var(--surface-elevated); border: 1px solid var(--border); border-left: 3px solid var(--action); border-radius: var(--border-radius-lg); box-shadow: none; }
 :global(.mcq-result-header) { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
 :global(.mcq-result-icon) { font-size: 1.5rem; line-height: 1; }
 :global(.mcq-match-badge) { display: inline-block; font-size: 0.7rem; font-weight: 700; font-family: var(--font-mono); padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; }

@@ -5,11 +5,12 @@ import { getLatestGuideReferenceLinks } from '../../data/header-navigation'
 
 // The same "Latest guide references" the Resources menu panel shows.
 const guideAdditions = getLatestGuideReferenceLinks().slice(0, 3)
+import ChapterLabel from '../global/ChapterLabel.astro'
 ---
 
-<section class="section latest" aria-labelledby="latest-title">
+<section class="section band band-base latest" aria-labelledby="latest-title">
   <div class="container">
-    <p class="section-kicker">Latest writing</p>
+    <ChapterLabel number="03" label="Latest writing" />
     <h2 class="section-title" id="latest-title">What changed, and what I learned</h2>
     <p class="section-subtitle">New guide pages, recent essays and focused guides from Florian Bruniaux.</p>
 
@@ -22,7 +23,7 @@ const guideAdditions = getLatestGuideReferenceLinks().slice(0, 3)
         <ul>
           {guideAdditions.map((link) => (
             <li>
-              <a href={link.href}>
+              <a class="brand-interactive-card" href={link.href}>
                 <span class="addition-title">{link.label}</span>
                 <span class="addition-desc">{link.description}</span>
               </a>

@@ -1,0 +1,9 @@
+---
+// Chapter brick + dash label, copied from florian-portfolio@376d69b7 src/components/HomeSectionLabel.astro.
+// Styles live in src/styles/portfolio-system.css (.chapter-label, .chapter-brick).
+interface Props { number: string; label: string }
+const { number, label } = Astro.props
+---
+<div class="chapter-label">
+  <p><svg class="chapter-brick" viewBox="0 0 76 68" width="66" height="60" aria-hidden="true"><path d="m4 25 34-17 34 17-34 17Z" fill="#f97316" stroke="#171512" stroke-width="1.5"/><path d="M4 25v24l34 17V42Z" fill="#45413f" stroke="#171512" stroke-width="1.5"/><path d="m38 42 34-17v24L38 66Z" fill="#f97316" stroke="#171512" stroke-width="1.5"/><g fill="#ffad73" stroke="#171512" stroke-width="1.2"><path d="M24 13v5c0 5 13 5 13 0v-5M41 21v5c0 5 13 5 13 0v-5"/><ellipse cx="30.5" cy="13" rx="6.5" ry="3.5"/><ellipse cx="47.5" cy="21" rx="6.5" ry="3.5"/></g><text x="40" y="52" fill="#171512" font-family="IBM Plex Mono,monospace" font-size="16" font-weight="600" transform="skewY(-25) translate(0 23)">{number}</text></svg><span class="sr-only">{number} / </span><span>{label}</span></p>
+</div>

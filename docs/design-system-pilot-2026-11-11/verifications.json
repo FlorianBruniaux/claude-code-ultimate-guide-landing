@@ -1,0 +1,199 @@
+{
+  "light": {
+    "rest": {
+      "primary": {
+        "bg": "rgb(249, 115, 22)",
+        "color": "rgb(10, 10, 10)",
+        "border": "color(srgb 0.601569 0.286275 0.067451)",
+        "deco": "none",
+        "thick": "auto",
+        "w": 140.5,
+        "h": 48,
+        "outline": "none 3px rgb(10, 10, 10)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      },
+      "secondary": {
+        "bg": "rgb(41, 44, 48)",
+        "color": "rgb(245, 240, 230)",
+        "border": "color(srgb 0.581176 0.573647 0.555137)",
+        "deco": "none",
+        "thick": "auto",
+        "w": 176.8125,
+        "h": 44,
+        "outline": "none 3px rgb(245, 240, 230)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      },
+      "quiet": {
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 173, 115)",
+        "border": "rgba(0, 0, 0, 0)",
+        "deco": "underline",
+        "thick": "1px",
+        "w": 96.15625,
+        "h": 44,
+        "outline": "none 3px rgb(255, 173, 115)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      }
+    },
+    "contrast": {
+      "primaryText": 7.06,
+      "secondaryText": 12.35,
+      "quietOnPage": 1.61,
+      "bodyText": 17.4
+    },
+    "hover": {
+      "primary": {
+        "bg": "rgb(233, 101, 11)",
+        "border": "color(srgb 0.601569 0.286275 0.067451)",
+        "thick": "auto",
+        "sameSize": true
+      },
+      "secondary": {
+        "bg": "color(srgb 0.26149 0.233255 0.219765)",
+        "border": "rgb(255, 173, 115)",
+        "thick": "auto",
+        "sameSize": true
+      },
+      "quiet": {
+        "bg": "rgba(0, 0, 0, 0)",
+        "border": "rgba(0, 0, 0, 0)",
+        "thick": "2px",
+        "sameSize": true
+      }
+    },
+    "keyboard": {
+      "reachedPrimary": true,
+      "focus": "solid 2px rgb(255, 173, 115)"
+    },
+    "search": {
+      "inputFound": true,
+      "focusedInput": true,
+      "results": 25
+    },
+    "reducedMotionTransition": "1e-05s"
+  },
+  "dark": {
+    "rest": {
+      "primary": {
+        "bg": "rgb(249, 115, 22)",
+        "color": "rgb(10, 10, 10)",
+        "border": "color(srgb 0.601569 0.286275 0.067451)",
+        "deco": "none",
+        "thick": "auto",
+        "w": 140.5,
+        "h": 48,
+        "outline": "none 3px rgb(10, 10, 10)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      },
+      "secondary": {
+        "bg": "rgb(41, 44, 48)",
+        "color": "rgb(245, 240, 230)",
+        "border": "color(srgb 0.581176 0.573647 0.555137)",
+        "deco": "none",
+        "thick": "auto",
+        "w": 176.8125,
+        "h": 44,
+        "outline": "none 3px rgb(245, 240, 230)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      },
+      "quiet": {
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 173, 115)",
+        "border": "rgba(0, 0, 0, 0)",
+        "deco": "underline",
+        "thick": "1px",
+        "w": 96.15625,
+        "h": 44,
+        "outline": "none 3px rgb(255, 173, 115)",
+        "transition": "0.15s, 0.15s, 0.15s",
+        "font": "\"IBM Plex Sans\""
+      }
+    },
+    "contrast": {
+      "primaryText": 7.06,
+      "secondaryText": 12.35,
+      "quietOnPage": 10.07,
+      "bodyText": 16.19
+    },
+    "hover": {
+      "primary": {
+        "bg": "rgb(233, 101, 11)",
+        "border": "color(srgb 0.601569 0.286275 0.067451)",
+        "thick": "auto",
+        "sameSize": true
+      },
+      "secondary": {
+        "bg": "color(srgb 0.26149 0.233255 0.219765)",
+        "border": "rgb(255, 173, 115)",
+        "thick": "auto",
+        "sameSize": true
+      },
+      "quiet": {
+        "bg": "rgba(0, 0, 0, 0)",
+        "border": "rgba(0, 0, 0, 0)",
+        "thick": "2px",
+        "sameSize": true
+      }
+    },
+    "keyboard": {
+      "reachedPrimary": true,
+      "focus": "solid 2px rgb(255, 173, 115)"
+    },
+    "search": {
+      "inputFound": true,
+      "focusedInput": true,
+      "results": 25
+    },
+    "reducedMotionTransition": "1e-05s"
+  },
+  "copy": {
+    "clipboard": "claude \"Fetch and follow the onboarding instructions from: https://raw.githubuse",
+    "label": "Copied!",
+    "className": "copy-btn astro-wbbuu4e2 copied"
+  },
+  "downloads": [
+    {
+      "text": "Download PDF",
+      "href": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.pdf",
+      "cls": "btn btn-primary astro-i2rmdg4n",
+      "status": 200
+    },
+    {
+      "text": "Download EPUB",
+      "href": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export.epub",
+      "cls": "btn btn-secondary astro-i2rmdg4n",
+      "status": 200
+    },
+    {
+      "text": "Télécharger PDF",
+      "href": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.pdf",
+      "cls": "btn btn-primary astro-i2rmdg4n",
+      "status": 200
+    },
+    {
+      "text": "Télécharger EPUB",
+      "href": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/latest/download/guide-export-fr.epub",
+      "cls": "btn btn-secondary astro-i2rmdg4n",
+      "status": 200
+    }
+  ],
+  "overflow390": {
+    "/": 0,
+    "/downloads/": 0,
+    "/guide/ultimate-guide/01-quick-start/": 0,
+    "/learning/": 0
+  },
+  "multiPrimary": {
+    "/": [],
+    "/downloads/": [],
+    "/learning/": [],
+    "/whitepapers/": [],
+    "/cheatsheet/": [],
+    "/examples/": []
+  }
+}

@@ -56,7 +56,7 @@ const footerLinks = {
 const ecosystemProjects = getFooterEcosystemProjects()
 ---
 
-<footer class:list={["border-t border-border bg-background-secondary", compact ? 'mt-12' : 'mt-24']}>
+<footer class:list={["site-footer-band", compact ? 'mt-12' : 'mt-24']}>
   <div class:list={["mx-auto max-w-content px-4", compact ? 'py-8' : 'py-12']}>
     {compact && (
       <div class="compact-footer">
@@ -85,19 +85,19 @@ const ecosystemProjects = getFooterEcosystemProjects()
         href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center px-5 py-2.5 rounded-lg bg-accent text-white font-medium hover:bg-accent-hover transition-colors"
+        class="btn btn-primary"
       >
         Read the Guide &rarr;
       </a>
     </div>
 
     <!-- Footer Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-8 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
       <!-- Brand -->
       <div class="col-span-2 md:col-span-1">
         <a href="/" class="flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity">
           <svg height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z" fill="#D97757" fill-rule="nonzero"/></svg>
-          <span class="text-text-primary font-semibold text-sm">Code Guide</span>
+          <span class="footer-brand-name">Claude Code Guide</span>
         </a>
         <p class="text-text-muted text-sm leading-relaxed">
           Claude Code from beginner to power user.
@@ -105,8 +105,8 @@ const ecosystemProjects = getFooterEcosystemProjects()
       </div>
 
       {Object.entries(footerLinks).map(([section, links]) => (
-        <div>
-          <h3 class="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">
+        <div class={`footer-col footer-col--${section}`}>
+          <h3 class="footer-heading">
             {section.charAt(0).toUpperCase() + section.slice(1)}
           </h3>
           <ul class="space-y-2">
@@ -114,7 +114,7 @@ const ecosystemProjects = getFooterEcosystemProjects()
               <li>
                 <a
                   href={link.href}
-                  class="text-sm text-text-muted hover:text-accent transition-colors"
+                  class="footer-link"
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                 >
@@ -126,14 +126,20 @@ const ecosystemProjects = getFooterEcosystemProjects()
         </div>
       ))}
 
-      <div class="col-span-2">
-        <h3 class="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Ecosystem</h3>
+    </div>
+
+    <!-- Ecosystem: collapsed by default, as "Explore my ecosystem" in the portfolio footer -->
+    <details class="footer-ecosystem-toggle mb-8">
+      <summary>
+        <span>Explore the ecosystem</span>
+        <span class="footer-ecosystem-plus" aria-hidden="true">+</span>
+      </summary>
         <ul class="footer-ecosystem">
           {ecosystemProjects.map((project) => (
             <li>
               <a
                 href={project.href}
-                class="text-sm text-text-muted hover:text-accent transition-colors"
+                class="footer-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 title={project.title}
@@ -144,8 +150,7 @@ const ecosystemProjects = getFooterEcosystemProjects()
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+    </details>
       </>
     )}
 
@@ -172,6 +177,67 @@ const ecosystemProjects = getFooterEcosystemProjects()
 </footer>
 
 <style>
+  /* Portfolio footer (florian-portfolio@376d69b7 Footer.astro): mono orange headings,
+     ivory links that underline on hover, ecosystem behind a full-width disclosure. */
+  .footer-brand-name {
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-heading {
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    color: var(--text-primary) !important;
+    font-size: 0.875rem;
+    text-decoration: none !important;
+  }
+
+  .footer-link:hover,
+  .footer-link:focus-visible {
+    color: var(--accent) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.2em;
+  }
+
+  .footer-ecosystem-toggle {
+    border-block: 1px solid var(--border);
+  }
+
+  .footer-ecosystem-toggle > summary {
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .footer-ecosystem-toggle > summary::-webkit-details-marker { display: none; }
+  .footer-ecosystem-plus { color: var(--accent); font-size: 1.25rem; transition: transform 150ms ease; }
+  .footer-ecosystem-toggle[open] .footer-ecosystem-plus { transform: rotate(45deg); }
+  .footer-ecosystem-toggle > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .footer-ecosystem-toggle > .footer-ecosystem { padding-bottom: 1.25rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-ecosystem-plus { transition: none; }
+  }
+
   .compact-footer {
     display: flex;
     align-items: center;
@@ -225,5 +291,10 @@ const ecosystemProjects = getFooterEcosystemProjects()
   @media (max-width: 720px) {
     .compact-footer { align-items: flex-start; flex-direction: column; }
     .compact-links { justify-content: flex-start; }
+  }
+  @media (min-width: 768px) {
+    .footer-col--resources { grid-column: span 2; }
+    .footer-col--resources ul { columns: 2; column-gap: 2rem; }
+    .footer-col--resources ul > li { break-inside: avoid; margin-top: 0 !important; margin-bottom: 0.5rem !important; }
   }
 </style>

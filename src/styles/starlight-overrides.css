@@ -11,23 +11,23 @@
 /* ── Light mode (Starlight default) ──────────────────────────────────── */
 :root {
   /* Accent / brand color */
-  --sl-color-accent-low:  #fef7f0;   /* bg-tint-warm */
-  --sl-color-accent:      #d4520a;   /* our --accent */
-  --sl-color-accent-high: #ea580c;   /* our --accent-hover */
+  --sl-color-accent-low:  #fbf9f4;   /* bg-tint-warm */
+  --sl-color-accent:      #a63f05;   /* our --accent */
+  --sl-color-accent-high: #8f3606;   /* our --accent-hover */
 
   /* Text */
-  --sl-color-white:   #1a1207;       /* our --text-primary */
-  --sl-color-gray-1:  #4a3f31;       /* --text-secondary */
-  --sl-color-gray-2:  #6b6053;       /* --text-muted */
-  --sl-color-gray-3:  #9a8f83;
+  --sl-color-white:   #0a0a0a;       /* our --text-primary */
+  --sl-color-gray-1:  #45413f;       /* --text-secondary */
+  --sl-color-gray-2:  #69615a;       /* --text-muted */
+  --sl-color-gray-3:  #8a8079;
   --sl-color-gray-4:  #d4cdc5;       /* --border */
-  --sl-color-gray-5:  #f0e8df;       /* --bg-tertiary */
-  --sl-color-gray-6:  #fef7f0;       /* --bg-secondary */
-  --sl-color-black:   #f5f0eb;       /* --bg-primary (inverted for sl naming) */
+  --sl-color-gray-5:  #eae5dc;       /* --bg-tertiary */
+  --sl-color-gray-6:  #fbf9f4;       /* --bg-secondary */
+  --sl-color-black:   #f3f0e9;       /* --bg-primary (inverted for sl naming) */
 
   /* Typography */
-  --sl-font:           system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --sl-font-mono:      ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --sl-font:           'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-mono:      'IBM Plex Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   --sl-text-base:      1rem;
   --sl-line-height:    1.7;
 
@@ -37,25 +37,25 @@
   --sl-content-pad-x:     1.5rem;
 
   /* Border radius */
-  --sl-border-radius:     8px;
-  --sl-border-radius-lg:  12px;
+  --sl-border-radius:     6px;
+  --sl-border-radius-lg:  8px;
 }
 
 /* ── Dark mode ────────────────────────────────────────────────────────── */
 :root[data-theme='dark'],
 [data-theme='dark'] {
-  --sl-color-accent-low:  #1e1e1e;   /* bg-tertiary dark */
-  --sl-color-accent:      #f97316;   /* --accent dark */
-  --sl-color-accent-high: #fb923c;   /* --accent-hover dark */
+  --sl-color-accent-low:  #292929;   /* bg-tertiary dark */
+  --sl-color-accent:      #ffb17a;   /* --accent dark */
+  --sl-color-accent-high: #ffd0ad;   /* --accent-hover dark */
 
-  --sl-color-white:   #e5e5e5;       /* --text-primary dark */
-  --sl-color-gray-1:  #a3a3a3;       /* --text-secondary dark */
-  --sl-color-gray-2:  #8a8a8a;       /* --text-muted dark */
-  --sl-color-gray-3:  #525252;
-  --sl-color-gray-4:  #2a2a2a;       /* --border dark */
-  --sl-color-gray-5:  #1e1e1e;       /* --bg-tertiary dark */
-  --sl-color-gray-6:  #141414;       /* --bg-secondary dark */
-  --sl-color-black:   #0a0a0a;       /* --bg-primary dark */
+  --sl-color-white:   #f3f0e9;       /* --text-primary dark */
+  --sl-color-gray-1:  #dedbd5;       /* --text-secondary dark */
+  --sl-color-gray-2:  #c4c1bb;       /* --text-muted dark */
+  --sl-color-gray-3:  #6b6763;
+  --sl-color-gray-4:  #444444;       /* --border dark */
+  --sl-color-gray-5:  #292929;       /* --bg-tertiary dark */
+  --sl-color-gray-6:  #202020;       /* --bg-secondary dark */
+  --sl-color-black:   #141414;       /* --bg-primary dark */
 }
 
 /* ── Layout adjustments ───────────────────────────────────────────────── */
@@ -122,14 +122,21 @@ starlight-menu-button[aria-expanded='true'] .open-menu {
   line-height: 1.3;
 }
 
-.sl-markdown-content h1 { margin-top: 0; font-size: 2rem; }
+/* Condensed display face for h1-h3 (portfolio preset); sizes compensate the narrower glyphs. */
+.sl-markdown-content :is(h1, h2, h3) {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.sl-markdown-content h1 { margin-top: 0; font-size: 2.4rem; }
 .sl-markdown-content h2 {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   margin-top: 2.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
-.sl-markdown-content h3 { font-size: 1.25rem; margin-top: 2rem; }
+.sl-markdown-content h3 { font-size: 1.5rem; margin-top: 2rem; }
 .sl-markdown-content h4 { font-size: 1.1rem; margin-top: 1.5rem; }
 
 /* Paragraphs */
@@ -270,11 +277,12 @@ starlight-menu-button[aria-expanded='true'] .open-menu {
   border-right: 1px solid var(--border) !important;
 }
 
-/* Active sidebar link — white text on orange background.
+/* Active sidebar link: page background colour on the theme link colour
+ * (ivory on #a63f05 in light, charcoal on #ffb17a in dark).
  * Use #starlight__sidebar to beat Starlight's .sidebar-content specificity. */
 #starlight__sidebar a[aria-current='page'],
 #starlight__sidebar a[aria-current='page'] span {
-  color: #ffffff !important;
+  color: var(--sl-color-black) !important;
   font-weight: 600;
 }
 
@@ -942,12 +950,12 @@ starlight-toc {
 
   .sl-markdown-content h2 {
     margin-top: 2rem;
-    font-size: 1.375rem;
+    font-size: 1.65rem;
   }
 
   .sl-markdown-content h3 {
     margin-top: 1.75rem;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
   }
 
   .sl-markdown-content blockquote {
@@ -992,6 +1000,35 @@ starlight-toc {
   margin: 1.5rem 0;
 }
 
+/* One surface per block: the inline-code chip must not paint the inside of a code block,
+ * and the terminal title bar sits on the same surface with a hairline under it. */
+.sl-markdown-content pre code {
+  padding: 0;
+  background: transparent !important;
+  border: 0;
+}
+
+.expressive-code .frame {
+  --ec-frm-trmTtbDotsFg: var(--text-muted);
+  --ec-frm-trmTtbDotsOpa: 0.7;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: none !important;
+}
+
+.expressive-code .frame .header {
+  background: var(--bg-tertiary) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.expressive-code .frame pre,
+.sl-markdown-content .expressive-code pre {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
 .expressive-code .copy {
   opacity: 0.6;
   transition: opacity 150ms ease;
@@ -1015,38 +1052,50 @@ starlight-toc {
 .hero .hero-html h1,
 .hero > :first-child > h1,
 [data-page-type='splash'] h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--sl-color-accent), var(--sl-color-accent-high));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
-/* Hero action buttons — fix text visibility */
+/* Starlight link buttons follow the shared action levels (components.css .btn-*). */
 .sl-link-button[data-variant='primary'],
 .hero .sl-link-button.primary,
 a.sl-link-button.primary {
-  background: var(--sl-color-accent) !important;
-  color: #ffffff !important;
-  border-color: transparent !important;
+  min-height: 48px;
+  background: var(--action) !important;
+  color: var(--action-ink) !important;
+  border-color: color-mix(in srgb, var(--action-ink) 40%, var(--action)) !important;
+  border-radius: var(--radius-control);
   font-weight: 600;
 }
 
-.sl-link-button[data-variant='primary']:hover,
-.hero .sl-link-button.primary:hover,
-a.sl-link-button.primary:hover {
-  background: var(--sl-color-accent-high) !important;
-  color: #ffffff !important;
+@media (hover: hover) {
+  .sl-link-button[data-variant='primary']:hover,
+  .hero .sl-link-button.primary:hover,
+  a.sl-link-button.primary:hover {
+    background: var(--action-hover) !important;
+    color: var(--action-ink) !important;
+  }
 }
 
 .sl-link-button[data-variant='secondary'],
 .hero .sl-link-button.secondary,
 a.sl-link-button.secondary {
-  color: var(--sl-color-accent) !important;
-  border-color: var(--sl-color-accent) !important;
-  background: transparent !important;
+  min-height: 44px;
+  color: var(--text-primary) !important;
+  border-color: color-mix(in srgb, var(--text-primary) 56%, var(--bg-primary)) !important;
+  background: var(--surface-elevated) !important;
+  border-radius: var(--radius-control);
+}
+
+@media (hover: hover) {
+  .sl-link-button[data-variant='secondary']:hover,
+  .hero .sl-link-button.secondary:hover,
+  a.sl-link-button.secondary:hover {
+    border-color: var(--accent) !important;
+    background: color-mix(in srgb, var(--surface-elevated) 88%, var(--accent)) !important;
+  }
 }
 
 /* Tighten splash hero spacing */
@@ -1086,4 +1135,331 @@ a.sl-link-button.secondary {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* ══ Reading pages: portfolio article layout ═══════════════════════════════
+ * Source: florian-portfolio@376d69b7 src/styles/reading.css (.reading-page).
+ * - charcoal hatched title band closed by the orange line
+ * - "On this page" as a charcoal card with an orange top line
+ * - h2 with a short orange bar on a hairline, h3 with an accent left rule
+ * - tinted quotes, bordered tables, accent list markers
+ * Ink tokens are redeclared on the band and the card, so nested rules follow. */
+.main-pane main > .content-panel:first-child:not(:has(.hero)),
+.right-sidebar-panel .guide-toc-panel {
+  --bg-primary: #191b1d;
+  --bg-secondary: #292c30;
+  --bg-tertiary: #34373b;
+  --surface-elevated: #292c30;
+  --border: #686a6c;
+  --border-light: #3b3e42;
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+  --sl-color-white: #f5f0e6;
+  --sl-color-gray-2: #c7bfb2;
+  --sl-color-gray-3: #c7bfb2;
+  color: var(--text-primary);
+}
+
+.main-pane main > .content-panel:first-child:not(:has(.hero)) {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem);
+  background: #191b1d;
+  border-top: 0;
+  border-bottom: 3px solid var(--action);
+}
+
+.main-pane main > .content-panel:first-child:not(:has(.hero))::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: var(--section-pattern-opacity, 0.09);
+}
+
+.main-pane main > .content-panel:first-child:not(:has(.hero)) h1#_top {
+  max-width: 32ch;
+  margin-block: 0 0.75rem;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.06;
+}
+
+.main-pane main > .content-panel:first-child:not(:has(.hero)) .last-updated {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Running text */
+.sl-markdown-content {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.sl-markdown-content > :is(h2, .sl-heading-wrapper.level-h2) {
+  position: relative;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+}
+
+.sl-markdown-content > :is(h2, .sl-heading-wrapper.level-h2)::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--action);
+}
+
+/* A Markdown rule right before a section title would double the separator: the title rule carries it. */
+.sl-markdown-content > hr:has(+ :is(h2, .sl-heading-wrapper.level-h2)) { display: none; }
+
+/* Starlight wraps headings for the anchor link: the inner heading drops its own rule. */
+.sl-markdown-content .sl-heading-wrapper.level-h2 > h2 {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+}
+
+.sl-markdown-content > .sl-heading-wrapper.level-h2:first-child { margin-top: 0; }
+
+.sl-markdown-content > :is(h3, .sl-heading-wrapper.level-h3) {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.sl-markdown-content blockquote {
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface-elevated));
+  color: var(--text-primary);
+}
+
+.sl-markdown-content table {
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+}
+
+.sl-markdown-content th { background: var(--bg-tertiary); }
+.sl-markdown-content tr:nth-child(even) td { background: var(--surface-elevated); }
+.sl-markdown-content :is(ul) > li::marker { color: var(--accent); }
+
+/* Left navigation: current page as in the portfolio menu (inset orange rule). */
+#starlight__sidebar a[aria-current='page'] {
+  background: color-mix(in srgb, var(--action) 12%, var(--bg-primary)) !important;
+  box-shadow: inset 3px 0 var(--action);
+}
+
+#starlight__sidebar a[aria-current='page'],
+#starlight__sidebar a[aria-current='page'] span {
+  color: var(--text-primary) !important;
+}
+
+#starlight__sidebar .top-level > li > details > summary .group-label,
+#starlight__sidebar .top-level > li > details > summary .group-label > span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* "On this page": charcoal card, orange top line, mono title. */
+@media (min-width: 72rem) {
+  .right-sidebar-panel .guide-toc-panel {
+    flex: 0 1 auto;
+    max-height: calc(100% - 1.25rem);
+    padding: 0.9rem 0.75rem 0.75rem;
+    background: #292c30;
+    border: 1px solid #3b3e42;
+    border-top: 3px solid var(--action);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .right-sidebar-panel .guide-toc h2 {
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  .right-sidebar-panel .guide-toc-icon-btn { background: transparent; }
+}
+
+/* Navigation links read as text; the link colour marks hover and the current page. */
+#starlight__sidebar a:not([aria-current='page']) {
+  color: var(--text-secondary);
+}
+
+#starlight__sidebar a:not([aria-current='page']):hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Room between the charcoal title band and the first block of the page. */
+.main-pane main > .content-panel:first-child:not(:has(.hero)) + .content-panel {
+  padding-top: 2.5rem !important;
+}
+
+/* Splash portal (/guide/): the Starlight hero becomes the charcoal band, painted
+ * full-bleed with a side shadow; the content below stays on ivory. */
+.main-pane .hero {
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+  --surface-elevated: #292c30;
+  --border: #686a6c;
+  --sl-color-white: #f5f0e6;
+  --sl-color-gray-2: #c7bfb2;
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 2.5rem;
+  padding-block: clamp(2rem, 4vw, 3rem);
+  background: #191b1d;
+  box-shadow: 0 0 0 100vmax #191b1d;
+  clip-path: inset(0 -100vmax);
+  color: var(--text-primary);
+}
+
+/* Full-bleed orange line: a clipped box-shadow paints sideways without widening the page. */
+.main-pane .hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--action);
+  box-shadow: 0 0 0 100vmax var(--action);
+  clip-path: inset(0 -100vmax);
+}
+
+.main-pane .hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+
+.main-pane .hero :is(h1, p) { color: var(--text-primary); -webkit-text-fill-color: currentColor; }
+
+/* One principal action per group: the following hero actions use the secondary level. */
+.main-pane .hero .sl-link-button:not(:first-child) {
+  background: #292c30 !important;
+  color: #f5f0e6 !important;
+  border-color: color-mix(in srgb, #f5f0e6 56%, #191b1d) !important;
+}
+
+@media (hover: hover) {
+  .main-pane .hero .sl-link-button:not(:first-child):hover {
+    background: color-mix(in srgb, #292c30 88%, #ffad73) !important;
+    border-color: #ffad73 !important;
+  }
+}
+
+/* Starlight LinkCard and Card follow the portfolio card contract (brandbook.css .brand-interactive-card). */
+.sl-markdown-content :is(.sl-link-card, .card) {
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  background: var(--surface-elevated);
+  box-shadow: none;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.sl-markdown-content .sl-link-card:is(:hover, :focus-within) {
+  border-color: var(--accent);
+  background: var(--surface-elevated);
+  box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border);
+}
+
+:root:not([data-theme='dark']) .sl-markdown-content .sl-link-card:is(:hover, :focus-within) {
+  border-color: #0a0a0a;
+  background: #f97316;
+  box-shadow: inset 0 0 0 1px #0a0a0a, 4px 4px 0 #0a0a0a;
+}
+
+:root:not([data-theme='dark']) .sl-markdown-content .sl-link-card:is(:hover, :focus-within) :is(.title, .description, svg, a) {
+  color: #0a0a0a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-markdown-content :is(.sl-link-card, .card) { transition: none; }
+}
+
+/* ══ Left guide navigation: charcoal card, as the portfolio reading TOC ══════
+ * (reading.css .reading-toc: charcoal surface, orange top line, mono labels,
+ * current item with an inset orange rule and a 12 % orange tint). Ink tokens
+ * are redeclared so every nested rule above follows. */
+#starlight__sidebar {
+  --bg-primary: #292c30;
+  --bg-secondary: #34373b;
+  --bg-tertiary: #34373b;
+  --surface-elevated: #34373b;
+  --border: #4a4d51;
+  --border-light: #3b3e42;
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+  --sl-color-white: #f5f0e6;
+  --sl-color-gray-1: #ded8cd;
+  --sl-color-gray-2: #c7bfb2;
+  --sl-color-gray-5: #3b3e42;
+  --sl-color-gray-6: #292c30;
+  --sl-color-black: #292c30;
+  --sl-color-hairline-light: #3b3e42;
+  --sl-color-text-accent: #ffad73;
+}
+
+#starlight__sidebar .sidebar-content {
+  background: #292c30 !important;
+  border-right: 0 !important;
+  color: var(--text-primary);
+}
+
+#starlight__sidebar a[aria-current='page'] {
+  background: color-mix(in srgb, #f97316 18%, #292c30) !important;
+  box-shadow: inset 3px 0 #f97316;
+}
+
+#starlight__sidebar :is(summary, .caret) { color: var(--text-secondary); }
+
+@media (min-width: 50rem) {
+  /* The card floats on the ivory page, with the same gutter as the right TOC card. */
+  /* #starlight__sidebar is the pane itself, so its tokens are already ink: let the page show through. */
+  .sidebar-pane {
+    background: transparent !important;
+    border-inline-end: 0 !important;
+    padding: 1.25rem 0.75rem 1.25rem 1rem;
+  }
+
+  #starlight__sidebar .sidebar-content {
+    min-height: calc(100% - 0.25rem);
+    padding: 0.9rem 0.75rem 1.5rem;
+    border: 1px solid #3b3e42 !important;
+    border-top: 3px solid #f97316 !important;
+    border-radius: var(--border-radius-lg);
+  }
 }

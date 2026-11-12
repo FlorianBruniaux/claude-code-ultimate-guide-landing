@@ -3,6 +3,7 @@
 // Source: ../claude-code-ultimate-guide/guide/ecosystem/mcp-vs-cli.md
 // When updating the guide section, update this page too.
 // Checked by: scripts/check-landing-sync.sh (section 7)
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'MCP vs CLI in Claude Code: When to Use Each | Guide'
@@ -28,7 +29,7 @@ const jsonLd = [
 <Layout title={title} description={description} ogType="article" jsonLd={jsonLd}>
 
   <!-- Hero -->
-  <header class="mcp-hero">
+  <header class="page-hero mcp-hero">
     <div class="container">
       <div class="mcp-hero-breadcrumb">
         <a href="/">&larr; Guide</a>
@@ -49,7 +50,7 @@ const jsonLd = [
   </header>
 
   <!-- TL;DR callout -->
-  <section class="mcp-section mcp-section--tldr">
+  <section class="mcp-section band band-base mcp-section--tldr">
     <div class="container">
       <div class="tldr-callout">
         <div class="tldr-label">TL;DR</div>
@@ -61,8 +62,9 @@ const jsonLd = [
   </section>
 
   <!-- Section 1: Four Questions to Decide -->
-  <section class="mcp-section" id="decisions">
+  <section class="mcp-section band band-paper section-wallpaper" id="decisions">
     <div class="container">
+      <ChapterLabel number="01" label="Decisions" />
       <div class="mcp-section-header">
         <h2>Four questions to decide</h2>
         <p>Answer these in order. They rank from most to least constraining.</p>
@@ -157,8 +159,9 @@ const jsonLd = [
   </section>
 
   <!-- Section 2: Practitioner Quotes -->
-  <section class="mcp-section mcp-section--alt" id="tradeoffs">
+  <section class="mcp-section band band-ink section-wallpaper mcp-section--alt" id="tradeoffs">
     <div class="container">
+      <ChapterLabel number="02" label="Tradeoffs" />
       <div class="mcp-section-header">
         <h2>What practitioners say</h2>
         <p>Representative perspectives from experienced Claude Code users in production.</p>
@@ -184,8 +187,9 @@ const jsonLd = [
   </section>
 
   <!-- Section 3: Guidance by Situation -->
-  <section class="mcp-section" id="situations">
+  <section class="mcp-section band band-paper section-wallpaper" id="situations">
     <div class="container">
+      <ChapterLabel number="03" label="Situations" />
       <div class="mcp-section-header">
         <h2>Guidance by situation</h2>
         <p>Directional defaults, not hard rules. Your context may justify a different choice.</p>
@@ -335,8 +339,9 @@ const jsonLd = [
   </section>
 
   <!-- Section 4: Tooling -->
-  <section class="mcp-section mcp-section--alt">
+  <section class="mcp-section band band-base mcp-section--alt">
     <div class="container">
+      <ChapterLabel number="04" label="Tooling" />
       <div class="mcp-section-header">
         <h2>Tools in this space</h2>
         <p>Three tools addressing the MCP-vs-CLI boundary directly.</p>
@@ -363,7 +368,7 @@ const jsonLd = [
   </section>
 
   <!-- CTA -->
-  <section class="mcp-section mcp-section--cta">
+  <section class="mcp-section band band-accent section-wallpaper mcp-section--cta">
     <div class="container">
       <div class="cta-block">
         <h2>Ready to go deeper?</h2>
@@ -381,9 +386,6 @@ const jsonLd = [
     /* ── HERO ─────────────────────────────────────────────────────────────── */
     .mcp-hero {
       padding: var(--space-3xl) 0 var(--space-2xl);
-      background-color: var(--bg-primary);
-      background-image: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
-      border-bottom: 1px solid var(--border);
     }
 
     .mcp-hero-breadcrumb {
@@ -398,15 +400,12 @@ const jsonLd = [
     .mcp-hero-breadcrumb a {
       color: var(--accent);
       text-decoration: none;
-      transition: color 0.15s ease;
+      transition: color 150ms ease;
     }
 
     .mcp-hero-breadcrumb a:hover { color: var(--accent-hover); }
 
     .mcp-hero h1 {
-      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
       margin-bottom: var(--space-md);
     }
 
@@ -434,37 +433,37 @@ const jsonLd = [
       display: inline-block;
       padding: 0.35rem 0.9rem;
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius-control);
       font-size: 0.85rem;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       text-decoration: none;
-      background: var(--bg-secondary);
-      transition: all 0.15s ease;
+      background: transparent;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 150ms ease, color 150ms ease;
     }
 
     .mcp-nav-pill:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--bg-primary);
+      color: var(--bg-primary);
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+    }
+
+    .mcp-nav-pill:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
     /* ── SECTIONS ─────────────────────────────────────────────────────────── */
     .mcp-section {
       padding: var(--space-3xl) 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mcp-section--alt {
-      background-color: var(--bg-secondary);
     }
 
     .mcp-section--tldr {
       padding: var(--space-xl) 0;
     }
 
-    .mcp-section--cta {
-      border-bottom: none;
-    }
 
     .mcp-section-header {
       margin-bottom: var(--space-2xl);
@@ -474,9 +473,6 @@ const jsonLd = [
       font-size: 1.75rem;
       font-weight: 700;
       margin-bottom: var(--space-sm);
-      padding-bottom: var(--space-sm);
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
     }
 
     .mcp-section-header p {
@@ -487,7 +483,7 @@ const jsonLd = [
 
     /* ── TLDR CALLOUT ─────────────────────────────────────────────────────── */
     .tldr-callout {
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: var(--border-radius-lg);
@@ -540,7 +536,7 @@ const jsonLd = [
       border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
     }
 
     .ws-num {
@@ -553,7 +549,7 @@ const jsonLd = [
       color: #fff;
       font-weight: 700;
       font-size: 0.9rem;
-      border-radius: 50%;
+      border-radius: var(--radius-control);
       flex-shrink: 0;
     }
 
@@ -642,7 +638,7 @@ const jsonLd = [
     .practitioner-quote {
       margin: 0;
       padding: var(--space-lg) var(--space-xl);
-      border-left: 4px solid var(--accent-tertiary, #3b82f6);
+      border-left: 4px solid var(--accent);
       background: var(--surface-elevated);
       border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
     }
@@ -687,7 +683,7 @@ const jsonLd = [
       align-items: center;
       justify-content: space-between;
       color: var(--text-primary);
-      transition: background 0.15s ease;
+      transition: background-color 150ms ease;
     }
 
     summary::-webkit-details-marker { display: none; }

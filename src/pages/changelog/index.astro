@@ -1,12 +1,12 @@
 ---
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
-import ChangelogItem from '../../components/changelog/ChangelogItem.astro'
+import ReleaseEntry from '../../components/changelog/ReleaseEntry.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import Layout from '../../layouts/Layout.astro'
 import {
   buildGuideChangelogDisplay,
-  guideChangelogGitHubUrl,
   parseGuideChangelog,
 } from '../../utils/guide-changelog'
 
@@ -54,90 +54,45 @@ const description = 'Every documented update to the Claude Code Ultimate Guide, 
     </div>
   </header>
 
-  <div class="changelog-page">
+  <nav class="version-nav band band-paper section-wallpaper" aria-label="Jump to a version">
     <div class="container">
+      <p class="nav-label">Jump to</p>
+      <ul class="version-chips">
+        {recentReleases.map((release) => (
+          <li><a href={`#${release.anchor}`}>{release.version === 'Unreleased' ? 'Unreleased' : `v${release.version}`}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="changelog-page band band-ink section-wallpaper">
+    <div class="container">
+      <ChapterLabel number="01" label="History" />
       <div class="history-heading">
         <h2>Release history</h2>
         <p>{displayedReleases.length} documented guide releases.</p>
       </div>
-
-      {recentReleases.map((release) => (
-        <article class="release" id={release.anchor}>
-          <div class="release-heading">
-            <div>
-              <p class="release-kicker">
-                {release.status === 'unreleased'
-                  ? 'Next release'
-                  : release.status === 'current'
-                    ? <>Current version · <time datetime={release.date ?? undefined}>{formatDate(release.date)}</time></>
-                    : <time datetime={release.date ?? undefined}>{formatDate(release.date)}</time>}
-              </p>
-              <h2>{release.version === 'Unreleased' ? 'Unreleased' : `v${release.version}`}</h2>
-            </div>
-            <a href={guideChangelogGitHubUrl(release)} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
-          </div>
-          <div class="release-groups">
-            {release.sections.map((section) => (
-              <section class="change-section">
-                <div class="change-section-heading">
-                  <h3>{section.title}</h3>
-                  <p>{section.items.length} {section.items.length === 1 ? 'change' : 'changes'}</p>
-                </div>
-                <div class="change-section-content">
-                  <ul class="change-list">
-                    {section.items.slice(0, 6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
-                  </ul>
-                  {section.items.length > 6 && (
-                    <details class="more-changes">
-                      <summary>Show {section.items.length - 6} more {section.title.toLowerCase()} changes</summary>
-                      <ul class="change-list continued">
-                        {section.items.slice(6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
-                      </ul>
-                    </details>
-                  )}
-                </div>
-              </section>
-            ))}
-          </div>
-        </article>
+      {recentReleases.slice(0, 1).map((release) => (
+        <ReleaseEntry release={release} publishedGuidePaths={publishedGuidePaths} latest />
       ))}
+    </div>
+  </div>
 
+  <div class="changelog-page band band-base">
+    <div class="container">
+      {recentReleases.slice(1).map((release) => (
+        <ReleaseEntry release={release} publishedGuidePaths={publishedGuidePaths} />
+      ))}
+    </div>
+  </div>
+
+  <div class="changelog-page band band-paper section-wallpaper">
+    <div class="container">
       {olderReleases.length > 0 && (
         <details class="older-releases">
           <summary>Show {olderReleases.length} older releases</summary>
           {olderReleases.map((release) => (
-            <article class="release compact" id={release.anchor}>
-              <div class="release-heading">
-                <div>
-                  <p class="release-kicker"><time datetime={release.date ?? undefined}>{formatDate(release.date)}</time></p>
-                  <h2>v{release.version}</h2>
-                </div>
-                <a href={guideChangelogGitHubUrl(release)} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
-              </div>
-              <div class="release-groups">
-                {release.sections.map((section) => (
-                  <section class="change-section">
-                    <div class="change-section-heading">
-                      <h3>{section.title}</h3>
-                      <p>{section.items.length} {section.items.length === 1 ? 'change' : 'changes'}</p>
-                    </div>
-                    <div class="change-section-content">
-                      <ul class="change-list">
-                        {section.items.slice(0, 6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
-                      </ul>
-                      {section.items.length > 6 && (
-                        <details class="more-changes">
-                          <summary>Show {section.items.length - 6} more {section.title.toLowerCase()} changes</summary>
-                          <ul class="change-list continued">
-                            {section.items.slice(6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
-                          </ul>
-                        </details>
-                      )}
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </article>
+            <ReleaseEntry release={release} publishedGuidePaths={publishedGuidePaths} compact />
           ))}
         </details>
       )}
@@ -149,44 +104,29 @@ const description = 'Every documented update to the Claude Code Ultimate Guide, 
 
 <style>
   .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
-  .page-hero { padding: 3rem 0 2.25rem; border-bottom: 1px solid var(--border); }
-  .eyebrow, .release-kicker { margin: 0 0 0.45rem; color: var(--text-secondary); font-size: 0.78rem; font-weight: 720; letter-spacing: 0.06em; text-transform: uppercase; }
-  .page-hero h1 { margin: 0; color: var(--text-primary); font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.035em; }
+  .page-hero { padding: 3rem 0 2.25rem; }
+  .eyebrow { margin: 0 0 0.45rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .page-hero h1 { margin: 0; }
   .tagline { max-width: 680px; margin: 0.8rem 0 0; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; }
-  .route-note { margin: 1rem 0 0; color: var(--text-muted); font-size: 0.9rem; }
-  .route-note a, .release-heading a { color: var(--text-primary); font-weight: 650; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
-  .route-note a:hover, .release-heading a:hover { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
-  .route-note a:focus-visible, .release-heading a:focus-visible, .more-changes > summary:focus-visible, .older-releases > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 0.2rem; }
-  .changelog-page { padding: 2.75rem 0 6rem; }
-  .history-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 0 0 1rem; }
+  .route-note { margin: 1rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
+  .route-note a { color: var(--accent); font-weight: 650; text-decoration: underline; text-underline-offset: 0.18em; }
+  .route-note a:hover { text-decoration-thickness: 2px; }
+  .route-note a:focus-visible, .older-releases > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .version-nav { padding: 1.25rem 0; }
+  .version-nav .container { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+  .nav-label { margin: 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .version-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .version-chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.85rem; border: 1px solid var(--border); border-radius: var(--radius-control); color: var(--text-primary); font-family: var(--font-mono); font-size: 0.85rem; font-weight: 650; text-decoration: none; transition: background-color 150ms ease, color 150ms ease; }
+  .version-chips a:hover { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary); }
+  .version-chips a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .changelog-page { padding: 2.75rem 0 3rem; }
+  .history-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 0 0 1.5rem; }
   .history-heading h2 { margin: 0; color: var(--text-primary); font-size: 1.6rem; }
   .history-heading p { margin: 0; color: var(--text-muted); }
-  .release { margin: 0; padding: 2.25rem 0; border-top: 1px solid var(--border); background: transparent; scroll-margin-top: 6rem; }
-  .history-heading + .release { padding-top: 0; border-top: 0; }
-  .release-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1.35rem; }
-  .release-heading h2 { margin: 0; color: var(--text-primary); font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1.15; }
-  .release-heading a { flex-shrink: 0; font-size: 0.85rem; }
-  .release-groups { border-top: 1px solid var(--border); }
-  .change-section { display: grid; grid-template-columns: minmax(8.5rem, 10rem) minmax(0, 1fr); border-bottom: 1px solid var(--border); }
-  .change-section-heading { padding: 0.9rem 1rem; border-right: 1px solid var(--border); background: var(--bg-tertiary); }
-  .change-section-heading h3 { margin: 0; color: var(--text-primary); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.08em; }
-  .change-section-heading p { margin: 0.35rem 0 0; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
-  .change-section-content { min-width: 0; padding: 0.9rem 1rem 1rem; }
-  .change-section:nth-child(even) .change-section-content { background: var(--bg-secondary); }
-  .change-list { display: grid; gap: 1.1rem; margin: 0; padding-left: 1.2rem; list-style: disc; }
-  .change-list ::marker { color: var(--text-secondary); }
-  .continued { margin-top: 1.1rem; }
-  .more-changes { margin-top: 1rem; }
-  .more-changes > summary { width: fit-content; cursor: pointer; padding: 0.2rem 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 680; text-decoration: underline; text-underline-offset: 0.18em; }
-  .more-changes > summary:hover { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
-  .older-releases { margin-top: 1.5rem; }
-  .older-releases > summary { cursor: pointer; margin-bottom: 1.25rem; padding: 0.9rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--text-primary); font-weight: 700; background: transparent; }
+  .older-releases { margin-top: 0.5rem; }
+  .older-releases > summary { cursor: pointer; margin-bottom: 1.25rem; padding: 0.9rem 0; min-height: 44px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 0.18em; }
   @media (max-width: 640px) {
     .page-hero { padding-top: 2.25rem; }
-    .history-heading, .release-heading { align-items: flex-start; flex-direction: column; }
-    .release { padding: 1.75rem 0; }
-    .change-section { grid-template-columns: 1fr; }
-    .change-section-heading { padding: 0.75rem 0.85rem; border-right: 0; border-bottom: 1px solid var(--border); }
-    .change-section-content { padding: 0.85rem 0.85rem 1rem; }
+    .history-heading { align-items: flex-start; flex-direction: column; }
   }
 </style>

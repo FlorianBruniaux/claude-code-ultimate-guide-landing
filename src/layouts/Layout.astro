@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import '../styles/components.css'
+import '../styles/portfolio-system.css'
 import Header from '../components/global/Header.astro'
 import AnnouncementBanner from '../components/global/AnnouncementBanner.astro'
 import Footer from '../components/global/Footer.astro'
@@ -96,11 +97,11 @@ const stats = await getSiteStats()
     <link rel="preconnect" href="https://img.shields.io" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
-    <!-- Anti-FOUC: dark mode default for developer audience -->
+    <!-- Anti-FOUC: light by default, as in the portfolio preset; a stored choice wins -->
     <script is:inline>
       (function() {
         var stored = localStorage.getItem('theme');
-        var theme = stored || 'dark';
+        var theme = stored || 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

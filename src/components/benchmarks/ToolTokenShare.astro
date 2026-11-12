@@ -102,6 +102,6 @@ const fmt = (n: number) => n.toFixed(1)
   font-size: 0.875rem;
   color: var(--text-muted);
 }
-.share-source a { color: var(--accent); text-decoration: none; }
-.share-source a:hover { text-decoration: underline; }
+.share-source a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.share-source a:hover, .share-source a:focus-visible { text-decoration-thickness: 2px; }
 </style>

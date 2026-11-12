@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import edition from '../../data/publication-edition.json'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import TerminalPlayground from '../../components/global/TerminalPlayground.astro'
 import { REFERENCE_SUGGESTIONS } from '../../scripts/bash-playground/suggestions'
 import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
@@ -48,11 +49,13 @@ const jsonLd = [
     </div>
   </header>
 
+  <div class="band band-base cheatsheet-band">
   <div class="cheatsheet-main container">
+    <ChapterLabel number="01" label="The reference" />
     <div class="content">
 
       <!-- Installation -->
-      <div class="section" id="installation">
+      <div class="section brand-card" id="installation">
         <h2>How to install Claude Code</h2>
         <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
         <p style="font-size: 0.85rem; color: var(--text-secondary); margin: var(--space-sm) 0;">Requires Node.js 18+</p>
@@ -64,7 +67,7 @@ const jsonLd = [
       </div>
 
       <!-- Essential Commands -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Essential commands</h2>
         <table>
           <tr><td>/help</td><td>Contextual help</td></tr>
@@ -97,7 +100,7 @@ const jsonLd = [
       </div>
 
       <!-- Keyboard Shortcuts -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Keyboard shortcuts</h2>
         <table>
           <tr><td>Shift+Tab</td><td>Cycle permission modes</td></tr>
@@ -120,7 +123,7 @@ const jsonLd = [
       </div>
 
       <!-- File References -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>File references</h2>
         <pre><code>@path/to/file.ts    &rarr; Reference a file
 @agent-name         &rarr; Call an agent
@@ -128,7 +131,7 @@ const jsonLd = [
       </div>
 
       <!-- Features Meconnues -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Hidden but official features</h2>
         <table>
           <thead><tr><th>Feature</th><th>Since</th><th>What It Does</th></tr></thead>
@@ -153,7 +156,7 @@ const jsonLd = [
       </div>
 
       <!-- Permission Modes -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Permission modes</h2>
         <table>
           <thead><tr><th>Mode</th><th>Editing</th><th>Execution</th></tr></thead>
@@ -165,7 +168,7 @@ const jsonLd = [
       </div>
 
       <!-- Memory & Settings -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Memory & settings</h2>
         <table>
           <thead><tr><th>Level</th><th>Path</th><th>Scope</th></tr></thead>
@@ -185,7 +188,7 @@ const jsonLd = [
       </div>
 
       <!-- Context Management -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Context management</h2>
         <div class="context-zones">
           <div class="context-bar">
@@ -213,7 +216,7 @@ const jsonLd = [
       </div>
 
       <!-- Plan Mode & Thinking -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Plan mode & thinking</h2>
         <table>
           <tr><td>Shift+Tab x 2</td><td>Enter Plan Mode</td></tr>
@@ -233,7 +236,7 @@ const jsonLd = [
       </div>
 
       <!-- Typical Workflow -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Typical workflow</h2>
         <pre><code>1. Start session      &rarr; claude
 2. Check context      &rarr; /status
@@ -247,7 +250,7 @@ const jsonLd = [
       </div>
 
       <!-- Quick Prompting Formula -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Prompting formula</h2>
         <pre><code>WHAT: [Concrete deliverable]
 WHERE: [File paths]
@@ -261,7 +264,7 @@ VERIFY: Empty email shows error</code></pre>
       </div>
 
       <!-- MCP Servers -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Model Context Protocol (MCP) servers</h2>
         <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: var(--space-sm);">MCP extends Claude Code with external tools and data sources</p>
         <table>
@@ -277,7 +280,7 @@ VERIFY: Empty email shows error</code></pre>
       </div>
 
       <!-- CLI Flags -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>CLI flags</h2>
         <table>
           <tr><td>-p "query"</td><td>Non-interactive mode</td></tr>
@@ -306,7 +309,7 @@ VERIFY: Empty email shows error</code></pre>
       />
 
       <!-- Anti-patterns -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Anti-patterns</h2>
         <div class="do-dont">
           <div class="dont">Vague prompts</div>
@@ -321,7 +324,7 @@ VERIFY: Empty email shows error</code></pre>
       </div>
 
       <!-- Cost Optimization -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Cost optimization</h2>
         <table>
           <thead><tr><th>Model</th><th>Use For</th><th>Cost</th></tr></thead>
@@ -333,7 +336,7 @@ VERIFY: Empty email shows error</code></pre>
       </div>
 
       <!-- Quick Decision Tree -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Quick decision tree</h2>
         <pre><code>Simple task       &rarr; Just ask Claude
 Complex task      &rarr; Tasks API to plan first
@@ -345,7 +348,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       </div>
 
       <!-- Golden Rules -->
-      <div class="section golden-rules">
+      <div class="section brand-card golden-rules">
         <h2>The golden rules</h2>
         <ol>
           <li><strong>Always review diffs</strong> before accepting</li>
@@ -359,7 +362,7 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       </div>
 
       <!-- Common Issues -->
-      <div class="section">
+      <div class="section brand-card">
         <h2>Quick fixes</h2>
         <table>
           <tr><td>Command not found</td><td>Check PATH, reinstall</td></tr>
@@ -374,9 +377,11 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     </div>
   </div>
+  </div>
 
   <style>
     /* Cheatsheet-specific overrides */
+    .cheatsheet-band { padding: clamp(3rem, 6vw, 4.5rem) 0; }
     .cheatsheet-main {
       font-size: 14px;
     }
@@ -398,13 +403,10 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: var(--space-lg);
-      padding: var(--space-xl) 0;
+      padding: var(--space-md) 0 0;
     }
 
     .section {
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
       padding: var(--space-lg);
       opacity: 1 !important;
       transform: none !important;
@@ -476,12 +478,9 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); font-size: 0.85rem; }
     .dont { color: #f85149; }
-    .do { color: var(--accent-tertiary); }
+    .do { color: var(--text-primary); font-weight: 600; }
 
-    .golden-rules {
-      background: var(--bg-secondary);
-      border: 2px solid var(--accent);
-    }
+    .golden-rules { border: 2px solid var(--accent); }
 
     .golden-rules ol { counter-reset: golden; list-style: none; padding-left: 0; }
     .golden-rules li { counter-increment: golden; padding-left: var(--space-lg); position: relative; margin: var(--space-sm) 0; }
@@ -518,8 +517,9 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     }
   </style>
 
-  <section class="related-links">
+  <section class="related-links band band-ink section-wallpaper">
     <div class="container">
+      <ChapterLabel number="02" label="Related" />
       <h2>Related resources</h2>
       <ul>
         <li><a href="/quiz/">Test your Claude Code knowledge</a></li>
@@ -530,11 +530,11 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     </div>
   </section>
   <style>
-    .related-links { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); background: var(--bg-secondary); }
-    .related-links h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-md); }
-    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 640px; margin: 0 auto; }
+    .related-links { padding: clamp(3rem, 6vw, 4.5rem) 0; }
+    .related-links h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 640px; }
     .related-links li { color: var(--text-secondary); line-height: 1.6; }
     .related-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
-    .related-links a:hover { text-decoration: underline; }
+    .related-links a:hover, .related-links a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; }
   </style>
 </Layout>

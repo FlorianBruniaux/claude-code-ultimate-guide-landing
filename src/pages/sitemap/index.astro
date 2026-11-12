@@ -87,14 +87,14 @@ function haystack(link: SitemapLink) {
           <ul class="essential-grid">
             {section.overview && (
               <li data-filter-item data-filter-text={`${section.overview.label} ${section.overview.href}`.toLowerCase()}>
-                <a href={section.overview.href} class="essential-link is-overview">
+                <a href={section.overview.href} class="essential-link is-overview brand-card brand-interactive-card">
                   <span class="link-label">{section.overview.label} →</span>
                 </a>
               </li>
             )}
             {section.essentials.map((link) => (
               <li data-filter-item data-filter-text={haystack(link)}>
-                <a href={link.href} class="essential-link">
+                <a href={link.href} class="essential-link brand-card brand-interactive-card">
                   <span class="link-label">{link.label}</span>
                   {link.description && <span class="link-desc">{link.description}</span>}
                 </a>
@@ -115,6 +115,9 @@ function haystack(link: SitemapLink) {
         </section>
       ))}
 
+    </div>
+    <div class="band band-ink section-wallpaper sitemap-ink">
+    <div class="container">
       <section class="sitemap-part" id="guide-chapters" data-filter-section>
         <h2 class="part-title">
           <a class="section-anchor" href="#guide-chapters">Guide chapters</a>
@@ -138,8 +141,10 @@ function haystack(link: SitemapLink) {
           ))}
         </div>
       </section>
-
-      <section class="sitemap-part" id="cheat-sheets" data-filter-section>
+    </div>
+    </div>
+    <div class="container">
+      <section class="sitemap-part sitemap-cheats" id="cheat-sheets" data-filter-section>
         <h2 class="part-title">
           <a class="section-anchor" href="#cheat-sheets">Cheat sheets</a>
           <a class="part-link" href="/cheatsheets/">All {cardLinks.length} cards →</a>
@@ -264,9 +269,8 @@ function haystack(link: SitemapLink) {
     margin-top: 1.5rem;
     padding: 0.7rem 1rem;
     border: 2px solid var(--accent);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-control);
     background: var(--bg-primary);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent);
     color: var(--accent);
   }
   .filter input {
@@ -300,19 +304,24 @@ function haystack(link: SitemapLink) {
     scrollbar-width: none;
   }
   .jump-nav a {
+    display: inline-flex;
+    align-items: center;
     flex: none;
+    min-height: 44px;
     padding: 0.3rem 0.75rem;
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     color: var(--text-secondary);
     font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
-    transition: color 150ms ease, border-color 150ms ease;
+    transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
   }
+  /* Filter controls of the portfolio: link-coloured border and 12 % tint on hover. */
   .jump-nav a:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    background: color-mix(in srgb, var(--surface-elevated) 88%, var(--accent));
+    color: var(--text-primary);
   }
 
   .sitemap-content { padding: 2.5rem 0 5rem; }
@@ -328,18 +337,33 @@ function haystack(link: SitemapLink) {
   .sitemap-section {
     margin-bottom: 2.75rem;
   }
+  .sitemap-ink { padding: 3rem 0; margin: 1rem 0 3rem; }
+  .sitemap-cheats { margin-top: 0; }
 
   .section-title,
   .part-title {
     display: flex;
     align-items: baseline;
     gap: 0.6rem;
-    margin: 0 0 0.4rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+    position: relative;
+    margin: 0 0 0.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
     color: var(--text-primary);
-    font-size: 1.15rem;
-    font-weight: 800;
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+    font-weight: 700;
+  }
+
+  /* Short orange bar on the hairline, as the portfolio reading h2. */
+  .section-title::before,
+  .part-title::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 2.5rem;
+    height: 3px;
+    background: var(--action);
   }
   .section-anchor {
     color: inherit;
@@ -357,7 +381,7 @@ function haystack(link: SitemapLink) {
   }
   .section-count {
     padding: 0.1rem 0.5rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-control);
     background: var(--bg-tertiary);
     color: var(--text-muted);
     font-size: 0.72rem;
@@ -384,12 +408,10 @@ function haystack(link: SitemapLink) {
     height: 100%;
     padding: 0.8rem 0.95rem;
     border: 1px solid var(--border);
-    border-radius: 0.6rem;
-    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    background: var(--surface-elevated);
     text-decoration: none;
-    transition: border-color 150ms ease;
   }
-  .essential-link:hover { border-color: var(--accent); }
   .essential-link.is-overview {
     justify-content: center;
     border-style: dashed;
@@ -399,7 +421,6 @@ function haystack(link: SitemapLink) {
     font-size: 0.92rem;
     font-weight: 700;
   }
-  .essential-link:hover .link-label { color: var(--accent); }
   .link-desc {
     color: var(--text-muted);
     font-size: 0.8rem;
@@ -417,9 +438,14 @@ function haystack(link: SitemapLink) {
     border-radius: 0.35rem;
     color: var(--text-secondary);
     font-size: 0.86rem;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    text-underline-offset: 0.22em;
   }
+  .compact-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .compact-link:hover {
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 2px;
     background: color-mix(in srgb, var(--accent) 7%, transparent);
     color: var(--accent);
   }

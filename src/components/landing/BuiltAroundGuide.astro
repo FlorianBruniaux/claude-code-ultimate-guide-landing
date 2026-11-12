@@ -5,23 +5,24 @@ import SoonBadge from '../ecosystem/SoonBadge.astro'
 
 // Merges the former "Community & resources" and companion tools sections:
 // one place for what is built around the guide and how to take part.
+import ChapterLabel from '../global/ChapterLabel.astro'
 ---
 
-<section class="section section--compact built-around" id="related" aria-labelledby="built-title">
+<section class="section band band-paper section-wallpaper built-around" id="related" aria-labelledby="built-title">
   <div class="container">
     <div class="section-header">
       <div>
-        <p class="section-kicker">Built around the guide</p>
+        <ChapterLabel number="04" label="Built around the guide" />
         <h2 class="section-title" id="built-title">Companion tools and an open community</h2>
       </div>
-      <a class="all-link" href="/projects/">See all {RELATED_PROJECTS.length} projects →</a>
+      <a class="btn btn-primary" href="/projects/">See all {RELATED_PROJECTS.length} projects →</a>
     </div>
 
     <div class="related-grid">
       {FEATURED_PROJECTS.map((project) => (
         <a
           href={project.href}
-          class="related-card"
+          class="related-card brand-card brand-interactive-card"
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${project.title}${isComingSoon(project) ? ', coming soon' : ''} (opens in a new tab)`}
@@ -41,7 +42,7 @@ import SoonBadge from '../ecosystem/SoonBadge.astro'
 
     <div class="community-grid" id="community">
       <a
-        class="community-card"
+        class="community-card brand-card brand-interactive-card"
         href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md"
         target="_blank"
         rel="noopener"
@@ -54,7 +55,7 @@ import SoonBadge from '../ecosystem/SoonBadge.astro'
         <span class="community-link">Contributing guide <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
       </a>
       <a
-        class="community-card"
+        class="community-card brand-card brand-interactive-card"
         href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide"
         target="_blank"
         rel="noopener"
@@ -76,17 +77,15 @@ import SoonBadge from '../ecosystem/SoonBadge.astro'
   .section-header .section-title { margin-bottom: 0; }
   .all-link { display: inline-flex; align-items: center; min-height: 44px; flex: 0 0 auto; font-weight: 650; }
   .related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
-  .related-card { display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem; min-height: 130px; padding: 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), transform var(--transition-fast); }
-  .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .related-card { display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem; min-height: 130px; padding: 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+  /* .related-card hover comes from .brand-interactive-card (portfolio). */
   .related-icon { font-size: 1.2rem; }
   .related-card h3 { margin: 0; font-size: 0.95rem; }
   .related-card p { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.8rem; }
   .related-arrow { color: var(--accent); }
 
   .community-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1rem; }
-  .community-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.85rem; padding: 0.9rem 1rem; color: var(--text-primary) !important; background: transparent; border: 1px dashed var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), transform var(--transition-fast); }
-  .community-card:hover,
-  .community-card:focus-visible { border-color: var(--accent); border-style: solid; transform: translateY(-2px); }
+  .community-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.85rem; padding: 0.9rem 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
   .community-icon { font-size: 1.2rem; }
   .community-card strong { display: block; font-size: 0.95rem; }
   .community-desc { display: block; margin-top: 0.2rem; color: var(--text-secondary); font-size: 0.82rem; }

@@ -1,5 +1,5 @@
 <!-- Interactive Onboarding Section -->
-<section class="section section--alt onboarding-hero">
+<section class="section band band-ink section-wallpaper onboarding-hero">
     <div class="container">
         <div class="onboarding-badge">Personalized Learning</div>
         <h2 class="section-title">Start with interactive onboarding</h2>
@@ -68,13 +68,14 @@
 .onboarding-badge {
     display: inline-block;
     padding: var(--space-xs) var(--space-md);
-    background: var(--accent);
-    color: #ffffff;
-    font-size: 0.8rem;
+    background: var(--action);
+    color: var(--action-ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 20px;
+    letter-spacing: 0.06em;
+    border-radius: var(--radius-control);
     margin-bottom: var(--space-lg);
     text-align: left;
 }
@@ -98,11 +99,11 @@
     justify-content: center;
     min-width: 32px;
     height: 32px;
-    background-color: var(--accent-tertiary);
-    color: #ffffff;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
     font-weight: 700;
     font-size: 0.9rem;
-    border-radius: 50%;
+    border-radius: var(--radius-control);
     flex-shrink: 0;
 }
 .onboarding-feature p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); }

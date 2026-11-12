@@ -1,0 +1,516 @@
+/*
+ * Portfolio system: page composition ported from florian-portfolio@376d69b7.
+ *   page-bands.css      .page-band, .band-ink / .band-paper / .band-accent, .brand-photo-frame
+ *   visual-options.css  .section-wallpaper (parquet hatching), .home-section-label
+ *   agent-workshop.css  orange rail across the home chapters, chapter brick + dash label
+ *   brandbook.css       .brand-card, .brand-interactive-card (hard shadow on hover)
+ *   header-options.css  "rail" header: 2px orange base line, 4px orange item indicator
+ * Landing token names (--bg-*, --text-*, --accent, --surface-elevated) replace the
+ * portfolio --color-* names; values are copied, not referenced at runtime.
+ * Loaded after components.css so it wins over the shared rules, not over scoped ones.
+ */
+
+:root {
+  --page-content-max: 70rem;
+  --band-ink-background: #191b1d;
+  --band-ink-surface: #292c30;
+  --band-ink-elevated: #34373b;
+  --section-pattern-opacity: 0.09; /* portfolio preset patternOpacity: 9 */
+  --rail-left: max(7px, calc((100% - var(--page-content-max)) / 2 + 1.5rem - 28px));
+}
+
+/* ── Band surfaces ─────────────────────────────────────────────────────────
+ * A band re-declares the semantic tokens, so every component inside it
+ * (cards, buttons, links, code) follows without per-component overrides. */
+.band {
+  position: relative;
+  isolation: isolate;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.band-ink,
+.site-footer-band {
+  --bg-primary: var(--band-ink-background);
+  --bg-secondary: var(--band-ink-surface);
+  --bg-tertiary: var(--band-ink-elevated);
+  --surface-elevated: var(--band-ink-surface);
+  --bg-tint-warm: var(--band-ink-surface);
+  --bg-tint-cool: var(--band-ink-background);
+  --border: #686a6c;
+  --border-light: #3b3e42;
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+  --btn-primary-color: #171512;
+  --github-btn-bg: var(--band-ink-surface);
+  --github-btn-bg-hover: var(--band-ink-elevated);
+  --github-btn-color: #f5f0e6;
+  background: var(--band-ink-background);
+  color: var(--text-primary);
+}
+
+:root:not([data-theme="dark"]) .band-paper {
+  --bg-primary: #eee7db;
+  --bg-secondary: #fffdf8;
+  --bg-tertiary: #e3d9ca;
+  --surface-elevated: #fffdf8;
+  --border: #c3b8a8;
+  --border-light: #e3d9ca;
+  --text-primary: #171512;
+  --text-secondary: #49443e;
+  --text-muted: #625b51;
+  --accent: #a33d08;
+  --accent-hover: #843006;
+}
+
+/* The paper chapter becomes a softer dark surface in the dark theme. */
+[data-theme="dark"] .band-paper {
+  --bg-primary: color-mix(in srgb, var(--band-ink-background) 94%, white);
+  --bg-secondary: color-mix(in srgb, var(--band-ink-background) 88%, white);
+  --bg-tertiary: color-mix(in srgb, var(--band-ink-background) 82%, white);
+  --surface-elevated: color-mix(in srgb, var(--band-ink-background) 88%, white);
+  --border: #686a6c;
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+}
+
+.band-accent {
+  --bg-primary: #f97316;
+  --bg-secondary: #fff7e9;
+  --bg-tertiary: #ffe0b6;
+  --surface-elevated: #fff7e9;
+  --border: #9d4000;
+  --border-light: #c25a12;
+  --text-primary: #171512;
+  --text-secondary: #2b2119;
+  --text-muted: #3c291a;
+  --accent: #171512;
+  --accent-hover: #3f2b1d;
+  /* Principal action on an orange block: ink fill, ivory text. */
+  --action: #171512;
+  --action-hover: #33302a;
+  --action-ink: #fff7e9;
+  --btn-primary-color: #fff7e9;
+}
+
+/* Cards inside the orange band return to ivory text colours. */
+.band-accent :is(.brand-card, .consulting-cta-inner) {
+  --text-secondary: #49443e;
+  --text-muted: #625b51;
+  --accent: #a33d08;
+  --accent-hover: #843006;
+}
+
+/* Hero bands close with the orange line, as on every portfolio page intro. */
+.band-hero {
+  border-bottom: 3px solid var(--action, #f97316) !important;
+}
+
+.band-accent.band-hero { border-bottom-color: #171512 !important; }
+
+/* ── Parquet hatching ───────────────────────────────────────────────────── */
+.section-wallpaper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: var(--section-pattern-opacity);
+}
+
+:root:not([data-theme="dark"]) .band-paper.section-wallpaper::before {
+  opacity: calc(var(--section-pattern-opacity) * 0.65);
+}
+
+.band-accent.section-wallpaper::before {
+  filter: brightness(0.25);
+  opacity: min(calc(var(--section-pattern-opacity) * 1.3), 0.14);
+}
+
+/* ── Orange rail and chapter labels ─────────────────────────────────────── */
+.home-rail > .band:not(.band-hero)::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: var(--rail-left);
+  width: 2px;
+  background: var(--action, #f97316);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.home-rail > .band-accent::after { background: #171512 !important; opacity: 0.65; }
+
+.chapter-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin: 0 0 12px;
+  color: var(--accent);
+}
+
+/* The connector only exists where the orange rail runs (home chapters). */
+.home-rail .chapter-label::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  width: 29px;
+  height: 2px;
+  background: var(--action, #f97316);
+}
+
+.home-rail .band-accent .chapter-label::before { background: #171512; }
+
+/* Doubled class: page-scoped `p` rules must not restyle the label. */
+.chapter-label.chapter-label p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  max-width: none;
+  color: var(--accent);
+  font: 500 0.75rem/1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.chapter-label p > span:last-child::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+.chapter-brick {
+  flex-shrink: 0;
+  width: 58px;
+  height: 54px;
+  overflow: visible;
+}
+
+/* Kickers on other pages take the portfolio dash; colour and font stay scoped. */
+.section-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────── */
+.brand-card {
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: none;
+}
+
+/* Portfolio cards do not lift; hover adds an inset line and a hard offset shadow. */
+.brand-interactive-card {
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.brand-interactive-card:is(:focus-visible, :focus-within) {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border);
+  transform: none !important;
+}
+
+@media (hover: hover) {
+  .brand-interactive-card:hover {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border);
+    transform: none !important;
+  }
+
+  /* Light paper: the card fills with brand orange, text turns ink (cardHover "fill"). */
+  :root:not([data-theme="dark"]) .brand-interactive-card:not(:is(.band-ink, .band-accent, .page-hero, .site-footer-band) *):hover {
+    --text-primary: #0a0a0a;
+    --text-secondary: #0a0a0a;
+    --text-muted: #0a0a0a;
+    --accent: #0a0a0a;
+    --accent-hover: #0a0a0a;
+    background-color: #f97316;
+    border-color: #0a0a0a;
+    box-shadow: inset 0 0 0 1px #0a0a0a, 4px 4px 0 #0a0a0a;
+  }
+}
+
+/* Recent-engagement card of the portfolio: ivory surface, ink hard shadow. */
+.brand-card-emphasis {
+  border: 2px solid #171512;
+  box-shadow: 6px 6px 0 #171512;
+}
+
+/* ── Photo frame corner (portrait in the hero) ──────────────────────────── */
+.brand-photo-frame { position: relative; }
+.brand-photo-frame::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 32px;
+  height: 32px;
+  border-top: 3px solid var(--action, #f97316);
+  border-left: 3px solid var(--action, #f97316);
+  pointer-events: none;
+}
+
+/* ── Shared sub-page hero (.page-hero, 29 pages) becomes an ink band ────── */
+.page-hero {
+  --bg-primary: var(--band-ink-background);
+  --bg-secondary: var(--band-ink-surface);
+  --bg-tertiary: var(--band-ink-elevated);
+  --surface-elevated: var(--band-ink-surface);
+  --border: #686a6c;
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --text-muted: #c7bfb2;
+  --accent: #ffad73;
+  --accent-hover: #ffc59e;
+  position: relative;
+  isolation: isolate;
+  background: var(--band-ink-background) !important;
+  color: var(--text-primary);
+  border-bottom: 3px solid var(--action) !important;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: var(--section-pattern-opacity);
+}
+
+.page-hero h1 {
+  color: var(--text-primary);
+  font-size: clamp(2.5rem, 4.6vw, 3.75rem);
+  line-height: 1.02;
+  max-width: 30ch;
+}
+
+/* ── Alternate sections (71 uses) become the hatched paper chapter ───────── */
+.section--alt {
+  position: relative;
+  isolation: isolate;
+}
+
+:root:not([data-theme="dark"]) .section--alt {
+  --bg-primary: #eee7db;
+  --bg-secondary: #eee7db;
+  --bg-tertiary: #e3d9ca;
+  --surface-elevated: #fffdf8;
+  --border: #c3b8a8;
+  --text-primary: #171512;
+  --text-secondary: #49443e;
+  --text-muted: #625b51;
+  --accent: #a33d08;
+  --accent-hover: #843006;
+  background-color: #eee7db;
+}
+
+[data-theme="dark"] .section--alt {
+  --bg-secondary: color-mix(in srgb, var(--band-ink-background) 94%, white);
+  --surface-elevated: color-mix(in srgb, var(--band-ink-background) 88%, white);
+  background-color: color-mix(in srgb, var(--band-ink-background) 94%, white);
+}
+
+.section--alt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: calc(var(--section-pattern-opacity) * 0.65);
+}
+
+/* ── Reading pages: portfolio reading.css cues ─────────────────────────── */
+.sl-markdown-content blockquote { border-left-color: var(--action) !important; }
+
+/* ── Header: portfolio "rail" style ─────────────────────────────────────── */
+.site-header {
+  border-bottom: 2px solid var(--action) !important;
+}
+
+/* ── Footer: ink band with hatching ─────────────────────────────────────── */
+/* Pages built from bands meet the footer without an ivory gap. */
+#main-content:has(.band, .page-hero) + .site-footer-band { margin-top: 0; }
+
+.site-footer-band {
+  position: relative;
+  isolation: isolate;
+  border-top: 3px solid var(--action) !important;
+}
+
+.site-footer-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: var(--section-pattern-opacity);
+}
+
+@media (max-width: 767px) {
+  .home-rail .chapter-label::before { left: -9px; width: 10px; }
+  .page-hero h1 { font-size: clamp(2.1rem, 9vw, 2.75rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-interactive-card { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .home-rail > .band::after,
+  .chapter-label::before,
+  .section-wallpaper::before,
+  .page-hero::before,
+  .section--alt::before,
+  .site-footer-band::before { display: none; }
+}
+
+/* ── Search dialog: portfolio search layout ─────────────────────────────────
+ * Source: florian-portfolio@376d69b7 search dialog. Orange top line, charcoal
+ * header strip (eyebrow, display title, Esc button), ivory body, plain input,
+ * flat rows with an elevated selected state. The guide keeps its section
+ * chips, preview pane and site map: only their surfaces change. */
+.search-modal-content {
+  width: min(1120px, 100%);
+  border-top: 3px solid var(--action);
+  border-radius: var(--border-radius-lg);
+  background: var(--bg-primary);
+  box-shadow: 0 24px 48px rgb(0 0 0 / 0.28);
+}
+
+.search-modal-header {
+  --text-primary: #f5f0e6;
+  --text-secondary: #ded8cd;
+  --accent: #ffad73;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.75rem;
+  background: #191b1d;
+  color: var(--text-primary);
+}
+
+.search-modal-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/images/brand/section-hatching.svg') repeat;
+  background-size: 160px 160px;
+  opacity: var(--section-pattern-opacity);
+}
+
+.search-modal-eyebrow {
+  margin: 0 0 0.25rem;
+  color: var(--accent);
+  font: 500 0.72rem/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.search-modal-title {
+  margin: 0;
+  color: var(--text-primary);
+  font: 700 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+.search-modal-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.85rem;
+  border: 1px solid color-mix(in srgb, #f5f0e6 56%, #191b1d);
+  border-radius: var(--radius-control);
+  background: #292c30;
+  color: #f5f0e6;
+  font: 600 0.85rem/1 var(--font-sans);
+  cursor: pointer;
+}
+
+.search-modal-close:hover { border-color: var(--accent); background: color-mix(in srgb, #292c30 88%, #ffad73); }
+.search-modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Plain field: visible border, no halo; focus draws the accent ring. */
+.search-input-wrapper {
+  margin: 1.25rem 1.75rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--text-primary) 56%, var(--bg-primary));
+  border-radius: var(--radius-control);
+  background: var(--surface-elevated);
+  box-shadow: none;
+}
+
+.search-input-wrapper:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+#search-input:focus-visible { outline: none; }
+
+.search-modal mark { background: color-mix(in srgb, var(--action) 26%, transparent); }
+
+/* Section chips: portfolio filter controls. */
+.search-chips { background: var(--bg-primary); padding-inline: 1.75rem; }
+.search-chip { min-height: 44px; border-radius: var(--radius-control); background: var(--surface-elevated); }
+.search-chip:not([aria-pressed="true"]):hover { border-color: var(--accent); background: color-mix(in srgb, var(--surface-elevated) 88%, var(--accent)); }
+
+/* Rows and cards: flat, card radius, elevated selected state with an orange outline. */
+.search-group,
+.search-no-results,
+.search-map-card,
+.search-map-strip { border-radius: var(--border-radius-lg); box-shadow: none; }
+
+.search-result-item { border-radius: var(--radius-control); }
+.search-result-item[aria-selected="true"] {
+  background: var(--bg-tertiary);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.search-result-badge,
+.search-result-category,
+.search-result-section,
+.search-preview-fact,
+.search-preview-section,
+.search-preview-open,
+.search-map-link { border-radius: var(--radius-control); }
+
+/* Site map cards: orange left rule, as the portfolio quick links. */
+.search-map-card { border-left: 3px solid var(--action); }
+
+.search-map-head h3 { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: -0.01em; }
+
+@media (max-width: 640px) {
+  .search-modal-header { padding: 0.9rem 1rem; }
+  .search-input-wrapper { margin-inline: 1rem; }
+  .search-chips { padding-inline: 1rem; }
+}

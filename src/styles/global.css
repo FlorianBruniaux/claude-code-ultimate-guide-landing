@@ -1,3 +1,5 @@
+@import './brand-foundation.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,17 +7,17 @@
 @layer base {
   /* ===== LIGHT MODE (default) ===== */
   :root {
-    --bg-primary: #f5f0eb;
-    --bg-secondary: #fef7f0;
-    --bg-tertiary: #f0e8df;
-    --surface-elevated: #ffffff;
+    --bg-primary: #f3f0e9;
+    --bg-secondary: #fbf9f4;
+    --bg-tertiary: #eae5dc;
+    --surface-elevated: #fbf9f4;
     --border: #d4cdc5;
-    --border-light: #e8dfd6;
-    --text-primary: #1a1207;
-    --text-secondary: #4a3f31;
-    --text-muted: #6b6053;
-    --accent: #c2410c;
-    --accent-hover: #9a3412;
+    --border-light: #eae5dc;
+    --text-primary: #0a0a0a;
+    --text-secondary: #45413f;
+    --text-muted: #69615a;
+    --accent: #a63f05;
+    --accent-hover: #8f3606;
     --accent-secondary: #22c55e;
     --accent-secondary-hover: #16a34a;
     --accent-tertiary: #3b82f6;
@@ -27,22 +29,30 @@
     --status-info: #3b82f6;
 
     /* Tinted backgrounds for visual rhythm */
-    --bg-tint-warm: #fef7f0;
-    --bg-tint-cool: #f5f0eb;
+    --bg-tint-warm: #fbf9f4;
+    --bg-tint-cool: #f3f0e9;
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(26, 18, 7, 0.08);
+    --shadow-sm: none;
     --shadow-md: 0 4px 12px rgba(26, 18, 7, 0.1);
     --shadow-lg: 0 8px 24px rgba(26, 18, 7, 0.12);
-    --shadow-card-hover: 0 8px 32px rgba(26, 18, 7, 0.15);
+    --shadow-card-hover: 4px 4px 0 var(--border);
     --shadow-header: 0 1px 3px rgba(26, 18, 7, 0.06);
 
     /* Header */
-    --header-bg: rgba(245, 240, 235, 0.95);
+    --header-bg: rgba(243, 240, 233, 0.95);
 
     /* Typography */
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+    /* Brand families, see brand-foundation.css for sources and versions */
+    --font-sans: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+    /* Action levels (branding-florian@821ad55, #ds-boutons) */
+    --action: #f97316;
+    --action-hover: #e9650b;
+    --action-ink: #0a0a0a;
+    --radius-control: 0.375rem;
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -55,9 +65,9 @@
     --space-4xl: 5rem;
 
     /* Layout */
-    --max-width: 1200px;
-    --border-radius: 8px;
-    --border-radius-lg: 12px;
+    --max-width: 70rem;
+    --border-radius: 6px;
+    --border-radius-lg: 8px;
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -66,27 +76,27 @@
 
     /* Button Colors */
     --btn-primary-color: #ffffff;
-    --github-btn-bg: #f0e8df;
-    --github-btn-bg-hover: #e8dfd6;
+    --github-btn-bg: #eae5dc;
+    --github-btn-bg-hover: #d4cdc5;
     --github-btn-border: rgba(26, 18, 7, 0.1);
-    --github-btn-color: #1a1207;
+    --github-btn-color: #0a0a0a;
     --accent-highlight-bg: var(--bg-tertiary);
     --modal-backdrop: rgba(0, 0, 0, 0.5);
   }
 
   /* ===== DARK MODE ===== */
   [data-theme="dark"] {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #141414;
-    --bg-tertiary: #1e1e1e;
-    --surface-elevated: #141414;
-    --text-primary: #e5e5e5;
-    --text-secondary: #a3a3a3;
-    --text-muted: #8a8a8a;
-    --border: #2a2a2a;
-    --border-light: #1e1e1e;
-    --accent: #f97316;
-    --accent-hover: #fb923c;
+    --bg-primary: #141414;
+    --bg-secondary: #202020;
+    --bg-tertiary: #292929;
+    --surface-elevated: #202020;
+    --text-primary: #f3f0e9;
+    --text-secondary: #dedbd5;
+    --text-muted: #c4c1bb;
+    --border: #444444;
+    --border-light: #292929;
+    --accent: #ffb17a;
+    --accent-hover: #ffd0ad;
     --accent-secondary: #22c55e;
     --accent-secondary-hover: #16a34a;
     --accent-tertiary: #60a5fa;
@@ -98,23 +108,23 @@
     --status-info: #60a5fa;
 
     /* Tinted backgrounds for visual rhythm */
-    --bg-tint-warm: #141414;
-    --bg-tint-cool: #0a0a0a;
+    --bg-tint-warm: #202020;
+    --bg-tint-cool: #141414;
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-sm: none;
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-card-hover: 4px 4px 0 var(--border);
     --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.5);
 
-    --header-bg: rgba(10, 10, 10, 0.95);
+    --header-bg: rgba(20, 20, 20, 0.95);
     --modal-backdrop: rgba(0, 0, 0, 0.7);
     --accent-highlight-bg: var(--bg-tertiary);
 
-    --github-btn-bg: #1e1e1e;
-    --github-btn-bg-hover: #2a2a2a;
+    --github-btn-bg: #292929;
+    --github-btn-bg-hover: #444444;
     --github-btn-border: rgba(255, 255, 255, 0.1);
-    --github-btn-color: #ffffff;
+    --github-btn-color: #f3f0e9;
     --btn-primary-color: #0a0a0a;
   }
 

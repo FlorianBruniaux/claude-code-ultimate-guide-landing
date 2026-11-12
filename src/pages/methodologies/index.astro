@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import MethodologyQuiz from '../../components/landing/MethodologyQuiz.astro'
 import { STACK_EXPLANATIONS } from '../../data/methodology-quiz'
 
@@ -129,15 +130,16 @@ const COMBINATION_PATTERNS = [
   <!-- Two-axis explanation -->
   <section class="section section--alt" id="methodology-map">
     <div class="container">
+      <ChapterLabel number="01" label="Map" />
       <h2 class="section-title">The two-axis map</h2>
       <p class="section-subtitle">Every methodology sits somewhere on two axes. Knowing where you need to be narrows the field fast.</p>
       <div class="axis-grid">
-        <div class="axis-card">
+        <div class="axis-card brand-card">
           <div class="axis-icon">📐</div>
           <h3>Spec-first vs code-first</h3>
           <p>The spec-first side makes intent explicit before implementation: SDD uses feature specs, while BDD uses shared behavior examples. BMAD spans direct building for a clear fix and deeper planning for uncertain work. These positions describe a workflow choice, not a permanent property of a tool.</p>
         </div>
-        <div class="axis-card">
+        <div class="axis-card brand-card">
           <div class="axis-icon">⚖️</div>
           <h3>Lightweight vs governed</h3>
           <p>This axis compares the setup and coordination cost of development workflows. Lightweight methods can use one file and short feedback cycles; governed methods add traceability and explicit gates. It does not classify the Toyota Production System or Lean management. For flow and stop rules in AI-assisted delivery, see the <a href="/guide/loop-graph-engineering/#limit-admission-to-verification-capacity">review-admission method</a>.</p>
@@ -168,9 +170,10 @@ const COMBINATION_PATTERNS = [
     </div>
   </section>
 
-  <section class="section lean-lens" id="lean-software-engineering" aria-labelledby="lean-lens-title">
+  <section class="section lean-lens band band-ink section-wallpaper" id="lean-software-engineering" aria-labelledby="lean-lens-title">
     <div class="container">
       <p class="map-label">Lean software engineering · across every stack</p>
+      <ChapterLabel number="02" label="Lean lens" />
       <h2 class="section-title" id="lean-lens-title">Test the flow, not just the method</h2>
       <p class="section-subtitle">Mary and Tom Poppendieck's <a href="https://res.infoq.com/articles/poppendieck-implementing-lean/en/resources/poppendieck_ch02.pdf" target="_blank" rel="noopener noreferrer">software adaptation of Lean</a> asks teams to build quality in and optimize the whole path from customer need to deployed software. A better spec or a faster agent can still leave the request waiting at review, release or adoption. Lean is a delivery lens across the map above, not a twenty-first position on its axes.</p>
       <div class="table-scroll">
@@ -187,25 +190,25 @@ const COMBINATION_PATTERNS = [
       </div>
       <p class="lean-bridge">The <a href="https://kanbanguides.org/the-kanban-guide/" target="_blank" rel="noopener noreferrer">Kanban Guide</a> makes the flow test concrete with a defined start and finish, work-in-progress control, and four flow measures: WIP, throughput, work-item age and cycle time. Throughput counts finished items, not solved customer problems. <a href="/lean-ai/">Follow one AI-assisted request to the user</a> and <a href="/guide/team-metrics/">define the additional outcome measure</a>.</p>
       <div class="lean-source-grid" aria-label="Lean methods and inspectable repositories">
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Method · product development</p>
           <h3>Value-stream mapping</h3>
           <p>The Lean Enterprise Institute maps decisions and handoffs across functions before redesigning the work.</p>
           <a href="https://www.lean.org/the-lean-post/articles/why-value-stream-mapping-is-essential-to-product-and-process-development/" target="_blank" rel="noopener noreferrer">Read the LEI method ↗</a>
         </article>
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Method · knowledge work</p>
           <h3>Kanban</h3>
           <p>Define the workflow, control work in progress and inspect its four flow metrics. A board by itself does not establish pull.</p>
           <a href="https://kanbanguides.org/the-kanban-guide/" target="_blank" rel="noopener noreferrer">Read the Kanban Guide ↗</a>
         </article>
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Repository · phase checks</p>
           <h3>RaiSE</h3>
           <p>Persists workflow state and runs deterministic checks at phase boundaries. The repository describes a mechanism, not a measured user outcome.</p>
           <a href="https://github.com/humansys/raise" target="_blank" rel="noopener noreferrer">Inspect RaiSE ↗</a>
         </article>
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Repository · recurring defects</p>
           <h3>Andon</h3>
           <p>Records agent defects and proposed countermeasures. Its completion check still depends on the trustworthiness of the recorded evidence.</p>
@@ -215,13 +218,13 @@ const COMBINATION_PATTERNS = [
       <h3 class="lean-packs-heading">Skill packs to test against the flow</h3>
       <p class="lean-pack-note">These packs encode steps, not a Lean result. Use only the controls that address a real constraint, then check the same request from intake to user outcome.</p>
       <div class="lean-source-grid" aria-label="Agent skill packs relevant to delivery flow">
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Integrated workflow · gstack</p>
           <h4>From demand to release</h4>
           <p><code>/office-hours</code> challenges the request; <code>/landing-report</code> exposes the ship queue; <code>/qa</code> checks changed behavior and <code>/retro</code> reviews the work. The full sequence can also add waiting stages.</p>
           <a href="https://github.com/garrytan/gstack" target="_blank" rel="noopener noreferrer">Inspect gstack ↗</a>
         </article>
-        <article class="lean-source">
+        <article class="lean-source brand-card">
           <p class="map-label">Composable skills · Matt Pocock</p>
           <h4>Spec only when the work needs one</h4>
           <p><code>/triage</code> handles incoming requests; <code>/to-spec</code> is for work spanning sessions; <code>/to-tickets</code> creates thin, testable vertical slices. <code>/tdd</code> and <code>/retro</code> help close the loop.</p>
@@ -232,14 +235,15 @@ const COMBINATION_PATTERNS = [
   </section>
 
   <!-- Combination patterns table (noscript fallback + reference) -->
-  <section class="section" id="methodology-decision-matrix">
+  <section class="section band band-base" id="methodology-decision-matrix">
     <div class="container">
+      <ChapterLabel number="03" label="Stacks" />
       <h2 class="section-title">8 recommended stacks</h2>
       <p class="section-subtitle">These are starting combinations, not measured productivity gains. Add an artifact or gate only when it addresses a real decision, failure or handoff.</p>
 
       <div class="stacks-grid" id="methodology-stacks">
         {STACK_EXPLANATIONS.map((stack) => (
-          <div class="stack-card" id={stack.stackId}>
+          <div class="stack-card brand-card" id={stack.stackId}>
             <div class="stack-card-header">
               <span class="stack-icon">{stack.icon}</span>
               <h3 class="stack-title">{stack.title}</h3>
@@ -294,7 +298,7 @@ const COMBINATION_PATTERNS = [
   </section>
 
   <!-- CTA to full guide -->
-  <section class="section section--alt cta-section">
+  <section class="section band band-accent section-wallpaper cta-section">
     <div class="container">
       <div class="cta-box">
         <h2>Want the full picture?</h2>
@@ -331,7 +335,7 @@ const COMBINATION_PATTERNS = [
   padding: 0.25rem 0.75rem;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   font-size: 0.8rem;
   font-family: var(--font-mono);
   color: var(--accent);
@@ -344,7 +348,7 @@ const COMBINATION_PATTERNS = [
 
 .page-hero h1 {
   font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-lg);
   max-width: 700px;
@@ -442,7 +446,6 @@ const COMBINATION_PATTERNS = [
 }
 
 /* Lean delivery lens */
-.lean-lens { background: var(--bg-primary); }
 .lean-lens .section-subtitle { max-width: 82ch; }
 .lean-table { min-width: 760px; }
 .lean-table td:first-child { width: 24%; font-weight: 700; }
@@ -450,7 +453,7 @@ const COMBINATION_PATTERNS = [
 .lean-table td:last-child { line-height: 1.55; }
 .lean-bridge { max-width: 86ch; margin: var(--space-lg) 0 var(--space-xl); color: var(--text-secondary); line-height: 1.65; }
 .lean-source-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
-.lean-source { display: flex; flex-direction: column; padding: var(--space-lg); border: 1px solid var(--border); border-radius: var(--border-radius); background: var(--surface-elevated); }
+.lean-source { display: flex; flex-direction: column; padding: var(--space-lg); }
 .lean-source h3, .lean-source h4 { margin: .4rem 0; color: var(--text-primary); font-size: 1.08rem; }
 .lean-packs-heading { margin: var(--space-2xl) 0 var(--space-sm); color: var(--text-primary); font-size: 1.35rem; }
 .lean-pack-note { max-width: 82ch; margin: 0 0 var(--space-lg); color: var(--text-secondary); line-height: 1.6; }

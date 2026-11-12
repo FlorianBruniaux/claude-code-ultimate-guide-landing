@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { ROLES, DECISION_MATRIX, ROLES_META, STATUS_CONFIG } from '../../data/ai-roles'
 import RoleQuiz from '../../components/landing/RoleQuiz.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import '../../styles/roles-page.css'
 
 function slugify(str: string): string {
@@ -76,12 +77,13 @@ const evidenceFilters = [
     </div>
   </nav>
 
-  <section class="section roles-section" id="landscape">
+  <section class="section band band-base roles-section" id="landscape">
     <div class="container">
+      <ChapterLabel number="01" label="Role map" />
       <h2 class="section-title">Two axes, one map</h2>
       <p class="section-subtitle">Where you sit on these two axes defines which role fits you.</p>
       <div class="landscape-grid">
-        <div class="axis-card axis-card--model">
+        <div class="axis-card brand-card axis-card--model">
           <div class="axis-icon">🧠</div>
           <h3>Closer to the model</h3>
           <p>You work closer to model behavior: training, fine-tuning, evaluation, and safety. The roles vary from research-heavy to production evaluation.</p>
@@ -92,7 +94,7 @@ const evidenceFilters = [
             <span class="axis-role-tag">AI Evaluation</span>
           </div>
         </div>
-        <div class="axis-card axis-card--prod">
+        <div class="axis-card brand-card axis-card--prod">
           <div class="axis-icon">🚀</div>
           <h3>Closer to production</h3>
           <p>You build systems that ship. Models are a component inside product, platform, security, governance, or customer-deployment work.</p>
@@ -114,10 +116,11 @@ const evidenceFilters = [
     </div>
   </section>
 
-  <section class="section section--alt roles-section" id="roles" data-role-catalog data-default-filter="Role family">
+  <section class="section band band-paper section-wallpaper roles-section" id="roles" data-role-catalog data-default-filter="Role family">
     <div class="container catalog-container">
       <div class="catalog-heading">
         <div>
+          <ChapterLabel number="02" label="Profiles" />
           <h2 class="section-title">Choose the scope you want to own</h2>
           <p class="section-subtitle">Start with durable role families, then inspect narrower specializations and capabilities.</p>
         </div>
@@ -151,7 +154,7 @@ const evidenceFilters = [
         {ROLES.map((role) => {
           const statusConf = STATUS_CONFIG[role.evidence]
           return (
-            <article id={role.id} class="role-card" data-role-card data-role-evidence={role.evidence}>
+            <article id={role.id} class="role-card brand-card brand-interactive-card" data-role-card data-role-evidence={role.evidence}>
               <div class="role-card-header">
                 <h3 class="role-card-title">{role.title}</h3>
                 <span class="role-status-badge" style={`--status-color: ${statusConf.color}`}>
@@ -174,8 +177,9 @@ const evidenceFilters = [
     </div>
   </section>
 
-  <section class="section roles-section" id="decision-matrix">
+  <section class="section band band-ink section-wallpaper roles-section" id="decision-matrix">
     <div class="container">
+      <ChapterLabel number="03" label="Career paths" />
       <h2 class="section-title">Start from the work you already know</h2>
       <p class="section-subtitle">A broader title is credible when your portfolio shows the missing ownership, not when the label changes first.</p>
 
@@ -183,7 +187,7 @@ const evidenceFilters = [
         {DECISION_MATRIX.map((row) => {
           const targetRole = ROLES.find((role) => role.id === row.roleId)
           return (
-            <article class="career-card">
+            <article class="career-card brand-card">
               <p class="career-card-label">Starting from</p>
               <h3>{row.background}</h3>
               <span class="career-arrow" aria-hidden="true">↓</span>
@@ -194,7 +198,7 @@ const evidenceFilters = [
         })}
       </div>
 
-      <div class="callout-box">
+      <div class="callout-box brand-card">
         <h3>Build evidence before changing your title</h3>
         <ol class="fast-path-list">
           <li><strong>Build something</strong> with AI APIs. A real project, not a tutorial.</li>
@@ -207,8 +211,9 @@ const evidenceFilters = [
     </div>
   </section>
 
-  <section class="section section--alt roles-section" id="market-evidence">
+  <section class="section band band-paper section-wallpaper roles-section" id="market-evidence">
     <div class="container">
+      <ChapterLabel number="04" label="Market evidence" />
       <h2 class="section-title">Market signals, with their limits</h2>
       <p class="section-subtitle">The evidence shows how titles and skills are used. It does not prove a single AI-driven cause.</p>
 
@@ -219,12 +224,12 @@ const evidenceFilters = [
           <p>The data supports broader labels and ownership, not the disappearance of front-end work.</p>
         </div>
         <div class="evidence-grid">
-          <article class="evidence-card">
+          <article class="evidence-card brand-card">
             <h4>What the data says</h4>
             <p><a href="https://github.com/StackExchange/Survey/blob/main/packages/archive/2025/json/developer-profile.json">Stack Overflow's 2025 role dataset</a> reports 26.96% full-stack and 4.25% front-end among 43,560 answers to its role question. In France, the figures are 25.21% and 3.48%.</p>
             <p>This is respondent self-identification, not a count of vacancies. It cannot prove that AI caused the difference.</p>
           </article>
-          <article class="evidence-card">
+          <article class="evidence-card brand-card">
             <h4>What employers still hire for</h4>
             <p><a href="https://economicgraph.linkedin.com/content/dam/me/economicgraph/en-us/PDF/us-software-engineer-talent-landscape-2026.pdf">LinkedIn's 2026 US talent report</a> keeps React and JavaScript among leading skills of recent software-engineering hires, while Python, cloud, and AI demand also rises.</p>
             <p>The practical positioning is <strong>Software Engineer or Product Engineer with front-end depth</strong>. Keep Front-end Engineer when browser architecture, accessibility, interaction quality, and performance remain the ownership boundary.</p>
@@ -240,17 +245,17 @@ const evidenceFilters = [
           <p>One posting establishes one employer's range for one role, level, location, and date. It does not establish a global average or a premium caused by the title.</p>
         </div>
         <div class="compensation-grid">
-          <article class="compensation-card">
+          <article class="compensation-card brand-card">
             <h4>Applied AI Engineer</h4>
             <p><strong>$197K to $278K base</strong></p>
             <p><a href="https://openai.com/careers/applied-ai-engineer-enterprise-san-francisco/">OpenAI, Enterprise, US</a>. Equity separate. Employer-specific customer-facing scope.</p>
           </article>
-          <article class="compensation-card">
+          <article class="compensation-card brand-card">
             <h4>Forward-Deployed Engineer</h4>
             <p><strong>$162K to $280K base</strong></p>
             <p><a href="https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/">OpenAI, San Francisco</a>. Equity separate. One location and a broad level range.</p>
           </article>
-          <article class="compensation-card">
+          <article class="compensation-card brand-card">
             <h4>AI Security Engineer</h4>
             <p><strong>$131.54K to $197K base</strong></p>
             <p><a href="https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers/job/AI-Security-Engineer_2603452">Marvell, Santa Clara or Austin</a>. Employer-specific enterprise cyber-engineering role.</p>
@@ -261,7 +266,7 @@ const evidenceFilters = [
     </div>
   </section>
 
-  <section class="section roles-cta-section" id="full-profiles">
+  <section class="section band band-accent section-wallpaper roles-cta-section" id="full-profiles">
     <div class="container">
       <div class="roles-cta-box">
         <p class="eyebrow">Continue in the guide</p>

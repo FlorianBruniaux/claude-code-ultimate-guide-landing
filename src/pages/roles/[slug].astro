@@ -76,6 +76,7 @@ const jsonLd = [
     ],
   },
 ]
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 ---
 
 <Layout title={title} description={metaDesc} ogType="article" jsonLd={jsonLd} publishedDate="2026-03-09" modifiedDate={ROLES_META.modifiedDate}>
@@ -101,20 +102,24 @@ const jsonLd = [
     </div>
   </header>
 
-  <div class="container role-body">
 
     <!-- Entry paths -->
-    <section class="role-section">
+    <section class="band band-base role-section">
+    <div class="container role-body">
+      <ChapterLabel number="01" label="Entry paths" />
       <h2>Who moves into this role</h2>
       <ul class="entry-paths-list">
         {role.entryPaths.map(path => (
           <li>{path}</li>
         ))}
       </ul>
+    </div>
     </section>
 
     <!-- Skills -->
-    <section class="role-section">
+    <section class="band band-paper section-wallpaper role-section">
+    <div class="container role-body">
+      <ChapterLabel number="02" label="Skills" />
       <h2>Required skills</h2>
       <div class="skills-grid">
         {role.skills.map(skill => (
@@ -124,17 +129,23 @@ const jsonLd = [
           </div>
         ))}
       </div>
+    </div>
     </section>
 
     <!-- Evidence classification -->
-    <section class="role-section">
+    <section class="band band-base role-section">
+    <div class="container role-body">
+      <ChapterLabel number="03" label="Evidence" />
       <h2>Evidence classification</h2>
       <p><strong>{role.evidence}.</strong> This label describes the evidence reviewed in August 2026. It does not guarantee that every employer uses the same title or ownership boundary.</p>
       <p><a href={`${ROLES_META.sourceUrl}#${role.guideAnchor}`}>Read the sourced profile and evidence boundary →</a></p>
+    </div>
     </section>
 
     <!-- FAQ -->
-    <section class="role-section role-faq">
+    <section class="band band-paper section-wallpaper role-section role-faq">
+    <div class="container role-body">
+      <ChapterLabel number="04" label="FAQ" />
       <h2>Frequently asked questions</h2>
 
       <div class="faq-item">
@@ -151,14 +162,14 @@ const jsonLd = [
         <h3>How should I evaluate compensation for a {role.title}?</h3>
         <p>{compensationAnswer}</p>
       </div>
+    </div>
     </section>
 
     <!-- Back link -->
-    <div class="role-back">
-      <a href="/roles/" class="back-link">← All AI Roles</a>
+    <div class="band band-base role-back"><div class="container role-body">
+      <a href="/roles/" class="btn btn-quiet back-link">← All AI Roles</a>
     </div>
-
-  </div>
+    </div></div>
 
 </Layout>
 
@@ -179,11 +190,13 @@ const jsonLd = [
 
 .breadcrumb a {
   color: var(--text-secondary);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .breadcrumb a:hover {
   color: var(--accent);
+  text-decoration-thickness: 2px;
 }
 
 .breadcrumb-sep {
@@ -198,12 +211,6 @@ const jsonLd = [
   flex-wrap: wrap;
 }
 
-.role-hero-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .role-status-badge {
   flex-shrink: 0;
   display: inline-block;
@@ -211,7 +218,7 @@ const jsonLd = [
   font-weight: 600;
   font-family: var(--font-mono);
   padding: 0.3rem 0.7rem;
-  border-radius: 4px;
+  border-radius: var(--radius-control);
   color: var(--status-color);
   background: color-mix(in srgb, var(--status-color) 12%, transparent);
   border: 1px solid color-mix(in srgb, var(--status-color) 30%, transparent);
@@ -220,12 +227,10 @@ const jsonLd = [
 
 .role-body {
   max-width: 800px;
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-2xl);
 }
 
 .role-section {
-  margin-bottom: var(--space-2xl);
+  padding: var(--space-3xl) 0;
 }
 
 .role-section h2 {
@@ -233,8 +238,6 @@ const jsonLd = [
   font-weight: 600;
   margin-bottom: var(--space-md);
   color: var(--text-primary);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border-light);
 }
 
 .entry-paths-list {
@@ -271,12 +274,6 @@ const jsonLd = [
   font-weight: 600;
 }
 
-.role-faq {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
 .role-faq h2 {
   margin-bottom: var(--space-lg);
 }
@@ -304,25 +301,9 @@ const jsonLd = [
 }
 
 .role-back {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--border-light);
+  padding: var(--space-xl) 0;
 }
 
-.back-link {
-  font-size: 0.875rem;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-}
 
-.back-link:hover {
-  text-decoration: underline;
-}
 
-@media (max-width: 600px) {
-  .role-hero-header h1 {
-    font-size: 1.5rem;
-  }
-}
 </style>

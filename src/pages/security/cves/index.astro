@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../../components/global/ChapterLabel.astro'
 import Layout from '../../../layouts/Layout.astro'
 import SecurityBreadcrumbs from '../../../components/security/SecurityBreadcrumbs.astro'
 import SecurityHero from '../../../components/security/SecurityHero.astro'
@@ -19,12 +20,12 @@ const jsonLd = [{ '@type': 'Dataset', name: route.heading, description: route.de
   <SecurityBreadcrumbs route={route} />
   <SecurityHero route={route} databaseLabel={SECURITY_VIEW.databaseLabel} databaseUpdatedLabel={SECURITY_VIEW.databaseUpdatedLabel}>
     <Fragment slot="actions"><a class="btn btn-primary" href="#cve-database">Search CVEs</a><a class="btn btn-secondary" href="/security/hardening/">Harden a setup</a></Fragment>
-    <div class="security-panel"><h2>{cves.length} detailed records</h2><p>This compatibility catalogue includes {historicalGuideRecords} historical guide records beyond the AgentSec feed. Totals include CVEs and advisories without a CVE identifier.</p><p>A missing fixed version is shown as <strong>Unknown</strong>. It is never inferred from nearby releases.</p></div>
+    <div class="brand-card security-panel"><h2>{cves.length} detailed records</h2><p>This compatibility catalogue includes {historicalGuideRecords} historical guide records beyond the AgentSec feed. Totals include CVEs and advisories without a CVE identifier.</p><p>A missing fixed version is shown as <strong>Unknown</strong>. It is never inferred from nearby releases.</p></div>
   </SecurityHero>
   <SecuritySubnav items={[{ href: '#cve-database', label: 'Database' }, { href: '#minimum-versions', label: 'Safe versions' }, { href: '#cve-sources', label: 'Sources' }]} />
   <main>
-    <section class="security-section" id="cve-database"><div class="security-shell"><div class="security-heading"><h2>Search the CVE database</h2><p>Search by identifier, component, description, mitigation, or source. Filter by reported severity.</p></div><SecurityCveCatalog records={cves} /></div></section>
-    <section class="security-section security-section--alt" id="minimum-versions"><div class="security-shell"><div class="security-heading"><h2>Documented minimum safe versions</h2><p>These values come from the maintained threat database. Absence is not proof that another version is safe.</p></div><div class="security-table-wrap"><table class="security-table"><thead><tr><th>Component</th><th>Minimum safe version</th></tr></thead><tbody>{Object.entries(SECURITY_DATA.minimum_safe_versions).map(([component, version]) => <tr><td><code>{component}</code></td><td><code>{version}</code></td></tr>)}</tbody></table></div></div></section>
+    <section class="security-section band band-ink section-wallpaper security-section--catalog" id="cve-database"><div class="security-shell"><div class="security-heading"><ChapterLabel number="01" label="Database" /><h2>Search the CVE database</h2><p>Search by identifier, component, description, mitigation, or source. Filter by reported severity.</p></div><SecurityCveCatalog records={cves} /></div></section>
+    <section class="security-section security-section--alt band band-paper section-wallpaper" id="minimum-versions"><div class="security-shell"><div class="security-heading"><ChapterLabel number="02" label="Safe versions" /><h2>Documented minimum safe versions</h2><p>These values come from the maintained threat database. Absence is not proof that another version is safe.</p></div><div class="security-table-wrap"><table class="security-table"><thead><tr><th>Component</th><th>Minimum safe version</th></tr></thead><tbody>{Object.entries(SECURITY_DATA.minimum_safe_versions).map(([component, version]) => <tr><td><code>{component}</code></td><td><code>{version}</code></td></tr>)}</tbody></table></div></div></section>
     <div id="cve-sources"><SecuritySourceList heading="CVE sources" sources={SECURITY_DATA.sources.filter((source) => /CVE|MCP|Claude Code|Cursor/i.test(source.name))} /></div>
   </main>
   <SecurityRelatedPages current="cves" />

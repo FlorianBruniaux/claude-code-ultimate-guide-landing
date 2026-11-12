@@ -56,8 +56,8 @@ const { command, label = 'Terminal', client, packageVersion, ctaPosition } = Ast
     overflow: hidden;
     background: #101318;
     border: 1px solid #303640;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: none;
   }
 
   .terminal-head {
@@ -91,18 +91,18 @@ const { command, label = 'Terminal', client, packageVersion, ctaPosition } = Ast
     color: #e5e7eb;
     background: #252a33;
     border: 1px solid #414958;
-    border-radius: 6px;
+    border-radius: var(--radius-control);
     cursor: pointer;
     font: 600 0.72rem var(--font-sans);
   }
 
   .copy-command:hover {
     color: #ffffff;
-    border-color: #fb923c;
+    border-color: var(--action);
   }
 
   .copy-command:focus-visible {
-    outline: 2px solid #fb923c;
+    outline: 2px solid var(--action);
     outline-offset: 2px;
   }
 
@@ -117,7 +117,7 @@ const { command, label = 'Terminal', client, packageVersion, ctaPosition } = Ast
 
   .prompt {
     flex: 0 0 auto;
-    color: #fb923c;
+    color: var(--action);
     font: 700 0.82rem var(--font-mono);
   }
 

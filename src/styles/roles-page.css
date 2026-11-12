@@ -29,7 +29,7 @@
   align-items: center;
   padding: 0.3rem 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   background: var(--bg-tertiary);
   color: var(--accent);
   font-family: var(--font-mono);
@@ -74,7 +74,8 @@
 .role-subnav a:hover,
 .role-subnav a:focus-visible {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .roles-section,
@@ -101,16 +102,13 @@
 
 .axis-card {
   padding: clamp(1.35rem, 3vw, 2rem);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg);
-  background: var(--surface-elevated);
 }
 
-.axis-card--model {
+.axis-card.axis-card--model {
   border-top: 3px solid var(--accent-tertiary);
 }
 
-.axis-card--prod {
+.axis-card.axis-card--prod {
   border-top: 3px solid var(--accent);
 }
 
@@ -142,7 +140,7 @@
 .skill-tag {
   padding: 0.25rem 0.55rem;
   border: 1px solid var(--border-light);
-  border-radius: 5px;
+  border-radius: var(--radius-control);
   background: var(--bg-tertiary);
   color: var(--text-secondary);
   font-size: 0.72rem;
@@ -177,7 +175,7 @@
   margin-top: 0.5rem;
   padding: 0.35rem 0.7rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -194,10 +192,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  min-height: 42px;
+  min-height: 44px;
   padding: 0.55rem 0.8rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   background: var(--surface-elevated);
   color: var(--text-secondary);
   font-size: 0.82rem;
@@ -223,14 +221,14 @@
 }
 
 .role-filter[aria-pressed='true'] {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #fff;
+  border-color: var(--text-primary);
+  background: var(--text-primary);
+  color: var(--bg-primary);
 }
 
 .role-filter[aria-pressed='true'] span {
-  background: color-mix(in srgb, #fff 18%, transparent);
-  color: #fff;
+  background: color-mix(in srgb, var(--bg-primary) 20%, transparent);
+  color: var(--bg-primary);
 }
 
 .role-filter:focus-visible,
@@ -242,7 +240,7 @@
 .taxonomy-details {
   margin-bottom: var(--space-xl);
   border: 1px solid var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--surface-elevated) 74%, transparent);
 }
 
@@ -284,21 +282,10 @@
   gap: var(--space-md);
   min-width: 0;
   padding: var(--space-lg);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg);
-  background: var(--surface-elevated);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .role-card[hidden] {
   display: none;
-}
-
-.role-card:hover {
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
 .role-card-header {
@@ -318,7 +305,7 @@
   flex-shrink: 0;
   padding: 0.2rem 0.45rem;
   border: 1px solid color-mix(in srgb, var(--status-color) 35%, transparent);
-  border-radius: 4px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--status-color) 10%, transparent);
   color: var(--status-color);
   font-family: var(--font-mono);
@@ -340,11 +327,12 @@
   color: var(--accent);
   font-size: 0.84rem;
   font-weight: 650;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .role-card-cta:hover {
-  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .career-grid {
@@ -359,9 +347,6 @@
   flex-direction: column;
   min-width: 0;
   padding: var(--space-lg);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg);
-  background: var(--surface-elevated);
 }
 
 .career-card-label,
@@ -410,7 +395,7 @@
   text-transform: uppercase;
 }
 
-.callout-box {
+.callout-box.brand-card {
   display: grid;
   grid-template-columns: minmax(210px, 0.55fr) minmax(0, 1fr);
   gap: var(--space-xl);
@@ -492,9 +477,6 @@
 .compensation-card {
   min-width: 0;
   padding: var(--space-lg);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg);
-  background: var(--surface-elevated);
 }
 
 .evidence-card h4,
@@ -521,8 +503,6 @@
 }
 
 .roles-cta-section {
-  border-top: 1px solid var(--border);
-  background: var(--bg-primary);
 }
 
 .roles-cta-box {
@@ -653,9 +633,5 @@
 @media (prefers-reduced-motion: reduce) {
   .role-card {
     transition: none;
-  }
-
-  .role-card:hover {
-    transform: none;
   }
 }

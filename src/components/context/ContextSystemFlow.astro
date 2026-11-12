@@ -1,10 +1,12 @@
 ---
 import { CONTEXT_SYSTEM_STAGES } from '../../data/context-page'
+import ChapterLabel from '../global/ChapterLabel.astro'
 ---
 
-<section class="context-section" id="understand">
+<section class="context-section band band-base" id="understand">
   <div class="context-shell">
     <div class="context-section__head">
+      <ChapterLabel number="01" label="The system" />
       <p class="context-kicker">The system behind the file</p>
       <h2>Context engineering is a feedback loop</h2>
       <p>Start with one project contract, separate what changes independently, adapt it to the work, then check whether the instructions still help.</p>
@@ -13,7 +15,7 @@ import { CONTEXT_SYSTEM_STAGES } from '../../data/context-page'
       {CONTEXT_SYSTEM_STAGES.map((stage, index) => (
         <li class="context-flow__stage">
           <div class="context-flow__number"><span>{index + 1}</span></div>
-          <div class="context-flow__body">
+          <div class="context-flow__body brand-card brand-interactive-card">
             <span class="context-flow__icon" aria-hidden="true">{stage.icon}</span>
             <h3>{stage.title}</h3>
             <p>{stage.description}</p>

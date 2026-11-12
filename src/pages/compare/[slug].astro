@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import { COMPARISON_TOOLS } from '../../data/compare-data'
 
@@ -90,7 +91,7 @@ const jsonLd = [
   </nav>
 
   <!-- Hero -->
-  <header class="cvs-hero">
+  <header class="page-hero cvs-hero">
     <div class="container">
       <div class="cvs-tool-type">{tool.type}</div>
       <h1>Claude Code vs {tool.name}</h1>
@@ -99,10 +100,12 @@ const jsonLd = [
   </header>
 
   <!-- Main content -->
-  <div class="container cvs-body">
+  <div class="cvs-body">
 
     <!-- Quick comparison table -->
-    <section class="cvs-section" aria-labelledby="comparison-table-heading">
+    <section class="cvs-section band band-base" aria-labelledby="comparison-table-heading">
+    <div class="container">
+      <ChapterLabel number="01" label="Comparison" />
       <h2 id="comparison-table-heading">Quick comparison</h2>
       <div class="cvs-table-wrapper">
         <table class="cvs-table">
@@ -167,13 +170,16 @@ const jsonLd = [
           </tbody>
         </table>
       </div>
+    </div>
     </section>
 
     <!-- Strengths comparison -->
-    <section class="cvs-section" aria-labelledby="strengths-heading">
+    <section class="cvs-section band band-paper section-wallpaper" aria-labelledby="strengths-heading">
+    <div class="container">
+      <ChapterLabel number="02" label="Strengths" />
       <h2 id="strengths-heading">Strengths</h2>
       <div class="cvs-two-col">
-        <div class="cvs-strengths-card">
+        <div class="cvs-strengths-card brand-card">
           <h3>Claude Code</h3>
           <ul>
             <li>Terminal-native, runs anywhere (SSH, Docker, CI)</li>
@@ -184,20 +190,22 @@ const jsonLd = [
             <li>CLAUDE.md persistent project context</li>
           </ul>
         </div>
-        <div class="cvs-strengths-card">
+        <div class="cvs-strengths-card brand-card">
           <h3>{tool.name}</h3>
           <ul>
             {tool.strengths.map(s => <li>{s}</li>)}
           </ul>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Weaknesses -->
-    <section class="cvs-section" aria-labelledby="weaknesses-heading">
+    <section class="cvs-section band band-base" aria-labelledby="weaknesses-heading">
+    <div class="container">
       <h2 id="weaknesses-heading">Weaknesses</h2>
       <div class="cvs-two-col">
-        <div class="cvs-weaknesses-card">
+        <div class="cvs-weaknesses-card brand-card">
           <h3>Claude Code</h3>
           <ul>
             <li>No IDE integration, terminal only</li>
@@ -206,57 +214,67 @@ const jsonLd = [
             <li>No inline autocomplete while typing</li>
           </ul>
         </div>
-        <div class="cvs-weaknesses-card">
+        <div class="cvs-weaknesses-card brand-card">
           <h3>{tool.name}</h3>
           <ul>
             {tool.weaknesses.map(w => <li>{w}</li>)}
           </ul>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Best for -->
-    <section class="cvs-section" aria-labelledby="bestfor-heading">
+    <section class="cvs-section band band-paper section-wallpaper" aria-labelledby="bestfor-heading">
+    <div class="container">
       <h2 id="bestfor-heading">Best for</h2>
       <div class="cvs-two-col">
-        <div class="cvs-bestfor-card">
+        <div class="cvs-bestfor-card brand-card">
           <h3>Claude Code</h3>
           <p>Developers and teams who need autonomous, multi-step agentic workflows from the terminal. Strong fit for CI automation, complex refactors across many files, and projects requiring MCP tool integrations.</p>
         </div>
-        <div class="cvs-bestfor-card">
+        <div class="cvs-bestfor-card brand-card">
           <h3>{tool.name}</h3>
           <p>{tool.bestFor}</p>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Verdict -->
-    <section class="cvs-section cvs-verdict-section" aria-labelledby="verdict-heading">
+    <section class="cvs-section cvs-verdict-section band band-ink section-wallpaper" aria-labelledby="verdict-heading">
+    <div class="container">
+      <ChapterLabel number="03" label="Verdict" />
       <h2 id="verdict-heading">Verdict</h2>
-      <div class="cvs-verdict-card">
+      <div class="cvs-verdict-card brand-card">
         <p>{tool.verdict}</p>
       </div>
+    </div>
     </section>
 
     <!-- Using both together (conditional) -->
     {tool.complementsClaudeCode && tool.complementReason && (
-      <section class="cvs-section cvs-together-section" aria-labelledby="together-heading">
+      <section class="cvs-section cvs-together-section band band-paper section-wallpaper" aria-labelledby="together-heading">
+    <div class="container">
         <h2 id="together-heading">Using both together</h2>
-        <div class="cvs-together-card">
+        <div class="cvs-together-card brand-card">
           <p>{tool.complementReason}</p>
         </div>
-      </section>
+      </div>
+    </section>
     )}
 
     <!-- FAQ -->
-    <section class="cvs-section" aria-labelledby="faq-heading">
+    <section class="cvs-section band band-base" aria-labelledby="faq-heading">
+    <div class="container">
+      <ChapterLabel number="04" label="FAQ" />
       <h2 id="faq-heading">Frequently asked questions</h2>
       <div class="cvs-faq">
-        <div class="cvs-faq-item">
+        <div class="cvs-faq-item brand-card">
           <h3>Is {tool.name} better than Claude Code?</h3>
           <p>It depends on your workflow. {tool.name} is best for: {tool.bestFor}. Claude Code is best for terminal-driven, multi-step agentic workflows where context management and orchestration matter.</p>
         </div>
-        <div class="cvs-faq-item">
+        <div class="cvs-faq-item brand-card">
           <h3>Can I use {tool.name} with Claude Code?</h3>
           <p>
             {tool.complementsClaudeCode
@@ -265,17 +283,20 @@ const jsonLd = [
             }
           </p>
         </div>
-        <div class="cvs-faq-item">
+        <div class="cvs-faq-item brand-card">
           <h3>How much does {tool.name} cost compared to Claude Code?</h3>
           <p>{tool.name}: {tool.pricingMonthly}. Claude Code: $20+/month via Anthropic Max subscription, or pay-per-use via the Anthropic API.</p>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Back link -->
-    <div class="cvs-back">
-      <a href="/compare/" class="btn btn-secondary">&larr; See all comparisons</a>
-    </div>
+    <section class="band band-base cvs-back-band">
+      <div class="container cvs-back">
+        <a href="/compare/" class="btn btn-secondary">&larr; See all comparisons</a>
+      </div>
+    </section>
 
   </div>
 
@@ -301,8 +322,6 @@ const jsonLd = [
     /* ── HERO ──────────────────────────────────────────────────────────────── */
     .cvs-hero {
       padding: var(--space-3xl) 0 var(--space-2xl);
-      background: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-primary) 60%);
-      border-bottom: 1px solid var(--border);
     }
     .cvs-tool-type {
       display: inline-block;
@@ -311,16 +330,13 @@ const jsonLd = [
       color: var(--accent);
       background: color-mix(in srgb, var(--accent) 12%, transparent);
       border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-      border-radius: 20px;
+      border-radius: var(--radius-control);
       padding: 0.2rem 0.75rem;
       margin-bottom: var(--space-md);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     .cvs-hero h1 {
-      font-size: clamp(1.75rem, 4vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
       margin-bottom: var(--space-md);
     }
     .cvs-tagline {
@@ -331,20 +347,14 @@ const jsonLd = [
     }
 
     /* ── BODY LAYOUT ───────────────────────────────────────────────────────── */
-    .cvs-body {
-      padding-top: var(--space-3xl);
-      padding-bottom: var(--space-3xl);
-    }
     .cvs-section {
-      margin-bottom: var(--space-3xl);
+      padding: var(--space-3xl) 0;
     }
+    .cvs-back-band { padding: 0 0 var(--space-3xl); }
     .cvs-section h2 {
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
     }
 
     /* ── TABLE ─────────────────────────────────────────────────────────────── */
@@ -357,7 +367,7 @@ const jsonLd = [
       width: 100%;
       border-collapse: collapse;
       font-size: 0.95rem;
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
     }
     .cvs-table th,
     .cvs-table td {
@@ -385,7 +395,7 @@ const jsonLd = [
     .cvs-strengths-card,
     .cvs-weaknesses-card,
     .cvs-bestfor-card {
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-lg) var(--space-xl);
@@ -437,7 +447,7 @@ const jsonLd = [
 
     /* ── VERDICT ───────────────────────────────────────────────────────────── */
     .cvs-verdict-card {
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: var(--border-radius-lg);
@@ -452,7 +462,7 @@ const jsonLd = [
 
     /* ── USING BOTH TOGETHER ───────────────────────────────────────────────── */
     .cvs-together-card {
-      background: color-mix(in srgb, var(--accent) 6%, var(--bg-secondary));
+      background: var(--surface-elevated);
       border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
       border-radius: var(--border-radius-lg);
       padding: var(--space-xl) var(--space-2xl);
@@ -471,7 +481,7 @@ const jsonLd = [
       gap: var(--space-lg);
     }
     .cvs-faq-item {
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-lg) var(--space-xl);
@@ -492,7 +502,6 @@ const jsonLd = [
     /* ── BACK LINK ─────────────────────────────────────────────────────────── */
     .cvs-back {
       padding-top: var(--space-xl);
-      border-top: 1px solid var(--border);
     }
 
     /* ── RESPONSIVE ────────────────────────────────────────────────────────── */

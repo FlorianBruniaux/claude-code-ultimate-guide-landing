@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
 import { getSiteStats } from '../../utils/site-stats'
 
@@ -102,9 +103,11 @@ const jsonLd = [
     </div>
   </header>
 
-  <div class="container content-page">
+  <div>
 
-    <section class="content-section">
+    <section class="content-section band">
+      <div class="container content-page">
+      <ChapterLabel number="01" label="Hierarchy" />
       <h2>The 3-level hierarchy</h2>
       <p>Claude Code reads CLAUDE.md files at three levels, each additive:</p>
 
@@ -127,7 +130,7 @@ const jsonLd = [
             </tr>
             <tr>
               <td>Project</td>
-              <td><code>{"{project-root}"}/CLAUDE.md</code></td>
+              <td><code>&#123;project-root&#125;/CLAUDE.md</code></td>
               <td>Shared team context</td>
               <td>Yes (committed)</td>
             </tr>
@@ -142,9 +145,12 @@ const jsonLd = [
       </div>
 
       <p>Claude reads all three files at session start and merges them. Lower levels override higher ones for the same setting. Your team's shared conventions live in project-level CLAUDE.md; your personal shortcuts live in CLAUDE.local.md. Before changing workspace controls, <a href={settingsReference.target}>{settingsReference.anchor}</a>.</p>
+      </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section band band-paper section-wallpaper">
+      <div class="container content-page">
+      <ChapterLabel number="02" label="Content" />
       <h2>What to include</h2>
 
       <h3>Always include</h3>
@@ -164,19 +170,25 @@ const jsonLd = [
         <li>Per-developer personal preferences, use CLAUDE.local.md</li>
         <li>Anything that changes every week, stale instructions confuse Claude</li>
       </ul>
+      </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section band band-ink section-wallpaper">
+      <div class="container content-page">
+      <ChapterLabel number="03" label="Template" />
       <h2>Minimal working template</h2>
 
       <p>This is the smallest CLAUDE.md that covers the essentials for a TypeScript project:</p>
 
-      <pre><code set:html={codeTemplate.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')} />
+      <pre><code set:html={codeTemplate.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}></code></pre>
 
       <p>Start small. Add to CLAUDE.md when Claude asks something you've answered before, that's the signal to capture it.</p>
+      </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section band">
+      <div class="container content-page">
+      <ChapterLabel number="04" label="Anti-patterns" />
       <h2>Anti-patterns that hurt performance</h2>
 
       <ul>
@@ -186,39 +198,48 @@ const jsonLd = [
         <li><strong>One monolithic global CLAUDE.md</strong>: global CLAUDE.md grows fast. Split personal preferences (global) from project conventions (project-level) from personal local paths (CLAUDE.local.md).</li>
         <li><strong>Missing build commands</strong>: this is the most common omission. Without them, Claude either guesses (wrong) or asks every session.</li>
       </ul>
+      </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section band band-paper section-wallpaper">
+      <div class="container content-page">
       <h2>FAQ</h2>
-      <details class="faq-item">
+      <details class="faq-item brand-card">
         <summary>What should I put in CLAUDE.md?</summary>
         <p>Tech stack, build commands, code conventions, architecture decisions, and anything you find yourself typing every new session. Not general best practices (Claude already knows them), not README content, not per-developer preferences (use CLAUDE.local.md).</p>
       </details>
-      <details class="faq-item">
+      <details class="faq-item brand-card">
         <summary>How long should CLAUDE.md be?</summary>
         <p>Project-level: 50-200 lines is the sweet spot. Global: up to 400 lines is reasonable. Over 500 lines, you're probably including content that belongs elsewhere (README, API docs, architecture diagrams). Longer does not mean better; every line costs tokens on every session.</p>
       </details>
-      <details class="faq-item">
+      <details class="faq-item brand-card">
         <summary>Does CLAUDE.md replace README?</summary>
         <p>No. README is for humans setting up the project. CLAUDE.md is for Claude's in-session context. They overlap slightly (both might list build commands) but serve different audiences. Don't duplicate them; if it's in README, just reference the file path in CLAUDE.md.</p>
       </details>
+      </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section band band-accent section-wallpaper">
+      <div class="container content-page">
       <h2>Next steps</h2>
       <p>See the <a href="/examples/">{stats.templateCount} CLAUDE.md templates</a> organized by project type, stack, and role. Or read the <a href="/cheatsheet/">full cheatsheet</a> for the complete Claude Code command reference.</p>
+      </div>
     </section>
 
   </div>
 
   <style>
     .content-page {
-      padding: var(--space-xl) var(--space-lg);
       max-width: 860px;
     }
 
     .content-section {
-      margin-bottom: var(--space-2xl);
+      padding: var(--space-3xl) 0;
+    }
+
+    .content-section :is(a:not(.btn)) {
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .content-section h2 {
@@ -257,7 +278,7 @@ const jsonLd = [
     .content-section pre {
       background-color: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--border-radius-lg);
       padding: var(--space-lg);
       overflow-x: auto;
       font-size: 0.875rem;
@@ -269,9 +290,16 @@ const jsonLd = [
       font-family: var(--font-mono);
       background-color: var(--bg-tertiary);
       padding: 2px 6px;
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       font-size: 0.85em;
       color: var(--accent);
+    }
+
+    .content-section pre code {
+      background: none;
+      padding: 0;
+      color: var(--text-primary);
+      font-size: inherit;
     }
 
     .hierarchy-table {
@@ -308,7 +336,7 @@ const jsonLd = [
     .faq-item {
       background-color: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--border-radius-lg);
       margin-bottom: var(--space-md);
       overflow: hidden;
     }
@@ -323,6 +351,9 @@ const jsonLd = [
       align-items: center;
     }
 
+    .faq-item summary:hover { color: var(--accent); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .faq-item[open] { border-color: var(--accent); }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after { content: '+'; font-size: 1.5rem; color: var(--text-secondary); }
     .faq-item[open] summary::after { content: '-'; }

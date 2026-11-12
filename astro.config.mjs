@@ -164,6 +164,7 @@ export default defineConfig({
         './src/styles/global.css',
         './src/styles/components.css',
         './src/styles/starlight-overrides.css',
+        './src/styles/portfolio-system.css',
       ],
       components: {
         Head: './src/components/starlight/Head.astro',
@@ -180,7 +181,7 @@ export default defineConfig({
           // so both systems respect the user's dark/light preference.
           tag: 'script',
           attrs: {},
-          content: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('starlight-theme',t);})();`,
+          content: `(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('starlight-theme',t);})();`,
         },
       ],
       sidebar: [

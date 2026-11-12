@@ -6,7 +6,7 @@ import { HOMEPAGE_METRICS } from '../../data/homepage-content'
 const stats = await getSiteStats()
 ---
 
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero band band-ink band-hero section-wallpaper" aria-labelledby="hero-title">
   <div class="container">
     <div class="hero-copy">
       <p class="hero-kicker">Free, open source, and built from real workflows</p>
@@ -22,7 +22,7 @@ const stats = await getSiteStats()
         <div class="hero-actions">
           <a href="#start-here" class="btn btn-primary">Start in 15 min</a>
           <a href="/guide/" class="btn btn-secondary">Browse the full guide</a>
-          <a href="/downloads/" class="hero-download-link">Downloads ↓</a>
+          <a href="/downloads/" class="btn btn-quiet">Downloads ↓</a>
         </div>
       </div>
 
@@ -76,14 +76,10 @@ const stats = await getSiteStats()
 
 <style>
   .hero {
-    padding: clamp(3rem, 7vw, 5.5rem) 0 2rem;
-    background:
-      radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 32rem),
-      linear-gradient(155deg, var(--bg-secondary), var(--bg-primary) 64%);
-    border-bottom: 1px solid var(--border);
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem);
   }
 
-  .hero .container { max-width: 1440px; }
+  .hero .container { max-width: var(--max-width); }
 
   .hero-copy {
     display: grid;
@@ -121,10 +117,10 @@ const stats = await getSiteStats()
 
   h1 {
     margin: 0;
-    font-size: clamp(2.45rem, 6vw, 4.7rem);
-    font-weight: 750;
+    font-size: clamp(2.8rem, 6.6vw, 5.4rem);
+    font-weight: 700;
     line-height: 0.98;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.015em;
   }
 
   .hero-body {
@@ -136,9 +132,11 @@ const stats = await getSiteStats()
     max-width: 780px;
     margin: 1.5rem 0 0;
     color: var(--text-primary);
-    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
-    font-weight: 600;
-    line-height: 1.35;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
   .hero-support {
@@ -154,16 +152,6 @@ const stats = await getSiteStats()
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.75rem;
-  }
-
-  .hero-actions .btn { min-height: 46px; }
-
-  .hero-download-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 0.55rem;
-    font-weight: 650;
   }
 
   .proof-strip {
@@ -188,7 +176,7 @@ const stats = await getSiteStats()
     color: var(--text-secondary) !important;
     background: color-mix(in srgb, var(--surface-elevated) 72%, transparent);
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     font-size: 0.825rem;
     line-height: 1;
     text-decoration: none !important;

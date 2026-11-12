@@ -15,7 +15,7 @@ const types = ['event', 'campaign', 'author', 'skill']
   </div>
   <div class="security-threat-list">
     {records.map((record) => (
-      <article class="security-threat" data-security-record data-security-threat-record data-record-type={record.type} data-search-text={record.searchText}>
+      <article class="brand-card security-threat" data-security-record data-security-threat-record data-record-type={record.type} data-search-text={record.searchText}>
         <div><span class="security-record-type">{record.type}</span>{record.risk && <span class="security-severity">{record.risk}</span>}</div>
         <h3>{record.title}</h3><p>{record.summary}</p>
         <p class="security-record-meta">{record.date && <time datetime={record.date}>{record.date}</time>}{record.source && <span>{record.source}</span>}</p>

@@ -20,9 +20,9 @@ const {
 const contactUrl = `https://www.florian.bruniaux.com/contact/?utm_source=cc-guide&utm_medium=cta&utm_campaign=consulting&utm_content=${placement}`
 ---
 
-<div class="consulting-cta">
+<div class:list={["consulting-cta", placement === 'homepage' && "band band-accent section-wallpaper consulting-cta--band"]}>
   <div class="container">
-    <div class="consulting-cta-inner">
+    <div class:list={["consulting-cta-inner", placement === 'homepage' && "brand-card brand-card-emphasis"]}>
       <div class="consulting-cta-text">
         <h3>{heading}</h3>
         <p>{body}</p>
@@ -72,15 +72,24 @@ const contactUrl = `https://www.florian.bruniaux.com/contact/?utm_source=cc-guid
     flex-wrap: wrap;
     flex-shrink: 0;
   }
+  /* Discreet action level: underlined at rest, stroke thickens on hover. */
   .consulting-cta-github {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.9rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .consulting-cta-github:hover {
     color: var(--accent);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+  }
+  .consulting-cta-github:hover {
+    color: var(--accent-hover);
+    text-decoration-thickness: 2px;
+  }
+  .consulting-cta--band {
+    padding: var(--space-4xl) 0;
+    border-top: 0;
   }
   @media (max-width: 640px) {
     .consulting-cta-inner { flex-direction: column; align-items: flex-start; }

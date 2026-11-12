@@ -45,12 +45,13 @@ function chipAttrs(value: string): Record<string, string> {
   font-size: 0.85rem;
   min-height: 44px;
   padding: 0.3rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--border);
   background: var(--surface-elevated);
   color: var(--text-secondary);
   cursor: pointer;
 }
 .chip:hover { border-color: var(--accent); color: var(--text-primary); }
-.chip[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--btn-primary-color); font-weight: 600; }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.chip[aria-pressed='true'] { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary); font-weight: 600; }
 </style>

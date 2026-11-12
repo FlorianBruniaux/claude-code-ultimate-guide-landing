@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import edition from '../../data/publication-edition.json'
@@ -118,13 +119,12 @@ const profiles = [
     </div>
   </header>
 
-  <div class="main-content container">
-
     <!-- Reading paths help visitors choose before scanning the full catalogue. -->
-    <section id="paths" class="section section-paths">
+    <section id="paths" class="section section-paths band band-base">
+     <div class="container">
+      <ChapterLabel number="01" label="Choose by goal" />
       <div class="section-heading-row">
         <div>
-          <p class="section-kicker">Choose by goal</p>
           <h2 class="section-heading">Start with what matters to you</h2>
           <p class="section-sub">Pick a route, then jump directly to the recommended titles.</p>
         </div>
@@ -132,7 +132,7 @@ const profiles = [
       </div>
       <div class="paths-grid">
         {profiles.map(p => (
-          <article class="path-card">
+          <article class="path-card brand-card">
             <div class="path-card-heading">
               <span class="path-icon" aria-hidden="true">{p.icon}</span>
               <h3 class="path-label">{p.label}</h3>
@@ -152,16 +152,18 @@ const profiles = [
           </article>
         ))}
       </div>
+     </div>
     </section>
 
     <!-- Open access featured card -->
-    <section id="free" class="section section-free">
-      <p class="section-kicker">Start free</p>
+    <section id="free" class="section section-free band band-ink section-wallpaper">
+     <div class="container">
+      <ChapterLabel number="02" label="Start free" />
       <h2 class="section-heading">Read the primer without a form</h2>
       <p class="section-sub">Four direct downloads, no email required.</p>
       <div class="featured-grid">
         {WHITEPAPERS.filter(wp => !wp.gated && !wp.comingSoon).map(wp => (
-          <div class="featured-card">
+          <div class="featured-card brand-card brand-card-emphasis">
             <div class="featured-header">
               <span class="wp-num-badge">{wp.num}</span>
               <span class="badge badge-open">Open access</span>
@@ -201,11 +203,13 @@ const profiles = [
           </div>
         ))}
       </div>
+     </div>
     </section>
 
     <!-- Complete table -->
-    <section id="table" class="section">
-      <p class="section-kicker">Complete collection</p>
+    <section id="table" class="section band band-base">
+     <div class="container">
+      <ChapterLabel number="03" label="Complete collection" />
       <h2 class="section-heading">All {whitepaperCount} whitepapers</h2>
       <div class="release-notice">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
@@ -213,7 +217,7 @@ const profiles = [
       </div>
       <div class="wp-table">
         {WHITEPAPERS.map(wp => (
-          <div class="wp-row" id={`wp-${wp.num}`}>
+          <div class="wp-row brand-card" id={`wp-${wp.num}`}>
             <div class="wp-row-info">
               <div class="wp-row-header">
                 <span class="wp-num-badge">{wp.num}</span>
@@ -238,7 +242,7 @@ const profiles = [
                 <div class="gated-block" data-wp={wp.num} data-file-fr={`${wp.slugFr}.fr`} data-file-en={`${wp.slugEn}.en`}>
                   <button
                     type="button"
-                    class="get-btn"
+                    class="btn btn-secondary get-btn"
                     data-wp={wp.num}
                     aria-expanded="false"
                     aria-controls={`form-${wp.num}`}
@@ -272,7 +276,7 @@ const profiles = [
                           <input type="radio" name={`lang-${wp.num}`} value="fr" checked={!wp.slugEn} /> FR
                         </label>
                       </div>
-                      <button type="submit" class="submit-btn">
+                      <button type="submit" class="btn btn-primary submit-btn">
                         <span class="submit-text">Send to my inbox</span>
                         <span class="submit-spinner hidden" aria-hidden="true">···</span>
                       </button>
@@ -315,10 +319,13 @@ const profiles = [
           </div>
         ))}
       </div>
+     </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="section faq-section">
+    <section id="faq" class="section faq-section band band-paper section-wallpaper">
+     <div class="container">
+      <ChapterLabel number="04" label="Questions" />
       <h2 class="section-heading">FAQ</h2>
       <div class="faq-grid">
         <details class="faq-item">
@@ -338,10 +345,12 @@ const profiles = [
           <p class="faq-a">Yes. Each whitepaper has its own version number independent of the guide. Subscribe to get notified when a new version drops. The email you provided at download is used for that.</p>
         </details>
       </div>
+     </div>
     </section>
 
-    <section class="section section-related" aria-labelledby="related-title">
-      <a href="/cheatsheets/" class="related-card">
+    <section class="section section-related band band-base" aria-labelledby="related-title">
+     <div class="container">
+      <a href="/cheatsheets/" class="related-card brand-card brand-interactive-card">
         <span class="featured-badge-wp">{stats.cheatsheetCount} RECAP CARDS</span>
         <span class="related-copy">
           <strong id="related-title">Need something faster?</strong>
@@ -349,9 +358,8 @@ const profiles = [
         </span>
         <span class="related-arrow" aria-hidden="true">→</span>
       </a>
+     </div>
     </section>
-
-  </div>
 
   <ConsultingCta placement="whitepapers" />
 </Layout>
@@ -365,7 +373,7 @@ const profiles = [
     font-size: 0.68rem;
     font-weight: 700;
     padding: 0.15rem 0.5rem;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     letter-spacing: 0.04em;
   }
   .badge-soon {
@@ -375,7 +383,7 @@ const profiles = [
     font-size: 0.68rem;
     font-weight: 600;
     padding: 0.15rem 0.5rem;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     letter-spacing: 0.04em;
   }
   .coming-soon-block {
@@ -391,9 +399,8 @@ const profiles = [
     gap: 0.5rem;
     font-size: 0.85rem;
     color: var(--text-secondary);
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-    border-radius: 0.5rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--border-radius-lg);
     padding: 0.625rem 1rem;
     margin-bottom: 1.5rem;
   }
@@ -406,15 +413,8 @@ const profiles = [
     gap: 1rem;
     min-height: 72px;
     padding: 0.9rem 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg-secondary);
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .related-card:hover {
-    background: color-mix(in srgb, var(--accent) 5%, var(--bg-secondary));
-    border-color: var(--accent);
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
   }
   .featured-badge-wp {
     font-size: 0.7rem;
@@ -422,9 +422,10 @@ const profiles = [
     letter-spacing: 0.08em;
     color: var(--accent);
     white-space: nowrap;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    font-family: var(--font-mono);
+    border: 1px solid currentColor;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-control);
     flex-shrink: 0;
   }
   .related-copy {
@@ -444,32 +445,21 @@ const profiles = [
 
   /* Layout */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-  .main-content { padding-bottom: 2.5rem; }
 
   /* Hero */
-  .page-hero {
-    padding: clamp(2.25rem, 5vw, 3.5rem) 0 2.5rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-primary);
-  }
+  .page-hero { padding: clamp(2.5rem, 5vw, 3.75rem) 0 2.75rem; }
   .hero-label {
     display: inline-block;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid var(--accent);
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
     margin-bottom: 1rem;
-  }
-  .page-hero h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0 0 0.75rem;
   }
   .tagline {
     font-size: 1.05rem;
@@ -494,8 +484,9 @@ const profiles = [
   }
   .hero-stats .stat:first-child { padding-left: 0; }
   .stat-num {
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--accent);
     line-height: 1.1;
   }
@@ -517,25 +508,10 @@ const profiles = [
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    min-height: 44px;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary { border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-secondary); }
-  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+  /* Buttons inherit the shared action levels in src/styles/components.css. */
 
   /* Sections */
-  .section { padding: 2.5rem 0 0.5rem; }
+  .section { padding: clamp(3rem, 6vw, 4.5rem) 0; }
   .section-kicker {
     margin: 0 0 0.35rem;
     color: var(--accent);
@@ -560,13 +536,12 @@ const profiles = [
     color: var(--accent);
     font-size: 0.85rem;
     font-weight: 650;
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 0.24em;
     white-space: nowrap;
   }
   .section-heading {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     margin: 0 0 0.4rem;
   }
   .section-sub {
@@ -582,7 +557,7 @@ const profiles = [
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 0.15rem 0.5rem;
-    border-radius: 3px;
+    border-radius: var(--radius-control);
   }
   .badge-free { background: color-mix(in srgb, #22c55e 20%, transparent); color: #16a34a; }
   .badge-popular { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent); }
@@ -592,9 +567,9 @@ const profiles = [
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
-    padding: 0.15rem 0.45rem;
-    border-radius: 3px;
+    border: 1px solid var(--accent);
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--radius-control);
   }
 
   /* Featured cards */
@@ -605,10 +580,7 @@ const profiles = [
     margin-bottom: 0.5rem;
   }
   .featured-card {
-    border: 1px solid var(--accent);
-    border-radius: 0.75rem;
     padding: 1.5rem;
-    background: color-mix(in srgb, var(--accent) 4%, var(--bg-secondary));
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -622,7 +594,7 @@ const profiles = [
     color: var(--text-muted);
     border: 1px solid var(--border);
     padding: 0.1rem 0.4rem;
-    border-radius: 999px;
+    border-radius: var(--radius-control);
   }
   .featured-actions { margin-top: 0.25rem; }
   .lang-format-group { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -637,22 +609,17 @@ const profiles = [
     font-weight: 600;
     min-height: 44px;
     padding: 0.55rem 0.75rem;
-    border-radius: 0.35rem;
+    border-radius: var(--radius-control);
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-primary);
   }
-  .dl-pdf {
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-  }
-  .dl-pdf:hover { color: var(--accent); border-color: var(--accent); }
-  .dl-epub {
-    color: var(--text-muted);
-    background: var(--bg-primary);
-  }
-  .dl-epub:hover { color: var(--text-primary); border-color: var(--border); }
+  .dl-btn:hover { background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary); }
+  .dl-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .dl-epub { color: var(--text-secondary); }
 
   /* Table */
   .wp-table {
@@ -667,12 +634,7 @@ const profiles = [
     justify-content: space-between;
     gap: 1rem;
     padding: 1.15rem;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg-secondary);
-    transition: border-color 0.15s, background 0.15s;
   }
-  .wp-row:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); }
   .wp-row-info { flex: 1; min-width: 0; }
   .wp-row-header {
     display: flex;
@@ -710,7 +672,7 @@ const profiles = [
     background: var(--bg-tertiary, var(--bg-secondary));
     border: 1px solid var(--border);
     padding: 0.1rem 0.4rem;
-    border-radius: 3px;
+    border-radius: var(--radius-control);
     font-family: var(--font-mono);
   }
   .wp-row-actions {
@@ -724,25 +686,7 @@ const profiles = [
   .free-downloads { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-start; }
 
   /* Get button */
-  .get-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.45rem;
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
-    min-height: 44px;
-    width: 100%;
-  }
-  .get-btn:hover { background: var(--accent-hover); }
+  .get-btn { justify-content: space-between; width: 100%; white-space: nowrap; }
   .get-btn svg { transition: transform 0.2s; }
   .get-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
 
@@ -750,9 +694,9 @@ const profiles = [
   .inline-form {
     margin-top: 0.75rem;
     padding: 1rem 1.25rem;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border: 1px solid var(--border);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-control);
     width: 100%;
     max-width: none;
     box-sizing: border-box;
@@ -768,15 +712,15 @@ const profiles = [
     flex: 1;
     padding: 0.45rem 0.7rem;
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: var(--radius-control);
     font-size: 0.85rem;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     min-width: 0;
     min-height: 44px;
     transition: border-color 0.15s;
   }
-  .form-input:focus { outline: none; border-color: var(--accent); }
+  .form-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-color: var(--accent); }
   .format-selector {
     display: flex;
     align-items: center;
@@ -796,26 +740,12 @@ const profiles = [
     cursor: pointer;
     min-height: 44px;
     padding: 0.35rem 0.45rem;
-    border-radius: 3px;
-    transition: color 0.1s;
+    border-radius: var(--radius-control);
+    transition: color 150ms ease;
   }
   .radio-pill:hover { color: var(--text-primary); }
   .radio-pill input { cursor: pointer; accent-color: var(--accent); }
-  .submit-btn {
-    width: 100%;
-    padding: 0.55rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 0.4rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
-    margin-bottom: 0.5rem;
-    min-height: 44px;
-  }
-  .submit-btn:hover { background: var(--accent-hover); }
+  .submit-btn { width: 100%; margin-bottom: 0.5rem; }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
   .form-note {
     font-size: 0.72rem;
@@ -828,7 +758,7 @@ const profiles = [
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem 0.75rem;
-    border-radius: 0.4rem;
+    border-radius: var(--radius-control);
     font-size: 0.85rem;
     font-weight: 500;
   }
@@ -846,9 +776,6 @@ const profiles = [
   }
   .path-card {
     padding: 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 0.625rem;
-    background: var(--bg-secondary);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -878,21 +805,22 @@ const profiles = [
     color: var(--accent);
     text-decoration: none;
     cursor: pointer;
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    border: 1px solid var(--border);
     padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-    transition: background 0.15s;
+    border-radius: var(--radius-control);
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
   }
-  .path-link:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .path-link:hover { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary); }
+  .path-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* FAQ */
-  .faq-section { padding-bottom: 2rem; }
   .faq-grid {
     display: flex;
     flex-direction: column;
     gap: 0;
     border: 1px solid var(--border);
-    border-radius: 0.625rem;
+    border-radius: var(--border-radius-lg);
+    background: var(--surface-elevated);
     overflow: hidden;
   }
   .faq-item {
@@ -910,10 +838,11 @@ const profiles = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.15s;
+    transition: background-color 150ms ease;
     min-height: 52px;
   }
-  .faq-q:hover { background: var(--bg-secondary); }
+  .faq-q:hover { background: var(--bg-tertiary); }
+  .faq-q:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
   .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
   .faq-item[open] .faq-q::after { content: '−'; }
   .faq-a {
@@ -937,7 +866,6 @@ const profiles = [
   }
   @media (max-width: 480px) {
     .container { padding: 0 1rem; }
-    .page-hero { padding: 1.5rem 0; }
     .tagline { font-size: 0.95rem; line-height: 1.45; margin-bottom: 1rem; }
     .hero-stats { margin-bottom: 1rem; }
     .hero-cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }

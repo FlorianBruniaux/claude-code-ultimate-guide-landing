@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import McpTerminal from '../../components/mcp/McpTerminal.astro'
 import { loadMcpProductData } from '../../utils/mcp-product-data'
 
@@ -91,14 +92,14 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </header>
 
-  <section class="section section--alt" aria-labelledby="first-query">
+  <section class="section band section--alt" aria-labelledby="first-query">
     <div class="container narrow-grid">
       <div>
         <p class="section-kicker">First useful query</p>
         <h2 class="section-title" id="first-query">Ask for a source, not a summary</h2>
         <p class="section-subtitle">This request makes the result inspectable. The client first finds a relevant section, then opens the source it will use.</p>
       </div>
-      <div class="query-card" data-mcp-query data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="first-query">
+      <div class="query-card brand-card" data-mcp-query data-mcp-client="any" data-mcp-version={mcp.publicVersion} data-mcp-position="first-query">
         <blockquote>Search the Claude Code Ultimate Guide for session-scoped hooks. Open the most relevant source section and cite its path and heading.</blockquote>
         <button type="button" class="btn btn-secondary query-copy" data-copy-query hidden>Copy first query</button>
         <p class="query-copy-status" data-query-status aria-live="polite" aria-atomic="true"></p>
@@ -110,24 +111,24 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section" aria-labelledby="capabilities">
+  <section class="section band band-base" aria-labelledby="capabilities">
     <div class="container">
-      <p class="section-kicker">Published surface</p>
+      <ChapterLabel number="01" label="Published surface" />
       <h2 class="section-title" id="capabilities">Use the guide as a retrieval layer</h2>
       <p class="section-subtitle">These capabilities come from the public npm runtime, not the unreleased repository candidate.</p>
 
       <div class="use-case-grid">
-        <article class="feature-card">
+        <article class="feature-card brand-card">
           <span class="feature-index">01</span>
           <h3>Search and cite</h3>
           <p>Locate a guide topic, then retrieve only the source section needed for the current decision.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card brand-card">
           <span class="feature-index">02</span>
           <h3>Find working material</h3>
           <p>Search production templates, examples, cheat sheets, releases, and security references by task.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card brand-card">
           <span class="feature-index">03</span>
           <h3>Check official changes</h3>
           <p>Create local Anthropic documentation snapshots, compare them, and search the saved result.</p>
@@ -157,9 +158,9 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="compatibility">
+  <section class="section band section--alt" aria-labelledby="compatibility">
     <div class="container">
-      <p class="section-kicker">Client setup</p>
+      <ChapterLabel number="02" label="Client setup" />
       <h2 class="section-title" id="compatibility">Install the same pinned runtime in Claude Code or Codex</h2>
       <p class="section-subtitle">Both commands create a local stdio server entry named <code>claude-code-guide</code>.</p>
       <div class="client-grid">
@@ -178,10 +179,10 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section" aria-labelledby="privacy">
+  <section class="section band band-base" aria-labelledby="privacy">
     <div class="container boundary-grid">
       <div>
-        <p class="section-kicker">Network boundary</p>
+        <ChapterLabel number="03" label="Network boundary" />
         <h2 class="section-title" id="privacy">Local transport, tool-specific network access</h2>
         <p class="section-subtitle">MCP messages travel between your client and the local child process over stdio. This project does not run a hosted MCP endpoint.</p>
         <p class="privacy-callout"><strong>No first-party telemetry:</strong> the server does not upload prompts, arguments, source content, device identifiers, or usage events to the guide author.</p>
@@ -196,24 +197,24 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="npm-stats">
+  <section class="section band band-ink section-wallpaper" aria-labelledby="npm-stats">
     <div class="container">
-      <p class="section-kicker">npm snapshot</p>
+      <ChapterLabel number="04" label="npm snapshot" />
       <h2 class="section-title" id="npm-stats">Published downloads, with their measurement limits</h2>
       <p class="section-subtitle">Counts cover complete UTC days and the package <code>{mcp.packageName}</code>.</p>
       <p class="stats-provenance">Source: <strong>{mcp.npmSource}</strong>. Snapshot created <time datetime={mcp.npmSnapshotAt}>{npmSnapshotDate}</time>.</p>
       <div class="stats-grid">
-        <article class="stat-card">
+        <article class="stat-card brand-card">
           <p>Since launch</p>
           <strong>{number.format(mcp.downloads.sinceLaunch.count)}</strong>
           <span><time datetime={mcp.downloads.sinceLaunch.start}>{formatDate(mcp.downloads.sinceLaunch.start)}</time> to <time datetime={mcp.downloads.sinceLaunch.end}>{formatDate(mcp.downloads.sinceLaunch.end)}</time></span>
         </article>
-        <article class="stat-card">
+        <article class="stat-card brand-card">
           <p>Trailing 30 complete days</p>
           <strong>{number.format(mcp.downloads.last30Days.count)}</strong>
           <span><time datetime={mcp.downloads.last30Days.start}>{formatDate(mcp.downloads.last30Days.start)}</time> to <time datetime={mcp.downloads.last30Days.end}>{formatDate(mcp.downloads.last30Days.end)}</time></span>
         </article>
-        <article class="stat-card">
+        <article class="stat-card brand-card">
           <p>Trailing 7 complete days</p>
           <strong>{number.format(mcp.downloads.last7Days.count)}</strong>
           <span><time datetime={mcp.downloads.last7Days.start}>{formatDate(mcp.downloads.last7Days.start)}</time> to <time datetime={mcp.downloads.last7Days.end}>{formatDate(mcp.downloads.last7Days.end)}</time></span>
@@ -227,10 +228,10 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section" aria-labelledby="faq">
+  <section class="section band band-base" aria-labelledby="faq">
     <div class="container faq-layout">
       <div>
-        <p class="section-kicker">Questions before installing</p>
+        <ChapterLabel number="05" label="Questions before installing" />
         <h2 class="section-title" id="faq">MCP server FAQ</h2>
       </div>
       <div class="faq-list">
@@ -244,7 +245,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="sources">
+  <section class="section band section--alt" aria-labelledby="sources">
     <div class="container source-panel">
       <div>
         <p class="section-kicker">Verify the claims</p>
@@ -276,7 +277,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
   .mcp-hero h1 { max-width: 760px; margin: 0 0 1rem; font-size: clamp(2.3rem, 5.5vw, 4.75rem); line-height: 1.02; letter-spacing: -0.045em; }
   .mcp-hero .tagline { max-width: 680px; margin-bottom: 1.4rem; }
   .runtime-facts { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .runtime-facts span { padding: 0.35rem 0.65rem; color: var(--text-secondary); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 999px; font: 650 0.73rem var(--font-mono); }
+  .runtime-facts span { padding: 0.35rem 0.65rem; color: var(--text-secondary); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-control); font: 650 0.73rem var(--font-mono); }
   .snapshot-note { max-width: 700px; margin: 0.9rem 0 0; color: var(--text-muted); font-size: 0.78rem; }
   .hero-install { display: grid; gap: 1rem; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
@@ -284,7 +285,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
   .narrow-grid, .boundary-grid, .faq-layout, .source-panel { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1.2fr); gap: clamp(2rem, 7vw, 6rem); align-items: start; }
   .section-title { max-width: 720px; margin-top: 0; }
   .section-subtitle { max-width: 760px; }
-  .query-card { padding: clamp(1.25rem, 3vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
+  .query-card { padding: clamp(1.25rem, 3vw, 2rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); box-shadow: none; }
   blockquote { margin: 0; padding-left: 1.15rem; color: var(--text-primary); border-left: 3px solid var(--accent); font-size: 1.08rem; font-weight: 580; line-height: 1.65; }
   .query-copy { margin-top: 1rem; }
   .query-copy[hidden] { display: none; }
@@ -322,7 +323,7 @@ const description = `Install ${mcp.packageName} ${mcp.publicVersion}. Search the
   .method-note .method-examples { margin-top: 0.65rem; font-size: 0.84rem; }
   .faq-list { display: grid; gap: 0.65rem; }
   .faq-list p { margin: 0; padding: 0.9rem 1.15rem 1.15rem; color: var(--text-secondary); }
-  .source-panel { padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 18px; }
+  .source-panel { padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); }
   .source-panel p { color: var(--text-secondary); }
   .source-links { display: grid; justify-items: start; gap: 0.65rem; }
   .source-links a:not(.btn) { display: inline-flex; align-items: center; min-height: 38px; font-weight: 620; }

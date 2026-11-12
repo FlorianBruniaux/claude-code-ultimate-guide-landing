@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Tldr from '../../components/global/Tldr.astro'
 import { landingSeo } from '../../data/seo-editorial-contract.mjs'
 
@@ -182,6 +183,7 @@ const useCaseMatrix = [
       <div class="paradigm-grid">
         <div class="paradigm-text">
           <span class="section-badge">The Shift</span>
+          <ChapterLabel number="01" label="The shift" />
           <h2 class="section-title">From prompt engineering to context engineering</h2>
           <p>Prompt engineering optimizes one request. Context engineering optimizes the entire information architecture: what the model knows before any request begins.</p>
           <p>When Claude generates generic output or ignores a convention, inspect the context it actually received before blaming the model. Missing, stale or noisy context is one possible cause; model limits and failed checks are others. The useful question is which cause the evidence supports.</p>
@@ -229,15 +231,15 @@ const useCaseMatrix = [
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="pull-the-context-that-the-current-decision-needs">
+  <section class="section band" aria-labelledby="pull-the-context-that-the-current-decision-needs">
     <div class="container">
       <span class="section-badge">Lean applied to context</span>
       <h2 id="pull-the-context-that-the-current-decision-needs" class="section-title">Pull the context the decision needs</h2>
       <p class="section-subtitle">Just-in-Time is an analogy here, not a claim that a smaller prompt makes a software team Lean. Start with one recurring task and the decision it must make.</p>
       <div class="concepts-grid">
-        <div class="concept-card"><h3>Trace the source</h3><p>Record the authoritative file, revision or retrieval time, and the relevant behavior. A repository path alone does not show that the agent saw current information.</p></div>
-        <div class="concept-card"><h3>Trace the use</h3><p>Separate information present, generated, loaded and used. Check the resulting decision against a known failure and a nearby valid case.</p></div>
-        <div class="concept-card"><h3>Trace the effect</h3><p>Compare reviewer corrections, rework and the downstream result for similar tasks. Count retrieval and maintenance cost before turning a local fix into a permanent rule.</p></div>
+        <div class="concept-card brand-card"><h3>Trace the source</h3><p>Record the authoritative file, revision or retrieval time, and the relevant behavior. A repository path alone does not show that the agent saw current information.</p></div>
+        <div class="concept-card brand-card"><h3>Trace the use</h3><p>Separate information present, generated, loaded and used. Check the resulting decision against a known failure and a nearby valid case.</p></div>
+        <div class="concept-card brand-card"><h3>Trace the effect</h3><p>Compare reviewer corrections, rework and the downstream result for similar tasks. Count retrieval and maintenance cost before turning a local fix into a permanent rule.</p></div>
       </div>
       <p><a href="/guide/agent-harness/#lean-countermeasure-loop-for-a-repository-harness">Test the corresponding harness control</a> and <a href="/lean-ai/">follow the full request to the user</a>.</p>
       <p>If your team wants to practise these decisions together, <a href="https://www.florian.bruniaux.com/services/training/?utm_source=cc-guide&amp;utm_medium=cta&amp;utm_campaign=consulting&amp;utm_content=context-tools#team-training">explore context and harness engineering training for your team</a>.</p>
@@ -245,13 +247,14 @@ const useCaseMatrix = [
   </section>
 
   <!-- Core Concepts -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="container">
+      <ChapterLabel number="02" label="Concepts" />
       <h2 class="section-title">Three concepts that change how you think</h2>
       <p class="section-subtitle">Before picking tools, these mental models determine whether you're solving the right problem.</p>
       <div class="concepts-grid">
         {concepts.map(c => (
-          <div class="concept-card">
+          <div class="concept-card brand-card">
             <div class="concept-header">
               <h3>{c.name}</h3>
               {c.abbr && <span class="concept-abbr">{c.abbr}</span>}
@@ -268,13 +271,14 @@ const useCaseMatrix = [
   </section>
 
   <!-- Tool Categories -->
-  <section class="section section--alt" id="tool-categories">
+  <section class="section band" id="tool-categories">
     <div class="container">
+      <ChapterLabel number="03" label="Tool categories" />
       <h2 class="section-title">Seven tool categories</h2>
       <p class="section-subtitle">Each category intercepts at a different point in the pipeline, from CLI output to observability layer to operational loop closure.</p>
       <div class="tool-categories-grid">
         {tools.map(cat => (
-          <div class={`tool-category-card tool-category-card--${cat.color}`}>
+          <div class={`tool-category-card brand-card tool-category-card--${cat.color}`}>
             <div class="tool-category-header">
               <span class="tool-category-icon">{cat.icon}</span>
               <div>
@@ -300,29 +304,30 @@ const useCaseMatrix = [
     </div>
   </section>
 
-  <section class="section" id="skill-lifecycle">
+  <section class="section section--alt" id="skill-lifecycle">
     <div class="container">
       <span class="section-badge">Skill Governance</span>
+      <ChapterLabel number="04" label="Lifecycle" />
       <h2 class="section-title">Low use is a review signal, not a deletion rule</h2>
       <p class="section-subtitle">A quiet skill may be obsolete, rarely needed, successfully preventive, or simply missing telemetry. The usage signal starts an investigation; it does not settle the decision.</p>
 
       <div class="lifecycle-grid">
-        <article class="lifecycle-card">
+        <article class="lifecycle-card brand-card">
           <span class="lifecycle-step">1</span>
           <h3>Observe</h3>
           <p>Run <code>/skill-doctor</code> in a Claude Code terminal to inspect visible skill context cost and never-invoked skills.</p>
         </article>
-        <article class="lifecycle-card">
+        <article class="lifecycle-card brand-card">
           <span class="lifecycle-step">2</span>
           <h3>Bound the evidence</h3>
           <p>The report requires v2.1.252 or later, excludes bundled and enterprise skills, depends on feature-flag fetching, and is unavailable through Remote Control.</p>
         </article>
-        <article class="lifecycle-card">
+        <article class="lifecycle-card brand-card">
           <span class="lifecycle-step">3</span>
           <h3>Compare</h3>
           <p>Disable the candidate, run representative sessions with and without it, and combine those results with task frequency and failure severity.</p>
         </article>
-        <article class="lifecycle-card">
+        <article class="lifecycle-card brand-card">
           <span class="lifecycle-step">4</span>
           <h3>Retire safely</h3>
           <p>Keep the retired version in Git history or outside discovered skill directories. An archive under <code>.claude/skills/</code> can remain visible through nested discovery.</p>
@@ -337,37 +342,38 @@ const useCaseMatrix = [
   </section>
 
   <!-- Benchmarks -->
-  <section class="section">
+  <section class="section band band-ink section-wallpaper">
     <div class="container">
+      <ChapterLabel number="05" label="Benchmarks" />
       <h2 class="section-title">Benchmarks worth knowing</h2>
       <p class="section-subtitle">Each figure names the quantity it measures. A saving on one layer, such as shell output or cached input, is not the same number as the cost of a whole task.</p>
       <div class="benchmarks-grid">
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">+6.8%</div>
           <div class="benchmark-label">billed cost, with 38.4% fewer tool-output tokens</div>
           <div class="benchmark-source">arXiv 2607.12161, largest compression setup against unmodified Claude Code. Fewer tokens on one layer did not mean a smaller bill</div>
         </div>
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">20x</div>
           <div class="benchmark-label">prompt compression</div>
           <div class="benchmark-source">LLMLingua, 1.5% performance loss on GSM8K & BBH</div>
         </div>
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">67%</div>
           <div class="benchmark-label">fewer RAG failures</div>
           <div class="benchmark-source">Anthropic Contextual Retrieval + BM25 + reranking</div>
         </div>
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">90-97.5%</div>
           <div class="benchmark-label">lower price on cached input tokens</div>
           <div class="benchmark-source">Anthropic prompt caching: a cache read costs 10% of the base input price on most current models, 5% on Opus 5.5 and 2.5% on Fable 5.1</div>
         </div>
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">&lt;4%</div>
           <div class="benchmark-label">GPU memory waste</div>
           <div class="benchmark-source">vLLM PagedAttention (vs 60–80% with naive allocation)</div>
         </div>
-        <div class="benchmark-card">
+        <div class="benchmark-card brand-card">
           <div class="benchmark-number">2.5x</div>
           <div class="benchmark-label">TTFT acceleration</div>
           <div class="benchmark-source">SlimInfer dynamic token pruning on LLaMA 3.1</div>
@@ -378,13 +384,13 @@ const useCaseMatrix = [
   </section>
 
   <!-- Use Case Matrix -->
-  <section class="section section--alt">
+  <section class="section band">
     <div class="container">
       <h2 class="section-title">Tool selection by use case</h2>
       <p class="section-subtitle">Which tools matter depends on where you sit in the stack.</p>
       <div class="matrix-grid">
         {useCaseMatrix.map(row => (
-          <div class="matrix-card">
+          <div class="matrix-card brand-card">
             <h3 class="matrix-persona">{row.persona}</h3>
             <table class="matrix-table">
               <tbody>
@@ -403,7 +409,7 @@ const useCaseMatrix = [
   </section>
 
   <!-- Key principle callout -->
-  <section class="section section--tint-warm">
+  <section class="section section--alt">
     <div class="container">
       <div class="principle-block">
         <blockquote class="principle-quote">
@@ -416,7 +422,7 @@ const useCaseMatrix = [
   </section>
 
   <!-- CTA -->
-  <section class="section">
+  <section class="section band band-accent section-wallpaper">
     <div class="container">
       <div class="cta-block">
         <h2>Full reference in the guide</h2>
@@ -491,9 +497,6 @@ const useCaseMatrix = [
   }
 
   .concept-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--space-xl);
   }
 
@@ -512,11 +515,11 @@ const useCaseMatrix = [
   .concept-abbr {
     display: inline-block;
     background: var(--accent);
-    color: #fff;
+    color: var(--bg-primary);
     font-size: 0.7rem;
     font-weight: 700;
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: var(--radius-control);
     letter-spacing: 0.04em;
   }
 
@@ -554,18 +557,10 @@ const useCaseMatrix = [
   }
 
   .tool-category-card {
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--space-xl);
-    transition: border-color 0.15s ease, transform 0.15s ease;
   }
 
-  .tool-category-card:hover {
-    transform: translateY(-2px);
-  }
-
-  .tool-category-card--orange { border-top: 3px solid #e07b39; }
+  .tool-category-card--orange { border-top: 3px solid var(--accent); }
   .tool-category-card--blue   { border-top: 3px solid #3b82f6; }
   .tool-category-card--purple { border-top: 3px solid #8b5cf6; }
   .tool-category-card--teal   { border-top: 3px solid #0d9488; }
@@ -577,10 +572,13 @@ const useCaseMatrix = [
     display: inline-block;
     margin-top: var(--space-md);
     font-size: 0.85rem;
-    color: #d97706;
-    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .tool-guide-link:hover { text-decoration: underline; }
+  .tool-guide-link:hover,
+  .tool-guide-link:focus-visible { text-decoration-thickness: 2px; color: var(--accent-hover); }
 
   .lifecycle-grid {
     display: grid;
@@ -589,9 +587,6 @@ const useCaseMatrix = [
   }
 
   .lifecycle-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--space-xl);
   }
 
@@ -599,7 +594,7 @@ const useCaseMatrix = [
     align-items: center;
     background: var(--accent);
     border-radius: 50%;
-    color: #fff;
+    color: var(--bg-primary);
     display: inline-flex;
     font-family: var(--font-mono);
     font-size: 0.8rem;
@@ -716,7 +711,7 @@ const useCaseMatrix = [
 
   .tool-stars {
     font-size: 0.8rem;
-    color: #e07b39;
+    color: var(--accent);
     font-weight: 600;
     white-space: nowrap;
   }
@@ -729,20 +724,17 @@ const useCaseMatrix = [
   }
 
   .benchmark-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--space-xl);
     text-align: center;
   }
 
   .benchmark-number {
     font-size: 2.75rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--accent);
     line-height: 1;
     margin-bottom: var(--space-xs);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
 
   .benchmark-label {
@@ -751,6 +743,8 @@ const useCaseMatrix = [
     color: var(--text-primary);
     margin-bottom: var(--space-sm);
   }
+
+  .concepts-grid + p { margin-top: var(--space-xl); }
 
   .benchmarks-more {
     margin-top: var(--space-lg);
@@ -772,9 +766,6 @@ const useCaseMatrix = [
   }
 
   .matrix-card {
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     overflow: hidden;
   }
 
@@ -873,7 +864,7 @@ const useCaseMatrix = [
     padding: 4px 12px;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: var(--radius-control);
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-secondary);

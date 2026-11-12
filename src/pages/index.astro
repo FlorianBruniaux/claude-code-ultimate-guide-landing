@@ -89,11 +89,13 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd} preloadImages={['/claude-logo-orange.svg']}>
-  <HeroBanner />
-  <StartHere />
-  <Essentials stats={stats} />
-  <McpProof />
-  <LatestContent />
-  <BuiltAroundGuide />
-  <ConsultingCta placement="homepage" />
+  <div class="home-rail">
+    <HeroBanner />
+    <StartHere />
+    <Essentials stats={stats} />
+    <McpProof />
+    <LatestContent />
+    <BuiltAroundGuide />
+    <ConsultingCta placement="homepage" />
+  </div>
 </Layout>

@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import { DIAGRAM_THEMES } from '../../data/diagrams-data'
 
@@ -130,7 +131,9 @@ const jsonLd = [
   )}
 
   <!-- Diagram themes -->
+  <section class="band band-base">
   <div class="container diagrams-content">
+    <ChapterLabel number="01" label="Diagrams" />
     {DIAGRAM_THEMES.length === 0 ? (
       <div class="diagrams-empty">
         <p>Diagrams are generated at build time from the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams" target="_blank" rel="noopener">guide repository</a>.</p>
@@ -138,7 +141,7 @@ const jsonLd = [
       </div>
     ) : (
       DIAGRAM_THEMES.map((theme, i) => (
-        <details class="diagram-theme-details" id={theme.id} open={i === 0}>
+        <details class="diagram-theme-details brand-card" id={theme.id} open={i === 0}>
           <summary class="diagram-theme-summary">
             <span class="diagram-theme-icon" aria-hidden="true">{theme.icon}</span>
             <span class="diagram-theme-title">{theme.title.replace(' Diagrams', '')}</span>
@@ -175,9 +178,12 @@ const jsonLd = [
       ))
     )}
   </div>
+  </section>
 
   <!-- FAQ Section (GEO: FAQPage schema) -->
+  <section class="band band-ink section-wallpaper">
   <div class="container diagrams-faq">
+    <ChapterLabel number="02" label="Questions" />
     <h2>Frequently asked questions</h2>
     <dl class="faq-list">
       <div class="faq-item">
@@ -202,17 +208,14 @@ const jsonLd = [
   <!-- Footer CTAs -->
   <div class="container diagrams-footer">
     <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/tree/main/guide/diagrams" class="btn btn-secondary" target="_blank" rel="noopener">View source on GitHub &rarr;</a>
-    <a href="/" class="btn btn-ghost">&larr; Back to guide</a>
+    <a href="/" class="btn btn-ghost btn-quiet">&larr; Back to guide</a>
   </div>
+  </section>
 </Layout>
 
 <style>
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
-.page-hero {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
-  padding: var(--space-3xl) 0 var(--space-2xl);
-}
+.page-hero { padding: var(--space-3xl) 0 var(--space-2xl); }
 
 .breadcrumb {
   display: flex;
@@ -228,15 +231,14 @@ const jsonLd = [
   text-decoration: none;
 }
 
-.breadcrumb a:hover {
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
   color: var(--accent);
+  text-decoration: underline;
 }
 
 .page-hero h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
   margin-bottom: var(--space-md);
-  color: var(--text-primary);
 }
 
 .hero-subtitle {
@@ -259,18 +261,20 @@ const jsonLd = [
 }
 
 .hero-stat-value {
-  font-size: 2rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--accent);
   line-height: 1;
 }
 
 .hero-stat-label {
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 /* ─── Navigation pills ───────────────────────────────────────────────────── */
@@ -295,27 +299,26 @@ const jsonLd = [
 
 .diagrams-nav-arrow {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-secondary);
+  background: transparent;
   border: 1px solid var(--border);
-  border-radius: var(--border-radius-full, 999px);
-  color: var(--text-secondary);
+  border-radius: var(--radius-control);
+  color: var(--text-primary);
   font-size: 1.3rem;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+  transition: border-color 150ms ease, color 150ms ease, opacity 150ms ease;
   line-height: 1;
   padding: 0;
   z-index: 1;
 }
 
-.diagrams-nav-arrow:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.diagrams-nav-arrow:hover { border-color: var(--text-primary); }
+.diagrams-nav-arrow:focus-visible,
+.diagrams-nav-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .diagrams-nav-arrow:disabled,
 .diagrams-nav-arrow[data-hidden="true"] {
@@ -341,27 +344,29 @@ const jsonLd = [
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+  min-height: 44px;
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--border-radius-full, 999px);
-  background: var(--bg-secondary);
+  border-radius: var(--radius-control);
+  background: transparent;
   border: 1px solid var(--border);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 600;
   white-space: nowrap;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
 }
 
 .diagrams-nav-pill:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--bg-accent-subtle, var(--bg-secondary));
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
 }
 
 /* ─── Diagrams content ───────────────────────────────────────────────────── */
 .diagrams-content {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
 .diagrams-empty {
@@ -379,10 +384,7 @@ const jsonLd = [
 
 /* ─── Theme details accordion ────────────────────────────────────────────── */
 .diagram-theme-details {
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-lg);
   margin-bottom: var(--space-lg);
-  background: var(--bg-secondary);
   overflow: hidden;
 }
 
@@ -394,8 +396,9 @@ const jsonLd = [
   cursor: pointer;
   list-style: none;
   user-select: none;
-  transition: background 0.15s;
+  transition: background-color 150ms ease;
 }
+.diagram-theme-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
 
 .diagram-theme-summary::-webkit-details-marker {
   display: none;
@@ -423,11 +426,11 @@ const jsonLd = [
 }
 
 .diagram-theme-count {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  background: var(--bg-tertiary, rgba(0,0,0,0.05));
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
   padding: 2px 8px;
-  border-radius: var(--border-radius-full, 999px);
+  border-radius: 999px;
   border: 1px solid var(--border);
 }
 
@@ -488,7 +491,7 @@ const jsonLd = [
   margin: var(--space-lg) 0;
   padding: var(--space-lg);
   background: var(--bg-primary);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-control);
   border: 1px solid var(--border);
   position: relative;
 }
@@ -519,15 +522,15 @@ const jsonLd = [
 :global(.diagram-guide-tooltip) {
   position: fixed;
   z-index: 200;
-  background: var(--bg-secondary, #1e1e1e);
-  border: 1px solid var(--accent, #E87E2F);
-  border-radius: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-control);
   padding: 10px 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  box-shadow: 4px 4px 0 var(--border);
   pointer-events: none;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.15s, transform 0.15s;
+  transition: opacity 150ms ease;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -546,22 +549,23 @@ const jsonLd = [
   gap: 5px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent, #E87E2F);
+  color: var(--accent);
   text-decoration: none;
   padding: 3px 9px;
-  border: 1px solid var(--accent, #E87E2F);
-  border-radius: 4px;
-  transition: background 0.12s, color 0.12s;
+  border: 1px solid var(--accent);
+  min-height: 44px;
+  border-radius: var(--radius-control);
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
 :global(.diagram-guide-tooltip-link:hover),
 :global(.diagram-guide-tooltip-link:focus-visible) {
-  background: var(--accent, #E87E2F);
+  background: var(--accent);
   color: var(--btn-primary-color, #fff);
 }
 
 :global(.diagram-guide-tooltip-link:focus-visible) {
-  outline: 2px solid var(--accent, #E87E2F);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -637,10 +641,8 @@ const jsonLd = [
 
 /* ─── FAQ ────────────────────────────────────────────────────────────────── */
 .diagrams-faq {
-  padding-top: var(--space-3xl);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
   padding-bottom: var(--space-2xl);
-  border-top: 1px solid var(--border);
-  margin-top: var(--space-2xl);
 }
 
 .diagrams-faq h2 {
@@ -680,38 +682,15 @@ const jsonLd = [
 .diagrams-footer {
   display: flex;
   gap: var(--space-md);
-  padding-bottom: var(--space-3xl);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
   flex-wrap: wrap;
 }
 
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--border-radius);
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.15s;
-}
-
-.btn-ghost:hover {
-  color: var(--text-primary);
-}
-
 /* ─── Mobile ─────────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
-  .diagrams-nav-arrow {
-    width: 28px;
-    height: 28px;
-    font-size: 1.1rem;
-  }
-}
+
 
 @media (max-width: 640px) {
-  .page-hero {
-    padding: var(--space-2xl) 0 var(--space-xl);
-  }
+  .page-hero { padding: var(--space-2xl) 0 var(--space-xl); }
 
   .diagram-theme-summary {
     padding: var(--space-md) var(--space-lg);

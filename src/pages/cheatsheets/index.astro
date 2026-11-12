@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import PublicationEdition from '../../components/global/PublicationEdition.astro'
 import { getCollection } from 'astro:content'
@@ -93,12 +94,12 @@ const cardUrls = cardUrlsFr
     </div>
   </header>
 
-  <section class="content-section" id="cards">
+  <section class="content-section band band-ink section-wallpaper" id="cards">
     <div class="container">
-
+      <ChapterLabel number="01" label="Start with a reference" />
       <!-- Original cheatsheet card + Whitepapers cross-promo -->
       <div class="featured-row">
-        <a href="/cheatsheet/" class="featured-card">
+        <a href="/cheatsheet/" class="featured-card brand-card brand-interactive-card">
           <div class="featured-badge">1-PAGE QUICK REF</div>
           <div class="featured-content">
             <h3>Quick reference</h3>
@@ -108,7 +109,7 @@ const cardUrls = cardUrlsFr
             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="/whitepapers/" class="featured-card">
+        <a href="/whitepapers/" class="featured-card brand-card brand-interactive-card">
           <div class="featured-badge">13 EBOOKS</div>
           <div class="featured-content">
             <h3>Deep-dive Whitepapers</h3>
@@ -119,14 +120,19 @@ const cardUrls = cardUrlsFr
           </svg>
         </a>
       </div>
+    </div>
+  </section>
 
+  <section class="content-section band band-base" id="catalogue-section">
+    <div class="container">
+      <ChapterLabel number="02" label="Catalogue" />
       <div class="catalogue-heading" id="catalogue">
         <p class="section-kicker">Browse the collection</p>
         <h2>Find the card you need</h2>
         <p>Search by topic, title, or card number. The first {INITIAL_RECAP_CARD_LIMIT} essentials are shown by default.</p>
       </div>
 
-      <div class="catalogue-controls">
+      <div class="catalogue-controls brand-card">
         <label class="search-field" for="card-search">
           <span class="sr-only">Search recap cards</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
@@ -151,13 +157,13 @@ const cardUrls = cardUrlsFr
           Direct access <span class="tab-count">{DIRECT_ACCESS_IDS.size}</span>
         </button>
         </div>
-        <button type="button" class="bundle-btn" id="bundle-toggle">Get PDF bundles</button>
+        <button type="button" class="btn btn-secondary bundle-btn" id="bundle-toggle">Get PDF bundles</button>
       </div>
 
       <p class="catalogue-status" id="catalogue-status" aria-live="polite"></p>
 
       <!-- Gate banner (rendered server-side, shown/hidden by client JS) -->
-      <div class="gate-banner hidden" id="gate-banner" aria-live="polite">
+      <div class="gate-banner brand-card hidden" id="gate-banner" aria-live="polite">
         <div class="gate-icon">🔒</div>
         <div class="gate-text">
           <p class="gate-title" id="gate-title">Get the full Technical series as a PDF bundle delivered to your inbox</p>
@@ -175,7 +181,7 @@ const cardUrls = cardUrlsFr
             <button type="button" class="gate-lang-btn gate-lang-btn-en gate-lang-btn--active" data-lang="en" aria-pressed="true">EN</button>
             <button type="button" class="gate-lang-btn gate-lang-btn-fr" data-lang="fr" aria-pressed="false">FR</button>
           </div>
-          <button type="submit" class="gate-submit" id="gate-submit">
+          <button type="submit" class="btn btn-primary gate-submit" id="gate-submit">
             <span class="submit-label">Get all cards</span>
             <span class="submit-spinner hidden" aria-hidden="true"></span>
           </button>
@@ -215,7 +221,7 @@ const cardUrls = cardUrlsFr
       <div class="cards-grid" id="cards-grid">
         {cards.map((card, index) => (
           <article
-            class:list={['recap-card', index >= INITIAL_RECAP_CARD_LIMIT && 'catalog-hidden']}
+            class:list={['recap-card brand-card brand-interactive-card', index >= INITIAL_RECAP_CARD_LIMIT && 'catalog-hidden']}
             data-card-id={card.id}
             data-category={card.data.category}
             data-series={card.data.cardNumber[0]}
@@ -279,7 +285,7 @@ const cardUrls = cardUrlsFr
 
       <p class="no-results hidden" id="no-results">No cards match this filter.</p>
       <div class="catalogue-more">
-        <button type="button" class="show-all-btn" id="show-all-cards">Show all {totalCards} cards</button>
+        <button type="button" class="btn btn-secondary show-all-btn" id="show-all-cards">Show all {totalCards} cards</button>
       </div>
 
     </div>
@@ -850,55 +856,13 @@ if (waitlistForm) {
 
 <style>
   /* ── Hero ── */
-  .page-hero {
-    padding: clamp(2.25rem, 5vw, 3.5rem) 0 2.5rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .page-hero h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-  }
-  .tagline {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 0 1.25rem;
-    line-height: 1.55;
-  }
-  .cta-buttons {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    min-height: 44px;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-  }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary {
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-  }
-  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+  .page-hero { padding: clamp(2.5rem, 5vw, 3.75rem) 0 2.75rem; }
+  .tagline { margin: 0 0 1.25rem; }
+  .cta-buttons { display: flex; gap: 0.75rem; justify-content: flex-start; flex-wrap: wrap; }
+  /* Buttons inherit the shared action levels in src/styles/components.css. */
 
   /* ── Section ── */
-  .content-section { padding: 2.5rem 0 3rem; }
+  .content-section { padding: clamp(3rem, 6vw, 4.5rem) 0; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
   /* ── Stats ── */
@@ -918,24 +882,25 @@ if (waitlistForm) {
     padding-right: 1.5rem;
   }
   .stat-number {
-    font-size: 1.35rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--accent);
     line-height: 1;
   }
   .stat-label {
-    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
 
   /* ── Featured row ── */
   .featured-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
   }
   @media (max-width: 640px) {
     .featured-row { grid-template-columns: 1fr; }
@@ -946,23 +911,19 @@ if (waitlistForm) {
     gap: 1rem;
     min-height: 84px;
     padding: 0.9rem 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg-secondary);
-    text-decoration: none;
-    transition: background 0.2s;
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
   }
-  .featured-card:hover { background: color-mix(in srgb, var(--accent) 6%, var(--bg-secondary)); border-color: var(--accent); }
-  .featured-card:hover, .featured-card:hover * { text-decoration: none; }
   .featured-badge {
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: var(--accent);
     white-space: nowrap;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    font-family: var(--font-mono);
+    border: 1px solid currentColor;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-control);
   }
   .featured-content { flex: 1; }
   .featured-content h3 {
@@ -1007,9 +968,6 @@ if (waitlistForm) {
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg-secondary);
   }
   .search-field {
     display: flex;
@@ -1018,11 +976,11 @@ if (waitlistForm) {
     min-height: 44px;
     padding: 0 0.8rem;
     border: 1px solid var(--border);
-    border-radius: 0.55rem;
+    border-radius: var(--radius-control);
     background: var(--bg-primary);
     color: var(--text-muted);
   }
-  .search-field:focus-within { border-color: var(--accent); }
+  .search-field:focus-within { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 3px; }
   .search-field input {
     width: 100%;
     min-width: 0;
@@ -1032,21 +990,7 @@ if (waitlistForm) {
     color: var(--text-primary);
     font: inherit;
   }
-  .bundle-btn, .show-all-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0.55rem 0.9rem;
-    border: 1px solid var(--accent);
-    border-radius: 0.5rem;
-    background: transparent;
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .bundle-btn:hover, .show-all-btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .bundle-btn, .show-all-btn { font-size: 0.85rem; }
   .catalogue-status {
     min-height: 1.25rem;
     margin: 0.65rem 0 1rem;
@@ -1079,37 +1023,34 @@ if (waitlistForm) {
     gap: 0.4rem;
     min-height: 44px;
     padding: 0.45rem 0.75rem;
-    border-radius: 2rem;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
+    background: transparent;
+    color: var(--text-primary);
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
   }
-  .tab-btn:hover { border-color: var(--accent); color: var(--text-primary); }
-  .tab-btn.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .tab-btn.active .tab-count { background: rgba(255,255,255,0.25); color: #fff; }
+  .tab-btn:hover { border-color: var(--text-primary); }
+  .tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .tab-btn.active { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary); }
+  .tab-btn.active .tab-count { border-color: currentColor; color: inherit; }
   .tab-soon {
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--text-muted);
-    opacity: 0.7;
   }
-  .tab-btn.active .tab-soon { color: rgba(255,255,255,0.7); opacity: 1; }
+  .tab-btn.active .tab-soon { color: inherit; }
   .tab-count {
-    font-size: 0.75rem;
-    background: var(--bg-tertiary);
-    color: var(--text-muted);
-    padding: 0.1rem 0.4rem;
-    border-radius: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
     font-weight: 600;
   }
 
@@ -1119,9 +1060,6 @@ if (waitlistForm) {
     align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-    border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
@@ -1154,20 +1092,21 @@ if (waitlistForm) {
   .gate-form input[type="email"],
   .gate-form input[type="url"] {
     padding: 0.5rem 0.75rem;
-    border-radius: 0.4rem;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     color: var(--text-primary);
     font-size: 0.875rem;
-    outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 150ms ease;
     min-width: 0;
     min-height: 44px;
   }
-  .gate-form input[type="text"]:focus,
-  .gate-form input[type="email"]:focus,
-  .gate-form input[type="url"]:focus {
+  .gate-form input[type="text"]:focus-visible,
+  .gate-form input[type="email"]:focus-visible,
+  .gate-form input[type="url"]:focus-visible {
     border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
   .gate-form input[name="firstname"] { width: 140px; }
   .gate-form input[type="email"] { width: 210px; }
@@ -1197,52 +1136,22 @@ if (waitlistForm) {
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    border: 1px solid;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
     cursor: pointer;
     letter-spacing: 0.03em;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     background: transparent;
     min-width: 44px;
     min-height: 44px;
     justify-content: center;
   }
-  .gate-lang-btn-en {
-    color: #16a34a;
-    border-color: color-mix(in srgb, #16a34a 35%, transparent);
-  }
-  .gate-lang-btn-en:hover,
-  .gate-lang-btn-en.gate-lang-btn--active {
-    background: color-mix(in srgb, #16a34a 12%, transparent);
-    border-color: #16a34a;
-  }
-  .gate-lang-btn-fr {
-    color: #2563eb;
-    border-color: color-mix(in srgb, #2563eb 35%, transparent);
-  }
-  .gate-lang-btn-fr:hover,
-  .gate-lang-btn-fr.gate-lang-btn--active {
-    background: color-mix(in srgb, #2563eb 12%, transparent);
-    border-color: #2563eb;
-  }
-  .gate-submit {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 0.4rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
-    min-height: 44px;
-  }
-  .gate-submit:hover:not(:disabled) { background: var(--accent-hover); }
+  .gate-lang-btn:hover { border-color: var(--text-primary); }
+  .gate-lang-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .gate-lang-btn.gate-lang-btn--active,
+  .gate-lang-btn[aria-pressed="true"] { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-primary); }
+  .gate-submit { white-space: nowrap; }
   .gate-submit:disabled { opacity: 0.7; cursor: not-allowed; }
   .submit-spinner {
     width: 14px;
@@ -1270,9 +1179,7 @@ if (waitlistForm) {
   }
 
   /* Unlocked state */
-  .gate-icon--unlocked {
-    color: #22c55e;
-  }
+  .gate-icon--unlocked { color: var(--text-primary); }
   .gate-unlocked {
     display: flex;
     flex-direction: column;
@@ -1330,38 +1237,28 @@ if (waitlistForm) {
     align-items: center;
     gap: 0.4rem;
     padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    background: #22c55e;
-    color: #fff;
+    border-radius: var(--radius-control);
+    background: var(--action);
+    border: 1px solid var(--action);
+    color: var(--action-ink);
     font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
-    transition: opacity 0.15s, transform 0.1s;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     white-space: nowrap;
-    letter-spacing: 0.01em;
-    border: none;
     line-height: 1;
     min-height: 44px;
   }
-  :global(.zip-dl-btn:hover) { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
-  :global(.zip-dl-btn:active) { transform: translateY(0); }
+  :global(.zip-dl-btn:hover) { background: var(--action-hover); border-color: var(--action-hover); text-decoration: none; }
+  :global(.zip-dl-btn:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
   :global(.zip-dl-btn--design) {
     background: transparent;
-    color: #16a34a;
-    border: 1px solid color-mix(in srgb, #22c55e 50%, transparent);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
     padding: 0.35rem 0.75rem;
     font-size: 0.78rem;
   }
-  :global(.zip-dl-btn--design:hover) {
-    background: color-mix(in srgb, #22c55e 12%, transparent);
-    opacity: 1;
-  }
-
-  /* When unlocked, change banner border to green tint */
-  .gate-banner:has(.gate-unlocked:not(.hidden)) {
-    border-color: color-mix(in srgb, #22c55e 40%, transparent);
-    background: color-mix(in srgb, #22c55e 6%, transparent);
-  }
+  :global(.zip-dl-btn--design:hover) { background: var(--bg-tertiary); border-color: var(--text-primary); }
 
   @media (max-width: 768px) {
     .gate-banner { flex-direction: column; }
@@ -1380,7 +1277,7 @@ if (waitlistForm) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
     border: 1px dashed var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-lg);
   }
   .coming-soon-msg p { margin: 0 0 0.5rem; }
   .coming-soon-sub {
@@ -1401,14 +1298,13 @@ if (waitlistForm) {
     flex: 1;
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-control);
     background: var(--bg-primary);
     color: var(--text-primary);
     font-size: 0.875rem;
-    outline: none;
-    transition: border-color 0.15s;
+    min-height: 44px;
   }
-  .waitlist-row input[type="email"]:focus { border-color: var(--accent); }
+  .waitlist-row input[type="email"]:focus-visible { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 3px; }
   .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
   .waitlist-success {
     margin-top: 0.75rem;
@@ -1430,15 +1326,7 @@ if (waitlistForm) {
   .recap-card {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg-secondary);
-    transition: border-color 0.15s, box-shadow 0.15s;
     overflow: hidden;
-  }
-  .recap-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
   .card-link {
     display: flex;
@@ -1448,34 +1336,35 @@ if (waitlistForm) {
     text-decoration: none;
     gap: 0.5rem;
   }
-  .card-link:hover,
-  .card-link:hover * {
-    text-decoration: none;
-  }
+  .card-link, .card-link:hover, .card-link:hover * { text-decoration: none !important; color: inherit; }
   .card-header { display: flex; align-items: center; justify-content: space-between; }
 
   /* Card number badges by series */
   .card-number-badge {
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-control);
+    color: var(--accent);
+    border: 1px solid currentColor;
   }
-  .series-t { background: color-mix(in srgb, #f97316 15%, transparent); color: #ea6c00; }
-  .series-m { background: color-mix(in srgb, #3b82f6 15%, transparent); color: #2563eb; }
-  .series-c { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
 
   /* Difficulty pills */
   .difficulty-pill {
-    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
     font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     padding: 0.15rem 0.5rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-control);
+    border: 1px solid currentColor;
   }
-  .diff-beginner { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
-  .diff-intermediate { background: color-mix(in srgb, #eab308 15%, transparent); color: #ca8a04; }
-  .diff-advanced { background: color-mix(in srgb, #ef4444 15%, transparent); color: #dc2626; }
+  .diff-beginner { color: #16a34a; }
+  .diff-intermediate { color: #a16207; }
+  .diff-advanced { color: #dc2626; }
 
   .card-body { flex: 1; }
   .card-title {
@@ -1521,51 +1410,26 @@ if (waitlistForm) {
     min-height: 44px;
     justify-content: center;
     padding: 0.45rem 0.55rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
+    color: var(--text-primary);
     text-decoration: none;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
     letter-spacing: 0.03em;
   }
-  :global(.pdf-fr) {
-    color: #2563eb;
-    border-color: color-mix(in srgb, #2563eb 35%, transparent);
-    background: color-mix(in srgb, #2563eb 8%, transparent);
-  }
-  :global(.pdf-fr:hover) { color: #1d4ed8; border-color: #2563eb; background: color-mix(in srgb, #2563eb 14%, transparent); }
-  :global(.pdf-en) {
-    color: #16a34a;
-    border-color: color-mix(in srgb, #16a34a 35%, transparent);
-    background: color-mix(in srgb, #16a34a 8%, transparent);
-  }
-  :global(.pdf-en:hover) { color: #15803d; border-color: #16a34a; background: color-mix(in srgb, #16a34a 14%, transparent); }
-  .pdf-gated {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    min-width: 44px;
-    min-height: 44px;
-    justify-content: center;
-    padding: 0.45rem 0.55rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    cursor: pointer;
-    letter-spacing: 0.03em;
-  }
-  .pdf-gated:hover { color: var(--text-secondary); border-color: var(--text-muted); }
+  :global(.pdf-pill:hover) { background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary); }
+  :global(.pdf-pill:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .pdf-gated { color: var(--text-muted); cursor: pointer; }
   .access-badge {
+    font-family: var(--font-mono);
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 0.15rem 0.45rem;
-    border-radius: 0.25rem;
-    background: color-mix(in srgb, #16a34a 15%, transparent);
-    color: #16a34a;
-    border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
+    border-radius: var(--radius-control);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
   }
   .access-locked {
     display: inline-flex;
@@ -1573,8 +1437,7 @@ if (waitlistForm) {
     justify-content: center;
     width: 18px;
     height: 18px;
-    border-radius: 0.25rem;
-    background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+    border-radius: var(--radius-control);
     color: var(--text-muted);
     flex-shrink: 0;
   }
@@ -1585,11 +1448,10 @@ if (waitlistForm) {
     font-size: 0.8rem;
     color: var(--accent);
     font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s;
+    text-decoration: underline !important;
+    text-underline-offset: 0.24em;
   }
-  .card-read:hover { border-bottom-color: var(--accent); }
+  .card-read:hover { text-decoration-thickness: 2px; }
 
   /* No results */
   .no-results {
@@ -1607,12 +1469,10 @@ if (waitlistForm) {
 
   @media (max-width: 640px) {
     .container { padding: 0 1rem; }
-    .page-hero { padding: 2rem 0; }
     .stats-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stat-item { padding: 0.4rem 0; }
     .cta-buttons { display: grid; grid-template-columns: 1fr; }
     .cta-buttons .btn { justify-content: center; width: 100%; }
-    .content-section { padding-top: 2rem; }
     .featured-card { display: grid; grid-template-columns: 1fr auto; align-items: center; }
     .featured-badge { grid-column: 1; justify-self: start; }
     .featured-content { grid-column: 1; }

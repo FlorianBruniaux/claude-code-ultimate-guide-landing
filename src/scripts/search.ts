@@ -383,7 +383,13 @@ export function initSearch(
   }
 
   // ── Modal lifecycle ───────────────────────────────────────────────────────
+  // The control that opened the dialog gets the focus back when it closes.
+  let opener: HTMLElement | null = null
+
   function openModal(): void {
+    // Duck-typed: the document may come from another realm (tests run on happy-dom).
+    const active = doc.activeElement as HTMLElement | null
+    opener = active && active !== doc.body && typeof active.focus === 'function' ? active : null
     loadFailed = false
     void ensurePayload().then(() => {
       if (!searchModal.hasAttribute('hidden') && searchInput.value.trim()) render()
@@ -401,6 +407,8 @@ export function initSearch(
     searchModal.setAttribute('hidden', '')
     searchModal.setAttribute('aria-hidden', 'true')
     doc.body.style.overflow = ''
+    if (opener?.isConnected) opener.focus()
+    opener = null
   }
 
   function navigate(url: string | undefined): void {
@@ -470,6 +478,8 @@ export function initSearch(
   })
 
   backdrop?.addEventListener('click', closeModal)
+  // Visible close control in the modal header (portfolio search layout).
+  doc.getElementById('search-close')?.addEventListener('click', closeModal)
 
   doc.addEventListener('keydown', (e: KeyboardEvent) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {

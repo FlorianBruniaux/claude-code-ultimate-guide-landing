@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import { RESOURCE_CATALOG, START_PATHS } from '../../data/homepage-content'
 
 const title = 'Claude Code Resources | Guide, Templates, Downloads'
@@ -17,12 +18,13 @@ const description = 'Browse the complete Claude Code Ultimate Guide resource lib
   </header>
 
   <main>
-    <section class="section section--compact" aria-labelledby="paths-title">
+    <section class="band band-base section-block" aria-labelledby="paths-title">
       <div class="container">
+        <ChapterLabel number="01" label="Start with an outcome" />
         <h2 class="section-title" id="paths-title">Start with an outcome</h2>
         <div class="path-row">
           {START_PATHS.map((path) => (
-            <a class="path-chip" href={path.href}>
+            <a class="path-chip brand-card brand-interactive-card" href={path.href}>
               <span>{path.duration}</span>
               <strong>{path.title}</strong>
               <small>{path.eyebrow}</small>
@@ -32,13 +34,14 @@ const description = 'Browse the complete Claude Code Ultimate Guide resource lib
       </div>
     </section>
 
-    <section class="section section--alt" aria-labelledby="catalog-title">
+    <section class="band band-paper section-wallpaper section-block" aria-labelledby="catalog-title">
       <div class="container">
+        <ChapterLabel number="02" label="Catalog" />
         <h2 class="section-title" id="catalog-title">Complete catalog</h2>
         <p class="section-subtitle">The material removed from the homepage is still one click away here.</p>
         <div class="catalog-grid">
           {RESOURCE_CATALOG.map((resource) => (
-            <a class="catalog-card" href={resource.href} target={resource.href.startsWith('http') ? '_blank' : undefined} rel={resource.href.startsWith('http') ? 'noopener' : undefined}>
+            <a class="catalog-card brand-card brand-interactive-card" href={resource.href} target={resource.href.startsWith('http') ? '_blank' : undefined} rel={resource.href.startsWith('http') ? 'noopener' : undefined}>
               <span class="catalog-icon" aria-hidden="true">{resource.icon}</span>
               <div>
                 <h3>{resource.title}</h3>
@@ -57,16 +60,16 @@ const description = 'Browse the complete Claude Code Ultimate Guide resource lib
   .hub-hero { max-width: 950px; margin-left: auto; margin-right: auto; }
   .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
   .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .section-block { padding: clamp(3rem, 6vw, 4.5rem) 0; }
   .path-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
-  .path-chip { display: grid; gap: 0.25rem; padding: 1rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; }
-  .path-chip:hover { border-color: var(--accent); }
+  .path-chip { display: grid; gap: 0.25rem; padding: 1rem; color: var(--text-primary) !important; text-decoration: none !important; }
+  .path-chip strong { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
   .path-chip span { color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
   .path-chip small { color: var(--text-secondary); font-size: 0.8rem; }
   .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
-  .catalog-card { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; min-height: 150px; padding: 1.15rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; }
-  .catalog-card:hover { border-color: var(--accent); }
+  .catalog-card { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; min-height: 150px; padding: 1.15rem; color: var(--text-primary) !important; text-decoration: none !important; }
   .catalog-icon { font-size: 1.25rem; }
-  .catalog-card h3 { margin: 0; font-size: 1rem; }
+  .catalog-card h3 { margin: 0; font-size: 1rem; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
   .catalog-card p { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.84rem; }
   .catalog-card div > span { display: inline-block; margin-top: 0.75rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
   @media (max-width: 840px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

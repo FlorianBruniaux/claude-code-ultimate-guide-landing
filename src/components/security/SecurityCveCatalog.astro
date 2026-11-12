@@ -2,27 +2,39 @@
 import type { SecurityCveRow } from '../../data/security-page'
 interface Props { records: readonly SecurityCveRow[] }
 const { records } = Astro.props
+const order = ['critical', 'high', 'medium', 'low']
 const severities = [...new Set(records.map((record) => record.severity.toLowerCase()))]
+  .sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99))
+const counts = Object.fromEntries(severities.map((severity) => [severity, records.filter((record) => record.severity.toLowerCase() === severity).length]))
+// A source is linked only when it is a single absolute URL; anything else stays text.
+const sourceUrl = (source: string) => /^https?:\/\/\S+$/.test(source.trim()) ? source.trim() : null
+const sourceLabel = (url: string) => {
+  const { hostname, pathname } = new URL(url)
+  const last = pathname.split('/').filter(Boolean).pop()
+  return last ? `${hostname.replace(/^www\./, '')} · ${last}` : hostname.replace(/^www\./, '')
+}
 ---
 <div class="security-catalog" data-security-catalog data-initial-limit="12">
   <div class="security-catalog__controls">
     <label>Search vulnerabilities<input type="search" placeholder="CVE, component, mitigation…" data-security-search /></label>
     <div class="security-filters" role="group" aria-label="Filter by severity">
-      {severities.map((severity) => <button type="button" data-security-filter={severity} aria-pressed="false">{severity}</button>)}
+      {severities.map((severity) => <button type="button" class={`security-filter security-filter--${severity}`} data-security-filter={severity} aria-pressed="false"><span>{severity}</span><span class="security-filter__count">{counts[severity]}</span></button>)}
       <button type="button" data-security-reset>Reset</button>
     </div>
     <p data-security-count aria-live="polite">{records.length} results</p>
   </div>
   <div class="security-cve-list">
-    {records.map((record) => (
-      <article class="security-cve" data-security-record data-security-cve-record data-record-type={record.severity.toLowerCase()} data-search-text={record.searchText}>
-        <div class="security-cve__head"><h3>{record.id}</h3><span class={`security-severity security-severity--${record.severity.toLowerCase()}`}>{record.severity}</span></div>
+    {records.map((record) => {
+      const url = sourceUrl(record.source)
+      return (
+      <article class={`brand-card security-cve security-cve--${record.severity.toLowerCase()}${url ? ' brand-interactive-card' : ''}`} data-security-record data-security-cve-record data-record-type={record.severity.toLowerCase()} data-search-text={record.searchText}>
+        <div class="security-cve__head"><h3>{url ? <a class="security-cve__primary" href={url} target="_blank" rel="noopener">{record.id}<span class="sr-only"> (advisory, opens in a new tab)</span></a> : record.id}</h3><span class={`security-severity security-severity--${record.severity.toLowerCase()}`}>{record.severity}</span></div>
         <p class="security-cve__component">{record.component}</p>
         <p>{record.description}</p>
-        <dl><div><dt>Fixed in</dt><dd>{record.fixedInLabel}</dd></div><div><dt>Mitigation</dt><dd>{record.mitigation}</dd></div></dl>
-        <p class="security-cve__source">Source: {record.source}</p>
+        <dl><div class:list={['security-cve__fixed', record.fixedInLabel === 'Unknown' && 'is-unknown']}><dt>Fixed in</dt><dd>{record.fixedInLabel}</dd></div><div><dt>Mitigation</dt><dd>{record.mitigation}</dd></div></dl>
+        <p class="security-cve__source">{url ? <>Source: <span class="security-cve__source-label">{sourceLabel(url)} ↗</span></> : <>Source: {record.source}</>}</p>
       </article>
-    ))}
+    )})}
   </div>
   <button type="button" class="security-show-all" data-security-show-all>Show all {records.length} vulnerabilities</button>
   <div class="security-empty" data-security-empty hidden><h3>No matching vulnerabilities</h3><p>Change the search or reset the severity filter.</p><button type="button" data-security-reset>Reset filters</button></div>

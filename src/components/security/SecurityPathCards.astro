@@ -5,7 +5,7 @@ const icons = { threats: '◎', cves: 'CVE', sandbox: '▣', hardening: '✓' }
 ---
 <div class="security-paths">
   {routes.map((route) => (
-    <a class="security-path-card" href={route.href}>
+    <a class="brand-card brand-interactive-card security-path-card" href={route.href}>
       <span class="security-path-card__icon" aria-hidden="true">{icons[route.id as keyof typeof icons]}</span>
       <h3>{route.eyebrow}</h3>
       <p>{route.summary}</p>

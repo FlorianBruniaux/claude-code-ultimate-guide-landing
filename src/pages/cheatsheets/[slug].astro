@@ -82,7 +82,7 @@ const jsonLd = [
   </nav>
 
   <!-- Hero -->
-  <header class="card-hero">
+  <header class="page-hero card-hero">
     <div class="container">
       <div class="hero-meta">
         <span class={`card-number-badge series-${card.data.cardNumber[0].toLowerCase()}`}>
@@ -147,7 +147,7 @@ const jsonLd = [
   </header>
 
   <!-- Content -->
-  <main class="card-content">
+  <main class="card-content band band-base">
     <div class="container">
       <div class="prose" id="card-prose" data-gated={!isDirectAccess ? 'true' : undefined}>
         <Content />
@@ -155,7 +155,7 @@ const jsonLd = [
 
       {!isDirectAccess && (
         <!-- Content gate: shown when locked, hidden after unlock -->
-        <div id="content-gate" class="content-gate">
+        <div id="content-gate" class="content-gate brand-card">
           <div class="content-gate-inner">
             <p class="content-gate-msg">Enter your email to read the full card and get the complete PDF bundle.</p>
             <p class="content-gate-note">All content is free and open-source. We just ask for your email.</p>
@@ -185,14 +185,14 @@ const jsonLd = [
 
   <!-- Prev/Next navigation -->
   {(prevCard || nextCard) && (
-    <nav class="card-nav" aria-label="Navigate between cards in this series">
+    <nav class="card-nav band band-paper section-wallpaper" aria-label="Navigate between cards in this series">
       <div class="container">
         <div class="nav-hint">
           Other cards in <strong>{seriesLabel[seriesChar] ?? card.data.category}</strong> series
         </div>
         <div class="nav-links">
           {prevCard ? (
-            <a href={`/cheatsheets/${prevCard.id}/`} class="nav-prev">
+            <a href={`/cheatsheets/${prevCard.id}/`} class="nav-prev brand-card brand-interactive-card">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -203,7 +203,7 @@ const jsonLd = [
             </a>
           ) : <div />}
           {nextCard && (
-            <a href={`/cheatsheets/${nextCard.id}/`} class="nav-next">
+            <a href={`/cheatsheets/${nextCard.id}/`} class="nav-next brand-card brand-interactive-card">
               <div>
                 <div class="nav-label">Next</div>
                 <div class="nav-title">{nextCard.data.cardNumber}: {nextCard.data.title}</div>
@@ -406,17 +406,14 @@ const jsonLd = [
     color: var(--text-muted);
   }
   .breadcrumb a { color: var(--text-muted); text-decoration: none; }
-  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb a:hover, .breadcrumb a:focus-visible { color: var(--accent); text-decoration: underline; }
   .breadcrumb [aria-current="page"] { color: var(--text-secondary); }
 
   /* ── Container ── */
   .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
 
   /* ── Hero ── */
-  .card-hero {
-    padding: 2.5rem 0 2rem;
-    border-bottom: 1px solid var(--border);
-  }
+  .card-hero { padding: 3rem 0 2.5rem; }
   .hero-meta {
     display: flex;
     align-items: center;
@@ -425,41 +422,42 @@ const jsonLd = [
     flex-wrap: wrap;
   }
   .card-number-badge {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     padding: 0.25rem 0.625rem;
-    border-radius: 0.3rem;
+    border-radius: var(--radius-control);
+    color: var(--accent);
+    border: 1px solid var(--accent);
   }
-  .series-t { background: color-mix(in srgb, #f97316 15%, transparent); color: #ea6c00; }
-  .series-m { background: color-mix(in srgb, #3b82f6 15%, transparent); color: #2563eb; }
-  .series-c { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
 
   .difficulty-pill {
-    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-control);
+    border: 1px solid currentColor;
   }
-  .diff-beginner { background: color-mix(in srgb, #22c55e 15%, transparent); color: #16a34a; }
-  .diff-intermediate { background: color-mix(in srgb, #eab308 15%, transparent); color: #ca8a04; }
-  .diff-advanced { background: color-mix(in srgb, #ef4444 15%, transparent); color: #dc2626; }
+  /* Hero is always an ink band: lighter semantic tones keep the contrast. */
+  .diff-beginner { color: #4ade80; }
+  .diff-intermediate { color: #facc15; }
+  .diff-advanced { color: #f87171; }
 
   .category-pill {
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
   }
 
   .card-hero h1 {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    font-weight: 800;
-    color: var(--text-primary);
     margin: 0 0 0.5rem;
-    line-height: 1.2;
   }
   .card-subtitle {
     font-size: 1rem;
@@ -472,35 +470,16 @@ const jsonLd = [
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.15s;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary {
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-  }
-  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+  /* Buttons inherit the shared action levels in src/styles/components.css. */
 
   /* FR/EN dual PDF buttons */
   .pdf-lang-group {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
-    background: var(--bg-secondary);
   }
   .pdf-lang-label {
     display: inline-flex;
@@ -511,30 +490,22 @@ const jsonLd = [
     color: var(--text-secondary);
   }
   .btn-lang {
+    min-width: 44px;
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    border: 1px solid;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-primary);
     text-decoration: none;
-    transition: all 0.15s;
     letter-spacing: 0.03em;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
   }
-  .btn-lang-fr {
-    color: #2563eb;
-    border-color: color-mix(in srgb, #2563eb 35%, transparent);
-    background: color-mix(in srgb, #2563eb 8%, transparent);
-  }
-  .btn-lang-fr:hover { background: color-mix(in srgb, #2563eb 16%, transparent); border-color: #2563eb; }
-  .btn-lang-en {
-    color: #16a34a;
-    border-color: color-mix(in srgb, #16a34a 35%, transparent);
-    background: color-mix(in srgb, #16a34a 8%, transparent);
-  }
-  .btn-lang-en:hover { background: color-mix(in srgb, #16a34a 16%, transparent); border-color: #16a34a; }
+  .btn-lang:hover { background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary); }
 
   /* ── Content / Prose ── */
-  .card-content { padding: 2.5rem 0; }
+  .card-content { padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
 
   .prose {
     color: var(--text-secondary);
@@ -626,10 +597,7 @@ const jsonLd = [
   }
 
   /* ── Prev/Next nav ── */
-  .card-nav {
-    padding: 2rem 0 3rem;
-    border-top: 1px solid var(--border);
-  }
+  .card-nav { padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
   .nav-hint {
     font-size: 0.8rem;
     color: var(--text-muted);
@@ -647,15 +615,7 @@ const jsonLd = [
     align-items: center;
     gap: 0.75rem;
     padding: 0.875rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.625rem;
-    background: var(--bg-secondary);
-    text-decoration: none;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .nav-prev:hover, .nav-next:hover {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
+    text-decoration: none !important;
   }
   .nav-next { justify-content: flex-end; text-align: right; }
   .nav-prev svg, .nav-next svg { color: var(--accent); flex-shrink: 0; }
@@ -701,9 +661,6 @@ const jsonLd = [
   /* ── Content gate ── */
   .content-gate {
     margin-top: 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-    border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
     overflow: hidden;
   }
   .content-gate-inner {
@@ -732,15 +689,16 @@ const jsonLd = [
     flex: 1;
     min-width: 200px;
     padding: 0.5rem 0.75rem;
-    border-radius: 0.4rem;
+    min-height: 44px;
+    border-radius: var(--radius-control);
     border: 1px solid var(--border);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     color: var(--text-primary);
     font-size: 0.875rem;
     outline: none;
   }
   .content-gate-form input[type="email"]:focus,
-  .content-gate-form input[type="url"]:focus { border-color: var(--accent); }
+  .content-gate-form input[type="url"]:focus-visible { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 3px; }
   .gate-lang-selector {
     display: flex;
     align-items: center;
@@ -755,33 +713,27 @@ const jsonLd = [
   .gate-lang-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    border: 1px solid;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
     cursor: pointer;
     letter-spacing: 0.03em;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     background: transparent;
   }
-  .gate-lang-btn-en {
-    color: #16a34a;
-    border-color: color-mix(in srgb, #16a34a 35%, transparent);
-  }
-  .gate-lang-btn-en:hover,
-  .gate-lang-btn-en.gate-lang-btn--active {
-    background: color-mix(in srgb, #16a34a 12%, transparent);
-    border-color: #16a34a;
-  }
-  .gate-lang-btn-fr {
-    color: #2563eb;
-    border-color: color-mix(in srgb, #2563eb 35%, transparent);
-  }
-  .gate-lang-btn-fr:hover,
-  .gate-lang-btn-fr.gate-lang-btn--active {
-    background: color-mix(in srgb, #2563eb 12%, transparent);
-    border-color: #2563eb;
+  .gate-lang-btn:hover { border-color: var(--text-primary); }
+  .gate-lang-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .gate-lang-btn.gate-lang-btn--active,
+  .gate-lang-btn[aria-pressed="true"] {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg-primary);
   }
   .honeypot {
     position: absolute;

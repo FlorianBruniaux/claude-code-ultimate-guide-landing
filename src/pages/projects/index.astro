@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { PERSONAL_PROJECT_ROUTES, RELATED_PROJECTS } from '../../data/homepage-content'
 import { isComingSoon } from '../../data/ecosystem-discovery'
 import SoonBadge from '../../components/ecosystem/SoonBadge.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 
 const title = 'Claude Code Companion Projects | Florian Bruniaux'
 const description = 'Explore open-source tools and companion projects for Claude Code sessions, routing, plugins, validation, analytics, and developer workflows.'
@@ -25,10 +26,11 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
     </div>
   </header>
 
-  <main class="section">
-    <div class="container route-list">
-      {routeSections.map((route) => (
-        <section class="route-section" id={route.id} aria-labelledby={`${route.id}-title`}>
+  <main>
+      {routeSections.map((route, index) => (
+        <section class={`route-section band ${index === 2 ? 'band-ink section-wallpaper' : index % 2 === 0 ? 'band-base' : 'band-paper section-wallpaper'}`} id={route.id} aria-labelledby={`${route.id}-title`}>
+          <div class="container">
+          <ChapterLabel number={String(index + 1).padStart(2, '0')} label={route.title} />
           <header class="route-header">
             <div>
               <p class="route-count">{route.projects.length} {route.projects.length === 1 ? 'project' : 'projects'}</p>
@@ -39,7 +41,7 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
           <div class="projects-grid">
             {route.projects.map((project) => (
               <a
-                class="project-card"
+                class="project-card brand-card brand-interactive-card"
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -59,13 +61,13 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
                     {project.tags.map((tag) => <li>{tag}</li>)}
                   </ul>
                 </div>
-                <span class="project-arrow" aria-hidden="true">↗</span>
+                <span class="project-arrow" aria-hidden="true">View code ↗</span>
               </a>
             ))}
           </div>
+          </div>
         </section>
       ))}
-    </div>
   </main>
 </Layout>
 
@@ -74,26 +76,25 @@ const routeSections = PERSONAL_PROJECT_ROUTES.map((route) => ({
   .back-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
   .eyebrow { margin: 1rem 0 0.4rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
   .route-index { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; }
-  .route-index a { padding: 0.45rem 0.75rem; color: var(--text-secondary); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 0.78rem; font-weight: 650; text-decoration: none; }
-  .route-index a:hover { color: var(--text-primary); border-color: var(--accent); }
-  .route-list { display: grid; gap: 3rem; }
-  .route-section { scroll-margin-top: 6rem; }
-  .route-header { display: grid; grid-template-columns: minmax(220px, 0.7fr) minmax(300px, 1.3fr); gap: 1.5rem; align-items: end; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
+  .route-index a { display: inline-flex; align-items: center; min-height: 44px; padding: 0.45rem 0.9rem; color: var(--text-primary); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-control); font-size: 0.8rem; font-weight: 650; text-decoration: none; transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease; }
+  .route-index a:hover { color: var(--bg-primary); background: var(--text-primary); border-color: var(--text-primary); }
+  .route-index a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .route-section { padding: clamp(3rem, 6vw, 4.5rem) 0; scroll-margin-top: 6rem; }
+  .route-header { display: grid; grid-template-columns: minmax(220px, 0.7fr) minmax(300px, 1.3fr); gap: 1.5rem; align-items: end; margin-bottom: 1.25rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
   .route-header h2 { margin: 0.15rem 0 0; font-size: clamp(1.4rem, 3vw, 2rem); }
   .route-header > p { margin: 0; color: var(--text-secondary); }
   .route-count { margin: 0; color: var(--accent); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; }
-  .project-card { display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem; min-height: 160px; padding: 1.2rem; color: var(--text-primary) !important; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--border-radius-lg); text-decoration: none !important; transition: transform var(--transition-fast), border-color var(--transition-fast); }
-  .project-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .project-card { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; min-height: 160px; padding: 1.2rem; color: var(--text-primary) !important; text-decoration: none !important; }
   .project-icon { font-size: 1.3rem; }
   .project-title-line { display: flex; gap: 0.55rem; align-items: flex-start; justify-content: space-between; }
-  .project-card h3 { margin: 0; font-size: 1rem; }
-  .project-format { flex: 0 0 auto; padding: 0.2rem 0.45rem; color: var(--text-muted); background: var(--bg-tertiary); border-radius: 999px; font-size: 0.66rem; font-weight: 650; }
+  .project-card h3 { margin: 0; font-size: 1rem; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .project-format { flex: 0 0 auto; padding: 0.15rem 0.45rem; color: var(--text-primary); border: 1px solid var(--border); border-radius: var(--radius-control); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   .project-card p { margin: 0.4rem 0 0; color: var(--text-secondary); font-size: 0.84rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.8rem 0 0; padding: 0; list-style: none; }
   .project-tags li { color: var(--text-muted); font-size: 0.68rem; }
   .project-tags li + li::before { content: '·'; margin-right: 0.35rem; }
-  .project-arrow { color: var(--accent); }
+  .project-arrow { grid-column: 2; justify-self: start; color: var(--accent); font-size: 0.82rem; font-weight: 650; text-decoration: underline !important; text-underline-offset: 0.24em; }
   @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) {
     .route-header { grid-template-columns: 1fr; gap: 0.55rem; }

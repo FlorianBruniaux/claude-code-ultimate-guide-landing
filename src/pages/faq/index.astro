@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import { getSiteStats } from '../../utils/site-stats'
 import { getContextualLink } from '../../data/seo-editorial-contract.mjs'
 
@@ -228,169 +229,175 @@ const jsonLd = [
     </div>
   </header>
 
-  <div class="container faq-page">
+  
     <!-- Getting Started -->
-    <section class="faq-section">
+    <section class="band band-base faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="01" label="Getting started" />
       <h2 class="faq-section-title">Getting started</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What is Claude Code and how does it work?</summary>
           <p>Claude Code is Anthropic's official CLI that brings Claude AI directly into your terminal. Unlike IDE plugins, it operates at the terminal level with full system access: reads your codebase, writes code, runs tests, and manages git workflows in a single session.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>How do I install Claude Code?</summary>
           <p>Install globally via npm: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+. Then run <code>claude</code> in any project directory to start. You'll need an API key from <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a>. See the <a href="/cheatsheet/">cheatsheet</a> for a quick reference.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What programming languages does Claude Code support?</summary>
           <p>Claude Code works with any programming language: it reads and writes files regardless of syntax. It's particularly strong with TypeScript, JavaScript, Python, Go, Rust, and Ruby. Community reports confirm effective use with Scala, Elixir, Swift, and even niche languages like Zig and Haskell.</p>
         </details>
       </div>
+    </div>
     </section>
 
     <!-- Pricing & Costs -->
-    <section class="faq-section">
+    <section class="band band-paper section-wallpaper faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="02" label="Pricing" />
       <h2 class="faq-section-title">Pricing & costs</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Is Claude Code free to use?</summary>
           <p>The CLI is free to install, but you pay per API token. Sonnet (default) costs ~$3/$15 per million input/output tokens. Opus costs ~$15/$75. For comparison: GitHub Copilot is $10/month flat, Cursor Pro is $20/month. Claude Code can cost $5-50/day for heavy usage without optimization strategies. <a href={cursorComparison.target}>{cursorComparison.anchor}</a> for strengths, weaknesses and when to use both.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>How can I reduce costs or avoid rate limits?</summary>
           <p><a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a> routes Claude Code through GitHub Copilot Pro+ ($10/month flat) instead of per-token billing, saving 99%+ on costs. It also supports offline mode via Ollama for air-gapped environments. Other strategies: use <code>/compact</code> to reduce context, prefer Sonnet over Opus for routine tasks, and use subagents to isolate expensive operations.</p>
         </details>
       </div>
+    </div>
     </section>
 
     <!-- Features & Concepts -->
-    <section class="faq-section">
+    <section class="band band-base faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="03" label="Concepts" />
       <h2 class="faq-section-title">Features & concepts</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What is a CLAUDE.md file?</summary>
           <p>CLAUDE.md is a project memory file that gives Claude persistent context. Place it in your project root with tech stack, coding conventions, and build commands. Claude reads it automatically at session start. There are 3 levels: <code>~/.claude/CLAUDE.md</code> (global), project root (team-shared), and <code>.claude/CLAUDE.local.md</code> (personal, gitignored). See our <a href="/examples/">{stats.templateCount} templates</a> for inspiration.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What are Claude Code hooks?</summary>
           <p>Hooks are shell commands that run automatically in response to Claude Code events: before/after tool calls, on notifications, or on session stop. Use cases: block dangerous commands (<code>rm -rf</code>, force-push), scan for secrets in outputs, enforce coding standards, or auto-format files. Configured in <code>.claude/settings.json</code> with PreToolUse, PostToolUse, Notification, and Stop events. The guide includes <a href="/examples/">31 production-ready hook templates</a>.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What's the difference between agents, skills, and commands?</summary>
           <p><strong>Agents</strong> are AI personas with specific expertise (code-reviewer, security-auditor) defined in <code>.claude/agents/</code>. <strong>Skills</strong> are reusable capability modules with bundled resources, invoked via <code>/skill-name</code>. <strong>Commands</strong> are simple slash-command templates in <code>.claude/commands/</code> for repetitive tasks. Rule of thumb: commands for single-step ops, skills for multi-step workflows with context, agents for specialized review or analysis roles. See the <a href="/#features">features section</a> for detailed comparison.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>How do I manage the context window in Claude Code?</summary>
           <p>Context management is the #1 skill to master. At 70% usage, Claude starts losing precision. At 85%, hallucinations increase. At 90%+, responses become erratic. Strategy: 0-50% (work freely), 50-70% (stay focused), 70-85% (<code>/compact</code> to compress history), 90%+ (<code>/clear</code> mandatory). Monitor usage with <code>/usage</code> (<code>/cost</code> is an alias). Use subagents to offload heavy research without polluting your main context.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What are MCP servers in Claude Code?</summary>
           <p>MCP (Model Context Protocol) servers extend Claude's capabilities by connecting to external tools. Examples: Playwright for browser automation, Context7 for library docs, Sentry for error tracking, PostgreSQL for database queries. Configure in <code>~/.claude/mcp.json</code> or <code>.mcp.json</code> per project. Always vet MCP servers before use. <a href="/#security">{stats.cveCount} CVE and advisory records are tracked</a> in the ecosystem.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What's the difference between Claude Code and Cowork?</summary>
           <p>Claude Code is a terminal-based CLI for <strong>developers</strong> (code, scripts, git). Claude Cowork is a Desktop app for <strong>knowledge workers</strong> (Excel, Word, PDF, file organization). Same AI model underneath, different interfaces for different audiences. This guide covers Claude Code. See the <a href="https://github.com/FlorianBruniaux/claude-cowork-guide" target="_blank" rel="noopener">Cowork Guide</a> for the non-dev version.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Is Claude Code better than GitHub Copilot?</summary>
           <p>Both have agentic capabilities since early 2025. Claude Code excels at terminal-first workflows with native MCP protocol, CLAUDE.md project memory, Agent SDK for custom automation, and event hooks. Copilot integrates tightly with VS Code via Agent Mode. Many developers use both: Copilot for inline autocomplete, Claude Code for complex multi-file tasks. See our <a href="/#comparison">comparison table</a> for a detailed breakdown.</p>
         </details>
       </div>
+    </div>
     </section>
 
     <!-- AI Ecosystem -->
-    <section class="faq-section">
+    <section class="band band-paper section-wallpaper faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="04" label="Ecosystem" />
       <h2 class="faq-section-title">AI ecosystem</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Which AI tools complement Claude Code?</summary>
           <p>Claude Code works best in an ecosystem: <strong>Perplexity</strong> for deep research with verified sources, <strong>Gemini</strong> for visual understanding (design &rarr; code), <strong>NotebookLM</strong> for document review and audio synthesis, <strong>v0/Bolt</strong> for rapid UI prototyping, <strong>Cursor/Copilot</strong> for inline autocomplete, and <strong>Wispr Flow</strong> for voice-to-text (4x faster than typing at 150 WPM). Chain them: Research (Perplexity) &rarr; Implement (Claude Code) &rarr; Deliver.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>How do I use voice-to-text with Claude Code?</summary>
           <p>Tools like <strong>Wispr Flow</strong> or Superwhisper transcribe speech directly into the terminal at ~150 WPM (vs 40 WPM typing). This is particularly effective for writing detailed prompts and specifications. Setup is simple: install the app, select the terminal as input target, and dictate naturally.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Can Claude Code work offline or with local models?</summary>
           <p>Not natively. Claude Code requires Anthropic's API. However, <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a> enables offline mode via Ollama, running 100% locally with open-source models. Trade-off: local models are significantly less capable than Claude Sonnet/Opus for complex coding tasks, but work for basic operations in air-gapped environments.</p>
         </details>
       </div>
+    </div>
     </section>
 
     <!-- Trust & Security -->
-    <section class="faq-section">
+    <section class="band band-base faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="05" label="Security" />
       <h2 class="faq-section-title">Trust & security</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Is Claude Code secure for production use?</summary>
           <p>Claude Code requires careful hardening for production. This guide tracks <strong>{stats.cveCount} CVEs and advisories</strong> and <strong>3,984 skills scanned</strong> (36.82% with security flaws) in the supply chain. Key risks: prompt injection via MCP servers, data exfiltration through tool calls, and code injection via malicious CLAUDE.md files. Mitigations: use hooks to block dangerous commands, vet all MCP servers with our <a href="/#security">5-minute audit checklist</a>, enable permission prompts, and never run in production environments without sandboxing.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Is my code sent to Anthropic?</summary>
           <p>Yes. Claude Code sends prompts and file contents to Anthropic's API servers. Retention and model-training policies depend on your account type and privacy settings. Zero data retention is available to eligible accounts and requires separate enablement. See Anthropic's <a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener">official privacy documentation</a> for details.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>How much should I trust AI-generated code?</summary>
           <p>Research shows AI-assisted code can contain <strong>1.75x more logic errors</strong> than human-written code (<a href="https://dl.acm.org/doi/10.1145/3716848" target="_blank" rel="noopener">ACM 2025 study</a>). <strong>Nuance:</strong> a 2-phase blind RCT (<a href="https://arxiv.org/abs/2507.00788" target="_blank" rel="noopener">Borg et al., 2025, n=151 professional developers</a>) found no significant difference in downstream maintainability (colleagues who evolve AI-generated code are not measurably slower than with human-written code). The quality risk is real but more narrowly scoped than often claimed. Trust calibration: <strong>auto-accept</strong> boilerplate and repetitive patterns, <strong>review</strong> business logic and non-trivial changes, <strong>manually verify</strong> security-critical code. Use TDD to catch errors early: write tests first, then let Claude implement. <a href={methodologyStack.target}>{methodologyStack.anchor}</a> when TDD alone does not fit.</p>
         </details>
       </div>
+    </div>
     </section>
 
     <!-- About the Guide -->
-    <section class="faq-section">
+    <section class="band band-paper section-wallpaper faq-section">
+    <div class="container faq-page">
+      <ChapterLabel number="06" label="About" />
       <h2 class="faq-section-title">About the guide</h2>
       <div class="faq-list">
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Is this guide official?</summary>
           <p>No. This is an independent community resource based on over a year of daily Claude Code usage. It is not affiliated with or endorsed by Anthropic. For official documentation, visit <a href="https://code.claude.com/docs" target="_blank" rel="noopener">code.claude.com/docs</a>.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>What version of Claude Code is covered?</summary>
           <p>The guide is continuously updated to track the latest Claude Code releases. Check the <a href="/changelog/">CHANGELOG</a> for recent updates and the <a href="/#releases">releases section</a> for version-specific feature tracking.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Who is behind this guide?</summary>
           <p><a href="https://github.com/FlorianBruniaux" target="_blank" rel="noopener">Florian Bruniaux</a>, Fractional Chief AI Officer. Around 15 years in software, including 8 to 10 in technical leadership, across developer, lead developer, Engineering Manager, VP Engineering, CTO and CTPO roles. An early contributor to <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener">RTK</a> (CLI token reduction, created by Patrick), now a supporter without active code contributions and creator of <a href="https://github.com/FlorianBruniaux/ccboard" target="_blank" rel="noopener">ccboard</a> (Claude Code dashboard) and <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">cc-copilot-bridge</a>.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item brand-card">
           <summary>Can I contribute to the guide?</summary>
           <p>Yes! The guide is open-source (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>) and welcomes contributions: corrections, new quiz questions, workflow templates, and resource evaluations. Check the <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">contributing guide on GitHub</a> for submission guidelines.</p>
         </details>
       </div>
+    </div>
     </section>
-  </div>
 
   <style>
-    .faq-page {
-      padding: var(--space-xl) var(--space-lg);
-    }
-
     .faq-section {
-      margin-bottom: var(--space-2xl);
+      padding: var(--space-3xl) 0;
     }
 
     .faq-section-title {
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--text-primary);
       margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 2px solid var(--border);
     }
 
     .faq-list { }
     .faq-item {
-      background-color: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
       margin-bottom: var(--space-md);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      transition: border-color 150ms ease, box-shadow 150ms ease;
     }
-    .faq-item[open] {
-      box-shadow: var(--shadow-md);
-      border-color: var(--accent);
-    }
+    .faq-item:hover { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .faq-item[open] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border); }
     .faq-item summary {
       padding: var(--space-lg);
       cursor: pointer;
@@ -399,13 +406,14 @@ const jsonLd = [
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 44px;
     }
+    .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
       font-size: 1.5rem;
       color: var(--text-secondary);
-      transition: transform var(--transition-fast);
     }
     .faq-item[open] summary::after { content: '-'; }
     .faq-item[open] summary { border-bottom: 1px solid var(--border); }

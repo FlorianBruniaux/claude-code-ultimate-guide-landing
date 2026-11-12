@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import { EXAMPLES, type ExampleFile } from '../../data/examples-data'
 import { exampleLinks } from '../../utils/example-links'
@@ -454,7 +455,7 @@ const jsonLd = [
     </div>
   </nav>
 
-  <header class="ex-hero">
+  <header class="page-hero ex-hero">
     <div class="ex-container">
       <div class="ex-meta">
         <span class="cat-badge">{categoryLabel}</span>
@@ -479,18 +480,21 @@ const jsonLd = [
   </header>
 
   <main class="ex-main">
-    <div class="ex-container">
-
-      <section class="ex-section">
+      <section class="ex-section band band-base">
+       <div class="ex-container">
+        <ChapterLabel number="01" label="When to use" />
         <h2>When to use this</h2>
         <ul class="when-list">
           {whenToUse.map((item) => (
-            <li>{item}</li>
+            <li class="brand-card">{item}</li>
           ))}
         </ul>
+       </div>
       </section>
 
-      <section class="ex-section">
+      <section class="ex-section band band-paper section-wallpaper">
+       <div class="ex-container">
+        <ChapterLabel number="02" label="How to use" />
         <h2>How to use</h2>
         <ol class="how-list">
           <li>
@@ -519,35 +523,44 @@ const jsonLd = [
             </span>
           </li>
         </ol>
+       </div>
       </section>
 
       {conceptLink && (
-        <section class="ex-section">
+        <section class="ex-section band band-base">
+         <div class="ex-container">
           <h2>Understand the configuration</h2>
           <p><a href={conceptLink.href}>{conceptLink.label} →</a></p>
+         </div>
         </section>
       )}
 
       {related.length > 0 && (
-        <section class="ex-section">
+        <section class="ex-section band band-paper section-wallpaper">
+         <div class="ex-container">
+          <ChapterLabel number="03" label="Related" />
           <h2>Related templates</h2>
           <ul class="related-list">
             {related.map((rel) => (
               <li>
-                <a href={`/examples/${slugify(rel.name)}/`} class="related-link">
+                <a href={`/examples/${slugify(rel.name)}/`} class="related-link brand-card brand-interactive-card">
                   <span class="related-name">{rel.name}</span>
                   <span class="related-desc">{rel.description}</span>
                 </a>
               </li>
             ))}
           </ul>
+         </div>
         </section>
       )}
 
-      <div class="back-link">
-        <a href="/examples/">← Browse all {stats.templateCount} templates</a>
-      </div>
-    </div>
+      <section class="ex-section band band-base">
+       <div class="ex-container">
+        <div class="back-link">
+          <a class="btn btn-quiet" href="/examples/">← Browse all {stats.templateCount} templates</a>
+        </div>
+       </div>
+      </section>
   </main>
 </Layout>
 
@@ -564,7 +577,8 @@ const jsonLd = [
     color: var(--text-muted);
   }
   .breadcrumb a { color: var(--text-muted); text-decoration: none; }
-  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb a { min-height: 24px; }
+  .breadcrumb a:hover, .breadcrumb a:focus-visible { color: var(--accent); text-decoration: underline; }
   .breadcrumb [aria-current="page"] { color: var(--text-secondary); }
 
   .ex-container {
@@ -573,10 +587,7 @@ const jsonLd = [
     padding: 0 1.5rem;
   }
 
-  .ex-hero {
-    padding: 2.5rem 0 2rem;
-    border-bottom: 1px solid var(--border);
-  }
+  .ex-hero { padding: 3rem 0 2.5rem; }
 
   .ex-meta {
     display: flex;
@@ -590,25 +601,28 @@ const jsonLd = [
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-radius: var(--radius-control);
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--accent);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border: 1px solid var(--accent);
   }
 
   .fav-badge {
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-control);
     background: color-mix(in srgb, #f85149 12%, transparent);
     color: #f85149;
     border: 1px solid color-mix(in srgb, #f85149 30%, transparent);
   }
 
-  .ex-hero h1 {
+  .page-hero.ex-hero h1 {
     font-family: var(--font-mono);
     font-size: clamp(1.25rem, 3.5vw, 1.875rem);
+    max-width: none;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0 0 0.75rem;
@@ -630,44 +644,13 @@ const jsonLd = [
     flex-wrap: wrap;
   }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.15s;
-    border: 1px solid transparent;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary {
-    border-color: var(--border);
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-  }
-  .btn-secondary:hover { color: var(--text-primary); border-color: var(--accent); }
+  /* Buttons inherit the shared action levels in src/styles/components.css. */
 
-  .ex-main {
-    padding: 2.5rem 0 4rem;
-  }
-
-  .ex-section {
-    margin-bottom: 2.5rem;
-  }
+  .ex-section { padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
 
   .ex-section h2 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    font-size: clamp(1.4rem, 3vw, 1.75rem);
     margin: 0 0 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid color-mix(in srgb, var(--accent) 25%, transparent);
   }
 
   .when-list {
@@ -681,10 +664,6 @@ const jsonLd = [
 
   .when-list li {
     padding: 0.75rem 1rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 0.5rem 0.5rem 0;
     color: var(--text-secondary);
     font-size: 0.9375rem;
     line-height: 1.5;
@@ -718,11 +697,12 @@ const jsonLd = [
     justify-content: center;
     width: 1.75rem;
     height: 1.75rem;
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid var(--accent);
     color: var(--accent);
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 700;
-    border-radius: 50%;
+    border-radius: var(--radius-control);
     flex-shrink: 0;
     margin-top: 0.05rem;
   }
@@ -733,7 +713,7 @@ const jsonLd = [
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
     padding: 0.1em 0.4em;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-control);
     color: var(--accent);
     word-break: break-all;
   }
@@ -752,16 +732,7 @@ const jsonLd = [
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.875rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    background: var(--bg-secondary);
-    text-decoration: none;
-    transition: border-color 0.15s, background 0.15s;
-  }
-
-  .related-link:hover {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 4%, transparent);
+    text-decoration: none !important;
   }
 
   .related-name {
@@ -778,15 +749,6 @@ const jsonLd = [
   }
 
   .back-link {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+    margin: 0;
   }
-
-  .back-link a {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-  }
-  .back-link a:hover { color: var(--accent); }
 </style>

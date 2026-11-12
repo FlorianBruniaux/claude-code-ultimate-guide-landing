@@ -1,4 +1,5 @@
 ---
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 
 const title = 'Claude Code Tools, Skills & Third-Party Ecosystem'
@@ -33,12 +34,13 @@ const jsonLd = [
             <div class="hero-badge">26 tools verified May 2026 · Skills guidance updated Sep 2026</div>
             <div class="cta-buttons">
                 <a href="#tool-browser" class="btn btn-primary">Browse Tools</a>
-                <a href="/guide/third-party-tools/" class="btn btn-secondary">Full Tool Guide &rarr;</a>
+                <a href="/guide/third-party-tools/" class="btn btn-quiet">Full Tool Guide &rarr;</a>
             </div>
         </div>
     </header>
 
-    <section class="content-section content-section--alt" id="mistral-large-4">
+    <section class="content-section band band-paper section-wallpaper" id="mistral-large-4">
+        <div class="container">
         <h2>Mistral Large 4: public-preview evidence</h2>
         <p class="distribution-intro">Checked October 6, 2026. Mistral Large 4 accepts text and images and produces text through Studio and the API. The guide treats it as a provider candidate; a native Claude Code integration was not tested.</p>
         <div class="distribution-panel">
@@ -53,10 +55,12 @@ const jsonLd = [
                 <a href="/guide/llm-market-snapshot/" class="btn btn-secondary">Compare API prices and limits &rarr;</a>
             </div>
         </div>
+    </div>
     </section>
 
     <!-- Stats -->
-    <section class="content-section">
+    <section class="content-section band band-base">
+        <div class="container">
         <h2>By the numbers</h2>
         <div class="stats-grid">
             <div class="stat-card">
@@ -76,9 +80,12 @@ const jsonLd = [
                 <div class="stat-label">Stable Tools</div>
             </div>
         </div>
+    </div>
     </section>
 
-    <section class="content-section content-section--alt" id="skill-distribution">
+    <section class="content-section band band-paper section-wallpaper" id="skill-distribution">
+        <div class="container">
+        <ChapterLabel number="01" label="Skills" />
         <h2>Skills: Distribution is not mutualized maintenance</h2>
         <p class="distribution-intro">A public catalog helps you discover procedures and patterns. An install count, leaderboard position, or marketplace rating does not prove that a skill fits your client, repository, risk level, or maintenance model.</p>
 
@@ -117,10 +124,13 @@ const jsonLd = [
                 <a href="/guide/ultimate-guide/05-skills/#ownership-and-reuse-governance" class="btn btn-secondary">Skill ownership guide &rarr;</a>
             </div>
         </div>
+    </div>
     </section>
 
     <!-- Tool Browser -->
-    <section class="content-section content-section--alt" id="tool-browser">
+    <section class="content-section band band-base" id="tool-browser">
+        <div class="container">
+        <ChapterLabel number="02" label="Tool browser" />
         <h2>Tool browser</h2>
 
         <div class="browser-controls">
@@ -167,10 +177,13 @@ const jsonLd = [
         <div id="no-results" class="no-results eco-hidden">
             <p>No tools match your filters. <button id="reset-filters" class="link-btn">Reset filters</button></p>
         </div>
+    </div>
     </section>
 
     <!-- Recommendations by Persona -->
-    <section class="content-section">
+    <section class="content-section band band-ink section-wallpaper">
+        <div class="container">
+        <ChapterLabel number="03" label="Personas" />
         <h2>Recommendations by persona</h2>
         <div class="persona-table-wrap">
             <table class="persona-table">
@@ -215,17 +228,22 @@ const jsonLd = [
                 </tbody>
             </table>
         </div>
+    </div>
     </section>
 
     <!-- MCP vs CLI Decision Guide cross-link -->
-    <section class="content-section">
+    <section class="content-section band band-accent section-wallpaper">
+        <div class="container">
         <h2>Related: MCP vs CLI decision guide</h2>
         <p class="gaps-intro">Not sure whether to use MCP servers or CLI tools for a given integration? The decision guide covers four key questions, a 15-row guidance table by situation, and token cost analysis.</p>
-        <a href="/ecosystem/mcp-vs-cli/" class="btn btn-secondary" style="display:inline-block;margin-top:0.5rem;">MCP vs CLI: Which to use? &rarr;</a>
+        <a href="/ecosystem/mcp-vs-cli/" class="btn btn-primary" style="display:inline-block;margin-top:0.5rem;">MCP vs CLI: Which to use? &rarr;</a>
+    </div>
     </section>
 
     <!-- Known Gaps -->
-    <section class="content-section content-section--alt">
+    <section class="content-section band band-base">
+        <div class="container">
+        <ChapterLabel number="04" label="Known gaps" />
         <h2>Known gaps</h2>
         <p class="gaps-intro">As of March 2026, community tooling has notable missing pieces:</p>
         <div class="gaps-grid">
@@ -254,6 +272,7 @@ const jsonLd = [
                 <p>Entire CLI (launched Feb 2026) provides rewindable checkpoints with full context replay.</p>
             </div>
         </div>
+    </div>
     </section>
 
 </Layout>
@@ -512,21 +531,13 @@ const jsonLd = [
     }
 
     .content-section {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: var(--space-3xl) var(--space-lg);
-    }
-
-    .content-section--alt {
-        background: var(--bg-secondary);
+        padding: var(--space-3xl) 0;
     }
 
     .content-section h2 {
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: var(--space-xl);
-        padding-bottom: var(--space-md);
-        border-bottom: 3px solid var(--accent);
         letter-spacing: -0.01em;
     }
 
@@ -566,14 +577,7 @@ const jsonLd = [
         border-radius: var(--border-radius-lg);
         padding: var(--space-xl);
         text-align: center;
-        transition: all var(--transition-fast);
-        box-shadow: var(--shadow-sm);
-    }
-
-    .stat-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--accent);
+        box-shadow: none;
     }
 
     .stat-number {
@@ -705,14 +709,14 @@ const jsonLd = [
         background: var(--surface-elevated);
         color: var(--text-primary);
         border: 1px solid var(--border);
-        border-radius: var(--border-radius);
+        border-radius: var(--radius-control);
         font-size: 0.95rem;
-        transition: all var(--transition-fast);
+        transition: border-color 150ms ease;
     }
 
     #tool-search:focus {
         outline: 2px solid var(--accent);
-        outline-offset: 2px;
+        outline-offset: 3px;
         border-color: var(--accent);
     }
 
@@ -722,10 +726,10 @@ const jsonLd = [
         background: var(--surface-elevated);
         color: var(--text-primary);
         border: 1px solid var(--border);
-        border-radius: var(--border-radius);
+        border-radius: var(--radius-control);
         font-size: 0.95rem;
         cursor: pointer;
-        transition: all var(--transition-fast);
+        transition: border-color 150ms ease;
         white-space: nowrap;
     }
 
@@ -737,7 +741,7 @@ const jsonLd = [
     #category-filter:focus,
     #status-filter:focus {
         outline: 2px solid var(--accent);
-        outline-offset: 2px;
+        outline-offset: 3px;
         border-color: var(--accent);
     }
 
@@ -765,17 +769,10 @@ const jsonLd = [
         border: 1px solid var(--border);
         border-radius: var(--border-radius-lg);
         padding: var(--space-xl);
-        transition: all var(--transition-fast);
-        box-shadow: var(--shadow-sm);
+        box-shadow: none;
         display: flex;
         flex-direction: column;
         gap: var(--space-md);
-    }
-
-    .tool-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--accent);
     }
 
     .tool-card-header {
@@ -789,7 +786,7 @@ const jsonLd = [
     .cat-badge {
         display: inline-block;
         padding: 4px 10px;
-        border-radius: 6px;
+        border-radius: var(--radius-control);
         font-size: 0.73rem;
         font-weight: 600;
         border: 1px solid;
@@ -800,7 +797,7 @@ const jsonLd = [
     .status-badge {
         display: inline-block;
         padding: 4px 10px;
-        border-radius: 6px;
+        border-radius: var(--radius-control);
         font-size: 0.72rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -1021,7 +1018,7 @@ const jsonLd = [
         background: var(--surface-elevated);
         border: 1px solid var(--border);
         border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-sm);
+        box-shadow: none;
     }
 
     .persona-table {
@@ -1076,7 +1073,6 @@ const jsonLd = [
         border-left: 4px solid var(--border);
         border-radius: var(--border-radius-lg);
         padding: var(--space-lg);
-        transition: all var(--transition-fast);
     }
 
     .gap-card--filled {

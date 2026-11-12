@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import { QUIZ_ROLES } from '../../data/quiz-roles'
 import { getSiteStats } from '../../utils/site-stats'
 
@@ -67,10 +68,12 @@ const jsonLd = [
     </div>
   </header>
 
+  <section class="band band-base quiz-band">
   <div class="container">
   <div class="quiz-container">
     <!-- Setup Screen -->
     <div id="quiz-setup" class="quiz-setup">
+      <ChapterLabel number="01" label="Categories" />
       <div class="category-header">
         <h2 class="quiz-step-heading">Select categories</h2>
         <div class="category-actions">
@@ -85,6 +88,7 @@ const jsonLd = [
       <div class="selected-count" id="selected-count">0 questions selected</div>
       <div class="previous-best" id="previous-best"></div>
 
+      <ChapterLabel number="02" label="Filters" />
       <h2 class="quiz-step-heading" style="margin-bottom: var(--space-md);">Filter by Difficulty (optional)</h2>
       <div class="difficulty-select">
         <button class="difficulty-btn selected" data-difficulty="all">All Levels</button>
@@ -146,7 +150,7 @@ const jsonLd = [
 
     <!-- Results Screen -->
     <div id="quiz-results" class="quiz-results">
-      <div class="results-card" id="results-card">
+      <div class="results-card brand-card" id="results-card">
         <div class="screenshot-badge">
           <img src="/claude-logo-orange.svg" alt="Claude Code AI assistant certification badge">
           <div class="screenshot-badge-text">
@@ -212,6 +216,7 @@ const jsonLd = [
     </div>
   </div>
   </div>
+  </section>
 
   <style is:global>
     /* Quiz-specific styles */
@@ -239,22 +244,29 @@ const jsonLd = [
       align-items: center;
       gap: var(--space-sm);
       padding: var(--space-md);
-      background: var(--bg-secondary);
+      min-height: 44px;
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
 
     .category-item:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
+      box-shadow: inset 0 0 0 1px var(--accent);
     }
 
+    .category-item:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+
     .category-item.selected {
-      border-color: var(--accent);
-      background: var(--bg-tertiary);
+      border-color: var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
     }
+
+    .category-item.selected .category-count { color: inherit; opacity: 0.8; }
+    .category-item.selected input { accent-color: var(--bg-primary); }
 
     .category-item input {
       accent-color: var(--accent);
@@ -291,22 +303,26 @@ const jsonLd = [
 
     .role-btn {
       padding: var(--space-md) var(--space-xl);
-      background: var(--bg-secondary);
+      min-height: 44px;
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       color: var(--text-primary);
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
 
     .role-btn:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
+      box-shadow: inset 0 0 0 1px var(--accent);
     }
 
+    .role-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
     .role-btn.selected {
-      border-color: var(--accent);
-      background: var(--bg-tertiary);
+      border-color: var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
     }
 
     .filter-hint {
@@ -317,22 +333,26 @@ const jsonLd = [
 
     .difficulty-btn {
       padding: var(--space-md) var(--space-xl);
-      background: var(--bg-secondary);
+      min-height: 44px;
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       color: var(--text-primary);
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
 
     .difficulty-btn:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
+      box-shadow: inset 0 0 0 1px var(--accent);
     }
 
+    .difficulty-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
     .difficulty-btn.selected {
-      border-color: var(--accent);
-      background: var(--bg-tertiary);
+      border-color: var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
     }
 
     .start-btn {
@@ -349,7 +369,7 @@ const jsonLd = [
       margin-bottom: var(--space-lg);
       padding: var(--space-sm) var(--space-md);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       font-size: 0.9rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
@@ -390,14 +410,17 @@ const jsonLd = [
 
     .category-action-btn {
       padding: var(--space-xs) var(--space-md);
+      min-height: 44px;
       font-size: 0.85rem;
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       color: var(--text-secondary);
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     }
+
+    .category-action-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
     .category-action-btn:hover {
       border-color: var(--accent);
@@ -464,14 +487,14 @@ const jsonLd = [
       font-size: 0.85rem;
       padding: var(--space-xs) var(--space-sm);
       background: var(--bg-tertiary);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       color: var(--text-secondary);
     }
 
     .question-difficulty {
       font-size: 0.8rem;
       padding: var(--space-xs) var(--space-sm);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
     }
 
     .difficulty-junior { background: var(--bg-tertiary); color: var(--accent-tertiary); border: 1px solid var(--border); }
@@ -490,7 +513,7 @@ const jsonLd = [
       padding: 2px 6px;
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       color: var(--accent);
     }
 
@@ -498,7 +521,7 @@ const jsonLd = [
       margin: var(--space-sm) 0;
       padding: var(--space-sm);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       overflow-x: auto;
     }
 
@@ -521,25 +544,30 @@ const jsonLd = [
       align-items: flex-start;
       gap: var(--space-md);
       padding: var(--space-md) var(--space-lg);
-      background: var(--bg-secondary);
+      background: var(--surface-elevated);
       border: 2px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       text-align: left;
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
       color: var(--text-primary);
       font-size: 1rem;
     }
 
+    .option-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
     .option-btn:hover:not(.disabled) {
       border-color: var(--accent);
-      transform: translateY(-1px);
+      box-shadow: inset 0 0 0 1px var(--accent);
     }
 
     .option-btn.selected {
-      border-color: var(--accent);
-      background: var(--bg-tertiary);
+      border-color: var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg-primary);
     }
+
+    .option-btn.selected .option-key { background: var(--bg-primary); color: var(--text-primary); }
 
     .option-btn.correct {
       border-color: var(--status-success);
@@ -561,7 +589,7 @@ const jsonLd = [
       padding: 2px 6px;
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       color: var(--accent);
     }
 
@@ -569,7 +597,7 @@ const jsonLd = [
       margin: var(--space-xs) 0;
       padding: var(--space-xs);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       overflow-x: auto;
     }
 
@@ -587,7 +615,7 @@ const jsonLd = [
       min-width: 28px;
       height: 28px;
       background: var(--bg-tertiary);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       font-weight: 600;
       font-size: 0.9rem;
       flex-shrink: 0;
@@ -597,7 +625,7 @@ const jsonLd = [
       display: none;
       padding: var(--space-lg);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       margin-bottom: var(--space-xl);
       border-left: 4px solid var(--accent);
     }
@@ -623,7 +651,7 @@ const jsonLd = [
       padding: 2px 6px;
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       color: var(--accent);
     }
 
@@ -631,7 +659,7 @@ const jsonLd = [
       margin: var(--space-sm) 0;
       padding: var(--space-sm);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       overflow-x: auto;
     }
 
@@ -646,7 +674,7 @@ const jsonLd = [
       margin-top: var(--space-sm);
       padding: var(--space-xs) var(--space-sm);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       font-size: 0.85rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
@@ -681,11 +709,11 @@ const jsonLd = [
       border: 1px solid var(--border);
       color: var(--text-secondary);
       padding: var(--space-xs) var(--space-md);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       font-size: 0.85rem;
       text-decoration: none;
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: background-color 150ms ease, color 150ms ease;
     }
 
     .btn-report-error:hover {
@@ -724,16 +752,8 @@ const jsonLd = [
     }
 
     .results-card {
-      background: var(--bg-secondary);
-      border: 2px solid var(--border);
-      border-radius: var(--border-radius-lg);
       padding: var(--space-2xl);
       margin-bottom: var(--space-2xl);
-      transition: all var(--transition-normal);
-    }
-
-    .results-card:hover {
-      border-color: var(--accent);
     }
 
     .results-card h2 {
@@ -758,7 +778,7 @@ const jsonLd = [
       font-weight: 600;
       margin-bottom: var(--space-lg);
       padding: var(--space-sm) var(--space-md);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
     }
 
     .score-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
@@ -772,7 +792,7 @@ const jsonLd = [
       font-weight: 700;
       margin-left: var(--space-xs);
       padding: 2px 6px;
-      border-radius: 3px;
+      border-radius: var(--radius-control);
     }
 
     .category-delta.positive { color: var(--status-success); background: var(--bg-tertiary); }
@@ -781,7 +801,7 @@ const jsonLd = [
     .score-badge {
       display: inline-block;
       padding: var(--space-sm) var(--space-lg);
-      border-radius: 20px;
+      border-radius: var(--radius-control);
       font-weight: 600;
       margin-bottom: var(--space-xl);
     }
@@ -808,14 +828,14 @@ const jsonLd = [
       width: 100px;
       height: 8px;
       background: var(--bg-tertiary);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       overflow: hidden;
     }
 
     .category-score-fill {
       height: 100%;
       background: var(--accent);
-      border-radius: 4px;
+      border-radius: var(--radius-control);
     }
 
     .results-meta {
@@ -826,7 +846,7 @@ const jsonLd = [
       margin-bottom: var(--space-xl);
       padding: var(--space-md);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
     }
 
     .meta-item { text-align: center; }
@@ -836,7 +856,7 @@ const jsonLd = [
     .most-missed-section {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       padding: var(--space-lg);
       margin-bottom: var(--space-2xl);
       text-align: left;
@@ -851,7 +871,7 @@ const jsonLd = [
       margin-bottom: var(--space-sm);
       background: var(--bg-tertiary);
       border-left: 3px solid var(--warning);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       font-size: 0.9rem;
       display: flex;
       justify-content: space-between;
@@ -870,7 +890,7 @@ const jsonLd = [
       font-size: 0.9rem;
       padding: var(--space-md);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       text-align: left;
       margin-bottom: var(--space-lg);
       word-break: break-word;
@@ -898,10 +918,7 @@ const jsonLd = [
       border-radius: var(--border-radius-lg);
       padding: var(--space-xl);
       margin-bottom: var(--space-2xl);
-      transition: all var(--transition-normal);
     }
-
-    .history-section:hover { border-color: var(--accent); }
     .history-section h3 { margin-bottom: var(--space-md); text-align: left; }
     .history-list { display: flex; flex-direction: column; gap: var(--space-sm); }
 
@@ -911,17 +928,16 @@ const jsonLd = [
       justify-content: space-between;
       padding: var(--space-sm) var(--space-md);
       background: var(--bg-tertiary);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       font-size: 0.9rem;
       border-left: 3px solid transparent;
-      transition: all var(--transition-fast);
     }
 
     .history-item:hover { background: var(--bg-secondary); }
     .history-item.best { border-left-color: var(--accent); background: var(--bg-tertiary); }
     .history-date { color: var(--text-muted); font-size: 0.85rem; }
     .history-score { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
-    .history-badge { font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; }
+    .history-badge { font-size: 0.8rem; padding: 2px 8px; border-radius: var(--radius-control); }
     .history-meta { color: var(--text-muted); font-size: 0.8rem; }
 
     .clear-history {
@@ -975,7 +991,7 @@ const jsonLd = [
       padding: var(--space-sm) var(--space-md);
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-control);
       text-decoration: none;
       color: var(--text-primary);
       font-size: 0.95rem;
@@ -1490,25 +1506,25 @@ const jsonLd = [
     loadQuestions();
   </script>
 
-  <section class="quiz-faq">
+  <section class="band band-paper section-wallpaper quiz-faq">
     <div class="container">
       <h2>FAQ</h2>
-      <div class="faq-item">
+      <div class="faq-item brand-card">
         <h3>Is this the official Claude Code 101 or Claude Cowork certification quiz?</h3>
         <p>No. This is an independent, open-source practice quiz built from the Claude Code Ultimate Guide, not affiliated with Anthropic's official courses or certification exams. If you landed here searching for official course answers, this quiz still covers the same underlying Claude Code concepts (installation, agents, hooks, MCP, permissions) but with its own question bank.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item brand-card">
         <h3>Can I filter quiz questions by role or by difficulty?</h3>
         <p>Yes. Two independent filters combine: difficulty (Junior, Senior, Power User) and role persona (Developer, Power User, Platform/Architect, Security/Safety, Non-technical/PM). Pick both to get a question pool matched to your day-to-day work with Claude Code.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item brand-card">
         <h3>How many questions and categories does the quiz cover?</h3>
         <p>473 questions across 17 categories, from installation and slash commands to agents, hooks, MCP servers, security, and team adoption metrics. No account or sign-up required, and results are instant with a shareable score.</p>
       </div>
     </div>
   </section>
 
-  <section class="related-links">
+  <section class="band band-ink section-wallpaper related-links">
     <div class="container">
       <h2>Keep learning</h2>
       <ul>
@@ -1521,21 +1537,19 @@ const jsonLd = [
     </div>
   </section>
   <style>
-    .quiz-faq { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); }
-    .quiz-faq h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-lg); }
-
+    .quiz-faq { padding: var(--space-2xl) 0; }
+    .quiz-faq h2, .related-links h2 { font-size: 1.5rem; margin-bottom: var(--space-lg); text-align: left; }
     .hero-byline { margin-top: var(--space-sm); font-size: 0.85rem; color: var(--text-muted); }
-    .hero-byline a { color: var(--accent); text-decoration: none; }
-    .hero-byline a:hover { text-decoration: underline; }
-    .quiz-faq .faq-item { max-width: 720px; margin: 0 auto var(--space-lg); }
-    .quiz-faq .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text-primary); }
-    .quiz-faq .faq-item p { color: var(--text-secondary); line-height: 1.6; }
+    .hero-byline a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .hero-byline a:hover { text-decoration-thickness: 2px; }
+    .quiz-faq .faq-item { max-width: 760px; margin: 0 0 var(--space-md); padding: var(--space-md) var(--space-lg); }
+    .quiz-faq .faq-item h3 { font-size: 1.05rem; margin-bottom: var(--space-xs); color: var(--text-primary); }
+    .quiz-faq .faq-item p { color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
-    .related-links { padding: var(--space-2xl) 0; border-top: 1px solid var(--border); background: var(--bg-secondary); }
-    .related-links h2 { font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: var(--space-md); }
-    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 640px; margin: 0 auto; }
+    .related-links { padding: var(--space-2xl) 0; }
+    .related-links ul { list-style: none; padding: 0; display: grid; gap: var(--space-sm); max-width: 760px; margin: 0; }
     .related-links li { color: var(--text-secondary); line-height: 1.6; }
-    .related-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
-    .related-links a:hover { text-decoration: underline; }
+    .related-links a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .related-links a:hover, .related-links a:focus-visible { text-decoration-thickness: 2px; }
   </style>
 </Layout>

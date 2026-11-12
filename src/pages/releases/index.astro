@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import ConsultingCta from '../../components/global/ConsultingCta.astro'
 import { releases, breakingChanges } from '../../data/releases'
 import { getReleaseDescription, getReleaseTitle, releaseDateToIsoDate } from '../../data/seo-editorial-contract.mjs'
@@ -36,7 +37,9 @@ const jsonLd = [
   </header>
 
   <!-- Latest Release Section (static, SSG) -->
-  <section class="content-section" id="whats-new">
+  <section class="content-section band band-base" id="whats-new">
+    <div class="container">
+    <ChapterLabel number="01" label="Latest" />
     <h2>Latest Release: {latestRelease.version}</h2>
     <p>Released {latestRelease.date}</p>
     <ul class="release-highlights static-highlights">
@@ -53,10 +56,13 @@ const jsonLd = [
     <div style="text-align: left; margin-top: var(--space-xl);">
       <a href="#releases" class="btn btn-secondary">View All {releases.length} Releases &darr;</a>
     </div>
+    </div>
   </section>
 
   <!-- Environment Variables Reference (static, SSG) -->
-  <section class="content-section" id="env-vars">
+  <section class="content-section band band-ink section-wallpaper" id="env-vars">
+    <div class="container">
+    <ChapterLabel number="02" label="Configuration" />
     <h2>Environment variables reference</h2>
     <p>Config flags that Claude Code reads at startup. Set in your shell profile or before the <code>claude</code> command.</p>
 
@@ -172,10 +178,13 @@ const jsonLd = [
     <p style="margin-top: var(--space-md); color: var(--text-secondary); font-size: 0.9rem;">
       <strong>Note:</strong> <code>showThinkingSummaries: true</code> is a <strong>settings.json key</strong>, not an env var. Add it to <code>~/.claude/settings.json</code> to restore thinking summaries (disabled by default since v2.1.90).
     </p>
+    </div>
   </section>
 
   <!-- Claude Code Releases Section -->
-  <section class="content-section" id="releases">
+  <section class="content-section band band-base" id="releases">
+    <div class="container">
+    <ChapterLabel number="03" label="History" />
     <h2>Full release history</h2>
     <p>Latest versions and breaking changes from Anthropic</p>
 
@@ -190,7 +199,7 @@ const jsonLd = [
 
     <div class="releases-timeline">
       {releases.map((release, index) => (
-        <div class={`release-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index} id={`v${release.version.replace(/\./g, '-').replace(/^v/, '')}`}>
+        <div class={`release-card brand-card ${release.latest ? 'release-latest' : ''} ${release.featured ? 'release-featured' : ''} ${!release.initiallyVisible ? 'release-card-hidden' : ''}`} data-release-index={index} id={`v${release.version.replace(/\./g, '-').replace(/^v/, '')}`}>
           {release.featuredLabel && (
             <div class="release-featured-label">{release.featuredLabel}</div>
           )}
@@ -227,13 +236,14 @@ const jsonLd = [
         View All Releases on GitHub &rarr;
       </a>
     </div>
+    </div>
   </section>
 
   <style is:global>
     /* Featured banner */
     .featured-banner {
-      background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--bg-tertiary) 100%);
-      border: 2px solid var(--accent);
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-xl) var(--space-2xl);
       position: relative;
@@ -244,7 +254,7 @@ const jsonLd = [
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--accent), #f97316, var(--accent));
+      background: var(--action);
     }
     .featured-banner-label {
       font-size: 0.8rem;
@@ -284,12 +294,12 @@ const jsonLd = [
     }
     .featured-badge {
       display: inline-block;
-      background: var(--accent);
-      color: #fff;
+      background: var(--action);
+      color: var(--action-ink);
       font-size: 0.75rem;
       font-weight: 600;
       padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      border-radius: var(--radius-control);
     }
     .featured-badge-secondary {
       background: var(--surface-elevated);
@@ -317,7 +327,7 @@ const jsonLd = [
       font-size: 0.85rem;
       color: var(--text-secondary);
       background: var(--bg-tertiary);
-      border-left: 3px solid #f97316;
+      border-left: 3px solid var(--action);
       padding: var(--space-sm) var(--space-md);
       border-radius: 0 4px 4px 0;
       margin-bottom: var(--space-lg);
@@ -338,18 +348,18 @@ const jsonLd = [
     .release-featured {
       border-color: var(--accent) !important;
       grid-column: span 2;
-      background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--bg-tertiary) 100%) !important;
+      background: var(--surface-elevated) !important;
     }
     .release-featured-label {
       display: inline-block;
-      background: var(--accent);
-      color: #fff;
+      background: var(--action);
+      color: var(--action-ink);
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      border-radius: var(--radius-control);
       margin-bottom: var(--space-sm);
     }
     @media (max-width: 640px) {
@@ -361,16 +371,12 @@ const jsonLd = [
     /* Hero */
     /* Content sections */
     .content-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-lg);
+      padding: var(--space-2xl) 0;
     }
 
     .content-section h2 {
       font-size: 1.75rem;
       margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 2px solid var(--accent);
     }
 
     /* Releases timeline */
@@ -385,23 +391,17 @@ const jsonLd = [
       border: 1px solid var(--border);
       border-radius: var(--border-radius-lg);
       padding: var(--space-lg);
-      box-shadow: var(--shadow-sm);
-      transition: border-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
-    }
-    .release-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      box-shadow: none;
     }
     .release-latest {
-      border-color: var(--accent);
+      border-top: 3px solid var(--action);
       background: var(--surface-elevated);
     }
     .release-latest::before {
       content: "Latest";
       display: inline-block;
-      background: var(--accent);
-      color: #fff;
+      background: var(--action);
+      color: var(--action-ink);
       font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -487,7 +487,7 @@ const jsonLd = [
     .breaking-badge {
       display: inline-block;
       background: #f85149;
-      color: #fff;
+      color: var(--action-ink);
       font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import McpCliQuiz from '../../components/landing/McpCliQuiz.astro'
 
 const title = 'MCP or CLI? Find the Right Integration Pattern for Your Context'
@@ -42,21 +43,23 @@ const jsonLd = [
 
   <McpCliQuiz />
 
-  <section class="content-section">
+  <section class="content-section band band-base mco-method">
     <div class="container content-narrow">
+      <ChapterLabel number="01" label="Method" />
       <h2>How the recommendation works</h2>
       <p>The quiz evaluates six dimensions that drive the MCP vs CLI decision: who uses the tools, how services authenticate, which model tier you use, whether observability is required, which mature CLIs are available for your services, and how many people need consistent access.</p>
       <p>These map directly to the four decision dimensions in the <a href="/guide/mcp-vs-cli/">MCP vs CLI Decision Guide</a>: user type (dominant variable), model tier, observability requirements, and CLI availability. The team-scale and auth-model questions add precision beyond the four-dimension framework.</p>
       <p>The three outcomes are not exclusive. Most production workflows end up using both CLI and MCP, with each covering the layer it handles best. The quiz identifies your primary lean, not a strict constraint.</p>
       <div class="page-actions">
         <a href="/guide/mcp-vs-cli/" class="btn btn-primary">Read the full decision guide &rarr;</a>
-        <a href="/ecosystem/" class="btn btn-secondary">MCP ecosystem overview</a>
+        <a href="/ecosystem/" class="btn btn-quiet">MCP ecosystem overview</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
+  .mco-method { padding-block: var(--space-3xl); }
   .content-narrow { max-width: 680px; }
   .content-narrow h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--space-md); }
   .content-narrow p { color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--space-md); }

@@ -1,0 +1,99 @@
+---
+import type { GuideChangelogDisplayRelease } from '../../utils/guide-changelog'
+import { guideChangelogGitHubUrl } from '../../utils/guide-changelog'
+import ChangelogItem from './ChangelogItem.astro'
+
+interface Props {
+  release: GuideChangelogDisplayRelease
+  publishedGuidePaths: ReadonlySet<string>
+  latest?: boolean
+  compact?: boolean
+}
+
+const { release, publishedGuidePaths, latest = false, compact = false } = Astro.props
+
+function formatDate(date: string | null): string {
+  if (!date) return 'Date not recorded'
+  return new Intl.DateTimeFormat('en', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`))
+}
+
+function kindOf(title: string): string {
+  const t = title.toLowerCase()
+  if (/^(added|new|feature)/.test(t)) return 'added'
+  if (/^(changed|updated|improved)/.test(t)) return 'changed'
+  if (/^(fixed|fix|corrected)/.test(t)) return 'fixed'
+  if (/^(removed|deprecated|breaking)/.test(t)) return 'removed'
+  return 'other'
+}
+---
+
+<article class:list={['release', 'brand-card', { 'release-latest': latest, compact }]} id={release.anchor}>
+  <div class="release-heading">
+    <div>
+      <p class="release-kicker">
+        {release.status === 'unreleased'
+          ? 'Next release'
+          : release.status === 'current'
+            ? <>Current version · <time datetime={release.date ?? undefined}>{formatDate(release.date)}</time></>
+            : <time datetime={release.date ?? undefined}>{formatDate(release.date)}</time>}
+      </p>
+      <h2>{release.version === 'Unreleased' ? 'Unreleased' : `v${release.version}`}</h2>
+    </div>
+    <a class="btn btn-secondary" href={guideChangelogGitHubUrl(release)} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+  </div>
+  <div class="release-groups">
+    {release.sections.map((section) => (
+      <section class="change-section">
+        <div class="change-section-heading">
+          <h3 class={`kind kind-${kindOf(section.title)}`}>{section.title}</h3>
+          <p>{section.items.length} {section.items.length === 1 ? 'change' : 'changes'}</p>
+        </div>
+        <div class="change-section-content">
+          <ul class="change-list">
+            {section.items.slice(0, 6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
+          </ul>
+          {section.items.length > 6 && (
+            <details class="more-changes">
+              <summary>Show {section.items.length - 6} more {section.title.toLowerCase()} changes</summary>
+              <ul class="change-list continued">
+                {section.items.slice(6).map((item) => <ChangelogItem item={item} publishedGuidePaths={publishedGuidePaths} />)}
+              </ul>
+            </details>
+          )}
+        </div>
+      </section>
+    ))}
+  </div>
+</article>
+
+<style>
+  .release { margin: 0 0 2rem; padding: 0; overflow: hidden; scroll-margin-top: 6rem; }
+  .release-latest { border-top: 3px solid var(--action); }
+  .release-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.35rem; background: var(--bg-tertiary); border-bottom: 1px solid var(--border); }
+  .release-heading h2 { margin: 0; color: var(--text-primary); font-size: clamp(1.9rem, 3.4vw, 2.5rem); line-height: 1.05; }
+  .release-kicker { margin: 0 0 0.3rem; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .release-heading .btn { flex-shrink: 0; min-height: 44px; }
+  .change-section { display: grid; grid-template-columns: minmax(9rem, 11rem) minmax(0, 1fr); border-bottom: 1px solid var(--border); }
+  .change-section:last-child { border-bottom: 0; }
+  .change-section-heading { padding: 1rem 1.1rem; border-right: 1px solid var(--border); }
+  .change-section-heading h3 { display: inline-block; margin: 0; padding: 0.25rem 0.6rem; border-left: 4px solid var(--k, var(--border)); border-radius: var(--radius-control); background: color-mix(in srgb, var(--k, var(--border)) 20%, transparent); color: var(--text-primary); font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.04em; }
+  .kind-added { --k: #2f9e5b; }
+  .kind-changed { --k: #3b82c4; }
+  .kind-fixed { --k: #d49a1a; }
+  .kind-removed { --k: #d1493f; }
+  .change-section-heading p { margin: 0.5rem 0 0; color: var(--text-muted); font-size: 0.78rem; }
+  .change-section-content { min-width: 0; padding: 1rem 1.25rem 1.1rem; }
+  .change-list { display: grid; gap: 1.1rem; margin: 0; padding-left: 1.2rem; list-style: disc; }
+  .change-list ::marker { color: var(--accent); }
+  .continued { margin-top: 1.1rem; }
+  .more-changes { margin-top: 1rem; }
+  .more-changes > summary { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; cursor: pointer; color: var(--accent); font-size: 0.9rem; font-weight: 700; text-decoration: underline; text-underline-offset: 0.18em; }
+  .more-changes > summary:hover { text-decoration-thickness: 2px; }
+  .more-changes > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 640px) {
+    .release-heading { flex-direction: column; align-items: flex-start; }
+    .change-section { grid-template-columns: 1fr; }
+    .change-section-heading { padding: 0.75rem 0.85rem; border-right: 0; border-bottom: 1px solid var(--border); }
+    .change-section-content { padding: 0.85rem 0.85rem 1rem; }
+  }
+</style>

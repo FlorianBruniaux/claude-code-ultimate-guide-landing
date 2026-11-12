@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Tldr from '../../components/global/Tldr.astro'
 import ClaimsVsMeasured from '../../components/benchmarks/ClaimsVsMeasured.astro'
 import ResultsByTool from '../../components/benchmarks/ResultsByTool.astro'
@@ -97,15 +98,16 @@ const links = [
     </div>
   </nav>
 
-  <section class="section tk-section" id="catalogue">
+  <section class="section tk-section band" id="catalogue">
     <div class="container">
+      <ChapterLabel number="01" label="Catalogue" />
       <h2 class="section-title">Catalogue of token-saving tools</h2>
       <p class="section-subtitle">{CATALOG.length} projects, each with its own claim and any third-party result found. Open a row for the full claim, every result and the limits.</p>
       <ToolCatalog />
     </div>
   </section>
 
-  <section class="section section--alt tk-section" id="reading-notes">
+  <section class="section band band-ink section-wallpaper tk-section" id="reading-notes">
     <div class="container">
       <h2 class="section-title">How to read the results</h2>
       <dl class="notes">
@@ -119,8 +121,9 @@ const links = [
     </div>
   </section>
 
-  <section class="section tk-section" id="measurements">
+  <section class="section tk-section band" id="measurements">
     <div class="container">
+      <ChapterLabel number="02" label="Results" />
       <h2 class="section-title">Results by tool</h2>
       <p class="section-subtitle">Every third-party result from the {BENCHMARKS.length} benchmarks, one row per tool. Rows are sorted by name by default; you can sort them by median result, which mixes studies. THOL publishes the opposite sign convention; its figures are converted here.</p>
       <ResultsByTool />
@@ -129,14 +132,16 @@ const links = [
 
   <section class="section section--alt tk-section" id="where-tokens-come-from">
     <div class="container">
+      <ChapterLabel number="03" label="Token sources" />
       <h2 class="section-title">Where tool tokens come from</h2>
       <p class="section-subtitle">Why compressing one tool's output moves the total by less than the output figure suggests.</p>
       <ToolTokenShare />
     </div>
   </section>
 
-  <section class="section tk-section" id="benchmark-quality">
+  <section class="section tk-section band" id="benchmark-quality">
     <div class="container">
+      <ChapterLabel number="04" label="Benchmarks" />
       <h2 class="section-title">How each benchmark was run</h2>
       <p class="section-subtitle">Eight checks per benchmark, plus who published it and what they stand to gain.</p>
       <BenchmarkQuality />
@@ -151,8 +156,9 @@ const links = [
     </div>
   </section>
 
-  <section class="section tk-section" id="claimed-vs-measured">
+  <section class="section tk-section band" id="claimed-vs-measured">
     <div class="container">
+      <ChapterLabel number="05" label="Claims" />
       <h2 class="section-title">Claims and third-party studies</h2>
       <p class="section-subtitle">{CLAIMS_VS_MEASURED.length} tools where a project claim and third-party results can be read side by side, with every result found for each tool.</p>
       <ClaimsVsMeasured />
@@ -222,9 +228,10 @@ const links = [
 .disclosure {
   margin: 0;
   padding: var(--space-md) var(--space-lg);
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg-secondary));
-  border-left: 4px solid var(--accent);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--action, var(--accent));
+  border-radius: var(--border-radius-lg);
   color: var(--text-primary);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -251,7 +258,8 @@ const links = [
   white-space: nowrap;
   text-decoration: none;
 }
-.subnav a:hover { color: var(--accent); background: var(--bg-secondary); text-decoration: none; }
+.subnav a:hover { color: var(--accent); background: var(--bg-secondary); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.subnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; text-decoration: underline; text-underline-offset: 6px; }
 .subnav a[aria-current] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); border-radius: var(--border-radius) var(--border-radius) 0 0; }
 
 .tk-section { padding: var(--space-2xl) 0; scroll-margin-top: 7rem; }
