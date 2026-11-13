@@ -175,6 +175,13 @@
     }
   }
 
+  /* A deep link lands at once: smooth scrolling would animate across the whole
+   * chapter (2.5 s measured on /guide/ultimate-guide/07-hooks/#74-security-hooks).
+   * Header.astro sets this class while a page with a hash loads. */
+  html.is-anchor-loading {
+    scroll-behavior: auto;
+  }
+
   /* Selection color */
   ::selection {
     background-color: color-mix(in srgb, var(--accent) 30%, transparent);

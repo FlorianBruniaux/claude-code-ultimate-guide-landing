@@ -26,7 +26,7 @@ const menuItems = [
 ---
 
 <div class="feedback-wrapper" id="feedback-wrapper">
-  <div class="feedback-menu" id="feedback-menu" aria-hidden="true" role="menu">
+  <div class="feedback-menu" id="feedback-menu" aria-hidden="true" role="menu" inert>
     {menuItems.map((item) => (
       <a
         href={`${GUIDE_REPO}/issues/new?template=${item.template}`}
@@ -72,12 +72,15 @@ const menuItems = [
 
   function openMenu() {
     menu.classList.add('is-open')
+    menu.inert = false
     menu.setAttribute('aria-hidden', 'false')
     btn.setAttribute('aria-expanded', 'true')
   }
 
   function closeMenu() {
     menu.classList.remove('is-open')
+    // Closed links stay in the DOM for the animation; inert keeps them out of the tab order.
+    menu.inert = true
     menu.setAttribute('aria-hidden', 'true')
     btn.setAttribute('aria-expanded', 'false')
   }

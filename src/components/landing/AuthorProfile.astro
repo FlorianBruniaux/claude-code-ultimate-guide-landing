@@ -16,15 +16,15 @@ import { authorProfile } from '../../data/author-profile'
   <div class="author-content">
     <p class="author-identity">
       <a class="author-name" href={authorProfile.aboutUrl} target="_blank" rel="noopener noreferrer">{authorProfile.name}</a>
-      <span aria-hidden="true">&middot;</span>
-      <span>{authorProfile.role}</span>
+      <span class="author-line">{authorProfile.role}</span>
     </p>
     <p class="author-meta">
-      <span>{authorProfile.experienceLabel}</span>
-      <span aria-hidden="true">&middot;</span>
-      <a href={authorProfile.blogUrl} target="_blank" rel="noopener noreferrer">Blog ↗</a>
-      <span aria-hidden="true">&middot;</span>
-      <a href={authorProfile.projectsUrl} target="_blank" rel="noopener noreferrer">Projects ↗</a>
+      <span class="author-line">{authorProfile.experienceLabel}</span>
+      <span class="author-links">
+        <a href={authorProfile.blogUrl} target="_blank" rel="noopener noreferrer">Blog ↗</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href={authorProfile.projectsUrl} target="_blank" rel="noopener noreferrer">Projects ↗</a>
+      </span>
     </p>
   </div>
 </aside>
@@ -61,6 +61,18 @@ import { authorProfile } from '../../data/author-profile'
   flex-wrap: wrap;
   margin: 0;
   line-height: 1.4;
+}
+
+/* Each item takes its own line: a wrapped "·" used to dangle at a line end. */
+.author-line {
+  flex-basis: 100%;
+}
+
+.author-links {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .author-identity {

@@ -678,6 +678,8 @@ const chapterLines = new Map()
 CHAPTERS.forEach(c => chapterLines.set(c.num, []))
 
 let currentChapter = 0
+// Anchor of each chapter's source H1, kept as an id on the generated page.
+const chapterH1Anchors = new Map()
 let inCodeFence = false
 let fenceMarker = ''
 
@@ -718,8 +720,15 @@ for (const line of lines) {
 
       const anchor = toAnchor(headingText)
       const chapterHeading = level === 1 && CHAPTERS.find(chapter => chapter.headingAnchor === anchor)
+      // "# 8. MCP Servers": a numbered H1 opens its chapter. Without this, the
+      // H1, its Quick jump line and its reading time stayed at the end of the
+      // previous chapter until the first "## 8.1" heading.
+      const numberedH1 = level === 1 && /^(\d+)\.\s/.exec(headingText)
       if (chapterHeading) {
         currentChapter = chapterHeading.num
+      } else if (numberedH1 && CHAPTER_BY_NUM.has(parseInt(numberedH1[1], 10))) {
+        currentChapter = parseInt(numberedH1[1], 10)
+        chapterH1Anchors.set(currentChapter, anchor)
       } else if (level === 2) {
         const newChapter = detectChapterBoundary(line, currentChapter)
         if (newChapter !== null && CHAPTER_BY_NUM.has(newChapter)) {
@@ -770,7 +779,8 @@ for (const { num, slug, title, label, desc, order, headingAnchor } of CHAPTERS) 
   const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}${dateYaml}\n---`
   // Starlight replaces the source H1, so preserve the chapter link target.
-  const chapterAnchor = headingAnchor ? `<span id="${headingAnchor}"></span>\n\n` : ''
+  const sourceAnchor = headingAnchor ?? chapterH1Anchors.get(num)
+  const chapterAnchor = sourceAnchor ? `<span id="${sourceAnchor}"></span>\n\n` : ''
   let output = transformGuideMarkdown(`${fm}\n\n${chapterAnchor}${content.trimStart()}`, 'guide/ultimate-guide.md')
   output = normalizeLangs(output)
   output = renderMermaidBlocks(output, slug)

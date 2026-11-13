@@ -31,7 +31,7 @@ function matches(pattern: RegExp, only?: RegExp) {
 }
 
 const RATCHETS: Array<{ name: string; pattern: RegExp; max: number }> = [
-  { name: 'carte qui se soulève (translateY négatif)', pattern: /translateY\(-/, max: 21 },
+  { name: 'carte qui se soulève (translateY négatif)', pattern: /translateY\(-/, max: 20 },
   { name: 'transition: all', pattern: /transition:\s*all/, max: 11 },
   { name: 'rayon de 12 px ou plus', pattern: /border-radius:\s*(1[2-9]|[2-9]\d)px/, max: 10 },
   { name: 'ombre douce --shadow-md/lg', pattern: /shadow-(md|lg)/, max: 17 },

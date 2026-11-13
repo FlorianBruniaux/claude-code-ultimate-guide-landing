@@ -246,20 +246,21 @@ const SLUG_TO_PATH: Record<string, string> = {
     font-family: inherit;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    box-shadow: none;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     white-space: nowrap;
   }
 
+  /* Portfolio system: no lift, no soft shadow; the border and fill carry the hover. */
   .guide-fab-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent);
     background: var(--bg-tertiary);
     color: var(--text-primary);
   }
 
-  .guide-fab-btn:active {
-    transform: translateY(0);
+  .guide-fab-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .guide-fab-btn.is-loading {
@@ -302,7 +303,8 @@ const SLUG_TO_PATH: Record<string, string> = {
     color: #f87171;
   }
 
-  @media (max-width: 480px) {
+  /* Phones and short viewports (200 % zoom): icons only, names stay in aria-label. */
+  @media (max-width: 480px), (max-height: 600px) {
     .guide-fab-label {
       display: none;
     }

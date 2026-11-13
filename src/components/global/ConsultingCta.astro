@@ -70,7 +70,8 @@ const contactUrl = `https://www.florian.bruniaux.com/contact/?utm_source=cc-guid
     align-items: center;
     gap: var(--space-md);
     flex-wrap: wrap;
-    flex-shrink: 0;
+    /* Shrink and wrap between 641 and 850 px instead of widening the page. */
+    min-width: 0;
   }
   /* Discreet action level: underlined at rest, stroke thickens on hover. */
   .consulting-cta-github {

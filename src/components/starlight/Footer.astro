@@ -7,7 +7,11 @@
  * and spans full viewport width, same as on landing pages.
  */
 import GlobalFooter from '../global/Footer.astro'
+import Pagination from '@astrojs/starlight/components/Pagination.astro'
 ---
+<!-- Previous / next chapter stays in the content column; only the site footer moves to <body>. -->
+<Pagination />
+
 <div id="sl-footer-portal" class="sl-footer-portal">
   <GlobalFooter />
 </div>

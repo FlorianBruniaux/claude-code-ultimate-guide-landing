@@ -157,6 +157,25 @@ export function initSearch(
     return anchor
   }
 
+  // A failed index load is recoverable in place: retry, or browse the full page list.
+  function retryButton(): HTMLButtonElement {
+    const button = el('button', 'search-inline-link search-retry', 'Retry')
+    button.type = 'button'
+    button.addEventListener('click', () => {
+      loadFailed = false
+      message('Loading the search index…')
+      void ensurePayload().then((loaded) => {
+        if (loaded) render()
+        else showLoadFailure()
+      })
+    })
+    return button
+  }
+
+  function showLoadFailure(): void {
+    message('Search is unavailable right now. ', retryButton(), ' ', sitemapLink())
+  }
+
   function renderEmpty(): void {
     if (map) {
       setState('map')
@@ -363,13 +382,13 @@ export function initSearch(
 
     if (!payload) {
       if (loadFailed) {
-        message('Search is unavailable right now. Close and reopen search to try again.')
+        showLoadFailure()
         return
       }
       message('Loading the search index…')
       void ensurePayload().then((loaded) => {
         if (loaded) render()
-        else message('Search is unavailable right now. Close and reopen search to try again.')
+        else showLoadFailure()
       })
       return
     }
