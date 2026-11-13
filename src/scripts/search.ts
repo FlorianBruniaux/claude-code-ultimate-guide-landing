@@ -439,12 +439,14 @@ export function initSearch(
     renderEmpty()
     searchInput.focus()
     doc.body.style.overflow = 'hidden'
+    doc.body.setAttribute('data-search-open', '')
   }
 
   function closeModal(): void {
     searchModal.setAttribute('hidden', '')
     searchModal.setAttribute('aria-hidden', 'true')
     doc.body.style.overflow = ''
+    doc.body.removeAttribute('data-search-open')
     if (opener?.isConnected) opener.focus()
     opener = null
   }

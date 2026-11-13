@@ -330,3 +330,15 @@ test('a modified click opens the result in a new tab and keeps the dialog open',
   assert.equal(opened.length, 1)
   assert.equal(document.getElementById('search-modal')?.hasAttribute('hidden'), false)
 })
+
+// UX-07: pages can hide controls that would sit on top of the open dialog.
+test('the body carries data-search-open while the dialog is open', async () => {
+  const { document } = fixture()
+  initSearch(countingLoader().load, document)
+  document.getElementById('search-trigger')?.click()
+  await tick()
+  assert.equal(document.body.hasAttribute('data-search-open'), true)
+  document.getElementById('search-input')?.dispatchEvent(new document.defaultView!.KeyboardEvent('keydown', { key: 'Escape' }))
+  await tick()
+  assert.equal(document.body.hasAttribute('data-search-open'), false)
+})

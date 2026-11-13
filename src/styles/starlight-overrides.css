@@ -1479,3 +1479,9 @@ a.sl-link-button.secondary {
     border-radius: var(--border-radius-lg);
   }
 }
+
+/* UX-07: the mobile "Guide" button sits in the fixed bar above the search
+ * dialog (same z-index, later in the DOM) and covered its title. */
+body[data-search-open] .sidebar > starlight-menu-button > .guide-menu-trigger {
+  visibility: hidden;
+}
