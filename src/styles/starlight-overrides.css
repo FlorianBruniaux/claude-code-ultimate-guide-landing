@@ -1485,3 +1485,12 @@ a.sl-link-button.secondary {
 body[data-search-open] .sidebar > starlight-menu-button > .guide-menu-trigger {
   visibility: hidden;
 }
+
+/* UX-13: `.sl-markdown-content code { font-size: 0.875em }` also shrinks code
+ * inside blocks: lines rendered at 11.4 px on phones, the smallest text of a
+ * technical guide. Below 50rem block code keeps the block size (13 px). */
+@media (max-width: 50rem) {
+  .sl-markdown-content pre code {
+    font-size: inherit;
+  }
+}
