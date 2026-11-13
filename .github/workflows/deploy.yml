@@ -99,6 +99,11 @@ jobs:
       - name: Check built SEO contracts
         run: pnpm check:built-seo
 
+      # Tests that read dist/: 404 page, chapter split, guide navigation and
+      # search anchors (tests/built/). They need the site built above.
+      - name: Test the built site
+        run: pnpm test:built
+
       - name: Check public pages for workstation paths
         run: python3 ../claude-code-ultimate-guide/scripts/check-public-paths.py --dist dist
 
