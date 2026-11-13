@@ -1,0 +1,25 @@
+docs/ux-audit-2026-11-13/rapport-ux-2026-11-13.md
+  s_0d70aa95f16cda::t_0ec46df60046b2 1-255
+docs/ux-audit-2026-11-13/backlog-impeccable.md
+  s_0d70aa95f16cda::t_05891fdaef926b 1-41
+docs/ux-audit-2026-11-13/corrections-2026-11-13.md
+  s_0d70aa95f16cda::t_da00626f12f973 1-40
+docs/ux-audit-2026-11-13/critique-backlog-v2.md
+  s_0d70aa95f16cda::t_043c3fbcffaca3 1-253
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "440b0f9d2fe196803a643a57b8c786a7673c7bef",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
