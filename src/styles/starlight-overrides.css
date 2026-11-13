@@ -1509,3 +1509,9 @@ body[data-search-open] .sidebar > starlight-menu-button > .guide-menu-trigger {
     opacity: 1;
   }
 }
+
+/* UX-20: the /guide/ portal (splash page, no sidebar) used Starlight's content
+ * width, 44 px inside the header logo at 1440. Align it on the site container. */
+[data-has-hero] .main-pane .content-panel > .sl-container {
+  max-width: calc(var(--max-width) - 2rem);
+}
