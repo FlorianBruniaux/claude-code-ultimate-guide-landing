@@ -302,7 +302,9 @@ const SLUG_TO_PATH: Record<string, string> = {
     color: #f87171;
   }
 
-  @media (max-width: 480px) {
+  /* UX-09: on short viewports (200 % zoom, landscape phones) the labelled
+   * buttons covered table columns; keep them icon-only, as on phones. */
+  @media (max-width: 480px), (max-height: 600px) {
     .guide-fab-label {
       display: none;
     }

@@ -1599,3 +1599,10 @@ details[open] > *:not(summary) {
         font-size: 1.2rem;
     }
 }
+
+/* UX-09: icon-only feedback button on short viewports (200 % zoom). */
+@media (max-height: 600px) {
+    .feedback-fab-text {
+        display: none;
+    }
+}
