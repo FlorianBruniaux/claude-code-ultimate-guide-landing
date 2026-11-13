@@ -514,3 +514,14 @@
   .search-input-wrapper { margin-inline: 1rem; }
   .search-chips { padding-inline: 1rem; }
 }
+
+/* CX-10: on short screens (200 % zoom, phones in landscape) the header and two
+ * rows of filters pushed the first result below the fold. Keep the close
+ * button, drop the title block, and scroll the filters on one row. */
+@media (max-height: 600px) {
+  .search-modal-header { padding-block: 0.4rem; }
+  .search-modal-header > div { display: none; }
+  .search-modal-header { justify-content: flex-end; }
+  .search-chips { flex-wrap: nowrap; overflow-x: auto; padding-block: 0.4rem; }
+  .search-chip { flex: 0 0 auto; }
+}
