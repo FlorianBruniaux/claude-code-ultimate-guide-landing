@@ -1,0 +1,29 @@
+astro.config.mjs
+  s_d23ac4a724f0e1::t_3b420ad927eccc 192-197
+tests/built/guide-navigation.test.ts
+  s_c9cc500ce5763b::t_0d2b226e876c90 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f2475312f47161043d56bf2e72cd52dd4c3ac0c5",
+  "prompts": {},
+  "sessions": {
+    "s_c9cc500ce5763b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4511b4d7-9f36-4d08-a2a1-4f88ee391b69",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_d23ac4a724f0e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b000f05a-0a10-47b7-b7fc-5df92eed239c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
