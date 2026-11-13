@@ -97,7 +97,10 @@ const whatsNew = navigationSections
         aria-autocomplete="list"
         aria-expanded="true"
         aria-controls="search-results"
+        aria-describedby="search-help"
       />
+      <!-- CX-07: the visual key hints below are aria-hidden; screen readers get them here. -->
+      <p id="search-help" class="sr-only">Up and down arrows move through results, Enter opens the selected one, Tab and Shift+Tab switch the section filter, Escape closes the search.</p>
       <span id="search-totals" class="search-totals" aria-live="polite"></span>
       <button id="search-clear" type="button" class="search-clear" aria-label="Clear search" hidden>Clear</button>
     </div>
