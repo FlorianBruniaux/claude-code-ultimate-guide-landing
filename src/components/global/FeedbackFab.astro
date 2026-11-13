@@ -26,7 +26,7 @@ const menuItems = [
 ---
 
 <div class="feedback-wrapper" id="feedback-wrapper">
-  <div class="feedback-menu" id="feedback-menu" aria-hidden="true" role="menu">
+  <div class="feedback-menu" id="feedback-menu" aria-hidden="true" role="menu" inert>
     {menuItems.map((item) => (
       <a
         href={`${GUIDE_REPO}/issues/new?template=${item.template}`}
@@ -70,16 +70,22 @@ const menuItems = [
     }))
   }
 
+  // UX-04: a closed menu is inert, so its four links leave the Tab order
+  // instead of taking focus while invisible.
   function openMenu() {
     menu.classList.add('is-open')
+    menu.removeAttribute('inert')
     menu.setAttribute('aria-hidden', 'false')
     btn.setAttribute('aria-expanded', 'true')
   }
 
   function closeMenu() {
+    const focusWasInside = menu.contains(document.activeElement)
     menu.classList.remove('is-open')
+    menu.setAttribute('inert', '')
     menu.setAttribute('aria-hidden', 'true')
     btn.setAttribute('aria-expanded', 'false')
+    if (focusWasInside) btn.focus()
   }
 
   btn.addEventListener('click', (e) => {
