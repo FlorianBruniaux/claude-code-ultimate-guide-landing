@@ -458,6 +458,9 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     .section ul, .section ol { padding-left: var(--space-lg); margin: var(--space-sm) 0; }
     .section li { margin: var(--space-xs) 0; font-size: 0.9rem; }
 
+    /* UX-10: links inside a tip were told apart by colour only (1.56:1 in dark). */
+    .tip a { text-decoration: underline; text-underline-offset: 0.2em; }
+
     .tip {
       background: var(--bg-tertiary);
       border-left: 3px solid var(--accent);
@@ -488,7 +491,8 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     .context-zones { margin: var(--space-md) 0; }
     .context-bar { display: flex; height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: var(--space-sm); }
-    .context-zone { display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: white; }
+    /* UX-10: white on green or amber measured 2.1 to 2.8:1; ink text reads on every zone. */
+    .context-zone { display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: var(--action-ink); }
     .zone-green { background-color: #22c55e; width: 50%; }
     .zone-yellow { background-color: #f59e0b; width: 20%; }
     .zone-orange { background-color: #f97316; width: 20%; }
