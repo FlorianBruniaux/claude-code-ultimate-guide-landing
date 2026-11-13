@@ -364,3 +364,65 @@ export function normalizePayload(data: SearchPayload | SearchEntry[]): SearchPay
   if (Array.isArray(data)) return { entries: data, pages: {}, routes: [] }
   return { entries: data.entries ?? [], pages: data.pages ?? {}, routes: data.routes ?? [] }
 }
+
+// ── Suggestions for an empty result (CX-09) ───────────────────────────────────
+const vocabularyCache = new WeakMap<object, Map<string, number>>()
+
+function vocabulary(entries: readonly Pick<SearchEntry, 'title'>[]): Map<string, number> {
+  let words = vocabularyCache.get(entries)
+  if (!words) {
+    words = new Map()
+    for (const entry of entries) {
+      for (const word of fold(entry.title).match(/[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? []) {
+        if (word.length >= 4) words.set(word, (words.get(word) ?? 0) + 1)
+      }
+    }
+    vocabularyCache.set(entries, words)
+  }
+  return words
+}
+
+function editDistance(a: string, b: string, limit: number): number {
+  if (Math.abs(a.length - b.length) > limit) return limit + 1
+  let previous = Array.from({ length: b.length + 1 }, (_, j) => j)
+  for (let i = 1; i <= a.length; i++) {
+    const current = [i]
+    let best = i
+    for (let j = 1; j <= b.length; j++) {
+      current[j] = Math.min(previous[j] + 1, current[j - 1] + 1, previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1))
+      best = Math.min(best, current[j])
+    }
+    if (best > limit) return limit + 1
+    previous = current
+  }
+  return previous[b.length]
+}
+
+/**
+ * Close spellings of a query that found nothing: each unknown word of four
+ * letters or more is replaced by the nearest title word (one edit, two from
+ * seven letters), the most frequent first. Returns at most one query per
+ * candidate, only when every word could be matched or kept.
+ */
+export function suggestQueries(entries: readonly Pick<SearchEntry, 'title'>[], query: string, max = 3): string[] {
+  const words = vocabulary(entries)
+  const tokens = fold(query).split(/\s+/).filter(Boolean)
+  if (!tokens.length) return []
+  const options = tokens.map((token) => {
+    if (token.length < 4 || words.has(token)) return [token]
+    const limit = token.length >= 7 ? 2 : 1
+    return [...words.entries()]
+      .map(([word, count]) => ({ word, count, distance: editDistance(token, word, limit) }))
+      .filter((c) => c.distance <= limit)
+      .sort((a, b) => a.distance - b.distance || b.count - a.count || a.word.localeCompare(b.word))
+      .slice(0, max)
+      .map((c) => c.word)
+  })
+  if (options.some((o) => o.length === 0)) return []
+  const suggestions: string[] = []
+  for (let i = 0; i < max; i++) {
+    const candidate = options.map((o) => o[Math.min(i, o.length - 1)]).join(' ')
+    if (candidate !== tokens.join(' ') && !suggestions.includes(candidate)) suggestions.push(candidate)
+  }
+  return suggestions
+}

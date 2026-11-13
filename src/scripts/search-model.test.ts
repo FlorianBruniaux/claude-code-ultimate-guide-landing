@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { buildSearchView, classifyUrl, cycleFilters, groupHits, highlightParts, score } from './search-model.ts'
+import { buildSearchView, classifyUrl, cycleFilters, groupHits, highlightParts, score, suggestQueries } from './search-model.ts'
 import type { SearchEntry, SearchPayload, SearchRoute } from './search-model.ts'
 import { SEARCH_PAYLOAD } from '../data/search-index.ts'
 import { getSectionLinks, navigationSections } from '../data/header-navigation.ts'
@@ -149,4 +149,15 @@ test('a query matches with or without accents', () => {
   assert.ok(score(entry, 'sécurité') > 0)
   assert.ok(score(entry, 'memoire') > 0)
   assert.ok(score({ title: 'Securite', keywords: '', category: '' }, 'sécurité') > 0)
+})
+
+// CX-09: a query without results proposes close words found in the index.
+test('a misspelled query gets close index words as suggestions', () => {
+  const entries = [
+    { id: 'a', title: 'Claude Code Skills', keywords: '', category: 'Guide', url: '/a/', source: 'guide' as const },
+    { id: 'b', title: 'Agent Skills and Hooks', keywords: '', category: 'Guide', url: '/b/', source: 'guide' as const },
+  ]
+  assert.deepEqual(suggestQueries(entries, 'skils'), ['skills'])
+  assert.deepEqual(suggestQueries(entries, 'hoks skils'), ['hooks skills'])
+  assert.deepEqual(suggestQueries(entries, 'xyzzyqwerty'), [])
 })

@@ -11,6 +11,7 @@ import {
   highlightParts,
   isOffSite,
   normalizePayload,
+  suggestQueries,
 } from './search-model.ts'
 import type { SearchEntry, SearchFilter, SearchPageHit, SearchPayload, SearchView } from './search-model.ts'
 
@@ -376,7 +377,24 @@ export function initSearch(
 
     const current = buildSearchView(payload, query, filter)
     if (current.totalPages === 0) {
-      message(`No results for “${query}”. `, sitemapLink())
+      const parts: Array<string | Node> = [`No results for “${query}”. `, sitemapLink()]
+      const suggestions = suggestQueries(payload.entries, query)
+      if (suggestions.length) {
+        parts.push(' Did you mean ')
+        suggestions.forEach((suggestion, i) => {
+          const button = el('button', 'search-inline-link', suggestion)
+          button.type = 'button'
+          button.addEventListener('click', () => {
+            searchInput.value = suggestion
+            filter = 'all'
+            render()
+            searchInput.focus()
+          })
+          parts.push(...(i ? [', ', button] : [button]))
+        })
+        parts.push('?')
+      }
+      message(...parts)
       return
     }
     renderResults(current)
