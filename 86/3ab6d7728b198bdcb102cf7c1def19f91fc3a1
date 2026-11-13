@@ -1,0 +1,19 @@
+.github/workflows/deploy.yml
+  s_0d70aa95f16cda::t_f2f7d05bde2f36 102-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "863ab6d7728b198bdcb102cf7c1def19f91fc3a1",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
