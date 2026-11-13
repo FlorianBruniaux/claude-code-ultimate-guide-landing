@@ -1,0 +1,31 @@
+---
+// UX-02: GitHub Pages serves dist/404.html for any unknown URL. Starlight's own
+// 404 route is disabled in astro.config.mjs, so the site provides this one.
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  title="Page not found | Claude Code Guide"
+  description="This page does not exist or has moved. Search the guide or start from the home page."
+  noIndex
+>
+  <header class="page-hero not-found-hero">
+    <div class="container">
+      <p class="section-kicker">Error 404</p>
+      <h1>This page does not exist</h1>
+      <p class="tagline">The link may be outdated or the page may have moved. Search the guide, or start again from one of these pages.</p>
+      <div class="cta-buttons">
+        <button type="button" class="btn btn-primary" data-open-search>Search the guide</button>
+        <a href="/guide/" class="btn btn-secondary">Open the guide</a>
+        <a href="/" class="btn btn-secondary">Home page</a>
+        <a href="/sitemap/" class="btn btn-quiet">All pages</a>
+      </div>
+    </div>
+  </header>
+</Layout>
+
+<script>
+  document.querySelector<HTMLButtonElement>('[data-open-search]')?.addEventListener('click', () => {
+    document.getElementById('search-trigger')?.click()
+  })
+</script>
