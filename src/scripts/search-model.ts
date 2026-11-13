@@ -55,13 +55,18 @@ export const isOffSite = (url: string): boolean => /^https?:\/\//.test(url)
  * Score an entry against the query. Returns 0 if no match.
  * Higher = more relevant.
  */
+/** Lowercase without diacritics, so "securite" finds "sécurité" (UX-16). */
+export function fold(text: string): string {
+  return text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+}
+
 export function score(entry: Pick<SearchEntry, 'title' | 'keywords' | 'category'>, query: string): number {
-  const q = query.toLowerCase().trim()
+  const q = fold(query).trim()
   if (!q) return 0
 
-  const title = entry.title.toLowerCase()
-  const keywords = entry.keywords.toLowerCase()
-  const category = entry.category.toLowerCase()
+  const title = fold(entry.title)
+  const keywords = fold(entry.keywords)
+  const category = fold(entry.category)
 
   if (title === q) return 100
   if (title.startsWith(q)) return 90

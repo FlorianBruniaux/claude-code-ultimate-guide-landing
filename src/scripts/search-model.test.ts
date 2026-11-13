@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { buildSearchView, classifyUrl, cycleFilters, groupHits, highlightParts } from './search-model.ts'
+import { buildSearchView, classifyUrl, cycleFilters, groupHits, highlightParts, score } from './search-model.ts'
 import type { SearchEntry, SearchPayload, SearchRoute } from './search-model.ts'
 import { SEARCH_PAYLOAD } from '../data/search-index.ts'
 import { getSectionLinks, navigationSections } from '../data/header-navigation.ts'
@@ -140,4 +140,13 @@ test('every internal menu link is a search route, and security pages file under 
   assert.equal(classifyUrl('/security/#cve-database', SEARCH_PAYLOAD.routes), 'security')
   assert.equal(classifyUrl('/security/cves/', SEARCH_PAYLOAD.routes), 'security')
   assert.equal(classifyUrl('/guide/production-safety/', SEARCH_PAYLOAD.routes), 'security')
+})
+
+// UX-16: accents are folded on both sides of the comparison.
+test('a query matches with or without accents', () => {
+  const entry = { title: 'Règles de sécurité', keywords: 'mémoire paramètres', category: 'Guide' }
+  assert.ok(score(entry, 'securite') > 0)
+  assert.ok(score(entry, 'sécurité') > 0)
+  assert.ok(score(entry, 'memoire') > 0)
+  assert.ok(score({ title: 'Securite', keywords: '', category: '' }, 'sécurité') > 0)
 })
