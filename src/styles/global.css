@@ -168,9 +168,12 @@
     outline-offset: 2px;
   }
 
-  /* Smooth scrolling (respect reduced motion) */
+  /* Smooth scrolling (respect reduced motion). Only once the reader is
+   * interacting with the page (focus inside): opening a URL with a fragment
+   * jumps straight to the heading instead of animating through the whole
+   * chapter for 2 seconds (UX-11, CX-14d). */
   @media (prefers-reduced-motion: no-preference) {
-    html {
+    html:focus-within {
       scroll-behavior: smooth;
     }
   }
