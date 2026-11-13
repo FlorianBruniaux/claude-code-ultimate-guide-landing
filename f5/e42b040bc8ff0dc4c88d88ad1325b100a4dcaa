@@ -1,0 +1,19 @@
+src/styles/starlight-overrides.css
+  s_cc7e6c05cbdcbd::t_c2503b983ad6e9 1390-1395
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f5e42b040bc8ff0dc4c88d88ad1325b100a4dcaa",
+  "prompts": {},
+  "sessions": {
+    "s_cc7e6c05cbdcbd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_cc7e6c05cbdcbd",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
