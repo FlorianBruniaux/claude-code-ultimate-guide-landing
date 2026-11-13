@@ -1494,3 +1494,18 @@ body[data-search-open] .sidebar > starlight-menu-button > .guide-menu-trigger {
     font-size: inherit;
   }
 }
+
+/* UX-15: Expressive Code hides the copy button until the block is hovered on
+ * pointer devices; keep it visible at rest and at a 40 px target. */
+@media (hover: hover) {
+  .sl-markdown-content .expressive-code .copy button {
+    width: 2.5rem;
+    height: 2.5rem;
+    /* The .copy wrapper already dims it to 0.6 at rest. */
+    opacity: 1;
+  }
+
+  .sl-markdown-content .expressive-code .copy button:is(:hover, :focus-visible, :active) {
+    opacity: 1;
+  }
+}
