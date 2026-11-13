@@ -205,19 +205,6 @@ function detectChapterBoundary(line, currentChapter) {
 }
 
 /**
- * Detect a numbered chapter H1 (`# 8. MCP Servers`) that opens a later chapter.
- * Without it, the H1, its "Quick jump" line and the reading-time block stayed at
- * the end of the previous chapter page (CX-06): only `## N.` H2 headings moved
- * the split forward.
- */
-function numberedChapterHeading(headingText, currentChapter) {
-  const match = headingText.match(/^(\d+)\.\s/)
-  if (!match) return undefined
-  const num = parseInt(match[1], 10)
-  return num > currentChapter ? CHAPTER_BY_NUM.get(num) : undefined
-}
-
-/**
  * Transform frontmatter: remove tags, add sidebar.order.
  * Supports both inline (tags: [...]) and block (tags:\n  - ...) YAML forms.
  */
@@ -691,6 +678,7 @@ const chapterLines = new Map()
 CHAPTERS.forEach(c => chapterLines.set(c.num, []))
 
 let currentChapter = 0
+// Anchor of each chapter's source H1, kept as an id on the generated page.
 const chapterH1Anchors = new Map()
 let inCodeFence = false
 let fenceMarker = ''
@@ -731,15 +719,16 @@ for (const line of lines) {
       const headingText = headingMatch[2].trim()
 
       const anchor = toAnchor(headingText)
-      const chapterHeading = level === 1 && (
-        CHAPTERS.find(chapter => chapter.headingAnchor === anchor) ??
-        numberedChapterHeading(headingText, currentChapter)
-      )
+      const chapterHeading = level === 1 && CHAPTERS.find(chapter => chapter.headingAnchor === anchor)
+      // "# 8. MCP Servers": a numbered H1 opens its chapter. Without this, the
+      // H1, its Quick jump line and its reading time stayed at the end of the
+      // previous chapter until the first "## 8.1" heading.
+      const numberedH1 = level === 1 && /^(\d+)\.\s/.exec(headingText)
       if (chapterHeading) {
         currentChapter = chapterHeading.num
-        // The first H1 of a chapter page is dropped by transformGuideMarkdown;
-        // keep its id so links to `#8-mcp-servers` still land on the chapter.
-        if (anchor && !chapterH1Anchors.has(chapterHeading.num)) chapterH1Anchors.set(chapterHeading.num, anchor)
+      } else if (numberedH1 && CHAPTER_BY_NUM.has(parseInt(numberedH1[1], 10))) {
+        currentChapter = parseInt(numberedH1[1], 10)
+        chapterH1Anchors.set(currentChapter, anchor)
       } else if (level === 2) {
         const newChapter = detectChapterBoundary(line, currentChapter)
         if (newChapter !== null && CHAPTER_BY_NUM.has(newChapter)) {
@@ -790,8 +779,8 @@ for (const { num, slug, title, label, desc, order, headingAnchor } of CHAPTERS) 
   const dateYaml = dateLines.length ? `\n${dateLines.join('\n')}` : ''
   const fm = `---\ntitle: "${title}"\ndescription: "${desc}"\nsidebar:\n  order: ${order}${sidebarLabel}${dateYaml}\n---`
   // Starlight replaces the source H1, so preserve the chapter link target.
-  const chapterAnchorId = headingAnchor ?? chapterH1Anchors.get(num)
-  const chapterAnchor = chapterAnchorId ? `<span id="${chapterAnchorId}"></span>\n\n` : ''
+  const sourceAnchor = headingAnchor ?? chapterH1Anchors.get(num)
+  const chapterAnchor = sourceAnchor ? `<span id="${sourceAnchor}"></span>\n\n` : ''
   let output = transformGuideMarkdown(`${fm}\n\n${chapterAnchor}${content.trimStart()}`, 'guide/ultimate-guide.md')
   output = normalizeLangs(output)
   output = renderMermaidBlocks(output, slug)

@@ -163,13 +163,13 @@ const label = Astro.locals.t('tableOfContents.onThisPage')
 
     private updateCurrent() {
       if (this.headings.length === 0) return
-      const navHeight = document.querySelector<HTMLElement>('.page > .header')?.offsetHeight ?? 0
-      const tocHeight = this.summary?.offsetHeight ?? 0
-      // UX-08: a heading reached through a link stops at the root
-      // scroll-padding-top (136 px on phones), just below nav + bar + 32 px;
-      // count that landing line as inside the current section.
-      const landing = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
-      const threshold = Math.max(navHeight + tocHeight + 32, landing + 8)
+      // Measure where the fixed header and the sticky "On this page" bar really
+      // end: summing their heights missed the bar's offset and padding, so a
+      // heading reached by an anchor (resting at ~136 px) still read as the
+      // previous section.
+      const headerBottom = document.querySelector<HTMLElement>('.page > .header')?.getBoundingClientRect().bottom ?? 0
+      const barBottom = this.querySelector<HTMLElement>('nav')?.getBoundingClientRect().bottom ?? 0
+      const threshold = Math.max(headerBottom, barBottom) + 32
       let current = this.headings[0]
 
       for (const candidate of this.headings) {

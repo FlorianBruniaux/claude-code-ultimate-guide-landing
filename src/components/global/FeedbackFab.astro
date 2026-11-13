@@ -74,7 +74,7 @@ const menuItems = [
   // instead of taking focus while invisible.
   function openMenu() {
     menu.classList.add('is-open')
-    menu.removeAttribute('inert')
+    menu.inert = false
     menu.setAttribute('aria-hidden', 'false')
     btn.setAttribute('aria-expanded', 'true')
   }
@@ -82,7 +82,8 @@ const menuItems = [
   function closeMenu() {
     const focusWasInside = menu.contains(document.activeElement)
     menu.classList.remove('is-open')
-    menu.setAttribute('inert', '')
+    // Closed links stay in the DOM for the animation; inert keeps them out of the tab order.
+    menu.inert = true
     menu.setAttribute('aria-hidden', 'true')
     btn.setAttribute('aria-expanded', 'false')
     if (focusWasInside) btn.focus()

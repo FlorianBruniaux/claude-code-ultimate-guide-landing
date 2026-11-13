@@ -37,6 +37,19 @@ const panels = navigationSections.map((section) => {
 })
 ---
 
+<script is:inline>
+  // Deep links jump straight to their anchor; global.css turns smooth scrolling
+  // back on once the page has loaded and settled.
+  ;(function () {
+    if (!location.hash) return
+    var root = document.documentElement
+    root.classList.add('is-anchor-loading')
+    window.addEventListener('load', function () {
+      setTimeout(function () { root.classList.remove('is-anchor-loading') }, 1000)
+    }, { once: true })
+  })()
+</script>
+
 <header
   class="site-header fixed inset-x-0 top-0 z-50 border-b border-border"
   data-site-header
@@ -556,12 +569,14 @@ const panels = navigationSections.map((section) => {
     font-size: 0.7rem;
   }
 
-  .search-trigger-label { display: none; }
-
-  /* AM-06: no keyboard shortcut hint on touch screens. */
+  /* No keyboard shortcut to advertise on a touch-only device. */
   @media (hover: none) {
-    .search-trigger kbd { display: none; }
+    .search-trigger kbd {
+      display: none;
+    }
   }
+
+  .search-trigger-label { display: none; }
 
   @media (min-width: 80rem) {
     .search-trigger-label { display: inline; }

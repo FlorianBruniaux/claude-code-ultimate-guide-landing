@@ -158,16 +158,23 @@ export function initSearch(
     return anchor
   }
 
-  // UX-17: recover in place, without closing the dialog.
-  function unavailable(): void {
-    const retry = el('button', 'search-inline-link', 'Retry')
-    retry.type = 'button'
-    retry.addEventListener('click', () => {
+  // A failed index load is recoverable in place: retry, or browse the full page list.
+  function retryButton(): HTMLButtonElement {
+    const button = el('button', 'search-inline-link search-retry', 'Retry')
+    button.type = 'button'
+    button.addEventListener('click', () => {
       loadFailed = false
-      render()
-      searchInput.focus()
+      message('Loading the search index…')
+      void ensurePayload().then((loaded) => {
+        if (loaded) render()
+        else showLoadFailure()
+      })
     })
-    message('Search is unavailable right now. ', retry, ' or ', sitemapLink())
+    return button
+  }
+
+  function showLoadFailure(): void {
+    message('Search is unavailable right now. ', retryButton(), ' ', sitemapLink())
   }
 
   function renderEmpty(): void {
@@ -384,13 +391,13 @@ export function initSearch(
 
     if (!payload) {
       if (loadFailed) {
-        unavailable()
+        showLoadFailure()
         return
       }
       message('Loading the search index…')
       void ensurePayload().then((loaded) => {
         if (loaded) render()
-        else unavailable()
+        else showLoadFailure()
       })
       return
     }
@@ -439,14 +446,12 @@ export function initSearch(
     renderEmpty()
     searchInput.focus()
     doc.body.style.overflow = 'hidden'
-    doc.body.setAttribute('data-search-open', '')
   }
 
   function closeModal(): void {
     searchModal.setAttribute('hidden', '')
     searchModal.setAttribute('aria-hidden', 'true')
     doc.body.style.overflow = ''
-    doc.body.removeAttribute('data-search-open')
     if (opener?.isConnected) opener.focus()
     opener = null
   }

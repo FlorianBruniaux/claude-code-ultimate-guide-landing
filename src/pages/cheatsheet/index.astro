@@ -458,9 +458,6 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     .section ul, .section ol { padding-left: var(--space-lg); margin: var(--space-sm) 0; }
     .section li { margin: var(--space-xs) 0; font-size: 0.9rem; }
 
-    /* UX-10: links inside a tip were told apart by colour only (1.56:1 in dark). */
-    .tip a { text-decoration: underline; text-underline-offset: 0.2em; }
-
     .tip {
       background: var(--bg-tertiary);
       border-left: 3px solid var(--accent);
@@ -469,6 +466,9 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
       font-size: 0.85rem;
       border-radius: 0 4px 4px 0;
     }
+
+    /* Links inside tips are told apart by more than colour (dark theme: 1.56:1 with the text). */
+    .tip a { text-decoration: underline; text-underline-offset: 0.2em; }
 
     .warning {
       background: var(--bg-tertiary);
@@ -481,6 +481,8 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); font-size: 0.85rem; }
     .dont { color: #f85149; }
+    /* #f85149 reads under 4.5:1 on the light paper; dark theme keeps it. */
+    :global(:root:not([data-theme='dark'])) .dont { color: #b42318; }
     .do { color: var(--text-primary); font-weight: 600; }
 
     .golden-rules { border: 2px solid var(--accent); }
@@ -491,8 +493,8 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
 
     .context-zones { margin: var(--space-md) 0; }
     .context-bar { display: flex; height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: var(--space-sm); }
-    /* UX-10: white on green or amber measured 2.1 to 2.8:1; ink text reads on every zone. */
-    .context-zone { display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: var(--action-ink); }
+    /* Ink on the zone fills: white read at 2.1 to 2.3:1 on green and amber. */
+    .context-zone { display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: #0a0a0a; }
     .zone-green { background-color: #22c55e; width: 50%; }
     .zone-yellow { background-color: #f59e0b; width: 20%; }
     .zone-orange { background-color: #f97316; width: 20%; }

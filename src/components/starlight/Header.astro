@@ -34,4 +34,23 @@ import GuidePageFab from '../global/GuidePageFab.astro'
       attributeFilter: ['aria-expanded'],
     })
   }
+
+  // Markdown tables scroll inside the reading column (display: block; overflow-x: auto).
+  // Only those wider than the column get a tab stop, so keyboard users can scroll them.
+  function focusScrollableTables() {
+    document.querySelectorAll<HTMLTableElement>('.sl-markdown-content table').forEach((table) => {
+      if (table.scrollWidth > table.clientWidth) {
+        table.tabIndex = 0
+      } else if (table.tabIndex === 0) {
+        table.removeAttribute('tabindex')
+      }
+    })
+  }
+
+  focusScrollableTables()
+  let tableResizeFrame = 0
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(tableResizeFrame)
+    tableResizeFrame = requestAnimationFrame(focusScrollableTables)
+  })
 </script>

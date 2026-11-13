@@ -140,20 +140,20 @@ const BANNER_ID = 'banner-new-identity-2026-11'
 
 .ann-close {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 44 px target; the negative block margin keeps the banner height unchanged. */
+  min-width: 44px;
+  min-height: 44px;
+  margin-block: -0.5rem;
   background: none;
   border: none;
   color: var(--text-secondary);
   font-size: 1.1rem;
   cursor: pointer;
-  padding: 0.25rem 0.375rem;
+  padding: 0;
   line-height: 1;
-  /* UX-19: 44 px target without growing the banner. */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  margin-block: -0.6rem;
   border-radius: 3px;
   opacity: 0.6;
   transition: opacity 0.15s;

@@ -70,9 +70,7 @@ const contactUrl = `https://www.florian.bruniaux.com/contact/?utm_source=cc-guid
     align-items: center;
     gap: var(--space-md);
     flex-wrap: wrap;
-    /* May shrink and wrap: with four links the row is 801 px wide and pushed
-     * the page sideways between 641 and 849 px (CX-05, UX-03). */
-    flex: 0 1 auto;
+    /* Shrink and wrap between 641 and 850 px instead of widening the page. */
     min-width: 0;
   }
   /* Discreet action level: underlined at rest, stroke thickens on hover. */

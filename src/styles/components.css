@@ -1578,6 +1578,19 @@ details[open] > *:not(summary) {
     }
 }
 
+/* Short viewports (200 % zoom on a laptop): the floating buttons shrink to
+ * icons so they cover less of the reading column. */
+@media (max-height: 600px) {
+    .feedback-fab-text {
+        display: none;
+    }
+    .feedback-fab {
+        padding: 0.75rem;
+        border-radius: 50%;
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 600px) {
     .feedback-wrapper {
         opacity: 0;
@@ -1597,12 +1610,5 @@ details[open] > *:not(summary) {
         padding: 0.75rem;
         border-radius: 50%;
         font-size: 1.2rem;
-    }
-}
-
-/* UX-09: icon-only feedback button on short viewports (200 % zoom). */
-@media (max-height: 600px) {
-    .feedback-fab-text {
-        display: none;
     }
 }

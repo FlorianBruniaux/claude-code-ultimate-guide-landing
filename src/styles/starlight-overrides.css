@@ -104,6 +104,13 @@ starlight-menu-button[aria-expanded='true'] .open-menu {
   max-width: var(--sl-content-width);
 }
 
+/* Splash pages (the /guide/ portal) have no sidebars: use the site container
+ * and gutter so the hero title lines up with the header logo (was 44 px off). */
+html[data-has-hero] .content-panel .sl-container {
+  max-width: var(--max-width);
+  padding-inline: 1rem;
+}
+
 /* ── Prose typography ─────────────────────────────────────────────────── */
 .sl-markdown-content {
   font-size: 1rem;
@@ -216,6 +223,12 @@ starlight-menu-button[aria-expanded='true'] .open-menu {
   font-size: 0.875em;
 }
 
+/* 0.875em is for inline code. Inside a block it shrank the code a second time
+ * (13 px x 0.875 = 11.4 px on phones), below the 12 px reading floor. */
+.sl-markdown-content pre code {
+  font-size: inherit;
+}
+
 .sl-markdown-content :not(pre) > code {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-light);
@@ -308,14 +321,25 @@ starlight-toc {
   background: var(--bg-primary);
 }
 
-/* UX-01: on desktop the fixed guide sidebar (.sidebar-pane, z-index
- * --sl-z-index-menu) painted over the left of the footer. The footer goes
- * one level above it, still below the header and floating buttons. Not on
- * mobile, where the sidebar is a drawer that must cover the footer. */
+/* The fixed guide sidebar uses --sl-z-index-menu. On desktop the footer must
+ * paint above it, or the sidebar hides the footer's left column. Below 50rem
+ * the same pane is the modal drawer and must stay above the footer. */
 @media (min-width: 50rem) {
   .sl-footer-portal {
     z-index: calc(var(--sl-z-index-menu) + 1);
   }
+}
+
+/* Tables wider than the column get a tab stop (components/starlight/Header.astro). */
+.sl-markdown-content table:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The search dialog lives in the fixed header (z-index 10); the guide drawer
+ * trigger shares that level later in the DOM and would paint over the dialog. */
+body:has(.search-modal:not([hidden])) .guide-menu-trigger {
+  visibility: hidden;
 }
 
 /* Desktop "On this page" panel, see components/starlight/TableOfContents.astro */
@@ -1039,14 +1063,18 @@ starlight-toc {
   border-radius: 0 !important;
 }
 
-.expressive-code .copy {
-  opacity: 0.6;
-  transition: opacity 150ms ease;
-}
+/* With a mouse, Expressive Code hides the copy button (opacity 0) until the
+ * frame is hovered: readers did not know a copy button existed. Keep it
+ * visible at rest; hover and focus still raise it to full opacity. */
+@media (hover: hover) {
+  .expressive-code .frame .copy button {
+    opacity: 0.6;
+  }
 
-.expressive-code:hover .copy,
-.expressive-code .copy:hover {
-  opacity: 1;
+  .expressive-code .frame:hover .copy button,
+  .expressive-code .frame .copy button:is(:hover, :focus-visible) {
+    opacity: 1;
+  }
 }
 
 /* ── Footer (moved to body level via JS portal) ──────────────────────── */
@@ -1388,6 +1416,11 @@ a.sl-link-button.secondary {
   }
 }
 
+/* Starlight's gray description reads at 3.66:1 (light) and 2.9:1 (dark). */
+.sl-markdown-content .sl-link-card .description {
+  color: var(--text-secondary);
+}
+
 /* Starlight LinkCard and Card follow the portfolio card contract (brandbook.css .brand-interactive-card). */
 .sl-markdown-content :is(.sl-link-card, .card) {
   border: 1px solid var(--border);
@@ -1395,12 +1428,6 @@ a.sl-link-button.secondary {
   background: var(--surface-elevated);
   box-shadow: none;
   transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
-}
-
-/* CX-12: Starlight colours the description with --sl-color-gray-3 (3.67:1 light,
- * 2.91:1 dark). Scoped here so gray-3 keeps its other uses. */
-.sl-markdown-content .sl-link-card .description {
-  color: var(--text-secondary);
 }
 
 .sl-markdown-content .sl-link-card:is(:hover, :focus-within) {
@@ -1478,40 +1505,4 @@ a.sl-link-button.secondary {
     border-top: 3px solid #f97316 !important;
     border-radius: var(--border-radius-lg);
   }
-}
-
-/* UX-07: the mobile "Guide" button sits in the fixed bar above the search
- * dialog (same z-index, later in the DOM) and covered its title. */
-body[data-search-open] .sidebar > starlight-menu-button > .guide-menu-trigger {
-  visibility: hidden;
-}
-
-/* UX-13: `.sl-markdown-content code { font-size: 0.875em }` also shrinks code
- * inside blocks: lines rendered at 11.4 px on phones, the smallest text of a
- * technical guide. Below 50rem block code keeps the block size (13 px). */
-@media (max-width: 50rem) {
-  .sl-markdown-content pre code {
-    font-size: inherit;
-  }
-}
-
-/* UX-15: Expressive Code hides the copy button until the block is hovered on
- * pointer devices; keep it visible at rest and at a 40 px target. */
-@media (hover: hover) {
-  .sl-markdown-content .expressive-code .copy button {
-    width: 2.5rem;
-    height: 2.5rem;
-    /* The .copy wrapper already dims it to 0.6 at rest. */
-    opacity: 1;
-  }
-
-  .sl-markdown-content .expressive-code .copy button:is(:hover, :focus-visible, :active) {
-    opacity: 1;
-  }
-}
-
-/* UX-20: the /guide/ portal (splash page, no sidebar) used Starlight's content
- * width, 44 px inside the header logo at 1440. Align it on the site container. */
-[data-has-hero] .main-pane .content-panel > .sl-container {
-  max-width: calc(var(--max-width) - 2rem);
 }

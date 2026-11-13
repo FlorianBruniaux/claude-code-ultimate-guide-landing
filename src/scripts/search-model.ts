@@ -55,18 +55,18 @@ export const isOffSite = (url: string): boolean => /^https?:\/\//.test(url)
  * Score an entry against the query. Returns 0 if no match.
  * Higher = more relevant.
  */
-/** Lowercase without diacritics, so "securite" finds "sécurité" (UX-16). */
-export function fold(text: string): string {
-  return text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+/** Lower case without diacritics, so "securite" finds "sécurité" and the reverse. */
+export function foldText(text: string): string {
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 }
 
 export function score(entry: Pick<SearchEntry, 'title' | 'keywords' | 'category'>, query: string): number {
-  const q = fold(query).trim()
+  const q = foldText(query).trim()
   if (!q) return 0
 
-  const title = fold(entry.title)
-  const keywords = fold(entry.keywords)
-  const category = fold(entry.category)
+  const title = foldText(entry.title)
+  const keywords = foldText(entry.keywords)
+  const category = foldText(entry.category)
 
   if (title === q) return 100
   if (title.startsWith(q)) return 90
@@ -373,7 +373,7 @@ function vocabulary(entries: readonly Pick<SearchEntry, 'title'>[]): Map<string,
   if (!words) {
     words = new Map()
     for (const entry of entries) {
-      for (const word of fold(entry.title).match(/[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? []) {
+      for (const word of foldText(entry.title).match(/[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? []) {
         if (word.length >= 4) words.set(word, (words.get(word) ?? 0) + 1)
       }
     }
@@ -406,7 +406,7 @@ function editDistance(a: string, b: string, limit: number): number {
  */
 export function suggestQueries(entries: readonly Pick<SearchEntry, 'title'>[], query: string, max = 3): string[] {
   const words = vocabulary(entries)
-  const tokens = fold(query).split(/\s+/).filter(Boolean)
+  const tokens = foldText(query).split(/\s+/).filter(Boolean)
   if (!tokens.length) return []
   const options = tokens.map((token) => {
     if (token.length < 4 || words.has(token)) return [token]

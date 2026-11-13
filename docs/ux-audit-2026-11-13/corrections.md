@@ -95,3 +95,35 @@ Build final complet (`pnpm build`, guide `d445ad9`) : 475 pages, sortie 0. Puis 
 Écart de méthode : un `pnpm build` complet a été lancé après les phases 1, 2, 3 et 4 regroupées, et à la fin ; entre deux, les vérifications ont utilisé `pnpm astro build` sur les données déjà générées, ce que fait aussi l'étape de build de la CI. Le rendu des diagrammes Mermaid en local passe par un `.puppeteerrc.cjs` non suivi qui pointe sur le Chrome système, et le `node_modules` du worktree est une copie APFS (`cp -Rc`) de celui du dépôt principal, sans réseau.
 
 Non vérifié : appareils réels, lecteurs d'écran (VoiceOver pour CX-07), Safari pour UX-12, Firefox, et le comportement en production (rien n'est déployé).
+
+## Fusion avec la série parallèle (`origin/main@440b0f9`)
+
+Une autre session a corrigé les constats `UX-*` en parallèle (`5aec813`, déjà en production) ; son rapport est `corrections-2026-11-13.md`. Fusion de `origin/main` dans cette branche : un seul mécanisme par constat. Là où les deux séries corrigeaient le même constat, la version de `origin/main` est gardée (en production et verrouillée par `src/components/global/ux-audit-fixes.test.ts`), sauf quand la mienne couvrait davantage.
+
+| Constat | Mécanisme gardé | Retiré |
+| --- | --- | --- |
+| UX-01 | règle `z-index` commune (identique) | doublon de commentaire |
+| UX-02 | `404.astro` de `origin/main` (`noIndex={true}`, mêmes liens) | ma page 404 ; `tests/built/not-found.test.ts` passe sur la version gardée |
+| UX-03 / CX-05 | `min-width: 0` de `origin/main` | mon `flex: 0 1 auto` |
+| UX-04 | `menu.inert` de `origin/main`, plus mon retour du focus sur le bouton | `setAttribute('inert')` |
+| UX-05 / CX-06 | découpage par H1 numéroté de `origin/main` ; ma pagination stylée en carte, avant le portail | ma fonction `numberedChapterHeading` |
+| UX-07 | `body:has(.search-modal:not([hidden]))` de `origin/main` | mon attribut `data-search-open`, sa règle et son test dans `search.test.ts` |
+| UX-08 | mesure par `getBoundingClientRect().bottom` de `origin/main` | ma lecture de `scroll-padding-top` |
+| UX-09 | règles de `origin/main` | mon doublon dans `components.css` |
+| UX-10 / CX-12 | règles de `origin/main` (`#0a0a0a` sur les zones, `.dont`, liens de `.tip`) | mes doublons |
+| UX-11 / CX-14d | classe `is-anchor-loading` de `origin/main` | mon `html:focus-within` |
+| UX-12 | script de `starlight/Header.astro` et `Layout.astro` de `origin/main` | mon script dans `starlight/Footer.astro` |
+| UX-13, UX-15, UX-20 | règles de `origin/main` | mes règles équivalentes |
+| UX-16 | `foldText` de `origin/main` | ma fonction `fold` ; `suggestQueries` (CX-09) utilise `foldText` |
+| UX-17 | `retryButton()` de `origin/main` | ma fonction `unavailable` ; mon test Retry passe sur la version gardée |
+| UX-18 | mon plugin `rehype-task-list-labels` (la case garde son état et reçoit le texte de l'item) | le masquage `aria-hidden` de `origin/main` |
+| UX-19, AM-06 | règles de `origin/main` | mes doublons |
+
+Corrections propres à cette branche, gardées telles quelles : CX-01, CX-02, CX-03, CX-04, CX-07, CX-08, CX-09, CX-10, CX-11, UX-21, CX-14b, la page 404 testée dans `tests/built/`, et l'étape CI `pnpm test:built`.
+
+Tests adaptés à la fusion :
+
+- `src/components/global/ux-audit-fixes.test.ts`, test UX-18 : il vérifiait le masquage `aria-hidden`. Il vérifie maintenant que le plugin d'étiquetage est branché et que le masquage n'existe plus. Le comportement est testé dans `src/utils/task-list-labels.test.ts`.
+- `src/scripts/search.test.ts` : le test de l'attribut `data-search-open` est retiré avec ce mécanisme.
+
+Tous les fichiers de `docs/ux-audit-2026-11-13/` des deux séries sont présents.

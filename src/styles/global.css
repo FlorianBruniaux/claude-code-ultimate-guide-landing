@@ -168,14 +168,18 @@
     outline-offset: 2px;
   }
 
-  /* Smooth scrolling (respect reduced motion). Only once the reader is
-   * interacting with the page (focus inside): opening a URL with a fragment
-   * jumps straight to the heading instead of animating through the whole
-   * chapter for 2 seconds (UX-11, CX-14d). */
+  /* Smooth scrolling (respect reduced motion) */
   @media (prefers-reduced-motion: no-preference) {
-    html:focus-within {
+    html {
       scroll-behavior: smooth;
     }
+  }
+
+  /* A deep link lands at once: smooth scrolling would animate across the whole
+   * chapter (2.5 s measured on /guide/ultimate-guide/07-hooks/#74-security-hooks).
+   * Header.astro sets this class while a page with a hash loads. */
+  html.is-anchor-loading {
+    scroll-behavior: auto;
   }
 
   /* Selection color */
