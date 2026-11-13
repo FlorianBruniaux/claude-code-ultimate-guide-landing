@@ -190,6 +190,12 @@ export default defineConfig({
           autogenerate: { directory: 'guide/ultimate-guide' },
         },
         {
+          // CX-03: the beginner path promised by the home page had no sidebar
+          // entry, so its eight pages showed no current location and no next module.
+          label: 'Learning Path',
+          autogenerate: { directory: 'guide/learning-path' },
+        },
+        {
           label: 'Core Reference',
           items: [
             { slug: 'guide/cheatsheet' },
