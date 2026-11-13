@@ -5,9 +5,17 @@
  * Starlight renders this inside the content column (between left nav and right TOC).
  * We use an inline script to move it to <body> level so it escapes the flex layout
  * and spans full viewport width, same as on landing pages.
+ *
+ * Starlight's own footer renders the previous/next links; the override keeps
+ * them in the content column, before the portal (UX-05).
  */
+import Pagination from 'virtual:starlight/components/Pagination'
 import GlobalFooter from '../global/Footer.astro'
 ---
+<div class="guide-pagination">
+  <Pagination />
+</div>
+
 <div id="sl-footer-portal" class="sl-footer-portal">
   <GlobalFooter />
 </div>
@@ -21,3 +29,23 @@ import GlobalFooter from '../global/Footer.astro'
     }
   })()
 </script>
+
+<style>
+  .guide-pagination {
+    margin-top: 3rem;
+  }
+
+  /* Portfolio card contract: border, 8 px radius, no soft shadow. */
+  .guide-pagination :global(.pagination-links a) {
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    background: var(--surface-elevated);
+    box-shadow: none;
+    color: var(--text-primary);
+  }
+
+  .guide-pagination :global(.pagination-links a:is(:hover, :focus-visible)) {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent), 4px 4px 0 var(--border);
+  }
+</style>
