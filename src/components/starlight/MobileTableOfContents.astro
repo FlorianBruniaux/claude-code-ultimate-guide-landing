@@ -165,7 +165,10 @@ const label = Astro.locals.t('tableOfContents.onThisPage')
       if (this.headings.length === 0) return
       const navHeight = document.querySelector<HTMLElement>('.page > .header')?.offsetHeight ?? 0
       const tocHeight = this.summary?.offsetHeight ?? 0
-      const threshold = navHeight + tocHeight + 32
+      // UX-08: a heading reached through a link stops at its scroll-margin-top,
+      // which is lower than nav + bar + 32 px; count it as the current section.
+      const landing = parseFloat(getComputedStyle(this.headings[0].heading).scrollMarginTop) || 0
+      const threshold = Math.max(navHeight + tocHeight + 32, landing + 8)
       let current = this.headings[0]
 
       for (const candidate of this.headings) {
