@@ -558,6 +558,11 @@ const panels = navigationSections.map((section) => {
 
   .search-trigger-label { display: none; }
 
+  /* AM-06: no keyboard shortcut hint on touch screens. */
+  @media (hover: none) {
+    .search-trigger kbd { display: none; }
+  }
+
   @media (min-width: 80rem) {
     .search-trigger-label { display: inline; }
   }
