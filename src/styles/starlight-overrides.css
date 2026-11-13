@@ -308,6 +308,16 @@ starlight-toc {
   background: var(--bg-primary);
 }
 
+/* UX-01: on desktop the fixed guide sidebar (.sidebar-pane, z-index
+ * --sl-z-index-menu) painted over the left of the footer. The footer goes
+ * one level above it, still below the header and floating buttons. Not on
+ * mobile, where the sidebar is a drawer that must cover the footer. */
+@media (min-width: 50rem) {
+  .sl-footer-portal {
+    z-index: calc(var(--sl-z-index-menu) + 1);
+  }
+}
+
 /* Desktop "On this page" panel, see components/starlight/TableOfContents.astro */
 .guide-toc-rail {
   display: none;
