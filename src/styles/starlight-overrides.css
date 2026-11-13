@@ -1387,6 +1387,12 @@ a.sl-link-button.secondary {
   transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
 
+/* CX-12: Starlight colours the description with --sl-color-gray-3 (3.67:1 light,
+ * 2.91:1 dark). Scoped here so gray-3 keeps its other uses. */
+.sl-markdown-content .sl-link-card .description {
+  color: var(--text-secondary);
+}
+
 .sl-markdown-content .sl-link-card:is(:hover, :focus-within) {
   border-color: var(--accent);
   background: var(--surface-elevated);
