@@ -293,3 +293,26 @@ test('closing the dialog gives the focus back to the control that opened it', as
   assert.equal(document.getElementById('search-modal')?.hasAttribute('hidden'), true)
   assert.equal(document.activeElement?.id, 'search-trigger')
 })
+
+// UX-17: a failed load offers a retry in place instead of "close and reopen".
+test('a failed load offers a Retry button that loads the index again', async () => {
+  const { document } = fixture()
+  let attempts = 0
+  initSearch(async () => {
+    attempts++
+    if (attempts === 1) throw new Error('offline')
+    return ENTRIES
+  }, document)
+
+  document.getElementById('search-trigger')?.click()
+  const input = document.getElementById('search-input') as HTMLInputElement
+  input.value = 'releases'
+  input.dispatchEvent(new document.defaultView!.Event('input'))
+  await tick(80)
+  const retry = [...document.querySelectorAll('#search-results button')].find((b) => /Retry/.test(b.textContent ?? '')) as HTMLButtonElement | undefined
+  assert.ok(retry, 'Retry button')
+  retry.click()
+  await tick(80)
+  assert.equal(attempts, 2)
+  assert.match(document.getElementById('search-results')?.textContent ?? '', /Claude Code Releases/)
+})

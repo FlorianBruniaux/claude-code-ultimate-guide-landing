@@ -158,6 +158,18 @@ export function initSearch(
     return anchor
   }
 
+  // UX-17: recover in place, without closing the dialog.
+  function unavailable(): void {
+    const retry = el('button', 'search-inline-link', 'Retry')
+    retry.type = 'button'
+    retry.addEventListener('click', () => {
+      loadFailed = false
+      render()
+      searchInput.focus()
+    })
+    message('Search is unavailable right now. ', retry, ' or ', sitemapLink())
+  }
+
   function renderEmpty(): void {
     if (map) {
       setState('map')
@@ -364,13 +376,13 @@ export function initSearch(
 
     if (!payload) {
       if (loadFailed) {
-        message('Search is unavailable right now. Close and reopen search to try again.')
+        unavailable()
         return
       }
       message('Loading the search index…')
       void ensurePayload().then((loaded) => {
         if (loaded) render()
-        else message('Search is unavailable right now. Close and reopen search to try again.')
+        else unavailable()
       })
       return
     }
