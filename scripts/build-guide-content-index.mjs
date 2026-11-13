@@ -16,6 +16,8 @@ import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from '
 import { resolve, dirname, relative, join } from 'path'
 import { fileURLToPath } from 'url'
 import { canonicalGuidePageUrl } from '../src/data/guide-seo-overrides.mjs'
+import { SUPERSEDED_GUIDE_PAGES } from '../src/data/superseded-guide-pages.mjs'
+import { createHeadingSlugger, stripCustomId } from './lib/heading-slug.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -31,12 +33,8 @@ const SKIP_HEADINGS = new Set([
 ])
 
 /**
- * Slugify a heading to match Starlight / rehype-slug / github-slugger behavior.
- * - Lowercase
- * - Remove everything except letters, numbers, spaces, hyphens
- * - Replace spaces → hyphens
- * - Collapse multiple hyphens
- * - Trim leading/trailing hyphens
+ * Stable entry id fragment. Not a page anchor: anchors come from
+ * createHeadingSlugger(), which matches the ids Astro renders (CX-01).
  */
 function slugify(text) {
   return text
@@ -99,12 +97,16 @@ function stripMarkdown(text) {
 
 /**
  * Parse a markdown file and extract H2 sections.
- * Returns array of { heading, contentExcerpt, subheadings, fileTitle }
+ * Returns array of { heading, anchor, contentExcerpt, subheadings, fileTitle }
+ * anchor: the id Astro gives the heading, deduplicated across every heading of the page.
  * subheadings: all H3/H4 heading names found anywhere within the H2 section.
+ * Lines inside fenced code blocks are never headings.
  */
 function extractH2Sections(content) {
   const lines = content.split('\n')
   const fileTitle = extractFrontmatterTitle(content)
+  const headingSlug = createHeadingSlugger()
+  let fenceMarker = ''
 
   const sections = []
   let inFrontmatter = false
@@ -112,6 +114,7 @@ function extractH2Sections(content) {
   let fmLineCount = 0
 
   let currentHeading = null
+  let currentAnchor = null
   let currentLines = []
   let currentSubheadings = []
 
@@ -127,19 +130,31 @@ function extractH2Sections(content) {
       if (inFrontmatter) continue
     }
 
+    // Fenced code: `## Purpose` inside a template is not a page heading
+    const fence = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/)
+    if (fence) {
+      if (!fenceMarker) fenceMarker = fence[1]
+      else if (fence[1][0] === fenceMarker[0] && fence[1].length >= fenceMarker.length && fence[2].trim() === '') fenceMarker = ''
+    }
+    const inFence = Boolean(fenceMarker) || Boolean(fence)
+    const anyHeading = inFence ? null : line.match(/^ {0,3}(#{1,6})\s+(.+?)\s*$/)
+    const anchor = anyHeading ? headingSlug(anyHeading[2]) : null
+
     // Detect H2
-    const h2Match = line.match(/^## (.+)$/)
+    const h2Match = anyHeading && anyHeading[1].length === 2 ? [line, anyHeading[2]] : null
     if (h2Match) {
       // Save previous section
       if (currentHeading !== null) {
         sections.push({
           heading: currentHeading,
+          anchor: currentAnchor,
           contentExcerpt: currentLines.join('\n'),
           subheadings: currentSubheadings,
           fileTitle,
         })
       }
-      currentHeading = h2Match[1].trim()
+      currentHeading = stripCustomId(h2Match[1]).trim()
+      currentAnchor = anchor
       currentLines = []
       currentSubheadings = []
       continue
@@ -147,7 +162,7 @@ function extractH2Sections(content) {
 
     if (currentHeading !== null) {
       // Collect H3/H4 heading names from the full section (no line cap)
-      const subMatch = line.match(/^#{3,4} (.+)$/)
+      const subMatch = anyHeading && (anyHeading[1].length === 3 || anyHeading[1].length === 4) ? [line, anyHeading[2]] : null
       if (subMatch) {
         const name = subMatch[1].trim().replace(/[^\p{L}\p{N}\s]/gu, ' ').toLowerCase()
         currentSubheadings.push(name)
@@ -164,6 +179,7 @@ function extractH2Sections(content) {
   if (currentHeading !== null) {
     sections.push({
       heading: currentHeading,
+      anchor: currentAnchor,
       contentExcerpt: currentLines.join('\n'),
       subheadings: currentSubheadings,
       fileTitle,
@@ -231,19 +247,22 @@ function main() {
     const content = readFileSync(fullPath, 'utf-8')
     const sections = extractH2Sections(content)
     const category = getCategory(relPath)
-    const pageUrl = canonicalGuidePageUrl(relPath)
-    const shouldKeepSourceFragment = pageUrl !== '/releases/'
+    // A superseded guide page is a redirect stub; its sections live on the
+    // landing page, which does not carry the guide's ids (CX-01).
+    const superseded = SUPERSEDED_GUIDE_PAGES[canonicalGuidePageUrl(relPath)]
+    const pageUrl = superseded ?? canonicalGuidePageUrl(relPath)
+    const shouldKeepSourceFragment = pageUrl !== '/releases/' && !superseded
     const pageTitle = extractFrontmatterTitle(content)
     if (pageTitle && pageUrl.startsWith('/guide/')) {
       pages[pageUrl] = { title: pageTitle, description: extractFrontmatterDescription(content) }
     }
 
-    for (const { heading, contentExcerpt, subheadings, fileTitle } of sections) {
+    for (const { heading, anchor: headingAnchor, contentExcerpt, subheadings, fileTitle } of sections) {
       // Skip boilerplate headings
       const headingLower = heading.trim().toLowerCase().replace(/^[^\p{L}]+/u, '').trim()
       if (SKIP_HEADINGS.has(headingLower)) continue
 
-      const anchor = shouldKeepSourceFragment ? '#' + slugify(heading) : ''
+      const anchor = shouldKeepSourceFragment && headingAnchor ? '#' + headingAnchor : ''
       const id = makeId(relPath, heading)
       const keywords = buildKeywords(heading, fileTitle, contentExcerpt, subheadings)
 

@@ -536,7 +536,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Iterative Refinement Community",
     "keywords": "iterative refinement community guide workflows iterative refinement md#iterative refinement",
     "category": "Guide > Workflows",
-    "url": "/guide/workflows/iterative-refinement/#iterative-refinement",
+    "url": "/guide/workflows/iterative-refinement/",
     "source": "guide"
   },
   {
@@ -1638,7 +1638,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-changelog-fragments-workflow",
     "title": "Changelog Fragments Workflow",
-    "keywords": "changelog fragments workflow guide workflows changelog fragments",
+    "keywords": "changelog fragments workflow guide workflows changelog fragments changelog fragments hook guide workflows changelog fragments md#changelog fragments enforced per documentation changelog fragments ci guide workflows changelog fragments md#changelog fragments enforced per documentation",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/changelog-fragments/",
     "source": "guide"
@@ -1652,14 +1652,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-changelog-fragments-hook",
-    "title": "Changelog Fragments Hook",
-    "keywords": "changelog fragments hook guide workflows changelog fragments md#changelog fragments enforced per documentation changelog fragments ci guide workflows changelog fragments md#changelog fragments enforced per documentation",
-    "category": "Guide > Workflows",
-    "url": "/guide/workflows/changelog-fragments/#changelog-fragments-enforced-per-pr-documentation",
-    "source": "guide"
-  },
-  {
     "id": "guide-smart-suggest-hook",
     "title": "Smart Suggest Hook",
     "keywords": "smart suggest hook examples hooks bash smart suggest",
@@ -1670,17 +1662,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-smart-suggest-routing",
     "title": "Smart Suggest Routing",
-    "keywords": "smart suggest routing guide workflows smart suggest routing",
+    "keywords": "smart suggest routing guide workflows smart suggest routing smart suggest routing why guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing corpus guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing calibration guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing scoring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing wiring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/smart-suggest-routing/",
-    "source": "guide"
-  },
-  {
-    "id": "guide-smart-suggest-routing-why",
-    "title": "Smart Suggest Routing Why",
-    "keywords": "smart suggest routing why guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing corpus guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing calibration guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing scoring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints smart suggest routing wiring guide workflows smart suggest routing md#smart suggest routing regex bm25 skill hints",
-    "category": "Guide > Workflows",
-    "url": "/guide/workflows/smart-suggest-routing/#smart-suggest-routing-regex--bm25-skill-hints",
     "source": "guide"
   },
   {
@@ -5982,7 +5966,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-agent-teams",
     "title": "Agent Teams",
-    "keywords": "agent teams guide workflows agent teams",
+    "keywords": "agent teams guide workflows agent teams agent teams workflow impact guide workflows agent teams md#agent teams workflow",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams/",
     "source": "guide"
@@ -6049,14 +6033,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "agent teams paul rayner workflows guide workflows agent teams md#44 job search app development paul rayner",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/agent-teams/#44-job-search-app-development-paul-rayner",
-    "source": "guide"
-  },
-  {
-    "id": "guide-agent-teams-workflow-impact",
-    "title": "Agent Teams Workflow Impact",
-    "keywords": "agent teams workflow impact guide workflows agent teams md#agent teams workflow",
-    "category": "Guide > Workflows",
-    "url": "/guide/workflows/agent-teams/#agent-teams-workflow",
     "source": "guide"
   },
   {

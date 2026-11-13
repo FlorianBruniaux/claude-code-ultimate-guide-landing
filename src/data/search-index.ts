@@ -330,7 +330,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Authentication',
     keywords: 'authentication login oauth api key credentials access',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#authentication',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -338,7 +338,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Basic Commands',
     keywords: 'basic commands usage cli terminal chat continue resume',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#basic-commands',
+    url: '/cheatsheet/#essential-commands',
     source: 'landing',
   },
   {
@@ -346,7 +346,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Slash Commands',
     keywords: 'slash commands /help /clear /compact /memory /config custom',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#slash-commands',
+    url: '/cheatsheet/#essential-commands',
     source: 'landing',
   },
   {
@@ -370,7 +370,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Hooks',
     keywords: 'hooks pre post tool use notification event automation bash shell script',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#hooks',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -378,7 +378,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Memory System',
     keywords: 'memory system auto-memory persistence context CLAUDE.md project rules',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#memory',
+    url: '/cheatsheet/#memory-settings',
     source: 'landing',
   },
   {
@@ -386,7 +386,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Settings & Configuration',
     keywords: 'settings configuration config json models temperature permissions',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#settings',
+    url: '/cheatsheet/#memory-settings',
     source: 'landing',
   },
   {
@@ -394,7 +394,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Permissions',
     keywords: 'permissions allow deny tools bash safety sandboxing allowlist denylist',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#permissions',
+    url: '/cheatsheet/#permission-modes',
     source: 'landing',
   },
   {
@@ -402,7 +402,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Multi-Agent & Teams',
     keywords: 'multi agent teams orchestration parallel subagent task management delegation',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#multi-agent',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -410,7 +410,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Git Integration',
     keywords: 'git integration github pr commit push branch worktree',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#git-integration',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -418,7 +418,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Token Optimization',
     keywords: 'tokens optimization cost reduce context window ultracompressed compact',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#token-optimization',
+    url: '/cheatsheet/#cost-optimization',
     source: 'landing',
   },
   {
@@ -426,7 +426,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Debugging',
     keywords: 'debugging troubleshooting errors issues fix problems /debug',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#debugging',
+    url: '/cheatsheet/#quick-fixes',
     source: 'landing',
   },
   {
@@ -434,7 +434,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'CI/CD Integration',
     keywords: 'ci cd pipeline github actions automation headless non-interactive',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#cicd',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -450,7 +450,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Custom Agents (Sub-Agents)',
     keywords: 'custom agents sub-agents persona specialized task automation .claude/agents',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#custom-agents',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -458,7 +458,7 @@ const cheatsheetEntries: SearchEntry[] = [
     title: 'Security Best Practices',
     keywords: 'security best practices prompt injection prevention hardening safe mode',
     category: 'Cheat Sheet',
-    url: '/cheatsheet/#security-best-practices',
+    url: '/cheatsheet/',
     source: 'landing',
   },
   {
@@ -491,7 +491,7 @@ const homepageEntries: SearchEntry[] = [
     title: 'Golden Rules',
     keywords: 'golden rules best practices core principles methodology workflow',
     category: 'Homepage',
-    url: '/#golden-rules',
+    url: '/cheatsheet/#golden-rules',
     source: 'landing',
   },
   {
@@ -499,7 +499,7 @@ const homepageEntries: SearchEntry[] = [
     title: 'Features Overview',
     keywords: 'features overview capabilities what claude code does',
     category: 'Homepage',
-    url: '/#features',
+    url: '/',
     source: 'landing',
   },
   {
@@ -507,7 +507,7 @@ const homepageEntries: SearchEntry[] = [
     title: 'Tool Comparison Table',
     keywords: 'comparison table tools cursor copilot windsurf vs versus',
     category: 'Homepage',
-    url: '/#comparison',
+    url: '/compare/',
     source: 'landing',
   },
   {
@@ -515,7 +515,7 @@ const homepageEntries: SearchEntry[] = [
     title: 'Prompt Formula',
     keywords: 'prompt formula structure context task format examples good prompts',
     category: 'Homepage',
-    url: '/#prompt-formula',
+    url: '/cheatsheet/#prompting-formula',
     source: 'landing',
   },
   {
@@ -539,7 +539,8 @@ const releaseEntries: SearchEntry[] = releases.slice(0, 10).map(r => {
     title: `Release ${r.version} (${r.date})`,
     keywords: `release ${r.version} ${highlightText} changelog update`,
     category: 'Releases',
-    url: `/releases/#${r.version}`,
+    // Same id as the release card in src/pages/releases/index.astro (CX-01).
+    url: `/releases/#v${r.version.replace(/\./g, '-').replace(/^v/, '')}`,
     source: 'landing' as const,
   }
 })
@@ -559,7 +560,7 @@ const securityEntries: SearchEntry[] = [
     title: 'Prompt Injection Attacks',
     keywords: 'prompt injection attack vector malicious input social engineering',
     category: 'Security',
-    url: '/security/#prompt-injection',
+    url: '/security/threats/',
     source: 'landing',
   },
   {
@@ -567,7 +568,7 @@ const securityEntries: SearchEntry[] = [
     title: 'MCP Security Threats',
     keywords: 'mcp security threats malicious server tool poisoning rug pull',
     category: 'Security',
-    url: '/security/#mcp-threats',
+    url: '/security/threats/',
     source: 'landing',
   },
   {
@@ -575,7 +576,7 @@ const securityEntries: SearchEntry[] = [
     title: 'Attack Campaigns',
     keywords: 'attack campaigns malicious skills supply chain threat actors',
     category: 'Security',
-    url: '/security/#attack-campaigns',
+    url: '/security/#active-campaigns',
     source: 'landing',
   },
   {
@@ -583,7 +584,7 @@ const securityEntries: SearchEntry[] = [
     title: 'Security Hardening Guide',
     keywords: 'hardening guide security checklist permissions sandboxing best practices',
     category: 'Security',
-    url: '/security/#hardening',
+    url: '/security/hardening/',
     source: 'landing',
   },
 ]
@@ -687,7 +688,7 @@ const guideSpotlightEntries: SearchEntry[] = [
     title: 'Ultraplan: Async Cloud Planning with Opus 4.6',
     keywords: 'ultraplan /ultraplan cloud planning async multi-agent opus browser review inline comments session teleportation github pr research preview',
     category: 'Guide > Core Workflow',
-    url: '/guide/ultimate-guide/02-core-workflow/#ultraplan',
+    url: '/guide/ultimate-guide/10-reference/',
     source: 'guide',
   },
   {
@@ -695,7 +696,7 @@ const guideSpotlightEntries: SearchEntry[] = [
     title: 'Claude Managed Agents (Cloud-Hosted Platform)',
     keywords: 'managed agents cloud hosted platform messages api ant cli orchestrator specialists next.js sse streaming anthropic notion rakuten asana sentry',
     category: 'Guide > AI Ecosystem',
-    url: '/guide/ai-ecosystem/#14-claude-managed-agents-cloud-hosted-platform',
+    url: '/ecosystem/',
     source: 'guide',
   },
   {
@@ -703,7 +704,7 @@ const guideSpotlightEntries: SearchEntry[] = [
     title: 'Autoresearch: Overnight Autonomous Improvement Loops',
     keywords: 'autoresearch autonomous loop overnight improvement karpathy measure change remeasure program.md /autoresearch h100 ml iterations sleep',
     category: 'Guide > AI Ecosystem',
-    url: '/guide/ai-ecosystem/#13-autonomous-research-loops-autoresearch-pattern',
+    url: '/ecosystem/',
     source: 'guide',
   },
   {
@@ -775,7 +776,7 @@ const guideSpotlightEntries: SearchEntry[] = [
     title: 'Workflow: parallel() vs pipeline() (When and Why)',
     keywords: 'parallel pipeline barrier difference performance benchmark tokens wall clock 3x latency 2x tokens when to use workflow primitives concurrency guard budget remaining',
     category: 'Guide > Workflows',
-    url: '/guide/workflows/dynamic-workflows/#4-pipeline-vs-parallel--when-and-why',
+    url: '/guide/workflows/dynamic-workflows/#4-pipeline-vs-parallel-when-and-why',
     source: 'guide',
   },
   {
@@ -802,7 +803,8 @@ const glossaryEntries: SearchEntry[] = glossaryTerms.map(t => ({
   title: t.term,
   keywords: `${t.term.toLowerCase()} ${t.category.toLowerCase()} ${t.subcategory.toLowerCase()} glossary definition`,
   category: `Glossary › ${t.category}`,
-  url: `/glossary/#letter-${t.term[0].toUpperCase()}`,
+  // Same grouping as groupByLetter(): non-letters go under `#` (CX-01).
+  url: `/glossary/#letter-${encodeURIComponent(/[a-zA-Z]/.test(t.term[0]) ? t.term[0].toUpperCase() : '#')}`,
   source: 'landing' as const,
 }))
 

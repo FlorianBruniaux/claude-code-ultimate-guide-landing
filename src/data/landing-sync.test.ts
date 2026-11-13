@@ -77,7 +77,8 @@ test('Subscription Strategy stays exposed across landing discovery surfaces', as
   assert.match(rssEntries, /title: 'Subscription Strategy at Team Scale'/)
   assert.match(rssEntries, /https:\/\/cc\.bruniaux\.com\/guide\/subscription-strategy\//)
   assert.match(searchEntries, /"id": "guide-subscription-strategy-guide"/)
-  assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tl-dr"/)
+  // The rendered heading id is "tldr" (github-slugger drops ";"), see CX-01.
+  assert.match(contentEntries, /"url": "\/guide\/subscription-strategy\/#tldr"/)
 })
 
 test('AI coding cost controls stay exposed across landing discovery surfaces', () => {

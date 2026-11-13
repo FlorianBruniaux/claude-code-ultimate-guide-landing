@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, existsSync, statSync } from 'fs'
 import { resolve, dirname, relative, isAbsolute } from 'path'
 import { fileURLToPath } from 'url'
 import yaml from 'js-yaml'
+import { headingIds } from './lib/heading-slug.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -188,6 +189,30 @@ function stripLineNumber(path) {
   return path.replace(/:\d+$/, '')
 }
 
+// Generated Starlight pages (written by prepare-guide-content.mjs before this
+// script in `pnpm build`), keyed by URL path. Absent when run on its own.
+const CONTENT_DIR = resolve(ROOT, 'src/content/docs/guide')
+const pageIdsCache = new Map()
+
+/**
+ * Drop a fragment that the generated page does not render (CX-01). A
+ * reference.yaml anchor on a workflow's own H1 (`#agent-teams-workflow`)
+ * has no id on the site, because Starlight replaces the H1 with the title.
+ * The entry then opens the page top, which is where the reader landed anyway.
+ */
+function keepRenderedAnchor(url) {
+  const hash = url.indexOf('#')
+  if (hash === -1 || !url.startsWith(LOCAL_GUIDE_BASE)) return url
+  const page = url.slice(0, hash)
+  if (!pageIdsCache.has(page)) {
+    const file = resolve(CONTENT_DIR, `${page.slice(LOCAL_GUIDE_BASE.length).replace(/\/$/, '')}.md`)
+    pageIdsCache.set(page, existsSync(file) ? headingIds(readFileSync(file, 'utf-8')) : null)
+  }
+  const ids = pageIdsCache.get(page)
+  if (!ids) return url
+  return ids.has(decodeURIComponent(url.slice(hash + 1))) ? url : page
+}
+
 function main() {
   // Try to read reference.yaml
   let raw
@@ -266,6 +291,7 @@ function main() {
     } else {
       url = `${githubBase}${cleanPath}`
     }
+    url = keepRenderedAnchor(url)
 
     const keywords = extractKeywords(key, cleanPath)
 
