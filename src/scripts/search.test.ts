@@ -316,3 +316,17 @@ test('a failed load offers a Retry button that loads the index again', async () 
   assert.equal(attempts, 2)
   assert.match(document.getElementById('search-results')?.textContent ?? '', /Claude Code Releases/)
 })
+
+// CX-08: Cmd/Ctrl+click or middle click opens a result in a new tab.
+test('a modified click opens the result in a new tab and keeps the dialog open', async () => {
+  const { window, document } = groupedFixture()
+  const opened: string[] = []
+  ;(window as unknown as { open: (url: string) => null }).open = (url: string) => { opened.push(url); return null }
+  initSearch(async () => GROUPED_PAYLOAD, document)
+  document.getElementById('search-trigger')?.click()
+  await typeQuery(document, 'memory')
+  const row = document.querySelector('.search-result-item') as HTMLElement
+  row.dispatchEvent(new document.defaultView!.MouseEvent('click', { bubbles: true, metaKey: true }))
+  assert.equal(opened.length, 1)
+  assert.equal(document.getElementById('search-modal')?.hasAttribute('hidden'), false)
+})

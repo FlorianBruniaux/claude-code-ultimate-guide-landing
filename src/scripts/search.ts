@@ -224,7 +224,12 @@ export function initSearch(
         item.append(highlighted(section.title, tokens))
         item.addEventListener('click', (event) => {
           event.stopPropagation()
-          navigate(section.url)
+          if (wantsNewTab(event)) openInNewTab(section.url)
+          else navigate(section.url)
+        })
+        item.addEventListener('auxclick', (event) => {
+          event.stopPropagation()
+          if (event.button === 1) openInNewTab(section.url)
         })
         list.append(item)
       }
@@ -233,7 +238,10 @@ export function initSearch(
       row.append(list)
     }
 
-    row.addEventListener('click', () => navigate(hit.url))
+    row.addEventListener('click', (event) => (wantsNewTab(event) ? openInNewTab(hit.url) : navigate(hit.url)))
+    row.addEventListener('auxclick', (event) => {
+      if (event.button === 1) openInNewTab(hit.url)
+    })
     row.addEventListener('mousemove', () => {
       if (selected !== index) select(index, false)
     })
@@ -439,6 +447,16 @@ export function initSearch(
     doc.body.style.overflow = ''
     if (opener?.isConnected) opener.focus()
     opener = null
+  }
+
+  // CX-08: results are listbox options, not links; a modified or middle click
+  // still opens them in a new tab, as a link would, and keeps the dialog open.
+  function wantsNewTab(event: MouseEvent): boolean {
+    return event.metaKey || event.ctrlKey || event.shiftKey
+  }
+
+  function openInNewTab(url: string | undefined): void {
+    if (url) doc.defaultView?.open(url, '_blank', 'noopener,noreferrer')
   }
 
   function navigate(url: string | undefined): void {
