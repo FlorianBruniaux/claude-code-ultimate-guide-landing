@@ -30,6 +30,19 @@ import GlobalFooter from '../global/Footer.astro'
   })()
 </script>
 
+<script>
+  // UX-12: a table wider than the reading column scrolls sideways; make it
+  // reachable with the keyboard, but only when it actually overflows.
+  function markScrollableTables() {
+    for (const table of document.querySelectorAll<HTMLTableElement>('.sl-markdown-content table')) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0
+      else table.removeAttribute('tabindex')
+    }
+  }
+  markScrollableTables()
+  window.addEventListener('resize', markScrollableTables, { passive: true })
+</script>
+
 <style>
   .guide-pagination {
     margin-top: 3rem;
