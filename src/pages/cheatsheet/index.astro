@@ -512,7 +512,11 @@ Deep analysis     &rarr; Use Opus (thinking on by default)</code></pre>
     }
 
     @media (max-width: 768px) {
-      .content { grid-template-columns: 1fr; }
+      /* CX-02: `1fr` kept the min-content width of the widest pre or table
+       * (500 px), and `overflow-x: hidden` on body then cut the cards. */
+      .content { grid-template-columns: minmax(0, 1fr); }
+      .section { min-width: 0; }
+      .section :is(th, td) { overflow-wrap: anywhere; }
       .meta-info { flex-direction: column; gap: var(--space-sm); }
     }
   </style>
