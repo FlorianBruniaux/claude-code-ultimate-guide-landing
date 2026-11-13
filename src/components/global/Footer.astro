@@ -4,9 +4,11 @@ import { getFooterEcosystemProjects } from '../../data/footer-ecosystem'
 
 interface Props {
   compact?: boolean
+  /** "Read the Guide" call to action; hidden on guide pages (UX-21). */
+  showGuideCta?: boolean
 }
 
-const { compact = false } = Astro.props
+const { compact = false, showGuideCta = true } = Astro.props
 
 // Sentence case everywhere: only the first word, product names and acronyms
 // keep a capital, so the columns read as one list.
@@ -77,8 +79,8 @@ const ecosystemProjects = getFooterEcosystemProjects()
 
     {!compact && (
       <>
-    <!-- Footer CTA -->
-    <div class="mb-10 pb-10 border-b border-border">
+    <!-- Footer CTA (not on guide pages: the reader is already in the guide, UX-21) -->
+    {showGuideCta && <div class="mb-10 pb-10 border-b border-border">
       <h3 class="text-xl font-bold text-text-primary mb-2">Ready to master Claude Code?</h3>
       <p class="text-text-secondary mb-4">Start with the free, open-source Claude Code guide.</p>
       <a
@@ -89,7 +91,7 @@ const ecosystemProjects = getFooterEcosystemProjects()
       >
         Read the Guide &rarr;
       </a>
-    </div>
+    </div>}
 
     <!-- Footer Grid -->
     <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
