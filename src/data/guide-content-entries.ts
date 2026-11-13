@@ -7294,7 +7294,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Avant de commencer",
     "keywords": "avant de commencer the ultimate claude code guide ce guide n'est pas la documentation officielle d'anthropic. c'est une ressource communautaire fondée sur mon exploration de claude code au cours de pl",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#avant-de-commencer",
+    "url": "/guide/ultimate-guidefr/#avant-de-commencer",
     "source": "guide"
   },
   {
@@ -7302,7 +7302,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "TL;DR - Le résumé en 5 minutes",
     "keywords": "tl dr le résumé en 5 minutes the ultimate claude code guide si vous n'avez que 5 minutes, voici l'essentiel : commandes essentielles le workflow gestion du contexte (critique !) contexte % action ----------- -- commandes essentielles le workflow gestion du contexte critique hiérarchie de la mémoire fonctionnalités avancées les règles d or arbre de décision rapide",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#tldr---le-résumé-en-5-minutes",
+    "url": "/guide/ultimate-guidefr/#tldr---le-résumé-en-5-minutes",
     "source": "guide"
   },
   {
@@ -7310,7 +7310,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Choisissez votre parcours",
     "keywords": "choisissez votre parcours the ultimate claude code guide le guide compte 11 chapitres et plus de 22 000 lignes. vous n'avez pas besoin de tout lire. voici ce qui compte selon votre situation : je suis... je",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#choisissez-votre-parcours",
+    "url": "/guide/ultimate-guidefr/#choisissez-votre-parcours",
     "source": "guide"
   },
   {
@@ -7318,7 +7318,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Top 5 des sections par ROI",
     "keywords": "top 5 des sections par roi the ultimate claude code guide si vous n'avez le temps que pour 5 sections : 1. 2.6 mental model : comprendre comment claude code pense (20 min) 2. 3.1 claude.md : mémoire persistan",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#top-5-des-sections-par-roi",
+    "url": "/guide/ultimate-guidefr/#top-5-des-sections-par-roi",
     "source": "guide"
   },
   {
@@ -7326,7 +7326,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Table des matières",
     "keywords": "table des matières the ultimate claude code guide - 1. quick start (jour 1) - 1.1 installation - 1.2 premier workflow - 1.3 commandes essentielles - 1.4 modes de permission - 1.5 checklist de producti",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#table-des-matières",
+    "url": "/guide/ultimate-guidefr/#table-des-matières",
     "source": "guide"
   },
   {
@@ -7334,7 +7334,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "1. Démarrage rapide (jour 1)",
     "keywords": "1 démarrage rapide jour 1 the ultimate claude code guide navigation rapide : installation · premier workflow · commandes essentielles · modes de permission · checklist de productivité · migrer depuis d'autre 1 1 installation vérifier l installation mettre à jour claude code application de bureau claude code sans le terminal chemins spécifiques aux plateformes premier lancement 1 2 premier flux de travail étape 1 décrire le problème étape 2 claude analyse étape 3 réviser le diff étape 4 accepter ",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#1-démarrage-rapide-jour-1",
+    "url": "/guide/ultimate-guidefr/#1-démarrage-rapide-jour-1",
     "source": "guide"
   },
   {
@@ -7342,7 +7342,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "2. Concepts fondamentaux",
     "keywords": "2 concepts fondamentaux the ultimate claude code guide navigation rapide : la boucle d'interaction · gestion du contexte · mode plan · rewind · sélection du modèle · modèle mental · patterns de prompt engi résumé section 2 2 minutes concepts clés la règle unique 2 1 la boucle d interaction point clé 2 2 gestion du contexte référence rapide de gestion du contexte qu est ce que le contexte le budget de contexte lecture de la barre de statut configuration personnalisée de la barre de statut zones d",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#2-concepts-fondamentaux",
+    "url": "/guide/ultimate-guidefr/#2-concepts-fondamentaux",
     "source": "guide"
   },
   {
@@ -7350,7 +7350,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "3. Mémoire et paramètres",
     "keywords": "3 mémoire et paramètres the ultimate claude code guide accès rapide : fichiers mémoire (claude.md) · structure du dossier .claude/ · paramètres et permissions · règles de précédence --- 📌 résumé section 3 résumé section 3 90 secondes 3 1 fichiers mémoire claude md claude md comme mémoire à effet composé construire pour le modèle dans six mois mise à jour continue du contexte niveau 1 global claude claude md niveau 2 projet project claude md niveau 3 local project claude local md bonnes pratique",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#3-mémoire-et-paramètres",
+    "url": "/guide/ultimate-guidefr/#3-mémoire-et-paramètres",
     "source": "guide"
   },
   {
@@ -7358,7 +7358,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "4. Agents",
     "keywords": "4 agents the ultimate claude code guide accès rapide : qu'est-ce que les agents · créer des agents personnalisés · template d'agent · bonnes pratiques · mémoire des agents --- 📌 résumé de l résumé de la section 4 60 secondes 4 1 ce que sont les agents pourquoi utiliser des agents agent vs prompt direct agents intégrés vs personnalisés 4 2 créer des agents personnalisés structure d un fichier agent champs du frontmatter sélection du modèle 4 3 modèle d agent 4 4 bonnes pratiques à faire et à évi",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#4-agents",
+    "url": "/guide/ultimate-guidefr/#4-agents",
     "source": "guide"
   },
   {
@@ -7366,7 +7366,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "5. Skills",
     "keywords": "5 skills the ultimate claude code guide navigation rapide : deux types de skills · comprendre les skills · responsabilité et réutilisation · créer des skills · cycle de vie des skills · éval 5 0 deux types de skills 5 1 comprendre les skills skills vs agents pourquoi les skills gouvernance de la responsabilité et de la réutilisation qu est ce qui fait un bon skill skills et workflows embarqués bundled skills and workflows 5 2 créer des skills structure d un dossier skill frontmatter de skill md ",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#5-skills",
+    "url": "/guide/ultimate-guidefr/#5-skills",
     "source": "guide"
   },
   {
@@ -7374,7 +7374,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "6. Commandes (skills invocables par l'utilisateur)",
     "keywords": "6 commandes skills invocables par l utilisateur the ultimate claude code guide accès rapide : slash commands · créer des commandes personnalisées · modèle de commande · exemples de commandes --- cc 2.1.3 (janvier 2026) : les skil 6 1 slash commands commandes intégrées la commande btw bifurcation de session recap contexte de session au retour la commande insights la commande simplify la commande batch tâches planifiées trois méthodes skills invocables par l utilisateur anciennement commandes pers",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#6-commandes-skills-invocables-par-lutilisateur",
+    "url": "/guide/ultimate-guidefr/#6-commandes-skills-invocables-par-lutilisateur",
     "source": "guide"
   },
   {
@@ -7382,7 +7382,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "7. Hooks",
     "keywords": "7 hooks the ultimate claude code guide accès rapide : le système d'événements · créer des hooks · modèles de hooks · hooks de sécurité · exemples de hooks --- 📌 résumé de la section 7 (60 résumé de la section 7 60 secondes 7 1 le système d événements types d événements flux d événements modèle d exécution des hooks v2 1 0 scripts shell vs agents ia quand utiliser quoi 7 2 création de hooks enregistrement des hooks settings json champs de configuration hooks à portée de session le menu hooks hoo",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#7-hooks",
+    "url": "/guide/ultimate-guidefr/#7-hooks",
     "source": "guide"
   },
   {
@@ -7390,7 +7390,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "8. Serveurs MCP",
     "keywords": "8 serveurs mcp the ultimate claude code guide accès rapide : qu'est-ce que mcp · serveurs disponibles · configuration · guide de sélection de serveur · système de plugins · sécurité mcp --- temps 8 1 qu est ce que mcp pourquoi mcp comment ça fonctionne évolution mcp extension apps sep 1865 8 2 serveurs disponibles serena analyse sémantique du code grepai recherche sémantique recommandée claude mem mémoire de session automatique graphify graphes de connaissance de la base de code matrice de décis",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#8-serveurs-mcp",
+    "url": "/guide/ultimate-guidefr/#8-serveurs-mcp",
     "source": "guide"
   },
   {
@@ -7398,7 +7398,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "9. Patterns avancés",
     "keywords": "9 patterns avancés the ultimate claude code guide accès rapide : la trinité · patterns de composition · intégration ci/cd · intégration ide · boucles de feedback serrées · optimisation du contexte par section 9 tl dr 3 minutes catégories de patterns quand utiliser cette section contexte industriel tendances du codage agentique en 2026 données d adoption validées enseignements de la recherche étude interne anthropic anti patterns en entreprise études de cas industrielles navigation 9 1 la trinité",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#9-patterns-avancés",
+    "url": "/guide/ultimate-guidefr/#9-patterns-avancés",
     "source": "guide"
   },
   {
@@ -7406,7 +7406,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "10. Référence",
     "keywords": "10 référence the ultimate claude code guide accès rapide : tableau des commandes · raccourcis clavier · référence de configuration · dépannage · aide-mémoire · flux de travail quotidien --- 📌 r résumé de la section 10 1 minute navigation rapide par besoin recherches les plus fréquentes 10 1 tableau des commandes cycle de vie des sessions contexte modèle effort et modes de permission travail parallèle et planifié revue et livraison configuration et extensions interface et affichage diagnostic et",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#10-référence",
+    "url": "/guide/ultimate-guidefr/#10-référence",
     "source": "guide"
   },
   {
@@ -7414,7 +7414,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Annexe : Collection de modèles",
     "keywords": "annexe collection de modèles the ultimate claude code guide 💡 exemples prêts pour la production : pour des modèles complets et éprouvés incluant des commandes avancées ( , , ) et des hooks de sécurité, consult a 1 modèle d agent a 2 modèle de skill a 3 modèle de commande a 4 modèles de hooks pretooluse sécurité posttooluse formatage userpromptsubmit contexte a 5 modèle settings json a 6 modèle settings local json a 7 modèle claude md",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#annexe--collection-de-modèles",
+    "url": "/guide/ultimate-guidefr/#annexe--collection-de-modèles",
     "source": "guide"
   },
   {
@@ -7422,7 +7422,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "11. Écosystème IA : outils complémentaires",
     "keywords": "11 écosystème ia outils complémentaires the ultimate claude code guide accès rapide : pourquoi la complémentarité · matrice des outils · flux de travail pratiques · schémas d'intégration --- temps de lecture : 10 minutes 11 1 pourquoi la complémentarité est essentielle ce que claude code fait le mieux là où d autres outils apportent de la valeur 11 2 matrice des outils guide de décision rapide vue d ensemble des outils complémentaires configuration multi fournisseurs cc copilot bridge passerelle",
     "category": "Core Guides",
-    "url": "/guide/ultimate-guide.fr/#11-écosystème-ia--outils-complémentaires",
+    "url": "/guide/ultimate-guidefr/#11-écosystème-ia--outils-complémentaires",
     "source": "guide"
   },
   {
@@ -10652,10 +10652,6 @@ export const GUIDE_CONTENT_PAGES: Record<string, GuideContentPage> = {
     "title": "Translations and Language Governance",
     "description": "Verified inventory, freshness status, attribution, and maintenance rules for official and community language editions"
   },
-  "/guide/ultimate-guide.fr/": {
-    "title": "The Ultimate Claude Code Guide",
-    "description": "Guide complet et autonome pour maîtriser Claude Code, du débutant au power user"
-  },
   "/guide/ultimate-guide/00-introduction/": {
     "title": "Introduction",
     "description": "Overview, TL;DR, and full table of contents for the Claude Code Ultimate Guide."
@@ -10707,6 +10703,10 @@ export const GUIDE_CONTENT_PAGES: Record<string, GuideContentPage> = {
   "/guide/ultimate-guide/12-appendices/": {
     "title": "Appendices",
     "description": "Claude Code appendices: file locations reference, FAQ, resource evaluations, myths vs reality, and glossary."
+  },
+  "/guide/ultimate-guidefr/": {
+    "title": "The Ultimate Claude Code Guide",
+    "description": "Guide complet et autonome pour maîtriser Claude Code, du débutant au power user"
   },
   "/guide/visual-reference/": {
     "title": "Claude Code: Visual Reference",

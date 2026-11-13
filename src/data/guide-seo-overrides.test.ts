@@ -56,6 +56,13 @@ test('canonicalizes the legacy release document', () => {
   assert.equal(canonicalGuidePageUrl('claude-code-releases.md'), '/releases/')
 })
 
+// CX-04: Astro publishes ultimate-guide.fr.md at /guide/ultimate-guidefr/;
+// /guide/ultimate-guide.fr/ is a meta refresh stub that drops the fragment.
+test('canonicalizes a dotted file name to the route Astro publishes', () => {
+  assert.equal(canonicalGuidePageUrl('ultimate-guide.fr.md'), '/guide/ultimate-guidefr/')
+  assert.equal(canonicalGuidePageUrl('workflows/agent-teams.md'), '/guide/workflows/agent-teams/')
+})
+
 test('keeps fenced H1 examples and demotes later document H1 headings', () => {
   const fixture = '---\ntitle: Page\n---\n\n# Page\n\n```md\n# Example\n## Example child\n```\n\n# Later section\n\n## Child\n\n### Grandchild'
   const result = transformGuideMarkdown(fixture, 'guide/core/architecture.md')

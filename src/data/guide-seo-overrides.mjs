@@ -103,5 +103,8 @@ export function canonicalGuidePageUrl(relPath) {
   const normalized = relPath.replace(/\\/g, '/')
   if (normalized === 'claude-code-releases.md') return '/releases/'
 
-  return `/guide/${normalized.replace(/\.md$/, '')}/`
+  // Astro slugs each path segment of a content id, which drops dots:
+  // ultimate-guide.fr.md is published at /guide/ultimate-guidefr/ (CX-04).
+  const route = normalized.replace(/\.md$/, '').split('/').map((segment) => segment.replace(/\./g, '')).join('/')
+  return `/guide/${route}/`
 }
