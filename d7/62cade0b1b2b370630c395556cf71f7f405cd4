@@ -1,0 +1,19 @@
+src/pages/cheatsheet/index.astro
+  s_72657e0971a800::t_958b261dd15905 515-519
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d762cade0b1b2b370630c395556cf71f7f405cd4",
+  "prompts": {},
+  "sessions": {
+    "s_72657e0971a800": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_72657e0971a800",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
