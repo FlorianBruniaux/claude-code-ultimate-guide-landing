@@ -1,0 +1,19 @@
+src/components/global/ConsultingCta.astro
+  s_34430027c51efc::t_1e0b0466edfe4f 73-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9f22f9026ea190db48507f28a3538d58bddeff99",
+  "prompts": {},
+  "sessions": {
+    "s_34430027c51efc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_34430027c51efc",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
