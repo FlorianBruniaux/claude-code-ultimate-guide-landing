@@ -103,3 +103,19 @@ test('essential cards read left-aligned, title above description', () => {
   const desktop = headerSource.slice(headerSource.indexOf('@media (min-width: 64rem)'))
   assert.match(desktop, /\.intent-card \{[^}]*\balign-items:\s*flex-start;[^}]*\bjustify-content:\s*flex-start;/)
 })
+
+test('PA-01: the panel lists Essentials and Go further before the author projects', () => {
+  const essentials = headerSource.indexOf('class="intent-panel-body"')
+  const projects = headerSource.indexOf('class="intent-panel-projects"')
+
+  assert.ok(essentials > -1 && projects > -1, 'both blocks must exist')
+  assert.ok(essentials < projects, 'projects must come after the Essentials body')
+})
+
+test('PA-01: the projects strip closes the panel with a top rule, not a bottom one', () => {
+  const rule = headerSource.match(/\.intent-panel-projects \{([^}]*)\}/g)?.at(-1)
+
+  assert.ok(rule, 'desktop rule for the projects block must exist')
+  assert.match(rule, /\bborder-top:\s*1px solid var\(--border-light\);/)
+  assert.doesNotMatch(rule, /border-bottom/)
+})
