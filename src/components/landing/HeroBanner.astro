@@ -17,13 +17,24 @@ const stats = await getSiteStats()
 
       <div class="hero-body">
         <p class="hero-tagline">Go from your first command to production-ready Claude Code workflows.</p>
-        <p class="hero-support">Security, testing, team adoption, and reusable templates, with the trade-offs explained.</p>
+        <p class="hero-support">Plus the engineering that makes agents reliable: context engineering, agent harnesses, loops and graphs, evaluation and memory.</p>
 
         <div class="hero-actions">
           <a href="#start-here" class="btn btn-primary">Start in 15 min</a>
           <a href="/guide/" class="btn btn-secondary">Browse the full guide</a>
           <a href="/downloads/" class="btn btn-quiet">Downloads ↓</a>
         </div>
+
+        <nav class="hero-beyond" aria-label="Beyond Claude Code">
+          <p class="hero-beyond-label">Beyond Claude Code</p>
+          <ul>
+            <li><a href="/context-engineering/">Context engineering</a></li>
+            <li><a href="/guide/agent-harness/">Agent harness engineering</a></li>
+            <li><a href="/guide/loop-graph-engineering/">Loop &amp; graph engineering</a></li>
+            <li><a href="/guide/agent-evaluation/">Agent evaluation</a></li>
+            <li><a href="/memory-systems/">Memory systems</a></li>
+          </ul>
+        </nav>
       </div>
 
       <div class="hero-evidence">
@@ -152,6 +163,50 @@ const stats = await getSiteStats()
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.75rem;
+  }
+
+  .hero-beyond {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-beyond-label {
+    margin: 0;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .hero-beyond ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    column-gap: 1.1rem;
+  }
+
+  .hero-beyond a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .hero-beyond a:hover,
+  .hero-beyond a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .hero-beyond a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .proof-strip {
