@@ -21,6 +21,7 @@ import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
 import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
 import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
 import { rewriteSupersededGuideLinks } from '../src/data/superseded-guide-pages.mjs'
+import { addFrenchChapterLink, frenchChapterAnchors } from './lib/french-chapter-links.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -794,6 +795,7 @@ console.log(`[prepare-guide] ✓ Ultimate Guide chapters: ${stats.chapters}`)
 // -----------------------------------------------------------------------
 // 3b. Flush buffered guide/workflow files now that anchorMap is complete
 // -----------------------------------------------------------------------
+let frenchGuideOutput = ''
 for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuffer) {
   let rewritten = rewriteRepoDocLinks(rawContent)
   rewritten = rewriteRelativeGuideLinks(rewritten, sourcePath, anchorMap)
@@ -811,6 +813,18 @@ for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuf
     ? resolve(OUT_WORKFLOWS, file.replace('workflows/', ''))
     : resolve(OUT_GUIDE, file)
   writeFileSync(outPath, rewritten, 'utf-8')
+  if (file === 'ultimate-guide.fr.md') frenchGuideOutput = rewritten
+}
+
+// AM-02: each English chapter links to its section of the French page.
+if (frenchGuideOutput) {
+  const frenchAnchors = frenchChapterAnchors(frenchGuideOutput)
+  for (const { num, slug } of CHAPTERS) {
+    const frenchId = frenchAnchors.get(num)
+    const chapterPath = resolve(OUT_ULTIMATE, `${slug}.md`)
+    if (!frenchId || !existsSync(chapterPath)) continue
+    writeFileSync(chapterPath, addFrenchChapterLink(readFileSync(chapterPath, 'utf8'), frenchId), 'utf-8')
+  }
 }
 
 // Generate the /guide/ editorial portal.
