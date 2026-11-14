@@ -1506,3 +1506,9 @@ a.sl-link-button.secondary {
     border-radius: var(--border-radius-lg);
   }
 }
+
+/* AM-01: prose lines near 75 characters (65ch of "0" ≈ 78 average characters in IBM Plex Sans);
+   code blocks, tables and cards keep the column width. */
+html:not([data-has-hero]) .sl-markdown-content :is(p, li, blockquote, dd) {
+  max-width: 65ch;
+}

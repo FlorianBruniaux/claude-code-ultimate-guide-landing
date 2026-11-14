@@ -84,7 +84,7 @@ export const guideSections = [
     links: [
       { title: 'Ultimate Guide', href: '/guide/ultimate-guide/', desc: 'The complete chapter-by-chapter reference.', time: '~3 hours' },
       { title: 'Translations', href: '/guide/translations/', desc: 'Verified status for English, French, Chinese, Ukrainian, and Latin American Spanish.', time: '8 min' },
-      { title: 'Cheatsheet', href: '/guide/cheatsheet/', desc: 'Essential commands and configuration on one page.', time: '5 min' },
+      { title: 'Cheatsheet', href: '/cheatsheet/', desc: 'Essential commands and configuration on one page.', time: '5 min' },
       { title: 'Architecture', href: '/guide/architecture/', desc: 'Master loop, tool execution, context, and internal boundaries.', time: '25 min' },
       { title: 'Tools Reference', href: '/guide/tools-reference/', desc: 'Built-in tools, permissions, timeouts, and behaviors.', time: '20 min' },
       { title: 'Hooks & Events Reference', href: '/guide/hooks-events-reference/', desc: 'Hook events, matchers, schemas, decisions, and timeouts.', time: '15 min' },
@@ -245,6 +245,12 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 This portal indexes **${guideLineCount.toLocaleString('en-US')} lines of reference documentation** and **${workflowCount} workflow guides**. Use the paths below when you know your goal, or browse by topic for the complete curated map.
 
+## Choose your path
+
+<CardGrid>
+${renderCards(guidePaths)}
+</CardGrid>
+
 ## New and noteworthy
 
 <CardGrid>
@@ -252,12 +258,6 @@ ${renderCards(guideHighlights)}
 </CardGrid>
 
 [Follow every guide update in the public changelog →](/changelog/)
-
-## Choose your path
-
-<CardGrid>
-${renderCards(guidePaths)}
-</CardGrid>
 
 ## Browse by topic
 

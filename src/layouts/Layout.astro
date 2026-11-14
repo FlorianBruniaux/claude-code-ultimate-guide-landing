@@ -97,11 +97,11 @@ const stats = await getSiteStats()
     <link rel="preconnect" href="https://img.shields.io" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
-    <!-- Anti-FOUC: light by default, as in the portfolio preset; a stored choice wins -->
+    <!-- Anti-FOUC: a stored choice wins, otherwise the system colour scheme (P-01) -->
     <script is:inline>
       (function() {
         var stored = localStorage.getItem('theme');
-        var theme = stored || 'light';
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

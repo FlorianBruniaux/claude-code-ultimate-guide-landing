@@ -8,6 +8,8 @@ export const SUPERSEDED_GUIDE_PAGES = {
   '/guide/ai-roles/': '/roles/',
   '/guide/context-engineering/': '/context-engineering/',
   '/guide/ai-ecosystem/': '/ecosystem/',
+  // PA-02: one cheat sheet; /cheatsheet/ is the reference page.
+  '/guide/cheatsheet/': '/cheatsheet/',
 }
 
 const LINK_TARGET = /\]\((\/guide\/[^)\s#]+\/)(#[^)\s]*)?\)/g

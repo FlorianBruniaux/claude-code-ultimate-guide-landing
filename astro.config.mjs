@@ -182,7 +182,7 @@ export default defineConfig({
           // so both systems respect the user's dark/light preference.
           tag: 'script',
           attrs: {},
-          content: `(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('starlight-theme',t);})();`,
+          content: `(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);localStorage.setItem('starlight-theme',t);})();`,
         },
       ],
       sidebar: [
@@ -199,7 +199,7 @@ export default defineConfig({
         {
           label: 'Core Reference',
           items: [
-            { slug: 'guide/cheatsheet' },
+            { label: 'Cheatsheet', link: '/cheatsheet/' },
             { slug: 'guide/translations' },
             { slug: 'guide/architecture' },
             { slug: 'guide/methodologies' },

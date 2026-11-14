@@ -140,8 +140,26 @@ const SLUG_TO_PATH: Record<string, string> = {
     if (page.type === 'workflow') {
       return `${GUIDE_REPO}/blob/main/guide/workflows/${page.slug}.md`
     }
-    // chapter → link to the monolithic file
-    return `${GUIDE_REPO}/blob/main/guide/ultimate-guide.md`
+    // chapter → the section being read in the monolithic file (AM-04).
+    // Chapter heading ids follow GitHub's slugs ("7-hooks", "74-security-hooks").
+    const section = currentSectionId()
+    return section
+      ? `${GUIDE_REPO}/blob/main/guide/ultimate-guide.md#${section}`
+      : `${GUIDE_REPO}/blob/main/guide/ultimate-guide.md`
+  }
+
+  /** Id of the last numbered heading above the top of the viewport, else the chapter anchor. */
+  function currentSectionId() {
+    const content = document.querySelector('.sl-markdown-content')
+    if (!content) return null
+    const marks = [...content.querySelectorAll('[id]')].filter((el) => /^\d+-/.test(el.id))
+    if (!marks.length) return null
+    let current = marks[0]
+    for (const el of marks) {
+      if (el.getBoundingClientRect().top > 120) break
+      current = el
+    }
+    return current.id
   }
 
   function getRawUrl(page) {
@@ -186,6 +204,11 @@ const SLUG_TO_PATH: Record<string, string> = {
     group.style.display = 'flex'
     group.removeAttribute('aria-hidden')
     githubBtn.setAttribute('href', getGithubUrl(page))
+    // The section changes as the reader scrolls: resolve it when the link is used.
+    const refreshGithubUrl = () => githubBtn.setAttribute('href', getGithubUrl(page))
+    githubBtn.addEventListener('pointerdown', refreshGithubUrl)
+    githubBtn.addEventListener('focus', refreshGithubUrl)
+    githubBtn.addEventListener('click', refreshGithubUrl)
 
     copyBtn.addEventListener('click', async () => {
       const rawUrl = getRawUrl(page)

@@ -47,6 +47,14 @@ import GuidePageFab from '../global/GuidePageFab.astro'
     })
   }
 
+  // AM-04: one rule for GitHub links in guide prose, they open in a new tab.
+  document
+    .querySelectorAll<HTMLAnchorElement>('.sl-markdown-content a[href^="https://github.com/"]:not([target])')
+    .forEach((link) => {
+      link.target = '_blank'
+      link.rel = 'noopener noreferrer'
+    })
+
   focusScrollableTables()
   let tableResizeFrame = 0
   window.addEventListener('resize', () => {

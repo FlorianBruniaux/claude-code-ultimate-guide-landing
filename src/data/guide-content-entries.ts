@@ -1742,7 +1742,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Essential commands",
     "keywords": "essential commands claude code cheatsheet these are selected daily commands. availability depends on your version, provider, and plan: the complete list is in §10.1 of the guide, and the alway",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#essential-commands",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1750,7 +1750,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Keyboard shortcuts",
     "keywords": "keyboard shortcuts claude code cheatsheet shortcut action ---------- -------- cycle permission modes × 2 rewind (undo) interrupt search command history clear screen (keeps context) autocomplet",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#keyboard-shortcuts",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1758,7 +1758,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "File references",
     "keywords": "file references claude code cheatsheet ide shortcut ----- ---------- vs code jetbrains ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#file-references",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1766,7 +1766,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Features Méconnues (But Official!)",
     "keywords": "features méconnues but official claude code cheatsheet feature since what it does --------- ------- -------------- tasks api v2.1.16 persistent task lists with dependencies; opt in on newer models with bac",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#features-méconnues-but-official",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1774,7 +1774,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Permission modes",
     "keywords": "permission modes claude code cheatsheet mode editing execution ------ --------- ----------- manual ( ) permission rules apply permission rules apply acceptedits auto asks plan mode no file c",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#permission-modes",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1782,7 +1782,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Memory & Settings (2 levels)",
     "keywords": "memory settings 2 levels claude code cheatsheet level macos/linux windows scope git ------- ------------- --------- ------- ----- project team ✅ personal you (all projects) ❌ priority : project over",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#memory--settings-2-levels",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1790,7 +1790,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": ".claude/ folder structure",
     "keywords": "claude folder structure claude code cheatsheet ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#claude-folder-structure",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1798,7 +1798,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Typical workflow",
     "keywords": "typical workflow claude code cheatsheet ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#typical-workflow",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1806,7 +1806,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Context management (CRITICAL)",
     "keywords": "context management critical claude code cheatsheet statusline watch → 70% = , 85% = enhanced statusline (ccstatusline): add to : context thresholds context % status action ----------- -------- -------- statusline context thresholds actions by symptom context recovery commands",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#context-management-critical",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1814,7 +1814,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Under the hood (quick facts)",
     "keywords": "under the hood quick facts claude code cheatsheet concept key point --------- ----------- master loop model/tool loop; permissions and auto-mode review are separate controls tools bash, read, edit, wr",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#under-the-hood-quick-facts",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1822,7 +1822,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Harness choice in four layers",
     "keywords": "harness choice in four layers claude code cheatsheet layer owns start here ------- ------ ------------ model reasoning and tool-call proposals glossary runtime harness tool loop, permissions, and recover",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#harness-choice-in-four-layers",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1830,7 +1830,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Plan mode & thinking",
     "keywords": "plan mode thinking claude code cheatsheet feature activation usage --------- ------------ ------- plan mode or explore without modifying opusplan opus for planning, sonnet for execution verifi quick model selection dynamic model switching mid session",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#plan-mode--thinking",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1838,7 +1838,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "MCP servers",
     "keywords": "mcp servers claude code cheatsheet server purpose -------- --------- serena indexation + session memory + symbol search grepai semantic search + call graph analysis context7 library doc",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#mcp-servers",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1846,7 +1846,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Creating custom components",
     "keywords": "creating custom components claude code cheatsheet agent ( ) skill: user-invocable ( ) dynamic workflow ( ) ```js export const meta = { name: 'my-workflow', description: 'what this orchestrates', agent claude agents my agent md skill user invocable claude skills my command skill md dynamic workflow claude workflows name js hook macos linux sh windows ps1",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#creating-custom-components",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1854,7 +1854,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Anti-patterns",
     "keywords": "anti patterns claude code cheatsheet ❌ don't ✅ do ---------- ------- vague prompts specify file + line with @references accept without reading read every diff ignore warnings use at 70% s",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#anti-patterns",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1862,7 +1862,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Quick prompting formula",
     "keywords": "quick prompting formula claude code cheatsheet example: ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#quick-prompting-formula",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1870,7 +1870,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "CLI flags quick reference",
     "keywords": "cli flags quick reference claude code cheatsheet flag usage ------ ------- non-interactive mode (ci/cd) / continue last session / resume specific session resume a cloud session in your local terminal",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#cli-flags-quick-reference",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1878,7 +1878,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Key CLI subcommands",
     "keywords": "key cli subcommands claude code cheatsheet command description --------- ------------- delete all local claude code state for a project (transcripts, tasks, history, config entry). previews, co",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#key-cli-subcommands",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1886,7 +1886,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Debug commands",
     "keywords": "debug commands claude code cheatsheet ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#debug-commands",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1894,7 +1894,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "CI/CD mode (headless)",
     "keywords": "ci cd mode headless claude code cheatsheet ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#cicd-mode-headless",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1902,7 +1902,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Remote Control: Mobile access",
     "keywords": "remote control mobile access claude code cheatsheet available with pro, max, team, and enterprise subscriptions. team and enterprise owners must enable it first. api keys and third-party provider connec",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#remote-control-mobile-access",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1910,7 +1910,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Task management (v2.1.16+)",
     "keywords": "task management v2 1 16 claude code cheatsheet availability : newer models, including opus 5.5, sonnet 5.5, and fable, do not receive task-tracking tools by default. start with to opt in. selects l tasks api commands",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#task-management-v2116",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1918,7 +1918,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "The golden rules",
     "keywords": "the golden rules claude code cheatsheet 1. always review diffs before accepting 2. use before context gets critical ( 70%) 3. be specific in requests (what, where, how, verify) 4. plan mode",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#the-golden-rules",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1926,7 +1926,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Quick decision tree",
     "keywords": "quick decision tree claude code cheatsheet ---",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#quick-decision-tree",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1934,7 +1934,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Common issues quick fix",
     "keywords": "common issues quick fix claude code cheatsheet problem solution --------- ---------- \"command not found\" check path, reinstall: context too high ( 70%) immediately slow responses or mcp not working",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#common-issues-quick-fix",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1942,7 +1942,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Cost optimization",
     "keywords": "cost optimization claude code cheatsheet model use for cost ------- --------- ------ haiku simple fixes, reviews $ sonnet most development $$ opus architecture, complex bugs $$$ opusplan plan",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#cost-optimization",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1950,7 +1950,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Community tools",
     "keywords": "community tools claude code cheatsheet tool purpose install ------ --------- --------- ccusage cost tracking & reports rtk shell-output reduction (up to 90%) (or ) · site (author is a histo",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#community-tools",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1958,7 +1958,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Search tools quick reference",
     "keywords": "search tools quick reference claude code cheatsheet quick decision (5 seconds): exact text → exact name → /serena concept → grepai structure → ast-grep task tool command ------ ------ --------- \"find to",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#search-tools-quick-reference",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -1966,7 +1966,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
     "title": "Resources",
     "keywords": "resources claude code cheatsheet - official docs : docs.anthropic.com/claude-code - advanced guide : claudelog.com - tips & patterns - full guide : (this repo) - whitepapers (fr + en)",
     "category": "Core Guides",
-    "url": "/guide/cheatsheet/#resources",
+    "url": "/cheatsheet/",
     "source": "guide"
   },
   {
@@ -10451,10 +10451,6 @@ export const GUIDE_CONTENT_PAGES: Record<string, GuideContentPage> = {
   "/guide/architecture/": {
     "title": "Claude Code Architecture & Agent Loop",
     "description": "How Claude Code runs its model-tool loop, manages context, executes tools, and isolates subagents, with sourced architecture notes."
-  },
-  "/guide/cheatsheet/": {
-    "title": "Claude Code Cheatsheet",
-    "description": "One-page printable daily essentials for maximum Claude Code productivity"
   },
   "/guide/claude-code-guide-mcp/": {
     "title": "Claude Code Guide MCP Server: Install & Tools",
