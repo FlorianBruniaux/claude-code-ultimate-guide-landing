@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url'
 import { canonicalGuidePageUrl } from '../src/data/guide-seo-overrides.mjs'
 import { SUPERSEDED_GUIDE_PAGES } from '../src/data/superseded-guide-pages.mjs'
 import { createHeadingSlugger, stripCustomId } from './lib/heading-slug.mjs'
+import { stripMarkdown } from './lib/strip-markdown.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -78,21 +79,6 @@ function extractFrontmatterDescription(content) {
   const descriptionMatch = match[1].match(/^description:\s*(["'])(.+)\1\s*$/m) ?? match[1].match(/^description:\s*(.+?)\s*$/m)
   if (!descriptionMatch) return ''
   return (descriptionMatch[2] ?? descriptionMatch[1]).replace(/\\"/g, '"').trim()
-}
-
-/**
- * Strip markdown formatting from a text excerpt for keyword extraction.
- */
-function stripMarkdown(text) {
-  return text
-    .replace(/```[\s\S]*?```/g, ' ')   // fenced code blocks
-    .replace(/`[^`]+`/g, ' ')          // inline code
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')  // links → text
-    .replace(/!\[.*?\]\(.*?\)/g, ' ')  // images
-    .replace(/^#{1,6}\s+/gm, ' ')      // heading markers
-    .replace(/[|*_>#~]/g, ' ')         // markdown markers
-    .replace(/\s+/g, ' ')
-    .trim()
 }
 
 /**
