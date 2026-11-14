@@ -2,6 +2,7 @@
 import ChapterLabel from '../../components/global/ChapterLabel.astro'
 import Layout from '../../layouts/Layout.astro'
 import { EXAMPLES, type ExampleFile } from '../../data/examples-data'
+import { readExampleSource } from '../../utils/example-source'
 import { exampleLinks } from '../../utils/example-links'
 import { getSiteStats } from '../../utils/site-stats'
 import { examplePageSlug as slugify, getExamplePages } from '../../utils/example-pages'
@@ -409,6 +410,10 @@ const related = allExamples
   .slice(0, 4)
 
 const sourceLinks = exampleLinks(example.path)
+const source = readExampleSource(example.path)
+if (source.skipped && source.skipped !== 'directory') {
+  console.warn(`[examples] no source shown for ${example.path}: ${source.skipped}`)
+}
 const conceptLinks: Record<string, { href: string; label: string }> = {
   agents: { href: '/guide/ultimate-guide/04-agents/', label: 'Configure and use custom agents' },
   skills: { href: '/guide/skill-design-patterns/', label: 'Design reusable Claude Code skills' },
@@ -466,13 +471,13 @@ const jsonLd = [
       <div class="ex-actions">
         <a
           href={sourceLinks.github}
-          class="btn btn-primary"
+          class="btn btn-secondary"
           target="_blank"
           rel="noopener"
         >
           View on GitHub
         </a>
-        <a href="/examples/" class="btn btn-secondary">
+        <a href="/examples/" class="btn btn-quiet">
           ← All {stats.templateCount} templates
         </a>
       </div>
@@ -480,6 +485,16 @@ const jsonLd = [
   </header>
 
   <main class="ex-main">
+      {source.content !== undefined && (
+        <section class="ex-section band band-base" aria-labelledby="ex-source-title">
+         <div class="ex-container">
+          <h2 id="ex-source-title">Template content</h2>
+          <p class="source-path"><code class="path-inline">{example.path}</code></p>
+          <pre class="source-code" tabindex="0"><code>{source.content}</code></pre>
+         </div>
+        </section>
+      )}
+
       <section class="ex-section band band-base">
        <div class="ex-container">
         <ChapterLabel number="01" label="When to use" />
@@ -565,6 +580,28 @@ const jsonLd = [
 </Layout>
 
 <style>
+  .source-path { margin: 0 0 0.75rem; }
+  .source-code {
+    max-height: 36rem;
+    overflow: auto;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    white-space: pre;
+  }
+  /* The inline code chip must not paint each line of the block. */
+  .source-code code {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: inherit;
+  }
   .breadcrumb {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--border);
