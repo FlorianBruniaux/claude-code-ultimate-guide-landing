@@ -1,0 +1,35 @@
+docs/seo-positioning-2026-11-13/critique-hero-mots-cles.md
+  s_d23ac4a724f0e1::t_e07f17548a868f 1-108
+docs/seo-positioning-2026-11-13/outils/hero.cjs
+  s_dac71354a8000f::t_4f02ccd99aec7e 1-47
+src/components/landing/HeroBanner.astro
+  s_dac71354a8000f::t_b85e0da3bd8a21 20,27-37,168-211
+src/components/landing/hero-positioning.test.ts
+  s_dac71354a8000f::t_c4562ff30af302 1-57
+src/pages/index.astro
+  s_dac71354a8000f::t_7cab6fa4842e2c 15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8833a5c4d27693f47f22775c8e6bb27ff1a5497d",
+  "prompts": {},
+  "sessions": {
+    "s_d23ac4a724f0e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b000f05a-0a10-47b7-b7fc-5df92eed239c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_dac71354a8000f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1d3f0-76e9-7c41-b8c0-54171d26bd1d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
