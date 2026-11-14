@@ -1,0 +1,55 @@
+astro.config.mjs
+  s_ea01540c02a153::t_694db64e035ac5 185,202
+src/components/landing/HeroBanner.astro
+  s_ea01540c02a153::t_d5fa5bca1ed87b 23
+src/components/starlight/Header.astro
+  s_ea01540c02a153::t_e04223c277d3ad 50-57
+src/data/guide-content-entries.ts
+  s_dac71354a8000f::t_39d4b977c9687b 1745,1753,1761,1769,1777,1785,1793,1801,1809,1817,1825,1833,1841,1849,1857,1865,1873,1881,1889,1897,1905,1913,1921,1929,1937,1945,1953,1961,1969
+src/data/guide-navigation.mjs
+  s_ea01540c02a153::t_73fa79d100d732 87,248,251,254,257,260-261
+src/data/superseded-guide-pages.mjs
+  s_ea01540c02a153::t_e15959bf029da9 11-12
+src/layouts/Layout.astro
+  s_ea01540c02a153::t_51893d6cb660c3 100,104
+src/pages/learning/index.astro
+  s_ea01540c02a153::t_9e177c7507af02 173
+src/components/global/GuidePageFab.astro
+  s_0d70aa95f16cda::t_85a1b3c16147cc 143-162,207-211
+src/components/global/decisions-2026-11-14.test.ts
+  s_0d70aa95f16cda::t_fe95f8c7160a80 1-51
+src/styles/starlight-overrides.css
+  s_0d70aa95f16cda::t_676f4f5464b8b6 1509-1514
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "71079dc5d4a1c8b714caee835195a91d6b0f853a",
+  "prompts": {},
+  "sessions": {
+    "s_0d70aa95f16cda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae2a09ea-7519-4aaf-b2dd-1d28c0e08028",
+        "model": "unknown"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_dac71354a8000f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1d3f0-76e9-7c41-b8c0-54171d26bd1d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_ea01540c02a153": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c4ce-207f-7af3-85a0-fa977bcbbec6",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
