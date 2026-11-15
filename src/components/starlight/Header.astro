@@ -15,6 +15,11 @@ import GuidePageFab from '../global/GuidePageFab.astro'
 <FeedbackFab />
 
 <script>
+  import { initGuideVisuals } from '../../scripts/guide-visuals'
+
+  // Portfolio visuals in chapter 04 and Agent Harness Engineering (start still, play on request).
+  initGuideVisuals()
+
   const guideMenu = document.querySelector('starlight-menu-button')
   const guideMenuButton = guideMenu?.querySelector<HTMLButtonElement>(
     'button[aria-controls="starlight__sidebar"]'

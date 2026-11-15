@@ -166,6 +166,7 @@ export default defineConfig({
         './src/styles/components.css',
         './src/styles/starlight-overrides.css',
         './src/styles/portfolio-system.css',
+        './src/styles/guide-visuals.css',
       ],
       components: {
         Head: './src/components/starlight/Head.astro',

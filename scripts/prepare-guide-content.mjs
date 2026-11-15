@@ -22,6 +22,7 @@ import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
 import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
 import { rewriteSupersededGuideLinks } from '../src/data/superseded-guide-pages.mjs'
 import { addFrenchChapterLink, frenchChapterAnchors } from './lib/french-chapter-links.mjs'
+import { injectGuideVisuals } from './lib/guide-visuals.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
@@ -785,6 +786,8 @@ for (const { num, slug, title, label, desc, order, headingAnchor } of CHAPTERS) 
   let output = transformGuideMarkdown(`${fm}\n\n${chapterAnchor}${content.trimStart()}`, 'guide/ultimate-guide.md')
   output = normalizeLangs(output)
   output = renderMermaidBlocks(output, slug)
+  // Portfolio illustrations and animations (scripts/lib/guide-visuals.mjs).
+  output = injectGuideVisuals(`ultimate-guide/${slug}`, output)
 
   writeFileSync(resolve(OUT_ULTIMATE, `${slug}.md`), output, 'utf-8')
   stats.chapters++
@@ -809,6 +812,7 @@ for (const { file, content: rawContent, sourcePath, isWorkflow } of guideFileBuf
   rewritten = rewriteSupersededGuideLinks(rewritten)
   const fileSlug = file.replace(/\.md$/, '').replace(/\//g, '-')
   rewritten = renderMermaidBlocks(rewritten, fileSlug)
+  rewritten = injectGuideVisuals(file.replace(/\.md$/, ''), rewritten)
   const outPath = isWorkflow
     ? resolve(OUT_WORKFLOWS, file.replace('workflows/', ''))
     : resolve(OUT_GUIDE, file)

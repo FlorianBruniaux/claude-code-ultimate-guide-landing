@@ -1,0 +1,217 @@
+/* Portfolio visuals inside guide pages: Crew relay (chapter 04) and the
+   pencil workshop (Agent Harness Engineering). Markup: scripts/lib/guide-visuals.mjs.
+   Behaviour: src/scripts/guide-visuals.ts. */
+
+.guide-visual {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--action);
+  border-radius: var(--border-radius-lg);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.guide-visual figcaption {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.guide-visual figcaption p { margin: 0; }
+.guide-visual figcaption p + p,
+.guide-visual figcaption ol + p { margin-top: 0.75rem; }
+
+.guide-visual-note { color: var(--text-secondary); }
+
+.guide-visual-credit {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.guide-visual button:focus-visible,
+.guide-visual a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.guide-visual [hidden] { display: none !important; }
+
+/* The guide's Markdown list rules (.sl-markdown-content ol/li) must not number these lists twice. */
+.sl-markdown-content .guide-visual :is(ol, ul) {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sl-markdown-content .guide-visual li { margin: 0; max-width: none; }
+
+/* --- Crew relay ---------------------------------------------------------- */
+
+.crew-relay-stage { padding: 0.5rem 0.5rem 0; }
+
+.crew-relay-scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--text-primary);
+}
+
+.crew-relay-scene .sketch {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.crew-relay-scene .faint { opacity: 0.22; }
+
+.crew-relay-scene .plan-label {
+  fill: var(--text-secondary);
+  font: 700 11px var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.crew-relay-scene .brick-mini { fill: var(--action); opacity: 0.55; }
+
+.crew-relay-scene .role-name {
+  fill: var(--text-primary);
+  font: 700 22px var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.crew-relay-scene .role-label {
+  fill: var(--text-secondary);
+  font: 600 15px var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.crew-relay-scene .arm-outline { fill: none; stroke: #171715; stroke-width: 17; stroke-linecap: round; stroke-linejoin: round; }
+.crew-relay-scene .arm { fill: none; stroke: #44433f; stroke-width: 11; stroke-linecap: round; stroke-linejoin: round; }
+.crew-relay-scene .arm-outline.mini-arm { stroke-width: 12; }
+.crew-relay-scene .arm.mini-arm { stroke-width: 7; }
+.crew-relay-scene .elbow circle:first-child { fill: #ded8cb; stroke: #24231f; stroke-width: 2; }
+.crew-relay-scene .elbow circle:last-child { fill: #5c5953; }
+.crew-relay-scene .grip ellipse { fill: #343330; stroke: #151513; stroke-width: 2; }
+.crew-relay-scene .grip path { fill: none; stroke: #77736b; stroke-width: 1.2; stroke-linecap: round; }
+
+.crew-relay-scene .brick { fill: #d9d2c4; stroke: #2f2c27; stroke-width: 2; stroke-linejoin: round; }
+.crew-relay-scene .brick-done { fill: #f97316; stroke: #2f2c27; stroke-width: 2; stroke-linejoin: round; }
+.crew-relay-scene .brick-texture { fill: none; stroke: #6f685d; stroke-width: 1.3; stroke-linecap: round; opacity: 0.6; }
+.crew-relay-scene .result-line { fill: none; stroke: #1f1d1a; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.crew-relay-scene .check circle { fill: #fff7ed; stroke: #37332b; stroke-width: 1.5; }
+.crew-relay-scene .check path { fill: none; stroke: #1f1d1a; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.crew-relay-scene .accent-stroke { fill: none; stroke: var(--action); stroke-width: 2; stroke-linecap: round; }
+
+.crew-relay-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.crew-relay-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.crew-relay-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.crew-relay-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.crew-relay-step {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  height: 100%;
+  padding: 0.55rem 0.4rem 0.5rem;
+  border: 0;
+  border-top: 2px solid var(--border);
+  background: none;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.crew-relay-step span {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.crew-relay-step[aria-current='step'] {
+  border-top-color: var(--action);
+  color: var(--text-primary);
+}
+
+.crew-relay-step:disabled { cursor: default; }
+
+@media (max-width: 40rem) {
+  .crew-relay-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crew-relay-scene .role-name { font-size: 30px; }
+  .crew-relay-scene .role-label { font-size: 20px; }
+}
+
+/* --- Pencil workshop ------------------------------------------------------ */
+
+.harness-sketch-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f8f5ed;
+}
+
+.harness-sketch-frame iframe {
+  display: block;
+  width: 100%;
+  height: 1000px;
+  border: 0;
+  background: #f8f5ed;
+}
+
+.harness-loop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.harness-loop li { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+.harness-loop li span { color: var(--accent); }
+.harness-loop li + li::before { content: '→'; margin: 0 0.55rem; color: var(--text-secondary); }
+
+.harness-sketch-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.harness-sketch-meta {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}

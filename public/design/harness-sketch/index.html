@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Inside the agent harness · Animated sketchbook</title>
+  <link rel="stylesheet" href="sketch.css">
+</head>
+<body>
+<header><a href="/guide/agent-harness/">CC<span>.</span> <small>SKETCHBOOK</small></a><span class="edition">MOTION STUDY / 09</span><button id="overview" type="button">View the full cutaway ↗</button></header>
+<main>
+  <div class="intro"><div><p class="eyebrow">A SKETCH TO EXPLAIN THE SYSTEM</p><h1>Inside the agent harness<span>.</span></h1><p class="intro-definition">The harness connects context, tools and checks around the model.</p></div><p class="intro-note">A goal. Actions.<br>Results to verify.</p></div>
+  <section class="stage" aria-label="Animated workshop cutaway illustrating the agent harness">
+    <div class="sheet-mark">FIG. 01 <span>CUTAWAY VIEW</span></div>
+    <svg id="scene" viewBox="0 0 1800 900" role="img" aria-labelledby="scene-title scene-description">
+      <title id="scene-title">The harness around the model</title>
+      <desc id="scene-description">A pencil-drawn workshop: a human defines a goal at his desk, context is prepared, the model proposes an action, and the harness checks permissions and calls a tool. Observations return to the model even after successful actions. A failed test calls for diagnosis: fix within the agreed limits or hand off. Checks are tied to V1, then V2. The result is submitted for review; the human stays in control.</desc>
+      <defs><mask id="pencil-mask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="1840" height="940"><rect width="1800" height="900" fill="black"/><g id="reveal-strokes" fill="none" stroke="white" stroke-linecap="round"/></mask></defs>
+      <image id="workshop" href="assets/workshop.webp" width="1800" height="900" mask="url(#pencil-mask)"/>
+      <g id="construction" fill="none" stroke="#696156" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+      <g id="notes" font-family="Plex, sans-serif" font-size="19" fill="#3d3933">
+        <g data-in="3" data-out="10" transform="translate(95 285)"><text class="note-title">01 / THE BRIEF</text><text y="31">An outcome and acceptance criteria.</text><path d="M 70 44 Q 60 65 77 88" class="leader"/></g>
+        <g data-in="10" data-out="17" transform="translate(350 150)"><text class="note-title">02 / CONTEXT</text><text y="31">The right context, when needed.</text><path d="M 80 45 L 84 75" class="leader"/></g>
+        <g data-in="17" data-out="22" transform="translate(750 140)"><text class="note-title">03 / THE MODEL</text><text y="31">Propose the next action.</text></g>
+        <g data-in="22" data-out="27" transform="translate(1090 325)"><text class="note-title">04 / TOOLS</text><text y="31">Authorized action → execution</text></g>
+        <g id="observation-note" data-in="27.6" data-out="30.5" transform="translate(1090 315)"><text class="note-title">ACTION COMPLETED ✓</text><text y="31">The result returns to the model.</text></g>
+        <g id="decision-note" data-in="32" data-out="38" transform="translate(1260 350)"><text class="note-title">V1 / TEST FAILED</text><text y="30">Inspect the failure, then decide.</text><path d="M 8 42 L 8 89 M 8 60 L 24 60 M 8 88 L 24 88" class="leader"/><text x="32" y="65" font-size="16">Progress + budget → fix</text><text x="32" y="93" font-size="16">Otherwise → hand off</text></g>
+        <g id="recheck-note" data-in="39.8" data-out="41.5" transform="translate(1410 350)"><text class="note-title">V2 / CHECKING AGAIN</text><text y="30">Check the revised version.</text></g>
+        <g id="review-note" data-in="41.5" data-out="44" transform="translate(1410 350)"><text class="note-title">V2 / CHECKS PASSED ✓</text><text y="30">Ready for review.</text></g>
+        <g id="pilot-note" data-in="46" data-out="50" transform="translate(75 285)"><text class="note-title" font-size="25">YOU STAY IN CONTROL.</text><text y="36">Goal · limits · decisions</text></g>
+      </g>
+      <g id="pencil" pointer-events="none" opacity="0"><path d="M 0 0 L 8 -27 L 15 -24 L 6 2 Z" fill="#f57822" stroke="#473e32" stroke-width="1.5"/><path d="M 0 0 L -2 8 L 6 2" fill="#40372e"/></g>
+    </svg>
+    <div id="loading">Preparing the sketchbook…</div>
+    <div class="stage-bottom"><span id="drawing-status">DRAWING THE WORKSHOP</span><span>BLUE WORK PACKAGE / PENCIL WORKSHOP</span></div>
+  </section>
+  <section class="narration" aria-label="Current step explained"><span id="chapter-number">01</span><div><h2 id="chapter-title">Define the outcome.</h2><p id="chapter-copy">You set the goal, the expected result and the criteria used to check it.</p></div><span id="time" aria-hidden="true">00:00 / 00:49</span></section>
+  <div class="transport"><button id="play" type="button">Pause</button><button id="replay" type="button" aria-label="Replay from the start">↺ Replay</button><label class="timeline-label" for="timeline">Explore the sketch</label><input id="timeline" type="range" min="0" max="49" step="0.05" value="0" aria-label="Animation position in seconds"></div>
+  <nav id="chapters" aria-label="Steps in the agent harness"></nav>
+  <p id="motion-note" hidden>Reduced motion: static view. You can still explore the steps above.</p>
+  <details><summary>Read the full explanation</summary><ol id="transcript"></ol><p>If execution is blocked, the human handoff includes previous attempts, the blocker and the decision needed. A test that did not run has an unknown result; it is not a failed test.</p><p>This cutaway is a teaching metaphor. The Crew represent roles: a harness can run with a single agent. The pipe represents returning observations, not retraining the model. Tools, checks and human approvals depend on the system. Observations inform the next decision; a passing test alone does not establish that the whole request has been fulfilled.</p><p>Further reading: <a href="https://www.florian.bruniaux.com/guides/from-code-to-merge/">From code to merge</a> · <a href="https://www.florian.bruniaux.com/blog/articles/claude-code-under-the-hood/">The agent loop</a> · <a href="https://www.florian.bruniaux.com/blog/articles/your-gate-is-decorative/">What a check establishes</a> · <a href="https://www.florian.bruniaux.com/blog/articles/lean-ai-work-that-reaches-users/">Following work through to use</a></p></details>
+  <footer>EXPLORATION · STUDY 09 <span>Original illustration generated from the brandbook reference. Local animation, no sound.</span></footer>
+</main>
+<script src="l10n.js" defer></script>
+<script src="sketch.js" defer></script>
+<script src="embed.js" defer></script>
+</body></html>
