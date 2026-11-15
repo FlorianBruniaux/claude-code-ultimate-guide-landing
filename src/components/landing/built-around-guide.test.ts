@@ -12,8 +12,9 @@ test('community cards expose their complete surface as one accessible link', () 
   assert.equal(communitySource.match(/class="community-card brand-card brand-interactive-card"/g)?.length, 2)
 })
 
-test('the homepage keeps seven sections in the agreed order', () => {
+test('the homepage keeps seven sections in the agreed order, then the Crew scene', () => {
   // Sections sit inside the .home-rail wrapper; any indented component tag counts.
+  // CrewRunForIt is a closing wink behind a button (15/11/2026), not an eighth section.
   const sections = [...homepageSource.matchAll(/^[ \t]+<([A-Z]\w+)/gm)].map((match) => match[1])
-  assert.deepEqual(sections, ['HeroBanner', 'StartHere', 'Essentials', 'McpProof', 'LatestContent', 'BuiltAroundGuide', 'ConsultingCta'])
+  assert.deepEqual(sections, ['HeroBanner', 'StartHere', 'Essentials', 'McpProof', 'LatestContent', 'BuiltAroundGuide', 'ConsultingCta', 'CrewRunForIt'])
 })

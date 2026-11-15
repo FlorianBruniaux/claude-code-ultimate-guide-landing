@@ -1,0 +1,225 @@
+---
+/**
+ * "Run for it!" from the portfolio Crew engine, at the end of the homepage.
+ * Nothing loads before the visitor wakes the agents. Drawing: src/scripts/crew-run.mjs.
+ */
+---
+<section class="crew-run" aria-labelledby="crew-run-title" data-subagent-src="/images/crew/subagents-512.webp" data-leader-src="/images/crew/leader-640.webp" data-pagefind-ignore hidden>
+  <div class="container">
+    <div class="crew-run-toolbar">
+      <p id="crew-run-title" class="crew-run-title">Run for it!</p>
+      <button type="button" class="btn btn-secondary crew-run-toggle" data-run-toggle aria-expanded="false" aria-controls="crew-run-panel">
+        <svg width="24" height="22" viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="10" height="9" rx="3"/><rect x="16" y="5" width="10" height="9" rx="3"/><path d="M12 9h4M10 18q4 4 8 0"/><circle cx="7" cy="9.5" r="1" fill="currentColor"/><circle cx="21" cy="9.5" r="1" fill="currentColor"/></svg>
+        <span data-run-toggle-label>Wake the agents</span>
+      </button>
+    </div>
+    <div id="crew-run-panel" class="crew-run-panel" hidden>
+      <div class="crew-run-viewport" aria-hidden="true"><div class="crew-run-ground"></div></div>
+      <div class="crew-run-bar">
+        <p class="crew-run-caption">The Crew cracks the whip, and the three Mini Crews scatter off the page.</p>
+        <div class="crew-run-actions">
+          <button type="button" class="btn btn-secondary" data-run-pause>Pause</button>
+          <button type="button" class="btn btn-secondary" data-run-replay>Replay</button>
+        </div>
+      </div>
+      <p class="crew-run-note" data-run-motion-note hidden>Reduced motion is on, so the scene stays on the whip crack.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { RUN_DURATION, RUN_STILL, createCrewRun } from '../../scripts/crew-run.mjs'
+
+  const host = document.querySelector<HTMLElement>('.crew-run')
+  if (host) {
+    const toggle = host.querySelector<HTMLButtonElement>('[data-run-toggle]')!
+    const label = host.querySelector<HTMLElement>('[data-run-toggle-label]')!
+    const panel = host.querySelector<HTMLElement>('#crew-run-panel')!
+    const pause = host.querySelector<HTMLButtonElement>('[data-run-pause]')!
+    const replay = host.querySelector<HTMLButtonElement>('[data-run-replay]')!
+    const note = host.querySelector<HTMLElement>('[data-run-motion-note]')!
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    let scene: ReturnType<typeof createCrewRun> | undefined
+    let time = 0
+    let playing = false
+    let visible = false
+    let raf = 0
+    let last = 0
+
+    const stopClock = () => {
+      cancelAnimationFrame(raf)
+      raf = 0
+      last = 0
+    }
+    const sync = () => {
+      const text = playing ? 'Pause' : time >= RUN_DURATION ? 'Play again' : 'Play'
+      if (pause.textContent !== text) pause.textContent = text
+      host.dataset.time = time.toFixed(2)
+      host.dataset.playing = String(playing)
+    }
+    const schedule = () => {
+      if (!raf && scene && playing && visible && !document.hidden && !reduced.matches) raf = requestAnimationFrame(tick)
+    }
+    function tick(now: number) {
+      raf = 0
+      if (!scene || !playing || !visible || document.hidden || reduced.matches) {
+        last = 0
+        return
+      }
+      if (last) time = Math.min(RUN_DURATION, time + Math.min((now - last) / 1000, 0.05))
+      last = now
+      if (time >= RUN_DURATION) playing = false
+      scene.render(time)
+      sync()
+      schedule()
+    }
+    const start = () => {
+      stopClock()
+      time = 0
+      playing = !reduced.matches
+      scene?.render(time)
+      sync()
+      schedule()
+    }
+    const motionPreference = () => {
+      pause.hidden = replay.hidden = reduced.matches
+      note.hidden = !reduced.matches
+      if (reduced.matches) {
+        playing = false
+        stopClock()
+        time = RUN_STILL
+        scene?.render(time)
+        sync()
+      }
+    }
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open
+      toggle.setAttribute('aria-expanded', String(open))
+      label.textContent = open ? 'Let them rest' : 'Wake the agents'
+      if (open) {
+        scene ??= createCrewRun(host)
+        motionPreference()
+        if (!reduced.matches) start()
+      } else {
+        playing = false
+        stopClock()
+        scene?.dispose()
+        scene = undefined
+      }
+    }
+
+    toggle.addEventListener('click', () => setOpen(panel.hidden))
+    host.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false)
+        toggle.focus()
+      }
+    })
+    pause.addEventListener('click', () => {
+      if (playing) {
+        playing = false
+        stopClock()
+        sync()
+      } else if (time >= RUN_DURATION) start()
+      else {
+        playing = true
+        sync()
+        schedule()
+      }
+    })
+    replay.addEventListener('click', start)
+    reduced.addEventListener('change', () => {
+      if (!scene) return
+      motionPreference()
+      if (!reduced.matches) start()
+    })
+    document.addEventListener('visibilitychange', () => {
+      stopClock()
+      schedule()
+    })
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting
+      stopClock()
+      schedule()
+    }).observe(host)
+    host.hidden = false
+  }
+</script>
+
+<style is:global>
+  .crew-run {
+    padding: var(--space-xl) 0 var(--space-lg);
+    border-top: 1px solid var(--border);
+    color: var(--text-primary);
+  }
+  .crew-run[hidden],
+  .crew-run [hidden] { display: none !important; }
+  .crew-run-toolbar,
+  .crew-run-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+  }
+  .crew-run-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .crew-run-toggle { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .crew-run-viewport {
+    position: relative;
+    height: 96px;
+    margin-top: 0.75rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .crew-run-ground {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 4px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  }
+  .crew-run .crew {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 28px;
+    height: 30px;
+    pointer-events: none;
+    transform-origin: bottom center;
+  }
+  .crew-run .crew[data-role='leader'] { width: 62px; height: 65px; }
+  .crew-run .crew svg { width: 100%; height: 100%; overflow: visible; }
+  .crew-run .crew .shadow {
+    position: absolute;
+    bottom: -2px;
+    left: 15%;
+    width: 70%;
+    height: 4px;
+    border-radius: 50%;
+    background: #000;
+    opacity: 0.13;
+    filter: blur(2px);
+  }
+  .crew-run-caption,
+  .crew-run-note {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  .crew-run-note { margin-top: 0.5rem; }
+  .crew-run-actions { display: flex; gap: 0.5rem; }
+  @media (max-width: 640px) {
+    .crew-run-viewport { height: 85px; }
+  }
+  @media print {
+    .crew-run { display: none !important; }
+  }
+</style>
