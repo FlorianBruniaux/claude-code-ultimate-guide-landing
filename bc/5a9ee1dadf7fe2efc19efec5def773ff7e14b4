@@ -1,0 +1,23 @@
+src/data/releases.ts
+  s_18f46529408159::t_5ffd922afddc90 21,24-31,36-68,93,107,118
+src/data/seo-editorial-contract.mjs
+  s_18f46529408159::t_d69b800356edb0 106
+src/data/seo-editorial-contract.test.ts
+  s_18f46529408159::t_8da9705af713f2 89-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bc5a9ee1dadf7fe2efc19efec5def773ff7e14b4",
+  "prompts": {},
+  "sessions": {
+    "s_18f46529408159": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1ea43-c588-7913-a019-d669904f7d29",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
