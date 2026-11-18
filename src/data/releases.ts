@@ -18,12 +18,52 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.322',
+    version: 'v2.1.326',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "⭐ Code Mode can run alongside agent teams",
+      "Startup warns about malformed tool rules, and /status reports when the provider or environment disables features",
+      "Fixed missing permission-denial telemetry for managed PreToolUse hooks and tightened sandbox checks",
+      "Fixed background sessions losing their configured gateway and resumed sessions losing conversation history",
+    ],
+    breaking: [
+      "More shell and PowerShell calls can require approval or be denied, including some calls in bypass permissions mode. A hook that returns decision: block can now block in more cases.",
+      "Remote Control now requires the proxy to accept CONNECT tunnels. HTTP hooks ignore configured Content-Length and Transfer-Encoding headers.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.325',
+    date: "Nov 13, 2026",
+    highlights: [
+      "Fixed a security issue in zstd response decoding",
+      "Fixed subagents using the wrong model in plan mode and compaction failures on many third-party gateways and Foundry",
+      "Fixed background sessions picking up credentials from the service's shell and resumed sessions losing recent turns after an abrupt exit",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.323',
+    date: "Nov 12, 2026",
+    highlights: [
+      "⭐ Introduced experimental, opt-in Code Mode, where Claude calls tools from JavaScript",
+      "Plugins can declare a Claude Code version range, and claude plugin validate now type-checks TypeScript hooks",
+      "Added a 30-second progress heartbeat during long hooks in claude -p and SDK sessions, and DOCX support for artifact assets",
+    ],
+    breaking: [
+      "Unrecognized model IDs now default to a 1M context window. Set CLAUDE_CODE_DISABLE_1M_CONTEXT=1 to keep the 200K default when a smaller third-party model needs it.",
+      "Removed the v1 MCP client. MCP_SDK_GENERATION=v1 now selects v2 compatibility mode. Completing MCP sign-in through a tool requires confirmation, including in auto and bypass modes.",
+      "Outside auto and bypass modes, /security-review asks before running. The Bash sandbox blocks worktree creation, moves and removal on macOS and Linux.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.322',
+    date: "Nov 10, 2026",
     highlights: [
       "Added fast mode on Vertex AI in the global, us and eu regions, falling back to standard speed if Vertex refuses it",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -50,7 +90,7 @@ export const releases: Release[] = [
       "Auto mode with telemetry or feature flags off, including behind LLM gateways, no longer falls back to the built-in classifier: calls the server can't check are asked about or denied; set CLAUDE_CODE_AUTO_MODE_SERVER=0 to keep the built-in classifier (Bedrock, Vertex and Foundry are unchanged).",
       "Self-paced /loop ends when a turn finishes without rescheduling instead of scheduling a fallback wakeup; CLAUDE_CODE_LOOP_KEEPALIVE=1 keeps the old behavior. shortcuts_list and shortcuts_execute were removed from the built-in Claude in Chrome tools.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.318',
@@ -64,7 +104,7 @@ export const releases: Release[] = [
     breaking: [
       "Claude Code no longer installs or updates the IDE extension when started in an IDE terminal; use /ide from an outside terminal or the editor's extensions view. The 2.1.288 fix that kept earlier thinking when resuming a conversation started on 2.1.286 or earlier was removed, so that thinking can be dropped.",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.317',
@@ -75,7 +115,7 @@ export const releases: Release[] = [
       "Changed subagents and teammates on a different model from the main conversation to use that model's saved effort level or its default, and SendMessage to a running background agent to arrive earlier by moving its running command to the background",
       "Removed the Read tool's \"file unchanged since your last Read\" stub: reading an unchanged file again returns its content",
     ],
-    initiallyVisible: true,
+    initiallyVisible: false,
   },
   {
     version: 'v2.1.316',
