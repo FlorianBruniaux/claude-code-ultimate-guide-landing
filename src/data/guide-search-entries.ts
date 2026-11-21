@@ -932,6 +932,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-agent-harness-test-feedback",
+    "title": "Agent Harness Test Feedback",
+    "keywords": "agent harness test feedback guide core agent harness md#keep test feedback compact and recoverable",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#keep-test-feedback-compact-and-recoverable",
+    "source": "guide"
+  },
+  {
+    "id": "guide-agent-harness-maintenance-ci",
+    "title": "Agent Harness Maintenance CI",
+    "keywords": "agent harness maintenance ci guide core agent harness md#own harness maintenance and the feedback path",
+    "category": "Guide",
+    "url": "/guide/agent-harness/#own-harness-maintenance-and-the-ci-feedback-path",
+    "source": "guide"
+  },
+  {
     "id": "guide-agent-harness-observability",
     "title": "Agent Harness Observability",
     "keywords": "agent harness observability guide core agent harness md#6 observability stack",
@@ -2553,6 +2569,22 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "contribution authority case guide roles adoption approaches md#open contribution without granting unrestricted delivery",
     "category": "Guide",
     "url": "/guide/adoption-approaches/#open-contribution-without-granting-unrestricted-delivery",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-tool-experiment-ownership",
+    "title": "Team Tool Experiment Ownership",
+    "keywords": "team tool experiment ownership guide roles adoption approaches md#team tools need owner after the experiment",
+    "category": "Guide",
+    "url": "/guide/adoption-approaches/#team-tools-need-an-owner-after-the-experiment",
+    "source": "guide"
+  },
+  {
+    "id": "guide-company-brain-code-data",
+    "title": "Company Brain Code Data",
+    "keywords": "company brain code data guide workflows support csm agent md#connect documentation code and live data without merging their authority",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/support-csm-agent/#connect-documentation-code-and-live-data-without-merging-their-authority",
     "source": "guide"
   },
   {
@@ -6300,6 +6332,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-spec-prototype-business-trial-day7",
+    "title": "Spec Prototype Business Trial Day7",
+    "keywords": "spec prototype business trial day7 guide workflows spec first md#from idea prototype business trial and day review",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/spec-first/#from-idea-to-prototype-business-trial-and-day-7-review",
+    "source": "guide"
+  },
+  {
     "id": "guide-spec-modular-design",
     "title": "Spec Modular Design",
     "keywords": "spec modular design guide workflows spec first md#modular spec design",
@@ -7849,6 +7889,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "team metrics guide guide ops team metrics",
     "category": "Guide",
     "url": "/guide/team-metrics/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-team-metrics-day7-review",
+    "title": "Team Metrics Day7 Review",
+    "keywords": "team metrics day7 review guide ops team metrics md#day review after business trial",
+    "category": "Guide",
+    "url": "/guide/team-metrics/#day-7-review-after-a-business-trial",
     "source": "guide"
   },
   {
