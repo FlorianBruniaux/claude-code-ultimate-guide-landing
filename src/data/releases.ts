@@ -18,8 +18,62 @@ export interface BreakingChange {
 
 export const releases: Release[] = [
   {
-    version: 'v2.1.326',
+    version: 'v2.1.330',
     date: LATEST_CLAUDE_CODE_RELEASE_DATE,
+    highlights: [
+      "⭐ After claude auth login, organizations managed in Anthropic's Enterprise Admin Console apply their settings and their cloud provider or gateway",
+      "Added easel, a built-in mod that draws charts on request and under MCP metrics results (automatic charts can be turned off in /config)",
+      "Recurring scheduled tasks and /loop run up to 30 days instead of 7 while their session keeps running",
+      "Fixed ExitWorktree deleting a worktree another running session was using, and restored the max_tokens automatic retry removed in 2.1.329",
+    ],
+    breaking: [
+      "More rm commands aimed at the root, home, a top-level folder or the working folder ask for approval, and are refused where nobody can answer. deniedMcpServers name entries hide only the named claude.ai connector; deny its exact URL to block every connector at that URL.",
+    ],
+    latest: true,
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.329',
+    date: "Nov 19, 2026",
+    highlights: [
+      "The trust dialog says where a folder's hooks are declared, and non-interactive hosts warn when managed hooks fail to load",
+      "/tasks lists scheduled tasks, /loop wakeups, the goal and forks; Code Mode can run with OpenTelemetry events and metrics enabled",
+      "/code-review with no target reviews the whole branch against the default branch",
+    ],
+    breaking: [
+      "In Code Mode, a PreToolUse hook that errors no longer refuses a script's tool call; set \"onFailure\": \"block\" on a hook that must refuse. In new signed-in sessions, most scheduled tasks saved by earlier versions need scheduling again.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.328',
+    date: "Nov 18, 2026",
+    highlights: [
+      "⭐ Auto mode for Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and the Claude apps gateway",
+      "mcp_tool hooks accept \"onFailure\": \"block\", and /status and claude doctor flag an OpenTelemetry exporter with no endpoint",
+      "/code-review reports only bugs and CLAUDE.md violations, labelled Important, Pre-existing or Nit; /simplify handles cleanups",
+    ],
+    breaking: [
+      "Managed PostToolUse hooks no longer fire for calls refused before they ran, and Code Mode no longer runs UserPromptSubmit hooks on scripts' output (use PostToolUse with updatedToolOutput). A command that a PermissionRequest hook rewrites to a sandbox-excluded command runs outside the sandbox.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.327',
+    date: "Nov 17, 2026",
+    highlights: [
+      "claude mcp add-json <name> - reads the server JSON from stdin so tokens stay off the command line",
+      "/status lists broken agent, skill, command and output style files, an unavailable sandbox, ignored permission settings and hook matchers that never match",
+      "Claude is told not to commit files that likely contain secrets, and Claude in Chrome refuses to upload some credential files",
+    ],
+    breaking: [
+      "permissions.blockReadsOutsideWorkingDirectories asks about or refuses more Bash commands, path checks refuse some symbolic links, and some paths no longer count as inside a working directory. Auto mode ignores more allow rules that run any package, such as Bash(pnpm dlx *). ExitWorktree asks before removing a worktree that may hold unsaved work.",
+    ],
+    initiallyVisible: true,
+  },
+  {
+    version: 'v2.1.326',
+    date: "Nov 16, 2026",
     highlights: [
       "⭐ Code Mode can run alongside agent teams",
       "Startup warns about malformed tool rules, and /status reports when the provider or environment disables features",
@@ -30,7 +84,6 @@ export const releases: Release[] = [
       "More shell and PowerShell calls can require approval or be denied, including some calls in bypass permissions mode. A hook that returns decision: block can now block in more cases.",
       "Remote Control now requires the proxy to accept CONNECT tunnels. HTTP hooks ignore configured Content-Length and Transfer-Encoding headers.",
     ],
-    latest: true,
     initiallyVisible: true,
   },
   {
@@ -41,7 +94,6 @@ export const releases: Release[] = [
       "Fixed subagents using the wrong model in plan mode and compaction failures on many third-party gateways and Foundry",
       "Fixed background sessions picking up credentials from the service's shell and resumed sessions losing recent turns after an abrupt exit",
     ],
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.323',
@@ -56,7 +108,6 @@ export const releases: Release[] = [
       "Removed the v1 MCP client. MCP_SDK_GENERATION=v1 now selects v2 compatibility mode. Completing MCP sign-in through a tool requires confirmation, including in auto and bypass modes.",
       "Outside auto and bypass modes, /security-review asks before running. The Bash sandbox blocks worktree creation, moves and removal on macOS and Linux.",
     ],
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.322',
@@ -64,7 +115,6 @@ export const releases: Release[] = [
     highlights: [
       "Added fast mode on Vertex AI in the global, us and eu regions, falling back to standard speed if Vertex refuses it",
     ],
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.321',
@@ -75,7 +125,6 @@ export const releases: Release[] = [
       "Fixed MCP OAuth requests sending secrets such as refresh tokens to another host on a redirect, a read-only Bash command running outside the sandbox without a prompt, Bash permission checks judging a write from the wrong folder, and deny rules and protected-file prompts missing the file a cp or mv into a directory writes",
       "Fixed Edit and NotebookEdit on network paths (UNC shares, WSL folders, /net mounts) changing the wrong match, replacing a whole file on an empty old_string or overwriting a notebook's first cell; fast mode now tries standard speed on the same model first when fast serving is rate-limited or failing",
     ],
-    initiallyVisible: true,
   },
   {
     version: 'v2.1.319',
