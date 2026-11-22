@@ -30,6 +30,13 @@ export interface RssEntry {
 // This file is for guide-side news only: new pages, cards, whitepapers, sections.
 export const rssEntries: RssEntry[] = [
   {
+    type: 'guide_release',
+    title: 'Claude Code Ultimate Guide v3.46.0: reviewing agent-written changes',
+    date: 'Nov 22, 2026',
+    description: "A new page keeps an agent's rationale beside each hunk, copy-paste commands stop naming unpublished packages or piping moving branches into bash, practitioner cases and a day-7 review join the workflows, and Claude Code tracking reaches v2.1.330.",
+    link: 'https://github.com/FlorianBruniaux/claude-code-ultimate-guide/releases/tag/v3.46.0',
+  },
+  {
     type: 'new_section',
     title: 'Fake agent-tool repositories: the FakeGit lures',
     date: 'Nov 6, 2026',
