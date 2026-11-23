@@ -18,6 +18,10 @@ import { authorProfile } from '../../data/author-profile'
       <a class="author-name" href={authorProfile.aboutUrl} target="_blank" rel="noopener noreferrer">{authorProfile.name}</a>
       <span class="author-line">{authorProfile.role}</span>
     </p>
+    <a class="author-ambassador" href={authorProfile.ambassadorUrl} target="_blank" rel="noopener noreferrer" translate="no">
+      <span>{authorProfile.ambassadorLabel}</span><span aria-hidden="true">↗</span>
+    </a>
+    <p class="author-volunteer">Volunteer community role</p>
     <p class="author-meta">
       <span class="author-line">{authorProfile.experienceLabel}</span>
       <span class="author-links">
@@ -32,7 +36,7 @@ import { authorProfile } from '../../data/author-profile'
 <style>
 .author-profile {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   margin-top: var(--space-md);
   padding: 0.7rem 0;
@@ -94,7 +98,7 @@ import { authorProfile } from '../../data/author-profile'
 .author-profile a {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  min-height: 44px;
   color: var(--accent);
   text-decoration: none;
   text-underline-offset: 2px;
@@ -104,6 +108,20 @@ import { authorProfile } from '../../data/author-profile'
   color: var(--accent-hover);
   text-decoration: underline;
 }
+
+.author-volunteer { margin: 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
+
+.author-profile .author-ambassador {
+  gap: 0.4rem;
+  max-width: 100%;
+  margin-block: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  border-left: 2px solid var(--accent);
+  font: 600 0.75rem/1.5 var(--font-mono);
+  text-decoration: underline;
+}
+.author-ambassador > span:last-child { flex-shrink: 0; }
+.author-profile a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 440px) {
   .author-profile {

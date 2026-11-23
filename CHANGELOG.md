@@ -4,6 +4,10 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Changed
+
+- Move the official Claude Community Ambassador mention into the compact author profile and align the guide hero layout with Cowork.
+
 - Add The minimal harness guided exercise to the Whitepapers page.
 - Add contextual links from Context Engineering Tools and AI FinOps to team training and budget audit, with a distinct campaign placement for each.
 
