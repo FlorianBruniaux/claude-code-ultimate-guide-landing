@@ -248,6 +248,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Added
 
+- Visible Official Claude Community Ambassador · Paris link below the homepage title on desktop and mobile, synchronized with the guide README.
+
 - **Monitor and safe event delegation synchronized from the guide** (`src/data/guide-search-entries.ts`, `src/data/guide-content-entries.ts`, `src/data/rss-entries.ts`, `src/components/global/AnnouncementBanner.astro`, `src/pages/sitemap/index.astro`): indexed the new Monitor/WebSocket workflow in Cmd+K and full-content search, added its guide-reader route to the sitemap and RSS feed, and surfaced it in the dismissible announcement banner. The landing summary preserves the guide's security boundary: inbound events are data, Codex starts read-only, and write access requires an explicit gate plus an isolated worktree.
 - **Supply-chain triage example indexed** (`src/data/examples-data.ts`): synchronized the landing catalogue with the guide's published `supply-chain-triage.py` example and replaced the raw Python docstring delimiter with a concise public description.
 - **AgentSec security feed integration** (`src/data/agentsec-security-feed.v1.json`, `src/data/agentsec-security-feed.ts`, `src/pages/security/index.astro`): the security page now reads AgentSec and threat-database versions, dates, six headline metrics, detector coverage, and reviewed incident fiches from one versioned public artifact. Added the **Verify Your Repository with AgentSec** block, source links, fail-closed feed parsing, and CI checks that reject drift from the guide mirror.

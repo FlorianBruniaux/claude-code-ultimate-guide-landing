@@ -17,6 +17,8 @@ export function getYearsOfExperience(asOf: Date = new Date()): number {
 
 export const authorProfile = {
   name: 'Florian BRUNIAUX',
+  ambassadorLabel: 'Official Claude Community Ambassador · Paris',
+  ambassadorUrl: 'https://clauders.com/leaders/florian-bruniaux/',
   role: 'Hands-on Fractional Chief AI Officer (CAIO)',
   aboutUrl: 'https://www.florian.bruniaux.com/about/',
   blogUrl: 'https://www.florian.bruniaux.com/blog/',

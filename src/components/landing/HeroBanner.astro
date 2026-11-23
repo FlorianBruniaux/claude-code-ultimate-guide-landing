@@ -1,5 +1,6 @@
 ---
 import AuthorProfile from './AuthorProfile.astro'
+import { authorProfile } from '../../data/author-profile'
 import { getSiteStats } from '../../utils/site-stats'
 import { HOMEPAGE_METRICS } from '../../data/homepage-content'
 
@@ -14,6 +15,14 @@ const stats = await getSiteStats()
         <img src="/claude-logo-orange.svg" alt="" class="hero-logo" width="50" height="50" fetchpriority="high" loading="eager">
         <h1 id="hero-title">Claude Code Ultimate Guide</h1>
       </div>
+
+      <p class="hero-ambassador">
+        <a href={authorProfile.ambassadorUrl} target="_blank" rel="noopener noreferrer" translate="no">
+          <span>{authorProfile.name}</span>
+          <span>{authorProfile.ambassadorLabel}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </p>
 
       <div class="hero-body">
         <p class="hero-tagline">Go from your first command to production-ready Claude Code workflows.</p>
@@ -98,6 +107,7 @@ const stats = await getSiteStats()
     grid-template-areas:
       "kicker kicker"
       "heading heading"
+      "ambassador ambassador"
       "body evidence";
     column-gap: clamp(2.5rem, 6vw, 6rem);
   }
@@ -133,6 +143,23 @@ const stats = await getSiteStats()
     line-height: 0.98;
     letter-spacing: -0.015em;
   }
+
+  .hero-ambassador { grid-area: ambassador; margin: 1rem 0 0; }
+  .hero-ambassador a {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    min-height: 44px;
+    max-width: 100%;
+    padding: 0.4rem 0.65rem;
+    border-left: 3px solid var(--accent);
+    color: var(--accent);
+    font: 600 0.8125rem/1.5 var(--font-mono);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-ambassador a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   .hero-body {
     grid-area: body;
@@ -250,6 +277,7 @@ const stats = await getSiteStats()
       grid-template-areas:
         "kicker"
         "heading"
+        "ambassador"
         "body"
         "evidence";
     }
