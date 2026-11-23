@@ -29,7 +29,7 @@ claude mcp add -e API_KEY=your-key my-server -- npx @org/server
 
 For multiple environment variables:
 ```bash
-claude mcp add -e DATABASE_URL=postgres://... -e DEBUG=true postgres -- npx @prisma/postgres
+claude mcp add -e DATABASE_URL=postgres://... -e DEBUG=true postgres -- npx <postgres-mcp-package>
 ```
 
 This is quicker than manually editing mcp.json.

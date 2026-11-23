@@ -20,4 +20,4 @@ What is the prompt caching minimum token threshold for Opus 4.6, and what does i
 
 ---
 
-Minimum thresholds for prompt caching vary by model. Opus 5.5, Sonnet 5.5, Fable 5.1, and Haiku 5.5 require 512 tokens. Opus 4.7 requires 2,048. Opus 4.6, Opus 4.5, and Haiku 4.5 require 4,096. Opus 4.8, Sonnet 5, and Sonnet 4.6 require 1,024. The minimum applies to the cacheable prompt prefix, not to CLAUDE.md or each block in isolation, so a short CLAUDE.md can be part of a sufficiently large cached prefix alongside tools and other instructions. Check the exact model and platform before applying a threshold.
+Minimum thresholds for prompt caching vary by model. Opus 5.5, Sonnet 5.5, Fable 5.2, Fable 5.1, and Haiku 5.5 require 512 tokens. Opus 4.7 requires 2,048. Opus 4.6, Opus 4.5, and Haiku 4.5 require 4,096. Opus 4.8, Sonnet 5, and Sonnet 4.6 require 1,024. The minimum applies to the cacheable prompt prefix, not to CLAUDE.md or each block in isolation, so a short CLAUDE.md can be part of a sufficiently large cached prefix alongside tools and other instructions. Check the exact model and platform before applying a threshold.

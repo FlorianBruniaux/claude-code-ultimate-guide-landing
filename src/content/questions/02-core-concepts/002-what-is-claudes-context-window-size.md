@@ -18,7 +18,7 @@ doc_reference:
   anchor: '#the-context-budget'
 ---
 
-What native context window do the current Claude models (Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable 5.1) have on the direct API?
+What native context window do the current Claude models (Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable 5.2) have on the direct API?
 
 ---
 

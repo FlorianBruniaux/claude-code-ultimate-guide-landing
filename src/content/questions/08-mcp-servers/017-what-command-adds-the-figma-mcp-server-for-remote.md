@@ -10,7 +10,7 @@ options:
   a: claude mcp install figma
   b: claude mcp add --transport http figma https://mcp.figma.com/mcp
   c: claude figma connect
-  d: npm install @figma/mcp
+  d: claude mcp import figma
 doc_reference:
   file: guide/ultimate-guide.md
   section: 4.3 Figma MCP Integration

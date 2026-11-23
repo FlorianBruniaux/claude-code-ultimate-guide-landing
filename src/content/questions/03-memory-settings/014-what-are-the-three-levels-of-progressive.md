@@ -13,11 +13,11 @@ options:
   d: Low, Medium, High
 doc_reference:
   file: guide/ultimate-guide.md
-  section: allowedTools / autoApproveTools Configuration
-  anchor: '#allowedtools-autoapprovetools-configuration'
+  section: permissions.allow / permissions.deny Configuration
+  anchor: '#permissionsallow--permissionsdeny-configuration'
 ---
 
-What are the three levels of progressive permission in allowedTools?
+What are the three levels of progressive permission rules in permissions.allow?
 
 ---
 

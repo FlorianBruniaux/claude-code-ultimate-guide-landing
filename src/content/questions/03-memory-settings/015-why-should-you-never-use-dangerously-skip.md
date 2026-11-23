@@ -13,12 +13,12 @@ options:
   d: It's slower
 doc_reference:
   file: guide/ultimate-guide.md
-  section: allowedTools / autoApproveTools Configuration
-  anchor: '#allowedtools-autoapprovetools-configuration'
+  section: permissions.allow / permissions.deny Configuration
+  anchor: '#permissionsallow--permissionsdeny-configuration'
 ---
 
 Why should you NEVER use --dangerously-skip-permissions?
 
 ---
 
-Never use --dangerously-skip-permissions because it can lead to destructive operations. Horror stories include: `rm -rf node_modules` followed by `rm -rf .` (path error), `git push --force` to main unintentionally, `DROP TABLE users` in poorly generated migrations, and deletion of .env files with credentials. Always prefer granular allowedTools instead.
+Never use --dangerously-skip-permissions because it can lead to destructive operations. Horror stories include: `rm -rf node_modules` followed by `rm -rf .` (path error), `git push --force` to main unintentionally, `DROP TABLE users` in poorly generated migrations, and deletion of .env files with credentials. Always prefer granular permissions.allow rules instead.

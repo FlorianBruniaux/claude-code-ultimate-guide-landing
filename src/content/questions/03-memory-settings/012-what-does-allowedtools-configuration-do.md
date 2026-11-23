@@ -12,13 +12,13 @@ options:
   d: Requires admin privileges
 doc_reference:
   file: guide/ultimate-guide.md
-  section: allowedTools / autoApproveTools Configuration
-  anchor: '#allowedtools-autoapprovetools-configuration'
+  section: permissions.allow / permissions.deny Configuration
+  anchor: '#permissionsallow--permissionsdeny-configuration'
 official_doc: https://code.claude.com/docs/en/permissions
 ---
 
-What does 'allowedTools' configuration do differently from permission categories?
+What do permission rules under permissions.allow add compared with permission modes?
 
 ---
 
-The allowedTools configuration in .claude/settings.json or .claude/settings.local.json provides granular control with specific patterns. For example: 'Read(*)' allows all reads, 'Bash(git status *)' allows git status commands, 'Bash(pnpm *)' allows pnpm commands. You can set progressive permission levels from beginner (very restrictive) to advanced. Never use --dangerously-skip-permissions.
+Rules under permissions.allow (and permissions.deny) in .claude/settings.json or .claude/settings.local.json provide granular control with specific patterns. For example: 'Read(*)' allows all reads, 'Bash(git status *)' allows git status commands, 'Bash(pnpm *)' allows pnpm commands. You can set progressive permission levels from beginner (very restrictive) to advanced. Never use --dangerously-skip-permissions.
