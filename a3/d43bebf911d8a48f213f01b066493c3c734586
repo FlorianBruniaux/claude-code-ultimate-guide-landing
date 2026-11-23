@@ -1,0 +1,63 @@
+src/content/questions/02-core-concepts/002-what-is-claudes-context-window-size.md
+  s_e95f5838c49665::t_9a50c0f769d6a4 21
+src/content/questions/03-memory-settings/012-what-does-allowedtools-configuration-do.md
+  s_2e5b0a77711965::t_495b6f477ee09b 15-16,20,24
+src/content/questions/03-memory-settings/014-what-are-the-three-levels-of-progressive.md
+  s_2e5b0a77711965::t_4c4b0c7db7a1e3 16-17,20
+src/content/questions/03-memory-settings/015-why-should-you-never-use-dangerously-skip.md
+  s_2e5b0a77711965::t_dab92fb466c454 16-17,24
+src/content/questions/06-commands/024-among-the-guide-s-example-commands-and-which.md
+  s_2e5b0a77711965::t_8a40382072aeab 15-17,24
+src/content/questions/08-mcp-servers/012-how-do-you-add-an-mcp-server-with-environment.md
+  s_2e5b0a77711965::t_46f51c61ab1522 32
+src/content/questions/08-mcp-servers/017-what-command-adds-the-figma-mcp-server-for-remote.md
+  s_2e5b0a77711965::t_fe063eeade79be 13
+src/content/questions/09-advanced-patterns/032-what-is-plan-validate-execute-pipeline.md
+  s_2e5b0a77711965::t_1d6aa0cd727f3c 10,23
+src/content/questions/09-advanced-patterns/058-what-is-the-prompt-caching-minimum-token-threshold.md
+  s_e95f5838c49665::t_c3509676915631 23
+src/content/questions/12-architecture-internals/004-what-is-the-approximate-context-budget-for-claude.md
+  s_e95f5838c49665::t_36cdc5234060b1 24
+src/content/questions/13-security-hardening/008-which-mcp-servers-are-marked-as-safe-in-the.md
+  s_e95f5838c49665::t_ed79282e4eed7a 12,25
+src/content/questions/15-ai-ecosystem/014-what-is-rtk-rust-token-killer.md
+  s_e95f5838c49665::t_10694825881027 24
+src/data/examples-data.ts
+  s_bd9fdddb191dba::t_55861e73e287fc 3-4,70-71,76-77,79,83,94,109-114,119,128-129,132,134-140,182,329-332,334
+src/data/guide-content-entries.ts
+  s_2e5b0a77711965::t_151d8fd3f60a9e 3,103,167,3271,3279,3295,3335,3343,3351,3359,3375,3383,3399,3447,3453-3455,3457,3471,3487,3495,3527,3551,3575,3583,3591,3607,3623,3639,3647,3655,3671,3679,3687,3695,3703,3711,3983,3991,3999,4951,6119,6199,6295,6599,7087,8575,8615,9103,10183,10537
+src/data/guide-search-entries.ts
+  s_2e5b0a77711965::t_6b374f2f884a89 2153,2155,2203,2211,2313,2315,2321,2323,2329,2331,2337,2339,2345,2347,2353,2355,2361,2363,2369,2371,2377,2379,5041,5043,5819,5827,5835,5998-6005
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a3d43bebf911d8a48f213f01b066493c3c734586",
+  "prompts": {},
+  "sessions": {
+    "s_2e5b0a77711965": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "47c2de02-b08c-4cc2-b6e4-f2807bc478f3",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_bd9fdddb191dba": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1bfd2-da09-7b80-8a98-d404050d659e",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    },
+    "s_e95f5838c49665": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dec69e13-47ae-4ed6-ae4b-bbe5b276fb55",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
