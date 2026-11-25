@@ -6,7 +6,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Fixed
 
-- Cmd+K search index regenerated from the guide's `reference.yaml`: the Tokenade entry is gone, RTK pipelines is added, and 15 example-skill links that pointed at paths moved by the guide's examples refresh now resolve.
+- Cmd+K search indexes regenerated from the guide's `main` after the examples refresh (guide #121) merged: the Tokenade entry is gone, RTK pipelines is added, and example-skill links follow the new `skills/` layout. The deploys of `ce2c039` and `7192e8f` failed on 46 broken links because that layout was not on the guide's `main` yet; the rerun after the merge passed.
 - **Ebook, cheatsheet and recap-card requests failed with a CORS error (guide #117)**: the portfolio's `vercel.json` sets `trailingSlash: true` (since 2026-09-04), so `/api/subscribe` answers 308 to `/api/subscribe/`, and browsers refuse a redirect on a CORS preflight. The whitepapers and cheatsheets pages now call `/api/subscribe/` directly (checked 2026-11-25: 308 without the slash, 405 to a GET with it, so no redirect). The Cowork landing already used the trailing slash.
 - **Guide menu links unreadable below the charcoal card (guide #119)**: the sidebar override replaced Starlight's `min-height: max-content` with a viewport-based minimum while Starlight keeps `height: 100%`, so a long menu overflowed the card and its light links sat on the ivory page. The card now uses `height: auto`.
 - **tilth removed from the token-saving catalog**: its maintainer's GitHub account no longer exists and the `jahala` name can be registered again (guide #116, withdrawn from the guide on 2026-11-23).
