@@ -28,11 +28,11 @@ test('grouping keeps every third-party measurement exactly once', () => {
 test('a publisher measuring its own tool is never a third-party result', () => {
   const own = MEASUREMENTS.filter((m) => !THIRD_PARTY_MEASUREMENTS.includes(m))
   assert.deepEqual(own.map((m) => `${m.tool}/${m.benchmark}`).sort(), ['Parsec/dasein', 'Tokenade/thol'])
-  for (const id of ['tokenade', 'parsec']) {
-    const row = catalogRows().find((r) => r.entry.id === id)
-    assert.ok(row, id)
-    assert.equal(row.results.length, 0, id)
-  }
+  // Tokenade left the catalogue on 2026-11-25; its THOL row stays as benchmark data.
+  assert.equal(catalogRows().find((r) => r.entry.id === 'tokenade'), undefined)
+  const parsec = catalogRows().find((r) => r.entry.id === 'parsec')
+  assert.ok(parsec, 'parsec')
+  assert.equal(parsec.results.length, 0, 'parsec')
   assert.ok(groupMeasurementsByTool().every((g) => g.tool !== 'Tokenade' && g.tool !== 'Parsec'))
 })
 
@@ -190,9 +190,9 @@ test('a maker-run result never counts, even when passed in directly', () => {
   // Mixed with a real third-party row, only that row sets the key.
   const parsecOwn = own.find((x) => x.tool === 'Parsec')!
   assert.deepEqual(efficiencyKey([parsecOwn, m('Parsec', 'cost', [7], 'stet')]), { median: 7, basis: 'cost' })
-  // The catalogue never ranks Tokenade or Parsec by their own benchmark.
+  // The catalogue never ranks Parsec by its own benchmark (Tokenade left the catalogue).
   const ranked = rankByEfficiency(catalogRows(), (r) => r.results, (r) => r.entry.name)
-  for (const id of ['tokenade', 'parsec']) assert.equal(ranked.find((r) => r.item.entry.id === id)?.key, null, id)
+  assert.equal(ranked.find((r) => r.item.entry.id === 'parsec')?.key, null, 'parsec')
 })
 
 test('efficiency labels add no em dash', () => {
