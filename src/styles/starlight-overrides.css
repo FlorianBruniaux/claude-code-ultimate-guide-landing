@@ -1498,7 +1498,11 @@ a.sl-link-button.secondary {
     padding: 1.25rem 0.75rem 1.25rem 1rem;
   }
 
+  /* Starlight sets height: 100% with min-height: max-content so the card grows
+   * with a long menu. Replacing only the min-height let the menu overflow the
+   * card, leaving ivory-on-ivory links below it (#119): height must be auto. */
   #starlight__sidebar .sidebar-content {
+    height: auto;
     min-height: calc(100% - 0.25rem);
     padding: 0.9rem 0.75rem 1.5rem;
     border: 1px solid #3b3e42 !important;

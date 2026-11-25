@@ -43,7 +43,7 @@ const cardHashedUrlFr = resolveRecapPdfUrl(CARD_HASHES_FR[card.id], RECAP_BASE_U
 const cardHashedUrlEn = resolveRecapPdfUrl(CARD_HASHES_EN[card.id], RECAP_BASE_URL)
 const cardHashedUrl = cardHashedUrlFr  // backward compat (used in gate script)
 const isDirectAccess = DIRECT_ACCESS_IDS.has(card.id)
-const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe').replace('/api/subscribe', '')
+const API_BASE = (import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe/').replace(/\/api\/subscribe\/?$/, '')
 
 const title = `${card.data.title} | Claude Code Recap Card ${card.data.cardNumber}`
 const description = card.data.subtitle
@@ -330,7 +330,7 @@ const jsonLd = [
       }
 
       try {
-        const res = await fetch(`${API_BASE}/api/subscribe`, {
+        const res = await fetch(`${API_BASE}/api/subscribe/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -974,7 +974,7 @@ const profiles = [
       submitSpinner?.classList.remove('hidden')
 
       try {
-        const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe'
+        const API_URL = import.meta.env.PUBLIC_API_URL ?? 'https://www.florian.bruniaux.com/api/subscribe/'
         const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? 'https://cc.bruniaux.com'
         const res = await fetch(API_URL, {
           method: 'POST',

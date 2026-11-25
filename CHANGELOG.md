@@ -4,6 +4,12 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Ebook, cheatsheet and recap-card requests failed with a CORS error (guide #117)**: the portfolio's `vercel.json` sets `trailingSlash: true` (since 2026-09-04), so `/api/subscribe` answers 308 to `/api/subscribe/`, and browsers refuse a redirect on a CORS preflight. The whitepapers and cheatsheets pages now call `/api/subscribe/` directly (checked 2026-11-25: 308 without the slash, 405 to a GET with it, so no redirect). The Cowork landing already used the trailing slash.
+- **Guide menu links unreadable below the charcoal card (guide #119)**: the sidebar override replaced Starlight's `min-height: max-content` with a viewport-based minimum while Starlight keeps `height: 100%`, so a long menu overflowed the card and its light links sat on the ivory page. The card now uses `height: auto`.
+- **tilth removed from the token-saving catalog**: its maintainer's GitHub account no longer exists and the `jahala` name can be registered again (guide #116, withdrawn from the guide on 2026-11-23).
+
 ### Changed
 
 - Move the official Claude Community Ambassador mention into the compact author profile and align the guide hero layout with Cowork.
