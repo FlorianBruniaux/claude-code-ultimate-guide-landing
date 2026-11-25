@@ -100,7 +100,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-adoption-approaches-common-situations",
     "title": "Common situations",
-    "keywords": "common situations choosing your adoption approach \"i'm evaluating claude code for my team\" quick test approach : 1. install: 2. run in an existing project: 3. try a real task: 4. check to understand t i m evaluating claude code for my team my team disagrees on configuration claude keeps making the same mistake i inherited a large claude md when should i add more complexity",
+    "keywords": "common situations choosing your adoption approach \"i'm evaluating claude code for my team\" quick test approach : 1. install: (native installer; also works) 2. run in an existing project: 3. try a real i m evaluating claude code for my team my team disagrees on configuration claude keeps making the same mistake i inherited a large claude md when should i add more complexity",
     "category": "Core Guides",
     "url": "/guide/adoption-approaches/#common-situations",
     "source": "guide"
@@ -164,7 +164,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-agent-evaluation-implementation-patterns",
     "title": "Implementation patterns",
-    "keywords": "implementation patterns agent evaluation pattern 1: logging hook system use case : automatically track all agent interactions without manual intervention setup : pros : zero manual overhead, pattern 1 logging hook system pattern 2 agent unit tests pattern 3 a b testing configurations pattern 4 feedback loop integration",
+    "keywords": "implementation patterns agent evaluation pattern 1: logging hook system use case : automatically track all agent interactions without manual intervention setup : to log failures too, register pattern 1 logging hook system pattern 2 agent unit tests pattern 3 a b testing configurations pattern 4 feedback loop integration",
     "category": "Core Guides",
     "url": "/guide/agent-evaluation/#implementation-patterns",
     "source": "guide"
@@ -3268,7 +3268,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-known-issues-active-critical-issues",
     "title": "🚨 Active critical issues",
-    "keywords": "active critical issues known issues critical bugs 0. prompt cache bugs: silent cost inflation (mar 2026 - present) severity : 🔴 high - cost impact status : ⚠️ partially fixed (bug 3 and bug 2 still a 0 prompt cache bugs silent cost inflation mar 2026 present problem bug 2 full cache rebuild on resume continue v2 1 69 high impact bug 3 attribution header low to medium impact v2 1 69 bug 1 sentinel string replacement standalone binary v2 1 36 edge case audit tool monitoring cache health official ",
+    "keywords": "active critical issues known issues critical bugs 0. prompt cache bugs: silent cost inflation (mar 2026 - present) severity : 🔴 high - cost impact status : ⚠️ partially fixed (bug 2 fixed in v2.1.90 0 prompt cache bugs silent cost inflation mar 2026 present problem bug 2 full cache rebuild on resume continue v2 1 69 fixed bug 3 attribution header low to medium impact v2 1 69 bug 1 sentinel string replacement standalone binary v2 1 36 edge case audit tool monitoring cache health official respons",
     "category": "Core Guides",
     "url": "/guide/known-issues/#-active-critical-issues",
     "source": "guide"
@@ -3276,7 +3276,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-known-issues-resolved-historical-issues",
     "title": "✅ Resolved historical issues",
-    "keywords": "resolved historical issues known issues critical bugs triple harness incident: effort, thinking tokens, verbosity (mar-apr 2026) severity : 🔴 high status : ✅ resolved (all three issues resolved by april triple harness incident effort thinking tokens verbosity mar apr 2026 problem incident 1 default effort high to medium march 4 reverted april 7 incident 2 thinking tokens cleared per turn after idle march 26 fixed april 10 incident 3 verbosity system prompt instruction april 16 reverted april 20",
+    "keywords": "resolved historical issues known issues critical bugs prompt cache miss on / (mar-apr 2026, fixed v2.1.90 and v2.1.97) symptom : each or rebuilt the full prompt cache (87-118k tokens as instead of in comm prompt cache miss on resume continue mar apr 2026 fixed v2 1 90 and v2 1 97 triple harness incident effort thinking tokens verbosity mar apr 2026 problem incident 1 default effort high to medium march 4 reverted april 7 incident 2 thinking tokens cleared per turn after idle march 26 fixed april",
     "category": "Core Guides",
     "url": "/guide/known-issues/#-resolved-historical-issues",
     "source": "guide"
@@ -3292,7 +3292,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-known-issues-issue-statistics-as-of-jan-28-2026",
     "title": "📊 Issue statistics (as of Jan 28, 2026)",
-    "keywords": "issue statistics as of jan 28 2026 known issues critical bugs metric count source -------- ------- -------- open issues 5,702 github api issues labeled \"invalid\" 527 github issues search \"wrong repo\" issues (conf",
+    "keywords": "issue statistics as of jan 28 2026 known issues critical bugs these counts are a january 28, 2026 snapshot and have not been refreshed. metric count source -------- ------- -------- open issues 5,702 github api i",
     "category": "Core Guides",
     "url": "/guide/known-issues/#-issue-statistics-as-of-jan-28-2026",
     "source": "guide"
@@ -3332,7 +3332,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-installation",
     "title": "Installation",
-    "keywords": "installation module 01 installation setup macos (recommended) verify: linux verify: windows download the installer from https://dl.claudecode.com/windows or use: macos recommended linux windows docker any platform",
+    "keywords": "installation module 01 installation setup macos, linux, wsl (native installer, recommended) open a new terminal window, then verify: the native installer updates itself in the background. maco macos linux wsl native installer recommended macos homebrew windows",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#installation",
     "source": "guide"
@@ -3340,7 +3340,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-first-run",
     "title": "First run",
-    "keywords": "first run module 01 installation setup navigate to any project directory and start claude: you'll see: ---",
+    "keywords": "first run module 01 installation setup navigate to any project directory and start claude: the first time, claude code asks you to sign in. after that it opens an interactive session in you",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#first-run",
     "source": "guide"
@@ -3348,7 +3348,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-essential-commands",
     "title": "Essential commands",
-    "keywords": "essential commands module 01 installation setup command purpose --------- --------- show all available commands check context usage and session state start fresh (clears conversation history) cancel",
+    "keywords": "essential commands module 01 installation setup command purpose --------- --------- show all available commands visualize current context usage start a new conversation with empty context resume a p",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#essential-commands",
     "source": "guide"
@@ -3356,7 +3356,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-your-first-5-minutes",
     "title": "Your first 5 minutes",
-    "keywords": "your first 5 minutes module 01 installation setup exercise 1: view available commands review the command list. notice: - workflow : , , - navigation : , - memory : memory loading at startup - advanced exercise 1 view available commands exercise 2 check session state exercise 3 ask claude something exercise 4 review a suggested change",
+    "keywords": "your first 5 minutes module 01 installation setup exercise 1: view available commands review the command list. notice: - workflow : , , - sessions : , , - memory : , - advanced : , exercise 2: check c exercise 1 view available commands exercise 2 check context usage exercise 3 ask claude something exercise 4 review a suggested change",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#your-first-5-minutes",
     "source": "guide"
@@ -3372,7 +3372,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-key-concepts",
     "title": "Key concepts",
-    "keywords": "key concepts module 01 installation setup sessions each time you run , you start a new session . a session is a conversation with claude that persists while you're using claude code. - session sessions context git awareness",
+    "keywords": "key concepts module 01 installation setup sessions each time you run , you start a new session . a session is a conversation with claude that persists while you're using claude code. - claude sessions context git awareness",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#key-concepts",
     "source": "guide"
@@ -3380,7 +3380,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-validation-you-re-ready-if",
     "title": "Validation: You're ready if...",
-    "keywords": "validation you re ready if module 01 installation setup ✓ you can run and see your installed version ✓ you can start claude in a project with ✓ you understand the prompt → response loop ✓ you can see and un",
+    "keywords": "validation you re ready if module 01 installation setup ✓ you can run and see your installed version ✓ you can start claude in a project with ✓ you understand the prompt → response loop ✓ you can run and un",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#validation-youre-ready-if",
     "source": "guide"
@@ -3396,7 +3396,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-01-installation-troubleshooting",
     "title": "Troubleshooting",
-    "keywords": "troubleshooting module 01 installation setup \"claude: command not found\" your installation didn't complete. try: - macos : again - linux : re-run the install script - windows : download the insta claude command not found project not found permission denied macos",
+    "keywords": "troubleshooting module 01 installation setup \"claude: command not found\" the install directory is probably not on your path yet. try: - open a new terminal window: the installer may have added th claude command not found install command fails with a syntax error a 403 or another error the command works in powershell but not in cmd or the reverse",
     "category": "Core Guides",
     "url": "/guide/learning-path/01-installation/#troubleshooting",
     "source": "guide"
@@ -3444,17 +3444,17 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-02-core-loop-context-the-key-concept",
     "title": "Context: The key concept",
-    "keywords": "context the key concept module 02 core loop context is how much of your conversation claude remembers. it's finite ( 200k tokens). what uses context? the context meter shows: this means: - 0-50% what uses context the context meter compact your safety valve",
+    "keywords": "context the key concept module 02 core loop context is how much of your conversation claude can see at once. it's finite: the size depends on the model (1m tokens on most current models). what u what uses context the context meter compact your safety valve",
     "category": "Core Guides",
     "url": "/guide/learning-path/02-core-loop/#context-the-key-concept",
     "source": "guide"
   },
   {
-    "id": "gc-learning-path-02-core-loop-modes-normal-vs-plan-vs-think",
-    "title": "Modes: Normal vs plan vs think",
-    "keywords": "modes normal vs plan vs think module 02 core loop claude code has three interaction modes. normal mode (default) claude makes changes immediately after analyzing. use for: - simple bug fixes - small f normal mode default plan mode plan think mode think",
+    "id": "gc-learning-path-02-core-loop-modes-default-vs-plan-vs-effort",
+    "title": "Modes: Default vs plan vs effort",
+    "keywords": "modes default vs plan vs effort module 02 core loop two separate controls shape how claude works: the permission mode (what it may do without asking) and the effort level (how hard it thinks). default m default mode permission prompts plan mode plan effort level effort and ultrathink",
     "category": "Core Guides",
-    "url": "/guide/learning-path/02-core-loop/#modes-normal-vs-plan-vs-think",
+    "url": "/guide/learning-path/02-core-loop/#modes-default-vs-plan-vs-effort",
     "source": "guide"
   },
   {
@@ -3468,7 +3468,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-02-core-loop-session-context",
     "title": "Session context",
-    "keywords": "session context module 02 core loop a session is your current conversation with claude. session facts - starts when you run - ends when you exit or run - not saved by default - scoped to session facts checkpoint sessions",
+    "keywords": "session context module 02 core loop a session is your current conversation with claude. session facts - starts when you run - starts a new conversation with empty context - saved locally session facts rewind and name sessions",
     "category": "Core Guides",
     "url": "/guide/learning-path/02-core-loop/#session-context",
     "source": "guide"
@@ -3484,7 +3484,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-02-core-loop-key-takeaways",
     "title": "Key takeaways",
-    "keywords": "key takeaways module 02 core loop ✓ every request follows: read → analyze → decide → propose → apply ✓ be specific (what/where/how/verify) for faster results ✓ context is finite, watch",
+    "keywords": "key takeaways module 02 core loop ✓ every request follows: read → analyze → decide → propose → apply ✓ be specific (what/where/how/verify) for faster results ✓ context is finite: check",
     "category": "Core Guides",
     "url": "/guide/learning-path/02-core-loop/#key-takeaways",
     "source": "guide"
@@ -3492,7 +3492,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-02-core-loop-validation-you-re-ready-if",
     "title": "Validation: You're ready if...",
-    "keywords": "validation you re ready if module 02 core loop ✓ you can explain the 7-step loop to someone else ✓ you understand what \"context\" means and why it matters ✓ you know the difference between plan and",
+    "keywords": "validation you re ready if module 02 core loop ✓ you can explain the 7-step loop to someone else ✓ you understand what \"context\" means and why it matters ✓ you know the difference between plan mode",
     "category": "Core Guides",
     "url": "/guide/learning-path/02-core-loop/#validation-youre-ready-if",
     "source": "guide"
@@ -3524,7 +3524,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-the-memory-hierarchy",
     "title": "The memory hierarchy",
-    "keywords": "the memory hierarchy module 03 memory config claude code remembers preferences at three levels: rule settings at level 3 override level 2, which overrides level 1. rule",
+    "keywords": "the memory hierarchy module 03 memory config claude code loads instructions from several claude.md files, from the broadest scope to the most specific: organizations can also deploy a managed pol rule",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#the-memory-hierarchy",
     "source": "guide"
@@ -3548,7 +3548,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-global-claude-md",
     "title": "Global CLAUDE.md",
-    "keywords": "global claude md module 03 memory config for settings that apply to all your projects , create : claude will load this at startup and combine it with your project claude.md. ---",
+    "keywords": "global claude md module 03 memory config for settings that apply to all your projects , create : claude loads this at startup and combines it with your project claude.md. ---",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#global-claudemd",
     "source": "guide"
@@ -3572,7 +3572,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-claude-directory",
     "title": ".claude/ directory",
-    "keywords": "claude directory module 03 memory config for local settings (not committed), use : add to : exception: you can commit if they're team-wide. ---",
+    "keywords": "claude directory module 03 memory config project configuration lives in . most of it is meant to be committed so the team shares it; only personal files stay local: add only the personal file",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#claude-directory",
     "source": "guide"
@@ -3580,7 +3580,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-settings-json-optional",
     "title": "Settings.json (Optional)",
-    "keywords": "settings json optional module 03 memory config for fine-grained control, create : common settings: - model : which claude model to use - context threshold : when to warn about context (0.7 = 70%) -",
+    "keywords": "settings json optional module 03 memory config for fine-grained control, create (shared) or (personal): common settings: - model : which claude model to use (an alias such as or , or a full model i",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#settingsjson-optional",
     "source": "guide"
@@ -3588,7 +3588,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-agents-skills-preview",
     "title": "Agents & skills (preview)",
-    "keywords": "agents skills preview module 03 memory config in claude.md, you can reference custom agents: these are defined in (covered in module 04). ---",
+    "keywords": "agents skills preview module 03 memory config in claude.md, you can tell claude which subagents exist and when to use them: subagents are defined in (covered in module 04). they are not slash comm",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#agents--skills-preview",
     "source": "guide"
@@ -3604,7 +3604,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-validation-you-re-ready-if",
     "title": "Validation: You're ready if...",
-    "keywords": "validation you re ready if module 03 memory config ✓ you've created a claude.md file in a project ✓ you can explain the three-level hierarchy (global, project, personal) ✓ you understand what should go",
+    "keywords": "validation you re ready if module 03 memory config ✓ you've created a claude.md file in a project ✓ you can explain the claude.md levels (user, project, local) and why is mostly committed ✓ you know wh",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#validation-youre-ready-if",
     "source": "guide"
@@ -3620,7 +3620,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-03-memory-going-further-cross-session-and-team-memory",
     "title": "Going further: Cross-Session and team memory",
-    "keywords": "going further cross session and team memory module 03 memory config the sections above cover the foundational claude.md patterns. when you're ready to go deeper, the ecosystem has more: auto memory and auto dream (nati",
+    "keywords": "going further cross session and team memory module 03 memory config the sections above cover the foundational claude.md patterns. when you're ready to go deeper, the ecosystem has more: auto memory (native) and auto dr",
     "category": "Core Guides",
     "url": "/guide/learning-path/03-memory/#going-further-cross-session-and-team-memory",
     "source": "guide"
@@ -3636,7 +3636,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-what-you-ll-learn",
     "title": "What you'll learn",
-    "keywords": "what you ll learn module 04 agents specialization - what agents are and why they're useful - creating custom agents with agent.md - restricting agent capabilities (sandboxing) - using agents for speci",
+    "keywords": "what you ll learn module 04 agents specialization - what agents are and why they're useful - creating custom agents (subagents) as files - restricting an agent's tools and permissions - using agents f",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#what-youll-learn",
     "source": "guide"
@@ -3644,7 +3644,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-what-are-agents",
     "title": "What are agents?",
-    "keywords": "what are agents module 04 agents specialization an agent is a specialized version of claude code configured for one specific task. example: code reviewer agent instead of asking regular claude for c example code reviewer agent normal claude vs agents",
+    "keywords": "what are agents module 04 agents specialization an agent (claude code calls it a subagent ) is a specialized assistant with its own instructions and its own context window, configured for one specif example code reviewer agent normal claude vs agents",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#what-are-agents",
     "source": "guide"
@@ -3652,7 +3652,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-creating-your-first-agent",
     "title": "Creating your first agent",
-    "keywords": "creating your first agent module 04 agents specialization agents are defined in files. basic structure ```markdown --- name: code-reviewer type: agent description: reviews code for bugs, performance, and secu basic structure file location making it available",
+    "keywords": "creating your first agent module 04 agents specialization a subagent is one markdown file in (project) or (all your projects). the filename can be anything; the field is the identifier. there is no file. basi basic structure file location making it discoverable",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#creating-your-first-agent",
     "source": "guide"
@@ -3668,7 +3668,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-agent-capabilities-restrictions",
     "title": "Agent capabilities & restrictions",
-    "keywords": "agent capabilities restrictions module 04 agents specialization default capabilities all agents can: - read files (git-aware) - analyze code - write documentation - check syntax - run tests restricting capabilities default capabilities restricting capabilities common restrictions",
+    "keywords": "agent capabilities restrictions module 04 agents specialization default capabilities a subagent inherits every tool available to the main conversation (including mcp tools) unless you narrow it with or . without a default capabilities restricting tools common restrictions two traps",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#agent-capabilities--restrictions",
     "source": "guide"
@@ -3676,7 +3676,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-using-agents-in-your-workflow",
     "title": "Using agents in your workflow",
-    "keywords": "using agents in your workflow module 04 agents specialization calling an agent claude switches to the code-reviewer agent and responds. chaining agents use agents sequentially: agent with plan mode calling an agent chaining agents agent with plan mode",
+    "keywords": "using agents in your workflow module 04 agents specialization calling an agent or -mention it from the typeahead: claude delegates to the subagent, which works in its own context window and returns a summary. cha calling an agent chaining agents agent with plan mode",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#using-agents-in-your-workflow",
     "source": "guide"
@@ -3684,7 +3684,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-exercise-create-a-test-writer-agent",
     "title": "Exercise: Create a test-writer agent",
-    "keywords": "exercise create a test writer agent module 04 agents specialization step 1: create the agent file ```bash cat .claude/agents/test-writer.md << 'eof' --- name: test-writer description: generates comprehensive tests capa step 1 create the agent file step 2 reference in claude md step 3 use it step 4 review",
+    "keywords": "exercise create a test writer agent module 04 agents specialization step 1: create the agent file ```bash cat .claude/agents/test-writer.md << 'eof' --- name: test-writer description: generates comprehensive tests. use step 1 create the agent file step 2 reference in claude md step 3 use it step 4 review",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#exercise-create-a-test-writer-agent",
     "source": "guide"
@@ -3692,7 +3692,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-when-to-use-agents",
     "title": "When to use agents",
-    "keywords": "when to use agents module 04 agents specialization use agents when: ✅ you do the same task repeatedly (code review, testing, security audit) ✅ you want focused ai for one job ✅ you want to restrict cap use agents when use regular claude when",
+    "keywords": "when to use agents module 04 agents specialization use agents when: ✅ you do the same task repeatedly (code review, testing, security audit) ✅ you want focused ai for one job ✅ you want to restrict too use agents when use regular claude when",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#when-to-use-agents",
     "source": "guide"
@@ -3700,7 +3700,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-best-practices",
     "title": "Best practices",
-    "keywords": "best practices module 04 agents specialization do ✅ give agents clear, narrow purposes ✅ document output format in the agent definition ✅ restrict capabilities you don't need ✅ test agents on sampl do don t",
+    "keywords": "best practices module 04 agents specialization do ✅ give agents clear, narrow purposes ✅ document output format in the agent definition ✅ restrict tools you don't need ✅ test agents on sample tasks do don t",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#best-practices",
     "source": "guide"
@@ -3708,7 +3708,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-04-agents-validation-you-re-ready-if",
     "title": "Validation: You're ready if...",
-    "keywords": "validation you re ready if module 04 agents specialization ✓ you've created at least one custom agent ✓ you understand the purpose of agents vs claude ✓ you can restrict agent capabilities ✓ you know how to ca",
+    "keywords": "validation you re ready if module 04 agents specialization ✓ you've created at least one custom agent ✓ you understand the purpose of agents vs claude ✓ you can restrict an agent's tools (and you know access i",
     "category": "Core Guides",
     "url": "/guide/learning-path/04-agents/#validation-youre-ready-if",
     "source": "guide"
@@ -3980,7 +3980,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-07-advanced-error-handling-in-multi-agent-systems",
     "title": "Error handling in multi-agent systems",
-    "keywords": "error handling in multi agent systems module 07 advanced patterns pattern: graceful degradation if one agent fails, others continue: pattern: retry on failure for transient failures (network, timeouts): ```bash !/bin pattern graceful degradation pattern retry on failure pattern rollback on error",
+    "keywords": "error handling in multi agent systems module 07 advanced patterns pattern: graceful degradation if one agent fails, others continue: pattern: retry on failure for transient failures (network, timeouts), retry the rea pattern graceful degradation pattern retry on failure pattern rollback on error",
     "category": "Core Guides",
     "url": "/guide/learning-path/07-advanced/#error-handling-in-multi-agent-systems",
     "source": "guide"
@@ -3988,7 +3988,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-07-advanced-production-patterns",
     "title": "Production patterns",
-    "keywords": "production patterns module 07 advanced patterns pattern 1: staged rollout release to different environments progressively: pattern 2: approval gates block advancement until reviewed: ```bash in .cla pattern 1 staged rollout pattern 2 approval gates pattern 3 monitoring rollback",
+    "keywords": "production patterns module 07 advanced patterns pattern 1: staged rollout release to different environments progressively: pattern 2: approval gates block advancement until reviewed. a hook cannot p pattern 1 staged rollout pattern 2 approval gates pattern 3 monitoring rollback",
     "category": "Core Guides",
     "url": "/guide/learning-path/07-advanced/#production-patterns",
     "source": "guide"
@@ -3996,7 +3996,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-learning-path-07-advanced-exercise-build-your-first-multi-agent-workflow",
     "title": "Exercise: Build your first multi-agent workflow",
-    "keywords": "exercise build your first multi agent workflow module 07 advanced patterns scenario you have a data science project. release checklist: 1. update model version 2. run validation tests 3. generate performance report 4. update scenario step 1 create agents step 2 create the orchestration command step 3 test it",
+    "keywords": "exercise build your first multi agent workflow module 07 advanced patterns scenario you have a data science project. release checklist: 1. update model version 2. run validation tests 3. generate performance report 4. update scenario step 1 create agents step 2 create the orchestration skill step 3 test it",
     "category": "Core Guides",
     "url": "/guide/learning-path/07-advanced/#exercise-build-your-first-multi-agent-workflow",
     "source": "guide"
@@ -4948,7 +4948,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-observability-setting-up-session-logging",
     "title": "Setting up session logging",
-    "keywords": "setting up session logging session observability monitoring 1. install the logger hook copy the session logger to your hooks directory: 2. register in settings add to : 1 install the logger hook 2 register in settings 3 verify installation configuration options",
+    "keywords": "setting up session logging session observability monitoring 1. install the logger hook copy the session logger to your hooks directory: 2. register in settings add to : ```json { \"hooks\": { \"posttooluse\": [ { \" 1 install the logger hook 2 register in settings 3 verify installation configuration options",
     "category": "Core Guides",
     "url": "/guide/observability/#setting-up-session-logging",
     "source": "guide"
@@ -6292,7 +6292,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-tools-reference-advanced-tools-how-to-trigger-them",
     "title": "Advanced tools: how to trigger them",
-    "keywords": "advanced tools how to trigger them built in tools reference and schedulewakeup the command runs a prompt on a recurring interval. omit the interval to let claude self-pace; after each iteration it calls to deci loop and schedulewakeup scheduled tasks croncreate cronlist crondelete remote routines remotetrigger and schedule push notifications pushnotification agent teams teamcreate teamdelete sendmessage cross session messaging listagents sendmessage tasks api taskcreate through taskstop",
+    "keywords": "advanced tools how to trigger them built in tools reference and schedulewakeup the command runs a prompt on a recurring interval. omit the interval to let claude self-pace; after each iteration it calls to deci loop and schedulewakeup scheduled tasks croncreate cronlist crondelete remote routines remotetrigger and schedule push notifications pushnotification agent teams implicit team sendmessage cross session messaging listagents sendmessage tasks api taskcreate through taskstop",
     "category": "Core Guides",
     "url": "/guide/tools-reference/#advanced-tools-how-to-trigger-them",
     "source": "guide"
@@ -6596,7 +6596,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-03-memory-files-3-3-settings-permissions",
     "title": "3.3 Settings & permissions",
-    "keywords": "3 3 settings permissions 3 memory files settings.json (team configuration) this file configures hooks, permissions, environment variables, and more. the project-level is committed to the rep settings json team configuration settings local json personal permissions terminal personalization settings permission patterns permission behavior allowedtools autoapprovetools configuration dynamic memory profile switching",
+    "keywords": "3 3 settings permissions 3 memory files settings.json (team configuration) this file configures hooks, permissions, environment variables, and more. the project-level is committed to the rep settings json team configuration settings local json personal permissions terminal personalization settings permission patterns permission behavior permissions allow permissions deny configuration dynamic memory profile switching",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/03-memory-files/#33-settings--permissions",
     "source": "guide"
@@ -7084,7 +7084,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-ultimate-guide-09-advanced-patterns-9-22-remote-control-mobile-access",
     "title": "9.22 Remote Control (Mobile Access)",
-    "keywords": "9 22 remote control mobile access 9 advanced patterns reading time : 7 minutes skill level : week 2+ status : research preview (as of february 2026) availability : pro and max plans only, not available on how it works setup two ways to start connecting from your device download the mobile app known limitations research preview advanced patterns community validated multi session via tmux workaround for 1 session limit persistent server architecture vm cloud alternatives pre remote control securit",
+    "keywords": "9 22 remote control mobile access 9 advanced patterns reading time : 7 minutes skill level : week 2+ status : launched as a research preview (february 2026); the current official remote control page carri how it works setup two ways to start connecting from your device download the mobile app known limitations research preview advanced patterns community validated multi session via tmux workaround for 1 session limit persistent server architecture vm cloud alternatives pre remote control securit",
     "category": "Ultimate Guide",
     "url": "/guide/ultimate-guide/09-advanced-patterns/#922-remote-control-mobile-access",
     "source": "guide"
@@ -8572,7 +8572,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-github-actions-pattern-1-pr-code-review-on-claude-mention",
     "title": "Pattern 1: PR code review on @claude mention",
-    "keywords": "pattern 1 pr code review on claude mention github actions workflows with claude code human-initiated. a developer comments and claude responds inline.",
+    "keywords": "pattern 1 pr code review on claude mention github actions workflows with claude code human-initiated. a developer comments and claude responds inline. usage examples: - : full diff analysis with suggestions",
     "category": "Workflows",
     "url": "/guide/workflows/github-actions/#pattern-1-pr-code-review-on-claude-mention",
     "source": "guide"
@@ -8612,7 +8612,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-github-actions-authentication-alternatives",
     "title": "Authentication alternatives",
-    "keywords": "authentication alternatives github actions workflows with claude code the examples above use directly. for teams using cloud providers: amazon bedrock: google vertex ai: cloud providers benefit from data residency compli",
+    "keywords": "authentication alternatives github actions workflows with claude code the examples above use directly. for teams using cloud providers, the official github actions page authenticates with oidc (workload identity) instead",
     "category": "Workflows",
     "url": "/guide/workflows/github-actions/#authentication-alternatives",
     "source": "guide"
@@ -9100,7 +9100,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-pdf-generation-see-also",
     "title": "See also",
-    "keywords": "see also pdf generation with claude code - quarto documentation - typst documentation - quarto + typst guide - examples/skills/pdf-generator.md: skill template - whitepapers/readme.md: produc",
+    "keywords": "see also pdf generation with claude code - quarto documentation - typst documentation - quarto + typst guide - examples/skills/pdf-generator/skill.md: skill template - whitepapers/readme.md:",
     "category": "Workflows",
     "url": "/guide/workflows/pdf-generation/#see-also",
     "source": "guide"
@@ -9188,7 +9188,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-plan-pipeline-the-three-commands",
     "title": "The three commands",
-    "keywords": "the three commands plan validate execute pipeline : 5-phase planning phase 1: prd & design analysis (interactive, no agents) read the prd and surface issues in 3 buckets before any agent work: - missi plan start 5 phase planning plan validate 2 layer validation plan execute execution to merged pr",
+    "keywords": "the three commands plan validate execute pipeline : 5-phase planning phase 1: prd & design analysis (interactive, no agents) read the prd and surface issues in 3 buckets before any agent work: - missi plan pipeline start 5 phase planning plan pipeline validate 2 layer validation plan pipeline execute execution to merged pr",
     "category": "Workflows",
     "url": "/guide/workflows/plan-pipeline/#the-three-commands",
     "source": "guide"
@@ -9196,7 +9196,7 @@ export const GUIDE_CONTENT_ENTRIES: GuideContentEntry[] = [
   {
     "id": "gc-workflows-plan-pipeline-dynamic-agent-pool",
     "title": "Dynamic agent pool",
-    "keywords": "dynamic agent pool plan validate execute pipeline agents are not hardcoded in claude.md. they are defined at invocation time: description, trigger criteria, and model selection embedded in the plan ph research pool plan start validation pool plan validate",
+    "keywords": "dynamic agent pool plan validate execute pipeline agents are not hardcoded in claude.md. they are defined at invocation time: description, trigger criteria, and model selection embedded in the plan ph research pool plan pipeline start validation pool plan pipeline validate",
     "category": "Workflows",
     "url": "/guide/workflows/plan-pipeline/#dynamic-agent-pool",
     "source": "guide"
@@ -10534,7 +10534,7 @@ export const GUIDE_CONTENT_PAGES: Record<string, GuideContentPage> = {
   },
   "/guide/learning-path/04-agents/": {
     "title": "Module 04: Agents & Specialization",
-    "description": "Learning Path Module 04: create specialized Claude Code agents with AGENT.md, restrict their capabilities, and decide when to use an agent versus asking Claude directly. 1.5 hours, intermediate."
+    "description": "Learning Path Module 04: create specialized Claude Code subagents in .claude/agents/, restrict their tools, and decide when to use a subagent versus asking Claude directly. 1.5 hours, intermediate."
   },
   "/guide/learning-path/05-skills/": {
     "title": "Module 05: Skills & Automation",

@@ -2054,9 +2054,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-rtk-pipelines",
     "title": "RTK Pipelines",
-    "keywords": "rtk pipelines guide ecosystem third party tools md#rtk pipelines third party tools guide guide ecosystem third party tools",
+    "keywords": "rtk pipelines guide ecosystem third party tools md#rtk pipelines",
     "category": "Guide",
-    "url": "/guide/third-party-tools/",
+    "url": "/guide/third-party-tools/#rtk-v1-pipelines",
     "source": "guide"
   },
   {
@@ -4129,6 +4129,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "data privacy checklist guide security data privacy md#quick audit checklist",
     "category": "Guide",
     "url": "/guide/data-privacy/#quick-audit-checklist",
+    "source": "guide"
+  },
+  {
+    "id": "guide-third-party-tools-guide",
+    "title": "Third Party Tools Guide",
+    "keywords": "third party tools guide guide ecosystem third party tools",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
     "source": "guide"
   },
   {
