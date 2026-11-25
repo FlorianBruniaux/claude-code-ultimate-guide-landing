@@ -2036,14 +2036,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-tokenade-guide",
-    "title": "Tokenade Guide",
-    "keywords": "tokenade guide guide ecosystem third party tools md#tokenade",
-    "category": "Guide",
-    "url": "/guide/third-party-tools/#tokenade",
-    "source": "guide"
-  },
-  {
     "id": "guide-rtk-guide",
     "title": "RTK Guide",
     "keywords": "rtk guide guide ultimate guide md#command output optimization with rtk",
@@ -2057,6 +2049,14 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "keywords": "rtk third party guide ecosystem third party tools md#rtk rust token killer third party tools rtk guide ecosystem third party tools md#rtk rust token killer",
     "category": "Guide",
     "url": "/guide/third-party-tools/#rtk-rust-token-killer",
+    "source": "guide"
+  },
+  {
+    "id": "guide-rtk-pipelines",
+    "title": "RTK Pipelines",
+    "keywords": "rtk pipelines guide ecosystem third party tools md#rtk pipelines third party tools guide guide ecosystem third party tools",
+    "category": "Guide",
+    "url": "/guide/third-party-tools/",
     "source": "guide"
   },
   {
@@ -2150,9 +2150,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-pdf-generator-skill",
     "title": "Pdf Generator Skill",
-    "keywords": "pdf generator skill examples skills pdf generator skill",
+    "keywords": "pdf generator skill examples skills pdf generator",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pdf-generator/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/pdf-generator.md",
     "source": "guide"
   },
   {
@@ -2200,7 +2200,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack Plan Ceo Review",
     "keywords": "gstack plan ceo review examples skills plan pipeline ceo review skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline-ceo-review/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/ceo-review/SKILL.md",
     "source": "guide"
   },
   {
@@ -2208,7 +2208,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Gstack Plan Eng Review",
     "keywords": "gstack plan eng review examples skills plan pipeline eng review skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline-eng-review/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/eng-review/SKILL.md",
     "source": "guide"
   },
   {
@@ -2310,73 +2310,73 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-talk-pipeline-orchestrator",
     "title": "Talk Pipeline Orchestrator",
-    "keywords": "talk pipeline orchestrator examples skills talk pipeline skill",
+    "keywords": "talk pipeline orchestrator examples skills talk pipeline orchestrator skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/orchestrator/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage1",
     "title": "Talk Pipeline Stage1",
-    "keywords": "talk pipeline stage1 examples skills talk stage1 extract skill",
+    "keywords": "talk pipeline stage1 examples skills talk pipeline stage extract skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage1-extract/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-1-extract/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage2",
     "title": "Talk Pipeline Stage2",
-    "keywords": "talk pipeline stage2 examples skills talk stage2 research skill",
+    "keywords": "talk pipeline stage2 examples skills talk pipeline stage research skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage2-research/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-2-research/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage3",
     "title": "Talk Pipeline Stage3",
-    "keywords": "talk pipeline stage3 examples skills talk stage3 concepts skill",
+    "keywords": "talk pipeline stage3 examples skills talk pipeline stage concepts skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage3-concepts/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-3-concepts/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage4",
     "title": "Talk Pipeline Stage4",
-    "keywords": "talk pipeline stage4 examples skills talk stage4 position skill",
+    "keywords": "talk pipeline stage4 examples skills talk pipeline stage position skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage4-position/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-4-position/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage5",
     "title": "Talk Pipeline Stage5",
-    "keywords": "talk pipeline stage5 examples skills talk stage5 script skill",
+    "keywords": "talk pipeline stage5 examples skills talk pipeline stage script skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage5-script/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-5-script/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-stage6",
     "title": "Talk Pipeline Stage6",
-    "keywords": "talk pipeline stage6 examples skills talk stage6 revision skill",
+    "keywords": "talk pipeline stage6 examples skills talk pipeline stage revision skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage6-revision/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-6-revision/SKILL.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-kimi-template",
     "title": "Talk Pipeline Kimi Template",
-    "keywords": "talk pipeline kimi template examples skills talk stage5 script templates kimi prompt template",
+    "keywords": "talk pipeline kimi template examples skills talk pipeline stage script templates kimi prompt template",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage5-script/templates/kimi-prompt-template.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-5-script/templates/kimi-prompt-template.md",
     "source": "guide"
   },
   {
     "id": "guide-talk-pipeline-feedback-template",
     "title": "Talk Pipeline Feedback Template",
-    "keywords": "talk pipeline feedback template examples skills talk stage4 position templates feedback draft",
+    "keywords": "talk pipeline feedback template examples skills talk pipeline stage position templates feedback draft",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-stage4-position/templates/feedback-draft.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/talk-pipeline/stage-4-position/templates/feedback-draft.md",
     "source": "guide"
   },
   {
@@ -4132,14 +4132,6 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
-    "id": "guide-third-party-tools-guide",
-    "title": "Third Party Tools Guide",
-    "keywords": "third party tools guide guide ecosystem third party tools",
-    "category": "Guide",
-    "url": "/guide/third-party-tools/",
-    "source": "guide"
-  },
-  {
     "id": "guide-third-party-tools-cost-tracking",
     "title": "Third Party Tools Cost Tracking",
     "keywords": "third party tools cost tracking guide ecosystem third party tools md#token cost tracking",
@@ -5038,9 +5030,9 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-sonnet-5-default",
     "title": "Sonnet 5 Default",
-    "keywords": "sonnet 5 default guide ultimate guide md#pricing model rates checked november 2026 opus 4 6 pricing guide ultimate guide md#pricing model rates checked november 2026",
+    "keywords": "sonnet 5 default guide ultimate guide md#pricing model rates checked october 2026 opus 4 6 pricing guide ultimate guide md#pricing model rates checked october 2026",
     "category": "Guide",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-rates-checked-november-23-2026",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/ultimate-guide.md#pricing-model-rates-checked-october-27-2026",
     "source": "guide"
   },
   {
@@ -5816,7 +5808,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Plan Start Command",
     "keywords": "plan start command examples skills plan pipeline start skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline-start/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/start/SKILL.md",
     "source": "guide"
   },
   {
@@ -5824,7 +5816,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Plan Validate Command",
     "keywords": "plan validate command examples skills plan pipeline validate skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline-validate/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/validate/SKILL.md",
     "source": "guide"
   },
   {
@@ -5832,7 +5824,7 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "title": "Plan Execute Command",
     "keywords": "plan execute command examples skills plan pipeline execute skill",
     "category": "Examples > Skills",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline-execute/SKILL.md",
+    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/examples/skills/plan-pipeline/execute/SKILL.md",
     "source": "guide"
   },
   {
