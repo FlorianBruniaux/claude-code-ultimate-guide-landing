@@ -14,6 +14,7 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Changed
 
+- Whitepaper downloads point at the re-rendered PDFs of whitepapers 00, 01, 02, 03, 04, 07, 08, 09 and 10 (FR and EN), whose sources changed after the November 11 publication; the three cheatsheet PDFs are replaced with the November 23 render.
 - Move the official Claude Community Ambassador mention into the compact author profile and align the guide hero layout with Cowork.
 
 - Add The minimal harness guided exercise to the Whitepapers page.
