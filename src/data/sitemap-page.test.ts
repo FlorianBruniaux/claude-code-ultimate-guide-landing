@@ -84,7 +84,7 @@ test('exposes the homepage resource hubs in the HTML sitemap', () => {
 
 test('keeps stable lastmod dates for the homepage resource hubs', () => {
   assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/resources\/': '2026-08-31'/)
-  assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/downloads\/': publicationEdition\.updatedAt/)
+  assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/downloads\/': \[publicationEdition\.updatedAt, '2026-11-26'\]\.sort\(\)\.at\(-1\)/)
   assert.match(sitemapConfig, /'https:\/\/cc\.bruniaux\.com\/projects\/': '2026-08-31'/)
 })
 

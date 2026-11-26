@@ -48,6 +48,18 @@ function loadAnchorMap() {
   }
 }
 
+/** Use the same punctuation spacing as the rendered headings, including explicit IDs. */
+export function guideHeadingAnchor(text) {
+  const explicit = text.match(/\s*\{#([A-Za-z0-9][\w-]*)\}\s*$/)
+  if (explicit) return explicit[1]
+  return text
+    .toLowerCase()
+    .replace(/[`*_~[\](){}|\\]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 /**
  * Convert a guide-relative file path to a Starlight URL.
  * Returns null if the path should fall back to GitHub.
@@ -103,8 +115,8 @@ export function resolveGuideLink(href, anchorFragment, anchorMap, currentSourceP
     if (anchor && anchorMap[anchor]) {
       return { url: `${GUIDE_BASE}${anchorMap[anchor]}/#${anchor}`, isExternal: false }
     }
-    // No specific anchor or not found in map → link to ultimate guide index
-    return { url: `${GUIDE_BASE}ultimate-guide/`, isExternal: false }
+    // Keep unmapped fragments visible so the rendered-link validator can reject them.
+    return { url: `${GUIDE_BASE}ultimate-guide/${anchorFragment || ''}`, isExternal: false }
   }
 
   if (repositoryPath === 'guide/ultimate-guide.fr.md') {

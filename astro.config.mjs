@@ -31,7 +31,8 @@ const PAGE_DATES = {
   'https://cc.bruniaux.com/': '2026-08-31',
   'https://cc.bruniaux.com/mcp/': '2026-10-05',
   'https://cc.bruniaux.com/resources/': '2026-08-31',
-  'https://cc.bruniaux.com/downloads/': publicationEdition.updatedAt,
+  // The learning and team-training paths were added on 2026-11-26.
+  'https://cc.bruniaux.com/downloads/': [publicationEdition.updatedAt, '2026-11-26'].sort().at(-1),
   'https://cc.bruniaux.com/whitepapers/': publicationEdition.updatedAt,
   'https://cc.bruniaux.com/cheatsheets/': publicationEdition.updatedAt,
   'https://cc.bruniaux.com/projects/': '2026-08-31',

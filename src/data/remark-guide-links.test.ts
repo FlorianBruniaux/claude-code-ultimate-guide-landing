@@ -95,3 +95,10 @@ test('Mistral comparison and evidence links preserve their published local desti
     url: '/ecosystem/#mistral-large-4', isExternal: false,
   })
 })
+
+test('retains an unmapped main-guide fragment for validation instead of silently dropping it', () => {
+  assert.deepEqual(resolveGuideLink('../ultimate-guide.md', '#unknown-section', {}, 'guide/ops/example.md'), {
+    url: '/guide/ultimate-guide/#unknown-section',
+    isExternal: false,
+  })
+})

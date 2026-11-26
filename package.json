@@ -16,7 +16,7 @@
     "check:built-seo": "node scripts/check-built-seo.mjs",
     "check:public-seo": "node scripts/check-public-seo.mjs",
     "check:quiz-doc-links": "node scripts/check-quiz-doc-links.mjs",
-    "test": "node --test 'src/**/*.test.ts'",
+    "test": "node --test 'src/**/*.test.ts' scripts/lib/render-mermaid.test.mjs",
     "test:built": "node --test 'tests/built/*.test.ts'",
     "preview": "astro preview",
     "check": "astro check",

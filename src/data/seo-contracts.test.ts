@@ -366,3 +366,52 @@ test('accepts a contextual link rendered in the page body with its anchor text',
     assert.deepEqual(checkBuiltSeo({ distDir: root, routes: [ROUTE], guideDates: undefined, contextualLinks: [CONTEXTUAL_LINK] }), [])
   })
 })
+
+test('rejects a rendered same-page link whose fragment is absent', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<a href="#session-handoffs">Session handoffs</a></main>'))
+    assert.ok(check(root).includes('/guide/architecture/: fragment #session-handoffs targets 0 rendered IDs in /guide/architecture/'))
+  })
+})
+
+test('checks cross-page fragments against their actual rendered destination', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<a href="../memory-systems/?view=full#memory%2Dhierarchy">Memory</a></main>'))
+    await writeFixtureFile(root, 'guide/memory-systems/index.html', distinctPage('/guide/memory-systems/', 'Memory systems for Claude Code engineering', 'Native and external memory systems for Claude Code, with boundaries and useful examples.').replace('</main>', '<h2 id="memory-hierarchy">Memory hierarchy</h2></main>'))
+    assert.deepEqual(check(root), [])
+    await writeFixtureFile(root, 'guide/memory-systems/index.html', distinctPage('/guide/memory-systems/', 'Memory systems for Claude Code engineering', 'Native and external memory systems for Claude Code, with boundaries and useful examples.'))
+    assert.ok(check(root).includes('/guide/architecture/: fragment #memory-hierarchy targets 0 rendered IDs in /guide/memory-systems/'))
+  })
+})
+
+test('rejects a referenced duplicate ID and ignores inert markup and external fragments', async () => {
+  await withValidFixture(async (root) => {
+    const body = '<a href="#same">Section</a><h2 id="same">One</h2><h2 id="same">Two</h2><template><a href="#not-rendered">Example</a></template><a href="https://example.com/#unknown">External</a><a href="#:~:text=example">Text selection</a>'
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', `${body}</main>`))
+    assert.deepEqual(check(root), [
+      '/guide/architecture/: duplicate rendered ID #same (2 occurrences)',
+      '/guide/architecture/: fragment #same targets 2 rendered IDs in /guide/architecture/',
+    ])
+  })
+})
+
+test('rejects duplicate SVG IDs even when no HTML anchor references them', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<svg><defs><marker id="arrowhead"></marker></defs></svg><svg><defs><marker id="arrowhead"></marker></defs></svg></main>'))
+    assert.ok(check(root).includes('/guide/architecture/: duplicate rendered ID #arrowhead (2 occurrences)'))
+  })
+})
+
+test('leaves non-HTML resource fragments to their resource validator', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<a href="/guide/images/diagram.svg#arrowhead">Diagram</a><a href="/guide.pdf#page=2">PDF</a></main>'))
+    assert.deepEqual(check(root), [])
+  })
+})
+
+test('does not mistake data-id attributes for rendered IDs', async () => {
+  await withValidFixture(async (root) => {
+    await writeFixtureFile(root, 'guide/architecture/index.html', validHtml().replace('</main>', '<g data-id="same"></g><g data-id="same"></g><a href="#same">Section</a></main>'))
+    assert.deepEqual(check(root), ['/guide/architecture/: fragment #same targets 0 rendered IDs in /guide/architecture/'])
+  })
+})

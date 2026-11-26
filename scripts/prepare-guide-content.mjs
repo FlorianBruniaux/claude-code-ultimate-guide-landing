@@ -16,10 +16,10 @@ import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, readdirSync
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { execFileSync } from 'child_process'
-import { renderSVG, mmdcAvailable } from './lib/render-mermaid.mjs'
+import { renderMermaidBlocks } from './lib/render-mermaid-blocks.mjs'
 import { renderGuideIndex } from '../src/data/guide-navigation.mjs'
 import { transformGuideMarkdown } from '../src/data/guide-seo-overrides.mjs'
-import { resolveGuideLink } from '../plugins/remark-guide-links.mjs'
+import { resolveGuideLink, guideHeadingAnchor as toAnchor } from '../plugins/remark-guide-links.mjs'
 import { rewriteSupersededGuideLinks } from '../src/data/superseded-guide-pages.mjs'
 import { addFrenchChapterLink, frenchChapterAnchors } from './lib/french-chapter-links.mjs'
 import { injectGuideVisuals } from './lib/guide-visuals.mjs'
@@ -165,20 +165,6 @@ const CHAPTERS = [
 const CHAPTER_BY_NUM = new Map(CHAPTERS.map(c => [c.num, c]))
 
 // --- Helpers ---
-
-/**
- * Convert heading text to GitHub/Astro-compatible anchor.
- * Matches rehype-slug behavior used by Starlight.
- */
-function toAnchor(text) {
-  return text
-    .toLowerCase()
-    .replace(/[`*_~[\](){}|\\]/g, '')  // strip markdown formatting
-    .replace(/[^\w\s-]/g, '')           // keep alphanumeric, _, space, hyphen
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-}
 
 /**
  * Detect if this H2 line starts a new chapter.
@@ -394,23 +380,6 @@ function resolveUltimateGuideAnchors(content, anchorMap) {
  * @param {string} fileSlug - Unique file slug for diagram IDs (e.g. 'ai-ecosystem')
  * @returns {string} - Content with mermaid blocks replaced by SVG HTML
  */
-function renderMermaidBlocks(content, fileSlug) {
-  if (!mmdcAvailable) return content
-
-  let blockIndex = 0
-  return content.replace(/^```mermaid\n([\s\S]*?)^```/gm, (match, code) => {
-    const id = `${fileSlug}-${blockIndex++}`
-    const lightSvg = renderSVG(code.trim(), `${id}-light`, 'neutral')
-    const darkSvg  = renderSVG(code.trim(), `${id}-dark`,  'dark')
-
-    if (!lightSvg && !darkSvg) return match
-
-    return `<div class="mermaid-diagram">
-<div class="mermaid-light">${lightSvg ?? ''}</div>
-<div class="mermaid-dark">${darkSvg ?? ''}</div>
-</div>`
-  })
-}
 
 // --- Directory helpers ---
 function ensureDir(dir) {
@@ -746,6 +715,14 @@ for (const line of lines) {
           anchorMap[anchor] = `ultimate-guide/${meta.slug}`
         }
       }
+    }
+  }
+
+  // Explicit compatibility anchors belong to the chapter containing their source line.
+  if (!inCodeFence) {
+    const meta = CHAPTER_BY_NUM.get(currentChapter)
+    for (const [, id] of line.matchAll(/\bid=["']([^"']+)["']/g)) {
+      if (meta && !anchorMap[id]) anchorMap[id] = `ultimate-guide/${meta.slug}`
     }
   }
 

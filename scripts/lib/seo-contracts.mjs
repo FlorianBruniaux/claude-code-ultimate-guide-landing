@@ -32,7 +32,7 @@ export const AUDITED_ROUTES = [
 ]
 
 function attribute(tag, name) {
-  const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*(["'])([\\s\\S]*?)\\1`, 'i'))
+  const match = tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(["'])([\\s\\S]*?)\\1`, 'i'))
   return match?.[2]
 }
 
@@ -107,6 +107,8 @@ function inspectRenderedDocument(html, route) {
   let isRedirectDocument = false
   let legacyReleaseHref = false
   const headings = []
+  const ids = new Map()
+  const fragmentLinks = new Set()
 
   for (const match of html.matchAll(/<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>/g)) {
     const tag = match[0]
@@ -122,6 +124,9 @@ function inspectRenderedDocument(html, route) {
       continue
     }
     if (Object.values(inertDepth).some((depth) => depth > 0) || closing) continue
+
+    const id = attribute(tag, 'id')
+    if (id) ids.set(renderedText(id), (ids.get(renderedText(id)) ?? 0) + 1)
 
     if (name === 'h1') {
       h1Count++
@@ -139,6 +144,7 @@ function inspectRenderedDocument(html, route) {
     if (name === 'a') {
       const href = attribute(tag, 'href')
       if (!href) continue
+      if (href.includes('#')) fragmentLinks.add(renderedText(href))
       try {
         if (new URL(href, `${SITE_ORIGIN}${route}`).pathname === '/guide/claude-code-releases/') {
           legacyReleaseHref = true
@@ -150,7 +156,7 @@ function inspectRenderedDocument(html, route) {
     }
   }
 
-  return { h1Count, headings, isRedirectDocument, legacyReleaseHref }
+  return { h1Count, headings, isRedirectDocument, legacyReleaseHref, ids, fragmentLinks }
 }
 
 // A heading may go back up the outline at any time, but going deeper skips no level.
@@ -350,11 +356,13 @@ export function checkBuiltSeo({
   }
 
   const indexablePages = []
+  const renderedDocuments = new Map()
 
   for (const path of walkFiles(distDir).filter((candidate) => extname(candidate).toLowerCase() === '.html')) {
     const route = htmlRoute(distDir, path)
     const html = readFileSync(path, 'utf8')
     const document = inspectRenderedDocument(html, route)
+    renderedDocuments.set(route, document)
 
     if (!document.isRedirectDocument && !isNoIndex(html)) {
       indexablePages.push({ route, title: renderedText(title(html) ?? ''), description: renderedText(metaDescription(html) ?? '') })
@@ -389,6 +397,34 @@ export function checkBuiltSeo({
 
     if (route !== '/guide/claude-code-releases/' && document.legacyReleaseHref) {
       failures.push(`${route}: rendered href targets legacy release route`)
+    }
+  }
+
+  // Compare rendered links with rendered IDs, never with a guessed heading slug.
+  for (const [route, document] of renderedDocuments) {
+    if (document.isRedirectDocument) continue
+    for (const [id, count] of document.ids) {
+      if (count > 1) failures.push(`${route}: duplicate rendered ID #${id} (${count} occurrences)`)
+    }
+    for (const href of document.fragmentLinks) {
+      let target
+      let fragment
+      try {
+        target = new URL(href, `${SITE_ORIGIN}${route}`)
+        if (target.origin !== SITE_ORIGIN) continue
+        const extension = extname(target.pathname).toLowerCase()
+        if (extension && extension !== '.html') continue
+        fragment = decodeURIComponent(target.hash.slice(1)).split(':~:')[0]
+      }
+      catch {
+        failures.push(`${route}: invalid internal fragment URL ${href}`)
+        continue
+      }
+      if (!fragment) continue
+      const targetRoute = target.pathname.endsWith('/') || extname(target.pathname)
+        ? target.pathname : `${target.pathname}/`
+      const count = renderedDocuments.get(targetRoute)?.ids.get(fragment) ?? 0
+      if (count !== 1) failures.push(`${route}: fragment #${fragment} targets ${count} rendered IDs in ${targetRoute}`)
     }
   }
 

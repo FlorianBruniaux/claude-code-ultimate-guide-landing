@@ -20,7 +20,7 @@ test('homepage resource metrics stay aligned with their canonical datasets', () 
   assert.deepEqual(HOMEPAGE_METRICS, {
     whitepaperCount: 13,
     recapCardCount: 58,
-    diagramCount: 50,
+    diagramCount: 53,
   })
 })
 

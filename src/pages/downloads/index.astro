@@ -41,6 +41,29 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
       ))}
     </div>
   </main>
+  <section class="band band-paper section-wallpaper download-band" aria-labelledby="after-download-title">
+    <div class="container download-layout">
+      <h2 id="after-download-title" lang="fr">Après le téléchargement</h2>
+      <div class="next-paths">
+        <article class="next-path brand-card">
+          <div lang="fr">
+            <h3>Apprendre en autonomie</h3>
+            <p>Choisissez un parcours selon votre niveau, puis pratiquez avec le guide et les exercices.</p>
+            <a class="btn btn-secondary" href="/learning/">Choisir mon parcours (en anglais) →</a>
+          </div>
+          <p class="path-english" lang="en">Learning on your own? <a href="/learning/">Choose a learning path for your level</a>.</p>
+        </article>
+        <article class="next-path brand-card">
+          <div lang="fr">
+            <h3>Former une équipe</h3>
+            <p>Travaillez sur les pratiques Claude Code et Codex avec un programme de formation pour votre équipe.</p>
+            <a class="btn btn-secondary" href="https://www.florian.bruniaux.com/fr/prestations/formation/?utm_source=cc-guide&amp;utm_medium=cta&amp;utm_campaign=consulting&amp;utm_content=downloads">Voir le programme de formation →</a>
+          </div>
+          <p class="path-english" lang="en">Training your team? <a href="https://www.florian.bruniaux.com/services/training/?utm_source=cc-guide&amp;utm_medium=cta&amp;utm_campaign=consulting&amp;utm_content=downloads">Explore Claude Code and Codex team training</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
   <section class="band band-ink section-wallpaper release-band">
     <div class="container download-layout">
       <aside class="release-note">
@@ -63,10 +86,18 @@ const languages = [...new Set(GUIDE_DOWNLOADS.map((download) => download.languag
   .language-card h2 { margin: 0.25rem 0 0; font-size: 1.35rem; }
   .language-card p { margin: 0.3rem 0 0; color: var(--text-secondary); }
   .download-actions { display: flex; gap: 0.65rem; flex: 0 0 auto; }
+  .download-layout > h2 { margin: 0; font-size: clamp(1.75rem, 4vw, 2.25rem); }
+  .next-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .next-path { padding: clamp(1.4rem, 4vw, 2rem); }
+  .next-path h3 { margin: 0; font-size: 1.35rem; }
+  .next-path p { color: var(--text-secondary); }
+  .next-path .btn { margin-top: 0.5rem; }
+  .path-english { margin: 1.5rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
   .release-band { padding: clamp(2rem, 5vw, 3rem) 0; }
   .release-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 0; color: var(--text-secondary); font-size: 0.95rem; }
   .release-note strong { color: var(--text-primary); }
   @media (max-width: 680px) {
+    .next-paths { grid-template-columns: 1fr; }
     .language-card { align-items: flex-start; flex-direction: column; }
     .download-actions { width: 100%; }
     .download-actions .btn { flex: 1; }
