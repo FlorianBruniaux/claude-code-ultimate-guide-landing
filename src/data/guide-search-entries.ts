@@ -5118,9 +5118,17 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
   {
     "id": "guide-workflows-task-management",
     "title": "Workflows Task Management",
-    "keywords": "workflows task management guide workflows task management task workflow overview guide workflows task management task workflow session mgmt guide workflows task management task workflow plan integration guide workflows task management task workflow migration guide workflows task management task workflow patterns guide workflows task management task workflow troubleshooting guide workflows task management task workflow advanced guide workflows task management task session lifecycle guide workflows task management",
+    "keywords": "workflows task management guide workflows task management task session lifecycle guide workflows task management",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/task-management/",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-overview",
+    "title": "Task Workflow Overview",
+    "keywords": "task workflow overview guide workflows task management md#overview",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#overview",
     "source": "guide"
   },
   {
@@ -5140,11 +5148,59 @@ export const GUIDE_ENTRIES: GuideSearchEntry[] = [
     "source": "guide"
   },
   {
+    "id": "guide-task-workflow-session-mgmt",
+    "title": "Task Workflow Session Mgmt",
+    "keywords": "task workflow session mgmt guide workflows task management md#workflow phase session management",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#workflow-phase-3-session-management",
+    "source": "guide"
+  },
+  {
     "id": "guide-task-workflow-tdd-integration",
     "title": "Task Workflow TDD Integration",
     "keywords": "task workflow tdd integration guide workflows task management md#integration tdd task management",
     "category": "Guide > Workflows",
     "url": "/guide/workflows/task-management/#integration-tdd--task-management",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-plan-integration",
+    "title": "Task Workflow Plan Integration",
+    "keywords": "task workflow plan integration guide workflows task management md#integration plan driven task management",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#integration-plan-driven--task-management",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-migration",
+    "title": "Task Workflow Migration",
+    "keywords": "task workflow migration guide workflows task management md#todowrite migration guide",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#todowrite-migration-guide",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-patterns",
+    "title": "Task Workflow Patterns",
+    "keywords": "task workflow patterns guide workflows task management md#patterns anti patterns",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#patterns--anti-patterns",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-troubleshooting",
+    "title": "Task Workflow Troubleshooting",
+    "keywords": "task workflow troubleshooting guide workflows task management md#troubleshooting",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#troubleshooting",
+    "source": "guide"
+  },
+  {
+    "id": "guide-task-workflow-advanced",
+    "title": "Task Workflow Advanced",
+    "keywords": "task workflow advanced guide workflows task management md#advanced custom task metadata",
+    "category": "Guide > Workflows",
+    "url": "/guide/workflows/task-management/#advanced-custom-task-metadata",
     "source": "guide"
   },
   {
