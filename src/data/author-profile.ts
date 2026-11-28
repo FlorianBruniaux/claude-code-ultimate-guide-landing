@@ -19,7 +19,7 @@ export const authorProfile = {
   name: 'Florian BRUNIAUX',
   ambassadorLabel: 'Official Claude Community Ambassador · Paris',
   ambassadorUrl: 'https://clauders.com/leaders/florian-bruniaux/',
-  role: 'Hands-on Fractional Chief AI Officer (CAIO)',
+  role: 'Harness engineering expert',
   aboutUrl: 'https://www.florian.bruniaux.com/about/',
   blogUrl: 'https://www.florian.bruniaux.com/blog/',
   projectsUrl: 'https://www.florian.bruniaux.com/projects/',
@@ -29,5 +29,6 @@ export const authorProfile = {
   // 44px slot, 2x density: 2 KB instead of the 213 KB source kept for JSON-LD.
   thumbnailUrl: '/author-88.webp',
   experienceYears: getYearsOfExperience(),
-  experienceLabel: 'Around 15 years in software, including 8 to 10 in technical leadership',
+  experienceIntro: 'Around 15 years in software',
+  leadershipLabel: 'including 10 in technical leadership',
 } as const

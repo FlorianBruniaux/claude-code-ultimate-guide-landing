@@ -6,6 +6,8 @@ All notable changes to the Claude Code Guide Landing Site.
 
 ### Fixed
 
+- Remove the stale 5.9k stars placeholder while the current GitHub count loads.
+
 - Cmd+K search indexes regenerated from the guide's `main` after the examples refresh (guide #121) merged: the Tokenade entry is gone, RTK pipelines is added, and example-skill links follow the new `skills/` layout. The deploys of `ce2c039` and `7192e8f` failed on 46 broken links because that layout was not on the guide's `main` yet; the rerun after the merge passed.
 - **Ebook, cheatsheet and recap-card requests failed with a CORS error (guide #117)**: the portfolio's `vercel.json` sets `trailingSlash: true` (since 2026-09-04), so `/api/subscribe` answers 308 to `/api/subscribe/`, and browsers refuse a redirect on a CORS preflight. The whitepapers and cheatsheets pages now call `/api/subscribe/` directly (checked 2026-11-25: 308 without the slash, 405 to a GET with it, so no redirect). The Cowork landing already used the trailing slash.
 - **Guide menu links unreadable below the charcoal card (guide #119)**: the sidebar override replaced Starlight's `min-height: max-content` with a viewport-based minimum while Starlight keeps `height: 100%`, so a long menu overflowed the card and its light links sat on the ivory page. The card now uses `height: auto`.
@@ -13,6 +15,12 @@ All notable changes to the Claude Code Guide Landing Site.
 - **Tokenade removed from the token-saving catalog**: the launcher repository the entry cited was deleted, its replacement has 56 stars, and its only cost evidence comes from the THOL leaderboard run by its own author (checked 2026-11-25); the guide drops it too. The catalogue count in the token-savings description, the header menu and the FinOps page goes from 45 to 43 tools. THOL measurements of other tools stay, with the existing conflict-of-interest note.
 
 ### Changed
+
+- Use Harness engineering expert as the compact author expertise label (localized in French on Cowork).
+
+- Recompose the homepage hero: separate guide metrics, use a full-width topic navigation row and a compact horizontal author/Ambassador footer. Remove the volunteer-role caption.
+
+- Redesign the author profile with a small Ambassador card, a prominent official title and 10 years in technical leadership.
 
 - Whitepaper downloads point at the re-rendered PDFs of whitepapers 00, 01, 02, 03, 04, 07, 08, 09 and 10 (FR and EN), whose sources changed after the November 11 publication; the three cheatsheet PDFs are replaced with the November 23 render.
 - Move the official Claude Community Ambassador mention into the compact author profile and align the guide hero layout with Cowork.

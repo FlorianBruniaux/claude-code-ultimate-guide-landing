@@ -2,48 +2,45 @@
 import { authorProfile } from '../../data/author-profile'
 ---
 
-<aside class="author-profile" aria-label="About the author">
-  <img
-    src={authorProfile.thumbnailUrl}
-    alt="Florian Bruniaux"
-    class="author-photo"
-    width="44"
-    height="44"
-    loading="lazy"
-    decoding="async"
-  >
-
-  <div class="author-content">
-    <p class="author-identity">
+<aside class="author-profile" aria-label={'About the author'}>
+  <div class="author-identity">
+    <img src={authorProfile.thumbnailUrl} alt="Florian Bruniaux" class="author-photo" width="44" height="44" loading="lazy" decoding="async" >
+    <div class="author-heading">
       <a class="author-name" href={authorProfile.aboutUrl} target="_blank" rel="noopener noreferrer">{authorProfile.name}</a>
-      <span class="author-line">{authorProfile.role}</span>
-    </p>
-    <a class="author-ambassador" href={authorProfile.ambassadorUrl} target="_blank" rel="noopener noreferrer" translate="no">
-      <span>{authorProfile.ambassadorLabel}</span><span aria-hidden="true">↗</span>
-    </a>
-    <p class="author-volunteer">Volunteer community role</p>
-    <p class="author-meta">
-      <span class="author-line">{authorProfile.experienceLabel}</span>
-      <span class="author-links">
-        <a href={authorProfile.blogUrl} target="_blank" rel="noopener noreferrer">Blog ↗</a>
-        <span aria-hidden="true">&middot;</span>
-        <a href={authorProfile.projectsUrl} target="_blank" rel="noopener noreferrer">Projects ↗</a>
-      </span>
-    </p>
+      <p class="author-role">{authorProfile.role}</p>
+  <p class="author-experience">{authorProfile.experienceIntro}, <strong>{authorProfile.leadershipLabel}</strong></p>
+  <div class="author-links">
+    <a href={authorProfile.blogUrl} target="_blank" rel="noopener noreferrer">{'Blog'} ↗</a>
+    <a href={authorProfile.projectsUrl} target="_blank" rel="noopener noreferrer">{'Projects'} ↗</a>
   </div>
+    </div>
+  </div>
+  <a class="author-ambassador brand-card" href={authorProfile.ambassadorUrl} target="_blank" rel="noopener noreferrer" translate="no">
+    <img src="/claude-community-ambassador.webp" alt="" class="author-ambassador-image" width="88" height="88" loading="lazy" decoding="async" >
+    <span class="author-ambassador-copy">
+      <span class="author-ambassador-eyebrow">{'Official · Paris'}</span>
+      <strong class="author-ambassador-title">{'Claude Community Ambassador'}</strong>
+    </span>
+    <span class="author-ambassador-arrow" aria-hidden="true">↗</span>
+  </a>
+
+
 </aside>
 
 <style>
 .author-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.author-identity {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: var(--space-md);
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  gap: 0.875rem;
 }
-
 .author-photo {
   width: 44px;
   height: 44px;
@@ -52,86 +49,70 @@ import { authorProfile } from '../../data/author-profile'
   border: 1px solid var(--border);
   border-radius: 50%;
 }
-
-.author-content {
-  min-width: 0;
-}
-
-.author-identity,
-.author-meta {
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Each item takes its own line: a wrapped "·" used to dangle at a line end. */
-.author-line {
-  flex-basis: 100%;
-}
-
-.author-links {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  white-space: nowrap;
-}
-
-.author-identity {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-}
-
-.author-name {
+.author-heading { min-width: 0; }
+.author-profile .author-name {
   color: var(--text-primary);
-  font-weight: 700;
+  font-size: 1.0625rem;
+  font-weight: 600;
 }
-
-.author-meta {
-  margin-top: 0.15rem;
-  color: var(--text-muted);
+.author-profile p { margin: 0; }
+.author-role {
+  color: var(--text-secondary);
   font-size: 0.8125rem;
+  line-height: 1.5;
 }
-
+.author-profile .author-ambassador {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-lg);
+  background: var(--bg-secondary);
+  text-decoration: none !important;
+}
+.author-ambassador-image {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-control);
+}
+.author-ambassador-copy { display: grid; gap: 0.3rem; }
+.author-ambassador-eyebrow {
+  color: var(--accent);
+  font: 500 0.625rem/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.author-ambassador-title {
+  color: var(--text-primary);
+  font: 600 1.375rem/1.1 var(--font-display);
+  text-wrap: balance;
+}
+.author-ambassador-arrow { align-self: start; color: var(--accent); }
+.author-profile .author-ambassador:hover { border-color: var(--accent); }
+.author-ambassador:hover .author-ambassador-title { text-decoration: underline; text-underline-offset: 3px; }
+.author-profile .author-experience { margin-top: 0.35rem; color: var(--text-muted); font-size: 0.8125rem; line-height: 1.6; }
+.author-experience strong { color: var(--text-secondary); font-weight: 600; }
+.author-links { display: flex; gap: 1.25rem; margin-top: 0; }
+.author-links a { font-size: 0.8125rem; }
 .author-profile a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   color: var(--accent);
   text-decoration: none;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
 }
-
-.author-profile a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-.author-volunteer { margin: 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
-
-.author-profile .author-ambassador {
-  gap: 0.4rem;
-  max-width: 100%;
-  margin-block: 0.25rem;
-  padding: 0.35rem 0.6rem;
-  border-left: 2px solid var(--accent);
-  font: 600 0.75rem/1.5 var(--font-mono);
-  text-decoration: underline;
-}
-.author-ambassador > span:last-child { flex-shrink: 0; }
+.author-profile a:hover { text-decoration: underline; }
 .author-profile a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
+@media (max-width: 760px) {
+  .author-profile { grid-template-columns: minmax(0, 1fr); gap: 0.875rem; }
+}
 @media (max-width: 440px) {
-  .author-profile {
-    align-items: flex-start;
-    gap: 0.65rem;
-  }
-
-  .author-photo {
-    width: 40px;
-    height: 40px;
-  }
+  .author-profile .author-ambassador { grid-template-columns: 72px minmax(0, 1fr) auto; gap: 0.625rem; padding: 0.625rem; }
+  .author-ambassador-image { width: 72px; height: 72px; }
+  .author-ambassador-title { font-size: 1.25rem; }
 }
 </style>

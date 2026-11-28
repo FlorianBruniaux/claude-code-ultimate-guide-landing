@@ -26,23 +26,14 @@ const stats = await getSiteStats()
           <a href="/downloads/" class="btn btn-quiet">Downloads ↓</a>
         </div>
 
-        <nav class="hero-beyond" aria-label="Beyond Claude Code">
-          <p class="hero-beyond-label">Beyond Claude Code</p>
-          <ul>
-            <li><a href="/context-engineering/">Context engineering</a></li>
-            <li><a href="/guide/agent-harness/">Agent harness engineering</a></li>
-            <li><a href="/guide/loop-graph-engineering/">Loop &amp; graph engineering</a></li>
-            <li><a href="/guide/agent-evaluation/">Agent evaluation</a></li>
-            <li><a href="/memory-systems/">Memory systems</a></li>
-          </ul>
-        </nav>
+
       </div>
 
       <div class="hero-evidence">
         <div class="proof-strip" aria-label="Guide highlights">
           <a href="https://github.com/FlorianBruniaux/claude-code-ultimate-guide" target="_blank" rel="noopener" class="proof-item proof-stars">
             <span aria-hidden="true">★</span>
-            <strong class="proof-value">5.9k</strong>
+            <strong class="proof-value">…</strong>
             <span>GitHub stars</span>
           </a>
           <a href="/examples/" class="proof-item">
@@ -59,6 +50,18 @@ const stats = await getSiteStats()
           </a>
         </div>
 
+      </div>
+        <nav class="hero-beyond" aria-label="Beyond Claude Code">
+          <p class="hero-beyond-label">Beyond Claude Code</p>
+          <ul>
+            <li><a href="/context-engineering/">Context engineering</a></li>
+            <li><a href="/guide/agent-harness/">Agent harness engineering</a></li>
+            <li><a href="/guide/loop-graph-engineering/">Loop &amp; graph engineering</a></li>
+            <li><a href="/guide/agent-evaluation/">Agent evaluation</a></li>
+            <li><a href="/memory-systems/">Memory systems</a></li>
+          </ul>
+        </nav>
+      <div class="hero-author-row">
         <AuthorProfile />
       </div>
     </div>
@@ -99,8 +102,11 @@ const stats = await getSiteStats()
     grid-template-areas:
       "kicker kicker"
       "heading heading"
-      "body evidence";
-    column-gap: clamp(2.5rem, 6vw, 6rem);
+      "body evidence"
+      "beyond beyond"
+      "author author";
+    column-gap: clamp(2rem, 5vw, 5rem);
+    row-gap: 0;
   }
 
   .hero-kicker {
@@ -145,7 +151,7 @@ const stats = await getSiteStats()
     margin: 1.5rem 0 0;
     color: var(--text-primary);
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    font-size: clamp(1.7rem, 2.7vw, 2.5rem);
     font-weight: 700;
     line-height: 1.15;
     text-wrap: balance;
@@ -167,8 +173,9 @@ const stats = await getSiteStats()
   }
 
   .hero-beyond {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
+    grid-area: beyond;
+    margin-top: 1.75rem;
+    padding-block: 0.75rem;
     border-top: 1px solid var(--border);
   }
 
@@ -210,57 +217,58 @@ const stats = await getSiteStats()
     outline-offset: 3px;
   }
 
-  .proof-strip {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
+  .hero-author-row { grid-area: author; min-width: 0; }
 
   .hero-evidence {
     grid-area: evidence;
-    align-self: end;
+    align-self: center;
     min-width: 0;
     margin-top: 1.5rem;
   }
 
+  .proof-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.5rem;
+  }
+
   .proof-item {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     gap: 0.35rem;
-    min-height: 44px;
-    padding: 0.45rem 0.7rem;
+    min-height: 80px;
+    padding-block: 0.5rem;
+    border-top: 1px solid var(--border);
     color: var(--text-secondary) !important;
-    background: color-mix(in srgb, var(--surface-elevated) 72%, transparent);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-control);
-    font-size: 0.825rem;
-    line-height: 1;
+    font-size: 0.8125rem;
+    line-height: 1.4;
     text-decoration: none !important;
   }
 
   .proof-item strong {
-    color: var(--text-primary);
+    color: var(--accent);
     font-family: var(--font-mono);
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
   }
 
-  .proof-item:hover { border-color: var(--accent); }
+  .proof-stars { position: relative; }
+  .proof-stars > span[aria-hidden] { position: absolute; right: 0; top: 0.75rem; color: var(--accent); }
+  a.proof-item:hover { border-color: var(--accent); }
+  a.proof-item:hover > span:last-child { text-decoration: underline; text-underline-offset: 3px; }
+  .proof-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 900px) {
     .hero-copy {
       grid-template-columns: minmax(0, 1fr);
-      grid-template-areas:
-        "kicker"
-        "heading"
-        "body"
-        "evidence";
+      grid-template-areas: "kicker" "heading" "body" "evidence" "beyond" "author";
     }
-
-    .hero-evidence { max-width: 900px; }
-
-    .proof-strip {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    .proof-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .hero-evidence { margin-top: 1.75rem; }
   }
 
   @media (max-width: 640px) {
@@ -270,8 +278,8 @@ const stats = await getSiteStats()
     .hero-tagline { margin-top: 1.1rem; }
     .hero-actions { align-items: stretch; }
     .hero-actions .btn { flex: 1 1 100%; }
-    .hero-download-link { justify-content: center; width: 100%; }
-    .proof-strip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .proof-item { justify-content: center; }
+    .proof-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-beyond { margin-top: 1rem; }
+    .hero-beyond a { font-size: 0.875rem; }
   }
 </style>
